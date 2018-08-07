@@ -41,7 +41,7 @@ int am_main (void)
     AM_DBG_INFO("Start up successful!\r\n");
 
     /*
-     * 以下为所有demo的入口函数，需要运行哪个 demo， 就需求对应函数调用行的注释
+     * 以下为所有demo的入口函数，需要运行哪个 demo， 就取消对应函数调用行的注释
      *
      * 默认运行的是LED闪烁 demo。
      *
