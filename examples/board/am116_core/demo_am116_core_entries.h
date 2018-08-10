@@ -448,6 +448,11 @@ void demo_am116_core_miniport_zlg72128_entry (void);
  */
 void demo_am116_core_std_delay_entry(void);
 
+/**
+ * \brief A类卡读卡类型和卡号例程
+ */
+void demo_am116_core_dr_fm175xx_picca_read_id(void);
+
 #ifdef __cplusplus
 }
 #endif

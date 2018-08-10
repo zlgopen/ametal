@@ -211,10 +211,10 @@ static int __tim_timing_disable (void *p_drv, uint8_t chan)
     
     p_hw_tim = (amhw_zlg_tim_t *)p_dev->p_devinfo->tim_regbase;
 
-    amhw_zlg_tim_disable(p_hw_tim);
-
     /* 禁能更新中断 */
     amhw_zlg_tim_int_disable(p_hw_tim, AMHW_ZLG_TIM_UIE);
+
+    amhw_zlg_tim_disable(p_hw_tim);
 
     return AM_OK;
 }
@@ -230,6 +230,9 @@ static int __tim_timing_enable (void *p_drv, uint8_t chan, void *p_count)
     }
 
     p_hw_tim = (amhw_zlg_tim_t *)p_dev->p_devinfo->tim_regbase;
+
+    /* 禁止定时器产生中断 */
+    amhw_zlg_tim_int_disable(p_hw_tim, AMHW_ZLG_TIM_UIE);
 
     /* 设置自动重装寄存器的值 */
     amhw_zlg_tim_arr_set(p_hw_tim, *((uint32_t *)p_count));

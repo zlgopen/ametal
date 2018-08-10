@@ -351,7 +351,7 @@
           </ArmAdsMisc>
           <Cads>
             <interw>1</interw>
-            <Optim>1</Optim>
+            <Optim>4</Optim>
             <oTime>0</oTime>
             <SplitLS>0</SplitLS>
             <OneElfS>1</OneElfS>
@@ -635,6 +635,11 @@
               <FileName>am_zm516x.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\components\drivers\source\zigbee\am_zm516x.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_fm175xx_zlg116.lib</FileName>
+              <FileType>4</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\fm175xx\am_fm175xx_zlg116.lib</FilePath>
             </File>
           </Files>
         </Group>
@@ -945,6 +950,11 @@
               <FileName>am_zlg_wwdg.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\soc\zlg\drivers\source\wdt\am_zlg_wwdg.c</FilePath>
+            </File>
+            <File>
+              <FileName>zm_zlg_spi_poll.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\soc\zlg\drivers\source\spi\zm_zlg_spi_poll.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -1395,6 +1405,16 @@
               <FileName>demo_mtd.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\components\service\demo_mtd.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_am116_core_dr_fm175xx_picca_read_id.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am116_core\fm175xx\demo_am116_core_dr_fm175xx_picca_read_id.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_fm175xx_picca_read_id.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\components\drivers\demo_fm175xx_picca_read_id.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -1930,6 +1950,11 @@
               <FileName>am_hwconf_zlg116_wwdg.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_wwdg.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_zlg116_spi_poll.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_spi_poll.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -2565,6 +2590,11 @@
               <FileType>1</FileType>
               <FilePath>..\..\..\..\components\drivers\source\zigbee\am_zm516x.c</FilePath>
             </File>
+            <File>
+              <FileName>am_fm175xx_zlg116.lib</FileName>
+              <FileType>4</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\fm175xx\am_fm175xx_zlg116.lib</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -2874,6 +2904,11 @@
               <FileName>am_zlg_wwdg.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\soc\zlg\drivers\source\wdt\am_zlg_wwdg.c</FilePath>
+            </File>
+            <File>
+              <FileName>zm_zlg_spi_poll.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\soc\zlg\drivers\source\spi\zm_zlg_spi_poll.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -3324,6 +3359,16 @@
               <FileName>demo_mtd.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\components\service\demo_mtd.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_am116_core_dr_fm175xx_picca_read_id.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am116_core\fm175xx\demo_am116_core_dr_fm175xx_picca_read_id.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_fm175xx_picca_read_id.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\components\drivers\demo_fm175xx_picca_read_id.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -3859,6 +3904,11 @@
               <FileName>am_hwconf_zlg116_wwdg.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_wwdg.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_zlg116_spi_poll.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_spi_poll.c</FilePath>
             </File>
           </Files>
         </Group>

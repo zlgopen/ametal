@@ -32,6 +32,7 @@ extern "C" {
 #include "am_mtd.h"
 #include "am_mx25xx.h"
 #include "am_ep24cxx.h"
+#include "am_fm175xx.h"
 
 /**
  * \brief EP24CXX 器件例程
@@ -72,6 +73,13 @@ void demo_ftl_entry (am_ftl_handle_t ftl_handle, int32_t test_lenth);
  * \return 无
  */
 void demo_mtd_entry (am_mtd_handle_t mtd_handle, int32_t test_lenth);
+
+/**
+ * \brief FM175XX 例程
+ * \param[in] handle  FM175XX 服务句柄
+ * \return 无
+ */
+void demo_fm175xx_picca_read_id (am_fm175xx_handle_t handle);
 
 #ifdef __cplusplus
 }
