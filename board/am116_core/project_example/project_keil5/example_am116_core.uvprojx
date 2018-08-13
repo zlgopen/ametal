@@ -1956,6 +1956,11 @@
               <FileType>1</FileType>
               <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_spi_poll.c</FilePath>
             </File>
+            <File>
+              <FileName>am_hwconf_fm175xx.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_fm175xx.c</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>
@@ -3909,6 +3914,11 @@
               <FileName>am_hwconf_zlg116_spi_poll.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_spi_poll.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_fm175xx.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_fm175xx.c</FilePath>
             </File>
           </Files>
         </Group>
