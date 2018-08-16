@@ -56,7 +56,8 @@ void demo_am116_core_hw_wwdg_entry (void)
 {
     AM_DBG_INFO("demo am116_core hw wwdg!\r\n");
 
-    amhw_zlg116_rcc_lsi_enable();
+    am_clk_enable(CLK_WWDG);
+    am_zlg116_clk_reset(CLK_WWDG);
 
     demo_zlg_hw_wwdg_entry(ZLG116_WWDG,
                            am_clk_rate_get(CLK_WWDG),
