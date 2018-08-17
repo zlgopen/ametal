@@ -78,7 +78,7 @@ static int __trans_once (am_spi_handle_t spi_handle,
                    spi_handle,
                    8,
                    AM_SPI_MODE_1,
-                   1000000,
+                   3000000,
                    cs_pin,  /* 使用引脚控制片选 */
                    NULL);
 
@@ -116,7 +116,7 @@ static int __trans_once (am_spi_handle_t spi_handle,
     am_spi_msg_start(&__g_dev, &spi_msg);
 
     am_wait_on(&msg_wait);
-
+    
     for (i = 0; i < BUF_LEN; i++) {
         if (__g_tx_buf[i] != __g_rx_buf[i]) {
             error_ocur = 1;

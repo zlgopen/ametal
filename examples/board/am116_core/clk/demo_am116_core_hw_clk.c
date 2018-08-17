@@ -82,7 +82,7 @@ void demo_am116_core_hw_clk_entry (void)
 
     amhw_zlg116_rcc_mco_src_set(4);
 
-    demo_zlg116_hw_clk_entry(&clk_id[0], AM_NELEMENTS(clk_id));
+    demo_zlg_hw_clk_entry(&clk_id[0], AM_NELEMENTS(clk_id));
 }
 /** [src_am116_core_hw_clk] */
 

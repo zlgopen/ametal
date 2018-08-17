@@ -35,7 +35,6 @@
 /** [src_zlg_hw_uart_int] */
 #include "ametal.h"
 #include "am_int.h"
-#include "am_zlg116.h"
 #include "hw/amhw_zlg_uart.h"
 
 /*******************************************************************************
@@ -131,7 +130,10 @@ static void uart_hw_irq_handler (void *p_arg)
 /**
  * \brief UART hw 中断收发初始化
  */
-static void uart_int_init (amhw_zlg_uart_t *p_hw_uart, uint32_t clk_rate)
+void uart_int_init (amhw_zlg_uart_t *p_hw_uart, 
+                           uint32_t         clk_rate,
+                           unsigned long    uart_base,
+                           unsigned char    inum_uart)
 {
     uint8_t inum = 0;
 
@@ -146,10 +148,10 @@ static void uart_int_init (amhw_zlg_uart_t *p_hw_uart, uint32_t clk_rate)
     amhw_zlg_uart_int_disable(p_hw_uart, AMHW_ZLG_UART_INT_ALL_ENABLE_MASK);
 
     /* 计算出不同串口对应的中断向量号 */
-    if ((uint32_t)p_hw_uart - ZLG116_UART1_BASE) {
-        inum = INUM_UART1 + 1;
+    if ((uint32_t)p_hw_uart - uart_base) {
+        inum = inum_uart + 1;
     } else {
-        inum = INUM_UART1;
+        inum = inum_uart;
     }
 
     /* 使能串口 */
@@ -168,11 +170,13 @@ static void uart_int_init (amhw_zlg_uart_t *p_hw_uart, uint32_t clk_rate)
 /**
  * \brief 例程入口
  */
-void demo_zlg_hw_uart_int_entry (amhw_zlg_uart_t *p_hw_uart, uint32_t clk_rate)
+void demo_zlg_hw_uart_int_entry (amhw_zlg_uart_t *p_hw_uart, 
+                                 uint32_t         clk_rate,
+                                 unsigned long    uart_base,
+                                 unsigned char    inum_uart)
 {
 
-    /* UART 中断初始化 */
-    uart_int_init(p_hw_uart, clk_rate);
+    uart_int_init(p_hw_uart, clk_rate , uart_base, inum_uart);
 
     uart_int_send(p_hw_uart, hw_polling_str, sizeof(hw_polling_str));
 

@@ -16,6 +16,7 @@
  *
  * - 实验现象：
  *   1. 在中断时调试串口打印信息。
+ *   2. LED0 翻转
  *
  * \par 源代码
  * \snippet demo_zlg_hw_tim_timing.c src_zlg_hw_tim_timing
@@ -36,9 +37,10 @@
 #include "am_int.h"
 #include "am_delay.h"
 #include "am_vdebug.h"
-#include "am_zlg116.h"
 #include "hw/amhw_zlg_tim.h"
+#include "am_led.h"
 
+#define LED0   0
 /**
  * \brief PWM 中断服务函数
  */
@@ -47,6 +49,8 @@ static void __zlg_tim_hw_timing_irq_handler (void *p_arg)
     amhw_zlg_tim_t *p_hw_tim = (amhw_zlg_tim_t *)p_arg;
 
     AM_DBG_INFO("timing irq!\r\n");
+
+    am_led_toggle(LED0);
 
     /* 清除更新标志 */
     amhw_zlg_tim_status_flg_clr(p_hw_tim, AMHW_ZLG_TIM_UIF);

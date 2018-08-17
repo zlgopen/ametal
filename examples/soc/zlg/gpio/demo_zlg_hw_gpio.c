@@ -38,7 +38,6 @@
 #include "ametal.h"
 #include "am_gpio.h"
 #include "am_delay.h"
-#include "am_zlg116.h"
 #include "hw/amhw_zlg_gpio.h"
 
 /**
