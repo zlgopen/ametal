@@ -65,6 +65,9 @@ void demo_zlg_hw_gpio_entry (amhw_zlg_gpio_t *p_hw_gpio,
     /* 设置引脚的方向为输出及设置引脚的模式 */
     amhw_zlg_gpio_pin_set(p_hw_gpio, AMHW_ZLG_GPIO_MODE_OUT_PP << 2 | 0x00, output_pin);
 
+    /* 设置引脚的输出速度 */
+    amhw_zlg_gpio_pin_dir_output(p_hw_gpio, AMHW_ZLG_GPIO_SPEED_10MHz, output_pin);
+
     /* 使能引脚的上拉电阻 */
     amhw_zlg_gpio_pin_out_high(p_hw_gpio, output_pin);
 
