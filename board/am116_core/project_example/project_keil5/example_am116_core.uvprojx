@@ -1427,11 +1427,6 @@
               <FilePath>..\..\..\..\examples\soc\zlg\adc\demo_zlg_hw_adc_int.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg116_hw_clk.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\soc\zlg\clk\demo_zlg116_hw_clk.c</FilePath>
-            </File>
-            <File>
               <FileName>demo_zlg_drv_dma_m2m.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\soc\zlg\dma\demo_zlg_drv_dma_m2m.c</FilePath>
@@ -1540,6 +1535,11 @@
               <FileName>demo_zlg_hw_wwdg.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\soc\zlg\wdg\demo_zlg_hw_wwdg.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zlg_hw_clk.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\soc\zlg\clk\demo_zlg_hw_clk.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -3386,11 +3386,6 @@
               <FilePath>..\..\..\..\examples\soc\zlg\adc\demo_zlg_hw_adc_int.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg116_hw_clk.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\soc\zlg\clk\demo_zlg116_hw_clk.c</FilePath>
-            </File>
-            <File>
               <FileName>demo_zlg_drv_dma_m2m.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\soc\zlg\dma\demo_zlg_drv_dma_m2m.c</FilePath>
@@ -3499,6 +3494,11 @@
               <FileName>demo_zlg_hw_wwdg.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\soc\zlg\wdg\demo_zlg_hw_wwdg.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zlg_hw_clk.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\soc\zlg\clk\demo_zlg_hw_clk.c</FilePath>
             </File>
           </Files>
         </Group>

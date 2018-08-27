@@ -38,9 +38,11 @@
 #include "am_gpio.h"
 #include "am_delay.h"
 #include "am_vdebug.h"
-#include "am_zlg116.h"
+//#include "am_zlg116.h"
 #include "hw/amhw_zlg_tim.h"
+#include "am_led.h"
 
+#define LED0          0
 /**
   * \brief PWM 中断服务函数
   */
@@ -51,6 +53,8 @@ static void __zlg_tim_hw_pwm_irq_handler (void *p_arg)
 
     for (i = 1; i <= 4 ; i++) {
         if ((amhw_zlg_tim_status_flg_get(p_hw_tim, 1UL << i)) != 0) {
+
+					  am_led_toggle(LED0);
 
             /* 清除通道 i 标志 */
             amhw_zlg_tim_status_flg_clr(p_hw_tim, (1UL << i));
@@ -189,11 +193,11 @@ void tim_pwm_init (amhw_zlg_tim_t     *p_hw_tim, amhw_zlg_tim_type_t type)
 /**
  * \brief 例程入口
  */
-void demo_zlg116_hw_tim_pwm_entry (amhw_zlg_tim_t     *p_hw_tim,
-                                   amhw_zlg_tim_type_t type,
-                                   uint32_t            chan,
-                                   uint32_t            clk_rate,
-                                   int32_t             inum)
+void demo_zlg_hw_tim_pwm_entry (amhw_zlg_tim_t     *p_hw_tim,
+                                amhw_zlg_tim_type_t type,
+                                uint32_t            chan,
+                                uint32_t            clk_rate,
+                                int32_t             inum)
 {
 
     /* 初始化定时器TIM为PWM功能 */

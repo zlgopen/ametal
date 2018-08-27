@@ -16,6 +16,7 @@
  *
  * - 实验现象：
  *   1. 指定引脚以 10Hz 的频率进行翻转。
+ *   2. LED0 翻转。
  *
  * \par 源代码
  * \snippet demo_zlg_hw_tim_cmp_toggle.c src_zlg_hw_tim_cmp_toggle
@@ -36,8 +37,10 @@
 #include "am_int.h"
 #include "am_delay.h"
 #include "am_vdebug.h"
-#include "am_zlg116.h"
 #include "hw/amhw_zlg_tim.h"
+#include "am_led.h"
+
+#define LED0          0
 
 /**
  * \brief CMP 中断服务函数
@@ -48,7 +51,9 @@ static void __zlg_tim_cmp_irq_handler (void *p_arg)
     amhw_zlg_tim_t *p_hw_tim = (amhw_zlg_tim_t *)p_arg;
 
     for (i = 1; i <= 4 ; i++) {
-        if ((amhw_zlg_tim_status_flg_get(p_hw_tim, 1UL << i)) != 0) {
+        if ((amhw_zlg_tim_status_flg_get(p_hw_tim, 1UL << i) & AMHW_ZLG_TIM_CC1IF) != 0) {
+
+            am_led_toggle(LED0);
 
             /* 清除通道i标志 */
             amhw_zlg_tim_status_flg_clr(p_hw_tim, (1UL << i));

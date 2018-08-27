@@ -17,6 +17,7 @@
  * - 实验现象：
  *   1. 调试串口输出定时器的相关信息
  *   2. 定时周期到达(默认为 2Hz)，调试串口会输出 The timing frq is 2Hz;
+ *   3. LED0 翻转
  *
  * \par 源代码
  * \snippet demo_std_timer_timing.c src_std_timer_timing
@@ -38,12 +39,16 @@
 #include "am_delay.h"
 #include "am_common.h"
 #include "am_vdebug.h"
+#include "am_led.h"
+
+#define LED0   0
 
 /**
  * \brief 定时器回调函数
  */
 static void __tim_timing_callback (void *p_arg)
 {
+    am_led_toggle(LED0);
     AM_DBG_INFO("The timing frq is 2Hz\r\n");
 }
 

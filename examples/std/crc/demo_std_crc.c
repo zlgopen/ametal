@@ -40,7 +40,7 @@
 
 /** \brief CRC 测试数据 */
 am_local am_const uint8_t __g_data_test[] =
-                              {'1', '2', '3', '4', '5', '6', '7', '8', '9'};
+                              {'1', '2', '3', '4', '5', '6', '7', '8'};
 
 /** \brief CRC 测试数据的长度 */
 am_local uint32_t __g_length_test = AM_NELEMENTS(__g_data_test);

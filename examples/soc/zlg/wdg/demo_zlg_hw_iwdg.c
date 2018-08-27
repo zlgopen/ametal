@@ -36,7 +36,6 @@
 #include "ametal.h"
 #include "am_board.h"
 #include "am_vdebug.h"
-#include "am_zlg116.h"
 #include "hw/amhw_zlg_iwdg.h"
 
 /**
