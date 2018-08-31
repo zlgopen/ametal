@@ -203,21 +203,140 @@ extern "C" {
 
 /** @} */
 
+
 /**
  * \name 定义延时常量
  *
  * \note 延时时间不宜超过100ms，否则可能导致MCU内部定时器无效。
  * @{
  */
-#define AM_FM175XX_RIC_DELAY1MS            2       /**< \brief 超时1ms */
-#define AM_FM175XX_RIC_DELAY2MS            3       /**< \brief 超时2ms */
-#define AM_FM175XX_RIC_DELAY5MS            6       /**< \brief 延时4.832ms */
-#define AM_FM175XX_RIC_DELAY10MS           11      /**< \brief 延时9.966ms */
-#define AM_FM175XX_RIC_DELAY20MS           21      /**< \brief 延时19.932ms */
-#define AM_FM175XX_RIC_DELAY50MS           51      /**< \brief 延时50.132ms */
-#define AM_FM175XX_RIC_DELAY100MS          101     /**< \brief 延时99.962ms */
+#define AM_FM175XX_RIC_DELAY1MS                2           /**< \brief 超时1ms */
+#define AM_FM175XX_RIC_DELAY2MS                3           /**< \brief 超时2ms */
+#define AM_FM175XX_RIC_DELAY5MS                6           /**< \brief 延时4.832ms */
+#define AM_FM175XX_RIC_DELAY10MS               11          /**< \brief 延时9.966ms */
+#define AM_FM175XX_RIC_DELAY20MS               21          /**< \brief 延时19.932ms */
+#define AM_FM175XX_RIC_DELAY50MS               51          /**< \brief 延时50.132ms */
+#define AM_FM175XX_RIC_DELAY100MS              101         /**< \brief 延时99.962ms */
 
 /** @} */
+
+
+/**
+ * \name LPCD检测休眠阶段时间配置
+ *
+ * \note 用户可根据低功耗要求进行修改
+ * @{
+ */
+#define AM_FM175XX_LCPD_SLEEP0MS               0          /**< \brief 0ms */
+#define AM_FM175XX_LCPD_SLEEP200MS             1          /**< \brief 200ms */
+#define AM_FM175XX_LCPD_SLEEP400MS             2          /**< \brief 400ms */
+#define AM_FM175XX_LCPD_SLEEP500MS             3          /**< \brief 500ms */
+#define AM_FM175XX_LCPD_SLEEP600MS             4          /**< \brief 600ms */
+#define AM_FM175XX_LCPD_SLEEP700MS             5          /**< \brief 700ms */
+#define AM_FM175XX_LCPD_SLEEP800MS             6          /**< \brief 800ms */
+#define AM_FM175XX_LCPD_SLEEP900MS             7          /**< \brief 900ms */
+#define AM_FM175XX_LCPD_SLEEP1000MS            8          /**< \brief 1s */
+#define AM_FM175XX_LCPD_SLEEP1100MS            9          /**< \brief 1.1s */
+#define AM_FM175XX_LCPD_SLEEP1200MS            10         /**< \brief 1.2ms */
+#define AM_FM175XX_LCPD_SLEEP1300MS            11         /**< \brief 1.3ms */
+#define AM_FM175XX_LCPD_SLEEP1400MS            12         /**< \brief 1.4ms */
+#define AM_FM175XX_LCPD_SLEEP1500MS            13         /**< \brief 1.5ms */
+#define AM_FM175XX_LCPD_SLEEP1600MS            14         /**< \brief 1.6ms */
+#define AM_FM175XX_LCPD_SLEEP1700MS            15         /**< \brief 1.7ms */
+/** @} */
+
+
+/**
+ * \name LPCD检测阶段时间配置
+ *
+ * \note 用户可根据低功耗要求进行修改
+ * @{
+ */
+#define AM_FM175XX_LCPD_DETECT0US              1           /**< \brief 0us */
+#define AM_FM175XX_LCPD_DETECT4US              2           /**< \brief 4.7us */
+#define AM_FM175XX_LCPD_DETECT9US              3           /**< \brief 9.4us */
+#define AM_FM175XX_LCPD_DETECT14US             4           /**< \brief 14.1us */
+#define AM_FM175XX_LCPD_DETECT18US             5           /**< \brief 18.8us */
+#define AM_FM175XX_LCPD_DETECT23US             6           /**< \brief 23.5us */
+#define AM_FM175XX_LCPD_DETECT28US             7           /**< \brief 28.2us */
+#define AM_FM175XX_LCPD_DETECT32US             8           /**< \brief 32.9us */
+#define AM_FM175XX_LCPD_DETECT37US             9           /**< \brief 37.6us */
+#define AM_FM175XX_LCPD_DETECT42US             10          /**< \brief 42.3us */
+#define AM_FM175XX_LCPD_DETECT47US             11          /**< \brief 47us */
+#define AM_FM175XX_LCPD_DETECT51US             12          /**< \brief 51.7us */
+#define AM_FM175XX_LCPD_DETECT56US             13          /**< \brief 56.4us */
+#define AM_FM175XX_LCPD_DETECT61US             14          /**< \brief 61.1us */
+#define AM_FM175XX_LCPD_DETECT65US             15          /**< \brief 65.8us */
+#define AM_FM175XX_LCPD_DETECT70US             16          /**< \brief 70.5us */
+#define AM_FM175XX_LCPD_DETECT75US             17          /**< \brief 75.2us */
+#define AM_FM175XX_LCPD_DETECT79US             18          /**< \brief 79.9us */
+#define AM_FM175XX_LCPD_DETECT84US             19          /**< \brief 84.6us */
+#define AM_FM175XX_LCPD_DETECT89US             20          /**< \brief 89.3us */
+#define AM_FM175XX_LCPD_DETECT94US             21          /**< \brief 94us */
+#define AM_FM175XX_LCPD_DETECT98US             22          /**< \brief 98.7us */
+#define AM_FM175XX_LCPD_DETECT103US            23          /**< \brief 103.4us */
+#define AM_FM175XX_LCPD_DETECT108US            24          /**< \brief 108.1us */
+#define AM_FM175XX_LCPD_DETECT112US            25          /**< \brief 112.8us */
+#define AM_FM175XX_LCPD_DETECT117US            26          /**< \brief 117.5us */
+#define AM_FM175XX_LCPD_DETECT122US            27          /**< \brief 122.2us */
+#define AM_FM175XX_LCPD_DETECT126US            28          /**< \brief 126.9us */
+#define AM_FM175XX_LCPD_DETECT131US            29          /**< \brief 131.6us */
+#define AM_FM175XX_LCPD_DETECT136US            30          /**< \brief 136.3us */
+#define AM_FM175XX_LCPD_DETECT141US            31          /**< \brief 141us */
+/** @} */
+
+
+/**
+ * \name LPCD发送驱动配置
+ *
+ * @{
+ */
+#define AM_FM175XX_LCPD_TX2_RF_ENABLE          1           /**< \brief LPCD TX2发射使能 */
+#define AM_FM175XX_LCPD_TX2_RF_DISABLE         0           /**< \brief LPCD TX2发射禁能 */
+
+#define AM_FM175XX_LCPD_RF_NMOS_46             0           /**< \brief LPCD 发射NMOS驱动配置为46欧姆 */
+#define AM_FM175XX_LCPD_RF_NMOS_23             1           /**< \brief LPCD 发射NMOS驱动配置为23欧姆 */
+
+#define AM_FM175XX_LCPD_RF_PMOS_180            0           /**< \brief LPCD 发射NMOS驱动配置为180欧姆 */
+#define AM_FM175XX_LCPD_RF_PMOS_90             1           /**< \brief LPCD 发射PMOS驱动配置为90欧姆 */
+#define AM_FM175XX_LCPD_RF_PMOS_46             2           /**< \brief LPCD 发射PMOS驱动配置为46欧姆 */
+#define AM_FM175XX_LCPD_RF_PMOS_23             3           /**< \brief LPCD 发射PMOS驱动配置为23欧姆 */
+#define AM_FM175XX_LCPD_RF_PMOS_12             4           /**< \brief LPCD 发射PMOS驱动配置为12欧姆 */
+#define AM_FM175XX_LCPD_RF_PMOS_6              5           /**< \brief LPCD 发射PMOS驱动配置为6欧姆 */
+#define AM_FM175XX_LCPD_RF_PMOS_3              6           /**< \brief LPCD 发射PMOS驱动配置为3欧姆 */
+#define AM_FM175XX_LCPD_RF_PMOS_1              7           /**< \brief LPCD 发射PMOS驱动配置为1.5欧姆 */
+
+/** @} */
+
+
+/**
+ * \name LPCD检测参数配置
+ *
+ * @{
+ */
+#define AM_FM175XX_LCPD_AUTO_DETECT_TIMES_3    0           /**< \brief LPCD 自动检测三次后产生中断 */
+#define AM_FM175XX_LCPD_AUTO_DETECT_TIMES_1    1           /**< \brief LPCD 自动检测一次后产生中断  */
+
+#define AM_FM175XX_LCPD_INT_DISABLE            0           /**< \brief LPCD 不产生中断 */
+#define AM_FM175XX_LCPD_INT_ENABLE             1           /**< \brief LPCD 产生中断 */
+
+#define AM_FM175XX_LCPD_AUTO_WUP_DISANLE       0           /**< \brief LPCD 禁能自动唤醒模式 */
+#define AM_FM175XX_LCPD_AUTO_WUP_ENABLE        1           /**< \brief LPCD 使能自动唤醒模式*/
+
+#define AM_FM175XX_LCPD_AUTO_WUP_TIME_6S       0           /**< \brief LPCD 配置自动唤醒时间  6s*/
+#define AM_FM175XX_LCPD_AUTO_WUP_TIME_12S      1           /**< \brief LPCD 配置自动唤醒时间 12s*/
+#define AM_FM175XX_LCPD_AUTO_WUP_TIME_15MIN    2           /**< \brief LPCD 配置自动唤醒时间 15minutes*/
+#define AM_FM175XX_LCPD_AUTO_WUP_TIME_30MIN    3           /**< \brief LPCD 配置自动唤醒时间 30minutes*/
+#define AM_FM175XX_LCPD_AUTO_WUP_TIME_60MIN    4           /**< \brief LPCD 配置自动唤醒时间 1hours*/
+#define AM_FM175XX_LCPD_AUTO_WUP_TIME_108MIN   5           /**< \brief LPCD 配置自动唤醒时间 1.8hours*/
+#define AM_FM175XX_LCPD_AUTO_WUP_TIME_216MIN   6           /**< \brief LPCD 配置自动唤醒时间 3.6hours*/
+#define AM_FM175XX_LCPD_AUTO_WUP_TIME_432MIN   7           /**< \brief LPCD 配置自动唤醒时间 7.2hours*/
+
+/** @} */
+/** \brief  LPCD模式初始化返回状态码*/
+#define  AM_FM175XX_INIT_SUCCESS               0x00       /**< \brief 设备LPCD模式初始化成功  */
+#define  AM_FM175XX_REG_INIT_ERROR             0x01       /**< \brief 设备LPCD模式寄存器初始化失败  */
+#define  AM_FM175XX_CALIBRA_INIT_ERROR         0x02       /**< \brief 设备LPCD模式调校初始化失败  */
 
 /**
  * \name  T=CL 结构帧常亮定义
@@ -266,6 +385,7 @@ extern "C" {
 /** \brief  定义ISO14443命令 */
 #define AM_FM175XX_PICC_RATS                   0xE0        /**< \brief ATS请求命令码 */
 #define AM_FM175XX_PICC_PPS                    0xD0        /**< \brief PPS命令 */
+
 /** \brief  通信参数结构掩码定义 */
 #define AM_FM175XX_PARA_FO_CID_MASK            0x02        /**< \brief 通信参数中是否有CID掩码 */
 #define AM_FM175XX_PARA_FO_NAD_MASK            0x01        /**< \brief 通信参数中是否有NAD掩码 */
@@ -346,15 +466,68 @@ typedef struct am_fm175xx_tpcl_prot_para {
     uint8_t fo;                     /**< \brief 选择是否支持CID、NID（同TC1） */
 } am_fm175xx_tpcl_prot_para_t;
 
+/**
+ * \brief FM175XX LPCD模式参数配置信息定义
+ */
+typedef struct am_fm175xx_lpcd_cfginfo {
+    uint8_t         sleep_time;                      /**< \brief LPCD检测休眠阶段时间配置 */
+    uint8_t         detect_time;                     /**< \brief LPCD检测阶段时间配置 */
+
+    uint8_t         tx2_rf_enable;                   /**< \brief LPCD是否使能TX2发射 */
+    uint8_t         cwn;                             /**< \brief LPCD发射NMOS驱动配置*/
+    uint8_t         cwp;                             /**< \brief LPCD发射PMOS驱动配置*/
+    float           detectsensitive;                 /**< \brief LPCD检测脉宽相对灵敏度数    0.04 - 0.15*/
+
+    uint8_t         ie;                              /**< \brief LPCD中断使能配置*/
+    uint8_t         auto_detect_times;               /**< \brief LPCD自动检测次数配置*/
+    uint8_t         wake_up_enable;                  /**< \brief LPCD自动唤醒使能*/
+    uint8_t         wake_up_time;                    /**< \brief LPCD自动唤醒时间配置*/
+
+
+} am_fm175xx_lpcd_cfginfo_t;
 
 /**
  * \brief FM175XX 设备信息定义
  */
 typedef struct am_fm175xx_devinfo {
-	uint8_t                reset_pin;  /**< \brief fm175xx芯片复位引脚 */
-	int                    cs_pin;     /**< \brief fm175xx芯片SPI片选引脚 */
-	am_fm175xx_prot_type_t iso_type;   /**< \brief 初始使用的协议类型 */
+    int                               reset_pin;      /**< \brief fm175xx芯片复位引脚 */
+    int                               cs_pin;         /**< \brief fm175xx芯片SPI片选引脚 */
+    int                               int_pin;        /**< \brief fm175xx芯片中断引脚 */
+    am_fm175xx_prot_type_t            iso_type;       /**< \brief 初始使用的协议类型 */
+    const  am_fm175xx_lpcd_cfginfo_t *p_lpcd_cfg_info;  /**< \brief lpcd模式配置信息 */
 } am_fm175xx_devinfo_t;
+
+
+/**
+ * \brief FM175XX LPCD 模式信息
+ */
+typedef struct am_fm175xx_lpcd_modeinfo {
+    int8_t                              int_flag;       /**< \brief LPCD模式中断标识*/
+
+    const am_fm175xx_lpcd_cfginfo_t    *p_cfg_info;   /**< \brief LPCD模式配置信息*/
+} am_fm175xx_lpcd_modeinfo_t;;
+
+
+/**
+ * \brief FM175XX LPCD模式调校变量信息定义
+ */
+typedef struct am_fm175xx_lpcd_calibrate_info {
+    uint8_t        detect_timer_clkdivk;       /**< \brief LPCD 检测定时器分频数 */
+    uint8_t        bias_current;               /**< \brief LPCD LPCD基准电流配置 */
+    uint8_t        gain_reduce;                /**< \brief LPCD 衰减倍数 */
+    uint8_t        gain_amplify;               /**< \brief LPCD 放大器倍数 */
+    uint8_t        adc_reference;              /**< \brief LPCD ADC电压参照电平 */
+
+    uint8_t        sleep_time;                 /**< \brief LPCD 睡眠时间 */
+    uint8_t        ready_time;                 /**< \brief LPCD 检测准备时间 */
+    uint8_t        detect_time;                /**< \brief LPCD 检测时间  */
+
+    uint8_t        adc_full_scale;             /**< \brief LPCD 定时器满幅下ADC值 */
+    uint8_t        adc_threshold;              /**< \brief LPCD 检测幅度，设置为相对值 */
+    uint8_t        lpcd_threshold_l;           /**< \brief LPCD 幅度低阈值 */
+    uint8_t        lpcd_threshold_h;           /**< \brief LPCD 幅度高阈值 */
+    uint8_t        adc_center;                 /**< \brief LPCD 幅度中心阈值 */
+}am_fm175xx_calibrate_info_t;
 
 /**
  * \brief FM175XX 设备定义
@@ -370,8 +543,10 @@ typedef struct am_fm175xx_dev {
 
     am_fm175xx_tpcl_prot_para_t  cur_prot_para; /**< \brief T=CL通信协议参数 */
 
-    const am_fm175xx_devinfo_t *p_devinfo;
+    const am_fm175xx_devinfo_t  *p_devinfo;     /**< \brief 设备信息 */
 
+    void                       (*lpcd_int_cb)(void *p_arg);
+    void                        *p_lpcd_cb_arg;
 } am_fm175xx_dev_t;
 
 /* FM175XX 设备句柄 */
@@ -413,6 +588,22 @@ am_err_t am_fm175xx_set_reg (am_fm175xx_dev_t *p_dev,
 
 
 /**
+ * \brief 写fm175xx 拓展寄存器
+ *
+ * \param[in] p_dev    : fm175xx设备
+ * \param[in] nregaddr : 拓展寄存器地址
+ * \param[in] nregval  : 拓展寄存器写入的值
+ *
+ * \retval AM_OK      : 消息处理成功
+ * \retval -AM_EINVAL : 参数错误
+ * \retval -AM_EIO    : 传输出错
+ */
+am_err_t am_fm175xx_set_reg_ext (am_fm175xx_dev_t *p_dev,
+                             uint8_t           nregadr,
+                             uint8_t           nregval);
+
+
+/**
  * \brief 读fm175xx 寄存器
  *
  * \param[in]  p_dev    : fm175xx设备
@@ -421,6 +612,17 @@ am_err_t am_fm175xx_set_reg (am_fm175xx_dev_t *p_dev,
  * \retval fm175xx设备寄存器的值
  */
 uint8_t am_fm175xx_get_reg (am_fm175xx_dev_t *p_dev, uint8_t nregadr);
+
+
+/**
+ * \brief 读fm175xx 拓展寄存器
+ *
+ * \param[in]  p_dev    : fm175xx设备
+ * \param[in]  nregaddr : 拓展寄存器地址
+ *
+ * \retval fm175xx设备拓展寄存器的值
+ */
+uint8_t am_fm175xx_get_reg_ext (am_fm175xx_dev_t *p_dev, uint8_t nregadr);
 
 
 /**
@@ -1266,6 +1468,57 @@ uint8_t am_fm175xx_piccb_active (am_fm175xx_dev_t *p_dev,
 uint8_t am_fm175xx_piccb_halt (am_fm175xx_dev_t *p_dev,
                                const uint8_t     pupi[4]);
 
+/**
+ * \brief PCD进入LPCD模式的初始化
+ *
+ *    FM175xx设备在此函数中完成了  寄存器的初始化   调校参数初始化   中断设置初始化
+ *调校过程（包括GPA倍数设置    参考电压设置   阈值设置等）。
+ *
+ * \param[in] p_dev   : fm175xx设备
+ *
+ * \retval 操作结果(详细说明见am_fm175xx.h中的状态码定义)
+ */
+int8_t am_fm175xx_lpcd_init(am_fm175xx_dev_t *p_dev);
+
+/**
+ * \brief PCD进入LPCD模式
+ *
+ *    进入之前需调用am_fm175xx_lpcd_init函数进行LPCD模式寄存器进行初始化
+ *
+ * \param[in] handle   : fm175xx设备句柄
+ *
+ */
+void  am_fm175xx_lpcd_mode_entry(am_fm175xx_handle_t handle);
+
+/**
+ * \brief PCD退出LPCD模式
+ *
+ *    退出LPCD模式之后需要延时1ms，确保设备晶振起振，使用此函数退出后，
+ *需调用am_fm175xx_exit_lpcd_config 函数对未保存的数据进行重新配置，确保设备正常工作
+ *
+ * \param[in] handle   : fm175xx设备句柄
+ *
+ */
+void  am_fm175xx_lpcd_mode_exit(am_fm175xx_handle_t handle);
+/**
+ * \brief PCD退出LPCD模式后对未保存的数据进行重新配置
+ *
+ * \param[in] p_dev   : fm175xx设备
+ *
+ */
+void  am_fm175xx_exit_lpcd_config(am_fm175xx_dev_t   *p_dev);
+
+/**
+ * \brief PCD模式产生卡进场中断回调函数设置
+ *
+ * \param[in] p_dev   : fm175xx设备
+ * \param[in] pfn_callback   : 回调函数
+ * \param[in] p_lpcd_cb_arg   : 回调函数参数
+ *
+ */
+void  am_fm175xx_lpcd_cb_set(am_fm175xx_dev_t   *p_dev,
+                             am_pfnvoid_t        pfn_callback,
+                             void               *p_lpcd_cb_arg);
 /** @} */
 
 /**
