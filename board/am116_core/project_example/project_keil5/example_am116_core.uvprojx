@@ -1416,6 +1416,16 @@
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\components\drivers\demo_fm175xx_picca_read_id.c</FilePath>
             </File>
+            <File>
+              <FileName>demo_am116_core_dr_fm175xx_picca_lpcd_read_id.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am116_core\fm175xx\demo_am116_core_dr_fm175xx_picca_lpcd_read_id.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_fm175xx_picca_lpcd_read_id.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\components\drivers\demo_fm175xx_picca_lpcd_read_id.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -3374,6 +3384,16 @@
               <FileName>demo_fm175xx_picca_read_id.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\components\drivers\demo_fm175xx_picca_read_id.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_am116_core_dr_fm175xx_picca_lpcd_read_id.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am116_core\fm175xx\demo_am116_core_dr_fm175xx_picca_lpcd_read_id.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_fm175xx_picca_lpcd_read_id.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\components\drivers\demo_fm175xx_picca_lpcd_read_id.c</FilePath>
             </File>
           </Files>
         </Group>

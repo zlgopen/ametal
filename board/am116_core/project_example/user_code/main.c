@@ -128,6 +128,7 @@ int am_main (void)
 //    demo_am116_core_miniport_led_entry();
 //    demo_am116_core_miniport_zlg72128_entry();
 //    demo_am116_core_dr_fm175xx_picca_read_id();
+//    demo_am116_core_dr_fm175xx_picca_lpcd_read_id();
     while (1) {
     }
 }
