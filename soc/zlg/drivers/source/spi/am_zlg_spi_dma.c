@@ -321,10 +321,10 @@ void __spi_isr (void *p_arg)
     am_zlg_spi_dma_dev_t *p_dev    = (am_zlg_spi_dma_dev_t *)p_arg;
     amhw_zlg_spi_t       *p_hw_spi = (amhw_zlg_spi_t *)(p_dev->p_devinfo->spi_reg_base);
 
-    uint32_t spi_status = (uint32_t)amhw_zlg_spi_reg_intstat_get(p_hw_spi);
+    uint32_t spi_status = (uint32_t)amhw_zlg_spi_reg_cstat_get(p_hw_spi);
 
     /* 发送完成中断 */
-    if((spi_status & AMHW_ZLG_SPI_INTSTAT_TXEPT_FALG)) {
+    if((spi_status & AMHW_ZLG_SPI_CSTAT_TX_EMPTY)) {
         amhw_zlg_spi_int_flag_clr(p_hw_spi, AMHW_ZLG_SPI_INTSTAT_TXEPT_FALG);
 
         if ((p_dev != NULL) &&

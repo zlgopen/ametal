@@ -58,7 +58,7 @@ void demo_am116_core_hw_uart_int_entry (void)
     /*  πƒ‹ ±÷” */
     am_clk_enable(CLK_UART1);
 
-    demo_zlg_hw_uart_int_entry(ZLG116_UART1, am_clk_rate_get(CLK_UART1));
+    demo_zlg_hw_uart_int_entry(ZLG116_UART1, am_clk_rate_get(CLK_UART1), ZLG116_UART1_BASE, INUM_UART1);
 }
 /** [src_am116_core_hw_uart_int] */
 

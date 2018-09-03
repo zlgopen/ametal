@@ -38,7 +38,6 @@
 #include "ametal.h"
 #include "am_gpio.h"
 #include "am_vdebug.h"
-#include "am_zlg116.h"
 #include "hw/amhw_zlg_exti.h"
 #include "hw/amhw_zlg_gpio.h"
 #include "hw/amhw_zlg_syscfg.h"
