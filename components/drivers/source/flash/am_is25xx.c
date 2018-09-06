@@ -11,11 +11,12 @@
 *******************************************************************************/
 /**
  * \file
- * \brief 旺宏公司的IS25系列SPI FLASH芯片驱动 
+ * \brief ISSI公司的IS25系列SPI FLASH芯片驱动 
  * 
  * 已知兼容芯片： 
- *   //- IS25L1606E
- *   //- IS25L8006E
+ *   - IS25LP128
+ *   - IS25LP064
+ *   - IS25LP032
  * 
  * \internal
  * \par Modification history
@@ -298,7 +299,7 @@ static int __is25xx_rw (am_is25xx_dev_t        *p_dev,
     uint32_t page    = __IS25XX_PAGE_SIZE_GET(p_devinfo->type);
     uint32_t len_tmp;
     int      ret;
-    size_t   nbytes  = 0;
+	  size_t   nbytes  = 0;
 
     if (p_dev == NULL) {
         return -AM_EINVAL;
@@ -541,12 +542,10 @@ int am_is25xx_erase (am_is25xx_handle_t  handle,
     if (addr & (sector_size - 1)) {
         return -AM_EINVAL;
     }
-
-		len = ((len / sector_size) + (1 && (len % sector_size))) * sector_size;
+		
     /* Length must align on sector boundary */
-//    if (len & (sector_size - 1)) {
-//        return -AM_EINVAL;
-//    }
+		len = ((len / sector_size) + (1 && (len % sector_size))) * sector_size;
+   
 
     /* Do not allow past end of device */
     if (addr + len > chip_size) {

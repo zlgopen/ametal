@@ -11,11 +11,12 @@
 *******************************************************************************/
 /**
  * \file
- * \brief 旺宏公司的IS25系列IS25XX芯片驱动 
+ * \brief ISSI公司的IS25系列IS25XX芯片驱动 
  * 
  * 已知兼容芯片： 
- *   //- IS25L1606E
- *   //- IS25L8006E
+ *   - IS25LP128
+ *   - IS25LP064
+ *   - IS25LP032
  * 
  * \internal
  * \par Modification history
@@ -68,9 +69,9 @@ extern "C" {
  * 
  * @{
  */
-#define AM_IS25XX_IS25L8006     AM_IS25XX_TYPE_DEF(8, 4, 4, 4, 0x1420C2)
+#define AM_IS25XX_IS25LP128     AM_IS25XX_TYPE_DEF(8, 4, 4, 8, 0x18609D)
 #define AM_IS25XX_IS25LP064     AM_IS25XX_TYPE_DEF(8, 4, 4, 7, 0x17609D)
-
+#define AM_IS25XX_IS25LP032     AM_IS25XX_TYPE_DEF(8, 4, 4, 6, 0x16609D)
 /** @} */
 
 /**
@@ -85,8 +86,8 @@ typedef struct am_is25xx_type {
 
     /**
      * 该ID由：manufacture_id + memory type + memory density构成
-     * 如：IS25L1606 manufacture_id、 memory type、 memory density分别为
-     * 0xC2、0x20、0x15，则该值为：0x1520C2
+     * 如：IS25LP064 manufacture_id、 memory type、 memory density分别为
+     * 0x9D、0x60、0x17，则该值为：0x17609D
      */
     uint32_t  id;
  
