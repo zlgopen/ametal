@@ -99,7 +99,7 @@ int am_main (void)
 //    demo_zlg217_core_std_tim3_pwm_entry();
 //    demo_zlg217_core_std_tim4_pwm_entry();
 //    demo_zlg217_core_hw_tim_timing_entry();
-    demo_zlg217_core_std_tim1_timing_entry();
+//    demo_zlg217_core_std_tim1_timing_entry();
 //    demo_zlg217_core_std_tim2_timing_entry();
 //    demo_zlg217_core_std_tim3_timing_entry();
 //    demo_zlg217_core_std_tim4_timing_entry();
