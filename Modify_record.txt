@@ -1,0 +1,11 @@
+添加三轴陀螺仪传感器bmg160驱动
+
+新增如下文件：
+
+demo_bmg160.c
+
+am_bmg160.c
+am_bmg160.h
+
+am_hwconf_bmg160.c
+am_hwconf_bmg160.h
