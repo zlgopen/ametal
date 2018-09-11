@@ -427,11 +427,6 @@
               <FilePath>..\..\..\bsp_common\source\am_bsp_microlib.c</FilePath>
             </File>
             <File>
-              <FileName>am_bsp_isr_defer.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\bsp_common\source\am_bsp_isr_defer.c</FilePath>
-            </File>
-            <File>
               <FileName>am_bsp_delay_timer.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\bsp_common\source\am_bsp_delay_timer.c</FilePath>
@@ -440,6 +435,11 @@
               <FileName>am_bsp_system_heap.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\bsp_common\source\am_bsp_system_heap.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_bsp_isr_defer_pendsv.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\bsp_common\source\am_bsp_isr_defer_pendsv.c</FilePath>
             </File>
           </Files>
         </Group>

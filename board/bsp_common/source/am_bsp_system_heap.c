@@ -28,17 +28,6 @@
 #include <string.h>
 
 /*******************************************************************************
-  defines
-*******************************************************************************/
-
-/** \brief SRAM 信息，使用 ARMCC 时需要提供 SRAM 结束地址 */
-#ifdef __CC_ARM
-#define SRAM_SIZE   8
-#define SRAM_START  0x20000000
-#define SRAM_END    (SRAM_START + SRAM_SIZE * 1024)
-#endif /* __CC_ARM */
-
-/*******************************************************************************
   locals
 *******************************************************************************/
 static struct am_memheap __g_system_heap;       /* system heap object */
@@ -48,7 +37,7 @@ static struct am_memheap __g_system_heap;       /* system heap object */
 *******************************************************************************/
 
 /******************************************************************************/
-void am_bsp_system_heap_init (void)
+void am_bsp_system_heap_init ()
 {
 #ifdef  __GNUC__
     extern char __heap_start__;   /* Defined by the linker */
@@ -60,9 +49,12 @@ void am_bsp_system_heap_init (void)
 #elif defined(__CC_ARM)
 
     extern int Image$$RW_IRAM1$$ZI$$Limit;
-
-    static int *heap_start = (int *)&Image$$RW_IRAM1$$ZI$$Limit;
-    static int *heap_end   = (int *)SRAM_END;
+    extern int g_sram_end;
+    //extern int Image$$RW_IRAM1$$Limit;
+	
+    int *heap_start = (int *)&Image$$RW_IRAM1$$ZI$$Limit;
+	  //static int *heap_end   = (int *)&Image$$RW_IRAM1$$Limit;
+    int *heap_end   = (int *)g_sram_end;
 #endif
 
     /* initialize a default heap in the system */

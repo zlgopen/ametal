@@ -221,7 +221,7 @@
 
   <Group>
     <GroupName>bsp_common</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -256,8 +256,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\bsp_common\source\am_bsp_isr_defer.c</PathWithFileName>
-      <FilenameWithoutPath>am_bsp_isr_defer.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\bsp_common\source\am_bsp_delay_timer.c</PathWithFileName>
+      <FilenameWithoutPath>am_bsp_delay_timer.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -268,8 +268,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\bsp_common\source\am_bsp_delay_timer.c</PathWithFileName>
-      <FilenameWithoutPath>am_bsp_delay_timer.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\bsp_common\source\am_bsp_system_heap.c</PathWithFileName>
+      <FilenameWithoutPath>am_bsp_system_heap.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -280,8 +280,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\bsp_common\source\am_bsp_system_heap.c</PathWithFileName>
-      <FilenameWithoutPath>am_bsp_system_heap.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\bsp_common\source\am_bsp_isr_defer_pendsv.c</PathWithFileName>
+      <FilenameWithoutPath>am_bsp_isr_defer_pendsv.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -3157,7 +3157,7 @@
 
   <Group>
     <GroupName>user_config</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>

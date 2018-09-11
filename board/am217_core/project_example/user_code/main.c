@@ -44,7 +44,7 @@ int am_main (void)
      * 注意：同一时刻只能运行一个 demo，即只能使某一行处于取消注释状态
      */
 
-    demo_zlg217_core_std_led_entry();
+//   demo_zlg217_core_std_led_entry();
 //    demo_zlg217_core_std_delay_entry();
 //    demo_zlg217_core_std_adc_entry();
 //    demo_zlg217_core_hw_adc_int_entry();
@@ -99,7 +99,7 @@ int am_main (void)
 //    demo_zlg217_core_std_tim3_pwm_entry();
 //    demo_zlg217_core_std_tim4_pwm_entry();
 //    demo_zlg217_core_hw_tim_timing_entry();
-//    demo_zlg217_core_std_tim1_timing_entry();
+    demo_zlg217_core_std_tim1_timing_entry();
 //    demo_zlg217_core_std_tim2_timing_entry();
 //    demo_zlg217_core_std_tim3_timing_entry();
 //    demo_zlg217_core_std_tim4_timing_entry();

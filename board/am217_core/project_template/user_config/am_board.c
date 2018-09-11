@@ -25,7 +25,7 @@
 #include "am_prj_config.h"
 #include "am_event_input_key.h"
 #include "am_event_category_input.h"
-#include "am_bsp_isr_defer.h"
+#include "am_bsp_isr_defer_pendsv.h"
 #include "am_zlg217.h"
 #include "am_zlg217_inst_init.h"
 #include "am_bsp_system_heap.h"
@@ -40,6 +40,15 @@
 #elif defined(__GNUC__)
 #include "am_bsp_newlib.h"
 #endif
+
+/** \brief SRAM 信息,使用 ARMCC 时需要提供 SRAM 结束地址 */
+#ifdef __CC_ARM
+#define SRAM_SIZE   20
+#define SRAM_START  0x20000000
+#define SRAM_END    (SRAM_START + SRAM_SIZE * 1024)
+
+int g_sram_end = SRAM_END;
+#endif /* __CC_ARM */
 
 /*******************************************************************************
   全局变量
@@ -129,7 +138,7 @@ void am_board_init (void)
 #endif /* (AM_CFG_KEY_GPIO_ENABLE == 1) */
 
 #if (AM_CFG_ISR_DEFER_ENABLE == 1)
-    am_bsp_isr_defer_init();
+    am_bsp_isr_defer_pendsv_init();
 #endif /* (AM_CFG_ISR_DEFER_ENABLE == 1) */
 
     /* 其它内容待添加 */

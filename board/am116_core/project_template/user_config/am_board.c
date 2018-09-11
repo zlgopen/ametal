@@ -43,6 +43,15 @@
 #include "am_bsp_newlib.h"
 #endif
 
+/** \brief SRAM 信息,使用 ARMCC 时需要提供 SRAM结束地址 */
+#ifdef __CC_ARM
+#define SRAM_SIZE   8
+#define SRAM_START  0x20000000
+#define SRAM_END    (SRAM_START + SRAM_SIZE * 1024)
+
+int g_sram_end = SRAM_END;
+#endif /* __CC_ARM */
+
 /*******************************************************************************
   板级初始化
 *******************************************************************************/
