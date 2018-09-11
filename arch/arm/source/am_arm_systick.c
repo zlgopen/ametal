@@ -167,8 +167,8 @@ static int __systick_count_get (void *p_drv, uint8_t chan, void *p_count)
 
 /******************************************************************************/
 static int __systick_rollover_get (void     *p_drv,
-                                       uint8_t   chan,
-                                       void     *p_rollover)
+                                   uint8_t   chan,
+                                   void     *p_rollover)
 {
     am_arm_systick_dev_t *p_dev        = (am_arm_systick_dev_t *)p_drv;
     amhw_arm_systick_t   *p_hw_systick = NULL;

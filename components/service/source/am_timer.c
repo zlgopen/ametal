@@ -73,10 +73,10 @@ static int __prescale_and_count_cal (const am_timer_info_t *p_info,
 
     uint64_t count_max;
 
-    count_max = (uint64_t)1ull << p_info->counter_width;
+    count_max = ( (uint64_t)1ull << (p_info->counter_width) ) - 1;
 
     /* ÎÞÐè·ÖÆµ */
-    if (ticks < count_max) {
+    if (ticks <= count_max) {
 
          *p_prescale = 1;
          *p_count    = ticks;

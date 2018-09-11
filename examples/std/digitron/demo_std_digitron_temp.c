@@ -57,8 +57,8 @@ void demo_std_digitron_temp_entry (int32_t id, am_temp_handle_t temp_handle)
     /* 读取温度，扩大了1000倍,由于只有两个数码管，只显示整数部分 */
     am_temp_read(temp_handle, &temp);
 
-    am_digitron_disp_char_at(id, 0, '0' + (temp / 1000) % 10);       /* 个位数码管显示字符 */
-    am_digitron_disp_char_at(id, 1, '0' + (temp / 1000) / 10 % 10);  /* 十位数码管显示字符 */
+    am_digitron_disp_char_at(id, 1, '0' + (temp / 1000) % 10);       /* 个位数码管显示字符 */
+    am_digitron_disp_char_at(id, 0, '0' + (temp / 1000) / 10 % 10);  /* 十位数码管显示字符 */
 
     while(1) {
 
@@ -67,8 +67,8 @@ void demo_std_digitron_temp_entry (int32_t id, am_temp_handle_t temp_handle)
         /* 读取温度，扩大了 1000 倍,由于只有两个数码管，只显示整数部分 */
         am_temp_read(temp_handle, &temp);
 
-        am_digitron_disp_char_at(id, 0, '0' + (temp / 1000) % 10);       /* 个位数码管显示字符 */
-        am_digitron_disp_char_at(id, 1, '0' + (temp / 1000) / 10 % 10);  /* 十位数码管显示字符 */
+        am_digitron_disp_char_at(id, 1, '0' + (temp / 1000) % 10);       /* 个位数码管显示字符 */
+        am_digitron_disp_char_at(id, 0, '0' + (temp / 1000) / 10 % 10);  /* 十位数码管显示字符 */
     }
 }
 /** [src_std_digitron_temp] */

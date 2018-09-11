@@ -126,9 +126,9 @@ void demo_std_key_digitron_rngbuf_entry (int32_t id)
     am_input_key_handler_register(&key_handler, __input_key_cb, NULL);
 
     am_rngbuf_init(&__g_key_rngbuf, __g_key_buf, sizeof(__g_key_buf));
- 
+	
     AM_FOREVER {
-        
+
         int key_code;
         int key_state;
         

@@ -16,8 +16,7 @@
  *
  * - 实验现象：
  *   1. 调试串口输出定时器的相关信息
- *   2. 定时周期到达(默认为 2Hz)，调试串口会输出 The timing frq is 2Hz;
- *   3. LED0 翻转
+ *   2. 定时周期到达(默认为 10Hz)，调试串口会输出 The timing frq is 10Hz;
  *
  * \par 源代码
  * \snippet demo_std_timer_timing.c src_std_timer_timing
@@ -39,17 +38,14 @@
 #include "am_delay.h"
 #include "am_common.h"
 #include "am_vdebug.h"
-#include "am_led.h"
-
-#define LED0   0
+#include "am_board.h"
 
 /**
  * \brief 定时器回调函数
  */
 static void __tim_timing_callback (void *p_arg)
 {
-    am_led_toggle(LED0);
-    AM_DBG_INFO("The timing frq is 2Hz\r\n");
+    AM_DBG_INFO("The timing frq is 10Hz\r\n");
 }
 
 /**
@@ -71,8 +67,8 @@ void demo_std_timer_timing_entry (am_timer_handle_t handle,
     /* 设置回调函数 */
     am_timer_callback_set(handle, timing_chan, __tim_timing_callback, NULL);
 
-    /* 设置定时时间为 1s （即1000000us） */
-    am_timer_enable_us(handle, timing_chan, 1000000);
+    /* 设置定时时间为 0.1s （即1000000 / 10 us） */
+    am_timer_enable_us(handle, timing_chan, 1000000 / 10);
 
     AM_FOREVER {
         ; /* VOID */

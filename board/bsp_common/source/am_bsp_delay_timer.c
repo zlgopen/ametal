@@ -356,8 +356,8 @@ void am_bsp_delay_timer_init (am_timer_handle_t handle, uint8_t chan)
     /* 若无其它应用使用延时定时器，则设置重载值为最大值 */
     if (__g_delay_timer.max_ticks == 0) {
         __g_delay_timer.max_ticks = (1 << p_info->counter_width) - 1;
-        am_timer_enable(handle, chan, __g_delay_timer.max_ticks);
     }
+    am_timer_enable(handle, chan, __g_delay_timer.max_ticks);
 
     /* 评估一些重要时间时，关闭中断 */
     key = am_int_cpu_lock();
