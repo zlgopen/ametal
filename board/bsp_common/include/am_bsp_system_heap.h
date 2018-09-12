@@ -32,7 +32,7 @@ extern "C" {
 /**
  * \brief ÊÊÅäÆ÷³õÊ¼»¯
  */
-void am_bsp_system_heap_init (void);
+void am_bsp_system_heap_init (void *, void *);
 
 #ifdef __cplusplus
 }

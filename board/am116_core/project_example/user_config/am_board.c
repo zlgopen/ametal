@@ -43,6 +43,14 @@
 #include "am_bsp_newlib.h"
 #endif
 
+/** \brief SRAM 信息,使用 ARMCC 时需要提供 SRAM 结束地址 */
+#ifdef __CC_ARM
+#define SRAM_SIZE   20
+#define SRAM_START  0x20000000
+#define SRAM_END    (SRAM_START + SRAM_SIZE * 1024)
+
+#endif /* __CC_ARM */
+
 /*******************************************************************************
   板级初始化
 *******************************************************************************/
@@ -51,7 +59,23 @@ void am_board_init (void)
 {
     am_uart_handle_t  dbg_handle = NULL;
 
-    am_bsp_system_heap_init();
+#ifdef  __GNUC__
+    extern char __heap_start__;            /* Defined by the linker */
+    extern char __heap_end__;              /* Defined by the linker */
+
+    static char *heap_start = &__heap_start__;
+    static char *heap_end   = &__heap_end__;
+
+#elif defined(__CC_ARM)
+
+    extern int Image$$RW_IRAM1$$ZI$$Limit; /* Defined by the linker */
+	
+    int *heap_start = (int *)&Image$$RW_IRAM1$$ZI$$Limit;
+    int *heap_end   = (int *)SRAM_END;
+#endif
+
+    /* 系统堆栈初始化 */
+    am_bsp_system_heap_init((void *)heap_start, (void *)heap_end);
 
 #ifdef AM_VDEBUG
 #if (AM_CFG_DEBUG_ENABLE == 1)
