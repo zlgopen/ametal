@@ -36,6 +36,15 @@ extern "C" {
  * @{
  */
 
+/**
+ * \brief M0系统异常编号定义
+ */
+#define    INUM_NMI             -14    /**< \brief 不可屏蔽中断 */
+#define    INUM_HARDFAULT       -13    /**< \brief 硬件错误异常 */
+#define    INUM_SVCALL          -5     /**< \brief 系统调用异常 */
+#define    INUM_PENDSV          -2     /**< \brief 可悬起系统调用异常 */
+#define    INUM_SYSTICK         -1     /**< \brief 系统滴答定时器异常 */
+
 enum {
     AM_ARM_NVIC_CORE_M0,      /**< \brief M0 内核 */
     AM_ARM_NVIC_CORE_M0PLUS,  /**< \brief M0+内核 */
