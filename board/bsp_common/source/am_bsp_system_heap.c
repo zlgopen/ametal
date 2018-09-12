@@ -37,26 +37,8 @@ static struct am_memheap __g_system_heap;       /* system heap object */
 *******************************************************************************/
 
 /******************************************************************************/
-void am_bsp_system_heap_init ()
+void am_bsp_system_heap_init (void *heap_start, void *heap_end)
 {
-#ifdef  __GNUC__
-    extern char __heap_start__;   /* Defined by the linker */
-    extern char __heap_end__;     /* Defined by the linker */
-
-    static char *heap_start = &__heap_start__;
-    static char *heap_end   = &__heap_end__;
-
-#elif defined(__CC_ARM)
-
-    extern int Image$$RW_IRAM1$$ZI$$Limit;
-    extern int g_sram_end;
-    //extern int Image$$RW_IRAM1$$Limit;
-	
-    int *heap_start = (int *)&Image$$RW_IRAM1$$ZI$$Limit;
-	  //static int *heap_end   = (int *)&Image$$RW_IRAM1$$Limit;
-    int *heap_end   = (int *)g_sram_end;
-#endif
-
     /* initialize a default heap in the system */
     am_memheap_init(&__g_system_heap,
                     "system_heap",
