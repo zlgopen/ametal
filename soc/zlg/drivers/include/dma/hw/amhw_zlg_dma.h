@@ -37,7 +37,7 @@ extern "C" {
 #include "am_types.h"
 #include "am_common.h"
 #include "soc_cfg.h"
-
+#include "am_vdebug.h"
 /**
  * \addtogroup amhw_zlg_if_dma
  * \copydoc amhw_zlg_dma.h

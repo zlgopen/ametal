@@ -36,7 +36,7 @@
 #include "am_delay.h"
 #include "am_vdebug.h"
 #include "am_bitops.h"
-#include "am_zlg116.h"
+//#include "am_zlg116.h"
 #include "hw/amhw_zlg_tim.h"
 
 /**

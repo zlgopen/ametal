@@ -40,7 +40,6 @@
 #include "am_int.h"
 #include "am_delay.h"
 #include "am_vdebug.h"
-#include "am_zlg116.h"
 #include "hw/amhw_zlg_tim.h"
 
 static volatile am_bool_t g_flag       = AM_FALSE; /**< \brief 捕获标志 */
@@ -69,41 +68,42 @@ static void __zlg_tim_hw_cap_irq_handler (void *p_arg)
 
             /* 得到对应通道的值 */
             value = amhw_zlg_tim_ccr_cap_val_get(p_hw_tim, i - 1);
-            if (g_flag == AM_FALSE) {
+					  if(0 == i - 1) {
+                if (g_flag == AM_FALSE) {
 
-                if (first == AM_TRUE) {
+                    if (first == AM_TRUE) {
 
-                    count16 = value;
+                        count16 = value;
 
-                    first  = AM_FALSE;
+                        first  = AM_FALSE;
 
-                } else {
+                    } else {
 
-                    /* 定时器TIM不是32位计数器时, 避免溢出时数据错误 */
-                    if(count16 < value) {
+                        /* 定时器TIM不是32位计数器时, 避免溢出时数据错误 */
+                        if(count16 < value) {
 
-                        reg_pre = (uint16_t)amhw_zlg_tim_prescale_get(p_hw_tim);
+														reg_pre = (uint16_t)amhw_zlg_tim_prescale_get(p_hw_tim);
 
-                        pre = reg_pre + 1;
+														pre = reg_pre + 1;
 
-                        count_err = value - count16;
+														count_err = value - count16;
 
-                        /* 将两次读取值的差转换成时间 */
-                        time_ns = (uint64_t)1000000000 *
-                                  (uint64_t)count_err *
-                                  pre /
-                                  (uint64_t)__g_clk_rate;
+														/* 将两次读取值的差转换成时间 */
+														time_ns = (uint64_t)1000000000 *
+																			(uint64_t)count_err *
+																			pre /
+																			(uint64_t)__g_clk_rate;
 
-                        g_time_ns = time_ns;
+														g_time_ns = time_ns;
+												}
+
+                        first = AM_TRUE;
+
+                        /* 置标志为真，表明捕获完成 */
+                        g_flag = AM_TRUE;
                     }
-
-                    first = AM_TRUE;
-
-                    /* 置标志为真，表明捕获完成 */
-                    g_flag = AM_TRUE;
                 }
-            }
-
+					  }
             /* 清除通道i标志 */
             amhw_zlg_tim_status_flg_clr(p_hw_tim, (1UL << i));
         }

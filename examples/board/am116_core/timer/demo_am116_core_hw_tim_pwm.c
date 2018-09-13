@@ -56,7 +56,7 @@ void demo_am116_core_hw_tim_pwm_entry (void)
     /* ¸´Î»¶¨Ê±Æ÷ */
     am_zlg116_clk_reset(CLK_TIM2);
 
-    demo_zlg116_hw_tim_pwm_entry(ZLG116_TIM2,
+    demo_zlg_hw_tim_pwm_entry(ZLG116_TIM2,
                                  AMHW_ZLG_TIM_TYPE1,
                                  0,
                                  am_clk_rate_get(CLK_TIM2),

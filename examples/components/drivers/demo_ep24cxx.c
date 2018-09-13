@@ -41,7 +41,7 @@
 #include "am_vdebug.h"
 #include "am_ep24cxx.h"
 
-#define __BUF_SIZE 16 /**< \brief 缓冲区大小 */
+#define __BUF_SIZE  16    /**< \brief 缓冲区大小 */
 
 /**
  * \brief 例程入口

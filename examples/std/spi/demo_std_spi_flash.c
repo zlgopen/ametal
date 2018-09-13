@@ -257,7 +257,7 @@ void demo_std_spi_flash_entry (am_spi_handle_t spi_handle,
     am_spi_mkdev(&g_spi_device,
                   spi_handle,
                   8,
-                  AM_SPI_MODE_1,
+                  AM_SPI_MODE_0,
                   1000000,
                   cs_pin,
                   NULL);

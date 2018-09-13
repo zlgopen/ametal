@@ -95,6 +95,39 @@ extern "C" {
 
 
 /**
+ * \name FM175XX_REG FM175XX拓展寄存器定义
+ * @{
+ */
+#define AM_FM175XX_LPCD_CTRL1            0x01
+#define AM_FM175XX_LCPD_CTRL2            0X02
+#define AM_FM175XX_LPCD_CTRL3            0x03
+#define AM_FM175XX_LPCD_CTRL4            0x04
+#define AM_FM175XX_LPCD_BIAS_CURRENT     0x05
+#define AM_FM175XX_LPCD_ACD_REFERECE     0x06
+#define AM_FM175XX_LPCD_SLEEP_CFG        0x07
+#define AM_FM175XX_LPCD_READY_CFG        0x08
+#define AM_FM175XX_LPCD_DETECT_CFG       0x09
+#define AM_FM175XX_LPCD_VMIDBD_CFG       0x0A
+#define AM_FM175XX_LPCD_AUTO_WUP_CFG     0x0B
+#define AM_FM175XX_LPCD_ADC_RESULT_L     0x0C
+#define AM_FM175XX_LPCD_ADC_RESULT_H     0x0D
+#define AM_FM175XX_LPCD_THRESHOLD_MIN_L  0x0E
+#define AM_FM175XX_LPCD_THRESHOLD_MIN_H  0x0F
+#define AM_FM175XX_LPCD_THRESHOLD_MAX_L  0X10
+#define AM_FM175XX_LPCD_THRESHOLD_MAX_H  0x11
+#define AM_FM175XX_LPCD_IRQ              0x12
+#define AM_FM175XX_LPCD_RFT1             0x13
+#define AM_FM175XX_LPCD_RFT2             0x14
+#define AM_FM175XX_LPCD_RFT3             0x15
+#define AM_FM175XX_LPCD_RFT4             0x16
+#define AM_FM175XX_LPCD_RFT5             0x1B
+#define AM_FM175XX_LPCD_MISC             0x1C
+
+
+/** @} */
+
+
+/**
  * \name Command命令寄存器掩码 (0x01)
  * @{
  */
@@ -283,7 +316,7 @@ extern "C" {
  * \name EX扩展寄存器掩码 (0x0f)
  * @{
  */
- 
+
 #define AM_FM175XX_EX_MODE                 0xc0    /**< \brief 扩展寄存器访问模式 */
 #define AM_FM175XX_EX_MODE_W_ADDR          0x40    /**< \brief 扩展寄存器写入二级地址 */
 #define AM_FM175XX_EX_MODE_R_ADDR          0x80    /**< \brief 扩展寄存器读出二级地址 */
@@ -293,12 +326,11 @@ extern "C" {
 
 /** @} */
 
-
 /**
  * \name Mode寄存器掩码,定义发射和接收模式 (0x11)
  * @{
  */
- 
+
 #define AM_FM175XX_MODE_MSB_FIRST          0x80    /**< \brief CRC协处理器以MSB位优先计算CRC,CRCResult寄存器中断MSB和LSB也按位翻转 */
 #define AM_FM175XX_MODE_TXWAIT_RF          0x20    /**< \brief 读写器的模式时只有RF场建立后发射电路才启动 */
 #define AM_FM175XX_MODE_POLTIN             0x08    /**< \brief TIN引脚的极性,1高电平有效,0低电平有效（FM17510不支持） */
@@ -728,10 +760,26 @@ extern "C" {
 
 
 /**
+ * \name LpcdCtrl扩展寄存器掩码 (0x0f/0x01)
+ * @{
+ */
+#define AM_
+#define AM_FM175XX_LPCD_EN          0x01    /**< \brief 使能 LPCD模式  */
+#define AM_FM175XX_LPCD_RSTN        0x02    /**< \brief LPCD复位   */
+#define AM_FM175XX_LPCD_CALIBRA_EN  0x04    /**< \brief LPCD 计算模式使能   */
+#define AM_FM175XX_LPCD_CMP_1       0x08    /**< \brief 比较次数 1次   */
+#define AM_FM175XX_LPCD_CMP_3       0x13    /**< \brief 比较次数3次    */
+#define AM_FM175XX_LPCD_IE          0x10    /**< \brief 使能LPCD中断  */
+#define AM_FM175XX_CTRL_SET         0x20    /**< \brief LPCD 寄存器位控制设置   */
+#define AM_FM175XX_CTRL_CLR         0x00    /**< \brief LPCD 寄存器位控制清除  */
+/** @} */
+
+
+/**
  * \name HpdCtrl扩展寄存器掩码 (0x0f/0x03)
  * @{
  */
- 
+
 #define AM_FM175XX_EXMODE          0xc0    /**< \brief 扩展寄存器模式字,读回始终0 */
 
 /**
@@ -743,6 +791,15 @@ extern "C" {
 
 /** @} */
 
+/**
+ * \name Lpcd Irq扩展寄存器掩码 (0x0f/0x12)
+ * @{
+ */
+#define AM_FM175XX_LPCD_INT_IDLE          0x00  /**< \brief 无中断*/
+#define AM_FM175XX_LPCD_CARD_IRQ          0x01  /**< \brief 卡进场中断*/
+#define AM_FM175XX_LPCD_CALIB_IRQ         0x04  /**< \brief 调校完成中断 */
+#define AM_FM175XX_LPCD_WUP_IRQ           0x10  /**< \brief 自动唤醒中断 */
+/** @} */
 
 /**
  * \name UseRet扩展寄存器掩码 (0x0f/0x1b)
@@ -755,6 +812,15 @@ extern "C" {
  *        置1 表示在HPD模式或LPCD模式下保存关键寄存器的设置,简化退出时的初始化工作
  */
 #define AM_FM175XX_USERET          0x10
+
+/** @} */
+
+/**
+ * \name LPCD MISC扩展寄存器掩码 (0x0f/0x1c)
+ * @{
+ */
+
+#define AM_FM175XX_LCPD_CALIB_VMID_EN  0x01    /**< \brief LPCD 开启调教模式中的Vmind使能*/
 
 /** @} */
 
