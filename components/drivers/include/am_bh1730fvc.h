@@ -27,13 +27,11 @@
 extern "C" {
 #endif
 
-    
 #include "ametal.h"
-#include "am_board.h"
 #include "am_vdebug.h"
+#include "am_delay.h"
 #include "am_i2c.h"
-#include "am_zlg116_inst_init.h"
-    
+  
 /**
  * \brief BH1730FVC´«¸ÐÆ÷ÅäÖÃ
  */

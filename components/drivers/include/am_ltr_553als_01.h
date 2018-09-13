@@ -31,8 +31,6 @@ extern "C" {
 #include "am_vdebug.h"
 #include "am_delay.h"
 #include "am_i2c.h"
-#include "am_i2c.h"
-#include "am_zlg116_inst_init.h"
     
 /**
  * \addtogroup am_if_ltr_553als.h
