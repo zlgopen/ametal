@@ -33,6 +33,15 @@
 /**
  * \brief AMetal 应用程序入口
  */
+ 
+void demo_ltr_553als_entry(void);
+void demo_bma253_entry(void);
+void demo_bmg160_entry(void);
+void demo_mmc5883ma_entry(void);
+void demo_lsm6dsl_entry(void);
+
+//void demo_am116_core_microport_sc16is740_entry(void);
+
 int am_main (void)
 {
     AM_DBG_INFO("Start up successful!\r\n");
@@ -43,7 +52,7 @@ int am_main (void)
      *
      * 注意：同一时刻只能运行一个 demo，即只能使某一行处于取消注释状态。
      */
-    demo_am116_core_std_led_entry();
+//    demo_am116_core_std_led_entry();
 //    demo_am116_core_std_delay_entry();
 //    demo_am116_core_hw_adc_int_entry();
 //    demo_am116_core_std_adc_entry();
@@ -59,6 +68,11 @@ int am_main (void)
 //    demo_am116_core_hw_i2c_master_poll_entry();
 //    demo_am116_core_hw_i2c_slave_poll_entry();
 //    demo_am116_core_std_i2c_lm75_entry();
+//    demo_bma253_entry();
+//		demo_bmg160_entry();
+//		demo_mmc5883ma_entry();
+//		demo_lsm6dsl_entry();
+//	  demo_ltr_553als_entry ();
 //    demo_am116_core_std_i2c_master_async_entry();
 //    demo_am116_core_std_i2c_master_sync_entry();
 //    demo_am116_core_std_i2c_slave_entry();
@@ -118,6 +132,7 @@ int am_main (void)
 //    demo_am116_core_microport_rtc_entry();
 //    demo_am116_core_microport_rx8025t_entry();
 //    demo_am116_core_microport_usb_entry();
+      demo_am116_core_microport_sc16is740_entry();
 //    demo_am116_core_miniport_digitron_entry();
 //    demo_am116_core_miniport_hc595_digitron_entry();
 //    demo_am116_core_miniport_hc595_digitron_key_entry();
@@ -129,6 +144,7 @@ int am_main (void)
 //    demo_am116_core_miniport_zlg72128_entry();
 //    demo_am116_core_dr_fm175xx_picca_read_id();
 //    demo_am116_core_dr_fm175xx_picca_lpcd_read_id();
+
     while (1) {
     }
 }

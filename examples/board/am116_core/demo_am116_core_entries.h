@@ -99,6 +99,11 @@ void demo_am116_core_hw_i2c_slave_poll_entry (void);
 void demo_am116_core_std_i2c_lm75_entry (void);
 
 /**
+ * \brief I2C 主机从 BMA253 传感器读取三轴加速度值例程，通过标准接口实现
+ */
+void demo_am116_core_std_i2c_bma253_entry (void);
+
+/**
  * \brief I2C 主机访问 EEPROM 例程，通过异步标准接口实现
  */
 void demo_am116_core_std_i2c_master_async_entry (void);
@@ -347,6 +352,11 @@ void demo_am116_core_std_iwdg_entry (void);
  * \brief WWDG 例程，通过标准接口实现
  */
 void demo_am116_core_std_wwdg_entry (void);
+
+/**
+ * \brief MicroPort SC16IS740 例程，通过标准接口实现
+ */
+void demo_am116_core_microport_sc16is740_entry(void);
 
 /**
  * \brief MicroPort DS1302 例程，通过标准接口实现
