@@ -12,51 +12,51 @@
 
 /**
  * \file
- * \brief BMG160 配置文件
- * \sa am_hwconf_bmg160.c
+ * \brief BH1730FVC 配置文件
+ * \sa am_hwconf_bh1730fvc.c
  *
  * \internal
  * \par Modification history
- * - 1.00 18-09-11  wk, first implementation
+ * - 1.00 18-09-12  yrz, first implementation
  * \endinternal
  */
 #include "ametal.h"
-#include "am_bmg160.h"
+#include "am_bh1730fvc.h"
 #include "am_zlg116_inst_init.h"
 #include "zlg116_pin.h"
 
 /**
- * \addtogroup am_if_src_hwconf_bmg160
- * \copydoc am_hwconf_bmg160.c
+ * \addtogroup am_if_src_hwconf_bh1730fvc
+ * \copydoc am_hwconf_bh1730fvc.c
  * @{
  */
- 
- /** \brief 设备信息 */
-am_local am_const am_bmg160_devinfo_t __g_bmg160_devinfo = {
 
-    RANGE_125,                          /**< \brief 角速率范围±125°/s   */
-    BW_230Hz,                           /**< \brief 数据滤波带宽230Hz     */
-    NORMAL_MODE,                        /**< \brief 正常模式              */
-    SLEEP_DUR_2MS                       /**< \brief 配置的睡眠周期为2ms   */
-	
+/** \brief 设备信息 */
+am_local am_const am_bh1730fvc_devinfo_t __g_bh1730fvc_devinfo = {
+    MEAS_CONTINUE,
+    TYPE0_ONLY,
+    ADC_EN,
+    POWER_ON,
+    0xDA,
+    ADC_MODE_X64
 };
 
 /*******************************************************************************
-  BMG160 实例初始化
+  HTS221 实例初始化
 *******************************************************************************/
 
 /** \brief 设备定义 */
-am_local am_bmg160_dev_t __g_bmg160_dev;
+am_local am_bh1730fvc_dev_t __g_bh1730fvc_dev;
 
 /** \brief 实例初始化 */
-am_bmg160_handle_t am_bmg160_inst_init (void)
+am_bh1730fvc_handle_t am_bh1730fvc_inst_init (void)
 {
     /* 获取 I2C 实例句柄 */
-    am_i2c_handle_t i2c_handle =  am_zlg116_i2c1_inst_init();
+    am_i2c_handle_t i2c_handle = am_zlg116_i2c1_inst_init();
 
-    return am_bmg160_init (&__g_bmg160_dev, 
-                       &__g_bmg160_devinfo,
-                               i2c_handle);   
+    return am_bh1730fvc_init (&__g_bh1730fvc_dev, 
+                              &__g_bh1730fvc_devinfo,
+                              i2c_handle);   
 }
 
 /**
@@ -64,4 +64,3 @@ am_bmg160_handle_t am_bmg160_inst_init (void)
  */
 
 /* end of file */
-

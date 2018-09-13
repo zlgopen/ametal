@@ -47,11 +47,11 @@ typedef enum am_bmg160_config {
     /**
      * \brief 可配置的角速率范围     
      */
-    RANGE_2000   =    0X00,             /**< \brief 角速率范围±2000°/s         */
-    RANGE_1000   =    0X01,             /**< \brief 角速率范围±1000°/s         */
-    RANGE_500    =    0X02,             /**< \brief 角速率范围±500°/s          */
-    RANGE_250    =    0X03,             /**< \brief 角速率范围±250°/s          */
-	  RANGE_125    =    0X04,             /**< \brief 角速率范围±125°/s          */
+    RANGE_2000   =    0X00,             /**< \brief 角速率范围±2000°/s      */
+    RANGE_1000   =    0X01,             /**< \brief 角速率范围±1000°/s      */
+    RANGE_500    =    0X02,             /**< \brief 角速率范围±500°/s       */
+    RANGE_250    =    0X03,             /**< \brief 角速率范围±250°/s       */
+    RANGE_125    =    0X04,             /**< \brief 角速率范围±125°/s       */
 
     /**
      * \brief 可配置的滤波带宽    
@@ -190,8 +190,8 @@ int am_bmg160_read_temp (am_bmg160_handle_t handle,int8_t* p_temp);
  * \return BMG160服务操作句柄,如果为 NULL，表明初始化失败
  */
 am_bmg160_handle_t am_bmg160_init (am_bmg160_dev_t *p_dev,
-                                  const am_bmg160_devinfo_t *p_devinfo,  
-																  am_i2c_handle_t i2c_handle);
+                                   const am_bmg160_devinfo_t *p_devinfo,  
+                                   am_i2c_handle_t i2c_handle);
 
 /**
  * \brief BMG160 设备解初始化

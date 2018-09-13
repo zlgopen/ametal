@@ -1,4 +1,4 @@
-﻿/*******************************************************************************
+/*******************************************************************************
 *                                 AMetal
 *                       ----------------------------
 *                       innovating embedded platform
@@ -31,6 +31,7 @@ extern "C" {
 #include "am_ftl.h"
 #include "am_mtd.h"
 #include "am_mx25xx.h"
+#include "am_is25xx.h"    
 #include "am_ep24cxx.h"
 #include "am_fm175xx.h"
 
@@ -53,6 +54,16 @@ void demo_ep24cxx_entry (am_ep24cxx_handle_t ep24cxx_handle, int32_t test_lenth)
  * \return 无
  */
 void demo_mx25xx_entry (am_mx25xx_handle_t mx25xx_handle, int32_t test_lenth);
+
+/**
+ * \brief  IS25XX器件 例程
+ *
+ * \param[in] is25xx_handle  IS25XX 标准服务句柄
+ * \param[in] test_lenth     测试字节数
+ *
+ * \return 无
+ */
+void demo_is25xx_entry (am_is25xx_handle_t is25xx_handle, int32_t test_lenth);
 
 /**
  * \brief FTL 例程

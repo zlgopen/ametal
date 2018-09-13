@@ -42,23 +42,22 @@
  */
 void demo_bmg160_entry (void)
 {  
-	  int8_t temp = 0;
-	  int16_t rate[3] = {0};
-		
-	  am_bmg160_handle_t handle;
-	  handle = am_bmg160_inst_init();
+    int8_t temp = 0;
+    int16_t rate[3] = {0};
+
+    am_bmg160_handle_t handle;
+    handle = am_bmg160_inst_init();
 		
     while (1) {
-			    /** \brief 读取温度 */
-			    am_bmg160_read_temp(handle, &temp);
-			    AM_DBG_INFO("temperature = %d\r\n", temp);
+        /** \brief 读取温度 */
+        am_bmg160_read_temp(handle, &temp);
+        AM_DBG_INFO("temperature = %d\r\n", temp);
 			
-          /* 读取X、Y、Z通道的角速率 */
-		      am_bmg160_read_rate(handle, rate);
-	        AM_DBG_INFO(" x_rate = %d\r\n y_rate = %d\r\n z_rate = %d\r\n",
-			                     rate[0],rate[1],rate[2]);
-			
-          am_mdelay(1000);
+        /* 读取X、Y、Z通道的角速率 */
+        am_bmg160_read_rate(handle, rate);
+        AM_DBG_INFO(" x_rate = %d\r\n y_rate = %d\r\n z_rate = %d\r\n",
+                    rate[0],rate[1],rate[2]);
+        am_mdelay(1000);
     }
 }
 /** [src_bmg160] */

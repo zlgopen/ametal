@@ -50,8 +50,12 @@
 void demo_am116_core_microport_flash_entry (void)
 {
     AM_DBG_INFO("demo am116_core microport flash!\r\n");
+    
+    /* MX25xx flashÀý³Ì */
+//    demo_mx25xx_entry(am_microport_flash_inst_init(), 8);
 
-    demo_mx25xx_entry(am_microport_flash_inst_init(), 8);
+    /* IS25xx flashÀý³Ì */
+    demo_is25xx_entry (am_microport_flash_is25xx_inst_init(), 512);     
 }
 /** [src_am116_core_microport_flash] */
 
