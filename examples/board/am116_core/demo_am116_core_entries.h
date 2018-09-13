@@ -458,7 +458,6 @@ void demo_am116_core_dr_fm175xx_picca_read_id(void);
  */
 void demo_am116_core_dr_fm175xx_picca_lpcd_read_id(void);
 
-
 /**
  * \brief BMA253三轴加速度例程
  */
@@ -504,6 +503,10 @@ void demo_lis3mdl_entry (void);
  */
 void demo_shtc1_entry (void);
 
+/**
+ * \brief BMG160三轴陀螺仪传感器例程
+ */
+void demo_bmg160_entry (void);
 
 #ifdef __cplusplus
 }

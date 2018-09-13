@@ -387,9 +387,6 @@ int am_hts221_read_hum (am_hts221_handle_t handle, uint8_t * hum)
         *hum = __linear_interpolation(&(handle->calib_param_hum), hum_adc);
         
         /* ×ª»»Êª¶ÈÏÞ·ù */   
-        if (*hum < 0) {
-            *hum = 0;
-        }
         if (*hum > 100) {
             *hum = 100; 
         }

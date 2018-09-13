@@ -43,7 +43,7 @@ int am_main (void)
      *
      * 注意：同一时刻只能运行一个 demo，即只能使某一行处于取消注释状态。
      */
-    demo_am116_core_std_led_entry();
+//    demo_am116_core_std_led_entry();
 //    demo_am116_core_std_delay_entry();
 //    demo_am116_core_hw_adc_int_entry();
 //    demo_am116_core_std_adc_entry();
@@ -138,6 +138,7 @@ int am_main (void)
 //    demo_bmp280_entry();  
 //    demo_ltr_553als_entry();
 //    demo_bma253_entry(); 
+//    demo_bmg160_entry();
     while (1) {
     }
 }

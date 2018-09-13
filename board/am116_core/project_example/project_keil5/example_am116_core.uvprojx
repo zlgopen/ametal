@@ -691,6 +691,11 @@
               <FileType>1</FileType>
               <FilePath>..\..\..\..\components\drivers\source\flash\am_is25xx.c</FilePath>
             </File>
+            <File>
+              <FileName>am_bmg160.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\bmg160\am_bmg160.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -1526,6 +1531,11 @@
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\components\drivers\demo_shtc1.c</FilePath>
             </File>
+            <File>
+              <FileName>demo_bmg160.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\components\drivers\demo_bmg160.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -2120,6 +2130,11 @@
               <FileName>am_hwconf_microport_is25xx_flash.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_microport_is25xx_flash.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_bmg160.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_bmg160.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -2810,6 +2825,11 @@
               <FileType>1</FileType>
               <FilePath>..\..\..\..\components\drivers\source\flash\am_is25xx.c</FilePath>
             </File>
+            <File>
+              <FileName>am_bmg160.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\bmg160\am_bmg160.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -3645,6 +3665,11 @@
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\components\drivers\demo_shtc1.c</FilePath>
             </File>
+            <File>
+              <FileName>demo_bmg160.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\components\drivers\demo_bmg160.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -4239,6 +4264,11 @@
               <FileName>am_hwconf_microport_is25xx_flash.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_microport_is25xx_flash.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_bmg160.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_bmg160.c</FilePath>
             </File>
           </Files>
         </Group>
