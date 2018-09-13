@@ -33,7 +33,7 @@
 #include "hw/amhw_zlg_gpio.h"
 #include "hw/amhw_zlg_i2c.h"
 #include "hw/amhw_zlg_pwr.h"
-#include "hw/amhw_zlg116_rcc.h"
+//#include "hw/amhw_zlg116_rcc.h"
 #include "hw/amhw_zlg_spi.h"
 #include "hw/amhw_zlg_dma.h"
 #include "hw/amhw_zlg_syscfg.h"
@@ -72,7 +72,7 @@ void demo_zlg_hw_adc_int_entry (amhw_zlg_adc_t *p_hw_adc,
  *
  * \return 无
  */
-void demo_zlg116_hw_clk_entry (am_clk_id_t *p_clk_id_buf, uint8_t buf_lenth);
+void demo_zlg_hw_clk_entry (am_clk_id_t *p_clk_id_buf, uint8_t buf_lenth);
 
 /**
  * \brief DMA 内存到内存例程，通过驱动层接口实现
@@ -81,7 +81,7 @@ void demo_zlg116_hw_clk_entry (am_clk_id_t *p_clk_id_buf, uint8_t buf_lenth);
  *
  * \return 无
  */
-void demo_zlg_drv_dma_m2m_entry (int32_t dma_chan);
+void demo_zlg_drv_dma_m2m_entry (uint32_t dma_chan);
 
 /**
  * \brief FLASH 例程，通过驱动层接口实现
@@ -204,11 +204,11 @@ void demo_zlg_hw_tim_cmp_toggle_entry (amhw_zlg_tim_t      *p_hw_tim,
  *
  * \return 无
  */
-void demo_zlg116_hw_tim_pwm_entry (amhw_zlg_tim_t     *p_hw_tim,
-                                   amhw_zlg_tim_type_t type,
-                                   uint32_t            chan,
-                                   uint32_t            clk_rate,
-                                   int32_t             inum);
+void demo_zlg_hw_tim_pwm_entry (amhw_zlg_tim_t     *p_hw_tim,
+                                amhw_zlg_tim_type_t type,
+                                uint32_t            chan,
+                                uint32_t            clk_rate,
+                                int32_t             inum);
 
 /**
  * \brief 定时器带死区时间的互补 PWM 输出例程，通过 HW 层接口实现
@@ -245,10 +245,15 @@ void demo_zlg_hw_tim_timing_entry (amhw_zlg_tim_t     *p_hw_tim,
  *
  * \param[in] p_hw_uart 指向 UART 外设寄存器块的指针
  * \param[in] clk_rate  UART 时钟源频率
+ * \param[in] uart_base UART 基地址
+ * \param[in] inum_uart UART 中断号
  *
  * \return 无
  */
-void demo_zlg_hw_uart_int_entry (amhw_zlg_uart_t *p_hw_uart, uint32_t clk_rate);
+void demo_zlg_hw_uart_int_entry (amhw_zlg_uart_t *p_hw_uart, 
+                                 uint32_t         clk_rate,
+                                 unsigned long    uart_base,
+                                 unsigned char    inum_uart);
 
 /**
  * \brief UART 轮询方式例程，通过 HW 层接口实现

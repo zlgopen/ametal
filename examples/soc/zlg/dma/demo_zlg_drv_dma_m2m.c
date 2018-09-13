@@ -36,7 +36,7 @@
 #include "ametal.h"
 #include "am_delay.h"
 #include "am_vdebug.h"
-#include "am_zlg116.h"
+//#include "am_zlg116.h"
 #include "am_zlg_dma.h"
 #include "hw/amhw_zlg_dma.h"
 
@@ -63,7 +63,7 @@ static void dma_isr (void *p_arg , uint32_t flag)
  * \retval  AM_OK    传输成功
  * \retval  AM_ERROR 传输失败
  */
-static int dma_m2m_test (int32_t dma_chan)
+static int dma_m2m_test (uint8_t dma_chan)
 {
     uint32_t flags;
     uint32_t i;
@@ -114,7 +114,7 @@ static int dma_m2m_test (int32_t dma_chan)
 /**
  * \brief 例程入口
  */
-void demo_zlg_drv_dma_m2m_entry (int32_t dma_chan)
+void demo_zlg_drv_dma_m2m_entry (uint32_t dma_chan)
 {
     if (dma_m2m_test(dma_chan) == AM_OK){
         am_kprintf("transfer success\n");

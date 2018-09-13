@@ -56,8 +56,12 @@ void demo_std_gpio_entry (int input_pin, int output_pin)
 
          dir_input = am_gpio_get(input_pin);
          if (dir_input == 0) {
+
+             /*  Ïû³ý¶¶¶¯ */
+             while (am_gpio_get(input_pin) == 0);
+            
+             /* ·­×ªoutput_pin */
              am_gpio_toggle(output_pin);
-             am_mdelay(400);
          }
     }
 }

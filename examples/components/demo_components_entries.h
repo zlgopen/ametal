@@ -81,6 +81,12 @@ void demo_mtd_entry (am_mtd_handle_t mtd_handle, int32_t test_lenth);
  */
 void demo_fm175xx_picca_read_id (am_fm175xx_handle_t handle);
 
+/**
+ * \brief FM175XX LPCD模式例程
+ * \param[in] handle  FM175XX 服务句柄
+ * \return 无
+ */
+void demo_fm175xx_picca_lpcd_mode (am_fm175xx_handle_t handle);
 #ifdef __cplusplus
 }
 #endif

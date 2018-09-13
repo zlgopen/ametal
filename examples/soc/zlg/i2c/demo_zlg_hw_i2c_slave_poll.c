@@ -39,9 +39,7 @@
 /** [src_zlg116_hw_i2c_slave_poll] */
 #include "ametal.h"
 #include "am_vdebug.h"
-#include "am_zlg116.h"
 #include "hw/amhw_zlg_i2c.h"
-#include "hw/amhw_zlg116_rcc.h"
 
 /*******************************************************************************
   ∫Í∂®“Â

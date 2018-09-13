@@ -41,7 +41,7 @@
 /** [src_zlg_hw_uart_tx_dma] */
 #include "ametal.h"
 #include "am_int.h"
-#include "am_zlg116.h"
+//#include "am_zlg116.h"
 #include "am_zlg_dma.h"
 #include "hw/amhw_zlg_uart.h"
 

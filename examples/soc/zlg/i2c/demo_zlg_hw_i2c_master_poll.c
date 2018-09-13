@@ -40,8 +40,6 @@
 #include "ametal.h"
 #include "am_delay.h"
 #include "am_vdebug.h"
-#include "am_zlg116.h"
-#include "am_zlg116_clk.h"
 #include "hw/amhw_zlg_i2c.h"
 
 /*******************************************************************************
@@ -53,9 +51,9 @@
 #define I2C_M_RD      0x0002u          /**< \brief 读操作 */
 #define I2C_M_NOSTART 0x0010u          /**< \brief 无需重新启动标识 */
 
-#define I2C_SPEED     40000            /**< \brief I2C 控制器速度参数定义 */
-#define EEPROM_ADDR   0x50             /**< \brief EEPROM 设备地址定义 */
-#define TEST_LEN      8                /**< \brief 操作 EEPROM 的页大小 */
+#define I2C_SPEED     400000            /**< \brief I2C 控制器速度参数定义 */
+#define EEPROM_ADDR   (0xa0 >> 1)       /**< \brief EEPROM 设备地址定义 */
+#define TEST_LEN      0X08                 /**< \brief 操作 EEPROM 的页大小 */
 
 /**
  * \brief I2C 传输结构体定义，主要用于 I2C 轮询模式下
@@ -128,10 +126,10 @@ static void __i2c_mst_start (amhw_zlg_i2c_t *p_hw_i2c,
         amhw_zlg_i2c_con_clear (p_hw_i2c, AMHW_ZLG_I2C_7BITADDR_MASTER);
 
         amhw_zlg_i2c_enable(p_hw_i2c);
+		}
 
-        if (p_trans->flags & I2C_M_RD) {
-            amhw_zlg_i2c_dat_write(p_hw_i2c, 0x0100);
-        }
+    if (p_trans->flags & I2C_M_RD) {
+        amhw_zlg_i2c_dat_write(p_hw_i2c, 0x0100);
     }
 }
 
@@ -158,10 +156,10 @@ static int __i2c_mst_send (amhw_zlg_i2c_t *p_hw_i2c,
         while (!(p_hw_i2c->ic_status & AMHW_ZLG_STATUS_FLAG_TFNF));
         if (i == (p_trans->length - 1) && stop) {
             amhw_zlg_i2c_dat_write(p_hw_i2c,
-                                      0x200 | ((uint8_t *)(p_trans->p_buf))[i]);
+                                   0x200 | ((uint8_t *)(p_trans->p_buf))[i]);
         } else {
             amhw_zlg_i2c_dat_write(p_hw_i2c,
-                                      ((uint8_t *)(p_trans->p_buf))[i]);
+                                  ((uint8_t *)(p_trans->p_buf))[i]);
         }
     }
 
@@ -257,11 +255,11 @@ void demo_zlg_hw_i2c_master_poll_entry (amhw_zlg_i2c_t *p_hw_i2c,
                                         uint32_t        clk_rate)
 {
     i2c_transfer_t *p_trans              = &__g_i2c1_transfer;
-    uint8_t         eeprom_buf[TEST_LEN] = {0};
+    uint8_t         eeprom_buf[16]       = {0};
     uint8_t         test_addr[2]         = {0x00};
     uint8_t         i;
 
-    __i2c_mst_init(p_hw_i2c, I2C_SPEED, clk_rate); /* I2C 主机初始化配置 */
+    __i2c_mst_init(p_hw_i2c, I2C_SPEED, clk_rate);   /* I2C 主机初始化配置 */
 
      /* 设置 transfer 结构体参数，写入地址 */
     __i2c_mktrans(p_trans,
@@ -287,12 +285,12 @@ void demo_zlg_hw_i2c_master_poll_entry (amhw_zlg_i2c_t *p_hw_i2c,
     __i2c_mst_start(p_hw_i2c, p_trans);
     __i2c_mst_send(p_hw_i2c, p_trans, AM_TRUE);
 
-    am_mdelay(100);
+    am_mdelay(10);
 
     /* 设置 transfer 结构体参数，写入地址 */
     __i2c_mktrans(p_trans,
                   EEPROM_ADDR,
-                  (I2C_M_7BIT | I2C_M_WR),
+                  (I2C_M_7BIT | I2C_M_WR | I2C_M_NOSTART),
                   (uint8_t *)test_addr,
                   1);
 
