@@ -641,6 +641,56 @@
               <FileType>4</FileType>
               <FilePath>..\..\..\..\components\drivers\source\fm175xx\am_fm175xx_zlg116.lib</FilePath>
             </File>
+            <File>
+              <FileName>am_bh1730fvc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\bh1730fvc\am_bh1730fvc.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_bma253.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\bma253\am_bma253.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_bme280.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\bme280\am_bme280.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_bmp280.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\bmp280\am_bmp280.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hts221.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\hts221\am_hts221.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_lis3mdl.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\lis3mdl\am_lis3mdl.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_lps22hb.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\lps22hb\am_lps22hb.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_ltr_553als_01.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\ltr_553als_01\am_ltr_553als_01.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_shtc1.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\shtc1\am_shtc1.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_is25xx.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\flash\am_is25xx.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -1426,6 +1476,56 @@
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\components\drivers\demo_fm175xx_picca_lpcd_read_id.c</FilePath>
             </File>
+            <File>
+              <FileName>demo_bh1730fvc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\components\drivers\demo_bh1730fvc.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_bma253.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\components\drivers\demo_bma253.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_bme280.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\components\drivers\demo_bme280.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_bmp280.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\components\drivers\demo_bmp280.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_hts221.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\components\drivers\demo_hts221.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_is25xx.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\components\drivers\demo_is25xx.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_lis3mdl.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\components\drivers\demo_lis3mdl.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_lps22hb.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\components\drivers\demo_lps22hb.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_ltr_553als_01.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\components\drivers\demo_ltr_553als_01.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_shtc1.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\components\drivers\demo_shtc1.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -1970,6 +2070,56 @@
               <FileName>am_hwconf_fm175xx.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_fm175xx.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_bh1730fvc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_bh1730fvc.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_bma253.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_bma253.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_bme280.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_bme280.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_bmp280.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_bmp280.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_hts221.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_hts221.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_lis3mdl.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_lis3mdl.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_lps22hb.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_lps22hb.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_ltr_553als.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_ltr_553als.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_shtc1.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_shtc1.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_microport_is25xx_flash.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_microport_is25xx_flash.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -2610,6 +2760,56 @@
               <FileType>4</FileType>
               <FilePath>..\..\..\..\components\drivers\source\fm175xx\am_fm175xx_zlg116.lib</FilePath>
             </File>
+            <File>
+              <FileName>am_bh1730fvc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\bh1730fvc\am_bh1730fvc.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_bma253.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\bma253\am_bma253.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_bme280.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\bme280\am_bme280.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_bmp280.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\bmp280\am_bmp280.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hts221.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\hts221\am_hts221.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_lis3mdl.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\lis3mdl\am_lis3mdl.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_lps22hb.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\lps22hb\am_lps22hb.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_ltr_553als_01.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\ltr_553als_01\am_ltr_553als_01.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_shtc1.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\shtc1\am_shtc1.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_is25xx.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\flash\am_is25xx.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -3395,6 +3595,56 @@
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\components\drivers\demo_fm175xx_picca_lpcd_read_id.c</FilePath>
             </File>
+            <File>
+              <FileName>demo_bh1730fvc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\components\drivers\demo_bh1730fvc.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_bma253.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\components\drivers\demo_bma253.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_bme280.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\components\drivers\demo_bme280.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_bmp280.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\components\drivers\demo_bmp280.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_hts221.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\components\drivers\demo_hts221.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_is25xx.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\components\drivers\demo_is25xx.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_lis3mdl.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\components\drivers\demo_lis3mdl.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_lps22hb.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\components\drivers\demo_lps22hb.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_ltr_553als_01.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\components\drivers\demo_ltr_553als_01.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_shtc1.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\components\drivers\demo_shtc1.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -3939,6 +4189,56 @@
               <FileName>am_hwconf_fm175xx.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_fm175xx.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_bh1730fvc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_bh1730fvc.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_bma253.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_bma253.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_bme280.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_bme280.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_bmp280.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_bmp280.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_hts221.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_hts221.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_lis3mdl.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_lis3mdl.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_lps22hb.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_lps22hb.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_ltr_553als.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_ltr_553als.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_shtc1.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_shtc1.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_microport_is25xx_flash.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_microport_is25xx_flash.c</FilePath>
             </File>
           </Files>
         </Group>
