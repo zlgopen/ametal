@@ -5,25 +5,66 @@ AMetal 版本记录  （按照该模式逐上添加记录）
 
 **************************************************
 V1.0.02  Date  : 2018-09-13   Author: wk
+
 1、添加XXX传感器驱动代码
 
 **************************************************
 **************************************************
 V1.0.01  Date  : 2018-09-13   Author: yrz
-1、修改XXX传感器配置文件
+
+1、修改BMA253传感器头文件，删除了与芯片相关的头文件
+2、修改LTR_553ALS_01传感器头文件，删除了与芯片相关的头文件
+3、修改BH1730FVC传感器头文件，删除了与芯片相关的头文件
+4、修改BMP280传感器头文件，删除了与芯片相关的头文件
+5、修改LPS22HB传感器头文件，删除了与芯片相关的头文件
+6、修改BME280传感器头文件，删除了与芯片相关的头文件
+7、修改LIS3MDL传感器头文件，删除了与芯片相关的头文件
+8、修改SHTC1传感器头文件，删除了与芯片相关的头文件 
+9、修改HTS221传感器头文件，删除了与芯片相关的头文件
 
 **************************************************
 **************************************************
 V1.0.00  Date  : 2018-09-13   Author: yrz
-1.add BH1730FVC driver and demo
-2.add BMA253 driver and demo
-3.add BME280 driver and demo
-4.add BMP280 driver and demo
-5.add HTS221 driver and demo
-6.add LPS22HB driver and demo
-7.add LTR_553ALS_01 driver and demo
-8.add SHT20 driver and demo
-9.add SHTC1 driver and demo
-10.add SPI FLASH IS25XX driver and demo
+
+1.add BMA253 driver and demo, contains 5 files: 
+am_bma253.c, am_bma253.h, demo_bma253.c,
+am_hwconf_bma253.c, am_hwconf_bma253.h 
+
+2.add LTR_553ALS_01 driver and demo, contains 5 files: 
+am_LTR_553ALS_01.c, am_LTR_553ALS_01.h, demo_LTR_553ALS_01.c,
+am_hwconf_LTR_553ALS_01.c, am_hwconf_LTR_553ALS_01.h
+
+3.add BH1730FVC driver and demo, contains 5 files: 
+am_bh1730fvc.c, am_bh1730fvc.h, demo_bh1730fvc.c,
+am_hwconf_bh1730fvc.c, am_hwconf_bh1730fvc.h
+
+4.add BMP280 driver and demo, contains 5 files: 
+am_bmp280.c, am_bmp280.h, demo_bmp280.c,
+am_hwconf_bmp280.c, am_hwconf_bmp280.h
+
+5.add LPS22HB driver and demo, contains 5 files: 
+am_lps22hb.c, am_lps22hb.h, demo_lps22hb.c,
+am_hwconf_lps22hb.c, am_hwconf_lps22hb.h
+
+6.add BME280 driver and demo, contains 5 files: 
+am_bme280.c, am_bme280.h, demo_bme280.c,
+am_hwconf_bme280.c, am_hwconf_bme280.h
+
+7.add LIS3MDL driver and demo, contains 5 files: 
+am_lis3mdl.c, am_lis3mdl.h, demo_lis3mdl.c,
+am_hwconf_lis3mdl.c, am_hwconf_lis3mdl.h
+
+8.add SHTC1 driver and demo, contains 5 files: 
+am_shtc1.c, am_shtc1.h, demo_shtc1.c,
+am_hwconf_shtc1.c, am_hwconf_shtc1.h
+
+9.add HTS221 driver and demo, contains 5 files: 
+am_hts221.c, am_hts221.h, demo_hts221.c,
+am_hwconf_hts221.c, am_hwconf_hts221.h
+
+10.add SPI FLASH IS25XX driver and demo,contains 4 files: 
+am_is25xx.c, am_is25xx.h,
+am_hwconf_microport_is25xx_flash.c,
+am_hwconf_microport_is25xx_flash.h
 
 **************************************************
