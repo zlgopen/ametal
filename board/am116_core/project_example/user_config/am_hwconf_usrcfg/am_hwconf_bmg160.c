@@ -34,10 +34,17 @@
  /** \brief 设备信息 */
 am_local am_const am_bmg160_devinfo_t __g_bmg160_devinfo = {
 
+<<<<<<< HEAD
     RANGE_125,                          /**< \brief 角速率范围±125°/s */
     BW_230Hz,                           /**< \brief 数据滤波带宽230Hz */
     NORMAL_MODE,                        /**< \brief 正常模式 */
     SLEEP_DUR_2MS                       /**< \brief  配置的睡眠周期为2ms */
+=======
+    RANGE_125,                          /**< \brief 角速率范围±125°/s   */
+    BW_230Hz,                           /**< \brief 数据滤波带宽230Hz     */
+    NORMAL_MODE,                        /**< \brief 正常模式              */
+    SLEEP_DUR_2MS                       /**< \brief 配置的睡眠周期为2ms   */
+>>>>>>> 0c0e23097eb6a99906230e9fed9ffd11f21555a6
 	
 };
 

@@ -17,13 +17,27 @@
  *
  * \internal
  * \par Modification history
- * - 1.00 15-12-03  lnk, first implementation
+ * - 1.00 18-09-07  wk, first implementation
  * \endinternal
  */
 
 #include "amhw_zlg_adc.h"
 
+/**
+ * \brief LSM6DSL例程，通过驱动层接口实现
+ */
+void demo_lsm6dsl_entry(void);
 
+/**
+ * \brief MMC5883MA例程，通过驱动层接口实现
+ */
+void demo_mmc5883ma_entry(void);
+
+/**
+ * \brief BMG160例程，通过驱动层接口实现
+ */
+void demo_bmg160_entry (void);
+	
 /**
  * \brief ADC INT 例程，通过 HW 层接口实现
  */
@@ -108,6 +122,12 @@ void demo_zlg217_core_hw_i2c_slave_poll_entry (void);
  * \brief I2C 主机从 LM75 传感器读取温度值例程，通过标准接口实现
  */
 void demo_zlg217_core_std_i2c_lm75_entry (void);
+
+/**
+ * \brief I2C 主机从 BMA253 传感器读取加速度值例程，通过标准接口实现
+ */
+void demo_zlg217_core_std_i2c_bma253_entry (void);
+
 
 /**
  * \brief I2C 主机访问 EEPROM 例程，通过异步标准接口实现

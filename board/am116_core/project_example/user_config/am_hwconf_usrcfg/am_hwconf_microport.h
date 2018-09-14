@@ -31,6 +31,7 @@
 #include "am_mtd.h"
 #include "am_ftl.h"
 #include "am_mx25xx.h"
+#include "am_is25xx.h"
 #include "am_ep24cxx.h"
 
 #ifdef __cplusplus
@@ -163,6 +164,15 @@ int am_microport_rx8025t_time_inst_init (void);
  * \return MX25XX 标准服务句柄，若为NULL，表明初始化失败
  */
 am_mx25xx_handle_t am_microport_flash_inst_init (void);
+
+/**
+ * \brief MicroPort FLASH(IS25xx) 实例初始化
+ *
+ * \param 无
+ *
+ * \return IS25XX 标准服务句柄，若为NULL，表明初始化失败
+ */
+am_is25xx_handle_t am_microport_flash_is25xx_inst_init (void);
 
 /**
  * \brief MicroPort FLASH(MX25xx) 实例初始化(使用 MTD 标准接口)

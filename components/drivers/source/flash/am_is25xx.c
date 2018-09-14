@@ -14,13 +14,13 @@
  * \brief ISSI公司的IS25系列SPI FLASH芯片驱动 
  * 
  * 已知兼容芯片： 
- *   - IS25LP128
- *   - IS25LP064
- *   - IS25LP032
+ *   - IS25WP032
+ *   - IS25WP064 
+ *   - IS25WP0128
  * 
  * \internal
  * \par Modification history
- * - 1.00 18-09-05  wk, first implementation.
+ * - 1.00 18-09-03  yrz, first implementation.
  * \endinternal
  */
 
@@ -80,11 +80,6 @@
 #define __IS25XX_CMD_BE         0x52   /**< \brief 块擦除（或 0xD8）     */
 #define __IS25XX_CMD_CE         0x60   /**< \brief 芯片擦除（或 0xC7）   */
 #define __IS25XX_CMD_PP         0x02   /**< \brief 编写页数据            */
-
-#define __IS25XX_CMD_RDSCUR     0x2B   /**< \brief 读安全寄存器          */
-#define __IS25XX_CMD_WRSCUR     0x2F   /**< \brief 写安全寄存器          */
-#define __IS25XX_CMD_ENSO       0xB1   /**< \brief 进入安全区域          */
-#define __IS25XX_CMD_EXSO       0xC1   /**< \brief 退出安全区域          */
 
 #define __IS25XX_CMD_DP         0xB9   /**< \brief 进入深度掉电模式      */
 #define __IS25XX_CMD_RDP        0xAB   /**< \brief 退出深度掉电模式      */
@@ -158,40 +153,12 @@ static int __is25xx_write_dis (am_is25xx_dev_t *p_dev)
 }
 
 /******************************************************************************/
-static int __is25xx_secured_reg_read (am_is25xx_dev_t  *p_dev,
-                                      uint8_t          *p_val)
-{
- 
-    uint8_t cmd = __IS25XX_CMD_RDSCUR;
- 
-    return am_spi_write_then_write(&(p_dev->spi_dev),
-                                   &cmd,
-                                   1,
-                                   p_val,
-                                   1);
-}
-
-/******************************************************************************/
-static int __is25xx_secured_reg_write (am_is25xx_dev_t *p_dev,
-                                       uint8_t          val)
-{
- 
-    uint8_t cmd = __IS25XX_CMD_WRSCUR;
- 
-    return am_spi_write_then_write(&(p_dev->spi_dev),
-                                   &cmd,
-                                   1,
-                                   &val,
-                                   1);
-}
-
-/******************************************************************************/
 
 /* 读取FLASH 的 JEDEC_ID */
 static int __is25xx_id_read (am_is25xx_dev_t *p_dev, uint32_t *p_id)
 {
 
-    uint8_t cmd = __IS25XX_CMD_RDID;
+    uint8_t cmd = __IS25XX_CMD_RDID;  
 
     *p_id = 0;
 
@@ -266,7 +233,7 @@ static int __is25xx_read (am_is25xx_dev_t   *p_dev,
 }
 
 /******************************************************************************/
-/* program ep24cxx */
+/* program is25xx */
 static int __is25xx_program_data (am_is25xx_dev_t        *p_dev,
                                   uint32_t                 addr,
                                   uint8_t                 *p_buf,
@@ -275,7 +242,7 @@ static int __is25xx_program_data (am_is25xx_dev_t        *p_dev,
 {
     int ret;
 
-    /* read/write eeprom */
+    /* read/write flash */
     ret = (is_read == AM_TRUE) ?
              __is25xx_read(p_dev, addr, p_buf, len)
            : __is25xx_page_write(p_dev, addr, p_buf, len);
@@ -299,7 +266,6 @@ static int __is25xx_rw (am_is25xx_dev_t        *p_dev,
     uint32_t page    = __IS25XX_PAGE_SIZE_GET(p_devinfo->type);
     uint32_t len_tmp;
     int      ret;
-	  size_t   nbytes  = 0;
 
     if (p_dev == NULL) {
         return -AM_EINVAL;
@@ -318,25 +284,18 @@ static int __is25xx_rw (am_is25xx_dev_t        *p_dev,
     /* adjust len that will not beyond this chip's capacity */
     if ((start + len) > maxsize) {
         len = maxsize - start;
-			
     }
 
     /* if page == 0 or read op. , this means there is no page limit */
     if ((is_read  == AM_TRUE) || (page == 0)) {
         page = maxsize;
-						
     }
 
     /* write the unaligned data of the start */
     len_tmp =  AM_ROUND_DOWN(start + page, page) - start;
     if (len < len_tmp) {
         len_tmp = len;
-			
-	
     }
-
-    /* the nbytes for return */
-    nbytes = len;
 
     /* lock the device */
 
@@ -348,13 +307,11 @@ static int __is25xx_rw (am_is25xx_dev_t        *p_dev,
     }
 
     len   -= len_tmp;
-	
     start += len_tmp;
-	
     p_buf += len_tmp;
-   
+
     /* write the rest data */
-   
+
     while (len) {
         len_tmp = len > page ? page : len;
         ret = __is25xx_program_data(p_dev, start, p_buf, len_tmp, is_read);
@@ -368,7 +325,6 @@ static int __is25xx_rw (am_is25xx_dev_t        *p_dev,
         p_buf += len_tmp;
     }
 
-		
     return AM_OK;
 }
 
@@ -402,7 +358,7 @@ static int __is25xx_sector_erase (am_is25xx_handle_t handle, uint32_t addr)
     }
 
     /* 等待擦除完成 */
-    return 0;// __is25xx_wait_busy_and_wel(handle);
+    return 0;
 }
 
 /******************************************************************************/
@@ -501,7 +457,7 @@ am_is25xx_handle_t am_is25xx_init (am_is25xx_dev_t           *p_dev,
     if (__is25xx_id_read(p_dev, &id) != AM_OK) {
         return NULL;
     }
-
+    
     if (id != p_devinfo->type.id) {
 
         AM_DBG_INFO("The id is %x, not your choice chip(id=%x)",
@@ -533,20 +489,19 @@ int am_is25xx_erase (am_is25xx_handle_t  handle,
     if (handle == NULL) {
         return -AM_EINVAL;
     }
-
+    
     sector_size = __IS25XX_SECTOR_SIZE_GET(handle->p_devinfo->type);
     block_size  = __IS25XX_BLCOK_SIZE_GET(handle->p_devinfo->type);
     chip_size   = __IS25XX_CHIP_SIZE_GET(handle->p_devinfo->type);
-
+       
     /* Start address must align on sector boundary */
     if (addr & (sector_size - 1)) {
         return -AM_EINVAL;
     }
-		
-    /* Length must align on sector boundary */
-		len = ((len / sector_size) + (1 && (len % sector_size))) * sector_size;
-   
-
+    
+    /* calculate erase sector num */
+    len = ((len / sector_size) + (1 && (len % sector_size))) * sector_size; 
+    
     /* Do not allow past end of device */
     if (addr + len > chip_size) {
         return -AM_EINVAL;
@@ -800,8 +755,6 @@ int am_is25xx_id_read (am_is25xx_handle_t handle, uint32_t *p_id)
 {
  
     uint8_t cmd = __IS25XX_CMD_RDID;
-
-   // __is25xx_wait_busy(handle);
     
     *p_id = 0;
     
@@ -844,70 +797,5 @@ int am_is25xx_id_rems_read (am_is25xx_handle_t  handle,
     return AM_OK;
 }
 
-/******************************************************************************/
-
-/* 进入区域后，就可以使用正常的数据读写命令操作512bit的 OTP */
-int am_is25xx_secured_otp_enter (am_is25xx_handle_t handle)
-{
- 
-    uint8_t cmd = __IS25XX_CMD_ENSO;
- 
-    return am_spi_write_then_write(&(handle->spi_dev),
-                                   &cmd,
-                                   1,
-                                   NULL,
-                                   0);
-}
-
-/******************************************************************************/
-
-int am_is25xx_secured_otp_exit (am_is25xx_handle_t handle)
-{
- 
-    uint8_t cmd = __IS25XX_CMD_EXSO;
- 
-    return am_spi_write_then_write(&(handle->spi_dev),
-                                   &cmd,
-                                   1,
-                                   NULL,
-                                   0);
-}
-
-/******************************************************************************/
-
-/* 检查是否锁定，锁定后无法修改OTP的值 */
-int am_is25xx_secured_lockdown_check (am_is25xx_dev_t *p_dev,
-                                      am_bool_t       *p_lockdown)
-{
-    uint8_t reg;
-    int ret;
-    
-    ret = __is25xx_secured_reg_read(p_dev, &reg);
-    
-    if (ret != AM_OK) {
-        return ret;
-    }
-    
-    return (am_bool_t)((reg & 0x03) != 0);
-}
-
-/******************************************************************************/
-
-/* 锁定OTP区域 */
-int am_is25xx_secured_lockdown (am_is25xx_handle_t handle)
-{
-    uint8_t reg;
-    int     ret;
-    
-    ret = __is25xx_secured_reg_read(handle, &reg);
-    
-    if (ret != AM_OK) {
-        return ret;
-    }
-    
-    reg |= 0x02;            /* 锁定区域  */
-    
-    return __is25xx_secured_reg_write(handle, reg);
-}
-
 /* end of file */
+

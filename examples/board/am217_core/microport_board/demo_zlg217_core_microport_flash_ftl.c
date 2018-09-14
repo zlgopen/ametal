@@ -62,7 +62,7 @@ void demo_zlg217_core_microport_flash_ftl_entry (void)
 {
     AM_DBG_INFO("demo am217_core microport flash ftl!\r\n");
 
-    demo_ftl_entry(am_microport_flash_ftl_inst_init(), 8);
+    //demo_ftl_entry(am_microport_flash_ftl_inst_init(), 8);
 }
 /** [src_microport_flash_ftl] */
 

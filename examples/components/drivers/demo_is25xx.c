@@ -21,7 +21,7 @@
  *
  * \internal
  * \par Modification history
- * - 1.00  18-09-05  wk, first implementation
+ * - 1.00  18-09-03  yrz, first implementation
  * \endinternal
  */
 
@@ -36,7 +36,7 @@
 #include "am_is25xx.h"
 #include "am_vdebug.h"
 
-#define __BUF_SIZE 130 /**< \brief 缓冲区大小 */
+#define __IS25_BUF_SIZE 512 /**< \brief 缓冲区大小 */
 
 /**
  * \brief 例程入口
@@ -44,33 +44,38 @@
 void demo_is25xx_entry (am_is25xx_handle_t is25xx_handle, int32_t test_lenth)
 {
     int     ret;
-    uint8_t i;
-    uint8_t wr_buf[__BUF_SIZE] = {0}; /* 写数据缓存定义 */
-    uint8_t rd_buf[__BUF_SIZE] = {0}; /* 读数据缓存定义 */
+    uint16_t i;
+    uint8_t wr_buf[__IS25_BUF_SIZE] = {0}; /* 写数据缓存定义 */
+    uint8_t rd_buf[__IS25_BUF_SIZE] = {0}; /* 读数据缓存定义 */
 
-    if (__BUF_SIZE < test_lenth) {
-        test_lenth = __BUF_SIZE;
+    if (__IS25_BUF_SIZE < test_lenth) {
+        test_lenth = __IS25_BUF_SIZE;
     }
 
     /* 填充发送缓冲区 */
     for (i = 0;i < test_lenth; i++) {
         wr_buf[i] = i;
+        rd_buf[i] = 0;
     }
 
     /* 擦除扇区 */
-    am_is25xx_erase(is25xx_handle, 0x00F000, test_lenth);
-
+    ret = am_is25xx_erase(is25xx_handle, 0x001000, test_lenth);
+    if (ret != AM_OK) {
+        AM_DBG_INFO("am_is25xx_erase error(id: %d).\r\n", ret);
+        return;
+    }
+    
     /* 写数据 */
-    ret = am_is25xx_write(is25xx_handle, 0x00F000, &wr_buf[0], test_lenth);
+    ret = am_is25xx_write(is25xx_handle, 0x001000, &wr_buf[0], test_lenth);
 
     if (ret != AM_OK) {
         AM_DBG_INFO("am_is25xx_write error(id: %d).\r\n", ret);
         return;
     }
     am_mdelay(5);
-
+    
     /* 读数据 */
-    ret = am_is25xx_read(is25xx_handle, 0x00F000, &rd_buf[0], test_lenth);
+    ret = am_is25xx_read(is25xx_handle, 0x001000, &rd_buf[0], test_lenth);
 
     if (ret != AM_OK) {
         AM_DBG_INFO("am_is25xx_read error(id: %d).\r\n", ret);
@@ -79,7 +84,7 @@ void demo_is25xx_entry (am_is25xx_handle_t is25xx_handle, int32_t test_lenth)
 
     /* 校验写入和读取的数据是否一致 */
     for (i = 0; i < test_lenth; i++) {
-        AM_DBG_INFO("Read FLASH the %2dth data is %2x\r\n", i ,rd_buf[i]);
+        AM_DBG_INFO("Read FLASH the %2dth data is %2x\r\n", i ,wr_buf[i]);
 
         /* 校验失败 */
         if(wr_buf[i] != rd_buf[i]) {

@@ -14,13 +14,13 @@
  * \brief ISSI公司的IS25系列IS25XX芯片驱动 
  * 
  * 已知兼容芯片： 
- *   - IS25LP128
- *   - IS25LP064
- *   - IS25LP032
+ *   - IS25WP032
+ *   - IS25WP064 
+ *   - IS25WP0128
  * 
  * \internal
  * \par Modification history
- * - 1.00 18-09-05  wk, first implementation.
+ * - 1.00 18-09-03  yrz, first implementation.
  * \endinternal
  */
  
@@ -64,14 +64,15 @@ extern "C" {
 /**
  * \name 已知的一些芯片型号定义
  *
- *     若使用的芯片型号此处未定义，可以使用 \sa AM_IS25XX_TYPE_DEF() 宏定义一
+ *     若使用的芯片型号此处未定义，可以使用 \sa AM_is25XX_TYPE_DEF() 宏定义一
  * 个新的芯片。 这些宏可以直接作为实例信息中 type 成员的值。
  * 
  * @{
  */
-#define AM_IS25XX_IS25LP128     AM_IS25XX_TYPE_DEF(8, 4, 4, 8, 0x18609D)
-#define AM_IS25XX_IS25LP064     AM_IS25XX_TYPE_DEF(8, 4, 4, 7, 0x17609D)
-#define AM_IS25XX_IS25LP032     AM_IS25XX_TYPE_DEF(8, 4, 4, 6, 0x16609D)
+#define AM_IS25XX_IS25WP032     AM_IS25XX_TYPE_DEF(8, 4, 4, 6, 0x16609D)
+#define AM_IS25XX_IS25WP064     AM_IS25XX_TYPE_DEF(8, 4, 4, 7, 0x17609D)
+#define AM_IS25XX_IS25WP128     AM_IS25XX_TYPE_DEF(8, 4, 4, 8, 0x18609D)
+        
 /** @} */
 
 /**
@@ -79,10 +80,10 @@ extern "C" {
  */
 typedef struct am_is25xx_type {
 
-    uint8_t   page_size;         /**< \brief 页大小，使用2的幂表示  */
-    uint8_t   pages_in_sector;   /**< \brief 单个扇区包含的页数，使用2的幂表示  */
-    uint8_t   sectors_in_block;  /**< \brief 单个扇区包含的页数，使用2的幂表示  */
-    uint8_t   nblocks;           /**< \brief 芯片总块数，使用2的幂表示  */
+    uint8_t   page_size;        /**< \brief 页大小，使用2的幂表示  */
+    uint8_t   pages_in_sector;  /**< \brief 单个扇区包含的页数，使用2的幂表示 */
+    uint8_t   sectors_in_block; /**< \brief 单个扇区包含的页数，使用2的幂表示 */
+    uint8_t   nblocks;          /**< \brief 芯片总块数，使用2的幂表示  */
 
     /**
      * 该ID由：manufacture_id + memory type + memory density构成
@@ -94,27 +95,27 @@ typedef struct am_is25xx_type {
 } am_is25xx_type_t;
  
 /**
- * \brief IS25XX 实例信息
+ * \brief ISSI25XX 实例信息
  */
 typedef struct am_is25xx_devinfo {
  
     uint16_t          spi_mode;      /**< \brief 器件使用的SPI模式 */
-    int               spi_cs_pin;    /**< \brief SPI片选引脚                */
-    uint32_t          spi_speed;     /**< \brief 使用的SPI速率           */
-    am_is25xx_type_t  type;          /**< \brief 器件型号                        */
+    int               spi_cs_pin;    /**< \brief SPI片选引脚 */
+    uint32_t          spi_speed;     /**< \brief 使用的SPI速率 */
+    am_is25xx_type_t  type;          /**< \brief 器件型号 */
  
 } am_is25xx_devinfo_t;
      
 /**
- * \brief IS25XX 实例
+ * \brief ISSI25XX 实例
  */
 typedef struct am_is25xx_dev {
-    am_spi_device_t            spi_dev;        /**< \brief SPI设备              */
-    uint32_t                   addr_offset;    /**< \brief 保留地址空间  */
-    const am_is25xx_devinfo_t *p_devinfo;      /**< \brief 实例信息            */
+    am_spi_device_t            spi_dev;        /**< \brief SPI设备 */
+    uint32_t                   addr_offset;    /**< \brief 保留地址空间 */
+    const am_is25xx_devinfo_t *p_devinfo;      /**< \brief 实例信息 */
 } am_is25xx_dev_t;
 
-/** \brief 定义 IS25XX 的实例句柄类型 */
+/** \brief 定义 ISSI25XX 的实例句柄类型 */
 typedef struct am_is25xx_dev *am_is25xx_handle_t;
 
 
@@ -282,55 +283,6 @@ int am_is25xx_deep_power_down_enter(am_is25xx_handle_t  handle);
  * \retval -AM_EIO    : 进入掉电模式失败, SPI通信出错
  */
 int am_is25xx_deep_power_down_exit(am_is25xx_handle_t  handle);
-
-/** 
- * \brief 进入安全区域（OTP数据区），进入后，可以使用读写函数操作OTP数据区
- * 
- * \param[in] handle : IS25XX 操作句柄
- *
- * \retval  AM_OK     : 进入安全区域成功
- * \retval -AM_EINVAL : 进入安全区域失败, 参数错误
- * \retval -AM_EIO    : 进入安全区域失败, SPI通信出错
- *
- * \note 如果该区域被锁定，将只能读取数值，不能修改数值
- */
-int am_is25xx_secured_otp_enter(am_is25xx_handle_t handle);
-
-/**
- * \brief 退出安全区域（OTP数据区）
- * 
- * \param[in] handle : IS25XX 操作句柄
- *
- * \retval  AM_OK     : 退出安全区域成功
- * \retval -AM_EINVAL : 退出安全区域失败, 参数错误
- * \retval -AM_EIO    : 退出安全区域失败, SPI通信出错
- */
-int am_is25xx_secured_otp_exit(am_is25xx_handle_t handle);
-
-/** 
- * \brief 检测安全区域（OTP数据区）是否已被锁定
- * 
- * \param[in]  handle     : IS25XX 操作句柄
- * \param[out] p_lockdown : 获取当前的锁定状态，AM_TRUE, 锁定，AM_FALSE,未锁定
- *
- * \retval  AM_OK     : 检测成功
- * \retval -AM_EINVAL : 检测失败, 参数错误
- * \retval -AM_EIO    : 检测失败, SPI通信出错
- */   
-int am_is25xx_secured_lockdown_check(am_is25xx_handle_t   handle,
-                                     am_bool_t           *p_lockdown);
-
-/** 
- * \brief 锁定安全区域（OTP数据区），锁定后，将无法解锁，也无法修改OTP中的数据
- * 
- * \param[in] handle : IS25XX 操作句柄
- *
- * \retval  AM_OK     : 锁定成功
- * \retval -AM_EINVAL : 锁定失败, 参数错误
- * \retval -AM_EIO    : 锁定失败, SPI通信出错
- */   
-int am_is25xx_secured_lockdown(am_is25xx_handle_t handle);
-
 
 /** 
  * \brief IS25XX解初始化，释放相关资源

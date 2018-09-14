@@ -68,11 +68,6 @@ int am_main (void)
 //    demo_am116_core_hw_i2c_master_poll_entry();
 //    demo_am116_core_hw_i2c_slave_poll_entry();
 //    demo_am116_core_std_i2c_lm75_entry();
-//    demo_bma253_entry();
-//		demo_bmg160_entry();
-//		demo_mmc5883ma_entry();
-//		demo_lsm6dsl_entry();
-//	  demo_ltr_553als_entry ();
 //    demo_am116_core_std_i2c_master_async_entry();
 //    demo_am116_core_std_i2c_master_sync_entry();
 //    demo_am116_core_std_i2c_slave_entry();
@@ -132,7 +127,7 @@ int am_main (void)
 //    demo_am116_core_microport_rtc_entry();
 //    demo_am116_core_microport_rx8025t_entry();
 //    demo_am116_core_microport_usb_entry();
-      demo_am116_core_microport_sc16is740_entry();
+//    demo_am116_core_microport_sc16is740_entry();
 //    demo_am116_core_miniport_digitron_entry();
 //    demo_am116_core_miniport_hc595_digitron_entry();
 //    demo_am116_core_miniport_hc595_digitron_key_entry();
@@ -144,6 +139,18 @@ int am_main (void)
 //    demo_am116_core_miniport_zlg72128_entry();
 //    demo_am116_core_dr_fm175xx_picca_read_id();
 //    demo_am116_core_dr_fm175xx_picca_lpcd_read_id();
+//    demo_shtc1_entry();
+//    demo_lis3mdl_entry();
+//    demo_bh1730fvc_entry();
+//    demo_hts221_entry();
+//    demo_lps22hb_entry();
+//    demo_bme280_entry(); 
+//    demo_bmp280_entry();  
+//    demo_ltr_553als_entry();
+//    demo_bma253_entry(); 
+//		demo_bmg160_entry();
+//		demo_mmc5883ma_entry();
+		  demo_lsm6dsl_entry();
 
     while (1) {
     }
