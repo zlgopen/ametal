@@ -35,7 +35,7 @@
 am_local am_const am_mmc5883ma_devinfo_t __g_mmc5883ma_devinfo = {
 
           FREQUENCY_14,         /**< \brief ²âÁ¿ÆµÂÊÎª14Hz   */
-	    Start_Measurement
+	        Start_Measurement
 	
 };
  
@@ -54,8 +54,8 @@ am_mmc5883ma_handle_t am_mmc5883ma_inst_init (void)
     am_i2c_handle_t i2c_handle =  am_zlg116_i2c1_inst_init();
 
     return am_mmc5883ma_init (&__g_mmc5883ma_dev, 
-                          &__g_mmc5883ma_devinfo,
-                                     i2c_handle);   
+                              &__g_mmc5883ma_devinfo,
+                              i2c_handle);   
 }
 
 /**

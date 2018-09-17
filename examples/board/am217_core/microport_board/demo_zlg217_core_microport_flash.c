@@ -44,9 +44,10 @@
 #include "ametal.h"
 #include "am_vdebug.h"
 #include "am_mx25xx.h"
+#include "am_is25xx.h"
 #include "am_zlg217_inst_init.h"
 
-#define __TEST_LENTH      16    /**< \brief 读写字节数 */
+#define __TEST_LENTH      130    /**< \brief 读写字节数 */
 
 /**
  * \brief MicroPort FLASH 例程，通过标准接口实现
@@ -59,7 +60,9 @@ void demo_zlg217_core_microport_flash_entry (void)
 {
     AM_DBG_INFO("demo am217_core microport flash!\r\n");
 
-    demo_mx25xx_entry(am_microport_flash_inst_init(), __TEST_LENTH);
+  demo_mx25xx_entry(am_microport_flash_inst_init(), __TEST_LENTH);
+	
+	 // demo_is25xx_entry(am_microport_flash_inst_init(), __TEST_LENTH);
 }
 /** [src_microport_flash] */
 

@@ -153,9 +153,9 @@ int am_bma253_soft_reset (am_bma253_handle_t handle);
  *
  * \return BMA253服务操作句柄,如果为 NULL，表明初始化失败
  */
-am_bma253_handle_t am_bma253_init (am_bma253_dev_t *p_dev, 
+am_bma253_handle_t am_bma253_init (am_bma253_dev_t           *p_dev, 
                                    const am_bma253_devinfo_t *p_devinfo, 
-                                   am_i2c_handle_t i2c_handle);
+                                   am_i2c_handle_t           i2c_handle);
 
 /**
  * \brief BMA253 设备解初始化

@@ -373,7 +373,7 @@
               <MiscControls></MiscControls>
               <Define>AM_VDEBUG AM_CORTEX_M3</Define>
               <Undefine></Undefine>
-              <IncludePath>..\user_code;..\user_config;..\user_config\am_hwconf_usrcfg;..\user_config\am_servconf_usrcfg;..\..\..\..\3rdparty\CMSIS\Include;..\..\..\..\arch\arm\include;..\..\..\bsp_common\include;..\..\..\..\components\drivers\include;..\..\..\..\components\service\include;..\..\..\..\components\util\include;..\..\..\..\examples\board\am217_core;..\..\..\..\examples\components;..\..\..\..\examples\soc\zlg;..\..\..\..\examples\std;..\..\..\..\interface;..\..\..\..\soc\zlg\zlg217;..\..\..\..\soc\zlg\drivers\include\adc;..\..\..\..\soc\zlg\drivers\include\bkp;..\..\..\..\soc\zlg\drivers\include\bkp\hw;..\..\..\..\soc\zlg\drivers\include\clk;..\..\..\..\soc\zlg\drivers\include\cmp;..\..\..\..\soc\zlg\drivers\include\crc;..\..\..\..\soc\zlg\drivers\include\dac;..\..\..\..\soc\zlg\drivers\include\dma;..\..\..\..\soc\zlg\drivers\include\exti;..\..\..\..\soc\zlg\drivers\include\flash\hw;..\..\..\..\soc\zlg\drivers\include\gpio;..\..\..\..\soc\zlg\drivers\include\i2c;..\..\..\..\soc\zlg\drivers\include\pwr;..\..\..\..\soc\zlg\drivers\include\rcc;..\..\..\..\soc\zlg\drivers\include\spi;..\..\..\..\soc\zlg\drivers\include\syscfg\hw;..\..\..\..\soc\zlg\drivers\include\tim;..\..\..\..\soc\zlg\drivers\include\uart;..\..\..\..\soc\zlg\drivers\include\wdt;..\..\..\bsp_common\include;..\user_config;..\..\..\..\soc\zlg\drivers\include\gpio\hw;..\..\..\..\soc\zlg\drivers\include\pwr\hw;..\..\..\..\soc\zlg\drivers\include\rtc\hw;..\..\..\..\soc\zlg\drivers\include\afio\hw;..\..\..\..\soc\zlg\drivers\include\rcc\hw;..\..\..\..\soc\zlg\drivers\include\exti\hw;..\..\..\am217_core;..\..\..\..\soc\zlg\drivers\include\adc;..\..\..\..\soc\zlg\drivers\include\adc\hw;..\..\..\..\soc\zlg\drivers\include\uart\hw;..\..\..\..\soc\zlg\drivers\include\flash;..\..\..\..\soc\zlg\drivers\include\crc\hw;..\..\..\..\soc\zlg\drivers\include\dac\hw;..\..\..\..\soc\zlg\drivers\include\dma\hw;..\..\..\..\soc\zlg\drivers\include\i2c\hw;..\..\..\..\soc\zlg\drivers\include\wdt\hw;..\..\..\..\soc\zlg\drivers\include\spi\hw;..\..\..\..\soc\zlg\drivers\include\tim\hw;..\..\..\..\arch\arm\include\hw;..\..\..\..\soc\zlg\drivers\include\rtc;..\..\..\..\examples\components;..\..\..\..\components\libc\newlib_adapter\include;..\..\..\..\soc\zlg\drivers\include\ili9341;..\..\..\..\components\libc\armlib_adapter\include;..\..\..\..\components\libc\microlib_adapter\include;..\..\..\..\components\libc\newlib_adapter\include;..\..\..\..\soc\zlg\drivers\include\can;..\..\..\..\soc\zlg\drivers\include\can\hw;..\..\..\..\soc\zlg\drivers\include\usbd;..\..\..\..\soc\zlg\drivers\include\usbd\hw;..\..\..\..\components\usb\device;..\..\..\..\components\usb\include;..\..\..\..\components\usb\osa;..\..\..\..\components\usb\host\config;..\..\..\..\components\usb\host\common\include;..\..\..\..\components\usb\host\class\include;..\..\..\..\components\usb\device\config\include;..\..\..\..\components\usb\host;..\..\..\am217_core;..\..\..\..\soc\zlg\drivers\include\syscfg;..\..\..\..\components\drivers\source\lcd;..\..\..\..\examples\std;..\..\..\..\examples\soc\zlg;..\..\..\..\examples\components</IncludePath>
+              <IncludePath>..\user_code;..\user_config;..\user_config\am_hwconf_usrcfg;..\user_config\am_servconf_usrcfg;..\..\..\..\3rdparty\CMSIS\Include;..\..\..\..\arch\arm\include;..\..\..\bsp_common\include;..\..\..\..\components\drivers\include;..\..\..\..\components\service\include;..\..\..\..\components\util\include;..\..\..\..\examples\board\am217_core;..\..\..\..\examples\components;..\..\..\..\examples\soc\zlg;..\..\..\..\examples\std;..\..\..\..\interface;..\..\..\..\soc\zlg\zlg217;..\..\..\..\soc\zlg\drivers\include\adc;..\..\..\..\soc\zlg\drivers\include\bkp;..\..\..\..\soc\zlg\drivers\include\bkp\hw;..\..\..\..\soc\zlg\drivers\include\clk;..\..\..\..\soc\zlg\drivers\include\cmp;..\..\..\..\soc\zlg\drivers\include\crc;..\..\..\..\soc\zlg\drivers\include\dac;..\..\..\..\soc\zlg\drivers\include\dma;..\..\..\..\soc\zlg\drivers\include\exti;..\..\..\..\soc\zlg\drivers\include\flash\hw;..\..\..\..\soc\zlg\drivers\include\gpio;..\..\..\..\soc\zlg\drivers\include\i2c;..\..\..\..\soc\zlg\drivers\include\pwr;..\..\..\..\soc\zlg\drivers\include\rcc;..\..\..\..\soc\zlg\drivers\include\spi;..\..\..\..\soc\zlg\drivers\include\syscfg\hw;..\..\..\..\soc\zlg\drivers\include\tim;..\..\..\..\soc\zlg\drivers\include\uart;..\..\..\..\soc\zlg\drivers\include\wdt;..\..\..\bsp_common\include;..\user_config;..\..\..\..\soc\zlg\drivers\include\gpio\hw;..\..\..\..\soc\zlg\drivers\include\pwr\hw;..\..\..\..\soc\zlg\drivers\include\rtc\hw;..\..\..\..\soc\zlg\drivers\include\afio\hw;..\..\..\..\soc\zlg\drivers\include\rcc\hw;..\..\..\..\soc\zlg\drivers\include\exti\hw;..\..\..\am217_core;..\..\..\..\soc\zlg\drivers\include\adc;..\..\..\..\soc\zlg\drivers\include\adc\hw;..\..\..\..\soc\zlg\drivers\include\uart\hw;..\..\..\..\soc\zlg\drivers\include\flash;..\..\..\..\soc\zlg\drivers\include\crc\hw;..\..\..\..\soc\zlg\drivers\include\dac\hw;..\..\..\..\soc\zlg\drivers\include\dma\hw;..\..\..\..\soc\zlg\drivers\include\i2c\hw;..\..\..\..\soc\zlg\drivers\include\wdt\hw;..\..\..\..\soc\zlg\drivers\include\spi\hw;..\..\..\..\soc\zlg\drivers\include\tim\hw;..\..\..\..\arch\arm\include\hw;..\..\..\..\soc\zlg\drivers\include\rtc;..\..\..\..\examples\components;..\..\..\..\components\libc\newlib_adapter\include;..\..\..\..\soc\zlg\drivers\include\ili9341;..\..\..\..\components\libc\armlib_adapter\include;..\..\..\..\components\libc\microlib_adapter\include;..\..\..\..\components\libc\newlib_adapter\include;..\..\..\..\soc\zlg\drivers\include\can;..\..\..\..\soc\zlg\drivers\include\can\hw;..\..\..\..\soc\zlg\drivers\include\usbd;..\..\..\..\soc\zlg\drivers\include\usbd\hw;..\..\..\..\components\usb\device;..\..\..\..\components\usb\include;..\..\..\..\components\usb\osa;..\..\..\..\components\usb\host\config;..\..\..\..\components\usb\host\common\include;..\..\..\..\components\usb\host\class\include;..\..\..\..\components\usb\device\config\include;..\..\..\..\components\usb\host;..\..\..\am217_core;..\..\..\..\soc\zlg\drivers\include\syscfg;..\..\..\..\components\drivers\source\lcd;..\..\..\..\examples\std;..\..\..\..\examples\soc\zlg;..\..\..\..\examples\components;..\..\..\..\components\drivers\include;..\user_config\am_hwconf_usrcfg;..\..\..\..\components\drivers\include</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -645,6 +645,31 @@
               <FileName>am_ili9341_intfc_3wire.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\components\drivers\source\lcd\am_ili9341_intfc_3wire.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_is25xx.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\flash\am_is25xx.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_bmg160.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\bmg160\am_bmg160.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_mmc5883ma.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\mmc5883ma\am_mmc5883ma.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_lsm6dsl.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\lsm6dsl\am_lsm6dsl.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_bma253.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\bma253\am_bma253.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -1336,6 +1361,26 @@
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\components\service\demo_mtd.c</FilePath>
             </File>
+            <File>
+              <FileName>demo_is25xx.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\components\drivers\demo_is25xx.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_bmg160.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\components\drivers\demo_bmg160.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_mmc5883ma.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\components\drivers\demo_mmc5883ma.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_lsm6dsl.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\components\drivers\demo_lsm6dsl.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -1885,6 +1930,26 @@
               <FileName>am_board.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\user_config\am_board.h</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_bma253.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_bma253.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_bmg160.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_bmg160.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_mmc5883ma.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_mmc5883ma.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_lsm6dsl.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_lsm6dsl.c</FilePath>
             </File>
           </Files>
         </Group>

@@ -54,6 +54,7 @@ extern "C" {
 #include "am_digitron_disp.h"
 #include "am_ep24cxx.h"
 #include "am_mx25xx.h"
+#include "am_is25xx.h"
 #include "am_mtd.h"
 #include "am_rngbuf.h"
 #include "am_input.h"
@@ -140,6 +141,17 @@ void demo_ftl_entry (am_ftl_handle_t ftl_handle, int32_t test_lenth);
  */
 void demo_mx25xx_entry (am_mx25xx_handle_t mx25xx_handle,
                         int32_t test_lenth);
+
+/**
+ * \brief ep24cxx例程
+ *
+ * \param[in] is25xx_handle    :    is25xx句柄
+ *
+ * \param[in] test_lenth       :   测试长度
+ */
+void demo_is25xx_entry (am_is25xx_handle_t is25xx_handle,
+                        int32_t test_lenth);
+
 /**
  * \brief ep24cxx例程
  *

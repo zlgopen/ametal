@@ -48,12 +48,13 @@
 	  handle = am_mmc5883ma_inst_init();
 		
     while (1) {
-          /* 读取X、Y、Z通道的磁场 */
-		      am_mmc5883ma_read_magnetic(handle, magnetic);
-	        AM_DBG_INFO(" x_magnetic = %d\r\n y_magnetic = %d\r\n z_magnetic = %d\r\n temperature = %d\r\n",
-			                                                   magnetic[0],magnetic[1],magnetic[2],magnetic[3]);
+      /** \brief 读取X、Y、Z通道的磁场 */
+	  am_mmc5883ma_read_magnetic(handle, magnetic);
+	  AM_DBG_INFO("x_magnetic = %d\r\ny_magnetic = %d\r\nz_magnetic = %d\r\n",
+			         magnetic[0],       magnetic[1],       magnetic[2]);
+	  AM_DBG_INFO("temperature = %d\r\n",magnetic[3]);
 			
-          am_mdelay(1000);
+      am_mdelay(1000);
     }
 }
 /** [src_mmc5883ma] */

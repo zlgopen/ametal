@@ -34,10 +34,17 @@
  /** \brief 设备信息 */
 am_local am_const am_bmg160_devinfo_t __g_bmg160_devinfo = {
 
+<<<<<<< HEAD
+    RANGE_125,                          /**< \brief 角速率范围±125°/s */
+    BW_230Hz,                           /**< \brief 数据滤波带宽230Hz */
+    NORMAL_MODE,                        /**< \brief 正常模式 */
+    SLEEP_DUR_2MS                       /**< \brief  配置的睡眠周期为2ms */
+=======
     RANGE_125,                          /**< \brief 角速率范围±125°/s   */
     BW_230Hz,                           /**< \brief 数据滤波带宽230Hz     */
     NORMAL_MODE,                        /**< \brief 正常模式              */
     SLEEP_DUR_2MS                       /**< \brief 配置的睡眠周期为2ms   */
+>>>>>>> 0c0e23097eb6a99906230e9fed9ffd11f21555a6
 	
 };
 
@@ -45,7 +52,7 @@ am_local am_const am_bmg160_devinfo_t __g_bmg160_devinfo = {
   BMG160 实例初始化
 *******************************************************************************/
 
-/** \brief 设备定义 */
+/** \brief 设备实例定义 */
 am_local am_bmg160_dev_t __g_bmg160_dev;
 
 /** \brief 实例初始化 */
@@ -55,8 +62,8 @@ am_bmg160_handle_t am_bmg160_inst_init (void)
     am_i2c_handle_t i2c_handle =  am_zlg116_i2c1_inst_init();
 
     return am_bmg160_init (&__g_bmg160_dev, 
-                       &__g_bmg160_devinfo,
-                               i2c_handle);   
+                           &__g_bmg160_devinfo,
+                           i2c_handle);   
 }
 
 /**
