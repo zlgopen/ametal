@@ -454,6 +454,30 @@ void demo_am116_core_std_delay_entry(void);
 void demo_am116_core_dr_fm175xx_picca_read_id(void);
 
 /**
+ * \brief A类卡读休眠卡例程
+ */
+void demo_am116_core_dr_fm175xx_picca_halt (void);
+
+/**
+ * \brief A类卡读块例程
+ */
+void demo_am116_core_dr_fm175xx_picca_read_block (void);
+
+/**
+ * \brief A类卡值操作例程
+ */
+void demo_am116_core_dr_fm175xx_picca_val_operate (void);
+
+/**
+ * \brief A类卡写块例程
+ */
+void demo_am116_core_dr_fm175xx_picca_write_block (void);
+
+/**
+ * \brief B类卡读卡号例程
+ */
+void demo_am116_core_dr_fm175xx_piccb_read_id (void);
+/**
  * \brief FM175XX LCPD模式 A类卡读卡类型和卡号例程
  */
 void demo_am116_core_dr_fm175xx_picca_lpcd_read_id(void);
