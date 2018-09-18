@@ -1381,6 +1381,41 @@
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\board\am116_core\delay\demo_am116_core_std_delay.c</FilePath>
             </File>
+            <File>
+              <FileName>demo_am116_core_dr_fm175xx_picca_halt.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am116_core\fm175xx\demo_am116_core_dr_fm175xx_picca_halt.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_am116_core_dr_fm175xx_picca_lpcd_read_id.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am116_core\fm175xx\demo_am116_core_dr_fm175xx_picca_lpcd_read_id.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_am116_core_dr_fm175xx_picca_read_block.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am116_core\fm175xx\demo_am116_core_dr_fm175xx_picca_read_block.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_am116_core_dr_fm175xx_picca_read_id.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am116_core\fm175xx\demo_am116_core_dr_fm175xx_picca_read_id.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_am116_core_dr_fm175xx_picca_val_operate.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am116_core\fm175xx\demo_am116_core_dr_fm175xx_picca_val_operate.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_am116_core_dr_fm175xx_picca_write_block.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am116_core\fm175xx\demo_am116_core_dr_fm175xx_picca_write_block.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_am116_core_dr_fm175xx_piccb_read_id.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am116_core\fm175xx\demo_am116_core_dr_fm175xx_piccb_read_id.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -1407,24 +1442,39 @@
               <FilePath>..\..\..\..\examples\components\service\demo_mtd.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am116_core_dr_fm175xx_picca_read_id.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am116_core\fm175xx\demo_am116_core_dr_fm175xx_picca_read_id.c</FilePath>
-            </File>
-            <File>
               <FileName>demo_fm175xx_picca_read_id.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\components\drivers\demo_fm175xx_picca_read_id.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am116_core_dr_fm175xx_picca_lpcd_read_id.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am116_core\fm175xx\demo_am116_core_dr_fm175xx_picca_lpcd_read_id.c</FilePath>
-            </File>
-            <File>
               <FileName>demo_fm175xx_picca_lpcd_read_id.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\components\drivers\demo_fm175xx_picca_lpcd_read_id.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_fm175xx_picca_halt.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\components\drivers\demo_fm175xx_picca_halt.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_fm175xx_picca_read_block.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\components\drivers\demo_fm175xx_picca_read_block.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_fm175xx_picca_val_operate.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\components\drivers\demo_fm175xx_picca_val_operate.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_fm175xx_picca_write_block.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\components\drivers\demo_fm175xx_picca_write_block.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_fm175xx_piccb_read_id.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\components\drivers\demo_fm175xx_piccb_read_id.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -3350,6 +3400,41 @@
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\board\am116_core\delay\demo_am116_core_std_delay.c</FilePath>
             </File>
+            <File>
+              <FileName>demo_am116_core_dr_fm175xx_picca_halt.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am116_core\fm175xx\demo_am116_core_dr_fm175xx_picca_halt.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_am116_core_dr_fm175xx_picca_lpcd_read_id.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am116_core\fm175xx\demo_am116_core_dr_fm175xx_picca_lpcd_read_id.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_am116_core_dr_fm175xx_picca_read_block.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am116_core\fm175xx\demo_am116_core_dr_fm175xx_picca_read_block.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_am116_core_dr_fm175xx_picca_read_id.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am116_core\fm175xx\demo_am116_core_dr_fm175xx_picca_read_id.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_am116_core_dr_fm175xx_picca_val_operate.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am116_core\fm175xx\demo_am116_core_dr_fm175xx_picca_val_operate.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_am116_core_dr_fm175xx_picca_write_block.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am116_core\fm175xx\demo_am116_core_dr_fm175xx_picca_write_block.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_am116_core_dr_fm175xx_piccb_read_id.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am116_core\fm175xx\demo_am116_core_dr_fm175xx_piccb_read_id.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -3376,24 +3461,39 @@
               <FilePath>..\..\..\..\examples\components\service\demo_mtd.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am116_core_dr_fm175xx_picca_read_id.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am116_core\fm175xx\demo_am116_core_dr_fm175xx_picca_read_id.c</FilePath>
-            </File>
-            <File>
               <FileName>demo_fm175xx_picca_read_id.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\components\drivers\demo_fm175xx_picca_read_id.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am116_core_dr_fm175xx_picca_lpcd_read_id.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am116_core\fm175xx\demo_am116_core_dr_fm175xx_picca_lpcd_read_id.c</FilePath>
-            </File>
-            <File>
               <FileName>demo_fm175xx_picca_lpcd_read_id.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\components\drivers\demo_fm175xx_picca_lpcd_read_id.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_fm175xx_picca_halt.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\components\drivers\demo_fm175xx_picca_halt.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_fm175xx_picca_read_block.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\components\drivers\demo_fm175xx_picca_read_block.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_fm175xx_picca_val_operate.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\components\drivers\demo_fm175xx_picca_val_operate.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_fm175xx_picca_write_block.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\components\drivers\demo_fm175xx_picca_write_block.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_fm175xx_piccb_read_id.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\components\drivers\demo_fm175xx_piccb_read_id.c</FilePath>
             </File>
           </Files>
         </Group>

@@ -75,11 +75,46 @@ void demo_ftl_entry (am_ftl_handle_t ftl_handle, int32_t test_lenth);
 void demo_mtd_entry (am_mtd_handle_t mtd_handle, int32_t test_lenth);
 
 /**
- * \brief FM175XX 例程
+ * \brief FM175XX 读A类型卡例程
  * \param[in] handle  FM175XX 服务句柄
  * \return 无
  */
 void demo_fm175xx_picca_read_id (am_fm175xx_handle_t handle);
+
+/**
+ * \brief A类卡读休眠卡例程
+ * \param[in] handle  FM175XX 服务句柄
+ * \return 无
+ */
+void demo_fm175xx_picca_halt (am_fm175xx_handle_t handle);
+
+/**
+ * \brief A类卡读块例程
+ * \param[in] handle  FM175XX 服务句柄
+ * \return 无
+ */
+void demo_fm175xx_picca_read_block (am_fm175xx_handle_t handle);
+
+/**
+ * \brief A类卡值操作例程
+ * \param[in] handle  FM175XX 服务句柄
+ * \return 无
+ */
+void demo_fm175xx_picca_val_operate (am_fm175xx_handle_t handle);
+
+/**
+ * \brief A类写块例程
+ * \param[in] handle  FM175XX 服务句柄
+ * \return 无
+ */
+void demo_fm175xx_picca_write_block (am_fm175xx_handle_t handle);
+
+/**
+ * \brief B类卡读卡号例程
+ * \param[in] handle  FM175XX 服务句柄
+ * \return 无
+ */
+void demo_fm175xx_piccb_read_id (am_fm175xx_handle_t handle);
 
 /**
  * \brief FM175XX LPCD模式例程
