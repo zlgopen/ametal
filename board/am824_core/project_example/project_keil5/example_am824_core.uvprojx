@@ -987,469 +987,469 @@
           <GroupName>example_board</GroupName>
           <Files>
             <File>
-              <FileName>demo_am824_std_led.c</FileName>
+              <FileName>demo_am824_core_hw_acmp_int.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\led\demo_am824_std_led.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\acmp\demo_am824_core_hw_acmp_int.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_hw_wwdt.c</FileName>
+              <FileName>demo_am824_core_hw_acmp_lad.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\wwdt\demo_am824_hw_wwdt.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\acmp\demo_am824_core_hw_acmp_lad.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_std_wwdt.c</FileName>
+              <FileName>demo_am824_core_hw_acmp_poll.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\wwdt\demo_am824_std_wwdt.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\acmp\demo_am824_core_hw_acmp_poll.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_hw_acmp_int.c</FileName>
+              <FileName>demo_am824_core_hw_adc_dma.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\acmp\demo_am824_hw_acmp_int.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\adc\demo_am824_core_hw_adc_dma.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_hw_acmp_lad.c</FileName>
+              <FileName>demo_am824_core_hw_adc_thcmp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\acmp\demo_am824_hw_acmp_lad.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\adc\demo_am824_core_hw_adc_thcmp.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_hw_acmp_poll.c</FileName>
+              <FileName>demo_am824_core_std_adc_dma_int.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\acmp\demo_am824_hw_acmp_poll.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\adc\demo_am824_core_std_adc_dma_int.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_hw_adc_dma.c</FileName>
+              <FileName>demo_am824_core_std_adc_dma_poll.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\adc\demo_am824_hw_adc_dma.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\adc\demo_am824_core_std_adc_dma_poll.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_hw_adc_thcmp.c</FileName>
+              <FileName>demo_am824_core_std_adc_int.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\adc\demo_am824_hw_adc_thcmp.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\adc\demo_am824_core_std_adc_int.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_std_adc_dma_int.c</FileName>
+              <FileName>demo_am824_core_std_adc_ntc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\adc\demo_am824_std_adc_dma_int.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\adc\demo_am824_core_std_adc_ntc.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_std_adc_dma_poll.c</FileName>
+              <FileName>demo_am824_core_std_adc_poll.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\adc\demo_am824_std_adc_dma_poll.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\adc\demo_am824_core_std_adc_poll.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_std_adc_int.c</FileName>
+              <FileName>demo_am824_core_std_buzzer.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\adc\demo_am824_std_adc_int.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\buzzer\demo_am824_core_std_buzzer.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_std_adc_ntc.c</FileName>
+              <FileName>demo_am824_core_hw_crc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\adc\demo_am824_std_adc_ntc.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\crc\demo_am824_core_hw_crc.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_std_adc_poll.c</FileName>
+              <FileName>demo_am824_core_std_crc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\adc\demo_am824_std_adc_poll.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\crc\demo_am824_core_std_crc.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_std_buzzer.c</FileName>
+              <FileName>demo_am824_core_drv_dma_hwtrigger_burst.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\buzzer\demo_am824_std_buzzer.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\dma\demo_am824_core_drv_dma_hwtrigger_burst.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_std_crc.c</FileName>
+              <FileName>demo_am824_core_drv_dma_m2m.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\crc\demo_am824_std_crc.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\dma\demo_am824_core_drv_dma_m2m.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_hw_crc.c</FileName>
+              <FileName>demo_am824_core_drv_dma_ping_pong.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\crc\demo_am824_hw_crc.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\dma\demo_am824_core_drv_dma_ping_pong.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_drv_dma_hwtrigger_burst.c</FileName>
+              <FileName>demo_am824_core_hw_flash_ctrl.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\dma\demo_am824_drv_dma_hwtrigger_burst.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\flash_ctrl\demo_am824_core_hw_flash_ctrl.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_drv_dma_m2m.c</FileName>
+              <FileName>demo_am824_core_hw_gpio.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\dma\demo_am824_drv_dma_m2m.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\gpio\demo_am824_core_hw_gpio.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_drv_dma_ping_pong.c</FileName>
+              <FileName>demo_am824_core_hw_gpio_int.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\dma\demo_am824_drv_dma_ping_pong.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\gpio\demo_am824_core_hw_gpio_int.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_hw_flash_ctrl.c</FileName>
+              <FileName>demo_am824_core_hw_gpio_pmatch.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\flash_ctrl\demo_am824_hw_flash_ctrl.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\gpio\demo_am824_core_hw_gpio_pmatch.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_hw_gpio.c</FileName>
+              <FileName>demo_am824_core_std_gpio.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\gpio\demo_am824_hw_gpio.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\gpio\demo_am824_core_std_gpio.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_hw_gpio_int.c</FileName>
+              <FileName>demo_am824_core_std_gpio_int.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\gpio\demo_am824_hw_gpio_int.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\gpio\demo_am824_core_std_gpio_int.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_hw_gpio_pmatch.c</FileName>
+              <FileName>demo_am824_core_std_gpio_key.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\gpio\demo_am824_hw_gpio_pmatch.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\gpio\demo_am824_core_std_gpio_key.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_std_gpio.c</FileName>
+              <FileName>demo_am824_core_hw_i2c_master_dma.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\gpio\demo_am824_std_gpio.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\i2c\demo_am824_core_hw_i2c_master_dma.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_std_gpio_int.c</FileName>
+              <FileName>demo_am824_core_hw_i2c_master_poll.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\gpio\demo_am824_std_gpio_int.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\i2c\demo_am824_core_hw_i2c_master_poll.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_std_gpio_key.c</FileName>
+              <FileName>demo_am824_core_hw_i2c_slave_dma.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\gpio\demo_am824_std_gpio_key.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\i2c\demo_am824_core_hw_i2c_slave_dma.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_hw_i2c_master_dma.c</FileName>
+              <FileName>demo_am824_core_hw_i2c_slave_int.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\i2c\demo_am824_hw_i2c_master_dma.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\i2c\demo_am824_core_hw_i2c_slave_int.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_hw_i2c_master_poll.c</FileName>
+              <FileName>demo_am824_core_hw_i2c_slave_poll.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\i2c\demo_am824_hw_i2c_master_poll.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\i2c\demo_am824_core_hw_i2c_slave_poll.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_hw_i2c_slave_dma.c</FileName>
+              <FileName>demo_am824_core_std_i2c_lm75.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\i2c\demo_am824_hw_i2c_slave_dma.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\i2c\demo_am824_core_std_i2c_lm75.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_hw_i2c_slave_int.c</FileName>
+              <FileName>demo_am824_core_std_i2c_master_async.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\i2c\demo_am824_hw_i2c_slave_int.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\i2c\demo_am824_core_std_i2c_master_async.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_hw_i2c_slave_poll.c</FileName>
+              <FileName>demo_am824_core_std_i2c_master_sync.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\i2c\demo_am824_hw_i2c_slave_poll.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\i2c\demo_am824_core_std_i2c_master_sync.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_std_i2c_lm75.c</FileName>
+              <FileName>demo_am824_core_hw_iap.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\i2c\demo_am824_std_i2c_lm75.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\iap\demo_am824_core_hw_iap.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_std_i2c_master_async.c</FileName>
+              <FileName>demo_am824_core_std_key_input_event.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\i2c\demo_am824_std_i2c_master_async.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\input_event\demo_am824_core_std_key_input_event.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_std_i2c_master_sync.c</FileName>
+              <FileName>demo_am824_core_std_led.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\i2c\demo_am824_std_i2c_master_sync.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\led\demo_am824_core_std_led.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_hw_iap.c</FileName>
+              <FileName>demo_am824_core_microport_ds1302.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\iap\demo_am824_hw_iap.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\microport_board\demo_am824_core_microport_ds1302.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_std_key_input_event.c</FileName>
+              <FileName>demo_am824_core_microport_eeprom.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\input_event\demo_am824_std_key_input_event.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\microport_board\demo_am824_core_microport_eeprom.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_microport_ds1302.c</FileName>
+              <FileName>demo_am824_core_microport_eeprom_nvram.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\microport_board\demo_am824_microport_ds1302.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\microport_board\demo_am824_core_microport_eeprom_nvram.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_microport_eeprom.c</FileName>
+              <FileName>demo_am824_core_microport_flash.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\microport_board\demo_am824_microport_eeprom.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\microport_board\demo_am824_core_microport_flash.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_microport_eeprom_nvram.c</FileName>
+              <FileName>demo_am824_core_microport_flash_ftl.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\microport_board\demo_am824_microport_eeprom_nvram.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\microport_board\demo_am824_core_microport_flash_ftl.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_microport_flash.c</FileName>
+              <FileName>demo_am824_core_microport_flash_mtd.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\microport_board\demo_am824_microport_flash.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\microport_board\demo_am824_core_microport_flash_mtd.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_microport_flash_ftl.c</FileName>
+              <FileName>demo_am824_core_microport_rs485.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\microport_board\demo_am824_microport_flash_ftl.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\microport_board\demo_am824_core_microport_rs485.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_microport_flash_mtd.c</FileName>
+              <FileName>demo_am824_core_microport_rtc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\microport_board\demo_am824_microport_flash_mtd.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\microport_board\demo_am824_core_microport_rtc.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_microport_rs485.c</FileName>
+              <FileName>demo_am824_core_microport_rx8025t.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\microport_board\demo_am824_microport_rs485.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\microport_board\demo_am824_core_microport_rx8025t.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_microport_rtc.c</FileName>
+              <FileName>demo_am824_core_microport_usb.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\microport_board\demo_am824_microport_rtc.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\microport_board\demo_am824_core_microport_usb.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_microport_rx8025t.c</FileName>
+              <FileName>demo_am824_core_miniport_digitron.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\microport_board\demo_am824_microport_rx8025t.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\miniport_board\demo_am824_core_miniport_digitron.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_microport_usb.c</FileName>
+              <FileName>demo_am824_core_miniport_hc595_digitron.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\microport_board\demo_am824_microport_usb.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\miniport_board\demo_am824_core_miniport_hc595_digitron.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_miniport_digitron.c</FileName>
+              <FileName>demo_am824_core_miniport_hc595_digitron_key.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\miniport_board\demo_am824_miniport_digitron.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\miniport_board\demo_am824_core_miniport_hc595_digitron_key.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_miniport_hc595_digitron.c</FileName>
+              <FileName>demo_am824_core_miniport_hc595_digitron_temp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\miniport_board\demo_am824_miniport_hc595_digitron.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\miniport_board\demo_am824_core_miniport_hc595_digitron_temp.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_miniport_hc595_digitron_key.c</FileName>
+              <FileName>demo_am824_core_miniport_hc595_led.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\miniport_board\demo_am824_miniport_hc595_digitron_key.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\miniport_board\demo_am824_core_miniport_hc595_led.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_miniport_hc595_digitron_temp.c</FileName>
+              <FileName>demo_am824_core_miniport_key.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\miniport_board\demo_am824_miniport_hc595_digitron_temp.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\miniport_board\demo_am824_core_miniport_key.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_miniport_hc595_led.c</FileName>
+              <FileName>demo_am824_core_miniport_key_digitron.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\miniport_board\demo_am824_miniport_hc595_led.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\miniport_board\demo_am824_core_miniport_key_digitron.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_miniport_key.c</FileName>
+              <FileName>demo_am824_core_miniport_led.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\miniport_board\demo_am824_miniport_key.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\miniport_board\demo_am824_core_miniport_led.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_miniport_key_digitron.c</FileName>
+              <FileName>demo_am824_core_miniport_zlg72128.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\miniport_board\demo_am824_miniport_key_digitron.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\miniport_board\demo_am824_core_miniport_zlg72128.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_miniport_led.c</FileName>
+              <FileName>demo_am824_core_hw_mrt.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\miniport_board\demo_am824_miniport_led.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\mrt\demo_am824_core_hw_mrt.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_miniport_zlg72128.c</FileName>
+              <FileName>demo_am824_core_std_mrt_timer.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\miniport_board\demo_am824_miniport_zlg72128.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\mrt\demo_am824_core_std_mrt_timer.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_hw_mrt.c</FileName>
+              <FileName>demo_am824_core_hw_pll.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\mrt\demo_am824_hw_mrt.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\pll\demo_am824_core_hw_pll.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_std_mrt_timer.c</FileName>
+              <FileName>demo_am824_core_hw_pmu_deeppowerdown.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\mrt\demo_am824_std_mrt_timer.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\pmu\demo_am824_core_hw_pmu_deeppowerdown.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_hw_pll.c</FileName>
+              <FileName>demo_am824_core_hw_pmu_deepsleep.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\pll\demo_am824_hw_pll.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\pmu\demo_am824_core_hw_pmu_deepsleep.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_hw_pmu_deeppowerdown.c</FileName>
+              <FileName>demo_am824_core_hw_pmu_powerdown.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\pmu\demo_am824_hw_pmu_deeppowerdown.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\pmu\demo_am824_core_hw_pmu_powerdown.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_hw_pmu_deepsleep.c</FileName>
+              <FileName>demo_am824_core_hw_pmu_sleep.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\pmu\demo_am824_hw_pmu_deepsleep.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\pmu\demo_am824_core_hw_pmu_sleep.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_hw_pmu_powerdown.c</FileName>
+              <FileName>demo_am824_core_drv_sct_timing_pwm.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\pmu\demo_am824_hw_pmu_powerdown.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\sct\demo_am824_core_drv_sct_timing_pwm.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_hw_pmu_sleep.c</FileName>
+              <FileName>demo_am824_core_hw_sct_1_32bit_pwm.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\pmu\demo_am824_hw_pmu_sleep.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\sct\demo_am824_core_hw_sct_1_32bit_pwm.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_drv_sct_timing_pwm.c</FileName>
+              <FileName>demo_am824_core_hw_sct_1_32bit_timing.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\sct\demo_am824_drv_sct_timing_pwm.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\sct\demo_am824_core_hw_sct_1_32bit_timing.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_hw_sct_1_32bit_pwm.c</FileName>
+              <FileName>demo_am824_core_hw_sct_2_16bit_pwm.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\sct\demo_am824_hw_sct_1_32bit_pwm.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\sct\demo_am824_core_hw_sct_2_16bit_pwm.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_hw_sct_1_32bit_timing.c</FileName>
+              <FileName>demo_am824_core_hw_sct_2_16bit_timing.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\sct\demo_am824_hw_sct_1_32bit_timing.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\sct\demo_am824_core_hw_sct_2_16bit_timing.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_hw_sct_2_16bit_pwm.c</FileName>
+              <FileName>demo_am824_core_hw_sct_cap.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\sct\demo_am824_hw_sct_2_16bit_pwm.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\sct\demo_am824_core_hw_sct_cap.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_hw_sct_2_16bit_timing.c</FileName>
+              <FileName>demo_am824_core_hw_sct_multi_states.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\sct\demo_am824_hw_sct_2_16bit_timing.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\sct\demo_am824_core_hw_sct_multi_states.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_hw_sct_cap.c</FileName>
+              <FileName>demo_am824_core_std_sct_cap.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\sct\demo_am824_hw_sct_cap.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\sct\demo_am824_core_std_sct_cap.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_hw_sct_multi_states.c</FileName>
+              <FileName>demo_am824_core_std_sct_pwm.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\sct\demo_am824_hw_sct_multi_states.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\sct\demo_am824_core_std_sct_pwm.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_std_sct_cap.c</FileName>
+              <FileName>demo_am824_core_std_sct_timer.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\sct\demo_am824_std_sct_cap.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\sct\demo_am824_core_std_sct_timer.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_std_sct_pwm.c</FileName>
+              <FileName>demo_am824_core_hw_spi_master.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\sct\demo_am824_std_sct_pwm.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\spi\demo_am824_core_hw_spi_master.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_std_sct_timer.c</FileName>
+              <FileName>demo_am824_core_hw_spi_slave.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\sct\demo_am824_std_sct_timer.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\spi\demo_am824_core_hw_spi_slave.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_hw_spi_master.c</FileName>
+              <FileName>demo_am824_core_hw_spi_slave_dma.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\spi\demo_am824_hw_spi_master.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\spi\demo_am824_core_hw_spi_slave_dma.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_hw_spi_slave.c</FileName>
+              <FileName>demo_am824_core_std_spi_flash_dma.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\spi\demo_am824_hw_spi_slave.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\spi\demo_am824_core_std_spi_flash_dma.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_hw_spi_slave_dma.c</FileName>
+              <FileName>demo_am824_core_std_spi_flash_int.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\spi\demo_am824_hw_spi_slave_dma.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\spi\demo_am824_core_std_spi_flash_int.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_std_spi_flash_dma.c</FileName>
+              <FileName>demo_am824_core_std_spi_master_dma.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\spi\demo_am824_std_spi_flash_dma.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\spi\demo_am824_core_std_spi_master_dma.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_std_spi_flash_int.c</FileName>
+              <FileName>demo_am824_core_std_spi_master_int.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\spi\demo_am824_std_spi_flash_int.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\spi\demo_am824_core_std_spi_master_int.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_std_spi_master_dma.c</FileName>
+              <FileName>demo_am824_core_hw_bod.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\spi\demo_am824_std_spi_master_dma.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\syscon\demo_am824_core_hw_bod.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_std_spi_master_int.c</FileName>
+              <FileName>demo_am824_core_hw_clkout.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\spi\demo_am824_std_spi_master_int.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\syscon\demo_am824_core_hw_clkout.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_hw_bod.c</FileName>
+              <FileName>demo_am824_core_std_systick_timer.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\syscon\demo_am824_hw_bod.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\systick\demo_am824_core_std_systick_timer.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_hw_clkout.c</FileName>
+              <FileName>demo_am824_core_std_delay.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\syscon\demo_am824_hw_clkout.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\systick\demo_am824_core_std_delay.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_std_delay.c</FileName>
+              <FileName>demo_am824_core_hw_usart_autobaud.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\systick\demo_am824_std_delay.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\usart\demo_am824_core_hw_usart_autobaud.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_std_systick_timer.c</FileName>
+              <FileName>demo_am824_core_hw_usart_poll.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\systick\demo_am824_std_systick_timer.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\usart\demo_am824_core_hw_usart_poll.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_hw_usart_autobaud.c</FileName>
+              <FileName>demo_am824_core_hw_usart_rx_dma.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\usart\demo_am824_hw_usart_autobaud.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\usart\demo_am824_core_hw_usart_rx_dma.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_hw_usart_poll.c</FileName>
+              <FileName>demo_am824_core_hw_usart_tx_dma.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\usart\demo_am824_hw_usart_poll.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\usart\demo_am824_core_hw_usart_tx_dma.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_hw_usart_rx_dma.c</FileName>
+              <FileName>demo_am824_core_std_usart_flowctrl.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\usart\demo_am824_hw_usart_rx_dma.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\usart\demo_am824_core_std_usart_flowctrl.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_hw_usart_tx_dma.c</FileName>
+              <FileName>demo_am824_core_std_usart_poll.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\usart\demo_am824_hw_usart_tx_dma.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\usart\demo_am824_core_std_usart_poll.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_std_usart_flowctrl.c</FileName>
+              <FileName>demo_am824_core_std_usart_rngbuf.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\usart\demo_am824_std_usart_flowctrl.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\usart\demo_am824_core_std_usart_rngbuf.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_std_usart_poll.c</FileName>
+              <FileName>demo_am824_core_hw_wkt_deeppowerdown_wakeup.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\usart\demo_am824_std_usart_poll.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\wkt\demo_am824_core_hw_wkt_deeppowerdown_wakeup.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_std_usart_rngbuf.c</FileName>
+              <FileName>demo_am824_core_hw_wkt_timer.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\usart\demo_am824_std_usart_rngbuf.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\wkt\demo_am824_core_hw_wkt_timer.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_hw_wkt_deeppowerdown_wakeup.c</FileName>
+              <FileName>demo_am824_core_std_wkt_timer.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\wkt\demo_am824_hw_wkt_deeppowerdown_wakeup.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\wkt\demo_am824_core_std_wkt_timer.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_hw_wkt_timer.c</FileName>
+              <FileName>demo_am824_core_std_wwdt.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\wkt\demo_am824_hw_wkt_timer.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\wwdt\demo_am824_core_std_wwdt.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_std_wkt_timer.c</FileName>
+              <FileName>demo_am824_core_hw_wwdt.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\wkt\demo_am824_std_wkt_timer.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\wwdt\demo_am824_core_hw_wwdt.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -3171,469 +3171,469 @@
           <GroupName>example_board</GroupName>
           <Files>
             <File>
-              <FileName>demo_am824_std_led.c</FileName>
+              <FileName>demo_am824_core_hw_acmp_int.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\led\demo_am824_std_led.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\acmp\demo_am824_core_hw_acmp_int.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_hw_wwdt.c</FileName>
+              <FileName>demo_am824_core_hw_acmp_lad.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\wwdt\demo_am824_hw_wwdt.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\acmp\demo_am824_core_hw_acmp_lad.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_std_wwdt.c</FileName>
+              <FileName>demo_am824_core_hw_acmp_poll.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\wwdt\demo_am824_std_wwdt.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\acmp\demo_am824_core_hw_acmp_poll.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_hw_acmp_int.c</FileName>
+              <FileName>demo_am824_core_hw_adc_dma.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\acmp\demo_am824_hw_acmp_int.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\adc\demo_am824_core_hw_adc_dma.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_hw_acmp_lad.c</FileName>
+              <FileName>demo_am824_core_hw_adc_thcmp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\acmp\demo_am824_hw_acmp_lad.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\adc\demo_am824_core_hw_adc_thcmp.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_hw_acmp_poll.c</FileName>
+              <FileName>demo_am824_core_std_adc_dma_int.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\acmp\demo_am824_hw_acmp_poll.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\adc\demo_am824_core_std_adc_dma_int.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_hw_adc_dma.c</FileName>
+              <FileName>demo_am824_core_std_adc_dma_poll.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\adc\demo_am824_hw_adc_dma.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\adc\demo_am824_core_std_adc_dma_poll.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_hw_adc_thcmp.c</FileName>
+              <FileName>demo_am824_core_std_adc_int.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\adc\demo_am824_hw_adc_thcmp.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\adc\demo_am824_core_std_adc_int.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_std_adc_dma_int.c</FileName>
+              <FileName>demo_am824_core_std_adc_ntc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\adc\demo_am824_std_adc_dma_int.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\adc\demo_am824_core_std_adc_ntc.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_std_adc_dma_poll.c</FileName>
+              <FileName>demo_am824_core_std_adc_poll.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\adc\demo_am824_std_adc_dma_poll.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\adc\demo_am824_core_std_adc_poll.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_std_adc_int.c</FileName>
+              <FileName>demo_am824_core_std_buzzer.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\adc\demo_am824_std_adc_int.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\buzzer\demo_am824_core_std_buzzer.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_std_adc_ntc.c</FileName>
+              <FileName>demo_am824_core_hw_crc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\adc\demo_am824_std_adc_ntc.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\crc\demo_am824_core_hw_crc.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_std_adc_poll.c</FileName>
+              <FileName>demo_am824_core_std_crc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\adc\demo_am824_std_adc_poll.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\crc\demo_am824_core_std_crc.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_std_buzzer.c</FileName>
+              <FileName>demo_am824_core_drv_dma_hwtrigger_burst.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\buzzer\demo_am824_std_buzzer.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\dma\demo_am824_core_drv_dma_hwtrigger_burst.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_std_crc.c</FileName>
+              <FileName>demo_am824_core_drv_dma_m2m.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\crc\demo_am824_std_crc.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\dma\demo_am824_core_drv_dma_m2m.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_hw_crc.c</FileName>
+              <FileName>demo_am824_core_drv_dma_ping_pong.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\crc\demo_am824_hw_crc.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\dma\demo_am824_core_drv_dma_ping_pong.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_drv_dma_hwtrigger_burst.c</FileName>
+              <FileName>demo_am824_core_hw_flash_ctrl.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\dma\demo_am824_drv_dma_hwtrigger_burst.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\flash_ctrl\demo_am824_core_hw_flash_ctrl.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_drv_dma_m2m.c</FileName>
+              <FileName>demo_am824_core_hw_gpio.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\dma\demo_am824_drv_dma_m2m.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\gpio\demo_am824_core_hw_gpio.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_drv_dma_ping_pong.c</FileName>
+              <FileName>demo_am824_core_hw_gpio_int.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\dma\demo_am824_drv_dma_ping_pong.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\gpio\demo_am824_core_hw_gpio_int.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_hw_flash_ctrl.c</FileName>
+              <FileName>demo_am824_core_hw_gpio_pmatch.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\flash_ctrl\demo_am824_hw_flash_ctrl.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\gpio\demo_am824_core_hw_gpio_pmatch.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_hw_gpio.c</FileName>
+              <FileName>demo_am824_core_std_gpio.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\gpio\demo_am824_hw_gpio.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\gpio\demo_am824_core_std_gpio.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_hw_gpio_int.c</FileName>
+              <FileName>demo_am824_core_std_gpio_int.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\gpio\demo_am824_hw_gpio_int.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\gpio\demo_am824_core_std_gpio_int.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_hw_gpio_pmatch.c</FileName>
+              <FileName>demo_am824_core_std_gpio_key.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\gpio\demo_am824_hw_gpio_pmatch.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\gpio\demo_am824_core_std_gpio_key.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_std_gpio.c</FileName>
+              <FileName>demo_am824_core_hw_i2c_master_dma.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\gpio\demo_am824_std_gpio.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\i2c\demo_am824_core_hw_i2c_master_dma.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_std_gpio_int.c</FileName>
+              <FileName>demo_am824_core_hw_i2c_master_poll.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\gpio\demo_am824_std_gpio_int.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\i2c\demo_am824_core_hw_i2c_master_poll.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_std_gpio_key.c</FileName>
+              <FileName>demo_am824_core_hw_i2c_slave_dma.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\gpio\demo_am824_std_gpio_key.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\i2c\demo_am824_core_hw_i2c_slave_dma.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_hw_i2c_master_dma.c</FileName>
+              <FileName>demo_am824_core_hw_i2c_slave_int.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\i2c\demo_am824_hw_i2c_master_dma.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\i2c\demo_am824_core_hw_i2c_slave_int.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_hw_i2c_master_poll.c</FileName>
+              <FileName>demo_am824_core_hw_i2c_slave_poll.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\i2c\demo_am824_hw_i2c_master_poll.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\i2c\demo_am824_core_hw_i2c_slave_poll.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_hw_i2c_slave_dma.c</FileName>
+              <FileName>demo_am824_core_std_i2c_lm75.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\i2c\demo_am824_hw_i2c_slave_dma.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\i2c\demo_am824_core_std_i2c_lm75.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_hw_i2c_slave_int.c</FileName>
+              <FileName>demo_am824_core_std_i2c_master_async.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\i2c\demo_am824_hw_i2c_slave_int.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\i2c\demo_am824_core_std_i2c_master_async.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_hw_i2c_slave_poll.c</FileName>
+              <FileName>demo_am824_core_std_i2c_master_sync.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\i2c\demo_am824_hw_i2c_slave_poll.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\i2c\demo_am824_core_std_i2c_master_sync.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_std_i2c_lm75.c</FileName>
+              <FileName>demo_am824_core_hw_iap.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\i2c\demo_am824_std_i2c_lm75.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\iap\demo_am824_core_hw_iap.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_std_i2c_master_async.c</FileName>
+              <FileName>demo_am824_core_std_key_input_event.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\i2c\demo_am824_std_i2c_master_async.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\input_event\demo_am824_core_std_key_input_event.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_std_i2c_master_sync.c</FileName>
+              <FileName>demo_am824_core_std_led.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\i2c\demo_am824_std_i2c_master_sync.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\led\demo_am824_core_std_led.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_hw_iap.c</FileName>
+              <FileName>demo_am824_core_microport_ds1302.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\iap\demo_am824_hw_iap.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\microport_board\demo_am824_core_microport_ds1302.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_std_key_input_event.c</FileName>
+              <FileName>demo_am824_core_microport_eeprom.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\input_event\demo_am824_std_key_input_event.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\microport_board\demo_am824_core_microport_eeprom.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_microport_ds1302.c</FileName>
+              <FileName>demo_am824_core_microport_eeprom_nvram.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\microport_board\demo_am824_microport_ds1302.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\microport_board\demo_am824_core_microport_eeprom_nvram.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_microport_eeprom.c</FileName>
+              <FileName>demo_am824_core_microport_flash.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\microport_board\demo_am824_microport_eeprom.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\microport_board\demo_am824_core_microport_flash.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_microport_eeprom_nvram.c</FileName>
+              <FileName>demo_am824_core_microport_flash_ftl.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\microport_board\demo_am824_microport_eeprom_nvram.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\microport_board\demo_am824_core_microport_flash_ftl.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_microport_flash.c</FileName>
+              <FileName>demo_am824_core_microport_flash_mtd.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\microport_board\demo_am824_microport_flash.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\microport_board\demo_am824_core_microport_flash_mtd.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_microport_flash_ftl.c</FileName>
+              <FileName>demo_am824_core_microport_rs485.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\microport_board\demo_am824_microport_flash_ftl.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\microport_board\demo_am824_core_microport_rs485.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_microport_flash_mtd.c</FileName>
+              <FileName>demo_am824_core_microport_rtc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\microport_board\demo_am824_microport_flash_mtd.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\microport_board\demo_am824_core_microport_rtc.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_microport_rs485.c</FileName>
+              <FileName>demo_am824_core_microport_rx8025t.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\microport_board\demo_am824_microport_rs485.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\microport_board\demo_am824_core_microport_rx8025t.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_microport_rtc.c</FileName>
+              <FileName>demo_am824_core_microport_usb.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\microport_board\demo_am824_microport_rtc.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\microport_board\demo_am824_core_microport_usb.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_microport_rx8025t.c</FileName>
+              <FileName>demo_am824_core_miniport_digitron.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\microport_board\demo_am824_microport_rx8025t.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\miniport_board\demo_am824_core_miniport_digitron.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_microport_usb.c</FileName>
+              <FileName>demo_am824_core_miniport_hc595_digitron.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\microport_board\demo_am824_microport_usb.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\miniport_board\demo_am824_core_miniport_hc595_digitron.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_miniport_digitron.c</FileName>
+              <FileName>demo_am824_core_miniport_hc595_digitron_key.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\miniport_board\demo_am824_miniport_digitron.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\miniport_board\demo_am824_core_miniport_hc595_digitron_key.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_miniport_hc595_digitron.c</FileName>
+              <FileName>demo_am824_core_miniport_hc595_digitron_temp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\miniport_board\demo_am824_miniport_hc595_digitron.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\miniport_board\demo_am824_core_miniport_hc595_digitron_temp.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_miniport_hc595_digitron_key.c</FileName>
+              <FileName>demo_am824_core_miniport_hc595_led.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\miniport_board\demo_am824_miniport_hc595_digitron_key.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\miniport_board\demo_am824_core_miniport_hc595_led.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_miniport_hc595_digitron_temp.c</FileName>
+              <FileName>demo_am824_core_miniport_key.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\miniport_board\demo_am824_miniport_hc595_digitron_temp.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\miniport_board\demo_am824_core_miniport_key.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_miniport_hc595_led.c</FileName>
+              <FileName>demo_am824_core_miniport_key_digitron.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\miniport_board\demo_am824_miniport_hc595_led.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\miniport_board\demo_am824_core_miniport_key_digitron.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_miniport_key.c</FileName>
+              <FileName>demo_am824_core_miniport_led.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\miniport_board\demo_am824_miniport_key.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\miniport_board\demo_am824_core_miniport_led.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_miniport_key_digitron.c</FileName>
+              <FileName>demo_am824_core_miniport_zlg72128.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\miniport_board\demo_am824_miniport_key_digitron.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\miniport_board\demo_am824_core_miniport_zlg72128.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_miniport_led.c</FileName>
+              <FileName>demo_am824_core_hw_mrt.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\miniport_board\demo_am824_miniport_led.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\mrt\demo_am824_core_hw_mrt.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_miniport_zlg72128.c</FileName>
+              <FileName>demo_am824_core_std_mrt_timer.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\miniport_board\demo_am824_miniport_zlg72128.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\mrt\demo_am824_core_std_mrt_timer.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_hw_mrt.c</FileName>
+              <FileName>demo_am824_core_hw_pll.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\mrt\demo_am824_hw_mrt.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\pll\demo_am824_core_hw_pll.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_std_mrt_timer.c</FileName>
+              <FileName>demo_am824_core_hw_pmu_deeppowerdown.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\mrt\demo_am824_std_mrt_timer.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\pmu\demo_am824_core_hw_pmu_deeppowerdown.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_hw_pll.c</FileName>
+              <FileName>demo_am824_core_hw_pmu_deepsleep.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\pll\demo_am824_hw_pll.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\pmu\demo_am824_core_hw_pmu_deepsleep.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_hw_pmu_deeppowerdown.c</FileName>
+              <FileName>demo_am824_core_hw_pmu_powerdown.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\pmu\demo_am824_hw_pmu_deeppowerdown.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\pmu\demo_am824_core_hw_pmu_powerdown.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_hw_pmu_deepsleep.c</FileName>
+              <FileName>demo_am824_core_hw_pmu_sleep.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\pmu\demo_am824_hw_pmu_deepsleep.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\pmu\demo_am824_core_hw_pmu_sleep.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_hw_pmu_powerdown.c</FileName>
+              <FileName>demo_am824_core_drv_sct_timing_pwm.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\pmu\demo_am824_hw_pmu_powerdown.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\sct\demo_am824_core_drv_sct_timing_pwm.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_hw_pmu_sleep.c</FileName>
+              <FileName>demo_am824_core_hw_sct_1_32bit_pwm.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\pmu\demo_am824_hw_pmu_sleep.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\sct\demo_am824_core_hw_sct_1_32bit_pwm.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_drv_sct_timing_pwm.c</FileName>
+              <FileName>demo_am824_core_hw_sct_1_32bit_timing.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\sct\demo_am824_drv_sct_timing_pwm.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\sct\demo_am824_core_hw_sct_1_32bit_timing.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_hw_sct_1_32bit_pwm.c</FileName>
+              <FileName>demo_am824_core_hw_sct_2_16bit_pwm.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\sct\demo_am824_hw_sct_1_32bit_pwm.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\sct\demo_am824_core_hw_sct_2_16bit_pwm.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_hw_sct_1_32bit_timing.c</FileName>
+              <FileName>demo_am824_core_hw_sct_2_16bit_timing.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\sct\demo_am824_hw_sct_1_32bit_timing.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\sct\demo_am824_core_hw_sct_2_16bit_timing.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_hw_sct_2_16bit_pwm.c</FileName>
+              <FileName>demo_am824_core_hw_sct_cap.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\sct\demo_am824_hw_sct_2_16bit_pwm.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\sct\demo_am824_core_hw_sct_cap.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_hw_sct_2_16bit_timing.c</FileName>
+              <FileName>demo_am824_core_hw_sct_multi_states.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\sct\demo_am824_hw_sct_2_16bit_timing.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\sct\demo_am824_core_hw_sct_multi_states.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_hw_sct_cap.c</FileName>
+              <FileName>demo_am824_core_std_sct_cap.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\sct\demo_am824_hw_sct_cap.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\sct\demo_am824_core_std_sct_cap.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_hw_sct_multi_states.c</FileName>
+              <FileName>demo_am824_core_std_sct_pwm.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\sct\demo_am824_hw_sct_multi_states.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\sct\demo_am824_core_std_sct_pwm.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_std_sct_cap.c</FileName>
+              <FileName>demo_am824_core_std_sct_timer.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\sct\demo_am824_std_sct_cap.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\sct\demo_am824_core_std_sct_timer.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_std_sct_pwm.c</FileName>
+              <FileName>demo_am824_core_hw_spi_master.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\sct\demo_am824_std_sct_pwm.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\spi\demo_am824_core_hw_spi_master.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_std_sct_timer.c</FileName>
+              <FileName>demo_am824_core_hw_spi_slave.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\sct\demo_am824_std_sct_timer.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\spi\demo_am824_core_hw_spi_slave.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_hw_spi_master.c</FileName>
+              <FileName>demo_am824_core_hw_spi_slave_dma.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\spi\demo_am824_hw_spi_master.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\spi\demo_am824_core_hw_spi_slave_dma.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_hw_spi_slave.c</FileName>
+              <FileName>demo_am824_core_std_spi_flash_dma.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\spi\demo_am824_hw_spi_slave.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\spi\demo_am824_core_std_spi_flash_dma.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_hw_spi_slave_dma.c</FileName>
+              <FileName>demo_am824_core_std_spi_flash_int.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\spi\demo_am824_hw_spi_slave_dma.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\spi\demo_am824_core_std_spi_flash_int.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_std_spi_flash_dma.c</FileName>
+              <FileName>demo_am824_core_std_spi_master_dma.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\spi\demo_am824_std_spi_flash_dma.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\spi\demo_am824_core_std_spi_master_dma.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_std_spi_flash_int.c</FileName>
+              <FileName>demo_am824_core_std_spi_master_int.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\spi\demo_am824_std_spi_flash_int.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\spi\demo_am824_core_std_spi_master_int.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_std_spi_master_dma.c</FileName>
+              <FileName>demo_am824_core_hw_bod.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\spi\demo_am824_std_spi_master_dma.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\syscon\demo_am824_core_hw_bod.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_std_spi_master_int.c</FileName>
+              <FileName>demo_am824_core_hw_clkout.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\spi\demo_am824_std_spi_master_int.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\syscon\demo_am824_core_hw_clkout.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_hw_bod.c</FileName>
+              <FileName>demo_am824_core_std_systick_timer.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\syscon\demo_am824_hw_bod.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\systick\demo_am824_core_std_systick_timer.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_hw_clkout.c</FileName>
+              <FileName>demo_am824_core_std_delay.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\syscon\demo_am824_hw_clkout.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\systick\demo_am824_core_std_delay.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_std_delay.c</FileName>
+              <FileName>demo_am824_core_hw_usart_autobaud.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\systick\demo_am824_std_delay.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\usart\demo_am824_core_hw_usart_autobaud.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_std_systick_timer.c</FileName>
+              <FileName>demo_am824_core_hw_usart_poll.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\systick\demo_am824_std_systick_timer.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\usart\demo_am824_core_hw_usart_poll.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_hw_usart_autobaud.c</FileName>
+              <FileName>demo_am824_core_hw_usart_rx_dma.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\usart\demo_am824_hw_usart_autobaud.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\usart\demo_am824_core_hw_usart_rx_dma.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_hw_usart_poll.c</FileName>
+              <FileName>demo_am824_core_hw_usart_tx_dma.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\usart\demo_am824_hw_usart_poll.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\usart\demo_am824_core_hw_usart_tx_dma.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_hw_usart_rx_dma.c</FileName>
+              <FileName>demo_am824_core_std_usart_flowctrl.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\usart\demo_am824_hw_usart_rx_dma.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\usart\demo_am824_core_std_usart_flowctrl.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_hw_usart_tx_dma.c</FileName>
+              <FileName>demo_am824_core_std_usart_poll.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\usart\demo_am824_hw_usart_tx_dma.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\usart\demo_am824_core_std_usart_poll.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_std_usart_flowctrl.c</FileName>
+              <FileName>demo_am824_core_std_usart_rngbuf.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\usart\demo_am824_std_usart_flowctrl.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\usart\demo_am824_core_std_usart_rngbuf.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_std_usart_poll.c</FileName>
+              <FileName>demo_am824_core_hw_wkt_deeppowerdown_wakeup.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\usart\demo_am824_std_usart_poll.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\wkt\demo_am824_core_hw_wkt_deeppowerdown_wakeup.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_std_usart_rngbuf.c</FileName>
+              <FileName>demo_am824_core_hw_wkt_timer.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\usart\demo_am824_std_usart_rngbuf.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\wkt\demo_am824_core_hw_wkt_timer.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_hw_wkt_deeppowerdown_wakeup.c</FileName>
+              <FileName>demo_am824_core_std_wkt_timer.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\wkt\demo_am824_hw_wkt_deeppowerdown_wakeup.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\wkt\demo_am824_core_std_wkt_timer.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_hw_wkt_timer.c</FileName>
+              <FileName>demo_am824_core_std_wwdt.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\wkt\demo_am824_hw_wkt_timer.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\wwdt\demo_am824_core_std_wwdt.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_std_wkt_timer.c</FileName>
+              <FileName>demo_am824_core_hw_wwdt.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\wkt\demo_am824_std_wkt_timer.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am824_core\wwdt\demo_am824_core_hw_wwdt.c</FilePath>
             </File>
           </Files>
         </Group>

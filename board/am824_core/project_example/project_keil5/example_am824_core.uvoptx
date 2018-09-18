@@ -124,7 +124,7 @@
         <SetRegEntry>
           <Number>0</Number>
           <Key>JL2CM3</Key>
-          <Name>-U59404071 -O78 -S2 -ZTIFSpeedSel5000 -A0 -C0 -JU1 -JI127.0.0.1 -JP0 -RST0 -N00("ARM CoreSight SW-DP") -D00(0BC11477) -L00(0) -TO18 -TC10000000 -TP21 -TDS8007 -TDT0 -TDC1F -TIEFFFFFFFF -TIP8 -TB1 -TFE0 -FO15 -FD10000000 -FCFE0 -FN1 -FF0LPC8xx_32.FLM -FS00 -FL08000 -FP0($$Device:LPC824M201JDH20$Flash\LPC8xx_32.FLM)</Name>
+          <Name>-U59404042 -O78 -S2 -ZTIFSpeedSel5000 -A0 -C0 -JU1 -JI127.0.0.1 -JP0 -RST0 -N00("ARM CoreSight SW-DP") -D00(0BC11477) -L00(0) -TO18 -TC10000000 -TP21 -TDS8007 -TDT0 -TDC1F -TIEFFFFFFFF -TIP8 -TB1 -TFE0 -FO15 -FD10000000 -FCFE0 -FN1 -FF0LPC8xx_32.FLM -FS00 -FL08000 -FP0($$Device:LPC824M201JDH20$Flash\LPC8xx_32.FLM)</Name>
         </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
@@ -298,7 +298,7 @@
 
   <Group>
     <GroupName>bsp_common</GroupName>
-    <tvExp>1</tvExp>
+    <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -1638,7 +1638,7 @@
 
   <Group>
     <GroupName>example_board</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -1649,8 +1649,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am824_core\led\demo_am824_std_led.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am824_std_led.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\acmp\demo_am824_core_hw_acmp_int.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_hw_acmp_int.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1661,8 +1661,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am824_core\wwdt\demo_am824_hw_wwdt.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am824_hw_wwdt.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\acmp\demo_am824_core_hw_acmp_lad.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_hw_acmp_lad.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1673,8 +1673,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am824_core\wwdt\demo_am824_std_wwdt.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am824_std_wwdt.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\acmp\demo_am824_core_hw_acmp_poll.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_hw_acmp_poll.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1685,8 +1685,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am824_core\acmp\demo_am824_hw_acmp_int.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am824_hw_acmp_int.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\adc\demo_am824_core_hw_adc_dma.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_hw_adc_dma.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1697,8 +1697,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am824_core\acmp\demo_am824_hw_acmp_lad.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am824_hw_acmp_lad.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\adc\demo_am824_core_hw_adc_thcmp.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_hw_adc_thcmp.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1709,8 +1709,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am824_core\acmp\demo_am824_hw_acmp_poll.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am824_hw_acmp_poll.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\adc\demo_am824_core_std_adc_dma_int.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_std_adc_dma_int.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1721,8 +1721,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am824_core\adc\demo_am824_hw_adc_dma.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am824_hw_adc_dma.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\adc\demo_am824_core_std_adc_dma_poll.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_std_adc_dma_poll.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1733,8 +1733,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am824_core\adc\demo_am824_hw_adc_thcmp.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am824_hw_adc_thcmp.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\adc\demo_am824_core_std_adc_int.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_std_adc_int.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1745,8 +1745,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am824_core\adc\demo_am824_std_adc_dma_int.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am824_std_adc_dma_int.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\adc\demo_am824_core_std_adc_ntc.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_std_adc_ntc.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1757,8 +1757,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am824_core\adc\demo_am824_std_adc_dma_poll.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am824_std_adc_dma_poll.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\adc\demo_am824_core_std_adc_poll.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_std_adc_poll.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1769,8 +1769,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am824_core\adc\demo_am824_std_adc_int.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am824_std_adc_int.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\buzzer\demo_am824_core_std_buzzer.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_std_buzzer.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1781,8 +1781,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am824_core\adc\demo_am824_std_adc_ntc.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am824_std_adc_ntc.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\crc\demo_am824_core_hw_crc.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_hw_crc.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1793,8 +1793,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am824_core\adc\demo_am824_std_adc_poll.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am824_std_adc_poll.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\crc\demo_am824_core_std_crc.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_std_crc.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1805,8 +1805,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am824_core\buzzer\demo_am824_std_buzzer.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am824_std_buzzer.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\dma\demo_am824_core_drv_dma_hwtrigger_burst.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_drv_dma_hwtrigger_burst.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1817,8 +1817,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am824_core\crc\demo_am824_std_crc.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am824_std_crc.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\dma\demo_am824_core_drv_dma_m2m.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_drv_dma_m2m.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1829,8 +1829,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am824_core\crc\demo_am824_hw_crc.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am824_hw_crc.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\dma\demo_am824_core_drv_dma_ping_pong.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_drv_dma_ping_pong.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1841,8 +1841,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am824_core\dma\demo_am824_drv_dma_hwtrigger_burst.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am824_drv_dma_hwtrigger_burst.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\flash_ctrl\demo_am824_core_hw_flash_ctrl.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_hw_flash_ctrl.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1853,8 +1853,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am824_core\dma\demo_am824_drv_dma_m2m.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am824_drv_dma_m2m.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\gpio\demo_am824_core_hw_gpio.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_hw_gpio.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1865,8 +1865,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am824_core\dma\demo_am824_drv_dma_ping_pong.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am824_drv_dma_ping_pong.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\gpio\demo_am824_core_hw_gpio_int.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_hw_gpio_int.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1877,8 +1877,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am824_core\flash_ctrl\demo_am824_hw_flash_ctrl.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am824_hw_flash_ctrl.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\gpio\demo_am824_core_hw_gpio_pmatch.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_hw_gpio_pmatch.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1889,8 +1889,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am824_core\gpio\demo_am824_hw_gpio.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am824_hw_gpio.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\gpio\demo_am824_core_std_gpio.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_std_gpio.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1901,8 +1901,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am824_core\gpio\demo_am824_hw_gpio_int.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am824_hw_gpio_int.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\gpio\demo_am824_core_std_gpio_int.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_std_gpio_int.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1913,8 +1913,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am824_core\gpio\demo_am824_hw_gpio_pmatch.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am824_hw_gpio_pmatch.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\gpio\demo_am824_core_std_gpio_key.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_std_gpio_key.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1925,8 +1925,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am824_core\gpio\demo_am824_std_gpio.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am824_std_gpio.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\i2c\demo_am824_core_hw_i2c_master_dma.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_hw_i2c_master_dma.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1937,8 +1937,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am824_core\gpio\demo_am824_std_gpio_int.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am824_std_gpio_int.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\i2c\demo_am824_core_hw_i2c_master_poll.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_hw_i2c_master_poll.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1949,8 +1949,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am824_core\gpio\demo_am824_std_gpio_key.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am824_std_gpio_key.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\i2c\demo_am824_core_hw_i2c_slave_dma.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_hw_i2c_slave_dma.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1961,8 +1961,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am824_core\i2c\demo_am824_hw_i2c_master_dma.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am824_hw_i2c_master_dma.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\i2c\demo_am824_core_hw_i2c_slave_int.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_hw_i2c_slave_int.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1973,8 +1973,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am824_core\i2c\demo_am824_hw_i2c_master_poll.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am824_hw_i2c_master_poll.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\i2c\demo_am824_core_hw_i2c_slave_poll.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_hw_i2c_slave_poll.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1985,8 +1985,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am824_core\i2c\demo_am824_hw_i2c_slave_dma.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am824_hw_i2c_slave_dma.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\i2c\demo_am824_core_std_i2c_lm75.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_std_i2c_lm75.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1997,8 +1997,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am824_core\i2c\demo_am824_hw_i2c_slave_int.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am824_hw_i2c_slave_int.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\i2c\demo_am824_core_std_i2c_master_async.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_std_i2c_master_async.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2009,8 +2009,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am824_core\i2c\demo_am824_hw_i2c_slave_poll.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am824_hw_i2c_slave_poll.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\i2c\demo_am824_core_std_i2c_master_sync.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_std_i2c_master_sync.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2021,8 +2021,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am824_core\i2c\demo_am824_std_i2c_lm75.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am824_std_i2c_lm75.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\iap\demo_am824_core_hw_iap.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_hw_iap.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2033,8 +2033,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am824_core\i2c\demo_am824_std_i2c_master_async.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am824_std_i2c_master_async.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\input_event\demo_am824_core_std_key_input_event.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_std_key_input_event.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2045,8 +2045,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am824_core\i2c\demo_am824_std_i2c_master_sync.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am824_std_i2c_master_sync.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\led\demo_am824_core_std_led.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_std_led.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2057,8 +2057,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am824_core\iap\demo_am824_hw_iap.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am824_hw_iap.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\microport_board\demo_am824_core_microport_ds1302.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_microport_ds1302.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2069,8 +2069,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am824_core\input_event\demo_am824_std_key_input_event.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am824_std_key_input_event.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\microport_board\demo_am824_core_microport_eeprom.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_microport_eeprom.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2081,8 +2081,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am824_core\microport_board\demo_am824_microport_ds1302.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am824_microport_ds1302.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\microport_board\demo_am824_core_microport_eeprom_nvram.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_microport_eeprom_nvram.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2093,8 +2093,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am824_core\microport_board\demo_am824_microport_eeprom.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am824_microport_eeprom.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\microport_board\demo_am824_core_microport_flash.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_microport_flash.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2105,8 +2105,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am824_core\microport_board\demo_am824_microport_eeprom_nvram.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am824_microport_eeprom_nvram.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\microport_board\demo_am824_core_microport_flash_ftl.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_microport_flash_ftl.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2117,8 +2117,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am824_core\microport_board\demo_am824_microport_flash.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am824_microport_flash.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\microport_board\demo_am824_core_microport_flash_mtd.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_microport_flash_mtd.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2129,8 +2129,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am824_core\microport_board\demo_am824_microport_flash_ftl.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am824_microport_flash_ftl.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\microport_board\demo_am824_core_microport_rs485.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_microport_rs485.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2141,8 +2141,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am824_core\microport_board\demo_am824_microport_flash_mtd.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am824_microport_flash_mtd.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\microport_board\demo_am824_core_microport_rtc.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_microport_rtc.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2153,8 +2153,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am824_core\microport_board\demo_am824_microport_rs485.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am824_microport_rs485.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\microport_board\demo_am824_core_microport_rx8025t.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_microport_rx8025t.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2165,8 +2165,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am824_core\microport_board\demo_am824_microport_rtc.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am824_microport_rtc.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\microport_board\demo_am824_core_microport_usb.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_microport_usb.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2177,8 +2177,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am824_core\microport_board\demo_am824_microport_rx8025t.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am824_microport_rx8025t.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\miniport_board\demo_am824_core_miniport_digitron.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_miniport_digitron.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2189,8 +2189,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am824_core\microport_board\demo_am824_microport_usb.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am824_microport_usb.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\miniport_board\demo_am824_core_miniport_hc595_digitron.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_miniport_hc595_digitron.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2201,8 +2201,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am824_core\miniport_board\demo_am824_miniport_digitron.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am824_miniport_digitron.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\miniport_board\demo_am824_core_miniport_hc595_digitron_key.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_miniport_hc595_digitron_key.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2213,8 +2213,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am824_core\miniport_board\demo_am824_miniport_hc595_digitron.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am824_miniport_hc595_digitron.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\miniport_board\demo_am824_core_miniport_hc595_digitron_temp.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_miniport_hc595_digitron_temp.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2225,8 +2225,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am824_core\miniport_board\demo_am824_miniport_hc595_digitron_key.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am824_miniport_hc595_digitron_key.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\miniport_board\demo_am824_core_miniport_hc595_led.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_miniport_hc595_led.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2237,8 +2237,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am824_core\miniport_board\demo_am824_miniport_hc595_digitron_temp.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am824_miniport_hc595_digitron_temp.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\miniport_board\demo_am824_core_miniport_key.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_miniport_key.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2249,8 +2249,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am824_core\miniport_board\demo_am824_miniport_hc595_led.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am824_miniport_hc595_led.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\miniport_board\demo_am824_core_miniport_key_digitron.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_miniport_key_digitron.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2261,8 +2261,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am824_core\miniport_board\demo_am824_miniport_key.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am824_miniport_key.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\miniport_board\demo_am824_core_miniport_led.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_miniport_led.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2273,8 +2273,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am824_core\miniport_board\demo_am824_miniport_key_digitron.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am824_miniport_key_digitron.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\miniport_board\demo_am824_core_miniport_zlg72128.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_miniport_zlg72128.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2285,8 +2285,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am824_core\miniport_board\demo_am824_miniport_led.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am824_miniport_led.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\mrt\demo_am824_core_hw_mrt.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_hw_mrt.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2297,8 +2297,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am824_core\miniport_board\demo_am824_miniport_zlg72128.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am824_miniport_zlg72128.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\mrt\demo_am824_core_std_mrt_timer.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_std_mrt_timer.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2309,8 +2309,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am824_core\mrt\demo_am824_hw_mrt.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am824_hw_mrt.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\pll\demo_am824_core_hw_pll.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_hw_pll.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2321,8 +2321,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am824_core\mrt\demo_am824_std_mrt_timer.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am824_std_mrt_timer.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\pmu\demo_am824_core_hw_pmu_deeppowerdown.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_hw_pmu_deeppowerdown.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2333,8 +2333,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am824_core\pll\demo_am824_hw_pll.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am824_hw_pll.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\pmu\demo_am824_core_hw_pmu_deepsleep.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_hw_pmu_deepsleep.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2345,8 +2345,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am824_core\pmu\demo_am824_hw_pmu_deeppowerdown.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am824_hw_pmu_deeppowerdown.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\pmu\demo_am824_core_hw_pmu_powerdown.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_hw_pmu_powerdown.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2357,8 +2357,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am824_core\pmu\demo_am824_hw_pmu_deepsleep.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am824_hw_pmu_deepsleep.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\pmu\demo_am824_core_hw_pmu_sleep.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_hw_pmu_sleep.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2369,8 +2369,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am824_core\pmu\demo_am824_hw_pmu_powerdown.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am824_hw_pmu_powerdown.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\sct\demo_am824_core_drv_sct_timing_pwm.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_drv_sct_timing_pwm.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2381,8 +2381,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am824_core\pmu\demo_am824_hw_pmu_sleep.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am824_hw_pmu_sleep.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\sct\demo_am824_core_hw_sct_1_32bit_pwm.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_hw_sct_1_32bit_pwm.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2393,8 +2393,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am824_core\sct\demo_am824_drv_sct_timing_pwm.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am824_drv_sct_timing_pwm.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\sct\demo_am824_core_hw_sct_1_32bit_timing.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_hw_sct_1_32bit_timing.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2405,8 +2405,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am824_core\sct\demo_am824_hw_sct_1_32bit_pwm.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am824_hw_sct_1_32bit_pwm.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\sct\demo_am824_core_hw_sct_2_16bit_pwm.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_hw_sct_2_16bit_pwm.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2417,8 +2417,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am824_core\sct\demo_am824_hw_sct_1_32bit_timing.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am824_hw_sct_1_32bit_timing.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\sct\demo_am824_core_hw_sct_2_16bit_timing.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_hw_sct_2_16bit_timing.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2429,8 +2429,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am824_core\sct\demo_am824_hw_sct_2_16bit_pwm.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am824_hw_sct_2_16bit_pwm.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\sct\demo_am824_core_hw_sct_cap.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_hw_sct_cap.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2441,8 +2441,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am824_core\sct\demo_am824_hw_sct_2_16bit_timing.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am824_hw_sct_2_16bit_timing.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\sct\demo_am824_core_hw_sct_multi_states.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_hw_sct_multi_states.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2453,8 +2453,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am824_core\sct\demo_am824_hw_sct_cap.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am824_hw_sct_cap.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\sct\demo_am824_core_std_sct_cap.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_std_sct_cap.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2465,8 +2465,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am824_core\sct\demo_am824_hw_sct_multi_states.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am824_hw_sct_multi_states.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\sct\demo_am824_core_std_sct_pwm.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_std_sct_pwm.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2477,8 +2477,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am824_core\sct\demo_am824_std_sct_cap.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am824_std_sct_cap.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\sct\demo_am824_core_std_sct_timer.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_std_sct_timer.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2489,8 +2489,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am824_core\sct\demo_am824_std_sct_pwm.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am824_std_sct_pwm.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\spi\demo_am824_core_hw_spi_master.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_hw_spi_master.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2501,8 +2501,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am824_core\sct\demo_am824_std_sct_timer.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am824_std_sct_timer.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\spi\demo_am824_core_hw_spi_slave.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_hw_spi_slave.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2513,8 +2513,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am824_core\spi\demo_am824_hw_spi_master.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am824_hw_spi_master.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\spi\demo_am824_core_hw_spi_slave_dma.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_hw_spi_slave_dma.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2525,8 +2525,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am824_core\spi\demo_am824_hw_spi_slave.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am824_hw_spi_slave.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\spi\demo_am824_core_std_spi_flash_dma.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_std_spi_flash_dma.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2537,8 +2537,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am824_core\spi\demo_am824_hw_spi_slave_dma.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am824_hw_spi_slave_dma.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\spi\demo_am824_core_std_spi_flash_int.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_std_spi_flash_int.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2549,8 +2549,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am824_core\spi\demo_am824_std_spi_flash_dma.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am824_std_spi_flash_dma.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\spi\demo_am824_core_std_spi_master_dma.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_std_spi_master_dma.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2561,8 +2561,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am824_core\spi\demo_am824_std_spi_flash_int.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am824_std_spi_flash_int.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\spi\demo_am824_core_std_spi_master_int.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_std_spi_master_int.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2573,8 +2573,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am824_core\spi\demo_am824_std_spi_master_dma.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am824_std_spi_master_dma.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\syscon\demo_am824_core_hw_bod.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_hw_bod.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2585,8 +2585,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am824_core\spi\demo_am824_std_spi_master_int.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am824_std_spi_master_int.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\syscon\demo_am824_core_hw_clkout.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_hw_clkout.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2597,8 +2597,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am824_core\syscon\demo_am824_hw_bod.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am824_hw_bod.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\systick\demo_am824_core_std_systick_timer.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_std_systick_timer.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2609,8 +2609,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am824_core\syscon\demo_am824_hw_clkout.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am824_hw_clkout.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\systick\demo_am824_core_std_delay.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_std_delay.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2621,8 +2621,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am824_core\systick\demo_am824_std_delay.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am824_std_delay.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\usart\demo_am824_core_hw_usart_autobaud.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_hw_usart_autobaud.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2633,8 +2633,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am824_core\systick\demo_am824_std_systick_timer.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am824_std_systick_timer.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\usart\demo_am824_core_hw_usart_poll.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_hw_usart_poll.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2645,8 +2645,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am824_core\usart\demo_am824_hw_usart_autobaud.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am824_hw_usart_autobaud.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\usart\demo_am824_core_hw_usart_rx_dma.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_hw_usart_rx_dma.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2657,8 +2657,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am824_core\usart\demo_am824_hw_usart_poll.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am824_hw_usart_poll.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\usart\demo_am824_core_hw_usart_tx_dma.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_hw_usart_tx_dma.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2669,8 +2669,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am824_core\usart\demo_am824_hw_usart_rx_dma.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am824_hw_usart_rx_dma.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\usart\demo_am824_core_std_usart_flowctrl.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_std_usart_flowctrl.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2681,8 +2681,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am824_core\usart\demo_am824_hw_usart_tx_dma.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am824_hw_usart_tx_dma.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\usart\demo_am824_core_std_usart_poll.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_std_usart_poll.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2693,8 +2693,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am824_core\usart\demo_am824_std_usart_flowctrl.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am824_std_usart_flowctrl.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\usart\demo_am824_core_std_usart_rngbuf.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_std_usart_rngbuf.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2705,8 +2705,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am824_core\usart\demo_am824_std_usart_poll.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am824_std_usart_poll.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\wkt\demo_am824_core_hw_wkt_deeppowerdown_wakeup.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_hw_wkt_deeppowerdown_wakeup.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2717,8 +2717,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am824_core\usart\demo_am824_std_usart_rngbuf.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am824_std_usart_rngbuf.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\wkt\demo_am824_core_hw_wkt_timer.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_hw_wkt_timer.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2729,8 +2729,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am824_core\wkt\demo_am824_hw_wkt_deeppowerdown_wakeup.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am824_hw_wkt_deeppowerdown_wakeup.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\wkt\demo_am824_core_std_wkt_timer.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_std_wkt_timer.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2741,8 +2741,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am824_core\wkt\demo_am824_hw_wkt_timer.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am824_hw_wkt_timer.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\wwdt\demo_am824_core_std_wwdt.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_std_wwdt.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2753,8 +2753,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am824_core\wkt\demo_am824_std_wkt_timer.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am824_std_wkt_timer.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\wwdt\demo_am824_core_hw_wwdt.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_hw_wwdt.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -3894,7 +3894,7 @@
 
   <Group>
     <GroupName>user_config</GroupName>
-    <tvExp>1</tvExp>
+    <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>

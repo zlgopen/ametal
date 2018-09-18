@@ -33,6 +33,7 @@ extern "C" {
 #include "am_mx25xx.h"
 #include "am_ep24cxx.h"
 #include "am_fm175xx.h"
+#include "am_zm516x.h"
 
 /**
  * \brief EP24CXX 器件例程
@@ -122,6 +123,49 @@ void demo_fm175xx_piccb_read_id (am_fm175xx_handle_t handle);
  * \return 无
  */
 void demo_fm175xx_picca_lpcd_mode (am_fm175xx_handle_t handle);
+
+/**
+ * \brief zm516x 模块自动波特率例程
+ * \param[in] handle  zm516x 服务句柄
+ * \return 无
+ */
+void demo_zm516x_baudrate_entry (am_zm516x_handle_t handle);
+
+/**
+ * \brief zm516x 模块 GPIO 例程
+ * \param[in] handle  zm516x 服务句柄
+ * \return 无
+ */
+void demo_zm516x_gpio_entry (am_zm516x_handle_t handle);
+
+/**
+ * \brief zm516x 模块 KEY LED 例程
+ * \param[in] handle  zm516x 服务句柄
+ * \return 无
+ */
+void demo_zm516x_key_led_entry (am_zm516x_handle_t handle);
+
+/**
+ * \brief zm516x 模块组网例程
+ * \param[in] handle  zm516x 服务句柄
+ * \return 无
+ */
+void demo_zm516x_network_entry (am_zm516x_handle_t handle);
+
+/**
+ * \brief zm516x 模块搜索例程
+ * \param[in] handle  zm516x 服务句柄
+ * \return 无
+ */
+void demo_zm516x_search_entry (am_zm516x_handle_t handle);
+
+/**
+ * \brief zm516x 模块演示例程
+ * \param[in] handle  zm516x 服务句柄
+ * \return 无
+ */
+void demo_zm516x_entry (am_zm516x_handle_t handle);
+
 #ifdef __cplusplus
 }
 #endif
