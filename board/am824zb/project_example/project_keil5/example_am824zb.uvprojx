@@ -1426,6 +1426,36 @@
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\components\drivers\demo_mx25xx.c</FilePath>
             </File>
+            <File>
+              <FileName>demo_zm516x.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\components\drivers\demo_zm516x.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zm516x_baudrate.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\components\drivers\demo_zm516x_baudrate.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zm516x_gpio.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\components\drivers\demo_zm516x_gpio.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zm516x_key_led.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\components\drivers\demo_zm516x_key_led.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zm516x_network.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\components\drivers\demo_zm516x_network.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zm516x_search.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\components\drivers\demo_zm516x_search.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -3554,6 +3584,36 @@
               <FileName>demo_mx25xx.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\components\drivers\demo_mx25xx.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zm516x.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\components\drivers\demo_zm516x.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zm516x_baudrate.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\components\drivers\demo_zm516x_baudrate.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zm516x_gpio.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\components\drivers\demo_zm516x_gpio.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zm516x_key_led.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\components\drivers\demo_zm516x_key_led.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zm516x_network.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\components\drivers\demo_zm516x_network.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zm516x_search.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\components\drivers\demo_zm516x_search.c</FilePath>
             </File>
           </Files>
         </Group>
