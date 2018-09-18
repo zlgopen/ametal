@@ -29,7 +29,7 @@ extern "C" {
 #endif
 
 #include "ametal.h"
-#include "amhw_zlg217_pwr.h"
+#include "amhw_zlg_pwr.h"
 #include "amhw_zlg217_bkp.h"
 
 /**
@@ -50,7 +50,7 @@ typedef enum am_zlg217_pwr_mode {
 
 /** \brief PWR PVD 监测电压信息配置 */
 typedef struct am_zlg217_pwr_pvd_info {
-    amhw_zlg217_pvd_lever_set_t pvd_v_level; /**< \brief PVD 监测电压选择 */
+	amhw_zlg_pvd_lever_set_t pvd_v_level; /**< \brief PVD 监测电压选择 */
 
     /**
      *  \brief PVD 监测电压模式先择.

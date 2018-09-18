@@ -30,7 +30,7 @@
 #include "am_zlg217_rtc.h"
 #include "amhw_zlg217_rtc.h"
 #include "amhw_zlg217_rcc.h"
-#include "amhw_zlg217_pwr.h"
+#include "amhw_zlg_pwr.h"
 #include "amhw_zlg217_bkp.h"
 #include "zlg217_periph_map.h"
 #include <time.h>
@@ -427,7 +427,7 @@ am_rtc_handle_t am_zlg217_rtc_init (am_zlg217_rtc_dev_t           *p_dev,
     uint32_t           prl_val  = 0;
     uint32_t           rtc_clk  = 0 ;
     amhw_zlg217_rtc_t *p_hw_rtc = NULL;
-    amhw_zlg217_pwr_t *p_hw_pwr = NULL;
+    amhw_zlg_pwr_t *p_hw_pwr = NULL;
     amhw_zlg217_bkp_t *p_hw_bkp = NULL;
 
     if ((NULL == p_dev) || (NULL == p_devinfo)) {
@@ -435,7 +435,7 @@ am_rtc_handle_t am_zlg217_rtc_init (am_zlg217_rtc_dev_t           *p_dev,
     }
 
     p_hw_rtc                = (amhw_zlg217_rtc_t *)p_devinfo->rtc_regbase;
-    p_hw_pwr                = (amhw_zlg217_pwr_t *)p_devinfo->pwr_regbase;
+    p_hw_pwr                = (amhw_zlg_pwr_t *)p_devinfo->pwr_regbase;
     p_hw_bkp                = (amhw_zlg217_bkp_t *)p_devinfo->bkp_regbase;
     p_dev->rtc_serv.p_funcs = (struct am_rtc_drv_funcs *)&__g_rtc_drv_funcs;
     p_dev->rtc_serv.p_drv   = p_dev;
@@ -452,7 +452,7 @@ am_rtc_handle_t am_zlg217_rtc_init (am_zlg217_rtc_dev_t           *p_dev,
 
     amhw_zlg217_rcc_apb1_enable(AMHW_ZLG217_RCC_APB1_PWR); /* 使能电源时钟 */
     amhw_zlg217_rcc_apb1_enable(AMHW_ZLG217_RCC_APB1_BKP); /* 使能备份时钟 */
-    amhw_zlg217_pwr_bkp_access_enable(p_hw_pwr, 1);        /* 取消备份域的写保护 */
+    amhw_zlg_pwr_bkp_access_enable(p_hw_pwr, 1);           /* 取消备份域的写保护 */
 
     /* 如果从备份寄存器中读出的值不符合预期，需要重新初始化 */
     if (0x5A5A != amhw_zlg217_bkp_dr_read(p_hw_bkp, 0)) {
@@ -547,13 +547,13 @@ am_rtc_handle_t am_zlg217_rtc_init (am_zlg217_rtc_dev_t           *p_dev,
 void am_zlg217_rtc_deinit (am_rtc_handle_t handle)
 {
     am_zlg217_rtc_dev_t *p_dev    = (am_zlg217_rtc_dev_t *)handle;
-    amhw_zlg217_pwr_t   *p_hw_pwr = NULL;
+    amhw_zlg_pwr_t   *p_hw_pwr    = NULL;
 
     if ((NULL == p_dev) || (NULL == p_dev->p_devinfo)) {
         return;
     }
 
-    p_hw_pwr = (amhw_zlg217_pwr_t *)p_dev->p_devinfo->pwr_regbase;
+    p_hw_pwr = (amhw_zlg_pwr_t *)p_dev->p_devinfo->pwr_regbase;
 
     p_dev->pfn_callback[0]  = NULL;
     p_dev->pfn_callback[1]  = NULL;
@@ -563,10 +563,10 @@ void am_zlg217_rtc_deinit (am_rtc_handle_t handle)
     p_dev->rtc_serv.p_drv   = NULL;
     p_dev                   = NULL;
 
-    amhw_zlg217_bkp_dr_write(ZLG217_BKP, 0, 0);        /* 清除标记 */
+    amhw_zlg217_bkp_dr_write(ZLG217_BKP, 0, 0);             /* 清除标记 */
     amhw_zlg217_rcc_apb1_disable(AMHW_ZLG217_RCC_APB1_PWR); /* 禁能电源时钟 */
     amhw_zlg217_rcc_apb1_disable(AMHW_ZLG217_RCC_APB1_BKP); /* 禁能备份时钟 */
-    amhw_zlg217_pwr_bkp_access_enable(p_hw_pwr, 0);         /* 备份域的写保护 */
+    amhw_zlg_pwr_bkp_access_enable(p_hw_pwr, 0);            /* 备份域的写保护 */
     amhw_zlg217_rcc_bdcr_rtc_disable();                     /* RTC 时钟失能 */
 
     if (p_dev->p_devinfo->pfn_plfm_deinit) {

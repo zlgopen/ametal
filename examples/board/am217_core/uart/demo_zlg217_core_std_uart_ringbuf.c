@@ -42,7 +42,7 @@
 #include "ametal.h"
 #include "am_zlg217_inst_init.h"
 #include "demo_std_entries.h"
-
+#include "am_vdebug.h"
 /**
  * \brief Àı³ÌÈë¿Ú
  */
