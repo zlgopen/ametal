@@ -57,6 +57,18 @@
 							<tool command="${cross_prefix}${cross_c}${cross_suffix}" commandLinePattern="${COMMAND} ${cross_toolchain_flags} ${FLAGS} -c ${OUTPUT_FLAG} ${OUTPUT_PREFIX}${OUTPUT} ${INPUTS}" errorParsers="org.eclipse.cdt.core.GLDErrorParser;org.eclipse.cdt.core.GCCErrorParser" id="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.623545097" name="Cross ARM C Compiler" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler">
 								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.include.paths.549074649" name="Include paths (-I)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.include.paths" useByScannerDiscovery="false" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/user_code}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/drivers/include/flash/hw}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/drivers/include/uart/hw}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/drivers/include/exti/hw}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/drivers/include/afio/hw}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/drivers/include/bkp/hw}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/drivers/include/gpio/hw}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/drivers/include/spi/hw}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/zlg217}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/drivers/include/ili9341}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/drivers/include/rtc/hw}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/drivers/include/rcc/hw}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/drivers/include/pwr/hw}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/user_config}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/user_config/am_hwconf_usrcfg}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/user_config/am_servconf_usrcfg}&quot;"/>
@@ -152,7 +164,7 @@
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
-						<entry excluding="components/usb|soc/freescale|components/drivers/source/fm175xx/am_fm175xx.c|bsp_common/source/am_bsp_microlib.c|bsp_common/source/am_bsp_armlib.c|components/libc/microlib_adapter|components/libc/armlib_adapter|startup/am_zlg116_armcc_startup.s|ametal/soc/zlg/zlg217|ametal/common/components/usb|ametal/common/components/libc/microlib_adapter|ametal/common/components/libc/armlib_adapter|ametal/board/am116_core/am_bsp_armlib.h|ametal/board/am116_core/am_bsp_armlib.c|ametal/board/am116_core/am_bsp_microlib.h|ametal/board/am116_core/am_bsp_microlib.c|ametal/soc/zlg/zlg116/drivers/include/am_zlg116_spi_slave_dma.h|ametal/soc/zlg/zlg116/drivers/source/am_zlg116_spi_slave_dma.c" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name=""/>
+						<entry excluding="soc/zlg/drivers/source/clk/am_zlg217_clk.c|soc/zlg/drivers/source/pwr/am_zlg217_pwr.c|soc/zlg/drivers/source/gpio/am_zlg217_gpio.c|soc/nxp|soc/zlg/zlg217|soc/zlg/drivers/source/rcc/hw/amhw_zlg217_rcc.c|soc/zlg/drivers/source/rtc/am_zlg217_rtc.c|components/usb|soc/freescale|components/drivers/source/fm175xx/am_fm175xx.c|bsp_common/source/am_bsp_microlib.c|bsp_common/source/am_bsp_armlib.c|components/libc/microlib_adapter|components/libc/armlib_adapter|startup/am_zlg116_armcc_startup.s|ametal/soc/zlg/zlg217|ametal/common/components/usb|ametal/common/components/libc/microlib_adapter|ametal/common/components/libc/armlib_adapter|ametal/board/am116_core/am_bsp_armlib.h|ametal/board/am116_core/am_bsp_armlib.c|ametal/board/am116_core/am_bsp_microlib.h|ametal/board/am116_core/am_bsp_microlib.c|ametal/soc/zlg/zlg116/drivers/include/am_zlg116_spi_slave_dma.h|ametal/soc/zlg/zlg116/drivers/source/am_zlg116_spi_slave_dma.c" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name=""/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>
@@ -322,7 +334,7 @@
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
-						<entry excluding="components/usb|soc/freescale|components/drivers/source/fm175xx/am_fm175xx.c|bsp_common/source/am_bsp_microlib.c|bsp_common/source/am_bsp_armlib.c|components/libc/microlib_adapter|components/libc/armlib_adapter|startup/am_zlg116_armcc_startup.s|ametal/soc/zlg/zlg217|ametal/common/components/usb|ametal/common/components/libc/microlib_adapter|ametal/common/components/libc/armlib_adapter|ametal/board/am116_core/am_bsp_armlib.h|ametal/board/am116_core/am_bsp_armlib.c|ametal/board/am116_core/am_bsp_microlib.h|ametal/board/am116_core/am_bsp_microlib.c|ametal/soc/zlg/zlg116/drivers/include/am_zlg116_spi_slave_dma.h|ametal/soc/zlg/zlg116/drivers/source/am_zlg116_spi_slave_dma.c" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name=""/>
+						<entry excluding="soc/zlg/drivers/source/clk/am_zlg217_clk.c|soc/zlg/drivers/source/pwr/am_zlg217_pwr.c|soc/zlg/drivers/source/gpio/am_zlg217_gpio.c|soc/nxp|soc/zlg/zlg217|soc/zlg/drivers/source/rcc/hw/amhw_zlg217_rcc.c|soc/zlg/drivers/source/rtc/am_zlg217_rtc.c|components/usb|soc/freescale|components/drivers/source/fm175xx/am_fm175xx.c|bsp_common/source/am_bsp_microlib.c|bsp_common/source/am_bsp_armlib.c|components/libc/microlib_adapter|components/libc/armlib_adapter|startup/am_zlg116_armcc_startup.s|ametal/soc/zlg/zlg217|ametal/common/components/usb|ametal/common/components/libc/microlib_adapter|ametal/common/components/libc/armlib_adapter|ametal/board/am116_core/am_bsp_armlib.h|ametal/board/am116_core/am_bsp_armlib.c|ametal/board/am116_core/am_bsp_microlib.h|ametal/board/am116_core/am_bsp_microlib.c|ametal/soc/zlg/zlg116/drivers/include/am_zlg116_spi_slave_dma.h|ametal/soc/zlg/zlg116/drivers/source/am_zlg116_spi_slave_dma.c" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name=""/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>

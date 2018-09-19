@@ -52,6 +52,7 @@
 #include "am_zlg217_pwr.h"
 #include "am_zlg217_clk.h"
 #include "am_zlg217_inst_init.h"
+#include "zlg217_periph_map.h"
 #include "amhw_zlg_uart.h"
 
 /** \brief LSI 时钟频率 */
@@ -121,7 +122,7 @@ am_local void __rtc_init (void)
 
     amhw_zlg217_rcc_apb1_enable(AMHW_ZLG217_RCC_APB1_PWR); /* 使能电源时钟 */
     amhw_zlg217_rcc_apb1_enable(AMHW_ZLG217_RCC_APB1_BKP); /* 使能备份时钟 */
-    amhw_zlg217_pwr_bkp_access_enable(ZLG217_PWR, 1); /* 取消备份域的写保护 */
+    amhw_zlg_pwr_bkp_access_enable(ZLG217_PWR, 1); /* 取消备份域的写保护 */
     amhw_zlg217_rcc_bdcr_bdrst_reset();                    /* 备份区域软件复位 */
     am_udelay(5);
     amhw_zlg217_rcc_bdcr_bdrst_reset_end();                /* 备份域软件复位结束 */
