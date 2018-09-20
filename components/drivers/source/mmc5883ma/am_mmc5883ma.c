@@ -27,18 +27,18 @@
  * \return AM_OK:成功    OTHER：失败
  */
 int __mmc5883ma_read_reg(am_mmc5883ma_handle_t handle, 
-	                                   uint8_t reg_addr,
-                                  int16_t *p_magnetic)
+	                     uint8_t               reg_addr,
+                         int16_t               *p_magnetic)
 {
-    uint8_t magnetic[2];
-    int ret = AM_OK;
-	  const uint8_t init_value[1] = {0x57};
+    uint8_t       magnetic[2];
+    int           ret           = AM_OK;
+	const uint8_t init_value[1] = {0x57};
 		
     /* I2C设备指针 */
     am_i2c_device_t *p_i2c_dev = &(handle->i2c_dev);
-    ret =  am_i2c_read(p_i2c_dev, reg_addr, magnetic, 2);
+    ret                        = am_i2c_read(p_i2c_dev, reg_addr, magnetic, 2);
     
-		am_i2c_write(p_i2c_dev,MMC5883MA_INTERNAL_CONTROL_0,&init_value[0], 1);
+	am_i2c_write(p_i2c_dev,MMC5883MA_INTERNAL_CONTROL_0,&init_value[0], 1);
 		 
     /* 检查读取是否失败 */
     if (ret != AM_OK) {
@@ -47,7 +47,8 @@ int __mmc5883ma_read_reg(am_mmc5883ma_handle_t handle,
     
     /* 数据处理 */
     if (magnetic[0] & 0x01) {
-        *p_magnetic = (((uint16_t)(magnetic[1] << 8)| (uint16_t)magnetic[0])*360/65535);			
+        *p_magnetic = (((uint16_t)(magnetic[1] << 8)
+			          | (uint16_t)magnetic[0])*360/65535);			
     }
 		
     return ret;
@@ -57,7 +58,8 @@ int __mmc5883ma_read_reg(am_mmc5883ma_handle_t handle,
  * \brief 读取mmc5883ma三轴陀螺仪
  * \return AM_OK:成功    OTHER：失败
  */
-int am_mmc5883ma_read_magnetic(am_mmc5883ma_handle_t handle, int16_t* p_magnetic)
+int am_mmc5883ma_read_magnetic(am_mmc5883ma_handle_t handle,
+                               int16_t*              p_magnetic)
 {
     int ret = AM_OK;
 
@@ -95,10 +97,10 @@ int am_mmc5883ma_read_magnetic(am_mmc5883ma_handle_t handle, int16_t* p_magnetic
 /**
  * \brief MMC5883MA三轴磁传感器初始化
  */
-am_mmc5883ma_handle_t am_mmc5883ma_init(am_mmc5883ma_dev_t *p_dev, 
-                          const am_mmc5883ma_devinfo_t *p_devinfo,
-                                       am_i2c_handle_t i2c_handle)
-{
+am_mmc5883ma_handle_t am_mmc5883ma_init(am_mmc5883ma_dev_t     *p_dev, 
+                                  const am_mmc5883ma_devinfo_t *p_devinfo,
+                                        am_i2c_handle_t        i2c_handle)
+{ 
     uint8_t mmc5883ma_id = 0; 
   
     /* 验证参数有效性 */
@@ -109,19 +111,31 @@ am_mmc5883ma_handle_t am_mmc5883ma_init(am_mmc5883ma_dev_t *p_dev,
     p_dev->i2c_dev.handle = i2c_handle; 
 		
     /* 初始配置好MMC5883MA设备信息 */
-    am_i2c_mkdev(&(p_dev->i2c_dev),i2c_handle,
-                   MMC5883MA_ADDR,AM_I2C_ADDR_7BIT 
-		                   | AM_I2C_SUBADDR_1BYTE);
+    am_i2c_mkdev(&(p_dev->i2c_dev),
+		         i2c_handle,
+                 MMC5883MA_ADDR,
+		         AM_I2C_ADDR_7BIT 
+		       | AM_I2C_SUBADDR_1BYTE);
 
     /* 读取MMC5883MA ID */
-    am_i2c_read(&(p_dev->i2c_dev),MMC5883MA_PRODUCT_ID_1, &mmc5883ma_id, 1);
+    am_i2c_read(&(p_dev->i2c_dev),
+		        MMC5883MA_PRODUCT_ID_1, 
+		        &mmc5883ma_id, 
+		        1);
+		
     AM_DBG_INFO("mmc5883ma_ID = 0x%x\r\n", mmc5883ma_id);
 		
 		 /* 配置启动磁场温度测量 */
-    am_i2c_write(&(p_dev->i2c_dev), MMC5883MA_INTERNAL_CONTROL_0, &(p_devinfo->start_measurement), 1);
+    am_i2c_write(&(p_dev->i2c_dev), 
+		         MMC5883MA_INTERNAL_CONTROL_0, 
+		         &(p_devinfo->start_measurement), 
+		         1);
 		
     /* 配置测量频率为14Hz */
-    am_i2c_write(&(p_dev->i2c_dev), MMC5883MA_INTERNAL_CONTROL_2, &(p_devinfo->frequency), 1);
+    am_i2c_write(&(p_dev->i2c_dev),
+		         MMC5883MA_INTERNAL_CONTROL_2,
+		         &(p_devinfo->frequency), 
+		         1);
 		
     return p_dev;
 }

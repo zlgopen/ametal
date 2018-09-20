@@ -27,11 +27,11 @@
  * \return AM_OK:成功    OTHER：失败
  */
 static int __bmg160_read_rate_reg(am_bmg160_handle_t handle, 
-                                           uint8_t reg_addr,
-                                            int16_t *p_rate)
+                                  uint8_t            reg_addr,
+                                  int16_t            *p_rate)
 {
     uint8_t rate_temp[2];
-    int ret = AM_OK;
+    int     ret = AM_OK;
     
     /* I2C设备指针 */
     am_i2c_device_t *p_i2c_dev = &(handle->i2c_dev);
@@ -45,7 +45,8 @@ static int __bmg160_read_rate_reg(am_bmg160_handle_t handle,
     
     /* 数据处理 */
     if (rate_temp[0] & 0x01) {
-        *p_rate = (((uint16_t)(rate_temp[1] << 8)| (uint16_t)rate_temp[0])*360/65535);			
+        *p_rate = (((uint16_t)(rate_temp[1] << 8)
+		          | (uint16_t)rate_temp[0])*360/65535);			
     }
 		
     return ret;
@@ -109,9 +110,9 @@ int am_bmg160_read_temp (am_bmg160_handle_t handle, int8_t* p_temp)
 /**
  * \brief BMG160传感器初始化
  */
-am_bmg160_handle_t am_bmg160_init(am_bmg160_dev_t *p_dev, 
-                    const am_bmg160_devinfo_t *p_devinfo,
-                              am_i2c_handle_t i2c_handle)
+am_bmg160_handle_t am_bmg160_init(am_bmg160_dev_t           *p_dev, 
+                                  const am_bmg160_devinfo_t *p_devinfo,
+                                  am_i2c_handle_t           i2c_handle)
 {
     uint8_t bmg160_id =    0; 
   
@@ -123,9 +124,11 @@ am_bmg160_handle_t am_bmg160_init(am_bmg160_dev_t *p_dev,
     p_dev->i2c_dev.handle = i2c_handle; 
 		
     /* 初始配置好BMG160设备信息 */
-    am_i2c_mkdev(&(p_dev->i2c_dev),i2c_handle,
-                   BMG160_ADDR,AM_I2C_ADDR_7BIT 
-		                   | AM_I2C_SUBADDR_1BYTE);
+    am_i2c_mkdev(&(p_dev->i2c_dev),
+	              i2c_handle,
+                  BMG160_ADDR,
+				  AM_I2C_ADDR_7BIT 
+		        | AM_I2C_SUBADDR_1BYTE);
 
     /* 读取BMG160 ID */
     am_i2c_read(&(p_dev->i2c_dev),BMG160_CHIP_ID, &bmg160_id, 1);

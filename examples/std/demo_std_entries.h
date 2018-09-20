@@ -1,4 +1,4 @@
-﻿/*******************************************************************************
+/*******************************************************************************
 *                                 AMetal
 *                       ----------------------------
 *                       innovating embedded platform
@@ -123,6 +123,8 @@ void demo_std_gpio_trigger_entry (int pin);
  * \return 无
  */
 void demo_std_i2c_lm75_entry (am_temp_handle_t handle);
+
+
 
 /**
  * \brief I2C 主机访问 EEPROM 设备例程，通过异步标准接口实现

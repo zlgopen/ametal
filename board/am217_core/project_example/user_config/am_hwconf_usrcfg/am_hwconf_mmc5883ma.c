@@ -22,8 +22,8 @@
  */
 #include "ametal.h"
 #include "am_mmc5883ma.h"
-#include "am_zlg116_inst_init.h"
-#include "zlg116_pin.h"
+#include "am_zlg217_inst_init.h"
+#include "zlg217_pin.h"
 
 /**
  * \addtogroup am_if_src_hwconf_mmc5883ma
@@ -51,7 +51,7 @@ am_local am_mmc5883ma_dev_t __g_mmc5883ma_dev;
 am_mmc5883ma_handle_t am_mmc5883ma_inst_init (void)
 {
     /* »ñÈ¡ I2C ÊµÀý¾ä±ú */
-    am_i2c_handle_t i2c_handle =  am_zlg116_i2c1_inst_init();
+    am_i2c_handle_t i2c_handle =  am_zlg217_i2c1_inst_init();
 
     return am_mmc5883ma_init (&__g_mmc5883ma_dev, 
                               &__g_mmc5883ma_devinfo,

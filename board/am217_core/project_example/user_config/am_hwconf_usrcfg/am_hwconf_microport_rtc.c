@@ -69,8 +69,9 @@ am_pcf85063_handle_t am_microport_rtc_inst_init (void)
 /** \brief 设备定义 */
 am_local am_rtc_serv_t __g_microport_rtc_rtc;
 
+
 /** \brief 实例初始化 */
-am_rtc_handle_t am_microport_std_rtc_inst_init (void)
+am_rtc_handle_t am_microport_rtc_std_inst_init (void)
 {
     am_pcf85063_handle_t microport_rtc_handle = am_microport_rtc_inst_init();
 
@@ -105,7 +106,7 @@ am_alarm_clk_handle_t am_microport_rtc_alarm_clk_inst_init (void)
 /** \brief 实例初始化 */
 int am_microport_rtc_time_inst_init (void)
 {
-    am_rtc_handle_t rtc_handle = am_microport_std_rtc_inst_init();
+    am_rtc_handle_t rtc_handle = am_microport_rtc_std_inst_init();
 
     return am_time_init(rtc_handle,
                         __UPDATE_SYSCLK_NS,

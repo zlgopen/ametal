@@ -42,7 +42,7 @@
  */
 void demo_bmg160_entry (void)
 {  
-    int8_t temp = 0;
+    int8_t  temp    = 0;
     int16_t rate[3] = {0};
 
     am_bmg160_handle_t handle;
@@ -53,7 +53,7 @@ void demo_bmg160_entry (void)
         am_bmg160_read_temp(handle, &temp);
         AM_DBG_INFO("temperature = %d\r\n", temp);
 			
-        /* 读取X、Y、Z通道的角速率 */
+        /** \brief 读取X、Y、Z通道的角速率 */
         am_bmg160_read_rate(handle, rate);
         AM_DBG_INFO(" x_rate = %d\r\n y_rate = %d\r\n z_rate = %d\r\n",
                     rate[0],rate[1],rate[2]);

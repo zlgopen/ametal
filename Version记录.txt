@@ -4,9 +4,19 @@ AMetal 版本记录  （按照该模式逐上添加记录）
 
 
 **************************************************
-V1.0.02  Date  : 2018-09-13   Author: wk
+V1.0.02  Date  : 2018-09-14   Author: wk
 
-1、添加XXX传感器驱动代码
+1、添加BMG160传感器驱动代码
+   am_bmg160.c, am_bmg160.h, demo_bmg160.c,
+   am_hwconf_bmg160.c, am_hwconf_bmg160.h 
+2、添加MMC5883MA传感器驱动代码
+   am_mmc5883ma.c, am_mmc5883ma.h, demo_mmc5883ma.c,
+   am_hwconf_mmc5883ma.c, am_hwconf_mmc5883ma.h 
+3、添加LSM6DSL传感器驱动代码
+   am_lsm6dsl.c, am_lsm6dsl.h, demo_lsm6dsl.c,
+   am_hwconf_lsm6dsl.c, am_hwconf_lsm6dsl.h 
+4、修改传感器驱动头文件，删除了与芯片相关的头文件包含
+5、添加并修改用户配置文件使AW-Sensor板所有的传感器能在217平台运行
 
 **************************************************
 **************************************************

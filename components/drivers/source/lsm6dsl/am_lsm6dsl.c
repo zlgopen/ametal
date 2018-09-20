@@ -27,8 +27,8 @@
  * \return AM_OK:成功    OTHER：失败
  */
 static int __lsm6dsl_read_reg(am_lsm6dsl_handle_t handle, 
-                                        uint8_t reg_addr,
-                                        int16_t *p_accel)
+                              uint8_t             reg_addr,
+                              int16_t             *p_accel)
 {
     uint8_t accel_temp[2];
     int ret = AM_OK;
@@ -44,7 +44,8 @@ static int __lsm6dsl_read_reg(am_lsm6dsl_handle_t handle,
     }
 		/* 数据处理 */
     if (accel_temp[0] & 0x01) {
-        *p_accel = (((uint16_t)(accel_temp[1] << 8)| (uint16_t)accel_temp[0])*360/65535);			
+        *p_accel = (((uint16_t)(accel_temp[1] << 8)
+		           | (uint16_t)accel_temp[0])*360/65535);			
     }
     
     return ret;
@@ -53,15 +54,14 @@ static int __lsm6dsl_read_reg(am_lsm6dsl_handle_t handle,
 
 int am_lsm6dsl_read_temp(am_lsm6dsl_handle_t handle, int16_t* p_temp)
 {
-	  int ret = AM_OK;
+	int ret = AM_OK;
     /* 读取温度 */    
-    ret = __lsm6dsl_read_reg(handle, LSM6DSL_OUT_TEMP_L, p_temp);
+        ret = __lsm6dsl_read_reg(handle, LSM6DSL_OUT_TEMP_L, p_temp);
     /* 检查读取是否失败 */
     if (ret != AM_OK) {
         return ret;
     }
-		
-		/* 计算温度 */
+	/* 计算温度 */
     *p_temp = (int8_t)(24 + *p_temp * 1.0 / 2);
 		
 		return  ret;
@@ -102,9 +102,9 @@ int am_lsm6dsl_read_accel(am_lsm6dsl_handle_t handle, int16_t* p_accel)
 /**
  * \brief LSM6DSL三轴磁传感器初始化
  */
-am_lsm6dsl_handle_t am_lsm6dsl_init(am_lsm6dsl_dev_t *p_dev, 
-                          const am_lsm6dsl_devinfo_t *p_devinfo,
-                                       am_i2c_handle_t i2c_handle)
+am_lsm6dsl_handle_t am_lsm6dsl_init(am_lsm6dsl_dev_t     *p_dev, 
+                              const am_lsm6dsl_devinfo_t *p_devinfo,
+                                    am_i2c_handle_t      i2c_handle)
 {
     uint8_t lsm6dsl_id =    0; 
   
@@ -117,8 +117,8 @@ am_lsm6dsl_handle_t am_lsm6dsl_init(am_lsm6dsl_dev_t *p_dev,
 		
     /* 初始配置好LSM6DSL设备信息 */
     am_i2c_mkdev(&(p_dev->i2c_dev),i2c_handle,
-                   LSM6DSL_ADDR,AM_I2C_ADDR_7BIT 
-		                   | AM_I2C_SUBADDR_1BYTE);
+                 LSM6DSL_ADDR,AM_I2C_ADDR_7BIT 
+		         | AM_I2C_SUBADDR_1BYTE);
 
     /* 读取LSM6DSL ID */
     am_i2c_read(&(p_dev->i2c_dev),LSM6DSL_WHO_AM_I, &lsm6dsl_id, 1);
