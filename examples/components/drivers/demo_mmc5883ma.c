@@ -40,7 +40,7 @@
 /**
  * \brief Àý³ÌÈë¿Ú
  */
- void demo_mmc5883ma_entry (void)
+void demo_mmc5883ma_entry (void)
 {  
 	  int16_t magnetic[4] = {0};
 		

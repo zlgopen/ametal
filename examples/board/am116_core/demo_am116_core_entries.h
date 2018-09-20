@@ -519,6 +519,16 @@ void demo_shtc1_entry (void);
 void demo_bmg160_entry (void);
 
 /**
+ * \brief MMC5883三轴磁传感器例程
+ */
+void demo_mmc5883ma_entry (void);
+
+/**
+ * \brief LSM6DSL三轴加速度传感器例程
+ */
+void demo_lsm6dsl_entry (void);
+
+/**
  * \brief SC16IS7XX I2C转UART例程
  */
 void demo_sc16is7xx_entry (void);

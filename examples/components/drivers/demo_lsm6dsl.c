@@ -43,22 +43,22 @@
  void demo_lsm6dsl_entry (void)
 {  
 	  
-	  int16_t temp     = 0;
-	  int16_t accel[3] = {0};
-		
-	  am_lsm6dsl_handle_t handle;
-	  handle = am_lsm6dsl_inst_init();
+    int16_t temp     = 0;
+    int16_t accel[3] = {0};
+
+    am_lsm6dsl_handle_t handle;
+    handle = am_lsm6dsl_inst_init();
 		
     while (1) {
-			/** \brief 读取温度 */
-			am_lsm6dsl_read_temp(handle, &temp);
-			AM_DBG_INFO(" temp = %d\r\n",temp);
-			
-			/** \brief 读取X、Y、Z通道的加速度 */
-		    am_lsm6dsl_read_accel(handle, accel);
-	        AM_DBG_INFO(" x_accel = %d\r\n y_accel = %d\r\n z_accel = %d\r\n",
-			                accel[0],      accel[1],          accel[2]);
-            am_mdelay(1000);
+        /** \brief 读取温度 */
+        am_lsm6dsl_read_temp(handle, &temp);
+        AM_DBG_INFO(" temp = %d\r\n",temp);
+
+        /** \brief 读取X、Y、Z通道的加速度 */
+        am_lsm6dsl_read_accel(handle, accel);
+        AM_DBG_INFO(" x_accel = %d\r\n y_accel = %d\r\n z_accel = %d\r\n",
+                        accel[0],      accel[1],          accel[2]);
+        am_mdelay(1000);
     }
 }
 /** [src_lsm6dsl] */
