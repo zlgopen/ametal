@@ -3,11 +3,12 @@
 *                       ----------------------------
 *                       innovating embedded platform
 *
-* Copyright (c) 2001-2018 Guangzhou ZHIYUAN Electronics Co., Ltd.
+* Copyright (c) 2001-2018 Guangzhou ZHIYUAN Electronics Stock Co., Ltd.
 * All rights reserved.
 *
 * Contact information:
 * web site:    http://www.zlg.cn/
+* e-mail:      ametal.support@zlg.cn
 *******************************************************************************/
 
 /**
@@ -85,6 +86,12 @@ enum __ZM516X_CFG_ERR {
 enum __ZM516X_COM_ERR {
     ZM516X_COM_OK              = 0x00,    /**< \brief ²Ù×÷³É¹¦ */
 };
+
+typedef struct __firmware_info {
+    uint8_t   runing_status;
+    uint8_t   dev_type[2];
+    uint8_t   firmware_version[2];
+} __firmware_info_t;
 
 /**
  * @addtogroup am_zm516x
@@ -210,10 +217,11 @@ am_err_t am_zm516x_receive (am_zm516x_handle_t handle,
 am_err_t am_zm516x_cfg_info_get (am_zm516x_handle_t    handle,
                                  am_zm516x_cfg_info_t *p_info)
 {
-    am_zm516x_dev_t *p_dev                         = (am_zm516x_dev_t *)handle;
-    uint8_t          cmd_buf[__ZM516X_CMD_BUF_LEN] = {0};
-    uint8_t          rsp_buf[__ZM516X_RSP_BUF_LEN] = {0};
-    uint16_t         rsp_len;
+    am_zm516x_dev_t  *p_dev                         = (am_zm516x_dev_t *)handle;
+    uint8_t           cmd_buf[__ZM516X_CMD_BUF_LEN] = {0};
+    uint8_t           rsp_buf[__ZM516X_RSP_BUF_LEN] = {0};
+    uint16_t          rsp_len;
+    __firmware_info_t firmware_info;
 
     if ((NULL == handle) || (NULL == p_info)) {
         return -AM_EINVAL;
@@ -236,6 +244,14 @@ am_err_t am_zm516x_cfg_info_get (am_zm516x_handle_t    handle,
             return -AM_EPERM;
         }
         memcpy(p_info, &rsp_buf[4], sizeof(am_zm516x_cfg_info_t));
+
+        memcpy(&firmware_info,
+               &rsp_buf[4 + sizeof(am_zm516x_cfg_info_t)],
+               sizeof(__firmware_info_t));
+
+        handle->dev_type[0] = firmware_info.dev_type[0];
+        handle->dev_type[1] = firmware_info.dev_type[1];
+
         return AM_OK;
     }
     return -AM_EPERM;
@@ -434,8 +450,8 @@ void am_zm516x_reset (am_zm516x_handle_t handle)
     cmd_buf[3] = ZM516X_CFG_RESET;
     cmd_buf[4] = zb_info.my_addr[0];
     cmd_buf[5] = zb_info.my_addr[1];
-    cmd_buf[6] = 0x00;
-    cmd_buf[7] = 0x01;
+    cmd_buf[6] = handle->dev_type[0];
+    cmd_buf[7] = handle->dev_type[1];
     cmd_buf[8] = __ZM516X_CFG_END;
 
     am_zm516x_send_cmd(p_dev->uart_handle, cmd_buf, 9, NULL, &rsp_len, 50);
@@ -459,8 +475,8 @@ am_err_t am_zm516x_default_set (am_zm516x_handle_t handle)
     cmd_buf[3] = ZM516X_CFG_REDEFAULT;
     cmd_buf[4] = zb_info.my_addr[0];
     cmd_buf[5] = zb_info.my_addr[1];
-    cmd_buf[6] = 0x00;
-    cmd_buf[7] = 0x01;
+    cmd_buf[6] = handle->dev_type[0];
+    cmd_buf[7] = handle->dev_type[1];
     cmd_buf[8] = __ZM516X_CFG_END;
 
     if (am_zm516x_send_cmd(p_dev->uart_handle,
@@ -1528,6 +1544,8 @@ am_zm516x_handle_t am_zm516x_init (am_zm516x_dev_t            *p_dev,
                                    const am_zm516x_dev_info_t *p_info,
                                    am_uart_handle_t            uart_handle)
 {
+    am_zm516x_cfg_info_t cfg_info;
+
     if ((NULL == p_dev) || (NULL == p_info) || (NULL == uart_handle)) {
         return NULL;
     }
@@ -1561,6 +1579,8 @@ am_zm516x_handle_t am_zm516x_init (am_zm516x_dev_t            *p_dev,
 
         am_wait_init(&p_dev->ack_wait);
     }
+
+    am_zm516x_cfg_info_get(p_dev, &cfg_info);
 
     return (am_zm516x_handle_t)(p_dev);
 }
