@@ -66,7 +66,7 @@ static const am_zlg_uart_devinfo_t __g_uart1_devinfo = {
     AMHW_ZLG_UART_PARITY_NO   |  /**< \brief 无极性 */
     AMHW_ZLG_UART_STOP_1BIT,     /**< \brief 1个停止位 */
 
-    9600,                         /**< \brief 设置的波特率 */
+    115200,                         /**< \brief 设置的波特率 */
 
     0,                              /**< \brief 无其他中断 */
 
