@@ -51,7 +51,7 @@ static void __pllin_hsi_init (void)
 
     while (amhw_zlg116_rcc_hsirdy_read() == AM_FALSE);
 
-//    amhw_zlg116_rcc_hsiten_enable();
+//    amhw_zlg116_rcc_hsiten_enable(); 
 
     __gp_dev->pllin_clk = __HSI_CLK / 4;
 }

@@ -30,6 +30,7 @@
 #include "am_vdebug.h"
 #include "am_board.h"
 #include "demo_am116_core_entries.h"
+
 /**
  * \brief AMetal 应用程序入口
  */
@@ -43,6 +44,7 @@ int am_main (void)
      *
      * 注意：同一时刻只能运行一个 demo，即只能使某一行处于取消注释状态。
      */
+
 //    demo_am116_core_std_led_entry();
 //    demo_am116_core_std_delay_entry();
 //    demo_am116_core_hw_adc_int_entry();
@@ -139,6 +141,9 @@ int am_main (void)
 //    demo_ltr_553als_entry();
 //    demo_bma253_entry(); 
 //    demo_bmg160_entry();
+//    demo_sc16is7xx_entry();  
+        
     while (1) {
+
     }
 }

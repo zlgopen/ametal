@@ -31,19 +31,19 @@
 /**
  * \brief LTR_553ALS ID寄存器地址
  */    
-#define     LTR_553ALS_ALS_CONTR            0x80
+#define     LTR_553ALS_CONTR                0x80
 #define     LTR_553ALS_PS_CONTR             0x81
 #define     LTR_553ALS_PS_LED               0x82
 #define     LTR_553ALS_PS_N_PULSES          0x83
 #define     LTR_553ALS_PS_MEAS_RATE         0x84
-#define     LTR_553ALS_ALS_MEAS_RATE        0x85
+#define     LTR_553ALS_MEAS_RATE            0x85
 #define     LTR_553ALS_PART_ID              0x86
 #define     LTR_553ALS_MANUFAC_ID           0x87
-#define     LTR_553ALS_ALS_DATA_CH1_0       0x88
-#define     LTR_553ALS_ALS_DATA_CH1_1       0x89
-#define     LTR_553ALS_ALS_DATA_CH0_0       0x8A
-#define     LTR_553ALS_ALS_DATA_CH0_1       0x8B
-#define     LTR_553ALS_ALS_PS_STATUS        0x8C
+#define     LTR_553ALS_DATA_CH1_0           0x88
+#define     LTR_553ALS_DATA_CH1_1           0x89
+#define     LTR_553ALS_DATA_CH0_0           0x8A
+#define     LTR_553ALS_DATA_CH0_1           0x8B
+#define     LTR_553ALS_PS_STATUS            0x8C
 #define     LTR_553ALS_PS_DATA_0            0x8D
 #define     LTR_553ALS_PS_DATA_1            0x8E
 #define     LTR_553ALS_INTERRUPT            0x8F
@@ -53,10 +53,10 @@
 #define     LTR_553ALS_PS_THRES_LOW_1       0x93
 #define     LTR_553ALS_PS_OFFSET_1          0x94
 #define     LTR_553ALS_PS_OFFSET_0          0x95
-#define     LTR_553ALS_ALS_THRES_UP_0       0x97
-#define     LTR_553ALS_ALS_THRES_UP_1       0x98
-#define     LTR_553ALS_ALS_THRES_LOW_0      0x99
-#define     LTR_553ALS_ALS_THRES_LOW_1      0x9A
+#define     LTR_553ALS_THRES_UP_0           0x97
+#define     LTR_553ALS_THRES_UP_1           0x98
+#define     LTR_553ALS_THRES_LOW_0          0x99
+#define     LTR_553ALS_THRES_LOW_1          0x9A
 #define     LTR_553ALS_INTERRUPT_PERSIST    0x9E
     
 /**
@@ -89,7 +89,7 @@ int am_ltr_553als_soft_reset (am_ltr_553als_handle_t handle)
 
     /* 写复位指令 */
     ret = am_i2c_write(p_i2c_dev,
-                      LTR_553ALS_ALS_CONTR,             
+                      LTR_553ALS_CONTR,             
                       &soft_reset_cmd,
                       1);
 
@@ -111,7 +111,7 @@ int am_ltr_553als_read_als (am_ltr_553als_handle_t handle, uint16_t* p_als)
     /* I2C设备指针 */
     am_i2c_device_t *p_i2c_dev = &(handle->i2c_dev); 
 
-    ret = am_i2c_read(p_i2c_dev, LTR_553ALS_ALS_DATA_CH1_0, als_temp, 4);
+    ret = am_i2c_read(p_i2c_dev, LTR_553ALS_DATA_CH1_0, als_temp, 4);
     
     /* 检查发送是否失败 */
     if (ret != AM_OK) {
@@ -189,7 +189,7 @@ am_ltr_553als_handle_t am_ltr_553als_init (am_ltr_553als_dev_t *p_dev,
     /* 配置光照测量范围、激活模式 */
     als_contr = (p_devinfo->als_gain | 0x03);
     am_i2c_write(&(p_dev->i2c_dev), 
-                 LTR_553ALS_ALS_CONTR, 
+                 LTR_553ALS_CONTR, 
                  &als_contr,
                  1);
 
@@ -222,7 +222,7 @@ am_ltr_553als_handle_t am_ltr_553als_init (am_ltr_553als_dev_t *p_dev,
     /* 配置光传感器测量速率 */
     als_meas_rate = (p_devinfo->als_integre_time | p_devinfo->als_meas_rate);
     am_i2c_write(&(p_dev->i2c_dev), 
-                 LTR_553ALS_ALS_MEAS_RATE, 
+                 LTR_553ALS_MEAS_RATE, 
                  &als_meas_rate, 
                  1);
   
@@ -243,7 +243,7 @@ void am_ltr_553als_deinit (am_ltr_553als_handle_t handle)
     am_i2c_device_t *p_i2c_dev = &(handle->i2c_dev);
     
     /* 配置光照传感器待机模式 */
-    am_i2c_write(p_i2c_dev, LTR_553ALS_ALS_CONTR, &als_contr, 1);
+    am_i2c_write(p_i2c_dev, LTR_553ALS_CONTR, &als_contr, 1);
 
     /* 配置接近传感器待机模式 */
     am_i2c_write(p_i2c_dev, LTR_553ALS_PS_CONTR, &ps_contr, 1);

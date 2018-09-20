@@ -508,6 +508,11 @@ void demo_shtc1_entry (void);
  */
 void demo_bmg160_entry (void);
 
+/**
+ * \brief SC16IS7XX I2C×ªUARTÀý³Ì
+ */
+void demo_sc16is7xx_entry (void);
+
 #ifdef __cplusplus
 }
 #endif
