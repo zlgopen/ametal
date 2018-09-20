@@ -77,7 +77,14 @@
         <tvExpOptDlg>0</tvExpOptDlg>
         <IsCurrentTarget>1</IsCurrentTarget>
       </OPTFL>
-      <CpuCode>255</CpuCode>
+      <CpuCode>8</CpuCode>
+      <Books>
+        <Book>
+          <Number>0</Number>
+          <Title>LPCXpresso824-MAX: Blinky Lab (LPC824 LPCXpresso)</Title>
+          <Path>C:\Keil_v5\ARM\PACK\Keil\LPC800_DFP\1.2.0\Documents\NXP824_Blinky_Lab.pdf</Path>
+        </Book>
+      </Books>
       <DebugOpt>
         <uSim>0</uSim>
         <uTrg>1</uTrg>
@@ -116,13 +123,28 @@
       <TargetDriverDllRegistry>
         <SetRegEntry>
           <Number>0</Number>
+          <Key>ARMRTXEVENTFLAGS</Key>
+          <Name>-L70 -Z18 -C0 -M0 -T1</Name>
+        </SetRegEntry>
+        <SetRegEntry>
+          <Number>0</Number>
+          <Key>DLGTARM</Key>
+          <Name>(1010=-1,-1,-1,-1,0)(1007=-1,-1,-1,-1,0)(1008=-1,-1,-1,-1,0)(1009=-1,-1,-1,-1,0)</Name>
+        </SetRegEntry>
+        <SetRegEntry>
+          <Number>0</Number>
+          <Key>ARMDBGFLAGS</Key>
+          <Name></Name>
+        </SetRegEntry>
+        <SetRegEntry>
+          <Number>0</Number>
           <Key>JL2CM3</Key>
-          <Name>-U522133299 -O78 -S2 -ZTIFSpeedSel5000 -A0 -C0 -JU1 -JI127.0.0.1 -JP0 -RST0 -N00("ARM CoreSight SW-DP") -D00(0BB11477) -L00(0) -TO18 -TC10000000 -TP21 -TDS8007 -TDT0 -TDC1F -TIEFFFFFFFF -TIP8 -TB1 -TFE0 -FO15 -FD20000000 -FC1000 -FN1 -FF0ZLG116.FLM -FS08000000 -FL010000 -FP0($$Device:ZLG116$Flash\ZLG116.FLM)</Name>
+          <Name>-U59404042 -O78 -S2 -ZTIFSpeedSel5000 -A0 -C0 -JU1 -JI127.0.0.1 -JP0 -RST0 -N00("ARM CoreSight SW-DP") -D00(0BC11477) -L00(0) -TO18 -TC10000000 -TP21 -TDS8007 -TDT0 -TDC1F -TIEFFFFFFFF -TIP8 -TB1 -TFE0 -FO15 -FD10000000 -FC2000 -FN1 -FF0LPC8xx_32.FLM -FS00 -FL08000 -FP0($$Device:LPC824M201JDH20$Flash\LPC8xx_32.FLM)</Name>
         </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
           <Key>UL2CM3</Key>
-          <Name>UL2CM3(-S0 -C0 -P0 -FD20000000 -FC1000 -FN1 -FF0ZLG116 -FS08000000 -FL010000 -FP0($$Device:ZLG116$Flash\ZLG116.FLM))</Name>
+          <Name>UL2CM3(-S0 -C0 -P0 -FD10000000 -FCFE0 -FN1 -FF0LPC8xx_32 -FS00 -FL08000 -FP0($$Device:LPC824M201JDH20$Flash\LPC8xx_32.FLM))</Name>
         </SetRegEntry>
       </TargetDriverDllRegistry>
       <Breakpoint/>
@@ -132,12 +154,12 @@
       <DebugFlag>
         <trace>0</trace>
         <periodic>0</periodic>
-        <aLwin>0</aLwin>
+        <aLwin>1</aLwin>
         <aCover>0</aCover>
         <aSer1>0</aSer1>
         <aSer2>0</aSer2>
         <aPa>0</aPa>
-        <viewmode>0</viewmode>
+        <viewmode>1</viewmode>
         <vrSel>0</vrSel>
         <aSym>0</aSym>
         <aTbox>0</aTbox>
@@ -217,7 +239,14 @@
         <tvExpOptDlg>0</tvExpOptDlg>
         <IsCurrentTarget>0</IsCurrentTarget>
       </OPTFL>
-      <CpuCode>255</CpuCode>
+      <CpuCode>8</CpuCode>
+      <Books>
+        <Book>
+          <Number>0</Number>
+          <Title>LPCXpresso824-MAX: Blinky Lab (LPC824 LPCXpresso)</Title>
+          <Path>C:\Keil_v5\ARM\PACK\Keil\LPC800_DFP\1.2.0\Documents\NXP824_Blinky_Lab.pdf</Path>
+        </Book>
+      </Books>
       <DebugOpt>
         <uSim>0</uSim>
         <uTrg>1</uTrg>
@@ -256,13 +285,28 @@
       <TargetDriverDllRegistry>
         <SetRegEntry>
           <Number>0</Number>
+          <Key>ARMRTXEVENTFLAGS</Key>
+          <Name>-L70 -Z18 -C0 -M0 -T1</Name>
+        </SetRegEntry>
+        <SetRegEntry>
+          <Number>0</Number>
+          <Key>DLGTARM</Key>
+          <Name>(1010=-1,-1,-1,-1,0)(1007=-1,-1,-1,-1,0)(1008=-1,-1,-1,-1,0)(1009=-1,-1,-1,-1,0)</Name>
+        </SetRegEntry>
+        <SetRegEntry>
+          <Number>0</Number>
+          <Key>ARMDBGFLAGS</Key>
+          <Name></Name>
+        </SetRegEntry>
+        <SetRegEntry>
+          <Number>0</Number>
           <Key>JL2CM3</Key>
-          <Name>-U522133299 -O78 -S2 -ZTIFSpeedSel5000 -A0 -C0 -JU1 -JI127.0.0.1 -JP0 -RST0 -N00("ARM CoreSight SW-DP") -D00(0BB11477) -L00(0) -TO18 -TC10000000 -TP21 -TDS8007 -TDT0 -TDC1F -TIEFFFFFFFF -TIP8 -TB1 -TFE0 -FO15 -FD20000000 -FC1000 -FN1 -FF0ZLG116.FLM -FS08000000 -FL010000 -FP0($$Device:ZLG116$Flash\ZLG116.FLM)</Name>
+          <Name>-U59404071 -O78 -S2 -ZTIFSpeedSel5000 -A0 -C0 -JU1 -JI127.0.0.1 -JP0 -RST0 -N00("ARM CoreSight SW-DP") -D00(0BC11477) -L00(0) -TO18 -TC10000000 -TP21 -TDS8007 -TDT0 -TDC1F -TIEFFFFFFFF -TIP8 -TB1 -TFE0 -FO15 -FD10000000 -FCFE0 -FN1 -FF0LPC8xx_32.FLM -FS00 -FL08000 -FP0($$Device:LPC824M201JDH20$Flash\LPC8xx_32.FLM)</Name>
         </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
           <Key>UL2CM3</Key>
-          <Name>UL2CM3(-S0 -C0 -P0 -FD20000000 -FC1000 -FN1 -FF0ZLG116 -FS08000000 -FL010000 -FP0($$Device:ZLG116$Flash\ZLG116.FLM))</Name>
+          <Name>UL2CM3(-S0 -C0 -P0 -FD10000000 -FCFE0 -FN1 -FF0LPC8xx_32 -FS00 -FL08000 -FP0($$Device:LPC824M201JDH20$Flash\LPC8xx_32.FLM))</Name>
         </SetRegEntry>
       </TargetDriverDllRegistry>
       <Breakpoint/>
@@ -272,12 +316,12 @@
       <DebugFlag>
         <trace>0</trace>
         <periodic>0</periodic>
-        <aLwin>0</aLwin>
+        <aLwin>1</aLwin>
         <aCover>0</aCover>
         <aSer1>0</aSer1>
         <aSer2>0</aSer2>
         <aPa>0</aPa>
-        <viewmode>0</viewmode>
+        <viewmode>1</viewmode>
         <vrSel>0</vrSel>
         <aSym>0</aSym>
         <aTbox>0</aTbox>
@@ -314,8 +358,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\bsp_common\source\am_bsp_armlib.c</PathWithFileName>
-      <FilenameWithoutPath>am_bsp_armlib.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\bsp_common\source\am_assert.c</PathWithFileName>
+      <FilenameWithoutPath>am_assert.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -326,26 +370,14 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\bsp_common\source\am_bsp_delay_timer.c</PathWithFileName>
-      <FilenameWithoutPath>am_bsp_delay_timer.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\bsp_common\source\am_bsp_armlib.c</PathWithFileName>
+      <FilenameWithoutPath>am_bsp_armlib.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
     <File>
       <GroupNumber>1</GroupNumber>
       <FileNumber>3</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\bsp_common\source\am_bsp_isr_defer_pendsv.c</PathWithFileName>
-      <FilenameWithoutPath>am_bsp_isr_defer_pendsv.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>1</GroupNumber>
-      <FileNumber>4</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -357,13 +389,37 @@
     </File>
     <File>
       <GroupNumber>1</GroupNumber>
-      <FileNumber>5</FileNumber>
+      <FileNumber>4</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\..\..\bsp_common\source\am_bsp_system_heap.c</PathWithFileName>
       <FilenameWithoutPath>am_bsp_system_heap.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>1</GroupNumber>
+      <FileNumber>5</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\..\..\bsp_common\source\am_bsp_isr_defer_pendsv.c</PathWithFileName>
+      <FilenameWithoutPath>am_bsp_isr_defer_pendsv.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>1</GroupNumber>
+      <FileNumber>6</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\..\..\bsp_common\source\am_bsp_delay_timer.c</PathWithFileName>
+      <FilenameWithoutPath>am_bsp_delay_timer.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -377,9 +433,9 @@
     <RteFlg>0</RteFlg>
     <File>
       <GroupNumber>2</GroupNumber>
-      <FileNumber>6</FileNumber>
+      <FileNumber>7</FileNumber>
       <FileType>1</FileType>
-      <tvExp>0</tvExp>
+      <tvExp>1</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\..\..\..\arch\arm\source\am_arm_nvic.c</PathWithFileName>
@@ -389,7 +445,7 @@
     </File>
     <File>
       <GroupNumber>2</GroupNumber>
-      <FileNumber>7</FileNumber>
+      <FileNumber>8</FileNumber>
       <FileType>2</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -401,9 +457,9 @@
     </File>
     <File>
       <GroupNumber>2</GroupNumber>
-      <FileNumber>8</FileNumber>
+      <FileNumber>9</FileNumber>
       <FileType>1</FileType>
-      <tvExp>0</tvExp>
+      <tvExp>1</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\..\..\..\arch\arm\source\am_arm_systick.c</PathWithFileName>
@@ -419,18 +475,6 @@
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
-    <File>
-      <GroupNumber>3</GroupNumber>
-      <FileNumber>9</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\components\drivers\source\zlg600\am_zlg600.c</PathWithFileName>
-      <FilenameWithoutPath>am_zlg600.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
     <File>
       <GroupNumber>3</GroupNumber>
       <FileNumber>10</FileNumber>
@@ -666,8 +710,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\components\drivers\source\led\am_led_hc595.c</PathWithFileName>
-      <FilenameWithoutPath>am_led_hc595.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\components\drivers\source\led\am_led_gpio.c</PathWithFileName>
+      <FilenameWithoutPath>am_led_gpio.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -678,8 +722,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\components\drivers\source\led\am_led_gpio.c</PathWithFileName>
-      <FilenameWithoutPath>am_led_gpio.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\components\drivers\source\led\am_led_hc595.c</PathWithFileName>
+      <FilenameWithoutPath>am_led_hc595.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -690,8 +734,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\components\drivers\source\miniport\am_miniport_view_key_595.c</PathWithFileName>
-      <FilenameWithoutPath>am_miniport_view_key_595.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\components\drivers\source\miniport\am_miniport_view_key.c</PathWithFileName>
+      <FilenameWithoutPath>am_miniport_view_key.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -702,8 +746,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\components\drivers\source\miniport\am_miniport_view_key.c</PathWithFileName>
-      <FilenameWithoutPath>am_miniport_view_key.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\components\drivers\source\miniport\am_miniport_view_key_595.c</PathWithFileName>
+      <FilenameWithoutPath>am_miniport_view_key_595.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -830,12 +874,12 @@
     <File>
       <GroupNumber>3</GroupNumber>
       <FileNumber>43</FileNumber>
-      <FileType>4</FileType>
+      <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\components\drivers\source\fm175xx\am_fm175xx_zlg116.lib</PathWithFileName>
-      <FilenameWithoutPath>am_fm175xx_zlg116.lib</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\components\drivers\source\zlg600\am_zlg600.c</PathWithFileName>
+      <FilenameWithoutPath>am_zlg600.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -910,18 +954,6 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\components\service\source\am_dac.c</PathWithFileName>
-      <FilenameWithoutPath>am_dac.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>5</GroupNumber>
-      <FileNumber>49</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
       <PathWithFileName>..\..\..\..\components\service\source\am_digitron_dev.c</PathWithFileName>
       <FilenameWithoutPath>am_digitron_dev.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
@@ -929,7 +961,7 @@
     </File>
     <File>
       <GroupNumber>5</GroupNumber>
-      <FileNumber>50</FileNumber>
+      <FileNumber>49</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -941,7 +973,7 @@
     </File>
     <File>
       <GroupNumber>5</GroupNumber>
-      <FileNumber>51</FileNumber>
+      <FileNumber>50</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -953,7 +985,7 @@
     </File>
     <File>
       <GroupNumber>5</GroupNumber>
-      <FileNumber>52</FileNumber>
+      <FileNumber>51</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -965,7 +997,7 @@
     </File>
     <File>
       <GroupNumber>5</GroupNumber>
-      <FileNumber>53</FileNumber>
+      <FileNumber>52</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -977,7 +1009,7 @@
     </File>
     <File>
       <GroupNumber>5</GroupNumber>
-      <FileNumber>54</FileNumber>
+      <FileNumber>53</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -989,7 +1021,7 @@
     </File>
     <File>
       <GroupNumber>5</GroupNumber>
-      <FileNumber>55</FileNumber>
+      <FileNumber>54</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -1001,7 +1033,7 @@
     </File>
     <File>
       <GroupNumber>5</GroupNumber>
-      <FileNumber>56</FileNumber>
+      <FileNumber>55</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -1013,7 +1045,7 @@
     </File>
     <File>
       <GroupNumber>5</GroupNumber>
-      <FileNumber>57</FileNumber>
+      <FileNumber>56</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -1025,7 +1057,7 @@
     </File>
     <File>
       <GroupNumber>5</GroupNumber>
-      <FileNumber>58</FileNumber>
+      <FileNumber>57</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -1037,7 +1069,7 @@
     </File>
     <File>
       <GroupNumber>5</GroupNumber>
-      <FileNumber>59</FileNumber>
+      <FileNumber>58</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -1049,7 +1081,7 @@
     </File>
     <File>
       <GroupNumber>5</GroupNumber>
-      <FileNumber>60</FileNumber>
+      <FileNumber>59</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -1061,7 +1093,7 @@
     </File>
     <File>
       <GroupNumber>5</GroupNumber>
-      <FileNumber>61</FileNumber>
+      <FileNumber>60</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -1073,7 +1105,7 @@
     </File>
     <File>
       <GroupNumber>5</GroupNumber>
-      <FileNumber>62</FileNumber>
+      <FileNumber>61</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -1085,7 +1117,7 @@
     </File>
     <File>
       <GroupNumber>5</GroupNumber>
-      <FileNumber>63</FileNumber>
+      <FileNumber>62</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -1097,7 +1129,7 @@
     </File>
     <File>
       <GroupNumber>5</GroupNumber>
-      <FileNumber>64</FileNumber>
+      <FileNumber>63</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -1109,13 +1141,25 @@
     </File>
     <File>
       <GroupNumber>5</GroupNumber>
-      <FileNumber>65</FileNumber>
+      <FileNumber>64</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\..\..\..\components\service\source\am_time.c</PathWithFileName>
       <FilenameWithoutPath>am_time.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>5</GroupNumber>
+      <FileNumber>65</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\..\..\..\components\service\source\am_timer.c</PathWithFileName>
+      <FilenameWithoutPath>am_timer.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1150,8 +1194,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\components\service\source\am_timer.c</PathWithFileName>
-      <FilenameWithoutPath>am_timer.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\components\service\source\am_dac.c</PathWithFileName>
+      <FilenameWithoutPath>am_dac.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1322,8 +1366,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\soc\zlg\drivers\source\adc\am_zlg_adc.c</PathWithFileName>
-      <FilenameWithoutPath>am_zlg_adc.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\soc\nxp\drivers\source\adc\am_lpc82x_adc_dma.c</PathWithFileName>
+      <FilenameWithoutPath>am_lpc82x_adc_dma.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1334,8 +1378,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\soc\zlg\drivers\source\clk\am_zlg116_clk.c</PathWithFileName>
-      <FilenameWithoutPath>am_zlg116_clk.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\soc\nxp\drivers\source\adc\am_lpc82x_adc_int.c</PathWithFileName>
+      <FilenameWithoutPath>am_lpc82x_adc_int.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1346,8 +1390,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\soc\zlg\drivers\source\crc\am_zlg_crc.c</PathWithFileName>
-      <FilenameWithoutPath>am_zlg_crc.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\soc\nxp\drivers\source\clk\am_lpc82x_clk.c</PathWithFileName>
+      <FilenameWithoutPath>am_lpc82x_clk.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1358,8 +1402,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\soc\zlg\drivers\source\dac\am_zlg_dac.c</PathWithFileName>
-      <FilenameWithoutPath>am_zlg_dac.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\soc\nxp\drivers\source\dma\am_lpc82x_dma.c</PathWithFileName>
+      <FilenameWithoutPath>am_lpc82x_dma.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1370,8 +1414,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\soc\zlg\drivers\source\dma\am_zlg_dma.c</PathWithFileName>
-      <FilenameWithoutPath>am_zlg_dma.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\soc\nxp\drivers\source\gpio\am_lpc82x_gpio.c</PathWithFileName>
+      <FilenameWithoutPath>am_lpc82x_gpio.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1382,8 +1426,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\soc\zlg\drivers\source\flash\am_zlg_flash.c</PathWithFileName>
-      <FilenameWithoutPath>am_zlg_flash.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\soc\nxp\drivers\source\spi\am_lpc82x_spi_dma.c</PathWithFileName>
+      <FilenameWithoutPath>am_lpc82x_spi_dma.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1394,8 +1438,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\soc\zlg\drivers\source\gpio\am_zlg116_gpio.c</PathWithFileName>
-      <FilenameWithoutPath>am_zlg116_gpio.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\soc\nxp\drivers\source\adc\hw\amhw_lpc82x_adc.c</PathWithFileName>
+      <FilenameWithoutPath>amhw_lpc82x_adc.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1406,8 +1450,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\soc\zlg\drivers\source\i2c\am_zlg_i2c_slv.c</PathWithFileName>
-      <FilenameWithoutPath>am_zlg_i2c_slv.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\soc\nxp\drivers\source\clk\hw\amhw_lpc82x_clk.c</PathWithFileName>
+      <FilenameWithoutPath>amhw_lpc82x_clk.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1418,8 +1462,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\soc\zlg\drivers\source\i2c\am_zlg_i2c.c</PathWithFileName>
-      <FilenameWithoutPath>am_zlg_i2c.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\soc\nxp\drivers\source\iap\hw\amhw_lpc82x_iap.c</PathWithFileName>
+      <FilenameWithoutPath>amhw_lpc82x_iap.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1430,8 +1474,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\soc\zlg\drivers\source\pwr\am_zlg116_pwr.c</PathWithFileName>
-      <FilenameWithoutPath>am_zlg116_pwr.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\soc\nxp\drivers\source\iocon\hw\amhw_lpc82x_iocon.c</PathWithFileName>
+      <FilenameWithoutPath>amhw_lpc82x_iocon.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1442,8 +1486,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\soc\zlg\drivers\source\rcc\hw\amhw_zlg116_rcc.c</PathWithFileName>
-      <FilenameWithoutPath>amhw_zlg116_rcc.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\soc\nxp\drivers\source\pint\hw\amhw_lpc82x_pint.c</PathWithFileName>
+      <FilenameWithoutPath>amhw_lpc82x_pint.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1454,8 +1498,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\soc\zlg\drivers\source\spi\am_zlg_spi_dma.c</PathWithFileName>
-      <FilenameWithoutPath>am_zlg_spi_dma.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\soc\nxp\drivers\source\swm\hw\amhw_lpc82x_swm.c</PathWithFileName>
+      <FilenameWithoutPath>amhw_lpc82x_swm.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1466,8 +1510,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\soc\zlg\drivers\source\spi\am_zlg_spi_int.c</PathWithFileName>
-      <FilenameWithoutPath>am_zlg_spi_int.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\soc\nxp\drivers\source\crc\am_lpc_crc.c</PathWithFileName>
+      <FilenameWithoutPath>am_lpc_crc.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1478,8 +1522,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\soc\zlg\drivers\source\spi\am_zlg_spi_slv_dma.c</PathWithFileName>
-      <FilenameWithoutPath>am_zlg_spi_slv_dma.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\soc\nxp\drivers\source\i2c\am_lpc_i2c.c</PathWithFileName>
+      <FilenameWithoutPath>am_lpc_i2c.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1490,8 +1534,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\soc\zlg\drivers\source\tim\am_zlg_tim_pwm.c</PathWithFileName>
-      <FilenameWithoutPath>am_zlg_tim_pwm.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\soc\nxp\drivers\source\mrt\am_lpc_mrt.c</PathWithFileName>
+      <FilenameWithoutPath>am_lpc_mrt.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1502,8 +1546,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\soc\zlg\drivers\source\tim\am_zlg_tim_cap.c</PathWithFileName>
-      <FilenameWithoutPath>am_zlg_tim_cap.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\soc\nxp\drivers\source\sct\am_lpc_sct.c</PathWithFileName>
+      <FilenameWithoutPath>am_lpc_sct.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1514,8 +1558,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\soc\zlg\drivers\source\tim\am_zlg_tim_timing.c</PathWithFileName>
-      <FilenameWithoutPath>am_zlg_tim_timing.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\soc\nxp\drivers\source\sct\am_lpc_sct_cap.c</PathWithFileName>
+      <FilenameWithoutPath>am_lpc_sct_cap.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1526,8 +1570,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\soc\zlg\drivers\source\uart\hw\amhw_zlg_uart.c</PathWithFileName>
-      <FilenameWithoutPath>amhw_zlg_uart.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\soc\nxp\drivers\source\sct\am_lpc_sct_pwm.c</PathWithFileName>
+      <FilenameWithoutPath>am_lpc_sct_pwm.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1538,8 +1582,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\soc\zlg\drivers\source\uart\am_zlg_uart.c</PathWithFileName>
-      <FilenameWithoutPath>am_zlg_uart.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\soc\nxp\drivers\source\sct\am_lpc_sct_timing.c</PathWithFileName>
+      <FilenameWithoutPath>am_lpc_sct_timing.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1550,8 +1594,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\soc\zlg\drivers\source\wdt\am_zlg_iwdg.c</PathWithFileName>
-      <FilenameWithoutPath>am_zlg_iwdg.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\soc\nxp\drivers\source\spi\am_lpc_spi_int.c</PathWithFileName>
+      <FilenameWithoutPath>am_lpc_spi_int.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1562,8 +1606,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\soc\zlg\drivers\source\wdt\am_zlg_wwdg.c</PathWithFileName>
-      <FilenameWithoutPath>am_zlg_wwdg.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\soc\nxp\drivers\source\usart\am_lpc_usart.c</PathWithFileName>
+      <FilenameWithoutPath>am_lpc_usart.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1574,8 +1618,68 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\soc\zlg\drivers\source\spi\zm_zlg_spi_poll.c</PathWithFileName>
-      <FilenameWithoutPath>zm_zlg_spi_poll.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\soc\nxp\drivers\source\wkt\am_lpc_wkt.c</PathWithFileName>
+      <FilenameWithoutPath>am_lpc_wkt.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>7</GroupNumber>
+      <FileNumber>103</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\..\..\..\soc\nxp\drivers\source\wwdt\am_lpc_wwdt.c</PathWithFileName>
+      <FilenameWithoutPath>am_lpc_wwdt.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>7</GroupNumber>
+      <FileNumber>104</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\..\..\..\soc\nxp\drivers\source\crc\hw\amhw_lpc_crc.c</PathWithFileName>
+      <FilenameWithoutPath>amhw_lpc_crc.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>7</GroupNumber>
+      <FileNumber>105</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\..\..\..\soc\nxp\drivers\source\sct\hw\amhw_lpc_sct.c</PathWithFileName>
+      <FilenameWithoutPath>amhw_lpc_sct.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>7</GroupNumber>
+      <FileNumber>106</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\..\..\..\soc\nxp\drivers\source\usart\hw\amhw_lpc_usart.c</PathWithFileName>
+      <FilenameWithoutPath>amhw_lpc_usart.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>7</GroupNumber>
+      <FileNumber>107</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\..\..\..\soc\nxp\lpc824\lpc82x_sdk_version.c</PathWithFileName>
+      <FilenameWithoutPath>lpc82x_sdk_version.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1589,73 +1693,13 @@
     <RteFlg>0</RteFlg>
     <File>
       <GroupNumber>8</GroupNumber>
-      <FileNumber>103</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am116_core\adc\demo_am116_core_hw_adc_int.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am116_core_hw_adc_int.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>8</GroupNumber>
-      <FileNumber>104</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am116_core\adc\demo_am116_core_std_adc.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am116_core_std_adc.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>8</GroupNumber>
-      <FileNumber>105</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am116_core\adc\demo_am116_core_std_adc_ntc.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am116_core_std_adc_ntc.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>8</GroupNumber>
-      <FileNumber>106</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am116_core\buzzer\demo_am116_core_std_buzzer.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am116_core_std_buzzer.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>8</GroupNumber>
-      <FileNumber>107</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am116_core\clk\demo_am116_core_hw_clk.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am116_core_hw_clk.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>8</GroupNumber>
       <FileNumber>108</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am116_core\dma\demo_am116_core_drv_dma_m2m.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am116_core_drv_dma_m2m.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\acmp\demo_am824_core_hw_acmp_int.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_hw_acmp_int.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1666,8 +1710,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am116_core\flash\demo_am116_core_drv_flash.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am116_core_drv_flash.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\acmp\demo_am824_core_hw_acmp_lad.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_hw_acmp_lad.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1678,8 +1722,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am116_core\gpio\demo_am116_core_hw_gpio.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am116_core_hw_gpio.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\acmp\demo_am824_core_hw_acmp_poll.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_hw_acmp_poll.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1690,8 +1734,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am116_core\gpio\demo_am116_core_hw_gpio_trigger.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am116_core_hw_gpio_trigger.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\adc\demo_am824_core_hw_adc_dma.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_hw_adc_dma.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1702,8 +1746,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am116_core\gpio\demo_am116_core_std_gpio.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am116_core_std_gpio.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\adc\demo_am824_core_hw_adc_thcmp.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_hw_adc_thcmp.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1714,8 +1758,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am116_core\gpio\demo_am116_core_std_gpio_trigger.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am116_core_std_gpio_trigger.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\adc\demo_am824_core_std_adc_dma_int.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_std_adc_dma_int.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1726,8 +1770,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am116_core\i2c\demo_am116_core_hw_i2c_master_poll.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am116_core_hw_i2c_master_poll.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\adc\demo_am824_core_std_adc_dma_poll.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_std_adc_dma_poll.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1738,8 +1782,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am116_core\i2c\demo_am116_core_hw_i2c_slave_poll.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am116_core_hw_i2c_slave_poll.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\adc\demo_am824_core_std_adc_int.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_std_adc_int.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1750,8 +1794,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am116_core\i2c\demo_am116_core_std_i2c_lm75.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am116_core_std_i2c_lm75.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\adc\demo_am824_core_std_adc_ntc.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_std_adc_ntc.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1762,8 +1806,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am116_core\i2c\demo_am116_core_std_i2c_master_async.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am116_core_std_i2c_master_async.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\adc\demo_am824_core_std_adc_poll.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_std_adc_poll.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1774,8 +1818,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am116_core\i2c\demo_am116_core_std_i2c_master_sync.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am116_core_std_i2c_master_sync.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\buzzer\demo_am824_core_std_buzzer.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_std_buzzer.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1786,8 +1830,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am116_core\i2c\demo_am116_core_std_i2c_slave.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am116_core_std_i2c_slave.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\crc\demo_am824_core_hw_crc.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_hw_crc.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1798,8 +1842,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am116_core\i2c\demo_am116_core_std_i2c_slave_subaddr.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am116_core_std_i2c_slave_subaddr.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\crc\demo_am824_core_std_crc.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_std_crc.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1810,8 +1854,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am116_core\input_event\demo_am116_core_std_input_event.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am116_core_std_input_event.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\dma\demo_am824_core_drv_dma_hwtrigger_burst.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_drv_dma_hwtrigger_burst.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1822,8 +1866,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am116_core\led\demo_am116_core_std_led.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am116_core_std_led.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\dma\demo_am824_core_drv_dma_m2m.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_drv_dma_m2m.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1834,8 +1878,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am116_core\microport_board\demo_am116_core_microport_ds1302.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am116_core_microport_ds1302.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\dma\demo_am824_core_drv_dma_ping_pong.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_drv_dma_ping_pong.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1846,8 +1890,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am116_core\microport_board\demo_am116_core_microport_eeprom.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am116_core_microport_eeprom.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\flash_ctrl\demo_am824_core_hw_flash_ctrl.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_hw_flash_ctrl.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1858,8 +1902,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am116_core\microport_board\demo_am116_core_microport_eeprom_nvram.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am116_core_microport_eeprom_nvram.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\gpio\demo_am824_core_hw_gpio.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_hw_gpio.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1870,8 +1914,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am116_core\microport_board\demo_am116_core_microport_flash.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am116_core_microport_flash.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\gpio\demo_am824_core_hw_gpio_int.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_hw_gpio_int.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1882,8 +1926,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am116_core\microport_board\demo_am116_core_microport_flash_ftl.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am116_core_microport_flash_ftl.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\gpio\demo_am824_core_hw_gpio_pmatch.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_hw_gpio_pmatch.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1894,8 +1938,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am116_core\microport_board\demo_am116_core_microport_flash_mtd.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am116_core_microport_flash_mtd.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\gpio\demo_am824_core_std_gpio.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_std_gpio.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1906,8 +1950,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am116_core\microport_board\demo_am116_core_microport_rs485.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am116_core_microport_rs485.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\gpio\demo_am824_core_std_gpio_int.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_std_gpio_int.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1918,8 +1962,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am116_core\microport_board\demo_am116_core_microport_rtc.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am116_core_microport_rtc.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\gpio\demo_am824_core_std_gpio_key.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_std_gpio_key.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1930,8 +1974,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am116_core\microport_board\demo_am116_core_microport_rx8025t.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am116_core_microport_rx8025t.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\i2c\demo_am824_core_hw_i2c_master_dma.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_hw_i2c_master_dma.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1942,8 +1986,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am116_core\microport_board\demo_am116_core_microport_usb.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am116_core_microport_usb.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\i2c\demo_am824_core_hw_i2c_master_poll.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_hw_i2c_master_poll.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1954,8 +1998,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am116_core\miniport_board\demo_am116_core_miniport_digitron.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am116_core_miniport_digitron.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\i2c\demo_am824_core_hw_i2c_slave_dma.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_hw_i2c_slave_dma.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1966,8 +2010,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am116_core\miniport_board\demo_am116_core_miniport_hc595_digitron.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am116_core_miniport_hc595_digitron.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\i2c\demo_am824_core_hw_i2c_slave_int.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_hw_i2c_slave_int.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1978,8 +2022,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am116_core\miniport_board\demo_am116_core_miniport_hc595_digitron_key.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am116_core_miniport_hc595_digitron_key.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\i2c\demo_am824_core_hw_i2c_slave_poll.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_hw_i2c_slave_poll.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1990,8 +2034,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am116_core\miniport_board\demo_am116_core_miniport_hc595_digitron_temp.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am116_core_miniport_hc595_digitron_temp.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\i2c\demo_am824_core_std_i2c_lm75.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_std_i2c_lm75.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2002,8 +2046,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am116_core\miniport_board\demo_am116_core_miniport_hc595_led.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am116_core_miniport_hc595_led.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\i2c\demo_am824_core_std_i2c_master_async.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_std_i2c_master_async.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2014,8 +2058,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am116_core\miniport_board\demo_am116_core_miniport_key.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am116_core_miniport_key.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\i2c\demo_am824_core_std_i2c_master_sync.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_std_i2c_master_sync.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2026,8 +2070,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am116_core\miniport_board\demo_am116_core_miniport_key_digitron.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am116_core_miniport_key_digitron.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\iap\demo_am824_core_hw_iap.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_hw_iap.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2038,8 +2082,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am116_core\miniport_board\demo_am116_core_miniport_led.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am116_core_miniport_led.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\input_event\demo_am824_core_std_key_input_event.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_std_key_input_event.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2050,8 +2094,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am116_core\miniport_board\demo_am116_core_miniport_zlg72128.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am116_core_miniport_zlg72128.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\led\demo_am824_core_std_led.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_std_led.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2062,8 +2106,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am116_core\softimer\demo_am116_core_std_softimer.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am116_core_std_softimer.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\miniport_board\demo_am824_core_miniport_digitron.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_miniport_digitron.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2074,8 +2118,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am116_core\spi\demo_am116_core_hw_spi_master.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am116_core_hw_spi_master.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\miniport_board\demo_am824_core_miniport_hc595_digitron.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_miniport_hc595_digitron.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2086,8 +2130,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am116_core\spi\demo_am116_core_std_spi_flash_dma.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am116_core_std_spi_flash_dma.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\miniport_board\demo_am824_core_miniport_hc595_digitron_key.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_miniport_hc595_digitron_key.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2098,8 +2142,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am116_core\spi\demo_am116_core_std_spi_flash_int.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am116_core_std_spi_flash_int.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\miniport_board\demo_am824_core_miniport_hc595_digitron_temp.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_miniport_hc595_digitron_temp.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2110,8 +2154,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am116_core\spi\demo_am116_core_std_spi_master_dma.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am116_core_std_spi_master_dma.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\miniport_board\demo_am824_core_miniport_hc595_led.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_miniport_hc595_led.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2122,8 +2166,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am116_core\spi\demo_am116_core_std_spi_master_int.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am116_core_std_spi_master_int.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\miniport_board\demo_am824_core_miniport_key.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_miniport_key.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2134,8 +2178,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am116_core\spi\demo_am116_core_std_spi_slave_dma.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am116_core_std_spi_slave_dma.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\miniport_board\demo_am824_core_miniport_key_digitron.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_miniport_key_digitron.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2146,8 +2190,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am116_core\timer\demo_am116_core_hw_tim_cap.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am116_core_hw_tim_cap.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\miniport_board\demo_am824_core_miniport_led.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_miniport_led.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2158,8 +2202,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am116_core\timer\demo_am116_core_hw_tim_cmp_toggle.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am116_core_hw_tim_cmp_toggle.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\miniport_board\demo_am824_core_miniport_zlg72128.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_miniport_zlg72128.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2170,8 +2214,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am116_core\timer\demo_am116_core_hw_tim_pwm.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am116_core_hw_tim_pwm.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\mrt\demo_am824_core_hw_mrt.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_hw_mrt.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2182,8 +2226,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am116_core\timer\demo_am116_core_hw_tim_pwm_dead.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am116_core_hw_tim_pwm_dead.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\mrt\demo_am824_core_std_mrt_timer.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_std_mrt_timer.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2194,8 +2238,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am116_core\timer\demo_am116_core_hw_tim_timing.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am116_core_hw_tim_timing.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\pll\demo_am824_core_hw_pll.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_hw_pll.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2206,8 +2250,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am116_core\timer\demo_am116_core_std_tim1_cap.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am116_core_std_tim1_cap.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\pmu\demo_am824_core_hw_pmu_deeppowerdown.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_hw_pmu_deeppowerdown.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2218,8 +2262,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am116_core\timer\demo_am116_core_std_tim1_pwm.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am116_core_std_tim1_pwm.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\pmu\demo_am824_core_hw_pmu_deepsleep.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_hw_pmu_deepsleep.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2230,8 +2274,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am116_core\timer\demo_am116_core_std_tim1_timing.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am116_core_std_tim1_timing.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\pmu\demo_am824_core_hw_pmu_powerdown.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_hw_pmu_powerdown.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2242,8 +2286,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am116_core\timer\demo_am116_core_std_tim2_cap.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am116_core_std_tim2_cap.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\pmu\demo_am824_core_hw_pmu_sleep.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_hw_pmu_sleep.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2254,8 +2298,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am116_core\timer\demo_am116_core_std_tim2_pwm.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am116_core_std_tim2_pwm.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\sct\demo_am824_core_drv_sct_timing_pwm.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_drv_sct_timing_pwm.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2266,8 +2310,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am116_core\timer\demo_am116_core_std_tim2_timing.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am116_core_std_tim2_timing.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\sct\demo_am824_core_hw_sct_1_32bit_pwm.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_hw_sct_1_32bit_pwm.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2278,8 +2322,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am116_core\timer\demo_am116_core_std_tim3_cap.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am116_core_std_tim3_cap.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\sct\demo_am824_core_hw_sct_1_32bit_timing.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_hw_sct_1_32bit_timing.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2290,8 +2334,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am116_core\timer\demo_am116_core_std_tim3_pwm.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am116_core_std_tim3_pwm.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\sct\demo_am824_core_hw_sct_2_16bit_pwm.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_hw_sct_2_16bit_pwm.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2302,8 +2346,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am116_core\timer\demo_am116_core_std_tim3_timing.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am116_core_std_tim3_timing.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\sct\demo_am824_core_hw_sct_2_16bit_timing.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_hw_sct_2_16bit_timing.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2314,8 +2358,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am116_core\timer\demo_am116_core_std_tim14_cap.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am116_core_std_tim14_cap.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\sct\demo_am824_core_hw_sct_cap.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_hw_sct_cap.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2326,8 +2370,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am116_core\timer\demo_am116_core_std_tim14_pwm.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am116_core_std_tim14_pwm.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\sct\demo_am824_core_hw_sct_multi_states.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_hw_sct_multi_states.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2338,8 +2382,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am116_core\timer\demo_am116_core_std_tim14_timing.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am116_core_std_tim14_timing.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\sct\demo_am824_core_std_sct_cap.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_std_sct_cap.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2350,8 +2394,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am116_core\timer\demo_am116_core_std_tim16_cap.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am116_core_std_tim16_cap.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\sct\demo_am824_core_std_sct_pwm.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_std_sct_pwm.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2362,8 +2406,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am116_core\timer\demo_am116_core_std_tim16_pwm.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am116_core_std_tim16_pwm.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\sct\demo_am824_core_std_sct_timer.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_std_sct_timer.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2374,8 +2418,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am116_core\timer\demo_am116_core_std_tim16_timing.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am116_core_std_tim16_timing.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\spi\demo_am824_core_hw_spi_master.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_hw_spi_master.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2386,8 +2430,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am116_core\timer\demo_am116_core_std_tim17_cap.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am116_core_std_tim17_cap.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\spi\demo_am824_core_hw_spi_slave.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_hw_spi_slave.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2398,8 +2442,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am116_core\timer\demo_am116_core_std_tim17_pwm.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am116_core_std_tim17_pwm.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\spi\demo_am824_core_hw_spi_slave_dma.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_hw_spi_slave_dma.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2410,8 +2454,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am116_core\timer\demo_am116_core_std_tim17_timing.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am116_core_std_tim17_timing.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\spi\demo_am824_core_std_spi_flash_dma.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_std_spi_flash_dma.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2422,8 +2466,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am116_core\uart\demo_am116_core_hw_uart_int.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am116_core_hw_uart_int.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\spi\demo_am824_core_std_spi_flash_int.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_std_spi_flash_int.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2434,8 +2478,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am116_core\uart\demo_am116_core_hw_uart_polling.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am116_core_hw_uart_polling.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\spi\demo_am824_core_std_spi_master_dma.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_std_spi_master_dma.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2446,8 +2490,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am116_core\uart\demo_am116_core_hw_uart_rx_dma.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am116_core_hw_uart_rx_dma.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\spi\demo_am824_core_std_spi_master_int.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_std_spi_master_int.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2458,8 +2502,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am116_core\uart\demo_am116_core_hw_uart_tx_dma.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am116_core_hw_uart_tx_dma.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\syscon\demo_am824_core_hw_bod.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_hw_bod.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2470,8 +2514,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am116_core\uart\demo_am116_core_std_uart_polling.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am116_core_std_uart_polling.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\syscon\demo_am824_core_hw_clkout.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_hw_clkout.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2482,8 +2526,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am116_core\uart\demo_am116_core_std_uart_ringbuf.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am116_core_std_uart_ringbuf.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\systick\demo_am824_core_std_delay.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_std_delay.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2494,8 +2538,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am116_core\wakeup\demo_am116_core_drv_sleepmode_timer_wake_up.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am116_core_drv_sleepmode_timer_wake_up.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\systick\demo_am824_core_std_systick_timer.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_std_systick_timer.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2506,8 +2550,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am116_core\wakeup\demo_am116_core_drv_sleepmode_wake_up.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am116_core_drv_sleepmode_wake_up.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\usart\demo_am824_core_hw_usart_autobaud.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_hw_usart_autobaud.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2518,8 +2562,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am116_core\wakeup\demo_am116_core_drv_standbymode_wake_up.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am116_core_drv_standbymode_wake_up.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\usart\demo_am824_core_hw_usart_poll.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_hw_usart_poll.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2530,8 +2574,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am116_core\wakeup\demo_am116_core_drv_stopmode_wake_up.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am116_core_drv_stopmode_wake_up.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\usart\demo_am824_core_hw_usart_rx_dma.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_hw_usart_rx_dma.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2542,8 +2586,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am116_core\wdg\demo_am116_core_hw_iwdg.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am116_core_hw_iwdg.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\usart\demo_am824_core_hw_usart_tx_dma.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_hw_usart_tx_dma.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2554,8 +2598,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am116_core\wdg\demo_am116_core_hw_wwdg.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am116_core_hw_wwdg.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\usart\demo_am824_core_std_usart_flowctrl.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_std_usart_flowctrl.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2566,8 +2610,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am116_core\wdg\demo_am116_core_std_iwdg.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am116_core_std_iwdg.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\usart\demo_am824_core_std_usart_poll.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_std_usart_poll.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2578,8 +2622,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am116_core\wdg\demo_am116_core_std_wwdg.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am116_core_std_wwdg.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\usart\demo_am824_core_std_usart_rngbuf.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_std_usart_rngbuf.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2590,8 +2634,80 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am116_core\delay\demo_am116_core_std_delay.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am116_core_std_delay.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\wkt\demo_am824_core_hw_wkt_deeppowerdown_wakeup.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_hw_wkt_deeppowerdown_wakeup.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>8</GroupNumber>
+      <FileNumber>187</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\wkt\demo_am824_core_hw_wkt_timer.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_hw_wkt_timer.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>8</GroupNumber>
+      <FileNumber>188</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\wkt\demo_am824_core_std_wkt_timer.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_std_wkt_timer.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>8</GroupNumber>
+      <FileNumber>189</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\wwdt\demo_am824_core_hw_wwdt.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_hw_wwdt.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>8</GroupNumber>
+      <FileNumber>190</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\..\..\..\examples\board\am824_core\wwdt\demo_am824_core_std_wwdt.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_core_std_wwdt.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>8</GroupNumber>
+      <FileNumber>191</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\..\..\..\examples\board\am824ble\bluetooth\demo_am824ble_std_zlg9021_baudrate.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824ble_std_zlg9021_baudrate.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>8</GroupNumber>
+      <FileNumber>192</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\..\..\..\examples\board\am824ble\bluetooth\demo_am824ble_std_zlg9021_led.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824ble_std_zlg9021_led.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2605,31 +2721,7 @@
     <RteFlg>0</RteFlg>
     <File>
       <GroupNumber>9</GroupNumber>
-      <FileNumber>187</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\components\drivers\demo_ep24cxx.c</PathWithFileName>
-      <FilenameWithoutPath>demo_ep24cxx.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>9</GroupNumber>
-      <FileNumber>188</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\components\drivers\demo_mx25xx.c</PathWithFileName>
-      <FilenameWithoutPath>demo_mx25xx.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>9</GroupNumber>
-      <FileNumber>189</FileNumber>
+      <FileNumber>193</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -2641,7 +2733,7 @@
     </File>
     <File>
       <GroupNumber>9</GroupNumber>
-      <FileNumber>190</FileNumber>
+      <FileNumber>194</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -2653,49 +2745,121 @@
     </File>
     <File>
       <GroupNumber>9</GroupNumber>
-      <FileNumber>191</FileNumber>
+      <FileNumber>195</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am116_core\fm175xx\demo_am116_core_dr_fm175xx_picca_read_id.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am116_core_dr_fm175xx_picca_read_id.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\components\drivers\demo_ep24cxx.c</PathWithFileName>
+      <FilenameWithoutPath>demo_ep24cxx.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
     <File>
       <GroupNumber>9</GroupNumber>
-      <FileNumber>192</FileNumber>
+      <FileNumber>196</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\components\drivers\demo_fm175xx_picca_read_id.c</PathWithFileName>
-      <FilenameWithoutPath>demo_fm175xx_picca_read_id.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\components\drivers\demo_mx25xx.c</PathWithFileName>
+      <FilenameWithoutPath>demo_mx25xx.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
     <File>
       <GroupNumber>9</GroupNumber>
-      <FileNumber>193</FileNumber>
+      <FileNumber>197</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\board\am116_core\fm175xx\demo_am116_core_dr_fm175xx_picca_lpcd_read_id.c</PathWithFileName>
-      <FilenameWithoutPath>demo_am116_core_dr_fm175xx_picca_lpcd_read_id.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\components\drivers\demo_zm516x.c</PathWithFileName>
+      <FilenameWithoutPath>demo_zm516x.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
     <File>
       <GroupNumber>9</GroupNumber>
-      <FileNumber>194</FileNumber>
+      <FileNumber>198</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\components\drivers\demo_fm175xx_picca_lpcd_read_id.c</PathWithFileName>
-      <FilenameWithoutPath>demo_fm175xx_picca_lpcd_read_id.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\components\drivers\demo_zm516x_baudrate.c</PathWithFileName>
+      <FilenameWithoutPath>demo_zm516x_baudrate.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>9</GroupNumber>
+      <FileNumber>199</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\..\..\..\examples\components\drivers\demo_zm516x_gpio.c</PathWithFileName>
+      <FilenameWithoutPath>demo_zm516x_gpio.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>9</GroupNumber>
+      <FileNumber>200</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\..\..\..\examples\components\drivers\demo_zm516x_key_led.c</PathWithFileName>
+      <FilenameWithoutPath>demo_zm516x_key_led.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>9</GroupNumber>
+      <FileNumber>201</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\..\..\..\examples\components\drivers\demo_zm516x_network.c</PathWithFileName>
+      <FilenameWithoutPath>demo_zm516x_network.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>9</GroupNumber>
+      <FileNumber>202</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\..\..\..\examples\components\drivers\demo_zm516x_search.c</PathWithFileName>
+      <FilenameWithoutPath>demo_zm516x_search.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>9</GroupNumber>
+      <FileNumber>203</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\..\..\..\examples\components\drivers\demo_zlg9021_baudrate.c</PathWithFileName>
+      <FilenameWithoutPath>demo_zlg9021_baudrate.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>9</GroupNumber>
+      <FileNumber>204</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\..\..\..\examples\components\drivers\demo_zlg9021_led.c</PathWithFileName>
+      <FilenameWithoutPath>demo_zlg9021_led.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2709,133 +2873,13 @@
     <RteFlg>0</RteFlg>
     <File>
       <GroupNumber>10</GroupNumber>
-      <FileNumber>195</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\soc\zlg\adc\demo_zlg_hw_adc_int.c</PathWithFileName>
-      <FilenameWithoutPath>demo_zlg_hw_adc_int.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>10</GroupNumber>
-      <FileNumber>196</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\soc\zlg\dma\demo_zlg_drv_dma_m2m.c</PathWithFileName>
-      <FilenameWithoutPath>demo_zlg_drv_dma_m2m.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>10</GroupNumber>
-      <FileNumber>197</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\soc\zlg\flash\demo_zlg_drv_flash.c</PathWithFileName>
-      <FilenameWithoutPath>demo_zlg_drv_flash.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>10</GroupNumber>
-      <FileNumber>198</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\soc\zlg\gpio\demo_zlg_hw_gpio.c</PathWithFileName>
-      <FilenameWithoutPath>demo_zlg_hw_gpio.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>10</GroupNumber>
-      <FileNumber>199</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\soc\zlg\gpio\demo_zlg_hw_gpio_trigger.c</PathWithFileName>
-      <FilenameWithoutPath>demo_zlg_hw_gpio_trigger.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>10</GroupNumber>
-      <FileNumber>200</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\soc\zlg\i2c\demo_zlg_hw_i2c_master_poll.c</PathWithFileName>
-      <FilenameWithoutPath>demo_zlg_hw_i2c_master_poll.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>10</GroupNumber>
-      <FileNumber>201</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\soc\zlg\i2c\demo_zlg_hw_i2c_slave_poll.c</PathWithFileName>
-      <FilenameWithoutPath>demo_zlg_hw_i2c_slave_poll.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>10</GroupNumber>
-      <FileNumber>202</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\soc\zlg\spi\demo_zlg_hw_spi_master.c</PathWithFileName>
-      <FilenameWithoutPath>demo_zlg_hw_spi_master.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>10</GroupNumber>
-      <FileNumber>203</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\soc\zlg\timer\demo_zlg_hw_tim_cap.c</PathWithFileName>
-      <FilenameWithoutPath>demo_zlg_hw_tim_cap.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>10</GroupNumber>
-      <FileNumber>204</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\soc\zlg\timer\demo_zlg_hw_tim_cmp_toggle.c</PathWithFileName>
-      <FilenameWithoutPath>demo_zlg_hw_tim_cmp_toggle.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>10</GroupNumber>
       <FileNumber>205</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\soc\zlg\timer\demo_zlg_hw_tim_pwm.c</PathWithFileName>
-      <FilenameWithoutPath>demo_zlg_hw_tim_pwm.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\soc\nxp\acmp\demo_lpc824_hw_acmp_int.c</PathWithFileName>
+      <FilenameWithoutPath>demo_lpc824_hw_acmp_int.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2846,8 +2890,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\soc\zlg\timer\demo_zlg_hw_tim_pwm_dead.c</PathWithFileName>
-      <FilenameWithoutPath>demo_zlg_hw_tim_pwm_dead.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\soc\nxp\acmp\demo_lpc824_hw_acmp_lad.c</PathWithFileName>
+      <FilenameWithoutPath>demo_lpc824_hw_acmp_lad.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2858,8 +2902,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\soc\zlg\timer\demo_zlg_hw_tim_timing.c</PathWithFileName>
-      <FilenameWithoutPath>demo_zlg_hw_tim_timing.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\soc\nxp\acmp\demo_lpc824_hw_acmp_poll.c</PathWithFileName>
+      <FilenameWithoutPath>demo_lpc824_hw_acmp_poll.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2870,8 +2914,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\soc\zlg\uart\demo_zlg_hw_uart_int.c</PathWithFileName>
-      <FilenameWithoutPath>demo_zlg_hw_uart_int.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\soc\nxp\adc\demo_lpc_std_adc_dma_poll.c</PathWithFileName>
+      <FilenameWithoutPath>demo_lpc_std_adc_dma_poll.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2882,8 +2926,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\soc\zlg\uart\demo_zlg_hw_uart_polling.c</PathWithFileName>
-      <FilenameWithoutPath>demo_zlg_hw_uart_polling.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\soc\nxp\adc\demo_lpc_std_adc_dma_int.c</PathWithFileName>
+      <FilenameWithoutPath>demo_lpc_std_adc_dma_int.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2894,8 +2938,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\soc\zlg\uart\demo_zlg_hw_uart_rx_dma.c</PathWithFileName>
-      <FilenameWithoutPath>demo_zlg_hw_uart_rx_dma.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\soc\nxp\adc\demo_lpc_std_adc_int.c</PathWithFileName>
+      <FilenameWithoutPath>demo_lpc_std_adc_int.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2906,8 +2950,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\soc\zlg\uart\demo_zlg_hw_uart_tx_dma.c</PathWithFileName>
-      <FilenameWithoutPath>demo_zlg_hw_uart_tx_dma.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\soc\nxp\adc\demo_lpc_std_adc_poll.c</PathWithFileName>
+      <FilenameWithoutPath>demo_lpc_std_adc_poll.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2918,8 +2962,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\soc\zlg\wakeup\demo_zlg116_drv_sleepmode_timer_wake_up.c</PathWithFileName>
-      <FilenameWithoutPath>demo_zlg116_drv_sleepmode_timer_wake_up.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\soc\nxp\adc\demo_lpc824_hw_adc_dma.c</PathWithFileName>
+      <FilenameWithoutPath>demo_lpc824_hw_adc_dma.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2930,8 +2974,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\soc\zlg\wakeup\demo_zlg116_drv_sleepmode_wake_up.c</PathWithFileName>
-      <FilenameWithoutPath>demo_zlg116_drv_sleepmode_wake_up.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\soc\nxp\adc\demo_lpc824_hw_adc_thcmp.c</PathWithFileName>
+      <FilenameWithoutPath>demo_lpc824_hw_adc_thcmp.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2942,8 +2986,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\soc\zlg\wakeup\demo_zlg116_drv_standbymode_wake_up.c</PathWithFileName>
-      <FilenameWithoutPath>demo_zlg116_drv_standbymode_wake_up.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\soc\nxp\crc\demo_lpc_crc.c</PathWithFileName>
+      <FilenameWithoutPath>demo_lpc_crc.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2954,8 +2998,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\soc\zlg\wakeup\demo_zlg116_drv_stopmode_wake_up.c</PathWithFileName>
-      <FilenameWithoutPath>demo_zlg116_drv_stopmode_wake_up.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\soc\nxp\dma\demo_lpc824_drv_dma_hwtrigger_burst.c</PathWithFileName>
+      <FilenameWithoutPath>demo_lpc824_drv_dma_hwtrigger_burst.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2966,8 +3010,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\soc\zlg\wdg\demo_zlg_hw_iwdg.c</PathWithFileName>
-      <FilenameWithoutPath>demo_zlg_hw_iwdg.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\soc\nxp\dma\demo_lpc824_drv_dma_m2m.c</PathWithFileName>
+      <FilenameWithoutPath>demo_lpc824_drv_dma_m2m.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2978,8 +3022,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\soc\zlg\wdg\demo_zlg_hw_wwdg.c</PathWithFileName>
-      <FilenameWithoutPath>demo_zlg_hw_wwdg.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\soc\nxp\dma\demo_lpc824_drv_dma_ping_pong.c</PathWithFileName>
+      <FilenameWithoutPath>demo_lpc824_drv_dma_ping_pong.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2990,8 +3034,488 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\soc\zlg\clk\demo_zlg_hw_clk.c</PathWithFileName>
-      <FilenameWithoutPath>demo_zlg_hw_clk.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\examples\soc\nxp\flash_ctrl\demo_lpc824_hw_flash_ctrl.c</PathWithFileName>
+      <FilenameWithoutPath>demo_lpc824_hw_flash_ctrl.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>10</GroupNumber>
+      <FileNumber>219</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\..\..\..\examples\soc\nxp\gpio\demo_lpc_std_gpio_key.c</PathWithFileName>
+      <FilenameWithoutPath>demo_lpc_std_gpio_key.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>10</GroupNumber>
+      <FileNumber>220</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\..\..\..\examples\soc\nxp\gpio\demo_lpc824_hw_gpio.c</PathWithFileName>
+      <FilenameWithoutPath>demo_lpc824_hw_gpio.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>10</GroupNumber>
+      <FileNumber>221</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\..\..\..\examples\soc\nxp\gpio\demo_lpc824_hw_gpio_int.c</PathWithFileName>
+      <FilenameWithoutPath>demo_lpc824_hw_gpio_int.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>10</GroupNumber>
+      <FileNumber>222</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\..\..\..\examples\soc\nxp\gpio\demo_lpc824_hw_gpio_pmatch.c</PathWithFileName>
+      <FilenameWithoutPath>demo_lpc824_hw_gpio_pmatch.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>10</GroupNumber>
+      <FileNumber>223</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\..\..\..\examples\soc\nxp\i2c\demo_lpc_hw_i2c_master_poll.c</PathWithFileName>
+      <FilenameWithoutPath>demo_lpc_hw_i2c_master_poll.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>10</GroupNumber>
+      <FileNumber>224</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\..\..\..\examples\soc\nxp\i2c\demo_lpc_hw_i2c_slave_int.c</PathWithFileName>
+      <FilenameWithoutPath>demo_lpc_hw_i2c_slave_int.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>10</GroupNumber>
+      <FileNumber>225</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\..\..\..\examples\soc\nxp\i2c\demo_lpc_hw_i2c_slave_poll.c</PathWithFileName>
+      <FilenameWithoutPath>demo_lpc_hw_i2c_slave_poll.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>10</GroupNumber>
+      <FileNumber>226</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\..\..\..\examples\soc\nxp\i2c\demo_lpc824_hw_i2c_master_dma.c</PathWithFileName>
+      <FilenameWithoutPath>demo_lpc824_hw_i2c_master_dma.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>10</GroupNumber>
+      <FileNumber>227</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\..\..\..\examples\soc\nxp\i2c\demo_lpc824_hw_i2c_slave_dma.c</PathWithFileName>
+      <FilenameWithoutPath>demo_lpc824_hw_i2c_slave_dma.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>10</GroupNumber>
+      <FileNumber>228</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\..\..\..\examples\soc\nxp\iap\demo_lpc824_hw_iap.c</PathWithFileName>
+      <FilenameWithoutPath>demo_lpc824_hw_iap.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>10</GroupNumber>
+      <FileNumber>229</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\..\..\..\examples\soc\nxp\mrt\demo_lpc824_hw_mrt.c</PathWithFileName>
+      <FilenameWithoutPath>demo_lpc824_hw_mrt.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>10</GroupNumber>
+      <FileNumber>230</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\..\..\..\examples\soc\nxp\pll\demo_lpc824_hw_pll.c</PathWithFileName>
+      <FilenameWithoutPath>demo_lpc824_hw_pll.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>10</GroupNumber>
+      <FileNumber>231</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\..\..\..\examples\soc\nxp\pmu\demo_lpc824_hw_pmu_deeppowerdown.c</PathWithFileName>
+      <FilenameWithoutPath>demo_lpc824_hw_pmu_deeppowerdown.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>10</GroupNumber>
+      <FileNumber>232</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\..\..\..\examples\soc\nxp\pmu\demo_lpc824_hw_pmu_deepsleep.c</PathWithFileName>
+      <FilenameWithoutPath>demo_lpc824_hw_pmu_deepsleep.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>10</GroupNumber>
+      <FileNumber>233</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\..\..\..\examples\soc\nxp\pmu\demo_lpc824_hw_pmu_powerdown.c</PathWithFileName>
+      <FilenameWithoutPath>demo_lpc824_hw_pmu_powerdown.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>10</GroupNumber>
+      <FileNumber>234</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\..\..\..\examples\soc\nxp\pmu\demo_lpc824_hw_pmu_sleep.c</PathWithFileName>
+      <FilenameWithoutPath>demo_lpc824_hw_pmu_sleep.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>10</GroupNumber>
+      <FileNumber>235</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\..\..\..\examples\soc\nxp\sct\demo_am824_std_sct_cap.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_std_sct_cap.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>10</GroupNumber>
+      <FileNumber>236</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\..\..\..\examples\soc\nxp\sct\demo_am824_std_sct_pwm.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_std_sct_pwm.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>10</GroupNumber>
+      <FileNumber>237</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\..\..\..\examples\soc\nxp\sct\demo_am824_std_sct_timer.c</PathWithFileName>
+      <FilenameWithoutPath>demo_am824_std_sct_timer.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>10</GroupNumber>
+      <FileNumber>238</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\..\..\..\examples\soc\nxp\sct\demo_lpc_drv_sct_timing_pwm.c</PathWithFileName>
+      <FilenameWithoutPath>demo_lpc_drv_sct_timing_pwm.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>10</GroupNumber>
+      <FileNumber>239</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\..\..\..\examples\soc\nxp\sct\demo_lpc_hw_sct_1_32bit_pwm.c</PathWithFileName>
+      <FilenameWithoutPath>demo_lpc_hw_sct_1_32bit_pwm.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>10</GroupNumber>
+      <FileNumber>240</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\..\..\..\examples\soc\nxp\sct\demo_lpc_hw_sct_1_32bit_timing.c</PathWithFileName>
+      <FilenameWithoutPath>demo_lpc_hw_sct_1_32bit_timing.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>10</GroupNumber>
+      <FileNumber>241</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\..\..\..\examples\soc\nxp\sct\demo_lpc_hw_sct_2_16bit_pwm.c</PathWithFileName>
+      <FilenameWithoutPath>demo_lpc_hw_sct_2_16bit_pwm.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>10</GroupNumber>
+      <FileNumber>242</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\..\..\..\examples\soc\nxp\sct\demo_lpc_hw_sct_2_16bit_timing.c</PathWithFileName>
+      <FilenameWithoutPath>demo_lpc_hw_sct_2_16bit_timing.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>10</GroupNumber>
+      <FileNumber>243</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\..\..\..\examples\soc\nxp\sct\demo_lpc_hw_sct_cap.c</PathWithFileName>
+      <FilenameWithoutPath>demo_lpc_hw_sct_cap.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>10</GroupNumber>
+      <FileNumber>244</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\..\..\..\examples\soc\nxp\sct\demo_lpc_hw_sct_multi_states.c</PathWithFileName>
+      <FilenameWithoutPath>demo_lpc_hw_sct_multi_states.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>10</GroupNumber>
+      <FileNumber>245</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\..\..\..\examples\soc\nxp\spi\demo_lpc_hw_spi_master.c</PathWithFileName>
+      <FilenameWithoutPath>demo_lpc_hw_spi_master.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>10</GroupNumber>
+      <FileNumber>246</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\..\..\..\examples\soc\nxp\spi\demo_lpc_hw_spi_slave.c</PathWithFileName>
+      <FilenameWithoutPath>demo_lpc_hw_spi_slave.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>10</GroupNumber>
+      <FileNumber>247</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\..\..\..\examples\soc\nxp\spi\demo_lpc824_hw_spi_slave_dma.c</PathWithFileName>
+      <FilenameWithoutPath>demo_lpc824_hw_spi_slave_dma.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>10</GroupNumber>
+      <FileNumber>248</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\..\..\..\examples\soc\nxp\syscon\demo_lpc824_hw_bod.c</PathWithFileName>
+      <FilenameWithoutPath>demo_lpc824_hw_bod.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>10</GroupNumber>
+      <FileNumber>249</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\..\..\..\examples\soc\nxp\syscon\demo_lpc824_hw_clkout.c</PathWithFileName>
+      <FilenameWithoutPath>demo_lpc824_hw_clkout.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>10</GroupNumber>
+      <FileNumber>250</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\..\..\..\examples\soc\nxp\usart\demo_lpc_hw_usart_autobaud.c</PathWithFileName>
+      <FilenameWithoutPath>demo_lpc_hw_usart_autobaud.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>10</GroupNumber>
+      <FileNumber>251</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\..\..\..\examples\soc\nxp\usart\demo_lpc_hw_usart_poll.c</PathWithFileName>
+      <FilenameWithoutPath>demo_lpc_hw_usart_poll.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>10</GroupNumber>
+      <FileNumber>252</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\..\..\..\examples\soc\nxp\usart\demo_lpc824_hw_usart_rx_dma.c</PathWithFileName>
+      <FilenameWithoutPath>demo_lpc824_hw_usart_rx_dma.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>10</GroupNumber>
+      <FileNumber>253</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\..\..\..\examples\soc\nxp\usart\demo_lpc_std_usart_flowctrl.c</PathWithFileName>
+      <FilenameWithoutPath>demo_lpc_std_usart_flowctrl.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>10</GroupNumber>
+      <FileNumber>254</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\..\..\..\examples\soc\nxp\usart\demo_lpc824_hw_usart_tx_dma.c</PathWithFileName>
+      <FilenameWithoutPath>demo_lpc824_hw_usart_tx_dma.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>10</GroupNumber>
+      <FileNumber>255</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\..\..\..\examples\soc\nxp\wwdt\demo_lpc_hw_wwdt.c</PathWithFileName>
+      <FilenameWithoutPath>demo_lpc_hw_wwdt.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>10</GroupNumber>
+      <FileNumber>256</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\..\..\..\examples\soc\nxp\wkt\demo_lpc_hw_wkt_timer.c</PathWithFileName>
+      <FilenameWithoutPath>demo_lpc_hw_wkt_timer.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>10</GroupNumber>
+      <FileNumber>257</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\..\..\..\examples\soc\nxp\wkt\demo_lpc_std_wkt_timer.c</PathWithFileName>
+      <FilenameWithoutPath>demo_lpc_std_wkt_timer.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>10</GroupNumber>
+      <FileNumber>258</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\..\..\..\examples\soc\nxp\wkt\demo_lpc824_hw_wkt_deeppowerdown_wakeup.c</PathWithFileName>
+      <FilenameWithoutPath>demo_lpc824_hw_wkt_deeppowerdown_wakeup.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -3005,7 +3529,7 @@
     <RteFlg>0</RteFlg>
     <File>
       <GroupNumber>11</GroupNumber>
-      <FileNumber>219</FileNumber>
+      <FileNumber>259</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -3017,7 +3541,7 @@
     </File>
     <File>
       <GroupNumber>11</GroupNumber>
-      <FileNumber>220</FileNumber>
+      <FileNumber>260</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -3029,7 +3553,7 @@
     </File>
     <File>
       <GroupNumber>11</GroupNumber>
-      <FileNumber>221</FileNumber>
+      <FileNumber>261</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -3041,7 +3565,7 @@
     </File>
     <File>
       <GroupNumber>11</GroupNumber>
-      <FileNumber>222</FileNumber>
+      <FileNumber>262</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -3053,7 +3577,7 @@
     </File>
     <File>
       <GroupNumber>11</GroupNumber>
-      <FileNumber>223</FileNumber>
+      <FileNumber>263</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -3065,7 +3589,7 @@
     </File>
     <File>
       <GroupNumber>11</GroupNumber>
-      <FileNumber>224</FileNumber>
+      <FileNumber>264</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -3077,307 +3601,7 @@
     </File>
     <File>
       <GroupNumber>11</GroupNumber>
-      <FileNumber>225</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\std\gpio\demo_std_gpio.c</PathWithFileName>
-      <FilenameWithoutPath>demo_std_gpio.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>11</GroupNumber>
-      <FileNumber>226</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\std\gpio\demo_std_gpio_trigger.c</PathWithFileName>
-      <FilenameWithoutPath>demo_std_gpio_trigger.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>11</GroupNumber>
-      <FileNumber>227</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\std\i2c\demo_std_i2c_lm75.c</PathWithFileName>
-      <FilenameWithoutPath>demo_std_i2c_lm75.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>11</GroupNumber>
-      <FileNumber>228</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\std\i2c\demo_std_i2c_master_async.c</PathWithFileName>
-      <FilenameWithoutPath>demo_std_i2c_master_async.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>11</GroupNumber>
-      <FileNumber>229</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\std\i2c\demo_std_i2c_master_sync.c</PathWithFileName>
-      <FilenameWithoutPath>demo_std_i2c_master_sync.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>11</GroupNumber>
-      <FileNumber>230</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\std\i2c\demo_std_i2c_slave.c</PathWithFileName>
-      <FilenameWithoutPath>demo_std_i2c_slave.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>11</GroupNumber>
-      <FileNumber>231</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\std\i2c\demo_std_i2c_slave_subaddr.c</PathWithFileName>
-      <FilenameWithoutPath>demo_std_i2c_slave_subaddr.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>11</GroupNumber>
-      <FileNumber>232</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\std\led\demo_std_led.c</PathWithFileName>
-      <FilenameWithoutPath>demo_std_led.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>11</GroupNumber>
-      <FileNumber>233</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\std\pwm\demo_std_timer_pwm.c</PathWithFileName>
-      <FilenameWithoutPath>demo_std_timer_pwm.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>11</GroupNumber>
-      <FileNumber>234</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\std\softimer\demo_std_softimer.c</PathWithFileName>
-      <FilenameWithoutPath>demo_std_softimer.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>11</GroupNumber>
-      <FileNumber>235</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\std\spi\demo_std_spi_flash.c</PathWithFileName>
-      <FilenameWithoutPath>demo_std_spi_flash.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>11</GroupNumber>
-      <FileNumber>236</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\std\spi\demo_std_spi_master.c</PathWithFileName>
-      <FilenameWithoutPath>demo_std_spi_master.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>11</GroupNumber>
-      <FileNumber>237</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\std\spi\demo_std_spi_slave.c</PathWithFileName>
-      <FilenameWithoutPath>demo_std_spi_slave.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>11</GroupNumber>
-      <FileNumber>238</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\std\timer\demo_std_timer_timing.c</PathWithFileName>
-      <FilenameWithoutPath>demo_std_timer_timing.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>11</GroupNumber>
-      <FileNumber>239</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\std\uart\demo_std_uart_polling.c</PathWithFileName>
-      <FilenameWithoutPath>demo_std_uart_polling.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>11</GroupNumber>
-      <FileNumber>240</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\std\uart\demo_std_uart_ringbuf.c</PathWithFileName>
-      <FilenameWithoutPath>demo_std_uart_ringbuf.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>11</GroupNumber>
-      <FileNumber>241</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\std\uart\demo_std_uart_rs485.c</PathWithFileName>
-      <FilenameWithoutPath>demo_std_uart_rs485.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>11</GroupNumber>
-      <FileNumber>242</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\std\wdt\demo_std_wdt.c</PathWithFileName>
-      <FilenameWithoutPath>demo_std_wdt.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>11</GroupNumber>
-      <FileNumber>243</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\std\rtc\demo_std_rtc.c</PathWithFileName>
-      <FilenameWithoutPath>demo_std_rtc.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>11</GroupNumber>
-      <FileNumber>244</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\std\led\demo_std_led_water_light.c</PathWithFileName>
-      <FilenameWithoutPath>demo_std_led_water_light.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>11</GroupNumber>
-      <FileNumber>245</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\std\input\demo_std_4key.c</PathWithFileName>
-      <FilenameWithoutPath>demo_std_4key.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>11</GroupNumber>
-      <FileNumber>246</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\std\input\demo_std_key.c</PathWithFileName>
-      <FilenameWithoutPath>demo_std_key.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>11</GroupNumber>
-      <FileNumber>247</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\std\input\demo_std_key_digitron.c</PathWithFileName>
-      <FilenameWithoutPath>demo_std_key_digitron.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>11</GroupNumber>
-      <FileNumber>248</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\std\input\demo_std_key_digitron_rngbuf.c</PathWithFileName>
-      <FilenameWithoutPath>demo_std_key_digitron_rngbuf.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>11</GroupNumber>
-      <FileNumber>249</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\examples\std\hc595\demo_std_hc595_led.c</PathWithFileName>
-      <FilenameWithoutPath>demo_std_hc595_led.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>11</GroupNumber>
-      <FileNumber>250</FileNumber>
+      <FileNumber>265</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -3389,7 +3613,7 @@
     </File>
     <File>
       <GroupNumber>11</GroupNumber>
-      <FileNumber>251</FileNumber>
+      <FileNumber>266</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -3401,13 +3625,313 @@
     </File>
     <File>
       <GroupNumber>11</GroupNumber>
-      <FileNumber>252</FileNumber>
+      <FileNumber>267</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\..\..\..\examples\std\gpio\demo_std_gpio_trigger.c</PathWithFileName>
+      <FilenameWithoutPath>demo_std_gpio_trigger.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>11</GroupNumber>
+      <FileNumber>268</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\..\..\..\examples\std\gpio\demo_std_gpio.c</PathWithFileName>
+      <FilenameWithoutPath>demo_std_gpio.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>11</GroupNumber>
+      <FileNumber>269</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\..\..\..\examples\std\hc595\demo_std_hc595_led.c</PathWithFileName>
+      <FilenameWithoutPath>demo_std_hc595_led.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>11</GroupNumber>
+      <FileNumber>270</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\..\..\..\examples\std\i2c\demo_std_i2c_lm75.c</PathWithFileName>
+      <FilenameWithoutPath>demo_std_i2c_lm75.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>11</GroupNumber>
+      <FileNumber>271</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\..\..\..\examples\std\i2c\demo_std_i2c_master_async.c</PathWithFileName>
+      <FilenameWithoutPath>demo_std_i2c_master_async.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>11</GroupNumber>
+      <FileNumber>272</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\..\..\..\examples\std\i2c\demo_std_i2c_master_sync.c</PathWithFileName>
+      <FilenameWithoutPath>demo_std_i2c_master_sync.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>11</GroupNumber>
+      <FileNumber>273</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\..\..\..\examples\std\i2c\demo_std_i2c_slave.c</PathWithFileName>
+      <FilenameWithoutPath>demo_std_i2c_slave.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>11</GroupNumber>
+      <FileNumber>274</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\..\..\..\examples\std\i2c\demo_std_i2c_slave_subaddr.c</PathWithFileName>
+      <FilenameWithoutPath>demo_std_i2c_slave_subaddr.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>11</GroupNumber>
+      <FileNumber>275</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\..\..\..\examples\std\input\demo_std_4key.c</PathWithFileName>
+      <FilenameWithoutPath>demo_std_4key.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>11</GroupNumber>
+      <FileNumber>276</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\..\..\..\examples\std\input\demo_std_key.c</PathWithFileName>
+      <FilenameWithoutPath>demo_std_key.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>11</GroupNumber>
+      <FileNumber>277</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\..\..\..\examples\std\input\demo_std_key_digitron.c</PathWithFileName>
+      <FilenameWithoutPath>demo_std_key_digitron.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>11</GroupNumber>
+      <FileNumber>278</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\..\..\..\examples\std\input\demo_std_key_digitron_rngbuf.c</PathWithFileName>
+      <FilenameWithoutPath>demo_std_key_digitron_rngbuf.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>11</GroupNumber>
+      <FileNumber>279</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\..\..\..\examples\std\led\demo_std_led_water_light.c</PathWithFileName>
+      <FilenameWithoutPath>demo_std_led_water_light.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>11</GroupNumber>
+      <FileNumber>280</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\..\..\..\examples\std\led\demo_std_led.c</PathWithFileName>
+      <FilenameWithoutPath>demo_std_led.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>11</GroupNumber>
+      <FileNumber>281</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\..\..\..\examples\std\nvram\demo_std_nvram.c</PathWithFileName>
       <FilenameWithoutPath>demo_std_nvram.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>11</GroupNumber>
+      <FileNumber>282</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\..\..\..\examples\std\pwm\demo_std_timer_pwm.c</PathWithFileName>
+      <FilenameWithoutPath>demo_std_timer_pwm.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>11</GroupNumber>
+      <FileNumber>283</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\..\..\..\examples\std\rtc\demo_std_rtc.c</PathWithFileName>
+      <FilenameWithoutPath>demo_std_rtc.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>11</GroupNumber>
+      <FileNumber>284</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\..\..\..\examples\std\softimer\demo_std_softimer.c</PathWithFileName>
+      <FilenameWithoutPath>demo_std_softimer.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>11</GroupNumber>
+      <FileNumber>285</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\..\..\..\examples\std\spi\demo_std_spi_flash.c</PathWithFileName>
+      <FilenameWithoutPath>demo_std_spi_flash.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>11</GroupNumber>
+      <FileNumber>286</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\..\..\..\examples\std\spi\demo_std_spi_master.c</PathWithFileName>
+      <FilenameWithoutPath>demo_std_spi_master.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>11</GroupNumber>
+      <FileNumber>287</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\..\..\..\examples\std\spi\demo_std_spi_slave.c</PathWithFileName>
+      <FilenameWithoutPath>demo_std_spi_slave.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>11</GroupNumber>
+      <FileNumber>288</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\..\..\..\examples\std\timer\demo_std_timer_timing.c</PathWithFileName>
+      <FilenameWithoutPath>demo_std_timer_timing.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>11</GroupNumber>
+      <FileNumber>289</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\..\..\..\examples\std\uart\demo_std_uart_polling.c</PathWithFileName>
+      <FilenameWithoutPath>demo_std_uart_polling.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>11</GroupNumber>
+      <FileNumber>290</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\..\..\..\examples\std\uart\demo_std_uart_ringbuf.c</PathWithFileName>
+      <FilenameWithoutPath>demo_std_uart_ringbuf.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>11</GroupNumber>
+      <FileNumber>291</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\..\..\..\examples\std\uart\demo_std_uart_rs485.c</PathWithFileName>
+      <FilenameWithoutPath>demo_std_uart_rs485.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>11</GroupNumber>
+      <FileNumber>292</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\..\..\..\examples\std\wdt\demo_std_wdt.c</PathWithFileName>
+      <FilenameWithoutPath>demo_std_wdt.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -3421,13 +3945,13 @@
     <RteFlg>0</RteFlg>
     <File>
       <GroupNumber>12</GroupNumber>
-      <FileNumber>253</FileNumber>
+      <FileNumber>293</FileNumber>
       <FileType>2</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\startup\am_zlg116_armcc_startup.s</PathWithFileName>
-      <FilenameWithoutPath>am_zlg116_armcc_startup.s</FilenameWithoutPath>
+      <PathWithFileName>..\startup\am_lpc82x_armcc_startup.s</PathWithFileName>
+      <FilenameWithoutPath>am_lpc82x_armcc_startup.s</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -3435,13 +3959,13 @@
 
   <Group>
     <GroupName>user_code</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
     <File>
       <GroupNumber>13</GroupNumber>
-      <FileNumber>254</FileNumber>
+      <FileNumber>294</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -3455,61 +3979,13 @@
 
   <Group>
     <GroupName>user_config</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
     <File>
       <GroupNumber>14</GroupNumber>
-      <FileNumber>255</FileNumber>
-      <FileType>5</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>..\user_config\am_prj_config.h</PathWithFileName>
-      <FilenameWithoutPath>am_prj_config.h</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>14</GroupNumber>
-      <FileNumber>256</FileNumber>
-      <FileType>5</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>..\user_config\am_zlg116_inst_init.h</PathWithFileName>
-      <FilenameWithoutPath>am_zlg116_inst_init.h</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>14</GroupNumber>
-      <FileNumber>257</FileNumber>
-      <FileType>5</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>..\user_config\am_board.h</PathWithFileName>
-      <FilenameWithoutPath>am_board.h</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>14</GroupNumber>
-      <FileNumber>258</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>..\user_config\am_prj_config.c</PathWithFileName>
-      <FilenameWithoutPath>am_prj_config.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>14</GroupNumber>
-      <FileNumber>259</FileNumber>
+      <FileNumber>295</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -3521,7 +3997,43 @@
     </File>
     <File>
       <GroupNumber>14</GroupNumber>
-      <FileNumber>260</FileNumber>
+      <FileNumber>296</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\user_config\am_prj_config.c</PathWithFileName>
+      <FilenameWithoutPath>am_prj_config.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>14</GroupNumber>
+      <FileNumber>297</FileNumber>
+      <FileType>5</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\user_config\am_board.h</PathWithFileName>
+      <FilenameWithoutPath>am_board.h</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>14</GroupNumber>
+      <FileNumber>298</FileNumber>
+      <FileType>5</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\user_config\am_prj_config.h</PathWithFileName>
+      <FilenameWithoutPath>am_prj_config.h</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>14</GroupNumber>
+      <FileNumber>299</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -3533,7 +4045,7 @@
     </File>
     <File>
       <GroupNumber>14</GroupNumber>
-      <FileNumber>261</FileNumber>
+      <FileNumber>300</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -3545,31 +4057,19 @@
     </File>
     <File>
       <GroupNumber>14</GroupNumber>
-      <FileNumber>262</FileNumber>
+      <FileNumber>301</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\user_config\am_hwconf_usrcfg\am_hwconf_buzzer_pwm.c</PathWithFileName>
-      <FilenameWithoutPath>am_hwconf_buzzer_pwm.c</FilenameWithoutPath>
+      <PathWithFileName>..\user_config\am_hwconf_usrcfg\am_hwconf_arm_systick.c</PathWithFileName>
+      <FilenameWithoutPath>am_hwconf_arm_systick.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
     <File>
       <GroupNumber>14</GroupNumber>
-      <FileNumber>263</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>..\user_config\am_hwconf_usrcfg\am_hwconf_debug_uart.c</PathWithFileName>
-      <FilenameWithoutPath>am_hwconf_debug_uart.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>14</GroupNumber>
-      <FileNumber>264</FileNumber>
+      <FileNumber>302</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -3581,7 +4081,7 @@
     </File>
     <File>
       <GroupNumber>14</GroupNumber>
-      <FileNumber>265</FileNumber>
+      <FileNumber>303</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -3593,7 +4093,7 @@
     </File>
     <File>
       <GroupNumber>14</GroupNumber>
-      <FileNumber>266</FileNumber>
+      <FileNumber>304</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -3605,79 +4105,295 @@
     </File>
     <File>
       <GroupNumber>14</GroupNumber>
-      <FileNumber>267</FileNumber>
+      <FileNumber>305</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\user_config\am_hwconf_usrcfg\am_hwconf_microport_ds1302.c</PathWithFileName>
-      <FilenameWithoutPath>am_hwconf_microport_ds1302.c</FilenameWithoutPath>
+      <PathWithFileName>..\user_config\am_hwconf_usrcfg\am_hwconf_lpc82x_adc0_dma.c</PathWithFileName>
+      <FilenameWithoutPath>am_hwconf_lpc82x_adc0_dma.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
     <File>
       <GroupNumber>14</GroupNumber>
-      <FileNumber>268</FileNumber>
+      <FileNumber>306</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\user_config\am_hwconf_usrcfg\am_hwconf_microport_eeprom.c</PathWithFileName>
-      <FilenameWithoutPath>am_hwconf_microport_eeprom.c</FilenameWithoutPath>
+      <PathWithFileName>..\user_config\am_hwconf_usrcfg\am_hwconf_lpc82x_adc0_int.c</PathWithFileName>
+      <FilenameWithoutPath>am_hwconf_lpc82x_adc0_int.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
     <File>
       <GroupNumber>14</GroupNumber>
-      <FileNumber>269</FileNumber>
+      <FileNumber>307</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\user_config\am_hwconf_usrcfg\am_hwconf_microport_flash.c</PathWithFileName>
-      <FilenameWithoutPath>am_hwconf_microport_flash.c</FilenameWithoutPath>
+      <PathWithFileName>..\user_config\am_hwconf_usrcfg\am_hwconf_lpc82x_clk.c</PathWithFileName>
+      <FilenameWithoutPath>am_hwconf_lpc82x_clk.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
     <File>
       <GroupNumber>14</GroupNumber>
-      <FileNumber>270</FileNumber>
+      <FileNumber>308</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\user_config\am_hwconf_usrcfg\am_hwconf_microport_rs485.c</PathWithFileName>
-      <FilenameWithoutPath>am_hwconf_microport_rs485.c</FilenameWithoutPath>
+      <PathWithFileName>..\user_config\am_hwconf_usrcfg\am_hwconf_lpc82x_crc.c</PathWithFileName>
+      <FilenameWithoutPath>am_hwconf_lpc82x_crc.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
     <File>
       <GroupNumber>14</GroupNumber>
-      <FileNumber>271</FileNumber>
+      <FileNumber>309</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\user_config\am_hwconf_usrcfg\am_hwconf_microport_rtc.c</PathWithFileName>
-      <FilenameWithoutPath>am_hwconf_microport_rtc.c</FilenameWithoutPath>
+      <PathWithFileName>..\user_config\am_hwconf_usrcfg\am_hwconf_lpc82x_dma.c</PathWithFileName>
+      <FilenameWithoutPath>am_hwconf_lpc82x_dma.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
     <File>
       <GroupNumber>14</GroupNumber>
-      <FileNumber>272</FileNumber>
+      <FileNumber>310</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\user_config\am_hwconf_usrcfg\am_hwconf_microport_rx8025t.c</PathWithFileName>
-      <FilenameWithoutPath>am_hwconf_microport_rx8025t.c</FilenameWithoutPath>
+      <PathWithFileName>..\user_config\am_hwconf_usrcfg\am_hwconf_lpc82x_gpio.c</PathWithFileName>
+      <FilenameWithoutPath>am_hwconf_lpc82x_gpio.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
     <File>
       <GroupNumber>14</GroupNumber>
-      <FileNumber>273</FileNumber>
+      <FileNumber>311</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\user_config\am_hwconf_usrcfg\am_hwconf_lpc82x_i2c0.c</PathWithFileName>
+      <FilenameWithoutPath>am_hwconf_lpc82x_i2c0.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>14</GroupNumber>
+      <FileNumber>312</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\user_config\am_hwconf_usrcfg\am_hwconf_lpc82x_i2c1.c</PathWithFileName>
+      <FilenameWithoutPath>am_hwconf_lpc82x_i2c1.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>14</GroupNumber>
+      <FileNumber>313</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\user_config\am_hwconf_usrcfg\am_hwconf_lpc82x_i2c2.c</PathWithFileName>
+      <FilenameWithoutPath>am_hwconf_lpc82x_i2c2.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>14</GroupNumber>
+      <FileNumber>314</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\user_config\am_hwconf_usrcfg\am_hwconf_lpc82x_i2c3.c</PathWithFileName>
+      <FilenameWithoutPath>am_hwconf_lpc82x_i2c3.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>14</GroupNumber>
+      <FileNumber>315</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\user_config\am_hwconf_usrcfg\am_hwconf_lpc82x_mrt.c</PathWithFileName>
+      <FilenameWithoutPath>am_hwconf_lpc82x_mrt.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>14</GroupNumber>
+      <FileNumber>316</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\user_config\am_hwconf_usrcfg\am_hwconf_lpc82x_sct0.c</PathWithFileName>
+      <FilenameWithoutPath>am_hwconf_lpc82x_sct0.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>14</GroupNumber>
+      <FileNumber>317</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\user_config\am_hwconf_usrcfg\am_hwconf_lpc82x_sct0_cap.c</PathWithFileName>
+      <FilenameWithoutPath>am_hwconf_lpc82x_sct0_cap.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>14</GroupNumber>
+      <FileNumber>318</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\user_config\am_hwconf_usrcfg\am_hwconf_lpc82x_sct0_pwm.c</PathWithFileName>
+      <FilenameWithoutPath>am_hwconf_lpc82x_sct0_pwm.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>14</GroupNumber>
+      <FileNumber>319</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\user_config\am_hwconf_usrcfg\am_hwconf_lpc82x_sct0_timing.c</PathWithFileName>
+      <FilenameWithoutPath>am_hwconf_lpc82x_sct0_timing.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>14</GroupNumber>
+      <FileNumber>320</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\user_config\am_hwconf_usrcfg\am_hwconf_lpc82x_spi0_dma.c</PathWithFileName>
+      <FilenameWithoutPath>am_hwconf_lpc82x_spi0_dma.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>14</GroupNumber>
+      <FileNumber>321</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\user_config\am_hwconf_usrcfg\am_hwconf_lpc82x_spi0_int.c</PathWithFileName>
+      <FilenameWithoutPath>am_hwconf_lpc82x_spi0_int.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>14</GroupNumber>
+      <FileNumber>322</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\user_config\am_hwconf_usrcfg\am_hwconf_lpc82x_spi1_dma.c</PathWithFileName>
+      <FilenameWithoutPath>am_hwconf_lpc82x_spi1_dma.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>14</GroupNumber>
+      <FileNumber>323</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\user_config\am_hwconf_usrcfg\am_hwconf_lpc82x_spi1_int.c</PathWithFileName>
+      <FilenameWithoutPath>am_hwconf_lpc82x_spi1_int.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>14</GroupNumber>
+      <FileNumber>324</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\user_config\am_hwconf_usrcfg\am_hwconf_lpc82x_usart0.c</PathWithFileName>
+      <FilenameWithoutPath>am_hwconf_lpc82x_usart0.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>14</GroupNumber>
+      <FileNumber>325</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\user_config\am_hwconf_usrcfg\am_hwconf_lpc82x_usart1.c</PathWithFileName>
+      <FilenameWithoutPath>am_hwconf_lpc82x_usart1.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>14</GroupNumber>
+      <FileNumber>326</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\user_config\am_hwconf_usrcfg\am_hwconf_lpc82x_usart2.c</PathWithFileName>
+      <FilenameWithoutPath>am_hwconf_lpc82x_usart2.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>14</GroupNumber>
+      <FileNumber>327</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\user_config\am_hwconf_usrcfg\am_hwconf_lpc82x_wkt.c</PathWithFileName>
+      <FilenameWithoutPath>am_hwconf_lpc82x_wkt.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>14</GroupNumber>
+      <FileNumber>328</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\user_config\am_hwconf_usrcfg\am_hwconf_lpc82x_wwdt.c</PathWithFileName>
+      <FilenameWithoutPath>am_hwconf_lpc82x_wwdt.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>14</GroupNumber>
+      <FileNumber>329</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -3689,7 +4405,7 @@
     </File>
     <File>
       <GroupNumber>14</GroupNumber>
-      <FileNumber>274</FileNumber>
+      <FileNumber>330</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -3701,7 +4417,7 @@
     </File>
     <File>
       <GroupNumber>14</GroupNumber>
-      <FileNumber>275</FileNumber>
+      <FileNumber>331</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -3713,7 +4429,7 @@
     </File>
     <File>
       <GroupNumber>14</GroupNumber>
-      <FileNumber>276</FileNumber>
+      <FileNumber>332</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -3725,7 +4441,7 @@
     </File>
     <File>
       <GroupNumber>14</GroupNumber>
-      <FileNumber>277</FileNumber>
+      <FileNumber>333</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -3737,7 +4453,7 @@
     </File>
     <File>
       <GroupNumber>14</GroupNumber>
-      <FileNumber>278</FileNumber>
+      <FileNumber>334</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -3749,7 +4465,103 @@
     </File>
     <File>
       <GroupNumber>14</GroupNumber>
-      <FileNumber>279</FileNumber>
+      <FileNumber>335</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\user_config\am_hwconf_usrcfg\am_hwconf_buzzer_pwm.c</PathWithFileName>
+      <FilenameWithoutPath>am_hwconf_buzzer_pwm.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>14</GroupNumber>
+      <FileNumber>336</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\user_config\am_hwconf_usrcfg\am_hwconf_debug_uart.c</PathWithFileName>
+      <FilenameWithoutPath>am_hwconf_debug_uart.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>14</GroupNumber>
+      <FileNumber>337</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\user_config\am_hwconf_usrcfg\am_hwconf_microport_ds1302.c</PathWithFileName>
+      <FilenameWithoutPath>am_hwconf_microport_ds1302.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>14</GroupNumber>
+      <FileNumber>338</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\user_config\am_hwconf_usrcfg\am_hwconf_microport_eeprom.c</PathWithFileName>
+      <FilenameWithoutPath>am_hwconf_microport_eeprom.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>14</GroupNumber>
+      <FileNumber>339</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\user_config\am_hwconf_usrcfg\am_hwconf_microport_flash.c</PathWithFileName>
+      <FilenameWithoutPath>am_hwconf_microport_flash.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>14</GroupNumber>
+      <FileNumber>340</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\user_config\am_hwconf_usrcfg\am_hwconf_microport_rs485.c</PathWithFileName>
+      <FilenameWithoutPath>am_hwconf_microport_rs485.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>14</GroupNumber>
+      <FileNumber>341</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\user_config\am_hwconf_usrcfg\am_hwconf_microport_rtc.c</PathWithFileName>
+      <FilenameWithoutPath>am_hwconf_microport_rtc.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>14</GroupNumber>
+      <FileNumber>342</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\user_config\am_hwconf_usrcfg\am_hwconf_microport_rx8025t.c</PathWithFileName>
+      <FilenameWithoutPath>am_hwconf_microport_rx8025t.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>14</GroupNumber>
+      <FileNumber>343</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -3761,229 +4573,13 @@
     </File>
     <File>
       <GroupNumber>14</GroupNumber>
-      <FileNumber>280</FileNumber>
+      <FileNumber>344</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_adc.c</PathWithFileName>
-      <FilenameWithoutPath>am_hwconf_zlg116_adc.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>14</GroupNumber>
-      <FileNumber>281</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_clk.c</PathWithFileName>
-      <FilenameWithoutPath>am_hwconf_zlg116_clk.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>14</GroupNumber>
-      <FileNumber>282</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_dma.c</PathWithFileName>
-      <FilenameWithoutPath>am_hwconf_zlg116_dma.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>14</GroupNumber>
-      <FileNumber>283</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_gpio.c</PathWithFileName>
-      <FilenameWithoutPath>am_hwconf_zlg116_gpio.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>14</GroupNumber>
-      <FileNumber>284</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_i2c.c</PathWithFileName>
-      <FilenameWithoutPath>am_hwconf_zlg116_i2c.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>14</GroupNumber>
-      <FileNumber>285</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_i2c_slv.c</PathWithFileName>
-      <FilenameWithoutPath>am_hwconf_zlg116_i2c_slv.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>14</GroupNumber>
-      <FileNumber>286</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_iwdg.c</PathWithFileName>
-      <FilenameWithoutPath>am_hwconf_zlg116_iwdg.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>14</GroupNumber>
-      <FileNumber>287</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_pwr.c</PathWithFileName>
-      <FilenameWithoutPath>am_hwconf_zlg116_pwr.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>14</GroupNumber>
-      <FileNumber>288</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_spi_dma.c</PathWithFileName>
-      <FilenameWithoutPath>am_hwconf_zlg116_spi_dma.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>14</GroupNumber>
-      <FileNumber>289</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_spi_int.c</PathWithFileName>
-      <FilenameWithoutPath>am_hwconf_zlg116_spi_int.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>14</GroupNumber>
-      <FileNumber>290</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_spi_slv_dma.c</PathWithFileName>
-      <FilenameWithoutPath>am_hwconf_zlg116_spi_slv_dma.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>14</GroupNumber>
-      <FileNumber>291</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_systick.c</PathWithFileName>
-      <FilenameWithoutPath>am_hwconf_zlg116_systick.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>14</GroupNumber>
-      <FileNumber>292</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_tim_cap.c</PathWithFileName>
-      <FilenameWithoutPath>am_hwconf_zlg116_tim_cap.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>14</GroupNumber>
-      <FileNumber>293</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_tim_pwm.c</PathWithFileName>
-      <FilenameWithoutPath>am_hwconf_zlg116_tim_pwm.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>14</GroupNumber>
-      <FileNumber>294</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_tim_timing.c</PathWithFileName>
-      <FilenameWithoutPath>am_hwconf_zlg116_tim_timing.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>14</GroupNumber>
-      <FileNumber>295</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_uart.c</PathWithFileName>
-      <FilenameWithoutPath>am_hwconf_zlg116_uart.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>14</GroupNumber>
-      <FileNumber>296</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_wwdg.c</PathWithFileName>
-      <FilenameWithoutPath>am_hwconf_zlg116_wwdg.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>14</GroupNumber>
-      <FileNumber>297</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_spi_poll.c</PathWithFileName>
-      <FilenameWithoutPath>am_hwconf_zlg116_spi_poll.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>14</GroupNumber>
-      <FileNumber>298</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>..\user_config\am_hwconf_usrcfg\am_hwconf_fm175xx.c</PathWithFileName>
-      <FilenameWithoutPath>am_hwconf_fm175xx.c</FilenameWithoutPath>
+      <PathWithFileName>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg9021.c</PathWithFileName>
+      <FilenameWithoutPath>am_hwconf_zlg9021.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>

@@ -13,7 +13,7 @@
 
 /**
  * \file
- * \brief AM824ZB ºËÐÄ°å
+ * \brief AM824ZB
  *
  * \internal
  * \par Modification history

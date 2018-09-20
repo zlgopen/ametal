@@ -373,7 +373,7 @@
               <MiscControls></MiscControls>
               <Define>AM_VDEBUG AM_CORTEX_M0</Define>
               <Undefine></Undefine>
-              <IncludePath>..\user_code;..\user_config;..\user_config\am_hwconf_usrcfg;..\user_config\am_servconf_usrcfg;..\..\..\..\components\libc\microlib_adapter\include;..\..\..\..\components\libc\armlib_adapter\include;..\..\..\..\components\service\include;..\..\..\..\components\drivers\include;..\..\..\..\soc\nxp\lpc824;..\..\..\..\3rdparty\CMSIS\Include;..\..\..\..\components\util\include;..\..\..\bsp_common\include;..\..\..\..\arch\arm\include;..\..\..\bsp_common\include;..\..\..\..\interface;..\..\..\..\soc\nxp\drivers\include\acmp;..\..\..\..\soc\nxp\drivers\include\adc;..\..\..\..\soc\nxp\drivers\include\clk;..\..\..\..\soc\nxp\drivers\include\crc;..\..\..\..\soc\nxp\drivers\include\dma;..\..\..\..\soc\nxp\drivers\include\fmc;..\..\..\..\soc\nxp\drivers\include\gpio;..\..\..\..\soc\nxp\drivers\include\i2c;..\..\..\..\soc\nxp\drivers\include\iap;..\..\..\..\soc\nxp\drivers\include\inmux;..\..\..\..\soc\nxp\drivers\include\iocon;..\..\..\..\soc\nxp\drivers\include\mrt;..\..\..\..\soc\nxp\drivers\include\pint;..\..\..\..\soc\nxp\drivers\include\pmu;..\..\..\..\soc\nxp\drivers\include\rit;..\..\..\..\soc\nxp\drivers\include\rtc;..\..\..\..\soc\nxp\drivers\include\sct;..\..\..\..\soc\nxp\drivers\include\spi;..\..\..\..\soc\nxp\drivers\include\swm;..\..\..\..\soc\nxp\drivers\include\syscon;..\..\..\..\soc\nxp\drivers\include\timer;..\..\..\..\soc\nxp\drivers\include\usart;..\..\..\..\soc\nxp\drivers\include\utick;..\..\..\..\soc\nxp\drivers\include\wkt;..\..\..\..\soc\nxp\drivers\include\wwdt;..\..\..\..\examples\board\am824zb;..\..\..\..\examples\board\am824_core;..\..\..\..\examples\soc\nxp;..\..\..\..\examples\std</IncludePath>
+              <IncludePath>..\user_code;..\user_config;..\user_config\am_hwconf_usrcfg;..\user_config\am_servconf_usrcfg;..\..\..\..\components\libc\microlib_adapter\include;..\..\..\..\components\libc\armlib_adapter\include;..\..\..\..\components\service\include;..\..\..\..\components\drivers\include;..\..\..\..\soc\nxp\lpc824;..\..\..\..\3rdparty\CMSIS\Include;..\..\..\..\components\util\include;..\..\..\bsp_common\include;..\..\..\..\arch\arm\include;..\..\..\bsp_common\include;..\..\..\..\interface;..\..\..\..\soc\nxp\drivers\include\acmp;..\..\..\..\soc\nxp\drivers\include\adc;..\..\..\..\soc\nxp\drivers\include\clk;..\..\..\..\soc\nxp\drivers\include\crc;..\..\..\..\soc\nxp\drivers\include\dma;..\..\..\..\soc\nxp\drivers\include\fmc;..\..\..\..\soc\nxp\drivers\include\gpio;..\..\..\..\soc\nxp\drivers\include\i2c;..\..\..\..\soc\nxp\drivers\include\iap;..\..\..\..\soc\nxp\drivers\include\inmux;..\..\..\..\soc\nxp\drivers\include\iocon;..\..\..\..\soc\nxp\drivers\include\mrt;..\..\..\..\soc\nxp\drivers\include\pint;..\..\..\..\soc\nxp\drivers\include\pmu;..\..\..\..\soc\nxp\drivers\include\rit;..\..\..\..\soc\nxp\drivers\include\rtc;..\..\..\..\soc\nxp\drivers\include\sct;..\..\..\..\soc\nxp\drivers\include\spi;..\..\..\..\soc\nxp\drivers\include\swm;..\..\..\..\soc\nxp\drivers\include\syscon;..\..\..\..\soc\nxp\drivers\include\timer;..\..\..\..\soc\nxp\drivers\include\usart;..\..\..\..\soc\nxp\drivers\include\utick;..\..\..\..\soc\nxp\drivers\include\wkt;..\..\..\..\soc\nxp\drivers\include\wwdt;..\..\..\..\examples\board\am824zb;..\..\..\..\examples\board\am824_core;..\..\..\..\examples\soc\nxp;..\..\..\..\examples\std;..\..\..\..\examples\components</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -1400,6 +1400,36 @@
               <FileName>demo_am824_core_std_wwdt.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\board\am824_core\wwdt\demo_am824_core_std_wwdt.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_am824zb_std_zm516x.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am824zb\zigbee\demo_am824zb_std_zm516x.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_am824zb_std_zm516x_baudrate.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am824zb\zigbee\demo_am824zb_std_zm516x_baudrate.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_am824zb_std_zm516x_gpio.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am824zb\zigbee\demo_am824zb_std_zm516x_gpio.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_am824zb_std_zm516x_key_led.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am824zb\zigbee\demo_am824zb_std_zm516x_key_led.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_am824zb_std_zm516x_network.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am824zb\zigbee\demo_am824zb_std_zm516x_network.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_am824zb_std_zm516x_search.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am824zb\zigbee\demo_am824zb_std_zm516x_search.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -3559,6 +3589,36 @@
               <FileName>demo_am824_core_std_wwdt.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\board\am824_core\wwdt\demo_am824_core_std_wwdt.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_am824zb_std_zm516x.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am824zb\zigbee\demo_am824zb_std_zm516x.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_am824zb_std_zm516x_baudrate.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am824zb\zigbee\demo_am824zb_std_zm516x_baudrate.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_am824zb_std_zm516x_gpio.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am824zb\zigbee\demo_am824zb_std_zm516x_gpio.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_am824zb_std_zm516x_key_led.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am824zb\zigbee\demo_am824zb_std_zm516x_key_led.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_am824zb_std_zm516x_network.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am824zb\zigbee\demo_am824zb_std_zm516x_network.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_am824zb_std_zm516x_search.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am824zb\zigbee\demo_am824zb_std_zm516x_search.c</FilePath>
             </File>
           </Files>
         </Group>

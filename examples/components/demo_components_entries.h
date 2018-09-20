@@ -34,6 +34,7 @@ extern "C" {
 #include "am_ep24cxx.h"
 #include "am_fm175xx.h"
 #include "am_zm516x.h"
+#include "am_zlg9021.h"
 
 /**
  * \brief EP24CXX 器件例程
@@ -165,6 +166,20 @@ void demo_zm516x_search_entry (am_zm516x_handle_t handle);
  * \return 无
  */
 void demo_zm516x_entry (am_zm516x_handle_t handle);
+
+/**
+ * \brief zlg9021 蓝牙模块自动波特率例程
+ * \param[in] handle  zlg9021 服务句柄
+ * \return 无
+ */
+void demo_zlg9021_baudrate_entry (am_zlg9021_handle_t zlg9021_handle);
+
+/**
+ * \brief zlg9021 蓝牙模块 LED 例程
+ * \param[in] handle  zlg9021 服务句柄
+ * \return 无
+ */
+void demo_zlg9021_led_entry (am_zlg9021_handle_t zlg9021_handle);
 
 #ifdef __cplusplus
 }
