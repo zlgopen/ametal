@@ -101,7 +101,7 @@ static am_zlg116_clk_dev_t __g_clk_dev;
  * \retval AM_OK : 时钟成功初始化
  */
 int am_zlg116_clk_inst_init (void)
-{
+{    
     return am_zlg116_clk_init(&__g_clk_dev, &__g_clk_devinfo);
 }
 /**
