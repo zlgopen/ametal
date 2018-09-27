@@ -59,8 +59,8 @@ void demo_am116_core_hw_i2c_master_poll_entry (void)
 {
     am_kprintf("demo am116_core hw i2c master poll!\r\n");
 
-    am_gpio_pin_cfg(PIOB_6, PIOB_6_I2C_SCL | PIOB_6_AF_OD | PIOB_6_SPEED_2MHz);
-    am_gpio_pin_cfg(PIOB_7, PIOB_7_I2C_SDA | PIOB_7_AF_OD | PIOB_7_SPEED_2MHz);
+    am_gpio_pin_cfg(PIOB_6, PIOB_6_I2C_SCL | PIOB_6_AF_OD | PIOB_6_SPEED_20MHz);
+    am_gpio_pin_cfg(PIOB_7, PIOB_7_I2C_SDA | PIOB_7_AF_OD | PIOB_7_SPEED_20MHz);
 
     am_clk_enable(CLK_I2C1);
     am_zlg116_clk_reset(CLK_I2C1);
