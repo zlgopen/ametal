@@ -148,9 +148,9 @@ typedef enum amhw_zlg_gpio_trig_mode {
  * \note 选择该枚举设置GPIO引脚驱动电路响应速度时，GPIO引脚也确定为输出方向
  */
 typedef enum amhw_zlg_gpio_speed_mode {
-    AMHW_ZLG_GPIO_SPEED_10MHz = 1UL,
-    AMHW_ZLG_GPIO_SPEED_2MHz  = 2UL,
-    AMHW_ZLG_GPIO_SPEED_50MHz = 3UL
+    AMHW_ZLG_GPIO_SPEED_10MHz = 3UL,
+    AMHW_ZLG_GPIO_SPEED_20MHz = 2UL,
+    AMHW_ZLG_GPIO_SPEED_50MHz = 1UL
 }amhw_zlg_gpio_speed_mode_t;
 
 /**
