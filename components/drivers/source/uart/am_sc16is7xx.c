@@ -1485,7 +1485,8 @@ am_sc16is7xx_handle_t am_sc16is7xx_init (am_sc16is7xx_dev_t           *p_dev,
     uint32_t         i;
     am_err_t         err;
     am_local uint8_t chan_list[SC16IS7XX_CHAN_MAX];
-
+    
+	
     if ((NULL == p_dev) ||
         (NULL == p_devinfo) ||
         (NULL == i2c_handle) ||
@@ -1509,7 +1510,7 @@ am_sc16is7xx_handle_t am_sc16is7xx_init (am_sc16is7xx_dev_t           *p_dev,
         p_dev->pfn_rxchar_put[i]    = NULL;
         p_dev->pfn_err[i]           = NULL;
 
-        p_dev->serial_rate[i]       = 9600;
+        p_dev->serial_rate[i]       = 115200;
         p_dev->serial_opts[i]       = AM_UART_CS8;
         p_dev->serial_mode[i]       = AM_UART_MODE_POLL;
 
@@ -1554,8 +1555,9 @@ am_sc16is7xx_handle_t am_sc16is7xx_init (am_sc16is7xx_dev_t           *p_dev,
         am_mdelay(1);
 
         /* 如果没有配置 RST 引脚，则使用软件复位 */
-        __reg_write(p_dev, 0, SC16IS7XX_REG_LCR, SC16IS7XX_LCR_ACCESS_GENERAL);
         __reg_write(p_dev, 0, SC16IS7XX_REG_IOCTRL, SC16IS7XX_IO_CTRL_RESET_BIT);
+			
+        __reg_write(p_dev, 0, SC16IS7XX_REG_LCR, SC16IS7XX_LCR_ACCESS_GENERAL);
 
         am_mdelay(1);
     }
@@ -1648,6 +1650,58 @@ am_uart_handle_t am_sc16is7xx_uart_handle_get (am_sc16is7xx_handle_t handle,
     }
 
     return &handle->uart_serv[chan];
+}
+
+/**
+ * \brief 指定通道的 UART 读取数据
+ */
+int am_sc16is7xx_uart_poll_receive (am_sc16is7xx_handle_t handle,
+                                    uint8_t               chan,
+                                    char                 *p_rxbuf, 
+                                    uint32_t              nbytes)                                    
+{
+    int ret = AM_OK;       
+    
+    /* 判断参数有效性 */
+    if ((NULL == handle) || (handle->p_devinfo->chan_num <= chan)) {
+        return -AM_EINVAL;
+    }
+    
+    while (nbytes-- && AM_OK == ret) { 	
+        ret = __uart_poll_getchar (&(handle->uartinfo[chan]), p_rxbuf);
+        AM_DBG_INFO("%c\r\n", *p_rxbuf);
+        if (AM_OK != ret) {
+            *p_rxbuf = '\0';
+        }
+        p_rxbuf++;
+    } 
+    
+    return ret; 
+}
+
+/**
+ * \brief 指定通道的 UART 发送字符串
+ */
+int am_sc16is7xx_uart_poll_send (am_sc16is7xx_handle_t handle,
+                                 uint8_t               chan,
+                                 char                 *p_txbuf, 
+                                 uint32_t              nbytes)  
+{
+    int ret = 0;
+    
+    /* 判断参数有效性 */
+    if ((NULL == handle) || (handle->p_devinfo->chan_num <= chan)) {
+        return -AM_EINVAL;
+    }
+        
+    while (nbytes-- && *p_txbuf != '\0') {  
+        ret = __uart_poll_putchar (&(handle->uartinfo[chan]), *p_txbuf++);
+        if (AM_OK != ret) {
+            return ret;
+        }
+    }
+                                  
+    return ret;
 }
 
 /**

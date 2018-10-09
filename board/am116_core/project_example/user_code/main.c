@@ -34,14 +34,6 @@
  * \brief AMetal 应用程序入口
  */
  
-void demo_ltr_553als_entry(void);
-void demo_bma253_entry(void);
-void demo_bmg160_entry(void);
-void demo_mmc5883ma_entry(void);
-void demo_lsm6dsl_entry(void);
-
-//void demo_am116_core_microport_sc16is740_entry(void);
-
 int am_main (void)
 {
     AM_DBG_INFO("Start up successful!\r\n");
@@ -52,6 +44,20 @@ int am_main (void)
      *
      * 注意：同一时刻只能运行一个 demo，即只能使某一行处于取消注释状态。
      */
+      demo_sc16is7xx_entry();
+//    demo_shtc1_entry();
+//    demo_lis3mdl_entry();
+//    demo_bh1730fvc_entry();
+//    demo_hts221_entry();
+//    demo_lps22hb_entry();
+//    demo_bme280_entry(); 
+//    demo_bmp280_entry();  
+//    demo_ltr_553als_entry();
+//    demo_bma253_entry(); 
+//	  demo_bmg160_entry();
+//	  demo_mmc5883ma_entry();
+//	  demo_lsm6dsl_entry();
+//    demo_is25xx_entry();
 //    demo_am116_core_std_led_entry();
 //    demo_am116_core_std_delay_entry();
 //    demo_am116_core_hw_adc_int_entry();
@@ -139,18 +145,6 @@ int am_main (void)
 //    demo_am116_core_miniport_zlg72128_entry();
 //    demo_am116_core_dr_fm175xx_picca_read_id();
 //    demo_am116_core_dr_fm175xx_picca_lpcd_read_id();
-//    demo_shtc1_entry();
-//    demo_lis3mdl_entry();
-//    demo_bh1730fvc_entry();
-//    demo_hts221_entry();
-//    demo_lps22hb_entry();
-//    demo_bme280_entry(); 
-//    demo_bmp280_entry();  
-//    demo_ltr_553als_entry();
-//    demo_bma253_entry(); 
-//		demo_bmg160_entry();
-//		demo_mmc5883ma_entry();
-		  demo_lsm6dsl_entry();
 
     while (1) {
     }

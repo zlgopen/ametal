@@ -27,7 +27,77 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
- 
+
+/**
+ * \brief MMC5883MA三轴磁传感器例程
+ */
+void demo_mmc5883ma_entry(void);
+	
+/**
+ * \brief LSM6DSL三轴加速度传感器例程
+ */
+void demo_lsm6dsl_entry(void);
+	
+/**
+ * \brief IS25XX flash驱动例程
+ */
+void demo_is25xx_entry(void);
+	
+/**
+ * \brief SC16IS7XX I2C转UART例程
+ */
+void demo_sc16is7xx_entry(void);
+	
+/**
+ * \brief BMA253三轴加速度例程
+ */
+void demo_bma253_entry (void);
+
+/**
+ * \brief LTR_553ALS光照传感器例程
+ */
+void demo_ltr_553als_entry (void);
+
+/**
+ * \brief BMP280压力传感器例程
+ */
+void demo_bmp280_entry (void);
+
+/**
+ * \brief BME280压力温湿度传感器例程
+ */
+void demo_bme280_entry (void);
+
+/**
+ * \brief LPS22HB压力传感器例程
+ */
+void demo_lps22hb_entry (void);
+
+/**
+ * \brief  HTS221温湿度传感器例程
+ */
+void demo_hts221_entry (void);
+
+/**
+ * \brief BH1730FVC光传感器例程
+ */
+void demo_bh1730fvc_entry (void);
+
+/**
+ * \brief LIS3MDL三轴磁传感器例程
+ */
+void demo_lis3mdl_entry (void);
+
+/**
+ * \brief SHTC1温湿度传感器例程
+ */
+void demo_shtc1_entry (void);
+
+/**
+ * \brief BMG160三轴陀螺仪传感器例程
+ */
+void demo_bmg160_entry (void);	
+	
 /**
  * \brief ADC INT 例程，通过 HW 层接口实现
  */
@@ -467,56 +537,6 @@ void demo_am116_core_dr_fm175xx_picca_read_id(void);
  * \brief FM175XX LCPD模式 A类卡读卡类型和卡号例程
  */
 void demo_am116_core_dr_fm175xx_picca_lpcd_read_id(void);
-
-/**
- * \brief BMA253三轴加速度例程
- */
-void demo_bma253_entry (void);
-
-/**
- * \brief LTR_553ALS光照传感器例程
- */
-void demo_ltr_553als_entry (void);
-
-/**
- * \brief BMP280压力传感器例程
- */
-void demo_bmp280_entry (void);
-
-/**
- * \brief BME280压力温湿度传感器例程
- */
-void demo_bme280_entry (void);
-
-/**
- * \brief LPS22HB压力传感器例程
- */
-void demo_lps22hb_entry (void);
-
-/**
- * \brief  HTS221温湿度传感器例程
- */
-void demo_hts221_entry (void);
-
-/**
- * \brief BH1730FVC光传感器例程
- */
-void demo_bh1730fvc_entry (void);
-
-/**
- * \brief LIS3MDL三轴磁传感器例程
- */
-void demo_lis3mdl_entry (void);
-
-/**
- * \brief SHTC1温湿度传感器例程
- */
-void demo_shtc1_entry (void);
-
-/**
- * \brief BMG160三轴陀螺仪传感器例程
- */
-void demo_bmg160_entry (void);
 
 #ifdef __cplusplus
 }

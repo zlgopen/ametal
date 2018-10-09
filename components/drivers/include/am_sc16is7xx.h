@@ -232,13 +232,45 @@ am_sc16is7xx_handle_t am_sc16is7xx_init (am_sc16is7xx_dev_t           *p_dev,
                                          am_i2c_handle_t               i2c_handle);
 
 /**
+ * \brief 指定通道 UART 接收数据
+ *
+ * \param[in] handle  : SC16IS7XX 设备结构体
+ * \param[in] chan    : 指定的通道
+ * \param[in] p_rxbuf : 指向存放数据的指针
+ * \param[in] nbytes  : 接收数据长度                                        
+ *
+ * \retval  AM_OK      成功
+ * \retval  AM_OTHER   失败
+ */  
+int am_sc16is7xx_uart_poll_receive (am_sc16is7xx_handle_t handle,
+                                    uint8_t               chan,
+                                    char                 *p_rxbuf, 
+                                    uint32_t              nbytes);                                         
+                                         
+/**
+ * \brief 指定通道 UART 发送字符串
+ *
+ * \param[in] handle  : SC16IS7XX 设备结构体
+ * \param[in] chan    : 指定的通道
+ * \param[in] p_txbuf : 指向存放数据的指针
+ * \param[in] nbytes  : 发送数据长度 
+ *
+ * \retval  AM_OK      成功
+ * \retval  AM_OTHER   失败
+ */                                         
+int am_sc16is7xx_uart_poll_send (am_sc16is7xx_handle_t handle,
+                                 uint8_t               chan,
+                                 char                 *p_txbuf, 
+                                 uint32_t              nbytes);  																				 
+
+/**
  * \brief 解初始化 SC16IS7XX 驱动
  *
  * \param[in] handle 通过 am_sc16is7xx_init 函数获取的 SC16IS7XX 句柄
  *
  * \retval  AM_OK     解初始化成功
  * \retval -AM_EINVAL 无效参数
- */
+ */																 
 am_err_t am_sc16is7xx_deinit (am_sc16is7xx_handle_t handle);
 
 /**
@@ -248,7 +280,7 @@ am_err_t am_sc16is7xx_deinit (am_sc16is7xx_handle_t handle);
 #ifdef __cplusplus
 }
 #endif
-
+ 
 #endif /* __AM_SC16IS7XX_H */
 
 /* end of file */

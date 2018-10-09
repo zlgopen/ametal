@@ -24,20 +24,70 @@
 #include "amhw_zlg_adc.h"
 
 /**
- * \brief LSM6DSL例程，通过驱动层接口实现
+ * \brief HTS221例程，通过驱动层接口实现
  */
-void demo_lsm6dsl_entry(void);
+void demo_hts221_entry (void);
+
+/**
+ * \brief SHTC1例程，通过驱动层接口实现
+ */
+void demo_shtc1_entry (void);
 
 /**
  * \brief MMC5883MA例程，通过驱动层接口实现
  */
-void demo_mmc5883ma_entry(void);
+void demo_mmc5883ma_entry (void);
+
+/**
+ * \brief LIS3MDL例程，通过驱动层接口实现
+ */
+void demo_lis3mdl_entry (void);
+
+/**
+ * \brief BME280例程，通过驱动层接口实现
+ */
+void demo_bme280_entry (void);
 
 /**
  * \brief BMG160例程，通过驱动层接口实现
  */
 void demo_bmg160_entry (void);
-	
+
+/**
+ * \brief LPS22HB例程，通过驱动层接口实现
+ */
+void demo_lps22hb_entry (void);
+
+/**
+ * \brief BMP280例程，通过驱动层接口实现
+ */
+void demo_bmp280_entry (void);
+
+/**
+ * \brief BH1730FVC例程，通过驱动层接口实现
+ */
+void demo_bh1730fvc_entry (void);
+
+/**
+ * \brief LTR_553ALS例程，通过驱动层接口实现
+ */
+void demo_ltr_553als_entry (void);
+
+/**
+ * \brief LSM6DSL例程，通过驱动层接口实现
+ */
+void demo_lsm6dsl_entry (void);
+
+/**
+ * \brief BMA253例程，通过驱动层接口实现
+ */
+void demo_bma253_entry (void);
+
+/**
+ * \brief SC16IS7XX例程
+ */
+void demo_sc16is7xx_entry (void);
+
 /**
  * \brief ADC INT 例程，通过 HW 层接口实现
  */
