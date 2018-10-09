@@ -57,6 +57,7 @@ int am_main (void)
 //	  demo_lsm6dsl_entry();
 //    demo_bma253_entry();
 //    demo_sc16is7xx_entry();
+//    demo_is25xx_entry();
 //    demo_zlg217_core_std_led_entry();
 //    demo_zlg217_core_std_delay_entry();
 //    demo_zlg217_core_std_adc_entry();

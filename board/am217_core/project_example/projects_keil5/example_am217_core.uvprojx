@@ -2086,6 +2086,11 @@
               <FileType>1</FileType>
               <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_hts221.c</FilePath>
             </File>
+            <File>
+              <FileName>am_hwconf_microport_is25xx_flash.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_microport_is25xx_flash.c</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>
