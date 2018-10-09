@@ -84,9 +84,14 @@ void demo_lsm6dsl_entry (void);
 void demo_bma253_entry (void);
 
 /**
- * \brief SC16IS7XX例程
+ * \brief SC16IS7XX例程,通过驱动层接口实现
  */
 void demo_sc16is7xx_entry (void);
+
+/**
+ * \brief IS25XX例程,通过驱动层接口实现
+ */
+void demo_is25xx_entry (void);
 
 /**
  * \brief ADC INT 例程，通过 HW 层接口实现
