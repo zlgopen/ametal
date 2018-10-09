@@ -43,9 +43,6 @@
 #include "am_fm175xx.h"
 #include "am_fm175xx_reg.h"
 #include "am_vdebug.h"
-#include "zlg116_pin.h"
-#include "am_zlg116_inst_init.h"
-#include "am_zlg_spi_poll.h"
 #include "am_delay.h"
 
 /**
