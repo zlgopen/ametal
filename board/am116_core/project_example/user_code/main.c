@@ -30,10 +30,10 @@
 #include "am_vdebug.h"
 #include "am_board.h"
 #include "demo_am116_core_entries.h"
+
 /**
  * \brief AMetal 应用程序入口
  */
- 
 int am_main (void)
 {
     AM_DBG_INFO("Start up successful!\r\n");
@@ -44,6 +44,7 @@ int am_main (void)
      *
      * 注意：同一时刻只能运行一个 demo，即只能使某一行处于取消注释状态。
      */
+
       demo_sc16is7xx_entry();
 //    demo_shtc1_entry();
 //    demo_lis3mdl_entry();
@@ -145,7 +146,7 @@ int am_main (void)
 //    demo_am116_core_miniport_zlg72128_entry();
 //    demo_am116_core_dr_fm175xx_picca_read_id();
 //    demo_am116_core_dr_fm175xx_picca_lpcd_read_id();
-
     while (1) {
+
     }
 }

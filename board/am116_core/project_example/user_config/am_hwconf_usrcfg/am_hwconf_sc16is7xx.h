@@ -12,11 +12,11 @@
 
 /**
  * \file
- * \brief SC16IS7XX ÅäÖÃÎÄ¼þ
+ * \brief SC16IS7XX Ã…Ã¤Ã–ÃƒÃŽÃ„Â¼Ã¾
  *
  * \internal
  * \par Modification history
- * - 1.00 18-09-14  wk, first implementation
+ * - 1.00 18-09-13  yrz, first implementation
  * \endinternal
  */
 
@@ -31,7 +31,7 @@ extern "C" {
 #endif
 
 
-/** \brief ÊµÀý³õÊ¼»¯ */
+/** \brief ÃŠÂµÃ€Ã½Â³ÃµÃŠÂ¼Â»Â¯ */
 am_sc16is7xx_handle_t am_sc16is7xx_inst_init (void);    
     
 

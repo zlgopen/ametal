@@ -12,15 +12,14 @@
 
 /**
  * \file
- * \brief MicroPort SC16IS7XX ÓÃ»§ÅäÖÃÎÄ¼ş
+ * \brief SC16IS7XX é…ç½®æ–‡ä»¶
  * \sa am_hwconf_sc16is7xx.c
  *
  * \internal
  * \par Modification history
- * - 1.00 18-9-17  wk, first implementation
+ * - 1.00 18-09-13  yrz, first implementation
  * \endinternal
  */
-
 #include "ametal.h"
 #include "am_sc16is7xx.h"
 #include "am_zlg116_inst_init.h"
@@ -31,8 +30,8 @@
  * \copydoc am_hwconf_sc16is7xx.c
  * @{
  */
- 
- /** \brief Éè±¸ĞÅÏ¢ */
+
+/** \brief è®¾å¤‡ä¿¡æ¯ */
 am_local am_const am_sc16is7xx_devinfo_t __g_sc16is7xx_devinfo = {
     1,
     0X4C,
@@ -49,16 +48,16 @@ am_local am_const am_sc16is7xx_devinfo_t __g_sc16is7xx_devinfo = {
 };
 
 /*******************************************************************************
-  SC16IS7XX ÊµÀı³õÊ¼»¯
+  SC16IS7XX å®ä¾‹åˆå§‹åŒ–
 *******************************************************************************/
 
-/** \brief Éè±¸¶¨Òå */
+/** \brief è®¾å¤‡å®šä¹‰ */
 am_local am_sc16is7xx_dev_t __g_sc16is7xx_dev;
 
-/** \brief ÊµÀı³õÊ¼»¯ */
+/** \brief å®ä¾‹åˆå§‹åŒ– */
 am_sc16is7xx_handle_t am_sc16is7xx_inst_init (void)
 {
-    /* »ñÈ¡ I2C ÊµÀı¾ä±ú */
+    /* è·å– I2C å®ä¾‹å¥æŸ„ */
     am_i2c_handle_t i2c_handle =  am_zlg116_i2c1_inst_init();
 
     return am_sc16is7xx_init (&__g_sc16is7xx_dev, 

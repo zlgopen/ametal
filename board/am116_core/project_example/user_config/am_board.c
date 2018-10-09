@@ -55,7 +55,7 @@ void am_board_init (void)
 
 #ifdef AM_VDEBUG
 #if (AM_CFG_DEBUG_ENABLE == 1)
-    dbg_handle = am_debug_uart_inst_init();
+    dbg_handle = am_debug_uart_inst_init(); 
 #endif /* (AM_CFG_DEBUG_ENABLE == 1) */
 #endif /* AM_VDEBUG */
 
