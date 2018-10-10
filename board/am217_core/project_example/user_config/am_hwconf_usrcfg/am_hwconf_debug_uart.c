@@ -35,7 +35,7 @@
  * \brief 使用的调试串口，默认 UART1
  * 1 - UART1; 2 - UART2; 3 - UART3
  */
-#define __DEBUG_UART            2
+#define __DEBUG_UART            1
 
 /** \brief 配置调试串口输出的波特率 */
 #define __DEBUG_BAUDRATE        115200

@@ -11,11 +11,11 @@
 *******************************************************************************/
 /**
  * \file
- * \brief SC16IS7XX æ“ä½œæ¥å£
+ * \brief SC16IS7XX ²Ù×÷½Ó¿Ú
  *
- * ä½¿ç”¨æœ¬æœåŠ¡éœ€è¦åŒ…å«å¤´æ–‡ä»¶ am_sc16is7xx.h
+ * Ê¹ÓÃ±¾·şÎñĞèÒª°üº¬Í·ÎÄ¼ş am_sc16is7xx.h
  *
- * \par ä½¿ç”¨ç¤ºä¾‹
+ * \par Ê¹ÓÃÊ¾Àı
  * \code
  * #include "am_sc16is7xx.h"
  * \endcode
@@ -45,202 +45,202 @@ extern "C" {
 #include "am_wait.h"
 #include "am_types.h"
 
-#define  SC16IS7XX_CHAN_MAX    2     /**< \brief æœ€å¤§ä¸²å£é€šé“æ•° */
-#define  SC16IS7XX_FIFO_SIZE   64    /**< \brief FIFO å¤§å° */
+#define  SC16IS7XX_CHAN_MAX    2     /**< \brief ×î´ó´®¿ÚÍ¨µÀÊı */
+#define  SC16IS7XX_FIFO_SIZE   64    /**< \brief FIFO ´óĞ¡ */
 
-/** \brief SC16IS7XX å›è°ƒä¿¡æ¯ */
+/** \brief SC16IS7XX »Øµ÷ĞÅÏ¢ */
 typedef struct am_sc16is7xx_cbinfo {
     void *p_arg[2];
 } am_sc16is7xx_cbinfo_t;
 
-/** \brief SC16IS7XX è®¾å¤‡ä¿¡æ¯ */
+/** \brief SC16IS7XX Éè±¸ĞÅÏ¢ */
 typedef struct am_sc16is7xx_devinfo {
 
-    /** \brief ä¸²å£é€šé“æ•°é‡ */
+    /** \brief ´®¿ÚÍ¨µÀÊıÁ¿ */
     uint8_t  chan_num;
 
-    /** \brief I2C 7 ä½ä»æœºåœ°å€ */
+    /** \brief I2C 7 Î»´Ó»úµØÖ· */
     uint8_t  i2c_addr;
 
-    /** \brief å¤ä½å¼•è„š */
+    /** \brief ¸´Î»Òı½Å */
     int      rst_pin;
 
-    /** \brief ä¸­æ–­å¼•è„šï¼Œé…ç½®ä¸º -1 æ—¶ä¸²å£åªæ”¯æŒè½®è¯¢æ¨¡å¼ */
+    /** \brief ÖĞ¶ÏÒı½Å£¬ÅäÖÃÎª -1 Ê±´®¿ÚÖ»Ö§³ÖÂÖÑ¯Ä£Ê½ */
     int      irq_pin;
 
-    /** \brief ç³»ç»Ÿæ—¶é’Ÿé¢‘ç‡ï¼Œå•ä½ä¸º HZ */
+    /** \brief ÏµÍ³Ê±ÖÓÆµÂÊ£¬µ¥Î»Îª HZ */
     uint32_t clk_freq;
 
-    /** \brief ä¸²å£æ³¢ç‰¹ç‡ */
+    /** \brief ´®¿Ú²¨ÌØÂÊ */
     uint32_t serial_rate[SC16IS7XX_CHAN_MAX];
 
-    /** \brief ä¸²å£æ•°æ®ä½ï¼Œå€¼ä¸º 5~8 */
+    /** \brief ´®¿ÚÊı¾İÎ»£¬ÖµÎª 5~8 */
     uint8_t  serial_data[SC16IS7XX_CHAN_MAX];
 
-    /** \brief ä¸²å£æ ¡éªŒä½ï¼Œ0:æ— æ ¡éªŒ 1:å¥‡æ ¡éªŒ 2:å¶æ ¡éªŒ */
+    /** \brief ´®¿ÚĞ£ÑéÎ»£¬0:ÎŞĞ£Ñé 1:ÆæĞ£Ñé 2:Å¼Ğ£Ñé */
     uint8_t  serial_parity[SC16IS7XX_CHAN_MAX];
 
-    /** \brief ä¸²å£åœæ­¢ä½ï¼Œå€¼ä¸º 1~2 */
+    /** \brief ´®¿ÚÍ£Ö¹Î»£¬ÖµÎª 1~2 */
     uint8_t  serial_stop[SC16IS7XX_CHAN_MAX];
 
-    /** \brief RS485 æ–¹å‘æ§åˆ¶å‡½æ•°, AM_TRUE:å‘é€æ¨¡å¼ï¼Œ AM_FALSE:æ¥æ”¶æ¨¡å¼ */
+    /** \brief RS485 ·½Ïò¿ØÖÆº¯Êı, AM_TRUE:·¢ËÍÄ£Ê½£¬ AM_FALSE:½ÓÊÕÄ£Ê½ */
     void   (*pfn_rs485_dir)(uint8_t chan, am_bool_t is_txmode);
 
-    /** \brief å¹³å°åˆå§‹åŒ–å‡½æ•° */
+    /** \brief Æ½Ì¨³õÊ¼»¯º¯Êı */
     void   (*pfn_plfm_init)(void);
 
-    /** \brief å¹³å°å»åˆå§‹åŒ–å‡½æ•° */
+    /** \brief Æ½Ì¨È¥³õÊ¼»¯º¯Êı */
     void   (*pfn_plfm_deinit)(void);
 
 } am_sc16is7xx_devinfo_t;
 
-/** \brief SC16IS7XX è®¾å¤‡ */
+/** \brief SC16IS7XX Éè±¸ */
 typedef struct am_sc16is7xx_dev {
 
-    /** \brief æ ‡å‡† UART æœåŠ¡ */
+    /** \brief ±ê×¼ UART ·şÎñ */
     am_uart_serv_t          uart_serv[SC16IS7XX_CHAN_MAX];
 
-    /** \brief æŒ‡å‘ç”¨æˆ·æ³¨å†Œçš„ txchar_get å‡½æ•° */
+    /** \brief Ö¸ÏòÓÃ»§×¢²áµÄ txchar_get º¯Êı */
     am_uart_txchar_get_t    pfn_txchar_get[SC16IS7XX_CHAN_MAX];
 
-    /** \brief æŒ‡å‘ç”¨æˆ·æ³¨å†Œçš„ rxchar_put å‡½æ•° */
+    /** \brief Ö¸ÏòÓÃ»§×¢²áµÄ rxchar_put º¯Êı */
     am_uart_rxchar_put_t    pfn_rxchar_put[SC16IS7XX_CHAN_MAX];
 
-    /** \brief æŒ‡å‘ç”¨æˆ·æ³¨å†Œçš„é”™è¯¯å›è°ƒå‡½æ•° */
+    /** \brief Ö¸ÏòÓÃ»§×¢²áµÄ´íÎó»Øµ÷º¯Êı */
     am_uart_err_t           pfn_err[SC16IS7XX_CHAN_MAX];
 
-    /** \brief txchar_get å‡½æ•°å‚æ•° */
+    /** \brief txchar_get º¯Êı²ÎÊı */
     void                   *p_txget_arg[SC16IS7XX_CHAN_MAX];
 
-    /** \brief rxchar_put å‡½æ•°å‚æ•° */
+    /** \brief rxchar_put º¯Êı²ÎÊı */
     void                   *p_rxput_arg[SC16IS7XX_CHAN_MAX];
 
-    /** \brief é”™è¯¯å›è°ƒå‡½æ•°ç”¨æˆ·å‚æ•° */
+    /** \brief ´íÎó»Øµ÷º¯ÊıÓÃ»§²ÎÊı */
     void                   *p_err_arg[SC16IS7XX_CHAN_MAX];
 
-    /** \brief ä¸²å£æ³¢ç‰¹ç‡ */
+    /** \brief ´®¿Ú²¨ÌØÂÊ */
     uint32_t                serial_rate[SC16IS7XX_CHAN_MAX];
 
-    /** \brief ä¸²å£é€‰é¡¹ */
+    /** \brief ´®¿ÚÑ¡Ïî */
     uint32_t                serial_opts[SC16IS7XX_CHAN_MAX];
 
-    /** \brief ä¸²å£æ¨¡å¼ */
+    /** \brief ´®¿ÚÄ£Ê½ */
     uint32_t                serial_mode[SC16IS7XX_CHAN_MAX];
 
-    /** \brief ä¸²å£å…è®¸çš„æ¨¡å¼ */
+    /** \brief ´®¿ÚÔÊĞíµÄÄ£Ê½ */
     uint32_t                serial_mode_avail;
 
-    /** \brief æ˜¯å¦ä½¿èƒ½äº† RS485 æ¨¡å¼ */
+    /** \brief ÊÇ·ñÊ¹ÄÜÁË RS485 Ä£Ê½ */
     am_bool_t               is_rs485_en[SC16IS7XX_CHAN_MAX];
 
-    /** \brief IIR å¯„å­˜å™¨ç¼“å†²åŒº */
+    /** \brief IIR ¼Ä´æÆ÷»º³åÇø */
     uint8_t                 iir_reg[SC16IS7XX_CHAN_MAX];
 
-    /** \brief IER å¯„å­˜å™¨ç¼“å†²åŒº */
+    /** \brief IER ¼Ä´æÆ÷»º³åÇø */
     uint8_t                 ier_reg[SC16IS7XX_CHAN_MAX];
 
-    /** \brief LCR å¯„å­˜å™¨ç¼“å†²åŒº */
+    /** \brief LCR ¼Ä´æÆ÷»º³åÇø */
     uint8_t                 lcr_reg[SC16IS7XX_CHAN_MAX];
 
-    /** \brief LSR å¯„å­˜å™¨ç¼“å†²åŒº */
+    /** \brief LSR ¼Ä´æÆ÷»º³åÇø */
     uint8_t                 lsr_reg[SC16IS7XX_CHAN_MAX];
 
-    /** \brief RXLVL å¯„å­˜å™¨ç¼“å†²åŒº */
+    /** \brief RXLVL ¼Ä´æÆ÷»º³åÇø */
     uint8_t                 rxlvl_reg[SC16IS7XX_CHAN_MAX];
 
-    /** \brief TXLVL å¯„å­˜å™¨ç¼“å†²åŒº */
+    /** \brief TXLVL ¼Ä´æÆ÷»º³åÇø */
     uint8_t                 txlvl_reg[SC16IS7XX_CHAN_MAX];
 
-    /** \brief æ¥æ”¶ç¼“å†²åŒº */
+    /** \brief ½ÓÊÕ»º³åÇø */
     uint8_t                 rx_buf[SC16IS7XX_CHAN_MAX][SC16IS7XX_FIFO_SIZE];
 
-    /** \brief å‘é€ç¼“å†²åŒº */
+    /** \brief ·¢ËÍ»º³åÇø */
     uint8_t                 tx_buf[SC16IS7XX_CHAN_MAX][SC16IS7XX_FIFO_SIZE];
 
-    /** \brief I2C æ ‡å‡†æœåŠ¡æ“ä½œå¥æŸ„ */
+    /** \brief I2C ±ê×¼·şÎñ²Ù×÷¾ä±ú */
     am_i2c_handle_t         i2c_handle;
 
-    /** \brief I2C ä»è®¾å¤‡ */
+    /** \brief I2C ´ÓÉè±¸ */
     am_i2c_device_t         i2c_dev[SC16IS7XX_CHAN_MAX];
 
-    /** \brief I2C æ¶ˆæ¯ */
+    /** \brief I2C ÏûÏ¢ */
     am_i2c_message_t        i2c_msg[SC16IS7XX_CHAN_MAX];
 
-    /** \brief I2C ä¼ è¾“ */
+    /** \brief I2C ´«Êä */
     am_i2c_transfer_t       i2c_trans[SC16IS7XX_CHAN_MAX][2];
 
-    /** \brief å½“å‰ä¼ è¾“çš„å­åœ°å€ */
+    /** \brief µ±Ç°´«ÊäµÄ×ÓµØÖ· */
     uint8_t                 subaddr[SC16IS7XX_CHAN_MAX];
 
-    /** \brief I2C é”™è¯¯è®¡æ•° */
+    /** \brief I2C ´íÎó¼ÆÊı */
     uint32_t                i2c_err_cnt[SC16IS7XX_CHAN_MAX];
 
-    /** \brief å½“å‰ I2C æ˜¯å¦å¿™ */
+    /** \brief µ±Ç° I2C ÊÇ·ñÃ¦ */
     volatile am_bool_t      is_i2c_busy[SC16IS7XX_CHAN_MAX];
 
-    /** \brief å½“å‰çŠ¶æ€æœºçŠ¶æ€ */
+    /** \brief µ±Ç°×´Ì¬»ú×´Ì¬ */
     volatile uint8_t        state[SC16IS7XX_CHAN_MAX];
 
-    /** \brief æ— å­—ç¬¦å¯å–æ ‡å¿—ä½ */
+    /** \brief ÎŞ×Ö·û¿ÉÈ¡±êÖ¾Î» */
     volatile am_err_t       char_none_flag[SC16IS7XX_CHAN_MAX];
 
-    /** \brief å¯åŠ¨ä¸­æ–­å‘é€æ ‡å¿—ä½ */
+    /** \brief Æô¶¯ÖĞ¶Ï·¢ËÍ±êÖ¾Î» */
     volatile am_err_t       int_en_flag[SC16IS7XX_CHAN_MAX];
 
-    /** \brief ä¸­æ–­æ˜¯å¦ä½¿èƒ½ */
+    /** \brief ÖĞ¶ÏÊÇ·ñÊ¹ÄÜ */
     volatile am_bool_t      is_irq_en[SC16IS7XX_CHAN_MAX];
 
-    /** \brief çŠ¶æ€æœºè®¡æ•° */
+    /** \brief ×´Ì¬»ú¼ÆÊı */
     uint32_t                sm_cnt[SC16IS7XX_CHAN_MAX];
 
-    /** \brief SC16IS7XX ä¸²å£ä¿¡æ¯ */
+    /** \brief SC16IS7XX ´®¿ÚĞÅÏ¢ */
     am_sc16is7xx_cbinfo_t   uartinfo[SC16IS7XX_CHAN_MAX];
 
-    /** \brief SC16IS7XX I2C ä¿¡æ¯ */
+    /** \brief SC16IS7XX I2C ĞÅÏ¢ */
     am_sc16is7xx_cbinfo_t   i2cinfo[SC16IS7XX_CHAN_MAX];
 
-    /** \brief è®¾å¤‡ä¿¡æ¯ */
+    /** \brief Éè±¸ĞÅÏ¢ */
     am_sc16is7xx_devinfo_t *p_devinfo;
 
 } am_sc16is7xx_dev_t;
 
-/** \brief SC16IS7XX æ ‡å‡†æœåŠ¡æ“ä½œå¥æŸ„ç±»å‹å®šä¹‰ */
+/** \brief SC16IS7XX ±ê×¼·şÎñ²Ù×÷¾ä±úÀàĞÍ¶¨Òå */
 typedef struct am_sc16is7xx_dev *am_sc16is7xx_handle_t;
 
 /**
- * \brief è·å–æŒ‡å®šé€šé“çš„ UART æ ‡å‡†æœåŠ¡æ“ä½œå¥æŸ„
+ * \brief »ñÈ¡Ö¸¶¨Í¨µÀµÄ UART ±ê×¼·şÎñ²Ù×÷¾ä±ú
  *
- * \param[in] handle SC16IS7XX æ ‡å‡†æœåŠ¡å¥æŸ„
- * \param[in] chan   é€šé“å·
+ * \param[in] handle SC16IS7XX ±ê×¼·şÎñ¾ä±ú
+ * \param[in] chan   Í¨µÀºÅ
  *
- * \return UART æ ‡å‡†æœåŠ¡æ“ä½œå¥æŸ„ï¼Œè‹¥ä¸º NULLï¼Œè¡¨æ˜è·å–å¤±è´¥
+ * \return UART ±ê×¼·şÎñ²Ù×÷¾ä±ú£¬ÈôÎª NULL£¬±íÃ÷»ñÈ¡Ê§°Ü
  */
 am_uart_handle_t am_sc16is7xx_uart_handle_get (am_sc16is7xx_handle_t handle,
                                                uint8_t               chan);
 
 /**
- * \brief åˆå§‹åŒ– SC16IS7XX é©±åŠ¨
+ * \brief ³õÊ¼»¯ SC16IS7XX Çı¶¯
  *
- * \param[in] p_dev      SC16IS7XX è®¾å¤‡ç»“æ„ä½“
- * \param[in] p_info     SC16IS7XX å®ä¾‹ä¿¡æ¯
- * \param[in] i2c_handle æ“ä½œ SC16IS7XX çš„ I2C å¥æŸ„
+ * \param[in] p_dev      SC16IS7XX Éè±¸½á¹¹Ìå
+ * \param[in] p_info     SC16IS7XX ÊµÀıĞÅÏ¢
+ * \param[in] i2c_handle ²Ù×÷ SC16IS7XX µÄ I2C ¾ä±ú
  *
- * \return SC16IS7XX æ ‡å‡†æœåŠ¡å¥æŸ„ï¼Œè‹¥ä¸º NULLï¼Œè¡¨æ˜åˆå§‹åŒ–å¤±è´¥
+ * \return SC16IS7XX ±ê×¼·şÎñ¾ä±ú£¬ÈôÎª NULL£¬±íÃ÷³õÊ¼»¯Ê§°Ü
  */
 am_sc16is7xx_handle_t am_sc16is7xx_init (am_sc16is7xx_dev_t           *p_dev,
                                          const am_sc16is7xx_devinfo_t *p_devinfo,
                                          am_i2c_handle_t               i2c_handle);
 
 /**
- * \brief æŒ‡å®šé€šé“ UART æ¥æ”¶æ•°æ®
+ * \brief Ö¸¶¨Í¨µÀ UART ½ÓÊÕÊı¾İ
  *
- * \param[in] handle  : SC16IS7XX è®¾å¤‡ç»“æ„ä½“
- * \param[in] chan    : æŒ‡å®šçš„é€šé“
- * \param[in] p_rxbuf : æŒ‡å‘å­˜æ”¾æ•°æ®çš„æŒ‡é’ˆ
- * \param[in] nbytes  : æ¥æ”¶æ•°æ®é•¿åº¦                                        
+ * \param[in] handle  : SC16IS7XX Éè±¸½á¹¹Ìå
+ * \param[in] chan    : Ö¸¶¨µÄÍ¨µÀ
+ * \param[in] p_rxbuf : Ö¸Ïò´æ·ÅÊı¾İµÄÖ¸Õë
+ * \param[in] nbytes  : ½ÓÊÕÊı¾İ³¤¶È                                        
  *
- * \retval  AM_OK      æˆåŠŸ
- * \retval  AM_OTHER   å¤±è´¥
+ * \retval  AM_OK      ³É¹¦
+ * \retval  AM_OTHER   Ê§°Ü
  */  
 int am_sc16is7xx_uart_poll_receive (am_sc16is7xx_handle_t handle,
                                     uint8_t               chan,
@@ -248,30 +248,29 @@ int am_sc16is7xx_uart_poll_receive (am_sc16is7xx_handle_t handle,
                                     uint32_t              nbytes);                                         
                                          
 /**
- * \brief æŒ‡å®šé€šé“ UART å‘é€å­—ç¬¦ä¸²
+ * \brief Ö¸¶¨Í¨µÀ UART ·¢ËÍ×Ö·û´®
  *
- * \param[in] handle  : SC16IS7XX è®¾å¤‡ç»“æ„ä½“
- * \param[in] chan    : æŒ‡å®šçš„é€šé“
- * \param[in] p_txbuf : æŒ‡å‘å­˜æ”¾æ•°æ®çš„æŒ‡é’ˆ
- * \param[in] nbytes  : å‘é€æ•°æ®é•¿åº¦ 
+ * \param[in] handle  : SC16IS7XX Éè±¸½á¹¹Ìå
+ * \param[in] chan    : Ö¸¶¨µÄÍ¨µÀ
+ * \param[in] p_txbuf : Ö¸Ïò´æ·ÅÊı¾İµÄÖ¸Õë
+ * \param[in] nbytes  : ·¢ËÍÊı¾İ³¤¶È 
  *
- * \retval  AM_OK      æˆåŠŸ
- * \retval  AM_OTHER   å¤±è´¥
+ * \retval  AM_OK      ³É¹¦
+ * \retval  AM_OTHER   Ê§°Ü
  */                                         
 int am_sc16is7xx_uart_poll_send (am_sc16is7xx_handle_t handle,
                                  uint8_t               chan,
                                  char                 *p_txbuf, 
                                  uint32_t              nbytes);                                         
                                        
-
 /**
- * \brief è§£åˆå§‹åŒ– SC16IS7XX é©±åŠ¨
+ * \brief ½â³õÊ¼»¯ SC16IS7XX Çı¶¯
  *
- * \param[in] handle é€šè¿‡ am_sc16is7xx_init å‡½æ•°è·å–çš„ SC16IS7XX å¥æŸ„
+ * \param[in] handle Í¨¹ı am_sc16is7xx_init º¯Êı»ñÈ¡µÄ SC16IS7XX ¾ä±ú
  *
- * \retval  AM_OK     è§£åˆå§‹åŒ–æˆåŠŸ
- * \retval -AM_EINVAL æ— æ•ˆå‚æ•°
- */																 
+ * \retval  AM_OK     ½â³õÊ¼»¯³É¹¦
+ * \retval -AM_EINVAL ÎŞĞ§²ÎÊı
+ */
 am_err_t am_sc16is7xx_deinit (am_sc16is7xx_handle_t handle);
 
 /**
@@ -281,7 +280,7 @@ am_err_t am_sc16is7xx_deinit (am_sc16is7xx_handle_t handle);
 #ifdef __cplusplus
 }
 #endif
- 
+
 #endif /* __AM_SC16IS7XX_H */
 
 /* end of file */

@@ -12,7 +12,7 @@
 
 /**
  * \file
- * \brief ZLG116 æ‰€æœ‰ä¾‹ç¨‹å‡½æ•°å…¥å£å£°æ˜
+ * \brief ZLG116 ËùÓĞÀı³Ìº¯ÊıÈë¿ÚÉùÃ÷
  * \sa demo_am116ble_all_entries.h
  *
  * \internal
@@ -27,579 +27,509 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-
+ 
 /**
- * \brief MMC5883MAä¸‰è½´ç£ä¼ æ„Ÿå™¨ä¾‹ç¨‹
- */
-void demo_mmc5883ma_entry(void);
-	
-/**
- * \brief LSM6DSLä¸‰è½´åŠ é€Ÿåº¦ä¼ æ„Ÿå™¨ä¾‹ç¨‹
- */
-void demo_lsm6dsl_entry(void);
-	
-/**
- * \brief IS25XX flashé©±åŠ¨ä¾‹ç¨‹
- */
-void demo_is25xx_entry(void);
-	
-/**
- * \brief SC16IS7XX I2Cè½¬UARTä¾‹ç¨‹
- */
-void demo_sc16is7xx_entry(void);
-	
-/**
- * \brief BMA253ä¸‰è½´åŠ é€Ÿåº¦ä¾‹ç¨‹
- */
-void demo_bma253_entry (void);
-
-/**
- * \brief LTR_553ALSå…‰ç…§ä¼ æ„Ÿå™¨ä¾‹ç¨‹
- */
-void demo_ltr_553als_entry (void);
-
-/**
- * \brief BMP280å‹åŠ›ä¼ æ„Ÿå™¨ä¾‹ç¨‹
- */
-void demo_bmp280_entry (void);
-
-/**
- * \brief BME280å‹åŠ›æ¸©æ¹¿åº¦ä¼ æ„Ÿå™¨ä¾‹ç¨‹
- */
-void demo_bme280_entry (void);
-
-/**
- * \brief LPS22HBå‹åŠ›ä¼ æ„Ÿå™¨ä¾‹ç¨‹
- */
-void demo_lps22hb_entry (void);
-
-/**
- * \brief  HTS221æ¸©æ¹¿åº¦ä¼ æ„Ÿå™¨ä¾‹ç¨‹
- */
-void demo_hts221_entry (void);
-
-/**
- * \brief BH1730FVCå…‰ä¼ æ„Ÿå™¨ä¾‹ç¨‹
- */
-void demo_bh1730fvc_entry (void);
-
-/**
- * \brief LIS3MDLä¸‰è½´ç£ä¼ æ„Ÿå™¨ä¾‹ç¨‹
- */
-void demo_lis3mdl_entry (void);
-
-/**
- * \brief SHTC1æ¸©æ¹¿åº¦ä¼ æ„Ÿå™¨ä¾‹ç¨‹
- */
-void demo_shtc1_entry (void);
-
-/**
- * \brief BMG160ä¸‰è½´é™€èºä»ªä¼ æ„Ÿå™¨ä¾‹ç¨‹
- */
-void demo_bmg160_entry (void);	
-	
-/**
- * \brief ADC INT ä¾‹ç¨‹ï¼Œé€šè¿‡ HW å±‚æ¥å£å®ç°
+ * \brief ADC INT Àı³Ì£¬Í¨¹ı HW ²ã½Ó¿ÚÊµÏÖ
  */
 void demo_am116_core_hw_adc_int_entry (void);
 
 /**
- * \brief ADC ä¾‹ç¨‹ï¼Œé€šè¿‡æ ‡å‡†æ¥å£å®ç°
+ * \brief ADC Àı³Ì£¬Í¨¹ı±ê×¼½Ó¿ÚÊµÏÖ
  */
 void demo_am116_core_std_adc_entry (void);
 
 /**
- * \brief ADC åˆ©ç”¨æ¿å­çš„çƒ­æ•ç”µé˜»(NTC)ï¼Œæ¨ç®—å‡ºæ¸©åº¦ä¾‹ç¨‹ï¼Œé€šè¿‡æ ‡å‡†æ¥å£å®ç°
+ * \brief ADC ÀûÓÃ°å×ÓµÄÈÈÃôµç×è(NTC)£¬ÍÆËã³öÎÂ¶ÈÀı³Ì£¬Í¨¹ı±ê×¼½Ó¿ÚÊµÏÖ
  */
 void demo_am116_core_std_adc_ntc_entry (void);
 
 /**
- * \brief èœ‚é¸£å™¨ä¾‹ç¨‹ï¼Œé€šè¿‡æ ‡å‡†æ¥å£å®ç°
+ * \brief ·äÃùÆ÷Àı³Ì£¬Í¨¹ı±ê×¼½Ó¿ÚÊµÏÖ
  */
 void demo_am116_core_std_buzzer_entry (void);
 
 /**
- * \brief CLK ä¾‹ç¨‹ï¼Œé€šè¿‡ HW å±‚æ¥å£å®ç°
+ * \brief CLK Àı³Ì£¬Í¨¹ı HW ²ã½Ó¿ÚÊµÏÖ
  */
 void demo_am116_core_hw_clk_entry (void);
 
 /**
- * \brief DMA å†…å­˜åˆ°å†…å­˜ä¾‹ç¨‹ï¼Œé€šè¿‡é©±åŠ¨å±‚æ¥å£å®ç°
+ * \brief DMA ÄÚ´æµ½ÄÚ´æÀı³Ì£¬Í¨¹ıÇı¶¯²ã½Ó¿ÚÊµÏÖ
  */
 void demo_am116_core_drv_dma_m2m_entry (void);
 
 /**
- * \brief FLASH ä¾‹ç¨‹ï¼Œé€šè¿‡é©±åŠ¨å±‚æ¥å£å®ç°
+ * \brief FLASH Àı³Ì£¬Í¨¹ıÇı¶¯²ã½Ó¿ÚÊµÏÖ
  */
 void demo_am116_core_drv_flash_entry (void);
 
 /**
- * \brief GPIO ä¾‹ç¨‹ï¼Œé€šè¿‡ HW å±‚æ¥å£å®ç°
+ * \brief GPIO Àı³Ì£¬Í¨¹ı HW ²ã½Ó¿ÚÊµÏÖ
  */
 void demo_am116_core_hw_gpio_entry (void);
 
 /**
- * \brief GPIO å¼•è„šä¸­æ–­ä¾‹ç¨‹ï¼Œé€šè¿‡ HW å±‚æ¥å£å®ç°
+ * \brief GPIO Òı½ÅÖĞ¶ÏÀı³Ì£¬Í¨¹ı HW ²ã½Ó¿ÚÊµÏÖ
  */
 void demo_am116_core_hw_gpio_trigger_entry (void);
 
 /**
- * \brief GPIO ä¾‹ç¨‹ï¼Œé€šè¿‡æ ‡å‡†æ¥å£å®ç°
+ * \brief GPIO Àı³Ì£¬Í¨¹ı±ê×¼½Ó¿ÚÊµÏÖ
  */
 void demo_am116_core_std_gpio_entry (void);
 
 /**
- * \brief GPIO å¼•è„šä¸­æ–­ä¾‹ç¨‹ï¼Œé€šè¿‡æ ‡å‡†æ¥å£å®ç°
+ * \brief GPIO Òı½ÅÖĞ¶ÏÀı³Ì£¬Í¨¹ı±ê×¼½Ó¿ÚÊµÏÖ
  */
 void demo_am116_core_std_gpio_trigger_entry (void);
 
 /**
- * \brief I2C è½®è¯¢æ¨¡å¼ä¸‹æ“ä½œ EEPROM ä¾‹ç¨‹ï¼Œé€šè¿‡ HW å±‚æ¥å£å®ç°
+ * \brief I2C ÂÖÑ¯Ä£Ê½ÏÂ²Ù×÷ EEPROM Àı³Ì£¬Í¨¹ı HW ²ã½Ó¿ÚÊµÏÖ
  */
 void demo_am116_core_hw_i2c_master_poll_entry (void);
 
 /**
- * \brief I2C ä»æœºä¾‹ç¨‹(æ­¤ä¾‹ç¨‹å¯ä»¥ç”¨æ¥æ¨¡æ‹Ÿ EEPROM)ï¼Œé€šè¿‡ HW å±‚æ¥å£å®ç°
+ * \brief I2C ´Ó»úÀı³Ì(´ËÀı³Ì¿ÉÒÔÓÃÀ´Ä£Äâ EEPROM)£¬Í¨¹ı HW ²ã½Ó¿ÚÊµÏÖ
  */
 void demo_am116_core_hw_i2c_slave_poll_entry (void);
 
 /**
- * \brief I2C ä¸»æœºä» LM75 ä¼ æ„Ÿå™¨è¯»å–æ¸©åº¦å€¼ä¾‹ç¨‹ï¼Œé€šè¿‡æ ‡å‡†æ¥å£å®ç°
+ * \brief I2C Ö÷»ú´Ó LM75 ´«¸ĞÆ÷¶ÁÈ¡ÎÂ¶ÈÖµÀı³Ì£¬Í¨¹ı±ê×¼½Ó¿ÚÊµÏÖ
  */
 void demo_am116_core_std_i2c_lm75_entry (void);
 
 /**
- * \brief I2C ä¸»æœºä» BMA253 ä¼ æ„Ÿå™¨è¯»å–ä¸‰è½´åŠ é€Ÿåº¦å€¼ä¾‹ç¨‹ï¼Œé€šè¿‡æ ‡å‡†æ¥å£å®ç°
+ * \brief I2C Ö÷»ú´Ó BMA253 ´«¸ĞÆ÷¶ÁÈ¡ÈıÖá¼ÓËÙ¶ÈÖµÀı³Ì£¬Í¨¹ı±ê×¼½Ó¿ÚÊµÏÖ
  */
 void demo_am116_core_std_i2c_bma253_entry (void);
 
 /**
- * \brief I2C ä¸»æœºè®¿é—® EEPROM ä¾‹ç¨‹ï¼Œé€šè¿‡å¼‚æ­¥æ ‡å‡†æ¥å£å®ç°
+ * \brief I2C Ö÷»ú·ÃÎÊ EEPROM Àı³Ì£¬Í¨¹ıÒì²½±ê×¼½Ó¿ÚÊµÏÖ
  */
 void demo_am116_core_std_i2c_master_async_entry (void);
 
 /**
- * \brief I2C ä¸»æœºè®¿é—® EEPROM ä¾‹ç¨‹ï¼Œé€šè¿‡åŒæ­¥æ ‡å‡†æ¥å£å®ç°
+ * \brief I2C Ö÷»ú·ÃÎÊ EEPROM Àı³Ì£¬Í¨¹ıÍ¬²½±ê×¼½Ó¿ÚÊµÏÖ
  */
 void demo_am116_core_std_i2c_master_sync_entry (void);
 
 /**
- * \brief I2C ä»æœºä¾‹ç¨‹ï¼Œé€šè¿‡æ ‡å‡†æ¥å£å®ç°
+ * \brief I2C ´Ó»úÀı³Ì£¬Í¨¹ı±ê×¼½Ó¿ÚÊµÏÖ
  */
 void demo_am116_core_std_i2c_slave_entry (void);
 
 /**
- * \brief I2C ä»æœºæ¨¡æ‹Ÿ TMP100 ä¾‹ç¨‹ï¼Œé€šè¿‡æ ‡å‡†æ¥å£å®ç°
+ * \brief I2C ´Ó»úÄ£Äâ TMP100 Àı³Ì£¬Í¨¹ı±ê×¼½Ó¿ÚÊµÏÖ
  */
 void demo_am116_core_std_i2c_slave_subaddr_entry (void);
 
 /**
- * \brief è¾“å…¥å­ç³»ç»Ÿä¾‹ç¨‹ï¼Œé€šè¿‡æ ‡å‡†æ¥å£å®ç°
+ * \brief ÊäÈë×ÓÏµÍ³Àı³Ì£¬Í¨¹ı±ê×¼½Ó¿ÚÊµÏÖ
  */
 void demo_am116_core_std_key_entry (void);
 
 /**
- * \brief LED ä¾‹ç¨‹ï¼Œé€šè¿‡æ ‡å‡†æ¥å£å®ç°
+ * \brief LED Àı³Ì£¬Í¨¹ı±ê×¼½Ó¿ÚÊµÏÖ
  */
 void demo_am116_core_std_led_entry (void);
 
 /**
- * \brief è½¯ä»¶å®šæ—¶å™¨ä¾‹ç¨‹ï¼Œé€šè¿‡æ ‡å‡†æ¥å£å®ç°
+ * \brief Èí¼ş¶¨Ê±Æ÷Àı³Ì£¬Í¨¹ı±ê×¼½Ó¿ÚÊµÏÖ
  */
 void demo_am116_core_std_softimer_entry (void);
 
 /**
- * \brief SPI ä¸»æœºä¾‹ç¨‹ï¼Œé€šè¿‡ HW å±‚æ¥å£å®ç°
+ * \brief SPI Ö÷»úÀı³Ì£¬Í¨¹ı HW ²ã½Ó¿ÚÊµÏÖ
  */
 void demo_am116_core_hw_spi_master_entry (void);
 
 /**
- * \brief SPI ä¸»æœº DMA æ–¹å¼ä¸ FLASH é€šä¿¡ä¾‹ç¨‹ï¼Œé€šè¿‡æ ‡å‡†æ¥å£å®ç°
+ * \brief SPI Ö÷»ú DMA ·½Ê½Óë FLASH Í¨ĞÅÀı³Ì£¬Í¨¹ı±ê×¼½Ó¿ÚÊµÏÖ
  */
 void demo_am116_core_std_spi_flash_dma_entry (void);
 
 /**
- * \brief SPI ä¸»æœºä¸­æ–­æ–¹å¼ä¸ FLASH é€šä¿¡ä¾‹ç¨‹ï¼Œé€šè¿‡æ ‡å‡†æ¥å£å®ç°
+ * \brief SPI Ö÷»úÖĞ¶Ï·½Ê½Óë FLASH Í¨ĞÅÀı³Ì£¬Í¨¹ı±ê×¼½Ó¿ÚÊµÏÖ
  */
 void demo_am116_core_std_spi_flash_int_entry (void);
 
 /**
- * \brief SPI ä¸»æœº DMA æ–¹å¼ä¾‹ç¨‹ï¼Œé€šè¿‡æ ‡å‡†æ¥å£å®ç°
+ * \brief SPI Ö÷»ú DMA ·½Ê½Àı³Ì£¬Í¨¹ı±ê×¼½Ó¿ÚÊµÏÖ
  */
 void demo_am116_core_std_spi_master_dma_entry (void);
 
 /**
- * \brief SPI ä¸»æœºä¸­æ–­æ–¹å¼ä¾‹ç¨‹ï¼Œé€šè¿‡æ ‡å‡†æ¥å£å®ç°
+ * \brief SPI Ö÷»úÖĞ¶Ï·½Ê½Àı³Ì£¬Í¨¹ı±ê×¼½Ó¿ÚÊµÏÖ
  */
 void demo_am116_core_std_spi_master_int_entry (void);
 
 /**
- * \brief SPI ä»æœº DMA æ–¹å¼ä¾‹ç¨‹ï¼Œé€šè¿‡æ ‡å‡†æ¥å£å®ç°
+ * \brief SPI ´Ó»ú DMA ·½Ê½Àı³Ì£¬Í¨¹ı±ê×¼½Ó¿ÚÊµÏÖ
  */
 void demo_am116_core_std_spi_slave_dma_entry (void);
 
 /**
- * \brief å®šæ—¶å™¨ CAP æ•è·ä¾‹ç¨‹ï¼Œé€šè¿‡ HW å±‚æ¥å£å®ç°
+ * \brief ¶¨Ê±Æ÷ CAP ²¶»ñÀı³Ì£¬Í¨¹ı HW ²ã½Ó¿ÚÊµÏÖ
  */
 void demo_am116_core_hw_tim_cap_entry (void);
 
 /**
- * \brief å®šæ—¶å™¨é€šé“æ¯”è¾ƒåŒ¹é…å¼•è„šç¿»è½¬ä¾‹ç¨‹ï¼Œé€šè¿‡ HW å±‚æ¥å£å®ç°
+ * \brief ¶¨Ê±Æ÷Í¨µÀ±È½ÏÆ¥ÅäÒı½Å·­×ªÀı³Ì£¬Í¨¹ı HW ²ã½Ó¿ÚÊµÏÖ
  */
 void demo_am116_core_hw_tim_cmp_toggle_entry (void);
 
 /**
- * \brief å®šæ—¶å™¨ PWM è¾“å‡ºä¾‹ç¨‹ï¼Œé€šè¿‡ HW å±‚æ¥å£å®ç°
+ * \brief ¶¨Ê±Æ÷ PWM Êä³öÀı³Ì£¬Í¨¹ı HW ²ã½Ó¿ÚÊµÏÖ
  */
 void demo_am116_core_hw_tim_pwm_entry (void);
 
 /**
- * \brief å®šæ—¶å™¨å¸¦æ­»åŒºæ—¶é—´çš„äº’è¡¥ PWM è¾“å‡ºä¾‹ç¨‹ï¼Œé€šè¿‡ HW å±‚æ¥å£å®ç°
+ * \brief ¶¨Ê±Æ÷´øËÀÇøÊ±¼äµÄ»¥²¹ PWM Êä³öÀı³Ì£¬Í¨¹ı HW ²ã½Ó¿ÚÊµÏÖ
  */
 void demo_am116_core_hw_tim_pwm_dead_entry (void);
 
 /**
- * \brief å®šæ—¶å™¨ TIMING ä¾‹ç¨‹ï¼Œé€šè¿‡ HW å±‚æ¥å£å®ç°
+ * \brief ¶¨Ê±Æ÷ TIMING Àı³Ì£¬Í¨¹ı HW ²ã½Ó¿ÚÊµÏÖ
  */
 void demo_am116_core_hw_tim_timing_entry (void);
 
 /**
- * \brief TIM14 å®šæ—¶å™¨ CAP ä¾‹ç¨‹ï¼Œé€šè¿‡æ ‡å‡†æ¥å£å®ç°
+ * \brief TIM14 ¶¨Ê±Æ÷ CAP Àı³Ì£¬Í¨¹ı±ê×¼½Ó¿ÚÊµÏÖ
  */
 void demo_am116_core_std_tim14_cap_entry (void);
 
 /**
- * \brief TIM14 å®šæ—¶å™¨ PWM ä¾‹ç¨‹ï¼Œé€šè¿‡æ ‡å‡†æ¥å£å®ç°
+ * \brief TIM14 ¶¨Ê±Æ÷ PWM Àı³Ì£¬Í¨¹ı±ê×¼½Ó¿ÚÊµÏÖ
  */
 void demo_am116_core_std_tim14_pwm_entry (void);
 
 /**
- * \brief TIM14 å®šæ—¶å™¨ TIMING ä¾‹ç¨‹ï¼Œé€šè¿‡æ ‡å‡†æ¥å£å®ç°
+ * \brief TIM14 ¶¨Ê±Æ÷ TIMING Àı³Ì£¬Í¨¹ı±ê×¼½Ó¿ÚÊµÏÖ
  */
 void demo_am116_core_std_tim14_timing_entry (void);
 
 /**
- * \brief TIM16 å®šæ—¶å™¨ CAP ä¾‹ç¨‹ï¼Œé€šè¿‡æ ‡å‡†æ¥å£å®ç°
+ * \brief TIM16 ¶¨Ê±Æ÷ CAP Àı³Ì£¬Í¨¹ı±ê×¼½Ó¿ÚÊµÏÖ
  */
 void demo_am116_core_std_tim16_cap_entry (void);
 
 /**
- * \brief TIM16 å®šæ—¶å™¨ PWM ä¾‹ç¨‹ï¼Œé€šè¿‡æ ‡å‡†æ¥å£å®ç°
+ * \brief TIM16 ¶¨Ê±Æ÷ PWM Àı³Ì£¬Í¨¹ı±ê×¼½Ó¿ÚÊµÏÖ
  */
 void demo_am116_core_std_tim16_pwm_entry (void);
 
 /**
- * \brief TIM16 å®šæ—¶å™¨ TIMING ä¾‹ç¨‹ï¼Œé€šè¿‡æ ‡å‡†æ¥å£å®ç°
+ * \brief TIM16 ¶¨Ê±Æ÷ TIMING Àı³Ì£¬Í¨¹ı±ê×¼½Ó¿ÚÊµÏÖ
  */
 void demo_am116_core_std_tim16_timing_entry (void);
 
 /**
- * \brief TIM17 å®šæ—¶å™¨ CAP ä¾‹ç¨‹ï¼Œé€šè¿‡æ ‡å‡†æ¥å£å®ç°
+ * \brief TIM17 ¶¨Ê±Æ÷ CAP Àı³Ì£¬Í¨¹ı±ê×¼½Ó¿ÚÊµÏÖ
  */
 void demo_am116_core_std_tim17_cap_entry (void);
 
 /**
- * \brief TIM17 å®šæ—¶å™¨ PWM ä¾‹ç¨‹ï¼Œé€šè¿‡æ ‡å‡†æ¥å£å®ç°
+ * \brief TIM17 ¶¨Ê±Æ÷ PWM Àı³Ì£¬Í¨¹ı±ê×¼½Ó¿ÚÊµÏÖ
  */
 void demo_am116_core_std_tim17_pwm_entry (void);
 
 /**
- * \brief TIM17 å®šæ—¶å™¨ TIMING ä¾‹ç¨‹ï¼Œé€šè¿‡æ ‡å‡†æ¥å£å®ç°
+ * \brief TIM17 ¶¨Ê±Æ÷ TIMING Àı³Ì£¬Í¨¹ı±ê×¼½Ó¿ÚÊµÏÖ
  */
 void demo_am116_core_std_tim17_timing_entry (void);
 
 /**
- * \brief TIM1 å®šæ—¶å™¨ CAP ä¾‹ç¨‹ï¼Œé€šè¿‡æ ‡å‡†æ¥å£å®ç°
+ * \brief TIM1 ¶¨Ê±Æ÷ CAP Àı³Ì£¬Í¨¹ı±ê×¼½Ó¿ÚÊµÏÖ
  */
 void demo_am116_core_std_tim1_cap_entry (void);
 
 /**
- * \brief TIM1 å®šæ—¶å™¨ PWM ä¾‹ç¨‹ï¼Œé€šè¿‡æ ‡å‡†æ¥å£å®ç°
+ * \brief TIM1 ¶¨Ê±Æ÷ PWM Àı³Ì£¬Í¨¹ı±ê×¼½Ó¿ÚÊµÏÖ
  */
 void demo_am116_core_std_tim1_pwm_entry (void);
 
 /**
- * \brief TIM1 å®šæ—¶å™¨ TIMING ä¾‹ç¨‹ï¼Œé€šè¿‡æ ‡å‡†æ¥å£å®ç°
+ * \brief TIM1 ¶¨Ê±Æ÷ TIMING Àı³Ì£¬Í¨¹ı±ê×¼½Ó¿ÚÊµÏÖ
  */
 void demo_am116_core_std_tim1_timing_entry (void);
 
 /**
- * \brief TIM2 å®šæ—¶å™¨ CAP ä¾‹ç¨‹ï¼Œé€šè¿‡æ ‡å‡†æ¥å£å®ç°
+ * \brief TIM2 ¶¨Ê±Æ÷ CAP Àı³Ì£¬Í¨¹ı±ê×¼½Ó¿ÚÊµÏÖ
  */
 void demo_am116_core_std_tim2_cap_entry (void);
 
 /**
- * \brief TIM2 å®šæ—¶å™¨ PWM ä¾‹ç¨‹ï¼Œé€šè¿‡æ ‡å‡†æ¥å£å®ç°
+ * \brief TIM2 ¶¨Ê±Æ÷ PWM Àı³Ì£¬Í¨¹ı±ê×¼½Ó¿ÚÊµÏÖ
  */
 void demo_am116_core_std_tim2_pwm_entry (void);
 
 /**
- * \brief TIM2 å®šæ—¶å™¨ TIMING ä¾‹ç¨‹ï¼Œé€šè¿‡æ ‡å‡†æ¥å£å®ç°
+ * \brief TIM2 ¶¨Ê±Æ÷ TIMING Àı³Ì£¬Í¨¹ı±ê×¼½Ó¿ÚÊµÏÖ
  */
 void demo_am116_core_std_tim2_timing_entry (void);
 
 /**
- * \brief TIM3 å®šæ—¶å™¨ CAP ä¾‹ç¨‹ï¼Œé€šè¿‡æ ‡å‡†æ¥å£å®ç°
+ * \brief TIM3 ¶¨Ê±Æ÷ CAP Àı³Ì£¬Í¨¹ı±ê×¼½Ó¿ÚÊµÏÖ
  */
 void demo_am116_core_std_tim3_cap_entry (void);
 
 /**
- * \brief TIM3 å®šæ—¶å™¨ PWM ä¾‹ç¨‹ï¼Œé€šè¿‡æ ‡å‡†æ¥å£å®ç°
+ * \brief TIM3 ¶¨Ê±Æ÷ PWM Àı³Ì£¬Í¨¹ı±ê×¼½Ó¿ÚÊµÏÖ
  */
 void demo_am116_core_std_tim3_pwm_entry (void);
 
 /**
- * \brief TIM3 å®šæ—¶å™¨ TIMING ä¾‹ç¨‹ï¼Œé€šè¿‡æ ‡å‡†æ¥å£å®ç°
+ * \brief TIM3 ¶¨Ê±Æ÷ TIMING Àı³Ì£¬Í¨¹ı±ê×¼½Ó¿ÚÊµÏÖ
  */
 void demo_am116_core_std_tim3_timing_entry (void);
 
 /**
- * \brief UART ä¸­æ–­å‘é€ä¾‹ç¨‹ï¼Œé€šè¿‡ HW å±‚æ¥å£å®ç°
+ * \brief UART ÖĞ¶Ï·¢ËÍÀı³Ì£¬Í¨¹ı HW ²ã½Ó¿ÚÊµÏÖ
  */
 void demo_am116_core_hw_uart_int_entry (void);
 
 /**
- * \brief UART è½®è¯¢æ–¹å¼ä¾‹ç¨‹ï¼Œé€šè¿‡ HW å±‚æ¥å£å®ç°
+ * \brief UART ÂÖÑ¯·½Ê½Àı³Ì£¬Í¨¹ı HW ²ã½Ó¿ÚÊµÏÖ
  */
 void demo_am116_core_hw_uart_polling_entry (void);
 
 /**
- * \brief UART DMA æ¥æ”¶ä¾‹ç¨‹ï¼Œé€šè¿‡ HW å±‚æ¥å£å®ç°
+ * \brief UART DMA ½ÓÊÕÀı³Ì£¬Í¨¹ı HW ²ã½Ó¿ÚÊµÏÖ
  */
 void demo_am116_core_hw_uart_rx_dma_entry (void);
 
 /**
- * \brief UART DMA å‘é€ä¾‹ç¨‹ï¼Œé€šè¿‡ HW å±‚æ¥å£å®ç°
+ * \brief UART DMA ·¢ËÍÀı³Ì£¬Í¨¹ı HW ²ã½Ó¿ÚÊµÏÖ
  */
 void demo_am116_core_hw_uart_tx_dma_entry (void);
 
 /**
- * \brief UART è½®è¯¢æ–¹å¼ä¾‹ç¨‹ï¼Œé€šè¿‡æ ‡å‡†æ¥å£å®ç°
+ * \brief UART ÂÖÑ¯·½Ê½Àı³Ì£¬Í¨¹ı±ê×¼½Ó¿ÚÊµÏÖ
  */
 void demo_am116_core_std_uart_polling_entry (void);
 
 /**
- * \brief UART ç¯å½¢ç¼“å†²åŒºä¾‹ç¨‹ï¼Œé€šè¿‡æ ‡å‡†æ¥å£å®ç°
+ * \brief UART »·ĞÎ»º³åÇøÀı³Ì£¬Í¨¹ı±ê×¼½Ó¿ÚÊµÏÖ
  */
 void demo_am116_core_std_uart_ringbuf_entry (void);
 
 /**
- * \brief ç¡çœ æ¨¡å¼ä¾‹ç¨‹ï¼Œä½¿ç”¨å®šæ—¶å™¨å‘¨æœŸå”¤é†’ï¼Œé€šè¿‡é©±åŠ¨å±‚æ¥å£å®ç°
+ * \brief Ë¯ÃßÄ£Ê½Àı³Ì£¬Ê¹ÓÃ¶¨Ê±Æ÷ÖÜÆÚ»½ĞÑ£¬Í¨¹ıÇı¶¯²ã½Ó¿ÚÊµÏÖ
  */
 void demo_am116_core_drv_sleepmode_timer_wake_up_entry (void);
 
 /**
- * \brief ç¡çœ æ¨¡å¼ä¾‹ç¨‹ï¼Œé€šè¿‡é©±åŠ¨å±‚æ¥å£å®ç°
+ * \brief Ë¯ÃßÄ£Ê½Àı³Ì£¬Í¨¹ıÇı¶¯²ã½Ó¿ÚÊµÏÖ
  */
 void demo_am116_core_drv_sleepmode_wake_up_entry (void);
 
 /**
- * \brief å¾…æœºæ¨¡å¼ä¾‹ç¨‹ï¼Œé€šè¿‡é©±åŠ¨å±‚æ¥å£å®ç°
+ * \brief ´ı»úÄ£Ê½Àı³Ì£¬Í¨¹ıÇı¶¯²ã½Ó¿ÚÊµÏÖ
  */
 void demo_am116_core_drv_standbymode_wake_up_entry (void);
 
 /**
- * \brief åœæ­¢æ¨¡å¼ä¾‹ç¨‹ï¼Œé€šè¿‡é©±åŠ¨å±‚æ¥å£å®ç°
+ * \brief Í£Ö¹Ä£Ê½Àı³Ì£¬Í¨¹ıÇı¶¯²ã½Ó¿ÚÊµÏÖ
  */
 void demo_am116_core_drv_stopmode_wake_up_entry (void);
 
 /**
- * \brief IWDG ä¾‹ç¨‹ï¼Œé€šè¿‡ HW å±‚æ¥å£å®ç°
+ * \brief IWDG Àı³Ì£¬Í¨¹ı HW ²ã½Ó¿ÚÊµÏÖ
  */
 void demo_am116_core_hw_iwdg_entry (void);
 
 /**
- * \brief WWDG ä¾‹ç¨‹ï¼Œé€šè¿‡ HW å±‚æ¥å£å®ç°
+ * \brief WWDG Àı³Ì£¬Í¨¹ı HW ²ã½Ó¿ÚÊµÏÖ
  */
 void demo_am116_core_hw_wwdg_entry (void);
 
 /**
- * \brief IWDG ä¾‹ç¨‹ï¼Œé€šè¿‡æ ‡å‡†æ¥å£å®ç°
+ * \brief IWDG Àı³Ì£¬Í¨¹ı±ê×¼½Ó¿ÚÊµÏÖ
  */
 void demo_am116_core_std_iwdg_entry (void);
 
 /**
- * \brief WWDG ä¾‹ç¨‹ï¼Œé€šè¿‡æ ‡å‡†æ¥å£å®ç°
+ * \brief WWDG Àı³Ì£¬Í¨¹ı±ê×¼½Ó¿ÚÊµÏÖ
  */
 void demo_am116_core_std_wwdg_entry (void);
 
 /**
- * \brief MicroPort SC16IS740 ä¾‹ç¨‹ï¼Œé€šè¿‡æ ‡å‡†æ¥å£å®ç°
+ * \brief MicroPort SC16IS740 Àı³Ì£¬Í¨¹ı±ê×¼½Ó¿ÚÊµÏÖ
  */
 void demo_am116_core_microport_sc16is740_entry(void);
 
 /**
- * \brief MicroPort DS1302 ä¾‹ç¨‹ï¼Œé€šè¿‡æ ‡å‡†æ¥å£å®ç°
+ * \brief MicroPort DS1302 Àı³Ì£¬Í¨¹ı±ê×¼½Ó¿ÚÊµÏÖ
  */
 void demo_am116_core_microport_ds1302_entry (void);
 
 /**
- * \brief MicroPort EEPROM ä¾‹ç¨‹ï¼Œé€šè¿‡æ ‡å‡†æ¥å£å®ç°
+ * \brief MicroPort EEPROM Àı³Ì£¬Í¨¹ı±ê×¼½Ó¿ÚÊµÏÖ
  */
 void demo_am116_core_microport_eeprom_entry (void);
 
 /**
- * \brief MicroPort EEPROM ä¾‹ç¨‹ï¼Œé€šè¿‡ NVRAM æ¥å£å®ç°
+ * \brief MicroPort EEPROM Àı³Ì£¬Í¨¹ı NVRAM ½Ó¿ÚÊµÏÖ
  */
 void demo_am116_core_microport_eeprom_nvram_entry (void);
 
 /**
- * \brief MicroPort FLASH ä¾‹ç¨‹ï¼Œé€šè¿‡æ ‡å‡†æ¥å£å®ç°
+ * \brief MicroPort FLASH Àı³Ì£¬Í¨¹ı±ê×¼½Ó¿ÚÊµÏÖ
  */
 void demo_am116_core_microport_flash_entry (void);
 
 /**
- * \brief MicroPort FLASH ä¾‹ç¨‹ï¼Œé€šè¿‡ FTL æ¥å£å®ç°
+ * \brief MicroPort FLASH Àı³Ì£¬Í¨¹ı FTL ½Ó¿ÚÊµÏÖ
  */
 void demo_am116_core_microport_flash_ftl_entry (void);
 
 /**
- * \brief MicroPort FLASH ä¾‹ç¨‹ï¼Œé€šè¿‡ MTD æ¥å£å®ç°
+ * \brief MicroPort FLASH Àı³Ì£¬Í¨¹ı MTD ½Ó¿ÚÊµÏÖ
  */
 void demo_am116_core_microport_flash_mtd_entry (void);
 
 /**
- * \brief MicroPort RS485 ä¾‹ç¨‹ï¼Œé€šè¿‡æ ‡å‡†æ¥å£å®ç°
+ * \brief MicroPort RS485 Àı³Ì£¬Í¨¹ı±ê×¼½Ó¿ÚÊµÏÖ
  */
 void demo_am116_core_microport_rs485_entry (void);
 
 /**
- * \brief MicroPort RTC ä¾‹ç¨‹ï¼Œé€šè¿‡æ ‡å‡†æ¥å£å®ç°
+ * \brief MicroPort RTC Àı³Ì£¬Í¨¹ı±ê×¼½Ó¿ÚÊµÏÖ
  */
 void demo_am116_core_microport_rtc_entry (void);
 
 /**
- * \brief MicroPort RX8025T ä¾‹ç¨‹ï¼Œé€šè¿‡æ ‡å‡†æ¥å£å®ç°
+ * \brief MicroPort RX8025T Àı³Ì£¬Í¨¹ı±ê×¼½Ó¿ÚÊµÏÖ
  */
 void demo_am116_core_microport_rx8025t_entry (void);
 
 /**
- * \brief MicroPort USB ä¾‹ç¨‹ï¼Œé€šè¿‡æ ‡å‡†æ¥å£å®ç°
+ * \brief MicroPort USB Àı³Ì£¬Í¨¹ı±ê×¼½Ó¿ÚÊµÏÖ
  */
 void demo_am116_core_microport_usb_entry (void);
 
 /**
- * \brief MiniPort-VIEW ä¾‹ç¨‹
+ * \brief MiniPort-VIEW Àı³Ì
  */
 void demo_am116_core_miniport_digitron_entry (void);
 
 /**
- * \brief MiniPort-595 + MiniPort-VIEW ä¾‹ç¨‹
+ * \brief MiniPort-595 + MiniPort-VIEW Àı³Ì
  */
 void demo_am116_core_miniport_hc595_digitron_entry (void);
 
 /**
- * \brief MiniPort-595 + MiniPort-VIEW + MiniPort-KEY ä¾‹ç¨‹
+ * \brief MiniPort-595 + MiniPort-VIEW + MiniPort-KEY Àı³Ì
  */
 void demo_am116_core_miniport_hc595_digitron_key_entry (void);
 
 /**
- * \brief MiniPort-595 + MiniPort-VIEW + LM75 æ¸©åº¦æ˜¾ç¤ºä¾‹ç¨‹
+ * \brief MiniPort-595 + MiniPort-VIEW + LM75 ÎÂ¶ÈÏÔÊ¾Àı³Ì
  */
 void demo_am116_core_miniport_hc595_digitron_temp_entry (void);
 
 /**
- * \brief MiniPort-595 + MiniPort-LED ä¾‹ç¨‹
+ * \brief MiniPort-595 + MiniPort-LED Àı³Ì
  */
 void demo_am116_core_miniport_hc595_led_entry (void);
 
 /**
- * \brief MiniPort-KEY ä¾‹ç¨‹
+ * \brief MiniPort-KEY Àı³Ì
  */
 void demo_am116_core_miniport_key_entry (void);
 
 /**
- * \brief MiniPort-KEY + MiniPort-DIGITORNæ˜¾ç¤ºä¾‹ç¨‹
+ * \brief MiniPort-KEY + MiniPort-DIGITORNÏÔÊ¾Àı³Ì
  */
 void demo_am116_core_miniport_key_digitron_entry (void);
 
 /**
- * \brief MiniPort-LED ä¾‹ç¨‹
+ * \brief MiniPort-LED Àı³Ì
  */
 void demo_am116_core_miniport_led_entry (void);
 
 /**
- * \brief MiniPort-ZLG72128 æ˜¾ç¤ºä¾‹ç¨‹
+ * \brief MiniPort-ZLG72128 ÏÔÊ¾Àı³Ì
  */
 void demo_am116_core_miniport_zlg72128_entry (void);
 
 /**
- * \brief å»¶æ—¶å‡½æ•°ä¾‹ç¨‹
+ * \brief ÑÓÊ±º¯ÊıÀı³Ì
  */
 void demo_am116_core_std_delay_entry(void);
 
 /**
- * \brief Aç±»å¡è¯»å¡ç±»å‹å’Œå¡å·ä¾‹ç¨‹
+ * \brief AÀà¿¨¶Á¿¨ÀàĞÍºÍ¿¨ºÅÀı³Ì
  */
 void demo_am116_core_dr_fm175xx_picca_read_id(void);
 
 /**
- * \brief FM175XX LCPDæ¨¡å¼ Aç±»å¡è¯»å¡ç±»å‹å’Œå¡å·ä¾‹ç¨‹
+ * \brief FM175XX LCPDÄ£Ê½ AÀà¿¨¶Á¿¨ÀàĞÍºÍ¿¨ºÅÀı³Ì
  */
 void demo_am116_core_dr_fm175xx_picca_lpcd_read_id(void);
 
 /**
- * \brief BMA253ä¸‰è½´åŠ é€Ÿåº¦ä¾‹ç¨‹
+ * \brief BMA253ÈıÖá¼ÓËÙ¶ÈÀı³Ì
  */
 void demo_bma253_entry (void);
 
 /**
- * \brief LTR_553ALSå…‰ç…§ä¼ æ„Ÿå™¨ä¾‹ç¨‹
+ * \brief LTR_553ALS¹âÕÕ´«¸ĞÆ÷Àı³Ì
  */
 void demo_ltr_553als_entry (void);
 
 /**
- * \brief BMP280å‹åŠ›ä¼ æ„Ÿå™¨ä¾‹ç¨‹
+ * \brief BMP280Ñ¹Á¦´«¸ĞÆ÷Àı³Ì
  */
 void demo_bmp280_entry (void);
 
 /**
- * \brief BME280å‹åŠ›æ¸©æ¹¿åº¦ä¼ æ„Ÿå™¨ä¾‹ç¨‹
+ * \brief BME280Ñ¹Á¦ÎÂÊª¶È´«¸ĞÆ÷Àı³Ì
  */
 void demo_bme280_entry (void);
 
 /**
- * \brief LPS22HBå‹åŠ›ä¼ æ„Ÿå™¨ä¾‹ç¨‹
+ * \brief LPS22HBÑ¹Á¦´«¸ĞÆ÷Àı³Ì
  */
 void demo_lps22hb_entry (void);
 
 /**
- * \brief  HTS221æ¸©æ¹¿åº¦ä¼ æ„Ÿå™¨ä¾‹ç¨‹
+ * \brief  HTS221ÎÂÊª¶È´«¸ĞÆ÷Àı³Ì
  */
 void demo_hts221_entry (void);
 
 /**
- * \brief BH1730FVCå…‰ä¼ æ„Ÿå™¨ä¾‹ç¨‹
+ * \brief BH1730FVC¹â´«¸ĞÆ÷Àı³Ì
  */
 void demo_bh1730fvc_entry (void);
 
 /**
- * \brief LIS3MDLä¸‰è½´ç£ä¼ æ„Ÿå™¨ä¾‹ç¨‹
+ * \brief LIS3MDLÈıÖá´Å´«¸ĞÆ÷Àı³Ì
  */
 void demo_lis3mdl_entry (void);
 
 /**
- * \brief SHTC1æ¸©æ¹¿åº¦ä¼ æ„Ÿå™¨ä¾‹ç¨‹
+ * \brief SHTC1ÎÂÊª¶È´«¸ĞÆ÷Àı³Ì
  */
 void demo_shtc1_entry (void);
 
 /**
- * \brief BMG160ä¸‰è½´é™€èºä»ªä¼ æ„Ÿå™¨ä¾‹ç¨‹
+ * \brief BMG160ÈıÖáÍÓÂİÒÇ´«¸ĞÆ÷Àı³Ì
  */
 void demo_bmg160_entry (void);
 
 /**
- * \brief MMC5883ä¸‰è½´ç£ä¼ æ„Ÿå™¨ä¾‹ç¨‹
+ * \brief MMC5883ÈıÖá´Å´«¸ĞÆ÷Àı³Ì
  */
 void demo_mmc5883ma_entry (void);
 
 /**
- * \brief LSM6DSLä¸‰è½´åŠ é€Ÿåº¦ä¼ æ„Ÿå™¨ä¾‹ç¨‹
+ * \brief LSM6DSLÈıÖá¼ÓËÙ¶È´«¸ĞÆ÷Àı³Ì
  */
 void demo_lsm6dsl_entry (void);
 
 /**
- * \brief SC16IS7XX I2Cè½¬UARTä¾‹ç¨‹
+ * \brief SC16IS7XX I2C×ªUARTÀı³Ì
  */
 void demo_sc16is7xx_entry (void);
 

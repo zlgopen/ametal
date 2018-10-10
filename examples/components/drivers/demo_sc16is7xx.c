@@ -53,8 +53,11 @@ void demo_sc16is7xx_entry (void)
     handle = am_sc16is7xx_inst_init();
 
     while (1) {
+        
         am_sc16is7xx_uart_poll_receive(handle, 0, get_char, 64);
+        
         am_sc16is7xx_uart_poll_send(handle, 0, get_char, 64);
+    
     }
 }
 /** [src_sc16is7xx] */

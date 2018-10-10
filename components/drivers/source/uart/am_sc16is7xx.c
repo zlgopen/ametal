@@ -11,71 +11,71 @@
 *******************************************************************************/
 /**
  * \file
- * \brief SC16IS7XX é©±åŠ¨
- * \details æœ¬é©±åŠ¨åœ¨ä¸­æ–­æ¨¡å¼ä¸‹ä½¿ç”¨å¦‚ä¸‹çŠ¶æ€æœºï¼Œå¦‚æ ¼å¼ä¸æ­£ç¡®ï¼ŒæŽ¨èä½¿ç”¨ Notepad++ æŸ¥çœ‹
+ * \brief SC16IS7XX Çý¶¯
+ * \details ±¾Çý¶¯ÔÚÖÐ¶ÏÄ£Ê½ÏÂÊ¹ÓÃÈçÏÂ×´Ì¬»ú£¬Èç¸ñÊ½²»ÕýÈ·£¬ÍÆ¼öÊ¹ÓÃ Notepad++ ²é¿´
  *
- *                             â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”                 â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
- *                             â”‚         ç©ºé—²          â”‚  I2C ä¼ è¾“å®Œæˆ   â”‚    ä½¿èƒ½å‘é€ä¸­æ–­     â”‚
- * â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€>â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤<â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
- * â”‚                           â”‚I2C ä¼ è¾“å¤±è´¥ /         â”‚  [å¯åŠ¨ä¸­æ–­å‘é€] â”‚entry /              â”‚
- * â”‚                           â”‚å°† RS485 æ–¹å‘è®¾ç½®ä¸ºæŽ¥æ”¶â”‚â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€>â”‚å¯åŠ¨ I2C ä¼ è¾“(å†™ IER)â”‚
- * â”‚                           â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜                 â”‚RS485 æ–¹å‘è®¾ç½®ä¸ºå‘é€ â”‚
- * â”‚                                       â”‚                             â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
- * â”‚                                  IRQ ä¸ºä½Žç”µå¹³
- * â”‚                                       â”‚
- * â”‚                                       V
- * â”‚    I2C ä¼ è¾“å¤±è´¥æˆ–          â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
- * â”‚    I2C ä¼ è¾“æˆåŠŸ[æ²¡æœ‰ä¸­æ–­æº]â”‚        è¯» IIR       â”‚
- * â”‚<â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤<â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
- * â”‚                            â”‚entry /              â”‚                                          â”‚
- * â”‚                    â”Œâ”€â”€â”€â”€â”€â”€â”€â”‚å¯åŠ¨ I2C ä¼ è¾“(è¯» IIR)â”‚â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”                   â”‚
- * â”‚                    â”‚       â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜                      â”‚                   â”‚
- * â”‚             I2C ä¼ è¾“æˆåŠŸ                                 I2C ä¼ è¾“æˆåŠŸ[å‘é€ FIFO ç©ºä¸­æ–­]     â”‚
- * â”‚             [æŽ¥æ”¶è¶…æ—¶æˆ–æŽ¥æ”¶æ»¡ä¸­æ–­]                                      â”‚                   â”‚
- * â”‚                    â”‚                                                    V                   â”‚
- * â”‚                    V                                        â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”       â”‚
- * â”‚            â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”   I2C ä¼ è¾“å®Œæˆ[FIFO æ»¡]â”‚       è¯» TXLVL        â”‚       â”‚
- * â”‚I2C ä¼ è¾“å®Œæˆâ”‚       è¯» RXLVL        â”‚   â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤       â”‚
- * â”‚[FIFO ä¸º 0] â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤   â”‚                    â”‚entry /                â”‚       â”‚
- * â”‚<â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”‚entry /                â”‚   â”‚                    â”‚å¯åŠ¨ I2C ä¼ è¾“(è¯» TXLVL)â”‚       â”‚
- * â”‚            â”‚å¯åŠ¨ I2C ä¼ è¾“(è¯» RXLVL)â”‚   â”‚                    â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜       â”‚
- * â”‚            â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜   â”‚                         â”‚            ^             â”‚
- * â”‚                  â”‚            ^        â”‚         I2C ä¼ è¾“æˆåŠŸ[FIFO æœªæ»¡] /    â”‚             â”‚
- * â”‚    I2C ä¼ è¾“æˆåŠŸ[FIFO ä¸ä¸º 0]  â”‚        â”‚         pfn_txchar_get               â”‚             â”‚
- * â”‚                  â”‚            â”‚        â”‚                         â”‚  I2C ä¼ è¾“æˆåŠŸ            â”‚
- * â”‚                  â”‚     I2C ä¼ è¾“æˆåŠŸ /  â”‚                         â”‚  [æœ‰å­—ç¬¦å¯å–ä¸” 485 ä½¿èƒ½] â”‚
- * â”‚                  â”‚     pfn_rxchar_put  â”‚                         V            â”‚             â”‚
- * â”‚                  V            â”‚        â”‚                     â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”        â”‚
- * â”‚             â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”    â”‚                     â”‚        å†™ THR       â”‚        â”‚
- * â”‚I2C ä¼ è¾“å¤±è´¥ â”‚       è¯» RHR        â”‚    â”‚                     â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤â”€â”€â”€â”€â”€â”€â”€â”€â”˜
- * â”‚<â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤    â”‚                     â”‚entry ä¸”æœ‰å­—ç¬¦å¯å– / â”‚ I2C ä¼ è¾“æˆåŠŸ
- * â”‚             â”‚entry /              â”‚    â”‚                     â”‚å¯åŠ¨ I2C ä¼ è¾“(å†™ THR)â”‚ [æœ‰å­—ç¬¦å¯å–ä¸” 485 å¤±èƒ½]
- * â”‚             â”‚å¯åŠ¨ I2C ä¼ è¾“(è¯» RHR)â”‚    â”‚                     â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
- * â”‚             â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜    â”‚                                â”‚
- * â”‚                                        â”‚                   I2C ä¼ è¾“å¤±è´¥æˆ– I2C ä¼ è¾“æˆåŠŸæˆ–
- * â”‚<â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜                   æ— å­—ç¬¦å¯å–
- * â”‚                                                                         â”‚
- * â”‚                                                                         V
- * â”‚                                                              â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
- * â”‚                        I2C ä¼ è¾“å¤±è´¥æˆ– I2C ä¼ è¾“æˆåŠŸ[485 å¤±èƒ½] â”‚    å¤±èƒ½å‘é€ä¸­æ–­     â”‚
- * â”‚<â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
- * â”‚                                                              â”‚entry /              â”‚
- * â”‚                                                              â”‚å¯åŠ¨ I2C ä¼ è¾“(å†™ IER)â”‚
- * â”‚                                                              â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
- * â”‚                                                                         â”‚     
- * â”‚                                                               I2C ä¼ è¾“æˆåŠŸ[485 ä½¿èƒ½]
- * â”‚                                                                         â”‚     
- * â”‚                                     I2C ä¼ è¾“å¤±è´¥æˆ–                      V     
- * â”‚                                     I2C ä¼ è¾“æˆåŠŸ[å‘é€å®Œæˆ] / â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
- * â”‚                                     RS485 æ–¹å‘è®¾ç½®ä¸ºæŽ¥æ”¶     â”‚     ç­‰å¾…å‘é€å®Œæˆ    â”‚
- * â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤<â”€â”
- *                                                                â”‚entry /              â”‚  â”‚
- *                                                                â”‚å¯åŠ¨ I2C ä¼ è¾“(è¯» LSR)â”‚  â”‚
- *                                                                â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜  â”‚
- *                                                                           â”‚             â”‚
- *                                                               I2C ä¼ è¾“æˆåŠŸ[å‘é€æœªå®Œæˆ]  â”‚
- *                                                                           â”‚             â”‚
- *                                                                           â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
+ *                             ©°©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©´                 ©°©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©´
+ *                             ©¦         ¿ÕÏÐ          ©¦  I2C ´«ÊäÍê³É   ©¦    Ê¹ÄÜ·¢ËÍÖÐ¶Ï     ©¦
+ * ©°©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤>©À©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©È<©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©À©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©È
+ * ©¦                           ©¦I2C ´«ÊäÊ§°Ü /         ©¦  [Æô¶¯ÖÐ¶Ï·¢ËÍ] ©¦entry /              ©¦
+ * ©¦                           ©¦½« RS485 ·½ÏòÉèÖÃÎª½ÓÊÕ©¦©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤>©¦Æô¶¯ I2C ´«Êä(Ð´ IER)©¦
+ * ©¦                           ©¸©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¼                 ©¦RS485 ·½ÏòÉèÖÃÎª·¢ËÍ ©¦
+ * ©¦                                       ©¦                             ©¸©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¼
+ * ©¦                                  IRQ ÎªµÍµçÆ½
+ * ©¦                                       ©¦
+ * ©¦                                       V
+ * ©¦    I2C ´«ÊäÊ§°Ü»ò          ©°©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©´
+ * ©¦    I2C ´«Êä³É¹¦[Ã»ÓÐÖÐ¶ÏÔ´]©¦        ¶Á IIR       ©¦
+ * ©¦<©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©À©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©È<©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©´
+ * ©¦                            ©¦entry /              ©¦                                          ©¦
+ * ©¦                    ©°©¤©¤©¤©¤©¤©¤©¤©¦Æô¶¯ I2C ´«Êä(¶Á IIR)©¦©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©´                   ©¦
+ * ©¦                    ©¦       ©¸©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¼                      ©¦                   ©¦
+ * ©¦             I2C ´«Êä³É¹¦                                 I2C ´«Êä³É¹¦[·¢ËÍ FIFO ¿ÕÖÐ¶Ï]     ©¦
+ * ©¦             [½ÓÊÕ³¬Ê±»ò½ÓÊÕÂúÖÐ¶Ï]                                      ©¦                   ©¦
+ * ©¦                    ©¦                                                    V                   ©¦
+ * ©¦                    V                                        ©°©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©´       ©¦
+ * ©¦            ©°©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©´   I2C ´«ÊäÍê³É[FIFO Âú]©¦       ¶Á TXLVL        ©¦       ©¦
+ * ©¦I2C ´«ÊäÍê³É©¦       ¶Á RXLVL        ©¦   ©°©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©À©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©È       ©¦
+ * ©¦[FIFO Îª 0] ©À©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©È   ©¦                    ©¦entry /                ©¦       ©¦
+ * ©¦<©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¦entry /                ©¦   ©¦                    ©¦Æô¶¯ I2C ´«Êä(¶Á TXLVL)©¦       ©¦
+ * ©¦            ©¦Æô¶¯ I2C ´«Êä(¶Á RXLVL)©¦   ©¦                    ©¸©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¼       ©¦
+ * ©¦            ©¸©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¼   ©¦                         ©¦            ^             ©¦
+ * ©¦                  ©¦            ^        ©¦         I2C ´«Êä³É¹¦[FIFO Î´Âú] /    ©¦             ©¦
+ * ©¦    I2C ´«Êä³É¹¦[FIFO ²»Îª 0]  ©¦        ©¦         pfn_txchar_get               ©¦             ©¦
+ * ©¦                  ©¦            ©¦        ©¦                         ©¦  I2C ´«Êä³É¹¦            ©¦
+ * ©¦                  ©¦     I2C ´«Êä³É¹¦ /  ©¦                         ©¦  [ÓÐ×Ö·û¿ÉÈ¡ÇÒ 485 Ê¹ÄÜ] ©¦
+ * ©¦                  ©¦     pfn_rxchar_put  ©¦                         V            ©¦             ©¦
+ * ©¦                  V            ©¦        ©¦                     ©°©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©´        ©¦
+ * ©¦             ©°©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©´    ©¦                     ©¦        Ð´ THR       ©¦        ©¦
+ * ©¦I2C ´«ÊäÊ§°Ü ©¦       ¶Á RHR        ©¦    ©¦                     ©À©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©È©¤©¤©¤©¤©¤©¤©¤©¤©¼
+ * ©¦<©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©À©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©È    ©¦                     ©¦entry ÇÒÓÐ×Ö·û¿ÉÈ¡ / ©¦ I2C ´«Êä³É¹¦
+ * ©¦             ©¦entry /              ©¦    ©¦                     ©¦Æô¶¯ I2C ´«Êä(Ð´ THR)©¦ [ÓÐ×Ö·û¿ÉÈ¡ÇÒ 485 Ê§ÄÜ]
+ * ©¦             ©¦Æô¶¯ I2C ´«Êä(¶Á RHR)©¦    ©¦                     ©¸©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¼
+ * ©¦             ©¸©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¼    ©¦                                ©¦
+ * ©¦                                        ©¦                   I2C ´«ÊäÊ§°Ü»ò I2C ´«Êä³É¹¦»ò
+ * ©¦<©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¼                   ÎÞ×Ö·û¿ÉÈ¡
+ * ©¦                                                                         ©¦
+ * ©¦                                                                         V
+ * ©¦                                                              ©°©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©´
+ * ©¦                        I2C ´«ÊäÊ§°Ü»ò I2C ´«Êä³É¹¦[485 Ê§ÄÜ] ©¦    Ê§ÄÜ·¢ËÍÖÐ¶Ï     ©¦
+ * ©¦<©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©À©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©È
+ * ©¦                                                              ©¦entry /              ©¦
+ * ©¦                                                              ©¦Æô¶¯ I2C ´«Êä(Ð´ IER)©¦
+ * ©¦                                                              ©¸©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¼
+ * ©¦                                                                         ©¦     
+ * ©¦                                                               I2C ´«Êä³É¹¦[485 Ê¹ÄÜ]
+ * ©¦                                                                         ©¦     
+ * ©¦                                     I2C ´«ÊäÊ§°Ü»ò                      V     
+ * ©¦                                     I2C ´«Êä³É¹¦[·¢ËÍÍê³É] / ©°©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©´
+ * ©¦                                     RS485 ·½ÏòÉèÖÃÎª½ÓÊÕ     ©¦     µÈ´ý·¢ËÍÍê³É    ©¦
+ * ©¸©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©À©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©È<©¤©´
+ *                                                                ©¦entry /              ©¦  ©¦
+ *                                                                ©¦Æô¶¯ I2C ´«Êä(¶Á LSR)©¦  ©¦
+ *                                                                ©¸©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¼  ©¦
+ *                                                                           ©¦             ©¦
+ *                                                               I2C ´«Êä³É¹¦[·¢ËÍÎ´Íê³É]  ©¦
+ *                                                                           ©¦             ©¦
+ *                                                                           ©¸©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¼
  *
  * \internal
  * \par modification history:
@@ -93,165 +93,165 @@
 #include <string.h>
 
 /*******************************************************************************
-  å®å®šä¹‰
+  ºê¶¨Òå
 *******************************************************************************/
 
-#define  __ST_IDLE           0  /**< \brief ç©ºé—²çŠ¶æ€ */
-#define  __ST_TX_INT_EN      1  /**< \brief ä½¿èƒ½å‘é€ä¸­æ–­ */
-#define  __ST_IIR_RD         2  /**< \brief è¯» IIR å¯„å­˜å™¨ */
-#define  __ST_RXLVL_RD       3  /**< \brief è¯» RXLVL å¯„å­˜å™¨ */
-#define  __ST_RHR_RD         4  /**< \brief è¯» RHR å¯„å­˜å™¨ */
-#define  __ST_TXLVL_RD       5  /**< \brief è¯» TXLVL å¯„å­˜å™¨ */
-#define  __ST_THR_WE         6  /**< \brief å†™ THR å¯„å­˜å™¨ */
-#define  __ST_TX_INT_DIS     7  /**< \brief å¤±èƒ½å‘é€ä¸­æ–­ */
-#define  __ST_TX_DONE_WAIT   8  /**< \brief ç­‰å¾…å‘é€å®Œæˆ */
+#define  __ST_IDLE           0  /**< \brief ¿ÕÏÐ×´Ì¬ */
+#define  __ST_TX_INT_EN      1  /**< \brief Ê¹ÄÜ·¢ËÍÖÐ¶Ï */
+#define  __ST_IIR_RD         2  /**< \brief ¶Á IIR ¼Ä´æÆ÷ */
+#define  __ST_RXLVL_RD       3  /**< \brief ¶Á RXLVL ¼Ä´æÆ÷ */
+#define  __ST_RHR_RD         4  /**< \brief ¶Á RHR ¼Ä´æÆ÷ */
+#define  __ST_TXLVL_RD       5  /**< \brief ¶Á TXLVL ¼Ä´æÆ÷ */
+#define  __ST_THR_WE         6  /**< \brief Ð´ THR ¼Ä´æÆ÷ */
+#define  __ST_TX_INT_DIS     7  /**< \brief Ê§ÄÜ·¢ËÍÖÐ¶Ï */
+#define  __ST_TX_DONE_WAIT   8  /**< \brief µÈ´ý·¢ËÍÍê³É */
 
-#define  __EVT_NONE          0  /**< \brief æ— äº‹ä»¶ */
-#define  __EVT_IRQ_LOW       1  /**< \brief IRQ ä¸ºä½Žç”µå¹³ */
-#define  __EVT_I2C_OK        2  /**< \brief I2C ä¼ è¾“æˆåŠŸ */
-#define  __EVT_I2C_ERR       3  /**< \brief I2C ä¼ è¾“å¤±è´¥ */
-#define  __EVT_CHAR_NONE     4  /**< \brief æ— å­—ç¬¦å¯å– */
-#define  __EVT_CONTINUE      5  /**< \brief ç»§ç»­æ“ä½œäº‹ä»¶ */
+#define  __EVT_NONE          0  /**< \brief ÎÞÊÂ¼þ */
+#define  __EVT_IRQ_LOW       1  /**< \brief IRQ ÎªµÍµçÆ½ */
+#define  __EVT_I2C_OK        2  /**< \brief I2C ´«Êä³É¹¦ */
+#define  __EVT_I2C_ERR       3  /**< \brief I2C ´«ÊäÊ§°Ü */
+#define  __EVT_CHAR_NONE     4  /**< \brief ÎÞ×Ö·û¿ÉÈ¡ */
+#define  __EVT_CONTINUE      5  /**< \brief ¼ÌÐø²Ù×÷ÊÂ¼þ */
 
-/** \brief çŠ¶æ€æœºå†…éƒ¨çŠ¶æ€åˆ‡æ¢ */
+/** \brief ×´Ì¬»úÄÚ²¿×´Ì¬ÇÐ»» */
 #define __NEXT_STATE(s, e)        \
     do {                          \
         p_dev->state[chan] = (s); \
         new_event = (e);          \
     } while(0)
 
-/** \brief å¯„å­˜å™¨åœ°å€ */
+/** \brief ¼Ä´æÆ÷µØÖ· */
 enum __SC16IS7XX_REG_ADDR {
 
-    /** \brief é€šç”¨å¯„å­˜å™¨åœ°å€ï¼Œåªèƒ½åœ¨ LCR[7] ä¸º 0 æ—¶è®¿é—® */
-    SC16IS7XX_REG_RHR       = 0x00,    /**< \brief æŽ¥æ”¶ FIFO å¯„å­˜å™¨ */
-    SC16IS7XX_REG_THR       = 0x00,    /**< \brief å‘é€ FIFO å¯„å­˜å™¨ */
-    SC16IS7XX_REG_IER       = 0x01,    /**< \brief ä¸­æ–­ä½¿èƒ½å¯„å­˜å™¨ */
-    SC16IS7XX_REG_FCR       = 0x02,    /**< \brief FIFO æŽ§åˆ¶å¯„å­˜å™¨ */
-    SC16IS7XX_REG_IIR       = 0x02,    /**< \brief ä¸­æ–­æ ‡å¿—å¯„å­˜å™¨ */
-    SC16IS7XX_REG_LCR       = 0x03,    /**< \brief çº¿æŽ§åˆ¶å¯„å­˜å™¨ */
-    SC16IS7XX_REG_MCR       = 0x04,    /**< \brief è°ƒåˆ¶è§£è°ƒå™¨æŽ§åˆ¶å¯„å­˜å™¨ */
-    SC16IS7XX_REG_LSR       = 0x05,    /**< \brief çº¿çŠ¶æ€å¯„å­˜å™¨ */
-    SC16IS7XX_REG_MSR       = 0x06,    /**< \brief è°ƒåˆ¶è§£è°ƒå™¨çŠ¶æ€å¯„å­˜å™¨ */
-    SC16IS7XX_REG_SPR       = 0x07,    /**< \brief ç”¨æˆ·æ•°æ®å¯„å­˜å™¨ */
-    SC16IS7XX_REG_TCR       = 0x06,    /**< \brief ä¼ è¾“æŽ§åˆ¶å¯„å­˜å™¨ */
-    SC16IS7XX_REG_TLR       = 0x07,    /**< \brief è§¦å‘æ°´å¹³å¯„å­˜å™¨ */
-    SC16IS7XX_REG_TXLVL     = 0x08,    /**< \brief å‘é€ FIFO æ°´å¹³å¯„å­˜å™¨ */
-    SC16IS7XX_REG_RXLVL     = 0x09,    /**< \brief æŽ¥æ”¶ FIFO æ°´å¹³å¯„å­˜å™¨ */
-    SC16IS7XX_REG_IODIR     = 0x0A,    /**< \brief I/O æ–¹å‘å¯„å­˜å™¨ */
-    SC16IS7XX_REG_IOSTATE   = 0x0B,    /**< \brief I/O çŠ¶æ€å¯„å­˜å™¨ */
-    SC16IS7XX_REG_IOINTENA  = 0x0C,    /**< \brief I/O ä¸­æ–­ä½¿èƒ½å¯„å­˜å™¨ */
-    SC16IS7XX_REG_IOCTRL    = 0x0E,    /**< \brief I/O æŽ§åˆ¶å¯„å­˜å™¨ */
-    SC16IS7XX_REG_EFCR      = 0x0F,    /**< \brief æ‰©å±•ç‰¹æ€§æŽ§åˆ¶å¯„å­˜å™¨ */
+    /** \brief Í¨ÓÃ¼Ä´æÆ÷µØÖ·£¬Ö»ÄÜÔÚ LCR[7] Îª 0 Ê±·ÃÎÊ */
+    SC16IS7XX_REG_RHR       = 0x00,    /**< \brief ½ÓÊÕ FIFO ¼Ä´æÆ÷ */
+    SC16IS7XX_REG_THR       = 0x00,    /**< \brief ·¢ËÍ FIFO ¼Ä´æÆ÷ */
+    SC16IS7XX_REG_IER       = 0x01,    /**< \brief ÖÐ¶ÏÊ¹ÄÜ¼Ä´æÆ÷ */
+    SC16IS7XX_REG_FCR       = 0x02,    /**< \brief FIFO ¿ØÖÆ¼Ä´æÆ÷ */
+    SC16IS7XX_REG_IIR       = 0x02,    /**< \brief ÖÐ¶Ï±êÖ¾¼Ä´æÆ÷ */
+    SC16IS7XX_REG_LCR       = 0x03,    /**< \brief Ïß¿ØÖÆ¼Ä´æÆ÷ */
+    SC16IS7XX_REG_MCR       = 0x04,    /**< \brief µ÷ÖÆ½âµ÷Æ÷¿ØÖÆ¼Ä´æÆ÷ */
+    SC16IS7XX_REG_LSR       = 0x05,    /**< \brief Ïß×´Ì¬¼Ä´æÆ÷ */
+    SC16IS7XX_REG_MSR       = 0x06,    /**< \brief µ÷ÖÆ½âµ÷Æ÷×´Ì¬¼Ä´æÆ÷ */
+    SC16IS7XX_REG_SPR       = 0x07,    /**< \brief ÓÃ»§Êý¾Ý¼Ä´æÆ÷ */
+    SC16IS7XX_REG_TCR       = 0x06,    /**< \brief ´«Êä¿ØÖÆ¼Ä´æÆ÷ */
+    SC16IS7XX_REG_TLR       = 0x07,    /**< \brief ´¥·¢Ë®Æ½¼Ä´æÆ÷ */
+    SC16IS7XX_REG_TXLVL     = 0x08,    /**< \brief ·¢ËÍ FIFO Ë®Æ½¼Ä´æÆ÷ */
+    SC16IS7XX_REG_RXLVL     = 0x09,    /**< \brief ½ÓÊÕ FIFO Ë®Æ½¼Ä´æÆ÷ */
+    SC16IS7XX_REG_IODIR     = 0x0A,    /**< \brief I/O ·½Ïò¼Ä´æÆ÷ */
+    SC16IS7XX_REG_IOSTATE   = 0x0B,    /**< \brief I/O ×´Ì¬¼Ä´æÆ÷ */
+    SC16IS7XX_REG_IOINTENA  = 0x0C,    /**< \brief I/O ÖÐ¶ÏÊ¹ÄÜ¼Ä´æÆ÷ */
+    SC16IS7XX_REG_IOCTRL    = 0x0E,    /**< \brief I/O ¿ØÖÆ¼Ä´æÆ÷ */
+    SC16IS7XX_REG_EFCR      = 0x0F,    /**< \brief À©Õ¹ÌØÐÔ¿ØÖÆ¼Ä´æÆ÷ */
 
-    /** \brief ç‰¹æ®Šå¯„å­˜å™¨åœ°å€ï¼Œåªèƒ½åœ¨ LCR[7] ä¸º 1ï¼Œä¸” LCR ä¸ä¸º 0xBF æ—¶è®¿é—® */
-    SC16IS7XX_REG_DLL       = 0x00,    /**< \brief æ³¢ç‰¹çŽ‡åˆ†é¢‘å™¨ä½Žå­—èŠ‚å¯„å­˜å™¨ */
-    SC16IS7XX_REG_DLH       = 0x01,    /**< \brief æ³¢ç‰¹çŽ‡åˆ†é¢‘å™¨é«˜å­—èŠ‚å¯„å­˜å™¨ */
+    /** \brief ÌØÊâ¼Ä´æÆ÷µØÖ·£¬Ö»ÄÜÔÚ LCR[7] Îª 1£¬ÇÒ LCR ²»Îª 0xBF Ê±·ÃÎÊ */
+    SC16IS7XX_REG_DLL       = 0x00,    /**< \brief ²¨ÌØÂÊ·ÖÆµÆ÷µÍ×Ö½Ú¼Ä´æÆ÷ */
+    SC16IS7XX_REG_DLH       = 0x01,    /**< \brief ²¨ÌØÂÊ·ÖÆµÆ÷¸ß×Ö½Ú¼Ä´æÆ÷ */
 
-    /** \brief å¢žå¼ºå¯„å­˜å™¨åœ°å€ï¼Œåªèƒ½åœ¨ LCR ä¸º 0xBF æ—¶è®¿é—® */
-    SC16IS7XX_REG_EFR       = 0x02,    /**< \brief å¢žå¼ºç‰¹æ€§å¯„å­˜å™¨ */
-    SC16IS7XX_REG_XON1      = 0x04,    /**< \brief XON1 å¯„å­˜å™¨ */
-    SC16IS7XX_REG_XON2      = 0x05,    /**< \brief XON2 å¯„å­˜å™¨ */
-    SC16IS7XX_REG_XOFF1     = 0x06,    /**< \brief XOFF1 å¯„å­˜å™¨ */
-    SC16IS7XX_REG_XOFF2     = 0x07,    /**< \brief XOFF2 å¯„å­˜å™¨ */
+    /** \brief ÔöÇ¿¼Ä´æÆ÷µØÖ·£¬Ö»ÄÜÔÚ LCR Îª 0xBF Ê±·ÃÎÊ */
+    SC16IS7XX_REG_EFR       = 0x02,    /**< \brief ÔöÇ¿ÌØÐÔ¼Ä´æÆ÷ */
+    SC16IS7XX_REG_XON1      = 0x04,    /**< \brief XON1 ¼Ä´æÆ÷ */
+    SC16IS7XX_REG_XON2      = 0x05,    /**< \brief XON2 ¼Ä´æÆ÷ */
+    SC16IS7XX_REG_XOFF1     = 0x06,    /**< \brief XOFF1 ¼Ä´æÆ÷ */
+    SC16IS7XX_REG_XOFF2     = 0x07,    /**< \brief XOFF2 ¼Ä´æÆ÷ */
 };
 
-#define  SC16IS7XX_IER_RHR_EN_BIT    AM_BIT(0)  /**< \brief RHR ä¸­æ–­ä½¿èƒ½ä½ */
-#define  SC16IS7XX_IER_THR_EN_BIT    AM_BIT(1)  /**< \brief THR ä¸­æ–­ä½¿èƒ½ä½ */
-#define  SC16IS7XX_IER_RLS_EN_BIT    AM_BIT(2)  /**< \brief æŽ¥æ”¶çº¿çŠ¶æ€ä¸­æ–­ä½¿èƒ½ä½ */
-#define  SC16IS7XX_IER_MODEM_EN_BIT  AM_BIT(3)  /**< \brief è°ƒåˆ¶è§£è°ƒå™¨çŠ¶æ€ä¸­æ–­ä½¿èƒ½ä½ */
-#define  SC16IS7XX_IER_SLEEP_EN_BIT  AM_BIT(4)  /**< \brief ç¡çœ æ¨¡å¼ä½¿èƒ½ä½ */
-#define  SC16IS7XX_IER_XOFF_EN_BIT   AM_BIT(5)  /**< \brief XOFF ä¸­æ–­ä½¿èƒ½ä½ */
-#define  SC16IS7XX_IER_RTS_EN_BIT    AM_BIT(6)  /**< \brief RTS ä¸­æ–­ä½¿èƒ½ä½ */
-#define  SC16IS7XX_IER_CTS_EN_BIT    AM_BIT(7)  /**< \brief CTS ä¸­æ–­ä½¿èƒ½ä½ */
+#define  SC16IS7XX_IER_RHR_EN_BIT    AM_BIT(0)  /**< \brief RHR ÖÐ¶ÏÊ¹ÄÜÎ» */
+#define  SC16IS7XX_IER_THR_EN_BIT    AM_BIT(1)  /**< \brief THR ÖÐ¶ÏÊ¹ÄÜÎ» */
+#define  SC16IS7XX_IER_RLS_EN_BIT    AM_BIT(2)  /**< \brief ½ÓÊÕÏß×´Ì¬ÖÐ¶ÏÊ¹ÄÜÎ» */
+#define  SC16IS7XX_IER_MODEM_EN_BIT  AM_BIT(3)  /**< \brief µ÷ÖÆ½âµ÷Æ÷×´Ì¬ÖÐ¶ÏÊ¹ÄÜÎ» */
+#define  SC16IS7XX_IER_SLEEP_EN_BIT  AM_BIT(4)  /**< \brief Ë¯ÃßÄ£Ê½Ê¹ÄÜÎ» */
+#define  SC16IS7XX_IER_XOFF_EN_BIT   AM_BIT(5)  /**< \brief XOFF ÖÐ¶ÏÊ¹ÄÜÎ» */
+#define  SC16IS7XX_IER_RTS_EN_BIT    AM_BIT(6)  /**< \brief RTS ÖÐ¶ÏÊ¹ÄÜÎ» */
+#define  SC16IS7XX_IER_CTS_EN_BIT    AM_BIT(7)  /**< \brief CTS ÖÐ¶ÏÊ¹ÄÜÎ» */
 
-#define  SC16IS7XX_FCR_FIFO_EN_BIT   AM_BIT(0)     /**< \brief FIFO ä½¿èƒ½ä½ */
-#define  SC16IS7XX_FCR_RX_RESET_BIT  AM_BIT(1)     /**< \brief æŽ¥æ”¶ FIFO å¤ä½ä½ */
-#define  SC16IS7XX_FCR_TX_RESET_BIT  AM_BIT(2)     /**< \brief å‘é€ FIFO å¤ä½ä½ */
-#define  SC16IS7XX_FCR_TX_LEVEL_8    AM_SBF(0, 4)  /**< \brief å‘é€ FIFO 8 å­—èŠ‚è§¦å‘ */
-#define  SC16IS7XX_FCR_TX_LEVEL_16   AM_SBF(1, 4)  /**< \brief å‘é€ FIFO 16 å­—èŠ‚è§¦å‘ */
-#define  SC16IS7XX_FCR_TX_LEVEL_32   AM_SBF(2, 4)  /**< \brief å‘é€ FIFO 32 å­—èŠ‚è§¦å‘ */
-#define  SC16IS7XX_FCR_TX_LEVEL_56   AM_SBF(3, 4)  /**< \brief å‘é€ FIFO 56 å­—èŠ‚è§¦å‘ */
-#define  SC16IS7XX_FCR_RX_LEVEL_8    AM_SBF(0, 6)  /**< \brief æŽ¥æ”¶ FIFO 8 å­—èŠ‚è§¦å‘ */
-#define  SC16IS7XX_FCR_RX_LEVEL_16   AM_SBF(1, 6)  /**< \brief æŽ¥æ”¶ FIFO 16 å­—èŠ‚è§¦å‘ */
-#define  SC16IS7XX_FCR_RX_LEVEL_56   AM_SBF(2, 6)  /**< \brief æŽ¥æ”¶ FIFO 56 å­—èŠ‚è§¦å‘ */
-#define  SC16IS7XX_FCR_RX_LEVEL_60   AM_SBF(3, 6)  /**< \brief æŽ¥æ”¶ FIFO 60 å­—èŠ‚è§¦å‘ */
+#define  SC16IS7XX_FCR_FIFO_EN_BIT   AM_BIT(0)     /**< \brief FIFO Ê¹ÄÜÎ» */
+#define  SC16IS7XX_FCR_RX_RESET_BIT  AM_BIT(1)     /**< \brief ½ÓÊÕ FIFO ¸´Î»Î» */
+#define  SC16IS7XX_FCR_TX_RESET_BIT  AM_BIT(2)     /**< \brief ·¢ËÍ FIFO ¸´Î»Î» */
+#define  SC16IS7XX_FCR_TX_LEVEL_8    AM_SBF(0, 4)  /**< \brief ·¢ËÍ FIFO 8 ×Ö½Ú´¥·¢ */
+#define  SC16IS7XX_FCR_TX_LEVEL_16   AM_SBF(1, 4)  /**< \brief ·¢ËÍ FIFO 16 ×Ö½Ú´¥·¢ */
+#define  SC16IS7XX_FCR_TX_LEVEL_32   AM_SBF(2, 4)  /**< \brief ·¢ËÍ FIFO 32 ×Ö½Ú´¥·¢ */
+#define  SC16IS7XX_FCR_TX_LEVEL_56   AM_SBF(3, 4)  /**< \brief ·¢ËÍ FIFO 56 ×Ö½Ú´¥·¢ */
+#define  SC16IS7XX_FCR_RX_LEVEL_8    AM_SBF(0, 6)  /**< \brief ½ÓÊÕ FIFO 8 ×Ö½Ú´¥·¢ */
+#define  SC16IS7XX_FCR_RX_LEVEL_16   AM_SBF(1, 6)  /**< \brief ½ÓÊÕ FIFO 16 ×Ö½Ú´¥·¢ */
+#define  SC16IS7XX_FCR_RX_LEVEL_56   AM_SBF(2, 6)  /**< \brief ½ÓÊÕ FIFO 56 ×Ö½Ú´¥·¢ */
+#define  SC16IS7XX_FCR_RX_LEVEL_60   AM_SBF(3, 6)  /**< \brief ½ÓÊÕ FIFO 60 ×Ö½Ú´¥·¢ */
 
 #define  SC16IS7XX_IIR_SRC_NONE          AM_SBF(0x01, 0)  /**< \brief NONE */
-#define  SC16IS7XX_IIR_SRC_RECV_ERR      AM_SBF(0x06, 0)  /**< \brief æŽ¥æ”¶çŠ¶æ€é”™è¯¯ */
-#define  SC16IS7XX_IIR_SRC_RECV_TIMEOUT  AM_SBF(0x0C, 0)  /**< \brief æŽ¥æ”¶è¶…æ—¶ */
-#define  SC16IS7XX_IIR_SRC_RHR           AM_SBF(0x04, 0)  /**< \brief æŽ¥æ”¶æ»¡ä¸­æ–­ */
-#define  SC16IS7XX_IIR_SRC_THR           AM_SBF(0x02, 0)  /**< \brief å‘é€ç©ºä¸­æ–­ */
-#define  SC16IS7XX_IIR_SRC_MODEM         AM_SBF(0x00, 0)  /**< \brief è°ƒåˆ¶è§£è°ƒå™¨ä¸­æ–­ */
-#define  SC16IS7XX_IIR_SRC_IO            AM_SBF(0x30, 0)  /**< \brief å¼•è„šä¸­æ–­ */
-#define  SC16IS7XX_IIR_SRC_XOFF          AM_SBF(0x10, 0)  /**< \brief XOFF ä¸­æ–­ */
-#define  SC16IS7XX_IIR_SRC_CRTS          AM_SBF(0x20, 0)  /**< \brief CTS/RTS æ— æ•ˆä¸­æ–­ */
-#define  SC16IS7XX_IIR_SRC_MASK          AM_SBF(0x3F, 0)  /**< \brief ä¸­æ–­æºæŽ©ç  */
-#define  SC16IS7XX_IIR_FIFO_EN_FLAG      AM_BIT(6)        /**< \brief FIFO ä½¿èƒ½æ ‡å¿— */
+#define  SC16IS7XX_IIR_SRC_RECV_ERR      AM_SBF(0x06, 0)  /**< \brief ½ÓÊÕ×´Ì¬´íÎó */
+#define  SC16IS7XX_IIR_SRC_RECV_TIMEOUT  AM_SBF(0x0C, 0)  /**< \brief ½ÓÊÕ³¬Ê± */
+#define  SC16IS7XX_IIR_SRC_RHR           AM_SBF(0x04, 0)  /**< \brief ½ÓÊÕÂúÖÐ¶Ï */
+#define  SC16IS7XX_IIR_SRC_THR           AM_SBF(0x02, 0)  /**< \brief ·¢ËÍ¿ÕÖÐ¶Ï */
+#define  SC16IS7XX_IIR_SRC_MODEM         AM_SBF(0x00, 0)  /**< \brief µ÷ÖÆ½âµ÷Æ÷ÖÐ¶Ï */
+#define  SC16IS7XX_IIR_SRC_IO            AM_SBF(0x30, 0)  /**< \brief Òý½ÅÖÐ¶Ï */
+#define  SC16IS7XX_IIR_SRC_XOFF          AM_SBF(0x10, 0)  /**< \brief XOFF ÖÐ¶Ï */
+#define  SC16IS7XX_IIR_SRC_CRTS          AM_SBF(0x20, 0)  /**< \brief CTS/RTS ÎÞÐ§ÖÐ¶Ï */
+#define  SC16IS7XX_IIR_SRC_MASK          AM_SBF(0x3F, 0)  /**< \brief ÖÐ¶ÏÔ´ÑÚÂë */
+#define  SC16IS7XX_IIR_FIFO_EN_FLAG      AM_BIT(6)        /**< \brief FIFO Ê¹ÄÜ±êÖ¾ */
 
-#define  SC16IS7XX_LCR_DATA_5BIT         AM_SBF(0, 0)  /**< \brief 5 ä½æ•°æ®ä½ */
-#define  SC16IS7XX_LCR_DATA_6BIT         AM_SBF(1, 0)  /**< \brief 6 ä½æ•°æ®ä½ */
-#define  SC16IS7XX_LCR_DATA_7BIT         AM_SBF(2, 0)  /**< \brief 7 ä½æ•°æ®ä½ */
-#define  SC16IS7XX_LCR_DATA_8BIT         AM_SBF(3, 0)  /**< \brief 8 ä½æ•°æ®ä½ */
-#define  SC16IS7XX_LCR_STOP_1BIT         AM_SBF(0, 2)  /**< \brief 1 ä½åœæ­¢ä½ */
-#define  SC16IS7XX_LCR_STOP_1_5BIT       AM_SBF(1, 2)  /**< \brief 1.5 ä½åœæ­¢ä½ï¼Œæ•°æ®ä½åªèƒ½ä¸º 5 */
-#define  SC16IS7XX_LCR_STOP_2BIT         AM_SBF(1, 2)  /**< \brief 2 ä½åœæ­¢ä½ */
-#define  SC16IS7XX_LCR_PARITY_NO         AM_SBF(0, 3)  /**< \brief æ— å¥‡å¶æ ¡éªŒä½ */
-#define  SC16IS7XX_LCR_PARITY_ODD        AM_SBF(1, 3)  /**< \brief å¥‡æ ¡éªŒ */
-#define  SC16IS7XX_LCR_PARITY_EVEN       AM_SBF(3, 3)  /**< \brief å¶æ ¡éªŒ */
-#define  SC16IS7XX_LCR_PARITY_FORCE_1    AM_SBF(5, 3)  /**< \brief æ ¡éªŒä½ä¿æŒä¸º 1 */
-#define  SC16IS7XX_LCR_PARITY_FORCE_0    AM_SBF(7, 3)  /**< \brief æ ¡éªŒä½ä¿æŒä¸º 0 */
-#define  SC16IS7XX_LCR_BREAK_BIT         AM_BIT(6)     /**< \brief å¼ºåˆ¶æ‹‰ä½Ž TX äº§ç”Ÿ BREAK */
-#define  SC16IS7XX_LCR_DIV_LATCH_EN_BIT  AM_BIT(7)     /**< \brief åˆ†é¢‘å™¨é”å­˜å™¨ä½¿èƒ½ä½ */
-#define  SC16IS7XX_LCR_ACCESS_GENERAL    0x03          /**< \brief å†™å…¥æ­¤å€¼ä¹‹åŽæ“ä½œé€šç”¨å¯„å­˜å™¨ */
-#define  SC16IS7XX_LCR_ACCESS_SPECIAL    0x80          /**< \brief å†™å…¥æ­¤å€¼ä¹‹åŽæ“ä½œç‰¹æ®Šå¯„å­˜å™¨ */
-#define  SC16IS7XX_LCR_ACCESS_ENHANCE    0xBF          /**< \brief å†™å…¥æ­¤å€¼ä¹‹åŽæ“ä½œå¢žå¼ºå¯„å­˜å™¨ */
+#define  SC16IS7XX_LCR_DATA_5BIT         AM_SBF(0, 0)  /**< \brief 5 Î»Êý¾ÝÎ» */
+#define  SC16IS7XX_LCR_DATA_6BIT         AM_SBF(1, 0)  /**< \brief 6 Î»Êý¾ÝÎ» */
+#define  SC16IS7XX_LCR_DATA_7BIT         AM_SBF(2, 0)  /**< \brief 7 Î»Êý¾ÝÎ» */
+#define  SC16IS7XX_LCR_DATA_8BIT         AM_SBF(3, 0)  /**< \brief 8 Î»Êý¾ÝÎ» */
+#define  SC16IS7XX_LCR_STOP_1BIT         AM_SBF(0, 2)  /**< \brief 1 Î»Í£Ö¹Î» */
+#define  SC16IS7XX_LCR_STOP_1_5BIT       AM_SBF(1, 2)  /**< \brief 1.5 Î»Í£Ö¹Î»£¬Êý¾ÝÎ»Ö»ÄÜÎª 5 */
+#define  SC16IS7XX_LCR_STOP_2BIT         AM_SBF(1, 2)  /**< \brief 2 Î»Í£Ö¹Î» */
+#define  SC16IS7XX_LCR_PARITY_NO         AM_SBF(0, 3)  /**< \brief ÎÞÆæÅ¼Ð£ÑéÎ» */
+#define  SC16IS7XX_LCR_PARITY_ODD        AM_SBF(1, 3)  /**< \brief ÆæÐ£Ñé */
+#define  SC16IS7XX_LCR_PARITY_EVEN       AM_SBF(3, 3)  /**< \brief Å¼Ð£Ñé */
+#define  SC16IS7XX_LCR_PARITY_FORCE_1    AM_SBF(5, 3)  /**< \brief Ð£ÑéÎ»±£³ÖÎª 1 */
+#define  SC16IS7XX_LCR_PARITY_FORCE_0    AM_SBF(7, 3)  /**< \brief Ð£ÑéÎ»±£³ÖÎª 0 */
+#define  SC16IS7XX_LCR_BREAK_BIT         AM_BIT(6)     /**< \brief Ç¿ÖÆÀ­µÍ TX ²úÉú BREAK */
+#define  SC16IS7XX_LCR_DIV_LATCH_EN_BIT  AM_BIT(7)     /**< \brief ·ÖÆµÆ÷Ëø´æÆ÷Ê¹ÄÜÎ» */
+#define  SC16IS7XX_LCR_ACCESS_GENERAL    0x03          /**< \brief Ð´Èë´ËÖµÖ®ºó²Ù×÷Í¨ÓÃ¼Ä´æÆ÷ */
+#define  SC16IS7XX_LCR_ACCESS_SPECIAL    0x80          /**< \brief Ð´Èë´ËÖµÖ®ºó²Ù×÷ÌØÊâ¼Ä´æÆ÷ */
+#define  SC16IS7XX_LCR_ACCESS_ENHANCE    0xBF          /**< \brief Ð´Èë´ËÖµÖ®ºó²Ù×÷ÔöÇ¿¼Ä´æÆ÷ */
 
-#define  SC16IS7XX_LSR_DATA_IN_FLAG     AM_BIT(0)  /**< \brief RX FIFO ä¸­æ•°æ®å­˜åœ¨æ ‡å¿—ä½ */
-#define  SC16IS7XX_LSR_OVERRUN_FLAG     AM_BIT(1)  /**< \brief æ•°æ®æº¢å‡ºæ ‡å¿—ä½ */
-#define  SC16IS7XX_LSR_PARITY_FLAG      AM_BIT(2)  /**< \brief å¥‡å¶æ ¡éªŒé”™è¯¯æ ‡å¿—ä½ */
-#define  SC16IS7XX_LSR_FRAME_FLAG       AM_BIT(3)  /**< \brief å¸§é”™è¯¯æ ‡å¿—ä½ */
-#define  SC16IS7XX_LSR_BREAK_FLAG       AM_BIT(4)  /**< \brief æŽ¥æ”¶åˆ° BREAK æ ‡å¿—ä½ */
-#define  SC16IS7XX_LSR_THR_EMPTY_FLAG   AM_BIT(5)  /**< \brief å‘é€ FIFO ç©ºæ ‡å¿—ä½ */
-#define  SC16IS7XX_LSR_THSR_EMPTY_FLAG  AM_BIT(6)  /**< \brief å‘é€ FIFO ä¸Žç§»ä½å¯„å­˜å™¨ç©ºæ ‡å¿—ä½ */
-#define  SC16IS7XX_LSR_FIFO_ERR_FLAG    AM_BIT(7)  /**< \brief FIFO é”™è¯¯æ ‡å¿—ä½ */
+#define  SC16IS7XX_LSR_DATA_IN_FLAG     AM_BIT(0)  /**< \brief RX FIFO ÖÐÊý¾Ý´æÔÚ±êÖ¾Î» */
+#define  SC16IS7XX_LSR_OVERRUN_FLAG     AM_BIT(1)  /**< \brief Êý¾ÝÒç³ö±êÖ¾Î» */
+#define  SC16IS7XX_LSR_PARITY_FLAG      AM_BIT(2)  /**< \brief ÆæÅ¼Ð£Ñé´íÎó±êÖ¾Î» */
+#define  SC16IS7XX_LSR_FRAME_FLAG       AM_BIT(3)  /**< \brief Ö¡´íÎó±êÖ¾Î» */
+#define  SC16IS7XX_LSR_BREAK_FLAG       AM_BIT(4)  /**< \brief ½ÓÊÕµ½ BREAK ±êÖ¾Î» */
+#define  SC16IS7XX_LSR_THR_EMPTY_FLAG   AM_BIT(5)  /**< \brief ·¢ËÍ FIFO ¿Õ±êÖ¾Î» */
+#define  SC16IS7XX_LSR_THSR_EMPTY_FLAG  AM_BIT(6)  /**< \brief ·¢ËÍ FIFO ÓëÒÆÎ»¼Ä´æÆ÷¿Õ±êÖ¾Î» */
+#define  SC16IS7XX_LSR_FIFO_ERR_FLAG    AM_BIT(7)  /**< \brief FIFO ´íÎó±êÖ¾Î» */
 
-#define  SC16IS7XX_TCR_HALT_LEVEL(num)    AM_SBF((num) & 0x0F, 0)  /**< \brief æ¢å¤æŽ¥æ”¶æ°´å¹³ */
-#define  SC16IS7XX_TCR_RESUME_LEVEL(num)  AM_SBF((num) & 0x0F, 4)  /**< \brief åœæ­¢æŽ¥æ”¶æ°´å¹³ */
+#define  SC16IS7XX_TCR_HALT_LEVEL(num)    AM_SBF((num) & 0x0F, 0)  /**< \brief »Ö¸´½ÓÊÕË®Æ½ */
+#define  SC16IS7XX_TCR_RESUME_LEVEL(num)  AM_SBF((num) & 0x0F, 4)  /**< \brief Í£Ö¹½ÓÊÕË®Æ½ */
 
-#define  SC16IS7XX_TLR_TX_LEVEL(num)  AM_SBF((num) & 0x0F, 0)  /**< \brief å‘é€ FIFO è§¦å‘æ°´å¹³ */
-#define  SC16IS7XX_TLR_RX_LEVEL(num)  AM_SBF((num) & 0x0F, 4)  /**< \brief æŽ¥æ”¶ FIFO è§¦å‘æ°´å¹³ */
+#define  SC16IS7XX_TLR_TX_LEVEL(num)  AM_SBF((num) & 0x0F, 0)  /**< \brief ·¢ËÍ FIFO ´¥·¢Ë®Æ½ */
+#define  SC16IS7XX_TLR_RX_LEVEL(num)  AM_SBF((num) & 0x0F, 4)  /**< \brief ½ÓÊÕ FIFO ´¥·¢Ë®Æ½ */
 
-#define  SC16IS7XX_IO_CTRL_RESET_BIT  AM_BIT(3)  /**< \brief è½¯ä»¶å¤ä½ä½ */
+#define  SC16IS7XX_IO_CTRL_RESET_BIT  AM_BIT(3)  /**< \brief Èí¼þ¸´Î»Î» */
 
-#define  SC16IS7XX_EFR_CTS_EN_BIT     AM_BIT(7)  /**< \brief CTS æµæŽ§ä½¿èƒ½ä½ */
-#define  SC16IS7XX_EFR_RTS_EN_BIT     AM_BIT(6)  /**< \brief RTS æµæŽ§ä½¿èƒ½ä½ */
-#define  SC16IS7XX_EFR_DETECT_EN_BIT  AM_BIT(5)  /**< \brief æŒ‡å®šå­—ç¬¦æ£€æµ‹ä½¿èƒ½ä½ */
-#define  SC16IS7XX_EFR_ENHANCE_EN_BIT AM_BIT(4)  /**< \brief å¢žå¼ºç‰¹æ€§ä½¿èƒ½ä½ */
+#define  SC16IS7XX_EFR_CTS_EN_BIT     AM_BIT(7)  /**< \brief CTS Á÷¿ØÊ¹ÄÜÎ» */
+#define  SC16IS7XX_EFR_RTS_EN_BIT     AM_BIT(6)  /**< \brief RTS Á÷¿ØÊ¹ÄÜÎ» */
+#define  SC16IS7XX_EFR_DETECT_EN_BIT  AM_BIT(5)  /**< \brief Ö¸¶¨×Ö·û¼ì²âÊ¹ÄÜÎ» */
+#define  SC16IS7XX_EFR_ENHANCE_EN_BIT AM_BIT(4)  /**< \brief ÔöÇ¿ÌØÐÔÊ¹ÄÜÎ» */
 
 /*******************************************************************************
-  æœ¬åœ°å‡½æ•°å£°æ˜Ž
+  ±¾µØº¯ÊýÉùÃ÷
 *******************************************************************************/
 
 /**
- * \brief SPI ä¼ è¾“çŠ¶æ€æœº
+ * \brief SPI ´«Êä×´Ì¬»ú
  */
 am_local am_err_t __sm_event (am_sc16is7xx_dev_t *p_dev,
                               uint8_t             chan,
                               uint32_t            event);
 
 /**
- * \brief UART æŽ§åˆ¶å‡½æ•°
+ * \brief UART ¿ØÖÆº¯Êý
  */
 am_local int __uart_ioctl (void *p_drv, int request, void *p_arg);
 
 /**
- * \brief å¯åŠ¨ UART å‘é€å‡½æ•°
+ * \brief Æô¶¯ UART ·¢ËÍº¯Êý
  */
 am_local int __uart_tx_startup (void *p_drv);
 
 /**
- * \brief è®¾ç½®ä¸²å£å›žè°ƒå‡½æ•°
+ * \brief ÉèÖÃ´®¿Ú»Øµ÷º¯Êý
  */
 am_local int __uart_callback_set (void *p_drv,
                                   int   callback_type,
@@ -259,34 +259,34 @@ am_local int __uart_callback_set (void *p_drv,
                                   void *p_arg);
 
 /**
- * \brief ä»Žä¸²å£èŽ·å–ä¸€ä¸ªå­—ç¬¦ï¼ˆæŸ¥è¯¢æ¨¡å¼ï¼‰
+ * \brief ´Ó´®¿Ú»ñÈ¡Ò»¸ö×Ö·û£¨²éÑ¯Ä£Ê½£©
  */
 am_local int __uart_poll_getchar (void *p_drv, char *p_inchar);
 
 /**
- * \brief è¾“å‡ºä¸€ä¸ªå­—ç¬¦ï¼ˆæŸ¥è¯¢æ¨¡å¼ï¼‰
+ * \brief Êä³öÒ»¸ö×Ö·û£¨²éÑ¯Ä£Ê½£©
  */
 am_local int __uart_poll_putchar (void *p_drv, char outchar);
 
 /*******************************************************************************
-  æœ¬åœ°å…¨å±€å˜é‡å®šä¹‰
+  ±¾µØÈ«¾Ö±äÁ¿¶¨Òå
 *******************************************************************************/
 
-/** \brief æ ‡å‡†å±‚æŽ¥å£å‡½æ•°å®žçŽ° */
+/** \brief ±ê×¼²ã½Ó¿Úº¯ÊýÊµÏÖ */
 am_local am_const struct am_uart_drv_funcs __g_uart_drv_funcs = {
-    __uart_ioctl,        /* UART æŽ§åˆ¶å‡½æ•° */
-    __uart_tx_startup,   /* å¯åŠ¨ UART å‘é€å‡½æ•° */
-    __uart_callback_set, /* è®¾ç½®ä¸²å£å›žè°ƒå‡½æ•° */
-    __uart_poll_getchar, /* ä»Žä¸²å£èŽ·å–ä¸€ä¸ªå­—ç¬¦ï¼ˆæŸ¥è¯¢æ¨¡å¼ï¼‰ */
-    __uart_poll_putchar, /* è¾“å‡ºä¸€ä¸ªå­—ç¬¦ï¼ˆæŸ¥è¯¢æ¨¡å¼ï¼‰ */
+    __uart_ioctl,        /* UART ¿ØÖÆº¯Êý */
+    __uart_tx_startup,   /* Æô¶¯ UART ·¢ËÍº¯Êý */
+    __uart_callback_set, /* ÉèÖÃ´®¿Ú»Øµ÷º¯Êý */
+    __uart_poll_getchar, /* ´Ó´®¿Ú»ñÈ¡Ò»¸ö×Ö·û£¨²éÑ¯Ä£Ê½£© */
+    __uart_poll_putchar, /* Êä³öÒ»¸ö×Ö·û£¨²éÑ¯Ä£Ê½£© */
 };
 
 /*******************************************************************************
-  æœ¬åœ°å‡½æ•°å®šä¹‰
+  ±¾µØº¯Êý¶¨Òå
 *******************************************************************************/
 
 /**
- * \brief I2C æ¶ˆæ¯å¤„ç†å®Œæˆå›žè°ƒå‡½æ•°
+ * \brief I2C ÏûÏ¢´¦ÀíÍê³É»Øµ÷º¯Êý
  */
 am_local void __i2c_complete (void *p_arg)
 {
@@ -303,10 +303,10 @@ am_local void __i2c_complete (void *p_arg)
         AM_DBG_INFO("i2c %d sm_cnt: %d\r\n", *p_chan, p_dev->sm_cnt[*p_chan]);
     }
 
-    /* è®°å½•çŠ¶æ€æœºé‡å…¥æ¬¡æ•° */
+    /* ¼ÇÂ¼×´Ì¬»úÖØÈë´ÎÊý */
     p_dev->sm_cnt[*p_chan]++;
 
-    /* å‘çŠ¶æ€æœºå‘é€äº‹ä»¶ */
+    /* Ïò×´Ì¬»ú·¢ËÍÊÂ¼þ */
     if (AM_OK == p_dev->i2c_msg[*p_chan].status) {
         __sm_event(p_dev, *p_chan, __EVT_I2C_OK);
     } else {
@@ -317,7 +317,7 @@ am_local void __i2c_complete (void *p_arg)
 }
 
 /**
- * \brief ACK å¼•è„šä¸­æ–­æœåŠ¡å‡½æ•°
+ * \brief ACK Òý½ÅÖÐ¶Ï·þÎñº¯Êý
  */
 am_local void __irq_pint_isr (void *p_arg)
 {
@@ -328,7 +328,7 @@ am_local void __irq_pint_isr (void *p_arg)
 
     for (i = 0; i < p_dev->p_devinfo->chan_num; i++) {
 
-        /* åªæœ‰å¯¹åº”é€šé“çš„ä¸­æ–­ä½¿èƒ½ä¹‹åŽæ‰å‘çŠ¶æ€æœºå‘é€äº‹ä»¶ */
+        /* Ö»ÓÐ¶ÔÓ¦Í¨µÀµÄÖÐ¶ÏÊ¹ÄÜÖ®ºó²ÅÏò×´Ì¬»ú·¢ËÍÊÂ¼þ */
         if (!p_dev->is_irq_en[i]) {
             continue;
         }
@@ -337,10 +337,10 @@ am_local void __irq_pint_isr (void *p_arg)
             AM_DBG_INFO("isr %d sm_cnt: %d\r\n", i, p_dev->sm_cnt);
         }
 
-        /* è®°å½•çŠ¶æ€æœºé‡å…¥æ¬¡æ•° */
+        /* ¼ÇÂ¼×´Ì¬»úÖØÈë´ÎÊý */
         p_dev->sm_cnt[i]++;
 
-        /* å‘çŠ¶æ€æœºå‘é€äº‹ä»¶ */
+        /* Ïò×´Ì¬»ú·¢ËÍÊÂ¼þ */
         __sm_event(p_dev, i, __EVT_IRQ_LOW);
 
         p_dev->sm_cnt[i]--;
@@ -350,7 +350,7 @@ am_local void __irq_pint_isr (void *p_arg)
 }
 
 /**
- * \brief ä½¿èƒ½ IRQ ä¸­æ–­
+ * \brief Ê¹ÄÜ IRQ ÖÐ¶Ï
  */
 am_local void __int_enable (am_sc16is7xx_dev_t *p_dev, uint8_t chan)
 {
@@ -363,7 +363,7 @@ am_local void __int_enable (am_sc16is7xx_dev_t *p_dev, uint8_t chan)
 }
 
 /**
- * \brief å…³é—­ IRQ ä¸­æ–­
+ * \brief ¹Ø±Õ IRQ ÖÐ¶Ï
  */
 am_local void __int_disable (am_sc16is7xx_dev_t *p_dev, uint8_t chan)
 {
@@ -386,7 +386,7 @@ am_local void __int_disable (am_sc16is7xx_dev_t *p_dev, uint8_t chan)
 }
 
 /**
- * \brief å†™å¯„å­˜å™¨
+ * \brief Ð´¼Ä´æÆ÷
  */
 am_local am_err_t __reg_write (am_sc16is7xx_dev_t *p_dev,
                                uint8_t             chan,
@@ -401,7 +401,7 @@ am_local am_err_t __reg_write (am_sc16is7xx_dev_t *p_dev,
         return -AM_EINVAL;
     }
 
-    /* è®¾ç½®åœ°å€å­—èŠ‚ */
+    /* ÉèÖÃµØÖ·×Ö½Ú */
     p_dev->subaddr[chan] = 0;
     AM_BITS_SET(p_dev->subaddr[chan], 1, 2, chan);
     AM_BITS_SET(p_dev->subaddr[chan], 3, 4, reg_addr);
@@ -415,7 +415,7 @@ am_local am_err_t __reg_write (am_sc16is7xx_dev_t *p_dev,
 }
 
 /**
- * \brief è¯»å¯„å­˜å™¨
+ * \brief ¶Á¼Ä´æÆ÷
  */
 am_local am_err_t __reg_read (am_sc16is7xx_dev_t *p_dev,
                               uint8_t             chan,
@@ -431,7 +431,7 @@ am_local am_err_t __reg_read (am_sc16is7xx_dev_t *p_dev,
         return -AM_EINVAL;
     }
 
-    /* è®¾ç½®åœ°å€å­—èŠ‚ */
+    /* ÉèÖÃµØÖ·×Ö½Ú */
     p_dev->subaddr[chan] = 0;
     AM_BITS_SET(p_dev->subaddr[chan], 1, 2, chan);
     AM_BITS_SET(p_dev->subaddr[chan], 3, 4, reg_addr);
@@ -445,17 +445,17 @@ am_local am_err_t __reg_read (am_sc16is7xx_dev_t *p_dev,
 }
 
 /**
- * \brief å¯åŠ¨ I2C ä¼ è¾“è¯»å†™å¯„å­˜å™¨
+ * \brief Æô¶¯ I2C ´«Êä¶ÁÐ´¼Ä´æÆ÷
  *
- * \param[in]     p_dev     SC16IS7XX è®¾å¤‡
- * \param[in]     chan      é€šé“
- * \param[in]     is_read   æ˜¯å¦æ˜¯è¯»å¯„å­˜å™¨
- * \param[in]     reg_addr  å¯„å­˜å™¨åœ°å€
- * \param[in,out] p_buf     æŒ‡å‘ç¼“å†²åŒºçš„æŒ‡é’ˆ
- * \param[in]     buf_lenth éœ€è¦è¯»å†™çš„å­—èŠ‚æ•°
+ * \param[in]     p_dev     SC16IS7XX Éè±¸
+ * \param[in]     chan      Í¨µÀ
+ * \param[in]     is_read   ÊÇ·ñÊÇ¶Á¼Ä´æÆ÷
+ * \param[in]     reg_addr  ¼Ä´æÆ÷µØÖ·
+ * \param[in,out] p_buf     Ö¸Ïò»º³åÇøµÄÖ¸Õë
+ * \param[in]     buf_lenth ÐèÒª¶ÁÐ´µÄ×Ö½ÚÊý
  *
- * \retval  AM_OK     I2C ä¼ è¾“å¯åŠ¨æˆåŠŸï¼Œç­‰å¾…å¤„ç†
- * \retval -AM_EINVAL å‚æ•°é”™è¯¯
+ * \retval  AM_OK     I2C ´«ÊäÆô¶¯³É¹¦£¬µÈ´ý´¦Àí
+ * \retval -AM_EINVAL ²ÎÊý´íÎó
  */
 am_local am_err_t __i2c_start (am_sc16is7xx_dev_t *p_dev,
                                uint8_t             chan,
@@ -475,7 +475,7 @@ am_local am_err_t __i2c_start (am_sc16is7xx_dev_t *p_dev,
         return -AM_EINVAL;
     }
 
-    /* åˆ¤æ–­ I2C æ˜¯å¦å¿™ */
+    /* ÅÐ¶Ï I2C ÊÇ·ñÃ¦ */
     key = am_int_cpu_lock();
     if (p_dev->is_i2c_busy[chan]) {
         am_int_cpu_unlock(key);
@@ -484,38 +484,38 @@ am_local am_err_t __i2c_start (am_sc16is7xx_dev_t *p_dev,
     p_dev->is_i2c_busy[chan] = AM_TRUE;
     am_int_cpu_unlock(key);
 
-    /* è®¾ç½®åœ°å€å­—èŠ‚ */
+    /* ÉèÖÃµØÖ·×Ö½Ú */
     p_dev->subaddr[chan] = 0;
     AM_BITS_SET(p_dev->subaddr[chan], 1, 2, chan);
     AM_BITS_SET(p_dev->subaddr[chan], 3, 4, reg_addr);
 
-    am_i2c_mktrans(&p_dev->i2c_trans[chan][0],   /* ç¬¬ 0 ä¸ªä¼ è¾“å‘é€å­åœ°å€ */
-                    p_dev->p_devinfo->i2c_addr,  /* ç›®æ ‡å™¨ä»¶åœ°å€ */
-                    AM_I2C_M_7BIT | AM_I2C_M_WR, /* 7 ä½å™¨ä»¶åœ°å€ï¼Œå†™æ“ä½œ */
-                   &p_dev->subaddr[chan],        /* å­åœ°å€ */
-                    1);                          /* å­åœ°å€é•¿åº¦ï¼Œ1 å­—èŠ‚ */
+    am_i2c_mktrans(&p_dev->i2c_trans[chan][0],   /* µÚ 0 ¸ö´«Êä·¢ËÍ×ÓµØÖ· */
+                    p_dev->p_devinfo->i2c_addr,  /* Ä¿±êÆ÷¼þµØÖ· */
+                    AM_I2C_M_7BIT | AM_I2C_M_WR, /* 7 Î»Æ÷¼þµØÖ·£¬Ð´²Ù×÷ */
+                   &p_dev->subaddr[chan],        /* ×ÓµØÖ· */
+                    1);                          /* ×ÓµØÖ·³¤¶È£¬1 ×Ö½Ú */
 
     if (is_read) {
-        am_i2c_mktrans(&p_dev->i2c_trans[chan][1],   /* ç¬¬ 1 ä¸ªä¼ è¾“è¯»å–æ•°æ® */
-                        p_dev->p_devinfo->i2c_addr,  /* ç›®æ ‡å™¨ä»¶åœ°å€ */
-                        AM_I2C_M_RD,                 /* è¯»æ“ä½œ */
-                        p_buf,                       /* æ•°æ®ç¼“å†²åŒº */
-                        buf_lenth);                  /* æ•°æ®ä¸ªæ•° */
+        am_i2c_mktrans(&p_dev->i2c_trans[chan][1],   /* µÚ 1 ¸ö´«Êä¶ÁÈ¡Êý¾Ý */
+                        p_dev->p_devinfo->i2c_addr,  /* Ä¿±êÆ÷¼þµØÖ· */
+                        AM_I2C_M_RD,                 /* ¶Á²Ù×÷ */
+                        p_buf,                       /* Êý¾Ý»º³åÇø */
+                        buf_lenth);                  /* Êý¾Ý¸öÊý */
     } else {
-        am_i2c_mktrans(&p_dev->i2c_trans[chan][1],      /* ç¬¬ 1 ä¸ªä¼ è¾“å‘é€æ•°æ® */
-                        p_dev->p_devinfo->i2c_addr,     /* ç›®æ ‡å™¨ä»¶åœ°å€ (å°†è¢«å¿½ç•¥) */
-                        AM_I2C_M_WR | AM_I2C_M_NOSTART, /* å†™æ“ä½œ, ä¸å‘é€èµ·å§‹ä¿¡å·åŠä»Žæœºåœ°å€ */
-                        p_buf,                          /* æ•°æ®ç¼“å†²åŒº */
-                        buf_lenth);                     /* æ•°æ®ä¸ªæ•° */
+        am_i2c_mktrans(&p_dev->i2c_trans[chan][1],      /* µÚ 1 ¸ö´«Êä·¢ËÍÊý¾Ý */
+                        p_dev->p_devinfo->i2c_addr,     /* Ä¿±êÆ÷¼þµØÖ· (½«±»ºöÂÔ) */
+                        AM_I2C_M_WR | AM_I2C_M_NOSTART, /* Ð´²Ù×÷, ²»·¢ËÍÆðÊ¼ÐÅºÅ¼°´Ó»úµØÖ· */
+                        p_buf,                          /* Êý¾Ý»º³åÇø */
+                        buf_lenth);                     /* Êý¾Ý¸öÊý */
     }
 
-    am_i2c_mkmsg(&p_dev->i2c_msg[chan],       /* I2C æ¶ˆæ¯ */
-                 &p_dev->i2c_trans[chan][0],  /* I2C ä¼ è¾“ */
-                  2,                          /* I2C ä¼ è¾“æ•°é‡ */
-                  __i2c_complete,             /* æ¶ˆæ¯å¤„ç†å®Œæˆå›žè°ƒå‡½æ•° */
-                 &p_dev->uartinfo[chan]);     /* ä¼ é€’ç»™å›žè°ƒå‡½æ•°çš„å‚æ•° */
+    am_i2c_mkmsg(&p_dev->i2c_msg[chan],       /* I2C ÏûÏ¢ */
+                 &p_dev->i2c_trans[chan][0],  /* I2C ´«Êä */
+                  2,                          /* I2C ´«ÊäÊýÁ¿ */
+                  __i2c_complete,             /* ÏûÏ¢´¦ÀíÍê³É»Øµ÷º¯Êý */
+                 &p_dev->uartinfo[chan]);     /* ´«µÝ¸ø»Øµ÷º¯ÊýµÄ²ÎÊý */
 
-    /* å¯åŠ¨ I2C ä¼ è¾“ */
+    /* Æô¶¯ I2C ´«Êä */
     err = am_i2c_msg_start(p_dev->i2c_handle, &p_dev->i2c_msg[chan]);
     if (AM_OK != err) {
         key = am_int_cpu_lock();
@@ -527,7 +527,7 @@ am_local am_err_t __i2c_start (am_sc16is7xx_dev_t *p_dev,
 }
 
 /**
- * \brief SPI ä¼ è¾“çŠ¶æ€æœº
+ * \brief SPI ´«Êä×´Ì¬»ú
  */
 am_local am_err_t __sm_event (am_sc16is7xx_dev_t *p_dev,
                               uint8_t             chan,
@@ -540,7 +540,7 @@ am_local am_err_t __sm_event (am_sc16is7xx_dev_t *p_dev,
 
     while (1) {
 
-        /* æ£€æŸ¥æ¥è‡ªå†…éƒ¨çš„æ–°äº‹ä»¶ */
+        /* ¼ì²éÀ´×ÔÄÚ²¿µÄÐÂÊÂ¼þ */
         if (new_event != __EVT_NONE) {
             event = new_event;
             new_event = __EVT_NONE;
@@ -548,10 +548,10 @@ am_local am_err_t __sm_event (am_sc16is7xx_dev_t *p_dev,
 
         switch (p_dev->state[chan]) {
 
-        /* ç©ºé—²çŠ¶æ€ */
+        /* ¿ÕÏÐ×´Ì¬ */
         case __ST_IDLE:
 
-            /* è¿›å…¥ç©ºé—²çŠ¶æ€æ—¶é¦–å…ˆæ£€æŸ¥æ˜¯å¦æœ‰å¯åŠ¨ä¸­æ–­å‘é€çš„äº‹ä»¶ */
+            /* ½øÈë¿ÕÏÐ×´Ì¬Ê±Ê×ÏÈ¼ì²éÊÇ·ñÓÐÆô¶¯ÖÐ¶Ï·¢ËÍµÄÊÂ¼þ */
             do {
                 if ((p_dev->is_i2c_busy[chan]) ||
                     (!p_dev->int_en_flag[chan])) {
@@ -562,30 +562,30 @@ am_local am_err_t __sm_event (am_sc16is7xx_dev_t *p_dev,
                 p_dev->int_en_flag[chan] = AM_FALSE;
                 am_int_cpu_unlock(key);
 
-                /* å¦‚æžœå‘é€ä¸­æ–­å·²ç»ä½¿èƒ½ï¼Œç›´æŽ¥é€€å‡º */
+                /* Èç¹û·¢ËÍÖÐ¶ÏÒÑ¾­Ê¹ÄÜ£¬Ö±½ÓÍË³ö */
                 if (SC16IS7XX_IER_THR_EN_BIT & p_dev->ier_reg[chan]) {
                     break;
                 }
 
-                /* ä½¿èƒ½å‘é€ä¸­æ–­ */
+                /* Ê¹ÄÜ·¢ËÍÖÐ¶Ï */
                 p_dev->ier_reg[chan] |= SC16IS7XX_IER_THR_EN_BIT;
 
                 __int_disable(p_dev, chan);
 
-                /* å¯åŠ¨ I2C ä¼ è¾“å†™ IER å¯„å­˜å™¨ */
+                /* Æô¶¯ I2C ´«ÊäÐ´ IER ¼Ä´æÆ÷ */
                 err = __i2c_start(p_dev,                 /* SC16IS7X */
-                                  chan,                  /* é€šé“ */
-                                  AM_FALSE,              /* æ˜¯å¦æ˜¯è¯»å¯„å­˜å™¨ */
-                                  SC16IS7XX_REG_IER,     /* å¯„å­˜å™¨åœ°å€ */
-                                 &p_dev->ier_reg[chan],  /* æŒ‡å‘ç¼“å†²åŒºçš„æŒ‡é’ˆ */
-                                  1);                    /* éœ€è¦è¯»å†™çš„å­—èŠ‚æ•° */
+                                  chan,                  /* Í¨µÀ */
+                                  AM_FALSE,              /* ÊÇ·ñÊÇ¶Á¼Ä´æÆ÷ */
+                                  SC16IS7XX_REG_IER,     /* ¼Ä´æÆ÷µØÖ· */
+                                 &p_dev->ier_reg[chan],  /* Ö¸Ïò»º³åÇøµÄÖ¸Õë */
+                                  1);                    /* ÐèÒª¶ÁÐ´µÄ×Ö½ÚÊý */
                 if (AM_OK != err) {
                     __NEXT_STATE(__ST_IDLE, __EVT_I2C_ERR);
                     __int_enable(p_dev, chan);
                 } else {
                     __NEXT_STATE(__ST_TX_INT_EN, __EVT_NONE);
 
-                    /* å°† RS485 è®¾ç½®ä¸ºå‘é€æ¨¡å¼ */
+                    /* ½« RS485 ÉèÖÃÎª·¢ËÍÄ£Ê½ */
                     if ((p_dev->is_rs485_en[chan]) &&
                         (NULL != p_dev->p_devinfo->pfn_rs485_dir)) {
                         p_dev->p_devinfo->pfn_rs485_dir(chan, AM_TRUE);
@@ -594,16 +594,16 @@ am_local am_err_t __sm_event (am_sc16is7xx_dev_t *p_dev,
                 break;
             } while (AM_FALSE);
 
-            /* å¦‚æžœå†™äº† IER å¯„å­˜å™¨ï¼Œç›´æŽ¥è¿”å›ž */
+            /* Èç¹ûÐ´ÁË IER ¼Ä´æÆ÷£¬Ö±½Ó·µ»Ø */
             if ((__ST_TX_INT_EN == p_dev->state[chan]) &&
                 (__EVT_NONE == new_event)) {
                 break;
             }
 
-            /* å¯¹ I2C é”™è¯¯äº‹ä»¶è¿›è¡Œè®¡æ•°ï¼Œè¶…è¿‡é˜ˆå€¼ä¹‹åŽé€€å‡ºçŠ¶æ€æœº */
+            /* ¶Ô I2C ´íÎóÊÂ¼þ½øÐÐ¼ÆÊý£¬³¬¹ýãÐÖµÖ®ºóÍË³ö×´Ì¬»ú */
             if (__EVT_I2C_ERR == event) {
 
-                /* å°† RS485 è®¾ç½®ä¸ºæŽ¥æ”¶æ¨¡å¼ */
+                /* ½« RS485 ÉèÖÃÎª½ÓÊÕÄ£Ê½ */
                 if ((p_dev->is_rs485_en[chan]) &&
                     (NULL != p_dev->p_devinfo->pfn_rs485_dir)) {
                     p_dev->p_devinfo->pfn_rs485_dir(chan, AM_FALSE);
@@ -624,18 +624,18 @@ am_local am_err_t __sm_event (am_sc16is7xx_dev_t *p_dev,
                 (__EVT_IRQ_LOW == event) ||
                 (__EVT_I2C_ERR == event)) {
 
-                /* åˆ¤æ–­ IRQ æ˜¯å¦ä¸ºä½Žç”µå¹³ */
+                /* ÅÐ¶Ï IRQ ÊÇ·ñÎªµÍµçÆ½ */
                 if (!am_gpio_get(p_dev->p_devinfo->irq_pin)) {
 
                     __int_disable(p_dev, chan);
 
-                    /* å¯åŠ¨ I2C ä¼ è¾“è¯» IIR å¯„å­˜å™¨ */
+                    /* Æô¶¯ I2C ´«Êä¶Á IIR ¼Ä´æÆ÷ */
                     err = __i2c_start(p_dev,                /* SC16IS7X */
-                                      chan,                 /* é€šé“ */
-                                      AM_TRUE,              /* æ˜¯å¦æ˜¯è¯»å¯„å­˜å™¨ */
-                                      SC16IS7XX_REG_IIR,    /* å¯„å­˜å™¨åœ°å€ */
-                                     &p_dev->iir_reg[chan], /* æŒ‡å‘ç¼“å†²åŒºçš„æŒ‡é’ˆ */
-                                      1);                   /* éœ€è¦è¯»å†™çš„å­—èŠ‚æ•° */
+                                      chan,                 /* Í¨µÀ */
+                                      AM_TRUE,              /* ÊÇ·ñÊÇ¶Á¼Ä´æÆ÷ */
+                                      SC16IS7XX_REG_IIR,    /* ¼Ä´æÆ÷µØÖ· */
+                                     &p_dev->iir_reg[chan], /* Ö¸Ïò»º³åÇøµÄÖ¸Õë */
+                                      1);                   /* ÐèÒª¶ÁÐ´µÄ×Ö½ÚÊý */
                     if (AM_OK != err) {
                         __NEXT_STATE(__ST_IDLE, __EVT_I2C_ERR);
                     } else {
@@ -648,15 +648,15 @@ am_local am_err_t __sm_event (am_sc16is7xx_dev_t *p_dev,
             }
             break;
 
-        /* ä½¿èƒ½å‘é€ä¸­æ–­ */
+        /* Ê¹ÄÜ·¢ËÍÖÐ¶Ï */
         case __ST_TX_INT_EN:
 
-            /* I2C ä¼ è¾“å¤±è´¥ */
+            /* I2C ´«ÊäÊ§°Ü */
             if (__EVT_I2C_ERR == event) {
                 __NEXT_STATE(__ST_IDLE, __EVT_I2C_ERR);
             }
 
-            /* I2C ä¼ è¾“æˆåŠŸ */
+            /* I2C ´«Êä³É¹¦ */
             if (__EVT_I2C_OK == event) {
                 __NEXT_STATE(__ST_IDLE, __EVT_CONTINUE);
             }
@@ -665,19 +665,19 @@ am_local am_err_t __sm_event (am_sc16is7xx_dev_t *p_dev,
 
             break;
 
-        /* è¯» IIR å¯„å­˜å™¨ */
+        /* ¶Á IIR ¼Ä´æÆ÷ */
         case __ST_IIR_RD:
 
-            /* I2C ä¼ è¾“å¤±è´¥ï¼Œç›´æŽ¥å›žåˆ°ç©ºé—²çŠ¶æ€ */
+            /* I2C ´«ÊäÊ§°Ü£¬Ö±½Ó»Øµ½¿ÕÏÐ×´Ì¬ */
             if (__EVT_I2C_ERR == event) {
                 __NEXT_STATE(__ST_IDLE, __EVT_I2C_ERR);
                 break;
             }
 
-            /* I2C ä¼ è¾“æˆåŠŸï¼Œæ ¹æ®ä¸­æ–­æºé€‰æ‹©ä¸‹ä¸€ä¸ªçŠ¶æ€ */
+            /* I2C ´«Êä³É¹¦£¬¸ù¾ÝÖÐ¶ÏÔ´Ñ¡ÔñÏÂÒ»¸ö×´Ì¬ */
             if (__EVT_I2C_OK == event) {
 
-                /* å¦‚æžœæ²¡æœ‰ä¸­æ–­æºé€€å‡ºçŠ¶æ€æœº */
+                /* Èç¹ûÃ»ÓÐÖÐ¶ÏÔ´ÍË³ö×´Ì¬»ú */
                 if (SC16IS7XX_IIR_SRC_NONE ==
                     (p_dev->iir_reg[chan] & SC16IS7XX_IIR_SRC_MASK)) {
                     __NEXT_STATE(__ST_IDLE, __EVT_CONTINUE);
@@ -688,15 +688,15 @@ am_local am_err_t __sm_event (am_sc16is7xx_dev_t *p_dev,
                            (SC16IS7XX_IIR_SRC_RECV_TIMEOUT ==
                             (p_dev->iir_reg[chan] & SC16IS7XX_IIR_SRC_MASK))) {
 
-                    /* æŽ¥æ”¶ FIFO æ»¡æˆ–è€…æŽ¥æ”¶è¶…æ—¶ */
+                    /* ½ÓÊÕ FIFO Âú»òÕß½ÓÊÕ³¬Ê± */
 
-                    /* å¯åŠ¨ I2C ä¼ è¾“è¯» RXLVL å¯„å­˜å™¨ */
+                    /* Æô¶¯ I2C ´«Êä¶Á RXLVL ¼Ä´æÆ÷ */
                     err = __i2c_start(p_dev,                  /* SC16IS7X */
-                                      chan,                   /* é€šé“ */
-                                      AM_TRUE,                /* æ˜¯å¦æ˜¯è¯»å¯„å­˜å™¨ */
-                                      SC16IS7XX_REG_RXLVL,    /* å¯„å­˜å™¨åœ°å€ */
-                                     &p_dev->rxlvl_reg[chan], /* æŒ‡å‘ç¼“å†²åŒºçš„æŒ‡é’ˆ */
-                                      1);                     /* éœ€è¦è¯»å†™çš„å­—èŠ‚æ•° */
+                                      chan,                   /* Í¨µÀ */
+                                      AM_TRUE,                /* ÊÇ·ñÊÇ¶Á¼Ä´æÆ÷ */
+                                      SC16IS7XX_REG_RXLVL,    /* ¼Ä´æÆ÷µØÖ· */
+                                     &p_dev->rxlvl_reg[chan], /* Ö¸Ïò»º³åÇøµÄÖ¸Õë */
+                                      1);                     /* ÐèÒª¶ÁÐ´µÄ×Ö½ÚÊý */
                     if (AM_OK != err) {
                         __NEXT_STATE(__ST_IDLE, __EVT_I2C_ERR);
                     } else {
@@ -706,15 +706,15 @@ am_local am_err_t __sm_event (am_sc16is7xx_dev_t *p_dev,
                 } else if (SC16IS7XX_IIR_SRC_THR ==
                            (p_dev->iir_reg[chan] & SC16IS7XX_IIR_SRC_MASK)) {
 
-                    /* å‘é€ FIFO ç©º */
+                    /* ·¢ËÍ FIFO ¿Õ */
 
-                    /* å¯åŠ¨ I2C ä¼ è¾“è¯» TXLVL å¯„å­˜å™¨ */
+                    /* Æô¶¯ I2C ´«Êä¶Á TXLVL ¼Ä´æÆ÷ */
                     err = __i2c_start(p_dev,                  /* SC16IS7X */
-                                      chan,                   /* é€šé“ */
-                                      AM_TRUE,                /* æ˜¯å¦æ˜¯è¯»å¯„å­˜å™¨ */
-                                      SC16IS7XX_REG_TXLVL,    /* å¯„å­˜å™¨åœ°å€ */
-                                     &p_dev->txlvl_reg[chan], /* æŒ‡å‘ç¼“å†²åŒºçš„æŒ‡é’ˆ */
-                                      1);                     /* éœ€è¦è¯»å†™çš„å­—èŠ‚æ•° */
+                                      chan,                   /* Í¨µÀ */
+                                      AM_TRUE,                /* ÊÇ·ñÊÇ¶Á¼Ä´æÆ÷ */
+                                      SC16IS7XX_REG_TXLVL,    /* ¼Ä´æÆ÷µØÖ· */
+                                     &p_dev->txlvl_reg[chan], /* Ö¸Ïò»º³åÇøµÄÖ¸Õë */
+                                      1);                     /* ÐèÒª¶ÁÐ´µÄ×Ö½ÚÊý */
                     if (AM_OK != err) {
                         __NEXT_STATE(__ST_IDLE, __EVT_I2C_ERR);
                     } else {
@@ -723,39 +723,39 @@ am_local am_err_t __sm_event (am_sc16is7xx_dev_t *p_dev,
                     break;
                 } else {
 
-                    /* å¦‚æžœæ²¡æœ‰åŒ¹é…çš„ä¸­æ–­æºï¼Œè¯æ˜Ž I2C è¯»å–é”™è¯¯ */
+                    /* Èç¹ûÃ»ÓÐÆ¥ÅäµÄÖÐ¶ÏÔ´£¬Ö¤Ã÷ I2C ¶ÁÈ¡´íÎó */
                     __NEXT_STATE(__ST_IDLE, __EVT_I2C_ERR);
                 }
                 break;
             }
             break;
 
-        /* è¯» RXLVL å¯„å­˜å™¨ */
+        /* ¶Á RXLVL ¼Ä´æÆ÷ */
         case __ST_RXLVL_RD:
 
-            /* I2C ä¼ è¾“å¤±è´¥ */
+            /* I2C ´«ÊäÊ§°Ü */
             if (__EVT_I2C_ERR == event) {
                 __NEXT_STATE(__ST_IDLE, __EVT_I2C_ERR);
                 break;
             }
 
-            /* I2C ä¼ è¾“æˆåŠŸ */
+            /* I2C ´«Êä³É¹¦ */
             if (__EVT_I2C_OK == event) {
 
-                /* å¦‚æžœæŽ¥æ”¶ FIFO å­—èŠ‚è¶…è¿‡ FIFO å¤§å°ï¼Œè¯æ˜Ž I2C ä¼ è¾“é”™è¯¯ï¼Œè¿”å›žç©ºé—²çŠ¶æ€ */
+                /* Èç¹û½ÓÊÕ FIFO ×Ö½Ú³¬¹ý FIFO ´óÐ¡£¬Ö¤Ã÷ I2C ´«Êä´íÎó£¬·µ»Ø¿ÕÏÐ×´Ì¬ */
                 if ((0 == p_dev->rxlvl_reg[chan]) ||
                     (SC16IS7XX_FIFO_SIZE < p_dev->rxlvl_reg[chan])) {
                     __NEXT_STATE(__ST_IDLE, __EVT_I2C_ERR);
                     break;
                 }
 
-                /* å¯åŠ¨ I2C ä¼ è¾“è¯» RHR å¯„å­˜å™¨ */
+                /* Æô¶¯ I2C ´«Êä¶Á RHR ¼Ä´æÆ÷ */
                 err = __i2c_start(p_dev,                   /* SC16IS7X */
-                                  chan,                    /* é€šé“ */
-                                  AM_TRUE,                 /* æ˜¯å¦æ˜¯è¯»å¯„å­˜å™¨ */
-                                  SC16IS7XX_REG_RHR,       /* å¯„å­˜å™¨åœ°å€ */
-                                 &p_dev->rx_buf[chan][0],  /* æŒ‡å‘ç¼“å†²åŒºçš„æŒ‡é’ˆ */
-                                  p_dev->rxlvl_reg[chan]); /* éœ€è¦è¯»å†™çš„å­—èŠ‚æ•° */
+                                  chan,                    /* Í¨µÀ */
+                                  AM_TRUE,                 /* ÊÇ·ñÊÇ¶Á¼Ä´æÆ÷ */
+                                  SC16IS7XX_REG_RHR,       /* ¼Ä´æÆ÷µØÖ· */
+                                 &p_dev->rx_buf[chan][0],  /* Ö¸Ïò»º³åÇøµÄÖ¸Õë */
+                                  p_dev->rxlvl_reg[chan]); /* ÐèÒª¶ÁÐ´µÄ×Ö½ÚÊý */
                 if (AM_OK != err) {
                     __NEXT_STATE(__ST_IDLE, __EVT_I2C_ERR);
                 } else {
@@ -765,25 +765,25 @@ am_local am_err_t __sm_event (am_sc16is7xx_dev_t *p_dev,
             }
             break;
 
-        /* è¯» RHR å¯„å­˜å™¨ */
+        /* ¶Á RHR ¼Ä´æÆ÷ */
         case __ST_RHR_RD:
 
-            /* I2C ä¼ è¾“å¤±è´¥ */
+            /* I2C ´«ÊäÊ§°Ü */
             if (__EVT_I2C_ERR == event) {
                 __NEXT_STATE(__ST_IDLE, __EVT_I2C_ERR);
                 break;
             }
 
-            /* I2C ä¼ è¾“æˆåŠŸ */
+            /* I2C ´«Êä³É¹¦ */
             if (__EVT_I2C_OK == event) {
 
-                /* å…ˆåˆ¤æ–­ I2C æ˜¯å¦æ‰€ä»¥ä¼ è¾“éƒ½å®Œæˆ */
+                /* ÏÈÅÐ¶Ï I2C ÊÇ·ñËùÒÔ´«Êä¶¼Íê³É */
                 if (p_dev->i2c_msg[chan].trans_num != p_dev->i2c_msg[chan].done_num){
                     __NEXT_STATE(__ST_IDLE, __EVT_CONTINUE);
                     break;
                 }
 
-                /* å°†æŽ¥æ”¶åˆ°çš„æ•°æ®æäº¤åˆ° UART å­ç³»ç»Ÿ */
+                /* ½«½ÓÊÕµ½µÄÊý¾ÝÌá½»µ½ UART ×ÓÏµÍ³ */
                 for (i = 0; i < p_dev->rxlvl_reg[chan]; i++) {
                     if (NULL == p_dev->pfn_rxchar_put[chan]) {
                         break;
@@ -793,13 +793,13 @@ am_local am_err_t __sm_event (am_sc16is7xx_dev_t *p_dev,
                                p_dev->rx_buf[chan][i]);
                 }
 
-                /* å¯åŠ¨ I2C ä¼ è¾“è¯» RXLVL å¯„å­˜å™¨ */
+                /* Æô¶¯ I2C ´«Êä¶Á RXLVL ¼Ä´æÆ÷ */
                 err = __i2c_start(p_dev,                  /* SC16IS7X */
-                                  chan,                   /* é€šé“ */
-                                  AM_TRUE,                /* æ˜¯å¦æ˜¯è¯»å¯„å­˜å™¨ */
-                                  SC16IS7XX_REG_RXLVL,    /* å¯„å­˜å™¨åœ°å€ */
-                                 &p_dev->rxlvl_reg[chan], /* æŒ‡å‘ç¼“å†²åŒºçš„æŒ‡é’ˆ */
-                                  1);                     /* éœ€è¦è¯»å†™çš„å­—èŠ‚æ•° */
+                                  chan,                   /* Í¨µÀ */
+                                  AM_TRUE,                /* ÊÇ·ñÊÇ¶Á¼Ä´æÆ÷ */
+                                  SC16IS7XX_REG_RXLVL,    /* ¼Ä´æÆ÷µØÖ· */
+                                 &p_dev->rxlvl_reg[chan], /* Ö¸Ïò»º³åÇøµÄÖ¸Õë */
+                                  1);                     /* ÐèÒª¶ÁÐ´µÄ×Ö½ÚÊý */
                 if (AM_OK != err) {
                     __NEXT_STATE(__ST_IDLE, __EVT_I2C_ERR);
                 } else {
@@ -809,37 +809,37 @@ am_local am_err_t __sm_event (am_sc16is7xx_dev_t *p_dev,
             }
             break;
 
-        /* è¯» TXLVL å¯„å­˜å™¨ */
+        /* ¶Á TXLVL ¼Ä´æÆ÷ */
         case __ST_TXLVL_RD:
 
-            /* I2C ä¼ è¾“å¤±è´¥ */
+            /* I2C ´«ÊäÊ§°Ü */
             if (__EVT_I2C_ERR == event) {
                 __NEXT_STATE(__ST_IDLE, __EVT_I2C_ERR);
                 break;
             }
 
-            /* I2C ä¼ è¾“æˆåŠŸ */
+            /* I2C ´«Êä³É¹¦ */
             if (__EVT_I2C_OK == event) {
 
-                /* å¦‚æžœå‘é€ FIFO æ»¡ï¼Œè¿”å›žç©ºé—²çŠ¶æ€ */
+                /* Èç¹û·¢ËÍ FIFO Âú£¬·µ»Ø¿ÕÏÐ×´Ì¬ */
                 if (0 == p_dev->txlvl_reg[chan]) {
                     __NEXT_STATE(__ST_IDLE, __EVT_CONTINUE);
                     break;
                 }
 
-                /* å¦‚æžœå‘é€ FIFO ç©ºé—²å­—èŠ‚è¶…è¿‡ FIFO å¤§å°ï¼Œè¯æ˜Ž I2C ä¼ è¾“é”™è¯¯ï¼Œè¿”å›žç©ºé—²çŠ¶æ€ */
+                /* Èç¹û·¢ËÍ FIFO ¿ÕÏÐ×Ö½Ú³¬¹ý FIFO ´óÐ¡£¬Ö¤Ã÷ I2C ´«Êä´íÎó£¬·µ»Ø¿ÕÏÐ×´Ì¬ */
                 if (SC16IS7XX_FIFO_SIZE < p_dev->txlvl_reg[chan]) {
                     __NEXT_STATE(__ST_IDLE, __EVT_I2C_ERR);
                     break;
                 }
 
-                /* å¦‚æžœ RS485 æœªä½¿èƒ½ï¼Œä¸€æ¬¡æœ€å¤šå†™å…¥åŠä¸ª FIFO çš„æ•°æ®ï¼Œé¿å…å†™å…¥æ—¶é—´è¿‡é•¿ */
+                /* Èç¹û RS485 Î´Ê¹ÄÜ£¬Ò»´Î×î¶àÐ´Èë°ë¸ö FIFO µÄÊý¾Ý£¬±ÜÃâÐ´ÈëÊ±¼ä¹ý³¤ */
                 if ((!p_dev->is_rs485_en[chan]) &&
                     (SC16IS7XX_FIFO_SIZE / 2 < p_dev->txlvl_reg[chan])) {
                     p_dev->txlvl_reg[chan] = SC16IS7XX_FIFO_SIZE / 2;
                 }
 
-                /* ä»Ž UART å­ç³»ç»ŸèŽ·å–éœ€è¦å‘é€çš„æ•°æ® */
+                /* ´Ó UART ×ÓÏµÍ³»ñÈ¡ÐèÒª·¢ËÍµÄÊý¾Ý */
                 for (i = 0; i < p_dev->txlvl_reg[chan]; i++) {
                     err = p_dev->pfn_txchar_get[chan](
                                      p_dev->p_txget_arg[chan],
@@ -849,24 +849,24 @@ am_local am_err_t __sm_event (am_sc16is7xx_dev_t *p_dev,
                     }
                 }
 
-                /* åˆ¤æ–­æ˜¯å¦èŽ·å–åˆ°æ•°æ® */
+                /* ÅÐ¶ÏÊÇ·ñ»ñÈ¡µ½Êý¾Ý */
                 if (0 == i) {
                     __NEXT_STATE(__ST_THR_WE, __EVT_CHAR_NONE);
                     break;
                 }
 
-                /* å¯åŠ¨ I2C ä¼ è¾“å†™ THR å¯„å­˜å™¨ */
+                /* Æô¶¯ I2C ´«ÊäÐ´ THR ¼Ä´æÆ÷ */
                 err = __i2c_start(p_dev,                  /* SC16IS7X */
-                                  chan,                   /* é€šé“ */
-                                  AM_FALSE,               /* æ˜¯å¦æ˜¯è¯»å¯„å­˜å™¨ */
-                                  SC16IS7XX_REG_THR,      /* å¯„å­˜å™¨åœ°å€ */
-                                 &p_dev->tx_buf[chan][0], /* æŒ‡å‘ç¼“å†²åŒºçš„æŒ‡é’ˆ */
-                                  i);                     /* éœ€è¦è¯»å†™çš„å­—èŠ‚æ•° */
+                                  chan,                   /* Í¨µÀ */
+                                  AM_FALSE,               /* ÊÇ·ñÊÇ¶Á¼Ä´æÆ÷ */
+                                  SC16IS7XX_REG_THR,      /* ¼Ä´æÆ÷µØÖ· */
+                                 &p_dev->tx_buf[chan][0], /* Ö¸Ïò»º³åÇøµÄÖ¸Õë */
+                                  i);                     /* ÐèÒª¶ÁÐ´µÄ×Ö½ÚÊý */
                 if (AM_OK != err) {
                     __NEXT_STATE(__ST_IDLE, __EVT_CHAR_NONE);
                 } else {
 
-                    /* åˆ¤æ–­ä»Ž UART å­ç³»ç»ŸèŽ·å–æ•°æ®æ˜¯å¦æˆåŠŸ */
+                    /* ÅÐ¶Ï´Ó UART ×ÓÏµÍ³»ñÈ¡Êý¾ÝÊÇ·ñ³É¹¦ */
                     if (i == p_dev->txlvl_reg[chan]) {
                         __NEXT_STATE(__ST_THR_WE, __EVT_NONE);
                     } else {
@@ -880,10 +880,10 @@ am_local am_err_t __sm_event (am_sc16is7xx_dev_t *p_dev,
             }
             break;
 
-        /* å†™ THR å¯„å­˜å™¨ */
+        /* Ð´ THR ¼Ä´æÆ÷ */
         case __ST_THR_WE:
 
-            /* æ— å­—ç¬¦å¯å–æˆ– I2C ä¼ è¾“å¤±è´¥ */
+            /* ÎÞ×Ö·û¿ÉÈ¡»ò I2C ´«ÊäÊ§°Ü */
             if ((p_dev->char_none_flag[chan]) ||
                 (__EVT_CHAR_NONE == event) ||
                 (__EVT_I2C_ERR == event)) {
@@ -892,16 +892,16 @@ am_local am_err_t __sm_event (am_sc16is7xx_dev_t *p_dev,
                 p_dev->char_none_flag[chan] = AM_FALSE;
                 am_int_cpu_unlock(key);
 
-                /* å¤±èƒ½å‘é€ä¸­æ–­ */
+                /* Ê§ÄÜ·¢ËÍÖÐ¶Ï */
                 p_dev->ier_reg[chan] &= ~SC16IS7XX_IER_THR_EN_BIT;
 
-                /* å¯åŠ¨ I2C ä¼ è¾“å†™ IER å¯„å­˜å™¨ */
+                /* Æô¶¯ I2C ´«ÊäÐ´ IER ¼Ä´æÆ÷ */
                 err = __i2c_start(p_dev,                /* SC16IS7X */
-                                  chan,                 /* é€šé“ */
-                                  AM_FALSE,             /* æ˜¯å¦æ˜¯è¯»å¯„å­˜å™¨ */
-                                  SC16IS7XX_REG_IER,    /* å¯„å­˜å™¨åœ°å€ */
-                                 &p_dev->ier_reg[chan], /* æŒ‡å‘ç¼“å†²åŒºçš„æŒ‡é’ˆ */
-                                  1);                   /* éœ€è¦è¯»å†™çš„å­—èŠ‚æ•° */
+                                  chan,                 /* Í¨µÀ */
+                                  AM_FALSE,             /* ÊÇ·ñÊÇ¶Á¼Ä´æÆ÷ */
+                                  SC16IS7XX_REG_IER,    /* ¼Ä´æÆ÷µØÖ· */
+                                 &p_dev->ier_reg[chan], /* Ö¸Ïò»º³åÇøµÄÖ¸Õë */
+                                  1);                   /* ÐèÒª¶ÁÐ´µÄ×Ö½ÚÊý */
                 if (AM_OK != err) {
                     __NEXT_STATE(__ST_IDLE, __EVT_I2C_ERR);
                 } else {
@@ -910,27 +910,27 @@ am_local am_err_t __sm_event (am_sc16is7xx_dev_t *p_dev,
                 break;
             }
 
-            /* I2C ä¼ è¾“æˆåŠŸ */
+            /* I2C ´«Êä³É¹¦ */
             if (__EVT_I2C_OK == event) {
 
                 /*
-                 * å¦‚æžœä½¿èƒ½äº† RS485ï¼Œå‘é€æ•°æ®ï¼Œç›´åˆ°å®Œæˆï¼Œå› ä¸ºåŠåŒå·¥ RS485 å‘é€
-                 * æ•°æ®æ—¶ä¸å¯èƒ½æŽ¥æ”¶æ•°æ®
+                 * Èç¹ûÊ¹ÄÜÁË RS485£¬·¢ËÍÊý¾Ý£¬Ö±µ½Íê³É£¬ÒòÎª°ëË«¹¤ RS485 ·¢ËÍ
+                 * Êý¾ÝÊ±²»¿ÉÄÜ½ÓÊÕÊý¾Ý
                  */
                 if ((p_dev->is_rs485_en[chan]) &&
                     (NULL != p_dev->p_devinfo->pfn_rs485_dir)) {
 
-                    /* å¯åŠ¨ I2C ä¼ è¾“è¯» TXLVL å¯„å­˜å™¨ */
+                    /* Æô¶¯ I2C ´«Êä¶Á TXLVL ¼Ä´æÆ÷ */
                     err = __i2c_start(p_dev,                  /* SC16IS7X */
-                                      chan,                   /* é€šé“ */
-                                      AM_TRUE,                /* æ˜¯å¦æ˜¯è¯»å¯„å­˜å™¨ */
-                                      SC16IS7XX_REG_TXLVL,    /* å¯„å­˜å™¨åœ°å€ */
-                                     &p_dev->txlvl_reg[chan], /* æŒ‡å‘ç¼“å†²åŒºçš„æŒ‡é’ˆ */
-                                      1);                     /* éœ€è¦è¯»å†™çš„å­—èŠ‚æ•° */
+                                      chan,                   /* Í¨µÀ */
+                                      AM_TRUE,                /* ÊÇ·ñÊÇ¶Á¼Ä´æÆ÷ */
+                                      SC16IS7XX_REG_TXLVL,    /* ¼Ä´æÆ÷µØÖ· */
+                                     &p_dev->txlvl_reg[chan], /* Ö¸Ïò»º³åÇøµÄÖ¸Õë */
+                                      1);                     /* ÐèÒª¶ÁÐ´µÄ×Ö½ÚÊý */
                     if (AM_OK != err) {
                         __NEXT_STATE(__ST_IDLE, __EVT_I2C_ERR);
 
-                        /* å°† RS485 è®¾ç½®ä¸ºæŽ¥æ”¶æ¨¡å¼ */
+                        /* ½« RS485 ÉèÖÃÎª½ÓÊÕÄ£Ê½ */
                         if ((p_dev->is_rs485_en[chan]) &&
                             (NULL != p_dev->p_devinfo->pfn_rs485_dir)) {
                             p_dev->p_devinfo->pfn_rs485_dir(chan, AM_FALSE);
@@ -938,15 +938,15 @@ am_local am_err_t __sm_event (am_sc16is7xx_dev_t *p_dev,
                     } else {
                         __NEXT_STATE(__ST_TXLVL_RD, __EVT_NONE);
                     }
-                } else { /* åœ¨æ¯æ¬¡å‘é€ä¹‹åŽè¯»å– IIR å¯„å­˜å™¨ï¼ŒæŸ¥çœ‹æ˜¯å¦æŽ¥æ”¶åˆ°æ•°æ®ï¼Œé¿å…ä¸¢å¤± */
+                } else { /* ÔÚÃ¿´Î·¢ËÍÖ®ºó¶ÁÈ¡ IIR ¼Ä´æÆ÷£¬²é¿´ÊÇ·ñ½ÓÊÕµ½Êý¾Ý£¬±ÜÃâ¶ªÊ§ */
 
-                    /* å¯åŠ¨ I2C ä¼ è¾“è¯» IIR å¯„å­˜å™¨ */
+                    /* Æô¶¯ I2C ´«Êä¶Á IIR ¼Ä´æÆ÷ */
                     err = __i2c_start(p_dev,                /* SC16IS7X */
-                                      chan,                 /* é€šé“ */
-                                      AM_TRUE,              /* æ˜¯å¦æ˜¯è¯»å¯„å­˜å™¨ */
-                                      SC16IS7XX_REG_IIR,    /* å¯„å­˜å™¨åœ°å€ */
-                                     &p_dev->iir_reg[chan], /* æŒ‡å‘ç¼“å†²åŒºçš„æŒ‡é’ˆ */
-                                      1);                   /* éœ€è¦è¯»å†™çš„å­—èŠ‚æ•° */
+                                      chan,                 /* Í¨µÀ */
+                                      AM_TRUE,              /* ÊÇ·ñÊÇ¶Á¼Ä´æÆ÷ */
+                                      SC16IS7XX_REG_IIR,    /* ¼Ä´æÆ÷µØÖ· */
+                                     &p_dev->iir_reg[chan], /* Ö¸Ïò»º³åÇøµÄÖ¸Õë */
+                                      1);                   /* ÐèÒª¶ÁÐ´µÄ×Ö½ÚÊý */
                     if (AM_OK != err) {
                         __NEXT_STATE(__ST_IDLE, __EVT_I2C_ERR);
                     } else {
@@ -957,31 +957,31 @@ am_local am_err_t __sm_event (am_sc16is7xx_dev_t *p_dev,
             }
             break;
 
-        /* å¤±èƒ½å‘é€ä¸­æ–­ */
+        /* Ê§ÄÜ·¢ËÍÖÐ¶Ï */
         case __ST_TX_INT_DIS:
 
-            /* I2C ä¼ è¾“å¤±è´¥ */
+            /* I2C ´«ÊäÊ§°Ü */
             if (__EVT_I2C_ERR == event) {
                 __NEXT_STATE(__ST_IDLE, __EVT_I2C_ERR);
             }
 
-            /* RS485 æœªä½¿èƒ½ */
+            /* RS485 Î´Ê¹ÄÜ */
             if (!p_dev->is_rs485_en[chan]) {
                 __NEXT_STATE(__ST_IDLE, __EVT_CONTINUE);
                 break;
             }
 
-            /* æ— å­—ç¬¦å¯å–æˆ– I2C ä¼ è¾“æˆåŠŸ */
+            /* ÎÞ×Ö·û¿ÉÈ¡»ò I2C ´«Êä³É¹¦ */
             if ((__EVT_CHAR_NONE == event) ||
                 (__EVT_I2C_OK == event)) {
 
-                /* å¯åŠ¨ I2C ä¼ è¾“è¯» LSR å¯„å­˜å™¨ */
+                /* Æô¶¯ I2C ´«Êä¶Á LSR ¼Ä´æÆ÷ */
                 err = __i2c_start(p_dev,                /* SC16IS7X */
-                                  chan,                 /* é€šé“ */
-                                  AM_TRUE,              /* æ˜¯å¦æ˜¯è¯»å¯„å­˜å™¨ */
-                                  SC16IS7XX_REG_LSR,    /* å¯„å­˜å™¨åœ°å€ */
-                                 &p_dev->lsr_reg[chan], /* æŒ‡å‘ç¼“å†²åŒºçš„æŒ‡é’ˆ */
-                                  1);                   /* éœ€è¦è¯»å†™çš„å­—èŠ‚æ•° */
+                                  chan,                 /* Í¨µÀ */
+                                  AM_TRUE,              /* ÊÇ·ñÊÇ¶Á¼Ä´æÆ÷ */
+                                  SC16IS7XX_REG_LSR,    /* ¼Ä´æÆ÷µØÖ· */
+                                 &p_dev->lsr_reg[chan], /* Ö¸Ïò»º³åÇøµÄÖ¸Õë */
+                                  1);                   /* ÐèÒª¶ÁÐ´µÄ×Ö½ÚÊý */
                 if (AM_OK != err) {
                     __NEXT_STATE(__ST_IDLE, __EVT_I2C_ERR);
                 } else {
@@ -990,23 +990,23 @@ am_local am_err_t __sm_event (am_sc16is7xx_dev_t *p_dev,
             }
             break;
 
-        /* ç­‰å¾…å‘é€å®Œæˆ */
+        /* µÈ´ý·¢ËÍÍê³É */
         case __ST_TX_DONE_WAIT:
 
-            /* I2C ä¼ è¾“å¤±è´¥ */
+            /* I2C ´«ÊäÊ§°Ü */
             if (__EVT_I2C_ERR == event) {
                 __NEXT_STATE(__ST_IDLE, __EVT_I2C_ERR);
                 break;
             }
 
-            /* I2C ä¼ è¾“æˆåŠŸ */
+            /* I2C ´«Êä³É¹¦ */
             if (__EVT_I2C_OK == event) {
 
-                /* å‘é€å®Œæˆ */
+                /* ·¢ËÍÍê³É */
                 if (SC16IS7XX_LSR_THSR_EMPTY_FLAG & p_dev->lsr_reg[chan]) {
                     __NEXT_STATE(__ST_IDLE, __EVT_CONTINUE);
 
-                    /* å°† RS485 è®¾ç½®ä¸ºæŽ¥æ”¶æ¨¡å¼ */
+                    /* ½« RS485 ÉèÖÃÎª½ÓÊÕÄ£Ê½ */
                     if ((p_dev->is_rs485_en[chan]) &&
                         (NULL != p_dev->p_devinfo->pfn_rs485_dir)) {
                         p_dev->p_devinfo->pfn_rs485_dir(chan, AM_FALSE);
@@ -1014,13 +1014,13 @@ am_local am_err_t __sm_event (am_sc16is7xx_dev_t *p_dev,
                     break;
                 } else {
 
-                    /* å¯åŠ¨ I2C ä¼ è¾“è¯» LSR å¯„å­˜å™¨ */
+                    /* Æô¶¯ I2C ´«Êä¶Á LSR ¼Ä´æÆ÷ */
                     err = __i2c_start(p_dev,                /* SC16IS7X */
-                                      chan,                 /* é€šé“ */
-                                      AM_TRUE,              /* æ˜¯å¦æ˜¯è¯»å¯„å­˜å™¨ */
-                                      SC16IS7XX_REG_LSR,    /* å¯„å­˜å™¨åœ°å€ */
-                                     &p_dev->lsr_reg[chan], /* æŒ‡å‘ç¼“å†²åŒºçš„æŒ‡é’ˆ */
-                                      1);                   /* éœ€è¦è¯»å†™çš„å­—èŠ‚æ•° */
+                                      chan,                 /* Í¨µÀ */
+                                      AM_TRUE,              /* ÊÇ·ñÊÇ¶Á¼Ä´æÆ÷ */
+                                      SC16IS7XX_REG_LSR,    /* ¼Ä´æÆ÷µØÖ· */
+                                     &p_dev->lsr_reg[chan], /* Ö¸Ïò»º³åÇøµÄÖ¸Õë */
+                                      1);                   /* ÐèÒª¶ÁÐ´µÄ×Ö½ÚÊý */
                     if (AM_OK != err) {
                         __NEXT_STATE(__ST_IDLE, __EVT_I2C_ERR);
                     } else {
@@ -1035,7 +1035,7 @@ am_local am_err_t __sm_event (am_sc16is7xx_dev_t *p_dev,
             break;
         }
 
-        /* æ²¡æœ‰æ¥è‡ªå†…éƒ¨çš„äº‹ä»¶ï¼Œè·³å‡º */
+        /* Ã»ÓÐÀ´×ÔÄÚ²¿µÄÊÂ¼þ£¬Ìø³ö */
         if (new_event == __EVT_NONE) {
             break;
         }
@@ -1045,7 +1045,7 @@ am_local am_err_t __sm_event (am_sc16is7xx_dev_t *p_dev,
 }
 
 /**
- * \brief é€šç”¨å¯„å­˜å™¨æ“ä½œä½¿èƒ½
+ * \brief Í¨ÓÃ¼Ä´æÆ÷²Ù×÷Ê¹ÄÜ
  */
 am_local am_err_t __general_access_enable (am_sc16is7xx_dev_t *p_dev, uint8_t chan)
 {
@@ -1053,7 +1053,7 @@ am_local am_err_t __general_access_enable (am_sc16is7xx_dev_t *p_dev, uint8_t ch
 }
 
 /**
- * \brief ç‰¹æ®Šå¯„å­˜å™¨æ“ä½œä½¿èƒ½
+ * \brief ÌØÊâ¼Ä´æÆ÷²Ù×÷Ê¹ÄÜ
  */
 am_local am_err_t __special_access_enable (am_sc16is7xx_dev_t *p_dev, uint8_t chan)
 {
@@ -1061,7 +1061,7 @@ am_local am_err_t __special_access_enable (am_sc16is7xx_dev_t *p_dev, uint8_t ch
 }
 
 /**
- * \brief å¢žå¼ºå¯„å­˜å™¨æ“ä½œä½¿èƒ½
+ * \brief ÔöÇ¿¼Ä´æÆ÷²Ù×÷Ê¹ÄÜ
  */
 am_local am_err_t __enhance_access_enable (am_sc16is7xx_dev_t *p_dev, uint8_t chan)
 {
@@ -1069,7 +1069,7 @@ am_local am_err_t __enhance_access_enable (am_sc16is7xx_dev_t *p_dev, uint8_t ch
 }
 
 /**
- * \brief é…ç½®ä¸²å£æ³¢ç‰¹çŽ‡
+ * \brief ÅäÖÃ´®¿Ú²¨ÌØÂÊ
  */
 am_local am_err_t __serial_rate_set (am_sc16is7xx_dev_t *p_dev,
                                      uint8_t             chan,
@@ -1079,13 +1079,13 @@ am_local am_err_t __serial_rate_set (am_sc16is7xx_dev_t *p_dev,
     am_err_t                err;
     uint32_t                divisor;
 
-    /* åˆ¤æ–­æ³¢ç‰¹çŽ‡æ˜¯å¦æ”¯æŒ */
+    /* ÅÐ¶Ï²¨ÌØÂÊÊÇ·ñÖ§³Ö */
     if (((p_devinfo->clk_freq / 16) < baudrate) ||
         ((p_devinfo->clk_freq / 16 / ((2 << 16) - 1)) > baudrate)) {
         return -AM_ENOTSUP;
     }
 
-    /* ç‰¹æ®Šå¯„å­˜å™¨æ“ä½œä½¿èƒ½ */
+    /* ÌØÊâ¼Ä´æÆ÷²Ù×÷Ê¹ÄÜ */
     err = __special_access_enable(p_dev, chan);
     if (AM_OK != err) {
         goto exit;
@@ -1103,14 +1103,14 @@ am_local am_err_t __serial_rate_set (am_sc16is7xx_dev_t *p_dev,
 
 exit:
 
-    /* é€šç”¨å¯„å­˜å™¨æ“ä½œä½¿èƒ½ */
+    /* Í¨ÓÃ¼Ä´æÆ÷²Ù×÷Ê¹ÄÜ */
     err = __general_access_enable(p_dev, chan);
 
     return err;
 }
 
 /**
- * \brief é…ç½®ä¸²å£é€‰é¡¹
+ * \brief ÅäÖÃ´®¿ÚÑ¡Ïî
  */
 am_local am_err_t  __serial_opts_set (am_sc16is7xx_dev_t *p_dev,
                                       uint8_t             chan,
@@ -1119,7 +1119,7 @@ am_local am_err_t  __serial_opts_set (am_sc16is7xx_dev_t *p_dev,
     am_err_t err;
     uint8_t  reg = 0;
 
-    /* é…ç½®æ•°æ®é•¿åº¦ */
+    /* ÅäÖÃÊý¾Ý³¤¶È */
     switch (opts & AM_UART_CSIZE) {
 
     case AM_UART_CS5:
@@ -1143,7 +1143,7 @@ am_local am_err_t  __serial_opts_set (am_sc16is7xx_dev_t *p_dev,
         break;
     }
 
-    /* é…ç½®å¥‡å¶æ ¡éªŒä½ */
+    /* ÅäÖÃÆæÅ¼Ð£ÑéÎ» */
     if (opts & AM_UART_PARENB) {
         if (opts & AM_UART_PARODD) {
             reg |= SC16IS7XX_LCR_PARITY_ODD;
@@ -1154,14 +1154,14 @@ am_local am_err_t  __serial_opts_set (am_sc16is7xx_dev_t *p_dev,
         reg |= SC16IS7XX_LCR_PARITY_NO;
     }
 
-    /* é…ç½®åœæ­¢ä½ */
+    /* ÅäÖÃÍ£Ö¹Î» */
     if (opts & AM_UART_STOPB) {
         reg |= SC16IS7XX_LCR_STOP_2BIT;
     } else {
         reg |= SC16IS7XX_LCR_STOP_1BIT;
     }
 
-    /* å°†é…ç½®å†™å…¥ LCR å¯„å­˜å™¨ */
+    /* ½«ÅäÖÃÐ´Èë LCR ¼Ä´æÆ÷ */
     err = __reg_write(p_dev, chan, SC16IS7XX_REG_LCR, reg);
     if (AM_OK == err) {
         p_dev->lcr_reg[chan] = reg;
@@ -1172,7 +1172,7 @@ am_local am_err_t  __serial_opts_set (am_sc16is7xx_dev_t *p_dev,
 }
 
 /**
- * \brief é…ç½®ä¸²å£æ¨¡å¼
+ * \brief ÅäÖÃ´®¿ÚÄ£Ê½
  */
 am_local am_err_t __serial_mode_set (am_sc16is7xx_dev_t *p_dev,
                                      uint8_t             chan,
@@ -1181,7 +1181,7 @@ am_local am_err_t __serial_mode_set (am_sc16is7xx_dev_t *p_dev,
     uint8_t  reg = 0;
     am_err_t err = AM_OK;
 
-    /* åˆ¤æ–­æ˜¯å¦æ”¯æŒç›¸å…³æ¨¡å¼ */
+    /* ÅÐ¶ÏÊÇ·ñÖ§³ÖÏà¹ØÄ£Ê½ */
     if ((mode == AM_UART_MODE_POLL) &&
         (!(p_dev->serial_mode_avail | AM_UART_MODE_POLL))) {
         return -AM_ENOTSUP;
@@ -1195,14 +1195,14 @@ am_local am_err_t __serial_mode_set (am_sc16is7xx_dev_t *p_dev,
 
         __int_disable(p_dev, chan);
 
-        /* è½®è¯¢æ¨¡å¼ç›´æŽ¥å…³é—­æ‰€æœ‰ä¸­æ–­ */
+        /* ÂÖÑ¯Ä£Ê½Ö±½Ó¹Ø±ÕËùÓÐÖÐ¶Ï */
         reg = 0;
         err = __reg_write(p_dev, chan, SC16IS7XX_REG_IER, reg);
     } else if (AM_UART_MODE_INT == mode) {
 
         __int_enable(p_dev, chan);
 
-        /* ä¸­æ–­æ¨¡å¼ä¸‹ä½¿èƒ½æŽ¥æ”¶ä¸­æ–­ */
+        /* ÖÐ¶ÏÄ£Ê½ÏÂÊ¹ÄÜ½ÓÊÕÖÐ¶Ï */
         reg = SC16IS7XX_IER_RHR_EN_BIT;
         err = __reg_write(p_dev, chan, SC16IS7XX_REG_IER, reg);
     } else {
@@ -1219,7 +1219,7 @@ am_local am_err_t __serial_mode_set (am_sc16is7xx_dev_t *p_dev,
 /******************************************************************************/
 
 /**
- * \brief UART æŽ§åˆ¶å‡½æ•°
+ * \brief UART ¿ØÖÆº¯Êý
  */
 am_local int __uart_ioctl (void *p_drv, int request, void *p_arg)
 {
@@ -1230,47 +1230,47 @@ am_local int __uart_ioctl (void *p_drv, int request, void *p_arg)
 
     switch (request) {
 
-    /* æ³¢ç‰¹çŽ‡è®¾ç½® */
+    /* ²¨ÌØÂÊÉèÖÃ */
     case AM_UART_BAUD_SET:
         err = __serial_rate_set(p_dev, *p_chan, (uint32_t)p_arg);
         break;
 
-    /* æ³¢ç‰¹çŽ‡èŽ·å– */
+    /* ²¨ÌØÂÊ»ñÈ¡ */
     case AM_UART_BAUD_GET:
         *(int *)p_arg = p_dev->serial_rate[*p_chan];
         break;
 
-    /* ä¸²å£é€‰é¡¹è®¾ç½® */
+    /* ´®¿ÚÑ¡ÏîÉèÖÃ */
     case AM_UART_OPTS_SET:
         err = __serial_opts_set(p_dev, *p_chan, (uint32_t)p_arg);
         break;
 
-    /* ä¸²å£é€‰é¡¹èŽ·å– */
+    /* ´®¿ÚÑ¡Ïî»ñÈ¡ */
     case AM_UART_OPTS_GET:
         *(int *)p_arg = p_dev->serial_opts[*p_chan];
         break;
 
-    /* æ¨¡å¼è®¾ç½® */
+    /* Ä£Ê½ÉèÖÃ */
     case AM_UART_MODE_SET:
         err = __serial_mode_set(p_dev, *p_chan, (uint32_t)p_arg);
         break;
 
-    /* æ¨¡å¼èŽ·å– */
+    /* Ä£Ê½»ñÈ¡ */
     case AM_UART_MODE_GET:
         *(int *)p_arg = p_dev->serial_mode[*p_chan];
         break;
 
-    /* èŽ·å–ä¸²å£å¯è®¾ç½®çš„æ¨¡å¼ */
+    /* »ñÈ¡´®¿Ú¿ÉÉèÖÃµÄÄ£Ê½ */
     case AM_UART_AVAIL_MODES_GET:
         *(int *)p_arg = p_dev->serial_mode_avail;
         break;
 
-    /* è®¾ç½® RS485 æ¨¡å¼ */
+    /* ÉèÖÃ RS485 Ä£Ê½ */
     case AM_UART_RS485_SET:
         p_dev->is_rs485_en[*p_chan] = (am_bool_t)(int)p_arg;
         break;
 
-    /* èŽ·å–å½“å‰çš„ RS485 æ¨¡å¼çŠ¶æ€ */
+    /* »ñÈ¡µ±Ç°µÄ RS485 Ä£Ê½×´Ì¬ */
     case AM_UART_RS485_GET:
         *(int *)p_arg = p_dev->is_rs485_en[*p_chan];
         break;
@@ -1284,7 +1284,7 @@ am_local int __uart_ioctl (void *p_drv, int request, void *p_arg)
 }
 
 /**
- * \brief å¯åŠ¨ UART å‘é€å‡½æ•°
+ * \brief Æô¶¯ UART ·¢ËÍº¯Êý
  */
 am_local int __uart_tx_startup (void *p_drv)
 {
@@ -1293,17 +1293,17 @@ am_local int __uart_tx_startup (void *p_drv)
     am_sc16is7xx_dev_t    *p_dev      = (am_sc16is7xx_dev_t *)p_uartinfo->p_arg[1];
     uint32_t               key;
 
-    /* åˆ¤æ–­å½“å‰æ˜¯å¦æ˜¯ä¸­æ–­æ¨¡å¼ */
+    /* ÅÐ¶Ïµ±Ç°ÊÇ·ñÊÇÖÐ¶ÏÄ£Ê½ */
     if (AM_UART_MODE_INT != p_dev->serial_mode[*p_chan]) {
         return -AM_EPERM;
     }
 
-    /* åˆ¤æ–­å›žè°ƒå‡½æ•°æ˜¯å¦æ³¨å†Œ */
+    /* ÅÐ¶Ï»Øµ÷º¯ÊýÊÇ·ñ×¢²á */
     if (NULL == p_dev->pfn_txchar_get[*p_chan]) {
         return -AM_EPERM;
     }
 
-    /* åˆ¤æ–­å‘é€ä¸­æ–­æ˜¯å¦å·²ç»ä½¿èƒ½ */
+    /* ÅÐ¶Ï·¢ËÍÖÐ¶ÏÊÇ·ñÒÑ¾­Ê¹ÄÜ */
     if (p_dev->ier_reg[*p_chan] & SC16IS7XX_IER_THR_EN_BIT) {
         return AM_OK;
     }
@@ -1312,15 +1312,15 @@ am_local int __uart_tx_startup (void *p_drv)
     p_dev->int_en_flag[*p_chan] = AM_TRUE;
     am_int_cpu_unlock(key);
 
-    /* å¦‚æžœçŠ¶æ€æœºå·²ç»åœ¨è¿è¡Œï¼Œç›´æŽ¥è¿”å›ž */
+    /* Èç¹û×´Ì¬»úÒÑ¾­ÔÚÔËÐÐ£¬Ö±½Ó·µ»Ø */
     if ((0 != p_dev->sm_cnt[*p_chan]) || (p_dev->is_i2c_busy[*p_chan])) {
         return AM_OK;
     }
 
-    /* è®°å½•çŠ¶æ€æœºé‡å…¥æ¬¡æ•° */
+    /* ¼ÇÂ¼×´Ì¬»úÖØÈë´ÎÊý */
     p_dev->sm_cnt[*p_chan]++;
 
-    /* å‘çŠ¶æ€æœºå‘é€äº‹ä»¶ */
+    /* Ïò×´Ì¬»ú·¢ËÍÊÂ¼þ */
     __sm_event(p_dev, *p_chan, __EVT_NONE);
 
     p_dev->sm_cnt[*p_chan]--;
@@ -1329,7 +1329,7 @@ am_local int __uart_tx_startup (void *p_drv)
 }
 
 /**
- * \brief è®¾ç½®ä¸²å£å›žè°ƒå‡½æ•°
+ * \brief ÉèÖÃ´®¿Ú»Øµ÷º¯Êý
  */
 am_local int __uart_callback_set (void *p_drv,
                                   int   callback_type,
@@ -1342,19 +1342,19 @@ am_local int __uart_callback_set (void *p_drv,
 
     switch (callback_type) {
 
-    /* èŽ·å–ä¸€ä¸ªå‘é€å­—ç¬¦ */
+    /* »ñÈ¡Ò»¸ö·¢ËÍ×Ö·û */
     case AM_UART_CALLBACK_TXCHAR_GET:
         p_dev->pfn_txchar_get[*p_chan] = (am_uart_txchar_get_t)pfn_callback;
         p_dev->p_txget_arg[*p_chan]    = p_arg;
         break;
 
-    /* æäº¤ä¸€ä¸ªæŽ¥æ”¶åˆ°çš„å­—ç¬¦ */
+    /* Ìá½»Ò»¸ö½ÓÊÕµ½µÄ×Ö·û */
     case AM_UART_CALLBACK_RXCHAR_PUT:
         p_dev->pfn_rxchar_put[*p_chan] = (am_uart_rxchar_put_t)pfn_callback;
         p_dev->p_rxput_arg[*p_chan]    = p_arg;
         break;
 
-    /* é”™è¯¯å›žè°ƒå‡½æ•° */
+    /* ´íÎó»Øµ÷º¯Êý */
     case AM_UART_CALLBACK_ERROR:
         p_dev->pfn_err[*p_chan]   = (am_uart_err_t)pfn_callback;
         p_dev->p_err_arg[*p_chan] = p_arg;
@@ -1368,7 +1368,7 @@ am_local int __uart_callback_set (void *p_drv,
 }
 
 /**
- * \brief ä»Žä¸²å£èŽ·å–ä¸€ä¸ªå­—ç¬¦ï¼ˆæŸ¥è¯¢æ¨¡å¼ï¼‰
+ * \brief ´Ó´®¿Ú»ñÈ¡Ò»¸ö×Ö·û£¨²éÑ¯Ä£Ê½£©
  */
 am_local int __uart_poll_getchar (void *p_drv, char *p_inchar)
 {
@@ -1382,23 +1382,23 @@ am_local int __uart_poll_getchar (void *p_drv, char *p_inchar)
         return -AM_EINVAL;
     }
 
-    /* åˆ¤æ–­å½“å‰æ˜¯å¦æ˜¯è½®è¯¢æ¨¡å¼ */
+    /* ÅÐ¶Ïµ±Ç°ÊÇ·ñÊÇÂÖÑ¯Ä£Ê½ */
     if (AM_UART_MODE_POLL != p_dev->serial_mode[*p_chan]) {
         return -AM_EPERM;
     }
 
-    /* è¯»å–çº¿çŠ¶æ€å¯„å­˜å™¨ */
+    /* ¶ÁÈ¡Ïß×´Ì¬¼Ä´æÆ÷ */
     err = __reg_read(p_dev, *p_chan, SC16IS7XX_REG_LSR, &reg);
     if (AM_OK != err) {
         return err;
     }
   
-    /* åˆ¤æ–­æŽ¥æ”¶ç¼“å†²åŒºæ˜¯å¦æœ‰æ•°æ® */
+    /* ÅÐ¶Ï½ÓÊÕ»º³åÇøÊÇ·ñÓÐÊý¾Ý */
     if (!(SC16IS7XX_LSR_DATA_IN_FLAG & reg)) {
         return -AM_EAGAIN;
     }
 
-    /* åˆ¤æ–­æ˜¯å¦æœ‰é”™è¯¯ */
+    /* ÅÐ¶ÏÊÇ·ñÓÐ´íÎó */
     if (SC16IS7XX_LSR_FIFO_ERR_FLAG & reg) {
         __reg_read(p_dev, *p_chan, SC16IS7XX_REG_RHR, &reg);
         return -AM_EIO;
@@ -1413,7 +1413,7 @@ am_local int __uart_poll_getchar (void *p_drv, char *p_inchar)
 }
 
 /**
- * \brief è¾“å‡ºä¸€ä¸ªå­—ç¬¦ï¼ˆæŸ¥è¯¢æ¨¡å¼ï¼‰
+ * \brief Êä³öÒ»¸ö×Ö·û£¨²éÑ¯Ä£Ê½£©
  */
 am_local int __uart_poll_putchar (void *p_drv, char outchar)
 {
@@ -1423,23 +1423,23 @@ am_local int __uart_poll_putchar (void *p_drv, char outchar)
     am_err_t               err;
     uint8_t                reg;
 
-    /* åˆ¤æ–­å½“å‰æ˜¯å¦æ˜¯è½®è¯¢æ¨¡å¼ */
+    /* ÅÐ¶Ïµ±Ç°ÊÇ·ñÊÇÂÖÑ¯Ä£Ê½ */
     if (AM_UART_MODE_POLL != p_dev->serial_mode[*p_chan]) {
         return -AM_EPERM;
     }
 
-    /* è¯»å–å‘é€ FIFO æ°´å¹³å¯„å­˜å™¨ */
+    /* ¶ÁÈ¡·¢ËÍ FIFO Ë®Æ½¼Ä´æÆ÷ */
     err = __reg_read(p_dev, *p_chan, SC16IS7XX_REG_TXLVL, &reg);
     if (AM_OK != err) {
         return err;
     }
 
-    /* åˆ¤æ–­å‘é€ç¼“å†²åŒºæ˜¯å¦ä¸ºç©º */
+    /* ÅÐ¶Ï·¢ËÍ»º³åÇøÊÇ·ñÎª¿Õ */
     if (0 == reg) {
         return -AM_EAGAIN;
     }
 
-    /* å°† RS485 è®¾ç½®ä¸ºå‘é€æ¨¡å¼ */
+    /* ½« RS485 ÉèÖÃÎª·¢ËÍÄ£Ê½ */
     if ((p_dev->is_rs485_en[*p_chan]) &&
         (NULL != p_dev->p_devinfo->pfn_rs485_dir)) {
         p_dev->p_devinfo->pfn_rs485_dir(*p_chan, AM_TRUE);
@@ -1454,7 +1454,7 @@ am_local int __uart_poll_putchar (void *p_drv, char outchar)
         return err;
     }
 
-    /* ç­‰å¾…å‘é€å®Œæˆï¼Œå¹¶å°† RS485 è®¾ç½®ä¸ºæŽ¥æ”¶æ¨¡å¼ */
+    /* µÈ´ý·¢ËÍÍê³É£¬²¢½« RS485 ÉèÖÃÎª½ÓÊÕÄ£Ê½ */
     if ((p_dev->is_rs485_en[*p_chan]) &&
         (NULL != p_dev->p_devinfo->pfn_rs485_dir)) {
         do {
@@ -1472,11 +1472,11 @@ am_local int __uart_poll_putchar (void *p_drv, char outchar)
 }
 
 /*******************************************************************************
-  å¤–éƒ¨å‡½æ•°å®šä¹‰
+  Íâ²¿º¯Êý¶¨Òå
 *******************************************************************************/
 
 /**
- * \brief SC16IS7XX åˆå§‹åŒ–
+ * \brief SC16IS7XX ³õÊ¼»¯
  */
 am_sc16is7xx_handle_t am_sc16is7xx_init (am_sc16is7xx_dev_t           *p_dev,
                                          const am_sc16is7xx_devinfo_t *p_devinfo,
@@ -1485,8 +1485,7 @@ am_sc16is7xx_handle_t am_sc16is7xx_init (am_sc16is7xx_dev_t           *p_dev,
     uint32_t         i;
     am_err_t         err;
     am_local uint8_t chan_list[SC16IS7XX_CHAN_MAX];
-    
-	
+
     if ((NULL == p_dev) ||
         (NULL == p_devinfo) ||
         (NULL == i2c_handle) ||
@@ -1509,9 +1508,11 @@ am_sc16is7xx_handle_t am_sc16is7xx_init (am_sc16is7xx_dev_t           *p_dev,
         p_dev->pfn_txchar_get[i]    = __uart_poll_getchar;
         p_dev->pfn_rxchar_put[i]    = __uart_poll_putchar;
         p_dev->pfn_err[i]           = NULL;
+
         p_dev->serial_rate[i]       = p_devinfo->serial_rate[i];
         p_dev->serial_opts[i]       = p_devinfo->serial_data[i];  
         p_dev->serial_mode[i]       = AM_UART_MODE_POLL;
+
         p_dev->is_rs485_en[i]       = AM_FALSE;
 
         p_dev->iir_reg[i]           = 0;
@@ -1535,14 +1536,14 @@ am_sc16is7xx_handle_t am_sc16is7xx_init (am_sc16is7xx_dev_t           *p_dev,
         p_dev->i2cinfo[i].p_arg[0] = &chan_list[i];
         p_dev->i2cinfo[i].p_arg[1] = p_dev;
 
-        /* æž„é€  I2C è®¾å¤‡ */
+        /* ¹¹Ôì I2C Éè±¸ */
         am_i2c_mkdev(&p_dev->i2c_dev[i],
                       i2c_handle,
                       p_devinfo->i2c_addr,
                       AM_I2C_ADDR_7BIT | AM_I2C_SUBADDR_1BYTE);
     }
 
-    /* åˆå§‹åŒ– RST å¼•è„š */
+    /* ³õÊ¼»¯ RST Òý½Å */
     if (-1 != p_devinfo->rst_pin) {
         am_gpio_pin_cfg(p_devinfo->rst_pin, AM_GPIO_OUTPUT_INIT_HIGH);
         am_gpio_set(p_devinfo->rst_pin, AM_GPIO_LEVEL_LOW);
@@ -1552,16 +1553,16 @@ am_sc16is7xx_handle_t am_sc16is7xx_init (am_sc16is7xx_dev_t           *p_dev,
     } else {
         am_mdelay(1);
 
-        /* å¦‚æžœæ²¡æœ‰é…ç½® RST å¼•è„šï¼Œåˆ™ä½¿ç”¨è½¯ä»¶å¤ä½ */
+        /* Èç¹ûÃ»ÓÐÅäÖÃ RST Òý½Å£¬ÔòÊ¹ÓÃÈí¼þ¸´Î» */
         __reg_write(p_dev, 0, SC16IS7XX_REG_IOCTRL, SC16IS7XX_IO_CTRL_RESET_BIT);
-      
-        /* ä½¿èƒ½é€šç”¨å¯„å­˜å™¨æ“ä½œ */
+        
+        /* Ê¹ÄÜÍ¨ÓÃ¼Ä´æÆ÷²Ù×÷ */
         __reg_write(p_dev, 0, SC16IS7XX_REG_LCR, SC16IS7XX_LCR_ACCESS_GENERAL);
 
         am_mdelay(1);
     }
 
-    /* åˆå§‹åŒ– IRQ å¼•è„š */
+    /* ³õÊ¼»¯ IRQ Òý½Å */
     if (-1 != p_devinfo->irq_pin) {
         p_dev->serial_mode_avail = AM_UART_MODE_INT | AM_UART_MODE_POLL;
 
@@ -1581,7 +1582,7 @@ am_sc16is7xx_handle_t am_sc16is7xx_init (am_sc16is7xx_dev_t           *p_dev,
 
     for (i = 0; i < p_dev->p_devinfo->chan_num; i++) {
 
-        /* ä½¿èƒ½å¢žå¼ºç‰¹æ€§ */
+        /* Ê¹ÄÜÔöÇ¿ÌØÐÔ */
         err = __enhance_access_enable(p_dev, i);
         err |= __reg_write(p_dev, i, SC16IS7XX_REG_EFR, SC16IS7XX_EFR_ENHANCE_EN_BIT);
         err |= __general_access_enable(p_dev, i);
@@ -1596,7 +1597,7 @@ am_sc16is7xx_handle_t am_sc16is7xx_init (am_sc16is7xx_dev_t           *p_dev,
             return NULL;
         }
 
-        /* é…ç½®æ•°æ®é•¿åº¦ */
+        /* ÅäÖÃÊý¾Ý³¤¶È */
         if (5 == p_devinfo->serial_data[i]) {
             p_dev->serial_opts[i] = AM_UART_CS5;
         } else if (6 == p_devinfo->serial_data[i]) {
@@ -1607,26 +1608,26 @@ am_sc16is7xx_handle_t am_sc16is7xx_init (am_sc16is7xx_dev_t           *p_dev,
             p_dev->serial_opts[i] = AM_UART_CS8;
         }
 
-        /* é…ç½®å¥‡å¶æ ¡éªŒä½ */
+        /* ÅäÖÃÆæÅ¼Ð£ÑéÎ» */
         if (1 == p_devinfo->serial_parity[i]) {
             p_dev->serial_opts[i] |= AM_UART_PARENB | AM_UART_PARODD;
         } else if (2 == p_devinfo->serial_parity[i]) {
             p_dev->serial_opts[i] |= AM_UART_PARENB;
         }
 
-        /* é…ç½®åœæ­¢ä½ */
+        /* ÅäÖÃÍ£Ö¹Î» */
         if (2 == p_devinfo->serial_stop[i]) {
             p_dev->serial_opts[i] |= AM_UART_STOPB;
         }
 
-        /* é…ç½®ä¸²å£é€‰é¡¹ */
+        /* ÅäÖÃ´®¿ÚÑ¡Ïî */
         err = __serial_opts_set(p_dev, i, p_dev->serial_opts[i]);
         if (AM_OK != err) {
             AM_DBG_INFO("serial opts set failed %d!\r\n", err);
             return NULL;
         }
 
-        /* é…ç½®æ³¢ç‰¹çŽ‡ */
+        /* ÅäÖÃ²¨ÌØÂÊ */
         err = __serial_rate_set(p_dev, i, p_devinfo->serial_rate[i]);
         if (AM_OK != err) {
             AM_DBG_INFO("serial rate set failed %d!\r\n", err);
@@ -1638,7 +1639,7 @@ am_sc16is7xx_handle_t am_sc16is7xx_init (am_sc16is7xx_dev_t           *p_dev,
 }
 
 /**
- * \brief èŽ·å–æŒ‡å®šé€šé“çš„ UART æ ‡å‡†æœåŠ¡æ“ä½œå¥æŸ„
+ * \brief »ñÈ¡Ö¸¶¨Í¨µÀµÄ UART ±ê×¼·þÎñ²Ù×÷¾ä±ú
  */
 am_uart_handle_t am_sc16is7xx_uart_handle_get (am_sc16is7xx_handle_t handle,
                                                uint8_t               chan)
@@ -1652,7 +1653,7 @@ am_uart_handle_t am_sc16is7xx_uart_handle_get (am_sc16is7xx_handle_t handle,
 }
 
 /**
- * \brief æŒ‡å®šé€šé“çš„ UART è¯»å–æ•°æ®
+ * \brief Ö¸¶¨Í¨µÀµÄ UART ¶ÁÈ¡Êý¾Ý
  */
 int am_sc16is7xx_uart_poll_receive (am_sc16is7xx_handle_t handle,
                                     uint8_t               chan,
@@ -1661,27 +1662,24 @@ int am_sc16is7xx_uart_poll_receive (am_sc16is7xx_handle_t handle,
 {
     int ret = AM_OK;       
     
-    /* åˆ¤æ–­å‚æ•°æœ‰æ•ˆæ€§ */
+    /* ÅÐ¶Ï²ÎÊýÓÐÐ§ÐÔ */
     if ((NULL == handle) || (handle->p_devinfo->chan_num <= chan)) {
         return -AM_EINVAL;
     }
     
     while (nbytes-- && AM_OK == ret) {  
         ret = __uart_poll_getchar (&(handle->uartinfo[chan]), p_rxbuf);
-      
         if (AM_OK != ret) {
             *p_rxbuf = '\0';
         }
         p_rxbuf++;
     } 
     
-
     return AM_OK; 
-
 }
 
 /**
- * \brief æŒ‡å®šé€šé“çš„ UART å‘é€å­—ç¬¦ä¸²
+ * \brief Ö¸¶¨Í¨µÀµÄ UART ·¢ËÍ×Ö·û´®
  */
 int am_sc16is7xx_uart_poll_send (am_sc16is7xx_handle_t handle,
                                  uint8_t               chan,
@@ -1690,14 +1688,14 @@ int am_sc16is7xx_uart_poll_send (am_sc16is7xx_handle_t handle,
 {
     int ret = 0;
     
-    /* åˆ¤æ–­å‚æ•°æœ‰æ•ˆæ€§ */
+    /* ÅÐ¶Ï²ÎÊýÓÐÐ§ÐÔ */
     if ((NULL == handle) || (handle->p_devinfo->chan_num <= chan)) {
         return -AM_EINVAL;
     }
         
     while (nbytes-- && *p_txbuf != '\0') {  
         ret = __uart_poll_putchar (&(handle->uartinfo[chan]), *p_txbuf++);
-
+   
         if (AM_OK != ret) {
             return ret;
         }
@@ -1707,7 +1705,7 @@ int am_sc16is7xx_uart_poll_send (am_sc16is7xx_handle_t handle,
 }
 
 /**
- * \brief SC16IS7XX è§£åˆå§‹åŒ–
+ * \brief SC16IS7XX ½â³õÊ¼»¯
  */
 am_err_t am_sc16is7xx_deinit (am_sc16is7xx_handle_t handle)
 {
@@ -1718,7 +1716,7 @@ am_err_t am_sc16is7xx_deinit (am_sc16is7xx_handle_t handle)
         return -AM_EINVAL;
     }
 
-    /* è§£åˆå§‹åŒ– IRQ å¼•è„š */
+    /* ½â³õÊ¼»¯ IRQ Òý½Å */
     if (-1 != p_dev->p_devinfo->irq_pin) {
         am_gpio_trigger_off(p_dev->p_devinfo->irq_pin);
         am_gpio_trigger_disconnect(p_dev->p_devinfo->irq_pin,
@@ -1728,7 +1726,7 @@ am_err_t am_sc16is7xx_deinit (am_sc16is7xx_handle_t handle)
                         AM_GPIO_INPUT | AM_GPIO_FLOAT);
     }
 
-    /* è§£åˆå§‹åŒ– RST å¼•è„š */
+    /* ½â³õÊ¼»¯ RST Òý½Å */
     if (-1 != p_dev->p_devinfo->rst_pin) {
         am_gpio_pin_cfg(p_dev->p_devinfo->rst_pin,
                         AM_GPIO_INPUT | AM_GPIO_FLOAT);

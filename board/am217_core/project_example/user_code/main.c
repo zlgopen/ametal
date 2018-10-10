@@ -43,21 +43,7 @@ int am_main (void)
      *
      * 注意：同一时刻只能运行一个 demo，即只能使某一行处于取消注释状态
      */
-  
-      demo_hts221_entry();
-//    demo_shtc1_entry();
-//	  demo_mmc5883ma_entry();
-//    demo_lis3mdl_entry();
-//    demo_bme280_entry();
-//    demo_bmg160_entry ();  
-//    demo_lps22hb_entry();
-//    demo_bmp280_entry();
-//    demo_bh1730fvc_entry();
-//    demo_ltr_553als_entry();
-//	  demo_lsm6dsl_entry();
-//    demo_bma253_entry();
-//    demo_sc16is7xx_entry();
-//    demo_is25xx_entry();
+    
 //    demo_zlg217_core_std_led_entry();
 //    demo_zlg217_core_std_delay_entry();
 //    demo_zlg217_core_std_adc_entry();
@@ -125,6 +111,19 @@ int am_main (void)
 //    demo_zlg217_core_std_uart_ringbuf_entry();
 //    demo_zlg217_core_hw_wwdg_entry();
 //    demo_zlg217_core_std_wwdg_entry();
+//    demo_bma253_entry();
+//    demo_lsm6dsl_entry();
+//    demo_ltr_553als_entry();
+//    demo_bh1730fvc_entry(); 
+//    demo_bmp280_entry(); 
+//    demo_lps22hb_entry();
+//    demo_bmg160_entry();
+//    demo_bme280_entry();
+//    demo_mmc5883ma_entry();
+//    demo_lis3mdl_entry();
+//    demo_shtc1_entry();
+//    demo_hts221_entry();
+//    demo_sc16is7xx_entry(); 
     while (1) {
     }
 }

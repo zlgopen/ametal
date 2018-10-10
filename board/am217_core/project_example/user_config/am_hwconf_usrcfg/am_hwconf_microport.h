@@ -33,24 +33,10 @@
 #include "am_mx25xx.h"
 #include "am_is25xx.h"
 #include "am_ep24cxx.h"
-#include "am_sc16is7xx.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif /* __cplusplus */
-
-/*******************************************************************************
-  MicroPort SC16IS7XX 实例初始化
-*******************************************************************************/
-
-/**
- * \brief MicroPort SC16IS7XX 实例初始化
- *
- * \param 无
- *
- * \return SC16IS7XX 标准服务句柄，若为NULL，表明初始化失败
- */
-am_sc16is7xx_handle_t am_microport_sc16is7xx_inst_init (void);
 
 /*******************************************************************************
   MicroPort DS1302 实例初始化

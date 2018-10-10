@@ -12,7 +12,7 @@
 
 /**
  * \file
- * \brief SC16IS7XX é…ç½®æ–‡ä»¶
+ * \brief SC16IS7XX ÅäÖÃÎÄ¼ş
  * \sa am_hwconf_sc16is7xx.c
  *
  * \internal
@@ -31,7 +31,8 @@
  * @{
  */
 
-/** \brief è®¾å¤‡ä¿¡æ¯ */
+
+/** \brief Éè±¸ĞÅÏ¢ */
 am_local am_const am_sc16is7xx_devinfo_t __g_sc16is7xx_devinfo = {
     1,
     0X4C,
@@ -48,16 +49,16 @@ am_local am_const am_sc16is7xx_devinfo_t __g_sc16is7xx_devinfo = {
 };
 
 /*******************************************************************************
-  SC16IS7XX å®ä¾‹åˆå§‹åŒ–
+  SC16IS7XX ÊµÀı³õÊ¼»¯
 *******************************************************************************/
 
-/** \brief è®¾å¤‡å®šä¹‰ */
+/** \brief Éè±¸¶¨Òå */
 am_local am_sc16is7xx_dev_t __g_sc16is7xx_dev;
 
-/** \brief å®ä¾‹åˆå§‹åŒ– */
+/** \brief ÊµÀı³õÊ¼»¯ */
 am_sc16is7xx_handle_t am_sc16is7xx_inst_init (void)
 {
-    /* è·å– I2C å®ä¾‹å¥æŸ„ */
+    /* »ñÈ¡ I2C ÊµÀı¾ä±ú */
     am_i2c_handle_t i2c_handle =  am_zlg116_i2c1_inst_init();
 
     return am_sc16is7xx_init (&__g_sc16is7xx_dev, 
