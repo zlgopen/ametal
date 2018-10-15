@@ -17,27 +17,19 @@
  *
  * \internal
  * \par Modification history
- * - 1.00 18-09-07  wk, first implementation
+ * - 1.00 18-10-10  wk, first implementation
  * \endinternal
  */
 
+#ifndef __DEMO_AM217_CORE_ENTRIES_H
+#define __DEMO_AM217_CORE_ENTRIES_H
+ 
+#ifdef __cplusplus
+extern "C" {
+#endif
+    
 #include "amhw_zlg_adc.h"
 
-/**
- * \brief LSM6DSL例程，通过驱动层接口实现
- */
-void demo_lsm6dsl_entry(void);
-
-/**
- * \brief MMC5883MA例程，通过驱动层接口实现
- */
-void demo_mmc5883ma_entry(void);
-
-/**
- * \brief BMG160例程，通过驱动层接口实现
- */
-void demo_bmg160_entry (void);
-	
 /**
  * \brief ADC INT 例程，通过 HW 层接口实现
  */
@@ -122,12 +114,6 @@ void demo_zlg217_core_hw_i2c_slave_poll_entry (void);
  * \brief I2C 主机从 LM75 传感器读取温度值例程，通过标准接口实现
  */
 void demo_zlg217_core_std_i2c_lm75_entry (void);
-
-/**
- * \brief I2C 主机从 BMA253 传感器读取加速度值例程，通过标准接口实现
- */
-void demo_zlg217_core_std_i2c_bma253_entry (void);
-
 
 /**
  * \brief I2C 主机访问 EEPROM 例程，通过异步标准接口实现
@@ -445,5 +431,76 @@ void demo_zlg_hw_adc_int_entry (amhw_zlg_adc_t *p_hw_adc,
  * \brief gpio 例程
  */
 void demo_std_gpio_entry (int input_pin, int output_pin);
+                                
+/**
+ * \brief BMA253三轴加速度例程
+ */
+void demo_bma253_entry (void);
+
+/**
+ * \brief LTR_553ALS光照传感器例程
+ */
+void demo_ltr_553als_entry (void);
+
+/**
+ * \brief BMP280压力传感器例程
+ */
+void demo_bmp280_entry (void);
+
+/**
+ * \brief BME280压力温湿度传感器例程
+ */
+void demo_bme280_entry (void);
+
+/**
+ * \brief LPS22HB压力传感器例程
+ */
+void demo_lps22hb_entry (void);
+
+/**
+ * \brief  HTS221温湿度传感器例程
+ */
+void demo_hts221_entry (void);
+
+/**
+ * \brief BH1730FVC光传感器例程
+ */
+void demo_bh1730fvc_entry (void);
+
+/**
+ * \brief LIS3MDL三轴磁传感器例程
+ */
+void demo_lis3mdl_entry (void);
+
+/**
+ * \brief SHTC1温湿度传感器例程
+ */
+void demo_shtc1_entry (void);
+
+/**
+ * \brief BMG160三轴陀螺仪传感器例程
+ */
+void demo_bmg160_entry (void);
+
+/**
+ * \brief MMC5883三轴磁传感器例程
+ */
+void demo_mmc5883ma_entry (void);
+
+/**
+ * \brief LSM6DSL三轴加速度传感器例程
+ */
+void demo_lsm6dsl_entry (void);
+
+/**
+ * \brief SC16IS7XX I2C转UART例程
+ */
+void demo_sc16is7xx_entry (void);                               
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* __DEMO_STD_ENTRIES_H */
 
 /* end of file */

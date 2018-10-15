@@ -86,6 +86,9 @@ int am_shtc1_read_temp_hum (am_shtc1_handle_t handle,
     /* 写测量命令 */
     am_i2c_write (p_i2c_dev, 0x00, SHTC1_CSE_H, 2);
 
+    /* 等待数据转换完成 */
+    am_mdelay(10);
+    
     /* 读取测量结果 */
     ret = am_i2c_read (p_i2c_dev, 0x00, temp_value, 6);
  
