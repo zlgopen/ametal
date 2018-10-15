@@ -1700,7 +1700,7 @@
 
   <Group>
     <GroupName>startup</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -1923,8 +1923,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\book_drivers\app_temp_monitor\source\app_ temp_monitor_main.c</PathWithFileName>
-      <FilenameWithoutPath>app_ temp_monitor_main.c</FilenameWithoutPath>
+      <PathWithFileName>..\book_drivers\zigbee\source\view_zigbee1.c</PathWithFileName>
+      <FilenameWithoutPath>view_zigbee1.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1935,8 +1935,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\book_drivers\zigbee\source\view_zigbee1.c</PathWithFileName>
-      <FilenameWithoutPath>view_zigbee1.c</FilenameWithoutPath>
+      <PathWithFileName>..\book_drivers\app_temp_monitor\source\app_temp_monitor_main.c</PathWithFileName>
+      <FilenameWithoutPath>app_temp_monitor_main.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
