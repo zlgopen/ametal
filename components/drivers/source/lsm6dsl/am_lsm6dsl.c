@@ -42,7 +42,7 @@ static int __lsm6dsl_read_reg(am_lsm6dsl_handle_t handle,
     if (ret != AM_OK) {
         return ret;
     }
-		/* Êı¾İ´¦Àí */
+    /* Êı¾İ´¦Àí */
     if (accel_temp[0] & 0x01) {
         *p_accel = (((uint16_t)(accel_temp[1] << 8)
 		           | (uint16_t)accel_temp[0])*360/65535);			
@@ -125,11 +125,11 @@ am_lsm6dsl_handle_t am_lsm6dsl_init(am_lsm6dsl_dev_t     *p_dev,
     AM_DBG_INFO("lsm6dsl_ID = 0x%x\r\n", lsm6dsl_id);
 		
 		
-		 /* ÅäÖÃ×´Ì¬¼Ä´æÆ÷ */
+    /* ÅäÖÃ×´Ì¬¼Ä´æÆ÷ */
     am_i2c_write(&(p_dev->i2c_dev), LSM6DSL_CTRL1_XL, &(p_devinfo->ctrl1_xl), 1);
 		
 		
-		 /* ÅäÖÃ×´Ì¬¼Ä´æÆ÷ */
+    /* ÅäÖÃ×´Ì¬¼Ä´æÆ÷ */
     am_i2c_write(&(p_dev->i2c_dev), LSM6DSL_STATUS_REG, &(p_devinfo->status_reg), 1);
 		
 		

@@ -95,7 +95,7 @@ typedef struct bmp280_calib_param {
 	int16_t   dig_p8;
 	int16_t   dig_p9;
 	int32_t   t_fine;
-} bmp280_calib_param_t;
+} am_bmp280_calib_param_t;
     
 /**
  * \brief BMP280 实例信息结构体定义
@@ -116,7 +116,7 @@ typedef struct am_bmp280_dev {
     am_i2c_device_t i2c_dev; 
     
     /** \brief 用于保存校准参数 */
-    bmp280_calib_param_t calib_param; 
+    am_bmp280_calib_param_t calib_param; 
     
     /** \brief 用于保存设备信息指针 */
     const am_bmp280_devinfo_t  *p_devinfo;    

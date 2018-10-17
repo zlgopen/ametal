@@ -49,8 +49,8 @@
  * \brief BH1730FVC设备初始化
  */
 am_bh1730fvc_handle_t am_bh1730fvc_init (am_bh1730fvc_dev_t *p_dev, 
-                                        const am_bh1730fvc_devinfo_t *p_devinfo, 
-                                        am_i2c_handle_t i2c_handle)  
+                                         const am_bh1730fvc_devinfo_t *p_devinfo, 
+                                         am_i2c_handle_t i2c_handle)  
 {
     uint8_t bh1730fvc_id = 0 ;
     uint8_t control = 0x00;

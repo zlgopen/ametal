@@ -128,7 +128,7 @@ static int __bme280_read_calib_param (am_bme280_handle_t handle,
  * \brief 读取温度校准参数
  */
 static int __read_bme280_temp_calib_param (am_bme280_handle_t handle, 
-                                           bme280_calib_param_t *calib_param)
+                                           am_bme280_calib_param_t *calib_param)
 {
     int ret = AM_OK;
                                                          
@@ -164,7 +164,7 @@ static int __read_bme280_temp_calib_param (am_bme280_handle_t handle,
  * \brief 读取压力校准参数
  */
 static int __read_bme280_press_calib_param (am_bme280_handle_t handle, 
-                                            bme280_calib_param_t *calib_param)
+                                            am_bme280_calib_param_t *calib_param)
 {
     int ret = AM_OK;
     
@@ -249,7 +249,7 @@ static int __read_bme280_press_calib_param (am_bme280_handle_t handle,
  * \brief 读取湿度校准参数
  */
 static int __read_bme280_hum_calib_param (am_bme280_handle_t handle, 
-                                          bme280_calib_param_t *calib_param)
+                                          am_bme280_calib_param_t *calib_param)
 {
     uint8_t temp_value[2] = {0};
     int ret = AM_OK;
@@ -474,7 +474,7 @@ int am_bme280_read_temp (am_bme280_handle_t handle, int8_t *temp)
     int ret = AM_OK;
     
     /* 校准参数指针 */
-    bme280_calib_param_t *calib_param = &(handle->calib_param);
+    am_bme280_calib_param_t *calib_param = &(handle->calib_param);
     
     /* 读取温度ADC */
     ret = __bme280_read_temp_reg(handle, &adc_temp);
@@ -515,7 +515,7 @@ int am_bme280_read_press (am_bme280_handle_t handle, uint32_t *press)
     int ret = AM_OK;
     
     /* 校准参数指针 */
-    bme280_calib_param_t *calib_param = &(handle->calib_param);
+    am_bme280_calib_param_t *calib_param = &(handle->calib_param);
     
     t_fine = calib_param->t_fine; 
     
@@ -557,7 +557,7 @@ int am_bme280_read_hum (am_bme280_handle_t handle, uint8_t *humidity)
     int       ret     = AM_OK;
     
     /* 校准参数指针 */
-    bme280_calib_param_t *calib_param = &(handle->calib_param);
+    am_bme280_calib_param_t *calib_param = &(handle->calib_param);
     
     /* 读取湿度ADC */
     ret = __bme280_read_hum_reg(handle, &hum_adc);

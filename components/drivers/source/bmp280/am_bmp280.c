@@ -108,14 +108,14 @@ static int __bmp280_read_calib_param (am_bmp280_handle_t handle,
  * \brief 读取温度校准参数
  */
 static int __read_bmp280_temp_calib_param (am_bmp280_handle_t handle, 
-                                           bmp280_calib_param_t *calib_param)
+                                           am_bmp280_calib_param_t *calib_param)
 {
     int ret = AM_OK;
                                                          
     /* 读取温度校准参数T1 */
     ret = __bmp280_read_calib_param (handle,
-                                    BMP280_DIG_T1_LSB_ADDR,
-                                    (int16_t*)&(calib_param->dig_t1));
+                                     BMP280_DIG_T1_LSB_ADDR,
+                                     (int16_t*)&(calib_param->dig_t1));
     /* 检查读取是否失败 */
     if (ret != AM_OK) {
         return ret;
@@ -123,16 +123,16 @@ static int __read_bmp280_temp_calib_param (am_bmp280_handle_t handle,
     
     /* 读取温度校准参数T2 */
     ret = __bmp280_read_calib_param (handle,
-                                    BMP280_DIG_T2_LSB_ADDR,
-                                    &(calib_param->dig_t2)); 
+                                     BMP280_DIG_T2_LSB_ADDR,
+                                     &(calib_param->dig_t2)); 
     /* 检查读取是否失败 */
     if (ret != AM_OK) {
         return ret;
     }
     /* 读取温度校准参数T3 */
     ret = __bmp280_read_calib_param (handle,
-                                    BMP280_DIG_T3_LSB_ADDR,
-                                    &(calib_param->dig_t3));
+                                     BMP280_DIG_T3_LSB_ADDR,
+                                     &(calib_param->dig_t3));
     /* 检查读取是否失败 */
     if (ret != AM_OK) {
         return ret;
@@ -144,30 +144,30 @@ static int __read_bmp280_temp_calib_param (am_bmp280_handle_t handle,
  * \brief 读取压力校准参数
  */
 static int __read_bmp280_press_calib_param (am_bmp280_handle_t handle, 
-                                            bmp280_calib_param_t *calib_param)
+                                            am_bmp280_calib_param_t *calib_param)
 {
     int ret = AM_OK;
     
     /* 读取气压校准寄存器 */
     ret = __bmp280_read_calib_param (handle, 
-                                    BMP280_DIG_P1_LSB_ADDR,
-                                    (int16_t*)&(calib_param->dig_p1));
+                                     BMP280_DIG_P1_LSB_ADDR,
+                                     (int16_t*)&(calib_param->dig_p1));
     /* 检查读取是否失败 */
     if (ret != AM_OK) {
         return ret;
     }  
     
     ret = __bmp280_read_calib_param (handle, 
-                                    BMP280_DIG_P2_LSB_ADDR,
-                                    &(calib_param->dig_p2));
+                                     BMP280_DIG_P2_LSB_ADDR,
+                                     &(calib_param->dig_p2));
     /* 检查读取是否失败 */
     if (ret != AM_OK) {
         return ret;
     } 
     
     ret = __bmp280_read_calib_param (handle, 
-                                    BMP280_DIG_P3_LSB_ADDR,
-                                    &(calib_param->dig_p3));
+                                     BMP280_DIG_P3_LSB_ADDR,
+                                     &(calib_param->dig_p3));
     /* 检查读取是否失败 */
     if (ret != AM_OK) {
         return ret;
@@ -175,48 +175,48 @@ static int __read_bmp280_press_calib_param (am_bmp280_handle_t handle,
     
     
     ret = __bmp280_read_calib_param (handle, 
-                                    BMP280_DIG_P4_LSB_ADDR,
-                                    &(calib_param->dig_p4));
+                                     BMP280_DIG_P4_LSB_ADDR,
+                                     &(calib_param->dig_p4));
     /* 检查读取是否失败 */
     if (ret != AM_OK) {
         return ret;
     } 
     
     ret = __bmp280_read_calib_param (handle, 
-                                    BMP280_DIG_P5_LSB_ADDR,
-                                    &(calib_param->dig_p5));
+                                     BMP280_DIG_P5_LSB_ADDR,
+                                     &(calib_param->dig_p5));
     /* 检查读取是否失败 */
     if (ret != AM_OK) {
         return ret;
     }   
     
     ret = __bmp280_read_calib_param (handle, 
-                                    BMP280_DIG_P6_LSB_ADDR,
-                                    &(calib_param->dig_p6));
+                                     BMP280_DIG_P6_LSB_ADDR,
+                                     &(calib_param->dig_p6));
     /* 检查读取是否失败 */
     if (ret != AM_OK) {
         return ret;
     }     
     
     ret = __bmp280_read_calib_param (handle, 
-                                    BMP280_DIG_P7_LSB_ADDR,
-                                    &(calib_param->dig_p7));
+                                     BMP280_DIG_P7_LSB_ADDR,
+                                     &(calib_param->dig_p7));
     /* 检查读取是否失败 */
     if (ret != AM_OK) {
         return ret;
     } 
     
     ret = __bmp280_read_calib_param (handle, 
-                                    BMP280_DIG_P8_LSB_ADDR,
-                                    &(calib_param->dig_p8));
+                                     BMP280_DIG_P8_LSB_ADDR,
+                                     &(calib_param->dig_p8));
     /* 检查读取是否失败 */
     if (ret != AM_OK) {
         return ret;
     }  
     
     ret = __bmp280_read_calib_param (handle, 
-                                    BMP280_DIG_P9_LSB_ADDR,
-                                    &(calib_param->dig_p9));
+                                     BMP280_DIG_P9_LSB_ADDR,
+                                     &(calib_param->dig_p9));
     /* 检查读取是否失败 */
     if (ret != AM_OK) {
         return ret;
@@ -349,7 +349,7 @@ int am_bmp280_read_temp (am_bmp280_handle_t handle, int8_t *temp)
     int ret = AM_OK;
     
     /* 校准参数指针 */
-    bmp280_calib_param_t *calib_param = &(handle->calib_param);
+    am_bmp280_calib_param_t *calib_param = &(handle->calib_param);
     
     /* 读取温度ADC */
     ret = __bmp280_read_temp_reg(handle, &adc_temp);
@@ -389,7 +389,7 @@ int am_bmp280_read_press (am_bmp280_handle_t handle, uint32_t *press)
     int ret = AM_OK;
     
     /* 校准参数指针 */
-    bmp280_calib_param_t *calib_param = &(handle->calib_param);
+    am_bmp280_calib_param_t *calib_param = &(handle->calib_param);
     
     t_fine = calib_param->t_fine; 
     
