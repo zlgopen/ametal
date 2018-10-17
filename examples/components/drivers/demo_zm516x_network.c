@@ -67,7 +67,6 @@
 #include "am_vdebug.h"
 #include "am_board.h"
 #include "am_lpc82x.h"
-#include "am_lpc82x_inst_init.h"
 #include <stdio.h>
 
 #define MASTER_BORD_USE    /**< \brief 使用该宏时，本例程用于主机 */
