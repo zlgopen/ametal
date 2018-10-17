@@ -55,7 +55,6 @@
 #include "am_delay.h"
 #include "am_vdebug.h"
 #include "am_board.h"
-#include "am_lpc82x_inst_init.h"
 
 /**
  * \brief иак╦ LED0

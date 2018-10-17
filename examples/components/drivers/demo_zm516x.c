@@ -63,7 +63,6 @@
 #include "am_vdebug.h"
 #include "am_board.h"
 #include <string.h>
-#include "am_lpc82x_inst_init.h"
 
 
 #define USE_BORD0            /**< \brief 使用该宏时，本例程用于单板 0 */
