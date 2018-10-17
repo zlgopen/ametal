@@ -23,9 +23,9 @@
 
 #include "ametal.h"
 #include "am_board.h"
-#include "am_nvram_cfg.h"
 #include "am_prj_config.h"
 #include "am_lpc82x_inst_init.h"
+#include "am_service_inst_init.h"
 
 extern int am_main (void);
 

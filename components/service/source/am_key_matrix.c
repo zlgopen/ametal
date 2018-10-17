@@ -21,6 +21,7 @@
  */
 #include "am_key_matrix.h"
 #include "am_input.h"
+#include "am_event_input_key.h"
 
 /*******************************************************************************
    Local Functions
@@ -50,26 +51,27 @@ static int __key_code_get (am_key_matrix_t *p_dev, int idx)
 /* read change report */
 static int __key_val_report (am_key_matrix_t *p_dev)
 {
+    uint32_t  key_change = p_dev->key_samp_cur ^ p_dev->key_final;
+    uint8_t   key_num    = p_dev->p_info->col * p_dev->p_info->row;
+    uint32_t  key_cur    = p_dev->key_samp_cur;
+    am_bool_t active_low = am_key_matrix_active_low_get(p_dev->p_info);
+
+    int key_code;
     int i;
-    uint32_t key_change = p_dev->key_samp_cur ^ p_dev->key_final;
-    uint8_t  key_num    = p_dev->p_info->col * p_dev->p_info->row;
-    uint32_t key_cur    = p_dev->key_samp_cur;
-
-    int key_state_0 = am_key_matrix_active_low_get(p_dev->p_info) ?
-                      AM_INPUT_KEY_STATE_PRESSED  :
-                      AM_INPUT_KEY_STATE_RELEASED;
-
-    int key_state_1 = am_key_matrix_active_low_get(p_dev->p_info) ?
-                      AM_INPUT_KEY_STATE_RELEASED :
-                      AM_INPUT_KEY_STATE_PRESSED;
 
     for (i = 0; i < key_num; i++) {
         if (key_change & (1u << i)) {
 
-            if ((key_cur & (1u << i)) == 0) {
-                am_input_key_report(__key_code_get(p_dev, i), key_state_0);
+            key_code = __key_code_get(p_dev, i);       /* 状态变化的按键键码  */
+
+            /* 按键激活电平与当前电平相同，按键按下，否则，按键释放 */
+            if ((((key_cur & (1u << i)) == 0) && active_low) ||
+                (((key_cur & (1u << i)) != 0) && !active_low)) {
+
+                am_event_input_key_pressed(key_code);
+
             } else {
-                am_input_key_report(__key_code_get(p_dev, i), key_state_1);
+                am_event_input_key_released(key_code);
             }
         }
     }
