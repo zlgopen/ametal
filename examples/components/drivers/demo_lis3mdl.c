@@ -59,6 +59,6 @@ void demo_lis3mdl_entry (void)
         am_mdelay(500);
     }
 }
-/** [src_bh1730fvc] */
+/** [src_lis3mdl] */
 
 /* end of file */

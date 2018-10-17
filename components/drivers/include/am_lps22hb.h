@@ -32,7 +32,13 @@ extern "C" {
 #include "am_vdebug.h"
 #include "am_delay.h"
 #include "am_i2c.h"
- 
+
+/**
+ * \addtogroup am_if_lps22hb
+ * \copydoc am_lps22hb.h
+ * @{
+ */
+    
 /**
  * \brief LPS22HB传感器配置
  */
@@ -88,7 +94,6 @@ typedef struct am_lps22hb_dev {
 /** \brief LPS22HB操作句柄定义 */
 typedef am_lps22hb_dev_t *am_lps22hb_handle_t;
 
-
 /**
  * \brief LPS22HB传感器初始化
  *
@@ -124,6 +129,10 @@ int am_lsp22hb_read_temp (am_lps22hb_handle_t handle, int16_t *temp);
  */                                   
 int am_lsp22hb_read_press (am_lps22hb_handle_t handle, uint32_t *press); 
 
+/**
+ * @}
+ */
+ 
 #ifdef __cplusplus
 }
 #endif

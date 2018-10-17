@@ -22,6 +22,25 @@
 
 #include "am_mmc5883ma.h"
 
+#define MMC5883MA_ADDR                  0x30  /**< \brief i2cµØÖ· */
+
+/** \brief Éè±¸¼Ä´æÆ÷µØÖ· */
+#define MMC5883MA_XOUT_LOW              0x00  /**< \brief Xout LSB */
+#define MMC5883MA_XOUT_HIGH             0x01  /**< \brief Xout MSB */
+#define MMC5883MA_YOUT_LOW              0x02  /**< \brief Yout LSB */
+#define MMC5883MA_YOUT_HIGH             0x03  /**< \brief Yout MSB */
+#define MMC5883MA_ZOUT_LOW              0x04  /**< \brief Zout LSB */
+#define MMC5883MA_ZOUT_HIGH             0x05  /**< \brief Zout MSB */
+#define MMC5883MA_TEMPERATURE           0x06  /**< \brief Temperature output*/
+#define MMC5883MA_STATUS                0x07  /**< \brief Device status */
+#define MMC5883MA_INTERNAL_CONTROL_0    0x08  /**< \brief Control register 0 */
+#define MMC5883MA_INTERNAL_CONTROL_1    0x09  /**< \brief Control register 1 */
+#define MMC5883MA_INTERNAL_CONTROL_2    0x0A  /**< \brief Control register 2 */
+#define MMC5883MA_X_THRESHOLD           0x0B  /**< \brief Motion detection threshold of X */
+#define MMC5883MA_Y_THRESHOLD           0x0C  /**< \brief Motion detection threshold of Y */
+#define MMC5883MA_Z_THRESHOLD           0x0D  /**< \brief Motion detection threshold of Z */
+#define MMC5883MA_PRODUCT_ID_1          0x2F  /**< \brief Product ID */
+
 /**
  * \brief ¶ÁÈ¡MMC5883MAÈýÖáÍÓÂÝÒÇ¼Ä´æÆ÷
  * \return AM_OK:³É¹¦    OTHER£ºÊ§°Ü
@@ -54,7 +73,7 @@ int __mmc5883ma_read_reg(am_mmc5883ma_handle_t handle,
     return ret;
 }
  
- /**
+/**
  * \brief ¶ÁÈ¡mmc5883maÈýÖáÍÓÂÝÒÇ
  * \return AM_OK:³É¹¦    OTHER£ºÊ§°Ü
  */

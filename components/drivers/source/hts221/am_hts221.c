@@ -107,7 +107,7 @@ static int __hts221_read_calib_param_x (am_hts221_handle_t handle,
  * \brief 读取温度校准参数y轴数据
  * \param[in]   handle : HTS221服务操作句柄
  * \param[in]  reg_addr: 寄存器地址
- * \param[in]   calib_y: 指向读取的数据指针    
+ * \param[out]  calib_y: 指向读取的数据指针    
  * \return       AM_OK : 读取成功
  * \return       OTHER : 读取失败
  */
@@ -152,7 +152,7 @@ static int __hts221_read_temp_calib_param_y (am_hts221_handle_t handle,
  * \brief 读取湿度校准参数y轴数据
  * \param[in]   handle : HTS221服务操作句柄
  * \param[in]  reg_addr: 寄存器地址
- * \param[in]   calib_y: 指向读取的数据指针    
+ * \param[out]  calib_y: 指向读取的数据指针    
  * \return       AM_OK : 读取成功
  * \return       OTHER : 读取失败
  */
@@ -189,38 +189,38 @@ static void __hts221_read_calib_param (am_hts221_handle_t handle)
     
     /* 读取湿度校准参数 */
     __hts221_read_calib_param_x (handle,
-                                HTS221_H0_T0_OUT_L,
-                                &(calib_param_hum->x0)); 
+                                 HTS221_H0_T0_OUT_L,
+                                 &(calib_param_hum->x0)); 
 
     __hts221_read_hum_calib_param_y (handle,
-                                    HTS221_H0_RH_X2,
-                                    &(calib_param_hum->y0));
+                                     HTS221_H0_RH_X2,
+                                     &(calib_param_hum->y0));
 
     __hts221_read_calib_param_x (handle,
-                                HTS221_H1_T0_OUT_L,
-                                &(calib_param_hum->x1));  
+                                 HTS221_H1_T0_OUT_L,
+                                 &(calib_param_hum->x1));  
 
     __hts221_read_hum_calib_param_y (handle,
-                                    HTS221_H1_RH_X2,
-                                    &(calib_param_hum->y1));
+                                     HTS221_H1_RH_X2,
+                                     &(calib_param_hum->y1));
     
     
     /* 读取温度校准参数 */         
     __hts221_read_calib_param_x (handle,
-                                HTS221_T0_OUT_L,
-                                &(calib_param_temp->x0));
+                                 HTS221_T0_OUT_L,
+                                 &(calib_param_temp->x0));
 
     __hts221_read_temp_calib_param_y (handle,
-                                     HTS221_T0_DEGC_X8,
-                                     (uint16_t*)&(calib_param_temp->y0));
+                                      HTS221_T0_DEGC_X8,
+                                      (uint16_t*)&(calib_param_temp->y0));
 
     __hts221_read_calib_param_x (handle,
-                                HTS221_T1_OUT_L,
-                                &(calib_param_temp->x1));        
+                                 HTS221_T1_OUT_L,
+                                 &(calib_param_temp->x1));        
 
     __hts221_read_temp_calib_param_y (handle,
-                                     HTS221_T1_DEGC_X8,
-                                     (uint16_t*)&(calib_param_temp->y1));
+                                      HTS221_T1_DEGC_X8,
+                                      (uint16_t*)&(calib_param_temp->y1));
  
     /* 输出校准数据 */    
     AM_DBG_INFO("T0 = %d ℃  T0_out = %d \r\n",

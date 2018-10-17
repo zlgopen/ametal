@@ -33,6 +33,12 @@ extern "C" {
 #include "am_i2c.h"
  
 /**
+ * \addtogroup am_if_lis3mdl
+ * \copydoc am_lis3mdl.h
+ * @{
+ */    
+    
+/**
  * \brief LIS3MDL´«¸ĞÆ÷ÅäÖÃ
  */
 typedef enum am_lis3mdl_config {
@@ -166,7 +172,11 @@ int am_lis3mdl_read (am_lis3mdl_handle_t handle, uint16_t *p_data);
  * \retval OTHER : ¶ÁÈ¡Ê§°Ü
  */                                     
 int am_lis3mdl_read_temp (am_lis3mdl_handle_t handle, int8_t *p_temp);                                     
-                                     
+
+/**
+ * @}
+ */
+
 #ifdef __cplusplus
 }
 #endif

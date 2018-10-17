@@ -134,8 +134,8 @@ static int __read_bme280_temp_calib_param (am_bme280_handle_t handle,
                                                          
     /* 读取温度校准参数T1 */
     ret = __bme280_read_calib_param (handle,
-                                    BME280_DIG_T1_LSB_ADDR,
-                                    (int16_t*)&(calib_param->dig_t1));
+                                     BME280_DIG_T1_LSB_ADDR,
+                                     (int16_t*)&(calib_param->dig_t1));
     /* 检查读取是否失败 */
     if (ret != AM_OK) {
         return ret;
@@ -143,16 +143,16 @@ static int __read_bme280_temp_calib_param (am_bme280_handle_t handle,
     
     /* 读取温度校准参数T2 */
     ret = __bme280_read_calib_param (handle,
-                                    BME280_DIG_T2_LSB_ADDR,
-                                    &(calib_param->dig_t2)); 
+                                     BME280_DIG_T2_LSB_ADDR,
+                                     &(calib_param->dig_t2)); 
     /* 检查读取是否失败 */
     if (ret != AM_OK) {
         return ret;
     }
     /* 读取温度校准参数T3 */
     ret = __bme280_read_calib_param (handle,
-                                    BME280_DIG_T3_LSB_ADDR,
-                                    &(calib_param->dig_t3));
+                                     BME280_DIG_T3_LSB_ADDR,
+                                     &(calib_param->dig_t3));
     /* 检查读取是否失败 */
     if (ret != AM_OK) {
         return ret;
@@ -170,16 +170,16 @@ static int __read_bme280_press_calib_param (am_bme280_handle_t handle,
     
     /* 读取气压校准寄存器 */
     ret = __bme280_read_calib_param (handle, 
-                                    BME280_DIG_P1_LSB_ADDR,
-                                    (int16_t*)&(calib_param->dig_p1));
+                                     BME280_DIG_P1_LSB_ADDR,
+                                     (int16_t*)&(calib_param->dig_p1));
     /* 检查读取是否失败 */
     if (ret != AM_OK) {
         return ret;
     }  
     
     ret = __bme280_read_calib_param (handle, 
-                                    BME280_DIG_P2_LSB_ADDR,
-                                    &(calib_param->dig_p2));
+                                     BME280_DIG_P2_LSB_ADDR,
+                                     &(calib_param->dig_p2));
     /* 检查读取是否失败 */
     if (ret != AM_OK) {
         return ret;
@@ -464,7 +464,8 @@ am_bme280_handle_t am_bme280_init (am_bme280_dev_t *p_dev,
 
 /**
  * \brief 读取BME280温度
- * \return 温度值 单位 ℃
+ * \param[in]  handle : BME280服务操作句柄
+ * \param[out] temp   : 指向温度的指针
  */
 int am_bme280_read_temp (am_bme280_handle_t handle, int8_t *temp)
 {
@@ -504,7 +505,8 @@ int am_bme280_read_temp (am_bme280_handle_t handle, int8_t *temp)
 
 /**
  * \brief 读取BME280气压
- * \return 气压值 单位 Pa
+ * \param[in]  handle : BME280服务操作句柄
+ * \param[out] press  : 指向气压的指针
  */
 int am_bme280_read_press (am_bme280_handle_t handle, uint32_t *press)
 {
@@ -546,7 +548,8 @@ int am_bme280_read_press (am_bme280_handle_t handle, uint32_t *press)
 
 /**
  * \brief 读取BME280湿度
- * \return 湿度值 单位 rH
+ * \param[in]  handle   : BME280服务操作句柄
+ * \param[out] humidity : 指向湿度的指针
  */
 int am_bme280_read_hum (am_bme280_handle_t handle, uint8_t *humidity)
 {

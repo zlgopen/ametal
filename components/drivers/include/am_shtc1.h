@@ -31,7 +31,13 @@ extern "C" {
 #include "am_vdebug.h"
 #include "am_delay.h"
 #include "am_i2c.h"
-   
+ 
+/**
+ * \addtogroup am_if_shtc1
+ * \copydoc am_shtc1.h
+ * @{
+ */
+    
 /**
  * \brief SHTC1 设备结构体
  */
@@ -49,7 +55,6 @@ typedef am_shtc1_dev_t *am_shtc1_handle_t;
  * \brief SHTC1传感器初始化
  *
  * \param[in] p_dev      : 指向SHTC1设备结构体的指针
- * \param[in] p_devinfo  : 指向SHTC1设备信息结构体的指针 
  * \param[in] i2c_handle : I2C标准服务操作句柄
  *
  * \return SHTC1服务操作句柄,如果为 NULL，表明初始化失败
@@ -69,8 +74,12 @@ am_shtc1_handle_t am_shtc1_init (am_shtc1_dev_t *p_dev,
  */                                 
 int am_shtc1_read_temp_hum (am_shtc1_handle_t handle, 
                             int8_t *p_temp, 
-                            uint8_t *p_hum);                                 
-                          
+                            uint8_t *p_hum); 
+
+/**
+ * @}
+ */     
+
 #ifdef __cplusplus
 }
 #endif

@@ -154,8 +154,8 @@ int am_ltr_553als_read_ps (am_ltr_553als_handle_t handle, uint16_t* p_ps)
  * \brief LTR_553ALS传感器初始化
  */
 am_ltr_553als_handle_t am_ltr_553als_init (am_ltr_553als_dev_t *p_dev,
-                                      const am_ltr_553als_devinfo_t *p_devinfo,
-                                      am_i2c_handle_t i2c_handle)
+                                           const am_ltr_553als_devinfo_t *p_devinfo,
+                                           am_i2c_handle_t i2c_handle)
 {
     /* 用于保存临时参数 */
     uint8_t ltr_553als_id = 0;

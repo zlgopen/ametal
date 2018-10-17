@@ -33,16 +33,16 @@
 
 /** \brief 设备信息 */
 am_local am_const am_bh1730fvc_devinfo_t __g_bh1730fvc_devinfo = {
-    MEAS_CONTINUE,
-    TYPE0_ONLY,
-    ADC_EN,
-    POWER_ON,
-    0xDA,
-    ADC_MODE_X64
+    MEAS_CONTINUE,                        /**< \brief 连续测量                */
+    TYPE0_ONLY,                           /**< \brief 仅测量类型0             */
+    ADC_EN,                               /**< \brief 使能ADC转换             */
+    POWER_ON,                             /**< \brief 打开电源                */ 
+    0xDA,                                 /**< \brief 配置积分时间            */
+    ADC_MODE_X64                          /**< \brief X64增益模式             */
 };
 
 /*******************************************************************************
-  HTS221 实例初始化
+  BH1730FVC 实例初始化
 *******************************************************************************/
 
 /** \brief 设备定义 */

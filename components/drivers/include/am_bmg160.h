@@ -92,60 +92,6 @@ typedef struct am_bmg160_devinfo {
     uint8_t sleep_period;           /**< \brief 低功耗模式睡眠周期 */
 } am_bmg160_devinfo_t;
 	
-
-#define BMG160_ADDR          0x68   /**< \brief i2c地址 */
-
-#define BMG160_CHIP_ID       0x00   /**< \brief 包含芯片编码 */
-                              
-#define BMG160_RATE_X_LSB    0x02   /**< \brief 包含X通道角速率读数值的最低有效位 */
-#define BMG160_RATE_X_MSB    0x03   /**< \brief 包含X通道角速率读数值的最高有效位 */
-#define BMG160_RATE_Y_LSB    0x04   /**< \brief 包含Y通道角速率读数值的最低有效位 */
-#define BMG160_RATE_Y_MSB    0x05   /**< \brief 包含Y通道角速率读数值的最高有效位 */
-#define BMG160_RATE_Z_LSB    0x06   /**< \brief 包含Z通道角速率读数值的最低有效位 */
-#define BMG160_RATE_Z_MSB    0x07   /**< \brief 包含Z通道角速率读数值的最高有效位 */
-#define BMG160_TEMP          0x08   /**< \brief 包含当前芯片温度 */
-#define BMG160_INT_STATUS_0  0x09   /**< \brief 包含中断状态位 */
-#define BMG160_INT_STATUS_1  0x0A   /**< \brief 包含中断状态位 */
-#define BMG160_INT_STATUS_2  0x0B   /**< \brief 包含任何运动中断状态位 */
-#define BMG160_INT_STATUS_3  0x0C   /**< \brief 包含高速率中断状态位 */
-                             
-#define BMG160_FIFO_STATUS   0x0E   /**< \brief 包含FIFO状态标志 */
-#define BMG160_RANGE         0x0F   /**< \brief 包含BMG160支持四种不同的角速率测量范围 */
-#define BMG160_BW            0x10   /**< \brief 该寄存器允许选择速率数据滤波器带宽 */
-#define BMG160_LPM1          0x11   /**< \brief 选择主电源模式 */
-#define BMG160_LPM2          0x12   /**< \brief 快速上电和外部触发的配置设置 */
-#define BMG160_RATE_HBW      0x13   /**< \brief 角速率数据采集和数据输出格式 */
-#define BMG160_BGW_SOFTRESET 0x14	  /**< \brief 控制用户触发的传感器复位 */ 
-#define BMG160_INT_EN_0      0x15   /**< \brief 控制启用哪些中断 */
-#define BMG160_INT_EN_1      0x16   /**< \brief 包含中断引脚配置 */
-#define BMG160_INT_MAP_0     0x17   /**< \brief 控制哪些中断信号映射到INT1引脚 */
-#define BMG160_INT_MAP_1     0x18   /**< \brief 控制哪些中断信号映射到INT1引脚和INT2引脚 */
-#define BMG160_INT_MAP_2     0x19   /**< \brief 控制哪些中断信号映射到INT2引脚 */
-                              
-#define BMG160_INT_RST_LATCH 0x21   /**< \brief 包含中断复位位和中断模式选择 */
-#define BMG160_High_Th_x     0x22   /**< \brief 包含x轴的高速率阈值和高速率滞后设置 */
-#define BMG160_High_Dur_x    0x23   /**< \brief 包含x轴的高速率持续时间设置 */
-#define BMG160_High_Th_y     0x24   /**< \brief 包含y轴的高速率阈值和高速率滞后设置 */
-#define BMG160_High_Dur_y    0x25   /**< \brief 包含y轴的高速率持续时间设置 */
-#define BMG160_High_Th_z     0x26   /**< \brief 包含z轴的高速率阈值和高速率滞后设置 */
-#define BMG160_High_Dur_z    0x27   /**< \brief 包含z轴的高速率持续时间设置 */
-                              
-#define BMG160_SoC           0x31   /**< \brief 包含慢速偏移取消设置 */
-#define BMG160_A_FOC         0x32   /**< \brief 包含快速偏移取消设置 */
-#define BMG160_TRIM_NVM_CTRL 0x33   /**< \brief 包含几次可编程非易失性存储器（NVM）的控制设置 */
-#define BMG160_BGW_SPI3_WDT  0x34   /**< \brief 包含数字接口的设置 */
-                              
-#define BMG160_OFC1          0x36   /**< \brief 包含偏移补偿值 */
-#define BMG160_OFC2          0x37   /**< \brief 包含X通道的偏移补偿值 */
-#define BMG160_OFC3          0x38   /**< \brief 包含Y通道的偏移补偿值 */
-#define BMG160_OFC4          0x39   /**< \brief 包含Z通道的偏移补偿值 */
-#define BMG160_TRIM_GP0      0x3A   /**< \brief 包含具有NVM备份的通用数据寄存器 */
-#define BMG160_TRIM_GP1      0x3B   /**< \brief 包含具有NVM备份的通用数据寄存器 */
-#define BMG160_BIST          0x3C   /**< \brief 包含内置自测（BIST）功能 */
-#define BMG160_FIFO_CONFIG_0 0x3D   /**< \brief 包含FIFOwatermark级别 */
-#define BMG160_FIFO_CONFIG_1 0x3E   /**< \brief 包含FIFO配置设置 */
-#define BMG160_FIFO_DATA     0x3F   /**< \brief FIFO数据读出寄存器 */
-
 /**
  * \brief BMG160 设备结构体
  */
@@ -160,7 +106,7 @@ typedef am_bmg160_dev_t *am_bmg160_handle_t;
  * \brief BMG160传感器读取三轴陀螺仪
  *
  * \param[in]  handle  : BMG160服务操作句柄
- * \param[out] p_accel : 指向陀螺仪的指针
+ * \param[out] p_rate  : 指向陀螺仪的指针
  *
  * \retval AM_OK : 读取成功
  * \retval OTHER : 读取失败
@@ -182,13 +128,14 @@ int am_bmg160_read_temp (am_bmg160_handle_t handle,int8_t* p_temp);
  * \brief BMG160传感器初始化
  *
  * \param[in] p_dev      : 指向BMG160设备结构体的指针
+ * \param[in] p_devinfo  : 指向BMG160设备信息结构体的指针 
  * \param[in] i2c_handle : I2C标准服务操作句柄
  *
  * \return BMG160服务操作句柄,如果为 NULL，表明初始化失败
  */
 am_bmg160_handle_t am_bmg160_init (am_bmg160_dev_t           *p_dev,
                                    const am_bmg160_devinfo_t *p_devinfo,  
-								                   am_i2c_handle_t           i2c_handle);
+                                   am_i2c_handle_t           i2c_handle);
 
 /**
  * \brief BMG160 设备解初始化

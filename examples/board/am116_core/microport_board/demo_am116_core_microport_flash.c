@@ -48,9 +48,9 @@
  * \brief 例程入口
  */
 void demo_am116_core_microport_flash_entry (void)
-{
+{                                                                                 
     AM_DBG_INFO("demo am116_core microport flash!\r\n");
-    
+
     /* MX25xx flash例程 */
 //    demo_mx25xx_entry(am_microport_flash_inst_init(), 8);
 

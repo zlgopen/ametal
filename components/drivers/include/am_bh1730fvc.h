@@ -31,7 +31,13 @@ extern "C" {
 #include "am_vdebug.h"
 #include "am_delay.h"
 #include "am_i2c.h"
-  
+
+/**
+ * \addtogroup am_if_bh1730fvc
+ * \copydoc am_bh1730fvc.h
+ * @{
+ */
+    
 /**
  * \brief BH1730FVC传感器配置
  */
@@ -106,7 +112,6 @@ typedef struct am_bh1730fvc_dev {
 /** \brief BH1730FVC操作句柄定义 */
 typedef am_bh1730fvc_dev_t *am_bh1730fvc_handle_t;    
 
-
 /**
  * \brief BH1730FVC传感器初始化
  *
@@ -132,6 +137,9 @@ am_bh1730fvc_handle_t am_bh1730fvc_init (am_bh1730fvc_dev_t *p_dev,
 int am_bh1730fvc_read_als_adc (am_bh1730fvc_handle_t handle, 
                                uint16_t *p_als_adc);
                                     
+/**
+ * @}
+ */
 
 #ifdef __cplusplus
 }

@@ -35,9 +35,9 @@
 /** \brief 设备信息 */
 am_local am_const am_lsm6dsl_devinfo_t __g_lsm6dsl_devinfo = {
   
-	 CTRL1_XL,
-	 STATUS_REG,
-   FIFO_ODR_12point5       /**< \brief FIFO输出速率为12.5Hz   */
+    CTRL1_XL,
+    STATUS_REG,
+    FIFO_ODR_12point5       /**< \brief FIFO输出速率为12.5Hz   */
 
 };
  
