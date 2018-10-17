@@ -29,7 +29,6 @@
 
 #include "ametal.h"
 #include "am_nvram.h"
-#include "am_nvram_cfg.h"
 
 /**
  * \addtogroup am_if_src_servconf_nvram_cfg

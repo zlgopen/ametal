@@ -22,6 +22,7 @@
 #include "am_key_gpio.h"
 #include "am_gpio.h"
 #include "am_input.h"
+#include "am_event_input_key.h"
 
 /*******************************************************************************
    Local Functions
@@ -60,11 +61,9 @@ static void __key_gpio_timer_cb (void *p_arg)
                 if (key_change & (1u << i)) {
 
                     if (!!(key_value & (1u << i)) == !!p_dev->p_info->active_low) {
-                        am_input_key_report(p_dev->p_info->p_codes[i],
-                                            AM_INPUT_KEY_STATE_RELEASED);
+                        am_event_input_key_released(p_dev->p_info->p_codes[i]);
                     } else {
-                        am_input_key_report(p_dev->p_info->p_codes[i],
-                                            AM_INPUT_KEY_STATE_PRESSED);
+                        am_event_input_key_pressed(p_dev->p_info->p_codes[i]);
                     }
                 }
             }

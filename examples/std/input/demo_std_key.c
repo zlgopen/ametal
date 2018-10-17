@@ -42,10 +42,10 @@
 /**
  * \brief 按键事件回调函数
  */
-am_local void __input_key_proc (void *p_arg, int key_code, int key_state)
+am_local void __input_key_proc (void *p_arg, int key_code, int key_state, int keep_time)
 {
     if (key_state == AM_INPUT_KEY_STATE_PRESSED) {
-        AM_DBG_INFO("key_code: %d Press! \r\n", key_code);
+        AM_DBG_INFO("key_code: %d Press! Keep_time is %d\r\n", key_code, keep_time);
     } else if (key_state == AM_INPUT_KEY_STATE_RELEASED){
         AM_DBG_INFO("key_code: %d Released! \r\n", key_code);
     }

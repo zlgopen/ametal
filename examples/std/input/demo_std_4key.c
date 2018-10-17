@@ -46,13 +46,13 @@
 #include "am_event_input_key.h"
 #include "am_event_category_input.h"
 
-static void __input_key_proc (void *p_arg, int key_code, int key_state)
+static void __input_key_proc (void *p_arg, int key_code, int key_state, int keep_time)
 {
     switch (key_code) {
 
     case KEY_0:
         if (key_state == AM_INPUT_KEY_STATE_PRESSED) {
-            AM_DBG_INFO("key0 Press! \r\n");
+            AM_DBG_INFO("key0 Press! Keep_time is %d\r\n", keep_time);
         } else if (key_state == AM_INPUT_KEY_STATE_RELEASED){
             AM_DBG_INFO("key0 Released! \r\n");
         }
@@ -61,7 +61,7 @@ static void __input_key_proc (void *p_arg, int key_code, int key_state)
 
     case KEY_1:
         if (key_state == AM_INPUT_KEY_STATE_PRESSED) {
-            AM_DBG_INFO("key1 Press! \r\n");
+            AM_DBG_INFO("key1 Press! Keep_time is %d\r\n", keep_time);
         } else if (key_state == AM_INPUT_KEY_STATE_RELEASED){
             AM_DBG_INFO("key1 Released! \r\n");
         }
@@ -70,7 +70,7 @@ static void __input_key_proc (void *p_arg, int key_code, int key_state)
 
     case KEY_2:
         if (key_state == AM_INPUT_KEY_STATE_PRESSED) {
-            AM_DBG_INFO("key2 Press! \r\n");
+            AM_DBG_INFO("key2 Press! Keep_time is %d\r\n", keep_time);
         } else if (key_state == AM_INPUT_KEY_STATE_RELEASED){
             AM_DBG_INFO("key2 Released! \r\n");
         }
@@ -79,7 +79,7 @@ static void __input_key_proc (void *p_arg, int key_code, int key_state)
 
     case KEY_3:
         if (key_state == AM_INPUT_KEY_STATE_PRESSED) {
-            AM_DBG_INFO("key3 Press! \r\n");
+            AM_DBG_INFO("key3 Press! Keep_time is %d\r\n", keep_time);
         } else if (key_state == AM_INPUT_KEY_STATE_RELEASED){
             AM_DBG_INFO("key3 Released! \r\n");
         }

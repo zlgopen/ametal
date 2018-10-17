@@ -32,6 +32,7 @@
 #include "am_bsp_isr_defer_pendsv.h"
 #include "am_bsp_delay_timer.h"
 
+#include "am_service_inst_init.h"
 
 #ifdef __CC_ARM
 #ifdef __MICROLIB
@@ -45,11 +46,9 @@
 
 /** \brief SRAM 信息,使用 ARMCC 时需要提供 SRAM结束地址 */
 #ifdef __CC_ARM
-
 #define SRAM_SIZE   8
 #define SRAM_START  0x10000000
 #define SRAM_END    (SRAM_START + SRAM_SIZE * 1024)
-
 #endif /* __CC_ARM */
 
 /*******************************************************************************
@@ -84,7 +83,7 @@ void am_board_init (void)
 {
     am_uart_handle_t dbg_handle = NULL;
     am_timer_handle_t handle;
-
+	
 #ifdef  __GNUC__
     extern char __heap_start__;            /* Defined by the linker */
     extern char __heap_end__;              /* Defined by the linker */
@@ -104,9 +103,9 @@ void am_board_init (void)
     am_bsp_system_heap_init((void *)heap_start, (void *)heap_end);
 
 #if (AM_CFG_DELAY_ENABLE == 1)
-  
+
     handle = am_arm_systick_inst_init();
-    am_bsp_delay_timer_init(handle, 0);
+    am_bsp_delay_timer_init(handle , 0);
 #endif /* (AM_CFG_DELAY_ENABLE == 1) */
 
 #if (AM_CFG_LED_ENABLE == 1)
@@ -145,12 +144,11 @@ void am_board_init (void)
 #endif /* ((AM_CFG_SOFTIMER_ENABLE == 1) || (AM_CFG_KEY_GPIO_ENABLE == 1)) */
 
 #if (AM_CFG_BUZZER_ENABLE == 1)
-   // g_buzzer_pwm_handle = am_buzzer_pwm_inst_init();
+    g_buzzer_pwm_handle = am_buzzer_pwm_inst_init();
 #endif /* (AM_CFG_BUZZER_ENABLE == 1) */
 
 #if (AM_CFG_KEY_ENABLE == 1) || (AM_CFG_KEY_GPIO_ENABLE == 1)
-    am_event_input_key_init();           /* 按键输入事件初始化 */
-    am_event_category_input_init();      /* 初始化输入事件管理器 */
+    am_event_input_inst_init();                   /* 事件输入管理器服务初始化 */
 #endif /* (AM_CFG_KEY_ENABLE == 1) || (AM_CFG_KEY_GPIO_ENABLE == 1) */
 
 #if (AM_CFG_KEY_GPIO_ENABLE == 1)

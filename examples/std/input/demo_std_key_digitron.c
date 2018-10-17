@@ -42,6 +42,7 @@
 /** [src_std_key_digitron] */
 #include "ametal.h"
 #include "am_input.h"
+#include "am_vdebug.h"
 #include "am_digitron_disp.h"
 #include "am_event_input_key.h"
 #include "am_event_category_input.h"
@@ -60,9 +61,12 @@ static void __digitron_disp_key_code (int id, int code)
     }
 }
 
-static void __input_key_proc (void *p_arg, int key_code, int key_state)
+static void __input_key_proc (void *p_arg, int key_code, int key_state, int keep_time)
 {
     int32_t id = *(int32_t *)p_arg;
+
+    AM_DBG_INFO("key_code: %d, key_state :%d, keep_time is %d \r\n",
+                                                key_code, key_state, keep_time);
 
     switch (key_code) {
     case KEY_0:

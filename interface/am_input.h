@@ -23,17 +23,24 @@
  *
  * #include "am_input.h"
  *
- * (1) 按键驱动函数中上报按键事件（驱动函数实现，用户无需关心）， 如检测到KEY1键按下：
+ * (1) 按键驱动函数中上报按键事件（驱动函数实现，用户无需关心）， 例如：
  *
- * am_input_key_report(KEY_1, AM_INPUT_KEY_STATE_PRESSED);
+ *      - 检测到 KEY_1 键按下：am_event_input_key_pressed(KEY_1);
+ *      - 检测到 KEY_1 键释放：am_event_input_key_released(KEY_1);
  *
  * (2) 应用程序中使用回调函数处理按键事件
  *
- * static void __input_key_proc (void *p_arg, int key_code, int key_state)
+ * static void __input_key_proc (
+ *      void *p_arg, int key_code, int key_state, int keep_time)
  * {
  *      if (key_code == KEY_1) {
  *           if (key_state == AM_INPUT_KEY_STATE_PRESSED) {
  *               am_led_on(0);
+ *
+ *               if (keep_time >= 3000) {           // 按键长按时间达到 3s
+ *                   // 长按3s的处理，例如，关机？
+ *               }
+ *
  *           } else if (key_state == AM_INPUT_KEY_STATE_RELEASED){
  *               am_led_off(0);
  *           }
@@ -85,11 +92,20 @@ extern "C" {
 /**
  * \brief 按键回调函数类型
  *
- * \param[in] p_usr_data : 用户数据，注册时设定的用户参数
+ * \param[in] p_arg      : 用户数据，注册时设定的用户参数
  * \param[in] key_code   : 按键编码
  * \param[in] key_state  : 按键状态，AM_INPUT_KEY_STATE_PRESSED
+ * \param[in] keep_time  : 状态保持时间，用于按键长按，时间单位为：ms。
+ *
+ * \note 状态保持时间用于按键长按，按键首次按下，事件为AM_INPUT_KEY_STATE_PRESSED
+ * keep_time为0，若按键一直保持，将会以一定的频率上报 AM_INPUT_KEY_STATE_PRESSED
+ * 事件，keep_time 表示按键按下保持的时间。特别地，若按键本身不支持长按，则
+ * keep_time 始终为 -1。
  */
-typedef void (*am_input_key_cb_t) (void *p_arg, int key_code, int key_state);
+typedef void (*am_input_key_cb_t) (void     *p_arg,
+                                   int       key_code,
+                                   int       key_state,
+                                   int       keep_time);
 
 /**
  * \brief 按键处理器
@@ -99,16 +115,6 @@ typedef struct am_input_key_handler {
     am_input_key_cb_t     pfn_cb;                /**< \brief 回调函数  */
     void                 *p_usr_data;            /**< \brief 回调函数用户参数 */
 } am_input_key_handler_t;
-
-/**
- * \brief 上报按键事件
- *
- * \param[in] key_code   : 按键编码
- * \param[in] key_state  : 按键状态，AM_INPUT_KEY_STATE_PRESSED
- *
- * \return 标准错误号
- */
-int am_input_key_report (int key_code, int key_state);
 
 /**
  * \brief 注册一个按键处理器

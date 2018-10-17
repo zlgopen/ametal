@@ -69,8 +69,11 @@ static void __digitron_disp_key_code (int id, int code)
 }
   
 /* 按键实际处理函数 */
-static void __input_key_proc (int id, int key_code, int key_state)
+static void __input_key_proc (int id, int key_code, int key_state, int keep_time)
 {
+    AM_DBG_INFO("key_code: %d, key_state :%d, keep_time is %d \r\n",
+                                                key_code, key_state, keep_time);
+
     switch (key_code) {
 
     case KEY_0:
@@ -95,9 +98,9 @@ static void __input_key_proc (int id, int key_code, int key_state)
 }
 
 /* 按键回调函数 */
-static void __input_key_cb (void *p_arg, int key_code, int key_state)
+static void __input_key_cb (void *p_arg, int key_code, int key_state, int keep_time)
 {
-    if (am_rngbuf_freebytes(&__g_key_rngbuf) < (sizeof(int) * 2)) {
+    if (am_rngbuf_freebytes(&__g_key_rngbuf) < (sizeof(int) * 3)) {
         
         /* 剩余空间不能存放下按键事件， 按键事件丢弃 */
         AM_DBG_INFO("Buffer full, the key event discard!\r\n");
@@ -106,6 +109,7 @@ static void __input_key_cb (void *p_arg, int key_code, int key_state)
         
         am_rngbuf_put(&__g_key_rngbuf, (char *)&key_code, sizeof(int));
         am_rngbuf_put(&__g_key_rngbuf, (char *)&key_state, sizeof(int));
+        am_rngbuf_put(&__g_key_rngbuf, (char *)&keep_time, sizeof(int));
     }
 }
 
@@ -131,18 +135,20 @@ void demo_std_key_digitron_rngbuf_entry (int32_t id)
 
         int key_code;
         int key_state;
+        int keep_time;
         
         /* key_code 是 int 类型
          *
-         * 只要缓存超过 2 个 int 所占字节数（key_state 和 key_code）
+         * 只要缓存超过 3 个 int 所占字节数（key_state 和 key_code）
          * 表明存在按键事件 
          */
-        if (am_rngbuf_nbytes(&__g_key_rngbuf) >= (sizeof(int) * 2)) {
+        if (am_rngbuf_nbytes(&__g_key_rngbuf) >= (sizeof(int) * 3)) {
             
-            am_rngbuf_get(&__g_key_rngbuf, (char *)&key_code, sizeof(int));
+            am_rngbuf_get(&__g_key_rngbuf, (char *)&key_code,  sizeof(int));
             am_rngbuf_get(&__g_key_rngbuf, (char *)&key_state, sizeof(int));
-            
-            __input_key_proc(id, key_code, key_state);
+            am_rngbuf_get(&__g_key_rngbuf, (char *)&keep_time, sizeof(int));
+
+            __input_key_proc(id, key_code, key_state, keep_time);
         }
     }
 }
