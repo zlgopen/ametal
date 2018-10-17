@@ -184,8 +184,8 @@ static int __hts221_read_hum_calib_param_y (am_hts221_handle_t handle,
  */
 static void __hts221_read_calib_param (am_hts221_handle_t handle)
 {
-    am_lin_t *calib_param_hum  = &(handle->calib_param_hum);
-    am_lin_t *calib_param_temp = &(handle->calib_param_temp);
+    am_hts221_liner_t *calib_param_hum  = &(handle->calib_param_hum);
+    am_hts221_liner_t *calib_param_temp = &(handle->calib_param_temp);
     
     /* 读取湿度校准参数 */
     __hts221_read_calib_param_x (handle,
@@ -277,7 +277,7 @@ static int16_t __hts221_read_adc (am_hts221_handle_t handle,
  * \param[in]     x：温湿度ADC   
  * \return     线性处理后的值
  */
-static double __linear_interpolation(am_lin_t *lin, int16_t x) 
+static double __linear_interpolation(am_hts221_liner_t *lin, int16_t x) 
 {
       return  ((double)((double)(lin->y0) + (((double)(lin->y1 - lin->y0)) 
             * ((double)(x - lin->x0)) / ((double)(lin->x1 - lin->x0)))));

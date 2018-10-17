@@ -125,7 +125,7 @@ am_mmc5883ma_handle_t am_mmc5883ma_init(am_mmc5883ma_dev_t     *p_dev,
 		
     AM_DBG_INFO("mmc5883ma_ID = 0x%x\r\n", mmc5883ma_id);
 		
-		 /* ÅäÖÃÆô¶¯´Å³¡ÎÂ¶È²âÁ¿ */
+    /* ÅäÖÃÆô¶¯´Å³¡ÎÂ¶È²âÁ¿ */
     am_i2c_write(&(p_dev->i2c_dev), 
 		         MMC5883MA_INTERNAL_CONTROL_0, 
 		         &(p_devinfo->start_measurement), 

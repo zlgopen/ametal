@@ -124,8 +124,6 @@ int am_lsp22hb_read_temp (am_lps22hb_handle_t handle, int16_t *temp);
  */                                   
 int am_lsp22hb_read_press (am_lps22hb_handle_t handle, uint32_t *press); 
 
-
-
 #ifdef __cplusplus
 }
 #endif

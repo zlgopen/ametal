@@ -110,7 +110,7 @@ typedef struct bme280_calib_param {
     int16_t   dig_h4;
     int16_t   dig_h5;
     uint8_t   dig_h6;    
-} bme280_calib_param_t;
+} am_bme280_calib_param_t;
     
 /**
  * \brief BME280 实例信息结构体定义
@@ -132,7 +132,7 @@ typedef struct am_bme280_dev {
     am_i2c_device_t i2c_dev; 
     
     /** \brief 用于保存校准参数 */
-    bme280_calib_param_t calib_param; 
+    am_bme280_calib_param_t calib_param; 
     
     /** \brief 用于保存设备信息指针 */
     const am_bme280_devinfo_t  *p_devinfo;    

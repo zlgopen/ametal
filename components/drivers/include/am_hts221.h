@@ -91,7 +91,7 @@ typedef struct {
     uint8_t  y0;
     int16_t  x1;
     uint8_t  y1;  
-} am_lin_t;
+} am_hts221_liner_t;
 
 /**
  * \brief HTS221 实例信息结构体定义
@@ -113,10 +113,10 @@ typedef struct am_hts221_dev {
     am_i2c_device_t i2c_dev; 
     
     /**< \brief 用于保存湿度校准参数 */
-    am_lin_t calib_param_hum;
+    am_hts221_liner_t calib_param_hum;
     
     /**< \brief 用于保存温度校准参数 */
-    am_lin_t calib_param_temp;
+    am_hts221_liner_t calib_param_temp;
     
     /** \brief 用于保存设备信息指针 */
     const am_hts221_devinfo_t  *p_devinfo;    
@@ -160,9 +160,7 @@ int am_hts221_read_temp (am_hts221_handle_t handle, int16_t* temp);
  * \retval OTHER : 读取失败
  */                                      
 int am_hts221_read_hum (am_hts221_handle_t handle, uint8_t * hum);
-
-                                   
-    
+                                    
 #ifdef __cplusplus
 }
 #endif

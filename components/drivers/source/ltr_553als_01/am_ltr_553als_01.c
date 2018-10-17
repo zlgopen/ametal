@@ -22,7 +22,6 @@
 
 #include "am_ltr_553als_01.h"
 
-
 /**
  * \brief LTR_553ALS从机地址
  */    
@@ -63,8 +62,9 @@
  * \brief LTR_553ALS传感器命令
  */
 typedef enum am_ltr_553als_command {
-
-    LTR_553ALS_SOFT_RESET = 0x02                         /**< \brief 软件复位 */
+    
+    /* 软件复位 */
+    LTR_553ALS_SOFT_RESET = 0x02                         
     
 } am_ltr_553als_command_t;
 
