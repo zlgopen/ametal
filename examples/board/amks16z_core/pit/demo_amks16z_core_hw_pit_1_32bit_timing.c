@@ -45,7 +45,7 @@
 #include "hw/amhw_kl26_sim.h"
 #include "am_board.h"
 #include "demo_fsl_entrys.h"
-#include "../../../../soc/freescale/kl26/am_kl26.h"
+#include "am_kl26.h"
 
 
 /**

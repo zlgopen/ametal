@@ -32,6 +32,7 @@
 
 #include "am_kl26.h"
 #include "am_kl26_inst_init.h"
+#include "am_service_inst_init.h"
 
 #ifdef __CC_ARM
 #ifdef __MICROLIB
@@ -154,8 +155,7 @@ void am_board_init (void)
 
 
 #if (AM_CFG_KEY_ENABLE == 1) || (AM_CFG_KEY_GPIO_ENABLE == 1)
-    am_event_input_key_init();           /**< \brief 按键输入事件初始化 */
-    am_event_category_input_init();      /**< \brief 初始化输入事件管理器 */
+    am_event_input_inst_init();           /**< \brief 按键输入事件初始化 */
 #endif /* (AM_CFG_KEY_ENABLE == 1) || (AM_CFG_KEY_GPIO_ENABLE == 1) */
 
 #if (AM_CFG_KEY_GPIO_ENABLE == 1)
