@@ -27,7 +27,7 @@
 #include "am_softimer.h"
 #include "hw/amhw_kl26_sim.h"
 #include "am_board.h"
-#include "am_nvram_cfg.h"
+#include "am_service_inst_init.h"
 
 /** \brief am_mainÍâ²¿º¯Êý */
 extern int am_main (void);

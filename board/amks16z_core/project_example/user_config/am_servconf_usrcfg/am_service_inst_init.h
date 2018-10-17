@@ -9,41 +9,41 @@
 * Contact information:
 * web site:    http://www.zlg.cn/
 *******************************************************************************/
+
 /**
  * \file
- * \brief NVRAM 标准服务存储段定义
- *
- * 当使用NVRAM标准接口进行非易失数据的存储或获取时，如 \sa am_nvram_set() 或
- * \sa am_nvram_get()，接口的详细介绍详见 \sa am_nvram.h。
- *
- * 存储段的名字name和单元号unit均在该文件中定义，便于用户管理系统中所有的非易失
- * 存储段。
+ * \brief 通用服务（如 NVRAM、按键输入等）初始化
  *
  * \internal
  * \par modification history
- * - 1.00 15-01-19  tee, first implementation
+ * - 1.00 18-10-16  tee, first implementation
  * \endinternal
  */
 
-#ifndef __AM_NVRAM_CFG_H
-#define __AM_NVRAM_CFG_H
+#ifndef __AM_SERVICE_INST_INIT_H
+#define __AM_SERVICE_INST_INIT_H
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
 /**
- * \brief  NVRAM标准服务初始化
+ * \brief NVRAM 标准服务初始化
  *
- * \note 使用NVRAM前，必须调用该函数，可通过将am_prj_config.h文件中的
+ * \note 使用 NVRAM 前，必须调用该函数，可通过将 am_prj_config.h 文件中的
  *       #AM_CFG_NVRAM_ENABLE 宏值修改为 1 实现，使系统启动时自动调用该函数
  */
 void am_nvram_inst_init (void);
+
+/**
+ * \brief 事件输入管理器（包含按键输入）服务初始化
+ */
+void am_event_input_inst_init (void);
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif /* __AM_NVRAM_CFG_H */
+#endif /* __AM_SERVICE_INST_INIT_H */
 
 /* end of file */

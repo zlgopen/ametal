@@ -24,7 +24,7 @@
 #include "ametal.h"
 #include "hw/amhw_kl26_sim.h"
 #include "am_fsl_pit_timing.h"
-#include "../../../../../soc/freescale/kl26/am_kl26.h"
+#include "am_kl26.h"
 
 /**
  * \addtogroup am_kl26_if_hwconfig_src_pit_timing

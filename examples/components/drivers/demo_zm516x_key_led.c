@@ -106,10 +106,11 @@ am_local void flash_led (void)
  * \param[in] p_usr_data 用户数据，注册时设定的用户参数
  * \param[in] key_code   按键编码
  * \param[in] key_state  按键状态，AM_INPUT_KEY_STATE_PRESSED
+ * \param[in] keep_time  按键长按时间
  *
  * \return 无
  */
-am_local void __input_key_proc (void *p_arg, int key_code, int key_state)
+am_local void __input_key_proc (void *p_arg, int key_code, int key_state, int keep_time)
 {
     if (key_code == KEY_KP0) {
         if (key_state == AM_INPUT_KEY_STATE_PRESSED) {
