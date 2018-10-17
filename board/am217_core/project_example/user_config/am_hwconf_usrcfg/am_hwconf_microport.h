@@ -11,7 +11,7 @@
 *******************************************************************************/
 /**
  * \file
- * \brief MicroPort 配置文件
+ * \brief MicroPort 用户配置文件
  *
  * \internal
  * \par Modification history
@@ -21,6 +21,10 @@
 
 #ifndef __AM_HWCONF_MICROPORT_H
 #define __AM_HWCONF_MICROPORT_H
+
+#ifdef __cplusplus
+extern "C" {
+#endif /* __cplusplus */
 
 #include "ametal.h"
 #include "am_time.h"
@@ -34,9 +38,6 @@
 #include "am_is25xx.h"
 #include "am_ep24cxx.h"
 
-#ifdef __cplusplus
-extern "C" {
-#endif /* __cplusplus */
 
 /*******************************************************************************
   MicroPort DS1302 实例初始化
@@ -76,7 +77,9 @@ int am_microport_ds1302_time_inst_init (void);
 
 /**
  * \brief MicroPort RTC(PCF85063) 实例初始化（使用芯片特殊功能）
+ *
  * \param 无
+ *
  * \return PCF85063 标准服务句柄，若为NULL，表明初始化失败
  */
 am_pcf85063_handle_t am_microport_rtc_inst_init (void);
@@ -86,9 +89,8 @@ am_pcf85063_handle_t am_microport_rtc_inst_init (void);
  * \param 无
  * \return RTC 标准服务句柄，若为NULL，表明初始化失败
  */
-am_rtc_handle_t am_microport_rtc_std_inst_init (void);
+am_rtc_handle_t am_microport_std_rtc_inst_init (void);
 
-#if 0
 /**
  * \brief MicroPort RTC(PCF85063) 实例初始化（使用通用的闹钟功能）
  *
@@ -97,8 +99,6 @@ am_rtc_handle_t am_microport_rtc_std_inst_init (void);
  * \return ALARM_CLK 标准服务句柄，若为NULL，表明初始化失败
  */
 am_alarm_clk_handle_t am_microport_rtc_alarm_clk_inst_init (void);
-#endif
-
 /**
  * \brief MicroPort RTC(PCF85063) 实例初始化（将 PCF85063 用作系统时间）
  *

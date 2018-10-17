@@ -41,7 +41,6 @@
 
 #include "am_fm175xx.h"
 #include "am_fm175xx_reg.h"
-#include "am_vdebug.h"
 #include "am_hwconf_fm175xx.h"
 #include "demo_components_entries.h"
 

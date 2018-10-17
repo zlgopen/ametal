@@ -20,12 +20,13 @@
  * - 1.00 17-08-25  vir, first implementation
  * \endinternal
  */
-
+ 
+ #include "zlg217_pin.h"
+#include "zlg217_periph_map.h"
 #include "am_zlg_ili9341_3wire_spi.h"
-#include "zlg217_pin.h"
 #include "zlg217_regbase.h"
-#include "am_zlg217_inst_init.h"
 #include "zlg217_clk.h"
+#include "am_zlg217_inst_init.h"
 
 /**
  * \addtogroup am_if_src_hwconf_lcd_ili9341
@@ -50,7 +51,7 @@ static const am_zlg_ili9341_intfc_3wire_devinfo_t __g_ili9341_intfc_devinfo = {
         PIOB_14,                                 /**< \brief MISO */
         PIOB_14_SPI2_MISO | PIOB_14_INPUT_FLOAT, /**< \brief MISO功能 */
         PIOB_12_SPI2_NSS | PIOB_12_AF_PP,        /**< \brief CS功能 */
-        ZLG217_SPI2,                        /**< \brief SPI2的基地址 */
+        ZLG217_SPI2,                             /**< \brief SPI2的基地址 */
         CLK_SPI2,                                /**< \brief SPI的时钟号 */
         24000000,                                /**< \brief 最大速度为24MHz */
 };

@@ -58,7 +58,7 @@ void demo_zlg217_core_microport_rtc_entry (void)
 {
     AM_DBG_INFO("demo am217_core microport rtc!\r\n");
 
-    demo_std_rtc_entry(am_microport_rtc_std_inst_init());
+    demo_std_rtc_entry(am_microport_std_rtc_inst_init());
 }
 /** [src_microport_rtc] */
 

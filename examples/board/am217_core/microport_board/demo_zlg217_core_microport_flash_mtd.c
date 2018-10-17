@@ -61,7 +61,7 @@ void demo_zlg217_core_microport_flash_mtd_entry (void)
 {
     AM_DBG_INFO("demo am217_core microport flash mtd!\r\n");
 
-    //demo_mtd_entry(am_microport_flash_mtd_inst_init(), 8);
+    demo_mtd_entry(am_microport_flash_mtd_inst_init(), 8);
 }
 /** [src_microport_flash_mtd] */
 

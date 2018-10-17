@@ -348,19 +348,19 @@ static int __digitron_disp_str (void       *p_cookie,
                                 int         len, 
                                 const char *p_str)
 {
-    __DIGITRON_DYNAMIC_SCAN_DEV_DECL(p_dev, p_cookie);
-
-    uint16_t last_ch = 0, ch;
+	  uint16_t last_ch = 0, ch;
     int      idx     = index - 1;
     uint8_t  str_len = 0;
-    
+	
+    __DIGITRON_DYNAMIC_SCAN_DEV_DECL(p_dev, p_cookie);
+
     if ((p_dev == NULL)                ||
         (index >= p_dev->num_digitron) ||
         (p_str == NULL)) {
 
         return -AM_EINVAL;
     }
- 
+
     str_len = strlen(p_str);
 
     if (len > str_len) {

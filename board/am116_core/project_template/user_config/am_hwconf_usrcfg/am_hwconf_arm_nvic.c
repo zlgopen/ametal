@@ -31,6 +31,13 @@
  * @{
  */
 
+/**
+ * \brief 中断优先级位数及分组
+ *        M0优先级位数为2位，全部用于设置抢占优先级
+ */
+#define __NVIC_PRIORITY_BITS       2            /**< \brief 芯片支持的优先级位数 */
+#define __NVIC_PRIORITY_GROUP      0            /**< \brief NVIC中断优先级分组 */
+
 /** 
  * \brief ISR 信息数量 
  *        该数量默认定义为MCU所支持的最大向量中断个数，
@@ -61,17 +68,8 @@ static const am_arm_nvic_devinfo_t __g_nvic_devinfo =
 
     AM_ARM_NVIC_CORE_M0,   /**< \brief 内核 */
 
-#ifdef AM_CORTEX_M4
-    /* 代表主优先级有3位，子优先级有0位 */
-    3,                     /**< \brief 优先级位数 */
-    4,                     /**< \brief 设置组中断 */
-#endif
-
-#ifdef AM_CORTEX_M0
-    /*仅有子优先级，且子优先级有2位 */
-    2,                     /**< \brief 优先级位数 */
-    0,                     /**< \brief 设置组中断 */
-#endif
+	__NVIC_PRIORITY_BITS,  /**< \brief 优先级位数 */
+	__NVIC_PRIORITY_GROUP, /**< \brief 设置组中断 */
 
     INUM_INTERNAL_COUNT,   /**< \brief 总中断数量 */
     __nvic_isr_map,        /**< \brief ISR 信息映射(大小与 input_cnt 一致) */

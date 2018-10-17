@@ -3,11 +3,12 @@
 *                       ----------------------------
 *                       innovating embedded platform
 *
-* Copyright (c) 2001-2018 Guangzhou ZHIYUAN Electronics Co., Ltd.
+* Copyright (c) 2001-2018 Guangzhou ZHIYUAN Electronics Stock Co., Ltd.
 * All rights reserved.
 *
 * Contact information:
 * web site:    http://www.zlg.cn/
+* e-mail:      ametal.support@zlg.cn
 *******************************************************************************/
 
 /**
@@ -62,6 +63,7 @@ typedef struct am_zm516x_dev {
     am_uart_rngbuf_dev_t    uart_rngbuf_dev; /**< \brief UART 设备(环形缓冲区) */
     am_wait_t               ack_wait;        /**< \brief ACK 等待信号 */
     am_zm516x_dev_info_t   *p_devinfo;       /**< \brief 设备实例信息 */
+    uint8_t                 dev_type[2];     /**< \brief 设备类型 */
 } am_zm516x_dev_t;
 
 /** \brief ZM516X 模块标准服务操作句柄类型定义 */

@@ -268,8 +268,8 @@ void demo_std_adc_ntc_entry (am_adc_handle_t handle,
         temp = __ntc_res_to_temp(res);      /* 将电阻转换成温度参数 */
 
         AM_DBG_INFO("the temperature is %d.%2d ℃\r\n",
-                                    temp >> 8,                   /* 温度扩大了256倍  */
-                                    (temp & 0xFF) * 100 / 256);  /* 打印两位小数         */
+                    temp >> 8,                   /* 温度扩大了256倍  */
+                    (temp & 0xFF) * 100 / 256);  /* 打印两位小数         */
 
         am_mdelay(500);
     }

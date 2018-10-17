@@ -99,11 +99,6 @@ void demo_am116_core_hw_i2c_slave_poll_entry (void);
 void demo_am116_core_std_i2c_lm75_entry (void);
 
 /**
- * \brief I2C 主机从 BMA253 传感器读取三轴加速度值例程，通过标准接口实现
- */
-void demo_am116_core_std_i2c_bma253_entry (void);
-
-/**
  * \brief I2C 主机访问 EEPROM 例程，通过异步标准接口实现
  */
 void demo_am116_core_std_i2c_master_async_entry (void);
@@ -464,10 +459,33 @@ void demo_am116_core_std_delay_entry(void);
 void demo_am116_core_dr_fm175xx_picca_read_id(void);
 
 /**
+ * \brief A类卡读休眠卡例程
+ */
+void demo_am116_core_dr_fm175xx_picca_halt (void);
+
+/**
+ * \brief A类卡读块例程
+ */
+void demo_am116_core_dr_fm175xx_picca_read_block (void);
+
+/**
+ * \brief A类卡值操作例程
+ */
+void demo_am116_core_dr_fm175xx_picca_val_operate (void);
+
+/**
+ * \brief A类卡写块例程
+ */
+void demo_am116_core_dr_fm175xx_picca_write_block (void);
+
+/**
+ * \brief B类卡读卡号例程
+ */
+void demo_am116_core_dr_fm175xx_piccb_read_id (void);
+/**
  * \brief FM175XX LCPD模式 A类卡读卡类型和卡号例程
  */
 void demo_am116_core_dr_fm175xx_picca_lpcd_read_id(void);
-
 /**
  * \brief BMA253三轴加速度例程
  */
@@ -532,6 +550,11 @@ void demo_lsm6dsl_entry (void);
  * \brief SC16IS7XX I2C转UART例程
  */
 void demo_sc16is7xx_entry (void);
+
+/**
+ * \brief I2C 主机从 BMA253 传感器读取三轴加速度值例程，通过标准接口实现
+ */
+void demo_am116_core_std_i2c_bma253_entry (void);
 
 #ifdef __cplusplus
 }

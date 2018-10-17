@@ -17,18 +17,12 @@
  *
  * \internal
  * \par Modification history
- * - 1.00 18-10-10  wk, first implementation
+ * - 1.00 15-12-03  lnk, first implementation
  * \endinternal
  */
 
-#ifndef __DEMO_AM217_CORE_ENTRIES_H
-#define __DEMO_AM217_CORE_ENTRIES_H
- 
-#ifdef __cplusplus
-extern "C" {
-#endif
-    
 #include "amhw_zlg_adc.h"
+
 
 /**
  * \brief ADC INT 例程，通过 HW 层接口实现
@@ -495,7 +489,7 @@ void demo_lsm6dsl_entry (void);
 /**
  * \brief SC16IS7XX I2C转UART例程
  */
-void demo_sc16is7xx_entry (void);                               
+void demo_sc16is7xx_entry (void);
 
 #ifdef __cplusplus
 }

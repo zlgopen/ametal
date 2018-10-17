@@ -370,7 +370,7 @@ void am_zlg217_wake_up_cfg (am_zlg217_pwr_mode_t mode,
  */
 int am_zlg217_pwr_mode_into (am_zlg217_pwr_mode_t mode)
 {
-    amhw_zlg217_pwr_t   *p_hw_pwr = NULL;
+    amhw_zlg_pwr_t   *p_hw_pwr = NULL;
     am_zlg217_pwr_mode_t cur_mode = am_zlg217_pwr_mode_get();
 
     int wkup_pin = __gp_pwr_dev->p_pwrdevinfo->p_pwr_mode[mode - 1].pin;
@@ -379,7 +379,7 @@ int am_zlg217_pwr_mode_into (am_zlg217_pwr_mode_t mode)
         return AM_OK;
     }
 
-    p_hw_pwr = (amhw_zlg217_pwr_t *)__gp_pwr_dev->p_pwrdevinfo->pwr_regbase;
+    p_hw_pwr = (amhw_zlg_pwr_t *)__gp_pwr_dev->p_pwrdevinfo->pwr_regbase;
 
     switch (mode) {
 
@@ -414,7 +414,7 @@ int am_zlg217_pwr_mode_into (am_zlg217_pwr_mode_t mode)
         __gp_pwr_dev->pwr_mode = AM_ZLG217_PWR_MODE_STOP;
 
         /* 注意： 电压调节器可能开启，进入停机状态并没有关停 */
-        amhw_zlg217_pwr_pdds_mode_set(p_hw_pwr, AM_ZLG217_PDDS_STOP_MODE);
+        amhw_zlg_pwr_pdds_mode_set(p_hw_pwr, AM_ZLG_PDDS_STOP_MODE);
 
         AM_DBG_INFO("enter deepsleep!\r\n");
 
@@ -442,7 +442,7 @@ int am_zlg217_pwr_mode_into (am_zlg217_pwr_mode_t mode)
         if (wkup_pin != -1) {
 
             /* 失能 WKUP 引脚 */
-            amhw_zlg217_wake_up_enable(p_hw_pwr, AM_ZLG217_WAKEUP_DISABLE);
+            amhw_zlg_wake_up_enable(p_hw_pwr, AM_ZLG_WAKEUP_DISABLE);
 
             /* 将 WKUP 配置为输入，并检测是否为高电平 */
             am_gpio_pin_cfg(wkup_pin, AM_GPIO_INPUT | AM_GPIO_PULLDOWN);
@@ -451,12 +451,12 @@ int am_zlg217_pwr_mode_into (am_zlg217_pwr_mode_t mode)
             }
 
             /* 使能 WAKE_UP 引脚 */
-            amhw_zlg217_wake_up_enable(p_hw_pwr, AM_ZLG217_WAKEUP_ENABLE);
+            amhw_zlg_wake_up_enable(p_hw_pwr, AM_ZLG_WAKEUP_ENABLE);
         }
 
-        amhw_zlg217_pwr_stauts_flag_clear(p_hw_pwr, AM_ZLG217_WAKEUP_FLAG_CLEAR);
+        amhw_zlg_pwr_stauts_flag_clear(p_hw_pwr, AM_ZLG_WAKEUP_FLAG_CLEAR);
 
-        amhw_zlg217_pwr_pdds_mode_set(p_hw_pwr, AM_ZLG217_PDDS_STANDBY_MODE);
+        amhw_zlg_pwr_pdds_mode_set(p_hw_pwr, AM_ZLG_PDDS_STANDBY_MODE);
 
         AM_DBG_INFO("enter standby!\r\n");
 
@@ -502,7 +502,7 @@ int am_zlg217_pwr_pvd_cfg (am_zlg217_pwr_handle_t pwr_handle,
                            am_pfnvoid_t           pfn_callback,
                            void                  *p_arg)
 {
-    amhw_zlg217_pwr_t   *p_hw_pwr = NULL;
+    amhw_zlg_pwr_t   *p_hw_pwr = NULL;
     am_zlg217_pwr_mode_t cur_mode = am_zlg217_pwr_mode_get();
 
     if(pwr_handle == NULL) {
@@ -516,12 +516,12 @@ int am_zlg217_pwr_pvd_cfg (am_zlg217_pwr_handle_t pwr_handle,
         return AM_ERROR;
     }
 
-    p_hw_pwr = (amhw_zlg217_pwr_t *)__gp_pwr_dev->p_pwrdevinfo->pwr_regbase;
+    p_hw_pwr = (amhw_zlg_pwr_t *)__gp_pwr_dev->p_pwrdevinfo->pwr_regbase;
 
     if (pwr_handle->p_pwrdevinfo->p_pvd_info->enable) {
 
-        amhw_zlg217_pwr_pvd_detect_enable(p_hw_pwr, AM_ZLG217_PVDE_ENABLE);
-        amhw_zlg217_pvd_lever_set(p_hw_pwr, pwr_handle->p_pwrdevinfo->p_pvd_info->pvd_v_level);
+        amhw_zlg_pwr_pvd_detect_enable(p_hw_pwr, AM_ZLG_PVDE_ENABLE);
+        amhw_zlg_pvd_lever_set(p_hw_pwr, pwr_handle->p_pwrdevinfo->p_pvd_info->pvd_v_level);
 
         /* 清除中断线配置，PVD 对应于 AMHW_ZLG217_LINE_NUM16 */
         amhw_zlg217_exti_imr_clear(ZLG217_EXTI, AMHW_ZLG217_LINE_NUM16);

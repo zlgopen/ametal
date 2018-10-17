@@ -102,10 +102,10 @@ am_local uint8_t __g_ftl_buf[AM_FTL_RAM_SIZE_GET(MX25XX_CHIP_SZIE,
 
 /** \brief FTL 信息 */
 am_local am_const am_ftl_info_t __g_ftl_info = {
-    __g_ftl_buf,                 /**< \brief RAM 缓冲区  */
-    sizeof(__g_ftl_buf),         /**< \brief RAM 缓冲区大小  */
-    MX25XX_FTL_LOGIC_BLOCK_SZIE, /**< \brief 逻辑块的大小  */
-    MX25XX_FTL_LOG_BLOCK_NUM,    /**< \brief 日志块个数  */
+    __g_ftl_buf,                 /**< \brief RAM 缓冲区 */
+    sizeof(__g_ftl_buf),         /**< \brief RAM 缓冲区大小 */
+    MX25XX_FTL_LOGIC_BLOCK_SZIE, /**< \brief 逻辑块的大小 */
+    MX25XX_FTL_LOG_BLOCK_NUM,    /**< \brief 日志块个数 */
     0                            /**< \brief 保留的物理块（擦除单元）个数 */
 };
 

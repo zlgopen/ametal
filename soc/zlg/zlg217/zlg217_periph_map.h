@@ -96,7 +96,7 @@ extern "C" {
 #define ZLG217_RTC     ((amhw_zlg217_rtc_t       *)ZLG217_RTC_BASE)
 
 /** \brief 电源控制PWR寄存器块指针 */
-#define ZLG217_PWR     ((amhw_zlg217_pwr_t       *)ZLG217_PWR_BASE)
+#define ZLG217_PWR     ((amhw_zlg_pwr_t          *)ZLG217_PWR_BASE)
 
 /** \brief 备份控制BKP寄存器块指针 */
 #define ZLG217_BKP     ((amhw_zlg217_bkp_t       *)ZLG217_BKP_BASE)
