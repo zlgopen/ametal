@@ -30,7 +30,6 @@
 extern "C" {
 #endif
 
-
 /** \brief ÊµÀý³õÊ¼»¯ */
 am_bh1730fvc_handle_t am_bh1730fvc_inst_init (void);    
     

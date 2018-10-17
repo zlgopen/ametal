@@ -37,10 +37,10 @@ extern "C" {
  * \copydoc am_mmc5883ma.h
  * @{
  */
+    
 /**
  * \brief MMC5883MA传感器配置
- */
-	
+ */	
 typedef enum am_mmc5883ma_config {
 /**
  * \brief 可配置的测量频率     
@@ -57,26 +57,6 @@ typedef enum am_mmc5883ma_config {
 	FREQUENCY_one_thirty_two           = 0x09,  /**< \brief 测量频率1/32Hz */
 	FREQUENCY_one_sixty_four           = 0x0A,  /**< \brief 测量频率1/64Hz */
 } am_mmc5883ma_config_t;
-	
-
-#define MMC5883MA_ADDR                  0x30  /**< \brief i2c地址 */
-
-/** \brief 设备寄存器地址 */
-#define MMC5883MA_XOUT_LOW              0x00  /**< \brief Xout LSB */
-#define MMC5883MA_XOUT_HIGH             0x01  /**< \brief Xout MSB */
-#define MMC5883MA_YOUT_LOW              0x02  /**< \brief Yout LSB */
-#define MMC5883MA_YOUT_HIGH             0x03  /**< \brief Yout MSB */
-#define MMC5883MA_ZOUT_LOW              0x04  /**< \brief Zout LSB */
-#define MMC5883MA_ZOUT_HIGH             0x05  /**< \brief Zout MSB */
-#define MMC5883MA_TEMPERATURE           0x06  /**< \brief Temperature output*/
-#define MMC5883MA_STATUS                0x07  /**< \brief Device status */
-#define MMC5883MA_INTERNAL_CONTROL_0    0x08  /**< \brief Control register 0 */
-#define MMC5883MA_INTERNAL_CONTROL_1    0x09  /**< \brief Control register 1 */
-#define MMC5883MA_INTERNAL_CONTROL_2    0x0A  /**< \brief Control register 2 */
-#define MMC5883MA_X_THRESHOLD           0x0B  /**< \brief Motion detection threshold of X */
-#define MMC5883MA_Y_THRESHOLD           0x0C  /**< \brief Motion detection threshold of Y */
-#define MMC5883MA_Z_THRESHOLD           0x0D  /**< \brief Motion detection threshold of Z */
-#define MMC5883MA_PRODUCT_ID_1          0x2F  /**< \brief Product ID */
 
 /**
  * \brief MMC5883MA实例信息结构体定义
@@ -123,6 +103,7 @@ int am_mmc5883ma_read_temp (am_mmc5883ma_handle_t handle,int8_t* p_temp);
  * \brief MMC5883MA传感器初始化
  *
  * \param[in] p_dev      : 指向MMC5883MA设备结构体的指针
+ * \param[in] p_devinfo  : 指向MMC5883MA设备信息结构体的指针 
  * \param[in] i2c_handle : I2C标准服务操作句柄
  *
  * \return MMC5883MA服务操作句柄,如果为 NULL，表明初始化失败

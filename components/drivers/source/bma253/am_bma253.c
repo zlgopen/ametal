@@ -264,13 +264,13 @@ am_bma253_handle_t am_bma253_init (am_bma253_dev_t *p_dev,
     am_i2c_read(&(p_dev->i2c_dev), BMA2x2_CHIP_ID_ADDR, &bma253_id, 1);
     AM_DBG_INFO("bma253_ID = 0x%x\r\n", bma253_id);
     
-    /* ÅäÖÃ¼ÓËÙ¶È·¶Î§Îª¡À2g */
+    /* ÅäÖÃ¼ÓËÙ¶È·¶Î§ */
     am_i2c_write(&(p_dev->i2c_dev), 
                  BMA2x2_RANGE_SELECT_ADDR, 
                  &(p_devinfo->pmu_range), 
                  1);
 
-    /* ÅäÖÃÂË²¨´ø¿íÎª7.81Hz */
+    /* ÅäÖÃÂË²¨´ø¿í */
     am_i2c_write(&(p_dev->i2c_dev), 
                  BMA2x2_BW_SELECT_ADDR, 
                  &(p_devinfo->pmu_bw), 

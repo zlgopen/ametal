@@ -34,8 +34,8 @@
 /** \brief 设备信息 */
 am_local am_const am_mmc5883ma_devinfo_t __g_mmc5883ma_devinfo = {
 
-          FREQUENCY_14,         /**< \brief 测量频率为14Hz   */
-	        Start_Measurement
+    FREQUENCY_14,         /**< \brief 测量频率为14Hz   */
+    Start_Measurement
 	
 };
  
@@ -55,7 +55,7 @@ am_mmc5883ma_handle_t am_mmc5883ma_inst_init (void)
 
     return am_mmc5883ma_init (&__g_mmc5883ma_dev, 
                               &__g_mmc5883ma_devinfo,
-                              i2c_handle);   
+                               i2c_handle);   
 }
 
 /**

@@ -189,6 +189,5 @@ int am_lsp22hb_read_press (am_lps22hb_handle_t handle, uint32_t *press)
     return  ret;
 }
 
-
 /* end of file */ 
 

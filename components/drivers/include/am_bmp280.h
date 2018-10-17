@@ -32,7 +32,13 @@ extern "C" {
 #include "am_vdebug.h"
 #include "am_delay.h"
 #include "am_i2c.h"
- 
+
+/**
+ * \addtogroup am_if_bmp280
+ * \copydoc am_bmp280.h
+ * @{
+ */
+    
 /**
  * \brief BMP280´«¸ÐÆ÷ÅäÖÃ
  */
@@ -161,6 +167,9 @@ am_bmp280_handle_t am_bmp280_init (am_bmp280_dev_t *p_dev,
                                    const am_bmp280_devinfo_t *p_devinfo, 
                                    am_i2c_handle_t i2c_handle);
 
+/**
+ * @}
+ */
 
 #ifdef __cplusplus
 }

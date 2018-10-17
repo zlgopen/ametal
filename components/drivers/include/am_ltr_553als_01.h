@@ -200,8 +200,8 @@ int am_ltr_553als_read_ps (am_ltr_553als_handle_t handle, uint16_t* p_ps);
  * \return LTR_553ALS服务操作句柄,如果为 NULL，表明初始化失败
  */
 am_ltr_553als_handle_t am_ltr_553als_init (am_ltr_553als_dev_t *p_dev,
-                                       const am_ltr_553als_devinfo_t *p_devinfo,
-                                       am_i2c_handle_t i2c_handle);
+                                           const am_ltr_553als_devinfo_t *p_devinfo,
+                                           am_i2c_handle_t i2c_handle);
 
 /**
  * \brief LTR_553ALS 设备解初始化

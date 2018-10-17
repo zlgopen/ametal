@@ -34,6 +34,12 @@ extern "C" {
 #include "am_i2c.h"
  
 /**
+ * \addtogroup am_if_bme280
+ * \copydoc am_bme280.h
+ * @{
+ */    
+    
+/**
  * \brief BME280´«¸ÐÆ÷ÅäÖÃ
  */
 typedef enum am_bme280_config {
@@ -188,7 +194,10 @@ am_bme280_handle_t am_bme280_init (am_bme280_dev_t *p_dev,
                                    const am_bme280_devinfo_t *p_devinfo, 
                                    am_i2c_handle_t i2c_handle);
 
-
+/**
+ * @}
+ */
+                                   
 #ifdef __cplusplus
 }
 #endif

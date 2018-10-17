@@ -34,6 +34,12 @@ extern "C" {
 #include "am_i2c.h"
 
 /**
+ * \addtogroup am_if_hts221
+ * \copydoc am_hts221.h
+ * @{
+ */    
+    
+/**
  * \brief HTS221´«¸ÐÆ÷ÅäÖÃ
  */
 typedef enum am_hts221_config {
@@ -160,7 +166,11 @@ int am_hts221_read_temp (am_hts221_handle_t handle, int16_t* temp);
  * \retval OTHER : ¶ÁÈ¡Ê§°Ü
  */                                      
 int am_hts221_read_hum (am_hts221_handle_t handle, uint8_t * hum);
-                                    
+ 
+/**
+ * @}
+ */
+
 #ifdef __cplusplus
 }
 #endif

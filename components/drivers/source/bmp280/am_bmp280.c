@@ -172,8 +172,7 @@ static int __read_bmp280_press_calib_param (am_bmp280_handle_t handle,
     if (ret != AM_OK) {
         return ret;
     }     
-    
-    
+      
     ret = __bmp280_read_calib_param (handle, 
                                      BMP280_DIG_P4_LSB_ADDR,
                                      &(calib_param->dig_p4));
@@ -315,7 +314,7 @@ am_bmp280_handle_t am_bmp280_init (am_bmp280_dev_t *p_dev,
     am_i2c_read(&(p_dev->i2c_dev),BMP280_ID_REG, &bmp280_id, 1);
     AM_DBG_INFO("BMP280_ID = 0x%x\r\n", bmp280_id);
 
-    /* 配置BMP280过采样为x16 Normal Mode */
+    /* 配置BMP280过采样模式 */
     ctrl_meas = (p_devinfo->press_oversampe 
               | p_devinfo->temp_oversampe 
               | p_devinfo->power_mode);

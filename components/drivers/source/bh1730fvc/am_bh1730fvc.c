@@ -101,7 +101,8 @@ am_bh1730fvc_handle_t am_bh1730fvc_init (am_bh1730fvc_dev_t *p_dev,
 int am_bh1730fvc_read_als_adc (am_bh1730fvc_handle_t handle, 
                                uint16_t *p_als_adc)
 {
-    uint8_t  temp_value[2] = {0};               /* 用于存放读取的值 */
+    /* 用于存放读取的值 */
+    uint8_t  temp_value[2] = {0};               
     int      ret  = AM_OK;
     /* I2C设备指针 */
     am_i2c_device_t *p_i2c_dev = &(handle->i2c_dev);

@@ -23,7 +23,7 @@
 #include "am_lis3mdl.h"
 
 /**
- * \brief BH1730FVC从机地址
+ * \brief LIS3MDL从机地址
  */    
 #define     LIS3MDL_DEVICE_ADDR    0x1C 
 
