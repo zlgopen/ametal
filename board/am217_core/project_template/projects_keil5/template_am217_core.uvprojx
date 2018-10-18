@@ -1202,11 +1202,6 @@
               <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg217_wwdg.c</FilePath>
             </File>
             <File>
-              <FileName>am_nvram_cfg.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_servconf_usrcfg\am_nvram_cfg.c</FilePath>
-            </File>
-            <File>
               <FileName>am_zlg217_inst_init.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\user_config\am_zlg217_inst_init.h</FilePath>
@@ -1220,6 +1215,16 @@
               <FileName>am_board.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\user_config\am_board.h</FilePath>
+            </File>
+            <File>
+              <FileName>am_servconf_event_input.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_servconf_usrcfg\am_servconf_event_input.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_servconf_nvram.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_servconf_usrcfg\am_servconf_nvram.c</FilePath>
             </File>
           </Files>
         </Group>

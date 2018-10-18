@@ -71,7 +71,7 @@ int am_miniport_zlg72128_inst_init (void)
 {
     return  am_zlg72128_std_init(&__g_miniport_zlg72128,
                                  &__g_miniport_zlg72128_info,
-                                  am_lpc82x_i2c1_inst_init());
+                                  am_lpc82x_i2c2_inst_init());
 }
 
 /**

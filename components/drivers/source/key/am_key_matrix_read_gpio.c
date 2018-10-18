@@ -68,7 +68,7 @@ am_key_matrix_read_t * am_key_matrix_read_gpio_init (
     }
 
     cfg_flags = AM_GPIO_INPUT |
-               (( !am_key_matrix_active_low_get(p_info)) ?
+               (am_key_matrix_active_low_get(p_info) ?
                   AM_GPIO_PULLUP :
                   AM_GPIO_PULLDOWN);
 
