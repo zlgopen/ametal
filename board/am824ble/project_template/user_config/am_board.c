@@ -32,6 +32,7 @@
 #include "am_bsp_system_heap.h"
 #include "am_bsp_isr_defer_pendsv.h"
 #include "am_bsp_delay_timer.h"
+#include "am_service_inst_init.h"
 
 #ifdef __CC_ARM
 #ifdef __MICROLIB
@@ -144,8 +145,7 @@ void am_board_init (void)
 #endif /* (AM_CFG_BUZZER_ENABLE == 1) */
 
 #if (AM_CFG_KEY_ENABLE == 1) || (AM_CFG_KEY_GPIO_ENABLE == 1)
-    am_event_input_key_init();           /* 按键输入事件初始化 */
-    am_event_category_input_init();      /* 初始化输入事件管理器 */
+    am_event_input_inst_init();                   /* 事件输入管理器服务初始化 */
 #endif /* (AM_CFG_KEY_ENABLE == 1) || (AM_CFG_KEY_GPIO_ENABLE == 1) */
 
 #if (AM_CFG_KEY_GPIO_ENABLE == 1)

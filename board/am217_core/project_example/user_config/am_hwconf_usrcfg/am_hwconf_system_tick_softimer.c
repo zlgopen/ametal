@@ -119,9 +119,9 @@ am_timer_handle_t am_system_tick_softimer_inst_init (void)
 
         am_system_module_init(__SYSTEM_TICK_RATE);
 
-        am_timer_enable(handle,
+        am_timer_enable_us(handle,
                         __TIMER_CHAN,
-                        freq / __SYSTEM_TICK_RATE);
+                        1000000 / __SYSTEM_TICK_RATE);
   }
 
     return handle;
