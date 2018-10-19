@@ -32,7 +32,7 @@ extern "C" {
 #endif
 
 /**
- * \addtogroup grp_am_if_hc595_spi
+ * \addtogroup am_if_hc595_spi
  * \copydoc am_hc595_spi.h
  * @{
  */
@@ -93,7 +93,7 @@ am_hc595_handle_t am_hc595_spi_init (am_hc595_spi_dev_t        *p_dev,
  */
 int am_hc595_spi_deinit (am_hc595_spi_dev_t *p_dev);
 
-/** @} grp_am_if_hc595_spi */
+/** @} am_if_hc595_spi */
 
 #ifdef __cplusplus
 }

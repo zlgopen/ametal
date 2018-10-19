@@ -17,7 +17,7 @@
  *   1. 串口打印出测试结果。
  *
  * \par 源代码
- * \snippet demo_service_mtd.c src_service_mtd
+ * \snippet demo_mtd.c src_mtd
  *
  * \internal
  * \par Modification history
@@ -26,11 +26,11 @@
  */
 
 /**
- * \addtogroup demo_if_service_mtd
- * \copydoc demo_service_mtd.c
+ * \addtogroup demo_if_mtd
+ * \copydoc demo_mtd.c
  */
 
-/** [src_service_mtd] */
+/** [src_mtd] */
 #include "ametal.h"
 #include "am_mtd.h"
 #include "am_delay.h"
@@ -96,6 +96,6 @@ void demo_mtd_entry (am_mtd_handle_t mtd_handle, int32_t test_lenth)
         ; /* VOID */
     }
 }
-/** [src_service_mtd] */
+/** [src_mtd] */
 
 /* end of file */

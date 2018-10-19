@@ -45,7 +45,7 @@
 
 /**
  * \addtogroup demo_if_zm516x_search
- * \copydoc demozm516x_search.c
+ * \copydoc demo_zm516x_search.c
  */
 
 /** [src_zm516x_search] */

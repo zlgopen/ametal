@@ -31,7 +31,8 @@ extern "C" {
 #endif
 
 /**
- * \name am_if_digitron_com_gpio
+ * \addtogroup am_if_digitron_com_gpio
+ * \copydoc am_digitron_com_gpio.h
  * @{
  */
 

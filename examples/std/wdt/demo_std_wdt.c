@@ -32,7 +32,7 @@
  * \copydoc demo_std_wdt.c
  */
 
-/** [src_std_wdt_wdt] */
+/** [src_std_wdt] */
 #include "ametal.h"
 #include "am_wdt.h"
 #include "am_delay.h"

@@ -43,7 +43,7 @@
  */
 
 /**
- * \addtogroup demo_fm175xx_picca_read_block
+ * \addtogroup demo_if_fm175xx_picca_read_block
  * \copydoc demo_fm175xx_picca_read_block.c
  */
 

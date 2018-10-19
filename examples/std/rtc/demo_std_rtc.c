@@ -21,7 +21,7 @@
  *   1. 调试串口将每一秒的时间信息打印出来。
  *
  * \par 源代码
- * \snippet demo_microport_ds1302.c src_microport_ds1302
+ * \snippet demo_std_rtc.c src_std_rtc
  *
  * \internal
  * \par Modification History
@@ -30,11 +30,11 @@
  */
 
 /**
- * \addtogroup demo_if_microport_ds1302
- * \copydoc demo_microport_ds1302.c
+ * \addtogroup demo_if_std_rtc
+ * \copydoc demo_std_rtc.c
  */
 
-/** [src_microport_ds1302] */
+/** [src_std_rtc] */
 #include "ametal.h"
 #include "am_rtc.h"
 #include "am_delay.h"
@@ -84,6 +84,6 @@ void demo_std_rtc_entry (am_rtc_handle_t rtc_handle)
         am_mdelay(20);
     }
 }
-/** [src_microport_ds1302] */
+/** [src_std_rtc] */
 
 /* end of file */

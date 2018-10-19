@@ -12,18 +12,18 @@
 
 /**
  * \file
- * \brief fm175xxä½¿ç”¨ä¸åŒçš„æ–¹æ³•è¯»å–å¡ç‰‡ä¿¡æ¯ï¼Œé€šè¿‡é©±åŠ¨æ¥å£å®ç°
+ * \brief fm175xxÊ¹ÓÃ²»Í¬µÄ·½·¨¶ÁÈ¡¿¨Æ¬ĞÅÏ¢£¬Í¨¹ıÇı¶¯½Ó¿ÚÊµÏÖ
  *
- * - æ“ä½œæ­¥éª¤ï¼š
- *   1. æ­£ç¡®è¿æ¥å¹¶é…ç½®å¥½ä¸²å£ã€‚
- *   2. æ­£ç¡®è¿æ¥å¥½å¤©çº¿ã€‚
- *   3. å°†Aç±»å¡ç½®äºå¤©çº¿æ„Ÿåº”åŒºã€‚
+ * - ²Ù×÷²½Öè£º
+ *   1. ÕıÈ·Á¬½Ó²¢ÅäÖÃºÃ´®¿Ú¡£
+ *   2. ÕıÈ·Á¬½ÓºÃÌìÏß¡£
+ *   3. ½«AÀà¿¨ÖÃÓÚÌìÏß¸ĞÓ¦Çø¡£
  *
- * - å®éªŒç°è±¡ï¼š
- *   1. å¦‚æœå¡ç‰‡æ”¯æŒhaltæŒ‡ä»¤ï¼Œåˆ™æ¯æ¬¡é‡æ–°å°†å¡æ”¾ç½®å¤©çº¿æ„Ÿåº”åŒºåï¼Œä¸²å£åªèƒ½æ‰“å°å‡ºä¸¤æ¬¡å¡ç‰‡ä¿¡æ¯ã€‚
- *   2. å¦‚æœå¡ç‰‡ä¸æ”¯æŒhaltæŒ‡ä»¤ï¼Œåˆ™å°†å¡æ”¾ç½®å¤©çº¿æ„Ÿåº”åŒºåï¼Œä¸²å£èƒ½è¿ç»­ä¸æ–­çš„æ‰“å°å‡ºå¡ç‰‡ä¿¡æ¯ã€‚
+ * - ÊµÑéÏÖÏó£º
+ *   1. Èç¹û¿¨Æ¬Ö§³ÖhaltÖ¸Áî£¬ÔòÃ¿´ÎÖØĞÂ½«¿¨·ÅÖÃÌìÏß¸ĞÓ¦Çøºó£¬´®¿ÚÖ»ÄÜ´òÓ¡³öÁ½´Î¿¨Æ¬ĞÅÏ¢¡£
+ *   2. Èç¹û¿¨Æ¬²»Ö§³ÖhaltÖ¸Áî£¬Ôò½«¿¨·ÅÖÃÌìÏß¸ĞÓ¦Çøºó£¬´®¿ÚÄÜÁ¬Ğø²»¶ÏµÄ´òÓ¡³ö¿¨Æ¬ĞÅÏ¢¡£
  *
- * \par æºä»£ç 
+ * \par Ô´´úÂë
  * \snippet demo_fm175xx_picca_halt.c src_fm175xx_picca_halt
  *
  * \internal
@@ -33,7 +33,7 @@
  */
 
 /**
- * \addtogroup demo_fm175xx_picca_halt
+ * \addtogroup demo_if_fm175xx_picca_halt
  * \copydoc demo_fm175xx_picca_halt.c
  */
 
@@ -44,19 +44,19 @@
 #include "am_delay.h"
 
 /**
- * \brief Aç±»å¡è¯»ä¼‘çœ å¡ä¾‹ç¨‹
+ * \brief AÀà¿¨¶ÁĞİÃß¿¨Àı³Ì
  */
 void demo_fm175xx_picca_halt (am_fm175xx_handle_t handle)
 {
     uint8_t tag_type[2] = { 0 };      /* ATQA */
     uint8_t uid[10]     = { 0 };      /* UID */
-    uint8_t uid_real_len = 0;         /* æ¥æ”¶åˆ°çš„UIDçš„é•¿åº¦ */
+    uint8_t uid_real_len = 0;         /* ½ÓÊÕµ½µÄUIDµÄ³¤¶È */
     uint8_t sak[3]      = { 0 };      /* SAK */
     uint8_t i;
 
     while (1) {
 
-        /* å¯»æ‰€æœ‰æœªä¼‘çœ ï¼ˆhaltï¼‰çš„å¡ */
+        /* Ñ°ËùÓĞÎ´ĞİÃß£¨halt£©µÄ¿¨ */
         am_kprintf("read idle...\n");
         if (AM_FM175XX_STATUS_SUCCESS == am_fm175xx_picca_active\
                                          (handle,
@@ -74,10 +74,10 @@ void demo_fm175xx_picca_halt (am_fm175xx_handle_t handle)
             am_kprintf("\n");
             am_kprintf("SAK  :%02x\n\n", sak[0]);
 
-            am_fm175xx_picca_halt(handle);  /* è®©å¡ç‰‡ä¼‘çœ  */
+            am_fm175xx_picca_halt(handle);  /* ÈÃ¿¨Æ¬ĞİÃß */
             am_kprintf("halt\n");
             am_kprintf("read halt...\n");
-            /* è¯»æ‰€æœ‰çš„å¡ï¼ˆèƒ½è¯»åˆ°ä¼‘çœ çš„å¡ï¼‰ */
+            /* ¶ÁËùÓĞµÄ¿¨£¨ÄÜ¶Áµ½ĞİÃßµÄ¿¨£© */
             if (AM_FM175XX_STATUS_SUCCESS == am_fm175xx_picca_active\
                                              (handle,
                                               AM_FM175XX_PICCA_REQ_ALL,
