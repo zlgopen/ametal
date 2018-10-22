@@ -33,12 +33,11 @@
  */
 
 /**
- * \addtogroup demo_fm175xx_picca_read_id
+ * \addtogroup demo_if_fm175xx_picca_read_id
  * \copydoc demo_fm175xx_picca_read_id.c
  */
 
 /** [src_fm175xx_picca_read_id] */
-
 #include "am_fm175xx.h"
 #include "am_fm175xx_reg.h"
 #include "am_vdebug.h"
@@ -81,7 +80,7 @@ void demo_fm175xx_picca_read_id (am_fm175xx_handle_t handle)
     }
 }
 
-/** [demo_fm175xx_picca_read_id] */
+/** [src_fm175xx_picca_read_id] */
 
 /* end of file */
 

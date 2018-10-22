@@ -32,6 +32,12 @@ extern "C" {
 #endif
 
 /**
+ * \addtogroup am_if_hc595_gpio
+ * \copydoc am_hc595_gpio.h
+ * @{
+ */
+
+/**
  * \brief GPIO驱动HC595的设备信息
  *
  * 未使用的引脚，如OE，固定为低电平时，可以将 oe引脚的值设置为 -1
@@ -88,6 +94,8 @@ am_hc595_handle_t am_hc595_gpio_init (am_hc595_gpio_dev_t        *p_dev,
  * \return AM_OK，解初始化成功；其它值，解初始化失败
  */
 int am_hc595_gpio_deinit (am_hc595_gpio_dev_t *p_dev);
+
+/** @} am_if_hc595_gpio */
 
 #ifdef __cplusplus
 }

@@ -23,7 +23,7 @@
  *   3. 调试串口打印测试结果。
  *
  * \par 源代码
- * \snippet demo_std_i2c_eeprom_sync.c src_std_i2c_eeprom_sync
+ * \snippet demo_std_i2c_master_sync.c src_std_i2c_master_sync
  *
  * \internal
  * \par Modification history
@@ -32,11 +32,11 @@
  */
 
 /**
- * \addtogroup demo_if_std_i2c_eeprom_sync
- * \copydoc demo_std_i2c_eeprom_sync.c
+ * \addtogroup demo_if_std_i2c_master_sync
+ * \copydoc demo_std_i2c_master_sync.c
  */
 
-/** [src_std_i2c_eeprom_sync] */
+/** [src_std_i2c_master_sync] */
 #include "ametal.h"
 #include "am_i2c.h"
 #include "am_delay.h"
@@ -111,6 +111,6 @@ void demo_std_i2c_master_sync_entry (am_i2c_handle_t handle,
         ; /* VOID */
     }
 }
-/** [src_std_i2c_eeprom_sync] */
+/** [src_std_i2c_master_sync] */
 
 /* end of file */

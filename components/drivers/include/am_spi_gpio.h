@@ -32,7 +32,7 @@ extern "C" {
 #endif
 
 /**
- * \addtogroup grp_am_if_spi_gpio
+ * \addtogroup am_if_spi_gpio
  * \copydoc am_spi_gpio.h
  * @{
  */
@@ -104,7 +104,7 @@ am_spi_handle_t am_spi_gpio_init (am_spi_gpio_dev_t           *p_dev,
 void am_spi_gpio_deinit (am_spi_handle_t handle);
 
 
-/** @} grp_am_if_spi_gpio */
+/** @} am_if_spi_gpio */
 
 #ifdef __cplusplus
 }

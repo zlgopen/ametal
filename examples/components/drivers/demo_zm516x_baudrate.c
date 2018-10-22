@@ -42,7 +42,7 @@
  */
 
 /**
- * \addtogroup demo_zm516x_baudrate
+ * \addtogroup demo_if_zm516x_baudrate
  * \copydoc demo_zm516x_baudrate.c
  */
 

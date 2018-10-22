@@ -42,8 +42,9 @@
 /*! @brief USB host unlock */
 #define USB_HostUnlock() am_usb_osa_mutex_unlock(hostInstance->hostMutex)
 
-/*!
- * @addtogroup usb_host_controller_driver
+/**
+ * \addtogroup am_if_usb_hci
+ * \copydoc am_usb_hci.h
  * @{
  */
 
@@ -89,13 +90,6 @@ typedef struct am_usbh_controller_interface
                                     uint32_t ioctlEvent,
                                     void *ioctlParam); /*!< Control a controller function prototype*/
 } am_usbh_controller_interface_t;
-
-/*! @}*/
-
-/*!
- * @addtogroup usb_host_drv
- * @{
- */
 
 /*! @brief USB host instance structure */
 typedef struct _usb_host_instance

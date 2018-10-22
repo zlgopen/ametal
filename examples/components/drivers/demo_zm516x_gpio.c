@@ -42,7 +42,7 @@
  */
 
 /**
- * \addtogroup demo_zm516x_gpio
+ * \addtogroup demo_if_zm516x_gpio
  * \copydoc demo_zm516x_gpio.c
  */
 

@@ -34,7 +34,7 @@
  */
 
 /**
- * \addtogroup demo_fm175xx_picca_write_block
+ * \addtogroup demo_if_fm175xx_picca_write_block
  * \copydoc demo_fm175xx_picca_write_block.c
  */
 

@@ -17,7 +17,7 @@
  *   1. 串口打印出测试结果。
  *
  * \par 源代码
- * \snippet demo_service_ftl.c src_service_ftl
+ * \snippet demo_ftl.c src_ftl
  *
  * \internal
  * \par Modification history
@@ -26,11 +26,11 @@
  */
 
 /**
- * \addtogroup demo_if_service_ftl
- * \copydoc demo_service_ftl.c
+ * \addtogroup demo_if_ftl
+ * \copydoc demo_ftl.c
  */
 
-/** [src_service_ftl] */
+/** [src_ftl] */
 #include "ametal.h"
 #include "am_ftl.h"
 #include "am_delay.h"
@@ -92,6 +92,6 @@ void demo_ftl_entry (am_ftl_handle_t ftl_handle, int32_t test_lenth)
         ; /* VOID */
     }
 }
-/** [src_service_ftl] */
+/** [src_ftl] */
 
 /* end of file */

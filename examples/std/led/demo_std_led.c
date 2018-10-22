@@ -31,7 +31,7 @@
  * \copydoc demo_std_led.c
  */
 
-/** [src_demo_std_led] */
+/** [src_std_led] */
 #include "ametal.h"
 #include "am_led.h"
 #include "am_delay.h"
@@ -48,6 +48,6 @@ void demo_std_led_entry (int led_id)
         am_mdelay(500);
     }
 }
-/** [src_demo_std_led] */
+/** [src_std_led] */
 
 /* end of file */

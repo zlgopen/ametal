@@ -31,7 +31,7 @@
  * \copydoc demo_std_led_water_light.c
  */
 
-/** [src_demo_std_led_water_light] */
+/** [src_std_led_water_light] */
 #include "ametal.h"
 #include "am_led.h"
 #include "am_delay.h"
@@ -51,6 +51,6 @@ void demo_std_led_water_light_entry (int led_id_start, int num)
         }
     }
 }
-/** [src_demo_std_led_water_light] */
+/** [src_std_led_water_light] */
 
 /* end of file */

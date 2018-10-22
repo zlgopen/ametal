@@ -25,7 +25,7 @@
  *   3. 移开卡片后，达到设定的AUTO_WUP_TIME的时间时，FM175xx自动退出LPCD模式，自动进行调校。
  *
  * \par 源代码
- * \snippet demo_fm175xx_picca_lpcd_mode.c demo_fm175xx_picca_lpcd_mode
+ * \snippet demo_fm175xx_picca_lpcd_read_id.c src_fm175xx_picca_lpcd_read_id
  *
  * \internal
  * \par Modification history
@@ -34,12 +34,11 @@
  */
 
 /**
- * \addtogroup demo_fm175xx_picca_lpcd_mode
- * \copydoc demo_fm175xx_picca_lpcd_mode.c
+ * \addtogroup demo_if_fm175xx_picca_lpcd_read_id
+ * \copydoc demo_fm175xx_picca_lpcd_read_id.c
  */
 
-/** [src_demo_fm175xx_picca_lpcd_mode] */
-
+/** [src_fm175xx_picca_lpcd_read_id] */
 #include "am_fm175xx.h"
 #include "am_fm175xx_reg.h"
 #include "am_vdebug.h"
@@ -126,6 +125,6 @@ void demo_fm175xx_picca_lpcd_mode (am_fm175xx_handle_t handle)
     }
 }
 
-/** [demo_fm175xx_picca_lpcd_mode] */
+/** [src_fm175xx_picca_lpcd_read_id] */
 
 /* end of file */

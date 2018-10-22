@@ -51,8 +51,8 @@
  */
 
 /**
- * \addtogroup demo_if_std_zm516x
- * \copydoc demo_std_zm516x.c
+ * \addtogroup demo_if_zm516x
+ * \copydoc demo_zm516x.c
  */
 
 /** [src_zm516x] */

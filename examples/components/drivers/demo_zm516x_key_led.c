@@ -53,8 +53,8 @@
  */
 
 /**
- * \addtogroup demo_if_lpc82x_std_zm516x_key_led
- * \copydoc demo_lpc82x_std_zm516x_key_led.c
+ * \addtogroup demo_if_zm516x_key_led
+ * \copydoc demo_zm516x_key_led.c
  */
 
 /** [src_zm516x_key_led] */

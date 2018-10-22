@@ -32,7 +32,8 @@ extern "C" {
 #endif
 
 /**
- * \name am_if_digitron_seg_hc595
+ * \addtogroup am_if_digitron_seg_hc595
+ * \copydoc am_digitron_seg_hc595.h
  * @{
  */
 

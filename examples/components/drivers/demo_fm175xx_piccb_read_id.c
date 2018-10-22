@@ -36,7 +36,7 @@
  */
 
 /**
- * \addtogroup demo_fm175xx_piccb_read_id
+ * \addtogroup demo_if_fm175xx_piccb_read_id
  * \copydoc demo_fm175xx_piccb_read_id.c
  */
 

@@ -36,7 +36,7 @@
  */
 
 /**
- * \addtogroup demo_fm175xx_picca_val_operate
+ * \addtogroup demo_if_fm175xx_picca_val_operate
  * \copydoc demo_fm175xx_picca_val_operate.c
  */
 

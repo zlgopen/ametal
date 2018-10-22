@@ -32,7 +32,7 @@ extern "C" {
 #endif
 
 /**
- * \addtogroup grp_am_if_i2c_gpio
+ * \addtogroup am_if_i2c_gpio
  * \copydoc am_i2c_gpio.h
  * @{
  */
@@ -97,7 +97,7 @@ am_i2c_handle_t am_i2c_gpio_init (am_i2c_gpio_dev_t           *p_dev,
 void am_i2c_gpio_deinit (am_i2c_handle_t handle);
 
 
-/** @} grp_am_if_i2c_gpio */
+/** @} am_if_i2c_gpio */
 
 #ifdef __cplusplus
 }
