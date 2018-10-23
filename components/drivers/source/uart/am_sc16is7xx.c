@@ -1703,7 +1703,7 @@ int am_sc16is7xx_uart_poll_receive (am_sc16is7xx_handle_t handle,
     if (NULL == handle) {
         return -AM_EINVAL;
     }
-    
+    /* 通过sc16is7xx从串口接收数据 */
     while (i < nbytes) {
         p_rxbuf[i] = 0;
         __uart_poll_getchar(handle->uart_serv[0].p_drv, &p_rxbuf[i]);
@@ -1723,7 +1723,7 @@ int am_sc16is7xx_uart_poll_send (am_sc16is7xx_handle_t handle,
     if (NULL == handle) {
         return -AM_EINVAL;
     }
-    
+    /* 通过sc16is7xx向串口发送数据 */
     while (i < nbytes && p_txbuf[i] != 0) {
     __uart_poll_putchar(handle->uart_serv[0].p_drv,p_txbuf[i++]);
     }
