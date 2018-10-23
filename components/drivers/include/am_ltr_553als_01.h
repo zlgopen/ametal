@@ -169,6 +169,16 @@ typedef struct am_ltr_553als_dev {
 typedef am_ltr_553als_dev_t *am_ltr_553als_handle_t;
 
 /**
+ * \brief LTR_553ALS传感器软件复位
+ *
+ * \param[in]  handle  : LTR_553ALS服务操作句柄
+ *
+ * \retval AM_OK : 复位成功
+ * \retval OTHER : 复位失败
+ */
+int am_ltr_553als_soft_reset (am_ltr_553als_handle_t handle);
+
+/**
  * \brief LTR_553ALS传感器读取光强
  *
  * \param[in]  handle  : LTR_553ALS服务操作句柄

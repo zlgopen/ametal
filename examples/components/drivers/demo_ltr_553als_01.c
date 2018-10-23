@@ -52,7 +52,7 @@ void demo_ltr_553als_entry (void)
     while (1) {
         am_ltr_553als_read_als (handle, &als);
         am_ltr_553als_read_ps (handle, &ps);
-        AM_DBG_INFO("LTR_553ALS = %d     LTR_553PS = %d   \r\n", als, ps);
+        AM_DBG_INFO("LTR_553ALS = %d     LTR_553PS = %d\r\n", als, ps);
         am_mdelay(500);
     }
 }
