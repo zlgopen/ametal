@@ -1660,13 +1660,13 @@ int am_sc16is7xx_uart_poll_receive (am_sc16is7xx_handle_t handle,
                                     char                 *p_rxbuf, 
                                     uint32_t              nbytes)                                    
 {
-    int ret = AM_OK;       
-    
+    int ret = AM_OK;
+
     /* 判断参数有效性 */
     if ((NULL == handle) || (handle->p_devinfo->chan_num <= chan)) {
         return -AM_EINVAL;
     }
-    
+
     while (nbytes-- && AM_OK == ret) {  
         ret = __uart_poll_getchar (&(handle->uartinfo[chan]), p_rxbuf);
         if (AM_OK != ret) {
@@ -1674,7 +1674,7 @@ int am_sc16is7xx_uart_poll_receive (am_sc16is7xx_handle_t handle,
         }
         p_rxbuf++;
     } 
-    
+
     return AM_OK; 
 }
 
@@ -1687,20 +1687,20 @@ int am_sc16is7xx_uart_poll_send (am_sc16is7xx_handle_t handle,
                                  uint32_t              nbytes)  
 {
     int ret = 0;
-    
+
     /* 判断参数有效性 */
     if ((NULL == handle) || (handle->p_devinfo->chan_num <= chan)) {
         return -AM_EINVAL;
     }
-        
+
     while (nbytes-- && *p_txbuf != '\0') {  
         ret = __uart_poll_putchar (&(handle->uartinfo[chan]), *p_txbuf++);
-   
+
         if (AM_OK != ret) {
             return ret;
         }
     }
-                                  
+
     return ret;
 }
 
