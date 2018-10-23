@@ -1505,8 +1505,8 @@ am_sc16is7xx_handle_t am_sc16is7xx_init (am_sc16is7xx_dev_t           *p_dev,
 
         p_dev->uart_serv[i].p_funcs = (struct am_uart_drv_funcs *)&__g_uart_drv_funcs;
         p_dev->uart_serv[i].p_drv   = &p_dev->uartinfo[i];
-        p_dev->pfn_txchar_get[i]    = NULL;
-        p_dev->pfn_rxchar_put[i]    = NULL;
+        p_dev->pfn_txchar_get[i]    = p_dev->uart_serv[i].p_funcs->pfn_uart_poll_getchar;
+        p_dev->pfn_rxchar_put[i]    = p_dev->uart_serv[i].p_funcs->pfn_uart_poll_putchar;
         p_dev->pfn_err[i]           = NULL;
 
         p_dev->serial_rate[i]       = 9600;
@@ -1554,8 +1554,8 @@ am_sc16is7xx_handle_t am_sc16is7xx_init (am_sc16is7xx_dev_t           *p_dev,
         am_mdelay(1);
 
         /* 如果没有配置 RST 引脚，则使用软件复位 */
-        __reg_write(p_dev, 0, SC16IS7XX_REG_LCR, SC16IS7XX_LCR_ACCESS_GENERAL);
         __reg_write(p_dev, 0, SC16IS7XX_REG_IOCTRL, SC16IS7XX_IO_CTRL_RESET_BIT);
+        __reg_write(p_dev, 0, SC16IS7XX_REG_LCR, SC16IS7XX_LCR_ACCESS_GENERAL);
 
         am_mdelay(1);
     }
@@ -1691,6 +1691,42 @@ am_err_t am_sc16is7xx_deinit (am_sc16is7xx_handle_t handle)
         p_dev->p_devinfo->pfn_plfm_deinit();
     }
 
+    return AM_OK;
+}
+
+int am_sc16is7xx_uart_poll_receive (am_sc16is7xx_handle_t handle,
+                                    uint8_t               chan,
+                                    char                 *p_rxbuf, 
+                                    uint32_t              nbytes)
+{
+    uint32_t i = 0;
+    if (NULL == handle) {
+        return -AM_EINVAL;
+    }
+    
+    while (i < nbytes) {
+        p_rxbuf[i] = 0;
+        __uart_poll_getchar(handle->uart_serv[0].p_drv, &p_rxbuf[i]);
+        if (p_rxbuf[i++] == 0) {
+            break;
+        }
+    }
+    return AM_OK;
+}
+
+int am_sc16is7xx_uart_poll_send (am_sc16is7xx_handle_t handle,
+                                 uint8_t               chan,
+                                 char                 *p_txbuf, 
+                                 uint32_t              nbytes)
+{
+    uint32_t i = 0;
+    if (NULL == handle) {
+        return -AM_EINVAL;
+    }
+    
+    while (i < nbytes && p_txbuf[i] != 0) {
+    __uart_poll_putchar(handle->uart_serv[0].p_drv,p_txbuf[i++]);
+    }
     return AM_OK;
 }
 
