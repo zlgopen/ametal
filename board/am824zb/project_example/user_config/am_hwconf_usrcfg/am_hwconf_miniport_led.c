@@ -57,8 +57,8 @@ static const int __g_miniport_led_pins[] = {
 /* 定义GPIO按键实例信息 */
 static const am_led_gpio_info_t __g_miniport_led_info = {
     {
-        0,                            /* 起始编号0 */
-        7                             /* 结束编号7，共计8个LED */
+        3,                            /* 起始编号3 */
+        10                             /* 结束编号10，共计8个LED */
     },
     __g_miniport_led_pins,
     AM_TRUE

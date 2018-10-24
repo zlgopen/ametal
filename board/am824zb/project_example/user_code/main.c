@@ -35,10 +35,15 @@ void am_main (void)
 {
     AM_DBG_INFO("Start up successful!\r\n");
     /*
-     * 以下为所有demo的入口函数，需要运行哪个 demo， 就取消对应函数调用行的注释
+     * am824zb与am824_core的外设几乎相同，仅仅多了Zigbee模块，
+     * 但是am824zb板的I2C0的PIO10_10和PIO0_11与miniport的引脚可能会造成冲突，
+     * 导致一些demo只能在am824_core上运行而无法在am824zb上正常运行，因冲突而不能运行的demo:
      *
-     * 以下demo可与am824_core板复用，默认运行的是LED闪烁 demo。
+     * demo_am824_core_miniport_hc595_digitron_temp_entry();
      *
+     * 此外，用户若设计出某些需要使用到PIO10_10、PIO10_11引脚的miniport与lm75同时使用的代码也无法正常运行。
+     *
+     * 以下为所有可正常运行demo的入口函数，需要运行哪个 demo，就取消对应函数调用行的注释，默认运行的是LED闪烁 demo。
      * 注意：同一时刻只能运行一个 demo，即只能使某一行处于取消注释状态。
      */
 
@@ -78,9 +83,12 @@ void am_main (void)
     //demo_am824_core_std_i2c_master_async_entry();
     //demo_am824_core_hw_iap_entry();
     //demo_am824_core_std_key_input_event_entry();
+    //demo_am824_core_miniport_digitron_entry();
+    //demo_am824_core_miniport_hc595_digitron_key_entry();
+    //demo_am824_core_miniport_hc595_digitron_entry();
     //demo_am824_core_miniport_hc595_led_entry();
-    //demo_am824_core_miniport_key_entry();
     //demo_am824_core_miniport_key_digitron_entry();
+    //demo_am824_core_miniport_key_entry();
     //demo_am824_core_miniport_led_entry();
     //demo_am824_core_miniport_zlg72128_entry();
     //demo_am824_core_hw_mrt_entry();
