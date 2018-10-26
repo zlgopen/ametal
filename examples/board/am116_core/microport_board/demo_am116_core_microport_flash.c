@@ -15,6 +15,7 @@
  *
  * - 操作步骤：
  *   1. 将 MicroPort FLASH 配板连接到 AM116-Core 的 MicroPort 接口。
+ *   2. 将优化等级调成Level 2
  *
  * - 实验现象：
  *   1. 主机写数据到 FLASH；
@@ -51,7 +52,11 @@ void demo_am116_core_microport_flash_entry (void)
 {
     AM_DBG_INFO("demo am116_core microport flash!\r\n");
 
-    demo_mx25xx_entry(am_microport_flash_inst_init(), 8);
+    /* MX25xx flash例程 */
+//    demo_mx25xx_entry(am_microport_flash_inst_init(), 8);
+
+    /* IS25xx flash例程 */
+    demo_is25xx_entry (am_microport_flash_is25xx_inst_init(), 8);     
 }
 /** [src_am116_core_microport_flash] */
 

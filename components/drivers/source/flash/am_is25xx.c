@@ -28,6 +28,7 @@
   includes
 *******************************************************************************/
 #include "ametal.h"
+#include "am_delay.h"
 #include "am_vdebug.h"
 #include "am_is25xx.h"
 #include <string.h>
@@ -319,12 +320,10 @@ static int __is25xx_rw (am_is25xx_dev_t        *p_dev,
         if (ret != AM_OK) {
             return -AM_EIO;
         }
-
         len   -= len_tmp;
         start += len_tmp;
         p_buf += len_tmp;
     }
-
     return AM_OK;
 }
 

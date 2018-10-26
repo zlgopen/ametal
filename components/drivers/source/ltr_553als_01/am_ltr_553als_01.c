@@ -70,6 +70,7 @@ typedef enum am_ltr_553als_command {
 
 /**
  * \brief LTR_553ALS传感器软件复位
+ * \return AM_OK:成功    OTHER：失败
  */
 int am_ltr_553als_soft_reset (am_ltr_553als_handle_t handle)
 {
@@ -225,7 +226,7 @@ am_ltr_553als_handle_t am_ltr_553als_init (am_ltr_553als_dev_t *p_dev,
                  LTR_553ALS_MEAS_RATE, 
                  &als_meas_rate, 
                  1);
-  
+
     am_mdelay(100);
 
     return p_dev;

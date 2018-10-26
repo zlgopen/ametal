@@ -32,8 +32,8 @@ extern "C" {
 
 
 /** \brief ÊµÀý³õÊ¼»¯ */
-am_ltr_553als_handle_t am_ltr_553als_inst_init (void);    
-    
+am_ltr_553als_handle_t am_ltr_553als_inst_init (void);
+
 
 #ifdef __cplusplus
 }
