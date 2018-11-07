@@ -193,7 +193,7 @@ static int __pit_timing_count_get (void     *p_drv,
         __pit_timing_count_get64(p_drv, chan, (uint64_t *)p_count);
         return AM_OK;
     }
-    *(uint32_t *)p_count = amhw_fsl_pit_ldval_get(p_hw_pit, AMHW_FSL_PIT_CH(chan));
+    *(uint32_t *)p_count = amhw_fsl_pit_cval_get(p_hw_pit, AMHW_FSL_PIT_CH(chan));
 
     return AM_OK;
 }
