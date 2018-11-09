@@ -12,7 +12,7 @@
 
 /**
  * \file
- * \brief 程序清单7.54
+ * \brief 程序清单7.52
  *
  *
  * \internal
@@ -21,13 +21,13 @@
  * \endinternal
  */
 #include "ametal.h"
-#include "am_hwconf_miniport.h"
+#include "am_lpc82x_inst_init.h"
 #include "app_digitron_count_down.h"
 
 int am_main (void)
 {
-    am_miniport_view_595_inst_init();      // MiniPort-View数码管（HC595输出段码）实例初始化
-    app_digitron_count_down(0);            // 使用显示器编号为0的数码管
+    am_miniport_view_inst_init();            // MiniPort-View数码管实例初始化
+    app_digitron_count_down(0);              // 使用显示器编号为0的数码管
     while (1) {
     }
 }

@@ -25,7 +25,7 @@
 #include "am_led.h"
 #include "am_buzzer.h"
 
-static void __input_key_proc (void *p_arg, int key_code, int key_state)
+static void __input_key_proc (void *p_arg, int key_code, int key_state, int keep_time)
 {
     if (key_state == AM_INPUT_KEY_STATE_PRESSED) {      // 按键按下
         am_buzzer_beep_async(100);                      // 蜂鸣器“嘀”一声

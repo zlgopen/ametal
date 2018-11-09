@@ -4450,9 +4450,9 @@
               </FileOption>
             </File>
             <File>
-              <FileName>am_main_6_102.c</FileName>
+              <FileName>am_main_6_100.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\user_code\am_main_6_102.c</FilePath>
+              <FilePath>..\user_code\am_main_6_100.c</FilePath>
               <FileOption>
                 <CommonProperty>
                   <UseCPPCompiler>2</UseCPPCompiler>
@@ -4502,217 +4502,9 @@
               </FileOption>
             </File>
             <File>
-              <FileName>am_main_6_103.c</FileName>
+              <FileName>am_main_6_105.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\user_code\am_main_6_103.c</FilePath>
-              <FileOption>
-                <CommonProperty>
-                  <UseCPPCompiler>2</UseCPPCompiler>
-                  <RVCTCodeConst>0</RVCTCodeConst>
-                  <RVCTZI>0</RVCTZI>
-                  <RVCTOtherData>0</RVCTOtherData>
-                  <ModuleSelection>0</ModuleSelection>
-                  <IncludeInBuild>0</IncludeInBuild>
-                  <AlwaysBuild>2</AlwaysBuild>
-                  <GenerateAssemblyFile>2</GenerateAssemblyFile>
-                  <AssembleAssemblyFile>2</AssembleAssemblyFile>
-                  <PublicsOnly>2</PublicsOnly>
-                  <StopOnExitCode>11</StopOnExitCode>
-                  <CustomArgument></CustomArgument>
-                  <IncludeLibraryModules></IncludeLibraryModules>
-                  <ComprImg>1</ComprImg>
-                </CommonProperty>
-                <FileArmAds>
-                  <Cads>
-                    <interw>2</interw>
-                    <Optim>0</Optim>
-                    <oTime>2</oTime>
-                    <SplitLS>2</SplitLS>
-                    <OneElfS>2</OneElfS>
-                    <Strict>2</Strict>
-                    <EnumInt>2</EnumInt>
-                    <PlainCh>2</PlainCh>
-                    <Ropi>2</Ropi>
-                    <Rwpi>2</Rwpi>
-                    <wLevel>2</wLevel>
-                    <uThumb>2</uThumb>
-                    <uSurpInc>2</uSurpInc>
-                    <uC99>2</uC99>
-                    <useXO>2</useXO>
-                    <v6Lang>0</v6Lang>
-                    <v6LangP>0</v6LangP>
-                    <vShortEn>0</vShortEn>
-                    <vShortWch>0</vShortWch>
-                    <VariousControls>
-                      <MiscControls></MiscControls>
-                      <Define></Define>
-                      <Undefine></Undefine>
-                      <IncludePath></IncludePath>
-                    </VariousControls>
-                  </Cads>
-                </FileArmAds>
-              </FileOption>
-            </File>
-            <File>
-              <FileName>am_main_6_104.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_code\am_main_6_104.c</FilePath>
-              <FileOption>
-                <CommonProperty>
-                  <UseCPPCompiler>2</UseCPPCompiler>
-                  <RVCTCodeConst>0</RVCTCodeConst>
-                  <RVCTZI>0</RVCTZI>
-                  <RVCTOtherData>0</RVCTOtherData>
-                  <ModuleSelection>0</ModuleSelection>
-                  <IncludeInBuild>0</IncludeInBuild>
-                  <AlwaysBuild>2</AlwaysBuild>
-                  <GenerateAssemblyFile>2</GenerateAssemblyFile>
-                  <AssembleAssemblyFile>2</AssembleAssemblyFile>
-                  <PublicsOnly>2</PublicsOnly>
-                  <StopOnExitCode>11</StopOnExitCode>
-                  <CustomArgument></CustomArgument>
-                  <IncludeLibraryModules></IncludeLibraryModules>
-                  <ComprImg>1</ComprImg>
-                </CommonProperty>
-                <FileArmAds>
-                  <Cads>
-                    <interw>2</interw>
-                    <Optim>0</Optim>
-                    <oTime>2</oTime>
-                    <SplitLS>2</SplitLS>
-                    <OneElfS>2</OneElfS>
-                    <Strict>2</Strict>
-                    <EnumInt>2</EnumInt>
-                    <PlainCh>2</PlainCh>
-                    <Ropi>2</Ropi>
-                    <Rwpi>2</Rwpi>
-                    <wLevel>2</wLevel>
-                    <uThumb>2</uThumb>
-                    <uSurpInc>2</uSurpInc>
-                    <uC99>2</uC99>
-                    <useXO>2</useXO>
-                    <v6Lang>0</v6Lang>
-                    <v6LangP>0</v6LangP>
-                    <vShortEn>0</vShortEn>
-                    <vShortWch>0</vShortWch>
-                    <VariousControls>
-                      <MiscControls></MiscControls>
-                      <Define></Define>
-                      <Undefine></Undefine>
-                      <IncludePath></IncludePath>
-                    </VariousControls>
-                  </Cads>
-                </FileArmAds>
-              </FileOption>
-            </File>
-            <File>
-              <FileName>am_main_6_110.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_code\am_main_6_110.c</FilePath>
-              <FileOption>
-                <CommonProperty>
-                  <UseCPPCompiler>2</UseCPPCompiler>
-                  <RVCTCodeConst>0</RVCTCodeConst>
-                  <RVCTZI>0</RVCTZI>
-                  <RVCTOtherData>0</RVCTOtherData>
-                  <ModuleSelection>0</ModuleSelection>
-                  <IncludeInBuild>0</IncludeInBuild>
-                  <AlwaysBuild>2</AlwaysBuild>
-                  <GenerateAssemblyFile>2</GenerateAssemblyFile>
-                  <AssembleAssemblyFile>2</AssembleAssemblyFile>
-                  <PublicsOnly>2</PublicsOnly>
-                  <StopOnExitCode>11</StopOnExitCode>
-                  <CustomArgument></CustomArgument>
-                  <IncludeLibraryModules></IncludeLibraryModules>
-                  <ComprImg>1</ComprImg>
-                </CommonProperty>
-                <FileArmAds>
-                  <Cads>
-                    <interw>2</interw>
-                    <Optim>0</Optim>
-                    <oTime>2</oTime>
-                    <SplitLS>2</SplitLS>
-                    <OneElfS>2</OneElfS>
-                    <Strict>2</Strict>
-                    <EnumInt>2</EnumInt>
-                    <PlainCh>2</PlainCh>
-                    <Ropi>2</Ropi>
-                    <Rwpi>2</Rwpi>
-                    <wLevel>2</wLevel>
-                    <uThumb>2</uThumb>
-                    <uSurpInc>2</uSurpInc>
-                    <uC99>2</uC99>
-                    <useXO>2</useXO>
-                    <v6Lang>0</v6Lang>
-                    <v6LangP>0</v6LangP>
-                    <vShortEn>0</vShortEn>
-                    <vShortWch>0</vShortWch>
-                    <VariousControls>
-                      <MiscControls></MiscControls>
-                      <Define></Define>
-                      <Undefine></Undefine>
-                      <IncludePath></IncludePath>
-                    </VariousControls>
-                  </Cads>
-                </FileArmAds>
-              </FileOption>
-            </File>
-            <File>
-              <FileName>am_main_6_113.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_code\am_main_6_113.c</FilePath>
-              <FileOption>
-                <CommonProperty>
-                  <UseCPPCompiler>2</UseCPPCompiler>
-                  <RVCTCodeConst>0</RVCTCodeConst>
-                  <RVCTZI>0</RVCTZI>
-                  <RVCTOtherData>0</RVCTOtherData>
-                  <ModuleSelection>0</ModuleSelection>
-                  <IncludeInBuild>0</IncludeInBuild>
-                  <AlwaysBuild>2</AlwaysBuild>
-                  <GenerateAssemblyFile>2</GenerateAssemblyFile>
-                  <AssembleAssemblyFile>2</AssembleAssemblyFile>
-                  <PublicsOnly>2</PublicsOnly>
-                  <StopOnExitCode>11</StopOnExitCode>
-                  <CustomArgument></CustomArgument>
-                  <IncludeLibraryModules></IncludeLibraryModules>
-                  <ComprImg>1</ComprImg>
-                </CommonProperty>
-                <FileArmAds>
-                  <Cads>
-                    <interw>2</interw>
-                    <Optim>0</Optim>
-                    <oTime>2</oTime>
-                    <SplitLS>2</SplitLS>
-                    <OneElfS>2</OneElfS>
-                    <Strict>2</Strict>
-                    <EnumInt>2</EnumInt>
-                    <PlainCh>2</PlainCh>
-                    <Ropi>2</Ropi>
-                    <Rwpi>2</Rwpi>
-                    <wLevel>2</wLevel>
-                    <uThumb>2</uThumb>
-                    <uSurpInc>2</uSurpInc>
-                    <uC99>2</uC99>
-                    <useXO>2</useXO>
-                    <v6Lang>0</v6Lang>
-                    <v6LangP>0</v6LangP>
-                    <vShortEn>0</vShortEn>
-                    <vShortWch>0</vShortWch>
-                    <VariousControls>
-                      <MiscControls></MiscControls>
-                      <Define></Define>
-                      <Undefine></Undefine>
-                      <IncludePath></IncludePath>
-                    </VariousControls>
-                  </Cads>
-                </FileArmAds>
-              </FileOption>
-            </File>
-            <File>
-              <FileName>am_main_6_118.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_code\am_main_6_118.c</FilePath>
+              <FilePath>..\user_code\am_main_6_105.c</FilePath>
               <FileOption>
                 <CommonProperty>
                   <UseCPPCompiler>2</UseCPPCompiler>
@@ -4918,58 +4710,6 @@
               </FileOption>
             </File>
             <File>
-              <FileName>am_main_7_30.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_code\am_main_7_30.c</FilePath>
-              <FileOption>
-                <CommonProperty>
-                  <UseCPPCompiler>2</UseCPPCompiler>
-                  <RVCTCodeConst>0</RVCTCodeConst>
-                  <RVCTZI>0</RVCTZI>
-                  <RVCTOtherData>0</RVCTOtherData>
-                  <ModuleSelection>0</ModuleSelection>
-                  <IncludeInBuild>0</IncludeInBuild>
-                  <AlwaysBuild>2</AlwaysBuild>
-                  <GenerateAssemblyFile>2</GenerateAssemblyFile>
-                  <AssembleAssemblyFile>2</AssembleAssemblyFile>
-                  <PublicsOnly>2</PublicsOnly>
-                  <StopOnExitCode>11</StopOnExitCode>
-                  <CustomArgument></CustomArgument>
-                  <IncludeLibraryModules></IncludeLibraryModules>
-                  <ComprImg>1</ComprImg>
-                </CommonProperty>
-                <FileArmAds>
-                  <Cads>
-                    <interw>2</interw>
-                    <Optim>0</Optim>
-                    <oTime>2</oTime>
-                    <SplitLS>2</SplitLS>
-                    <OneElfS>2</OneElfS>
-                    <Strict>2</Strict>
-                    <EnumInt>2</EnumInt>
-                    <PlainCh>2</PlainCh>
-                    <Ropi>2</Ropi>
-                    <Rwpi>2</Rwpi>
-                    <wLevel>2</wLevel>
-                    <uThumb>2</uThumb>
-                    <uSurpInc>2</uSurpInc>
-                    <uC99>2</uC99>
-                    <useXO>2</useXO>
-                    <v6Lang>0</v6Lang>
-                    <v6LangP>0</v6LangP>
-                    <vShortEn>0</vShortEn>
-                    <vShortWch>0</vShortWch>
-                    <VariousControls>
-                      <MiscControls></MiscControls>
-                      <Define></Define>
-                      <Undefine></Undefine>
-                      <IncludePath></IncludePath>
-                    </VariousControls>
-                  </Cads>
-                </FileArmAds>
-              </FileOption>
-            </File>
-            <File>
               <FileName>am_main_7_31.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\user_code\am_main_7_31.c</FilePath>
@@ -5022,9 +4762,9 @@
               </FileOption>
             </File>
             <File>
-              <FileName>am_main_7_39.c</FileName>
+              <FileName>am_main_7_32.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\user_code\am_main_7_39.c</FilePath>
+              <FilePath>..\user_code\am_main_7_32.c</FilePath>
               <FileOption>
                 <CommonProperty>
                   <UseCPPCompiler>2</UseCPPCompiler>
@@ -5074,9 +4814,9 @@
               </FileOption>
             </File>
             <File>
-              <FileName>am_main_7_51.c</FileName>
+              <FileName>am_main_7_40.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\user_code\am_main_7_51.c</FilePath>
+              <FilePath>..\user_code\am_main_7_40.c</FilePath>
               <FileOption>
                 <CommonProperty>
                   <UseCPPCompiler>2</UseCPPCompiler>
@@ -5126,9 +4866,9 @@
               </FileOption>
             </File>
             <File>
-              <FileName>am_main_7_54.c</FileName>
+              <FileName>am_main_7_52.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\user_code\am_main_7_54.c</FilePath>
+              <FilePath>..\user_code\am_main_7_52.c</FilePath>
               <FileOption>
                 <CommonProperty>
                   <UseCPPCompiler>2</UseCPPCompiler>
@@ -5178,9 +4918,9 @@
               </FileOption>
             </File>
             <File>
-              <FileName>am_main_7_61.c</FileName>
+              <FileName>am_main_7_55.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\user_code\am_main_7_61.c</FilePath>
+              <FilePath>..\user_code\am_main_7_55.c</FilePath>
               <FileOption>
                 <CommonProperty>
                   <UseCPPCompiler>2</UseCPPCompiler>
@@ -5281,6 +5021,58 @@
                 </FileArmAds>
               </FileOption>
             </File>
+            <File>
+              <FileName>am_main_7_63.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_code\am_main_7_63.c</FilePath>
+              <FileOption>
+                <CommonProperty>
+                  <UseCPPCompiler>2</UseCPPCompiler>
+                  <RVCTCodeConst>0</RVCTCodeConst>
+                  <RVCTZI>0</RVCTZI>
+                  <RVCTOtherData>0</RVCTOtherData>
+                  <ModuleSelection>0</ModuleSelection>
+                  <IncludeInBuild>0</IncludeInBuild>
+                  <AlwaysBuild>2</AlwaysBuild>
+                  <GenerateAssemblyFile>2</GenerateAssemblyFile>
+                  <AssembleAssemblyFile>2</AssembleAssemblyFile>
+                  <PublicsOnly>2</PublicsOnly>
+                  <StopOnExitCode>11</StopOnExitCode>
+                  <CustomArgument></CustomArgument>
+                  <IncludeLibraryModules></IncludeLibraryModules>
+                  <ComprImg>1</ComprImg>
+                </CommonProperty>
+                <FileArmAds>
+                  <Cads>
+                    <interw>2</interw>
+                    <Optim>0</Optim>
+                    <oTime>2</oTime>
+                    <SplitLS>2</SplitLS>
+                    <OneElfS>2</OneElfS>
+                    <Strict>2</Strict>
+                    <EnumInt>2</EnumInt>
+                    <PlainCh>2</PlainCh>
+                    <Ropi>2</Ropi>
+                    <Rwpi>2</Rwpi>
+                    <wLevel>2</wLevel>
+                    <uThumb>2</uThumb>
+                    <uSurpInc>2</uSurpInc>
+                    <uC99>2</uC99>
+                    <useXO>2</useXO>
+                    <v6Lang>0</v6Lang>
+                    <v6LangP>0</v6LangP>
+                    <vShortEn>0</vShortEn>
+                    <vShortWch>0</vShortWch>
+                    <VariousControls>
+                      <MiscControls></MiscControls>
+                      <Define></Define>
+                      <Undefine></Undefine>
+                      <IncludePath></IncludePath>
+                    </VariousControls>
+                  </Cads>
+                </FileArmAds>
+              </FileOption>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -5300,11 +5092,6 @@
               <FileName>am_lpc82x_inst_init.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\user_config\am_lpc82x_inst_init.h</FilePath>
-            </File>
-            <File>
-              <FileName>am_nvram_cfg.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_servconf_usrcfg\am_nvram_cfg.c</FilePath>
             </File>
             <File>
               <FileName>am_hwconf_arm_nvic.c</FileName>
@@ -5545,6 +5332,16 @@
               <FileName>am_hwconf_zlg72128.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg72128.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_servconf_event_input.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_servconf_usrcfg\am_servconf_event_input.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_servconf_nvram.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_servconf_usrcfg\am_servconf_nvram.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -7144,34 +6941,14 @@
               <FilePath>..\user_code\am_main_6_95.c</FilePath>
             </File>
             <File>
-              <FileName>am_main_6_102.c</FileName>
+              <FileName>am_main_6_100.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\user_code\am_main_6_102.c</FilePath>
+              <FilePath>..\user_code\am_main_6_100.c</FilePath>
             </File>
             <File>
-              <FileName>am_main_6_103.c</FileName>
+              <FileName>am_main_6_105.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\user_code\am_main_6_103.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_main_6_104.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_code\am_main_6_104.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_main_6_110.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_code\am_main_6_110.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_main_6_113.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_code\am_main_6_113.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_main_6_118.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_code\am_main_6_118.c</FilePath>
+              <FilePath>..\user_code\am_main_6_105.c</FilePath>
             </File>
             <File>
               <FileName>am_main_7_5.c</FileName>
@@ -7189,39 +6966,39 @@
               <FilePath>..\user_code\am_main_7_28.c</FilePath>
             </File>
             <File>
-              <FileName>am_main_7_30.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_code\am_main_7_30.c</FilePath>
-            </File>
-            <File>
               <FileName>am_main_7_31.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\user_code\am_main_7_31.c</FilePath>
             </File>
             <File>
-              <FileName>am_main_7_39.c</FileName>
+              <FileName>am_main_7_32.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\user_code\am_main_7_39.c</FilePath>
+              <FilePath>..\user_code\am_main_7_32.c</FilePath>
             </File>
             <File>
-              <FileName>am_main_7_51.c</FileName>
+              <FileName>am_main_7_40.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\user_code\am_main_7_51.c</FilePath>
+              <FilePath>..\user_code\am_main_7_40.c</FilePath>
             </File>
             <File>
-              <FileName>am_main_7_54.c</FileName>
+              <FileName>am_main_7_52.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\user_code\am_main_7_54.c</FilePath>
+              <FilePath>..\user_code\am_main_7_52.c</FilePath>
             </File>
             <File>
-              <FileName>am_main_7_61.c</FileName>
+              <FileName>am_main_7_55.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\user_code\am_main_7_61.c</FilePath>
+              <FilePath>..\user_code\am_main_7_55.c</FilePath>
             </File>
             <File>
               <FileName>am_main_7_62.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\user_code\am_main_7_62.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_main_7_63.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_code\am_main_7_63.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -7242,11 +7019,6 @@
               <FileName>am_lpc82x_inst_init.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\user_config\am_lpc82x_inst_init.h</FilePath>
-            </File>
-            <File>
-              <FileName>am_nvram_cfg.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_servconf_usrcfg\am_nvram_cfg.c</FilePath>
             </File>
             <File>
               <FileName>am_hwconf_arm_nvic.c</FileName>
@@ -7487,6 +7259,16 @@
               <FileName>am_hwconf_zlg72128.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg72128.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_servconf_event_input.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_servconf_usrcfg\am_servconf_event_input.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_servconf_nvram.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_servconf_usrcfg\am_servconf_nvram.c</FilePath>
             </File>
           </Files>
         </Group>

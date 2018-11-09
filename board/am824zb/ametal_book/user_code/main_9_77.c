@@ -30,7 +30,7 @@
 
 static model_bool_t __g_model_bool;      //定义一个布尔型模型实例
 
-static void __input_key_proc (void *p_arg, int key_code, int key_state)
+static void __input_key_proc (void *p_arg, int key_code, int key_state, int keep_time)
 {
     am_bool_t value;
 

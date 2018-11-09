@@ -29,7 +29,7 @@
 #include "am_input.h"
 #include "app_led_control.h"
 
-static void __input_key_proc (void *p_arg, int key_code, int key_state)
+static void __input_key_proc (void *p_arg, int key_code, int key_state, int keep_time)
 {
 	    //按键按下，发送"key_pressed"字符串
 	    if (key_state == AM_INPUT_KEY_STATE_PRESSED) {

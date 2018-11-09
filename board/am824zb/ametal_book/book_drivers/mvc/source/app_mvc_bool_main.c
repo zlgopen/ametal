@@ -8,7 +8,7 @@
 #include "app_mvc_bool_main.h"
 
 static model_bool_t __g_model_bool;      			//定义一个布尔型实例
-static void __input_key_proc (void *p_arg, int key_code, int key_state)
+static void __input_key_proc (void *p_arg, int key_code, int key_state, int keep_time)
 {
 //    int       	code = (int)p_arg; 
     am_bool_t 	value;
