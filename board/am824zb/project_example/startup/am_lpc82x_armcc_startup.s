@@ -122,6 +122,8 @@ CRP_Key         DCD     0xFFFFFFFF
 Reset_Handler   PROC
                 EXPORT  Reset_Handler             [WEAK]
                 IMPORT  __main
+                CPSID   I
+                BL      __initial_stack
                 LDR     R0, =__main
                 BX      R0
                 ENDP
@@ -162,9 +164,9 @@ am_exc_eint_handler
                 ENDP
 
                 ALIGN
-
+                
 ; User Initial Stack & Heap
-
+__initial_stack
                 IF      :DEF:__MICROLIB
 
                 EXPORT  __initial_sp
@@ -175,7 +177,7 @@ am_exc_eint_handler
 
                 IMPORT  __use_two_region_memory
                 EXPORT  __user_initial_stackheap
-
+     
 __user_initial_stackheap
 
                 LDR     R0, =  Heap_Mem

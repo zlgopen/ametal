@@ -42,7 +42,6 @@ extern unsigned long _estack;
 /*=========================================================================*/
 /*  DEFINE: Prototypes                                                     */
 /*=========================================================================*/
-void ResetHandler(void);
 
 void NMI_Handler (void) __attribute__((weak));
 void HardFault_Handler (void) __attribute__((weak));
@@ -56,7 +55,7 @@ void SysTick_Handler (void) __attribute__((weak));
 void am_exc_eint_handler (void) __attribute__((weak));
 
 extern void am_exc_eint_handler (void);
-
+extern void ResetHandler(void);
 /*=========================================================================*/
 /*  DEFINE: All code exported                                              */
 /*=========================================================================*/

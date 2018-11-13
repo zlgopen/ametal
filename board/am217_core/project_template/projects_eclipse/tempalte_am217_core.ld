@@ -53,7 +53,7 @@ MEMORY
    RAM   (rwx) : ORIGIN = 0x20000000, LENGTH = 20K
 }
 
-
+ENTRY(ResetHandler)
 /*
  * And the "SECTION" is used for:
  *

@@ -53,6 +53,7 @@ MEMORY
    RAM   (rwx) : ORIGIN = 0x10000000, LENGTH = 8K
 }
 
+ENTRY(ResetHandler)
 
 /*
  * And the "SECTION" is used for:
@@ -194,6 +195,8 @@ SECTIONS
    
    ASSERT(__heap_end__ >= __heap_start__, "region RAM overflowed with stack")
 }
+
+
 
 /*** EOF **/
 

@@ -30,11 +30,11 @@ extern unsigned long _estack;
   外部函数声明
 ***************************************************************************/
 extern void am_exc_eint_handler (void);
-
+extern void ResetHandler(void);
 /***************************************************************************
   本地函数声明
 ***************************************************************************/
-void ResetHandler(void);
+
 
 void NMI_Handler (void) __attribute__((weak));
 void HardFault_Handler (void) __attribute__((weak));
@@ -58,7 +58,7 @@ void (* const gVectors[])(void) =
     (void (*)(void))((unsigned long)&_estack),
     ResetHandler,
     NMI_Handler,
-    HardFault_Handler,
+    0,
     MemManage_Handler,
     BusFault_Handler,
     UsageFault_Handler,

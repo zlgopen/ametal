@@ -42,7 +42,7 @@ extern unsigned long _estack;
 /*=========================================================================*/
 /*  DEFINE: Prototypes                                                     */
 /*=========================================================================*/
-void ResetHandler(void);
+extern void ResetHandler(void);
 
 void NMI_Handler (void) __attribute__((weak));
 void HardFault_Handler (void) __attribute__((weak));
