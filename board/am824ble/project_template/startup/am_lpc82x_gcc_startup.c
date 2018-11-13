@@ -64,7 +64,7 @@ void SystemInit (void)
  * \brief 复位中断处理函数，初始化 C 运行环境，包括中断向量表、.data 段、.bss 段，
  *        最后调用 main() 函数
  */
-void ResetHandler (void)
+void ResetHandler_function (void)
 {
     uint32_t *p_src;
     uint32_t *p_dest;

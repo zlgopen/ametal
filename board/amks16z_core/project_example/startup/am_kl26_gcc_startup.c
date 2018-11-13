@@ -80,7 +80,7 @@ void SystemInit (void)
 /*  This function is used for the C runtime initialisation,                */
 /*  for handling the .data and .bss segments.                              */
 /***************************************************************************/
-void ResetHandler (void)
+void ResetHandler_function (void)
 {
    uint32_t *pSrc;
    uint32_t *pDest;
