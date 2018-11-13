@@ -29,7 +29,6 @@
 
 #include "ametal.h"
 #include "am_nvram.h"
-#include "am_nvram_cfg.h"
 
 /**
  * \addtogroup am_if_src_servconf_nvram_cfg
@@ -50,19 +49,15 @@
  * 名字可能为： "fm24c02" ，实际名字是在相应器件的配置文件中定义的
  * 如定义如下几个存储段：
  *     am_local am_const am_nvram_segment_t __g_nvram_cfg_segs[] = {
- *         {"ip",         0,  0,  4,   "microport_eeprom"},
- *         {"ip",         1,  4,  4,   "microport_eeprom"},
- *         {"temp_limit", 0,  8,  4,   "microport_eeprom"},
- *         {"system",     0,  12, 50,  "microport_eeprom"},
- *         {"test",       0,  62, 178, "microport_eeprom"},
+ *         {"ip",         0,  0,  4,   "fm24c02"},
+ *         {"ip",         1,  4,  4,   "fm24c02"},
+ *         {"temp_limit", 0,  8,  4,   "fm24c02"},
+ *         {"system",     0,  12, 50,  "fm24c02"},
+ *         {"test",       0,  62, 178, "fm24c02"},
  *         {NULL,         0,   0,   0,      NULL}     // 空存储段，必须保留
  */
 am_local am_const am_nvram_segment_t __g_nvram_cfg_segs[] = {
-    {"ip",               0,  0,  4,   "microport_eeprom"},
-    {"ip",               1,  4,  4,   "microport_eeprom"},
-    {"temp_limit",       0,  8,  4,   "microport_eeprom"},
-    {"system",           0,  12, 50,  "microport_eeprom"},
-    {"test",             0,  62, 178, "microport_eeprom"},
+    {"microport_eeprom", 0, 0, 256, "microport_eeprom"}, /* MicroPort-EEPROM */
     {NULL,               0, 0, 0,   NULL}                /* 空存储段，必须保留 */
 };
 

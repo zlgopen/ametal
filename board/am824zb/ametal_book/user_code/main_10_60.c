@@ -36,7 +36,7 @@
 #include "am_hwconf_lm75.h"
 #include "am_hwconf_miniport_view_key.h"
 
-static void key_callback (void *p_arg,int key_code, int key_state)
+static void key_callback (void *p_arg,int key_code, int key_state, int keep_time)
 {
 	  if (key_state == AM_INPUT_KEY_STATE_PRESSED) {
 	  	  switch (key_code) {

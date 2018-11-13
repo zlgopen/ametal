@@ -1114,11 +1114,6 @@
               <FilePath>..\user_config\am_lpc82x_inst_init.h</FilePath>
             </File>
             <File>
-              <FileName>am_nvram_cfg.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_servconf_usrcfg\am_nvram_cfg.c</FilePath>
-            </File>
-            <File>
               <FileName>am_hwconf_arm_nvic.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_arm_nvic.c</FilePath>
@@ -1352,6 +1347,16 @@
               <FileName>am_hwconf_zlg9021.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg9021.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_servconf_event_input.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_servconf_usrcfg\am_servconf_event_input.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_servconf_nvram.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_servconf_usrcfg\am_servconf_nvram.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -2529,11 +2534,6 @@
               <FilePath>..\user_config\am_lpc82x_inst_init.h</FilePath>
             </File>
             <File>
-              <FileName>am_nvram_cfg.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_servconf_usrcfg\am_nvram_cfg.c</FilePath>
-            </File>
-            <File>
               <FileName>am_hwconf_arm_nvic.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_arm_nvic.c</FilePath>
@@ -2767,6 +2767,16 @@
               <FileName>am_hwconf_zlg9021.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg9021.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_servconf_event_input.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_servconf_usrcfg\am_servconf_event_input.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_servconf_nvram.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_servconf_usrcfg\am_servconf_nvram.c</FilePath>
             </File>
           </Files>
         </Group>

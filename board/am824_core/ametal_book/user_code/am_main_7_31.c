@@ -24,39 +24,40 @@
 #include "am_input.h"
 #include "am_led.h"
 
-static void __input_key1_proc(void *p_arg, int key_code, int key_state)
+static am_input_key_handler_t g_key_handler;    // 事件处理器实例定义，全局变量，确保一直有效
+
+// 使用按键基本功能，使用该功能将注释开始，将下面函数注释
+//static void __input_key_proc(void *p_arg, int key_code, int key_state, int keep_time)
+//{
+//    if (key_code == KEY_KP0) {
+//        if (key_state == AM_INPUT_KEY_STATE_PRESSED) {        //  有键按下
+//            am_led_on(0);
+//        }else if (key_state == AM_INPUT_KEY_STATE_RELEASED){  // 按键释放
+//            am_led_off(0);
+//        }
+//    }
+//}
+
+
+// 使用按键长按功能，使用该功能将注释开始，将上面函数注释
+static void __input_key_proc(void *p_arg, int key_code, int key_state, int keep_time) 
 {
     if (key_code == KEY_KP0) {
-        // 处理按键1
+        if ((key_state == AM_INPUT_KEY_STATE_PRESSED) && (keep_time == 3000)) {
+            am_led_toggle(0); 					// 长按3s,  LED0状态翻转
+        }
     }
-}
+} 
 
-static void __input_key2_proc (void *p_arg, int key_code, int key_state)
-{
-    if (key_code == KEY_KP1){
-        // 处理按键2
-    }
-}
-
-static void __input_key3_proc (void *p_arg, int key_code, int key_state)
-{
-    if (key_code == KEY_KP2){
-        // 处理按键3
-    }
-}
-
-static am_input_key_handler_t g_key1_handler;
-static am_input_key_handler_t g_key2_handler;
-static am_input_key_handler_t g_key3_handler;
 
 int am_main (void)
 {
-    am_input_key_handler_register(&g_key1_handler, __input_key1_proc, NULL);
-    am_input_key_handler_register(&g_key2_handler, __input_key2_proc, NULL);
-    am_input_key_handler_register(&g_key3_handler, __input_key3_proc, NULL);
-    while (1){
+    // 这里按键回调函数可以选择按键不同的功能(基本功能或者长按功能,只需要修改)
+    am_input_key_handler_register(&g_key_handler, __input_key_proc, (void *)100);
+    while (1) {
     }
 }
+
 
 
 /* end of file */

@@ -12,7 +12,7 @@
 
 /**
  * \file
- * \brief 程序清单6.118
+ * \brief 程序清单6.1105
  *
  * \note 该历程需要用到miniport拓展板,可以用LED看效果
  * 
