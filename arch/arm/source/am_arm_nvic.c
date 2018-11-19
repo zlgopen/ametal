@@ -35,7 +35,10 @@
 /*******************************************************************************
   全局变量
 *******************************************************************************/
-
+static void  __enable_isr()
+{
+    __asm volatile ("cpsie i" : : : "memory");
+}
 /** \brief 指向中断设备的指针 */
 static am_arm_nvic_dev_t *__gp_nvic_dev = NULL;
 
@@ -72,6 +75,8 @@ int am_arm_nvic_init (am_arm_nvic_dev_t           *p_dev,
     }
 
     amhw_arm_nvic_priority_group_set (p_devinfo->group);
+
+    __enable_isr();
 
     return AM_OK;
 }
