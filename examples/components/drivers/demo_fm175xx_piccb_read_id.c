@@ -52,15 +52,24 @@
 void demo_fm175xx_piccb_read_id (am_fm175xx_handle_t handle)
 { 
     uint8_t uid[8]     = { 0 };       /* UID */
+    uint8_t uid_len    =   0;
     uint8_t i;
 
     while (1) {
         if (!am_fm175xx_piccb_active(handle,
                                      AM_FM175XX_PICCB_REQ_IDLE,
-                                     uid)) {
-            am_kprintf("UID : ");
-            for (i = 0; i < 8; i++) {
-                am_kprintf("%02x ", uid[i]);
+                                     uid,
+                                     &uid_len)) {
+            if(uid_len == 8){
+                am_kprintf("UID : ");
+                for (i = 0; i < uid_len; i++) {
+                    am_kprintf("%02x ", uid[i]);
+                }
+            }else if(uid_len == 4){
+                am_kprintf("PUPI : ");
+                for (i = 0; i < uid_len; i++) {
+                    am_kprintf("%02x ", uid[i]);
+                }
             }
             am_kprintf("\r\n");
         }

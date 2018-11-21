@@ -77,6 +77,13 @@ void demo_ftl_entry (am_ftl_handle_t ftl_handle, int32_t test_lenth);
 void demo_mtd_entry (am_mtd_handle_t mtd_handle, int32_t test_lenth);
 
 /**
+ * \brief FM175XX 读CPU卡例程
+ * \param[in] handle  FM175XX 服务句柄
+ * \return 无
+ */
+void demo_fm175xx_cpu_card (am_fm175xx_handle_t handle);
+
+/**
  * \brief FM175XX 读A类型卡例程
  * \param[in] handle  FM175XX 服务句柄
  * \return 无
