@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *                                 AMetal
 *                       ----------------------------
 *                       innovating embedded platform
@@ -12,7 +12,7 @@
 
 /**
  * \file
- * \brief FM175XXµ×²ãÇı¶¯¿âÍ·ÎÄ¼ş
+ * \brief FM175XXåº•å±‚é©±åŠ¨åº“å¤´æ–‡ä»¶
  *
  * \internal
  * \par Modification history
@@ -40,65 +40,66 @@ extern "C" {
  */
 
 /**
- * \name FM175XX Command Code  FM175XXÃüÁîÂë¶¨Òå
+ * \name FM175XX Command Code  FM175XXå‘½ä»¤ç å®šä¹‰
  * @{
  */
 
-#define AM_FM175XX_CMD_IDLE              0x0  /**< \brief ÎŞ¶¯×÷,È¡Ïûµ±Ç°Ö¸ÁîÖ´ĞĞ */
-#define AM_FM175XX_CMD_MEM               0x1  /**< \brief ´æ´¢25×Ö½ÚÊı¾İµ½ÄÚ²¿»º³åÆ÷£¨FM17510²»Ö§³Ö£© */
-#define AM_FM175XX_CMD_RANDOM_ID         0x2  /**< \brief ²úÉúÒ»¸ö10×Ö½ÚËæ»úÊı£¨FM17510²»Ö§³Ö£© */
-#define AM_FM175XX_CMD_CALC_CRC          0x3  /**< \brief ¼¤»îCRCĞ­´¦ÀíÆ÷ */
-#define AM_FM175XX_CMD_TRANSMIT          0x4  /**< \brief ·¢ÉäFIFO»º³åÆ÷ÖĞµÄÊı¾İ */
-#define AM_FM175XX_CMD_NO_CMD_CHANGE     0x7  /**< \brief Ö¸Áî²»¸Ä±ä,¿ÉÒÔÓÃÀ´ÔÚ²»Ó°ÏìÖ¸ÁîµÄÇé¿öÏÂĞŞ¸ÄCMD¼Ä´æÆ÷,ÈçPDÎ» */
-#define AM_FM175XX_CMD_RECEIVE           0x8  /**< \brief ¼¤»î½ÓÊÕÆ÷µçÂ· */
-#define AM_FM175XX_CMD_TRANSCEIVE        0xC  /**< \brief ·¢ÉäFIFO»º³åÆ÷ÖĞµÄÊı¾İµ½ÌìÏß,²¢ÔÚ·¢Éäºó×Ô¶¯¼¤»î½ÓÊÕÆ÷ */
-#define AM_FM175XX_CMD_AUTHENT           0xE  /**< \brief ×÷Îª¶ÔĞ¹ÆøÄ£Ê½Ö´ĞĞµÄM1°²È«ÈÏÖ¤ */
-#define AM_FM175XX_CMD_SOFT_RESET        0xF  /**< \brief ¸´Î»FM175XX */
+#define AM_FM175XX_CMD_IDLE              0x0  /**< \brief æ— åŠ¨ä½œ,å–æ¶ˆå½“å‰æŒ‡ä»¤æ‰§è¡Œ */
+#define AM_FM175XX_CMD_MEM               0x1  /**< \brief å­˜å‚¨25å­—èŠ‚æ•°æ®åˆ°å†…éƒ¨ç¼“å†²å™¨ï¼ˆFM17510ä¸æ”¯æŒï¼‰ */
+#define AM_FM175XX_CMD_RANDOM_ID         0x2  /**< \brief äº§ç”Ÿä¸€ä¸ª10å­—èŠ‚éšæœºæ•°ï¼ˆFM17510ä¸æ”¯æŒï¼‰ */
+#define AM_FM175XX_CMD_CALC_CRC          0x3  /**< \brief æ¿€æ´»CRCåå¤„ç†å™¨ */
+#define AM_FM175XX_CMD_TRANSMIT          0x4  /**< \brief å‘å°„FIFOç¼“å†²å™¨ä¸­çš„æ•°æ® */
+#define AM_FM175XX_CMD_NO_CMD_CHANGE     0x7  /**< \brief æŒ‡ä»¤ä¸æ”¹å˜,å¯ä»¥ç”¨æ¥åœ¨ä¸å½±å“æŒ‡ä»¤çš„æƒ…å†µä¸‹ä¿®æ”¹CMDå¯„å­˜å™¨,å¦‚PDä½ */
+#define AM_FM175XX_CMD_RECEIVE           0x8  /**< \brief æ¿€æ´»æ¥æ”¶å™¨ç”µè·¯ */
+#define AM_FM175XX_CMD_TRANSCEIVE        0xC  /**< \brief å‘å°„FIFOç¼“å†²å™¨ä¸­çš„æ•°æ®åˆ°å¤©çº¿,å¹¶åœ¨å‘å°„åè‡ªåŠ¨æ¿€æ´»æ¥æ”¶å™¨ */
+#define AM_FM175XX_CMD_AUTHENT           0xE  /**< \brief ä½œä¸ºå¯¹æ³„æ°”æ¨¡å¼æ‰§è¡Œçš„M1å®‰å…¨è®¤è¯ */
+#define AM_FM175XX_CMD_SOFT_RESET        0xF  /**< \brief å¤ä½FM175XX */
 
 /** @} */
 
 
 /**
- * \name ×´Ì¬Âë¶¨Òå
+ * \name çŠ¶æ€ç å®šä¹‰
  * @{
  */
-#define AM_FM175XX_STATUS_SUCCESS                  (0)     /**< \brief ²Ù×÷³É¹¦ */
-#define AM_FM175XX_STATUS_COMM_OK                  0x00    /**< \brief ³É¹¦ */
-#define AM_FM175XX_STATUS_COMM_TIMEOUT             0x01    /**< \brief Í¨ĞÅ³¬Ê± */
-#define AM_FM175XX_STATUS_COMM_DVC_NOT_ONLINE      0x02    /**< \brief Éè±¸²»ÔÚÏß */
-#define AM_FM175XX_STATUS_COMM_ERROR               0x03    /**< \brief Í¨ĞÅ´íÎó */
-#define AM_FM175XX_STATUS_CMD_ERROR                0x04    /**< \brief ÃüÁî´íÎó */
-#define AM_FM175XX_STATUS_FAIL                     0x05    /**< \brief ²Ù×÷Ê§°Ü£¬ÎŞÖ¡Êı¾İ */
+#define AM_FM175XX_STATUS_SUCCESS                  (0)     /**< \brief æ“ä½œæˆåŠŸ */
+#define AM_FM175XX_STATUS_COMM_OK                  0x00    /**< \brief æˆåŠŸ */
+#define AM_FM175XX_STATUS_COMM_TIMEOUT             0x01    /**< \brief é€šä¿¡è¶…æ—¶ */
+#define AM_FM175XX_STATUS_COMM_DVC_NOT_ONLINE      0x02    /**< \brief è®¾å¤‡ä¸åœ¨çº¿ */
+#define AM_FM175XX_STATUS_COMM_ERROR               0x03    /**< \brief é€šä¿¡é”™è¯¯ */
+#define AM_FM175XX_STATUS_CMD_ERROR                0x04    /**< \brief å‘½ä»¤é”™è¯¯ */
+#define AM_FM175XX_STATUS_FAIL                     0x05    /**< \brief æ“ä½œå¤±è´¥ï¼Œæ— å¸§æ•°æ® */
+#define AM_FM175XX_STATUS_SOFTIMER_ERROR           0x06    /**< \brief æ“ä½œå¤±è´¥ï¼Œè½¯ä»¶å®šæ—¶å™¨åˆå§‹åŒ–å¤±è´¥ */
 
-#define AM_FM175XX_STATUS_I2CMODE                  0x10    /**< \brief Ä£¿éÊÇI2CÍ¨Ñ¶Ä£Ê½ */
-#define AM_FM175XX_STATUS_UARTMODE                 0x11    /**< \brief Ä£¿éÊÇUARTÍ¨Ñ¶Ä£Ê½ */
+#define AM_FM175XX_STATUS_I2CMODE                  0x10    /**< \brief æ¨¡å—æ˜¯I2Cé€šè®¯æ¨¡å¼ */
+#define AM_FM175XX_STATUS_UARTMODE                 0x11    /**< \brief æ¨¡å—æ˜¯UARTé€šè®¯æ¨¡å¼ */
 
-#define AM_FM175XX_STATUS_IDLE                     0x8A    /**< \brief ¿ÕÏĞ */
-#define AM_FM175XX_STATUS_ABORT                    0x8B    /**< \brief ÖĞÖ¹£¨·ÇÕı³£Í£Ö¹£© */
-#define AM_FM175XX_STATUS_BUSY                     0x8C    /**< \brief Ã¦£¨ÕıÔÚÖ´ĞĞÆäËûÃüÁî£© */
-#define AM_FM175XX_STATUS_EXECUTING                0x8D    /**< \brief ÕıÔÚÖ´ĞĞ£¨ÃüÁîÎ´Ö´ĞĞÍê£© */
-#define AM_FM175XX_STATUS_SENDING                  0x8E    /**< \brief ÕıÔÚ·¢ËÍ£¨Êı¾İÎ´·¢ËÍÍê£© */
-#define AM_FM175XX_STATUS_RECEIVING                0x8F    /**< \brief ÕıÔÚ½ÓÊÕ£¨Î´³¬Ê±£¬Êı¾İÎ´½ÓÊÕÍê£© */
+#define AM_FM175XX_STATUS_IDLE                     0x8A    /**< \brief ç©ºé—² */
+#define AM_FM175XX_STATUS_ABORT                    0x8B    /**< \brief ä¸­æ­¢ï¼ˆéæ­£å¸¸åœæ­¢ï¼‰ */
+#define AM_FM175XX_STATUS_BUSY                     0x8C    /**< \brief å¿™ï¼ˆæ­£åœ¨æ‰§è¡Œå…¶ä»–å‘½ä»¤ï¼‰ */
+#define AM_FM175XX_STATUS_EXECUTING                0x8D    /**< \brief æ­£åœ¨æ‰§è¡Œï¼ˆå‘½ä»¤æœªæ‰§è¡Œå®Œï¼‰ */
+#define AM_FM175XX_STATUS_SENDING                  0x8E    /**< \brief æ­£åœ¨å‘é€ï¼ˆæ•°æ®æœªå‘é€å®Œï¼‰ */
+#define AM_FM175XX_STATUS_RECEIVING                0x8F    /**< \brief æ­£åœ¨æ¥æ”¶ï¼ˆæœªè¶…æ—¶ï¼Œæ•°æ®æœªæ¥æ”¶å®Œï¼‰ */
         
 #define AM_FM175XX_STATUS_RFU90                    0x90    /**< \brief RFU 0x90 */
 #define AM_FM175XX_STATUS_RFU91                    0x91    /**< \brief RFU 0x91 */
 #define AM_FM175XX_STATUS_RFU92                    0x92    /**< \brief RFU 0x92 */
-#define AM_FM175XX_STATUS_SEQ_ERROR                0x93    /**< \brief Êı¾İ·Ö°ü´íÎó */
-#define AM_FM175XX_STATUS_ADR_ERROR                0x94    /**< \brief ²»ÊÇ±¾»úµØÖ·£¬»ò×ÓµØÖ·´íÎó */
-#define AM_FM175XX_STATUS_RCV_LENGTH_ERR           0x95    /**< \brief ½ÓÊÕµÄ³¤¶ÈÓĞÎó */
-#define AM_FM175XX_STATUS_MAC_ERR                  0x96    /**< \brief MACĞ£ÑéÓĞÎó */
-#define AM_FM175XX_STATUS_USER_DATA_LEN_ERR        0x97    /**< \brief ÓÃ»§ÊäÈëÊı¾İ³¤¶ÈÓĞÎó */
-#define AM_FM175XX_STATUS_USER_PARAMETER_ERR       0x98    /**< \brief ÓÃ»§ÊäÈëµÄ²ÎÊıÓĞÎó */
-#define AM_FM175XX_STATUS_USER_DATA_TOO_MANY       0x99    /**< \brief ÓÃ»§Êı¾İ¹ı¶à */
-#define AM_FM175XX_STATUS_USER_BUF_TOO_SMALL       0x9A    /**< \brief ÓÃ»§»º³åÇøÌ«Ğ¡ */
-#define AM_FM175XX_STATUS_FUNCTION_ERR             0x9B    /**< \brief ¹¦ÄÜ´íÎó */
-#define AM_FM175XX_STATUS_INVALID_COMMAND          0x9C    /**< \brief ÎŞĞ§ÃüÁî/²»Ö§³ÖµÄÃüÁî */
-#define AM_FM175XX_STATUS_NOT_SAME_CARD            0x9D    /**< \brief ²»ÊÇÍ¬Ò»ÕÅ¿¨ */
-#define AM_FM175XX_STATUS_TRAN_NOT_COMPLETED       0x9E    /**< \brief ½»Ò×Î´Íê³É */
-#define AM_FM175XX_STATUS_APP_NOT_ENABLED_ERR      0x9F    /**< \brief Ó¦ÓÃÎ´ÆôÓÃ */
-#define AM_FM175XX_STATUS_IC_POWER_ERR             0x60    /**< \brief ¶Á¿¨ICÎ´ÉÏµçÅäÖÃ */
+#define AM_FM175XX_STATUS_SEQ_ERROR                0x93    /**< \brief æ•°æ®åˆ†åŒ…é”™è¯¯ */
+#define AM_FM175XX_STATUS_ADR_ERROR                0x94    /**< \brief ä¸æ˜¯æœ¬æœºåœ°å€ï¼Œæˆ–å­åœ°å€é”™è¯¯ */
+#define AM_FM175XX_STATUS_RCV_LENGTH_ERR           0x95    /**< \brief æ¥æ”¶çš„é•¿åº¦æœ‰è¯¯ */
+#define AM_FM175XX_STATUS_MAC_ERR                  0x96    /**< \brief MACæ ¡éªŒæœ‰è¯¯ */
+#define AM_FM175XX_STATUS_USER_DATA_LEN_ERR        0x97    /**< \brief ç”¨æˆ·è¾“å…¥æ•°æ®é•¿åº¦æœ‰è¯¯ */
+#define AM_FM175XX_STATUS_USER_PARAMETER_ERR       0x98    /**< \brief ç”¨æˆ·è¾“å…¥çš„å‚æ•°æœ‰è¯¯ */
+#define AM_FM175XX_STATUS_USER_DATA_TOO_MANY       0x99    /**< \brief ç”¨æˆ·æ•°æ®è¿‡å¤š */
+#define AM_FM175XX_STATUS_USER_BUF_TOO_SMALL       0x9A    /**< \brief ç”¨æˆ·ç¼“å†²åŒºå¤ªå° */
+#define AM_FM175XX_STATUS_FUNCTION_ERR             0x9B    /**< \brief åŠŸèƒ½é”™è¯¯ */
+#define AM_FM175XX_STATUS_INVALID_COMMAND          0x9C    /**< \brief æ— æ•ˆå‘½ä»¤/ä¸æ”¯æŒçš„å‘½ä»¤ */
+#define AM_FM175XX_STATUS_NOT_SAME_CARD            0x9D    /**< \brief ä¸æ˜¯åŒä¸€å¼ å¡ */
+#define AM_FM175XX_STATUS_TRAN_NOT_COMPLETED       0x9E    /**< \brief äº¤æ˜“æœªå®Œæˆ */
+#define AM_FM175XX_STATUS_APP_NOT_ENABLED_ERR      0x9F    /**< \brief åº”ç”¨æœªå¯ç”¨ */
+#define AM_FM175XX_STATUS_IC_POWER_ERR             0x60    /**< \brief è¯»å¡ICæœªä¸Šç”µé…ç½® */
 
-#define AM_FM175XX_STATUS_CARD_TYPE_ERR            0xA0    /**< \brief ¿¨ÀàĞÍ´íÎó */
+#define AM_FM175XX_STATUS_CARD_TYPE_ERR            0xA0    /**< \brief å¡ç±»å‹é”™è¯¯ */
 #define AM_FM175XX_STATUS_RFUA1                    0xA1    /**< \brief RFU 0xA1 */
 #define AM_FM175XX_STATUS_RFUA2                    0xA2    /**< \brief RFU 0xA2 */
 #define AM_FM175XX_STATUS_RFUA3                    0xA3    /**< \brief RFU 0xA3 */
@@ -110,10 +111,10 @@ extern "C" {
 #define AM_FM175XX_STATUS_RFUA9                    0xA9    /**< \brief RFU 0xA9 */
 #define AM_FM175XX_STATUS_RFUAA                    0xAA    /**< \brief RFU 0xAA */
 #define AM_FM175XX_STATUS_RFUAB                    0xAB    /**< \brief RFU 0xAB */
-#define AM_FM175XX_STATUS_IID_ERROR                0xAC    /**< \brief IID´íÎó(²»Ö§³ÖµÄIID) */
-#define AM_FM175XX_STATUS_VPC_TIMEOUT              0xAD    /**< \brief ´æÔÚÖĞ¼Ì¹¥»÷ */
-#define AM_FM175XX_STATUS_NOT_SUPPORT_VC           0xAE    /**< \brief ²»Ö§³ÖĞéÄâ¿¨²Ù×÷ */
-#define AM_FM175XX_STATUS_PCD_CAP_ERROR            0xAF    /**< \brief PCDÄÜÁ¦ÓĞÎó */
+#define AM_FM175XX_STATUS_IID_ERROR                0xAC    /**< \brief IIDé”™è¯¯(ä¸æ”¯æŒçš„IID) */
+#define AM_FM175XX_STATUS_VPC_TIMEOUT              0xAD    /**< \brief å­˜åœ¨ä¸­ç»§æ”»å‡» */
+#define AM_FM175XX_STATUS_NOT_SUPPORT_VC           0xAE    /**< \brief ä¸æ”¯æŒè™šæ‹Ÿå¡æ“ä½œ */
+#define AM_FM175XX_STATUS_PCD_CAP_ERROR            0xAF    /**< \brief PCDèƒ½åŠ›æœ‰è¯¯ */
 
 #define AM_FM175XX_STATUS_RFUB0                    0xB0    /**< \brief RFU 0xB0 */
 #define AM_FM175XX_STATUS_RFUB1                    0xB1    /**< \brief RFU 0xB1 */
@@ -121,110 +122,110 @@ extern "C" {
 #define AM_FM175XX_STATUS_RFUB3                    0xB3    /**< \brief RFU 0xB3 */
 #define AM_FM175XX_STATUS_RFUB4                    0xB4    /**< \brief RFU 0xB4 */
 #define AM_FM175XX_STATUS_RFUB5                    0xB5    /**< \brief RFU 0xB5 */
-#define AM_FM175XX_STATUS_AUTH_ERROR               0xB6    /**< \brief ÑéÖ¤´íÎó */
-#define AM_FM175XX_STATUS_CMD_OVERFLOW             0xB7    /**< \brief ÃüÁî(Êı¾İ)Òç³ö */
-#define AM_FM175XX_STATUS_INVALID_MAC              0xB8    /**< \brief ÎŞĞ§µÄMAC */
-#define AM_FM175XX_STATUS_INVALID_BLOCK            0xB9    /**< \brief ÎŞĞ§µÄ¿é */
-#define AM_FM175XX_STATUS_INEXISTENT_BLOCK         0xBA    /**< \brief ²»´æÔÚµÄ¿é */
-#define AM_FM175XX_STATUS_NOT_SATISFIED            0xBB    /**< \brief °²È«µÈ¼¶²»×ã Security level is insufficient */
-#define AM_FM175XX_STATUS_MORE_THAN_RETRIES        0xBC    /**< \brief ³¬¹ıÖØÊÔ´ÎÊı */
-#define AM_FM175XX_STATUS_HANDLE_ERROR             0xBD    /**< \brief ¾ä±ú´íÎó */
-#define AM_FM175XX_STATUS_INTERNAL_COMM_ERRPR      0xBE    /**< \brief Éè±¸ÄÚ²¿Í¨ĞÅ´íÎó */
-#define AM_FM175XX_STATUS_GENERAL_ERROR            0xBF    /**< \brief ÆÕÍ¨²Ù×÷´íÎó */
+#define AM_FM175XX_STATUS_AUTH_ERROR               0xB6    /**< \brief éªŒè¯é”™è¯¯ */
+#define AM_FM175XX_STATUS_CMD_OVERFLOW             0xB7    /**< \brief å‘½ä»¤(æ•°æ®)æº¢å‡º */
+#define AM_FM175XX_STATUS_INVALID_MAC              0xB8    /**< \brief æ— æ•ˆçš„MAC */
+#define AM_FM175XX_STATUS_INVALID_BLOCK            0xB9    /**< \brief æ— æ•ˆçš„å— */
+#define AM_FM175XX_STATUS_INEXISTENT_BLOCK         0xBA    /**< \brief ä¸å­˜åœ¨çš„å— */
+#define AM_FM175XX_STATUS_NOT_SATISFIED            0xBB    /**< \brief å®‰å…¨ç­‰çº§ä¸è¶³ Security level is insufficient */
+#define AM_FM175XX_STATUS_MORE_THAN_RETRIES        0xBC    /**< \brief è¶…è¿‡é‡è¯•æ¬¡æ•° */
+#define AM_FM175XX_STATUS_HANDLE_ERROR             0xBD    /**< \brief å¥æŸ„é”™è¯¯ */
+#define AM_FM175XX_STATUS_INTERNAL_COMM_ERRPR      0xBE    /**< \brief è®¾å¤‡å†…éƒ¨é€šä¿¡é”™è¯¯ */
+#define AM_FM175XX_STATUS_GENERAL_ERROR            0xBF    /**< \brief æ™®é€šæ“ä½œé”™è¯¯ */
 
-#define AM_FM175XX_STATUS_NO_DATA_ERROR            0xC0    /**< \brief ÎŞÊı¾İ´íÎó(ĞèÒª·¢ËÍÊı¾İÊ±,FIFOÖĞÎŞÊı¾İ) */
-#define AM_FM175XX_STATUS_INTEG_ERROR              0xC1    /**< \brief Êı¾İÍêÕûĞÔ´íÎó(°üÀ¨CRC»òÆæÅ¼Ğ£Ñé´íÎó) */
-#define AM_FM175XX_STATUS_NAD_ERROR                0xC2    /**< \brief NAD´íÎó */
-#define AM_FM175XX_STATUS_INVALID_VALUE            0xC3    /**< \brief Öµ¿é¸ñÊ½´íÎó */
-#define AM_FM175XX_STATUS_PERORM_ERROR             0xC4    /**< \brief ÃüÁîÖ´ĞĞ½á¹û´íÎó */
-#define AM_FM175XX_STATUS_EDC_ERROR                0xC5    /**< \brief Ğ£Ñé×Ö½ÚÓĞÎó(Í¨ĞÅĞ£Ñé) */
-#define AM_FM175XX_STATUS_APDU_ERROR               0xC6    /**< \brief APDUÃüÁî´íÎó */
-#define AM_FM175XX_STATUS_SEND_ERROR               0xC7    /**< \brief ·¢ËÍ´íÎó */
-#define AM_FM175XX_STATUS_LENGTH_ERROR             0xC8    /**< \brief ³¤¶È´íÎó */
-#define AM_FM175XX_STATUS_NAK_ERROR                0xC9    /**< \brief NAK´íÎó */
-#define AM_FM175XX_STATUS_PCB_ERROR                0xCA    /**< \brief PCB´íÎó */
-#define AM_FM175XX_STATUS_CID_ERROR                0xCB    /**< \brief CID´íÎó */
-#define AM_FM175XX_STATUS_BLOCK_FORMAT_ERROR       0xCC    /**< \brief ·Ö×éÖ¡¸ñÊ½´íÎó  */
-#define AM_FM175XX_STATUS_PPS_ERROR                0xCD    /**< \brief PPSS´íÎó */
-#define AM_FM175XX_STATUS_ATS_ERROR                0xCE    /**< \brief ATS´íÎó(ISO14443-4); ¸´Î»Ó¦´ğ´í(ISO7816-3) */
-#define AM_FM175XX_STATUS_CARD_COMM_ERROR          0xCF    /**< \brief Óë¿¨Æ¬Ö®¼äµÄÍ¨ĞÅ³ö´í */
+#define AM_FM175XX_STATUS_NO_DATA_ERROR            0xC0    /**< \brief æ— æ•°æ®é”™è¯¯(éœ€è¦å‘é€æ•°æ®æ—¶,FIFOä¸­æ— æ•°æ®) */
+#define AM_FM175XX_STATUS_INTEG_ERROR              0xC1    /**< \brief æ•°æ®å®Œæ•´æ€§é”™è¯¯(åŒ…æ‹¬CRCæˆ–å¥‡å¶æ ¡éªŒé”™è¯¯) */
+#define AM_FM175XX_STATUS_NAD_ERROR                0xC2    /**< \brief NADé”™è¯¯ */
+#define AM_FM175XX_STATUS_INVALID_VALUE            0xC3    /**< \brief å€¼å—æ ¼å¼é”™è¯¯ */
+#define AM_FM175XX_STATUS_PERORM_ERROR             0xC4    /**< \brief å‘½ä»¤æ‰§è¡Œç»“æœé”™è¯¯ */
+#define AM_FM175XX_STATUS_EDC_ERROR                0xC5    /**< \brief æ ¡éªŒå­—èŠ‚æœ‰è¯¯(é€šä¿¡æ ¡éªŒ) */
+#define AM_FM175XX_STATUS_APDU_ERROR               0xC6    /**< \brief APDUå‘½ä»¤é”™è¯¯ */
+#define AM_FM175XX_STATUS_SEND_ERROR               0xC7    /**< \brief å‘é€é”™è¯¯ */
+#define AM_FM175XX_STATUS_LENGTH_ERROR             0xC8    /**< \brief é•¿åº¦é”™è¯¯ */
+#define AM_FM175XX_STATUS_NAK_ERROR                0xC9    /**< \brief NAKé”™è¯¯ */
+#define AM_FM175XX_STATUS_PCB_ERROR                0xCA    /**< \brief PCBé”™è¯¯ */
+#define AM_FM175XX_STATUS_CID_ERROR                0xCB    /**< \brief CIDé”™è¯¯ */
+#define AM_FM175XX_STATUS_BLOCK_FORMAT_ERROR       0xCC    /**< \brief åˆ†ç»„å¸§æ ¼å¼é”™è¯¯  */
+#define AM_FM175XX_STATUS_PPS_ERROR                0xCD    /**< \brief PPSSé”™è¯¯ */
+#define AM_FM175XX_STATUS_ATS_ERROR                0xCE    /**< \brief ATSé”™è¯¯(ISO14443-4); å¤ä½åº”ç­”é”™(ISO7816-3) */
+#define AM_FM175XX_STATUS_CARD_COMM_ERROR          0xCF    /**< \brief ä¸å¡ç‰‡ä¹‹é—´çš„é€šä¿¡å‡ºé”™ */
 
-#define AM_FM175XX_STATUS_EXECUTE_FAILED           0xD0    /**< \brief Ö´ĞĞÊ§°Ü */
-#define AM_FM175XX_STATUS_COMPARE_ERROR            0xD1    /**< \brief ±È½Ï´íÎó */
-#define AM_FM175XX_STATUS_ACCESS_BANNED            0xD2    /**< \brief ½ûÖ¹·ÃÎÊ */
-#define AM_FM175XX_STATUS_ACCESS_ERROR             0xD3    /**< \brief ´æ´¢Æ÷·ÃÎÊ´íÎó */
-#define AM_FM175XX_STATUS_BCC_ERROR                0xD4    /**< \brief BCCĞ£Ñé´íÎó */
-#define AM_FM175XX_STATUS_NO_TARGET                0xD5    /**< \brief ÎŞÄ¿±ê */
-#define AM_FM175XX_STATUS_UNDEFINE_ERROR           0xD6    /**< \brief Î´¶¨ÒåµÄ´íÎó */
-#define AM_FM175XX_STATUS_NO_RF_FIELD              0xD7    /**< \brief ÎŞRF³¡´íÎó */
-#define AM_FM175XX_STATUS_POWER_SHORTAGE           0xD9    /**< \brief ¹¦ÂÊ²»×ã */
-#define AM_FM175XX_STATUS_SERNR_ERROR              0xDA    /**< \brief ²»Ö§³ÖµÄ·ÀÅö×²µÈ¼¶ */
-#define AM_FM175XX_STATUS_NO_BITWISE_ANTICOLL      0xDB    /**< \brief ²»Ö§³ÖBitÖ¡·À³åÍ» */
-#define AM_FM175XX_STATUS_INIT_ERROR               0xDC    /**< \brief ³õÊ¼»¯´íÎó */
-#define AM_FM175XX_STATUS_TEMP_ERROR               0xDD    /**< \brief ÎÂ¶ÈÓĞÎó */
-#define AM_FM175XX_STATUS_INVALID_DEVICE_STATE     0xDE    /**< \brief Çı¶¯´íÎó */
-#define AM_FM175XX_STATUS_INSUFFICIENT_RESOURCES   0xDF    /**< \brief ÏµÍ³×ÊÔ´²»×ã */
+#define AM_FM175XX_STATUS_EXECUTE_FAILED           0xD0    /**< \brief æ‰§è¡Œå¤±è´¥ */
+#define AM_FM175XX_STATUS_COMPARE_ERROR            0xD1    /**< \brief æ¯”è¾ƒé”™è¯¯ */
+#define AM_FM175XX_STATUS_ACCESS_BANNED            0xD2    /**< \brief ç¦æ­¢è®¿é—® */
+#define AM_FM175XX_STATUS_ACCESS_ERROR             0xD3    /**< \brief å­˜å‚¨å™¨è®¿é—®é”™è¯¯ */
+#define AM_FM175XX_STATUS_BCC_ERROR                0xD4    /**< \brief BCCæ ¡éªŒé”™è¯¯ */
+#define AM_FM175XX_STATUS_NO_TARGET                0xD5    /**< \brief æ— ç›®æ ‡ */
+#define AM_FM175XX_STATUS_UNDEFINE_ERROR           0xD6    /**< \brief æœªå®šä¹‰çš„é”™è¯¯ */
+#define AM_FM175XX_STATUS_NO_RF_FIELD              0xD7    /**< \brief æ— RFåœºé”™è¯¯ */
+#define AM_FM175XX_STATUS_POWER_SHORTAGE           0xD9    /**< \brief åŠŸç‡ä¸è¶³ */
+#define AM_FM175XX_STATUS_SERNR_ERROR              0xDA    /**< \brief ä¸æ”¯æŒçš„é˜²ç¢°æ’ç­‰çº§ */
+#define AM_FM175XX_STATUS_NO_BITWISE_ANTICOLL      0xDB    /**< \brief ä¸æ”¯æŒBitå¸§é˜²å†²çª */
+#define AM_FM175XX_STATUS_INIT_ERROR               0xDC    /**< \brief åˆå§‹åŒ–é”™è¯¯ */
+#define AM_FM175XX_STATUS_TEMP_ERROR               0xDD    /**< \brief æ¸©åº¦æœ‰è¯¯ */
+#define AM_FM175XX_STATUS_INVALID_DEVICE_STATE     0xDE    /**< \brief é©±åŠ¨é”™è¯¯ */
+#define AM_FM175XX_STATUS_INSUFFICIENT_RESOURCES   0xDF    /**< \brief ç³»ç»Ÿèµ„æºä¸è¶³ */
 
-#define AM_FM175XX_STATUS_OTHER_ERROR              0xE0    /**< \brief ÆäËû´íÎó */
-#define AM_FM175XX_STATUS_NO_ID_AVAILABLE          0xE1    /**< \brief ÎŞ¿ÕÏĞID¿ÉÓÃ */
-#define AM_FM175XX_STATUS_ID_NOT_IN_USE            0xE2    /**< \brief Ö¸¶¨µÄID²»ÔÚÊ¹ÓÃ */
-#define AM_FM175XX_STATUS_INSTANCE_ALREADY_IN_USE  0xE3    /**< \brief INSTANCE ÒÑ±»Ê¹ÓÃ */
-#define AM_FM175XX_STATUS_ID_ALREADY_IN_USE        0xE4    /**< \brief IDÒÑ±»Ê¹ÓÃ */
-#define AM_FM175XX_STATUS_SLOT_ALREADY_IN_USE      0xE4    /**< \brief ¿¨×ùÒÑ±»Ê¹ÓÃ */
-#define AM_FM175XX_STATUS_WRONG_HALT_FORMAT        0xE5    /**< \brief ¹ÒÆğ¸ñÊ½´íÎó */
-#define AM_FM175XX_STATUS_WRONG_UID_CHECKBYTE      0xE6    /**< \brief Ä¿±êUID¼ì²â´íÎó */
-#define AM_FM175XX_STATUS_TARGET_RESET_TOX         0xE7    /**< \brief Ä¿±ê¸´Î» */
-#define AM_FM175XX_STATUS_TARGET_SET_TOX           0xE8    /**< \brief Ä¿±êÉèÖÃ³¬Ê± */
-#define AM_FM175XX_STATUS_TARGET_DEADLOCKED        0xE9    /**< \brief Ä¿±êËÀËø */
-#define AM_FM175XX_STATUS_BLOCKNR_NOT_EQUAL        0xEA    /**< \brief Í¨ĞÅ¿é´íÎó */
-#define AM_FM175XX_STATUS_ACK_SUPPOSED             0xEB    /**< \brief ACK´íÎó */
-#define AM_FM175XX_STATUS_AUTHENT_ERROR            0xEC    /**< \brief ÑéÖ¤´íÎó */
-#define AM_FM175XX_STATUS_INTERFACE_NOT_ENABLED    0xED    /**< \brief ½Ó¿ÚÎ´¼¤»î */
-#define AM_FM175XX_STATUS_INVALID_FORMAT           0xEE    /**< \brief ÎŞĞ§¸ñÊ½ */
-#define AM_FM175XX_STATUS_INTERFACE_ERROR          0xEF    /**< \brief Ö÷»ú½Ó¿Ú´íÎó */
+#define AM_FM175XX_STATUS_OTHER_ERROR              0xE0    /**< \brief å…¶ä»–é”™è¯¯ */
+#define AM_FM175XX_STATUS_NO_ID_AVAILABLE          0xE1    /**< \brief æ— ç©ºé—²IDå¯ç”¨ */
+#define AM_FM175XX_STATUS_ID_NOT_IN_USE            0xE2    /**< \brief æŒ‡å®šçš„IDä¸åœ¨ä½¿ç”¨ */
+#define AM_FM175XX_STATUS_INSTANCE_ALREADY_IN_USE  0xE3    /**< \brief INSTANCE å·²è¢«ä½¿ç”¨ */
+#define AM_FM175XX_STATUS_ID_ALREADY_IN_USE        0xE4    /**< \brief IDå·²è¢«ä½¿ç”¨ */
+#define AM_FM175XX_STATUS_SLOT_ALREADY_IN_USE      0xE4    /**< \brief å¡åº§å·²è¢«ä½¿ç”¨ */
+#define AM_FM175XX_STATUS_WRONG_HALT_FORMAT        0xE5    /**< \brief æŒ‚èµ·æ ¼å¼é”™è¯¯ */
+#define AM_FM175XX_STATUS_WRONG_UID_CHECKBYTE      0xE6    /**< \brief ç›®æ ‡UIDæ£€æµ‹é”™è¯¯ */
+#define AM_FM175XX_STATUS_TARGET_RESET_TOX         0xE7    /**< \brief ç›®æ ‡å¤ä½ */
+#define AM_FM175XX_STATUS_TARGET_SET_TOX           0xE8    /**< \brief ç›®æ ‡è®¾ç½®è¶…æ—¶ */
+#define AM_FM175XX_STATUS_TARGET_DEADLOCKED        0xE9    /**< \brief ç›®æ ‡æ­»é” */
+#define AM_FM175XX_STATUS_BLOCKNR_NOT_EQUAL        0xEA    /**< \brief é€šä¿¡å—é”™è¯¯ */
+#define AM_FM175XX_STATUS_ACK_SUPPOSED             0xEB    /**< \brief ACKé”™è¯¯ */
+#define AM_FM175XX_STATUS_AUTHENT_ERROR            0xEC    /**< \brief éªŒè¯é”™è¯¯ */
+#define AM_FM175XX_STATUS_INTERFACE_NOT_ENABLED    0xED    /**< \brief æ¥å£æœªæ¿€æ´» */
+#define AM_FM175XX_STATUS_INVALID_FORMAT           0xEE    /**< \brief æ— æ•ˆæ ¼å¼ */
+#define AM_FM175XX_STATUS_INTERFACE_ERROR          0xEF    /**< \brief ä¸»æœºæ¥å£é”™è¯¯ */
 
-#define AM_FM175XX_STATUS_UNSUPPORTED_COMMAND      0xF0    /**< \brief ²»Ö§³ÖµÄÃüÁî */
-#define AM_FM175XX_STATUS_UNSUPPORTED_PARAMETER    0xF1    /**< \brief ²»Ö§³ÖµÄ²ÎÊı */
-#define AM_FM175XX_STATUS_INVALID_PARAMETER        0xF2    /**< \brief ÎŞĞ§²ÎÊı */
-#define AM_FM175XX_STATUS_USER_BUFFER_FULL         0xF3    /**< \brief ÓÃ»§»º³åÇøÂú */
-#define AM_FM175XX_STATUS_FIFO_WRITE_ERROR         0xF4    /**< \brief FIFOĞ´´íÎó */
-#define AM_FM175XX_STATUS_NOT_YET_IMPLEMENTED      0xF5    /**< \brief ÉĞÎ´ÉúĞ§ */
-#define AM_FM175XX_STATUS_PROTOCOL_ERROR           0xF6    /**< \brief Ğ­ÒéÓĞÎó */
-#define AM_FM175XX_STATUS_BUFFER_OVERFLOW          0xF7    /**< \brief BUFÒç³ö´íÎó */
-#define AM_FM175XX_STATUS_FIFO_OVERFLOW            0xF7    /**< \brief FIFOÒç³ö´íÎó */
-#define AM_FM175XX_STATUS_ACCESS_DENIED            0xF8    /**< \brief Ğ´½ûÖ¹ */
-#define AM_FM175XX_STATUS_BUFFER_TOO_SMALL         0xF9    /**< \brief »º³åÇø¹ıĞ¡ */
-#define AM_FM175XX_STATUS_COLLISION_ERROR          0xFA    /**< \brief Î»³åÍ»´íÎó */
-#define AM_FM175XX_STATUS_FRAMING_ERROR            0xFB    /**< \brief Ö¡´íÎó */
-#define AM_FM175XX_STATUS_BIT_COUNT_ERROR          0xFC    /**< \brief ½ÓÊÕÎ»¼ÆÊıÆ÷´íÎó */
-#define AM_FM175XX_STATUS_PARITY_ERROR             0xFD    /**< \brief ÆæÅ¼Ğ£Ñé´íÎó */
-#define AM_FM175XX_STATUS_CRC_ERROR                0xFE    /**< \brief CRCĞ£Ñé´íÎó */
-#define AM_FM175XX_STATUS_IO_TIMEOUT               0xFF    /**< \brief ÎŞÓ¦´ğ´íÎó */
+#define AM_FM175XX_STATUS_UNSUPPORTED_COMMAND      0xF0    /**< \brief ä¸æ”¯æŒçš„å‘½ä»¤ */
+#define AM_FM175XX_STATUS_UNSUPPORTED_PARAMETER    0xF1    /**< \brief ä¸æ”¯æŒçš„å‚æ•° */
+#define AM_FM175XX_STATUS_INVALID_PARAMETER        0xF2    /**< \brief æ— æ•ˆå‚æ•° */
+#define AM_FM175XX_STATUS_USER_BUFFER_FULL         0xF3    /**< \brief ç”¨æˆ·ç¼“å†²åŒºæ»¡ */
+#define AM_FM175XX_STATUS_FIFO_WRITE_ERROR         0xF4    /**< \brief FIFOå†™é”™è¯¯ */
+#define AM_FM175XX_STATUS_NOT_YET_IMPLEMENTED      0xF5    /**< \brief å°šæœªç”Ÿæ•ˆ */
+#define AM_FM175XX_STATUS_PROTOCOL_ERROR           0xF6    /**< \brief åè®®æœ‰è¯¯ */
+#define AM_FM175XX_STATUS_BUFFER_OVERFLOW          0xF7    /**< \brief BUFæº¢å‡ºé”™è¯¯ */
+#define AM_FM175XX_STATUS_FIFO_OVERFLOW            0xF7    /**< \brief FIFOæº¢å‡ºé”™è¯¯ */
+#define AM_FM175XX_STATUS_ACCESS_DENIED            0xF8    /**< \brief å†™ç¦æ­¢ */
+#define AM_FM175XX_STATUS_BUFFER_TOO_SMALL         0xF9    /**< \brief ç¼“å†²åŒºè¿‡å° */
+#define AM_FM175XX_STATUS_COLLISION_ERROR          0xFA    /**< \brief ä½å†²çªé”™è¯¯ */
+#define AM_FM175XX_STATUS_FRAMING_ERROR            0xFB    /**< \brief å¸§é”™è¯¯ */
+#define AM_FM175XX_STATUS_BIT_COUNT_ERROR          0xFC    /**< \brief æ¥æ”¶ä½è®¡æ•°å™¨é”™è¯¯ */
+#define AM_FM175XX_STATUS_PARITY_ERROR             0xFD    /**< \brief å¥‡å¶æ ¡éªŒé”™è¯¯ */
+#define AM_FM175XX_STATUS_CRC_ERROR                0xFE    /**< \brief CRCæ ¡éªŒé”™è¯¯ */
+#define AM_FM175XX_STATUS_IO_TIMEOUT               0xFF    /**< \brief æ— åº”ç­”é”™è¯¯ */
 
 /** @} */
 
 
 /**
- * \name ¶¨ÒåÑÓÊ±³£Á¿
+ * \name å®šä¹‰å»¶æ—¶å¸¸é‡
  *
- * \note ÑÓÊ±Ê±¼ä²»ÒË³¬¹ı100ms£¬·ñÔò¿ÉÄÜµ¼ÖÂMCUÄÚ²¿¶¨Ê±Æ÷ÎŞĞ§¡£
+ * \note å»¶æ—¶æ—¶é—´ä¸å®œè¶…è¿‡100msï¼Œå¦åˆ™å¯èƒ½å¯¼è‡´MCUå†…éƒ¨å®šæ—¶å™¨æ— æ•ˆã€‚
  * @{
  */
-#define AM_FM175XX_RIC_DELAY1MS                2           /**< \brief ³¬Ê±1ms */
-#define AM_FM175XX_RIC_DELAY2MS                3           /**< \brief ³¬Ê±2ms */
-#define AM_FM175XX_RIC_DELAY5MS                6           /**< \brief ÑÓÊ±4.832ms */
-#define AM_FM175XX_RIC_DELAY10MS               11          /**< \brief ÑÓÊ±9.966ms */
-#define AM_FM175XX_RIC_DELAY20MS               21          /**< \brief ÑÓÊ±19.932ms */
-#define AM_FM175XX_RIC_DELAY50MS               51          /**< \brief ÑÓÊ±50.132ms */
-#define AM_FM175XX_RIC_DELAY100MS              101         /**< \brief ÑÓÊ±99.962ms */
+#define AM_FM175XX_RIC_DELAY1MS                2           /**< \brief è¶…æ—¶1ms */
+#define AM_FM175XX_RIC_DELAY2MS                3           /**< \brief è¶…æ—¶2ms */
+#define AM_FM175XX_RIC_DELAY5MS                6           /**< \brief å»¶æ—¶4.832ms */
+#define AM_FM175XX_RIC_DELAY10MS               11          /**< \brief å»¶æ—¶9.966ms */
+#define AM_FM175XX_RIC_DELAY20MS               21          /**< \brief å»¶æ—¶19.932ms */
+#define AM_FM175XX_RIC_DELAY50MS               51          /**< \brief å»¶æ—¶50.132ms */
+#define AM_FM175XX_RIC_DELAY100MS              101         /**< \brief å»¶æ—¶99.962ms */
 
 /** @} */
 
 
 /**
- * \name LPCD¼ì²âĞİÃß½×¶ÎÊ±¼äÅäÖÃ
+ * \name LPCDæ£€æµ‹ä¼‘çœ é˜¶æ®µæ—¶é—´é…ç½®
  *
- * \note ÓÃ»§¿É¸ù¾İµÍ¹¦ºÄÒªÇó½øĞĞĞŞ¸Ä
+ * \note ç”¨æˆ·å¯æ ¹æ®ä½åŠŸè€—è¦æ±‚è¿›è¡Œä¿®æ”¹
  * @{
  */
 #define AM_FM175XX_LCPD_SLEEP0MS               0          /**< \brief 0ms */
@@ -247,9 +248,9 @@ extern "C" {
 
 
 /**
- * \name LPCD¼ì²â½×¶ÎÊ±¼äÅäÖÃ
+ * \name LPCDæ£€æµ‹é˜¶æ®µæ—¶é—´é…ç½®
  *
- * \note ÓÃ»§¿É¸ù¾İµÍ¹¦ºÄÒªÇó½øĞĞĞŞ¸Ä
+ * \note ç”¨æˆ·å¯æ ¹æ®ä½åŠŸè€—è¦æ±‚è¿›è¡Œä¿®æ”¹
  * @{
  */
 #define AM_FM175XX_LCPD_DETECT0US              1           /**< \brief 0us */
@@ -287,284 +288,284 @@ extern "C" {
 
 
 /**
- * \name LPCD·¢ËÍÇı¶¯ÅäÖÃ
+ * \name LPCDå‘é€é©±åŠ¨é…ç½®
  *
  * @{
  */
-#define AM_FM175XX_LCPD_TX2_RF_ENABLE          1           /**< \brief LPCD TX2·¢ÉäÊ¹ÄÜ */
-#define AM_FM175XX_LCPD_TX2_RF_DISABLE         0           /**< \brief LPCD TX2·¢Éä½ûÄÜ */
+#define AM_FM175XX_LCPD_TX2_RF_ENABLE          1           /**< \brief LPCD TX2å‘å°„ä½¿èƒ½ */
+#define AM_FM175XX_LCPD_TX2_RF_DISABLE         0           /**< \brief LPCD TX2å‘å°„ç¦èƒ½ */
 
-#define AM_FM175XX_LCPD_RF_NMOS_46             0           /**< \brief LPCD ·¢ÉäNMOSÇı¶¯ÅäÖÃÎª46Å·Ä· */
-#define AM_FM175XX_LCPD_RF_NMOS_23             1           /**< \brief LPCD ·¢ÉäNMOSÇı¶¯ÅäÖÃÎª23Å·Ä· */
+#define AM_FM175XX_LCPD_RF_NMOS_46             0           /**< \brief LPCD å‘å°„NMOSé©±åŠ¨é…ç½®ä¸º46æ¬§å§† */
+#define AM_FM175XX_LCPD_RF_NMOS_23             1           /**< \brief LPCD å‘å°„NMOSé©±åŠ¨é…ç½®ä¸º23æ¬§å§† */
 
-#define AM_FM175XX_LCPD_RF_PMOS_180            0           /**< \brief LPCD ·¢ÉäNMOSÇı¶¯ÅäÖÃÎª180Å·Ä· */
-#define AM_FM175XX_LCPD_RF_PMOS_90             1           /**< \brief LPCD ·¢ÉäPMOSÇı¶¯ÅäÖÃÎª90Å·Ä· */
-#define AM_FM175XX_LCPD_RF_PMOS_46             2           /**< \brief LPCD ·¢ÉäPMOSÇı¶¯ÅäÖÃÎª46Å·Ä· */
-#define AM_FM175XX_LCPD_RF_PMOS_23             3           /**< \brief LPCD ·¢ÉäPMOSÇı¶¯ÅäÖÃÎª23Å·Ä· */
-#define AM_FM175XX_LCPD_RF_PMOS_12             4           /**< \brief LPCD ·¢ÉäPMOSÇı¶¯ÅäÖÃÎª12Å·Ä· */
-#define AM_FM175XX_LCPD_RF_PMOS_6              5           /**< \brief LPCD ·¢ÉäPMOSÇı¶¯ÅäÖÃÎª6Å·Ä· */
-#define AM_FM175XX_LCPD_RF_PMOS_3              6           /**< \brief LPCD ·¢ÉäPMOSÇı¶¯ÅäÖÃÎª3Å·Ä· */
-#define AM_FM175XX_LCPD_RF_PMOS_1              7           /**< \brief LPCD ·¢ÉäPMOSÇı¶¯ÅäÖÃÎª1.5Å·Ä· */
+#define AM_FM175XX_LCPD_RF_PMOS_180            0           /**< \brief LPCD å‘å°„NMOSé©±åŠ¨é…ç½®ä¸º180æ¬§å§† */
+#define AM_FM175XX_LCPD_RF_PMOS_90             1           /**< \brief LPCD å‘å°„PMOSé©±åŠ¨é…ç½®ä¸º90æ¬§å§† */
+#define AM_FM175XX_LCPD_RF_PMOS_46             2           /**< \brief LPCD å‘å°„PMOSé©±åŠ¨é…ç½®ä¸º46æ¬§å§† */
+#define AM_FM175XX_LCPD_RF_PMOS_23             3           /**< \brief LPCD å‘å°„PMOSé©±åŠ¨é…ç½®ä¸º23æ¬§å§† */
+#define AM_FM175XX_LCPD_RF_PMOS_12             4           /**< \brief LPCD å‘å°„PMOSé©±åŠ¨é…ç½®ä¸º12æ¬§å§† */
+#define AM_FM175XX_LCPD_RF_PMOS_6              5           /**< \brief LPCD å‘å°„PMOSé©±åŠ¨é…ç½®ä¸º6æ¬§å§† */
+#define AM_FM175XX_LCPD_RF_PMOS_3              6           /**< \brief LPCD å‘å°„PMOSé©±åŠ¨é…ç½®ä¸º3æ¬§å§† */
+#define AM_FM175XX_LCPD_RF_PMOS_1              7           /**< \brief LPCD å‘å°„PMOSé©±åŠ¨é…ç½®ä¸º1.5æ¬§å§† */
 
 /** @} */
 
 
 /**
- * \name LPCD¼ì²â²ÎÊıÅäÖÃ
+ * \name LPCDæ£€æµ‹å‚æ•°é…ç½®
  *
  * @{
  */
-#define AM_FM175XX_LCPD_AUTO_DETECT_TIMES_3    0           /**< \brief LPCD ×Ô¶¯¼ì²âÈı´Îºó²úÉúÖĞ¶Ï */
-#define AM_FM175XX_LCPD_AUTO_DETECT_TIMES_1    1           /**< \brief LPCD ×Ô¶¯¼ì²âÒ»´Îºó²úÉúÖĞ¶Ï  */
+#define AM_FM175XX_LCPD_AUTO_DETECT_TIMES_3    0           /**< \brief LPCD è‡ªåŠ¨æ£€æµ‹ä¸‰æ¬¡åäº§ç”Ÿä¸­æ–­ */
+#define AM_FM175XX_LCPD_AUTO_DETECT_TIMES_1    1           /**< \brief LPCD è‡ªåŠ¨æ£€æµ‹ä¸€æ¬¡åäº§ç”Ÿä¸­æ–­  */
 
-#define AM_FM175XX_LCPD_INT_DISABLE            0           /**< \brief LPCD ²»²úÉúÖĞ¶Ï */
-#define AM_FM175XX_LCPD_INT_ENABLE             1           /**< \brief LPCD ²úÉúÖĞ¶Ï */
+#define AM_FM175XX_LCPD_INT_DISABLE            0           /**< \brief LPCD ä¸äº§ç”Ÿä¸­æ–­ */
+#define AM_FM175XX_LCPD_INT_ENABLE             1           /**< \brief LPCD äº§ç”Ÿä¸­æ–­ */
 
-#define AM_FM175XX_LCPD_AUTO_WUP_DISANLE       0           /**< \brief LPCD ½ûÄÜ×Ô¶¯»½ĞÑÄ£Ê½ */
-#define AM_FM175XX_LCPD_AUTO_WUP_ENABLE        1           /**< \brief LPCD Ê¹ÄÜ×Ô¶¯»½ĞÑÄ£Ê½*/
+#define AM_FM175XX_LCPD_AUTO_WUP_DISANLE       0           /**< \brief LPCD ç¦èƒ½è‡ªåŠ¨å”¤é†’æ¨¡å¼ */
+#define AM_FM175XX_LCPD_AUTO_WUP_ENABLE        1           /**< \brief LPCD ä½¿èƒ½è‡ªåŠ¨å”¤é†’æ¨¡å¼*/
 
-#define AM_FM175XX_LCPD_AUTO_WUP_TIME_6S       0           /**< \brief LPCD ÅäÖÃ×Ô¶¯»½ĞÑÊ±¼ä  6s*/
-#define AM_FM175XX_LCPD_AUTO_WUP_TIME_12S      1           /**< \brief LPCD ÅäÖÃ×Ô¶¯»½ĞÑÊ±¼ä 12s*/
-#define AM_FM175XX_LCPD_AUTO_WUP_TIME_15MIN    2           /**< \brief LPCD ÅäÖÃ×Ô¶¯»½ĞÑÊ±¼ä 15minutes*/
-#define AM_FM175XX_LCPD_AUTO_WUP_TIME_30MIN    3           /**< \brief LPCD ÅäÖÃ×Ô¶¯»½ĞÑÊ±¼ä 30minutes*/
-#define AM_FM175XX_LCPD_AUTO_WUP_TIME_60MIN    4           /**< \brief LPCD ÅäÖÃ×Ô¶¯»½ĞÑÊ±¼ä 1hours*/
-#define AM_FM175XX_LCPD_AUTO_WUP_TIME_108MIN   5           /**< \brief LPCD ÅäÖÃ×Ô¶¯»½ĞÑÊ±¼ä 1.8hours*/
-#define AM_FM175XX_LCPD_AUTO_WUP_TIME_216MIN   6           /**< \brief LPCD ÅäÖÃ×Ô¶¯»½ĞÑÊ±¼ä 3.6hours*/
-#define AM_FM175XX_LCPD_AUTO_WUP_TIME_432MIN   7           /**< \brief LPCD ÅäÖÃ×Ô¶¯»½ĞÑÊ±¼ä 7.2hours*/
+#define AM_FM175XX_LCPD_AUTO_WUP_TIME_6S       0           /**< \brief LPCD é…ç½®è‡ªåŠ¨å”¤é†’æ—¶é—´  6s*/
+#define AM_FM175XX_LCPD_AUTO_WUP_TIME_12S      1           /**< \brief LPCD é…ç½®è‡ªåŠ¨å”¤é†’æ—¶é—´ 12s*/
+#define AM_FM175XX_LCPD_AUTO_WUP_TIME_15MIN    2           /**< \brief LPCD é…ç½®è‡ªåŠ¨å”¤é†’æ—¶é—´ 15minutes*/
+#define AM_FM175XX_LCPD_AUTO_WUP_TIME_30MIN    3           /**< \brief LPCD é…ç½®è‡ªåŠ¨å”¤é†’æ—¶é—´ 30minutes*/
+#define AM_FM175XX_LCPD_AUTO_WUP_TIME_60MIN    4           /**< \brief LPCD é…ç½®è‡ªåŠ¨å”¤é†’æ—¶é—´ 1hours*/
+#define AM_FM175XX_LCPD_AUTO_WUP_TIME_108MIN   5           /**< \brief LPCD é…ç½®è‡ªåŠ¨å”¤é†’æ—¶é—´ 1.8hours*/
+#define AM_FM175XX_LCPD_AUTO_WUP_TIME_216MIN   6           /**< \brief LPCD é…ç½®è‡ªåŠ¨å”¤é†’æ—¶é—´ 3.6hours*/
+#define AM_FM175XX_LCPD_AUTO_WUP_TIME_432MIN   7           /**< \brief LPCD é…ç½®è‡ªåŠ¨å”¤é†’æ—¶é—´ 7.2hours*/
 
 /** @} */
-/** \brief  LPCDÄ£Ê½³õÊ¼»¯·µ»Ø×´Ì¬Âë*/
-#define  AM_FM175XX_INIT_SUCCESS               0x00       /**< \brief Éè±¸LPCDÄ£Ê½³õÊ¼»¯³É¹¦  */
-#define  AM_FM175XX_REG_INIT_ERROR             0x01       /**< \brief Éè±¸LPCDÄ£Ê½¼Ä´æÆ÷³õÊ¼»¯Ê§°Ü  */
-#define  AM_FM175XX_CALIBRA_INIT_ERROR         0x02       /**< \brief Éè±¸LPCDÄ£Ê½µ÷Ğ£³õÊ¼»¯Ê§°Ü  */
+/** \brief  LPCDæ¨¡å¼åˆå§‹åŒ–è¿”å›çŠ¶æ€ç */
+#define  AM_FM175XX_INIT_SUCCESS               0x00        /**< \brief è®¾å¤‡LPCDæ¨¡å¼åˆå§‹åŒ–æˆåŠŸ  */
+#define  AM_FM175XX_REG_INIT_ERROR             0x01        /**< \brief è®¾å¤‡LPCDæ¨¡å¼å¯„å­˜å™¨åˆå§‹åŒ–å¤±è´¥  */
+#define  AM_FM175XX_CALIBRA_INIT_ERROR         0x02        /**< \brief è®¾å¤‡LPCDæ¨¡å¼è°ƒæ ¡åˆå§‹åŒ–å¤±è´¥  */
 
 /**
- * \name  T=CL ½á¹¹Ö¡³£ÁÁ¶¨Òå
+ * \name  T=CL ç»“æ„å¸§å¸¸äº®å®šä¹‰
  * @{
  */
-#define AM_FM175XX_PCB_TYPE_MASK               0xC0        /**< \brief PCBÀàĞÍÑÚÂë */
-#define AM_FM175XX_PCB_BLOCK_NUM_MASK          0x01        /**< \brief PCB¿éÊıÑÚÂë */
+#define AM_FM175XX_PCB_TYPE_MASK               0xC0        /**< \brief PCBç±»å‹æ©ç  */
+#define AM_FM175XX_PCB_BLOCK_NUM_MASK          0x01        /**< \brief PCBå—æ•°æ©ç  */
 #define AM_FM175XX_PCB_I_BLOCK                 0x00        /**< \brief I_BLOCK */
 #define AM_FM175XX_PCB_R_BLOCK                 0x80        /**< \brief R_BLOCK */
 #define AM_FM175XX_PCB_S_BLOCK                 0xC0        /**< \brief S_BLOCK */
-#define AM_FM175XX_PCB_CID_MASK                0x08        /**< \brief PCBÖĞCIDÑÚÂë */
-#define AM_FM175XX_PCB_NAD_MASK                0x04        /**< \brief PCBÖĞNADÑÚÂë */
-#define AM_FM175XX_PCB_CID                     0x08        /**< \brief PCBÖĞCID */
-#define AM_FM175XX_PCB_NAD                     0x04        /**< \brief PCBÖĞNAD */
-#define AM_FM175XX_PCB_CHAINING                0x10        /**< \brief Êı¾İ·ÖÁ´ */
+#define AM_FM175XX_PCB_CID_MASK                0x08        /**< \brief PCBä¸­CIDæ©ç  */
+#define AM_FM175XX_PCB_NAD_MASK                0x04        /**< \brief PCBä¸­NADæ©ç  */
+#define AM_FM175XX_PCB_CID                     0x08        /**< \brief PCBä¸­CID */
+#define AM_FM175XX_PCB_NAD                     0x04        /**< \brief PCBä¸­NAD */
+#define AM_FM175XX_PCB_CHAINING                0x10        /**< \brief æ•°æ®åˆ†é“¾ */
 
-#define AM_FM175XX_PCB_I_RFU                   0x02        /**< \brief I_BLOCK ±£ÁôÎ» */
+#define AM_FM175XX_PCB_I_RFU                   0x02        /**< \brief I_BLOCK ä¿ç•™ä½ */
 
-#define AM_FM175XX_PCB_R_TYPE_MASK             0x10        /**< \brief R_BLOCK ÀàĞÍÑÚÂë */
+#define AM_FM175XX_PCB_R_TYPE_MASK             0x10        /**< \brief R_BLOCK ç±»å‹æ©ç  */
 #define AM_FM175XX_PCB_R_NAK                   0x10        /**< \brief R_BLOCK NAK */
 #define AM_FM175XX_PCB_R_ACK                   0x00        /**< \brief R_BLOCK ACK */
-#define AM_FM175XX_PCB_R_RFU                   0x22        /**< \brief R_BLOCK ±£ÁôÎ» */
+#define AM_FM175XX_PCB_R_RFU                   0x22        /**< \brief R_BLOCK ä¿ç•™ä½ */
 
-#define AM_FM175XX_PCB_S_TYPE_MASK             0x30        /**< \brief S_BLOCK ÀàĞÍÑÚÂë */
+#define AM_FM175XX_PCB_S_TYPE_MASK             0x30        /**< \brief S_BLOCK ç±»å‹æ©ç  */
 #define AM_FM175XX_PCB_S_WTX                   0x30        /**< \brief S_BLOCK WTX */
 #define AM_FM175XX_PCB_S_DESELECT              0x00        /**< \brief S_BLOCK DESELECT */
-#define AM_FM175XX_PCB_S_RFU                   0x02        /**< \brief S_BLOCK ±£ÁôÎ» */
+#define AM_FM175XX_PCB_S_RFU                   0x02        /**< \brief S_BLOCK ä¿ç•™ä½ */
 
 /** @} */
 
 /**
- * \name  º¯ÊıÅäÖÃ
+ * \name  å‡½æ•°é…ç½®
  * @{
  */
-#define AM_FM175XX_MAX_FS_TAB_NO    9    /**< \brief ½Ó¿ÚÉè±¸ÄÜ½ÓÊÕµÄ×Ö½ÚÊı±í */
-#define AM_FM175XX_MAX_FSDI         8    /**< \brief ½Ó¿ÚÉè±¸×î´óÄÜ½ÓÊÕ»º³åÇøÎª256×Ö½Ú */
-#define AM_FM175XX_MAX_FSCI         8    /**< \brief ½Ó¿ÚÉè±¸×î´óÄÜ·¢ËÍ»º³åÇøÎª256×Ö½Ú  */
-                                         /**< \brief 0 -> 16×Ö½Ú; 1 -> 24×Ö½Ú;  2 -> 32×Ö½Ú; */
-                                         /**< \brief 3 -> 40×Ö½Ú; 4 -> 48×Ö½Ú;  5 -> 64×Ö½Ú; */
-                                         /**< \brief 6 -> 96×Ö½Ú; 7 -> 128×Ö½Ú; 8 -> 256×Ö½Ú */
+#define AM_FM175XX_MAX_FS_TAB_NO    9    /**< \brief æ¥å£è®¾å¤‡èƒ½æ¥æ”¶çš„å­—èŠ‚æ•°è¡¨ */
+#define AM_FM175XX_MAX_FSDI         8    /**< \brief æ¥å£è®¾å¤‡æœ€å¤§èƒ½æ¥æ”¶ç¼“å†²åŒºä¸º256å­—èŠ‚ */
+#define AM_FM175XX_MAX_FSCI         8    /**< \brief æ¥å£è®¾å¤‡æœ€å¤§èƒ½å‘é€ç¼“å†²åŒºä¸º256å­—èŠ‚  */
+                                         /**< \brief 0 -> 16å­—èŠ‚; 1 -> 24å­—èŠ‚;  2 -> 32å­—èŠ‚; */
+                                         /**< \brief 3 -> 40å­—èŠ‚; 4 -> 48å­—èŠ‚;  5 -> 64å­—èŠ‚; */
+                                         /**< \brief 6 -> 96å­—èŠ‚; 7 -> 128å­—èŠ‚; 8 -> 256å­—èŠ‚ */
 
-#define AM_FM175XX_FSDI_BUF_SIZE    262  /**< \brief ¶¨Òå½Ó¿ÚÉè±¸»º³åÇø×Ö½ÚÊı */
+#define AM_FM175XX_FSDI_BUF_SIZE    262  /**< \brief å®šä¹‰æ¥å£è®¾å¤‡ç¼“å†²åŒºå­—èŠ‚æ•° */
 
 /**  @} */
 
-/** \brief  ¶¨ÒåISO14443ÃüÁî */
-#define AM_FM175XX_PICC_RATS                   0xE0        /**< \brief ATSÇëÇóÃüÁîÂë */
-#define AM_FM175XX_PICC_PPS                    0xD0        /**< \brief PPSÃüÁî */
+/** \brief  å®šä¹‰ISO14443å‘½ä»¤ */
+#define AM_FM175XX_PICC_RATS                   0xE0        /**< \brief ATSè¯·æ±‚å‘½ä»¤ç  */
+#define AM_FM175XX_PICC_PPS                    0xD0        /**< \brief PPSå‘½ä»¤ */
 
-/** \brief  Í¨ĞÅ²ÎÊı½á¹¹ÑÚÂë¶¨Òå */
-#define AM_FM175XX_PARA_FO_CID_MASK            0x02        /**< \brief Í¨ĞÅ²ÎÊıÖĞÊÇ·ñÓĞCIDÑÚÂë */
-#define AM_FM175XX_PARA_FO_NAD_MASK            0x01        /**< \brief Í¨ĞÅ²ÎÊıÖĞÊÇ·ñÓĞNADÑÚÂë */
+/** \brief  é€šä¿¡å‚æ•°ç»“æ„æ©ç å®šä¹‰ */
+#define AM_FM175XX_PARA_FO_CID_MASK            0x02        /**< \brief é€šä¿¡å‚æ•°ä¸­æ˜¯å¦æœ‰CIDæ©ç  */
+#define AM_FM175XX_PARA_FO_NAD_MASK            0x01        /**< \brief é€šä¿¡å‚æ•°ä¸­æ˜¯å¦æœ‰NADæ©ç  */
 
 /**
- * \brief ¶¨ÒåĞ­ÒéÀàĞÍºÍËÙ¶È
+ * \brief å®šä¹‰åè®®ç±»å‹å’Œé€Ÿåº¦
  */
 typedef enum am_fm175xx_prot_type
 {
-    /* ISO14443AĞ­Òé£¬106kbit/s £¨FM17510Ö»Ö§³ÖISO14443AĞ­Òé£© */
+    /* ISO14443Aåè®®ï¼Œ106kbit/s ï¼ˆFM17510åªæ”¯æŒISO14443Aåè®®ï¼‰ */
     AM_FM175XX_PROT_TYPE_ISO14443A_106 = 0x00,
 
-    /**< \brief ISO14443BĞ­Òé£¬106kbit/s */
+    /**< \brief ISO14443Båè®®ï¼Œ106kbit/s */
     AM_FM175XX_PROT_TYPE_ISO14443B_106 = 0x04,
 } am_fm175xx_prot_type_t;
 
 
 /**
- * \brief am_fm175xx_cmd_input_para fm175xxÃüÁîÊäÈë²ÎÊı½á¹¹Ìå¶¨Òå
+ * \brief am_fm175xx_cmd_input_para fm175xxå‘½ä»¤è¾“å…¥å‚æ•°ç»“æ„ä½“å®šä¹‰
  */
 typedef struct am_fm175xx_cmd_input_para
 {
-    uint8_t         cmd_code;       /**< \brief ÃüÁîÀàĞÍ */
-    uint16_t        tmo;            /**< \brief ³¬Ê±Ê±¼ä */
-    uint16_t        nbytes;         /**< \brief ·¢ËÍ×Ö½ÚÊı */
-    const void     *pbuf;           /**< \brief ·¢ËÍÊı¾İ */
+    uint8_t         cmd_code;       /**< \brief å‘½ä»¤ç±»å‹ */
+    uint16_t        tmo;            /**< \brief è¶…æ—¶æ—¶é—´ */
+    uint16_t        nbytes;         /**< \brief å‘é€å­—èŠ‚æ•° */
+    const void     *pbuf;           /**< \brief å‘é€æ•°æ® */
 } am_fm175xx_cmd_input_para_t;
 
 
 /**
- * \brief am_fm175xx_cmd_output_para fm175xxÃüÁîÊä³ö²ÎÊı½á¹¹Ìå¶¨Òå
+ * \brief am_fm175xx_cmd_output_para fm175xxå‘½ä»¤è¾“å‡ºå‚æ•°ç»“æ„ä½“å®šä¹‰
  */
 typedef struct am_fm175xx_cmd_output_para
 {
-    uint8_t         nlastbits;      /**< \brief ×îºó×Ö½Ú½ÓÊÕµÄÎ» */
-    uint16_t        nbufsize;       /**< \brief ½ÓÊÕ»º³åÇø´óĞ¡ */
-    uint16_t        nbytes;         /**< \brief ½ÓÊÕµÄ×Ö½ÚÊı */
-    void           *pbuf;           /**< \brief ½ÓÊÕ»º³åÇø */
+    uint8_t         nlastbits;      /**< \brief æœ€åå­—èŠ‚æ¥æ”¶çš„ä½ */
+    uint16_t        nbufsize;       /**< \brief æ¥æ”¶ç¼“å†²åŒºå¤§å° */
+    uint16_t        nbytes;         /**< \brief æ¥æ”¶çš„å­—èŠ‚æ•° */
+    void           *pbuf;           /**< \brief æ¥æ”¶ç¼“å†²åŒº */
 } am_fm175xx_cmd_output_para_t;
 
 /**
- * \brief am_fm175xx_cmd_info ÃüÁî´¦Àí¹ı³ÌĞÅÏ¢½á¹¹Ìå¶¨Òå
+ * \brief am_fm175xx_cmd_info å‘½ä»¤å¤„ç†è¿‡ç¨‹ä¿¡æ¯ç»“æ„ä½“å®šä¹‰
  */
 typedef struct am_fm175xx_cmd_info
 {
-    uint8_t         status;         /**< \brief ×´Ì¬ */
-    uint8_t         dorcv;          /**< \brief ÊÇ·ñÔÊĞí½ÓÊÕ±êÖ¾ */
-    uint8_t         ncollpos;       /**< \brief Åö×²Î»ÖÃ */
-    uint8_t         nlastbits;      /**< \brief ×îºó×Ö½Ú½ÓÊÕÎ» */
+    uint8_t         status;         /**< \brief çŠ¶æ€ */
+    uint8_t         dorcv;          /**< \brief æ˜¯å¦å…è®¸æ¥æ”¶æ ‡å¿— */
+    uint8_t         ncollpos;       /**< \brief ç¢°æ’ä½ç½® */
+    uint8_t         nlastbits;      /**< \brief æœ€åå­—èŠ‚æ¥æ”¶ä½ */
 
-    uint8_t         irqen;          /**< \brief ÇëÇóµÄÖĞ¶Ï */
-    uint8_t         waitirq;        /**< \brief µÈ´ıµÄÖĞ¶Ï */
-    uint8_t         irqsource;      /**< \brief ËùÓĞµÄÖĞ¶Ï */
+    uint8_t         irqen;          /**< \brief è¯·æ±‚çš„ä¸­æ–­ */
+    uint8_t         waitirq;        /**< \brief ç­‰å¾…çš„ä¸­æ–­ */
+    uint8_t         irqsource;      /**< \brief æ‰€æœ‰çš„ä¸­æ–­ */
 
-    uint16_t        nbytesreceived; /**< \brief ÒÑ½ÓÊÕµÄ×Ö½ÚÊı */
-    uint16_t        nbytessent;     /**< \brief ÒÑ·¢ËÍµÄ×Ö½ÚÊı */
-    uint16_t        nbytestosend;   /**< \brief ½«Òª·¢ËÍµÄ×Ö½ÚÊı */
-    uint16_t        nmaxbufsize;    /**< \brief ×î´óÓÃ»§»º³åÇø³¤¶È */
+    uint16_t        nbytesreceived; /**< \brief å·²æ¥æ”¶çš„å­—èŠ‚æ•° */
+    uint16_t        nbytessent;     /**< \brief å·²å‘é€çš„å­—èŠ‚æ•° */
+    uint16_t        nbytestosend;   /**< \brief å°†è¦å‘é€çš„å­—èŠ‚æ•° */
+    uint16_t        nmaxbufsize;    /**< \brief æœ€å¤§ç”¨æˆ·ç¼“å†²åŒºé•¿åº¦ */
 
-    const void     *psbuf;          /**< \brief ·¢ËÍÊı¾İ»º³åÇø */
-    void           *prbuf;          /**< \brief ½ÓÊÕÊı¾İ»º³åÇø */
+    const void     *psbuf;          /**< \brief å‘é€æ•°æ®ç¼“å†²åŒº */
+    void           *prbuf;          /**< \brief æ¥æ”¶æ•°æ®ç¼“å†²åŒº */
 } am_fm175xx_cmd_info_t;
 
 
 /**
- * \brief T=CLĞ­Òé²ÎÊı
+ * \brief T=CLåè®®å‚æ•°
  */
 typedef struct am_fm175xx_tpcl_prot_para {
-    uint8_t pcb_num;                /**< \brief ·Ö°ü±êÖ¾ */
+    uint8_t pcb_num;                /**< \brief åˆ†åŒ…æ ‡å¿— */
     uint8_t cid;                    /**< \brief CID */
-    uint8_t fsdi;                   /**< \brief PCD  ÄÜ½ÓÊÕµÄ×î´óÖ¡ */
-    uint8_t fsci;                   /**< \brief PICC ÄÜ½ÓÊÕµÄ×î´óÖ¡ */
-    uint8_t ta1;                    /**< \brief º¬DR¡¢DS */
-    uint8_t bit_rate;               /**< \brief Î»ËÙÂÊ£¨Í¬TA1£¬º¬DR¡¢DS£© */
-    uint8_t fwi;                    /**< \brief Ö¡µÈ´ıÊ±¼äÒò×Ó */
-    uint8_t sfgi;                   /**< \brief Ö¡±£»¤Ê±¼äÒò×Ó */
-    uint8_t tc1;                    /**< \brief º¬ÊÇ·ñÖ§³ÖCID¡¢NID */
-    uint8_t fo;                     /**< \brief Ñ¡ÔñÊÇ·ñÖ§³ÖCID¡¢NID£¨Í¬TC1£© */
+    uint8_t fsdi;                   /**< \brief PCD  èƒ½æ¥æ”¶çš„æœ€å¤§å¸§ */
+    uint8_t fsci;                   /**< \brief PICC èƒ½æ¥æ”¶çš„æœ€å¤§å¸§ */
+    uint8_t ta1;                    /**< \brief å«DRã€DS */
+    uint8_t bit_rate;               /**< \brief ä½é€Ÿç‡ï¼ˆåŒTA1ï¼Œå«DRã€DSï¼‰ */
+    uint8_t fwi;                    /**< \brief å¸§ç­‰å¾…æ—¶é—´å› å­ */
+    uint8_t sfgi;                   /**< \brief å¸§ä¿æŠ¤æ—¶é—´å› å­ */
+    uint8_t tc1;                    /**< \brief å«æ˜¯å¦æ”¯æŒCIDã€NID */
+    uint8_t fo;                     /**< \brief é€‰æ‹©æ˜¯å¦æ”¯æŒCIDã€NIDï¼ˆåŒTC1ï¼‰ */
 } am_fm175xx_tpcl_prot_para_t;
 
 /**
- * \brief FM175XX LPCDÄ£Ê½²ÎÊıÅäÖÃĞÅÏ¢¶¨Òå
+ * \brief FM175XX LPCDæ¨¡å¼å‚æ•°é…ç½®ä¿¡æ¯å®šä¹‰
  */
 typedef struct am_fm175xx_lpcd_cfginfo {
-    uint8_t         sleep_time;                      /**< \brief LPCD¼ì²âĞİÃß½×¶ÎÊ±¼äÅäÖÃ */
-    uint8_t         detect_time;                     /**< \brief LPCD¼ì²â½×¶ÎÊ±¼äÅäÖÃ */
+    uint8_t         sleep_time;                      /**< \brief LPCDæ£€æµ‹ä¼‘çœ é˜¶æ®µæ—¶é—´é…ç½® */
+    uint8_t         detect_time;                     /**< \brief LPCDæ£€æµ‹é˜¶æ®µæ—¶é—´é…ç½® */
 
-    uint8_t         tx2_rf_enable;                   /**< \brief LPCDÊÇ·ñÊ¹ÄÜTX2·¢Éä */
-    uint8_t         cwn;                             /**< \brief LPCD·¢ÉäNMOSÇı¶¯ÅäÖÃ*/
-    uint8_t         cwp;                             /**< \brief LPCD·¢ÉäPMOSÇı¶¯ÅäÖÃ*/
-    float           detectsensitive;                 /**< \brief LPCD¼ì²âÂö¿íÏà¶ÔÁéÃô¶ÈÊı    0.04 - 0.15*/
+    uint8_t         tx2_rf_enable;                   /**< \brief LPCDæ˜¯å¦ä½¿èƒ½TX2å‘å°„ */
+    uint8_t         cwn;                             /**< \brief LPCDå‘å°„NMOSé©±åŠ¨é…ç½®*/
+    uint8_t         cwp;                             /**< \brief LPCDå‘å°„PMOSé©±åŠ¨é…ç½®*/
+    float           detectsensitive;                 /**< \brief LPCDæ£€æµ‹è„‰å®½ç›¸å¯¹çµæ•åº¦æ•°    0.04 - 0.15*/
 
-    uint8_t         ie;                              /**< \brief LPCDÖĞ¶ÏÊ¹ÄÜÅäÖÃ*/
-    uint8_t         auto_detect_times;               /**< \brief LPCD×Ô¶¯¼ì²â´ÎÊıÅäÖÃ*/
-    uint8_t         wake_up_enable;                  /**< \brief LPCD×Ô¶¯»½ĞÑÊ¹ÄÜ*/
-    uint8_t         wake_up_time;                    /**< \brief LPCD×Ô¶¯»½ĞÑÊ±¼äÅäÖÃ*/
+    uint8_t         ie;                              /**< \brief LPCDä¸­æ–­ä½¿èƒ½é…ç½®*/
+    uint8_t         auto_detect_times;               /**< \brief LPCDè‡ªåŠ¨æ£€æµ‹æ¬¡æ•°é…ç½®*/
+    uint8_t         wake_up_enable;                  /**< \brief LPCDè‡ªåŠ¨å”¤é†’ä½¿èƒ½*/
+    uint8_t         wake_up_time;                    /**< \brief LPCDè‡ªåŠ¨å”¤é†’æ—¶é—´é…ç½®*/
 
 
 } am_fm175xx_lpcd_cfginfo_t;
 
 /**
- * \brief FM175XX Éè±¸ĞÅÏ¢¶¨Òå
+ * \brief FM175XX è®¾å¤‡ä¿¡æ¯å®šä¹‰
  */
 typedef struct am_fm175xx_devinfo {
-    int                               reset_pin;      /**< \brief fm175xxĞ¾Æ¬¸´Î»Òı½Å */
-    int                               cs_pin;         /**< \brief fm175xxĞ¾Æ¬SPIÆ¬Ñ¡Òı½Å */
-    int                               int_pin;        /**< \brief fm175xxĞ¾Æ¬ÖĞ¶ÏÒı½Å */
-    am_fm175xx_prot_type_t            iso_type;       /**< \brief ³õÊ¼Ê¹ÓÃµÄĞ­ÒéÀàĞÍ */
-    const  am_fm175xx_lpcd_cfginfo_t *p_lpcd_cfg_info;  /**< \brief lpcdÄ£Ê½ÅäÖÃĞÅÏ¢ */
+    int                               reset_pin;      /**< \brief fm175xxèŠ¯ç‰‡å¤ä½å¼•è„š */
+    int                               cs_pin;         /**< \brief fm175xxèŠ¯ç‰‡SPIç‰‡é€‰å¼•è„š */
+    int                               int_pin;        /**< \brief fm175xxèŠ¯ç‰‡ä¸­æ–­å¼•è„š */
+    am_fm175xx_prot_type_t            iso_type;       /**< \brief åˆå§‹ä½¿ç”¨çš„åè®®ç±»å‹ */
+    const  am_fm175xx_lpcd_cfginfo_t *p_lpcd_cfg_info;  /**< \brief lpcdæ¨¡å¼é…ç½®ä¿¡æ¯ */
 } am_fm175xx_devinfo_t;
 
 
 /**
- * \brief FM175XX LPCD Ä£Ê½ĞÅÏ¢
+ * \brief FM175XX LPCD æ¨¡å¼ä¿¡æ¯
  */
 typedef struct am_fm175xx_lpcd_modeinfo {
-    int8_t                              int_flag;       /**< \brief LPCDÄ£Ê½ÖĞ¶Ï±êÊ¶*/
+    int8_t                              int_flag;       /**< \brief LPCDæ¨¡å¼ä¸­æ–­æ ‡è¯†*/
 
-    const am_fm175xx_lpcd_cfginfo_t    *p_cfg_info;   /**< \brief LPCDÄ£Ê½ÅäÖÃĞÅÏ¢*/
+    const am_fm175xx_lpcd_cfginfo_t    *p_cfg_info;   /**< \brief LPCDæ¨¡å¼é…ç½®ä¿¡æ¯*/
 } am_fm175xx_lpcd_modeinfo_t;;
 
 
 /**
- * \brief FM175XX LPCDÄ£Ê½µ÷Ğ£±äÁ¿ĞÅÏ¢¶¨Òå
+ * \brief FM175XX LPCDæ¨¡å¼è°ƒæ ¡å˜é‡ä¿¡æ¯å®šä¹‰
  */
 typedef struct am_fm175xx_lpcd_calibrate_info {
-    uint8_t        detect_timer_clkdivk;       /**< \brief LPCD ¼ì²â¶¨Ê±Æ÷·ÖÆµÊı */
-    uint8_t        bias_current;               /**< \brief LPCD LPCD»ù×¼µçÁ÷ÅäÖÃ */
-    uint8_t        gain_reduce;                /**< \brief LPCD Ë¥¼õ±¶Êı */
-    uint8_t        gain_amplify;               /**< \brief LPCD ·Å´óÆ÷±¶Êı */
-    uint8_t        adc_reference;              /**< \brief LPCD ADCµçÑ¹²ÎÕÕµçÆ½ */
+    uint8_t        detect_timer_clkdivk;       /**< \brief LPCD æ£€æµ‹å®šæ—¶å™¨åˆ†é¢‘æ•° */
+    uint8_t        bias_current;               /**< \brief LPCD LPCDåŸºå‡†ç”µæµé…ç½® */
+    uint8_t        gain_reduce;                /**< \brief LPCD è¡°å‡å€æ•° */
+    uint8_t        gain_amplify;               /**< \brief LPCD æ”¾å¤§å™¨å€æ•° */
+    uint8_t        adc_reference;              /**< \brief LPCD ADCç”µå‹å‚ç…§ç”µå¹³ */
 
-    uint8_t        sleep_time;                 /**< \brief LPCD Ë¯ÃßÊ±¼ä */
-    uint8_t        ready_time;                 /**< \brief LPCD ¼ì²â×¼±¸Ê±¼ä */
-    uint8_t        detect_time;                /**< \brief LPCD ¼ì²âÊ±¼ä  */
+    uint8_t        sleep_time;                 /**< \brief LPCD ç¡çœ æ—¶é—´ */
+    uint8_t        ready_time;                 /**< \brief LPCD æ£€æµ‹å‡†å¤‡æ—¶é—´ */
+    uint8_t        detect_time;                /**< \brief LPCD æ£€æµ‹æ—¶é—´  */
 
-    uint8_t        adc_full_scale;             /**< \brief LPCD ¶¨Ê±Æ÷Âú·ùÏÂADCÖµ */
-    uint8_t        adc_threshold;              /**< \brief LPCD ¼ì²â·ù¶È£¬ÉèÖÃÎªÏà¶ÔÖµ */
-    uint8_t        lpcd_threshold_l;           /**< \brief LPCD ·ù¶ÈµÍãĞÖµ */
-    uint8_t        lpcd_threshold_h;           /**< \brief LPCD ·ù¶È¸ßãĞÖµ */
-    uint8_t        adc_center;                 /**< \brief LPCD ·ù¶ÈÖĞĞÄãĞÖµ */
+    uint8_t        adc_full_scale;             /**< \brief LPCD å®šæ—¶å™¨æ»¡å¹…ä¸‹ADCå€¼ */
+    uint8_t        adc_threshold;              /**< \brief LPCD æ£€æµ‹å¹…åº¦ï¼Œè®¾ç½®ä¸ºç›¸å¯¹å€¼ */
+    uint8_t        lpcd_threshold_l;           /**< \brief LPCD å¹…åº¦ä½é˜ˆå€¼ */
+    uint8_t        lpcd_threshold_h;           /**< \brief LPCD å¹…åº¦é«˜é˜ˆå€¼ */
+    uint8_t        adc_center;                 /**< \brief LPCD å¹…åº¦ä¸­å¿ƒé˜ˆå€¼ */
 }am_fm175xx_calibrate_info_t;
 
 /**
- * \brief FM175XX Éè±¸¶¨Òå
+ * \brief FM175XX è®¾å¤‡å®šä¹‰
  */
 typedef struct am_fm175xx_dev {
-    am_spi_device_t         spi_dev;            /**< \brief SPI Éè±¸ */
-    am_softimer_t           timer;              /**< \brief Èí¼ş¶¨Ê±Æ÷£¬ÓÃÓÚ³¬Ê±  */
-    volatile uint32_t       tmo_cnt;            /**< \brief ³¬Ê±¼ÆÊıÆ÷ */
-    am_fm175xx_prot_type_t  iso_type;           /**< \brief ±£´æ¶Á¿¨Ğ¾Æ¬Ğ­Òé */
-    am_fm175xx_cmd_info_t   cmd_info;           /**< \brief ÃüÁîĞÅÏ¢ */
-    volatile uint8_t        tx_state;           /**< \brief ÌìÏß×´Ì¬ */
-    volatile am_bool_t      power_down;         /**< \brief µôµç±êÖ¾ */
+    am_spi_device_t         spi_dev;            /**< \brief SPI è®¾å¤‡ */
+    am_softimer_t           timer;              /**< \brief è½¯ä»¶å®šæ—¶å™¨ï¼Œç”¨äºè¶…æ—¶  */
+    volatile uint32_t       tmo_cnt;            /**< \brief è¶…æ—¶è®¡æ•°å™¨ */
+    am_fm175xx_prot_type_t  iso_type;           /**< \brief ä¿å­˜è¯»å¡èŠ¯ç‰‡åè®® */
+    am_fm175xx_cmd_info_t   cmd_info;           /**< \brief å‘½ä»¤ä¿¡æ¯ */
+    volatile uint8_t        tx_state;           /**< \brief å¤©çº¿çŠ¶æ€ */
+    volatile am_bool_t      power_down;         /**< \brief æ‰ç”µæ ‡å¿— */
 
-    am_fm175xx_tpcl_prot_para_t  cur_prot_para; /**< \brief T=CLÍ¨ĞÅĞ­Òé²ÎÊı */
+    am_fm175xx_tpcl_prot_para_t  cur_prot_para; /**< \brief T=CLé€šä¿¡åè®®å‚æ•° */
 
-    const am_fm175xx_devinfo_t  *p_devinfo;     /**< \brief Éè±¸ĞÅÏ¢ */
+    const am_fm175xx_devinfo_t  *p_devinfo;     /**< \brief è®¾å¤‡ä¿¡æ¯ */
 
     void                       (*lpcd_int_cb)(void *p_arg);
     void                        *p_lpcd_cb_arg;
 } am_fm175xx_dev_t;
 
-/* FM175XX Éè±¸¾ä±ú */
+/* FM175XX è®¾å¤‡å¥æŸ„ */
 typedef am_fm175xx_dev_t* am_fm175xx_handle_t;
 
 /**
- * \name Í¨ÓÃº¯Êı½Ó¿ÚÉùÃ÷
+ * \name é€šç”¨å‡½æ•°æ¥å£å£°æ˜
  * @{
  */
 
 /**
- * \brief fm175xx ³õÊ¼»¯£¬µÃµ½fm175xxÉè±¸
+ * \brief fm175xx åˆå§‹åŒ–ï¼Œå¾—åˆ°fm175xxè®¾å¤‡
  *
- * \param[out] p_dev       £ºfm175xxÉè±¸
- * \param[in]  spi_handle  £ºSPI¾ä±ú
- * \param[in]  p_devinfo   £ºÉè±¸ĞÅÏ¢
+ * \param[out] p_dev       ï¼šfm175xxè®¾å¤‡
+ * \param[in]  spi_handle  ï¼šSPIå¥æŸ„
+ * \param[in]  p_devinfo   ï¼šè®¾å¤‡ä¿¡æ¯
  *
- * \retval ²Ù×÷½á¹û(ÏêÏ¸ËµÃ÷¼ûam_fm175xx.hÖĞµÄ×´Ì¬Âë¶¨Òå)
+ * \retval æ“ä½œç»“æœ(è¯¦ç»†è¯´æ˜è§am_fm175xx.hä¸­çš„çŠ¶æ€ç å®šä¹‰)
  */
 uint8_t am_fm175xx_init (am_fm175xx_dev_t           *p_dev,
                          am_spi_handle_t             spi_handle,
@@ -572,15 +573,15 @@ uint8_t am_fm175xx_init (am_fm175xx_dev_t           *p_dev,
 
 
 /**
- * \brief Ğ´fm175xx ¼Ä´æÆ÷
+ * \brief å†™fm175xx å¯„å­˜å™¨
  *
- * \param[in] p_dev    : fm175xxÉè±¸
- * \param[in] nregaddr : ¼Ä´æÆ÷µØÖ·
- * \param[in] nregval  : Ğ´ÈëµÄÖµ
+ * \param[in] p_dev    : fm175xxè®¾å¤‡
+ * \param[in] nregaddr : å¯„å­˜å™¨åœ°å€
+ * \param[in] nregval  : å†™å…¥çš„å€¼
  *
- * \retval AM_OK      : ÏûÏ¢´¦Àí³É¹¦
- * \retval -AM_EINVAL : ²ÎÊı´íÎó
- * \retval -AM_EIO    : ´«Êä³ö´í
+ * \retval AM_OK      : æ¶ˆæ¯å¤„ç†æˆåŠŸ
+ * \retval -AM_EINVAL : å‚æ•°é”™è¯¯
+ * \retval -AM_EIO    : ä¼ è¾“å‡ºé”™
  */
 am_err_t am_fm175xx_set_reg (am_fm175xx_dev_t *p_dev,
                              uint8_t           nregadr,
@@ -588,15 +589,15 @@ am_err_t am_fm175xx_set_reg (am_fm175xx_dev_t *p_dev,
 
 
 /**
- * \brief Ğ´fm175xx ÍØÕ¹¼Ä´æÆ÷
+ * \brief å†™fm175xx æ‹“å±•å¯„å­˜å™¨
  *
- * \param[in] p_dev    : fm175xxÉè±¸
- * \param[in] nregaddr : ÍØÕ¹¼Ä´æÆ÷µØÖ·
- * \param[in] nregval  : ÍØÕ¹¼Ä´æÆ÷Ğ´ÈëµÄÖµ
+ * \param[in] p_dev    : fm175xxè®¾å¤‡
+ * \param[in] nregaddr : æ‹“å±•å¯„å­˜å™¨åœ°å€
+ * \param[in] nregval  : æ‹“å±•å¯„å­˜å™¨å†™å…¥çš„å€¼
  *
- * \retval AM_OK      : ÏûÏ¢´¦Àí³É¹¦
- * \retval -AM_EINVAL : ²ÎÊı´íÎó
- * \retval -AM_EIO    : ´«Êä³ö´í
+ * \retval AM_OK      : æ¶ˆæ¯å¤„ç†æˆåŠŸ
+ * \retval -AM_EINVAL : å‚æ•°é”™è¯¯
+ * \retval -AM_EIO    : ä¼ è¾“å‡ºé”™
  */
 am_err_t am_fm175xx_set_reg_ext (am_fm175xx_dev_t *p_dev,
                              uint8_t           nregadr,
@@ -604,33 +605,33 @@ am_err_t am_fm175xx_set_reg_ext (am_fm175xx_dev_t *p_dev,
 
 
 /**
- * \brief ¶Áfm175xx ¼Ä´æÆ÷
+ * \brief è¯»fm175xx å¯„å­˜å™¨
  *
- * \param[in]  p_dev    : fm175xxÉè±¸
- * \param[in]  nregaddr : ¼Ä´æÆ÷µØÖ·
+ * \param[in]  p_dev    : fm175xxè®¾å¤‡
+ * \param[in]  nregaddr : å¯„å­˜å™¨åœ°å€
  *
- * \retval fm175xxÉè±¸¼Ä´æÆ÷µÄÖµ
+ * \retval fm175xxè®¾å¤‡å¯„å­˜å™¨çš„å€¼
  */
 uint8_t am_fm175xx_get_reg (am_fm175xx_dev_t *p_dev, uint8_t nregadr);
 
 
 /**
- * \brief ¶Áfm175xx ÍØÕ¹¼Ä´æÆ÷
+ * \brief è¯»fm175xx æ‹“å±•å¯„å­˜å™¨
  *
- * \param[in]  p_dev    : fm175xxÉè±¸
- * \param[in]  nregaddr : ÍØÕ¹¼Ä´æÆ÷µØÖ·
+ * \param[in]  p_dev    : fm175xxè®¾å¤‡
+ * \param[in]  nregaddr : æ‹“å±•å¯„å­˜å™¨åœ°å€
  *
- * \retval fm175xxÉè±¸ÍØÕ¹¼Ä´æÆ÷µÄÖµ
+ * \retval fm175xxè®¾å¤‡æ‹“å±•å¯„å­˜å™¨çš„å€¼
  */
 uint8_t am_fm175xx_get_reg_ext (am_fm175xx_dev_t *p_dev, uint8_t nregadr);
 
 
 /**
- * \brief ½«fm175xx¼Ä´æÆ÷µÄmaskÖĞÎª1µÄÎ» ÖÃÎ»
+ * \brief å°†fm175xxå¯„å­˜å™¨çš„maskä¸­ä¸º1çš„ä½ ç½®ä½
  *
- * \retval AM_OK      : ÏûÏ¢´¦Àí³É¹¦
- * \retval -AM_EINVAL : ²ÎÊı´íÎó
- * \retval -AM_EIO    : ´«Êä³ö´í
+ * \retval AM_OK      : æ¶ˆæ¯å¤„ç†æˆåŠŸ
+ * \retval -AM_EINVAL : å‚æ•°é”™è¯¯
+ * \retval -AM_EIO    : ä¼ è¾“å‡ºé”™
  */
 am_err_t am_fm175xx_set_bit (am_fm175xx_dev_t *p_dev,
                              uint8_t           nregadr,
@@ -638,15 +639,15 @@ am_err_t am_fm175xx_set_bit (am_fm175xx_dev_t *p_dev,
 
 
 /**
- * \brief ½«fm175xx¼Ä´æÆ÷µÄmaskÖĞÎª1µÄÎ»Çå0
+ * \brief å°†fm175xxå¯„å­˜å™¨çš„maskä¸­ä¸º1çš„ä½æ¸…0
  *
- * \param[in] p_dev    : fm175xxÉè±¸
- * \param[in] nregaddr : ¼Ä´æÆ÷µØÖ·
- * \param[in] mask     : ĞŞ¸ÄµÄÎ»ÑÚÂë
+ * \param[in] p_dev    : fm175xxè®¾å¤‡
+ * \param[in] nregaddr : å¯„å­˜å™¨åœ°å€
+ * \param[in] mask     : ä¿®æ”¹çš„ä½æ©ç 
  *
- * \retval AM_OK      : ÏûÏ¢´¦Àí³É¹¦
- * \retval -AM_EINVAL : ²ÎÊı´íÎó
- * \retval -AM_EIO    : ´«Êä³ö´í
+ * \retval AM_OK      : æ¶ˆæ¯å¤„ç†æˆåŠŸ
+ * \retval -AM_EINVAL : å‚æ•°é”™è¯¯
+ * \retval -AM_EIO    : ä¼ è¾“å‡ºé”™
  */
 am_err_t am_fm175xx_clr_bit (am_fm175xx_dev_t *p_dev,
                              uint8_t           nregadr,
@@ -654,16 +655,16 @@ am_err_t am_fm175xx_clr_bit (am_fm175xx_dev_t *p_dev,
 
 
 /**
- * \brief ĞŞ¸Äfm175xx¼Ä´æÆ÷µÄÎ»
+ * \brief ä¿®æ”¹fm175xxå¯„å­˜å™¨çš„ä½
  *
- * \param[in] p_dev     : fm175xxÉè±¸
- * \param[in] nregaddr  : ¼Ä´æÆ÷µØÖ·
- * \param[in] modifyval : ĞŞ¸ÄµÄÎ»ÑÚÂë(0--½«maskÖÃ1µÄÎ»Çå0;ÆäËû--½«maskÖÃ1µÄÎ»ÖÃ1)
- * \param[in] mask      : ĞŞ¸ÄµÄÎ»ÑÚÂë
+ * \param[in] p_dev     : fm175xxè®¾å¤‡
+ * \param[in] nregaddr  : å¯„å­˜å™¨åœ°å€
+ * \param[in] modifyval : ä¿®æ”¹çš„ä½æ©ç (0--å°†maskç½®1çš„ä½æ¸…0;å…¶ä»–--å°†maskç½®1çš„ä½ç½®1)
+ * \param[in] mask      : ä¿®æ”¹çš„ä½æ©ç 
  *
- * \retval AM_OK      : ÏûÏ¢´¦Àí³É¹¦
- * \retval -AM_EINVAL : ²ÎÊı´íÎó
- * \retval -AM_EIO    : ´«Êä³ö´í
+ * \retval AM_OK      : æ¶ˆæ¯å¤„ç†æˆåŠŸ
+ * \retval -AM_EINVAL : å‚æ•°é”™è¯¯
+ * \retval -AM_EIO    : ä¼ è¾“å‡ºé”™
  */
 am_err_t am_fm175xx_modify_reg (am_fm175xx_dev_t *p_dev,
                                 uint8_t           nregaddr,
@@ -672,15 +673,15 @@ am_err_t am_fm175xx_modify_reg (am_fm175xx_dev_t *p_dev,
 
 
 /**
- * \brief Ğ´fm175xx À©Õ¹¼Ä´æÆ÷
+ * \brief å†™fm175xx æ‰©å±•å¯„å­˜å™¨
  *
- * \param[in] p_dev    : fm175xxÉè±¸
- * \param[in] nregaddr : À©Õ¹¼Ä´æÆ÷×ÓµØÖ·
- * \param[in] nregval  : Ğ´ÈëÀ©Õ¹¼Ä´æÆ÷µÄÖµ
+ * \param[in] p_dev    : fm175xxè®¾å¤‡
+ * \param[in] nregaddr : æ‰©å±•å¯„å­˜å™¨å­åœ°å€
+ * \param[in] nregval  : å†™å…¥æ‰©å±•å¯„å­˜å™¨çš„å€¼
  *
- * \retval AM_OK      : ÏûÏ¢´¦Àí³É¹¦
- * \retval -AM_EINVAL : ²ÎÊı´íÎó
- * \retval -AM_EIO    : ´«Êä³ö´í
+ * \retval AM_OK      : æ¶ˆæ¯å¤„ç†æˆåŠŸ
+ * \retval -AM_EINVAL : å‚æ•°é”™è¯¯
+ * \retval -AM_EIO    : ä¼ è¾“å‡ºé”™
  */
 am_err_t am_fm175xx_set_extend_reg (am_fm175xx_dev_t *p_dev,
                                     uint8_t           nregaddr,
@@ -688,194 +689,194 @@ am_err_t am_fm175xx_set_extend_reg (am_fm175xx_dev_t *p_dev,
 
 
 /**
- * \brief ¶Áfm175xx À©Õ¹¼Ä´æÆ÷
+ * \brief è¯»fm175xx æ‰©å±•å¯„å­˜å™¨
  *
- * \param[in] p_dev    : fm175xxÉè±¸
- * \param[in] nregaddr : À©Õ¹¼Ä´æÆ÷×ÓµØÖ·
+ * \param[in] p_dev    : fm175xxè®¾å¤‡
+ * \param[in] nregaddr : æ‰©å±•å¯„å­˜å™¨å­åœ°å€
  *
- * \retval fm175xxÀ©Õ¹¼Ä´æÆ÷µÄÖµ
+ * \retval fm175xxæ‰©å±•å¯„å­˜å™¨çš„å€¼
  */
 uint8_t am_fm175xx_get_extend_reg (am_fm175xx_dev_t *p_dev, uint8_t nregaddr);
 
 
 /**
- * \brief fm175xx¹¤×÷×´Ì¬¼ì²â£¬Èç¹û¼ì²âµ½¶Á¿¨Ğ¾Æ¬¼Ä´æÆ÷ÊıÖµÒì³£±ä»¯ÔòÖØĞÂÅäÖÃ¶Á¿¨Ğ¾Æ¬
+ * \brief fm175xxå·¥ä½œçŠ¶æ€æ£€æµ‹ï¼Œå¦‚æœæ£€æµ‹åˆ°è¯»å¡èŠ¯ç‰‡å¯„å­˜å™¨æ•°å€¼å¼‚å¸¸å˜åŒ–åˆ™é‡æ–°é…ç½®è¯»å¡èŠ¯ç‰‡
  *
- * \param[in] p_dev    : fm175xxÉè±¸
+ * \param[in] p_dev    : fm175xxè®¾å¤‡
  *
- * \retval AM_FM175XX_STATUS_SUCCESS£º¼ì²âÍ¨¹ı
- * \retval AM_FM175XX_STATUS_FAIL   £º¼ì²é²»Í¨¹ı
+ * \retval AM_FM175XX_STATUS_SUCCESSï¼šæ£€æµ‹é€šè¿‡
+ * \retval AM_FM175XX_STATUS_FAIL   ï¼šæ£€æŸ¥ä¸é€šè¿‡
  */
 uint8_t am_fm175xx_check (am_fm175xx_dev_t *p_dev);
 
 
 /**
- * \brief fm175xx¹Ø±Õ£¬¹Ø±ÕµÄÄ£Ê½ÓëÇı¶¯µÄÉèÖÃÓĞ¹Ø
+ * \brief fm175xxå…³é—­ï¼Œå…³é—­çš„æ¨¡å¼ä¸é©±åŠ¨çš„è®¾ç½®æœ‰å…³
  *
- * \param[in] p_dev    : fm175xxÉè±¸
+ * \param[in] p_dev    : fm175xxè®¾å¤‡
  *
- * \retval ³É¹¦·µ»ØAM_OK£¬Ê§°Ü·µ»ØAM_ERROR
+ * \retval æˆåŠŸè¿”å›AM_OKï¼Œå¤±è´¥è¿”å›AM_ERROR
  */
 am_err_t am_fm175xx_close (am_fm175xx_dev_t *p_dev);
 
 
 /**
- * \brief ÉèÖÃ½ÓÊÕÑÓÊ±
+ * \brief è®¾ç½®æ¥æ”¶å»¶æ—¶
  *
- * \param[in] p_dev : fm175xxÉè±¸
- * \param[in] _1ms  : ÑÓÊ±Ê±¼ä£¨µ¥Î»ÎªºÁÃë£©£¬ÆäÖµÓ¦Ê¹ÓÃÑÓÊ±³£Á¿ºê¡£
+ * \param[in] p_dev : fm175xxè®¾å¤‡
+ * \param[in] _1ms  : å»¶æ—¶æ—¶é—´ï¼ˆå•ä½ä¸ºæ¯«ç§’ï¼‰ï¼Œå…¶å€¼åº”ä½¿ç”¨å»¶æ—¶å¸¸é‡å®ã€‚
  *
- * \retval AM_OK      : ÏûÏ¢´¦Àí³É¹¦
- * \retval -AM_EINVAL : ²ÎÊı´íÎó
- * \retval -AM_EIO    : ´«Êä³ö´í
+ * \retval AM_OK      : æ¶ˆæ¯å¤„ç†æˆåŠŸ
+ * \retval -AM_EINVAL : å‚æ•°é”™è¯¯
+ * \retval -AM_EIO    : ä¼ è¾“å‡ºé”™
  */
 am_err_t am_fm175xx_set_tmo (am_fm175xx_dev_t *p_dev, uint16_t _1ms);
 
 
 /**
- * \brief ÉèÖÃ¿¨Æ¬Ğ­ÒéÀàĞÍºÍËÙ¶È£¬Í¬Ê±´ò¿ªÌìÏß
+ * \brief è®¾ç½®å¡ç‰‡åè®®ç±»å‹å’Œé€Ÿåº¦ï¼ŒåŒæ—¶æ‰“å¼€å¤©çº¿
  *
- * \param[in] p_dev : fm175xxÉè±¸
- * \param[in] type  : ¿¨Æ¬Ğ­ÒéÀàĞÍºÍËÙ¶È
+ * \param[in] p_dev : fm175xxè®¾å¤‡
+ * \param[in] type  : å¡ç‰‡åè®®ç±»å‹å’Œé€Ÿåº¦
  *                   - AM_FM175XX_PROT_TYPE_ISO14443A_106
  *                   - AM_FM175XX_PROT_TYPE_ISO14443B_106
  *
- * \retval ²Ù×÷½á¹û(ÏêÏ¸ËµÃ÷¼ûam_fm175xx.hÖĞµÄ×´Ì¬Âë¶¨Òå)
+ * \retval æ“ä½œç»“æœ(è¯¦ç»†è¯´æ˜è§am_fm175xx.hä¸­çš„çŠ¶æ€ç å®šä¹‰)
  */
 uint8_t am_fm175xx_set_iso_type (am_fm175xx_dev_t       *p_dev,
                                  am_fm175xx_prot_type_t  type);
 
 
 /**
- * \brief FM175XX¸´Î»
+ * \brief FM175XXå¤ä½
  *
- * \param[in] p_dev : fm175xxÉè±¸
+ * \param[in] p_dev : fm175xxè®¾å¤‡
  *
- * \retval ²Ù×÷½á¹û(ÏêÏ¸ËµÃ÷¼ûam_fm175xx.hÖĞµÄ×´Ì¬Âë¶¨Òå)
+ * \retval æ“ä½œç»“æœ(è¯¦ç»†è¯´æ˜è§am_fm175xx.hä¸­çš„çŠ¶æ€ç å®šä¹‰)
  */
 uint8_t am_fm175xx_reset (am_fm175xx_dev_t *p_dev);
 
 
 /**
- * \brief fm175xxÅäÖÃ
+ * \brief fm175xxé…ç½®
  *
- * \param[in] p_dev : fm175xxÉè±¸
- * \param[in] type  : Ğ­ÒéÀàĞÍºÍËÙ¶È
+ * \param[in] p_dev : fm175xxè®¾å¤‡
+ * \param[in] type  : åè®®ç±»å‹å’Œé€Ÿåº¦
  *                   - AM_FM175XX_PROT_TYPE_ISO14443A_106
  *                   - AM_FM175XX_PROT_TYPE_ISO14443B_106
  *
- * \retval ²Ù×÷½á¹û(ÏêÏ¸ËµÃ÷¼ûam_fm175xx.hÖĞµÄ×´Ì¬Âë¶¨Òå)
+ * \retval æ“ä½œç»“æœ(è¯¦ç»†è¯´æ˜è§am_fm175xx.hä¸­çš„çŠ¶æ€ç å®šä¹‰)
  */
 uint8_t am_fm175xx_config (am_fm175xx_dev_t         *p_dev,
                            am_fm175xx_prot_type_t    type);
 
 
 /**
- * \brief ÉèÖÃ×îºó×Ö½Ú·¢ËÍµÄÎ»Êı
+ * \brief è®¾ç½®æœ€åå­—èŠ‚å‘é€çš„ä½æ•°
  *
- * \param[in] p_dev : fm175xxÉè±¸
- * \param[in] ntxlastbits : ×îºó×Ö½Ú·¢ËÍµÄÎ»Êı
+ * \param[in] p_dev : fm175xxè®¾å¤‡
+ * \param[in] ntxlastbits : æœ€åå­—èŠ‚å‘é€çš„ä½æ•°
  *
- * \retval AM_OK      : ÏûÏ¢´¦Àí³É¹¦
- * \retval -AM_EINVAL : ²ÎÊı´íÎó
- * \retval -AM_EIO    : ´«Êä³ö´í
+ * \retval AM_OK      : æ¶ˆæ¯å¤„ç†æˆåŠŸ
+ * \retval -AM_EINVAL : å‚æ•°é”™è¯¯
+ * \retval -AM_EIO    : ä¼ è¾“å‡ºé”™
  */
 am_err_t am_fm175xx_set_tx_last_bits (am_fm175xx_dev_t *p_dev,
                                       uint8_t           ntxlastbits);
 
 
 /**
- * \brief ÉèÖÃ½ÓÊÕÊı¾İ´æ·ÅµÄÆğÊ¼Î»ÖÃ(Î»)
+ * \brief è®¾ç½®æ¥æ”¶æ•°æ®å­˜æ”¾çš„èµ·å§‹ä½ç½®(ä½)
  *
- * \param[in] p_dev    : fm175xxÉè±¸
- * \param[in] nrxalign : ½ÓÊÕÊı¾İ´æ·ÅµÄÆğÊ¼Î»ÖÃ
+ * \param[in] p_dev    : fm175xxè®¾å¤‡
+ * \param[in] nrxalign : æ¥æ”¶æ•°æ®å­˜æ”¾çš„èµ·å§‹ä½ç½®
  *
- * \retval AM_OK       : ÏûÏ¢´¦Àí³É¹¦
- * \retval -AM_EINVAL  : ²ÎÊı´íÎó
- * \retval -AM_EIO     : ´«Êä³ö´í
+ * \retval AM_OK       : æ¶ˆæ¯å¤„ç†æˆåŠŸ
+ * \retval -AM_EINVAL  : å‚æ•°é”™è¯¯
+ * \retval -AM_EIO     : ä¼ è¾“å‡ºé”™
  */
 am_err_t am_fm175xx_set_rx_align (am_fm175xx_dev_t *p_dev, uint8_t nrxalign);
 
 /**
- * \brief ÉèÖÃ³åÍ»Î»ºóµÄÊı¾İÊÇ±£³Ö»¹ÊÇÇå0
+ * \brief è®¾ç½®å†²çªä½åçš„æ•°æ®æ˜¯ä¿æŒè¿˜æ˜¯æ¸…0
  *
- * \param[in] p_dev : fm175xxÉè±¸
- * \param[in] keep_or_clr : ³åÍ»Î»ºóµÄÊı¾İ×´Ì¬
- *                        - 0    -- Çå0
- *                        - ÆäËû    -- ±£³Ö
+ * \param[in] p_dev : fm175xxè®¾å¤‡
+ * \param[in] keep_or_clr : å†²çªä½åçš„æ•°æ®çŠ¶æ€
+ *                        - 0    -- æ¸…0
+ *                        - å…¶ä»–    -- ä¿æŒ
  *
- * \retval AM_OK      : ÏûÏ¢´¦Àí³É¹¦
- * \retval -AM_EINVAL : ²ÎÊı´íÎó
- * \retval -AM_EIO    : ´«Êä³ö´í
+ * \retval AM_OK      : æ¶ˆæ¯å¤„ç†æˆåŠŸ
+ * \retval -AM_EINVAL : å‚æ•°é”™è¯¯
+ * \retval -AM_EIO    : ä¼ è¾“å‡ºé”™
  */
 am_err_t am_fm175xx_set_keep_after_coll (am_fm175xx_dev_t *p_dev,
                                          uint8_t           keep_or_clr);
 
 
 /**
- * \brief »ñÈ¡Åö×²Î»ÖÃ
+ * \brief è·å–ç¢°æ’ä½ç½®
  *
- * \param[in] p_dev : fm175xxÉè±¸
+ * \param[in] p_dev : fm175xxè®¾å¤‡
  *
- * \retval Åö×²Î»ÖÃ
+ * \retval ç¢°æ’ä½ç½®
  *
- * \note Ö»ÓĞam_fm175xx_cmd()·µ»Ø¡®AM_FM175XX_STATUS_COLLISION_ERROR¡¯´íÎó£¬²ÅÄÜÍ¨¹ı¸Ã
- *       º¯Êı»ñÈ¡Åö×²Î»ÖÃ
+ * \note åªæœ‰am_fm175xx_cmd()è¿”å›â€˜AM_FM175XX_STATUS_COLLISION_ERRORâ€™é”™è¯¯ï¼Œæ‰èƒ½é€šè¿‡è¯¥
+ *       å‡½æ•°è·å–ç¢°æ’ä½ç½®
  */
 uint8_t am_fm175xx_get_coll_pos (am_fm175xx_dev_t *p_dev);
 
 
 /**
- * \name CRC¿ØÖÆ
+ * \name CRCæ§åˆ¶
  * @{
  */
 
-#define AM_FM175XX_TX_CRC_EN       0x80      /**< \brief ·¢ËÍCRCÊ¹ÄÜ */
-#define AM_FM175XX_RX_CRC_EN       0x40      /**< \brief ½ÓÊÕCRCÊ¹ÄÜ */
-#define AM_FM175XX_TX_CRC_DIS      0x00      /**< \brief ·¢ËÍCRC½ûÖ¹ */
-#define AM_FM175XX_RX_CRC_DIS      0x00      /**< \brief ½ÓÊÕCRC½ûÖ¹ */
+#define AM_FM175XX_TX_CRC_EN       0x80      /**< \brief å‘é€CRCä½¿èƒ½ */
+#define AM_FM175XX_RX_CRC_EN       0x40      /**< \brief æ¥æ”¶CRCä½¿èƒ½ */
+#define AM_FM175XX_TX_CRC_DIS      0x00      /**< \brief å‘é€CRCç¦æ­¢ */
+#define AM_FM175XX_RX_CRC_DIS      0x00      /**< \brief æ¥æ”¶CRCç¦æ­¢ */
 
  /** @} */
 
 /**
- * \brief Ê¹ÄÜ/½ûÖ¹CRC
+ * \brief ä½¿èƒ½/ç¦æ­¢CRC
  *
- * \param[in] p_dev     : fm175xxÉè±¸
- * \param[in] en_or_dis : ³åÍ»Î»ºóµÄÊı¾İ×´Ì¬
- *                        - en_or_dis.7 ·¢ËÍCRCÉèÖÃ
- *                             - 1 -- ·¢ËÍÊ¹ÄÜCRC;
- *                             - 0 -- ·¢ËÍ½ûÖ¹CRC;
- *                        - en_or_dis.6 ½ÓÊÕCRCÉèÖÃ
- *                             - 1 -- ½ÓÊÕÊ¹ÄÜCRC;
- *                             - 0 -- ½ÓÊÕ½ûÖ¹CRC.
+ * \param[in] p_dev     : fm175xxè®¾å¤‡
+ * \param[in] en_or_dis : å†²çªä½åçš„æ•°æ®çŠ¶æ€
+ *                        - en_or_dis.7 å‘é€CRCè®¾ç½®
+ *                             - 1 -- å‘é€ä½¿èƒ½CRC;
+ *                             - 0 -- å‘é€ç¦æ­¢CRC;
+ *                        - en_or_dis.6 æ¥æ”¶CRCè®¾ç½®
+ *                             - 1 -- æ¥æ”¶ä½¿èƒ½CRC;
+ *                             - 0 -- æ¥æ”¶ç¦æ­¢CRC.
  *
- * \retval AM_OK        : ÏûÏ¢´¦Àí³É¹¦
- * \retval -AM_EINVAL   : ²ÎÊı´íÎó
- * \retval -AM_EIO      : ´«Êä³ö´í
+ * \retval AM_OK        : æ¶ˆæ¯å¤„ç†æˆåŠŸ
+ * \retval -AM_EINVAL   : å‚æ•°é”™è¯¯
+ * \retval -AM_EIO      : ä¼ è¾“å‡ºé”™
  */
 am_err_t am_fm175xx_set_crc (am_fm175xx_dev_t *p_dev, uint8_t en_or_dis);
 
 
 /**
- * \brief fm175xx½ûÖ¹Crypto1¼ÓÃÜ
+ * \brief fm175xxç¦æ­¢Crypto1åŠ å¯†
  *
- * \param[in] p_dev   : fm175xxÉè±¸
+ * \param[in] p_dev   : fm175xxè®¾å¤‡
  *
- * \retval AM_OK      : ÏûÏ¢´¦Àí³É¹¦
- * \retval -AM_EINVAL : ²ÎÊı´íÎó
- * \retval -AM_EIO    : ´«Êä³ö´í
+ * \retval AM_OK      : æ¶ˆæ¯å¤„ç†æˆåŠŸ
+ * \retval -AM_EINVAL : å‚æ•°é”™è¯¯
+ * \retval -AM_EIO    : ä¼ è¾“å‡ºé”™
  */
 am_err_t am_fm175xx_dis_crypto1 (am_fm175xx_dev_t *p_dev);
 
 
 /**
- * \brief fm175xxÖ´ĞĞÃüÁî
+ * \brief fm175xxæ‰§è¡Œå‘½ä»¤
  *
- * \param[in]  p_dev : fm175xxÉè±¸
- * \param[in]  p_in  : Ö¸Ïòfm175xxÃüÁîÊäÈë²ÎÊı
- * \param[out] p_out : Ö¸Ïòfm175xxÊä³ö²ÎÊı
+ * \param[in]  p_dev : fm175xxè®¾å¤‡
+ * \param[in]  p_in  : æŒ‡å‘fm175xxå‘½ä»¤è¾“å…¥å‚æ•°
+ * \param[out] p_out : æŒ‡å‘fm175xxè¾“å‡ºå‚æ•°
  *
- * \retval ²Ù×÷½á¹û(ÏêÏ¸ËµÃ÷¼ûam_fm175xx.hÖĞµÄ×´Ì¬Âë¶¨Òå)
+ * \retval æ“ä½œç»“æœ(è¯¦ç»†è¯´æ˜è§am_fm175xx.hä¸­çš„çŠ¶æ€ç å®šä¹‰)
  */
 uint8_t am_fm175xx_cmd (am_fm175xx_dev_t                    *p_dev,
                         const am_fm175xx_cmd_input_para_t   *p_in,
@@ -883,67 +884,67 @@ uint8_t am_fm175xx_cmd (am_fm175xx_dev_t                    *p_dev,
 
 
 /**
- * \brief ÉèÖÃÌìÏßÇı¶¯Ä£Ê½
+ * \brief è®¾ç½®å¤©çº¿é©±åŠ¨æ¨¡å¼
  *
- * \param[in] p_dev : fm175xxÉè±¸
- * \param[in] mode  : ÌìÏßÇı¶¯Ä£Ê½
- *                   - mode.0    -- TX1¿ØÖÆ
- *                               - 0        -- TX1¹Ø±Õ
- *                               - 1        -- TX1´ò¿ª
- *                   - mode.1    -- TX2¿ØÖÆ
- *                               - 0        -- TX2¹Ø±Õ
- *                               - 1        -- TX2´ò¿ª
+ * \param[in] p_dev : fm175xxè®¾å¤‡
+ * \param[in] mode  : å¤©çº¿é©±åŠ¨æ¨¡å¼
+ *                   - mode.0    -- TX1æ§åˆ¶
+ *                               - 0        -- TX1å…³é—­
+ *                               - 1        -- TX1æ‰“å¼€
+ *                   - mode.1    -- TX2æ§åˆ¶
+ *                               - 0        -- TX2å…³é—­
+ *                               - 1        -- TX2æ‰“å¼€
  *
- * \retval AM_OK      : ÏûÏ¢´¦Àí³É¹¦
- * \retval -AM_EINVAL : ²ÎÊı´íÎó
- * \retval -AM_EIO    : ´«Êä³ö´í
+ * \retval AM_OK      : æ¶ˆæ¯å¤„ç†æˆåŠŸ
+ * \retval -AM_EINVAL : å‚æ•°é”™è¯¯
+ * \retval -AM_EIO    : ä¼ è¾“å‡ºé”™
  *
- * \note ËäÈ»FM17510²»Ö§³ÖTX2£¬µ«ÊÇÉèÖÃÁËTX2Ò²Ã»¹ØÏµ¡£
+ * \note è™½ç„¶FM17510ä¸æ”¯æŒTX2ï¼Œä½†æ˜¯è®¾ç½®äº†TX2ä¹Ÿæ²¡å…³ç³»ã€‚
  */
 am_err_t am_fm175xx_set_tx_mode (am_fm175xx_dev_t *p_dev, uint8_t mode);
 
 
 /**
- * \brief »ñÈ¡ÌìÏßµ±Ç°Çı¶¯×´Ì¬
+ * \brief è·å–å¤©çº¿å½“å‰é©±åŠ¨çŠ¶æ€
  *
- * \param[in]  p_dev : fm175xxÉè±¸
+ * \param[in]  p_dev : fm175xxè®¾å¤‡
  *
- * \retval ÌìÏßÇı¶¯×´Ì¬£¬²Î¼ûam_fm175xx_set_tx_mode()
+ * \retval å¤©çº¿é©±åŠ¨çŠ¶æ€ï¼Œå‚è§am_fm175xx_set_tx_mode()
  */
 uint8_t am_fm175xx_get_tx_mode (am_fm175xx_dev_t *p_dev);
 
 
 /**
- * \brief ´ò¿ª/¹Ø±ÕÔØ²¨
+ * \brief æ‰“å¼€/å…³é—­è½½æ³¢
  *
- * \param[in]  p_dev : fm175xxÉè±¸
- * \param[in]  moon_or_off : AM_TRUE -- ´ò¿ªÔØ²¨£»AM_FALSE -- ¹Ø±ÕÔØ²¨
+ * \param[in]  p_dev : fm175xxè®¾å¤‡
+ * \param[in]  moon_or_off : AM_TRUE -- æ‰“å¼€è½½æ³¢ï¼›AM_FALSE -- å…³é—­è½½æ³¢
  *
- * \retval AM_OK      : ÏûÏ¢´¦Àí³É¹¦
- * \retval -AM_EINVAL : ²ÎÊı´íÎó
- * \retval -AM_EIO    : ´«Êä³ö´í
+ * \retval AM_OK      : æ¶ˆæ¯å¤„ç†æˆåŠŸ
+ * \retval -AM_EINVAL : å‚æ•°é”™è¯¯
+ * \retval -AM_EIO    : ä¼ è¾“å‡ºé”™
  *
- * \note ´ò¿ªÔØ²¨Ö»ÑÓ³ÙÁË5ms,ÈôĞèÒª¸ü³¤µÄÑÓÊ±£¬ÔòÔÚÍâ²¿¼ÓÑÓ³Ù¡£
- *       ¸Ãº¯Êı²»»á¸Ä±äÌìÏßÇı¶¯Ä£Ê½£¬¼´´ò¿ªÔØ²¨Ö»»á´ò¿ªam_fm175xx_set_tx_mode()
- *       ÉèÖÃµÄÌìÏßÇı¶¯¶Ë£¬¶ø²»ÊÇ´ò¿ªËùÓĞµÄÌìÏßÇı¶¯¶Ë
+ * \note æ‰“å¼€è½½æ³¢åªå»¶è¿Ÿäº†5ms,è‹¥éœ€è¦æ›´é•¿çš„å»¶æ—¶ï¼Œåˆ™åœ¨å¤–éƒ¨åŠ å»¶è¿Ÿã€‚
+ *       è¯¥å‡½æ•°ä¸ä¼šæ”¹å˜å¤©çº¿é©±åŠ¨æ¨¡å¼ï¼Œå³æ‰“å¼€è½½æ³¢åªä¼šæ‰“å¼€am_fm175xx_set_tx_mode()
+ *       è®¾ç½®çš„å¤©çº¿é©±åŠ¨ç«¯ï¼Œè€Œä¸æ˜¯æ‰“å¼€æ‰€æœ‰çš„å¤©çº¿é©±åŠ¨ç«¯
  */
 am_err_t am_fm175xx_turn_carrier_wave (am_fm175xx_dev_t *p_dev,
                                        am_bool_t         on_or_off);
 
 
 /**
- * \brief ÈÃRF³¡(ÔØ²¨)²úÉú1¸öÔİÍ££¬Ê¹¿¨¸´Î»
+ * \brief è®©RFåœº(è½½æ³¢)äº§ç”Ÿ1ä¸ªæš‚åœï¼Œä½¿å¡å¤ä½
  *
- * \param[in] p_dev    : fm175xxÉè±¸
- * \param[in] pause_ms : ÔİÍ£Ê±¼ä£¬¹Ø±ÕRF³¡¸ÃÊ±¼äºóÖØĞÂ´ò¿ª£¬ÈôÎª0Ôò²»ÖØĞÂ´ò¿ª
- * \param[in] wait_ms  : RF³¡ÖØĞÂ´ò¿ªºó³ÖĞøµÈ´ı¸ÃÊ±¼ä£¬ÈôÎª0Ôò²»µÈ´ı
+ * \param[in] p_dev    : fm175xxè®¾å¤‡
+ * \param[in] pause_ms : æš‚åœæ—¶é—´ï¼Œå…³é—­RFåœºè¯¥æ—¶é—´åé‡æ–°æ‰“å¼€ï¼Œè‹¥ä¸º0åˆ™ä¸é‡æ–°æ‰“å¼€
+ * \param[in] wait_ms  : RFåœºé‡æ–°æ‰“å¼€åæŒç»­ç­‰å¾…è¯¥æ—¶é—´ï¼Œè‹¥ä¸º0åˆ™ä¸ç­‰å¾…
  *
- * \retval AM_OK      : ÏûÏ¢´¦Àí³É¹¦
- * \retval -AM_EINVAL : ²ÎÊı´íÎó
- * \retval -AM_EIO    : ´«Êä³ö´í
+ * \retval AM_OK      : æ¶ˆæ¯å¤„ç†æˆåŠŸ
+ * \retval -AM_EINVAL : å‚æ•°é”™è¯¯
+ * \retval -AM_EIO    : ä¼ è¾“å‡ºé”™
  *
- * \note µÈ´ıÊ±¼ä¿É¸ù¾İ¿¨µÄ¹¦ºÄ¶ø¶¨£¬ÈçMifare1¿¨µÄ¹¦ºÄ½ÏĞ¡£¬µÈ´ı2~5ºÁÃë¼´¿É£¬
- *       ¶øCPU¿¨¹¦ºÄ½Ï´ó£¬ĞèÒªµÈ´ı10ºÁÃë×óÓÒ¡£
+ * \note ç­‰å¾…æ—¶é—´å¯æ ¹æ®å¡çš„åŠŸè€—è€Œå®šï¼Œå¦‚Mifare1å¡çš„åŠŸè€—è¾ƒå°ï¼Œç­‰å¾…2~5æ¯«ç§’å³å¯ï¼Œ
+ *       è€ŒCPUå¡åŠŸè€—è¾ƒå¤§ï¼Œéœ€è¦ç­‰å¾…10æ¯«ç§’å·¦å³ã€‚
  */
 am_err_t am_fm175xx_pause_carrier (am_fm175xx_dev_t *p_dev,
                                    uint8_t           pause_ms,
@@ -951,23 +952,23 @@ am_err_t am_fm175xx_pause_carrier (am_fm175xx_dev_t *p_dev,
 
 
 /**
- * \brief MF1¿¨µÄCrypto1ÈÏÖ¤
+ * \brief MF1å¡çš„Crypto1è®¤è¯
  *
- * \param[in] p_dev  : fm175xxÉè±¸
- * \param[in] mode   : ÑéÖ¤Ä£Ê½
- *                     - mode.6-0        -- ÃÜÔ¿ÀàĞÍ
- *                         - KEY_TYPE_A    -- ÃÜÔ¿A
- *                         - KEY_TYPE_B    -- ÃÜÔ¿B
- *                     - mode.7          -- ÃÜÔ¿À´Ô´
- *                         - KEY_SOURCE_EXT    -- Ê¹ÓÃÍâ²¿ÊäÈëµÄÃÜÔ¿ÑéÖ¤
- *                         - KEY_SOURCE_E2     -- Ê¹ÓÃÄÚ²¿E2µÄÃÜÔ¿ÑéÖ¤
- * \param[in] p_key  : 6×Ö½ÚÃÜÔ¿£¨Ê¹ÓÃÄÚ²¿ÃÜÔ¿Ê±£¬µÚ1×Ö½ÚÎªÃÜÔ¿´æ·ÅÉÈÇø£©
- * \param[in] p_uid  : 4×Ö½ÚUID
- * \param[in] nblock : ÑéÖ¤µÄ¿éºÅ
+ * \param[in] p_dev  : fm175xxè®¾å¤‡
+ * \param[in] mode   : éªŒè¯æ¨¡å¼
+ *                     - mode.6-0        -- å¯†é’¥ç±»å‹
+ *                         - KEY_TYPE_A    -- å¯†é’¥A
+ *                         - KEY_TYPE_B    -- å¯†é’¥B
+ *                     - mode.7          -- å¯†é’¥æ¥æº
+ *                         - KEY_SOURCE_EXT    -- ä½¿ç”¨å¤–éƒ¨è¾“å…¥çš„å¯†é’¥éªŒè¯
+ *                         - KEY_SOURCE_E2     -- ä½¿ç”¨å†…éƒ¨E2çš„å¯†é’¥éªŒè¯
+ * \param[in] p_key  : 6å­—èŠ‚å¯†é’¥ï¼ˆä½¿ç”¨å†…éƒ¨å¯†é’¥æ—¶ï¼Œç¬¬1å­—èŠ‚ä¸ºå¯†é’¥å­˜æ”¾æ‰‡åŒºï¼‰
+ * \param[in] p_uid  : 4å­—èŠ‚UID
+ * \param[in] nblock : éªŒè¯çš„å—å·
  *
- * \retval ²Ù×÷½á¹û(ÏêÏ¸ËµÃ÷¼ûam_fm175xx.hÖĞµÄ×´Ì¬Âë¶¨Òå)
+ * \retval æ“ä½œç»“æœ(è¯¦ç»†è¯´æ˜è§am_fm175xx.hä¸­çš„çŠ¶æ€ç å®šä¹‰)
  *
- * \note Ö´ĞĞ³É¹¦ºó£¬ÒÔºóµÄÍ¨ĞÅ±»¼ÓÃÜ
+ * \note æ‰§è¡ŒæˆåŠŸåï¼Œä»¥åçš„é€šä¿¡è¢«åŠ å¯†
  */
 uint8_t am_fm175xx_crypto1 (am_fm175xx_dev_t *p_dev,
                             uint8_t           mode,
@@ -977,27 +978,27 @@ uint8_t am_fm175xx_crypto1 (am_fm175xx_dev_t *p_dev,
 
 
 /**
- * \name Mifare¿¨ÇëÇóÄ£Ê½
+ * \name Mifareå¡è¯·æ±‚æ¨¡å¼
  * @{
  */
 
-#define AM_FM175XX_PICCA_REQ_IDLE 0x26 /**< \brief IDLEÄ£Ê½£¬ÇëÇó¿ÕÏĞµÄ¿¨ */
-#define AM_FM175XX_PICCA_REQ_ALL  0x52 /**< \brief ALLÄ£Ê½£¬ÇëÇóËùÓĞµÄ¿¨  */
+#define AM_FM175XX_PICCA_REQ_IDLE 0x26 /**< \brief IDLEæ¨¡å¼ï¼Œè¯·æ±‚ç©ºé—²çš„å¡ */
+#define AM_FM175XX_PICCA_REQ_ALL  0x52 /**< \brief ALLæ¨¡å¼ï¼Œè¯·æ±‚æ‰€æœ‰çš„å¡  */
 
 /** @}*/
 
 /**
- * \brief Mifare¿¨ÇëÇó²Ù×÷
+ * \brief Mifareå¡è¯·æ±‚æ“ä½œ
  *
- *  ¸Ãº¯Êı×÷Îª¿¨µÄÇëÇó²Ù×÷£¬Ö»Òª·ûºÏISO14443A±ê×¼µÄ¿¨¶¼Ó¦ÄÜ·¢³öÏìÓ¦¡£
+ *  è¯¥å‡½æ•°ä½œä¸ºå¡çš„è¯·æ±‚æ“ä½œï¼Œåªè¦ç¬¦åˆISO14443Aæ ‡å‡†çš„å¡éƒ½åº”èƒ½å‘å‡ºå“åº”ã€‚
  *
- * \param[in] p_dev       : fm175xxÉè±¸
- * \param[in] req_mode    : ÇëÇóÄ£Ê½£¬¿ÉÊ¹ÓÃÏÂÁĞºê£º
+ * \param[in] p_dev       : fm175xxè®¾å¤‡
+ * \param[in] req_mode    : è¯·æ±‚æ¨¡å¼ï¼Œå¯ä½¿ç”¨ä¸‹åˆ—å®ï¼š
  *                           - #AM_FM175XX_PICCA_REQ_IDLE
  *                           - #AM_FM175XX_PICCA_REQ_ALL
- * \param[out] p_atq      : »ñÈ¡ÇëÇóÓ¦´ğĞÅÏ¢£¨ATQ£©µÄÖ¸Õë£¬ÆäÖµÎª16Î»¡£
- *                          Èô²»Ïë½ÓÊÕATQ£¬Ôò´«ÈëNULL¡£
- *                          ²»Í¬¿¨ÀàĞÍ·µ»ØµÄĞÅÏ¢²»Í¬,³£¼ûÀàĞÍ·µ»ØµÄATQÈçÏÂ£º
+ * \param[out] p_atq      : è·å–è¯·æ±‚åº”ç­”ä¿¡æ¯ï¼ˆATQï¼‰çš„æŒ‡é’ˆï¼Œå…¶å€¼ä¸º16ä½ã€‚
+ *                          è‹¥ä¸æƒ³æ¥æ”¶ATQï¼Œåˆ™ä¼ å…¥NULLã€‚
+ *                          ä¸åŒå¡ç±»å‹è¿”å›çš„ä¿¡æ¯ä¸åŒ,å¸¸è§ç±»å‹è¿”å›çš„ATQå¦‚ä¸‹ï¼š
  *
  *            Mifare1 S50    | Mifare1 S70 | Mifare1 Light | Mifare0 UltraLight
  *       --------------------|-------------|---------------|-------------------
@@ -1007,12 +1008,12 @@ uint8_t am_fm175xx_crypto1 (am_fm175xx_dev_t *p_dev,
  *       --------------------|-------------|---------------|-------------------
  *               0x0344      |    0x0004   |    0x3300     |      0x0004
  *
- * \retval ²Ù×÷½á¹û(ÏêÏ¸ËµÃ÷¼ûam_fm175xx.hÖĞµÄ×´Ì¬Âë¶¨Òå)
+ * \retval æ“ä½œç»“æœ(è¯¦ç»†è¯´æ˜è§am_fm175xx.hä¸­çš„çŠ¶æ€ç å®šä¹‰)
  *
- * \note ¿¨½øÈëÌìÏßºó£¬´ÓÉäÆµ³¡ÖĞ»ñÈ¡ÄÜÁ¿£¬´Ó¶øµÃµç¸´Î»£¬¸´Î»ºó¿¨´¦ÓÚIDLEÄ£Ê½£¬
- * ÓÃÁ½ÖÖÇëÇóÄ£Ê½µÄÈÎÒ»ÖÖÇëÇóÊ±£¬´ËÊ±µÄ¿¨¾ùÄÜÏìÓ¦£»Èô¶ÔÄ³Ò»ÕÅ¿¨³É¹¦½øĞĞÁË¹ÒÆğ
- * ²Ù×÷£¨HaltÃüÁî»òDeSelectÃüÁî£©£¬Ôò½øÈëÁËHaltÄ£Ê½£¬´ËÊ±µÄ¿¨Ö»ÏìÓ¦ALL£¨0x52£©
- * Ä£Ê½µÄÇëÇó£¬³ı·Ç½«¿¨Àë¿ªÌìÏß¸ĞÓ¦ÇøºóÔÙ½øÈë¡£
+ * \note å¡è¿›å…¥å¤©çº¿åï¼Œä»å°„é¢‘åœºä¸­è·å–èƒ½é‡ï¼Œä»è€Œå¾—ç”µå¤ä½ï¼Œå¤ä½åå¡å¤„äºIDLEæ¨¡å¼ï¼Œ
+ * ç”¨ä¸¤ç§è¯·æ±‚æ¨¡å¼çš„ä»»ä¸€ç§è¯·æ±‚æ—¶ï¼Œæ­¤æ—¶çš„å¡å‡èƒ½å“åº”ï¼›è‹¥å¯¹æŸä¸€å¼ å¡æˆåŠŸè¿›è¡Œäº†æŒ‚èµ·
+ * æ“ä½œï¼ˆHaltå‘½ä»¤æˆ–DeSelectå‘½ä»¤ï¼‰ï¼Œåˆ™è¿›å…¥äº†Haltæ¨¡å¼ï¼Œæ­¤æ—¶çš„å¡åªå“åº”ALLï¼ˆ0x52ï¼‰
+ * æ¨¡å¼çš„è¯·æ±‚ï¼Œé™¤éå°†å¡ç¦»å¼€å¤©çº¿æ„Ÿåº”åŒºåå†è¿›å…¥ã€‚
  */
 uint8_t am_fm175xx_picca_request (am_fm175xx_dev_t  *p_dev,
                                   uint8_t            req_mode,
@@ -1020,33 +1021,33 @@ uint8_t am_fm175xx_picca_request (am_fm175xx_dev_t  *p_dev,
 
 
 /**
- * \name Mifare¿¨·ÀÅö×²µÈ¼¶
+ * \name Mifareå¡é˜²ç¢°æ’ç­‰çº§
  * @{
  */
-#define AM_FM175XX_PICCA_ANTICOLL_1  0x93  /**< \brief µÚÒ»¼¶·ÀÅö×²  */
-#define AM_FM175XX_PICCA_ANTICOLL_2  0x95  /**< \brief µÚ¶ş¼¶·ÀÅö×²  */
-#define AM_FM175XX_PICCA_ANTICOLL_3  0x97  /**< \brief µÚÈı¼¶·ÀÅö×²  */
+#define AM_FM175XX_PICCA_ANTICOLL_1  0x93  /**< \brief ç¬¬ä¸€çº§é˜²ç¢°æ’  */
+#define AM_FM175XX_PICCA_ANTICOLL_2  0x95  /**< \brief ç¬¬äºŒçº§é˜²ç¢°æ’  */
+#define AM_FM175XX_PICCA_ANTICOLL_3  0x97  /**< \brief ç¬¬ä¸‰çº§é˜²ç¢°æ’  */
 /** @}*/
 
 /**
- * \brief Mifare¿¨µÄ·ÀÅö×²²Ù×÷
+ * \brief Mifareå¡çš„é˜²ç¢°æ’æ“ä½œ
  *
- *  ĞèÒª³É¹¦Ö´ĞĞÒ»´ÎÇëÇóÃüÁî£¬²¢·µ»ØÇëÇó³É¹¦£¬²ÅÄÜ½øĞĞ·ÀÅö×²²Ù×÷£¬·ñÔò·µ»Ø´íÎó¡£
+ *  éœ€è¦æˆåŠŸæ‰§è¡Œä¸€æ¬¡è¯·æ±‚å‘½ä»¤ï¼Œå¹¶è¿”å›è¯·æ±‚æˆåŠŸï¼Œæ‰èƒ½è¿›è¡Œé˜²ç¢°æ’æ“ä½œï¼Œå¦åˆ™è¿”å›é”™è¯¯ã€‚
  *
- * \param[in] p_dev          : fm175xxÉè±¸
- * \param[in] anticoll_level : ·ÀÅö×²µÈ¼¶£¬¿ÉÊ¹ÓÃÏÂÁĞºê£º
+ * \param[in] p_dev          : fm175xxè®¾å¤‡
+ * \param[in] anticoll_level : é˜²ç¢°æ’ç­‰çº§ï¼Œå¯ä½¿ç”¨ä¸‹åˆ—å®ï¼š
  *                             - #AM_FM175XX_PICCA_ANTICOLL_1
  *                             - #AM_FM175XX_PICCA_ANTICOLL_2
  *                             - #AM_FM175XX_PICCA_ANTICOLL_3
- * \param[out] p_uid   : ·ÀÅö×²ºó»ñÈ¡µ½µÄ¿¨ĞòÁĞºÅ
+ * \param[out] p_uid   : é˜²ç¢°æ’åè·å–åˆ°çš„å¡åºåˆ—å·
 
- * \param[out] p_real_uid_len : ¿¨ĞòÁĞºÅµÄÊµ¼Ê´óĞ¡£¨×Ö½ÚÊı£©¡£
+ * \param[out] p_real_uid_len : å¡åºåˆ—å·çš„å®é™…å¤§å°ï¼ˆå­—èŠ‚æ•°ï¼‰ã€‚
  *
- * \retval ²Ù×÷½á¹û(ÏêÏ¸ËµÃ÷¼ûam_fm175xx.hÖĞµÄ×´Ì¬Âë¶¨Òå)
+ * \retval æ“ä½œç»“æœ(è¯¦ç»†è¯´æ˜è§am_fm175xx.hä¸­çš„çŠ¶æ€ç å®šä¹‰)
  *
- * \note  ·ûºÏISO14443A±ê×¼¿¨µÄĞòÁĞºÅ¶¼ÊÇÈ«ÇòÎ¨Ò»µÄ£¬ÕıÊÇÕâÖÖÎ¨Ò»ĞÔ£¬²ÅÄÜÊµÏÖ·À
- * Åö×²µÄËã·¨Âß¼­£¬ÈôÓĞÈô¸ÉÕÅ¿¨Í¬Ê±ÔÚÌìÏß¸ĞÓ¦ÇøÄÚÔòÕâ¸öº¯ÊıÄÜ¹»ÕÒµ½Ò»ÕÅĞòÁĞºÅ½Ï
- * ´óµÄ¿¨À´²Ù×÷¡£
+ * \note  ç¬¦åˆISO14443Aæ ‡å‡†å¡çš„åºåˆ—å·éƒ½æ˜¯å…¨çƒå”¯ä¸€çš„ï¼Œæ­£æ˜¯è¿™ç§å”¯ä¸€æ€§ï¼Œæ‰èƒ½å®ç°é˜²
+ * ç¢°æ’çš„ç®—æ³•é€»è¾‘ï¼Œè‹¥æœ‰è‹¥å¹²å¼ å¡åŒæ—¶åœ¨å¤©çº¿æ„Ÿåº”åŒºå†…åˆ™è¿™ä¸ªå‡½æ•°èƒ½å¤Ÿæ‰¾åˆ°ä¸€å¼ åºåˆ—å·è¾ƒ
+ * å¤§çš„å¡æ¥æ“ä½œã€‚
  */
 uint8_t am_fm175xx_picca_anticoll (am_fm175xx_dev_t  *p_dev,
                                    uint8_t            anticoll_level,
@@ -1054,26 +1055,26 @@ uint8_t am_fm175xx_picca_anticoll (am_fm175xx_dev_t  *p_dev,
                                    uint8_t           *p_real_uid_len);
 
 /**
- * \brief Mifare¿¨µÄÑ¡Ôñ²Ù×÷
+ * \brief Mifareå¡çš„é€‰æ‹©æ“ä½œ
  *
- *  ĞèÒª³É¹¦Ö´ĞĞÒ»´Î·ÀÅö×²ÃüÁî£¬²¢·µ»Ø³É¹¦£¬²ÅÄÜ½øĞĞ¿¨Ñ¡Ôñ²Ù×÷£¬·ñÔò·µ»Ø´íÎó¡£
+ *  éœ€è¦æˆåŠŸæ‰§è¡Œä¸€æ¬¡é˜²ç¢°æ’å‘½ä»¤ï¼Œå¹¶è¿”å›æˆåŠŸï¼Œæ‰èƒ½è¿›è¡Œå¡é€‰æ‹©æ“ä½œï¼Œå¦åˆ™è¿”å›é”™è¯¯ã€‚
  *
- * \param[in]  p_dev          : fm175xxÉè±¸
- * \param[in]  anticoll_level : ·ÀÅö×²µÈ¼¶£¬¿ÉÊ¹ÓÃÏÂÁĞºê£º
+ * \param[in]  p_dev          : fm175xxè®¾å¤‡
+ * \param[in]  anticoll_level : é˜²ç¢°æ’ç­‰çº§ï¼Œå¯ä½¿ç”¨ä¸‹åˆ—å®ï¼š
  *                             - #AM_FM175XX_PICCA_ANTICOLL_1
  *                             - #AM_FM175XX_PICCA_ANTICOLL_2
  *                             - #AM_FM175XX_PICCA_ANTICOLL_3
- * \param[in]  uid     : Ç°Ò»¸ö·ÀÅö×²º¯Êı»ñÈ¡µÄUID
- * \param[in]  uid_len : Ç°Ò»¸ö·ÀÅö×²º¯Êı»ñÈ¡µÄUIDµÄ³¤¶È£¨×Ö½ÚÊı£©
- * \param[out] p_sak   : ·µ»ØµÄĞÅÏ¢£¬Èôbit2Îª1£¬Ôò±íÃ÷UID²»ÍêÕû¡£Èô²»Ïë½ÓÊÕSAKÔò´«ÈëNULL¡£
+ * \param[in]  uid     : å‰ä¸€ä¸ªé˜²ç¢°æ’å‡½æ•°è·å–çš„UID
+ * \param[in]  uid_len : å‰ä¸€ä¸ªé˜²ç¢°æ’å‡½æ•°è·å–çš„UIDçš„é•¿åº¦ï¼ˆå­—èŠ‚æ•°ï¼‰
+ * \param[out] p_sak   : è¿”å›çš„ä¿¡æ¯ï¼Œè‹¥bit2ä¸º1ï¼Œåˆ™è¡¨æ˜UIDä¸å®Œæ•´ã€‚è‹¥ä¸æƒ³æ¥æ”¶SAKåˆ™ä¼ å…¥NULLã€‚
  *
- * \retval ²Ù×÷½á¹û(ÏêÏ¸ËµÃ÷¼ûam_fm175xx.hÖĞµÄ×´Ì¬Âë¶¨Òå)
+ * \retval æ“ä½œç»“æœ(è¯¦ç»†è¯´æ˜è§am_fm175xx.hä¸­çš„çŠ¶æ€ç å®šä¹‰)
  *
- * \note  ¿¨µÄĞòÁĞºÅ³¤¶ÈÓĞÈıÖÖ£º4×Ö½Ú¡¢7×Ö½ÚºÍ10×Ö½Ú¡£ 4×Ö½ÚµÄÖ»ÒªÓÃÒ»¼¶Ñ¡Ôñ¼´¿É
- * µÃµ½ÍêÕûµÄĞòÁĞºÅ£¬ÈçMifare1 S50/S70µÈ£»7×Ö½ÚµÄÒªÓÃ¶ş¼¶Ñ¡Ôñ²ÅÄÜµÃµ½ÍêÕûµÄĞòÁĞ
- * ºÅ£¬Ç°Ò»¼¶ËùµÃµ½µÄĞòÁĞºÅµÄ×îµÍ×Ö½ÚÎª¼¶Áª±êÖ¾0x88£¬ÔÚĞòÁĞºÅÄÚÖ»ÓĞºó3×Ö½Ú¿ÉÓÃ£¬
- * ºóÒ»¼¶Ñ¡ÔñÄÜµÃµ½4×Ö½ÚĞòÁĞºÅ£¬Á½Õß°´Ë³ĞòÁ¬½Ó¼´Îª7×Ö½ÚĞòÁĞºÅ£¬ÈçUltraLight
- * ºÍDesFireµÈ£»10×Ö½ÚµÄÒÔ´ËÀàÍÆ£¬µ«ÖÁ½ñ»¹Î´·¢ÏÖ´ËÀà¿¨¡£
+ * \note  å¡çš„åºåˆ—å·é•¿åº¦æœ‰ä¸‰ç§ï¼š4å­—èŠ‚ã€7å­—èŠ‚å’Œ10å­—èŠ‚ã€‚ 4å­—èŠ‚çš„åªè¦ç”¨ä¸€çº§é€‰æ‹©å³å¯
+ * å¾—åˆ°å®Œæ•´çš„åºåˆ—å·ï¼Œå¦‚Mifare1 S50/S70ç­‰ï¼›7å­—èŠ‚çš„è¦ç”¨äºŒçº§é€‰æ‹©æ‰èƒ½å¾—åˆ°å®Œæ•´çš„åºåˆ—
+ * å·ï¼Œå‰ä¸€çº§æ‰€å¾—åˆ°çš„åºåˆ—å·çš„æœ€ä½å­—èŠ‚ä¸ºçº§è”æ ‡å¿—0x88ï¼Œåœ¨åºåˆ—å·å†…åªæœ‰å3å­—èŠ‚å¯ç”¨ï¼Œ
+ * åä¸€çº§é€‰æ‹©èƒ½å¾—åˆ°4å­—èŠ‚åºåˆ—å·ï¼Œä¸¤è€…æŒ‰é¡ºåºè¿æ¥å³ä¸º7å­—èŠ‚åºåˆ—å·ï¼Œå¦‚UltraLight
+ * å’ŒDesFireç­‰ï¼›10å­—èŠ‚çš„ä»¥æ­¤ç±»æ¨ï¼Œä½†è‡³ä»Šè¿˜æœªå‘ç°æ­¤ç±»å¡ã€‚
  */
 uint8_t am_fm175xx_picca_select (am_fm175xx_dev_t  *p_dev,
                                  uint8_t            anticoll_level,
@@ -1082,32 +1083,32 @@ uint8_t am_fm175xx_picca_select (am_fm175xx_dev_t  *p_dev,
                                  uint8_t           *p_sak);
 
 /**
- * \brief Mifare¿¨µÄ¹ÒÆğ²Ù×÷£¬Ê¹ËùÑ¡ÔñµÄ¿¨½øÈëHALT×´Ì¬
+ * \brief Mifareå¡çš„æŒ‚èµ·æ“ä½œï¼Œä½¿æ‰€é€‰æ‹©çš„å¡è¿›å…¥HALTçŠ¶æ€
  *
- *  ÔÚHALT×´Ì¬ÏÂ£¬¿¨½«²»ÏìÓ¦¶Á¿¨Æ÷·¢³öµÄIDLEÄ£Ê½µÄÇëÇó£¬³ı·Ç½«¿¨¸´Î»»òÀë¿ªÌìÏß¸Ğ
- *  Ó¦ÇøºóÔÙ½øÈë¡£µ«Ëü»áÏìÓ¦¶Á¿¨Æ÷·¢³öµÄALLÇëÇó¡£
+ *  åœ¨HALTçŠ¶æ€ä¸‹ï¼Œå¡å°†ä¸å“åº”è¯»å¡å™¨å‘å‡ºçš„IDLEæ¨¡å¼çš„è¯·æ±‚ï¼Œé™¤éå°†å¡å¤ä½æˆ–ç¦»å¼€å¤©çº¿æ„Ÿ
+ *  åº”åŒºåå†è¿›å…¥ã€‚ä½†å®ƒä¼šå“åº”è¯»å¡å™¨å‘å‡ºçš„ALLè¯·æ±‚ã€‚
  *
- * \param[in]  p_dev          : fm175xxÉè±¸
+ * \param[in]  p_dev          : fm175xxè®¾å¤‡
  *
- * \retval ²Ù×÷½á¹û(ÏêÏ¸ËµÃ÷¼ûam_fm175xx.hÖĞµÄ×´Ì¬Âë¶¨Òå)
+ * \retval æ“ä½œç»“æœ(è¯¦ç»†è¯´æ˜è§am_fm175xx.hä¸­çš„çŠ¶æ€ç å®šä¹‰)
  */
 uint8_t am_fm175xx_picca_halt (am_fm175xx_dev_t  *p_dev);
 
 /**
- * \brief Mifare¿¨¼¤»î£¬¸Ãº¯ÊıÓÃÓÚ¼¤»î¿¨Æ¬£¬ÊÇÇëÇó¡¢·ÀÅö×²ºÍÑ¡ÔñÈıÌõÃüÁîµÄ×éºÏ¡£
+ * \brief Mifareå¡æ¿€æ´»ï¼Œè¯¥å‡½æ•°ç”¨äºæ¿€æ´»å¡ç‰‡ï¼Œæ˜¯è¯·æ±‚ã€é˜²ç¢°æ’å’Œé€‰æ‹©ä¸‰æ¡å‘½ä»¤çš„ç»„åˆã€‚
  *
- * \param[in]  p_dev      : fm175xxÉè±¸
- * \param[in]  req_mode   : ÇëÇóÄ£Ê½£¬¿ÉÊ¹ÓÃÏÂÁĞºê£º
+ * \param[in]  p_dev      : fm175xxè®¾å¤‡
+ * \param[in]  req_mode   : è¯·æ±‚æ¨¡å¼ï¼Œå¯ä½¿ç”¨ä¸‹åˆ—å®ï¼š
  *                           - #AM_FM175XX_PICCA_REQ_IDLE
  *                           - #AM_FM175XX_PICCA_REQ_ALL
- * \param[out] p_atq      : ¿¨Æ¬ÀàĞÍ£¬Èô²»¹ØĞÄÔò´«ÈëNULL¡£
- * \param[out] p_uid      : ´æ·ÅĞòÁĞºÅµÄ»º³åÇø£¬³¤¶ÈÓ¦¸ÃÓëĞòÁĞºÅ³¤¶È±£³ÖÒ»ÖÂ£¬
- *                          Èç²»È·¶¨£¬½¨ÒéÏÈÊ¹ÓÃ×î´ó³¤¶È10¡£²»ÄÜ´«ÈëNULL¡£
+ * \param[out] p_atq      : å¡ç‰‡ç±»å‹ï¼Œè‹¥ä¸å…³å¿ƒåˆ™ä¼ å…¥NULLã€‚
+ * \param[out] p_uid      : å­˜æ”¾åºåˆ—å·çš„ç¼“å†²åŒºï¼Œé•¿åº¦åº”è¯¥ä¸åºåˆ—å·é•¿åº¦ä¿æŒä¸€è‡´ï¼Œ
+ *                          å¦‚ä¸ç¡®å®šï¼Œå»ºè®®å…ˆä½¿ç”¨æœ€å¤§é•¿åº¦10ã€‚ä¸èƒ½ä¼ å…¥NULLã€‚
 
- * \param[out] p_uid_real_len   :ĞòÁĞºÅµÄÊµ¼Ê³¤¶È£¬4×Ö½Ú¡¢7×Ö½Ú»ò10×Ö½Ú£¬Èô²»¹ØĞÄÔò´«ÈëNULL¡£
- * \param[out] p_sak      : ×îºóÒ»´ÎÑ¡ÔñÓ¦´ğSAK£¬Èô²»¹ØĞÄÔò´«ÈëNULL¡£
+ * \param[out] p_uid_real_len   :åºåˆ—å·çš„å®é™…é•¿åº¦ï¼Œ4å­—èŠ‚ã€7å­—èŠ‚æˆ–10å­—èŠ‚ï¼Œè‹¥ä¸å…³å¿ƒåˆ™ä¼ å…¥NULLã€‚
+ * \param[out] p_sak      : æœ€åä¸€æ¬¡é€‰æ‹©åº”ç­”SAKï¼Œè‹¥ä¸å…³å¿ƒåˆ™ä¼ å…¥NULLã€‚
  *
- * \retval ²Ù×÷½á¹û(ÏêÏ¸ËµÃ÷¼ûam_fm175xx.hÖĞµÄ×´Ì¬Âë¶¨Òå)
+ * \retval æ“ä½œç»“æœ(è¯¦ç»†è¯´æ˜è§am_fm175xx.hä¸­çš„çŠ¶æ€ç å®šä¹‰)
  */
 uint8_t am_fm175xx_picca_active (am_fm175xx_dev_t   *p_dev,
                                  uint8_t             req_mode,
@@ -1117,35 +1118,35 @@ uint8_t am_fm175xx_picca_active (am_fm175xx_dev_t   *p_dev,
                                  uint8_t             p_sak[1]);
 
 /**
- * \name IC¿¨ÃÜ³×ÀàĞÍ
+ * \name ICå¡å¯†åŒ™ç±»å‹
  * @{
  */
 
-#define  AM_FM175XX_IC_KEY_TYPE_A      0x60    /**< \brief ÀàĞÍ A  */
-#define  AM_FM175XX_IC_KEY_TYPE_B      0x61    /**< \brief ÀàĞÍ B  */
+#define  AM_FM175XX_IC_KEY_TYPE_A      0x60    /**< \brief ç±»å‹ A  */
+#define  AM_FM175XX_IC_KEY_TYPE_B      0x61    /**< \brief ç±»å‹ B  */
 
 /** @}*/
 
 /**
- * \brief Mifare¿¨ÃÜÔ¿ÑéÖ¤£¬½«´«ÈëµÄÃÜÔ¿Óë¿¨µÄÃÜÔ¿½øĞĞÑéÖ¤
+ * \brief Mifareå¡å¯†é’¥éªŒè¯ï¼Œå°†ä¼ å…¥çš„å¯†é’¥ä¸å¡çš„å¯†é’¥è¿›è¡ŒéªŒè¯
  *
- * \param[in] p_dev      : fm175xxÉè±¸
- * \param[in] key_type   : ÃÜÔ¿ÀàĞÍ£¬¿ÉÒÔÊ¹ÓÃÏÂÁĞÖµ£º
+ * \param[in] p_dev      : fm175xxè®¾å¤‡
+ * \param[in] key_type   : å¯†é’¥ç±»å‹ï¼Œå¯ä»¥ä½¿ç”¨ä¸‹åˆ—å€¼ï¼š
  *                          - #AM_FM175XX_IC_KEY_TYPE_A
  *                          - #AM_FM175XX_IC_KEY_TYPE_B
- * \param[in] p_uid      : ¿¨ĞòÁĞºÅ£¬4×Ö½Ú
- * \param[in] p_key      : ÃÜÔ¿£¬6×Ö½Ú¡£Ä¬ÈÏµÄÃÜÔ¿¶¼ÊÇÈ«1£¬¼´6¸ö0xff
- * \param[in] nblock     : ĞèÒªÑéÖ¤µÄ¿¨¿éºÅ£¬È¡Öµ·¶Î§Óë¿¨ÀàĞÍÓĞ¹Ø£¬
- *                         - S50£º0 ~ 63
- *                         - S70£º0 ~ 255
- *                         - PLUS CPU 2K£º0 ~ 127
- *                         - PLUS CPU 4K£º0 ~ 255
+ * \param[in] p_uid      : å¡åºåˆ—å·ï¼Œ4å­—èŠ‚
+ * \param[in] p_key      : å¯†é’¥ï¼Œ6å­—èŠ‚ã€‚é»˜è®¤çš„å¯†é’¥éƒ½æ˜¯å…¨1ï¼Œå³6ä¸ª0xff
+ * \param[in] nblock     : éœ€è¦éªŒè¯çš„å¡å—å·ï¼Œå–å€¼èŒƒå›´ä¸å¡ç±»å‹æœ‰å…³ï¼Œ
+ *                         - S50ï¼š0 ~ 63
+ *                         - S70ï¼š0 ~ 255
+ *                         - PLUS CPU 2Kï¼š0 ~ 127
+ *                         - PLUS CPU 4Kï¼š0 ~ 255
  *
- * \retval ÑéÖ¤³É¹¦·µ»ØAM_FM175XX_STATUS_SUCCESS£¬·ñÔò·µ»ØÈ¥ÆäËû×´Ì¬Âë¡£
- *         (ÏêÏ¸ËµÃ÷¼ûam_fm175xx.hÖĞµÄ×´Ì¬Âë¶¨Òå)
+ * \retval éªŒè¯æˆåŠŸè¿”å›AM_FM175XX_STATUS_SUCCESSï¼Œå¦åˆ™è¿”å›å»å…¶ä»–çŠ¶æ€ç ã€‚
+ *         (è¯¦ç»†è¯´æ˜è§am_fm175xx.hä¸­çš„çŠ¶æ€ç å®šä¹‰)
  *
- * \note PLUS CPUÏµÁĞµÄ¿¨µÄ¿¨ºÅÓĞ4×Ö½ÚºÍ7×Ö½ÚÖ®·Ö£¬¶ÔÓÚ7×Ö½Ú¿¨ºÅµÄ¿¨£¬
- *       Ö»ĞèÒª½«¿¨ºÅµÄ¸ß4×Ö½Ú£¨µÈ¼¶2·ÀÅö×²µÃµ½µÄ¿¨ºÅ£©×÷ÎªÑéÖ¤µÄ¿¨ºÅ¼´¿É¡£
+ * \note PLUS CPUç³»åˆ—çš„å¡çš„å¡å·æœ‰4å­—èŠ‚å’Œ7å­—èŠ‚ä¹‹åˆ†ï¼Œå¯¹äº7å­—èŠ‚å¡å·çš„å¡ï¼Œ
+ *       åªéœ€è¦å°†å¡å·çš„é«˜4å­—èŠ‚ï¼ˆç­‰çº§2é˜²ç¢°æ’å¾—åˆ°çš„å¡å·ï¼‰ä½œä¸ºéªŒè¯çš„å¡å·å³å¯ã€‚
  */
 uint8_t am_fm175xx_picca_authent (am_fm175xx_dev_t  *p_dev,
                                   uint8_t            key_type,
@@ -1154,23 +1155,23 @@ uint8_t am_fm175xx_picca_authent (am_fm175xx_dev_t  *p_dev,
                                   uint8_t            nblock);
 
 /**
- * \brief Mifare¿¨Êı¾İ¶ÁÈ¡
+ * \brief Mifareå¡æ•°æ®è¯»å–
  *
- *     ÔÚÑéÖ¤³É¹¦Ö®ºó£¬²ÅÄÜ¶ÁÏàÓ¦µÄ¿éÊı¾İ£¬ËùÑéÖ¤µÄ¿éºÅÓë¶Á¿éºÅ±ØĞëÔÚÍ¬Ò»¸öÉÈÇøÄÚ£¬
- * Mifare1¿¨´Ó¿éºÅ0¿ªÊ¼°´Ë³ĞòÃ¿4¸ö¿é1¸öÉÈÇø£¬ÈôÒª¶ÔÒ»ÕÅ¿¨ÖĞµÄ¶à¸öÉÈÇø½øĞĞ²Ù×÷£¬ÔÚ
- * ¶ÔÄ³Ò»ÉÈÇø²Ù×÷Íê±Ïºó£¬±ØĞë½øĞĞÒ»Ìõ¶ÁÃüÁî²ÅÄÜ¶ÔÁíÒ»¸öÉÈÇøÖ±½Ó½øĞĞÑéÖ¤ÃüÁî£¬·ñÔò
- * ±ØĞë´ÓÇëÇó¿ªÊ¼²Ù×÷¡£¶ÔÓÚPLUS CPU¿¨£¬ÈôÏÂÒ»¸ö¶ÁÉÈÇøµÄÃÜÔ¿ºÍµ±Ç°ÉÈÇøµÄÃÜÔ¿ÏàÍ¬£¬
- * Ôò²»ĞèÒªÔÙ´ÎÑéÖ¤ÃÜÔ¿£¬Ö±½Ó¶Á¼´¿É¡£
+ *     åœ¨éªŒè¯æˆåŠŸä¹‹åï¼Œæ‰èƒ½è¯»ç›¸åº”çš„å—æ•°æ®ï¼Œæ‰€éªŒè¯çš„å—å·ä¸è¯»å—å·å¿…é¡»åœ¨åŒä¸€ä¸ªæ‰‡åŒºå†…ï¼Œ
+ * Mifare1å¡ä»å—å·0å¼€å§‹æŒ‰é¡ºåºæ¯4ä¸ªå—1ä¸ªæ‰‡åŒºï¼Œè‹¥è¦å¯¹ä¸€å¼ å¡ä¸­çš„å¤šä¸ªæ‰‡åŒºè¿›è¡Œæ“ä½œï¼Œåœ¨
+ * å¯¹æŸä¸€æ‰‡åŒºæ“ä½œå®Œæ¯•åï¼Œå¿…é¡»è¿›è¡Œä¸€æ¡è¯»å‘½ä»¤æ‰èƒ½å¯¹å¦ä¸€ä¸ªæ‰‡åŒºç›´æ¥è¿›è¡ŒéªŒè¯å‘½ä»¤ï¼Œå¦åˆ™
+ * å¿…é¡»ä»è¯·æ±‚å¼€å§‹æ“ä½œã€‚å¯¹äºPLUS CPUå¡ï¼Œè‹¥ä¸‹ä¸€ä¸ªè¯»æ‰‡åŒºçš„å¯†é’¥å’Œå½“å‰æ‰‡åŒºçš„å¯†é’¥ç›¸åŒï¼Œ
+ * åˆ™ä¸éœ€è¦å†æ¬¡éªŒè¯å¯†é’¥ï¼Œç›´æ¥è¯»å³å¯ã€‚
  *
- * \param[in]  p_dev      : fm175xxÉè±¸
- * \param[in]  nblock     : ¶ÁÈ¡Êı¾İµÄ¿éºÅ
- *                          - S50£º0 ~ 63
- *                          - S70£º0 ~ 255
- *                          - PLUS CPU 2K£º0 ~ 127
- *                          - PLUS CPU 4K£º0 ~ 255
- * \param[out] p_buf      : ´æ·Å¶ÁÈ¡µÄÊı¾İ£¬¹²16bytes
+ * \param[in]  p_dev      : fm175xxè®¾å¤‡
+ * \param[in]  nblock     : è¯»å–æ•°æ®çš„å—å·
+ *                          - S50ï¼š0 ~ 63
+ *                          - S70ï¼š0 ~ 255
+ *                          - PLUS CPU 2Kï¼š0 ~ 127
+ *                          - PLUS CPU 4Kï¼š0 ~ 255
+ * \param[out] p_buf      : å­˜æ”¾è¯»å–çš„æ•°æ®ï¼Œå…±16bytes
  *
- * \retval ²Ù×÷½á¹û(ÏêÏ¸ËµÃ÷¼ûam_fm175xx.hÖĞµÄ×´Ì¬Âë¶¨Òå)
+ * \retval æ“ä½œç»“æœ(è¯¦ç»†è¯´æ˜è§am_fm175xx.hä¸­çš„çŠ¶æ€ç å®šä¹‰)
  */
 uint8_t am_fm175xx_picca_read (am_fm175xx_dev_t  *p_dev,
                                uint8_t            nblock,
@@ -1178,60 +1179,60 @@ uint8_t am_fm175xx_picca_read (am_fm175xx_dev_t  *p_dev,
 
 
 /**
- * \brief Mifare¿¨Ğ´Êı¾İ£¬Ğ´Ö®Ç°±ØĞè³É¹¦½øĞĞÃÜÔ¿ÑéÖ¤¡£
+ * \brief Mifareå¡å†™æ•°æ®ï¼Œå†™ä¹‹å‰å¿…éœ€æˆåŠŸè¿›è¡Œå¯†é’¥éªŒè¯ã€‚
  *
- *      ¶Ô¿¨ÄÚÄ³Ò»¿é½øĞĞÑéÖ¤³É¹¦ºó£¬¼´¿É¶ÔÍ¬Ò»ÉÈÇøµÄ¸÷¸ö¿é½øĞĞĞ´²Ù×÷£¨Ö»Òª·ÃÎÊÌõ¼şÔÊĞí£©£¬
- *  ÆäÖĞ°üÀ¨Î»ÓÚÉÈÇøÎ²µÄÃÜÂë¿é£¬ÕâÊÇ¸ü¸ÄÃÜÂëµÄÎ¨Ò»·½·¨¡£¶ÔÓÚPLUS CPU¿¨µÈ¼¶2¡¢3µÄAESÃÜ
- *  Ô¿ÔòÊÇÔÚÆäËûÎ»ÖÃĞŞ¸ÄÃÜÔ¿¡£
+ *      å¯¹å¡å†…æŸä¸€å—è¿›è¡ŒéªŒè¯æˆåŠŸåï¼Œå³å¯å¯¹åŒä¸€æ‰‡åŒºçš„å„ä¸ªå—è¿›è¡Œå†™æ“ä½œï¼ˆåªè¦è®¿é—®æ¡ä»¶å…è®¸ï¼‰ï¼Œ
+ *  å…¶ä¸­åŒ…æ‹¬ä½äºæ‰‡åŒºå°¾çš„å¯†ç å—ï¼Œè¿™æ˜¯æ›´æ”¹å¯†ç çš„å”¯ä¸€æ–¹æ³•ã€‚å¯¹äºPLUS CPUå¡ç­‰çº§2ã€3çš„AESå¯†
+ *  é’¥åˆ™æ˜¯åœ¨å…¶ä»–ä½ç½®ä¿®æ”¹å¯†é’¥ã€‚
  *
- * \param[in] p_dev      : fm175xxÉè±¸
- * \param[in] nblock     : ¶ÁÈ¡Êı¾İµÄ¿éºÅ
- *                         - S50£º0 ~ 63
- *                         - S70£º0 ~ 255
- *                         - PLUS CPU 2K£º0 ~ 127
- *                         - PLUS CPU 4K£º0 ~ 255
- * \param[in] p_buf      : Ğ´ÈëÊı¾İ»º³åÇø£¬´óĞ¡±ØĞëÎª 16
+ * \param[in] p_dev      : fm175xxè®¾å¤‡
+ * \param[in] nblock     : è¯»å–æ•°æ®çš„å—å·
+ *                         - S50ï¼š0 ~ 63
+ *                         - S70ï¼š0 ~ 255
+ *                         - PLUS CPU 2Kï¼š0 ~ 127
+ *                         - PLUS CPU 4Kï¼š0 ~ 255
+ * \param[in] p_buf      : å†™å…¥æ•°æ®ç¼“å†²åŒºï¼Œå¤§å°å¿…é¡»ä¸º 16
  *
- * \retval ²Ù×÷½á¹û(ÏêÏ¸ËµÃ÷¼ûam_fm175xx.hÖĞµÄ×´Ì¬Âë¶¨Òå)
+ * \retval æ“ä½œç»“æœ(è¯¦ç»†è¯´æ˜è§am_fm175xx.hä¸­çš„çŠ¶æ€ç å®šä¹‰)
  */
 uint8_t am_fm175xx_picca_write (am_fm175xx_dev_t  *p_dev,
                                 uint8_t            nblock,
                                 const uint8_t      p_buf[16]);
 
 /**
- * \name Mifare¿¨Öµ²Ù×÷Ä£Ê½
+ * \name Mifareå¡å€¼æ“ä½œæ¨¡å¼
  * @{
  */
 
-#define AM_FM175XX_PICCA_PICC_ADD       0xC1   /**< \brief ¼ÓÖµ */
-#define AM_FM175XX_PICCA_PICC_SUB       0xC0   /**< \brief ¼õÖµ */
+#define AM_FM175XX_PICCA_PICC_ADD       0xC1   /**< \brief åŠ å€¼ */
+#define AM_FM175XX_PICCA_PICC_SUB       0xC0   /**< \brief å‡å€¼ */
 
 /** @}*/
 
 /**
- * \brief MifareÖµ²Ù×÷£¬¶ÔMifare¿¨µÄÖµ¿é½øĞĞ¼Ó¼õ²Ù×÷
+ * \brief Mifareå€¼æ“ä½œï¼Œå¯¹Mifareå¡çš„å€¼å—è¿›è¡ŒåŠ å‡æ“ä½œ
  *
- * \param[in] p_dev      : fm175xxÉè±¸
- * \param[in] mode       : Öµ²Ù×÷µÄÄ£Ê½£¬¿ÉÒÔÊÇ¼Ó»ò¼õ£¬Ê¹ÓÃÏÂÁĞºê£º
+ * \param[in] p_dev      : fm175xxè®¾å¤‡
+ * \param[in] mode       : å€¼æ“ä½œçš„æ¨¡å¼ï¼Œå¯ä»¥æ˜¯åŠ æˆ–å‡ï¼Œä½¿ç”¨ä¸‹åˆ—å®ï¼š
  *                          - AM_FM175XX_PICCA_PICC_ADD
  *                          - AM_FM175XX_PICCA_PICC_SUB
- * \param[in] nblock     : ½øĞĞÖµ²Ù×÷µÄ¿éºÅ
- *                          - S50£º0 ~ 63
- *                          - S70£º0 ~ 255
- *                          - PLUS CPU 2K£º0 ~ 127
- *                          - PLUS CPU 4K£º0 ~ 255
- * \param[in] ntransblk  : ´«Êä¿éºÅ£¬¼ÆËã½á¹ûÖµ´æ·ÅµÄ¿éºÅ
- * \param[in] value      : 4×Ö½ÚÓĞ·ûºÅÊı
+ * \param[in] nblock     : è¿›è¡Œå€¼æ“ä½œçš„å—å·
+ *                          - S50ï¼š0 ~ 63
+ *                          - S70ï¼š0 ~ 255
+ *                          - PLUS CPU 2Kï¼š0 ~ 127
+ *                          - PLUS CPU 4Kï¼š0 ~ 255
+ * \param[in] ntransblk  : ä¼ è¾“å—å·ï¼Œè®¡ç®—ç»“æœå€¼å­˜æ”¾çš„å—å·
+ * \param[in] value      : 4å­—èŠ‚æœ‰ç¬¦å·æ•°
  *
- * \retval ²Ù×÷½á¹û(ÏêÏ¸ËµÃ÷¼ûam_fm175xx.hÖĞµÄ×´Ì¬Âë¶¨Òå)
+ * \retval æ“ä½œç»“æœ(è¯¦ç»†è¯´æ˜è§am_fm175xx.hä¸­çš„çŠ¶æ€ç å®šä¹‰)
  *
- * \note Òª½øĞĞ´ËÀà²Ù×÷£¬¿éÊı¾İ±ØĞëÒªÓĞÖµ¿éµÄ¸ñÊ½£¬¿ÉÒÔÊ¹ÓÃ
- * am_fm175xx_picca_val_set()º¯Êı½«Êı¾İ¿é³õÊ¼»¯ÎªÖµ¿éµÄ¸ñÊ½¡£¿É²Î¿¼NXPµÄÏà¹ØÎÄ
- * µµ¡£Èô¿¨¿é * ºÅÓë´«Êä¿éºÅÏàÍ¬£¬Ôò½«²Ù×÷ºóµÄ½á¹ûĞ´ÈëÔ­À´µÄ¿éÄÚ£»Èô¿¨¿éºÅÓë´«Êä¿éºÅ²»ÏàÍ¬£¬Ôò½«²Ù×÷ºóµÄ
- * ½á¹ûĞ´Èë´«Êä¿éÄÚ£¬½á¹û´«Êä¿éÄÚµÄÊı¾İ±»¸²¸Ç£¬Ô­¿éÄÚµÄÖµ²»±ä¡£´¦ÓÚµÈ¼¶2µÄPLUS CPU¿¨²»Ö§³ÖÖµ¿é²Ù×÷£¬µÈ
- * ¼¶1¡¢3Ö§³Ö¡£
- *       ½øĞĞ¼ÓÖµ²Ù×÷±ØĞëÏÈÑéÖ¤KEYB£¬½øĞĞ¼õÖµ²Ù×÷±ØĞëÏÈÑéÖ¤KEYA¡£
- *       ¿ÉÒÔÍ¨¹ı´«Èë²»Í¬µÄ¿é£¬²¢½«valueµÄÖµÉèÎª0À´±¸·İÊı¾İ¡£
+ * \note è¦è¿›è¡Œæ­¤ç±»æ“ä½œï¼Œå—æ•°æ®å¿…é¡»è¦æœ‰å€¼å—çš„æ ¼å¼ï¼Œå¯ä»¥ä½¿ç”¨
+ * am_fm175xx_picca_val_set()å‡½æ•°å°†æ•°æ®å—åˆå§‹åŒ–ä¸ºå€¼å—çš„æ ¼å¼ã€‚å¯å‚è€ƒNXPçš„ç›¸å…³æ–‡
+ * æ¡£ã€‚è‹¥å¡å— * å·ä¸ä¼ è¾“å—å·ç›¸åŒï¼Œåˆ™å°†æ“ä½œåçš„ç»“æœå†™å…¥åŸæ¥çš„å—å†…ï¼›è‹¥å¡å—å·ä¸ä¼ è¾“å—å·ä¸ç›¸åŒï¼Œåˆ™å°†æ“ä½œåçš„
+ * ç»“æœå†™å…¥ä¼ è¾“å—å†…ï¼Œç»“æœä¼ è¾“å—å†…çš„æ•°æ®è¢«è¦†ç›–ï¼ŒåŸå—å†…çš„å€¼ä¸å˜ã€‚å¤„äºç­‰çº§2çš„PLUS CPUå¡ä¸æ”¯æŒå€¼å—æ“ä½œï¼Œç­‰
+ * çº§1ã€3æ”¯æŒã€‚
+ *       è¿›è¡ŒåŠ å€¼æ“ä½œå¿…é¡»å…ˆéªŒè¯KEYBï¼Œè¿›è¡Œå‡å€¼æ“ä½œå¿…é¡»å…ˆéªŒè¯KEYAã€‚
+ *       å¯ä»¥é€šè¿‡ä¼ å…¥ä¸åŒçš„å—ï¼Œå¹¶å°†valueçš„å€¼è®¾ä¸º0æ¥å¤‡ä»½æ•°æ®ã€‚
  */
 uint8_t am_fm175xx_picca_val_operate (am_fm175xx_dev_t  *p_dev,
                                       uint8_t            mode,
@@ -1240,16 +1241,16 @@ uint8_t am_fm175xx_picca_val_operate (am_fm175xx_dev_t  *p_dev,
                                       int32_t            value);
 
 /**
- * \brief MifareÖµ²Ù×÷£¬ÉèÖÃÖµ¿éµÄÖµ
+ * \brief Mifareå€¼æ“ä½œï¼Œè®¾ç½®å€¼å—çš„å€¼
  *
- * \param[in] p_dev      : fm175xxÉè±¸
- * \param[in] nblock     : ¶ÁÈ¡Êı¾İµÄÖµ¿éµØÖ·
- * \param[in] value      : ÉèÖÃµÄÖµ
+ * \param[in] p_dev      : fm175xxè®¾å¤‡
+ * \param[in] nblock     : è¯»å–æ•°æ®çš„å€¼å—åœ°å€
+ * \param[in] value      : è®¾ç½®çš„å€¼
  *
- * \retval ²Ù×÷½á¹û(ÏêÏ¸ËµÃ÷¼ûam_fm175xx.hÖĞµÄ×´Ì¬Âë¶¨Òå)
+ * \retval æ“ä½œç»“æœ(è¯¦ç»†è¯´æ˜è§am_fm175xx.hä¸­çš„çŠ¶æ€ç å®šä¹‰)
  *
- * \note ¸Ãº¯ÊıÊ¹ÓÃÖ±½ÓĞ´Êı¾İµÄ·½Ê½£¬½«Ö¸¶¨µÄ¿é¸ñÊ½×ª»»ÎªÊıÖµ¿é£¬²¢³õÊ¼»¯ÊıÖµ¿éµÄÖµ£¬Ò²¿ÉÒÔÊ¹ÓÃ¸Ãº¯Êı¸Ä
- *       ±äÊıÖµ¿éµÄÖµ¡£¶Ô¿¨ÄÚÄ³Ò»¿é½øĞĞÑéÖ¤³É¹¦ºó£¬²¢ÇÒ·ÃÎÊÌõ¼şÔÊĞí²ÅÄÜ½øĞĞ´Ë²Ù×÷¡£
+ * \note è¯¥å‡½æ•°ä½¿ç”¨ç›´æ¥å†™æ•°æ®çš„æ–¹å¼ï¼Œå°†æŒ‡å®šçš„å—æ ¼å¼è½¬æ¢ä¸ºæ•°å€¼å—ï¼Œå¹¶åˆå§‹åŒ–æ•°å€¼å—çš„å€¼ï¼Œä¹Ÿå¯ä»¥ä½¿ç”¨è¯¥å‡½æ•°æ”¹
+ *       å˜æ•°å€¼å—çš„å€¼ã€‚å¯¹å¡å†…æŸä¸€å—è¿›è¡ŒéªŒè¯æˆåŠŸåï¼Œå¹¶ä¸”è®¿é—®æ¡ä»¶å…è®¸æ‰èƒ½è¿›è¡Œæ­¤æ“ä½œã€‚
  */
 uint8_t am_fm175xx_picca_val_set (am_fm175xx_dev_t  *p_dev,
                                   uint8_t            nblock,
@@ -1257,29 +1258,29 @@ uint8_t am_fm175xx_picca_val_set (am_fm175xx_dev_t  *p_dev,
 
 
 /**
- * \brief MifareÖµ²Ù×÷£¬»ñÈ¡Öµ¿éµÄÖµ
+ * \brief Mifareå€¼æ“ä½œï¼Œè·å–å€¼å—çš„å€¼
  *
- * \param[in]  p_dev      : fm175xxÉè±¸
- * \param[in]  nblock     : ¶ÁÈ¡Êı¾İµÄÖµ¿éµØÖ·
- * \param[out] p_value    : »ñÈ¡ÖµµÄÖ¸Õë
+ * \param[in]  p_dev      : fm175xxè®¾å¤‡
+ * \param[in]  nblock     : è¯»å–æ•°æ®çš„å€¼å—åœ°å€
+ * \param[out] p_value    : è·å–å€¼çš„æŒ‡é’ˆ
  *
- * \retval ²Ù×÷½á¹û(ÏêÏ¸ËµÃ÷¼ûam_fm175xx.hÖĞµÄ×´Ì¬Âë¶¨Òå)
+ * \retval æ“ä½œç»“æœ(è¯¦ç»†è¯´æ˜è§am_fm175xx.hä¸­çš„çŠ¶æ€ç å®šä¹‰)
  *
- * \note ¸Ãº¯ÊıÊ¹ÓÃÖ±½ÓĞ´Êı¾İµÄ·½Ê½£¬½«Ö¸¶¨µÄ¿é¸ñÊ½×ª»»ÎªÊıÖµ¿é£¬²¢³õÊ¼»¯ÊıÖµ¿éµÄÖµ£¬Ò²¿ÉÒÔÊ¹ÓÃ¸Ãº¯Êı¸Ä
- *       ±äÊıÖµ¿éµÄÖµ¡£¶Ô¿¨ÄÚÄ³Ò»¿é½øĞĞÑéÖ¤³É¹¦ºó£¬²¢ÇÒ·ÃÎÊÌõ¼şÔÊĞí²ÅÄÜ½øĞĞ´Ë²Ù×÷¡£
+ * \note è¯¥å‡½æ•°ä½¿ç”¨ç›´æ¥å†™æ•°æ®çš„æ–¹å¼ï¼Œå°†æŒ‡å®šçš„å—æ ¼å¼è½¬æ¢ä¸ºæ•°å€¼å—ï¼Œå¹¶åˆå§‹åŒ–æ•°å€¼å—çš„å€¼ï¼Œä¹Ÿå¯ä»¥ä½¿ç”¨è¯¥å‡½æ•°æ”¹
+ *       å˜æ•°å€¼å—çš„å€¼ã€‚å¯¹å¡å†…æŸä¸€å—è¿›è¡ŒéªŒè¯æˆåŠŸåï¼Œå¹¶ä¸”è®¿é—®æ¡ä»¶å…è®¸æ‰èƒ½è¿›è¡Œæ­¤æ“ä½œã€‚
  */
 uint8_t am_fm175xx_picca_val_get (am_fm175xx_dev_t  *p_dev,
                                   uint8_t            nblock,
                                   int32_t           *p_value);
 
 /**
- * \brief A¿¨Ğ­Òé·ÖÎö
+ * \brief Aå¡åè®®åˆ†æ
  *
- * \param[in] p_dev : fm175xxÉè±¸
- * \param[in] cid   : ¿¨Ê¶±ğºÅ£¬È¡Öµ·¶Î§0--14
+ * \param[in] p_dev : fm175xxè®¾å¤‡
+ * \param[in] cid   : å¡è¯†åˆ«å·ï¼Œå–å€¼èŒƒå›´0--14
  * \param[in] p_ats : RATS
  *
- * \return ²Ù×÷½á¹û(ÏêÏ¸ËµÃ÷¼ûam_fm175xx.hÖĞµÄ×´Ì¬Âë¶¨Òå)
+ * \return æ“ä½œç»“æœ(è¯¦ç»†è¯´æ˜è§am_fm175xx.hä¸­çš„çŠ¶æ€ç å®šä¹‰)
  */
 uint8_t am_fm175xx_picca_prot_parse (am_fm175xx_dev_t  *p_dev,
                                      uint8_t            cid,
@@ -1288,13 +1289,13 @@ uint8_t am_fm175xx_picca_prot_parse (am_fm175xx_dev_t  *p_dev,
 /**
  * \brief RATS
  *
- * \param[in]  p_dev    : fm175xxÉè±¸
- * \param[in]  cid      : ¿¨Ê¶±ğºÅ£¬È¡Öµ·¶Î§0--14
- * \param[out] p_rats   : ÇëÇóÓ¦´ğÒÔÏìÓ¦ĞÅÏ¢
- * \param[out] buf_size : ÏìÓ¦ĞÅÏ¢µÄ»º³åÇø´óĞ¡
- * \param[out] p_nbytes : ÇëÇóÓ¦´ğÒÔÏìÓ¦ĞÅÏ¢µÄ×Ö½ÚÊı
+ * \param[in]  p_dev    : fm175xxè®¾å¤‡
+ * \param[in]  cid      : å¡è¯†åˆ«å·ï¼Œå–å€¼èŒƒå›´0--14
+ * \param[out] p_rats   : è¯·æ±‚åº”ç­”ä»¥å“åº”ä¿¡æ¯
+ * \param[out] buf_size : å“åº”ä¿¡æ¯çš„ç¼“å†²åŒºå¤§å°
+ * \param[out] p_nbytes : è¯·æ±‚åº”ç­”ä»¥å“åº”ä¿¡æ¯çš„å­—èŠ‚æ•°
  *
- * \retval ²Ù×÷½á¹û(ÏêÏ¸ËµÃ÷¼ûam_fm175xx.hÖĞµÄ×´Ì¬Âë¶¨Òå)
+ * \retval æ“ä½œç»“æœ(è¯¦ç»†è¯´æ˜è§am_fm175xx.hä¸­çš„çŠ¶æ€ç å®šä¹‰)
  */
 uint8_t am_fm175xx_picca_rats_get (am_fm175xx_dev_t *p_dev,
                                    uint8_t   cid,
@@ -1303,41 +1304,41 @@ uint8_t am_fm175xx_picca_rats_get (am_fm175xx_dev_t *p_dev,
                                    uint32_t *p_nbytes);
 
 /**
- * \brief A¿¨Ğ­ÒéºÍ²ÎÊıÑ¡ÔñÇëÇó
+ * \brief Aå¡åè®®å’Œå‚æ•°é€‰æ‹©è¯·æ±‚
  *
- * \param[in]  p_dev    : fm175xxÉè±¸
- * \param[in]  flags    : Î»ÂÊ±àÂë
- *                      - b3:2 -- PCD  -> PICCµÄÎ»ÂÊ±àÂë
- *                      - b1:0 -- PICC -> PCD µÄÎ»ÂÊ±àÂë
+ * \param[in]  p_dev    : fm175xxè®¾å¤‡
+ * \param[in]  flags    : ä½ç‡ç¼–ç 
+ *                      - b3:2 -- PCD  -> PICCçš„ä½ç‡ç¼–ç 
+ *                      - b1:0 -- PICC -> PCD çš„ä½ç‡ç¼–ç 
  *                          - (00)b -> 106Kb
  *                          - (01)b -> 212Kb
  *                          - (10)b -> 424Kb
  *                          - (11)b -> 847Kb
  *
- * \retval ²Ù×÷½á¹û(ÏêÏ¸ËµÃ÷¼ûam_fm175xx.hÖĞµÄ×´Ì¬Âë¶¨Òå)
+ * \retval æ“ä½œç»“æœ(è¯¦ç»†è¯´æ˜è§am_fm175xx.hä¸­çš„çŠ¶æ€ç å®šä¹‰)
  */
 uint8_t am_fm175xx_picca_pps_set (am_fm175xx_dev_t *p_dev,
                                   uint8_t flags);
 
 /**
- * \brief A¿¨È¡ÏûÑ¡Ôñ
+ * \brief Aå¡å–æ¶ˆé€‰æ‹©
  *
- * \param[in]  p_dev    : fm175xxÉè±¸
+ * \param[in]  p_dev    : fm175xxè®¾å¤‡
  *
- * \retval ²Ù×÷½á¹û(ÏêÏ¸ËµÃ÷¼ûam_fm175xx.hÖĞµÄ×´Ì¬Âë¶¨Òå)
+ * \retval æ“ä½œç»“æœ(è¯¦ç»†è¯´æ˜è§am_fm175xx.hä¸­çš„çŠ¶æ€ç å®šä¹‰)
  */
 uint8_t am_fm175xx_picca_deselect (am_fm175xx_dev_t *p_dev);
 
 /**
- * \brief ´«Êä£¨T=CL£©
+ * \brief ä¼ è¾“ï¼ˆT=CLï¼‰
  *
- * \param[in]  p_dev  : fm175xxÉè±¸
- * \param[in] p_txbuf : ´«ÊäµÄÊı¾İ»º³åÇø
- * \param[in] n_tx    : ĞèÒª´«ÊäµÄÊı¾İ×Ö½ÚÊı
- * \param[in] p_rxbuf : ½ÓÊÕÊı¾İ»º³åÇø
- * \param[in] n_rx    : ĞèÒª½ÓÊÕµÄ×Ö½ÚÊı
+ * \param[in]  p_dev  : fm175xxè®¾å¤‡
+ * \param[in] p_txbuf : ä¼ è¾“çš„æ•°æ®ç¼“å†²åŒº
+ * \param[in] n_tx    : éœ€è¦ä¼ è¾“çš„æ•°æ®å­—èŠ‚æ•°
+ * \param[in] p_rxbuf : æ¥æ”¶æ•°æ®ç¼“å†²åŒº
+ * \param[in] n_rx    : éœ€è¦æ¥æ”¶çš„å­—èŠ‚æ•°
  *
- * \retval ²Ù×÷½á¹û(ÏêÏ¸ËµÃ÷¼ûam_fm175xx.hÖĞµÄ×´Ì¬Âë¶¨Òå)
+ * \retval æ“ä½œç»“æœ(è¯¦ç»†è¯´æ˜è§am_fm175xx.hä¸­çš„çŠ¶æ€ç å®šä¹‰)
  */
 uint8_t am_fm175xx_picca_transfer (am_fm175xx_dev_t *p_dev,
                                    const void       *p_txbuf,
@@ -1347,18 +1348,18 @@ uint8_t am_fm175xx_picca_transfer (am_fm175xx_dev_t *p_dev,
                                    uint32_t         *p_n_rx);
 
 /**
- * \brief ¶ÁĞ´Æ÷ÓëIC¿¨Êı¾İ½»»¥
+ * \brief è¯»å†™å™¨ä¸ICå¡æ•°æ®äº¤äº’
  *
- * \param[in]  p_dev       : fm175xxÉè±¸
- * \param[in]  sendbuf     : ´ı·¢ËÍµÄÊı¾İ
- * \param[in]  sendlen     : ·¢ËÍÊı¾İµÄ³¤¶È
- * \param[out] recvbuf     : ´ı½ÓÊÕµÄÊı¾İ
- * \param[in]  recvbufsize : ĞèÒª½ÓÊÕµÄÊı¾İ¸öÊı
- * \param[out] recvlen     : ¹²½ÓÊÕµ½µÄ×Ö½ÚÊı
- * \param[in]  nwtxm_crc   : crcĞ£Ñé²ÎÊı
- * \param[in]  nfwi        : ÑÓÊ±
+ * \param[in]  p_dev       : fm175xxè®¾å¤‡
+ * \param[in]  sendbuf     : å¾…å‘é€çš„æ•°æ®
+ * \param[in]  sendlen     : å‘é€æ•°æ®çš„é•¿åº¦
+ * \param[out] recvbuf     : å¾…æ¥æ”¶çš„æ•°æ®
+ * \param[in]  recvbufsize : éœ€è¦æ¥æ”¶çš„æ•°æ®ä¸ªæ•°
+ * \param[out] recvlen     : å…±æ¥æ”¶åˆ°çš„å­—èŠ‚æ•°
+ * \param[in]  nwtxm_crc   : crcæ ¡éªŒå‚æ•°
+ * \param[in]  nfwi        : å»¶æ—¶
  *
- * \retval ²Ù×÷½á¹û(ÏêÏ¸ËµÃ÷¼ûam_fm175xx.hÖĞµÄ×´Ì¬Âë¶¨Òå)
+ * \retval æ“ä½œç»“æœ(è¯¦ç»†è¯´æ˜è§am_fm175xx.hä¸­çš„çŠ¶æ€ç å®šä¹‰)
  */
 uint8_t am_fm175xx_exchange_block (am_fm175xx_dev_t *p_dev,
                                    uint8_t          *sendbuf,
@@ -1370,28 +1371,28 @@ uint8_t am_fm175xx_exchange_block (am_fm175xx_dev_t *p_dev,
                                    uint8_t           nfwi);
 
 /**
- * \name PICCB¿¨ÇëÇóÄ£Ê½
+ * \name PICCBå¡è¯·æ±‚æ¨¡å¼
  * @{
  */
 
-#define AM_FM175XX_PICCB_REQ_IDLE 0x00 /**< \brief IDLEÄ£Ê½,ÇëÇó¿ÕÏĞµÄ¿¨ */
-#define AM_FM175XX_PICCB_REQ_ALL  0x08 /**< \brief ALLÄ£Ê½,ÇëÇóËùÓĞµÄ¿¨  */
+#define AM_FM175XX_PICCB_REQ_IDLE 0x00 /**< \brief IDLEæ¨¡å¼,è¯·æ±‚ç©ºé—²çš„å¡ */
+#define AM_FM175XX_PICCB_REQ_ALL  0x08 /**< \brief ALLæ¨¡å¼,è¯·æ±‚æ‰€æœ‰çš„å¡  */
 
 /** @}*/
 
 /**
- * \brief PICCB¿¨ÇëÇó²Ù×÷
+ * \brief PICCBå¡è¯·æ±‚æ“ä½œ
  *
- *  ¸Ãº¯Êı×÷Îª¿¨µÄÇëÇó²Ù×÷£¬Ö»Òª·ûºÏISO14443B±ê×¼µÄ¿¨¶¼Ó¦ÄÜ·¢³öÏìÓ¦¡£
+ *  è¯¥å‡½æ•°ä½œä¸ºå¡çš„è¯·æ±‚æ“ä½œï¼Œåªè¦ç¬¦åˆISO14443Bæ ‡å‡†çš„å¡éƒ½åº”èƒ½å‘å‡ºå“åº”ã€‚
  *
- * \param[in]  p_dev       : fm175xxÉè±¸
- * \param[in]  req_mode    : ÇëÇóÄ£Ê½£¬¿ÉÊ¹ÓÃÏÂÁĞºê£º
+ * \param[in]  p_dev       : fm175xxè®¾å¤‡
+ * \param[in]  req_mode    : è¯·æ±‚æ¨¡å¼ï¼Œå¯ä½¿ç”¨ä¸‹åˆ—å®ï¼š
  *                           - #AM_FM175XX_PICCB_REQ_IDLE
  *                           - #AM_FM175XX_PICCB_REQ_ALL
- * \param[in]  slot_time   : Ê±Ï¶×ÜÊı£¬0 ~ 4
- * \param[out] atqb        : ·µ»Ø¶ÔREQBÃüÁîµÄÏìÓ¦£¬³¤¶ÈÎª12
+ * \param[in]  slot_time   : æ—¶éš™æ€»æ•°ï¼Œ0 ~ 4
+ * \param[out] atqb        : è¿”å›å¯¹REQBå‘½ä»¤çš„å“åº”ï¼Œé•¿åº¦ä¸º12
  *
- * \retval ²Ù×÷½á¹û(ÏêÏ¸ËµÃ÷¼ûam_fm175xx.hÖĞµÄ×´Ì¬Âë¶¨Òå)
+ * \retval æ“ä½œç»“æœ(è¯¦ç»†è¯´æ˜è§am_fm175xx.hä¸­çš„çŠ¶æ€ç å®šä¹‰)
  */
 uint8_t am_fm175xx_piccb_request (am_fm175xx_dev_t *p_dev,
                                   uint8_t           req_mode,
@@ -1399,25 +1400,25 @@ uint8_t am_fm175xx_piccb_request (am_fm175xx_dev_t *p_dev,
                                   uint8_t           atqb[12]);
 
 /**
- * \brief BÀà¿¨µÄATTRIBÃüÁî
+ * \brief Bç±»å¡çš„ATTRIBå‘½ä»¤
  *
- * \param[in] p_dev      : fm175xxÉè±¸
- * \param[in] p_pupi     : PUPI,´óĞ¡Îª4×Ö½ÚµÄ±êÊ¶·û
- * \param[in] cid        : È¡Öµ·¶Î§Îª 0 - 14, Èô²»Ö§³ÖCID£¬ÔòÉèÖÃÎª0£¬CIDÓÉPCD¹æ¶¨²¢¶ÔËùÓĞÔÚ
- *                         Í¬Ò»Ê±¿Ì´¦ÓÚACTIVE×´Ì¬µÄPICCÊÇÎ¨Ò»µÄ
- * \param[in] protype    : Ö§³ÖµÄĞ­Òé
- *                          - bit3 : 1-PCDÖĞÖ¹ÓëPICC¼ÌĞøÍ¨ĞÅ,0-PCDÓëPICC¼ÌĞøÍ¨ĞÅ
+ * \param[in] p_dev      : fm175xxè®¾å¤‡
+ * \param[in] p_pupi     : PUPI,å¤§å°ä¸º4å­—èŠ‚çš„æ ‡è¯†ç¬¦
+ * \param[in] cid        : å–å€¼èŒƒå›´ä¸º 0 - 14, è‹¥ä¸æ”¯æŒCIDï¼Œåˆ™è®¾ç½®ä¸º0ï¼ŒCIDç”±PCDè§„å®šå¹¶å¯¹æ‰€æœ‰åœ¨
+ *                         åŒä¸€æ—¶åˆ»å¤„äºACTIVEçŠ¶æ€çš„PICCæ˜¯å”¯ä¸€çš„
+ * \param[in] protype    : æ”¯æŒçš„åè®®
+ *                          - bit3 : 1-PCDä¸­æ­¢ä¸PICCç»§ç»­é€šä¿¡,0-PCDä¸PICCç»§ç»­é€šä¿¡
  *                          - bit2 ~ bit1 :
  *                              - 11 : 10 etu + 512 / fs
  *                              - 10 : 10 etu + 256 / fs
  *                              - 01 : 10 etu + 128 / fs
  *                              - 00 : 10 etu + 32 / fs
- *                          - bit0 : 1-×ñÑ­ISO14443-4,0-²»×ñÑ­ISO14443-4
- *                                   (¶ş´úÉí·İÖ¤±ØĞë¸ÃÎ»±ØĞëÎª1)
+ *                          - bit0 : 1-éµå¾ªISO14443-4,0-ä¸éµå¾ªISO14443-4
+ *                                   (äºŒä»£èº«ä»½è¯å¿…é¡»è¯¥ä½å¿…é¡»ä¸º1)
  *
- * \retval ²Ù×÷½á¹û(ÏêÏ¸ËµÃ÷¼ûam_fm175xx.hÖĞµÄ×´Ì¬Âë¶¨Òå)
+ * \retval æ“ä½œç»“æœ(è¯¦ç»†è¯´æ˜è§am_fm175xx.hä¸­çš„çŠ¶æ€ç å®šä¹‰)
  *
- * \note Ö´ĞĞ¸ÃÃüÁîÊ±±ØĞëÏÈ³É¹¦Ö´ĞĞÒ»´ÎrequestÃüÁî
+ * \note æ‰§è¡Œè¯¥å‘½ä»¤æ—¶å¿…é¡»å…ˆæˆåŠŸæ‰§è¡Œä¸€æ¬¡requestå‘½ä»¤
  */
 uint8_t am_fm175xx_piccb_attrib (am_fm175xx_dev_t *p_dev,
                                  const uint8_t     pupi[4],
@@ -1425,29 +1426,29 @@ uint8_t am_fm175xx_piccb_attrib (am_fm175xx_dev_t *p_dev,
                                  uint8_t           protype);
 
 /**
- * \brief »ñÈ¡BÀà¿¨µÄUID
+ * \brief è·å–Bç±»å¡çš„UID
  *
- * \param[in]  p_dev   : fm175xxÉè±¸
- * \param[out] uid     : »ñÈ¡µ½µÄ8×Ö½ÚUID
+ * \param[in]  p_dev   : fm175xxè®¾å¤‡
+ * \param[out] uid     : è·å–åˆ°çš„8å­—èŠ‚UID
  *
- * \retval ²Ù×÷½á¹û(ÏêÏ¸ËµÃ÷¼ûam_fm175xx.hÖĞµÄ×´Ì¬Âë¶¨Òå)
+ * \retval æ“ä½œç»“æœ(è¯¦ç»†è¯´æ˜è§am_fm175xx.hä¸­çš„çŠ¶æ€ç å®šä¹‰)
  *
- * \note Ö´ĞĞ¸ÃÃüÁîÊ±±ØĞëÏÈ³É¹¦Ö´ĞĞÒ»´ÎattribÃüÁî
+ * \note æ‰§è¡Œè¯¥å‘½ä»¤æ—¶å¿…é¡»å…ˆæˆåŠŸæ‰§è¡Œä¸€æ¬¡attribå‘½ä»¤
  */
 uint8_t am_fm175xx_piccb_guid (am_fm175xx_dev_t *p_dev, uint8_t uid[8]);
 
 /**
- * \brief PICC B¿¨¼¤»î£¬»ñÈ¡UID
+ * \brief PICC Bå¡æ¿€æ´»ï¼Œè·å–UID
  *
- * \param[in]  p_dev    : fm175xxÉè±¸
- * \param[in]  req_mode : ÇëÇóÄ£Ê½£¬¿ÉÊ¹ÓÃÏÂÁĞºê£º
+ * \param[in]  p_dev    : fm175xxè®¾å¤‡
+ * \param[in]  req_mode : è¯·æ±‚æ¨¡å¼ï¼Œå¯ä½¿ç”¨ä¸‹åˆ—å®ï¼š
  *                         - #AM_FM175XX_PICCB_REQ_IDLE
  *                         - #AM_FM175XX_PICCB_REQ_ALL
- * \param[out] p_uid    : UIDÏà¹ØĞÅÏ¢£¬³¤¶ÈÎª8
- * \param[out] p_uid_len  : UID³¤¶È(Éí·İÖ¤Îª8£¬ÆäËûB¿¨ÔòÎª4)
- * \retval ²Ù×÷½á¹û(ÏêÏ¸ËµÃ÷¼ûam_fm175xx.hÖĞµÄ×´Ì¬Âë¶¨Òå)
+ * \param[out] p_uid    : UIDç›¸å…³ä¿¡æ¯ï¼Œé•¿åº¦ä¸º8
+ * \param[out] p_uid_len  : UIDé•¿åº¦(èº«ä»½è¯ä¸º8ï¼Œå…¶ä»–Bå¡åˆ™ä¸º4)
+ * \retval æ“ä½œç»“æœ(è¯¦ç»†è¯´æ˜è§am_fm175xx.hä¸­çš„çŠ¶æ€ç å®šä¹‰)
  *
- * \note ÔÚµ÷ÓÃ¸Ãº¯ÊıÇ°£¬ĞèÒªÈ·±£IC¹¤×÷Ä£Ê½ÒÑ¾­ÅäÖÃÎªTypeBÄ£Ê½¡£
+ * \note åœ¨è°ƒç”¨è¯¥å‡½æ•°å‰ï¼Œéœ€è¦ç¡®ä¿ICå·¥ä½œæ¨¡å¼å·²ç»é…ç½®ä¸ºTypeBæ¨¡å¼ã€‚
  */
 uint8_t am_fm175xx_piccb_active (am_fm175xx_dev_t *p_dev,
                                  uint8_t           req_mode,
@@ -1455,66 +1456,66 @@ uint8_t am_fm175xx_piccb_active (am_fm175xx_dev_t *p_dev,
                                  uint8_t          *p_uid_len);
 
 /**
- * \brief PICC B¿¨µÄ¹ÒÆğ²Ù×÷£¬Ê¹ËùÑ¡ÔñµÄ¿¨½øÈëHALT×´Ì¬
+ * \brief PICC Bå¡çš„æŒ‚èµ·æ“ä½œï¼Œä½¿æ‰€é€‰æ‹©çš„å¡è¿›å…¥HALTçŠ¶æ€
  *
- *     ¸Ãº¯ÊıÓÃÓÚBĞÍ¿¨¹ÒÆğ£¬ÔÚÖ´ĞĞ¹ÒÆğÃüÁîÇ°£¬±ØĞèÏÈÖ´ĞĞ³É¹¦¹ıÒ»´ÎÇëÇóÃüÁî¡£Ö´ĞĞ
- * ¹ÒÆğÃüÁî³É¹¦ºó£¬¿¨Æ¬´¦ÓÚ¹ÒÆğ×´Ì¬£¬Ä£¿é±ØĞèÍ¨¹ıALL·½Ê½ÇëÇó¿¨Æ¬£¬¶ø²»ÄÜÓÃIDLE·½
- * Ê½ÇëÇó¡£
+ *     è¯¥å‡½æ•°ç”¨äºBå‹å¡æŒ‚èµ·ï¼Œåœ¨æ‰§è¡ŒæŒ‚èµ·å‘½ä»¤å‰ï¼Œå¿…éœ€å…ˆæ‰§è¡ŒæˆåŠŸè¿‡ä¸€æ¬¡è¯·æ±‚å‘½ä»¤ã€‚æ‰§è¡Œ
+ * æŒ‚èµ·å‘½ä»¤æˆåŠŸåï¼Œå¡ç‰‡å¤„äºæŒ‚èµ·çŠ¶æ€ï¼Œæ¨¡å—å¿…éœ€é€šè¿‡ALLæ–¹å¼è¯·æ±‚å¡ç‰‡ï¼Œè€Œä¸èƒ½ç”¨IDLEæ–¹
+ * å¼è¯·æ±‚ã€‚
  *
- * \param[in] p_dev   : fm175xxÉè±¸
- * \param[in] pupi    : PUPI,´óĞ¡Îª4×Ö½ÚµÄ±êÊ¶·û
+ * \param[in] p_dev   : fm175xxè®¾å¤‡
+ * \param[in] pupi    : PUPI,å¤§å°ä¸º4å­—èŠ‚çš„æ ‡è¯†ç¬¦
  *
- * \retval ²Ù×÷½á¹û(ÏêÏ¸ËµÃ÷¼ûam_fm175xx.hÖĞµÄ×´Ì¬Âë¶¨Òå)
+ * \retval æ“ä½œç»“æœ(è¯¦ç»†è¯´æ˜è§am_fm175xx.hä¸­çš„çŠ¶æ€ç å®šä¹‰)
  */
 uint8_t am_fm175xx_piccb_halt (am_fm175xx_dev_t *p_dev,
                                const uint8_t     pupi[4]);
 
 /**
- * \brief PCD½øÈëLPCDÄ£Ê½µÄ³õÊ¼»¯
+ * \brief PCDè¿›å…¥LPCDæ¨¡å¼çš„åˆå§‹åŒ–
  *
- *    FM175xxÉè±¸ÔÚ´Ëº¯ÊıÖĞÍê³ÉÁË  ¼Ä´æÆ÷µÄ³õÊ¼»¯   µ÷Ğ£²ÎÊı³õÊ¼»¯   ÖĞ¶ÏÉèÖÃ³õÊ¼»¯
- *µ÷Ğ£¹ı³Ì£¨°üÀ¨GPA±¶ÊıÉèÖÃ    ²Î¿¼µçÑ¹ÉèÖÃ   ãĞÖµÉèÖÃµÈ£©¡£
+ *    FM175xxè®¾å¤‡åœ¨æ­¤å‡½æ•°ä¸­å®Œæˆäº†  å¯„å­˜å™¨çš„åˆå§‹åŒ–   è°ƒæ ¡å‚æ•°åˆå§‹åŒ–   ä¸­æ–­è®¾ç½®åˆå§‹åŒ–
+ *è°ƒæ ¡è¿‡ç¨‹ï¼ˆåŒ…æ‹¬GPAå€æ•°è®¾ç½®    å‚è€ƒç”µå‹è®¾ç½®   é˜ˆå€¼è®¾ç½®ç­‰ï¼‰ã€‚
  *
- * \param[in] p_dev   : fm175xxÉè±¸
+ * \param[in] p_dev   : fm175xxè®¾å¤‡
  *
- * \retval ²Ù×÷½á¹û(ÏêÏ¸ËµÃ÷¼ûam_fm175xx.hÖĞµÄ×´Ì¬Âë¶¨Òå)
+ * \retval æ“ä½œç»“æœ(è¯¦ç»†è¯´æ˜è§am_fm175xx.hä¸­çš„çŠ¶æ€ç å®šä¹‰)
  */
 int8_t am_fm175xx_lpcd_init(am_fm175xx_dev_t *p_dev);
 
 /**
- * \brief PCD½øÈëLPCDÄ£Ê½
+ * \brief PCDè¿›å…¥LPCDæ¨¡å¼
  *
- *    ½øÈëÖ®Ç°Ğèµ÷ÓÃam_fm175xx_lpcd_initº¯Êı½øĞĞLPCDÄ£Ê½¼Ä´æÆ÷½øĞĞ³õÊ¼»¯
+ *    è¿›å…¥ä¹‹å‰éœ€è°ƒç”¨am_fm175xx_lpcd_initå‡½æ•°è¿›è¡ŒLPCDæ¨¡å¼å¯„å­˜å™¨è¿›è¡Œåˆå§‹åŒ–
  *
- * \param[in] handle   : fm175xxÉè±¸¾ä±ú
+ * \param[in] handle   : fm175xxè®¾å¤‡å¥æŸ„
  *
  */
 void  am_fm175xx_lpcd_mode_entry(am_fm175xx_handle_t handle);
 
 /**
- * \brief PCDÍË³öLPCDÄ£Ê½
+ * \brief PCDé€€å‡ºLPCDæ¨¡å¼
  *
- *    ÍË³öLPCDÄ£Ê½Ö®ºóĞèÒªÑÓÊ±1ms£¬È·±£Éè±¸¾§ÕñÆğÕñ£¬Ê¹ÓÃ´Ëº¯ÊıÍË³öºó£¬
- *Ğèµ÷ÓÃam_fm175xx_exit_lpcd_config º¯Êı¶ÔÎ´±£´æµÄÊı¾İ½øĞĞÖØĞÂÅäÖÃ£¬È·±£Éè±¸Õı³£¹¤×÷
+ *    é€€å‡ºLPCDæ¨¡å¼ä¹‹åéœ€è¦å»¶æ—¶1msï¼Œç¡®ä¿è®¾å¤‡æ™¶æŒ¯èµ·æŒ¯ï¼Œä½¿ç”¨æ­¤å‡½æ•°é€€å‡ºåï¼Œ
+ *éœ€è°ƒç”¨am_fm175xx_exit_lpcd_config å‡½æ•°å¯¹æœªä¿å­˜çš„æ•°æ®è¿›è¡Œé‡æ–°é…ç½®ï¼Œç¡®ä¿è®¾å¤‡æ­£å¸¸å·¥ä½œ
  *
- * \param[in] handle   : fm175xxÉè±¸¾ä±ú
+ * \param[in] handle   : fm175xxè®¾å¤‡å¥æŸ„
  *
  */
 void  am_fm175xx_lpcd_mode_exit(am_fm175xx_handle_t handle);
 /**
- * \brief PCDÍË³öLPCDÄ£Ê½ºó¶ÔÎ´±£´æµÄÊı¾İ½øĞĞÖØĞÂÅäÖÃ
+ * \brief PCDé€€å‡ºLPCDæ¨¡å¼åå¯¹æœªä¿å­˜çš„æ•°æ®è¿›è¡Œé‡æ–°é…ç½®
  *
- * \param[in] p_dev   : fm175xxÉè±¸
+ * \param[in] p_dev   : fm175xxè®¾å¤‡
  *
  */
 void  am_fm175xx_exit_lpcd_config(am_fm175xx_dev_t   *p_dev);
 
 /**
- * \brief PCDÄ£Ê½²úÉú¿¨½ø³¡ÖĞ¶Ï»Øµ÷º¯ÊıÉèÖÃ
+ * \brief PCDæ¨¡å¼äº§ç”Ÿå¡è¿›åœºä¸­æ–­å›è°ƒå‡½æ•°è®¾ç½®
  *
- * \param[in] p_dev   : fm175xxÉè±¸
- * \param[in] pfn_callback   : »Øµ÷º¯Êı
- * \param[in] p_lpcd_cb_arg   : »Øµ÷º¯Êı²ÎÊı
+ * \param[in] p_dev   : fm175xxè®¾å¤‡
+ * \param[in] pfn_callback   : å›è°ƒå‡½æ•°
+ * \param[in] p_lpcd_cb_arg   : å›è°ƒå‡½æ•°å‚æ•°
  *
  */
 void  am_fm175xx_lpcd_cb_set(am_fm175xx_dev_t   *p_dev,
