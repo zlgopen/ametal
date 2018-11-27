@@ -408,19 +408,16 @@ struct am_sensor_drv_funcs {
 typedef struct am_sensor_serv {
 
     /** \brief sensor驱动函数结构体指针    */
-    struct am_sensor_drv_funcs *p_funcs;
+    const struct am_sensor_drv_funcs *p_funcs;
 
     /** \brief 用于驱动函数的第一个参数  */
-    void                       *p_drv;
+    void                             *p_drv;
     
 } am_sensor_serv_t;
 
 /** \brief sensor标准服务操作句柄类型定义  */
 typedef am_sensor_serv_t *am_sensor_handle_t;
 
-/*******************************************************************************
- * Public Function
- ******************************************************************************/
 /**
  * \brief 获取传感器某一通道的类型，例如：温度、湿度、压强等
  *
@@ -433,6 +430,7 @@ typedef am_sensor_serv_t *am_sensor_handle_t;
  *
  * \retval  >=0       传感器类型，AM_SENSOR_TYPE_*(eg: #AM_SENSOR_TYPE_VOLTAGE)
  * \retval -AM_ENODEV 通道不存在
+ * \retval -AM_EINVAL 无效参数
  */
 am_static_inline
 am_err_t am_sensor_type_get (am_sensor_handle_t handle, int id)
@@ -450,12 +448,18 @@ am_err_t am_sensor_type_get (am_sensor_handle_t handle, int id)
  *
  * \retval  AM_OK     成功，一个或多个通道数据读取成功
  * \retval -AM_ENODEV 部分或所有通道不存在
+ * \retval -AM_EINVAL 无效参数
+ * \retval -AM_EPERM  操作不允许
  * \retval   <0       部分或所有通道读取失败
  *
  * \note p_ids列表可能包含多个通道，p_buf中获取的数据会按照传入的通道ID一一对应
  * 放在对应的缓冲区中。若该函数返回值<0，则表示部分或者所有通道数据读取失败，可
  * 以用辅助宏AM_SENSOR_VAL_IS_VALID 来判断每个通道的数据，若为真，则表示该通道值
  * 有效，若为假，则表示该通道数据获取失败。
+ *
+ * \attention 若打开了某一通道的数据准备就绪触发模式，则只能在该通道的触发回调函
+ * 数里调用该函数获取该通道的值，切记不要在该通道的回调函数里获取其他通道的采样
+ * 数据
  */
 am_static_inline
 am_err_t am_sensor_data_get (am_sensor_handle_t  handle,
@@ -482,6 +486,7 @@ am_err_t am_sensor_data_get (am_sensor_handle_t  handle,
  *
  * \retval  AW_OK     所有通道使能成功
  * \retval -AM_ENODEV 部分或所有通道不存在
+ * \retval -AM_EINVAL 无效参数
  * \retval   <0       部分或所有通道使能失败，每一个通道使能的结果存于 val 值中
  *
  * \attention p_result 指向的缓存用于存储每个通道使能的结果，它们表示状态，并非
@@ -511,6 +516,7 @@ am_err_t am_sensor_enable (am_sensor_handle_t  handle,
  *
  * \retval  AM_OK     所有通道禁能成功
  * \retval -AM_ENODEV 部分或所有通道不存在
+ * \retval -AM_EINVAL 无效参数
  * \retval   < 0      标准错误码，部分或所有通道禁能失败
  *
  * \attention p_result 指向的缓存用于存储每个通道禁能的结果，它们表示状态，并非
@@ -536,7 +542,7 @@ am_err_t am_sensor_disable (am_sensor_handle_t  handle,
  * \param[in] p_val  : 属性值
  *
  * \retval   AM_OK       成功
- * \retval  -AM_EINVAL   参数错误
+ * \retval  -AM_EINVAL   无效参数
  * \retval  -AM_ENOTSUP  不支持
  * \retval  -AM_ENODEV   通道不存在
  *
@@ -560,7 +566,7 @@ am_err_t am_sensor_attr_set (am_sensor_handle_t     handle,
  * \param[out] p_val  : 用于获取属性值的缓存
  *
  * \retval   AM_OK       成功
- * \retval  -AM_EINVAL   参数错误
+ * \retval  -AM_EINVAL   无效参数
  * \retval  -AM_ENOTSUP  不支持
  * \retval  -AM_ENODEV   通道不存在
  *
@@ -586,7 +592,7 @@ am_err_t am_sensor_attr_get (am_sensor_handle_t handle,
  * \param[in] p_arg  : 用户参数
  *
  * \retval  AM_OK      成功
- * \retval -AM_EINVAL  参数错误
+ * \retval -AM_EINVAL  无效参数
  * \retval -AM_ENOTSUP 不支持的触发模式
  * \retval -AM_ENODEV  通道不存在
  *
@@ -615,6 +621,7 @@ am_err_t am_sensor_trigger_cfg (am_sensor_handle_t      handle,
  * \param[in] id     : 传感器通道 id
  *
  * \retval  AM_OK     打开成功
+ * \retval -AM_EINVAL 无效参数
  * \retval -AM_ENODEV 通道不存在
  * \retval   < 0      失败
  */
@@ -632,6 +639,7 @@ am_err_t am_sensor_trigger_on (am_sensor_handle_t handle,
  * \param[in] id     : 传感器通道 id
  *
  * \retval  AM_OK     关闭成功
+ * \retval -AM_EINVAL 无效参数
  * \retval -AM_ENODEV 通道不存在
  * \retval   < 0      失败
  */
