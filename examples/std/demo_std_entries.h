@@ -374,6 +374,20 @@ void demo_std_rtc_entry (am_rtc_handle_t rtc_handle);
  */
 void demo_std_nvram_entry (char *p_nvram_name, int32_t nvram_unit, int32_t test_lenth);
 
+/**
+ * \brief 温湿度传感器HTS221例程，通过触发模式实现
+ *
+ * \return 无
+ */
+void demo_std_hts221_int_entry (void);
+
+/**
+ * \brief 温湿度传感器HTS221例程，通过查询方式实现
+ *
+ * \return 无
+ */
+void demo_std_hts221_entry (void);
+
 #ifdef __cplusplus
 }
 #endif
