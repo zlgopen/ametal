@@ -83,12 +83,13 @@ static void __softimer_remove (am_softimer_t *p_timer)
 /* 必须以初始化指定的频率调用该函数  */
 void am_softimer_module_tick (void)
 {
+    struct am_list_head *p;
+    am_softimer_t       *p_timer;
+
     int old = am_int_cpu_lock();
 
+    /* 对首个节点进行减1操作（这段时间确定） */
     if ( !am_list_empty( &g_softimer_head ) ) {
-
-        struct am_list_head *p;
-        am_softimer_t       *p_timer;
 
         /* 指向第一个有效元素节点 */
         p       = (&g_softimer_head)->next;
@@ -100,37 +101,42 @@ void am_softimer_module_tick (void)
         if (p_timer->ticks) {
             p_timer->ticks--;
         }
+    }
 
-        while (!am_list_empty(&g_softimer_head)) {
+    am_int_cpu_unlock(old);
 
-            /*
-             * 处理第一个有效元素,处理后该结点必然不处于第一个结点
-             * (若处于第一个结点，其值也不会为 0，即下次扫描就会退出)
-             */
-            if (p_timer->ticks == 0) {
+    old = am_int_cpu_lock();
 
-                /* 该节点本次定时时间到，删除该节点                  */
-                am_list_del_init(&p_timer->node);
+    /* 处理链表首个节点，为 0 则取出处理  */
+    while (!am_list_empty(&g_softimer_head)) {
 
-                /* 可能在回调函数中停止，因此先将其重新添加进链表中  */
-                __softimer_add(p_timer, p_timer->repeat_ticks);
+        p       = (&g_softimer_head)->next;
+        p_timer = am_list_entry(p, am_softimer_t, node);
 
-                if (p_timer->timeout_callback ) {
-                    /* 执行定时器处理函数时，打开总中断 */
-                    am_int_cpu_unlock(old);
-                    p_timer->timeout_callback(p_timer->p_arg);
-                    old = am_int_cpu_lock();
-                }
+        /*
+         * 处理第一个有效元素,处理后该结点必然不处于第一个结点
+         * (若处于第一个结点，其值也不会为 0，即下次扫描就会退出)
+         */
+        if (p_timer->ticks == 0) {
 
-                /* 处理完一个节点，继续判断下一个首节点时间是否为0 */
-                p       = (&g_softimer_head)->next;
-                p_timer = am_list_entry(p, am_softimer_t, node);
+            /* 该节点本次定时时间到，删除该节点                  */
+            am_list_del_init(&p_timer->node);
 
+            /* 可能在回调函数中停止，因此先将其重新添加进链表中  */
+            __softimer_add(p_timer, p_timer->repeat_ticks);
 
-            /* 只要遇到不为0的结点，就退出循环 */
-            } else {
-                break;
+            /* 处理回调时， 为其打开中断 */
+            am_int_cpu_unlock(old);
+
+            if (p_timer->timeout_callback ) {
+                p_timer->timeout_callback(p_timer->p_arg);
             }
+
+            old = am_int_cpu_lock();
+
+        /* 只要遇到不为0的结点，就退出循环 */
+        } else {
+            break;
         }
     }
     am_int_cpu_unlock(old);
