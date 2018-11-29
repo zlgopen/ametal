@@ -641,6 +641,11 @@
               <FileType>4</FileType>
               <FilePath>..\..\..\..\components\drivers\source\fm175xx\am_fm175xx_zlg116.lib</FilePath>
             </File>
+            <File>
+              <FileName>am_sensor_hts221.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\sensor\am_sensor_hts221.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -775,6 +780,11 @@
               <FileName>am_timer.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\components\service\source\am_timer.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_sensor.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\service\source\am_sensor.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -1776,6 +1786,16 @@
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\std\nvram\demo_std_nvram.c</FilePath>
             </File>
+            <File>
+              <FileName>demo_std_hts221.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\std\sensor\hts221\demo_std_hts221.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_std_hts221_int.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\std\sensor\hts221\demo_std_hts221_int.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -2025,6 +2045,11 @@
               <FileName>am_servconf_nvram.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\user_config\am_servconf_usrcfg\am_servconf_nvram.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_sensor_hts221.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_sensor_hts221.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -2665,6 +2690,11 @@
               <FileType>4</FileType>
               <FilePath>..\..\..\..\components\drivers\source\fm175xx\am_fm175xx_zlg116.lib</FilePath>
             </File>
+            <File>
+              <FileName>am_sensor_hts221.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\sensor\am_sensor_hts221.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -2799,6 +2829,11 @@
               <FileName>am_timer.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\components\service\source\am_timer.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_sensor.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\service\source\am_sensor.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -3800,6 +3835,16 @@
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\std\nvram\demo_std_nvram.c</FilePath>
             </File>
+            <File>
+              <FileName>demo_std_hts221.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\std\sensor\hts221\demo_std_hts221.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_std_hts221_int.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\std\sensor\hts221\demo_std_hts221_int.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -4049,6 +4094,11 @@
               <FileName>am_servconf_nvram.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\user_config\am_servconf_usrcfg\am_servconf_nvram.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_sensor_hts221.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_sensor_hts221.c</FilePath>
             </File>
           </Files>
         </Group>

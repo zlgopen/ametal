@@ -51,6 +51,7 @@ am_local uint32_t __pow10 (int n)
 
 am_local am_err_t __sensor_val_unit_convert (am_sensor_val_t *p_val, int32_t to_unit)
 {
+    uint32_t max_val;
     if (p_val->val != 0) {                   /* 值为0，单位设置为目标单位即可 */
 
         uint32_t mul;
@@ -70,7 +71,7 @@ am_local am_err_t __sensor_val_unit_convert (am_sensor_val_t *p_val, int32_t to_
                 mul = __pow10(unit_err);                       /* 扩大的倍数  */
 
                 /* 只有当  val 值 不超过 max_val 时，才不会超过范围 */
-                uint32_t max_val = 2147483647 / mul;
+                max_val = 2147483647 / mul;
 
                 if ((p_val->val > 0) && (p_val->val > max_val)) {
                     return -AM_ERANGE;
