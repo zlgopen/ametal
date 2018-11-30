@@ -76,11 +76,12 @@ void demo_std_hts221_int_entry (void)
     am_sensor_handle_t handle = NULL;
 
     am_err_t ret = AM_OK;
+	
+    /* 设置该传感器的数据输出频率为12.5Hz（两路通道同步） */
+    am_sensor_val_t hts221_rate = {125, AM_SENSOR_UNIT_DECI};
 
     handle = am_sensor_hts221_inst_init();
 
-    /* 设置该传感器的数据输出频率为12.5Hz（两路通道同步） */
-    am_sensor_val_t hts221_rate = {125, AM_SENSOR_UNIT_DECI};
     ret = am_sensor_attr_set(handle,
                              __hts221_id[0],
                              AM_SENSOR_ATTR_SAMPLING_RATE,
