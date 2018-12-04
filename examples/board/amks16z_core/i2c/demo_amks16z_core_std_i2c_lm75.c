@@ -43,6 +43,7 @@
 #include "am_i2c.h"
 #include "am_kl26_inst_init.h"
 #include "demo_std_entries.h"
+#include "demo_amks16z_core_all_entries.h"
 
 /**
  * \brief ²âÊÔº¯ÊıÈë¿Ú

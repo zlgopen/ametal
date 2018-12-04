@@ -41,6 +41,7 @@
 #include "am_vdebug.h"
 #include "demo_std_entries.h"
 #include "../../../../soc/freescale/kl26/kl26_pin.h"
+#include "demo_amks16z_core_all_entries.h"
 
 /**
  * \brief Àý³ÌÈë¿Ú

@@ -45,7 +45,7 @@
 #include "demo_std_entries.h"
 #include "am_hwconf_miniport_view.h"
 #include "am_kl26_inst_init.h"
-
+#include "demo_amks16z_core_all_entries.h"
 
 /* Àý³ÌÈë¿Ú */
 void demo_amks16z_core_miniport_hc595_digitron_key_entry (void)

@@ -45,6 +45,7 @@
 #include "am_int.h"
 #include "demo_fsl_entrys.h"
 #include "../../../../soc/freescale/kl26/am_kl26.h"
+#include "demo_amks16z_core_all_entries.h"
 
 /**
  * \brief i2s中断数据发送，调用HW层接口函数实现

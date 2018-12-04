@@ -43,6 +43,7 @@
 #include "demo_std_entries.h"
 #include "am_hwconf_miniport_view.h"
 #include "am_kl26_inst_init.h"
+#include "demo_amks16z_core_all_entries.h"
 
 /**
  * \brief Àý³ÌÈë¿Ú

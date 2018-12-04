@@ -45,6 +45,7 @@
 #include "am_int.h"
 #include "am_adc.h"
 #include "am_kl26_inst_init.h"
+#include "demo_amks16z_core_all_entries.h"
 
 /**
  * \brief adc软件触发，DMA传输结果，一次采样两个ADC描述符

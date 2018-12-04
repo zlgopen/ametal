@@ -44,6 +44,7 @@
 #include "am_int.h"
 #include "demo_fsl_entrys.h"
 #include "../../../../soc/freescale/kl26/am_kl26.h"
+#include "demo_amks16z_core_all_entries.h"
 
 /**
  * \brief DAC输出电压，DMA传输数据，HW层接口实现

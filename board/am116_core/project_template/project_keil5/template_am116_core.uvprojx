@@ -636,6 +636,11 @@
               <FileType>1</FileType>
               <FilePath>..\..\..\..\components\drivers\source\zigbee\am_zm516x.c</FilePath>
             </File>
+            <File>
+              <FileName>am_fm175xx_zlg116.lib</FileName>
+              <FileType>4</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\fm175xx\am_fm175xx_zlg116.lib</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -946,6 +951,11 @@
               <FileType>1</FileType>
               <FilePath>..\..\..\..\soc\zlg\drivers\source\wdt\am_zlg_wwdg.c</FilePath>
             </File>
+            <File>
+              <FileName>zm_zlg_spi_poll.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\soc\zlg\drivers\source\spi\zm_zlg_spi_poll.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -1185,6 +1195,16 @@
               <FileName>am_servconf_nvram.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\user_config\am_servconf_usrcfg\am_servconf_nvram.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_fm175xx.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_fm175xx.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_zlg116_spi_poll.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_spi_poll.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -1820,6 +1840,11 @@
               <FileType>1</FileType>
               <FilePath>..\..\..\..\components\drivers\source\zigbee\am_zm516x.c</FilePath>
             </File>
+            <File>
+              <FileName>am_fm175xx_zlg116.lib</FileName>
+              <FileType>4</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\fm175xx\am_fm175xx_zlg116.lib</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -2130,6 +2155,11 @@
               <FileType>1</FileType>
               <FilePath>..\..\..\..\soc\zlg\drivers\source\wdt\am_zlg_wwdg.c</FilePath>
             </File>
+            <File>
+              <FileName>zm_zlg_spi_poll.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\soc\zlg\drivers\source\spi\zm_zlg_spi_poll.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -2369,6 +2399,16 @@
               <FileName>am_servconf_nvram.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\user_config\am_servconf_usrcfg\am_servconf_nvram.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_fm175xx.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_fm175xx.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_zlg116_spi_poll.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_spi_poll.c</FilePath>
             </File>
           </Files>
         </Group>

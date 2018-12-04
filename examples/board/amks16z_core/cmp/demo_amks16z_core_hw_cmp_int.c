@@ -44,6 +44,7 @@
 #include "am_board.h"
 #include "demo_fsl_entrys.h"
 #include "../../../../soc/freescale/kl26/am_kl26.h"
+#include "demo_amks16z_core_all_entries.h"
 
 /**
  * \brief CMP比较器HW层中断例程

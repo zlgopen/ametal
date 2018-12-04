@@ -40,6 +40,7 @@
 #include "am_vdebug.h"
 #include "am_board.h"
 #include "demo_fsl_entrys.h"
+#include "demo_amks16z_core_all_entries.h"
 
 /**
  * \brief Ö÷º¯Êý

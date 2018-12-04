@@ -46,6 +46,7 @@
 #include "am_vdebug.h"
 #include "am_kl26_inst_init.h"
 #include "am_board.h"
+#include "demo_amks16z_core_all_entries.h"
 
 /**
  * \brief ADC差分输入，DMA传输，软件触发

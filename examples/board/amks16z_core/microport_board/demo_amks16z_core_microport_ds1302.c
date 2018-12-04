@@ -45,6 +45,7 @@
 #include "am_rtc.h"
 #include "demo_std_entries.h"
 #include "am_hwconf_microport.h"
+#include "demo_amks16z_core_all_entries.h"
 
 /**
  * \brief MicroPort DS1302 例程，通过标准接口实现

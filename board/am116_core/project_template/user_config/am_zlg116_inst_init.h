@@ -744,6 +744,19 @@ am_wdt_handle_t am_zlg116_wwdg_inst_init (void);
 void am_zlg116_wwdg_inst_deinit (am_wdt_handle_t handle);
 
 /**
+ * \brief SPI0 实例初始化，获得SPI标准服务句柄(POLL方式)
+ * \return SPI0句柄值，若为NULL，表明初始化失败
+ */
+am_spi_handle_t am_zlg116_spi1_poll_inst_init (void);
+
+/**
+ * \brief SPI0 实例解初始化(POLL方式)
+ * \param[in] handle : 通过 am_zlg116_spi0_poll_inst_init() 函数获得的SPI0句柄
+ * \retval 无
+ */
+void am_zlg116_spi1_poll_inst_deinit (am_spi_handle_t handle);
+
+/**
  * @}
  */
 
