@@ -36,15 +36,12 @@
 #include "am_sensor.h"
 #include "am_sensor_hts221.h"
 #include "am_delay.h"
-#include "am_hwconf_sensor_hts221.h"
 
 /**
  * \brief 例程入口
  */
-void demo_std_hts221_entry (void)
+void demo_std_hts221_entry (am_sensor_handle_t handle)
 {
-    am_sensor_handle_t handle = NULL;
-
     /* HTS221提供的所有通道ID列举 */
     const int       id[2] = {AM_HTS221_CHAN_1, AM_HTS221_CHAN_2};
 
@@ -58,8 +55,6 @@ void demo_std_hts221_entry (void)
      */
     const char *data_name_string[] = {"humidity", "temperature"};
     const char *data_unit_string[] = {"%rH", "℃"};
-
-    handle = am_sensor_hts221_inst_init();
 
     am_sensor_enable(handle, id, 2, data);
 

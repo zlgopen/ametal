@@ -28,7 +28,6 @@
 #include "am_sensor.h"
 #include "am_sensor_hts221.h"
 #include "am_delay.h"
-#include "am_hwconf_sensor_hts221.h"
 
 /** \brief HTS221传感器的ID */
 const static int __hts221_id[2] = {0, 1};
@@ -71,16 +70,12 @@ static void __pfn_temprature (void *p_arg, uint32_t trigger_src)
 /**
  * \brief 例程入口
  */
-void demo_std_hts221_int_entry (void)
+void demo_std_hts221_int_entry (am_sensor_handle_t handle)
 {
-    am_sensor_handle_t handle = NULL;
-
     am_err_t ret = AM_OK;
 	
     /* 设置该传感器的数据输出频率为12.5Hz（两路通道同步） */
     am_sensor_val_t hts221_rate = {125, AM_SENSOR_UNIT_DECI};
-
-    handle = am_sensor_hts221_inst_init();
 
     ret = am_sensor_attr_set(handle,
                              __hts221_id[0],
