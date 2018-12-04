@@ -48,12 +48,12 @@ void __kl26_plfm_tpm0_pwm_deinit (void)
 
 /** \brief TPM0用于PWM功能的引脚配置信息列表 */
 am_fsl_tpm_pwm_ioinfo_t __g_tpm0_pwm_ioinfo_list[] = {
-    {PIOD_0, PIOD_0_TPM0_CH0, PIOD_0_GPIO | AM_GPIO_INPUT},  /**< \brief 通道0 */
-    {PIOD_1, PIOD_1_TPM0_CH1, PIOD_1_GPIO | AM_GPIO_INPUT},  /**< \brief 通道1 */
-    {PIOC_3, PIOC_3_TPM0_CH2, PIOC_3_GPIO | AM_GPIO_INPUT},  /**< \brief 通道2 */
-    {PIOD_3, PIOD_3_TPM0_CH3, PIOD_3_GPIO | AM_GPIO_INPUT},  /**< \brief 通道3 */
-    {PIOD_4, PIOD_4_TPM0_CH4, PIOD_4_GPIO | AM_GPIO_INPUT},  /**< \brief 通道4 */
-    {PIOD_5, PIOD_5_TPM0_CH5, PIOD_5_GPIO | AM_GPIO_INPUT},  /**< \brief 通道5 */
+    {PIOE_24, PIOE_24_TPM0_CH0, PIOE_24_GPIO | AM_GPIO_INPUT},  /**< \brief 通道0 */
+    {PIOE_25, PIOE_25_TPM0_CH1, PIOE_25_GPIO | AM_GPIO_INPUT},  /**< \brief 通道1 */
+    {PIOE_29, PIOE_29_TPM0_CH2, PIOE_29_GPIO | AM_GPIO_INPUT},  /**< \brief 通道2 */
+    {PIOE_30, PIOE_30_TPM0_CH3, PIOE_30_GPIO | AM_GPIO_INPUT},  /**< \brief 通道3 */
+    {PIOE_31, PIOE_31_TPM0_CH4, PIOE_31_GPIO | AM_GPIO_INPUT},  /**< \brief 通道4 */
+    //{PIOD_5, PIOD_5_TPM0_CH5, PIOD_5_GPIO | AM_GPIO_INPUT},  /**< \brief 通道5 */
 };
 
 /** \brief TPM0用于PWM设备信息 */

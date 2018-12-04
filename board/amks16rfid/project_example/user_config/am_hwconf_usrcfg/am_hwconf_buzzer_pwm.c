@@ -37,8 +37,8 @@
 /** \brief PWM 的占空比，50 代表 50% */
 #define __BUZZER_PWM_DUTY       50
 
-/** \brief 使用通道1, TPM_CH2, PIOC_3 */
-#define __BUZZER_TIMER_CHAN     2
+/** \brief 使用通道1, TPM_CH1, PIOE_25 */
+#define __BUZZER_TIMER_CHAN     1
 
 /** \brief 蜂鸣器实例初始化 */
 am_pwm_handle_t am_buzzer_pwm_inst_init (void)
@@ -46,11 +46,11 @@ am_pwm_handle_t am_buzzer_pwm_inst_init (void)
     am_pwm_handle_t handle = am_kl26_tpm0_pwm_inst_init();
 
     if (NULL != handle) {
-		am_buzzer_pwm_init(handle,
-						   __BUZZER_TIMER_CHAN,
-						   10000000 * __BUZZER_PWM_DUTY / __BUZZER_PWM_FREQ,
-						   1000000000 / __BUZZER_PWM_FREQ);
-	}
+        am_buzzer_pwm_init(handle,
+                           __BUZZER_TIMER_CHAN,
+                           10000000 * __BUZZER_PWM_DUTY / __BUZZER_PWM_FREQ,
+                           1000000000 / __BUZZER_PWM_FREQ);
+    }
 
     return handle;
 }
