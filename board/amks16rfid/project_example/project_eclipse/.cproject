@@ -27,7 +27,7 @@
 							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.datasections.1382397822" name="Data sections (-fdata-sections)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.datasections" useByScannerDiscovery="true" value="true" valueType="boolean"/>
 							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.debugging.level.1010006684" name="Debug level" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.debugging.level" useByScannerDiscovery="true" value="ilg.gnuarmeclipse.managedbuild.cross.option.debugging.level.max" valueType="enumerated"/>
 							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.debugging.format.1918189622" name="Debug format" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.debugging.format" useByScannerDiscovery="true"/>
-							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.arm.target.family.1700127919" name="ARM family" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.arm.target.family" useByScannerDiscovery="false" value="ilg.gnuarmeclipse.managedbuild.cross.option.arm.target.mcpu.cortex-m3" valueType="enumerated"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.arm.target.family.1700127919" name="ARM family" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.arm.target.family" useByScannerDiscovery="false" value="ilg.gnuarmeclipse.managedbuild.cross.option.arm.target.mcpu.cortex-m0" valueType="enumerated"/>
 							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.warnings.allwarn.595014887" name="Enable all common warnings (-Wall)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.warnings.allwarn" useByScannerDiscovery="true" value="true" valueType="boolean"/>
 							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.warnings.extrawarn.2144874804" name="Enable extra warnings (-Wextra)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.warnings.extrawarn" useByScannerDiscovery="true" value="false" valueType="boolean"/>
 							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.freestanding.1472533061" name="Assume freestanding environment (-ffreestanding)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.freestanding" useByScannerDiscovery="true" value="true" valueType="boolean"/>
@@ -56,55 +56,41 @@
 							</tool>
 							<tool command="${cross_prefix}${cross_c}${cross_suffix}" commandLinePattern="${COMMAND} ${cross_toolchain_flags} ${FLAGS} -c ${OUTPUT_FLAG} ${OUTPUT_PREFIX}${OUTPUT} ${INPUTS}" errorParsers="org.eclipse.cdt.core.GLDErrorParser;org.eclipse.cdt.core.GCCErrorParser" id="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.623545097" name="Cross ARM C Compiler" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler">
 								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.include.paths.549074649" name="Include paths (-I)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.include.paths" useByScannerDiscovery="false" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/freescale/kl26}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/examples/board/amks16rfid}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/user_code}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/zlg116}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/drivers/include/afio/hw}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/drivers/include/i2c/hw}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/drivers/include/rtc/hw}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/drivers/include/gpio/hw}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/drivers/include/adc/hw}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/drivers/include/rcc/hw}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/zlg217}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/user_config/am_hwconf_usrcfg}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/drivers/include/bkp/hw}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/drivers/include/pwr/hw}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/drivers/include/spi/hw}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/drivers/include/rtc/hw}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/drivers/include/ili9341}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/user_config}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/zlg217}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/examples/std}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/examples/soc/zlg}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/examples/components}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/drivers/include/syscfg/hw}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/drivers/include/crc/hw}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/drivers/include/dac/hw}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/drivers/include/uart/hw}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/drivers/include/tim/hw}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/drivers/include/wdt/hw}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/drivers/include/flash}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/drivers/include/flash/hw}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/drivers/include/rtc}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/drivers/include/rtc/hw}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/drivers/include/exti/hw}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/arch/arm/include/hw}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/drivers/include/i2c/hw}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/drivers/include/uart/hw}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/drivers/include/i2c/hw}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/drivers/include/usbd/hw}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/drivers/include/adc/hw}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/drivers/include/afio/hw}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/drivers/include/rcc/hw}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/drivers/include/dma/hw}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/drivers/include/bkp/hw}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/drivers/include/spi/hw}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/drivers/include/gpio/hw}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/drivers/include/pwr/hw}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/drivers/include/ili9341}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/zlg217}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/drivers/include/rtc/hw}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/drivers/include/ili9341}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/components/libc/armlib_adapter/include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/examples/board/amks16z_core}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/examples/soc/freescale}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/components/util/include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/examples/board/amks16z_core}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/freescale/drivers/include/adc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/freescale/drivers/include/bme}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/freescale/drivers/include/clk}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/freescale/drivers/include/cmp}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/freescale/drivers/include/dac}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/freescale/drivers/include/dma}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/freescale/drivers/include/ftfa}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/freescale/drivers/include/gpio}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/freescale/drivers/include/i2c}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/freescale/drivers/include/i2s}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/freescale/drivers/include/llwu}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/freescale/drivers/include/lptmr}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/freescale/drivers/include/mcg}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/freescale/drivers/include/mcm}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/freescale/drivers/include/pinctr}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/freescale/drivers/include/pit}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/freescale/drivers/include/pmc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/freescale/drivers/include/pmu}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/freescale/drivers/include/rcm}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/freescale/drivers/include/rtc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/freescale/drivers/include/sim}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/freescale/drivers/include/smc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/freescale/drivers/include/spi}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/freescale/drivers/include/tpm}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/freescale/drivers/include/tsi}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/freescale/drivers/include/uart}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/freescale/drivers/include/usb}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/freescale/drivers/include/wdt}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/user_config}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/user_config/am_hwconf_usrcfg}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/user_config/am_servconf_usrcfg}&quot;"/>
@@ -115,35 +101,15 @@
 									<listOptionValue builtIn="false" value="&quot;${AMETAL_ROOT}/components/libc/newlib_adapter/include&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${AMETAL_ROOT}/components/service/include&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${AMETAL_ROOT}/components/util/include&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${AMETAL_ROOT}/examples/board/am217_core&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${AMETAL_ROOT}/examples/std&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/examples/soc/zlg}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/examples/components}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/examples/soc}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/examples/std}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${AMETAL_ROOT}/interface&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${AMETAL_ROOT}/soc/zlg/zlg217&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${AMETAL_ROOT}/soc/zlg/drivers/include/adc&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${AMETAL_ROOT}/soc/zlg/drivers/include/bkp&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${AMETAL_ROOT}/soc/zlg/drivers/include/clk&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${AMETAL_ROOT}/soc/zlg/drivers/include/cmp&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${AMETAL_ROOT}/soc/zlg/drivers/include/crc&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${AMETAL_ROOT}/soc/zlg/drivers/include/dac&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${AMETAL_ROOT}/soc/zlg/drivers/include/dma&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${AMETAL_ROOT}/soc/zlg/drivers/include/exti&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${AMETAL_ROOT}/soc/zlg/drivers/include/flash&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${AMETAL_ROOT}/soc/zlg/drivers/include/gpio&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${AMETAL_ROOT}/soc/zlg/drivers/include/i2c&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${AMETAL_ROOT}/soc/zlg/drivers/include/pwr&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${AMETAL_ROOT}/soc/zlg/drivers/include/rcc&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${AMETAL_ROOT}/soc/zlg/drivers/include/spi&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${AMETAL_ROOT}/soc/zlg/drivers/include/syscfg&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${AMETAL_ROOT}/soc/zlg/drivers/include/tim&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${AMETAL_ROOT}/soc/zlg/drivers/include/uart&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${AMETAL_ROOT}/soc/zlg/drivers/include/wdt&quot;"/>
 								</option>
 								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.defs.209409753" name="Defined symbols (-D)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.defs" useByScannerDiscovery="false" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="AM_VDEBUG"/>
+									<listOptionValue builtIn="false" value="KL16"/>
 									<listOptionValue builtIn="false" value="AM_CORTEX_M0"/>
 								</option>
 								<inputType id="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.input.672529060" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.input"/>
@@ -179,7 +145,7 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/components/drivers/source/fm175xx}&quot;"/>
 								</option>
 								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.linker.scriptfile.347344202" name="Script files (-T)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.linker.scriptfile" useByScannerDiscovery="false" valueType="stringList">
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/example_am217_core.ld}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/example_amks16rfid.ld}&quot;"/>
 								</option>
 								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.linker.nostart.1532393853" name="Do not use standard start files (-nostartfiles)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.linker.nostart" useByScannerDiscovery="false" value="true" valueType="boolean"/>
 								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.linker.usenewlibnano.1346330969" name="Use newlib-nano (--specs=nano.specs)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.linker.usenewlibnano" useByScannerDiscovery="false" value="true" valueType="boolean"/>
@@ -208,7 +174,7 @@
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
-						<entry excluding="examples/board/amks16rfid|startup/am_zlg217_armcc_startup.s|examples/components/drivers/demo_zm516x_network.c|examples/board/am824zb|examples/board/am824ble|examples/components/drivers/demo_fm175xx_picca_lpcd_read_id.c|soc/soc/zlg/drivers/source/pwr/am_zlg116_pwr.c|examples/examples/soc/zlg/wakeup/demo_zlg116_drv_stopmode_wake_up.c|examples/examples/soc/zlg/wakeup/demo_zlg116_drv_standbymode_wake_up.c|examples/examples/soc/zlg/wakeup/demo_zlg116_drv_sleepmode_wake_up.c|examples/examples/soc/zlg/wakeup/demo_zlg116_drv_sleepmode_timer_wake_up.c|examples/soc/freescale|examples/soc/nxp|examples/board/am824_core|examples/board/amks16z_core|examples/examples/board/am824_core|examples/examples/board/amks16z_core|examples/examples/board/am116_core|examples/examples/soc/freescale|examples/examples/soc/nxp|soc/freescale|soc/nxp|soc/soc/zlg/drivers/include/gpio/am_zlg116_gpio.h|soc/soc/zlg/drivers/include/gpio/am_zlg116_gpio_util.h|soc/soc/zlg/drivers/include/clk/am_zlg116_clk.h|soc/soc/zlg/drivers/include/rcc/hw/amhw_zlg116_rcc.h|soc/soc/zlg/drivers/include/pwr/am_zlg116_pwr.h|soc/soc/zlg/zlg116|soc/soc/nxp|soc/soc/freescale|soc/zlg/zlg217/zlg217_sdk_version_temp.c|soc/zlg/drivers/source/gpio/am_zlg116_gpio.c|soc/zlg/drivers/source/clk/am_zlg116_clk.c|examples/components/drivers/demo_fm175xx_picca_read_id.c|user_config/am_delay.c|user_config/am_bootloader.c|examples/board/am116_core|soc/zlg/zlg116|examples/soc/zlg/wakeup/demo_zlg217_drv_stopmode_wake_up.c|examples/soc/zlg/wakeup/demo_zlg217_drv_standbymode_wake_up.c|examples/soc/zlg/wakeup/demo_zlg217_drv_sleepmode_wake_up.c|examples/soc/zlg/wakeup/demo_zlg217_drv_sleepmode_timer_wake_up.c|examples/soc/zlg/clk/demo_zlg217_hw_clk.c|components/drivers/source/fm175xx/am_fm175xx.c|components/libc/microlib_adapter|components/libc/armlib_adapter|startup/am_zlg116_armcc_startup.s|ametal/soc/zlg/zlg217|ametal/common/components/usb|ametal/common/components/libc/microlib_adapter|ametal/common/components/libc/armlib_adapter|ametal/board/am116_core/am_bsp_armlib.h|ametal/board/am116_core/am_bsp_armlib.c|ametal/board/am116_core/am_bsp_microlib.h|ametal/board/am116_core/am_bsp_microlib.c|ametal/soc/zlg/zlg116/drivers/include/am_zlg116_spi_slave_dma.h|ametal/soc/zlg/zlg116/drivers/source/am_zlg116_spi_slave_dma.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+						<entry excluding="examples/std/sensor|startup/am_kl26_armcc_system_init.c|examples/board/amks16z_core/pit|examples/board/am824zb|examples/board/am824ble|examples/components/drivers/demo_zm516x_network.c|examples/board/amks16z_core/i2s|examples/board/amks16z_core/i2c|examples/board/amks16z_core/gpio|examples/board/amks16z_core/ftfa|examples/board/amks16z_core/dma|examples/board/amks16z_core/dac|examples/board/amks16z_core/cmp|examples/board/amks16z_core/buzzer|examples/board/amks16z_core/bme|examples/board/amks16z_core/adc|examples/board/amks16z_core/wdt|examples/board/amks16z_core/uart|examples/board/amks16z_core/tsi|examples/board/amks16z_core/tpm|examples/board/amks16z_core/spi|examples/board/amks16z_core/sim_uid|examples/board/amks16z_core/sec|examples/board/amks16z_core/rtc|examples/board/amks16z_core/pmu|examples/board/amks16z_core/miniport_board|examples/board/amks16z_core/microport_board|examples/board/amks16z_core/lptmr|soc/nxp|examples/soc/nxp|examples/board/am824_core|ametal/board/am116_core/am_bsp_armlib.h|ametal/soc/zlg/zlg116/drivers/source/am_zlg116_spi_slave_dma.c|startup/am_kl26_armcc_startup.s|ametal/soc/zlg/zlg116/drivers/include/am_zlg116_spi_slave_dma.h|ametal/soc/zlg/zlg217|components/libc/armlib_adapter|ametal/board/am116_core/am_bsp_microlib.c|ametal/common/components/libc/microlib_adapter|bsp_common/source/am_bsp_microlib.c|ametal/common/components/usb|ametal/board/am116_core/am_bsp_armlib.c|examples/board/am217_core|examples/board/am116_core|bsp_common/source/am_bsp_armlib.c|startup/am_zlg116_armcc_startup.s|soc/zlg|components/libc/microlib_adapter|examples/soc/zlg|components/drivers/source/fm175xx/am_fm175xx.c|ametal/board/am116_core/am_bsp_microlib.h|ametal/common/components/libc/armlib_adapter" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name=""/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>
@@ -226,7 +192,6 @@
 				<memory section="IRAM1" size="0x1000" start="0x20000000" startup="0"/>
 				<memory section="IROM1" size="0x8000" start="0x08000000" startup="1"/>
 			</storageModule>
-			<storageModule moduleId="ilg.gnumcueclipse.managedbuild.packs"/>
 		</cconfiguration>
 		<cconfiguration id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1913533800.422754405">
 			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1913533800.422754405" moduleId="org.eclipse.cdt.core.settings" name="Release">
@@ -283,12 +248,45 @@
 							</tool>
 							<tool command="${cross_prefix}${cross_c}${cross_suffix}" commandLinePattern="${COMMAND} ${cross_toolchain_flags} ${FLAGS} -c ${OUTPUT_FLAG} ${OUTPUT_PREFIX}${OUTPUT} ${INPUTS}" errorParsers="org.eclipse.cdt.core.GLDErrorParser;org.eclipse.cdt.core.GCCErrorParser" id="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.2138511912" name="Cross ARM C Compiler" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler">
 								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.include.paths.1850229892" name="Include paths (-I)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.include.paths" useByScannerDiscovery="false" valueType="includePath">
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/user_code}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/drivers/include/rtc/hw}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/drivers/include/spi/hw}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/drivers/include/ili9341}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/zlg217}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/freescale/kl26}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/examples/board/amks16rfid}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/user_config}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/bsp_common/include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/examples/board/amks16z_core}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/examples/soc/freescale}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/examples/board/amks16z_core}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/components/drivers}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/components/libc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/components/usb/device}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/components/usb/host}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/freescale/drivers/include/adc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/freescale/drivers/include/bme}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/freescale/drivers/include/clk}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/freescale/drivers/include/cmp}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/freescale/drivers/include/dac}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/freescale/drivers/include/dma}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/freescale/drivers/include/ftfa}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/freescale/drivers/include/gpio}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/freescale/drivers/include/i2c}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/freescale/drivers/include/i2s}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/freescale/drivers/include/llwu}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/freescale/drivers/include/lptmr}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/freescale/drivers/include/mcg}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/freescale/drivers/include/mcm}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/freescale/drivers/include/pinctr}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/freescale/drivers/include/pit}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/freescale/drivers/include/pmc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/freescale/drivers/include/pmu}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/freescale/drivers/include/rcm}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/freescale/drivers/include/rtc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/freescale/drivers/include/sim}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/freescale/drivers/include/smc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/freescale/drivers/include/spi}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/freescale/drivers/include/tpm}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/freescale/drivers/include/tsi}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/freescale/drivers/include/uart}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/freescale/drivers/include/usb}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/freescale/drivers/include/wdt}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/user_config/am_hwconf_usrcfg}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/user_config/am_servconf_usrcfg}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${AMETAL_ROOT}/3rdparty/CMSIS/Include&quot;"/>
@@ -298,35 +296,15 @@
 									<listOptionValue builtIn="false" value="&quot;${AMETAL_ROOT}/components/libc/newlib_adapter/include&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${AMETAL_ROOT}/components/service/include&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${AMETAL_ROOT}/components/util/include&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${AMETAL_ROOT}/examples/board/am116_core&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${AMETAL_ROOT}/examples/std&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/examples/soc/zlg}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/examples/components}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/examples/soc}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/examples/std}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${AMETAL_ROOT}/interface&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${AMETAL_ROOT}/soc/zlg/zlg116&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${AMETAL_ROOT}/soc/zlg/drivers/include/adc&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${AMETAL_ROOT}/soc/zlg/drivers/include/bkp&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${AMETAL_ROOT}/soc/zlg/drivers/include/clk&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${AMETAL_ROOT}/soc/zlg/drivers/include/cmp&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${AMETAL_ROOT}/soc/zlg/drivers/include/crc&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${AMETAL_ROOT}/soc/zlg/drivers/include/dac&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${AMETAL_ROOT}/soc/zlg/drivers/include/dma&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${AMETAL_ROOT}/soc/zlg/drivers/include/exti&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${AMETAL_ROOT}/soc/zlg/drivers/include/flash&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${AMETAL_ROOT}/soc/zlg/drivers/include/gpio&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${AMETAL_ROOT}/soc/zlg/drivers/include/i2c&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${AMETAL_ROOT}/soc/zlg/drivers/include/pwr&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${AMETAL_ROOT}/soc/zlg/drivers/include/rcc&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${AMETAL_ROOT}/soc/zlg/drivers/include/spi&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${AMETAL_ROOT}/soc/zlg/drivers/include/syscfg&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${AMETAL_ROOT}/soc/zlg/drivers/include/tim&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${AMETAL_ROOT}/soc/zlg/drivers/include/uart&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${AMETAL_ROOT}/soc/zlg/drivers/include/wdt&quot;"/>
 								</option>
 								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.defs.1490707958" name="Defined symbols (-D)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.defs" useByScannerDiscovery="false" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="AM_VDEBUG"/>
+									<listOptionValue builtIn="false" value="KL16"/>
 									<listOptionValue builtIn="false" value="AM_CORTEX_M0"/>
 								</option>
 								<inputType id="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.input.853712118" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.input"/>
@@ -362,7 +340,7 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/components/drivers/source/fm175xx}&quot;"/>
 								</option>
 								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.linker.scriptfile.1301419844" name="Script files (-T)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.linker.scriptfile" useByScannerDiscovery="false" valueType="stringList">
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/example_am116_core.ld}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/example_amks16rfid.ld}&quot;"/>
 								</option>
 								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.linker.nostart.633381211" name="Do not use standard start files (-nostartfiles)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.linker.nostart" useByScannerDiscovery="false" value="true" valueType="boolean"/>
 								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.linker.usenewlibnano.934483089" name="Use newlib-nano (--specs=nano.specs)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.linker.usenewlibnano" useByScannerDiscovery="false" value="true" valueType="boolean"/>
@@ -391,7 +369,7 @@
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
-						<entry excluding="examples/board/amks16rfid|startup/am_zlg217_armcc_startup.s|examples/components/drivers/demo_zm516x_network.c|examples/board/am824zb|examples/board/am824ble|examples/components/drivers/demo_fm175xx_picca_lpcd_read_id.c|soc/soc/zlg/drivers/source/pwr/am_zlg116_pwr.c|examples/examples/soc/zlg/wakeup/demo_zlg116_drv_stopmode_wake_up.c|examples/examples/soc/zlg/wakeup/demo_zlg116_drv_standbymode_wake_up.c|examples/examples/soc/zlg/wakeup/demo_zlg116_drv_sleepmode_wake_up.c|examples/examples/soc/zlg/wakeup/demo_zlg116_drv_sleepmode_timer_wake_up.c|examples/soc/freescale|examples/soc/nxp|examples/board/am824_core|examples/board/amks16z_core|examples/examples/board/am824_core|examples/examples/board/amks16z_core|examples/examples/board/am116_core|examples/examples/soc/freescale|examples/examples/soc/nxp|soc/freescale|soc/nxp|soc/soc/zlg/zlg116|soc/soc/nxp|soc/soc/freescale|soc/zlg/zlg217/zlg217_sdk_version_temp.c|soc/zlg/drivers/source/gpio/am_zlg116_gpio.c|soc/zlg/drivers/source/clk/am_zlg116_clk.c|examples/components/drivers/demo_fm175xx_picca_read_id.c|user_config/am_delay.c|user_config/am_bootloader.c|examples/board/am116_core|soc/zlg/zlg116|examples/soc/zlg/wakeup/demo_zlg217_drv_stopmode_wake_up.c|examples/soc/zlg/wakeup/demo_zlg217_drv_standbymode_wake_up.c|examples/soc/zlg/wakeup/demo_zlg217_drv_sleepmode_wake_up.c|examples/soc/zlg/wakeup/demo_zlg217_drv_sleepmode_timer_wake_up.c|examples/soc/zlg/clk/demo_zlg217_hw_clk.c|components/drivers/source/fm175xx/am_fm175xx.c|components/libc/microlib_adapter|components/libc/armlib_adapter|startup/am_zlg116_armcc_startup.s|ametal/soc/zlg/zlg217|ametal/common/components/usb|ametal/common/components/libc/microlib_adapter|ametal/common/components/libc/armlib_adapter|ametal/board/am116_core/am_bsp_armlib.h|ametal/board/am116_core/am_bsp_armlib.c|ametal/board/am116_core/am_bsp_microlib.h|ametal/board/am116_core/am_bsp_microlib.c|ametal/soc/zlg/zlg116/drivers/include/am_zlg116_spi_slave_dma.h|ametal/soc/zlg/zlg116/drivers/source/am_zlg116_spi_slave_dma.c" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name=""/>
+						<entry excluding="examples/std/sensor|startup/am_kl26_armcc_system_init.c|examples/board/amks16z_core/pit|examples/board/am824zb|examples/board/am824ble|examples/components/drivers/demo_zm516x_network.c|examples/board/amks16z_core/i2s|examples/board/amks16z_core/i2c|examples/board/amks16z_core/gpio|examples/board/amks16z_core/ftfa|examples/board/amks16z_core/dma|examples/board/amks16z_core/dac|examples/board/amks16z_core/cmp|examples/board/amks16z_core/buzzer|examples/board/amks16z_core/bme|examples/board/amks16z_core/adc|examples/board/amks16z_core/wdt|examples/board/amks16z_core/uart|examples/board/amks16z_core/tsi|examples/board/amks16z_core/tpm|examples/board/amks16z_core/spi|examples/board/amks16z_core/sim_uid|examples/board/amks16z_core/sec|examples/board/amks16z_core/rtc|examples/board/amks16z_core/pmu|examples/board/amks16z_core/miniport_board|examples/board/amks16z_core/microport_board|examples/board/amks16z_core/lptmr|soc/nxp|examples/soc/nxp|examples/board/am824_core|ametal/board/am116_core/am_bsp_armlib.h|ametal/soc/zlg/zlg116/drivers/source/am_zlg116_spi_slave_dma.c|startup/am_kl26_armcc_startup.s|ametal/soc/zlg/zlg116/drivers/include/am_zlg116_spi_slave_dma.h|ametal/soc/zlg/zlg217|components/libc/armlib_adapter|ametal/board/am116_core/am_bsp_microlib.c|ametal/common/components/libc/microlib_adapter|bsp_common/source/am_bsp_microlib.c|ametal/common/components/usb|ametal/board/am116_core/am_bsp_armlib.c|examples/board/am217_core|examples/board/am116_core|bsp_common/source/am_bsp_armlib.c|startup/am_zlg116_armcc_startup.s|soc/zlg|components/libc/microlib_adapter|examples/soc/zlg|components/drivers/source/fm175xx/am_fm175xx.c|ametal/board/am116_core/am_bsp_microlib.h|ametal/common/components/libc/armlib_adapter" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name=""/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>
@@ -417,7 +395,7 @@
 	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
 	<storageModule moduleId="refreshScope" versionNumber="2">
 		<configuration configurationName="Debug">
-			<resource resourceType="PROJECT" workspacePath="/example_am217_core"/>
+			<resource resourceType="PROJECT" workspacePath="/example_amks16z_core"/>
 		</configuration>
 		<configuration configurationName="Release">
 			<resource resourceType="PROJECT" workspacePath="/template_am116_core"/>

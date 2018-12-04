@@ -13,16 +13,16 @@
       <pCCUsed>5060061::V5.06 update 1 (build 61)::ARMCC</pCCUsed>
       <TargetOption>
         <TargetCommonOption>
-          <Device>ZLG116</Device>
-          <Vendor>Generic</Vendor>
-          <PackID>ZLG.ZLG100_DFP.1.0.1</PackID>
-          <PackURL>http://www.zlg.cn/</PackURL>
-          <Cpu>IROM(0x08000000,0x10000) IRAM(0x20000000,0x2000) CPUTYPE("Cortex-M0") CLOCK(12000000) ELITTLE</Cpu>
+          <Device>MKL16Z128xxx4</Device>
+          <Vendor>NXP</Vendor>
+          <PackID>Keil.Kinetis_KLxx_DFP.1.15.0</PackID>
+          <PackURL>http://www.keil.com/pack/</PackURL>
+          <Cpu>IROM(0x00000000,0x00020000) IRAM(0x1FFFF000,0x00004000) CPUTYPE("Cortex-M0+") CLOCK(12000000) ELITTLE</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
           <StartupFile></StartupFile>
-          <FlashDriverDll>UL2CM3(-S0 -C0 -P0 -FD20000000 -FC1000 -FN1 -FF0ZLG116 -FS08000000 -FL010000 -FP0($$Device:ZLG116$Flash\ZLG116.FLM))</FlashDriverDll>
+          <FlashDriverDll>UL2CM3(-S0 -C0 -P0 -FD1FFFF000 -FC4000 -FN1 -FF0MK_P128_48MHZ -FS00 -FL020000 -FP0($$Device:MKL16Z128xxx4$Flash\MK_P128_48MHZ.FLM))</FlashDriverDll>
           <DeviceId>0</DeviceId>
-          <RegisterFile></RegisterFile>
+          <RegisterFile>$$Device:MKL16Z128xxx4$Device\Include\MKL16Z4.h</RegisterFile>
           <MemoryEnv></MemoryEnv>
           <Cmp></Cmp>
           <Asm></Asm>
@@ -32,7 +32,7 @@
           <SLE66CMisc></SLE66CMisc>
           <SLE66AMisc></SLE66AMisc>
           <SLE66LinkerMisc></SLE66LinkerMisc>
-          <SFDFile>$$Device:ZLG116$SVD\ZLG100.svd</SFDFile>
+          <SFDFile>$$Device:MKL16Z128xxx4$SVD\MKL16Z4.svd</SFDFile>
           <bCustSvd>0</bCustSvd>
           <UseEnv>0</UseEnv>
           <BinPath></BinPath>
@@ -48,7 +48,7 @@
             <InvalidFlash>1</InvalidFlash>
           </TargetStatus>
           <OutputDirectory>.\debug\</OutputDirectory>
-          <OutputName>template_am116_core</OutputName>
+          <OutputName>template_amks16rfid</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
           <CreateHexFile>1</CreateHexFile>
@@ -81,7 +81,7 @@
           <AfterMake>
             <RunUserProg1>0</RunUserProg1>
             <RunUserProg2>0</RunUserProg2>
-            <UserProg1Name>$K\ARM\BIN\ELFDWT.EXE !L BASEADDRESS(0x00000000)</UserProg1Name>
+            <UserProg1Name></UserProg1Name>
             <UserProg2Name></UserProg2Name>
             <UserProg1Dos16Mode>0</UserProg1Dos16Mode>
             <UserProg2Dos16Mode>0</UserProg2Dos16Mode>
@@ -109,13 +109,13 @@
         </CommonProperty>
         <DllOption>
           <SimDllName>SARMCM3.DLL</SimDllName>
-          <SimDllArguments> -REMAP </SimDllArguments>
+          <SimDllArguments>  </SimDllArguments>
           <SimDlgDll>DARMCM1.DLL</SimDlgDll>
-          <SimDlgDllArguments>-pCM0</SimDlgDllArguments>
+          <SimDlgDllArguments>-pCM0+</SimDlgDllArguments>
           <TargetDllName>SARMCM3.DLL</TargetDllName>
           <TargetDllArguments> </TargetDllArguments>
           <TargetDlgDll>TARMCM1.DLL</TargetDlgDll>
-          <TargetDlgDllArguments>-pCM0</TargetDlgDllArguments>
+          <TargetDlgDllArguments>-pCM0+</TargetDlgDllArguments>
         </DllOption>
         <DebugOption>
           <OPTHX>
@@ -199,11 +199,11 @@
             <ldmm>1</ldmm>
             <ldXref>1</ldXref>
             <BigEnd>0</BigEnd>
-            <AdsALst>1</AdsALst>
+            <AdsALst>0</AdsALst>
             <AdsACrf>1</AdsACrf>
             <AdsANop>0</AdsANop>
             <AdsANot>0</AdsANot>
-            <AdsLLst>1</AdsLLst>
+            <AdsLLst>0</AdsLLst>
             <AdsLmap>1</AdsLmap>
             <AdsLcgr>1</AdsLcgr>
             <AdsLsym>1</AdsLsym>
@@ -214,7 +214,7 @@
             <AdsLsxf>1</AdsLsxf>
             <RvctClst>0</RvctClst>
             <GenPPlst>0</GenPPlst>
-            <AdsCpuType>"Cortex-M0"</AdsCpuType>
+            <AdsCpuType>"Cortex-M0+"</AdsCpuType>
             <RvctDeviceName></RvctDeviceName>
             <mOS>0</mOS>
             <uocRom>0</uocRom>
@@ -227,7 +227,7 @@
             <hadIRAM2>0</hadIRAM2>
             <hadIROM2>0</hadIROM2>
             <StupSel>8</StupSel>
-            <useUlib>0</useUlib>
+            <useUlib>1</useUlib>
             <EndSel>0</EndSel>
             <uLtcg>0</uLtcg>
             <nSecure>0</nSecure>
@@ -283,13 +283,13 @@
               </Ocm6>
               <IRAM>
                 <Type>0</Type>
-                <StartAddress>0x20000000</StartAddress>
-                <Size>0x2000</Size>
+                <StartAddress>0x1ffff000</StartAddress>
+                <Size>0x4000</Size>
               </IRAM>
               <IROM>
                 <Type>1</Type>
-                <StartAddress>0x8000000</StartAddress>
-                <Size>0x10000</Size>
+                <StartAddress>0x0</StartAddress>
+                <Size>0x20000</Size>
               </IROM>
               <XRAM>
                 <Type>0</Type>
@@ -313,8 +313,8 @@
               </OCR_RVCT3>
               <OCR_RVCT4>
                 <Type>1</Type>
-                <StartAddress>0x8000000</StartAddress>
-                <Size>0x10000</Size>
+                <StartAddress>0x0</StartAddress>
+                <Size>0x20000</Size>
               </OCR_RVCT4>
               <OCR_RVCT5>
                 <Type>1</Type>
@@ -338,8 +338,8 @@
               </OCR_RVCT8>
               <OCR_RVCT9>
                 <Type>0</Type>
-                <StartAddress>0x20000000</StartAddress>
-                <Size>0x2000</Size>
+                <StartAddress>0x1ffff000</StartAddress>
+                <Size>0x4000</Size>
               </OCR_RVCT9>
               <OCR_RVCT10>
                 <Type>0</Type>
@@ -363,7 +363,7 @@
             <wLevel>2</wLevel>
             <uThumb>0</uThumb>
             <uSurpInc>0</uSurpInc>
-            <uC99>0</uC99>
+            <uC99>1</uC99>
             <useXO>0</useXO>
             <v6Lang>0</v6Lang>
             <v6LangP>0</v6LangP>
@@ -371,9 +371,9 @@
             <vShortWch>0</vShortWch>
             <VariousControls>
               <MiscControls></MiscControls>
-              <Define>AM_VDEBUG AM_CORTEX_M0</Define>
+              <Define>AM_VDEBUG,AM_CORTEX_M0,KL16</Define>
               <Undefine></Undefine>
-              <IncludePath>..\user_code;..\user_config;..\user_config/am_hwconf_usrcfg;..\user_config/am_servconf_usrcfg;..\..\..\..\3rdparty/CMSIS/Include;..\..\..\..\arch/arm/include;..\..\..\..\board/bsp_common/include;..\..\..\..\components/drivers/include;..\..\..\..\components/libc/armlib_adapter/include;..\..\..\..\components/libc/microlib_adapter/include;..\..\..\..\components/service/include;..\..\..\..\components/util/include;..\..\..\..\examples/board/am116_core;..\..\..\..\examples/components;..\..\..\..\examples/soc/zlg;..\..\..\..\examples/std;..\..\..\..\interface;..\..\..\..\soc/zlg/zlg116;..\..\..\..\soc/zlg/drivers/include/adc;..\..\..\..\soc/zlg/drivers/include/bkp;..\..\..\..\soc/zlg/drivers/include/clk;..\..\..\..\soc/zlg/drivers/include/cmp;..\..\..\..\soc/zlg/drivers/include/crc;..\..\..\..\soc/zlg/drivers/include/dac;..\..\..\..\soc/zlg/drivers/include/dma;..\..\..\..\soc/zlg/drivers/include/exti;..\..\..\..\soc/zlg/drivers/include/flash;..\..\..\..\soc/zlg/drivers/include/gpio;..\..\..\..\soc/zlg/drivers/include/i2c;..\..\..\..\soc/zlg/drivers/include/pwr;..\..\..\..\soc/zlg/drivers/include/rcc;..\..\..\..\soc/zlg/drivers/include/spi;..\..\..\..\soc/zlg/drivers/include/syscfg;..\..\..\..\soc/zlg/drivers/include/tim;..\..\..\..\soc/zlg/drivers/include/uart;..\..\..\..\soc/zlg/drivers/include/wdt</IncludePath>
+              <IncludePath>.\user_code;.\user_config\am_hwconf_usrcfg;.\user_config\am_servconf_usrcfg;.\user_config;..\..\..\..\3rdparty\CMSIS\Include;..\..\..\..\arch\arm\include;..\..\..\..\components\drivers\include;..\..\..\..\components\libc\armlib_adapter\include;..\..\..\..\components\libc\microlib_adapter\include;..\..\..\..\components\service\include;..\..\..\..\components\util\include;..\..\..\..\interface;..\..\..\..\soc\freescale\drivers\include\adc;..\..\..\..\soc\freescale\drivers\include\bme;..\..\..\..\soc\freescale\drivers\include\clk;..\..\..\..\soc\freescale\drivers\include\cmp;..\..\..\..\soc\freescale\drivers\include\dac;..\..\..\..\soc\freescale\drivers\include\dma;..\..\..\..\soc\freescale\drivers\include\ftfa;..\..\..\..\soc\freescale\drivers\include\gpio;..\..\..\..\soc\freescale\drivers\include\i2c;..\..\..\..\soc\freescale\drivers\include\i2s;..\..\..\..\soc\freescale\drivers\include\llwu;..\..\..\..\soc\freescale\drivers\include\lptmr;..\..\..\..\soc\freescale\drivers\include\mcg;..\..\..\..\soc\freescale\drivers\include\mcm;..\..\..\..\soc\freescale\drivers\include\pinctr;..\..\..\..\soc\freescale\drivers\include\pit;..\..\..\..\soc\freescale\drivers\include\pmc;..\..\..\..\soc\freescale\drivers\include\pmu;..\..\..\..\soc\freescale\drivers\include\rcm;..\..\..\..\soc\freescale\drivers\include\rtc;..\..\..\..\soc\freescale\drivers\include\sim;..\..\..\..\soc\freescale\drivers\include\smc;..\..\..\..\soc\freescale\drivers\include\spi;..\..\..\..\soc\freescale\drivers\include\tpm;..\..\..\..\soc\freescale\drivers\include\tsi;..\..\..\..\soc\freescale\drivers\include\uart;..\..\..\..\soc\freescale\drivers\include\wdt;..\user_config;..\user_config\am_hwconf_usrcfg;..\user_config\am_servconf_usrcfg;..\..\..\bsp_common\include;..\..\..\..\soc\freescale\kl26</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -394,19 +394,19 @@
             </VariousControls>
           </Aads>
           <LDads>
-            <umfTarg>1</umfTarg>
+            <umfTarg>0</umfTarg>
             <Ropi>0</Ropi>
             <Rwpi>0</Rwpi>
             <noStLib>0</noStLib>
             <RepFail>1</RepFail>
             <useFile>0</useFile>
             <TextAddressRange>0x00000000</TextAddressRange>
-            <DataAddressRange>0x10000000</DataAddressRange>
+            <DataAddressRange>0x1FFFF000</DataAddressRange>
             <pXoBase></pXoBase>
-            <ScatterFile>.\template_am116_core.sct</ScatterFile>
+            <ScatterFile>.\template_amks16rfid.sct</ScatterFile>
             <IncludeLibs></IncludeLibs>
             <IncludeLibsPath></IncludeLibsPath>
-            <Misc></Misc>
+            <Misc>--remove</Misc>
             <LinkerInputFile></LinkerInputFile>
             <DisabledWarnings></DisabledWarnings>
           </LDads>
@@ -447,14 +447,14 @@
           <GroupName>arm</GroupName>
           <Files>
             <File>
-              <FileName>am_arm_nvic.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\arch\arm\source\am_arm_nvic.c</FilePath>
-            </File>
-            <File>
               <FileName>am_arm_nvic_armcc.s</FileName>
               <FileType>2</FileType>
               <FilePath>..\..\..\..\arch\arm\source\am_arm_nvic_armcc.s</FilePath>
+            </File>
+            <File>
+              <FileName>am_arm_nvic.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\arch\arm\source\am_arm_nvic.c</FilePath>
             </File>
             <File>
               <FileName>am_arm_systick.c</FileName>
@@ -466,11 +466,6 @@
         <Group>
           <GroupName>drivers</GroupName>
           <Files>
-            <File>
-              <FileName>am_zlg600.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\components\drivers\source\zlg600\am_zlg600.c</FilePath>
-            </File>
             <File>
               <FileName>am_cs1237.c</FileName>
               <FileType>1</FileType>
@@ -487,9 +482,14 @@
               <FilePath>..\..\..\..\components\drivers\source\buzzer\am_buzzer_pwm.c</FilePath>
             </File>
             <File>
-              <FileName>am_digitron_com_gpio.c</FileName>
+              <FileName>am_digitron_scan_gpio.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\components\drivers\source\digitron\com\am_digitron_com_gpio.c</FilePath>
+              <FilePath>..\..\..\..\components\drivers\source\digitron\am_digitron_scan_gpio.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_digitron_scan_hc595_gpio.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\digitron\am_digitron_scan_hc595_gpio.c</FilePath>
             </File>
             <File>
               <FileName>am_digitron_seg_gpio.c</FileName>
@@ -502,14 +502,9 @@
               <FilePath>..\..\..\..\components\drivers\source\digitron\seg\am_digitron_seg_hc595.c</FilePath>
             </File>
             <File>
-              <FileName>am_digitron_scan_gpio.c</FileName>
+              <FileName>am_digitron_com_gpio.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\components\drivers\source\digitron\am_digitron_scan_gpio.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_digitron_scan_hc595_gpio.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\components\drivers\source\digitron\am_digitron_scan_hc595_gpio.c</FilePath>
+              <FilePath>..\..\..\..\components\drivers\source\digitron\com\am_digitron_com_gpio.c</FilePath>
             </File>
             <File>
               <FileName>am_zlg72128.c</FileName>
@@ -567,24 +562,24 @@
               <FilePath>..\..\..\..\components\drivers\source\key\am_key_matrix_read_gpio.c</FilePath>
             </File>
             <File>
-              <FileName>am_led_hc595.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\components\drivers\source\led\am_led_hc595.c</FilePath>
-            </File>
-            <File>
               <FileName>am_led_gpio.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\components\drivers\source\led\am_led_gpio.c</FilePath>
             </File>
             <File>
-              <FileName>am_miniport_view_key_595.c</FileName>
+              <FileName>am_led_hc595.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\components\drivers\source\miniport\am_miniport_view_key_595.c</FilePath>
+              <FilePath>..\..\..\..\components\drivers\source\led\am_led_hc595.c</FilePath>
             </File>
             <File>
               <FileName>am_miniport_view_key.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\components\drivers\source\miniport\am_miniport_view_key.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_miniport_view_key_595.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\miniport\am_miniport_view_key_595.c</FilePath>
             </File>
             <File>
               <FileName>am_ep24cxx.c</FileName>
@@ -635,6 +630,11 @@
               <FileName>am_zm516x.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\components\drivers\source\zigbee\am_zm516x.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_zlg600.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\zlg600\am_zlg600.c</FilePath>
             </File>
             <File>
               <FileName>am_fm175xx_zlg116.lib</FileName>
@@ -762,6 +762,11 @@
               <FilePath>..\..\..\..\components\service\source\am_time.c</FilePath>
             </File>
             <File>
+              <FileName>am_timer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\service\source\am_timer.c</FilePath>
+            </File>
+            <File>
               <FileName>am_uart.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\components\service\source\am_uart.c</FilePath>
@@ -770,11 +775,6 @@
               <FileName>am_uart_rngbuf.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\components\service\source\am_uart_rngbuf.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_timer.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\components\service\source\am_timer.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -847,114 +847,134 @@
           <GroupName>soc</GroupName>
           <Files>
             <File>
-              <FileName>am_zlg_adc.c</FileName>
+              <FileName>amhw_fsl_adc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\zlg\drivers\source\adc\am_zlg_adc.c</FilePath>
+              <FilePath>..\..\..\..\soc\freescale\drivers\source\adc\hw\amhw_fsl_adc.c</FilePath>
             </File>
             <File>
-              <FileName>am_zlg116_clk.c</FileName>
+              <FileName>am_fsl_adc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\zlg\drivers\source\clk\am_zlg116_clk.c</FilePath>
+              <FilePath>..\..\..\..\soc\freescale\drivers\source\adc\am_fsl_adc.c</FilePath>
             </File>
             <File>
-              <FileName>am_zlg_crc.c</FileName>
+              <FileName>am_kl26_adc_dma.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\zlg\drivers\source\crc\am_zlg_crc.c</FilePath>
+              <FilePath>..\..\..\..\soc\freescale\drivers\source\adc\am_kl26_adc_dma.c</FilePath>
             </File>
             <File>
-              <FileName>am_zlg_dac.c</FileName>
+              <FileName>am_kl26_clk.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\zlg\drivers\source\dac\am_zlg_dac.c</FilePath>
+              <FilePath>..\..\..\..\soc\freescale\drivers\source\clk\am_kl26_clk.c</FilePath>
             </File>
             <File>
-              <FileName>am_zlg_dma.c</FileName>
+              <FileName>amhw_fsl_dac.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\zlg\drivers\source\dma\am_zlg_dma.c</FilePath>
+              <FilePath>..\..\..\..\soc\freescale\drivers\source\dac\hw\amhw_fsl_dac.c</FilePath>
             </File>
             <File>
-              <FileName>am_zlg_flash.c</FileName>
+              <FileName>am_fsl_dac.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\zlg\drivers\source\flash\am_zlg_flash.c</FilePath>
+              <FilePath>..\..\..\..\soc\freescale\drivers\source\dac\am_fsl_dac.c</FilePath>
             </File>
             <File>
-              <FileName>am_zlg116_gpio.c</FileName>
+              <FileName>am_kl26_dma.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\zlg\drivers\source\gpio\am_zlg116_gpio.c</FilePath>
+              <FilePath>..\..\..\..\soc\freescale\drivers\source\dma\am_kl26_dma.c</FilePath>
             </File>
             <File>
-              <FileName>am_zlg_i2c_slv.c</FileName>
+              <FileName>am_fsl_ftfa.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\zlg\drivers\source\i2c\am_zlg_i2c_slv.c</FilePath>
+              <FilePath>..\..\..\..\soc\freescale\drivers\source\ftfa\am_fsl_ftfa.c</FilePath>
             </File>
             <File>
-              <FileName>am_zlg_i2c.c</FileName>
+              <FileName>amhw_fsl_ftfa.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\zlg\drivers\source\i2c\am_zlg_i2c.c</FilePath>
+              <FilePath>..\..\..\..\soc\freescale\drivers\source\ftfa\hw\amhw_fsl_ftfa.c</FilePath>
             </File>
             <File>
-              <FileName>am_zlg116_pwr.c</FileName>
+              <FileName>am_kl26_gpio.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\zlg\drivers\source\pwr\am_zlg116_pwr.c</FilePath>
+              <FilePath>..\..\..\..\soc\freescale\drivers\source\gpio\am_kl26_gpio.c</FilePath>
             </File>
             <File>
-              <FileName>amhw_zlg116_rcc.c</FileName>
+              <FileName>am_fsl_i2c.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\zlg\drivers\source\rcc\hw\amhw_zlg116_rcc.c</FilePath>
+              <FilePath>..\..\..\..\soc\freescale\drivers\source\i2c\am_fsl_i2c.c</FilePath>
             </File>
             <File>
-              <FileName>am_zlg_spi_dma.c</FileName>
+              <FileName>amhw_fsl_i2s.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\zlg\drivers\source\spi\am_zlg_spi_dma.c</FilePath>
+              <FilePath>..\..\..\..\soc\freescale\drivers\source\i2s\hw\amhw_fsl_i2s.c</FilePath>
             </File>
             <File>
-              <FileName>am_zlg_spi_int.c</FileName>
+              <FileName>am_fsl_lptmr_timing.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\zlg\drivers\source\spi\am_zlg_spi_int.c</FilePath>
+              <FilePath>..\..\..\..\soc\freescale\drivers\source\lptmr\am_fsl_lptmr_timing.c</FilePath>
             </File>
             <File>
-              <FileName>am_zlg_spi_slv_dma.c</FileName>
+              <FileName>am_fsl_pit_timing.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\zlg\drivers\source\spi\am_zlg_spi_slv_dma.c</FilePath>
+              <FilePath>..\..\..\..\soc\freescale\drivers\source\pit\am_fsl_pit_timing.c</FilePath>
             </File>
             <File>
-              <FileName>am_zlg_tim_pwm.c</FileName>
+              <FileName>am_kl26_pmu.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\zlg\drivers\source\tim\am_zlg_tim_pwm.c</FilePath>
+              <FilePath>..\..\..\..\soc\freescale\drivers\source\pmu\am_kl26_pmu.c</FilePath>
             </File>
             <File>
-              <FileName>am_zlg_tim_cap.c</FileName>
+              <FileName>am_fsl_rtc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\zlg\drivers\source\tim\am_zlg_tim_cap.c</FilePath>
+              <FilePath>..\..\..\..\soc\freescale\drivers\source\rtc\am_fsl_rtc.c</FilePath>
             </File>
             <File>
-              <FileName>am_zlg_tim_timing.c</FileName>
+              <FileName>am_kl26_spi_dma.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\zlg\drivers\source\tim\am_zlg_tim_timing.c</FilePath>
+              <FilePath>..\..\..\..\soc\freescale\drivers\source\spi\am_kl26_spi_dma.c</FilePath>
             </File>
             <File>
-              <FileName>amhw_zlg_uart.c</FileName>
+              <FileName>am_kl26_spi_int.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\zlg\drivers\source\uart\hw\amhw_zlg_uart.c</FilePath>
+              <FilePath>..\..\..\..\soc\freescale\drivers\source\spi\am_kl26_spi_int.c</FilePath>
             </File>
             <File>
-              <FileName>am_zlg_uart.c</FileName>
+              <FileName>amhw_fsl_spi.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\zlg\drivers\source\uart\am_zlg_uart.c</FilePath>
+              <FilePath>..\..\..\..\soc\freescale\drivers\source\spi\hw\amhw_fsl_spi.c</FilePath>
             </File>
             <File>
-              <FileName>am_zlg_iwdg.c</FileName>
+              <FileName>am_fsl_tpm_cap.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\zlg\drivers\source\wdt\am_zlg_iwdg.c</FilePath>
+              <FilePath>..\..\..\..\soc\freescale\drivers\source\tpm\am_fsl_tpm_cap.c</FilePath>
             </File>
             <File>
-              <FileName>am_zlg_wwdg.c</FileName>
+              <FileName>am_fsl_tpm_timing.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\zlg\drivers\source\wdt\am_zlg_wwdg.c</FilePath>
+              <FilePath>..\..\..\..\soc\freescale\drivers\source\tpm\am_fsl_tpm_timing.c</FilePath>
             </File>
             <File>
-              <FileName>zm_zlg_spi_poll.c</FileName>
+              <FileName>am_fsl_tpm_pwm.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\zlg\drivers\source\spi\zm_zlg_spi_poll.c</FilePath>
+              <FilePath>..\..\..\..\soc\freescale\drivers\source\tpm\am_fsl_tpm_pwm.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_fsl_tsi.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\soc\freescale\drivers\source\tsi\am_fsl_tsi.c</FilePath>
+            </File>
+            <File>
+              <FileName>amhw_fsl_uart.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\soc\freescale\drivers\source\uart\hw\amhw_fsl_uart.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_fsl_uart.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\soc\freescale\drivers\source\uart\am_fsl_uart.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_kl26_wdt.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\soc\freescale\drivers\source\wdt\am_kl26_wdt.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -962,9 +982,14 @@
           <GroupName>startup</GroupName>
           <Files>
             <File>
-              <FileName>am_zlg116_armcc_startup.s</FileName>
+              <FileName>am_kl26_armcc_system_init.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\startup\am_kl26_armcc_system_init.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_kl26_armcc_startup.s</FileName>
               <FileType>2</FileType>
-              <FilePath>..\startup\am_zlg116_armcc_startup.s</FilePath>
+              <FilePath>..\startup\am_kl26_armcc_startup.s</FilePath>
             </File>
           </Files>
         </Group>
@@ -987,24 +1012,19 @@
               <FilePath>..\user_config\am_prj_config.h</FilePath>
             </File>
             <File>
-              <FileName>am_zlg116_inst_init.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\user_config\am_zlg116_inst_init.h</FilePath>
-            </File>
-            <File>
               <FileName>am_board.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\user_config\am_board.h</FilePath>
             </File>
             <File>
-              <FileName>am_prj_config.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_prj_config.c</FilePath>
-            </File>
-            <File>
               <FileName>am_board.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\user_config\am_board.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_prj_config.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_prj_config.c</FilePath>
             </File>
             <File>
               <FileName>am_hwconf_arm_nvic.c</FileName>
@@ -1025,6 +1045,156 @@
               <FileName>am_hwconf_key_gpio.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_key_gpio.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_kl26_adc0.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_kl26_adc0.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_kl26_clk.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_kl26_clk.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_kl26_dac0.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_kl26_dac0.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_kl26_dma.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_kl26_dma.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_kl26_gpio.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_kl26_gpio.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_kl26_i2c0.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_kl26_i2c0.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_kl26_i2c1.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_kl26_i2c1.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_kl26_lptmr_timing.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_kl26_lptmr_timing.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_kl26_pit_timing.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_kl26_pit_timing.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_kl26_pmu.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_kl26_pmu.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_kl26_rtc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_kl26_rtc.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_kl26_spi0_dma.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_kl26_spi0_dma.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_kl26_spi0_int.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_kl26_spi0_int.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_kl26_spi1_dma.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_kl26_spi1_dma.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_kl26_spi1_int.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_kl26_spi1_int.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_kl26_systick.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_kl26_systick.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_kl26_tpm0_cap.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_kl26_tpm0_cap.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_kl26_tpm0_pwm.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_kl26_tpm0_pwm.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_kl26_tpm0_timing.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_kl26_tpm0_timing.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_kl26_tpm1_cap.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_kl26_tpm1_cap.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_kl26_tpm1_pwm.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_kl26_tpm1_pwm.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_kl26_tpm1_timing.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_kl26_tpm1_timing.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_kl26_tpm2_cap.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_kl26_tpm2_cap.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_kl26_tpm2_pwm.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_kl26_tpm2_pwm.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_kl26_tpm2_timing.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_kl26_tpm2_timing.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_kl26_tsi.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_kl26_tsi.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_kl26_uart0.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_kl26_uart0.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_kl26_uart1.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_kl26_uart1.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_kl26_uart2.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_kl26_uart2.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_kl26_wdt.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_kl26_wdt.c</FilePath>
             </File>
             <File>
               <FileName>am_hwconf_led_gpio.c</FileName>
@@ -1102,91 +1272,6 @@
               <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_system_tick_softimer.c</FilePath>
             </File>
             <File>
-              <FileName>am_hwconf_zlg116_adc.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_adc.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_zlg116_clk.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_clk.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_zlg116_dma.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_dma.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_zlg116_gpio.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_gpio.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_zlg116_i2c.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_i2c.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_zlg116_i2c_slv.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_i2c_slv.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_zlg116_iwdg.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_iwdg.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_zlg116_pwr.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_pwr.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_zlg116_spi_dma.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_spi_dma.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_zlg116_spi_int.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_spi_int.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_zlg116_spi_slv_dma.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_spi_slv_dma.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_zlg116_systick.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_systick.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_zlg116_tim_cap.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_tim_cap.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_zlg116_tim_pwm.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_tim_pwm.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_zlg116_tim_timing.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_tim_timing.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_zlg116_uart.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_uart.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_zlg116_wwdg.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_wwdg.c</FilePath>
-            </File>
-            <File>
               <FileName>am_servconf_event_input.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\user_config\am_servconf_usrcfg\am_servconf_event_input.c</FilePath>
@@ -1201,11 +1286,6 @@
               <FileType>1</FileType>
               <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_fm175xx.c</FilePath>
             </File>
-            <File>
-              <FileName>am_hwconf_zlg116_spi_poll.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_spi_poll.c</FilePath>
-            </File>
           </Files>
         </Group>
       </Groups>
@@ -1217,16 +1297,16 @@
       <pCCUsed>5060061::V5.06 update 1 (build 61)::ARMCC</pCCUsed>
       <TargetOption>
         <TargetCommonOption>
-          <Device>ZLG116</Device>
-          <Vendor>Generic</Vendor>
-          <PackID>ZLG.ZLG100_DFP.1.0.1</PackID>
-          <PackURL>http://www.zlg.cn/</PackURL>
-          <Cpu>IROM(0x08000000,0x10000) IRAM(0x20000000,0x2000) CPUTYPE("Cortex-M0") CLOCK(12000000) ELITTLE</Cpu>
+          <Device>MKL16Z128xxx4</Device>
+          <Vendor>NXP</Vendor>
+          <PackID>Keil.Kinetis_KLxx_DFP.1.15.0</PackID>
+          <PackURL>http://www.keil.com/pack/</PackURL>
+          <Cpu>IROM(0x00000000,0x00020000) IRAM(0x1FFFF000,0x00004000) CPUTYPE("Cortex-M0+") CLOCK(12000000) ELITTLE</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
           <StartupFile></StartupFile>
-          <FlashDriverDll>UL2CM3(-S0 -C0 -P0 -FD20000000 -FC1000 -FN1 -FF0ZLG116 -FS08000000 -FL010000 -FP0($$Device:ZLG116$Flash\ZLG116.FLM))</FlashDriverDll>
+          <FlashDriverDll>UL2CM3(-S0 -C0 -P0 -FD1FFFF000 -FC4000 -FN1 -FF0MK_P128_48MHZ -FS00 -FL020000 -FP0($$Device:MKL16Z128xxx4$Flash\MK_P128_48MHZ.FLM))</FlashDriverDll>
           <DeviceId>0</DeviceId>
-          <RegisterFile></RegisterFile>
+          <RegisterFile>$$Device:MKL16Z128xxx4$Device\Include\MKL16Z4.h</RegisterFile>
           <MemoryEnv></MemoryEnv>
           <Cmp></Cmp>
           <Asm></Asm>
@@ -1236,7 +1316,7 @@
           <SLE66CMisc></SLE66CMisc>
           <SLE66AMisc></SLE66AMisc>
           <SLE66LinkerMisc></SLE66LinkerMisc>
-          <SFDFile>$$Device:ZLG116$SVD\ZLG100.svd</SFDFile>
+          <SFDFile>$$Device:MKL16Z128xxx4$SVD\MKL16Z4.svd</SFDFile>
           <bCustSvd>0</bCustSvd>
           <UseEnv>0</UseEnv>
           <BinPath></BinPath>
@@ -1252,7 +1332,7 @@
             <InvalidFlash>1</InvalidFlash>
           </TargetStatus>
           <OutputDirectory>.\debug\</OutputDirectory>
-          <OutputName>template_am116_core</OutputName>
+          <OutputName>template_amks16z_core</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
           <CreateHexFile>1</CreateHexFile>
@@ -1285,7 +1365,7 @@
           <AfterMake>
             <RunUserProg1>0</RunUserProg1>
             <RunUserProg2>0</RunUserProg2>
-            <UserProg1Name>$K\ARM\BIN\ELFDWT.EXE !L BASEADDRESS(0x00000000)</UserProg1Name>
+            <UserProg1Name></UserProg1Name>
             <UserProg2Name></UserProg2Name>
             <UserProg1Dos16Mode>0</UserProg1Dos16Mode>
             <UserProg2Dos16Mode>0</UserProg2Dos16Mode>
@@ -1313,13 +1393,13 @@
         </CommonProperty>
         <DllOption>
           <SimDllName>SARMCM3.DLL</SimDllName>
-          <SimDllArguments> -REMAP </SimDllArguments>
+          <SimDllArguments>  </SimDllArguments>
           <SimDlgDll>DARMCM1.DLL</SimDlgDll>
-          <SimDlgDllArguments>-pCM0</SimDlgDllArguments>
+          <SimDlgDllArguments>-pCM0+</SimDlgDllArguments>
           <TargetDllName>SARMCM3.DLL</TargetDllName>
           <TargetDllArguments> </TargetDllArguments>
           <TargetDlgDll>TARMCM1.DLL</TargetDlgDll>
-          <TargetDlgDllArguments>-pCM0</TargetDlgDllArguments>
+          <TargetDlgDllArguments>-pCM0+</TargetDlgDllArguments>
         </DllOption>
         <DebugOption>
           <OPTHX>
@@ -1403,11 +1483,11 @@
             <ldmm>1</ldmm>
             <ldXref>1</ldXref>
             <BigEnd>0</BigEnd>
-            <AdsALst>1</AdsALst>
+            <AdsALst>0</AdsALst>
             <AdsACrf>1</AdsACrf>
             <AdsANop>0</AdsANop>
             <AdsANot>0</AdsANot>
-            <AdsLLst>1</AdsLLst>
+            <AdsLLst>0</AdsLLst>
             <AdsLmap>1</AdsLmap>
             <AdsLcgr>1</AdsLcgr>
             <AdsLsym>1</AdsLsym>
@@ -1418,7 +1498,7 @@
             <AdsLsxf>1</AdsLsxf>
             <RvctClst>0</RvctClst>
             <GenPPlst>0</GenPPlst>
-            <AdsCpuType>"Cortex-M0"</AdsCpuType>
+            <AdsCpuType>"Cortex-M0+"</AdsCpuType>
             <RvctDeviceName></RvctDeviceName>
             <mOS>0</mOS>
             <uocRom>0</uocRom>
@@ -1431,7 +1511,7 @@
             <hadIRAM2>0</hadIRAM2>
             <hadIROM2>0</hadIROM2>
             <StupSel>8</StupSel>
-            <useUlib>0</useUlib>
+            <useUlib>1</useUlib>
             <EndSel>0</EndSel>
             <uLtcg>0</uLtcg>
             <nSecure>0</nSecure>
@@ -1487,13 +1567,13 @@
               </Ocm6>
               <IRAM>
                 <Type>0</Type>
-                <StartAddress>0x20000000</StartAddress>
-                <Size>0x2000</Size>
+                <StartAddress>0x1ffff000</StartAddress>
+                <Size>0x4000</Size>
               </IRAM>
               <IROM>
                 <Type>1</Type>
-                <StartAddress>0x8000000</StartAddress>
-                <Size>0x10000</Size>
+                <StartAddress>0x0</StartAddress>
+                <Size>0x20000</Size>
               </IROM>
               <XRAM>
                 <Type>0</Type>
@@ -1517,8 +1597,8 @@
               </OCR_RVCT3>
               <OCR_RVCT4>
                 <Type>1</Type>
-                <StartAddress>0x8000000</StartAddress>
-                <Size>0x10000</Size>
+                <StartAddress>0x0</StartAddress>
+                <Size>0x20000</Size>
               </OCR_RVCT4>
               <OCR_RVCT5>
                 <Type>1</Type>
@@ -1542,8 +1622,8 @@
               </OCR_RVCT8>
               <OCR_RVCT9>
                 <Type>0</Type>
-                <StartAddress>0x20000000</StartAddress>
-                <Size>0x2000</Size>
+                <StartAddress>0x1ffff000</StartAddress>
+                <Size>0x4000</Size>
               </OCR_RVCT9>
               <OCR_RVCT10>
                 <Type>0</Type>
@@ -1567,7 +1647,7 @@
             <wLevel>2</wLevel>
             <uThumb>0</uThumb>
             <uSurpInc>0</uSurpInc>
-            <uC99>0</uC99>
+            <uC99>1</uC99>
             <useXO>0</useXO>
             <v6Lang>0</v6Lang>
             <v6LangP>0</v6LangP>
@@ -1575,9 +1655,9 @@
             <vShortWch>0</vShortWch>
             <VariousControls>
               <MiscControls></MiscControls>
-              <Define>AM_VDEBUG AM_CORTEX_M0</Define>
+              <Define>AM_VDEBUG,AM_CORTEX_M0,KL16</Define>
               <Undefine></Undefine>
-              <IncludePath>..\user_code;..\user_config;..\user_config/am_hwconf_usrcfg;..\user_config/am_servconf_usrcfg;..\..\..\..\3rdparty/CMSIS/Include;..\..\..\..\arch/arm/include;..\..\..\..\board/bsp_common/include;..\..\..\..\components/drivers/include;..\..\..\..\components/libc/armlib_adapter/include;..\..\..\..\components/libc/microlib_adapter/include;..\..\..\..\components/service/include;..\..\..\..\components/util/include;..\..\..\..\examples/board/am116_core;..\..\..\..\examples/components;..\..\..\..\examples/soc/zlg;..\..\..\..\examples/std;..\..\..\..\interface;..\..\..\..\soc/zlg/zlg116;..\..\..\..\soc/zlg/drivers/include/adc;..\..\..\..\soc/zlg/drivers/include/bkp;..\..\..\..\soc/zlg/drivers/include/clk;..\..\..\..\soc/zlg/drivers/include/cmp;..\..\..\..\soc/zlg/drivers/include/crc;..\..\..\..\soc/zlg/drivers/include/dac;..\..\..\..\soc/zlg/drivers/include/dma;..\..\..\..\soc/zlg/drivers/include/exti;..\..\..\..\soc/zlg/drivers/include/flash;..\..\..\..\soc/zlg/drivers/include/gpio;..\..\..\..\soc/zlg/drivers/include/i2c;..\..\..\..\soc/zlg/drivers/include/pwr;..\..\..\..\soc/zlg/drivers/include/rcc;..\..\..\..\soc/zlg/drivers/include/spi;..\..\..\..\soc/zlg/drivers/include/syscfg;..\..\..\..\soc/zlg/drivers/include/tim;..\..\..\..\soc/zlg/drivers/include/uart;..\..\..\..\soc/zlg/drivers/include/wdt</IncludePath>
+              <IncludePath>.\user_code;.\user_config\am_hwconf_usrcfg;.\user_config\am_servconf_usrcfg;.\user_config;..\..\..\..\3rdparty\CMSIS\Include;..\..\..\..\arch\arm\include;..\..\..\..\components\drivers\include;..\..\..\..\components\libc\armlib_adapter\include;..\..\..\..\components\libc\microlib_adapter\include;..\..\..\..\components\service\include;..\..\..\..\components\util\include;..\..\..\..\interface;..\..\..\..\soc\freescale\amkl26;..\..\..\..\soc\freescale\drivers\include\adc;..\..\..\..\soc\freescale\drivers\include\bme;..\..\..\..\soc\freescale\drivers\include\clk;..\..\..\..\soc\freescale\drivers\include\cmp;..\..\..\..\soc\freescale\drivers\include\dac;..\..\..\..\soc\freescale\drivers\include\dma;..\..\..\..\soc\freescale\drivers\include\ftfa;..\..\..\..\soc\freescale\drivers\include\gpio;..\..\..\..\soc\freescale\drivers\include\i2c;..\..\..\..\soc\freescale\drivers\include\i2s;..\..\..\..\soc\freescale\drivers\include\llwu;..\..\..\..\soc\freescale\drivers\include\lptmr;..\..\..\..\soc\freescale\drivers\include\mcg;..\..\..\..\soc\freescale\drivers\include\mcm;..\..\..\..\soc\freescale\drivers\include\pinctr;..\..\..\..\soc\freescale\drivers\include\pit;..\..\..\..\soc\freescale\drivers\include\pmc;..\..\..\..\soc\freescale\drivers\include\pmu;..\..\..\..\soc\freescale\drivers\include\rcm;..\..\..\..\soc\freescale\drivers\include\rtc;..\..\..\..\soc\freescale\drivers\include\sim;..\..\..\..\soc\freescale\drivers\include\smc;..\..\..\..\soc\freescale\drivers\include\spi;..\..\..\..\soc\freescale\drivers\include\tpm;..\..\..\..\soc\freescale\drivers\include\tsi;..\..\..\..\soc\freescale\drivers\include\uart;..\..\..\..\soc\freescale\drivers\include\wdt;..\user_config;..\user_config\am_hwconf_usrcfg;..\user_config\am_servconf_usrcfg;..\..\..\bsp_common\include</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -1598,19 +1678,19 @@
             </VariousControls>
           </Aads>
           <LDads>
-            <umfTarg>1</umfTarg>
+            <umfTarg>0</umfTarg>
             <Ropi>0</Ropi>
             <Rwpi>0</Rwpi>
             <noStLib>0</noStLib>
             <RepFail>1</RepFail>
             <useFile>0</useFile>
             <TextAddressRange>0x00000000</TextAddressRange>
-            <DataAddressRange>0x10000000</DataAddressRange>
+            <DataAddressRange>0x1FFFF000</DataAddressRange>
             <pXoBase></pXoBase>
-            <ScatterFile>.\template_am116_core.sct</ScatterFile>
+            <ScatterFile>.\template_amks16z_core.sct</ScatterFile>
             <IncludeLibs></IncludeLibs>
             <IncludeLibsPath></IncludeLibsPath>
-            <Misc></Misc>
+            <Misc>--remove</Misc>
             <LinkerInputFile></LinkerInputFile>
             <DisabledWarnings></DisabledWarnings>
           </LDads>
@@ -1651,14 +1731,14 @@
           <GroupName>arm</GroupName>
           <Files>
             <File>
-              <FileName>am_arm_nvic.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\arch\arm\source\am_arm_nvic.c</FilePath>
-            </File>
-            <File>
               <FileName>am_arm_nvic_armcc.s</FileName>
               <FileType>2</FileType>
               <FilePath>..\..\..\..\arch\arm\source\am_arm_nvic_armcc.s</FilePath>
+            </File>
+            <File>
+              <FileName>am_arm_nvic.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\arch\arm\source\am_arm_nvic.c</FilePath>
             </File>
             <File>
               <FileName>am_arm_systick.c</FileName>
@@ -1670,11 +1750,6 @@
         <Group>
           <GroupName>drivers</GroupName>
           <Files>
-            <File>
-              <FileName>am_zlg600.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\components\drivers\source\zlg600\am_zlg600.c</FilePath>
-            </File>
             <File>
               <FileName>am_cs1237.c</FileName>
               <FileType>1</FileType>
@@ -1691,9 +1766,14 @@
               <FilePath>..\..\..\..\components\drivers\source\buzzer\am_buzzer_pwm.c</FilePath>
             </File>
             <File>
-              <FileName>am_digitron_com_gpio.c</FileName>
+              <FileName>am_digitron_scan_gpio.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\components\drivers\source\digitron\com\am_digitron_com_gpio.c</FilePath>
+              <FilePath>..\..\..\..\components\drivers\source\digitron\am_digitron_scan_gpio.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_digitron_scan_hc595_gpio.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\digitron\am_digitron_scan_hc595_gpio.c</FilePath>
             </File>
             <File>
               <FileName>am_digitron_seg_gpio.c</FileName>
@@ -1706,14 +1786,9 @@
               <FilePath>..\..\..\..\components\drivers\source\digitron\seg\am_digitron_seg_hc595.c</FilePath>
             </File>
             <File>
-              <FileName>am_digitron_scan_gpio.c</FileName>
+              <FileName>am_digitron_com_gpio.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\components\drivers\source\digitron\am_digitron_scan_gpio.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_digitron_scan_hc595_gpio.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\components\drivers\source\digitron\am_digitron_scan_hc595_gpio.c</FilePath>
+              <FilePath>..\..\..\..\components\drivers\source\digitron\com\am_digitron_com_gpio.c</FilePath>
             </File>
             <File>
               <FileName>am_zlg72128.c</FileName>
@@ -1771,24 +1846,24 @@
               <FilePath>..\..\..\..\components\drivers\source\key\am_key_matrix_read_gpio.c</FilePath>
             </File>
             <File>
-              <FileName>am_led_hc595.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\components\drivers\source\led\am_led_hc595.c</FilePath>
-            </File>
-            <File>
               <FileName>am_led_gpio.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\components\drivers\source\led\am_led_gpio.c</FilePath>
             </File>
             <File>
-              <FileName>am_miniport_view_key_595.c</FileName>
+              <FileName>am_led_hc595.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\components\drivers\source\miniport\am_miniport_view_key_595.c</FilePath>
+              <FilePath>..\..\..\..\components\drivers\source\led\am_led_hc595.c</FilePath>
             </File>
             <File>
               <FileName>am_miniport_view_key.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\components\drivers\source\miniport\am_miniport_view_key.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_miniport_view_key_595.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\miniport\am_miniport_view_key_595.c</FilePath>
             </File>
             <File>
               <FileName>am_ep24cxx.c</FileName>
@@ -1839,6 +1914,11 @@
               <FileName>am_zm516x.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\components\drivers\source\zigbee\am_zm516x.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_zlg600.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\zlg600\am_zlg600.c</FilePath>
             </File>
             <File>
               <FileName>am_fm175xx_zlg116.lib</FileName>
@@ -1966,6 +2046,11 @@
               <FilePath>..\..\..\..\components\service\source\am_time.c</FilePath>
             </File>
             <File>
+              <FileName>am_timer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\service\source\am_timer.c</FilePath>
+            </File>
+            <File>
               <FileName>am_uart.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\components\service\source\am_uart.c</FilePath>
@@ -1974,11 +2059,6 @@
               <FileName>am_uart_rngbuf.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\components\service\source\am_uart_rngbuf.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_timer.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\components\service\source\am_timer.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -2051,114 +2131,134 @@
           <GroupName>soc</GroupName>
           <Files>
             <File>
-              <FileName>am_zlg_adc.c</FileName>
+              <FileName>amhw_fsl_adc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\zlg\drivers\source\adc\am_zlg_adc.c</FilePath>
+              <FilePath>..\..\..\..\soc\freescale\drivers\source\adc\hw\amhw_fsl_adc.c</FilePath>
             </File>
             <File>
-              <FileName>am_zlg116_clk.c</FileName>
+              <FileName>am_fsl_adc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\zlg\drivers\source\clk\am_zlg116_clk.c</FilePath>
+              <FilePath>..\..\..\..\soc\freescale\drivers\source\adc\am_fsl_adc.c</FilePath>
             </File>
             <File>
-              <FileName>am_zlg_crc.c</FileName>
+              <FileName>am_kl26_adc_dma.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\zlg\drivers\source\crc\am_zlg_crc.c</FilePath>
+              <FilePath>..\..\..\..\soc\freescale\drivers\source\adc\am_kl26_adc_dma.c</FilePath>
             </File>
             <File>
-              <FileName>am_zlg_dac.c</FileName>
+              <FileName>am_kl26_clk.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\zlg\drivers\source\dac\am_zlg_dac.c</FilePath>
+              <FilePath>..\..\..\..\soc\freescale\drivers\source\clk\am_kl26_clk.c</FilePath>
             </File>
             <File>
-              <FileName>am_zlg_dma.c</FileName>
+              <FileName>amhw_fsl_dac.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\zlg\drivers\source\dma\am_zlg_dma.c</FilePath>
+              <FilePath>..\..\..\..\soc\freescale\drivers\source\dac\hw\amhw_fsl_dac.c</FilePath>
             </File>
             <File>
-              <FileName>am_zlg_flash.c</FileName>
+              <FileName>am_fsl_dac.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\zlg\drivers\source\flash\am_zlg_flash.c</FilePath>
+              <FilePath>..\..\..\..\soc\freescale\drivers\source\dac\am_fsl_dac.c</FilePath>
             </File>
             <File>
-              <FileName>am_zlg116_gpio.c</FileName>
+              <FileName>am_kl26_dma.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\zlg\drivers\source\gpio\am_zlg116_gpio.c</FilePath>
+              <FilePath>..\..\..\..\soc\freescale\drivers\source\dma\am_kl26_dma.c</FilePath>
             </File>
             <File>
-              <FileName>am_zlg_i2c_slv.c</FileName>
+              <FileName>am_fsl_ftfa.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\zlg\drivers\source\i2c\am_zlg_i2c_slv.c</FilePath>
+              <FilePath>..\..\..\..\soc\freescale\drivers\source\ftfa\am_fsl_ftfa.c</FilePath>
             </File>
             <File>
-              <FileName>am_zlg_i2c.c</FileName>
+              <FileName>amhw_fsl_ftfa.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\zlg\drivers\source\i2c\am_zlg_i2c.c</FilePath>
+              <FilePath>..\..\..\..\soc\freescale\drivers\source\ftfa\hw\amhw_fsl_ftfa.c</FilePath>
             </File>
             <File>
-              <FileName>am_zlg116_pwr.c</FileName>
+              <FileName>am_kl26_gpio.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\zlg\drivers\source\pwr\am_zlg116_pwr.c</FilePath>
+              <FilePath>..\..\..\..\soc\freescale\drivers\source\gpio\am_kl26_gpio.c</FilePath>
             </File>
             <File>
-              <FileName>amhw_zlg116_rcc.c</FileName>
+              <FileName>am_fsl_i2c.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\zlg\drivers\source\rcc\hw\amhw_zlg116_rcc.c</FilePath>
+              <FilePath>..\..\..\..\soc\freescale\drivers\source\i2c\am_fsl_i2c.c</FilePath>
             </File>
             <File>
-              <FileName>am_zlg_spi_dma.c</FileName>
+              <FileName>amhw_fsl_i2s.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\zlg\drivers\source\spi\am_zlg_spi_dma.c</FilePath>
+              <FilePath>..\..\..\..\soc\freescale\drivers\source\i2s\hw\amhw_fsl_i2s.c</FilePath>
             </File>
             <File>
-              <FileName>am_zlg_spi_int.c</FileName>
+              <FileName>am_fsl_lptmr_timing.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\zlg\drivers\source\spi\am_zlg_spi_int.c</FilePath>
+              <FilePath>..\..\..\..\soc\freescale\drivers\source\lptmr\am_fsl_lptmr_timing.c</FilePath>
             </File>
             <File>
-              <FileName>am_zlg_spi_slv_dma.c</FileName>
+              <FileName>am_fsl_pit_timing.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\zlg\drivers\source\spi\am_zlg_spi_slv_dma.c</FilePath>
+              <FilePath>..\..\..\..\soc\freescale\drivers\source\pit\am_fsl_pit_timing.c</FilePath>
             </File>
             <File>
-              <FileName>am_zlg_tim_pwm.c</FileName>
+              <FileName>am_kl26_pmu.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\zlg\drivers\source\tim\am_zlg_tim_pwm.c</FilePath>
+              <FilePath>..\..\..\..\soc\freescale\drivers\source\pmu\am_kl26_pmu.c</FilePath>
             </File>
             <File>
-              <FileName>am_zlg_tim_cap.c</FileName>
+              <FileName>am_fsl_rtc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\zlg\drivers\source\tim\am_zlg_tim_cap.c</FilePath>
+              <FilePath>..\..\..\..\soc\freescale\drivers\source\rtc\am_fsl_rtc.c</FilePath>
             </File>
             <File>
-              <FileName>am_zlg_tim_timing.c</FileName>
+              <FileName>am_kl26_spi_dma.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\zlg\drivers\source\tim\am_zlg_tim_timing.c</FilePath>
+              <FilePath>..\..\..\..\soc\freescale\drivers\source\spi\am_kl26_spi_dma.c</FilePath>
             </File>
             <File>
-              <FileName>amhw_zlg_uart.c</FileName>
+              <FileName>am_kl26_spi_int.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\zlg\drivers\source\uart\hw\amhw_zlg_uart.c</FilePath>
+              <FilePath>..\..\..\..\soc\freescale\drivers\source\spi\am_kl26_spi_int.c</FilePath>
             </File>
             <File>
-              <FileName>am_zlg_uart.c</FileName>
+              <FileName>amhw_fsl_spi.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\zlg\drivers\source\uart\am_zlg_uart.c</FilePath>
+              <FilePath>..\..\..\..\soc\freescale\drivers\source\spi\hw\amhw_fsl_spi.c</FilePath>
             </File>
             <File>
-              <FileName>am_zlg_iwdg.c</FileName>
+              <FileName>am_fsl_tpm_cap.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\zlg\drivers\source\wdt\am_zlg_iwdg.c</FilePath>
+              <FilePath>..\..\..\..\soc\freescale\drivers\source\tpm\am_fsl_tpm_cap.c</FilePath>
             </File>
             <File>
-              <FileName>am_zlg_wwdg.c</FileName>
+              <FileName>am_fsl_tpm_timing.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\zlg\drivers\source\wdt\am_zlg_wwdg.c</FilePath>
+              <FilePath>..\..\..\..\soc\freescale\drivers\source\tpm\am_fsl_tpm_timing.c</FilePath>
             </File>
             <File>
-              <FileName>zm_zlg_spi_poll.c</FileName>
+              <FileName>am_fsl_tpm_pwm.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\zlg\drivers\source\spi\zm_zlg_spi_poll.c</FilePath>
+              <FilePath>..\..\..\..\soc\freescale\drivers\source\tpm\am_fsl_tpm_pwm.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_fsl_tsi.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\soc\freescale\drivers\source\tsi\am_fsl_tsi.c</FilePath>
+            </File>
+            <File>
+              <FileName>amhw_fsl_uart.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\soc\freescale\drivers\source\uart\hw\amhw_fsl_uart.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_fsl_uart.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\soc\freescale\drivers\source\uart\am_fsl_uart.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_kl26_wdt.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\soc\freescale\drivers\source\wdt\am_kl26_wdt.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -2166,9 +2266,14 @@
           <GroupName>startup</GroupName>
           <Files>
             <File>
-              <FileName>am_zlg116_armcc_startup.s</FileName>
+              <FileName>am_kl26_armcc_system_init.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\startup\am_kl26_armcc_system_init.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_kl26_armcc_startup.s</FileName>
               <FileType>2</FileType>
-              <FilePath>..\startup\am_zlg116_armcc_startup.s</FilePath>
+              <FilePath>..\startup\am_kl26_armcc_startup.s</FilePath>
             </File>
           </Files>
         </Group>
@@ -2191,24 +2296,19 @@
               <FilePath>..\user_config\am_prj_config.h</FilePath>
             </File>
             <File>
-              <FileName>am_zlg116_inst_init.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\user_config\am_zlg116_inst_init.h</FilePath>
-            </File>
-            <File>
               <FileName>am_board.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\user_config\am_board.h</FilePath>
             </File>
             <File>
-              <FileName>am_prj_config.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_prj_config.c</FilePath>
-            </File>
-            <File>
               <FileName>am_board.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\user_config\am_board.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_prj_config.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_prj_config.c</FilePath>
             </File>
             <File>
               <FileName>am_hwconf_arm_nvic.c</FileName>
@@ -2229,6 +2329,156 @@
               <FileName>am_hwconf_key_gpio.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_key_gpio.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_kl26_adc0.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_kl26_adc0.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_kl26_clk.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_kl26_clk.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_kl26_dac0.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_kl26_dac0.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_kl26_dma.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_kl26_dma.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_kl26_gpio.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_kl26_gpio.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_kl26_i2c0.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_kl26_i2c0.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_kl26_i2c1.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_kl26_i2c1.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_kl26_lptmr_timing.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_kl26_lptmr_timing.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_kl26_pit_timing.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_kl26_pit_timing.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_kl26_pmu.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_kl26_pmu.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_kl26_rtc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_kl26_rtc.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_kl26_spi0_dma.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_kl26_spi0_dma.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_kl26_spi0_int.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_kl26_spi0_int.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_kl26_spi1_dma.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_kl26_spi1_dma.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_kl26_spi1_int.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_kl26_spi1_int.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_kl26_systick.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_kl26_systick.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_kl26_tpm0_cap.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_kl26_tpm0_cap.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_kl26_tpm0_pwm.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_kl26_tpm0_pwm.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_kl26_tpm0_timing.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_kl26_tpm0_timing.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_kl26_tpm1_cap.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_kl26_tpm1_cap.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_kl26_tpm1_pwm.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_kl26_tpm1_pwm.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_kl26_tpm1_timing.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_kl26_tpm1_timing.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_kl26_tpm2_cap.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_kl26_tpm2_cap.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_kl26_tpm2_pwm.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_kl26_tpm2_pwm.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_kl26_tpm2_timing.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_kl26_tpm2_timing.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_kl26_tsi.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_kl26_tsi.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_kl26_uart0.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_kl26_uart0.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_kl26_uart1.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_kl26_uart1.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_kl26_uart2.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_kl26_uart2.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_kl26_wdt.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_kl26_wdt.c</FilePath>
             </File>
             <File>
               <FileName>am_hwconf_led_gpio.c</FileName>
@@ -2306,91 +2556,6 @@
               <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_system_tick_softimer.c</FilePath>
             </File>
             <File>
-              <FileName>am_hwconf_zlg116_adc.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_adc.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_zlg116_clk.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_clk.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_zlg116_dma.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_dma.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_zlg116_gpio.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_gpio.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_zlg116_i2c.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_i2c.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_zlg116_i2c_slv.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_i2c_slv.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_zlg116_iwdg.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_iwdg.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_zlg116_pwr.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_pwr.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_zlg116_spi_dma.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_spi_dma.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_zlg116_spi_int.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_spi_int.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_zlg116_spi_slv_dma.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_spi_slv_dma.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_zlg116_systick.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_systick.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_zlg116_tim_cap.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_tim_cap.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_zlg116_tim_pwm.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_tim_pwm.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_zlg116_tim_timing.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_tim_timing.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_zlg116_uart.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_uart.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_zlg116_wwdg.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_wwdg.c</FilePath>
-            </File>
-            <File>
               <FileName>am_servconf_event_input.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\user_config\am_servconf_usrcfg\am_servconf_event_input.c</FilePath>
@@ -2404,11 +2569,6 @@
               <FileName>am_hwconf_fm175xx.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_fm175xx.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_zlg116_spi_poll.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_spi_poll.c</FilePath>
             </File>
           </Files>
         </Group>
