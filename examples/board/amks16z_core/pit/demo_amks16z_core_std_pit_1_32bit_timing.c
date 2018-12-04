@@ -45,6 +45,7 @@
 #include "am_board.h"
 #include "hw/amhw_kl26_sim.h"
 #include "demo_std_entries.h"
+#include "demo_amks16z_core_all_entries.h"
 
 /**
  * \brief Àı³ÌÈë¿Ú

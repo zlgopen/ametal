@@ -43,6 +43,7 @@
 #include "am_gpio.h"
 #include "demo_std_entries.h"
 #include "../../../../soc/freescale/kl26/am_kl26.h"
+#include "demo_amks16z_core_all_entries.h"
 
 /**
  * \brief Àý³ÌÈë¿Ú

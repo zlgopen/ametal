@@ -49,6 +49,7 @@
 #include "am_hwconf_microport.h"
 #include "demo_components_entries.h"
 #include "am_kl26_inst_init.h"
+#include "demo_amks16z_core_all_entries.h"
 
 /**
  * \brief MicroPort FLASH 例程，通过 MTD 接口实现

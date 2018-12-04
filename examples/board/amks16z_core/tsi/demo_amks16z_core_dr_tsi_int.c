@@ -44,6 +44,7 @@
 #include "am_board.h"
 #include "am_vdebug.h"
 #include "demo_fsl_entrys.h"
+#include "demo_amks16z_core_all_entries.h"
 
 /**
  * \brief 主函数入口

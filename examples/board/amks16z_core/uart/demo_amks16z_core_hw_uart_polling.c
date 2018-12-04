@@ -46,9 +46,10 @@
 #include "am_kl26_clk.h"
 #include "am_board.h"
 #include "demo_fsl_entrys.h"
-
 #include "../../../../soc/freescale/kl26/am_kl26.h"
 #include "../../../../soc/freescale/kl26/kl26_pin.h"
+#include "demo_amks16z_core_all_entries.h"
+
 /**
  * \brief UART时钟使能初始化
  * \param[in] p_hw_uart : 指向串口设备寄存器结构体, 如KL26_UART0.

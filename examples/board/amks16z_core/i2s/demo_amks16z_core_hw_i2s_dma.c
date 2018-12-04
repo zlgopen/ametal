@@ -43,6 +43,7 @@
 #include "am_int.h"
 #include "demo_fsl_entrys.h"
 #include "../../../../soc/freescale/kl26/kl26_pin.h"
+#include "demo_amks16z_core_all_entries.h"
 
 /**
  * \brief i2s dma方式数据发送，调用HW层接口函数实现

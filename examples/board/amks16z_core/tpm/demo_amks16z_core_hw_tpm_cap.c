@@ -50,6 +50,7 @@
 #include "demo_fsl_entrys.h"
 #include "../../../../soc/freescale/kl26/am_kl26.h"
 #include "../../../../soc/freescale/kl26/kl26_pin.h"
+#include "demo_amks16z_core_all_entries.h"
 
 /**
  * \brief Àý³ÌÈë¿Ú

@@ -41,6 +41,7 @@
 #include "am_vdebug.h"
 #include "am_kl26_inst_init.h"
 #include "demo_fsl_entrys.h"
+#include "demo_amks16z_core_all_entries.h"
 
 /**
  * \brief WDT入口函数，HW层实现

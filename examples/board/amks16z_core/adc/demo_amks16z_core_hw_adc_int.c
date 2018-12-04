@@ -46,6 +46,7 @@
 #include "am_board.h"
 #include "hw/amhw_kl26_sim.h"
 #include "../../../../soc/freescale/kl26/am_kl26.h"
+#include "demo_amks16z_core_all_entries.h"
 
 /**
  * \brief 中断方式获取软件触发的ADC转换结果，通过HW层接口实现

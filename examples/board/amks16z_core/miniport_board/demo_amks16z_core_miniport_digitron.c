@@ -40,7 +40,7 @@
 #include "am_digitron_disp.h"
 #include "demo_std_entries.h"
 #include "am_hwconf_miniport_view.h"
-
+#include "demo_amks16z_core_all_entries.h"
 
 /* Àý³ÌÈë¿Ú */
 void demo_amks16z_core_miniport_digitron_entry (void)
