@@ -38,6 +38,7 @@
 #include "am_timer.h"
 #include "am_rtc.h"
 #include "am_hc595.h"
+#include "am_sensor.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -379,14 +380,14 @@ void demo_std_nvram_entry (char *p_nvram_name, int32_t nvram_unit, int32_t test_
  *
  * \return 无
  */
-void demo_std_hts221_int_entry (void);
+void demo_std_hts221_int_entry (am_sensor_handle_t handle);
 
 /**
  * \brief 温湿度传感器HTS221例程，通过查询方式实现
  *
  * \return 无
  */
-void demo_std_hts221_entry (void);
+void demo_std_hts221_entry (am_sensor_handle_t handle);
 
 #ifdef __cplusplus
 }

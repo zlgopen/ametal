@@ -485,6 +485,17 @@ void demo_am116_core_dr_fm175xx_piccb_read_id (void);
  * \brief FM175XX LCPD模式 A类卡读卡类型和卡号例程
  */
 void demo_am116_core_dr_fm175xx_picca_lpcd_read_id(void);
+
+/**
+ * \brief 传感器查询模式例程入口
+ */
+void demo_am116_core_sensor_hts221_entry (void);
+
+/**
+ * \brief 传感器触发模式例程入口
+ */
+void demo_am116_core_sensor_hts221_int_entry (void);
+
 #ifdef __cplusplus
 }
 #endif
