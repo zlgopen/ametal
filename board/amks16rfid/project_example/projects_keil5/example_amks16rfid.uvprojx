@@ -976,6 +976,11 @@
               <FileType>1</FileType>
               <FilePath>..\..\..\..\soc\freescale\drivers\source\wdt\am_kl26_wdt.c</FilePath>
             </File>
+            <File>
+              <FileName>am_kl26_spi_poll.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\soc\freescale\drivers\source\spi\am_kl26_spi_poll.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -2195,6 +2200,11 @@
               <FileName>am_hwconf_fm175xx.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_fm175xx.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_kl26_spi0_poll.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_kl26_spi0_poll.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -3170,6 +3180,11 @@
               <FileType>1</FileType>
               <FilePath>..\..\..\..\soc\freescale\drivers\source\wdt\am_kl26_wdt.c</FilePath>
             </File>
+            <File>
+              <FileName>am_kl26_spi_poll.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\soc\freescale\drivers\source\spi\am_kl26_spi_poll.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -4389,6 +4404,11 @@
               <FileName>am_hwconf_fm175xx.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_fm175xx.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_kl26_spi0_poll.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_kl26_spi0_poll.c</FilePath>
             </File>
           </Files>
         </Group>

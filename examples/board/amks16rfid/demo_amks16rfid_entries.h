@@ -14,7 +14,7 @@
  * \file
  * \brief am824rfid 所有例程函数入口声明，本文只包含fm175xx相关demo，
  *  其他demo请参照am116_core中的demo
- * \sa demo_am824zb_all_entries.h
+ * \sa demo_amks16rfid_entries.h
  *
  * \internal
  * \par Modification history
