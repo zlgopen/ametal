@@ -128,12 +128,12 @@ extern "C" {
  * \param[in] funkey_num : 功能键编号，有效值：0 ~ 7，分别对应 F0 ~ F7，建议使用
  *                         宏值#AM_ZLG72128_FUNKEY_0 ~ #AM_ZLG72128_FUNKEY_7
  *
- * \retval TRUE  : 对应功能键当前是按下状态
- * \retval FALSE : 对应功能键当前是释放状态
+ * \retval AM_TRUE  : 对应功能键当前是按下状态
+ * \retval AM_FALSE : 对应功能键当前是释放状态
  */
 
 #define  AM_ZLG72128_FUNKEY_CHECK(funkey_val, funkey_num)  \
-               (((funkey_val) & (1 << ((funkey_num) & 0x07))) ? FALSE : TRUE)
+               (((funkey_val) & (1 << ((funkey_num) & 0x07))) ? AM_FALSE : AM_TRUE)
 
 
 /** @} */
@@ -225,7 +225,7 @@ typedef void (*am_zlg72128_key_cb_t) (void    *p_arg,
  * 用于使用初始化函数获取handle时，指明设备的相关信息，示例设备信息如：
  *
  *  const am_zlg72128_devinfo_t g_zlg72128_devinfo = {
- *      TRUE,     // 通常情况下，均会使用中断引脚
+ *      AM_TRUE,     // 通常情况下，均会使用中断引脚
  *      PIO0_8,   // 与MCU连接的中断引脚号
  *      5,        // 若不使用中断引脚，则该参数表明查询的时间间隔，建议至少为5ms
  *  }
@@ -239,15 +239,15 @@ typedef struct am_zlg72128_devinfo {
 
     /** 
      * \brief 是否使用中断引脚，若为节省一个IO资源，则可不使用中断方式。
-     * TRUE  : 使用中断引脚(int_pin 参数指明引脚号)，在引脚中断中获取键值 
-     * FALSE : 以一定的时间间隔（interval_ms参数指定）查询键值
+     * AM_TRUE  : 使用中断引脚(int_pin 参数指明引脚号)，在引脚中断中获取键值
+     * AM_FALSE : 以一定的时间间隔（interval_ms参数指定）查询键值
      */
     am_bool_t                use_int_pin;
     
-    /** \brief 仅当 use_int_pin 为 TRUE 时，该参数有效，指定中断引脚 */
+    /** \brief 仅当 use_int_pin 为 AM_TRUE 时，该参数有效，指定中断引脚 */
     int                      int_pin;
     
-    /** \brief 仅当 use_int_pin 为 FALSE 时，该参数有效，指定查询的时间间隔 */
+    /** \brief 仅当 use_int_pin 为 AM_FALSE 时，该参数有效，指定查询的时间间隔 */
     uint32_t                 interval_ms;
 
 } am_zlg72128_devinfo_t;
@@ -380,8 +380,8 @@ int am_zlg72128_digitron_disp_ctrl (am_zlg72128_handle_t  handle,
  * \param[in] pos        : 本次显示的位置，有效值 0 ~ 11
  * \param[in] ch         : 显示的字符，支持字符 0123456789AbCdEFGHiJLopqrtUychT
  *                         以及空格（无显示）
- * \param[in] is_dp_disp : 是否显示小数点，TRUE:显示; FALSE:不显示
- * \param[in] is_flash   : 该位是否闪烁，TRUE:闪烁; FALSE:不闪烁
+ * \param[in] is_dp_disp : 是否显示小数点，AM_TRUE:显示; AM_FALSE:不显示
+ * \param[in] is_flash   : 该位是否闪烁，AM_TRUE:闪烁; AM_FALSE:不闪烁
  *
  * \retval AM_OK       : 设置成功
  * \retval -AM_EINVAL  : 参数错误
@@ -417,8 +417,8 @@ int am_zlg72128_digitron_disp_str (am_zlg72128_handle_t  handle,
  * \param[in] handle     : ZLG72128的操作句柄
  * \param[in] pos        : 本次显示的位置，有效值 0 ~ 11
  * \param[in] num        : 显示的数字，0 ~ 9
- * \param[in] is_dp_disp : 是否显示小数点，TRUE:显示; FALSE:不显示
- * \param[in] is_flash   : 该位是否闪烁，TRUE:闪烁; FALSE:不闪烁
+ * \param[in] is_dp_disp : 是否显示小数点，AM_TRUE:显示; AM_FALSE:不显示
+ * \param[in] is_flash   : 该位是否闪烁，AM_TRUE:闪烁; AM_FALSE:不闪烁
  *
  * \retval AM_OK      : 设置成功
  * \retval -AM_EINVAL : 参数错误
@@ -473,7 +473,7 @@ int am_zlg72128_digitron_dispbuf_set (am_zlg72128_handle_t  handle,
  *                       - AM_ZLG72128_DIGITRON_SEG_G
  *                       - AM_ZLG72128_DIGITRON_SEG_DP
  *
- * \param[in] is_on  : 是否点亮该段，TRUE:点亮; FALSE:熄灭
+ * \param[in] is_on  : 是否点亮该段，AM_TRUE:点亮; AM_FALSE:熄灭
  *
  * \retval AM_OK      : 设置成功
  * \retval -AM_EINVAL : 参数错误
@@ -496,7 +496,7 @@ int am_zlg72128_digitron_seg_ctrl (am_zlg72128_handle_t  handle,
  *                       - AM_ZLG72128_DIGITRON_SHIFT_LEFT   左移
  *                       - AM_ZLG72128_DIGITRON_SHIFT_RIGHT  右移
  *                                 
- * \param[in] is_cyclic : 是否是循环移位，TRUE，循环移位；FALSE，不循环移位           
+ * \param[in] is_cyclic : 是否是循环移位，AM_TRUE，循环移位；AM_FALSE，不循环移位
  * \param[in] num       : 本次移位的位数，有效值 0（不移动） ~ 11，其余值无效
  *
  * \retval AM_OK      : 移位成功

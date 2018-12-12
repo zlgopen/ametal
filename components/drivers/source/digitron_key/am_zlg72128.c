@@ -108,7 +108,16 @@ static int __zlg72128_data_write (am_zlg72128_dev_t *p_dev,
                         p_buf,
                         len);
 }
- 
+
+/******************************************************************************/
+static void __zlg72128_data_read (am_zlg72128_dev_t *p_dev)
+{
+    if (p_dev->state == __ZLG72128_STATE_IDLE) {
+        p_dev->state = __ZLG72128_STATE_WAIT_READ_COMPLETE;
+        am_i2c_msg_start(p_dev->handle, &(p_dev->msg));
+    }
+}
+
 /******************************************************************************/
 static void __zlg72128_trans_complete (void *p_arg)
 {
@@ -123,6 +132,13 @@ static void __zlg72128_trans_complete (void *p_arg)
     if (p_dev->p_devinfo->use_int_pin) {
         /* enable the interrupt */
         am_gpio_trigger_on(p_dev->p_devinfo->int_pin);
+
+        /*若中断引脚已经是低电平，则表明已有按键按下*/
+        if (am_gpio_get(p_dev->p_devinfo->int_pin) == 0) {
+
+           /*读取键值*/
+            __zlg72128_data_read(p_dev);
+        }
     }
 }
 
@@ -136,10 +152,7 @@ static void __zlg72128_int_callback (void *p_arg)
         am_gpio_trigger_off(p_dev->p_devinfo->int_pin);
     }
     
-    if (p_dev->state == __ZLG72128_STATE_IDLE) {
-        p_dev->state = __ZLG72128_STATE_WAIT_READ_COMPLETE;
-        am_i2c_msg_start(p_dev->handle, &(p_dev->msg));
-    } 
+    __zlg72128_data_read(p_dev);
 }
 
 /******************************************************************************/
@@ -219,14 +232,30 @@ am_zlg72128_handle_t am_zlg72128_init (am_zlg72128_dev_t           *p_dev,
             return NULL;
         }
         
-        /* 低电平有效 */
-        if (am_gpio_trigger_cfg(p_devinfo->int_pin, 
+        /* 设置中断引脚低电平触发 */
+        if (am_gpio_trigger_cfg(p_devinfo->int_pin,
                                 AM_GPIO_TRIGGER_LOW) != AM_OK) {
 
-            return NULL;
+            /*设置低电平触发失败，则设置为下降沿触发*/
+
+            /*设置为下降沿触发*/
+            if (am_gpio_trigger_cfg(p_devinfo->int_pin,
+                                    AM_GPIO_TRIGGER_FALL) != AM_OK) {
+                return NULL;
+            }
+            /*设置为下降沿触发成功，开启触发*/
+            am_gpio_trigger_on(p_devinfo->int_pin);
+
+            /*若中断引脚已经是低电平，则表明已有按键按下*/
+            if (am_gpio_get(p_devinfo->int_pin) == 0) {
+
+                /*读取键值*/
+                __zlg72128_data_read(p_dev);
+            }
+        } else {
+            /*设置低电平触发成功，开启触发*/
+            am_gpio_trigger_on(p_devinfo->int_pin);
         }
-                                
-        am_gpio_trigger_on(p_devinfo->int_pin);
  
     } else {                          /* 使用软件定时器以一定的时间间隔扫描 */
         
