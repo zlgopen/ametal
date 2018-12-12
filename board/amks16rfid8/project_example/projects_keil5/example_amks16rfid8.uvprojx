@@ -467,6 +467,11 @@
           <GroupName>drivers</GroupName>
           <Files>
             <File>
+              <FileName>am_fm175xx_kl16.lib</FileName>
+              <FileType>4</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\fm175xx\am_fm175xx_kl16.lib</FilePath>
+            </File>
+            <File>
               <FileName>am_cs1237.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\components\drivers\source\adc\am_cs1237.c</FilePath>
@@ -635,11 +640,6 @@
               <FileName>am_zlg600.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\components\drivers\source\zlg600\am_zlg600.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_fm175xx_zlg116.lib</FileName>
-              <FileType>4</FileType>
-              <FilePath>..\..\..\..\components\drivers\source\fm175xx\am_fm175xx_zlg116.lib</FilePath>
             </File>
           </Files>
         </Group>
@@ -980,11 +980,6 @@
               <FileName>am_fm175xx_ant.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\components\drivers\source\fm175xx\am_fm175xx_ant.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_fm175xx_lpc824.lib</FileName>
-              <FileType>4</FileType>
-              <FilePath>..\..\..\..\components\drivers\source\fm175xx\am_fm175xx_lpc824.lib</FilePath>
             </File>
             <File>
               <FileName>am_kl26_spi_poll.c</FileName>
@@ -2721,6 +2716,11 @@
           <GroupName>drivers</GroupName>
           <Files>
             <File>
+              <FileName>am_fm175xx_kl16.lib</FileName>
+              <FileType>4</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\fm175xx\am_fm175xx_kl16.lib</FilePath>
+            </File>
+            <File>
               <FileName>am_cs1237.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\components\drivers\source\adc\am_cs1237.c</FilePath>
@@ -2889,11 +2889,6 @@
               <FileName>am_zlg600.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\components\drivers\source\zlg600\am_zlg600.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_fm175xx_zlg116.lib</FileName>
-              <FileType>4</FileType>
-              <FilePath>..\..\..\..\components\drivers\source\fm175xx\am_fm175xx_zlg116.lib</FilePath>
             </File>
           </Files>
         </Group>
@@ -3234,11 +3229,6 @@
               <FileName>am_fm175xx_ant.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\components\drivers\source\fm175xx\am_fm175xx_ant.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_fm175xx_lpc824.lib</FileName>
-              <FileType>4</FileType>
-              <FilePath>..\..\..\..\components\drivers\source\fm175xx\am_fm175xx_lpc824.lib</FilePath>
             </File>
             <File>
               <FileName>am_kl26_spi_poll.c</FileName>

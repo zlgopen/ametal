@@ -369,12 +369,24 @@ void am_kl26_spi0_int_inst_deinit (am_spi_handle_t handle);
 am_spi_handle_t am_kl26_spi1_int_inst_init (void);
 
 /**
- * \brief SPI1 实例解初始化(INT方式)
+ * \brief SPI1 实例解初始化(POLL方式)
  * \param[in] handle : 通过 am_kl26_spi1_int_inst_init() 函数获得的SPI0句柄
  * \return 无
  */
-void am_kl26_spi1_int_inst_deinit (am_spi_handle_t handle);
+void am_kl26_spi1_poll_inst_deinit (am_spi_handle_t handle);
 
+/**
+ * \brief SPI0 实例初始化，获得SPI标准服务句柄(POLL方式)
+ * \return SPI0句柄值，若为NULL，表明初始化失败
+ */
+am_spi_handle_t am_kl26_spi0_poll_inst_init (void);
+
+/**
+ * \brief SPI0 实例解初始化(INT方式)
+ * \param[in] handle : 通过 am_kl26_spi0_int_inst_init() 函数获得的SPI0句柄
+ * \return 无
+ */
+void am_kl26_spi0_int_inst_deinit (am_spi_handle_t handle);
 
 /**
  * \brief SPI0 实例初始化，获得SPI标准服务句柄(DMA方式)

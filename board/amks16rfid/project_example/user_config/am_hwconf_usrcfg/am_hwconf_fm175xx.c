@@ -61,7 +61,7 @@ am_local am_const am_fm175xx_devinfo_t __g_fm175xx_devinfo = {
 am_fm175xx_handle_t am_fm175xx_inst_init (void)
 {
       am_fm175xx_init(&__g_fm175xx_dev,
-                       (am_spi_handle_t)am_kl26_spi0_poll_inst_init(),
+                       am_kl26_spi0_poll_inst_init(),
                       &__g_fm175xx_devinfo);
 
       return &__g_fm175xx_dev;

@@ -348,6 +348,19 @@ am_i2c_handle_t am_kl26_i2c1_inst_init (void);
  */
 void am_kl26_i2c1_inst_deinit (am_i2c_handle_t handle);
 
+/**
+ * \brief SPI0 实例初始化，获得SPI标准服务句柄(POLL方式)
+ * \return SPI0句柄值，若为NULL，表明初始化失败
+ */
+am_spi_handle_t am_kl26_spi0_poll_inst_init (void);
+
+/**
+ * \brief SPI0 实例解初始化(POLL方式)
+ * \param[in] handle : 通过 am_kl26_spi0_int_inst_init() 函数获得的SPI0句柄
+ * \return 无
+ */
+void am_kl26_spi0_poll_inst_deinit (am_spi_handle_t handle);
+
 
 /**
  * \brief SPI0 实例初始化，获得SPI标准服务句柄(INT方式)
