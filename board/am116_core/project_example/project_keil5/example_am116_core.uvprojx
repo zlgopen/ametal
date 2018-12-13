@@ -646,6 +646,21 @@
               <FileType>1</FileType>
               <FilePath>..\..\..\..\components\drivers\source\sensor\am_sensor_hts221.c</FilePath>
             </File>
+            <File>
+              <FileName>am_sensor_bme280.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\sensor\am_sensor_bme280.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_sensor_bmp280.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\sensor\am_sensor_bmp280.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_sensor_lps22hb.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\sensor\am_sensor_lps22hb.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -1796,6 +1811,26 @@
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\std\sensor\hts221\demo_std_hts221_int.c</FilePath>
             </File>
+            <File>
+              <FileName>demo_std_bmp280.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\std\sensor\bmp280\demo_std_bmp280.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_std_bme280.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\std\sensor\bme280\demo_std_bme280.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_std_lps22hb.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\std\sensor\lps22hb\demo_std_lps22hb.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_std_lps22hb_int.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\std\sensor\lps22hb\demo_std_lps22hb_int.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -2050,6 +2085,21 @@
               <FileName>am_hwconf_sensor_hts221.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_sensor_hts221.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_sensor_bmp280.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_sensor_bmp280.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_sensor_bme280.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_sensor_bme280.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_sensor_lps22hb.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_sensor_lps22hb.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -2695,6 +2745,21 @@
               <FileType>1</FileType>
               <FilePath>..\..\..\..\components\drivers\source\sensor\am_sensor_hts221.c</FilePath>
             </File>
+            <File>
+              <FileName>am_sensor_bme280.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\sensor\am_sensor_bme280.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_sensor_bmp280.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\sensor\am_sensor_bmp280.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_sensor_lps22hb.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\sensor\am_sensor_lps22hb.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -3845,6 +3910,26 @@
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\std\sensor\hts221\demo_std_hts221_int.c</FilePath>
             </File>
+            <File>
+              <FileName>demo_std_bmp280.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\std\sensor\bmp280\demo_std_bmp280.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_std_bme280.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\std\sensor\bme280\demo_std_bme280.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_std_lps22hb.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\std\sensor\lps22hb\demo_std_lps22hb.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_std_lps22hb_int.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\std\sensor\lps22hb\demo_std_lps22hb_int.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -4099,6 +4184,21 @@
               <FileName>am_hwconf_sensor_hts221.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_sensor_hts221.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_sensor_bmp280.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_sensor_bmp280.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_sensor_bme280.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_sensor_bme280.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_sensor_lps22hb.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_sensor_lps22hb.c</FilePath>
             </File>
           </Files>
         </Group>

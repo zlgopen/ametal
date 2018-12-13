@@ -1,4 +1,4 @@
-﻿/*******************************************************************************
+/*******************************************************************************
 *                                 AMetal
 *                       ----------------------------
 *                       innovating embedded platform
@@ -388,6 +388,34 @@ void demo_std_hts221_int_entry (am_sensor_handle_t handle);
  * \return 无
  */
 void demo_std_hts221_entry (am_sensor_handle_t handle);
+
+/**
+ * \brief 压力温度传感器BMP280例程，通过查询方式实现
+ *
+ * \return 无
+ */
+void demo_std_bmp280_entry (am_sensor_handle_t handle);
+
+/**
+ * \brief 压力温湿度传感器BME280例程，通过查询方式实现
+ *
+ * \return 无
+ */
+void demo_std_bme280_entry (am_sensor_handle_t handle);
+
+/**
+ * \brief 压力温度传感器LPS22HB例程，通过查询方式实现
+ *
+ * \return 无
+ */
+void demo_std_lps22hb_entry (am_sensor_handle_t handle);
+
+/**
+ * \brief 压力温度传感器LPS22HB例程，通过触发模式实现
+ *
+ * \return 无
+ */
+void demo_std_lps22hb_int_entry (am_sensor_handle_t handle);
 
 #ifdef __cplusplus
 }
