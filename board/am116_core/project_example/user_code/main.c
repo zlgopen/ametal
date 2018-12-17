@@ -30,7 +30,6 @@
 #include "am_vdebug.h"
 #include "am_board.h"
 #include "demo_am116_core_entries.h"
-
 /**
  * \brief AMetal 应用程序入口
  */
