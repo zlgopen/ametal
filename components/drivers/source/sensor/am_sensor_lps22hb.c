@@ -77,7 +77,7 @@
 #define __LPS22HB_RATE_SET_75S(data) (((data) & (~(0x7 << 4))) | (0x5 << 4))
 
 /** \brief 开始一次数据采集 */
-#define __LPS22HB_ONE_SHOT_START        (0x1)
+#define __LPS22HB_ONE_SHOT_START     (0x1)
 
 /** \brief 获取PRESS状态位 */
 #define __LPS22HB_GET_PRESS_STATUS(reg) (reg & 0x1)
@@ -99,7 +99,7 @@
 /** \brief 计算压强 */
 #define __LPS22HB_GET_PRESS_VALUE(data)  ((double)(data) * 100 / 4096)
  
-/** \brief 计算温度 */
+/** \brief 计算温度,并扩大10^6倍 */
 #define __LPS22HB_GET_TEM_VALUE(data)    (data *1000000 / 100)
 
 /*******************************************************************************
@@ -219,7 +219,7 @@ am_local void __am_pfnvoid_t (void *p_arg)
     tem_data = __LPS22HB_UINT8_TO_UINT16(reg_data);
    
     /** \brief 温度 */
-    p_this->data[1].val = __LPS22HB_GET_TEM_VALUE(tem_data); 
+    p_this->data[1].val  = __LPS22HB_GET_TEM_VALUE(tem_data); 
     p_this->data[1].unit = AM_SENSOR_UNIT_MICRO; /*< \brief 单位默认为-6:10^(-6)*/
     
     if (p_this->pfn_trigger_cb[0] &&
@@ -238,7 +238,7 @@ am_local void __am_pfnvoid_t (void *p_arg)
 /**
  * \brief 配置选择
  */
-am_local am_err_t  __reg_attr_set (am_sensor_lps22hb_dev_t *p_this, uint8_t rate)
+am_local am_err_t __reg_attr_set (am_sensor_lps22hb_dev_t *p_this, uint8_t rate)
 {
      am_err_t ret = AM_OK;
 
@@ -319,6 +319,19 @@ am_local am_err_t __pfn_data_get (void            *p_drv,
         p_buf[i].unit = AM_SENSOR_UNIT_INVALID;
     }
 
+    /* 若为1，则可能在数据准备就绪触发回调函数中使用 */
+    if (num == 1) {
+        cur_id = p_ids[0];
+        /* 若打开数据准备就绪触发方式，则直接赋值 */
+        if ((AM_BIT_GET(p_this->trigger, 2)) &&
+                ((p_this->flags[0] & AM_SENSOR_TRIGGER_DATA_READY) ||
+                 (p_this->flags[1] & AM_SENSOR_TRIGGER_DATA_READY))) {
+            p_buf[0].val = p_this->data[cur_id].val;
+            p_buf[0].unit= p_this->data[cur_id].unit;
+            return AM_OK;
+        }
+    }    
+    
     /** \brief 获取可读状态值 */
     do {
         ret = __lps22hb_read(p_this, __LPS22HB_REG_STATUS, &status_val, 1);
@@ -421,8 +434,8 @@ am_local am_err_t __pfn_enable (void            *p_drv,
         AM_BIT_SET(p_this->trigger, 7);
         AM_BIT_SET(p_this->trigger, 6);
         AM_BIT_SET(p_this->trigger, 5);
-    }
-
+    }    
+    
     ret = __lps22hb_read(p_this, __LPS22HB_REG_CTRL_REG2, &open_one_shot, 1);
     if (ret != AM_OK) {
         curent_ret = ret;
@@ -433,7 +446,7 @@ am_local am_err_t __pfn_enable (void            *p_drv,
     if (ret != AM_OK) {
         curent_ret = ret;
     }
-    
+
     return curent_ret;
 }
 
@@ -641,6 +654,7 @@ am_local am_err_t __pfn_trigger_on (void *p_drv, int id)
     am_err_t cur_ret = AM_OK;
 
     uint8_t reg_data = 0;
+    uint8_t reg_clear[5];
 
     if (id != 0 && id != 1) {
         return -AM_ENODEV;
@@ -679,7 +693,8 @@ am_local am_err_t __pfn_trigger_on (void *p_drv, int id)
     }
 
     /* 配置触发引脚 */
-    if (p_this->dev_info->trigger_pin != -1) {              
+    if (p_this->dev_info->trigger_pin != -1) {    
+        __lps22hb_read(p_this, __LPS22HB_REG_PRESS_OUT_XL, reg_clear, 5);
         ret = am_gpio_trigger_on(p_this->dev_info->trigger_pin);
         if (ret != AM_OK) {
             cur_ret = ret;
@@ -808,7 +823,6 @@ am_sensor_handle_t am_sensor_lps22hb_init (
                                 __lps22hb_alarm_callback,
                                 (void*)p_dev);
         am_gpio_trigger_cfg(p_devinfo->trigger_pin, AM_GPIO_TRIGGER_RISE);
-        am_gpio_trigger_on(p_devinfo->trigger_pin);
     }
 
     am_isr_defer_job_init(&p_dev->g_myjob, __am_pfnvoid_t, p_dev, 1);

@@ -96,10 +96,14 @@
 #define __BMP280_NORMAL                   (0x3<<0)
 /** \brief 模块睡眠 */
 #define __BMP280_SLEEP                    (~(0x3<<0))
-/** \brief 压强测量 */ 
-#define __BME280_PRESS_START              (0x2<<2)                   
-/** \brief 温度测量 */ 
-#define __BME280_TEMP_START               (0x2<<5)                     
+/** \brief 打开压强测量 */ 
+#define __BMP280_PRESS_START              (0x2<<2)
+/** \brief 关闭压强测量 */ 
+#define __BMP280_PRESS_CLOSE              (~(0x2<<2))                   
+/** \brief 打开温度测量 */ 
+#define __BMP280_TEMP_START               (0x2<<5)
+/** \brief 关闭温度测量 */ 
+#define __BMP280_TEMP_CLOSE               (~(0x2<<5))                  
 /*******************************************************************************
  * 本地函数声明
  ******************************************************************************/
@@ -136,6 +140,19 @@ am_local am_err_t __pfn_attr_get (void            *p_drv,
                                   int              attr,
                                   am_sensor_val_t *p_val);
                                   
+/** \brief 设置触发，一个通道仅能设置一个触发回调函数 */
+am_local am_err_t __pfn_trigger_cfg (void                   *p_drv,
+                                     int                     id,
+                                     uint32_t                flags,
+                                     am_sensor_trigger_cb_t  pfn_cb,
+                                     void                   *p_arg);
+
+/** \brief 打开触发 */
+am_local am_err_t __pfn_trigger_on (void *p_drv, int id);
+
+/** \brief 关闭触发 */
+am_local am_err_t __pfn_trigger_off (void *p_drv, int id);
+                                     
 /** \brief 传感器标准服务 */
 am_local am_const struct am_sensor_drv_funcs __g_sensor_bmp280_funcs = {
         __pfn_type_get,
@@ -144,9 +161,9 @@ am_local am_const struct am_sensor_drv_funcs __g_sensor_bmp280_funcs = {
         __pfn_disable,
         __pfn_attr_set,
         __pfn_attr_get,
-        NULL,
-        NULL,
-        NULL
+        __pfn_trigger_cfg,
+        __pfn_trigger_on,
+        __pfn_trigger_off
 };
 /*******************************************************************************
   Local functions
@@ -462,7 +479,7 @@ am_local am_err_t __pfn_enable (void            *p_drv,
     uint8_t ctrl_meas = 0;
 
     am_err_t ret = -AM_ENODEV;
-    am_err_t curent_ret = AM_OK;
+    am_err_t cur_ret = AM_OK;
 
     if (p_drv == NULL) {
         return -AM_EINVAL;
@@ -472,42 +489,84 @@ am_local am_err_t __pfn_enable (void            *p_drv,
 
         cur_id = p_ids[i];
 
-        if (cur_id == 0 || cur_id == 1) {
+        if (cur_id == 0) {
+
             if (p_result != NULL) {
                 p_result[i].val = AM_OK;
             }
+            AM_BIT_SET(p_this->trigger, 6);           
             ret = AM_OK;
+
+        } else if (cur_id == 1) {
+ 
+            if (p_result != NULL) {
+                p_result[i].val = AM_OK;
+            }
+            AM_BIT_SET(p_this->trigger, 5);           
+            ret = AM_OK;
+
         } else {
             if (p_result != NULL) {
                 p_result[i].val = -AM_ENODEV;
             }
-            curent_ret = -AM_ENODEV;
+            cur_ret = -AM_ENODEV;
         }
     }
 
-    if (ret != AM_OK) {     /*< \breif 如果本次没有该传感器的通道传入，则退出 */
-        return curent_ret;
+    if (ret != AM_OK) {    /**< \breif 如果本次没有该传感器的通道传入，则退出 */
+        return cur_ret;
     }
 
-    ret = __bmp280_read(p_this, __BMP280_REG_CTRL_MEAS, &ctrl_meas, 1);
-    if (ret != AM_OK) {
-        curent_ret = ret;
-    }
+    if ((AM_BIT_GET(p_this->trigger, 6) == 1)
+            || (AM_BIT_GET(p_this->trigger, 5) == 1)) {  
+        ret = __bmp280_read(p_this, __BMP280_REG_CTRL_MEAS, &ctrl_meas, 1);
+        if (ret != AM_OK) {
+            cur_ret = ret;
+        }
 
-    /** \brief 使能该通道 */
-    ctrl_meas |= __BMP280_NORMAL | __BME280_PRESS_START | __BME280_TEMP_START;
-    ret = __bmp280_write(p_this, __BMP280_REG_CTRL_MEAS, &ctrl_meas, 1);
-    if (ret != AM_OK) {
-        curent_ret = ret;
-    }
+        /** \brief 进入工作模式 */
+        ctrl_meas |= __BMP280_NORMAL;
+        ret = __bmp280_write(p_this, __BMP280_REG_CTRL_MEAS, &ctrl_meas, 1);
+        if (ret != AM_OK) {
+            cur_ret = ret;
+        }
+    }  
+
+    if (AM_BIT_GET(p_this->trigger, 5) == 1) {
+
+        ret = __bmp280_read(p_this, __BMP280_REG_CTRL_MEAS, &ctrl_meas, 1);
+        if (ret != AM_OK) {
+            cur_ret = ret;
+        }
+
+        /** \brief 使能该通道 */
+        ctrl_meas |= __BMP280_TEMP_START;
+        ret = __bmp280_write(p_this, __BMP280_REG_CTRL_MEAS, &ctrl_meas, 1);
+        if (ret != AM_OK) {
+            cur_ret = ret;
+        }
+    } 
+    
+    if (AM_BIT_GET(p_this->trigger, 6) == 1) {
+
+        ret = __bmp280_read(p_this, __BMP280_REG_CTRL_MEAS, &ctrl_meas, 1);
+        if (ret != AM_OK) {
+            cur_ret = ret;
+        }
+
+        /** \brief 使能该通道 */
+        ctrl_meas |= __BMP280_PRESS_START;
+        ret = __bmp280_write(p_this, __BMP280_REG_CTRL_MEAS, &ctrl_meas, 1);
+        if (ret != AM_OK) {
+            cur_ret = ret;
+        }
+    } 
 
     if (ret == AM_OK) {
         AM_BIT_SET(p_this->trigger, 7);
-        AM_BIT_SET(p_this->trigger, 6);
-        AM_BIT_SET(p_this->trigger, 5);
     }
 
-    return curent_ret;
+    return cur_ret;
 }
 
 /** \brief 禁能传感器通道 */
@@ -561,8 +620,8 @@ am_local am_err_t __pfn_disable (void            *p_drv,
             cur_ret = ret;
         }
 
-        /** \brief 关闭该通道 */
-        ctrl_meas &= __BMP280_SLEEP;
+        /** \brief 进入睡眠模式，关闭通道 */
+        ctrl_meas &= __BMP280_SLEEP & __BMP280_PRESS_CLOSE & __BMP280_TEMP_CLOSE;
         ret = __bmp280_write(p_this, __BMP280_REG_CTRL_MEAS, &ctrl_meas, 1);
         if (ret != AM_OK){
             cur_ret = ret;
@@ -571,8 +630,34 @@ am_local am_err_t __pfn_disable (void            *p_drv,
         if (cur_ret == AM_OK) {
             AM_BIT_CLR(p_this->trigger, 7);
         }
-    }
+    } else if (AM_BIT_GET(p_this->trigger, 6) == 0) {
 
+        ret = __bmp280_read(p_this, __BMP280_REG_CTRL_MEAS, &ctrl_meas, 1);
+        if (ret != AM_OK){
+            cur_ret = ret;
+        }
+
+        /** \brief 关闭该通道 */
+        ctrl_meas &= __BMP280_PRESS_CLOSE;
+        ret = __bmp280_write(p_this, __BMP280_REG_CTRL_MEAS, &ctrl_meas, 1);
+        if (ret != AM_OK){
+            cur_ret = ret;
+        }
+    } else if (AM_BIT_GET(p_this->trigger, 5) == 0) {
+
+        ret = __bmp280_read(p_this, __BMP280_REG_CTRL_MEAS, &ctrl_meas, 1);
+        if (ret != AM_OK){
+            cur_ret = ret;
+        }
+
+        /** \brief 关闭该通道 */
+        ctrl_meas &= __BMP280_TEMP_CLOSE;
+        ret = __bmp280_write(p_this, __BMP280_REG_CTRL_MEAS, &ctrl_meas, 1);
+        if (ret != AM_OK){
+            cur_ret = ret;
+        }
+    } 
+        
     return cur_ret;
 }
 
@@ -582,9 +667,7 @@ am_local am_err_t __pfn_attr_set (void                  *p_drv,
                                   int                    attr,
                                   const am_sensor_val_t *p_val)
 {
-    am_err_t cur_ret = AM_OK;
-
-    return cur_ret;
+    return -AM_ENOTSUP;
 }
 
 /** \brief 获取传感器通道属性 */
@@ -593,10 +676,30 @@ am_local am_err_t __pfn_attr_get (void            *p_drv,
                                   int              attr,
                                   am_sensor_val_t *p_val)
 {
-    am_err_t cur_ret = AM_OK;
-    return cur_ret;
+    return -AM_ENOTSUP;
 }
 
+/** \brief 设置触发，一个通道仅能设置一个触发回调函数 */
+am_local am_err_t __pfn_trigger_cfg (void                   *p_drv,
+                                     int                     id,
+                                     uint32_t                flags,
+                                     am_sensor_trigger_cb_t  pfn_cb,
+                                     void                   *p_arg)
+{
+    return -AM_ENOTSUP;
+}
+
+/** \brief 打开触发 */
+am_local am_err_t __pfn_trigger_on (void *p_drv, int id)
+{
+    return -AM_ENOTSUP;
+}
+
+/** \brief 关闭触发 */
+am_local am_err_t __pfn_trigger_off (void *p_drv, int id)
+{
+    return -AM_ENOTSUP;
+}
 /*******************************************************************************
   Public functions
 *******************************************************************************/
