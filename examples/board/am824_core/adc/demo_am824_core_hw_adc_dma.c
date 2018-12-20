@@ -12,21 +12,21 @@
 
 /**
  * \file
- * \brief ADC 渚嬬▼锛岃浆鎹㈢粨鏋滄暟鎹�氳繃 DMA 浼犺緭锛岄�氳繃 HW 灞傛帴鍙ｅ疄鐜�
+ * \brief ADC ���̣�ת���������ͨ�� DMA ���䣬ͨ�� HW ��ӿ�ʵ��
  *
- * - 鎿嶄綔姝ラ锛�
- *   1. 鐭帴 J12 璺崇嚎甯斤紝浣垮緱鍙傝�冪數鍘嬩负 2.5V锛�
- *   2. PIO0_7(ADC 閫氶亾 0) 杩炴帴妯℃嫙杈撳叆銆�
+ * - �������裺
+ *   1. �̽� J12 ����ñ��ʹ�òο���ѹΪ 2.5V��
+ *   2. PIO0_7(ADC ͨ�� 0) ����ģ�����롣
  *
- * - 瀹為獙鐜拌薄锛�
- *   1. ADC 杞崲瀹屾垚 100 娆★紝涓插彛鎵撳嵃鍑� 100 涓噰鏍风數鍘嬪�笺��
+ * - ʵ������
+ *   1. ADC ת����� 100 �Σ����ڴ�ӡ�� 100 ��������ѹֵ��
  *
  * \note
- *    濡傞渶瑙傚療涓插彛鎵撳嵃鐨勮皟璇曚俊鎭紝闇�瑕佸皢 PIO0_0 寮曡剼杩炴帴 PC 涓插彛鐨� TXD锛�
- *    PIO0_4 寮曡剼杩炴帴 PC 涓插彛鐨� RXD銆�
+ *    ����۲촮�ڴ�ӡ�ĵ�����Ϣ����Ҫ�� PIO0_0 �������� PC ���ڵ� TXD��
+ *    PIO0_4 �������� PC ���ڵ� RXD��
  *
- * \par 婧愪唬鐮�
- * \snippet demo_am824_hw_adc_dma.c src_am824_hw_adc_dma
+ * \par Դ����
+ * \snippet demo_am824_core_hw_adc_dma.c src_am824_core_hw_adc_dma
  *
  * \internal
  * \par Modification history
@@ -36,11 +36,11 @@
  */
 
 /**
- * \addtogroup demo_if_am824_hw_adc_dma
- * \copydoc demo_am824_hw_adc_dma.c
+ * \addtogroup demo_if_am824_core_hw_adc_dma
+ * \copydoc demo_am824_core_hw_adc_dma.c
  */
 
-/** [src_am824_hw_adc_dma] */
+/** [src_am824_core_hw_adc_dma] */
 #include "ametal.h"
 #include "am_vdebug.h"
 #include "am_board.h"
@@ -48,17 +48,17 @@
 #include "demo_nxp_entries.h"
 
 /**
- * \brief 渚嬬▼鍏ュ彛
+ * \brief �������
  */
 void demo_am824_core_hw_adc_dma_entry (void)
 {
     am_kprintf("demo am824_core hw adc dma!\r\n");
 
-    /* 骞冲彴鍒濆鍖� */
+    /* ƽ̨��ʼ�� */
     amhw_lpc82x_syscon_powerup(AMHW_LPC82X_SYSCON_PD_ADC0);
     amhw_lpc82x_clk_periph_enable(AMHW_LPC82X_CLK_ADC0);
-
-    /* 閰嶇疆閫氶亾锛屼娇鐢ㄩ�氶亾 0锛屽紩鑴氶厤缃负娑堟瀬妯″紡 INACTIVE */
+	
+    /* ����ͨ����ʹ��ͨ�� 0����������Ϊ����ģʽ INACTIVE */
     am_gpio_pin_cfg(PIO0_7, PIO0_7_ADC_0 | PIO0_7_INACTIVE);
 
     demo_lpc824_hw_adc_dma_entry(LPC82X_ADC0, 0, 2500);

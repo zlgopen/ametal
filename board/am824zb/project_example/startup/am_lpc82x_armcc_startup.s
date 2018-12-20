@@ -122,8 +122,6 @@ CRP_Key         DCD     0xFFFFFFFF
 Reset_Handler   PROC
                 EXPORT  Reset_Handler             [WEAK]
                 IMPORT  __main
-                CPSID   I
-                BL      __initial_stack
                 LDR     R0, =__main
                 BX      R0
                 ENDP
