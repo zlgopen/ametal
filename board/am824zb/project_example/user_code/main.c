@@ -53,13 +53,6 @@ void am_main (void)
     //demo_am824_core_hw_acmp_int_entry();
     //demo_am824_core_hw_acmp_lad_entry();
     //demo_am824_core_hw_acmp_poll_entry();
-    //demo_am824_core_hw_adc_dma_entry();
-    //demo_am824_core_hw_adc_thcmp_entry();
-    //demo_am824_core_std_adc_dma_int_entry();
-    //demo_am824_core_std_adc_dma_poll_entry();
-    //demo_am824_core_std_adc_int_entry();
-    //demo_am824_core_std_adc_ntc_entry();
-    //demo_am824_core_std_adc_poll_entry();
     //demo_am824_core_std_buzzer_entry();
     //demo_am824_core_hw_crc_entry();
     //demo_am824_core_std_crc_entry();
@@ -131,6 +124,13 @@ void am_main (void)
     /*
      * 以下demo为am824zb板特有demo
      */
+    //demo_am824zb_hw_adc_dma_entry();
+    //demo_am824zb_hw_adc_thcmp_entry();
+    //demo_am824zb_std_adc_dma_int_entry();
+    //demo_am824zb_std_adc_dma_poll_entry();
+    //demo_am824zb_std_adc_int_entry();
+    //demo_am824zb_std_adc_ntc_entry();
+    //demo_am824zb_std_adc_poll_entry();
     //demo_am824zb_std_zm516x_baudrate_entry();
     //demo_am824zb_std_zm516x_gpio_entry();
     //demo_am824zb_std_zm516x_key_led_entry();

@@ -55,7 +55,7 @@
 #include "am_board.h"
 #include <string.h>
 
-#define    __TEST_CFG_COMMAND    (1)    /**< \brief ÊÇ·ñ²âÊÔÓÀ¾ÃÅäÖÃÃüÁî */
+#define    __TEST_CFG_COMMAND    (0)    /**< \brief ÊÇ·ñ²âÊÔÓÀ¾ÃÅäÖÃÃüÁî */
 #define    __TEST_CMD_COMMAND    (1)    /**< \brief ÊÇ·ñ²âÊÔÁÙÊ±ÅäÖÃÃüÁî */
 
 /**

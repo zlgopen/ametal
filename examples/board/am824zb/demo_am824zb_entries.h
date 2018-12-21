@@ -76,5 +76,67 @@ void demo_am824zb_std_zm516x_search_entry(void);
  */
 void demo_am824zb_std_zm516x_entry (void);
 
+/**
+ * \brief ADC DMA 演示例程，通过HW接口实现
+ *
+ * \param 无
+ *
+ * \return 无
+ */
+void demo_am824zb_hw_adc_dma_entry (void);
+
+/**
+ * \brief ADC thcmp 演示例程，通过HW接口实现
+ *
+ * \param 无
+ *
+ * \return 无
+ */
+void demo_am824zb_hw_adc_thcmp_entry (void);
+
+/**
+ * \brief ADC DMA 中断演示例程，通过标准接口实现
+ *
+ * \param 无
+ *
+ * \return 无
+ */
+void demo_am824zb_std_adc_dma_int_entry (void);
+
+/**
+ * \brief ADC DMA 轮询演示例程，通过标准接口实现
+ *
+ * \param 无
+ *
+ * \return 无
+ */
+void demo_am824zb_std_adc_dma_poll_entry (void);
+
+/**
+ * \brief  ADC 中断演示例程，通过标准接口实现
+ *
+ * \param 无
+ *
+ * \return 无
+ */
+void demo_am824zb_std_adc_int_entry (void);
+
+/**
+ * \brief  ADC 热敏电阻演示例程，通过标准接口实现
+ *
+ * \param 无
+ *
+ * \return 无
+ */
+void demo_am824zb_std_adc_ntc_entry (void);
+
+/**
+ * \brief  ADC DMA 轮询演示例程，通过标准接口实现
+ *
+ * \param 无
+ *
+ * \return 无
+ */
+void demo_am824zb_std_adc_poll_entry (void);
 
 /* end of file */
