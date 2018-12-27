@@ -15,8 +15,7 @@
  * \brief ADC 例程，转换结果数据通过 DMA 传输，通过 HW 层接口实现
  *
  * - 操作步骤：
- *   1. 短接 J12 跳线帽，使得参考电压为 2.5V；
- *   2. PIO0_7(ADC 通道 0) 连接模拟输入。
+ *   1. PIO0_7(ADC 通道 0) 连接模拟输入。
  *
  * - 实验现象：
  *   1. ADC 转换完成 100 次，串口打印出 100 个采样电压值。
@@ -50,7 +49,7 @@
 /**
  * \brief 例程入口
  */
-void demo_am824_core_hw_adc_dma_entry (void)
+void demo_am824zb_hw_adc_dma_entry (void)
 {
     am_kprintf("demo am824_core hw adc dma!\r\n");
 

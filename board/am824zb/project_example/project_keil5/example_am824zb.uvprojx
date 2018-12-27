@@ -1002,41 +1002,6 @@
               <FilePath>..\..\..\..\examples\board\am824_core\acmp\demo_am824_core_hw_acmp_poll.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_core_hw_adc_dma.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\adc\demo_am824_core_hw_adc_dma.c</FilePath>
-            </File>
-            <File>
-              <FileName>demo_am824_core_hw_adc_thcmp.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\adc\demo_am824_core_hw_adc_thcmp.c</FilePath>
-            </File>
-            <File>
-              <FileName>demo_am824_core_std_adc_dma_int.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\adc\demo_am824_core_std_adc_dma_int.c</FilePath>
-            </File>
-            <File>
-              <FileName>demo_am824_core_std_adc_dma_poll.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\adc\demo_am824_core_std_adc_dma_poll.c</FilePath>
-            </File>
-            <File>
-              <FileName>demo_am824_core_std_adc_int.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\adc\demo_am824_core_std_adc_int.c</FilePath>
-            </File>
-            <File>
-              <FileName>demo_am824_core_std_adc_ntc.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\adc\demo_am824_core_std_adc_ntc.c</FilePath>
-            </File>
-            <File>
-              <FileName>demo_am824_core_std_adc_poll.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\adc\demo_am824_core_std_adc_poll.c</FilePath>
-            </File>
-            <File>
               <FileName>demo_am824_core_std_buzzer.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\board\am824_core\buzzer\demo_am824_core_std_buzzer.c</FilePath>
@@ -1430,6 +1395,41 @@
               <FileName>demo_am824zb_std_zm516x_search.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\board\am824zb\zigbee\demo_am824zb_std_zm516x_search.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_am824zb_hw_adc_dma.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am824zb\adc\demo_am824zb_hw_adc_dma.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_am824zb_hw_adc_thcmp.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am824zb\adc\demo_am824zb_hw_adc_thcmp.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_am824zb_std_adc_dma_int.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am824zb\adc\demo_am824zb_std_adc_dma_int.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_am824zb_std_adc_dma_poll.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am824zb\adc\demo_am824zb_std_adc_dma_poll.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_am824zb_std_adc_int.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am824zb\adc\demo_am824zb_std_adc_int.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_am824zb_std_adc_ntc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am824zb\adc\demo_am824zb_std_adc_ntc.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_am824zb_std_adc_poll.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am824zb\adc\demo_am824zb_std_adc_poll.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -3196,41 +3196,6 @@
               <FilePath>..\..\..\..\examples\board\am824_core\acmp\demo_am824_core_hw_acmp_poll.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am824_core_hw_adc_dma.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\adc\demo_am824_core_hw_adc_dma.c</FilePath>
-            </File>
-            <File>
-              <FileName>demo_am824_core_hw_adc_thcmp.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\adc\demo_am824_core_hw_adc_thcmp.c</FilePath>
-            </File>
-            <File>
-              <FileName>demo_am824_core_std_adc_dma_int.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\adc\demo_am824_core_std_adc_dma_int.c</FilePath>
-            </File>
-            <File>
-              <FileName>demo_am824_core_std_adc_dma_poll.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\adc\demo_am824_core_std_adc_dma_poll.c</FilePath>
-            </File>
-            <File>
-              <FileName>demo_am824_core_std_adc_int.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\adc\demo_am824_core_std_adc_int.c</FilePath>
-            </File>
-            <File>
-              <FileName>demo_am824_core_std_adc_ntc.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\adc\demo_am824_core_std_adc_ntc.c</FilePath>
-            </File>
-            <File>
-              <FileName>demo_am824_core_std_adc_poll.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am824_core\adc\demo_am824_core_std_adc_poll.c</FilePath>
-            </File>
-            <File>
               <FileName>demo_am824_core_std_buzzer.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\board\am824_core\buzzer\demo_am824_core_std_buzzer.c</FilePath>
@@ -3624,6 +3589,41 @@
               <FileName>demo_am824zb_std_zm516x_search.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\board\am824zb\zigbee\demo_am824zb_std_zm516x_search.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_am824zb_hw_adc_dma.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am824zb\adc\demo_am824zb_hw_adc_dma.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_am824zb_hw_adc_thcmp.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am824zb\adc\demo_am824zb_hw_adc_thcmp.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_am824zb_std_adc_dma_int.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am824zb\adc\demo_am824zb_std_adc_dma_int.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_am824zb_std_adc_dma_poll.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am824zb\adc\demo_am824zb_std_adc_dma_poll.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_am824zb_std_adc_int.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am824zb\adc\demo_am824zb_std_adc_int.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_am824zb_std_adc_ntc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am824zb\adc\demo_am824zb_std_adc_ntc.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_am824zb_std_adc_poll.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am824zb\adc\demo_am824zb_std_adc_poll.c</FilePath>
             </File>
           </Files>
         </Group>

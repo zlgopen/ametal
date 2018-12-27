@@ -58,7 +58,7 @@ void (* const gVectors[])(void) =
     (void (*)(void))((unsigned long)&_estack),
     ResetHandler,
     NMI_Handler,
-    0,
+    HardFault_Handler,
     MemManage_Handler,
     BusFault_Handler,
     UsageFault_Handler,
