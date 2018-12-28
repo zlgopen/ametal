@@ -16,10 +16,11 @@
  * 
  * \internal
  * \par Modification history.
+ * - 1.04 18-12-28 zcb, modified errors in data width and parity type settings.
  * - 1.03 18-03-16 sdq, fix the bug when uart bits set.
  * - 1.02 18-01-22 sdq, am_fsl_uart_deinit call to pfn_plfm_deinit is added.
- * 	                    call to amhw_fsl_uart_disable instead of
- * 	                    amhw_fsl_uart_enable when closing serial port.
+ *                      call to amhw_fsl_uart_disable instead of
+ *                      amhw_fsl_uart_enable when closing serial port.
  * - 1.01 16-09-16 nwt, fix the bug when uart tx/rx data by polling.
  * - 1.00 15-10-20 xym, first implementation.
  * \endinternal
@@ -91,13 +92,13 @@ static int __uart_ioctl (void *p_drv, int request, void *p_arg)
     case AM_UART_BAUD_SET:
 
         if(p_dev->p_devinfo->ver == AM_FSL_UART_VER0){
-			status = amhw_fsl_uart_ver0_baudrate_set(p_dev->p_devinfo->p_hw_uart,
-				                     am_clk_rate_get(p_dev->p_devinfo->clk_id),
-									 (uint32_t)p_arg);
+            status = amhw_fsl_uart_ver0_baudrate_set(p_dev->p_devinfo->p_hw_uart,
+                                     am_clk_rate_get(p_dev->p_devinfo->clk_id),
+                                     (uint32_t)p_arg);
         }else{
-			status = amhw_fsl_uart_ver1_baudrate_set(p_dev->p_devinfo->p_hw_uart,
-				 	                 am_clk_rate_get(p_dev->p_devinfo->clk_id),
-									 (uint32_t)p_arg);
+            status = amhw_fsl_uart_ver1_baudrate_set(p_dev->p_devinfo->p_hw_uart,
+                                      am_clk_rate_get(p_dev->p_devinfo->clk_id),
+                                     (uint32_t)p_arg);
         }
 
 
@@ -211,9 +212,9 @@ static int __uart_poll_putchar (void *p_drv, char outchar)
 
     uint32_t  idle_stat;
     if(p_dev->p_devinfo->ver == AM_FSL_UART_VER0){
-    	 idle_stat = (uint32_t)(amhw_fsl_uart_ver0_intstat_get(p_hw_uart)>>7);
+         idle_stat = (uint32_t)(amhw_fsl_uart_ver0_intstat_get(p_hw_uart)>>7);
     }else{
-    	 idle_stat = (uint32_t)(amhw_fsl_uart_ver1_intstat_get(p_hw_uart)>>7);
+         idle_stat = (uint32_t)(amhw_fsl_uart_ver1_intstat_get(p_hw_uart)>>7);
     }
 
     /* 发送模块是否空闲, 0:忙; 1: 空闲 */
@@ -253,9 +254,9 @@ static int __uart_poll_getchar (void *p_drv, char *p_char)
 
     uint32_t  idle_stat;
     if(p_dev->p_devinfo->ver == AM_FSL_UART_VER0){
-    	 idle_stat = (uint16_t)(amhw_fsl_uart_ver0_intstat_get(p_hw_uart)>>5);
+         idle_stat = (uint16_t)(amhw_fsl_uart_ver0_intstat_get(p_hw_uart)>>5);
     }else{
-    	 idle_stat = (uint16_t)(amhw_fsl_uart_ver1_intstat_get(p_hw_uart)>>5);
+         idle_stat = (uint16_t)(amhw_fsl_uart_ver1_intstat_get(p_hw_uart)>>5);
     }
     /* 接收模块是否空闲，0:忙,正在接收; 1: 已经接收到一个字符  */
     if(((uint8_t)idle_stat & amhw_fsl_uart_stat1_rdre_get(p_hw_uart)) == 0) {
@@ -305,7 +306,7 @@ int __uart_mode_set (am_fsl_uart_dev_t *p_dev, uint32_t new_mode)
 int __uart_opt_set (am_fsl_uart_dev_t *p_dev, uint32_t options)
 {
     amhw_fsl_uart_t *p_hw_uart = p_dev->p_devinfo->p_hw_uart;
-    uint8_t      cfg_flags = 0;
+    uint8_t          cfg_flags = 0;
 
     if (p_dev == NULL) {
         return -AM_EINVAL;
@@ -316,30 +317,8 @@ int __uart_opt_set (am_fsl_uart_dev_t *p_dev, uint32_t options)
     /* 在改变UART寄存器值前 接收发送禁能 */
     amhw_fsl_uart_disable(p_hw_uart);
 
-    /* 配置数据长度 */
-    switch (options & AM_UART_CSIZE) {
-
-    case AM_UART_CS8:
-        cfg_flags &= ~(1 << 4);
-        cfg_flags |= AMHW_FSL_UART_C1_M_8BIT;
-        break;
-
-    default:
-        break;
-    }
-
-    /* 配置停止位 */
-    if (options & AM_UART_STOPB) {
-        cfg_flags &= ~(0x01 << 5);
-        cfg_flags |= AMHW_FSL_UART_BDH_SBNS_STOP_2;
-    } else {
-        cfg_flags &= ~(0x01 << 5);
-        cfg_flags |= AMHW_FSL_UART_BDH_SBNS_STOP_1;
-    }
-
     /* 配置检验方式 */
     if (options & AM_UART_PARENB) {
-        cfg_flags &= ~(0x03 << 0);
 
         if (options & AM_UART_PARODD) {
             cfg_flags |= AMHW_FSL_UART_C1_PARITY_ODD;
@@ -347,15 +326,49 @@ int __uart_opt_set (am_fsl_uart_dev_t *p_dev, uint32_t options)
             cfg_flags |= AMHW_FSL_UART_C1_PARITY_EVEN;
         }
     } else {
-        cfg_flags &= ~(0x03 << 0);
         cfg_flags |= AMHW_FSL_UART_C1_PARITY_NO;
     }
 
-    /* 保存和生效配置 */
+    /* 配置数据长度 */
+    switch (options & AM_UART_CSIZE) {
 
-    amhw_fsl_uart_stop_bit_set (p_hw_uart, (cfg_flags & 0x20));
-    amhw_fsl_uart_data_mode_set(p_hw_uart, (cfg_flags & 0x10));
-    amhw_fsl_uart_parity_set(p_hw_uart,    (cfg_flags & 0x03));
+    case AM_UART_CS7:
+        if (AMHW_FSL_UART_C1_PARITY_NO ==
+            AMHW_FSL_UART_C1_PARITY_GET(cfg_flags)) {
+            /* 不支持设置7bit 无校验模式 */
+            amhw_fsl_uart_enable(p_hw_uart);
+            return -AM_ENOTSUP;
+        }
+        /* 7bit+校验需要设置为8bit宽度 */
+        cfg_flags |= AMHW_FSL_UART_C1_M_8BIT;
+        break;
+
+    case AM_UART_CS8:
+        if (AMHW_FSL_UART_C1_PARITY_NO ==
+            AMHW_FSL_UART_C1_PARITY_GET(cfg_flags)) {
+            /* 设置8bit无校验需要设置为8bit宽度 */
+            cfg_flags |= AMHW_FSL_UART_C1_M_8BIT;
+        } else {
+            /* 设置8bit+校验需要设置为9bit宽度 */
+            cfg_flags |= AMHW_FSL_UART_C1_M_9BIT;
+        }
+        break;
+
+    default:
+        /* 不支持设置其他地址宽度bit */
+        amhw_fsl_uart_enable(p_hw_uart);
+        return -AM_ENOTSUP;
+    }
+
+    amhw_fsl_uart_data_mode_set(p_hw_uart, AMHW_FSL_UART_C1_M_GET(cfg_flags));
+    amhw_fsl_uart_parity_set(p_hw_uart, AMHW_FSL_UART_C1_PARITY_GET(cfg_flags));
+
+    /* 配置停止位 */
+    if (options & AM_UART_STOPB) {
+        amhw_fsl_uart_stop_bit_set (p_hw_uart, AMHW_FSL_UART_BDH_SBNS_STOP_2);
+    } else {
+        amhw_fsl_uart_stop_bit_set (p_hw_uart, AMHW_FSL_UART_BDH_SBNS_STOP_1);
+    }
 
     amhw_fsl_uart_enable(p_hw_uart);
 
@@ -373,14 +386,14 @@ int __uart_opt_set (am_fsl_uart_dev_t *p_dev, uint32_t options)
  */
 void __uart_irq_rx_handler (am_fsl_uart_dev_t *p_dev)
 {
-	  char             data;
     amhw_fsl_uart_t *p_hw_uart = p_dev->p_devinfo->p_hw_uart;
+    uint32_t         int_stat;
+    char             data;
 
-    uint32_t  int_stat;
     if(p_dev->p_devinfo->ver == AM_FSL_UART_VER0){
-    	int_stat = amhw_fsl_uart_ver0_intstat_get(p_hw_uart);
+        int_stat = amhw_fsl_uart_ver0_intstat_get(p_hw_uart);
     }else{
-    	int_stat = amhw_fsl_uart_ver1_intstat_get(p_hw_uart);
+        int_stat = amhw_fsl_uart_ver1_intstat_get(p_hw_uart);
     }
 
     /* 是否为接收Rx中断 */
@@ -400,13 +413,13 @@ void __uart_irq_rx_handler (am_fsl_uart_dev_t *p_dev)
 void __uart_irq_tx_handler (am_fsl_uart_dev_t *p_dev)
 {
     amhw_fsl_uart_t *p_hw_uart = p_dev->p_devinfo->p_hw_uart;
-	  char             data;
     uint32_t         int_stat;
-	
+    char             data;
+
     if(p_dev->p_devinfo->ver == AM_FSL_UART_VER0){
-    	int_stat = amhw_fsl_uart_ver0_intstat_get(p_hw_uart);
+        int_stat = amhw_fsl_uart_ver0_intstat_get(p_hw_uart);
     }else{
-    	int_stat = amhw_fsl_uart_ver1_intstat_get(p_hw_uart);
+        int_stat = amhw_fsl_uart_ver1_intstat_get(p_hw_uart);
     }
 
     if (((int_stat & AMHW_FSL_UART_INTSTAT_S1_TDRE) != 0) || /* 是否为发送Tx中断 */
@@ -437,9 +450,9 @@ void __uart_irq_handler (void *p_arg)
 
     uint32_t  uart_int_stat;
     if(p_dev->p_devinfo->ver == AM_FSL_UART_VER0){
-    	uart_int_stat = amhw_fsl_uart_ver0_intstat_get(p_hw_uart);
+        uart_int_stat = amhw_fsl_uart_ver0_intstat_get(p_hw_uart);
     }else{
-    	uart_int_stat = amhw_fsl_uart_ver1_intstat_get(p_hw_uart);
+        uart_int_stat = amhw_fsl_uart_ver1_intstat_get(p_hw_uart);
     }
 
     if (uart_int_stat & AMHW_FSL_UART_INTSTAT_S1_RDRF) {
@@ -499,7 +512,6 @@ am_uart_handle_t am_fsl_uart_init (am_fsl_uart_dev_t           *p_dev,
                                     const am_fsl_uart_devinfo_t *p_devinfo)
 {
     amhw_fsl_uart_t  *p_hw_uart;
-    uint32_t          tmp;
 
     if (p_devinfo == NULL || p_devinfo->p_hw_uart == NULL) {
         return NULL;
@@ -534,16 +546,22 @@ am_uart_handle_t am_fsl_uart_init (am_fsl_uart_dev_t           *p_dev,
     }
 
     /* 获取串口数据长度配置选项 */
-    tmp = p_devinfo->cfg_flags;
-    tmp = (tmp >> 4) & 0x01;
+    switch (AMHW_FSL_UART_C1_M_GET(p_devinfo->cfg_flags)) {
 
-    switch (tmp) {
-
-    case 0:
-        p_dev->options |= AM_UART_CS7;
+    case AMHW_FSL_UART_C1_M_8BIT:
+        if (AMHW_FSL_UART_C1_PARITY_NO ==
+            AMHW_FSL_UART_C1_PARITY_GET(p_devinfo->cfg_flags)) {
+            p_dev->options |= AM_UART_CS8;
+        } else {
+            p_dev->options |= AM_UART_CS7;
+        }
         break;
 
-    case 1:
+    case AMHW_FSL_UART_C1_M_9BIT:
+        if (AMHW_FSL_UART_C1_PARITY_NO ==
+            AMHW_FSL_UART_C1_PARITY_GET(p_devinfo->cfg_flags)) {
+            return NULL;
+        }
         p_dev->options |= AM_UART_CS8;
         break;
 
@@ -553,31 +571,35 @@ am_uart_handle_t am_fsl_uart_init (am_fsl_uart_dev_t           *p_dev,
     }
 
     /* 获取串口检验方式配置选项 */
-    tmp = p_devinfo->cfg_flags;
-    tmp = (tmp >> 0) & 0x03;
+    switch (AMHW_FSL_UART_C1_PARITY_GET(p_devinfo->cfg_flags)) {
 
-    if (tmp == 2) {
+    case AMHW_FSL_UART_C1_PARITY_EVEN:
         p_dev->options |= AM_UART_PARENB;
-    } else if (tmp == 3) {
+        break;
+
+    case AMHW_FSL_UART_C1_PARITY_ODD:
         p_dev->options |= (AM_UART_PARENB | AM_UART_PARODD);
-    }else{
+        break;
+
+    default:
+        break;
     }
+
     /* 获取串口停止位配置选项 */
     if (p_devinfo->cfg_flags & AMHW_FSL_UART_BDH_SBNS_STOP_2) {
         p_dev->options |= AM_UART_STOPB;
-    }else{
-
     }
-    __uart_opt_set (p_dev, p_dev->options);
+
+    __uart_opt_set(p_dev, p_dev->options);
 
     /* 设置波特率 */
     if(p_devinfo->ver == AM_FSL_UART_VER0){
-    	p_dev->baud_rate  = amhw_fsl_uart_ver0_baudrate_set(p_hw_uart,
-    			am_clk_rate_get(p_dev->p_devinfo->clk_id),
+        p_dev->baud_rate  = amhw_fsl_uart_ver0_baudrate_set(p_hw_uart,
+                am_clk_rate_get(p_dev->p_devinfo->clk_id),
                 p_devinfo->baud_rate);
     }else{
-    	p_dev->baud_rate  = amhw_fsl_uart_ver1_baudrate_set(p_hw_uart,
-    			am_clk_rate_get(p_dev->p_devinfo->clk_id),
+        p_dev->baud_rate  = amhw_fsl_uart_ver1_baudrate_set(p_hw_uart,
+                am_clk_rate_get(p_dev->p_devinfo->clk_id),
                 p_devinfo->baud_rate);
     }
 
