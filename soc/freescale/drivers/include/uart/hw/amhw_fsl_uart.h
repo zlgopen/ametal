@@ -176,17 +176,19 @@ typedef struct amhw_fsl_uart {
  */
 
 /** \brief 回环模式或单线模式 */
-#define AMHW_FSL_UART_C1_LOOPS         ((uint8_t)(1 << 7))
+#define AMHW_FSL_UART_C1_LOOPS          ((uint8_t)(1 << 7))
 
 /** \brief 接收源选择，[LOOPS = 1]该位域为0时LOOP模式，为1时Single-Wire模式 */
-#define AMHW_FSL_UART_C1_RSRC          ((uint8_t)(1 << 5))
+#define AMHW_FSL_UART_C1_RSRC           ((uint8_t)(1 << 5))
 
-#define AMHW_FSL_UART_C1_M_8BIT        ((uint8_t)(0 << 4)) /**< \brief 8位数据长度*/
-#define AMHW_FSL_UART_C1_M_9BIT        ((uint8_t)(1 << 4)) /**< \brief 9位数据长度*/
+#define AMHW_FSL_UART_C1_M_8BIT         ((uint8_t)(0 << 4)) /**< \brief 8位数据长度*/
+#define AMHW_FSL_UART_C1_M_9BIT         ((uint8_t)(1 << 4)) /**< \brief 9位数据长度*/
+#define AMHW_FSL_UART_C1_M_GET(c1)      ((c1 & (1 << 4)))   /**< \brief 获取数据长度*/
 
-#define AMHW_FSL_UART_C1_PARITY_NO     ((uint8_t)(0 << 1)) /**< \brief 不使用校验 */
-#define AMHW_FSL_UART_C1_PARITY_EVEN   ((uint8_t)(2 << 0)) /**< \brief 偶校验     */
-#define AMHW_FSL_UART_C1_PARITY_ODD    ((uint8_t)(3 << 0)) /**< \brief 奇校验     */
+#define AMHW_FSL_UART_C1_PARITY_NO      ((uint8_t)(0 << 1)) /**< \brief 不使用校验 */
+#define AMHW_FSL_UART_C1_PARITY_EVEN    ((uint8_t)(2 << 0)) /**< \brief 偶校验     */
+#define AMHW_FSL_UART_C1_PARITY_ODD     ((uint8_t)(3 << 0)) /**< \brief 奇校验     */
+#define AMHW_FSL_UART_C1_PARITY_GET(c1) (c1 & 0x3)          /**< \brief 获取校验设置  */
 
 /** @} */
 
@@ -578,7 +580,7 @@ uint32_t amhw_fsl_uart_ver0_intstat_get (amhw_fsl_uart_t *p_hw_uart)
                
     /* if UART0, w1c s1 */
 
-	p_hw_uart->stat1 |= 0x1F;
+    p_hw_uart->stat1 |= 0x1F;
 
     return intstat;
 }
@@ -624,7 +626,7 @@ void amhw_fsl_uart_single_wire_dir_set (amhw_fsl_uart_t *p_hw_uart, uint8_t dir)
 am_static_inline
 void amhw_fsl_uart_ver0_dma_rx_enable (amhw_fsl_uart_t *p_hw_uart)
 {
-	p_hw_uart->uart0_c5 |= AMHW_FSL_UART_DMA_RX_EN;
+    p_hw_uart->uart0_c5 |= AMHW_FSL_UART_DMA_RX_EN;
 }
 /**
  * \brief 使能指定的ver0 串口MDA接收传输
@@ -636,7 +638,7 @@ void amhw_fsl_uart_ver0_dma_rx_enable (amhw_fsl_uart_t *p_hw_uart)
 am_static_inline
 void amhw_fsl_uart_ver1_dma_rx_enable (amhw_fsl_uart_t *p_hw_uart)
 {
-	p_hw_uart->uart1_2_c4 |= AMHW_FSL_UART_DMA_RX_EN;
+    p_hw_uart->uart1_2_c4 |= AMHW_FSL_UART_DMA_RX_EN;
 }
 
 /**
@@ -649,7 +651,7 @@ void amhw_fsl_uart_ver1_dma_rx_enable (amhw_fsl_uart_t *p_hw_uart)
 am_static_inline
 void amhw_fsl_uart_ver0_dma_rx_disable (amhw_fsl_uart_t *p_hw_uart)
 {
-	p_hw_uart->uart0_c5 &= ~AMHW_FSL_UART_DMA_RX_EN;
+    p_hw_uart->uart0_c5 &= ~AMHW_FSL_UART_DMA_RX_EN;
 }
 
 /**
@@ -662,7 +664,7 @@ void amhw_fsl_uart_ver0_dma_rx_disable (amhw_fsl_uart_t *p_hw_uart)
 am_static_inline
 void amhw_fsl_uart_ver1_dma_rx_disable (amhw_fsl_uart_t *p_hw_uart)
 {
-	p_hw_uart->uart1_2_c4 &= ~AMHW_FSL_UART_DMA_RX_EN;
+    p_hw_uart->uart1_2_c4 &= ~AMHW_FSL_UART_DMA_RX_EN;
 }
 
 /**
@@ -676,7 +678,7 @@ am_static_inline
 void amhw_fsl_uart_ver0_dma_tx_enable (amhw_fsl_uart_t *p_hw_uart)
 {
 
-	p_hw_uart->uart0_c5 |= AMHW_FSL_UART_DMA_TX_EN;
+    p_hw_uart->uart0_c5 |= AMHW_FSL_UART_DMA_TX_EN;
 
 }
 
@@ -691,7 +693,7 @@ am_static_inline
 void amhw_fsl_uart_ver1_dma_tx_enable (amhw_fsl_uart_t *p_hw_uart)
 {
 
-	p_hw_uart->uart1_2_c4 |= AMHW_FSL_UART_DMA_TX_EN;
+    p_hw_uart->uart1_2_c4 |= AMHW_FSL_UART_DMA_TX_EN;
 
 }
 /**
@@ -705,7 +707,7 @@ am_static_inline
 void amhw_fsl_uart_ver0_dma_tx_disable (amhw_fsl_uart_t *p_hw_uart)
 {
 
-	p_hw_uart->uart0_c5 &= ~AMHW_FSL_UART_DMA_TX_EN;
+    p_hw_uart->uart0_c5 &= ~AMHW_FSL_UART_DMA_TX_EN;
 
 }
 
@@ -720,7 +722,7 @@ am_static_inline
 void amhw_fsl_uart_ver1_dma_tx_disable (amhw_fsl_uart_t *p_hw_uart)
 {
 
-	p_hw_uart->uart1_2_c4 &= ~AMHW_FSL_UART_DMA_TX_EN;
+    p_hw_uart->uart1_2_c4 &= ~AMHW_FSL_UART_DMA_TX_EN;
 
 }
 
