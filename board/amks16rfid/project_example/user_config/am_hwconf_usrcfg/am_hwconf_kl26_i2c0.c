@@ -49,8 +49,8 @@
 /** \brief I2C0 平台初始化函数 */
 void amhw_kl26_plfm_i2c0_init (void)
 {
-    am_gpio_pin_cfg(PIOB_1, PIOB_1_I2C0_SDA);
-    am_gpio_pin_cfg(PIOB_0, PIOB_0_I2C0_SCL);
+    am_gpio_pin_cfg(PIOB_3, PIOB_3_I2C0_SDA);
+    am_gpio_pin_cfg(PIOB_2, PIOB_2_I2C0_SCL);
 
     amhw_kl26_sim_periph_clock_enable(KL26_SIM_SCGC_I2C0);
 }
