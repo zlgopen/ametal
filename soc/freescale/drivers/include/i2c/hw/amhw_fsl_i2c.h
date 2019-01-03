@@ -254,8 +254,11 @@ void amhw_fsl_i2c_restart_signal_send (amhw_fsl_i2c_t *p_hw_i2c)
 am_static_inline
 void amhw_fsl_i2c_transmode_set (amhw_fsl_i2c_t *p_hw_i2c , uint8_t mode)
 {
-    p_hw_i2c->control1 &= ~AM_BIT(4);
-    p_hw_i2c->control1 |=  mode;
+    if (AMHW_FSL_I2C_TRANSMODE_SEND == mode) {
+        p_hw_i2c->control1 |=  mode;
+    } else if (AMHW_FSL_I2C_TRANSMODE_RECV == mode) {
+        p_hw_i2c->control1 &= ~AM_BIT(4);
+    }
 }
 
 /**

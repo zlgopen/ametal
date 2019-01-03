@@ -43,7 +43,7 @@ am_temp_handle_t am_temp_lm75_inst_init (void)
 {
     return  am_temp_lm75_init(&__g_temp_lm75,
                               &__g_temp_lm75_info,
-                              am_kl26_i2c1_inst_init());
+                              am_kl26_i2c0_inst_init());
 }
 
 /**
