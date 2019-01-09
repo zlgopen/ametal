@@ -373,7 +373,7 @@
               <MiscControls></MiscControls>
               <Define>AM_VDEBUG,AM_CORTEX_M0,KL16</Define>
               <Undefine></Undefine>
-              <IncludePath>.\user_code;.\user_config\am_hwconf_usrcfg;.\user_config\am_servconf_usrcfg;.\user_config;..\..\..\..\3rdparty\CMSIS\Include;..\..\..\..\arch\arm\include;..\..\..\..\components\drivers\include;..\..\..\..\components\libc\armlib_adapter\include;..\..\..\..\components\libc\microlib_adapter\include;..\..\..\..\components\service\include;..\..\..\..\components\util\include;..\..\..\..\interface;..\..\..\..\soc\freescale\drivers\include\adc;..\..\..\..\soc\freescale\drivers\include\bme;..\..\..\..\soc\freescale\drivers\include\clk;..\..\..\..\soc\freescale\drivers\include\cmp;..\..\..\..\soc\freescale\drivers\include\dac;..\..\..\..\soc\freescale\drivers\include\dma;..\..\..\..\soc\freescale\drivers\include\ftfa;..\..\..\..\soc\freescale\drivers\include\gpio;..\..\..\..\soc\freescale\drivers\include\i2c;..\..\..\..\soc\freescale\drivers\include\i2s;..\..\..\..\soc\freescale\drivers\include\llwu;..\..\..\..\soc\freescale\drivers\include\lptmr;..\..\..\..\soc\freescale\drivers\include\mcg;..\..\..\..\soc\freescale\drivers\include\mcm;..\..\..\..\soc\freescale\drivers\include\pinctr;..\..\..\..\soc\freescale\drivers\include\pit;..\..\..\..\soc\freescale\drivers\include\pmc;..\..\..\..\soc\freescale\drivers\include\pmu;..\..\..\..\soc\freescale\drivers\include\rcm;..\..\..\..\soc\freescale\drivers\include\rtc;..\..\..\..\soc\freescale\drivers\include\sim;..\..\..\..\soc\freescale\drivers\include\smc;..\..\..\..\soc\freescale\drivers\include\spi;..\..\..\..\soc\freescale\drivers\include\tpm;..\..\..\..\soc\freescale\drivers\include\tsi;..\..\..\..\soc\freescale\drivers\include\uart;..\..\..\..\soc\freescale\drivers\include\wdt;..\user_config;..\user_config\am_hwconf_usrcfg;..\user_config\am_servconf_usrcfg;..\..\..\bsp_common\include;..\..\..\..\examples\board;..\..\..\..\examples\components;..\..\..\..\examples\soc\freescale;..\..\..\..\examples\std;..\..\..\..\examples\board\amks16z_core;..\..\..\..\soc\freescale\kl26;..\..\..\..\examples\board\amks16rfid</IncludePath>
+              <IncludePath>.\user_code;.\user_config\am_hwconf_usrcfg;.\user_config\am_servconf_usrcfg;.\user_config;..\..\..\..\3rdparty\CMSIS\Include;..\..\..\..\arch\arm\include;..\..\..\..\components\drivers\include;..\..\..\..\components\libc\armlib_adapter\include;..\..\..\..\components\libc\microlib_adapter\include;..\..\..\..\components\service\include;..\..\..\..\components\util\include;..\..\..\..\interface;..\..\..\..\soc\freescale\drivers\include\adc;..\..\..\..\soc\freescale\drivers\include\bme;..\..\..\..\soc\freescale\drivers\include\clk;..\..\..\..\soc\freescale\drivers\include\cmp;..\..\..\..\soc\freescale\drivers\include\dac;..\..\..\..\soc\freescale\drivers\include\dma;..\..\..\..\soc\freescale\drivers\include\ftfa;..\..\..\..\soc\freescale\drivers\include\gpio;..\..\..\..\soc\freescale\drivers\include\i2c;..\..\..\..\soc\freescale\drivers\include\i2s;..\..\..\..\soc\freescale\drivers\include\llwu;..\..\..\..\soc\freescale\drivers\include\lptmr;..\..\..\..\soc\freescale\drivers\include\mcg;..\..\..\..\soc\freescale\drivers\include\mcm;..\..\..\..\soc\freescale\drivers\include\pinctr;..\..\..\..\soc\freescale\drivers\include\pit;..\..\..\..\soc\freescale\drivers\include\pmc;..\..\..\..\soc\freescale\drivers\include\pmu;..\..\..\..\soc\freescale\drivers\include\rcm;..\..\..\..\soc\freescale\drivers\include\rtc;..\..\..\..\soc\freescale\drivers\include\sim;..\..\..\..\soc\freescale\drivers\include\smc;..\..\..\..\soc\freescale\drivers\include\spi;..\..\..\..\soc\freescale\drivers\include\tpm;..\..\..\..\soc\freescale\drivers\include\tsi;..\..\..\..\soc\freescale\drivers\include\uart;..\..\..\..\soc\freescale\drivers\include\wdt;..\user_config;..\user_config\am_hwconf_usrcfg;..\user_config\am_servconf_usrcfg;..\..\..\bsp_common\include;..\..\..\..\examples\board;..\..\..\..\examples\components;..\..\..\..\examples\soc\freescale;..\..\..\..\examples\std;..\..\..\..\examples\board\amks16z_core;..\..\..\..\soc\freescale\kl26;..\..\..\..\examples\board\amks16rfid;..\..\..\..\soc\freescale\drivers\include\uart</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -466,11 +466,6 @@
         <Group>
           <GroupName>drivers</GroupName>
           <Files>
-            <File>
-              <FileName>am_fm175xx_kl16.lib</FileName>
-              <FileType>4</FileType>
-              <FilePath>..\..\..\..\components\drivers\source\fm175xx\am_fm175xx_kl16.lib</FilePath>
-            </File>
             <File>
               <FileName>am_cs1237.c</FileName>
               <FileType>1</FileType>
@@ -640,6 +635,11 @@
               <FileName>am_zlg600.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\components\drivers\source\zlg600\am_zlg600.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_fm175xx_kl16.lib</FileName>
+              <FileType>4</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\fm175xx\am_fm175xx_kl16.lib</FilePath>
             </File>
           </Files>
         </Group>
@@ -1431,6 +1431,11 @@
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\board\amks16rfid\fm175xx\demo_amks16rfid_fm175xx_piccb_read_id.c</FilePath>
             </File>
+            <File>
+              <FileName>demo_amks16rfid_fm175xx_fm11rf005m_opra.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\amks16rfid\fm175xx\demo_amks16rfid_fm175xx_fm11rf005m_opra.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -1495,6 +1500,11 @@
               <FileName>demo_fm175xx_piccb_read_id.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\components\drivers\demo_fm175xx_piccb_read_id.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_fm175xx_fm11rf005m_opra.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\components\drivers\demo_fm175xx_fm11rf005m_opra.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -2671,11 +2681,6 @@
           <GroupName>drivers</GroupName>
           <Files>
             <File>
-              <FileName>am_fm175xx_kl16.lib</FileName>
-              <FileType>4</FileType>
-              <FilePath>..\..\..\..\components\drivers\source\fm175xx\am_fm175xx_kl16.lib</FilePath>
-            </File>
-            <File>
               <FileName>am_cs1237.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\components\drivers\source\adc\am_cs1237.c</FilePath>
@@ -2844,6 +2849,11 @@
               <FileName>am_zlg600.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\components\drivers\source\zlg600\am_zlg600.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_fm175xx_kl16.lib</FileName>
+              <FileType>4</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\fm175xx\am_fm175xx_kl16.lib</FilePath>
             </File>
           </Files>
         </Group>
@@ -3635,6 +3645,11 @@
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\board\amks16rfid\fm175xx\demo_amks16rfid_fm175xx_piccb_read_id.c</FilePath>
             </File>
+            <File>
+              <FileName>demo_amks16rfid_fm175xx_fm11rf005m_opra.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\amks16rfid\fm175xx\demo_amks16rfid_fm175xx_fm11rf005m_opra.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -3699,6 +3714,11 @@
               <FileName>demo_fm175xx_piccb_read_id.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\components\drivers\demo_fm175xx_piccb_read_id.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_fm175xx_fm11rf005m_opra.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\components\drivers\demo_fm175xx_fm11rf005m_opra.c</FilePath>
             </File>
           </Files>
         </Group>

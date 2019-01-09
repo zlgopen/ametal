@@ -57,4 +57,9 @@ void demo_amks16rfid_dr_fm175xx_picca_write_block (void);
  */
 void demo_amks16rfid_dr_fm175xx_piccb_read_id (void);
 
+/**
+ * \brief FM11RF005M¿¨²Ù×÷Àý³Ì
+ */
+void demo_amks16rfid_dr_fm11rf005m_operate (void);
+
 /* end of file */
