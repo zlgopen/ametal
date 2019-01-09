@@ -58,33 +58,29 @@ static void __zlg_plfm_tim1_pwm_deinit (void)
     am_clk_disable(CLK_TIM1);
 }
 
-/** \brief TIM1用于PWM功能的引脚配置信息列表 */
-static am_zlg_tim_pwm_ioinfo_t __g_tim1_pwm_ioinfo_list[] = {
-
-    /** \brief 通道1 */
-    {PIOA_8,  PIOA_8_TIM1_CH1  | PIOA_8_AF_PP,  PIOA_8_GPIO  | PIOA_8_INPUT_FLOAT},
-
-    /** \brief 通道2 */
-    {PIOA_9,  PIOA_9_TIM1_CH2  | PIOA_9_AF_PP,  PIOA_9_GPIO  | PIOA_9_INPUT_FLOAT},
-
-    /** \brief 通道3 */
-    {PIOA_10, PIOA_10_TIM1_CH3 | PIOA_10_AF_PP, PIOA_10_GPIO | PIOA_10_INPUT_FLOAT},
-
-    /** \brief 通道4 */
-    {PIOA_11, PIOA_11_TIM1_CH4 | PIOA_11_AF_PP, PIOA_11_GPIO | PIOA_11_INPUT_FLOAT}
+/** \brief TIM1用于PWM功能的通道配置信息列表 */
+static am_zlg_tim_pwm_chaninfo_t __g_tim1_pwm_chaninfo_list[] = {
+    /** \brief 通道1引脚配置 */
+    {AM_ZLG_TIM_PWM_CH1, PIOA_8,  PIOA_8_TIM1_CH1  | PIOA_8_AF_PP,  PIOA_8_GPIO  | PIOA_8_INPUT_FLOAT},
+    /** \brief 通道2引脚配置 */
+    {AM_ZLG_TIM_PWM_CH2, PIOA_9,  PIOA_9_TIM1_CH2  | PIOA_9_AF_PP,  PIOA_9_GPIO  | PIOA_9_INPUT_FLOAT},
+    /** \brief 通道3引脚配置 */
+    {AM_ZLG_TIM_PWM_CH3, PIOA_10, PIOA_10_TIM1_CH3 | PIOA_10_AF_PP, PIOA_10_GPIO | PIOA_10_INPUT_FLOAT},
+    /** \brief 通道4引脚配置 */
+    {AM_ZLG_TIM_PWM_CH4, PIOA_11, PIOA_11_TIM1_CH4 | PIOA_11_AF_PP, PIOA_11_GPIO | PIOA_11_INPUT_FLOAT},
 };
 
 /** \brief TIM1用于PWM设备信息 */
 static const am_zlg_tim_pwm_devinfo_t  __g_tim1_pwm_devinfo = {
-    ZLG116_TIM1_BASE,                     /**< \brief TIM1寄存器块的基地址    */
-    CLK_TIM1,                             /**< \brief TIM1时钟ID              */
-    4,                                    /**< \brief 4个PWM输出通道          */
-    AMHW_ZLG_TIM_PWM_MODE2,               /**< \brief PWM输出模式2            */
-    0,                                    /**< \brief PWM输出高电平有效       */
-    &__g_tim1_pwm_ioinfo_list[0],         /**< \brief 引脚配置信息列表        */
-    AMHW_ZLG_TIM_TYPE0,                   /**< \brief 定时器类型              */
-    __zlg_plfm_tim1_pwm_init,             /**< \brief 平台初始化函数          */
-    __zlg_plfm_tim1_pwm_deinit            /**< \brief 平台解初始化函数        */
+    ZLG116_TIM1_BASE,                          /**< \brief TIM1寄存器块的基地址    */
+    CLK_TIM1,                                  /**< \brief TIM1时钟ID              */
+    AM_NELEMENTS(__g_tim1_pwm_chaninfo_list),  /**< \brief 配置输出通道个数        */
+    AMHW_ZLG_TIM_PWM_MODE2,                    /**< \brief PWM输出模式2            */
+    0,                                         /**< \brief PWM输出高电平有效       */
+    &__g_tim1_pwm_chaninfo_list[0],            /**< \brief 通道配置信息列表        */
+    AMHW_ZLG_TIM_TYPE0,                        /**< \brief 定时器类型              */
+    __zlg_plfm_tim1_pwm_init,                  /**< \brief 平台初始化函数          */
+    __zlg_plfm_tim1_pwm_deinit                 /**< \brief 平台解初始化函数        */
 };
 
 /** \brief TIM1用于PWM设备定义 */
@@ -135,33 +131,29 @@ static void __zlg_plfm_tim2_pwm_deinit (void)
     am_clk_disable(CLK_TIM2);
 }
 
-/** \brief TIM2用于PWM功能的引脚配置信息列表 */
-static am_zlg_tim_pwm_ioinfo_t __g_tim2_pwm_ioinfo_list[] = {
-
-    /** \brief 通道1 */
-    {PIOA_0, PIOA_0_TIM2_CH1_ETR | PIOA_0_AF_PP, PIOA_0_GPIO | PIOA_0_INPUT_FLOAT},
-
-    /** \brief 通道2 */
-    {PIOA_1, PIOA_1_TIM2_CH2     | PIOA_1_AF_PP, PIOA_1_GPIO | PIOA_1_INPUT_FLOAT},
-
-    /** \brief 通道2 */
-    {PIOA_2, PIOA_2_TIM2_CH3     | PIOA_2_AF_PP, PIOA_2_GPIO | PIOA_2_INPUT_FLOAT},
-
-    /** \brief 通道2 */
-    {PIOA_3, PIOA_3_TIM2_CH4     | PIOA_3_AF_PP, PIOA_3_GPIO | PIOA_3_INPUT_FLOAT},
+/** \brief TIM2用于PWM功能的通道配置信息列表 */
+static am_zlg_tim_pwm_chaninfo_t __g_tim2_pwm_chaninfo_list[] = {
+        /** \brief 通道1引脚配置 */
+        {AM_ZLG_TIM_PWM_CH1, PIOA_0, PIOA_0_TIM2_CH1_ETR | PIOA_0_AF_PP, PIOA_0_GPIO | PIOA_0_INPUT_FLOAT},
+        /** \brief 通道2引脚配置 */
+        {AM_ZLG_TIM_PWM_CH2, PIOA_1, PIOA_1_TIM2_CH2 | PIOA_1_AF_PP, PIOA_1_GPIO | PIOA_1_INPUT_FLOAT},
+        /** \brief 通道3引脚配置 */
+        {AM_ZLG_TIM_PWM_CH3, PIOA_2, PIOA_2_TIM2_CH3 | PIOA_2_AF_PP, PIOA_2_GPIO | PIOA_2_INPUT_FLOAT},
+        /** \brief 通道4引脚配置 */
+        {AM_ZLG_TIM_PWM_CH4, PIOA_3, PIOA_3_TIM2_CH4 | PIOA_3_AF_PP, PIOA_3_GPIO | PIOA_3_INPUT_FLOAT},
 };
 
 /** \brief TIM2用于PWM设备信息 */
 static const am_zlg_tim_pwm_devinfo_t  __g_tim2_pwm_devinfo = {
-    ZLG116_TIM2_BASE,                     /**< \brief TIM2寄存器块的基地址    */
-    CLK_TIM2,                             /**< \brief TIM2时钟ID              */
-    4,                                    /**< \brief 4个PWM输出通道          */
-    AMHW_ZLG_TIM_PWM_MODE2,               /**< \brief PWM输出模式2            */
-    0,                                    /**< \brief PWM输出高电平有效       */
-    &__g_tim2_pwm_ioinfo_list[0],         /**< \brief 引脚配置信息列表        */
-    AMHW_ZLG_TIM_TYPE1,                   /**< \brief 定时器类型              */
-    __zlg_plfm_tim2_pwm_init,             /**< \brief 平台初始化函数          */
-    __zlg_plfm_tim2_pwm_deinit            /**< \brief 平台解初始化函数        */
+    ZLG116_TIM2_BASE,                          /**< \brief TIM2寄存器块的基地址    */
+    CLK_TIM2,                                  /**< \brief TIM2时钟ID              */
+    AM_NELEMENTS(__g_tim2_pwm_chaninfo_list),  /**< \brief 配置输出通道个数        */
+    AMHW_ZLG_TIM_PWM_MODE2,                    /**< \brief PWM输出模式2            */
+    0,                                         /**< \brief PWM输出高电平有效       */
+    &__g_tim2_pwm_chaninfo_list[0],            /**< \brief 通道配置信息列表        */
+    AMHW_ZLG_TIM_TYPE1,                        /**< \brief 定时器类型              */
+    __zlg_plfm_tim2_pwm_init,                  /**< \brief 平台初始化函数          */
+    __zlg_plfm_tim2_pwm_deinit                 /**< \brief 平台解初始化函数        */
 };
 
 /** \brief TIM2 用于PWM设备定义 */
@@ -212,33 +204,29 @@ static void __zlg_plfm_tim3_pwm_deinit (void)
     am_clk_disable(CLK_TIM3);
 }
 
-/** \brief TIM3用于PWM功能的引脚配置信息列表 */
-static am_zlg_tim_pwm_ioinfo_t __g_tim3_pwm_ioinfo_list[] = {
-
-    /** \brief 通道1 */
-    {PIOB_4,  PIOB_4_TIM3_CH1 | PIOB_4_AF_PP, PIOB_4_GPIO | PIOB_4_INPUT_FLOAT},
-
-    /** \brief 通道2 */
-    {PIOB_5,  PIOB_5_TIM3_CH2 | PIOB_5_AF_PP, PIOB_5_GPIO | PIOB_5_INPUT_FLOAT},
-
-    /** \brief 通道3 */
-    {PIOB_0,  PIOB_0_TIM3_CH3 | PIOB_0_AF_PP, PIOB_0_GPIO | PIOB_0_INPUT_FLOAT},
-
-    /** \brief 通道4 */
-    {PIOB_1,  PIOB_1_TIM3_CH4 | PIOB_1_AF_PP, PIOB_1_GPIO | PIOB_1_INPUT_FLOAT},
+/** \brief TIM3用于PWM功能的通道配置信息列表 */
+static am_zlg_tim_pwm_chaninfo_t __g_tim3_pwm_chaninfo_list[] = {
+    /** \brief 通道1引脚配置 */
+    {AM_ZLG_TIM_PWM_CH1, PIOB_4,  PIOB_4_TIM3_CH1 | PIOB_4_AF_PP, PIOB_4_GPIO | PIOB_4_INPUT_FLOAT},
+    /** \brief 通道2引脚配置 */
+    {AM_ZLG_TIM_PWM_CH2, PIOB_5,  PIOB_5_TIM3_CH2 | PIOB_5_AF_PP, PIOB_5_GPIO | PIOB_5_INPUT_FLOAT},
+    /** \brief 通道3引脚配置 */
+    {AM_ZLG_TIM_PWM_CH3, PIOB_0,  PIOB_0_TIM3_CH3 | PIOB_0_AF_PP, PIOB_0_GPIO | PIOB_0_INPUT_FLOAT},
+    /** \brief 通道4引脚配置 */
+    {AM_ZLG_TIM_PWM_CH4, PIOB_1,  PIOB_1_TIM3_CH4 | PIOB_1_AF_PP, PIOB_1_GPIO | PIOB_1_INPUT_FLOAT},
 };
 
 /** \brief TIM3用于PWM设备信息 */
 static const am_zlg_tim_pwm_devinfo_t  __g_tim3_pwm_devinfo = {
-    ZLG116_TIM3_BASE,                     /**< \brief TIM3寄存器块的基地址    */
-    CLK_TIM3,                             /**< \brief TIM3时钟ID              */
-    4,                                    /**< \brief 4个PWM输出通道          */
-    AMHW_ZLG_TIM_PWM_MODE2,               /**< \brief PWM输出模式2            */
-    0,                                    /**< \brief PWM输出高电平有效       */
-    &__g_tim3_pwm_ioinfo_list[0],         /**< \brief 引脚配置信息列表        */
-    AMHW_ZLG_TIM_TYPE1,                   /**< \brief 定时器类型              */
-    __zlg_plfm_tim3_pwm_init,             /**< \brief 平台初始化函数          */
-    __zlg_plfm_tim3_pwm_deinit            /**< \brief 平台解初始化函数        */
+    ZLG116_TIM3_BASE,                          /**< \brief TIM3寄存器块的基地址    */
+    CLK_TIM3,                                  /**< \brief TIM3时钟ID              */
+    AM_NELEMENTS(__g_tim3_pwm_chaninfo_list),  /**< \brief 配置输出通道个数        */
+    AMHW_ZLG_TIM_PWM_MODE2,                    /**< \brief PWM输出模式2            */
+    0,                                         /**< \brief PWM输出高电平有效       */
+    &__g_tim3_pwm_chaninfo_list[0],            /**< \brief 通道配置信息列表        */
+    AMHW_ZLG_TIM_TYPE1,                        /**< \brief 定时器类型              */
+    __zlg_plfm_tim3_pwm_init,                  /**< \brief 平台初始化函数          */
+    __zlg_plfm_tim3_pwm_deinit                 /**< \brief 平台解初始化函数        */
 };
 
 /** \brief TIM3用于PWM设备定义 */
@@ -288,24 +276,23 @@ static void __zlg_plfm_tim14_pwm_deinit (void)
     am_clk_disable(CLK_TIM14);
 }
 
-/** \brief TIM14用于PWM功能的引脚配置信息列表 */
-static am_zlg_tim_pwm_ioinfo_t __g_tim14_pwm_ioinfo_list[] = {
-
-    /** \brief 通道1 */
-    {PIOA_4,  PIOA_4_TIM14_CH1 | PIOA_4_AF_PP, PIOA_4_GPIO | PIOA_4_INPUT_FLOAT},
+/** \brief TIM14用于PWM功能的通道配置信息列表 */
+static am_zlg_tim_pwm_chaninfo_t __g_tim14_pwm_chaninfo_list[] = {
+    /** \brief 通道1引脚配置 */
+    {AM_ZLG_TIM_PWM_CH1, PIOA_4,  PIOA_4_TIM14_CH1 | PIOA_4_AF_PP, AM_GPIO_INPUT | AM_GPIO_FLOAT},
 };
 
 /** \brief TIM14用于PWM设备信息 */
 static const am_zlg_tim_pwm_devinfo_t  __g_tim14_pwm_devinfo = {
-    ZLG116_TIM14_BASE,                    /**< \brief TIM14寄存器块的基地址   */
-    CLK_TIM14,                            /**< \brief TIM14时钟ID             */
-    1,                                    /**< \brief 1个PWM输出通道          */
-    AMHW_ZLG_TIM_PWM_MODE2,               /**< \brief PWM输出模式2            */
-    0,                                    /**< \brief PWM输出高电平有效       */
-    &__g_tim14_pwm_ioinfo_list[0],        /**< \brief 引脚配置信息列表        */
-    AMHW_ZLG_TIM_TYPE2,                   /**< \brief 定时器类型              */
-    __zlg_plfm_tim14_pwm_init,            /**< \brief 平台初始化函数          */
-    __zlg_plfm_tim14_pwm_deinit           /**< \brief 平台解初始化函数        */
+    ZLG116_TIM14_BASE,                          /**< \brief TIM14寄存器块的基地址   */
+    CLK_TIM14,                                  /**< \brief TIM14时钟ID             */
+    AM_NELEMENTS(__g_tim14_pwm_chaninfo_list) , /**< \brief 配置输出通道个数        */
+    AMHW_ZLG_TIM_PWM_MODE2,                     /**< \brief PWM输出模式2            */
+    0,                                          /**< \brief PWM输出高电平有效       */
+    &__g_tim14_pwm_chaninfo_list[0],            /**< \brief 通道配置信息列表        */
+    AMHW_ZLG_TIM_TYPE2,                         /**< \brief 定时器类型              */
+    __zlg_plfm_tim14_pwm_init,                  /**< \brief 平台初始化函数          */
+    __zlg_plfm_tim14_pwm_deinit                 /**< \brief 平台解初始化函数        */
 };
 
 /** \brief TIM14用于PWM设备定义 */
@@ -343,6 +330,7 @@ static void __zlg_plfm_tim16_pwm_init (void)
 
     /* 复位通用定时器16 */
     am_zlg116_clk_reset(CLK_TIM16);
+
 }
 
 /** \brief 解除TIM16 PWM平台初始化 */
@@ -355,24 +343,26 @@ static void __zlg_plfm_tim16_pwm_deinit (void)
     am_clk_disable(CLK_TIM16);
 }
 
-/** \brief TIM16用于PWM功能的引脚配置信息列表 */
-static am_zlg_tim_pwm_ioinfo_t __g_tim16_pwm_ioinfo_list[] = {
 
-    /** \brief 通道1 */
-    {PIOB_8,  PIOB_8_TIM16_CH1 | PIOB_8_AF_PP, PIOB_8_GPIO | PIOB_8_INPUT_FLOAT},
+/** \brief TIM16用于PWM功能的通道配置信息列表 */
+static am_zlg_tim_pwm_chaninfo_t __g_tim16_pwm_chaninfo_list[] = {
+    /** \brief 通道1引脚配置 */
+    {AM_ZLG_TIM_PWM_CH1, PIOB_8, PIOB_8_TIM16_CH1 | PIOB_8_AF_PP, AM_GPIO_INPUT | AM_GPIO_FLOAT},
+    /** \brief 通道1互补引脚配置 */
+    {AM_ZLG_TIM_PWM_CH1N, PIOB_6, PIOB_6_TIM16_CH1N | PIOB_6_AF_PP, AM_GPIO_INPUT | AM_GPIO_FLOAT},
 };
 
 /** \brief TIM16用于PWM设备信息 */
 static const am_zlg_tim_pwm_devinfo_t  __g_tim16_pwm_devinfo = {
-    ZLG116_TIM16_BASE,                    /**< \brief TIM16寄存器块的基地址   */
-    CLK_TIM16,                            /**< \brief TIM16时钟ID             */
-    1,                                    /**< \brief 1个PWM输出通道          */
-    AMHW_ZLG_TIM_PWM_MODE2,               /**< \brief PWM输出模式2            */
-    0,                                    /**< \brief PWM输出高电平有效       */
-    &__g_tim16_pwm_ioinfo_list[0],        /**< \brief 引脚配置信息列表        */
-    AMHW_ZLG_TIM_TYPE3,                   /**< \brief 定时器类型              */
-    __zlg_plfm_tim16_pwm_init,            /**< \brief 平台初始化函数          */
-    __zlg_plfm_tim16_pwm_deinit           /**< \brief 平台解初始化函数        */
+    ZLG116_TIM16_BASE,                          /**< \brief TIM16寄存器块的基地址   */
+    CLK_TIM16,                                  /**< \brief TIM16时钟ID             */
+    AM_NELEMENTS(__g_tim16_pwm_chaninfo_list),  /**< \brief 配置输出通道个数        */
+    AMHW_ZLG_TIM_PWM_MODE2,                     /**< \brief PWM输出模式2            */
+    0,                                          /**< \brief PWM输出高电平有效       */
+    &__g_tim16_pwm_chaninfo_list[0],            /**< \brief 通道配置信息列表        */
+    AMHW_ZLG_TIM_TYPE3,                         /**< \brief 定时器类型              */
+    __zlg_plfm_tim16_pwm_init,                  /**< \brief 平台初始化函数          */
+    __zlg_plfm_tim16_pwm_deinit                 /**< \brief 平台解初始化函数        */
 };
 
 /** \brief TIM16用于PWM设备定义 */
@@ -386,6 +376,7 @@ am_pwm_handle_t am_zlg116_tim16_pwm_inst_init (void)
         __g_tim16_pwm_handle = am_zlg_tim_pwm_init(&__g_tim16_pwm_dev,
                                                    &__g_tim16_pwm_devinfo);
     }
+
     return __g_tim16_pwm_handle;
 }
 
@@ -422,24 +413,25 @@ static void __zlg_plfm_tim17_pwm_deinit (void)
     am_clk_disable(CLK_TIM17);
 }
 
-/** \brief TIM17用于PWM功能的引脚配置信息列表 */
-static am_zlg_tim_pwm_ioinfo_t __g_tim17_pwm_ioinfo_list[] = {
-
-    /** \brief 通道1 */
-    {PIOA_7,  PIOA_7_TIM17_CH1 | PIOA_7_AF_PP, PIOA_7_GPIO | PIOA_7_INPUT_FLOAT},
+/** \brief TIM17用于PWM功能的通道配置信息列表 */
+static am_zlg_tim_pwm_chaninfo_t __g_tim17_pwm_chaninfo_list[] = {
+    /** \brief 通道1引脚配置 */
+    {AM_ZLG_TIM_PWM_CH1, PIOA_7,  PIOA_7_TIM17_CH1 | PIOA_7_AF_PP, PIOA_7_GPIO | PIOA_7_INPUT_FLOAT},
+    /** \brief 通道1互补引脚配置 */
+    {AM_ZLG_TIM_PWM_CH1N, PIOB_7, PIOB_7_TIM17_CH1N | PIOB_7_AF_PP, AM_GPIO_INPUT | AM_GPIO_FLOAT},
 };
 
 /** \brief TIM17用于PWM设备信息 */
 static const am_zlg_tim_pwm_devinfo_t  __g_tim17_pwm_devinfo = {
-    ZLG116_TIM17_BASE,                    /**< \brief TIM17寄存器块的基地址   */
-    CLK_TIM17,                            /**< \brief TIM17时钟ID             */
-    1,                                    /**< \brief 1个PWM输出通道          */
-    AMHW_ZLG_TIM_PWM_MODE2,               /**< \brief PWM输出模式2            */
-    0,                                    /**< \brief PWM输出高电平有效       */
-    &__g_tim17_pwm_ioinfo_list[0],        /**< \brief 引脚配置信息列表        */
-    AMHW_ZLG_TIM_TYPE3,                   /**< \brief 定时器类型              */
-    __zlg_plfm_tim17_pwm_init,            /**< \brief 平台初始化函数          */
-    __zlg_plfm_tim17_pwm_deinit           /**< \brief 平台解初始化函数        */
+    ZLG116_TIM17_BASE,                          /**< \brief TIM17寄存器块的基地址   */
+    CLK_TIM17,                                  /**< \brief TIM17时钟ID             */
+    AM_NELEMENTS(__g_tim17_pwm_chaninfo_list),  /**< \brief 配置输出通道个数        */
+    AMHW_ZLG_TIM_PWM_MODE2,                     /**< \brief PWM输出模式2            */
+    0,                                          /**< \brief PWM输出高电平有效       */
+    &__g_tim17_pwm_chaninfo_list[0],            /**< \brief 通道配置信息列表        */
+    AMHW_ZLG_TIM_TYPE3,                         /**< \brief 定时器类型              */
+    __zlg_plfm_tim17_pwm_init,                  /**< \brief 平台初始化函数          */
+    __zlg_plfm_tim17_pwm_deinit                 /**< \brief 平台解初始化函数        */
 };
 
 /** \brief TIM17用于PWM设备定义 */
