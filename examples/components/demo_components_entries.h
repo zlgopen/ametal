@@ -131,6 +131,12 @@ void demo_fm175xx_piccb_read_id (am_fm175xx_handle_t handle);
  * \return 无
  */
 void demo_fm175xx_picca_lpcd_mode (am_fm175xx_handle_t handle);
+/**
+ * \brief FM175XX FM11RF005M卡操作例程
+ * \param[in] handle  FM175XX 服务句柄
+ * \return 无
+ */
+void demo_fm175xx_fm11rf005m_operate (am_fm175xx_handle_t handle);
 
 /**
  * \brief zm516x 模块自动波特率例程

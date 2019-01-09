@@ -1521,6 +1521,39 @@ void  am_fm175xx_exit_lpcd_config(am_fm175xx_dev_t   *p_dev);
 void  am_fm175xx_lpcd_cb_set(am_fm175xx_dev_t   *p_dev,
                              am_pfnvoid_t        pfn_callback,
                              void               *p_lpcd_cb_arg);
+
+/**
+ * \brief fm175xx  fm11rf005m 卡请求操作
+ *
+ * \param[in] p_dev   : fm175xx设备
+ * \param[in] reqa_mode   : 卡请求模式（0x26与0x52没有区别）
+ *
+ */
+int8_t am_fm175xx_fm11rf005m_reqa(am_fm175xx_handle_t handle,
+                                   uint8_t             reqa_mode);
+
+/**
+ * \brief fm175xx  fm11rf005m 卡读块操作
+ *
+ * \param[in] p_dev   : fm175xx设备
+ * \param[in] block_num   : 块号
+ * \param[in] p_buff  : 读取数据缓冲区
+ *
+ */
+int8_t am_fm175xx_fm11rf005m_read_block(am_fm175xx_handle_t handle,
+                                         uint8_t             block_num,
+                                         uint8_t            *p_buff);
+/**
+ * \brief fm175xx  fm11rf005m 卡写块操作
+ *
+ * \param[in] p_dev   : fm175xx设备
+ * \param[in] block_num   : 块号
+ * \param[in] p_buff  : 读取数据缓冲区
+ *
+ */
+int8_t am_fm175xx_fm11rf005m_write_block(am_fm175xx_handle_t handle,
+                                          uint8_t             block_num,
+                                          uint8_t            *p_buff);
 /** @} */
 
 /**

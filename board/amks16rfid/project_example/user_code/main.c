@@ -134,6 +134,7 @@ int am_main (void)
 //    demo_amks16rfid_dr_fm175xx_picca_halt();
 //    demo_amks16rfid_dr_fm175xx_picca_read_block();
 //    demo_amks16rfid_dr_fm175xx_picca_read_id();
+//    demo_amks16rfid_dr_fm11rf005m_operate();
 //    demo_amks16rfid_dr_fm175xx_picca_val_operate();
 //    demo_amks16rfid_dr_fm175xx_picca_write_block();
 //    demo_amks16rfid_dr_fm175xx_piccb_read_id();
