@@ -14,16 +14,16 @@
       <uAC6>0</uAC6>
       <TargetOption>
         <TargetCommonOption>
-          <Device>LPC845M301JBD64</Device>
+          <Device>LPC824M201JDH20</Device>
           <Vendor>NXP</Vendor>
-          <PackID>NXP.LPC845_DFP.11.0.0</PackID>
-          <PackURL>http://mcuxpresso.nxp.com/cmsis_pack/repo/</PackURL>
-          <Cpu>IRAM(0x10000000,0x4000) IROM(0x00000000,0x010000) CPUTYPE("Cortex-M0+") CLOCK(12000000) ELITTLE</Cpu>
+          <PackID>Keil.LPC800_DFP.1.2.0</PackID>
+          <PackURL>http://www.keil.com/pack/</PackURL>
+          <Cpu>IROM(0x00000000,0x8000) IRAM(0x10000000,0x2000) CPUTYPE("Cortex-M0+") CLOCK(12000000) ELITTLE</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
           <StartupFile></StartupFile>
-          <FlashDriverDll>UL2CM3(-S0 -C0 -P0 -FD10000000 -FC1000 -FN1 -FF0LPC84x_64 -FS00 -FL010000 -FP0($$Device:LPC845M301JBD64$arm\LPC84x_64.FLM))</FlashDriverDll>
+          <FlashDriverDll>UL2CM3(-S0 -C0 -P0 -FD10000000 -FCFE0 -FN1 -FF0LPC8xx_32 -FS00 -FL08000 -FP0($$Device:LPC824M201JDH20$Flash\LPC8xx_32.FLM))</FlashDriverDll>
           <DeviceId>0</DeviceId>
-          <RegisterFile>$$Device:LPC845M301JBD64$fsl_device_registers.h</RegisterFile>
+          <RegisterFile>$$Device:LPC824M201JDH20$Device\Include\LPC82x.h</RegisterFile>
           <MemoryEnv></MemoryEnv>
           <Cmp></Cmp>
           <Asm></Asm>
@@ -33,7 +33,7 @@
           <SLE66CMisc></SLE66CMisc>
           <SLE66AMisc></SLE66AMisc>
           <SLE66LinkerMisc></SLE66LinkerMisc>
-          <SFDFile>$$Device:LPC845M301JBD64$LPC845.xml</SFDFile>
+          <SFDFile>$$Device:LPC824M201JDH20$SVD\LPC82x.svd</SFDFile>
           <bCustSvd>0</bCustSvd>
           <UseEnv>0</UseEnv>
           <BinPath></BinPath>
@@ -49,7 +49,7 @@
             <InvalidFlash>1</InvalidFlash>
           </TargetStatus>
           <OutputDirectory>.\debug\</OutputDirectory>
-          <OutputName>example_am824_core</OutputName>
+          <OutputName>template_am845_core</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
           <CreateHexFile>1</CreateHexFile>
@@ -133,12 +133,12 @@
             <UseExternalTool>0</UseExternalTool>
             <RunIndependent>0</RunIndependent>
             <UpdateFlashBeforeDebugging>1</UpdateFlashBeforeDebugging>
-            <Capability>1</Capability>
+            <Capability>0</Capability>
             <DriverSelection>4096</DriverSelection>
           </Flash1>
           <bUseTDR>1</bUseTDR>
           <Flash2>BIN\UL2CM3.DLL</Flash2>
-          <Flash3></Flash3>
+          <Flash3>"" ()</Flash3>
           <Flash4></Flash4>
           <pFcarmOut></pFcarmOut>
           <pFcarmGrp></pFcarmGrp>
@@ -245,12 +245,12 @@
               <IRAM>
                 <Type>0</Type>
                 <StartAddress>0x10000000</StartAddress>
-                <Size>0x4000</Size>
+                <Size>0x2000</Size>
               </IRAM>
               <IROM>
                 <Type>1</Type>
                 <StartAddress>0x0</StartAddress>
-                <Size>0x10000</Size>
+                <Size>0x8000</Size>
               </IROM>
               <XRAM>
                 <Type>0</Type>
@@ -275,7 +275,7 @@
               <OCR_RVCT4>
                 <Type>1</Type>
                 <StartAddress>0x0</StartAddress>
-                <Size>0x10000</Size>
+                <Size>0x8000</Size>
               </OCR_RVCT4>
               <OCR_RVCT5>
                 <Type>1</Type>
@@ -300,7 +300,7 @@
               <OCR_RVCT9>
                 <Type>0</Type>
                 <StartAddress>0x10000000</StartAddress>
-                <Size>0x4000</Size>
+                <Size>0x2000</Size>
               </OCR_RVCT9>
               <OCR_RVCT10>
                 <Type>0</Type>
@@ -967,6 +967,11 @@
               <FileType>1</FileType>
               <FilePath>..\..\..\..\soc\nxp\drivers\source\spi\am_lpc_spi_poll.c</FilePath>
             </File>
+            <File>
+              <FileName>amhw_lpc84x_iap.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\soc\nxp\drivers\source\iap\hw\amhw_lpc84x_iap.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -1193,9 +1198,9 @@
               <FilePath>..\user_config\am_servconf_usrcfg\am_servconf_nvram.c</FilePath>
             </File>
             <File>
-              <FileName>am_hwconf_lpc82x_spi0_poll.c</FileName>
+              <FileName>am_hwconf_lpc84x_spi0_poll.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_lpc82x_spi0_poll.c</FilePath>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_lpc84x_spi0_poll.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -2162,6 +2167,11 @@
               <FileType>1</FileType>
               <FilePath>..\..\..\..\soc\nxp\drivers\source\spi\am_lpc_spi_poll.c</FilePath>
             </File>
+            <File>
+              <FileName>amhw_lpc84x_iap.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\soc\nxp\drivers\source\iap\hw\amhw_lpc84x_iap.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -2388,9 +2398,9 @@
               <FilePath>..\user_config\am_servconf_usrcfg\am_servconf_nvram.c</FilePath>
             </File>
             <File>
-              <FileName>am_hwconf_lpc82x_spi0_poll.c</FileName>
+              <FileName>am_hwconf_lpc84x_spi0_poll.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_lpc82x_spi0_poll.c</FilePath>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_lpc84x_spi0_poll.c</FilePath>
             </File>
           </Files>
         </Group>

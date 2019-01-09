@@ -27,7 +27,7 @@
  *      刷卡，则串口将打印出从15开始，不断-5的数值。
  *
  * \par 源代码
- * \snippet demo_am845_corefid_dr_fm175xx_picca_val_operate.c src_am845_corefid_dr_fm175xx_picca_val_operate
+ * \snippet demo_am845_core_fm175xx_picca_val_operate.c src_am845_core_fm175xx_picca_val_operate
  *
  * \internal
  * \par Modification history
@@ -36,11 +36,11 @@
  */
 
 /**
- * \addtogroup demo_lpc845_if_dr_fm175xx_picca_val_operate
- * \copydoc demo_am845_corefid_dr_fm175xx_picca_val_operate.c
+ * \addtogroup demo_am845_core_if_fm175xx_picca_val_operate
+ * \copydoc demo_am845_core_fm175xx_picca_val_operate.c
  */
 
-/** [src_am845_corefid_dr_fm175xx_picca_val_operate] */
+/** [src_am845_core_fm175xx_picca_val_operate] */
 
 #include "am_fm175xx.h"
 #include "am_fm175xx_reg.h"
@@ -50,13 +50,13 @@
 /**
  * \brief A类卡值操作例程
  */
-void demo_am845_corefid_dr_fm175xx_picca_val_operate (void)
+void demo_am845_core_fm175xx_picca_val_operate (void)
 {
     am_fm175xx_handle_t handle = am_fm175xx_inst_init();
 
     demo_fm175xx_picca_val_operate(handle);
 }
 
-/** [src_am845_corefid_dr_fm175xx_picca_val_operate] */
+/** [src_am845_core_fm175xx_picca_val_operate] */
 
 /* end of file */

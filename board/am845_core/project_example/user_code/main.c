@@ -111,11 +111,11 @@ void am_main (void)
    //demo_am845_core_std_dac_entry();
    //demo_am845_core_hw_flash_ctrl_entry ();
    //demo_am845_core_hw_iap_entry ();
-   //demo_am845_corefid_dr_fm175xx_picca_halt ();
-   //demo_am845_corefid_dr_fm175xx_picca_val_operate ();
-   //demo_am845_corefid_dr_fm175xx_picca_read_block ();
-   //demo_am845_corefid_dr_fm175xx_picca_read_id ();
-   //demo_am845_corefid_dr_fm175xx_picca_write_block ();
+   //demo_am845_core_fm175xx_picca_halt ();
+   //demo_am845_core_fm175xx_picca_val_operate ();
+   //demo_am845_core_fm175xx_picca_read_block ();
+   //demo_am845_core_fm175xx_picca_read_id ();
+   //demo_am845_core_fm175xx_picca_write_block ();
    //demo_am845_core_zlg52810_auto_baudrate_entry();
    //demo_am845_core_eeprom_entry();
 
