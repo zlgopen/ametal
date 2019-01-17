@@ -15,7 +15,7 @@
  * \brief TIM3 定时器 PWM 例程，通过标准接口实现
  *
  * - 实验现象：
- *   1. PIOB_0(TIM3_CH3)输出 4KHz 的 PWM，占空比为 50%；
+ *   1. PIOB_0(TIM3_CH3)输出 2KHz 的 PWM，占空比为 50%；
  *
  * \par 源代码
  * \snippet demo_am116_core_std_tim3_pwm.c src_am116_core_std_tim3_pwm

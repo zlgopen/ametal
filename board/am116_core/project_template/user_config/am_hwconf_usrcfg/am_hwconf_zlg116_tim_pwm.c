@@ -61,11 +61,17 @@ static void __zlg_plfm_tim1_pwm_deinit (void)
 /** \brief TIM1用于PWM功能的通道配置信息列表 */
 static am_zlg_tim_pwm_chaninfo_t __g_tim1_pwm_chaninfo_list[] = {
     /** \brief 通道1引脚配置 */
-    {AM_ZLG_TIM_PWM_CH1, PIOA_8,  PIOA_8_TIM1_CH1  | PIOA_8_AF_PP,  PIOA_8_GPIO  | PIOA_8_INPUT_FLOAT},
+    {AM_ZLG_TIM_PWM_CH1, PIOA_8, PIOA_8_TIM1_CH1 | PIOA_8_AF_PP, PIOA_8_GPIO | PIOA_8_INPUT_FLOAT},
+    /** \brief 通道1互补引脚配置 */
+    {AM_ZLG_TIM_PWM_CH1N, PIOB_13, PIOB_13_TIM1_CH1N | PIOB_13_AF_PP, PIOB_13_GPIO | PIOB_13_INPUT_FLOAT},
     /** \brief 通道2引脚配置 */
-    {AM_ZLG_TIM_PWM_CH2, PIOA_9,  PIOA_9_TIM1_CH2  | PIOA_9_AF_PP,  PIOA_9_GPIO  | PIOA_9_INPUT_FLOAT},
+    {AM_ZLG_TIM_PWM_CH2, PIOA_9, PIOA_9_TIM1_CH2  | PIOA_9_AF_PP,  PIOA_9_GPIO  | PIOA_9_INPUT_FLOAT},
+    /** \brief 通道2互补引脚配置 */
+    {AM_ZLG_TIM_PWM_CH2N, PIOB_14, PIOB_14_TIM1_CH2N | PIOB_14_AF_PP, PIOB_14_GPIO | PIOB_14_INPUT_FLOAT},
     /** \brief 通道3引脚配置 */
     {AM_ZLG_TIM_PWM_CH3, PIOA_10, PIOA_10_TIM1_CH3 | PIOA_10_AF_PP, PIOA_10_GPIO | PIOA_10_INPUT_FLOAT},
+    /** \brief 通道3互补引脚配置 */
+    {AM_ZLG_TIM_PWM_CH3N, PIOB_1, PIOB_1_TIM1_CH3N | PIOB_1_AF_PP, PIOB_1_GPIO | PIOB_1_INPUT_FLOAT},
     /** \brief 通道4引脚配置 */
     {AM_ZLG_TIM_PWM_CH4, PIOA_11, PIOA_11_TIM1_CH4 | PIOA_11_AF_PP, PIOA_11_GPIO | PIOA_11_INPUT_FLOAT},
 };

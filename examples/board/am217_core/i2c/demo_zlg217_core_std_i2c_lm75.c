@@ -46,6 +46,7 @@
 #include "am_temp.h"
 #include "am_hwconf_lm75.h"
 #include "demo_std_entries.h"
+#include "demo_am217_core_entries.h"
 
 /**
  * \brief Àý³ÌÈë¿Ú

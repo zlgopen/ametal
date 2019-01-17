@@ -15,7 +15,7 @@
  * \brief TIM16 定时器 PWM 例程，通过标准接口实现
  *
  * - 实验现象：
- *   1. PIOB_8(TIM16_CH1) PIOB_6(TIM16_CH1N)输出互补的 4KHz 的 PWM，占空比为 50%；
+ *   1. PIOB_8(TIM16_CH1) PIOB_6(TIM16_CH1N)输出互补的 2KHz 的 PWM，占空比为 50%；
  *
  * \note
  *    由于 TIM16 默认初始化并作为蜂鸣器 PWM 使用，使用本 Demo 之前必须在

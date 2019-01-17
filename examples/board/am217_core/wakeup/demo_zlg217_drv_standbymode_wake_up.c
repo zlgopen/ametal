@@ -51,6 +51,7 @@
 #include "zlg217_pin.h"
 #include "am_zlg217_pwr.h"
 #include "am_zlg217_inst_init.h"
+#include "demo_am217_core_entries.h"
 
 /**
  * \brief иак╦ LED0

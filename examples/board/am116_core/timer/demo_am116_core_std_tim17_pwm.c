@@ -15,7 +15,7 @@
  * \brief TIM17 定时器 PWM 例程，通过标准接口实现
  *
  * - 实验现象：
- *   1. PIOA_7(TIM17_CH1) PIOB_7(TIM17_CH1N)输出互补 4KHz 的 PWM，占空比为 50%；
+ *   1. PIOA_7(TIM17_CH1) PIOB_7(TIM17_CH1N)输出互补 2KHz 的 PWM，占空比为 50%；
  *
  * \par 源代码
  * \snippet demo_am116_core_std_tim17_pwm.c src_am116_core_std_tim17_pwm

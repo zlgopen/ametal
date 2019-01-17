@@ -45,6 +45,7 @@
 #include "am_vdebug.h"
 #include "am_mx25xx.h"
 #include "am_zlg217_inst_init.h"
+#include "demo_am217_core_entries.h"
 
 #define __TEST_LENTH      16    /**< \brief ¶ÁÐ´×Ö½ÚÊý */
 

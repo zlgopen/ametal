@@ -42,6 +42,7 @@
 #include "am_zlg217.h"
 #include "am_board.h"
 #include "demo_std_entries.h"
+#include "demo_am217_core_entries.h"
 
 #define INPUT_PIN  PIOC_7 /**< \brief 输入引脚 */
 #define OUTPUT_PIN PIOC_9 /**< \brief 输出引脚 PIOC_9与LED相连 */

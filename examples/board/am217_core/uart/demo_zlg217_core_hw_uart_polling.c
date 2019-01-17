@@ -45,6 +45,7 @@
 #include "am_zlg217.h"
 #include "am_gpio.h"
 #include "demo_zlg_entries.h"
+#include "demo_am217_core_entries.h"
 
 /**
  * \brief Àý³ÌÈë¿Ú
