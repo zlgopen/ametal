@@ -38,7 +38,9 @@
 #include "am_vdebug.h"
 #include "am_zlg116.h"
 #include "am_zlg116_clk.h"
+#include "am_zlg_tim_pwm.h"
 #include "demo_zlg_entries.h"
+#include "demo_am116_core_entries.h"
 
 /**
  * \brief Àý³ÌÈë¿Ú
@@ -58,7 +60,7 @@ void demo_am116_core_hw_tim_pwm_entry (void)
 
     demo_zlg_hw_tim_pwm_entry(ZLG116_TIM2,
                                  AMHW_ZLG_TIM_TYPE1,
-                                 0,
+                                 AM_ZLG_TIM_PWM_CH1,
                                  am_clk_rate_get(CLK_TIM2),
                                  INUM_TIM2);
 }

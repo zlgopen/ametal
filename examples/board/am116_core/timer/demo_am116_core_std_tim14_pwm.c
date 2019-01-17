@@ -39,8 +39,10 @@
 /** [src_am116_core_std_tim14_pwm] */
 #include "ametal.h"
 #include "am_vdebug.h"
+#include "am_zlg_tim_pwm.h"
 #include "am_zlg116_inst_init.h"
 #include "demo_std_entries.h"
+#include "demo_am116_core_entries.h"
 
 /**
  * \brief Àý³ÌÈë¿Ú
@@ -49,7 +51,7 @@ void demo_am116_core_std_tim14_pwm_entry (void)
 {
     AM_DBG_INFO("demo am116_core std tim14 pwm!\r\n");
 
-    demo_std_timer_pwm_entry(am_zlg116_tim14_pwm_inst_init(), 0);
+    demo_std_timer_pwm_entry(am_zlg116_tim14_pwm_inst_init(), AM_ZLG_TIM_PWM_CH1);
 }
 /** [src_am116_core_std_tim14_pwm] */
 
