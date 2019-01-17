@@ -52,6 +52,7 @@
 #include "am_zlg217_clk.h"
 #include "amhw_zlg217_rcc.h"
 #include "demo_zlg_entries.h"
+#include "demo_am217_core_entries.h"
 
 #define I2C_MASTER    (amhw_zlg_i2c_t *)ZLG217_I2C1_BASE   /**< \brief I2C主机控制器通道号定义 */
 

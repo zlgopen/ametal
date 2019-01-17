@@ -42,6 +42,7 @@
 #include "am_vdebug.h"
 #include "demo_std_entries.h"
 #include "am_zlg217_inst_init.h"
+#include "demo_am217_core_entries.h"
 
 /**
  * \brief MicroPort DS1302 例程，通过标准接口实现

@@ -15,7 +15,7 @@
  * \brief TIM3 定时器 PWM 例程，通过标准接口实现
  *
  * - 实验现象：
- *   1. PIOB_0(TIM3_CH3)输出 4KHz 的 PWM，占空比为 50%；
+ *   1. PIOB_0(TIM3_CH3)输出 2KHz 的 PWM，占空比为 50%；
  *
  * \par 源代码
  * \snippet demo_am116_core_std_tim3_pwm.c src_am116_core_std_tim3_pwm
@@ -34,8 +34,10 @@
 /** [src_am116_core_std_tim3_pwm] */
 #include "ametal.h"
 #include "am_vdebug.h"
+#include "am_zlg_tim_pwm.h"
 #include "am_zlg116_inst_init.h"
 #include "demo_std_entries.h"
+#include "demo_am116_core_entries.h"
 
 /**
  * \brief 例程入口
@@ -44,7 +46,7 @@ void demo_am116_core_std_tim3_pwm_entry (void)
 {
     AM_DBG_INFO("demo am116_core std tim3 pwm!\r\n");
 
-    demo_std_timer_pwm_entry(am_zlg116_tim3_pwm_inst_init(), 2);
+    demo_std_timer_pwm_entry(am_zlg116_tim3_pwm_inst_init(), AM_ZLG_TIM_PWM_CH3);
 }
 /** [src_am116_core_std_tim3_pwm] */
 

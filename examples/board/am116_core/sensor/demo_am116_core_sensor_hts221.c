@@ -29,6 +29,7 @@
 #include "am_sensor.h"
 #include "am_hwconf_sensor_hts221.h"
 #include "demo_std_entries.h"
+#include "demo_am116_core_entries.h"
 
 /**
  * \brief 传感器例程入口

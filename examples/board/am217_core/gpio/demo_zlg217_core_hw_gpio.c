@@ -44,6 +44,7 @@
 #include "am_vdebug.h"
 #include "amhw_zlg217_gpio.h"
 #include "demo_zlg_entries.h"
+#include "demo_am217_core_entries.h"
 
 #define INPUT_PIN  PIOC_6 /**< \brief 输入引脚 */
 #define OUTPUT_PIN PIOC_9 /**< \brief 输出引脚 */

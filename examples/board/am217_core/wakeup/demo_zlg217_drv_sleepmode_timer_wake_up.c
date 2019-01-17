@@ -54,6 +54,7 @@
 #include "am_zlg217_inst_init.h"
 #include "zlg217_periph_map.h"
 #include "amhw_zlg_uart.h"
+#include "demo_am217_core_entries.h"
 
 /** \brief LSI Ê±ÖÓÆµÂÊ */
 #define    __LSI_CLK    (40000UL)

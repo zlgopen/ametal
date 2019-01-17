@@ -48,6 +48,7 @@
 #include "am_vdebug.h"
 #include "am_zlg116_inst_init.h"
 #include "demo_std_entries.h"
+#include "demo_am116_core_entries.h"
 
 #define EEPROM_ADDR 0x50 /**< \brief EEPROM 设备的地址 */
 #define TEST_LEN    8    /**< \brief 操作 EEPROM 的页大小 */

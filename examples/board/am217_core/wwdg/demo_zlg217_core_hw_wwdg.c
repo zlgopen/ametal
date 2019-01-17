@@ -38,6 +38,7 @@
 #include "am_zlg217.h"
 #include "am_zlg217_clk.h"
 #include "demo_zlg_entries.h"
+#include "demo_am217_core_entries.h"
 
 /**
  * \brief 看门狗超时时间

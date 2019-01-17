@@ -40,6 +40,7 @@
 #include "am_vdebug.h"
 #include "am_zlg217_inst_init.h"
 #include "am_digitron_disp.h"
+#include "demo_am217_core_entries.h"
 
 /**
  * \brief Àı³ÌÈë¿Ú

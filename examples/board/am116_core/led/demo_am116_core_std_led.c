@@ -41,6 +41,7 @@
 #include "am_board.h"
 #include "am_vdebug.h"
 #include "demo_std_entries.h"
+#include "demo_am116_core_entries.h"
 
 /**
  * \brief Àı³ÌÈë¿Ú

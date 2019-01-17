@@ -43,6 +43,7 @@
 #include "am_fm175xx_reg.h"
 #include "am_hwconf_fm175xx.h"
 #include "demo_components_entries.h"
+#include "demo_am116_core_entries.h"
 
 /**
  * \brief A类卡读卡类型和卡号例程
