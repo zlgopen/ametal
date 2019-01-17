@@ -47,7 +47,7 @@
 #include "ametal.h"
 #include "am_board.h"
 #include "am_vdebug.h"
-#include "hw/amhw_lpc82x_fmc.h"
+#include "hw/amhw_lpc_fmc.h"
 #include "demo_nxp_entries.h"
 
 /**
@@ -58,7 +58,7 @@ void demo_am824_core_hw_flash_ctrl_entry (void)
     AM_DBG_INFO("demo_am824_hw_flash_ctrl!\r\n");
 
     /* 设置闪存访问时间为两个系统时钟 */
-    demo_lpc824_hw_flash_ctrl_entry(AMHW_LPC82X_FMC_FLASHTIM_2);
+    demo_lpc824_hw_flash_ctrl_entry(AMHW_LPC_FMC_FLASHTIM_2);
 }
 /** [src_am824_hw_flash_ctrl] */
 

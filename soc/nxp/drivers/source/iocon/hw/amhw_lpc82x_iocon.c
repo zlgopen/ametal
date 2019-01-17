@@ -26,7 +26,7 @@
 #include "hw/amhw_lpc82x_iocon.h"
 
 /**
- * \brief LPC82x IOCON[31] ¼Ä´æÆ÷ÖÐÒý½ÅPIO0_mÅÅÁÐË³Ðò
+ * \brief LPC82x IOCON[56] ¼Ä´æÆ÷ÖÐÒý½ÅPIO0_mÅÅÁÐË³Ðò
  */
 typedef enum amhw_lpc82x_iocon_pio {
     AMHW_LPC82X_IOCON_PIO0_17 = 0,
@@ -59,7 +59,7 @@ typedef enum amhw_lpc82x_iocon_pio {
     AMHW_LPC82X_IOCON_PIO0_21,
     AMHW_LPC82X_IOCON_PIO0_20,
     AMHW_LPC82X_IOCON_PIO0_19,
-    AMHW_LPC82X_IOCON_PIO0_18
+    AMHW_LPC82X_IOCON_PIO0_18,
 } amhw_lpc82x_iocon_pio_t;
 
 /**
@@ -97,7 +97,7 @@ const uint8_t amhw_lpc82x_iocon_offset_pin[] = {
     AMHW_LPC82X_IOCON_PIO0_25,
     AMHW_LPC82X_IOCON_PIO0_26,
     AMHW_LPC82X_IOCON_PIO0_27,
-    AMHW_LPC82X_IOCON_PIO0_28
+    AMHW_LPC82X_IOCON_PIO0_28,
 };
 
 /* end of file */

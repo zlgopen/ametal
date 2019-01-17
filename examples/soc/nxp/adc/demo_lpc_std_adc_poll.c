@@ -19,8 +19,8 @@
  *   1. 串口输出电压采样值。
  *
  * \note
- *    如需观察串口打印的调试信息，需要将 PIO0_0 引脚连接 PC 串口的 TXD，
- *    PIO0_4 引脚连接 PC 串口的 RXD。
+ *    如需观察串口打印的调试信息，需要将 PIO0_14 引脚连接 PC 串口的 TXD，
+ *    PIO0_23 引脚连接 PC 串口的 RXD。
  *
  * \par 源代码
  * \snippet demo_lpc_std_adc_poll.c src_lpc_std_adc_poll

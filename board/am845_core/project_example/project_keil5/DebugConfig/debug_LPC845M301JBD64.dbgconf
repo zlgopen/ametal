@@ -1,0 +1,9 @@
+// <<< Use Configuration Wizard in Context Menu >>>
+
+// <h>Debug Configuration
+//   <o.0>    StopAfterBootloader       <i> Stop after Bootloader
+// </h>
+Dbg_CR = 0x00000001;
+//
+
+// <<< end of configuration section >>>

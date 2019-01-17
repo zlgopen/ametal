@@ -54,7 +54,8 @@
 #include "hw/amhw_lpc82x_pmu.h"
 #include "hw/amhw_lpc82x_iocon.h"
 #include "hw/amhw_lpc82x_pint.h"
-
+#include "hw/amhw_lpc82x_syscon.h"
+#include "am_lpc82x.h"
 /*******************************************************************************
   ∫Í∂®“Â
 *******************************************************************************/

@@ -25,9 +25,9 @@
 includes
 *******************************************************************************/
 
+#include <am_lpc82x.h>
 #include "am_clk.h"
 #include "am_gpio.h"
-#include "am_lpc82x.h"
 #include "am_lpc82x_dma.h"
 #include "am_lpc82x_spi_dma.h"
 #include "hw/amhw_lpc_spi.h"

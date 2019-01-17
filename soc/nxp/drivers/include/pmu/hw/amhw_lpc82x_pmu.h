@@ -35,8 +35,6 @@
 #define __AMHW_LPC82X_PMU_H
 
 #include "ametal.h"
-#include "am_lpc82x.h"
-#include "hw/amhw_lpc82x_syscon.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -56,7 +54,6 @@ typedef struct amhw_lpc82x_pmu {
     __IO uint32_t gpreg[4];  /**< \brief 偏移: 0x04 通用寄存器0到3(R/W) */
     __IO uint32_t dpdctrl;   /**< \brief 偏移: 0x14 深度掉电控制寄存器0(R/W) */
 } amhw_lpc82x_pmu_t;
-
 
 /**
  * \brief 低功耗模式

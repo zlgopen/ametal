@@ -40,6 +40,7 @@
 #include "am_board.h"
 #include "am_delay.h"
 #include "am_gpio.h"
+#include "am_vdebug.h"
 
 void demo_lpc_std_gpio_key_entry(int pin)
 {
@@ -57,6 +58,7 @@ void demo_lpc_std_gpio_key_entry(int pin)
         while (am_gpio_get(pin) == AM_GPIO_LEVEL_LOW);
 
         am_led_toggle(LED0);
+        AM_DBG_INFO("demo am845_core std gpio key is ok!\r\n");
     }
 }
 

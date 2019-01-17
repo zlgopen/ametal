@@ -23,10 +23,10 @@
  * - 1.00 15-07-15  bob, first implementation
  * \endinternal
  */
+#include <am_lpc82x.h>
 #include "am_lpc82x_adc_int.h"
 #include "am_int.h"
 #include "am_clk.h"
-#include "am_lpc82x.h"
 #include "hw/amhw_lpc82x_inmux.h"
 #include "hw/amhw_lpc82x_clk.h"
 #include "hw/amhw_lpc82x_adc.h"

@@ -44,7 +44,6 @@
 
 #include "ametal.h"
 #include "am_lpc82x.h"
-
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -99,15 +98,15 @@ typedef struct amhw_lpc82x_syscon {
     __IO uint32_t nmisrc;          /**< \brief NMI¿ØÖÆ¼Ä´æÆ÷                 */
     __IO uint32_t pintsel[8];      /**< \brief Òý½ÅÖÐ¶ÏÑ¡Ôñ¼Ä´æÆ÷            */
     __I  uint32_t reserved11[27];  /**< \brief ±£ÁôÎ»                        */
-    __IO uint32_t starterp0;       /**< \brief Ê¹ÄÜ»½ÐÑ¼Ä´æÆ÷0               */
+    __IO uint32_t starterp0;       /**< \brief Ê¹ÄÜ»½ÐÑ¼Ä´æÆ÷0  */
     __I  uint32_t reserved12[3];   /**< \brief ±£ÁôÎ»                        */
-    __IO uint32_t starterp1;       /**< \brief Ê¹ÄÜ»½ÐÑ¼Ä´æÆ÷01              */
+    __IO uint32_t starterp1;       /**< \brief Ê¹ÄÜ»½ÐÑ¼Ä´æÆ÷01 */
     __I  uint32_t reserved13[6];   /**< \brief ±£ÁôÎ»                        */
     __IO uint32_t pdsleepcfg;      /**< \brief ½øÈëÉî¶ÈË¯ÃßÅäÖÃ¼Ä´æÆ÷        */
     __IO uint32_t pdawakecfg;      /**< \brief »½ÐÑÅäÖÃ¼Ä´æÆ÷                */
     __IO uint32_t pdruncfg;        /**< \brief µôµçÅäÖÃ¼Ä´æÆ÷                */
     __I  uint32_t reserved14[111]; /**< \brief ±£ÁôÎ»                        */
-    __I  uint32_t deviceid;        /**< \brief Éè±¸ID                        */
+    __I  uint32_t deviceid;        /**< \brief Éè±¸ID       */
 } amhw_lpc82x_syscon_t;
 
 /**

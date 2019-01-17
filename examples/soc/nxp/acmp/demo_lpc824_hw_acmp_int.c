@@ -12,22 +12,22 @@
 
 /**
  * \file
- * \brief æ¨¡æ‹Ÿæ¯”è¾ƒå™¨ä¾‹ç¨‹ï¼ˆä¸­æ–­æ¨¡å¼ï¼‰ï¼Œé€šè¿‡ HW å±‚æŽ¥å£å®žçŽ°
+ * \brief Ä£Äâ±È½ÏÆ÷Àý³Ì£¨ÖÐ¶ÏÄ£Ê½£©£¬Í¨¹ý HW ²ã½Ó¿ÚÊµÏÖ
  *
- * - æ“ä½œæ­¥éª¤ï¼š
- *   1. PIO0_1 è¿žæŽ¥æ¨¡æ‹Ÿè¾“å…¥ 2ï¼›
- *   2. PIO0_14 è¿žæŽ¥æ¨¡æ‹Ÿè¾“å…¥ 3ã€‚
+ * - ²Ù×÷²½Öè£º
+ *   1. PIO0_1 Á¬½ÓÄ£ÄâÊäÈë 2£»
+ *   2. PIO0_14 Á¬½ÓÄ£ÄâÊäÈë 3¡£
  *
- * - å®žéªŒçŽ°è±¡ï¼š
- *   1. å½“è¾“å…¥ 2 ä¸Žè¾“å…¥ 3 æ¯”è¾ƒç»“æžœå‘ç”Ÿå˜åŒ–çš„æ—¶å€™ä¼šè¾“å‡ºæç¤ºå­—ç¬¦ï¼›
- *   2. è¾“å…¥ 2 å¤§äºŽè¾“å…¥ 3 æ—¶ï¼Œä¸²å£ä¼šè¾“å‡ºæ¯”è¾ƒç»“æžœ "result: PIO0_1_ACMP_I2 > PIO0_14_ACMP_I3"ï¼›
- *   3. è¾“å…¥ 2 å°äºŽè¾“å…¥ 3 æ—¶ï¼Œä¸²å£ä¼šè¾“å‡ºæ¯”è¾ƒç»“æžœ "result: PIO0_1_ACMP_I2 < PIO0_14_ACMP_I3"ã€‚
+ * - ÊµÑéÏÖÏó£º
+ *   1. µ±ÊäÈë 2 ÓëÊäÈë 3 ±È½Ï½á¹û·¢Éú±ä»¯µÄÊ±ºò»áÊä³öÌáÊ¾×Ö·û£»
+ *   2. ÊäÈë 2 ´óÓÚÊäÈë 3 Ê±£¬´®¿Ú»áÊä³ö±È½Ï½á¹û "result: PIO0_1_ACMP_I2 > PIO0_14_ACMP_I3"£»
+ *   3. ÊäÈë 2 Ð¡ÓÚÊäÈë 3 Ê±£¬´®¿Ú»áÊä³ö±È½Ï½á¹û "result: PIO0_1_ACMP_I2 < PIO0_14_ACMP_I3"¡£
  *
  * \note
- *    å¦‚éœ€è§‚å¯Ÿä¸²å£æ‰“å°çš„è°ƒè¯•ä¿¡æ¯ï¼Œéœ€è¦å°† PIO0_0 å¼•è„šè¿žæŽ¥ PC ä¸²å£çš„ TXDï¼Œ
- *    PIO0_4 å¼•è„šè¿žæŽ¥ PC ä¸²å£çš„ RXDã€‚
- *
- * \par æºä»£ç 
+ *    ÈçÐè¹Û²ì´®¿Ú´òÓ¡µÄµ÷ÊÔÐÅÏ¢£¬ÐèÒª½« PIO0_0 Òý½ÅÁ¬½Ó PC ´®¿ÚµÄ TXD£¬
+ *    PIO0_4 Òý½ÅÁ¬½Ó PC ´®¿ÚµÄ RXD¡£
+ *S
+ * \par Ô´´úÂë
  * \snippet demo_lpc824_hw_acmp_int.c src_lpc824_hw_acmp_int
  *
  * \internal
@@ -50,12 +50,12 @@
 #include "hw/amhw_lpc82x_acmp.h"
 
 
-/** \brief ACMP ä¸­æ–­æ ‡å¿— */
+/** \brief ACMP ÖÐ¶Ï±êÖ¾ */
 am_local volatile am_bool_t __g_complete_flag = AM_FALSE;
 
 
 /**
- * \brief ACMP ä¸­æ–­æœåŠ¡å‡½æ•°,å½“æ¯”è¾ƒç»“æžœå‘ç”Ÿå˜åŒ–æ—¶ä¼šäº§ç”Ÿä¸­æ–­
+ * \brief ACMP ÖÐ¶Ï·þÎñº¯Êý,µ±±È½Ï½á¹û·¢Éú±ä»¯Ê±»á²úÉúÖÐ¶Ï
  */
 am_local void __acmp_irq_handler (void *p_arg)
 {
@@ -72,7 +72,7 @@ void demo_lpc824_hw_acmp_int_entry(amhw_lpc82x_acmp_t *p_hw_acmp,
 {
     amhw_lpc82x_acmp_config(p_hw_acmp, flags);
 
-    /* è¿žæŽ¥ ADC ä¸­æ–­æœåŠ¡å‡½æ•°ï¼Œå¹¶ä½¿èƒ½ä¸­æ–­ */
+    /* Á¬½Ó ADC ÖÐ¶Ï·þÎñº¯Êý£¬²¢Ê¹ÄÜÖÐ¶Ï */
     am_int_connect(inum, __acmp_irq_handler, (void *)p_hw_acmp);
     am_int_enable (inum);
 

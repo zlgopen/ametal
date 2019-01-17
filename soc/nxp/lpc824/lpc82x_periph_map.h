@@ -133,7 +133,7 @@ extern "C" {
 #define LPC82X_PMU         ((amhw_lpc82x_pmu_t  *)LPC82X_PMU_BASE    )      
                                                        
 /** \brief FLASH¿ØÖÆÆ÷(FMC)¼Ä´æÆ÷¿éÖ¸Õë         */                              
-#define LPC82X_FMC         ((amhw_lpc82x_fmc_t  *)LPC82X_FMC_BASE    )    
+#define LPC82X_FMC         ((amhw_lpc_fmc_t  *)LPC82X_FMC_BASE       )
   
 /** \brief Ä£Êý×ª»»(ADC)¼Ä´æÆ÷¿éÖ¸Õë            */                              
 #define LPC82X_ADC0        ((amhw_lpc82x_adc_t  *)LPC82X_ADC0_BASE   )

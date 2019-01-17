@@ -98,25 +98,25 @@ extern "C" {
  * \cond
  * \brief 中断号定义，为core_cm0plus.h文件保留
  */
-typedef enum {                                                         
+typedef enum {
     /** \brief  1  复位向量                                                */
-    Reset_IRQn               = -15,                                    
-                                                                       
+    Reset_IRQn               = -15,
+
     /** \brief  2  不可屏蔽中断, 不能被停止或抢占                          */
-    NonMaskableInt_IRQn      = -14,                                    
-                                                                       
+    NonMaskableInt_IRQn      = -14,
+
     /** \brief  3  硬件错误中断                                            */
-    HardFault_IRQn           = -13,                                    
-                                                                       
+    HardFault_IRQn           = -13,
+
     /** \brief 11  系统服务调用通过SVC指令                                 */
-    SVCall_IRQn              =  -5,                                    
-                                                                       
+    SVCall_IRQn              =  -5,
+
     /** \brief 14  系统的挂起请求                                          */
-    PendSV_IRQn              =  -2,                                    
-                                                                       
+    PendSV_IRQn              =  -2,
+
     /** \brief 15  系统滴答定时器                                          */
-    SysTick_IRQn             =  -1,   
-   
+    SysTick_IRQn             =  -1,
+
     /* ---------------  外设中断 ------------------------------------ */
     SPI0_IRQn                = 0,    /**< \brief SPI0     Interrupt        */
     SPI1_IRQn                = 1,    /**< \brief SPI1     Interrupt        */
@@ -150,7 +150,7 @@ typedef enum {
     PIN_INT5_IRQn            = 29,   /**< \brief External Interrupt 5      */
     PIN_INT6_IRQn            = 30,   /**< \brief External Interrupt 6      */
     PIN_INT7_IRQn            = 31,   /**< \brief External Interrupt 7      */
-} IRQn_Type;
+}IRQn_Type;
 
 /**
  * \endcond

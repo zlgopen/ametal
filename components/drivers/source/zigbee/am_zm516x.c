@@ -236,7 +236,12 @@ am_err_t am_zm516x_cfg_info_get (am_zm516x_handle_t    handle,
                            5,
                            rsp_buf,
                           &rsp_len,
-                           50) == AM_TRUE) {
+                           50)) {
+
+        if (rsp_len != 74) {
+            return AM_ERROR;
+        }
+
         if (memcmp(rsp_buf, __ZM516X_CFG_TAG, 3) != 0) {
             return -AM_EPERM;
         }
@@ -279,7 +284,7 @@ am_err_t am_zm516x_cfg_channel_set (am_zm516x_handle_t handle, uint8_t chan)
                            6,
                            rsp_buf,
                           &rsp_len,
-                           50) == AM_TRUE) {
+                           50)) {
         if (memcmp(rsp_buf, __ZM516X_CFG_TAG, 3) != 0) {
             return -AM_EPERM;
         }
@@ -323,7 +328,12 @@ am_err_t am_zm516x_discover (am_zm516x_handle_t     handle,
                            5,
                            rsp_buf,
                           &rsp_len,
-                           50) == AM_TRUE) {
+                           50)) {
+
+        if (rsp_len != 13) {
+            return AM_ERROR;
+        }
+
         num = rsp_len / pack_size;
         num = (num > buf_size) ? buf_size : num;
 
@@ -376,7 +386,12 @@ am_err_t am_zm516x_remote_info_get (am_zm516x_handle_t       handle,
                            7,
                            rsp_buf,
                           &rsp_len,
-                           50) == AM_TRUE) {
+                           50)) {
+
+        if (rsp_len != 74) {
+            return AM_ERROR;
+        }
+
         if (memcmp(rsp_buf, __ZM516X_CFG_TAG, 3) != 0) {
             return -AM_EPERM;
         }
@@ -419,7 +434,7 @@ am_err_t am_zm516x_cfg_info_set (am_zm516x_handle_t    handle,
                            7 + sizeof(am_zm516x_cfg_info_t),
                            rsp_buf,
                           &rsp_len,
-                           50) == AM_TRUE) {
+                           50)) {
         if (memcmp(rsp_buf, __ZM516X_CFG_TAG, 3) != 0) {
             return -AM_EPERM;
         }
@@ -484,7 +499,7 @@ am_err_t am_zm516x_default_set (am_zm516x_handle_t handle)
                            9,
                            rsp_buf,
                           &rsp_len,
-                           70) == AM_TRUE) {
+                           70)) {
         if (memcmp(rsp_buf, __ZM516X_CFG_TAG, 3) != 0) {
             return -AM_EPERM;
         }
@@ -532,7 +547,7 @@ am_err_t am_zm516x_cfg_display_head_set (am_zm516x_handle_t handle,
                            8,
                            rsp_buf,
                           &rsp_len,
-                           50) == AM_TRUE) {
+                           50)) {
         if (memcmp(rsp_buf, __ZM516X_CFG_TAG, 3) != 0) {
             return -AM_EPERM;
         }
@@ -581,7 +596,7 @@ am_err_t am_zm516x_cfg_gpio_dir_set (am_zm516x_handle_t handle,
                            9,
                            rsp_buf,
                           &rsp_len,
-                           50) == AM_TRUE) {
+                           50)) {
         if (memcmp(rsp_buf, __ZM516X_CFG_TAG, 3) != 0) {
             return -AM_EPERM;
         }
@@ -633,7 +648,7 @@ am_err_t am_zm516x_cfg_gpio_dir_get (am_zm516x_handle_t handle,
                            9,
                            rsp_buf,
                           &rsp_len,
-                           50) == AM_TRUE) {
+                           50)) {
         if (memcmp(rsp_buf, __ZM516X_CFG_TAG, 3) != 0) {
             return -AM_EPERM;
         }
@@ -688,7 +703,7 @@ am_err_t am_zm516x_cfg_io_adc_upload_set (am_zm516x_handle_t handle,
                            12,
                            rsp_buf,
                           &rsp_len,
-                           50) == AM_TRUE) {
+                           50)) {
         if (memcmp(rsp_buf, __ZM516X_CFG_TAG, 3) != 0) {
             return -AM_EPERM;
         }
@@ -749,7 +764,7 @@ am_err_t am_zm516x_cfg_io_adc_upload_get (am_zm516x_handle_t handle,
                            12,
                            rsp_buf,
                           &rsp_len,
-                           50) == AM_TRUE) {
+                           50)) {
         if (memcmp(rsp_buf, __ZM516X_CFG_TAG, 3) != 0) {
             return -AM_EPERM;
         }
@@ -808,7 +823,7 @@ am_err_t am_zm516x_cfg_gpio_set (am_zm516x_handle_t handle,
                            9,
                            rsp_buf,
                           &rsp_len,
-                           50) == AM_TRUE) {
+                           50)) {
         if (memcmp(rsp_buf, __ZM516X_CFG_TAG, 3) != 0) {
             return -AM_EPERM;
         }
@@ -860,7 +875,7 @@ am_err_t am_zm516x_cfg_gpio_get (am_zm516x_handle_t handle,
                            9,
                            rsp_buf,
                           &rsp_len,
-                           50) == AM_TRUE) {
+                           50)) {
         if (memcmp(rsp_buf, __ZM516X_CFG_TAG, 3) != 0) {
             return -AM_EPERM;
         }
@@ -920,7 +935,7 @@ am_err_t am_zm516x_cfg_pwm_set (am_zm516x_handle_t handle,
                            28,
                            rsp_buf,
                           &rsp_len,
-                           50) == AM_TRUE) {
+                           50)) {
         if (memcmp(rsp_buf, __ZM516X_CFG_TAG, 3) != 0) {
             return -AM_EPERM;
         }
@@ -980,7 +995,7 @@ am_err_t am_zm516x_cfg_pwm_get (am_zm516x_handle_t handle,
                            28,
                            rsp_buf,
                           &rsp_len,
-                           50) == AM_TRUE) {
+                           50)) {
         if (memcmp(rsp_buf, __ZM516X_CFG_TAG, 3) != 0) {
             return -AM_EPERM;
         }
@@ -1029,7 +1044,7 @@ am_err_t am_zm516x_cfg_network_set (am_zm516x_handle_t handle,
                            7,
                            rsp_buf,
                           &rsp_len,
-                           50) == AM_TRUE) {
+                           50)) {
         if (memcmp(rsp_buf, __ZM516X_CFG_TAG, 3) != 0) {
             return -AM_EPERM;
         }
@@ -1074,7 +1089,7 @@ am_err_t am_zm516x_cfg_join_enable (am_zm516x_handle_t handle,
                            7,
                            rsp_buf,
                           &rsp_len,
-                           50) == AM_TRUE) {
+                           50)) {
         if (memcmp(rsp_buf, __ZM516X_CFG_TAG, 3) != 0) {
             return -AM_EPERM;
         }
@@ -1117,7 +1132,8 @@ am_err_t am_zm516x_cfg_slave_get (am_zm516x_handle_t      handle,
                            5,
                            rsp_buf,
                           &rsp_len,
-                           100) == AM_TRUE) {
+                           100)) {
+
         if (memcmp(rsp_buf, __ZM516X_CFG_TAG, 3) != 0) {
             return -AM_EPERM;
         }
@@ -1162,7 +1178,7 @@ am_err_t am_zm516x_cfg_state_get (am_zm516x_handle_t handle,
                            5,
                            rsp_buf,
                           &rsp_len,
-                           100) == AM_TRUE) {
+                           100)) {
         if (memcmp(rsp_buf, __ZM516X_CFG_TAG, 3) != 0) {
             return -AM_EPERM;
         }
@@ -1207,7 +1223,7 @@ am_err_t am_zm516x_channel_set (am_zm516x_handle_t handle, uint8_t chan)
                            5,
                            rsp_buf,
                           &rsp_len,
-                           50) == AM_TRUE) {
+                           50)) {
         if (memcmp(rsp_buf, __ZM516X_COM_TAG, 3) != 0) {
             return -AM_EPERM;
         }
@@ -1244,7 +1260,7 @@ am_err_t am_zm516x_dest_addr_set (am_zm516x_handle_t handle,
                            4 + p_zb_addr->addr_size,
                            rsp_buf,
                           &rsp_len,
-                           50) == AM_TRUE) {
+                           50)) {
         if (memcmp(rsp_buf, __ZM516X_COM_TAG, 3) != 0) {
             return -AM_EPERM;
         }
@@ -1280,7 +1296,7 @@ am_err_t am_zm516x_display_head_set (am_zm516x_handle_t handle, am_bool_t flag)
                            5,
                            rsp_buf,
                           &rsp_len,
-                           50) == AM_TRUE) {
+                           50)) {
         if (memcmp(rsp_buf, __ZM516X_COM_TAG, 3) != 0) {
             return -AM_EPERM;
         }
@@ -1318,7 +1334,7 @@ am_err_t am_zm516x_gpio_dir (am_zm516x_handle_t handle,
                            cmd_buf, 5 + p_zb_addr->addr_size,
                            rsp_buf,
                           &rsp_len,
-                           100) == AM_TRUE) {
+                           100)) {
         if (memcmp(rsp_buf, __ZM516X_COM_TAG, 3) != 0) {
             return -AM_EPERM;
         }
@@ -1356,7 +1372,7 @@ am_err_t am_zm516x_gpio_get (am_zm516x_handle_t handle,
                            4 + p_zb_addr->addr_size,
                            rsp_buf,
                           &rsp_len,
-                           100) == AM_TRUE) {
+                           100)) {
         if (memcmp(rsp_buf, __ZM516X_COM_TAG, 3) != 0) {
             return -AM_EPERM;
         }
@@ -1393,7 +1409,7 @@ am_err_t am_zm516x_gpio_set (am_zm516x_handle_t handle,
                            5 + p_zb_addr->addr_size,
                            rsp_buf,
                           &rsp_len,
-                           100) == AM_TRUE) {
+                           100)) {
         if (memcmp(rsp_buf, __ZM516X_COM_TAG, 3) != 0) {
             return -AM_EPERM;
         }
@@ -1433,7 +1449,7 @@ am_err_t am_zm516x_ad_get (am_zm516x_handle_t handle,
                            5 + p_zb_addr->addr_size,
                            rsp_buf,
                           &rsp_len,
-                           100) == AM_TRUE) {
+                           100)) {
         if (memcmp(rsp_buf, __ZM516X_COM_TAG, 3) != 0) {
             return -AM_EPERM;
         }
@@ -1488,7 +1504,7 @@ am_err_t am_zm516x_mode_set (am_zm516x_handle_t    handle,
                            5,
                            rsp_buf,
                           &rsp_len,
-                           50) == AM_TRUE) {
+                           50)) {
         if (memcmp(rsp_buf, __ZM516X_COM_TAG, 3) != 0) {
             return -AM_EPERM;
         }
@@ -1526,7 +1542,7 @@ am_err_t am_zm516x_sigal_get (am_zm516x_handle_t handle,
                            4 + p_zb_addr->addr_size,
                            rsp_buf,
                           &rsp_len,
-                           100) == AM_TRUE) {
+                           100)) {
         if (memcmp(rsp_buf, __ZM516X_COM_TAG, 3) != 0) {
             return -AM_EPERM;
         }
