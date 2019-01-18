@@ -36,14 +36,12 @@
 #include "am_sensor.h"
 #include "am_sensor_bmg160.h"
 #include "am_delay.h"
-#include "am_hwconf_sensor_bmg160.h"
 
 /**
  * \brief 例程入口
  */
-void demo_std_bmg160_entry (void)
+void demo_std_bmg160_entry (am_sensor_handle_t handle)
 {
-    am_sensor_handle_t handle = NULL;
 
     /* BMG160提供的所有通道ID列举 */
     const int       id[3] = {AM_BMG160_CHAN_1, AM_BMG160_CHAN_2, AM_BMG160_CHAN_3};
@@ -61,11 +59,9 @@ void demo_std_bmg160_entry (void)
                                       "z_axis_angular_velocity"};
     const char *data_unit_string[] = {"rad/s", "rad/s", "rad/s"};
 
-    handle = am_sensor_bmg160_inst_init();
-
     am_sensor_enable(handle, id, 3, data);
     
-        while(1) {
+    while(1) {
         am_sensor_data_get(handle, id, 3, data);
         for(i=0; i<3; i++) {
             if (AM_SENSOR_VAL_IS_VALID(data[i])) { /* 该通道数据有效，可以正常使用 */
