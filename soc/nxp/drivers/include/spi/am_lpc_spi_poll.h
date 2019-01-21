@@ -80,8 +80,8 @@ typedef struct am_lpc_spi_poll_dev {
     am_bool_t                  busy;            /**< \brief SPI忙标识.        */
     uint32_t                   state;           /**< \brief SPI控制器状态机状态. */
 
-    uint32_t                   bef_speed_hz;
-    uint8_t                    bef_bits_per_word;
+    uint32_t                   bef_speed_hz;    /**< \brief SPI上次传输的速率（若与本次相同则不需要进行重新配置）. */
+    uint8_t                    bef_bits_per_word; /**< \brief SPI上次传输的位宽. */
 } am_lpc_spi_poll_dev_t;
 
 /**
