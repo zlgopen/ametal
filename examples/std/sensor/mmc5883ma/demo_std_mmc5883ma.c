@@ -35,14 +35,12 @@
 #include "am_sensor.h"
 #include "am_sensor_mmc5883ma.h"
 #include "am_delay.h"
-#include "am_hwconf_sensor_mmc5883ma.h"
 
 /**
  * \brief 例程入口
  */
-void demo_std_mmc5883ma_entry (void)
+void demo_std_mmc5883ma_entry (am_sensor_handle_t handle)
 {  
-    am_sensor_handle_t handle = NULL;
     
     /* MMC5883MA提供的所有通道ID列举 */
     const int id[3] = {AM_MMC5883MA_CHAN_1, AM_MMC5883MA_CHAN_2, AM_MMC5883MA_CHAN_3};
@@ -57,8 +55,6 @@ void demo_std_mmc5883ma_entry (void)
      */
     const char *data_name_string[] = {"x_axis_data", "y_axis_data", "z_axis_data"};
     const char *data_unit_string[] = {"Gs","Gs","Gs"};
-    
-    handle = am_sensor_mmc5883ma_inst_init();
 
     am_sensor_enable(handle, id, 3, data); 
     	
