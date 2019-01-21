@@ -417,6 +417,20 @@ void demo_std_lps22hb_entry (am_sensor_handle_t handle);
  */
 void demo_std_lps22hb_int_entry (am_sensor_handle_t handle);
 
+/**
+ * \brief 三轴陀螺仪传感器BMG160例程，通过查询模式实现
+ *
+ * \return 无
+ */
+void demo_std_bmg160_entry (am_sensor_handle_t handle);
+
+/**
+ * \brief 三轴磁传感器MMC5883MA例程，通过查询模式实现
+ *
+ * \return 无
+ */
+void demo_std_mmc5883ma_entry (am_sensor_handle_t handle);
+
 #ifdef __cplusplus
 }
 #endif
