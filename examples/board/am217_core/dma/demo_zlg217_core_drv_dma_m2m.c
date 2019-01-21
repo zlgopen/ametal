@@ -42,6 +42,8 @@
 #include "am_vdebug.h"
 #include "am_zlg217.h"
 #include "demo_zlg_entries.h"
+#include "demo_am217_core_entries.h"
+
 
 #define  DMA_M2M_CH       DMA_CHAN_1   /**< \brief Í¨µÀ */
 

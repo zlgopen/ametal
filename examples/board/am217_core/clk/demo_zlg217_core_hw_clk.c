@@ -44,6 +44,7 @@
 #include "amhw_zlg217_rcc.h"
 #include "am_zlg217_inst_init.h"
 #include "demo_zlg_entries.h"
+#include "demo_am217_core_entries.h"
 
 /** \brief 配置调试串口输出的波特率 */
 #define __DEBUG_BAUDRATE        115200

@@ -44,6 +44,7 @@
 #include "am_zlg_flash.h"
 #include "am_zlg217.h"
 #include "demo_zlg_entries.h"
+#include "demo_am217_core_entries.h"
 
 #define FLASH_SECTOR 55    /**< \brief ÉÈÇø */
 

@@ -45,6 +45,8 @@
 #include "amhw_zlg_i2c.h"
 #include "amhw_zlg217_rcc.h"
 #include "demo_zlg_entries.h"
+#include "demo_am217_core_entries.h"
+
 /**
  * \brief Àý³ÌÈë¿Ú
  */

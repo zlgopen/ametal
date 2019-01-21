@@ -47,13 +47,28 @@ extern "C" {
  */
 
 /**
+ * \brief 通道标识符（最高位为‘1’代表互补通道，后7位代表对应通道号）
+ */
+#define  AM_ZLG_TIM_PWM_CH1         0x00   /**< \brief PWM通道1标识符*/
+#define  AM_ZLG_TIM_PWM_CH2         0x01   /**< \brief PWM通道2标识符*/
+#define  AM_ZLG_TIM_PWM_CH3         0x02   /**< \brief PWM通道3标识符*/
+#define  AM_ZLG_TIM_PWM_CH4         0x03   /**< \brief PWM通道4标识符*/
+
+#define  AM_ZLG_TIM_PWM_CH1N        0x80   /**< \brief PWM通道1互补标识符*/
+#define  AM_ZLG_TIM_PWM_CH2N        0x81   /**< \brief PWM通道2互补标识符*/
+#define  AM_ZLG_TIM_PWM_CH3N        0x82   /**< \brief PWM通道3互补标识符*/
+#define  AM_ZLG_TIM_PWM_CH4N        0x83   /**< \brief PWM通道4互补标识符*/
+
+
+/**
  * \brief TIMPWM输出功能相关的GPIO信息
  */
-typedef struct am_zlg_tim_pwm_ioinfo {
-    uint32_t gpio;              /**< \brief PWM所用的GPIO */
-    uint32_t func;              /**< \brief PWM功能的GPIO功能设置值 */
-    uint32_t dfunc;             /**< \brief 禁能PWM模式后，默认GPIO功能设置值 */
-} am_zlg_tim_pwm_ioinfo_t;
+typedef struct am_zlg_tim_pwm_chaninfo {
+    int8_t   channel;                  /**< \brief PWM所使用的通道标识符 */
+    int8_t   gpio;                     /**< \brief PWM输出所用的GPIO引脚 */
+    uint32_t func;                     /**< \brief PWM功能的GPIO功能设置值 */
+    uint32_t dfunc;                    /**< \brief 禁能PWM模式后，默认GPIO功能设置值 */
+} am_zlg_tim_pwm_chaninfo_t;
 
 /**
  * \brief TIMPWM输出功能相关的设备信息
@@ -71,7 +86,7 @@ typedef struct am_zlg_tim_pwm_devinfo {
     /** \brief PWM输出极性,0为高电平有效, 1为低电平有效 */
     uint8_t                     ocpolarity;
 
-    am_zlg_tim_pwm_ioinfo_t    *p_ioinfo;       /**< \brief 指向PWM输出管脚信息结构体 */
+    am_zlg_tim_pwm_chaninfo_t  *p_chaninfo;     /**< \brief 指向PWM输出通道信息结构体 */
 
     amhw_zlg_tim_type_t         tim_type;       /**< \brief 定时器类型 */
 
@@ -104,7 +119,7 @@ typedef struct am_zlg_tim_pwm_dev {
  * \return PWM标准服务操作句柄，值为NULL时表明初始化失败
  */
 am_pwm_handle_t am_zlg_tim_pwm_init(am_zlg_tim_pwm_dev_t              *p_dev,
-                                       const am_zlg_tim_pwm_devinfo_t *p_devinfo);
+                                    const am_zlg_tim_pwm_devinfo_t    *p_devinfo);
 
 /**
  * \brief 不使用TIMPWM输出功能时，解初始化TIMPWM输出功能，释放相关资源

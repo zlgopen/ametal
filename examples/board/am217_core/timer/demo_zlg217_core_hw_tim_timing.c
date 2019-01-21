@@ -42,6 +42,7 @@
 #include "am_zlg217_clk.h"
 #include "am_zlg217_inst_init.h"
 #include "demo_zlg_entries.h"
+#include "demo_am217_core_entries.h"
 
 /**
  * \brief 定时器timing HW层例程入口

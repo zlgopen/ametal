@@ -69,11 +69,6 @@ static int __tim_pwm_config (void          *p_drv,
         return -AM_EINVAL;
     }
 
-    /* 有效通道范围 0 ~ (channels_num - 1) */
-    if (chan >= p_dev->p_devinfo->channels_num) {
-        return -AM_EINVAL;
-    }
-
     clkfreq = am_clk_rate_get(p_dev->p_devinfo->clk_num);
 
     /* 计算出来得到的是计数值CNT, 公式ns * 10e-9= cnt * (1/clkfrq) */
@@ -126,6 +121,8 @@ static int __tim_pwm_config (void          *p_drv,
 
         /* 设置CR2寄存器确定N极极性 */
     }
+    /* 使能互补输出高电平有效 */
+    amhw_zlg_tim_ccne_set(p_hw_tim, p_dev->p_devinfo->ocpolarity, chan);
 
     /* 设置比较输出通道高电平极性有效 */
     amhw_zlg_tim_ccp_output_set(p_hw_tim, p_dev->p_devinfo->ocpolarity, chan);
@@ -138,20 +135,32 @@ static int __tim_pwm_config (void          *p_drv,
  */
 static int __tim_pwm_enable (void *p_drv, int chan)
 {
+    int i = 0, enable_flag = 0;
     am_zlg_tim_pwm_dev_t    *p_dev    = (am_zlg_tim_pwm_dev_t *)p_drv;
     amhw_zlg_tim_t          *p_hw_tim = (amhw_zlg_tim_t *)p_dev->p_devinfo->tim_regbase;
-    am_zlg_tim_pwm_ioinfo_t *p_ioinfo = p_dev->p_devinfo->p_ioinfo;
+    am_zlg_tim_pwm_chaninfo_t *p_chaninfo = p_dev->p_devinfo->p_chaninfo;
 
-    /* 有效通道范围 0 ~ (channels_num - 1) */
-    if (chan >= p_dev->p_devinfo->channels_num) {
+      /* 判断引脚列表中是否有对应通道配置信息 */
+    for(i = 0; i <= p_dev->p_devinfo->channels_num; i++){
+        if((p_chaninfo[i].channel & 0x7f) ==  chan){
+            am_gpio_pin_cfg(p_chaninfo[i].gpio, p_chaninfo[i].func);
+            if((p_chaninfo[i].channel & 0x80) == 0x80){
+                /* 使能互补输出 */
+                amhw_zlg_tim_ccne_enable(p_hw_tim, chan);
+                enable_flag = 1;
+            }else{
+                /* 使能通道PWM输出 */
+                amhw_zlg_tim_cce_output_enable(p_hw_tim, chan);
+                enable_flag = 1;
+            }
+        }
+    }
+	
+    /* 输入通道号无效 */
+    if(enable_flag == 0){
         return -AM_EINVAL;
     }
-
-    am_gpio_pin_cfg(p_ioinfo[chan].gpio, p_ioinfo[chan].func);
-
-    /* 使能通道PWM输出 */
-    amhw_zlg_tim_cce_output_enable(p_hw_tim, chan);
-
+	
     /* 高级定时器使能主输出MOE */
     if ((p_dev->p_devinfo->tim_type == AMHW_ZLG_TIM_TYPE0) ||
         (p_dev->p_devinfo->tim_type == AMHW_ZLG_TIM_TYPE2) ||
@@ -180,17 +189,24 @@ static int __tim_pwm_enable (void *p_drv, int chan)
  */
 static int __tim_pwm_disable (void *p_drv, int chan)
 {
-    am_zlg_tim_pwm_dev_t    *p_dev    = (am_zlg_tim_pwm_dev_t *)p_drv;
-    amhw_zlg_tim_t          *p_hw_tim = (amhw_zlg_tim_t *)p_dev->p_devinfo->tim_regbase;
-    am_zlg_tim_pwm_ioinfo_t *p_ioinfo = p_dev->p_devinfo->p_ioinfo;
+    int  i = 0, disable_flag = 0;
+    am_zlg_tim_pwm_dev_t      *p_dev    = (am_zlg_tim_pwm_dev_t *)p_drv;
+    amhw_zlg_tim_t            *p_hw_tim = (amhw_zlg_tim_t *)p_dev->p_devinfo->tim_regbase;
+    am_zlg_tim_pwm_chaninfo_t *p_chaninfo = p_dev->p_devinfo->p_chaninfo;
 
-    /* 有效通道范围 0 ~ (channels_num - 1) */
-    if (chan >= p_dev->p_devinfo->channels_num) {
+    /* 判断引脚列表中是否有对应通道配置信息 */
+    for(i = 0; i <= p_dev->p_devinfo->channels_num; i++){
+        if((p_chaninfo[i].channel & 0x7f) ==  chan){
+            am_gpio_pin_cfg(p_chaninfo[i].gpio, p_chaninfo[i].dfunc);
+            disable_flag = 1;
+        }
+    }
+	
+    /* 输入通道号无效 */
+    if(disable_flag == 0){
         return -AM_EINVAL;
     }
-
-    am_gpio_pin_cfg(p_ioinfo[chan].gpio, p_ioinfo[chan].dfunc);
-
+	
     /* 禁能定时器TIM允许计数 */
     amhw_zlg_tim_disable(p_hw_tim);
 

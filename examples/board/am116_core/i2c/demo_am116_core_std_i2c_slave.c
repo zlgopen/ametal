@@ -41,6 +41,7 @@
 #include "am_vdebug.h"
 #include "am_zlg116_inst_init.h"
 #include "demo_std_entries.h"
+#include "demo_am116_core_entries.h"
 
 #define __I2C_SLV_ADDR   0X50  /**< \brief 从设备的地址 */
 

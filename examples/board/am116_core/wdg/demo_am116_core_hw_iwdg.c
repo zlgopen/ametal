@@ -38,6 +38,7 @@
 #include "am_zlg116.h"
 #include "hw/amhw_zlg116_rcc.h"
 #include "demo_zlg_entries.h"
+#include "demo_am116_core_entries.h"
 
 /**
  * \brief 看门狗超时时间

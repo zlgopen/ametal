@@ -50,6 +50,7 @@
 #include "ametal.h"
 #include "am_vdebug.h"
 #include "am_zlg217_inst_init.h"
+#include "demo_am217_core_entries.h"
 
 /**
  * \brief MicroPort FLASH 例程，通过 FTL 接口实现

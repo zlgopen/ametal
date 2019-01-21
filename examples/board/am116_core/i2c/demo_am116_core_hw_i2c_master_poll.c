@@ -51,6 +51,7 @@
 #include "am_zlg116_clk.h"
 #include "hw/amhw_zlg_i2c.h"
 #include "demo_zlg_entries.h"
+#include "demo_am116_core_entries.h"
 
 /**
  * \brief Àý³ÌÈë¿Ú
