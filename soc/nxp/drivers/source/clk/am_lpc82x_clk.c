@@ -21,9 +21,9 @@
  * \endinternal
  */
  
+#include <lpc82x_clk.h>
 #include "ametal.h"
 #include "am_lpc82x_clk.h"
-#include "lpc82x_clk.h"
 #include "hw/amhw_lpc82x_clk.h"
 #include "hw/amhw_lpc82x_syscon.h"
 

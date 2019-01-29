@@ -38,7 +38,7 @@
 #include "ametal.h"
 #include "am_vdebug.h"
 #include "am_board.h"
-#include "am_lpc82x.h"
+//#include "am_lpc82x.h"
 #include "hw/amhw_lpc_i2c.h"
 
 /*******************************************************************************

@@ -47,7 +47,8 @@
 #include "ametal.h"
 #include "am_board.h"
 #include "am_vdebug.h"
-#include "hw/amhw_lpc82x_fmc.h"
+#include "lpc82x_periph_map.h"
+#include "hw/amhw_lpc_fmc.h"
 
 /**
  * \brief 软件计算 FLASH 签名
@@ -82,14 +83,14 @@ am_local uint32_t __cal_sign (uint32_t start, uint32_t end)
     return sign;
 }
 
-void demo_lpc824_hw_flash_ctrl_entry(amhw_lpc82x_fmc_time_t time)
+void demo_lpc824_hw_flash_ctrl_entry(amhw_lpc_fmc_time_t time)
 {
 
-    amhw_lpc82x_fmc_flashtim_set(time);
+    amhw_lpc_fmc_flashtim_set(LPC82X_FMC, time);
 
     /* 读取并打印签名信息 */
     AM_DBG_INFO("hard calculate id: 0x%x\r\n",
-                amhw_lpc82x_fmc_flash_sign(0x0, 0x7000));
+                amhw_lpc_fmc_flash_sign(LPC82X_FMC, 0x0, 0x7000));
     AM_DBG_INFO("soft calculate id: 0x%x\r\n\r\n", __cal_sign(0x0, 0x7000));
 
     AM_FOREVER {

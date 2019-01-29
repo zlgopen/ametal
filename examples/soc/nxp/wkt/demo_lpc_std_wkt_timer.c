@@ -39,7 +39,6 @@
 #include "ametal.h"
 #include "am_vdebug.h"
 #include "am_board.h"
-#include "am_lpc82x.h"
 
 am_local am_timer_handle_t __g_wkt_handle; /**< \brief 定时器标准服务操作句柄类型变量 */
 

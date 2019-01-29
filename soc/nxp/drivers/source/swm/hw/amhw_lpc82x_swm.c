@@ -23,10 +23,9 @@
  * \endinternal
  */
 
+#include <am_lpc82x.h>
 #include "ametal.h"
-#include "am_lpc82x.h"
 #include "hw/amhw_lpc82x_swm.h"
-
 
 #define AMHW_LPC82X_SWM_NO_FIXED_FUNC    30   /**< \brief 引脚没有特殊功能   */
 #define AMHW_LPC82X_SWM_MULTI_FIXED_FUNC 255  /**< \brief 引脚有多个特殊功能 */

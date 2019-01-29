@@ -40,8 +40,7 @@
 /** [src_lpc824_hw_usart_poll] */
 #include "ametal.h"
 #include "hw/amhw_lpc_usart.h"
-#include "hw/amhw_lpc82x_clk.h"
-#include "hw/amhw_lpc82x_syscon.h"
+//#include "hw/amhw_lpc82x_clk.h"
 
 /**
  * \brief 基本输入频率设置（基本输入频率必须小于系统时钟频率且应为波特率的整数倍）
@@ -52,7 +51,7 @@
  *
  * \note  USART0\1\2 共用一个基本输入频率,不要轻易改动
  */
-#define  __LPC82X_UASART_BASE_RATE  11059200
+#define  __LPC84X_UASART_BASE_RATE  11059200
 
 
 /** \brief 波特率 */

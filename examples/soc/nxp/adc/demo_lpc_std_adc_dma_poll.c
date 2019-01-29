@@ -41,7 +41,7 @@
 #include "am_board.h"
 #include "am_vdebug.h"
 #include "am_adc.h"
-#include "am_lpc82x_inst_init.h"
+#include "am_lpc84x_inst_init.h"
 #include "demo_nxp_entries.h"
 
 /*******************************************************************************

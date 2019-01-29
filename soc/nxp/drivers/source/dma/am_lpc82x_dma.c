@@ -489,7 +489,7 @@ static void __dma_int_handler (void *p_arg)
     error  = amhw_lpc82x_dma_error_flags_get(p_hw_dma);
 
     /* ¥ÌŒÛ±Í÷æ */
-    if ((error & 0x3FFFF) != 0) {
+    if ((error & 0xFFFFFF) != 0) {
         for (i = 0; i < AMHW_LPC82X_DMA_CHAN_CNT; i++) {
             if (error & AM_BIT(i)) {
                 chan = i;
@@ -499,7 +499,7 @@ static void __dma_int_handler (void *p_arg)
                 break;
             }
         }
-    } else if ((inta & 0x3FFFF) != 0) {
+    } else if ((inta & 0xFFFFFF) != 0) {
         for (i = 0; i < AMHW_LPC82X_DMA_CHAN_CNT; i++) {
             if (inta & AM_BIT(i)) {
                 chan = i;
@@ -508,8 +508,8 @@ static void __dma_int_handler (void *p_arg)
                 break;
             }
         } 
-    } else if ((intb & 0x3FFFF) != 0) {
-        for (i = 0; i < 18; i++) {
+    } else if ((intb & 0xFFFFFF) != 0) {
+        for (i = 0; i < 25; i++) {
             if (intb & AM_BIT(i)) {
                 chan = i;
                 amhw_lpc82x_dma_chan_intb_clr(p_hw_dma, chan);

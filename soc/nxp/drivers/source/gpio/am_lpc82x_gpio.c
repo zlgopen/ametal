@@ -27,11 +27,12 @@
  * \endinternal
  */
 
+#include <am_lpc82x.h>
+#include <lpc82x_pin.h>
 #include "ametal.h"
 #include "am_int.h"
 #include "am_gpio.h"
 #include "am_gpio_util.h"
-#include "am_lpc82x.h"
 #include "am_lpc82x_gpio.h"
 #include "am_lpc82x_gpio_util.h"
 #include "hw/amhw_lpc82x_syscon.h"
@@ -39,7 +40,6 @@
 #include "hw/amhw_lpc82x_iocon.h"
 #include "hw/amhw_lpc82x_pint.h"
 #include "hw/amhw_lpc82x_swm.h"
-#include "lpc82x_pin.h"
 
 /*******************************************************************************
 * ÀΩ”–∂®“Â
