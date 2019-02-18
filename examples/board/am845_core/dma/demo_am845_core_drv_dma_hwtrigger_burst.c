@@ -60,7 +60,7 @@
 #define __GET_CHAR(ch) \
             amhw_lpc_usart_poll_receive(AMHW_LPC82X_USART0, (&ch), 1);
 
-#define __GPIO_PIN     PIO0_17          /**< \brief 产生中断信号的引脚 */
+#define __GPIO_PIN     PIO0_19          /**< \brief 产生中断信号的引脚 */
 #define __INT_PIN      PIO0_18          /**< \brief 作为中断 0 输入的引脚 */
 
 
@@ -71,13 +71,13 @@ am_local void __pin_init()
 {
 
     /* 用于产生中断信号 */
-    am_gpio_pin_cfg(__GPIO_PIN, AM_GPIO_PULLUP | AM_GPIO_OUTPUT_INIT_HIGH);
+    am_gpio_pin_cfg(__GPIO_PIN, AM_GPIO_PULLDOWN | AM_GPIO_OUTPUT_INIT_LOW);
 
     /* 中断引脚配置为输入 */
-    am_gpio_pin_cfg(__INT_PIN, AM_GPIO_PULLUP | AM_GPIO_INPUT);
+    am_gpio_pin_cfg(__INT_PIN, AM_GPIO_PULLDOWN | AM_GPIO_INPUT);
 
-    /* 中断 0 引脚选择 */
-    amhw_lpc84x_syscon_pint_sel(AMHW_LPC82X_PINT_CHAN_0, __INT_PIN);
+    /* 中断 4 引脚选择 */
+    amhw_lpc84x_syscon_pint_sel(AMHW_LPC82X_PINT_CHAN_4, __INT_PIN);
 }
 
 /**

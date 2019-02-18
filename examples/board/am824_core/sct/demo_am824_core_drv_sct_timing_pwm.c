@@ -48,6 +48,7 @@
 #include "am_board.h"
 #include "am_lpc82x_inst_init.h"
 #include "demo_nxp_entries.h"
+#include "lpc82x_pin.h"
 
 
 /**

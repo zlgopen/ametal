@@ -211,17 +211,29 @@ extern "C" {
 /** \brief ACMP 比较器输出    */
 #define DMA_CHAN_OPT_HWTRIG_SRC_ACMP_O        AM_SBF(4, 19) 
 
-/** \brief 引脚中断 0         */
-#define DMA_CHAN_OPT_HWTRIG_SRC_PININT0       AM_SBF(5, 19) 
+/** \brief 引脚中断 4         */
+#define DMA_CHAN_OPT_HWTRIG_SRC_PININT4       AM_SBF(5, 19)
 
-/** \brief 引脚中断 1         */
-#define DMA_CHAN_OPT_HWTRIG_SRC_PININT1       AM_SBF(6, 19) 
+/** \brief 引脚中断 5         */
+#define DMA_CHAN_OPT_HWTRIG_SRC_PININT5       AM_SBF(6, 19)
+
+/** \brief 引脚中断 6         */
+#define DMA_CHAN_OPT_HWTRIG_SRC_PININT6       AM_SBF(7, 19)
+
+/** \brief 引脚中断 7         */
+#define DMA_CHAN_OPT_HWTRIG_SRC_PININT7       AM_SBF(8, 19)
+
+/** \brief M0         */
+#define DMA_CHAN_OPT_HWTRIG_SRC_T0_DMAREQ_M0  AM_SBF(9, 19)
+
+/** \brief M1         */
+#define DMA_CHAN_OPT_HWTRIG_SRC_T0_DMAREQ_M1  AM_SBF(10, 19)
 
 /** \brief DMA 复用触发 0     */
-#define DMA_CHAN_OPT_HWTRIG_SRC_DMA_MUX0      AM_SBF(7, 19) 
+#define DMA_CHAN_OPT_HWTRIG_SRC_DMA_MUX0      AM_SBF(11, 19)
 
 /** \brief DMA 复用触发 1     */
-#define DMA_CHAN_OPT_HWTRIG_SRC_DMA_MUX1      AM_SBF(8, 19) 
+#define DMA_CHAN_OPT_HWTRIG_SRC_DMA_MUX1      AM_SBF(12, 19)
 
 /** @} */
 

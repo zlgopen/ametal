@@ -59,8 +59,8 @@ am_local void __lpc84x_usart0_plfm_init (void)
 
     amhw_lpc84x_clk_periph_enable(AMHW_LPC84X_CLK_UART0);
     amhw_lpc84x_syscon_periph_reset(AMHW_LPC84X_RESET_UART0);
-    am_gpio_pin_cfg(PIO0_17, PIO_FUNC_U0_TXD);
-    am_gpio_pin_cfg(PIO0_29, PIO_FUNC_U0_RXD);
+    am_gpio_pin_cfg(PIO0_28, PIO_FUNC_U0_TXD);
+    am_gpio_pin_cfg(PIO1_20, PIO_FUNC_U0_RXD);
 
 }
 
@@ -72,8 +72,8 @@ am_local void __lpc84x_usart0_plfm_deinit (void)
     amhw_lpc84x_syscon_periph_reset(AMHW_LPC84X_RESET_UART0);
     amhw_lpc84x_clk_periph_disable(AMHW_LPC84X_CLK_UART0);
 
-    am_gpio_pin_cfg(PIO0_17, PIO0_19_GPIO);
-    am_gpio_pin_cfg(PIO0_29, PIO0_18_GPIO);
+    am_gpio_pin_cfg(PIO0_28, PIO0_28_GPIO);
+    am_gpio_pin_cfg(PIO1_20, PIO1_20_GPIO);
 }
 
 /** \brief USART0 设备信息 */

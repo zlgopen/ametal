@@ -45,7 +45,7 @@
 #include "am_lpc84x.h"
 #include "am_lpc84x_inst_init.h"
 #include "demo_std_entries.h"
-#include "amhw_lpc84x_dac.h"
+#include "hw/amhw_lpc84x_dac.h"
 #define __MV_OUT                 1000
 
 /**
@@ -55,10 +55,10 @@ void demo_am845_core_std_dac_entry (void)
 {
     am_kprintf("demo am845_core std adc!\r\n");
 
-	  /* DAC实例初始化，并获取DAC句柄值 */
+      /* DAC实例初始化，并获取DAC句柄值 */
     am_dac_handle_t dac0_handle = (am_dac_handle_t)am_lpc84x_dac0_inst_init();
 
-    demo_lpc_std_dac_entry (dac0_handle, AMHW_LPC_DAC0_CHAN_0,__MV_OUT);
+    demo_std_dac_entry (dac0_handle, AMHW_LPC_DAC0_CHAN_0,__MV_OUT);
 }
 /** [src_am845_core_std_led] */
 

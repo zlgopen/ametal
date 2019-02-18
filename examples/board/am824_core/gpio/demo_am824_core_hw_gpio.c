@@ -40,6 +40,7 @@
 #include "am_delay.h"
 #include "am_vdebug.h"
 #include "hw/amhw_lpc82x_gpio.h"
+#include "lpc82x_periph_map.h"
 #include "demo_nxp_entries.h"
 
 /** \brief LED0 Òý½Å */

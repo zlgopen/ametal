@@ -42,6 +42,7 @@
 #include "ametal.h"
 #include "am_vdebug.h"
 #include "am_board.h"
+#include "lpc82x_pin.h"
 #include "demo_nxp_entries.h"
 
 /**

@@ -109,16 +109,16 @@ am_local void __dma_hwtrigger_bust_level_test (uint8_t  chan, int pin)
     AM_DBG_INFO("Dst buffer init data:\r\n");
     __buffer_printf(__g_buf_dst, __TEST_COUNT);
 
-    /* 配置 PINT 低电平触发(不要开启 NVIC 中断) */
+    /* 配置 PINT 高电平触发(不要开启 NVIC 中断) */
     amhw_lpc82x_pint_trigger_set(LPC84X_PINT,
-                                 AMHW_LPC82X_PINT_CHAN_0,
-                                 AMHW_LPC82X_PINT_TRIGGER_LOW);
+                                 AMHW_LPC82X_PINT_CHAN_4,
+                                 AMHW_LPC82X_PINT_TRIGGER_HIGH);
 
     p_ctr = am_lpc84x_dma_controller_get(
                 chan,                             /* DMA 通道 0 */
                 DMA_CHAN_OPT_PRIO_0             | /* 优先级 0 */
                 DMA_CHAN_OPT_HWTRIG_MODE_HIGH   | /* 信号高电平触发 */
-                DMA_CHAN_OPT_HWTRIG_SRC_PININT0 | /* 中断输入 0 触发 */
+                DMA_CHAN_OPT_HWTRIG_SRC_PININT4 | /* 中断输入 4 触发 */
                 DMA_CHAN_OPT_HWTRIG_BURST_EN);    /* 使能突发模式 */
 
     if (p_ctr == NULL) {
@@ -146,9 +146,9 @@ am_local void __dma_hwtrigger_bust_level_test (uint8_t  chan, int pin)
 
     /* 触发 DMA 传输 */
     AM_DBG_INFO("Make a trigger...");
-    am_gpio_set(pin, AM_GPIO_LEVEL_LOW);
-    am_mdelay(10);
     am_gpio_set(pin, AM_GPIO_LEVEL_HIGH);
+    am_mdelay(10);
+    am_gpio_set(pin, AM_GPIO_LEVEL_LOW);
 
     /* 打印缓冲区数据 */
     AM_DBG_INFO("Dest buffer data: (transfered and triggered)\r\n");
@@ -186,17 +186,17 @@ am_local void __dma_hwtrigger_bust_edge_test (uint8_t  chan, int pin)
     AM_DBG_INFO("Dst buffer init data:\r\n");
     __buffer_printf(__g_buf_dst, __TEST_COUNT);
 
-    /* 配置 PINT 下降沿触发 */
+    /* 配置 PINT 上升沿触发 */
    amhw_lpc82x_pint_trigger_set(LPC84X_PINT,
-                                AMHW_LPC82X_PINT_CHAN_0,
-                                AMHW_LPC82X_PINT_TRIGGER_LOW);
+                                AMHW_LPC82X_PINT_CHAN_4,
+                                AMHW_LPC82X_PINT_TRIGGER_RISE);
 
     p_ctr = am_lpc84x_dma_controller_get(
                 chan,
                 DMA_CHAN_OPT_PRIO_0              | /* 优先级 0 */
-                DMA_CHAN_OPT_HWTRIG_MODE_FALL    | /* 硬件下降沿触发 */
+                DMA_CHAN_OPT_HWTRIG_MODE_RISE    | /* 硬件上升沿触发 */
                 DMA_CHAN_OPT_HWTRIG_BURST_8      | /* 突发传输大小为 8 */
-                DMA_CHAN_OPT_HWTRIG_SRC_PININT0  | /* 中断输入 0 触发 */
+                DMA_CHAN_OPT_HWTRIG_SRC_PININT4  | /* 中断输入 0 触发 */
                 DMA_CHAN_OPT_HWTRIG_BURST_EN);     /* 使能突发模式 */
 
     if (p_ctr == NULL) {
@@ -230,9 +230,9 @@ am_local void __dma_hwtrigger_bust_edge_test (uint8_t  chan, int pin)
 
         /* 触发 DMA 传输 */
         am_mdelay(10);
-        am_gpio_set(pin, AM_GPIO_LEVEL_LOW);
-        am_mdelay(10);
         am_gpio_set(pin, AM_GPIO_LEVEL_HIGH);
+        am_mdelay(10);
+        am_gpio_set(pin, AM_GPIO_LEVEL_LOW);
     }
 
     am_mdelay(100);
@@ -277,18 +277,18 @@ am_local void __dma_hwtrigger_bust_wrap_test (uint8_t chan, int pin)
     AM_DBG_INFO("Dst buffer init data:\r\n");
     __buffer_printf(__g_buf_dst, __TEST_COUNT);
 
-    /* 配置 PINT 下降沿触发 */
+    /* 配置 PINT 上升沿触发 */
     amhw_lpc82x_pint_trigger_set(LPC84X_PINT,
     		                     AMHW_LPC82X_PINT_CHAN_4,
-                                 AMHW_LPC82X_PINT_TRIGGER_LOW);
+    		                     AMHW_LPC82X_PINT_TRIGGER_RISE);
 
     p_ctr = am_lpc84x_dma_controller_get(
                 chan,
                 DMA_CHAN_OPT_PRIO_0                | /* 优先级 0 */
-                DMA_CHAN_OPT_HWTRIG_MODE_FALL      | /* 硬件下降沿触发 */
+                DMA_CHAN_OPT_HWTRIG_MODE_FALL      | /* 硬件上升沿触发 */
                 DMA_CHAN_OPT_HWTRIG_BURST_8        | /* 突发传输大小为 8 */
                 DMA_CHAN_OPT_HWTRIG_BURST_DST_WRAP | /* 目标地址环绕 */
-                DMA_CHAN_OPT_HWTRIG_SRC_PININT0    | /* 中断输入 0 触发 */
+                DMA_CHAN_OPT_HWTRIG_SRC_PININT4    | /* 中断输入 4 触发 */
                 DMA_CHAN_OPT_HWTRIG_BURST_EN);       /* 使能突发模式 */
 
     if (p_ctr == NULL) {

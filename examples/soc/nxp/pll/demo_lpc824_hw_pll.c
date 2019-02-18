@@ -46,7 +46,7 @@
 #include "hw/amhw_lpc82x_iocon.h"
 #include "hw/amhw_lpc82x_swm.h"
 #include "hw/amhw_lpc82x_clk.h"
-#include "am_lpc84x_inst_init.h"
+#include "am_lpc82x_inst_init.h"
 
 /**
  * \brief PLL 时钟源，为以下一种：

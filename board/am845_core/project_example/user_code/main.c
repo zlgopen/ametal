@@ -95,7 +95,6 @@ void am_main (void)
    //demo_am845_core_hw_spi_slave_dma_entry();
    //demo_am845_core_std_spi_master_dma_entry();
    //demo_am845_core_std_spi_master_int_entry();
-   //demo_am845_core_hw_bod_entry();
    //demo_am845_core_hw_clkout_entry();
    //demo_am845_core_std_delay_entry();
    //demo_am845_core_std_systick_timer_entry();
@@ -119,6 +118,7 @@ void am_main (void)
    //demo_am845_corefid_dr_fm175xx_picca_write_block ();
    //demo_am845_core_zlg52810_auto_baudrate_entry();
    //demo_am845_core_eeprom_entry();
+
    while(1) {
         ;
     }

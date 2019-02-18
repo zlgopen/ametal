@@ -166,9 +166,9 @@ void demo_lpc845_hw_iap_entry (void)
 
     /* 将 RAM 中的数据拷贝到 FLASH 时，RAM 地址必须是字对齐 */
 #if defined(__CC_ARM)
-    __align(256) unsigned char data[256];
+    __align(4) unsigned char data[256];
 #elif defined(__GNUC__)
-    __attribute__((aligned(256))) unsigned char data[256];
+    __attribute__((aligned(4))) unsigned char data[256];
 #endif
 
     /* FLASH 更新数据时，禁止被中断打断，需要关中断 */

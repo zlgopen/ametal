@@ -121,6 +121,9 @@ typedef struct amhw_lpc82x_acmp {
 /** \brief 边沿检测状态    */
 #define AMHW_LPC82X_ACMP_CTRL_COMPEDGE     AM_SBF(0UL, 23)
 
+/** \brief ACMP中断使能（仅LPC84X可设置该位）    */
+#define AMHW_LPC84X_ACMP_CTRL_INTENA       AM_SBF(1UL, 24)
+
 /** \brief 比较器迟滞无    */
 #define AMHW_LPC82X_ACMP_CTRL_HYS_NONE     AM_SBF(0UL, 25)
 
