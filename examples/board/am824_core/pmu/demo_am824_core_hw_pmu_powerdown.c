@@ -47,6 +47,7 @@
 #include "am_vdebug.h"
 #include "am_board.h"
 #include "hw/amhw_lpc82x_iocon.h"
+#include "lpc82x_periph_map.h"
 #include "demo_nxp_entries.h"
 
 /**

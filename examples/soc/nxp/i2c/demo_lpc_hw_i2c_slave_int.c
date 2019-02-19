@@ -60,8 +60,8 @@
 /*******************************************************************************
   本地全局变量定义
 *******************************************************************************/
-volatile uint8_t __g_i2c_slv_rxrdy_flg  = 0;  /**< \brief 从机接收准备就绪标识 */
-volatile uint8_t __g_i2c_slv_txrdy_flg  = 0;  /**< \brief 从机发送准备就绪标识 */
+static volatile uint8_t __g_i2c_slv_rxrdy_flg  = 0;  /**< \brief 从机接收准备就绪标识 */
+static volatile uint8_t __g_i2c_slv_txrdy_flg  = 0;  /**< \brief 从机发送准备就绪标识 */
 
 /**
  * \brief I2C 从机初始化配置函数

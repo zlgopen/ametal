@@ -47,9 +47,12 @@
 /** [src_lpc824_hw_wkt_deeppowerdown_wakeup] */
 #include "ametal.h"
 #include "am_int.h"
+#include "am_vdebug.h"
 #include "am_board.h"
 #include "hw/amhw_lpc82x_pmu.h"
 #include "hw/amhw_lpc_wkt.h"
+#include "hw/amhw_lpc82x_clk.h"
+#include "hw/amhw_lpc82x_syscon.h"
 
 /*******************************************************************************
   ∫Í∂®“Â

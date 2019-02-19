@@ -71,7 +71,8 @@ am_local void __plfm_acmp_init()
 
 
 /**
- * \brief 例程入口 */
+ * \brief 例程入口
+ */
 void demo_am845_core_hw_acmp_int_entry (void)
 {
     uint32_t flags = 0;
@@ -83,8 +84,8 @@ void demo_am845_core_hw_acmp_int_entry (void)
     flags = AMHW_LPC82X_ACMP_CTRL_VP_CMP2      | /* 输入 2 为同相端输入 */
             AMHW_LPC82X_ACMP_CTRL_VM_CMP3      | /* 输入 3 为反相端输入 */
             AMHW_LPC82X_ACMP_CTRL_EDGESEL_BOTH | /* 配置双边沿触发中断 */
-            AMHW_LPC82X_ACMP_CTRL_HYS_20MV;      /* 迟滞电压为 20mV */
-
+            AMHW_LPC82X_ACMP_CTRL_HYS_20MV     | /* 迟滞电压为 20mV */
+            AMHW_LPC84X_ACMP_CTRL_INTENA;        /* ACMP中断使能 */
 
     demo_lpc824_hw_acmp_int_entry(LPC84X_ACMP, flags, INUM_ACMP, PIO0_18);
 }

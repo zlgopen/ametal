@@ -45,7 +45,6 @@ am_local void __lpc84x_gpio_plfm_init (void)
     amhw_lpc84x_syscon_periph_reset(AMHW_LPC84X_RESET_GPIO1);
 
     amhw_lpc84x_clk_periph_enable(AMHW_LPC84X_CLK_GPIO0);
-    amhw_lpc84x_clk_periph_enable(AMHW_LPC84X_RESET_GPIOINT);
     amhw_lpc84x_clk_periph_enable(AMHW_LPC84X_CLK_GPIO1);
     amhw_lpc84x_clk_periph_enable(AMHW_LPC84X_CLK_IOCON);
     amhw_lpc84x_clk_periph_enable(AMHW_LPC84X_CLK_SWM);
