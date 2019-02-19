@@ -36,9 +36,9 @@
 /** [src_aml166_core_cs1239_vol_para_adjuet] */
 
 #include <am_aml166_inst_init.h>
-#include "am_adc24.h"
+#include "am_hwconf_zml166_adc.h"
+#include "am_zml166_adc.h"
 #include "string.h"
-#include "am_hwconf_aml166_adc24.h"
 #include "demo_components_entries.h"
 #include "zlg116_periph_map.h"
 #include "am_zlg_flash.h"
@@ -47,15 +47,15 @@
 /**
  * \brief CS1239校准参数获取例程
  */
-void demo_aml166_core_adc24_vol_para_adjuet (void)
+void demo_aml166_core_zml166_adc_vol_para_adjuet (void)
 {
     float mem_data[2] = {0};
-    float para[16] = {0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1};
-    am_adc24_handle_t  handle      = am_aml166_adc24_inst_init();
-    am_uart_handle_t   uart_handle = am_zlg116_uart1_inst_init();
+    float para[16]    = {1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0};
+    am_zml166_adc_handle_t  handle       = am_zml166_adc_inst_init();
+    am_uart_handle_t        uart_handle  = am_zlg116_uart1_inst_init();
 
     /* 进行电压系数修调  */
-    demo_adc24_vol_para_adjuet_entry(handle, uart_handle, para);
+    demo_zml166_adc_vol_para_adjuet_entry(handle, uart_handle, para);
 
     /* 对flash进行初始化 */
     am_zlg_flash_init(ZLG116_FLASH);
@@ -75,7 +75,7 @@ void demo_aml166_core_adc24_vol_para_adjuet (void)
                    (uint32_t *)para,
                                16);
 
-    dome_adc24_vol_measure_entry(handle, para, AM_ADC24_PGA_1);
+    dome_zml166_adc_vol_measure_entry(handle, para, AM_ZML166_ADC_PGA_1);
 }
 
 

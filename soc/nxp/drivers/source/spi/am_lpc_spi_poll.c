@@ -333,6 +333,7 @@ void __spi_write_data (am_lpc_spi_poll_dev_t *p_dev)
         } else {
             uint16_t *ptr = (uint16_t *)((uint8_t *)(p_trans->p_txbuf)
                                                      + p_dev->data_ptr);
+            amhw_lpc_spi_txdat_write(p_hw_spi, *ptr);
         }
     } else {
         /** \brief 待发送数据无效 直接发0, 由于是全双工关系，这在读的时候必须要发数据，芯片才回你一个要读的数据  */

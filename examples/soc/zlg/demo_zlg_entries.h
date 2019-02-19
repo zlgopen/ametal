@@ -358,6 +358,49 @@ void demo_zlg_hw_wwdg_entry (amhw_zlg_wwdg_t *p_hw_wwdg,
                              uint32_t         time_out_ms,
                              uint32_t         feed_time_ms);
 
+
+/**
+ * \brief ZML166 ADC pt100测温例程
+ * \param[in] handle      ZML166 ADC 服务句柄
+ * \param[in] p_para      PT100电阻校准参数
+ * \return 无
+ */
+void demo_zml166_adc_pt100_measure_entry(am_zml166_adc_handle_t  handle,
+                                         float                  *p_para);
+
+
+/**
+ * \brief ZML166 ADC 测量固定电压例程
+ * \param[in] handle      ZML166 ADC 服务句柄
+ * \param[in] p_para      flash 电压校准参数
+ * \param[in] gpa_index   ZML166 ADC增益倍数设置
+ * \return 无
+ */
+void dome_zml166_adc_vol_measure_entry(am_zml166_adc_handle_t  handle,
+                                       float                  *p_para,
+                                       uint8_t                 gpa_index);
+
+/**
+ * \brief ZML166 ADC 热电偶测温例程
+ * \param[in] handle      ZML166 ADC 服务句柄
+ * \param[in] p_para      校准参数
+ * \param[in] type        热电偶类型
+ * \return 无
+ */
+void dome_zml166_adc_thermocouple_measure_entry(am_zml166_adc_handle_t  handle,
+                                                float             *p_para,
+                                                uint8_t            type);
+ 
+/**
+ * \brief ZML166 ADC 电压校准程序
+ * \param[in] handle      ZML166 ADC 服务句柄
+ * \param[in] uart_handle 串口句柄
+ * \param[out] p_para      校准参数输出
+ * \return 无
+ */
+void demo_zml166_adc_vol_para_adjuet_entry(am_zml166_adc_handle_t  handle,
+                                           am_uart_handle_t        uart_handle,
+                                           float                  *p_para);
 #ifdef __cplusplus
 }
 #endif

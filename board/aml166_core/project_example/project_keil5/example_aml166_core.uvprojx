@@ -646,11 +646,6 @@
               <FileType>1</FileType>
               <FilePath>..\..\..\..\components\drivers\source\sensor\am_sensor_hts221.c</FilePath>
             </File>
-            <File>
-              <FileName>am_adc24.lib</FileName>
-              <FileType>4</FileType>
-              <FilePath>..\..\..\..\components\drivers\source\adc24\am_adc24.lib</FilePath>
-            </File>
           </Files>
         </Group>
         <Group>
@@ -967,9 +962,14 @@
               <FilePath>..\..\..\..\soc\zlg\drivers\source\wdt\am_zlg_wwdg.c</FilePath>
             </File>
             <File>
-              <FileName>zm_zlg_spi_poll.c</FileName>
+              <FileName>am_zlg_spi_poll.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\zlg\drivers\source\spi\zm_zlg_spi_poll.c</FilePath>
+              <FilePath>..\..\..\..\soc\zlg\drivers\source\spi\am_zlg_spi_poll.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_zml166_adc.lib</FileName>
+              <FileType>4</FileType>
+              <FilePath>..\..\..\..\soc\zlg\zml166\adc\am_zml166_adc.lib</FilePath>
             </File>
           </Files>
         </Group>
@@ -995,26 +995,6 @@
               <FileName>demo_aml166_core_std_adc_ntc.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\board\am166_core\adc\demo_aml166_core_std_adc_ntc.c</FilePath>
-            </File>
-            <File>
-              <FileName>deme_aml166_core_adc24_thermocouple_measure.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am166_core\adc24\deme_aml166_core_adc24_thermocouple_measure.c</FilePath>
-            </File>
-            <File>
-              <FileName>demo_aml166_core_adc24_pt100_measure.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am166_core\adc24\demo_aml166_core_adc24_pt100_measure.c</FilePath>
-            </File>
-            <File>
-              <FileName>demo_aml166_core_adc24_vol_measure.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am166_core\adc24\demo_aml166_core_adc24_vol_measure.c</FilePath>
-            </File>
-            <File>
-              <FileName>demo_aml166_core_adc24_vol_para_adjuet.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am166_core\adc24\demo_aml166_core_adc24_vol_para_adjuet.c</FilePath>
             </File>
             <File>
               <FileName>demo_aml166_core_std_delay.c</FileName>
@@ -1401,6 +1381,26 @@
               <FileType>5</FileType>
               <FilePath>..\..\..\..\examples\board\am166_core\demo_aml166_core_entries.h</FilePath>
             </File>
+            <File>
+              <FileName>demo_aml166_core_zml166_adc_pt100_measure.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am166_core\adc\demo_aml166_core_zml166_adc_pt100_measure.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_aml166_core_zml166_adc_thermocouple_measure.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am166_core\adc\demo_aml166_core_zml166_adc_thermocouple_measure.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_aml166_core_zml166_adc_vol_measure.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am166_core\adc\demo_aml166_core_zml166_adc_vol_measure.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_aml166_core_zml166_adc_vol_para_adjuet.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am166_core\adc\demo_aml166_core_zml166_adc_vol_para_adjuet.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -1472,29 +1472,9 @@
               <FilePath>..\..\..\..\components\drivers\source\thermocouple\am_thermocouple.c</FilePath>
             </File>
             <File>
-              <FileName>demo_adc24_pt100_measure.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\components\drivers\demo_adc24_pt100_measure.c</FilePath>
-            </File>
-            <File>
-              <FileName>demo_adc24_thermocouple_measure.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\components\drivers\demo_adc24_thermocouple_measure.c</FilePath>
-            </File>
-            <File>
-              <FileName>demo_adc24_vol_para_adjuet.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\components\drivers\demo_adc24_vol_para_adjuet.c</FilePath>
-            </File>
-            <File>
               <FileName>demo_fm175xx_cpu_card.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\components\drivers\demo_fm175xx_cpu_card.c</FilePath>
-            </File>
-            <File>
-              <FileName>dome_adc24_vol_measure.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\components\drivers\dome_adc24_vol_measure.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -1620,6 +1600,26 @@
               <FileName>demo_zlg_hw_clk.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\soc\zlg\clk\demo_zlg_hw_clk.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zml166_adc_pt100_measure.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\soc\zlg\adc\demo_zml166_adc_pt100_measure.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zml166_adc_thermocouple_measure.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\soc\zlg\adc\demo_zml166_adc_thermocouple_measure.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zml166_adc_vol_measure.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\soc\zlg\adc\demo_zml166_adc_vol_measure.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zml166_adc_vol_para_adjuet.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\soc\zlg\adc\demo_zml166_adc_vol_para_adjuet.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -1942,24 +1942,9 @@
               <FilePath>..\user_config\am_board.c</FilePath>
             </File>
             <File>
-              <FileName>am_board.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\user_config\am_board.h</FilePath>
-            </File>
-            <File>
               <FileName>am_prj_config.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\user_config\am_prj_config.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_prj_config.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\user_config\am_prj_config.h</FilePath>
-            </File>
-            <File>
-              <FileName>am_zlg116_inst_init.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\user_config\am_zlg116_inst_init.h</FilePath>
             </File>
             <File>
               <FileName>am_servconf_event_input.c</FileName>
@@ -1972,24 +1957,9 @@
               <FilePath>..\user_config\am_servconf_usrcfg\am_servconf_nvram.c</FilePath>
             </File>
             <File>
-              <FileName>am_service_inst_init.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\user_config\am_servconf_usrcfg\am_service_inst_init.h</FilePath>
-            </File>
-            <File>
               <FileName>am_hwconf_aml166_adc.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_aml166_adc.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_aml166_adc24.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_aml166_adc24.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_aml166_adc24.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_aml166_adc24.h</FilePath>
             </File>
             <File>
               <FileName>am_hwconf_aml166_clk.c</FileName>
@@ -2077,6 +2047,11 @@
               <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_aml1666_spi_poll.c</FilePath>
             </File>
             <File>
+              <FileName>am_hwconf_zml166_adc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zml166_adc.c</FilePath>
+            </File>
+            <File>
               <FileName>am_hwconf_buzzer_pwm.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_buzzer_pwm.h</FilePath>
@@ -2092,6 +2067,16 @@
               <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_fm175xx.h</FilePath>
             </File>
             <File>
+              <FileName>am_prj_config.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\user_config\am_prj_config.h</FilePath>
+            </File>
+            <File>
+              <FileName>am_service_inst_init.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\user_config\am_servconf_usrcfg\am_service_inst_init.h</FilePath>
+            </File>
+            <File>
               <FileName>am_hwconf_key_gpio.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_key_gpio.h</FilePath>
@@ -2105,6 +2090,11 @@
               <FileName>am_hwconf_lm75.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_lm75.h</FilePath>
+            </File>
+            <File>
+              <FileName>am_board.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\user_config\am_board.h</FilePath>
             </File>
             <File>
               <FileName>am_hwconf_microport.h</FileName>
@@ -2795,11 +2785,6 @@
               <FileType>1</FileType>
               <FilePath>..\..\..\..\components\drivers\source\sensor\am_sensor_hts221.c</FilePath>
             </File>
-            <File>
-              <FileName>am_adc24.lib</FileName>
-              <FileType>4</FileType>
-              <FilePath>..\..\..\..\components\drivers\source\adc24\am_adc24.lib</FilePath>
-            </File>
           </Files>
         </Group>
         <Group>
@@ -3116,9 +3101,14 @@
               <FilePath>..\..\..\..\soc\zlg\drivers\source\wdt\am_zlg_wwdg.c</FilePath>
             </File>
             <File>
-              <FileName>zm_zlg_spi_poll.c</FileName>
+              <FileName>am_zlg_spi_poll.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\zlg\drivers\source\spi\zm_zlg_spi_poll.c</FilePath>
+              <FilePath>..\..\..\..\soc\zlg\drivers\source\spi\am_zlg_spi_poll.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_zml166_adc.lib</FileName>
+              <FileType>4</FileType>
+              <FilePath>..\..\..\..\soc\zlg\zml166\adc\am_zml166_adc.lib</FilePath>
             </File>
           </Files>
         </Group>
@@ -3144,26 +3134,6 @@
               <FileName>demo_aml166_core_std_adc_ntc.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\board\am166_core\adc\demo_aml166_core_std_adc_ntc.c</FilePath>
-            </File>
-            <File>
-              <FileName>deme_aml166_core_adc24_thermocouple_measure.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am166_core\adc24\deme_aml166_core_adc24_thermocouple_measure.c</FilePath>
-            </File>
-            <File>
-              <FileName>demo_aml166_core_adc24_pt100_measure.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am166_core\adc24\demo_aml166_core_adc24_pt100_measure.c</FilePath>
-            </File>
-            <File>
-              <FileName>demo_aml166_core_adc24_vol_measure.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am166_core\adc24\demo_aml166_core_adc24_vol_measure.c</FilePath>
-            </File>
-            <File>
-              <FileName>demo_aml166_core_adc24_vol_para_adjuet.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am166_core\adc24\demo_aml166_core_adc24_vol_para_adjuet.c</FilePath>
             </File>
             <File>
               <FileName>demo_aml166_core_std_delay.c</FileName>
@@ -3550,6 +3520,26 @@
               <FileType>5</FileType>
               <FilePath>..\..\..\..\examples\board\am166_core\demo_aml166_core_entries.h</FilePath>
             </File>
+            <File>
+              <FileName>demo_aml166_core_zml166_adc_pt100_measure.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am166_core\adc\demo_aml166_core_zml166_adc_pt100_measure.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_aml166_core_zml166_adc_thermocouple_measure.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am166_core\adc\demo_aml166_core_zml166_adc_thermocouple_measure.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_aml166_core_zml166_adc_vol_measure.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am166_core\adc\demo_aml166_core_zml166_adc_vol_measure.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_aml166_core_zml166_adc_vol_para_adjuet.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am166_core\adc\demo_aml166_core_zml166_adc_vol_para_adjuet.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -3621,29 +3611,9 @@
               <FilePath>..\..\..\..\components\drivers\source\thermocouple\am_thermocouple.c</FilePath>
             </File>
             <File>
-              <FileName>demo_adc24_pt100_measure.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\components\drivers\demo_adc24_pt100_measure.c</FilePath>
-            </File>
-            <File>
-              <FileName>demo_adc24_thermocouple_measure.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\components\drivers\demo_adc24_thermocouple_measure.c</FilePath>
-            </File>
-            <File>
-              <FileName>demo_adc24_vol_para_adjuet.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\components\drivers\demo_adc24_vol_para_adjuet.c</FilePath>
-            </File>
-            <File>
               <FileName>demo_fm175xx_cpu_card.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\components\drivers\demo_fm175xx_cpu_card.c</FilePath>
-            </File>
-            <File>
-              <FileName>dome_adc24_vol_measure.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\components\drivers\dome_adc24_vol_measure.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -3769,6 +3739,26 @@
               <FileName>demo_zlg_hw_clk.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\soc\zlg\clk\demo_zlg_hw_clk.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zml166_adc_pt100_measure.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\soc\zlg\adc\demo_zml166_adc_pt100_measure.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zml166_adc_thermocouple_measure.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\soc\zlg\adc\demo_zml166_adc_thermocouple_measure.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zml166_adc_vol_measure.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\soc\zlg\adc\demo_zml166_adc_vol_measure.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zml166_adc_vol_para_adjuet.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\soc\zlg\adc\demo_zml166_adc_vol_para_adjuet.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -4091,24 +4081,9 @@
               <FilePath>..\user_config\am_board.c</FilePath>
             </File>
             <File>
-              <FileName>am_board.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\user_config\am_board.h</FilePath>
-            </File>
-            <File>
               <FileName>am_prj_config.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\user_config\am_prj_config.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_prj_config.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\user_config\am_prj_config.h</FilePath>
-            </File>
-            <File>
-              <FileName>am_zlg116_inst_init.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\user_config\am_zlg116_inst_init.h</FilePath>
             </File>
             <File>
               <FileName>am_servconf_event_input.c</FileName>
@@ -4121,24 +4096,9 @@
               <FilePath>..\user_config\am_servconf_usrcfg\am_servconf_nvram.c</FilePath>
             </File>
             <File>
-              <FileName>am_service_inst_init.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\user_config\am_servconf_usrcfg\am_service_inst_init.h</FilePath>
-            </File>
-            <File>
               <FileName>am_hwconf_aml166_adc.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_aml166_adc.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_aml166_adc24.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_aml166_adc24.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_aml166_adc24.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_aml166_adc24.h</FilePath>
             </File>
             <File>
               <FileName>am_hwconf_aml166_clk.c</FileName>
@@ -4226,6 +4186,11 @@
               <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_aml1666_spi_poll.c</FilePath>
             </File>
             <File>
+              <FileName>am_hwconf_zml166_adc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zml166_adc.c</FilePath>
+            </File>
+            <File>
               <FileName>am_hwconf_buzzer_pwm.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_buzzer_pwm.h</FilePath>
@@ -4241,6 +4206,16 @@
               <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_fm175xx.h</FilePath>
             </File>
             <File>
+              <FileName>am_prj_config.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\user_config\am_prj_config.h</FilePath>
+            </File>
+            <File>
+              <FileName>am_service_inst_init.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\user_config\am_servconf_usrcfg\am_service_inst_init.h</FilePath>
+            </File>
+            <File>
               <FileName>am_hwconf_key_gpio.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_key_gpio.h</FilePath>
@@ -4254,6 +4229,11 @@
               <FileName>am_hwconf_lm75.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_lm75.h</FilePath>
+            </File>
+            <File>
+              <FileName>am_board.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\user_config\am_board.h</FilePath>
             </File>
             <File>
               <FileName>am_hwconf_microport.h</FileName>

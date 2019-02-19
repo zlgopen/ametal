@@ -35,7 +35,7 @@ extern "C" {
 #include "am_fm175xx.h"
 #include "am_zm516x.h"
 #include "am_zlg9021.h"
-#include "am_adc24.h"
+#include "am_zml166_adc.h"
 #include "am_zlg52810.h"/**
  * \brief EP24CXX 器件例程
  *
@@ -193,46 +193,6 @@ void demo_zlg9021_baudrate_entry (am_zlg9021_handle_t zlg9021_handle);
  * \return 无
  */
 void demo_zlg9021_led_entry (am_zlg9021_handle_t zlg9021_handle);
-
-/**
- * \brief ADC24 pt100测温例程
- * \param[in] handle      ADC24 服务句柄
- * \param[in] p_para      PT100电阻校准参数
- * \return 无
- */
-void demo_adc24_pt100_measure_entry(am_adc24_handle_t  handle,
-                                    float             *p_para);
-
-/**
- * \brief ADC24 测量固定电压例程
- * \param[in] handle      ADC24 服务句柄
- * \param[in] p_para      flash 电压校准参数
- * \param[in] gpa_index   ADC24增益倍数设置
- * \return 无
- */
-void dome_adc24_vol_measure_entry(am_adc24_handle_t  handle,
-                                  float             *p_para,
-                                  uint8_t            gpa_index);
-/**
- * \brief ADC24 热电偶测温例程
- * \param[in] handle      ADC24 服务句柄
- * \param[in] p_para      校准参数
- * \param[in] type        热电偶类型
- * \return 无
- */
-void dome_adc24_thermocouple_measure_entry(am_adc24_handle_t  handle,
-                                           float             *p_para,
-                                           uint8_t            type);
-/**
- * \brief ADC24 电压校准程序
- * \param[in] handle      ADC24 服务句柄
- * \param[in] uart_handle 串口句柄
- * \param[out] p_para      校准参数输出
- * \return 无
- */
-void demo_adc24_vol_para_adjuet_entry(am_adc24_handle_t  handle,
-                                      am_uart_handle_t   uart_handle,
-                                      float             *p_para);
 
 /**
  * \brief zlg52810 蓝牙模块自动波特率例程

@@ -370,12 +370,6 @@ am_local am_err_t __pfn_enable (void            *p_drv,
 
     int i = 0;
     int cur_id = 0;
-
-    uint8_t ctrl_x = 0;
-    uint8_t ctrl_y = 0;
-    uint8_t ctrl_z = 0;
-
-    
     uint8_t open_one_shot = 0;
     uint8_t internal_control_2 = 0;
     
@@ -452,8 +446,6 @@ am_local am_err_t __pfn_disable (void            *p_drv,
 
     am_err_t ret = AM_OK;
     am_err_t cur_ret = AM_OK;
-
-    uint8_t ctrl_reg = 0;
 
     if (p_drv == NULL) {
         return -AM_EINVAL;
