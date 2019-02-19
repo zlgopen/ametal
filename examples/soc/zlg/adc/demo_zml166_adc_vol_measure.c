@@ -11,7 +11,7 @@
 *******************************************************************************/
 /**
  * \file
- * \brief ADC24测量固定电压，通过标准接口实现
+ * \brief AM_ZML166_ADC测量固定电压，通过标准接口实现
  *
  * - 实验现象：
  *   1. 连接好串口，并将测量电压输入对应的通道。
@@ -20,7 +20,7 @@
  *   4. 可在程序运行中切换电压值  直接输入相应的数字即可。
  *
  * \par 源代码
- * \snippet dome_adc24_adjust_vol_entry.c src_dome_adc24_adjust_vol_entry
+ * \snippet dome_zml166_adc_adjust_vol_entry.c src_dome_zml166_adc_adjust_vol_entry
  *
  * \internal
  * \par Modification History
@@ -29,25 +29,25 @@
  */
 
 /**
- * \addtogroup demo_if_adc24_adjust_vol_entry
- * \copydoc dome_adc24_adjust_vol_entry.c
+ * \addtogroup demo_if_zml166_adc_adjust_vol_entry
+ * \copydoc dome_zml166_adc_adjust_vol_entry.c
  */
 #include "ametal.h"
 #include "am_delay.h"
 #include "am_vdebug.h"
-#include "am_adc24.h"
+#include "am_zml166_adc.h"
 
 /**
- * \brief ADC24电压测试例程
+ * \brief AM_ZML166_ADC电压测试例程
  */
-void dome_adc24_vol_measure_entry(am_adc24_handle_t  handle,
-                                  float             *p_para,
-                                  uint8_t            gpa_index)
+void dome_zml166_adc_vol_measure_entry(am_zml166_adc_handle_t  handle,
+                                       float                  *p_para,
+                                       uint8_t                 gpa_index)
 {
     
-	  am_adc24_gain_set(handle, 1 << gpa_index);
+    am_zml166_adc_gain_set(handle, 1 << gpa_index);
 
-    am_adc24_mux_set(handle, ADC24_INPS_AIN3 | ADC24_INNS_AIN2);
+    am_zml166_adc_mux_set(handle, AM_ZML166_ADC_INPS_AIN3 | AM_ZML166_ADC_INNS_AIN2);
 
     while(1){
         uint8_t i = 0;
@@ -64,10 +64,10 @@ void dome_adc24_vol_measure_entry(am_adc24_handle_t  handle,
         vol *= 10000;
         vol /= (1 << gpa_index);
         if(vol > 0){
-            am_kprintf("Voltage is %d.%04d\r\n", (int32_t)vol/10000, (int32_t)vol%10000);
+            am_kprintf("Voltage is %d.%04d mV\r\n", (int32_t)vol/10000, (int32_t)vol%10000);
         }else {
             vol *= -1;
-            am_kprintf("Voltage is  -%d.%04d\r\n", (int32_t)vol/10000, (int32_t)vol%10000);
+            am_kprintf("Voltage is  -%d.%04d mV\r\n", (int32_t)vol/10000, (int32_t)vol%10000);
         }
     }
 }

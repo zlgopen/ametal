@@ -11,14 +11,14 @@
 *******************************************************************************/
 /**
  * \file
- * \brief ADC24测量固定电压，通过标准接口实现
+ * \brief AM_ZML166_ADC测量固定电压，通过标准接口实现
  *
  * - 实验现象：
  *   1. 连接好串口，将PT100电阻接入RTDC与RTDB之间，并短接RTDA。
  *   2. 串口将会打印出PT100阻值以及温度值
  *
  * \par 源代码
- * \snippet dome_adc24_pt100_measure.c src_dome_adc24_pt100_measure
+ * \snippet dome_zml166_adc_pt100_measure.c src_dome_zml166_adc_pt100_measure
  *
  * \internal
  * \par Modification History
@@ -27,11 +27,11 @@
  */
 
 /**
- * \addtogroup demo_if_dome_adc24_pt100_measure
- * \copydoc dome_adc24_pt100_measure.c
+ * \addtogroup demo_if_dome_zml166_adc_pt100_measure
+ * \copydoc dome_zml166_adc_pt100_measure.c
  */
 #include "ametal.h"
-#include "am_adc24.h"
+#include "am_zml166_adc.h"
 #include "am_vdebug.h"
 #include "am_delay.h"
 #include "am_pt100_to_temperature.h"
@@ -39,7 +39,7 @@
 /**
  * \brief 获取PT100热电阻阻值
  */
-float am_adc24_thermistor_res_data_get(am_adc24_handle_t  handle)
+float am_zml166_adc_thermistor_res_data_get(am_zml166_adc_handle_t  handle)
 {
     uint8_t  i;
     float  r_data = 0;
@@ -47,7 +47,7 @@ float am_adc24_thermistor_res_data_get(am_adc24_handle_t  handle)
     int32_t  adc_val[4];
     am_adc_handle_t adc_handle = &handle->adc_serve;
     //设置通道为ADC_2 ADC_4    RTDB---RTDC
-    am_adc24_mux_set(handle, ADC24_INPS_AIN(2) | ADC24_INNS_AIN(3));
+    am_zml166_adc_mux_set(handle, AM_ZML166_ADC_INPS_AIN(2) | AM_ZML166_ADC_INNS_AIN(3));
     am_adc_read(adc_handle, 0, (uint32_t *)adc_val, AM_NELEMENTS(adc_val));
     for(i = 0; i < AM_NELEMENTS(adc_val); i++){
         vol_rtdb_c += adc_val[i];
@@ -55,7 +55,7 @@ float am_adc24_thermistor_res_data_get(am_adc24_handle_t  handle)
     vol_rtdb_c /= AM_NELEMENTS(adc_val);
 
     /*  设置通道为ADC_3 ADC_4     RTDA---RTDC */
-    am_adc24_mux_set(handle, ADC24_INPS_AIN(3) | ADC24_INNS_AIN(3));
+    am_zml166_adc_mux_set(handle, AM_ZML166_ADC_INPS_AIN(3) | AM_ZML166_ADC_INNS_AIN(3));
     am_adc_read(adc_handle, 0, (uint32_t *)adc_val, AM_NELEMENTS(adc_val));
 
     for(i = 0; i < AM_NELEMENTS(adc_val); i++){
@@ -73,16 +73,16 @@ float am_adc24_thermistor_res_data_get(am_adc24_handle_t  handle)
 /**
  * \brief 测试AML166板级外接PT100热电阻的阻值以及对应的转换温度
  */
-void demo_adc24_pt100_measure_entry(am_adc24_handle_t  handle,
-                                    float             *p_para)
+void demo_zml166_adc_pt100_measure_entry(am_zml166_adc_handle_t  handle,
+                                         float                  *p_para)
 {
     float  r_data = 0, temperature = 0;
 
     while(1){
         /* 设置PT100增益倍数 */
-        am_adc24_gain_set(handle, 1);
+        am_zml166_adc_gain_set(handle, 1);
 
-        r_data = am_adc24_thermistor_res_data_get(handle);
+        r_data = am_zml166_adc_thermistor_res_data_get(handle);
         /* 电阻校准系数  */
         r_data = p_para[0] * r_data + p_para[1];
 

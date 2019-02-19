@@ -524,18 +524,18 @@ static pf__n_temperature_to_v_t __temperature_to_v[10];
 void am_thermocouplie_init(void)
 {
     /* 把热电偶的电压转温度添加到指针数组中 */
-    __v_to_temperature[THERMOCOUPLIE_J] = __j_v_to_temperature;
-    __v_to_temperature[THERMOCOUPLIE_K] = __k_v_to_temperature;
-    __v_to_temperature[THERMOCOUPLIE_T] = __t_v_to_temperature;
-    //    __g_v_to_temperature[THERMOCOUPLIE_N] = __n_v_to_temperature;
-    //    __g_v_to_temperature[THERMOCOUPLIE_R] = __r_v_to_temperature;
+    __v_to_temperature[AM_THERMOCOUPLIE_J] = __j_v_to_temperature;
+    __v_to_temperature[AM_THERMOCOUPLIE_K] = __k_v_to_temperature;
+    __v_to_temperature[AM_THERMOCOUPLIE_T] = __t_v_to_temperature;
+    //    __g_v_to_temperature[AM_THERMOCOUPLIE_N] = __n_v_to_temperature;
+    //    __g_v_to_temperature[AM_THERMOCOUPLIE_R] = __r_v_to_temperature;
 
     /* 把热电偶的温度转电压添加到指针数组中 */
-    __temperature_to_v[THERMOCOUPLIE_J] = __j_temperature_to_v;
-    __temperature_to_v[THERMOCOUPLIE_K] = __k_temperature_to_v;
-    __temperature_to_v[THERMOCOUPLIE_T] = __t_temperature_to_v;
-    //    __g_temperature_to_v[THERMOCOUPLIE_N] = __n_temperature_to_v;
-    //    __g_temperature_to_v[THERMOCOUPLIE_R] = __r_temperature_to_v;
+    __temperature_to_v[AM_THERMOCOUPLIE_J] = __j_temperature_to_v;
+    __temperature_to_v[AM_THERMOCOUPLIE_K] = __k_temperature_to_v;
+    __temperature_to_v[AM_THERMOCOUPLIE_T] = __t_temperature_to_v;
+    //    __g_temperature_to_v[AM_THERMOCOUPLIE_N] = __n_temperature_to_v;
+    //    __g_temperature_to_v[AM_THERMOCOUPLIE_R] = __r_temperature_to_v;
 }
 
 

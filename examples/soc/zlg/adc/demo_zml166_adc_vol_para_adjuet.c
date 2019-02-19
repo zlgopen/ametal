@@ -11,7 +11,7 @@
 *******************************************************************************/
 /**
  * \file
- * \brief adc24测量固定电压，通过标准接口实现
+ * \brief zml166_adc测量固定电压，通过标准接口实现
  *
  * - 实验现象：
  *   1. 连接好串口，并将测量电压输入对应的通道。
@@ -20,7 +20,7 @@
  *   4. 可在程序运行中切换电压值  直接输入相应的数字即可。
  *
  * \par 源代码
- * \snippet dome_ADC24_adjust_vol_entry.c src_dome_ADC24_adjust_vol_entry
+ * \snippet dome_AM_ZML166_ADC_adjust_vol_entry.c src_dome_AM_ZML166_ADC_adjust_vol_entry
  *
  * \internal
  * \par Modification History
@@ -29,16 +29,19 @@
  */
 
 /**
- * \addtogroup demo_if_ADC24_adjust_vol_entry
- * \copydoc dome_ADC24_adjust_vol_entry.c
+ * \addtogroup demo_if_AM_ZML166_ADC_adjust_vol_entry
+ * \copydoc dome_AM_ZML166_ADC_adjust_vol_entry.c
  */
 /*\brief  头文件*/
 #include "ametal.h"
 #include "string.h"
 #include "am_vdebug.h"
-#include "am_adc24.h"
+#include "am_zml166_adc.h"
 
 /*\brief  宏定义*/
+#define AM_ADJUST_RANGE_ADJUST_1    (0.01)
+#define AM_ADJUST_RANGE_ADJUST_2    (0.09)
+#define AM_ADJUST_RANGE_ADJUST_3    (0.5)
 
 
 const static uint8_t __g_pag[8] = {1, 2, 4, 8, 16, 32, 64, 128};
@@ -148,16 +151,16 @@ static int __str_cmp(char *p_str1, char *p_str2, int count)
 /**
  * \brief AML166电压校准函数（7种增益下修调系数 不含128倍）
  */
-void am_adc24_adjust_entry(am_adc24_handle_t   handle,
-                           am_uart_handle_t    uart_handle,
-                           float              *p_para)
+void am_zml166_adc_adjust_entry(am_zml166_adc_handle_t   handle,
+                                am_uart_handle_t         uart_handle,
+                                float                   *p_para)
 {
-    int     i;
+    int     i, j;
     char    uart_data[20] ;
     int32_t val         = 0;
     int32_t adc_val[10] = {0};
     float   cail0_vol, cail1_vol, x1[8], x2[8];
-    am_kprintf("Entry CS1239 adjust mode \r\n\r\n");
+    am_kprintf("Entry ADC adjust mode \r\n\r\n");
 
     while(AM_OK != __str_cmp(uart_data, "V0:", 3)){
         am_kprintf("Please input input cali0-cali1 voltage(mV). (eg:‘V0:3.145\\n’)\r\n");
@@ -186,11 +189,11 @@ void am_adc24_adjust_entry(am_adc24_handle_t   handle,
     am_kprintf("Y\r\n\r\n");
 
     memset(uart_data, 0, 20);
-    am_adc24_mux_set(handle, ADC24_INPS_AIN2 | ADC24_INNS_AIN3);
+    am_zml166_adc_mux_set(handle, AM_ZML166_ADC_INPS_AIN2 | AM_ZML166_ADC_INNS_AIN3);
     for(i = 0 ; i < 7; i ++){
-			  int  j = 0;
+        int  j = 0;
         val = 0;
-        am_adc24_gain_set(handle, __g_pag[i]);
+        am_zml166_adc_gain_set(handle, __g_pag[i]);
         am_adc_read(&handle->adc_serve, 0, (void *)adc_val, 10);
         for(j = 0 ;j < 10; j++){
             val += adc_val[j] / 10;
@@ -206,12 +209,11 @@ void am_adc24_adjust_entry(am_adc24_handle_t   handle,
     am_kprintf("Y\r\n\r\n");
 
     memset(uart_data, 0, 20);
-    am_adc24_mux_set(handle, ADC24_INPS_AIN3 | ADC24_INNS_AIN2);
+    am_zml166_adc_mux_set(handle, AM_ZML166_ADC_INPS_AIN3 | AM_ZML166_ADC_INNS_AIN2);
 
     for(i = 0 ; i < 7; i ++){
-        int j = 0;
-			  val = 0;
-        am_adc24_gain_set(handle, __g_pag[i]);
+        val = 0;
+        am_zml166_adc_gain_set(handle, __g_pag[i]);
         am_adc_read(&handle->adc_serve, 0, (void *)adc_val, 10);
         for(j = 0 ;j < 10; j++){
             val += adc_val[j] / 10;
@@ -219,18 +221,52 @@ void am_adc24_adjust_entry(am_adc24_handle_t   handle,
             x2[i] = ((float)((float)(val  / 8388607.0) * handle->p_devinfo->vref)) / __g_pag[i];
             p_para[2 * i] = (cail1_vol - cail0_vol) / (x2[i] - x1[i]);
             p_para[2 * i + 1] = (cail1_vol) - p_para[2 * i] * x2[i];
+
+            //判断常数项误差是否在允许范围内
+            if(p_para[2 * i + 1] < AM_ADJUST_RANGE_ADJUST_3 &&
+                    p_para[2 * i + 1] > (-1 * AM_ADJUST_RANGE_ADJUST_3)){
+
+                //判断1 16 32倍时系数误差是否在允许范围内
+                if(i == 0 || i == 4 || i == 5 ){
+                    if(p_para[2 * i] < (1 + AM_ADJUST_RANGE_ADJUST_1)
+                            && p_para[2 * i] > (1 - AM_ADJUST_RANGE_ADJUST_1) ){
+                        am_kprintf("PAG = %d adjust success.\r\n", __g_pag[i]);
+                    }else{
+                        am_kprintf("PAG = %d adjust fail.\r\n", __g_pag[i]);
+                        p_para[2 * i] = 1;
+                        p_para[2 * i + 1] = 0;
+                    }
+                //判断除1 16 32以外倍数时系数误差是否在允许范围内
+                }else{
+                    if(p_para[2 * i] < (1 + AM_ADJUST_RANGE_ADJUST_2) &&
+                            p_para[2 * i] > (1 - AM_ADJUST_RANGE_ADJUST_1) ){
+                        am_kprintf("PAG = %d adjust success.\r\n", __g_pag[i]);
+                    }else{
+                        am_kprintf("PAG = %d adjust fail.\r\n", __g_pag[i]);
+                        p_para[2 * i] = 1;
+                        p_para[2 * i + 1] = 0;
+                    }
+                }
+            }else{
+                am_kprintf("PAG = %d adjust fail.\r\n", __g_pag[i]);
+                p_para[2 * i] = 1;
+                p_para[2 * i + 1] = 0;
+            }
             __print_adjust_function(i, p_para[2 * i], p_para[2 * i + 1]);
         }
+    am_zml166_adc_reg_set(handle,
+                      AM_ZML166_ADC_ADC3_ADDR,
+                      AM_ZML166_ADC_LVSHIFT_DISABLE | AM_ZML166_ADC_LVSCP_ENABLE);
     am_kprintf("Finish ADC1 calibration!\nExit ADC1 adjust mode \r\n\r\n");
 }
 
 /*
  * \brief ADC进行系数校准Demo
  */
-void demo_adc24_vol_para_adjuet_entry(am_adc24_handle_t  handle,
-                                      am_uart_handle_t   uart_handle,
-                                      float             *p_para)
-{
+void demo_zml166_adc_vol_para_adjuet_entry(am_zml166_adc_handle_t  handle,
+                                           am_uart_handle_t        uart_handle,
+                                           float                  *p_para)
+{  
     char uart_data[20];
 
     while(uart_data[0] <'0' || uart_data[0] >'2'){
@@ -241,9 +277,9 @@ void demo_adc24_vol_para_adjuet_entry(am_adc24_handle_t  handle,
     }
 
     if(uart_data[0] == '1'){
-        am_adc24_adjust_entry(handle, uart_handle, p_para);
+        am_zml166_adc_adjust_entry(handle, uart_handle, p_para);
     }else if(uart_data[0] == '2'){
-			  int i  = 0;
+        int i  = 0;
         memcpy((void *)p_para, (uint32_t *)((FLASH_BLOCK_NUM * 1024)), 4 * 18);
         for(i = 0 ;i < 7; i++){
             __print_adjust_function(i, p_para[i * 2], p_para[i * 2 + 1]);

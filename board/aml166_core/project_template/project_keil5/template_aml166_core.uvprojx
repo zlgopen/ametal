@@ -637,11 +637,6 @@
               <FilePath>..\..\..\..\components\drivers\source\zigbee\am_zm516x.c</FilePath>
             </File>
             <File>
-              <FileName>am_adc24.lib</FileName>
-              <FileType>4</FileType>
-              <FilePath>..\..\..\..\components\drivers\source\adc24\am_adc24.lib</FilePath>
-            </File>
-            <File>
               <FileName>am_pt100_to_temperature.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\components\drivers\source\pt100\am_pt100_to_temperature.c</FilePath>
@@ -966,6 +961,11 @@
               <FileType>1</FileType>
               <FilePath>..\..\..\..\soc\zlg\drivers\source\spi\am_zlg_spi_poll.c</FilePath>
             </File>
+            <File>
+              <FileName>am_zml166_adc.lib</FileName>
+              <FileType>4</FileType>
+              <FilePath>..\..\..\..\soc\zlg\zml166\adc\am_zml166_adc.lib</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -1127,11 +1127,6 @@
               <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_aml166_adc.c</FilePath>
             </File>
             <File>
-              <FileName>am_hwconf_aml166_adc24.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_aml166_adc24.c</FilePath>
-            </File>
-            <File>
               <FileName>am_hwconf_aml166_clk.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_aml166_clk.c</FilePath>
@@ -1215,6 +1210,11 @@
               <FileName>am_hwconf_aml166_spi_poll.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_aml166_spi_poll.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_zml166_adc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zml166_adc.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -1851,11 +1851,6 @@
               <FilePath>..\..\..\..\components\drivers\source\zigbee\am_zm516x.c</FilePath>
             </File>
             <File>
-              <FileName>am_adc24.lib</FileName>
-              <FileType>4</FileType>
-              <FilePath>..\..\..\..\components\drivers\source\adc24\am_adc24.lib</FilePath>
-            </File>
-            <File>
               <FileName>am_pt100_to_temperature.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\components\drivers\source\pt100\am_pt100_to_temperature.c</FilePath>
@@ -2180,6 +2175,11 @@
               <FileType>1</FileType>
               <FilePath>..\..\..\..\soc\zlg\drivers\source\spi\am_zlg_spi_poll.c</FilePath>
             </File>
+            <File>
+              <FileName>am_zml166_adc.lib</FileName>
+              <FileType>4</FileType>
+              <FilePath>..\..\..\..\soc\zlg\zml166\adc\am_zml166_adc.lib</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -2341,11 +2341,6 @@
               <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_aml166_adc.c</FilePath>
             </File>
             <File>
-              <FileName>am_hwconf_aml166_adc24.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_aml166_adc24.c</FilePath>
-            </File>
-            <File>
               <FileName>am_hwconf_aml166_clk.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_aml166_clk.c</FilePath>
@@ -2429,6 +2424,11 @@
               <FileName>am_hwconf_aml166_spi_poll.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_aml166_spi_poll.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_zml166_adc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zml166_adc.c</FilePath>
             </File>
           </Files>
         </Group>

@@ -33,10 +33,10 @@
 
 /** [src_aml166_core_cs1239_vol_measure] */
 #include <am_aml166_inst_init.h>
+#include <am_hwconf_zml166_adc.h>
 #include "string.h"
-#include "am_adc24.h"
+#include "am_zml166_adc.h"
 #include "am_zlg_flash.h"
-#include "am_hwconf_aml166_adc24.h"
 #include "zlg116_periph_map.h"
 #include "demo_components_entries.h"
 #include "demo_aml166_core_entries.h"
@@ -44,14 +44,22 @@
 /**
  * \brief CS1239固定电压测量例程
  */
-void demo_aml166_core_adc24_vol_measure (void)
+void demo_aml166_core_zml166_adc_vol_measure (void)
 {
-    float para[16];
-    am_adc24_handle_t handle = am_aml166_adc24_inst_init();
+    int i = 0;
+    float para[16] = {1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0};
+    am_zml166_adc_handle_t handle = am_zml166_adc_inst_init();
     /* 获取flash中电压校准系数 */
     am_zlg_flash_init(ZLG116_FLASH);
     memcpy((void *)para, (uint32_t *)((FLASH_BLOCK_NUM * 1024)), 4 * 16);
-    dome_adc24_vol_measure_entry(handle, para, AM_ADC24_PGA_1);
+    /* 若保存系数不正确 */
+    if(para[0] > 1.1 && para[0] < 0.9){
+        for(i = 0; i < 8; i++){
+            para[2 * i + 0] = 1;
+            para[2 * i + 1] = 0;
+        }
+    }
+    dome_zml166_adc_vol_measure_entry(handle, para, AM_ZML166_ADC_PGA_1);
 }
 
 /** [src_aml166_core_cs1239_vol_measure] */

@@ -33,11 +33,11 @@
 /*******************************************************************************
  热电偶类型定义
 *******************************************************************************/
-#define THERMOCOUPLIE_J        0     /**< \brief J型热电偶 */
-#define THERMOCOUPLIE_K        1     /**< \brief K型热电偶 */
-#define THERMOCOUPLIE_T        2     /**< \brief T型热电偶 */
-#define THERMOCOUPLIE_N        3     /**< \brief N型热电偶 */
-#define THERMOCOUPLIE_R        4     /**< \brief R型热电偶 */
+#define AM_THERMOCOUPLIE_J        0     /**< \brief J型热电偶 */
+#define AM_THERMOCOUPLIE_K        1     /**< \brief K型热电偶 */
+#define AM_THERMOCOUPLIE_T        2     /**< \brief T型热电偶 */
+#define AM_THERMOCOUPLIE_N        3     /**< \brief N型热电偶 */
+#define AM_THERMOCOUPLIE_R        4     /**< \brief R型热电偶 */
 
 
 /**< \brief 热电偶电压值转温度函数定义 */

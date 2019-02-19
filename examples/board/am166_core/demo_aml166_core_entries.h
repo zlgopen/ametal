@@ -499,22 +499,22 @@ void demo_aml166_core_sensor_hts221_int_entry (void);
 /**
  * \brief 热电偶测温例程
  */
-void demo_aml166_core_adc24_thermocouple_measure (void);
+void demo_aml166_core_zml166_adc_thermocouple_measure (void);
 
 /**
  * \brief CS1239 PT100测温例程
  */
-void demo_aml166_core_adc24_pt100_measure (void);
+void demo_aml166_core_zml166_adc_pt100_measure (void);
 
 /**
  * \brief CS1239固定电压测量例程
  */
-void demo_aml166_core_adc24_vol_measure (void);
+void demo_aml166_core_zml166_adc_vol_measure (void);
 
 /**
  * \brief CS1239校准参数获取例程
  */
-void demo_aml166_core_adc24_vol_para_adjuet (void);
+void demo_aml166_core_zml166_adc_vol_para_adjuet (void);
 
 #ifdef __cplusplus
 }

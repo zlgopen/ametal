@@ -257,7 +257,7 @@
 								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.linker.gcsections.372882866" name="Remove unused sections (-Xlinker --gc-sections)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.linker.gcsections" useByScannerDiscovery="false" value="true" valueType="boolean"/>
 								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.linker.paths.37985049" name="Library search path (-L)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.linker.paths" useByScannerDiscovery="false" valueType="libPaths">
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/components/drivers/source/fm175xx}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/components/drivers/source/adc24}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/zml166/adc}&quot;"/>
 								</option>
 								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.linker.scriptfile.347344202" name="Script files (-T)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.linker.scriptfile" useByScannerDiscovery="false" valueType="stringList">
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/example_aml166_core.ld}&quot;"/>
@@ -266,7 +266,7 @@
 								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.linker.usenewlibnano.1346330969" name="Use newlib-nano (--specs=nano.specs)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.linker.usenewlibnano" useByScannerDiscovery="false" value="true" valueType="boolean"/>
 								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.linker.libs.0000000000" name="Libraries (-l)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.linker.libs" useByScannerDiscovery="false" valueType="libs">
 									<listOptionValue builtIn="false" value="am_fm175xx_zlg116"/>
-									<listOptionValue builtIn="false" value="am_adc24_m0"/>
+									<listOptionValue builtIn="false" value="am_zml166_adc"/>
 								</option>
 								<inputType id="ilg.gnuarmeclipse.managedbuild.cross.tool.cpp.linker.input.430537863" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.cpp.linker.input">
 									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
@@ -337,7 +337,8 @@
 					</folderInfo>
 					<sourceEntries>
 						<entry excluding="components/drivers/source/adc24/am_adc24.c|startup/am_aml166_armcc_startup.s|ametal/board/am116_core/am_bsp_armlib.h|soc/zlg/drivers/source/gpio/am_zlg217_gpio.c|ametal/soc/zlg/zlg116/drivers/source/am_zlg116_spi_slave_dma.c|examples/soc/zlg/wakeup/demo_zlg217_drv_standbymode_wake_up.c|soc/nxp|ametal/soc/zlg/zlg116/drivers/include/am_zlg116_spi_slave_dma.h|examples/soc/nxp|soc/zlg/drivers/source/clk/am_zlg217_clk.c|soc/zlg/zlg217|examples/soc/zlg/clk/demo_zlg217_hw_clk.c|soc/zlg/drivers/include/can|ametal/board/am116_core/am_bsp_microlib.c|soc/zlg/drivers/source/usbd|ametal/common/components/libc/microlib_adapter|soc/zlg/drivers/source/ili9341|ametal/common/components/usb|ametal/board/am116_core/am_bsp_armlib.c|examples/board/am217_core|soc/zlg/drivers/source/dma/am_zlg217_dma.c|components/drivers/source/fm175xx/am_fm175xx.c|ametal/board/am116_core/am_bsp_microlib.h|examples/board/am824_core|ametal/common/components/libc/armlib_adapter|soc/zlg/drivers/source/pwr/am_zlg217_pwr.c|soc/zlg/drivers/include/usbd|components/usb|examples/soc/zlg/wakeup/demo_zlg217_drv_sleepmode_wake_up.c|bsp_common/source/am_bsp_isr_defer.c|examples/soc/zlg/wakeup/demo_zlg217_drv_stopmode_wake_up.c|ametal/soc/zlg/zlg217|components/libc/armlib_adapter|soc/freescale|examples/soc/freescale|examples|startup/am_zlg116_armcc_startup.s|examples/board/am824zb|examples/board/am824ble|examples/soc/zlg/wakeup/demo_zlg217_drv_sleepmode_timer_wake_up.c|examples/board/amks16z_core|components/libc/microlib_adapter|soc/zlg/drivers/source/rtc/am_zlg217_rtc.c|soc/zlg/drivers/include/afio|soc/zlg/drivers/source/spi/am_zlg217_spi_dma.c|soc/zlg/drivers/source/rcc/hw/amhw_zlg217_rcc.c" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name=""/>
-						<entry excluding="wdg|wakeup|uart|timer|spi|softimer|miniport_board|microport_board|input_event|i2c|gpio|flash|dma|delay|clk|buzzer|adc24|adc" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="examples/board/am166_core"/>
+						<entry excluding="wdg|wakeup|uart|timer|spi|softimer|miniport_board|microport_board|input_event|i2c|gpio|flash|dma|delay|clk|buzzer|adc24" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="examples/board/am166_core"/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="examples/soc/zlg/adc"/>
 						<entry excluding="sensor" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="examples/std"/>
 					</sourceEntries>
 				</configuration>
@@ -558,16 +559,16 @@
 								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.linker.gcsections.613631194" name="Remove unused sections (-Xlinker --gc-sections)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.linker.gcsections" useByScannerDiscovery="false" value="true" valueType="boolean"/>
 								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.linker.paths.466802785" name="Library search path (-L)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.linker.paths" useByScannerDiscovery="false" valueType="libPaths">
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/components/drivers/source/fm175xx}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/components/drivers/source/adc24}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/zml166/adc}&quot;"/>
 								</option>
 								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.linker.scriptfile.1301419844" name="Script files (-T)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.linker.scriptfile" useByScannerDiscovery="false" valueType="stringList">
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/example_am116_core.ld}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/example_aml166_core.ld}&quot;"/>
 								</option>
 								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.linker.nostart.633381211" name="Do not use standard start files (-nostartfiles)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.linker.nostart" useByScannerDiscovery="false" value="true" valueType="boolean"/>
 								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.linker.usenewlibnano.934483089" name="Use newlib-nano (--specs=nano.specs)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.linker.usenewlibnano" useByScannerDiscovery="false" value="true" valueType="boolean"/>
 								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.linker.libs.218790126" name="Libraries (-l)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.linker.libs" useByScannerDiscovery="false" valueType="libs">
 									<listOptionValue builtIn="false" value="am_fm175xx_zlg116"/>
-									<listOptionValue builtIn="false" value="am_adc24_m0"/>
+									<listOptionValue builtIn="false" value="am_zml166_adc"/>
 								</option>
 								<inputType id="ilg.gnuarmeclipse.managedbuild.cross.tool.cpp.linker.input.1742976682" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.cpp.linker.input">
 									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
@@ -592,7 +593,8 @@
 					</folderInfo>
 					<sourceEntries>
 						<entry excluding="components/drivers/source/adc24/am_adc24.c|startup/am_aml166_armcc_startup.s|ametal/board/am116_core/am_bsp_armlib.h|soc/zlg/drivers/source/gpio/am_zlg217_gpio.c|ametal/soc/zlg/zlg116/drivers/source/am_zlg116_spi_slave_dma.c|examples/soc/zlg/wakeup/demo_zlg217_drv_standbymode_wake_up.c|soc/nxp|ametal/soc/zlg/zlg116/drivers/include/am_zlg116_spi_slave_dma.h|examples/soc/nxp|soc/zlg/drivers/source/clk/am_zlg217_clk.c|soc/zlg/zlg217|examples/soc/zlg/clk/demo_zlg217_hw_clk.c|soc/zlg/drivers/include/can|ametal/board/am116_core/am_bsp_microlib.c|soc/zlg/drivers/source/usbd|ametal/common/components/libc/microlib_adapter|soc/zlg/drivers/source/ili9341|ametal/common/components/usb|ametal/board/am116_core/am_bsp_armlib.c|examples/board/am217_core|soc/zlg/drivers/source/dma/am_zlg217_dma.c|components/drivers/source/fm175xx/am_fm175xx.c|ametal/board/am116_core/am_bsp_microlib.h|examples/board/am824_core|ametal/common/components/libc/armlib_adapter|soc/zlg/drivers/source/pwr/am_zlg217_pwr.c|soc/zlg/drivers/include/usbd|components/usb|examples/soc/zlg/wakeup/demo_zlg217_drv_sleepmode_wake_up.c|bsp_common/source/am_bsp_isr_defer.c|examples/soc/zlg/wakeup/demo_zlg217_drv_stopmode_wake_up.c|ametal/soc/zlg/zlg217|components/libc/armlib_adapter|soc/freescale|examples/soc/freescale|examples|startup/am_zlg116_armcc_startup.s|examples/board/am824zb|examples/board/am824ble|examples/soc/zlg/wakeup/demo_zlg217_drv_sleepmode_timer_wake_up.c|examples/board/amks16z_core|components/libc/microlib_adapter|soc/zlg/drivers/source/rtc/am_zlg217_rtc.c|soc/zlg/drivers/include/afio|soc/zlg/drivers/source/spi/am_zlg217_spi_dma.c|soc/zlg/drivers/source/rcc/hw/amhw_zlg217_rcc.c" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name=""/>
-						<entry excluding="wdg|wakeup|uart|timer|spi|softimer|miniport_board|microport_board|input_event|i2c|gpio|flash|dma|delay|clk|buzzer|adc24|adc" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="examples/board/am166_core"/>
+						<entry excluding="wdg|wakeup|uart|timer|spi|softimer|miniport_board|microport_board|input_event|i2c|gpio|flash|dma|delay|clk|buzzer|adc24" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="examples/board/am166_core"/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="examples/soc/zlg/adc"/>
 						<entry excluding="sensor" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="examples/std"/>
 					</sourceEntries>
 				</configuration>
