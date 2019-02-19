@@ -17,7 +17,7 @@
  *
  * \internal
  * \par Modification history
- * - 1.00 14-11-01  jon, first implementation.
+ * - 1.00 19-11-01  htf, first implementation.
  * \endinternal
  */
 
@@ -25,36 +25,7 @@
 #include "am_gpio.h"
 #include "am_lpc_spi_poll.h"
 
-/*******************************************************************************
-  SPI 状态和事件定义
-*******************************************************************************/
-
-/**
- * SPI 控制器状态
- */
-
-#define __SPI_ST_IDLE               0                   /* 空闲状态 */
-#define __SPI_ST_MSG_START          1                   /* 消息开始 */
-#define __SPI_ST_TRANS_START        2                   /* 传输开始 */
-#define __SPI_ST_M_SEND_DATA        3                   /* 主机发送 */
-#define __SPI_ST_M_RECV_DATA        4                   /* 主机接收 */
-#define __SPI_ST_DMA_TRANS_DATA     5                   /* DMA 传输 */
-
-/**
- * SPI 控制器事件
- *
- * 共32位，低16位是事件编号，高16位是事件参数
- */
-
-#define __SPI_EVT_NUM_GET(event)    ((event) & 0xFFFF)
-#define __SPI_EVT_PAR_GET(event)    ((event >> 16) & 0xFFFF)
-#define __SPI_EVT(evt_num, evt_par) (((evt_num) & 0xFFFF) | ((evt_par) << 16))
-
-#define __SPI_EVT_NONE              __SPI_EVT(0, 0)     /* 无事件 */
-#define __SPI_EVT_TRANS_LAUNCH      __SPI_EVT(1, 0)     /* 传输就绪 */
-#define __SPI_EVT_M_SEND_DATA       __SPI_EVT(2, 0)     /* 发送数据 */
-#define __SPI_EVT_M_RECV_DATA       __SPI_EVT(3, 0)     /* 接收数据 */
-
+#define __SPI_ST_IDLE  0
 /*******************************************************************************
   模块内函数声明
 *******************************************************************************/
@@ -71,7 +42,7 @@ am_local void __spi_read_data (am_lpc_spi_poll_dev_t *p_dev);
 am_local int  __spi_hard_init (am_lpc_spi_poll_dev_t *p_this);
 am_local int  __spi_config (am_lpc_spi_poll_dev_t *p_this);
 
-am_local int  __spi_mst_sm_event (am_lpc_spi_poll_dev_t *p_dev, uint32_t event);
+am_local int  __spi_mst_sm_event (am_lpc_spi_poll_dev_t *p_dev);
 /*******************************************************************************
   SPI驱动函数声明
 *******************************************************************************/
@@ -359,6 +330,9 @@ void __spi_write_data (am_lpc_spi_poll_dev_t *p_dev)
             /** \brief 待发送数据的基址+偏移 */
             uint8_t *ptr = (uint8_t *)(p_trans->p_txbuf) + p_dev->data_ptr;
             amhw_lpc_spi_txdat_write(p_hw_spi, *ptr);
+        } else {
+            uint16_t *ptr = (uint16_t *)((uint8_t *)(p_trans->p_txbuf)
+                                                     + p_dev->data_ptr);
         }
     } else {
         /** \brief 待发送数据无效 直接发0, 由于是全双工关系，这在读的时候必须要发数据，芯片才回你一个要读的数据  */
@@ -383,7 +357,6 @@ void __spi_read_data (am_lpc_spi_poll_dev_t *p_dev)
         } else {
              *(uint16_t *)(p_buf8) = amhw_lpc_spi_rxdata_16bit_read(p_hw_spi);
         }
-
     /* rx_buf 无效或者不需要接收数据 */
     } else {
         if ((p_dev->p_cur_spi_dev->bits_per_word) <= 8) {
@@ -398,8 +371,6 @@ void __spi_read_data (am_lpc_spi_poll_dev_t *p_dev)
     p_dev->data_ptr += p_dev->nbytes_to_recv;
     p_dev->nbytes_to_recv = 0;
 }
-
-/******************************************************************************/
 
 /**
  * \brief 从message列表表头取出一条 transfer
@@ -448,7 +419,7 @@ int __spi_msg_start (void              *p_drv,
     p_msg->status = -AM_EISCONN; /* 正在排队中 */
 
     /* 启动状态机 */
-    return __spi_mst_sm_event(p_this, __SPI_EVT_TRANS_LAUNCH);
+    return __spi_mst_sm_event(p_this);
 }
 
 
@@ -459,9 +430,8 @@ int __spi_msg_start (void              *p_drv,
  * \brief  SPI 使用状态机传输
  */
 am_local
-int __spi_mst_sm_event (am_lpc_spi_poll_dev_t *p_dev, uint32_t event)
+int __spi_mst_sm_event (am_lpc_spi_poll_dev_t *p_dev)
 {
-
     amhw_lpc_spi_t *p_hw_spi = (amhw_lpc_spi_t *)(p_dev->p_devinfo->spi_regbase);
     am_spi_message_t  *p_cur_msg   = NULL;
     p_cur_msg = p_dev->p_cur_msg;
@@ -521,7 +491,6 @@ int __spi_mst_sm_event (am_lpc_spi_poll_dev_t *p_dev, uint32_t event)
                         amhw_lpc_spi_txctl_clear(p_hw_spi, AMHW_LPC_SPI_TXDATCTL_EOT);
                     }
                 }
-
                 /* SPI写数据 */
                 __spi_write_data(p_dev);
 
@@ -549,7 +518,7 @@ int __spi_mst_sm_event (am_lpc_spi_poll_dev_t *p_dev, uint32_t event)
 /**
  * \brief SPI 初始化
  */
-am_spi_handle_t am_lpc_spi_poll_init (am_lpc_spi_poll_dev_t           *p_dev,
+am_spi_handle_t am_lpc_spi_poll_init (am_lpc_spi_poll_dev_t            *p_dev,
                                       const am_lpc_spi_poll_devinfo_t  *p_devinfo)
 {
     if (NULL == p_devinfo || NULL == p_dev ) {
