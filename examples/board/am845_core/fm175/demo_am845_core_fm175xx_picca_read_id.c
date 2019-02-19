@@ -24,7 +24,7 @@
  *   1. 串口打印出卡片类型号和卡号及卡片信息
  *
  * \par 源代码
- * \snippet demo_am845_corefid_dr_fm175xx_picca_read_id.c src_am845_corefid_dr_fm175xx_picca_read_id
+ * \snippet demo_am845_core_fm175xx_picca_read_id.c src_am845_core_fm175xx_picca_read_id
  *
  * \internal
  * \par Modification history
@@ -33,11 +33,11 @@
  */
 
 /**
- * \addtogroup demo_am845_corefid_core_dr_fm175xx_picca_read_id
- * \copydoc demo_am845_corefid_core_dr_fm175xx_picca_read_id.c
+ * \addtogroup demo_am845_core_fm175xx_picca_read_id
+ * \copydoc demo_am845_core_fm175xx_picca_read_id.c
  */
 
-/** [src_am845_corefid_dr_fm175xx_picca_read_id] */
+/** [src_am845_core_fm175xx_picca_read_id] */
 
 #include "am_fm175xx.h"
 #include "am_fm175xx_reg.h"
@@ -47,14 +47,14 @@
 /**
  * \brief A类卡读卡类型和卡号例程
  */
-void demo_am845_corefid_dr_fm175xx_picca_read_id (void)
+void demo_am845_core_fm175xx_picca_read_id (void)
 {
     am_fm175xx_handle_t handle = am_fm175xx_inst_init();
 
     demo_fm175xx_picca_read_id(handle);
 }
 
-/** [demo_am845_corefid_core_dr_fm175xx_picca_read_id] */
+/** [demo_am845_core_fm175xx_picca_read_id] */
 
 /* end of file */
 

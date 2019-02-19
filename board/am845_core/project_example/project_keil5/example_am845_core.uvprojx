@@ -10,7 +10,8 @@
       <TargetName>debug</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
-      <pCCUsed>5060061::V5.06 update 1 (build 61)::ARMCC</pCCUsed>
+      <pCCUsed>5060750::V5.06 update 6 (build 750)::ARMCC</pCCUsed>
+      <uAC6>0</uAC6>
       <TargetOption>
         <TargetCommonOption>
           <Device>LPC824M201JDH20</Device>
@@ -125,47 +126,6 @@
             <HexOffset>0</HexOffset>
             <Oh166RecLen>16</Oh166RecLen>
           </OPTHX>
-          <Simulator>
-            <UseSimulator>0</UseSimulator>
-            <LoadApplicationAtStartup>1</LoadApplicationAtStartup>
-            <RunToMain>1</RunToMain>
-            <RestoreBreakpoints>1</RestoreBreakpoints>
-            <RestoreWatchpoints>1</RestoreWatchpoints>
-            <RestoreMemoryDisplay>1</RestoreMemoryDisplay>
-            <RestoreFunctions>1</RestoreFunctions>
-            <RestoreToolbox>1</RestoreToolbox>
-            <LimitSpeedToRealTime>0</LimitSpeedToRealTime>
-            <RestoreSysVw>1</RestoreSysVw>
-          </Simulator>
-          <Target>
-            <UseTarget>1</UseTarget>
-            <LoadApplicationAtStartup>1</LoadApplicationAtStartup>
-            <RunToMain>1</RunToMain>
-            <RestoreBreakpoints>1</RestoreBreakpoints>
-            <RestoreWatchpoints>1</RestoreWatchpoints>
-            <RestoreMemoryDisplay>1</RestoreMemoryDisplay>
-            <RestoreFunctions>0</RestoreFunctions>
-            <RestoreToolbox>1</RestoreToolbox>
-            <RestoreTracepoints>1</RestoreTracepoints>
-            <RestoreSysVw>1</RestoreSysVw>
-          </Target>
-          <RunDebugAfterBuild>0</RunDebugAfterBuild>
-          <TargetSelection>6</TargetSelection>
-          <SimDlls>
-            <CpuDll></CpuDll>
-            <CpuDllArguments></CpuDllArguments>
-            <PeripheralDll></PeripheralDll>
-            <PeripheralDllArguments></PeripheralDllArguments>
-            <InitializationFile></InitializationFile>
-          </SimDlls>
-          <TargetDlls>
-            <CpuDll></CpuDll>
-            <CpuDllArguments></CpuDllArguments>
-            <PeripheralDll></PeripheralDll>
-            <PeripheralDllArguments></PeripheralDllArguments>
-            <InitializationFile></InitializationFile>
-            <Driver>Segger\JL2CM3.dll</Driver>
-          </TargetDlls>
         </DebugOption>
         <Utilities>
           <Flash1>
@@ -224,6 +184,7 @@
             <hadXRAM>0</hadXRAM>
             <uocXRam>0</uocXRam>
             <RvdsVP>0</RvdsVP>
+            <RvdsMve>0</RvdsMve>
             <hadIRAM2>0</hadIRAM2>
             <hadIROM2>0</hadIROM2>
             <StupSel>8</StupSel>
@@ -364,11 +325,15 @@
             <uThumb>0</uThumb>
             <uSurpInc>0</uSurpInc>
             <uC99>1</uC99>
+            <uGnu>0</uGnu>
             <useXO>0</useXO>
             <v6Lang>0</v6Lang>
             <v6LangP>0</v6LangP>
             <vShortEn>0</vShortEn>
             <vShortWch>0</vShortWch>
+            <v6Lto>0</v6Lto>
+            <v6WtE>0</v6WtE>
+            <v6Rtti>0</v6Rtti>
             <VariousControls>
               <MiscControls></MiscControls>
               <Define>AM_VDEBUG AM_CORTEX_M0</Define>
@@ -386,6 +351,7 @@
             <NoWarn>0</NoWarn>
             <uSurpInc>0</uSurpInc>
             <useXO>0</useXO>
+            <uClangAs>0</uClangAs>
             <VariousControls>
               <MiscControls></MiscControls>
               <Define></Define>
@@ -1352,29 +1318,29 @@
               <FilePath>..\..\..\..\examples\board\am845_core\wwdt\demo_am845_core_std_wwdt.c</FilePath>
             </File>
             <File>
-              <FileName>demo_fm175xx_picca_halt.c</FileName>
+              <FileName>demo_am845_core_fm175xx_picca_halt.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\components\drivers\demo_fm175xx_picca_halt.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am845_core\fm175\demo_am845_core_fm175xx_picca_halt.c</FilePath>
             </File>
             <File>
-              <FileName>demo_fm175xx_picca_read_block.c</FileName>
+              <FileName>demo_am845_core_fm175xx_picca_read_block.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\components\drivers\demo_fm175xx_picca_read_block.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am845_core\fm175\demo_am845_core_fm175xx_picca_read_block.c</FilePath>
             </File>
             <File>
-              <FileName>demo_fm175xx_picca_read_id.c</FileName>
+              <FileName>demo_am845_core_fm175xx_picca_read_id.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\components\drivers\demo_fm175xx_picca_read_id.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am845_core\fm175\demo_am845_core_fm175xx_picca_read_id.c</FilePath>
             </File>
             <File>
-              <FileName>demo_fm175xx_picca_val_operate.c</FileName>
+              <FileName>demo_am845_core_fm175xx_picca_write_block.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\components\drivers\demo_fm175xx_picca_val_operate.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am845_core\fm175\demo_am845_core_fm175xx_picca_write_block.c</FilePath>
             </File>
             <File>
-              <FileName>demo_fm175xx_picca_write_block.c</FileName>
+              <FileName>demo_am845_core_picca_val_operate.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\components\drivers\demo_fm175xx_picca_write_block.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am845_core\fm175\demo_am845_core_picca_val_operate.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -2105,6 +2071,7 @@
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
       <pCCUsed>5060061::V5.06 update 1 (build 61)::ARMCC</pCCUsed>
+      <uAC6>0</uAC6>
       <TargetOption>
         <TargetCommonOption>
           <Device>LPC845M301JBD64</Device>
@@ -2219,47 +2186,6 @@
             <HexOffset>0</HexOffset>
             <Oh166RecLen>16</Oh166RecLen>
           </OPTHX>
-          <Simulator>
-            <UseSimulator>0</UseSimulator>
-            <LoadApplicationAtStartup>1</LoadApplicationAtStartup>
-            <RunToMain>1</RunToMain>
-            <RestoreBreakpoints>1</RestoreBreakpoints>
-            <RestoreWatchpoints>1</RestoreWatchpoints>
-            <RestoreMemoryDisplay>1</RestoreMemoryDisplay>
-            <RestoreFunctions>1</RestoreFunctions>
-            <RestoreToolbox>1</RestoreToolbox>
-            <LimitSpeedToRealTime>0</LimitSpeedToRealTime>
-            <RestoreSysVw>1</RestoreSysVw>
-          </Simulator>
-          <Target>
-            <UseTarget>1</UseTarget>
-            <LoadApplicationAtStartup>1</LoadApplicationAtStartup>
-            <RunToMain>1</RunToMain>
-            <RestoreBreakpoints>1</RestoreBreakpoints>
-            <RestoreWatchpoints>1</RestoreWatchpoints>
-            <RestoreMemoryDisplay>1</RestoreMemoryDisplay>
-            <RestoreFunctions>0</RestoreFunctions>
-            <RestoreToolbox>1</RestoreToolbox>
-            <RestoreTracepoints>1</RestoreTracepoints>
-            <RestoreSysVw>1</RestoreSysVw>
-          </Target>
-          <RunDebugAfterBuild>0</RunDebugAfterBuild>
-          <TargetSelection>0</TargetSelection>
-          <SimDlls>
-            <CpuDll></CpuDll>
-            <CpuDllArguments></CpuDllArguments>
-            <PeripheralDll></PeripheralDll>
-            <PeripheralDllArguments></PeripheralDllArguments>
-            <InitializationFile></InitializationFile>
-          </SimDlls>
-          <TargetDlls>
-            <CpuDll></CpuDll>
-            <CpuDllArguments></CpuDllArguments>
-            <PeripheralDll></PeripheralDll>
-            <PeripheralDllArguments></PeripheralDllArguments>
-            <InitializationFile></InitializationFile>
-            <Driver>BIN\UL2CM3.DLL</Driver>
-          </TargetDlls>
         </DebugOption>
         <Utilities>
           <Flash1>
@@ -2318,6 +2244,7 @@
             <hadXRAM>0</hadXRAM>
             <uocXRam>0</uocXRam>
             <RvdsVP>0</RvdsVP>
+            <RvdsMve>0</RvdsMve>
             <hadIRAM2>0</hadIRAM2>
             <hadIROM2>0</hadIROM2>
             <StupSel>8</StupSel>
@@ -2458,11 +2385,15 @@
             <uThumb>0</uThumb>
             <uSurpInc>0</uSurpInc>
             <uC99>1</uC99>
+            <uGnu>0</uGnu>
             <useXO>0</useXO>
             <v6Lang>0</v6Lang>
             <v6LangP>0</v6LangP>
             <vShortEn>0</vShortEn>
             <vShortWch>0</vShortWch>
+            <v6Lto>0</v6Lto>
+            <v6WtE>0</v6WtE>
+            <v6Rtti>0</v6Rtti>
             <VariousControls>
               <MiscControls></MiscControls>
               <Define>AM_VDEBUG AM_CORTEX_M0</Define>
@@ -2480,6 +2411,7 @@
             <NoWarn>0</NoWarn>
             <uSurpInc>0</uSurpInc>
             <useXO>0</useXO>
+            <uClangAs>0</uClangAs>
             <VariousControls>
               <MiscControls></MiscControls>
               <Define></Define>
@@ -3446,29 +3378,29 @@
               <FilePath>..\..\..\..\examples\board\am845_core\wwdt\demo_am845_core_std_wwdt.c</FilePath>
             </File>
             <File>
-              <FileName>demo_fm175xx_picca_halt.c</FileName>
+              <FileName>demo_am845_core_fm175xx_picca_halt.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\components\drivers\demo_fm175xx_picca_halt.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am845_core\fm175\demo_am845_core_fm175xx_picca_halt.c</FilePath>
             </File>
             <File>
-              <FileName>demo_fm175xx_picca_read_block.c</FileName>
+              <FileName>demo_am845_core_fm175xx_picca_read_block.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\components\drivers\demo_fm175xx_picca_read_block.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am845_core\fm175\demo_am845_core_fm175xx_picca_read_block.c</FilePath>
             </File>
             <File>
-              <FileName>demo_fm175xx_picca_read_id.c</FileName>
+              <FileName>demo_am845_core_fm175xx_picca_read_id.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\components\drivers\demo_fm175xx_picca_read_id.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am845_core\fm175\demo_am845_core_fm175xx_picca_read_id.c</FilePath>
             </File>
             <File>
-              <FileName>demo_fm175xx_picca_val_operate.c</FileName>
+              <FileName>demo_am845_core_fm175xx_picca_write_block.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\components\drivers\demo_fm175xx_picca_val_operate.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am845_core\fm175\demo_am845_core_fm175xx_picca_write_block.c</FilePath>
             </File>
             <File>
-              <FileName>demo_fm175xx_picca_write_block.c</FileName>
+              <FileName>demo_am845_core_picca_val_operate.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\components\drivers\demo_fm175xx_picca_write_block.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am845_core\fm175\demo_am845_core_picca_val_operate.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -4195,5 +4127,11 @@
       </Groups>
     </Target>
   </Targets>
+
+  <RTE>
+    <apis/>
+    <components/>
+    <files/>
+  </RTE>
 
 </Project>

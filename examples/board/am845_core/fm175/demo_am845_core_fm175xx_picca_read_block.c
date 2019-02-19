@@ -43,11 +43,11 @@
  */
 
 /**
- * \addtogroup demo_kl26_if_dr_fm175xx_picca_read_block
- * \copydoc demo_am845_corefid_dr_fm175xx_picca_read_block.c
+ * \addtogroup demo_am845_core_if_dr_fm175xx_picca_read_block
+ * \copydoc demo_am845_core_fm175xx_picca_read_block.c
  */
 
-/** [src_am845_corefid_dr_fm175xx_picca_read_block] */
+/** [src_am845_core_fm175xx_picca_read_block] */
 
 #include "am_fm175xx.h"
 #include "am_fm175xx_reg.h"
@@ -57,7 +57,7 @@
 /**
  * \brief AÀà¿¨¶Á¿éÀý³Ì
  */
-void demo_am845_corefid_dr_fm175xx_picca_read_block (void)
+void demo_am845_core_fm175xx_picca_read_block (void)
 {
     am_fm175xx_handle_t handle = am_fm175xx_inst_init();
 
@@ -65,6 +65,6 @@ void demo_am845_corefid_dr_fm175xx_picca_read_block (void)
 }
 
 
-/** [src_am845_corefid_dr_fm175xx_picca_read_block] */
+/** [src_am845_core_fm175xx_picca_read_block] */
 
 /* end of file */

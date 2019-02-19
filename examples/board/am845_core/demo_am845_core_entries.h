@@ -505,27 +505,27 @@ void demo_am845_core_hw_dac_entry (void);
 /**
  * \brief A类卡读休眠卡例程
  */
-void demo_am845_corefid_dr_fm175xx_picca_halt (void);
+void demo_am845_core_fm175xx_picca_halt (void);
 
 /**
  * \brief A类卡读块例程
  */
-void demo_am845_corefid_dr_fm175xx_picca_read_block (void);
+void demo_am845_core_fm175xx_picca_read_block (void);
 
 /**
  * \brief A类卡读卡类型和卡号例程
  */
-void demo_am845_corefid_dr_fm175xx_picca_read_id (void);
+void demo_am845_core_fm175xx_picca_read_id (void);
 
 /**
  * \brief A类卡写块例程
  */
-void demo_am845_corefid_dr_fm175xx_picca_write_block (void);
+void demo_am845_core_fm175xx_picca_write_block (void);
 
 /**
  * \brief A类卡值操作例程
  */
-void demo_am845_corefid_dr_fm175xx_picca_val_operate (void);
+void demo_am845_core_fm175xx_picca_val_operate (void);
 
 /**
  * \brief ZLG52810蓝牙自动波特率例程
