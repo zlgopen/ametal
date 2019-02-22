@@ -35,8 +35,8 @@ extern "C" {
 #include "am_fm175xx.h"
 #include "am_zm516x.h"
 #include "am_zlg9021.h"
-#include "am_zml166_adc.h"
-#include "am_zlg52810.h"/**
+#include "am_zlg52810.h"
+/**
  * \brief EP24CXX 器件例程
  *
  * \param[in] ep24cxx_handle EP24CXX 标准服务句柄
