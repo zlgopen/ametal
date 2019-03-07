@@ -39,8 +39,9 @@
 /**
  * \brief 获取PT100热电阻阻值
  */
-float am_zml166_adc_thermistor_res_data_get(am_zml166_adc_handle_t  handle)
+float am_zml166_adc_thermistor_res_data_get(void  *p_handle)
 {
+    am_zml166_adc_handle_t handle = p_handle;
     uint8_t  i;
     float  r_data = 0;
     int32_t   vol_rtdb_c = 0, vol_rtda_c = 0, vol_res = 0;

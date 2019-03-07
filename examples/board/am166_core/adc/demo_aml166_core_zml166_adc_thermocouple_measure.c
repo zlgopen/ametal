@@ -60,9 +60,9 @@ void demo_aml166_core_zml166_adc_thermocouple_measure (void)
     am_zlg_flash_init(ZLG116_FLASH);
     memcpy((void *)para, (uint32_t *)((FLASH_BLOCK_NUM * 1024)), 4 * 16);
 
-    dome_zml166_adc_thermocouple_measure_entry(handle,
-                                               para,
-                                               AM_THERMOCOUPLIE_K);
+    dome_zml166_adc_thermocouple_measure_entry((void *)handle,
+                                                       para,
+                                                       AM_THERMOCOUPLIE_K);
 }
 
 /** [src_aml166_core_cs1239_thermistor_measure] */
