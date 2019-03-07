@@ -365,7 +365,7 @@ void demo_zlg_hw_wwdg_entry (amhw_zlg_wwdg_t *p_hw_wwdg,
  * \param[in] p_para      PT100电阻校准参数
  * \return 无
  */
-void demo_zml166_adc_pt100_measure_entry(am_zml166_adc_handle_t  handle,
+void demo_zml166_adc_pt100_measure_entry(void                   *p_handle,
                                          float                  *p_para);
 
 
@@ -376,7 +376,7 @@ void demo_zml166_adc_pt100_measure_entry(am_zml166_adc_handle_t  handle,
  * \param[in] gpa_index   ZML166 ADC增益倍数设置
  * \return 无
  */
-void dome_zml166_adc_vol_measure_entry(am_zml166_adc_handle_t  handle,
+void dome_zml166_adc_vol_measure_entry(void                   *p_handle,
                                        float                  *p_para,
                                        uint8_t                 gpa_index);
 
@@ -387,7 +387,7 @@ void dome_zml166_adc_vol_measure_entry(am_zml166_adc_handle_t  handle,
  * \param[in] type        热电偶类型
  * \return 无
  */
-void dome_zml166_adc_thermocouple_measure_entry(am_zml166_adc_handle_t  handle,
+void dome_zml166_adc_thermocouple_measure_entry(void              *p_handle,
                                                 float             *p_para,
                                                 uint8_t            type);
  
@@ -398,7 +398,7 @@ void dome_zml166_adc_thermocouple_measure_entry(am_zml166_adc_handle_t  handle,
  * \param[out] p_para      校准参数输出
  * \return 无
  */
-void demo_zml166_adc_vol_para_adjuet_entry(am_zml166_adc_handle_t  handle,
+void demo_zml166_adc_vol_para_adjuet_entry(void                   *p_handle,
                                            am_uart_handle_t        uart_handle,
                                            float                  *p_para);
 #ifdef __cplusplus

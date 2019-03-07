@@ -59,7 +59,9 @@ void demo_aml166_core_zml166_adc_vol_measure (void)
             para[2 * i + 1] = 0;
         }
     }
-    dome_zml166_adc_vol_measure_entry(handle, para, AM_ZML166_ADC_PGA_1);
+    dome_zml166_adc_vol_measure_entry((void *)handle,
+                                              para,
+                                              AM_ZML166_ADC_PGA_1);
 }
 
 /** [src_aml166_core_cs1239_vol_measure] */

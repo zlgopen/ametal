@@ -40,11 +40,11 @@
 /**
  * \brief 测试AML166外接热电偶测量温度例程
  */
-void dome_zml166_adc_thermocouple_measure_entry(am_zml166_adc_handle_t  handle,
+void dome_zml166_adc_thermocouple_measure_entry(void                   *p_handle,
                                                 float                  *p_para,
                                                 uint8_t                 type)
 {
-
+    am_zml166_adc_handle_t handle = p_handle;
     int32_t  adc_val[1];
     double   temp;
 

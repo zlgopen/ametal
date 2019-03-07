@@ -151,10 +151,11 @@ static int __str_cmp(char *p_str1, char *p_str2, int count)
 /**
  * \brief AML166电压校准函数（7种增益下修调系数 不含128倍）
  */
-void am_zml166_adc_adjust_entry(am_zml166_adc_handle_t   handle,
+void am_zml166_adc_adjust_entry(void                    *p_handle,
                                 am_uart_handle_t         uart_handle,
                                 float                   *p_para)
 {
+    am_zml166_adc_handle_t handle = p_handle;
     int     i, j;
     char    uart_data[20] ;
     int32_t val         = 0;

@@ -977,9 +977,9 @@
               <FilePath>..\..\..\..\soc\zlg\drivers\source\wdt\am_zlg_wwdg.c</FilePath>
             </File>
             <File>
-              <FileName>zm_zlg_spi_poll.c</FileName>
+              <FileName>am_zlg_spi_poll.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\zlg\drivers\source\spi\zm_zlg_spi_poll.c</FilePath>
+              <FilePath>..\..\..\..\soc\zlg\drivers\source\spi\am_zlg_spi_poll.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -3076,9 +3076,9 @@
               <FilePath>..\..\..\..\soc\zlg\drivers\source\wdt\am_zlg_wwdg.c</FilePath>
             </File>
             <File>
-              <FileName>zm_zlg_spi_poll.c</FileName>
+              <FileName>am_zlg_spi_poll.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\zlg\drivers\source\spi\zm_zlg_spi_poll.c</FilePath>
+              <FilePath>..\..\..\..\soc\zlg\drivers\source\spi\am_zlg_spi_poll.c</FilePath>
             </File>
           </Files>
         </Group>
