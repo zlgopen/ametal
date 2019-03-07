@@ -104,7 +104,7 @@ void amhw_lpc84x_gpio_pin_out_set (amhw_lpc84x_gpio_t *p_hw_gpio,
     if (pin <= 31) {
     	p_hw_gpio->b[0][pin] = level;
     } else {
-    	p_hw_gpio->b[1][pin - 31] = level;
+    	p_hw_gpio->b[1][pin - 32] = level;
     }
 }
 
@@ -249,7 +249,7 @@ void amhw_lpc84x_gpio_pin_dir_input (amhw_lpc84x_gpio_t *p_hw_gpio, int pin)
 	if (pin <= 31) {
 		p_hw_gpio->dirclr[0] = AM_BIT(pin);
 	} else {
-		p_hw_gpio->dirclr[1] = AM_BIT(pin - 31);
+		p_hw_gpio->dirclr[1] = AM_BIT(pin - 32);
 	}
 
 }

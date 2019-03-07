@@ -97,16 +97,17 @@ extern "C" {
 #define PIO1_8          40       /**< \brief PIO1_8Òý½ÅºÅ */
 #define PIO1_9          41       /**< \brief PIO1_9Òý½ÅºÅ */
 #define PIO1_10         42       /**< \brief PIO1_10Òý½ÅºÅ */
-#define PIO1_12         43       /**< \brief PIO1_12Òý½ÅºÅ */
-#define PIO1_13         44       /**< \brief PIO1_13Òý½ÅºÅ */
-#define PIO1_14         45       /**< \brief PIO1_14Òý½ÅºÅ */
-#define PIO1_15         46       /**< \brief PIO1_15Òý½ÅºÅ */
-#define PIO1_16         47       /**< \brief PIO1_16Òý½ÅºÅ */
-#define PIO1_17         48       /**< \brief PIO1_17Òý½ÅºÅ */
-#define PIO1_18         49       /**< \brief PIO1_18Òý½ÅºÅ */
-#define PIO1_19         50       /**< \brief PIO1_19Òý½ÅºÅ */
-#define PIO1_20         51       /**< \brief PIO1_20Òý½ÅºÅ */
-#define PIO1_21         52       /**< \brief PIO1_21Òý½ÅºÅ */
+#define PIO1_11         43       /**< \brief PIO1_11Òý½ÅºÅ */
+#define PIO1_12         44       /**< \brief PIO1_12Òý½ÅºÅ */
+#define PIO1_13         45       /**< \brief PIO1_13Òý½ÅºÅ */
+#define PIO1_14         46       /**< \brief PIO1_14Òý½ÅºÅ */
+#define PIO1_15         47       /**< \brief PIO1_15Òý½ÅºÅ */
+#define PIO1_16         48       /**< \brief PIO1_16Òý½ÅºÅ */
+#define PIO1_17         49       /**< \brief PIO1_17Òý½ÅºÅ */
+#define PIO1_18         50       /**< \brief PIO1_18Òý½ÅºÅ */
+#define PIO1_19         51       /**< \brief PIO1_19Òý½ÅºÅ */
+#define PIO1_20         52       /**< \brief PIO1_20Òý½ÅºÅ */
+#define PIO1_21         53       /**< \brief PIO1_21Òý½ÅºÅ */
 
 /** @} */
 
