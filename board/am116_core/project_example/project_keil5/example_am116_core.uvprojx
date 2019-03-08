@@ -661,6 +661,31 @@
               <FileType>1</FileType>
               <FilePath>..\..\..\..\components\drivers\source\sensor\am_sensor_lps22hb.c</FilePath>
             </File>
+            <File>
+              <FileName>am_sensor_bh1730fvc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\sensor\am_sensor_bh1730fvc.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_sensor_bma253.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\sensor\am_sensor_bma253.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_sensor_lis3mdl.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\sensor\am_sensor_lis3mdl.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_sensor_lsm6dsl.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\sensor\am_sensor_lsm6dsl.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_sensor_shtc1.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\sensor\am_sensor_shtc1.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -1831,6 +1856,46 @@
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\std\sensor\lps22hb\demo_std_lps22hb_int.c</FilePath>
             </File>
+            <File>
+              <FileName>demo_std_bh1730fvc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\std\sensor\bh1730fvc\demo_std_bh1730fvc.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_std_bma253.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\std\sensor\bma253\demo_std_bma253.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_std_bma253_int.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\std\sensor\bma253\demo_std_bma253_int.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_std_lis3mdl.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\std\sensor\lis3mdl\demo_std_lis3mdl.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_std_lis3mdl_int.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\std\sensor\lis3mdl\demo_std_lis3mdl_int.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_std_lsm6dsl.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\std\sensor\lsm6dsl\demo_std_lsm6dsl.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_std_lsm6dsl_int.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\std\sensor\lsm6dsl\demo_std_lsm6dsl_int.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_std_shtc1.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\std\sensor\shtc1\demo_std_shtc1.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -2100,6 +2165,31 @@
               <FileName>am_hwconf_sensor_lps22hb.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_sensor_lps22hb.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_sensor_bh1730fvc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_sensor_bh1730fvc.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_sensor_bma253.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_sensor_bma253.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_sensor_lis3mdl.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_sensor_lis3mdl.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_sensor_lsm6dsl.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_sensor_lsm6dsl.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_sensor_shtc1.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_sensor_shtc1.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -2760,6 +2850,31 @@
               <FileType>1</FileType>
               <FilePath>..\..\..\..\components\drivers\source\sensor\am_sensor_lps22hb.c</FilePath>
             </File>
+            <File>
+              <FileName>am_sensor_bh1730fvc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\sensor\am_sensor_bh1730fvc.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_sensor_bma253.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\sensor\am_sensor_bma253.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_sensor_lis3mdl.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\sensor\am_sensor_lis3mdl.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_sensor_lsm6dsl.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\sensor\am_sensor_lsm6dsl.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_sensor_shtc1.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\sensor\am_sensor_shtc1.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -3930,6 +4045,46 @@
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\std\sensor\lps22hb\demo_std_lps22hb_int.c</FilePath>
             </File>
+            <File>
+              <FileName>demo_std_bh1730fvc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\std\sensor\bh1730fvc\demo_std_bh1730fvc.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_std_bma253.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\std\sensor\bma253\demo_std_bma253.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_std_bma253_int.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\std\sensor\bma253\demo_std_bma253_int.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_std_lis3mdl.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\std\sensor\lis3mdl\demo_std_lis3mdl.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_std_lis3mdl_int.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\std\sensor\lis3mdl\demo_std_lis3mdl_int.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_std_lsm6dsl.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\std\sensor\lsm6dsl\demo_std_lsm6dsl.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_std_lsm6dsl_int.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\std\sensor\lsm6dsl\demo_std_lsm6dsl_int.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_std_shtc1.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\std\sensor\shtc1\demo_std_shtc1.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -4199,6 +4354,31 @@
               <FileName>am_hwconf_sensor_lps22hb.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_sensor_lps22hb.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_sensor_bh1730fvc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_sensor_bh1730fvc.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_sensor_bma253.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_sensor_bma253.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_sensor_lis3mdl.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_sensor_lis3mdl.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_sensor_lsm6dsl.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_sensor_lsm6dsl.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_sensor_shtc1.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_sensor_shtc1.c</FilePath>
             </File>
           </Files>
         </Group>

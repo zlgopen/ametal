@@ -433,6 +433,62 @@ void demo_std_bmg160_entry (am_sensor_handle_t handle);
 void demo_std_mmc5883ma_entry (am_sensor_handle_t handle);
 
 /**
+ * \brief BH1730FVC 光传感器例程
+ * \param[in] handle BH1730FVC服务句柄
+ * \return 无
+ */
+void demo_std_bh1730fvc_entry (am_sensor_handle_t handle);
+
+/**
+ * \brief BMA253 三轴加速度传感器轮询例程
+ * \param[in] handle BMA253服务句柄
+ * \return 无
+ */
+void demo_std_bma253_entry (am_sensor_handle_t handle);
+
+/**
+ * \brief BMA253 三轴加速度传感器中断例程
+ * \param[in] handle BMA253服务句柄
+ * \return 无
+ */
+void demo_std_bma253_int_entry (am_sensor_handle_t handle);
+
+/**
+ * \brief LIS3MDL 三轴磁传感器轮询例程
+ * \param[in] handle LIS3MDL服务句柄
+ * \return 无
+ */
+void demo_std_lis3mdl_entry (am_sensor_handle_t handle);
+
+/**
+ * \brief LIS3MDL 三轴磁传感器中断例程
+ * \param[in] handle LIS3MDL服务句柄
+ * \return 无
+ */
+void demo_std_lis3mdl_int_entry (am_sensor_handle_t handle);
+
+/**
+ * \brief LSM6DSL 三轴加速度传感器轮询例程
+ * \param[in] handle LSM6DSL服务句柄
+ * \return 无
+ */
+void demo_std_lsm6dsl_entry (am_sensor_handle_t handle);
+
+/**
+ * \brief LSM6DSL 三轴加速度传感器中断例程
+ * \param[in] handle LSM6DSL服务句柄
+ * \return 无
+ */
+void demo_std_lsm6dsl_int_entry (am_sensor_handle_t handle);
+
+/**
+ * \brief SHTC1 温湿度传感器例程
+ * \param[in] handle SHTC1服务句柄
+ * \return 无
+ */
+void demo_std_shtc1_entry (am_sensor_handle_t handle);
+
+/**
  * \brief DAC杈撳嚭鐢靛帇锛屾爣鍑嗘帴鍙ｅ眰瀹炵幇
  * \return 鏃�
  */
