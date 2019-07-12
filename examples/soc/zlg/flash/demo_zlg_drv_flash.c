@@ -68,7 +68,7 @@ void demo_zlg_drv_flash_entry (amhw_zlg_flash_t *p_hw_flash, uint8_t sector)
     }
 
     /* 向扇区中写入数据 */
-    status = am_zlg_flash_flash_program(p_hw_flash,
+    status = am_zlg_flash_sector_program(p_hw_flash,
                                         sector * 1024,
                                         data,
                                         1024 / 4);

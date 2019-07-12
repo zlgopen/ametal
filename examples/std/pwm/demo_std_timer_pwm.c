@@ -41,7 +41,9 @@
 void demo_std_timer_pwm_entry (am_pwm_handle_t pwm_handle, int pwm_chan)
 {
     am_pwm_config(pwm_handle, pwm_chan, 500000 / 2, 500000); /* ÆµÂÊÎª 1000000000 / 500000 = 2KHz */
+
     am_pwm_enable(pwm_handle, pwm_chan);
+    am_pwm_enable(pwm_handle, 0x80);
 
     AM_FOREVER {
         ; /* VOID */
