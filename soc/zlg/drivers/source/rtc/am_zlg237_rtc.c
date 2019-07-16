@@ -106,8 +106,7 @@ am_local void __sec2tm (uint32_t sec, am_tm_t *p_time)
 am_local int __rtc_time_get (void *p_drv, am_tm_t *p_tm)
 {
     am_zlg237_rtc_dev_t *p_dev    = (am_zlg237_rtc_dev_t *)p_drv;
-    amhw_zlg237_rtc_t   *p_hw_rtc = (amhw_zlg237_rtc_t  *)
-                                    p_dev->p_devinfo->rtc_regbase;
+    amhw_zlg237_rtc_t   *p_hw_rtc = (amhw_zlg237_rtc_t  *)p_dev->p_devinfo->rtc_regbase;
     uint32_t             sec;
 
     if ((NULL == p_tm) || (NULL == p_tm)) {
@@ -195,9 +194,7 @@ am_bool_t am_zlg237_rtc_state_get (am_rtc_handle_t handle)
         return AM_FALSE;
     }
 
-    p_dev = (am_zlg237_rtc_dev_t *)AM_CONTAINER_OF(handle,
-                                                   am_zlg237_rtc_dev_t,
-                                                   rtc_serv);
+    p_dev = (am_zlg237_rtc_dev_t *)AM_CONTAINER_OF(handle, am_zlg237_rtc_dev_t, rtc_serv);
 
     return p_dev->rtc_continue;
 }
@@ -214,9 +211,7 @@ am_err_t am_zlg237_rtc_apb1_reflush (am_rtc_handle_t handle)
         return -AM_EINVAL;
     }
 
-    p_dev = (am_zlg237_rtc_dev_t *)AM_CONTAINER_OF(handle,
-                                                   am_zlg237_rtc_dev_t,
-                                                   rtc_serv);
+    p_dev = (am_zlg237_rtc_dev_t *)AM_CONTAINER_OF(handle, am_zlg237_rtc_dev_t, rtc_serv);
     p_hw_rtc =(amhw_zlg237_rtc_t *)p_dev->p_devinfo->rtc_regbase;
 
     amhw_zlg237_rtc_clr_status_clear(p_hw_rtc, AMHW_ZLG237_RTC_RSF);
@@ -236,9 +231,7 @@ am_err_t am_zlg237_rtc_cnt_get (am_rtc_handle_t handle, uint32_t *p_cnt)
         return -AM_EINVAL;
     }
 
-    p_dev = (am_zlg237_rtc_dev_t *)AM_CONTAINER_OF(handle,
-                                                   am_zlg237_rtc_dev_t,
-                                                   rtc_serv);
+    p_dev = (am_zlg237_rtc_dev_t *)AM_CONTAINER_OF(handle, am_zlg237_rtc_dev_t, rtc_serv);
     p_hw_rtc =(amhw_zlg237_rtc_t *)p_dev->p_devinfo->rtc_regbase;
 
     __sync_wait(p_hw_rtc); /* 等待 RTC 寄存器同步 */
@@ -261,9 +254,7 @@ am_err_t am_zlg237_rtc_cnt_set (am_rtc_handle_t handle, uint32_t cnt)
         return -AM_EINVAL;
     }
 
-    p_dev = (am_zlg237_rtc_dev_t *)AM_CONTAINER_OF(handle,
-                                                   am_zlg237_rtc_dev_t,
-                                                   rtc_serv);
+    p_dev = (am_zlg237_rtc_dev_t *)AM_CONTAINER_OF(handle, am_zlg237_rtc_dev_t, rtc_serv);
     p_hw_rtc = (amhw_zlg237_rtc_t *)p_dev->p_devinfo->rtc_regbase;
 
     __operation_wait(p_hw_rtc);                            /* 等待 RTC 操作完成 */
@@ -290,9 +281,7 @@ am_err_t am_zlg237_rtc_alr_set (am_rtc_handle_t handle, uint32_t alr)
         return -AM_EINVAL;
     }
 
-    p_dev = (am_zlg237_rtc_dev_t *)AM_CONTAINER_OF(handle,
-                                                   am_zlg237_rtc_dev_t,
-                                                   rtc_serv);
+    p_dev = (am_zlg237_rtc_dev_t *)AM_CONTAINER_OF(handle, am_zlg237_rtc_dev_t, rtc_serv);
     p_hw_rtc =(amhw_zlg237_rtc_t *)p_dev->p_devinfo->rtc_regbase;
 
     __operation_wait(p_hw_rtc);                       /* 等待 RTC 操作完成 */
@@ -337,9 +326,7 @@ am_err_t am_zlg237_rtc_callback_set (am_rtc_handle_t handle,
         return -AM_EINVAL;
     }
 
-    p_dev = (am_zlg237_rtc_dev_t *)AM_CONTAINER_OF(handle,
-                                                   am_zlg237_rtc_dev_t,
-                                                   rtc_serv);
+    p_dev = (am_zlg237_rtc_dev_t *)AM_CONTAINER_OF(handle, am_zlg237_rtc_dev_t, rtc_serv);
 
     if (AM_ZLG237_RTC_CALLBACK_SECOND == type) {
         p_dev->pfn_callback[0] = pfn_callback;
@@ -370,9 +357,7 @@ am_err_t am_zlg237_rtc_int_enable (am_rtc_handle_t handle,
         return -AM_EINVAL;
     }
 
-    p_dev = (am_zlg237_rtc_dev_t *)AM_CONTAINER_OF(handle,
-                                                   am_zlg237_rtc_dev_t,
-                                                   rtc_serv);
+    p_dev = (am_zlg237_rtc_dev_t *)AM_CONTAINER_OF(handle, am_zlg237_rtc_dev_t, rtc_serv);
     p_hw_rtc =(amhw_zlg237_rtc_t *)p_dev->p_devinfo->rtc_regbase;
 
     __operation_wait(p_hw_rtc); /* 等待 RTC 操作完成 */
@@ -408,9 +393,7 @@ am_err_t am_zlg237_rtc_int_disable (am_rtc_handle_t handle,
         return -AM_EINVAL;
     }
 
-    p_dev = (am_zlg237_rtc_dev_t *)AM_CONTAINER_OF(handle,
-                                                   am_zlg237_rtc_dev_t,
-                                                   rtc_serv);
+    p_dev = (am_zlg237_rtc_dev_t *)AM_CONTAINER_OF(handle, am_zlg237_rtc_dev_t, rtc_serv);
     p_hw_rtc =(amhw_zlg237_rtc_t *)p_dev->p_devinfo->rtc_regbase;
 
     __operation_wait(p_hw_rtc); /* 等待 RTC 操作完成 */
@@ -513,8 +496,7 @@ am_rtc_handle_t am_zlg237_rtc_init (am_zlg237_rtc_dev_t           *p_dev,
         }
 
         /* RTC 时钟源选择 */
-        amhw_zlg237_rcc_bdcr_rtc_clk_set(
-            (amhw_zlg237_rtc_clk_src)p_devinfo->rtc_clk_sour);
+        amhw_zlg237_rcc_bdcr_rtc_clk_set((amhw_zlg237_rtc_clk_src)p_devinfo->rtc_clk_sour);
 
         /* RTC 时钟使能 */
         amhw_zlg237_rcc_bdcr_rtc_enable();
@@ -539,8 +521,7 @@ am_rtc_handle_t am_zlg237_rtc_init (am_zlg237_rtc_dev_t           *p_dev,
             /* 使能 LSI */
             amhw_zlg237_rcc_lsi_enable();
             while (!amhw_zlg237_rcc_lsirdy_read());
-        } else if (AMHW_ZLG237_RTCCLK_HSE_DIV128 ==
-                   p_dev->p_devinfo->rtc_clk_sour) {
+        } else if (AMHW_ZLG237_RTCCLK_HSE_DIV128 == p_dev->p_devinfo->rtc_clk_sour) {
 
             /* 使能 HSE */
             amhw_zlg237_rcc_hseon_enable();
