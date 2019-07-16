@@ -22,7 +22,7 @@
  *    PIOA_9 引脚连接 PC 串口的 RXD。
  *
  * \par 源代码
- * \snippet demo_zmf237_std_rtc.c src_zmf237_std_rtc
+ * \snippet demo_zlg237_std_rtc.c src_zlg237_std_rtc
  *
  * \internal
  * \par Modification history
@@ -31,27 +31,27 @@
  */
 
 /**
- * \addtogroup demo_if_zmf237_std_rtc
- * \copydoc demo_zmf237_std_rtc.c
+ * \addtogroup demo_if_zlg237_std_rtc
+ * \copydoc demo_zlg237_std_rtc.c
  */
 
-/** [src_zmf237_std_rtc] */
+/** [src_zlg237_std_rtc] */
 
 #include "ametal.h"
 #include "am_vdebug.h"
 #include "demo_std_entries.h"
-#include "am_zmf237_inst_init.h"
+#include "am_zlg237_inst_init.h"
 #include "demo_am237_core_entries.h"
 
 /**
  * \brief 例程入口
  */
-void demo_zmf237_core_std_rtc_entry (void)
+void demo_zlg237_core_std_rtc_entry (void)
 {
     AM_DBG_INFO("demo am237_core rtc entry!\r\n");
 
-    demo_std_rtc_entry(am_zmf237_rtc_inst_init());
+    demo_std_rtc_entry(am_zlg237_rtc_inst_init());
 }
-/** [src_zmf237_std_rtc] */
+/** [src_zlg237_std_rtc] */
 
 /* end of file */

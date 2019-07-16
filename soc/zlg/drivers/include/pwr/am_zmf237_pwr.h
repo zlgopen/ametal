@@ -30,7 +30,7 @@ extern "C" {
 
 #include "ametal.h"
 #include "amhw_zlg_pwr.h"
-#include "amhw_zmf237_bkp.h"
+#include "../bkp/hw/amhw_zlg237_bkp.h"
 
 /**
  * \addtogroup am_zmf237_if_pwr

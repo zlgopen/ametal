@@ -248,7 +248,7 @@ void demo_zlg_hw_tim_timing_entry (amhw_zlg_tim_t     *p_hw_tim,
                                    int32_t             int_num);
 
 /**
- * \brief UART 中断发送例程，通过 HW 层接口实现
+ * \brief ZLG237 USART 中断发送例程，通过 HW 层接口实现
  *
  * \param[in] p_hw_uart 指向 UART 外设寄存器块的指针
  * \param[in] pfn_init  指向 UART 引脚初始化函数的指针
@@ -265,7 +265,7 @@ void demo_zlg_hw_uart_int_entry (amhw_zlg_uart_t *p_hw_uart,
                                  unsigned char    inum_uart);
 
 /**
- * \brief UART 轮询方式例程，通过 HW 层接口实现
+ * \brief ZLG237 USART 轮询方式例程，通过 HW 层接口实现
  *
  * \param[in] p_hw_uart 指向 UART 外设寄存器块的指针
  * \param[in] clk_rate  UART 时钟源频率
@@ -276,7 +276,7 @@ void demo_zlg_hw_uart_polling_entry (amhw_zlg_uart_t *p_hw_uart,
                                      uint32_t         clk_rate);
 
 /**
- * \brief UART DMA 接收例程，通过 HW 层接口实现
+ * \brief ZLG237 USART 接收例程，通过 HW 层接口实现
  *
  * \param[in] p_hw_uart 指向 UART 外设寄存器块的指针
  * \param[in] clk_rate  UART 时钟源频率
@@ -289,7 +289,7 @@ void demo_zlg_hw_uart_rx_dma_entry (amhw_zlg_uart_t *p_hw_uart,
                                     int32_t          dma_chan);
 
 /**
- * \brief UART DMA 发送例程，通过 HW 层接口实现
+ * \brief ZLG237 USART 发送例程，通过 HW 层接口实现
  *
  * \param[in] p_hw_uart 指向 UART 外设寄存器块的指针
  * \param[in] clk_rate  UART 时钟源频率
