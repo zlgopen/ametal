@@ -818,7 +818,7 @@ void am_zlg237_tim4_timing_inst_deinit (am_timer_handle_t handle);
  *
  * \return UART 标准服务句柄，若为 NULL，表明初始化失败
  */
-am_uart_handle_t am_zlg237_uart1_inst_init (void);
+am_uart_handle_t am_zlg237_usart1_inst_init (void);
 
 /**
  * \brief UART1 实例解初始化
@@ -827,7 +827,7 @@ am_uart_handle_t am_zlg237_uart1_inst_init (void);
  *
  * \return 无
  */
-void am_zlg237_uart1_inst_deinit (am_uart_handle_t handle);
+void am_zlg237_usart1_inst_deinit (am_uart_handle_t handle);
 
 /**
  * \brief UART2 实例初始化，获得 UART 标准服务句柄
@@ -836,7 +836,7 @@ void am_zlg237_uart1_inst_deinit (am_uart_handle_t handle);
  *
  * \return UART 标准服务句柄，若为 NULL，表明初始化失败
  */
-am_uart_handle_t am_zlg237_uart2_inst_init (void);
+am_uart_handle_t am_zlg237_usart2_inst_init (void);
 
 /**
  * \brief UART2 实例解初始化
@@ -845,7 +845,7 @@ am_uart_handle_t am_zlg237_uart2_inst_init (void);
  *
  * \return 无
  */
-void am_zlg237_uart2_inst_deinit (am_uart_handle_t handle);
+void am_zlg237_usart2_inst_deinit (am_uart_handle_t handle);
 
 /**
  * \brief UART3 实例初始化，获得 UART 标准服务句柄
@@ -854,7 +854,7 @@ void am_zlg237_uart2_inst_deinit (am_uart_handle_t handle);
  *
  * \return UART 标准服务句柄，若为 NULL，表明初始化失败
  */
-am_uart_handle_t am_zlg237_uart3_inst_init (void);
+am_uart_handle_t am_zlg237_usart3_inst_init (void);
 
 /**
  * \brief UART3 实例解初始化
@@ -863,7 +863,7 @@ am_uart_handle_t am_zlg237_uart3_inst_init (void);
  *
  * \return 无
  */
-void am_zlg237_uart3_inst_deinit (am_uart_handle_t handle);
+void am_zlg237_usart3_inst_deinit (am_uart_handle_t handle);
 
 /**
  * \brief WWDG 实例初始化，获得 WDT 标准服务句柄

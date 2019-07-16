@@ -17,14 +17,11 @@
  * - 操作步骤：
  *   1. 将 J14 的 KEY 和 PIOC_7 短接在一起。
  *
- * - 实验现象:
- *   1. 按下按键时 LED0 亮，松开按键时 LED0 灭。
  *
  * \note
- *    1. LED0 需要短接 J9 跳线帽，才能被 PIOC_9 控制；
- *    2. 如需观察串口打印的调试信息，需要将 PIOA_10 引脚连接 PC 串口的 TXD，
+ *    1. 如需观察串口打印的调试信息，需要将 PIOA_10 引脚连接 PC 串口的 TXD，
  *       PIOA_9 引脚连接 PC 串口的 RXD。
- *    3. 测试本 Demo 必须在 am_prj_config.h 内将 AM_CFG_KEY_GPIO_ENABLE、
+ *    2. 测试本 Demo 必须在 am_prj_config.h 内将 AM_CFG_KEY_GPIO_ENABLE、
  *       AM_CFG_KEY_ENABLE 和 AM_CFG_SOFTIMER_ENABLE 定义为 1。但这些宏
  *       已经默认配置为 1， 用户不必再次配置；
  *

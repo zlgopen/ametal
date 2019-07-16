@@ -37,11 +37,7 @@
 int am_main (void)
 {
 
-
-//    am_gpio_pin_cfg(PIOA_8, PIOA_8_INPUT_PU);
-
-   // am_led_on(0);
-//    AM_DBG_INFO("Start up successful!\r\n");
+    AM_DBG_INFO("Start up successful!\r\n");
     /*
      * 以下为所有demo的入口函数，需要运行哪个demo，就取消对应函数调用行的注释
      *
@@ -115,7 +111,7 @@ int am_main (void)
 //    demo_zlg237_core_hw_usart_rx_dma_entry();
 //    demo_zlg237_core_hw_usart_tx_dma_entry();
 //    demo_zlg237_core_std_usart_polling_entry();
-    demo_zlg237_core_std_usart_ringbuf_entry();
+//    demo_zlg237_core_std_usart_ringbuf_entry();
 //    demo_zlg237_core_hw_wwdg_entry();
 //    demo_zlg237_core_std_wwdg_entry();
 //    demo_zlg237_core_dr_fm175xx_cpu_card();

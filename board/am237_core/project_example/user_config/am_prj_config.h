@@ -54,7 +54,7 @@ extern "C" {
 #define AM_CFG_INT_ENABLE                1
 
 /** \brief 为1，初始化 DMA 相关功能 */
-#define AM_CFG_DMA_ENABLE                0
+#define AM_CFG_DMA_ENABLE                1
 
 /** @} */
 
@@ -116,7 +116,7 @@ extern "C" {
 /**
  * \brief 如果为1，则初始化系统滴答
  */
-#define AM_CFG_SYSTEM_TICK_ENABLE    1
+#define AM_CFG_SYSTEM_TICK_ENABLE    0
 
 /**
  * \brief 如果为1，则初始化软件定时器

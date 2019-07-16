@@ -21,7 +21,7 @@
  * \endinternal
  */
 
-#include <am_zlg237.h>
+#include "am_zlg237.h"
 #include "am_clk.h"
 #include "amhw_zlg237_rcc.h"
 #include "am_zlg_dma.h"
@@ -65,7 +65,6 @@ static am_zlg_dma_dev_t __g_dma_dev;
  */
 int am_zlg237_dma_inst_init (void)
 {
-    //return am_zlg237_dma_init(&__g_dma_dev, &__g_dma_devinfo);
     return am_zlg_dma_init(&__g_dma_dev, &__g_dma_devinfo);
 }
 

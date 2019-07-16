@@ -566,7 +566,7 @@ int am_zlg237_clk_init (am_zlg237_clk_dev_t           *p_dev,
 
     ZLG237_RCC->apb2enr &= ~0xc;
 
-    amhw_zlg237_rcc_mco_src_set(4);
+    //amhw_zlg237_rcc_mco_src_set(4);
 
     return AM_OK;
 }
