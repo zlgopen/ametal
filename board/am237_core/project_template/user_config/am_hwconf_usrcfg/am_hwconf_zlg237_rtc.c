@@ -17,18 +17,18 @@
  *
  * \internal
  * \par Modification history
- * - 1.00 19-07-23  zp, first implementation
+ * - 1.00 17-08-28  lqy, first implementation
  * \endinternal
  */
 
-#include <am_zlg237.h>
-#include <am_zlg237_inst_init.h>
-#include "am_zlg237_rtc.h"
-#include "amhw_zlg237_pwr.h"
-#include "amhw_zlg237_rcc.h"
+#include "am_zlg237.h"
 #include "zlg237_periph_map.h"
 #include "ametal.h"
 #include "am_delay.h"
+#include "am_zlg237_rtc.h"
+#include "amhw_zlg237_rcc.h"
+#include "am_zlg237_inst_init.h"
+#include "amhw_zlg_pwr.h"
 
 
 #define RTC_CLK_SOUR  AMHW_ZLG237_RTCCLK_HSE_DIV128
@@ -43,13 +43,11 @@ void __zlg237_plfm_rtc_init()
 {
     amhw_zlg237_rcc_apb1_enable(AMHW_ZLG237_RCC_APB1_PWR); /* 使能电源时钟 */
     amhw_zlg237_rcc_apb1_enable(AMHW_ZLG237_RCC_APB1_BKP); /* 使能备份时钟 */
-    amhw_zlg237_pwr_bkp_access_enable(ZLG237_PWR,1);       /* 取消备份域的写保护 */
+    amhw_zlg_pwr_bkp_access_enable(ZLG237_PWR,1);          /* 取消备份域的写保护 */
     amhw_zlg237_rcc_bdcr_bdrst_reset();                    /* 备份区域软件复位 */
     am_udelay(5);
     amhw_zlg237_rcc_bdcr_bdrst_reset_end();                /* 备份域软件复位结束 */
-
-    /* RTC 时钟源选择为外部RTC时钟源 */
-    amhw_zlg237_rcc_bdcr_rtc_clk_set((amhw_zlg237_rtc_clk_src)RTC_CLK_SOUR);
+    amhw_zlg237_rcc_bdcr_rtc_clk_set((amhw_zlg237_rtc_clk_src)RTC_CLK_SOUR);/* RTC 时钟源选择为外部RTC时钟源 */
     am_mdelay(1);
     amhw_zlg237_rcc_bdcr_rtc_enable();                     /* RTC时钟使能 */
 
@@ -60,7 +58,7 @@ void __zlg237_plfm_rtc_deinit(void)
 {
     amhw_zlg237_rcc_apb1_disable(AMHW_ZLG237_RCC_APB1_PWR); /* 禁能电源时钟 */
     amhw_zlg237_rcc_apb1_disable(AMHW_ZLG237_RCC_APB1_BKP); /* 禁能备份时钟 */
-    amhw_zlg237_pwr_bkp_access_enable(ZLG237_PWR,0);        /* 备份域的写保护 */
+    amhw_zlg_pwr_bkp_access_enable(ZLG237_PWR,0);           /* 备份域的写保护 */
     amhw_zlg237_rcc_bdcr_rtc_disable();                     /* RTC时钟禁能 */
 }
 
@@ -70,17 +68,17 @@ const struct am_zlg237_rtc_devinfo __g_rtc_devinfo = {
     /** \brief RTC设备基地址 */
     ZLG237_RTC_BASE,
 
-    /** \brief 电源控制PWR基地址 */
-    ZLG237_PWR_BASE,
+	/** \brief 电源控制PWR基地址 */
+	ZLG237_PWR_BASE,
 
-    /** \brief 备份控制BKP基地址 */
-    ZLG237_BKP_BASE,
+	/** \brief 备份控制BKP基地址 */
+	ZLG237_BKP_BASE,
 
-    /**< \brief RTC 中断号 */
-    INUM_RTC,
+	/**< \brief RTC 中断号 */
+	INUM_RTC,
 
     /** \brief RTC设备时钟源 */
-    RTC_CLK_SOUR,
+	RTC_CLK_SOUR,
 
     /** \brief 平台初始化函数 */
     __zlg237_plfm_rtc_init,

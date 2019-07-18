@@ -617,51 +617,6 @@
               <FileType>4</FileType>
               <FilePath>..\..\..\..\components\drivers\source\fm175xx\am_fm175xx_zlg217.lib</FilePath>
             </File>
-            <File>
-              <FileName>am_zlg52810.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\components\drivers\source\ble\am_zlg52810.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_fm175xx_ant.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\components\drivers\source\fm175xx\am_fm175xx_ant.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_fm25clxx.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\components\drivers\source\fram\am_fm25clxx.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_pt100_to_temperature.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\components\drivers\source\pt100\am_pt100_to_temperature.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_thermocouple.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\components\drivers\source\thermocouple\am_thermocouple.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_cat823.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\components\drivers\source\wdt\am_cat823.c</FilePath>
-            </File>
-            <File>
-              <FileName>zsn60x.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\components\drivers\source\zsn60x\zsn60x.c</FilePath>
-            </File>
-            <File>
-              <FileName>zsn60x_platform.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\components\drivers\source\zsn60x\zsn60x_platform.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_sensor_hts221.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\components\drivers\source\sensor\am_sensor_hts221.c</FilePath>
-            </File>
           </Files>
         </Group>
         <Group>
@@ -796,31 +751,6 @@
               <FileName>am_uart_rngbuf.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\components\service\source\am_uart_rngbuf.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_crc_soft.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\components\service\source\am_crc_soft.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_crc_table_def.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\components\service\source\am_crc_table_def.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_sdio.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\components\service\source\am_sdio.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_sensor.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\components\service\source\am_sensor.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_xmodem.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\components\service\source\am_xmodem.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -966,41 +896,6 @@
               <FileName>am_zlg_wwdg.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\soc\zlg\drivers\source\wdt\am_zlg_wwdg.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_zlg237_i2c.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\zlg\drivers\source\i2c\am_zlg237_i2c.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_zlg237_i2c_slv.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\zlg\drivers\source\i2c\am_zlg237_i2c_slv.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_zlg237_pwr.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\zlg\drivers\source\pwr\am_zlg237_pwr.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_zlg237_spi_dma.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\zlg\drivers\source\spi\am_zlg237_spi_dma.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_zlg237_spi_int.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\zlg\drivers\source\spi\am_zlg237_spi_int.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_zlg237_spi_poll.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\zlg\drivers\source\spi\am_zlg237_spi_poll.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_zlg237_spi_slv_dma.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\zlg\drivers\source\spi\am_zlg237_spi_slv_dma.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -1156,116 +1051,6 @@
               <FileName>am_zlg237_inst_init.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\user_config\am_zlg237_inst_init.h</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_fm175xx.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_fm175xx.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_lm75.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_lm75.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_microport_ds1302.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_microport_ds1302.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_microport_eeprom.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_microport_eeprom.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_microport_flash.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_microport_flash.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_microport_rs485.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_microport_rs485.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_microport_rtc.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_microport_rtc.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_microport_rx8025t.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_microport_rx8025t.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_miniport_595.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_miniport_595.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_miniport_key.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_miniport_key.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_miniport_led.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_miniport_led.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_miniport_view.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_miniport_view.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_miniport_view_key.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_miniport_view_key.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_miniport_zlg72128.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_miniport_zlg72128.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_sensor_hts221.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_sensor_hts221.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_zlg237_i2c.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg237_i2c.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_zlg237_i2c_slv.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg237_i2c_slv.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_zlg237_pwr.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg237_pwr.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_zlg237_spi_dma.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg237_spi_dma.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_zlg237_spi_int.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg237_spi_int.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_zlg237_spi_poll.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg237_spi_poll.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_zlg237_spi_slv_dma.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg237_spi_slv_dma.c</FilePath>
             </File>
           </Files>
         </Group>

@@ -64,10 +64,10 @@ void demo_zlg237_core_hw_adc_dma_entry (void)
     int adc_chan[] = {0, 1, 2, 3};
 
     /* 运行硬件层例程前的环境设置 ，配置引脚，使能时钟等 */
-    am_gpio_pin_cfg(PIOA_0, PIOA_0_AIN | PIOA_0_ADC12_IN0); /* ADC12通道0 */
-    am_gpio_pin_cfg(PIOA_1, PIOA_1_AIN | PIOA_1_ADC12_IN1); /* ADC12通道1 */
-    am_gpio_pin_cfg(PIOA_2, PIOA_2_AIN | PIOA_2_ADC12_IN2); /* ADC12通道2 */
-    am_gpio_pin_cfg(PIOA_3, PIOA_3_AIN | PIOA_3_ADC12_IN3); /* ADC12通道3 */
+    am_gpio_pin_cfg(PIOA_0, PIOA_0_AIN | PIOA_0_ADC1_IN0); /* ADC1通道0 */
+    am_gpio_pin_cfg(PIOA_1, PIOA_1_AIN | PIOA_1_ADC1_IN1); /* ADC1通道1 */
+    am_gpio_pin_cfg(PIOA_2, PIOA_2_AIN | PIOA_2_ADC1_IN2); /* ADC1通道2 */
+    am_gpio_pin_cfg(PIOA_3, PIOA_3_AIN | PIOA_3_ADC1_IN3); /* ADC1通道3 */
 
     am_clk_enable(CLK_ADC1);
 

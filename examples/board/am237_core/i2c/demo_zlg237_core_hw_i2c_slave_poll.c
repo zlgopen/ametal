@@ -26,7 +26,7 @@
  *
  * \internal
  * \par Modification history
- *   1.00 19-07-28  zc, first implementation
+ * - 1.00 17-04-27  sdy, first implementation.
  * \endinternal
  */
 
@@ -63,7 +63,7 @@ void demo_zlg237_core_hw_i2c_slave_poll_entry (void)
     am_clk_enable(CLK_I2C1);
     am_zlg237_clk_reset(CLK_I2C1);
 
-    demo_zlg237_hw_i2c_slave_poll_entry(ZLG237_I2C1);
+    demo_zlg_hw_i2c_slave_poll_entry(ZLG237_I2C1);
 }
 /** [src_zlg237_hw_i2c_slave_poll] */
 
