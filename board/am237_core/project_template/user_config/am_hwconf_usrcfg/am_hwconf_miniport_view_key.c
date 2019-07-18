@@ -27,10 +27,10 @@
  * \endinternal
  */
 
+#include "zlg237_pin.h"
 #include "ametal.h"
 #include "am_input.h"
-#include "zlg217_pin.h"
-#include "am_zlg217_inst_init.h"
+#include "am_zlg237_inst_init.h"
 #include "am_miniport_view_key.h"
 #include "am_miniport_view_key_595.h"
 

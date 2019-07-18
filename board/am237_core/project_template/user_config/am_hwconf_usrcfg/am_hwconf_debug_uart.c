@@ -23,7 +23,7 @@
 #include "ametal.h"
 #include "am_uart.h"
 #include "am_vdebug.h"
-#include "am_zlg217_inst_init.h"
+#include "am_zlg237_inst_init.h"
 
 /**
  * \addtogroup am_if_src_hwconf_debug_uart
@@ -35,7 +35,7 @@
  * \brief 使用的调试串口，默认 UART1
  * 1 - UART1; 2 - UART2; 3 - UART3
  */
-#define __DEBUG_UART            1
+#define __DEBUG_UART            2
 
 /** \brief 配置调试串口输出的波特率 */
 #define __DEBUG_BAUDRATE        115200
@@ -47,7 +47,7 @@ am_uart_handle_t am_debug_uart_inst_init (void)
 
 #if (__DEBUG_UART == 1)
 
-    handle = am_zlg217_uart1_inst_init();
+    handle = am_zlg237_usart1_inst_init();
 
     /* 调试初始化 */
     am_debug_init(handle, __DEBUG_BAUDRATE);
@@ -56,7 +56,7 @@ am_uart_handle_t am_debug_uart_inst_init (void)
 
 #if (__DEBUG_UART == 2)
 
-    handle = am_zlg217_uart2_inst_init();
+    handle = am_zlg237_usart2_inst_init();
 
     /* 调试初始化 */
     am_debug_init(handle, __DEBUG_BAUDRATE);
@@ -65,7 +65,7 @@ am_uart_handle_t am_debug_uart_inst_init (void)
 
 #if (__DEBUG_UART == 3)
 
-    handle = am_zlg217_uart3_inst_init();
+    handle = am_zlg237_usart3_inst_init();
 
     /* 调试初始化 */
     am_debug_init(handle, __DEBUG_BAUDRATE);

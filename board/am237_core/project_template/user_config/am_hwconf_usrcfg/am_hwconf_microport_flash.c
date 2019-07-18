@@ -20,11 +20,11 @@
  * - 1.00 17-07-13  tee, first implementation
  * \endinternal
  */
+#include "zlg237_pin.h"
 #include "ametal.h"
 #include "am_mtd.h"
 #include "am_mx25xx.h"
-#include "am_zlg217_inst_init.h"
-#include "zlg217_pin.h"
+#include "am_zlg237_inst_init.h"
 
 /**
  * \addtogroup am_if_src_hwconf_microport_flash
@@ -52,7 +52,7 @@ am_mx25xx_handle_t am_microport_flash_inst_init (void)
 {
 
     /* »ñÈ¡ SPI0 ÊµÀý¾ä±ú */
-    am_spi_handle_t spi_handle = am_zlg217_spi1_dma_inst_init();
+    am_spi_handle_t spi_handle = am_zlg237_spi1_dma_inst_init();
 
     return am_mx25xx_init(&__g_microport_flash_dev,
                           &__g_microport_flash_devinfo,

@@ -22,8 +22,8 @@
  * \endinternal
  */
 
+#include "am_zlg237.h"
 #include "ametal.h"
-#include "am_zlg217.h"
 #include "am_arm_nvic.h"
 
 /**
@@ -77,7 +77,7 @@ static am_arm_nvic_dev_t __g_nvic_dev;
 /**
  * \brief 中断实例初始化，初始化中断驱动
  */
-int am_zlg217_nvic_inst_init (void)
+int am_zlg237_nvic_inst_init (void)
 {
     return am_arm_nvic_init(&__g_nvic_dev, &__g_nvic_devinfo);
 }
@@ -85,7 +85,7 @@ int am_zlg217_nvic_inst_init (void)
 /**
  * \brief 中断实例解初始化
  */
-void am_zlg217_nvic_inst_deinit (void)
+void am_zlg237_nvic_inst_deinit (void)
 {
     am_arm_nvic_deinit();
 }

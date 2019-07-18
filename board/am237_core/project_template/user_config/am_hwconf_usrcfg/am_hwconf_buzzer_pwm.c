@@ -23,7 +23,7 @@
 #include "ametal.h"
 #include "am_pwm.h"
 #include "am_buzzer_pwm.h"
-#include "am_zlg217_inst_init.h"
+#include "am_zlg237_inst_init.h"
 
 /**
  * \addtogroup am_if_src_hwconf_buzzer_pwm
@@ -43,7 +43,7 @@
 /** \brief ·äÃùÆ÷ÊµÀý³õÊ¼»¯ */
 am_pwm_handle_t am_buzzer_pwm_inst_init (void)
 {
-    am_pwm_handle_t handle = am_zlg217_tim3_pwm_inst_init();
+    am_pwm_handle_t handle = am_zlg237_tim3_pwm_inst_init();
 
     if (NULL != handle) {
         am_buzzer_pwm_init(handle,

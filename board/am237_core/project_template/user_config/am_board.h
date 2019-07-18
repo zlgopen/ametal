@@ -12,7 +12,7 @@
 
 /**
  * \file
- * \brief AM217_CORE
+ * \brief AM237_CORE
  *
  * \internal
  * \par Modification history

@@ -32,7 +32,6 @@ extern "C" {
 #include "hw/amhw_zlg_bkp.h"
 #include "hw/amhw_zlg_cmp.h"
 #include "hw/amhw_zlg_crc.h"
-#include "hw/amhw_zlg_dac.h"
 #include "hw/amhw_zlg237_flash.h"
 #include "hw/amhw_zlg_i2c.h"
 #include "hw/amhw_zlg_spi.h"
@@ -41,8 +40,7 @@ extern "C" {
 #include "hw/amhw_zlg_iwdg.h"
 #include "hw/amhw_zlg_wwdg.h"
 #include "hw/amhw_zlg_pwr.h"
-#include "hw/amhw_zlg_exti.h"
-#include "hw/amhw_zlg_syscfg.h"
+#include "hw/amhw_zlg237_exti.h"
 #include "hw/amhw_zlg_gpio.h"
 #include "hw/amhw_zlg_dma.h"
 //#include "hw/amhw_zlg237_usbd.h"
@@ -98,22 +96,19 @@ extern "C" {
 #define ZLG237_BKP     ((amhw_zlg237_bkp_t       *)ZLG237_BKP_BASE)
 
 /** \brief UART1 ¼Ä´æÆ÷¿éÖ¸Õë */
-#define ZLG237_USART1  ((amhw_zlg_uart_t         *)ZLG237_USART1_BASE)
+#define ZLG237_USART1  ((amhw_zlg237_usart_t     *)ZLG237_USART1_BASE)
 
 /** \brief UART2 ¼Ä´æÆ÷¿éÖ¸Õë */
-#define ZLG237_USART2  ((amhw_zlg_uart_t         *)ZLG237_USART2_BASE)
+#define ZLG237_USART2  ((amhw_zlg237_usart_t     *)ZLG237_USART2_BASE)
 
 /** \brief UART3 ¼Ä´æÆ÷¿éÖ¸Õë */
-#define ZLG237_USART3  ((amhw_zlg_uart_t         *)ZLG237_USART3_BASE)
+#define ZLG237_USART3  ((amhw_zlg237_usart_t     *)ZLG237_USART3_BASE)
 
 /** \brief ADC1 ¼Ä´æÆ÷¿éÖ¸Õë */
-#define ZLG237_ADC1    ((amhw_zlg_adc_t          *)ZLG237_ADC1_BASE)
+#define ZLG237_ADC1    ((amhw_zlg237_adc_t       *)ZLG237_ADC1_BASE)
 
 /** \brief ADC2 ¼Ä´æÆ÷¿éÖ¸Õë */
-#define ZLG237_ADC2    ((amhw_zlg_adc_t          *)ZLG237_ADC2_BASE)
-
-/** \brief DAC ¼Ä´æÆ÷¿éÖ¸Õë */
-#define ZLG237_DAC     ((amhw_zlg_dac_t          *)ZLG237_DAC_BASE)
+#define ZLG237_ADC2    ((amhw_zlg237_adc_t       *)ZLG237_ADC2_BASE)
 
 /** \brief DMA ¼Ä´æÆ÷¿éÖ¸Õë */
 #define ZLG237_DMA     ((amhw_zlg237_dma_t       *)ZLG237_DMA_BASE)

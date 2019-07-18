@@ -94,7 +94,7 @@ static const struct am_uart_drv_funcs __g_uart_drv_funcs = {
 static int __usart_ioctl (void *p_drv, int request, void *p_arg)
 {
     am_zlg237_usart_dev_t *p_dev     = (am_zlg237_usart_dev_t *)p_drv;
-    amhw_zlg237_usart_t   *p_hw_uart = (amhw_zlg237_usart_t *)p_dev->p_devinfo->usart_reg_base;
+    amhw_zlg237_usart_t   *p_hw_usart = (amhw_zlg237_usart_t *)p_dev->p_devinfo->usart_reg_base;
 
     int status = AM_OK;
 
@@ -104,9 +104,9 @@ static int __usart_ioctl (void *p_drv, int request, void *p_arg)
     case AM_UART_BAUD_SET:
 
         /* 只有在当前传输完成的基础上才允许修改波特率 */
-        while (amhw_zlg237_usart_status_flag_check(p_hw_uart, AMHW_ZLG237_USART_TX_COMPLETE_FLAG) == AM_FALSE);
+        while (amhw_zlg237_usart_status_flag_check(p_hw_usart, AMHW_ZLG237_USART_TX_COMPLETE_FLAG) == AM_FALSE);
 
-        status = amhw_zlg237_usart_baudrate_set(p_hw_uart,
+        status = amhw_zlg237_usart_baudrate_set(p_hw_usart,
                                                am_clk_rate_get(p_dev->p_devinfo->clk_num),
                                                (uint32_t)p_arg);
 
@@ -150,19 +150,19 @@ static int __usart_ioctl (void *p_drv, int request, void *p_arg)
         break;
 
     /* 设置流控模式 */
-	case AM_UART_FLOWMODE_SET:
-		__usart_flow_mode_set(p_dev, (int)p_arg);
-		break;
+    case AM_UART_FLOWMODE_SET:
+        __usart_flow_mode_set(p_dev, (int)p_arg);
+        break;
 
-	/* 设置接收器流控状态 */
-	case AM_UART_FLOWSTAT_RX_SET:
-		__usart_flow_rxstat_set(p_dev, (int)p_arg);
-		break;
+    /* 设置接收器流控状态 */
+    case AM_UART_FLOWSTAT_RX_SET:
+        __usart_flow_rxstat_set(p_dev, (int)p_arg);
+        break;
 
     /* 获取发送器流控状态 */
-	case AM_UART_FLOWSTAT_TX_GET:
-		*(int *)p_arg = __usart_flow_txstat_get(p_dev);
-		break;
+    case AM_UART_FLOWSTAT_TX_GET:
+        *(int *)p_arg = __usart_flow_txstat_get(p_dev);
+        break;
 
     case AM_UART_RS485_SET:
         if (p_dev->rs485_en != (am_bool_t)(int)p_arg) {
@@ -190,7 +190,7 @@ int __usart_tx_startup (void *p_drv)
     char data  = 0;
 
     am_zlg237_usart_dev_t *p_dev     = (am_zlg237_usart_dev_t *)p_drv;
-    amhw_zlg237_usart_t   *p_hw_uart = (amhw_zlg237_usart_t *)p_dev->p_devinfo->usart_reg_base;
+    amhw_zlg237_usart_t   *p_hw_usart = (amhw_zlg237_usart_t *)p_dev->p_devinfo->usart_reg_base;
 
     /* 使能 485 发送控制引脚 */
     if (p_dev->rs485_en && p_dev->p_devinfo->pfn_rs485_dir) {
@@ -198,15 +198,15 @@ int __usart_tx_startup (void *p_drv)
     }
 
     /* 等待上一次传输完成 */
-    while (amhw_zlg237_usart_status_flag_check(p_hw_uart, AMHW_ZLG237_USART_TX_COMPLETE_FLAG) == AM_FALSE);
+    while (amhw_zlg237_usart_status_flag_check(p_hw_usart, AMHW_ZLG237_USART_TX_COMPLETE_FLAG) == AM_FALSE);
 
     /* 获取发送数据并发送 */
     if ((p_dev->pfn_txchar_get(p_dev->txget_arg, &data)) == AM_OK) {
-        amhw_zlg237_usart_data_write(p_hw_uart, data);
+        amhw_zlg237_usart_data_write(p_hw_usart, data);
     }
 
     /* 使能发送中断 */
-    amhw_zlg237_usart_txe_int_enable(p_hw_uart);
+    amhw_zlg237_usart_int_enable(p_hw_usart, AMHW_ZLG237_USART_INT_TX_EMPTY_ENABLE);
     return AM_OK;
 }
 
@@ -251,10 +251,10 @@ static int __usart_callback_set (void  *p_drv,
 static int __usart_poll_putchar (void *p_drv, char outchar)
 {
     am_zlg237_usart_dev_t *p_dev     = (am_zlg237_usart_dev_t *)p_drv;
-    amhw_zlg237_usart_t   *p_hw_uart = (amhw_zlg237_usart_t *)p_dev->p_devinfo->usart_reg_base;
+    amhw_zlg237_usart_t   *p_hw_usart = (amhw_zlg237_usart_t *)p_dev->p_devinfo->usart_reg_base;
 
     /* 发送模块是否空闲, AM_FALSE:忙; TURE: 空闲 */
-    if(amhw_zlg237_usart_status_flag_check(p_hw_uart, AMHW_ZLG237_USART_TX_EMPTY_FLAG) == AM_FALSE) {
+    if(amhw_zlg237_usart_status_flag_check(p_hw_usart, AMHW_ZLG237_USART_TX_EMPTY_FLAG) == AM_FALSE) {
         return (-AM_EAGAIN);
     } else {
 
@@ -265,12 +265,12 @@ static int __usart_poll_putchar (void *p_drv, char outchar)
         }
 
         /* 发送一个字符 */
-        amhw_zlg237_usart_data_write(p_hw_uart, outchar);
+        amhw_zlg237_usart_data_write(p_hw_usart, outchar);
 
         if (p_dev->rs485_en && p_dev->p_devinfo->pfn_rs485_dir) {
 
             /* 等待发送完成 */
-        	while (amhw_zlg237_usart_status_flag_check(p_hw_uart, AMHW_ZLG237_USART_TX_COMPLETE_FLAG) == AM_FALSE);
+            while (amhw_zlg237_usart_status_flag_check(p_hw_usart, AMHW_ZLG237_USART_TX_COMPLETE_FLAG) == AM_FALSE);
 
             p_dev->p_devinfo->pfn_rs485_dir(AM_FALSE);
         }
@@ -285,16 +285,16 @@ static int __usart_poll_putchar (void *p_drv, char outchar)
 static int __usart_poll_getchar (void *p_drv, char *p_char)
 {
     am_zlg237_usart_dev_t *p_dev     = (am_zlg237_usart_dev_t *)p_drv;
-    amhw_zlg237_usart_t   *p_hw_uart = (amhw_zlg237_usart_t *)p_dev->p_devinfo->usart_reg_base;
+    amhw_zlg237_usart_t   *p_hw_usart = (amhw_zlg237_usart_t *)p_dev->p_devinfo->usart_reg_base;
     uint8_t           *p_inchar  = (uint8_t *)p_char;
 
     /* 接收模块是否空闲，AM_FALSE:忙,正在接收; TURE: 已经接收到一个字符 */
-    if(amhw_zlg237_usart_status_flag_check(p_hw_uart, AMHW_ZLG237_USART_RX_NOT_EMPTY_FLAG) == AM_FALSE) {
+    if(amhw_zlg237_usart_status_flag_check(p_hw_usart, AMHW_ZLG237_USART_RX_NOT_EMPTY_FLAG) == AM_FALSE) {
         return (-AM_EAGAIN);
     } else {
 
         /* 接收一个字符 */
-        *p_inchar = amhw_zlg237_usart_data_read(p_hw_uart);
+        *p_inchar = amhw_zlg237_usart_data_read(p_hw_usart);
     }
 
     return (AM_OK);
@@ -305,7 +305,7 @@ static int __usart_poll_getchar (void *p_drv, char *p_char)
  */
 int __usart_mode_set (am_zlg237_usart_dev_t *p_dev, uint32_t new_mode)
 {
-    amhw_zlg237_usart_t *p_hw_uart = (amhw_zlg237_usart_t *)p_dev->p_devinfo->usart_reg_base;
+    amhw_zlg237_usart_t *p_hw_usart = (amhw_zlg237_usart_t *)p_dev->p_devinfo->usart_reg_base;
 
     /* 仅支持以下模式 */
     if ((new_mode != AM_UART_MODE_POLL) && (new_mode != AM_UART_MODE_INT)) {
@@ -320,18 +320,11 @@ int __usart_mode_set (am_zlg237_usart_dev_t *p_dev, uint32_t new_mode)
         am_int_enable(p_dev->p_devinfo->inum);
 
         /* 使能接收准中断 */
-        amhw_zlg237_usart_rxne_int_enable(p_hw_uart);
+        amhw_zlg237_usart_int_enable(p_hw_usart, AMHW_ZLG237_USART_INT_RX_NOT_EMPTY_ENABLE);
     } else {
 
         /* 关闭所有串口中断 */
-    	amhw_zlg237_usart_idle_int_disable(p_hw_uart);
-    	amhw_zlg237_usart_rxne_int_disable(p_hw_uart);
-    	amhw_zlg237_usart_tc_int_disable(p_hw_uart);
-    	amhw_zlg237_usart_txe_int_disable(p_hw_uart);
-    	amhw_zlg237_usart_pe_int_disable(p_hw_uart);
-    	amhw_zlg237_usart_lbd_int_disable(p_hw_uart);
-    	amhw_zlg237_usart_error_int_disable(p_hw_uart);
-    	amhw_zlg237_usart_cts_int_disable(p_hw_uart);
+        amhw_zlg237_usart_int_disable(p_hw_usart, AMHW_ZLG237_USART_INT_ALL_ENABLE_MASK);
     }
 
     p_dev->channel_mode = new_mode;
@@ -344,15 +337,15 @@ int __usart_mode_set (am_zlg237_usart_dev_t *p_dev, uint32_t new_mode)
  */
 int __usart_opt_set (am_zlg237_usart_dev_t *p_dev, uint32_t options)
 {
-    amhw_zlg237_usart_t *p_hw_uart = (amhw_zlg237_usart_t *)p_dev->p_devinfo->usart_reg_base;
-    uint8_t          cfg_flags = 0;
+    amhw_zlg237_usart_t *p_hw_usart = (amhw_zlg237_usart_t *)p_dev->p_devinfo->usart_reg_base;
+    uint8_t             cfg_flags = 0;
 
     if (p_dev == NULL) {
         return -AM_EINVAL;
     }
 
     /* 在改变UART寄存器值前 接收发送禁能 */
-    amhw_zlg237_usart_disable(p_hw_uart);
+    amhw_zlg237_usart_disable(p_hw_usart);
 
     /* 配置停止位 */
     if (options & AM_UART_STOPB) {
@@ -378,10 +371,10 @@ int __usart_opt_set (am_zlg237_usart_dev_t *p_dev, uint32_t options)
     }
 
     /* 保存和生效配置 */
-    amhw_zlg237_usart_stop_bit_sel(p_hw_uart, (cfg_flags & 0x4));
-    amhw_zlg237_usart_parity_bit_sel(p_hw_uart, (cfg_flags & 0x3));
+    amhw_zlg237_usart_stop_bit_sel(p_hw_usart, (cfg_flags & 0x4));
+    amhw_zlg237_usart_parity_bit_sel(p_hw_usart, (cfg_flags & 0x3));
 
-    amhw_zlg237_usart_enable(p_hw_uart);
+    amhw_zlg237_usart_enable(p_hw_usart);
 
     p_dev->options = options;
 
@@ -394,13 +387,13 @@ int __usart_opt_set (am_zlg237_usart_dev_t *p_dev, uint32_t options)
  */
 static int __usart_flow_rxstat_set (am_zlg237_usart_dev_t *p_dev, uint32_t ctrl)
 {
-	amhw_zlg237_usart_t *p_hw_uart = NULL;
+    amhw_zlg237_usart_t *p_hw_usart = NULL;
 
     if (NULL == p_dev) {
         return -AM_EINVAL;
     }
 
-    p_hw_uart = (amhw_zlg237_usart_t *)p_dev->p_devinfo->usart_reg_base;
+    p_hw_usart = (amhw_zlg237_usart_t *)p_dev->p_devinfo->usart_reg_base;
 
     if (AM_UART_FLOWCTL_NO == p_dev->flowctl_mode) {
         return -AM_ENOTSUP;
@@ -418,9 +411,9 @@ static int __usart_flow_rxstat_set (am_zlg237_usart_dev_t *p_dev, uint32_t ctrl)
     } else {
         /* 如果是软件流控，发送XON/XOFF流控字符 */
         if (AM_UART_FLOWSTAT_ON == ctrl) {
-        	amhw_zlg237_usart_data_write(p_hw_uart, AM_ZLG237_USART_XON);
+            amhw_zlg237_usart_data_write(p_hw_usart, AM_ZLG237_USART_XON);
         } else {
-        	amhw_zlg237_usart_data_write(p_hw_uart, AM_ZLG237_USART_XOFF);
+            amhw_zlg237_usart_data_write(p_hw_usart, AM_ZLG237_USART_XOFF);
         }
     }
 
@@ -433,31 +426,31 @@ static int __usart_flow_rxstat_set (am_zlg237_usart_dev_t *p_dev, uint32_t ctrl)
  */
 static int __usart_flow_mode_set(am_zlg237_usart_dev_t *p_dev, uint32_t mode)
 {
-	amhw_zlg237_usart_t *p_hw_uart = NULL;
+    amhw_zlg237_usart_t *p_hw_usart = NULL;
 
     if (NULL == p_dev) {
         return -AM_EINVAL;
     }
 
-    p_hw_uart = (amhw_zlg237_usart_t *)p_dev->p_devinfo->usart_reg_base;
+    p_hw_usart = (amhw_zlg237_usart_t *)p_dev->p_devinfo->usart_reg_base;
     p_dev->flowctl_mode = mode;
 
     if(AM_UART_FLOWCTL_NO == p_dev->flowctl_mode) {
         p_dev->flowctl_tx_stat = AM_UART_FLOWSTAT_ON;
-        amhw_zlg237_usart_rts_disable(p_hw_uart);
-        amhw_zlg237_usart_cts_disable(p_hw_uart);
+        amhw_zlg237_usart_rts_disable(p_hw_usart);
+        amhw_zlg237_usart_cts_disable(p_hw_usart);
         am_gpio_pin_cfg(p_dev->p_devinfo->gpio_rts[0], AM_GPIO_INPUT);
         am_gpio_pin_cfg(p_dev->p_devinfo->gpio_cts[0], AM_GPIO_INPUT);
     } else if (AM_UART_FLOWCTL_HW == p_dev->flowctl_mode) {
 
         /* 硬件流控使能     */
-    	am_gpio_pin_cfg(p_dev->p_devinfo->gpio_rts[0], p_dev->p_devinfo->gpio_rts[1]);
-    	am_gpio_pin_cfg(p_dev->p_devinfo->gpio_cts[0], p_dev->p_devinfo->gpio_cts[1]);
-        amhw_zlg237_usart_rts_enable(p_hw_uart);
-        amhw_zlg237_usart_cts_enable(p_hw_uart);
+        am_gpio_pin_cfg(p_dev->p_devinfo->gpio_rts[0], p_dev->p_devinfo->gpio_rts[1]);
+        am_gpio_pin_cfg(p_dev->p_devinfo->gpio_cts[0], p_dev->p_devinfo->gpio_cts[1]);
+        amhw_zlg237_usart_rts_enable(p_hw_usart);
+        amhw_zlg237_usart_cts_enable(p_hw_usart);
     } else {
-        amhw_zlg237_usart_rts_disable(p_hw_uart);
-        amhw_zlg237_usart_cts_disable(p_hw_uart);
+        amhw_zlg237_usart_rts_disable(p_hw_usart);
+        amhw_zlg237_usart_cts_disable(p_hw_usart);
         am_gpio_pin_cfg(p_dev->p_devinfo->gpio_rts[0], AM_GPIO_INPUT);
         am_gpio_pin_cfg(p_dev->p_devinfo->gpio_cts[0], AM_GPIO_INPUT);
     }
@@ -471,30 +464,30 @@ static int __usart_flow_mode_set(am_zlg237_usart_dev_t *p_dev, uint32_t mode)
  */
 static int __usart_flow_txstat_get (am_zlg237_usart_dev_t *p_dev)
 {
-	amhw_zlg237_usart_t *p_hw_uart = NULL;
+    amhw_zlg237_usart_t *p_hw_usart = NULL;
 
     if (NULL == p_dev) {
         return -AM_EINVAL;
     }
 
-    p_hw_uart = (amhw_zlg237_usart_t *)p_dev->p_devinfo->usart_reg_base;
+    p_hw_usart = (amhw_zlg237_usart_t *)p_dev->p_devinfo->usart_reg_base;
 
     if(AM_UART_FLOWCTL_HW == p_dev->flowctl_mode) {
 
-    	/* cts的状态发生变化时，状态位有效 */
-        if(amhw_zlg237_usart_status_flag_check(p_hw_uart,AMHW_ZLG237_USART_CTS_FLAG) == AM_TRUE) {
+        /* cts的状态发生变化时，状态位有效 */
+        if(amhw_zlg237_usart_status_flag_check(p_hw_usart,AMHW_ZLG237_USART_CTS_FLAG) == AM_TRUE) {
 
-        	/* 清除cts状态位 */
-        	amhw_zlg237_usart_status_flag_clr(p_hw_uart,AMHW_ZLG237_USART_CTS_FLAG);
+            /* 清除cts状态位 */
+            amhw_zlg237_usart_status_flag_clr(p_hw_usart,AMHW_ZLG237_USART_CTS_FLAG);
 
-        	/* 判断cts当前高低电平 */
-        	if (am_gpio_get(p_dev->p_devinfo->gpio_cts[0]) == 0) {
-        		return (int)AM_UART_FLOWSTAT_ON;
-        	} else {
+            /* 判断cts当前高低电平 */
+            if (am_gpio_get(p_dev->p_devinfo->gpio_cts[0]) == 0) {
+                return (int)AM_UART_FLOWSTAT_ON;
+            } else {
                 return (int)AM_UART_FLOWSTAT_OFF;
-        	}
+            }
         } else {
-        	return (int)p_dev->flowctl_tx_stat;
+            return (int)p_dev->flowctl_tx_stat;
         }
     } else {
         return (int)p_dev->flowctl_tx_stat;
@@ -503,7 +496,7 @@ static int __usart_flow_txstat_get (am_zlg237_usart_dev_t *p_dev)
 
 
 /*******************************************************************************
-  UART interrupt request handler
+  USART interrupt request handler
 *******************************************************************************/
 
 /**
@@ -511,16 +504,16 @@ static int __usart_flow_txstat_get (am_zlg237_usart_dev_t *p_dev)
  */
 void __usart_irq_rx_handler (am_zlg237_usart_dev_t *p_dev)
 {
-    amhw_zlg237_usart_t *p_hw_uart = (amhw_zlg237_usart_t *)p_dev->p_devinfo->usart_reg_base;
+    amhw_zlg237_usart_t *p_hw_usart = (amhw_zlg237_usart_t *)p_dev->p_devinfo->usart_reg_base;
     char data;
 
     /* 是否为接收Rx中断 */
-    if (amhw_zlg237_usart_status_flag_check(p_hw_uart,AMHW_ZLG237_USART_RX_NOT_EMPTY_FLAG) == AM_TRUE) {
+    if (amhw_zlg237_usart_status_flag_check(p_hw_usart,AMHW_ZLG237_USART_RX_NOT_EMPTY_FLAG) == AM_TRUE) {
 
-    	amhw_zlg237_usart_status_flag_clr(p_hw_uart, AMHW_ZLG237_USART_RX_NOT_EMPTY_FLAG);
+        amhw_zlg237_usart_status_flag_clr(p_hw_usart, AMHW_ZLG237_USART_RX_NOT_EMPTY_FLAG);
 
         /* 获取新接收数据 */
-        data = amhw_zlg237_usart_data_read(p_hw_uart);
+        data = amhw_zlg237_usart_data_read(p_hw_usart);
 
         /* 存放新接收数据 */
         p_dev->pfn_rxchar_put(p_dev->rxput_arg, data);
@@ -532,20 +525,20 @@ void __usart_irq_rx_handler (am_zlg237_usart_dev_t *p_dev)
  */
 void __usart_irq_tx_handler (am_zlg237_usart_dev_t *p_dev)
 {
-    amhw_zlg237_usart_t *p_hw_uart = (amhw_zlg237_usart_t *)p_dev->p_devinfo->usart_reg_base;
+    amhw_zlg237_usart_t *p_hw_usart = (amhw_zlg237_usart_t *)p_dev->p_devinfo->usart_reg_base;
 
     char data;
 
-    if (amhw_zlg237_usart_status_flag_check(p_hw_uart,AMHW_ZLG237_USART_TX_EMPTY_FLAG) == AM_TRUE) {
+    if (amhw_zlg237_usart_status_flag_check(p_hw_usart,AMHW_ZLG237_USART_TX_EMPTY_FLAG) == AM_TRUE) {
 
-    	amhw_zlg237_usart_status_flag_clr(p_hw_uart, AMHW_ZLG237_USART_TX_EMPTY_FLAG);
+        amhw_zlg237_usart_status_flag_clr(p_hw_usart, AMHW_ZLG237_USART_TX_EMPTY_FLAG);
         /* 获取发送数据并发送 */
         if ((p_dev->pfn_txchar_get(p_dev->txget_arg, &data)) == AM_OK) {
-        	amhw_zlg237_usart_data_write(p_hw_uart, data);
+            amhw_zlg237_usart_data_write(p_hw_usart, data);
         } else {
 
             /* 没有数据传送就关闭发送中断 */
-        	amhw_zlg237_usart_txe_int_disable(p_hw_uart);
+            amhw_zlg237_usart_int_disable(p_hw_usart, AMHW_ZLG237_USART_INT_TX_EMPTY_ENABLE);
 
             /* 禁能485发送控制引脚 */
             if ((p_dev->rs485_en) && (p_dev->p_devinfo->pfn_rs485_dir)) {
@@ -563,27 +556,27 @@ void __usart_irq_tx_handler (am_zlg237_usart_dev_t *p_dev)
 void __usart_irq_handler (void *p_arg)
 {
     am_zlg237_usart_dev_t  *p_dev     = (am_zlg237_usart_dev_t *)p_arg;
-    amhw_zlg237_usart_t    *p_hw_uart = (amhw_zlg237_usart_t *)p_dev->p_devinfo->usart_reg_base;
+    amhw_zlg237_usart_t    *p_hw_usart = (amhw_zlg237_usart_t *)p_dev->p_devinfo->usart_reg_base;
 
-    uint32_t uart_int_stat        = p_hw_uart->sr;
+    uint32_t usart_int_stat        = p_hw_usart->sr;
 
-    if (amhw_zlg237_usart_status_flag_check(p_hw_uart,AMHW_ZLG237_USART_RX_NOT_EMPTY_FLAG) == AM_TRUE) {
+    if (amhw_zlg237_usart_status_flag_check(p_hw_usart,AMHW_ZLG237_USART_RX_NOT_EMPTY_FLAG) == AM_TRUE) {
          __usart_irq_rx_handler(p_dev);
-    } else if (amhw_zlg237_usart_status_flag_check(p_hw_uart,AMHW_ZLG237_USART_TX_EMPTY_FLAG) == AM_TRUE) {
+    } else if (amhw_zlg237_usart_status_flag_check(p_hw_usart,AMHW_ZLG237_USART_TX_EMPTY_FLAG) == AM_TRUE) {
         __usart_irq_tx_handler(p_dev);
     } else {
 
     }
 
     /* 其他中断 */
-    if ((p_dev->other_int_enable & uart_int_stat) != 0) {
+    if ((p_dev->other_int_enable & usart_int_stat) != 0) {
 
-        uart_int_stat &= p_dev->other_int_enable;
+        usart_int_stat &= p_dev->other_int_enable;
 
         if (p_dev->pfn_err != NULL) {
             p_dev->pfn_err(p_dev->err_arg,
                            AM_ZLG237_USART_ERRCODE_USART_OTHER_INT,
-                           (void *)p_hw_uart,
+                           (void *)p_hw_usart,
                            1);
         }
     }
@@ -599,7 +592,7 @@ int __usart_connect (void *p_drv)
     am_zlg237_usart_dev_t *p_dev = (am_zlg237_usart_dev_t *)p_drv;
 
     /* 关联中断向量号，开启中断 */
-    am_int_connect(p_dev->p_devinfo->inum, __uart_irq_handler, (void *)p_dev);
+    am_int_connect(p_dev->p_devinfo->inum, __usart_irq_handler, (void *)p_dev);
     am_int_enable(p_dev->p_devinfo->inum);
     amhw_zlg237_usart_int_enable(p_dev->p_devinfo->usart_reg_base,
                                 p_dev->other_int_enable);
@@ -624,7 +617,7 @@ static int __usart_dummy_callback (void *p_arg, char *p_outchar)
 am_uart_handle_t am_zlg237_usart_init (am_zlg237_usart_dev_t           *p_dev,
                                        const am_zlg237_usart_devinfo_t *p_devinfo)
 {
-    amhw_zlg237_usart_t  *p_hw_uart;
+    amhw_zlg237_usart_t  *p_hw_usart;
     uint32_t              tmp;
 
     if (p_devinfo == NULL) {
@@ -632,7 +625,7 @@ am_uart_handle_t am_zlg237_usart_init (am_zlg237_usart_dev_t           *p_dev,
     }
 
     /* 获取配置参数 */
-    p_hw_uart                = (amhw_zlg237_usart_t  *)p_devinfo->usart_reg_base;
+    p_hw_usart                = (amhw_zlg237_usart_t  *)p_devinfo->usart_reg_base;
     p_dev->p_devinfo         = p_devinfo;
     p_dev->uart_serv.p_funcs = (struct am_uart_drv_funcs *)&__g_uart_drv_funcs;
     p_dev->uart_serv.p_drv   = p_dev;
@@ -645,7 +638,7 @@ am_uart_handle_t am_zlg237_usart_init (am_zlg237_usart_dev_t           *p_dev,
     p_dev->pfn_rxchar_put    = (int (*) (void *, char ))__usart_dummy_callback;
     p_dev->rxput_arg         = NULL;
     p_dev->pfn_err           = (int (*) (void *, int, void*, int))
-    		                   __usart_dummy_callback;
+                               __usart_dummy_callback;
 
     p_dev->err_arg           = NULL;
 
@@ -654,17 +647,17 @@ am_uart_handle_t am_zlg237_usart_init (am_zlg237_usart_dev_t           *p_dev,
 
     p_dev->other_int_enable  = p_devinfo->other_int_enable  &
                                ~(AMHW_ZLG237_USART_TX_EMPTY_FLAG |
-                            	 AMHW_ZLG237_USART_RX_NOT_EMPTY_FLAG);
+                                 AMHW_ZLG237_USART_RX_NOT_EMPTY_FLAG);
     p_dev->rs485_en          = AM_FALSE;
 
     /* 复位所有寄存器 */
-    amhw_zlg237_usart_all_clr(p_hw_uart);
+    amhw_zlg237_usart_all_clr(p_hw_usart);
 
     /* 开启UART时钟 */
     am_clk_enable(p_devinfo->clk_num);
 
     /* 在改变UART寄存器值前禁能 */
-    amhw_zlg237_usart_disable(p_hw_uart);
+    amhw_zlg237_usart_disable(p_hw_usart);
 
     /* 获取串口数据长度配置选项,并进行设置 */
     tmp = p_devinfo->cfg_flags;
@@ -673,11 +666,11 @@ am_uart_handle_t am_zlg237_usart_init (am_zlg237_usart_dev_t           *p_dev,
     switch (tmp) {
 
     case 0:
-    	amhw_zlg237_usart_word_length_sel(p_hw_uart, AMHW_ZLG237_USART_DATA_8BIT);
+        amhw_zlg237_usart_word_length_sel(p_hw_usart, AMHW_ZLG237_USART_DATA_8BIT);
         break;
 
     default:
-    	amhw_zlg237_usart_word_length_sel(p_hw_uart, AMHW_ZLG237_USART_DATA_8BIT);
+        amhw_zlg237_usart_word_length_sel(p_hw_usart, AMHW_ZLG237_USART_DATA_8BIT);
         break;
     }
 
@@ -700,25 +693,25 @@ am_uart_handle_t am_zlg237_usart_init (am_zlg237_usart_dev_t           *p_dev,
     }
 
     /* 等待上一次传输完成 */
-    while (amhw_zlg237_usart_status_flag_check(p_hw_uart, AMHW_ZLG237_USART_TX_COMPLETE_FLAG) == AM_FALSE);
+    while (amhw_zlg237_usart_status_flag_check(p_hw_usart, AMHW_ZLG237_USART_TX_COMPLETE_FLAG) == AM_FALSE);
 
     __usart_opt_set(p_dev, p_dev->options);
 
     /* 设置波特率 */
     p_dev->baud_rate = amhw_zlg237_usart_baudrate_set(
-                                     p_hw_uart,
-                                     am_clk_rate_get(p_dev->p_devinfo->clk_num),
-                                     p_devinfo->baud_rate);
+        p_hw_usart,
+        am_clk_rate_get(p_dev->p_devinfo->clk_num),
+        p_devinfo->baud_rate);
     /* 默认轮询模式 */
     __usart_mode_set(p_dev, AM_UART_MODE_POLL);
 
     /* 流控模式设置（无流控，软件流控，硬件流控）*/
     __usart_flow_mode_set(p_dev, AM_UART_FLOWCTL_NO);
 
-    /* uart使能 */
-    amhw_zlg237_usart_receiver_enable(p_hw_uart);
-    amhw_zlg237_usart_transmitter_enable(p_hw_uart);
-    amhw_zlg237_usart_enable(p_hw_uart);
+    /* usart使能 */
+    amhw_zlg237_usart_receiver_enable(p_hw_usart);
+    amhw_zlg237_usart_transmitter_enable(p_hw_usart);
+    amhw_zlg237_usart_enable(p_hw_usart);
 
     if (p_dev->p_devinfo->pfn_plfm_init) {
         p_dev->p_devinfo->pfn_plfm_init();
@@ -738,7 +731,7 @@ am_uart_handle_t am_zlg237_usart_init (am_zlg237_usart_dev_t           *p_dev,
  */
 void am_zlg237_usart_deinit (am_zlg237_usart_dev_t *p_dev)
 {
-    amhw_zlg237_usart_t *p_hw_uart = (amhw_zlg237_usart_t *)p_dev->p_devinfo->usart_reg_base;
+    amhw_zlg237_usart_t *p_hw_usart = (amhw_zlg237_usart_t *)p_dev->p_devinfo->usart_reg_base;
     p_dev->uart_serv.p_funcs   = NULL;
     p_dev->uart_serv.p_drv     = NULL;
 
@@ -749,7 +742,7 @@ void am_zlg237_usart_deinit (am_zlg237_usart_dev_t *p_dev)
     }
 
     /* 关闭串口 */
-    amhw_zlg237_usart_disable(p_hw_uart);
+    amhw_zlg237_usart_disable(p_hw_usart);
 
     am_int_disable(p_dev->p_devinfo->inum);
 

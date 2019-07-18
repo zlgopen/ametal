@@ -22,9 +22,9 @@
 #include "amhw_zlg237_usart.h"
 
 /**
- * \brief USART数据发送(查询模式)
+ * \brief UART数据发送(查询模式)
  */
-uint32_t amhw_zlg237_usart_poll_send (amhw_zlg237_usart_t *p_hw_usart,
+uint32_t amhw_zlg237_usart_poll_send (amhw_zlg237_usart_t     *p_hw_usart,
                                       const uint8_t       *p_txbuf,
                                       uint32_t             nbytes)
 {
@@ -33,7 +33,7 @@ uint32_t amhw_zlg237_usart_poll_send (amhw_zlg237_usart_t *p_hw_usart,
     while (len--) {
 
          while(amhw_zlg237_usart_status_flag_check(p_hw_usart,
-                                                          AMHW_ZLG237_USART_TX_EMPTY_FLAG)
+                                                   AMHW_ZLG237_USART_TX_EMPTY_FLAG)
                                                    == AM_FALSE);
          amhw_zlg237_usart_data_write(p_hw_usart, (*p_txbuf++));
     }
@@ -42,18 +42,18 @@ uint32_t amhw_zlg237_usart_poll_send (amhw_zlg237_usart_t *p_hw_usart,
 }
 
 /**
- * \brief USART数据接收(查询模式)
+ * \brief UART数据接收(查询模式)
  */
-uint32_t amhw_zlg237_usart_poll_receive (amhw_zlg237_usart_t  *p_hw_usart,
-                                         uint8_t              *p_rxbuf,
-                                         uint32_t              nbytes)
+uint32_t amhw_zlg237_usart_poll_receive (amhw_zlg237_usart_t    *p_hw_usart,
+                                         uint8_t                *p_rxbuf,
+                                         uint32_t                nbytes)
 {
     uint32_t len = nbytes;
 
     while (len--) {
         while(amhw_zlg237_usart_status_flag_check(p_hw_usart,
-                                              AMHW_ZLG237_USART_RX_NOT_EMPTY_FLAG)
-                                              == AM_FALSE);
+                                                  AMHW_ZLG237_USART_RX_NOT_EMPTY_FLAG)
+                                                   == AM_FALSE);
         *p_rxbuf++ = (uint8_t)amhw_zlg237_usart_data_read(p_hw_usart);
     }
 
@@ -85,7 +85,7 @@ int amhw_zlg237_usart_baudrate_set (amhw_zlg237_usart_t *p_hw_usart,
     amhw_zlg237_usart_br_div_mantissa_set(p_hw_usart, int_val);
     amhw_zlg237_usart_br_div_fraction_set(p_hw_usart, deci_val);
 
-    /* 寄存器需要重新使能 USART 才能生效 */
+    /* 寄存器需要重新使能 UART 才能生效 */
     amhw_zlg237_usart_disable(p_hw_usart);
     amhw_zlg237_usart_enable(p_hw_usart);
 

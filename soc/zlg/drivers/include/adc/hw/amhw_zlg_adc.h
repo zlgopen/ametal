@@ -431,7 +431,7 @@ uint8_t amhw_zlg_adc_prescaler_val_get (amhw_zlg_adc_t  *p_hw_adc)
  */
 am_static_inline
 void amhw_zlg_adc_cgf_reg_set (amhw_zlg_adc_t  *p_hw_adc,
-                                  uint32_t            flag )
+                               uint32_t         flag )
 {
     p_hw_adc->adcfg |=  flag;
 }
@@ -446,7 +446,7 @@ void amhw_zlg_adc_cgf_reg_set (amhw_zlg_adc_t  *p_hw_adc,
  */
 am_static_inline
 void amhw_zlg_adc_cgf_reg_clr (amhw_zlg_adc_t  *p_hw_adc,
-                                  uint32_t            flag)
+                               uint32_t         flag)
 {
     p_hw_adc->adcfg &=  ~flag;
 }
@@ -461,7 +461,7 @@ void amhw_zlg_adc_cgf_reg_clr (amhw_zlg_adc_t  *p_hw_adc,
  */
 am_static_inline
 void amhw_zlg_adc_win_chan_sel (amhw_zlg_adc_t  *p_hw_adc,
-                                   uint32_t            chan )
+                                uint32_t         chan )
 {
     p_hw_adc->adcr =  (p_hw_adc->adcr & (~(0xfu << 12))) | (chan << 12);
 }
@@ -484,7 +484,7 @@ void amhw_zlg_adc_win_chan_sel (amhw_zlg_adc_t  *p_hw_adc,
  */
 am_static_inline
 void amhw_zlg_adc_align_way_sel (amhw_zlg_adc_t  *p_hw_adc,
-                                    uint32_t            flag)
+                                 uint32_t         flag)
 {
     p_hw_adc->adcr =  (p_hw_adc->adcr & (~(0x1u << 11))) | flag;
 }
@@ -508,7 +508,7 @@ void amhw_zlg_adc_align_way_sel (amhw_zlg_adc_t  *p_hw_adc,
  */
 am_static_inline
 void amhw_zlg_adc_data_scan_set (amhw_zlg_adc_t  *p_hw_adc,
-                                    uint32_t            flag )
+                                 uint32_t         flag )
 {
     p_hw_adc->adcr =  (p_hw_adc->adcr & (~(0x3u << 9))) | flag;
 }

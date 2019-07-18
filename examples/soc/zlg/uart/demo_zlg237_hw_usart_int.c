@@ -84,7 +84,7 @@ static uint8_t usart_int_send (amhw_zlg237_usart_t *p_hw_usart,
 
         amhw_zlg237_usart_data_write(p_hw_usart, p_buf[g_tx_index++]);
 
-        amhw_zlg237_usart_txe_int_enable(p_hw_usart);
+        amhw_zlg237_usart_int_enable(p_hw_usart,AMHW_ZLG237_USART_INT_TX_EMPTY_ENABLE);
 
         return 1;
     }
@@ -124,7 +124,7 @@ static void usart_hw_irq_handler (void *p_arg)
         } else {
 
             /* 缓冲区没有发送数据，关闭发送中断 */
-        	amhw_zlg237_usart_txe_int_disable(p_hw_usart);
+        	amhw_zlg237_usart_int_disable(p_hw_usart, AMHW_ZLG237_USART_INT_TX_EMPTY_ENABLE);
         }
     }
 }
@@ -148,14 +148,7 @@ void usart_int_init (amhw_zlg237_usart_t *p_hw_usart,
     amhw_zlg237_usart_baudrate_set(p_hw_usart, clk_rate, USART_BAUDRATE);
 
     /* 关闭所有串口中断 */
-	amhw_zlg237_usart_idle_int_disable(p_hw_usart);
-	amhw_zlg237_usart_rxne_int_disable(p_hw_usart);
-	amhw_zlg237_usart_tc_int_disable(p_hw_usart);
-	amhw_zlg237_usart_txe_int_disable(p_hw_usart);
-	amhw_zlg237_usart_pe_int_disable(p_hw_usart);
-	amhw_zlg237_usart_lbd_int_disable(p_hw_usart);
-	amhw_zlg237_usart_error_int_disable(p_hw_usart);
-	amhw_zlg237_usart_cts_int_disable(p_hw_usart);
+    amhw_zlg237_usart_int_disable(p_hw_usart, AMHW_ZLG237_USART_INT_ALL_ENABLE_MASK);
 
     /* 计算出不同串口对应的中断向量号 */
     if ((uint32_t)p_hw_usart - usart_base) {
@@ -170,7 +163,7 @@ void usart_int_init (amhw_zlg237_usart_t *p_hw_usart,
     amhw_zlg237_usart_enable(p_hw_usart);
 
     /* 使能接收准中断 */
-    amhw_zlg237_usart_rxne_int_enable(p_hw_usart);
+    amhw_zlg237_usart_int_enable(p_hw_usart,AMHW_ZLG237_USART_INT_RX_NOT_EMPTY_ENABLE);
 
     /* 关联中断向量号，开启中断 */
     am_int_connect(inum, usart_hw_irq_handler, (void *)p_hw_usart);

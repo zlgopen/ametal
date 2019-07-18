@@ -97,7 +97,7 @@ typedef struct am_zlg237_clk_devinfo {
      *
      *  建议配置成48Mhz
      */
-    uint8_t usb_div;
+    amhw_zlg237_pll_usb_clk_div usb_div;
 
     /**
      * \brief AHB分频系数，AHBCLK = PLLOUT / DIV,AHB最大频率为80Mhz

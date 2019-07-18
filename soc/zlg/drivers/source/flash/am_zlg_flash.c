@@ -71,7 +71,7 @@ void am_zlg_flash_init (amhw_zlg_flash_t *p_hw_flash)
  * \return > 0: 执行结果, -AM_EINVAL: 输入地址过大
  */
 int32_t am_zlg_flash_sector_erase (amhw_zlg_flash_t *p_hw_flash,
-                                   uint32_t             start_addr)
+                                   uint32_t          start_addr)
 {
     if (start_addr < FALSH_ADDRESS_BASE) {
         start_addr += FALSH_ADDRESS_BASE;

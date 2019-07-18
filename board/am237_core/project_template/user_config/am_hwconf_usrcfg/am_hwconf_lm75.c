@@ -20,10 +20,10 @@
  * - 1.00 17-07-13  tee, first implementation
  * \endinternal
  */
+#include <zlg237_pin.h>
 #include "ametal.h"
 #include "am_temp_lm75.h"
-#include "zlg217_pin.h"
-#include "am_zlg217_inst_init.h"
+#include "am_zlg237_inst_init.h"
 
 /**
  * \addtogroup am_if_src_hwconf_lm75
@@ -44,7 +44,7 @@ am_temp_handle_t am_temp_lm75_inst_init (void)
 {
     return  am_temp_lm75_init(&__g_temp_lm75,
                               &__g_temp_lm75_info,
-                              am_zlg217_i2c1_inst_init());
+                              am_zlg237_i2c1_inst_init());
 }
 
 /**

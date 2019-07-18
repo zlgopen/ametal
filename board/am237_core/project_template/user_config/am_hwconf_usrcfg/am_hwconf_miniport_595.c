@@ -20,11 +20,11 @@
  * - 1.00 17-07-13  tee, first implementation
  * \endinternal
  */
+#include "zlg237_pin.h"
 #include "ametal.h"
-#include "am_zlg217_inst_init.h"
+#include "am_zlg237_inst_init.h"
 #include "am_hc595_gpio.h"
 #include "am_hc595_spi.h"
-#include "zlg217_pin.h"
 
 /**
  * \addtogroup am_if_src_hwconf_miniport_595
@@ -63,7 +63,7 @@ am_hc595_handle_t am_miniport_595_inst_init (void)
 
     return  am_hc595_spi_init(&miniport_595,
                               &__hc595_spi_info,
-                               am_zlg217_spi2_int_inst_init());
+                               am_zlg237_spi2_int_inst_init());
 #endif
 
 }

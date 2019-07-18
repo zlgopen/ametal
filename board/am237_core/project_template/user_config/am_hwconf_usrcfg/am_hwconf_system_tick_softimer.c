@@ -20,13 +20,13 @@
  * - 1.00 17-11-20  pea, first implementation
  * \endinternal
  */
+#include "am_zlg237.h"
 #include "ametal.h"
 #include "am_timer.h"
 #include "am_softimer.h"
 #include "am_system.h"
 #include "am_arm_nvic.h"
-#include "am_zlg217.h"
-#include "am_zlg217_inst_init.h"
+#include "am_zlg237_inst_init.h"
 
 /**
  * \addtogroup am_if_src_hwconf_system_tick_softimer
@@ -68,7 +68,7 @@ am_timer_handle_t am_system_tick_inst_init (void)
     /* 获取定时器频率 */
 	  uint32_t freq = 0;
 
-    handle = am_zlg217_tim4_timing_inst_init();
+    handle = am_zlg237_tim4_timing_inst_init();
 
     if (NULL != handle) {
 
@@ -100,7 +100,7 @@ am_timer_handle_t am_system_tick_softimer_inst_init (void)
     /* 获取定时器频率 */
 	  uint32_t freq = 0;
 
-    handle = am_zlg217_tim4_timing_inst_init();
+    handle = am_zlg237_tim4_timing_inst_init();
 
     if (NULL != handle) {
 

@@ -21,10 +21,10 @@
  * \endinternal
  */
 
+#include "zlg237_pin.h"
 #include "ametal.h"
-#include "am_zlg217_inst_init.h"
+#include "am_zlg237_inst_init.h"
 #include "am_zlg72128_std.h"
-#include "zlg217_pin.h"
 #include "am_input.h"
 
 /**
@@ -70,7 +70,7 @@ int am_miniport_zlg72128_inst_init (void)
 {
     return  am_zlg72128_std_init(&__g_miniport_zlg72128,
                                  &__g_miniport_zlg72128_info,
-                                  am_zlg217_i2c1_inst_init());
+                                  am_zlg237_i2c1_inst_init());
 }
 
 /**

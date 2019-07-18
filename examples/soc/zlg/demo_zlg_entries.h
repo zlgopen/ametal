@@ -28,8 +28,10 @@
 #include "am_timer.h"
 
 #include "hw/amhw_zlg_adc.h"
+#include "hw/amhw_zlg237_adc.h"
 #include "hw/amhw_zlg_exti.h"
 #include "hw/amhw_zlg_flash.h"
+#include "hw/amhw_zlg237_flash.h"
 #include "hw/amhw_zlg_gpio.h"
 #include "hw/amhw_zlg_i2c.h"
 #include "hw/amhw_zlg_pwr.h"
@@ -38,6 +40,7 @@
 #include "hw/amhw_zlg_syscfg.h"
 #include "hw/amhw_zlg_tim.h"
 #include "hw/amhw_zlg_uart.h"
+#include "hw/amhw_zlg237_usart.h"
 #include "hw/amhw_zlg_iwdg.h"
 #include "hw/amhw_zlg_wwdg.h"
 #ifdef __cplusplus
@@ -72,6 +75,31 @@ void demo_zlg_hw_adc_dma_entry (amhw_zlg_adc_t *p_hw_adc,
                                 uint8_t         dma_chan);
 
 /**
+ * \brief zlg237 ADC 硬件层（使用了中断）例程入口
+ *
+ * \param[in] p_hw_adc  : 指向 ADC 外设寄存器块的指针
+ * \param[in] int_num   : 中断号
+ * \param[in] chan      : 引脚对应的 ADC 通道号
+ * \param[in] vref_mv   : ADC参考电压，用以将ADC采样结果转换为电压值显示
+ *
+ * \note 一般情况下，在使用本 demo 前，还需打开 ADC 模块相应的时钟，
+ * 配置 ADC 通道对应的引脚，这些配置都与具体芯片相关。
+ *
+ * \return 无
+ */
+void demo_zlg237_hw_adc_int_entry (amhw_zlg237_adc_t *p_hw_adc,
+                                   int                int_num,
+                                   int                chan,
+                                   uint32_t           vref_mv);
+
+/**
+ * \brief zlg237 DC 硬件层（DMA）例程入口
+ */
+void demo_zlg237_hw_adc_dma_entry (amhw_zlg237_adc_t *p_hw_adc,
+                                   int               *p_adc_chan,
+                                   int                adc_chan_num,
+                                   uint8_t            dma_chan);
+/**
  * \brief CLK 例程，通过 HW 层接口实现
  *
  * \param[in] p_clk_id_buf 保存时钟号的缓冲区
@@ -98,6 +126,15 @@ void demo_zlg_drv_dma_m2m_entry (uint32_t dma_chan);
  * \return 无
  */
 void demo_zlg_drv_flash_entry (amhw_zlg_flash_t *p_hw_flash, uint8_t sector);
+
+/**
+ * \brief zlg237 FLASH 例程，通过驱动层接口实现
+ *
+ * \param[in] p_hw_flash 指向 FLASH 外设寄存器块的指针
+ *
+ * \return 无
+ */
+void demo_zlg237_drv_flash_entry (amhw_zlg237_flash_t *p_hw_flash, uint8_t sector);
 
 /**
  * \brief GPIO 例程，通过 HW 层接口实现

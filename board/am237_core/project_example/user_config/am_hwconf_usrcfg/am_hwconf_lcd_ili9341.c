@@ -21,12 +21,12 @@
  * \endinternal
  */
  
- #include <zlg237_clk.h>
-#include <zlg237_periph_map.h>
-#include <zlg237_pin.h>
-#include <zlg237_regbase.h>
+#include "zlg237_clk.h"
+#include "zlg237_periph_map.h"
+#include "zlg237_pin.h"
+#include "zlg237_regbase.h"
 #include "am_zlg_ili9341_3wire_spi.h"
-#include "am_zmf237_inst_init.h"
+#include "am_zlg237_inst_init.h"
 
 /**
  * \addtogroup am_if_src_hwconf_lcd_ili9341
@@ -51,7 +51,7 @@ static const am_zlg_ili9341_intfc_3wire_devinfo_t __g_ili9341_intfc_devinfo = {
         PIOB_14,                                 /**< \brief MISO */
         PIOB_14_SPI2_MISO | PIOB_14_INPUT_FLOAT, /**< \brief MISO功能 */
         PIOB_12_SPI2_NSS | PIOB_12_AF_PP,        /**< \brief CS功能 */
-        ZMF237_SPI2,                             /**< \brief SPI2的基地址 */
+        ZLG237_SPI2,                             /**< \brief SPI2的基地址 */
         CLK_SPI2,                                /**< \brief SPI的时钟号 */
         24000000,                                /**< \brief 最大速度为24MHz */
 };
@@ -66,14 +66,14 @@ static am_zlg_ili9341_intfc_3wire_dev_t  __g_ili9341_intfc_dev;
   不使用 EMWIN 时初始化函数
 *******************************************************************************/
 
-am_ili9341_handle_t am_zmf237_ili9341_inst_init (void)
+am_ili9341_handle_t am_zlg237_ili9341_inst_init (void)
 {
     return am_ili9341_init( &__g_ili9341_dev, &__g_ili9341_devinfo,
             am_zlg_ili9341_intfc_3wire_init( \
                            &__g_ili9341_intfc_dev ,&__g_ili9341_intfc_devinfo));
 }
 
-void am_zmf237_ili9341_inst_deinit (am_ili9341_handle_t handle)
+void am_zlg237_ili9341_inst_deinit (am_ili9341_handle_t handle)
 {
     am_ili9341_deinit( handle );
 }

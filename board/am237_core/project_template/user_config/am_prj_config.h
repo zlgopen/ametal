@@ -64,13 +64,13 @@ extern "C" {
  */
 
 /** \brief 使能 NVRAM 服务 */
-#define AM_CFG_NVRAM_ENABLE              1
+#define AM_CFG_NVRAM_ENABLE              0
 
 /** \brief 是否使用按键系统 */
-#define AM_CFG_KEY_ENABLE                1
+#define AM_CFG_KEY_ENABLE                0
 
 /** \brief 是否使用 isr defer 组件 */
-#define AM_CFG_ISR_DEFER_ENABLE          1
+#define AM_CFG_ISR_DEFER_ENABLE          0
 
 /** @} */
 
@@ -104,19 +104,19 @@ extern "C" {
  * \brief 如果为1，则初始化板载按键
  * KEY_KP0 （默认按键编号） ：PIOC_7 （需要短接跳线帽 J14的1和2，用作独立按键功能）
  */
-#define AM_CFG_KEY_GPIO_ENABLE       1
+#define AM_CFG_KEY_GPIO_ENABLE       0
 
 /**
  * \brief 如果为1，则初始化蜂鸣器的相关功能
  *
  * 默认使用 TIM3_OU1（PIOC_8）输出PWM （需要短接跳线帽 J7）
  */
-#define AM_CFG_BUZZER_ENABLE         1
+#define AM_CFG_BUZZER_ENABLE         0
 
 /**
  * \brief 如果为1，则初始化系统滴答
  */
-#define AM_CFG_SYSTEM_TICK_ENABLE    1
+#define AM_CFG_SYSTEM_TICK_ENABLE    0
 
 /**
  * \brief 如果为1，则初始化软件定时器
@@ -124,7 +124,7 @@ extern "C" {
  * 软件定时器默认使用 TIM4 定时器
  * 软件定时器的使用详见 am_softimer.h
  */
-#define AM_CFG_SOFTIMER_ENABLE       1
+#define AM_CFG_SOFTIMER_ENABLE       0
 
 /**
  * \brief 如果为1，则初始化串口调试输出，调试串口默认为UART1
@@ -142,7 +142,7 @@ extern "C" {
  * 值得注意的是，使用标准库时，将耗费系统更多的 FLASH 和 RAM 资源，用户
  * 应谨慎使用
  */
-#define AM_CFG_STDLIB_ENABLE         1
+#define AM_CFG_STDLIB_ENABLE         0
 
 /** @} */
 

@@ -83,13 +83,13 @@ typedef struct amhw_zlg237_usart {
 am_static_inline
 void amhw_zlg237_usart_all_clr (amhw_zlg237_usart_t *p_hw_usart)
 {
-	p_hw_usart->sr   = 0x00c0;
-	p_hw_usart->dr   = 0x0000;
-	p_hw_usart->brr  = 0x0000;
-	p_hw_usart->cr1  = 0x0000;
-	p_hw_usart->cr2  = 0x0000;
-	p_hw_usart->cr3  = 0x0000;
-	p_hw_usart->gtpr = 0x0000;
+    p_hw_usart->sr   = 0x00c0;
+    p_hw_usart->dr   = 0x0000;
+    p_hw_usart->brr  = 0x0000;
+    p_hw_usart->cr1  = 0x0000;
+    p_hw_usart->cr2  = 0x0000;
+    p_hw_usart->cr3  = 0x0000;
+    p_hw_usart->gtpr = 0x0000;
 }
 
 
@@ -148,7 +148,7 @@ am_bool_t amhw_zlg237_usart_status_flag_check (amhw_zlg237_usart_t *p_hw_usart,
  * \brief 清除状态寄存器标志
  *
  * \param[in] p_hw_usart : 串口寄存器结构体的指针
- * \param[in] flag      : 待清除标志位宏定义
+ * \param[in] flag       : 待清除标志位宏定义
  *
  * \retval none
  */
@@ -156,14 +156,14 @@ am_static_inline
 void amhw_zlg237_usart_status_flag_clr (amhw_zlg237_usart_t    *p_hw_usart,
                                         uint32_t                flag)
 {
-	p_hw_usart->sr = p_hw_usart->sr & (~(flag));
+    p_hw_usart->sr = p_hw_usart->sr & (~(flag));
 }
 
 /**
  * \brief 载入发送数据
  *
  * \param[in] p_hw_usart : 串口寄存器结构体的指针
- * \param[in] data_w    : 待载入数据
+ * \param[in] data_w     : 待载入数据
  *
  * \return none
  */
@@ -191,7 +191,7 @@ uint8_t amhw_zlg237_usart_data_read (amhw_zlg237_usart_t *p_hw_usart)
  * \brief 设置波特率分频系数整数部分
  *
  * \param[in] p_hw_usart : 串口寄存器结构体的指针
- * \param[in] data_w    : 待载入数据
+ * \param[in] data_w     : 待载入数据
  *
  * \return none
  */
@@ -199,14 +199,14 @@ am_static_inline
 void amhw_zlg237_usart_br_div_mantissa_set (amhw_zlg237_usart_t    *p_hw_usart,
                                             uint32_t                data_w)
 {
-	AM_BITS_SET(p_hw_usart->brr, 4, 12, data_w);
+    AM_BITS_SET(p_hw_usart->brr, 4, 12, data_w);
 }
 
 /**
  * \brief 设置波特率分频系数小数部分
  *
  * \param[in] p_hw_usart : 串口寄存器结构体的指针
- * \param[in] data_w    : 待载入数据
+ * \param[in] data_w     : 待载入数据
  *
  * \return none
  */
@@ -214,7 +214,7 @@ am_static_inline
 void amhw_zlg237_usart_br_div_fraction_set (amhw_zlg237_usart_t    *p_hw_usart,
                                             uint32_t                data_w)
 {
-	AM_BITS_SET(p_hw_usart->brr, 0, 4, data_w);
+    AM_BITS_SET(p_hw_usart->brr, 0, 4, data_w);
 }
 
 /**
@@ -227,7 +227,7 @@ void amhw_zlg237_usart_br_div_fraction_set (amhw_zlg237_usart_t    *p_hw_usart,
 am_static_inline
 void amhw_zlg237_usart_send_break_set (amhw_zlg237_usart_t *p_hw_usart)
 {
-	p_hw_usart->cr1 |= (1u << 0);
+    p_hw_usart->cr1 |= (1u << 0);
 }
 
 /**
@@ -240,7 +240,7 @@ void amhw_zlg237_usart_send_break_set (amhw_zlg237_usart_t *p_hw_usart)
 am_static_inline
 am_bool_t amhw_zlg237_usart_send_break_check (amhw_zlg237_usart_t *p_hw_usart)
 {
-	return ((p_hw_usart->cr1) & (1u << 0)) ? AM_TRUE : AM_FALSE;
+    return ((p_hw_usart->cr1) & (1u << 0)) ? AM_TRUE : AM_FALSE;
 }
 
 /**
@@ -255,7 +255,7 @@ am_bool_t amhw_zlg237_usart_send_break_check (amhw_zlg237_usart_t *p_hw_usart)
 am_static_inline
 void amhw_zlg237_usart_receiver_wakeup_enable (amhw_zlg237_usart_t *p_hw_usart)
 {
-	p_hw_usart->cr1 |= (1u << 1);
+    p_hw_usart->cr1 |= (1u << 1);
 }
 
 /**
@@ -267,7 +267,7 @@ void amhw_zlg237_usart_receiver_wakeup_enable (amhw_zlg237_usart_t *p_hw_usart)
 am_static_inline
 void amhw_zlg237_usart_receiver_wakeup_disable (amhw_zlg237_usart_t *p_hw_usart)
 {
-	p_hw_usart->cr1 &= ~(1u << 1);
+    p_hw_usart->cr1 &= ~(1u << 1);
 }
 
 /**
@@ -280,7 +280,7 @@ void amhw_zlg237_usart_receiver_wakeup_disable (amhw_zlg237_usart_t *p_hw_usart)
 am_static_inline
 void amhw_zlg237_usart_receiver_enable (amhw_zlg237_usart_t *p_hw_usart)
 {
-	p_hw_usart->cr1 |= (1u << 2);
+    p_hw_usart->cr1 |= (1u << 2);
 }
 
 /**
@@ -292,7 +292,7 @@ void amhw_zlg237_usart_receiver_enable (amhw_zlg237_usart_t *p_hw_usart)
 am_static_inline
 void amhw_zlg237_usart_receiver_disable (amhw_zlg237_usart_t *p_hw_usart)
 {
-	p_hw_usart->cr1 &= ~(1u << 2);
+    p_hw_usart->cr1 &= ~(1u << 2);
 }
 
 /**
@@ -305,7 +305,7 @@ void amhw_zlg237_usart_receiver_disable (amhw_zlg237_usart_t *p_hw_usart)
 am_static_inline
 void amhw_zlg237_usart_transmitter_enable (amhw_zlg237_usart_t *p_hw_usart)
 {
-	p_hw_usart->cr1 |= (1u << 3);
+    p_hw_usart->cr1 |= (1u << 3);
 }
 
 /**
@@ -317,134 +317,101 @@ void amhw_zlg237_usart_transmitter_enable (amhw_zlg237_usart_t *p_hw_usart)
 am_static_inline
 void amhw_zlg237_usart_transmitter_disable (amhw_zlg237_usart_t *p_hw_usart)
 {
-	p_hw_usart->cr1 &= ~(1u << 3);
+    p_hw_usart->cr1 &= ~(1u << 3);
 }
 
 /**
- * \brief IDLEIE 中断使能
+ * \name  Interrupt enable
+ * \anchor amhw_zlg_uart_
+ * @{
+ */
+/** \brief CTSIE CTS中断使能          CR3 BIT 10*/
+#define AMHW_ZLG237_USART_INT_CTS_ENABLE               (0x1u << 11)
+
+/** \brief EIE 错误中断使能                 CR3 BIT 0*/
+#define AMHW_ZLG237_USART_INT_ERROR_ENABLE             (0x1u << 10)
+
+/** \brief LBDIE 断开符检测中断使能     CR2 BIT 6*/
+#define AMHW_ZLG237_USART_LIN_ENABLE                   (0x1u << 9)
+
+/** \brief PE interrupt enable */
+#define AMHW_ZLG237_USART_INT_PARITY_ENABLE            (0x1u << 8)
+
+/** \brief TXE interrupt enable */
+#define AMHW_ZLG237_USART_INT_TX_EMPTY_ENABLE          (0x1u << 7)
+
+/** \brief TCIE interrupt enable */
+#define AMHW_ZLG237_USART_INT_COMPLETE_ENABLE          (0x1u << 6)
+
+/** \brief RXNE interrupt enable */
+#define AMHW_ZLG237_USART_INT_RX_NOT_EMPTY_ENABLE      (0x1u << 5)
+
+/** \brief IDLE interrupt enable */
+#define AMHW_ZLG237_USART_INT_IDLE_FREE_ENABLE         (0x1u << 4)
+
+/** \brief 所有中断标志位 */
+#define AMHW_ZLG237_USART_INT_ALL_ENABLE_MASK         (0xffu << 4)
+/** @} */
+
+
+/**
+ * \brief 中断使能
  *
- * \param[in] p_hw_usart : 串口寄存器结构体的指针
- *
+ * \param[in] p_hw_usart : pointer to UART register block
+ * \param[in] flag       : interrupt enable   see the filed of interrupt enable
  * \return none
  */
 am_static_inline
-void amhw_zlg237_usart_idle_int_enable (amhw_zlg237_usart_t *p_hw_usart)
+void amhw_zlg237_usart_int_enable (amhw_zlg237_usart_t *p_hw_uart, uint32_t flag)
 {
-	p_hw_usart->cr1 |= (1u << 4);
+
+    /* 开启所有中断的情况 */
+    if(flag == (0xffu << 4)) {
+        p_hw_uart->cr1 |= (0x1fu << 4);             /* 开启cr1中的IDLE、RXNE、TCIE、TXE、PE*/
+        p_hw_uart->cr2 |= (0x01u << 6);             /* 开启cr2中的LBDIE*/
+        p_hw_uart->cr3 |= (0x01u << 0);             /* 开启cr3中的EIE*/
+        p_hw_uart->cr3 |= (0x01u << 10);            /* 开启cr3中的CTSIE*/
+    }else {
+        if (flag == AMHW_ZLG237_USART_LIN_ENABLE){
+            p_hw_uart->cr2 |= (0x01u << 6);         /* 开启cr2中的LBDIE*/
+        } else if (flag == AMHW_ZLG237_USART_INT_ERROR_ENABLE) {
+            p_hw_uart->cr3 |= (0x01u << 0);         /* 开启cr3中的EIE*/
+        } else if (flag == AMHW_ZLG237_USART_INT_CTS_ENABLE) {
+            p_hw_uart->cr3 |= (0x01u << 10);        /* 开启cr3中的CTSIE*/
+        } else {
+            p_hw_uart->cr1 |= (flag);               /* 开启cr1中的对应中断*/
+        }
+    }
 }
 
 /**
- * \brief IDLEIE 中断禁能
- * \param[in] p_hw_usart : 串口寄存器结构体的指针
+ * \brief 中断禁能
  *
+ * \param[in] p_hw_uart : pointer to UART register block
+ * \param[in] flag      : interrupt enable   see the filed of interrupt enable
  * \return none
  */
 am_static_inline
-void amhw_zlg237_usart_idle_int_disable (amhw_zlg237_usart_t *p_hw_usart)
+void amhw_zlg237_usart_int_disable (amhw_zlg237_usart_t *p_hw_uart, uint32_t flag)
 {
-	p_hw_usart->cr1 &= ~(1u << 4);
+    /* 关闭所有中断的情况 */
+    if(flag == (0xffu << 4)) {
+        p_hw_uart->cr1 &= ~(0x1fu << 4);             /* 关闭cr1中的IDLE、RXNE、TCIE、TXE、PE*/
+        p_hw_uart->cr2 &= ~(0x01u << 6);             /* 关闭cr2中的LBDIE*/
+        p_hw_uart->cr3 &= ~(0x01u << 0);             /* 关闭cr3中的EIE*/
+        p_hw_uart->cr3 &= ~(0x01u << 10);            /* 关闭cr3中的CTSIE*/
+    }else {
+        if (flag == AMHW_ZLG237_USART_LIN_ENABLE){
+            p_hw_uart->cr2 &= ~(0x01u << 6);         /* 关闭cr2中的LBDIE*/
+        } else if (flag == AMHW_ZLG237_USART_INT_ERROR_ENABLE) {
+            p_hw_uart->cr3 &= ~(0x01u << 0);         /* 关闭cr3中的EIE*/
+        } else if (flag == AMHW_ZLG237_USART_INT_CTS_ENABLE) {
+            p_hw_uart->cr3 &= ~(0x01u << 10);        /* 关闭cr3中的CTSIE*/
+        } else {
+            p_hw_uart->cr1 &= ~(flag);               /* 关闭cr1中的对应中断*/
+        }
+    }
 }
-
-/**
- * \brief IDLEIE 接收缓冲区非空中断使能
- *
- * \param[in] p_hw_usart : 串口寄存器结构体的指针
- *
- * \return none
- */
-am_static_inline
-void amhw_zlg237_usart_rxne_int_enable (amhw_zlg237_usart_t *p_hw_usart)
-{
-	p_hw_usart->cr1 |= (1u << 5);
-}
-
-/**
- * \brief IDLEIE 接收缓冲区非空中断禁能
- * \param[in] p_hw_usart : 串口寄存器结构体的指针
- *
- * \return none
- */
-am_static_inline
-void amhw_zlg237_usart_rxne_int_disable (amhw_zlg237_usart_t *p_hw_usart)
-{
-	p_hw_usart->cr1 &= ~(1u << 5);
-}
-
-/**
- * \brief TCIE 发送完成中断使能
- *
- * \param[in] p_hw_usart : 串口寄存器结构体的指针
- *
- * \return none
- */
-am_static_inline
-void amhw_zlg237_usart_tc_int_enable (amhw_zlg237_usart_t *p_hw_usart)
-{
-	p_hw_usart->cr1 |= (1u << 6);
-}
-
-/**
- * \brief TCIE 发送完成中断禁能
- * \param[in] p_hw_usart : 串口寄存器结构体的指针
- *
- * \return none
- */
-am_static_inline
-void amhw_zlg237_usart_tc_int_disable (amhw_zlg237_usart_t *p_hw_usart)
-{
-	p_hw_usart->cr1 &= ~(1u << 6);
-}
-
-/**
- * \brief TXEIE 发送缓冲区空中断使能
- *
- * \param[in] p_hw_usart : 串口寄存器结构体的指针
- *
- * \return none
- */
-am_static_inline
-void amhw_zlg237_usart_txe_int_enable (amhw_zlg237_usart_t *p_hw_usart)
-{
-	p_hw_usart->cr1 |= (1u << 7);
-}
-
-/**
- * \brief TXEIE 发送缓冲区空中断禁能
- * \param[in] p_hw_usart : 串口寄存器结构体的指针
- *
- * \return none
- */
-am_static_inline
-void amhw_zlg237_usart_txe_int_disable (amhw_zlg237_usart_t *p_hw_usart)
-{
-	p_hw_usart->cr1 &= ~(1u << 7);
-}
-
-/**
- * \brief PEIE PE中断使能
- *
- * \param[in] p_hw_usart : 串口寄存器结构体的指针
- *
- * \return none
- */
-am_static_inline
-void amhw_zlg237_usart_pe_int_enable (amhw_zlg237_usart_t *p_hw_usart)
-{
-	p_hw_usart->cr1 |= (1u << 8);
-}
-
-/**
- * \brief PEIE PE中断禁能
- * \param[in] p_hw_usart : 串口寄存器结构体的指针
- *
- * \return none
- */
-am_static_inline
-void amhw_zlg237_usart_pe_int_disable (amhw_zlg237_usart_t *p_hw_usart)
-{
-	p_hw_usart->cr1 &= ~(1u << 8);
-}
-
 /**
  * \brief USART parity bit select
  * @{
@@ -458,7 +425,7 @@ void amhw_zlg237_usart_pe_int_disable (amhw_zlg237_usart_t *p_hw_usart)
  * \brief 校验方式设置
  *
  * \param[in] p_hw_usart : 串口寄存器结构体的指针
- * \param[in] flag      : 校验方式宏定义
+ * \param[in] flag       : 校验方式宏定义
  *
  * \retval none
  */
@@ -473,8 +440,8 @@ void amhw_zlg237_usart_parity_bit_sel (amhw_zlg237_usart_t    *p_hw_usart,
  * \brief 唤醒方法设置
  *
  * \param[in] p_hw_usart : 串口寄存器结构体的指针
- * \param[in] flag      : 0：被空闲总线唤醒
- * 						  1：被地址标记唤醒
+ * \param[in] flag       : 0：被空闲总线唤醒
+ *                            1：被地址标记唤醒
  *
  * \retval none
  */
@@ -496,8 +463,8 @@ void amhw_zlg237_usart_wakeup_method_sel (amhw_zlg237_usart_t    *p_hw_usart,
  * \brief 字长设置
  *
  * \param[in] p_hw_usart : 串口寄存器结构体的指针
- * \param[in] flag      : 0：1个起始位，8个数据位，n个停止位
- *                        1：1个起始位，9个数据位，n个停止位
+ * \param[in] flag       : 0：1个起始位，8个数据位，n个停止位
+ *                         1：1个起始位，9个数据位，n个停止位
  *
  * \retval none
  */
@@ -518,7 +485,7 @@ void amhw_zlg237_usart_word_length_sel (amhw_zlg237_usart_t    *p_hw_usart,
 am_static_inline
 void amhw_zlg237_usart_enable (amhw_zlg237_usart_t *p_hw_usart)
 {
-	p_hw_usart->cr1 |= (1 << 13);
+    p_hw_usart->cr1 |= (1 << 13);
 }
 
 /**
@@ -531,14 +498,14 @@ void amhw_zlg237_usart_enable (amhw_zlg237_usart_t *p_hw_usart)
 am_static_inline
 void amhw_zlg237_usart_disable (amhw_zlg237_usart_t *p_hw_usart)
 {
-	p_hw_usart->cr1 &= ~(1u << 13);
+    p_hw_usart->cr1 &= ~(1u << 13);
 }
 
 /**
  * \brief 本设备节点地址设置
  *
  * \param[in] p_hw_usart : 串口寄存器结构体的指针
- * \param[in] flag      : 节点地址设定值（0~15）
+ * \param[in] flag       : 节点地址设定值（0~15）
  *
  *  note: 在多处理器通信下的静默模式中使用，使用地址标记来唤醒某个 USART设备
  *
@@ -555,8 +522,8 @@ void amhw_zlg237_usart_addr_set (amhw_zlg237_usart_t    *p_hw_usart,
  * \brief LIN断开符检测长度设置
  *
  * \param[in] p_hw_usart : 串口寄存器结构体的指针
- * \param[in] flag      : 0：10 位的断开符检测
- *                        1：11 位的断开符检测
+ * \param[in] flag       : 0：10 位的断开符检测
+ *                         1：11 位的断开符检测
  *
  * \retval none
  */
@@ -565,32 +532,6 @@ void amhw_zlg237_usart_lbd_length_sel (amhw_zlg237_usart_t    *p_hw_usart,
                                        uint32_t                flag)
 {
     p_hw_usart->cr2 = (p_hw_usart->cr2 & (~(0x1u << 5))) | (flag << 5);
-}
-
-/**
- * \brief LIN 断开符检测中断使能
- *
- * \param[in] p_hw_usart : 串口寄存器结构体的指针
- *
- * \return none
- */
-am_static_inline
-void amhw_zlg237_usart_lbd_int_enable (amhw_zlg237_usart_t *p_hw_usart)
-{
-	p_hw_usart->cr2 |= (1u << 6);
-}
-
-/**
- * \brief LIN 断开符检测中断禁能
- *
- * \param[in] p_hw_usart : 串口寄存器结构体的指针
- *
- * \return none
- */
-am_static_inline
-void amhw_zlg237_usart_lbd_int_disable (amhw_zlg237_usart_t *p_hw_usart)
-{
-	p_hw_usart->cr2 &= ~(1u << 6);
 }
 
 /**
@@ -660,7 +601,7 @@ void amhw_zlg237_usart_clock_polarity (amhw_zlg237_usart_t    *p_hw_usart,
 am_static_inline
 void amhw_zlg237_usart_clock_enable (amhw_zlg237_usart_t *p_hw_usart)
 {
-	p_hw_usart->cr2 |= (0x1u << 11);
+    p_hw_usart->cr2 |= (0x1u << 11);
 }
 
 /**
@@ -673,7 +614,7 @@ void amhw_zlg237_usart_clock_enable (amhw_zlg237_usart_t *p_hw_usart)
 am_static_inline
 void amhw_zlg237_usart_clock_disable (amhw_zlg237_usart_t *p_hw_usart)
 {
-	p_hw_usart->cr2 &= ~(0x1u << 11);
+    p_hw_usart->cr2 &= ~(0x1u << 11);
 }
 
 
@@ -691,7 +632,7 @@ void amhw_zlg237_usart_clock_disable (amhw_zlg237_usart_t *p_hw_usart)
  * \brief STOP 停止位设置
  *
  * \param[in] p_hw_usart : 串口寄存器结构体的指针
- * \param[in] flag      : 停止位宏定义
+ * \param[in] flag       : 停止位宏定义
  *
  * \retval none
  */
@@ -712,7 +653,7 @@ void amhw_zlg237_usart_stop_bit_sel (amhw_zlg237_usart_t    *p_hw_usart,
 am_static_inline
 void amhw_zlg237_usart_lin_mode_enable (amhw_zlg237_usart_t *p_hw_usart)
 {
-	p_hw_usart->cr2 |= (1u << 14);
+    p_hw_usart->cr2 |= (1u << 14);
 }
 
 /**
@@ -725,37 +666,7 @@ void amhw_zlg237_usart_lin_mode_enable (amhw_zlg237_usart_t *p_hw_usart)
 am_static_inline
 void amhw_zlg237_usart_lin_mode_disable (amhw_zlg237_usart_t *p_hw_usart)
 {
-	p_hw_usart->cr2 &= ~(1u << 14);
-}
-
-/**
- * \brief EIE 错误中断使能
- *
- * \param[in] p_hw_usart : 串口寄存器结构体的指针
- *
- * \note: 在多缓冲区通信模式下，当有帧错误、过载或者噪声错误时(USART_SR
- *        中的 FE=1，或者 ORE=1，或者 NE=1)产生中断。
- *
- * \return none
- */
-am_static_inline
-void amhw_zlg237_usart_error_int_enable (amhw_zlg237_usart_t *p_hw_usart)
-{
-	p_hw_usart->cr3 |= (1u << 0);
-}
-
-/**
- * \brief EIE 错误中断禁能
- *
- * \param[in] p_hw_usart : 串口寄存器结构体的指针
-
- *
- * \return none
- */
-am_static_inline
-void amhw_zlg237_usart_error_int_disable (amhw_zlg237_usart_t *p_hw_usart)
-{
-	p_hw_usart->cr3 &= ~(1u << 0);
+    p_hw_usart->cr2 &= ~(1u << 14);
 }
 
 /**
@@ -771,7 +682,7 @@ void amhw_zlg237_usart_error_int_disable (amhw_zlg237_usart_t *p_hw_usart)
 am_static_inline
 void amhw_zlg237_usart_irda_mode_enable (amhw_zlg237_usart_t *p_hw_usart)
 {
-	p_hw_usart->cr3 |= (1u << 1);
+    p_hw_usart->cr3 |= (1u << 1);
 }
 
 /**
@@ -784,7 +695,7 @@ void amhw_zlg237_usart_irda_mode_enable (amhw_zlg237_usart_t *p_hw_usart)
 am_static_inline
 void amhw_zlg237_usart_irda_mode_disable (amhw_zlg237_usart_t *p_hw_usart)
 {
-	p_hw_usart->cr3 &= ~(1u << 1);
+    p_hw_usart->cr3 &= ~(1u << 1);
 }
 
 /**
@@ -797,7 +708,7 @@ void amhw_zlg237_usart_irda_mode_disable (amhw_zlg237_usart_t *p_hw_usart)
 am_static_inline
 void amhw_zlg237_usart_irda_lowpower_enable (amhw_zlg237_usart_t *p_hw_usart)
 {
-	p_hw_usart->cr3 |= (1u << 2);
+    p_hw_usart->cr3 |= (1u << 2);
 }
 
 /**
@@ -810,15 +721,15 @@ void amhw_zlg237_usart_irda_lowpower_enable (amhw_zlg237_usart_t *p_hw_usart)
 am_static_inline
 void amhw_zlg237_usart_irda_lowpower_disable (amhw_zlg237_usart_t *p_hw_usart)
 {
-	p_hw_usart->cr3 &= ~(1u << 2);
+    p_hw_usart->cr3 &= ~(1u << 2);
 }
 
 /**
  * \brief HDSEL 半双工选择
  *
  * \param[in] p_hw_usart : 串口寄存器结构体的指针
- * \param[in] flag      : 0：不选择半双工模式
- *                        1：    选择半双工模式
+ * \param[in] flag       : 0：不选择半双工模式
+ *                         1：    选择半双工模式
  *
  * \retval none
  */
@@ -839,7 +750,7 @@ void amhw_zlg237_usart_half_duplex_sel (amhw_zlg237_usart_t    *p_hw_usart,
 am_static_inline
 void amhw_zlg237_usart_smartcard_nack_enable (amhw_zlg237_usart_t *p_hw_usart)
 {
-	p_hw_usart->cr3 |= (1u << 4);
+    p_hw_usart->cr3 |= (1u << 4);
 }
 
 /**
@@ -852,7 +763,7 @@ void amhw_zlg237_usart_smartcard_nack_enable (amhw_zlg237_usart_t *p_hw_usart)
 am_static_inline
 void amhw_zlg237_usart_smartcard_nack_disable (amhw_zlg237_usart_t *p_hw_usart)
 {
-	p_hw_usart->cr3 &= ~(1u << 4);
+    p_hw_usart->cr3 &= ~(1u << 4);
 }
 
 /**
@@ -865,7 +776,7 @@ void amhw_zlg237_usart_smartcard_nack_disable (amhw_zlg237_usart_t *p_hw_usart)
 am_static_inline
 void amhw_zlg237_usart_smartcard_mode_enable (amhw_zlg237_usart_t *p_hw_usart)
 {
-	p_hw_usart->cr3 |= (1u << 5);
+    p_hw_usart->cr3 |= (1u << 5);
 }
 
 /**
@@ -878,7 +789,7 @@ void amhw_zlg237_usart_smartcard_mode_enable (amhw_zlg237_usart_t *p_hw_usart)
 am_static_inline
 void amhw_zlg237_usart_smartcard_mode_disable (amhw_zlg237_usart_t *p_hw_usart)
 {
-	p_hw_usart->cr3 &= ~(1u << 5);
+    p_hw_usart->cr3 &= ~(1u << 5);
 }
 
 /**
@@ -891,7 +802,7 @@ void amhw_zlg237_usart_smartcard_mode_disable (amhw_zlg237_usart_t *p_hw_usart)
 am_static_inline
 void amhw_zlg237_usart_dmar_enable (amhw_zlg237_usart_t *p_hw_usart)
 {
-	p_hw_usart->cr3 |= (1u << 6);
+    p_hw_usart->cr3 |= (1u << 6);
 }
 
 /**
@@ -904,7 +815,7 @@ void amhw_zlg237_usart_dmar_enable (amhw_zlg237_usart_t *p_hw_usart)
 am_static_inline
 void amhw_zlg237_usart_dmar_disable (amhw_zlg237_usart_t *p_hw_usart)
 {
-	p_hw_usart->cr3 &= ~(1u << 6);
+    p_hw_usart->cr3 &= ~(1u << 6);
 }
 
 /**
@@ -917,7 +828,7 @@ void amhw_zlg237_usart_dmar_disable (amhw_zlg237_usart_t *p_hw_usart)
 am_static_inline
 void amhw_zlg237_usart_dmat_enable (amhw_zlg237_usart_t *p_hw_usart)
 {
-	p_hw_usart->cr3 |= (1u << 7);
+    p_hw_usart->cr3 |= (1u << 7);
 }
 
 /**
@@ -930,7 +841,7 @@ void amhw_zlg237_usart_dmat_enable (amhw_zlg237_usart_t *p_hw_usart)
 am_static_inline
 void amhw_zlg237_usart_dmat_disable (amhw_zlg237_usart_t *p_hw_usart)
 {
-	p_hw_usart->cr3 &= ~(1u << 7);
+    p_hw_usart->cr3 &= ~(1u << 7);
 }
 
 /**
@@ -947,7 +858,7 @@ void amhw_zlg237_usart_dmat_disable (amhw_zlg237_usart_t *p_hw_usart)
 am_static_inline
 void amhw_zlg237_usart_rts_enable (amhw_zlg237_usart_t *p_hw_usart)
 {
-	p_hw_usart->cr3 |= (1u << 8);
+    p_hw_usart->cr3 |= (1u << 8);
 }
 
 /**
@@ -960,7 +871,7 @@ void amhw_zlg237_usart_rts_enable (amhw_zlg237_usart_t *p_hw_usart)
 am_static_inline
 void amhw_zlg237_usart_rts_disable (amhw_zlg237_usart_t *p_hw_usart)
 {
-	p_hw_usart->cr3 &= ~(1u << 8);
+    p_hw_usart->cr3 &= ~(1u << 8);
 }
 
 /**
@@ -978,7 +889,7 @@ void amhw_zlg237_usart_rts_disable (amhw_zlg237_usart_t *p_hw_usart)
 am_static_inline
 void amhw_zlg237_usart_cts_enable (amhw_zlg237_usart_t *p_hw_usart)
 {
-	p_hw_usart->cr3 |= (1u << 9);
+    p_hw_usart->cr3 |= (1u << 9);
 }
 
 /**
@@ -991,54 +902,26 @@ void amhw_zlg237_usart_cts_enable (amhw_zlg237_usart_t *p_hw_usart)
 am_static_inline
 void amhw_zlg237_usart_cts_disable (amhw_zlg237_usart_t *p_hw_usart)
 {
-	p_hw_usart->cr3 &= ~(1u << 9);
-}
-
-/**
- * \brief CTSIE CTS中断使能
- *
- * \param[in] p_hw_usart : 串口寄存器结构体的指针
- *
- * \note: USART_SR 寄存器中的 CTS 为‘1’时产生中断
- *
- * \return none
- */
-am_static_inline
-void amhw_zlg237_usart_cts_int_enable (amhw_zlg237_usart_t *p_hw_usart)
-{
-	p_hw_usart->cr3 |= (1u << 10);
-}
-
-/**
- * \brief CTSIE CTS中断禁能
- *
- * \param[in] p_hw_usart : 串口寄存器结构体的指针
- *
- * \return none
- */
-am_static_inline
-void amhw_zlg237_usart_cts_int_disable (amhw_zlg237_usart_t *p_hw_usart)
-{
-	p_hw_usart->cr3 &= ~(1u << 10);
+    p_hw_usart->cr3 &= ~(1u << 9);
 }
 
 /**
  * \brief PSC[7:0] 预分频器值设置
  *
  * \param[in] p_hw_usart : 串口寄存器结构体的指针
- * \param[in] flag      : 预分频器值数据
+ * \param[in] flag       : 预分频器值数据
  *
  * \note: 1.在红外(IrDA)低功耗模式下：
  *          PSC[7:0]=红外低功耗波特率对系统时钟分频以获得低功耗模式下的频率:
  *              00000000：保留 – 不要写入该值；
- *			    00000001：对源时钟 1 分频；
- *				00000010：对源时钟 2 分频；
- *				......
- *		  2.在红外(IrDA)的正常模式下：
- *		    PSC只能设置为 00000001
- *		  3.在智能卡模式下,位[7:5]在智能卡模式下没有意义. 对系统时钟进行分频，给智能卡提供时钟。
- *		            寄存器中给出的值(低 5 位有效)乘以 2 后，作为对源时钟的分频因子
- *		        00000：保留 – 不要写入该值；
+ *                00000001：对源时钟 1 分频；
+ *                00000010：对源时钟 2 分频；
+ *                ......
+ *          2.在红外(IrDA)的正常模式下：
+ *            PSC只能设置为 00000001
+ *          3.在智能卡模式下,位[7:5]在智能卡模式下没有意义. 对系统时钟进行分频，给智能卡提供时钟。
+ *                    寄存器中给出的值(低 5 位有效)乘以 2 后，作为对源时钟的分频因子
+ *              00000：保留 – 不要写入该值；
  *              00001：对源时钟进行 2 分频；
  *              00010：对源时钟进行 4 分频；
  *              00011：对源时钟进行 6 分频；
@@ -1087,8 +970,8 @@ int amhw_zlg237_usart_baudrate_set (amhw_zlg237_usart_t    *p_hw_usart,
 /**
  * \brief USART receive data(polling mode)
  * \param[in] p_hw_usart : pointer to USART register block
- * \param[in] p_rxbuf   : the pointer buffer
- * \param[in] nbytes    : bytes
+ * \param[in] p_rxbuf    : the pointer buffer
+ * \param[in] nbytes     : bytes
  *
  * \return bytes
  */
@@ -1099,8 +982,8 @@ uint32_t amhw_zlg237_usart_poll_receive (amhw_zlg237_usart_t    *p_hw_usart,
 /**
  * \brief USART transfer data (polling mode)
  * \param[in] p_hw_usart : pointer to USART register block
- * \param[in] p_txbuf   : the pointer to buffer
- * \param[in] nbytes    :  bytes
+ * \param[in] p_txbuf    : the pointer to buffer
+ * \param[in] nbytes     :  bytes
  *
  * \return bytes
  */

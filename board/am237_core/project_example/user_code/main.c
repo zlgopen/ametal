@@ -36,7 +36,6 @@
 
 int am_main (void)
 {
-
     AM_DBG_INFO("Start up successful!\r\n");
     /*
      * 以下为所有demo的入口函数，需要运行哪个demo，就取消对应函数调用行的注释
@@ -46,7 +45,7 @@ int am_main (void)
      * 注意：同一时刻只能运行一个 demo，即只能使某一行处于取消注释状态
      */
 
-//    demo_zlg237_core_std_led_entry();
+    demo_zlg237_core_std_led_entry();
 //    demo_zlg237_core_std_delay_entry();
 //    demo_zlg237_core_std_adc_entry();
 //    demo_zlg237_core_hw_adc_int_entry();
@@ -86,7 +85,7 @@ int am_main (void)
 //    demo_zlg237_core_miniport_key_digitron_entry();
 //    demo_zlg237_core_miniport_led_entry();
 //    demo_zlg237_core_miniport_zlg72128_entry();
-    demo_zlg237_core_std_rtc_entry();
+//    demo_zlg237_core_std_rtc_entry();
 //    demo_zlg237_core_hw_spi_master_entry();
 //    demo_zlg237_core_std_spi_master_dma_entry();
 //    demo_zlg237_core_std_spi_master_int_entry();

@@ -64,7 +64,7 @@ extern "C" {
  */
 
 /** \brief 使能 NVRAM 服务 */
-#define AM_CFG_NVRAM_ENABLE              0
+#define AM_CFG_NVRAM_ENABLE              1
 
 /** \brief 是否使用按键系统 */
 #define AM_CFG_KEY_ENABLE                0
@@ -116,7 +116,7 @@ extern "C" {
 /**
  * \brief 如果为1，则初始化系统滴答
  */
-#define AM_CFG_SYSTEM_TICK_ENABLE    0
+#define AM_CFG_SYSTEM_TICK_ENABLE    1
 
 /**
  * \brief 如果为1，则初始化软件定时器
@@ -124,7 +124,7 @@ extern "C" {
  * 软件定时器默认使用 TIM4 定时器
  * 软件定时器的使用详见 am_softimer.h
  */
-#define AM_CFG_SOFTIMER_ENABLE       0
+#define AM_CFG_SOFTIMER_ENABLE       1
 
 /**
  * \brief 如果为1，则初始化串口调试输出，调试串口默认为UART1

@@ -21,11 +21,11 @@
  * \endinternal
  */
 
+#include "zlg237_pin.h"
 #include "ametal.h"
 #include "am_time.h"
 #include "am_ds1302.h"
-#include "am_zlg217_inst_init.h"
-#include "zlg217_pin.h"
+#include "am_zlg237_inst_init.h"
 
 /**
  * \addtogroup am_if_src_hwconf_microport_ds1302

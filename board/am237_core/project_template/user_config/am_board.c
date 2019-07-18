@@ -12,7 +12,7 @@
 
 /**
  * \file
- * \brief am217_core
+ * \brief am237_core
  *
  * \internal
  * \par Modification history
@@ -20,17 +20,17 @@
  * \endinternal
  */
 
+#include "am_zlg237_inst_init.h"
 #include "ametal.h"
 #include "am_board.h"
 #include "am_prj_config.h"
 #include "am_event_input_key.h"
 #include "am_event_category_input.h"
 #include "am_bsp_isr_defer_pendsv.h"
-#include "am_zlg217.h"
-#include "am_zlg217_inst_init.h"
 #include "am_bsp_system_heap.h"
 #include "am_bsp_delay_timer.h"
 #include "am_service_inst_init.h"
+#include "am_zlg237.h"
 
 #ifdef __CC_ARM
 #ifdef __MICROLIB
@@ -100,7 +100,7 @@ void am_board_init (void)
     am_bsp_system_heap_init((void *)heap_start, (void *)heap_end);
 
 #if (AM_CFG_DELAY_ENABLE == 1)
-    am_bsp_delay_timer_init(am_zlg217_systick_inst_init(), 0);
+    am_bsp_delay_timer_init(am_zlg237_systick_inst_init(), 0);
 #endif /* (AM_CFG_DELAY_ENABLE == 1) */
 
 #if (AM_CFG_LED_ENABLE == 1)

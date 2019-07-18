@@ -20,9 +20,9 @@
  * - 1.00 15-07-13  tee, first implementation
  * \endinternal
  */
+#include "zlg237_pin.h"
 #include "ametal.h"
 #include "am_led_gpio.h"
-#include "zlg217_pin.h"
 #include "am_input.h"
 
 /**

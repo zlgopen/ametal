@@ -20,12 +20,12 @@
  * - 1.00 17-07-13  tee, first implementation
  * \endinternal
  */
+#include "zlg237_pin.h"
 #include "ametal.h"
 #include "am_time.h"
 #include "am_alarm_clk.h"
 #include "am_rx8025t.h"
-#include "am_zlg217_inst_init.h"
-#include "zlg217_pin.h"
+#include "am_zlg237_inst_init.h"
 
 /**
  * \addtogroup am_if_src_hwconf_microport_rx8025t
@@ -51,7 +51,7 @@ am_rx8025t_handle_t am_microport_rx8025t_inst_init (void)
 {
 
     /* »ñÈ¡ I2C ÊµÀý¾ä±ú */
-    am_i2c_handle_t i2c_handle = am_zlg217_i2c1_inst_init();
+    am_i2c_handle_t i2c_handle = am_zlg237_i2c1_inst_init();
 
     return am_rx8025t_init(&__g_microport_rx8025t_dev,
                            &__g_microport_rx8025t_devinfo,

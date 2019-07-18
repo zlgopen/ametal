@@ -56,7 +56,7 @@ am_local void __uart_init (void)
 {
     am_uart_handle_t handle = NULL;
 
-    handle = am_zlg237_uart2_inst_init();
+    handle = am_zlg237_usart2_inst_init();
 
     /* µ÷ÊÔ³õÊ¼»¯ */
     am_debug_init(handle, __DEBUG_BAUDRATE);

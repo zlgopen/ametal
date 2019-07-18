@@ -12,7 +12,7 @@
 
 /**
  * \file
- * \brief USART驱动，服务UART标准接口
+ * \brief USART驱动，服务USART标准接口
  *
  * \internal
  * \par Modification History
@@ -40,9 +40,9 @@ extern "C" {
  * \name 错误编码号，错误回调函数的code参数，由驱动传递给用户，指明当前的错误类型
  *
  *  错误回调函数的参数原型：\n
- *  int usart_err(void *p_arg, int code, void *p_data, int size);
+ *  int uart_err(void *p_arg, int code, void *p_data, int size);
  *  p_arg是用户注册的用户参数。p_data和size不同的错误类型包含的信息有所不同。
- *  可以使用am_usart_callback_set() 函数设置串口错误回调函数。
+ *  可以使用am_uart_callback_set() 函数设置串口错误回调函数。
  * @{
  */
 
@@ -69,7 +69,7 @@ extern "C" {
  */
 typedef struct am_zlg237_usart_devinfo {
 
-    uint32_t usart_reg_base;     /**< \brief 指向UART寄存器块的指针 */
+    uint32_t usart_reg_base;     /**< \brief 指向USART寄存器块的指针 */
 
     uint8_t  inum;              /**< \brief 串口中断号 */
 
@@ -87,17 +87,17 @@ typedef struct am_zlg237_usart_devinfo {
 
     /**
      * \brief 指定使能的其它中断,AMHW_ZLG237_USART_INT_*宏值或多个AMHW_ZLG237_USART_INT_*宏的
-     *        或值，除了(# AMHW_ZLG237_USART_INT_TX_EMPTY_ENABLE),
-     *               (# AMHW_ZLG237_USART_INT_RX_VAL_ENABLE)这两个中断。
+     *        或值，除了(# AMHW_ZLG237237_USART_INT_TX_EMPTY_ENABLE),
+     *                (# AMHW_ZLG237_USART_INT_RX_VAL_ENABLE)这两个中断。
      */
     uint32_t other_int_enable;
 
     /** \brief RS485 方向控制函数, AM_TRUE: 发送模式， AM_FALSE: 接收模式 */
     void (*pfn_rs485_dir) (am_bool_t is_txmode);
 
-    void (*pfn_plfm_init)(void);   /**< \brief 平台初始化函数 */
+    void (*pfn_plfm_init)(void);    /**< \brief 平台初始化函数 */
 
-    void (*pfn_plfm_deinit)(void); /**< \brief 平台去初始化函数 */
+    void (*pfn_plfm_deinit)(void);  /**< \brief 平台去初始化函数 */
 
     uint32_t  gpio_ck[2];           /**< \brief ck 输出引脚相关定义 */
 
@@ -112,7 +112,7 @@ typedef struct am_zlg237_usart_devinfo {
  */
 typedef struct am_zlg237_usart_dev {
 
-    am_uart_serv_t  uart_serv; /**< \brief 标准UART服务 */
+    am_uart_serv_t  uart_serv; /**< \brief 标准USART服务 */
 
     /** \brief 指向用户注册的txchar_get函数 */
     int (*pfn_txchar_get)(void *, char *);
@@ -143,17 +143,23 @@ typedef struct am_zlg237_usart_dev {
 } am_zlg237_usart_dev_t;
 
 /**
- * \brief 初始化UART，返回UART标准服务操作句柄
+ * \brief 初始化USART，返回USART标准服务操作句柄
  *
  * \param[in] p_dev     : 指向串口设备的指针
  * \param[in] p_devinfo : 指向串口设备信息常量的指针
  *
- * \return UART标准服务操作句柄，值为NULL时表明初始化失败
+ * \return USART标准服务操作句柄，值为NULL时表明初始化失败
  */
-am_uart_handle_t am_zlg237_usart_init(am_zlg237_usart_dev_t          *p_dev,
-                                     const am_zlg237_usart_devinfo_t *p_devinfo);
+am_uart_handle_t am_zlg237_usart_init(am_zlg237_usart_dev_t              *p_dev,
+                                      const am_zlg237_usart_devinfo_t    *p_devinfo);
 
 
+/**
+ * \brief 串口去初始化
+ *
+ * \param[in] p_dev     : 指向串口设备的指针
+ */
+void am_zlg237_usart_deinit (am_zlg237_usart_dev_t *p_dev);
 /**
  * @}
  */

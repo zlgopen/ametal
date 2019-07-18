@@ -23,7 +23,7 @@
 #include "ametal.h"
 #include "am_i2c.h"
 #include "am_ep24cxx.h"
-#include "am_zlg217_inst_init.h"
+#include "am_zlg237_inst_init.h"
 
 /**
  * \addtogroup am_if_src_hwconf_microport_eeprom
@@ -47,7 +47,7 @@ am_local am_ep24cxx_dev_t __g_microport_eeprom_dev;
 /** \brief ÊµÀý³õÊ¼»¯ */
 am_ep24cxx_handle_t am_microport_eeprom_inst_init (void)
 {
-    am_i2c_handle_t i2c_handle = am_zlg217_i2c1_inst_init();
+    am_i2c_handle_t i2c_handle = am_zlg237_i2c1_inst_init();
     return am_ep24cxx_init(&__g_microport_eeprom_dev,
                            &__g_microport_eeprom_devinfo,
                             i2c_handle);

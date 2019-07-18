@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>template_am217_core</name>
+	<name>template_am237_core</name>
 	<comment></comment>
 	<projects>
 	</projects>
@@ -99,6 +99,18 @@
 		<variable>
 			<name>copy_PARENT123456</name>
 			<value>$%7Bcopy_PARENT12345%7D</value>
+		</variable>
+		<variable>
+			<name>copy_PARENT1234567</name>
+			<value>$%7BPARENT-2-PROJECT_LOC%7D/ametal</value>
+		</variable>
+		<variable>
+			<name>copy_PARENT12345678</name>
+			<value>$%7Bcopy_PARENT1234567%7D/board</value>
+		</variable>
+		<variable>
+			<name>copy_PARENT123456789</name>
+			<value>$%7Bcopy_PARENT12345678%7D/am237_core/project_template</value>
 		</variable>
 	</variableList>
 </projectDescription>

@@ -22,10 +22,10 @@
  * - 1.00 15-07-13  tee, first implementation
  * \endinternal
  */
+#include "zlg237_pin.h"
 #include "ametal.h"
 #include "am_key_matrix_gpio.h"
 #include "am_input.h"
-#include "zlg217_pin.h"
 
 /**
  * \addtogroup am_if_src_hwconf_miniport_key

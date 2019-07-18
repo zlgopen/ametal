@@ -20,10 +20,10 @@
  * - 1.00 19-03-25  wk, first implementation.
  * \endinternal
  */
-#include <zlg237_pin.h>
+#include "zlg237_pin.h"
 #include "ametal.h"
 #include "am_fm175xx.h"
-#include "am_zmf237_inst_init.h"
+#include "am_zlg237_inst_init.h"
 
 /**
  * \addtogroup am_if_src_hwconf_fm175xx
@@ -61,7 +61,7 @@ am_local am_const am_fm175xx_devinfo_t __g_fm175xx_devinfo = {
 am_fm175xx_handle_t am_fm175xx_inst_init (void)
 {
       am_fm175xx_init(&__g_fm175xx_dev,
-                       am_zmf237_spi1_poll_inst_init(),
+                       am_zlg237_spi1_poll_inst_init(),
                       &__g_fm175xx_devinfo);
 
       return &__g_fm175xx_dev;

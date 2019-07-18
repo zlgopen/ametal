@@ -12,7 +12,7 @@
 
 /**
  * \file
- * \brief ZLG217 用户配置文件
+ * \brief ZLG237 用户配置文件
  * \sa am_prj_config.c
  *
  * \internal
@@ -21,9 +21,9 @@
  * \endinternal
  */
 
+#include "am_zlg237_inst_init.h"
 #include "ametal.h"
 #include "am_prj_config.h"
-#include "am_zlg217_inst_init.h"
 #include "am_board.h"
 #include "am_service_inst_init.h"
 
@@ -33,19 +33,19 @@ int main (void)
 {
 
 #if (AM_CFG_CLK_ENABLE == 1)
-    am_zlg217_clk_inst_init();
+    am_zlg237_clk_inst_init();
 #endif /* (AM_CFG_CLK_ENABLE == 1) */
 
 #if (AM_CFG_INT_ENABLE == 1)
-    am_zlg217_nvic_inst_init();
+    am_zlg237_nvic_inst_init();
 #endif /* (AM_CFG_INT_ENABLE == 1) */
 
 #if (AM_CFG_GPIO_ENABLE == 1)
-    am_zlg217_gpio_inst_init();
+    am_zlg237_gpio_inst_init();
 #endif /* (AM_CFG_GPIO_ENABLE == 1) */
 
 #if (AM_CFG_DMA_ENABLE == 1)
-    am_zlg217_dma_inst_init();
+    am_zlg237_dma_inst_init();
 #endif /* (AM_CFG_DMA_ENABLE == 1) */
 
 #if (AM_CFG_NVRAM_ENABLE == 1)
