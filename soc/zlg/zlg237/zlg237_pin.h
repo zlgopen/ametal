@@ -139,7 +139,7 @@ extern "C" {
  * @{
  */
 #define PIOA_0_NO_REMAP              AM_ZLG237_GPIO_REMAP_CODE(0x15, 0)
-#define PIOA_0_ADC1_IN0              PIOA_0_NO_REMAP   /**< \brief ADC1_IN0 */
+#define PIOA_0_ADC12_IN0             PIOA_0_NO_REMAP   /**< \brief ADC12_IN0 */
 #define PIOA_0_WKUP                  PIOA_0_NO_REMAP   /**< \brief WAKE_UP */
 #define PIOA_0_GPIO                  PIOA_0_NO_REMAP   /**< \brief GPIO */
 
@@ -183,7 +183,7 @@ extern "C" {
  * @{
  */
 #define PIOA_1_NO_REMAP              AM_ZLG237_GPIO_REMAP_CODE(0x15, 0)
-#define PIOA_1_ADC1_IN1              PIOA_1_NO_REMAP   /**< \brief ADC1_IN1 */
+#define PIOA_1_ADC12_IN1             PIOA_1_NO_REMAP   /**< \brief ADC12_IN1 */
 #define PIOA_1_UART2_RTS             PIOA_1_NO_REMAP   /**< \brief UART2_RTS */
 #define PIOA_1_GPIO                  PIOA_1_NO_REMAP   /**< \brief GPIO */
 
@@ -228,7 +228,7 @@ extern "C" {
  */
 #define PIOA_2_NO_REMAP              AM_ZLG237_GPIO_REMAP_CODE(0x15, 0)
 #define PIOA_2_UART2_TX              PIOA_2_NO_REMAP   /**< \brief UART2_TX */
-#define PIOA_2_ADC1_IN2              PIOA_2_NO_REMAP   /**< \brief ADC1_IN2 */
+#define PIOA_2_ADC12_IN2             PIOA_2_NO_REMAP   /**< \brief ADC12_IN2 */
 #define PIOA_2_GPIO                  PIOA_2_NO_REMAP   /**< \brief GPIO */
 
 #define PIOA_2_TIM2_CH3_REMAP0       AM_ZLG237_GPIO_REMAP_CODE(0x08, 0)   /**< \brief TIM2_CH3 */
@@ -272,7 +272,7 @@ extern "C" {
  * @{
  */
 #define PIOA_3_NO_REMAP              AM_ZLG237_GPIO_REMAP_CODE(0x15, 0)
-#define PIOA_3_ADC1_IN3              PIOA_3_NO_REMAP   /**< \brief ADC1_IN3 */
+#define PIOA_3_ADC12_IN3             PIOA_3_NO_REMAP   /**< \brief ADC12_IN3 */
 #define PIOA_3_UART2_RX              PIOA_3_NO_REMAP   /**< \brief UART2_RX */
 #define PIOA_3_GPIO                  PIOA_3_NO_REMAP   /**< \brief GPIO */
 
@@ -318,7 +318,7 @@ extern "C" {
  * @{
  */
 #define PIOA_4_NO_REMAP              AM_ZLG237_GPIO_REMAP_CODE(0x15, 0)
-#define PIOA_4_ADC1_IN4              PIOA_4_NO_REMAP    /**< \brief ADC1_IN4 */
+#define PIOA_4_ADC12_IN4             PIOA_4_NO_REMAP    /**< \brief ADC12_IN4 */
 #define PIOA_4_DAC1_OUT              PIOA_4_NO_REMAP    /**< \brief DAC1_OUT */
 #define PIOA_4_GPIO                  PIOA_4_NO_REMAP    /**< \brief GPIO */
 
@@ -361,7 +361,7 @@ extern "C" {
  * @{
  */
 #define PIOA_5_NO_REMAP              AM_ZLG237_GPIO_REMAP_CODE(0x15, 0)
-#define PIOA_5_ADC1_IN5              PIOA_5_NO_REMAP   /**< \brief ADC1_IN5 */
+#define PIOA_5_ADC12_IN5             PIOA_5_NO_REMAP   /**< \brief ADC12_IN5 */
 #define PIOA_5_DAC2_OUT              PIOA_5_NO_REMAP   /**< \brief DAC2_OUT */
 #define PIOA_5_GPIO                  PIOA_5_NO_REMAP   /**< \brief GPIO */
 
@@ -403,7 +403,7 @@ extern "C" {
  * @{
  */
 #define PIOA_6_NO_REMAP              AM_ZLG237_GPIO_REMAP_CODE(0x15, 0)
-#define PIOA_6_ADC1_IN6              PIOA_6_NO_REMAP   /**< \brief ADC1_IN6 */
+#define PIOA_6_ADC12_IN6             PIOA_6_NO_REMAP   /**< \brief ADC12_IN6 */
 #define PIOA_6_GPIO                  PIOA_6_NO_REMAP   /**< \brief GPIO */
 
 #define PIOA_6_SPI1_MISO_REMAP0      AM_ZLG237_GPIO_REMAP_CODE(0x00, 0)   /**< \brief SPI1_MISO */
@@ -446,7 +446,7 @@ extern "C" {
  * @{
  */
 #define PIOA_7_NO_REMAP              AM_ZLG237_GPIO_REMAP_CODE(0x15, 0)
-#define PIOA_7_ADC1_IN7              PIOA_7_NO_REMAP   /**< \brief ADC1_IN7 */
+#define PIOA_7_ADC12_IN7             PIOA_7_NO_REMAP   /**< \brief ADC12_IN7 */
 #define PIOA_7_GPIO                  PIOA_7_NO_REMAP   /**< \brief GPIO */
 
 #define PIOA_7_SPI1_MOSI_REMAP0      AM_ZLG237_GPIO_REMAP_CODE(0x00, 0)   /**< \brief SPI1_MOSI */
@@ -824,7 +824,7 @@ extern "C" {
  * @{
  */
 #define PIOB_0_NO_REMAP               AM_ZLG237_GPIO_REMAP_CODE(0x15, 0)
-#define PIOB_0_ADC2_IN0               PIOB_0_NO_REMAP   /**< \brief ADC2_IN0 */
+#define PIOB_0_ADC12_IN8              PIOB_0_NO_REMAP   /**< \brief ADC12_IN8 */
 #define PIOB_0_GPIO                   PIOB_0_NO_REMAP   /**< \brief GPIO */
 
 #define PIOB_0_TIM3_CH3_REMAP0        AM_ZLG237_GPIO_REMAP_CODE(0x0A, 0)   /**< \brief TIM3_CH3 */
@@ -866,7 +866,7 @@ extern "C" {
  * @{
  */
 #define PIOB_1_NO_REMAP              AM_ZLG237_GPIO_REMAP_CODE(0x15, 0)
-#define PIOB_1_ADC2_IN1              PIOB_1_NO_REMAP   /**< \brief ADC2_IN1 */
+#define PIOB_1_ADC12_IN9             PIOB_1_NO_REMAP   /**< \brief ADC12_IN9 */
 #define PIOB_1_GPIO                  PIOB_1_NO_REMAP   /**< \brief GPIO */
 
 #define PIOB_1_TIM3_CH4_REMAP0       AM_ZLG237_GPIO_REMAP_CODE(0x0A, 0)   /**< \brief TIM3_CH4 */
@@ -1517,7 +1517,7 @@ extern "C" {
  * @{
  */
 #define PIOC_0_NO_REMAP           AM_ZLG237_GPIO_REMAP_CODE(0x15, 0)
-#define PIOC_0_ADC2_IN2           PIOC_0_NO_REMAP   /**< \brief ADC2_IN2 */
+#define PIOC_0_ADC12_IN10         PIOC_0_NO_REMAP   /**< \brief ADC12_IN10 */
 #define PIOC_0_GPIO               PIOC_0_NO_REMAP   /**< \brief GPIO */
 
 /** @} */
@@ -1556,7 +1556,7 @@ extern "C" {
  * @{
  */
 #define PIOC_1_NO_REMAP           AM_ZLG237_GPIO_REMAP_CODE(0x15, 0)
-#define PIOC_1_ADC2_IN3           PIOC_1_NO_REMAP   /**< \brief ADC2_IN3 */
+#define PIOC_1_ADC12_IN11         PIOC_1_NO_REMAP   /**< \brief ADC12_IN11 */
 #define PIOC_1_GPIO               PIOC_1_NO_REMAP   /**< \brief GPIO */
 
 /** @} */
@@ -1595,7 +1595,7 @@ extern "C" {
  * @{
  */
 #define PIOC_2_NO_REMAP           AM_ZLG237_GPIO_REMAP_CODE(0x15, 0)
-#define PIOC_2_ADC2_IN4           PIOC_2_NO_REMAP   /**< \brief ADC2_IN4 */
+#define PIOC_2_ADC12_IN12         PIOC_2_NO_REMAP   /**< \brief ADC12_IN12 */
 #define PIOC_2_GPIO               PIOC_2_NO_REMAP   /**< \brief GPIO */
 
 /** @} */
@@ -1635,7 +1635,7 @@ extern "C" {
  */
 
 #define PIOC_3_NO_REMAP           AM_ZLG237_GPIO_REMAP_CODE(0x15, 0)
-#define PIOC_3_ADC2_IN5           PIOC_3_NO_REMAP   /**< \brief ADC2_IN5 */
+#define PIOC_3_ADC12_IN13         PIOC_3_NO_REMAP   /**< \brief ADC12_IN13 */
 #define PIOC_3_GPIO               PIOC_3_NO_REMAP   /**< \brief GPIO */
 
 /** @} */
@@ -1675,7 +1675,7 @@ extern "C" {
  */
 
 #define PIOC_4_NO_REMAP           AM_ZLG237_GPIO_REMAP_CODE(0x15, 0)
-#define PIOC_4_ADC2_IN6           PIOC_4_NO_REMAP   /**< \brief ADC2_IN6 */
+#define PIOC_4_ADC12_IN14         PIOC_4_NO_REMAP   /**< \brief ADC12_IN14 */
 #define PIOC_4_GPIO               PIOC_4_NO_REMAP   /**< \brief GPIO */
 
 /** @} */
@@ -1715,7 +1715,7 @@ extern "C" {
  */
 
 #define PIOC_5_NO_REMAP           AM_ZLG237_GPIO_REMAP_CODE(0x15, 0)
-#define PIOC_5_ADC2_IN7           PIOC_5_NO_REMAP   /**< \brief ADC2_IN7 */
+#define PIOC_5_ADC12_IN15         PIOC_5_NO_REMAP   /**< \brief ADC12_IN15 */
 #define PIOC_5_GPIO               PIOC_5_NO_REMAP   /**< \brief GPIO */
 
 /** @} */
