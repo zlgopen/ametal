@@ -21,11 +21,9 @@
  */
 
 #include "am_zlg237_adc.h"
-
 #include "ametal.h"
 #include "am_int.h"
 #include "am_clk.h"
-
 #include "amhw_zlg237_rcc.h"
 #include "hw/amhw_zlg237_adc.h"
 
@@ -110,18 +108,18 @@ void __zlg237_adc_irq_handle (void *p_arg)
     /* 判断是否当前数据是有效的 */
     if (p_dev->conv_cnt < p_desc->length) {
 
-    	/* 以清除转换结束中断标志 */
-    	amhw_zlg237_adc_status_flag_clr(p_hw_adc,AMHW_ZLG237_ADC_END_FLAG);
+        /* 以清除转换结束中断标志 */
+        amhw_zlg237_adc_status_flag_clr(p_hw_adc,AMHW_ZLG237_ADC_END_FLAG);
 
         /* 读取数据 */
-    	adc_dat = amhw_zlg237_adc_regular_data_get (p_hw_adc);
+        adc_dat = amhw_zlg237_adc_regular_data_get (p_hw_adc);
 
-		/* 保存数据 */
-		if (AM_ADC_DATA_ALIGN_LEFT & p_dev->flags) {
-			p_buf16[p_dev->conv_cnt] = adc_dat << 4;
-		} else {
-			p_buf16[p_dev->conv_cnt] = adc_dat >> p_dev->right_bit;
-		}
+        /* 保存数据 */
+        if (AM_ADC_DATA_ALIGN_LEFT & p_dev->flags) {
+            p_buf16[p_dev->conv_cnt] = adc_dat << 4;
+        } else {
+            p_buf16[p_dev->conv_cnt] = adc_dat >> p_dev->right_bit;
+        }
 
         p_dev->conv_cnt++;
 
@@ -161,7 +159,7 @@ void __zlg237_adc_irq_handle (void *p_arg)
         }
         if (amhw_zlg237_adc_status_flag_check(
             p_hw_adc,AMHW_ZLG237_ADC_END_FLAG) == AM_TRUE) {
-        	amhw_zlg237_adc_status_flag_clr(p_hw_adc,AMHW_ZLG237_ADC_END_FLAG);
+            amhw_zlg237_adc_status_flag_clr(p_hw_adc,AMHW_ZLG237_ADC_END_FLAG);
         }
         __fn_adc_stop (p_dev, p_dev->chan);
     }
@@ -185,7 +183,7 @@ static int __fn_adc_connect (void *p_drv)
 
     /* 连接转换完成中断 */
     am_int_connect(p_dev->p_devinfo->inum,
-    		       __zlg237_adc_irq_handle,
+                   __zlg237_adc_irq_handle,
                    (void *)p_dev);
     am_int_enable(p_dev->p_devinfo->inum);
 
@@ -305,7 +303,7 @@ static int __fn_adc_stop (void *p_drv, int chan)
  * \brief 获取ADC的采样率
  */
 static int __fn_adc_rate_get (void          *p_drv,
-                              int       chan,
+                              int            chan,
                               uint32_t      *p_rate)
 {
     am_zlg237_adc_dev_t *p_dev;
@@ -410,7 +408,7 @@ static int __fn_adc_rate_set (void          *p_drv,
     amhw_zlg237_rcc_adc_div_set (adc_rate_err.adc_div / 2 - 1);
     amhw_zlg237_adc_smpr_set (p_hw_adc,
           (amhw_zlg237_adc_sample_time_t)adc_rate_err.sample_time,
-          (amhw_zlg237_adc_channel_t)p_dev->chan);
+          (amhw_zlg237_adc_channel_t)chan);
 
     return AM_OK;
 }
@@ -420,8 +418,8 @@ static int __fn_adc_rate_set (void          *p_drv,
  */
 static uint32_t __fn_bits_get (void *p_drv, int chan)
 {
-	/* 仅支持12位分辨率 */
-	return AMHW_ZLG237_ADC_DATA_VALID_12BIT;
+    /* 仅支持12位分辨率 */
+    return AMHW_ZLG237_ADC_DATA_VALID_12BIT;
 }
 
 /**

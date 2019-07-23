@@ -143,7 +143,7 @@ extern "C" {
 #define PIOA_0_WKUP                  PIOA_0_NO_REMAP   /**< \brief WAKE_UP */
 #define PIOA_0_GPIO                  PIOA_0_NO_REMAP   /**< \brief GPIO */
 
-#define PIOA_0_UART2_CTS_REMAP0             AM_ZLG237_GPIO_REMAP_CODE(0x03, 0)   /**< \brief UART2_CTS */
+#define PIOA_0_UART2_CTS_REMAP0      AM_ZLG237_GPIO_REMAP_CODE(0x03, 0)   /**< \brief UART2_CTS */
 #define PIOA_0_TIM2_CH1_ETR_REMAP0   AM_ZLG237_GPIO_REMAP_CODE(0x08, 0)   /**< \brief TIM2_CH1_ETR */
 #define PIOA_0_TIM2_CH1_ETR_REMAP2   AM_ZLG237_GPIO_REMAP_CODE(0x08, 2)   /**< \brief TIM2_CH1_ETR */
 

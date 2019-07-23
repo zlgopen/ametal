@@ -86,9 +86,11 @@ static void __zlg_adc_init (amhw_zlg237_adc_t *p_hw_adc,
     amhw_zlg237_adc_disable(p_hw_adc);
 
     /* 设置ADC工规则通道长度 */
-    amhw_zlg237_adc_regular_channel_length_set(
-        p_hw_adc, AMHW_ZLG237_ADC_REGULAR_CHAN_LENGTH_4);
-
+    if(adc_chan_num < 16) {
+        amhw_zlg237_adc_regular_channel_length_set(
+            p_hw_adc,
+            (amhw_zlg237_adc_regular_channel_length_t)adc_chan_num);
+    }
 
     for(i=0;i<adc_chan_num;i++) {
 
@@ -160,8 +162,8 @@ void demo_zlg237_hw_adc_dma_entry (amhw_zlg237_adc_t *p_hw_adc,
     am_zlg_dma_xfer_desc_build(&g_desc,                      /* 通道描述符 */
                                (uint32_t)(&p_hw_adc->dr),    /* 源端数据缓冲区 */
                                (uint32_t)(__g_buf_dst),      /* 目标端数据缓冲区 */
-                               sizeof(__g_buf_dst),           /* 传输字节数 */
-                               flags);                                     /* 传输配置 */
+                               sizeof(__g_buf_dst),          /* 传输字节数 */
+                               flags);                       /* 传输配置 */
 
     /* DMA寄存器配置 */
     am_zlg_dma_xfer_desc_chan_cfg(&g_desc,
