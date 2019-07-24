@@ -87,9 +87,11 @@ int am_main (void)
 //    demo_zlg237_core_miniport_led_entry();
 //    demo_zlg237_core_miniport_zlg72128_entry();
 //    demo_zlg237_core_std_rtc_entry();
-//    demo_zlg237_core_hw_spi_master_entry();
-//    demo_zlg237_core_std_spi_master_dma_entry();
-//    demo_zlg237_core_std_spi_master_int_entry();
+//    demo_zlg237_core_hw_spi_master_entry ();
+//    demo_zlg237_core_std_spi_master_dma_entry ();
+//    demo_zlg237_core_std_spi_master_int_entry ();
+//    demo_zlg237_core_std_spi_master_poll_entry ();
+//    demo_zlg237_core_std_spi_slaver_dma_entry ();
 //    demo_zlg237_core_hw_tim_cap_entry();
 //    demo_zlg237_core_std_tim1_cap_entry();
 //    demo_zlg237_core_std_tim2_cap_entry();

@@ -34,7 +34,7 @@ extern "C" {
 #include "hw/amhw_zlg_crc.h"
 #include "hw/amhw_zlg237_flash.h"
 #include "hw/amhw_zlg_i2c.h"
-#include "hw/amhw_zlg_spi.h"
+#include "hw/amhw_zlg237_spi.h"
 #include "hw/amhw_zlg_tim.h"
 #include "hw/amhw_zlg_uart.h"
 #include "hw/amhw_zlg_iwdg.h"
@@ -117,10 +117,10 @@ extern "C" {
 #define ZLG237_RCC     ((amhw_zlg237_rcc_t       *)ZLG237_RCC_BASE)
 
 /** \brief SPI1¿ØÖÆÆ÷¼Ä´æÆ÷¿éÖ¸Õë */
-#define ZLG237_SPI1    ((amhw_zlg_spi_t          *)ZLG237_SPI1_BASE)
+#define ZLG237_SPI1    ((amhw_zlg237_spi_t       *)ZLG237_SPI1_BASE)
 
 /** \brief SPI2¿ØÖÆÆ÷¼Ä´æÆ÷¿éÖ¸Õë */
-#define ZLG237_SPI2    ((amhw_zlg_spi_t          *)ZLG237_SPI2_BASE)
+#define ZLG237_SPI2    ((amhw_zlg237_spi_t       *)ZLG237_SPI2_BASE)
 
 /** \brief I2C1¼Ä´æÆ÷¿éÖ¸Õë */
 #define ZLG237_I2C1    ((amhw_zlg_i2c_t          *)ZLG237_I2C1_BASE)

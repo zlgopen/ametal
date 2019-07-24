@@ -174,6 +174,16 @@ void demo_zlg237_core_std_spi_master_dma_entry (void);
 void demo_zlg237_core_std_spi_master_int_entry (void);
 
 /**
+ * \brief SPI 主机查询方式例程，通过标准接口实现
+ */
+void demo_zlg237_core_std_spi_master_poll_entry (void);
+
+/**
+ * \brief SPI 从机DMA方式例程，通过标准接口实现
+ */
+void demo_zlg237_core_std_spi_slaver_dma_entry (void);
+
+/**
  * \brief 延时例程，通过标准接口实现
  */
 void demo_zlg237_core_std_delay_entry (void);

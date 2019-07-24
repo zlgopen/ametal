@@ -36,6 +36,7 @@
 #include "hw/amhw_zlg_i2c.h"
 #include "hw/amhw_zlg_pwr.h"
 #include "hw/amhw_zlg_spi.h"
+#include "hw/amhw_zlg237_spi.h"
 #include "hw/amhw_zlg_dma.h"
 #include "hw/amhw_zlg_syscfg.h"
 #include "hw/amhw_zlg_tim.h"
@@ -189,6 +190,21 @@ void demo_zlg_hw_i2c_master_poll_entry (amhw_zlg_i2c_t *p_hw_i2c,
  * \return 无
  */
 void demo_zlg_hw_i2c_slave_poll_entry (amhw_zlg_i2c_t *p_hw_i2c);
+
+
+
+/**
+ * \brief SPI 主机例程，通过 HW 层接口实现
+ *
+ * \param[in] p_hw_spi 指向 SPI 外设寄存器块的指针
+ * \param[in] cs_pin   片选引脚号
+ * \param[in] clk_rate SPI 时钟源频率
+ *
+ * \return 无
+ */
+void demo_zlg237_hw_spi_master_entry (amhw_zlg237_spi_t *p_hw_spi,
+                                      int32_t            cs_pin,
+                                      uint32_t           clk_rate);
 
 /**
  * \brief SPI 主机例程，通过 HW 层接口实现
