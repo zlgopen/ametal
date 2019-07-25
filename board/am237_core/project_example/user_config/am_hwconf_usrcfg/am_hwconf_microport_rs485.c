@@ -48,8 +48,8 @@ void __microport_rs485_dir (am_bool_t is_txmode)
 /** \brief MicroPort RS485平台初始化 */
 am_local void __microport_rs485_plfm_init (void)
 {
-    am_gpio_pin_cfg(PIOA_9,  PIOA_9_UART1_TX_REMAP0 | PIOA_9_AF_PP);
-    am_gpio_pin_cfg(PIOA_10, PIOA_10_UART1_RX_REMAP0| PIOA_10_INPUT_FLOAT);
+    am_gpio_pin_cfg(PIOA_9,  PIOA_9_USART1_TX_REMAP0 | PIOA_9_AF_PP);
+    am_gpio_pin_cfg(PIOA_10, PIOA_10_USART1_RX_REMAP0| PIOA_10_INPUT_FLOAT);
 
     am_gpio_pin_cfg(__MICROPORT_RS485_DIR_PIN, AM_GPIO_OUTPUT_INIT_LOW);
 }

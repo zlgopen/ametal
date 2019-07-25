@@ -20,6 +20,7 @@
  * \endinternal
  */
 #include "am_zlg237_usart.h"
+#include "am_delay.h"
 #include "am_clk.h"
 #include "am_int.h"
 #include "am_gpio.h"
@@ -722,7 +723,7 @@ am_uart_handle_t am_zlg237_usart_init (am_zlg237_usart_dev_t           *p_dev,
         /* 初始化 485 为接收模式 */
         p_dev->p_devinfo->pfn_rs485_dir(AM_FALSE);
     }
-
+    am_mdelay(2);
     return &(p_dev->uart_serv);
 }
 

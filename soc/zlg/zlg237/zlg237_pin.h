@@ -143,7 +143,7 @@ extern "C" {
 #define PIOA_0_WKUP                  PIOA_0_NO_REMAP   /**< \brief WAKE_UP */
 #define PIOA_0_GPIO                  PIOA_0_NO_REMAP   /**< \brief GPIO */
 
-#define PIOA_0_UART2_CTS_REMAP0      AM_ZLG237_GPIO_REMAP_CODE(0x03, 0)   /**< \brief UART2_CTS */
+#define PIOA_0_USART2_CTS_REMAP0     AM_ZLG237_GPIO_REMAP_CODE(0x03, 0)   /**< \brief USART2_CTS */
 #define PIOA_0_TIM2_CH1_ETR_REMAP0   AM_ZLG237_GPIO_REMAP_CODE(0x08, 0)   /**< \brief TIM2_CH1_ETR */
 #define PIOA_0_TIM2_CH1_ETR_REMAP2   AM_ZLG237_GPIO_REMAP_CODE(0x08, 2)   /**< \brief TIM2_CH1_ETR */
 
@@ -184,12 +184,11 @@ extern "C" {
  */
 #define PIOA_1_NO_REMAP              AM_ZLG237_GPIO_REMAP_CODE(0x15, 0)
 #define PIOA_1_ADC12_IN1             PIOA_1_NO_REMAP   /**< \brief ADC12_IN1 */
-#define PIOA_1_UART2_RTS             PIOA_1_NO_REMAP   /**< \brief UART2_RTS */
 #define PIOA_1_GPIO                  PIOA_1_NO_REMAP   /**< \brief GPIO */
 
 #define PIOA_1_TIM2_CH2_REMAP0       AM_ZLG237_GPIO_REMAP_CODE(0x08, 0)   /**< \brief TIM2_CH2 */
 #define PIOA_1_TIM2_CH2_REMAP2       AM_ZLG237_GPIO_REMAP_CODE(0x08, 2)   /**< \brief TIM2_CH2 */
-#define PIOA_1_UART2_RTS_REMAP0      AM_ZLG237_GPIO_REMAP_CODE(0x03, 0)   /**< \brief UART2_RTS */
+#define PIOA_1_USART2_RTS_REMAP0     AM_ZLG237_GPIO_REMAP_CODE(0x03, 0)   /**< \brief USART2_RTS */
 
 /** @} */
 
@@ -227,13 +226,12 @@ extern "C" {
  * @{
  */
 #define PIOA_2_NO_REMAP              AM_ZLG237_GPIO_REMAP_CODE(0x15, 0)
-#define PIOA_2_UART2_TX              PIOA_2_NO_REMAP   /**< \brief UART2_TX */
 #define PIOA_2_ADC12_IN2             PIOA_2_NO_REMAP   /**< \brief ADC12_IN2 */
 #define PIOA_2_GPIO                  PIOA_2_NO_REMAP   /**< \brief GPIO */
 
 #define PIOA_2_TIM2_CH3_REMAP0       AM_ZLG237_GPIO_REMAP_CODE(0x08, 0)   /**< \brief TIM2_CH3 */
 #define PIOA_2_TIM2_CH3_REMAP1       AM_ZLG237_GPIO_REMAP_CODE(0x08, 1)   /**< \brief TIM2_CH3 */
-#define PIOA_2_UART2_TX_REMAP0       AM_ZLG237_GPIO_REMAP_CODE(0x03, 0)   /**< \brief UART2_RTS */
+#define PIOA_2_USART2_TX_REMAP0      AM_ZLG237_GPIO_REMAP_CODE(0x03, 0)   /**< \brief USART2_RTS */
 
 
 /** @} */
@@ -273,12 +271,11 @@ extern "C" {
  */
 #define PIOA_3_NO_REMAP              AM_ZLG237_GPIO_REMAP_CODE(0x15, 0)
 #define PIOA_3_ADC12_IN3             PIOA_3_NO_REMAP   /**< \brief ADC12_IN3 */
-#define PIOA_3_UART2_RX              PIOA_3_NO_REMAP   /**< \brief UART2_RX */
 #define PIOA_3_GPIO                  PIOA_3_NO_REMAP   /**< \brief GPIO */
 
 #define PIOA_3_TIM2_CH4_REMAP0       AM_ZLG237_GPIO_REMAP_CODE(0x08, 0)   /**< \brief TIM2_CH4 */
 #define PIOA_3_TIM2_CH4_REMAP1       AM_ZLG237_GPIO_REMAP_CODE(0x08, 1)   /**< \brief TIM2_CH4 */
-#define PIOA_3_UART2_RX_REMAP0       AM_ZLG237_GPIO_REMAP_CODE(0x03, 0)   /**< \brief UART2_RX */
+#define PIOA_3_USART2_RX_REMAP0      AM_ZLG237_GPIO_REMAP_CODE(0x03, 0)   /**< \brief USART2_RX */
 #define PIOA_3_TIM5_CH4_REMAP0       AM_ZLG237_GPIO_REMAP_CODE(0x10, 0)   /**< \brief TIM5_CH4 */
 
 
@@ -323,7 +320,7 @@ extern "C" {
 #define PIOA_4_GPIO                  PIOA_4_NO_REMAP    /**< \brief GPIO */
 
 #define PIOA_4_SPI1_NSS              AM_ZLG237_GPIO_REMAP_CODE(0x00, 0)     /**< \brief SPI1_NSS */
-#define PIOA_4_UART2_CK_REMAP0       AM_ZLG237_GPIO_REMAP_CODE(0x03, 0)     /**< \brief UART2_CK */
+#define PIOA_4_USART2_CK_REMAP0      AM_ZLG237_GPIO_REMAP_CODE(0x03, 0)     /**< \brief USART2_CK */
 
 /** @} */
 
@@ -532,7 +529,7 @@ extern "C" {
 #define PIOA_9_NO_REMAP              AM_ZLG237_GPIO_REMAP_CODE(0x15, 0)
 #define PIOA_9_GPIO                  PIOA_9_NO_REMAP   /**< \brief GPIO */
 
-#define PIOA_9_UART1_TX_REMAP0       AM_ZLG237_GPIO_REMAP_CODE(0x02, 0)   /**< \brief UART1_TX */
+#define PIOA_9_USART1_TX_REMAP0      AM_ZLG237_GPIO_REMAP_CODE(0x02, 0)   /**< \brief USART1_TX */
 #define PIOA_9_TIM1_CH2_REMAP0       AM_ZLG237_GPIO_REMAP_CODE(0x06, 0)   /**< \brief TIM1_CH2 */
 #define PIOA_9_TIM1_CH2_REMAP1       AM_ZLG237_GPIO_REMAP_CODE(0x06, 1)   /**< \brief TIM1_CH2 */
 
@@ -574,7 +571,7 @@ extern "C" {
 #define PIOA_10_NO_REMAP             AM_ZLG237_GPIO_REMAP_CODE(0x15, 0)
 #define PIOA_10_GPIO                 PIOA_10_NO_REMAP   /**< \brief GPIO */
 
-#define PIOA_10_UART1_RX_REMAP0      AM_ZLG237_GPIO_REMAP_CODE(0x02, 0)   /**< \brief UART1_RX */
+#define PIOA_10_USART1_RX_REMAP0     AM_ZLG237_GPIO_REMAP_CODE(0x02, 0)   /**< \brief USART1_RX */
 #define PIOA_10_TIM1_CH3_REMAP0      AM_ZLG237_GPIO_REMAP_CODE(0x06, 0)   /**< \brief TIM1_CH3 */
 #define PIOA_10_TIM1_CH3_REMAP1      AM_ZLG237_GPIO_REMAP_CODE(0x06, 1)   /**< \brief TIM1_CH3 */
 /** @} */
@@ -613,7 +610,7 @@ extern "C" {
  * @{
  */
 #define PIOA_11_NO_REMAP             AM_ZLG237_GPIO_REMAP_CODE(0x15, 0)
-#define PIOA_11_UART1_CTS            PIOA_11_NO_REMAP   /**< \brief UART1_CTS */
+#define PIOA_11_USART1_CTS           PIOA_11_NO_REMAP   /**< \brief USART1_CTS */
 #define PIOA_11_USBDM                PIOA_11_NO_REMAP   /**< \brief USBDM */
 #define PIOA_11_GPIO                 PIOA_11_NO_REMAP   /**< \brief GPIO */
 
@@ -656,7 +653,7 @@ extern "C" {
  * @{
  */
 #define PIOA_12_NO_REMAP              AM_ZLG237_GPIO_REMAP_CODE(0x15, 0)
-#define PIOA_12_UART1_RTS             PIOA_12_NO_REMAP   /**< \brief UART1_RTS */
+#define PIOA_12_USART1_RTS            PIOA_12_NO_REMAP   /**< \brief USART1_RTS */
 #define PIOA_12_USBDP                 PIOA_12_NO_REMAP
 #define PIOA_12_GPIO                  PIOA_12_NO_REMAP   /**< \brief GPIO */
 
@@ -702,7 +699,6 @@ extern "C" {
 #define PIOA_13_NO_REMAP              AM_ZLG237_GPIO_REMAP_CODE(0x15, 0)
 #define PIOA_13_GPIO                  PIOA_13_NO_REMAP   /**< \brief GPIO */
 
-//#define PIOA_13_SWDIO                 AM_ZLG237_GPIO_REMAP_CODE(0x10, 0)   /**< \brief SWDIO */
 #define PIOA_13_SWDIO                 AM_ZLG237_GPIO_REMAP_CODE(0x18, 0)   /**< \brief SWDIO */
 /** @} */
 
@@ -742,7 +738,6 @@ extern "C" {
 #define PIOA_14_NO_REMAP              AM_ZLG237_GPIO_REMAP_CODE(0x15, 0)
 #define PIOA_14_GPIO                  PIOA_14_NO_REMAP   /**< \brief GPIO */
 
-//#define PIOA_14_SWDCLK                AM_ZLG237_GPIO_REMAP_CODE(0x10, 0)   /**< \brief SWDCLK */
 #define PIOA_14_SWDCLK                AM_ZLG237_GPIO_REMAP_CODE(0x18, 0)   /**< \brief SWDCLK */
 /** @} */
 
@@ -780,12 +775,10 @@ extern "C" {
  * @{
  */
 #define PIOA_15_NO_REMAP              AM_ZLG237_GPIO_REMAP_CODE(0x15, 0)
-//#define PIOA_15_SPI1_NSS              PIOA_15_NO_REMAP   /**< \brief SPI1_NSS */
 #define PIOA_15_GPIO                  PIOA_15_NO_REMAP   /**< \brief GPIO */
 
 #define PIOA_15_TIM2_CH1_ETR_REMAP1   AM_ZLG237_GPIO_REMAP_CODE(0x08, 1)   /**< \brief TIM2_CH1_ETR */
 #define PIOA_15_TIM2_CH1_ETR_REMAP3   AM_ZLG237_GPIO_REMAP_CODE(0x08, 3)   /**< \brief TIM2_CH1_ETR */
-//#define PIOA_15_JTDI                  AM_ZLG237_GPIO_REMAP_CODE(0x10, 0)   /**< \brief JTDI */
 #define PIOA_15_JTDI                  AM_ZLG237_GPIO_REMAP_CODE(0x18, 0)   /**< \brief JTDI */
 #define PIOA_15_SPI1_NSS              AM_ZLG237_GPIO_REMAP_CODE(0x00, 1)     /**< \brief SPI1_NSS */
 /** @} */
@@ -949,7 +942,6 @@ extern "C" {
 #define PIOB_3_NO_REMAP              AM_ZLG237_GPIO_REMAP_CODE(0x15, 0)
 #define PIOB_3_GPIO                  PIOB_3_NO_REMAP   /**< \brief GPIO */
 
-//#define PIOB_3_TRACESWO              AM_ZLG237_GPIO_REMAP_CODE(0x10, 0)   /**< \brief TRACESWO */
 #define PIOB_3_TRACESWO              AM_ZLG237_GPIO_REMAP_CODE(0x18, 0)   /**< \brief TRACESWO */
 #define PIOB_3_TIM2_CH2_REMAP1       AM_ZLG237_GPIO_REMAP_CODE(0x08, 1)   /**< \brief TIM2_CH2 */
 #define PIOB_3_TIM2_CH2_REMAP3       AM_ZLG237_GPIO_REMAP_CODE(0x08, 3)   /**< \brief TIM2_CH2 */
@@ -995,7 +987,6 @@ extern "C" {
 
 #define PIOB_4_TIM3_CH1_REMAP2       AM_ZLG237_GPIO_REMAP_CODE(0x0A, 2)   /**< \brief TIM3_CH1 */
 #define PIOB_4_SPI1_MISO_REMAP1      AM_ZLG237_GPIO_REMAP_CODE(0x00, 1)   /**< \brief SPI1_MISO */
-//#define PIOB_4_JNTRST                AM_ZLG237_GPIO_REMAP_CODE(0x10, 0)   /**< \brief JNTRST */
 #define PIOB_4_JNTRST                AM_ZLG237_GPIO_REMAP_CODE(0x18, 0)   /**< \brief JNTRST */
 /** @} */
 
@@ -1081,7 +1072,7 @@ extern "C" {
 #define PIOB_6_TIM4_CH1              PIOB_6_NO_REMAP   /**< \brief TIM4_CH1 */
 
 #define PIOB_6_I2C1_SCL_REMAP0       AM_ZLG237_GPIO_REMAP_CODE(0x01, 0)   /**< \brief I2C1_SCL */
-#define PIOB_6_UART1_TX_REMAP1       AM_ZLG237_GPIO_REMAP_CODE(0x02, 1)   /**< \brief UART1_TX */
+#define PIOB_6_USART1_TX_REMAP1      AM_ZLG237_GPIO_REMAP_CODE(0x02, 1)   /**< \brief USART1_TX */
 #define PIOB_6_TIM4_CH1_REMAP        AM_ZLG237_GPIO_REMAP_CODE(0x0C, 0)   /**< \brief TIM4_CH1 */
 
 /** @} */
@@ -1125,7 +1116,7 @@ extern "C" {
 #define PIOB_7_GPIO                  PIOB_7_NO_REMAP   /**< \brief GPIO */
 
 #define PIOB_7_I2C1_SDA_REMAP0       AM_ZLG237_GPIO_REMAP_CODE(0x01, 0)   /**< \brief I2C1_SDA */
-#define PIOB_7_UART1_RX_REMAP1       AM_ZLG237_GPIO_REMAP_CODE(0x02, 1)   /**< \brief UART1_RX */
+#define PIOB_7_USART1_RX_REMAP1      AM_ZLG237_GPIO_REMAP_CODE(0x02, 1)   /**< \brief USART1_RX */
 #define PIOB_7_TIM4_CH2_REMAP        AM_ZLG237_GPIO_REMAP_CODE(0x0C, 0)   /**< \brief TIM4_CH2 */
 
 /** @} */
@@ -1256,7 +1247,7 @@ extern "C" {
 #define PIOB_10_I2C2_SCL             PIOB_10_NO_REMAP   /**< \brief I2C2_SCL */
 #define PIOB_10_GPIO                 PIOB_10_NO_REMAP   /**< \brief GPIO */
 
-#define PIOB_10_UART3_TX_REMAP0      AM_ZLG237_GPIO_REMAP_CODE(0x04, 0)   /**< \brief UART3_TX */
+#define PIOB_10_USART3_TX_REMAP0     AM_ZLG237_GPIO_REMAP_CODE(0x04, 0)   /**< \brief USART3_TX */
 #define PIOB_10_TIM2_CH3_REMAP2      AM_ZLG237_GPIO_REMAP_CODE(0x08, 2)   /**< \brief TIM2_CH3 */
 #define PIOB_10_TIM2_CH3_REMAP3      AM_ZLG237_GPIO_REMAP_CODE(0x08, 3)   /**< \brief TIM2_CH3 */
 
@@ -1300,7 +1291,7 @@ extern "C" {
 #define PIOB_11_I2C2_SDA             PIOB_11_NO_REMAP   /**< \brief I2C2_SDA */
 #define PIOB_11_GPIO                 PIOB_11_NO_REMAP   /**< \brief GPIO */
 
-#define PIOB_11_UART3_RX_REMAP0      AM_ZLG237_GPIO_REMAP_CODE(0x04, 0)   /**< \brief UART3_RX */
+#define PIOB_11_USART3_RX_REMAP0     AM_ZLG237_GPIO_REMAP_CODE(0x04, 0)   /**< \brief USART3_RX */
 #define PIOB_11_TIM2_CH4_REMAP2      AM_ZLG237_GPIO_REMAP_CODE(0x08, 2)   /**< \brief TIM2_CH4 */
 #define PIOB_11_TIM2_CH4_REMAP3      AM_ZLG237_GPIO_REMAP_CODE(0x08, 3)   /**< \brief TIM2_CH4 */
 
@@ -1346,7 +1337,7 @@ extern "C" {
 #define PIOB_12_GPIO                 PIOB_12_NO_REMAP   /**< \brief GPIO */
 
 #define PIOB_12_TIM1_BAKIN_REMAP0    AM_ZLG237_GPIO_REMAP_CODE(0x06, 0)   /**< \brief TIM1_BAKIN */
-#define PIOB_12_UART3_CK_REMAP0      AM_ZLG237_GPIO_REMAP_CODE(0x04, 0)   /**< \brief UART3_CK */
+#define PIOB_12_USART3_CK_REMAP0     AM_ZLG237_GPIO_REMAP_CODE(0x04, 0)   /**< \brief USART3_CK */
 
 /** @} */
 
@@ -1387,12 +1378,11 @@ extern "C" {
 
 #define PIOB_13_NO_REMAP            AM_ZLG237_GPIO_REMAP_CODE(0x15, 0)
 #define PIOB_13_SPI2_SCK            PIOB_13_NO_REMAP   /**< \brief SPI2_SCK */
-#define PIOB_13_UART3_CTS           PIOB_13_NO_REMAP   /**< \brief UART3_CTS */
 #define PIOB_13_GPIO                PIOB_13_NO_REMAP   /**< \brief GPIO */
 
 #define PIOB_13_TIM1_CH1N_REMAP0    AM_ZLG237_GPIO_REMAP_CODE(0x06, 0)   /**< \brief TIM1_CH1N */
-#define PIOB_13_UART3_CTS_REMAP0    AM_ZLG237_GPIO_REMAP_CODE(0x04, 0)   /**< \brief TIM1_CH1N */
-#define PIOB_13_UART3_CTS_REMAP1    AM_ZLG237_GPIO_REMAP_CODE(0x04, 1)   /**< \brief TIM1_CH1N */
+#define PIOB_13_USART3_CTS_REMAP0   AM_ZLG237_GPIO_REMAP_CODE(0x04, 0)   /**< \brief TIM1_CH1N */
+#define PIOB_13_USART3_CTS_REMAP1   AM_ZLG237_GPIO_REMAP_CODE(0x04, 1)   /**< \brief TIM1_CH1N */
 
 /** @} */
 
@@ -1432,12 +1422,11 @@ extern "C" {
 
 #define PIOB_14_NO_REMAP           AM_ZLG237_GPIO_REMAP_CODE(0x15, 0)
 #define PIOB_14_SPI2_MISO          PIOB_14_NO_REMAP   /**< \brief SPI2_MISO */
-#define PIOB_14_UART3_RTS          PIOB_14_NO_REMAP   /**< \brief UART3_RTS */
 #define PIOB_14_GPIO               PIOB_14_NO_REMAP   /**< \brief GPIO */
 
 #define PIOB_14_TIM1_CH2N_REMAP0   AM_ZLG237_GPIO_REMAP_CODE(0x06, 0)   /**< \brief TIM1_CH2N */
-#define PIOB_14_UART3_RTS_REMAP0   AM_ZLG237_GPIO_REMAP_CODE(0x04, 0)   /**< \brief UART3_RTS */
-#define PIOB_14_UART3_RTS_REMAP1   AM_ZLG237_GPIO_REMAP_CODE(0x04, 1)   /**< \brief UART3_RTS */
+#define PIOB_14_USART3_RTS_REMAP0  AM_ZLG237_GPIO_REMAP_CODE(0x04, 0)   /**< \brief USART3_RTS */
+#define PIOB_14_USART3_RTS_REMAP1  AM_ZLG237_GPIO_REMAP_CODE(0x04, 1)   /**< \brief USART3_RTS */
 
 /** @} */
 
@@ -1921,7 +1910,7 @@ extern "C" {
 #define PIOC_10_NO_REMAP          AM_ZLG237_GPIO_REMAP_CODE(0x15, 0)
 #define PIOC_10_GPIO              PIOC_10_NO_REMAP   /**< \brief GPIO */
 
-#define PIOC_10_UART3_TX_REMAP1   AM_ZLG237_GPIO_REMAP_CODE(0x04, 1)   /**< \brief UART3_TX */
+#define PIOC_10_USART3_TX_REMAP1  AM_ZLG237_GPIO_REMAP_CODE(0x04, 1)   /**< \brief USART3_TX */
 
 /** @} */
 
@@ -1962,7 +1951,7 @@ extern "C" {
 #define PIOC_11_NO_REMAP          AM_ZLG237_GPIO_REMAP_CODE(0x15, 0)
 #define PIOC_11_GPIO              PIOC_11_NO_REMAP   /**< \brief GPIO */
 
-#define PIOC_11_UART3_RX_REMAP1   AM_ZLG237_GPIO_REMAP_CODE(0x04, 1)   /**< \brief UART3_RX */
+#define PIOC_11_USART3_RX_REMAP1  AM_ZLG237_GPIO_REMAP_CODE(0x04, 1)   /**< \brief USART3_RX */
 
 /** @} */
 
@@ -2003,7 +1992,7 @@ extern "C" {
 #define PIOC_12_NO_REMAP          AM_ZLG237_GPIO_REMAP_CODE(0x15, 0)
 #define PIOC_12_GPIO              PIOC_12_NO_REMAP   /**< \brief GPIO */
 
-#define PIOC_12_UART3_CK_REMAP1   AM_ZLG237_GPIO_REMAP_CODE(0x04, 1)   /**< \brief UART3_CK */
+#define PIOC_12_USART3_CK_REMAP1  AM_ZLG237_GPIO_REMAP_CODE(0x04, 1)   /**< \brief USART3_CK */
 
 /** @} */
 
@@ -2166,7 +2155,7 @@ extern "C" {
 #define PIOD_0_GPIO             PIOD_0_NO_REMAP    /**< \brief GPIO */
 
 #define PIOD_0_CAN_RX_REMAP3    AM_ZLG237_GPIO_REMAP_CODE(0xD, 3)   /**< \brief CAN_RX */
-#define PIOD_0_OSC_OUT_REMAP    AM_ZLG237_GPIO_REMAP_CODE(0xF, 1)   /**< \brief OSC_IN */
+#define PIOD_0_OSC_IN_REMAP     AM_ZLG237_GPIO_REMAP_CODE(0xF, 1)   /**< \brief OSC_IN */
 /** @} */
 
 /**
