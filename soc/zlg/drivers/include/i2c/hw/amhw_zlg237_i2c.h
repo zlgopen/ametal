@@ -348,20 +348,20 @@ typedef enum {
  * \brief I2C÷–∂œ±Í÷æ
  */
 typedef enum {
-	AMHW_ZLG_INT_FLAG__SB       = ((uint32_t)0x02000001),
-	AMHW_ZLG_INT_FLAG__ADDR     = ((uint32_t)0x02000002),
-	AMHW_ZLG_INT_FLAG__BTF      = ((uint32_t)0x02000004),
-	AMHW_ZLG_INT_FLAG__ADD10    = ((uint32_t)0x02000008),
-	AMHW_ZLG_INT_FLAG__STOPF    = ((uint32_t)0x02000010),
-	AMHW_ZLG_INT_FLAG__RXNE     = ((uint32_t)0x06000040),
-	AMHW_ZLG_INT_FLAG__TXE      = ((uint32_t)0x06000080),
-	AMHW_ZLG_INT_FLAG__BERR     = ((uint32_t)0x01000100),
-	AMHW_ZLG_INT_FLAG__ARLO     = ((uint32_t)0x01000200),
-	AMHW_ZLG_INT_FLAG__AF       = ((uint32_t)0x01000400),
-	AMHW_ZLG_INT_FLAG__OVR      = ((uint32_t)0x01000800),
-	AMHW_ZLG_INT_FLAG__PECERR   = ((uint32_t)0x01001000),
-	AMHW_ZLG_INT_FLAG__TIMEOUT  = ((uint32_t)0x01004000),
-	AMHW_ZLG_INT_FLAG__SMBALERT = ((uint32_t)0x01008000),
+    AMHW_ZLG_INT_FLAG__SB       = ((uint32_t)0x02000001),
+    AMHW_ZLG_INT_FLAG__ADDR     = ((uint32_t)0x02000002),
+    AMHW_ZLG_INT_FLAG__BTF      = ((uint32_t)0x02000004),
+    AMHW_ZLG_INT_FLAG__ADD10    = ((uint32_t)0x02000008),
+    AMHW_ZLG_INT_FLAG__STOPF    = ((uint32_t)0x02000010),
+    AMHW_ZLG_INT_FLAG__RXNE     = ((uint32_t)0x06000040),
+    AMHW_ZLG_INT_FLAG__TXE      = ((uint32_t)0x06000080),
+    AMHW_ZLG_INT_FLAG__BERR     = ((uint32_t)0x01000100),
+    AMHW_ZLG_INT_FLAG__ARLO     = ((uint32_t)0x01000200),
+    AMHW_ZLG_INT_FLAG__AF       = ((uint32_t)0x01000400),
+    AMHW_ZLG_INT_FLAG__OVR      = ((uint32_t)0x01000800),
+    AMHW_ZLG_INT_FLAG__PECERR   = ((uint32_t)0x01001000),
+    AMHW_ZLG_INT_FLAG__TIMEOUT  = ((uint32_t)0x01004000),
+    AMHW_ZLG_INT_FLAG__SMBALERT = ((uint32_t)0x01008000),
 }amhw_zlg237_int_flag_t;
 
 typedef enum {
