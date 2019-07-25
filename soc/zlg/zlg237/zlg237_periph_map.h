@@ -28,18 +28,19 @@ extern "C" {
 #endif
 
 #include "zlg237_regbase.h"
-#include "hw/amhw_zlg_adc.h"
-#include "hw/amhw_zlg_bkp.h"
+#include "hw/amhw_zlg237_adc.h"
+#include "hw/amhw_zlg237_bkp.h"
 #include "hw/amhw_zlg_cmp.h"
 #include "hw/amhw_zlg_crc.h"
 #include "hw/amhw_zlg237_flash.h"
 #include "hw/amhw_zlg_i2c.h"
+#include "hw/amhw_zlg237_rtc.h"
 #include "hw/amhw_zlg237_spi.h"
 #include "hw/amhw_zlg_tim.h"
-#include "hw/amhw_zlg_uart.h"
+#include "hw/amhw_zlg237_usart.h"
 #include "hw/amhw_zlg_iwdg.h"
 #include "hw/amhw_zlg_wwdg.h"
-#include "hw/amhw_zlg_pwr.h"
+#include "hw/amhw_zlg237_pwr.h"
 #include "hw/amhw_zlg237_exti.h"
 #include "hw/amhw_zlg_gpio.h"
 #include "hw/amhw_zlg_dma.h"
@@ -90,7 +91,7 @@ extern "C" {
 #define ZLG237_RTC     ((amhw_zlg237_rtc_t       *)ZLG237_RTC_BASE)
 
 /** \brief 电源控制PWR寄存器块指针 */
-#define ZLG237_PWR     ((amhw_zlg_pwr_t          *)ZLG237_PWR_BASE)
+#define ZLG237_PWR     ((amhw_zlg237_pwr_t       *)ZLG237_PWR_BASE)
 
 /** \brief 备份控制BKP寄存器块指针 */
 #define ZLG237_BKP     ((amhw_zlg237_bkp_t       *)ZLG237_BKP_BASE)

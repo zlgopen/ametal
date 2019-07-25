@@ -16,8 +16,7 @@
  *
  * \internal
  * \par Modification history
- * - 1.01 18-06-15  pea, fix bug
- * - 1.00 17-08-23  lqy, first implementation
+ * - 1.00 19-07-23  zp, first implementation
  * \endinternal
  */
 

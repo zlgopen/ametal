@@ -124,6 +124,10 @@ int am_main (void)
 //    demo_zlg237_core_dr_fm175xx_picca_write_block();
 //    demo_zlg237_core_dr_fm175xx_piccb_read_id();
 //    demo_zlg237_core_dr_fm175xx_picca_lpcd_read_id();
+//    demo_zlg237_drv_sleepmode_timer_wake_up_entry();
+//    demo_zlg237_drv_sleepmode_wake_up_entry();
+//    demo_zlg237_drv_standbymode_wake_up_entry();
+    demo_zlg237_drv_stopmode_wake_up_entry();
 
     while (1) {
 

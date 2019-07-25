@@ -49,7 +49,7 @@ extern "C" {
 #endif
 
 /**
- * \brief ADC 硬件层（使用了中断）例程入口
+ * \brief ADC 硬件层（使用了中断）规则通道例程入口
  *
  * \param[in] p_hw_adc  : 指向 ADC 外设寄存器块的指针
  * \param[in] int_num   : 中断号
@@ -67,7 +67,7 @@ void demo_zlg_hw_adc_int_entry (amhw_zlg_adc_t *p_hw_adc,
                                 uint32_t        vref_mv);
 
 /**
- * \brief ADC 硬件层（DMA）例程入口
+ * \brief ADC 硬件层（DMA）规则通道例程入口
  *
  */
 void demo_zlg_hw_adc_dma_entry (amhw_zlg_adc_t *p_hw_adc,
@@ -76,7 +76,7 @@ void demo_zlg_hw_adc_dma_entry (amhw_zlg_adc_t *p_hw_adc,
                                 uint8_t         dma_chan);
 
 /**
- * \brief zlg237 ADC 硬件层（使用了中断）例程入口
+ * \brief zlg237 ADC 硬件层（使用了中断）规则通道例程入口
  *
  * \param[in] p_hw_adc  : 指向 ADC 外设寄存器块的指针
  * \param[in] int_num   : 中断号
@@ -94,12 +94,58 @@ void demo_zlg237_hw_adc_int_entry (amhw_zlg237_adc_t *p_hw_adc,
                                    uint32_t           vref_mv);
 
 /**
- * \brief zlg237 DC 硬件层（DMA）例程入口
+ * \brief zlg237 DC 硬件层（DMA）规则通道例程入口
  */
 void demo_zlg237_hw_adc_dma_entry (amhw_zlg237_adc_t *p_hw_adc,
                                    int               *p_adc_chan,
                                    int                adc_chan_num,
                                    uint8_t            dma_chan);
+
+
+/**
+ * \brief zlg237 ADC 硬件层（使用了中断） 注入通道例程入口
+ *
+ * \param[in] p_hw_adc     : 指向 ADC 外设寄存器块的指针
+ * \param[in] int_num      : 中断号
+ * \param[in] vref_mv      : 参考电压（mv）
+ * \param[in] p_adc_chan   : 指向ADC通道数组的指针
+ * \param[in] adc_chan_num : ADC通道个数
+ *
+ * \note 一般情况下，在使用本 demo 前，还需打开 ADC 模块相应的时钟，
+ * 配置 ADC 通道对应的引脚，这些配置都与具体芯片相关。
+ *
+ * \return 无
+ */
+void demo_zlg237_hw_adc_injected_int_entry (amhw_zlg237_adc_t *p_hw_adc,
+                                            int                int_num,
+                                            uint32_t           vref_mv,
+                                            int               *p_adc_chan,
+                                            int                adc_chan_num);
+
+/**
+ * \brief zlg237 ADC 硬件层（使用了中断）规则通道、注入通道例程入口
+ *
+ * \param[in] p_hw_adc     : 指向 ADC1外设寄存器块的指针
+ * \param[in] p_adc_chan   : 指向ADC1通道数组的指针
+ * \param[in] adc_chan_num : ADC1通道个数
+ * \param[in] dma_chan     : DMA通道
+ * \param[in] p_hw_adc     : 指向 ADC2外设寄存器块的指针
+ * \param[in] p_adc_chan   : 指向ADC2通道数组的指针
+ * \param[in] adc_chan_num : ADC2通道个数
+ *
+ * \note 一般情况下，在使用本 demo 前，还需打开 ADC 模块相应的时钟，
+ * 配置 ADC 通道对应的引脚，这些配置都与具体芯片相关。
+ *
+ * \return 无
+ */
+void demo_zlg237_hw_adc_dma_double_entry (amhw_zlg237_adc_t *p_hw_adc1,
+                                          int               *p_adc1_chan,
+                                          int                adc1_chan_num,
+                                          uint8_t            dma_chan,
+                                          amhw_zlg237_adc_t *p_hw_adc2,
+                                          int               *p_adc2_chan,
+                                          int                adc2_chan_num);
+
 /**
  * \brief CLK 例程，通过 HW 层接口实现
  *

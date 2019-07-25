@@ -16,8 +16,7 @@
  *
  * \internal
  * \par Modification history
- * - 1.01 18-06-19  pea, add some APIs
- * - 1.00 17-08-28  lqy, first implementation
+ * - 1.00 19-07-23  zp, first implementation
  * \endinternal
  */
 
@@ -29,7 +28,7 @@ extern "C" {
 #endif
 
 #include "am_rtc.h"
-#include "amhw_zlg237_rtc.h"
+#include "hw/amhw_zlg237_rtc.h"
 
 /**
  * \addtogroup am_zlg237_if_rtc
