@@ -221,25 +221,25 @@ uint32_t amhw_zlg237_pwr_csr_status_get (
 /**
  * \brief MCU在RUN模式下，片内LDO的输出电压
  */
-typedef enum amhw_zlg237_ldo_run_set {
-    AMHW_ZLG237_LDO_RUN_1_20V  = 0,     /**< \brief 1.20V 片内 LDO输出电压 */
-    AMHW_ZLG237_LDO_RUN_1_24V  = 1,     /**< \brief 1.24V 片内 LDO输出电压 */
-    AMHW_ZLG237_LDO_RUN_1_28V  = 2,     /**< \brief 1.28V 片内 LDO输出电压 */
-    AMHW_ZLG237_LDO_RUN_1_32V  = 3,     /**< \brief 1.32V 片内 LDO输出电压 */
-    AMHW_ZLG237_LDO_RUN_1_36V  = 4,     /**< \brief 1.36V 片内 LDO输出电压 */
-    AMHW_ZLG237_LDO_RUN_1_40V  = 5,     /**< \brief 1.40V 片内 LDO输出电压 */
-    AMHW_ZLG237_LDO_RUN_1_44V  = 6,     /**< \brief 1.44V 片内 LDO输出电压 */
-    AMHW_ZLG237_LDO_RUN_1_52V  = 7,     /**< \brief 1.52V 片内 LDO输出电压 */
-    AMHW_ZLG237_LDO_RUN_1_56V  = 8,     /**< \brief 1.56V 片内 LDO输出电压 */
-    AMHW_ZLG237_LDO_RUN_1_60V  = 9,     /**< \brief 1.60V 片内 LDO输出电压 */
-    AMHW_ZLG237_LDO_RUN_1_64V  = 10,    /**< \brief 1.64V 片内 LDO输出电压 */
-    AMHW_ZLG237_LDO_RUN_1_68V  = 11,    /**< \brief 1.68V 片内 LDO输出电压 */
-} amhw_zlg237_pvd_ldo_run_t;
+typedef enum amhw_zlg237_pwr_ldo_run_set {
+    AMHW_ZLG237_PWR_LDO_RUN_1_20V  = 0,     /**< \brief 1.20V 片内 LDO输出电压 */
+    AMHW_ZLG237_PWR_LDO_RUN_1_24V  = 1,     /**< \brief 1.24V 片内 LDO输出电压 */
+    AMHW_ZLG237_PWR_LDO_RUN_1_28V  = 2,     /**< \brief 1.28V 片内 LDO输出电压 */
+    AMHW_ZLG237_PWR_LDO_RUN_1_32V  = 3,     /**< \brief 1.32V 片内 LDO输出电压 */
+    AMHW_ZLG237_PWR_LDO_RUN_1_36V  = 4,     /**< \brief 1.36V 片内 LDO输出电压 */
+    AMHW_ZLG237_PWR_LDO_RUN_1_40V  = 5,     /**< \brief 1.40V 片内 LDO输出电压 */
+    AMHW_ZLG237_PWR_LDO_RUN_1_44V  = 6,     /**< \brief 1.44V 片内 LDO输出电压 */
+    AMHW_ZLG237_PWR_LDO_RUN_1_52V  = 7,     /**< \brief 1.52V 片内 LDO输出电压 */
+    AMHW_ZLG237_PWR_LDO_RUN_1_56V  = 8,     /**< \brief 1.56V 片内 LDO输出电压 */
+    AMHW_ZLG237_PWR_LDO_RUN_1_60V  = 9,     /**< \brief 1.60V 片内 LDO输出电压 */
+    AMHW_ZLG237_PWR_LDO_RUN_1_64V  = 10,    /**< \brief 1.64V 片内 LDO输出电压 */
+    AMHW_ZLG237_PWR_LDO_RUN_1_68V  = 11,    /**< \brief 1.68V 片内 LDO输出电压 */
+} amhw_zlg237_pwr_ldo_run_t;
 /**
  * \brief 片内LDO 工作模式输出电压控制寄存器
  *
  * \param[in] p_hw_pwr   ：指向电源控制寄存器块的指针
- * \param[in] status_flag：电源控制状态位，值为 amhw_zlg237_pvd_ldo_run_t 这一枚举类型
+ * \param[in] status_flag：电源控制状态位，值为 amhw_zlg237_pwr_ldo_run_t 这一枚举类型
  *
  * \note ：本寄存器保留位含有芯片内部测试寄存器，禁止改变其初始值，否则芯片功能可能异常。
  *
@@ -247,10 +247,10 @@ typedef enum amhw_zlg237_ldo_run_set {
  *           AM_ERROR：设置失败，参数错误。
  */
 am_static_inline
-uint8_t amhw_zlg237_ldo_run_set (
-    amhw_zlg237_pwr_t *p_hw_pwr, amhw_zlg237_pvd_ldo_run_t ldo_run_vol)
+uint8_t amhw_zlg237_pwr_ldo_run_set (
+    amhw_zlg237_pwr_t *p_hw_pwr, amhw_zlg237_pwr_ldo_run_t ldo_run_vol)
 {
-    if((ldo_run_vol & 0xful) <= AMHW_ZLG237_LDO_RUN_1_68V) {
+    if((ldo_run_vol & 0xful) <= AMHW_ZLG237_PWR_LDO_RUN_1_68V) {
 
         /* 传递参数必须为枚举类型变量，才能进行对应设置 */
         p_hw_pwr->ldo = (p_hw_pwr->ldo & (~(0xful << 0))) |
@@ -266,25 +266,26 @@ uint8_t amhw_zlg237_ldo_run_set (
 /**
  * \brief MCU在STOP模式下，片内LDO的输出电压
  */
-typedef enum amhw_zlg237_ldo_stop_set {
-    AMHW_ZLG237_STOP_1_20V  = 0,     /**< \brief 1.20V 片内 LDO输出电压 */
-    AMHW_ZLG237_STOP_1_24V  = 1,     /**< \brief 1.24V 片内 LDO输出电压 */
-    AMHW_ZLG237_STOP_1_28V  = 2,     /**< \brief 1.28V 片内 LDO输出电压 */
-    AMHW_ZLG237_STOP_1_32V  = 3,     /**< \brief 1.32V 片内 LDO输出电压 */
-    AMHW_ZLG237_STOP_1_36V  = 4,     /**< \brief 1.36V 片内 LDO输出电压 */
-    AMHW_ZLG237_STOP_1_40V  = 5,     /**< \brief 1.40V 片内 LDO输出电压 */
-    AMHW_ZLG237_STOP_1_44V  = 6,     /**< \brief 1.44V 片内 LDO输出电压 */
-    AMHW_ZLG237_STOP_1_52V  = 7,     /**< \brief 1.52V 片内 LDO输出电压 */
-    AMHW_ZLG237_STOP_1_56V  = 8,     /**< \brief 1.56V 片内 LDO输出电压 */
-    AMHW_ZLG237_STOP_1_60V  = 9,     /**< \brief 1.60V 片内 LDO输出电压 */
-    AMHW_ZLG237_STOP_1_64V  = 10,    /**< \brief 1.64V 片内 LDO输出电压 */
-    AMHW_ZLG237_STOP_1_68V  = 11,    /**< \brief 1.68V 片内 LDO输出电压 */
-} amhw_zlg237_ldo_stop_set_t;
+typedef enum amhw_zlg237_pwr_ldo_stop_set {
+    AMHW_ZLG237_PWR_STOP_1_20V  = 0,     /**< \brief 1.20V 片内 LDO输出电压 */
+    AMHW_ZLG237_PWR_STOP_1_24V  = 1,     /**< \brief 1.24V 片内 LDO输出电压 */
+    AMHW_ZLG237_PWR_STOP_1_28V  = 2,     /**< \brief 1.28V 片内 LDO输出电压 */
+    AMHW_ZLG237_PWR_STOP_1_32V  = 3,     /**< \brief 1.32V 片内 LDO输出电压 */
+    AMHW_ZLG237_PWR_STOP_1_36V  = 4,     /**< \brief 1.36V 片内 LDO输出电压 */
+    AMHW_ZLG237_PWR_STOP_1_40V  = 5,     /**< \brief 1.40V 片内 LDO输出电压 */
+    AMHW_ZLG237_PWR_STOP_1_44V  = 6,     /**< \brief 1.44V 片内 LDO输出电压 */
+    AMHW_ZLG237_PWR_STOP_1_52V  = 7,     /**< \brief 1.52V 片内 LDO输出电压 */
+    AMHW_ZLG237_PWR_STOP_1_56V  = 8,     /**< \brief 1.56V 片内 LDO输出电压 */
+    AMHW_ZLG237_PWR_STOP_1_60V  = 9,     /**< \brief 1.60V 片内 LDO输出电压 */
+    AMHW_ZLG237_PWR_STOP_1_64V  = 10,    /**< \brief 1.64V 片内 LDO输出电压 */
+    AMHW_ZLG237_PWR_STOP_1_68V  = 11,    /**< \brief 1.68V 片内 LDO输出电压 */
+} amhw_zlg237_pwr_ldo_stop_set_t;
 /**
  * \brief 片内LDO STOP模式模式输出电压控制寄存器
  *
  * \param[in] p_hw_pwr   ：指向电源控制寄存器块的指针
- * \param[in] status_flag：电源控制状态位，值为 amhw_zlg237_ldo_stop_set_t 这一枚举类型
+ * \param[in] status_flag：电源控制状态位，
+ *                         值为 amhw_zlg237_pwr_ldo_stop_set_t 这一枚举类型
  *
  * \note ：本寄存器保留位含有芯片内部测试寄存器，禁止改变其初始值，否则芯片功能可能异常。
  *
@@ -292,10 +293,10 @@ typedef enum amhw_zlg237_ldo_stop_set {
  *           AM_ERROR：设置失败，参数错误。
  */
 am_static_inline
-uint8_t amhw_zlg237_ldo_stop_set (
-    amhw_zlg237_pwr_t *p_hw_pwr, amhw_zlg237_ldo_stop_set_t ldo_stop_vol)
+uint8_t amhw_zlg237_pwr_ldo_stop_set (
+    amhw_zlg237_pwr_t *p_hw_pwr, amhw_zlg237_pwr_ldo_stop_set_t ldo_stop_vol)
 {
-    if((ldo_stop_vol & 0xful) <= AMHW_ZLG237_STOP_1_68V) {
+    if((ldo_stop_vol & 0xful) <= AMHW_ZLG237_PWR_STOP_1_68V) {
 
         /* 传递参数必须为枚举类型变量，才能进行对应设置 */
         p_hw_pwr->ldo_stop = (p_hw_pwr->ldo_stop & (~(0xful << 0))) |

@@ -1003,6 +1003,34 @@ void amhw_zlg237_rcc_hse_wt_set(uint16_t value)
 }
 
 /**
+ * \brief XCH_IOp[2:0]  HSE晶振驱动能力配置
+ */
+typedef enum amhw_zlg237_rcc_hse_iop_set {
+    AMHW_ZLG237_RCC_HSE_IOP_20 = 0,/**< \brief 驱动电流大约为20uA，推荐使用0.5~3MHz晶振 */
+    AMHW_ZLG237_RCC_HSE_IOP_30,    /**< \brief 驱动电流大约为30uA，推荐使用0.5~4MHz晶振 */
+    AMHW_ZLG237_RCC_HSE_IOP_40,    /**< \brief 驱动电流大约为40uA，推荐使用0.5~5MHz晶振 */
+    AMHW_ZLG237_RCC_HSE_IOP_50,    /**< \brief 驱动电流大约为50uA，推荐使用1~6MHz晶振 */
+    AMHW_ZLG237_RCC_HSE_IOP_60,    /**< \brief 驱动电流大约为60uA，推荐使用2~12MHz晶振 */
+    AMHW_ZLG237_RCC_HSE_IOP_80,    /**< \brief 驱动电流大约为80uA，推荐使用2~15MHz晶振 */
+    AMHW_ZLG237_RCC_HSE_IOP_100,   /**< \brief 驱动电流大约为100uA，推荐使用3~20MHz晶振 */
+    AMHW_ZLG237_RCC_HSE_IOP_200,   /**< \brief 驱动电流大约为200uA，推荐使用5~30MHz晶振 */
+} amhw_zlg237_rcc_hse_iop_set_t;
+/**
+ * \brief XCH_IOp[2:0]  HSE晶振驱动能力配置
+ *
+ * \param[in] status_flag：HSE晶振驱动能力配置，
+ *                        值为 amhw_zlg237_rcc_hse_iop_set_t 这一枚举类型
+ *
+ */
+am_static_inline
+void amhw_zlg237_rcc_hse_iop_set (amhw_zlg237_rcc_hse_iop_set_t hse_iop_set)
+{
+    ZLG237_RCC->wts = (ZLG237_RCC->wts & ~(0x7ul << 16)) |
+                      ((hse_iop_set & 0x7ul) << 16) ;
+
+}
+
+/**
  * \brief HSE 片内模拟滤噪电器bypass控制
  *
  *
