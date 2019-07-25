@@ -68,17 +68,17 @@ const struct am_zlg237_rtc_devinfo __g_rtc_devinfo = {
     /** \brief RTC设备基地址 */
     ZLG237_RTC_BASE,
 
-	/** \brief 电源控制PWR基地址 */
-	ZLG237_PWR_BASE,
+    /** \brief 电源控制PWR基地址 */
+    ZLG237_PWR_BASE,
 
-	/** \brief 备份控制BKP基地址 */
-	ZLG237_BKP_BASE,
+    /** \brief 备份控制BKP基地址 */
+    ZLG237_BKP_BASE,
 
-	/**< \brief RTC 中断号 */
-	INUM_RTC,
+    /**< \brief RTC 中断号 */
+    INUM_RTC,
 
     /** \brief RTC设备时钟源 */
-	RTC_CLK_SOUR,
+    RTC_CLK_SOUR,
 
     /** \brief 平台初始化函数 */
     __zlg237_plfm_rtc_init,
