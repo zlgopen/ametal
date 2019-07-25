@@ -16,7 +16,7 @@
  *
  * \internal
  * \par History
- * - 1.00 19-06-27  yrh, first implementation
+ * - 1.00 19-07-23  zp, first implementation
  * \endinternal
  */
 
@@ -61,21 +61,28 @@ extern "C" {
  */
 
 /** \brief BKP_RTCCR register bit mask */
-#define  AMHW_ZLG237_BKP_RTCCR_CAL_SET  (0x007F) /**< Calibration value */
-#define  AMHW_ZLG237_BKP_RTCCR_CCO_SET  (0x0080) /**< Calibration Clock Output */
-#define  AMHW_ZLG237_BKP_RTCCR_ASOE_SET (0x0100) /**< Alarm or Second Output Enable */
-#define  AMHW_ZLG237_BKP_RTCCR_ASOS_SET (0x0200) /**< Alarm or Second Output Selection */
+/* Calibration value */
+#define  AMHW_ZLG237_BKP_RTCCR_CAL_SET  (0x007F)
+
+/* Calibration Clock Output */
+#define  AMHW_ZLG237_BKP_RTCCR_CCO_SET  (0x0080)
+
+/* Alarm or Second Output Enable */
+#define  AMHW_ZLG237_BKP_RTCCR_ASOE_SET (0x0100)
+
+/* Alarm or Second Output Selection */
+#define  AMHW_ZLG237_BKP_RTCCR_ASOS_SET (0x0200)
 
 /** \brief BKP_CR register bit mask */
 #define  AMHW_ZLG237_BKP_CR_TPE_SET     (0x01)   /**< TAMPER pin enable */
-#define  AMHW_ZLG237_BKP_CR_TPAL_SET    (0x02)   /**< TAMPER pin active level */
+#define  AMHW_ZLG237_BKP_CR_TPAL_SET    (0x02)   /**< TAMPER pin active level*/
 
 /** \brief CSR register bit mask */
-#define  AMHW_ZLG237_BKP_CSR_CTE_SET    (0x0001) /**< Clear Tamper event */
-#define  AMHW_ZLG237_BKP_CSR_CTI_SET    (0x0002) /**< Clear Tamper Interrupt */
-#define  AMHW_ZLG237_BKP_CSR_TPIE_SET   (0x0004) /**< TAMPER Pin interrupt enable */
-#define  AMHW_ZLG237_BKP_CSR_TEF_SET    (0x0100) /**< Tamper Event Flag */
-#define  AMHW_ZLG237_BKP_CSR_TIF_SET    (0x0200) /**< Tamper Interrupt Flag */
+#define  AMHW_ZLG237_BKP_CSR_CTE_SET   (0x0001) /* Clear Tamper event */
+#define  AMHW_ZLG237_BKP_CSR_CTI_SET   (0x0002) /* Clear Tamper Interrupt */
+#define  AMHW_ZLG237_BKP_CSR_TPIE_SET  (0x0004) /* TAMPER Pin interrupt enable*/
+#define  AMHW_ZLG237_BKP_CSR_TEF_SET   (0x0100) /* Tamper Event Flag */
+#define  AMHW_ZLG237_BKP_CSR_TIF_SET   (0x0200) /* Tamper Interrupt Flag */
 
 /**
   * \brief 备份寄存器块结构体
@@ -201,7 +208,8 @@ void amhw_zlg237_bkp_rtccr_cco_disable (amhw_zlg237_bkp_t *p_hw_bkp)
 am_static_inline
 am_bool_t amhw_zlg237_bkp_rtccr_cco_get (amhw_zlg237_bkp_t *p_hw_bkp)
 {
-    return (p_hw_bkp->rtc_cr & AMHW_ZLG237_BKP_RTCCR_CCO_SET) ? AM_TRUE : AM_FALSE;
+    return (p_hw_bkp->rtc_cr & AMHW_ZLG237_BKP_RTCCR_CCO_SET) ?
+           AM_TRUE : AM_FALSE;
 }
 
 /**
@@ -240,7 +248,8 @@ void amhw_zlg237_bkp_rtccr_asoe_disable (amhw_zlg237_bkp_t *p_hw_bkp)
 am_static_inline
 am_bool_t amhw_zlg237_bkp_rtccr_asoe_get (amhw_zlg237_bkp_t *p_hw_bkp)
 {
-    return (p_hw_bkp->rtc_cr & AMHW_ZLG237_BKP_RTCCR_ASOE_SET) ? AM_TRUE : AM_FALSE;
+    return (p_hw_bkp->rtc_cr & AMHW_ZLG237_BKP_RTCCR_ASOE_SET) ?
+           AM_TRUE : AM_FALSE;
 }
 
 /**
@@ -301,6 +310,6 @@ void amhw_zlg237_bkp_rtccr_asos_alarm (amhw_zlg237_bkp_t *p_hw_bkp)
 }
 #endif
 
-#endif /* __AMHW_ZLG_BKP_H */
+#endif /* __AMHW_ZLG237_BKP_H */
 
 /* end of file */
