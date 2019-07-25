@@ -348,20 +348,20 @@ typedef enum {
  * \brief I2C中断标志
  */
 typedef enum {
-    AMHW_ZLG_INT_FLAG__SB       = ((uint32_t)0x02000001),
-    AMHW_ZLG_INT_FLAG__ADDR     = ((uint32_t)0x02000002),
-    AMHW_ZLG_INT_FLAG__BTF      = ((uint32_t)0x02000004),
-    AMHW_ZLG_INT_FLAG__ADD10    = ((uint32_t)0x02000008),
-    AMHW_ZLG_INT_FLAG__STOPF    = ((uint32_t)0x02000010),
-    AMHW_ZLG_INT_FLAG__RXNE     = ((uint32_t)0x06000040),
-    AMHW_ZLG_INT_FLAG__TXE      = ((uint32_t)0x06000080),
-    AMHW_ZLG_INT_FLAG__BERR     = ((uint32_t)0x01000100),
-    AMHW_ZLG_INT_FLAG__ARLO     = ((uint32_t)0x01000200),
-    AMHW_ZLG_INT_FLAG__AF       = ((uint32_t)0x01000400),
-    AMHW_ZLG_INT_FLAG__OVR      = ((uint32_t)0x01000800),
-    AMHW_ZLG_INT_FLAG__PECERR   = ((uint32_t)0x01001000),
-    AMHW_ZLG_INT_FLAG__TIMEOUT  = ((uint32_t)0x01004000),
-    AMHW_ZLG_INT_FLAG__SMBALERT = ((uint32_t)0x01008000),
+    AMHW_ZLG_INT_FLAG__SB       = ((uint32_t)0x02000001), /* <brief 起始位（主模式） */
+    AMHW_ZLG_INT_FLAG__ADDR     = ((uint32_t)0x02000002), /* <brief 地址发送/匹配 */
+    AMHW_ZLG_INT_FLAG__BTF      = ((uint32_t)0x02000004), /* <brief 字节发送结束 */
+    AMHW_ZLG_INT_FLAG__ADD10    = ((uint32_t)0x02000008), /* <brief 10位头序列已发送 */
+    AMHW_ZLG_INT_FLAG__STOPF    = ((uint32_t)0x02000010), /* <brief 停止条件检测位（从） */
+    AMHW_ZLG_INT_FLAG__RXNE     = ((uint32_t)0x06000040), /* <brief 数据寄存器非空 （收）*/
+    AMHW_ZLG_INT_FLAG__TXE      = ((uint32_t)0x06000080), /* <brief 数据寄存器空 （发） */
+    AMHW_ZLG_INT_FLAG__BERR     = ((uint32_t)0x01000100), /* <brief 总线错误 */
+    AMHW_ZLG_INT_FLAG__ARLO     = ((uint32_t)0x01000200), /* <brief 仲裁丢失（主） */
+    AMHW_ZLG_INT_FLAG__AF       = ((uint32_t)0x01000400), /* <brief 应答失败 */
+    AMHW_ZLG_INT_FLAG__OVR      = ((uint32_t)0x01000800), /* <brief 过载/欠载 */
+    AMHW_ZLG_INT_FLAG__PECERR   = ((uint32_t)0x01001000), /* <brief 接收时发生PEC错误 */
+    AMHW_ZLG_INT_FLAG__TIMEOUT  = ((uint32_t)0x01004000), /* <brief 超时/tlow错误 */
+    AMHW_ZLG_INT_FLAG__SMBALERT = ((uint32_t)0x01008000), /* <brief SMBUS提醒 */
 }amhw_zlg237_int_flag_t;
 
 typedef enum {
