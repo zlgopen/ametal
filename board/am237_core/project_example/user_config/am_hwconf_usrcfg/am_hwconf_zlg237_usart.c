@@ -21,13 +21,13 @@
  * \endinternal
  */
 
-#include <am_zlg237.h>
-#include <am_zlg237_usart.h>
-#include <amhw_zlg237_gpio.h>
-#include <amhw_zlg237_rcc.h>
-#include <amhw_zlg237_usart.h>
-#include <zlg237_periph_map.h>
-#include <zlg237_pin.h>
+#include "am_zlg237.h"
+#include "am_zlg237_usart.h"
+#include "amhw_zlg237_gpio.h"
+#include "amhw_zlg237_rcc.h"
+#include "amhw_zlg237_usart.h"
+#include "zlg237_periph_map.h"
+#include "zlg237_pin.h"
 #include "am_gpio.h"
 #include "am_clk.h"
 
