@@ -48,8 +48,8 @@ void __microport_rs485_dir (am_bool_t is_txmode)
 /** \brief MicroPort RS485平台初始化 */
 am_local void __microport_rs485_plfm_init (void)
 {
-    am_gpio_pin_cfg(PIOA_9,  PIOA_9_UART1_TX_REMAP0 | PIOA_9_AF_PP);
-    am_gpio_pin_cfg(PIOA_10, PIOA_10_UART1_RX_REMAP0| PIOA_10_INPUT_FLOAT);
+    am_gpio_pin_cfg(PIOA_9,  PIOA_9_USART1_TX_REMAP0 | PIOA_9_AF_PP);
+    am_gpio_pin_cfg(PIOA_10, PIOA_10_USART1_RX_REMAP0| PIOA_10_INPUT_FLOAT);
 
     am_gpio_pin_cfg(__MICROPORT_RS485_DIR_PIN, AM_GPIO_OUTPUT_INIT_LOW);
 }
@@ -57,9 +57,9 @@ am_local void __microport_rs485_plfm_init (void)
 /** \brief MicroPort RS485 设备信息 */
 static const am_zlg237_usart_devinfo_t __g_microport_rs485_devinfo = {
 
-    ZLG237_USART1_BASE,            /**< \brief 串口1 */
-    INUM_USART1,                   /**< \brief 串口1的中断编号 */
-    CLK_USART1,                    /**< \brief 串口1的时钟 */
+    ZLG237_USART1_BASE,        /**< \brief 串口1 */
+    INUM_USART1,               /**< \brief 串口1的中断编号 */
+    CLK_USART1,                /**< \brief 串口1的时钟 */
 
     AMHW_ZLG_UART_DATA_8BIT |  /**< \brief 8位数据 */
     AMHW_ZLG_UART_PARITY_NO |  /**< \brief 无极性 */
@@ -82,7 +82,7 @@ am_uart_handle_t am_microport_rs485_inst_init (void)
 {
     am_uart_handle_t handle;
     handle = am_zlg237_usart_init(&__g_microport_rs485_dev,
-                                 &__g_microport_rs485_devinfo);
+                                  &__g_microport_rs485_devinfo);
     if (NULL != handle) {
         am_uart_ioctl(handle, AM_UART_RS485_SET, (void *)AM_TRUE);
     }

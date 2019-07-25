@@ -21,8 +21,8 @@
  * \endinternal
  */
 
-#include <am_zlg237.h>
-#include <zlg237_pin.h>
+#include "am_zlg237.h"
+#include "zlg237_pin.h"
 #include "ametal.h"
 #include "am_zlg237_spi_int.h"
 #include "am_gpio.h"

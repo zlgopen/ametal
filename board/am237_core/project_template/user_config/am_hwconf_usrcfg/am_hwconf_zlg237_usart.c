@@ -12,7 +12,7 @@
 
 /**
  * \file
- * \brief ZLG237 UART 用户配置文件
+ * \brief ZLG237 USART 用户配置文件
  * \sa am_zlg237l_hwconfig_usart.c
  *
  * \internal
@@ -21,19 +21,19 @@
  * \endinternal
  */
 
-#include <am_zlg237.h>
-#include <am_zlg237_usart.h>
-#include <amhw_zlg237_gpio.h>
-#include <amhw_zlg237_rcc.h>
-#include <amhw_zlg237_usart.h>
-#include <zlg237_periph_map.h>
-#include <zlg237_pin.h>
+#include "am_zlg237.h"
+#include "am_zlg237_usart.h"
+#include "amhw_zlg237_gpio.h"
+#include "amhw_zlg237_rcc.h"
+#include "amhw_zlg237_usart.h"
+#include "zlg237_periph_map.h"
+#include "zlg237_pin.h"
 #include "am_gpio.h"
 #include "am_clk.h"
 
 /**
- * \addtogroup am_if_src_hwconf_zlg237_uart
- * \copydoc am_hwconf_zlg237_uart.c
+ * \addtogroup am_if_src_hwconf_zlg237_usart
+ * \copydoc am_hwconf_zlg237_usart.c
  * @{
  */
 
@@ -68,9 +68,9 @@ static const am_zlg237_usart_devinfo_t __g_usart1_devinfo = {
 
     0,                            /**< \brief 无其他中断 */
 
-    NULL,                         /**< \brief UART1使用RS485 */
-    __zlg237_plfm_usart1_init,     /**< \brief UART1的平台初始化 */
-    __zlg237_plfm_usart1_deinit,   /**< \brief UART1的平台去初始化 */
+    NULL,                          /**< \brief USART1使用RS485 */
+    __zlg237_plfm_usart1_init,     /**< \brief USART1的平台初始化 */
+    __zlg237_plfm_usart1_deinit,   /**< \brief USART1的平台去初始化 */
 
 	/* 以下引脚在功能设置成对应模式才会进行初始化 */
 	{PIOA_8, PIOA_8_NO_REMAP | PIOA_8_AF_PP},             /**< \brief ck引脚相关定义 */
@@ -82,13 +82,13 @@ static const am_zlg237_usart_devinfo_t __g_usart1_devinfo = {
 /**< \brief 定义串口1 设备 */
 static am_zlg237_usart_dev_t  __g_usart1_dev;
 
-/** \brief UART1实例初始化，获得uart1标准服务句柄 */
+/** \brief USART1实例初始化，获得usart1标准服务句柄 */
 am_uart_handle_t am_zlg237_usart1_inst_init (void)
 {
     return am_zlg237_usart_init(&__g_usart1_dev, &__g_usart1_devinfo);
 }
 
-/** \brief UART1实例解初始化 */
+/** \brief USART1实例解初始化 */
 void am_zlg237_usart1_inst_deinit (am_uart_handle_t handle)
 {
     am_zlg237_usart_deinit((am_zlg237_usart_dev_t *)handle);
@@ -105,7 +105,7 @@ static void __zlg237_plfm_usart2_init (void)
 static void __zlg237_plfm_usart2_deinit (void)
 {
 
-    /* 关闭UART2时钟 */
+    /* 关闭USART2时钟 */
     am_clk_disable(CLK_USART2);
 
     am_gpio_pin_cfg(PIOA_3, AM_GPIO_INPUT);
@@ -127,9 +127,9 @@ static const am_zlg237_usart_devinfo_t __g_usart2_devinfo = {
 
     0,                              /**< \brief 无其他中断 */
 
-    NULL,                           /**< \brief UART2使用RS485 */
-    __zlg237_plfm_usart2_init,       /**< \brief UART2的平台初始化 */
-    __zlg237_plfm_usart2_deinit,     /**< \brief UART2的平台去初始化 */
+    NULL,                           /**< \brief USART2使用RS485 */
+    __zlg237_plfm_usart2_init,       /**< \brief USART2的平台初始化 */
+    __zlg237_plfm_usart2_deinit,     /**< \brief USART2的平台去初始化 */
 
 	/* 以下引脚在功能设置成对应模式才会进行初始化 */
 	{PIOA_4, PIOA_4_NO_REMAP | PIOA_4_AF_PP},          /**< \brief ck引脚相关定义 */
@@ -140,13 +140,13 @@ static const am_zlg237_usart_devinfo_t __g_usart2_devinfo = {
 /**< \brief 定义串口2设备 */
 static am_zlg237_usart_dev_t  __g_usart2_dev;
 
-/** \brief UART2实例初始化，获得uart2标准服务句柄 */
+/** \brief USART2实例初始化，获得usart2标准服务句柄 */
 am_uart_handle_t am_zlg237_usart2_inst_init (void)
 {
     return am_zlg237_usart_init(&__g_usart2_dev, &__g_usart2_devinfo);
 }
 
-/** \brief UART2实例解初始化 */
+/** \brief USART2实例解初始化 */
 void am_zlg237_usart2_inst_deinit (am_uart_handle_t handle)
 {
     am_zlg237_usart_deinit((am_zlg237_usart_dev_t *)handle);
@@ -183,9 +183,9 @@ static const am_zlg237_usart_devinfo_t __g_usart3_devinfo = {
 
     0,                              /**< \brief 无其他中断 */
 
-    NULL,                           /**< \brief UART3使用RS485 */
-    __zlg237_plfm_usart3_init,       /**< \brief UART3的平台初始化 */
-    __zlg237_plfm_usart3_deinit,     /**< \brief UART3的平台去初始化 */
+    NULL,                           /**< \brief USART3使用RS485 */
+    __zlg237_plfm_usart3_init,       /**< \brief USART3的平台初始化 */
+    __zlg237_plfm_usart3_deinit,     /**< \brief USART3的平台去初始化 */
 
 	/* 以下引脚在功能设置成对应模式才会进行初始化 */
 	{PIOB_12, PIOB_12_NO_REMAP | PIOB_12_AF_PP},          /**< \brief ck引脚相关定义 */
@@ -196,13 +196,13 @@ static const am_zlg237_usart_devinfo_t __g_usart3_devinfo = {
 /**< \brief 定义串口2设备 */
 static am_zlg237_usart_dev_t  __g_usart3_dev;
 
-/** \brief UART3实例初始化，获得uart3标准服务句柄 */
+/** \brief USART3实例初始化，获得usart3标准服务句柄 */
 am_uart_handle_t am_zlg237_usart3_inst_init (void)
 {
     return am_zlg237_usart_init(&__g_usart3_dev, &__g_usart3_devinfo);
 }
 
-/** \brief UART3实例解初始化 */
+/** \brief USART3实例解初始化 */
 void am_zlg237_usart3_inst_deinit (am_uart_handle_t handle)
 {
     am_zlg237_usart_deinit((am_zlg237_usart_dev_t *)handle);

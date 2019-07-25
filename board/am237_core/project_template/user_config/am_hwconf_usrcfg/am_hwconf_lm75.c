@@ -20,7 +20,7 @@
  * - 1.00 17-07-13  tee, first implementation
  * \endinternal
  */
-#include <zlg237_pin.h>
+#include "zlg237_pin.h"
 #include "ametal.h"
 #include "am_temp_lm75.h"
 #include "am_zlg237_inst_init.h"
