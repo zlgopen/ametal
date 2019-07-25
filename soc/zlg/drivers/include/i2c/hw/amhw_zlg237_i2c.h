@@ -16,7 +16,7 @@
  *
  * \internal
  * \par Modification history
- * - 1.00 19-07-17  zc, first implementation
+ * - 1.00 19-07-24  zc, first implementation
  * \endinternal
  */
 
@@ -97,16 +97,20 @@ typedef enum {
 
 /** \brief I2C_acknowledged_address */
 typedef enum {
+
     /** \brief 7位地址模式*/
     AMHW_ZLG237_I2C_ACK_ADDRESS_7_BIT  = (uint16_t)0x4000,
+
     /** \brief 10 位地址模式*/
     AMHW_ZLG237_I2C_ACK_ADDRESS_10_BIT = (uint16_t)0xC000,
 }amhw_zlg237_i2c_ack_address_t;
 
 /** \brief I2C_fast_mode_duty */
 typedef enum {
+
     /** \brief fast mode Tlow/Thigh = 16/9 */
     AMHW_ZLG237_I2C_DUTY_CYCLE_16_9 = (uint16_t)0x4000,
+
     /** \brief fast mode Tlow/Thigh = 2 */
     AMHW_ZLG237_I2C_DUTY_CYCLE_2    = (uint16_t)0xBFFF,
 }amhw_zlg237_i2c_duty_t;
@@ -195,9 +199,9 @@ typedef enum {
 #define AMHW_ZLG237_I2C_CR2_ITBUFEN             (10ul)
 
 typedef enum {
-    I2C_CR2_ITERREN,    /* \brief 出错中断*/
-    I2C_CR2_ITEVTEN,    /* \brief 事件中断*/
-    I2C_CR2_ITBUFEN,    /* \brief 缓冲器中断*/
+    I2C_CR2_ITERREN = 0x01,    /* \brief 出错中断*/
+    I2C_CR2_ITEVTEN = 0x02,    /* \brief 事件中断*/
+    I2C_CR2_ITBUFEN = 0x04,    /* \brief 缓冲器中断*/
 } amhw_zlg237_i2c_iten_t;
 
 /** \brief dmaen DMA请求使能 */
@@ -252,35 +256,6 @@ typedef enum {
 
 /** \brief duty 快速模式下的占空比 */
 #define AMHW_ZLG237_I2C_CCR_DUTY                (14ul)
-
-//typedef enum {
-//    AMHW_ZLG237_I2C_SR1_SB = 0,         /** \brief SB 起始位（主模式）   */
-//    AMHW_ZLG237_I2C_SR1_ADDR,           /** \brief addr 地址已被发送（主模式）/地址匹配（从模式）   */
-//    AMHW_ZLG237_I2C_SR1_BTF,            /** \brief 字节发送结束  */
-//    AMHW_ZLG237_I2C_SR1_ADD10,          /** \brief 10位头序列已发送（主模式） */
-//    AMHW_ZLG237_I2C_SR1_STOPF,          /** \brief 停止条件检测位 （从模式）     */
-//    AMHW_ZLG237_I2C_SR1_RXNE = 6,       /** \brief 数据寄存器非空  （接收时）    */
-//    AMHW_ZLG237_I2C_SR1_TXE,            /** \brief 数据寄存器为空   （发送时）  */
-//    AMHW_ZLG237_I2C_SR1_BERR,           /** \brief 总线错误  */
-//    AMHW_ZLG237_I2C_SR1_ARLO,           /** \brief 仲裁丢失 (主模式) */
-//    AMHW_ZLG237_I2C_SR1_AF,             /** \brief 应答失败  */
-//    AMHW_ZLG237_I2C_SR1_OVR,            /** \brief 过载/欠载 */
-//    AMHW_ZLG237_I2C_SR1_PECERR,         /** \brief 在接收时发送PEC错误  */
-//    AMHW_ZLG237_I2C_SR1_TIMEOUT = 14,   /** \brief 超时或Tlow错误  */
-//    AMHW_ZLG237_I2C_SR1_SMBALERT,       /** \brief SMBus 提醒  */
-//};
-//
-//typedef enum {
-//    AMHW_ZLG237_I2C_SR2_MSL = 0,        /** \brief 主从模式  */
-//    AMHW_ZLG237_I2C_SR2_BUSY,           /** \brief 总线忙  */
-//    AMHW_ZLG237_I2C_SR2_TRA,            /** \brief 发送接收    transmitter/receiver  */
-//    AMHW_ZLG237_I2C_SR2_GENCALL = 4,    /** \brief 广播呼叫地址（从模式） */
-//    AMHW_ZLG237_I2C_SR2_SMBDEFAULT,     /** \brief SMBus设备默认地址 （从模式）     */
-//    AMHW_ZLG237_I2C_SR2_SMBHOST,        /** \brief SMBus主机头系列 （从模式）    */
-//    AMHW_ZLG237_I2C_SR2_DUALF,          /** \brief 双标志   （从模式）  */
-//    AMHW_ZLG237_I2C_SR2_PEC,            /** \brief 数据包检测出错*/
-//};
-
 
 /******************************************************************************
                              IIC MASTER Events
@@ -367,10 +342,6 @@ typedef enum {
 
 }amhw_zlg237_flag_t;
 
-/** <brief I2C 中断宏定义 */
-#define I2C_IT_ERR            AM_BIT(AMHW_ZLG237_I2C_CR2_ITERREN)
-#define I2C_IT_EVT            AM_BIT(AMHW_ZLG237_I2C_CR2_ITEVTEN)
-#define I2C_IT_BUF            AM_BIT(AMHW_ZLG237_I2C_CR2_ITBUFEN)
 
 
 /**
@@ -396,9 +367,35 @@ typedef enum {
 typedef enum {
     DISABLE = 0,
     ENABLE,
-};
+}state_t;
 
-/** \brief 标准模式(0 ~ 100Kbps),主机模式下有效 */
+/**
+ *  \brief 使能 I2C外设
+ *
+ *  \param[in] p_hw_i2c : 指向I2C寄存器结构体的指针
+ *
+ *  \return 无
+ */
+am_static_inline
+void amhw_zlg237_i2c_enable (amhw_zlg237_i2c_t *p_hw_i2c)
+{
+    p_hw_i2c->i2c_cr1 |= (1u) << AMHW_ZLG237_I2C_CR1_PE;
+}
+
+/**
+ *  \brief 禁能I2C外设
+ *
+ *  \param[in] p_hw_i2c : 指向I2C寄存器结构体的指针
+ *
+ *  \return 无
+ */
+am_static_inline
+void amhw_zlg237_i2c_disable (amhw_zlg237_i2c_t *p_hw_i2c)
+{
+    p_hw_i2c->i2c_cr1 &= ~((1u) << AMHW_ZLG237_I2C_CR1_PE);
+}
+
+
 
 /**
  *  \brief 使能或禁能 I2C外设
@@ -409,38 +406,20 @@ typedef enum {
  *	\return 无
  */
 am_static_inline
-void amhw_zlg237_i2c_en (amhw_zlg237_i2c_t    *p_hw_i2c,
-		                  uint16_t              state)
-{
-    if (state) {
-    	p_hw_i2c->i2c_cr1 |= (1u) << AMHW_ZLG237_I2C_CR1_PE;
-    } else {
-    	p_hw_i2c->i2c_cr1 &= ~((1u) << AMHW_ZLG237_I2C_CR1_PE);
-
-    }
-}
-
-/**
- *  \brief 使能或禁能 I2C外设
- *
- *  \param[in] p_hw_i2c : 指向I2C寄存器结构体的指针
- *  \param[in] state:  0 禁能  1 使能
- *
- *	\return 无
- */
-am_static_inline
-void amhw_zlg237_i2c_dma_en (amhw_zlg237_i2c_t    *p_hw_i2c,
-		                      uint16_t              state)
+void amhw_zlg237_i2c_dma_en (amhw_zlg237_i2c_t *p_hw_i2c,
+                             state_t           state)
 {
     if (state) {
 
-    	/** <brief 当TxE = 1 或RxNE = 1时，允许DMA请求*/
-    	p_hw_i2c->i2c_cr2 |= 1 << AMHW_ZLG237_I2C_CR2_DMAEN;
+        /** <brief 当TxE = 1 或RxNE = 1时，允许DMA请求*/
+        p_hw_i2c->i2c_cr2 |= 1 << AMHW_ZLG237_I2C_CR2_DMAEN;
     } else {
-    	/** <brief 禁止DMA请求 */
-    	p_hw_i2c->i2c_cr2 &= ~(1 << AMHW_ZLG237_I2C_CR2_DMAEN);
+
+        /** <brief 禁止DMA请求 */
+        p_hw_i2c->i2c_cr2 &= ~(1 << AMHW_ZLG237_I2C_CR2_DMAEN);
     }
 }
+
 
 /**
  *  \brief 最后一次传输DMA
@@ -451,8 +430,8 @@ void amhw_zlg237_i2c_dma_en (amhw_zlg237_i2c_t    *p_hw_i2c,
  *	\return 无
  */
 am_static_inline
-void amhw_zlg237_i2c_dma_last_en (amhw_zlg237_i2c_t    *p_hw_i2c,
-		                          uint16_t              state)
+void amhw_zlg237_i2c_dma_last_en (amhw_zlg237_i2c_t *p_hw_i2c,
+                                   state_t           state)
 {
     if (state) {
 
@@ -465,6 +444,7 @@ void amhw_zlg237_i2c_dma_last_en (amhw_zlg237_i2c_t    *p_hw_i2c,
     }
 }
 
+
 /**
  *  \brief start 起始条件产生
  *
@@ -475,20 +455,21 @@ void amhw_zlg237_i2c_dma_last_en (amhw_zlg237_i2c_t    *p_hw_i2c,
  *	\return 无
  */
 am_static_inline
-void amhw_zlg237_i2c_genstrat (amhw_zlg237_i2c_t    *p_hw_i2c,
-		                          uint16_t           state)
+void amhw_zlg237_i2c_genstrat (amhw_zlg237_i2c_t *p_hw_i2c,
+                               state_t            state)
 {
     if (state) {
 
-    	/** <brief 在当前字节传输或在当前起始条件发出后产生停止条件（主模式）
-    	 *  在当前字节传输或释放SCL和SDA线（从模式）*/
-    	p_hw_i2c->i2c_cr1 |= (uint16_t)(1 << AMHW_ZLG237_I2C_CR1_START);
+        /** <brief 在当前字节传输或在当前起始条件发出后产生停止条件（主模式）
+         *  在当前字节传输或释放SCL和SDA线（从模式）*/
+        p_hw_i2c->i2c_cr1 |= (uint16_t)(1 << AMHW_ZLG237_I2C_CR1_START);
     } else {
 
-    	/** <brief 无起始条件产生（主从） */
-    	p_hw_i2c->i2c_cr1 &= ~(uint16_t)(1 << AMHW_ZLG237_I2C_CR1_START);
+        /** <brief 无起始条件产生（主从） */
+        p_hw_i2c->i2c_cr1 &= ~(uint16_t)(1 << AMHW_ZLG237_I2C_CR1_START);
     }
 }
+
 
 /**
  *  \brief stop 停止条件产生
@@ -501,16 +482,16 @@ void amhw_zlg237_i2c_genstrat (amhw_zlg237_i2c_t    *p_hw_i2c,
  */
 am_static_inline
 void amhw_zlg237_i2c_genstop (amhw_zlg237_i2c_t    *p_hw_i2c,
-		                          uint16_t          state)
+                              state_t               state)
 {
     if (state) {
 
-    	/** <brief 重复产生起始条件（主模式） 当总线空闲时，产生起始条件（从模式）*/
-    	p_hw_i2c->i2c_cr1 |= (uint16_t)(1 << AMHW_ZLG237_I2C_CR1_STOP);
+        /** <brief 重复产生起始条件（主模式） 当总线空闲时，产生起始条件（从模式）*/
+        p_hw_i2c->i2c_cr1 |= (uint16_t)(1 << AMHW_ZLG237_I2C_CR1_STOP);
     } else {
 
-    	/** <brief 无起始条件产生（主从） */
-    	p_hw_i2c->i2c_cr1 &= ~(uint16_t)(1 << AMHW_ZLG237_I2C_CR1_STOP);
+        /** <brief 无起始条件产生（主从） */
+        p_hw_i2c->i2c_cr1 &= ~(uint16_t)(1 << AMHW_ZLG237_I2C_CR1_STOP);
     }
 }
 
@@ -524,19 +505,20 @@ void amhw_zlg237_i2c_genstop (amhw_zlg237_i2c_t    *p_hw_i2c,
  *	\return 无
  */
 am_static_inline
-void amhw_zlg237_i2c_ack_en (amhw_zlg237_i2c_t    *p_hw_i2c,
-		                     uint16_t              state)
+void amhw_zlg237_i2c_ack_en (amhw_zlg237_i2c_t *p_hw_i2c,
+                             state_t            state)
 {
     if (state) {
 
-    	/** <brief 在收到一个字节后返回一个应答（匹配的地址或数据）  */
-    	p_hw_i2c->i2c_cr1 |= 1 << AMHW_ZLG237_I2C_CR1_ACK;
+        /** <brief 在收到一个字节后返回一个应答（匹配的地址或数据）  */
+        p_hw_i2c->i2c_cr1 |= 1 << AMHW_ZLG237_I2C_CR1_ACK;
     } else {
 
-    	/** <brief 无应答返回 */
-    	p_hw_i2c->i2c_cr1 &= ~(1 << AMHW_ZLG237_I2C_CR1_ACK);
+        /** <brief 无应答返回 */
+        p_hw_i2c->i2c_cr1 &= ~(1 << AMHW_ZLG237_I2C_CR1_ACK);
     }
 }
+
 
 /** \brief 配置自身地址寄存器 2 oar2
  *
@@ -546,16 +528,17 @@ void amhw_zlg237_i2c_ack_en (amhw_zlg237_i2c_t    *p_hw_i2c,
  *  \return 无
  */
 am_static_inline
-void amhw_zlg237_i2c_oar2_config (amhw_zlg237_i2c_t    *p_hw_i2c,
-                                  uint8_t               address)
+void amhw_zlg237_i2c_oar2_config (amhw_zlg237_i2c_t *p_hw_i2c,
+                                  uint8_t            address)
 {
 
-	/** <brief 初始化 add2[7:1] */
+    /** <brief 初始化 add2[7:1] */
     p_hw_i2c->i2c_oar2 &= ~(0x7f << AMHW_ZLG237_I2C_OAR2_ADD2);
 
     /** <brief 设置 7位地址 */
     p_hw_i2c->i2c_oar2 |= (uint16_t)((uint16_t)address & (0x7f <<AMHW_ZLG237_I2C_OAR2_ADD2));
 }
+
 
 /** \brief  endual 双地址模式使能位
  *
@@ -566,18 +549,19 @@ void amhw_zlg237_i2c_oar2_config (amhw_zlg237_i2c_t    *p_hw_i2c,
  */
 am_static_inline
 void amhw_zlg237_i2c_endual (amhw_zlg237_i2c_t    *p_hw_i2c,
-                             uint16_t              state)
+                             state_t               state)
 {
     if (state) {
 
-    	/** <brief 在7位地址模式下，oar1和oar2都能被识别*/
-    	p_hw_i2c->i2c_oar2 |= 1 << AMHW_ZLG237_I2C_OAR2_ENDUAL;
+        /** <brief 在7位地址模式下，oar1和oar2都能被识别*/
+        p_hw_i2c->i2c_oar2 |= 1 << AMHW_ZLG237_I2C_OAR2_ENDUAL;
     } else {
 
-    	/** <brief 在7位地址模式下，只有oar1能被识别*/
-    	p_hw_i2c->i2c_oar2 &= ~(1 << AMHW_ZLG237_I2C_OAR2_ENDUAL);
+        /** <brief 在7位地址模式下，只有oar1能被识别*/
+        p_hw_i2c->i2c_oar2 &= ~(1 << AMHW_ZLG237_I2C_OAR2_ENDUAL);
     }
 }
+
 
 /** \brief  engc 广播呼叫使能位
  *
@@ -588,18 +572,19 @@ void amhw_zlg237_i2c_endual (amhw_zlg237_i2c_t    *p_hw_i2c,
  */
 am_static_inline
 void amhw_zlg237_i2c_engc (amhw_zlg237_i2c_t    *p_hw_i2c,
-                           uint16_t              state)
+                           state_t               state)
 {
     if (state) {
 
-    	/** <brief ENGC使能 允许广播呼叫 以应答响应地址 00h  */
-    	p_hw_i2c->i2c_cr1 |= 1 << AMHW_ZLG237_I2C_CR1_ENGC;
+        /** <brief ENGC使能 允许广播呼叫 以应答响应地址 00h  */
+        p_hw_i2c->i2c_cr1 |= 1 << AMHW_ZLG237_I2C_CR1_ENGC;
     } else {
 
-    	/** <brief ENGC禁能 禁止广播呼叫 以非应答响应地址 00h */
-    	p_hw_i2c->i2c_cr1 &= ~(1 << AMHW_ZLG237_I2C_CR1_ENGC);
+        /** <brief ENGC禁能 禁止广播呼叫 以非应答响应地址 00h */
+        p_hw_i2c->i2c_cr1 &= ~(1 << AMHW_ZLG237_I2C_CR1_ENGC);
     }
 }
+
 
 /** \brief  中断模式使能设置
  *
@@ -611,42 +596,34 @@ void amhw_zlg237_i2c_engc (amhw_zlg237_i2c_t    *p_hw_i2c,
  */
 am_static_inline
 void amhw_zlg237_i2c_iten_mode_set (amhw_zlg237_i2c_t      *p_hw_i2c,
-		                            amhw_zlg237_i2c_iten_t  mode,
-									uint16_t                state)
+                                    amhw_zlg237_i2c_iten_t  mode,
+                                    state_t                 state)
 {
-	switch (mode) {
+    if (mode & I2C_CR2_ITERREN) {
+        if (state) {
+            p_hw_i2c->i2c_cr2 |= 1 << AMHW_ZLG237_I2C_CR2_ITERREN;
+        } else {
+            p_hw_i2c->i2c_cr2 &= ~(1 << AMHW_ZLG237_I2C_CR2_ITERREN);
+        }
+    }
 
-	/** \brief iterren 出错中断 */
-	case I2C_CR2_ITERREN:
-		if (state) {
-			p_hw_i2c->i2c_cr2 |= 1 << AMHW_ZLG237_I2C_CR2_ITERREN;
-		} else {
-			p_hw_i2c->i2c_cr2 &= ~(1 << AMHW_ZLG237_I2C_CR2_ITERREN);
-		}
-		break;
+    if (mode & I2C_CR2_ITEVTEN) {
+        if (state) {
+            p_hw_i2c->i2c_cr2 |= 1 << AMHW_ZLG237_I2C_CR2_ITEVTEN;
+        } else {
+            p_hw_i2c->i2c_cr2 &= ~(1 << AMHW_ZLG237_I2C_CR2_ITEVTEN);
+        }
+    }
 
-	/** \brief itevten 事件中断 */
-	case I2C_CR2_ITEVTEN:
-		if (state) {
-			p_hw_i2c->i2c_cr2 |= 1 << AMHW_ZLG237_I2C_CR2_ITEVTEN;
-		} else {
-			p_hw_i2c->i2c_cr2 &= ~(1 << AMHW_ZLG237_I2C_CR2_ITEVTEN);
-		}
-		break;
-
-	/** \brief itevten 缓冲器中断 在 TxE = 1 或 RxNE =1  */
-	case I2C_CR2_ITBUFEN:
-		if (state) {
-			p_hw_i2c->i2c_cr2 |= 1 << AMHW_ZLG237_I2C_CR2_ITBUFEN;
-		} else {
-			p_hw_i2c->i2c_cr2 &= ~(1 << AMHW_ZLG237_I2C_CR2_ITBUFEN);
-		}
-		break;
-
-    default:
-  	  break;
-	}
+    if (mode & I2C_CR2_ITBUFEN) {
+        if (state) {
+            p_hw_i2c->i2c_cr2 |= 1 << AMHW_ZLG237_I2C_CR2_ITBUFEN;
+        } else {
+            p_hw_i2c->i2c_cr2 &= ~(1 << AMHW_ZLG237_I2C_CR2_ITBUFEN);
+        }
+    }
 }
+
 /** \brief  发送数据
  *
  *  \param[in] p_hw_i2c : 指向I2C寄存器结构体的指针
@@ -655,8 +632,8 @@ void amhw_zlg237_i2c_iten_mode_set (amhw_zlg237_i2c_t      *p_hw_i2c,
  *  \return 无
  */
 am_static_inline
-void amhw_zlg237_i2c_send_data (amhw_zlg237_i2c_t      *p_hw_i2c,
-		                        uint8_t                 data)
+void amhw_zlg237_i2c_send_data (amhw_zlg237_i2c_t *p_hw_i2c,
+                                uint8_t            data)
 {
     p_hw_i2c->i2c_dr = data;
 }
@@ -668,7 +645,7 @@ void amhw_zlg237_i2c_send_data (amhw_zlg237_i2c_t      *p_hw_i2c,
  *  \return uint8_t类型的数据
  */
 am_static_inline
-uint8_t amhw_zlg237_i2c_recv_data (amhw_zlg237_i2c_t      *p_hw_i2c)
+uint8_t amhw_zlg237_i2c_recv_data (amhw_zlg237_i2c_t *p_hw_i2c)
 {
     return (uint8_t)p_hw_i2c->i2c_dr;
 }
@@ -683,13 +660,11 @@ uint8_t amhw_zlg237_i2c_recv_data (amhw_zlg237_i2c_t      *p_hw_i2c)
  */
 am_static_inline
 void amhw_zlg237_i2c_send7bit_address (amhw_zlg237_i2c_t   *p_hw_i2c,
-		                               uint8_t              address,
-									   uint8_t              slv_mode)
+                                       uint8_t              address,
+                                       uint8_t              slv_mode)
 {
-
-    p_hw_i2c->i2c_dr  = (address << 1) | (slv_mode & 0x01);    /** <brief read */
-
-
+    /** <brief read */
+    p_hw_i2c->i2c_dr  = (address << 1) | (slv_mode & 0x01);
 }
 
 /** \brief  软件复位
@@ -701,16 +676,16 @@ void amhw_zlg237_i2c_send7bit_address (amhw_zlg237_i2c_t   *p_hw_i2c,
  */
 am_static_inline
 void amhw_zlg237_i2c_swrst (amhw_zlg237_i2c_t      *p_hw_i2c,
-		                    uint16_t                state)
+                            state_t                 state)
 {
     if (state) {
 
-    	/** <brief  I2C模块处于复位状态 */
-    	p_hw_i2c->i2c_cr1 |= 1 << AMHW_ZLG237_I2C_CR1_SWRST;
+        /** <brief  I2C模块处于复位状态 */
+        p_hw_i2c->i2c_cr1 |= 1 << AMHW_ZLG237_I2C_CR1_SWRST;
     } else {
 
-    	/** <brief  I2C模块不处于复位状态 */
-    	p_hw_i2c->i2c_cr1 &= ~(1 << AMHW_ZLG237_I2C_CR1_SWRST);
+        /** <brief  I2C模块不处于复位状态 */
+        p_hw_i2c->i2c_cr1 &= ~(1 << AMHW_ZLG237_I2C_CR1_SWRST);
     }
 }
 
@@ -723,16 +698,16 @@ void amhw_zlg237_i2c_swrst (amhw_zlg237_i2c_t      *p_hw_i2c,
  */
 am_static_inline
 void amhw_zlg237_i2c_pos (amhw_zlg237_i2c_t      *p_hw_i2c,
-		                  uint16_t                state)
+                          state_t                 state)
 {
     if (state) {
 
-    	/** <brief ack 位控制当前移位寄存器内接收的下一个字节的(N)ACK. PEC位表明当前移位寄存器内接收的下一个字节是PEC*/
-    	p_hw_i2c->i2c_cr1 |= 1 << AMHW_ZLG237_I2C_CR1_POS;
+        /** <brief ack 位控制当前移位寄存器内接收的下一个字节的(N)ACK. PEC位表明当前移位寄存器内接收的下一个字节是PEC*/
+        p_hw_i2c->i2c_cr1 |= 1 << AMHW_ZLG237_I2C_CR1_POS;
     } else {
 
-    	/** <brief ack 位控制当前移位寄存器内正在接收的字节的(N)ACK. PEC位表明当前移位寄存器内的字节是PEC*/
-    	p_hw_i2c->i2c_cr1 &= ~(1 << AMHW_ZLG237_I2C_CR1_POS);
+        /** <brief ack 位控制当前移位寄存器内正在接收的字节的(N)ACK. PEC位表明当前移位寄存器内的字节是PEC*/
+        p_hw_i2c->i2c_cr1 &= ~(1 << AMHW_ZLG237_I2C_CR1_POS);
     }
 }
 
@@ -745,12 +720,12 @@ void amhw_zlg237_i2c_pos (amhw_zlg237_i2c_t      *p_hw_i2c,
  */
 am_static_inline
 void amhw_zlg237_i2c_alert (amhw_zlg237_i2c_t      *p_hw_i2c,
-		                    uint16_t                state)
+                            state_t                 state)
 {
     if (state) {
-    	p_hw_i2c->i2c_cr1 |= 1 << AMHW_ZLG237_I2C_CR1_ALERT;
+        p_hw_i2c->i2c_cr1 |= 1 << AMHW_ZLG237_I2C_CR1_ALERT;
     } else {
-    	p_hw_i2c->i2c_cr1 &= ~(1 << AMHW_ZLG237_I2C_CR1_ALERT);
+        p_hw_i2c->i2c_cr1 &= ~(1 << AMHW_ZLG237_I2C_CR1_ALERT);
     }
 }
 
@@ -763,12 +738,12 @@ void amhw_zlg237_i2c_alert (amhw_zlg237_i2c_t      *p_hw_i2c,
  */
 am_static_inline
 void amhw_zlg237_i2c_pec (amhw_zlg237_i2c_t      *p_hw_i2c,
-		                  uint16_t                state)
+                          state_t                 state)
 {
     if (state) {
-    	p_hw_i2c->i2c_cr1 |= 1 << AMHW_ZLG237_I2C_CR1_PEC;
+        p_hw_i2c->i2c_cr1 |= 1 << AMHW_ZLG237_I2C_CR1_PEC;
     } else {
-    	p_hw_i2c->i2c_cr1 &= ~(1 << AMHW_ZLG237_I2C_CR1_PEC);
+        p_hw_i2c->i2c_cr1 &= ~(1 << AMHW_ZLG237_I2C_CR1_PEC);
     }
 }
 
@@ -781,12 +756,12 @@ void amhw_zlg237_i2c_pec (amhw_zlg237_i2c_t      *p_hw_i2c,
  */
 am_static_inline
 void amhw_zlg237_i2c_enpec (amhw_zlg237_i2c_t      *p_hw_i2c,
-		                    uint16_t                state)
+                            state_t                 state)
 {
     if (state) {
-    	p_hw_i2c->i2c_cr1 |= 1 << AMHW_ZLG237_I2C_CR1_ENPEC;
+        p_hw_i2c->i2c_cr1 |= 1 << AMHW_ZLG237_I2C_CR1_ENPEC;
     } else {
-    	p_hw_i2c->i2c_cr1 &= ~(1 << AMHW_ZLG237_I2C_CR1_ENPEC);
+        p_hw_i2c->i2c_cr1 &= ~(1 << AMHW_ZLG237_I2C_CR1_ENPEC);
     }
 }
 
@@ -798,7 +773,7 @@ void amhw_zlg237_i2c_enpec (amhw_zlg237_i2c_t      *p_hw_i2c,
 am_static_inline
 uint8_t amhw_zlg237_i2c_getpec (amhw_zlg237_i2c_t      *p_hw_i2c)
 {
-	return (p_hw_i2c->i2c_sr2 >> AMHW_ZLG237_I2C_SR2_PEC7_1);
+    return (p_hw_i2c->i2c_sr2 >> AMHW_ZLG237_I2C_SR2_PEC7_1);
 }
 
 /** \brief  enarp arp使能
@@ -810,12 +785,12 @@ uint8_t amhw_zlg237_i2c_getpec (amhw_zlg237_i2c_t      *p_hw_i2c)
  */
 am_static_inline
 void amhw_zlg237_i2c_enarp (amhw_zlg237_i2c_t      *p_hw_i2c,
-		                    uint16_t                state)
+                            state_t                 state)
 {
     if (state) {
-    	p_hw_i2c->i2c_cr1 |= 1 << AMHW_ZLG237_I2C_CR1_ENARP;
+        p_hw_i2c->i2c_cr1 |= 1 << AMHW_ZLG237_I2C_CR1_ENARP;
     } else {
-    	p_hw_i2c->i2c_cr1 &= ~(1 << AMHW_ZLG237_I2C_CR1_ENARP);
+        p_hw_i2c->i2c_cr1 &= ~(1 << AMHW_ZLG237_I2C_CR1_ENARP);
     }
 }
 
@@ -828,12 +803,12 @@ void amhw_zlg237_i2c_enarp (amhw_zlg237_i2c_t      *p_hw_i2c,
  */
 am_static_inline
 void amhw_zlg237_i2c_nostretch (amhw_zlg237_i2c_t      *p_hw_i2c,
-		                        uint16_t                state)
+                                state_t                 state)
 {
     if (state) {
-    	p_hw_i2c->i2c_cr1 |= 1 << AMHW_ZLG237_I2C_CR1_NOSTRETCH;
+        p_hw_i2c->i2c_cr1 |= 1 << AMHW_ZLG237_I2C_CR1_NOSTRETCH;
     } else {
-    	p_hw_i2c->i2c_cr1 &= ~(1 << AMHW_ZLG237_I2C_CR1_NOSTRETCH);
+        p_hw_i2c->i2c_cr1 &= ~(1 << AMHW_ZLG237_I2C_CR1_NOSTRETCH);
     }
 }
 
@@ -846,12 +821,12 @@ void amhw_zlg237_i2c_nostretch (amhw_zlg237_i2c_t      *p_hw_i2c,
  */
 am_static_inline
 void amhw_zlg237_i2c_fastmodeduty (amhw_zlg237_i2c_t      *p_hw_i2c,
-		                           uint16_t                state)
+                                   state_t                 state)
 {
     if (state) {
-    	p_hw_i2c->i2c_cr1 |= 1 << AMHW_ZLG237_I2C_CCR_DUTY;
+        p_hw_i2c->i2c_cr1 |= 1 << AMHW_ZLG237_I2C_CCR_DUTY;
     } else {
-    	p_hw_i2c->i2c_cr1 &= ~(1 << AMHW_ZLG237_I2C_CCR_DUTY);
+        p_hw_i2c->i2c_cr1 &= ~(1 << AMHW_ZLG237_I2C_CCR_DUTY);
     }
 }
 
@@ -864,21 +839,21 @@ void amhw_zlg237_i2c_fastmodeduty (amhw_zlg237_i2c_t      *p_hw_i2c,
  */
 am_static_inline
 uint8_t amhw_zlg237_i2c_checkevent(amhw_zlg237_i2c_t      *p_hw_i2c,
-		                            uint32_t                event)
+                                   uint32_t                event)
 {
-	static uint32_t lastevent = 0;
+    static uint32_t lastevent = 0;
 
-	/** <brief 从I2C状态寄存器中获取 上一个事件的的值 */
-	lastevent = (uint32_t)(((uint32_t)p_hw_i2c->i2c_sr2 << 16) | (uint32_t)p_hw_i2c->i2c_sr1) & 0x00FFFFFF;
+    /** <brief 从I2C状态寄存器中获取 上一个事件的的值 */
+    lastevent = (uint32_t)(((uint32_t)p_hw_i2c->i2c_sr2 << 16) | (uint32_t)p_hw_i2c->i2c_sr1) & 0x00FFFFFF;
 
-	if ((lastevent & event) == event) {
+    if ((lastevent & event) == event) {
 
-		/** <brief 上一个事件是已发生的宏定义事件 */
-		return 1;
-	} else {
+        /** <brief 上一个事件是已发生的宏定义事件 */
+        return 1;
+    } else {
 
-		/** <brief 上一个事件与定义的宏事件不同 */
-		return 0;
+        /** <brief 上一个事件与定义的宏事件不同 */
+        return 0;
 	}
 }
 
@@ -893,8 +868,8 @@ am_static_inline
 uint32_t amhw_zlg237_i2c_getlastevent(amhw_zlg237_i2c_t      *p_hw_i2c)
 {
 
-	/** <brief 从I2C状态寄存器中获取 上一个事件的的值 */
-	return (((uint32_t)p_hw_i2c->i2c_sr2 << 16) | (uint32_t)p_hw_i2c->i2c_sr1) & 0x00FFFFFF;
+    /** <brief 从I2C状态寄存器中获取 上一个事件的的值 */
+    return (((uint32_t)p_hw_i2c->i2c_sr2 << 16) | (uint32_t)p_hw_i2c->i2c_sr1) & 0x00FFFFFF;
 }
 
 /** \brief  检测I2C状态寄存器的 各个状态位是否设置
@@ -918,36 +893,36 @@ int amhw_zlg237_i2c_checkflagstaus(amhw_zlg237_i2c_t      *p_hw_i2c,
 
     if (i2c_sr_num != 0) {
 
-    	/** \brief 读取sr1的寄存器值    	 */
-    	i2c_sr_value = p_hw_i2c->i2c_sr1;
+        /** \brief 读取sr1的寄存器值    	 */
+        i2c_sr_value = p_hw_i2c->i2c_sr1;
     } else {
 
-    	/** \brief 读取sr2的寄存器值    	 */
-    	i2c_flag = (uint32_t)(i2c_flag >> 16);
-    	i2c_sr_value = p_hw_i2c->i2c_sr2;
+        /** \brief 读取sr2的寄存器值    	 */
+        i2c_flag = (uint32_t)(i2c_flag >> 16);
+        i2c_sr_value = p_hw_i2c->i2c_sr2;
     }
 
     if ((i2c_sr_value & i2c_flag) != (uint32_t)0) {
 
         /** \brief 该位已被置 1 */
-    	return 1;
+        return 1;
     } else {
 
-    	/** \brief 该位已被置0 */
-    	return 0;
+        /** \brief 该位已被置0 */
+        return 0;
     }
 }
 
 /** \brief  清零SR1寄存器指定位上的值
  *
  *  \param[in] p_hw_i2c : 指向I2C寄存器结构体的指针
- *  \param[in] flag：                amhw_zlg237_flag_t
+ *  \param[in] flag： amhw_zlg237_flag_t
  *
  *  \return 无
  */
 am_static_inline
 void amhw_zlg237_i2c_clearflag (amhw_zlg237_i2c_t      *p_hw_i2c,
-		                        amhw_zlg237_flag_t                i2c_flag)
+                                amhw_zlg237_flag_t      i2c_flag)
 {
     p_hw_i2c->i2c_sr1 = (uint16_t)~(i2c_flag & 0x00FFFFFF);
 }
@@ -961,25 +936,25 @@ void amhw_zlg237_i2c_clearflag (amhw_zlg237_i2c_t      *p_hw_i2c,
  */
 am_static_inline
 int amhw_zlg237_i2c_get_itflagstatus (amhw_zlg237_i2c_t      *p_hw_i2c,
-		                              amhw_zlg237_int_flag_t  i2c_it)
+                                      amhw_zlg237_int_flag_t  i2c_it)
 {
-	uint32_t enablestatus = 0;
+    uint32_t enablestatus = 0;
 
-	/** <brief 检测指定IIC中断源是否使能 */
-	enablestatus = (uint32_t)(((i2c_it & 0x07000000) >> 16) & p_hw_i2c->i2c_cr2);
+    /** <brief 检测指定IIC中断源是否使能 */
+    enablestatus = (uint32_t)(((i2c_it & 0x07000000) >> 16) & p_hw_i2c->i2c_cr2);
 
-	/** <brief 获得 bit[23：0]的值 */
-	i2c_it &= 0x00FFFFFF;
+    /** <brief 获得 bit[23：0]的值 */
+    i2c_it &= 0x00FFFFFF;
 
-	if (((p_hw_i2c->i2c_sr1 & i2c_it) != (uint32_t)(0)) && enablestatus) {
+    if (((p_hw_i2c->i2c_sr1 & i2c_it) != (uint32_t)(0)) && enablestatus) {
 
-		/** <brief 中断已设置 */
-		return 1;
-	} else {
+        /** <brief 中断已设置 */
+        return 1;
+    } else {
 
-		/** <brief 中断未设置 */
-		return 0;
-	}
+        /** <brief 中断未设置 */
+        return 0;
+    }
 }
 
 /** \brief  获取中断的的状态
@@ -992,7 +967,7 @@ int amhw_zlg237_i2c_get_itflagstatus (amhw_zlg237_i2c_t      *p_hw_i2c,
 am_static_inline
 uint16_t amhw_zlg237_i2c_getitstatus (amhw_zlg237_i2c_t *p_hw_i2c)
 {
-	return (uint16_t)(p_hw_i2c->i2c_sr1 & 0xdfdf);
+    return (uint16_t)(p_hw_i2c->i2c_sr1 & 0xdfdf);
 }
 
 /** \brief  清零指定的中断请求
@@ -1010,7 +985,7 @@ uint16_t amhw_zlg237_i2c_getitstatus (amhw_zlg237_i2c_t *p_hw_i2c)
  */
 am_static_inline
 void amhw_zlg237_i2c_clearit(amhw_zlg237_i2c_t      *p_hw_i2c,
-		                     amhw_zlg237_int_flag_t  i2c_it)
+                             amhw_zlg237_int_flag_t  i2c_it)
 {
     p_hw_i2c->i2c_sr1 = (uint16_t)~(i2c_it & 0x00FFFFFF);
 }
@@ -1018,101 +993,29 @@ void amhw_zlg237_i2c_clearit(amhw_zlg237_i2c_t      *p_hw_i2c,
 am_static_inline
 void amhw_zlg237_i2c_clearallit(amhw_zlg237_i2c_t      *p_hw_i2c)
 {
-	uint16_t tmpreg = 0;
-	/** SB  read sr1 write dr */
+    uint16_t tmpreg = 0;
+    /** SB  read sr1 write dr */
 
-	/** ADDR read sr1 read sr2 */
+    /** ADDR read sr1 read sr2 */
 
-	/** BRF read sr1 read or write dr */
+    /** BRF read sr1 read or write dr */
 
-	/** ADD10 read sr1 write cr1 */
+    /** ADD10 read sr1 write cr1 */
 
     /** STOPF read sr1 write cr1 */
 
-	/** RXNE read or write dr */
+    /** RXNE read or write dr */
 
     /** TXE write dr */
 
-	tmpreg = p_hw_i2c->i2c_sr1;
-	tmpreg = p_hw_i2c->i2c_sr2;
-	p_hw_i2c->i2c_cr1 &= 0xffff;
-	p_hw_i2c->i2c_dr  &= 0xffff;
+    tmpreg = p_hw_i2c->i2c_sr1;
+    tmpreg = p_hw_i2c->i2c_sr2;
+    p_hw_i2c->i2c_cr1 &= 0xffff;
+    p_hw_i2c->i2c_dr  &= 0xffff;
 
     p_hw_i2c->i2c_sr1 &= (uint16_t)~(0x00FFFFFF);
 }
 
-
-/* \brief PCLK1输入时钟获取
-*
-* \retval  PCLK时钟源获取
-*/
-am_static_inline
-uint32_t amhw_zlg237_i2c_get_clk (void )
-{
-    uint32_t tmpsysclk = 0, pllmull = 0, presec = 0, pllsource = 0 ,tmp = 0,
-             pclk1_src = 0;
-    uint8_t apbahbpresctable[16] = {0,0,0,0,1,2,3,4,1,2,3,4,5,6,7,8,9};
-    tmp = amhw_zlg237_rcc_sys_clk_get();
-    /* 获取当前系统时钟源 */
-    switch (tmp) {
-
-    case AMHW_ZLG237_SYSCLK_HSI:
-        /* HSI  */
-        tmpsysclk = (uint32_t)8000000;
-    break;
-
-    case AMHW_ZLG237_SYSCLK_HSE:
-        /* HSE */
-        tmpsysclk = (uint32_t)8000000;
-    break;
-
-    case AMHW_ZLG237_SYSCLK_PLL:
-        /* PLL */
-        pllmull   = ZLG237_RCC->cfgr & (uint32_t)0x003c0000;
-        pllsource = ZLG237_RCC->cfgr & (uint32_t)0x00010000;
-
-        pllmull = (pllmull >> 18) + 2;
-        if (pllsource == 0x00) {
-            tmpsysclk = ((uint32_t)8000000 >> 1) * pllmull;
-        } else {
-            if ((ZLG237_RCC->cfgr & (uint32_t)0x00020000) != 0) {
-                tmpsysclk = ((uint32_t)8000000 >> 1) * pllmull;
-            } else {
-                tmpsysclk = (uint32_t)8000000 * pllmull;
-            }
-        }
-    break;
-
-    case AMHW_ZLG237_SYSCLK_LSI_OR_LSE:
-        /* LSE OR LSI */
-    break;
-
-    default:
-        tmpsysclk = (uint32_t)8000000;
-        break;
-    }
-
-//    /* HCLK presc */
-//    tmp = ZLG237_RCC->cfgr &0x000000f0;
-//    tmp = tmp >> 4;
-//    presec = apbahbpresctable[tmp];
-//    hclk_src = tmpsysclk >> presec;
-
-    /* PCLK1  */
-    tmp = ZLG237_RCC->cfgr &0x00000700;
-    tmp = tmp >> 8;
-    presec = apbahbpresctable[tmp];
-    pclk1_src = tmpsysclk >> presec;
-
-//    /* PCLK2 */
-//    tmp = ZLG237_RCC->cfgr &0x00003800;
-//    tmp = tmp >> 11;
-//    presec = apbahbpresctable[tmp];
-//    pclk1_src = tmpsysclk >> presec;
-
-    return pclk1_src;
-
-}
 
 /**
  * @}

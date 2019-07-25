@@ -12,13 +12,11 @@
 
 /**
  * \file
- * \brief I2C驱动，服务I2C标准接口
+ * \brief  zlg237 I2C驱动接口
  *
  * \internal
  * \par Modification History
- * - 1.01 17-12-28  pea, add a timeout mechanism, enable TX_ABRT and STOP_DET
- *                  interrupt
- * - 1.00 17-04-24  sdy, first implementation
+ * - 1.00 19-07-24  zc, first implementation
  * \endinternal
  */
 
@@ -124,22 +122,22 @@ typedef struct am_zlg_i2c_dev {
     /** \brief 是否中断状态机 */
     volatile am_bool_t                      is_abort;
 
-    /** \breif 时钟频率 */
+    /** \brief 时钟频率 */
     volatile uint32_t                       i2c_clock_speed;
 
-    /** \breif I2C模式    IIC  SMBus 模式  */
+    /** \brief I2C模式    IIC  SMBus 模式  */
     volatile amhw_zlg237_i2c_mode_t         i2c_mode;
 
-    /** \breif I2C快速模式下占空比 */
+    /** \brief I2C快速模式下占空比 */
     volatile amhw_zlg237_i2c_duty_t         i2c_dutycycle;
 
-    /** \breif I2C 自身地址 */
+    /** \brief I2C 自身地址 */
     volatile uint16_t                       i2c_ownaddress1;
 
-    /** \breif I2C ACK信号使能状态  使能 禁能 */
+    /** \brief I2C ACK信号使能状态  使能 禁能 */
     volatile amhw_zlg237_i2c_ack_t          i2c_ack;
 
-    /** \breif I2C 7位或10位地址是 ack信号地址 */
+    /** \brief I2C 7位或10位地址是 ack信号地址 */
     volatile amhw_zlg237_i2c_ack_address_t  i2c_acknowledgedaddress;
 
     /** \brief 指向I2C设备信息的指针 */
