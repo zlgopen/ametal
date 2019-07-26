@@ -90,7 +90,7 @@ static void dma_isr1 (void *p_arg , uint32_t flag)
     }
 }
 
-static void __adc2_isr (void *p_arg , uint32_t flag)
+static void __adc2_isr (void *p_arg)
 {
     int i;
     amhw_zlg237_adc_t *p_hw_adc = (amhw_zlg237_adc_t *)p_arg;

@@ -28,7 +28,7 @@ extern "C" {
 #endif
 
 #include "am_types.h"
-#include "am_common.h"
+#include "ametal.h"
 
 /**
  * \addtogroup amhw_zlg237_if_bkp
@@ -322,7 +322,7 @@ am_static_inline
 amhw_zlg237_bkp_iop_t amhw_zlg237_bkp_lsecfg_iop_get(
     amhw_zlg237_bkp_t *p_hw_bkp)
 {
-    return (p_hw_bkp->lse_cfg & (0x3u << 3));
+    return (amhw_zlg237_bkp_iop_t)(p_hw_bkp->lse_cfg & (0x3u << 3));
 }
 
 /**

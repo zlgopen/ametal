@@ -40,7 +40,7 @@ extern "C" {
 #include "am_bitops.h"
 
 /**
- * \addtogroup amhw_zlg_if_spi
+ * \addtogroup amhw_zlg237_if_spi
  * \copydoc amhw_zlg237_spi.h
  * @{
  */

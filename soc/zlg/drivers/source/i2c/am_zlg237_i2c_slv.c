@@ -21,6 +21,7 @@
  */
 
 #include "ametal.h"
+#include "am_clk.h"
 #include "am_zlg237_i2c_slv.h"
 #include "hw/amhw_zlg237_i2c.h"
 
@@ -59,7 +60,7 @@ static int __i2c_slv_hard_init (am_zlg237_i2c_slv_dev_t *p_dev)
 {
     amhw_zlg237_i2c_t *p_hw_i2c = NULL;
     uint16_t tmpreg = 0, i2c_freq_value = 0;
-    uint32_t pclk1 = 0;
+    int      pclk1 = 0;
     uint16_t result = 0x04;
 
     if (p_dev == NULL) {

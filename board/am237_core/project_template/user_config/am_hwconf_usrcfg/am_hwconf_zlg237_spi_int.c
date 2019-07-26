@@ -21,8 +21,8 @@
  * \endinternal
  */
 
-#include <am_zlg237.h>
-#include <zlg237_pin.h>
+#include "am_zlg237.h"
+#include "zlg237_pin.h"
 #include "ametal.h"
 #include "am_zlg237_spi_int.h"
 #include "am_gpio.h"
@@ -36,7 +36,7 @@
  */
 
 /** \brief SPI1 平台初始化 */
-static void __zlg_plfm_spi1_int_init (void)
+static void __zlg237_plfm_spi1_int_init (void)
 {
     am_gpio_pin_cfg(PIOA_5, PIOA_5_SPI1_SCK_REMAP0  | PIOA_5_AF_PP);
     am_gpio_pin_cfg(PIOA_6, PIOA_6_SPI1_MISO_REMAP0 | PIOA_6_INPUT_FLOAT);
@@ -46,7 +46,7 @@ static void __zlg_plfm_spi1_int_init (void)
 }
 
 /** \brief 解除SPI1 平台初始化 */
-static void __zlg_plfm_spi1_int_deinit (void)
+static void __zlg237_plfm_spi1_int_deinit (void)
 {
     am_gpio_pin_cfg(PIOA_5, AM_GPIO_INPUT );
     am_gpio_pin_cfg(PIOA_6, AM_GPIO_INPUT );
@@ -63,8 +63,8 @@ const  struct am_zlg237_spi_int_devinfo  __g_spi1_int_devinfo = {
     INUM_SPI1,                               /**< \brief SPI1中断号 */
     PIOA_7_SPI1_MOSI_REMAP0 | PIOA_7_AF_PP,  /**< \brief SPI1配置标识 */
     PIOA_7,                                  /**< \brief MOSI引脚号 */
-    __zlg_plfm_spi1_int_init,                /**< \brief SPI1平台初始化函数 */
-    __zlg_plfm_spi1_int_deinit               /**< \brief SPI1平台解初始化函数 */
+    __zlg237_plfm_spi1_int_init,             /**< \brief SPI1平台初始化函数 */
+    __zlg237_plfm_spi1_int_deinit            /**< \brief SPI1平台解初始化函数 */
 };
 
 /** \brief SPI1 设备实例 */
@@ -83,7 +83,7 @@ void am_zlg237_spi1_int_inst_deinit (am_spi_handle_t handle)
 }
 
 /** \brief SPI2 平台初始化 */
-static void __zlg_plfm_spi2_int_init (void)
+static void __zlg237_plfm_spi2_int_init (void)
 {
     am_clk_enable(CLK_SPI2);
 
@@ -93,7 +93,7 @@ static void __zlg_plfm_spi2_int_init (void)
 }
 
 /** \brief 解除SPI2 平台初始化 */
-static void __zlg_plfm_spi2_int_deinit (void)
+static void __zlg237_plfm_spi2_int_deinit (void)
 {
     am_gpio_pin_cfg(PIOB_13, AM_GPIO_INPUT);
     am_gpio_pin_cfg(PIOB_14, AM_GPIO_INPUT);
@@ -111,8 +111,8 @@ const  struct am_zlg237_spi_int_devinfo  __g_spi2_int_devinfo = {
     INUM_SPI2,                             /**< \brief SPI2中断号 */
     PIOB_15_SPI2_MOSI | PIOB_15_AF_PP,     /**< \brief SPI2配置标识 */
     PIOB_15,                               /**< \brief mosi引脚号 */
-    __zlg_plfm_spi2_int_init,              /**< \brief SPI2平台初始化函数 */
-    __zlg_plfm_spi2_int_deinit             /**< \brief SPI2平台解初始化函数 */
+    __zlg237_plfm_spi2_int_init,           /**< \brief SPI2平台初始化函数 */
+    __zlg237_plfm_spi2_int_deinit          /**< \brief SPI2平台解初始化函数 */
 };
 
 /** \brief SPI2 设备实例 */

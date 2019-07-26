@@ -28,6 +28,7 @@ extern "C" {
 #endif
 
 #include "am_types.h"
+#include "ametal.h"
 
 /**
  * \addtogroup amhw_zlg237_if_pwr
@@ -247,7 +248,7 @@ typedef enum amhw_zlg237_pwr_ldo_run_set {
  *           AM_ERROR：设置失败，参数错误。
  */
 am_static_inline
-uint8_t amhw_zlg237_pwr_ldo_run_set (
+int amhw_zlg237_pwr_ldo_run_set (
     amhw_zlg237_pwr_t *p_hw_pwr, amhw_zlg237_pwr_ldo_run_t ldo_run_vol)
 {
     if((ldo_run_vol & 0xful) <= AMHW_ZLG237_PWR_LDO_RUN_1_68V) {
@@ -293,7 +294,7 @@ typedef enum amhw_zlg237_pwr_ldo_stop_set {
  *           AM_ERROR：设置失败，参数错误。
  */
 am_static_inline
-uint8_t amhw_zlg237_pwr_ldo_stop_set (
+int amhw_zlg237_pwr_ldo_stop_set (
     amhw_zlg237_pwr_t *p_hw_pwr, amhw_zlg237_pwr_ldo_stop_set_t ldo_stop_vol)
 {
     if((ldo_stop_vol & 0xful) <= AMHW_ZLG237_PWR_STOP_1_68V) {
@@ -303,10 +304,8 @@ uint8_t amhw_zlg237_pwr_ldo_stop_set (
                              ((ldo_stop_vol & 0xful) << 0) ;
 
         return AM_OK;
-    } else {
-
-        return AM_ERROR;
     }
+    return AM_ERROR;
 }
 
 /**

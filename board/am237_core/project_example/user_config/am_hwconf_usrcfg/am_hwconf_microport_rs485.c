@@ -61,9 +61,9 @@ static const am_zlg237_usart_devinfo_t __g_microport_rs485_devinfo = {
     INUM_USART1,               /**< \brief 串口1的中断编号 */
     CLK_USART1,                /**< \brief 串口1的时钟 */
 
-    AMHW_ZLG_UART_DATA_8BIT |  /**< \brief 8位数据 */
-    AMHW_ZLG_UART_PARITY_NO |  /**< \brief 无极性 */
-    AMHW_ZLG_UART_STOP_1BIT,   /**< \brief 1个停止位 */
+    AMHW_ZLG237_USART_DATA_8BIT |  /**< \brief 8位数据 */
+    AMHW_ZLG237_USART_PARITY_NO |  /**< \brief 无极性 */
+    AMHW_ZLG237_USART_STOP_10_BIT,   /**< \brief 1个停止位 */
 
     115200,                       /**< \brief 设置的波特率 */
 

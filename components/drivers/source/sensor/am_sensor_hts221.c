@@ -21,6 +21,7 @@
  */
 
 #include "am_sensor_hts221.h"
+#include "am_sensor.h"
 #include "am_gpio.h"
 #include "am_vdebug.h"
 
