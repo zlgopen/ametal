@@ -37,7 +37,7 @@
  */
 
 /** \brief I2C1 平台初始化函数 */
-static void __zlg_i2c1_plfm_init (void)
+static void __zlg237_i2c1_plfm_init (void)
 {
     am_gpio_pin_cfg(PIOB_6, PIOB_6_I2C1_SCL_REMAP0 | PIOB_6_AF_OD);
     am_gpio_pin_cfg(PIOB_7, PIOB_7_I2C1_SDA_REMAP0 | PIOB_7_AF_OD);
@@ -47,7 +47,7 @@ static void __zlg_i2c1_plfm_init (void)
 }
 
 /** \brief 解除I2C1 平台初始化函数 */
-static void __zlg_i2c1_plfm_deinit (void)
+static void __zlg237_i2c1_plfm_deinit (void)
 {
     am_clk_disable(CLK_I2C1);
 }
@@ -64,12 +64,12 @@ static void __zlg_i2c1_plfm_deinit (void)
  */
 static const am_zlg237_i2c_slv_devinfo_t __g_i2c1_devinfo = {
 
-    ZLG237_I2C1_BASE,                 /**< \brief I2C1 寄存器块基址 */
-    INUM_I2C1_EV,                     /**< \brief I2C1 中断编号 */
+    ZLG237_I2C1_BASE,        /**< \brief I2C1 寄存器块基址 */
+    INUM_I2C1_EV,            /**< \brief I2C1 中断编号 */
 
-    __zlg_i2c1_plfm_init,             /**< \brief 平台初始化 */
-    __zlg_i2c1_plfm_deinit,            /**< \brief 平台去初始化 */
-    CLK_I2C1                            /**< \brief 时钟ID */
+    __zlg237_i2c1_plfm_init,    /**< \brief 平台初始化 */
+    __zlg237_i2c1_plfm_deinit,  /**< \brief 平台去初始化 */
+    CLK_I2C1                 /**< \brief 时钟ID */
 };
 
 /**< \brief I2C1 设备实例 */
@@ -88,7 +88,7 @@ void am_zlg237_i2c1_slv_inst_deinit (am_i2c_slv_handle_t handle)
 }
 
 /** \brief I2C2 平台初始化函数 */
-static void __zlg_i2c2_plfm_init (void)
+static void __zlg237_i2c2_plfm_init (void)
 {
     am_gpio_pin_cfg(PIOB_10, PIOB_10_I2C2_SCL | PIOB_10_AF_OD | PIOB_10_SPEED_2MHz );
     am_gpio_pin_cfg(PIOB_11, PIOB_11_I2C2_SDA | PIOB_11_AF_OD | PIOB_11_SPEED_2MHz);
@@ -98,7 +98,7 @@ static void __zlg_i2c2_plfm_init (void)
 }
 
 /** \brief 解除I2C1 平台初始化函数 */
-static void __zlg_i2c2_plfm_deinit (void)
+static void __zlg237_i2c2_plfm_deinit (void)
 {
     am_clk_disable(CLK_I2C2);
 }
@@ -118,8 +118,8 @@ static const am_zlg237_i2c_slv_devinfo_t __g_i2c2_devinfo = {
     ZLG237_I2C2_BASE,                 /**< \brief I2C2寄存器块基址 */
     INUM_I2C2_EV,                     /**< \brief I2C2 中断编号 */
 
-    __zlg_i2c2_plfm_init,             /**< \brief 平台初始化 */
-    __zlg_i2c2_plfm_deinit,            /**< \brief 平台去初始化 */
+    __zlg237_i2c2_plfm_init,             /**< \brief 平台初始化 */
+    __zlg237_i2c2_plfm_deinit,            /**< \brief 平台去初始化 */
     CLK_I2C2                          /**< \brief 时钟ID */
 
 };

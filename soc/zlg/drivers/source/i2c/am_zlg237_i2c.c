@@ -889,8 +889,7 @@ static int __i2c_mst_sm_event (am_zlg237_i2c_dev_t *p_dev, uint32_t event)
 
             /* 打开TXE RXNE中断使能 */
             amhw_zlg237_i2c_iten_mode_set(p_hw_i2c,
-                                          I2C_CR2_ITEVTEN |
-                                          I2C_CR2_ITBUFEN ,
+                                          I2C_CR2_ITEVTEN | I2C_CR2_ITBUFEN ,
                                           ENABLE);
 
             break;

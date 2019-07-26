@@ -601,9 +601,9 @@ void amhw_zlg237_i2c_engc (amhw_zlg237_i2c_t    *p_hw_i2c,
  *  \return 无
  */
 am_static_inline
-void amhw_zlg237_i2c_iten_mode_set (amhw_zlg237_i2c_t      *p_hw_i2c,
-                                    amhw_zlg237_i2c_iten_t  mode,
-                                    state_t                 state)
+void amhw_zlg237_i2c_iten_mode_set (amhw_zlg237_i2c_t   *p_hw_i2c,
+                                    uint32_t             mode,
+                                    state_t              state)
 {
     if (mode & I2C_CR2_ITERREN) {
         if (state) {
@@ -904,7 +904,7 @@ int amhw_zlg237_i2c_checkflagstaus(amhw_zlg237_i2c_t      *p_hw_i2c,
     } else {
 
         /** \brief 读取sr2的寄存器值    	 */
-        i2c_flag = (uint32_t)(i2c_flag >> 16);
+        i2c_flag = (amhw_zlg237_flag_t)(i2c_flag >> 16);
         i2c_sr_value = p_hw_i2c->i2c_sr2;
     }
 
