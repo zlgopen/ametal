@@ -470,6 +470,12 @@ void amhw_zlg237_i2c_genstrat (amhw_zlg237_i2c_t *p_hw_i2c,
     }
 }
 
+/* \<brief 读取指定寄存器值 */
+am_static_inline
+uint16_t amhw_zlg237_i2c_read_reg(uint16_t  reg)
+{
+    return (uint16_t)reg;
+}
 
 /**
  *  \brief stop 停止条件产生
@@ -595,9 +601,9 @@ void amhw_zlg237_i2c_engc (amhw_zlg237_i2c_t    *p_hw_i2c,
  *  \return 无
  */
 am_static_inline
-void amhw_zlg237_i2c_iten_mode_set (amhw_zlg237_i2c_t   *p_hw_i2c,
-                                    uint32_t             mode,
-                                    state_t              state)
+void amhw_zlg237_i2c_iten_mode_set (amhw_zlg237_i2c_t      *p_hw_i2c,
+                                    amhw_zlg237_i2c_iten_t  mode,
+                                    state_t                 state)
 {
     if (mode & I2C_CR2_ITERREN) {
         if (state) {
@@ -898,7 +904,7 @@ int amhw_zlg237_i2c_checkflagstaus(amhw_zlg237_i2c_t      *p_hw_i2c,
     } else {
 
         /** \brief 读取sr2的寄存器值    	 */
-        i2c_flag = (amhw_zlg237_flag_t)(i2c_flag >> 16);
+        i2c_flag = (uint32_t)(i2c_flag >> 16);
         i2c_sr_value = p_hw_i2c->i2c_sr2;
     }
 
@@ -993,7 +999,7 @@ void amhw_zlg237_i2c_clearit(amhw_zlg237_i2c_t      *p_hw_i2c,
 am_static_inline
 void amhw_zlg237_i2c_clearallit(amhw_zlg237_i2c_t      *p_hw_i2c)
 {
-    uint16_t tmpreg;
+
     /** SB  read sr1 write dr */
 
     /** ADDR read sr1 read sr2 */
@@ -1007,11 +1013,8 @@ void amhw_zlg237_i2c_clearallit(amhw_zlg237_i2c_t      *p_hw_i2c)
     /** RXNE read or write dr */
 
     /** TXE write dr */
-
-    tmpreg = p_hw_i2c->i2c_sr1;
-    tmpreg = p_hw_i2c->i2c_sr2;
-
-    (void)tmpreg;   /* 消除警告  */
+    amhw_zlg237_i2c_read_reg(p_hw_i2c->i2c_sr1);
+    amhw_zlg237_i2c_read_reg(p_hw_i2c->i2c_sr2);
 
     p_hw_i2c->i2c_cr1 &= 0xffff;
     p_hw_i2c->i2c_dr  &= 0xffff;

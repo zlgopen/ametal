@@ -35,6 +35,7 @@
 #include "hw/amhw_zlg_gpio.h"
 #include "hw/amhw_zlg_i2c.h"
 #include "hw/amhw_zlg_pwr.h"
+//#include "hw/amhw_zlg116_rcc.h"
 #include "hw/amhw_zlg_spi.h"
 #include "hw/amhw_zlg237_spi.h"
 #include "hw/amhw_zlg_dma.h"
@@ -44,6 +45,11 @@
 #include "hw/amhw_zlg237_usart.h"
 #include "hw/amhw_zlg_iwdg.h"
 #include "hw/amhw_zlg_wwdg.h"
+#include "hw/amhw_zlg237_i2c.h"
+//#include "am_usbd_printer.h"
+//#include "am_usbd_cdc_vcom.h"
+//#include "am_usbd_keyboard.h"
+//#include "am_usbd_msc.h"
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -238,6 +244,28 @@ void demo_zlg_hw_i2c_master_poll_entry (amhw_zlg_i2c_t *p_hw_i2c,
 void demo_zlg_hw_i2c_slave_poll_entry (amhw_zlg_i2c_t *p_hw_i2c);
 
 
+/**
+ * \brief I2C 轮询模式下操作 EEPROM 例程，通过 HW 层接口实现
+ *
+ * \param[in] p_hw_i2c 指向 I2C 外设寄存器块的指针
+ * \param[in] clk_rate I2C 时钟源频率
+ *
+ * \return 无
+ */
+void demo_zlg237_hw_i2c_master_poll_entry (amhw_zlg237_i2c_t *p_hw_i2c,
+                                        uint32_t        clk_rate);
+
+/**
+ * \brief I2C 从机例程(此例程可以用来模拟 EEPROM)，通过 HW 层接口实现
+ *
+ * \param[in] p_hw_i2c 指向 I2C 外设寄存器块的指针
+ *
+ * \return 无
+ */
+void demo_zlg237_hw_i2c_slave_poll_entry (amhw_zlg237_i2c_t *p_hw_i2c);
+
+
+
 
 /**
  * \brief SPI 主机例程，通过 HW 层接口实现
@@ -347,7 +375,7 @@ void demo_zlg_hw_tim_timing_entry (amhw_zlg_tim_t     *p_hw_tim,
                                    int32_t             int_num);
 
 /**
- * \brief ZLG237 USART 中断发送例程，通过 HW 层接口实现
+ * \brief ZLG UART 中断发送例程，通过 HW 层接口实现
  *
  * \param[in] p_hw_uart 指向 UART 外设寄存器块的指针
  * \param[in] pfn_init  指向 UART 引脚初始化函数的指针
@@ -364,7 +392,7 @@ void demo_zlg_hw_uart_int_entry (amhw_zlg_uart_t *p_hw_uart,
                                  unsigned char    inum_uart);
 
 /**
- * \brief ZLG237 USART 轮询方式例程，通过 HW 层接口实现
+ * \brief ZLG UART 轮询方式例程，通过 HW 层接口实现
  *
  * \param[in] p_hw_uart 指向 UART 外设寄存器块的指针
  * \param[in] clk_rate  UART 时钟源频率
@@ -375,7 +403,7 @@ void demo_zlg_hw_uart_polling_entry (amhw_zlg_uart_t *p_hw_uart,
                                      uint32_t         clk_rate);
 
 /**
- * \brief ZLG237 USART 接收例程，通过 HW 层接口实现
+ * \brief ZLG UART 接收例程，通过 HW 层接口实现
  *
  * \param[in] p_hw_uart 指向 UART 外设寄存器块的指针
  * \param[in] clk_rate  UART 时钟源频率
@@ -388,7 +416,7 @@ void demo_zlg_hw_uart_rx_dma_entry (amhw_zlg_uart_t *p_hw_uart,
                                     int32_t          dma_chan);
 
 /**
- * \brief ZLG237 USART 发送例程，通过 HW 层接口实现
+ * \brief ZLG UART 发送例程，通过 HW 层接口实现
  *
  * \param[in] p_hw_uart 指向 UART 外设寄存器块的指针
  * \param[in] clk_rate  UART 时钟源频率
@@ -399,7 +427,61 @@ void demo_zlg_hw_uart_rx_dma_entry (amhw_zlg_uart_t *p_hw_uart,
 void demo_zlg_hw_uart_tx_dma_entry (amhw_zlg_uart_t *p_hw_uart,
                                     uint32_t         clk_rate,
                                     int32_t          dma_chan);
-                                    
+
+/**
+ * \brief ZLG237 USART 中断发送例程，通过 HW 层接口实现
+ *
+ * \param[in] p_hw_usart 指向 USART 外设寄存器块的指针
+ * \param[in] pfn_init  指向 USART 引脚初始化函数的指针
+ * \param[in] clk_rate  USART 时钟源频率
+ * \param[in] uart_base USART 基地址
+ * \param[in] inum_uart USART 中断号
+ *
+ * \return 无
+ */
+void demo_zlg237_hw_usart_int_entry (amhw_zlg237_usart_t *p_hw_usart,
+                                     void (* pfn_init)(void),
+                                     uint32_t             clk_rate,
+                                     unsigned long        usart_base,
+                                     unsigned char        inum_usart);
+
+/**
+ * \brief ZLG237 USART 轮询方式例程，通过 HW 层接口实现
+ *
+ * \param[in] p_hw_usart 指向 USART 外设寄存器块的指针
+ * \param[in] clk_rate   USART 时钟源频率
+ *
+ * \return 无
+ */
+void demo_zlg237_hw_usart_polling_entry (amhw_zlg237_usart_t *p_hw_usart,
+                                         uint32_t             clk_rate);
+
+/**
+ * \brief ZLG237 USART 接收例程，通过 HW 层接口实现
+ *
+ * \param[in] p_hw_usart 指向 USART 外设寄存器块的指针
+ * \param[in] clk_rate   USART 时钟源频率
+ * \param[in] dma_chan   DMA 通道号
+ *
+ * \return 无
+ */
+void demo_zlg237_hw_usart_rx_dma_entry (amhw_zlg237_usart_t *p_hw_usart,
+                                        uint32_t             clk_rate,
+                                        int32_t              dma_chan);
+
+/**
+ * \brief ZLG237 USART 发送例程，通过 HW 层接口实现
+ *
+ * \param[in] p_hw_usart 指向 USART 外设寄存器块的指针
+ * \param[in] clk_rate   USART 时钟源频率
+ * \param[in] dma_chan   DMA 通道号
+ *
+ * \return 无
+ */
+void demo_zlg237_hw_usart_tx_dma_entry (amhw_zlg237_usart_t *p_hw_usart,
+                                        uint32_t             clk_rate,
+                                        int32_t              dma_chan);
+
 /**
  * \brief 睡眠模式例程，使用定时器周期唤醒，通过驱动层接口实现
  *
@@ -511,42 +593,41 @@ void demo_zml166_adc_vol_para_adjuet_entry(void                   *p_handle,
                                            float                  *p_para);
 
 
-/**
- * \brief USB打印机例程   该例程带打印时间以及打印数据量显示
- * \param[in] handle      USB打印机服务句柄
- * \return 无
- */
-void demo_usbd_printer_counter_entry (void* p_handle);
-
-/**
- * \brief USB打印机例程   该例程仅打印相关信息
- * \param[in] handle      USB打印机服务句柄
- * \return 无
- */
-void demo_usbd_printer_entry (void* p_handle);
-
-/**
- * \brief USB模拟串口例程
- * \param[in] handle      USB模拟串口服务句柄
- * \return 无
- */
-void demo_usbd_vcom_entry (void* p_handle);
-
-/**
- * \brief USB模拟按键例程
- * \param[in] handle      USB模拟键盘服务句柄
- * \return 无
- */
-void demo_usbd_keyboard_entry (void* p_handle);
-
-
-/**
- * \brief USB模拟U盘例程
- * \param[in] handle      USB模拟键盘服务句柄
- * \return 无
- */
-void demo_usbd_msc_entry (void* p_handle);
-
+///**
+// * \brief USB打印机例程   该例程带打印时间以及打印数据量显示
+// * \param[in] handle      USB打印机服务句柄
+// * \return 无
+// */
+//void demo_usbd_printer_counter_entry (am_usbd_printer_handle handle);
+//
+///**
+// * \brief USB打印机例程   该例程仅打印相关信息
+// * \param[in] handle      USB打印机服务句柄
+// * \return 无
+// */
+//void demo_usbd_printer_entry (am_usbd_printer_handle handle);
+//
+///**
+// * \brief USB模拟串口例程
+// * \param[in] handle      USB模拟串口服务句柄
+// * \return 无
+// */
+//void demo_usbd_vcom_entry (am_usbd_cdc_vcom_handle handle);
+//
+///**
+// * \brief USB模拟按键例程
+// * \param[in] handle      USB模拟键盘服务句柄
+// * \return 无
+// */
+//void demo_usbd_keyboard_entry (am_usbd_keyboard_handle handle);
+//
+//
+///**
+// * \brief USB模拟U盘例程
+// * \param[in] handle      USB模拟键盘服务句柄
+// * \return 无
+// */
+//void demo_usbd_msc_entry (am_usbd_msc_handle handle);
 
 #ifdef __cplusplus
 }

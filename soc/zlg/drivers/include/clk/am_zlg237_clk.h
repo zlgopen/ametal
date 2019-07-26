@@ -184,6 +184,11 @@ typedef struct am_zlg237_clk_dev {
 } am_zlg237_clk_dev_t;
 
 /**
+ * \brief 获取时钟频率
+ */
+int am_clk_rate_get (am_clk_id_t clk_id);
+
+/**
  * \brief CLK 初始化
  *
  * \param[in] p_dev     : 指向CLK设备的指针

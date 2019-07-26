@@ -16,14 +16,14 @@
  *
  * \internal
  * \par Modification History
- * - 1.00 17-09-06  vir, first implementation
+ * - 1.00 19-07-26  zc, first implementation
  * \endinternal
  */
 
 #include "ametal.h"
-#include "am_clk.h"
 #include "am_zlg237_i2c_slv.h"
 #include "hw/amhw_zlg237_i2c.h"
+#include "am_zlg237_clk.h"
 
 /*******************************************************************************
   函数声明
@@ -60,7 +60,7 @@ static int __i2c_slv_hard_init (am_zlg237_i2c_slv_dev_t *p_dev)
 {
     amhw_zlg237_i2c_t *p_hw_i2c = NULL;
     uint16_t tmpreg = 0, i2c_freq_value = 0;
-    int      pclk1 = 0;
+    uint32_t pclk1 = 0;
     uint16_t result = 0x04;
 
     if (p_dev == NULL) {
@@ -312,9 +312,6 @@ static void __i2c_slv_timing_callback (void *p_arg)
 
     __i2c_slv_hard_init(p_dev);
 
-    /* 关闭I2C控制器，配置参数 */
-    //amhw_zlg237_i2c_disable(p_hw_i2c);
-
     /** 判断是否 需要响应 广播地址 */
     if ( p_dev->p_i2c_slv_dev[0]->dev_flags & AM_I2C_SLV_GEN_CALL_ACK) {
 
@@ -334,10 +331,7 @@ static void __i2c_slv_timing_callback (void *p_arg)
         p_hw_i2c->i2c_oar1 &= 0x0fff;
     }
 
-   // amhw_zlg237_i2c_enable(p_hw_i2c);
 #endif
-
-   // __i2c_slv_hard_init(p_dev);
 
     /** 停止定时 */
     am_softimer_stop(&p_dev->softimer);
@@ -348,8 +342,9 @@ static void __i2c_slv_timing_callback (void *p_arg)
  */
 void __zlg237_i2c_slv_irq_rx_handler (am_zlg237_i2c_slv_dev_t *p_dev)
 {
-    amhw_zlg237_i2c_t   *p_hw_i2c  = (amhw_zlg237_i2c_t *)p_dev->p_devinfo->i2c_regbase;
-    am_i2c_slv_device_t *p_i2c_slv = p_dev->p_i2c_slv_dev[0];
+    amhw_zlg237_i2c_t   *p_hw_i2c  = (amhw_zlg237_i2c_t *)
+                                      p_dev->p_devinfo->i2c_regbase;
+    am_i2c_slv_device_t *p_i2c_slv =  p_dev->p_i2c_slv_dev[0];
 
     /* 接受数据 */
     uint8_t rx_data = amhw_zlg237_i2c_recv_data (p_hw_i2c);
@@ -373,7 +368,8 @@ void __zlg237_i2c_slv_irq_rx_handler (am_zlg237_i2c_slv_dev_t *p_dev)
  */
 void __zlg237_i2c_slv_irq_tx_handler (am_zlg237_i2c_slv_dev_t *p_dev)
 {
-    amhw_zlg237_i2c_t   *p_hw_i2c  = (amhw_zlg237_i2c_t *)p_dev->p_devinfo->i2c_regbase;
+    amhw_zlg237_i2c_t   *p_hw_i2c  = (amhw_zlg237_i2c_t *)
+                                     p_dev->p_devinfo->i2c_regbase;
     am_i2c_slv_device_t *p_i2c_slv = p_dev->p_i2c_slv_dev[0];
 
     uint8_t  tx_data = 0;
@@ -387,8 +383,6 @@ void __zlg237_i2c_slv_irq_tx_handler (am_zlg237_i2c_slv_dev_t *p_dev)
     }
     amhw_zlg237_i2c_send_data(p_hw_i2c, tx_data);
 
-    /* 清除读请求 */
-  //  amhw_zlg_i2c_clr_rd_req_get(p_hw_i2c);
 }
 
 /**
@@ -401,20 +395,24 @@ void __zlg237_i2c_slv_irq_tx_handler (am_zlg237_i2c_slv_dev_t *p_dev)
 static void __zlg237_i2c_slv_irq_handler (void *p_arg)
 {
         
-    am_zlg237_i2c_slv_dev_t  *p_dev           = (am_zlg237_i2c_slv_dev_t *)p_arg;
-    amhw_zlg237_i2c_t     *p_hw_i2c_slv       = (amhw_zlg237_i2c_t *)p_dev->p_devinfo->i2c_regbase;
-    am_i2c_slv_device_t   *p_i2c_slv_dev      = p_dev->p_i2c_slv_dev[0];
-    uint16_t               i2c_slv_int_status = amhw_zlg237_i2c_getitstatus(p_hw_i2c_slv);
-    uint16_t               tmpreg             = 0;
+    am_zlg237_i2c_slv_dev_t *p_dev              = (am_zlg237_i2c_slv_dev_t *)
+                                                   p_arg;
+    amhw_zlg237_i2c_t       *p_hw_i2c_slv       = (amhw_zlg237_i2c_t *)
+                                                  p_dev->p_devinfo->i2c_regbase;
+    am_i2c_slv_device_t     *p_i2c_slv_dev      = p_dev->p_i2c_slv_dev[0];
+    uint16_t                 i2c_slv_int_status = amhw_zlg237_i2c_getitstatus(
+                                                      p_hw_i2c_slv);
 
 
     /* EV1 事件: 收到从地址*/
     if (i2c_slv_int_status & (uint16_t)AMHW_ZLG_INT_FLAG__ADDR) {
+
         /* 读sr2 清除中断标志位 */
-        tmpreg = p_hw_i2c_slv->i2c_sr2;
+        amhw_zlg237_i2c_read_reg(p_hw_i2c_slv->i2c_sr2);
 
         if( NULL != p_i2c_slv_dev->p_cb_funs->pfn_addr_match) {
-            p_i2c_slv_dev->p_cb_funs->pfn_addr_match(p_i2c_slv_dev->p_arg, AM_TRUE);
+            p_i2c_slv_dev->p_cb_funs->pfn_addr_match(p_i2c_slv_dev->p_arg,
+                                                         AM_TRUE);
         }
 
         /* 收到广播呼叫从地址  */
@@ -463,8 +461,9 @@ static void __zlg237_i2c_slv_irq_handler (void *p_arg)
             /* EV3_2 从发送器清除 AF */
             amhw_zlg237_i2c_clearflag(p_hw_i2c_slv, AMHW_ZLG_I2C_FLAG_AF);
         } else {
+
             /* EV4  */
-            tmpreg = p_hw_i2c_slv->i2c_sr1;
+            amhw_zlg237_i2c_read_reg(p_hw_i2c_slv->i2c_sr1);
             p_hw_i2c_slv->i2c_cr1 &=0xffff;
         }
 
@@ -486,14 +485,15 @@ static void __zlg237_i2c_slv_irq_handler (void *p_arg)
  *
  * \note 硬件初始化 通过用户调用开始从设备来初始化
  */
-am_i2c_slv_handle_t am_zlg237_i2c_slv_init (am_zlg237_i2c_slv_dev_t           *p_dev,
-                                         const am_zlg237_i2c_slv_devinfo_t *p_devinfo)
+am_i2c_slv_handle_t am_zlg237_i2c_slv_init (am_zlg237_i2c_slv_dev_t     *p_dev,
+                                      const am_zlg237_i2c_slv_devinfo_t *p_devinfo)
 {
     if (p_dev == NULL || p_devinfo == NULL ) {
         return NULL;
     }
 
-    p_dev->i2c_slv_serv.p_funcs = (struct am_i2c_slv_drv_funcs *)&__g_i2c_slv_drv_funcs;
+    p_dev->i2c_slv_serv.p_funcs = (struct am_i2c_slv_drv_funcs *)
+                                       &__g_i2c_slv_drv_funcs;
     p_dev->i2c_slv_serv.p_drv   = p_dev;
 
     p_dev->p_devinfo   = p_devinfo;
@@ -524,7 +524,9 @@ am_i2c_slv_handle_t am_zlg237_i2c_slv_init (am_zlg237_i2c_slv_dev_t           *p
     __i2c_slv_hard_init(p_dev);
 
     /* 连接中断 */
-    am_int_connect(p_dev->p_devinfo->inum, __zlg237_i2c_slv_irq_handler, (void *)p_dev);
+    am_int_connect(p_dev->p_devinfo->inum, __zlg237_i2c_slv_irq_handler,
+                       (void *)p_dev);
+
     am_int_enable(p_dev->p_devinfo->inum);
 
     return &(p_dev->i2c_slv_serv);
@@ -536,7 +538,7 @@ am_i2c_slv_handle_t am_zlg237_i2c_slv_init (am_zlg237_i2c_slv_dev_t           *p
 void am_zlg237_i2c_slv_deinit (am_i2c_slv_handle_t handle)
 {
     amhw_zlg237_i2c_t       *p_hw_i2c_slv = NULL;
-    am_zlg237_i2c_slv_dev_t *p_dev    = NULL;
+    am_zlg237_i2c_slv_dev_t *p_dev        = NULL;
 
     if (NULL == handle) {
         return ;
@@ -549,7 +551,8 @@ void am_zlg237_i2c_slv_deinit (am_i2c_slv_handle_t handle)
 
     /* 去除中断连接 */
     am_int_disable(p_dev->p_devinfo->inum);
-    am_int_disconnect(p_dev->p_devinfo->inum, __zlg237_i2c_slv_irq_handler, (void *)p_dev);
+    am_int_disconnect(p_dev->p_devinfo->inum, __zlg237_i2c_slv_irq_handler,
+                         (void *)p_dev);
 
     if (p_dev->p_devinfo->pfn_plfm_deinit) {
         p_dev->p_devinfo->pfn_plfm_deinit();

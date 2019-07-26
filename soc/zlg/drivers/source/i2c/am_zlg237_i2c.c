@@ -386,7 +386,7 @@ am_local void __softimer_callback (void *p_arg)
  */
 static void __i2c_irq_handler (void *p_arg)
 {
-    am_zlg237_i2c_dev_t    *p_dev          = NULL;
+    am_zlg237_i2c_dev_t *p_dev          = NULL;
     amhw_zlg237_i2c_t   *p_hw_i2c       = NULL;
     uint16_t             i2c_int_status = 0;
 
@@ -432,7 +432,8 @@ static void __i2c_irq_handler (void *p_arg)
 static int __i2c_msg_start (void *p_drv, am_i2c_message_t *p_msg)
 {
     am_zlg237_i2c_dev_t  *p_dev    = (am_zlg237_i2c_dev_t *)p_drv;
-    amhw_zlg237_i2c_t *p_hw_i2c = (amhw_zlg237_i2c_t *)p_dev->p_devinfo->i2c_regbase;
+    amhw_zlg237_i2c_t *p_hw_i2c    = (amhw_zlg237_i2c_t *)
+                                      p_dev->p_devinfo->i2c_regbase;
     int key;
 
     /** \brief 判断设备、 消息 、组成消息的传输 、请求处理的传输个数是否为空 */
@@ -581,9 +582,8 @@ void am_zlg237_i2c_deinit (am_i2c_handle_t handle)
  */
 static int __i2c_mst_sm_event (am_zlg237_i2c_dev_t *p_dev, uint32_t event)
 {
-    volatile uint32_t new_event = __I2C_EVT_NONE;
+    volatile uint32_t  new_event = __I2C_EVT_NONE;
     amhw_zlg237_i2c_t *p_hw_i2c = NULL;
-    uint16_t           tmpreg   = 0;
 
     if (p_dev == NULL) {
         return -AM_EINVAL;
@@ -849,7 +849,9 @@ static int __i2c_mst_sm_event (am_zlg237_i2c_dev_t *p_dev, uint32_t event)
 
                 break;
             }
-
+//            amhw_zlg237_i2c_iten_mode_set(p_hw_i2c,
+//                                          I2C_CR2_ITERREN,
+//                                          ENABLE);
             /* 产生起始条件 切换至主模式 */
             amhw_zlg237_i2c_genstrat(p_hw_i2c, ENABLE);
 
@@ -883,11 +885,12 @@ static int __i2c_mst_sm_event (am_zlg237_i2c_dev_t *p_dev, uint32_t event)
             }
 
             /* 读取sr2寄存器清除EV6事件 */
-            tmpreg = p_hw_i2c->i2c_sr2;
+            amhw_zlg237_i2c_read_reg(p_hw_i2c->i2c_sr2);
 
             /* 打开TXE RXNE中断使能 */
             amhw_zlg237_i2c_iten_mode_set(p_hw_i2c,
-                                          I2C_CR2_ITEVTEN | I2C_CR2_ITBUFEN ,
+                                          I2C_CR2_ITEVTEN |
+                                          I2C_CR2_ITBUFEN ,
                                           ENABLE);
 
             break;
