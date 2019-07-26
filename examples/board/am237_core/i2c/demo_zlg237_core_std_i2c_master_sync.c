@@ -35,7 +35,7 @@
  *
  * \internal
  * \par Modification history
- * - 1.00  17-04-24  sdy, first implementation.
+ * - 1.00 19-07-26  zc, first implementation
  * \endinternal
  */
 
@@ -57,7 +57,7 @@
   宏定义
 *******************************************************************************/
 
-#define EEPROM_ADDR  0x50  /**< \brief EEPROM设备的地址 */
+#define EEPROM_ADDR  (0xb2 >> 1)  /**< \brief EEPROM设备的地址 */
 
 #define TEST_LEN     8     /**< \brief 操作EEPROM的页大小，需要根据具体芯片设置 */
 

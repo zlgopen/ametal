@@ -34,7 +34,7 @@
  *
  * \internal
  * \par History
- * - 1.00 17-09-5  fra, first implementation
+ *   1.00 19-07-28  zc, first implementation
  * \endinternal
  */
 
@@ -51,10 +51,11 @@
 #include "am_zlg237.h"
 #include "am_zlg237_clk.h"
 #include "amhw_zlg237_rcc.h"
+#include "amhw_zlg237_i2c.h"
 #include "demo_zlg_entries.h"
 #include "demo_am237_core_entries.h"
 
-#define I2C_MASTER    (amhw_zlg_i2c_t *)ZLG237_I2C1_BASE   /**< \brief I2C主机控制器通道号定义 */
+#define I2C_MASTER    ((amhw_zlg237_i2c_t *)ZLG237_I2C1_BASE)   /**< \brief I2C主机控制器通道号定义 */
 
 /**
  * \brief 例程入口
@@ -73,7 +74,7 @@ void demo_zlg237_core_hw_i2c_master_poll_entry (void)
     am_clk_enable(CLK_I2C1);
     am_zlg237_clk_reset(CLK_I2C1);
 
-    demo_zlg_hw_i2c_master_poll_entry(I2C_MASTER, am_clk_rate_get(CLK_APB1));
+    demo_zlg237_hw_i2c_master_poll_entry(I2C_MASTER, am_clk_rate_get(CLK_APB1));
 
 }
 /** [src_zlg237_hw_i2c_master_poll] */
