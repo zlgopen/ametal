@@ -993,7 +993,7 @@ void amhw_zlg237_i2c_clearit(amhw_zlg237_i2c_t      *p_hw_i2c,
 am_static_inline
 void amhw_zlg237_i2c_clearallit(amhw_zlg237_i2c_t      *p_hw_i2c)
 {
-    uint16_t tmpreg = 0;
+    uint16_t tmpreg;
     /** SB  read sr1 write dr */
 
     /** ADDR read sr1 read sr2 */
@@ -1010,6 +1010,9 @@ void amhw_zlg237_i2c_clearallit(amhw_zlg237_i2c_t      *p_hw_i2c)
 
     tmpreg = p_hw_i2c->i2c_sr1;
     tmpreg = p_hw_i2c->i2c_sr2;
+
+    (void)tmpreg;   /* Ïû³ý¾¯¸æ  */
+
     p_hw_i2c->i2c_cr1 &= 0xffff;
     p_hw_i2c->i2c_dr  &= 0xffff;
 
