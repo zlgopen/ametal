@@ -157,11 +157,13 @@ static void __zlg_adc1_init (amhw_zlg237_adc_t *p_hw_adc,
     /* 对齐方式--右对齐 */
     amhw_zlg237_adc_data_alignment_set(p_hw_adc,AMHW_ZLG237_ADC_DATA_RIGHT);
 
+    /* 关闭ADC16通道内部温度传感器（仅ADC1有效）*/
+    amhw_zlg237_adc_tsvrefe_disable(p_hw_adc);
+
     /* 开启ADC的DMA功能 */
     amhw_zlg237_adc_dma_enable(p_hw_adc);
 
     /* ADC使能*/
-    /* 在CR2寄存器中与ADON一起还有其他位被改变，则转换不被触发。这是为了防止触发错误的转换。*/
     amhw_zlg237_adc_enable(p_hw_adc);
 
     /* DMA 传输配置 */
@@ -190,9 +192,6 @@ static void __zlg_adc1_init (amhw_zlg237_adc_t *p_hw_adc,
 
     /* 启动 DMA 传输，马上开始传输 */
     am_zlg_dma_chan_start(dma_chan);
-
-    /* ADC转换启动未采用外部触发，需要注意的是，此处是第二次ADC使能，本次的实际作用是开启ADC转换*/
-    amhw_zlg237_adc_enable(p_hw_adc);
 }
 
 static void __zlg_adc2_init (amhw_zlg237_adc_t *p_hw_adc,

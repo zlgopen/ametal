@@ -109,7 +109,7 @@ void __zlg237_plfm_tim2_cap_deinit (void)
 /** \brief TIM2用于捕获功能的引脚配置信息列表 */
 am_zlg_tim_cap_ioinfo_t __g_tim2_cap_ioinfo_list[] = {
     {PIOA_15, PIOA_15_TIM2_CH1_ETR_REMAP1 | PIOA_15_INPUT_FLOAT, PIOA_15_GPIO | PIOA_15_INPUT_FLOAT},  /**< \brief 通道1 */
-    {PIOB_3, PIOB_3_TIM2_CH2_REMAP1       | PIOB_3_INPUT_FLOAT, PIOB_3_GPIO   | PIOB_3_INPUT_FLOAT},   /**< \brief 通道2 */
+    {PIOB_3,  PIOB_3_TIM2_CH2_REMAP1      | PIOB_3_INPUT_FLOAT, PIOB_3_GPIO   | PIOB_3_INPUT_FLOAT},   /**< \brief 通道2 */
     {PIOB_10, PIOB_10_TIM2_CH3_REMAP2     | PIOB_10_INPUT_FLOAT, PIOB_10_GPIO | PIOB_10_INPUT_FLOAT},  /**< \brief 通道3 */
     {PIOB_11, PIOB_11_TIM2_CH4_REMAP2     | PIOB_11_INPUT_FLOAT, PIOB_11_GPIO | PIOB_11_INPUT_FLOAT},  /**< \brief 通道4 */
 };
@@ -134,7 +134,7 @@ am_zlg_tim_cap_dev_t  __g_tim2_cap_dev;
 am_cap_handle_t am_zlg237_tim2_cap_inst_init (void)
 {
     return am_zlg_tim_cap_init(&__g_tim2_cap_dev,
-                                  &__g_tim2_cap_devinfo);
+                               &__g_tim2_cap_devinfo);
 }
 
 /** \brief tim2 cap实例解初始化 */

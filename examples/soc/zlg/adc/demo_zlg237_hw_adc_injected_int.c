@@ -149,6 +149,9 @@ void demo_zlg237_hw_adc_injected_int_entry (amhw_zlg237_adc_t *p_hw_adc,
     /* 对齐方式--右对齐*/
     amhw_zlg237_adc_data_alignment_set(p_hw_adc,AMHW_ZLG237_ADC_DATA_RIGHT);
 
+    /* 关闭ADC16通道内部温度传感器（仅ADC1有效）*/
+    amhw_zlg237_adc_tsvrefe_disable(p_hw_adc);
+
     /* ADC使能*/
     amhw_zlg237_adc_enable(p_hw_adc);
 

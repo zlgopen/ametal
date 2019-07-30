@@ -42,13 +42,13 @@
 /**
  * \brief 看门狗超时时间
  */
-#define __WWDG_TIMEOUT_MS       24     /* 最大45ms */
+#define __WWDG_TIMEOUT_MS       20     /* 最大58ms */
 
 /**
  * \brief 看门狗喂狗时间，若喂狗时间超过WWDG_TIMEOUT_MS的值,
  *        会产生看门狗事件。
  */
-#define __WWDG_FEED_TIME_MS     20
+#define __WWDG_FEED_TIME_MS     40
 
 /**
  * \brief 例程入口

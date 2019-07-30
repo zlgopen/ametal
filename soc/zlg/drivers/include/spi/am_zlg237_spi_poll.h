@@ -55,8 +55,8 @@ typedef struct am_zlg237_spi_poll_devinfo {
     uint32_t  spi_reg_base;   /**< \brief SPI寄存器块的基地址 */
     int       clk_id;         /**< \brief 时钟ID */
     uint8_t   baud_div;       /**< \brief 时钟分频系数 */
+    uint32_t  cs_mdelay;      /**< \brief SPI CS拉低后延时等待（ms），再进行数据传 */
     uint32_t  flags;          /**< \brief SPI配置标识 */
-
     uint16_t  mosi_pin;       /**< brief mosi引脚号 */
 
     /** \brief SPI平台初始化函数，如打开时钟，配置引脚等工作 */

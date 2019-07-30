@@ -738,7 +738,9 @@ int __spi_mst_sm_event (am_zlg237_spi_int_dev_t *p_dev, uint32_t event)
                  * 才能正确传输数据，否则部分数据会丢失、错乱。
                  * 假如是其他从机单位，响应较快，可考虑取消此处延时。
                  */
-                am_mdelay(100);
+                if(p_dev->p_devinfo->cs_mdelay != 0) {
+                	am_mdelay(p_dev->p_devinfo->cs_mdelay);
+                }
 
                 /* 下一状态是使用中断方式发送数据 */
                 __SPI_NEXT_STATE(__SPI_ST_M_SEND_DATA, __SPI_EVT_M_SEND_DATA);

@@ -536,7 +536,9 @@ int __spi_mst_sm_event (am_zlg237_spi_poll_dev_t *p_dev)
          * 才能正确传输数据，否则部分数据会丢失、错乱。
          * 假如是其他从机单位，响应较快，可考虑取消此处延时。
          */
-        am_mdelay(100);
+        if(p_dev->p_devinfo->cs_mdelay != 0) {
+        	am_mdelay(p_dev->p_devinfo->cs_mdelay);
+        }
 
         while(p_dev->data_ptr < p_cur_trans->nbytes){
             __spi_write_data(p_dev);

@@ -38,14 +38,20 @@ int am_main (void)
 {
     AM_DBG_INFO("Start up successful!\r\n");
     /*
-     * 以下为所有demo的入口函数，需要运行哪个demo，就取消对应函数调用行的注释
+     * 以下为所有demo的入口函数
+     *
+     * 需要运行哪个demo，就取消对应函数调用行的注释，
+     * 另外    \examples\board\am237_core
+     *     \examples\soc\zlg
+     *     \examples\std
+     * 三个路径下的相关文件需要取消屏蔽。
      *
      * 默认运行的是LED闪烁 demo
      *
      * 注意：同一时刻只能运行一个 demo，即只能使某一行处于取消注释状态
      */
 
-//    demo_zlg237_core_std_led_entry();
+    demo_zlg237_core_std_led_entry();
 //    demo_zlg237_core_std_delay_entry();
 //    demo_zlg237_core_std_adc_entry();
 //    demo_zlg237_core_hw_adc_int_entry();

@@ -184,7 +184,7 @@ am_zlg_tim_pwm_chaninfo_t __g_tim3_pwm_chaninfo_list[] = {
     /** \brief 通道2引脚配置 */
     {AM_ZLG_TIM_PWM_CH2, PIOA_7, PIOA_7_TIM3_CH2_REMAP0 | PIOA_7_AF_PP, PIOA_7_GPIO | PIOA_7_INPUT_FLOAT},
     /** \brief 通道3引脚配置 */
-    {AM_ZLG_TIM_PWM_CH3, PIOB_0, PIOB_0_TIM3_CH3_REMAP0 | PIOB_0_AF_PP, PIOB_0_GPIO | PIOB_0_INPUT_FLOAT},
+    {AM_ZLG_TIM_PWM_CH3, PIOC_8, PIOC_8_TIM3_CH3_REMAP3 | PIOC_8_AF_PP, PIOC_8_GPIO | PIOC_8_INPUT_FLOAT},
     /** \brief 通道4引脚配置 */
     {AM_ZLG_TIM_PWM_CH4, PIOB_1, PIOB_1_TIM3_CH4_REMAP0 | PIOB_1_AF_PP, PIOB_1_GPIO | PIOB_1_INPUT_FLOAT},
 };

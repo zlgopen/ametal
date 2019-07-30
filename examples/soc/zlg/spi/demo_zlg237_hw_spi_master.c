@@ -109,7 +109,8 @@ static void spi_master_cfg (amhw_zlg237_spi_t *p_hw_spi)
  */
 void spi_loop_trans (amhw_zlg237_spi_t *p_hw_spi,
                      spi_transfer_t    *p_trans,
-                     int32_t            cs_pin)
+                     int32_t            cs_pin,
+					 uint32_t           cs_mdelay)
 {
     uint32_t pos = 0;
 
@@ -118,7 +119,9 @@ void spi_loop_trans (amhw_zlg237_spi_t *p_hw_spi,
 
     /* CS选通后，至少需要等待100ms，等待从机(单片机)完成相关配置才能正确传输数据，否则部分数据会丢失、错乱*/
     /* 假如是其他从机单位，响应较快，可考虑取消此处延时*/
-    am_mdelay(100);
+    if(cs_mdelay != 0) {
+    	am_mdelay(cs_mdelay);
+    }
 
     while(pos < p_trans->nbytes) {
 
@@ -148,7 +151,8 @@ void spi_loop_trans (amhw_zlg237_spi_t *p_hw_spi,
  */
 void demo_zlg237_hw_spi_master_entry (amhw_zlg237_spi_t *p_hw_spi,
                                       int32_t            cs_pin,
-                                      uint32_t           clk_rate)
+                                      uint32_t           clk_rate,
+                                      uint32_t           cs_mdelay)
 {
     uint8_t         i = 0, t = 0;
     uint8_t         spi_send_buf[21] = {0};
@@ -172,7 +176,7 @@ void demo_zlg237_hw_spi_master_entry (amhw_zlg237_spi_t *p_hw_spi,
     AM_FOREVER {
 
         /* 数据传输 */
-        spi_loop_trans(p_hw_spi, p_trans, cs_pin);
+        spi_loop_trans(p_hw_spi, p_trans, cs_pin, cs_mdelay);
 
         am_kprintf("spi_recv_buf: %s\r\n",spi_recv_buf);
         am_kprintf("spi_send_buf: %s\r\n",spi_send_buf);

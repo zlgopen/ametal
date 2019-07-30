@@ -19,7 +19,7 @@
  *
  * - 实验现象：
  *   1. TIM4 通过 PIOB_6 引脚输出 2KHz 的 PWM；
- *   2. TIM2 捕获输入通道 2 使用 PIOB_3 引脚捕获；
+ *   2. TIM2 捕获输入通道 2 使用 PIOA_15 引脚捕获；
  *   3. 串口打印出利用捕获功能得到的 PWM 信号的周期和频率。
  *
  * \note
@@ -63,7 +63,7 @@ void demo_zlg237_core_std_tim2_cap_entry (void)
     am_pwm_config(pwm_handle, 0, 500000 / 2, 500000);
     am_pwm_enable(pwm_handle, 0);
 
-    demo_std_timer_cap_entry(am_zlg237_tim2_cap_inst_init(), 1);
+    demo_std_timer_cap_entry(am_zlg237_tim2_cap_inst_init(), 0);
 
 }
 /** [src_zlg237_std_tim2_cap] */

@@ -50,8 +50,7 @@
 #define __IWDG_TIMEOUT_MS       100
 
 /**
- * \brief 看门狗喂狗时间，若喂狗时间超过__IWDG_TIMEOUT_MS的值（大于5ms以上）,
- *        会产生看门狗事件。
+ * \brief 看门狗喂狗时间，若喂狗时间超过__IWDG_TIMEOUT_MS的值(独立看门狗时钟不精确，尽可能差值大),会产生看门狗事件。
  */
 #define __IWDG_FEED_TIME_MS     1000
 

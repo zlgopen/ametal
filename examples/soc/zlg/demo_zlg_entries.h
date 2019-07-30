@@ -278,7 +278,8 @@ void demo_zlg237_hw_i2c_slave_poll_entry (amhw_zlg237_i2c_t *p_hw_i2c);
  */
 void demo_zlg237_hw_spi_master_entry (amhw_zlg237_spi_t *p_hw_spi,
                                       int32_t            cs_pin,
-                                      uint32_t           clk_rate);
+                                      uint32_t           clk_rate,
+									  uint32_t           cs_mdelay);
 
 /**
  * \brief SPI 主机例程，通过 HW 层接口实现

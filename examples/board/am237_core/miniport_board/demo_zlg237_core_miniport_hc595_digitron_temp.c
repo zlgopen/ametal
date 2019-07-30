@@ -16,9 +16,10 @@
  *        例程，通过标准接口实现
  *
  * - 操作步骤
- *   1. 要使用底板（AM237BLE）上的 LM75 温度传感器，需要短接 J11 和 J13；
- *   2. 先将 MiniPort-595 板子直接与 AM237 的 MiniPort 相连接；
- *   3. 将 MiniPort-View 板子与 MiniPort-595 接口相连接。
+ *   1. 请确认am_hwconf_zlg237_spi_int。c中spi2设备信息结构体中cs_delay变量值为0。
+ *   2. 要使用底板（AM237BLE）上的 LM75 温度传感器，需要短接 J11 和 J13；
+ *   3. 先将 MiniPort-595 板子直接与 AM237 的 MiniPort 相连接；
+ *   4. 将 MiniPort-View 板子与 MiniPort-595 接口相连接。
  *
  * - 实验现象：
  *   1. 可以看到数码管显示当前温度，若J14跳冒选择短接 KEY 和 RES，则按下底板上的

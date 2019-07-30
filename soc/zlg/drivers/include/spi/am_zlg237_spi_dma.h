@@ -55,8 +55,8 @@ typedef struct am_zlg237_spi_dma_devinfo {
     int       clk_id;       /**< \brief 时钟ID */
     uint8_t   baud_div;     /**< \brief 时钟分频系数 */
     uint16_t  inum;         /**< \brief SPI 中断编号 */
+    uint32_t  cs_mdelay;    /**< \brief SPI CS拉低后延时等待（ms），再进行数据传输*/
     uint32_t  flags;        /**< \brief SPI 配置标识 */
-
     uint32_t  dma_chan_tx;  /**< \brief DMA发送通道号 */
     uint32_t  dma_chan_rx;  /**< \brief DMA接收通道号 */
 

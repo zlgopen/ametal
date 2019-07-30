@@ -89,7 +89,7 @@ static void __zlg_adc_init (amhw_zlg237_adc_t *p_hw_adc,
     if(adc_chan_num < 16) {
         amhw_zlg237_adc_regular_channel_length_set(
             p_hw_adc,
-            (amhw_zlg237_adc_regular_channel_length_t)adc_chan_num);
+            (amhw_zlg237_adc_regular_channel_length_t)(adc_chan_num - 1));
     }
 
     for(i=0;i<adc_chan_num;i++) {
@@ -118,6 +118,9 @@ static void __zlg_adc_init (amhw_zlg237_adc_t *p_hw_adc,
 
     /* 对齐方式--右对齐 */
     amhw_zlg237_adc_data_alignment_set(p_hw_adc,AMHW_ZLG237_ADC_DATA_RIGHT);
+
+    /* 关闭ADC16通道内部温度传感器（仅ADC1有效）*/
+    amhw_zlg237_adc_tsvrefe_disable(p_hw_adc);
 
     /* 开启ADC的DMA功能 */
     amhw_zlg237_adc_dma_enable(p_hw_adc);

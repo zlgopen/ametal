@@ -52,7 +52,7 @@
 #include "demo_am237_core_entries.h"
 
 #define  __ADC1_DMA_CHAN1         DMA_CHAN_1 /* ADC1对应DMA通道1 */
-#define  __ADC2_DMA_CHAN2         DMA_CHAN_2 /* ADC2对应DMA通道2 */
+                                             /* 仅ADC1能发起DMA请求 */
 
 /**
  * \brief 例程入口

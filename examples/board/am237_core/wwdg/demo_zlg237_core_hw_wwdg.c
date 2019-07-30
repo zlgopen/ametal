@@ -43,7 +43,7 @@
 /**
  * \brief 看门狗超时时间
  */
-#define __WWDG_TIMEOUT_MS       100
+#define __WWDG_TIMEOUT_MS       30          /* 最大58ms */
 
 /**
  * \brief 看门狗喂狗时间，若喂狗时间超过WWDG_TIMEOUT_MS的值芯片会产生复位

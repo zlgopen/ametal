@@ -63,6 +63,9 @@ typedef struct am_zlg237_adc_devinfo {
      */
     uint32_t   vref;
 
+    /** \brief ADC1通道16内部温度传感器开启使能   1：开启， 0：关闭 */
+    uint8_t    temp_mode;
+
     /** \brief 转换精度 */
     uint8_t    bits_mode;
 

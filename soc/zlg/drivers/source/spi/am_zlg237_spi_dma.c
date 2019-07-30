@@ -767,7 +767,9 @@ int __spi_mst_sm_event (am_zlg237_spi_dma_dev_t *p_dev, uint32_t event)
                  * 才能正确传输数据，否则部分数据会丢失、错乱。
                  * 假如是其他从机单位，响应较快，可考虑取消此处延时。
                  */
-                am_mdelay(100);
+                if(p_dev->p_devinfo->cs_mdelay != 0) {
+                	am_mdelay(p_dev->p_devinfo->cs_mdelay);
+                }
 
                 amhw_zlg237_spi_dma_tx_enable(p_hw_spi);
                 amhw_zlg237_spi_dma_rx_enable(p_hw_spi);

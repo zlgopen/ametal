@@ -15,9 +15,10 @@
  * \brief MiniPort-View + MiniPort-595 + MiniPort-KEY 例程，通过标准接口实现
  *
  * - 操作步骤
- *   1. 先将 MiniPort-595 板子直接与 AM237 的 MiniPort 相连接；
- *   2. 将 MiniPort-View 板子与 MiniPort-595 接口相连接；
- *   3. 将 MiniPort-KEY 与 MiniPort-View 连接。
+ *   1. 请确认am_hwconf_zlg237_spi_int。c中spi2设备信息结构体中cs_delay变量值为0。
+ *   2. 先将 MiniPort-595 板子直接与 AM237 的 MiniPort 相连接；
+ *   3. 将 MiniPort-View 板子与 MiniPort-595 接口相连接；
+ *   4. 将 MiniPort-KEY 与 MiniPort-View 连接。
  *
  * - 实验现象：
  *   1. 按下一个按键，两位数码管显示按键编号的二进制；
