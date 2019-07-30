@@ -968,19 +968,8 @@ static int __i2c_mst_sm_event (am_zlg237_i2c_dev_t *p_dev, uint32_t event)
 
             if (p_dev->data_ptr < p_cur_trans->nbytes) {
 
-                /* 此次不用传输从机地址 */
-                if ((p_dev->data_ptr == (p_cur_trans->nbytes - 1)) &&
-                        p_dev->trans_state) {
-
-                    amhw_zlg237_i2c_send_data(p_hw_i2c,
-                            (p_cur_trans->p_buf)[p_dev->data_ptr++]);
-
-                }
-                else {
-
-                    amhw_zlg237_i2c_send_data(p_hw_i2c,
-                            (p_cur_trans->p_buf)[p_dev->data_ptr++]);
-                }
+                amhw_zlg237_i2c_send_data(p_hw_i2c,
+                     (p_cur_trans->p_buf)[p_dev->data_ptr++]);
 
             } else {
                 /* 保存从机地址 */
