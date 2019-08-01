@@ -48,6 +48,7 @@ void demo_std_double_application_entry(am_boot_firwa_recv_handle_t  firwa_recv_h
         /* ½ÓÊÕ¹Ì¼þ */
         ret = am_boot_firmware_recv(firwa_recv_handle);
         if(ret != AM_OK) {
+            am_boot_enter_check_reinit(check_handle);
             am_kprintf("app : firmware receive fail\r\n");
             return;
         } else {

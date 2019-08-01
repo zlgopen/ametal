@@ -21,8 +21,8 @@
  * \endinternal
  */
 
-#include <am_zlg237.h>
-#include <am_zlg237_inst_init.h>
+#include "am_zlg237.h"
+#include "am_zlg237_inst_init.h"
 #include "am_zlg237_rtc.h"
 #include "amhw_zlg237_pwr.h"
 #include "amhw_zlg237_rcc.h"

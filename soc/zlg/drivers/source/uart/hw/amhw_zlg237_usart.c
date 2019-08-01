@@ -85,10 +85,6 @@ int amhw_zlg237_usart_baudrate_set (amhw_zlg237_usart_t *p_hw_usart,
     amhw_zlg237_usart_br_div_mantissa_set(p_hw_usart, int_val);
     amhw_zlg237_usart_br_div_fraction_set(p_hw_usart, deci_val);
 
-    /* 寄存器需要重新使能 UART 才能生效 */
-    amhw_zlg237_usart_disable(p_hw_usart);
-    amhw_zlg237_usart_enable(p_hw_usart);
-
     return baud;
 }
 

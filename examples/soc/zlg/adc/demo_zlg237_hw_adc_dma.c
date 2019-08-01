@@ -97,7 +97,7 @@ static void __zlg_adc_init (amhw_zlg237_adc_t *p_hw_adc,
         /* 链接规则通道序列和ADC采样通道 */
         amhw_zlg237_adc_regular_channel_order_set(
             p_hw_adc,
-           (amhw_zlg237_adc_regular_channel_order_t)AMHW_ZLG237_ADC_REGULAR_CHAN_ORDER_1st + i,
+           (amhw_zlg237_adc_regular_channel_order_t)(AMHW_ZLG237_ADC_REGULAR_CHAN_ORDER_1st + i),
            (amhw_zlg237_adc_channel_t)p_adc_chan[i]);
 
         /* 设置采样通道的采样周期 */

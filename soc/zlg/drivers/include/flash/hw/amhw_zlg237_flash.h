@@ -234,14 +234,14 @@ void amhw_zlg237_flash_status_flag_clr (amhw_zlg237_flash_t *p_hw_flash,
 
 #define AMHW_ZLG237_FLASH_EOP_INT_EN_MASK  (1U << 12) /**< \brief End of operation interrupt enable */
 #define AMHW_ZLG237_FLASH_ERR_INT_EN_MASK  (1U << 10) /**< \brief error interrupt enable */
-#define AMHW_ZLG237_FLASH_OPTWRE_EN_MASK   (1U << 9) /**< \brief option byte write enable */
-#define AMHW_ZLG237_FLASH_LOCK_MASK        (1U << 7) /**< \brief lock */
-#define AMHW_ZLG237_FLASH_START_MASK       (1U << 6) /**< \brief start erase */
-#define AMHW_ZLG237_FLASH_OPT_ERASE_MASK   (1U << 5) /**< \brief option byte erase */
-#define AMHW_ZLG237_FLASH_OPT_PROGRAM_MASK (1U << 4) /**< \brief option byte programming */
-#define AMHW_ZLG237_FLASH_MASS_ERASE_MASK  (1U << 2) /**< \brief mass erase */
-#define AMHW_ZLG237_FLASH_PAGE_ERASE_MASK  (1U << 1) /**< \brief page erase */
-#define AMHW_ZLG237_FLASH_PROGRAM_MASK     (1U << 0) /**< \brief programming */
+#define AMHW_ZLG237_FLASH_OPTWRE_EN_MASK   (1U << 9)  /**< \brief option byte write enable */
+#define AMHW_ZLG237_FLASH_LOCK_MASK        (1U << 7)  /**< \brief lock */
+#define AMHW_ZLG237_FLASH_START_MASK       (1U << 6)  /**< \brief start erase */
+#define AMHW_ZLG237_FLASH_OPT_ERASE_MASK   (1U << 5)  /**< \brief option byte erase */
+#define AMHW_ZLG237_FLASH_OPT_PROGRAM_MASK (1U << 4)  /**< \brief option byte programming */
+#define AMHW_ZLG237_FLASH_MASS_ERASE_MASK  (1U << 2)  /**< \brief mass erase */
+#define AMHW_ZLG237_FLASH_PAGE_ERASE_MASK  (1U << 1)  /**< \brief page erase */
+#define AMHW_ZLG237_FLASH_PROGRAM_MASK     (1U << 0)  /**< \brief programming */
 
 /** @}*/
 

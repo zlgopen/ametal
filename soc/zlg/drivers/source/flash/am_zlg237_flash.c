@@ -83,6 +83,14 @@ int32_t am_zlg237_flash_page_erase (amhw_zlg237_flash_t *p_hw_flash,
         ;
     }
 
+    if (amhw_zlg237_flash_cs_reg_get(p_hw_flash) & AMHW_ZLG237_FLASH_LOCK_MASK) {
+        amhw_zlg237_flash_key_set(p_hw_flash, UNLOCK_FALSH_KEY1);
+        amhw_zlg237_flash_key_set(p_hw_flash, UNLOCK_FALSH_KEY2);
+    }
+
+    amhw_zlg237_flash_cs_reg_clr(p_hw_flash, AMHW_ZLG237_FLASH_PROGRAM_MASK |
+                                             AMHW_ZLG237_FLASH_MASS_ERASE_MASK);
+
     amhw_zlg237_flash_cs_reg_set(p_hw_flash,
             AMHW_ZLG237_FLASH_PAGE_ERASE_MASK);
 
@@ -125,6 +133,11 @@ int32_t am_zlg237_flash_half_page_erase (amhw_zlg237_flash_t *p_hw_flash,
         ;
     }
 
+    if (amhw_zlg237_flash_cs_reg_get(p_hw_flash) & AMHW_ZLG237_FLASH_LOCK_MASK) {
+        amhw_zlg237_flash_key_set(p_hw_flash, UNLOCK_FALSH_KEY1);
+        amhw_zlg237_flash_key_set(p_hw_flash, UNLOCK_FALSH_KEY2);
+    }
+
     amhw_zlg237_flash_cs_reg_clr(p_hw_flash, AMHW_ZLG237_FLASH_PAGE_ERASE_MASK |
                                              AMHW_ZLG237_FLASH_PROGRAM_MASK);
 
@@ -140,6 +153,7 @@ int32_t am_zlg237_flash_half_page_erase (amhw_zlg237_flash_t *p_hw_flash,
                                           AMHW_ZLG237_FLASH_BUSY_FLAG)) {
         ;
     }
+    amhw_zlg237_flash_ecr_haer_set(p_hw_flash, AMHW_ZLG237_FLASH_NO_HALF_PAGE_ERASE);
 
     return AM_OK;
 }
@@ -194,6 +208,9 @@ int32_t am_zlg237_flash_sector_program (amhw_zlg237_flash_t *p_hw_flash,
                                           AMHW_ZLG237_FLASH_BUSY_FLAG)) {
        ;
     }
+
+    amhw_zlg237_flash_ecr_wpg_set(p_hw_flash, AMHW_ZLG237_FLASH_NO_WORD_PROGRAM);
+
     for (i = 0; i < size; i++) {
 
       if (p_src[i] != *(uint32_t *)(dst_addr + i * 4)) {

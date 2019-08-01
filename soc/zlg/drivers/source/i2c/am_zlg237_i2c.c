@@ -142,69 +142,69 @@ am_local int __i2c_hard_init (am_zlg237_i2c_dev_t *p_dev)
             tmpreg |= result;
             /** \brief 设置标准模式下最大的 rise值     */
             p_hw_i2c->i2c_trise = i2c_freq_value + 1;
+    } else {
+
+        /** <brief 最高为 400khz */
+        if (p_dev->i2c_dutycycle == AMHW_ZLG237_I2C_DUTY_CYCLE_2 ) {
+            result = (uint16_t)(pclk1 / (p_dev->i2c_clock_speed *3));
         } else {
-
-            /** <brief 最高为 400khz */
-            if (p_dev->i2c_dutycycle == AMHW_ZLG237_I2C_DUTY_CYCLE_2 ) {
-                result = (uint16_t)(pclk1 / (p_dev->i2c_clock_speed *3));
-            } else {
-                result = (uint16_t)(pclk1 / (p_dev->i2c_clock_speed * 25));
-                result |= AMHW_ZLG237_I2C_DUTY_CYCLE_16_9;
-            }
-
-            /** < 测试 CCR[11:0] 是否小于 0x01 */
-            if ((result & 0x0FFF) == 0) {
-
-                /** <brief 设置最小的 CCR值 */
-                result |= (uint16_t)0x0001;
-            }
-
-            /** <brief 设置speed值  和  F/S为 快速模式 */
-            tmpreg |= (uint16_t)(result | (uint16_t)0x8000);
-            /** <brief 设置快速模式的最大rise时间 */
-            p_hw_i2c->i2c_trise = (uint16_t) (((i2c_freq_value *(uint16_t)300) /
-                                              (uint16_t)1000) + (uint16_t)1) ;
+            result = (uint16_t)(pclk1 / (p_dev->i2c_clock_speed * 25));
+            result |= AMHW_ZLG237_I2C_DUTY_CYCLE_16_9;
         }
 
-        /** <brief 写入 ccr */
-        p_hw_i2c->i2c_ccr = tmpreg;
+        /** < 测试 CCR[11:0] 是否小于 0x01 */
+        if ((result & 0x0FFF) == 0) {
 
-        /** <brief 启动I2C外设 */
-        amhw_zlg237_i2c_enable(p_hw_i2c);
+            /** <brief 设置最小的 CCR值 */
+            result |= (uint16_t)0x0001;
+        }
 
-        /** <brief 配置 CR1 */
+        /** <brief 设置speed值  和  F/S为 快速模式 */
+        tmpreg |= (uint16_t)(result | (uint16_t)0x8000);
+        /** <brief 设置快速模式的最大rise时间 */
+        p_hw_i2c->i2c_trise = (uint16_t) (((i2c_freq_value *(uint16_t)300) /
+                                          (uint16_t)1000) + (uint16_t)1) ;
+    }
 
-        tmpreg = p_hw_i2c->i2c_cr1;
+    /** <brief 写入 ccr */
+    p_hw_i2c->i2c_ccr = tmpreg;
 
-        /** \brief 清零 ACK,SMBTYPE,SMBUS */
-        tmpreg &= 0xFBF5;
+    /** <brief 启动I2C外设 */
+    amhw_zlg237_i2c_enable(p_hw_i2c);
 
-        /**
-         *  <brief 配置 I2C 模式 和 acknowledgement
-         *  根据I2C的模式值 设置 SMBTYPE 和 SMBUS
-         *  根据I2C的ACK值 设置ACK位
-         */
-        tmpreg |= (uint16_t)((uint16_t)p_dev->i2c_mode | p_dev->i2c_ack);
+    /** <brief 配置 CR1 */
 
-        /** \breif 写入CR1 */
-        p_hw_i2c->i2c_cr1 = tmpreg;
+    tmpreg = p_hw_i2c->i2c_cr1;
 
-        /** \breif I2C OAR1 配置 */
-        p_hw_i2c->i2c_oar1 = (p_dev->i2c_acknowledgedaddress |
-                              (p_dev->i2c_ownaddress1 <<1 ) );
+    /** \brief 清零 ACK,SMBTYPE,SMBUS */
+    tmpreg &= 0xFBF5;
 
-        /* 默认不使用 10bit地址*/
-        amhw_zlg237_i2c_endual(p_hw_i2c,DISABLE);
-        amhw_zlg237_i2c_iten_mode_set(p_hw_i2c,
-                                      I2C_CR2_ITERREN |
-                                      I2C_CR2_ITEVTEN |
-                                      I2C_CR2_ITBUFEN,
-                                      DISABLE);
+    /**
+     *  <brief 配置 I2C 模式 和 acknowledgement
+     *  根据I2C的模式值 设置 SMBTYPE 和 SMBUS
+     *  根据I2C的ACK值 设置ACK位
+     */
+    tmpreg |= (uint16_t)((uint16_t)p_dev->i2c_mode | p_dev->i2c_ack);
 
-        /** 启动 I2C外设  */
-        amhw_zlg237_i2c_enable(p_hw_i2c);
+    /** \breif 写入CR1 */
+    p_hw_i2c->i2c_cr1 = tmpreg;
 
-        return AM_OK;
+    /** \breif I2C OAR1 配置 */
+    p_hw_i2c->i2c_oar1 = (p_dev->i2c_acknowledgedaddress |
+                          (p_dev->i2c_ownaddress1 <<1 ) );
+
+    /* 默认不使用 10bit地址*/
+    amhw_zlg237_i2c_endual(p_hw_i2c,DISABLE);
+    amhw_zlg237_i2c_iten_mode_set(p_hw_i2c,
+                                  I2C_CR2_ITERREN |
+                                  I2C_CR2_ITEVTEN |
+                                  I2C_CR2_ITBUFEN,
+                                  DISABLE);
+
+    /** 启动 I2C外设  */
+    amhw_zlg237_i2c_enable(p_hw_i2c);
+
+    return AM_OK;
 }
 
 am_local int __i2c_hard_re_init (am_zlg237_i2c_dev_t *p_dev)
@@ -735,7 +735,7 @@ static int __i2c_mst_sm_event (am_zlg237_i2c_dev_t *p_dev, uint32_t event)
 
                 } else {
 
-                /* 接收模式  产生停止条件前  还应在倒数第二个数据 是设置    EV7: RXE = 1 读DR清除该事件 */
+                    /* 接收模式  产生停止条件前  还应在倒数第二个数据 是设置    EV7: RXE = 1 读DR清除该事件 */
 
                     amhw_zlg237_i2c_iten_mode_set(p_hw_i2c,
                                                   I2C_CR2_ITEVTEN |
@@ -907,7 +907,6 @@ static int __i2c_mst_sm_event (am_zlg237_i2c_dev_t *p_dev, uint32_t event)
 
                 return -AM_EINVAL;
             }
-
 
             if (p_dev->data_ptr < p_cur_trans->nbytes) {
 

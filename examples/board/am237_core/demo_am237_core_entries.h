@@ -486,7 +486,7 @@ void demo_zlg237_core_dr_fm175xx_picca_lpcd_read_id(void);
 /**
  * \brief 基于KinetisFlashTool上位机的bootloader 例程
  */
-void demo_zlg237_core_boot_kft_bootloader_entry (void);
+void demo_zlg237_core_bootloader_kft_entry (void);
 
 /**
 
@@ -496,11 +496,16 @@ void demo_zlg237_core_boot_kft_bootloader_entry (void);
 void demo_zlg237_core_double_application_entry (void);
 
 /**
-
  * \brief 单区bootloader的测试应用程序例程
  */
 
 void demo_zlg237_core_single_application_entry (void);
+
+/**
+ * \brief kft bootloader的测试应用程序例程
+ */
+
+void demo_zlg237_core_kft_application_entry (void);
 
 /**
  * \brief 基于串口助手的单区bootloader例程

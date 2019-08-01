@@ -112,6 +112,11 @@ static int __usart_ioctl (void *p_drv, int request, void *p_arg)
                                                (uint32_t)p_arg);
 
         if (status > 0) {
+
+            /* 寄存器需要重新使能 UART 才能生效 */
+            amhw_zlg237_usart_disable(p_hw_usart);
+            amhw_zlg237_usart_enable(p_hw_usart);
+
             p_dev->baud_rate = status;
             status = AM_OK;
         } else {
@@ -265,6 +270,10 @@ static int __usart_poll_putchar (void *p_drv, char outchar)
             p_dev->p_devinfo->pfn_rs485_dir(AM_TRUE);
         }
 
+        while(amhw_zlg237_usart_status_flag_check(p_hw_usart,
+                                                  AMHW_ZLG237_USART_TX_EMPTY_FLAG)
+                                                  == AM_FALSE);
+
         /* 发送一个字符 */
         amhw_zlg237_usart_data_write(p_hw_usart, outchar);
 
@@ -345,9 +354,6 @@ int __usart_opt_set (am_zlg237_usart_dev_t *p_dev, uint32_t options)
         return -AM_EINVAL;
     }
 
-    /* 在改变UART寄存器值前 接收发送禁能 */
-    amhw_zlg237_usart_disable(p_hw_usart);
-
     /* 配置停止位 */
     if (options & AM_UART_STOPB) {
         cfg_flags &= ~(0x1 << 2);
@@ -374,8 +380,6 @@ int __usart_opt_set (am_zlg237_usart_dev_t *p_dev, uint32_t options)
     /* 保存和生效配置 */
     amhw_zlg237_usart_stop_bit_sel(p_hw_usart, (cfg_flags & 0x4));
     amhw_zlg237_usart_parity_bit_sel(p_hw_usart, (cfg_flags & 0x3));
-
-    amhw_zlg237_usart_enable(p_hw_usart);
 
     p_dev->options = options;
 
@@ -651,9 +655,6 @@ am_uart_handle_t am_zlg237_usart_init (am_zlg237_usart_dev_t           *p_dev,
                                  AMHW_ZLG237_USART_RX_NOT_EMPTY_FLAG);
     p_dev->rs485_en          = AM_FALSE;
 
-    /* 复位所有寄存器 */
-    amhw_zlg237_usart_all_clr(p_hw_usart);
-
     /* 开启UART时钟 */
     am_clk_enable(p_devinfo->clk_num);
 
@@ -693,9 +694,6 @@ am_uart_handle_t am_zlg237_usart_init (am_zlg237_usart_dev_t           *p_dev,
 
     }
 
-    /* 等待上一次传输完成 */
-    while (amhw_zlg237_usart_status_flag_check(p_hw_usart, AMHW_ZLG237_USART_TX_COMPLETE_FLAG) == AM_FALSE);
-
     __usart_opt_set(p_dev, p_dev->options);
 
     /* 设置波特率 */
@@ -703,6 +701,7 @@ am_uart_handle_t am_zlg237_usart_init (am_zlg237_usart_dev_t           *p_dev,
         p_hw_usart,
         am_clk_rate_get(p_dev->p_devinfo->clk_num),
         p_devinfo->baud_rate);
+
     /* 默认轮询模式 */
     __usart_mode_set(p_dev, AM_UART_MODE_POLL);
 
@@ -723,7 +722,7 @@ am_uart_handle_t am_zlg237_usart_init (am_zlg237_usart_dev_t           *p_dev,
         /* 初始化 485 为接收模式 */
         p_dev->p_devinfo->pfn_rs485_dir(AM_FALSE);
     }
-    am_mdelay(2);
+
     return &(p_dev->uart_serv);
 }
 
