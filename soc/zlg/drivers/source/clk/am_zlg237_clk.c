@@ -34,6 +34,8 @@ am_zlg237_clk_dev_t *__gp_dev = NULL;
 
 static void __hse_init (void)
 {
+	amhw_zlg237_rcc_hse_wt_set(0XA00);
+
     amhw_zlg237_rcc_hsenf_byp_cfg(1);
 
     amhw_zlg237_rcc_hseon_enable();

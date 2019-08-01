@@ -65,7 +65,7 @@ static const  struct am_zlg237_spi_dma_devinfo  __g_spi1_dma_devinfo = {
 	0,                                       /**< \brief SPI1 CS拉低后延时等待（ms），再进行数据传输。
 	                                          *
 	                                          *   从机为本zlg237软件包对应的spi_slaver时，请将延时设置为
-	                                          *   100ms。
+	                                          *   100ms。请打开AM_CFG_DELAY_ENABLE宏定义
 	                                          *   从机不满足上述条件时，延时一般设置为0ms。
 	                                          **/
 

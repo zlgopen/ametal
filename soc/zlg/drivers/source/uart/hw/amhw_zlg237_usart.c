@@ -79,7 +79,7 @@ int amhw_zlg237_usart_baudrate_set (amhw_zlg237_usart_t *p_hw_usart,
         return AM_ERROR;
     }
 
-    int_val = (usart_clk /baud)/16;
+    int_val  = (usart_clk /baud)/16;
     deci_val = (usart_clk /baud)%16;
 
     amhw_zlg237_usart_br_div_mantissa_set(p_hw_usart, int_val);
