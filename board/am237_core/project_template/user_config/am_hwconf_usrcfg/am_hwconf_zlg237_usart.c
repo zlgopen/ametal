@@ -40,8 +40,11 @@
 /** \brief 串口1平台初始化 */
 static void __zlg237_plfm_usart1_init (void)
 {
-    am_gpio_pin_cfg(PIOA_9,  PIOA_9_NO_REMAP | PIOA_9_AF_PP );
-    am_gpio_pin_cfg(PIOA_10, PIOA_10_NO_REMAP| PIOA_10_INPUT_FLOAT);
+    am_gpio_pin_cfg(PIOA_9,  PIOA_9_NO_REMAP);
+    am_gpio_pin_cfg(PIOA_10, PIOA_10_NO_REMAP);
+
+    am_gpio_pin_cfg(PIOA_9,  PIOA_9_AF_PP | AM_GPIO_PULLUP | PIOA_9_SPEED_50MHz);
+    am_gpio_pin_cfg(PIOA_10, PIOA_10_INPUT_FLOAT );
 }
 
 /** \brief 解除串口1平台初始化 */
