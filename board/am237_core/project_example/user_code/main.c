@@ -61,7 +61,7 @@ int am_main (void)
 //    demo_zlg237_core_std_buzzer_entry();
 //    demo_zlg237_core_std_crc_entry();
 //    demo_zlg237_core_drv_dma_m2m_entry();
-    demo_zlg237_core_drv_flash_entry();
+//    demo_zlg237_core_drv_flash_entry();
 //    demo_zlg237_core_hw_gpio_entry();
 //    demo_zlg237_core_hw_gpio_trigger_entry();
 //    demo_zlg237_core_std_gpio_entry();

@@ -777,10 +777,10 @@ extern "C" {
 #define PIOA_15_NO_REMAP              AM_ZLG237_GPIO_REMAP_CODE(0x15, 0)
 #define PIOA_15_GPIO                  PIOA_15_NO_REMAP   /**< \brief GPIO */
 
+#define PIOA_15_JTDI                  AM_ZLG237_GPIO_REMAP_CODE(0x18, 0)   /**< \brief JTDI */
 #define PIOA_15_TIM2_CH1_ETR_REMAP1   AM_ZLG237_GPIO_REMAP_CODE(0x08, 1)   /**< \brief TIM2_CH1_ETR */
 #define PIOA_15_TIM2_CH1_ETR_REMAP3   AM_ZLG237_GPIO_REMAP_CODE(0x08, 3)   /**< \brief TIM2_CH1_ETR */
-#define PIOA_15_JTDI                  AM_ZLG237_GPIO_REMAP_CODE(0x18, 0)   /**< \brief JTDI */
-#define PIOA_15_SPI1_NSS              AM_ZLG237_GPIO_REMAP_CODE(0x00, 1)     /**< \brief SPI1_NSS */
+#define PIOA_15_SPI1_NSS              AM_ZLG237_GPIO_REMAP_CODE(0x00, 1)   /**< \brief SPI1_NSS */
 /** @} */
 
 /**
