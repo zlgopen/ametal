@@ -128,7 +128,7 @@ typedef struct am_zlg237_usart_dev {
     void     *err_arg;                      /**< \brief 错误回调函数用户参数 */
 
     uint8_t   flowctl_mode;                 /**< \brief 流控模式（无，软件，硬件）   */
-    uint8_t   flowctl_tx_stat;		        /**< \brief 流控发送器状态（用于软流控） */
+    uint8_t   flowctl_tx_stat;              /**< \brief 流控发送器状态（用于软流控） */
 
     uint8_t   channel_mode;                 /**< \brief 串口模式 中断/查询 */
     uint32_t  baud_rate;                    /**< \brief 串口波特率 */

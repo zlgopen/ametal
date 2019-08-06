@@ -59,7 +59,7 @@ void demo_zlg237_core_std_tim1_cap_entry (void)
     am_pwm_handle_t tim4_pwm_handle = am_zlg237_tim4_pwm_inst_init();
     am_cap_handle_t tim1_cap_handle = am_zlg237_tim1_cap_inst_init();
     
-	  AM_DBG_INFO("demo am237_core std tim1 cap!\r\n");
+      AM_DBG_INFO("demo am237_core std tim1 cap!\r\n");
 
     /* TIM2 输出频率为 2KHz 的 PWM */
     am_pwm_config(tim4_pwm_handle, 0, 500000 / 2, 500000);

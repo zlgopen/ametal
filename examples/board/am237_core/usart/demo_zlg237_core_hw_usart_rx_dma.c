@@ -56,7 +56,7 @@ void demo_zlg237_core_hw_usart_rx_dma_entry (void)
 {
 
 
-	AM_DBG_INFO("demo am237_core hw usart tx dma!\r\n");
+    AM_DBG_INFO("demo am237_core hw usart tx dma!\r\n");
 
     /* 等待调试串口发送数据完成 */
     am_mdelay(100);

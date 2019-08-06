@@ -54,9 +54,9 @@
  */
 void demo_zlg237_core_hw_usart_tx_dma_entry (void)
 {
-	AM_DBG_INFO("demo am237_core hw usart tx dma!\r\n");
+    AM_DBG_INFO("demo am237_core hw usart tx dma!\r\n");
 
-	/* 等待调试串口发送数据完成 */
+    /* 等待调试串口发送数据完成 */
     am_mdelay(100);
 
     /* 使能串口时钟*/
@@ -68,7 +68,7 @@ void demo_zlg237_core_hw_usart_tx_dma_entry (void)
 
     demo_zlg237_hw_usart_tx_dma_entry(ZLG237_USART2,
                                       am_clk_rate_get(CLK_USART2),
-								      DMA_CHAN_USART2_TX);
+                                      DMA_CHAN_USART2_TX);
 }
 /** [src_zlg237_hw_usart_tx_dma] */
 

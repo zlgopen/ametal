@@ -241,7 +241,7 @@ typedef enum {
 
 /** \brief addmode 寻址模式（从模式）
  *  \note： 0： 7位从地址  不响应10位地址
- *  	   1：10位从地址 不响应7位地址
+ *         1：10位从地址 不响应7位地址
  */
 #define AMHW_ZLG237_I2C_OAR1_ADDMODE            (15ul)
 
@@ -403,7 +403,7 @@ void amhw_zlg237_i2c_disable (amhw_zlg237_i2c_t *p_hw_i2c)
  *  \param[in] p_hw_i2c : 指向I2C寄存器结构体的指针
  *  \param[in] state:  0 禁能  1 使能
  *
- *	\return 无
+ *  \return 无
  */
 am_static_inline
 void amhw_zlg237_i2c_dma_en (amhw_zlg237_i2c_t *p_hw_i2c,
@@ -427,7 +427,7 @@ void amhw_zlg237_i2c_dma_en (amhw_zlg237_i2c_t *p_hw_i2c,
  *  \param[in] p_hw_i2c : 指向I2C寄存器结构体的指针
  *  \param[in] state:  0 禁能  1 使能
  *
- *	\return 无
+ *  \return 无
  */
 am_static_inline
 void amhw_zlg237_i2c_dma_last_en (amhw_zlg237_i2c_t *p_hw_i2c,
@@ -435,12 +435,12 @@ void amhw_zlg237_i2c_dma_last_en (amhw_zlg237_i2c_t *p_hw_i2c,
 {
     if (state) {
 
-    	/** <brief 下一次的DMA的EOT是最后的传输 */
-    	p_hw_i2c->i2c_cr2 |= 1 << AMHW_ZLG237_I2C_CR2_LAST;
+        /** <brief 下一次的DMA的EOT是最后的传输 */
+        p_hw_i2c->i2c_cr2 |= 1 << AMHW_ZLG237_I2C_CR2_LAST;
     } else {
 
-    	/** <brief 下一次DMA的EOT不是最后的传输 */
-    	p_hw_i2c->i2c_cr2 &= ~(1 << AMHW_ZLG237_I2C_CR2_LAST);
+        /** <brief 下一次DMA的EOT不是最后的传输 */
+        p_hw_i2c->i2c_cr2 &= ~(1 << AMHW_ZLG237_I2C_CR2_LAST);
     }
 }
 
@@ -452,7 +452,7 @@ void amhw_zlg237_i2c_dma_last_en (amhw_zlg237_i2c_t *p_hw_i2c,
  *  \param[in] p_hw_i2c : 指向I2C寄存器结构体的指针
  *  \param[in] state:  0 禁能  1 使能
  *
- *	\return 无
+ *  \return 无
  */
 am_static_inline
 void amhw_zlg237_i2c_genstrat (amhw_zlg237_i2c_t *p_hw_i2c,
@@ -484,7 +484,7 @@ uint16_t amhw_zlg237_i2c_read_reg(uint16_t  reg)
  *  \param[in] p_hw_i2c : 指向I2C寄存器结构体的指针
  *  \param[in] state:  0 禁能  1 使能
  *
- *	\return 无
+ *  \return 无
  */
 am_static_inline
 void amhw_zlg237_i2c_genstop (amhw_zlg237_i2c_t    *p_hw_i2c,
@@ -508,7 +508,7 @@ void amhw_zlg237_i2c_genstop (amhw_zlg237_i2c_t    *p_hw_i2c,
  *  \param[in] p_hw_i2c : 指向I2C寄存器结构体的指针
  *  \param[in] state:  0 禁能  1 使能
  *
- *	\return 无
+ *  \return 无
  */
 am_static_inline
 void amhw_zlg237_i2c_ack_en (amhw_zlg237_i2c_t *p_hw_i2c,
@@ -860,7 +860,7 @@ uint8_t amhw_zlg237_i2c_checkevent(amhw_zlg237_i2c_t      *p_hw_i2c,
 
         /** <brief 上一个事件与定义的宏事件不同 */
         return 0;
-	}
+    }
 }
 
 /** \brief  获取上一次事件值
@@ -899,11 +899,11 @@ int amhw_zlg237_i2c_checkflagstaus(amhw_zlg237_i2c_t      *p_hw_i2c,
 
     if (i2c_sr_num != 0) {
 
-        /** \brief 读取sr1的寄存器值    	 */
+        /** \brief 读取sr1的寄存器值         */
         i2c_sr_value = p_hw_i2c->i2c_sr1;
     } else {
 
-        /** \brief 读取sr2的寄存器值    	 */
+        /** \brief 读取sr2的寄存器值         */
         i2c_flag = (amhw_zlg237_flag_t)(i2c_flag >> 16);
         i2c_sr_value = p_hw_i2c->i2c_sr2;
     }

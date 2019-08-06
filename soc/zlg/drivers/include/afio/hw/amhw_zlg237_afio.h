@@ -52,13 +52,13 @@ typedef enum {
     AMHW_ZLG237_SPI1_REMAP     = 0,     /**< \brief SPI1 */
     AMHW_ZLG237_I2C1_REMAP,             /**< \brief I2C1 */
     AMHW_ZLG237_UART1_REMAP,            /**< \brief UART1 */
-	AMHW_ZLG237_UART2_REMAP,            /**< \brief UART2 */
+    AMHW_ZLG237_UART2_REMAP,            /**< \brief UART2 */
     AMHW_ZLG237_UART3_REMAP,            /**< \brief UART3 */
     AMHW_ZLG237_TIM1_REMAP     = 6,     /**< \brief TIM1 */
     AMHW_ZLG237_TIM2_REMAP     = 8,     /**< \brief TIM2 */
     AMHW_ZLG237_TIM3_REMAP     = 10,    /**< \brief TIM3 */
     AMHW_ZLG237_CAN_REMAP      = 13,    /**< \brief CAN */
-	AMHW_ZLG237_TIM4_REMAP     = 12,    /**< \brief TIM4 */
+    AMHW_ZLG237_TIM4_REMAP     = 12,    /**< \brief TIM4 */
     AMHW_ZLG237_PD01_REMAP     = 15,    /**< \brief PD01 */
     AMHW_ZLG237_TIM5_CH4_REMAP,    /**< \brief TIM5_CH4 */
     AMHW_ZLG237_ADC1_ETRGINJ_REMAP,    /**< \brief ADC1_ETRGINJ */
@@ -125,11 +125,11 @@ typedef enum {
     /** \brief ETR/PA12£¬CH1/PA8£¬CH2/PA9£¬CH3/PA10£¬
      * CH4/PA11£¬BKIN/PB12£¬CH1N/PB13£¬CH2N/PB14£¬CH3N/PB15 */
     AMHW_ZLG237_AFIO_TIM1_REMAP_NO  = 0,
-	/** \brief ETR/PA12£¬CH1/PA8£¬CH2/PA9£¬CH3/PA10£¬
-	 * CH4/PA11£¬BKIN/PA6£¬CH1N/PA7£¬CH2N/PB0£¬CH3N/PB1 */
+    /** \brief ETR/PA12£¬CH1/PA8£¬CH2/PA9£¬CH3/PA10£¬
+     * CH4/PA11£¬BKIN/PA6£¬CH1N/PA7£¬CH2N/PB0£¬CH3N/PB1 */
     AMHW_ZLG237_AFIO_TIM1_REMAP_PART1,
-	/** \brief ETR/PE7£¬CH1/PE9£¬CH2/PE11£¬CH3/PE13£¬
-	 * CH4/PE14£¬BKIN/PE15£¬CH1N/PE8£¬CH2N/PE10£¬CH3N/PE12 */
+    /** \brief ETR/PE7£¬CH1/PE9£¬CH2/PE11£¬CH3/PE13£¬
+     * CH4/PE14£¬BKIN/PE15£¬CH1N/PE8£¬CH2N/PE10£¬CH3N/PE12 */
     AMHW_ZLG237_AFIO_TIM1_REMAP_ALL = 3,
 }amhw_zlg237_afio_tim1_remap_mode_t;
 
@@ -263,7 +263,7 @@ typedef enum {
  */
 am_static_inline
 void amhw_zlg237_afio_evcr_mode_set (amhw_zlg237_afio_t              *p_hw_afio,
-		                             int                              pin,
+                                     int                              pin,
                                      int                              stats)
 {
     p_hw_afio->evcr |= (pin >> 4) << AMHW_ZLG237_AFIO_EVCR_PORT_EVENTOUT;
@@ -358,9 +358,9 @@ void amhw_zlg237_afio_uart_pin_remap_disable (amhw_zlg237_afio_t *p_hw_afio,
                                               int num)
 {
     if (num == 1) {
-    	p_hw_afio->mapr &= ~(1 << AMHW_ZLG237_AFIO_MAPR_UART1);
+        p_hw_afio->mapr &= ~(1 << AMHW_ZLG237_AFIO_MAPR_UART1);
     } else if (num == 2) {
-    	p_hw_afio->mapr &= ~(1 << AMHW_ZLG237_AFIO_MAPR_UART2);
+        p_hw_afio->mapr &= ~(1 << AMHW_ZLG237_AFIO_MAPR_UART2);
     }
 }
 
@@ -374,7 +374,7 @@ void amhw_zlg237_afio_uart_pin_remap_disable (amhw_zlg237_afio_t *p_hw_afio,
  */
 am_static_inline
 void amhw_zlg237_afio_uart3_remap_mode_set (amhw_zlg237_afio_t *p_hw_afio,
-		                                   amhw_zlg237_afio_uart3_remap_mode_t mode)
+                                           amhw_zlg237_afio_uart3_remap_mode_t mode)
 {
      p_hw_afio->mapr &= ~(0x3<< AMHW_ZLG237_AFIO_MAPR_UART3);
      p_hw_afio->mapr |= (mode & 0x3) << AMHW_ZLG237_AFIO_MAPR_UART3;
@@ -391,7 +391,7 @@ void amhw_zlg237_afio_uart3_remap_mode_set (amhw_zlg237_afio_t *p_hw_afio,
  */
 am_static_inline
 void amhw_zlg237_afio_tim1_remap_mode_set (amhw_zlg237_afio_t *p_hw_afio,
-		                                   amhw_zlg237_afio_tim1_remap_mode_t mode)
+                                           amhw_zlg237_afio_tim1_remap_mode_t mode)
 {
     p_hw_afio->mapr &= ~(0x3<< AMHW_ZLG237_AFIO_MAPR_TIM1);
     p_hw_afio->mapr |= (mode & 0x3) << AMHW_ZLG237_AFIO_MAPR_TIM1;
@@ -440,7 +440,7 @@ void amhw_zlg237_afio_tim3_remap_mode_set (amhw_zlg237_afio_t *p_hw_afio,
 am_static_inline
 void amhw_zlg237_afio_tim4_pin_remap_enable (amhw_zlg237_afio_t *p_hw_afio)
 {
-	  p_hw_afio->mapr |= 1 << AMHW_ZLG237_AFIO_MAPR_TIM4;
+      p_hw_afio->mapr |= 1 << AMHW_ZLG237_AFIO_MAPR_TIM4;
 }
 
 /**
@@ -453,7 +453,7 @@ void amhw_zlg237_afio_tim4_pin_remap_enable (amhw_zlg237_afio_t *p_hw_afio)
 am_static_inline
 void amhw_zlg237_afio_tim4_pin_remap_disable (amhw_zlg237_afio_t *p_hw_afio)
 {
-	  p_hw_afio->mapr &= ~(1 << AMHW_ZLG237_AFIO_MAPR_TIM4);
+      p_hw_afio->mapr &= ~(1 << AMHW_ZLG237_AFIO_MAPR_TIM4);
 }
 
 /**
@@ -508,7 +508,7 @@ void amhw_zlg237_afio_pd01_pin_remap_disable (amhw_zlg237_afio_t *p_hw_afio)
 am_static_inline
 void amhw_zlg237_afio_tim5_ch4_pin_remap_enable (amhw_zlg237_afio_t *p_hw_afio)
 {
-	  p_hw_afio->mapr |= 1 << AMHW_ZLG237_AFIO_MAPR_TIM5_CH4;
+      p_hw_afio->mapr |= 1 << AMHW_ZLG237_AFIO_MAPR_TIM5_CH4;
 }
 
 /**
@@ -521,7 +521,7 @@ void amhw_zlg237_afio_tim5_ch4_pin_remap_enable (amhw_zlg237_afio_t *p_hw_afio)
 am_static_inline
 void amhw_zlg237_afio_tim5_ch4_pin_remap_disable (amhw_zlg237_afio_t *p_hw_afio)
 {
-	  p_hw_afio->mapr &= ~(1 << AMHW_ZLG237_AFIO_MAPR_TIM5_CH4);
+      p_hw_afio->mapr &= ~(1 << AMHW_ZLG237_AFIO_MAPR_TIM5_CH4);
 }
 
 /**
@@ -536,28 +536,28 @@ void amhw_zlg237_afio_tim5_ch4_pin_remap_disable (amhw_zlg237_afio_t *p_hw_afio)
  */
 am_static_inline
 void amhw_zlg237_afio_adc_pin_remap_enable (amhw_zlg237_afio_t *p_hw_afio,
-		                                    int                 mode)
+                                            int                 mode)
 {
       switch (mode) {
 
       case AMHW_ZLG237_AFIO_MAPR_ADC1_ETRGINJ:
-    	  p_hw_afio->mapr |= 1 << AMHW_ZLG237_AFIO_MAPR_ADC1_ETRGINJ;
-    	  break;
+          p_hw_afio->mapr |= 1 << AMHW_ZLG237_AFIO_MAPR_ADC1_ETRGINJ;
+          break;
 
       case AMHW_ZLG237_AFIO_MAPR_ADC1_ETRGREG:
-    	  p_hw_afio->mapr |= 1 << AMHW_ZLG237_AFIO_MAPR_ADC1_ETRGREG;
-    	  break;
+          p_hw_afio->mapr |= 1 << AMHW_ZLG237_AFIO_MAPR_ADC1_ETRGREG;
+          break;
 
       case AMHW_ZLG237_AFIO_MAPR_ADC2_ETRGINJ:
-    	  p_hw_afio->mapr |= 1 << AMHW_ZLG237_AFIO_MAPR_ADC2_ETRGINJ;
-    	  break;
+          p_hw_afio->mapr |= 1 << AMHW_ZLG237_AFIO_MAPR_ADC2_ETRGINJ;
+          break;
 
       case AMHW_ZLG237_AFIO_MAPR_ADC2_ETRGREG:
-    	  p_hw_afio->mapr |= 1 << AMHW_ZLG237_AFIO_MAPR_ADC2_ETRGREG;
-    	  break;
+          p_hw_afio->mapr |= 1 << AMHW_ZLG237_AFIO_MAPR_ADC2_ETRGREG;
+          break;
 
       default:
-    	  break;
+          break;
       }
 }
 
@@ -573,28 +573,28 @@ void amhw_zlg237_afio_adc_pin_remap_enable (amhw_zlg237_afio_t *p_hw_afio,
  */
 am_static_inline
 void amhw_zlg237_afio_adc_pin_remap_disable (amhw_zlg237_afio_t *p_hw_afio,
-		                                     int                 mode)
+                                             int                 mode)
 {
       switch (mode) {
 
       case AMHW_ZLG237_AFIO_MAPR_ADC1_ETRGINJ:
-    	  p_hw_afio->mapr &= ~(1 << AMHW_ZLG237_AFIO_MAPR_ADC1_ETRGINJ);
-    	  break;
+          p_hw_afio->mapr &= ~(1 << AMHW_ZLG237_AFIO_MAPR_ADC1_ETRGINJ);
+          break;
 
       case AMHW_ZLG237_AFIO_MAPR_ADC1_ETRGREG:
-    	  p_hw_afio->mapr &= ~(1 << AMHW_ZLG237_AFIO_MAPR_ADC1_ETRGREG);
-    	  break;
+          p_hw_afio->mapr &= ~(1 << AMHW_ZLG237_AFIO_MAPR_ADC1_ETRGREG);
+          break;
 
       case AMHW_ZLG237_AFIO_MAPR_ADC2_ETRGINJ:
-    	  p_hw_afio->mapr &= ~(1 << AMHW_ZLG237_AFIO_MAPR_ADC2_ETRGINJ);
-    	  break;
+          p_hw_afio->mapr &= ~(1 << AMHW_ZLG237_AFIO_MAPR_ADC2_ETRGINJ);
+          break;
 
       case AMHW_ZLG237_AFIO_MAPR_ADC2_ETRGREG:
-    	  p_hw_afio->mapr &= ~(1 << AMHW_ZLG237_AFIO_MAPR_ADC2_ETRGREG);
-    	  break;
+          p_hw_afio->mapr &= ~(1 << AMHW_ZLG237_AFIO_MAPR_ADC2_ETRGREG);
+          break;
 
       default:
-    	  break;
+          break;
       }
 }
 

@@ -66,7 +66,7 @@ am_timer_handle_t am_system_tick_inst_init (void)
     am_timer_handle_t        handle;
    
     /* 获取定时器频率 */
-	  uint32_t freq = 0;
+    uint32_t freq = 0;
 
     handle = am_zlg237_tim4_timing_inst_init();
 
@@ -98,7 +98,7 @@ am_timer_handle_t am_system_tick_softimer_inst_init (void)
     am_timer_handle_t        handle;
 
     /* 获取定时器频率 */
-	  uint32_t freq = 0;
+      uint32_t freq = 0;
 
     handle = am_zlg237_tim4_timing_inst_init();
 

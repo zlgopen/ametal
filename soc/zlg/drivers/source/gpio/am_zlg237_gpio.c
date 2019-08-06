@@ -147,7 +147,7 @@ static int __am_zlg237_peripheral_remap_clear(int pin)
         break;
 
     case AMHW_ZLG237_UART3_REMAP:
-    	amhw_zlg237_afio_uart3_remap_mode_set(p_hw_afio, AMHW_ZLG237_AFIO_UART3_REMAP_NO);
+        amhw_zlg237_afio_uart3_remap_mode_set(p_hw_afio, AMHW_ZLG237_AFIO_UART3_REMAP_NO);
         break;
 
     case AMHW_ZLG237_TIM1_REMAP:
@@ -163,7 +163,7 @@ static int __am_zlg237_peripheral_remap_clear(int pin)
         break;
 
     case AMHW_ZLG237_TIM4_REMAP:
-    	amhw_zlg237_afio_tim4_pin_remap_disable(p_hw_afio);
+        amhw_zlg237_afio_tim4_pin_remap_disable(p_hw_afio);
         break;
 
     case AMHW_ZLG237_CAN_REMAP:
@@ -175,23 +175,23 @@ static int __am_zlg237_peripheral_remap_clear(int pin)
         break;
 
     case AMHW_ZLG237_TIM5_CH4_REMAP:
-    	amhw_zlg237_afio_tim5_ch4_pin_remap_disable(p_hw_afio);
+        amhw_zlg237_afio_tim5_ch4_pin_remap_disable(p_hw_afio);
         break;
 
     case AMHW_ZLG237_ADC1_ETRGINJ_REMAP:
-    	amhw_zlg237_afio_adc_pin_remap_disable(p_hw_afio ,AMHW_ZLG237_AFIO_MAPR_ADC1_ETRGINJ);
+        amhw_zlg237_afio_adc_pin_remap_disable(p_hw_afio ,AMHW_ZLG237_AFIO_MAPR_ADC1_ETRGINJ);
         break;
 
     case AMHW_ZLG237_ADC1_ETRGREG_REMAP:
-    	amhw_zlg237_afio_adc_pin_remap_disable(p_hw_afio ,AMHW_ZLG237_AFIO_MAPR_ADC1_ETRGREG);
+        amhw_zlg237_afio_adc_pin_remap_disable(p_hw_afio ,AMHW_ZLG237_AFIO_MAPR_ADC1_ETRGREG);
         break;
 
     case AMHW_ZLG237_ADC2_ETRGINJ_REMAP:
-    	amhw_zlg237_afio_adc_pin_remap_disable(p_hw_afio ,AMHW_ZLG237_AFIO_MAPR_ADC2_ETRGINJ);
+        amhw_zlg237_afio_adc_pin_remap_disable(p_hw_afio ,AMHW_ZLG237_AFIO_MAPR_ADC2_ETRGINJ);
         break;
 
     case AMHW_ZLG237_ADC2_ETRGREG_REMAP:
-    	amhw_zlg237_afio_adc_pin_remap_disable(p_hw_afio ,AMHW_ZLG237_AFIO_MAPR_ADC2_ETRGREG);
+        amhw_zlg237_afio_adc_pin_remap_disable(p_hw_afio ,AMHW_ZLG237_AFIO_MAPR_ADC2_ETRGREG);
         break;
 
     case AMHW_ZLG237_SWJ_CFG:
@@ -553,19 +553,19 @@ int am_gpio_pin_cfg (int pin, uint32_t flags)
             break;
 
         case AMHW_ZLG237_UART2_REMAP:
-        	if (1 == AM_ZLG237_GPIO_REMAP_MODE_GET(flags)) {
+            if (1 == AM_ZLG237_GPIO_REMAP_MODE_GET(flags)) {
 
-        		amhw_zlg237_afio_uart_pin_remap_enable(p_hw_afio, 2);
-        	} else if (0 == AM_ZLG237_GPIO_REMAP_MODE_GET(flags)) {
+                amhw_zlg237_afio_uart_pin_remap_enable(p_hw_afio, 2);
+            } else if (0 == AM_ZLG237_GPIO_REMAP_MODE_GET(flags)) {
 
-        		amhw_zlg237_afio_uart_pin_remap_disable(p_hw_afio, 2);
+                amhw_zlg237_afio_uart_pin_remap_disable(p_hw_afio, 2);
             }
-        	break;
+            break;
 
         case AMHW_ZLG237_UART3_REMAP:
-        	amhw_zlg237_afio_uart3_remap_mode_set(
-        		p_hw_afio,
-				(amhw_zlg237_afio_uart3_remap_mode_t)AM_ZLG237_GPIO_REMAP_MODE_GET(flags));
+            amhw_zlg237_afio_uart3_remap_mode_set(
+                p_hw_afio,
+                (amhw_zlg237_afio_uart3_remap_mode_t)AM_ZLG237_GPIO_REMAP_MODE_GET(flags));
             break;
 
         case AMHW_ZLG237_TIM1_REMAP:
@@ -587,7 +587,7 @@ int am_gpio_pin_cfg (int pin, uint32_t flags)
             break;
 
         case AMHW_ZLG237_TIM4_REMAP:
-        	amhw_zlg237_afio_tim4_pin_remap_enable(p_hw_afio);
+            amhw_zlg237_afio_tim4_pin_remap_enable(p_hw_afio);
             break;
 
         case AMHW_ZLG237_CAN_REMAP:
@@ -607,54 +607,54 @@ int am_gpio_pin_cfg (int pin, uint32_t flags)
             break;
 
         case AMHW_ZLG237_TIM5_CH4_REMAP:
-        	if (1 == AM_ZLG237_GPIO_REMAP_MODE_GET(flags)) {
+            if (1 == AM_ZLG237_GPIO_REMAP_MODE_GET(flags)) {
 
-        		amhw_zlg237_afio_tim5_ch4_pin_remap_enable(p_hw_afio);
-        	} else if (0 == AM_ZLG237_GPIO_REMAP_MODE_GET(flags)) {
+                amhw_zlg237_afio_tim5_ch4_pin_remap_enable(p_hw_afio);
+            } else if (0 == AM_ZLG237_GPIO_REMAP_MODE_GET(flags)) {
 
-        		amhw_zlg237_afio_tim5_ch4_pin_remap_disable(p_hw_afio);
+                amhw_zlg237_afio_tim5_ch4_pin_remap_disable(p_hw_afio);
             }
-        	break;
+            break;
 
         case AMHW_ZLG237_ADC1_ETRGINJ_REMAP:
-        	if (1 == AM_ZLG237_GPIO_REMAP_MODE_GET(flags)) {
+            if (1 == AM_ZLG237_GPIO_REMAP_MODE_GET(flags)) {
 
-        		amhw_zlg237_afio_adc_pin_remap_enable(p_hw_afio ,AMHW_ZLG237_AFIO_MAPR_ADC1_ETRGINJ);
-        	} else if (0 == AM_ZLG237_GPIO_REMAP_MODE_GET(flags)) {
+                amhw_zlg237_afio_adc_pin_remap_enable(p_hw_afio ,AMHW_ZLG237_AFIO_MAPR_ADC1_ETRGINJ);
+            } else if (0 == AM_ZLG237_GPIO_REMAP_MODE_GET(flags)) {
 
-        		amhw_zlg237_afio_adc_pin_remap_disable(p_hw_afio ,AMHW_ZLG237_AFIO_MAPR_ADC1_ETRGINJ);
+                amhw_zlg237_afio_adc_pin_remap_disable(p_hw_afio ,AMHW_ZLG237_AFIO_MAPR_ADC1_ETRGINJ);
             }
-        	break;
+            break;
 
         case AMHW_ZLG237_ADC1_ETRGREG_REMAP:
-        	if (1 == AM_ZLG237_GPIO_REMAP_MODE_GET(flags)) {
+            if (1 == AM_ZLG237_GPIO_REMAP_MODE_GET(flags)) {
 
-        		amhw_zlg237_afio_adc_pin_remap_enable(p_hw_afio ,AMHW_ZLG237_AFIO_MAPR_ADC1_ETRGREG);
-        	} else if (0 == AM_ZLG237_GPIO_REMAP_MODE_GET(flags)) {
+                amhw_zlg237_afio_adc_pin_remap_enable(p_hw_afio ,AMHW_ZLG237_AFIO_MAPR_ADC1_ETRGREG);
+            } else if (0 == AM_ZLG237_GPIO_REMAP_MODE_GET(flags)) {
 
-        		amhw_zlg237_afio_adc_pin_remap_disable(p_hw_afio ,AMHW_ZLG237_AFIO_MAPR_ADC1_ETRGREG);
+                amhw_zlg237_afio_adc_pin_remap_disable(p_hw_afio ,AMHW_ZLG237_AFIO_MAPR_ADC1_ETRGREG);
             }
-        	break;
+            break;
 
         case AMHW_ZLG237_ADC2_ETRGINJ_REMAP:
-        	if (1 == AM_ZLG237_GPIO_REMAP_MODE_GET(flags)) {
+            if (1 == AM_ZLG237_GPIO_REMAP_MODE_GET(flags)) {
 
-        		amhw_zlg237_afio_adc_pin_remap_enable(p_hw_afio ,AMHW_ZLG237_AFIO_MAPR_ADC2_ETRGINJ);
-        	} else if (0 == AM_ZLG237_GPIO_REMAP_MODE_GET(flags)) {
+                amhw_zlg237_afio_adc_pin_remap_enable(p_hw_afio ,AMHW_ZLG237_AFIO_MAPR_ADC2_ETRGINJ);
+            } else if (0 == AM_ZLG237_GPIO_REMAP_MODE_GET(flags)) {
 
-        		amhw_zlg237_afio_adc_pin_remap_disable(p_hw_afio ,AMHW_ZLG237_AFIO_MAPR_ADC2_ETRGINJ);
+                amhw_zlg237_afio_adc_pin_remap_disable(p_hw_afio ,AMHW_ZLG237_AFIO_MAPR_ADC2_ETRGINJ);
             }
-        	break;
+            break;
 
         case AMHW_ZLG237_ADC2_ETRGREG_REMAP:
-        	if (1 == AM_ZLG237_GPIO_REMAP_MODE_GET(flags)) {
+            if (1 == AM_ZLG237_GPIO_REMAP_MODE_GET(flags)) {
 
-        		amhw_zlg237_afio_adc_pin_remap_enable(p_hw_afio ,AMHW_ZLG237_AFIO_MAPR_ADC2_ETRGREG);
-        	} else if (0 == AM_ZLG237_GPIO_REMAP_MODE_GET(flags)) {
+                amhw_zlg237_afio_adc_pin_remap_enable(p_hw_afio ,AMHW_ZLG237_AFIO_MAPR_ADC2_ETRGREG);
+            } else if (0 == AM_ZLG237_GPIO_REMAP_MODE_GET(flags)) {
 
-        		amhw_zlg237_afio_adc_pin_remap_disable(p_hw_afio ,AMHW_ZLG237_AFIO_MAPR_ADC2_ETRGREG);
+                amhw_zlg237_afio_adc_pin_remap_disable(p_hw_afio ,AMHW_ZLG237_AFIO_MAPR_ADC2_ETRGREG);
             }
-        	break;
+            break;
 
         case AMHW_ZLG237_SWJ_CFG:
             amhw_zlg237_afio_swj_cfg_remap_mode_set(

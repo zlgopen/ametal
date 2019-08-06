@@ -501,9 +501,9 @@ am_adc_handle_t am_zlg237_adc_init (am_zlg237_adc_dev_t           *p_dev,
     __fn_adc_rate_set(p_dev, 0, 100000);
 
     if( p_dev->p_devinfo->temp_mode == 0) {
-    	amhw_zlg237_adc_tsvrefe_disable(p_hw_adc);
+        amhw_zlg237_adc_tsvrefe_disable(p_hw_adc);
     } else {
-    	amhw_zlg237_adc_tsvrefe_enable(p_hw_adc);
+        amhw_zlg237_adc_tsvrefe_enable(p_hw_adc);
     }
 
     /* ADCÊ¹ÄÜ*/

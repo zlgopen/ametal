@@ -91,7 +91,7 @@ void am_board_init (void)
 #elif defined(__CC_ARM)
 
     extern int Image$$RW_IRAM1$$ZI$$Limit; /* Defined by the linker */
-	
+
     int *heap_start = (int *)&Image$$RW_IRAM1$$ZI$$Limit;
     int *heap_end   = (int *)SRAM_END;
 #endif

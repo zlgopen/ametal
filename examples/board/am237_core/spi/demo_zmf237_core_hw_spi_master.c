@@ -76,7 +76,7 @@ void demo_zlg237_core_hw_spi_master_entry (void)
     demo_zlg237_hw_spi_master_entry(ZLG237_SPI2,
                                     PIOB_12,
                                     am_clk_rate_get(CLK_SPI2),
-									100);
+                                    100);
 }
 /** [src_zlg237_hw_spi_master] */
 

@@ -537,7 +537,7 @@ int __spi_mst_sm_event (am_zlg237_spi_poll_dev_t *p_dev)
          * 假如是其他从机单位，响应较快，可考虑取消此处延时。
          */
         if(p_dev->p_devinfo->cs_mdelay != 0) {
-        	am_mdelay(p_dev->p_devinfo->cs_mdelay);
+            am_mdelay(p_dev->p_devinfo->cs_mdelay);
         }
 
         while(p_dev->data_ptr < p_cur_trans->nbytes){
