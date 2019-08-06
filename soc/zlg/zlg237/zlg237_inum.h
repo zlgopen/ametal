@@ -62,10 +62,12 @@ extern "C" {
 #define INUM_DMA1_7               17   /**< \brief DMA1通道7全局中断 */
 
 #define INUM_ADC1_2               18   /**< \brief ADC1和ADC2的全局中断 */
-#define INUM_USB_CAN_TX           19   /**< \brief USB 高优先级或 CAN 发送中断 */
-#define INUM_USB_CAN_RX           20   /**< \brief USB 高优先级或 CAN 发送中断 */
 
+#define INUM_USB_CAN_TX           19   /**< \brief USB 高优先级或 CAN 发送中断 */
+
+#define INUM_USB_CAN_RX           20   /**< \brief USB 高优先级或 CAN 发送中断 */
 #define INUM_CAN1_RX1             21   /**< \brief CAN接收1中断 */
+
 #define INUM_CAN1_SCE             21   /**< \brief CAN SCE 中断 */
 
 #define INUM_EXTI9_5              23   /**< \brief EXTI线[9：5]中断 */
