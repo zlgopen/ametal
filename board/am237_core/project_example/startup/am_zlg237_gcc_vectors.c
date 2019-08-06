@@ -86,10 +86,10 @@ void (* const gVectors[])(void) =
     am_exc_eint_handler,         /* 16 - DMA1 Channel 6 */
     am_exc_eint_handler,         /* 17 - DMA1 Channel 7 */
     am_exc_eint_handler,         /* 18 - ADC1_2 */
-    am_exc_eint_handler,         /* 19 - USB */
-    0,                           /* 20 - Reserve */
+    am_exc_eint_handler,         /* 19 - USB prioty high or CAN1 TX*/
+    am_exc_eint_handler,         /* 20 - USB prioty high or CAN1 RX0*/
     am_exc_eint_handler,         /* 21 - CAN1 RX1 */
-    0,                           /* 22 - Reserve */
+    am_exc_eint_handler,         /* 22 - CAN1 SEC */
     am_exc_eint_handler,         /* 23 - EXTI Line 9..5 */
     am_exc_eint_handler,         /* 24 - TIM1 Break */
     am_exc_eint_handler,         /* 25 - TIM1 Update */
@@ -101,7 +101,7 @@ void (* const gVectors[])(void) =
     am_exc_eint_handler,         /* 31 - I2C1 Event */
     0,                           /* 32 - Reserve */
     am_exc_eint_handler,         /* 33 - I2C2 Event */
-    0,                           /* 34 - Reserve */
+    am_exc_eint_handler,         /* 34 - I2C2 ER */
     am_exc_eint_handler,         /* 35 - SPI1 */
     am_exc_eint_handler,         /* 36 - SPI2 */
     am_exc_eint_handler,         /* 37 - UART1 */
@@ -110,9 +110,6 @@ void (* const gVectors[])(void) =
     am_exc_eint_handler,         /* 40 - EXTI Line 15..10 */
     am_exc_eint_handler,         /* 41 - RTC Alarm through EXTI Line 17 */
     am_exc_eint_handler,         /* 42 - USB Wakeup from suspend */
-    0,                           /* 43 - Reserve */
-    0,                           /* 44 - Reserve */
-    am_exc_eint_handler          /* 45 - AES */
 };
 
 /***************************************************************************

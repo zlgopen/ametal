@@ -62,9 +62,11 @@ extern "C" {
 #define INUM_DMA1_7               17   /**< \brief DMA1通道7全局中断 */
 
 #define INUM_ADC1_2               18   /**< \brief ADC1和ADC2的全局中断 */
-#define INUM_USB_HP_CAN_TX        19   /**< \brief USB高优先级或CAN发送中断 */
+#define INUM_USB_CAN_TX           19   /**< \brief USB 高优先级或 CAN 发送中断 */
+#define INUM_USB_CAN_RX           20   /**< \brief USB 高优先级或 CAN 发送中断 */
 
-#define INUM_CAN_RX1              21   /**< \brief CAN接收1中断 */
+#define INUM_CAN1_RX1             21   /**< \brief CAN接收1中断 */
+#define INUM_CAN1_SCE             21   /**< \brief CAN SCE 中断 */
 
 #define INUM_EXTI9_5              23   /**< \brief EXTI线[9：5]中断 */
 #define INUM_TIM1_BRK             24   /**< \brief TIM1断开中断 */
@@ -73,27 +75,23 @@ extern "C" {
 #define INUM_TIM1_CC              27   /**< \brief TIM1捕获比较中断 */
 #define INUM_TIM2                 28   /**< \brief TIM2全局中断 */
 #define INUM_TIM3                 29   /**< \brief TIM3全局中断 */
-#define INUM_TIM4                 30   /**< \brief TIM14全局中断 */
+#define INUM_TIM4                 30   /**< \brief TIM4全局中断 */
 
 #define INUM_I2C1_EV              31   /**< \brief I2C1事件中断 */
-
 #define INUM_I2C2_EV              33   /**< \brief I2C1事件中断 */
+#define INUM_I2C2_ER              34   /**< \brief I2C2错误中断 */
 
 #define INUM_SPI1                 35   /**< \brief SPI1全局中断 */
 #define INUM_SPI2                 36   /**< \brief SPI2全局中断 */
 
-#define INUM_USART1                37   /**< \brief UART1全局中断 */
-#define INUM_USART2                38   /**< \brief UART2全局中断 */
-#define INUM_USART3                39   /**< \brief UART3全局中断 */
+#define INUM_USART1               37   /**< \brief UART1全局中断 */
+#define INUM_USART2               38   /**< \brief UART2全局中断 */
+#define INUM_USART3               39   /**< \brief UART3全局中断 */
 
 #define INUM_EXTI15_10            40   /**< \brief EXTI线[15：10]中断 */
 #define INUM_RTC_Alarm            41   /**< \brief 连到EXTI17的RTC闹钟中断 */
 #define INUM_USB_WK               42   /**< \brief 连到EXTI18的从USB待机唤醒中断 */
 
-#define INUM_CPT1                 43   /**< \brief 连到EXTI19的CPT1中断 */
-#define INUM_CPT2                 44   /**< \brief 连到EXTI19的CPT2中断 */
-
-#define INUM_AES                  45   /**< \brief AES全局中断 */
 
 /** @} */
 
@@ -101,12 +99,12 @@ extern "C" {
  * \brief 总中断数为：(INUM_USB - INUM_WWDT + 1),
  *
  */
-#define INUM_INTERNAL_COUNT     (INUM_AES - INUM_WWDG + 1)
+#define INUM_INTERNAL_COUNT     (INUM_USB_WK - INUM_WWDG + 1)
 
 /**
  * \brief 最大中断号为： INUM_USB
  */
-#define INUM_INTERNAL_MAX        INUM_AES
+#define INUM_INTERNAL_MAX        INUM_USB_WK
 
 /** \brief 最小中断号: INUM_WWDT */
 #define INUM_INTERNAL_MIN        INUM_WWDG
@@ -154,10 +152,10 @@ typedef enum {
     DMA1_6_IRQn               =16,        /**< \brief DMA1通道6全局中断 */
     DMA1_7_IRQn               =17,        /**< \brief DMA1通道7全局中断 */
     ADC1_2_IRQn               =18,        /**< \brief ADC1和ADC2的全局中断 */
-    USB_HP_CAN_TX             =19,        /**< \brief USB高优先级或CAN发送中断 */
-    Reserved0                 =20,        /**< \brief RESERVED */
-    CAN_RX1_IRQn              =21,        /**< \brief CAN接收1中断 */
-    Reserved1                 =22,        /**< \brief RESERVED */
+    USB_CAN_TX_IRQn           =19,        /**< \brief USB高优先级或CAN发送中断 */
+    USB_CAN_RX_IRQn           =20,        /**< \brief USB高优先级或CAN接收中断 */
+    CAN1_RX1_IRQn             =21,        /**< \brief CAN接收1中断 */
+    CAN1_SCE_IRQn             =22,        /**< \brief CAN_SCE 中断 */
     EXTI9_5_IRQn              =23,        /**< \brief EXTI线[9：5]中断 */
     TIM1_BRK_IRQn             =24,        /**< \brief TIM1断开中断 */
     TIM1_UP_IRQn              =25,        /**< \brief TIM1更新中断 */
@@ -169,7 +167,7 @@ typedef enum {
     I2C1_EV_IRQn              =31,        /**< \brief I2C1事件中断 */
     Reserved2                 =32,        /**< \brief RESERVED */
     I2C2_EV_IRQn              =33,        /**< \brief I2C1事件中断 */
-    Reserved3                 =34,        /**< \brief RESERVED */
+    I2C2_ER_IRQn              =34,        /**< \brief I2C2错误中断 */
     SPI1_IRQn                 =35,        /**< \brief SPI1全局中断 */
     SPI2_IRQn                 =36,        /**< \brief SPI2全局中断 */
     UART1_IRQn                =37,        /**< \brief UART1全局中断 */
@@ -178,9 +176,6 @@ typedef enum {
     EXTI15_10_IRQn            =40,        /**< \brief EXTI线[15：10]中断 */
     RTCAlarm_IRQn             =41,        /**< \brief 连到EXTI17的RTC闹钟中断 */
     USB_WK_IRQn               =42,        /**< \brief 连到EXTI18的从USB待机唤醒中断 */
-    CPT1                      =43,        /**< \brief 连到EXTI19的CPT1中断 */
-    CPT2                      =44,        /**< \brief 连到EXTI19的CPT1中断 */
-    AES_IRQn                  =45,        /**< \brief AES全局中断 */
 } IRQn_Type;
 
 /**
