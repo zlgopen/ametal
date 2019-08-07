@@ -21,7 +21,7 @@
  *
  *      的配置, 屏蔽其他flash配置。
  *
- *      keil工程打开demo_am237_core_application.sct文件，打开单区的配置，屏蔽其他配置
+ *      keil工程打开demo_am237_core_bootloader.sct文件，打开单区的配置，屏蔽其他配置
  *
  *   2. 连接开发板和上位机串口助手，波特率设置为115200。（例程使用串口1）
  *   

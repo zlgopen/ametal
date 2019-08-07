@@ -81,13 +81,13 @@ extern "C" {
 #define ZLG237_CMP_BASE               (0x40013C00UL)
 
 /** \brief UART1 基地址 */
-#define ZLG237_USART1_BASE             (0x40013800UL)
+#define ZLG237_USART1_BASE            (0x40013800UL)
 
 /** \brief UART2 基地址 */
-#define ZLG237_USART2_BASE             (0x40004400UL)
+#define ZLG237_USART2_BASE            (0x40004400UL)
 
 /** \brief UART3 基地址 */
-#define ZLG237_USART3_BASE             (0x40004800UL)
+#define ZLG237_USART3_BASE            (0x40004800UL)
 
 /** \brief ADC1 基地址 */
 #define ZLG237_ADC1_BASE              (0x40012400UL)

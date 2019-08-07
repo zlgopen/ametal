@@ -124,10 +124,10 @@ extern "C" {
 #define ZLG237_SPI2    ((amhw_zlg237_spi_t       *)ZLG237_SPI2_BASE)
 
 /** \brief I2C1¼Ä´æÆ÷¿éÖ¸Õë */
-#define ZLG237_I2C1    ((amhw_zlg237_i2c_t          *)ZLG237_I2C1_BASE)
+#define ZLG237_I2C1    ((amhw_zlg237_i2c_t       *)ZLG237_I2C1_BASE)
 
 /** \brief I2C2¼Ä´æÆ÷¿éÖ¸Õë */
-#define ZLG237_I2C2    ((amhw_zlg237_i2c_t          *)ZLG237_I2C2_BASE)
+#define ZLG237_I2C2    ((amhw_zlg237_i2c_t       *)ZLG237_I2C2_BASE)
 
 /** \brief IWDG¿ØÖÆÆ÷¼Ä´æÆ÷¿éÖ¸Õë */
 #define ZLG237_IWDG    ((amhw_zlg_iwdg_t         *)ZLG237_IWDG_BASE)
@@ -145,7 +145,7 @@ extern "C" {
 #define ZLG237_EXTI    ((amhw_zlg237_exti_t      *)ZLG237_EXTI_BASE)
 
 /** \brief FLASH¼Ä´æÆ÷¿éÖ¸Õë */
-#define ZLG237_FLASH   ((amhw_zlg237_flash_t        *)ZLG237_FLASH_BASE)
+#define ZLG237_FLASH   ((amhw_zlg237_flash_t     *)ZLG237_FLASH_BASE)
 
 /** \brief CRC¼Ä´æÆ÷¿éÖ¸Õë */
 #define ZLG237_CRC     (amhw_zlg_crc_t           *)(ZLG237_CRC_BASE)

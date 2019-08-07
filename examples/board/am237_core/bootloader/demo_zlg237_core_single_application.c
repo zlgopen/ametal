@@ -17,7 +17,7 @@
  * - 操作步骤:
  *   1.eclipse工程打开demo_am237_core_application.ld文件，打开:
  *
- *       FLASH (rx)  : ORIGIN = 0x08007800, LENGTH = 100K  //single
+ *       FLASH (rx)  : ORIGIN = 0x08007000, LENGTH = 100K  //single
  *
  *     的配置, 屏蔽其他flash配置。
  *

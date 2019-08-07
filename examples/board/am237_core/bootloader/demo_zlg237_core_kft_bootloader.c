@@ -21,7 +21,7 @@
  *
  *      的配置, 屏蔽其他flash配置。
  *
- *      keil工程打开demo_am237_core_application.sct文件，打开上位机的配置，屏蔽其他配置
+ *      keil工程打开demo_am237_core_bootloader.sct文件，打开上位机的配置，屏蔽其他配置
  *
  *   2. 打开上位机KinetiesFlashTools : 在port set栏中选择uart;
  *   3. 下载本程序到开发板运行
