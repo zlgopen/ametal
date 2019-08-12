@@ -38,6 +38,7 @@ extern "C" {
 #include "am_i2c_slv.h"
 #include "am_timer.h"
 #include "am_cap.h"
+#include "am_can.h"
 #include "am_pwm.h"
 #include "am_wdt.h"
 #include "am_spi.h"
@@ -921,6 +922,13 @@ am_wdt_handle_t am_zlg237_wwdg_inst_init (void);
  * \return 无
  */
 void am_zlg237_wwdg_inst_deinit (am_wdt_handle_t handle);
+
+
+/** \brief CAN实例初始化，获得CAN标准服务句柄 */
+am_can_handle_t am_zlg237_can_inst_init (void);
+
+/** \brief CAN实例解初始化 */
+void am_zlg237_can_inst_deinit (am_can_handle_t handle);
 
 /**
  * @}

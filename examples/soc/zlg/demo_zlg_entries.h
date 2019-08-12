@@ -46,6 +46,7 @@
 #include "hw/amhw_zlg_iwdg.h"
 #include "hw/amhw_zlg_wwdg.h"
 #include "hw/amhw_zlg237_i2c.h"
+#include "hw/amhw_zlg237_can.h"
 //#include "am_usbd_printer.h"
 //#include "am_usbd_cdc_vcom.h"
 //#include "am_usbd_keyboard.h"
@@ -593,6 +594,38 @@ void demo_zml166_adc_vol_para_adjuet_entry(void                   *p_handle,
                                            am_uart_handle_t        uart_handle,
                                            float                  *p_para);
 
+
+
+/**
+ * \brief CAN 中断例程入口
+ *
+ * \param[in] am_can_handle_t     can服务句柄
+ * \param[in] am_can_bps_param_t  指向波特率参数结构体的指针
+ * \param[in] am_can_int_type_t   中断使能类型
+ * \param[in] uint8_t             指向过滤table的指针
+ * \param[in] size_t              过滤table的长度
+ * \return 无
+ */
+void demo_zlg237_can_int_entry (am_can_handle_t     can_handle,
+                                am_can_bps_param_t *can_btr_baud,
+                                am_can_int_type_t   int_type,
+                                uint8_t            *p_filterbuff,
+                                size_t              lenth);
+/**
+ * \brief 例程入口
+ */
+
+/**
+ * \brief CAN 例程入口
+ *
+ * \param[in] am_can_handle_t     can服务句柄
+ * \param[in] am_can_bps_param_t  指向波特率参数结构体的指针
+ * \param[in] am_can_int_type_t   中断使能类型
+ *
+ * \return 无
+ */
+void demo_zlg237_can_entry (am_can_handle_t     can_handle,
+                                am_can_bps_param_t *can_btr_baud);
 
 ///**
 // * \brief USB打印机例程   该例程带打印时间以及打印数据量显示

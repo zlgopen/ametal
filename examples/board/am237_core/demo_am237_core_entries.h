@@ -518,6 +518,21 @@ void demo_zlg237_core_single_bootloader_uart_entry (void);
 void demo_zlg237_core_double_bootloader_uart_entry(void);
 
 /**
+ * \brief CAN 中断历程入口
+ *
+ * \return 无
+ */
+void demo_zlg237_core_can_int_entry (void);
+
+
+/**
+ * \brief CAN 历程入口
+ *
+ * \return 无
+ */
+void demo_zlg237_core_can_entry (void);
+
+/**
  * \brief USBD键盘例程
  */
 void demo_zlg237_usbd_keyboard_entry (void);

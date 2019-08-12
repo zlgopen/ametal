@@ -134,6 +134,7 @@ int am_main (void)
 //    demo_zlg237_drv_sleepmode_wake_up_entry();
 //    demo_zlg237_drv_standbymode_wake_up_entry();
 //    demo_zlg237_drv_stopmode_wake_up_entry();
+    demo_zlg237_core_can_entry();
 
     while (1) {
 

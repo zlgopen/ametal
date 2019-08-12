@@ -929,6 +929,13 @@ am_baudrate_detect_handle_t am_zlg237_baudrate_detect_inst_init (void);
 /** \brief 检测波特率实例解初始化*/
 void am_zlg237_baudrate_detect_inst_deinit(am_baudrate_detect_handle_t handle);
 
+
+/** \brief CAN实例初始化，获得CAN标准服务句柄 */
+am_can_handle_t am_zlg237_can_inst_init (void);
+
+/** \brief CAN实例解初始化 */
+void am_zlg237_can_inst_deinit (am_can_handle_t handle);
+
 /**
  * @}
  */

@@ -46,13 +46,11 @@ extern "C" {
 #define INUM_RTC                  3    /**< \brief 实时时钟（RTC）全局中断 */
 #define INUM_FLASH                4    /**< \brief 闪存全局中断 */
 #define INUM_RCC                  5    /**< \brief 复位和时钟控制（RCC）中断 */
-
 #define INUM_EXTI0                6    /**< \brief EXTI线0中断 */
 #define INUM_EXTI1                7    /**< \brief EXTI线1中断 */
 #define INUM_EXTI2                8    /**< \brief EXTI线2中断 */
 #define INUM_EXTI3                9    /**< \brief EXTI线3中断 */
 #define INUM_EXTI4                10   /**< \brief EXTI线4中断 */
-
 #define INUM_DMA1_1               11   /**< \brief DMA1通道1全局中断 */
 #define INUM_DMA1_2               12   /**< \brief DMA1通道2全局中断 */
 #define INUM_DMA1_3               13   /**< \brief DMA1通道3全局中断 */
@@ -60,16 +58,11 @@ extern "C" {
 #define INUM_DMA1_5               15   /**< \brief DMA1通道5全局中断 */
 #define INUM_DMA1_6               16   /**< \brief DMA1通道6全局中断 */
 #define INUM_DMA1_7               17   /**< \brief DMA1通道7全局中断 */
-
 #define INUM_ADC1_2               18   /**< \brief ADC1和ADC2的全局中断 */
-
-#define INUM_USB_CAN_TX           19   /**< \brief USB 高优先级或 CAN 发送中断 */
-
-#define INUM_USB_CAN_RX           20   /**< \brief USB 高优先级或 CAN 发送中断 */
+#define INUM_USB_HP_CAN_TX        19   /**< \brief USB高优先级或CAN发送中断 */
+#define INUM_USB_HP_CAN_RX        20   /**< \brief USB高优先级或CAN接收中断 */
 #define INUM_CAN1_RX1             21   /**< \brief CAN接收1中断 */
-
-#define INUM_CAN1_SCE             21   /**< \brief CAN SCE 中断 */
-
+#define INUM_CAN1_SCE             22   /**< \brief CAN SCE 中断 */
 #define INUM_EXTI9_5              23   /**< \brief EXTI线[9：5]中断 */
 #define INUM_TIM1_BRK             24   /**< \brief TIM1断开中断 */
 #define INUM_TIM1_UP              25   /**< \brief TIM1更新中断 */
@@ -78,18 +71,14 @@ extern "C" {
 #define INUM_TIM2                 28   /**< \brief TIM2全局中断 */
 #define INUM_TIM3                 29   /**< \brief TIM3全局中断 */
 #define INUM_TIM4                 30   /**< \brief TIM4全局中断 */
-
 #define INUM_I2C1_EV              31   /**< \brief I2C1事件中断 */
-#define INUM_I2C2_EV              33   /**< \brief I2C1事件中断 */
+#define INUM_I2C2_EV              33   /**< \brief I2C2事件中断 */
 #define INUM_I2C2_ER              34   /**< \brief I2C2错误中断 */
-
 #define INUM_SPI1                 35   /**< \brief SPI1全局中断 */
 #define INUM_SPI2                 36   /**< \brief SPI2全局中断 */
-
 #define INUM_USART1               37   /**< \brief UART1全局中断 */
 #define INUM_USART2               38   /**< \brief UART2全局中断 */
 #define INUM_USART3               39   /**< \brief UART3全局中断 */
-
 #define INUM_EXTI15_10            40   /**< \brief EXTI线[15：10]中断 */
 #define INUM_RTC_Alarm            41   /**< \brief 连到EXTI17的RTC闹钟中断 */
 #define INUM_USB_WK               42   /**< \brief 连到EXTI18的从USB待机唤醒中断 */

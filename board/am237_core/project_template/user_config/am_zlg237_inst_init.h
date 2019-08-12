@@ -883,6 +883,12 @@ am_wdt_handle_t am_zlg237_wwdg_inst_init (void);
  */
 void am_zlg237_wwdg_inst_deinit (am_wdt_handle_t handle);
 
+/** \brief CAN实例初始化，获得CAN标准服务句柄 */
+am_can_handle_t am_zlg237_can_inst_init (void);
+
+/** \brief CAN实例解初始化 */
+void am_zlg237_can_inst_deinit (am_can_handle_t handle);
+
 /**
  * @}
  */
