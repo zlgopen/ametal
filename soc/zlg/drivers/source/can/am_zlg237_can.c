@@ -1562,7 +1562,6 @@ am_can_err_t __can_zlg237_status_get (void              *p_drv,
         /* 判断是否是因为错误计数器达到限制而引起的总线关闭 */
         if (amhw_zlg237_can_get_itstatus(p_hw_can,
                 (AMHW_ZLG237_CAN_INT_BOFIE))) {
-            *p_int_type &= ~AM_CAN_INT_ERROR;
             *p_int_type |= AM_CAN_INT_BUS_OFF;
         }
 
