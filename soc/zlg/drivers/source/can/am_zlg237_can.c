@@ -905,8 +905,8 @@ am_can_err_t __can_zlg237_stop_msg_snd (void *p_drv)
  * \brief 设置滤波函数
  */
 am_can_err_t __can_zlg237_filter_tab_set (void    *p_drv,
-                                   uint8_t *p_filterbuff,
-                                   size_t   lenth)
+                                          uint8_t *p_filterbuff,
+                                          size_t   lenth)
 {
     am_zlg237_can_dev_t         *p_dev    = (am_zlg237_can_dev_t *)p_drv;
     amhw_zlg237_can_filter_t    *p_filter = NULL;
@@ -970,30 +970,54 @@ am_can_err_t __can_zlg237_filter_tab_set (void    *p_drv,
                  *  标识符屏蔽位模式
                  *  2个16位过滤器
                  */
-                    /* 使用扩展ID STD[10:3] STD[2:0] RTR IDE EXID[17:15] */
+                /* 使用扩展ID STD[10:3] STD[2:0] RTR IDE EXID[17:15] */
 
-                    /* id_l id_h  id_mask_l id_mask_h  id_l id_h  id_mask_l id_mask_h*/
+                /* id_l id_h  id_mask_l id_mask_h  id_l id_h  id_mask_l id_mask_h*/
                 p_hw_can->fi_rx[filt_num].f_r1 =
+
                             /*ID*/
-                            ((p_filterbuff[0 + i*8] & 0x38) >> 3)   |     /* EXIT[17:15] */
-                             (p_filter->can_fliter_ide << 3)        |     /* IDE */
-                             (p_filter->can_fliter_rtr << 4)        |     /* RTR */
-                            ((p_filterbuff[1 + i*8] ) << 5)         |     /* STD[7:0] */
-                            ((p_filterbuff[0 + i*8] &0x7) << 8)     |     /* STD[10:8] */
+                            /* EXIT[17:15] */
+                            ((p_filterbuff[0 + i*8] & 0x38) >> 3)   |
+
+                            /* IDE RTR */
+                             (p_filter->can_fliter_ide << 3)        |
+                             (p_filter->can_fliter_rtr << 4)        |
+
+                             /* STD[7:0] */
+                            ((p_filterbuff[1 + i*8] ) << 5)         |
+
+                            /* STD[10:8] */
+                            ((p_filterbuff[0 + i*8] &0x7) << 8)     |
+
                              /* ID_mask */
-                            ((p_filterbuff[3 + i*8] ) << 16)        |     /* STD[2:0] RTR IDE EXIT[17:15]  */
-                            ((p_filterbuff[2 + i*8] ) << 24);             /* STD[10:3] */
+                            /* STD[2:0] RTR IDE EXIT[17:15]  */
+                            ((p_filterbuff[3 + i*8] ) << 16)        |
+
+                            /* STD[10:3] */
+                            ((p_filterbuff[2 + i*8] ) << 24);
 
                 p_hw_can->fi_rx[filt_num].f_r2 =
+
                              /*ID*/
-                           ((p_filterbuff[4 + i*8] & 0x38) >> 3)    |     /* EXIT[17:15] */
-                            (p_filter->can_fliter_ide << 3)         |     /* IDE */
-                            (p_filter->can_fliter_rtr << 4)         |     /* RTR */
-                           ((p_filterbuff[5 + i*8] ) << 5)          |     /* STD[7:0] */
-                           ((p_filterbuff[4 + i*8] &0x7) << 8)      |     /* STD[10:8] */
+                             /* EXIT[17:15] */
+                           ((p_filterbuff[4 + i*8] & 0x38) >> 3)    |
+
+                             /* IDE  RTR */
+                            (p_filter->can_fliter_ide << 3)         |
+                            (p_filter->can_fliter_rtr << 4)         |
+
+                            /* STD[7:0] */
+                           ((p_filterbuff[5 + i*8] ) << 5)          |
+
+                           /* STD[10:8] */
+                           ((p_filterbuff[4 + i*8] &0x7) << 8)      |
+
                             /* ID_mask */
-                           ((p_filterbuff[7 + i*8] ) << 16)         |     /* STD[2:0] RTR IDE EXIT[17:15]  */
-                           ((p_filterbuff[6 + i*8] ) << 24);              /* STD[17:15] */
+                           /* STD[2:0] RTR IDE EXIT[17:15]  */
+                           ((p_filterbuff[7 + i*8] ) << 16)         |
+
+                           /* STD[17:15] */
+                           ((p_filterbuff[6 + i*8] ) << 24);
             } else {
                 /**
                  *  标志位列表模式
