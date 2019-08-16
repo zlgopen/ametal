@@ -987,7 +987,7 @@ am_can_err_t __can_zlg237_filter_tab_set (void    *p_drv,
                             ((p_filterbuff[1 + i*8] ) << 5)         |
 
                             /* STD[10:8] */
-                            ((p_filterbuff[0 + i*8] &0x7) << 8)     |
+                            ((p_filterbuff[0 + i*8] &0x7) << 13)     |
 
                              /* ID_mask */
                             /* STD[2:0] RTR IDE EXIT[17:15]  */
@@ -1010,7 +1010,7 @@ am_can_err_t __can_zlg237_filter_tab_set (void    *p_drv,
                            ((p_filterbuff[5 + i*8] ) << 5)          |
 
                            /* STD[10:8] */
-                           ((p_filterbuff[4 + i*8] &0x7) << 8)      |
+                           ((p_filterbuff[4 + i*8] &0x7) << 13)      |
 
                             /* ID_mask */
                            /* STD[2:0] RTR IDE EXIT[17:15]  */
@@ -1043,7 +1043,7 @@ am_can_err_t __can_zlg237_filter_tab_set (void    *p_drv,
                                ((p_filterbuff[1 + i*8] ) << 5)         |
 
                                /* STD[10:8] */
-                               ((p_filterbuff[0 + i*8] &0x7) << 8)     |
+                               ((p_filterbuff[0 + i*8] &0x7) << 13)     |
 
                                /* ID */
                                /* EXIT[17:15] */
@@ -1059,7 +1059,7 @@ am_can_err_t __can_zlg237_filter_tab_set (void    *p_drv,
                                ((p_filterbuff[3 + i*8] ) << 21)         |
 
                                /* STD[10:8] */
-                               ((p_filterbuff[2 + i*8] &0x7) << 24) ;
+                               ((p_filterbuff[2 + i*8] &0x7) << 29) ;
 
                        p_hw_can->fi_rx[filt_num].f_r2 =
 
@@ -1075,7 +1075,7 @@ am_can_err_t __can_zlg237_filter_tab_set (void    *p_drv,
                                ((p_filterbuff[5 + i*8] ) << 5)         |
 
                                /* STD[10:8] */
-                               ((p_filterbuff[4 + i*8] &0x7) << 8)     |
+                               ((p_filterbuff[4 + i*8] &0x7) << 13)     |
 
                                /* ID */
                                /* EXIT[17:15] */
@@ -1088,7 +1088,7 @@ am_can_err_t __can_zlg237_filter_tab_set (void    *p_drv,
                                ((p_filterbuff[7 + i*8] ) << 21)         |
 
                                /* STD[10:8] */
-                               ((p_filterbuff[6 + i*8] &0x7) << 24) ;
+                               ((p_filterbuff[6 + i*8] &0x7) << 29) ;
             }
 
         } else if (p_filter->can_filter_scale ==
