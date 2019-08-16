@@ -55,7 +55,7 @@
 #include "am_zlg237_can.h"
 
 /**
- *  2个16位过滤器  标识符屏蔽位模式
+ *  \brief 2个16位过滤器  标识符屏蔽位模式
  *  需在am_hwconf_zlg237_can.c中的__g_can_filter设置为
  *  AMHW_ZLG237_CAN_FILTER_MODE_IDMASK  
  *  AMHW_ZLG237_CAN_FILTER_SCALE_16BIT
@@ -101,7 +101,7 @@
  */
 
 /**
- * 4个16位 标识符列表滤波器
+ * \brief 4个16位 标识符列表滤波器
  * 需在am_hwconf_zlg237_can.c中的__g_can_filter设置为
  * AMHW_ZLG237_CAN_FILTER_MODE_IDLIST  
  * AMHW_ZLG237_CAN_FILTER_SCALE_16BIT
@@ -139,7 +139,7 @@
  */
 
 /**
- *  1个32位过滤器  标识符屏蔽
+ *  \brief 1个32位过滤器  标识符屏蔽
  *  需在am_hwconf_zlg237_can.c中的__g_can_filter设置为
  *  AMHW_ZLG237_CAN_FILTER_MODE_IDMASK 
  *  AMHW_ZLG237_CAN_FILTER_SCALE_32BIT
@@ -194,7 +194,7 @@
 
 
 /**
- *  2个32位过滤器  标识符列表
+ *  \brief 2个32位过滤器  标识符列表
  *  需在am_hwconf_zlg237_can.c中的__g_can_filter设置为
  *  AMHW_ZLG237_CAN_FILTER_MODE_IDLIST
  *  AMHW_ZLG237_CAN_FILTER_SCALE_32BIT

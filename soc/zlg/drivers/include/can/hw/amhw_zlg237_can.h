@@ -516,7 +516,7 @@ void amhw_zlg237_can_ttcom_mode_set (amhw_zlg237_can_t *p_hw_can,
     } else {
 
         /* 禁止时间触发通信模式 */
-        p_hw_can->mcr |= AMHW_ZLG237_CAN_MCR_TTCM;
+        p_hw_can->mcr &= ~(uint32_t)AMHW_ZLG237_CAN_MCR_TTCM;
 
         /* 不发送时间戳  */
         p_hw_can->tx_mail[0].tdtr &= ~AMHW_ZLG237_CAN_TDTR_TGT;
@@ -524,8 +524,6 @@ void amhw_zlg237_can_ttcom_mode_set (amhw_zlg237_can_t *p_hw_can,
         p_hw_can->tx_mail[2].tdtr &= ~AMHW_ZLG237_CAN_TDTR_TGT;
     }
 }
-
-
 
 /**
  * \brief 检测传输消息
@@ -611,10 +609,6 @@ uint8_t amhw_zlg237_can_transmit_status (amhw_zlg237_can_t    *p_hw_can,
     return (uint8_t) state;
 }
 
-
-
-
-
 /**
  * \brief 释放指定FIFO
  *
@@ -657,7 +651,6 @@ uint8_t amhw_zlg237_can_message_pending (amhw_zlg237_can_t    *p_hw_can,
 
     return message_pending ;
 }
-
 
 /**
  * \brief 进入低功耗模式
@@ -794,7 +787,6 @@ void amhw_zlg237_can_itconfig(amhw_zlg237_can_t        *p_hw_can,
         p_hw_can->ier &= ~(uint32_t)(1ul << can_it);
     }
 }
-
 
 /**
  * \brief CAN 清除挂号状态
@@ -942,7 +934,6 @@ uint8_t amhw_zlg237_can_tseg2_get (amhw_zlg237_can_t *p_hw_can)
 {
     return (uint8_t)((p_hw_can->btr >> 20) & 0x7);
 }
-
 
 /**
  * \brief 获取指定中断的状态
