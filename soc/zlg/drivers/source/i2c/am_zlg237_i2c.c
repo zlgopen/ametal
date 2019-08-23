@@ -745,6 +745,7 @@ static int __i2c_mst_sm_event (am_zlg237_i2c_dev_t *p_dev, uint32_t event)
                     __softimer_stop(p_dev);
 
                     if (AM_FALSE != p_dev->is_complete) {
+                        __I2C_NEXT_STATE(__I2C_ST_IDLE, __I2C_EVT_NONE);
                         p_dev->is_complete = AM_FALSE;
                         p_dev->busy = AM_FALSE;
                         amhw_zlg237_i2c_clearallit(p_hw_i2c);
@@ -755,7 +756,6 @@ static int __i2c_mst_sm_event (am_zlg237_i2c_dev_t *p_dev, uint32_t event)
                                 p_dev->p_cur_msg->p_arg);
                         }
 
-                        __I2C_NEXT_STATE(__I2C_ST_IDLE, __I2C_EVT_NONE);
                         break;
                     }
                 }
