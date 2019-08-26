@@ -75,10 +75,10 @@ static const am_zlg237_usart_devinfo_t __g_usart1_devinfo = {
     __zlg237_plfm_usart1_init,     /**< \brief USART1的平台初始化 */
     __zlg237_plfm_usart1_deinit,   /**< \brief USART1的平台去初始化 */
 
-	/* 以下引脚在功能设置成对应模式才会进行初始化 */
-	{PIOA_8, PIOA_8_NO_REMAP | PIOA_8_AF_PP},             /**< \brief ck引脚相关定义 */
-	{PIOA_11, PIOA_11_NO_REMAP |  PIOA_11_INPUT_FLOAT},    /**< \brief cts引脚相关定义 */
-	{PIOA_12, PIOA_12_NO_REMAP | PIOA_12_AF_PP}           /**< \brief rts引脚相关定义 */
+    /* 以下引脚在功能设置成对应模式才会进行初始化 */
+    {PIOA_8, PIOA_8_NO_REMAP | PIOA_8_AF_PP},             /**< \brief ck引脚相关定义 */
+    {PIOA_11, PIOA_11_NO_REMAP |  PIOA_11_INPUT_FLOAT},    /**< \brief cts引脚相关定义 */
+    {PIOA_12, PIOA_12_NO_REMAP | PIOA_12_AF_PP}           /**< \brief rts引脚相关定义 */
 
 };
 
@@ -120,7 +120,7 @@ static const am_zlg237_usart_devinfo_t __g_usart2_devinfo = {
 
     ZLG237_USART2_BASE,              /**< \brief 串口2 */
     INUM_USART2,                     /**< \brief 串口2的中断编号 */
-	CLK_USART2,                     /**< \brief 串口2的时钟 */
+    CLK_USART2,                     /**< \brief 串口2的时钟 */
 
     AMHW_ZLG237_USART_DATA_8BIT |    /**< \brief 8位数据 */
     AMHW_ZLG237_USART_PARITY_NO |    /**< \brief 无极性 */
@@ -134,10 +134,10 @@ static const am_zlg237_usart_devinfo_t __g_usart2_devinfo = {
     __zlg237_plfm_usart2_init,       /**< \brief USART2的平台初始化 */
     __zlg237_plfm_usart2_deinit,     /**< \brief USART2的平台去初始化 */
 
-	/* 以下引脚在功能设置成对应模式才会进行初始化 */
-	{PIOA_4, PIOA_4_NO_REMAP | PIOA_4_AF_PP},          /**< \brief ck引脚相关定义 */
-	{PIOA_0, PIOA_0_NO_REMAP | PIOA_0_INPUT_FLOAT},    /**< \brief cts引脚相关定义 */
-	{PIOA_1, PIOA_1_NO_REMAP | PIOA_1_AF_PP}           /**< \brief rts引脚相关定义 */
+    /* 以下引脚在功能设置成对应模式才会进行初始化 */
+    {PIOA_4, PIOA_4_NO_REMAP | PIOA_4_AF_PP},          /**< \brief ck引脚相关定义 */
+    {PIOA_0, PIOA_0_NO_REMAP | PIOA_0_INPUT_FLOAT},    /**< \brief cts引脚相关定义 */
+    {PIOA_1, PIOA_1_NO_REMAP | PIOA_1_AF_PP}           /**< \brief rts引脚相关定义 */
 };
 
 /**< \brief 定义串口2设备 */
@@ -176,11 +176,11 @@ static const am_zlg237_usart_devinfo_t __g_usart3_devinfo = {
 
     ZLG237_USART3_BASE,              /**< \brief 串口3 */
     INUM_USART3,                     /**< \brief 串口2的中断编号 */
-	CLK_USART3,                     /**< \brief 串口2的时钟 */
+    CLK_USART3,                     /**< \brief 串口2的时钟 */
 
     AMHW_ZLG237_USART_DATA_8BIT |    /**< \brief 8位数据 */
     AMHW_ZLG237_USART_PARITY_NO |    /**< \brief 无极性 */
-	AMHW_ZLG237_USART_STOP_10_BIT,     /**< \brief 1个停止位 */
+    AMHW_ZLG237_USART_STOP_10_BIT,     /**< \brief 1个停止位 */
 
     115200,                         /**< \brief 设置的波特率 */
 
@@ -190,10 +190,10 @@ static const am_zlg237_usart_devinfo_t __g_usart3_devinfo = {
     __zlg237_plfm_usart3_init,       /**< \brief USART3的平台初始化 */
     __zlg237_plfm_usart3_deinit,     /**< \brief USART3的平台去初始化 */
 
-	/* 以下引脚在功能设置成对应模式才会进行初始化 */
-	{PIOB_12, PIOB_12_NO_REMAP | PIOB_12_AF_PP},          /**< \brief ck引脚相关定义 */
-	{PIOB_13, PIOB_13_NO_REMAP | PIOB_13_INPUT_FLOAT},    /**< \brief cts引脚相关定义 */
-	{PIOB_14, PIOB_14_NO_REMAP | PIOB_14_AF_PP}           /**< \brief rts引脚相关定义 */
+    /* 以下引脚在功能设置成对应模式才会进行初始化 */
+    {PIOB_12, PIOB_12_NO_REMAP | PIOB_12_AF_PP},          /**< \brief ck引脚相关定义 */
+    {PIOB_13, PIOB_13_NO_REMAP | PIOB_13_INPUT_FLOAT},    /**< \brief cts引脚相关定义 */
+    {PIOB_14, PIOB_14_NO_REMAP | PIOB_14_AF_PP}           /**< \brief rts引脚相关定义 */
 };
 
 /**< \brief 定义串口2设备 */

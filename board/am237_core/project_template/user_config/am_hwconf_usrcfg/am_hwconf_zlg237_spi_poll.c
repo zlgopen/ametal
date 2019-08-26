@@ -63,10 +63,18 @@ const  struct am_zlg237_spi_poll_devinfo  __g_spi1_poll_devinfo = {
     ZLG237_SPI1_BASE,                       /**< \brief SPI1寄存器指针 */
     CLK_SPI1,                               /**< \brief 时钟ID号 */
     AMHW_ZLG237_SPI_BAUDRATE_PRESCALER_16,  /**< \brief 时钟分频系数 */
+
+    0,                                       /**< \brief SPI1 CS拉低后延时等待（ms），再进行数据传输。
+                                              *
+                                              *   从机为本zlg237软件包对应的spi_slaver时，请将延时设置为
+                                              *   100ms。请打开AM_CFG_DELAY_ENABLE宏定义
+                                              *   从机不满足上述条件时，延时一般设置为0ms。
+                                              **/
+
     PIOA_7_SPI1_MOSI_REMAP0 | PIOA_7_AF_PP, /**< \brief SPI1配置标识 */
     PIOA_7,                                 /**< \brief MOSI引脚号 */
-    __zlg237_plfm_spi1_poll_init,              /**< \brief SPI1平台初始化函数 */
-    __zlg237_plfm_spi1_poll_deinit             /**< \brief SPI1平台解初始化函数 */
+    __zlg237_plfm_spi1_poll_init,           /**< \brief SPI1平台初始化函数 */
+    __zlg237_plfm_spi1_poll_deinit          /**< \brief SPI1平台解初始化函数 */
 };
 
 /** \brief SPI1 设备实例 */
@@ -111,10 +119,18 @@ const  struct am_zlg237_spi_poll_devinfo  __g_spi2_poll_devinfo = {
     ZLG237_SPI2_BASE,                       /**< \brief SPI2 寄存器指针 */
     CLK_SPI2,                               /**< \brief 时钟 ID 号 */
     AMHW_ZLG237_SPI_BAUDRATE_PRESCALER_16,  /**< \brief 时钟分频系数 */
+
+    0,                                      /**< \brief SPI1 CS拉低后延时等待（ms），再进行数据传输。
+                                             *
+                                             *   从机为本zlg237软件包对应的spi_slaver时，请将延时设置为
+                                             *   100ms。
+                                             *   从机不满足上述条件时，延时一般设置为0ms。
+                                             **/
+
     PIOB_15_SPI2_MOSI | PIOB_15_AF_PP,      /**< \brief SPI2 配置标识 */
     PIOB_15,                                /**< \brief MOSI 引脚号 */
-    __zlg237_plfm_spi2_poll_init,              /**< \brief SPI2 平台初始化函数 */
-    __zlg237_plfm_spi2_poll_deinit             /**< \brief SPI2 平台解初始化函数 */
+    __zlg237_plfm_spi2_poll_init,           /**< \brief SPI2 平台初始化函数 */
+    __zlg237_plfm_spi2_poll_deinit          /**< \brief SPI2 平台解初始化函数 */
 };
 
 /** \brief SPI2 设备实例 */

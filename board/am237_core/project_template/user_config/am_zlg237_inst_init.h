@@ -38,9 +38,11 @@ extern "C" {
 #include "am_i2c_slv.h"
 #include "am_timer.h"
 #include "am_cap.h"
+#include "am_can.h"
 #include "am_pwm.h"
 #include "am_wdt.h"
 #include "am_spi.h"
+#include "am_spi_slv.h"
 #include "am_led.h"
 #include "am_uart.h"
 #include "am_dac.h"
@@ -58,8 +60,8 @@ extern "C" {
 #include "am_rngbuf.h"
 #include "am_input.h"
 #include "am_zlg_tim_cap.h"
-//#include "amhw_zlg237_rtc.h"
-//#include "am_zlg237_pwr.h"
+#include "amhw_zlg237_rtc.h"
+#include "am_zlg237_pwr.h"
 #include "am_hwconf_led_gpio.h"
 #include "am_hwconf_key_gpio.h"
 #include "am_hwconf_buzzer_pwm.h"
@@ -421,7 +423,7 @@ void am_zlg237_iwdg_inst_deinit (am_wdt_handle_t handle);
  *
  * \return PWR 标准服务句柄，若为 NULL，表明初始化失败
  */
-//am_zlg237_pwr_handle_t am_zlg237_pwr_inst_init (void);
+am_zlg237_pwr_handle_t am_zlg237_pwr_inst_init (void);
 
 /**
  * \brief PWR 实例解初始化
@@ -563,6 +565,44 @@ am_spi_handle_t am_zlg237_spi2_int_inst_init (void);
  * \return 无
  */
 void am_zlg237_spi2_int_inst_deinit (am_spi_handle_t handle);
+
+/**
+ * \brief SPI1 Slaver DMA 实例初始化，获得 SPI SLV标准服务句柄
+ *
+ * \param 无
+ *
+ * \return SPI SLV标准服务句柄，若为 NULL，表明初始化失败
+ */
+am_spi_slv_handle_t am_zlg237_spi1_slv_dma_inst_init (void);
+
+/**
+ * \brief SPI1 Slaver DMA 实例解初始化
+ *
+ * \param[in] handle 通过 am_zlg237_spi1_slv_dma_inst_init() 函数
+ *                   获得的 SPI SLV标准服务句柄
+ *
+ * \return 无
+ */
+void am_zlg237_spi1_slv_dma_inst_deinit (am_spi_slv_handle_t handle);
+
+/**
+ * \brief SPI2 Slaver DMA 实例初始化，获得 SPI SLV标准服务句柄
+ *
+ * \param 无
+ *
+ * \return SPI SLV标准服务句柄，若为 NULL，表明初始化失败
+ */
+am_spi_slv_handle_t am_zlg237_spi2_slv_dma_inst_init (void);
+
+/**
+ * \brief SPI2 Slaver DMA 实例解初始化
+ *
+ * \param[in] handle 通过 am_zlg237_spi2_slv_dma_inst_init() 函数
+ *                   获得的 SPI SLV标准服务句柄
+ *
+ * \return 无
+ */
+void am_zlg237_spi2_slv_dma_inst_deinit (am_spi_slv_handle_t handle);
 
 /**
  * \brief SYSTICK 实例初始化，获得 TIMER 标准服务句柄
@@ -882,6 +922,7 @@ am_wdt_handle_t am_zlg237_wwdg_inst_init (void);
  * \return 无
  */
 void am_zlg237_wwdg_inst_deinit (am_wdt_handle_t handle);
+
 
 /** \brief CAN实例初始化，获得CAN标准服务句柄 */
 am_can_handle_t am_zlg237_can_inst_init (void);

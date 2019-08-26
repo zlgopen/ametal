@@ -41,8 +41,8 @@
 /** \brief ADC平台初始化 */
 static void __zlg237_plfm_adc1_init (void)
 {
-	/* ADC1和ADC2共用通道，实际上不可同时用作ADC12,除非特殊模式使能*/
-	/* 此处用作ADC1采集通道*/
+    /* ADC1和ADC2共用通道，实际上不可同时用作ADC12,除非特殊模式使能*/
+    /* 此处用作ADC1采集通道*/
     am_gpio_pin_cfg(PIOA_0, PIOA_0_ADC12_IN0 | PIOA_0_AIN);     /* ADC12通道0 */
     am_gpio_pin_cfg(PIOA_1, PIOA_1_ADC12_IN1 | PIOA_1_AIN);     /* ADC12通道1 */
     am_gpio_pin_cfg(PIOA_2, PIOA_2_ADC12_IN2 | PIOA_2_AIN);     /* ADC12通道2 */
@@ -59,7 +59,7 @@ static void __zlg237_plfm_adc1_init (void)
 /** \brief 解除ADC平台初始化 */
 static void __zlg237_plfm_adc1_deinit (void)
 {
-	/* 失能ADC1时钟*/
+    /* 失能ADC1时钟*/
     am_clk_disable (CLK_ADC1);
 }
 
@@ -71,6 +71,12 @@ static const am_zlg237_adc_devinfo_t __g_adc1_devinfo = {
     CLK_ADC1,                            /**< \brief ADC时钟号 */
 
     3300,                                /**< \brief 参考电压 */
+
+    0,                                   /**< \brief ADC1通道16内部温度传感器开启使能
+                                          *          1：开启， 0：关闭
+                                          *          仅ADC1有效
+                                          */
+
     AMHW_ZLG237_ADC_DATA_VALID_12BIT,    /**< \brief 转换精度，zlg237精度只能为12位 */
 
     __zlg237_plfm_adc1_init,             /**< \brief ADC1的平台初始化 */
@@ -96,8 +102,8 @@ void am_zlg237_adc1_inst_deinit (am_adc_handle_t handle)
 /** \brief ADC2平台初始化 */
 static void __zlg237_plfm_adc2_init (void)
 {
-	/* ADC1和ADC2共用通道，实际上不可同时用作ADC12,除非特殊模式使能*/
-	/* 此处用作ADC2采集通道*/
+    /* ADC1和ADC2共用通道，实际上不可同时用作ADC12,除非特殊模式使能*/
+    /* 此处用作ADC2采集通道*/
     am_gpio_pin_cfg(PIOB_0, PIOB_0_ADC12_IN8  | PIOB_0_AIN);/* ADC12通道8 */
     am_gpio_pin_cfg(PIOB_1, PIOB_1_ADC12_IN9  | PIOB_1_AIN);/* ADC12通道9 */
     am_gpio_pin_cfg(PIOC_0, PIOC_0_ADC12_IN10 | PIOC_0_AIN);/* ADC12通道10 */
@@ -114,7 +120,7 @@ static void __zlg237_plfm_adc2_init (void)
 /** \brief 解除ADC平台初始化 */
 static void __zlg237_plfm_adc2_deinit (void)
 {
-	/* 失能ADC2时钟*/
+    /* 失能ADC2时钟*/
     am_clk_disable (CLK_ADC2);
 }
 
@@ -126,7 +132,13 @@ static const am_zlg237_adc_devinfo_t __g_adc2_devinfo = {
     CLK_ADC2,                         /**< \brief ADC时钟号 */
 
     3300,                             /**< \brief 参考电压 */
-	AMHW_ZLG237_ADC_DATA_VALID_12BIT, /**< \brief 转换精度，zlg237精度只能为12位 */
+
+    0,                                /**< \brief ADC1通道16内部温度传感器开启使能
+                                       *          1：开启， 0：关闭
+                                       *          仅ADC1有效
+                                       */
+
+    AMHW_ZLG237_ADC_DATA_VALID_12BIT, /**< \brief 转换精度，zlg237精度只能为12位 */
 
     __zlg237_plfm_adc2_init,          /**< \brief ADC2的平台初始化 */
     __zlg237_plfm_adc2_deinit,        /**< \brief ADC2的平台去初始化 */

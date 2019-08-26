@@ -38,6 +38,7 @@ extern "C" {
 #include "am_i2c_slv.h"
 #include "am_timer.h"
 #include "am_cap.h"
+#include "am_can.h"
 #include "am_pwm.h"
 #include "am_wdt.h"
 #include "am_spi.h"
@@ -76,7 +77,6 @@ extern "C" {
 #include "am_hwconf_miniport_view_key.h"
 #include "am_event_input_key.h"
 #include "am_event_category_input.h"
-#include "am_baudrate_detect.h"
 
 /**
  * \addtogroup am_if_zlg237_inst_init
@@ -923,11 +923,6 @@ am_wdt_handle_t am_zlg237_wwdg_inst_init (void);
  */
 void am_zlg237_wwdg_inst_deinit (am_wdt_handle_t handle);
 
-/** \brief 实例初始化，获得自动波特率服务句柄 */
-am_baudrate_detect_handle_t am_zlg237_baudrate_detect_inst_init (void);
-
-/** \brief 检测波特率实例解初始化*/
-void am_zlg237_baudrate_detect_inst_deinit(am_baudrate_detect_handle_t handle);
 
 /** \brief CAN实例初始化，获得CAN标准服务句柄 */
 am_can_handle_t am_zlg237_can_inst_init (void);
