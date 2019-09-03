@@ -52,9 +52,9 @@ void demo_amks16z_core_std_gpio_trigger_entry (void)
 {
     AM_DBG_INFO("demo amks16z_core std gpio trigger!\r\n");
 
-    am_gpio_pin_cfg(PIOC_0, AM_GPIO_INPUT | AM_GPIO_PULLUP);
+    am_gpio_pin_cfg(PIOB_1, AM_GPIO_INPUT | AM_GPIO_PULLUP);
 
-    demo_std_gpio_trigger_entry(PIOC_0);
+    demo_std_gpio_trigger_entry(PIOB_1);
 }
 
 /** [src_amks16z_core_std_gpio_trigger] */

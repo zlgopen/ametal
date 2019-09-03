@@ -40,7 +40,7 @@
 /**
  * \brief AM_ZML166_ADCµÁ—π≤‚ ‘¿˝≥Ã
  */
-void dome_zml166_adc_vol_measure_entry(void                   *p_handle,
+void demo_zml166_adc_vol_measure_entry(void                   *p_handle,
                                        float                  *p_para,
                                        uint8_t                 gpa_index)
 {

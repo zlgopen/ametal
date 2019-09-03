@@ -52,8 +52,9 @@ static int __am_cs1237_dat_read(am_cs1237_adc_dev_t *p_dev, uint32_t *val);
  static void __am_cs1237_trigger_handle(void *p_arg);
 
  /** \brief ADC 配置寄存器写函数 */
- static int __am_cs1237_config_reg_write (am_cs1237_adc_dev_t  *p_dev,
-                                          uint8_t           config_reg);
+// static
+ int __am_cs1237_config_reg_write (am_cs1237_adc_dev_t  *p_dev,
+                                   int8_t           config_reg);
 
  /** \brief 启动ADC转换 */
  static int __pfn_adc_start (void                   *p_drv,
@@ -269,7 +270,7 @@ static int __am_cs1237_dat_read(am_cs1237_adc_dev_t *p_dev, uint32_t *val)
         return AM_ERROR;
     }
 
-    *val = 0;
+//    *val = 0;
 
     /* 循环读取24bit数据 */
     for (i = 0 ; i < 24 ; i++) {
@@ -295,8 +296,9 @@ static int __am_cs1237_dat_read(am_cs1237_adc_dev_t *p_dev, uint32_t *val)
 /**
  * \brief ADC 配置寄存器写函数(非阻塞)
  */
-static int __am_cs1237_config_reg_write (am_cs1237_adc_dev_t  *p_dev,
-                                         uint8_t           config_reg)
+//static
+int __am_cs1237_config_reg_write (am_cs1237_adc_dev_t  *p_dev,
+                                  int8_t           config_reg)
 {
     uint8_t   i      = 0;
     am_bool_t is_int = AM_FALSE;
@@ -557,9 +559,9 @@ am_cs1237_adc_handle_t am_cs1237_init(am_cs1237_adc_dev_t            *p_dev,
     }
 
     p_dev->ch = AM_CS1237_CHANNEL_A;
-    p_dev->pga = AM_CS1237_PGA_128;
+    p_dev->pga = AM_CS1237_PGA_1;
     p_dev->out_speed = AM_CS1237_SPEED_10HZ;
-
+    p_dev->ref  = p_dev->p_devinfo->refo_off;
     p_dev->adc_serve.p_funcs = &__g_adc_drvfuncs;
     p_dev->adc_serve.p_drv   = p_dev;
     p_dev->pfn_callback      = NULL;
@@ -590,7 +592,7 @@ am_cs1237_adc_handle_t am_cs1237_init(am_cs1237_adc_dev_t            *p_dev,
     config_reg |= p_dev->ch;
     config_reg |= p_dev->pga << 2;
     config_reg |= p_dev->out_speed << 4;
-    config_reg |= p_dev->p_devinfo->refo_off <<6;
+    config_reg |= p_dev->ref <<6;
 
     while ( AM_OK != __am_cs1237_config_reg_write(p_dev, config_reg) );
 
@@ -622,12 +624,32 @@ int am_cs1237_pga_set(am_cs1237_adc_dev_t  *p_dev, uint32_t pga)
     config_reg |= p_dev->ch;
     config_reg |= pga << 2;
     config_reg |= p_dev->out_speed << 4;
-    config_reg |= p_dev->p_devinfo->refo_off <<6;
+    config_reg |= p_dev->ref <<6;
 
     if ( AM_OK != __am_cs1237_config_reg_write(p_dev, config_reg) ) {
         return AM_ERROR;
     }
     p_dev->pga = pga;
+
+    return AM_OK;
+}
+
+/**
+ * \brief CS1237 配置寄存器Ref 配置使能  0 使用内部     1 使用外部
+ */
+int am_cs1237_ref_set(am_cs1237_adc_dev_t  *p_dev, uint8_t flag)
+{
+    uint8_t config_reg = 0;
+
+    config_reg |= p_dev->ch;
+    config_reg |= p_dev->pga << 2;
+    config_reg |= p_dev->out_speed << 4;
+    config_reg |= flag <<6;
+
+    if ( AM_OK != __am_cs1237_config_reg_write(p_dev, config_reg) ) {
+        return AM_ERROR;
+    }
+    p_dev->ref = flag;
 
     return AM_OK;
 }
@@ -663,7 +685,7 @@ int am_cs1237_ch_set(am_cs1237_adc_dev_t  *p_dev, uint32_t ch)
     config_reg |= ch;
     config_reg |= p_dev->pga << 2;
     config_reg |= p_dev->out_speed << 4;
-    config_reg |= p_dev->p_devinfo->refo_off << 6;
+    config_reg |= p_dev->ref << 6;
 
     if ( AM_OK != __am_cs1237_config_reg_write(p_dev, config_reg) ) {
         return AM_ERROR;
@@ -697,14 +719,13 @@ int am_cs1237_out_speed_set(am_cs1237_adc_dev_t  *p_dev, uint32_t speed)
     config_reg |= p_dev->ch;
     config_reg |= p_dev->pga << 2;
     config_reg |= speed << 4;
-    config_reg |= p_dev->p_devinfo->refo_off << 6;
+    config_reg |= p_dev->ref << 6;
 
     if ( AM_OK != __am_cs1237_config_reg_write(p_dev, config_reg) ) {
         return AM_ERROR;
     }
 
     p_dev->out_speed = speed;
-
     return AM_OK;
 }
 

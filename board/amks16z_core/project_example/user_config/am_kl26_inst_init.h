@@ -45,7 +45,6 @@
 #include "am_hwconf_system_tick_softimer.h"
 #include "am_hwconf_lm75.h"
 #include "am_hwconf_microport.h"
-#include "am_hwconf_miniport_zlg72128.h"
 #include "am_hwconf_miniport_595.h"
 #include "am_hwconf_miniport_view.h"
 #include "am_hwconf_miniport_led.h"

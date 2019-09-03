@@ -12,6 +12,8 @@
 /**
  * \file
  * \brief AML166 例程工程
+ * \note  AML166 芯片大部分外设与ZLG116相同，许多外设与ZLG116共用驱动，
+ *        因此大部分外设的初始化函数仍为ZLG116板级命名，共用初始化函数
  *
  * - 操作步骤：
  *   1. 取消屏蔽需要使用的例程。
@@ -30,7 +32,8 @@
 #include "am_vdebug.h"
 #include "am_board.h"
 #include "demo_aml166_core_entries.h"
-
+#include "zlg116_pin.h"
+#include "am_gpio.h"
 /**
  * \brief AMetal 应用程序入口
  */
@@ -44,6 +47,7 @@ int am_main (void)
      *
      * 注意：同一时刻只能运行一个 demo，即只能使某一行处于取消注释状态。
      */
+
     demo_aml166_core_std_led_entry();
 //    demo_aml166_core_std_delay_entry();
 //    demo_aml166_core_std_buzzer_entry();

@@ -400,8 +400,6 @@ int am_zlg116_pwr_mode_into (am_zlg116_pwr_mode_t mode)
         }
         __gp_pwr_dev->pwr_mode = AM_ZLG116_PWR_MODE_SLEEP;
 
-        AM_DBG_INFO("enter sleep!\r\n");
-
         __pwr_cpu_wif(AM_FALSE);
 
         /* ªΩ–—÷ÿ÷√ƒ£ Ω */
