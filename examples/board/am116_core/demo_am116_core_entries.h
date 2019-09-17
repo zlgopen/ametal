@@ -389,6 +389,11 @@ void demo_am116_core_microport_rs485_entry (void);
 void demo_am116_core_microport_rtc_entry (void);
 
 /**
+ * \brief MicroPort RTC_HMI中断例程，通过标准接口实现
+ */
+void demo_am116_core_microport_hmi_int_entry (void);
+
+/**
  * \brief MicroPort RX8025T 例程，通过标准接口实现
  */
 void demo_am116_core_microport_rx8025t_entry (void);

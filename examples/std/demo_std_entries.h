@@ -38,6 +38,7 @@
 #include "am_temp.h"
 #include "am_timer.h"
 #include "am_rtc.h"
+#include "am_pcf85063.h"
 #include "am_hc595.h"
 #include "am_sensor.h"
 #include "am_sdcard.h"
@@ -370,6 +371,13 @@ void demo_std_hc595_led_entry (am_hc595_handle_t hc595_handle);
  * \return 无
  */
 void demo_std_rtc_entry (am_rtc_handle_t rtc_handle);
+
+/**
+ * \brief HMI例程
+ * \param[in] pcf85063_handle  PCF85063设备标准服务句柄
+ * \return 无
+ */
+void demo_std_hmi_int_entry (am_pcf85063_handle_t pcf85063_handle);
 
 /**
  * \brief NVRAM 测试例程
