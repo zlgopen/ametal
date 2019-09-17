@@ -43,7 +43,7 @@ int am_main (void)
      *
      * 注意：同一时刻只能运行一个 demo，即只能使某一行处于取消注释状态。
      */
-//    demo_am116_core_std_led_entry();
+    demo_am116_core_std_led_entry();
 //    demo_am116_core_std_delay_entry();
 //    demo_am116_core_hw_adc_int_entry();
 //    demo_am116_core_std_adc_entry();
@@ -116,7 +116,7 @@ int am_main (void)
 //    demo_am116_core_microport_flash_mtd_entry();
 //    demo_am116_core_microport_rs485_entry();
 //    demo_am116_core_microport_rtc_entry();
-    demo_am116_core_microport_hmi_int_entry();
+//    demo_am116_core_microport_hmi_int_entry();
 //    demo_am116_core_microport_rx8025t_entry();
 //    demo_am116_core_microport_usb_entry();
 //    demo_am116_core_miniport_digitron_entry();
