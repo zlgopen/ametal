@@ -57,8 +57,8 @@ static void __zlg_i2c1_bus_clean (void)
 /** \brief I2C1 平台初始化函数 */
 static void __zlg_i2c1_plfm_init (void)
 {
-    am_gpio_pin_cfg(PIOB_6, PIOB_6_I2C1_SCL_REMAP0 | PIOB_6_AF_OD);
-    am_gpio_pin_cfg(PIOB_7, PIOB_7_I2C1_SDA_REMAP0 | PIOB_7_AF_OD);
+    am_gpio_pin_cfg(PIOB_6, PIOB_6_I2C1_SCL_REMAP0 | PIOB_6_AF_OD|PIOB_6_SPEED_2MHz);
+    am_gpio_pin_cfg(PIOB_7, PIOB_7_I2C1_SDA_REMAP0 | PIOB_7_AF_OD|PIOB_7_SPEED_2MHz);
 
     am_clk_enable(CLK_I2C1);
     am_zlg237_clk_reset(CLK_I2C1);
@@ -82,7 +82,7 @@ static const am_zlg237_i2c_devinfo_t __g_i2c1_devinfo = {
     CLK_I2C1,                           /**< \brief 时钟ID值 */
     INUM_I2C1_EV,                       /**< \brief I2C1 中断编号 */
 
-    100000,                             /**< \brief I2C 速率 */
+    400000,                             /**< \brief I2C 速率 */
     10,                                 /**< \brief 超时值0 */
 
     __zlg_i2c1_bus_clean,               /**< \brief 总线恢复函数 */
