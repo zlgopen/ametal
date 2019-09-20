@@ -170,8 +170,8 @@ extern "C" {
  * @{
  */
 
-#define PIOA_0_SPEED_10MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 10MHz输出响应速率 */
-#define PIOA_0_SPEED_2MHz            AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 20MHz输出响应速率 */
+#define PIOA_0_SPEED_10MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOA_0_SPEED_2MHz            AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
 #define PIOA_0_SPEED_50MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
@@ -213,8 +213,8 @@ extern "C" {
  * @{
  */
 
-#define PIOA_1_SPEED_10MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 10MHz输出响应速率 */
-#define PIOA_1_SPEED_2MHz            AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 20MHz输出响应速率 */
+#define PIOA_1_SPEED_10MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOA_1_SPEED_2MHz            AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
 #define PIOA_1_SPEED_50MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
@@ -257,8 +257,8 @@ extern "C" {
  * @{
  */
 
-#define PIOA_2_SPEED_10MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 10MHz输出响应速率 */
-#define PIOA_2_SPEED_2MHz            AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 20MHz输出响应速率 */
+#define PIOA_2_SPEED_10MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOA_2_SPEED_2MHz            AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
 #define PIOA_2_SPEED_50MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
@@ -302,8 +302,8 @@ extern "C" {
  * @{
  */
 
-#define PIOA_3_SPEED_10MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 10MHz输出响应速率 */
-#define PIOA_3_SPEED_2MHz            AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 20MHz输出响应速率 */
+#define PIOA_3_SPEED_10MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOA_3_SPEED_2MHz            AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
 #define PIOA_3_SPEED_50MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
@@ -345,8 +345,8 @@ extern "C" {
  * @{
  */
 
-#define PIOA_4_SPEED_10MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 10MHz输出响应速率 */
-#define PIOA_4_SPEED_2MHz            AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 20MHz输出响应速率 */
+#define PIOA_4_SPEED_10MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOA_4_SPEED_2MHz            AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
 #define PIOA_4_SPEED_50MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
@@ -387,8 +387,8 @@ extern "C" {
  * @{
  */
 
-#define PIOA_5_SPEED_10MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 10MHz输出响应速率 */
-#define PIOA_5_SPEED_2MHz            AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 20MHz输出响应速率 */
+#define PIOA_5_SPEED_10MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOA_5_SPEED_2MHz            AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
 #define PIOA_5_SPEED_50MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
@@ -430,8 +430,8 @@ extern "C" {
  * @{
  */
 
-#define PIOA_6_SPEED_10MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 10MHz输出响应速率 */
-#define PIOA_6_SPEED_2MHz            AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 20MHz输出响应速率 */
+#define PIOA_6_SPEED_10MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOA_6_SPEED_2MHz            AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
 #define PIOA_6_SPEED_50MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
@@ -472,8 +472,8 @@ extern "C" {
  * @{
  */
 
-#define PIOA_7_SPEED_10MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 10MHz输出响应速率 */
-#define PIOA_7_SPEED_2MHz            AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 20MHz输出响应速率 */
+#define PIOA_7_SPEED_10MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOA_7_SPEED_2MHz            AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
 #define PIOA_7_SPEED_50MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
@@ -514,8 +514,8 @@ extern "C" {
  * @{
  */
 
-#define PIOA_8_SPEED_10MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 10MHz输出响应速率 */
-#define PIOA_8_SPEED_2MHz            AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 20MHz输出响应速率 */
+#define PIOA_8_SPEED_10MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOA_8_SPEED_2MHz            AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
 #define PIOA_8_SPEED_50MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
@@ -556,8 +556,8 @@ extern "C" {
  * @{
  */
 
-#define PIOA_9_SPEED_10MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 10MHz输出响应速率 */
-#define PIOA_9_SPEED_2MHz            AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 20MHz输出响应速率 */
+#define PIOA_9_SPEED_10MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOA_9_SPEED_2MHz            AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
 #define PIOA_9_SPEED_50MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
@@ -597,8 +597,8 @@ extern "C" {
  * @{
  */
 
-#define PIOA_10_SPEED_10MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 10MHz输出响应速率 */
-#define PIOA_10_SPEED_2MHz            AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 20MHz输出响应速率 */
+#define PIOA_10_SPEED_10MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOA_10_SPEED_2MHz            AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
 #define PIOA_10_SPEED_50MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
@@ -640,8 +640,8 @@ extern "C" {
  * @{
  */
 
-#define PIOA_11_SPEED_10MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 10MHz输出响应速率 */
-#define PIOA_11_SPEED_2MHz            AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 20MHz输出响应速率 */
+#define PIOA_11_SPEED_10MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOA_11_SPEED_2MHz            AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
 #define PIOA_11_SPEED_50MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
@@ -684,8 +684,8 @@ extern "C" {
  * @{
  */
 
-#define PIOA_12_SPEED_10MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 10MHz输出响应速率 */
-#define PIOA_12_SPEED_2MHz            AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 20MHz输出响应速率 */
+#define PIOA_12_SPEED_10MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOA_12_SPEED_2MHz            AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
 #define PIOA_12_SPEED_50MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
@@ -723,8 +723,8 @@ extern "C" {
  * @{
  */
 
-#define PIOA_13_SPEED_10MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 10MHz输出响应速率 */
-#define PIOA_13_SPEED_2MHz            AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 20MHz输出响应速率 */
+#define PIOA_13_SPEED_10MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOA_13_SPEED_2MHz            AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
 #define PIOA_13_SPEED_50MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
@@ -762,8 +762,8 @@ extern "C" {
  * @{
  */
 
-#define PIOA_14_SPEED_10MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 10MHz输出响应速率 */
-#define PIOA_14_SPEED_2MHz            AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 20MHz输出响应速率 */
+#define PIOA_14_SPEED_10MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOA_14_SPEED_2MHz            AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
 #define PIOA_14_SPEED_50MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
@@ -804,8 +804,8 @@ extern "C" {
  * @{
  */
 
-#define PIOA_15_SPEED_10MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 10MHz输出响应速率 */
-#define PIOA_15_SPEED_2MHz            AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 20MHz输出响应速率 */
+#define PIOA_15_SPEED_10MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOA_15_SPEED_2MHz            AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
 #define PIOA_15_SPEED_50MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
@@ -846,8 +846,8 @@ extern "C" {
  * @{
  */
 
-#define PIOB_0_SPEED_10MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 10MHz输出响应速率 */
-#define PIOB_0_SPEED_2MHz            AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 20MHz输出响应速率 */
+#define PIOB_0_SPEED_10MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOB_0_SPEED_2MHz            AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
 #define PIOB_0_SPEED_50MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
@@ -889,8 +889,8 @@ extern "C" {
  * @{
  */
 
-#define PIOB_1_SPEED_10MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 10MHz输出响应速率 */
-#define PIOB_1_SPEED_2MHz            AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 20MHz输出响应速率 */
+#define PIOB_1_SPEED_10MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOB_1_SPEED_2MHz            AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
 #define PIOB_1_SPEED_50MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
@@ -927,8 +927,8 @@ extern "C" {
  * @{
  */
 
-#define PIOB_2_SPEED_10MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 10MHz输出响应速率 */
-#define PIOB_2_SPEED_2MHz            AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 20MHz输出响应速率 */
+#define PIOB_2_SPEED_10MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOB_2_SPEED_2MHz            AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
 #define PIOB_2_SPEED_50MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
@@ -970,8 +970,8 @@ extern "C" {
  * @{
  */
 
-#define PIOB_3_SPEED_10MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 10MHz输出响应速率 */
-#define PIOB_3_SPEED_2MHz            AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 20MHz输出响应速率 */
+#define PIOB_3_SPEED_10MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOB_3_SPEED_2MHz            AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
 #define PIOB_3_SPEED_50MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
@@ -1011,8 +1011,8 @@ extern "C" {
  * @{
  */
 
-#define PIOB_4_SPEED_10MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 10MHz输出响应速率 */
-#define PIOB_4_SPEED_2MHz            AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 20MHz输出响应速率 */
+#define PIOB_4_SPEED_10MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOB_4_SPEED_2MHz            AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
 #define PIOB_4_SPEED_50MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
@@ -1054,8 +1054,8 @@ extern "C" {
  * @{
  */
 
-#define PIOB_5_SPEED_10MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 10MHz输出响应速率 */
-#define PIOB_5_SPEED_2MHz            AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 20MHz输出响应速率 */
+#define PIOB_5_SPEED_10MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOB_5_SPEED_2MHz            AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
 #define PIOB_5_SPEED_50MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
@@ -1099,7 +1099,7 @@ extern "C" {
  */
 
 #define PIOB_6_SPEED_10MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
-#define PIOB_6_SPEED_2MHz            AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 20MHz输出响应速率 */
+#define PIOB_6_SPEED_2MHz            AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
 #define PIOB_6_SPEED_50MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
@@ -1143,7 +1143,7 @@ extern "C" {
  */
 
 #define PIOB_7_SPEED_10MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
-#define PIOB_7_SPEED_2MHz            AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 20MHz输出响应速率 */
+#define PIOB_7_SPEED_2MHz            AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
 #define PIOB_7_SPEED_50MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
@@ -1186,8 +1186,8 @@ extern "C" {
  * @{
  */
 
-#define PIOB_8_SPEED_10MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 10MHz输出响应速率 */
-#define PIOB_8_SPEED_2MHz            AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 20MHz输出响应速率 */
+#define PIOB_8_SPEED_10MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOB_8_SPEED_2MHz            AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
 #define PIOB_8_SPEED_50MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
@@ -1230,8 +1230,8 @@ extern "C" {
  * @{
  */
 
-#define PIOB_9_SPEED_10MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 10MHz输出响应速率 */
-#define PIOB_9_SPEED_2MHz            AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 20MHz输出响应速率 */
+#define PIOB_9_SPEED_10MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOB_9_SPEED_2MHz            AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
 #define PIOB_9_SPEED_50MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
@@ -1274,8 +1274,8 @@ extern "C" {
  * @{
  */
 
-#define PIOB_10_SPEED_10MHz          AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 10MHz输出响应速率 */
-#define PIOB_10_SPEED_2MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 20MHz输出响应速率 */
+#define PIOB_10_SPEED_10MHz          AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOB_10_SPEED_2MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
 #define PIOB_10_SPEED_50MHz          AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
@@ -1318,8 +1318,8 @@ extern "C" {
  * @{
  */
 
-#define PIOB_11_SPEED_10MHz          AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 10MHz输出响应速率 */
-#define PIOB_11_SPEED_2MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 20MHz输出响应速率 */
+#define PIOB_11_SPEED_10MHz          AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOB_11_SPEED_2MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
 #define PIOB_11_SPEED_50MHz          AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
@@ -1363,8 +1363,8 @@ extern "C" {
  * @{
  */
 
-#define PIOB_12_SPEED_10MHz          AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 10MHz输出响应速率 */
-#define PIOB_12_SPEED_2MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 20MHz输出响应速率 */
+#define PIOB_12_SPEED_10MHz          AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOB_12_SPEED_2MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
 #define PIOB_12_SPEED_50MHz          AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
@@ -1407,8 +1407,8 @@ extern "C" {
  * @{
  */
 
-#define PIOB_13_SPEED_10MHz         AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 10MHz输出响应速率 */
-#define PIOB_13_SPEED_2MHz          AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 20MHz输出响应速率 */
+#define PIOB_13_SPEED_10MHz         AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOB_13_SPEED_2MHz          AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
 #define PIOB_13_SPEED_50MHz         AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
@@ -1451,8 +1451,8 @@ extern "C" {
  * @{
  */
 
-#define PIOB_14_SPEED_10MHz        AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 10MHz输出响应速率 */
-#define PIOB_14_SPEED_2MHz         AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 20MHz输出响应速率 */
+#define PIOB_14_SPEED_10MHz        AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOB_14_SPEED_2MHz         AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
 #define PIOB_14_SPEED_50MHz        AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
@@ -1493,8 +1493,8 @@ extern "C" {
  * @{
  */
 
-#define PIOB_15_SPEED_10MHz        AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 10MHz输出响应速率 */
-#define PIOB_15_SPEED_2MHz         AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 20MHz输出响应速率 */
+#define PIOB_15_SPEED_10MHz        AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOB_15_SPEED_2MHz         AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
 #define PIOB_15_SPEED_50MHz        AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
@@ -1532,8 +1532,8 @@ extern "C" {
  * @{
  */
 
-#define PIOC_0_SPEED_10MHz        AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 10MHz输出响应速率 */
-#define PIOC_0_SPEED_2MHz         AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 20MHz输出响应速率 */
+#define PIOC_0_SPEED_10MHz        AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOC_0_SPEED_2MHz         AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
 #define PIOC_0_SPEED_50MHz        AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
@@ -1571,8 +1571,8 @@ extern "C" {
  * @{
  */
 
-#define PIOC_1_SPEED_10MHz        AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 10MHz输出响应速率 */
-#define PIOC_1_SPEED_2MHz         AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 20MHz输出响应速率 */
+#define PIOC_1_SPEED_10MHz        AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOC_1_SPEED_2MHz         AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
 #define PIOC_1_SPEED_50MHz        AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
@@ -1610,8 +1610,8 @@ extern "C" {
  * @{
  */
 
-#define PIOC_2_SPEED_10MHz        AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 10MHz输出响应速率 */
-#define PIOC_2_SPEED_2MHz         AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 20MHz输出响应速率 */
+#define PIOC_2_SPEED_10MHz        AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOC_2_SPEED_2MHz         AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
 #define PIOC_2_SPEED_50MHz        AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
@@ -1650,8 +1650,8 @@ extern "C" {
  * @{
  */
 
-#define PIOC_3_SPEED_10MHz        AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 10MHz输出响应速率 */
-#define PIOC_3_SPEED_2MHz         AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 20MHz输出响应速率 */
+#define PIOC_3_SPEED_10MHz        AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOC_3_SPEED_2MHz         AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
 #define PIOC_3_SPEED_50MHz        AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
@@ -1690,8 +1690,8 @@ extern "C" {
  * @{
  */
 
-#define PIOC_4_SPEED_10MHz        AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 10MHz输出响应速率 */
-#define PIOC_4_SPEED_2MHz         AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 20MHz输出响应速率 */
+#define PIOC_4_SPEED_10MHz        AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOC_4_SPEED_2MHz         AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
 #define PIOC_4_SPEED_50MHz        AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
@@ -1730,8 +1730,8 @@ extern "C" {
  * @{
  */
 
-#define PIOC_5_SPEED_10MHz        AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 10MHz输出响应速率 */
-#define PIOC_5_SPEED_2MHz         AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 20MHz输出响应速率 */
+#define PIOC_5_SPEED_10MHz        AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOC_5_SPEED_2MHz         AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
 #define PIOC_5_SPEED_50MHz        AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
@@ -1771,8 +1771,8 @@ extern "C" {
  * @{
  */
 
-#define PIOC_6_SPEED_10MHz        AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 10MHz输出响应速率 */
-#define PIOC_6_SPEED_2MHz         AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 20MHz输出响应速率 */
+#define PIOC_6_SPEED_10MHz        AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOC_6_SPEED_2MHz         AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
 #define PIOC_6_SPEED_50MHz        AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
@@ -1812,8 +1812,8 @@ extern "C" {
  * @{
  */
 
-#define PIOC_7_SPEED_10MHz        AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 10MHz输出响应速率 */
-#define PIOC_7_SPEED_2MHz         AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 20MHz输出响应速率 */
+#define PIOC_7_SPEED_10MHz        AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOC_7_SPEED_2MHz         AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
 #define PIOC_7_SPEED_50MHz        AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
@@ -1853,8 +1853,8 @@ extern "C" {
  * @{
  */
 
-#define PIOC_8_SPEED_10MHz        AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 10MHz输出响应速率 */
-#define PIOC_8_SPEED_2MHz         AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 20MHz输出响应速率 */
+#define PIOC_8_SPEED_10MHz        AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOC_8_SPEED_2MHz         AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
 #define PIOC_8_SPEED_50MHz        AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
@@ -1894,8 +1894,8 @@ extern "C" {
  * @{
  */
 
-#define PIOC_9_SPEED_10MHz        AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 10MHz输出响应速率 */
-#define PIOC_9_SPEED_2MHz         AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 20MHz输出响应速率 */
+#define PIOC_9_SPEED_10MHz        AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOC_9_SPEED_2MHz         AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
 #define PIOC_9_SPEED_50MHz        AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
@@ -1935,8 +1935,8 @@ extern "C" {
  * @{
  */
 
-#define PIOC_10_SPEED_10MHz       AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 10MHz输出响应速率 */
-#define PIOC_10_SPEED_2MHz        AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 20MHz输出响应速率 */
+#define PIOC_10_SPEED_10MHz       AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOC_10_SPEED_2MHz        AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
 #define PIOC_10_SPEED_50MHz       AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
@@ -1976,8 +1976,8 @@ extern "C" {
  * @{
  */
 
-#define PIOC_11_SPEED_10MHz       AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 10MHz输出响应速率 */
-#define PIOC_11_SPEED_2MHz        AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 20MHz输出响应速率 */
+#define PIOC_11_SPEED_10MHz       AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOC_11_SPEED_2MHz        AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
 #define PIOC_11_SPEED_50MHz       AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
@@ -2017,8 +2017,8 @@ extern "C" {
  * @{
  */
 
-#define PIOC_12_SPEED_10MHz       AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 10MHz输出响应速率 */
-#define PIOC_12_SPEED_2MHz        AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 20MHz输出响应速率 */
+#define PIOC_12_SPEED_10MHz       AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOC_12_SPEED_2MHz        AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
 #define PIOC_12_SPEED_50MHz       AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
@@ -2057,8 +2057,8 @@ extern "C" {
  * @{
  */
 
-#define PIOC_13_SPEED_10MHz      AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 10MHz输出响应速率 */
-#define PIOC_13_SPEED_2MHz       AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 20MHz输出响应速率 */
+#define PIOC_13_SPEED_10MHz      AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOC_13_SPEED_2MHz       AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
 #define PIOC_13_SPEED_50MHz      AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
@@ -2097,8 +2097,8 @@ extern "C" {
  * @{
  */
 
-#define PIOC_14_SPEED_10MHz     AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 10MHz输出响应速率 */
-#define PIOC_14_SPEED_2MHz      AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 20MHz输出响应速率 */
+#define PIOC_14_SPEED_10MHz     AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOC_14_SPEED_2MHz      AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
 #define PIOC_14_SPEED_50MHz     AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
@@ -2137,8 +2137,8 @@ extern "C" {
  * @{
  */
 
-#define PIOC_15_SPEED_10MHz     AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 10MHz输出响应速率 */
-#define PIOC_15_SPEED_2MHz      AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 20MHz输出响应速率 */
+#define PIOC_15_SPEED_10MHz     AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOC_15_SPEED_2MHz      AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
 #define PIOC_15_SPEED_50MHz     AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
@@ -2179,8 +2179,8 @@ extern "C" {
  * @{
  */
 
-#define PIOD_0_SPEED_10MHz      AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 10MHz输出响应速率 */
-#define PIOD_0_SPEED_2MHz       AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 20MHz输出响应速率 */
+#define PIOD_0_SPEED_10MHz      AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOD_0_SPEED_2MHz       AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
 #define PIOD_0_SPEED_50MHz      AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
@@ -2222,8 +2222,8 @@ extern "C" {
  * @{
  */
 
-#define PIOD_1_SPEED_10MHz      AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 10MHz输出响应速率 */
-#define PIOD_1_SPEED_2MHz       AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 20MHz输出响应速率 */
+#define PIOD_1_SPEED_10MHz      AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOD_1_SPEED_2MHz       AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
 #define PIOD_1_SPEED_50MHz      AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
@@ -2262,8 +2262,8 @@ extern "C" {
  * @{
  */
 
-#define PIOD_2_SPEED_10MHz      AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 10MHz输出响应速率 */
-#define PIOD_2_SPEED_2MHz       AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 20MHz输出响应速率 */
+#define PIOD_2_SPEED_10MHz      AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOD_2_SPEED_2MHz       AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
 #define PIOD_2_SPEED_50MHz      AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */

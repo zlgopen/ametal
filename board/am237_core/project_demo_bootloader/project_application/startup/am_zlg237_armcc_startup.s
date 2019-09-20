@@ -98,7 +98,7 @@ __Vectors       DCD     __initial_sp              ; Top of Stack
                 DCD     am_exc_eint_handler       ;29 - TIM3
                 DCD     am_exc_eint_handler       ;30 - TIM4
                 DCD     am_exc_eint_handler       ;31 - I2C1 Event
-                DCD     0                         ;32 - Reserve
+                DCD     am_exc_eint_handler       ;32 - I2C1 ER
                 DCD     am_exc_eint_handler       ;33 - I2C2 Event
                 DCD     am_exc_eint_handler       ;34 - I2C2 ER
                 DCD     am_exc_eint_handler       ;35 - SPI1

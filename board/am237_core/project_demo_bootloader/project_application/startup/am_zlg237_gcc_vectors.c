@@ -99,7 +99,7 @@ void (* const gVectors[])(void) =
     am_exc_eint_handler,         /* 29 - TIM3 */
     am_exc_eint_handler,         /* 30 - TIM4 */
     am_exc_eint_handler,         /* 31 - I2C1 Event */
-    0,                           /* 32 - Reserve */
+    am_exc_eint_handler,         /* 32 - Reserve */
     am_exc_eint_handler,         /* 33 - I2C2 Event */
     am_exc_eint_handler,         /* 34 - I2C2 ER */
     am_exc_eint_handler,         /* 35 - SPI1 */

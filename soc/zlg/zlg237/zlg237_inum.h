@@ -72,6 +72,7 @@ extern "C" {
 #define INUM_TIM3                 29   /**< \brief TIM3全局中断 */
 #define INUM_TIM4                 30   /**< \brief TIM4全局中断 */
 #define INUM_I2C1_EV              31   /**< \brief I2C1事件中断 */
+#define INUM_I2C1_ER              32   /**< \brief I2C1错误中断 */
 #define INUM_I2C2_EV              33   /**< \brief I2C2事件中断 */
 #define INUM_I2C2_ER              34   /**< \brief I2C2错误中断 */
 #define INUM_SPI1                 35   /**< \brief SPI1全局中断 */
