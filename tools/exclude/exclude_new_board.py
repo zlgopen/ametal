@@ -35,7 +35,7 @@ else :
     paramerror = 1
 
 if paramerror :
-    print 'Usage : ./exclude_new_board.py [new_board name]'
+    print 'Usage (参考《AMetal新增文件管理工具说明》): ./exclude_new_board.py [new_board name]'
     print 'example : ./exclude_new_board.py am237_core'
     exit(-1)
 
