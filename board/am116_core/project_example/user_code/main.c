@@ -116,6 +116,7 @@ int am_main (void)
 //    demo_am116_core_microport_flash_mtd_entry();
 //    demo_am116_core_microport_rs485_entry();
 //    demo_am116_core_microport_rtc_entry();
+//    demo_am116_core_microport_hmi_int_entry();
 //    demo_am116_core_microport_rx8025t_entry();
 //    demo_am116_core_microport_usb_entry();
 //    demo_am116_core_miniport_digitron_entry();

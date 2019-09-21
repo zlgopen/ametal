@@ -36,8 +36,8 @@
 
 /** \brief 设备信息 */
 am_local am_const am_pcf85063_devinfo_t __g_microport_rtc_devinfo = {
-    -1,    /**< \brief INT 未使用 */
-    -1,    /**< \brief CLK_EN 未使用 */
+    PIOA_15,    /**< \brief INT引脚：PA15 */
+    -1,         /**< \brief CLK_EN 未使用 */
 };
 
 /*******************************************************************************

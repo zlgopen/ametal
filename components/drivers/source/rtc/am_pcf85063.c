@@ -457,7 +457,7 @@ static int __pcf85063_alarm_clk_time_set (void *p_drv, am_alarm_clk_tm_t *p_tm)
     ((am_pcf85063_dev_t *)p_drv)->alarm_clk_wdays = p_tm->wdays;
 
     /* 标记用户调用的是非标准的闹钟接口 */
-    ((am_pcf85063_dev_t *)p_drv)->alarm_mode = __PCF85063_ALARM_MODE_STANDARD;
+    ((am_pcf85063_dev_t *)p_drv)->alarm_mode = __PCF85063_ALARM_MODE_NONSTANDARD;
 
     /* 获取当前时间 */
     __pcf85063_time_get(p_drv, &current_tm);
