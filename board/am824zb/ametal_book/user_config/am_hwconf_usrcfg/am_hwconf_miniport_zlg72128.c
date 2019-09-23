@@ -47,7 +47,7 @@ static am_zlg72128_std_dev_t           __g_miniport_zlg72128;
 static const am_zlg72128_std_devinfo_t __g_miniport_zlg72128_info = {
     {
         {
-            0X33,
+            0X30,
             PIO0_6,                     /* 复位引脚 */
             AM_TRUE,                    /* 使用中断引脚 */
             PIO0_1,                     /* 中断引脚 */
