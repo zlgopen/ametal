@@ -68,7 +68,7 @@ void demo_zlg237_core_hw_usart_int_entry (void)
     /* 使能串口时钟 */
     am_clk_enable(CLK_USART2);
 
-    demo_zlg237_hw_usart_int_entry(ZLG237_USART2,
+    demo_zlg237_hw_usart_int_entry((void *)ZLG237_USART2,
                                    __zlg237_usart_pins_intit,
                                    am_clk_rate_get(CLK_USART2),
                                    ZLG237_USART2_BASE,

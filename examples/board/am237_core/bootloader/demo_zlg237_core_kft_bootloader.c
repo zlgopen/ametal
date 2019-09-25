@@ -72,7 +72,7 @@ void demo_zlg237_core_bootloader_kft_entry (void)
         am_boot_go_application();
     }
 
-    baudrate_detect_handle =  am_zlg237_baudrate_detect_inst_init();
+    baudrate_detect_handle = am_zlg237_baudrate_detect_inst_init();
 
     int ret;
     uint32_t baund;

@@ -74,7 +74,7 @@ void demo_zlg237_core_hw_i2c_master_poll_entry (void)
     am_clk_enable(CLK_I2C1);
     am_zlg237_clk_reset(CLK_I2C1);
 
-    demo_zlg237_hw_i2c_master_poll_entry(I2C_MASTER, am_clk_rate_get(CLK_APB1));
+    demo_zlg237_hw_i2c_master_poll_entry((void *)I2C_MASTER, am_clk_rate_get(CLK_APB1));
 
 }
 /** [src_zlg237_hw_i2c_master_poll] */

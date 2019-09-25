@@ -59,7 +59,7 @@ void demo_zlg237_core_hw_adc_int_entry (void)
     am_gpio_pin_cfg(PIOA_0, PIOA_0_AIN);
     am_clk_enable(CLK_ADC1);
 
-    demo_zlg237_hw_adc_int_entry(ZLG237_ADC1,
+    demo_zlg237_hw_adc_int_entry((void *)ZLG237_ADC1,
                                  INUM_ADC1_2,
                                  AMHW_ZLG237_ADC_CHAN_0,
                                  3300);

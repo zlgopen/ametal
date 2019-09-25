@@ -66,7 +66,7 @@ void demo_zlg237_core_hw_usart_tx_dma_entry (void)
     am_gpio_pin_cfg(PIOA_2, PIOA_2_NO_REMAP | PIOA_2_AF_PP );
     am_gpio_pin_cfg(PIOA_3, PIOA_3_NO_REMAP | PIOA_3_INPUT_FLOAT);
 
-    demo_zlg237_hw_usart_tx_dma_entry(ZLG237_USART2,
+    demo_zlg237_hw_usart_tx_dma_entry((void *)ZLG237_USART2,
                                       am_clk_rate_get(CLK_USART2),
                                       DMA_CHAN_USART2_TX);
 }

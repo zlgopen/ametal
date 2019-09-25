@@ -57,7 +57,7 @@ void demo_zlg237_core_drv_flash_entry (void)
 {
     AM_DBG_INFO("demo am237_core drv flash!\r\n");
 
-    demo_zlg237_drv_flash_entry(ZLG237_FLASH, FLASH_PAGE);
+    demo_zlg237_drv_flash_entry((void *)ZLG237_FLASH, FLASH_PAGE);
 }
 
 /** [src_zlg237_drv_flash] */

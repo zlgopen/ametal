@@ -26,31 +26,21 @@
 
 #include "am_clk.h"
 #include "am_timer.h"
+#include "am_can.h"
 
 #include "hw/amhw_zlg_adc.h"
-#include "hw/amhw_zlg237_adc.h"
 #include "hw/amhw_zlg_exti.h"
 #include "hw/amhw_zlg_flash.h"
-#include "hw/amhw_zlg237_flash.h"
 #include "hw/amhw_zlg_gpio.h"
 #include "hw/amhw_zlg_i2c.h"
 #include "hw/amhw_zlg_pwr.h"
-//#include "hw/amhw_zlg116_rcc.h"
 #include "hw/amhw_zlg_spi.h"
-#include "hw/amhw_zlg237_spi.h"
 #include "hw/amhw_zlg_dma.h"
 #include "hw/amhw_zlg_syscfg.h"
 #include "hw/amhw_zlg_tim.h"
 #include "hw/amhw_zlg_uart.h"
-#include "hw/amhw_zlg237_usart.h"
 #include "hw/amhw_zlg_iwdg.h"
 #include "hw/amhw_zlg_wwdg.h"
-#include "hw/amhw_zlg237_i2c.h"
-#include "hw/amhw_zlg237_can.h"
-//#include "am_usbd_printer.h"
-//#include "am_usbd_cdc_vcom.h"
-//#include "am_usbd_keyboard.h"
-//#include "am_usbd_msc.h"
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -95,7 +85,7 @@ void demo_zlg_hw_adc_dma_entry (amhw_zlg_adc_t *p_hw_adc,
  *
  * \return 无
  */
-void demo_zlg237_hw_adc_int_entry (amhw_zlg237_adc_t *p_hw_adc,
+void demo_zlg237_hw_adc_int_entry (void              *p_hw_adc,
                                    int                int_num,
                                    int                chan,
                                    uint32_t           vref_mv);
@@ -103,7 +93,7 @@ void demo_zlg237_hw_adc_int_entry (amhw_zlg237_adc_t *p_hw_adc,
 /**
  * \brief zlg237 DC 硬件层（DMA）规则通道例程入口
  */
-void demo_zlg237_hw_adc_dma_entry (amhw_zlg237_adc_t *p_hw_adc,
+void demo_zlg237_hw_adc_dma_entry (void              *p_hw_adc,
                                    int               *p_adc_chan,
                                    int                adc_chan_num,
                                    uint8_t            dma_chan);
@@ -123,7 +113,7 @@ void demo_zlg237_hw_adc_dma_entry (amhw_zlg237_adc_t *p_hw_adc,
  *
  * \return 无
  */
-void demo_zlg237_hw_adc_injected_int_entry (amhw_zlg237_adc_t *p_hw_adc,
+void demo_zlg237_hw_adc_injected_int_entry (void              *p_hw_adc,
                                             int                int_num,
                                             uint32_t           vref_mv,
                                             int               *p_adc_chan,
@@ -145,11 +135,11 @@ void demo_zlg237_hw_adc_injected_int_entry (amhw_zlg237_adc_t *p_hw_adc,
  *
  * \return 无
  */
-void demo_zlg237_hw_adc_dma_double_entry (amhw_zlg237_adc_t *p_hw_adc1,
+void demo_zlg237_hw_adc_dma_double_entry (void              *p_hw_adc1,
                                           int               *p_adc1_chan,
                                           int                adc1_chan_num,
                                           uint8_t            dma_chan,
-                                          amhw_zlg237_adc_t *p_hw_adc2,
+                                          void              *p_hw_adc2,
                                           int               *p_adc2_chan,
                                           int                adc2_chan_num);
 
@@ -188,7 +178,7 @@ void demo_zlg_drv_flash_entry (amhw_zlg_flash_t *p_hw_flash, uint8_t sector);
  *
  * \return 无
  */
-void demo_zlg237_drv_flash_entry (amhw_zlg237_flash_t *p_hw_flash, uint8_t sector);
+void demo_zlg237_drv_flash_entry (void *p_hw_flash, uint8_t sector);
 
 /**
  * \brief GPIO 例程，通过 HW 层接口实现
@@ -253,8 +243,8 @@ void demo_zlg_hw_i2c_slave_poll_entry (amhw_zlg_i2c_t *p_hw_i2c);
  *
  * \return 无
  */
-void demo_zlg237_hw_i2c_master_poll_entry (amhw_zlg237_i2c_t *p_hw_i2c,
-                                        uint32_t        clk_rate);
+void demo_zlg237_hw_i2c_master_poll_entry (void           *p_hw_i2c,
+                                           uint32_t        clk_rate);
 
 /**
  * \brief I2C 从机例程(此例程可以用来模拟 EEPROM)，通过 HW 层接口实现
@@ -263,7 +253,7 @@ void demo_zlg237_hw_i2c_master_poll_entry (amhw_zlg237_i2c_t *p_hw_i2c,
  *
  * \return 无
  */
-void demo_zlg237_hw_i2c_slave_poll_entry (amhw_zlg237_i2c_t *p_hw_i2c);
+void demo_zlg237_hw_i2c_slave_poll_entry (void *p_hw_i2c);
 
 
 
@@ -277,10 +267,10 @@ void demo_zlg237_hw_i2c_slave_poll_entry (amhw_zlg237_i2c_t *p_hw_i2c);
  *
  * \return 无
  */
-void demo_zlg237_hw_spi_master_entry (amhw_zlg237_spi_t *p_hw_spi,
+void demo_zlg237_hw_spi_master_entry (void              *p_hw_spi,
                                       int32_t            cs_pin,
                                       uint32_t           clk_rate,
-									  uint32_t           cs_mdelay);
+                                      uint32_t           cs_mdelay);
 
 /**
  * \brief SPI 主机例程，通过 HW 层接口实现
@@ -441,7 +431,7 @@ void demo_zlg_hw_uart_tx_dma_entry (amhw_zlg_uart_t *p_hw_uart,
  *
  * \return 无
  */
-void demo_zlg237_hw_usart_int_entry (amhw_zlg237_usart_t *p_hw_usart,
+void demo_zlg237_hw_usart_int_entry (void                *p_hw_usart,
                                      void (* pfn_init)(void),
                                      uint32_t             clk_rate,
                                      unsigned long        usart_base,
@@ -455,7 +445,7 @@ void demo_zlg237_hw_usart_int_entry (amhw_zlg237_usart_t *p_hw_usart,
  *
  * \return 无
  */
-void demo_zlg237_hw_usart_polling_entry (amhw_zlg237_usart_t *p_hw_usart,
+void demo_zlg237_hw_usart_polling_entry (void                *p_hw_usart,
                                          uint32_t             clk_rate);
 
 /**
@@ -467,7 +457,7 @@ void demo_zlg237_hw_usart_polling_entry (amhw_zlg237_usart_t *p_hw_usart,
  *
  * \return 无
  */
-void demo_zlg237_hw_usart_rx_dma_entry (amhw_zlg237_usart_t *p_hw_usart,
+void demo_zlg237_hw_usart_rx_dma_entry (void                *p_hw_usart,
                                         uint32_t             clk_rate,
                                         int32_t              dma_chan);
 
@@ -480,7 +470,7 @@ void demo_zlg237_hw_usart_rx_dma_entry (amhw_zlg237_usart_t *p_hw_usart,
  *
  * \return 无
  */
-void demo_zlg237_hw_usart_tx_dma_entry (amhw_zlg237_usart_t *p_hw_usart,
+void demo_zlg237_hw_usart_tx_dma_entry (void                *p_hw_usart,
                                         uint32_t             clk_rate,
                                         int32_t              dma_chan);
 
@@ -625,43 +615,44 @@ void demo_zlg237_can_int_entry (am_can_handle_t     can_handle,
  * \return 无
  */
 void demo_zlg237_can_entry (am_can_handle_t     can_handle,
-                                am_can_bps_param_t *can_btr_baud);
+                            am_can_bps_param_t *can_btr_baud);
 
-///**
-// * \brief USB打印机例程   该例程带打印时间以及打印数据量显示
-// * \param[in] handle      USB打印机服务句柄
-// * \return 无
-// */
-//void demo_usbd_printer_counter_entry (am_usbd_printer_handle handle);
-//
-///**
-// * \brief USB打印机例程   该例程仅打印相关信息
-// * \param[in] handle      USB打印机服务句柄
-// * \return 无
-// */
-//void demo_usbd_printer_entry (am_usbd_printer_handle handle);
-//
-///**
-// * \brief USB模拟串口例程
-// * \param[in] handle      USB模拟串口服务句柄
-// * \return 无
-// */
-//void demo_usbd_vcom_entry (am_usbd_cdc_vcom_handle handle);
-//
-///**
-// * \brief USB模拟按键例程
-// * \param[in] handle      USB模拟键盘服务句柄
-// * \return 无
-// */
-//void demo_usbd_keyboard_entry (am_usbd_keyboard_handle handle);
-//
-//
-///**
-// * \brief USB模拟U盘例程
-// * \param[in] handle      USB模拟键盘服务句柄
-// * \return 无
-// */
-//void demo_usbd_msc_entry (am_usbd_msc_handle handle);
+/**
+ * \brief USB打印机例程   该例程带打印时间以及打印数据量显示
+ * \param[in] handle      USB打印机服务句柄
+ * \return 无
+ */
+void demo_usbd_printer_counter_entry (void* p_handle);
+
+/**
+ * \brief USB打印机例程   该例程仅打印相关信息
+ * \param[in] handle      USB打印机服务句柄
+ * \return 无
+ */
+void demo_usbd_printer_entry (void* p_handle);
+
+/**
+ * \brief USB模拟串口例程
+ * \param[in] handle      USB模拟串口服务句柄
+ * \return 无
+ */
+void demo_usbd_vcom_entry (void* p_handle);
+
+/**
+ * \brief USB模拟按键例程
+ * \param[in] handle      USB模拟键盘服务句柄
+ * \return 无
+ */
+void demo_usbd_keyboard_entry (void* p_handle);
+
+
+/**
+ * \brief USB模拟U盘例程
+ * \param[in] handle      USB模拟键盘服务句柄
+ * \return 无
+ */
+void demo_usbd_msc_entry (void* p_handle);
+
 
 #ifdef __cplusplus
 }

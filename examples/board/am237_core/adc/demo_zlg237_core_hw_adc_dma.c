@@ -71,7 +71,7 @@ void demo_zlg237_core_hw_adc_dma_entry (void)
 
     am_clk_enable(CLK_ADC1);
 
-    demo_zlg237_hw_adc_dma_entry(ZLG237_ADC1,
+    demo_zlg237_hw_adc_dma_entry((void *)ZLG237_ADC1,
                                  adc_chan,
                                  sizeof(adc_chan)/sizeof(adc_chan[0]),
                                  __ADC1_DMA_CHAN1);

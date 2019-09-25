@@ -77,6 +77,7 @@ extern "C" {
 #include "am_hwconf_miniport_view_key.h"
 #include "am_event_input_key.h"
 #include "am_event_category_input.h"
+#include "am_baudrate_detect.h"
 
 /**
  * \addtogroup am_if_zlg237_inst_init
@@ -929,6 +930,9 @@ am_can_handle_t am_zlg237_can_inst_init (void);
 
 /** \brief CAN实例解初始化 */
 void am_zlg237_can_inst_deinit (am_can_handle_t handle);
+
+/** \brief 实例初始化，获得自动波特率服务句柄 */
+am_baudrate_detect_handle_t am_zlg237_baudrate_detect_inst_init (void);
 
 /**
  * @}

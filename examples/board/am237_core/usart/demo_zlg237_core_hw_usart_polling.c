@@ -64,7 +64,7 @@ void demo_zlg237_core_hw_usart_polling_entry (void)
     /*  πƒ‹ ±÷” */
     am_clk_enable(CLK_USART2);
 
-    demo_zlg237_hw_usart_polling_entry(ZLG237_USART2, am_clk_rate_get(CLK_USART2));
+    demo_zlg237_hw_usart_polling_entry((void *)ZLG237_USART2, am_clk_rate_get(CLK_USART2));
 }
 /** [src_zlg237_hw_usart_polling] */
 

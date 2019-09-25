@@ -87,11 +87,11 @@ void demo_zlg237_core_hw_adc_dma_double_entry (void)
     am_clk_enable(CLK_ADC1);
     am_clk_enable(CLK_ADC2);
 
-    demo_zlg237_hw_adc_dma_double_entry(ZLG237_ADC1,
+    demo_zlg237_hw_adc_dma_double_entry((void *)ZLG237_ADC1,
                                         adc1_chan,
                                         sizeof(adc1_chan)/sizeof(adc1_chan[0]),
                                         __ADC1_DMA_CHAN1,
-                                        ZLG237_ADC2,
+                                        (void *)ZLG237_ADC2,
                                         adc2_chan,
                                         sizeof(adc2_chan)/sizeof(adc2_chan[0]));
 }

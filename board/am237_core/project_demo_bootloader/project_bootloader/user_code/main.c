@@ -40,7 +40,7 @@ int am_main (void)
     //demo_zlg237_core_single_bootloader_uart_entry();
 
     /* 双区bootloader demo */
-    demo_zlg237_core_double_bootloader_uart_entry();
+    //demo_zlg237_core_double_bootloader_uart_entry();
 
     /* 基于上位机的 bootloader demo */
     //demo_zlg237_core_bootloader_kft_entry();

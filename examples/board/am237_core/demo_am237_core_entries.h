@@ -21,7 +21,7 @@
  * \endinternal
  */
 
-#include "amhw_zlg_adc.h"
+#include "hw/amhw_zlg237_adc.h"
 
 /**
  * \brief ADC INT 例程，通过 HW 层接口实现
@@ -433,13 +433,6 @@ void demo_zlg237_core_miniport_led_entry (void);
  */
 void demo_zlg237_core_miniport_zlg72128_entry (void);
 
-/**
- * \brief adc 例程，通过硬件实现
- */
-void demo_zlg_hw_adc_int_entry (amhw_zlg_adc_t *p_hw_adc,
-                                int             int_num,
-                                int             chan,
-                                uint32_t        vref_mv);
 /**
  * \brief gpio 例程
  */

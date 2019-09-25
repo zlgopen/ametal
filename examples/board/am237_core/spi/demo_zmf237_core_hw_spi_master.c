@@ -73,7 +73,7 @@ void demo_zlg237_core_hw_spi_master_entry (void)
     am_gpio_pin_cfg(PIOB_14, PIOB_14_SPI2_MISO | PIOB_14_INPUT_FLOAT);
     am_gpio_pin_cfg(PIOB_15, PIOB_15_SPI2_MOSI | PIOB_15_AF_PP);
 
-    demo_zlg237_hw_spi_master_entry(ZLG237_SPI2,
+    demo_zlg237_hw_spi_master_entry((void *)ZLG237_SPI2,
                                     PIOB_12,
                                     am_clk_rate_get(CLK_SPI2),
                                     100);
