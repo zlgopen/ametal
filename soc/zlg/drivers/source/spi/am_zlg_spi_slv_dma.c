@@ -143,7 +143,7 @@ static int __spi_slv_cfg (am_zlg_spi_slv_dma_dev_t *p_this,
 /**
  * \brief 片选中断
  */
-void __cs_irq_handle (void *p_arg)
+void __zlg327_cs_irq_handle (void *p_arg)
 {
     am_zlg_spi_slv_dma_dev_t *p_this    = ( am_zlg_spi_slv_dma_dev_t *)p_arg;
     amhw_zlg_spi_t           *p_hw_spi  = (amhw_zlg_spi_t *) (p_this->p_devinfo->spi_reg_base);
@@ -220,7 +220,7 @@ static int __cs_irq_cfg (am_zlg_spi_slv_dma_dev_t *p_this)
     }
 
     /* 连接终端回调函数 */
-    am_gpio_trigger_connect(p_this->p_devinfo->cs_pin, __cs_irq_handle, p_this);
+    am_gpio_trigger_connect(p_this->p_devinfo->cs_pin, __zlg327_cs_irq_handle, p_this);
 
     /* 配置为双边沿触发 */
     am_gpio_trigger_cfg(p_this->p_devinfo->cs_pin, AM_GPIO_TRIGGER_BOTH_EDGES);
@@ -241,7 +241,7 @@ static int __cs_irq_cfg_deinit (am_zlg_spi_slv_dma_dev_t *p_this)
     }
 
     am_gpio_trigger_disconnect(p_this->p_devinfo->cs_pin,
-                               __cs_irq_handle,
+                               __zlg327_cs_irq_handle,
                                p_this);
 
     am_gpio_trigger_off(p_this->p_devinfo->cs_pin);

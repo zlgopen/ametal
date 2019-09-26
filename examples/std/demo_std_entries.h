@@ -189,7 +189,6 @@ void demo_std_4key_entry (void);
 
 /**
  * \brief °´¼üÀý³Ì
- * \param[in] led_id LED ±àºÅ
  * \return ÎÞ
  */
 void demo_std_key_entry (void);

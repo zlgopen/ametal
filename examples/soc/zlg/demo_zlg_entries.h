@@ -26,6 +26,7 @@
 
 #include "am_clk.h"
 #include "am_timer.h"
+#include "am_can.h"
 
 #include "hw/amhw_zlg_adc.h"
 #include "hw/amhw_zlg_exti.h"
@@ -45,7 +46,7 @@ extern "C" {
 #endif
 
 /**
- * \brief ADC 硬件层（使用了中断）例程入口
+ * \brief ADC 硬件层（使用了中断）规则通道例程入口
  *
  * \param[in] p_hw_adc  : 指向 ADC 外设寄存器块的指针
  * \param[in] int_num   : 中断号
@@ -63,13 +64,84 @@ void demo_zlg_hw_adc_int_entry (amhw_zlg_adc_t *p_hw_adc,
                                 uint32_t        vref_mv);
 
 /**
- * \brief ADC 硬件层（DMA）例程入口
+ * \brief ADC 硬件层（DMA）规则通道例程入口
  *
  */
 void demo_zlg_hw_adc_dma_entry (amhw_zlg_adc_t *p_hw_adc,
                                 int            *p_adc_chan,
                                 int             adc_chan_num,
                                 uint8_t         dma_chan);
+
+/**
+ * \brief zlg237 ADC 硬件层（使用了中断）规则通道例程入口
+ *
+ * \param[in] p_hw_adc  : 指向 ADC 外设寄存器块的指针
+ * \param[in] int_num   : 中断号
+ * \param[in] chan      : 引脚对应的 ADC 通道号
+ * \param[in] vref_mv   : ADC参考电压，用以将ADC采样结果转换为电压值显示
+ *
+ * \note 一般情况下，在使用本 demo 前，还需打开 ADC 模块相应的时钟，
+ * 配置 ADC 通道对应的引脚，这些配置都与具体芯片相关。
+ *
+ * \return 无
+ */
+void demo_zlg237_hw_adc_int_entry (void              *p_hw_adc,
+                                   int                int_num,
+                                   int                chan,
+                                   uint32_t           vref_mv);
+
+/**
+ * \brief zlg237 DC 硬件层（DMA）规则通道例程入口
+ */
+void demo_zlg237_hw_adc_dma_entry (void              *p_hw_adc,
+                                   int               *p_adc_chan,
+                                   int                adc_chan_num,
+                                   uint8_t            dma_chan);
+
+
+/**
+ * \brief zlg237 ADC 硬件层（使用了中断） 注入通道例程入口
+ *
+ * \param[in] p_hw_adc     : 指向 ADC 外设寄存器块的指针
+ * \param[in] int_num      : 中断号
+ * \param[in] vref_mv      : 参考电压（mv）
+ * \param[in] p_adc_chan   : 指向ADC通道数组的指针
+ * \param[in] adc_chan_num : ADC通道个数
+ *
+ * \note 一般情况下，在使用本 demo 前，还需打开 ADC 模块相应的时钟，
+ * 配置 ADC 通道对应的引脚，这些配置都与具体芯片相关。
+ *
+ * \return 无
+ */
+void demo_zlg237_hw_adc_injected_int_entry (void              *p_hw_adc,
+                                            int                int_num,
+                                            uint32_t           vref_mv,
+                                            int               *p_adc_chan,
+                                            int                adc_chan_num);
+
+/**
+ * \brief zlg237 ADC 硬件层（使用了中断）规则通道、注入通道例程入口
+ *
+ * \param[in] p_hw_adc     : 指向 ADC1外设寄存器块的指针
+ * \param[in] p_adc_chan   : 指向ADC1通道数组的指针
+ * \param[in] adc_chan_num : ADC1通道个数
+ * \param[in] dma_chan     : DMA通道
+ * \param[in] p_hw_adc     : 指向 ADC2外设寄存器块的指针
+ * \param[in] p_adc_chan   : 指向ADC2通道数组的指针
+ * \param[in] adc_chan_num : ADC2通道个数
+ *
+ * \note 一般情况下，在使用本 demo 前，还需打开 ADC 模块相应的时钟，
+ * 配置 ADC 通道对应的引脚，这些配置都与具体芯片相关。
+ *
+ * \return 无
+ */
+void demo_zlg237_hw_adc_dma_double_entry (void              *p_hw_adc1,
+                                          int               *p_adc1_chan,
+                                          int                adc1_chan_num,
+                                          uint8_t            dma_chan,
+                                          void              *p_hw_adc2,
+                                          int               *p_adc2_chan,
+                                          int                adc2_chan_num);
 
 /**
  * \brief CLK 例程，通过 HW 层接口实现
@@ -98,6 +170,15 @@ void demo_zlg_drv_dma_m2m_entry (uint32_t dma_chan);
  * \return 无
  */
 void demo_zlg_drv_flash_entry (amhw_zlg_flash_t *p_hw_flash, uint8_t sector);
+
+/**
+ * \brief zlg237 FLASH 例程，通过驱动层接口实现
+ *
+ * \param[in] p_hw_flash 指向 FLASH 外设寄存器块的指针
+ *
+ * \return 无
+ */
+void demo_zlg237_drv_flash_entry (void *p_hw_flash, uint8_t sector);
 
 /**
  * \brief GPIO 例程，通过 HW 层接口实现
@@ -152,6 +233,44 @@ void demo_zlg_hw_i2c_master_poll_entry (amhw_zlg_i2c_t *p_hw_i2c,
  * \return 无
  */
 void demo_zlg_hw_i2c_slave_poll_entry (amhw_zlg_i2c_t *p_hw_i2c);
+
+
+/**
+ * \brief I2C 轮询模式下操作 EEPROM 例程，通过 HW 层接口实现
+ *
+ * \param[in] p_hw_i2c 指向 I2C 外设寄存器块的指针
+ * \param[in] clk_rate I2C 时钟源频率
+ *
+ * \return 无
+ */
+void demo_zlg237_hw_i2c_master_poll_entry (void           *p_hw_i2c,
+                                           uint32_t        clk_rate);
+
+/**
+ * \brief I2C 从机例程(此例程可以用来模拟 EEPROM)，通过 HW 层接口实现
+ *
+ * \param[in] p_hw_i2c 指向 I2C 外设寄存器块的指针
+ *
+ * \return 无
+ */
+void demo_zlg237_hw_i2c_slave_poll_entry (void *p_hw_i2c);
+
+
+
+
+/**
+ * \brief SPI 主机例程，通过 HW 层接口实现
+ *
+ * \param[in] p_hw_spi 指向 SPI 外设寄存器块的指针
+ * \param[in] cs_pin   片选引脚号
+ * \param[in] clk_rate SPI 时钟源频率
+ *
+ * \return 无
+ */
+void demo_zlg237_hw_spi_master_entry (void              *p_hw_spi,
+                                      int32_t            cs_pin,
+                                      uint32_t           clk_rate,
+                                      uint32_t           cs_mdelay);
 
 /**
  * \brief SPI 主机例程，通过 HW 层接口实现
@@ -248,7 +367,7 @@ void demo_zlg_hw_tim_timing_entry (amhw_zlg_tim_t     *p_hw_tim,
                                    int32_t             int_num);
 
 /**
- * \brief UART 中断发送例程，通过 HW 层接口实现
+ * \brief ZLG UART 中断发送例程，通过 HW 层接口实现
  *
  * \param[in] p_hw_uart 指向 UART 外设寄存器块的指针
  * \param[in] pfn_init  指向 UART 引脚初始化函数的指针
@@ -265,7 +384,7 @@ void demo_zlg_hw_uart_int_entry (amhw_zlg_uart_t *p_hw_uart,
                                  unsigned char    inum_uart);
 
 /**
- * \brief UART 轮询方式例程，通过 HW 层接口实现
+ * \brief ZLG UART 轮询方式例程，通过 HW 层接口实现
  *
  * \param[in] p_hw_uart 指向 UART 外设寄存器块的指针
  * \param[in] clk_rate  UART 时钟源频率
@@ -276,7 +395,7 @@ void demo_zlg_hw_uart_polling_entry (amhw_zlg_uart_t *p_hw_uart,
                                      uint32_t         clk_rate);
 
 /**
- * \brief UART DMA 接收例程，通过 HW 层接口实现
+ * \brief ZLG UART 接收例程，通过 HW 层接口实现
  *
  * \param[in] p_hw_uart 指向 UART 外设寄存器块的指针
  * \param[in] clk_rate  UART 时钟源频率
@@ -289,7 +408,7 @@ void demo_zlg_hw_uart_rx_dma_entry (amhw_zlg_uart_t *p_hw_uart,
                                     int32_t          dma_chan);
 
 /**
- * \brief UART DMA 发送例程，通过 HW 层接口实现
+ * \brief ZLG UART 发送例程，通过 HW 层接口实现
  *
  * \param[in] p_hw_uart 指向 UART 外设寄存器块的指针
  * \param[in] clk_rate  UART 时钟源频率
@@ -300,7 +419,61 @@ void demo_zlg_hw_uart_rx_dma_entry (amhw_zlg_uart_t *p_hw_uart,
 void demo_zlg_hw_uart_tx_dma_entry (amhw_zlg_uart_t *p_hw_uart,
                                     uint32_t         clk_rate,
                                     int32_t          dma_chan);
-                                    
+
+/**
+ * \brief ZLG237 USART 中断发送例程，通过 HW 层接口实现
+ *
+ * \param[in] p_hw_usart 指向 USART 外设寄存器块的指针
+ * \param[in] pfn_init  指向 USART 引脚初始化函数的指针
+ * \param[in] clk_rate  USART 时钟源频率
+ * \param[in] uart_base USART 基地址
+ * \param[in] inum_uart USART 中断号
+ *
+ * \return 无
+ */
+void demo_zlg237_hw_usart_int_entry (void                *p_hw_usart,
+                                     void (* pfn_init)(void),
+                                     uint32_t             clk_rate,
+                                     unsigned long        usart_base,
+                                     unsigned char        inum_usart);
+
+/**
+ * \brief ZLG237 USART 轮询方式例程，通过 HW 层接口实现
+ *
+ * \param[in] p_hw_usart 指向 USART 外设寄存器块的指针
+ * \param[in] clk_rate   USART 时钟源频率
+ *
+ * \return 无
+ */
+void demo_zlg237_hw_usart_polling_entry (void                *p_hw_usart,
+                                         uint32_t             clk_rate);
+
+/**
+ * \brief ZLG237 USART 接收例程，通过 HW 层接口实现
+ *
+ * \param[in] p_hw_usart 指向 USART 外设寄存器块的指针
+ * \param[in] clk_rate   USART 时钟源频率
+ * \param[in] dma_chan   DMA 通道号
+ *
+ * \return 无
+ */
+void demo_zlg237_hw_usart_rx_dma_entry (void                *p_hw_usart,
+                                        uint32_t             clk_rate,
+                                        int32_t              dma_chan);
+
+/**
+ * \brief ZLG237 USART 发送例程，通过 HW 层接口实现
+ *
+ * \param[in] p_hw_usart 指向 USART 外设寄存器块的指针
+ * \param[in] clk_rate   USART 时钟源频率
+ * \param[in] dma_chan   DMA 通道号
+ *
+ * \return 无
+ */
+void demo_zlg237_hw_usart_tx_dma_entry (void                *p_hw_usart,
+                                        uint32_t             clk_rate,
+                                        int32_t              dma_chan);
+
 /**
  * \brief 睡眠模式例程，使用定时器周期唤醒，通过驱动层接口实现
  *
@@ -411,6 +584,38 @@ void demo_zml166_adc_vol_para_adjuet_entry(void                   *p_handle,
                                            am_uart_handle_t        uart_handle,
                                            float                  *p_para);
 
+
+
+/**
+ * \brief CAN 中断例程入口
+ *
+ * \param[in] am_can_handle_t     can服务句柄
+ * \param[in] am_can_bps_param_t  指向波特率参数结构体的指针
+ * \param[in] am_can_int_type_t   中断使能类型
+ * \param[in] uint8_t             指向过滤table的指针
+ * \param[in] size_t              过滤table的长度
+ * \return 无
+ */
+void demo_zlg237_can_int_entry (am_can_handle_t     can_handle,
+                                am_can_bps_param_t *can_btr_baud,
+                                am_can_int_type_t   int_type,
+                                uint8_t            *p_filterbuff,
+                                size_t              lenth);
+/**
+ * \brief 例程入口
+ */
+
+/**
+ * \brief CAN 例程入口
+ *
+ * \param[in] am_can_handle_t     can服务句柄
+ * \param[in] am_can_bps_param_t  指向波特率参数结构体的指针
+ * \param[in] am_can_int_type_t   中断使能类型
+ *
+ * \return 无
+ */
+void demo_zlg237_can_entry (am_can_handle_t     can_handle,
+                            am_can_bps_param_t *can_btr_baud);
 
 /**
  * \brief USB打印机例程   该例程带打印时间以及打印数据量显示

@@ -46,6 +46,7 @@
 static void __tim_timing_callback (void *p_arg)
 {
     AM_DBG_INFO("The timing frq is 10Hz\r\n");
+    am_led_toggle(LED0);
 }
 
 /**

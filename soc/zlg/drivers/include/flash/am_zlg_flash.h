@@ -56,7 +56,7 @@ void am_zlg_flash_init (amhw_zlg_flash_t *p_hw_flash);
  * \return >0: 执行结果, -AM_EINVAL: 输入地址过大
  */
 int32_t am_zlg_flash_sector_erase (amhw_zlg_flash_t *p_hw_flash,
-                                   uint32_t             start_addr);
+                                   uint32_t          start_addr);
 
 /**
  * \brief 对扇区编程或部分扇区编程
@@ -68,10 +68,10 @@ int32_t am_zlg_flash_sector_erase (amhw_zlg_flash_t *p_hw_flash,
  *
  * \retval 0 实际成功写入的字数
  */
-int32_t am_zlg_flash_flash_program (amhw_zlg_flash_t *p_hw_flash,
-                                    uint32_t             dst_addr,
-                                    uint32_t            *p_src,
-                                    uint32_t             size);
+int32_t am_zlg_flash_sector_program (amhw_zlg_flash_t *p_hw_flash,
+                                     uint32_t          dst_addr,
+                                     uint32_t         *p_src,
+                                     uint32_t          size);
 
 /**
  * \brief 擦除所有扇区

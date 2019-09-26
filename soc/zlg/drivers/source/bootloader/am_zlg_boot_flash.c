@@ -121,10 +121,10 @@ static int __boot_flash_program(void      *p_drv,
     for(i = 0; i < program_sector_count; i++) {
 
         key = am_int_cpu_lock();
-        ret = am_zlg_flash_flash_program((amhw_zlg_flash_t *)p_dev->amhw_zlg_flash,
-                                          dst_addr + i * sector_size,
-                                          (uint32_t *)((uint32_t)p_src+ i * sector_size),
-                                          program_size);
+        ret = am_zlg_flash_sector_program((amhw_zlg_flash_t *)p_dev->amhw_zlg_flash,
+                                           dst_addr + i * sector_size,
+                                           (uint32_t *)((uint32_t)p_src+ i * sector_size),
+                                           program_size);
         am_int_cpu_unlock(key);
         if(ret != program_size) {
             return AM_ERROR;
@@ -136,10 +136,10 @@ static int __boot_flash_program(void      *p_drv,
         program_size = left_size / sizeof(uint32_t);
 
         key = am_int_cpu_lock();
-        ret = am_zlg_flash_flash_program((amhw_zlg_flash_t *)p_dev->amhw_zlg_flash,
-                                          dst_addr + i * sector_size,
-                                         (uint32_t *)((uint32_t)p_src+ i * sector_size),
-                                          program_size);
+        ret = am_zlg_flash_sector_program((amhw_zlg_flash_t *)p_dev->amhw_zlg_flash,
+                                           dst_addr + i * sector_size,
+                                          (uint32_t *)((uint32_t)p_src+ i * sector_size),
+                                           program_size);
         am_int_cpu_unlock(key);
         if(ret != program_size) {
             return AM_ERROR;

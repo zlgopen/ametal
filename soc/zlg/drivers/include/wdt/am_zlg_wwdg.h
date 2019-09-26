@@ -82,7 +82,7 @@ typedef struct am_zlg_wwdg_dev {
  * \return WWDG标准服务句柄，失败则返回NULL
  */
 am_wdt_handle_t am_zlg_wwdg_init (am_zlg_wwdg_dev_t               *p_dev,
-                                     const am_zlg_wwdg_devinfo_t  *p_devinfo);
+                                  const am_zlg_wwdg_devinfo_t  *p_devinfo);
 
 /**
  * \brief 解除WWDG（版本0）设备初始化
