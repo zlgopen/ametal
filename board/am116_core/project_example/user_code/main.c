@@ -43,7 +43,7 @@ int am_main (void)
      *
      * 注意：同一时刻只能运行一个 demo，即只能使某一行处于取消注释状态。
      */
-    demo_am116_core_std_led_entry();
+//    demo_am116_core_std_led_entry();
 //    demo_am116_core_std_delay_entry();
 //    demo_am116_core_hw_adc_int_entry();
 //    demo_am116_core_std_adc_entry();
@@ -139,6 +139,9 @@ int am_main (void)
 //    demo_am116_zsn60x_picca_test_entry();
 //    demo_am116_zsn60x_piccb_test_entry();
 //    demo_am116_zsn60x_auto_detect_test_entry();
+
+//    demo_am116_core_sensor_fxos8700cq_entry();
+    demo_am116_core_sensor_fxos8700cq_int_entry();
     while (1) {
     }
 }
