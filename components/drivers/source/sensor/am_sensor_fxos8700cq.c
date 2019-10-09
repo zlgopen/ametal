@@ -176,9 +176,9 @@
                                 | (int16_t)buff[1])
 
 /** \brief 计算加速度,并扩大10^6倍 */
-#define  __FXOS8700CQ_GET_ACCEL_VALUE_2G(data)  ((int32_t)((data >> 2) * 244))
-#define  __FXOS8700CQ_GET_ACCEL_VALUE_4G(data)  ((int32_t)((data >> 2) * 488))
-#define  __FXOS8700CQ_GET_ACCEL_VALUE_8G(data)  ((int32_t)((data >> 2) * 976))
+#define  __FXOS8700CQ_GET_ACCEL_VALUE_2G(data)  ((int32_t)((data >> 2) * 244000))
+#define  __FXOS8700CQ_GET_ACCEL_VALUE_4G(data)  ((int32_t)((data >> 2) * 488000))
+#define  __FXOS8700CQ_GET_ACCEL_VALUE_8G(data)  ((int32_t)((data >> 2) * 976000))
 
 /** \brief 计算磁力,并扩大10^6倍 */             //0.1uT/LSB     0.1uT = 1 gauss
 #define  __FXOS8700CQ_GET_MAG_VALUE(data)       ((int32_t)(data * 1000000))

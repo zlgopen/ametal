@@ -56,7 +56,7 @@ void demo_std_fxos8700cq_entry (am_sensor_handle_t handle)
      * 列出六个通道（加速度和磁感应强度）数据的名字和单位字符串，便于打印
      */
     const char *data_name_string[] = {"ACC_X", "ACC_Y", "ACC_Z", "MAG_X", "MAG_Y", "MAG_Z"};
-    const char *data_unit_string[] = {"g", "g", "g", "gauss", "gauss", "gauss"};
+    const char *data_unit_string[] = {"mg", "mg", "mg", "gauss", "gauss", "gauss"};
     
     am_sensor_enable(handle, id, 6, data);
 

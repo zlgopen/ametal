@@ -46,7 +46,7 @@ static void __pfn_accel_x (void *p_arg, uint32_t trigger_src)
     if (trigger_src & AM_SENSOR_TRIGGER_DATA_READY) {
         am_sensor_data_get(handle, &__fxos8700cq_id[0], 1, &__fxos8700cq_data[0]);
         am_sensor_val_unit_convert(&__fxos8700cq_data[0], 1, AM_SENSOR_UNIT_MICRO);
-        am_kprintf("The channel %d,type is accel X, value is: %d.%06d  g!\r\n",
+        am_kprintf("The channel %d,type is accel X, value is: %d.%06d  mg!\r\n",
                    __fxos8700cq_id[0],
                    (__fxos8700cq_data[0].val)/1000000,
                    (uint32_t)(__fxos8700cq_data[0].val)%1000000);
@@ -62,7 +62,7 @@ static void __pfn_accel_y (void *p_arg, uint32_t trigger_src)
     if (trigger_src & AM_SENSOR_TRIGGER_DATA_READY) {
         am_sensor_data_get(handle, &__fxos8700cq_id[1], 1, &__fxos8700cq_data[1]);
         am_sensor_val_unit_convert(&__fxos8700cq_data[1], 1, AM_SENSOR_UNIT_MICRO);
-        am_kprintf("The channel %d,type is accel Y, value is: %d.%06d  g!\r\n",
+        am_kprintf("The channel %d,type is accel Y, value is: %d.%06d  mg!\r\n",
                    __fxos8700cq_id[1],
                    (__fxos8700cq_data[1].val)/1000000,
                    (uint32_t)(__fxos8700cq_data[1].val)%1000000);
@@ -78,7 +78,7 @@ static void __pfn_accel_z (void *p_arg, uint32_t trigger_src)
     if (trigger_src & AM_SENSOR_TRIGGER_DATA_READY) {
         am_sensor_data_get(handle, &__fxos8700cq_id[2], 1, &__fxos8700cq_data[2]);
         am_sensor_val_unit_convert(&__fxos8700cq_data[2], 1, AM_SENSOR_UNIT_MICRO);
-        am_kprintf("The channel %d,type is accel Z, value is: %d.%06d  g!\r\n",
+        am_kprintf("The channel %d,type is accel Z, value is: %d.%06d  mg!\r\n",
                    __fxos8700cq_id[2],
                    (__fxos8700cq_data[2].val)/1000000,
                    (uint32_t)(__fxos8700cq_data[2].val)%1000000);
