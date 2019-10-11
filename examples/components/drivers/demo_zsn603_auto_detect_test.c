@@ -12,7 +12,7 @@
 
 /**
  * \file
- * \brief zsn60x 自动检测模式进行测试
+ * \brief zsn603 自动检测模式进行测试
  *
  * - 操作步骤：
  *   1. 正确连接并配置好串口；
@@ -23,7 +23,7 @@
  *   1. 将卡片放置天线感应区后串口打印响应信息；
  *
  * \par 源代码
- * \snippet demo_zsn60x_auto_detect_test.c src_zsn60x_auto_detect_test
+ * \snippet demo_zsn603_auto_detect_test.c src_zsn603_auto_detect_test
  *
  * \internal
  * \par Modification history
@@ -32,12 +32,12 @@
  */
 
 /**
- * \addtogroup demo_if_zsn60x_auto_detect_test
- * \copydoc demo_zsn60x_auto_detect_test.c
+ * \addtogroup demo_if_zsn603_auto_detect_test
+ * \copydoc demo_zsn603_auto_detect_test.c
  */
 
-/** [src_zsn60x_auto_detect_test] */
-#include "zsn60x.h"  
+/** [src_zsn603_auto_detect_test] */
+#include "zsn603.h"
 #include "ametal.h"
 #include "am_vdebug.h"
 static int a = 0;
@@ -47,29 +47,29 @@ void __card_input(void *p_arg){
     a = 1;
 }
 
-/* ZSN60x  自动检测测试程序 */
-void demo_zsn60x_auto_detect_test_entry(zsn60x_handle_t handle)
+/* ZSN603  自动检测测试程序 */
+void demo_zsn603_auto_detect_test_entry(zsn603_handle_t handle)
 {
     uint8_t ret;
     /* 使用默认密钥 */
     uint8_t data[6] = {0xff, 0xff, 0xff, 0xff, 0xff, 0xff};
-    zsn60x_auto_detect_ctrl_t  auto_ctrl;
-    zsn60x_auto_detect_data_t  auto_data;
+    zsn603_auto_detect_ctrl_t  auto_ctrl;
+    zsn603_auto_detect_data_t  auto_data;
 
     //自动检测模式配置
-    auto_ctrl.ad_mode        = ZSN60X_AUTO_DETECT_CONTINUE | ZSN60X_AUTO_DETECT_INTERRUPT |
-                               ZSN60X_AUTO_DETECT_SEND;
-    auto_ctrl.tx_mode        = ZSN60X_ANT_MODE_TX12;
-    auto_ctrl.req_code       = ZSN60X_MIFARE_REQUEST_IDLE;
-    auto_ctrl.auth_mode      = ZSN60X_AUTO_DETECT_KEY_AUTH;
-    auto_ctrl.key_type       = ZSN60X_ICC_KEY_TYPE_A;
+    auto_ctrl.ad_mode        = ZSN603_AUTO_DETECT_CONTINUE | ZSN603_AUTO_DETECT_INTERRUPT |
+                               ZSN603_AUTO_DETECT_SEND;
+    auto_ctrl.tx_mode        = ZSN603_ANT_MODE_TX12;
+    auto_ctrl.req_code       = ZSN603_MIFARE_REQUEST_IDLE;
+    auto_ctrl.auth_mode      = ZSN603_AUTO_DETECT_KEY_AUTH;
+    auto_ctrl.key_type       = ZSN603_ICC_KEY_TYPE_A;
     auto_ctrl.p_key          = data;
     auto_ctrl.key_len        = 6;
     auto_ctrl.block          = 4;
     auto_ctrl.pfn_card_input = __card_input;
     auto_ctrl.p_arg          = NULL;
 
-    ret = zsn60x_auto_detect(handle, &auto_ctrl);
+    ret = zsn603_auto_detect(handle, &auto_ctrl);
     if(ret == 0){
         am_kprintf("Entry auto detect card mode success!\r\n");
     }else{
@@ -79,7 +79,7 @@ void demo_zsn60x_auto_detect_test_entry(zsn60x_handle_t handle)
 
     /* 等待回调函数触发 */
     while(a == 0);
-    ret = zsn60x_get_auto_detect(handle, 0, &auto_data);
+    ret = zsn603_get_auto_detect(handle, 0, &auto_data);
     a = 0;
 
     if(ret == 0){
@@ -88,6 +88,6 @@ void demo_zsn60x_auto_detect_test_entry(zsn60x_handle_t handle)
         am_kprintf("Auto detect card fail beacuse error 0x%2x!\r\n", ret);
     }
 }  
-/** [src_zsn60x_auto_detect_test] */
+/** [src_zsn603_auto_detect_test] */
 
 /* end of file */

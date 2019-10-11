@@ -682,11 +682,6 @@
               <FilePath>..\..\..\..\components\drivers\source\sensor\am_sensor_shtc1.c</FilePath>
             </File>
             <File>
-              <FileName>am_sensor_fxos8700cq.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\components\drivers\source\sensor\am_sensor_fxos8700cq.c</FilePath>
-            </File>
-            <File>
               <FileName>zlg72128.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\components\drivers\source\digitron_key\zlg72128.c</FilePath>
@@ -695,6 +690,21 @@
               <FileName>zlg72128_platform.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\components\drivers\source\digitron_key\zlg72128_platform.c</FilePath>
+            </File>
+            <File>
+              <FileName>zsn603.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\zsn603\zsn603.c</FilePath>
+            </File>
+            <File>
+              <FileName>zsn603_platform.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\zsn603\zsn603_platform.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_sensor_fxos8700cq.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\sensor\am_sensor_fxos8700cq.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -1482,14 +1492,34 @@
               <FilePath>..\..\..\..\examples\board\am116_core\fm175xx\demo_am116_core_dr_fm175xx_piccb_read_id.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am116_core_sensor_fxos8700cq.c</FileName>
+              <FileName>demo_am116_zsn60x3auto_detect_test.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am116_core\sensor\demo_am116_core_sensor_fxos8700cq.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am116_core\zsn603\demo_am116_zsn60x3auto_detect_test.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_am116_zsn603_led_test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am116_core\zsn603\demo_am116_zsn603_led_test.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_am116_zsn603_picca_active_test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am116_core\zsn603\demo_am116_zsn603_picca_active_test.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_am116_zsn603_piccb_active_test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am116_core\zsn603\demo_am116_zsn603_piccb_active_test.c</FilePath>
             </File>
             <File>
               <FileName>demo_am116_core_sensor_fxos8700cq_int.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\board\am116_core\sensor\demo_am116_core_sensor_fxos8700cq_int.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_am116_core_sensor_fxos8700cq.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am116_core\sensor\demo_am116_core_sensor_fxos8700cq.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -1550,6 +1580,36 @@
               <FileName>demo_fm175xx_piccb_read_id.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\components\drivers\demo_fm175xx_piccb_read_id.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zsn603_auto_detect_test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\components\drivers\demo_zsn603_auto_detect_test.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zsn603_led_test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\components\drivers\demo_zsn603_led_test.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zsn603_picca_active_test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\components\drivers\demo_zsn603_picca_active_test.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zsn603_piccb_active_test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\components\drivers\demo_zsn603_piccb_active_test.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_std_fxos8700cq.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\std\sensor\fxos8700cq\demo_std_fxos8700cq.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_std_fxos8700cq_int.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\std\sensor\fxos8700cq\demo_std_fxos8700cq_int.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -1926,16 +1986,6 @@
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\std\sensor\shtc1\demo_std_shtc1.c</FilePath>
             </File>
-            <File>
-              <FileName>demo_std_fxos8700cq.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\std\sensor\fxos8700cq\demo_std_fxos8700cq.c</FilePath>
-            </File>
-            <File>
-              <FileName>demo_std_fxos8700cq_int.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\std\sensor\fxos8700cq\demo_std_fxos8700cq_int.c</FilePath>
-            </File>
           </Files>
         </Group>
         <Group>
@@ -2230,6 +2280,16 @@
               <FileName>am_hwconf_sensor_shtc1.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_sensor_shtc1.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_zsn603_uart.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zsn603_uart.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_zsn603_i2c.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zsn603_i2c.c</FilePath>
             </File>
             <File>
               <FileName>am_hwconf_sensor_fxos8700cq.c</FileName>
@@ -2916,11 +2976,6 @@
               <FilePath>..\..\..\..\components\drivers\source\sensor\am_sensor_shtc1.c</FilePath>
             </File>
             <File>
-              <FileName>am_sensor_fxos8700cq.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\components\drivers\source\sensor\am_sensor_fxos8700cq.c</FilePath>
-            </File>
-            <File>
               <FileName>zlg72128.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\components\drivers\source\digitron_key\zlg72128.c</FilePath>
@@ -2929,6 +2984,21 @@
               <FileName>zlg72128_platform.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\components\drivers\source\digitron_key\zlg72128_platform.c</FilePath>
+            </File>
+            <File>
+              <FileName>zsn603.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\zsn603\zsn603.c</FilePath>
+            </File>
+            <File>
+              <FileName>zsn603_platform.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\zsn603\zsn603_platform.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_sensor_fxos8700cq.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\sensor\am_sensor_fxos8700cq.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -3716,14 +3786,34 @@
               <FilePath>..\..\..\..\examples\board\am116_core\fm175xx\demo_am116_core_dr_fm175xx_piccb_read_id.c</FilePath>
             </File>
             <File>
-              <FileName>demo_am116_core_sensor_fxos8700cq.c</FileName>
+              <FileName>demo_am116_zsn60x3auto_detect_test.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am116_core\sensor\demo_am116_core_sensor_fxos8700cq.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\am116_core\zsn603\demo_am116_zsn60x3auto_detect_test.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_am116_zsn603_led_test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am116_core\zsn603\demo_am116_zsn603_led_test.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_am116_zsn603_picca_active_test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am116_core\zsn603\demo_am116_zsn603_picca_active_test.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_am116_zsn603_piccb_active_test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am116_core\zsn603\demo_am116_zsn603_piccb_active_test.c</FilePath>
             </File>
             <File>
               <FileName>demo_am116_core_sensor_fxos8700cq_int.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\board\am116_core\sensor\demo_am116_core_sensor_fxos8700cq_int.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_am116_core_sensor_fxos8700cq.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am116_core\sensor\demo_am116_core_sensor_fxos8700cq.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -3784,6 +3874,36 @@
               <FileName>demo_fm175xx_piccb_read_id.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\components\drivers\demo_fm175xx_piccb_read_id.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zsn603_auto_detect_test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\components\drivers\demo_zsn603_auto_detect_test.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zsn603_led_test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\components\drivers\demo_zsn603_led_test.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zsn603_picca_active_test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\components\drivers\demo_zsn603_picca_active_test.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zsn603_piccb_active_test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\components\drivers\demo_zsn603_piccb_active_test.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_std_fxos8700cq.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\std\sensor\fxos8700cq\demo_std_fxos8700cq.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_std_fxos8700cq_int.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\std\sensor\fxos8700cq\demo_std_fxos8700cq_int.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -4160,16 +4280,6 @@
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\std\sensor\shtc1\demo_std_shtc1.c</FilePath>
             </File>
-            <File>
-              <FileName>demo_std_fxos8700cq.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\std\sensor\fxos8700cq\demo_std_fxos8700cq.c</FilePath>
-            </File>
-            <File>
-              <FileName>demo_std_fxos8700cq_int.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\std\sensor\fxos8700cq\demo_std_fxos8700cq_int.c</FilePath>
-            </File>
           </Files>
         </Group>
         <Group>
@@ -4464,6 +4574,16 @@
               <FileName>am_hwconf_sensor_shtc1.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_sensor_shtc1.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_zsn603_uart.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zsn603_uart.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_zsn603_i2c.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zsn603_i2c.c</FilePath>
             </File>
             <File>
               <FileName>am_hwconf_sensor_fxos8700cq.c</FileName>

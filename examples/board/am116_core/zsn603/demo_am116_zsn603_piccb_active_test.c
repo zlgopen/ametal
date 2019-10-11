@@ -12,18 +12,17 @@
 
 /**
  * \file
- * \brief zsn60x 自动检测模式进行测试
+ * \brief zsn603 B类卡测试程序
  *
  * - 操作步骤：
  *   1. 正确连接并配置好串口；
- *   2. 正确连接好天线；
- *   3. 将卡片置于感应区
+ *   2. 将B类卡放置于天线感应区。
  *
  * - 实验现象：
- *   1. 将卡片放置天线感应区后串口打印响应信息；
+ *   1. MCU将会打印出B类卡的相关信息
  *
  * \par 源代码
- * \snippet demo_am116_zsn60x_auto_detect_test.c src_am116_zsn60x_auto_detect_test
+ * \snippet demo_am116_zsn603_piccb_test.c src_am116_zsn603_piccb_test
  *
  * \internal
  * \par Modification history
@@ -32,22 +31,22 @@
  */
 
 /**
- * \addtogroup demo_am116_if_zsn60x_auto_detect_test
- * \copydoc demo_am116_zsn60x_auto_detect_test.c
+ * \addtogroup demo_am116_if_zsn603_piccb_test
+ * \copydoc demo_am116_zsn603_piccb_test.c
  */
 
-/** [src_am116_zsn60x_auto_detect_test] */
+/** [src_am116_zsn603_piccb_test] */
 
-#include "zsn60x.h"
+#include "zsn603.h"
 #include "demo_components_entries.h"
 #include "demo_am116_core_entries.h"
-#include "am_hwconf_zsn60x_uart.h"
+#include "am_hwconf_zsn603_uart.h"
 
-void demo_am116_zsn60x_auto_detect_test_entry()
+void demo_am116_zsn603_piccb_test_entry()
 {
-    zsn60x_handle_t  handle = am_zsn60x_uart_inst_init();
-    demo_zsn60x_auto_detect_test_entry(handle);
+    zsn603_handle_t  handle = am_zsn603_uart_inst_init();
+    demo_zsn603_piccb_active_test_entry(handle);
 }
-/** [src_am116_zsn60x_auto_detect_test] */
+/** [src_am116_zsn603_piccb_test] */
 
 /* end of file */

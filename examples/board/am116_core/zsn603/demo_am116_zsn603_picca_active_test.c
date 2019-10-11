@@ -12,7 +12,7 @@
 
 /**
  * \file
- * \brief zsn60x A类卡测试程序
+ * \brief zsn603 A类卡测试程序
  *
  * - 操作步骤：
  *   1. 正确连接并配置好串口；
@@ -22,7 +22,7 @@
  *   1. MCU将会打印出A类卡的相关信息
  *
  * \par 源代码
- * \snippet demo_am116_zsn60x_picca_test.c src_am116_zsn60x_picca_test
+ * \snippet demo_am116_zsn603_picca_test.c src_am116_zsn603_picca_test
  *
  * \internal
  * \par Modification history
@@ -31,22 +31,22 @@
  */
 
 /**
- * \addtogroup demo_am116_if_zsn60x_picca_test
- * \copydoc demo_am116_zsn60x_picca_test.c
+ * \addtogroup demo_am116_if_zsn603_picca_test
+ * \copydoc demo_am116_zsn603_picca_test.c
  */
 
-/** [src_am116_zsn60x_picca_test] */
+/** [src_am116_zsn603_picca_test] */
 
-#include "zsn60x.h"
+#include "zsn603.h"
 #include "demo_components_entries.h"
 #include "demo_am116_core_entries.h"
-#include "am_hwconf_zsn60x_uart.h"
+#include "am_hwconf_zsn603_uart.h"
 
-void demo_am116_zsn60x_picca_test_entry()
+void demo_am116_zsn603_picca_test_entry()
 {
-    zsn60x_handle_t  handle = am_zsn60x_uart_inst_init();
-    demo_zsn60x_picca_active_test_entry(handle);
+    zsn603_handle_t  handle = am_zsn603_uart_inst_init();
+    demo_zsn603_picca_active_test_entry(handle);
 }
-/** [src_am116_zsn60x_picca_test] */
+/** [src_am116_zsn603_picca_test] */
 
 /* end of file */

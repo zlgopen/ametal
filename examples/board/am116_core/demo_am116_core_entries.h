@@ -27,7 +27,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
- 
+
 /**
  * \brief ADC INT 例程，通过 HW 层接口实现
  */
@@ -531,25 +531,25 @@ void demo_am116_core_bootloader_entry(void);
  */
 void demo_am116_core_application_entry(void);
 
-///**
-// * \brief ZSN60x LED测试程序
-// */
-//void demo_am116_zsn60x_led_test_entry();
+/**
+ * \brief ZSN603 LED测试程序
+ */
+void demo_am116_zsn603_led_test_entry(void);
 
-///**
-// * \brief ZSN60x A类卡测试程序
-// */
-//void demo_am116_zsn60x_picca_test_entry();
+/**
+ * \brief ZSN603 A类卡测试程序
+ */
+void demo_am116_zsn603_picca_test_entry(void);
 
-///**
-// * \brief ZSN60x B类卡测试程序
-// */
-//void demo_am116_zsn60x_piccb_test_entry();
+/**
+ * \brief ZSN603 B类卡测试程序
+ */
+void demo_am116_zsn603_piccb_test_entry(void);
 
-///**
-// * \brief ZSN60x 自动检测测试程序
-// */
-//void demo_am116_zsn60x_auto_detect_test_entry();
+/**
+ * \brief ZSN603 自动检测测试程序
+ */
+void demo_am116_zsn603_auto_detect_test_entry(void);
 
 /**
  * \brief USBD键盘例程

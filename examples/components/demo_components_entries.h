@@ -37,7 +37,7 @@ extern "C" {
 #include "am_zm516x.h"
 #include "am_zlg9021.h"
 #include "am_zlg52810.h"
-#include "zsn60x.h"
+#include "zsn603.h"
 #include "am_xmodem.h"
 #include "am_baudrate_detect.h"
 /**
@@ -219,36 +219,36 @@ void demo_am845_core_eeprom_entry (void);
 void demo_fm25clxx_entry(am_fm25clxx_handle_t fm25clxx_handle, int32_t test_lenth);
 
 /**
- * \brief  ZSN60x  LED测试实例程序
+ * \brief  ZSN603  LED测试实例程序
  *
- * \param[in] handle      : ZSN60X设备服务句柄
+ * \param[in] handle      : ZSN603设备服务句柄
  * \retval  no : 无返回值
  */
-void demo_zsn60x_led_test_entry (zsn60x_handle_t handle);
+void demo_zsn603_led_test_entry (zsn603_handle_t handle);
 
 /**
- * \brief  ZSN60x  A类卡激活例程
+ * \brief  ZSN603  A类卡激活例程
  *
- * \param[in] handle      : ZSN60X设备服务句柄
+ * \param[in] handle      : ZSN603设备服务句柄
  * \retval  no : 无返回值
  */
-void demo_zsn60x_picca_active_test_entry (zsn60x_handle_t handle);
+void demo_zsn603_picca_active_test_entry (zsn603_handle_t handle);
 
 /**
- * \brief  ZSN60x  B类卡激活例程
+ * \brief  ZSN603  B类卡激活例程
  *
- * \param[in] handle      : ZSN60X设备服务句柄
+ * \param[in] handle      : ZSN603设备服务句柄
  * \retval  no : 无返回值
  */
-void demo_zsn60x_piccb_active_test_entry (zsn60x_handle_t handle);
+void demo_zsn603_piccb_active_test_entry (zsn603_handle_t handle);
 
 /**
- * \brief  ZSN60x  自动检测模式例程
+ * \brief  ZSN603  自动检测模式例程
  *
- * \param[in] handle      : ZSN60X设备服务句柄
+ * \param[in] handle      : ZSN603设备服务句柄
  * \retval  no : 无返回值
  */
-void demo_zsn60x_auto_detect_test_entry(zsn60x_handle_t handle);
+void demo_zsn603_auto_detect_test_entry(zsn603_handle_t handle);
 
 /**
  * \brief xmodem接收例程

@@ -11,30 +11,30 @@
 *******************************************************************************/
 /**
  * \file
- * \brief Miniport-595 配置文件
+ * \brief ZSN603 配置文件
  *
  * \internal
  * \par Modification history
- * - 1.00 17-07-13  tee, first implementation.
+ * - 1.00 19-04-22  htf, first implementation.
  * \endinternal
  */
 
-#ifndef __AM_HWCONF_ZSN60X_I2C_H
-#define __AM_HWCONF_ZSN60X_I2C_H
+#ifndef __AM_HWCONF_ZSN603_UART_H
+#define __AM_HWCONF_ZSN603_UART_H
 
 #include "ametal.h"
-#include "zsn60x.h"
+#include "zsn603.h"
 #ifdef __cplusplus
 extern "C" {
 #endif
 
 /**
- * \brief ZSN60x (I2C 模式) 实例初始化
+ * \brief ZSN603 (UART 模式) 实例初始化
  *
  * \retval  handle  初始化成功
  * \retval  NULL    初始化失败
  */
-zsn60x_handle_t  am_zsn60x_i2c_inst_init (void);
+zsn603_handle_t  am_zsn603_uart_inst_init (void);
 
 #ifdef __cplusplus
 }
