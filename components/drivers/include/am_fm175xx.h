@@ -598,6 +598,7 @@ typedef struct am_fm175xx_dev {
     volatile uint32_t       tmo_cnt;            /**< \brief 超时计数器 */
     am_fm175xx_prot_type_t  iso_type;           /**< \brief 保存读卡芯片协议 */
     am_fm175xx_cmd_info_t   cmd_info;           /**< \brief 命令信息 */
+    volatile uint8_t        read_flag;          /**< \brief 天线复位后读卡标志 */
     volatile uint8_t        tx_state;           /**< \brief 天线状态 */
     volatile am_bool_t      power_down;         /**< \brief 掉电标志 */
 
