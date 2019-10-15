@@ -485,13 +485,13 @@ int am_gpio_pin_cfg (int pin, uint32_t flags)
 
     }
 
-    /* 设置复用功能时管脚模式 */
-    amhw_zlg_gpio_pin_set(p_hw_gpio, iocon_cfg, pin);
-
     /* 设置管脚的复用功能 */
     if ((flags & AM_ZMF159_GPIO_FUNEN) != 0) {
         amhw_zlg_gpio_pin_afr_set(p_hw_gpio, AM_ZMF159_GPIO_FUNC_GET(flags), pin);
     }
+
+    /* 设置复用功能时管脚模式 */
+    amhw_zlg_gpio_pin_set(p_hw_gpio, iocon_cfg, pin);
 
     return AM_OK;
 }
