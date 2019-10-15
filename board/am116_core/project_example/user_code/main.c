@@ -139,6 +139,8 @@ int am_main (void)
 //    demo_am116_zsn60x_picca_test_entry();
 //    demo_am116_zsn60x_piccb_test_entry();
 //    demo_am116_zsn60x_auto_detect_test_entry();
+//    demo_am116_core_sensor_fxos8700cq_entry();
+//    demo_am116_core_sensor_fxos8700cq_int_entry();
     while (1) {
     }
 }

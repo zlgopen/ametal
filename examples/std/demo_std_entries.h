@@ -459,6 +459,20 @@ void demo_std_bmg160_entry (am_sensor_handle_t handle);
 void demo_std_mmc5883ma_entry (am_sensor_handle_t handle);
 
 /**
+ * \brief 六轴传感器FXOS8700CQ例程，通过查询方式实现
+ *
+ * \return 无
+ */
+void demo_std_fxos8700cq_entry (am_sensor_handle_t handle);
+
+/**
+ * \brief 六轴传感器FXOS8700CQ例程，通过触发模式实现
+ *
+ * \return 无
+ */
+void demo_std_fxos8700cq_int_entry (am_sensor_handle_t handle);
+
+/**
  * \brief SD Card读写例程
  *
  * \return 无

@@ -512,6 +512,16 @@ void demo_am116_core_sensor_bmg160_entry (void);
 void demo_am116_core_sensor_mmc5883ma_entry (void);
 
 /**
+ * \brief 六轴传感器查询模式例程入口
+ */
+void demo_am116_core_sensor_fxos8700cq_entry (void);
+
+/**
+ * \brief 六轴传感器触发模式例程入口
+ */
+void demo_am116_core_sensor_fxos8700cq_int_entry (void);
+
+/**
  * \brief bootloader demo例程入口
  */
 void demo_am116_core_bootloader_entry(void);
