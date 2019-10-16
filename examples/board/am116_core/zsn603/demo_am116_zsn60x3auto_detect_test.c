@@ -12,16 +12,18 @@
 
 /**
  * \file
- * \brief zsn60x LED测试程序
+ * \brief zsn603 自动检测模式进行测试
  *
  * - 操作步骤：
  *   1. 正确连接并配置好串口；
+ *   2. 正确连接好天线；
+ *   3. 将卡片置于感应区
  *
  * - 实验现象：
- *   1. ZSN600的LED灯将会闪烁，若执行错误则会打印响应的错误标识号 ；
+ *   1. 将卡片放置天线感应区后串口打印响应信息；
  *
  * \par 源代码
- * \snippet demo_am116_zsn60x_led_test.c src_am116_zsn60x_led_test
+ * \snippet demo_am116_zsn603_auto_detect_test.c src_am116_zsn603_auto_detect_test
  *
  * \internal
  * \par Modification history
@@ -30,22 +32,22 @@
  */
 
 /**
- * \addtogroup demo_am116_if_zsn60x_led_test
- * \copydoc demo_am116_zsn60x_led_test.c
+ * \addtogroup demo_am116_if_zsn603_auto_detect_test
+ * \copydoc demo_am116_zsn603_auto_detect_test.c
  */
 
-/** [src_am116_zsn60x_led_test] */
+/** [src_am116_zsn603_auto_detect_test] */
 
-#include "zsn60x.h"
+#include "zsn603.h"
 #include "demo_components_entries.h"
 #include "demo_am116_core_entries.h"
-#include "am_hwconf_zsn60x_uart.h"
+#include "am_hwconf_zsn603_uart.h"
 
-void demo_am116_zsn60x_led_test_entry()
+void demo_am116_zsn603_auto_detect_test_entry()
 {
-    zsn60x_handle_t  handle = am_zsn60x_uart_inst_init();
-    demo_zsn60x_led_test_entry(handle);
+    zsn603_handle_t  handle = am_zsn603_uart_inst_init();
+    demo_zsn603_auto_detect_test_entry(handle);
 }
-/** [src_am116_zsn60x_led_test] */
+/** [src_am116_zsn603_auto_detect_test] */
 
 /* end of file */

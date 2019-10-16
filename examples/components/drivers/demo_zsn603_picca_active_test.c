@@ -12,7 +12,7 @@
 
 /**
  * \file
- * \brief zsn60x A类卡测试程序
+ * \brief zsn603 A类卡测试程序
  *
  * - 操作步骤：
  *   1. 正确连接并配置好串口；
@@ -22,7 +22,7 @@
  *   1. MCU将会打印出A类卡的相关信息
  *
  * \par 源代码
- * \snippet demo_zsn60x_picca_test.c src_zsn60x_picca_test
+ * \snippet demo_zsn603_picca_test.c src_zsn603_picca_test
  *
  * \internal
  * \par Modification history
@@ -31,17 +31,17 @@
  */
 
 /**
- * \addtogroup demo_if_zsn60x_picca_test
- * \copydoc demo_zsn60x_picca_test.c
+ * \addtogroup demo_if_zsn603_picca_test
+ * \copydoc demo_zsn603_picca_test.c
  */
 
-/** [src_zsn60x_picca_test] */
+/** [src_zsn603_picca_test] */
 #include "ametal.h"
-#include "zsn60x.h"
+#include "zsn603.h"
 #include "am_vdebug.h"
 
-/* ZSN60x  A类卡激活测试程序 */
-void demo_zsn60x_picca_active_test_entry (zsn60x_handle_t handle)
+/* ZSN603  A类卡激活测试程序 */
+void demo_zsn603_picca_active_test_entry (zsn603_handle_t handle)
 {
     unsigned short  atq[2] = {0};
     unsigned char   saq = 0;
@@ -49,7 +49,7 @@ void demo_zsn60x_picca_active_test_entry (zsn60x_handle_t handle)
     unsigned char   uid[10] = {0};
     unsigned char   ret = 0;
     //A卡请求接口函数  请求模式为 0x26  IDLE
-    ret = zsn60x_picca_active(handle, 0x26, atq, &saq, &len, uid);
+    ret = zsn603_picca_active(handle, 0x26, atq, &saq, &len, uid);
     if(ret == 0){
         unsigned char i = 0;
         am_kprintf("ATQ  is : %02x  %02x\r\n", atq[0], atq[1]);
@@ -63,6 +63,6 @@ void demo_zsn60x_picca_active_test_entry (zsn60x_handle_t handle)
         am_kprintf("active fail beacuse error 0x%02x", ret);
     }
 }
-/** [src_zsn60x_picca_test] */
+/** [src_zsn603_picca_test] */
 
 /* end of file */

@@ -12,7 +12,7 @@
 
 /**
  * \file
- * \brief zsn60x LED测试程序
+ * \brief zsn603 LED测试程序
  *
  * - 操作步骤：
  *   1. 正确连接并配置好串口；
@@ -21,7 +21,7 @@
  *   1. ZSN600的LED灯将会闪烁，若执行错误则会打印响应的错误标识号 ；
  *
  * \par 源代码
- * \snippet demo_zsn60x_led_test.c src_zsn60x_led_test
+ * \snippet demo_zsn603_led_test.c src_zsn603_led_test
  *
  * \internal
  * \par Modification history
@@ -30,31 +30,31 @@
  */
 
 /**
- * \addtogroup demo_if_zsn60x_led_test
- * \copydoc demo_zsn60x_led_test.c
+ * \addtogroup demo_if_zsn603_led_test
+ * \copydoc demo_zsn603_led_test.c
  */
 
-/** [src_zsn60x_led_test] */
-#include "zsn60x.h"
+/** [src_zsn603_led_test] */
+#include "zsn603.h"
 #include "ametal.h"
 #include "am_vdebug.h"
-/* ZSN60x  LED测试程序 */
-void demo_zsn60x_led_test_entry (zsn60x_handle_t handle)
+/* ZSN603  LED测试程序 */
+void demo_zsn603_led_test_entry (zsn603_handle_t handle)
 {
     unsigned char ret = 0;
-    ret = zsn60x_control_led (handle,  ZSN60X_CONTROL_LED_ON);
+    ret = zsn603_control_led (handle,  ZSN603_CONTROL_LED_ON);
     if(ret == 0){
         am_kprintf("led on !\r\n");
     }else{
         am_kprintf("led control beacuse error 0x%02x", ret);
     }
-    ret = zsn60x_control_led (handle,  ZSN60X_CONTROL_LED_OFF);
+    ret = zsn603_control_led (handle,  ZSN603_CONTROL_LED_OFF);
     if(ret == 0){
         am_kprintf("led off !\r\n");
     }else{
         am_kprintf("led control beacuse error 0x%02x", ret);
     }
 }
-/** [src_zsn60x_led_test] */
+/** [src_zsn603_led_test] */
 
 /* end of file */
