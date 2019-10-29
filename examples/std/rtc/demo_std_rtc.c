@@ -44,11 +44,11 @@
 am_local am_tm_t __g_current_time = {
     55,          /**< \brief 秒 */
     59,          /**< \brief 分 */
-    11,          /**< \brief 时 */
+    16,          /**< \brief 时 */
     5,           /**< \brief 日 */
     8-1,         /**< \brief 月 */
     2017-1900,   /**< \brief 年 */
-    6,           /**< \brief 周 */
+    4,           /**< \brief 周 */
 };
 
 /**

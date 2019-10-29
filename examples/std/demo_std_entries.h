@@ -42,6 +42,7 @@
 #include "am_hc595.h"
 #include "am_sensor.h"
 #include "am_sdcard.h"
+#include "am_dac.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -477,7 +478,15 @@ void demo_std_fxos8700cq_int_entry (am_sensor_handle_t handle);
  *
  * \return 无
  */
-void demo_std_sdcard_entry (am_sdcard_handle_t handle);
+//void demo_std_sdcard_entry (am_sdcard_handle_t handle);
+
+/**
+ * \brief DAC输出电压，标准接口层实现
+ * \return 无
+ */
+void demo_std_dac_entry (am_dac_handle_t dac0_handle,
+                         uint8_t         channel,
+                         uint32_t        mv_out);
 
 #ifdef __cplusplus
 }

@@ -12,6 +12,7 @@ __g_board_soc_map  = {
     'am227_core'   : 'zlg/zlg217',
     'am237_core'   : 'zlg/zlg237',
     'am116_core'   : 'zlg/zlg116',
+    'am118_core'   : 'zlg/zlg118',
     'aml166_core'  : 'zlg/zml166',
     'am126_core'   : 'zlg/zlg116',
     'am159_core'   : 'zlg/zmf159',
