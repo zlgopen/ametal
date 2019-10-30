@@ -1290,7 +1290,6 @@ uint8_t zsn603_picca_active(zsn603_handle_t  handle,
  * \param[in] handle     : ZSN603设备服务句柄
  * \param[in] req_mode   : 请求代码(1字节): 0x00~IDLE
  *                                      0x08~ALL
- *                         应用标识(1字节): 默认为0x00
  * \param[out] p_uid     : 返回UID   长度为12字节
  *
  * \retval 其他 : 对应错误码
@@ -1463,8 +1462,8 @@ uint8_t zsn603_plus_cpu_follow_auth(zsn603_handle_t      handle,
  * \retval  0 : 执行成功
  */
 uint8_t zsn603_plus_cpu_follow_auth_e2(zsn603_handle_t      handle,
-                                       uint16_t       addr,
-                                       uint8_t        key_block);
+                                       uint16_t             addr,
+                                       uint8_t              key_block);
 
 
 /**
