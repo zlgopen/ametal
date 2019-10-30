@@ -25,7 +25,7 @@
  *      （如：AM_DBG_INFO()）。
  *
  * \par 源代码
- * \snippet demo_zlg118_core_opa_one.c src_zlg118_core_opa_one
+ * \snippet demo_hc32l13x_core_opa_one.c src_hc32l13x_core_opa_one
  *
  *
  * \internal
@@ -35,24 +35,24 @@
  */
 
 /**
- * \addtogroup demo_if_zlg118_core_opa_one
- * \copydoc demo_zlg118_core_opa_one.c
+ * \addtogroup demo_if_hc32l13x_core_opa_one
+ * \copydoc demo_hc32l13x_core_opa_one.c
  */
 
-/** [src_zlg118_core_opa_one] */
+/** [src_hc32l13x_core_opa_one] */
 #include "ametal.h"
-#include "am_zlg118.h"
+#include "am_hc32l13x.h"
 #include "am_gpio.h"
-#include "zlg118_pin.h"
-#include "am_zlg118_opa.h"
+#include "hc32l13x_pin.h"
+#include "am_hc32l13x_opa.h"
 #include "demo_zlg_entries.h"
 
-#define OPA_MODE    AM_ZLG118_OPA_GENERAL  /**< \brief OPA通用模式*/
+#define OPA_MODE    AM_HC32_OPA_GENERAL  /**< \brief OPA通用模式*/
 
 /**
  * \brief 例程入口
  */
-void demo_zlg118_core_hw_opa_one_entry (void)
+void demo_hc32l13x_core_hw_opa_one_entry (void)
 {
 
     AM_DBG_INFO("demo am118_core hw opa one test!\r\n");
@@ -66,7 +66,7 @@ void demo_zlg118_core_hw_opa_one_entry (void)
     /* PB00 OPA输入 */
     am_gpio_pin_cfg (PIOB_0, PIOB_0_AIN);
 
-    demo_zlg118_hw_opa_one_entry(ZLG118_OPA, OPA_MODE);
+    demo_hc32l13x_hw_opa_one_entry(HC32_OPA, OPA_MODE);
 }
 
 /* end of file */

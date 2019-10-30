@@ -26,7 +26,7 @@
  *       PIOA_9 引脚连接 PC 串口的 RXD。
  *
  * \par 源代码
- * \snippet demo_zlg118_hw_adc_int.c src_zlg118_hw_adc_int
+ * \snippet demo_hc32l13x_hw_adc_int.c src_hc32l13x_hw_adc_int
  *
  * \internal
  * \par Modification History
@@ -35,14 +35,14 @@
  */
 
 /**
- * \addtogroup demo_if_zlg118_hw_adc_int
- * \copydoc demo_zlg118_hw_adc_int.c
+ * \addtogroup demo_if_hc32l13x_hw_adc_int
+ * \copydoc demo_hc32l13x_hw_adc_int.c
  */
 
-/** [src_zlg118_hw_adc_int] */
+/** [src_hc32l13x_hw_adc_int] */
 #include "ametal.h"
 #include "am_vdebug.h"
-#include "am_zlg118.h"
+#include "am_hc32l13x.h"
 #include "am_gpio.h"
 #include "am_clk.h"
 #include "demo_zlg_entries.h"
@@ -51,7 +51,7 @@
 /**
  * \brief 例程入口
  */
-void demo_zlg118_core_hw_adc_int_entry (void)
+void demo_hc32l13x_core_hw_adc_int_entry (void)
 {
     AM_DBG_INFO("demo am118_core hw adc int!\r\n");
 
@@ -61,11 +61,11 @@ void demo_zlg118_core_hw_adc_int_entry (void)
     /* 使能时钟 */
     am_clk_enable(CLK_ADC_BGR);
 
-    demo_zlg118_hw_adc_int_entry(ZLG118_ADC,
+    demo_hc32l13x_hw_adc_int_entry(HC32_ADC,
                                  INUM_ADC_DAC,
-                                 AMHW_ZLG118_CHAN_AIN3_PA3,
+                                 AMHW_HC32_CHAN_AIN3_PA3,
                                  3300);
 }
-/** [src_zlg118_hw_adc_int] */
+/** [src_hc32l13x_hw_adc_int] */
 
 /* end of file */

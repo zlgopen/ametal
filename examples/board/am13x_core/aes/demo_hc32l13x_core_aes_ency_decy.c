@@ -26,7 +26,7 @@
  *      （如：AM_DBG_INFO()）。
  *
  * \par 源代码
- * \snippet demo_zlg118_core_aes_ency_decy.c src_zlg118_core_aes_ency_decy
+ * \snippet demo_hc32l13x_core_aes_ency_decy.c src_hc32l13x_core_aes_ency_decy
  *
  *
  * \internal
@@ -36,22 +36,22 @@
  */
 
 /**
- * \addtogroup demo_if_zlg118_core_aes_ency_decy
- * \copydoc demo_zlg118_core_aes_ency_decy.c
+ * \addtogroup demo_if_hc32l13x_core_aes_ency_decy
+ * \copydoc demo_hc32l13x_core_aes_ency_decy.c
  */
 
-/** [src_zlg118_core_aes_ency_decy] */
+/** [src_hc32l13x_core_aes_ency_decy] */
 #include "ametal.h"
-#include "am_zlg118.h"
+#include "am_hc32l13x.h"
 #include "am_gpio.h"
-#include "zlg118_pin.h"
-#include "am_zlg118_aes.h"
+#include "hc32l13x_pin.h"
+#include "am_hc32l13x_aes.h"
 #include "demo_zlg_entries.h"
 
 /**
  * \brief 密钥长度
  */
-#define AES_KEY_LEN    AM_ZLG118_AES_KEY_LEN_128_BIT
+#define AES_KEY_LEN    AM_HC32_AES_KEY_LEN_128_BIT
 
 /*******************************************************************************
  * 全局变量
@@ -66,7 +66,7 @@ static uint32_t aes_key[8]  = {0x03020100, 0x07060504, 0x0B0A0908, 0x0F0E0D0C,\
 /**
  * \brief 例程入口
  */
-void demo_zlg118_core_hw_aes_ency_decy_entry (void)
+void demo_hc32l13x_core_hw_aes_ency_decy_entry (void)
 {
     AM_DBG_INFO("Test start: demo-aes-ency-decy test !\r\n");
 
@@ -74,7 +74,7 @@ void demo_zlg118_core_hw_aes_ency_decy_entry (void)
     am_clk_enable (CLK_AES);
 
     /* 例程入口 */
-    demo_zlg118_hw_aes_ency_decy_entry(ZLG118_AES,
+    demo_hc32l13x_hw_aes_ency_decy_entry(HC32_AES,
                                        AES_KEY_LEN,
                                        aes_data,
                                        aes_key);

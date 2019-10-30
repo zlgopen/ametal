@@ -24,7 +24,7 @@
  *       和 AM_CFG_SYSTEM_TICK_ENABLE 定义为 0。
  *
  * \par 源代码
- * \snippet demo_zlg118_std_tim2_pwm.c src_zlg118_std_tim2_pwm
+ * \snippet demo_hc32l13x_std_tim2_pwm.c src_hc32l13x_std_tim2_pwm
  *
  * \internal
  * \par Modification history
@@ -33,29 +33,29 @@
  */
 
 /**
- * \addtogroup demo_if_zlg118_std_tim2_pwm
- * \copydoc demo_zlg118_std_tim2_pwm.c
+ * \addtogroup demo_if_hc32l13x_std_tim2_pwm
+ * \copydoc demo_hc32l13x_std_tim2_pwm.c
  */
 
-/** [src_zlg118_std_tim2_pwm] */
+/** [src_hc32l13x_std_tim2_pwm] */
 
 #include "ametal.h"
 #include "am_vdebug.h"
-#include "am_zlg118_tim_pwm.h"
-#include "am_zlg118_inst_init.h"
+#include "am_hc32l13x_tim_pwm.h"
+#include "am_hc32l13x_inst_init.h"
 #include "demo_std_entries.h"
 #include "demo_am118_core_entries.h"
 
 /**
  * \brief 例程入口
  */
-void demo_zlg118_core_std_tim2_pwm_entry (void)
+void demo_hc32l13x_core_std_tim2_pwm_entry (void)
 {
 
     AM_DBG_INFO("demo am118_core std tim2 pwm!\r\n");
 
-    demo_std_timer_pwm_entry(am_zlg118_tim2_pwm_inst_init(), AM_ZLG118_TIM_PWM_CH0A);
+    demo_std_timer_pwm_entry(am_hc32l13x_tim2_pwm_inst_init(), AM_HC32_TIM_PWM_CH0A);
 }
-/** [src_zlg118_std_tim2_pwm] */
+/** [src_hc32l13x_std_tim2_pwm] */
 
 /* end of file */

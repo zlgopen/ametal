@@ -26,7 +26,7 @@
  *      （如：AM_DBG_INFO()）。
  *
  * \par 源代码
- * \snippet demo_zlg118_hw_lpuart_polling.c src_zlg118_hw_lpuart_polling
+ * \snippet demo_hc32l13x_hw_lpuart_polling.c src_hc32l13x_hw_lpuart_polling
  *
  * \internal
  * \par Modification History
@@ -35,14 +35,14 @@
  */
 
  /**
- * \addtogroup demo_if_zlg118_hw_lpuart_polling
- * \copydoc demo_zlg118_hw_lpuart_polling.c
+ * \addtogroup demo_if_hc32l13x_hw_lpuart_polling
+ * \copydoc demo_hc32l13x_hw_lpuart_polling.c
  */
 
-/** [src_zlg118_hw_lpuart_polling] */
+/** [src_hc32l13x_hw_lpuart_polling] */
 #include "ametal.h"
 #include "am_board.h"
-#include "am_zlg118.h"
+#include "am_hc32l13x.h"
 #include "am_gpio.h"
 #include "demo_zlg_entries.h"
 #include "demo_am118_core_entries.h"
@@ -50,7 +50,7 @@
 /**
  * \brief 例程入口
  */
-void demo_zlg118_core_hw_lpuart_polling_entry (void)
+void demo_hc32l13x_core_hw_lpuart_polling_entry (void)
 {
     AM_DBG_INFO("demo am118_core hw lpuart polling!\r\n");
 
@@ -64,11 +64,11 @@ void demo_zlg118_core_hw_lpuart_polling_entry (void)
     /* 使能时钟 */
     am_clk_enable(CLK_LPUART0);
 
-    demo_zlg118_hw_lpuart_polling_entry(ZLG118_LPUART0,
-                                        AMHW_ZLG118_LPUART_SCLK_SRC_PCLK,
+    demo_hc32l13x_hw_lpuart_polling_entry(HC32_LPUART0,
+                                        AMHW_HC32_LPUART_SCLK_SRC_PCLK,
                                         16000000,
                                         115200);
 }
-/** [src_zlg118_hw_lpuart_polling] */
+/** [src_hc32l13x_hw_lpuart_polling] */
 
 /* end of file */

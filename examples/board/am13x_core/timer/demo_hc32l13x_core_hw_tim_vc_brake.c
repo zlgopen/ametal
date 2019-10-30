@@ -32,7 +32,7 @@
  *       PIOA_9 引脚连接 PC 串口的 RXD。
  *
  * \par 源代码
- * \snippet demo_zlg118_hw_tim_vc_brake.c src_zlg118_hw_tim_vc_brake
+ * \snippet demo_hc32l13x_hw_tim_vc_brake.c src_hc32l13x_hw_tim_vc_brake
  *
  * \internal
  * \par Modification history
@@ -41,24 +41,24 @@
  */
 
 /**
- * \addtogroup demo_if_zlg118_hw_tim_vc_brake
- * \copydoc demo_zlg118_hw_tim_vc_brake.c
+ * \addtogroup demo_if_hc32l13x_hw_tim_vc_brake
+ * \copydoc demo_hc32l13x_hw_tim_vc_brake.c
  */
 
-/** [src_zlg118_hw_tim_vc_brake] */
+/** [src_hc32l13x_hw_tim_vc_brake] */
 #include "ametal.h"
 #include "am_gpio.h"
 #include "am_vdebug.h"
-#include "am_zlg118.h"
-#include "hw/amhw_zlg118_tim.h"
-#include "hw/amhw_zlg118_vc.h"
-#include "am_zlg118_inst_init.h"
+#include "am_hc32l13x.h"
+#include "hw/amhw_hc32l13x_tim.h"
+#include "hw/amhw_hc32l13x_vc.h"
+#include "am_hc32l13x_inst_init.h"
 #include "demo_zlg_entries.h"
 #include "demo_am118_core_entries.h"
 
 /**
  * \brief 例程入口
- */void demo_zlg118_core_hw_tim_vc_brake_entry (void)
+ */void demo_hc32l13x_core_hw_tim_vc_brake_entry (void)
 
 {
 
@@ -79,14 +79,14 @@
     am_clk_enable(CLK_VC_LVD);
     am_clk_enable(CLK_ADC_BGR);
 
-    demo_zlg118_hw_tim_vc_brake_entry(ZLG118_TIM1,
-                                      ZLG118_TIM_CH0B,
+    demo_hc32l13x_hw_tim_vc_brake_entry(HC32_TIM1,
+                                      HC32_TIM_CH0B,
                                       500000 / 4,
                                       500000,
-                                      ZLG118_VC,
-                                      AMHW_ZLG118_VC0_N_INPUT_PA0,
-                                      AMHW_ZLG118_VC0_P_INPUT_PA1);
+                                      HC32_VC,
+                                      AMHW_HC32_VC0_N_INPUT_PA0,
+                                      AMHW_HC32_VC0_P_INPUT_PA1);
 }
-/** [src_zlg118_hw_tim_vc_brake] */
+/** [src_hc32l13x_hw_tim_vc_brake] */
 
 /* end of file */

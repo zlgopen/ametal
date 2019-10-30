@@ -26,7 +26,7 @@
  *    PIOA_9 引脚连接 PC 串口的 RXD。
  *
  * \par 源代码
- * \snippet demo_zlg118_std_spi_master_dma.c src_zlg118_std_spi_master_dma
+ * \snippet demo_hc32l13x_std_spi_master_dma.c src_hc32l13x_std_spi_master_dma
  *
  * \internal
  * \par History
@@ -35,29 +35,29 @@
  */
 
 /**
- * \addtogroup demo_if_zlg118_std_spi_master_dma
- * \copydoc demo_zlg118_std_spi_master_dma.c
+ * \addtogroup demo_if_hc32l13x_std_spi_master_dma
+ * \copydoc demo_hc32l13x_std_spi_master_dma.c
  */
 
-/** [src_zlg118_std_spi_master_dma] */
+/** [src_hc32l13x_std_spi_master_dma] */
 #include "ametal.h"
 #include "am_vdebug.h"
-#include "zlg118_pin.h"
-#include "am_zlg118_inst_init.h"
+#include "hc32l13x_pin.h"
+#include "am_hc32l13x_inst_init.h"
 #include "demo_std_entries.h"
 #include "demo_am118_core_entries.h"
 
 /**
  * \brief 例程入口
  */
-void demo_zlg118_core_std_spi_master_dma_entry (void)
+void demo_hc32l13x_core_std_spi_master_dma_entry (void)
 {
-    am_spi_handle_t spi_handle = am_zlg118_spi1_dma_inst_init();
+    am_spi_handle_t spi_handle = am_hc32l13x_spi1_dma_inst_init();
 
     AM_DBG_INFO("demo am118_core std spi master dma!\r\n");
 
     demo_std_spi_master_entry(spi_handle, PIOA_4); 
 }
-/** [src_zlg118_std_spi_master_dma] */
+/** [src_hc32l13x_std_spi_master_dma] */
 
 /* end of file */

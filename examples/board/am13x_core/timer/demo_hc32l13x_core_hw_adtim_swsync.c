@@ -27,7 +27,7 @@
  *       PIOA_9 引脚连接 PC 串口的 RXD。
  *
  * \par 源代码
- * \snippet demo_zlg118_hw_adtim_swsync.c src_zlg118_hw_adtim_swsync
+ * \snippet demo_hc32l13x_hw_adtim_swsync.c src_hc32l13x_hw_adtim_swsync
  *
  * \internal
  * \par Modification history
@@ -36,25 +36,25 @@
  */
 
 /**
- * \addtogroup demo_if_zlg118_hw_adtim_swsync
- * \copydoc demo_zlg118_hw_adtim_swsync.c
+ * \addtogroup demo_if_hc32l13x_hw_adtim_swsync
+ * \copydoc demo_hc32l13x_hw_adtim_swsync.c
  */
 
-/** [src_zlg118_hw_adtim_swsync] */
+/** [src_hc32l13x_hw_adtim_swsync] */
 #include "ametal.h"
 #include "am_gpio.h"
 #include "am_vdebug.h"
-#include "hw/amhw_zlg118_adtim.h"
-#include "am_zlg118_inst_init.h"
+#include "hw/amhw_hc32l13x_adtim.h"
+#include "am_hc32l13x_inst_init.h"
 #include "demo_zlg_entries.h"
 #include "demo_am118_core_entries.h"
 
 /**
  * \brief 例程入口
  */
-void demo_zlg118_core_hw_adtim_swsync_entry (void)
+void demo_hc32l13x_core_hw_adtim_swsync_entry (void)
 {
-    amhw_zlg118_adtim_sw_sync_t adtim_sync;
+    amhw_hc32l13x_adtim_sw_sync_t adtim_sync;
 
     AM_DBG_INFO("demo am118_core hw adtim swsync!\r\n");
 
@@ -63,8 +63,8 @@ void demo_zlg118_core_hw_adtim_swsync_entry (void)
     adtim_sync.adtim5 = AM_TRUE;
     adtim_sync.adtim6 = AM_TRUE;
 
-    demo_zlg118_hw_adtim_swsync_entry(&adtim_sync);
+    demo_hc32l13x_hw_adtim_swsync_entry(&adtim_sync);
 }
-/** [src_zlg118_hw_adtim_swsync] */
+/** [src_hc32l13x_hw_adtim_swsync] */
 
 /* end of file */

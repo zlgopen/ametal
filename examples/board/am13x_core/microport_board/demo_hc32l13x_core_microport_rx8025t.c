@@ -44,7 +44,7 @@
 
 /** [src_microport_rx8025t] */
 #include "am_vdebug.h"
-#include "am_zlg118_inst_init.h"
+#include "am_hc32l13x_inst_init.h"
 #include "demo_std_entries.h"
 #include "demo_am118_core_entries.h"
 
@@ -55,7 +55,7 @@
  *
  * \return нч
  */
-void demo_zlg118_core_microport_rx8025t_entry (void)
+void demo_hc32l13x_core_microport_rx8025t_entry (void)
 {
     AM_DBG_INFO("demo am237_core microport rx8025t!\r\n");
 

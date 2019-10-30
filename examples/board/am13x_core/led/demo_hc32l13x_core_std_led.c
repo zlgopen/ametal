@@ -22,7 +22,7 @@
  *    但这些宏已经默认配置为 1， 用户不必再次配置；
  *
  * \par 源代码
- * \snippet demo_zlg118_std_led.c src_std_led
+ * \snippet demo_hc32l13x_std_led.c src_std_led
  *
  * \internal
  * \par Modification history
@@ -31,8 +31,8 @@
  */
 
 /**
- * \addtogroup demo_if_zlg118_std_led
- * \copydoc demo_zlg118_std_led.c
+ * \addtogroup demo_if_hc32l13x_std_led
+ * \copydoc demo_hc32l13x_std_led.c
  */
 
 /** [src_std_led] */
@@ -45,7 +45,7 @@
 /**
  * \brief 例程入口
  */
-void demo_zlg118_core_std_led_entry (void)
+void demo_hc32l13x_core_std_led_entry (void)
 {
     AM_DBG_INFO("demo am118_core std led!\r\n");
 

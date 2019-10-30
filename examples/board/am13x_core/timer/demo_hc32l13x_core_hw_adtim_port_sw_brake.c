@@ -28,7 +28,7 @@
  *    3. PIOA_8为（TIM4_CHA）PWM输出引脚。
  *
  * \par 源代码
- * \snippet demo_zlg118_hw_adtim_port_sw_brake.c src_zlg118_hw_adtim_port_sw_brake
+ * \snippet demo_hc32l13x_hw_adtim_port_sw_brake.c src_hc32l13x_hw_adtim_port_sw_brake
  *
  * \internal
  * \par Modification history
@@ -37,24 +37,24 @@
  */
 
 /**
- * \addtogroup demo_if_zlg118_hw_adtim_port_sw_brake
- * \copydoc demo_zlg118_hw_adtim_port_sw_brake.c
+ * \addtogroup demo_if_hc32l13x_hw_adtim_port_sw_brake
+ * \copydoc demo_hc32l13x_hw_adtim_port_sw_brake.c
  */
 
-/** [src_zlg118_hw_adtim_port_sw_brake] */
+/** [src_hc32l13x_hw_adtim_port_sw_brake] */
 #include "ametal.h"
 #include "am_gpio.h"
 #include "am_vdebug.h"
-#include "am_zlg118.h"
-#include "hw/amhw_zlg118_adtim.h"
-#include "am_zlg118_inst_init.h"
+#include "am_hc32l13x.h"
+#include "hw/amhw_hc32l13x_adtim.h"
+#include "am_hc32l13x_inst_init.h"
 #include "demo_zlg_entries.h"
 #include "demo_am118_core_entries.h"
 
 /**
  * \brief 例程入口
  */
-void demo_zlg118_core_hw_adtim_port_sw_brake_entry (void)
+void demo_hc32l13x_core_hw_adtim_port_sw_brake_entry (void)
 {
 
     AM_DBG_INFO("demo am118_core hw adtim port_sw_brake!\r\n");
@@ -67,13 +67,13 @@ void demo_zlg118_core_hw_adtim_port_sw_brake_entry (void)
     /* 定时器时钟使能 */
     am_clk_enable(CLK_TIM456);
 
-    demo_zlg118_hw_adtim_port_sw_brake_entry(ZLG118_TIM4,
-                                             AMHW_ZLG118_ADTIM_CHX_A,
+    demo_hc32l13x_hw_adtim_port_sw_brake_entry(HC32_TIM4,
+                                             AMHW_HC32_ADTIM_CHX_A,
                                              500000 / 4,
                                              500000,
                                              PIOB_1,
-                                             AMHW_ZLG118_ADTIM_TRIG_PB11);
+                                             AMHW_HC32_ADTIM_TRIG_PB11);
 }
-/** [src_zlg118_hw_adtim_port_sw_brake] */
+/** [src_hc32l13x_hw_adtim_port_sw_brake] */
 
 /* end of file */

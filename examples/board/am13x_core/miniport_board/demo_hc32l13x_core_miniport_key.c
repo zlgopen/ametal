@@ -54,14 +54,14 @@
 #include "am_vdebug.h"
 #include "am_event_category_input.h"
 #include "am_event_input_key.h"
-#include "am_zlg118_inst_init.h"
+#include "am_hc32l13x_inst_init.h"
 #include "demo_std_entries.h"
 #include "demo_am118_core_entries.h"
 
 /**
  * \brief Àý³ÌÈë¿Ú
  */
-void demo_zlg118_core_miniport_key_entry (void)
+void demo_hc32l13x_core_miniport_key_entry (void)
 {
     AM_DBG_INFO("demo am118_core miniport key!\r\n");
 

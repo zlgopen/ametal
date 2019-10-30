@@ -19,7 +19,7 @@
  *
  *
  * \par 源代码
- * \snippet demo_zlg118_std_tim4_timing.c src_zlg118_std_tim4_timing
+ * \snippet demo_hc32l13x_std_tim4_timing.c src_hc32l13x_std_tim4_timing
  *
  * \internal
  * \par Modification history
@@ -28,27 +28,27 @@
  */
 
 /**
- * \addtogroup demo_if_zlg118_std_tim4_timing
- * \copydoc demo_zlg118_std_tim4_timing.c
+ * \addtogroup demo_if_hc32l13x_std_tim4_timing
+ * \copydoc demo_hc32l13x_std_tim4_timing.c
  */
 
-/** [src_zlg118_std_tim4_timing] */
+/** [src_hc32l13x_std_tim4_timing] */
 
 #include "ametal.h"
 #include "am_vdebug.h"
 #include "demo_std_entries.h"
-#include "am_zlg118_inst_init.h"
+#include "am_hc32l13x_inst_init.h"
 #include "demo_am118_core_entries.h"
 
 /**
  * \brief 例程入口
  */
-void demo_zlg118_core_std_tim4_timing_entry (void)
+void demo_hc32l13x_core_std_tim4_timing_entry (void)
 {
     AM_DBG_INFO("demo am118_core std tim4 timing!\r\n");
 
-    demo_std_timer_timing_entry(am_zlg118_tim4_timing_inst_init(), 0);
+    demo_std_timer_timing_entry(am_hc32l13x_tim4_timing_inst_init(), 0);
 }
-/** [src_zlg118_std_tim4_timing] */
+/** [src_hc32l13x_std_tim4_timing] */
 
 /* end of file */

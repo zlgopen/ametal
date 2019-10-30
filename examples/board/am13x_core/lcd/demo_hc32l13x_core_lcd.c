@@ -25,7 +25,7 @@
  *      （如：AM_DBG_INFO()）。
  *
  * \par 源代码
- * \snippet demo_zlg118_core_lcd.c src_zlg118_core_lcd
+ * \snippet demo_hc32l13x_core_lcd.c src_hc32l13x_core_lcd
  *
  *
  * \internal
@@ -35,16 +35,16 @@
  */
 
 /**
- * \addtogroup demo_if_zlg118_core_lcd
- * \copydoc demo_zlg118_core_lcd.c
+ * \addtogroup demo_if_hc32l13x_core_lcd
+ * \copydoc demo_hc32l13x_core_lcd.c
  */
 
-/** [src_zlg118_hw_lcd] */
+/** [src_hc32l13x_hw_lcd] */
 #include "ametal.h"
-#include "am_zlg118.h"
+#include "am_hc32l13x.h"
 #include "am_gpio.h"
-#include "zlg118_pin.h"
-#include "am_zlg118_lcd.h"
+#include "hc32l13x_pin.h"
+#include "am_hc32l13x_lcd.h"
 #include "demo_zlg_entries.h"
 /**
  * \brief 显示数据
@@ -71,7 +71,7 @@ static uint32_t lcd_data[10] = {
 /**
  * \brief 例程入口
  */
-void demo_zlg118_core_hw_lcd_entry (void)
+void demo_hc32l13x_core_hw_lcd_entry (void)
 {
     AM_DBG_INFO("Test start: demo-lcd-mode !\r\n");
 
@@ -94,7 +94,7 @@ void demo_zlg118_core_hw_lcd_entry (void)
     am_gpio_pin_cfg(PIOB_5,  PIOB_5_AIN);  /**< \brief VLCD2 */
     am_gpio_pin_cfg(PIOB_6,  PIOB_6_AIN);  /**< \brief VLCD1 */
 
-    demo_zlg118_hw_lcd_entry(ZLG118_LCD, lcd_data);
+    demo_hc32l13x_hw_lcd_entry(HC32_LCD, lcd_data);
 }
 
 /* end of file */

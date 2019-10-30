@@ -24,11 +24,11 @@
  *     PIOA_9 引脚连接 PC 串口的 RXD。
  *   2.adc通道数量（sqr_num）的设定范围为1~16
  *   3.在PCLK16MHz下，定时器周期时间（period_us）的设定范围为1~262140us（0~262ms之间），如果想设
- *     定其他时间值，则需要更改demo_zlg118_hw_tim_trig_adc_sqr.c中定时器分频系数的设定。
+ *     定其他时间值，则需要更改demo_hc32l13x_hw_tim_trig_adc_sqr.c中定时器分频系数的设定。
  *   4.不同情况下，ADC的转换速度有限，需要考虑定时器的周期时间是否大于ADC转换时间（多个通道则需要累加转换时间）
  *
  * \par 源代码
- * \snippet demo_zlg118_hw_tim_trig_adc_sqr.c src_zlg118_hw_tim_trig_adc_sqr
+ * \snippet demo_hc32l13x_hw_tim_trig_adc_sqr.c src_hc32l13x_hw_tim_trig_adc_sqr
  *
  * \internal
  * \par Modification history
@@ -37,42 +37,42 @@
  */
 
 /**
- * \addtogroup demo_if_zlg118_hw_tim_trig_adc_sqr
- * \copydoc demo_zlg118_hw_tim_trig_adc_sqr.c
+ * \addtogroup demo_if_hc32l13x_hw_tim_trig_adc_sqr
+ * \copydoc demo_hc32l13x_hw_tim_trig_adc_sqr.c
  */
 
-/** [src_zlg118_hw_tim_trig_adc_sqr] */
+/** [src_hc32l13x_hw_tim_trig_adc_sqr] */
 #include "ametal.h"
 #include "am_gpio.h"
 #include "am_vdebug.h"
-#include "am_zlg118.h"
-#include "hw/amhw_zlg118_tim.h"
-#include "hw/amhw_zlg118_adc.h"
-#include "am_zlg118_inst_init.h"
+#include "am_hc32l13x.h"
+#include "hw/amhw_hc32l13x_tim.h"
+#include "hw/amhw_hc32l13x_adc.h"
+#include "am_hc32l13x_inst_init.h"
 #include "demo_zlg_entries.h"
 #include "demo_am118_core_entries.h"
 
 /**
  * \brief 例程入口
  */
-void demo_zlg118_core_hw_tim_trig_adc_sqr_entry (void)
+void demo_hc32l13x_core_hw_tim_trig_adc_sqr_entry (void)
 {
-        int adc_chan[16] = {AMHW_ZLG118_CHAN_AIN0_PA0,   \
-                            AMHW_ZLG118_CHAN_AIN1_PA1,   \
-                            AMHW_ZLG118_CHAN_AIN2_PA2,   \
-                            AMHW_ZLG118_CHAN_AIN3_PA3,   \
-                            AMHW_ZLG118_CHAN_AIN4_PA4,   \
-                            AMHW_ZLG118_CHAN_AIN5_PA5,   \
-                            AMHW_ZLG118_CHAN_AIN6_PA6,   \
-                            AMHW_ZLG118_CHAN_AIN7_PA7,   \
-                            AMHW_ZLG118_CHAN_AIN8_PB0,   \
-                            AMHW_ZLG118_CHAN_AIN9_PB1,   \
-                            AMHW_ZLG118_CHAN_AIN10_PC0,  \
-                            AMHW_ZLG118_CHAN_AIN11_PC1,  \
-                            AMHW_ZLG118_CHAN_AIN12_PC2,  \
-                            AMHW_ZLG118_CHAN_AIN13_PC3,  \
-                            AMHW_ZLG118_CHAN_AIN14_PC4,  \
-                            AMHW_ZLG118_CHAN_AIN15_PC5};
+        int adc_chan[16] = {AMHW_HC32_CHAN_AIN0_PA0,   \
+                            AMHW_HC32_CHAN_AIN1_PA1,   \
+                            AMHW_HC32_CHAN_AIN2_PA2,   \
+                            AMHW_HC32_CHAN_AIN3_PA3,   \
+                            AMHW_HC32_CHAN_AIN4_PA4,   \
+                            AMHW_HC32_CHAN_AIN5_PA5,   \
+                            AMHW_HC32_CHAN_AIN6_PA6,   \
+                            AMHW_HC32_CHAN_AIN7_PA7,   \
+                            AMHW_HC32_CHAN_AIN8_PB0,   \
+                            AMHW_HC32_CHAN_AIN9_PB1,   \
+                            AMHW_HC32_CHAN_AIN10_PC0,  \
+                            AMHW_HC32_CHAN_AIN11_PC1,  \
+                            AMHW_HC32_CHAN_AIN12_PC2,  \
+                            AMHW_HC32_CHAN_AIN13_PC3,  \
+                            AMHW_HC32_CHAN_AIN14_PC4,  \
+                            AMHW_HC32_CHAN_AIN15_PC5};
     
     AM_DBG_INFO("demo am118_core hw tim trig adc sqr!\r\n");
 
@@ -101,16 +101,16 @@ void demo_zlg118_core_hw_tim_trig_adc_sqr_entry (void)
     /* TIM0_CHA通道引脚配置 */
     am_gpio_pin_cfg(PIOA_15, PIOA_15_TIM0_CHA | PIOA_15_OUT_PP);
 
-    demo_zlg118_hw_tim_trig_adc_sqr_entry(ZLG118_TIM0,     //定时器0
-                                          AMHW_ZLG118_TIM_TYPE_TIM0, //定时器类型
-                                          ZLG118_TIM_CH0A, //通道CH0A
+    demo_hc32l13x_hw_tim_trig_adc_sqr_entry(HC32_TIM0,     //定时器0
+                                          AMHW_HC32_TIM_TYPE_TIM0, //定时器类型
+                                          HC32_TIM_CH0A, //通道CH0A
                                           100000 / 4,      //100000/4 us = 25ms
                                           100000,          //100000   us = 100ms
-                                          ZLG118_ADC,      //ADC
+                                          HC32_ADC,      //ADC
                                           INUM_ADC_DAC,    //中断号
                                           adc_chan,        //ADC通道编号
                                           6);              //使用的ADC通道数量
 }
-/** [src_zlg118_hw_tim_trig_adc_sqr] */
+/** [src_hc32l13x_hw_tim_trig_adc_sqr] */
 
 /* end of file */

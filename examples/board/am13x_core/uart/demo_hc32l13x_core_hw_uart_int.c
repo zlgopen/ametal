@@ -25,7 +25,7 @@
  *      （如：AM_DBG_INFO()）。
  *
  * \par 源代码
- * \snippet demo_zlg118_hw_uart_int.c src_zlg118_hw_uart_int
+ * \snippet demo_hc32l13x_hw_uart_int.c src_hc32l13x_hw_uart_int
  *
  * \internal
  * \par Modification History
@@ -34,20 +34,20 @@
  */
 
  /**
- * \addtogroup demo_if_zlg118_hw_uart_int
- * \copydoc demo_zlg118_hw_uart_int.c
+ * \addtogroup demo_if_hc32l13x_hw_uart_int
+ * \copydoc demo_hc32l13x_hw_uart_int.c
  */
 
-/** [src_zlg118_hw_uart_int] */
+/** [src_hc32l13x_hw_uart_int] */
 #include "ametal.h"
-#include "am_zlg118.h"
+#include "am_hc32l13x.h"
 #include "am_board.h"
 #include "am_gpio.h"
 #include "am_vdebug.h"
 #include "demo_zlg_entries.h"
 #include "demo_am118_core_entries.h"
 
-static void __zlg118_uart_pins_intit (void)
+static void __hc32l13x_uart_pins_intit (void)
 {
     /* 初始化引脚 */
     am_gpio_pin_cfg(PIOA_2, PIOA_2_UART1_TXD | PIOA_2_OUT_PP );
@@ -58,7 +58,7 @@ static void __zlg118_uart_pins_intit (void)
 /**
  * \brief 例程入口
  */
-void demo_zlg118_core_hw_uart_int_entry (void)
+void demo_hc32l13x_core_hw_uart_int_entry (void)
 {
     AM_DBG_INFO("demo am118_core hw uart int!\r\n");
 
@@ -68,12 +68,12 @@ void demo_zlg118_core_hw_uart_int_entry (void)
     /* 使能时钟 */
     am_clk_enable(CLK_UART1);
 
-    demo_zlg118_hw_uart_int_entry(ZLG118_UART1,
-                                  __zlg118_uart_pins_intit,
+    demo_hc32l13x_hw_uart_int_entry(HC32_UART1,
+                                  __hc32l13x_uart_pins_intit,
                                   am_clk_rate_get(CLK_UART1),
-                                  ZLG118_UART1_BASE,
+                                  HC32_UART1_BASE,
                                   INUM_UART1_3);
 }
-/** [src_zlg118_hw_uart_int] */
+/** [src_hc32l13x_hw_uart_int] */
 
 /* end of file */

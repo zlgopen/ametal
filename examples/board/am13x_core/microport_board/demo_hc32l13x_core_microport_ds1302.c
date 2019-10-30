@@ -41,7 +41,7 @@
 /** [src_microport_ds1302] */
 #include "am_vdebug.h"
 #include "demo_std_entries.h"
-#include "am_zlg118_inst_init.h"
+#include "am_hc32l13x_inst_init.h"
 #include "demo_am118_core_entries.h"
 
 /**
@@ -51,7 +51,7 @@
  *
  * \return нч
  */
-void demo_zlg118_core_microport_ds1302_entry (void)
+void demo_hc32l13x_core_microport_ds1302_entry (void)
 {
     AM_DBG_INFO("demo am118_core microport ds1302!\r\n");
 

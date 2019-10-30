@@ -26,7 +26,7 @@
  *      （如：AM_DBG_INFO()）。
  *
  * \par 源代码
- * \snippet demo_zlg118_core_trng_dac.c src_zlg118_core_trng_generate
+ * \snippet demo_hc32l13x_core_trng_dac.c src_hc32l13x_core_trng_generate
  *
  *
  * \internal
@@ -36,21 +36,21 @@
  */
 
 /**
- * \addtogroup demo_if_zlg118_core_trng_generate
- * \copydoc demo_zlg118_core_trng_generate.c
+ * \addtogroup demo_if_hc32l13x_core_trng_generate
+ * \copydoc demo_hc32l13x_core_trng_generate.c
  */
 
-/** [src_zlg118_core_trng_generate] */
+/** [src_hc32l13x_core_trng_generate] */
 #include "ametal.h"
-#include "am_zlg118.h"
+#include "am_hc32l13x.h"
 #include "am_gpio.h"
-#include "zlg118_pin.h"
-#include "am_zlg118_trng.h"
+#include "hc32l13x_pin.h"
+#include "am_hc32l13x_trng.h"
 #include "demo_zlg_entries.h"
 /**
  * \brief 例程入口
  */
-void demo_zlg118_core_hw_trng_generate_entry (void)
+void demo_hc32l13x_core_hw_trng_generate_entry (void)
 {
 
     AM_DBG_INFO("demo am118_core hw trng generate test!\r\n");
@@ -58,7 +58,7 @@ void demo_zlg118_core_hw_trng_generate_entry (void)
     /* 开启trng时钟 */
     am_clk_enable (CLK_RNG);
 
-    demo_zlg118_hw_trng_generate_entry(ZLG118_TRNG);
+    demo_hc32l13x_hw_trng_generate_entry(HC32_TRNG);
 }
 
 /* end of file */

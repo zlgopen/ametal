@@ -38,14 +38,14 @@
 /** [src_miniport_hc595_led] */
 #include "ametal.h"
 #include "am_vdebug.h"
-#include "am_zlg118_inst_init.h"
+#include "am_hc32l13x_inst_init.h"
 #include "demo_std_entries.h"
 #include "demo_am118_core_entries.h"
 
 /**
  * \brief Àý³ÌÈë¿Ú
  */
-void demo_zlg118_core_miniport_hc595_led_entry (void)
+void demo_hc32l13x_core_miniport_hc595_led_entry (void)
 {
     AM_DBG_INFO("demo am118_core miniport hc595 led!\r\n");
 

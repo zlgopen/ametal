@@ -17,10 +17,10 @@
  * - 实验现象：
  *   1. 每10秒发生一次周期中断，串口并打印出当前时间信息。
  *   2. 周四的11点21分0秒产生闹钟中断，打印四行"alarm clock int!"提示信息。
- *   3. 可在am_hwconf_zlg118_rtc.c文件中配置1Hz输出控制，若使能，PIOB_14将输出1Hz的方波。
+ *   3. 可在am_hwconf_hc32l13x_rtc.c文件中配置1Hz输出控制，若使能，PIOB_14将输出1Hz的方波。
  *   4. 关闭时钟补偿的情况下，测得1Hz方波的实际频率，带入下列计算式计算：
  *           ppm = （1Hz方波的实际频率 - 1Hz）* 10^6
- *      将计算出的结果填入am_hwconf_zlg118_rtc.c的设备信息对应位置，可自行决定是否使能高速补偿时钟。
+ *      将计算出的结果填入am_hwconf_hc32l13x_rtc.c的设备信息对应位置，可自行决定是否使能高速补偿时钟。
  *      编译、下载，输出端口将输出精度较高的1Hz方波
  *
  * \note
@@ -28,7 +28,7 @@
  *    PIOA_9 引脚连接 PC 串口的 RXD。
  *
  * \par 源代码
- * \snippet demo_zlg118_std_rtc.c src_zlg118_std_rtc
+ * \snippet demo_hc32l13x_std_rtc.c src_hc32l13x_std_rtc
  *
  * \internal
  * \par Modification history
@@ -37,17 +37,17 @@
  */
 
 /**
- * \addtogroup demo_if_zlg118_std_rtc
- * \copydoc demo_zlg118_std_rtc.c
+ * \addtogroup demo_if_hc32l13x_std_rtc
+ * \copydoc demo_hc32l13x_std_rtc.c
  */
 
-/** [src_zlg118_std_rtc] */
+/** [src_hc32l13x_std_rtc] */
 
 #include "ametal.h"
 #include "am_vdebug.h"
 #include "am_rtc.h"
-#include "am_zlg118_rtc.h"
-#include "am_zlg118_inst_init.h"
+#include "am_hc32l13x_rtc.h"
+#include "am_hc32l13x_inst_init.h"
 #include "demo_am118_core_entries.h"
 
 am_tm_t   __time;
@@ -87,10 +87,10 @@ void alarm_clock_int_callback(void *drv)
 /**
  * \brief 例程入口
  */
-void demo_zlg118_core_drv_rtc_entry (void)
+void demo_hc32l13x_core_drv_rtc_entry (void)
 {
     int             ret          = AM_OK;
-    am_rtc_handle_t p_rtc_handle = am_zlg118_rtc_inst_init();
+    am_rtc_handle_t p_rtc_handle = am_hc32l13x_rtc_inst_init();
 
     AM_DBG_INFO("demo am118_core rtc entry!\r\n");
 
@@ -105,25 +105,25 @@ void demo_zlg118_core_drv_rtc_entry (void)
     }
 
     /* 设置周期中断回调函数 */
-    am_zlg118_rtc_callback_set(p_rtc_handle,
-                               AM_ZLG118_RTC_CALLBACK_PERIOD,
+    am_hc32l13x_rtc_callback_set(p_rtc_handle,
+                               AM_HC32_RTC_CALLBACK_PERIOD,
                                period_int_callback,
                                (void *)p_rtc_handle);
 
     /* 使用自定义周期中断时间选择，20s发生一次中期中断 */
-    am_zlg118_rtc_period_int_enable(p_rtc_handle,
-                                    AMHW_ZLG118_RTC_PERIOD_INT_TYPE_CUSTOM,
-                                    AMHW_ZLG118_RTC_PERIOD_INT_TIME_1_MIN,
+    am_hc32l13x_rtc_period_int_enable(p_rtc_handle,
+                                    AMHW_HC32_RTC_PERIOD_INT_TYPE_CUSTOM,
+                                    AMHW_HC32_RTC_PERIOD_INT_TIME_1_MIN,
                                     10.0);
 
     /* 设置闹钟中断回调函数 */
-    am_zlg118_rtc_callback_set(p_rtc_handle,
-                               AM_ZLG118_RTC_CALLBACK_ALARM,
+    am_hc32l13x_rtc_callback_set(p_rtc_handle,
+                               AM_HC32_RTC_CALLBACK_ALARM,
                                alarm_clock_int_callback,
                                (void *)p_rtc_handle);
 
     /* 闹钟中断设置，在周四的11点21分0秒产生闹钟中断 */
-    am_zlg118_rtc_alarm_clock_int_enable(p_rtc_handle,
+    am_hc32l13x_rtc_alarm_clock_int_enable(p_rtc_handle,
                                          0,
                                          21,
                                          11,
@@ -146,6 +146,6 @@ void demo_zlg118_core_drv_rtc_entry (void)
         am_mdelay(20);
     }
 }
-/** [src_zlg118_std_rtc] */
+/** [src_hc32l13x_std_rtc] */
 
 /* end of file */

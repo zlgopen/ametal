@@ -25,7 +25,7 @@
  *    PIOA_9 引脚连接 PC 串口的 RXD。
  *
  * \par 源代码
- * \snippet demo_zlg118_hw_spi_master.c src_zlg118_hw_spi_master
+ * \snippet demo_hc32l13x_hw_spi_master.c src_hc32l13x_hw_spi_master
  *
  * \internal
  * \par History
@@ -34,24 +34,24 @@
  */
 
 /**
- * \addtogroup demo_if_zlg118_hw_spi_master
- * \copydoc demo_zlg118_hw_spi_master.c
+ * \addtogroup demo_if_hc32l13x_hw_spi_master
+ * \copydoc demo_hc32l13x_hw_spi_master.c
  */
 
-/** [src_zlg118_hw_spi_master] */
+/** [src_hc32l13x_hw_spi_master] */
 #include "ametal.h"
-#include "am_zlg118.h"
-#include "am_zlg118_clk.h"
+#include "am_hc32l13x.h"
+#include "am_hc32l13x_clk.h"
 #include "am_gpio.h"
 #include "am_vdebug.h"
 #include "demo_zlg_entries.h"
-#include "am_zlg118_inst_init.h"
+#include "am_hc32l13x_inst_init.h"
 #include "demo_am118_core_entries.h"
 
 /**
  * \brief 例程入口
  */
-void demo_zlg118_core_hw_spi_master_entry (void)
+void demo_hc32l13x_core_hw_spi_master_entry (void)
 {
     am_kprintf("demo am217_core hw spi master!\r\n");
 
@@ -64,8 +64,8 @@ void demo_zlg118_core_hw_spi_master_entry (void)
     am_gpio_pin_cfg(PIOB_15, PIOB_15_SPI1_MOSI | PIOB_15_OUT_PP);
     am_gpio_pin_cfg(PIOC_2,  PIOC_2_SPI1_MISO  | PIOC_2_INPUT_PU);
 
-    demo_zlg118_hw_spi_master_entry((void *)ZLG118_SPI1, PIOB_12);
+    demo_hc32l13x_hw_spi_master_entry((void *)HC32_SPI1, PIOB_12);
 }
-/** [src_zlg118_hw_spi_master] */
+/** [src_hc32l13x_hw_spi_master] */
 
 /* end of file */

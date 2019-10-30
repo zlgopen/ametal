@@ -25,7 +25,7 @@
  *      （如：AM_DBG_INFO()）。
  *
  * \par 源代码
- * \snippet demo_zlg118_hw_lpuart_int.c src_zlg118_hw_lpuart_int
+ * \snippet demo_hc32l13x_hw_lpuart_int.c src_hc32l13x_hw_lpuart_int
  *
  * \internal
  * \par Modification History
@@ -34,20 +34,20 @@
  */
 
  /**
- * \addtogroup demo_if_zlg118_hw_lpuart_int
- * \copydoc demo_zlg118_hw_lpuart_int.c
+ * \addtogroup demo_if_hc32l13x_hw_lpuart_int
+ * \copydoc demo_hc32l13x_hw_lpuart_int.c
  */
 
-/** [src_zlg118_hw_lpuart_int] */
+/** [src_hc32l13x_hw_lpuart_int] */
 #include "ametal.h"
-#include "am_zlg118.h"
+#include "am_hc32l13x.h"
 #include "am_board.h"
 #include "am_gpio.h"
 #include "am_vdebug.h"
 #include "demo_zlg_entries.h"
 #include "demo_am118_core_entries.h"
 
-static void __zlg118_lpuart_pins_intit (void)
+static void __hc32l13x_lpuart_pins_intit (void)
 {
     /* 初始化引脚 */
     am_gpio_pin_cfg(PIOB_11, PIOB_11_LPUART0_RXD | PIOB_11_INPUT_FLOAT);
@@ -57,7 +57,7 @@ static void __zlg118_lpuart_pins_intit (void)
 /**
  * \brief 例程入口
  */
-void demo_zlg118_core_hw_lpuart_int_entry (void)
+void demo_hc32l13x_core_hw_lpuart_int_entry (void)
 {
     AM_DBG_INFO("demo am118_core hw lpuart int!\r\n");
 
@@ -67,14 +67,14 @@ void demo_zlg118_core_hw_lpuart_int_entry (void)
     /* 使能时钟 */
     am_clk_enable(CLK_LPUART0);
 
-    demo_zlg118_hw_lpuart_int_entry(ZLG118_LPUART0,
-                                    __zlg118_lpuart_pins_intit,
-                                    AMHW_ZLG118_LPUART_SCLK_SRC_PCLK,
+    demo_hc32l13x_hw_lpuart_int_entry(HC32_LPUART0,
+                                    __hc32l13x_lpuart_pins_intit,
+                                    AMHW_HC32_LPUART_SCLK_SRC_PCLK,
                                     16000000,
                                     115200,
-                                    ZLG118_LPUART0_BASE,
+                                    HC32_LPUART0_BASE,
                                     INUM_LPUART0);
 }
-/** [src_zlg118_hw_lpuart_int] */
+/** [src_hc32l13x_hw_lpuart_int] */
 
 /* end of file */

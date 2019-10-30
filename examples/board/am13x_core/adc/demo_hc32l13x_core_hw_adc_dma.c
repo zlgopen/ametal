@@ -24,10 +24,10 @@
  *    1. 如需观察串口打印的调试信息，需要将 PIOA_10 引脚连接 PC 串口的 TXD，
  *       PIOA_9 引脚连接 PC 串口的 RXD。
  *    2. 使用的是顺序扫描转换，最多支持16通道。如果需要使用插入扫描转换，需要更改
- *       demo_zlg118_hw_adc_dma.c中的部分代码。
+ *       demo_hc32l13x_hw_adc_dma.c中的部分代码。
  *
  * \par 源代码
- * \snippet demo_zlg118_hw_adc_dma.c src_zlg118_hw_adc_dma
+ * \snippet demo_hc32l13x_hw_adc_dma.c src_hc32l13x_hw_adc_dma
  *
  * \internal
  * \par Modification History
@@ -36,14 +36,14 @@
  */
 
 /**
- * \addtogroup demo_if_zlg118_hw_adc_dma
- * \copydoc demo_zlg118_hw_adc_dma.c
+ * \addtogroup demo_if_hc32l13x_hw_adc_dma
+ * \copydoc demo_hc32l13x_hw_adc_dma.c
  */
 
-/** [src_zlg118_hw_adc_dma] */
+/** [src_hc32l13x_hw_adc_dma] */
 #include "ametal.h"
 #include "am_vdebug.h"
-#include "am_zlg118.h"
+#include "am_hc32l13x.h"
 #include "am_gpio.h"
 #include "am_clk.h"
 #include "demo_zlg_entries.h"
@@ -52,25 +52,25 @@
 /**
  * \brief 例程入口
  */
-void demo_zlg118_core_hw_adc_dma_entry (void)
+void demo_hc32l13x_core_hw_adc_dma_entry (void)
 {     
     /* 16个顺序通道ADC采集 */
-    int adc_chan[16] = {AMHW_ZLG118_CHAN_AIN0_PA0,
-                        AMHW_ZLG118_CHAN_AIN1_PA1,
-                        AMHW_ZLG118_CHAN_AIN2_PA2,
-                        AMHW_ZLG118_CHAN_AIN3_PA3,
-                        AMHW_ZLG118_CHAN_AIN4_PA4,
-                        AMHW_ZLG118_CHAN_AIN5_PA5,
-                        AMHW_ZLG118_CHAN_AIN6_PA6,
-                        AMHW_ZLG118_CHAN_AIN7_PA7,
-                        AMHW_ZLG118_CHAN_AIN8_PB0,
-                        AMHW_ZLG118_CHAN_AIN9_PB1,
-                        AMHW_ZLG118_CHAN_AIN10_PC0,
-                        AMHW_ZLG118_CHAN_AIN11_PC1,
-                        AMHW_ZLG118_CHAN_AIN12_PC2,
-                        AMHW_ZLG118_CHAN_AIN13_PC3,
-                        AMHW_ZLG118_CHAN_AIN14_PC4,
-                        AMHW_ZLG118_CHAN_AIN15_PC5};
+    int adc_chan[16] = {AMHW_HC32_CHAN_AIN0_PA0,
+                        AMHW_HC32_CHAN_AIN1_PA1,
+                        AMHW_HC32_CHAN_AIN2_PA2,
+                        AMHW_HC32_CHAN_AIN3_PA3,
+                        AMHW_HC32_CHAN_AIN4_PA4,
+                        AMHW_HC32_CHAN_AIN5_PA5,
+                        AMHW_HC32_CHAN_AIN6_PA6,
+                        AMHW_HC32_CHAN_AIN7_PA7,
+                        AMHW_HC32_CHAN_AIN8_PB0,
+                        AMHW_HC32_CHAN_AIN9_PB1,
+                        AMHW_HC32_CHAN_AIN10_PC0,
+                        AMHW_HC32_CHAN_AIN11_PC1,
+                        AMHW_HC32_CHAN_AIN12_PC2,
+                        AMHW_HC32_CHAN_AIN13_PC3,
+                        AMHW_HC32_CHAN_AIN14_PC4,
+                        AMHW_HC32_CHAN_AIN15_PC5};
     
     AM_DBG_INFO("demo am118_core hw adc dma!\r\n");
 
@@ -94,13 +94,13 @@ void demo_zlg118_core_hw_adc_dma_entry (void)
 
     am_clk_enable(CLK_ADC_BGR);
 
-    demo_zlg118_hw_adc_dma_entry(ZLG118_ADC,
+    demo_hc32l13x_hw_adc_dma_entry(HC32_ADC,
                                  adc_chan,
                                  16,
                                  3300,
                                  DMA_CHAN_1,
-                                 ZLG118_DMA_SRC_TYPE_ADC_SRQ0_RX);
+                                 HC32_DMA_SRC_TYPE_ADC_SRQ0_RX);
 }
-/** [src_zlg118_hw_adc_dma] */
+/** [src_hc32l13x_hw_adc_dma] */
 
 /* end of file */

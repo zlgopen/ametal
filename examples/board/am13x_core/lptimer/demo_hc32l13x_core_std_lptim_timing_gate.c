@@ -15,14 +15,14 @@
  * \brief LPTIM0定时器TIMING功能，LPTIM0定时器对外部信号下降沿进行计数，通过标准接口实现
  *
  * \步骤
- *   1.在am_hwconf_zlg118_lptim.c文件中，__g_lptim0_timing_devinfo设备信息结构体选择
- *             AMHW_ZLG118_LPTIM_FUNCTION_TIMER  ----------- 定时器模式
- *             AMHW_ZLG118_LPTIM_MODE_RELOAD     ----------- 自动重载模式
+ *   1.在am_hwconf_hc32l13x_lptim.c文件中，__g_lptim0_timing_devinfo设备信息结构体选择
+ *             AMHW_HC32_LPTIM_FUNCTION_TIMER  ----------- 定时器模式
+ *             AMHW_HC32_LPTIM_MODE_RELOAD     ----------- 自动重载模式
  *             AM_FALSE                          ----------- 门控关闭
  *             AM_TRUE                           ----------- TOG、TOGN输出使能打开
- *   2.在am_hwconf_zlg118_lptim.c文件中，__g_lptim1_timing_devinfo设备信息结构体选择
- *             AMHW_ZLG118_LPTIM_FUNCTION_COUNTER----------- 计数器模式
- *             AMHW_ZLG118_LPTIM_MODE_RELOAD     ----------- 自动重载模式
+ *   2.在am_hwconf_hc32l13x_lptim.c文件中，__g_lptim1_timing_devinfo设备信息结构体选择
+ *             AMHW_HC32_LPTIM_FUNCTION_COUNTER----------- 计数器模式
+ *             AMHW_HC32_LPTIM_MODE_RELOAD     ----------- 自动重载模式
  *             AM_FALSE                          ----------- 门控关闭
  *             AM_TRUE                           ----------- TOG、TOGN输出使能打开
  *   3.将PIOD_6（LPTIM1_ETR）和PIOC_1（LPTIM0_TOG）连接。
@@ -35,7 +35,7 @@
  * \note由于定时器定时1us不精确的缘故，可能存在较大误差，但是PIOC_1和LED0闪烁的频率关系固定为100000:1
  *
  * \par 源代码
- * \snippet demo_zlg118_std_lptim_timing.c src_zlg118_std_lptim_timing
+ * \snippet demo_hc32l13x_std_lptim_timing.c src_hc32l13x_std_lptim_timing
  *
  * \internal
  * \par Modification history
@@ -44,25 +44,25 @@
  */
 
 /**
- * \addtogroup demo_if_zlg118_std_lptim_timing
- * \copydoc demo_zlg118_std_lptim_timing.c
+ * \addtogroup demo_if_hc32l13x_std_lptim_timing
+ * \copydoc demo_hc32l13x_std_lptim_timing.c
  */
 
-/** [src_zlg118_std_lptim_timing] */
+/** [src_hc32l13x_std_lptim_timing] */
 
 #include "ametal.h"
 #include "am_vdebug.h"
 #include "am_timer.h"
 #include "demo_std_entries.h"
-#include "am_zlg118_inst_init.h"
+#include "am_hc32l13x_inst_init.h"
 #include "demo_am118_core_entries.h"
 
 /**
  * \brief 例程入口
  */
-void demo_zlg118_core_std_lptim_timing_gate_entry (void)
+void demo_hc32l13x_core_std_lptim_timing_gate_entry (void)
 {
-    am_timer_handle_t  handle = am_zlg118_lptim0_timing_inst_init();
+    am_timer_handle_t  handle = am_hc32l13x_lptim0_timing_inst_init();
     
     AM_DBG_INFO("demo am118_core std lptim timing gate!\r\n");
 
@@ -72,8 +72,8 @@ void demo_zlg118_core_std_lptim_timing_gate_entry (void)
     /* 设置定时时间为1us,TOG、TOGN输出频率周期时间为1*2=2us，即500KHz */
     am_timer_enable_us(handle, 0, 1);
 
-    demo_std_timer_timing_entry(am_zlg118_lptim1_timing_inst_init(), 0);
+    demo_std_timer_timing_entry(am_hc32l13x_lptim1_timing_inst_init(), 0);
 }
-/** [src_zlg118_std_lptim_timing] */
+/** [src_hc32l13x_std_lptim_timing] */
 
 /* end of file */

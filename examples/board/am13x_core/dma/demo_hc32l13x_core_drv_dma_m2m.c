@@ -23,7 +23,7 @@
  *    PIOA_9 引脚连接 PC 串口的 RXD。
  *
  * \par 源代码
- * \snippet demo_zlg118_drv_dma_m2m.c src_zlg118_drv_dma_m2m
+ * \snippet demo_hc32l13x_drv_dma_m2m.c src_hc32l13x_drv_dma_m2m
  *
  * \internal
  * \par Modification History
@@ -32,15 +32,15 @@
  */
 
 /**
- * \addtogroup demo_if_zlg118_drv_dma_m2m
- * \copydoc demo_zlg118_drv_dma_m2m.c
+ * \addtogroup demo_if_hc32l13x_drv_dma_m2m
+ * \copydoc demo_hc32l13x_drv_dma_m2m.c
  */
 
-/** [src_zlg118_drv_dma_m2m] */
+/** [src_hc32l13x_drv_dma_m2m] */
 #include "ametal.h"
 #include "am_board.h"
 #include "am_vdebug.h"
-#include "am_zlg118.h"
+#include "am_hc32l13x.h"
 #include "demo_zlg_entries.h"
 #include "demo_am118_core_entries.h"
 
@@ -50,12 +50,12 @@
 /**
  * \brief 例程入口
  */
-void demo_zlg118_core_drv_dma_m2m_entry (void)
+void demo_hc32l13x_core_drv_dma_m2m_entry (void)
 {
     AM_DBG_INFO("demo am118_core drv dma m2m!\r\n");
 
-    demo_zlg118_drv_dma_m2m_entry(DMA_M2M_CH);
+    demo_hc32l13x_drv_dma_m2m_entry(DMA_M2M_CH);
 }
-/** [src_zlg118_drv_dma_m2m] */
+/** [src_hc32l13x_drv_dma_m2m] */
 
 /* end of file */

@@ -28,7 +28,7 @@
  *    3. 在 DMA 操作期间不要对串口数据寄存器进行操作。
  *
  * \par 源代码
- * \snippet demo_zlg118_hw_lpuart_tx_dma.c src_zlg118_hw_lpuart_tx_dma
+ * \snippet demo_hc32l13x_hw_lpuart_tx_dma.c src_hc32l13x_hw_lpuart_tx_dma
  *
  *
  * \internal
@@ -38,21 +38,21 @@
  */
 
 /**
- * \addtogroup demo_if_zlg118_hw_lpuart_tx_dma
- * \copydoc demo_zlg118_hw_lpuart_tx_dma.c
+ * \addtogroup demo_if_hc32l13x_hw_lpuart_tx_dma
+ * \copydoc demo_hc32l13x_hw_lpuart_tx_dma.c
  */
 
-/** [src_zlg118_hw_lpuart_tx_dma] */
+/** [src_hc32l13x_hw_lpuart_tx_dma] */
 #include "ametal.h"
-#include "am_zlg118.h"
+#include "am_hc32l13x.h"
 #include "demo_zlg_entries.h"
-#include "am_zlg118_inst_init.h"
+#include "am_hc32l13x_inst_init.h"
 #include "demo_am118_core_entries.h"
 
 /**
  * \brief 例程入口
  */
-void demo_zlg118_core_hw_lpuart_tx_dma_entry (void)
+void demo_hc32l13x_core_hw_lpuart_tx_dma_entry (void)
 {
     AM_DBG_INFO("demo am118_core hw lpuart tx dma!\r\n");
 
@@ -66,14 +66,14 @@ void demo_zlg118_core_hw_lpuart_tx_dma_entry (void)
     /* 等待发送数据完成 */
     am_mdelay(100);
 
-    demo_zlg118_hw_lpuart_tx_dma_entry(ZLG118_LPUART0,
-                                       AMHW_ZLG118_LPUART_SCLK_SRC_PCLK,
+    demo_hc32l13x_hw_lpuart_tx_dma_entry(HC32_LPUART0,
+                                       AMHW_HC32_LPUART_SCLK_SRC_PCLK,
                                        16000000,
                                        115200,
                                        DMA_CHAN_1,
-                                       ZLG118_DMA_SRC_TYPE_LPUART0_TX);
+                                       HC32_DMA_SRC_TYPE_LPUART0_TX);
 }
 
-/** [src_zlg118_hw_lpuart_tx_dma] */
+/** [src_hc32l13x_hw_lpuart_tx_dma] */
 
 /* end of file */

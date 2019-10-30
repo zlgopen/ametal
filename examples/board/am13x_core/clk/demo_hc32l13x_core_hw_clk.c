@@ -24,7 +24,7 @@
  *       PIOA_9 引脚连接 PC 串口的 RXD。
  *
  * \par 源代码
- * \snippet demo_zlg118_hw_clk.c src_zlg118_hw_clk
+ * \snippet demo_hc32l13x_hw_clk.c src_hc32l13x_hw_clk
  *
  * \internal
  * \par Modification History
@@ -33,41 +33,41 @@
  */
 
 /**
- * \addtogroup demo_if_zlg118_hw_clk
- * \copydoc demo_zlg118_hw_clk.c
+ * \addtogroup demo_if_hc32l13x_hw_clk
+ * \copydoc demo_hc32l13x_hw_clk.c
  */
 
-/** [src_zlg118_hw_clk] */
+/** [src_hc32l13x_hw_clk] */
 #include "ametal.h"
 #include "am_vdebug.h"
 #include "am_gpio.h"
-#include "am_zlg118.h"
-#include "hw/amhw_zlg118_rcc.h"
-#include "am_zlg118_inst_init.h"
+#include "am_hc32l13x.h"
+#include "hw/amhw_hc32l13x_rcc.h"
+#include "am_hc32l13x_inst_init.h"
 #include "demo_zlg_entries.h"
 #include "demo_am118_core_entries.h"
 
 /**
  * \brief 例程入口
  */
-void demo_zlg118_core_hw_clk_entry (void)
+void demo_hc32l13x_core_hw_clk_entry (void)
 {
     am_clk_id_t clk_id[] = {CLK_HCLK, CLK_PCLK};
 
     AM_DBG_INFO("demo am118_core hw clk!\r\n");
 
-    amhw_zlg118_gpio_sup_hclk_div_set(ZLG118_GPIO0,
-                                      AMHW_ZLG118_GPIO_SUP_CLK_DIV_8);
-    amhw_zlg118_gpio_sup_hclk_output(ZLG118_GPIO0);
+    amhw_hc32l13x_gpio_sup_hclk_div_set(HC32_GPIO0,
+                                      AMHW_HC32_GPIO_SUP_CLK_DIV_8);
+    amhw_hc32l13x_gpio_sup_hclk_output(HC32_GPIO0);
     am_gpio_pin_cfg(PIOA_1, PIOA_1_HCLK_OUT | PIOA_1_OUT_PP);
 
-    amhw_zlg118_gpio_sup_pclk_div_set(ZLG118_GPIO0,
-                                      AMHW_ZLG118_GPIO_SUP_CLK_DIV_8);
-    amhw_zlg118_gpio_sup_pclk_output(ZLG118_GPIO0);
+    amhw_hc32l13x_gpio_sup_pclk_div_set(HC32_GPIO0,
+                                      AMHW_HC32_GPIO_SUP_CLK_DIV_8);
+    amhw_hc32l13x_gpio_sup_pclk_output(HC32_GPIO0);
     am_gpio_pin_cfg(PIOA_2, PIOA_2_PCLK_OUT | PIOA_2_OUT_PP);
 
     demo_zlg_hw_clk_entry(&clk_id[0], AM_NELEMENTS(clk_id));
 }
-/** [src_zlg118_hw_clk] */
+/** [src_hc32l13x_hw_clk] */
 
 /* end of file */

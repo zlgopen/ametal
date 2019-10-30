@@ -26,7 +26,7 @@
  *      （如：AM_DBG_INFO()）。
  *
  * \par 源代码
- * \snippet demo_zlg118_std_uart_polling.c src_zlg118_std_uart_polling
+ * \snippet demo_hc32l13x_std_uart_polling.c src_hc32l13x_std_uart_polling
  *
  * \internal
  * \par Modification History
@@ -35,29 +35,29 @@
  */
 
 /**
- * \addtogroup demo_if_zlg118_std_uart_polling
- * \copydoc demo_zlg118_std_uart_polling.c
+ * \addtogroup demo_if_hc32l13x_std_uart_polling
+ * \copydoc demo_hc32l13x_std_uart_polling.c
  */
 
-/** [src_zlg118_std_uart_polling] */
+/** [src_hc32l13x_std_uart_polling] */
 #include "ametal.h"
 #include "am_board.h"
-#include "am_zlg118_inst_init.h"
+#include "am_hc32l13x_inst_init.h"
 #include "demo_std_entries.h"
 #include "demo_am118_core_entries.h"
 
 /**
  * \brief 例程入口
  */
-void demo_zlg118_core_std_lpuart_polling_entry (void)
+void demo_hc32l13x_core_std_lpuart_polling_entry (void)
 {
     AM_DBG_INFO("demo am118_core std lpuart polling!\r\n");
 
      /* 等待发送数据完成 */
     am_mdelay(100);
 
-    demo_std_uart_polling_entry(am_zlg118_lpuart0_inst_init());
+    demo_std_uart_polling_entry(am_hc32l13x_lpuart0_inst_init());
 }
-/** [src_zlg118_std_uart_polling] */
+/** [src_hc32l13x_std_uart_polling] */
 
 /* end of file */

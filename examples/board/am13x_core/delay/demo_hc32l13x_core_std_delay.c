@@ -18,7 +18,7 @@
  *   1. LED0 闪烁频率 10Hz。
  *
  * \par 源代码
- * \snippet demo_zlg118_std_delay.c src_zlg118_std_delay
+ * \snippet demo_hc32l13x_std_delay.c src_hc32l13x_std_delay
  *
  * \internal
  * \par Modification History
@@ -27,11 +27,11 @@
  */
 
 /**
- * \addtogroup demo_if_zlg118_std_delay
- * \copydoc demo_zlg118_std_delay.c
+ * \addtogroup demo_if_hc32l13x_std_delay
+ * \copydoc demo_hc32l13x_std_delay.c
  */
 
-/** [src_zlg118_std_delay] */
+/** [src_hc32l13x_std_delay] */
 #include "ametal.h"
 #include "am_board.h"
 #include "am_vdebug.h"
@@ -41,13 +41,13 @@
 /**
  * \brief 例程入口
  */
-void demo_zlg118_core_std_delay_entry (void)
+void demo_hc32l13x_core_std_delay_entry (void)
 {
     AM_DBG_INFO("The demo for delay, "
                 "The delay is implement through SYSTICK\r\n");
 
     demo_std_delay_entry(LED0);
 }
-/** [src_zlg118_std_delay] */
+/** [src_hc32l13x_std_delay] */
 
 /* end of file */

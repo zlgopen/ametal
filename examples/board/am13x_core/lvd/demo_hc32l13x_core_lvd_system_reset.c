@@ -26,7 +26,7 @@
  *      （如：AM_DBG_INFO()）。
  *
  * \par 源代码
- * \snippet demo_zlg118_hw_lvd_int.c src_zlg118_hw_lvd_int
+ * \snippet demo_hc32l13x_hw_lvd_int.c src_hc32l13x_hw_lvd_int
  *
  *
  * \internal
@@ -36,22 +36,22 @@
  */
 
 /**
- * \addtogroup demo_if_zlg118_hw_lvd_int
- * \copydoc demo_zlg118_hw_lvd_int.c
+ * \addtogroup demo_if_hc32l13x_hw_lvd_int
+ * \copydoc demo_hc32l13x_hw_lvd_int.c
  */
 
-/** [src_zlg118_hw_lvd_int] */
+/** [src_hc32l13x_hw_lvd_int] */
 #include "ametal.h"
-#include "am_zlg118.h"
+#include "am_hc32l13x.h"
 #include "am_gpio.h"
-#include "zlg118_pin.h"
-#include "am_zlg118_lvd.h"
+#include "hc32l13x_pin.h"
+#include "am_hc32l13x_lvd.h"
 #include "demo_zlg_entries.h"
 
 /**
  * \brief 例程入口
  */
-void demo_zlg118_core_hw_lvd_system_reset_entry (void)
+void demo_hc32l13x_core_hw_lvd_system_reset_entry (void)
 {
     /* 开启LVD时钟 */
     am_clk_enable (CLK_VC_LVD);
@@ -62,7 +62,7 @@ void demo_zlg118_core_hw_lvd_system_reset_entry (void)
     /* PA04 LVD 输出端*/
     am_gpio_pin_cfg(PIOA_4, PIOA_4_LVD_OUT | PIOA_4_OUT_PP);
 
-    demo_zlg118_hw_lvd_system_reset_entry((void *)ZLG118_LVD);
+    demo_hc32l13x_hw_lvd_system_reset_entry((void *)HC32_LVD);
 }
 
 /* end of file */

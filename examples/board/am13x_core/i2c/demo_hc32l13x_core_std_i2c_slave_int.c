@@ -26,7 +26,7 @@
  *    可根据实际情况更换引脚。
  *
  * \par 源代码
- * \snippet demo_zlg118_std_i2c_slave_int.c src_zlg118_std_i2c_slave_int
+ * \snippet demo_hc32l13x_std_i2c_slave_int.c src_hc32l13x_std_i2c_slave_int
  *
  * \internal
  * \par Modification history
@@ -35,33 +35,33 @@
  */
 
 /**
- * \addtogroup demo_if_zlg118_std_i2c_slave_int
- * \copydoc demo_zlg118_std_i2c_slave_int.c
+ * \addtogroup demo_if_hc32l13x_std_i2c_slave_int
+ * \copydoc demo_hc32l13x_std_i2c_slave_int.c
  */
 
-/** [src_zlg118_std_i2c_slave_int] */
+/** [src_hc32l13x_std_i2c_slave_int] */
 #include "ametal.h"
 #include "am_vdebug.h"
 #include "am_board.h"
 #include "am_gpio.h"
-#include "am_zlg118.h"
-#include "am_zlg118_clk.h"
+#include "am_hc32l13x.h"
+#include "am_hc32l13x_clk.h"
 #include "hw/amhw_zlg_i2c.h"
-#include "hw/amhw_zlg118_rcc.h"
+#include "hw/amhw_hc32l13x_rcc.h"
 #include "demo_std_entries.h"
-#include "am_zlg118_inst_init.h"
+#include "am_hc32l13x_inst_init.h"
 
 #define DEV_ADDR    0x50
 
 /**
  * \brief 例程入口
  */
-void demo_zlg118_core_std_i2c_slave_int_entry (void)
+void demo_hc32l13x_core_std_i2c_slave_int_entry (void)
 {
     am_kprintf("demo am118_core std i2c slave int!\r\n");
 
-    demo_std_i2c_slave_entry(am_zlg118_i2c1_slv_inst_init(), DEV_ADDR);
+    demo_std_i2c_slave_entry(am_hc32l13x_i2c1_slv_inst_init(), DEV_ADDR);
 }
-/** [src_zlg118_std_i2c_slave_int] */
+/** [src_hc32l13x_std_i2c_slave_int] */
 
 /* end of file */

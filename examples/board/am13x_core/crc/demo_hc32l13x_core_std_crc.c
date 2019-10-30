@@ -27,7 +27,7 @@
  *       PIOA_9 引脚连接 PC 串口的 RXD。
  *
  * \par 源代码
- * \snippet demo_zlg118_std_crc.c src_zlg118_std_crc
+ * \snippet demo_hc32l13x_std_crc.c src_hc32l13x_std_crc
  *
  * \internal
  * \par Modification History
@@ -36,31 +36,31 @@
  */
 
 /**
- * \addtogroup demo_if_zlg118_std_crc
- * \copydoc demo_zlg118_std_crc.c
+ * \addtogroup demo_if_hc32l13x_std_crc
+ * \copydoc demo_hc32l13x_std_crc.c
  */
 
-/** [src_zlg118_std_crc] */
+/** [src_hc32l13x_std_crc] */
 #include "ametal.h"
 #include "am_vdebug.h"
 #include "am_zlg_crc.h"
 #include "demo_std_entries.h"
 #include "demo_am118_core_entries.h"
-#include "am_zlg118_inst_init.h"
+#include "am_hc32l13x_inst_init.h"
 
 /**
  * \brief 例程入口
  */
-void demo_zlg118_core_std_crc_entry (void)
+void demo_hc32l13x_core_std_crc_entry (void)
 {
     AM_DBG_INFO("demo am118_core std crc!\r\n");
 
     am_crc_handle_t crc_handle;
 
-    crc_handle = am_zlg118_crc_inst_init();
+    crc_handle = am_hc32l13x_crc_inst_init();
 
     demo_std_crc_entry(crc_handle);
 }
-/** [src_zlg118_std_crc] */
+/** [src_hc32l13x_std_crc] */
 
 /* end of file */

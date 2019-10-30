@@ -26,7 +26,7 @@
  *      （如：AM_DBG_INFO()）。
  *
  * \par 源代码
- * \snippet demo_zlg118_hw_dac_dma.c src_zlg118_hw_dac_dma
+ * \snippet demo_hc32l13x_hw_dac_dma.c src_hc32l13x_hw_dac_dma
  *
  *
  * \internal
@@ -36,17 +36,17 @@
  */
 
 /**
- * \addtogroup demo_if_zlg118_hw_dac_dma
- * \copydoc demo_zlg118_hw_dac_dma.c
+ * \addtogroup demo_if_hc32l13x_hw_dac_dma
+ * \copydoc demo_hc32l13x_hw_dac_dma.c
  */
 
-/** [src_zlg118_hw_dac_dma] */
+/** [src_hc32l13x_hw_dac_dma] */
 #include "ametal.h"
-#include "am_zlg118.h"
+#include "am_hc32l13x.h"
 #include "demo_zlg_entries.h"
-#include "am_zlg118_inst_init.h"
+#include "am_hc32l13x_inst_init.h"
 #include "demo_am118_core_entries.h"
-#include "hw/amhw_zlg118_dac.h"
+#include "hw/amhw_hc32l13x_dac.h"
 #include "math.h"
 
 #define PI 3.14159265358979           //圆周率
@@ -73,7 +73,7 @@ static void _BufProduce(uint16_t* vol_val)
 /**
  * \brief 例程入口
  */
-void demo_zlg118_core_hw_dac_dma_entry (void)
+void demo_hc32l13x_core_hw_dac_dma_entry (void)
 {
     AM_DBG_INFO("demo am118_core hw dac dma test!\r\n");
 
@@ -85,8 +85,8 @@ void demo_zlg118_core_hw_dac_dma_entry (void)
 
     _BufProduce(vol_val);
 
-    demo_zlg118_hw_dac_dma_entry(ZLG118_DAC,
-                                 ZLG118_DMA_SRC_TYPE_DAC0,
+    demo_hc32l13x_hw_dac_dma_entry(HC32_DAC,
+                                 HC32_DMA_SRC_TYPE_DAC0,
                                  DMA_CHAN_1,
                                  vol_val);
 

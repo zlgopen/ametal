@@ -25,7 +25,7 @@
        PIOA_9 引脚连接 PC 串口的 RXD。
  *
  * \par 源代码
- * \snippet demo_zlg118_drv_lpmode_wake_up.c src_zlg118_drv_lpmode_wake_up
+ * \snippet demo_hc32l13x_drv_lpmode_wake_up.c src_hc32l13x_drv_lpmode_wake_up
  *
  * \internal
  * \par Modification History
@@ -34,21 +34,21 @@
  */
 
 /**
- * \addtogroup demo_if_zlg118_drv_lpmode_wake_up
- * \copydoc demo_zlg118_drv_lpmode_wake_up.c
+ * \addtogroup demo_if_hc32l13x_drv_lpmode_wake_up
+ * \copydoc demo_hc32l13x_drv_lpmode_wake_up.c
  */
 
-/** [src_zlg118_drv_lpmode_wake_up] */
+/** [src_hc32l13x_drv_lpmode_wake_up] */
 #include "ametal.h"
 #include "am_board.h"
 #include "am_led.h"
 #include "am_delay.h"
 #include "am_gpio.h"
 #include "am_vdebug.h"
-#include "zlg118_pin.h"
-#include "am_zlg118_inst_init.h"
+#include "hc32l13x_pin.h"
+#include "am_hc32l13x_inst_init.h"
 #include "demo_am118_core_entries.h"
-#include "am_zlg118_lpmode.h"
+#include "am_hc32l13x_lpmode.h"
 
 /**
  * \brief 引脚中断服务函数
@@ -61,7 +61,7 @@ static void __gpio_isr (void *p_arg)
 /**
  * \brief 例程入口
  */
-void demo_zlg118_drv_lpmode_wake_up_entry (void)
+void demo_hc32l13x_drv_lpmode_wake_up_entry (void)
 {
     AM_DBG_INFO("sleep mode test!\r\n");
     am_mdelay(100);
@@ -73,23 +73,23 @@ void demo_zlg118_drv_lpmode_wake_up_entry (void)
     am_gpio_trigger_on(PIOA_7);
 
     /* 低功耗模式初始化 */
-    am_zlg118_lpmode_init();
+    am_hc32l13x_lpmode_init();
 
     /* 睡眠模式下系统时钟配置 */
-    am_zlg118_lpmode_clk_change(AM_ZLG118_LPMODE_MODE_SLEEP);
+    am_hc32l13x_lpmode_clk_change(AM_HC32_LPMODE_MODE_SLEEP);
 
     /* 进入睡眠模式，唤醒后不再进入 */
-    am_zlg118_lpmode_sleep(AM_FALSE);
+    am_hc32l13x_lpmode_sleep(AM_FALSE);
 
     AM_DBG_INFO("sleep mode, wake_up!\r\n");
 
     AM_DBG_INFO("deepsleep mode test!\r\n");
 
     /* 睡眠模式下系统时钟配置 */
-    am_zlg118_lpmode_clk_change(AM_ZLG118_LPMODE_MODE_DEEPSLEEP);
+    am_hc32l13x_lpmode_clk_change(AM_HC32_LPMODE_MODE_DEEPSLEEP);
 
     /* 进入深度睡眠模式，唤醒后不再进入 */
-    am_zlg118_lpmode_deepsleep(AM_FALSE);
+    am_hc32l13x_lpmode_deepsleep(AM_FALSE);
 
     AM_DBG_INFO("deepsleep mode, wake_up!\r\n\r\n");
 
@@ -102,6 +102,6 @@ void demo_zlg118_drv_lpmode_wake_up_entry (void)
         am_mdelay(500);
     }
 }
-/** [src_zlg118_drv_lpmode_wake_up] */
+/** [src_hc32l13x_drv_lpmode_wake_up] */
 
 /* end of file */

@@ -25,7 +25,7 @@
  *    定义为 1。但该宏已经默认配置为 1， 用户不必再次配置；
  *
  * \par 源代码
- * \snippet demo_zlg118_std_buzzer.c src_std_buzzer
+ * \snippet demo_hc32l13x_std_buzzer.c src_std_buzzer
  *
  * \internal
  * \par Modification history
@@ -34,8 +34,8 @@
  */
 
 /**
- * \addtogroup demo_if_zlg118_std_buzzer
- * \copydoc demo_zlg118_std_buzzer.c
+ * \addtogroup demo_if_hc32l13x_std_buzzer
+ * \copydoc demo_hc32l13x_std_buzzer.c
  */
 
 /** [src_std_buzzer] */
@@ -48,7 +48,7 @@
 /**
  * \brief 例程入口
  */
-void demo_zlg118_core_std_buzzer_entry (void)
+void demo_hc32l13x_core_std_buzzer_entry (void)
 {
     AM_DBG_INFO("demo am118_core std buzzer!\r\n");
 

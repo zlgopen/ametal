@@ -25,7 +25,7 @@
  *       PIOA_10引脚连接 PC串口的TXD。
  *
  * \par 源代码
- * \snippet demo_zlg118_hw_multichan_adc.c src_zlg118_hw_multichan_adc
+ * \snippet demo_hc32l13x_hw_multichan_adc.c src_hc32l13x_hw_multichan_adc
  *
  * \internal
  * \par Modification History
@@ -34,14 +34,14 @@
  */
 
 /**
- * \addtogroup demo_if_zlg118_hw_multichan_adc
- * \copydoc demo_zlg118_hw_multichan_adc.c
+ * \addtogroup demo_if_hc32l13x_hw_multichan_adc
+ * \copydoc demo_hc32l13x_hw_multichan_adc.c
  */
 
-/** [src_zlg118_hw_multichan_adc] */
+/** [src_hc32l13x_hw_multichan_adc] */
 #include "ametal.h"
 #include "am_vdebug.h"
-#include "am_zlg118.h"
+#include "am_hc32l13x.h"
 #include "am_gpio.h"
 #include "am_clk.h"
 #include "demo_zlg_entries.h"
@@ -50,30 +50,30 @@
 /**
  * \brief 例程入口
  */
-void demo_zlg118_core_hw_multichan_adc_entry (void)
+void demo_hc32l13x_core_hw_multichan_adc_entry (void)
 {
     /* 16个顺序通道ADC采集 */ 
     /* 4个插入通道ADC采集 */
-    int adc_chan[20] = {AMHW_ZLG118_CHAN_AIN0_PA0,
-                        AMHW_ZLG118_CHAN_AIN1_PA1,
-                        AMHW_ZLG118_CHAN_AIN2_PA2,
-                        AMHW_ZLG118_CHAN_AIN3_PA3,
-                        AMHW_ZLG118_CHAN_AIN4_PA4,
-                        AMHW_ZLG118_CHAN_AIN5_PA5,
-                        AMHW_ZLG118_CHAN_AIN6_PA6,
-                        AMHW_ZLG118_CHAN_AIN7_PA7,
-                        AMHW_ZLG118_CHAN_AIN8_PB0,
-                        AMHW_ZLG118_CHAN_AIN9_PB1,
-                        AMHW_ZLG118_CHAN_AIN10_PC0,
-                        AMHW_ZLG118_CHAN_AIN11_PC1,
-                        AMHW_ZLG118_CHAN_AIN12_PC2,
-                        AMHW_ZLG118_CHAN_AIN13_PC3,
-                        AMHW_ZLG118_CHAN_AIN14_PC4,
-                        AMHW_ZLG118_CHAN_AIN15_PC5,
-                        AMHW_ZLG118_CHAN_AIN16_PB2,
-                        AMHW_ZLG118_CHAN_AIN17_PB10,
-                        AMHW_ZLG118_CHAN_AIN18_PB11,
-                        AMHW_ZLG118_CHAN_AIN19_PB12};
+    int adc_chan[20] = {AMHW_HC32_CHAN_AIN0_PA0,
+                        AMHW_HC32_CHAN_AIN1_PA1,
+                        AMHW_HC32_CHAN_AIN2_PA2,
+                        AMHW_HC32_CHAN_AIN3_PA3,
+                        AMHW_HC32_CHAN_AIN4_PA4,
+                        AMHW_HC32_CHAN_AIN5_PA5,
+                        AMHW_HC32_CHAN_AIN6_PA6,
+                        AMHW_HC32_CHAN_AIN7_PA7,
+                        AMHW_HC32_CHAN_AIN8_PB0,
+                        AMHW_HC32_CHAN_AIN9_PB1,
+                        AMHW_HC32_CHAN_AIN10_PC0,
+                        AMHW_HC32_CHAN_AIN11_PC1,
+                        AMHW_HC32_CHAN_AIN12_PC2,
+                        AMHW_HC32_CHAN_AIN13_PC3,
+                        AMHW_HC32_CHAN_AIN14_PC4,
+                        AMHW_HC32_CHAN_AIN15_PC5,
+                        AMHW_HC32_CHAN_AIN16_PB2,
+                        AMHW_HC32_CHAN_AIN17_PB10,
+                        AMHW_HC32_CHAN_AIN18_PB11,
+                        AMHW_HC32_CHAN_AIN19_PB12};
     
     AM_DBG_INFO("demo am118_core hw multichan adc int!\r\n");
 
@@ -102,13 +102,13 @@ void demo_zlg118_core_hw_multichan_adc_entry (void)
     /* 时钟使能  */
     am_clk_enable(CLK_ADC_BGR);
 
-    demo_zlg118_hw_multichan_adc_entry(ZLG118_ADC,
+    demo_hc32l13x_hw_multichan_adc_entry(HC32_ADC,
                                        INUM_ADC_DAC,
                                        2500,
                                        adc_chan,
                                        16,
                                        4);
 }
-/** [src_zlg118_hw_multichan_adc] */
+/** [src_hc32l13x_hw_multichan_adc] */
 
 /* end of file */

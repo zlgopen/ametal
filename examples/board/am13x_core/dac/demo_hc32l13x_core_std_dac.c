@@ -19,7 +19,7 @@
  *
  *
  * \par 源代码
- * \snippet demo_zlg118_std_dac.c src_zlg118_std_dac
+ * \snippet demo_hc32l13x_std_dac.c src_hc32l13x_std_dac
  *
  * \internal
  * \par Modification History
@@ -28,14 +28,14 @@
  */
 
 /**
- * \addtogroup demo_if_zlg118_std_dac
- * \copydoc demo_zlg118_std_dac.c
+ * \addtogroup demo_if_hc32l13x_std_dac
+ * \copydoc demo_hc32l13x_std_dac.c
  */
 
  /** [src_std_dac] */
 #include "ametal.h"
 #include "am_vdebug.h"
-#include "am_zlg118_inst_init.h"
+#include "am_hc32l13x_inst_init.h"
 #include "demo_std_entries.h"
 
 const static uint32_t mv_out = 1523;
@@ -44,13 +44,13 @@ const static uint32_t mv_out = 1523;
  * \brief DAC输出电压，标准接口层实现
  * \return 无
  */
-void demo_zlg118_core_std_dac_entry (void)
+void demo_hc32l13x_core_std_dac_entry (void)
 {
     am_dac_handle_t adc_handle = NULL;
     
     AM_DBG_INFO("demo am118_core std dac convert test!\r\n");
     
-    adc_handle = am_zlg118_dac_inst_init();
+    adc_handle = am_hc32l13x_dac_inst_init();
 
     demo_std_dac_entry(adc_handle, 0, mv_out);
 }

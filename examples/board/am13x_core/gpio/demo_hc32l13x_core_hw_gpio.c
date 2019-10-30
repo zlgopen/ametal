@@ -23,7 +23,7 @@
  *    PIOA_9 引脚连接 PC 串口的 RXD。
  *
  * \par 源代码
- * \snippet demo_zlg118_hw_gpio.c src_zlg118_hw_gpio
+ * \snippet demo_hc32l13x_hw_gpio.c src_hc32l13x_hw_gpio
  *
  * \internal
  * \par Modification History
@@ -32,16 +32,16 @@
  */
 
 /**
- * \addtogroup demo_if_zlg118_hw_gpio
- * \copydoc demo_zlg118_hw_gpio.c
+ * \addtogroup demo_if_hc32l13x_hw_gpio
+ * \copydoc demo_hc32l13x_hw_gpio.c
  */
 
-/** [src_zlg118_hw_gpio] */
+/** [src_hc32l13x_hw_gpio] */
 #include "ametal.h"
 #include "am_gpio.h"
-#include "am_zlg118.h"
+#include "am_hc32l13x.h"
 #include "am_vdebug.h"
-#include "hw/amhw_zlg118_gpio.h"
+#include "hw/amhw_hc32l13x_gpio.h"
 #include "demo_zlg_entries.h"
 #include "demo_am118_core_entries.h"
 
@@ -51,7 +51,7 @@
 /**
  * \brief 例程入口
  */
-void demo_zlg118_core_hw_gpio_entry (void)
+void demo_hc32l13x_core_hw_gpio_entry (void)
 {
 
     AM_DBG_INFO("demo am118_core hw gpio!\r\n");
@@ -62,8 +62,8 @@ void demo_zlg118_core_hw_gpio_entry (void)
     /* 开启系统配置的时钟 */
     am_clk_enable(CLK_GPIO);
 
-    demo_zlg118_hw_gpio_entry((void *)ZLG118_GPIO0, INPUT_PIN, OUTPUT_PIN);
+    demo_hc32l13x_hw_gpio_entry((void *)HC32_GPIO0, INPUT_PIN, OUTPUT_PIN);
 }
-/** [src_zlg118_hw_gpio] */
+/** [src_hc32l13x_hw_gpio] */
 
 /* end of file */

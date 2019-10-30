@@ -31,7 +31,7 @@
  *       可根据实际情况更换引脚。
  *
  * \par 源代码
- * \snippet demo_zlg118_std_i2c_master_sync.c src_zlg118_std_i2c_master_sync
+ * \snippet demo_hc32l13x_std_i2c_master_sync.c src_hc32l13x_std_i2c_master_sync
  *
  * \internal
  * \par Modification history
@@ -40,16 +40,16 @@
  */
 
 /**
- * \addtogroup demo_if_zlg118_std_i2c_master_sync
- * \copydoc demo_zlg118_std_i2c_master_sync.c
+ * \addtogroup demo_if_hc32l13x_std_i2c_master_sync
+ * \copydoc demo_hc32l13x_std_i2c_master_sync.c
  */
 
-/** [src_zlg118_std_i2c_master_sync] */
+/** [src_hc32l13x_std_i2c_master_sync] */
 #include "ametal.h"
 #include "am_board.h"
 #include "am_vdebug.h"
 #include "am_i2c.h"
-#include "am_zlg118_inst_init.h"
+#include "am_hc32l13x_inst_init.h"
 #include "demo_std_entries.h"
 #include "demo_am118_core_entries.h"
 
@@ -64,14 +64,14 @@
 /**
  * \brief 例程入口
  */
-void demo_zlg118_core_std_i2c_master_sync_entry (void)
+void demo_hc32l13x_core_std_i2c_master_sync_entry (void)
 {
     AM_DBG_INFO("demo am118_core std i2c master sync!\r\n");
 
-    demo_std_i2c_master_sync_entry(am_zlg118_i2c1_inst_init(),
+    demo_std_i2c_master_sync_entry(am_hc32l13x_i2c1_inst_init(),
                                    EEPROM_ADDR,
                                    TEST_LEN);
 }
-/** [src_zlg118_std_i2c_master_sync] */
+/** [src_hc32l13x_std_i2c_master_sync] */
 
 /* end of file */

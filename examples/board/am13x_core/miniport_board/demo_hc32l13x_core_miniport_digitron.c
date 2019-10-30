@@ -38,14 +38,14 @@
 /** [src_miniport_digitron] */
 #include "ametal.h"
 #include "am_vdebug.h"
-#include "am_zlg118_inst_init.h"
+#include "am_hc32l13x_inst_init.h"
 #include "am_digitron_disp.h"
 #include "demo_am118_core_entries.h"
 
 /**
  * \brief Àý³ÌÈë¿Ú
  */
-void demo_zlg118_core_miniport_digitron_entry (void)
+void demo_hc32l13x_core_miniport_digitron_entry (void)
 {
     AM_DBG_INFO("demo am118_core miniport digitron!\r\n");
 

@@ -25,7 +25,7 @@
  *      （如：AM_DBG_INFO()）。
  *
  * \par 源代码
- * \snippet demo_zlg118_core_opa_dac.c src_zlg118_core_opa_dac
+ * \snippet demo_hc32l13x_core_opa_dac.c src_hc32l13x_core_opa_dac
  *
  *
  * \internal
@@ -35,21 +35,21 @@
  */
 
 /**
- * \addtogroup demo_if_zlg118_core_opa_dac
- * \copydoc demo_zlg118_core_opa_dac.c
+ * \addtogroup demo_if_hc32l13x_core_opa_dac
+ * \copydoc demo_hc32l13x_core_opa_dac.c
  */
 
-/** [src_zlg118_core_opa_dac] */
+/** [src_hc32l13x_core_opa_dac] */
 #include "ametal.h"
-#include "am_zlg118.h"
+#include "am_hc32l13x.h"
 #include "am_gpio.h"
-#include "zlg118_pin.h"
-#include "am_zlg118_opa.h"
+#include "hc32l13x_pin.h"
+#include "am_hc32l13x_opa.h"
 #include "demo_zlg_entries.h"
 #include "math.h"
 
 #define PI          3.14159265358979     /**< \brief圆周率 */
-#define OPA_MODE    AM_ZLG118_OPA_DAC    /**< \brief OPA DAC电压跟随模式*/
+#define OPA_MODE    AM_HC32_OPA_DAC    /**< \brief OPA DAC电压跟随模式*/
 
 /**< \brief DAC设置电压值缓存区  */
 static uint16_t vol_val[128] = {0};
@@ -73,7 +73,7 @@ static void _BufProduce(uint16_t* vol_val)
 /**
  * \brief 例程入口
  */
-void demo_zlg118_core_hw_opa_dac_entry (void)
+void demo_hc32l13x_core_hw_opa_dac_entry (void)
 {
 
     AM_DBG_INFO("demo am118_core hw opa dac test!\r\n");
@@ -89,8 +89,8 @@ void demo_zlg118_core_hw_opa_dac_entry (void)
 
     _BufProduce(vol_val);
 
-    demo_zlg118_hw_opa_dac_entry(ZLG118_OPA,
-                                 ZLG118_DAC,
+    demo_hc32l13x_hw_opa_dac_entry(HC32_OPA,
+                                 HC32_DAC,
                                  OPA_MODE,
                                  vol_val);
 }

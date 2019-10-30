@@ -23,10 +23,10 @@
  *       PIOA_9 引脚连接 PC 串口的 RXD。
  *    2. 使用示波器或逻辑分析仪测量互补PWM的死区时间。
  *    3. 死区时间应小于PWM的周期时间。死区时间的设定范围（6——2686us），如果需要设定其他死区时间，则需
- *       要更改demo_zlg118_hw_tim_pwm_dead.c中的分频系数，外设时钟两个参数。
+ *       要更改demo_hc32l13x_hw_tim_pwm_dead.c中的分频系数，外设时钟两个参数。
  *
  * \par 源代码
- * \snippet demo_zlg118_hw_tim_pwm_dead.c src_zlg118_hw_tim_pwm_dead
+ * \snippet demo_hc32l13x_hw_tim_pwm_dead.c src_hc32l13x_hw_tim_pwm_dead
  *
  * \internal
  * \par Modification history
@@ -35,24 +35,24 @@
  */
 
 /**
- * \addtogroup demo_if_zlg118_hw_tim_pwm_dead
- * \copydoc demo_zlg118_hw_tim_pwm_dead.c
+ * \addtogroup demo_if_hc32l13x_hw_tim_pwm_dead
+ * \copydoc demo_hc32l13x_hw_tim_pwm_dead.c
  */
 
-/** [src_zlg118_hw_tim_pwm_dead] */
+/** [src_hc32l13x_hw_tim_pwm_dead] */
 #include "ametal.h"
 #include "am_gpio.h"
 #include "am_vdebug.h"
-#include "am_zlg118.h"
-#include "hw/amhw_zlg118_adtim.h"
-#include "am_zlg118_inst_init.h"
+#include "am_hc32l13x.h"
+#include "hw/amhw_hc32l13x_adtim.h"
+#include "am_hc32l13x_inst_init.h"
 #include "demo_zlg_entries.h"
 #include "demo_am118_core_entries.h"
 
 /**
  * \brief 例程入口
  */
-void demo_zlg118_core_hw_tim_pwm_dead_entry (void)
+void demo_hc32l13x_core_hw_tim_pwm_dead_entry (void)
 {
 
     AM_DBG_INFO("demo am118_core hw tim PWM dead!\r\n");
@@ -64,14 +64,14 @@ void demo_zlg118_core_hw_tim_pwm_dead_entry (void)
     /* 定时器时钟使能 */
     am_clk_enable(CLK_TIM012);
 
-    demo_zlg118_hw_tim_pwm_dead_entry((void *)ZLG118_TIM0,
-                                       AMHW_ZLG118_TIM_TYPE_TIM0,
-                                       ZLG118_TIM_CH0A,
-                                       ZLG118_TIM_CH0B,
+    demo_hc32l13x_hw_tim_pwm_dead_entry((void *)HC32_TIM0,
+                                       AMHW_HC32_TIM_TYPE_TIM0,
+                                       HC32_TIM_CH0A,
+                                       HC32_TIM_CH0B,
                                        50000 / 4,
                                        50000,
                                        100);
 }
-/** [src_zlg118_hw_tim_pwm_dead] */
+/** [src_hc32l13x_hw_tim_pwm_dead] */
 
 /* end of file */

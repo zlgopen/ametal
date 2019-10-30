@@ -19,7 +19,7 @@
  *   2. LED0 以 100ms 间隔进行翻转。
  *
  * \par 源代码
- * \snippet demo_zlg118_hw_tim_pwm.c src_zlg118_hw_tim_pwm
+ * \snippet demo_hc32l13x_hw_tim_pwm.c src_hc32l13x_hw_tim_pwm
  *
  * \internal
  * \par Modification history
@@ -28,24 +28,24 @@
  */
 
 /**
- * \addtogroup demo_if_zlg118_hw_tim_pwm
- * \copydoc demo_zlg118_hw_tim_pwm.c
+ * \addtogroup demo_if_hc32l13x_hw_tim_pwm
+ * \copydoc demo_hc32l13x_hw_tim_pwm.c
  */
 
-/** [src_zlg118_hw_tim_pwm] */
+/** [src_hc32l13x_hw_tim_pwm] */
 #include "ametal.h"
 #include "am_vdebug.h"
-#include "am_zlg118.h"
-#include "am_zlg118_clk.h"
-#include "am_zlg118_tim_pwm.h"
-#include "am_zlg118_inst_init.h"
+#include "am_hc32l13x.h"
+#include "am_hc32l13x_clk.h"
+#include "am_hc32l13x_tim_pwm.h"
+#include "am_hc32l13x_inst_init.h"
 #include "demo_zlg_entries.h"
 #include "demo_am118_core_entries.h"
 
 /**
  * \brief 定时器PWM输出HW层例程入口
  */
-void demo_zlg118_core_hw_tim_pwm_entry (void)
+void demo_hc32l13x_core_hw_tim_pwm_entry (void)
 {
 
     AM_DBG_INFO("demo am217_core hw tim cmp toggle!\r\n");
@@ -57,15 +57,15 @@ void demo_zlg118_core_hw_tim_pwm_entry (void)
     am_clk_enable(CLK_TIM012);
 
     /* 复位定时器 */
-    am_zlg118_clk_reset(CLK_TIM012);
+    am_hc32l13x_clk_reset(CLK_TIM012);
 
-    demo_zlg118_hw_tim_pwm_entry((void *)ZLG118_TIM0,
-                                 AMHW_ZLG118_TIM_TYPE_TIM0,
-                                 ZLG118_TIM_CH0A,
+    demo_hc32l13x_hw_tim_pwm_entry((void *)HC32_TIM0,
+                                 AMHW_HC32_TIM_TYPE_TIM0,
+                                 HC32_TIM_CH0A,
                                  am_clk_rate_get(CLK_TIM012),
-                                 AMHW_ZLG118_TIM_CLK_DIV64,
+                                 AMHW_HC32_TIM_CLK_DIV64,
                                  INUM_TIM0);
 }
-/** [src_zlg118_hw_tim_pwm] */
+/** [src_hc32l13x_hw_tim_pwm] */
 
 /* end of file */

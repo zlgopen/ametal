@@ -30,7 +30,7 @@
  *       和 AM_CFG_SYSTEM_TICK_ENABLE 定义为 0。
  *
  * \par 源代码
- * \snippet demo_zlg118_std_tim0_cap.c src_zlg118_std_tim0_cap
+ * \snippet demo_hc32l13x_std_tim0_cap.c src_hc32l13x_std_tim0_cap
  *
  * \internal
  * \par Modification history
@@ -39,25 +39,25 @@
  */
 
 /**
- * \addtogroup demo_if_zlg118_std_tim0_cap
- * \copydoc demo_zlg118_std_tim0_cap.c
+ * \addtogroup demo_if_hc32l13x_std_tim0_cap
+ * \copydoc demo_hc32l13x_std_tim0_cap.c
  */
 
-/** [src_zlg118_std_tim0_cap] */
+/** [src_hc32l13x_std_tim0_cap] */
 #include "ametal.h"
 #include "am_vdebug.h"
-#include "am_zlg118_inst_init.h"
+#include "am_hc32l13x_inst_init.h"
 #include "demo_std_entries.h"
 #include "demo_am118_core_entries.h"
 
 /**
  * \brief 例程入口
  */
-void demo_zlg118_core_std_tim2_cap_entry (void)
+void demo_hc32l13x_core_std_tim2_cap_entry (void)
 {
 
-    am_pwm_handle_t tim3_pwm_handle = am_zlg118_tim3_pwm_inst_init();
-    am_cap_handle_t tim2_cap_handle = am_zlg118_tim2_cap_inst_init();
+    am_pwm_handle_t tim3_pwm_handle = am_hc32l13x_tim3_pwm_inst_init();
+    am_cap_handle_t tim2_cap_handle = am_hc32l13x_tim2_cap_inst_init();
     
 	  AM_DBG_INFO("demo am118_core std tim1 cap!\r\n");
 
@@ -67,6 +67,6 @@ void demo_zlg118_core_std_tim2_cap_entry (void)
 
     demo_std_timer_cap_entry(tim2_cap_handle, 1);
 }
-/** [src_zlg118_std_tim0_cap] */
+/** [src_hc32l13x_std_tim0_cap] */
 
 /* end of file */
