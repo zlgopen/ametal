@@ -1351,12 +1351,23 @@ uint8_t zsn603_piccb_active(zsn603_handle_t   handle,
                             uint8_t           req_mode,
                             uint8_t          *p_info)
 {
+    uint8_t ret        = 0;
+    uint8_t tx_data[2] = {0};
+    
+    tx_data[0] = req_mode;
+    tx_data[1] = 0x00;
+    
+    ret = zsn603_set_icc_reg(handle, 0x0d, 0x00);
+    if(ret){
+        return ret;
+    }
+
     return __zsn603_cmd_execute(handle,
                                 handle->local_addr,
                                 ZSN603_ISO14443_PROTOCOL_CMD,
                                 ZSN603_PICCB_ACTIVE,
-                               &req_mode, 1,
-                                0, p_info, NULL);
+                                tx_data, 2,
+                                12, p_info, NULL);
 }
 /** \brief BÐÍ¿¨¸´Î» */
 uint8_t zsn603_piccb_reset(zsn603_handle_t handle,
