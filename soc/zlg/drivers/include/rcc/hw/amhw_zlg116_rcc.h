@@ -18,7 +18,7 @@
  *
  * \internal
  * \par Modification history
- * - 1.00 17-04-11  sdy, first implementation
+ * - 1.00 19-09-05  zp, first implementation
  * \endinternal
  */
 

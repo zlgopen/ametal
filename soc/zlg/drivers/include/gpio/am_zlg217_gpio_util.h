@@ -18,7 +18,7 @@
  *
  * \internal
  * \par Modification History
- * - 1.00 17-08-21  zcb, first implementation
+ * - 1.00 19-09-03  zp, first implementation
  * \endinternal
  */
 

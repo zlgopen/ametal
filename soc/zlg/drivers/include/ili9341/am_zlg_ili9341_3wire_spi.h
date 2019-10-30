@@ -30,7 +30,7 @@ extern "C" {
 #endif
 
 #include "am_ili9341.h"
-#include "amhw_zlg_spi.h"
+#include "hw/amhw_zlg_spi.h"
 
 /**
  * @addtogroup am_zlg_if_ili9341_3wire_spi

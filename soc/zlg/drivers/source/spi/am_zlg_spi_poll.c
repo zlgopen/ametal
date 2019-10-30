@@ -431,6 +431,7 @@ int __spi_config (am_zlg_spi_poll_dev_t *p_this)
         amhw_zlg_spi_rx_data_edge_sel(p_hw_spi, AMHW_ZLG_SPI_RX_DATA_MID_CLOCK);
 
     }
+
     /* ÉèÖÃSPIËÙÂÊ */
     __spi_speed_cfg(p_this, p_trans->speed_hz);
 
