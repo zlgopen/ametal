@@ -166,7 +166,11 @@ int am_clk_enable (am_clk_id_t clk_id)
 
     peri = clk_id & 0xff;
 
-    amhw_zlg118_rcc_peripheral_enable((amhw_zlg118_peripheral)peri);
+    /* 判断外设时钟是否已经使能，否，使能时钟且复位时钟 */
+    if(amhw_zlg118_rcc_peripheral_enable_check((amhw_zlg118_peripheral)peri) == 0) {
+        amhw_zlg118_rcc_peripheral_enable((amhw_zlg118_peripheral)peri);
+        am_zlg118_clk_reset(clk_id);
+    }
 
     return AM_OK;
 }

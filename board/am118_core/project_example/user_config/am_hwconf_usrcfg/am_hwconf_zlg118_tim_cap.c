@@ -42,13 +42,11 @@
 void __zlg118_plfm_tim0_cap_init (void)
 {
     am_clk_enable(CLK_TIM012);
-    am_zlg118_clk_reset(CLK_TIM012);
 }
 
 /** \brief 解除TIM0平台初始化 */
 void __zlg118_plfm_tim0_cap_deinit (void)
 {
-    am_zlg118_clk_reset(CLK_TIM012);
     am_clk_disable(CLK_TIM012);
 }
 
@@ -108,13 +106,11 @@ void am_zlg118_tim0_cap_inst_deinit (am_cap_handle_t handle)
 void __zlg118_plfm_tim1_cap_init (void)
 {
     am_clk_enable(CLK_TIM012);
-    am_zlg118_clk_reset(CLK_TIM012);
 }
 
 /** \brief 解除TIM1平台初始化 */
 void __zlg118_plfm_tim1_cap_deinit (void)
 {
-    am_zlg118_clk_reset(CLK_TIM012);
     am_clk_disable(CLK_TIM012);
 }
 
@@ -174,13 +170,11 @@ void am_zlg118_tim1_cap_inst_deinit (am_cap_handle_t handle)
 void __zlg118_plfm_tim2_cap_init (void)
 {
     am_clk_enable(CLK_TIM012);
-    am_zlg118_clk_reset(CLK_TIM012);
 }
 
 /** \brief 解除TIM2平台初始化 */
 void __zlg118_plfm_tim2_cap_deinit (void)
 {
-    am_zlg118_clk_reset(CLK_TIM012);
     am_clk_disable(CLK_TIM012);
 }
 
@@ -240,13 +234,11 @@ void am_zlg118_tim2_cap_inst_deinit (am_cap_handle_t handle)
 void __zlg118_plfm_tim3_cap_init (void)
 {
     am_clk_enable(CLK_TIM3);
-    am_zlg118_clk_reset(CLK_TIM3);
 }
 
 /** \brief 解除TIM3平台初始化 */
 void __zlg118_plfm_tim3_cap_deinit (void)
 {
-    am_zlg118_clk_reset(CLK_TIM3);
     am_clk_disable(CLK_TIM3);
 }
 
@@ -333,13 +325,11 @@ void am_zlg118_tim3_cap_inst_deinit (am_cap_handle_t handle)
 void __zlg118_plfm_adtim4_cap_init (void)
 {
     am_clk_enable(CLK_TIM456);
-    am_zlg118_clk_reset(CLK_TIM456);
 }
 
 /** \brief 解除ADTIM4平台初始化 */
 void __zlg118_plfm_adtim4_cap_deinit (void)
 {
-    am_zlg118_clk_reset(CLK_TIM456);
     am_clk_disable(CLK_TIM456);
 }
 
@@ -395,13 +385,11 @@ void am_zlg118_tim4_cap_inst_deinit (am_cap_handle_t handle)
 void __zlg118_plfm_adtim5_cap_init (void)
 {
     am_clk_enable(CLK_TIM456);
-    am_zlg118_clk_reset(CLK_TIM456);
 }
 
 /** \brief 解除ADTIM5平台初始化 */
 void __zlg118_plfm_adtim5_cap_deinit (void)
 {
-    am_zlg118_clk_reset(CLK_TIM456);
     am_clk_disable(CLK_TIM456);
 }
 
@@ -457,13 +445,11 @@ void am_zlg118_tim5_cap_inst_deinit (am_cap_handle_t handle)
 void __zlg118_plfm_adtim6_cap_init (void)
 {
     am_clk_enable(CLK_TIM456);
-    am_zlg118_clk_reset(CLK_TIM456);
 }
 
 /** \brief 解除ADTIM6平台初始化 */
 void __zlg118_plfm_adtim6_cap_deinit (void)
 {
-    am_zlg118_clk_reset(CLK_TIM456);
     am_clk_disable(CLK_TIM456);
 }
 

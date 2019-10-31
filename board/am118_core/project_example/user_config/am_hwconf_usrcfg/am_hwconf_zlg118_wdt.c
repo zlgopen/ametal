@@ -36,7 +36,6 @@
 static void __zlg118_wdt_plfm_init (void)
 {
     am_clk_enable(CLK_WDT);
-    am_zlg118_clk_reset(CLK_WDT);
 }
 
 /** \brief 解除WDT 平台初始化 */

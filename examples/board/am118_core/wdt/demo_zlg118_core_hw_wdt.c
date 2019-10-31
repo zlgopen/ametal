@@ -61,8 +61,6 @@ void demo_zlg118_core_hw_wdt_entry (void)
 
     am_clk_enable(CLK_WDT);
 
-    am_zlg118_clk_reset(CLK_WDT);
-
     demo_zlg118_hw_wdt_entry(ZLG118_WDT,
                              __WDT_TIMEOUT_MS,
                              __WDT_FEED_TIME_MS);

@@ -56,7 +56,6 @@ am_zlg118_pca_ioinfo_t __g_pca_ioinfo_list[] = {
 am_local void __zlg118_pca_plfm_init (void)
 {
     am_clk_enable(CLK_PCA);
-    am_zlg118_clk_reset(CLK_PCA);
 }
 
 /**
@@ -64,7 +63,6 @@ am_local void __zlg118_pca_plfm_init (void)
  */
 am_local void __zlg118_pca_plfm_deinit (void)
 {
-    am_zlg118_clk_reset(CLK_PCA);
     am_clk_disable(CLK_PCA);
 }
 

@@ -42,13 +42,11 @@
 void __zlg118_plfm_tim0_pwm_init (void)
 {
     am_clk_enable(CLK_TIM012);
-    am_zlg118_clk_reset(CLK_TIM012);
 }
 
 /** \brief 解除TIM0平台初始化 */
 void __zlg118_plfm_tim0_pwm_deinit (void)
 {
-    am_zlg118_clk_reset(CLK_TIM012);
     am_clk_disable(CLK_TIM012);
 }
 
@@ -111,13 +109,11 @@ void am_zlg118_tim0_pwm_inst_deinit (am_pwm_handle_t handle)
 void __zlg118_plfm_tim1_pwm_init (void)
 {
     am_clk_enable(CLK_TIM012);
-    am_zlg118_clk_reset(CLK_TIM012);
 }
 
 /** \brief 解除TIM1平台初始化 */
 void __zlg118_plfm_tim1_pwm_deinit (void)
 {
-    am_zlg118_clk_reset(CLK_TIM012);
     am_clk_disable(CLK_TIM012);
 }
 
@@ -180,13 +176,11 @@ void am_zlg118_tim1_pwm_inst_deinit (am_pwm_handle_t handle)
 void __zlg118_plfm_tim2_pwm_init (void)
 {
     am_clk_enable(CLK_TIM012);
-    am_zlg118_clk_reset(CLK_TIM012);
 }
 
 /** \brief 解除TIM2平台初始化 */
 void __zlg118_plfm_tim2_pwm_deinit (void)
 {
-    am_zlg118_clk_reset(CLK_TIM012);
     am_clk_disable(CLK_TIM012);
 }
 
@@ -249,13 +243,11 @@ void am_zlg118_tim2_pwm_inst_deinit (am_pwm_handle_t handle)
 void __zlg118_plfm_tim3_pwm_init (void)
 {
     am_clk_enable(CLK_TIM3);
-    am_zlg118_clk_reset(CLK_TIM3);
 }
 
 /** \brief 解除TIM3平台初始化 */
 void __zlg118_plfm_tim3_pwm_deinit (void)
 {
-    am_zlg118_clk_reset(CLK_TIM3);
     am_clk_disable(CLK_TIM3);
 }
 
@@ -350,13 +342,11 @@ void am_zlg118_tim3_pwm_inst_deinit (am_pwm_handle_t handle)
 void __zlg118_plfm_adtim4_pwm_init (void)
 {
     am_clk_enable(CLK_TIM456);
-    am_zlg118_clk_reset(CLK_TIM456);
 }
 
 /** \brief 解除ADTIM4平台初始化 */
 void __zlg118_plfm_adtim4_pwm_deinit (void)
 {
-    am_zlg118_clk_reset(CLK_TIM456);
     am_clk_disable(CLK_TIM456);
 }
 
@@ -417,13 +407,11 @@ void am_zlg118_tim4_pwm_inst_deinit (am_pwm_handle_t handle)
 void __zlg118_plfm_adtim5_pwm_init (void)
 {
     am_clk_enable(CLK_TIM456);
-    am_zlg118_clk_reset(CLK_TIM456);
 }
 
 /** \brief 解除ADTIM5平台初始化 */
 void __zlg118_plfm_adtim5_pwm_deinit (void)
 {
-    am_zlg118_clk_reset(CLK_TIM456);
     am_clk_disable(CLK_TIM456);
 }
 
@@ -483,13 +471,11 @@ void am_zlg118_tim5_pwm_inst_deinit (am_pwm_handle_t handle)
 void __zlg118_plfm_adtim6_pwm_init (void)
 {
     am_clk_enable(CLK_TIM456);
-    am_zlg118_clk_reset(CLK_TIM456);
 }
 
 /** \brief 解除ADTIM6平台初始化 */
 void __zlg118_plfm_adtim6_pwm_deinit (void)
 {
-    am_zlg118_clk_reset(CLK_TIM456);
     am_clk_disable(CLK_TIM456);
 }
 

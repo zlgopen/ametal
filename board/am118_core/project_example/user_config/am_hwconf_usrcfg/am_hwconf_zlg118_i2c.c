@@ -63,7 +63,6 @@ am_local void __zlg118_i2c0_plfm_init (void)
     am_gpio_pin_cfg(PIOB_9, PIOB_9_I2C0_SDA | PIOB_9_OUT_OD);
 
     am_clk_enable(CLK_I2C0);
-    am_zlg118_clk_reset(CLK_I2C0);
 }
 
 /**
@@ -71,7 +70,6 @@ am_local void __zlg118_i2c0_plfm_init (void)
  */
 am_local void __zlg118_i2c0_plfm_deinit (void)
 {
-    am_zlg118_clk_reset(CLK_I2C0);
     am_clk_disable(CLK_I2C0);
 }
 
@@ -139,7 +137,6 @@ am_local void __zlg118_i2c1_plfm_init (void)
     am_gpio_pin_cfg(PIOA_12, PIOA_12_I2C1_SDA | PIOA_12_OUT_OD);
 
     am_clk_enable(CLK_I2C1);
-    am_zlg118_clk_reset(CLK_I2C1);
 }
 
 /**
@@ -147,7 +144,6 @@ am_local void __zlg118_i2c1_plfm_init (void)
  */
 am_local void __zlg118_i2c1_plfm_deinit (void)
 {
-    am_zlg118_clk_reset(CLK_I2C1);
     am_clk_disable(CLK_I2C1);
 }
 

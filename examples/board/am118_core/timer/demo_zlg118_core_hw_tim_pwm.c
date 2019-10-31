@@ -56,9 +56,6 @@ void demo_zlg118_core_hw_tim_pwm_entry (void)
     /* 使能定时器时钟 */
     am_clk_enable(CLK_TIM012);
 
-    /* 复位定时器 */
-    am_zlg118_clk_reset(CLK_TIM012);
-
     demo_zlg118_hw_tim_pwm_entry((void *)ZLG118_TIM0,
                                  AMHW_ZLG118_TIM_TYPE_TIM0,
                                  ZLG118_TIM_CH0A,
