@@ -41,11 +41,11 @@
 
 /** [src_hc32l13x_hw_lcd] */
 #include "ametal.h"
-#include "am_hc32l13x.h"
+#include "am_hc32.h"
 #include "am_gpio.h"
-#include "hc32l13x_pin.h"
-#include "am_hc32l13x_lcd.h"
-#include "demo_zlg_entries.h"
+#include "hc32_pin.h"
+#include "am_hc32_lcd.h"
+#include "demo_hc32_entries.h"
 /**
  * \brief ÏÔÊ¾Êý¾Ý
  *
@@ -94,7 +94,7 @@ void demo_hc32l13x_core_hw_lcd_entry (void)
     am_gpio_pin_cfg(PIOB_5,  PIOB_5_AIN);  /**< \brief VLCD2 */
     am_gpio_pin_cfg(PIOB_6,  PIOB_6_AIN);  /**< \brief VLCD1 */
 
-    demo_hc32l13x_hw_lcd_entry(HC32_LCD, lcd_data);
+    demo_hc32_hw_lcd_entry(HC32_LCD, lcd_data);
 }
 
 /* end of file */

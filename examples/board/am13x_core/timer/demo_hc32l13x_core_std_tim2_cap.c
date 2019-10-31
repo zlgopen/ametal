@@ -48,7 +48,7 @@
 #include "am_vdebug.h"
 #include "am_hc32l13x_inst_init.h"
 #include "demo_std_entries.h"
-#include "demo_am118_core_entries.h"
+#include "demo_am13x_core_entries.h"
 
 /**
  * \brief Àý³ÌÈë¿Ú
@@ -56,8 +56,8 @@
 void demo_hc32l13x_core_std_tim2_cap_entry (void)
 {
 
-    am_pwm_handle_t tim3_pwm_handle = am_hc32l13x_tim3_pwm_inst_init();
-    am_cap_handle_t tim2_cap_handle = am_hc32l13x_tim2_cap_inst_init();
+    am_pwm_handle_t tim3_pwm_handle = am_hc32_tim3_pwm_inst_init();
+    am_cap_handle_t tim2_cap_handle = am_hc32_tim2_cap_inst_init();
     
 	  AM_DBG_INFO("demo am118_core std tim1 cap!\r\n");
 

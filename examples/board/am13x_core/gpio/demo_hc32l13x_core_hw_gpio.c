@@ -39,11 +39,11 @@
 /** [src_hc32l13x_hw_gpio] */
 #include "ametal.h"
 #include "am_gpio.h"
-#include "am_hc32l13x.h"
+#include "am_hc32.h"
 #include "am_vdebug.h"
-#include "hw/amhw_hc32l13x_gpio.h"
-#include "demo_zlg_entries.h"
-#include "demo_am118_core_entries.h"
+#include "hw/amhw_hc32_gpio.h"
+#include "demo_hc32_entries.h"
+#include "demo_am13x_core_entries.h"
 
 #define INPUT_PIN  PIOA_7  /**< \brief 输入引脚 */
 #define OUTPUT_PIN PIOD_14 /**< \brief 输出引脚 */
@@ -62,7 +62,7 @@ void demo_hc32l13x_core_hw_gpio_entry (void)
     /* 开启系统配置的时钟 */
     am_clk_enable(CLK_GPIO);
 
-    demo_hc32l13x_hw_gpio_entry((void *)HC32_GPIO0, INPUT_PIN, OUTPUT_PIN);
+    demo_hc32_hw_gpio_entry((void *)HC32_GPIO0, INPUT_PIN, OUTPUT_PIN);
 }
 /** [src_hc32l13x_hw_gpio] */
 

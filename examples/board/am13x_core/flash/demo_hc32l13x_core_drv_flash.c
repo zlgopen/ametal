@@ -41,10 +41,10 @@
 #include "ametal.h"
 #include "am_board.h"
 #include "am_vdebug.h"
-#include "am_hc32l13x_flash.h"
-#include "am_hc32l13x.h"
-#include "demo_zlg_entries.h"
-#include "demo_am118_core_entries.h"
+#include "am_hc32_flash.h"
+#include "am_hc32.h"
+#include "demo_hc32_entries.h"
+#include "demo_am13x_core_entries.h"
 
 #define FLASH_SECTOR 55    /**< \brief ÉÈÇø */
 
@@ -55,7 +55,7 @@ void demo_hc32l13x_core_drv_flash_entry (void)
 {
     AM_DBG_INFO("demo am118_core drv flash!\r\n");
 
-    demo_hc32l13x_drv_flash_entry(HC32_FLASH, FLASH_SECTOR);
+    demo_hc32_drv_flash_entry(HC32_FLASH, FLASH_SECTOR);
 }
 
 /** [src_hc32l13x_drv_flash] */

@@ -40,9 +40,9 @@
 #include "am_vdebug.h"
 #include "am_delay.h"
 #include "am_gpio.h"
-#include "am_hc32l13x.h"
+#include "am_hc32.h"
 #include "demo_std_entries.h"
-#include "demo_am118_core_entries.h"
+#include "demo_am13x_core_entries.h"
 
 /**
  * \brief Àý³ÌÈë¿Ú

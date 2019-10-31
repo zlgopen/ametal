@@ -40,12 +40,12 @@
 
 /** [src_hc32l13x_hw_uart_int] */
 #include "ametal.h"
-#include "am_hc32l13x.h"
+#include "am_hc32.h"
 #include "am_board.h"
 #include "am_gpio.h"
 #include "am_vdebug.h"
-#include "demo_zlg_entries.h"
-#include "demo_am118_core_entries.h"
+#include "demo_hc32_entries.h"
+#include "demo_am13x_core_entries.h"
 
 static void __hc32l13x_uart_pins_intit (void)
 {
@@ -68,7 +68,7 @@ void demo_hc32l13x_core_hw_uart_int_entry (void)
     /*  πƒ‹ ±÷” */
     am_clk_enable(CLK_UART1);
 
-    demo_hc32l13x_hw_uart_int_entry(HC32_UART1,
+    demo_hc32_hw_uart_int_entry(HC32_UART1,
                                   __hc32l13x_uart_pins_intit,
                                   am_clk_rate_get(CLK_UART1),
                                   HC32_UART1_BASE,

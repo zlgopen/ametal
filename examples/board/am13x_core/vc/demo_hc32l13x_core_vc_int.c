@@ -42,11 +42,11 @@
 
 /** [src_hc32l13x_hw_vc_int] */
 #include "ametal.h"
-#include "am_hc32l13x.h"
+#include "am_hc32.h"
 #include "am_gpio.h"
-#include "hc32l13x_pin.h"
-#include "am_hc32l13x_vc.h"
-#include "demo_zlg_entries.h"
+#include "hc32_pin.h"
+#include "am_hc32_vc.h"
+#include "demo_hc32_entries.h"
 
 /**
  *  \brief 用户设置中断触发回调函数
@@ -86,7 +86,7 @@ void demo_hc32l13x_core_hw_vc_int_entry (void)
     /* 开启BGR时钟 */
     am_clk_enable(CLK_ADC_BGR);
 
-    demo_hc32l13x_hw_vc_int_entry((void *)HC32_VC_BASE,
+    demo_hc32_hw_vc_int_entry((void *)HC32_VC_BASE,
                                 vc_tri_callback,
                                 HC32_DAC,
                                 mv_val);

@@ -41,11 +41,11 @@
 /** [src_hc32l13x_hw_multichan_adc] */
 #include "ametal.h"
 #include "am_vdebug.h"
-#include "am_hc32l13x.h"
+#include "am_hc32.h"
 #include "am_gpio.h"
 #include "am_clk.h"
-#include "demo_zlg_entries.h"
-#include "demo_am118_core_entries.h"
+#include "demo_hc32_entries.h"
+#include "demo_am13x_core_entries.h"
 
 /**
  * \brief 例程入口
@@ -102,12 +102,12 @@ void demo_hc32l13x_core_hw_multichan_adc_entry (void)
     /* 时钟使能  */
     am_clk_enable(CLK_ADC_BGR);
 
-    demo_hc32l13x_hw_multichan_adc_entry(HC32_ADC,
-                                       INUM_ADC_DAC,
-                                       2500,
-                                       adc_chan,
-                                       16,
-                                       4);
+    demo_hc32_hw_multichan_adc_entry(HC32_ADC,
+                                     INUM_ADC_DAC,
+                                     2500,
+                                     adc_chan,
+                                     16,
+                                     4);
 }
 /** [src_hc32l13x_hw_multichan_adc] */
 

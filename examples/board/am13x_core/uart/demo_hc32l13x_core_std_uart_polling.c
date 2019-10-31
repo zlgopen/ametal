@@ -44,7 +44,7 @@
 #include "am_board.h"
 #include "am_hc32l13x_inst_init.h"
 #include "demo_std_entries.h"
-#include "demo_am118_core_entries.h"
+#include "demo_am13x_core_entries.h"
 
 /**
  * \brief 例程入口
@@ -56,7 +56,7 @@ void demo_hc32l13x_core_std_uart_polling_entry (void)
      /* 等待发送数据完成 */
     am_mdelay(100);
 
-    demo_std_uart_polling_entry(am_hc32l13x_uart1_inst_init());
+    demo_std_uart_polling_entry(am_hc32_uart1_inst_init());
 }
 /** [src_hc32l13x_std_uart_polling] */
 

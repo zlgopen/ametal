@@ -29,18 +29,14 @@
 #include "am_can.h"
 
 #include "hw/amhw_hc32_adc.h"
-#include "hw/amhw_hc32_exti.h"
 #include "hw/amhw_hc32_flash.h"
 #include "hw/amhw_hc32_gpio.h"
 #include "hw/amhw_hc32_i2c.h"
-#include "hw/amhw_hc32_pwr.h"
 #include "hw/amhw_hc32_spi.h"
 #include "hw/amhw_hc32_dma.h"
-#include "hw/amhw_hc32_syscfg.h"
 #include "hw/amhw_hc32_tim.h"
 #include "hw/amhw_hc32_uart.h"
-#include "hw/amhw_hc32_iwdg.h"
-#include "hw/amhw_hc32_wwdg.h"
+#include "hw/amhw_hc32_wdt.h"
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -106,6 +102,16 @@ void demo_hc32_hw_adc_dma_entry (void    *p_hw_adc,
                                    uint32_t vref_mv,
                                    int      dma_chan,
                                    uint8_t  dma_src);
+
+/**
+ * \brief CLK 例程，通过 HW 层接口实现
+ *
+ * \param[in] p_clk_id_buf 保存时钟号的缓冲区
+ * \param[in] buf_lenth    时钟号缓冲区大小
+ *
+ * \return 无
+ */
+void demo_hc32_hw_clk_entry (am_clk_id_t *p_clk_id_buf, uint8_t buf_lenth);
 
 /**
  * \brief DMA 内存到内存例程，通过驱动层接口实现

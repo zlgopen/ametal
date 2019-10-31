@@ -42,11 +42,11 @@
 
 /** [src_hc32l13x_hw_lvd_int] */
 #include "ametal.h"
-#include "am_hc32l13x.h"
+#include "am_hc32.h"
 #include "am_gpio.h"
-#include "hc32l13x_pin.h"
-#include "am_hc32l13x_lvd.h"
-#include "demo_zlg_entries.h"
+#include "hc32_pin.h"
+#include "am_hc32_lvd.h"
+#include "demo_hc32_entries.h"
 
 /**
  * \brief 用户回调函数
@@ -72,7 +72,7 @@ void demo_hc32l13x_core_hw_lvd_int_entry (void)
     /* PA04 LVD 输出端*/
     am_gpio_pin_cfg(PIOA_4, PIOA_4_LVD_OUT | PIOA_4_OUT_PP);
 
-    demo_hc32l13x_hw_lvd_int_entry((void *)HC32_LVD, __hc32l13x_lvd_callback);
+    demo_hc32_hw_lvd_int_entry((void *)HC32_LVD, __hc32l13x_lvd_callback);
 }
 
 /* end of file */

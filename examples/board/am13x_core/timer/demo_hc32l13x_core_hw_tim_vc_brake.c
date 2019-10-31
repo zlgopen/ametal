@@ -49,12 +49,12 @@
 #include "ametal.h"
 #include "am_gpio.h"
 #include "am_vdebug.h"
-#include "am_hc32l13x.h"
-#include "hw/amhw_hc32l13x_tim.h"
-#include "hw/amhw_hc32l13x_vc.h"
+#include "am_hc32.h"
+#include "hw/amhw_hc32_tim.h"
+#include "hw/amhw_hc32_vc.h"
 #include "am_hc32l13x_inst_init.h"
-#include "demo_zlg_entries.h"
-#include "demo_am118_core_entries.h"
+#include "demo_hc32_entries.h"
+#include "demo_am13x_core_entries.h"
 
 /**
  * \brief Àý³ÌÈë¿Ú
@@ -79,7 +79,7 @@
     am_clk_enable(CLK_VC_LVD);
     am_clk_enable(CLK_ADC_BGR);
 
-    demo_hc32l13x_hw_tim_vc_brake_entry(HC32_TIM1,
+    demo_hc32_hw_tim_vc_brake_entry(HC32_TIM1,
                                       HC32_TIM_CH0B,
                                       500000 / 4,
                                       500000,

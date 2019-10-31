@@ -44,12 +44,12 @@
 #include "ametal.h"
 #include "am_gpio.h"
 #include "am_vdebug.h"
-#include "am_hc32l13x.h"
-#include "hw/amhw_hc32l13x_adtim.h"
-#include "hw/amhw_hc32l13x_adc.h"
+#include "am_hc32.h"
+#include "hw/amhw_hc32_adtim.h"
+#include "hw/amhw_hc32_adc.h"
 #include "am_hc32l13x_inst_init.h"
-#include "demo_zlg_entries.h"
-#include "demo_am118_core_entries.h"
+#include "demo_hc32_entries.h"
+#include "demo_am13x_core_entries.h"
 
 /**
  * \brief 例程入口
@@ -98,7 +98,7 @@ void demo_hc32l13x_core_hw_adtim_trig_adc_sqr_entry (void)
     am_clk_enable(CLK_ADC_BGR);
     am_clk_enable(CLK_TIM456);
 
-    demo_hc32l13x_hw_adtim_trig_adc_sqr_entry(HC32_TIM4,     //高级定时器4
+    demo_hc32_hw_adtim_trig_adc_sqr_entry(HC32_TIM4,     //高级定时器4
                                             100000,          //100000us = 100ms
                                             HC32_ADC,      //ADC
                                             INUM_ADC_DAC,    //中断号

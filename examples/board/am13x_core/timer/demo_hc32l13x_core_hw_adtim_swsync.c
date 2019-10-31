@@ -44,17 +44,17 @@
 #include "ametal.h"
 #include "am_gpio.h"
 #include "am_vdebug.h"
-#include "hw/amhw_hc32l13x_adtim.h"
+#include "hw/amhw_hc32_adtim.h"
 #include "am_hc32l13x_inst_init.h"
-#include "demo_zlg_entries.h"
-#include "demo_am118_core_entries.h"
+#include "demo_hc32_entries.h"
+#include "demo_am13x_core_entries.h"
 
 /**
  * \brief Àý³ÌÈë¿Ú
  */
 void demo_hc32l13x_core_hw_adtim_swsync_entry (void)
 {
-    amhw_hc32l13x_adtim_sw_sync_t adtim_sync;
+    amhw_hc32_adtim_sw_sync_t adtim_sync;
 
     AM_DBG_INFO("demo am118_core hw adtim swsync!\r\n");
 
@@ -63,7 +63,7 @@ void demo_hc32l13x_core_hw_adtim_swsync_entry (void)
     adtim_sync.adtim5 = AM_TRUE;
     adtim_sync.adtim6 = AM_TRUE;
 
-    demo_hc32l13x_hw_adtim_swsync_entry(&adtim_sync);
+    demo_hc32_hw_adtim_swsync_entry(&adtim_sync);
 }
 /** [src_hc32l13x_hw_adtim_swsync] */
 

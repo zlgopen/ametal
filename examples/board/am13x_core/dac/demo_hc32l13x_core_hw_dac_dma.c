@@ -42,11 +42,11 @@
 
 /** [src_hc32l13x_hw_dac_dma] */
 #include "ametal.h"
-#include "am_hc32l13x.h"
-#include "demo_zlg_entries.h"
+#include "am_hc32.h"
+#include "demo_hc32_entries.h"
 #include "am_hc32l13x_inst_init.h"
-#include "demo_am118_core_entries.h"
-#include "hw/amhw_hc32l13x_dac.h"
+#include "demo_am13x_core_entries.h"
+#include "hw/amhw_hc32_dac.h"
 #include "math.h"
 
 #define PI 3.14159265358979           //‘≤÷‹¬ 
@@ -85,7 +85,7 @@ void demo_hc32l13x_core_hw_dac_dma_entry (void)
 
     _BufProduce(vol_val);
 
-    demo_hc32l13x_hw_dac_dma_entry(HC32_DAC,
+    demo_hc32_hw_dac_dma_entry(HC32_DAC,
                                  HC32_DMA_SRC_TYPE_DAC0,
                                  DMA_CHAN_1,
                                  vol_val);

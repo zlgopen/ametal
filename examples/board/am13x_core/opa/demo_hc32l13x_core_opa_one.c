@@ -41,11 +41,11 @@
 
 /** [src_hc32l13x_core_opa_one] */
 #include "ametal.h"
-#include "am_hc32l13x.h"
+#include "am_hc32.h"
 #include "am_gpio.h"
-#include "hc32l13x_pin.h"
-#include "am_hc32l13x_opa.h"
-#include "demo_zlg_entries.h"
+#include "hc32_pin.h"
+#include "am_hc32_opa.h"
+#include "demo_hc32_entries.h"
 
 #define OPA_MODE    AM_HC32_OPA_GENERAL  /**< \brief OPA通用模式*/
 
@@ -66,7 +66,7 @@ void demo_hc32l13x_core_hw_opa_one_entry (void)
     /* PB00 OPA输入 */
     am_gpio_pin_cfg (PIOB_0, PIOB_0_AIN);
 
-    demo_hc32l13x_hw_opa_one_entry(HC32_OPA, OPA_MODE);
+    demo_hc32_hw_opa_one_entry(HC32_OPA, OPA_MODE);
 }
 
 /* end of file */

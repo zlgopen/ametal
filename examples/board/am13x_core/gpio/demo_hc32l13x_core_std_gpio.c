@@ -37,10 +37,10 @@
 
 /** [src_hc32l13x_std_gpio] */
 #include "am_vdebug.h"
-#include "am_hc32l13x.h"
+#include "am_hc32.h"
 #include "am_board.h"
 #include "demo_std_entries.h"
-#include "demo_am118_core_entries.h"
+#include "demo_am13x_core_entries.h"
 
 #define INPUT_PIN  PIOA_7  /**< \brief 输入引脚 */
 #define OUTPUT_PIN PIOD_14 /**< \brief 与LED相连 */

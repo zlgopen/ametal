@@ -41,11 +41,11 @@
 
 /** [src_hc32l13x_core_opa_dac] */
 #include "ametal.h"
-#include "am_hc32l13x.h"
+#include "am_hc32.h"
 #include "am_gpio.h"
-#include "hc32l13x_pin.h"
-#include "am_hc32l13x_opa.h"
-#include "demo_zlg_entries.h"
+#include "hc32_pin.h"
+#include "am_hc32_opa.h"
+#include "demo_hc32_entries.h"
 #include "math.h"
 
 #define PI          3.14159265358979     /**< \briefÔ²ÖÜÂÊ */
@@ -89,7 +89,7 @@ void demo_hc32l13x_core_hw_opa_dac_entry (void)
 
     _BufProduce(vol_val);
 
-    demo_hc32l13x_hw_opa_dac_entry(HC32_OPA,
+    demo_hc32_hw_opa_dac_entry(HC32_OPA,
                                  HC32_DAC,
                                  OPA_MODE,
                                  vol_val);

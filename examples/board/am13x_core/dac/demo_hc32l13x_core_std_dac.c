@@ -50,7 +50,7 @@ void demo_hc32l13x_core_std_dac_entry (void)
     
     AM_DBG_INFO("demo am118_core std dac convert test!\r\n");
     
-    adc_handle = am_hc32l13x_dac_inst_init();
+    adc_handle = am_hc32_dac_inst_init();
 
     demo_std_dac_entry(adc_handle, 0, mv_out);
 }

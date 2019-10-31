@@ -55,14 +55,14 @@
 #include "am_timer.h"
 #include "demo_std_entries.h"
 #include "am_hc32l13x_inst_init.h"
-#include "demo_am118_core_entries.h"
+#include "demo_am13x_core_entries.h"
 
 /**
  * \brief 例程入口
  */
 void demo_hc32l13x_core_std_lptim_timing_gate_entry (void)
 {
-    am_timer_handle_t  handle = am_hc32l13x_lptim0_timing_inst_init();
+    am_timer_handle_t  handle = am_hc32_lptim0_timing_inst_init();
     
     AM_DBG_INFO("demo am118_core std lptim timing gate!\r\n");
 
@@ -72,7 +72,7 @@ void demo_hc32l13x_core_std_lptim_timing_gate_entry (void)
     /* 设置定时时间为1us,TOG、TOGN输出频率周期时间为1*2=2us，即500KHz */
     am_timer_enable_us(handle, 0, 1);
 
-    demo_std_timer_timing_entry(am_hc32l13x_lptim1_timing_inst_init(), 0);
+    demo_std_timer_timing_entry(am_hc32_lptim1_timing_inst_init(), 0);
 }
 /** [src_hc32l13x_std_lptim_timing] */
 

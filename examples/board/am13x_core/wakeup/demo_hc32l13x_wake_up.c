@@ -45,10 +45,10 @@
 #include "am_delay.h"
 #include "am_gpio.h"
 #include "am_vdebug.h"
-#include "hc32l13x_pin.h"
+#include "hc32_pin.h"
 #include "am_hc32l13x_inst_init.h"
-#include "demo_am118_core_entries.h"
-#include "am_hc32l13x_lpmode.h"
+#include "demo_am13x_core_entries.h"
+#include "am_hc32_lpmode.h"
 
 /**
  * \brief 引脚中断服务函数
@@ -73,23 +73,23 @@ void demo_hc32l13x_drv_lpmode_wake_up_entry (void)
     am_gpio_trigger_on(PIOA_7);
 
     /* 低功耗模式初始化 */
-    am_hc32l13x_lpmode_init();
+    am_hc32_lpmode_init();
 
     /* 睡眠模式下系统时钟配置 */
-    am_hc32l13x_lpmode_clk_change(AM_HC32_LPMODE_MODE_SLEEP);
+    am_hc32_lpmode_clk_change(AM_HC32_LPMODE_MODE_SLEEP);
 
     /* 进入睡眠模式，唤醒后不再进入 */
-    am_hc32l13x_lpmode_sleep(AM_FALSE);
+    am_hc32_lpmode_sleep(AM_FALSE);
 
     AM_DBG_INFO("sleep mode, wake_up!\r\n");
 
     AM_DBG_INFO("deepsleep mode test!\r\n");
 
     /* 睡眠模式下系统时钟配置 */
-    am_hc32l13x_lpmode_clk_change(AM_HC32_LPMODE_MODE_DEEPSLEEP);
+    am_hc32_lpmode_clk_change(AM_HC32_LPMODE_MODE_DEEPSLEEP);
 
     /* 进入深度睡眠模式，唤醒后不再进入 */
-    am_hc32l13x_lpmode_deepsleep(AM_FALSE);
+    am_hc32_lpmode_deepsleep(AM_FALSE);
 
     AM_DBG_INFO("deepsleep mode, wake_up!\r\n\r\n");
 

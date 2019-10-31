@@ -48,18 +48,18 @@
 #include "am_gpio.h"
 #include "am_vdebug.h"
 #include "am_board.h"
-#include "am_hc32l13x.h"
-#include "am_hc32l13x_clk.h"
+#include "am_hc32.h"
+#include "am_hc32_clk.h"
 #include "am_hc32l13x_inst_init.h"
-#include "demo_zlg_entries.h"
-#include "demo_am118_core_entries.h"
+#include "demo_hc32_entries.h"
+#include "demo_am13x_core_entries.h"
 
 /**
  * \brief 例程入口
  */
 void demo_hc32l13x_core_hw_tim_cap_entry (void)
 {
-    am_pwm_handle_t tim3_pwm_handle = am_hc32l13x_tim3_pwm_inst_init();
+    am_pwm_handle_t tim3_pwm_handle = am_hc32_tim3_pwm_inst_init();
 
     AM_DBG_INFO("demo am118_core hw tim cap!\r\n");
 
@@ -75,9 +75,9 @@ void demo_hc32l13x_core_hw_tim_cap_entry (void)
     am_clk_enable(CLK_TIM012);
 
     /* 复位定时器 */
-    am_hc32l13x_clk_reset(CLK_TIM012);
+    am_hc32_clk_reset(CLK_TIM012);
 
-    demo_hc32l13x_hw_tim_cap_entry(HC32_TIM1,
+    demo_hc32_hw_tim_cap_entry(HC32_TIM1,
                                  AMHW_HC32_TIM_TYPE_TIM1,
                                  HC32_TIM_CH0A,
                                  am_clk_rate_get(CLK_TIM012),

@@ -40,9 +40,9 @@
 #include "ametal.h"
 #include "am_board.h"
 #include "am_vdebug.h"
-#include "am_hc32l13x.h"
-#include "demo_zlg_entries.h"
-#include "demo_am118_core_entries.h"
+#include "am_hc32.h"
+#include "demo_hc32_entries.h"
+#include "demo_am13x_core_entries.h"
 
 
 #define  DMA_M2M_CH       DMA_CHAN_1   /**< \brief Í¨µÀ */
@@ -54,7 +54,7 @@ void demo_hc32l13x_core_drv_dma_m2m_entry (void)
 {
     AM_DBG_INFO("demo am118_core drv dma m2m!\r\n");
 
-    demo_hc32l13x_drv_dma_m2m_entry(DMA_M2M_CH);
+    demo_hc32_drv_dma_m2m_entry(DMA_M2M_CH);
 }
 /** [src_hc32l13x_drv_dma_m2m] */
 

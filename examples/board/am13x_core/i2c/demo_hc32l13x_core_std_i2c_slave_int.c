@@ -44,10 +44,9 @@
 #include "am_vdebug.h"
 #include "am_board.h"
 #include "am_gpio.h"
-#include "am_hc32l13x.h"
-#include "am_hc32l13x_clk.h"
-#include "hw/amhw_zlg_i2c.h"
-#include "hw/amhw_hc32l13x_rcc.h"
+#include "am_hc32.h"
+#include "am_hc32_clk.h"
+#include "hw/amhw_hc32_rcc.h"
 #include "demo_std_entries.h"
 #include "am_hc32l13x_inst_init.h"
 
@@ -60,7 +59,7 @@ void demo_hc32l13x_core_std_i2c_slave_int_entry (void)
 {
     am_kprintf("demo am118_core std i2c slave int!\r\n");
 
-    demo_std_i2c_slave_entry(am_hc32l13x_i2c1_slv_inst_init(), DEV_ADDR);
+    demo_std_i2c_slave_entry(am_hc32_i2c1_slv_inst_init(), DEV_ADDR);
 }
 /** [src_hc32l13x_std_i2c_slave_int] */
 

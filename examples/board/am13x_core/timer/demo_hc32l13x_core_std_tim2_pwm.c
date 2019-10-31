@@ -41,10 +41,10 @@
 
 #include "ametal.h"
 #include "am_vdebug.h"
-#include "am_hc32l13x_tim_pwm.h"
+#include "am_hc32_tim_pwm.h"
 #include "am_hc32l13x_inst_init.h"
 #include "demo_std_entries.h"
-#include "demo_am118_core_entries.h"
+#include "demo_am13x_core_entries.h"
 
 /**
  * \brief Àý³ÌÈë¿Ú
@@ -54,7 +54,7 @@ void demo_hc32l13x_core_std_tim2_pwm_entry (void)
 
     AM_DBG_INFO("demo am118_core std tim2 pwm!\r\n");
 
-    demo_std_timer_pwm_entry(am_hc32l13x_tim2_pwm_inst_init(), AM_HC32_TIM_PWM_CH0A);
+    demo_std_timer_pwm_entry(am_hc32_tim2_pwm_inst_init(), AM_HC32_TIM_PWM_CH0A);
 }
 /** [src_hc32l13x_std_tim2_pwm] */
 

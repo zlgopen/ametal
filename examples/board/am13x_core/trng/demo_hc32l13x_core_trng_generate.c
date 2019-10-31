@@ -42,11 +42,11 @@
 
 /** [src_hc32l13x_core_trng_generate] */
 #include "ametal.h"
-#include "am_hc32l13x.h"
+#include "am_hc32.h"
 #include "am_gpio.h"
-#include "hc32l13x_pin.h"
-#include "am_hc32l13x_trng.h"
-#include "demo_zlg_entries.h"
+#include "hc32_pin.h"
+#include "am_hc32_trng.h"
+#include "demo_hc32_entries.h"
 /**
  * \brief 例程入口
  */
@@ -58,7 +58,7 @@ void demo_hc32l13x_core_hw_trng_generate_entry (void)
     /* 开启trng时钟 */
     am_clk_enable (CLK_RNG);
 
-    demo_hc32l13x_hw_trng_generate_entry(HC32_TRNG);
+    demo_hc32_hw_trng_generate_entry(HC32_TRNG);
 }
 
 /* end of file */

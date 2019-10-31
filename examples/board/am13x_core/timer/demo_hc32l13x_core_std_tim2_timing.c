@@ -42,7 +42,7 @@
 #include "am_vdebug.h"
 #include "demo_std_entries.h"
 #include "am_hc32l13x_inst_init.h"
-#include "demo_am118_core_entries.h"
+#include "demo_am13x_core_entries.h"
 
 /**
  * \brief Àý³ÌÈë¿Ú
@@ -51,7 +51,7 @@ void demo_hc32l13x_core_std_tim2_timing_entry (void)
 {
     AM_DBG_INFO("demo am118_core std tim2 timing!\r\n");
 
-    demo_std_timer_timing_entry(am_hc32l13x_tim2_timing_inst_init(), 0);
+    demo_std_timer_timing_entry(am_hc32_tim2_timing_inst_init(), 0);
 }
 /** [src_hc32l13x_std_tim2_timing] */
 

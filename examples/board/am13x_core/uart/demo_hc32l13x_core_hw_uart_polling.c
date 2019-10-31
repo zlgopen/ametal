@@ -42,10 +42,10 @@
 /** [src_hc32l13x_hw_uart_polling] */
 #include "ametal.h"
 #include "am_board.h"
-#include "am_hc32l13x.h"
+#include "am_hc32.h"
 #include "am_gpio.h"
-#include "demo_zlg_entries.h"
-#include "demo_am118_core_entries.h"
+#include "demo_hc32_entries.h"
+#include "demo_am13x_core_entries.h"
 
 /**
  * \brief 例程入口
@@ -64,7 +64,7 @@ void demo_hc32l13x_core_hw_uart_polling_entry (void)
     /* 使能时钟 */
     am_clk_enable(CLK_UART1);
 
-    demo_hc32l13x_hw_uart_polling_entry(HC32_UART1, am_clk_rate_get(CLK_UART1));
+    demo_hc32_hw_uart_polling_entry(HC32_UART1, am_clk_rate_get(CLK_UART1));
 }
 /** [src_hc32l13x_hw_uart_polling] */
 

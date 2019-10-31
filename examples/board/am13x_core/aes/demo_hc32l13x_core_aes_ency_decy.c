@@ -42,11 +42,11 @@
 
 /** [src_hc32l13x_core_aes_ency_decy] */
 #include "ametal.h"
-#include "am_hc32l13x.h"
+#include "am_hc32.h"
 #include "am_gpio.h"
-#include "hc32l13x_pin.h"
-#include "am_hc32l13x_aes.h"
-#include "demo_zlg_entries.h"
+#include "hc32_pin.h"
+#include "am_hc32_aes.h"
+#include "demo_hc32_entries.h"
 
 /**
  * \brief 密钥长度
@@ -74,7 +74,7 @@ void demo_hc32l13x_core_hw_aes_ency_decy_entry (void)
     am_clk_enable (CLK_AES);
 
     /* 例程入口 */
-    demo_hc32l13x_hw_aes_ency_decy_entry(HC32_AES,
+    demo_hc32_hw_aes_ency_decy_entry(HC32_AES,
                                        AES_KEY_LEN,
                                        aes_data,
                                        aes_key);

@@ -43,9 +43,8 @@
 /** [src_hc32l13x_std_crc] */
 #include "ametal.h"
 #include "am_vdebug.h"
-#include "am_zlg_crc.h"
 #include "demo_std_entries.h"
-#include "demo_am118_core_entries.h"
+#include "demo_am13x_core_entries.h"
 #include "am_hc32l13x_inst_init.h"
 
 /**
@@ -57,7 +56,7 @@ void demo_hc32l13x_core_std_crc_entry (void)
 
     am_crc_handle_t crc_handle;
 
-    crc_handle = am_hc32l13x_crc_inst_init();
+    crc_handle = am_hc32_crc_inst_init();
 
     demo_std_crc_entry(crc_handle);
 }

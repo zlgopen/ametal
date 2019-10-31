@@ -43,7 +43,7 @@
 #include "am_arm_nvic.h"
 #include "am_hc32l13x_inst_init.h"
 #include "am_digitron_disp.h"
-#include "demo_am118_core_entries.h"
+#include "demo_am13x_core_entries.h"
 
 /**
  * \brief Àý³ÌÈë¿Ú

@@ -41,11 +41,11 @@
 #include "ametal.h"
 #include "am_vdebug.h"
 #include "am_gpio.h"
-#include "am_hc32l13x.h"
-#include "hw/amhw_hc32l13x_rcc.h"
+#include "am_hc32.h"
+#include "hw/amhw_hc32_rcc.h"
 #include "am_hc32l13x_inst_init.h"
-#include "demo_zlg_entries.h"
-#include "demo_am118_core_entries.h"
+#include "demo_hc32_entries.h"
+#include "demo_am13x_core_entries.h"
 
 /**
  * \brief Àý³ÌÈë¿Ú
@@ -56,17 +56,17 @@ void demo_hc32l13x_core_hw_clk_entry (void)
 
     AM_DBG_INFO("demo am118_core hw clk!\r\n");
 
-    amhw_hc32l13x_gpio_sup_hclk_div_set(HC32_GPIO0,
-                                      AMHW_HC32_GPIO_SUP_CLK_DIV_8);
-    amhw_hc32l13x_gpio_sup_hclk_output(HC32_GPIO0);
+    amhw_hc32_gpio_sup_hclk_div_set(HC32_GPIO0,
+                                    AMHW_HC32_GPIO_SUP_CLK_DIV_8);
+    amhw_hc32_gpio_sup_hclk_output(HC32_GPIO0);
     am_gpio_pin_cfg(PIOA_1, PIOA_1_HCLK_OUT | PIOA_1_OUT_PP);
 
-    amhw_hc32l13x_gpio_sup_pclk_div_set(HC32_GPIO0,
-                                      AMHW_HC32_GPIO_SUP_CLK_DIV_8);
-    amhw_hc32l13x_gpio_sup_pclk_output(HC32_GPIO0);
+    amhw_hc32_gpio_sup_pclk_div_set(HC32_GPIO0,
+                                    AMHW_HC32_GPIO_SUP_CLK_DIV_8);
+    amhw_hc32_gpio_sup_pclk_output(HC32_GPIO0);
     am_gpio_pin_cfg(PIOA_2, PIOA_2_PCLK_OUT | PIOA_2_OUT_PP);
 
-    demo_zlg_hw_clk_entry(&clk_id[0], AM_NELEMENTS(clk_id));
+    demo_hc32_hw_clk_entry(&clk_id[0], AM_NELEMENTS(clk_id));
 }
 /** [src_hc32l13x_hw_clk] */
 

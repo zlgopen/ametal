@@ -43,11 +43,11 @@
 /** [src_hc32l13x_hw_adc_dma] */
 #include "ametal.h"
 #include "am_vdebug.h"
-#include "am_hc32l13x.h"
+#include "am_hc32.h"
 #include "am_gpio.h"
 #include "am_clk.h"
-#include "demo_zlg_entries.h"
-#include "demo_am118_core_entries.h"
+#include "demo_hc32_entries.h"
+#include "demo_am13x_core_entries.h"
 
 /**
  * \brief Àý³ÌÈë¿Ú
@@ -94,7 +94,7 @@ void demo_hc32l13x_core_hw_adc_dma_entry (void)
 
     am_clk_enable(CLK_ADC_BGR);
 
-    demo_hc32l13x_hw_adc_dma_entry(HC32_ADC,
+    demo_hc32_hw_adc_dma_entry(HC32_ADC,
                                  adc_chan,
                                  16,
                                  3300,

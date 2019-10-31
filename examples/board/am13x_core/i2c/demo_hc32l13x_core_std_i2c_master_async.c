@@ -51,7 +51,7 @@
 #include "am_i2c.h"
 #include "am_hc32l13x_inst_init.h"
 #include "demo_std_entries.h"
-#include "demo_am118_core_entries.h"
+#include "demo_am13x_core_entries.h"
 
 /*******************************************************************************
   ∫Í∂®“Â
@@ -69,7 +69,7 @@ void demo_hc32l13x_core_std_i2c_master_async_entry (void)
 
     AM_DBG_INFO("demo am118_core std i2c master async!\r\n");
 
-    demo_std_i2c_master_async_entry(am_hc32l13x_i2c1_inst_init(),
+    demo_std_i2c_master_async_entry(am_hc32_i2c1_inst_init(),
                                     EEPROM_ADDR,
                                     TEST_LEN);
 }

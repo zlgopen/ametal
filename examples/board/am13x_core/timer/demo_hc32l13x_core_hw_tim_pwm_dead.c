@@ -43,11 +43,11 @@
 #include "ametal.h"
 #include "am_gpio.h"
 #include "am_vdebug.h"
-#include "am_hc32l13x.h"
-#include "hw/amhw_hc32l13x_adtim.h"
+#include "am_hc32.h"
+#include "hw/amhw_hc32_adtim.h"
 #include "am_hc32l13x_inst_init.h"
-#include "demo_zlg_entries.h"
-#include "demo_am118_core_entries.h"
+#include "demo_hc32_entries.h"
+#include "demo_am13x_core_entries.h"
 
 /**
  * \brief 例程入口
@@ -64,7 +64,7 @@ void demo_hc32l13x_core_hw_tim_pwm_dead_entry (void)
     /* 定时器时钟使能 */
     am_clk_enable(CLK_TIM012);
 
-    demo_hc32l13x_hw_tim_pwm_dead_entry((void *)HC32_TIM0,
+    demo_hc32_hw_tim_pwm_dead_entry((void *)HC32_TIM0,
                                        AMHW_HC32_TIM_TYPE_TIM0,
                                        HC32_TIM_CH0A,
                                        HC32_TIM_CH0B,

@@ -40,13 +40,13 @@
 
 /** [src_hc32l13x_hw_spi_master] */
 #include "ametal.h"
-#include "am_hc32l13x.h"
-#include "am_hc32l13x_clk.h"
+#include "am_hc32.h"
+#include "am_hc32_clk.h"
 #include "am_gpio.h"
 #include "am_vdebug.h"
-#include "demo_zlg_entries.h"
+#include "demo_hc32_entries.h"
 #include "am_hc32l13x_inst_init.h"
-#include "demo_am118_core_entries.h"
+#include "demo_am13x_core_entries.h"
 
 /**
  * \brief Àý³ÌÈë¿Ú
@@ -64,7 +64,7 @@ void demo_hc32l13x_core_hw_spi_master_entry (void)
     am_gpio_pin_cfg(PIOB_15, PIOB_15_SPI1_MOSI | PIOB_15_OUT_PP);
     am_gpio_pin_cfg(PIOC_2,  PIOC_2_SPI1_MISO  | PIOC_2_INPUT_PU);
 
-    demo_hc32l13x_hw_spi_master_entry((void *)HC32_SPI1, PIOB_12);
+    demo_hc32_hw_spi_master_entry((void *)HC32_SPI1, PIOB_12);
 }
 /** [src_hc32l13x_hw_spi_master] */
 

@@ -46,7 +46,7 @@
 #include "am_delay.h"
 #include "am_hc32l13x_inst_init.h"
 #include "demo_std_entries.h"
-#include "demo_am118_core_entries.h"
+#include "demo_am13x_core_entries.h"
 
 /**
  * \brief Àý³ÌÈë¿Ú
@@ -55,7 +55,7 @@ void demo_hc32l13x_core_std_adc_entry (void)
 {
     AM_DBG_INFO("demo am118_core std adc int!\r\n");
 
-    demo_std_adc_entry(am_hc32l13x_adc_inst_init(), 0);
+    demo_std_adc_entry(am_hc32_adc_inst_init(), 0);
 
 }
 /** [src_std_adc] */

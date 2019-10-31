@@ -46,9 +46,9 @@
 #include "ametal.h"
 #include "am_vdebug.h"
 #include "am_rtc.h"
-#include "am_hc32l13x_rtc.h"
+#include "am_hc32_rtc.h"
 #include "am_hc32l13x_inst_init.h"
-#include "demo_am118_core_entries.h"
+#include "demo_am13x_core_entries.h"
 
 am_tm_t   __time;
 am_bool_t __get_flag =  AM_FALSE;
@@ -90,7 +90,7 @@ void alarm_clock_int_callback(void *drv)
 void demo_hc32l13x_core_drv_rtc_entry (void)
 {
     int             ret          = AM_OK;
-    am_rtc_handle_t p_rtc_handle = am_hc32l13x_rtc_inst_init();
+    am_rtc_handle_t p_rtc_handle = am_hc32_rtc_inst_init();
 
     AM_DBG_INFO("demo am118_core rtc entry!\r\n");
 
@@ -105,25 +105,25 @@ void demo_hc32l13x_core_drv_rtc_entry (void)
     }
 
     /* 设置周期中断回调函数 */
-    am_hc32l13x_rtc_callback_set(p_rtc_handle,
+    am_hc32_rtc_callback_set(p_rtc_handle,
                                AM_HC32_RTC_CALLBACK_PERIOD,
                                period_int_callback,
                                (void *)p_rtc_handle);
 
     /* 使用自定义周期中断时间选择，20s发生一次中期中断 */
-    am_hc32l13x_rtc_period_int_enable(p_rtc_handle,
+    am_hc32_rtc_period_int_enable(p_rtc_handle,
                                     AMHW_HC32_RTC_PERIOD_INT_TYPE_CUSTOM,
                                     AMHW_HC32_RTC_PERIOD_INT_TIME_1_MIN,
                                     10.0);
 
     /* 设置闹钟中断回调函数 */
-    am_hc32l13x_rtc_callback_set(p_rtc_handle,
+    am_hc32_rtc_callback_set(p_rtc_handle,
                                AM_HC32_RTC_CALLBACK_ALARM,
                                alarm_clock_int_callback,
                                (void *)p_rtc_handle);
 
     /* 闹钟中断设置，在周四的11点21分0秒产生闹钟中断 */
-    am_hc32l13x_rtc_alarm_clock_int_enable(p_rtc_handle,
+    am_hc32_rtc_alarm_clock_int_enable(p_rtc_handle,
                                          0,
                                          21,
                                          11,

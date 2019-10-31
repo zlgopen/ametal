@@ -42,11 +42,11 @@
 
 /** [src_hc32l13x_std_spi_master_int] */
 #include "ametal.h"
-#include "hc32l13x_pin.h"
+#include "hc32_pin.h"
 #include "am_vdebug.h"
 #include "demo_std_entries.h"
 #include "am_hc32l13x_inst_init.h"
-#include "demo_am118_core_entries.h"
+#include "demo_am13x_core_entries.h"
 
 /**
  * \brief Àý³ÌÈë¿Ú
@@ -55,7 +55,7 @@ void demo_hc32l13x_core_std_spi_master_int_entry (void)
 {
     AM_DBG_INFO("demo am118_core std spi master int!\r\n");
 
-    demo_std_spi_master_entry(am_hc32l13x_spi1_int_inst_init(), PIOA_4);
+    demo_std_spi_master_entry(am_hc32_spi1_int_inst_init(), PIOA_4);
 
 }
 /** [src_hc32l13x_std_spi_master_int] */

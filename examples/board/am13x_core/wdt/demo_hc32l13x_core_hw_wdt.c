@@ -35,11 +35,11 @@
 /** [src_hc32l13x_hw_wdt] */
 #include "ametal.h"
 #include "am_vdebug.h"
-#include "am_hc32l13x.h"
-#include "am_hc32l13x_clk.h"
-#include "am_hc32l13x_wdt.h"
-#include "demo_zlg_entries.h"
-#include "demo_am118_core_entries.h"
+#include "am_hc32.h"
+#include "am_hc32_clk.h"
+#include "am_hc32_wdt.h"
+#include "demo_hc32_entries.h"
+#include "demo_am13x_core_entries.h"
 
 /**
  * \brief 看门狗超时时间
@@ -61,9 +61,9 @@ void demo_hc32l13x_core_hw_wdt_entry (void)
 
     am_clk_enable(CLK_WDT);
 
-    am_hc32l13x_clk_reset(CLK_WDT);
+    am_hc32_clk_reset(CLK_WDT);
 
-    demo_hc32l13x_hw_wdt_entry(HC32_WDT,
+    demo_hc32_hw_wdt_entry(HC32_WDT,
                              __WDT_TIMEOUT_MS,
                              __WDT_FEED_TIME_MS);
 }

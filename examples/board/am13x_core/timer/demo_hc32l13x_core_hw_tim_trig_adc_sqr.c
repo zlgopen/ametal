@@ -45,12 +45,12 @@
 #include "ametal.h"
 #include "am_gpio.h"
 #include "am_vdebug.h"
-#include "am_hc32l13x.h"
-#include "hw/amhw_hc32l13x_tim.h"
-#include "hw/amhw_hc32l13x_adc.h"
+#include "am_hc32.h"
+#include "hw/amhw_hc32_tim.h"
+#include "hw/amhw_hc32_adc.h"
 #include "am_hc32l13x_inst_init.h"
-#include "demo_zlg_entries.h"
-#include "demo_am118_core_entries.h"
+#include "demo_hc32_entries.h"
+#include "demo_am13x_core_entries.h"
 
 /**
  * \brief 例程入口
@@ -101,7 +101,7 @@ void demo_hc32l13x_core_hw_tim_trig_adc_sqr_entry (void)
     /* TIM0_CHA通道引脚配置 */
     am_gpio_pin_cfg(PIOA_15, PIOA_15_TIM0_CHA | PIOA_15_OUT_PP);
 
-    demo_hc32l13x_hw_tim_trig_adc_sqr_entry(HC32_TIM0,     //定时器0
+    demo_hc32_hw_tim_trig_adc_sqr_entry(HC32_TIM0,     //定时器0
                                           AMHW_HC32_TIM_TYPE_TIM0, //定时器类型
                                           HC32_TIM_CH0A, //通道CH0A
                                           100000 / 4,      //100000/4 us = 25ms

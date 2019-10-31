@@ -42,7 +42,7 @@
 #include "am_vdebug.h"
 #include "demo_std_entries.h"
 #include "am_hc32l13x_inst_init.h"
-#include "demo_am118_core_entries.h"
+#include "demo_am13x_core_entries.h"
 
 /**
  * \brief MicroPort DS1302 例程，通过标准接口实现
