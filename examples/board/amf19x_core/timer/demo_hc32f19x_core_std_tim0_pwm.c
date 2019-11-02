@@ -46,7 +46,7 @@
 void demo_hc32f19x_core_std_tim0_pwm_entry (void)
 {
 
-    AM_DBG_INFO("demo am118_core std tim0 pwm!\r\n");
+    AM_DBG_INFO("demo amf19x_core std tim0 pwm!\r\n");
 
     demo_std_timer_pwm_entry(am_hc32_tim0_pwm_inst_init(), AM_HC32_TIM_PWM_CH0A);
 }

@@ -54,7 +54,7 @@
 void demo_hc32f19x_core_hw_gpio_entry (void)
 {
 
-    AM_DBG_INFO("demo am118_core hw gpio!\r\n");
+    AM_DBG_INFO("demo amf19x_core hw gpio!\r\n");
 
     /* ¿ªÆô GPIOC ¶Ë¿ÚÊ±ÖÓ */
     am_clk_enable(CLK_GPIO);

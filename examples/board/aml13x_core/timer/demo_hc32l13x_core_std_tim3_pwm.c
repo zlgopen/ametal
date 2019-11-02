@@ -46,7 +46,7 @@
 void demo_hc32l13x_core_std_tim3_pwm_entry (void)
 {
 
-    AM_DBG_INFO("demo am118_core std tim3 pwm!\r\n");
+    AM_DBG_INFO("demo aml13x_core std tim3 pwm!\r\n");
 
     demo_std_timer_pwm_entry(am_hc32_tim3_pwm_inst_init(), AM_HC32_TIM_PWM_CH1A);
 }

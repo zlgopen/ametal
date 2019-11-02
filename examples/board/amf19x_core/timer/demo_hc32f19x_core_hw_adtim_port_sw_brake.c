@@ -57,7 +57,7 @@
 void demo_hc32f19x_core_hw_adtim_port_sw_brake_entry (void)
 {
 
-    AM_DBG_INFO("demo am118_core hw adtim port_sw_brake!\r\n");
+    AM_DBG_INFO("demo amf19x_core hw adtim port_sw_brake!\r\n");
 
     am_gpio_pin_cfg(PIOB_1, PIOB_1_GPIO | PIOB_1_OUT_PP);
 

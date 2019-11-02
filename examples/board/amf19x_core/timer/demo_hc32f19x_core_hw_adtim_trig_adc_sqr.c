@@ -74,7 +74,7 @@ void demo_hc32f19x_core_hw_adtim_trig_adc_sqr_entry (void)
                       AMHW_HC32_CHAN_AIN14_PC4,
                       AMHW_HC32_CHAN_AIN15_PC5};
     
-    AM_DBG_INFO("demo am118_core hw adtim trig adc sqr!\r\n");
+    AM_DBG_INFO("demo amf19x_core hw adtim trig adc sqr!\r\n");
 
     /* ≈‰÷√“˝Ω≈ */
     am_gpio_pin_cfg(PIOA_0, PIOA_0_GPIO | PIOA_0_AIN);

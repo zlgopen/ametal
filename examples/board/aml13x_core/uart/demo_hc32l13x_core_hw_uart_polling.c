@@ -52,7 +52,7 @@
  */
 void demo_hc32l13x_core_hw_uart_polling_entry (void)
 {
-    AM_DBG_INFO("demo am118_core hw uart polling!\r\n");
+    AM_DBG_INFO("demo aml13x_core hw uart polling!\r\n");
 
      /* 等待发送数据完成 */
     am_mdelay(100);

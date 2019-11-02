@@ -41,20 +41,20 @@
 *******************************************************************************/
 
 /** \brief I2C 硬件初始化 */
-static int __i2c_hard_init (am_zlg_i2c_dev_t *p_dev);
+static int __i2c_hard_init (am_hc32_i2c_dev_t *p_dev);
 
 /** \brief I2C 中断处理函数 */
 static void __i2c_irq_handler (void *p_arg);
 
 /** \brief I2C 状态机函数 */
-static int __i2c_mst_sm_event (am_zlg_i2c_dev_t *p_dev, uint32_t event);
+static int __i2c_mst_sm_event (am_hc32_i2c_dev_t *p_dev, uint32_t event);
 
 /** \brief I2C 消息处理函数 */
 static int __i2c_msg_start (void *p_drv, am_i2c_message_t *p_trans);
 
 /** \brief 从控制器传输列表表头取出一条 message */
 am_static_inline
-struct am_i2c_message *__i2c_msg_out (am_zlg_i2c_dev_t *p_dev);
+struct am_i2c_message *__i2c_msg_out (am_hc32_i2c_dev_t *p_dev);
 
 /*******************************************************************************
   全局变量
@@ -70,7 +70,7 @@ static am_const struct am_i2c_drv_funcs __g_i2c_drv_funcs = {
 /******************************************************************************/
 
 /** \brief I2C 硬件初始化 */
-am_local int __i2c_hard_init (am_zlg_i2c_dev_t *p_dev)
+am_local int __i2c_hard_init (am_hc32_i2c_dev_t *p_dev)
 {
     amhw_hc32_i2c_t *p_hw_i2c = NULL;
     uint16_t count = (am_clk_rate_get (p_dev->p_devinfo->clk_num) /
@@ -102,7 +102,7 @@ am_local int __i2c_hard_init (am_zlg_i2c_dev_t *p_dev)
 }
 
 /** \brief I2C 硬件重新初始化 */
-am_local int __i2c_hard_re_init (am_zlg_i2c_dev_t *p_dev)
+am_local int __i2c_hard_re_init (am_hc32_i2c_dev_t *p_dev)
 {
     if (p_dev->p_devinfo->pfn_plfm_deinit) {
         p_dev->p_devinfo->pfn_plfm_deinit();
@@ -123,7 +123,7 @@ am_local int __i2c_hard_re_init (am_zlg_i2c_dev_t *p_dev)
  */
 am_local void __i2c_re_init (void *p_arg)
 {
-    am_zlg_i2c_dev_t *p_dev = (am_zlg_i2c_dev_t *)p_arg;
+    am_hc32_i2c_dev_t *p_dev = (am_hc32_i2c_dev_t *)p_arg;
     uint32_t             key   = 0;
 
     if (p_arg == NULL) {
@@ -175,7 +175,7 @@ am_local void __i2c_re_init (void *p_arg)
  *
  * \return 无
  */
-am_local void __softimer_start (am_zlg_i2c_dev_t *p_dev)
+am_local void __softimer_start (am_hc32_i2c_dev_t *p_dev)
 {
     p_dev->is_abort = AM_FALSE;
 
@@ -201,7 +201,7 @@ am_local void __softimer_start (am_zlg_i2c_dev_t *p_dev)
  *
  * \return 无
  */
-am_local void __softimer_stop (am_zlg_i2c_dev_t *p_dev)
+am_local void __softimer_stop (am_hc32_i2c_dev_t *p_dev)
 {
     if (p_dev->p_devinfo->timeout_ms == 0) {
         return;
@@ -220,7 +220,7 @@ am_local void __softimer_stop (am_zlg_i2c_dev_t *p_dev)
  * \attention 调用此函数必须锁定控制器
  */
 am_static_inline
-void __i2c_msg_in (am_zlg_i2c_dev_t *p_dev, struct am_i2c_message *p_msg)
+void __i2c_msg_in (am_hc32_i2c_dev_t *p_dev, struct am_i2c_message *p_msg)
 {
     am_list_add_tail((struct am_list_head *)(&p_msg->ctlrdata),
                     &(p_dev->msg_list));
@@ -232,7 +232,7 @@ void __i2c_msg_in (am_zlg_i2c_dev_t *p_dev, struct am_i2c_message *p_msg)
  * \attention 调用此函数必须锁定控制器
  */
 am_static_inline
-struct am_i2c_message *__i2c_msg_out (am_zlg_i2c_dev_t *p_dev)
+struct am_i2c_message *__i2c_msg_out (am_hc32_i2c_dev_t *p_dev)
 {
     if (am_list_empty_careful(&(p_dev->msg_list))) {
         return NULL;
@@ -254,7 +254,7 @@ struct am_i2c_message *__i2c_msg_out (am_zlg_i2c_dev_t *p_dev)
  */
 am_local void __softimer_callback (void *p_arg)
 {
-    am_zlg_i2c_dev_t *p_dev = (am_zlg_i2c_dev_t *)p_arg;
+    am_hc32_i2c_dev_t *p_dev = (am_hc32_i2c_dev_t *)p_arg;
 
     if (p_arg == NULL) {
         return;
@@ -274,14 +274,14 @@ am_local void __softimer_callback (void *p_arg)
  */
 static void __i2c_irq_handler (void *p_arg)
 {
-    am_zlg_i2c_dev_t *p_dev    = NULL;
+    am_hc32_i2c_dev_t *p_dev    = NULL;
     amhw_hc32_i2c_t   *p_hw_i2c = NULL;
 
     if (p_arg == NULL) {
         return;
     }
 
-    p_dev    = (am_zlg_i2c_dev_t *)p_arg;
+    p_dev    = (am_hc32_i2c_dev_t *)p_arg;
     p_hw_i2c = (amhw_hc32_i2c_t *)p_dev->p_devinfo->i2c_regbase;
 
     amhw_hc32_i2c_status_get(p_hw_i2c);
@@ -291,7 +291,7 @@ static void __i2c_irq_handler (void *p_arg)
 
 static int __i2c_msg_start (void *p_drv, am_i2c_message_t *p_msg)
 {
-    am_zlg_i2c_dev_t *p_dev    = (am_zlg_i2c_dev_t *)p_drv;
+    am_hc32_i2c_dev_t *p_dev    = (am_hc32_i2c_dev_t *)p_drv;
     int key;
 
     if ( (p_dev              == NULL) ||
@@ -326,8 +326,8 @@ static int __i2c_msg_start (void *p_drv, am_i2c_message_t *p_msg)
 /**
  * \brief I2C初始化
  */
-am_i2c_handle_t am_zlg_i2c_init (am_zlg_i2c_dev_t           *p_dev,
-                                 const am_zlg_i2c_devinfo_t *p_devinfo)
+am_i2c_handle_t am_hc32_i2c_init (am_hc32_i2c_dev_t           *p_dev,
+                                 const am_hc32_i2c_devinfo_t *p_devinfo)
 {
     if (p_dev == NULL || p_devinfo == NULL) {
         return NULL;
@@ -380,16 +380,16 @@ am_i2c_handle_t am_zlg_i2c_init (am_zlg_i2c_dev_t           *p_dev,
 /**
  * \brief I2C解初始化
  */
-void am_zlg_i2c_deinit (am_i2c_handle_t handle)
+void am_hc32_i2c_deinit (am_i2c_handle_t handle)
 {
     amhw_hc32_i2c_t   *p_hw_i2c = NULL;
-    am_zlg_i2c_dev_t *p_dev    = NULL;
+    am_hc32_i2c_dev_t *p_dev    = NULL;
 
     if (NULL == handle) {
         return ;
     }
 
-    p_dev    = (am_zlg_i2c_dev_t *)handle;
+    p_dev    = (am_hc32_i2c_dev_t *)handle;
     p_hw_i2c = (amhw_hc32_i2c_t *)p_dev->p_devinfo->i2c_regbase;
 
     p_dev->i2c_serv.p_funcs = NULL;
@@ -415,7 +415,7 @@ void am_zlg_i2c_deinit (am_i2c_handle_t handle)
 /**
  * \brief I2C 状态机函数
  */
-static int __i2c_mst_sm_event (am_zlg_i2c_dev_t *p_dev, uint32_t event)
+static int __i2c_mst_sm_event (am_hc32_i2c_dev_t *p_dev, uint32_t event)
 {
     int                     key;
     uint8_t                 state;

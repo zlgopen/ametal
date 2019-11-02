@@ -54,7 +54,7 @@
  */
 void demo_hc32l13x_core_hw_uart_rx_dma_entry (void)
 {
-    AM_DBG_INFO("demo am118_core hw uart rx dma!\r\n");
+    AM_DBG_INFO("demo aml13x_core hw uart rx dma!\r\n");
 
     /* 等待发送数据完成 */
     am_mdelay(100);

@@ -57,7 +57,7 @@
  */
 void demo_hc32l19x_core_microport_rtc_entry (void)
 {
-    AM_DBG_INFO("demo am118_core microport rtc!\r\n");
+    AM_DBG_INFO("demo aml19x_core microport rtc!\r\n");
 
     demo_std_rtc_entry(am_microport_std_rtc_inst_init());
 }

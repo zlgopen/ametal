@@ -52,7 +52,7 @@
  */
 void demo_hc32l13x_core_miniport_zlg72128_entry (void)
 {
-    AM_DBG_INFO("demo am118_core miniport zlg72128!\r\n");
+    AM_DBG_INFO("demo aml13x_core miniport zlg72128!\r\n");
 
     am_miniport_zlg72128_inst_init();
 

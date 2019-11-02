@@ -53,7 +53,7 @@
 void demo_hc32f19x_core_hw_trng_generate_entry (void)
 {
 
-    AM_DBG_INFO("demo am118_core hw trng generate test!\r\n");
+    AM_DBG_INFO("demo amf19x_core hw trng generate test!\r\n");
 
     /* ¿ªÆôtrngÊ±ÖÓ */
     am_clk_enable (CLK_RNG);

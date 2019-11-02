@@ -54,7 +54,7 @@
 void demo_hc32l19x_core_hw_tim_port_brake_entry (void)
 {
 
-    AM_DBG_INFO("demo am118_core hw adtim port brake!\r\n");
+    AM_DBG_INFO("demo aml19x_core hw adtim port brake!\r\n");
 
     /* 刹车检测引脚初始化 */
     am_gpio_pin_cfg(PIOB_5, PIOB_5_TIM1_BK | PIOB_5_INPUT_FLOAT);

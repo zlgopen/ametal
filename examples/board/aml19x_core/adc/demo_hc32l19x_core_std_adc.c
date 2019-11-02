@@ -53,7 +53,7 @@
  */
 void demo_hc32l19x_core_std_adc_entry (void)
 {
-    AM_DBG_INFO("demo am118_core std adc int!\r\n");
+    AM_DBG_INFO("demo aml19x_core std adc int!\r\n");
 
     demo_std_adc_entry(am_hc32_adc_inst_init(), 0);
 

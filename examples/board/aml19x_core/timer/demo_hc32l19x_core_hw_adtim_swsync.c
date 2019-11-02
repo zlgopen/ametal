@@ -56,7 +56,7 @@ void demo_hc32l19x_core_hw_adtim_swsync_entry (void)
 {
     amhw_hc32_adtim_sw_sync_t adtim_sync;
 
-    AM_DBG_INFO("demo am118_core hw adtim swsync!\r\n");
+    AM_DBG_INFO("demo aml19x_core hw adtim swsync!\r\n");
 
     /* 软件同步配置使能    AM_TRUE：参与软件同步动作      AM_FALSE：不参与软件同步动作*/
     adtim_sync.adtim4 = AM_TRUE;

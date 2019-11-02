@@ -50,7 +50,7 @@
  */
 void demo_hc32l17x_core_miniport_hc595_digitron_entry (void)
 {
-    AM_DBG_INFO("demo am118_core miniport hc595 digitron!\r\n");
+    AM_DBG_INFO("demo aml17x_core miniport hc595 digitron!\r\n");
 
     am_miniport_view_595_inst_init();
 

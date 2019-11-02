@@ -47,7 +47,7 @@
  */
 void demo_hc32f19x_core_std_led_entry (void)
 {
-    AM_DBG_INFO("demo am118_core std led!\r\n");
+    AM_DBG_INFO("demo amf19x_core std led!\r\n");
 
     demo_std_led_entry(LED0);
 }

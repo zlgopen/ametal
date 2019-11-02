@@ -50,7 +50,7 @@
  */
 void demo_hc32l17x_core_std_buzzer_entry (void)
 {
-    AM_DBG_INFO("demo am118_core std buzzer!\r\n");
+    AM_DBG_INFO("demo aml17x_core std buzzer!\r\n");
 
     demo_std_buzzer_entry();
 }

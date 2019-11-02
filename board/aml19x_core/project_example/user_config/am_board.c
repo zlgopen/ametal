@@ -12,7 +12,7 @@
 
 /**
  * \file
- * \brief am118_core
+ * \brief aml19x_core
  *
  * \internal
  * \par Modification history

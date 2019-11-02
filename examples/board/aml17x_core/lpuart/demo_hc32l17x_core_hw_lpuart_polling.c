@@ -52,7 +52,7 @@
  */
 void demo_hc32l17x_core_hw_lpuart_polling_entry (void)
 {
-    AM_DBG_INFO("demo am118_core hw lpuart polling!\r\n");
+    AM_DBG_INFO("demo aml17x_core hw lpuart polling!\r\n");
 
      /* 等待发送数据完成 */
     am_mdelay(100);

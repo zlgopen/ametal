@@ -62,7 +62,7 @@
 void demo_hc32f19x_core_hw_adtim_vc_brake_entry (void)
 {
 
-    AM_DBG_INFO("demo am118_core hw adtim vc_brake!\r\n");
+    AM_DBG_INFO("demo amf19x_core hw adtim vc_brake!\r\n");
 
     /* ÅäÖÃPIOA_6ÎªVC_OUT¹¦ÄÜ */
     am_gpio_pin_cfg(PIOA_6, PIOA_6_VC0_OUT | PIOA_6_OUT_PP);

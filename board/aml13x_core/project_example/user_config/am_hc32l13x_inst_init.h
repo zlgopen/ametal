@@ -62,7 +62,7 @@ extern "C" {
 #include "am_hc32_pcnt.h"
 //#include "amhw_hc32_rtc.h"
 //#include "am_hc32_pwr.h"
-#include "am_hwconf_hc32L13x_led_gpio.h"
+#include "am_hwconf_hc32l13x_led_gpio.h"
 //#include "am_hwconf_led_gpio.h"
 #include "am_hwconf_key_gpio.h"
 #include "am_hwconf_buzzer_pwm.h"

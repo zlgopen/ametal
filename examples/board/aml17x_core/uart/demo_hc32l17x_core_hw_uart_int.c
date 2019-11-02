@@ -60,7 +60,7 @@ static void __hc32l17x_uart_pins_intit (void)
  */
 void demo_hc32l17x_core_hw_uart_int_entry (void)
 {
-    AM_DBG_INFO("demo am118_core hw uart int!\r\n");
+    AM_DBG_INFO("demo aml17x_core hw uart int!\r\n");
 
      /* 等待发送数据完成 */
     am_mdelay(100);

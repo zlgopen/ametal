@@ -67,7 +67,7 @@
 void demo_hc32l19x_core_std_i2c_master_async_entry (void)
 {
 
-    AM_DBG_INFO("demo am118_core std i2c master async!\r\n");
+    AM_DBG_INFO("demo aml19x_core std i2c master async!\r\n");
 
     demo_std_i2c_master_async_entry(am_hc32_i2c1_inst_init(),
                                     EEPROM_ADDR,

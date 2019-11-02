@@ -55,7 +55,7 @@
 void demo_hc32f19x_core_hw_tim_pwm_dead_entry (void)
 {
 
-    AM_DBG_INFO("demo am118_core hw tim PWM dead!\r\n");
+    AM_DBG_INFO("demo amf19x_core hw tim PWM dead!\r\n");
 
     /* ³õÊ¼»¯Òý½Å */
     am_gpio_pin_cfg(PIOA_2, PIOA_2_TIM0_CHA | PIOA_2_OUT_PP);

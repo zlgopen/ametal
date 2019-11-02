@@ -51,7 +51,7 @@
  */
 void demo_hc32l19x_core_std_lpuart_polling_entry (void)
 {
-    AM_DBG_INFO("demo am118_core std lpuart polling!\r\n");
+    AM_DBG_INFO("demo aml19x_core std lpuart polling!\r\n");
 
      /* 等待发送数据完成 */
     am_mdelay(100);

@@ -47,7 +47,7 @@
  */
 void demo_hc32l17x_core_miniport_hc595_led_entry (void)
 {
-    AM_DBG_INFO("demo am118_core miniport hc595 led!\r\n");
+    AM_DBG_INFO("demo aml17x_core miniport hc595 led!\r\n");
 
     demo_std_hc595_led_entry(am_miniport_595_inst_init());
 }

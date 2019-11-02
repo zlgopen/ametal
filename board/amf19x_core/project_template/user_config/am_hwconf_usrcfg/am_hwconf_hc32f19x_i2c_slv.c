@@ -61,7 +61,7 @@ static void __hc32_i2c0_plfm_deinit (void)
 /**
  * \brief I2C0 从机设备信息
  */
-static const am_zlg_i2c_slv_devinfo_t __g_i2c0_devinfo = {
+static const am_hc32_i2c_slv_devinfo_t __g_i2c0_devinfo = {
     HC32_I2C0_BASE,               /**< \brief I2C0 寄存器块基址 */
     INUM_I2C0,                      /**< \brief I2C0 中断编号 */
     __hc32_i2c0_plfm_init,           /**< \brief 平台初始化 */
@@ -69,18 +69,18 @@ static const am_zlg_i2c_slv_devinfo_t __g_i2c0_devinfo = {
 };
 
 /**< \brief I2C0 设备实例 */
-static am_zlg_i2c_slv_dev_t __g_i2c0_dev;
+static am_hc32_i2c_slv_dev_t __g_i2c0_dev;
 
 /** \brief I2C0 实例初始化，获得I2C标准服务句柄 */
 am_i2c_slv_handle_t  am_hc32_i2c0_slv_inst_init (void)
 {
-    return am_zlg_i2c_slv_init(&__g_i2c0_dev, &__g_i2c0_devinfo);
+    return am_hc32_i2c_slv_init(&__g_i2c0_dev, &__g_i2c0_devinfo);
 }
 
 /** \brief I2C0 实例解初始化 */
 void am_hc32_i2c0_slv_inst_deinit (am_i2c_slv_handle_t handle)
 {
-    am_zlg_i2c_slv_deinit(handle);
+    am_hc32_i2c_slv_deinit(handle);
 }
 
 
@@ -110,7 +110,7 @@ static void __hc32_i2c1_plfm_deinit (void)
 /**
  * \brief I2C1 从机设备信息
  */
-static const am_zlg_i2c_slv_devinfo_t __g_i2c1_devinfo = {
+static const am_hc32_i2c_slv_devinfo_t __g_i2c1_devinfo = {
     HC32_I2C1_BASE,           /**< \brief I2C1寄存器块基址 */
     INUM_I2C1,                  /**< \brief I2C1 中断编号 */
     __hc32_i2c1_plfm_init,       /**< \brief 平台初始化 */
@@ -118,18 +118,18 @@ static const am_zlg_i2c_slv_devinfo_t __g_i2c1_devinfo = {
 };
 
 /**< \brief I2C1 设备实例 */
-static am_zlg_i2c_slv_dev_t __g_i2c1_dev;
+static am_hc32_i2c_slv_dev_t __g_i2c1_dev;
 
 /** \brief I2C1 实例初始化，获得I2C标准服务句柄 */
 am_i2c_slv_handle_t  am_hc32_i2c1_slv_inst_init (void)
 {
-    return am_zlg_i2c_slv_init(&__g_i2c1_dev, &__g_i2c1_devinfo);
+    return am_hc32_i2c_slv_init(&__g_i2c1_dev, &__g_i2c1_devinfo);
 }
 
 /** \brief I2C1 实例解初始化 */
 void am_hc32_i2c1_slv_inst_deinit (am_i2c_slv_handle_t handle)
 {
-    am_zlg_i2c_slv_deinit(handle);
+    am_hc32_i2c_slv_deinit(handle);
 }
 
 /** @} */

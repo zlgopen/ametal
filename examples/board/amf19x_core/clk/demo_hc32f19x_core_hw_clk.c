@@ -54,7 +54,7 @@ void demo_hc32f19x_core_hw_clk_entry (void)
 {
     am_clk_id_t clk_id[] = {CLK_HCLK, CLK_PCLK};
 
-    AM_DBG_INFO("demo am118_core hw clk!\r\n");
+    AM_DBG_INFO("demo amf19x_core hw clk!\r\n");
 
     amhw_hc32_gpio_sup_hclk_div_set(HC32_GPIO0,
                                     AMHW_HC32_GPIO_SUP_CLK_DIV_8);

@@ -64,7 +64,7 @@ void demo_hc32l13x_core_std_lptim_timing_gate_entry (void)
 {
     am_timer_handle_t  handle = am_hc32_lptim0_timing_inst_init();
     
-    AM_DBG_INFO("demo am118_core std lptim timing gate!\r\n");
+    AM_DBG_INFO("demo aml13x_core std lptim timing gate!\r\n");
 
     /* 设置回调函数 */
     am_timer_callback_set(handle, 0, NULL, NULL);

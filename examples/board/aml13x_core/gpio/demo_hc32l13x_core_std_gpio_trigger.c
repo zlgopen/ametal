@@ -49,7 +49,7 @@
  */
 void demo_hc32l13x_core_std_gpio_trigger_entry (void)
 {
-    AM_DBG_INFO("demo am118_core std gpio trigger!\r\n");
+    AM_DBG_INFO("demo aml13x_core std gpio trigger!\r\n");
 
     demo_std_gpio_trigger_entry(PIOA_7);
 }

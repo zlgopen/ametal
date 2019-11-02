@@ -50,7 +50,7 @@
  */
 void demo_hc32l19x_core_std_uart_ringbuf_entry (void)
 {
-    AM_DBG_INFO("demo am118_core std uart ringbuf!\r\n");
+    AM_DBG_INFO("demo aml19x_core std uart ringbuf!\r\n");
 
      /* 等待发送数据完成 */
     am_mdelay(100);

@@ -56,7 +56,7 @@
  */
 void demo_hc32l19x_core_std_wdt_entry (void)
 {
-    AM_DBG_INFO("demo am118_core std wdt!\r\n");
+    AM_DBG_INFO("demo aml19x_core std wdt!\r\n");
 
     demo_std_wdt_entry(am_hc32_wdt_inst_init(),
                        __WDT_TIMEOUT_MS,

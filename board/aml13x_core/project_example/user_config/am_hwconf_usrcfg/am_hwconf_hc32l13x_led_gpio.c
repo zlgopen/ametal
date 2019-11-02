@@ -13,7 +13,7 @@
 /**
  * \file
  * \brief LED 用户配置文件（GPIO直接驱动）
- * \sa am_hwconf_hc32L13x_led_gpio.c
+ * \sa am_hwconf_hc32l13x_led_gpio.c
  *
  * \internal
  * \par Modification history
@@ -27,7 +27,7 @@
 
 /**
  * \addtogroup am_if_src_hwconf_hc32_led_gpio
- * \copydoc am_hwconf_hc32L13x_led_gpio.c
+ * \copydoc am_hwconf_hc32l13x_led_gpio.c
  * @{
  */
 

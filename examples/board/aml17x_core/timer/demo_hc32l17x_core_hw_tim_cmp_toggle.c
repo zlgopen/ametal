@@ -45,7 +45,7 @@
  */
 void demo_hc32l17x_core_hw_tim_cmp_toggle_entry (void)
 {
-    AM_DBG_INFO("demo am118_core hw tim cmp toggle!\r\n");
+    AM_DBG_INFO("demo aml17x_core hw tim cmp toggle!\r\n");
 
     /* ³õÊ¼»¯Òý½Å */
     am_gpio_pin_cfg(PIOA_2, PIOA_2_TIM0_CHA | PIOA_2_OUT_PP);

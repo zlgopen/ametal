@@ -45,7 +45,7 @@
  */
 void demo_hc32l13x_core_std_tim5_timing_entry (void)
 {
-    AM_DBG_INFO("demo am118_core std tim5 timing!\r\n");
+    AM_DBG_INFO("demo aml13x_core std tim5 timing!\r\n");
 
     demo_std_timer_timing_entry(am_hc32_tim5_timing_inst_init(), 0);
 }

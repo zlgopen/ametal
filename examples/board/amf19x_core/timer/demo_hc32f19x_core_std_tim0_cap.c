@@ -56,7 +56,7 @@ void demo_hc32f19x_core_std_tim0_cap_entry (void)
     am_pwm_handle_t tim3_pwm_handle = am_hc32_tim3_pwm_inst_init();
     am_cap_handle_t tim0_cap_handle = am_hc32_tim0_cap_inst_init();
     
-	  AM_DBG_INFO("demo am118_core std tim0 cap!\r\n");
+	  AM_DBG_INFO("demo amf19x_core std tim0 cap!\r\n");
 
     /* TIM3 输出频率为 2KHz 的 PWM */
     am_pwm_config(tim3_pwm_handle, 0, 500000 / 2, 500000);

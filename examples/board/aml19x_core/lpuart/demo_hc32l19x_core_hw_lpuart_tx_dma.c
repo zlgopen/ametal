@@ -54,7 +54,7 @@
  */
 void demo_hc32l19x_core_hw_lpuart_tx_dma_entry (void)
 {
-    AM_DBG_INFO("demo am118_core hw lpuart tx dma!\r\n");
+    AM_DBG_INFO("demo aml19x_core hw lpuart tx dma!\r\n");
 
     /* ³õÊ¼»¯Òý½Å */
     am_gpio_pin_cfg(PIOB_11, PIOB_11_LPUART0_RXD | PIOB_11_INPUT_FLOAT);

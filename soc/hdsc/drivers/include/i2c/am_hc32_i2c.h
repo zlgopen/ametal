@@ -39,14 +39,14 @@ extern "C" {
 
 /**
  * \addtogroup am_zlg_if_i2c
- * \copydoc am_zlg_i2c.h
+ * \copydoc am_hc32_i2c.h
  * @{
  */
 
 /**
  * \brief I2C设备信息参数结构体
  */
-typedef struct am_zlg_i2c_devinfo {
+typedef struct am_hc32_i2c_devinfo {
 
     /** \brief I2C寄存器块基址 */
     uint32_t  i2c_regbase;
@@ -77,12 +77,12 @@ typedef struct am_zlg_i2c_devinfo {
     /** \brief 平台解初始化函数 */
     void    (*pfn_plfm_deinit)(void);
 
-} am_zlg_i2c_devinfo_t;
+} am_hc32_i2c_devinfo_t;
 
 /**
  * \brief I2C设备结构体
  */
-typedef struct am_zlg_i2c_dev {
+typedef struct am_hc32_i2c_dev {
 
     /** \brief 标准I2C服务 */
     am_i2c_serv_t                           i2c_serv;
@@ -124,9 +124,9 @@ typedef struct am_zlg_i2c_dev {
     volatile am_bool_t                      is_abort;
 
     /** \brief 指向I2C设备信息的指针 */
-    const am_zlg_i2c_devinfo_t             *p_devinfo;
+    const am_hc32_i2c_devinfo_t             *p_devinfo;
 
-} am_zlg_i2c_dev_t;
+} am_hc32_i2c_dev_t;
 
 /**
  * \brief I2C初始化
@@ -136,8 +136,8 @@ typedef struct am_zlg_i2c_dev {
  *
  * \return I2C标准服务操作句柄
  */
-am_i2c_handle_t am_zlg_i2c_init (am_zlg_i2c_dev_t           *p_dev,
-                                 const am_zlg_i2c_devinfo_t *p_devinfo);
+am_i2c_handle_t am_hc32_i2c_init (am_hc32_i2c_dev_t           *p_dev,
+                                 const am_hc32_i2c_devinfo_t *p_devinfo);
 
 /**
  * \brief 解除I2C初始化
@@ -146,7 +146,7 @@ am_i2c_handle_t am_zlg_i2c_init (am_zlg_i2c_dev_t           *p_dev,
  *
  * \return 无
  */
-void am_zlg_i2c_deinit (am_i2c_handle_t handle);
+void am_hc32_i2c_deinit (am_i2c_handle_t handle);
 
 /** @} */
 

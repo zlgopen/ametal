@@ -76,7 +76,7 @@ static void _BufProduce(uint16_t* vol_val)
 void demo_hc32l19x_core_hw_opa_dac_entry (void)
 {
 
-    AM_DBG_INFO("demo am118_core hw opa dac test!\r\n");
+    AM_DBG_INFO("demo aml19x_core hw opa dac test!\r\n");
 
     /* ¿ªÆôDACÊ±ÖÓ */
     am_clk_enable(CLK_DAC);

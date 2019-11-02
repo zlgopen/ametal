@@ -29,7 +29,7 @@
 *******************************************************************************/
 
 /** \brief I2C硬件初始化 */
-static int __i2c_slv_hard_init(am_zlg_i2c_slv_dev_t *p_dev);
+static int __i2c_slv_hard_init(am_hc32_i2c_slv_dev_t *p_dev);
 /** \brief I2C中断处理函数 */
 static void __i2c_slv_irq_handler (void *p_arg);
 /** \brief 开启I2C从机设备 */
@@ -53,7 +53,7 @@ static am_const struct am_i2c_slv_drv_funcs __g_i2c_slv_drv_funcs = {
  *  \note  1: 设置从设备的地址 及地址位数
  *         2：开启中断
  */
-static int __i2c_slv_hard_init (am_zlg_i2c_slv_dev_t *p_dev)
+static int __i2c_slv_hard_init (am_hc32_i2c_slv_dev_t *p_dev)
 {
     amhw_hc32_i2c_t *p_hw_i2c  = NULL;
 
@@ -82,14 +82,14 @@ static int __i2c_slv_setup (void *p_drv, am_i2c_slv_device_t *p_i2c_slv_dev)
 {
     int                     i;
     uint8_t                 zlg_i2c_slv_dev_num ;
-    am_zlg_i2c_slv_dev_t   *p_dev      = NULL;
+    am_hc32_i2c_slv_dev_t   *p_dev      = NULL;
     amhw_hc32_i2c_t      *p_hw_i2c   = NULL;
 
     if ((p_drv == NULL) || (p_i2c_slv_dev == NULL)) {
         return -AM_EINVAL;
     }
 
-    p_dev    = (am_zlg_i2c_slv_dev_t *)p_drv;
+    p_dev    = (am_hc32_i2c_slv_dev_t *)p_drv;
     p_hw_i2c = (amhw_hc32_i2c_t *)(p_dev->p_devinfo->i2c_regbase);
 
     /* 获取总的从设备个数 */
@@ -137,7 +137,7 @@ static int __i2c_slv_setup (void *p_drv, am_i2c_slv_device_t *p_i2c_slv_dev)
  */
 static int __i2c_slv_shutdown (void *p_drv, am_i2c_slv_device_t *p_i2c_slv_dev)
 {
-    am_zlg_i2c_slv_dev_t *p_dev    = (am_zlg_i2c_slv_dev_t *)p_drv;
+    am_hc32_i2c_slv_dev_t *p_dev    = (am_hc32_i2c_slv_dev_t *)p_drv;
     amhw_hc32_i2c_t   *p_hw_i2c_slv = NULL;
 
     if ( (p_dev              == NULL) ||
@@ -166,7 +166,7 @@ static int __i2c_slv_num_get (void *p_drv)
     int     i;
     int     count = 0;
     uint8_t zlg_i2c_slv_dev_num ;
-    am_zlg_i2c_slv_dev_t *p_dev = (am_zlg_i2c_slv_dev_t *)p_drv;
+    am_hc32_i2c_slv_dev_t *p_dev = (am_hc32_i2c_slv_dev_t *)p_drv;
 
     if ((p_dev == NULL)) {
         return -AM_EINVAL;
@@ -189,7 +189,7 @@ static int __i2c_slv_num_get (void *p_drv)
  */
 static void __i2c_slv_timing_callback (void *p_arg)
 {
-    am_zlg_i2c_slv_dev_t  *p_dev     = ( am_zlg_i2c_slv_dev_t *) p_arg;
+    am_hc32_i2c_slv_dev_t  *p_dev     = ( am_hc32_i2c_slv_dev_t *) p_arg;
     amhw_hc32_i2c_t     *p_hw_i2c  = NULL;
     p_hw_i2c  = (amhw_hc32_i2c_t *) (p_dev->p_devinfo->i2c_regbase);
 
@@ -232,7 +232,7 @@ static void __i2c_slv_irq_handler (void *p_arg)
     uint8_t                  rx_data;
     uint8_t                  tx_data;
     amhw_hc32_i2c_t       *p_hw_i2c_slv;
-    am_zlg_i2c_slv_dev_t    *p_dev          = (am_zlg_i2c_slv_dev_t *)p_arg;
+    am_hc32_i2c_slv_dev_t    *p_dev          = (am_hc32_i2c_slv_dev_t *)p_arg;
     am_i2c_slv_device_t     *p_i2c_slv_dev  = p_dev->p_i2c_slv_dev[0];
 
     p_hw_i2c_slv = (amhw_hc32_i2c_t *)p_dev->p_devinfo->i2c_regbase;
@@ -306,9 +306,9 @@ static void __i2c_slv_irq_handler (void *p_arg)
  *
  * \note 硬件初始化 通过用户调用开始从设备来初始化
  */
-am_i2c_slv_handle_t am_zlg_i2c_slv_init (
-        am_zlg_i2c_slv_dev_t           *p_dev,
-        const am_zlg_i2c_slv_devinfo_t *p_devinfo)
+am_i2c_slv_handle_t am_hc32_i2c_slv_init (
+        am_hc32_i2c_slv_dev_t           *p_dev,
+        const am_hc32_i2c_slv_devinfo_t *p_devinfo)
 {
     if (p_dev == NULL || p_devinfo == NULL ) {
         return NULL;
@@ -342,16 +342,16 @@ am_i2c_slv_handle_t am_zlg_i2c_slv_init (
 /**
  * \brief I2C解初始化
  */
-void am_zlg_i2c_slv_deinit (am_i2c_slv_handle_t handle)
+void am_hc32_i2c_slv_deinit (am_i2c_slv_handle_t handle)
 {
     amhw_hc32_i2c_t    *p_hw_i2c_slv = NULL;
-    am_zlg_i2c_slv_dev_t *p_dev        = NULL;
+    am_hc32_i2c_slv_dev_t *p_dev        = NULL;
 
     if (NULL == handle) {
         return ;
     }
 
-    p_dev        = (am_zlg_i2c_slv_dev_t *)handle;
+    p_dev        = (am_hc32_i2c_slv_dev_t *)handle;
     p_hw_i2c_slv = (amhw_hc32_i2c_t *)p_dev->p_devinfo->i2c_regbase;
 
     amhw_hc32_i2c_disable (p_hw_i2c_slv);

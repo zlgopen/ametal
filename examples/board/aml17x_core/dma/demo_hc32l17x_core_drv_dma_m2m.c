@@ -52,7 +52,7 @@
  */
 void demo_hc32l17x_core_drv_dma_m2m_entry (void)
 {
-    AM_DBG_INFO("demo am118_core drv dma m2m!\r\n");
+    AM_DBG_INFO("demo aml17x_core drv dma m2m!\r\n");
 
     demo_hc32_drv_dma_m2m_entry(DMA_M2M_CH);
 }

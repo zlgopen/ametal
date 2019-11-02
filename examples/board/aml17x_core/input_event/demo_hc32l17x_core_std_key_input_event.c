@@ -52,7 +52,7 @@
  */
 void demo_hc32l17x_core_std_key_input_event_entry (void)
 {
-    AM_DBG_INFO("demo am118_core std input event!\r\n");
+    AM_DBG_INFO("demo aml17x_core std input event!\r\n");
 
     demo_std_key_entry();
 }

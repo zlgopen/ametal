@@ -63,7 +63,7 @@
  */
 void demo_hc32l17x_core_miniport_key_entry (void)
 {
-    AM_DBG_INFO("demo am118_core miniport key!\r\n");
+    AM_DBG_INFO("demo aml17x_core miniport key!\r\n");
 
     am_miniport_key_inst_init();
 

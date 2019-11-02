@@ -49,7 +49,7 @@
  */
 void demo_hc32l19x_core_miniport_led_entry (void)
 {
-    AM_DBG_INFO("demo am118_core miniport led!\r\n");
+    AM_DBG_INFO("demo aml19x_core miniport led!\r\n");
 
     am_miniport_led_inst_init();
 

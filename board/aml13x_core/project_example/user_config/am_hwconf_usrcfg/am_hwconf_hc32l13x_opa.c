@@ -12,7 +12,7 @@
 
 /**
  * \file
- * \brief ZLG OPA 用户配置文件
+ * \brief HC32 OPA 用户配置文件
  * \sa am_hwconf_hc32_opa.c
  *
  * \internal

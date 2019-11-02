@@ -75,7 +75,7 @@ static void _BufProduce(uint16_t* vol_val)
  */
 void demo_hc32l13x_core_hw_dac_dma_entry (void)
 {
-    AM_DBG_INFO("demo am118_core hw dac dma test!\r\n");
+    AM_DBG_INFO("demo aml13x_core hw dac dma test!\r\n");
 
     /* ÅäÖÃPIOA_4ÎªDAC1_OUT¹¦ÄÜ */
     am_gpio_pin_cfg(PIOA_4, PIOA_4_AOUT);

@@ -54,7 +54,7 @@ void demo_hc32l13x_core_std_spi_master_dma_entry (void)
 {
     am_spi_handle_t spi_handle = am_hc32_spi1_dma_inst_init();
 
-    AM_DBG_INFO("demo am118_core std spi master dma!\r\n");
+    AM_DBG_INFO("demo aml13x_core std spi master dma!\r\n");
 
     demo_std_spi_master_entry(spi_handle, PIOA_4); 
 }

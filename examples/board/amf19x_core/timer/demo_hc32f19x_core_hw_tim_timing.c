@@ -45,7 +45,7 @@
  */
 void demo_hc32f19x_core_hw_tim_timing_entry (void)
 {
-    AM_DBG_INFO("demo am118_core hw tim timing!\r\n");
+    AM_DBG_INFO("demo amf19x_core hw tim timing!\r\n");
 
     /* 使能定时器时钟 */
     am_clk_enable(CLK_TIM012);

@@ -8,7 +8,7 @@
 * All rights reserved.
 *
 * Contact information:
-* web site:    http://www.hc32.cn/
+* web site:    http://www.zlg.cn/
 *******************************************************************************/
 
 /**

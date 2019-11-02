@@ -52,7 +52,7 @@
  */
 void demo_hc32f19x_core_std_crc_entry (void)
 {
-    AM_DBG_INFO("demo am118_core std crc!\r\n");
+    AM_DBG_INFO("demo amf19x_core std crc!\r\n");
 
     am_crc_handle_t crc_handle;
 

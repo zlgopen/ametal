@@ -92,7 +92,7 @@ void demo_hc32l19x_core_drv_rtc_entry (void)
     int             ret          = AM_OK;
     am_rtc_handle_t p_rtc_handle = am_hc32_rtc_inst_init();
 
-    AM_DBG_INFO("demo am118_core rtc entry!\r\n");
+    AM_DBG_INFO("demo aml19x_core rtc entry!\r\n");
 
     /* …Ë÷√ ±º‰ */
     ret= am_rtc_time_set(p_rtc_handle, &__g_current_time);

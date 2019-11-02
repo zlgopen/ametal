@@ -53,7 +53,7 @@
  */
 void demo_hc32l17x_core_std_spi_master_int_entry (void)
 {
-    AM_DBG_INFO("demo am118_core std spi master int!\r\n");
+    AM_DBG_INFO("demo aml17x_core std spi master int!\r\n");
 
     demo_std_spi_master_entry(am_hc32_spi1_int_inst_init(), PIOA_4);
 

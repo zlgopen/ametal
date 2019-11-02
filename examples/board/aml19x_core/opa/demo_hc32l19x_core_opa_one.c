@@ -55,7 +55,7 @@
 void demo_hc32l19x_core_hw_opa_one_entry (void)
 {
 
-    AM_DBG_INFO("demo am118_core hw opa one test!\r\n");
+    AM_DBG_INFO("demo aml19x_core hw opa one test!\r\n");
 
     /* ¿ªÆôOPAÊ±ÖÓ */
     am_clk_enable (CLK_OPA);

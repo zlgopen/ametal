@@ -57,7 +57,7 @@
  */
 void demo_hc32l19x_core_std_i2c_slave_int_entry (void)
 {
-    am_kprintf("demo am118_core std i2c slave int!\r\n");
+    am_kprintf("demo aml19x_core std i2c slave int!\r\n");
 
     demo_std_i2c_slave_entry(am_hc32_i2c1_slv_inst_init(), DEV_ADDR);
 }

@@ -48,7 +48,7 @@ void demo_hc32l19x_core_std_dac_entry (void)
 {
     am_dac_handle_t adc_handle = NULL;
     
-    AM_DBG_INFO("demo am118_core std dac convert test!\r\n");
+    AM_DBG_INFO("demo aml19x_core std dac convert test!\r\n");
     
     adc_handle = am_hc32_dac_inst_init();
 

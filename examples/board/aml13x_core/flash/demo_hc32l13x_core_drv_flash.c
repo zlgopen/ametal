@@ -53,7 +53,7 @@
  */
 void demo_hc32l13x_core_drv_flash_entry (void)
 {
-    AM_DBG_INFO("demo am118_core drv flash!\r\n");
+    AM_DBG_INFO("demo aml13x_core drv flash!\r\n");
 
     demo_hc32_drv_flash_entry(HC32_FLASH, FLASH_SECTOR);
 }

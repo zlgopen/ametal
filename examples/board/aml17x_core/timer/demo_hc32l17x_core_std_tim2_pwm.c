@@ -52,7 +52,7 @@
 void demo_hc32l17x_core_std_tim2_pwm_entry (void)
 {
 
-    AM_DBG_INFO("demo am118_core std tim2 pwm!\r\n");
+    AM_DBG_INFO("demo aml17x_core std tim2 pwm!\r\n");
 
     demo_std_timer_pwm_entry(am_hc32_tim2_pwm_inst_init(), AM_HC32_TIM_PWM_CH0A);
 }

@@ -44,7 +44,7 @@
  */
 void demo_hc32l17x_core_std_tim0_timing_entry (void)
 {
-    AM_DBG_INFO("demo am118_core std tim0 timing!\r\n");
+    AM_DBG_INFO("demo aml17x_core std tim0 timing!\r\n");
 
     demo_std_timer_timing_entry(am_hc32_tim0_timing_inst_init(), 0);
 }

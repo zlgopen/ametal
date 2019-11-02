@@ -34,14 +34,14 @@ extern "C" {
 
 /**
  * \addtogroup am_zlg_if_i2c_slv
- * \copydoc am_zlg_i2c_slv.h
+ * \copydoc am_hc32_i2c_slv.h
  * @{
  */
 
 /**
  * \brief I2C设备信息参数结构体
  */
-typedef struct am_zlg_i2c_slv_devinfo {
+typedef struct am_hc32_i2c_slv_devinfo {
 
     /** \brief I2C 寄存器块基址 */
     uint32_t  i2c_regbase;
@@ -55,12 +55,12 @@ typedef struct am_zlg_i2c_slv_devinfo {
     /** \brief 平台解初始化函数 */
     void     (*pfn_plfm_deinit)(void);
 
-} am_zlg_i2c_slv_devinfo_t;
+} am_hc32_i2c_slv_devinfo_t;
 
 /**
  * \brief I2C设备结构体
  */
-typedef struct am_zlg_i2c_slv_dev {
+typedef struct am_hc32_i2c_slv_dev {
 
     /** \brief 标准I2C从设备服务 */
     am_i2c_slv_serv_t                  i2c_slv_serv;
@@ -68,7 +68,7 @@ typedef struct am_zlg_i2c_slv_dev {
    /** \brief 从机设备,只能存一个从机地址,只能生成一个设备 */
     am_i2c_slv_device_t               *p_i2c_slv_dev[1];
 
-    /** \brief ZLG可生成最多的从机个数即可放多少个从机地址,与 p_i2c_slv_dev数组个数保持一致, */
+    /** \brief HC32可生成最多的从机个数即可放多少个从机地址,与 p_i2c_slv_dev数组个数保持一致, */
     uint8_t                            zlg_i2c_slv_dev_num;
 
     /** \brief 广播呼叫 标志 */
@@ -78,9 +78,9 @@ typedef struct am_zlg_i2c_slv_dev {
     am_softimer_t                      softimer;
 
     /** \brief 指向I2C设备信息的指针 */
-    const am_zlg_i2c_slv_devinfo_t    *p_devinfo;
+    const am_hc32_i2c_slv_devinfo_t    *p_devinfo;
 
-} am_zlg_i2c_slv_dev_t;
+} am_hc32_i2c_slv_dev_t;
 
 /**
  * \brief I2C初始化
@@ -90,15 +90,15 @@ typedef struct am_zlg_i2c_slv_dev {
  *
  * \return 从I2C标准服务操作句柄
  */
-am_i2c_slv_handle_t am_zlg_i2c_slv_init (am_zlg_i2c_slv_dev_t           *p_dev,
-                                         const am_zlg_i2c_slv_devinfo_t *p_devinfo);
+am_i2c_slv_handle_t am_hc32_i2c_slv_init (am_hc32_i2c_slv_dev_t           *p_dev,
+                                         const am_hc32_i2c_slv_devinfo_t *p_devinfo);
 
 /**
  * \brief 解除I2C初始化
  * \param[in] handle : 与从设备关联的从I2C标准服务操作句柄
  * \return 无
  */
-void am_zlg_i2c_slv_deinit (am_i2c_slv_handle_t handle);
+void am_hc32_i2c_slv_deinit (am_i2c_slv_handle_t handle);
 
 /** @} */
 

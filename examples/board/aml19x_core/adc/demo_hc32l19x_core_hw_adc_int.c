@@ -53,7 +53,7 @@
  */
 void demo_hc32l19x_core_hw_adc_int_entry (void)
 {
-    AM_DBG_INFO("demo am118_core hw adc int!\r\n");
+    AM_DBG_INFO("demo aml19x_core hw adc int!\r\n");
 
     /* ≈‰÷√“˝Ω≈ */
     am_gpio_pin_cfg(PIOA_3, PIOA_3_GPIO | PIOA_3_AIN);
