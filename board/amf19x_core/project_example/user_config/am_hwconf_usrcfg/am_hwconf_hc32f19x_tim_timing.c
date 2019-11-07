@@ -13,7 +13,7 @@
 /**
   \file
   \brief HC32 TIM 定时功能用户配置文件
-  \sa am_hwconf_hc32_tim_timing.c
+  \sa am_hwconf_hc32f19x_tim_timing.c
  *
  *
   \internal
@@ -31,8 +31,8 @@
 #include "am_hc32_adtim_timing.h"
 
 /**
-  \addtogroup am_if_src_hwconf_hc32_tim_timing
-  \copydoc am_hwconf_hc32_tim_timing.c
+  \addtogroup am_if_src_hwconf_hc32f19x_tim_timing
+  \copydoc am_hwconf_hc32f19x_tim_timing.c
   @{
  */
 
@@ -41,7 +41,7 @@
 *******************************************************************************/
 
 /** \brief TIM0 平台初始化 */
-void __hc32_plfm_tim0_timing_init (void)
+void __hc32f19x_plfm_tim0_timing_init (void)
 {
 //    /* 配置GATE引脚，以实现门控功能 */
 //    am_gpio_pin_cfg(PIOB_8, PIOB_8_INPUT_PD | PIOB_8_TIM0_GATE);
@@ -50,17 +50,15 @@ void __hc32_plfm_tim0_timing_init (void)
 //    am_gpio_pin_cfg(PIOA_0, PIOA_0_INPUT_PD | PIOA_0_TIM0_ETR);
 
     am_clk_enable(CLK_TIM012);
-    am_hc32_clk_reset(CLK_TIM012);
 }
 
 /** \brief 解除 TIM0 平台初始化 */
-void __hc32_plfm_tim0_timing_deinit (void)
+void __hc32f19x_plfm_tim0_timing_deinit (void)
 {
 //    am_gpio_pin_cfg(PIOB_8, PIOB_8_INPUT_PU | PIOB_8_GPIO);
 //
 //    am_gpio_pin_cfg(PIOA_0, PIOA_0_INPUT_PU | PIOA_0_GPIO);
 
-    am_hc32_clk_reset(CLK_TIM012);
     am_clk_disable(CLK_TIM012);
 }
 
@@ -73,8 +71,8 @@ const am_hc32_tim_timing_devinfo_t  __g_tim0_timing_devinfo = {
     AMHW_HC32_TIM_GATE_DISABLE,      /**< \brief 门控状态（默认关闭） */
     AM_TRUE,                           /**< \brief 门控信号为真（1）有效 */
     AMHW_HC32_TIM_CLK_SRC_TCLK,      /**< \brief 计数时钟选择（默认内部） */
-    __hc32_plfm_tim0_timing_init,    /**< \brief 平台初始化函数 */
-    __hc32_plfm_tim0_timing_deinit   /**< \brief 平台解析初始化函数 */
+    __hc32f19x_plfm_tim0_timing_init,    /**< \brief 平台初始化函数 */
+    __hc32f19x_plfm_tim0_timing_deinit   /**< \brief 平台解析初始化函数 */
 };
 
 /** \brief TIM0 设备定义 */
@@ -98,7 +96,7 @@ void am_hc32_tim0_timing_inst_deinit (am_timer_handle_t handle)
 *******************************************************************************/
 
 /** \brief TIM1 平台初始化 */
-void __hc32_plfm_tim1_timing_init (void)
+void __hc32f19x_plfm_tim1_timing_init (void)
 {
 //    /* 配置GATE引脚，以实现门控功能 */
 //    am_gpio_pin_cfg(PIOB_13, PIOB_13_INPUT_PD | PIOB_13_TIM1_GATE);
@@ -107,17 +105,15 @@ void __hc32_plfm_tim1_timing_init (void)
 //    am_gpio_pin_cfg(PIOC_9, PIOC_9_INPUT_PD | PIOC_9_TIM1_ETR);
 
     am_clk_enable(CLK_TIM012);
-    am_hc32_clk_reset(CLK_TIM012);
 }
 
 /** \brief 解除 TIM1 平台初始化 */
-void __hc32_plfm_tim1_timing_deinit (void)
+void __hc32f19x_plfm_tim1_timing_deinit (void)
 {
 //    am_gpio_pin_cfg(PIOB_13, PIOB_13_INPUT_PU | PIOB_13_GPIO);
 //
 //    am_gpio_pin_cfg(PIOC_9, PIOC_9_INPUT_PU | PIOC_9_GPIO);
 
-    am_hc32_clk_reset(CLK_TIM012);
     am_clk_disable(CLK_TIM012);
 }
 
@@ -130,8 +126,8 @@ const am_hc32_tim_timing_devinfo_t  __g_tim1_timing_devinfo = {
     AMHW_HC32_TIM_GATE_DISABLE,      /**< \brief 门控状态（默认关闭） */
     AM_TRUE,                           /**< \brief 门控信号为真（1）有效 */
     AMHW_HC32_TIM_CLK_SRC_TCLK,      /**< \brief 计数时钟选择（默认内部） */
-    __hc32_plfm_tim1_timing_init,    /**< \brief 平台初始化函数 */
-    __hc32_plfm_tim1_timing_deinit   /**< \brief 平台解析初始化函数 */
+    __hc32f19x_plfm_tim1_timing_init,    /**< \brief 平台初始化函数 */
+    __hc32f19x_plfm_tim1_timing_deinit   /**< \brief 平台解析初始化函数 */
 };
 
 /** \brief TIM1 设备定义 */
@@ -155,7 +151,7 @@ void am_hc32_tim1_timing_inst_deinit (am_timer_handle_t handle)
 *******************************************************************************/
 
 /** \brief TIM2 平台初始化 */
-void __hc32_plfm_tim2_timing_init (void)
+void __hc32f19x_plfm_tim2_timing_init (void)
 {
 //    /* 配置GATE引脚，以实现门控功能 */
 //    am_gpio_pin_cfg(PIOA_10, PIOA_10_INPUT_PD | PIOA_10_TIM2_GATE);
@@ -164,17 +160,15 @@ void __hc32_plfm_tim2_timing_init (void)
 //    am_gpio_pin_cfg(PIOC_4, PIOC_4_INPUT_PD | PIOC_4_TIM2_ETR);
 
     am_clk_enable(CLK_TIM012);
-    am_hc32_clk_reset(CLK_TIM012);
 }
 
 /** \brief 解除 TIM2 平台初始化 */
-void __hc32_plfm_tim2_timing_deinit (void)
+void __hc32f19x_plfm_tim2_timing_deinit (void)
 {
 //    am_gpio_pin_cfg(PIOA_10, PIOA_10_INPUT_PU | PIOA_10_GPIO);
 //
 //    am_gpio_pin_cfg(PIOC_4, PIOC_4_INPUT_PU | PIOC_4_GPIO);
 
-    am_hc32_clk_reset(CLK_TIM012);
     am_clk_disable(CLK_TIM012);
 }
 
@@ -187,8 +181,8 @@ const am_hc32_tim_timing_devinfo_t  __g_tim2_timing_devinfo = {
     AMHW_HC32_TIM_GATE_DISABLE,      /**< \brief 门控状态（默认关闭） */
     AM_TRUE,                           /**< \brief 门控信号为真（1）有效 */
     AMHW_HC32_TIM_CLK_SRC_TCLK,      /**< \brief 计数时钟选择（默认内部） */
-    __hc32_plfm_tim2_timing_init,    /**< \brief 平台初始化函数 */
-    __hc32_plfm_tim2_timing_deinit   /**< \brief 平台解析初始化函数 */
+    __hc32f19x_plfm_tim2_timing_init,    /**< \brief 平台初始化函数 */
+    __hc32f19x_plfm_tim2_timing_deinit   /**< \brief 平台解析初始化函数 */
 };
 
 /** \brief TIM2 设备定义 */
@@ -212,7 +206,7 @@ void am_hc32_tim2_timing_inst_deinit (am_timer_handle_t handle)
 *******************************************************************************/
 
 /** \brief TIM3 平台初始化 */
-void __hc32_plfm_tim3_timing_init (void)
+void __hc32f19x_plfm_tim3_timing_init (void)
 {
     /* 配置GATE引脚，以实现门控功能 */
     am_gpio_pin_cfg(PIOA_6, PIOA_6_INPUT_PD | PIOA_6_TIM3_GATE);
@@ -221,17 +215,15 @@ void __hc32_plfm_tim3_timing_init (void)
     am_gpio_pin_cfg(PIOA_11, PIOA_11_INPUT_PD | PIOA_11_TIM3_GATE);
 
     am_clk_enable(CLK_TIM3);
-    am_hc32_clk_reset(CLK_TIM3);
 }
 
 /** \brief 解除 TIM3 平台初始化 */
-void __hc32_plfm_tim3_timing_deinit (void)
+void __hc32f19x_plfm_tim3_timing_deinit (void)
 {
     am_gpio_pin_cfg(PIOA_6, PIOA_6_INPUT_PU | PIOA_6_GPIO);
 
     am_gpio_pin_cfg(PIOA_11, PIOA_11_INPUT_PU | PIOA_11_GPIO);
 
-    am_hc32_clk_reset(CLK_TIM3);
     am_clk_disable(CLK_TIM3);
 }
 
@@ -244,8 +236,8 @@ const am_hc32_tim_timing_devinfo_t  __g_tim3_timing_devinfo = {
     AMHW_HC32_TIM_GATE_DISABLE,      /**< \brief 门控状态（默认关闭） */
     AM_TRUE,                           /**< \brief 门控信号为真（1）有效 */
     AMHW_HC32_TIM_CLK_SRC_TCLK,      /**< \brief 计数时钟选择（默认内部） */
-    __hc32_plfm_tim3_timing_init,    /**< \brief 平台初始化函数 */
-    __hc32_plfm_tim3_timing_deinit   /**< \brief 平台解析初始化函数 */
+    __hc32f19x_plfm_tim3_timing_init,    /**< \brief 平台初始化函数 */
+    __hc32f19x_plfm_tim3_timing_deinit   /**< \brief 平台解析初始化函数 */
 };
 
 /** \brief TIM3 设备定义 */
@@ -269,16 +261,14 @@ void am_hc32_tim3_timing_inst_deinit (am_timer_handle_t handle)
 *******************************************************************************/
 
 /** \brief ADTIM4 平台初始化 */
-void __hc32_plfm_adtim4_timing_init (void)
+void __hc32f19x_plfm_adtim4_timing_init (void)
 {
     am_clk_enable(CLK_TIM456);
-    am_hc32_clk_reset(CLK_TIM456);
 }
 
 /** \brief 解除 ADTIM4 平台初始化 */
-void __hc32_plfm_adtim4_timing_deinit (void)
+void __hc32f19x_plfm_adtim4_timing_deinit (void)
 {
-    am_hc32_clk_reset(CLK_TIM456);
     am_clk_disable(CLK_TIM456);
 }
 
@@ -286,8 +276,8 @@ void __hc32_plfm_adtim4_timing_deinit (void)
 const am_hc32_adtim_timing_devinfo_t  __g_adtim4_timing_devinfo = {
     HC32_TIM4_BASE,                    /**< \brief ADTIM4寄存器块的基地址 */
     INUM_TIM4,                           /**< \brief ADTIM4中断编号 */
-    __hc32_plfm_adtim4_timing_init,    /**< \brief 平台初始化函数 */
-    __hc32_plfm_adtim4_timing_deinit   /**< \brief 平台解析初始化函数 */
+    __hc32f19x_plfm_adtim4_timing_init,    /**< \brief 平台初始化函数 */
+    __hc32f19x_plfm_adtim4_timing_deinit   /**< \brief 平台解析初始化函数 */
 };
 
 /** \brief ADTIM4 设备定义 */
@@ -310,16 +300,14 @@ void am_hc32_tim4_timing_inst_deinit (am_timer_handle_t handle)
   ADTIM5 配置
 *******************************************************************************/
 /** \brief ADTIM5 平台初始化 */
-void __hc32_plfm_adtim5_timing_init (void)
+void __hc32f19x_plfm_adtim5_timing_init (void)
 {
     am_clk_enable(CLK_TIM456);
-    am_hc32_clk_reset(CLK_TIM456);
 }
 
 /** \brief 解除 ADTIM5 平台初始化 */
-void __hc32_plfm_adtim5_timing_deinit (void)
+void __hc32f19x_plfm_adtim5_timing_deinit (void)
 {
-    am_hc32_clk_reset(CLK_TIM456);
     am_clk_disable(CLK_TIM456);
 }
 
@@ -327,8 +315,8 @@ void __hc32_plfm_adtim5_timing_deinit (void)
 const am_hc32_adtim_timing_devinfo_t  __g_adtim5_timing_devinfo = {
     HC32_TIM5_BASE,                    /**< \brief ADTIM5寄存器块的基地址 */
     INUM_TIM5,                           /**< \brief ADTIM5中断编号 */
-    __hc32_plfm_adtim5_timing_init,    /**< \brief 平台初始化函数 */
-    __hc32_plfm_adtim5_timing_deinit   /**< \brief 平台解析初始化函数 */
+    __hc32f19x_plfm_adtim5_timing_init,    /**< \brief 平台初始化函数 */
+    __hc32f19x_plfm_adtim5_timing_deinit   /**< \brief 平台解析初始化函数 */
 };
 
 /** \brief ADTIM5 设备定义 */
@@ -352,16 +340,14 @@ void am_hc32_tim5_timing_inst_deinit (am_timer_handle_t handle)
 *******************************************************************************/
 
 /** \brief ADTIM6 平台初始化 */
-void __hc32_plfm_adtim6_timing_init (void)
+void __hc32f19x_plfm_adtim6_timing_init (void)
 {
     am_clk_enable(CLK_TIM456);
-    am_hc32_clk_reset(CLK_TIM456);
 }
 
 /** \brief 解除 ADTIM6 平台初始化 */
-void __hc32_plfm_adtim6_timing_deinit (void)
+void __hc32f19x_plfm_adtim6_timing_deinit (void)
 {
-    am_hc32_clk_reset(CLK_TIM456);
     am_clk_disable(CLK_TIM456);
 }
 
@@ -369,8 +355,8 @@ void __hc32_plfm_adtim6_timing_deinit (void)
 const am_hc32_adtim_timing_devinfo_t  __g_adtim6_timing_devinfo = {
     HC32_TIM6_BASE,                    /**< \brief ADTIM6寄存器块的基地址 */
     INUM_TIM6,                           /**< \brief ADTIM6中断编号 */
-    __hc32_plfm_adtim6_timing_init,    /**< \brief 平台初始化函数 */
-    __hc32_plfm_adtim6_timing_deinit   /**< \brief 平台解析初始化函数 */
+    __hc32f19x_plfm_adtim6_timing_init,    /**< \brief 平台初始化函数 */
+    __hc32f19x_plfm_adtim6_timing_deinit   /**< \brief 平台解析初始化函数 */
 };
 
 /** \brief ADTIM6 设备定义 */

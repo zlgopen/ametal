@@ -166,7 +166,11 @@ int am_clk_enable (am_clk_id_t clk_id)
 
     peri = clk_id & 0xff;
 
-    amhw_hc32_rcc_peripheral_enable((amhw_hc32_peripheral)peri);
+    /* 判断外设时钟是否已经使能，否，使能时钟且复位时钟 */
+    if(amhw_hc32_rcc_peripheral_enable_check((amhw_hc32_peripheral)peri) == 0) {
+        amhw_hc32_rcc_peripheral_enable((amhw_hc32_peripheral)peri);
+        am_hc32_clk_reset(clk_id);
+    }
 
     return AM_OK;
 }

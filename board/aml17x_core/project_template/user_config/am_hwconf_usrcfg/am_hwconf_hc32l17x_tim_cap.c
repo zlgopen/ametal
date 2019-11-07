@@ -13,7 +13,7 @@
 /**
  * \file
  * \brief TIM 用于捕获功能的用户配置文件
- * \sa am_hwconf_hc32_tim_cap.c
+ * \sa am_hwconf_hc32l17x_tim_cap.c
  *
  * \internal
  * \par Modification history
@@ -30,8 +30,8 @@
 #include "am_hc32_clk.h"
 
 /**
- * \addtogroup am_if_src_hwconf_hc32_tim_cap
- * \copydoc am_hwconf_hc32_tim_cap.c
+ * \addtogroup am_if_src_hwconf_hc32l17x_tim_cap
+ * \copydoc am_hwconf_hc32l17x_tim_cap.c
  * @{
  */
 /*******************************************************************************
@@ -39,16 +39,14 @@
 *******************************************************************************/
 
 /** \brief TIM0用于捕获功能的平台初始化 */
-void __hc32_plfm_tim0_cap_init (void)
+void __hc32l17x_plfm_tim0_cap_init (void)
 {
     am_clk_enable(CLK_TIM012);
-    am_hc32_clk_reset(CLK_TIM012);
 }
 
 /** \brief 解除TIM0平台初始化 */
-void __hc32_plfm_tim0_cap_deinit (void)
+void __hc32l17x_plfm_tim0_cap_deinit (void)
 {
-    am_hc32_clk_reset(CLK_TIM012);
     am_clk_disable(CLK_TIM012);
 }
 
@@ -80,8 +78,8 @@ const am_hc32_tim_cap_devinfo_t  __g_tim0_cap_devinfo = {
     AMHW_HC32_TIM_TYPE_TIM0,          /**< \brief 定时器选择 */
 
     &__g_tim0_cap_ioinfo_list[0],
-    __hc32_plfm_tim0_cap_init,        /**< \brief 平台初始化函数 */
-    __hc32_plfm_tim0_cap_deinit       /**< \brief 平台解初始化函数 */
+    __hc32l17x_plfm_tim0_cap_init,        /**< \brief 平台初始化函数 */
+    __hc32l17x_plfm_tim0_cap_deinit       /**< \brief 平台解初始化函数 */
 };
 
 /** \brief TIM0用于捕获功能的设备定义 */
@@ -105,16 +103,14 @@ void am_hc32_tim0_cap_inst_deinit (am_cap_handle_t handle)
 *******************************************************************************/
 
 /** \brief TIM1用于捕获功能的平台初始化 */
-void __hc32_plfm_tim1_cap_init (void)
+void __hc32l17x_plfm_tim1_cap_init (void)
 {
     am_clk_enable(CLK_TIM012);
-    am_hc32_clk_reset(CLK_TIM012);
 }
 
 /** \brief 解除TIM1平台初始化 */
-void __hc32_plfm_tim1_cap_deinit (void)
+void __hc32l17x_plfm_tim1_cap_deinit (void)
 {
-    am_hc32_clk_reset(CLK_TIM012);
     am_clk_disable(CLK_TIM012);
 }
 
@@ -146,8 +142,8 @@ const am_hc32_tim_cap_devinfo_t  __g_tim1_cap_devinfo = {
     AMHW_HC32_TIM_TYPE_TIM1,          /**< \brief 定时器选择 */
 
     &__g_tim1_cap_ioinfo_list[0],
-    __hc32_plfm_tim1_cap_init,        /**< \brief 平台初始化函数 */
-    __hc32_plfm_tim1_cap_deinit       /**< \brief 平台解初始化函数 */
+    __hc32l17x_plfm_tim1_cap_init,        /**< \brief 平台初始化函数 */
+    __hc32l17x_plfm_tim1_cap_deinit       /**< \brief 平台解初始化函数 */
 };
 
 /** \brief TIM1用于捕获功能的设备定义 */
@@ -171,16 +167,14 @@ void am_hc32_tim1_cap_inst_deinit (am_cap_handle_t handle)
 *******************************************************************************/
 
 /** \brief TIM2用于捕获功能的平台初始化 */
-void __hc32_plfm_tim2_cap_init (void)
+void __hc32l17x_plfm_tim2_cap_init (void)
 {
     am_clk_enable(CLK_TIM012);
-    am_hc32_clk_reset(CLK_TIM012);
 }
 
 /** \brief 解除TIM2平台初始化 */
-void __hc32_plfm_tim2_cap_deinit (void)
+void __hc32l17x_plfm_tim2_cap_deinit (void)
 {
-    am_hc32_clk_reset(CLK_TIM012);
     am_clk_disable(CLK_TIM012);
 }
 
@@ -212,8 +206,8 @@ const am_hc32_tim_cap_devinfo_t  __g_tim2_cap_devinfo = {
     AMHW_HC32_TIM_TYPE_TIM2,          /**< \brief 定时器选择 */
 
     &__g_tim2_cap_ioinfo_list[0],
-    __hc32_plfm_tim2_cap_init,        /**< \brief 平台初始化函数 */
-    __hc32_plfm_tim2_cap_deinit       /**< \brief 平台解初始化函数 */
+    __hc32l17x_plfm_tim2_cap_init,        /**< \brief 平台初始化函数 */
+    __hc32l17x_plfm_tim2_cap_deinit       /**< \brief 平台解初始化函数 */
 };
 
 /** \brief TIM2用于捕获功能的设备定义 */
@@ -237,16 +231,14 @@ void am_hc32_tim2_cap_inst_deinit (am_cap_handle_t handle)
 *******************************************************************************/
 
 /** \brief TIM3用于捕获功能的平台初始化 */
-void __hc32_plfm_tim3_cap_init (void)
+void __hc32l17x_plfm_tim3_cap_init (void)
 {
     am_clk_enable(CLK_TIM3);
-    am_hc32_clk_reset(CLK_TIM3);
 }
 
 /** \brief 解除TIM3平台初始化 */
-void __hc32_plfm_tim3_cap_deinit (void)
+void __hc32l17x_plfm_tim3_cap_deinit (void)
 {
-    am_hc32_clk_reset(CLK_TIM3);
     am_clk_disable(CLK_TIM3);
 }
 
@@ -306,8 +298,8 @@ const am_hc32_tim_cap_devinfo_t  __g_tim3_cap_devinfo = {
     AMHW_HC32_TIM_TYPE_TIM3,          /**< \brief 定时器选择 */
 
     &__g_tim3_cap_ioinfo_list[0],
-    __hc32_plfm_tim3_cap_init,        /**< \brief 平台初始化函数 */
-    __hc32_plfm_tim3_cap_deinit       /**< \brief 平台解初始化函数 */
+    __hc32l17x_plfm_tim3_cap_init,        /**< \brief 平台初始化函数 */
+    __hc32l17x_plfm_tim3_cap_deinit       /**< \brief 平台解初始化函数 */
 };
 
 /** \brief TIM3用于捕获功能的设备定义 */
@@ -330,16 +322,14 @@ void am_hc32_tim3_cap_inst_deinit (am_cap_handle_t handle)
   ADTIM4 配置
 *******************************************************************************/
 /** \brief ADTIM4用于捕获功能的平台初始化 */
-void __hc32_plfm_adtim4_cap_init (void)
+void __hc32l17x_plfm_adtim4_cap_init (void)
 {
     am_clk_enable(CLK_TIM456);
-    am_hc32_clk_reset(CLK_TIM456);
 }
 
 /** \brief 解除ADTIM4平台初始化 */
-void __hc32_plfm_adtim4_cap_deinit (void)
+void __hc32l17x_plfm_adtim4_cap_deinit (void)
 {
-    am_hc32_clk_reset(CLK_TIM456);
     am_clk_disable(CLK_TIM456);
 }
 
@@ -368,8 +358,8 @@ const am_hc32_adtim_cap_devinfo_t  __g_adtim4_cap_devinfo = {
     2,                                  /**< \brief 2个捕获通道 */
 
     &__g_adtim4_cap_ioinfo_list[0],     /**< \brief 引脚配置信息列表 */
-    __hc32_plfm_adtim4_cap_init,      /**< \brief 平台初始化函数 */
-    __hc32_plfm_adtim4_cap_deinit     /**< \brief 平台解初始化函数 */
+    __hc32l17x_plfm_adtim4_cap_init,      /**< \brief 平台初始化函数 */
+    __hc32l17x_plfm_adtim4_cap_deinit     /**< \brief 平台解初始化函数 */
 };
 
 /** \brief ADTIM4用于捕获功能的设备定义 */
@@ -392,16 +382,14 @@ void am_hc32_tim4_cap_inst_deinit (am_cap_handle_t handle)
   ADTIM5 配置
 *******************************************************************************/
 /** \brief ADTIM5用于捕获功能的平台初始化 */
-void __hc32_plfm_adtim5_cap_init (void)
+void __hc32l17x_plfm_adtim5_cap_init (void)
 {
     am_clk_enable(CLK_TIM456);
-    am_hc32_clk_reset(CLK_TIM456);
 }
 
 /** \brief 解除ADTIM5平台初始化 */
-void __hc32_plfm_adtim5_cap_deinit (void)
+void __hc32l17x_plfm_adtim5_cap_deinit (void)
 {
-    am_hc32_clk_reset(CLK_TIM456);
     am_clk_disable(CLK_TIM456);
 }
 
@@ -430,8 +418,8 @@ const am_hc32_adtim_cap_devinfo_t  __g_adtim5_cap_devinfo = {
     2,                                  /**< \brief 2个捕获通道 */
 
     &__g_adtim5_cap_ioinfo_list[0],     /**< \brief 引脚配置信息列表 */
-    __hc32_plfm_adtim5_cap_init,      /**< \brief 平台初始化函数 */
-    __hc32_plfm_adtim5_cap_deinit     /**< \brief 平台解初始化函数 */
+    __hc32l17x_plfm_adtim5_cap_init,      /**< \brief 平台初始化函数 */
+    __hc32l17x_plfm_adtim5_cap_deinit     /**< \brief 平台解初始化函数 */
 };
 
 /** \brief ADTIM5用于捕获功能的设备定义 */
@@ -454,16 +442,14 @@ void am_hc32_tim5_cap_inst_deinit (am_cap_handle_t handle)
   ADTIM6 配置
 *******************************************************************************/
 /** \brief ADTIM6用于捕获功能的平台初始化 */
-void __hc32_plfm_adtim6_cap_init (void)
+void __hc32l17x_plfm_adtim6_cap_init (void)
 {
     am_clk_enable(CLK_TIM456);
-    am_hc32_clk_reset(CLK_TIM456);
 }
 
 /** \brief 解除ADTIM6平台初始化 */
-void __hc32_plfm_adtim6_cap_deinit (void)
+void __hc32l17x_plfm_adtim6_cap_deinit (void)
 {
-    am_hc32_clk_reset(CLK_TIM456);
     am_clk_disable(CLK_TIM456);
 }
 
@@ -491,8 +477,8 @@ const am_hc32_adtim_cap_devinfo_t  __g_adtim6_cap_devinfo = {
     2,                                  /**< \brief 2个捕获通道 */
 
     &__g_adtim6_cap_ioinfo_list[0],     /**< \brief 引脚配置信息列表 */
-    __hc32_plfm_adtim6_cap_init,      /**< \brief 平台初始化函数 */
-    __hc32_plfm_adtim6_cap_deinit     /**< \brief 平台解初始化函数 */
+    __hc32l17x_plfm_adtim6_cap_init,      /**< \brief 平台初始化函数 */
+    __hc32l17x_plfm_adtim6_cap_deinit     /**< \brief 平台解初始化函数 */
 };
 
 /** \brief ADTIM6用于捕获功能的设备定义 */

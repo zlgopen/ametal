@@ -56,9 +56,6 @@ void demo_hc32l19x_core_hw_tim_pwm_entry (void)
     /* 使能定时器时钟 */
     am_clk_enable(CLK_TIM012);
 
-    /* 复位定时器 */
-    am_hc32_clk_reset(CLK_TIM012);
-
     demo_hc32_hw_tim_pwm_entry((void *)HC32_TIM0,
                                  AMHW_HC32_TIM_TYPE_TIM0,
                                  HC32_TIM_CH0A,

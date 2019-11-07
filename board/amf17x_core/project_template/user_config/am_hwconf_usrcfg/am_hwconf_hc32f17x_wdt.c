@@ -13,7 +13,7 @@
 /**
  * \file
  * \brief HC32 WDT 用户配置文件
- * \sa am_hwconf_hc32_wdt.c
+ * \sa am_hwconf_hc32f17x_wdt.c
  *
  * \internal
  * \par Modification history
@@ -27,20 +27,19 @@
 #include "hw/amhw_hc32_rcc.h"
 
 /**
- * \addtogroup am_if_src_hwconf_hc32_wdt
- * \copydoc am_hwconf_hc32_wdt.c
+ * \addtogroup am_if_src_hwconf_hc32f17x_wdt
+ * \copydoc am_hwconf_hc32f17x_wdt.c
  * @{
  */
 
 /** \brief WDT 平台初始化 */
-static void __hc32_wdt_plfm_init (void)
+static void __hc32f17x_wdt_plfm_init (void)
 {
     am_clk_enable(CLK_WDT);
-    am_hc32_clk_reset(CLK_WDT);
 }
 
 /** \brief 解除WDT 平台初始化 */
-static void __hc32_wdt_plfm_deinit (void)
+static void __hc32f17x_wdt_plfm_deinit (void)
 {
     am_clk_disable(CLK_WDT);
 }
@@ -49,8 +48,8 @@ static void __hc32_wdt_plfm_deinit (void)
 static const am_hc32_wdt_devinfo_t  __g_wdt_devinfo = {
     HC32_WDT_BASE,          /**< \brief WDT寄存器基址 */
     CLK_WDT,                  /**< \brief 时钟ID */
-    __hc32_wdt_plfm_init,   /**< \brief WDT 平台初始化 */
-    __hc32_wdt_plfm_deinit, /**< \brief 解除WDT 平台初始化 */
+    __hc32f17x_wdt_plfm_init,   /**< \brief WDT 平台初始化 */
+    __hc32f17x_wdt_plfm_deinit, /**< \brief 解除WDT 平台初始化 */
 };
 
 /** \brief WDT设备实例 */

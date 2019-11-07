@@ -7,13 +7,13 @@
 * All rights reserved.
 *
 * Contact information:
-* web site:    http://www.zlg.cn/
+* web site:    http://www.hc32l13x.cn/
 *******************************************************************************/
 
 /**
  * \file
  * \brief TIM用于PWM输出 用户配置文件
- * \sa am_hwconf_hc32_tim_pwm.c
+ * \sa am_hwconf_hc32l13x_tim_pwm.c
  *
  * \internal
  * \par Modification history
@@ -30,8 +30,8 @@
 #include "am_hc32_clk.h"
 
 /**
- * \addtogroup am_if_src_hwconf_hc32_tim_pwm
- * \copydoc am_hwconf_hc32_tim_pwm.c
+ * \addtogroup am_if_src_hwconf_hc32l13x_tim_pwm
+ * \copydoc am_hwconf_hc32l13x_tim_pwm.c
  * @{
  */
 /*******************************************************************************
@@ -39,16 +39,14 @@
 *******************************************************************************/
 
 /** \brief TIM0用于PWM输出 平台初始化 */
-void __hc32_plfm_tim0_pwm_init (void)
+void __hc32l13x_plfm_tim0_pwm_init (void)
 {
     am_clk_enable(CLK_TIM012);
-    am_hc32_clk_reset(CLK_TIM012);
 }
 
 /** \brief 解除TIM0平台初始化 */
-void __hc32_plfm_tim0_pwm_deinit (void)
+void __hc32l13x_plfm_tim0_pwm_deinit (void)
 {
-    am_hc32_clk_reset(CLK_TIM012);
     am_clk_disable(CLK_TIM012);
 }
 
@@ -83,8 +81,8 @@ const am_hc32_tim_pwm_devinfo_t  __g_tim0_pwm_devinfo = {
     AM_HC32_TIM_PWM_OCPOLARITY_HIGH,          /**< \brief 脉宽极性 */
     &__g_tim0_pwm_chaninfo_list[0],             /**< \brief 通道配置信息列表        */
     AMHW_HC32_TIM_TYPE_TIM0,                  /**< \brief 定时器类型 */
-    __hc32_plfm_tim0_pwm_init,                /**< \brief 平台初始化函数 */
-    __hc32_plfm_tim0_pwm_deinit               /**< \brief 平台解初始化函数 */
+    __hc32l13x_plfm_tim0_pwm_init,                /**< \brief 平台初始化函数 */
+    __hc32l13x_plfm_tim0_pwm_deinit               /**< \brief 平台解初始化函数 */
 };
 
 /** \brief TIM0用于PWM设备定义 */
@@ -108,16 +106,14 @@ void am_hc32_tim0_pwm_inst_deinit (am_pwm_handle_t handle)
 *******************************************************************************/
 
 /** \brief TIM1用于PWM输出 平台初始化 */
-void __hc32_plfm_tim1_pwm_init (void)
+void __hc32l13x_plfm_tim1_pwm_init (void)
 {
     am_clk_enable(CLK_TIM012);
-    am_hc32_clk_reset(CLK_TIM012);
 }
 
 /** \brief 解除TIM1平台初始化 */
-void __hc32_plfm_tim1_pwm_deinit (void)
+void __hc32l13x_plfm_tim1_pwm_deinit (void)
 {
-    am_hc32_clk_reset(CLK_TIM012);
     am_clk_disable(CLK_TIM012);
 }
 
@@ -152,8 +148,8 @@ const am_hc32_tim_pwm_devinfo_t  __g_tim1_pwm_devinfo = {
     AM_HC32_TIM_PWM_OCPOLARITY_HIGH,          /**< \brief 脉宽极性 */
     &__g_tim1_pwm_chaninfo_list[0],             /**< \brief 通道配置信息列表        */
     AMHW_HC32_TIM_TYPE_TIM1,                  /**< \brief 定时器类型 */
-    __hc32_plfm_tim1_pwm_init,                /**< \brief 平台初始化函数 */
-    __hc32_plfm_tim1_pwm_deinit               /**< \brief 平台解初始化函数 */
+    __hc32l13x_plfm_tim1_pwm_init,                /**< \brief 平台初始化函数 */
+    __hc32l13x_plfm_tim1_pwm_deinit               /**< \brief 平台解初始化函数 */
 };
 
 /** \brief TIM1用于PWM设备定义 */
@@ -177,16 +173,14 @@ void am_hc32_tim1_pwm_inst_deinit (am_pwm_handle_t handle)
 *******************************************************************************/
 
 /** \brief TIM2用于PWM输出 平台初始化 */
-void __hc32_plfm_tim2_pwm_init (void)
+void __hc32l13x_plfm_tim2_pwm_init (void)
 {
     am_clk_enable(CLK_TIM012);
-    am_hc32_clk_reset(CLK_TIM012);
 }
 
 /** \brief 解除TIM2平台初始化 */
-void __hc32_plfm_tim2_pwm_deinit (void)
+void __hc32l13x_plfm_tim2_pwm_deinit (void)
 {
-    am_hc32_clk_reset(CLK_TIM012);
     am_clk_disable(CLK_TIM012);
 }
 
@@ -221,8 +215,8 @@ const am_hc32_tim_pwm_devinfo_t  __g_tim2_pwm_devinfo = {
     AM_HC32_TIM_PWM_OCPOLARITY_HIGH,          /**< \brief 脉宽极性 */
     &__g_tim2_pwm_chaninfo_list[0],             /**< \brief 通道配置信息列表        */
     AMHW_HC32_TIM_TYPE_TIM2,                  /**< \brief 定时器类型 */
-    __hc32_plfm_tim2_pwm_init,                /**< \brief 平台初始化函数 */
-    __hc32_plfm_tim2_pwm_deinit               /**< \brief 平台解初始化函数 */
+    __hc32l13x_plfm_tim2_pwm_init,                /**< \brief 平台初始化函数 */
+    __hc32l13x_plfm_tim2_pwm_deinit               /**< \brief 平台解初始化函数 */
 };
 
 /** \brief TIM2用于PWM设备定义 */
@@ -246,16 +240,14 @@ void am_hc32_tim2_pwm_inst_deinit (am_pwm_handle_t handle)
 *******************************************************************************/
 
 /** \brief TIM3用于PWM输出 平台初始化 */
-void __hc32_plfm_tim3_pwm_init (void)
+void __hc32l13x_plfm_tim3_pwm_init (void)
 {
     am_clk_enable(CLK_TIM3);
-    am_hc32_clk_reset(CLK_TIM3);
 }
 
 /** \brief 解除TIM3平台初始化 */
-void __hc32_plfm_tim3_pwm_deinit (void)
+void __hc32l13x_plfm_tim3_pwm_deinit (void)
 {
-    am_hc32_clk_reset(CLK_TIM3);
     am_clk_disable(CLK_TIM3);
 }
 
@@ -323,8 +315,8 @@ const am_hc32_tim_pwm_devinfo_t  __g_tim3_pwm_devinfo = {
     AM_HC32_TIM_PWM_OCPOLARITY_HIGH,          /**< \brief 脉宽极性 */
     &__g_tim3_pwm_chaninfo_list[0],             /**< \brief 通道配置信息列表        */
     AMHW_HC32_TIM_TYPE_TIM3,                  /**< \brief 定时器类型 */
-    __hc32_plfm_tim3_pwm_init,                /**< \brief 平台初始化函数 */
-    __hc32_plfm_tim3_pwm_deinit               /**< \brief 平台解初始化函数 */
+    __hc32l13x_plfm_tim3_pwm_init,                /**< \brief 平台初始化函数 */
+    __hc32l13x_plfm_tim3_pwm_deinit               /**< \brief 平台解初始化函数 */
 };
 
 /** \brief TIM3用于PWM设备定义 */
@@ -347,16 +339,14 @@ void am_hc32_tim3_pwm_inst_deinit (am_pwm_handle_t handle)
   ADTIM4 配置
 *******************************************************************************/
 /** \brief ADTIM4用于PWM输出 平台初始化 */
-void __hc32_plfm_adtim4_pwm_init (void)
+void __hc32l13x_plfm_adtim4_pwm_init (void)
 {
     am_clk_enable(CLK_TIM456);
-    am_hc32_clk_reset(CLK_TIM456);
 }
 
 /** \brief 解除ADTIM4平台初始化 */
-void __hc32_plfm_adtim4_pwm_deinit (void)
+void __hc32l13x_plfm_adtim4_pwm_deinit (void)
 {
-    am_hc32_clk_reset(CLK_TIM456);
     am_clk_disable(CLK_TIM456);
 }
 
@@ -389,8 +379,8 @@ const am_hc32_adtim_pwm_devinfo_t  __g_adtim4_pwm_devinfo = {
                                                  */
     AM_HC32_ADTIM_PWM_OCPOLARITY_HIGH,        /**< \brief 脉宽极性 */
     &__g_adtim4_pwm_chaninfo_list[0],           /**< \brief 通道配置信息列表        */
-    __hc32_plfm_adtim4_pwm_init,              /**< \brief 平台初始化函数 */
-    __hc32_plfm_adtim4_pwm_deinit             /**< \brief 平台解初始化函数 */
+    __hc32l13x_plfm_adtim4_pwm_init,              /**< \brief 平台初始化函数 */
+    __hc32l13x_plfm_adtim4_pwm_deinit             /**< \brief 平台解初始化函数 */
 };
 
 /** \brief ADTIM4用于PWM设备定义 */
@@ -414,16 +404,14 @@ void am_hc32_tim4_pwm_inst_deinit (am_pwm_handle_t handle)
 *******************************************************************************/
 
 /** \brief ADTIM5用于PWM输出 平台初始化 */
-void __hc32_plfm_adtim5_pwm_init (void)
+void __hc32l13x_plfm_adtim5_pwm_init (void)
 {
     am_clk_enable(CLK_TIM456);
-    am_hc32_clk_reset(CLK_TIM456);
 }
 
 /** \brief 解除ADTIM5平台初始化 */
-void __hc32_plfm_adtim5_pwm_deinit (void)
+void __hc32l13x_plfm_adtim5_pwm_deinit (void)
 {
-    am_hc32_clk_reset(CLK_TIM456);
     am_clk_disable(CLK_TIM456);
 }
 
@@ -455,8 +443,8 @@ const am_hc32_adtim_pwm_devinfo_t  __g_adtim5_pwm_devinfo = {
                                                  */
     AM_HC32_ADTIM_PWM_OCPOLARITY_HIGH,        /**< \brief 脉宽极性 */
     &__g_adtim5_pwm_chaninfo_list[0],           /**< \brief 通道配置信息列表        */
-    __hc32_plfm_adtim5_pwm_init,              /**< \brief 平台初始化函数 */
-    __hc32_plfm_adtim5_pwm_deinit             /**< \brief 平台解初始化函数 */
+    __hc32l13x_plfm_adtim5_pwm_init,              /**< \brief 平台初始化函数 */
+    __hc32l13x_plfm_adtim5_pwm_deinit             /**< \brief 平台解初始化函数 */
 };
 
 /** \brief ADTIM5用于PWM设备定义 */
@@ -480,16 +468,14 @@ void am_hc32_tim5_pwm_inst_deinit (am_pwm_handle_t handle)
 *******************************************************************************/
 
 /** \brief ADTIM6用于PWM输出 平台初始化 */
-void __hc32_plfm_adtim6_pwm_init (void)
+void __hc32l13x_plfm_adtim6_pwm_init (void)
 {
     am_clk_enable(CLK_TIM456);
-    am_hc32_clk_reset(CLK_TIM456);
 }
 
 /** \brief 解除ADTIM6平台初始化 */
-void __hc32_plfm_adtim6_pwm_deinit (void)
+void __hc32l13x_plfm_adtim6_pwm_deinit (void)
 {
-    am_hc32_clk_reset(CLK_TIM456);
     am_clk_disable(CLK_TIM456);
 }
 
@@ -521,8 +507,8 @@ const am_hc32_adtim_pwm_devinfo_t  __g_adtim6_pwm_devinfo = {
                                                  */
     AM_HC32_ADTIM_PWM_OCPOLARITY_HIGH,        /**< \brief 脉宽极性 */
     &__g_adtim6_pwm_chaninfo_list[0],           /**< \brief 通道配置信息列表        */
-    __hc32_plfm_adtim6_pwm_init,              /**< \brief 平台初始化函数 */
-    __hc32_plfm_adtim6_pwm_deinit             /**< \brief 平台解初始化函数 */
+    __hc32l13x_plfm_adtim6_pwm_init,              /**< \brief 平台初始化函数 */
+    __hc32l13x_plfm_adtim6_pwm_deinit             /**< \brief 平台解初始化函数 */
 };
 
 /** \brief ADTIM6用于PWM设备定义 */

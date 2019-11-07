@@ -60,8 +60,6 @@ uint8_t am_hc32_clktrim_monitor (uint16_t                     rcntval,
     uint8_t   ret        = AM_OK;
 
     am_clk_enable(CLK_CLOCKTRIM);
-    am_hc32_clk_reset(CLK_CLOCKTRIM);
-
 
     /* 选择参考时钟 */
     amhw_hc32_clktrim_refclk_sel(HC32_CLKTRIM, refclk_sel);
@@ -97,7 +95,6 @@ uint8_t am_hc32_clktrim_monitor (uint16_t                     rcntval,
         ret = -AM_ERROR;
     }
 
-    am_hc32_clk_reset(CLK_CLOCKTRIM);
     am_clk_disable(CLK_CLOCKTRIM);
 
     return ret;
@@ -115,7 +112,6 @@ uint8_t am_hc32_clktrim_calibrate (uint16_t                     rcntval,
     am_bool_t ret        = AM_OK;
 
     am_clk_enable(CLK_CLOCKTRIM);
-    am_hc32_clk_reset(CLK_CLOCKTRIM);
 
     /* 选择参考时钟 */
     amhw_hc32_clktrim_refclk_sel(HC32_CLKTRIM, refclk_sel);
@@ -148,7 +144,6 @@ uint8_t am_hc32_clktrim_calibrate (uint16_t                     rcntval,
 
     calcnt = amhw_hc32_clktrim_calcnt_get(HC32_CLKTRIM);
 
-    am_hc32_clk_reset(CLK_CLOCKTRIM);
     am_clk_disable(CLK_CLOCKTRIM);
 
     if(ret != AM_OK) {

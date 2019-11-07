@@ -25,14 +25,14 @@
 /* 使某些外设复位或正常工作 */
 static void __reset_cmd(amhw_hc32_rcc_reset_peripheral peri, uint8_t cmd)
 {
-    if((peri / 31) == 1) {
+    if(peri > 31) {
 
         if (cmd) {
             HC32_RCC_RESET->reset[1] |= (1ul << (peri - 31));
         } else {
             HC32_RCC_RESET->reset[1] &= ~(1ul << (peri - 31));
         }
-    } else if((peri / 31) == 0) {
+    } else {
 
         if (cmd) {
             HC32_RCC_RESET->reset[0] |= (1ul << peri);

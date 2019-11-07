@@ -24,8 +24,8 @@
  * \endinternal
  */
 
-#ifndef __am_hc32_inst_init_H
-#define __am_hc32_inst_init_H
+#ifndef __am_hc32f03x_inst_init_H
+#define __am_hc32f03x_inst_init_H
 
 #ifdef __cplusplus
 extern "C" {
@@ -1272,6 +1272,6 @@ am_rtc_handle_t am_microport_rx8025t_rtc_inst_init (void);
 }
 #endif
 
-#endif  /* __am_hc32_inst_init_H */
+#endif  /* __am_hc32f03x_inst_init_H */
 
 /* end of file */

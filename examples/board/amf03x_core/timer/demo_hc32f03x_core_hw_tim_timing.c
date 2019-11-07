@@ -43,15 +43,12 @@
 /**
  * \brief 定时器timing HW层例程入口
  */
-void demo_hc32f03x_core_hw_tim_timing_entry (void)
+void demo_amf03x_core_hw_tim_timing_entry (void)
 {
     AM_DBG_INFO("demo amf03x_core hw tim timing!\r\n");
 
     /* 使能定时器时钟 */
     am_clk_enable(CLK_TIM012);
-
-    /* 复位定时器 */
-    am_hc32_clk_reset(CLK_TIM012);
 
     demo_hc32_hw_tim_timing_entry(HC32_TIM0,
     		                        AMHW_HC32_TIM_TYPE_TIM0,

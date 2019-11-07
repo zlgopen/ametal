@@ -178,7 +178,7 @@ static int __hc32_tim_cap_enable (void *p_drv, int chan)
     amhw_hc32_tim_mode23_int_enable(p_hw_tim, AMHW_HC32_TIM_INT_UIE);
 
     /* 捕获中断使能 */
-    if((chan % 2) == 0) {
+    if((chan & 0x01) == 0) {
         amhw_hc32_tim_mode23_ciea_int_enable(p_hw_tim, chan);
     } else {
         amhw_hc32_tim_mode23_cieb_int_enable(p_hw_tim, chan);
@@ -228,7 +228,7 @@ static int __hc32_tim_cap_disable (void *p_drv, int chan)
     amhw_hc32_tim_mode23_int_disable(p_hw_tim, AMHW_HC32_TIM_INT_UIE);
 
     /* 捕获中断使能 */
-    if((chan % 2) == 0) {
+    if((chan & 0x01) == 0) {
         amhw_hc32_tim_mode23_ciea_int_disable(p_hw_tim, chan);
     } else {
         amhw_hc32_tim_mode23_cieb_int_disable(p_hw_tim, chan);

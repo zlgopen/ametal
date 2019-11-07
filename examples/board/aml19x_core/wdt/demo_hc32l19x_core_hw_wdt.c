@@ -61,8 +61,6 @@ void demo_hc32l19x_core_hw_wdt_entry (void)
 
     am_clk_enable(CLK_WDT);
 
-    am_hc32_clk_reset(CLK_WDT);
-
     demo_hc32_hw_wdt_entry(HC32_WDT,
                              __WDT_TIMEOUT_MS,
                              __WDT_FEED_TIME_MS);

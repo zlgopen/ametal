@@ -12,8 +12,8 @@
 
 /**
  * \file
- * \brief ZLG217 I2C 从机用户配置文件
- * \sa am_hwconf_hc32_i2c.c
+ * \brief HC32 I2C 从机用户配置文件
+ * \sa am_hwconf_hc32f03x_i2c.c
  *
  * \internal
  * \par Modification history
@@ -30,23 +30,22 @@
 #include "hw/amhw_hc32_i2c.h"
 
 /**
- * \addtogroup am_if_src_hwconf_hc32_i2c_slv
- * \copydoc am_hwconf_hc32_i2c_slv.c
+ * \addtogroup am_if_src_hwconf_hc32f03x_i2c_slv
+ * \copydoc am_hwconf_hc32f03x_i2c_slv.c
  * @{
  */
 
 /** \brief I2C0 平台初始化函数 */
-static void __hc32_i2c0_plfm_init (void)
+static void __hc32f03x_i2c0_plfm_init (void)
 {
     am_gpio_pin_cfg(PIOB_8, PIOB_8_I2C0_SCL | PIOB_8_OUT_OD);
     am_gpio_pin_cfg(PIOB_9, PIOB_9_I2C0_SDA | PIOB_9_OUT_OD);
 
     am_clk_enable(CLK_I2C0);
-    am_hc32_clk_reset(CLK_I2C0);
 }
 
 /** \brief 解除I2C0 平台初始化函数 */
-static void __hc32_i2c0_plfm_deinit (void)
+static void __hc32f03x_i2c0_plfm_deinit (void)
 {
     am_clk_disable(CLK_I2C0);
 }
@@ -64,8 +63,8 @@ static void __hc32_i2c0_plfm_deinit (void)
 static const am_hc32_i2c_slv_devinfo_t __g_i2c0_devinfo = {
     HC32_I2C0_BASE,               /**< \brief I2C0 寄存器块基址 */
     INUM_I2C0,                      /**< \brief I2C0 中断编号 */
-    __hc32_i2c0_plfm_init,           /**< \brief 平台初始化 */
-    __hc32_i2c0_plfm_deinit          /**< \brief 平台去初始化 */
+    __hc32f03x_i2c0_plfm_init,           /**< \brief 平台初始化 */
+    __hc32f03x_i2c0_plfm_deinit          /**< \brief 平台去初始化 */
 };
 
 /**< \brief I2C0 设备实例 */
@@ -85,17 +84,16 @@ void am_hc32_i2c0_slv_inst_deinit (am_i2c_slv_handle_t handle)
 
 
 /** \brief I2C1 平台初始化函数 */
-static void __hc32_i2c1_plfm_init (void)
+static void __hc32f03x_i2c1_plfm_init (void)
 {
     am_gpio_pin_cfg(PIOA_11, PIOA_11_I2C1_SCL | PIOB_11_OUT_OD);
     am_gpio_pin_cfg(PIOA_12, PIOA_12_I2C1_SDA | PIOB_12_OUT_OD);
 
     am_clk_enable(CLK_I2C1);
-    am_hc32_clk_reset(CLK_I2C1);
 }
 
 /** \brief 解除I2C1 平台初始化函数 */
-static void __hc32_i2c1_plfm_deinit (void)
+static void __hc32f03x_i2c1_plfm_deinit (void)
 {
     am_clk_disable(CLK_I2C1);
 }
@@ -113,8 +111,8 @@ static void __hc32_i2c1_plfm_deinit (void)
 static const am_hc32_i2c_slv_devinfo_t __g_i2c1_devinfo = {
     HC32_I2C1_BASE,           /**< \brief I2C1寄存器块基址 */
     INUM_I2C1,                  /**< \brief I2C1 中断编号 */
-    __hc32_i2c1_plfm_init,       /**< \brief 平台初始化 */
-    __hc32_i2c1_plfm_deinit      /**< \brief 平台去初始化 */
+    __hc32f03x_i2c1_plfm_init,       /**< \brief 平台初始化 */
+    __hc32f03x_i2c1_plfm_deinit      /**< \brief 平台去初始化 */
 };
 
 /**< \brief I2C1 设备实例 */

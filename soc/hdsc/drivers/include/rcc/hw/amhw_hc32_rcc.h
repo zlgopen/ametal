@@ -1014,6 +1014,17 @@ void amhw_hc32_rcc_pll_input_fre_src_set (amhw_hc32_pll_input_fre_src fre)
 void amhw_hc32_rcc_peripheral_enable (amhw_hc32_peripheral peri);
 
 /**
+ * \brief 检查某外设时钟是否使能
+ *
+ * \param[in]  peri ：需要使能的外设
+ *
+ * \return 1: 当前外设时钟已使能，无需再次使能
+ *         0: 当前外设时钟未使能
+ *
+ */
+int amhw_hc32_rcc_peripheral_enable_check (amhw_hc32_peripheral peri);
+
+/**
  * \brief 禁能外设
  *
  * \param[in]  peri ：需要禁能的外设

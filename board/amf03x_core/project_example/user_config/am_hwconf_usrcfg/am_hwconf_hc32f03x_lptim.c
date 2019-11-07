@@ -13,7 +13,7 @@
 /**
   \file
   \brief HC32 LPTIM 定时功能用户配置文件
-  \sa am_hwconf_hc32_lptim_timing.c
+  \sa am_hwconf_hc32f03x_lptim_timing.c
  *
  *
   \internal
@@ -30,8 +30,8 @@
 #include "am_hc32_lptim_timing.h"
 
 /**
-  \addtogroup am_if_src_hwconf_hc32_lptim_timing
-  \copydoc am_hwconf_hc32_lptim_timing.c
+  \addtogroup am_if_src_hwconf_hc32f03x_lptim_timing
+  \copydoc am_hwconf_hc32f03x_lptim_timing.c
   @{
  */
 
@@ -40,7 +40,7 @@
 *******************************************************************************/
 
 /** \brief LPTIM0 平台初始化 */
-void __hc32_plfm_lptim0_timing_init (void)
+void __hc32f03x_plfm_lptim0_timing_init (void)
 {
     /* 配置GATE引脚，以实现门控功能 */
     am_gpio_pin_cfg(PIOB_3, PIOB_3_INPUT_FLOAT | PIOB_3_LPTIM0_GATE);
@@ -53,18 +53,16 @@ void __hc32_plfm_lptim0_timing_init (void)
     am_gpio_pin_cfg(PIOC_2, PIOC_2_OUT_PP | PIOC_2_LPTIM0_TOGN);
 
     am_clk_enable(CLK_LPTIM0);
-    am_hc32_clk_reset(CLK_LPTIM0);
 }
 
 /** \brief 解除 LPTIM0 平台初始化 */
-void __hc32_plfm_lptim0_timing_deinit (void)
+void __hc32f03x_plfm_lptim0_timing_deinit (void)
 {
     am_gpio_pin_cfg(PIOB_3, PIOB_3_INPUT_PU | PIOB_3_GPIO);
     am_gpio_pin_cfg(PIOB_4, PIOB_4_INPUT_PU | PIOB_4_GPIO);
     am_gpio_pin_cfg(PIOC_1, PIOC_1_INPUT_PU | PIOC_1_GPIO);
     am_gpio_pin_cfg(PIOC_2, PIOC_2_INPUT_PU | PIOC_2_GPIO);
 
-    am_hc32_clk_reset(CLK_LPTIM0);
     am_clk_disable(CLK_LPTIM0);
 }
 
@@ -88,8 +86,8 @@ const am_hc32_lptim_timing_devinfo_t  __g_lptim0_timing_devinfo = {
                                           *
                                           */
 
-    __hc32_plfm_lptim0_timing_init,    /**< \brief 平台初始化函数 */
-    __hc32_plfm_lptim0_timing_deinit   /**< \brief 平台解析初始化函数 */
+    __hc32f03x_plfm_lptim0_timing_init,    /**< \brief 平台初始化函数 */
+    __hc32f03x_plfm_lptim0_timing_deinit   /**< \brief 平台解析初始化函数 */
 };
 
 /** \brief LPTIM0 设备定义 */
@@ -113,7 +111,7 @@ void am_hc32_lptim0_timing_inst_deinit (am_timer_handle_t handle)
 *******************************************************************************/
 
 /** \brief LPTIM1 平台初始化 */
-void __hc32_plfm_lptim1_timing_init (void)
+void __hc32f03x_plfm_lptim1_timing_init (void)
 {
     /* 配置GATE引脚，以实现门控功能 */
     am_gpio_pin_cfg(PIOC_6, PIOC_6_INPUT_FLOAT | PIOC_6_LPTIM1_GATE);
@@ -126,18 +124,16 @@ void __hc32_plfm_lptim1_timing_init (void)
     am_gpio_pin_cfg(PIOD_4, PIOD_4_OUT_PP | PIOD_4_LPTIM1_TOGN);
 
     am_clk_enable(CLK_LPTIM1);
-    am_hc32_clk_reset(CLK_LPTIM1);
 }
 
 /** \brief 解除 LPTIM1 平台初始化 */
-void __hc32_plfm_lptim1_timing_deinit (void)
+void __hc32f03x_plfm_lptim1_timing_deinit (void)
 {
     am_gpio_pin_cfg(PIOC_6, PIOC_6_INPUT_PU | PIOC_6_GPIO);
     am_gpio_pin_cfg(PIOD_6, PIOD_6_INPUT_PU | PIOD_6_GPIO);
     am_gpio_pin_cfg(PIOD_3, PIOD_3_INPUT_PU | PIOD_3_GPIO);
     am_gpio_pin_cfg(PIOD_4, PIOD_4_INPUT_PU | PIOD_4_GPIO);
 
-    am_hc32_clk_reset(CLK_LPTIM1);
     am_clk_disable(CLK_LPTIM1);
 }
 
@@ -163,8 +159,8 @@ const am_hc32_lptim_timing_devinfo_t  __g_lptim1_timing_devinfo = {
                                           *
                                           */
 
-    __hc32_plfm_lptim1_timing_init,    /**< \brief 平台初始化函数 */
-    __hc32_plfm_lptim1_timing_deinit   /**< \brief 平台解析初始化函数 */
+    __hc32f03x_plfm_lptim1_timing_init,    /**< \brief 平台初始化函数 */
+    __hc32f03x_plfm_lptim1_timing_deinit   /**< \brief 平台解析初始化函数 */
 };
 
 /** \brief LPTIM1 设备定义 */

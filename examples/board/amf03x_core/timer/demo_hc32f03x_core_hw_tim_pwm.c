@@ -45,7 +45,7 @@
 /**
  * \brief 定时器PWM输出HW层例程入口
  */
-void demo_hc32f03x_core_hw_tim_pwm_entry (void)
+void demo_amf03x_core_hw_tim_pwm_entry (void)
 {
 
     AM_DBG_INFO("demo am217_core hw tim cmp toggle!\r\n");
@@ -55,9 +55,6 @@ void demo_hc32f03x_core_hw_tim_pwm_entry (void)
 
     /* 使能定时器时钟 */
     am_clk_enable(CLK_TIM012);
-
-    /* 复位定时器 */
-    am_hc32_clk_reset(CLK_TIM012);
 
     demo_hc32_hw_tim_pwm_entry((void *)HC32_TIM0,
                                  AMHW_HC32_TIM_TYPE_TIM0,

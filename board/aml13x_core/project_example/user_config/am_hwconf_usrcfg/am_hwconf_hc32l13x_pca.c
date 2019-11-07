@@ -13,7 +13,7 @@
 /**
  * \file
  * \brief HC32 PCA 用户配置文件
- * \sa am_hwconf_hc32_pca.c
+ * \sa am_hwconf_hc32l13x_pca.c
  *
  * \internal
  * \par Modification history
@@ -31,8 +31,8 @@
 #include "am_hc32_pca.h"
 
 /**
- * \addtogroup am_if_src_hwconf_hc32_pca
- * \copydoc am_hwconf_hc32_pca.c
+ * \addtogroup am_if_src_hwconf_hc32l13x_pca
+ * \copydoc am_hwconf_hc32l13x_pca.c
  * @{
  */
 
@@ -53,41 +53,39 @@ am_hc32_pca_ioinfo_t __g_pca_ioinfo_list[] = {
 /**
  * \brief PCA 平台初始化函数
  */
-am_local void __hc32_pca_plfm_init (void)
+am_local void __hc32l13x_pca_plfm_init (void)
 {
     am_clk_enable(CLK_PCA);
-    am_hc32_clk_reset(CLK_PCA);
 }
 
 /**
  * \brief PCA 平台解初始化函数
  */
-am_local void __hc32_pca_plfm_deinit (void)
+am_local void __hc32l13x_pca_plfm_deinit (void)
 {
-    am_hc32_clk_reset(CLK_PCA);
     am_clk_disable(CLK_PCA);
 }
 
 /** \brief PCA 设备信息 */
-am_local am_const am_hc32_pca_devinfo_t __g_hc32_pca_devinfo = {
+am_local am_const am_hc32_pca_devinfo_t __g_hc32l13x_pca_devinfo = {
         HC32_PCA_BASE,
         CLK_PCA,
         INUM_PCA,
         HC32_PCA_PCLK32,
         __g_pca_ioinfo_list,
-        __hc32_pca_plfm_init,
-        __hc32_pca_plfm_deinit
+        __hc32l13x_pca_plfm_init,
+        __hc32l13x_pca_plfm_deinit
 };
 
 /** \brief PCA 设备实例 */
-am_local am_hc32_pca_dev_t __g_hc32_pca_dev;
+am_local am_hc32_pca_dev_t __g_hc32l13x_pca_dev;
 
 /**
  * \brief PCA 实例初始化
  */
 am_hc32_pca_handle_t am_hc32_pca1_inst_init (void)
 {
-    return am_hc32_pca_init(&__g_hc32_pca_dev, &__g_hc32_pca_devinfo);
+    return am_hc32_pca_init(&__g_hc32l13x_pca_dev, &__g_hc32l13x_pca_devinfo);
 }
 
 /**

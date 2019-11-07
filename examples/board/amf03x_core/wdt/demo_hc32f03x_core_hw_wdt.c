@@ -55,17 +55,15 @@
 /**
  * \brief Àý³ÌÈë¿Ú
  */
-void demo_hc32f03x_core_hw_wdt_entry (void)
+void demo_amf03x_core_hw_wdt_entry (void)
 {
     AM_DBG_INFO("demo amf03x_core hw wdt!\r\n");
 
     am_clk_enable(CLK_WDT);
 
-    am_hc32_clk_reset(CLK_WDT);
-
     demo_hc32_hw_wdt_entry(HC32_WDT,
-                             __WDT_TIMEOUT_MS,
-                             __WDT_FEED_TIME_MS);
+                           __WDT_TIMEOUT_MS,
+                           __WDT_FEED_TIME_MS);
 }
 /** [src_hc32f03x_hw_wdt] */
 

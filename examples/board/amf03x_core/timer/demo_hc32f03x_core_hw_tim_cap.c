@@ -57,7 +57,7 @@
 /**
  * \brief 例程入口
  */
-void demo_hc32f03x_core_hw_tim_cap_entry (void)
+void demo_amf03x_core_hw_tim_cap_entry (void)
 {
     am_pwm_handle_t tim3_pwm_handle = am_hc32_tim3_pwm_inst_init();
 
@@ -73,9 +73,6 @@ void demo_hc32f03x_core_hw_tim_cap_entry (void)
 
     /* 使能定时器时钟 */
     am_clk_enable(CLK_TIM012);
-
-    /* 复位定时器 */
-    am_hc32_clk_reset(CLK_TIM012);
 
     demo_hc32_hw_tim_cap_entry(HC32_TIM1,
                                  AMHW_HC32_TIM_TYPE_TIM1,
