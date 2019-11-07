@@ -53,7 +53,6 @@ void __zlg118_plfm_lptim0_timing_init (void)
     am_gpio_pin_cfg(PIOC_2, PIOC_2_OUT_PP | PIOC_2_LPTIM0_TOGN);
 
     am_clk_enable(CLK_LPTIM0);
-    am_zlg118_clk_reset(CLK_LPTIM0);
 }
 
 /** \brief 解除 LPTIM0 平台初始化 */
@@ -64,7 +63,6 @@ void __zlg118_plfm_lptim0_timing_deinit (void)
     am_gpio_pin_cfg(PIOC_1, PIOC_1_INPUT_PU | PIOC_1_GPIO);
     am_gpio_pin_cfg(PIOC_2, PIOC_2_INPUT_PU | PIOC_2_GPIO);
 
-    am_zlg118_clk_reset(CLK_LPTIM0);
     am_clk_disable(CLK_LPTIM0);
 }
 
@@ -126,7 +124,6 @@ void __zlg118_plfm_lptim1_timing_init (void)
     am_gpio_pin_cfg(PIOD_4, PIOD_4_OUT_PP | PIOD_4_LPTIM1_TOGN);
 
     am_clk_enable(CLK_LPTIM1);
-    am_zlg118_clk_reset(CLK_LPTIM1);
 }
 
 /** \brief 解除 LPTIM1 平台初始化 */
@@ -137,7 +134,6 @@ void __zlg118_plfm_lptim1_timing_deinit (void)
     am_gpio_pin_cfg(PIOD_3, PIOD_3_INPUT_PU | PIOD_3_GPIO);
     am_gpio_pin_cfg(PIOD_4, PIOD_4_INPUT_PU | PIOD_4_GPIO);
 
-    am_zlg118_clk_reset(CLK_LPTIM1);
     am_clk_disable(CLK_LPTIM1);
 }
 

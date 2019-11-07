@@ -191,7 +191,6 @@ const am_zlg118_clk_dev_t *am_zlg118_clk_devinfo_get (void);
  */
 int am_zlg118_div_get (am_clk_id_t clk_id);
 
-int am_zlg118_clk_reset (am_clk_id_t clk_id);
 /**
  * @}
  */

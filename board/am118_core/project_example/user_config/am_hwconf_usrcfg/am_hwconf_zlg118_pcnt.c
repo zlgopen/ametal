@@ -45,7 +45,6 @@ am_local void __zlg118_pcnt_plfm_init (void)
     am_gpio_pin_cfg(PIOB_7, PIOB_7_INPUT_FLOAT | PIOB_7_PCNT_S1);
 
     am_clk_enable(CLK_PCNT);
-    am_zlg118_clk_reset(CLK_PCNT);
 }
 
 /**
@@ -53,7 +52,6 @@ am_local void __zlg118_pcnt_plfm_init (void)
  */
 am_local void __zlg118_pcnt_plfm_deinit (void)
 {
-    am_zlg118_clk_reset(CLK_PCNT);
     am_clk_disable(CLK_PCNT);
 }
 

@@ -50,7 +50,6 @@ void __zlg118_plfm_tim0_timing_init (void)
 //    am_gpio_pin_cfg(PIOA_0, PIOA_0_INPUT_PD | PIOA_0_TIM0_ETR);
 
     am_clk_enable(CLK_TIM012);
-    am_zlg118_clk_reset(CLK_TIM012);
 }
 
 /** \brief 解除 TIM0 平台初始化 */
@@ -60,7 +59,6 @@ void __zlg118_plfm_tim0_timing_deinit (void)
 //
 //    am_gpio_pin_cfg(PIOA_0, PIOA_0_INPUT_PU | PIOA_0_GPIO);
 
-    am_zlg118_clk_reset(CLK_TIM012);
     am_clk_disable(CLK_TIM012);
 }
 
@@ -107,7 +105,6 @@ void __zlg118_plfm_tim1_timing_init (void)
 //    am_gpio_pin_cfg(PIOC_9, PIOC_9_INPUT_PD | PIOC_9_TIM1_ETR);
 
     am_clk_enable(CLK_TIM012);
-    am_zlg118_clk_reset(CLK_TIM012);
 }
 
 /** \brief 解除 TIM1 平台初始化 */
@@ -117,7 +114,6 @@ void __zlg118_plfm_tim1_timing_deinit (void)
 //
 //    am_gpio_pin_cfg(PIOC_9, PIOC_9_INPUT_PU | PIOC_9_GPIO);
 
-    am_zlg118_clk_reset(CLK_TIM012);
     am_clk_disable(CLK_TIM012);
 }
 
@@ -164,7 +160,6 @@ void __zlg118_plfm_tim2_timing_init (void)
 //    am_gpio_pin_cfg(PIOC_4, PIOC_4_INPUT_PD | PIOC_4_TIM2_ETR);
 
     am_clk_enable(CLK_TIM012);
-    am_zlg118_clk_reset(CLK_TIM012);
 }
 
 /** \brief 解除 TIM2 平台初始化 */
@@ -174,7 +169,6 @@ void __zlg118_plfm_tim2_timing_deinit (void)
 //
 //    am_gpio_pin_cfg(PIOC_4, PIOC_4_INPUT_PU | PIOC_4_GPIO);
 
-    am_zlg118_clk_reset(CLK_TIM012);
     am_clk_disable(CLK_TIM012);
 }
 
@@ -221,7 +215,6 @@ void __zlg118_plfm_tim3_timing_init (void)
     am_gpio_pin_cfg(PIOA_11, PIOA_11_INPUT_PD | PIOA_11_TIM3_GATE);
 
     am_clk_enable(CLK_TIM3);
-    am_zlg118_clk_reset(CLK_TIM3);
 }
 
 /** \brief 解除 TIM3 平台初始化 */
@@ -231,7 +224,6 @@ void __zlg118_plfm_tim3_timing_deinit (void)
 
     am_gpio_pin_cfg(PIOA_11, PIOA_11_INPUT_PU | PIOA_11_GPIO);
 
-    am_zlg118_clk_reset(CLK_TIM3);
     am_clk_disable(CLK_TIM3);
 }
 
@@ -272,13 +264,11 @@ void am_zlg118_tim3_timing_inst_deinit (am_timer_handle_t handle)
 void __zlg118_plfm_adtim4_timing_init (void)
 {
     am_clk_enable(CLK_TIM456);
-    am_zlg118_clk_reset(CLK_TIM456);
 }
 
 /** \brief 解除 ADTIM4 平台初始化 */
 void __zlg118_plfm_adtim4_timing_deinit (void)
 {
-    am_zlg118_clk_reset(CLK_TIM456);
     am_clk_disable(CLK_TIM456);
 }
 
@@ -313,13 +303,11 @@ void am_zlg118_tim4_timing_inst_deinit (am_timer_handle_t handle)
 void __zlg118_plfm_adtim5_timing_init (void)
 {
     am_clk_enable(CLK_TIM456);
-    am_zlg118_clk_reset(CLK_TIM456);
 }
 
 /** \brief 解除 ADTIM5 平台初始化 */
 void __zlg118_plfm_adtim5_timing_deinit (void)
 {
-    am_zlg118_clk_reset(CLK_TIM456);
     am_clk_disable(CLK_TIM456);
 }
 
@@ -355,13 +343,11 @@ void am_zlg118_tim5_timing_inst_deinit (am_timer_handle_t handle)
 void __zlg118_plfm_adtim6_timing_init (void)
 {
     am_clk_enable(CLK_TIM456);
-    am_zlg118_clk_reset(CLK_TIM456);
 }
 
 /** \brief 解除 ADTIM6 平台初始化 */
 void __zlg118_plfm_adtim6_timing_deinit (void)
 {
-    am_zlg118_clk_reset(CLK_TIM456);
     am_clk_disable(CLK_TIM456);
 }
 

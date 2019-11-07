@@ -42,7 +42,6 @@ static void __zlg118_i2c0_plfm_init (void)
     am_gpio_pin_cfg(PIOB_9, PIOB_9_I2C0_SDA | PIOB_9_OUT_OD);
 
     am_clk_enable(CLK_I2C0);
-    am_zlg118_clk_reset(CLK_I2C0);
 }
 
 /** \brief 解除I2C0 平台初始化函数 */
@@ -91,7 +90,6 @@ static void __zlg118_i2c1_plfm_init (void)
     am_gpio_pin_cfg(PIOA_12, PIOA_12_I2C1_SDA | PIOB_12_OUT_OD);
 
     am_clk_enable(CLK_I2C1);
-    am_zlg118_clk_reset(CLK_I2C1);
 }
 
 /** \brief 解除I2C1 平台初始化函数 */

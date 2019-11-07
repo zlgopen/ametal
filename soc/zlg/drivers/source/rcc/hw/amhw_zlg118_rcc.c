@@ -25,14 +25,14 @@
 /* 使能或禁能外设 */
 static void __rcc_cmd(amhw_zlg118_peripheral peri, uint8_t cmd)
 {
-    if((peri / 31) == 1) {
+    if(peri > 31) {
 
         if (cmd) {
             ZLG118_RCCCTRL->peri_clken[1] |= (1ul << (peri - 31));
         } else {
             ZLG118_RCCCTRL->peri_clken[1] &= ~(1ul << (peri - 31));
         }
-    } else if((peri / 31) == 0) {
+    } else {
 
         if (cmd) {
             ZLG118_RCCCTRL->peri_clken[0] |= (1ul << (peri));
@@ -54,6 +54,25 @@ void amhw_zlg118_rcc_peripheral_enable (amhw_zlg118_peripheral peri)
 {
     __rcc_cmd(peri, 1);
 }
+
+/**
+ * \brief 检查某外设时钟是否使能
+ *
+ * \param[in]  peri ：需要使能的外设
+ *
+ * \return 1: 当前外设时钟已使能，无需再次使能
+ *         0: 当前外设时钟未使能
+ *
+ */
+int amhw_zlg118_rcc_peripheral_enable_check (amhw_zlg118_peripheral peri)
+{
+    if(peri > 31) {
+        return ((ZLG118_RCCCTRL->peri_clken[1] >> (peri - 31)) & 0x01);
+    } else {
+        return ((ZLG118_RCCCTRL->peri_clken[0] >> peri) & 0x01);
+    }
+}
+
 
 /**
  * \brief 禁能AHB外设

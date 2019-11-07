@@ -38,15 +38,11 @@
 void __zlg118_plfm_gpio_init (void)
 {
     am_clk_enable(CLK_GPIO);
-
-    am_zlg118_clk_reset(CLK_GPIO);
 }
 
 /** \brief GPIO平台解初始化 */
 void __zlg118_plfm_gpio_deinit (void)
 {
-    am_zlg118_clk_reset(CLK_GPIO);
-
     am_clk_disable(CLK_GPIO);
 }
 
