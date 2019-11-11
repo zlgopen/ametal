@@ -63,8 +63,8 @@ static struct am_zlg116_pwr_mode_init __g_pwr_mode_init[3] = {
 /** \brief PVD触发信息内存 */
 static struct am_zlg116_pwr_pvd_info __g_pwr_pvd_info = {
      AMHW_ZLG_PVD_LEVER_3_3V,    /**< \brief PVD监控电压 */
-     AM_TRUE,                    /**< \brief 使能监控电压 */
      2,                          /**< \brief 监控电压模式 */
+     AM_TRUE                     /**< \brief 使能监控电压 */
 };
 
 /** \brief PWR设备信息 */
