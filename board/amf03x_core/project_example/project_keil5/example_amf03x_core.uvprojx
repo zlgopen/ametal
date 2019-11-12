@@ -1097,11 +1097,6 @@
               <FilePath>..\..\..\..\examples\board\amf03x_core\input_event\demo_hc32f03x_core_std_key_input_event.c</FilePath>
             </File>
             <File>
-              <FileName>demo_hc32f03x_core_lcd.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\amf03x_core\lcd\demo_hc32f03x_core_lcd.c</FilePath>
-            </File>
-            <File>
               <FileName>demo_hc32f03x_core_std_led.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\board\amf03x_core\led\demo_hc32f03x_core_std_led.c</FilePath>
@@ -1555,11 +1550,6 @@
               <FileName>demo_hc32_hw_gpio_trigger.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\soc\hdsc\gpio\demo_hc32_hw_gpio_trigger.c</FilePath>
-            </File>
-            <File>
-              <FileName>demo_hc32_hw_lcd.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\soc\hdsc\lcd\demo_hc32_hw_lcd.c</FilePath>
             </File>
             <File>
               <FileName>demo_hc32_hw_lpuart_int.c</FileName>
@@ -2030,11 +2020,6 @@
               <FileName>am_hwconf_hc32f03x_i2c_slv.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_hc32f03x_i2c_slv.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_hc32f03x_lcd.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_hc32f03x_lcd.c</FilePath>
             </File>
             <File>
               <FileName>am_hwconf_hc32f03x_led_gpio.c</FileName>
@@ -3296,11 +3281,6 @@
               <FilePath>..\..\..\..\examples\board\amf03x_core\input_event\demo_hc32f03x_core_std_key_input_event.c</FilePath>
             </File>
             <File>
-              <FileName>demo_hc32f03x_core_lcd.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\amf03x_core\lcd\demo_hc32f03x_core_lcd.c</FilePath>
-            </File>
-            <File>
               <FileName>demo_hc32f03x_core_std_led.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\board\amf03x_core\led\demo_hc32f03x_core_std_led.c</FilePath>
@@ -3754,11 +3734,6 @@
               <FileName>demo_hc32_hw_gpio_trigger.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\soc\hdsc\gpio\demo_hc32_hw_gpio_trigger.c</FilePath>
-            </File>
-            <File>
-              <FileName>demo_hc32_hw_lcd.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\soc\hdsc\lcd\demo_hc32_hw_lcd.c</FilePath>
             </File>
             <File>
               <FileName>demo_hc32_hw_lpuart_int.c</FileName>
@@ -4229,11 +4204,6 @@
               <FileName>am_hwconf_hc32f03x_i2c_slv.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_hc32f03x_i2c_slv.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_hc32f03x_lcd.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_hc32f03x_lcd.c</FilePath>
             </File>
             <File>
               <FileName>am_hwconf_hc32f03x_led_gpio.c</FileName>

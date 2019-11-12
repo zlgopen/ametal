@@ -99,6 +99,13 @@ static void lcd_port_init ()
     amhw_hc32_seg32_51_com0_8_ctr (gp_hw_lcd,
                                      AMHW_HC32_LCD_COMSEG_CTR,
                                      0x0);
+                                     
+#ifdef HC32L136
+    /* 设置端口COM0-3 */
+    amhw_hc32_seg32_51_com0_8_ctr (gp_hw_lcd,
+                                   AMHW_HC32_LCD_SEG40_51_CTR,
+                                   0x1f);
+#endif
 }
 
 /**
@@ -155,7 +162,7 @@ static void lcd_init ()
  * \brief 例程入口
  */
 void demo_hc32_hw_lcd_entry (void                    *p_hw_lcd,
-                               uint32_t                *p_data)
+                             uint32_t                *p_data)
 {
     int i = 0;
 
@@ -166,7 +173,7 @@ void demo_hc32_hw_lcd_entry (void                    *p_hw_lcd,
 
     /* LCD控制器端口初始化 */
     lcd_port_init ();
-
+    
     /* LCD 模式选择 */
     amhw_hc32_lcd_mode_sel (gp_hw_lcd, AMHW_HC32_LCD_MODE_0);
 
@@ -181,7 +188,7 @@ void demo_hc32_hw_lcd_entry (void                    *p_hw_lcd,
 
     while (1)
     {
-        for (i = 0; i < 10; i++){
+        for (i = 0; i < 12; i++){
 
             /* 写数据到显存 */
             amhw_hc32_lcd_ram_write (gp_hw_lcd, p_data[i], 0);

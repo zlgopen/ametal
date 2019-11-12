@@ -124,7 +124,6 @@ int am_main (void)
 //    demo_hc32f03x_core_hw_wdt_entry();
 //    demo_hc32f03x_core_std_wdt_entry();
 //    demo_hc32f03x_drv_lpmode_wake_up_entry();
-//    demo_hc32f03x_core_hw_lcd_entry ();
 //    demo_hc32f03x_core_miniport_zlg72128_entry();
 //    demo_hc32f03x_core_miniport_hc595_digitron_entry();
 //    demo_hc32f03x_core_miniport_hc595_led_entry();

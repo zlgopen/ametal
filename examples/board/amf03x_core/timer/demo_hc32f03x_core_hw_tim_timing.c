@@ -43,7 +43,7 @@
 /**
  * \brief 定时器timing HW层例程入口
  */
-void demo_amf03x_core_hw_tim_timing_entry (void)
+void demo_hc32f03x_core_hw_tim_timing_entry (void)
 {
     AM_DBG_INFO("demo amf03x_core hw tim timing!\r\n");
 
