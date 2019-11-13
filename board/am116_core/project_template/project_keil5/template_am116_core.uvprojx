@@ -10,13 +10,12 @@
       <TargetName>debug</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
-      <pCCUsed>5060750::V5.06 update 6 (build 750)::ARMCC</pCCUsed>
-      <uAC6>0</uAC6>
+      <pCCUsed>5060300::V5.06 update 3 (build 300)::ARMCC</pCCUsed>
       <TargetOption>
         <TargetCommonOption>
           <Device>ZLG116</Device>
           <Vendor>Generic</Vendor>
-          <PackID>ZLG.ZLG100_DFP.1.0.1</PackID>
+          <PackID>ZLG.ZLG100_DFP.1.0.0</PackID>
           <PackURL>http://www.zlg.cn/</PackURL>
           <Cpu>IROM(0x08000000,0x10000) IRAM(0x20000000,0x2000) CPUTYPE("Cortex-M0") CLOCK(12000000) ELITTLE</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
@@ -184,7 +183,6 @@
             <hadXRAM>0</hadXRAM>
             <uocXRam>0</uocXRam>
             <RvdsVP>0</RvdsVP>
-            <RvdsMve>0</RvdsMve>
             <hadIRAM2>0</hadIRAM2>
             <hadIROM2>0</hadIROM2>
             <StupSel>8</StupSel>
@@ -325,7 +323,6 @@
             <uThumb>0</uThumb>
             <uSurpInc>0</uSurpInc>
             <uC99>0</uC99>
-            <uGnu>0</uGnu>
             <useXO>0</useXO>
             <v6Lang>0</v6Lang>
             <v6LangP>0</v6LangP>
@@ -1186,7 +1183,6 @@
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
       <pCCUsed>5060061::V5.06 update 1 (build 61)::ARMCC</pCCUsed>
-      <uAC6>0</uAC6>
       <TargetOption>
         <TargetCommonOption>
           <Device>ZLG116</Device>
@@ -1359,7 +1355,6 @@
             <hadXRAM>0</hadXRAM>
             <uocXRam>0</uocXRam>
             <RvdsVP>0</RvdsVP>
-            <RvdsMve>0</RvdsMve>
             <hadIRAM2>0</hadIRAM2>
             <hadIROM2>0</hadIROM2>
             <StupSel>8</StupSel>
@@ -1500,7 +1495,6 @@
             <uThumb>0</uThumb>
             <uSurpInc>0</uSurpInc>
             <uC99>0</uC99>
-            <uGnu>0</uGnu>
             <useXO>0</useXO>
             <v6Lang>0</v6Lang>
             <v6LangP>0</v6LangP>
@@ -2357,11 +2351,5 @@
       </Groups>
     </Target>
   </Targets>
-
-  <RTE>
-    <apis/>
-    <components/>
-    <files/>
-  </RTE>
 
 </Project>
