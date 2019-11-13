@@ -10,20 +10,19 @@
       <TargetName>debug</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
-      <pCCUsed>5060750::V5.06 update 6 (build 750)::ARMCC</pCCUsed>
-      <uAC6>0</uAC6>
+      <pCCUsed>5060300::V5.06 update 3 (build 300)::ARMCC</pCCUsed>
       <TargetOption>
         <TargetCommonOption>
-          <Device>LPC824M201JDH20</Device>
+          <Device>LPC845M301JBD64</Device>
           <Vendor>NXP</Vendor>
-          <PackID>Keil.LPC800_DFP.1.7.0</PackID>
+          <PackID>Keil.LPC800_DFP.1.6.0</PackID>
           <PackURL>http://www.keil.com/pack/</PackURL>
-          <Cpu>IROM(0x00000000,0x8000) IRAM(0x10000000,0x2000) CPUTYPE("Cortex-M0+") CLOCK(12000000) ELITTLE</Cpu>
+          <Cpu>IRAM(0x10000000,0x00004000) IROM(0x00000000,0x00010000) CPUTYPE("Cortex-M0+") CLOCK(12000000) ELITTLE</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
           <StartupFile></StartupFile>
-          <FlashDriverDll>UL2CM3(-S0 -C0 -P0 -FD10000000 -FCFE0 -FN1 -FF0LPC8xx_32 -FS00 -FL08000 -FP0($$Device:LPC824M201JDH20$Flash\LPC8xx_32.FLM))</FlashDriverDll>
+          <FlashDriverDll>UL2CM3(-S0 -C0 -P0 -FD10000000 -FC1000 -FN1 -FF0LPC84x_64 -FS00 -FL010000 -FP0($$Device:LPC845M301JBD64$Flash\LPC84x_64.FLM))</FlashDriverDll>
           <DeviceId>0</DeviceId>
-          <RegisterFile>$$Device:LPC824M201JDH20$Device\Include\LPC82x.h</RegisterFile>
+          <RegisterFile>$$Device:LPC845M301JBD64$Device\Include\LPC84x.h</RegisterFile>
           <MemoryEnv></MemoryEnv>
           <Cmp></Cmp>
           <Asm></Asm>
@@ -33,7 +32,7 @@
           <SLE66CMisc></SLE66CMisc>
           <SLE66AMisc></SLE66AMisc>
           <SLE66LinkerMisc></SLE66LinkerMisc>
-          <SFDFile>$$Device:LPC824M201JDH20$SVD\LPC82x.svd</SFDFile>
+          <SFDFile>$$Device:LPC845M301JBD64$SVD\LPC84x.svd</SFDFile>
           <bCustSvd>0</bCustSvd>
           <UseEnv>0</UseEnv>
           <BinPath></BinPath>
@@ -138,7 +137,7 @@
           </Flash1>
           <bUseTDR>1</bUseTDR>
           <Flash2>BIN\UL2CM3.DLL</Flash2>
-          <Flash3>"" ()</Flash3>
+          <Flash3></Flash3>
           <Flash4></Flash4>
           <pFcarmOut></pFcarmOut>
           <pFcarmGrp></pFcarmGrp>
@@ -184,7 +183,6 @@
             <hadXRAM>0</hadXRAM>
             <uocXRam>0</uocXRam>
             <RvdsVP>0</RvdsVP>
-            <RvdsMve>0</RvdsMve>
             <hadIRAM2>0</hadIRAM2>
             <hadIROM2>0</hadIROM2>
             <StupSel>8</StupSel>
@@ -245,12 +243,12 @@
               <IRAM>
                 <Type>0</Type>
                 <StartAddress>0x10000000</StartAddress>
-                <Size>0x2000</Size>
+                <Size>0x4000</Size>
               </IRAM>
               <IROM>
                 <Type>1</Type>
                 <StartAddress>0x0</StartAddress>
-                <Size>0x8000</Size>
+                <Size>0x10000</Size>
               </IROM>
               <XRAM>
                 <Type>0</Type>
@@ -275,7 +273,7 @@
               <OCR_RVCT4>
                 <Type>1</Type>
                 <StartAddress>0x0</StartAddress>
-                <Size>0x8000</Size>
+                <Size>0x10000</Size>
               </OCR_RVCT4>
               <OCR_RVCT5>
                 <Type>1</Type>
@@ -300,7 +298,7 @@
               <OCR_RVCT9>
                 <Type>0</Type>
                 <StartAddress>0x10000000</StartAddress>
-                <Size>0x2000</Size>
+                <Size>0x4000</Size>
               </OCR_RVCT9>
               <OCR_RVCT10>
                 <Type>0</Type>
@@ -325,7 +323,6 @@
             <uThumb>0</uThumb>
             <uSurpInc>0</uSurpInc>
             <uC99>1</uC99>
-            <uGnu>0</uGnu>
             <useXO>0</useXO>
             <v6Lang>0</v6Lang>
             <v6LangP>0</v6LangP>
@@ -338,7 +335,7 @@
               <MiscControls></MiscControls>
               <Define>AM_VDEBUG AM_CORTEX_M0</Define>
               <Undefine></Undefine>
-              <IncludePath>..\user_code;..\user_config;..\user_config\am_hwconf_usrcfg;..\user_config\am_servconf_usrcfg;..\..\..\..\..\3rdparty\CMSIS\Include;..\..\..\..\..\arch\arm\include;..\..\..\..\bsp_common\include;..\..\..\..\..\components\drivers\include;..\..\..\..\..\components\libc\microlib_adapter\include;..\..\..\..\..\components\libc\armlib_adapter\include;..\..\..\..\..\components\service\include;..\..\..\..\..\components\util\include;..\..\..\..\..\examples\board\am824_core;..\..\..\..\..\examples\components;..\..\..\..\..\examples\soc\nxp;..\..\..\..\..\examples\std;..\..\..\..\..\interface;..\..\..\..\..\soc\nxp\drivers\include\acmp;..\..\..\..\..\soc\nxp\drivers\include\adc;..\..\..\..\..\soc\nxp\drivers\include\clk;..\..\..\..\..\soc\nxp\drivers\include\crc;..\..\..\..\..\soc\nxp\drivers\include\dma;..\..\..\..\..\soc\nxp\drivers\include\fmc;..\..\..\..\..\soc\nxp\drivers\include\gpio;..\..\..\..\..\soc\nxp\drivers\include\i2c;..\..\..\..\..\soc\nxp\drivers\include\iap;..\..\..\..\..\soc\nxp\drivers\include\inmux;..\..\..\..\..\soc\nxp\drivers\include\iocon;..\..\..\..\..\soc\nxp\drivers\include\mrt;..\..\..\..\..\soc\nxp\drivers\include\pint;..\..\..\..\..\soc\nxp\drivers\include\pmu;..\..\..\..\..\soc\nxp\drivers\include\rit;..\..\..\..\..\soc\nxp\drivers\include\rtc;..\..\..\..\..\soc\nxp\drivers\include\sct;..\..\..\..\..\soc\nxp\drivers\include\spi;..\..\..\..\..\soc\nxp\drivers\include\swm;..\..\..\..\..\soc\nxp\drivers\include\syscon;..\..\..\..\..\soc\nxp\drivers\include\timer;..\..\..\..\..\soc\nxp\drivers\include\usart;..\..\..\..\..\soc\nxp\drivers\include\utick;..\..\..\..\..\soc\nxp\drivers\include\wkt;..\..\..\..\..\soc\nxp\drivers\include\wwdt;..\..\..\..\..\soc\nxp\lpc845;..\..\..\..\..\soc\nxp\drivers\include\adc;..\..\..\..\..\soc\nxp\drivers\include\dac;..\..\..\..\..\examples\board\am845_core;..\..\..\..\..\soc\nxp\drivers\include\clk\hw;..\..\..\..\..\components\bootloader\include\core;..\..\..\..\..\components\bootloader\include\drivers;..\..\..\..\..\soc\nxp\lpc845\bootloader\include;..\user_config\am_bootconf_usrcfg</IncludePath>
+              <IncludePath>..\user_code;..\user_config;..\user_config\am_hwconf_usrcfg;..\user_config\am_servconf_usrcfg;..\..\..\..\..\3rdparty\CMSIS\Include;..\..\..\..\..\arch\arm\include;..\..\..\..\bsp_common\include;..\..\..\..\..\components\drivers\include;..\..\..\..\..\components\libc\microlib_adapter\include;..\..\..\..\..\components\libc\armlib_adapter\include;..\..\..\..\..\components\service\include;..\..\..\..\..\components\util\include;..\..\..\..\..\examples\board\am824_core;..\..\..\..\..\examples\components;..\..\..\..\..\examples\soc\nxp;..\..\..\..\..\examples\std;..\..\..\..\..\interface;..\..\..\..\..\soc\nxp\drivers\include\acmp;..\..\..\..\..\soc\nxp\drivers\include\adc;..\..\..\..\..\soc\nxp\drivers\include\clk;..\..\..\..\..\soc\nxp\drivers\include\crc;..\..\..\..\..\soc\nxp\drivers\include\dma;..\..\..\..\..\soc\nxp\drivers\include\fmc;..\..\..\..\..\soc\nxp\drivers\include\gpio;..\..\..\..\..\soc\nxp\drivers\include\i2c;..\..\..\..\..\soc\nxp\drivers\include\iap;..\..\..\..\..\soc\nxp\drivers\include\inmux;..\..\..\..\..\soc\nxp\drivers\include\iocon;..\..\..\..\..\soc\nxp\drivers\include\mrt;..\..\..\..\..\soc\nxp\drivers\include\pint;..\..\..\..\..\soc\nxp\drivers\include\pmu;..\..\..\..\..\soc\nxp\drivers\include\rit;..\..\..\..\..\soc\nxp\drivers\include\rtc;..\..\..\..\..\soc\nxp\drivers\include\sct;..\..\..\..\..\soc\nxp\drivers\include\spi;..\..\..\..\..\soc\nxp\drivers\include\swm;..\..\..\..\..\soc\nxp\drivers\include\syscon;..\..\..\..\..\soc\nxp\drivers\include\timer;..\..\..\..\..\soc\nxp\drivers\include\usart;..\..\..\..\..\soc\nxp\drivers\include\utick;..\..\..\..\..\soc\nxp\drivers\include\wkt;..\..\..\..\..\soc\nxp\drivers\include\wwdt;..\..\..\..\..\soc\nxp\lpc845;..\..\..\..\..\soc\nxp\drivers\include\adc;..\..\..\..\..\soc\nxp\drivers\include\dac;..\..\..\..\..\examples\board\am845_core;..\..\..\..\..\soc\nxp\drivers\include\clk\hw;..\..\..\..\..\components\bootloader\include\core;..\..\..\..\..\components\bootloader\include\drivers;..\..\..\..\..\soc\nxp\lpc845\bootloader\include;..\user_config\am_bootconf_usrcfg;..\..\..\..\..\soc\nxp\drivers\include\capt;..\..\..\..\..\components\bootloader\include\command_analyse\kboot_KinetisFlashTool;..\user_config\am_double_appconf_usrcfg;..\..\..\..\..\examples\components\bootloader;..\..\..\..\..\components\bootloader\include\arch\arm;..\..\..\..\..\components\bootloader\include\command_analyse\kboot_KinetisFlashTool\drivers;..\..\..\..\..\soc\nxp\drivers\include\bootloader</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -478,11 +475,6 @@
               <FilePath>..\..\..\..\..\components\drivers\source\digitron\am_digitron_scan_hc595_gpio.c</FilePath>
             </File>
             <File>
-              <FileName>am_zlg72128.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\components\drivers\source\digitron_key\am_zlg72128.c</FilePath>
-            </File>
-            <File>
               <FileName>am_zlg72128_std.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\components\drivers\source\digitron_key\am_zlg72128_std.c</FilePath>
@@ -606,6 +598,16 @@
               <FileName>am_zlg600.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\components\drivers\source\zlg600\am_zlg600.c</FilePath>
+            </File>
+            <File>
+              <FileName>zlg72128.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\components\drivers\source\digitron_key\zlg72128.c</FilePath>
+            </File>
+            <File>
+              <FileName>zlg72128_platform.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\components\drivers\source\digitron_key\zlg72128_platform.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -2177,11 +2179,6 @@
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\components\bootloader\source\drivers\am_boot_serial_uart.c</FilePath>
             </File>
-            <File>
-              <FileName>am_boot_autobaud_soft.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\components\bootloader\source\drivers\am_boot_autobaud_soft.c</FilePath>
-            </File>
           </Files>
         </Group>
       </Groups>
@@ -2191,13 +2188,12 @@
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
       <pCCUsed>5060750::V5.06 update 6 (build 750)::ARMCC</pCCUsed>
-      <uAC6>0</uAC6>
       <TargetOption>
         <TargetCommonOption>
           <Device>LPC845M301JHI48</Device>
           <Vendor>NXP</Vendor>
-          <PackID>NXP.LPC845_DFP.11.0.0</PackID>
-          <PackURL>http://mcuxpresso.nxp.com/cmsis_pack/repo/</PackURL>
+          <PackID>Keil.LPC800_DFP.1.6.0</PackID>
+          <PackURL>http://www.keil.com/pack/</PackURL>
           <Cpu>IRAM(0x10000000,0x4000) IROM(0x00000000,0x010000) CPUTYPE("Cortex-M0+") CLOCK(12000000) ELITTLE</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
           <StartupFile></StartupFile>
@@ -2364,7 +2360,6 @@
             <hadXRAM>0</hadXRAM>
             <uocXRam>0</uocXRam>
             <RvdsVP>0</RvdsVP>
-            <RvdsMve>0</RvdsMve>
             <hadIRAM2>0</hadIRAM2>
             <hadIROM2>0</hadIROM2>
             <StupSel>8</StupSel>
@@ -2505,7 +2500,6 @@
             <uThumb>0</uThumb>
             <uSurpInc>0</uSurpInc>
             <uC99>1</uC99>
-            <uGnu>0</uGnu>
             <useXO>0</useXO>
             <v6Lang>0</v6Lang>
             <v6LangP>0</v6LangP>
@@ -2658,11 +2652,6 @@
               <FilePath>..\..\..\..\..\components\drivers\source\digitron\am_digitron_scan_hc595_gpio.c</FilePath>
             </File>
             <File>
-              <FileName>am_zlg72128.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\components\drivers\source\digitron_key\am_zlg72128.c</FilePath>
-            </File>
-            <File>
               <FileName>am_zlg72128_std.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\components\drivers\source\digitron_key\am_zlg72128_std.c</FilePath>
@@ -2786,6 +2775,16 @@
               <FileName>am_zlg600.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\components\drivers\source\zlg600\am_zlg600.c</FilePath>
+            </File>
+            <File>
+              <FileName>zlg72128.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\components\drivers\source\digitron_key\zlg72128.c</FilePath>
+            </File>
+            <File>
+              <FileName>zlg72128_platform.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\components\drivers\source\digitron_key\zlg72128_platform.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -4357,21 +4356,10 @@
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\components\bootloader\source\drivers\am_boot_serial_uart.c</FilePath>
             </File>
-            <File>
-              <FileName>am_boot_autobaud_soft.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\components\bootloader\source\drivers\am_boot_autobaud_soft.c</FilePath>
-            </File>
           </Files>
         </Group>
       </Groups>
     </Target>
   </Targets>
-
-  <RTE>
-    <apis/>
-    <components/>
-    <files/>
-  </RTE>
 
 </Project>
