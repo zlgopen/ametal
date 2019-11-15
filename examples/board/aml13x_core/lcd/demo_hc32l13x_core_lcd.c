@@ -43,7 +43,7 @@
 #include "ametal.h"
 #include "am_hc32.h"
 #include "am_gpio.h"
-#include "hc32_pin.h"
+#include "hc32x3x_pin.h"
 #include "am_hc32_lcd.h"
 #include "demo_hc32_entries.h"
 /**

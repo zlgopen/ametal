@@ -31,7 +31,7 @@
 #include "am_vdebug.h"
 #include "am_delay.h"
 #include "am_gpio.h"
-#include "hc32_pin.h"
+#include "hc32x3x_pin.h"
 #include "hc32_periph_map.h"
 
 int am_main (void)

@@ -21,7 +21,7 @@
  * \endinternal
  */
 
-#include "hc32_pin.h"
+#include "hc32x3x_pin.h"
 #include "ametal.h"
 #include "am_time.h"
 #include "am_pcf85063.h"

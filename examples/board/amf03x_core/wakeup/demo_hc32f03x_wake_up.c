@@ -45,7 +45,7 @@
 #include "am_delay.h"
 #include "am_gpio.h"
 #include "am_vdebug.h"
-#include "hc32_pin.h"
+#include "hc32x3x_pin.h"
 #include "am_hc32f03x_inst_init.h"
 #include "demo_amf03x_core_entries.h"
 #include "am_hc32_lpmode.h"

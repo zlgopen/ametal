@@ -22,7 +22,7 @@
  */
 #include "ametal.h"
 #include "am_led_gpio.h"
-#include "hc32_pin.h"
+#include "hc32x3x_pin.h"
 #include "am_input.h"
 
 /**

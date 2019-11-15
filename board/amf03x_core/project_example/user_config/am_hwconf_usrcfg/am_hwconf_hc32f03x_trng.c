@@ -26,7 +26,7 @@
 #include "am_hc32.h"
 #include "am_hc32_trng.h"
 #include "hw/amhw_hc32_trng.h"
-#include "hc32_pin.h"
+#include "hc32x3x_pin.h"
 
 /**
  * \addtogroup am_if_src_hwconf_hc32_trng

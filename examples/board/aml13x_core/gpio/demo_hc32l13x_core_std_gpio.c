@@ -43,7 +43,7 @@
 #include "demo_aml13x_core_entries.h"
 
 #define INPUT_PIN  PIOA_7  /**< \brief 输入引脚 */
-#define OUTPUT_PIN PIOD_14 /**< \brief 与LED相连 */
+#define OUTPUT_PIN PIOD_5 /**< \brief 与LED相连 */
 
 /**
  * \brief 例程入口

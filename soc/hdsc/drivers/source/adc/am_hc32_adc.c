@@ -26,7 +26,7 @@
 #include "am_clk.h"
 #include "am_gpio.h"
 #include "am_delay.h"
-#include "hc32_pin.h"
+#include "hc32x3x_pin.h"
 #include "hw/amhw_hc32_rcc.h"
 #include "hw/amhw_hc32_adc.h"
 #include "hc32_periph_map.h"

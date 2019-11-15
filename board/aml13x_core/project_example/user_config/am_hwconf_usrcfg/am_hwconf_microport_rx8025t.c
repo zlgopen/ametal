@@ -20,7 +20,7 @@
  * - 1.00 17-07-13  tee, first implementation
  * \endinternal
  */
-#include "hc32_pin.h"
+#include "hc32x3x_pin.h"
 #include "ametal.h"
 #include "am_time.h"
 #include "am_alarm_clk.h"

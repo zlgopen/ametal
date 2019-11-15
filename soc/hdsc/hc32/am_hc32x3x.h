@@ -20,20 +20,16 @@
  * \endinternal
  */
 
-#ifndef __AM_HC32_H
-#define __AM_HC32_H
+#ifndef __AM_HC32X3X_H
+#define __AM_HC32X3X_H
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
 /** \brief 芯片引脚定义 */
-#ifdef HC32X3X
-#include "../hc32/hc32x3x_pin.h" /**< \brief 适用于HC32F030、HC32L13X */
-#else    
-#include "../hc32/hc32_pin.h"    /**< \brief 适用于HC32L/F17X、HC32L/F19X */
-#endif
-    
+#include "../hc32x3x/hc32x3x_pin.h"
+
 /** \brief 芯片中断编号定义 */
 #include "../hc32/hc32_inum.h"
 
@@ -78,6 +74,6 @@ extern "C" {
 }
 #endif
 
-#endif /* __AM_HC32_H */
+#endif /* __AM_HC32X3X_H */
 
 /* end of file */

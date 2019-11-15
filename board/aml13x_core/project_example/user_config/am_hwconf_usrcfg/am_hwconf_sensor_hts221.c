@@ -20,7 +20,7 @@
  * \endinternal
  */
 
-#include "hc32_pin.h"
+#include "hc32x3x_pin.h"
 #include "am_sensor_hts221.h"
 #include "am_common.h"
 #include "am_hc32l13x_inst_init.h"
