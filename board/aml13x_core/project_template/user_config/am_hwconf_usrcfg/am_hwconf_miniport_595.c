@@ -24,7 +24,7 @@
 #include "am_hc32l13x_inst_init.h"
 #include "am_hc595_gpio.h"
 #include "am_hc595_spi.h"
-#include "hc32_pin.h"
+#include "hc32x3x_pin.h"
 
 /**
  * \addtogroup am_if_src_hwconf_miniport_595

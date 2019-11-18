@@ -26,7 +26,6 @@
 #include "am_int.h"
 #include "am_bitops.h"
 #include "am_hc32_gpio_util.h"
-#include "hc32_pin.h"
 
 /*******************************************************************************
 * ÀΩ”–∂®“Â

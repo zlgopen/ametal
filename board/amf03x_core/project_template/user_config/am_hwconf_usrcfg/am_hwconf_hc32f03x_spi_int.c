@@ -28,7 +28,7 @@
 #include "hw/amhw_hc32_spi.h"
 #include "am_clk.h"
 #include "am_hc32.h"
-#include "hc32_pin.h"
+#include "hc32x3x_pin.h"
 
 /**
  * \addtogroup am_if_src_hwconf_hc32_spi_int

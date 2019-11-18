@@ -276,16 +276,16 @@ am_hc32_tim_cap_ioinfo_t __g_tim3_cap_ioinfo_list[] = {
     /**< \brief 通道4 */
     {
         AM_HC32_TIM_CAP_CH2A,
-        PIOE_13,
-        PIOE_13_TIM3_CH2A | PIOE_13_INPUT_FLOAT,
-        PIOE_13_GPIO | PIOE_13_INPUT_PU
+        PIOB_8,
+        PIOB_8_TIM3_CH2A | PIOB_8_INPUT_FLOAT,
+        PIOB_8_GPIO | PIOB_8_INPUT_PU
     },
     /**< \brief 通道5 */
     {
         AM_HC32_TIM_CAP_CH2B,
-        PIOE_12,
-        PIOE_12_TIM3_CH2B | PIOE_12_INPUT_FLOAT,
-        PIOE_12_GPIO | PIOE_12_INPUT_PU
+        PIOB_15,
+        PIOB_15_TIM3_CH2B | PIOB_15_INPUT_FLOAT,
+        PIOB_15_GPIO | PIOB_15_INPUT_PU
     },
 };
 

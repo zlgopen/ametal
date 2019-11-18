@@ -42,7 +42,7 @@
 /** [src_hc32l13x_std_spi_master_dma] */
 #include "ametal.h"
 #include "am_vdebug.h"
-#include "hc32_pin.h"
+#include "hc32x3x_pin.h"
 #include "am_hc32l13x_inst_init.h"
 #include "demo_std_entries.h"
 #include "demo_aml13x_core_entries.h"

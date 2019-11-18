@@ -24,7 +24,7 @@
 #include "ametal.h"
 #include "am_hc32f03x_inst_init.h"
 #include "am_zlg72128_std.h"
-#include "hc32_pin.h"
+#include "hc32x3x_pin.h"
 #include "am_input.h"
 
 /**

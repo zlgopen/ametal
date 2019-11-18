@@ -23,8 +23,8 @@
 #include "am_clk.h"
 #include "am_int.h"
 #include "am_gpio.h"
-#include "hc32_pin.h"
 #include "hc32_clk.h"
+#include "am_hc32.h"
 
 /*******************************************************************************
 * Functions declaration

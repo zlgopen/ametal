@@ -72,7 +72,7 @@ void demo_hc32f03x_core_std_lptim_timing_gate_entry (void)
     /* 设置定时时间为1us,TOG、TOGN输出频率周期时间为1*2=2us，即500KHz */
     am_timer_enable_us(handle, 0, 1);
 
-    demo_std_timer_timing_entry(am_hc32_lptim1_timing_inst_init(), 0);
+    demo_std_timer_timing_entry(am_hc32_lptim0_timing_inst_init(), 0);
 }
 /** [src_hc32f03x_std_lptim_timing] */
 

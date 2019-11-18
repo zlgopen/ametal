@@ -42,7 +42,7 @@
 
 /** [src_hc32f03x_std_spi_master_int] */
 #include "ametal.h"
-#include "hc32_pin.h"
+#include "hc32x3x_pin.h"
 #include "am_vdebug.h"
 #include "demo_std_entries.h"
 #include "am_hc32f03x_inst_init.h"

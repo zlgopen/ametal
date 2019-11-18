@@ -24,7 +24,7 @@
 
 #include "am_hc32_clk.h"
 #include "hw/amhw_hc32_rcc.h"
-#include "hc32_pin.h"
+#include "hc32x3x_pin.h"
 /**
  * \addtogroup am_if_src_hwconf_hc32_clk
  * \copydoc am_hwconf_hc32_clk.c
