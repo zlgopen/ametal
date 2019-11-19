@@ -31,12 +31,24 @@
 #include "am_board.h"
 #include "demo_aml166_core_entries.h"
 
+
+#include "am_gpio.h"
+#include "zlg116_pin.h"
+#include "am_softimer.h"
+void am_aml166_all_demos(void);
+
+/* 看门狗软件定时器回调函数 */
+static void  __wdg_timer_callback(void)
+{
+    am_gpio_toggle(PIOA_14);
+}
+
 /**
  * \brief AMetal 应用程序入口
  */
 int am_main (void)
 {
-    AM_DBG_INFO("Start up successful!\r\n");
+//    AM_DBG_INFO("Start up successful!\r\n");
     /*
      * 以下为所有demo的入口函数，需要运行哪个 demo， 就取消对应函数调用行的注释
      *
@@ -44,7 +56,17 @@ int am_main (void)
      *
      * 注意：同一时刻只能运行一个 demo，即只能使某一行处于取消注释状态。
      */
-    demo_aml166_core_std_led_entry();
+    am_softimer_t  wdg_timer;
+
+    am_gpio_pin_cfg(PIOA_14, AM_GPIO_OUTPUT_INIT_HIGH);
+
+    am_softimer_init(&wdg_timer, (void *)__wdg_timer_callback, NULL);
+
+    am_softimer_start(&wdg_timer, 800);
+
+    am_aml166_all_demos();
+
+//    demo_aml166_core_std_led_entry();
 //    demo_aml166_core_std_delay_entry();
 //    demo_aml166_core_std_buzzer_entry();
 //    demo_aml166_core_hw_clk_entry();
