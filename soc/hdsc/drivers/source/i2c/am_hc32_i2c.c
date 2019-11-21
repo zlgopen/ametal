@@ -73,8 +73,8 @@ static am_const struct am_i2c_drv_funcs __g_i2c_drv_funcs = {
 am_local int __i2c_hard_init (am_hc32_i2c_dev_t *p_dev)
 {
     amhw_hc32_i2c_t *p_hw_i2c = NULL;
-    uint16_t count = (am_clk_rate_get (p_dev->p_devinfo->clk_num) /
-                                       p_dev->p_devinfo->speed) / 8;
+    uint16_t count = ((am_clk_rate_get (p_dev->p_devinfo->clk_num) / \
+                     p_dev->p_devinfo->speed) >> 3) - 1;
 
     if (p_dev == NULL) {
         return -AM_EINVAL;
