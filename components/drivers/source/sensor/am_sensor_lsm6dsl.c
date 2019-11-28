@@ -144,11 +144,11 @@
 #define  __LSM6DSL_GET_TEMP_VALUE(data) (int32_t)((25 + \
                                             ((int16_t)(data) >> 8)) * 1000000)
 
-/** \brief 计算加速度,并扩大10^6倍 */
-#define  __LSM6DSL_GET_ACCEL_VALUE_2G(data)  ((int32_t)(data * 610))
-#define  __LSM6DSL_GET_ACCEL_VALUE_4G(data)  ((int32_t)(data * 1220))
-#define  __LSM6DSL_GET_ACCEL_VALUE_8G(data)  ((int32_t)(data * 2440))
-#define  __LSM6DSL_GET_ACCEL_VALUE_16G(data) ((int32_t)(data * 4880))
+/** \brief 计算加速度(单位为g),并扩大10^6倍 */
+#define  __LSM6DSL_GET_ACCEL_VALUE_2G(data)  ((int32_t)(data * 61))
+#define  __LSM6DSL_GET_ACCEL_VALUE_4G(data)  ((int32_t)(data * 122))
+#define  __LSM6DSL_GET_ACCEL_VALUE_8G(data)  ((int32_t)(data * 244))
+#define  __LSM6DSL_GET_ACCEL_VALUE_16G(data) ((int32_t)(data * 488))
 
 /*******************************************************************************
  * 本地函数声明
