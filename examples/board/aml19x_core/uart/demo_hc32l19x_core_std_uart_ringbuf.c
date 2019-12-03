@@ -55,7 +55,7 @@ void demo_hc32l19x_core_std_uart_ringbuf_entry (void)
      /* 等待发送数据完成 */
     am_mdelay(100);
 
-    demo_std_uart_ringbuf_entry(am_hc32_uart1_inst_init());
+    demo_std_uart_ringbuf_entry(am_hc32_uart0_inst_init());
 }
 /** [src_hc32l19x_std_uart_ringbuf] */
 

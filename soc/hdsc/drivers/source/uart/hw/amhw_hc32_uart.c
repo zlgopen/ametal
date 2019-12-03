@@ -75,6 +75,7 @@ int amhw_hc32_uart_baudrate_set (amhw_hc32_uart_t *p_hw_uart,
     uint8_t  clk_bit = 0;
     uint8_t  clk_div = 0;
     uint32_t val_set = 0;
+	  volatile uint8_t waittime = 0;
     amhw_hc32_uart_work_mode_t mode = AMHW_HC32_UART_WORK_MODE_0;
 
     /* 确保有效的 clock value */
@@ -138,6 +139,9 @@ int amhw_hc32_uart_baudrate_set (amhw_hc32_uart_t *p_hw_uart,
         }
     }
 
+		waittime = 100;
+    while(waittime--);
+		
     return baud;
 }
 

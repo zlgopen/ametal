@@ -117,6 +117,13 @@ __Vectors       DCD     __initial_sp              ; Top of Stack
 Reset_Handler   PROC
                 EXPORT  Reset_Handler             [WEAK]
                 IMPORT  __main
+					
+				LDR     R0, =0xE000ED08	;
+                LDR     R1, =__Vectors
+                STR     R1, [R0]
+                LDR     R2, [R1]
+                MSR     MSP, R2
+				
                 LDR     R0, =__main
                 BX      R0
                 ENDP

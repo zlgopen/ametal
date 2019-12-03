@@ -28,9 +28,9 @@
 #define OPTION_BOOT               1
 
 /** \brief 一秒超时标志 */
-static uint8_t second_timeout   = 0;
-static uint8_t user_option      = OPTION_APP;
-static uint8_t time_count       = 5;
+volatile static uint8_t second_timeout   = 0;
+volatile static uint8_t user_option      = OPTION_APP;
+volatile static uint8_t time_count       = 5;
 
 static am_softimer_t timer;
 /**
@@ -68,13 +68,15 @@ am_bool_t  __boot_enter_check_uart(void *p_drv)
     /* 延时等待，如果用户有数据发来，就进入bootloader，否者跳转到应用程序 */
     while(1) {
         if(second_timeout == 1) {
+            if(time_count == 0 ) {
+                am_softimer_stop(&timer);
+                second_timeout = 0;
+                return AM_TRUE;
+            }
             am_kprintf("if don't input anything,Device will enter application after %ds\r\n",time_count);
             second_timeout = 0;
         }
-        if(time_count == 0 ) {
-            am_softimer_stop(&timer);
-            return AM_TRUE;
-        }
+
         if(user_option == OPTION_BOOT) {
             am_softimer_stop(&timer);
             return AM_FALSE;

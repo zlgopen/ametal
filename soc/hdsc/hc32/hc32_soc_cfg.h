@@ -42,7 +42,7 @@ extern "C" {
 #define FLASH_SIZE  (1024 * 256UL)
 
 /**< \brief 扇区大小 以字(32bit)为单位 */
-#define SECTOR_SIZE (2048UL / 4)
+#define SECTOR_SIZE (512UL)
 
 /**@} */
 
