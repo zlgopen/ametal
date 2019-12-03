@@ -76,18 +76,4 @@
 			<locationURI>PARENT-1-PROJECT_LOC/user_config</locationURI>
 		</link>
 	</linkedResources>
-	<variableList>
-		<variable>
-			<name>copy_PARENT</name>
-			<value>file:/E:/AMetal/gitlab/HDSC/ametal</value>
-		</variable>
-		<variable>
-			<name>copy_PARENT1</name>
-			<value>$%7Bcopy_PARENT%7D/board</value>
-		</variable>
-		<variable>
-			<name>copy_PARENT12</name>
-			<value>$%7Bcopy_PARENT1%7D/aml19x_core/project_example</value>
-		</variable>
-	</variableList>
 </projectDescription>
