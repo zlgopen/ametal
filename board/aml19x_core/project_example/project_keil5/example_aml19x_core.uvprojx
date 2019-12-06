@@ -14,16 +14,16 @@
       <uAC6>0</uAC6>
       <TargetOption>
         <TargetCommonOption>
-          <Device>HC32L170JATA</Device>
+          <Device>HC32L196PCTA</Device>
           <Vendor>HDSC</Vendor>
-          <PackID>HDSC.HC32L17X.1.0.0</PackID>
+          <PackID>HDSC.HC32L19X.1.0.0</PackID>
           <PackURL>https://raw.githubusercontent.com/hdscmcu/pack/master/</PackURL>
-          <Cpu>IROM(0x00000000,0x20000) IRAM(0x20000000,0x4000) CPUTYPE("Cortex-M0+") CLOCK(12000000) ELITTLE</Cpu>
+          <Cpu>IROM(0x00000000,0x40000) IRAM(0x20000000,0x8000) CPUTYPE("Cortex-M0+") CLOCK(12000000) ELITTLE</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
           <StartupFile></StartupFile>
-          <FlashDriverDll>UL2CM3(-S0 -C0 -P0 -FD20000000 -FC1000 -FN1 -FF0FlashHC32L17X_128K -FS00 -FL020000 -FP0($$Device:HC32L170JATA$Flash\FlashHC32L17X_128K.FLM))</FlashDriverDll>
+          <FlashDriverDll>UL2CM3(-S0 -C0 -P0 -FD20000000 -FC1000 -FN1 -FF0FlashHC32L19X_256K -FS00 -FL040000 -FP0($$Device:HC32L196PCTA$Flash\FlashHC32L19X_256K.FLM))</FlashDriverDll>
           <DeviceId>0</DeviceId>
-          <RegisterFile>$$Device:HC32L170JATA$Device\Include\HC32L170JATA.h</RegisterFile>
+          <RegisterFile>$$Device:HC32L196PCTA$Device\Include\HC32L196PCTA.h</RegisterFile>
           <MemoryEnv></MemoryEnv>
           <Cmp></Cmp>
           <Asm></Asm>
@@ -33,7 +33,7 @@
           <SLE66CMisc></SLE66CMisc>
           <SLE66AMisc></SLE66AMisc>
           <SLE66LinkerMisc></SLE66LinkerMisc>
-          <SFDFile>$$Device:HC32L170JATA$SVD\HC32L170JATA.sfr</SFDFile>
+          <SFDFile>$$Device:HC32L196PCTA$SVD\HC32L196PCTA.sfr</SFDFile>
           <bCustSvd>0</bCustSvd>
           <UseEnv>0</UseEnv>
           <BinPath></BinPath>
@@ -82,7 +82,7 @@
           <AfterMake>
             <RunUserProg1>0</RunUserProg1>
             <RunUserProg2>0</RunUserProg2>
-            <UserProg1Name>$K\ARM\BIN\ELFDWT.EXE !L BASEADDRESS(0x00000000)</UserProg1Name>
+            <UserProg1Name>fromelf --bincombined -o "$L@L.bin" "$L@L.axf"</UserProg1Name>
             <UserProg2Name></UserProg2Name>
             <UserProg1Dos16Mode>0</UserProg1Dos16Mode>
             <UserProg2Dos16Mode>0</UserProg2Dos16Mode>
@@ -245,12 +245,12 @@
               <IRAM>
                 <Type>0</Type>
                 <StartAddress>0x20000000</StartAddress>
-                <Size>0x4000</Size>
+                <Size>0x8000</Size>
               </IRAM>
               <IROM>
                 <Type>1</Type>
                 <StartAddress>0x0</StartAddress>
-                <Size>0x20000</Size>
+                <Size>0x40000</Size>
               </IROM>
               <XRAM>
                 <Type>0</Type>
@@ -275,7 +275,7 @@
               <OCR_RVCT4>
                 <Type>1</Type>
                 <StartAddress>0x0</StartAddress>
-                <Size>0x20000</Size>
+                <Size>0x40000</Size>
               </OCR_RVCT4>
               <OCR_RVCT5>
                 <Type>1</Type>
@@ -300,7 +300,7 @@
               <OCR_RVCT9>
                 <Type>0</Type>
                 <StartAddress>0x20000000</StartAddress>
-                <Size>0x4000</Size>
+                <Size>0x8000</Size>
               </OCR_RVCT9>
               <OCR_RVCT10>
                 <Type>0</Type>
@@ -360,7 +360,7 @@
             </VariousControls>
           </Aads>
           <LDads>
-            <umfTarg>1</umfTarg>
+            <umfTarg>0</umfTarg>
             <Ropi>0</Ropi>
             <Rwpi>0</Rwpi>
             <noStLib>0</noStLib>
@@ -369,7 +369,7 @@
             <TextAddressRange>0x00000000</TextAddressRange>
             <DataAddressRange>0x10000000</DataAddressRange>
             <pXoBase></pXoBase>
-            <ScatterFile>.\template_am116_core.sct</ScatterFile>
+            <ScatterFile>.\example_aml19x_core.sct</ScatterFile>
             <IncludeLibs></IncludeLibs>
             <IncludeLibsPath></IncludeLibsPath>
             <Misc></Misc>
@@ -2179,16 +2179,16 @@
       <uAC6>0</uAC6>
       <TargetOption>
         <TargetCommonOption>
-          <Device>HC32F030K8TA</Device>
+          <Device>HC32L196PCTA</Device>
           <Vendor>HDSC</Vendor>
-          <PackID>HDSC.HC32F030.1.0.0</PackID>
+          <PackID>HDSC.HC32L19X.1.0.0</PackID>
           <PackURL>https://raw.githubusercontent.com/hdscmcu/pack/master/</PackURL>
-          <Cpu>IROM(0x00000000,0x10000) IRAM(0x20000000,0x2000) CPUTYPE("Cortex-M0+") CLOCK(12000000) ELITTLE</Cpu>
+          <Cpu>IROM(0x00000000,0x40000) IRAM(0x20000000,0x8000) CPUTYPE("Cortex-M0+") CLOCK(12000000) ELITTLE</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
           <StartupFile></StartupFile>
-          <FlashDriverDll>UL2CM3(-S0 -C0 -P0 -FD20000000 -FC1000 -FN1 -FF0FlashHC32F030_64K -FS00 -FL010000 -FP0($$Device:HC32F030K8TA$Flash\FlashHC32F030_64K.FLM))</FlashDriverDll>
+          <FlashDriverDll>UL2CM3(-S0 -C0 -P0 -FD20000000 -FC1000 -FN1 -FF0FlashHC32L19X_256K -FS00 -FL040000 -FP0($$Device:HC32L196PCTA$Flash\FlashHC32L19X_256K.FLM))</FlashDriverDll>
           <DeviceId>0</DeviceId>
-          <RegisterFile>$$Device:HC32F030K8TA$Device\Include\HC32F030K8TA.h</RegisterFile>
+          <RegisterFile>$$Device:HC32L196PCTA$Device\Include\HC32L196PCTA.h</RegisterFile>
           <MemoryEnv></MemoryEnv>
           <Cmp></Cmp>
           <Asm></Asm>
@@ -2198,7 +2198,7 @@
           <SLE66CMisc></SLE66CMisc>
           <SLE66AMisc></SLE66AMisc>
           <SLE66LinkerMisc></SLE66LinkerMisc>
-          <SFDFile>$$Device:HC32F030K8TA$SVD\HC32F030K8TA.sfr</SFDFile>
+          <SFDFile>$$Device:HC32L196PCTA$SVD\HC32L196PCTA.sfr</SFDFile>
           <bCustSvd>0</bCustSvd>
           <UseEnv>0</UseEnv>
           <BinPath></BinPath>
@@ -2213,8 +2213,8 @@
             <NotGenerated>0</NotGenerated>
             <InvalidFlash>1</InvalidFlash>
           </TargetStatus>
-          <OutputDirectory>.\debug\</OutputDirectory>
-          <OutputName>template_am116_core</OutputName>
+          <OutputDirectory>.\release\</OutputDirectory>
+          <OutputName>example_am116_core</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
           <CreateHexFile>1</CreateHexFile>
@@ -2247,7 +2247,7 @@
           <AfterMake>
             <RunUserProg1>0</RunUserProg1>
             <RunUserProg2>0</RunUserProg2>
-            <UserProg1Name>$K\ARM\BIN\ELFDWT.EXE !L BASEADDRESS(0x00000000)</UserProg1Name>
+            <UserProg1Name>fromelf --bincombined -o "$L@L.bin" "$L@L.axf"</UserProg1Name>
             <UserProg2Name></UserProg2Name>
             <UserProg1Dos16Mode>0</UserProg1Dos16Mode>
             <UserProg2Dos16Mode>0</UserProg2Dos16Mode>
@@ -2291,6 +2291,47 @@
             <HexOffset>0</HexOffset>
             <Oh166RecLen>16</Oh166RecLen>
           </OPTHX>
+          <Simulator>
+            <UseSimulator>0</UseSimulator>
+            <LoadApplicationAtStartup>1</LoadApplicationAtStartup>
+            <RunToMain>1</RunToMain>
+            <RestoreBreakpoints>1</RestoreBreakpoints>
+            <RestoreWatchpoints>1</RestoreWatchpoints>
+            <RestoreMemoryDisplay>1</RestoreMemoryDisplay>
+            <RestoreFunctions>1</RestoreFunctions>
+            <RestoreToolbox>1</RestoreToolbox>
+            <LimitSpeedToRealTime>0</LimitSpeedToRealTime>
+            <RestoreSysVw>1</RestoreSysVw>
+          </Simulator>
+          <Target>
+            <UseTarget>1</UseTarget>
+            <LoadApplicationAtStartup>1</LoadApplicationAtStartup>
+            <RunToMain>1</RunToMain>
+            <RestoreBreakpoints>1</RestoreBreakpoints>
+            <RestoreWatchpoints>1</RestoreWatchpoints>
+            <RestoreMemoryDisplay>1</RestoreMemoryDisplay>
+            <RestoreFunctions>0</RestoreFunctions>
+            <RestoreToolbox>1</RestoreToolbox>
+            <RestoreTracepoints>1</RestoreTracepoints>
+            <RestoreSysVw>1</RestoreSysVw>
+          </Target>
+          <RunDebugAfterBuild>0</RunDebugAfterBuild>
+          <TargetSelection>1</TargetSelection>
+          <SimDlls>
+            <CpuDll></CpuDll>
+            <CpuDllArguments></CpuDllArguments>
+            <PeripheralDll></PeripheralDll>
+            <PeripheralDllArguments></PeripheralDllArguments>
+            <InitializationFile></InitializationFile>
+          </SimDlls>
+          <TargetDlls>
+            <CpuDll></CpuDll>
+            <CpuDllArguments></CpuDllArguments>
+            <PeripheralDll></PeripheralDll>
+            <PeripheralDllArguments></PeripheralDllArguments>
+            <InitializationFile></InitializationFile>
+            <Driver>BIN\UL2CM3.DLL</Driver>
+          </TargetDlls>
         </DebugOption>
         <Utilities>
           <Flash1>
@@ -2410,12 +2451,12 @@
               <IRAM>
                 <Type>0</Type>
                 <StartAddress>0x20000000</StartAddress>
-                <Size>0x2000</Size>
+                <Size>0x8000</Size>
               </IRAM>
               <IROM>
                 <Type>1</Type>
                 <StartAddress>0x0</StartAddress>
-                <Size>0x10000</Size>
+                <Size>0x40000</Size>
               </IROM>
               <XRAM>
                 <Type>0</Type>
@@ -2440,7 +2481,7 @@
               <OCR_RVCT4>
                 <Type>1</Type>
                 <StartAddress>0x0</StartAddress>
-                <Size>0x10000</Size>
+                <Size>0x40000</Size>
               </OCR_RVCT4>
               <OCR_RVCT5>
                 <Type>1</Type>
@@ -2465,7 +2506,7 @@
               <OCR_RVCT9>
                 <Type>0</Type>
                 <StartAddress>0x20000000</StartAddress>
-                <Size>0x2000</Size>
+                <Size>0x8000</Size>
               </OCR_RVCT9>
               <OCR_RVCT10>
                 <Type>0</Type>
@@ -2525,7 +2566,7 @@
             </VariousControls>
           </Aads>
           <LDads>
-            <umfTarg>1</umfTarg>
+            <umfTarg>0</umfTarg>
             <Ropi>0</Ropi>
             <Rwpi>0</Rwpi>
             <noStLib>0</noStLib>
@@ -2534,7 +2575,7 @@
             <TextAddressRange>0x00000000</TextAddressRange>
             <DataAddressRange>0x10000000</DataAddressRange>
             <pXoBase></pXoBase>
-            <ScatterFile>.\template_am116_core.sct</ScatterFile>
+            <ScatterFile>.\example_aml19x_core.sct</ScatterFile>
             <IncludeLibs></IncludeLibs>
             <IncludeLibsPath></IncludeLibsPath>
             <Misc></Misc>

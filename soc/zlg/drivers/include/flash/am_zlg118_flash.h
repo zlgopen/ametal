@@ -7,7 +7,7 @@
 * All rights reserved.
 *
 * Contact information:
-* web site:    http://www.zlg118.cn/
+* web site:    http://www.zlg.cn/
 *******************************************************************************/
 
 /**
@@ -38,6 +38,213 @@ extern "C" {
  * @{
  */
 
+#if defined ( __CC_ARM   )
+#pragma anon_unions
+#endif
+
+typedef struct
+{
+    __IO uint32_t tnvs                      : 9;
+    __IO uint32_t rsv                       :23;
+} amhw_zlg118_flash_tnvs_field_t;
+
+typedef struct
+{
+    __IO uint32_t tpgs                      : 8;
+    __IO uint32_t rsv                       :24;
+} amhw_zlg118_flash_tpgs_field_t;
+
+typedef struct
+{
+    __IO uint32_t tprog                     : 9;
+    __IO uint32_t rsv                       :23;
+} amhw_zlg118_flash_tprog_field_t;
+
+typedef struct
+{
+    __IO uint32_t tserase                   :18;
+    __IO uint32_t rsv                       :14;
+} amhw_zlg118_flash_tserase_field_t;
+
+typedef struct
+{
+    __IO uint32_t tmerase                   :21;
+    __IO uint32_t rsv                       :11;
+} amhw_zlg118_flash_tmerase_field_t;
+
+typedef struct
+{
+    __IO uint32_t tprcv                     :12;
+    __IO uint32_t rsv                       :20;
+} amhw_zlg118_flash_tprcv_field_t;
+
+typedef struct
+{
+    __IO uint32_t tsrcv                     :12;
+    __IO uint32_t rsv                       :20;
+} amhw_zlg118_flash_tsrcv_field_t;
+
+ typedef struct
+{
+    __IO uint32_t tmrcv                     :14;
+    __IO uint32_t rsv                       :18;
+} amhw_zlg118_flash_tmrcv_field_t;
+
+typedef struct
+{
+    __IO uint32_t op                        : 2;
+    __IO uint32_t wait                      : 2;
+    __IO uint32_t busy                      : 1;
+    __IO uint32_t ie                        : 2;
+         uint32_t reserved7                 : 2;
+    __IO uint32_t dpstb_en                  : 1;
+    __IO uint32_t rsv                       :22;
+} amhw_zlg118_flash_cr_field_t;
+
+typedef struct
+{
+    __IO uint32_t if0                       : 1;
+    __IO uint32_t if1                       : 1;
+    __IO uint32_t rsv                       :30;
+} amhw_zlg118_flash_ifr_field_t;
+
+typedef struct
+{
+    __IO uint32_t iclr0                     : 1;
+    __IO uint32_t iclr1                     : 1;
+    __IO uint32_t rsv                       :30;
+} amhw_zlg118_flash_iclr_field_t;
+
+typedef struct
+{
+    __IO uint32_t byseq                     :16;
+    __IO uint32_t rsv                       :16;
+} amhw_zlg118_flash_bypass_field_t;
+
+typedef struct
+{
+    __IO uint32_t slock                     :32;
+} amhw_zlg118_flash_slock0_field_t;
+
+typedef struct
+{
+    __IO uint32_t slock                     :32;
+} amhw_zlg118_flash_slock1_field_t;
+
+typedef struct
+{
+    __IO uint32_t slock                     :32;
+} amhw_zlg118_flash_slock2_field_t;
+
+typedef struct
+{
+    __IO uint32_t slock                     :32;
+} amhw_zlg118_flash_slock3_field_t;
+
+typedef struct
+{
+    union
+    {
+        __IO uint32_t tnvs;
+        amhw_zlg118_flash_tnvs_field_t tnvs_f;
+    };
+    union
+    {
+        __IO uint32_t tpgs;
+        amhw_zlg118_flash_tpgs_field_t tpgs_f;
+    };
+    union
+    {
+        __IO uint32_t tprog;
+        amhw_zlg118_flash_tprog_field_t tprog_f;
+    };
+    union
+    {
+        __IO uint32_t tserase;
+        amhw_zlg118_flash_tserase_field_t tserase_f;
+    };
+    union
+    {
+        __IO uint32_t tmerase;
+        amhw_zlg118_flash_tmerase_field_t tmerase_f;
+    };
+    union
+    {
+        __IO uint32_t tprcv;
+        amhw_zlg118_flash_tprcv_field_t tprcv_f;
+    };
+    union
+    {
+        __IO uint32_t tsrcv;
+        amhw_zlg118_flash_tsrcv_field_t tsrcv_f;
+    };
+    union
+    {
+        __IO uint32_t tmrcv;
+        amhw_zlg118_flash_tmrcv_field_t tmrcv_f;
+    };
+    union
+    {
+        __IO uint32_t cr;
+        amhw_zlg118_flash_cr_field_t cr_f;
+    };
+    union
+    {
+        __IO uint32_t ifr;
+        amhw_zlg118_flash_ifr_field_t ifr_f;
+    };
+    union
+    {
+        __IO uint32_t iclr;
+        amhw_zlg118_flash_iclr_field_t iclr_f;
+    };
+    union
+    {
+        __IO uint32_t bypass;
+        amhw_zlg118_flash_bypass_field_t bypass_f;
+    };
+    union
+    {
+        __IO uint32_t slock0;
+        amhw_zlg118_flash_slock0_field_t slock0_f;
+    };
+    union
+    {
+        __IO uint32_t slock1;
+        amhw_zlg118_flash_slock1_field_t slock1_f;
+    };
+    uint8_t reserved14[8];
+    union
+    {
+        __IO uint32_t slock2;
+        amhw_zlg118_flash_slock2_field_t slock2_f;
+    };
+    union
+    {
+        __IO uint32_t slock3;
+        amhw_zlg118_flash_slock3_field_t slock3_f;
+    };
+}amhw_zlg118_flash_typedef;
+
+typedef enum en_flash_op
+{
+    Read        = 0u,           ///<读配置值
+    Program     = 1u,           ///<编程配置值
+    SectorErase = 2u,           ///<扇区擦除配置值
+    ChipErase   = 3u,           ///<全片擦除配置值
+} en_flash_op_t;
+
+
+uint32_t am_zlg118_flash_writebyte(uint32_t addr, uint8_t u8Data);
+uint32_t am_zlg118_flash_writehalfword(uint32_t addr, uint16_t data);
+uint32_t am_zlg118_flash_writeword(uint32_t addr, uint32_t data);
+uint32_t am_zlg118_flash_sectorerase(uint32_t sectoraddr);
+uint32_t am_zlg118_flash_chiperase(void);
+void am_zlg118_flash_lockall(void);
+void am_zlg118_flash_unlockall(void);
+
+int32_t am_zlg118_flash_waitcycle(amhw_zlg118_flash_read_waittime waitcycle);
+
 /**
  * \brief Flash模块初始化
  *
@@ -45,7 +252,7 @@ extern "C" {
  *
  * \return 无
  */
-void am_zlg118_flash_init (amhw_zlg118_flash_t *p_hw_flash);
+int32_t am_zlg118_flash_init(uint8_t freqcfg, am_bool_t able);
 
 /**
  * \brief 擦除扇区
@@ -56,7 +263,7 @@ void am_zlg118_flash_init (amhw_zlg118_flash_t *p_hw_flash);
  * \return >0: 执行结果, -AM_EINVAL: 输入地址过大
  */
 int32_t am_zlg118_flash_sector_erase (amhw_zlg118_flash_t *p_hw_flash,
-                                      uint32_t             start_addr);
+                                    uint32_t           addr);
 
 /**
  * \brief 对扇区编程或部分扇区编程
@@ -68,13 +275,13 @@ int32_t am_zlg118_flash_sector_erase (amhw_zlg118_flash_t *p_hw_flash,
  *
  * \retval 0 实际成功写入的字数
  */
-int32_t am_zlg118_flash_flash_program (amhw_zlg118_flash_t *p_hw_flash,
-                                       uint32_t             dst_addr,
-                                       uint32_t            *p_src,
-                                       uint32_t             size);
+int32_t am_zlg118_flash_sector_program (amhw_zlg118_flash_t *p_hw_flash,
+                                      uint32_t             dst_addr,
+                                      uint32_t            *p_src,
+                                      uint32_t             size);
 
 /**
- * \brief 擦除所有扇区
+ * \brief 擦除所有扇区(仅程序运行在SRAM中有效)
  *
  * \param[in] p_hw_flash 指向FLASH寄存器块的指针
  *
@@ -82,6 +289,7 @@ int32_t am_zlg118_flash_flash_program (amhw_zlg118_flash_t *p_hw_flash,
  *
  */
 uint32_t am_zlg118_flash_all_sector_erase (amhw_zlg118_flash_t *p_hw_flash);
+
 
 /**
  * @}

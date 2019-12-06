@@ -7,7 +7,7 @@
 * All rights reserved.
 *
 * Contact information:
-* web site:    http://www.zlg118.cn/
+* web site:    http://www.zlg.cn/
 *******************************************************************************/
 
 /**
@@ -75,6 +75,7 @@ int amhw_zlg118_uart_baudrate_set (amhw_zlg118_uart_t *p_hw_uart,
     uint8_t  clk_bit = 0;
     uint8_t  clk_div = 0;
     uint32_t val_set = 0;
+     volatile uint8_t waittime = 0;
     amhw_zlg118_uart_work_mode_t mode = AMHW_ZLG118_UART_WORK_MODE_0;
 
     /* 确保有效的 clock value */
@@ -137,6 +138,9 @@ int amhw_zlg118_uart_baudrate_set (amhw_zlg118_uart_t *p_hw_uart,
 
         }
     }
+
+    waittime = 100;
+    while(waittime--);
 
     return baud;
 }

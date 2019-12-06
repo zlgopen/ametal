@@ -46,7 +46,7 @@
 #include "demo_zlg_entries.h"
 #include "demo_am118_core_entries.h"
 
-#define FLASH_SECTOR 55    /**< \brief 扇区 */
+#define FLASH_SECTOR  500    /**< \brief 扇区 */
 
 /**
  * \brief 例程入口

@@ -22,7 +22,7 @@
 
 #include "am_hc32_clk.h"
 #include "ametal.h"
-#include "hw/amhw_hc32_flash.h"
+#include "am_hc32_flash.h"
 #include "hc32_periph_map.h"
 #include "hw/amhw_hc32_rcc.h"
 #include "hw/amhw_hc32_rcc_reset.h"
@@ -38,12 +38,6 @@ static void __rcc_unlock (void)
 {
     amhw_hc32_rcc_set_start(0x5A5A);
     amhw_hc32_rcc_set_start(0xA5A5);
-}
-
-static void __flash_unlock (void)
-{
-    amhw_hc32_flash_key_set(HC32_FLASH, 0x5A5A);
-    amhw_hc32_flash_key_set(HC32_FLASH, 0xA5A5);
 }
 
 /**
@@ -267,42 +261,6 @@ int am_hc32_div_get (am_clk_id_t clk_id)
     return div;
 }
 
-static void __rch_enable (amhw_hc32_rch_fre_t rch_clk, uint32_t *sysclk)
-{
-    if(rch_clk == AMHW_HC32_RCH_FRE_24MHz) {
-
-        /* 设置RCH时钟频率校准值 （24MHz）*/
-        amhw_hc32_rcc_rch_trim_set(*((uint16_t*)rch_clk));
-        *sysclk = 24000000;
-    } else if(rch_clk == AMHW_HC32_RCH_FRE_22MHz) {
-
-       /* 设置RCH时钟频率校准值 （22.12MHz）*/
-       amhw_hc32_rcc_rch_trim_set(*((uint16_t*)rch_clk));
-       *sysclk = 22120000;
-    } else if(rch_clk == AMHW_HC32_RCH_FRE_16MHz) {
-
-       /* 设置RCH时钟频率校准值 （16MHz）*/
-       amhw_hc32_rcc_rch_trim_set(*((uint16_t*)rch_clk));
-       *sysclk = 16000000;
-    } else if(rch_clk == AMHW_HC32_RCH_FRE_8MHz) {
-
-       /* 设置RCH时钟频率校准值 （8MHz）*/
-       amhw_hc32_rcc_rch_trim_set(*((uint16_t*)rch_clk));
-       *sysclk = 8000000;
-    } else {
-
-       /* 设置RCH时钟频率校准值 （4MHz）*/
-       amhw_hc32_rcc_rch_trim_set(*((uint16_t*)rch_clk));
-       *sysclk = 4000000;
-    }
-
-    __rcc_unlock();
-    amhw_hc32_rcc_rch_enable();
-
-    /* 等待稳定*/
-    while(amhw_hc32_rcc_rch_state_get() == AM_FALSE);
-}
-
 static void __rcl_enable (amhw_hc32_rcl_fre_t rcl_clk, uint32_t *sysclk)
 {
     if(rcl_clk == AMHW_HC32_RCl_FRE_32768Hz) {
@@ -317,7 +275,6 @@ static void __rcl_enable (amhw_hc32_rcl_fre_t rcl_clk, uint32_t *sysclk)
         *sysclk = 38400;
     }
 
-
     amhw_hc32_rcc_rcl_waittime_set(AMHW_HC32_RCL_WAITTIME_256);
 
     __rcc_unlock();
@@ -325,6 +282,76 @@ static void __rcl_enable (amhw_hc32_rcl_fre_t rcl_clk, uint32_t *sysclk)
 
     /* 等待稳定*/
     while(amhw_hc32_rcc_rcl_state_get() == AM_FALSE);
+}
+
+static void __rch_enable (amhw_hc32_rch_fre_t rch_clk, uint32_t *sysclk)
+{
+    uint16_t temp      = amhw_hc32_rcc_rch_trim_get();
+    uint32_t trim_addr = 0x00100C08;
+    uint32_t trim_set  = 0;
+    uint8_t  setnum    = 0;
+    uint8_t  i         = 0;
+
+    /* 获取当前存放的频率校准值 */
+    if(temp == (*((uint16_t*)AMHW_HC32_RCH_FRE_24MHz))) {
+        trim_addr = 0x00100C00;
+    } else if(temp == (*((uint16_t*)AMHW_HC32_RCH_FRE_22MHz))) {
+        trim_addr = 0x00100C02;
+    } else if(temp == (*((uint16_t*)AMHW_HC32_RCH_FRE_16MHz))) {
+        trim_addr = 0x00100C04;
+    } else if(temp == (*((uint16_t*)AMHW_HC32_RCH_FRE_8MHz))) {
+        trim_addr = 0x00100C06;
+    } else if(temp == (*((uint16_t*)AMHW_HC32_RCH_FRE_4MHz))) {
+        trim_addr = 0x00100C08;
+    }
+
+    /* 设置校准频率 */
+    trim_set = (uint32_t)rch_clk;
+    if(trim_addr == trim_set) {
+        amhw_hc32_rcc_rch_trim_set(*((volatile uint16_t*)trim_set));
+    } else if(trim_addr > trim_set){
+
+        setnum   = (trim_addr - trim_set) >> 1;
+        trim_set = trim_addr;
+
+        for(i = 0; i < setnum; i++) {
+            trim_set = trim_set - 2;
+            amhw_hc32_rcc_rch_trim_set(*((volatile uint16_t*)trim_set));
+        }
+    } else {
+
+        setnum   = (trim_set - trim_addr) >> 1;
+        trim_set = trim_addr;
+
+        for(i = 0; i < setnum; i++) {
+            trim_set = trim_set + 2;
+            amhw_hc32_rcc_rch_trim_set(*((uint16_t*)trim_set));
+        }
+    }
+
+    switch(rch_clk) {
+    case AMHW_HC32_RCH_FRE_24MHz:
+        *sysclk = 24000000;
+        break;
+    case AMHW_HC32_RCH_FRE_22MHz:
+        *sysclk = 22120000;
+        break;
+    case AMHW_HC32_RCH_FRE_16MHz:
+        *sysclk = 16000000;
+        break;
+    case AMHW_HC32_RCH_FRE_8MHz:
+        *sysclk = 8000000;
+        break;
+    case AMHW_HC32_RCH_FRE_4MHz:
+        *sysclk = 4000000;
+        break;
+    }
+
+    __rcc_unlock();
+    amhw_hc32_rcc_rch_enable();
+
+    /* 等待稳定*/
+    while(amhw_hc32_rcc_rch_state_get() == AM_FALSE);
 }
 
 static void __xth_enable (uint32_t xth_clk, uint32_t *sysclk)
@@ -402,9 +429,6 @@ static void __pll_enable (am_hc32_clk_dev_t           *p_dev,
 
     p_dev->sys_clk    = p_dev->pllout_clk;
 
-    /* PLL倍频系数选择 */
-    amhw_hc32_rcc_pll_divn_set(p_devinfo->pll_mul);
-
     /* PLL输入频率范围选择 */
     if((p_dev->pllin_clk >= 4000000) && (p_dev->pllin_clk < 6000000)) {
         amhw_hc32_rcc_pll_input_fre_set(AMHW_HC32_PLL_INPUT_FRE_4_6);
@@ -433,6 +457,9 @@ static void __pll_enable (am_hc32_clk_dev_t           *p_dev,
     } else {
         amhw_hc32_rcc_pll_output_fre_set(AMHW_HC32_PLL_OUTPUT_FRE_36_48);
     }
+
+    /* PLL倍频系数选择 */
+    amhw_hc32_rcc_pll_divn_set(p_devinfo->pll_mul);
 
     /* PLL稳定时间选择 */
     amhw_hc32_rcc_pll_waittime_set(AMHW_HC32_PLL_WAITTIME_16384);
@@ -469,8 +496,6 @@ int am_hc32_clk_init (am_hc32_clk_dev_t           *p_dev,
         }
     }
 
-    am_clk_enable(CLK_FLASH);
-
     switch(p_devinfo->sysclk_src) {
 
     case AMHW_HC32_SYSCLK_RCH:
@@ -506,17 +531,15 @@ int am_hc32_clk_init (am_hc32_clk_dev_t           *p_dev,
     p_dev->sys_type = p_devinfo->sysclk_src;
 
     if((p_dev->sys_clk) > 24000000) {
-        __flash_unlock();
-        amhw_hc32_flash_read_waittime_set(HC32_FLASH,
-                                            AMHW_HC32_FLASH_READ_WAITTIME_2);
-    } else {
-        __flash_unlock();
-        amhw_hc32_flash_read_waittime_set(HC32_FLASH,
-                                            AMHW_HC32_FLASH_READ_WAITTIME_1);
+        am_hc32_flash_waitcycle(AMHW_HC32_FLASH_READ_WAITTIME_2);
     }
 
     __rcc_unlock();
     amhw_hc32_rcc_sys_clk_set(p_devinfo->sysclk_src);
+
+    if((p_dev->sys_clk) <= 24000000) {
+            am_hc32_flash_waitcycle( AMHW_HC32_FLASH_READ_WAITTIME_1);
+    }
 
     __rcc_unlock();
     amhw_hc32_rcc_hclk_set((amhw_hc32_hclk_src)p_devinfo->hclk_div);
@@ -527,31 +550,11 @@ int am_hc32_clk_init (am_hc32_clk_dev_t           *p_dev,
     p_dev->hclk = p_dev->sys_clk / (0x1ul << p_devinfo->hclk_div);
     p_dev->pclk = p_dev->hclk / (0x1ul << p_devinfo->pclk_div);
 
-    hclk_unit = p_dev->hclk / 1000000;
+    hclk_unit = p_dev->hclk / 4000000;
 
-    __flash_unlock();
-    amhw_hc32_flash_tnvs_set(HC32_FLASH, hclk_unit);
+    //am_clk_enable(CLK_FLASH);
 
-    __flash_unlock();
-    amhw_hc32_flash_tpgs_set(HC32_FLASH, hclk_unit);
-
-    __flash_unlock();
-    amhw_hc32_flash_tprog_set(HC32_FLASH, hclk_unit);
-
-    __flash_unlock();
-    amhw_hc32_flash_tserase_set(HC32_FLASH, hclk_unit);
-
-    __flash_unlock();
-    amhw_hc32_flash_tmerase_set(HC32_FLASH, hclk_unit);
-
-    __flash_unlock();
-    amhw_hc32_flash_tprcv_set(HC32_FLASH, hclk_unit);
-
-    __flash_unlock();
-    amhw_hc32_flash_tsrcv_set(HC32_FLASH, hclk_unit);
-
-    __flash_unlock();
-    amhw_hc32_flash_tmrcv_set(HC32_FLASH, hclk_unit);
+	am_hc32_flash_init(hclk_unit, AM_TRUE);
 
     return AM_OK;
 }

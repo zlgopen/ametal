@@ -42,7 +42,7 @@
 /**
  * \brief 例程入口
  */
-void demo_zlg118_drv_flash_entry (void *p_hw_flash, uint8_t sector)
+void demo_zlg118_drv_flash_entry (void *p_hw_flash, uint16_t sector)
 {
     amhw_zlg118_flash_t *p_flash = (amhw_zlg118_flash_t *)p_hw_flash;
 
@@ -57,10 +57,10 @@ void demo_zlg118_drv_flash_entry (void *p_hw_flash, uint8_t sector)
     }
 
     /* FLASH 初始化 */
-    am_zlg118_flash_init(p_flash);
+    am_zlg118_flash_init(48000000/4000000, AM_TRUE);
 
     /* 擦除扇区 */
-    status = am_zlg118_flash_sector_erase(p_flash, sector * 1024);
+    status = am_zlg118_flash_sector_erase(p_flash, sector << 9);
 
     /* 扇区擦除出错， 程序停在此处 */
     if (0 != status) {
@@ -70,10 +70,10 @@ void demo_zlg118_drv_flash_entry (void *p_hw_flash, uint8_t sector)
     }
 
     /* 向扇区中写入数据 */
-    status = am_zlg118_flash_flash_program(p_flash,
-                                        sector * 1024,
-                                        data,
-                                        1024 / 4);
+    status = am_zlg118_flash_sector_program(p_flash,
+                                            sector << 9,
+                                            data,
+                                            1024 / 4);
 
     /* 扇区写入出错，程序停在此处 */
     if ((1024 / 4) != status) {
@@ -84,7 +84,7 @@ void demo_zlg118_drv_flash_entry (void *p_hw_flash, uint8_t sector)
 
     /* 从扇区读取数据 */
     for (i = 0; i < 1024 / 4; i++) {
-        temp[i] = *(uint32_t *)((i * 4) + (sector * 1024));
+        temp[i] = *(uint32_t *)((i * 4) + (sector << 9));
 
         /* 校验数据，校验失败，程序停在此处 */
         if (temp[i] != data[i]) {
@@ -94,7 +94,7 @@ void demo_zlg118_drv_flash_entry (void *p_hw_flash, uint8_t sector)
     }
 
     for (i = 0; i < 1024 / 4; i++) {
-        AM_DBG_INFO("0x%08d  ", temp[i]);
+        AM_DBG_INFO("%04d  ", temp[i]);
     }
     AM_DBG_INFO("\r\nflash test success!\r\n");
 

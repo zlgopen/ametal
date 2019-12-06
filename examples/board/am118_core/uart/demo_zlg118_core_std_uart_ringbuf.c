@@ -55,7 +55,7 @@ void demo_zlg118_core_std_uart_ringbuf_entry (void)
      /* 等待发送数据完成 */
     am_mdelay(100);
 
-    demo_std_uart_ringbuf_entry(am_zlg118_uart1_inst_init());
+    demo_std_uart_ringbuf_entry(am_zlg118_uart0_inst_init());
 }
 /** [src_zlg118_std_uart_ringbuf] */
 

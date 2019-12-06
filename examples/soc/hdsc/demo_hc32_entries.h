@@ -129,7 +129,7 @@ void demo_hc32_drv_dma_m2m_entry (uint32_t dma_chan);
  *
  * \return 无
  */
-void demo_hc32_drv_flash_entry (void *p_hw_flash, uint8_t sector);
+void demo_hc32_drv_flash_entry (void *p_hw_flash, uint16_t sector);
 
 /**
  * \brief GPIO 例程，通过 HW 层接口实现

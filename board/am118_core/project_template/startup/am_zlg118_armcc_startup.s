@@ -24,7 +24,7 @@
 ;   <o> Stack Size (in Bytes) <0x0-0xFFFFFFFF:8>
 ; </h>
 
-Stack_Size      EQU     0x00000400
+Stack_Size      EQU     0x00000200
 
                 AREA    STACK, NOINIT, READWRITE, ALIGN=3
 Stack_Mem       SPACE   Stack_Size
@@ -66,55 +66,38 @@ __Vectors       DCD     __initial_sp         ; Top of Stack
                 DCD     SysTick_Handler      ; SysTick Handler
 
                 ; External Interrupts
-                DCD     am_exc_eint_handler  ; SPI0 controller
-                DCD     am_exc_eint_handler  ; SPI1 controller
-                DCD     0                    ; Reserved
-                DCD     am_exc_eint_handler  ; UART0
-                DCD     am_exc_eint_handler  ; UART1
-                DCD     am_exc_eint_handler  ; UART2
-                DCD     0                    ; Reserved
-                DCD     am_exc_eint_handler  ; I2C1 controller
-                DCD     am_exc_eint_handler  ; I2C0 controller
-                DCD     am_exc_eint_handler  ; Smart Counter Timer
-                DCD     am_exc_eint_handler  ; Multi-Rate Timer
-                DCD     am_exc_eint_handler  ; Comparator
-                DCD     am_exc_eint_handler  ; watchdog warning interrupt
-                DCD     am_exc_eint_handler  ; Brown Out Detect
-                DCD     am_exc_eint_handler  ; Non-Volatile Memory Controller
-                DCD     am_exc_eint_handler  ; Wakeup timer
-                DCD     am_exc_eint_handler  ; ADC Sequence A Completion [Only on ZLG118]
-                DCD     am_exc_eint_handler  ; ADC Sequence B Completion [Only on ZLG118]
-                DCD     am_exc_eint_handler  ; ADC Threshold compare [Only on ZLG118]
-                DCD     am_exc_eint_handler  ; ADC Overrun [Only on ZLG118]
-                DCD     am_exc_eint_handler  ; DMA Controller [Only on ZLG118]
-                DCD     am_exc_eint_handler  ; I2C2 Controller [Only on ZLG118]
-                DCD     am_exc_eint_handler  ; I2C3 Controller [Only on ZLG118]
-                DCD     0                    ; Reserved
-                DCD     am_exc_eint_handler  ; PIO INT0
-                DCD     am_exc_eint_handler  ; PIO INT1
-                DCD     am_exc_eint_handler  ; PIO INT2
-                DCD     am_exc_eint_handler  ; PIO INT3
-                DCD     am_exc_eint_handler  ; PIO INT4
-                DCD     am_exc_eint_handler  ; PIO INT5
-                DCD     am_exc_eint_handler  ; PIO INT6
-                DCD     am_exc_eint_handler  ; PIO INT7
-
-
-;//   <h> Code Read Protection level (CRP)
-;//     <o>    CRP_Level:
-;//                     <0xFFFFFFFF=> Disabled
-;//                     <0x4E697370=> NO_ISP
-;//                     <0x12345678=> CRP1
-;//                     <0x87654321=> CRP2
-;//                     <0x43218765=> CRP3 (Are you sure?)
-;//   </h>
-CRP_Level       EQU     0xFFFFFFFF
-
-                IF      :LNOT::DEF:NO_CRP
-                AREA    |.ARM.__at_0x02FC|, CODE, READONLY
-CRP_Key         DCD     0xFFFFFFFF
-                ENDIF
-
+                DCD     am_exc_eint_handler  ; PORTA_IRQHandler
+                DCD     am_exc_eint_handler  ; PORTB_IRQHandler
+                DCD     am_exc_eint_handler  ; PORTC_E_IRQHandler
+                DCD     am_exc_eint_handler  ; PORTD_F_IRQHandler
+                DCD     am_exc_eint_handler  ; DMAC_IRQHandler
+                DCD     am_exc_eint_handler  ; TIM3_IRQHandler
+                DCD     am_exc_eint_handler  ; UART0_2_IRQHandler
+                DCD     am_exc_eint_handler  ; UART1_3_IRQHandler
+                DCD     am_exc_eint_handler  ; LPUART0_IRQHandler
+                DCD     am_exc_eint_handler  ; LPUART1_IRQHandler
+                DCD     am_exc_eint_handler  ; SPI0_IRQHandler
+                DCD     am_exc_eint_handler  ; SPI1_IRQHandler
+                DCD     am_exc_eint_handler  ; I2C0_IRQHandler
+                DCD     am_exc_eint_handler  ; I2C1_IRQHandler
+                DCD     am_exc_eint_handler  ; TIM0_IRQHandler
+                DCD     am_exc_eint_handler  ; TIM1_IRQHandler
+                DCD     am_exc_eint_handler  ; TIM2_IRQHandler
+                DCD     am_exc_eint_handler  ; LPTIM0_1_IRQHandler
+                DCD     am_exc_eint_handler  ; TIM4_IRQHandler
+                DCD     am_exc_eint_handler  ; TIM5_IRQHandler
+                DCD     am_exc_eint_handler  ; TIM6_IRQHandler
+                DCD     am_exc_eint_handler  ; PCA_IRQHandler
+                DCD     am_exc_eint_handler  ; WDT_IRQHandler
+                DCD     am_exc_eint_handler  ; RTC_IRQHandler
+                DCD     am_exc_eint_handler  ; ADC_DAC_IRQHandler
+                DCD     am_exc_eint_handler  ; PCNT_IRQHandler
+                DCD     am_exc_eint_handler  ; VC0_IRQHandler
+                DCD     am_exc_eint_handler  ; VC1_2_IRQHandler
+                DCD     am_exc_eint_handler  ; LVD_IRQHandler
+                DCD     am_exc_eint_handler  ; LCD_IRQHandler
+                DCD     am_exc_eint_handler  ; FLASH_RAM_IRQHandler
+                DCD     am_exc_eint_handler  ; CLKTRIM_IRQHandler
 
                 AREA    |.text|, CODE, READONLY
 

@@ -80,9 +80,9 @@
             <nStopB2X>0</nStopB2X>
           </BeforeMake>
           <AfterMake>
-            <RunUserProg1>0</RunUserProg1>
+            <RunUserProg1>1</RunUserProg1>
             <RunUserProg2>0</RunUserProg2>
-            <UserProg1Name>$K\ARM\BIN\ELFDWT.EXE !L BASEADDRESS(0x00000000)</UserProg1Name>
+            <UserProg1Name>fromelf --bincombined -o "$L@L.bin" "$L@L.axf"</UserProg1Name>
             <UserProg2Name></UserProg2Name>
             <UserProg1Dos16Mode>0</UserProg1Dos16Mode>
             <UserProg2Dos16Mode>0</UserProg2Dos16Mode>
@@ -360,7 +360,7 @@
             </VariousControls>
           </Aads>
           <LDads>
-            <umfTarg>1</umfTarg>
+            <umfTarg>0</umfTarg>
             <Ropi>0</Ropi>
             <Rwpi>0</Rwpi>
             <noStLib>0</noStLib>
@@ -369,7 +369,7 @@
             <TextAddressRange>0x00000000</TextAddressRange>
             <DataAddressRange>0x10000000</DataAddressRange>
             <pXoBase></pXoBase>
-            <ScatterFile>.\template_am116_core.sct</ScatterFile>
+            <ScatterFile>.\example_am118_core.sct</ScatterFile>
             <IncludeLibs></IncludeLibs>
             <IncludeLibsPath></IncludeLibsPath>
             <Misc></Misc>
@@ -2208,8 +2208,8 @@
             <NotGenerated>0</NotGenerated>
             <InvalidFlash>1</InvalidFlash>
           </TargetStatus>
-          <OutputDirectory>.\debug\</OutputDirectory>
-          <OutputName>template_am116_core</OutputName>
+          <OutputDirectory>.\release\</OutputDirectory>
+          <OutputName>example_am118_core</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
           <CreateHexFile>1</CreateHexFile>
@@ -2242,7 +2242,7 @@
           <AfterMake>
             <RunUserProg1>0</RunUserProg1>
             <RunUserProg2>0</RunUserProg2>
-            <UserProg1Name>$K\ARM\BIN\ELFDWT.EXE !L BASEADDRESS(0x00000000)</UserProg1Name>
+            <UserProg1Name>fromelf --bincombined -o "$L@L.bin" "$L@L.axf"</UserProg1Name>
             <UserProg2Name></UserProg2Name>
             <UserProg1Dos16Mode>0</UserProg1Dos16Mode>
             <UserProg2Dos16Mode>0</UserProg2Dos16Mode>
@@ -2298,7 +2298,7 @@
           </Flash1>
           <bUseTDR>1</bUseTDR>
           <Flash2>BIN\UL2CM3.DLL</Flash2>
-          <Flash3></Flash3>
+          <Flash3>"" ()</Flash3>
           <Flash4></Flash4>
           <pFcarmOut></pFcarmOut>
           <pFcarmGrp></pFcarmGrp>
@@ -2520,7 +2520,7 @@
             </VariousControls>
           </Aads>
           <LDads>
-            <umfTarg>1</umfTarg>
+            <umfTarg>0</umfTarg>
             <Ropi>0</Ropi>
             <Rwpi>0</Rwpi>
             <noStLib>0</noStLib>
@@ -2529,7 +2529,7 @@
             <TextAddressRange>0x00000000</TextAddressRange>
             <DataAddressRange>0x10000000</DataAddressRange>
             <pXoBase></pXoBase>
-            <ScatterFile>.\template_am116_core.sct</ScatterFile>
+            <ScatterFile>.\example_am118_core.sct</ScatterFile>
             <IncludeLibs></IncludeLibs>
             <IncludeLibsPath></IncludeLibsPath>
             <Misc></Misc>

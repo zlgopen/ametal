@@ -49,8 +49,8 @@ STACK_SIZE = 0x200;             /*  stack size config   512       */
  */
 MEMORY
 {
-   FLASH (rx)  : ORIGIN = 0x00000000, LENGTH = 256K /* origin 256k */
-   RAM   (rwx) : ORIGIN = 0x20000000, LENGTH = 32K
+   FLASH         (rx)  : ORIGIN = 0x00000000, LENGTH = 256K
+   RAM           (rwx) : ORIGIN = 0x20000000, LENGTH = 32K
 }
 
 ENTRY(ResetHandler)
@@ -63,13 +63,31 @@ ENTRY(ResetHandler)
  */
 SECTIONS
 {
-
-     .text :
+    .vector :
     {
+        . = ALIGN(4);
         _stext = .;          /* Provide the name for the start of this section */
         CREATE_OBJECT_SYMBOLS
         
         KEEP(*(.vectors))       /* 使用KEEP使.vector段不被移除 */
+    } > FLASH
+    
+    .flash_op :
+    {
+        . = ALIGN(4);        /* Align the start of the section */
+        *am_hc32_flash.o(*.text* .rodata .rodata.* .constdata .constdata.*);
+        . = ALIGN(4);        /* Align the end of the section */
+    } > FLASH 
+    
+    .text :
+    {
+        . = ALIGN(4);
+        __flash_op_section_table = .;
+        LONG(LOADADDR(.flash_op));   /* flash*/
+        LONG(    ADDR(.flash_op));   /* sdram*/
+        LONG(  SIZEOF(.flash_op));   /* length*/
+        __flash_op_section_table_end = .;
+        
         *(.text)
         *(.text.*)              /*  cpp namespace function      */
         *(.romrun)              /*  rom中必须的函数             */
@@ -80,7 +98,7 @@ SECTIONS
         *(.glue_7)
         *(.glue_7t)
     } > FLASH
-
+    
     /* section information for simple shell symbols */
     .text :
     {
@@ -191,6 +209,7 @@ SECTIONS
     * Here this section starts at the end of the ram segment.
     */
    _estack = ORIGIN(RAM) + LENGTH(RAM);
+
    
    ASSERT(__heap_end__ >= __heap_start__, "region RAM overflowed with stack")
 }

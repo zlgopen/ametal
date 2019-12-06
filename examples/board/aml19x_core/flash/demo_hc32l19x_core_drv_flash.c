@@ -17,7 +17,7 @@
  * - 实验现象：
  *   1. 擦除出错：串口打印"erase error!"；
  *   2. 写入出错：串口打印"program error!"；
- *   3. 写入成功：串口打印 255 扇区的(1024/4)个 32bit 十六进制数据。
+ *   3. 写入成功：串口打印 480扇区的(512)个 32bit 十六进制数据。
  *
  * \note
  *    如需观察串口打印的调试信息，需要将 PIOA_10 引脚连接 PC 串口的 TXD，
@@ -46,7 +46,7 @@
 #include "demo_hc32_entries.h"
 #include "demo_aml19x_core_entries.h"
 
-#define FLASH_SECTOR 55    /**< \brief 扇区 */
+#define FLASH_SECTOR    500
 
 /**
  * \brief 例程入口

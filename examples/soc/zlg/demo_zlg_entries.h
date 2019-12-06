@@ -249,7 +249,7 @@ void demo_zlg_drv_flash_entry (amhw_zlg_flash_t *p_hw_flash, uint8_t sector);
  *
  * \return 无
  */
-void demo_zlg118_drv_flash_entry (void *p_hw_flash, uint8_t sector);
+void demo_zlg118_drv_flash_entry (void *p_hw_flash, uint16_t sector);
 
 /**
  * \brief zlg237 FLASH 例程，通过驱动层接口实现

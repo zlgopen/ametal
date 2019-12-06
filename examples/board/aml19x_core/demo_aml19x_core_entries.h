@@ -581,14 +581,12 @@ void demo_hc32l19x_core_kft_bootloader_entry (void);
 void demo_hc32l19x_core_kft_application_entry (void);
 
 /**
-
- * \brief 双区bootloader的测试应用程序例程
+ * \brief uart 双区bootloader的测试应用程序例程
  */
 
 void demo_hc32l19x_core_double_application_entry (void);
 
 /**
-
  * \brief 单区bootloader的测试应用程序例程
  */
 

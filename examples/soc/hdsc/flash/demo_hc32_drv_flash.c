@@ -17,7 +17,7 @@
  * - 实验现象：
  *   1. 擦除出错：串口打印 "erase error!"；
  *   2. 写入出错：串口打印 "program error!"；
- *   3. 写入成功：串口打印指定扇区的(1024 / 4)个 32bit 十六进制数据。
+ *   3. 写入成功：串口打印指定扇区的(512)个 32bit 十六进制数据。
  *
  * \par 源代码
  * \snippet demo_hc32_drv_flash.c src_hc32_drv_flash
@@ -36,31 +36,29 @@
 /** [src_hc32_drv_flash] */
 #include "ametal.h"
 #include "am_delay.h"
+#include "am_int.h"
 #include "am_vdebug.h"
 #include "am_hc32_flash.h"
 
 /**
  * \brief 例程入口
  */
-void demo_hc32_drv_flash_entry (void *p_hw_flash, uint8_t sector)
+void demo_hc32_drv_flash_entry (void *p_hw_flash, uint16_t sector)
 {
     amhw_hc32_flash_t *p_flash = (amhw_hc32_flash_t *)p_hw_flash;
 
     int             i;
-    uint32_t        status;         /* FLASH 命令执行状态 */
-    static uint32_t data[1024 / 4]; /* 要写入 FLASH 的数据 */
-    static uint32_t temp[1024 / 4]; /* 从 FLASH 中读出的数据 */
+    uint32_t        status;    /* FLASH 命令执行状态 */
+    static uint32_t data[1024/4]; /* 要写入 FLASH 的数据 */
+    static uint32_t temp[1024/4]; /* 从 FLASH 中读出的数据 */
 
     /* 数据初始化 */
-    for (i = 0; i < 1024 / 4; i++) {
+    for (i = 0; i < 1024/4; i++) {
         data[i] = i;
     }
 
-    /* FLASH 初始化 */
-    am_hc32_flash_init(p_flash);
-
     /* 擦除扇区 */
-    status = am_hc32_flash_sector_erase(p_flash, sector * 1024);
+    status = am_hc32_flash_sector_erase(p_flash, sector << 9);
 
     /* 扇区擦除出错， 程序停在此处 */
     if (0 != status) {
@@ -70,21 +68,21 @@ void demo_hc32_drv_flash_entry (void *p_hw_flash, uint8_t sector)
     }
 
     /* 向扇区中写入数据 */
-    status = am_hc32_flash_flash_program(p_flash,
-                                        sector * 1024,
-                                        data,
-                                        1024 / 4);
+    status = am_hc32_flash_sector_program(p_flash,
+                                          sector << 9,
+                                          data,
+                                          1024/4);
 
     /* 扇区写入出错，程序停在此处 */
-    if ((1024 / 4) != status) {
+    if ((1024/4) != status) {
         AM_DBG_INFO("program error!\r\n");
 
         AM_FOREVER;
     }
 
     /* 从扇区读取数据 */
-    for (i = 0; i < 1024 / 4; i++) {
-        temp[i] = *(uint32_t *)((i * 4) + (sector * 1024));
+    for (i = 0; i < (1024/4); i++) {
+        temp[i] = *(uint32_t *)((i * 4) + (sector << 9));
 
         /* 校验数据，校验失败，程序停在此处 */
         if (temp[i] != data[i]) {
@@ -93,8 +91,8 @@ void demo_hc32_drv_flash_entry (void *p_hw_flash, uint8_t sector)
         }
     }
 
-    for (i = 0; i < 1024 / 4; i++) {
-        AM_DBG_INFO("0x%08d  ", temp[i]);
+    for (i = 0; i < (1024/4); i++) {
+        AM_DBG_INFO("%04d  ", temp[i]);
     }
     AM_DBG_INFO("\r\nflash test success!\r\n");
 

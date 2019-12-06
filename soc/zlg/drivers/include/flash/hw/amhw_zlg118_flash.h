@@ -7,7 +7,7 @@
 * All rights reserved.
 *
 * Contact information:
-* web site:    http://www.zlg118.cn/
+* web site:    http://www.zlg.cn/
 *******************************************************************************/
 
 /**
@@ -82,8 +82,8 @@ typedef struct amhw_zlg118_flash {
     __IO uint32_t bypass;    /**< \brief BypassÐòÁÐ¼Ä´æÆ÷                               offset : 0x2c */
     __IO uint32_t slock0;    /**< \brief Sector0-127²ÁÐ´±£»¤¼Ä´æÆ÷        offset : 0x30 */
     __IO uint32_t slock1;    /**< \brief Sector128-255²ÁÐ´±£»¤¼Ä´æÆ÷  offset : 0x34 */
-    __IO uint32_t reserve0;  /**< \brief ±£ÁôÎ»                                                         offset : 0x38 */
-    __IO uint32_t reserve1;  /**< \brief ±£ÁôÎ»                                                         offset : 0x3c */
+    __I  uint32_t reserve0;  /**< \brief ±£ÁôÎ»                                                         offset : 0x38 */
+    __I  uint32_t reserve1;  /**< \brief ±£ÁôÎ»                                                         offset : 0x3c */
     __IO uint32_t slock2;    /**< \brief Sector256-383²ÁÐ´±£»¤¼Ä´æÆ÷  offset : 0x40 */
     __IO uint32_t slock3;    /**< \brief Sector384-512²ÁÐ´±£»¤¼Ä´æÆ÷  offset : 0x44 */
 } amhw_zlg118_flash_t;
@@ -293,10 +293,10 @@ void amhw_zlg118_flash_read_waittime_set(amhw_zlg118_flash_t            *p_hw_fl
  * \brief FLASH²Ù×÷Ñ¡Ôñ
  */
 typedef enum {
-    AMHW_ZLG118_FLASH_OPT_READ = 0,       /**< \brief ¶Á */
-    AMHW_ZLG118_FLASH_OPT_WRITE,          /**< \brief Ð´ */
-    AMHW_ZLG118_FLASH_OPT_SECTOR_ERASE,   /**< \brief Ò³²Á³ý  */
-    AMHW_ZLG118_FLASH_OPT_CHIP_ERASE,     /**< \brief È«Æ¬²Á³ý  */
+    AMHW_ZLG118_FLASH_OPT_READ         = 0u,     /**< \brief ¶Á */
+    AMHW_ZLG118_FLASH_OPT_WRITE        = 1u ,    /**< \brief Ð´ */
+    AMHW_ZLG118_FLASH_OPT_SECTOR_ERASE = 2u,     /**< \brief Ò³²Á³ý  */
+    AMHW_ZLG118_FLASH_OPT_CHIP_ERASE   = 3u,     /**< \brief È«Æ¬²Á³ý  */
 }amhw_zlg118_flash_opt;
 
 /**
@@ -310,10 +310,15 @@ typedef enum {
  */
 am_static_inline
 void amhw_zlg118_flash_opt_set(amhw_zlg118_flash_t   *p_hw_flash,
-                               amhw_zlg118_flash_opt  opt)
+                             amhw_zlg118_flash_opt  opt)
 {
-    p_hw_flash->cr = (p_hw_flash->cr & (~0x3ul)) |
-                     (opt & 0x3ul);
+    p_hw_flash->bypass = 0x5A5A;
+    p_hw_flash->bypass = 0xA5A5;
+    p_hw_flash->cr    &= ~0x3ul;
+
+    p_hw_flash->bypass = 0x5A5A;
+    p_hw_flash->bypass = 0xA5A5;
+    p_hw_flash->cr    |= (opt & 0x3ul);
 }
 
 
@@ -441,7 +446,7 @@ void amhw_zlg118_flash_key_set (amhw_zlg118_flash_t *p_hw_flash,
  */
 am_static_inline
 void amhw_zlg118_flash_erase_enable (amhw_zlg118_flash_t *p_hw_flash,
-                                     uint16_t             data)
+                                   uint16_t             data)
 {
     if(data < 32) {
         p_hw_flash->slock0 |= (0x1ul << data);
@@ -485,6 +490,8 @@ void amhw_zlg118_flash_erase_disable (amhw_zlg118_flash_t *p_hw_flash,
         p_hw_flash->slock3 &= ~(0x1ul << (data - 96));
     }
 }
+
+
 
 /**
  * \brief Ê¹ÓÃÄäÃûÁªºÏÌå¶Î½áÊø

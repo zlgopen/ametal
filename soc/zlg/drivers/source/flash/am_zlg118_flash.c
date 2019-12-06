@@ -7,7 +7,7 @@
 * All rights reserved.
 *
 * Contact information:
-* web site:    http://www.zlg118.cn/
+* web site:    http://www.zlg.cn/
 *******************************************************************************/
 
 /**
@@ -21,155 +21,382 @@
  */
 
 #include "am_zlg118_flash.h"
-
 #include "am_types.h"
 #include "am_bitops.h"
+#include "am_int.h"
 #include "ametal.h"
+
 
 /*******************************************************************************
   defines
 *******************************************************************************/
+#define AM_ZLG118_FLASH                 ((amhw_zlg118_flash_typedef *)0x40020000UL)
 
-#define UNLOCK_ZLG118_FLASH_KEY1   0x5A5A  /**< \brief unlock key word */
-#define UNLOCK_ZLG118_FLASH_KEY2   0xA5A5  /**< \brief unlock key word */
+#define AM_ZLG118_FLASH_END_ADDR        (0x0003FFFFu)
+#define AM_ZLG118_FLASH_BYPASS()        AM_ZLG118_FLASH->bypass = 0x5A5A;\
+                                      AM_ZLG118_FLASH->bypass = 0xA5A5;
+#define AM_ZLG118_FLASH_IE_AM_TRUE      (0x03)
+#define AM_ZLG118_FLASH_IE_FALSE        (0x00)
+#define AM_ZLG118_FLASH_TIMEOUT_INIT    (0xFFu)
+#define AM_ZLG118_FLASH_TIMEOUT_PGM     (0xFFu)
+#define AM_ZLG118_FLASH_TIMEOUT_ERASE   (0xFFu)
+#define AM_ZLG118_FLASH_LOCK_ALL        (0u)
+#define AM_ZLG118_FLASH_UNLOCK_ALL      (0xFFFFFFFFu)
 
-#define FLASH_ADDRESS_BASE   0x00000000
-#define FLASH_ADDRESS_SIZE   0x00000000 + FLASH_SIZE
-/******************************************************************************
-*   函数定义
-******************************************************************************/
+const uint32_t am_zlg118_flash_pcgtimer_4mhz[] = {0x20u, 0x17u, 0x1Bu, 0x4650u, 0x222E0u, 0x18u, 0xF0u, 0x3E8u };
 
-/**
- * \brief Flash模块初始化
- *
- * \param[in] p_hw_gpio 指向FLASH寄存器块的指针
- *
- * \return 无
- */
-void am_zlg118_flash_init (amhw_zlg118_flash_t *p_hw_flash)
+ uint32_t am_zlg118_flash_writebyte(uint32_t addr, uint8_t u8Data)
 {
-    amhw_zlg118_flash_key_set(p_hw_flash, UNLOCK_ZLG118_FLASH_KEY1);
-    amhw_zlg118_flash_key_set(p_hw_flash, UNLOCK_ZLG118_FLASH_KEY2);
+    uint32_t           result  = AM_OK;
+    volatile uint32_t  timeout = AM_ZLG118_FLASH_TIMEOUT_PGM;
+    volatile uint32_t key     = 0;
 
-    amhw_zlg118_flash_int_flag_clr(p_hw_flash, AMHW_ZLG118_FLASH_INT_ALL_FLAG);
+    key = am_int_cpu_lock();
+
+    if (AM_ZLG118_FLASH_END_ADDR < addr)
+    {
+        result = AM_EINVAL;
+        return (result);
+    }
+
+    //busy?
+    timeout = AM_ZLG118_FLASH_TIMEOUT_PGM;
+    while (AM_TRUE == AM_ZLG118_FLASH->cr_f.busy)
+    {
+        if(0 == timeout--)
+        {
+            return AM_EAGAIN;
+        }
+    }
+
+    //set op
+    timeout = AM_ZLG118_FLASH_TIMEOUT_PGM;
+    while(Program != AM_ZLG118_FLASH->cr_f.op)
+    {
+        if(timeout--)
+        {
+            AM_ZLG118_FLASH_BYPASS();
+            AM_ZLG118_FLASH->cr_f.op = Program;
+        }
+        else
+        {
+            return AM_EAGAIN;
+        }
+    }
+
+    //Flash 解锁
+    am_zlg118_flash_unlockall();
+
+    //write data
+    *((volatile uint8_t*)addr) = u8Data;
+
+    //busy?
+    timeout = AM_ZLG118_FLASH_TIMEOUT_PGM;
+    while (AM_TRUE == AM_ZLG118_FLASH->cr_f.busy)
+    {
+        if(0 == timeout--)
+        {
+            return AM_EAGAIN;
+        }
+    }
+
+    //Flash 加锁
+    am_zlg118_flash_lockall();
+
+    am_int_cpu_unlock(key);
+
+    return (result);
 }
 
-/**
- * \brief 擦除扇区
- *
- * \param[in] p_hw_flash  指向FLASH寄存器块的指针
- * \param[in] start_addr 扇区的起始地址
- *
- * \return > 0: 执行结果, -AM_EINVAL: 输入地址过大
- */
+ uint32_t am_zlg118_flash_writehalfword(uint32_t addr, uint16_t data)
+{
+    uint32_t          result  = AM_OK;
+    volatile uint32_t timeout = AM_ZLG118_FLASH_TIMEOUT_PGM;
+    volatile uint32_t key     = 0;
+
+    key = am_int_cpu_lock();
+
+    if (AM_ZLG118_FLASH_END_ADDR < addr)
+    {
+        result = AM_EINVAL;
+        return (result);
+    }
+
+    //busy?
+    timeout = AM_ZLG118_FLASH_TIMEOUT_PGM;
+    while (AM_TRUE == AM_ZLG118_FLASH->cr_f.busy)
+    {
+        if(0 == timeout--)
+        {
+            return AM_EAGAIN;
+        }
+    }
+
+    //set op
+    timeout = AM_ZLG118_FLASH_TIMEOUT_PGM;
+    while(Program != AM_ZLG118_FLASH->cr_f.op)
+    {
+        if(timeout--)
+        {
+            AM_ZLG118_FLASH_BYPASS();
+            AM_ZLG118_FLASH->cr_f.op = Program;
+        }
+        else
+        {
+            return AM_EAGAIN;
+        }
+    }
+
+    //Flash 解锁
+    am_zlg118_flash_unlockall();
+
+    //write data
+    *((volatile uint16_t*)addr) = data;
+
+    //busy?
+    timeout = AM_ZLG118_FLASH_TIMEOUT_PGM;
+    while (AM_TRUE == AM_ZLG118_FLASH->cr_f.busy)
+    {
+        if(0 == timeout--)
+        {
+            return AM_EAGAIN;
+        }
+    }
+
+    //Flash 加锁
+    am_zlg118_flash_lockall();
+
+    am_int_cpu_unlock(key);
+
+    return (result);
+}
+
+ uint32_t am_zlg118_flash_writeword(uint32_t addr, uint32_t data)
+{
+    uint32_t             result  = AM_OK;
+    volatile uint32_t    timeout = AM_ZLG118_FLASH_TIMEOUT_PGM;
+    volatile uint32_t key     = 0;
+
+    key = am_int_cpu_lock();
+
+    if (AM_ZLG118_FLASH_END_ADDR < addr)
+    {
+        result = AM_EINVAL;
+        return (result);
+    }
+
+    //busy?
+    timeout = AM_ZLG118_FLASH_TIMEOUT_PGM;
+    while (AM_TRUE == AM_ZLG118_FLASH->cr_f.busy)
+    {
+        if(0 == timeout--)
+        {
+            return AM_EAGAIN;
+        }
+    }
+
+    //Flash 解锁
+    am_zlg118_flash_unlockall();
+
+    //set op
+    timeout = AM_ZLG118_FLASH_TIMEOUT_PGM;
+    while(Program != AM_ZLG118_FLASH->cr_f.op)
+    {
+        if(timeout--)
+        {
+            AM_ZLG118_FLASH_BYPASS();
+            AM_ZLG118_FLASH->cr_f.op = Program;
+        }
+        else
+        {
+            return AM_EAGAIN;
+        }
+    }
+
+    //write data
+    *((volatile uint32_t*)addr) = data;
+
+    //busy?
+    timeout = AM_ZLG118_FLASH_TIMEOUT_PGM;
+    while (AM_TRUE == AM_ZLG118_FLASH->cr_f.busy)
+    {
+        if(0 == timeout--)
+        {
+            return AM_EAGAIN;
+        }
+    }
+
+    //Flash 加锁
+    am_zlg118_flash_lockall();
+
+    am_int_cpu_unlock(key);
+
+    return (result);
+}
+
+ uint32_t am_zlg118_flash_sectorerase(uint32_t sectoraddr)
+{
+    uint32_t           result = AM_OK;
+    volatile uint32_t  timeout = AM_ZLG118_FLASH_TIMEOUT_ERASE;
+    volatile uint32_t key     = 0;
+
+    key = am_int_cpu_lock();
+
+    if (AM_ZLG118_FLASH_END_ADDR < sectoraddr)
+    {
+        result = AM_EINVAL;
+        return (result);
+    }
+
+    //busy?
+    timeout = AM_ZLG118_FLASH_TIMEOUT_ERASE;
+    while (AM_TRUE == AM_ZLG118_FLASH->cr_f.busy)
+    {
+        if(0 == timeout--)
+        {
+            return AM_EAGAIN;
+        }
+    }
+
+    //Flash 解锁
+    am_zlg118_flash_unlockall();
+
+    //set op
+    timeout = AM_ZLG118_FLASH_TIMEOUT_ERASE;
+    while(SectorErase != AM_ZLG118_FLASH->cr_f.op)
+    {
+        if(timeout--)
+        {
+            AM_ZLG118_FLASH_BYPASS();
+            AM_ZLG118_FLASH->cr_f.op = SectorErase;
+        }
+        else
+        {
+            return AM_EAGAIN;
+        }
+    }
+
+    //write data
+    *((volatile uint8_t*)sectoraddr) = 0;
+
+    //busy?
+    timeout = AM_ZLG118_FLASH_TIMEOUT_ERASE;
+    while (AM_TRUE == (AM_ZLG118_FLASH->cr_f.busy))
+    {
+        if(0 == timeout--)
+        {
+            return AM_EAGAIN;
+        }
+    }
+
+    //Flash 加锁
+    am_zlg118_flash_lockall();
+
+    am_int_cpu_unlock(key);
+
+    return (result);
+}
+
+uint32_t am_zlg118_flash_chiperase(void)
+{
+    uint32_t          result  = AM_OK;
+    volatile uint32_t timeout = AM_ZLG118_FLASH_TIMEOUT_ERASE;
+    volatile uint32_t key     = 0;
+
+    key = am_int_cpu_lock();
+
+    //busy?
+    timeout = AM_ZLG118_FLASH_TIMEOUT_ERASE;
+    while (AM_TRUE == AM_ZLG118_FLASH->cr_f.busy)
+    {
+        if(0 == timeout--)
+        {
+            return AM_EAGAIN;
+        }
+    }
+
+    //set op
+    timeout = AM_ZLG118_FLASH_TIMEOUT_ERASE;
+    while(ChipErase != AM_ZLG118_FLASH->cr_f.op)
+    {
+        if(timeout--)
+        {
+            AM_ZLG118_FLASH_BYPASS();
+            AM_ZLG118_FLASH->cr_f.op = ChipErase;
+        }
+        else
+        {
+            return AM_EAGAIN;
+        }
+    }
+
+    //Flash 解锁
+    am_zlg118_flash_unlockall();
+
+    //write data
+    *((volatile uint8_t*)0) = 0;
+
+    //busy?
+    timeout = AM_ZLG118_FLASH_TIMEOUT_ERASE;
+    while (AM_TRUE == AM_ZLG118_FLASH->cr_f.busy)
+    {
+        if(0 == timeout--)
+        {
+            return AM_EAGAIN;
+        }
+    }
+
+    //Flash 加锁
+    am_zlg118_flash_lockall();
+
+    am_int_cpu_unlock(key);
+
+    return (result);
+}
+
+ void am_zlg118_flash_lockall(void)
+{
+    AM_ZLG118_FLASH_BYPASS();
+    AM_ZLG118_FLASH->slock0 = AM_ZLG118_FLASH_LOCK_ALL;
+    AM_ZLG118_FLASH_BYPASS();
+    AM_ZLG118_FLASH->slock1 = AM_ZLG118_FLASH_LOCK_ALL;
+    AM_ZLG118_FLASH_BYPASS();
+    AM_ZLG118_FLASH->slock2 = AM_ZLG118_FLASH_LOCK_ALL;
+    AM_ZLG118_FLASH_BYPASS();
+    AM_ZLG118_FLASH->slock3 = AM_ZLG118_FLASH_LOCK_ALL;
+}
+
+ void am_zlg118_flash_unlockall(void)
+{
+    AM_ZLG118_FLASH_BYPASS();
+    AM_ZLG118_FLASH->slock0 = AM_ZLG118_FLASH_UNLOCK_ALL;
+    AM_ZLG118_FLASH_BYPASS();
+    AM_ZLG118_FLASH->slock1 = AM_ZLG118_FLASH_UNLOCK_ALL;
+    AM_ZLG118_FLASH_BYPASS();
+    AM_ZLG118_FLASH->slock2 = AM_ZLG118_FLASH_UNLOCK_ALL;
+    AM_ZLG118_FLASH_BYPASS();
+    AM_ZLG118_FLASH->slock3 = AM_ZLG118_FLASH_UNLOCK_ALL;
+}
+
 int32_t am_zlg118_flash_sector_erase (amhw_zlg118_flash_t *p_hw_flash,
-                                      uint32_t             start_addr)
+                                    uint32_t           addr)
 {
-    if (FLASH_ADDRESS_SIZE < start_addr) {
-        return -AM_EINVAL;
-    }
-
-    /* 忙，就一直等待*/
-    while (AM_TRUE == amhw_zlg118_flash_busy_check(p_hw_flash)) {
-        ;
-    }
-
-    /* 写入指定数据，使能寄存器改写 */
-    amhw_zlg118_flash_key_set(p_hw_flash, UNLOCK_ZLG118_FLASH_KEY1);
-    amhw_zlg118_flash_key_set(p_hw_flash, UNLOCK_ZLG118_FLASH_KEY2);
-
-    /* 选择FLASH擦除功能 */
-    amhw_zlg118_flash_opt_set(p_hw_flash, AMHW_ZLG118_FLASH_OPT_SECTOR_ERASE);
-
-    /* 写入指定数据，使能寄存器改写 */
-    amhw_zlg118_flash_key_set(p_hw_flash, UNLOCK_ZLG118_FLASH_KEY1);
-    amhw_zlg118_flash_key_set(p_hw_flash, UNLOCK_ZLG118_FLASH_KEY2);
-
-    /* 允许某对某扇区进行擦写 */
-    amhw_zlg118_flash_erase_enable(p_hw_flash,
-                                   (start_addr - FLASH_ADDRESS_BASE) >> 11);
-
-    /* 对扇区内的每一页的任意地址写入任意数据，触发页擦除，以完成扇区擦除功能 */
-    *((uint8_t *)(start_addr + 0 * 512)) = 0x00;
-    *((uint8_t *)(start_addr + 1 * 512)) = 0x00;
-    *((uint8_t *)(start_addr + 2 * 512)) = 0x00;
-    *((uint8_t *)(start_addr + 3 * 512)) = 0x00;
-
-    /* 忙，就一直等待*/
-    while (AM_TRUE == amhw_zlg118_flash_busy_check(p_hw_flash)) {
-        ;
-    }
-
-    return AM_OK;
+    return am_zlg118_flash_sectorerase(addr);
 }
 
-/**
- * \brief 对扇区编程或部分扇区编程
- *
- * \param[in] p_hw_flash 指向FLASH寄存器块的指针
- * \param[in] dst_addr   写入到flash的起始地址
- * \param[in] p_src      要写入到flash中的数据的起始地址
- * \param[in] size       写入字(32bit)的个数
- *
- * \retval 0 实际成功写入的字数
- */
-int32_t am_zlg118_flash_flash_program (amhw_zlg118_flash_t *p_hw_flash,
-                                       uint32_t             dst_addr,
-                                       uint32_t            *p_src,
-                                       uint32_t             size)
+int32_t am_zlg118_flash_sector_program (amhw_zlg118_flash_t *p_hw_flash,
+                                      uint32_t             dst_addr,
+                                      uint32_t            *p_src,
+                                      uint32_t             size)
 {
-    uint32_t i;
-    uint32_t t;
+    uint32_t i    = 0;
 
-    /** size不能大于扇区的大小 */
-    if (size > SECTOR_SIZE || dst_addr >= FLASH_ADDRESS_SIZE) {
-        return -AM_EINVAL;
-    }
-
-    /* 写入指定数据，使能寄存器改写 */
-    amhw_zlg118_flash_key_set(p_hw_flash, UNLOCK_ZLG118_FLASH_KEY1);
-    amhw_zlg118_flash_key_set(p_hw_flash, UNLOCK_ZLG118_FLASH_KEY2);
-
-    /* 选择FLASH写功能 */
-    amhw_zlg118_flash_opt_set(p_hw_flash, AMHW_ZLG118_FLASH_OPT_WRITE);
-
-    /* 可能写入数据个数大于一个扇区，因此需要对多个扇区取消擦写保护 */
-    t =  size / SECTOR_SIZE + 1;
-
-    /* 允许某对某扇区进行擦写 */
-    for (i = 0; i < t; i++) {
-
-        /* 写入指定数据，使能寄存器改写 */
-        amhw_zlg118_flash_key_set(p_hw_flash, UNLOCK_ZLG118_FLASH_KEY1);
-        amhw_zlg118_flash_key_set(p_hw_flash, UNLOCK_ZLG118_FLASH_KEY2);
-
-        /* 允许某对某扇区进行擦写 */
-        amhw_zlg118_flash_erase_enable(p_hw_flash,
-                                       ((dst_addr - FLASH_ADDRESS_BASE) >> 11) + i);
+    for(i = 0; i < size; i++) {
+        am_zlg118_flash_writeword(dst_addr + i * 4, p_src[i]);
     }
 
     for (i = 0; i < size; i++) {
 
-        /** 半字写入 */
-        *(uint16_t *)(dst_addr + i * 4)     = (uint16_t)p_src[i];
-
-        /* 忙，就一直等待*/
-        while (AM_TRUE == amhw_zlg118_flash_busy_check(p_hw_flash)) {
-            ;
-        }
-
-        /** 半字写入 */
-        *(uint16_t *)(dst_addr + i * 4 + 2) = (uint16_t)(p_src[i] >> 16);
-
-        /* 忙，就一直等待*/
-        while (AM_TRUE == amhw_zlg118_flash_busy_check(p_hw_flash)) {
-            ;
-        }
-    }
-
-    for (i = 0; i < size; i++) {
-
-       /** 半字写入 */
       if (p_src[i] != *(uint32_t *)(dst_addr + i * 4)) {
           break;
       }
@@ -177,45 +404,60 @@ int32_t am_zlg118_flash_flash_program (amhw_zlg118_flash_t *p_hw_flash,
     return i;
 }
 
-/**
- * \brief 擦除所有扇区
- *
- * \param[in] p_hw_flash 指向FLASH寄存器块的指针
- *
- * \return 执行结果
- *
- */
-uint32_t am_zlg118_flash_all_sector_erase (amhw_zlg118_flash_t *p_hw_flash)
+int32_t am_zlg118_flash_waitcycle(amhw_zlg118_flash_read_waittime waitcycle)
 {
-    uint8_t i;
+    int32_t result = AM_OK;
 
-    /* 写入指定数据，使能寄存器改写 */
-    amhw_zlg118_flash_key_set(p_hw_flash, UNLOCK_ZLG118_FLASH_KEY1);
-    amhw_zlg118_flash_key_set(p_hw_flash, UNLOCK_ZLG118_FLASH_KEY2);
+    AM_ZLG118_FLASH_BYPASS();
+    AM_ZLG118_FLASH->cr_f.wait = waitcycle;
 
-    /* 选择FLASH写功能 */
-    amhw_zlg118_flash_opt_set(p_hw_flash, AMHW_ZLG118_FLASH_OPT_CHIP_ERASE);
-
-    /* 取消所有扇区擦写保护 */
-    for(i = 0; i < 128; i++) {
-
-        /* 写入指定数据，使能寄存器改写 */
-        amhw_zlg118_flash_key_set(p_hw_flash, UNLOCK_ZLG118_FLASH_KEY1);
-        amhw_zlg118_flash_key_set(p_hw_flash, UNLOCK_ZLG118_FLASH_KEY2);
-
-        /* 允许某对某扇区进行擦写 */
-        amhw_zlg118_flash_erase_enable(p_hw_flash, i);
-    }
-
-    /* 对片内的任意地址进行写操作，触发全片擦除 */
-    *((uint8_t *) 0x00000000) = 0x00;
-
-    /* 忙，就一直等待*/
-    while (AM_TRUE == amhw_zlg118_flash_busy_check(p_hw_flash)) {
-        ;
-    }
-
-    return AM_OK;
+    return result;
 }
+
+int32_t am_zlg118_flash_init(uint8_t freqcfg, am_bool_t able)
+{
+    uint32_t           index       = 0;
+    volatile uint32_t  timeout     = AM_ZLG118_FLASH_TIMEOUT_INIT;
+    int32_t            result      = AM_OK;
+    uint32_t           prgtimer[8] = {0};
+    volatile uint32_t  *pprgtimerreg = (volatile uint32_t*)AM_ZLG118_FLASH;
+
+    if ((1  != freqcfg) && (2  != freqcfg) &&
+        (4  != freqcfg) && (6  != freqcfg) &&
+        (8  != freqcfg) && (12 != freqcfg))
+    {
+        result = AM_EINVAL;
+        return (result);
+    }
+
+    AM_ZLG118_FLASH->cr_f.dpstb_en = able;
+
+    //flash时间参数配置值计算
+    for(index=0; index<8; index++)
+    {
+        prgtimer[index] = freqcfg * am_zlg118_flash_pcgtimer_4mhz[index];
+    }
+
+    //flash时间参数寄存器配置
+    for(index=0; index<8; index++)
+    {
+        timeout = AM_ZLG118_FLASH_TIMEOUT_INIT;
+        while(pprgtimerreg[index]  != prgtimer[index])
+        {
+            if(timeout--)
+            {
+                AM_ZLG118_FLASH_BYPASS();
+                pprgtimerreg[index] = prgtimer[index];
+            }
+            else
+            {
+                return AM_ERROR;
+            }
+        }
+    }
+
+    return (result);
+}
+
 
 /* end of file */
