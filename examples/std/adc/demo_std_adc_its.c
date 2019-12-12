@@ -86,12 +86,12 @@ static uint32_t __adc_code_get (am_adc_handle_t handle, int chan)
 void demo_std_adc_its_entry (am_adc_handle_t handle, int chan)
 {
 
-    int adc_bits = am_adc_bits_get(handle , chan);        /* 获取ADC转换精度    */
+    int adc_bits = am_adc_bits_get(handle , chan);          /* 获取ADC转换精度  */
     int adc_vref = am_adc_vref_get(handle , chan);
 
-    uint32_t adc_code;                                    /* 采样 Code 值       */
-    uint16_t adc_trim;                                    /* 16Bits校准值       */
-    int32_t adc_temp;                                    /* 采样温度           */
+    uint32_t adc_code;                                      /* 采样 Code 值     */
+    uint16_t adc_trim;                                      /* 16Bits校准值     */
+    int32_t adc_temp;                                       /* 环境温度         */
 
     am_kprintf("The ADC value channel is %d: \r\n",chan);
 
@@ -107,6 +107,9 @@ void demo_std_adc_its_entry (am_adc_handle_t handle, int chan)
     } else {
         return;
     }
+
+    /* 串口输出参考电压与16Bits的校准值 */
+    am_kprintf("Reference Voltage : %d mV , Trim : %d \r\n", adc_vref, adc_trim);
 
     while (1) {
 
