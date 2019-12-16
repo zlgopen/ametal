@@ -3,7 +3,7 @@
 *                       ----------------------------
 *                       innovating embedded platform
 *
-* Copyright (c) 2001-2018 Guangzhou ZHIYUAN Electronics Co., Ltd.
+* Copyright (c) 2001-2019 Guangzhou ZHIYUAN Electronics Co., Ltd.
 * All rights reserved.
 *
 * Contact information:
@@ -21,13 +21,11 @@
  *   1. 主机写地址和数据到从机；
  *   2. 主机接收从机数据，并通过串口打印处理；
  *   3. 主机写入的数据和接收到的从机从机数据一致；
- *   4. LED0 以 200ms 时间间隔闪烁。
  *
  * \note
- *    1. LED0 需要短接 J9 跳线帽，才能被 PIOC_9 控制；
- *    2. 如需观察串口打印的调试信息，需要将 PIOA_10 引脚连接 PC 串口的 TXD，
+ *    1. 如需观察串口打印的调试信息，需要将 PIOA_10 引脚连接 PC 串口的 TXD，
  *       PIOA_9 引脚连接 PC 串口的 RXD。
- *    3. 当前 I2C 的 SCL 引脚使用的是 PIOA_11，SDA 引脚使用的是 PIOA_12，
+ *    2. 当前 I2C 的 SCL 引脚使用的是 PIOA_11，SDA 引脚使用的是 PIOA_12，
  *       可根据实际情况更换引脚。
  *
  * \par 源代码
@@ -35,7 +33,7 @@
  *
  * \internal
  * \par Modification history
- * - 1.00 19-09-27
+ * - 1.00 19-09-27  licl, first implementation
  * \endinternal
  */
 

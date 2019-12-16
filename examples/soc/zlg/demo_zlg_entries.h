@@ -337,6 +337,27 @@ void demo_zlg_hw_i2c_master_poll_entry (amhw_zlg_i2c_t *p_hw_i2c,
  */
 void demo_zlg_hw_i2c_slave_poll_entry (amhw_zlg_i2c_t *p_hw_i2c);
 
+/**
+ * \brief I2C 轮询模式下操作 EEPROM 例程，通过 HW 层接口实现
+ *
+ * \param[in] p_hw_i2c 指向 I2C 外设寄存器块的指针
+ * \param[in] clk_rate I2C 时钟源频率
+ *
+ * \return 无
+ */
+void demo_zlg118_hw_i2c_master_poll_entry (amhw_zlg118_i2c_t *p_hw_i2c,
+                                           uint32_t           clk_rate);
+
+/**
+ * \brief I2C 从机例程(此例程可以用来模拟 EEPROM)，通过 HW 层接口实现
+ *
+ * \param[in] p_hw_i2c 指向 I2C 外设寄存器块的指针
+ * \param[in] inum_num I2C中断号
+ *
+ * \return 无
+ */
+void demo_zlg118_hw_i2c_slave_int_entry (amhw_zlg118_i2c_t *p_hw_i2c,
+                                         int                inum_num);
 
 /**
  * \brief I2C 轮询模式下操作 EEPROM 例程，通过 HW 层接口实现
