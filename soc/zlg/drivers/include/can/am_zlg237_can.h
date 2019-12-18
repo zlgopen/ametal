@@ -83,13 +83,10 @@ typedef struct am_zlg237_can_init_info {
 
 /**<brief 滤波器参数配置信息  */
 typedef struct {
-    uint8_t  can_fliter_ide;         /** <brief 标识符选择 */
-    uint8_t  can_fliter_rtr;         /** <brief 远程发送请求 */
-    uint16_t can_fliter_fifo;        /** <brief 关联FIFO */
-    uint8_t  can_filter_num;         /** <brief 滤波器组*/
-    uint8_t  can_filter_mode;        /** <brief 滤波器模式 */
-    uint8_t  can_filter_scale;       /** <brief 滤波器位宽*/
-    uint8_t  filter_state;           /** <brief 滤波器激活状态 */
+    uint8_t  can_fliter_fifo;        /** <brief 关联FIFO 0 FIFO0 1 FIFO1*/
+    uint8_t  can_filter_mode;        /** <brief 滤波器模式 0 标识符屏蔽位  1 标识符列表位  */
+    uint8_t  can_filter_scale;       /** <brief 滤波器位宽 0 2个16位   1 单个32位*/
+    uint8_t  filter_state;           /** <brief 滤波器激活状态  0 过滤器被禁用 1 过滤器被激活 */
 
 }amhw_zlg237_can_filter_t;
 

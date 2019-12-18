@@ -30,6 +30,7 @@
  * - 备注：
  *   1. 其中 CAN ID 和 波特率配置 需要根据具体硬件平台修改。
  *   2. 再basic模式下不支持扩展帧。
+ *   3. zmf159 滤波器的帧类型设置无效,实际帧类型根据掩码长度来决定
  *
  * \par 源代码
  * \snippet demo_std_crc.c src_std_can
@@ -37,6 +38,7 @@
  * \internal
  * \par Modification History
  * - 1.00 15-07-09  bzq, first implementation
+ * - 1.00 19-12-18  zc,  adapt filter extern api
  * \endinternal
  */
 
@@ -52,7 +54,15 @@
 #include "am_vdebug.h"
 
 /**\brief 滤波表 */
-static uint8_t table[8] = {0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff};
+static am_can_filter_t table[1] = {
+        {
+                0,
+                AM_CAN_FRAME_TYPE_EXT,
+                AM_CAN_FRAME_FORMAT_NOCARE,
+                {0x00},
+                {0x00},
+        }
+};
 
 /**
  * \brief 错误判断
@@ -98,7 +108,9 @@ void demo_std_can_entry (am_can_handle_t can_handle, am_can_bps_param_t  *can_bt
     }
 
     /* 配置滤波表 */
-    ret = am_can_filter_tab_set(can_handle,table, 8);
+    ret = am_can_filter_tab_ext_set(can_handle,
+                                    table,
+                                    sizeof(table));
 
     if (ret == AM_CAN_NOERROR) {
         am_kprintf("\r\nCAN: controller filter tab set ok. \r\n");

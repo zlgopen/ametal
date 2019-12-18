@@ -18,11 +18,12 @@
  * \internal
  * \par Modification history
  * - 1.00 19-07-31  zc, first implementation
+ * - 1.01 19-12-18  add filter table extern api
  * \endinternal
  */
 
 #include "am_int.h"
-
+#include "am_can.h"
 #include "am_zlg237_can.h"
 #include "hw/amhw_zlg237_can.h"
 #include "zlg237_inum.h"
@@ -56,14 +57,6 @@ am_can_err_t __can_zlg237_msg_send (void *p_drv, am_can_message_t *p_txmsg);
 am_can_err_t __can_zlg237_msg_recv (void *p_drv, am_can_message_t *p_rxmsg);
 /** \brief 停止发送信息   */
 am_can_err_t __can_zlg237_stop_msg_snd (void *p_drv);
-/** \brief 设置滤波函数 */
-am_can_err_t __can_zlg237_filter_tab_set (void    *p_drv,
-                                   uint8_t *p_filterbuff,
-                                   size_t   lenth);
-/** \brief 获取滤波函数*/
-am_can_err_t __can_zlg237_filter_tab_get (void    *p_drv,
-                                   uint8_t *p_filterbuff,
-                                   size_t  *p_lenth);
 
 /** \brief CAN 状态 */
 am_can_err_t __can_zlg237_status_get (void              *p_drv,
@@ -88,6 +81,15 @@ am_can_err_t __can_zlg237_intcb_connect (void              *p_drv,
 am_can_err_t __can_zlg237_intcb_disconnect (void              *p_drv,
                                             am_can_int_type_t  inttype);
 
+/** \brief 设置滤波函数 (扩展)*/
+am_can_err_t __can_zlg237_filter_tab_ext_set (void            *p_drv,
+                                              am_can_filter_t *p_filterbuff,
+                                              size_t           lenth);
+/** \brief 获取滤波函数 (扩展)*/
+am_can_err_t __can_zlg237_filter_tab_ext_get (void             *p_drv,
+                                              am_can_filter_t  *p_filterbuff,
+                                              size_t           *p_lenth);
+
 struct am_can_drv_funcs __zlg237_can_dev_func = {
     __can_zlg237_start,
     __can_zlg237_reset,
@@ -103,13 +105,15 @@ struct am_can_drv_funcs __zlg237_can_dev_func = {
     __can_zlg237_msg_send,
     __can_zlg237_msg_recv,
     __can_zlg237_stop_msg_snd,
-    __can_zlg237_filter_tab_set,
-    __can_zlg237_filter_tab_get,
+    NULL,
+    NULL,
     __can_zlg237_status_get,
     __can_zlg237_connect,
     __can_zlg237_disconnect,
     __can_zlg237_intcb_connect,
-    __can_zlg237_intcb_disconnect
+    __can_zlg237_intcb_disconnect,
+    __can_zlg237_filter_tab_ext_set,
+    __can_zlg237_filter_tab_ext_get,
 };
 
 /**
@@ -901,12 +905,304 @@ am_can_err_t __can_zlg237_stop_msg_snd (void *p_drv)
     return AM_CAN_NOERROR;
 }
 
+am_can_err_t __can_zlg237_filter_32bit_idmask(uint32_t         *reg_1,
+                                              uint32_t         *reg_2,
+                                              am_can_filter_t  *p_filterbuff)
+{
+    uint32_t reg_f_r1 = 0;
+    uint32_t reg_f_r2 = 0;
+
+    uint8_t  state = AM_CAN_NOERROR;
+    if (p_filterbuff->rtr == AM_CAN_FRAME_FORMAT_DATA ) {
+        /* 数据帧 */
+        reg_f_r1 &= (~(uint32_t)(1 << 1));
+        reg_f_r2 |= ( (uint32_t)(1 << 1));
+    } else if (p_filterbuff->rtr == AM_CAN_FRAME_FORMAT_REMOTE) {
+        /* 远程帧 */
+        reg_f_r1 |= ((uint32_t)(1 << 1));
+        reg_f_r2 |= ((uint32_t)(1 << 1));
+    } else if(p_filterbuff->rtr == AM_CAN_FRAME_FORMAT_NOCARE) {
+        /* 都可以接收 */
+        reg_f_r2 &= (~(uint32_t)(1 << 1));
+    } else {
+        /* 无此选项 */
+        state = AM_CAN_INVALID_PARAMETER;
+        return state;
+    }
+
+    if (p_filterbuff->ide == AM_CAN_FRAME_TYPE_STD) {
+        /* 只接收标准帧 */
+        reg_f_r1 &= (~(uint32_t)(1 << 2));
+        reg_f_r2 |= ( (uint32_t)(1 << 2));
+
+        /* 标准ID STID[10:0] */
+        if ((p_filterbuff->id[0] >0x7ff) || (p_filterbuff->mask[0] >0x7ff) ) {
+            state = AM_CAN_INVALID_PARAMETER;
+            return state;
+        }
+
+        reg_f_r1 |= ((uint32_t)p_filterbuff->id[0] << 21);
+        reg_f_r2 |= ((uint32_t)p_filterbuff->mask[0] << 21);
+    } else if (p_filterbuff->ide == AM_CAN_FRAME_TYPE_EXT) {
+        /* 只接收扩展帧 */
+        reg_f_r1 |= ((uint32_t)(1 << 2));
+        reg_f_r2 |= ((uint32_t)(1 << 2));
+
+        /* EXID[28:0] */
+        if ((p_filterbuff->id[0] > 0x1fffffff) ||
+            (p_filterbuff->mask[0] > 0x1fffffff)) {
+            state = AM_CAN_INVALID_PARAMETER;
+            return state;
+        }
+
+        reg_f_r1 |= ((uint32_t)p_filterbuff->id[0] << 3);
+        reg_f_r2 |= ((uint32_t)p_filterbuff->mask[0] << 3);
+    } else {
+        /* 无此选项 */
+        state = AM_CAN_INVALID_PARAMETER;
+        return state;
+    }
+
+    *reg_1 = reg_f_r1;
+    *reg_2 = reg_f_r2;
+
+    return state;
+}
+
+am_can_err_t __can_zlg237_filter_32bit_idlist(uint32_t        *reg_1,
+                                              uint32_t        *reg_2,
+                                              am_can_filter_t *p_filterbuff)
+{
+    uint32_t reg_f_r1 = 0;
+    uint32_t reg_f_r2 = 0;
+    uint8_t  state    = AM_CAN_NOERROR;
+
+    if (p_filterbuff->rtr == AM_CAN_FRAME_FORMAT_DATA ) {
+        /* 数据帧 */
+        reg_f_r1 &= (~(uint32_t)(1 << 1));
+        reg_f_r2 &= (~(uint32_t)(1 << 1));
+    } else if (p_filterbuff->rtr == AM_CAN_FRAME_FORMAT_REMOTE) {
+        /* 远程帧 */
+        reg_f_r1 |= ((uint32_t)(1 << 1));
+        reg_f_r2 |= ((uint32_t)(1 << 1));
+    } else {
+        /* 列表模式下 返回参数错误 */
+        state = AM_CAN_INVALID_PARAMETER;
+        return state;
+    }
+
+    if (p_filterbuff->ide == AM_CAN_FRAME_TYPE_STD) {
+        /* 只接收标准帧 */
+        reg_f_r1 &= (~(uint32_t)(1 << 2));
+        reg_f_r2 &= (~(uint32_t)(1 << 2));
+
+        /* 标准ID STID[10:0] */
+        if ((p_filterbuff->id[0] >0x7ff) || (p_filterbuff->id[1] > 0x7ff)) {
+            state = AM_CAN_INVALID_PARAMETER;
+            return state;
+        }
+
+        reg_f_r1 |= ((uint32_t)p_filterbuff->id[0] << 21);
+        reg_f_r2 |= ((uint32_t)p_filterbuff->id[1] << 21);
+    } else if (p_filterbuff->ide == AM_CAN_FRAME_TYPE_EXT) {
+        /* 只接收扩展帧 */
+        reg_f_r1 |= ((uint32_t)(1 << 2));
+        reg_f_r2 |= ((uint32_t)(1 << 2));
+
+        /* EXID[28:0] */
+        if ((p_filterbuff->id[0] > 0x1fffffff) ||
+            (p_filterbuff->id[1] > 0x1fffffff) ) {
+            state = AM_CAN_INVALID_PARAMETER;
+            return state;
+        }
+
+        reg_f_r1 |= ((uint32_t)p_filterbuff->id[0] << 3);
+        reg_f_r2 |= ((uint32_t)p_filterbuff->id[1] << 3);
+    } else {
+        /* 无此选项 */
+        state = AM_CAN_INVALID_PARAMETER;
+        return state;
+    }
+
+    *reg_1 = reg_f_r1;
+    *reg_2 = reg_f_r2;
+
+    return state;
+}
+
+am_can_err_t __can_zlg237_filter_16bit_idmask(uint32_t        *reg_1,
+                                              uint32_t        *reg_2,
+                                              am_can_filter_t *p_filterbuff)
+{
+    uint16_t reg_f_r1_h = 0;
+    uint16_t reg_f_r1_l = 0;
+    uint16_t reg_f_r2_h = 0;
+    uint16_t reg_f_r2_l = 0;
+    uint16_t state      = AM_CAN_NOERROR;
+
+    if (p_filterbuff->rtr == AM_CAN_FRAME_FORMAT_DATA ) {
+        /* 数据帧 */
+        reg_f_r1_h &= (~(uint16_t)(1 << 4));
+        reg_f_r1_l |= ((uint16_t)(1 << 4)); /* mask */
+        reg_f_r2_h &= (~(uint16_t)(1 << 4));
+        reg_f_r2_l |= ((uint16_t)(1 << 4)); /* mask */
+    } else if (p_filterbuff->rtr == AM_CAN_FRAME_FORMAT_REMOTE) {
+        /* 远程帧 */
+        reg_f_r1_h |= ((uint16_t)(1 << 4));
+        reg_f_r1_l |= ((uint16_t)(1 << 4));
+        reg_f_r2_h |= ((uint16_t)(1 << 4));
+        reg_f_r2_l |= ((uint16_t)(1 << 4));
+    } else if(p_filterbuff->rtr == AM_CAN_FRAME_FORMAT_NOCARE) {
+        /* 都可以接收 */
+        reg_f_r1_l &= (~(uint16_t)(1 << 4));
+        reg_f_r2_l &= (~(uint16_t)(1 << 4));
+    } else {
+        state = AM_CAN_INVALID_PARAMETER;
+        return state;
+    }
+
+    if (p_filterbuff->ide == AM_CAN_FRAME_TYPE_STD) {
+        /* 只接收标准帧 */
+        reg_f_r1_h &= (~(uint16_t)(1 << 3));
+        reg_f_r1_l |= ((uint16_t)(1 << 3));
+        reg_f_r2_h &= (~(uint16_t)(1 << 3));
+        reg_f_r2_l |= ((uint16_t)(1 << 3));
+
+        if ((p_filterbuff->id[0] >0x7ff)   ||
+            (p_filterbuff->mask[0] >0x7ff) ||
+            (p_filterbuff->id[1] >0x7ff)   ||
+            (p_filterbuff->mask[1] >0x7ff)) {
+            state = AM_CAN_INVALID_PARAMETER;
+            return state;
+        }
+
+        reg_f_r1_h |= (p_filterbuff->id[0] & 0x7ff) << 5;
+        reg_f_r1_l |= (p_filterbuff->mask[0] & 0x7ff) << 5;
+        reg_f_r2_h |= (p_filterbuff->id[1] & 0x7ff) << 5;
+        reg_f_r2_l |= (p_filterbuff->mask[1] & 0x7ff) << 5;
+    } else if (p_filterbuff->ide == AM_CAN_FRAME_TYPE_EXT) {
+        /* 只接收扩展帧 */
+        reg_f_r1_h |= ((uint16_t)(1 << 3));
+        reg_f_r1_l |= ((uint16_t)(1 << 3));
+        reg_f_r2_h |= ((uint16_t)(1 << 3));
+        reg_f_r2_l |= ((uint16_t)(1 << 3));
+
+        if ((p_filterbuff->id[0] > 0x3ffff)   ||
+            (p_filterbuff->mask[0] > 0x3ffff) ||
+            (p_filterbuff->id[1] > 0x3ffff)   ||
+            (p_filterbuff->mask[1] > 0x3ffff)) {
+            state = AM_CAN_INVALID_PARAMETER;
+            return state;
+        }
+
+        reg_f_r1_h |= (p_filterbuff->id[0] >> 15) |
+                     ((p_filterbuff->id[0] & 0x7ff) << 5);
+        reg_f_r1_l |= (p_filterbuff->mask[0] >> 15) |
+                     ((p_filterbuff->mask[0] & 0x7ff) << 5);
+        reg_f_r2_h |= (p_filterbuff->id[1] >> 15) |
+                     ((p_filterbuff->id[1] & 0x7ff) << 5);
+        reg_f_r2_l |= (p_filterbuff->mask[1] >> 15) |
+                     ((p_filterbuff->mask[1] & 0x7ff) << 5);
+    } else {
+        state = AM_CAN_INVALID_PARAMETER;
+        return state;
+    }
+
+    *reg_1 = ((uint32_t)reg_f_r1_h <<16) |
+            ((uint32_t)reg_f_r1_l);
+    *reg_2 = ((uint32_t)reg_f_r2_h <<16) |
+            ((uint32_t)reg_f_r2_l);
+
+    return state;
+}
+
+am_can_err_t __can_zlg237_filter_16bit_idlist(uint32_t        *reg_1,
+                                              uint32_t        *reg_2,
+                                              am_can_filter_t *p_filterbuff)
+{
+    uint16_t reg_f_r1_h = 0;
+    uint16_t reg_f_r1_l = 0;
+    uint16_t reg_f_r2_h = 0;
+    uint16_t reg_f_r2_l = 0;
+    uint8_t  state      = AM_CAN_NOERROR;
+
+    if (p_filterbuff->rtr == AM_CAN_FRAME_FORMAT_DATA ) {
+        /* 数据帧 */
+        reg_f_r1_h &= (~(uint16_t)(1 << 4));
+        reg_f_r1_l &= (~(uint16_t)(1 << 4));
+        reg_f_r2_h &= (~(uint16_t)(1 << 4));
+        reg_f_r2_l &= (~(uint16_t)(1 << 4));
+    } else if (p_filterbuff->rtr == AM_CAN_FRAME_FORMAT_REMOTE) {
+        /* 远程帧 */
+        reg_f_r1_h |= ((uint16_t)(1 << 4));
+        reg_f_r1_l |= ((uint16_t)(1 << 4));
+        reg_f_r2_h |= ((uint16_t)(1 << 4));
+        reg_f_r2_l |= ((uint16_t)(1 << 4));
+    } else {
+        /* 列表模式下 返回参数错误 */
+        state = AM_CAN_INVALID_PARAMETER;
+        return state;
+    }
+
+    if (p_filterbuff->ide == AM_CAN_FRAME_TYPE_STD) {
+        /* 只接收标准帧 */
+        reg_f_r1_h &= (~(uint16_t)(1 << 3));
+        reg_f_r1_l &= (~(uint16_t)(1 << 3));
+        reg_f_r2_h &= (~(uint16_t)(1 << 3));
+        reg_f_r2_l &= (~(uint16_t)(1 << 3));
+        if ((p_filterbuff->id[0] > 0x7ff) ||
+            (p_filterbuff->id[1] > 0x7ff) ||
+            (p_filterbuff->id[2] > 0x7ff) ||
+            (p_filterbuff->id[3] > 0x7ff) ) {
+            state = AM_CAN_INVALID_PARAMETER;
+            return state;
+        }
+        reg_f_r1_h |= (p_filterbuff->id[0] & 0x7ff) << 5;
+        reg_f_r1_l |= (p_filterbuff->id[1] & 0x7ff) << 5;
+        reg_f_r2_h |= (p_filterbuff->id[2] & 0x7ff) << 5;
+        reg_f_r2_l |= (p_filterbuff->id[3] & 0x7ff) << 5;
+
+    } else if (p_filterbuff->ide == AM_CAN_FRAME_TYPE_EXT) {
+        /* 只接收扩展帧 */
+        reg_f_r1_h |= ((uint16_t)(1 << 3));
+        reg_f_r1_l |= ((uint16_t)(1 << 3));
+        reg_f_r2_h |= ((uint16_t)(1 << 3));
+        reg_f_r2_l |= ((uint16_t)(1 << 3));
+
+        if ((p_filterbuff->id[0] > 0x3ffff) ||
+            (p_filterbuff->id[1] > 0x3ffff) ||
+            (p_filterbuff->id[2] > 0x3ffff) ||
+            (p_filterbuff->id[3] > 0x3ffff) ) {
+            state = AM_CAN_INVALID_PARAMETER;
+            return state;
+        }
+
+        reg_f_r1_h |= ((p_filterbuff->id[0] & 0x7ff) << 5) |
+                       (p_filterbuff->id[0] >> 15);
+        reg_f_r1_l |= ((p_filterbuff->id[1] & 0x7ff) << 5) |
+                       (p_filterbuff->id[1] >> 15);
+        reg_f_r2_h |= ((p_filterbuff->id[2] & 0x7ff) << 5) |
+                       (p_filterbuff->id[2] >> 15);
+        reg_f_r2_l |= ((p_filterbuff->id[3] & 0x7ff) << 5) |
+                       (p_filterbuff->id[3] >> 15);
+    } else {
+        state = AM_CAN_INVALID_PARAMETER;
+        return state;
+    }
+
+    *reg_1 = ((uint32_t)reg_f_r1_h <<16) |
+            ((uint32_t)reg_f_r1_l);
+    *reg_2 = ((uint32_t)reg_f_r2_h <<16) |
+            ((uint32_t)reg_f_r2_l);
+    return state;
+}
+
 /**
- * \brief 设置滤波函数
+ * \brief 设置滤波函数(扩展)
  */
-am_can_err_t __can_zlg237_filter_tab_set (void    *p_drv,
-                                          uint8_t *p_filterbuff,
-                                          size_t   lenth)
+am_can_err_t __can_zlg237_filter_tab_ext_set (void              *p_drv,
+                                              am_can_filter_t   *p_filterbuff,
+                                              size_t             lenth)
 {
     am_zlg237_can_dev_t         *p_dev    = (am_zlg237_can_dev_t *)p_drv;
     amhw_zlg237_can_filter_t    *p_filter = NULL;
@@ -914,11 +1210,11 @@ am_can_err_t __can_zlg237_filter_tab_set (void    *p_drv,
     uint8_t                      filt_num = 0;
     uint32_t                     filt_pos = 0;
     amhw_zlg237_can_mode_t       mode     = p_dev->mode;
+    am_can_err_t                 state    = AM_CAN_NOERROR;
 
-    if (NULL == p_drv || NULL == p_filterbuff || 0 == lenth) {
+    if (NULL == p_drv || NULL == p_filterbuff || 0 == lenth ) {
         return AM_CAN_INVALID_PARAMETER;
     }
-
 
     p_filter= (amhw_zlg237_can_filter_t *)p_dev->p_devinfo->filter;
     p_hw_can = (amhw_zlg237_can_t *)p_dev->p_devinfo->regbase;
@@ -932,14 +1228,16 @@ am_can_err_t __can_zlg237_filter_tab_set (void    *p_drv,
 
     /* 滤波器工作在滤波器初始化模式  */
     p_hw_can->fmr |= (uint32_t)0x01;
+    lenth = lenth / sizeof(am_can_filter_t);
+    for (int i = 0; i < lenth; i++) {
 
-    for (int i = 0; i < (lenth / 8); i++) {
+        /* 滤波器组号  */
+        filt_num = p_filterbuff->num;
 
-        filt_num = p_filter->can_filter_num + i;
-
-        if (filt_num > 13) {
-            /* 滤波器组 */
-            filt_pos = (uint32_t)(1ul << (filt_num - 14));
+        if (filt_num > 13 ) {
+            /* 跳出当前 */
+            state = AM_CAN_ILLEGAL_CHANNEL_NO;
+            break;
         } else {
             /* 滤波器组 */
             filt_pos = (uint32_t)(1ul << filt_num);
@@ -948,250 +1246,95 @@ am_can_err_t __can_zlg237_filter_tab_set (void    *p_drv,
         /* 禁用滤波器  */
         p_hw_can->fa_1r &= ~(uint32_t)filt_pos;
 
-        /* 滤波器模式  */
-        if (p_filter->can_filter_mode == AMHW_ZLG237_CAN_FILTER_MODE_IDMASK) {
-            /* 屏蔽位模式  */
-            p_hw_can->fm_1r &= ~(uint32_t)filt_pos;
-        } else {
-            /* 标志位列表模式  */
+        if (p_filter->can_filter_mode) {
+
+            /* 标识符列表 */
             p_hw_can->fm_1r |= (uint32_t)filt_pos;
-        }
+            if (p_filter->can_filter_scale) {
+                uint32_t reg_f_r1 = 0;
+                uint32_t reg_f_r2 = 0;
 
-        /* 滤波器位宽 设置 */
-        if (p_filter->can_filter_scale ==
-                AMHW_ZLG237_CAN_FILTER_SCALE_16BIT) {
-
-            /* 16位宽 */
-            p_hw_can->fs_1r &= ~(uint32_t)filt_pos;
-
-            if (p_filter->can_filter_mode == AMHW_ZLG237_CAN_FILTER_MODE_IDMASK) {
-
-                /**
-                 *  标识符屏蔽位模式
-                 *  2个16位过滤器
-                 */
-                /* 使用扩展ID STD[10:3] STD[2:0] RTR IDE EXID[17:15] */
-
-                /* id_l id_h  id_mask_l id_mask_h  id_l id_h  id_mask_l id_mask_h*/
-                p_hw_can->fi_rx[filt_num].f_r1 =
-
-                            /*ID*/
-                            /* EXIT[17:15] */
-                            ((p_filterbuff[0 + i*8] & 0x38) >> 3)   |
-
-                            /* IDE RTR */
-                             (p_filter->can_fliter_ide << 3)        |
-                             (p_filter->can_fliter_rtr << 4)        |
-
-                             /* STD[7:0] */
-                            ((p_filterbuff[1 + i*8] ) << 5)         |
-
-                            /* STD[10:8] */
-                            ((p_filterbuff[0 + i*8] &0x7) << 13)     |
-
-                             /* ID_mask */
-                            /* STD[2:0] RTR IDE EXIT[17:15]  */
-                            ((p_filterbuff[3 + i*8] ) << 16)        |
-
-                            /* STD[10:3] */
-                            ((p_filterbuff[2 + i*8] ) << 24);
-
-                p_hw_can->fi_rx[filt_num].f_r2 =
-
-                             /*ID*/
-                             /* EXIT[17:15] */
-                           ((p_filterbuff[4 + i*8] & 0x38) >> 3)    |
-
-                             /* IDE  RTR */
-                            (p_filter->can_fliter_ide << 3)         |
-                            (p_filter->can_fliter_rtr << 4)         |
-
-                            /* STD[7:0] */
-                           ((p_filterbuff[5 + i*8] ) << 5)          |
-
-                           /* STD[10:8] */
-                           ((p_filterbuff[4 + i*8] &0x7) << 13)      |
-
-                            /* ID_mask */
-                           /* STD[2:0] RTR IDE EXIT[17:15]  */
-                           ((p_filterbuff[7 + i*8] ) << 16)         |
-
-                           /* STD[17:15] */
-                           ((p_filterbuff[6 + i*8] ) << 24);
-            } else {
-                /**
-                 *  标志位列表模式
-                 *  4个16位过滤器
-                 */
-
-                       /* 使用扩展ID STD[10:3] STD[2:0] RTR IDE EXID[17:15] */
-
-                       /* id_l id_h  id_mask_l id_mask_h  id_l id_h  id_mask_l id_mask_h*/
-                        p_hw_can->fi_rx[filt_num].f_r1 =
-
-                                /*ID*/
-                                /* EXIT[17:15] */
-                               ((p_filterbuff[0 + i*8] & 0x38) >> 3)   |
-
-                               /* IDE */
-                                (p_filter->can_fliter_ide << 3)        |
-
-                                /* RTR */
-                                (p_filter->can_fliter_rtr << 4)        |
-
-                                /* STD[7:0] */
-                               ((p_filterbuff[1 + i*8] ) << 5)         |
-
-                               /* STD[10:8] */
-                               ((p_filterbuff[0 + i*8] &0x7) << 13)     |
-
-                               /* ID */
-                               /* EXIT[17:15] */
-                               ((p_filterbuff[2 + i*8] & 0x38) << 13)   |
-
-                               /* IDE */
-                                (p_filter->can_fliter_ide << 19)        |
-
-                                /* RTR */
-                                (p_filter->can_fliter_rtr << 20)        |
-
-                                /* STD[7:0] */
-                               ((p_filterbuff[3 + i*8] ) << 21)         |
-
-                               /* STD[10:8] */
-                               ((p_filterbuff[2 + i*8] &0x7) << 29) ;
-
-                       p_hw_can->fi_rx[filt_num].f_r2 =
-
-                               /*ID*/
-                               /* EXIT[17:15] */
-                               ((p_filterbuff[4 + i*8] & 0x38) >> 3)   |
-
-                               /* IDE  RTR*/
-                                (p_filter->can_fliter_ide << 3)        |
-                                (p_filter->can_fliter_rtr << 4)        |
-
-                                /* STD[7:0] */
-                               ((p_filterbuff[5 + i*8] ) << 5)         |
-
-                               /* STD[10:8] */
-                               ((p_filterbuff[4 + i*8] &0x7) << 13)     |
-
-                               /* ID */
-                               /* EXIT[17:15] */
-                               ((p_filterbuff[6 + i*8] & 0x38) << 13)   |
-                               /* IDE  RTR */
-                                (p_filter->can_fliter_ide << 19)        |
-                                (p_filter->can_fliter_rtr << 20)        |
-
-                                /* STD[7:0] */
-                               ((p_filterbuff[7 + i*8] ) << 21)         |
-
-                               /* STD[10:8] */
-                               ((p_filterbuff[6 + i*8] &0x7) << 29) ;
-            }
-
-        } else if (p_filter->can_filter_scale ==
-                       AMHW_ZLG237_CAN_FILTER_SCALE_32BIT) {
-            /* 32位宽 */
-            p_hw_can->fs_1r |= (uint32_t)filt_pos;
-
-            if (p_filter->can_filter_mode == AMHW_ZLG237_CAN_FILTER_MODE_IDMASK) {
-
-                /**
-                 *  标识符屏蔽位模式
-                 *  1个32位过滤器
-                 */
-                if (p_filter->can_fliter_ide == CAN_ID_EXT) {
-
-                    /* 使用扩展ID */
-                    /* ID */
-                    p_hw_can->fi_rx[filt_num].f_r1 =
-
-                            /* RTR IDE */
-                            (p_filter->can_fliter_rtr << 1)   |
-                            (p_filter->can_fliter_ide << 2)   |
-
-                            /* EXID[0:28] */
-                            (((p_filterbuff[3 + i*8])      |
-                              (p_filterbuff[2 + i*8] << 8) |
-                              (p_filterbuff[1 + i*8] << 16)|
-                              (p_filterbuff[0 + i*8] << 24)) << 3);
-
-                    /* ID_MASK */
-                    p_hw_can->fi_rx[filt_num].f_r2 =
-
-                            /* 0 RTR IDE EXID[0:28] */
-                                          0x00 |
-                            (((p_filterbuff[7 + i*8])      |
-                              (p_filterbuff[6 + i*8] << 8) |
-                              (p_filterbuff[5 + i*8] << 16)|
-                              (p_filterbuff[4 + i*8] << 24)) << 1);
-
+                reg_f_r1 = p_hw_can->fi_rx[filt_num].f_r1;
+                reg_f_r2 = p_hw_can->fi_rx[filt_num].f_r2;
+                /* 32位 */
+                p_hw_can->fs_1r |= (uint32_t)filt_pos;
+                state = __can_zlg237_filter_32bit_idlist(&reg_f_r1,
+                                                         &reg_f_r2,
+                                                          p_filterbuff);
+                if (state != AM_CAN_NOERROR) {
+                    return state;
                 } else {
-                    /* 使用标准ID */
-                    /* ID */
-                    p_hw_can->fi_rx[filt_num].f_r1 =
+                    p_hw_can->fi_rx[filt_num].f_r1 = reg_f_r1;
+                    p_hw_can->fi_rx[filt_num].f_r2 = reg_f_r2;
+                }
 
-                            /* RTR      IDE*/
-                            (p_filter->can_fliter_rtr << 1)   |
-                            (p_filter->can_fliter_ide << 2)   |
 
-                            /* STID[0:10] */
-                            (((p_filterbuff[3 + i*8] )    |
-                              (p_filterbuff[2 + i*8] << 8)) << 21);
+            } else {
 
-                    /* ID_MASK */
-                    p_hw_can->fi_rx[filt_num].f_r2 =
-                            /* RTR IDE */
-                            ((p_filterbuff[7 + i*8] &0x3) << 1) |
+                /* 16位 */
+                p_hw_can->fs_1r &= ~(uint32_t)filt_pos;
 
-                            /* STID[0:10] */
-                             ((((p_filterbuff[7 + i*8] & 0xfc) >> 2) |
-                                ((p_filterbuff[6 +i*8] & 0x1f)<< 6)) << 21);
+                uint32_t reg_f_r1 = 0;
+                uint32_t reg_f_r2 = 0;
+
+                reg_f_r1 = p_hw_can->fi_rx[filt_num].f_r1;
+                reg_f_r2 = p_hw_can->fi_rx[filt_num].f_r2;
+
+                state = __can_zlg237_filter_16bit_idlist(&reg_f_r1,
+                                                         &reg_f_r2,
+                                                          p_filterbuff);
+
+                if (state != AM_CAN_NOERROR) {
+                    return state;
+                } else {
+                    p_hw_can->fi_rx[filt_num].f_r1 = reg_f_r1;
+                    p_hw_can->fi_rx[filt_num].f_r2 = reg_f_r2;
+                }
+            }
+        } else {
+
+            /* 标识符屏蔽位 */
+            p_hw_can->fm_1r &= ~(uint32_t)filt_pos;
+
+            if (p_filter->can_filter_scale) {
+
+                /* 32位 */
+                p_hw_can->fs_1r |= (uint32_t)filt_pos;
+
+                uint32_t reg_f_r1 = 0;
+                uint32_t reg_f_r2 = 0;
+
+                reg_f_r1 = p_hw_can->fi_rx[filt_num].f_r1;
+                reg_f_r2 = p_hw_can->fi_rx[filt_num].f_r2;
+
+                state = __can_zlg237_filter_32bit_idmask(
+                                                 &reg_f_r1,
+                                                 &reg_f_r2,
+                                                 p_filterbuff);
+                if (state != AM_CAN_NOERROR) {
+                    return state;
+                } else {
+                    p_hw_can->fi_rx[filt_num].f_r1 = reg_f_r1;
+                    p_hw_can->fi_rx[filt_num].f_r2 = reg_f_r2;
                 }
             } else {
 
-                /**
-                 *  标志位列表模式
-                 *  2个32位过滤器
-                 */
-                if (p_filter->can_fliter_ide == CAN_ID_EXT) {
-                    /* ID */
-                    p_hw_can->fi_rx[filt_num].f_r1 =
+                /* 16位 */
+                p_hw_can->fs_1r &= ~(uint32_t)filt_pos;
 
-                            /* RTR IDE */
-                            (p_filter->can_fliter_rtr << 1)   |
-                            (p_filter->can_fliter_ide << 2)   |
+                uint32_t reg_f_r1 = 0;
+                uint32_t reg_f_r2 = 0;
 
-                            /* EXID[0:28] */
-                            (((p_filterbuff[3 + i*8])      |
-                              (p_filterbuff[2 + i*8] << 8) |
-                              (p_filterbuff[1 + i*8] << 16)|
-                              (p_filterbuff[0 + i*8] << 24)) << 3);
+                state = __can_zlg237_filter_16bit_idmask(
+                            &reg_f_r1,
+                            &reg_f_r2,
+                            p_filterbuff);
 
-                    /* ID */
-                    p_hw_can->fi_rx[filt_num].f_r2 =
-                            (p_filter->can_fliter_rtr << 1)   |
-                            (p_filter->can_fliter_ide << 2)   |
-                            (((p_filterbuff[7 + i*8])      |   /* EXID[0:28] */
-                              (p_filterbuff[6 + i*8] << 8) |
-                              (p_filterbuff[5 + i*8] << 16)|
-                              (p_filterbuff[4 + i*8] << 24)) << 3);
+                if (state != AM_CAN_NOERROR) {
+                    return state;
                 } else {
-                    /* ID */
-                    p_hw_can->fi_rx[filt_num].f_r1 =
-                            (p_filter->can_fliter_rtr << 1)   |
-                            (p_filter->can_fliter_ide << 2)   |
-                            (((p_filterbuff[3 + i*8])      |   /* STID[0:10] */
-                              ((p_filterbuff[2 + i*8] &0X7) << 8) ) << 21);
-
-                    /* ID */
-                    p_hw_can->fi_rx[filt_num].f_r2 =
-                            (p_filter->can_fliter_rtr << 1)   |     /* RTR */
-                            (p_filter->can_fliter_ide << 2)   |     /* IDE */
-                            (((p_filterbuff[7 + i*8])      |   /* STID[0:10] */
-                              ((p_filterbuff[6 + i*8] & 0X7 ) << 8)) << 21);
+                    p_hw_can->fi_rx[filt_num].f_r1 = reg_f_r1;
+                    p_hw_can->fi_rx[filt_num].f_r2 = reg_f_r2;
                 }
 
             }
@@ -1215,8 +1358,10 @@ am_can_err_t __can_zlg237_filter_tab_set (void    *p_drv,
 
             p_hw_can->fa_1r |= (uint32_t)filt_pos;
         }
-    }
 
+        /* 滤波器组后移 */
+        p_filterbuff++;
+    }
 
     /* 滤波器组回到正常模式 */
     p_hw_can->fmr &= ~0x01;
@@ -1228,22 +1373,27 @@ am_can_err_t __can_zlg237_filter_tab_set (void    *p_drv,
                 mode);
     }
 
-    return AM_CAN_NOERROR;
+    return state;
+
 }
+
 
 /**
  * \brief 获取滤波函数
  */
-am_can_err_t __can_zlg237_filter_tab_get (void    *p_drv,
-                                          uint8_t *p_filterbuff,
-                                          size_t  *p_lenth)
+am_can_err_t __can_zlg237_filter_tab_ext_get (void              *p_drv,
+                                              am_can_filter_t   *p_filterbuff,
+                                              size_t            *p_lenth)
 {
     am_zlg237_can_dev_t         *p_dev    = (am_zlg237_can_dev_t *)p_drv;
-
     amhw_zlg237_can_t           *p_hw_can = NULL;
-    uint8_t                      i        = 0;
-    uint32_t                     id       = 0;
-    uint32_t                     id_mask  = 0;
+    uint32_t                     filter_group = 0;
+
+    /* 1 list  0 mask */
+    uint8_t                      filter_mode = 0;
+
+    /* 1 32  0 16 */
+    uint8_t                      filter_scale = 0;
     if (NULL == p_drv ) {
         return AM_CAN_INVALID_PARAMETER;
     }
@@ -1251,147 +1401,130 @@ am_can_err_t __can_zlg237_filter_tab_get (void    *p_drv,
 
     p_hw_can = (amhw_zlg237_can_t *)p_dev->p_devinfo->regbase;
 
-    for (i = 0; i < 13; i++ ) {
+    filter_group = p_hw_can->fa_1r & 0x3fff;
 
-        /* 滤波器已激活 */
-        if (p_hw_can->fa_1r & (1ul << i) ) {
-            *p_lenth = *p_lenth + 8;
-            /* 过滤器工作在标识符列表模式下 */
-            if (p_hw_can->fm_1r & (1ul << i)) {
+    for (int i = 0;i < 14;i++) {
 
-                /* 过滤器位宽为2个16位 */
-                if ((p_hw_can->fs_1r & (1ul << i)) == 0) {
+        /* 判断当前滤波器组是否激活 */
+        if ( ( filter_group & ( (uint32_t)1ul<< i) ) ) {
+            p_filterbuff->num = i;
+        } else {
+            continue;
+        }
 
-                    id = ((p_hw_can->fi_rx[i].f_r1 & 0x7) << 11) |
-                         ((p_hw_can->fi_rx[i].f_r1 & 0xffe0) >> 5);
-                    p_filterbuff[0 + i*8] = id >> 8;
-                    p_filterbuff[1 + i*8] = id & 0xff;
-                    id = (((p_hw_can->fi_rx[i].f_r1 >> 16) & 0x7 ) << 11) |
-                         (((p_hw_can->fi_rx[i].f_r1 >> 16) & 0xffe0) >> 5);
-                    p_filterbuff[2 + i*8] = id >> 8;
-                    p_filterbuff[3 + i*8] = id & 0xff;
+        /* 模式判定 */
+        filter_mode  = (p_hw_can->fm_1r >> i) & 0x01;
+        filter_scale = (p_hw_can->fs_1r >> i) & 0x01;
 
-                    id = ((p_hw_can->fi_rx[i].f_r2 & 0x7) << 11) |
-                         ((p_hw_can->fi_rx[i].f_r2 & 0xffe0) >> 5);
-                    p_filterbuff[4 + i*8] = id >> 8;
-                    p_filterbuff[5 + i*8] = id & 0xff;
-                    id = (((p_hw_can->fi_rx[i].f_r2 >> 16) & 0x7 ) << 11) |
-                         (((p_hw_can->fi_rx[i].f_r2 >> 16) & 0xffe0) >> 5);
-                    p_filterbuff[6 + i*8] = id >> 8;
-                    p_filterbuff[7 + i*8] = id & 0xff;
+        if (filter_mode == AMHW_ZLG237_CAN_FILTER_MODE_IDMASK) {
+                /* 掩码模式 16位 */
+            if (filter_scale == AMHW_ZLG237_CAN_FILTER_SCALE_16BIT) {
+                uint16_t reg_f_r1_h = p_hw_can->fi_rx[i].f_r1 >> 16;
+                uint16_t reg_f_r1_l = p_hw_can->fi_rx[i].f_r1 & 0xffff;
+                uint16_t reg_f_r2_h = p_hw_can->fi_rx[i].f_r2 >> 16;
+                uint16_t reg_f_r2_l = p_hw_can->fi_rx[i].f_r2 & 0xffff;
 
+                /* 帧格式 帧类型 */
+                p_filterbuff->ide = ((reg_f_r1_h >> 3) & 0x01) ?
+                                        AM_CAN_FRAME_TYPE_EXT :
+                                        AM_CAN_FRAME_TYPE_STD;
+                p_filterbuff->rtr = ((reg_f_r1_l >> 4) & 0x01) ?
+                                        (((reg_f_r1_h >> 4) & 0x01) ?
+                                                AM_CAN_FRAME_FORMAT_REMOTE :
+                                                AM_CAN_FRAME_FORMAT_DATA):
+                                        AM_CAN_FRAME_FORMAT_NOCARE;
+
+                p_filterbuff->id[0] = (reg_f_r1_h >> 5) |
+                                        ((reg_f_r1_h & 0x07) << 15);
+                p_filterbuff->id[1] = (reg_f_r2_h >> 5) | ((reg_f_r2_h & 0x07) << 15);
+
+                p_filterbuff->mask[0] = (reg_f_r1_l >> 5) | ((reg_f_r1_l & 0x07) << 15);
+                p_filterbuff->mask[1] = (reg_f_r2_l >> 5) | ((reg_f_r2_l & 0x07) << 15);
+
+            } else {
+                /* 掩码模式 32位 */
+                uint32_t reg_f_r1 = p_hw_can->fi_rx[i].f_r1;
+                uint32_t reg_f_r2 = p_hw_can->fi_rx[i].f_r2;
+
+                /* 帧格式 帧类型 */
+                p_filterbuff->ide = ((reg_f_r1 >> 2) & 0x01) ?
+                                        AM_CAN_FRAME_TYPE_EXT :
+                                        AM_CAN_FRAME_TYPE_STD;
+
+                p_filterbuff->rtr = ((reg_f_r2 >> 1) & 0x01) ?
+                                        (((reg_f_r1 >> 1) & 0x01) ?
+                                                AM_CAN_FRAME_FORMAT_REMOTE :
+                                                AM_CAN_FRAME_FORMAT_DATA):
+                                        AM_CAN_FRAME_FORMAT_NOCARE;
+
+                    /* 扩展帧 */
+                if (p_filterbuff->ide == AM_CAN_FRAME_TYPE_EXT) {
+                    p_filterbuff->id[0]    = (reg_f_r1 >> 3);
+                    p_filterbuff->mask[0]  = (reg_f_r1 >> 3);
                 } else {
-                    /* 过滤器位宽为单个32位 */
-                    if (p_hw_can->fi_rx[i].f_r1 & 0x4 ) {
-                        /* 扩展标识符 */
-                        id = (p_hw_can->fi_rx[i].f_r1 >> 3);
-                        p_filterbuff[0 + i*8] =
-                                (uint8_t)((id & (~(uint32_t)0xffffff)) >> 24);
-                        p_filterbuff[1 + i*8] =
-                                (uint8_t)((id & 0xff0000) >> 16);
-                        p_filterbuff[2 + i*8] =
-                                (uint8_t)((id & 0xff00) >> 8);
-                        p_filterbuff[3 + i*8] =
-                                (uint8_t)(id & 0xff);
+                    /* 标准帧 */
+                    p_filterbuff->id[0]    = reg_f_r1 >> 21;
+                    p_filterbuff->mask[0]  = reg_f_r2 >> 21;
+                }
+            }
+        } else {
+            if (filter_scale == AMHW_ZLG237_CAN_FILTER_SCALE_16BIT) {
+                /* 列表 16位 */
+                uint32_t reg_f_r1_h = p_hw_can->fi_rx[i].f_r1 >> 16;
+                uint32_t reg_f_r1_l = p_hw_can->fi_rx[i].f_r1 & 0xffff;
+                uint32_t reg_f_r2_h = p_hw_can->fi_rx[i].f_r2 >> 16;
+                uint32_t reg_f_r2_l = p_hw_can->fi_rx[i].f_r2 & 0xffff;
 
-                        id = (p_hw_can->fi_rx[i].f_r2 >> 3);
-                        p_filterbuff[4 + i*8] =
-                                (uint8_t)((id & (~(uint32_t)0xffffff)) >> 24);
-                        p_filterbuff[5 + i*8] =
-                                (uint8_t)((id & 0xff0000) >> 16);
-                        p_filterbuff[6 + i*8] =
-                                (uint8_t)((id & 0xff00) >> 8);
-                        p_filterbuff[7 + i*8] =
-                                (uint8_t)(id & 0xff);
+                p_filterbuff->ide = ((reg_f_r1_h >> 3) & 0x01) ?
+                                        AM_CAN_FRAME_TYPE_EXT :
+                                        AM_CAN_FRAME_TYPE_STD;
+                p_filterbuff->rtr = ((reg_f_r1_h >> 4) & 0x01) ?
+                                        AM_CAN_FRAME_FORMAT_REMOTE :
+                                        AM_CAN_FRAME_FORMAT_DATA;
 
-
-
-                     } else {
-                        /* 标准标识符 */
-                         id = (p_hw_can->fi_rx[i].f_r1 >> 21 );
-                         p_filterbuff[2 + i*8] = (uint8_t)(id >> 8);
-                         p_filterbuff[3 + i*8] = (uint8_t)(id & 0xff);
-
-                         id = (p_hw_can->fi_rx[i].f_r2 >> 21 );
-                         p_filterbuff[6 + i*8] = (uint8_t)(id >> 8);
-                         p_filterbuff[7 + i*8] = (uint8_t)(id & 0xff);
-
-
-                     }
+                if (p_filterbuff->ide == AM_CAN_FRAME_TYPE_EXT) {
+                    p_filterbuff->id[0] = ((reg_f_r1_h & 0x07) << 15) |
+                                           (reg_f_r1_h >> 5);
+                    p_filterbuff->id[1] = ((reg_f_r1_l & 0x07) << 15) |
+                                           (reg_f_r1_l >> 5);
+                    p_filterbuff->id[2] = ((reg_f_r2_h & 0x07) << 15) |
+                                           (reg_f_r2_h >> 5);
+                    p_filterbuff->id[3] = ((reg_f_r2_l & 0x07) << 15) |
+                                           (reg_f_r2_l >> 5);
+                } else {
+                    p_filterbuff->id[0] = reg_f_r1_h >> 5;
+                    p_filterbuff->id[1] = reg_f_r1_l >> 5;
+                    p_filterbuff->id[2] = reg_f_r2_h >> 5;
+                    p_filterbuff->id[3] = reg_f_r2_l >> 5;
                 }
 
-            /* 过滤器工作在标识符屏蔽模式下 */
             } else {
+                /* 列表 32位 */
+                uint32_t reg_f_r1 = p_hw_can->fi_rx[i].f_r1;
+                uint32_t reg_f_r2 = p_hw_can->fi_rx[i].f_r2;
 
+                p_filterbuff->ide = ((reg_f_r1 >> 2) & 0x01) ?
+                                        AM_CAN_FRAME_TYPE_EXT :
+                                        AM_CAN_FRAME_TYPE_STD;
+                p_filterbuff->rtr = ((reg_f_r2 >> 1) & 0x01) ?
+                                        AM_CAN_FRAME_FORMAT_REMOTE:
+                                        AM_CAN_FRAME_FORMAT_DATA;
 
-                /* 过滤器位宽为2个16位 */
-                if ((p_hw_can->fs_1r & (1ul << i)) == 0) {
-
-                    id = ((p_hw_can->fi_rx[i].f_r1 & 0x7) << 11) |
-                            ((p_hw_can->fi_rx[i].f_r1 & 0xffe0) >> 5);
-                    p_filterbuff[0 + i*8] = id >> 8;
-                    p_filterbuff[1 + i*8] = id & 0xff;
-                    id_mask = ((p_hw_can->fi_rx[i].f_r1 >> 16) & 0x7 ) |
-                            ((p_hw_can->fi_rx[i].f_r1 >> 16) & 0xfff8);
-                    p_filterbuff[2 + i*8] = id_mask >> 8;
-                    p_filterbuff[3 + i*8] = id_mask & 0xff;
-
-                    id = ((p_hw_can->fi_rx[i].f_r2 & 0x7) << 11) |
-                            ((p_hw_can->fi_rx[i].f_r2 & 0xffe0) >> 5);
-                    p_filterbuff[4 + i*8] = id >> 8;
-                    p_filterbuff[5 + i*8] = id & 0xff;
-                    id_mask = ((p_hw_can->fi_rx[i].f_r2 >> 16) & 0x7 ) |
-                            ((p_hw_can->fi_rx[i].f_r2 >> 16) & 0xfff8);
-                    p_filterbuff[6 + i*8] = id_mask >> 8;
-                    p_filterbuff[7 + i*8] = id_mask & 0xff;
-
-
-
+                if (p_filterbuff->ide == AM_CAN_FRAME_TYPE_EXT) {
+                    p_filterbuff->id[0] = reg_f_r1 >> 3;
+                    p_filterbuff->id[1] = reg_f_r2 >> 3;
                 } else {
-                    /* 过滤器位宽为单个32位 */
-                    if (p_hw_can->fi_rx[i].f_r1 & 0x4) {
-                        /* 扩展标识符 */
-                        id = (p_hw_can->fi_rx[i].f_r1 >> 3);
-                        p_filterbuff[0 + i*8] =
-                                (uint8_t)((id & (~(uint32_t)0xffffff)) >> 24);
-                        p_filterbuff[1 + i*8] =
-                                (uint8_t)((id & 0xff0000) >> 16);
-                        p_filterbuff[2 + i*8] =
-                                (uint8_t)((id & 0xff00) >> 8);
-                        p_filterbuff[3 + i*8] =
-                                (uint8_t)(id & 0xff);
-
-                        id_mask = (p_hw_can->fi_rx[i].f_r2 >> 1);
-                        p_filterbuff[4 + i*8] =
-                                (uint8_t)(id_mask >> 24);
-                        p_filterbuff[5 + i*8] =
-                                (uint8_t)((id_mask & 0xff0000) >> 16);
-                        p_filterbuff[6 + i*8] =
-                                (uint8_t)((id_mask & 0xff00) >> 8);
-                        p_filterbuff[7 + i*8] =
-                                (uint8_t)(id_mask & 0xff);
-                    } else {
-                        /* 标准标识符 */
-                        id = (p_hw_can->fi_rx[i].f_r1 >> 21 );
-                        p_filterbuff[2 + i*8] =
-                                (uint8_t)(id >> 8);
-                        p_filterbuff[3 + i*8] =
-                                (uint8_t)(id & 0xff);
-
-                        id_mask = (p_hw_can->fi_rx[i].f_r2 >> 19 ) |
-                                ((p_hw_can->fi_rx[i].f_r2 & 0x6) >> 1) ;
-                        p_filterbuff[6 + i*8] =
-                                (uint8_t)(id_mask >> 8);
-                        p_filterbuff[7 + i*8] =
-                                (uint8_t)(id_mask & 0xff);
-                    }
+                    p_filterbuff->id[0] = reg_f_r1 >> 21;
+                    p_filterbuff->id[1] = reg_f_r2 >> 21;
                 }
             }
         }
+        p_filterbuff++;
+        *p_lenth = *p_lenth + 36;
     }
-
     return AM_CAN_NOERROR;
 }
+
 
 static void __can_zlg237_intcb_func_run (am_zlg237_can_dev_t  *p_dev,
                                         am_can_int_type_t      can_int)

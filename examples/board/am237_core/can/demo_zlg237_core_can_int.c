@@ -50,6 +50,7 @@
  * \internal
  * \par modification history:
  * - 19-08-08, zp, first implementation.
+ * - 19-12-18, zc, add filter table extern
  * \endinternal
  */
 
@@ -64,7 +65,15 @@
 #define  CAN_BAUD        50000    /*CAN 的波特率 */
 
 /**\brief 滤波表数组，相关设定请参考demo_zlg237_core_can.c例程 */
-uint8_t table[8] = {0, 0, 0, 0, 0, 0, 0, 0};
+am_can_filter_t table[1] = {
+        {
+                0,
+                AM_CAN_FRAME_TYPE_EXT,
+                AM_CAN_FRAME_FORMAT_DATA,
+                {0x00},
+                {0x00},
+        }
+};
 
 /**
  * \brief 获取对应波特率配置值  CAN_BAUD = APB1/((BRP + 1) * (TEG1 + TEG2 + 3))
@@ -126,7 +135,7 @@ void demo_zlg237_core_can_int_entry (void)
                                &can_btr_baud,
                                int_type,
                                table,
-                               sizeof(table)/sizeof(uint8_t));
+                               sizeof(table));
 }
 
 /** [demo_zlg237_can_int] */
