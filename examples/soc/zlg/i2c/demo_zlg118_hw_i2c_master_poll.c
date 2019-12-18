@@ -57,8 +57,8 @@
 #define I2C_SUBADDR_2BYTE     0x2000u  /**< \brief 子地址宽度2字节 */
 
 #define I2C_SPEED     100000            /**< \brief I2C 控制器速度参数定义 */
-#define EEPROM_ADDR   0x64       /**< \brief EEPROM 设备地址定义 */
-#define TEST_LEN      0X02                 /**< \brief 操作 EEPROM 的页大小 */
+#define EEPROM_ADDR   0x50              /**< \brief EEPROM 设备地址定义 */
+#define TEST_LEN      0X02              /**< \brief 操作 EEPROM 的页大小 */
 
 #define __I2C_ST_IDLE             (0x10u)          /* 空闲状态 */
 #define __I2C_ST_MSG_START        (0x11u)          /* 消息传输开始状态 */
@@ -165,6 +165,7 @@ static am_err_t __i2c_msg_start (amhw_zlg118_i2c_t  *p_hw_i2c,
 
             /* 判断i2c状态 */
             switch (state) {
+            case 0x08: /* 已发送起始条件 */
             case 0x10: /* 已发送重复起始条件 */
 
                 /* 清除起始条件 */

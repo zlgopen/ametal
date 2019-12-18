@@ -47,7 +47,7 @@
 *******************************************************************************/
 
 /** 主机操作从机地址定义 */
-#define OPERATE_ADDR      0x64
+#define OPERATE_ADDR      0x50
 
 #define EEPROM_BUFFER_LEN (0x20)
 
