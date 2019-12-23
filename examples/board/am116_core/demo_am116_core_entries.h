@@ -571,6 +571,11 @@ void demo_zlg126_usbd_msc_entry (void);
  */
 void demo_zlg126_usbd_vcom_entry (void);
 
+/**
+ * \brief MK100 ´ÅÐýÅ¥ Àý³Ì
+ */
+void demo_am116_core_mk100_test_entry (void);
+
 #ifdef __cplusplus
 }
 #endif
