@@ -155,19 +155,28 @@ typedef uint8_t am_can_mode_type_t;             /**< \brief CAN模式类型  */
 #define AM_CAN_MODE_NROMAL				0x00	/**< \brief 正常工作模式 */
 #define AM_CAN_MODE_LISTEN_ONLY		    0x01	/**< \brief 只听工作模式 */
 
+
 /**
  * \name CAN帧类型
  * \anchor grp_am_can_frame_type
  * @{
  */
-
 typedef uint8_t am_can_frame_type_t;             /**< \brief CAN帧类型  */
 #define AM_CAN_FRAME_TYPE_STD            0x01    /**< \brief 标准帧  */
 #define AM_CAN_FRAME_TYPE_EXT            0x02    /**< \brief 扩展帧  */
+
+/**
+ * \name CAN帧格式
+ * \anchor grp——am_can_frame_format_t
+ * @{
+ */
+
+typedef uint8_t am_can_frame_format_t;             /**< \brief CAN帧类型  */
 #define AM_CAN_FRAME_FORMAT_NOCARE       0x00    /**< \brief 数据帧和远程帧都可接收  */
 #define AM_CAN_FRAME_FORMAT_DATA         0x01    /**< \brief 数据帧  */
 #define AM_CAN_FRAME_FORMAT_REMOTE       0x02    /**< \brief 远程帧  */
-#define AM_CAN_FRAME_NONE                0xff    /**< \brief 无效项  */
+
+
 
 
 /** @} */
@@ -189,12 +198,11 @@ typedef struct am_can_bps_param {
 
 /** \brief 滤波表配置 */
 typedef struct am_can_filter {
-    uint8_t num;                                 /**< \brief 滤波器组序号   */
-    am_can_frame_type_t ide;                     /**< \brief 滤波器帧类型   */
-    am_can_frame_type_t rtr;                     /**< \brief 滤波器帧格式   */
+    am_can_frame_type_t   ide;                     /**< \brief 滤波器帧类型   */
+    am_can_frame_format_t rtr;                     /**< \brief 滤波器帧格式   */
 
-    uint32_t id[4];                              /**< \brief ID验收码    */
-    uint32_t mask[4];                            /**< \brief ID掩码    */
+    uint32_t id[4];                                /**< \brief ID验收码    */
+    uint32_t mask[4];                              /**< \brief ID掩码    */
 
 } am_can_filter_t;
 
@@ -548,7 +556,7 @@ am_can_err_t am_can_filter_tab_set (am_can_handle_t  handle,
  *
  * \param[in] handle  : CAN 标准服务 handle.
  * \param[in] p_filterbuff : 滤波表 详见 am_can_filter_t
- * \param[in] lenth        : 滤波表长度
+ * \param[in] lenth        : 传输的am_can_filter_t的个数
  *
  * \retval  AM_CAN_NOERROR            :  成功.
  * \retval  -AM_CAN_INVALID_PARAMETER : 参数错误
@@ -588,7 +596,7 @@ am_can_err_t am_can_filter_tab_get (am_can_handle_t  handle,
  *
  * \param[in]  handle          : CAN 标准服务 handle.
  * \param[out] p_filterbuff    : 滤波表 详见 am_can_filter_t
- * \param[out] p_lenth         : 滤波表长度
+ * \param[out] p_lenth         : 设置的am_can_filter_t个数
  *
  * \retval  AM_CAN_NOERROR            :  成功.
  * \retval  -AM_CAN_INVALID_PARAMETER : 参数错误

@@ -923,8 +923,9 @@ am_can_err_t __can_filter_tab_ext_set (void             *p_drv,
     amhw_zmf159_can_mode_t  mode      = p_dev->mode;
     uint32_t                id        = 0;
     uint32_t                id_mask   = 0;
-    if (NULL == p_drv || NULL == p_filterbuff || 0 == lenth ||
-       lenth != (sizeof(am_can_filter_t))) {
+
+    /* 只能设置一组滤波器 */
+    if (NULL == p_drv || NULL == p_filterbuff || 0 == lenth || lenth > 1) {
         return AM_CAN_INVALID_PARAMETER;
     }
 
@@ -940,11 +941,17 @@ am_can_err_t __can_filter_tab_ext_set (void             *p_drv,
     }
 
     if (AMHW_ZMF159_CAN_BASIC_CAN == p_dev->p_devinfo->type) {
-        if ((p_filterbuff->id[0] > 0x7ff) ||
-            (p_filterbuff->mask[0] > 0x7ff) ) {
 
-            return AM_CAN_INVALID_PARAMETER;
+        if ((p_filterbuff->id[0] > 0x7ff) ||
+            (p_filterbuff->mask[0] > 0x7ff) ||
+            (p_filterbuff->ide != AM_CAN_FRAME_TYPE_STD) ||
+            (p_filterbuff->rtr != AM_CAN_FRAME_FORMAT_NOCARE)) {
+
+            /* basic_can下只能设置标准帧 */
+            return AM_CAN_ILLEGAL_DATA_LENGTH;
         }
+
+        /* 此模式下mask和id的低三位设置无效 */
         amhw_zmf159_basic_can_ac_set(
                 p_hw_can, (uint8_t)(p_filterbuff->id[0] & 0x7f8) >> 3);
         amhw_zmf159_basic_can_am_set(
@@ -958,8 +965,13 @@ am_can_err_t __can_filter_tab_ext_set (void             *p_drv,
     amhw_zmf159_peli_filter_mod_set(p_hw_can, AMHW_ZMF159_CAN_PELI_SINGLE_FILTER);
 
     /* 根据掩码长度来决定掩码是设置标准帧 还是扩展帧 */
-    if (p_filterbuff->mask[0] <= 0x7ff) {
+    if (p_filterbuff->ide == AM_CAN_FRAME_TYPE_STD) {
         /* 标准帧 */
+        if ((p_filterbuff->id[0] > 0x7ff) ||
+            (p_filterbuff->mask[0] > 0x7ff) ) {
+
+            return AM_CAN_ILLEGAL_DATA_LENGTH;
+        }
         if (p_filterbuff->rtr == AM_CAN_FRAME_FORMAT_DATA) {
             id = ((p_filterbuff->id[0] & 0x7ff) << 21);
             id_mask = (((~p_filterbuff->mask[0]) & 0x7ff) << 21) | 0x000fffff;
@@ -971,11 +983,15 @@ am_can_err_t __can_filter_tab_ext_set (void             *p_drv,
             id_mask = (((~p_filterbuff->mask[0]) & 0x7ff) << 21) | 0x001fffff;
         } else {
             /* 无效参数 */
-            return AM_CAN_INVALID_PARAMETER;
+            return AM_CAN_ILLEGAL_CONFIG;
         }
-    } else if ((p_filterbuff->mask[0] > 0x7ff) &&
-               (p_filterbuff->mask[0] <= 0x1fffffff)) {
+    } else if (p_filterbuff->ide == AM_CAN_FRAME_TYPE_EXT) {
         /* 扩展帧 */
+        if ((p_filterbuff->id[0] > 0x1fffffff) ||
+            (p_filterbuff->mask[0] > 0x1fffffff) ) {
+
+            return AM_CAN_ILLEGAL_DATA_LENGTH;
+        }
         if (p_filterbuff->rtr == AM_CAN_FRAME_FORMAT_DATA) {
             id =((p_filterbuff->id[0] & 0x1fffffff) << 3);
             id_mask = (((~p_filterbuff->mask[0]) & 0x1fffffff) << 3) | 0x03;
@@ -986,13 +1002,11 @@ am_can_err_t __can_filter_tab_ext_set (void             *p_drv,
             id = ((p_filterbuff->id[0] & 0x1fffffff) << 3);
             id_mask = (((~p_filterbuff->mask[0]) & 0x1fffffff) <<3) | 0x07;
         } else {
-            /* 无效参数 */
-            return AM_CAN_INVALID_PARAMETER;
+            return AM_CAN_ILLEGAL_CONFIG;
         }
 
     } else {
-        /* 无效参数  */
-        return AM_CAN_INVALID_PARAMETER;
+        return AM_CAN_ILLEGAL_CONFIG;
     }
     amhw_zmf159_peli_can_ac_set(p_hw_can,id);
     amhw_zmf159_peli_can_am_set(p_hw_can,id_mask);
@@ -1066,6 +1080,7 @@ am_can_err_t __can_filter_tab_get (void    *p_drv,
  * \brief 获取滤波函数(扩展) 由于无法判别具体是扩展还是标准帧
  *  采用标准帧和扩展帧分别解析
  */
+
 am_can_err_t __can_filter_tab_ext_get (void             *p_drv,
                                        am_can_filter_t  *p_filterbuff,
                                        size_t           *p_lenth)
@@ -1086,9 +1101,9 @@ am_can_err_t __can_filter_tab_ext_get (void             *p_drv,
     if (AMHW_ZMF159_CAN_MODE_RESET != p_dev->mode) {
 
         amhw_zmf159_can_mode_set(p_hw_can,
-                                   p_dev->p_devinfo->type,
-                                   &(p_dev->mode),
-                                   AMHW_ZMF159_CAN_MODE_RESET);
+                                 p_dev->p_devinfo->type,
+                               &(p_dev->mode),
+                                 AMHW_ZMF159_CAN_MODE_RESET);
     }
 
     if (AMHW_ZMF159_CAN_BASIC_CAN == p_dev->p_devinfo->type) {
@@ -1098,10 +1113,9 @@ am_can_err_t __can_filter_tab_ext_get (void             *p_drv,
 
         p_filterbuff->id[0]     = ((acr_reg & 0xff) << 3);
         p_filterbuff->mask[0]   = (((~amr_reg) & 0xff) << 3);
-        p_filterbuff->num = 0;
-        p_filterbuff->ide = AM_CAN_FRAME_NONE;
-        p_filterbuff->rtr = AM_CAN_FRAME_NONE;
-       *p_lenth = sizeof(am_can_filter_t);
+        p_filterbuff->ide = AM_CAN_FRAME_TYPE_STD;
+        p_filterbuff->rtr = AM_CAN_FRAME_FORMAT_NOCARE;
+       *p_lenth = 1;
 
         return AM_CAN_NOERROR;
     }
@@ -1119,9 +1133,7 @@ am_can_err_t __can_filter_tab_ext_get (void             *p_drv,
                                  (((acr_reg >> 20) & 0x01 ) ?
                                          AM_CAN_FRAME_FORMAT_REMOTE:
                                          AM_CAN_FRAME_FORMAT_DATA);
-        p_filterbuff->ide     = AM_CAN_FRAME_NONE;
-        p_filterbuff->num     = 0;
-
+        p_filterbuff->ide     = AM_CAN_FRAME_TYPE_STD;
     }
 
     if (AM_CAN_FRAME_TYPE_EXT) {
@@ -1133,11 +1145,10 @@ am_can_err_t __can_filter_tab_ext_get (void             *p_drv,
                                  (((acr_reg >> 20) & 0x01 ) ?
                                          AM_CAN_FRAME_FORMAT_REMOTE:
                                          AM_CAN_FRAME_FORMAT_DATA);
-        p_filterbuff->ide     = AM_CAN_FRAME_NONE;
-        p_filterbuff->num     = 0;
+        p_filterbuff->ide     = AM_CAN_FRAME_TYPE_EXT;
     }
 
-    *p_lenth = sizeof(am_can_filter_t) * 2;
+    *p_lenth = 2;
 
     if (mode != AMHW_ZMF159_CAN_MODE_RESET) {
         /* 切换回正常模式 */

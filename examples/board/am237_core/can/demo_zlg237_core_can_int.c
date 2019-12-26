@@ -67,7 +67,6 @@
 /**\brief 滤波表数组，相关设定请参考demo_zlg237_core_can.c例程 */
 am_can_filter_t table[1] = {
         {
-                0,
                 AM_CAN_FRAME_TYPE_EXT,
                 AM_CAN_FRAME_FORMAT_DATA,
                 {0x00},
@@ -135,7 +134,7 @@ void demo_zlg237_core_can_int_entry (void)
                                &can_btr_baud,
                                int_type,
                                table,
-                               sizeof(table));
+                               1);
 }
 
 /** [demo_zlg237_can_int] */

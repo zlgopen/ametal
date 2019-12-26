@@ -1081,8 +1081,9 @@ void demo_zml166_adc_vol_para_adjuet_entry(void                   *p_handle,
 void demo_zlg237_can_int_entry (am_can_handle_t     can_handle,
                                 am_can_bps_param_t *can_btr_baud,
                                 am_can_int_type_t   int_type,
-                                uint8_t            *p_filterbuff,
+                                am_can_filter_t    *p_filterbuff,
                                 size_t              lenth);
+
 /**
  * \brief Àý³ÌÈë¿Ú
  */

@@ -60,7 +60,6 @@
 
 am_can_filter_t tab[4] = {
         {
-                0,
                 AM_CAN_FRAME_TYPE_EXT,
                 AM_CAN_FRAME_FORMAT_DATA,
                 {0x10000000},
@@ -68,7 +67,6 @@ am_can_filter_t tab[4] = {
 
         },
         {
-                1,
                 AM_CAN_FRAME_TYPE_EXT,
                 AM_CAN_FRAME_FORMAT_REMOTE,
                 {0x10000001},
@@ -76,7 +74,6 @@ am_can_filter_t tab[4] = {
 
         },
         {
-                2,
                 AM_CAN_FRAME_TYPE_STD,
                 AM_CAN_FRAME_FORMAT_DATA,
                 {0x01},
@@ -84,7 +81,6 @@ am_can_filter_t tab[4] = {
 
         },
         {
-                3,
                 AM_CAN_FRAME_TYPE_STD,
                 AM_CAN_FRAME_FORMAT_REMOTE,
                 {0x02},
@@ -141,7 +137,7 @@ void demo_zlg237_can_entry (am_can_handle_t      can_handle,
 
     /* ≈‰÷√¬À≤®±Ì */
     ret = am_can_filter_tab_ext_set(can_handle,tab,
-                                    sizeof(tab));
+                                    sizeof(tab)/sizeof(am_can_filter_t));
 
     if (ret == AM_CAN_NOERROR) {
         am_kprintf("\r\nCAN: controller filter table set ok. \r\n");
@@ -170,11 +166,14 @@ void demo_zlg237_can_entry (am_can_handle_t      can_handle,
     AM_FOREVER {
         ret = am_can_msg_recv (can_handle, &can_rcv_msg);
 
-        if (can_rcv_msg.msglen  || can_rcv_msg.flags || can_rcv_msg.id) {
+        if (can_rcv_msg.msglen) {
             am_kprintf("can recv id: 0x%x\r\n",can_rcv_msg.id);
-            for (i = 0; i < can_rcv_msg.msglen; i++) {
-                am_kprintf("data: 0x%x \r\n",can_rcv_msg.msgdata[i]);
+            if ((can_rcv_msg.flags & AM_CAN_REMOTE_FLAG) != AM_CAN_REMOTE_FLAG) {
+                for (i = 0; i < can_rcv_msg.msglen; i++) {
+                    am_kprintf("data: 0x%x \r\n",can_rcv_msg.msgdata[i]);
+                }
             }
+
             ret = am_can_msg_send (can_handle, &can_rcv_msg);
 
             if (ret == AM_CAN_NOERROR) {

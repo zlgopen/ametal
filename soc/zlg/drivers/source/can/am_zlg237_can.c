@@ -811,15 +811,13 @@ am_can_err_t __can_zlg237_msg_recv (void *p_drv, am_can_message_t *p_rxmsg)
         /* 远程帧 */
         p_rxmsg->flags |= AM_CAN_REMOTE_FLAG;
         p_rxmsg->msglen = 0;
-    } else {
-
-        /* 数据帧  */
+    }
 
         /* 获取发送数据长度*/
-        p_rxmsg->msglen = (uint8_t)0x0f &
-                           p_hw_can->rx_mail[rx_mailbox].rdtr;
+    p_rxmsg->msglen = (uint8_t)0x0f &
+                       p_hw_can->rx_mail[rx_mailbox].rdtr;
 
-    }
+
 
     /* 获取过滤器匹配序号 */
     p_dev->fmi = (uint8_t)0xff & (p_hw_can->rx_mail[rx_mailbox].rdtr >> 8);
@@ -1212,9 +1210,11 @@ am_can_err_t __can_zlg237_filter_tab_ext_set (void              *p_drv,
     amhw_zlg237_can_mode_t       mode     = p_dev->mode;
     am_can_err_t                 state    = AM_CAN_NOERROR;
 
-    if (NULL == p_drv || NULL == p_filterbuff || 0 == lenth ) {
+    if (NULL == p_drv || NULL == p_filterbuff || 0 == lenth || (lenth > 14)) {
         return AM_CAN_INVALID_PARAMETER;
     }
+
+
 
     p_filter= (amhw_zlg237_can_filter_t *)p_dev->p_devinfo->filter;
     p_hw_can = (amhw_zlg237_can_t *)p_dev->p_devinfo->regbase;
@@ -1228,11 +1228,10 @@ am_can_err_t __can_zlg237_filter_tab_ext_set (void              *p_drv,
 
     /* 滤波器工作在滤波器初始化模式  */
     p_hw_can->fmr |= (uint32_t)0x01;
-    lenth = lenth / sizeof(am_can_filter_t);
     for (int i = 0; i < lenth; i++) {
 
         /* 滤波器组号  */
-        filt_num = p_filterbuff->num;
+        filt_num = i;
 
         if (filt_num > 13 ) {
             /* 跳出当前 */
@@ -1407,7 +1406,7 @@ am_can_err_t __can_zlg237_filter_tab_ext_get (void              *p_drv,
 
         /* 判断当前滤波器组是否激活 */
         if ( ( filter_group & ( (uint32_t)1ul<< i) ) ) {
-            p_filterbuff->num = i;
+            *p_lenth = *p_lenth + 1;
         } else {
             continue;
         }
@@ -1520,7 +1519,6 @@ am_can_err_t __can_zlg237_filter_tab_ext_get (void              *p_drv,
             }
         }
         p_filterbuff++;
-        *p_lenth = *p_lenth + 36;
     }
     return AM_CAN_NOERROR;
 }

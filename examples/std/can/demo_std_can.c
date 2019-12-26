@@ -29,8 +29,11 @@
  *
  * - 备注：
  *   1. 其中 CAN ID 和 波特率配置 需要根据具体硬件平台修改。
- *   2. 再basic模式下不支持扩展帧。
- *   3. zmf159 滤波器的帧类型设置无效,实际帧类型根据掩码长度来决定
+ *   2. 在basic模式下不支持扩展帧。
+ *   3. zmf159 滤波器在设置掩码时，在特定情况下会出现标准帧和扩展帧 都可接受
+ *      （由滤波器寄存器实际存储方式决定的）
+ *   4. 掩码设置中 1 ： 关心
+ *              0 ： 不关心
  *
  * \par 源代码
  * \snippet demo_std_crc.c src_std_can
@@ -56,7 +59,6 @@
 /**\brief 滤波表 */
 static am_can_filter_t table[1] = {
         {
-                0,
                 AM_CAN_FRAME_TYPE_EXT,
                 AM_CAN_FRAME_FORMAT_NOCARE,
                 {0x00},
@@ -110,7 +112,7 @@ void demo_std_can_entry (am_can_handle_t can_handle, am_can_bps_param_t  *can_bt
     /* 配置滤波表 */
     ret = am_can_filter_tab_ext_set(can_handle,
                                     table,
-                                    sizeof(table));
+                                    1);
 
     if (ret == AM_CAN_NOERROR) {
         am_kprintf("\r\nCAN: controller filter tab set ok. \r\n");
@@ -133,16 +135,20 @@ void demo_std_can_entry (am_can_handle_t can_handle, am_can_bps_param_t  *can_bt
 
         if (can_rcv_msg.msglen) {
             am_kprintf("can recv id: 0x%x\r\n",can_rcv_msg.id);
-            for (i = 0; i < can_rcv_msg.msglen; i++) {
-                am_kprintf("data: 0x%x \r\n",can_rcv_msg.msgdata[i]);
+            /* 不打印远程帧时的数据缓存 */
+            if ((can_rcv_msg.flags & AM_CAN_REMOTE_FLAG) != AM_CAN_REMOTE_FLAG) {
+                for (i = 0; i < can_rcv_msg.msglen; i++) {
+                    am_kprintf("data: 0x%x \r\n",can_rcv_msg.msgdata[i]);
+                }
             }
-            ret = am_can_msg_send (can_handle, &can_rcv_msg);
+                ret = am_can_msg_send (can_handle, &can_rcv_msg);
 
-            if (ret == AM_CAN_NOERROR) {
-                am_kprintf(("\r\nCAN: controller rcv data ok. \r\n"));
-            } else {
-                am_kprintf("\r\nCAN: controller no rcv data! \r\n");
-            }
+                if (ret == AM_CAN_NOERROR) {
+                    am_kprintf(("\r\nCAN: controller rcv data ok. \r\n"));
+                } else {
+                    am_kprintf("\r\nCAN: controller no rcv data! \r\n");
+                }
+
         }
 
         ret = am_can_status_get (can_handle, &can_int_status, &can_bus_err_status);
