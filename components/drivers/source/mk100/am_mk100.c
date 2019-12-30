@@ -295,19 +295,35 @@ am_local int _mk100_ctrl(am_mk100_handle_t handle, _mk100_ctrl_type_t ctrl_type,
  * \brief 获取自动上报模式时MK100返回的帧
  *
  * \param[in] handle                  : mk100句柄
- * \param[in] cmd_buff                : 存放数据的缓冲区，不小于AM_MK100_FRAME_LEN个字节
- * \param[in] cmd_len                 : 存放数据的缓冲区长度，不小于AM_MK100_FRAME_LEN个字节
+ * \param[in] p_type                  : 指向存放返回数据的类型，分别为角度数据或磁旋钮位置数据
+ * \param[in] p_data                  : 指向存放数据
  * \return    -AM_EINVAL              : 错误
  *            AM_OK                   : 成功
  */
-int am_mk100_get_report(am_mk100_handle_t handle, uint8_t* cmd_buff, uint32_t cmd_len)
+int am_mk100_get_report(am_mk100_handle_t handle, uint8_t* p_type, uint8_t *p_data)
 {
-    return __mk100_cmd_receive(handle, cmd_buff, cmd_len);
+    int ret = 0;
+    uint8_t receive_cmd_buff[AM_MK100_FRAME_LEN] = {0};
+    ret = __mk100_cmd_receive(handle, receive_cmd_buff, AM_MK100_FRAME_LEN);
+
+    if (ret < 0 ||
+        receive_cmd_buff[__MK100_FRAME_HEADER_INDEX] != 0x2A ||
+        (receive_cmd_buff[__MK100_FRAME_FLAG_INDEX] != AM_MK100_GET_ANGLE &&
+        receive_cmd_buff[__MK100_FRAME_FLAG_INDEX] != AM_MK100_GET_KNOB_POS)) {
+        memcpy(handle->error_frame, receive_cmd_buff, AM_MK100_FRAME_LEN);
+        return -AM_EINVAL;
+    } else {
+        memset(handle->error_frame, 0, AM_MK100_FRAME_LEN);
+        *p_type = receive_cmd_buff[__MK100_FRAME_FLAG_INDEX];
+        *p_data = receive_cmd_buff[__MK100_FRAME_DATE_2_INDEX];
+        return AM_OK;
+    }
 }
 /**
  * \brief 获取角度值
  *
  * \param[in] handle                  : mk100句柄
+ * \param[in] gear                    : 等级
  * \return    -AM_EINVAL              : 错误
  *            >=0                     : 角度值
  */
