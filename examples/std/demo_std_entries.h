@@ -474,6 +474,34 @@ void demo_std_fxos8700cq_entry (am_sensor_handle_t handle);
 void demo_std_fxos8700cq_int_entry (am_sensor_handle_t handle);
 
 /**
+ * \brief 气压温度传感器MPL3115A2例程，通过查询模式实现
+ *
+ * \return 无
+ */
+void demo_std_mpl3115a2_entry (am_sensor_handle_t handle);
+
+/**
+ * \brief 气压温度传感器MPL3115A2例程，通过触发模式实现
+ *
+ * \return 无
+ */
+void demo_std_mpl3115a2_int_entry (am_sensor_handle_t handle);
+
+/**
+ * \brief 磁力传感器MAG3110例程，通过查询模式实现
+ *
+ * \return 无
+ */
+void demo_std_mag3110_entry (am_sensor_handle_t handle);
+
+/**
+ * \brief 磁力传感器MAG3110例程，通过触发模式实现
+ *
+ * \return 无
+ */
+void demo_std_mag3110_int_entry (am_sensor_handle_t handle);
+
+/**
  * \brief SD Card读写例程
  *
  * \return 无
