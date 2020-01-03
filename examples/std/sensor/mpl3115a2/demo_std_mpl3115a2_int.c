@@ -46,7 +46,7 @@ static void __pfn_pressure_or_altitude (void *p_arg, uint32_t trigger_src)
         am_sensor_val_unit_convert(&__mpl3115a2_data[0], 1, AM_SENSOR_UNIT_MICRO);
 
 #if(__MPL3115A2_MODE == __MPL3115A2_PRE_MODE) /* ÆøÑ¹ */
-        am_kprintf("The channel %d,type is pressure, value is: %d.%02d Pa!\r\n",
+        am_kprintf("The channel %d,type is pressure, value is: %d.%06d KPa!\r\n",
                    __mpl3115a2_id[0],
                    (__mpl3115a2_data[0].val/1000000),
                    (__mpl3115a2_data[0].val%1000000));

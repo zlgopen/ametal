@@ -62,7 +62,7 @@ void demo_std_mpl3115a2_entry (am_sensor_handle_t handle)
                                         "temperature"};
     const char *data_unit_string[] = {
                                     #if(__MPL3115A2_MODE == __MPL3115A2_PRE_MODE) /* ÆøÑ¹ */
-                                        "Pa",
+                                        "KPa",
                                     #elif(__MPL3115A2_MODE == __MPL3115A2_ALT_MODE) /* º£°Î */
                                         "Meters",
                                     #endif

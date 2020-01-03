@@ -54,7 +54,7 @@ extern "C" {
  * \param:__MPL3115A2_PRE_MODE：气压计模式
           __MPL3115A2_ALT_MODE：海拔计模式
  */
-#define __MPL3115A2_MODE        __MPL3115A2_ALT_MODE
+#define __MPL3115A2_MODE        __MPL3115A2_PRE_MODE
 
 /**
  * \brief 传感器 MPL3115A2 设备信息结构体

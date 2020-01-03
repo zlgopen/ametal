@@ -27,8 +27,6 @@
 #include "am_uart_rngbuf.h"
 #include "am_vdebug.h"
 #include "am_wait.h"
-#include "am_delay.h"
-#include "am_list.h"
 #include "string.h"
 
 /*
@@ -51,7 +49,7 @@
 #define __GS200_CMD_PROC_STAT_NONE              0       /* 无命令流程       */
 #define __GS200_CMD_PROC_STAT_START             1       /* 命令流程启动     */
 #define __GS200_CMD_PROC_STAT_SEND              2       /* 命令发送         */
-#define __GS200_CMD_PROC_STAT_RECV_HEAD         3       /* 接收到帧头(0x1A) */
+#define __GS200_CMD_PROC_STAT_RECV_HEAD         3       /* 接收到帧头       */
 #define __GS200_CMD_PROC_STAT_RECV_FRAMEID      4       /* 接收到帧标识     */
 #define __GS200_CMD_PROC_STAT_RECV_DATA1        5       /* 接收到数据1      */
 #define __GS200_CMD_PROC_STAT_RECV_DATA2        6       /* 接收到数据2      */

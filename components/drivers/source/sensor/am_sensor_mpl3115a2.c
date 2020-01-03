@@ -276,7 +276,7 @@ am_local int32_t __mpl3115a2_get_altitude_value (uint32_t altitude)
 }
 
 /**
- * \brief 获取气压值，并扩大10^6倍
+ * \brief 获取气压值（单位：KPa），并扩大10^6倍
  */
 am_local int32_t __mpl3115a2_get_press_value (uint32_t press)
 {
@@ -284,11 +284,8 @@ am_local int32_t __mpl3115a2_get_press_value (uint32_t press)
     uint8_t pcsb = (press >> 8) & 0xff;
     uint8_t plsb = press & 0xff;
     uint16_t plsb_dec = 0;
-    uint32_t pre_word = 0,sum_height = 0;
-    double height = 0;
-    float sum_pre;
-
-    int32_t pre;
+    uint32_t pre_word = 0;
+    uint32_t pre;
 
     pre_word = ((pmsb << 10) |                    /* 气压整数部分 */
                 (pcsb << 2)  | 
@@ -296,14 +293,8 @@ am_local int32_t __mpl3115a2_get_press_value (uint32_t press)
 
     plsb_dec = ((plsb >> 4) & 0x03) * 25;         /* 气压小数部分 */
 
-    sum_pre = pre_word + plsb_dec / 100;
-    pre = (int32_t)((pre_word * 1000000) + (plsb_dec * 10000));
-
-    height = 44330.77 * (1 -( pow( (sum_pre / 101326), 0.1902632)));    /* 根据气压计算的海拔值 */
-    sum_height = height * 1000000;
-    am_kprintf("Calculate altitude based on air pressure:%d.%04d Meters \r\n",
-                (sum_height)/1000000,
-                (sum_height)%1000000);
+    /* 原始数据单位为Pa，此处转化为KPa，并扩大10^6倍 */
+    pre = (uint32_t)((pre_word * 1000) + (plsb_dec * 10));
 
     return pre;
 }
