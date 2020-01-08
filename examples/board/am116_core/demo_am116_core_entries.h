@@ -522,6 +522,26 @@ void demo_am116_core_sensor_fxos8700cq_entry (void);
 void demo_am116_core_sensor_fxos8700cq_int_entry (void);
 
 /**
+ * \brief 气压温度传感器查询模式例程入口
+ */
+void demo_am116_core_sensor_mpl3115a2_entry (void);
+
+/**
+ * \brief 气压温度传感器触发模式例程入口
+ */
+void demo_am116_core_sensor_mpl3115a2_int_entry (void);
+
+/**
+ * \brief 磁力传感器查询模式例程入口
+ */
+void demo_am116_core_sensor_mag3110_entry (void);
+
+/**
+ * \brief 磁力传感器触发模式例程入口
+ */
+void demo_am116_core_sensor_mag3110_int_entry (void);
+
+/**
  * \brief bootloader demo例程入口
  */
 void demo_am116_core_bootloader_entry(void);
@@ -552,6 +572,16 @@ void demo_am116_zsn603_piccb_test_entry(void);
 void demo_am116_zsn603_auto_detect_test_entry(void);
 
 /**
+ * \brief MK100 磁旋钮 例程
+ */
+void demo_am116_core_mk100_test_entry (void);
+
+/**
+ * \brief GS200 例程
+ */
+void demo_am116_core_gs200_set_baudrate_entry (void);
+
+/**
  * \brief USBD键盘例程
  */
 void demo_zlg126_usbd_keyboard_entry (void);
@@ -570,11 +600,6 @@ void demo_zlg126_usbd_msc_entry (void);
  * \brief USBD 虚拟串口  例程
  */
 void demo_zlg126_usbd_vcom_entry (void);
-
-/**
- * \brief MK100 磁旋钮 例程
- */
-void demo_am116_core_mk100_test_entry (void);
 
 #ifdef __cplusplus
 }
