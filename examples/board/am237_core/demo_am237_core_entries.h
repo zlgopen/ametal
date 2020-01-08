@@ -519,11 +519,16 @@ void demo_zlg237_core_can_int_entry (void);
 
 
 /**
- * \brief CAN 历程入口
+ * \brief CAN 例程入口
  *
  * \return 无
  */
 void demo_zlg237_core_can_entry (void);
+
+/**
+ * \brief can 例程入口
+ */
+void demo_zlg237_core_std_can_entry (void);
 
 /**
  * \brief USBD键盘例程

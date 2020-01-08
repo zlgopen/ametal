@@ -17,9 +17,8 @@
  *   1. 本例程需在am_prj_config.h头文件里使能
  *   -  对应平台的串口设备宏(AM_DEV_XXXXX_UART1)。
  *   2. 连接CAN1的相关引脚到CAN收发器，再将CAN收发器接口与USBCAN-II设备相连。
- *   3. 打开CAN上位机后，设置波特率为50k。
+ *   3. 打开CAN上位机后，设置波特率为250k。
  *   4. 打开串口调试终端，波特率115200-8-N-1.
- *   5. 上位机 发送帧格式为 扩展帧  远程请求无要求(数据帧和远程帧都可) ID为 0x -7- 即  第4-6 位为1
  *
  * - 实验现象：
  *   1. 上位机发送数据后，收到发送的数据。
@@ -46,7 +45,7 @@
 
 
 #define  APB1_CLK        36000000 /*CAN 的输入时钟 */
-#define  CAN_BAUD        50000   /*CAN 的波特率  50k*/
+#define  CAN_BAUD        250000   /*CAN 的波特率  250k*/
 
 /**
  * \brief 获取对应波特率配置值  CAN_BAUD = APB1/((BRP + 1) * (TEG1 + TEG2 + 3))
@@ -84,15 +83,15 @@ static void __can_auto_cfg_baud(am_can_bps_param_t  *can_btr_baud,
  *
  * \return 无
  */
-void demo_zlg237_core_can_entry (void)
+void demo_zlg237_core_std_can_entry (void)
 {
     am_can_bps_param_t  can_btr_baud = {0};
 
-    AM_DBG_INFO("demo zlg237_core  can!\r\n");
+    AM_DBG_INFO("demo zlg237_core std can!\r\n");
 
     __can_auto_cfg_baud(&can_btr_baud, APB1_CLK, CAN_BAUD);
 
-    demo_zlg237_can_entry (am_zlg237_can_inst_init (), &can_btr_baud);
+    demo_std_can_entry (am_zlg237_can_inst_init (), &can_btr_baud);
 }
 
 /** [src_test_flexcan] */

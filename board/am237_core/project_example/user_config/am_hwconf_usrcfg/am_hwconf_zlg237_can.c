@@ -57,17 +57,8 @@ static am_zlg237_can_intcb_info_t    __g_can_intcb_info[MAX];
 
 amhw_zlg237_can_filter_t __g_can_filter = {
 
-    /* 帧类型：  标准标识符   扩展标识符 */
-     CAN_ID_EXT,
-
-    /* 帧格式： 数据帧   远程帧(远程帧没有数据，只含有帧格式Id 和帧类型) */
-     CAN_RTR_DATA,
-
     /* 关联FIFO */
     AMHW_ZLG237_CAN_FILTER_FIFO0,
-
-    /* 滤波器组 */
-    0,
 
     /* 滤波器模式 */
     AMHW_ZLG237_CAN_FILTER_MODE_IDMASK,

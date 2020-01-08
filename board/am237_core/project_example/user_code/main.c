@@ -51,7 +51,7 @@ int am_main (void)
      * 注意：同一时刻只能运行一个 demo，即只能使某一行处于取消注释状态
      */
 
-//    demo_zlg237_core_std_led_entry();
+    demo_zlg237_core_std_led_entry();
 //    demo_zlg237_core_std_delay_entry();
 //    demo_zlg237_core_std_adc_entry();
 //    demo_zlg237_core_hw_adc_int_entry();
@@ -136,6 +136,7 @@ int am_main (void)
 //    demo_zlg237_drv_stopmode_wake_up_entry();
 //    demo_zlg237_core_can_int_entry();
 //    demo_zlg237_core_can_entry();
+//    demo_zlg237_core_std_can_entry();
 
     while (1) {
 
