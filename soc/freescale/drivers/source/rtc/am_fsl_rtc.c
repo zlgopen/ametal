@@ -313,8 +313,6 @@ am_rtc_handle_t am_fsl_rtc_init (am_fsl_rtc_dev_t           *p_dev,
         amhw_fsl_rtc_alarm_set(p_hw_rtc, 0x00);
         amhw_fsl_rtc_compensate_interval_set(p_hw_rtc, 0x00);
         amhw_fsl_rtc_compensate_value_set(p_hw_rtc, 0x00);
-        amhw_fsl_rtc_current_compensate_counter_set(p_hw_rtc, 0x00);
-        amhw_fsl_rtc_current_compensate_value_set(p_hw_rtc, 0x00);
 
         /** 使能秒计数器 */
         amhw_fsl_rtc_time_counter_status_set(p_hw_rtc);
@@ -341,14 +339,14 @@ void am_fsl_rtc_deinit (am_rtc_handle_t handle)
 
     amhw_fsl_rtc_time_counter_status_clr(p_dev->p_devinfo->p_hw_rtc);
 
+    if (p_dev->p_devinfo->pfn_plfm_deinit) {
+        p_dev->p_devinfo->pfn_plfm_deinit();
+    }
+
     p_dev->p_devinfo        = NULL;
     p_dev->rtc_serv.p_funcs = NULL;
     p_dev->rtc_serv.p_drv   = NULL;
     p_dev                   = NULL;
-
-    if (p_dev->p_devinfo->pfn_plfm_deinit) {
-        p_dev->p_devinfo->pfn_plfm_deinit();
-    }
 }
 
 /**
