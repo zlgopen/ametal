@@ -692,9 +692,8 @@ uint8_t zsn603_mifare_halt(zsn603_handle_t      handle);
  * \brief  该命令用芯片内部已存入的密钥与卡的密钥进行验证,所以使用该命令前,
  *         应事先用“装载IC卡密钥”命令把密钥成功载入芯片内,
  *         另外,需要验证的卡的扇区号不必与芯片内密钥区号相等。
- * \param[in] smcseq     : 安全报文/包号
- * \param[in] p_info     : 密钥类型(1字节)  - 0x60——密钥A
- *                                      - 0x61——密钥B
+ * \param[in] key_type     : 密钥类型(1字节)  - 0x60——密钥A
+ *                                            - 0x61——密钥B
  * \param[in] p_uid      : 卡序列号，4字节
  * \param[in] key_sec    : 密钥区号:0 ~ 7
  * \param[in] nblock     : 需要验证的卡块号，取值范围与卡类型有关，
@@ -746,7 +745,6 @@ uint8_t zsn603_key_auth(zsn603_handle_t   handle,
  * \brief  该命令对Mifare卡进行读操作,读之前必需成功进行密钥验证。
  *
  * \param[in] handle      : ZSN603设备服务句柄
- * \param[in] smcseq      : 安全报文/包号
  * \param[in] nblock      : 卡块号(1字节) - S50(0~63)
  *                                     - S70(0~255)
  *                                     - PLUS CPU 2K(0~127)
@@ -797,7 +795,6 @@ uint8_t zsn603_ultralight_write(zsn603_handle_t   handle,
  * \brief  该命令对Mifare卡的值块进行加减操作并写入指定块
  *
  * \param[in] handle     : ZSN603设备服务句柄
- * \param[in] smcseq     : 安全报文/包号
  * \param[in] mode       : 模式(1字节):    0xC0~减
  *                                      0xC1~加
  * \param[in] nblock     : 卡块号(1字节):  S50(0~63)
@@ -854,7 +851,6 @@ uint8_t zsn603_mifare_card_active(zsn603_handle_t   handle,
  * \brief  该命令用于卡片的自动检测,执行该命令成功后,在UART模式下,芯片将主动发送读取到卡片的数据。
  *
  * \param[in] handle     : ZSN603设备服务句柄
- * \param[in] smcseq     : 安全报文/包号
  * \param[in] admode     : 自动检测模式ADMode控制字节(1字节)
  *                bit7 ~ bit4:保留
  *                bit3       :执行完之后的动作.
@@ -914,7 +910,6 @@ uint8_t zsn603_get_auto_detect(zsn603_handle_t             handle,
  * \brief  该命令用于设置值块的值。
  *
  * \param[in] handle     : ZSN603设备服务句柄
- * \param[in] smcseq     : 安全报文/包号
  * \param[in] block      : 块地址(1字节):将要写入数值的块地址
  * \param[in] data       : 块值(4字节):有符号的32位数据,低字节在前
  * \retval 其他 : 对应错误码
@@ -1182,7 +1177,6 @@ uint8_t zsn603_picca_rats(zsn603_handle_t   handle,
  *         在执行该命令前,必需先成功执行一次RATS命令。
  *
  * \param[in] handle     : ZSN603设备服务句柄
- * \param[in] smcseq     : 安全报文/包号
  * \param[in] dsi_dri    : DSI_DRI(1字节): 芯片与卡通信波特率,设置为0(106Kb/s)
  *
  * \retval 其他 : 对应错误码
@@ -1315,7 +1309,6 @@ uint8_t zsn603_piccb_reset(zsn603_handle_t  handle,
  * \brief  该命令用于B型卡请求。
  *
  * \param[in]  handle     : ZSN603设备服务句柄
- * \param[in]  smcseq     : 安全报文/包号
  * \param[in]  req_mode   : 请求代码(1字节): 0x00~IDLE
  *                                       0x08~ALL
  * \param[in]  slot_time  : 时隙总数(1字节): 范围0~4
@@ -1334,7 +1327,6 @@ uint8_t zsn603_piccb_request(zsn603_handle_t   handle,
  * \brief  该命令用于B型卡修改传输属性(卡选择)。
  *
  * \param[in] handle     : ZSN603设备服务句柄
- * \param[in] smcseq     : 安全报文/包号
  * \param[in] p_pupi     : PUPI(4字节):   卡片标识符
  * \param[in] cid        : CID(1字节) :   取值范围为 0 - 14, 若不支持CID,则设置为0
  *
