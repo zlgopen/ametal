@@ -43,6 +43,7 @@ int am_main (void)
 //    demo_hc32l19x_core_std_buzzer_entry();
 //    demo_hc32l19x_core_hw_clk_entry();
 //    demo_hc32l19x_core_std_adc_entry();
+//    demo_hc32l19x_core_std_adc_its_entry();
 //    demo_hc32l19x_core_hw_adc_int_entry();
 //    demo_hc32l19x_core_std_multichan_adc_entry();
 //    demo_hc32l19x_core_hw_multichan_adc_entry();

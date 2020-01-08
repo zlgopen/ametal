@@ -12,17 +12,17 @@
 
 /**
  * \file
- * \brief ADC 例程，通过标准接口实现
+ * \brief ADC 内部温度传感器例程，通过标准接口实现
  *
  * - 操作步骤：
- *   1. am_hwconf_hc32l19x_adc.c文件__g_adc_ioinfo_list[]数组的第一个有效元素引脚。默认是PA0
  *  am_hwconf_hc32l19x_adc.c文件修改设备信息中：
- *   2. 参考电压选择： AMHW_HC32_ADC_REFVOL_AVCC；
- *   3. 参考电压(mv)： 3300(AVCC)；
- *   4. 禁能ADC通道28内部温度传感器.(1：使能，0：禁能)
+ *   1. 参考电压选择： AMHW_HC32_ADC_REFVOL_INSIDE_1500MV 或 AMHW_HC32_ADC_REFVOL_INSIDE_2500MV；
+ *   2. 参考电压(mv)： 1500 或 2500；
+ *   3. 使能ADC通道28内部温度传感器.(1：使能，0：禁能)
+ *
  *
  * - 实验现象：
- *   1. 串口输出电压采样值。
+ *   1. 串口输出温度采样值。
  *
  * \note
  *    1. 使用 ADC 模块功能，必须保证 ADC 模块上电；
@@ -30,20 +30,20 @@
  *       PIOA_9 引脚连接 PC 串口的 RXD。
  *
  * \par 源代码
- * \snippet demo_hc32l19x_std_adc.c src_std_adc
+ * \snippet demo_hc32l19x_std_adc_its.c src_std_adc_its
  *
  * \internal
  * \par Modification History
- * - 1.00 19-09-25  zp, first implementation
+ * - 1.00 19-12-09  fzb, first implementation
  * \endinternal
  */
 
 /**
- * \addtogroup demo_if_hc32l19x_std_adc
- * \copydoc demo_hc32l19x_std_adc.c
+ * \addtogroup demo_if_hc32l19x_std_adc_its
+ * \copydoc demo_hc32l19x_std_adc_its.c
  */
 
-/** [src_std_adc] */
+/** [src_std_adc_its] */
 #include "ametal.h"
 #include "am_board.h"
 #include "am_vdebug.h"
@@ -55,13 +55,13 @@
 /**
  * \brief 例程入口
  */
-void demo_hc32l19x_core_std_adc_entry (void)
+void demo_hc32l19x_core_std_adc_its_entry (void)
 {
-    AM_DBG_INFO("demo aml19x_core std adc int!\r\n");
+    AM_DBG_INFO("demo aml19x_core std adc its!\r\n");
 
-    demo_std_adc_entry(am_hc32_adc_inst_init(), 0);
+    demo_std_adc_its_entry(am_hc32_adc_inst_init(), 28);
 
 }
-/** [src_std_adc] */
+/** [src_std_adc_its] */
 
 /* end of file */

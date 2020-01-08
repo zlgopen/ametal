@@ -42,6 +42,11 @@ void demo_hc32l19x_core_hw_multichan_adc_entry (void);
 void demo_hc32l19x_core_std_adc_entry (void);
 
 /**
+ * \brief ADC 内部温度传感器例程，通过标准接口实现
+ */
+void demo_hc32l19x_core_std_adc_its_entry (void);
+
+/**
  * \brief 多通道ADC 例程，通过标准接口实现
  */
 void demo_hc32l19x_core_std_multichan_adc_entry (void);

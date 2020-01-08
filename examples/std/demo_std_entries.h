@@ -59,6 +59,16 @@ extern "C" {
 void demo_std_adc_entry (am_adc_handle_t handle, int chan);
 
 /**
+ * \brief ADC内部温度传感器例程，利用查询方式获取ADC转换结果，通过标准接口实现
+ *
+ * \param[in] handle ADC 标准服务句柄
+ * \param[in] chan   ADC 通道号
+ *
+ * \return 无
+ */
+void demo_std_adc_its_entry (am_adc_handle_t handle, int chan);
+
+/**
  * \brief 例程入口
  */
 void demo_std_multichan_adc_entry (am_adc_handle_t handle,
