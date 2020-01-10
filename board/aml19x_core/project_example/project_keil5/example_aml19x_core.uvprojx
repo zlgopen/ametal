@@ -1461,6 +1461,31 @@
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\board\aml19x_core\adc\demo_hc32l19x_core_std_adc_its.c</FilePath>
             </File>
+            <File>
+              <FileName>demo_hc32l19x_core_drv_pca_8bit_pwm.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\aml19x_core\pca\demo_hc32l19x_core_drv_pca_8bit_pwm.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_hc32l19x_core_drv_pca_16bit_pwm.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\aml19x_core\pca\demo_hc32l19x_core_drv_pca_16bit_pwm.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_hc32l19x_core_drv_pcnt_double.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\aml19x_core\pcnt\demo_hc32l19x_core_drv_pcnt_double.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_hc32l19x_core_drv_pcnt_single.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\aml19x_core\pcnt\demo_hc32l19x_core_drv_pcnt_single.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_hc32l19x_core_drv_pcnt_special.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\aml19x_core\pcnt\demo_hc32l19x_core_drv_pcnt_special.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -3669,6 +3694,31 @@
               <FileName>demo_hc32l19x_core_std_adc_its.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\board\aml19x_core\adc\demo_hc32l19x_core_std_adc_its.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_hc32l19x_core_drv_pca_8bit_pwm.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\aml19x_core\pca\demo_hc32l19x_core_drv_pca_8bit_pwm.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_hc32l19x_core_drv_pca_16bit_pwm.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\aml19x_core\pca\demo_hc32l19x_core_drv_pca_16bit_pwm.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_hc32l19x_core_drv_pcnt_double.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\aml19x_core\pcnt\demo_hc32l19x_core_drv_pcnt_double.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_hc32l19x_core_drv_pcnt_single.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\aml19x_core\pcnt\demo_hc32l19x_core_drv_pcnt_single.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_hc32l19x_core_drv_pcnt_special.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\aml19x_core\pcnt\demo_hc32l19x_core_drv_pcnt_special.c</FilePath>
             </File>
           </Files>
         </Group>

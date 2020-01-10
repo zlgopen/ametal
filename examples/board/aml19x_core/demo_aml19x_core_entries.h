@@ -646,3 +646,29 @@ void demo_hc32l19x_core_hw_trng_generate_entry (void);
  * \brief LCD显示例程，通过 HW 层接口实现
  */
 void demo_hc32l19x_core_hw_lcd_entry (void);
+
+/**
+ * \brief PCA 8bit PWM例程,通过驱动层实现
+ */
+void demo_hc32l19x_core_drv_pca_8bit_pwm_entry (void);
+
+/**
+ * \brief  PCA 16bit PWM例程,通过驱动层实现
+ */
+void demo_hc32l19x_core_drv_pca_16bit_pwm_entry (void);
+
+/**
+ * \brief PCNT单通道计数例程,通过驱动层实现
+ */
+void demo_hc32l19x_core_drv_pcnt_single_entry (void);
+
+/**
+ * \brief PCNT 双通道正交脉冲计数例程,通过驱动层实现
+ */
+void demo_hc32l19x_core_drv_pcnt_double_entry (void);
+
+/**
+ * \brief PCNT 双通道非交脉冲计数例程,通过驱动层实现
+ */
+void demo_hc32l19x_core_drv_pcnt_special_entry (void);
+

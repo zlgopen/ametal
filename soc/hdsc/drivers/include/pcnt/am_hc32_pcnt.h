@@ -67,7 +67,8 @@ typedef enum am_hc32_pcnt_int {
     HC32_PCNT_INT_DIR = (1u << 3), /* 正交脉冲方向改变 */
     HC32_PCNT_INT_TO  = (1u << 2), /* 超时中断 */
     HC32_PCNT_INT_OV  = (1u << 1), /* 上溢出中断 */
-    HC32_PCNT_INT_UF  = (1u << 0)  /* 下溢出中断 */
+    HC32_PCNT_INT_UF  = (1u << 0), /* 下溢出中断 */
+    HC32_PCNT_INT_ALL = (0xFF)     /* 所有类型中断 */
 } am_hc32_pcnt_int_t;
 
 /* PCNT命令枚举 */
@@ -99,13 +100,20 @@ typedef struct am_hc32_pcnt_devinfo {
 typedef struct am_hc32_pcnt_dev {
     amhw_hc32_pcnt_t             *p_hw_pcnt;
     const am_hc32_pcnt_devinfo_t *p_devinfo;
+    
+    /** \brief 中断触发回调函数 */
+    void (*pfn_trigger_cb)(void *);
+    
+    /** \brief 中断标志 */
+    uint8_t                      flag;
+
 } am_hc32_pcnt_dev_t;
 
 typedef am_hc32_pcnt_dev_t* am_hc32_pcnt_handle_t;
 
 /**
- * \addtogroup am_zlg_if_pcnt
- * \copydoc am_zlg_pcnt.h
+ * \addtogroup am_hc32_if_pcnt
+ * \copydoc am_hc32_pcnt.h
  * @{
  */
 
@@ -208,7 +216,7 @@ void am_hc32_pcnt_timeover_disable (am_hc32_pcnt_handle_t handle);
 void am_hc32_pcnt_start (am_hc32_pcnt_handle_t handle,
                            am_hc32_pcnt_mode_t   mode,
                            am_hc32_pcnt_dir_t    dir,
-                           uint16_t                value,
+                           uint16_t              value,
                            am_hc32_pcnt_dgb_t    dgb);
 
 /**
@@ -219,6 +227,26 @@ void am_hc32_pcnt_start (am_hc32_pcnt_handle_t handle,
  * \return 无
  */
 void am_hc32_pcnt_stop (am_hc32_pcnt_handle_t handle);
+
+/**
+ * \brief PCNT计数器计数值获取
+ *
+ * \param[in] handle : 与从设备关联的PCNT标准服务操作句柄
+ *
+ * \return 无
+ */
+uint16_t am_hc32_pcnt_cnt_get (am_hc32_pcnt_handle_t handle);
+
+/**
+ * \brief 设置 PCNT 中断回调
+ * \param[in] handle       : 与从设备关联的PCNT标准服务操作句柄
+ * \param[in] pfn_callback : 回调函数
+ * \param[in] p_arg        : 回调函数的第一个参数
+ *
+ * \return AM_OK:成功    其他：失败
+ */
+am_err_t am_hc32_pcnt_callback_set (am_hc32_pcnt_handle_t handle,
+                                    am_pfnvoid_t          pfn_callback);
 
 /** @} */
 
