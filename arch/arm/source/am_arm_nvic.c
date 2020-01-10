@@ -78,11 +78,11 @@ int am_arm_nvic_init (am_arm_nvic_dev_t           *p_dev,
     }
 
     amhw_arm_nvic_priority_group_set (p_devinfo->group);
-		
+
 #ifdef __GNUC__
     __enable_isr();
 #endif
-		
+
     return AM_OK;
 }
 

@@ -78,7 +78,7 @@ void demo_std_uart_ringbuf_entry (am_uart_handle_t uart_handle)
                                   __uart_txbuf,
                                   UART_TX_BUF_SIZE);
 
-    am_uart_rngbuf_send(handle, __ch, sizeof(__ch));
+//    am_uart_rngbuf_send(handle, __ch, sizeof(__ch));
 
     while (1) {
 
