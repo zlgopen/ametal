@@ -147,6 +147,7 @@ int am_main (void)
 //    demo_am116_core_sensor_mag3110_int_entry();
 //    demo_am116_core_mk100_test_entry();
 //    demo_am116_core_gs200_set_baudrate_entry();
+//    demo_am116_core_rs200_test_entry();
     while (1) {
     }
 }
