@@ -17,6 +17,8 @@
  * \internal
  * \par Modification History
  * - 1.00 19-09-19
+ * - 1.01 20-01-10
+ *   修复16bit PWM异常
  * \endinternal
  */
 
@@ -118,9 +120,9 @@ void am_hc32_pca_deinit (am_hc32_pca_handle_t handle)
  *         其它:失败
  */
 int am_hc32_pca_cap_set (am_hc32_pca_handle_t handle,
-                           uint8_t                num,
-                           uint8_t                chan,
-                           am_hc32_pca_capn_t   cap)
+                         uint8_t              num,
+                         uint8_t              chan,
+                         am_hc32_pca_capn_t   cap)
 {
     am_hc32_pca_int_t int_clr;
 
@@ -192,9 +194,9 @@ int am_hc32_pca_cap_set (am_hc32_pca_handle_t handle,
  *         其它:失败
  */
 int am_hc32_pca_cmp_cnt_set (am_hc32_pca_handle_t handle,
-                               uint8_t                num,
-                               uint16_t               carr,
-                               uint16_t               ccap)
+                             uint8_t              num,
+                             uint16_t             carr,
+                             uint16_t             ccap)
 {
     am_hc32_pca_int_t int_clr;
 
@@ -268,18 +270,18 @@ int am_hc32_pca_cmp_cnt_set (am_hc32_pca_handle_t handle,
  * \param[in] carr    : 周期寄存器值
  * \param[in] ccap    : 比较捕获寄存器值
  *
- * 8bit占空比  = (255 - ccap) / 100 * 100%
+ * 8bit占空比  = ccap / 255 * 100%
  * 16bit占空比= (carr - ccap) / carr * 100%
  *
  * \return AM_OK:成功
  *         其它:失败
  */
 int am_hc32_pca_pwm_set (am_hc32_pca_handle_t handle,
-                           uint8_t                num,
-                           uint8_t                chan,
-                           am_hc32_pca_pwm_t    pwm_sel,
-                           uint16_t               carr,
-                           uint16_t               ccap)
+                         uint8_t              num,
+                         uint8_t              chan,
+                         am_hc32_pca_pwm_t    pwm_sel,
+                         uint16_t             carr,
+                         uint16_t             ccap)
 {
     if(num > 4 || handle == NULL || handle->p_devinfo->ioinfo == NULL) {
         return -AM_EINVAL;
@@ -295,20 +297,20 @@ int am_hc32_pca_pwm_set (am_hc32_pca_handle_t handle,
     amhw_hc32_pca_capp_set(handle->p_hw_pca, num, HC32_PCA_CAPP_DIS >> 1);
     amhw_hc32_pca_capn_set(handle->p_hw_pca, num, HC32_PCA_CAPN_DIS);
 
-    /* 使能匹配功能 */
-    amhw_hc32_pca_mat_set(handle->p_hw_pca, num, 1);
-
-    /* 使能引脚翻转 */
-    amhw_hc32_pca_tog_set(handle->p_hw_pca, num, HC32_PCA_TOG_EN);
-
     /* PWM设置 */
     if(pwm_sel) {
+        amhw_hc32_pca_mat_set(handle->p_hw_pca, num, 1);
+        amhw_hc32_pca_tog_set(handle->p_hw_pca, num, HC32_PCA_TOG_EN);
+
         amhw_hc32_pca_pwm_set(handle->p_hw_pca, num, 0);
         amhw_hc32_pca_epwm_enable(handle->p_hw_pca);
 
         amhw_hc32_pca_carr_set(handle->p_hw_pca, carr);
         amhw_hc32_pca_ccap_set(handle->p_hw_pca, num, ccap);
     } else {
+        amhw_hc32_pca_mat_set(handle->p_hw_pca, num, 0);
+        amhw_hc32_pca_tog_set(handle->p_hw_pca, num, HC32_PCA_TOG_DIS);
+
         amhw_hc32_pca_pwm_set(handle->p_hw_pca, num, 1);
         amhw_hc32_pca_epwm_disable(handle->p_hw_pca);
 

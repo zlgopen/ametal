@@ -126,6 +126,11 @@ int am_main (void)
 //    demo_hc32l19x_core_std_wdt_entry();
 //    demo_hc32l19x_drv_lpmode_wake_up_entry();
 //    demo_hc32l19x_core_hw_lcd_entry ();
+//    demo_hc32l19x_core_drv_pca_8bit_pwm_entry();
+//    demo_hc32l19x_core_drv_pca_16bit_pwm_entry();
+//    demo_hc32l19x_core_drv_pcnt_single_entry();
+//    demo_hc32l19x_core_drv_pcnt_double_entry();
+//    demo_hc32l19x_core_drv_pcnt_special_entry();
 //    demo_hc32l19x_core_miniport_zlg72128_entry();
 //    demo_hc32l19x_core_miniport_hc595_digitron_entry();
 //    demo_hc32l19x_core_miniport_hc595_led_entry();

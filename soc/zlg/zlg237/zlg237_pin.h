@@ -2152,10 +2152,10 @@ extern "C" {
 
 #define PIOD_0_NO_REMAP         AM_ZLG237_GPIO_REMAP_CODE(0x15, 0)
 #define PIOD_0_OSC_IN           PIOD_0_NO_REMAP   /**< \brief OSC_IN */
-#define PIOD_0_GPIO             PIOD_0_NO_REMAP    /**< \brief GPIO */
+#define PIOD_0_GPIO             AM_ZLG237_GPIO_REMAP_CODE(0xF, 1)   /**< \brief GPIO */
 
 #define PIOD_0_CAN_RX_REMAP3    AM_ZLG237_GPIO_REMAP_CODE(0xD, 3)   /**< \brief CAN_RX */
-#define PIOD_0_OSC_IN_REMAP     AM_ZLG237_GPIO_REMAP_CODE(0xF, 1)   /**< \brief OSC_IN */
+#define PIOD_0_OSC_IN_REMAP     AM_ZLG237_GPIO_REMAP_CODE(0xF, 0)   /**< \brief OSC_IN */
 /** @} */
 
 /**
@@ -2194,9 +2194,9 @@ extern "C" {
 
 #define PIOD_1_NO_REMAP         AM_ZLG237_GPIO_REMAP_CODE(0x15, 0)
 #define PIOD_1_OSC_OUT          PIOD_1_NO_REMAP   /**< \brief OSC_OUT */
-#define PIOD_1_GPIO             PIOD_1_NO_REMAP   /**< \brief GPIO */
+#define PIOD_1_GPIO             AM_ZLG237_GPIO_REMAP_CODE(0xF, 1)   /**< \brief GPIO */
 
-#define PIOD_1_OSC_OUT_REMAP    AM_ZLG237_GPIO_REMAP_CODE(0xF, 1)   /**< \brief OSC_OUT */
+#define PIOD_1_OSC_OUT_REMAP    AM_ZLG237_GPIO_REMAP_CODE(0xF, 0)   /**< \brief OSC_OUT */
 #define PIOD_1_CAN_TX_REMAP3    AM_ZLG237_GPIO_REMAP_CODE(0xD, 3)   /**< \brief CAN_RX */
 
 /** @} */

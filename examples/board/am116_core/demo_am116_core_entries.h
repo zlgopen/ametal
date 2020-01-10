@@ -582,6 +582,11 @@ void demo_am116_core_mk100_test_entry (void);
 void demo_am116_core_gs200_set_baudrate_entry (void);
 
 /**
+ * \brief RS200 Àý³Ì
+ */
+void demo_am116_core_rs200_test_entry (void);
+
+/**
  * \brief USBD¼üÅÌÀý³Ì
  */
 void demo_zlg126_usbd_keyboard_entry (void);

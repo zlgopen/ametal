@@ -726,6 +726,11 @@
               <FileType>1</FileType>
               <FilePath>..\..\..\..\components\drivers\source\gs200\am_gs200.c</FilePath>
             </File>
+            <File>
+              <FileName>am_rs200.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\rs200\am_rs200.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -1571,6 +1576,11 @@
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\board\am116_core\gs200\demo_am116_core_gs200_set_baudrate.c</FilePath>
             </File>
+            <File>
+              <FileName>demo_am116_core_rs200_test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am116_core\rs200\demo_am116_core_rs200_test.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -1660,6 +1670,11 @@
               <FileName>demo_gs200_baudrate.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\components\drivers\demo_gs200_baudrate.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_rs200.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\components\drivers\demo_rs200.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -2395,6 +2410,11 @@
               <FileName>am_hwconf_gs200.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_gs200.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_rs200.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_rs200.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -3120,6 +3140,11 @@
               <FileType>1</FileType>
               <FilePath>..\..\..\..\components\drivers\source\gs200\am_gs200.c</FilePath>
             </File>
+            <File>
+              <FileName>am_rs200.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\rs200\am_rs200.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -3965,6 +3990,11 @@
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\board\am116_core\gs200\demo_am116_core_gs200_set_baudrate.c</FilePath>
             </File>
+            <File>
+              <FileName>demo_am116_core_rs200_test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am116_core\rs200\demo_am116_core_rs200_test.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -4054,6 +4084,11 @@
               <FileName>demo_gs200_baudrate.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\components\drivers\demo_gs200_baudrate.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_rs200.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\components\drivers\demo_rs200.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -4789,6 +4824,11 @@
               <FileName>am_hwconf_gs200.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_gs200.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_rs200.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_rs200.c</FilePath>
             </File>
           </Files>
         </Group>
