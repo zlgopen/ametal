@@ -345,8 +345,8 @@ void demo_zlg_hw_i2c_slave_poll_entry (amhw_zlg_i2c_t *p_hw_i2c);
  *
  * \return 无
  */
-void demo_zlg118_hw_i2c_master_poll_entry (amhw_zlg118_i2c_t *p_hw_i2c,
-                                           uint32_t           clk_rate);
+void demo_zlg118_hw_i2c_master_poll_entry (void        *p_hw_i2c,
+                                           uint32_t     clk_rate);
 
 /**
  * \brief I2C 从机例程(此例程可以用来模拟 EEPROM)，通过 HW 层接口实现
@@ -356,8 +356,8 @@ void demo_zlg118_hw_i2c_master_poll_entry (amhw_zlg118_i2c_t *p_hw_i2c,
  *
  * \return 无
  */
-void demo_zlg118_hw_i2c_slave_int_entry (amhw_zlg118_i2c_t *p_hw_i2c,
-                                         int                inum_num);
+void demo_zlg118_hw_i2c_slave_int_entry (void  *p_hw_i2c,
+                                         int    inum_num);
 
 /**
  * \brief I2C 轮询模式下操作 EEPROM 例程，通过 HW 层接口实现

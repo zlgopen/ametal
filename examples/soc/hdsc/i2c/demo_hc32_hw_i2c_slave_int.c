@@ -23,7 +23,7 @@
  *    可根据实际情况更换引脚。
  *
  * \par 源代码
- * \snippet demo_zlg118_hw_i2c_slave_poll.c src_zlg118_hw_i2c_slave_poll
+ * \snippet demo_hc32_hw_i2c_slave_poll.c src_hc32_hw_i2c_slave_poll
  *
  * \internal
  * \par Modification history
@@ -32,14 +32,14 @@
  */
 
 /**
- * \addtogroup demo_if_zlg118_hw_i2c_slave_poll
- * \copydoc demo_zlg118_hw_i2c_slave_poll.c
+ * \addtogroup demo_if_hc32_hw_i2c_slave_poll
+ * \copydoc demo_hc32_hw_i2c_slave_poll.c
  */
 
-/** [src_zlg118_hw_i2c_slave_poll] */
+/** [src_hc32_hw_i2c_slave_poll] */
 #include "ametal.h"
 #include "am_vdebug.h"
-#include "hw/amhw_zlg118_i2c.h"
+#include "hw/amhw_hc32_i2c.h"
 #include "am_int.h"
 
 /*******************************************************************************
@@ -94,7 +94,7 @@ static void  __tran_stop(void *p_arg)
  *
  * \retval AM_OK 初始化配置完成
  */
-static int __i2c_slave_init (amhw_zlg118_i2c_t *p_hw_i2c, uint8_t dev_addr)
+static int __i2c_slave_init (amhw_hc32_i2c_t *p_hw_i2c, uint8_t dev_addr)
 {
     if (p_hw_i2c == NULL) {
         return -AM_EINVAL;
@@ -104,15 +104,15 @@ static int __i2c_slave_init (amhw_zlg118_i2c_t *p_hw_i2c, uint8_t dev_addr)
     p_hw_i2c->i2c_cr = 0;
 
     /* 从机模式，开启应答 */
-    amhw_zlg118_i2c_cr_set(p_hw_i2c, AMHW_ZLG118_I2C_REPLY_ENABLE);
+    amhw_hc32_i2c_cr_set(p_hw_i2c, AMHW_HC32_I2C_REPLY_ENABLE);
 
     /* 禁用波特率计数器 */
-    amhw_zlg118_i2c_tm_disable(p_hw_i2c);
+    amhw_hc32_i2c_tm_disable(p_hw_i2c);
 
     /* 设置从机地址 */
-    amhw_zlg118_i2c_slave_addr_set (p_hw_i2c, dev_addr);
+    amhw_hc32_i2c_slave_addr_set (p_hw_i2c, dev_addr);
 
-    amhw_zlg118_i2c_enable(p_hw_i2c);
+    amhw_hc32_i2c_enable(p_hw_i2c);
 
     return AM_OK;
 }
@@ -127,38 +127,38 @@ static int __i2c_slave_init (amhw_zlg118_i2c_t *p_hw_i2c, uint8_t dev_addr)
 static void __i2c_slave_event (void *p_i2c_slv)
 {
     static uint8_t           rx_len       = 0;
-    amhw_zlg118_i2c_t       *p_hw_i2c_slv = p_i2c_slv;
+    amhw_hc32_i2c_t         *p_hw_i2c_slv = p_i2c_slv;
     uint8_t                  state;
     uint8_t                  rx_data;
     uint8_t                  tx_data;
 
-    state = amhw_zlg118_i2c_status_get(p_hw_i2c_slv);
+    state = amhw_hc32_i2c_status_get(p_hw_i2c_slv);
 
     switch(state) {
 
     case 0xa0:  /* 接收到停止条件或重复起始条件 */
         __tran_stop(NULL);
         rx_len = 0;
-        amhw_zlg118_i2c_cr_set(p_hw_i2c_slv, AMHW_ZLG118_I2C_REPLY_ENABLE);
+        amhw_hc32_i2c_cr_set(p_hw_i2c_slv, AMHW_HC32_I2C_REPLY_ENABLE);
         break;
 
     case 0x60:  /* 已接收到(与自身匹配的)SLA+W；已接收ACK */
     case 0x70:  /* 已接收通用调用地址（0x00）；已接收ACK */
         rx_len = 0;
-        amhw_zlg118_i2c_cr_set(p_hw_i2c_slv, AMHW_ZLG118_I2C_REPLY_ENABLE);
+        amhw_hc32_i2c_cr_set(p_hw_i2c_slv, AMHW_HC32_I2C_REPLY_ENABLE);
         break;
 
     case 0x68:  /* 主控时在SLA+读写丢失仲裁；已接收自身的SLA+W；已返回ACK */
     case 0x78:  /* 主控时在SLA+读写中丢失仲裁；已接收通用调用地址；已返回ACK */
     case 0x88:  /* 前一次寻址使用自身从地址；已接收数据字节；已返回非ACK */
-        amhw_zlg118_i2c_cr_set(p_hw_i2c_slv, AMHW_ZLG118_I2C_REPLY_ENABLE);
+        amhw_hc32_i2c_cr_set(p_hw_i2c_slv, AMHW_HC32_I2C_REPLY_ENABLE);
         break;
 
     case 0x80:  /* 前一次寻址使用自身从地址；已接收数据字节；已返回ACK */
     case 0x98:  /* 前一次寻址使用通用调用地址；已接收数据；已返回非ACK */
     case 0x90:  /* 前一次寻址使用通用调用地址；已接收数据；已返回ACK */
-        amhw_zlg118_i2c_cr_set(p_hw_i2c_slv, AMHW_ZLG118_I2C_REPLY_ENABLE);
-        rx_data = amhw_zlg118_i2c_dat_read(p_hw_i2c_slv);/* 接收数据 */
+        amhw_hc32_i2c_cr_set(p_hw_i2c_slv, AMHW_HC32_I2C_REPLY_ENABLE);
+        rx_data = amhw_hc32_i2c_dat_read(p_hw_i2c_slv);/* 接收数据 */
         if(rx_len) {    /* 忽略接收的第一个数据(从机设备子地址) */
             __rxbyte_put(NULL, rx_data);    /* 接受回调 */
         }
@@ -170,7 +170,7 @@ static void __i2c_slave_event (void *p_i2c_slv)
     case 0xc8:  /* 装入的数据字节已被发送；已接收ACK */
     case 0xb8:  /* 已发送数据；已接收ACK */
         __txbyte_get(NULL, &tx_data);
-        amhw_zlg118_i2c_dat_write(p_hw_i2c_slv,tx_data);
+        amhw_hc32_i2c_dat_write(p_hw_i2c_slv,tx_data);
         break;
 
     case 0xc0:  /* 发送数据，接收非ACKn */
@@ -182,14 +182,14 @@ static void __i2c_slave_event (void *p_i2c_slv)
     }
 
     /* 清除中断标志 */
-    amhw_zlg118_i2c_cr_clear(p_hw_i2c_slv, AMHW_ZLG118_I2C_INT_FLAG);
+    amhw_hc32_i2c_cr_clear(p_hw_i2c_slv, AMHW_HC32_I2C_INT_FLAG);
 }
 
 /**
  * \brief 例程入口
  */
-void demo_zlg118_hw_i2c_slave_int_entry (void  *p_hw_i2c,
-                                         int    inum_num)
+void demo_hc32_hw_i2c_slave_int_entry (void    *p_hw_i2c,
+                                       int      inum_num)
 {
     __i2c_slave_init(p_hw_i2c, OPERATE_ADDR); /* I2C 从机初始化配置 */
 
@@ -201,6 +201,6 @@ void demo_zlg118_hw_i2c_slave_int_entry (void  *p_hw_i2c,
         ;
     }
 }
-/** [src_zlg118_hw_i2c_slave_poll] */
+/** [src_hc32_hw_i2c_slave_poll] */
 
 /* end of file */

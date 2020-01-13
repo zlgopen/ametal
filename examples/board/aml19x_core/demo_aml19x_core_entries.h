@@ -112,6 +112,16 @@ void demo_hc32l19x_core_std_gpio_entry (void);
 void demo_hc32l19x_core_std_gpio_trigger_entry (void);
 
 /**
+ * \brief I2C 从机例程(此例程可以用来模拟 EEPROM)，通过 HW 层接口实现
+ */
+void demo_hc32l19x_core_hw_i2c_slave_int_entry (void);
+
+/**
+ * \brief I2C 主机访问 EEPROM 例程，通过 HW 层接口实现
+ */
+void demo_hc32l19x_core_hw_i2c_master_poll_entry (void);
+
+/**
  * \brief I2C 从机例程(此例程可以用来模拟 EEPROM)，通过标准接口实现
  */
 void demo_hc32l19x_core_std_i2c_slave_int_entry (void);

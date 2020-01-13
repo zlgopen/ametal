@@ -22,8 +22,8 @@
  *    可根据实际情况更换引脚。
  *
  * \par 源代码
- * \snippet demo_zlg118_core_hw_i2c_slave_poll.c
- *          src_zlg118_core_hw_i2c_slave_poll
+ * \snippet demo_hc32f17x_core_hw_i2c_slave_poll.c
+ *          src_hc32f17x_core_hw_i2c_slave_poll
  *
  * \internal
  * \par Modification history
@@ -32,36 +32,36 @@
  */
 
 /**
- * \addtogroup demo_if_zlg118_core_hw_i2c_slave_poll
- * \copydoc demo_zlg118_core_hw_i2c_slave_poll.c
+ * \addtogroup demo_if_hc32f17x_core_hw_i2c_slave_poll
+ * \copydoc demo_hc32f17x_core_hw_i2c_slave_poll.c
  */
 
-/** [src_zlg118_core_hw_i2c_slave_poll] */
+/** [src_hc32f17x_core_hw_i2c_slave_poll] */
 #include "ametal.h"
 #include "am_clk.h"
 #include "am_gpio.h"
 #include "am_vdebug.h"
-#include "am_zlg118.h"
-#include "am_zlg118_clk.h"
-#include "hw/amhw_zlg118_i2c.h"
-#include "demo_zlg_entries.h"
-#include "demo_am118_core_entries.h"
-#include "zlg118_inum.h"
+#include "am_hc32.h"
+#include "am_hc32_clk.h"
+#include "hw/amhw_hc32_i2c.h"
+#include "demo_hc32_entries.h"
+#include "demo_amf17x_core_entries.h"
+#include "hc32_inum.h"
 
 /**
  * \brief 例程入口
  */
-void demo_zlg118_core_hw_i2c_slave_int_entry (void)
+void demo_hc32f17x_core_hw_i2c_slave_int_entry (void)
 {
-    am_kprintf("demo zlg118_core hw i2c slave poll!\r\n");
+    am_kprintf("demo hc32f17x_core hw i2c slave poll!\r\n");
 
     am_gpio_pin_cfg(PIOA_11, PIOA_11_I2C1_SCL | PIOA_11_OUT_OD);
     am_gpio_pin_cfg(PIOA_12, PIOA_12_I2C1_SDA | PIOA_12_OUT_OD);
 
     am_clk_enable(CLK_I2C1);
 
-    demo_zlg118_hw_i2c_slave_int_entry(ZLG118_I2C1, INUM_I2C1);
+    demo_hc32_hw_i2c_slave_int_entry(HC32_I2C1, INUM_I2C1);
 }
-/** [src_zlg118_core_hw_i2c_slave_poll] */
+/** [src_hc32f17x_core_hw_i2c_slave_poll] */
 
 /* end of file */

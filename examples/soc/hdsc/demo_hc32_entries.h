@@ -55,9 +55,9 @@ extern "C" {
  * \return 无
  */
 void demo_hc32_hw_adc_int_entry (void    *p_hw_adc,
-                                   int      int_num,
-                                   uint8_t  chan,
-                                   uint32_t vref_mv);
+                                 int      int_num,
+                                 uint8_t  chan,
+                                 uint32_t vref_mv);
 
 /**
  * \brief ADC 硬件层（使用了中断）例程入口
@@ -75,11 +75,11 @@ void demo_hc32_hw_adc_int_entry (void    *p_hw_adc,
  * \return 无
  */
 void demo_hc32_hw_multichan_adc_entry (void    *p_hw_adc,
-                                         int      int_num,
-                                         uint32_t vref_mv,
-                                         int     *p_adc_chan,
-                                         uint8_t  sqr_num,
-                                         uint8_t  jqr_num);
+                                       int      int_num,
+                                       uint32_t vref_mv,
+                                       int     *p_adc_chan,
+                                       uint8_t  sqr_num,
+                                       uint8_t  jqr_num);
 
 /**
  * \brief ADC 硬件层（DMA）例程入口
@@ -97,11 +97,11 @@ void demo_hc32_hw_multichan_adc_entry (void    *p_hw_adc,
  * \return 无
  */
 void demo_hc32_hw_adc_dma_entry (void    *p_hw_adc,
-                                   int     *p_adc_chan,
-                                   int      chan_num,
-                                   uint32_t vref_mv,
-                                   int      dma_chan,
-                                   uint8_t  dma_src);
+                                 int     *p_adc_chan,
+                                 int      chan_num,
+                                 uint32_t vref_mv,
+                                 int      dma_chan,
+                                 uint8_t  dma_src);
 
 /**
  * \brief CLK 例程，通过 HW 层接口实现
@@ -141,8 +141,8 @@ void demo_hc32_drv_flash_entry (void *p_hw_flash, uint16_t sector);
  * \return 无
  */
 void demo_hc32_hw_gpio_entry (void    *p_hw_gpio,
-                                int32_t  input_pin,
-                                int32_t  output_pin);
+                              int32_t  input_pin,
+                              int32_t  output_pin);
 
 /**
  * \brief GPIO 引脚中断例程，通过 HW 层接口实现
@@ -163,7 +163,7 @@ void demo_hc32_hw_gpio_trigger_entry (void *p_hw_gpio, int32_t pin);
  * \return 无
  */
 void demo_hc32_hw_spi_master_entry (void    *p_hw_spi,
-                                      int32_t  cs_pin);
+                                    int32_t  cs_pin);
 /**
  * \brief 定时器捕获例程，通过 HW 层接口实现
  *
@@ -176,10 +176,10 @@ void demo_hc32_hw_spi_master_entry (void    *p_hw_spi,
  * \return 无
  */
 void demo_hc32_hw_tim_cap_entry (void     *p_hw_tim,
-                                   uint8_t   type,
-                                   uint32_t  chan,
-                                   uint32_t  clk_rate,
-                                   int32_t   inum);
+                                 uint8_t   type,
+                                 uint32_t  chan,
+                                 uint32_t  clk_rate,
+                                 int32_t   inum);
 
 /**
  * \brief 定时器通道比较匹配引脚翻转例程，通过 HW 层接口实现
@@ -194,11 +194,11 @@ void demo_hc32_hw_tim_cap_entry (void     *p_hw_tim,
  * \return 无
  */
 void demo_hc32_hw_tim_cmp_toggle_entry (void    *p_hw_tim,
-                                          uint8_t  type,
-                                          uint32_t chan,
-                                          uint32_t clk_rate,
-                                          uint8_t  clk_div,
-                                          uint8_t  inum);
+                                        uint8_t  type,
+                                        uint32_t chan,
+                                        uint32_t clk_rate,
+                                        uint8_t  clk_div,
+                                        uint8_t  inum);
 
 /**
  * \brief 定时器通道带死区的互补PWM输出例程，通过 HW 层接口实现
@@ -214,12 +214,12 @@ void demo_hc32_hw_tim_cmp_toggle_entry (void    *p_hw_tim,
  * \return 无
  */
 void demo_hc32_hw_tim_pwm_dead_entry (void    *p_hw_tim,
-                                        uint8_t  type,
-                                        uint8_t  chan_a,
-                                        uint8_t  chan_b,
-                                        uint32_t duty_us,
-                                        uint32_t period_us,
-                                        uint16_t dead_us);
+                                      uint8_t  type,
+                                      uint8_t  chan_a,
+                                      uint8_t  chan_b,
+                                      uint32_t duty_us,
+                                      uint32_t period_us,
+                                      uint16_t dead_us);
 
 /**
  * \brief 高级定时器软件软件同步开始、同步停止、同步清零例程，通过 HW层接口实现
@@ -243,11 +243,11 @@ void demo_hc32_hw_adtim_swsync_entry (void *p_tim_cfg);
  * \return 无
  */
 void demo_hc32_hw_adtim_port_sw_brake_entry (void          *p_hw_adtim,
-                                               uint8_t        chan,
-                                               unsigned long  duty_ns,
-                                               unsigned long  period_ns,
-                                               int            output_pin,
-                                               uint8_t        src);
+                                             uint8_t        chan,
+                                             unsigned long  duty_ns,
+                                             unsigned long  period_ns,
+                                             int            output_pin,
+                                             uint8_t        src);
 
 /**
  * \brief 高级定时器VC刹车例程，通过 HW 层接口实现
@@ -263,12 +263,12 @@ void demo_hc32_hw_adtim_port_sw_brake_entry (void          *p_hw_adtim,
  * \return 无
  */
 void demo_hc32_hw_adtim_vc_brake_entry (void         *p_hw_adtim,
-                                          uint8_t       chan,
-                                          unsigned long duty_ns,
-                                          unsigned long period_ns,
-                                          void         *p_hw_vc,
-                                          uint8_t       vc0_n,
-                                          uint8_t       vc0_p);
+                                        uint8_t       chan,
+                                        unsigned long duty_ns,
+                                        unsigned long period_ns,
+                                        void         *p_hw_vc,
+                                        uint8_t       vc0_n,
+                                        uint8_t       vc0_p);
 
 /**
  * \brief 高级定时器定时触发ADC转换例程，通过 HW 层接口实现
@@ -283,11 +283,11 @@ void demo_hc32_hw_adtim_vc_brake_entry (void         *p_hw_adtim,
  * \return 无
  */
 void demo_hc32_hw_adtim_trig_adc_sqr_entry (void    *p_hw_adtim,
-                                              uint32_t period_ns,
-                                              void    *p_hw_adc,
-                                              int      adc_int_num,
-                                              int     *p_adc_chan,
-                                              uint8_t  sqr_num);
+                                            uint32_t period_ns,
+                                            void    *p_hw_adc,
+                                            int      adc_int_num,
+                                            int     *p_adc_chan,
+                                            uint8_t  sqr_num);
 
 /**
  * \brief 通用定时器端口刹车例程，通过 HW 层接口实现
@@ -302,11 +302,11 @@ void demo_hc32_hw_adtim_trig_adc_sqr_entry (void    *p_hw_adtim,
  * \return 无
  */
 void demo_hc32_hw_tim_port_brake_entry (void    *p_hw_tim,
-                                          uint8_t  type,
-                                          uint8_t  chan,
-                                          int      inum,
-                                          uint32_t duty_ns,
-                                          uint32_t period_us);
+                                        uint8_t  type,
+                                        uint8_t  chan,
+                                        int      inum,
+                                        uint32_t duty_ns,
+                                        uint32_t period_us);
 
 /**
  * \brief 通用定时器VC刹车例程，通过 HW 层接口实现
@@ -322,12 +322,12 @@ void demo_hc32_hw_tim_port_brake_entry (void    *p_hw_tim,
  * \return 无
  */
 void demo_hc32_hw_tim_vc_brake_entry (void         *p_hw_tim,
-                                        uint8_t       chan,
-                                        unsigned long duty_ns,
-                                        unsigned long period_ns,
-                                        void         *p_hw_vc,
-                                        uint8_t       vc0_n,
-                                        uint8_t       vc0_p);
+                                      uint8_t       chan,
+                                      unsigned long duty_ns,
+                                      unsigned long period_ns,
+                                      void         *p_hw_vc,
+                                      uint8_t       vc0_n,
+                                      uint8_t       vc0_p);
 
 /**
  * \brief 定时器 PWM 输出例程，通过 HW 层接口实现
@@ -342,11 +342,11 @@ void demo_hc32_hw_tim_vc_brake_entry (void         *p_hw_tim,
  * \return 无
  */
 void demo_hc32_hw_tim_pwm_entry (void    *p_hw_tim,
-                                   uint8_t  type,
-                                   uint32_t chan,
-                                   uint32_t clk_rate,
-                                   uint8_t  clk_div,
-                                   int32_t  inum);
+                                 uint8_t  type,
+                                 uint32_t chan,
+                                 uint32_t clk_rate,
+                                 uint8_t  clk_div,
+                                 int32_t  inum);
 
 /**
  * \brief 定时器定时例程，通过 HW 层接口实现
@@ -359,9 +359,9 @@ void demo_hc32_hw_tim_pwm_entry (void    *p_hw_tim,
  * \return 无
  */
 void demo_hc32_hw_tim_timing_entry (void    *p_hw_tim,
-                                      uint8_t  type,
-                                      uint32_t clk_rate,
-                                      int32_t  int_num);
+                                    uint8_t  type,
+                                    uint32_t clk_rate,
+                                    int32_t  int_num);
 
 /**
  * \brief 通用定时器定时触发ADC转换例程，通过 HW 层接口实现
@@ -379,14 +379,14 @@ void demo_hc32_hw_tim_timing_entry (void    *p_hw_tim,
  * \return 无
  */
 void demo_hc32_hw_tim_trig_adc_sqr_entry (void    *p_hw_tim,
-                                            uint8_t  type,
-                                            uint8_t  chan,
-                                            uint32_t duty_us,
-                                            uint32_t period_us,
-                                            void    *p_hw_adc,
-                                            int      adc_int_num,
-                                            int     *p_adc_chan,
-                                            uint8_t  sqr_num);
+                                          uint8_t  type,
+                                          uint8_t  chan,
+                                          uint32_t duty_us,
+                                          uint32_t period_us,
+                                          void    *p_hw_adc,
+                                          int      adc_int_num,
+                                          int     *p_adc_chan,
+                                          uint8_t  sqr_num);
 
 /**
  * \brief UART 中断发送例程，通过 HW 层接口实现
@@ -400,10 +400,10 @@ void demo_hc32_hw_tim_trig_adc_sqr_entry (void    *p_hw_tim,
  * \return 无
  */
 void demo_hc32_hw_uart_int_entry (void             *p_hw_uart,
-                                    void (* pfn_init)(void),
-                                    uint32_t         clk_rate,
-                                    unsigned long    uart_base,
-                                    unsigned char    inum_uart);
+                                  void (* pfn_init)(void),
+                                  uint32_t         clk_rate,
+                                  unsigned long    uart_base,
+                                  unsigned char    inum_uart);
 
 /**
  * \brief UART 轮询方式例程，通过 HW 层接口实现
@@ -414,7 +414,7 @@ void demo_hc32_hw_uart_int_entry (void             *p_hw_uart,
  * \return 无
  */
 void demo_hc32_hw_uart_polling_entry (void     *p_hw_uart,
-                                        uint32_t  clk_rate);
+                                      uint32_t  clk_rate);
 
 /**
  * \brief UART DMA 接收例程，通过 HW 层接口实现
@@ -427,9 +427,9 @@ void demo_hc32_hw_uart_polling_entry (void     *p_hw_uart,
  * \return 无
  */
 void demo_hc32_hw_uart_rx_dma_entry (void    *p_hw_uart,
-                                       uint32_t clk_rate,
-                                       int32_t  dma_chan,
-                                       int32_t  dma_src);
+                                     uint32_t clk_rate,
+                                     int32_t  dma_chan,
+                                     int32_t  dma_src);
 
 /**
  * \brief UART DMA 发送例程，通过 HW 层接口实现
@@ -442,9 +442,9 @@ void demo_hc32_hw_uart_rx_dma_entry (void    *p_hw_uart,
  * \return 无
  */
 void demo_hc32_hw_uart_tx_dma_entry (void    *p_hw_uart,
-                                       uint32_t clk_rate,
-                                       int32_t  dma_chan,
-                                       int32_t  dma_src);
+                                     uint32_t clk_rate,
+                                     int32_t  dma_chan,
+                                     int32_t  dma_src);
 
 /**
  * \brief LPUART 中断发送例程，通过 HW 层接口实现
@@ -460,12 +460,12 @@ void demo_hc32_hw_uart_tx_dma_entry (void    *p_hw_uart,
  * \return 无
  */
 void demo_hc32_hw_lpuart_int_entry (void             *p_hw_uart,
-                                      void (* pfn_init)(void),
-                                      uint8_t           sclk_src,
-                                      uint32_t          clk_rate,
-                                      uint32_t          baudrate,
-                                      unsigned long     uart_base,
-                                      unsigned char     inum_uart);
+                                    void (* pfn_init)(void),
+                                    uint8_t           sclk_src,
+                                    uint32_t          clk_rate,
+                                    uint32_t          baudrate,
+                                    unsigned long     uart_base,
+                                    unsigned char     inum_uart);
 
 /**
  * \brief LPUART 轮询方式例程，通过 HW 层接口实现
@@ -478,9 +478,9 @@ void demo_hc32_hw_lpuart_int_entry (void             *p_hw_uart,
  * \return 无
  */
 void demo_hc32_hw_lpuart_polling_entry (void     *p_hw_uart,
-                                          uint8_t   clk_src,
-                                          uint32_t  clk_rate,
-                                          uint32_t  baudrate);
+                                        uint8_t   clk_src,
+                                        uint32_t  clk_rate,
+                                        uint32_t  baudrate);
 
 /**
  * \brief LPUART DMA 接收例程，通过 HW 层接口实现
@@ -495,11 +495,11 @@ void demo_hc32_hw_lpuart_polling_entry (void     *p_hw_uart,
  * \return 无
  */
 void demo_hc32_hw_lpuart_rx_dma_entry (void    *p_hw_uart,
-                                         uint8_t  clk_src,
-                                         uint32_t clk_rate,
-                                         uint32_t baudrate,
-                                         int32_t  dma_chan,
-                                         int32_t  dma_src);
+                                       uint8_t  clk_src,
+                                       uint32_t clk_rate,
+                                       uint32_t baudrate,
+                                       int32_t  dma_chan,
+                                       int32_t  dma_src);
 
 /**
  * \brief LPUART DMA 发送例程，通过 HW 层接口实现
@@ -514,11 +514,33 @@ void demo_hc32_hw_lpuart_rx_dma_entry (void    *p_hw_uart,
  * \return 无
  */
 void demo_hc32_hw_lpuart_tx_dma_entry (void    *p_hw_uart,
-                                         uint8_t  clk_src,
-                                         uint32_t clk_rate,
-                                         uint32_t baudrate,
-                                         int32_t  dma_chan,
-                                         int32_t  dma_src);
+                                       uint8_t  clk_src,
+                                       uint32_t clk_rate,
+                                       uint32_t baudrate,
+                                       int32_t  dma_chan,
+                                       int32_t  dma_src);
+
+/**
+ * \brief HC32 I2C 主机例程，通过 HW 层接口实现
+ *
+ * \param[in] p_hw_i2c     指向 I2C 外设寄存器块的指针
+ * \param[in] clk_rate     I2c工作频率
+ *
+ * \return 无
+ */
+void demo_hc32_hw_i2c_master_poll_entry (void      *p_hw_i2c,
+                                         uint32_t   clk_rate);
+
+/**
+ * \brief HC32 I2C 从机例程，通过 HW 层接口实现
+ *
+ * \param[in] p_hw_i2c     指向 I2C 外设寄存器块的指针
+ * \param[in] inum_num     I2c中断号
+ *
+ * \return 无
+ */
+void demo_hc32_hw_i2c_slave_int_entry (void    *p_hw_i2c,
+                                       int      inum_num);
 
 /**
  * \brief HC32 WDT 例程，通过 HW 层接口实现
@@ -530,8 +552,8 @@ void demo_hc32_hw_lpuart_tx_dma_entry (void    *p_hw_uart,
  * \return 无
  */
 void demo_hc32_hw_wdt_entry (void     *p_hw_wdt,
-                               uint32_t  time_out_ms,
-                               uint32_t  feed_time_ms);
+                             uint32_t  time_out_ms,
+                             uint32_t  feed_time_ms);
 /**
  * \brief DAC输出电压例程，hw接口层实现
  *
@@ -543,9 +565,9 @@ void demo_hc32_hw_wdt_entry (void     *p_hw_wdt,
  * \return 无
  */
 void demo_hc32_hw_dac_dma_entry(void     *p_hw_dac,
-                                  int32_t  dma_src,
-                                  int32_t  dma_chan,
-                                  uint16_t *vol_val);
+                                int32_t  dma_src,
+                                int32_t  dma_chan,
+                                uint16_t *vol_val);
 
 /**
  * \brief VC中断触发例程，hw接口层实现
@@ -556,9 +578,9 @@ void demo_hc32_hw_dac_dma_entry(void     *p_hw_dac,
  *
  */
 void demo_hc32_hw_vc_int_entry (void    *p_hw_vc,
-                                  void   (*pfn_cb_t) (void *),
-                                  void    *p_hw_dac,
-                                  uint16_t vol_val);
+                                void   (*pfn_cb_t) (void *),
+                                void    *p_hw_dac,
+                                uint16_t vol_val);
 
 /**
  * \brief LVD系统复位例程，hw接口层实现
@@ -578,7 +600,7 @@ void demo_hc32_hw_lvd_system_reset_entry (void *p_hw_lvd);
  * \return 无
  */
 void demo_hc32_hw_lvd_int_entry (void *p_hw_lvd,
-                                   void (*p_lvd_cb)(void *));
+                                 void (*p_lvd_cb)(void *));
 
 /**
  * \brief OPA 电压跟随例程，通过 HW 层接口实现
@@ -601,9 +623,9 @@ void demo_hc32_hw_opa_one_entry (void *p_hw_opa, uint8_t mode);
  * \retval :无
  */
 void demo_hc32_hw_opa_dac_entry (void     *p_hw_opa,
-                                   void     *p_hw_dac,
-                                   uint8_t   mode,
-                                   uint16_t *vol_val);
+                                 void     *p_hw_dac,
+                                 uint8_t   mode,
+                                 uint16_t *vol_val);
 
 /**
  * \brief AES 加密解密例程，通过 HW 层接口实现
@@ -616,9 +638,9 @@ void demo_hc32_hw_opa_dac_entry (void     *p_hw_opa,
  * \retval :无
  */
 void demo_hc32_hw_aes_ency_decy_entry (void     *p_hw_aes,
-                                         uint8_t   key_len,
-                                         uint32_t *p_aes_data,
-                                         uint32_t *p_key_data);
+                                       uint8_t   key_len,
+                                       uint32_t *p_aes_data,
+                                       uint32_t *p_key_data);
 
 /**
  * \brief TRNG 随机数产生例程，通过 HW 层接口实现
@@ -638,7 +660,7 @@ void demo_hc32_hw_trng_generate_entry (void *p_hw_trng);
  * \retval :无
  */
 void demo_hc32_hw_lcd_entry (void                    *p_hw_lcd,
-                               uint32_t                *p_data);
+                             uint32_t                *p_data);
 
 #ifdef __cplusplus
 }

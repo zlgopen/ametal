@@ -23,7 +23,7 @@
  *   3. 调试串口打印测试结果。
  *
  * \par 源代码
- * \snippet demo_zlg118_hw_i2c_master_poll.c src_zlg118_hw_i2c_master_poll
+ * \snippet demo_hc32_hw_i2c_master_poll.c src_hc32_hw_i2c_master_poll
  *
  * \internal
  * \par History
@@ -32,16 +32,16 @@
  */
 
 /**
- * \addtogroup demo_if_zlg118_hw_i2c_master_poll
- * \copydoc demo_zlg118_hw_i2c_master_poll.c
+ * \addtogroup demo_if_hc32_hw_i2c_master_poll
+ * \copydoc demo_hc32_hw_i2c_master_poll.c
  */
 
-/** [src_zlg118_hw_i2c_master_poll] */
+/** [src_hc32_hw_i2c_master_poll] */
 #include "ametal.h"
 #include "am_delay.h"
 #include "am_vdebug.h"
 #include "am_errno.h"
-#include "hw/amhw_zlg118_i2c.h"
+#include "hw/amhw_hc32_i2c.h"
 
 /*******************************************************************************
   宏定义
@@ -58,7 +58,7 @@
 
 #define I2C_SPEED           100000      /**< \brief I2C 控制器速度参数定义 */
 #define EEPROM_ADDR         0x50        /**< \brief EEPROM 设备地址定义 */
-#define TEST_LEN            0x08        /**< \brief 操作 EEPROM 的页大小 */
+#define TEST_LEN            0x08       /**< \brief 操作 EEPROM 的页大小 */
 
 #define __I2C_ST_IDLE       (0x10u)     /* 空闲状态 */
 #define __I2C_ST_MSG_START  (0x11u)     /* 消息传输开始状态 */
@@ -82,10 +82,10 @@ typedef struct i2c_transfer {
 } i2c_transfer_t;
 
 typedef struct i2c_message {
-    i2c_transfer_t     *p_transfer;
-    uint16_t            trans_num;      /**< \brief 请求处理的传输个数          */
-    uint16_t            done_num;       /**< \brief 成功处理的传输个数          */
-    int                 status;         /**< \brief 消息的状态                         */
+    i2c_transfer_t  *p_transfer;
+    uint16_t         trans_num;    /**< \brief 请求处理的传输个数          */
+    uint16_t         done_num;     /**< \brief 成功处理的传输个数          */
+    int              status;       /**< \brief 消息的状态                         */
 } i2c_message_t;
 
 /** \brief I2C 传输结构体 */
@@ -138,8 +138,8 @@ static void __i2c_mkmsg (i2c_message_t  *p_msg,
  *
  * \return 无
  */
-static am_err_t __i2c_msg_start (amhw_zlg118_i2c_t  *p_hw_i2c,
-                                 i2c_message_t      *p_msg)
+static am_err_t __i2c_msg_start (amhw_hc32_i2c_t  *p_hw_i2c,
+                                 i2c_message_t    *p_msg)
 {
     int     state;
     uint8_t data_ptr = 0;
@@ -151,15 +151,15 @@ static am_err_t __i2c_msg_start (amhw_zlg118_i2c_t  *p_hw_i2c,
     }
 
     /* 发送起始条件 */
-    amhw_zlg118_i2c_cr_set(p_hw_i2c, AMHW_ZLG118_I2C_START_ENABLE);
+    amhw_hc32_i2c_cr_set(p_hw_i2c, AMHW_HC32_I2C_START_ENABLE);
 
     while(1) {
         /* 获取中断标志 */
-        while(0 == amhw_zlg118_i2c_irq_get(p_hw_i2c));
+        while(0 == amhw_hc32_i2c_irq_get(p_hw_i2c));
         p_msg->status = __I2C_ST_MSG_START;
 
         /* 获取I2C状态 */
-        state = amhw_zlg118_i2c_status_get(p_hw_i2c);
+        state = amhw_hc32_i2c_status_get(p_hw_i2c);
 
         if(p_cur_trans[p_msg->done_num].flags & I2C_M_RD) {  /* 读操作 */
             switch (state) {
@@ -168,52 +168,52 @@ static am_err_t __i2c_msg_start (amhw_zlg118_i2c_t  *p_hw_i2c,
             case 0x10: /* 已发送重复起始条件 */
 
                 /* 清除起始条件 */
-                amhw_zlg118_i2c_cr_clear(p_hw_i2c,
-                                         AMHW_ZLG118_I2C_START_ENABLE);
+                amhw_hc32_i2c_cr_clear(p_hw_i2c,
+                                       AMHW_HC32_I2C_START_ENABLE);
 
                 /* 传输从机地址和读命令 */
-                amhw_zlg118_i2c_dat_write(p_hw_i2c,
-                                          ((p_cur_trans->addr << 1) | 0x1));
+                amhw_hc32_i2c_dat_write(p_hw_i2c,
+                                        ((p_cur_trans->addr << 1) | 0x1));
                 break;
 
             case 0x18: /* 已发送SLA+W，已接收ACK */
 
                 /* 传输目标地址 */
-                amhw_zlg118_i2c_dat_write(p_hw_i2c,
+                amhw_hc32_i2c_dat_write(p_hw_i2c,
                         p_cur_trans[p_msg->done_num - 1].p_buf[data_ptr]);
                 break;
 
             case 0x28: /* 已发送数据，已接收ACK */
 
                 /* 发送重复起始条件 */
-                amhw_zlg118_i2c_cr_set(p_hw_i2c, AMHW_ZLG118_I2C_START_ENABLE);
+                amhw_hc32_i2c_cr_set(p_hw_i2c, AMHW_HC32_I2C_START_ENABLE);
                 break;
 
             case 0x40: /* 已发送SLA +R,已接收ACK */
 
                 /* 使能应答 */
                 if(p_cur_trans[p_msg->done_num].length > 1) {
-                    amhw_zlg118_i2c_cr_set(p_hw_i2c,
-                                           AMHW_ZLG118_I2C_REPLY_ENABLE);
+                    amhw_hc32_i2c_cr_set(p_hw_i2c,
+                                         AMHW_HC32_I2C_REPLY_ENABLE);
                 }
                 break;
 
             case 0x48: /* 已发送SLA +R,已接收非ACK */
-                amhw_zlg118_i2c_cr_set(p_hw_i2c, AMHW_ZLG118_I2C_STOP_ENABLE);
-                amhw_zlg118_i2c_cr_set(p_hw_i2c, AMHW_ZLG118_I2C_START_ENABLE);
+                amhw_hc32_i2c_cr_set(p_hw_i2c, AMHW_HC32_I2C_STOP_ENABLE);
+                amhw_hc32_i2c_cr_set(p_hw_i2c, AMHW_HC32_I2C_START_ENABLE);
                 break;
 
             case 0x50:/* 已接收数据字节，ACK已返回 */
 
                 /* 接收数据 */
                 p_cur_trans[p_msg->done_num].p_buf[data_ptr++] = \
-                    amhw_zlg118_i2c_dat_read(p_hw_i2c);
+                    amhw_hc32_i2c_dat_read(p_hw_i2c);
 
                 if(data_ptr == p_cur_trans[p_msg->done_num].length - 1) {
 
                     /* 禁能应答 */
-                    amhw_zlg118_i2c_cr_clear(p_hw_i2c,
-                                             AMHW_ZLG118_I2C_REPLY_ENABLE);
+                    amhw_hc32_i2c_cr_clear(p_hw_i2c,
+                                           AMHW_HC32_I2C_REPLY_ENABLE);
                 }
                 break;
 
@@ -221,7 +221,7 @@ static am_err_t __i2c_msg_start (amhw_zlg118_i2c_t  *p_hw_i2c,
 
                 /* 接收最后一个数据 */
                 p_cur_trans[p_msg->done_num].p_buf[data_ptr++] = \
-                    amhw_zlg118_i2c_dat_read(p_hw_i2c);
+                    amhw_hc32_i2c_dat_read(p_hw_i2c);
                 p_msg->status = __I2C_ST_IDLE;
                 break;
 
@@ -236,11 +236,11 @@ static am_err_t __i2c_msg_start (amhw_zlg118_i2c_t  *p_hw_i2c,
             case 0x08: /* 已发送起始条件 */
 
                 /* 清除起始条件 */
-                amhw_zlg118_i2c_cr_clear(p_hw_i2c,
-                                         AMHW_ZLG118_I2C_START_ENABLE);
+                amhw_hc32_i2c_cr_clear(p_hw_i2c,
+                                       AMHW_HC32_I2C_START_ENABLE);
 
                 /* 传输从机地址和写命令 */
-                amhw_zlg118_i2c_dat_write(p_hw_i2c, (p_cur_trans->addr << 1));
+                amhw_hc32_i2c_dat_write(p_hw_i2c, (p_cur_trans->addr << 1));
                 break;
 
             case 0x18: /* 已发送SLA+W，已接收ACK */
@@ -248,9 +248,9 @@ static am_err_t __i2c_msg_start (amhw_zlg118_i2c_t  *p_hw_i2c,
                 if(p_msg->done_num <= p_msg->trans_num) {
 
                     /* 传输数据 */
-                    amhw_zlg118_i2c_dat_write(p_hw_i2c,
-                                              p_cur_trans[p_msg->done_num].\
-                                              p_buf[data_ptr++]);
+                    amhw_hc32_i2c_dat_write(p_hw_i2c,
+                                            p_cur_trans[p_msg->done_num].\
+                                            p_buf[data_ptr++]);
                 }
                 break;
 
@@ -273,17 +273,17 @@ static am_err_t __i2c_msg_start (amhw_zlg118_i2c_t  *p_hw_i2c,
            p_msg->done_num > p_msg->trans_num) {
 
             /* 设置停止停止标志 */
-            amhw_zlg118_i2c_cr_set(p_hw_i2c, AMHW_ZLG118_I2C_STOP_ENABLE);
+            amhw_hc32_i2c_cr_set(p_hw_i2c, AMHW_HC32_I2C_STOP_ENABLE);
 
             /* 清除中断标志位 */
-            amhw_zlg118_i2c_cr_clear(p_hw_i2c, AMHW_ZLG118_I2C_INT_FLAG);
+            amhw_hc32_i2c_cr_clear(p_hw_i2c, AMHW_HC32_I2C_INT_FLAG);
             break;
         } else if(p_msg->done_num == p_msg->trans_num) {
             p_msg->done_num++;
         }
 
         /* 清除中断标志位 */
-        amhw_zlg118_i2c_cr_clear(p_hw_i2c, AMHW_ZLG118_I2C_INT_FLAG);
+        amhw_hc32_i2c_cr_clear(p_hw_i2c, AMHW_HC32_I2C_INT_FLAG);
     }
 
     return AM_OK;
@@ -298,9 +298,9 @@ static am_err_t __i2c_msg_start (amhw_zlg118_i2c_t  *p_hw_i2c,
  * \retval  AM_OK     配置完成
  * \retval -AM_EINVAL 参数无效
  */
-static int __i2c_mst_init (amhw_zlg118_i2c_t *p_hw_i2c,
-                           uint32_t        speed,
-                           uint32_t        clk_rate)
+static int __i2c_mst_init (amhw_hc32_i2c_t *p_hw_i2c,
+                           uint32_t         speed,
+                           uint32_t         clk_rate)
 {
     uint16_t count = ((clk_rate / speed) >> 3) - 1;
 
@@ -312,14 +312,14 @@ static int __i2c_mst_init (amhw_zlg118_i2c_t *p_hw_i2c,
 
     /* 设置速率 */
     if (speed < 100000) {
-        amhw_zlg118_i2c_cr_clear(p_hw_i2c, AMHW_ZLG118_I2C_HIGH_SPEED);
+        amhw_hc32_i2c_cr_clear(p_hw_i2c, AMHW_HC32_I2C_HIGH_SPEED);
     } else {
-        amhw_zlg118_i2c_cr_set(p_hw_i2c, AMHW_ZLG118_I2C_HIGH_SPEED);
+        amhw_hc32_i2c_cr_set(p_hw_i2c, AMHW_HC32_I2C_HIGH_SPEED);
     }
-    amhw_zlg118_i2c_tm_set(p_hw_i2c, count);
-    amhw_zlg118_i2c_tm_enable(p_hw_i2c);
+    amhw_hc32_i2c_tm_set(p_hw_i2c, count);
+    amhw_hc32_i2c_tm_enable(p_hw_i2c);
 
-    amhw_zlg118_i2c_enable(p_hw_i2c);
+    amhw_hc32_i2c_enable(p_hw_i2c);
 
     return AM_OK;
 }
@@ -327,8 +327,8 @@ static int __i2c_mst_init (amhw_zlg118_i2c_t *p_hw_i2c,
 /**
  * \brief 例程入口
  */
-void demo_zlg118_hw_i2c_master_poll_entry (void        *p_hw_i2c,
-                                           uint32_t     clk_rate)
+void demo_hc32_hw_i2c_master_poll_entry (void      *p_hw_i2c,
+                                         uint32_t   clk_rate)
 {
     i2c_message_t   msg;
     i2c_transfer_t *p_trans              = __g_i2c1_transfer;
@@ -405,6 +405,6 @@ void demo_zlg118_hw_i2c_master_poll_entry (void        *p_hw_i2c,
         ; /* VOID */
     }
 }
-/** [src_zlg118_hw_i2c_master_poll] */
+/** [src_hc32_hw_i2c_master_poll] */
 
 /* end of file */
