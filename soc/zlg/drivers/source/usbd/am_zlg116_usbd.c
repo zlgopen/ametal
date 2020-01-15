@@ -819,11 +819,12 @@ static void __usbd_isr_function(void *p_device)
 
     /* 总线挂起 */
     if (int_status & AMHW_ZLG116_USB_INT_STATE_SUSPENDF) {
+        amhw_zlg116_usbd_int_state_clear(p_usb, AMHW_ZLG116_USB_INT_STATE_SUSPENDF);
     }
 
     /* 总线唤醒 */
     if (int_status & AMHW_ZLG116_USB_INT_STATE_RESUMF) {
-        amhw_zlg116_usbd_wakeup(p_usb);
+        amhw_zlg116_usbd_int_state_clear(p_usb, AMHW_ZLG116_USB_INT_STATE_RESUMF);
     }
 
     /* 检测到SOF */
