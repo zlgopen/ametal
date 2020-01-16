@@ -49,6 +49,7 @@
 #include "am_hwconf_miniport_key.h"
 #include "am_hwconf_miniport_view_key.h"
 #include "am_hwconf_lm75.h"
+#include "am_hwconf_debug_uart.h"
 
 /**
  * \addtogroup am_if_lpc82x_inst_init
@@ -407,6 +408,11 @@ am_wdt_handle_t am_cat823_inst_init (void);
  * \brief WDT 实例解初始化
  */
 void am_cat823_inst_deinit (am_wdt_handle_t handle);
+
+/**
+ * \brief 调试串口实例初始化
+ */
+am_uart_handle_t am_debug_uart_inst_init (void);
 
 /**
  * @}
