@@ -49,11 +49,11 @@ void demo_hc32_drv_flash_entry (void *p_hw_flash, uint16_t sector)
 
     int             i;
     uint32_t        status;    /* FLASH 命令执行状态 */
-    static uint32_t data[1024/4]; /* 要写入 FLASH 的数据 */
-    static uint32_t temp[1024/4]; /* 从 FLASH 中读出的数据 */
+    static uint32_t data[SECTOR_SIZE]; /* 要写入 FLASH 的数据 */
+    static uint32_t temp[SECTOR_SIZE]; /* 从 FLASH 中读出的数据 */
 
     /* 数据初始化 */
-    for (i = 0; i < 1024/4; i++) {
+    for (i = 0; i < SECTOR_SIZE; i++) {
         data[i] = i;
     }
 
@@ -71,17 +71,17 @@ void demo_hc32_drv_flash_entry (void *p_hw_flash, uint16_t sector)
     status = am_hc32_flash_sector_program(p_flash,
                                           sector << 9,
                                           data,
-                                          1024/4);
+                                          SECTOR_SIZE);
 
     /* 扇区写入出错，程序停在此处 */
-    if ((1024/4) != status) {
+    if ((SECTOR_SIZE) != status) {
         AM_DBG_INFO("program error!\r\n");
 
         AM_FOREVER;
     }
 
     /* 从扇区读取数据 */
-    for (i = 0; i < (1024/4); i++) {
+    for (i = 0; i < (SECTOR_SIZE); i++) {
         temp[i] = *(uint32_t *)((i * 4) + (sector << 9));
 
         /* 校验数据，校验失败，程序停在此处 */
@@ -91,7 +91,7 @@ void demo_hc32_drv_flash_entry (void *p_hw_flash, uint16_t sector)
         }
     }
 
-    for (i = 0; i < (1024/4); i++) {
+    for (i = 0; i < (SECTOR_SIZE); i++) {
         AM_DBG_INFO("%04d  ", temp[i]);
     }
     AM_DBG_INFO("\r\nflash test success!\r\n");

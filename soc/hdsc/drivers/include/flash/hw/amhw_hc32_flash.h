@@ -3,7 +3,7 @@
 *                       ----------------------------
 *                       innovating embedded platform
 *
-* Copyright (c) 2001-2018 Guangzhou ZHIYUAN Electronics Co., Ltd.
+* Copyright (c) 2001-2019 Guangzhou ZHIYUAN Electronics Co., Ltd.
 * All rights reserved.
 *
 * Contact information:
@@ -68,24 +68,24 @@ extern "C" {
  * \brief the structure of  FLASH register
  */
 typedef struct amhw_hc32_flash {
-    __IO uint32_t tnvs;      /**< \brief Tnvs时间参数寄存器                             offset : 0x00 */
-    __IO uint32_t tpgs;      /**< \brief Tpgs时间参数寄存器                             offset : 0x04 */
-    __IO uint32_t tprog;     /**< \brief Tprog时间参数寄存器                          offset : 0x08 */
-    __IO uint32_t tserase;   /**< \brief Tserase时间参数寄存器                    offset : 0x0c */
-    __IO uint32_t tmerase;   /**< \brief Tmerase时间参数寄存器                    offset : 0x10 */
-    __IO uint32_t tprcv;     /**< \brief Tprcv时间参数寄存器                          offset : 0x14 */
-    __IO uint32_t tsrcv;     /**< \brief Tsrcv时间参数寄存器                          offset : 0x18 */
-    __IO uint32_t tmrcv;     /**< \brief Tmrcv时间参数寄存器                          offset : 0x1c */
-    __IO uint32_t cr;        /**< \brief 控制寄存器                                                 offset : 0x20 */
-    __IO uint32_t ifr;       /**< \brief 中断标志寄存器                                         offset : 0x24 */
-    __IO uint32_t iclr;      /**< \brief 中断标志清除寄存器                                 offset : 0x28 */
-    __IO uint32_t bypass;    /**< \brief Bypass序列寄存器                               offset : 0x2c */
-    __IO uint32_t slock0;    /**< \brief Sector0-127擦写保护寄存器        offset : 0x30 */
-    __IO uint32_t slock1;    /**< \brief Sector128-255擦写保护寄存器  offset : 0x34 */
-    __I  uint32_t reserve0;  /**< \brief 保留位                                                         offset : 0x38 */
-    __I  uint32_t reserve1;  /**< \brief 保留位                                                         offset : 0x3c */
-    __IO uint32_t slock2;    /**< \brief Sector256-383擦写保护寄存器  offset : 0x40 */
-    __IO uint32_t slock3;    /**< \brief Sector384-512擦写保护寄存器  offset : 0x44 */
+    __IO uint32_t tnvs;      /**< \brief Tnvs时间参数寄存器,          offset : 0x00 */
+    __IO uint32_t tpgs;      /**< \brief Tpgs时间参数寄存器,          offset : 0x04 */
+    __IO uint32_t tprog;     /**< \brief Tprog时间参数寄存器,         offset : 0x08 */
+    __IO uint32_t tserase;   /**< \brief Tserase时间参数寄存器,       offset : 0x0c */
+    __IO uint32_t tmerase;   /**< \brief Tmerase时间参数寄存器,       offset : 0x10 */
+    __IO uint32_t tprcv;     /**< \brief Tprcv时间参数寄存器,         offset : 0x14 */
+    __IO uint32_t tsrcv;     /**< \brief Tsrcv时间参数寄存器,         offset : 0x18 */
+    __IO uint32_t tmrcv;     /**< \brief Tmrcv时间参数寄存器,         offset : 0x1c */
+    __IO uint32_t cr;        /**< \brief 控制寄存器,                  offset : 0x20 */
+    __IO uint32_t ifr;       /**< \brief 中断标志寄存器,              offset : 0x24 */
+    __IO uint32_t iclr;      /**< \brief 中断标志清除寄存器,          offset : 0x28 */
+    __IO uint32_t bypass;    /**< \brief Bypass序列寄存器,            offset : 0x2c */
+    __IO uint32_t slock0;    /**< \brief Sector0-127擦写保护寄存器,   offset : 0x30 */
+    __IO uint32_t slock1;    /**< \brief Sector128-255擦写保护寄存器, offset : 0x34 */
+    __I  uint32_t reserve0;  /**< \brief 保留位,                      offset : 0x38 */
+    __I  uint32_t reserve1;  /**< \brief 保留位,                      offset : 0x3c */
+    __IO uint32_t slock2;    /**< \brief Sector256-383擦写保护寄存器, offset : 0x40 */
+    __IO uint32_t slock3;    /**< \brief Sector384-512擦写保护寄存器, offset : 0x44 */
 } amhw_hc32_flash_t;
 
 /**
@@ -100,7 +100,7 @@ typedef struct amhw_hc32_flash {
  */
 am_static_inline
 void amhw_hc32_flash_tnvs_set(amhw_hc32_flash_t *p_hw_flash,
-                               uint8_t              data)
+                              uint8_t            data)
 {
     p_hw_flash->tnvs = (p_hw_flash->tnvs & (~0x1fful)) |
                        ((uint16_t)(data * 8) & (0x1fful));
@@ -118,7 +118,7 @@ void amhw_hc32_flash_tnvs_set(amhw_hc32_flash_t *p_hw_flash,
  */
 am_static_inline
 void amhw_hc32_flash_tpgs_set(amhw_hc32_flash_t *p_hw_flash,
-                               uint8_t              data)
+                              uint8_t            data)
 {
     p_hw_flash->tpgs = (p_hw_flash->tpgs & (~0x1fful)) |
                        ((uint16_t)(data * 5.75) & (0x1fful));
@@ -134,7 +134,7 @@ void amhw_hc32_flash_tpgs_set(amhw_hc32_flash_t *p_hw_flash,
  */
 am_static_inline
 void amhw_hc32_flash_tprog_set(amhw_hc32_flash_t *p_hw_flash,
-                                uint8_t              data)
+                               uint8_t            data)
 {
     p_hw_flash->tprog = (p_hw_flash->tprog & (~0x1fful)) |
                         ((uint16_t)(data * 6.75) & (0x1fful));
@@ -150,7 +150,7 @@ void amhw_hc32_flash_tprog_set(amhw_hc32_flash_t *p_hw_flash,
  */
 am_static_inline
 void amhw_hc32_flash_tserase_set(amhw_hc32_flash_t *p_hw_flash,
-                                  uint8_t              data)
+                                 uint8_t            data)
 {
     p_hw_flash->tserase = (p_hw_flash->tserase & (~0x3fffful)) |
                           ((uint32_t)(data * 4500) & (0x3fffful));
@@ -166,7 +166,7 @@ void amhw_hc32_flash_tserase_set(amhw_hc32_flash_t *p_hw_flash,
  */
 am_static_inline
 void amhw_hc32_flash_tmerase_set(amhw_hc32_flash_t *p_hw_flash,
-                                  uint8_t              data)
+                                 uint8_t            data)
 {
     p_hw_flash->tmerase = (p_hw_flash->tmerase & (~0x1ffffful)) |
                           ((uint32_t)(data * 35000) & (0x1ffffful));
@@ -182,7 +182,7 @@ void amhw_hc32_flash_tmerase_set(amhw_hc32_flash_t *p_hw_flash,
  */
 am_static_inline
 void amhw_hc32_flash_tprcv_set(amhw_hc32_flash_t *p_hw_flash,
-                                uint8_t              data)
+                               uint8_t            data)
 {
     p_hw_flash->tprcv = (p_hw_flash->tprcv & (~0xffful)) |
                         ((uint16_t)(data * 6) & (0xffful));
@@ -198,7 +198,7 @@ void amhw_hc32_flash_tprcv_set(amhw_hc32_flash_t *p_hw_flash,
  */
 am_static_inline
 void amhw_hc32_flash_tsrcv_set(amhw_hc32_flash_t *p_hw_flash,
-                                uint8_t              data)
+                               uint8_t            data)
 {
     p_hw_flash->tsrcv = (p_hw_flash->tsrcv & (~0xffful)) |
                         ((uint16_t)(data * 60) & (0xffful));
@@ -214,7 +214,7 @@ void amhw_hc32_flash_tsrcv_set(amhw_hc32_flash_t *p_hw_flash,
  */
 am_static_inline
 void amhw_hc32_flash_tmrcv_set(amhw_hc32_flash_t *p_hw_flash,
-                                uint8_t              data)
+                               uint8_t            data)
 {
     p_hw_flash->tmrcv = (p_hw_flash->tmrcv & (~0x3ffful)) |
                         ((uint16_t)(data * 250) & (0x3ffful));
@@ -268,8 +268,8 @@ am_bool_t amhw_hc32_flash_busy_check(amhw_hc32_flash_t *p_hw_flash)
  */
 typedef enum {
     AMHW_HC32_FLASH_READ_WAITTIME_1 = 0,  /**< \brief  0~24MHz: 00/11: 1个周期 */
-    AMHW_HC32_FLASH_READ_WAITTIME_2 = 1,  /**< \brief 24~48MHz：           01： 2个周期  */
-    AMHW_HC32_FLASH_READ_WAITTIME_3 = 2,  /**< \brief 48~72MHz：          10: 3个周期  */
+    AMHW_HC32_FLASH_READ_WAITTIME_2 = 1,  /**< \brief 24~48MHz:    01: 2个周期 */
+    AMHW_HC32_FLASH_READ_WAITTIME_3 = 2,  /**< \brief 48~72MHz:    10: 3个周期 */
 }amhw_hc32_flash_read_waittime;
 
 /**
@@ -283,7 +283,7 @@ typedef enum {
  */
 am_static_inline
 void amhw_hc32_flash_read_waittime_set(amhw_hc32_flash_t            *p_hw_flash,
-                                        amhw_hc32_flash_read_waittime  waittime)
+                                       amhw_hc32_flash_read_waittime waittime)
 {
     p_hw_flash->cr = (p_hw_flash->cr & (~(0x3ul << 2))) |
                      ((waittime & 0x3ul) << 2);
@@ -293,10 +293,10 @@ void amhw_hc32_flash_read_waittime_set(amhw_hc32_flash_t            *p_hw_flash,
  * \brief FLASH操作选择
  */
 typedef enum {
-    AMHW_HC32_FLASH_OPT_READ         = 0u,     /**< \brief 读 */
-    AMHW_HC32_FLASH_OPT_WRITE        = 1u ,    /**< \brief 写 */
-    AMHW_HC32_FLASH_OPT_SECTOR_ERASE = 2u,     /**< \brief 页擦除  */
-    AMHW_HC32_FLASH_OPT_CHIP_ERASE   = 3u,     /**< \brief 全片擦除  */
+    AMHW_HC32_FLASH_READ         = 0u,     /**< \brief 读 */
+    AMHW_HC32_FLASH_WRITE        = 1u ,    /**< \brief 写 */
+    AMHW_HC32_FLASH_SECTOR_ERASE = 2u,     /**< \brief 页擦除  */
+    AMHW_HC32_FLASH_CHIP_ERASE   = 3u,     /**< \brief 全片擦除  */
 }amhw_hc32_flash_opt;
 
 /**
@@ -321,6 +321,18 @@ void amhw_hc32_flash_opt_set(amhw_hc32_flash_t   *p_hw_flash,
     p_hw_flash->cr    |= (opt & 0x3ul);
 }
 
+/**
+ * \brief 获取OP FLASH操作选择
+ *
+ * \param[in] p_hw_flash  : 指向FLASH结构体的指针
+ *
+ * return amhw_hc32_flash_read_waittime枚举类型中的一个
+ */
+am_static_inline
+uint8_t amhw_hc32_flash_opt_get(amhw_hc32_flash_t   *p_hw_flash)
+{
+    return (p_hw_flash->cr & 0x3ul);
+}
 
 /* 擦写被保护地址中断 */
 #define AMHW_HC32_FLASH_INT_ERASE_P     (0x1ul << 6)
@@ -335,15 +347,15 @@ void amhw_hc32_flash_opt_set(amhw_hc32_flash_t   *p_hw_flash,
  * \brief IE FLASH中断禁能
  *
  * \param[in] p_hw_flash  : 指向FLASH结构体的指针
- * \param[in] type        : 中断类型       AMHW_HC32_FLASH_INT_ERASE_P   或
- *                                  AMHW_HC32_FLASH_INT_ERASE_PC  或
- *                                  AMHW_HC32_FLASH_INT_ALL
+ * \param[in] type        : 中断类型 AMHW_HC32_FLASH_INT_ERASE_P   或
+ *                                   AMHW_HC32_FLASH_INT_ERASE_PC  或
+ *                                   AMHW_HC32_FLASH_INT_ALL
  *
  * return none
  */
 am_static_inline
 void amhw_hc32_flash_int_disable(amhw_hc32_flash_t *p_hw_flash,
-                                   uint32_t             type)
+                                 uint32_t           type)
 {
     p_hw_flash->cr &= ~type;
 }
@@ -352,15 +364,15 @@ void amhw_hc32_flash_int_disable(amhw_hc32_flash_t *p_hw_flash,
  * \brief IE FLASH中断使能
  *
  * \param[in] p_hw_flash  : 指向FLASH结构体的指针
- * \param[in] type        : 中断类型       AMHW_HC32_FLASH_INT_ERASE_P   或
- *                                  AMHW_HC32_FLASH_INT_ERASE_PC  或
- *                                  AMHW_HC32_FLASH_INT_ALL
+ * \param[in] type        : 中断类型 AMHW_HC32_FLASH_INT_ERASE_P   或
+ *                                   AMHW_HC32_FLASH_INT_ERASE_PC  或
+ *                                   AMHW_HC32_FLASH_INT_ALL
  *
  * return none
  */
 am_static_inline
 void amhw_hc32_flash_int_enable(amhw_hc32_flash_t *p_hw_flash,
-                                  uint32_t             type)
+                                uint32_t           type)
 {
     p_hw_flash->cr |= type;
 }
@@ -372,21 +384,21 @@ void amhw_hc32_flash_int_enable(amhw_hc32_flash_t *p_hw_flash,
 #define AMHW_HC32_FLASH_INT_ERASE_PC_FLAG    (0x1ul << 0)
 
 /* 所有中断标志位 */
-#define AMHW_HC32_FLASH_INT_ALL_FLAG    (0x3ul << 0)
+#define AMHW_HC32_FLASH_INT_ALL_FLAG         (0x3ul << 0)
 
 /**
  * \brief IF FLASH中断标志获取
  *
  * \param[in] p_hw_flash  : 指向FLASH结构体的指针
- * \param[in] flag        : 中断标志       AMHW_HC32_FLASH_INT_ERASE_P_FLAG   或
- *                                  AMHW_HC32_FLASH_INT_ERASE_PC_FLAG
+ * \param[in] flag        : 中断标志 AMHW_HC32_FLASH_INT_ERASE_P_FLAG   或
+ *                                   AMHW_HC32_FLASH_INT_ERASE_PC_FLAG
  *
  * return AM_TRUE :  有效
  *        AM_FALSE:  无效
  */
 am_static_inline
 am_bool_t amhw_hc32_flash_int_flag_check(amhw_hc32_flash_t *p_hw_flash,
-                                           uint32_t             flag)
+                                         uint32_t           flag)
 {
 
     return (p_hw_flash->ifr & flag) ? AM_TRUE : AM_FALSE;
@@ -396,14 +408,14 @@ am_bool_t amhw_hc32_flash_int_flag_check(amhw_hc32_flash_t *p_hw_flash,
  * \brief ICLR FLASH中断标志清除
  *
  * \param[in] p_hw_flash  : 指向FLASH结构体的指针
- * \param[in] flag        : 中断标志       AMHW_HC32_FLASH_INT_ERASE_P_FLAG   或
- *                                  AMHW_HC32_FLASH_INT_ERASE_PC_FLAG
+ * \param[in] flag        : 中断标志 AMHW_HC32_FLASH_INT_ERASE_P_FLAG   或
+ *                                   AMHW_HC32_FLASH_INT_ERASE_PC_FLAG
  *
  * return none
  */
 am_static_inline
 void amhw_hc32_flash_int_flag_clr(amhw_hc32_flash_t *p_hw_flash,
-                                    uint32_t             flag)
+                                  uint32_t           flag)
 {
     p_hw_flash->iclr &= ~flag;
 }
@@ -422,76 +434,10 @@ void amhw_hc32_flash_int_flag_clr(amhw_hc32_flash_t *p_hw_flash,
  */
 am_static_inline
 void amhw_hc32_flash_key_set (amhw_hc32_flash_t *p_hw_flash,
-                                uint16_t             value)
+                              uint16_t           value)
 {
     p_hw_flash->bypass = value;
 }
-
-/**
- * \brief SLOCK0、1、2、3  擦写保护寄存器--允许擦写
- *
- * \param[in] p_hw_flash  : 指向FLASH结构体的指针
- * \param[in] value       : 某一扇区（0~127）
- *
- * \note 总共有4个擦写保护寄存器（SLOCK0、1、2、3），每个寄存器的每一位对应一个扇区（2K），
- *       一个扇区包含4个Sector，每个Sector共512字节。下面对SLOCK0寄存器进行描述：
- *            Bit[0]   对应： Sector0-1-2-3          扇区0
- *            Bit [1]  对应： Sector4-5-6-7          扇区1
- *            Bit [2]  对应： Sector8-9-10-11        扇区2
- *            Bit [3]  对应： Sector12-13-14-15      扇区3
- *            ……
- *            Bit [31] 对应： Sector124-125-126-127  扇区31
- *
- * return none
- */
-am_static_inline
-void amhw_hc32_flash_erase_enable (amhw_hc32_flash_t *p_hw_flash,
-                                   uint16_t             data)
-{
-    if(data < 32) {
-        p_hw_flash->slock0 |= (0x1ul << data);
-    } else if(data < 64) {
-        p_hw_flash->slock1 |= (0x1ul << (data - 32));
-    } else if(data < 96) {
-        p_hw_flash->slock2 |= (0x1ul << (data - 64));
-    } else if(data < 128) {
-        p_hw_flash->slock3 |= (0x1ul << (data - 96));
-    }
-}
-
-/**
- * \brief SLOCK0、1、2、3  擦写保护寄存器--不允许擦写
- *
- * \param[in] p_hw_flash  : 指向FLASH结构体的指针
- * \param[in] value       : 某一扇区（0~127）
- *
- * \note 总共有4个擦写保护寄存器（SLOCK0、1、2、3），每个寄存器的每一位对应一个扇区（2K），
- *       一个扇区包含4个Sector，每个Sector共512字节。下面对SLOCK0寄存器进行描述：
- *            Bit[0]   对应： Sector0-1-2-3          扇区0
- *            Bit [1]  对应： Sector4-5-6-7          扇区1
- *            Bit [2]  对应： Sector8-9-10-11        扇区2
- *            Bit [3]  对应： Sector12-13-14-15      扇区3
- *            ……
- *            Bit [31] 对应： Sector124-125-126-127  扇区31
- *
- * return none
- */
-am_static_inline
-void amhw_hc32_flash_erase_disable (amhw_hc32_flash_t *p_hw_flash,
-                                      uint16_t             data)
-{
-    if(data < 32) {
-        p_hw_flash->slock0 &= ~(0x1ul << data);
-    } else if(data < 64) {
-        p_hw_flash->slock1 &= ~(0x1ul << (data - 32));
-    } else if(data < 96) {
-        p_hw_flash->slock2 &= ~(0x1ul << (data - 64));
-    } else if(data < 128) {
-        p_hw_flash->slock3 &= ~(0x1ul << (data - 96));
-    }
-}
-
-
 
 /**
  * \brief 使用匿名联合体段结束

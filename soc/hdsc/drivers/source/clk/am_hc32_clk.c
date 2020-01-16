@@ -531,14 +531,14 @@ int am_hc32_clk_init (am_hc32_clk_dev_t           *p_dev,
     p_dev->sys_type = p_devinfo->sysclk_src;
 
     if((p_dev->sys_clk) > 24000000) {
-        am_hc32_flash_waitcycle(AMHW_HC32_FLASH_READ_WAITTIME_2);
+        am_hc32_flash_waitcycle(HC32_FLASH, AMHW_HC32_FLASH_READ_WAITTIME_2);
     }
 
     __rcc_unlock();
     amhw_hc32_rcc_sys_clk_set(p_devinfo->sysclk_src);
 
     if((p_dev->sys_clk) <= 24000000) {
-            am_hc32_flash_waitcycle( AMHW_HC32_FLASH_READ_WAITTIME_1);
+        am_hc32_flash_waitcycle(HC32_FLASH, AMHW_HC32_FLASH_READ_WAITTIME_1);
     }
 
     __rcc_unlock();
@@ -552,9 +552,7 @@ int am_hc32_clk_init (am_hc32_clk_dev_t           *p_dev,
 
     hclk_unit = p_dev->hclk / 4000000;
 
-    //am_clk_enable(CLK_FLASH);
-
-	am_hc32_flash_init(hclk_unit, AM_TRUE);
+	am_hc32_flash_init(HC32_FLASH, hclk_unit, AM_TRUE);
 
     return AM_OK;
 }
