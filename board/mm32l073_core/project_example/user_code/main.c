@@ -116,6 +116,7 @@ int am_main (void)
 //    demo_mm32l073_core_microport_flash_mtd_entry();
 //    demo_mm32l073_core_microport_rs485_entry();
 //    demo_mm32l073_core_microport_rtc_entry();
+//    demo_mm32l073_core_microport_hmi_int_entry();
 //    demo_mm32l073_core_microport_rx8025t_entry();
 //    demo_mm32l073_core_microport_usb_entry();
 //    demo_mm32l073_core_miniport_digitron_entry();
@@ -134,6 +135,19 @@ int am_main (void)
 //    demo_mm32l073_core_dr_fm175xx_picca_write_block();
 //    demo_mm32l073_core_dr_fm175xx_piccb_read_id();
 //    demo_mm32l073_core_dr_fm175xx_picca_lpcd_read_id();
+//    demo_mm32l073_zsn603_led_test_entry();
+//    demo_mm32l073_zsn603_picca_test_entry();
+//    demo_mm32l073_zsn603_piccb_test_entry();
+//    demo_mm32l073_zsn603_auto_detect_test_entry();
+//    demo_mm32l073_core_sensor_fxos8700cq_entry();
+//    demo_mm32l073_core_sensor_fxos8700cq_int_entry();
+//    demo_mm32l073_core_sensor_mpl3115a2_entry();
+//    demo_mm32l073_core_sensor_mpl3115a2_int_entry();
+//    demo_mm32l073_core_sensor_mag3110_entry();
+//    demo_mm32l073_core_sensor_mag3110_int_entry();
+//    demo_mm32l073_core_mk100_test_entry();
+//    demo_mm32l073_core_gs200_set_baudrate_entry();
+//    demo_mm32l073_core_rs200_test_entry();
     while (1) {
     }
 }
