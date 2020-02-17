@@ -531,14 +531,16 @@ int am_zlg118_clk_init (am_zlg118_clk_dev_t           *p_dev,
     p_dev->sys_type = p_devinfo->sysclk_src;
 
     if((p_dev->sys_clk) > 24000000) {
-        am_zlg118_flash_waitcycle(AMHW_ZLG118_FLASH_READ_WAITTIME_2);
+        am_zlg118_flash_waitcycle(ZLG118_FLASH,
+                                  AMHW_ZLG118_FLASH_READ_WAITTIME_2);
     }
 
     __rcc_unlock();
     amhw_zlg118_rcc_sys_clk_set(p_devinfo->sysclk_src);
 
     if((p_dev->sys_clk) <= 24000000) {
-            am_zlg118_flash_waitcycle( AMHW_ZLG118_FLASH_READ_WAITTIME_1);
+            am_zlg118_flash_waitcycle(ZLG118_FLASH,
+                                      AMHW_ZLG118_FLASH_READ_WAITTIME_1);
     }
 
     __rcc_unlock();
@@ -554,7 +556,7 @@ int am_zlg118_clk_init (am_zlg118_clk_dev_t           *p_dev,
 
     am_clk_enable(CLK_FLASH);
 
-    am_zlg118_flash_init(hclk_unit, AM_TRUE);
+    am_zlg118_flash_init(ZLG118_FLASH, hclk_unit, AM_TRUE);
 
     return AM_OK;
 }

@@ -17,7 +17,7 @@
  * - 实验现象：
  *   1. 擦除出错：串口打印 "erase error!"；
  *   2. 写入出错：串口打印 "program error!"；
- *   3. 写入成功：串口打印指定扇区的(1024 / 4)个 32bit 十六进制数据。
+ *   3. 写入成功：串口打印指定扇区的(SECTOR_SIZE)个 32bit 十六进制数据。
  *
  * \par 源代码
  * \snippet demo_zlg118_drv_flash.c src_zlg118_drv_flash
@@ -48,16 +48,13 @@ void demo_zlg118_drv_flash_entry (void *p_hw_flash, uint16_t sector)
 
     int             i;
     uint32_t        status;         /* FLASH 命令执行状态 */
-    static uint32_t data[1024 / 4]; /* 要写入 FLASH 的数据 */
-    static uint32_t temp[1024 / 4]; /* 从 FLASH 中读出的数据 */
+    static uint32_t data[SECTOR_SIZE]; /* 要写入 FLASH 的数据 */
+    static uint32_t temp[SECTOR_SIZE]; /* 从 FLASH 中读出的数据 */
 
     /* 数据初始化 */
-    for (i = 0; i < 1024 / 4; i++) {
+    for (i = 0; i < SECTOR_SIZE; i++) {
         data[i] = i;
     }
-
-    /* FLASH 初始化 */
-    am_zlg118_flash_init(48000000/4000000, AM_TRUE);
 
     /* 擦除扇区 */
     status = am_zlg118_flash_sector_erase(p_flash, sector << 9);
@@ -73,17 +70,17 @@ void demo_zlg118_drv_flash_entry (void *p_hw_flash, uint16_t sector)
     status = am_zlg118_flash_sector_program(p_flash,
                                             sector << 9,
                                             data,
-                                            1024 / 4);
+                                            SECTOR_SIZE);
 
     /* 扇区写入出错，程序停在此处 */
-    if ((1024 / 4) != status) {
+    if ((SECTOR_SIZE) != status) {
         AM_DBG_INFO("program error!\r\n");
 
         AM_FOREVER;
     }
 
     /* 从扇区读取数据 */
-    for (i = 0; i < 1024 / 4; i++) {
+    for (i = 0; i < SECTOR_SIZE; i++) {
         temp[i] = *(uint32_t *)((i * 4) + (sector << 9));
 
         /* 校验数据，校验失败，程序停在此处 */
@@ -93,7 +90,7 @@ void demo_zlg118_drv_flash_entry (void *p_hw_flash, uint16_t sector)
         }
     }
 
-    for (i = 0; i < 1024 / 4; i++) {
+    for (i = 0; i < SECTOR_SIZE; i++) {
         AM_DBG_INFO("%04d  ", temp[i]);
     }
     AM_DBG_INFO("\r\nflash test success!\r\n");
