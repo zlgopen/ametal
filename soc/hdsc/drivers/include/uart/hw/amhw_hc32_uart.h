@@ -472,7 +472,7 @@ uint8_t amhw_hc32_uart_slaver_addr_mask_get (amhw_hc32_uart_t *p_hw_uart)
 #define AMHW_HC32_UART_FLAG_FRAME_ERR    (1ul << 2)   /* 帧错误标志位,软件清0 */
 #define AMHW_HC32_UART_FLAG_TX_COMPLETE  (1ul << 1)   /* 发送完成标志位,软件清0 */
 #define AMHW_HC32_UART_FLAG_RX_COMPLETE  (1ul << 0)   /* 接收完成标志位,软件清0 */
-
+#define AMHW_HC32_UART_FLAG_ALL          (0x7f)       /* 所有标志清零 */
 /**
  * \brief UART 标志获取
  *

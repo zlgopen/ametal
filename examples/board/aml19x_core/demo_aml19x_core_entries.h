@@ -42,6 +42,11 @@ void demo_hc32l19x_core_hw_multichan_adc_entry (void);
 void demo_hc32l19x_core_std_adc_entry (void);
 
 /**
+ * \brief ADC 内部温度传感器例程，通过标准接口实现
+ */
+void demo_hc32l19x_core_std_adc_its_entry (void);
+
+/**
  * \brief 多通道ADC 例程，通过标准接口实现
  */
 void demo_hc32l19x_core_std_multichan_adc_entry (void);
@@ -105,6 +110,16 @@ void demo_hc32l19x_core_std_gpio_entry (void);
  * \brief GPIO 引脚中断例程，通过标准接口实现
  */
 void demo_hc32l19x_core_std_gpio_trigger_entry (void);
+
+/**
+ * \brief I2C 从机例程(此例程可以用来模拟 EEPROM)，通过 HW 层接口实现
+ */
+void demo_hc32l19x_core_hw_i2c_slave_int_entry (void);
+
+/**
+ * \brief I2C 主机访问 EEPROM 例程，通过 HW 层接口实现
+ */
+void demo_hc32l19x_core_hw_i2c_master_poll_entry (void);
 
 /**
  * \brief I2C 从机例程(此例程可以用来模拟 EEPROM)，通过标准接口实现
@@ -581,14 +596,12 @@ void demo_hc32l19x_core_kft_bootloader_entry (void);
 void demo_hc32l19x_core_kft_application_entry (void);
 
 /**
-
- * \brief 双区bootloader的测试应用程序例程
+ * \brief uart 双区bootloader的测试应用程序例程
  */
 
 void demo_hc32l19x_core_double_application_entry (void);
 
 /**
-
  * \brief 单区bootloader的测试应用程序例程
  */
 
@@ -643,3 +656,29 @@ void demo_hc32l19x_core_hw_trng_generate_entry (void);
  * \brief LCD显示例程，通过 HW 层接口实现
  */
 void demo_hc32l19x_core_hw_lcd_entry (void);
+
+/**
+ * \brief PCA 8bit PWM例程,通过驱动层实现
+ */
+void demo_hc32l19x_core_drv_pca_8bit_pwm_entry (void);
+
+/**
+ * \brief  PCA 16bit PWM例程,通过驱动层实现
+ */
+void demo_hc32l19x_core_drv_pca_16bit_pwm_entry (void);
+
+/**
+ * \brief PCNT单通道计数例程,通过驱动层实现
+ */
+void demo_hc32l19x_core_drv_pcnt_single_entry (void);
+
+/**
+ * \brief PCNT 双通道正交脉冲计数例程,通过驱动层实现
+ */
+void demo_hc32l19x_core_drv_pcnt_double_entry (void);
+
+/**
+ * \brief PCNT 双通道非交脉冲计数例程,通过驱动层实现
+ */
+void demo_hc32l19x_core_drv_pcnt_special_entry (void);
+

@@ -41,6 +41,7 @@
 #include "ametal.h"
 #include "am_vdebug.h"
 #include "am_gpio.h"
+#include "am_clk.h"
 #include "am_hc32.h"
 #include "hw/amhw_hc32_rcc.h"
 #include "am_hc32l19x_inst_init.h"
@@ -52,7 +53,7 @@
  */
 void demo_hc32l19x_core_hw_clk_entry (void)
 {
-    am_clk_id_t clk_id[] = {CLK_HCLK, CLK_PCLK};
+    int clk_id[] = {CLK_HCLK, CLK_PCLK};
 
     AM_DBG_INFO("demo aml19x_core hw clk!\r\n");
 

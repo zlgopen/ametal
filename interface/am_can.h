@@ -17,6 +17,7 @@
  * \internal
  * \par Modification history
  * - 1.00 15-06-02  anu, first implementation.
+ * - 1.01 19-12-18  zc , add filter table extern api
  * \endinternal
  */
  
@@ -154,6 +155,30 @@ typedef uint8_t am_can_mode_type_t;             /**< \brief CAN模式类型  */
 #define AM_CAN_MODE_NROMAL				0x00	/**< \brief 正常工作模式 */
 #define AM_CAN_MODE_LISTEN_ONLY		    0x01	/**< \brief 只听工作模式 */
 
+
+/**
+ * \name CAN帧类型
+ * \anchor grp_am_can_frame_type
+ * @{
+ */
+typedef uint8_t am_can_frame_type_t;             /**< \brief CAN帧类型  */
+#define AM_CAN_FRAME_TYPE_STD            0x01    /**< \brief 标准帧  */
+#define AM_CAN_FRAME_TYPE_EXT            0x02    /**< \brief 扩展帧  */
+
+/**
+ * \name CAN帧格式
+ * \anchor grp——am_can_frame_format_t
+ * @{
+ */
+
+typedef uint8_t am_can_frame_format_t;             /**< \brief CAN帧类型  */
+#define AM_CAN_FRAME_FORMAT_NOCARE       0x00    /**< \brief 数据帧和远程帧都可接收  */
+#define AM_CAN_FRAME_FORMAT_DATA         0x01    /**< \brief 数据帧  */
+#define AM_CAN_FRAME_FORMAT_REMOTE       0x02    /**< \brief 远程帧  */
+
+
+
+
 /** @} */
 
 /** \brief 错误计数 */
@@ -170,6 +195,16 @@ typedef struct am_can_bps_param {
 	uint8_t     smp;                            /**< \brief smp 采样模式            */
 	uint16_t    brp;                            /**< \brief brp 分频值                 */
 } am_can_bps_param_t;
+
+/** \brief 滤波表配置 */
+typedef struct am_can_filter {
+    am_can_frame_type_t   ide;                     /**< \brief 滤波器帧类型   */
+    am_can_frame_format_t rtr;                     /**< \brief 滤波器帧格式   */
+
+    uint32_t id[4];                                /**< \brief ID验收码    */
+    uint32_t mask[4];                              /**< \brief ID掩码    */
+
+} am_can_filter_t;
 
 /**
  * \brief CAN reconfigure information .
@@ -232,7 +267,6 @@ struct am_can_drv_funcs {
 	am_can_err_t (*pfn_can_filter_tab_set)(void    *p_drv,
 	                                       uint8_t *p_filterbuff,
 	                                       size_t   lenth);
-
     /** \brief 获取滤波函数*/
 	am_can_err_t (*pfn_can_filter_tab_get)(void    *p_drv,
 	                                       uint8_t *p_filterbuff,
@@ -261,6 +295,16 @@ struct am_can_drv_funcs {
     /** \brief 删除中断回调函数的连接 */
     am_can_err_t (*pfn_can_intcb_disconnect)(void              *p_drv,
     										 am_can_int_type_t  inttype);
+
+    /** \brief 设置滤波函数(扩展) */
+    am_can_err_t (*pfn_can_filter_tab_ext_set)(void            *p_drv,
+                                               am_can_filter_t *p_filterbuff,
+                                               size_t           lenth);
+
+    /** \brief 获取滤波函数(扩展)*/
+    am_can_err_t (*pfn_can_filter_tab_ext_get)(void             *p_drv,
+                                               am_can_filter_t  *p_filterbuff,
+                                               size_t           *p_lenth);
 };
 
 /**
@@ -508,6 +552,26 @@ am_can_err_t am_can_filter_tab_set (am_can_handle_t  handle,
 }
 
 /**
+ * \brief CAN 设置滤波(扩展)
+ *
+ * \param[in] handle  : CAN 标准服务 handle.
+ * \param[in] p_filterbuff : 滤波表 详见 am_can_filter_t
+ * \param[in] lenth        : 传输的am_can_filter_t的个数
+ *
+ * \retval  AM_CAN_NOERROR            :  成功.
+ * \retval  -AM_CAN_INVALID_PARAMETER : 参数错误
+ */
+am_static_inline
+am_can_err_t am_can_filter_tab_ext_set (am_can_handle_t  handle,
+                                        am_can_filter_t *p_filterbuff,
+                                        size_t           lenth)
+{
+    return handle->p_drv_funcs->pfn_can_filter_tab_ext_set(handle->p_drv,
+                                                           p_filterbuff,
+                                                           lenth);
+}
+
+/**
  * \brief CAN 获取滤波表设置
  *
  * \param[in]  handle          : CAN 标准服务 handle.
@@ -525,6 +589,26 @@ am_can_err_t am_can_filter_tab_get (am_can_handle_t  handle,
     return handle->p_drv_funcs->pfn_can_filter_tab_get(handle->p_drv,
                                                        p_filterbuff,
                                                        p_lenth);
+}
+
+/**
+ * \brief CAN 获取滤波表设置(扩展)
+ *
+ * \param[in]  handle          : CAN 标准服务 handle.
+ * \param[out] p_filterbuff    : 滤波表 详见 am_can_filter_t
+ * \param[out] p_lenth         : 设置的am_can_filter_t个数
+ *
+ * \retval  AM_CAN_NOERROR            :  成功.
+ * \retval  -AM_CAN_INVALID_PARAMETER : 参数错误
+ */
+am_static_inline
+am_can_err_t am_can_filter_tab_ext_get (am_can_handle_t  handle,
+                                        am_can_filter_t *p_filterbuff,
+                                         size_t         *p_lenth)
+{
+    return handle->p_drv_funcs->pfn_can_filter_tab_ext_get(handle->p_drv,
+                                                           p_filterbuff,
+                                                           p_lenth);
 }
 
 /**

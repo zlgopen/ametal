@@ -156,17 +156,6 @@
  */
 #define AM_CFG_DEBUG_ENABLE          1
 
-/**
- * \brief 使用的调试串口，默认UART0
- * 0 - UART0; 1 - UART1; 2 - UART2
- */
-#define AM_CFG_DEBUG_UART            0
-
-/**
- * \brief 配置调试串口输出的波特率
- */
-#define AM_CFG_DEBUG_BAUDRATE        115200
-
 /** @} */
 
 /**

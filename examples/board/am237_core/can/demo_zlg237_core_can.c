@@ -88,7 +88,7 @@ void demo_zlg237_core_can_entry (void)
 {
     am_can_bps_param_t  can_btr_baud = {0};
 
-    AM_DBG_INFO("demo zlg237_core std can!\r\n");
+    AM_DBG_INFO("demo zlg237_core  can!\r\n");
 
     __can_auto_cfg_baud(&can_btr_baud, APB1_CLK, CAN_BAUD);
 

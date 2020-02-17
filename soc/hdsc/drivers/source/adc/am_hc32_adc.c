@@ -313,7 +313,7 @@ static int __fn_adc_stop (void *p_drv, int chan)
                             p_dev->p_devinfo->p_ioinfo[chan].dfunc);
         } else {
 
-            /* ADC输入信号放大器使能 */
+            /* ADC输入信号放大器禁能 */
             amhw_hc32_adc_inamplify_disable(p_hw_adc);
 
             if(p_dev->p_devinfo->p_ioinfo[chan].chan_sel ==

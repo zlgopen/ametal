@@ -130,6 +130,7 @@ static void __pfn_mag_z (void *p_arg, uint32_t trigger_src)
                    __fxos8700cq_id[5],
                    (__fxos8700cq_data[5].val)/1000000,
                    (uint32_t)(__fxos8700cq_data[5].val)%1000000);
+        am_kprintf("\r\n");
     }
 }
 

@@ -249,7 +249,7 @@ void demo_zlg_drv_flash_entry (amhw_zlg_flash_t *p_hw_flash, uint8_t sector);
  *
  * \return 无
  */
-void demo_zlg118_drv_flash_entry (void *p_hw_flash, uint8_t sector);
+void demo_zlg118_drv_flash_entry (void *p_hw_flash, uint16_t sector);
 
 /**
  * \brief zlg237 FLASH 例程，通过驱动层接口实现
@@ -337,6 +337,27 @@ void demo_zlg_hw_i2c_master_poll_entry (amhw_zlg_i2c_t *p_hw_i2c,
  */
 void demo_zlg_hw_i2c_slave_poll_entry (amhw_zlg_i2c_t *p_hw_i2c);
 
+/**
+ * \brief I2C 轮询模式下操作 EEPROM 例程，通过 HW 层接口实现
+ *
+ * \param[in] p_hw_i2c 指向 I2C 外设寄存器块的指针
+ * \param[in] clk_rate I2C 时钟源频率
+ *
+ * \return 无
+ */
+void demo_zlg118_hw_i2c_master_poll_entry (void        *p_hw_i2c,
+                                           uint32_t     clk_rate);
+
+/**
+ * \brief I2C 从机例程(此例程可以用来模拟 EEPROM)，通过 HW 层接口实现
+ *
+ * \param[in] p_hw_i2c 指向 I2C 外设寄存器块的指针
+ * \param[in] inum_num I2C中断号
+ *
+ * \return 无
+ */
+void demo_zlg118_hw_i2c_slave_int_entry (void  *p_hw_i2c,
+                                         int    inum_num);
 
 /**
  * \brief I2C 轮询模式下操作 EEPROM 例程，通过 HW 层接口实现
@@ -1081,8 +1102,9 @@ void demo_zml166_adc_vol_para_adjuet_entry(void                   *p_handle,
 void demo_zlg237_can_int_entry (am_can_handle_t     can_handle,
                                 am_can_bps_param_t *can_btr_baud,
                                 am_can_int_type_t   int_type,
-                                uint8_t            *p_filterbuff,
+                                am_can_filter_t    *p_filterbuff,
                                 size_t              lenth);
+
 /**
  * \brief 例程入口
  */

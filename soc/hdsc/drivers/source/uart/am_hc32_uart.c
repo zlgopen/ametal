@@ -204,13 +204,20 @@ int __uart_tx_startup (void *p_drv)
     while (amhw_hc32_uart_flag_check(
                p_hw_uart, AMHW_HC32_UART_FLAG_TX_EMPTY) == AM_FALSE);
 
-    /* 获取发送数据并发送 */
-    if ((p_dev->pfn_txchar_get(p_dev->txget_arg, &data)) == AM_OK) {
-        amhw_hc32_uart_data_write(p_hw_uart, data);
-    }
+    /* 中断发送状态 */
+    if (p_hw_uart->scon  & AMHW_HC32_UART_INT_TX_COMPLETE) {
 
-    /* 使能发送完成中断 */
-    amhw_hc32_uart_int_enable(p_hw_uart, AMHW_HC32_UART_INT_TX_COMPLETE);
+    } else {
+
+        /* 获取发送数据并发送 */
+        if ((p_dev->pfn_txchar_get(p_dev->txget_arg, &data)) == AM_OK) {
+
+            amhw_hc32_uart_data_write(p_hw_uart, data);
+
+            /* 使能发送完成中断 */
+            amhw_hc32_uart_int_enable(p_hw_uart, AMHW_HC32_UART_INT_TX_COMPLETE);            
+        }
+    }
 
     return AM_OK;
 }

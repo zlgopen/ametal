@@ -18,6 +18,7 @@
  * \internal
  * \par Modification history
  * - 1.00 17-09-05  zcb, first implementation.
+ * - 1.01 19-12-18  zc , add filter table extern api
  * \endinternal
  */
 
@@ -84,6 +85,15 @@ am_can_err_t __can_intcb_connect (void              *p_drv,
 /** \brief 删除中断回调函数的连接 */
 am_can_err_t __can_intcb_disconnect (void *p_drv, am_can_int_type_t  inttype);
 
+/** \brief 设置滤波函数(扩展) */
+am_can_err_t __can_filter_tab_ext_set (void             *p_drv,
+                                       am_can_filter_t  *p_filterbuff,
+                                       size_t            lenth);
+
+/** \brief 获取滤波函数(扩展) */
+am_can_err_t __can_filter_tab_ext_get (void             *p_drv,
+                                       am_can_filter_t  *p_filterbuff,
+                                       size_t           *p_lenth);
 struct am_can_drv_funcs dev_func = {
     __can_start,
     __can_reset,
@@ -105,7 +115,9 @@ struct am_can_drv_funcs dev_func = {
     __can_connect,
     __can_disconnect,
     __can_intcb_connect,
-    __can_intcb_disconnect
+    __can_intcb_disconnect,
+    __can_filter_tab_ext_set,
+    __can_filter_tab_ext_get
 };
 
 
@@ -900,6 +912,117 @@ am_can_err_t __can_filter_tab_set (void    *p_drv,
 }
 
 /**
+ * \brief 设置滤波函数(扩展) 只有一组滤波器 不支持扩展和标准的屏蔽位
+ */
+am_can_err_t __can_filter_tab_ext_set (void             *p_drv,
+                                       am_can_filter_t  *p_filterbuff,
+                                       size_t            lenth)
+{
+    am_zmf159_can_dev_t    *p_dev     = (am_zmf159_can_dev_t *)p_drv;
+    amhw_zmf159_can_t      *p_hw_can  = NULL;
+    amhw_zmf159_can_mode_t  mode      = p_dev->mode;
+    uint32_t                id        = 0;
+    uint32_t                id_mask   = 0;
+
+    /* 只能设置一组滤波器 */
+    if (NULL == p_drv || NULL == p_filterbuff || 0 == lenth || lenth > 1) {
+        return AM_CAN_INVALID_PARAMETER;
+    }
+
+    p_hw_can = (amhw_zmf159_can_t *)p_dev->p_devinfo->regbase;
+
+    /* 滤波设置只能在复位模式下进行 */
+    if (AMHW_ZMF159_CAN_MODE_RESET != p_dev->mode) {
+
+        amhw_zmf159_can_mode_set(p_hw_can,
+                                   p_dev->p_devinfo->type,
+                                   &(p_dev->mode),
+                                   AMHW_ZMF159_CAN_MODE_RESET);
+    }
+
+    if (AMHW_ZMF159_CAN_BASIC_CAN == p_dev->p_devinfo->type) {
+
+        if ((p_filterbuff->id[0] > 0x7ff) ||
+            (p_filterbuff->mask[0] > 0x7ff) ||
+            (p_filterbuff->ide != AM_CAN_FRAME_TYPE_STD) ||
+            (p_filterbuff->rtr != AM_CAN_FRAME_FORMAT_NOCARE)) {
+
+            /* basic_can下只能设置标准帧 */
+            return AM_CAN_ILLEGAL_DATA_LENGTH;
+        }
+
+        /* 此模式下mask和id的低三位设置无效 */
+        amhw_zmf159_basic_can_ac_set(
+                p_hw_can, (uint8_t)(p_filterbuff->id[0] & 0x7f8) >> 3);
+        amhw_zmf159_basic_can_am_set(
+                p_hw_can, (uint8_t)(((~p_filterbuff->mask[0]) & 0x7f8) >> 3));
+
+        return AM_CAN_NOERROR;
+    }
+
+    /* peli can */
+
+    amhw_zmf159_peli_filter_mod_set(p_hw_can, AMHW_ZMF159_CAN_PELI_SINGLE_FILTER);
+
+    /* 根据掩码长度来决定掩码是设置标准帧 还是扩展帧 */
+    if (p_filterbuff->ide == AM_CAN_FRAME_TYPE_STD) {
+        /* 标准帧 */
+        if ((p_filterbuff->id[0] > 0x7ff) ||
+            (p_filterbuff->mask[0] > 0x7ff) ) {
+
+            return AM_CAN_ILLEGAL_DATA_LENGTH;
+        }
+        if (p_filterbuff->rtr == AM_CAN_FRAME_FORMAT_DATA) {
+            id = ((p_filterbuff->id[0] & 0x7ff) << 21);
+            id_mask = (((~p_filterbuff->mask[0]) & 0x7ff) << 21) | 0x000fffff;
+        } else if (p_filterbuff->rtr == AM_CAN_FRAME_FORMAT_REMOTE) {
+            id = ((p_filterbuff->id[0] & 0x7ff) << 21) | 0x00100000;
+            id_mask = (((~p_filterbuff->mask[0]) & 0x7ff) << 21) | 0x000fffff;
+        } else if (p_filterbuff->rtr == AM_CAN_FRAME_FORMAT_NOCARE) {
+            id = ((p_filterbuff->id[0] & 0x7ff) << 21);
+            id_mask = (((~p_filterbuff->mask[0]) & 0x7ff) << 21) | 0x001fffff;
+        } else {
+            /* 无效参数 */
+            return AM_CAN_ILLEGAL_CONFIG;
+        }
+    } else if (p_filterbuff->ide == AM_CAN_FRAME_TYPE_EXT) {
+        /* 扩展帧 */
+        if ((p_filterbuff->id[0] > 0x1fffffff) ||
+            (p_filterbuff->mask[0] > 0x1fffffff) ) {
+
+            return AM_CAN_ILLEGAL_DATA_LENGTH;
+        }
+        if (p_filterbuff->rtr == AM_CAN_FRAME_FORMAT_DATA) {
+            id =((p_filterbuff->id[0] & 0x1fffffff) << 3);
+            id_mask = (((~p_filterbuff->mask[0]) & 0x1fffffff) << 3) | 0x03;
+        } else if (p_filterbuff->rtr == AM_CAN_FRAME_FORMAT_REMOTE) {
+            id = ((p_filterbuff->id[0] & 0x1fffffff) << 3) | 0x04;
+            id_mask = (((~p_filterbuff->mask[0]) & 0x1fffffff) << 3) | 0x03;
+        } else if (p_filterbuff->rtr == AM_CAN_FRAME_FORMAT_NOCARE) {
+            id = ((p_filterbuff->id[0] & 0x1fffffff) << 3);
+            id_mask = (((~p_filterbuff->mask[0]) & 0x1fffffff) <<3) | 0x07;
+        } else {
+            return AM_CAN_ILLEGAL_CONFIG;
+        }
+
+    } else {
+        return AM_CAN_ILLEGAL_CONFIG;
+    }
+    amhw_zmf159_peli_can_ac_set(p_hw_can,id);
+    amhw_zmf159_peli_can_am_set(p_hw_can,id_mask);
+
+    if (mode != AMHW_ZMF159_CAN_MODE_RESET) {
+        /* 切换回正常模式 */
+        amhw_zmf159_can_mode_set(p_hw_can,
+                                   p_dev->p_devinfo->type,
+                                   &(p_dev->mode),
+                                   mode);
+    }
+
+    return AM_CAN_NOERROR;
+}
+
+/**
  * \brief 获取滤波函数
  */
 am_can_err_t __can_filter_tab_get (void    *p_drv,
@@ -941,6 +1064,91 @@ am_can_err_t __can_filter_tab_get (void    *p_drv,
     filter[1] = amhw_zmf159_peli_can_am_get(p_hw_can);
 
     *p_lenth = 8;
+
+    if (mode != AMHW_ZMF159_CAN_MODE_RESET) {
+        /* 切换回正常模式 */
+        amhw_zmf159_can_mode_set(p_hw_can,
+                                   p_dev->p_devinfo->type,
+                                   &(p_dev->mode),
+                                   mode);
+    }
+
+    return AM_CAN_NOERROR;
+}
+
+/**
+ * \brief 获取滤波函数(扩展) 由于无法判别具体是扩展还是标准帧
+ *  采用标准帧和扩展帧分别解析
+ */
+
+am_can_err_t __can_filter_tab_ext_get (void             *p_drv,
+                                       am_can_filter_t  *p_filterbuff,
+                                       size_t           *p_lenth)
+{
+    am_zmf159_can_dev_t    *p_dev     = (am_zmf159_can_dev_t *)p_drv;
+    amhw_zmf159_can_t      *p_hw_can  = NULL;
+    amhw_zmf159_can_mode_t  mode      = p_dev->mode;
+    uint32_t                acr_reg   = 0;
+    uint32_t                amr_reg   = 0;
+
+    if (NULL == p_drv || NULL == p_filterbuff || NULL == p_lenth) {
+        return AM_CAN_INVALID_PARAMETER;
+    }
+
+    p_hw_can = (amhw_zmf159_can_t *)p_dev->p_devinfo->regbase;
+
+    /* 滤波设置只能在复位模式下进行 */
+    if (AMHW_ZMF159_CAN_MODE_RESET != p_dev->mode) {
+
+        amhw_zmf159_can_mode_set(p_hw_can,
+                                 p_dev->p_devinfo->type,
+                               &(p_dev->mode),
+                                 AMHW_ZMF159_CAN_MODE_RESET);
+    }
+
+    if (AMHW_ZMF159_CAN_BASIC_CAN == p_dev->p_devinfo->type) {
+
+        acr_reg = amhw_zmf159_basic_can_ac_get(p_hw_can);
+        amr_reg = amhw_zmf159_basic_can_am_get(p_hw_can);
+
+        p_filterbuff->id[0]     = ((acr_reg & 0xff) << 3);
+        p_filterbuff->mask[0]   = (((~amr_reg) & 0xff) << 3);
+        p_filterbuff->ide = AM_CAN_FRAME_TYPE_STD;
+        p_filterbuff->rtr = AM_CAN_FRAME_FORMAT_NOCARE;
+       *p_lenth = 1;
+
+        return AM_CAN_NOERROR;
+    }
+
+    /* peli can */
+
+    acr_reg = amhw_zmf159_peli_can_ac_get(p_hw_can);
+    amr_reg = amhw_zmf159_peli_can_am_get(p_hw_can);
+
+    if (AM_CAN_FRAME_TYPE_STD) {
+        p_filterbuff->id[0]   = acr_reg >> 21;
+        p_filterbuff->mask[0] = ((~amr_reg) >> 21);
+        p_filterbuff->rtr     = ((amr_reg >> 20) & 0x01) ?
+                                 (AM_CAN_FRAME_FORMAT_NOCARE):
+                                 (((acr_reg >> 20) & 0x01 ) ?
+                                         AM_CAN_FRAME_FORMAT_REMOTE:
+                                         AM_CAN_FRAME_FORMAT_DATA);
+        p_filterbuff->ide     = AM_CAN_FRAME_TYPE_STD;
+    }
+
+    if (AM_CAN_FRAME_TYPE_EXT) {
+        p_filterbuff++;
+        p_filterbuff->id[0]   = acr_reg >> 3;
+        p_filterbuff->mask[0] = ((~amr_reg) >> 3);
+        p_filterbuff->rtr     = ((amr_reg >> 2) & 0x01) ?
+                                 (AM_CAN_FRAME_FORMAT_NOCARE):
+                                 (((acr_reg >> 20) & 0x01 ) ?
+                                         AM_CAN_FRAME_FORMAT_REMOTE:
+                                         AM_CAN_FRAME_FORMAT_DATA);
+        p_filterbuff->ide     = AM_CAN_FRAME_TYPE_EXT;
+    }
+
+    *p_lenth = 2;
 
     if (mode != AMHW_ZMF159_CAN_MODE_RESET) {
         /* 切换回正常模式 */

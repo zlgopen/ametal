@@ -452,7 +452,7 @@ uint8_t zsn603_close_icc_interface(zsn603_handle_t      handle);
  *
  * \param[in] handle       : ZSN603设备服务句柄
  * \param[in] isotype      : 协议类型   ZSN603_ICC_ISO_TYPE_A
- *                                 ZSN603_ICC_ISO_TYPE_B
+ *                                      ZSN603_ICC_ISO_TYPE_B
  * \retval 其他 : 对应错误码
  * \retval  0 : 执行成功
  */
@@ -463,7 +463,7 @@ uint8_t zsn603_set_ios_type(zsn603_handle_t  handle,
  *
  * \param[in] handle      : ZSN603设备服务句柄
  * \param[in] key_type    : 密钥类型(1字节):   0x60——密钥A
- *                                        0x61——密钥B
+ *                                             0x61——密钥B
  * \param[in] key_block   :密钥区号(1字节):  取值范围0~15
  * \param[in] p_key       :密钥(6字节或16字节)
  * \param[in] key_length  : 密钥长度     6 /16
@@ -583,7 +583,7 @@ uint8_t zsn603_control_led(zsn603_handle_t    handle,
  * \retval  0 : 执行成功
  */
 uint8_t zsn603_control_buzzer(zsn603_handle_t  handle,
-                              uint8_t           control_byte);
+                              uint8_t          control_byte);
 
 /**
  * \brief  读EEPROM
@@ -624,7 +624,7 @@ uint8_t zsn603_write_eeprom(zsn603_handle_t      handle,
  *
  * \param[in] handle     : ZSN603设备服务句柄
  * \param[in] req_mode   : 请求模式(1字节): 0x26——IDLE模式
- *                                      0x52——ALL模式
+ *                                          0x52——ALL模式
  * \param[out] p_atq     : 返回的atq信息    (2字节)
  *
  * \retval 其他 : 对应错误码
@@ -639,8 +639,8 @@ uint8_t zsn603_mifare_request(zsn603_handle_t   handle,
  *
  * \param[in] handle         : ZSN603设备服务句柄
  * \param[in] anticoll_level : 防碰撞等级(1字节):  0x93——第一级防碰撞
- *                                            0x95——第二级防碰撞
- *                                            0x97——第三级防碰撞
+ *                                                 0x95——第二级防碰撞
+ *                                                 0x97——第三级防碰撞
  * \param[in] p_know_uid     : 序列号(n字节):  (若位计数≠0)
  * \param[in] nbit_cnt       : 位计数(1字节):   已知的序列号的长度n
  * \param[out] p_uid         : 返回的UID（4字节，低字节在先），若UID不完整，则最低字节为级联标志0x88，需要进行更高一级的防碰撞。
@@ -663,8 +663,8 @@ uint8_t zsn603_mifare_anticoll(zsn603_handle_t  handle,
  *
  * \param[in]  handle     : ZSN603设备服务句柄
  * \param[in]  p_info     : 选择代码(1字节)   0x93——第一级防碰撞
- *                                        0x95——第二级防碰撞
- *                                        0x97——第三级防碰撞
+ *                                            0x95——第二级防碰撞
+ *                                            0x97——第三级防碰撞
  * \param[in]  p_uid      : UID(4字节)      前一个防碰撞命令返回的UID
  * \param[out] p_sak      : 返回的信息，若bit2为1，则表明UID不完整
  *
@@ -692,9 +692,8 @@ uint8_t zsn603_mifare_halt(zsn603_handle_t      handle);
  * \brief  该命令用芯片内部已存入的密钥与卡的密钥进行验证,所以使用该命令前,
  *         应事先用“装载IC卡密钥”命令把密钥成功载入芯片内,
  *         另外,需要验证的卡的扇区号不必与芯片内密钥区号相等。
- * \param[in] smcseq     : 安全报文/包号
- * \param[in] p_info     : 密钥类型(1字节)  - 0x60——密钥A
- *                                      - 0x61——密钥B
+ * \param[in] key_type     : 密钥类型(1字节)  - 0x60——密钥A
+ *                                            - 0x61——密钥B
  * \param[in] p_uid      : 卡序列号，4字节
  * \param[in] key_sec    : 密钥区号:0 ~ 7
  * \param[in] nblock     : 需要验证的卡块号，取值范围与卡类型有关，
@@ -720,8 +719,8 @@ uint8_t zsn603_eeprom_auth(zsn603_handle_t  handle,
  *
  * \param[in] handle     : ZSN603设备服务句柄
  * \param[in] key_type   : 密钥类型，可以使用下列值：
- *                          - ZSN603_ICC_ISO_TYPE_A
- *                          - ZSN603_ICC_ISO_TYPE_B
+ *                          - ZSN603_ICC_KEY_TYPE_A
+ *                          - ZSN603_ICC_KEY_TYPE_B
  * \param[in] p_uid      : 卡序列号，4字节
  * \param[in] p_key      : 密钥缓冲区
  * \param[in] key_len    : 密钥的长度，只能为6（6字节密钥）或16（16字节密钥）
@@ -746,11 +745,10 @@ uint8_t zsn603_key_auth(zsn603_handle_t   handle,
  * \brief  该命令对Mifare卡进行读操作,读之前必需成功进行密钥验证。
  *
  * \param[in] handle      : ZSN603设备服务句柄
- * \param[in] smcseq      : 安全报文/包号
  * \param[in] nblock      : 卡块号(1字节) - S50(0~63)
- *                                     - S70(0~255)
- *                                     - PLUS CPU 2K(0~127)
- *                                     - PLUS CPU 4K(0~255)
+ *                                        - S70(0~255)
+ *                                        - PLUS CPU 2K(0~127)
+ *                                        - PLUS CPU 4K(0~255)
  * \param[in]  buffer_len : 输入缓冲区的大小，若缓冲区的大小小于设备信息长度，则只会返回缓冲区大小数据
  * \param[out] p_buf      : 保存读取的块的数据
  *
@@ -767,9 +765,9 @@ uint8_t zsn603_mifare_read(zsn603_handle_t  handle,
  *
  * \param[in] handle     : ZSN603设备服务句柄
  * \param[in] p_info     : 卡块号(1字节)  - S50(0~63)
- *                                       S70(0~255)
- *                                       PLUS CPU 2K(0~127)
- *                                       PLUS CPU 4K(0~255)
+ *                                        - S70(0~255)
+ *                                        - PLUS CPU 2K(0~127)
+ *                                        - PLUS CPU 4K(0~255)
  * \param[in] p_buf      : 待写入的数据(16字节)
  *
  * \retval 其他 : 对应错误码
@@ -797,13 +795,12 @@ uint8_t zsn603_ultralight_write(zsn603_handle_t   handle,
  * \brief  该命令对Mifare卡的值块进行加减操作并写入指定块
  *
  * \param[in] handle     : ZSN603设备服务句柄
- * \param[in] smcseq     : 安全报文/包号
  * \param[in] mode       : 模式(1字节):    0xC0~减
- *                                      0xC1~加
+ *                                         0xC1~加
  * \param[in] nblock     : 卡块号(1字节):  S50(0~63)
- *                                      S70(0~255)
- *                                      PLUS CPU 2K(0~127)
- *                                      PLUS CPU 4K(0~255)
+ *                                         S70(0~255)
+ *                                         PLUS CPU 2K(0~127)
+ *                                         PLUS CPU 4K(0~255)
  * \param[in] value      : 值(4字节有符号数,低字节在先)
  * \param[in] ntransblk  : 传输块号(1字节)
  *
@@ -826,14 +823,14 @@ uint8_t zsn603_mifare_value(zsn603_handle_t   handle,
  * \retval  0 : 执行成功
  */
 uint8_t zsn603_card_reset(zsn603_handle_t  handle,
-                                uint8_t    time_ms);
+                          uint8_t          time_ms);
 
 /**
  * \brief  该命令用于激活卡片,是请求、防碰撞和选择三条命令的组合。
  *
  * \param[in] handle     : ZSN603设备服务句柄
  * \param[in] req_mode   : 请求代码(1字节):  0x26~IDLE
- *                                       0x52~ALL
+ *                                           0x52~ALL
  *
  * \param[out] p_atq     : 返回的atq信息
  * \param[out] p_saq     : 返回的saq信息
@@ -854,35 +851,34 @@ uint8_t zsn603_mifare_card_active(zsn603_handle_t   handle,
  * \brief  该命令用于卡片的自动检测,执行该命令成功后,在UART模式下,芯片将主动发送读取到卡片的数据。
  *
  * \param[in] handle     : ZSN603设备服务句柄
- * \param[in] smcseq     : 安全报文/包号
  * \param[in] admode     : 自动检测模式ADMode控制字节(1字节)
  *                bit7 ~ bit4:保留
  *                bit3       :执行完之后的动作.
- *                            0-无动作;         1 - 最后执行HALT命令(ZSN603_AUTO_DETECT_EXECUTE_HALT)
+ *                            0-无动作;          1 - 最后执行HALT命令(ZSN603_AUTO_DETECT_EXECUTE_HALT)
  *                bit2       :数据输出后.
  *                            0-不继续检测;      1 - 继续检测(ZSN603_AUTO_DETECT_CONTINUE)
  *                bit1       :当UART接口检测到有卡时，是否产生中断,I2C模式设置无效，必定会产生中断
  *                            0-不产生中断;      1 - 产生中断(ZSN603_AUTO_DETECT_INTERRUPT)
  *                bit0       :当UART接口时检测到有卡时，是否主动发送数据,I2C模式设置无效,从机不能主动发送数据
- *                            0不主动发送数据;    1 - 主动发送数据(ZSN603_AUTO_DETECT_SEND)
- * \param[in] txmode     : 天线模式TxMode控制字节.   - 0x00:Tx1 Tx2 交替驱动
- *                                              - 0x01:仅Tx1驱动
- *                                              - 0x02:仅Tx2驱动
- *                                              - 0x03:Tx1 Tx2 同时驱动
+ *                            0不主动发送数据;   1 - 主动发送数据(ZSN603_AUTO_DETECT_SEND)
+ * \param[in] txmode     : 天线模式TxMode控制字节.  - 0x00:Tx1 Tx2 交替驱动
+ *                                                  - 0x01:仅Tx1驱动
+ *                                                  - 0x02:仅Tx2驱动
+ *                                                  - 0x03:Tx1 Tx2 同时驱动
  * \param[in] reqcode    : 请求代码ReqCode(1字节)   - 0x26~IDLE
- *                                              - 0x52~ALL
+ *                                                  - 0x52~ALL
  * \param[in] authmode   : 验证模式AuthMode(1字节)  -'E'~用E2密钥验证 (ZSN603_AUTO_DETECT_E2_AUTH)
- *                                              -'F'~用直接密钥验证(ZSN603_AUTO_DETECT_KEY_AUTH)
- *                                              - 0 ~不验证  (ZSN603_AUTO_DETECT_NO_AUTH)
+ *                                                  -'F'~用直接密钥验证(ZSN603_AUTO_DETECT_KEY_AUTH)
+ *                                                  - 0 ~不验证  (ZSN603_AUTO_DETECT_NO_AUTH)
  * \param[in] key_type   : 密钥AB KeyType(1字节):   0x60~密钥A  (ZSN603_ICC_KEY_TYPE_A)
- *                                               0x61~密钥B (ZSN603_ICC_KEY_TYPE_B)
+ *                                                  0x61~密钥B (ZSN603_ICC_KEY_TYPE_B)
  * \param[in] p_key      : 密钥Key:  若验证模式为'E',则为密钥区号(1字节)
- *                                  若验证模式为'F',则为密钥(6或16字节)
+ *                                   若验证模式为'F',则为密钥(6或16字节)
  * \param[in] block      : 密钥长度   (6/16字节)
  * \param[in] block      : 卡块号Block(1字节): S50(0~63)
- *                                          S70(0~255)
- *                                          PLUS CPU 2K(0~127)
- *                                          PLUS CPU 4K(0~255)
+ *                                             S70(0~255)
+ *                                             PLUS CPU 2K(0~127)
+ *                                             PLUS CPU 4K(0~255)
  *
  * \param[in] data_count : 若验证模式 = 'E', 则为7
  *                         若验证模式 = 'F', 则为12或22
@@ -900,7 +896,7 @@ uint8_t zsn603_auto_detect(zsn603_handle_t              handle,
  *
  * \param[in] handle     : ZSN603设备服务句柄
  * \param[in] ctrl_mode  : 读模式(1字节) - 0x00 取消检测
- *                                    - 0x01 继续检测
+ *                                       - 0x01 继续检测
  * \param[out] p_data    : 保存返回数据的结构体指针
  *
  * \retval 其他 : 对应错误码
@@ -914,7 +910,6 @@ uint8_t zsn603_get_auto_detect(zsn603_handle_t             handle,
  * \brief  该命令用于设置值块的值。
  *
  * \param[in] handle     : ZSN603设备服务句柄
- * \param[in] smcseq     : 安全报文/包号
  * \param[in] block      : 块地址(1字节):将要写入数值的块地址
  * \param[in] data       : 块值(4字节):有符号的32位数据,低字节在前
  * \retval 其他 : 对应错误码
@@ -941,7 +936,7 @@ uint8_t zsn603_mifare_get_value(zsn603_handle_t  handle,
  *         例如针对NXP新推出的NTAG213F是属于Ultralight C系列卡片,
  *         但是该卡片又新添加了扇区数据读写密钥保护功能。而这个密钥验证命令即可利用此命名传输命令来实现。。
  *
- * \param[in]  handle       : ZSN603设备服务句柄
+ * \param[in]  handle      : ZSN603设备服务句柄
  * \param[in]  len         : 数据长度(1字节):实际数据长度
  * \param[in]  p_data_buf  : 数据(n-1字节):实际传输的命令数据串
  * \param[in]  data_count  : 0x02
@@ -1086,8 +1081,8 @@ uint8_t zsn603_cicc_tp1(zsn603_handle_t   handle,
  * \brief  该命令用于A型卡的请求操作,该命令的操作与Mifare S50/S70卡类的请求操作时一样的。
  *
  * \param[in] handle     : ZSN603设备服务句柄
- * \param[in] req_mode   : 请求模式(1字节): 0x26——IDLE模式
- *                                      0x52——ALL模式
+ * \param[in] req_mode   : 请求模式(1字节): 0x26-IDLE模式
+ *                                          0x52-ALL模式
  * \param[out] p_atq     : 返回的atq信息    (2字节)
  *
  * \retval 其他 : 对应错误码
@@ -1131,8 +1126,8 @@ uint8_t zsn603_picca_anticoll(zsn603_handle_t   handle,
  *
  * \param[in]  handle     : ZSN603设备服务句柄
  * \param[in]  p_info     : 选择代码(1字节) :  0x93——第一级防碰撞
- *                                         0x95——第二级防碰撞
- *                                         0x97——第三级防碰撞
+ *                                             0x95——第二级防碰撞
+ *                                             0x97——第三级防碰撞
  * \param[in]  p_uid      : UID(4字节)   : 前一个防碰撞命令返回的UID
  * \param[in]  uid_cnt    : UID长度(4字节): 前一个防碰撞命令返回的UID的长度
  * \param[out] p_sak      : 返回的信息，若bit2为1，则表明UID不完整
@@ -1182,7 +1177,6 @@ uint8_t zsn603_picca_rats(zsn603_handle_t   handle,
  *         在执行该命令前,必需先成功执行一次RATS命令。
  *
  * \param[in] handle     : ZSN603设备服务句柄
- * \param[in] smcseq     : 安全报文/包号
  * \param[in] dsi_dri    : DSI_DRI(1字节): 芯片与卡通信波特率,设置为0(106Kb/s)
  *
  * \retval 其他 : 对应错误码
@@ -1267,7 +1261,7 @@ uint8_t zsn603_picca_reset(zsn603_handle_t  handle,
  *
  * \param[in] handle     : ZSN603设备服务句柄
  * \param[in] req_mode   : 请求代码(1字节):  0x26~IDLE
- *                                       0x52~ALL
+ *                                           0x52~ALL
  *
  * \param[out] p_atq     : 返回的atq信息(2字节)
  * \param[out] p_saq     : 返回的saq信息(1字节)
@@ -1289,7 +1283,7 @@ uint8_t zsn603_picca_active(zsn603_handle_t  handle,
  *
  * \param[in] handle     : ZSN603设备服务句柄
  * \param[in] req_mode   : 请求代码(1字节): 0x00~IDLE
- *                                      0x08~ALL
+ *                                          0x08~ALL
  * \param[out] p_uid     : 返回UID   长度为12字节
  *
  * \retval 其他 : 对应错误码
@@ -1315,7 +1309,6 @@ uint8_t zsn603_piccb_reset(zsn603_handle_t  handle,
  * \brief  该命令用于B型卡请求。
  *
  * \param[in]  handle     : ZSN603设备服务句柄
- * \param[in]  smcseq     : 安全报文/包号
  * \param[in]  req_mode   : 请求代码(1字节): 0x00~IDLE
  *                                       0x08~ALL
  * \param[in]  slot_time  : 时隙总数(1字节): 范围0~4
@@ -1334,7 +1327,6 @@ uint8_t zsn603_piccb_request(zsn603_handle_t   handle,
  * \brief  该命令用于B型卡修改传输属性(卡选择)。
  *
  * \param[in] handle     : ZSN603设备服务句柄
- * \param[in] smcseq     : 安全报文/包号
  * \param[in] p_pupi     : PUPI(4字节):   卡片标识符
  * \param[in] cid        : CID(1字节) :   取值范围为 0 - 14, 若不支持CID,则设置为0
  *
@@ -1375,7 +1367,7 @@ uint8_t zsn603_piccb_halt(zsn603_handle_t      handle,
  *
  * \param[in] handle     : ZSN603设备服务句柄
  * \param[in] req_mode   : 请求代码(1字节):  0x00~IDLE
- *                                         0x08~ALL
+ *                                           0x08~ALL
  * \param[in] p_uid      : 返回的身份证ID(8字节)
  * \retval 其他 : 对应错误码
  * \retval  0 : 执行成功
@@ -1434,8 +1426,8 @@ uint8_t zsn603_plus_cpu_first_auth(zsn603_handle_t  handle,
  * \retval  0 : 执行成功
  */
 uint8_t zsn603_plus_cpu_first_auth_e2(zsn603_handle_t      handle,
-                                      uint16_t       addr,
-                                      uint8_t        key_block);
+                                      uint16_t             addr,
+                                      uint8_t              key_block);
 
 /**
  * \brief  该命令用于SL3 PLUS CPU卡的跟随密钥验证，验证的密钥来自命令参数，
@@ -1448,8 +1440,8 @@ uint8_t zsn603_plus_cpu_first_auth_e2(zsn603_handle_t      handle,
  * \retval  0 : 执行成功
  */
 uint8_t zsn603_plus_cpu_follow_auth(zsn603_handle_t      handle,
-                                    uint16_t       addr,
-                                    uint8_t       *p_data);
+                                    uint16_t             addr,
+                                    uint8_t             *p_data);
 
 /**
  * \brief  该命令用于SL3 PLUS CPU卡的跟随密钥验证，验证的密钥来自芯片内部掉电不丢失的数据，
@@ -1531,7 +1523,7 @@ uint8_t zsn603_plus_cpu_sl3_write(zsn603_handle_t  handle,
  *
  * \param[in] handle       : ZSN603设备服务句柄
  * \param[in] write_mode   : 值操作模式(1字节):    0xB7～加值
- *                                            0xB9～减值
+ *                                                 0xB9～减值
  * \param[in] src_addr     : 源块号(2字节)
  * \param[in] dst_addr     : 目的块号(2字节)
  * \param[in] data         : 值数据(4字节):  4字节有符号数，低字节在前，高字节的符号位被忽略

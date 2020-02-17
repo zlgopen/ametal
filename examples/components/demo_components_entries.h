@@ -37,6 +37,9 @@ extern "C" {
 #include "am_zm516x.h"
 #include "am_zlg9021.h"
 #include "am_zlg52810.h"
+#include "am_mk100.h"
+#include "am_gs200.h"
+#include "am_rs200.h"
 #include "zsn603.h"
 #include "am_xmodem.h"
 #include "am_baudrate_detect.h"
@@ -274,6 +277,28 @@ void  demo_xmodem_tx_entry (am_xmodem_tx_handle_t  handle);
  */
 void demo_uart_auto_baudrate_entry (am_baudrate_detect_handle_t baudrate_handle,
                                     am_uart_handle_t            uart_handle);
+
+/**
+ * \brief MK100例程
+ * \param[in] handle  MK100 服务句柄
+ * \return 无
+ */
+void demo_mk100_entry(am_mk100_handle_t handle);
+
+/**
+ * \brief GS200 模块设置波特率例程
+ * \param[in] handle  GS200设备服务句柄
+ * \return 无
+ */
+void demo_gs200_baudrate_entry (am_gs200_handle_t gs200_handle,uint32_t gs200_baudrate);
+
+/**
+ * \brief RS200 模块例程
+ * \param[in] handle  RS200设备服务句柄
+ * \return 无
+ */
+void demo_rs200_entry (am_rs200_handle_t handle);
+
 #ifdef __cplusplus
 }
 #endif

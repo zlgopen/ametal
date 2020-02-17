@@ -3,7 +3,7 @@
 *                       ----------------------------
 *                       innovating embedded platform
 *
-* Copyright (c) 2001-2018 Guangzhou ZHIYUAN Electronics Co., Ltd.
+* Copyright (c) 2001-2019 Guangzhou ZHIYUAN Electronics Co., Ltd.
 * All rights reserved.
 *
 * Contact information:
@@ -17,10 +17,6 @@
  *   1. PIOA_11 引脚连接 I2C 主机的 SCL 引脚；
  *   2. PIOA_12 引脚连接 I2C 主机的 SDA 引脚。
  *
- * - 实验现象:
- *      可用逻辑分析仪和示波器观察到i2c传输数据的波形；
- *      可调试查看数据缓存。
- *
  * \note
  *    当前 I2C 的 SCL 引脚使用的是 PIOA_11，SDA 引脚使用的是 PIOA_12，
  *    可根据实际情况更换引脚。
@@ -30,7 +26,7 @@
  *
  * \internal
  * \par Modification history
- * - 1.00 19-09-27
+ * - 1.00 19-09-27  licl, first implementation
  * \endinternal
  */
 

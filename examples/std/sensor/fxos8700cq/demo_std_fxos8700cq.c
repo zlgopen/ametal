@@ -77,6 +77,7 @@ void demo_std_fxos8700cq_entry (am_sensor_handle_t handle)
                 am_kprintf("The %s get failed!\r\n", data_name_string[i]);
             }
         }
+        am_kprintf("\r\n");
         am_mdelay(1000);
     }
 }

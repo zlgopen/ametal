@@ -10,7 +10,7 @@
       <TargetName>debug</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
-      <pCCUsed>5060061::V5.06 update 1 (build 61)::ARMCC</pCCUsed>
+      <pCCUsed>5060750::V5.06 update 6 (build 750)::ARMCC</pCCUsed>
       <uAC6>0</uAC6>
       <TargetOption>
         <TargetCommonOption>
@@ -1043,6 +1043,16 @@
               <FilePath>..\..\..\..\examples\board\aml17x_core\gpio\demo_hc32l17x_core_std_gpio_trigger.c</FilePath>
             </File>
             <File>
+              <FileName>demo_hc32l17x_core_hw_i2c_master_poll.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\aml17x_core\i2c\demo_hc32l17x_core_hw_i2c_master_poll.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_hc32l17x_core_hw_i2c_slave_int.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\aml17x_core\i2c\demo_hc32l17x_core_hw_i2c_slave_int.c</FilePath>
+            </File>
+            <File>
               <FileName>demo_hc32l17x_core_std_i2c_master_async.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\board\aml17x_core\i2c\demo_hc32l17x_core_std_i2c_master_async.c</FilePath>
@@ -1646,6 +1656,16 @@
               <FileName>demo_hc32_hw_wdt.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\soc\hdsc\wdg\demo_hc32_hw_wdt.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_hc32_hw_i2c_master_poll.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\soc\hdsc\i2c\demo_hc32_hw_i2c_master_poll.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_hc32_hw_i2c_slave_int.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\soc\hdsc\i2c\demo_hc32_hw_i2c_slave_int.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -3208,6 +3228,16 @@
               <FilePath>..\..\..\..\examples\board\aml17x_core\gpio\demo_hc32l17x_core_std_gpio_trigger.c</FilePath>
             </File>
             <File>
+              <FileName>demo_hc32l17x_core_hw_i2c_master_poll.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\aml17x_core\i2c\demo_hc32l17x_core_hw_i2c_master_poll.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_hc32l17x_core_hw_i2c_slave_int.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\aml17x_core\i2c\demo_hc32l17x_core_hw_i2c_slave_int.c</FilePath>
+            </File>
+            <File>
               <FileName>demo_hc32l17x_core_std_i2c_master_async.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\board\aml17x_core\i2c\demo_hc32l17x_core_std_i2c_master_async.c</FilePath>
@@ -3811,6 +3841,16 @@
               <FileName>demo_hc32_hw_wdt.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\soc\hdsc\wdg\demo_hc32_hw_wdt.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_hc32_hw_i2c_master_poll.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\soc\hdsc\i2c\demo_hc32_hw_i2c_master_poll.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_hc32_hw_i2c_slave_int.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\soc\hdsc\i2c\demo_hc32_hw_i2c_slave_int.c</FilePath>
             </File>
           </Files>
         </Group>

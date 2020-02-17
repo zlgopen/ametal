@@ -99,23 +99,6 @@ __Vectors       DCD     __initial_sp         ; Top of Stack
                 DCD     am_exc_eint_handler  ; FLASH_RAM_IRQHandler
                 DCD     am_exc_eint_handler  ; CLKTRIM_IRQHandler
 
-
-;//   <h> Code Read Protection level (CRP)
-;//     <o>    CRP_Level:
-;//                     <0xFFFFFFFF=> Disabled
-;//                     <0x4E697370=> NO_ISP
-;//                     <0x12345678=> CRP1
-;//                     <0x87654321=> CRP2
-;//                     <0x43218765=> CRP3 (Are you sure?)
-;//   </h>
-CRP_Level       EQU     0xFFFFFFFF
-
-                IF      :LNOT::DEF:NO_CRP
-                AREA    |.ARM.__at_0x02FC|, CODE, READONLY
-CRP_Key         DCD     0xFFFFFFFF
-                ENDIF
-
-
                 AREA    |.text|, CODE, READONLY
 
 ; Reset Handler

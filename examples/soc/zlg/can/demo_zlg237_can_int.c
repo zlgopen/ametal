@@ -42,6 +42,7 @@
  * \internal
  * \par Modification History
  * - 19-08-08, zp, first implementation.
+ * - 19-12-18, zc, add filter table extern 
  * \endinternal
  */
 
@@ -229,7 +230,7 @@ void can_err_printf(am_can_handle_t  handle)
 void demo_zlg237_can_int_entry (am_can_handle_t     can_handle,
                                 am_can_bps_param_t *can_btr_baud,
                                 am_can_int_type_t   int_type,
-                                uint8_t            *p_filterbuff,
+                                am_can_filter_t    *p_filterbuff,
                                 size_t              lenth)
 {
     am_can_err_t ret;
@@ -250,7 +251,7 @@ void demo_zlg237_can_int_entry (am_can_handle_t     can_handle,
     }
 
     /* ≈‰÷√¬À≤®±Ì */
-    ret = am_can_filter_tab_set(can_handle,p_filterbuff, lenth);
+    ret = am_can_filter_tab_ext_set(can_handle,p_filterbuff, lenth);
 
     if (ret == AM_CAN_NOERROR) {
         am_kprintf("\r\nCAN: controller filter tab set ok. \r\n");

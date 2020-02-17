@@ -94,18 +94,18 @@ am_hc32_adc_ioinfo_t __g_adc_ioinfo_list[] = {
 
 /** \brief 设备信息 */
 static const am_hc32_adc_devinfo_t __g_adc_devinfo = {
-    HC32_ADC_BASE,                      /**< \brief ADC */
+    HC32_ADC_BASE,                        /**< \brief ADC */
     INUM_ADC_DAC,                         /**< \brief ADC的中断编号 */
     CLK_ADC_BGR,                          /**< \brief ADC时钟号 */
-    AMHW_HC32_ADC_REFVOL_AVCC,          /**< \brief 参考电压选择 */
+    AMHW_HC32_ADC_REFVOL_AVCC,            /**< \brief 参考电压选择 */
     3300,                                 /**< \brief 参考电压(mv)*/
     0,                                    /**< \brief ADC通道28内部温度传感器开启使能
                                            *          1：开启， 0：关闭
                                            */
     12,                                   /**< \brief 转换精度，hc32精度只能为12位 */
     &__g_adc_ioinfo_list[0],              /**< \brief 引脚信息列表 */
-    __hc32_plfm_adc_init,               /**< \brief ADC1的平台初始化 */
-    __hc32_plfm_adc_deinit,             /**< \brief ADC1的平台去初始化 */
+    __hc32_plfm_adc_init,                 /**< \brief ADC1的平台初始化 */
+    __hc32_plfm_adc_deinit,               /**< \brief ADC1的平台去初始化 */
 
 };
 

@@ -43,6 +43,7 @@ int am_main (void)
 //    demo_hc32l19x_core_std_buzzer_entry();
 //    demo_hc32l19x_core_hw_clk_entry();
 //    demo_hc32l19x_core_std_adc_entry();
+//    demo_hc32l19x_core_std_adc_its_entry();
 //    demo_hc32l19x_core_hw_adc_int_entry();
 //    demo_hc32l19x_core_std_multichan_adc_entry();
 //    demo_hc32l19x_core_hw_multichan_adc_entry();
@@ -54,6 +55,8 @@ int am_main (void)
 //    demo_hc32l19x_core_hw_gpio_trigger_entry();
 //    demo_hc32l19x_core_std_gpio_entry();
 //    demo_hc32l19x_core_std_gpio_trigger_entry();
+//    demo_hc32l19x_core_hw_i2c_slave_int_entry();
+//    demo_hc32l19x_core_hw_i2c_master_poll_entry();
 //    demo_hc32l19x_core_std_i2c_slave_int_entry();
 //    demo_hc32l19x_core_std_i2c_master_async_entry();
 //    demo_hc32l19x_core_std_i2c_master_sync_entry();
@@ -125,6 +128,11 @@ int am_main (void)
 //    demo_hc32l19x_core_std_wdt_entry();
 //    demo_hc32l19x_drv_lpmode_wake_up_entry();
 //    demo_hc32l19x_core_hw_lcd_entry ();
+//    demo_hc32l19x_core_drv_pca_8bit_pwm_entry();
+//    demo_hc32l19x_core_drv_pca_16bit_pwm_entry();
+//    demo_hc32l19x_core_drv_pcnt_single_entry();
+//    demo_hc32l19x_core_drv_pcnt_double_entry();
+//    demo_hc32l19x_core_drv_pcnt_special_entry();
 //    demo_hc32l19x_core_miniport_zlg72128_entry();
 //    demo_hc32l19x_core_miniport_hc595_digitron_entry();
 //    demo_hc32l19x_core_miniport_hc595_led_entry();

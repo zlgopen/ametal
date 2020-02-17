@@ -17,6 +17,8 @@
  * \internal
  * \par Modification History
  * - 1.00 19-10-12
+ * - 1.01 20-01-10
+ *   增加中断回调函数及接口
  * \endinternal
  */
 
@@ -33,15 +35,16 @@
 
 void __pcnt_irq_handler (void *parg)
 {
+    uint16_t flag = 0;
+
     am_hc32_pcnt_dev_t *p_dev = (am_hc32_pcnt_dev_t *)parg;
-    if(amhw_hc32_pcnt_int_get(p_dev->p_hw_pcnt, HC32_PCNT_INT_TO)) {
-        amhw_hc32_pcnt_int_clear(p_dev->p_hw_pcnt, HC32_PCNT_INT_TO);
-    } else if (amhw_hc32_pcnt_int_get(p_dev->p_hw_pcnt, HC32_PCNT_INT_OV)) {
-        amhw_hc32_pcnt_int_clear(p_dev->p_hw_pcnt, HC32_PCNT_INT_OV);
-    } else if (amhw_hc32_pcnt_int_get(p_dev->p_hw_pcnt, HC32_PCNT_INT_UF)) {
-        amhw_hc32_pcnt_int_clear(p_dev->p_hw_pcnt, HC32_PCNT_INT_UF);
-    } else {
-        ;
+    
+    flag = amhw_hc32_pcnt_int_get(p_dev->p_hw_pcnt, HC32_PCNT_INT_ALL);
+    amhw_hc32_pcnt_int_clear(p_dev->p_hw_pcnt, flag); 
+    
+    if (p_dev->pfn_trigger_cb != NULL) {
+        p_dev->flag = flag;
+        p_dev->pfn_trigger_cb(p_dev);
     }
 }
 
@@ -58,7 +61,7 @@ void __pcnt_irq_handler (void *parg)
  * \return PCNT服务操作句柄
  */
 am_hc32_pcnt_handle_t am_hc32_pcnt_init (
-        am_hc32_pcnt_dev_t     *p_dev,
+        am_hc32_pcnt_dev_t           *p_dev,
         const am_hc32_pcnt_devinfo_t *p_devinfo)
 {
     if (p_dev == NULL || p_devinfo == NULL) {
@@ -73,10 +76,7 @@ am_hc32_pcnt_handle_t am_hc32_pcnt_init (
     }
 
     /* 清除中断标识 */
-    amhw_hc32_pcnt_int_clear(p_dev->p_hw_pcnt,
-                               HC32_PCNT_INT_TO |
-                               HC32_PCNT_INT_OV |
-                               HC32_PCNT_INT_UF);
+    amhw_hc32_pcnt_int_clear(p_dev->p_hw_pcnt, HC32_PCNT_INT_ALL);
 
     /* 连接中断函数 */
     am_int_connect(p_devinfo->inum, __pcnt_irq_handler, (void *)p_dev);
@@ -234,10 +234,10 @@ void am_hc32_pcnt_timeover_disable (am_hc32_pcnt_handle_t handle)
  * \return 无
  */
 void am_hc32_pcnt_start (am_hc32_pcnt_handle_t handle,
-                           am_hc32_pcnt_mode_t   mode,
-                           am_hc32_pcnt_dir_t    dir,
-                           uint16_t                value,
-                           am_hc32_pcnt_dgb_t    dgb)
+                         am_hc32_pcnt_mode_t   mode,
+                         am_hc32_pcnt_dir_t    dir,
+                         uint16_t              value,
+                         am_hc32_pcnt_dgb_t    dgb)
 {
     if (handle == NULL) {
         return ;
@@ -273,6 +273,15 @@ void am_hc32_pcnt_start (am_hc32_pcnt_handle_t handle,
         amhw_hc32_pcnt_int_enable(handle->p_hw_pcnt,
                                     HC32_PCNT_INT_UF);
     }
+    
+    if (HC32_PCNT_SPECIAL == mode) {
+        
+        /* 使能双通道非交脉冲错误中断 */
+        amhw_hc32_pcnt_int_enable(handle->p_hw_pcnt, HC32_PCNT_INT_S1E);
+        amhw_hc32_pcnt_int_enable(handle->p_hw_pcnt, HC32_PCNT_INT_S0E);
+        amhw_hc32_pcnt_int_enable(handle->p_hw_pcnt, HC32_PCNT_INT_BB);
+        amhw_hc32_pcnt_int_enable(handle->p_hw_pcnt, HC32_PCNT_INT_FE);
+    }
 
     am_int_enable(handle->p_devinfo->inum);
     amhw_hc32_pcnt_start(handle->p_hw_pcnt);
@@ -293,6 +302,36 @@ void am_hc32_pcnt_stop (am_hc32_pcnt_handle_t handle)
 
     am_int_disable(handle->p_devinfo->inum);
     amhw_hc32_pcnt_stop(handle->p_hw_pcnt);
+}
+
+/**
+ * \brief PCNT计数器计数值获取
+ *
+ * \param[in] handle : 与从设备关联的PCNT标准服务操作句柄
+ *
+ * \return 无
+ */
+uint16_t am_hc32_pcnt_cnt_get (am_hc32_pcnt_handle_t handle)
+{
+    if (handle == NULL) {
+        return NULL;
+    }
+    return amhw_hc32_pcnt_cnt_get (handle->p_hw_pcnt);
+}
+
+/**
+ * \brief 设置 PCNT 中断回调
+ */
+am_err_t am_hc32_pcnt_callback_set (am_hc32_pcnt_handle_t handle,
+                                    am_pfnvoid_t          pfn_callback)
+{
+    if (NULL == handle | NULL == pfn_callback) {
+        return -AM_EINVAL;
+    }
+
+    handle->pfn_trigger_cb = pfn_callback;
+
+    return AM_OK;
 }
 
 /* end of file */

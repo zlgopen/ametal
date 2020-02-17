@@ -19,6 +19,10 @@
  *   2. am_hwconf_hc32l19x_adc.c文件__g_adc_ioinfo_list[]数组的第一个有效元素引脚。默认是PA1
  *   3. am_hwconf_hc32l19x_adc.c文件__g_adc_ioinfo_list[]数组的第一个有效元素引脚。默认是PA2
  *   4. am_hwconf_hc32l19x_adc.c文件__g_adc_ioinfo_list[]数组的第一个有效元素引脚。默认是PA3
+ *  am_hwconf_hc32l19x_adc.c文件修改设备信息中：
+ *   5. 参考电压选择： AMHW_HC32_ADC_REFVOL_AVCC；
+ *   6. 参考电压(mv)： 3300(AVCC)；
+ *   7. 禁能ADC通道28内部温度传感器.(1：使能，0：禁能)
  *
  * - 实验现象：
  *   1. 串口输出电压采样值。

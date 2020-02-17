@@ -59,6 +59,16 @@ extern "C" {
 void demo_std_adc_entry (am_adc_handle_t handle, int chan);
 
 /**
+ * \brief ADC内部温度传感器例程，利用查询方式获取ADC转换结果，通过标准接口实现
+ *
+ * \param[in] handle ADC 标准服务句柄
+ * \param[in] chan   ADC 通道号
+ *
+ * \return 无
+ */
+void demo_std_adc_its_entry (am_adc_handle_t handle, int chan);
+
+/**
  * \brief 例程入口
  */
 void demo_std_multichan_adc_entry (am_adc_handle_t handle,
@@ -472,6 +482,34 @@ void demo_std_fxos8700cq_entry (am_sensor_handle_t handle);
  * \return 无
  */
 void demo_std_fxos8700cq_int_entry (am_sensor_handle_t handle);
+
+/**
+ * \brief 气压温度传感器MPL3115A2例程，通过查询模式实现
+ *
+ * \return 无
+ */
+void demo_std_mpl3115a2_entry (am_sensor_handle_t handle);
+
+/**
+ * \brief 气压温度传感器MPL3115A2例程，通过触发模式实现
+ *
+ * \return 无
+ */
+void demo_std_mpl3115a2_int_entry (am_sensor_handle_t handle);
+
+/**
+ * \brief 磁力传感器MAG3110例程，通过查询模式实现
+ *
+ * \return 无
+ */
+void demo_std_mag3110_entry (am_sensor_handle_t handle);
+
+/**
+ * \brief 磁力传感器MAG3110例程，通过触发模式实现
+ *
+ * \return 无
+ */
+void demo_std_mag3110_int_entry (am_sensor_handle_t handle);
 
 /**
  * \brief SD Card读写例程

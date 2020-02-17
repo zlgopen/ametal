@@ -471,6 +471,7 @@ static int __i2c_mst_sm_event (am_zlg_i2c_dev_t *p_dev, uint32_t event)
 
             /* 判断i2c状态 */
             switch (state) {
+            case 0x08: /* 已发送起始条件 */
             case 0x10: /* 已发送重复起始条件 */
 
                 /* 清除起始条件 */

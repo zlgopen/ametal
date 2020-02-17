@@ -54,6 +54,8 @@ int am_main (void)
 //    demo_hc32f17x_core_hw_gpio_trigger_entry();
 //    demo_hc32f17x_core_std_gpio_entry();
 //    demo_hc32f17x_core_std_gpio_trigger_entry();
+//    demo_hc32f17x_core_hw_i2c_slave_int_entry();
+//    demo_hc32f17x_core_hw_i2c_master_poll_entry();
 //    demo_hc32f17x_core_std_i2c_slave_int_entry();
 //    demo_hc32f17x_core_std_i2c_master_async_entry();
 //    demo_hc32f17x_core_std_i2c_master_sync_entry();

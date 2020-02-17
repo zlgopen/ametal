@@ -141,6 +141,13 @@ int am_main (void)
 //    demo_am116_zsn603_auto_detect_test_entry();
 //    demo_am116_core_sensor_fxos8700cq_entry();
 //    demo_am116_core_sensor_fxos8700cq_int_entry();
+//    demo_am116_core_sensor_mpl3115a2_entry();
+//    demo_am116_core_sensor_mpl3115a2_int_entry();
+//    demo_am116_core_sensor_mag3110_entry();
+//    demo_am116_core_sensor_mag3110_int_entry();
+//    demo_am116_core_mk100_test_entry();
+//    demo_am116_core_gs200_set_baudrate_entry();
+//    demo_am116_core_rs200_test_entry();
     while (1) {
     }
 }

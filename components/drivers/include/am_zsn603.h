@@ -9,7 +9,7 @@
 
 typedef struct am_zsn603_dev_info{
     int8_t   rst_pin;           /** \brief 复位引脚    若用户不需要使用此引脚   填-1即可*/
-    int8_t   mode_det_pin;;     /** \brief 模式选择引脚    若用户不需要使用此引脚   填-1即可  */
+    int8_t   mode_det_pin;     /** \brief 模式选择引脚    若用户不需要使用此引脚   填-1即可  */
     uint8_t  local_address;     /** \brief 初始化local address  */
     /* \brief 在IIC模式下  此成员为中断引脚号
      *        在UART模式下  此成员为波特率标识
