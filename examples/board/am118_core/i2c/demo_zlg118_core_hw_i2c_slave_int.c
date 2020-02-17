@@ -11,7 +11,7 @@
 *******************************************************************************/
 /**
  * \file
- * \brief I2C 从机例程(此例程可以用来模拟 EEPROM)，通过标准层接口实现
+ * \brief I2C 从机例程(此例程可以用来模拟 EEPROM)，通过 HW 层接口实现
  *
  * - 操作步骤：
  *   1. PIOA_11 引脚连接 I2C 主机的 SCL 引脚；
@@ -22,42 +22,46 @@
  *    可根据实际情况更换引脚。
  *
  * \par 源代码
- * \snippet demo_zlg118_std_i2c_slave_int.c src_zlg118_std_i2c_slave_int
+ * \snippet demo_zlg118_core_hw_i2c_slave_poll.c
+ *          src_zlg118_core_hw_i2c_slave_poll
  *
  * \internal
  * \par Modification history
- * - 1.00 19-09-27  licl, first implementation
+ * - 1.00 19-12-16  licl, first implementation
  * \endinternal
  */
 
 /**
- * \addtogroup demo_if_zlg118_std_i2c_slave_int
- * \copydoc demo_zlg118_std_i2c_slave_int.c
+ * \addtogroup demo_if_zlg118_core_hw_i2c_slave_poll
+ * \copydoc demo_zlg118_core_hw_i2c_slave_poll.c
  */
 
-/** [src_zlg118_std_i2c_slave_int] */
+/** [src_zlg118_core_hw_i2c_slave_poll] */
 #include "ametal.h"
-#include "am_vdebug.h"
-#include "am_board.h"
+#include "am_clk.h"
 #include "am_gpio.h"
+#include "am_vdebug.h"
 #include "am_zlg118.h"
 #include "am_zlg118_clk.h"
-#include "hw/amhw_zlg_i2c.h"
-#include "hw/amhw_zlg118_rcc.h"
-#include "demo_std_entries.h"
-#include "am_zlg118_inst_init.h"
-
-#define DEV_ADDR    0x50
+#include "hw/amhw_zlg118_i2c.h"
+#include "demo_zlg_entries.h"
+#include "demo_am118_core_entries.h"
+#include "zlg118_inum.h"
 
 /**
  * \brief 例程入口
  */
-void demo_zlg118_core_std_i2c_slave_int_entry (void)
+void demo_zlg118_core_hw_i2c_slave_int_entry (void)
 {
-    am_kprintf("demo am118_core std i2c slave int!\r\n");
+    am_kprintf("demo zlg118_core hw i2c slave poll!\r\n");
 
-    demo_std_i2c_slave_entry(am_zlg118_i2c1_slv_inst_init(), DEV_ADDR);
+    am_gpio_pin_cfg(PIOA_11, PIOA_11_I2C1_SCL | PIOA_11_OUT_OD);
+    am_gpio_pin_cfg(PIOA_12, PIOA_12_I2C1_SDA | PIOA_12_OUT_OD);
+
+    am_clk_enable(CLK_I2C1);
+
+    demo_zlg118_hw_i2c_slave_int_entry(ZLG118_I2C1, INUM_I2C1);
 }
-/** [src_zlg118_std_i2c_slave_int] */
+/** [src_zlg118_core_hw_i2c_slave_poll] */
 
 /* end of file */

@@ -10,7 +10,7 @@
       <TargetName>debug</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
-      <pCCUsed>5060300::V5.06 update 3 (build 300)::ARMCC</pCCUsed>
+      <pCCUsed>5060750::V5.06 update 6 (build 750)::ARMCC</pCCUsed>
       <uAC6>0</uAC6>
       <TargetOption>
         <TargetCommonOption>
@@ -1058,6 +1058,16 @@
               <FilePath>..\..\..\..\examples\board\am118_core\i2c\demo_zlg118_core_std_i2c_slave_int.c</FilePath>
             </File>
             <File>
+              <FileName>demo_zlg118_core_hw_i2c_master_poll.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am118_core\i2c\demo_zlg118_core_hw_i2c_master_poll.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zlg118_core_hw_i2c_slave_int.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am118_core\i2c\demo_zlg118_core_hw_i2c_slave_int.c</FilePath>
+            </File>
+            <File>
               <FileName>demo_zlg118_core_std_key_input_event.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\board\am118_core\input_event\demo_zlg118_core_std_key_input_event.c</FilePath>
@@ -1646,6 +1656,16 @@
               <FileName>demo_zlg118_hw_lcd.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\soc\zlg\lcd\demo_zlg118_hw_lcd.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zlg118_hw_i2c_master_poll.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\soc\zlg\i2c\demo_zlg118_hw_i2c_master_poll.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zlg118_hw_i2c_slave_int.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\soc\zlg\i2c\demo_zlg118_hw_i2c_slave_int.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -3218,6 +3238,16 @@
               <FilePath>..\..\..\..\examples\board\am118_core\i2c\demo_zlg118_core_std_i2c_slave_int.c</FilePath>
             </File>
             <File>
+              <FileName>demo_zlg118_core_hw_i2c_master_poll.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am118_core\i2c\demo_zlg118_core_hw_i2c_master_poll.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zlg118_core_hw_i2c_slave_int.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am118_core\i2c\demo_zlg118_core_hw_i2c_slave_int.c</FilePath>
+            </File>
+            <File>
               <FileName>demo_zlg118_core_std_key_input_event.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\board\am118_core\input_event\demo_zlg118_core_std_key_input_event.c</FilePath>
@@ -3806,6 +3836,16 @@
               <FileName>demo_zlg118_hw_lcd.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\soc\zlg\lcd\demo_zlg118_hw_lcd.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zlg118_hw_i2c_master_poll.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\soc\zlg\i2c\demo_zlg118_hw_i2c_master_poll.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zlg118_hw_i2c_slave_int.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\soc\zlg\i2c\demo_zlg118_hw_i2c_slave_int.c</FilePath>
             </File>
           </Files>
         </Group>

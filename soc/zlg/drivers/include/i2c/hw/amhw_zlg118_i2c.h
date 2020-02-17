@@ -16,7 +16,7 @@
  *
  * \internal
  * \par Modification history
- * - 1.00 19-09-19
+ * - 1.00 19-09-19  licl, first implementation
  * \endinternal
  */
 
