@@ -190,32 +190,7 @@ void am_board_init (void)
 #ifdef AM_VDEBUG
 #if (AM_CFG_DEBUG_ENABLE == 1)
 
-#if (AM_CFG_DEBUG_UART == 0)
-
-	dbg_handle = am_lpc82x_usart0_inst_init();
-
-	/* 调试初始化 */
-	am_debug_init(dbg_handle, AM_CFG_DEBUG_BAUDRATE);
-
-#endif /* (AM_CFG_DEBUG_UART == 0) */
-
-#if (AM_CFG_DEBUG_UART == 1)
-
-    dbg_handle = am_lpc82x_usart1_inst_init();
-
-    /* 调试初始化 */
-    am_debug_init(dbg_handle, AM_CFG_DEBUG_BAUDRATE);
-
-#endif /* (AM_CFG_DEBUG_UART == 1) */
-
-#if (AM_CFG_DEBUG_UART == 2)
-
-    dbg_handle = am_lpc82x_usart2_inst_init();
-
-    /* 调试初始化 */
-    am_debug_init(dbg_handle, AM_CFG_DEBUG_BAUDRATE);
-
-#endif /* (AM_CFG_DEBUG_UART == 2) */
+    dbg_handle = am_debug_uart_inst_init();
 
 #endif /* (AM_CFG_DEBUG_ENABLE == 1) */
 #endif /* AM_VDEBUG */
