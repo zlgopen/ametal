@@ -118,8 +118,27 @@ int am_main (void)
 //    demo_hk32f103rbt6_core_std_usart_ringbuf_entry();
 //    demo_hk32f103rbt6_core_hw_wwdg_entry();
 //    demo_hk32f103rbt6_core_std_wwdg_entry();
-
-    while (1) {
+//    demo_hk32f103rbt6_core_dr_fm175xx_cpu_card();
+//    demo_hk32f103rbt6_core_dr_fm175xx_picca_read_id();
+//    demo_hk32f103rbt6_core_dr_fm175xx_picca_halt();
+//    demo_hk32f103rbt6_core_dr_fm175xx_picca_read_block ();
+//    demo_hk32f103rbt6_core_dr_fm175xx_picca_val_operate();
+//    demo_hk32f103rbt6_core_dr_fm175xx_picca_write_block();
+//    demo_hk32f103rbt6_core_dr_fm175xx_piccb_read_id();
+//    demo_hk32f103rbt6_core_dr_fm175xx_picca_lpcd_read_id();
+//    demo_hk32f103rbt6_drv_sleepmode_timer_wake_up_entry();
+//    demo_hk32f103rbt6_drv_sleepmode_wake_up_entry();
+//    demo_hk32f103rbt6_drv_standbymode_wake_up_entry();
+//    demo_hk32f103rbt6_drv_stopmode_wake_up_entry();
+//    demo_hk32f103rbt6_core_can_int_entry();
+//    demo_hk32f103rbt6_core_can_entry();
+//    demo_hk32f103rbt6_core_zsn603_led_test_entry();
+//    demo_hk32f103rbt6_core_zsn603_picca_test_entry();
+//    demo_hk32f103rbt6_core_zsn603_piccb_test_entry();
+//    demo_hk32f103rbt6_core_zsn603_auto_detect_test_entry();
+//    demo_hk32f103rbt6_core_sensor_fxos8700cq_entry();
+//    demo_hk32f103rbt6_core_sensor_fxos8700cq_int_entry();
+    while (1) { 
 
     }
 }

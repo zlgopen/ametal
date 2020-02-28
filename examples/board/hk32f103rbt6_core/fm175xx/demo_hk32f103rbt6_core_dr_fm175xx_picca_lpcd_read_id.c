@@ -33,8 +33,8 @@
  */
 
 /**
- * \addtogroup demo_am116_core_dr_fm175xx_picca_read_id
- * \copydoc demo_am116_core_dr_fm175xx_picca_read_id.c
+ * \addtogroup demo_hk32f103rbt6_core_dr_fm175xx_picca_read_id
+ * \copydoc demo_hk32f103rbt6_core_dr_fm175xx_picca_read_id.c
  */
 
 /** [src_am116_dr_fm175xx_picca_read_id] */
@@ -55,7 +55,7 @@ void demo_hk32f103rbt6_core_dr_fm175xx_picca_lpcd_read_id (void)
     demo_fm175xx_picca_lpcd_mode(handle);
 }
 
-/** [demo_am116_core_dr_fm175xx_picca_read_id] */
+/** [demo_hk32f103rbt6_core_dr_fm175xx_picca_read_id] */
 
 /* end of file */
 

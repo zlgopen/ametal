@@ -539,7 +539,7 @@ am_can_err_t __can_hk32f103rbt6_mode_set (void *p_drv, am_can_mode_type_t mode)
 
         /* 静默模式*/
         amhw_hk32f103rbt6_can_operating_mode_request(p_hw_can,
-                AMHW_HK32F103RBT6_CAN_MODE_SILENT);
+            (amhw_hk32f103rbt6_can_mode_t)AMHW_HK32F103RBT6_CAN_MODE_SILENT);
     } else {
         /* 回环 和 回环静默未设置 */
 

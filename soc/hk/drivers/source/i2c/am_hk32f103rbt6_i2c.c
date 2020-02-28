@@ -431,8 +431,7 @@ static void __i2c_irq_handler (void *p_arg)
 static int __i2c_msg_start (void *p_drv, am_i2c_message_t *p_msg)
 {
     am_hk32f103rbt6_i2c_dev_t  *p_dev    = (am_hk32f103rbt6_i2c_dev_t *)p_drv;
-    amhw_hk32f103rbt6_i2c_t *p_hw_i2c    = (amhw_hk32f103rbt6_i2c_t *)
-                                            p_dev->p_devinfo->i2c_regbase;
+
     int key;
 
     /** \brief 判断设备、 消息 、组成消息的传输 、请求处理的传输个数是否为空 */

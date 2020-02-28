@@ -642,11 +642,6 @@
               <FilePath>..\..\..\..\components\drivers\source\lcd\am_ili9341_intfc_3wire.c</FilePath>
             </File>
             <File>
-              <FileName>am_fm175xx_zlg217.lib</FileName>
-              <FileType>4</FileType>
-              <FilePath>..\..\..\..\components\drivers\source\fm175xx\am_fm175xx_zlg217.lib</FilePath>
-            </File>
-            <File>
               <FileName>am_sensor_bh1730fvc.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\components\drivers\source\sensor\am_sensor_bh1730fvc.c</FilePath>
@@ -702,6 +697,11 @@
               <FilePath>..\..\..\..\components\drivers\source\sensor\am_sensor_shtc1.c</FilePath>
             </File>
             <File>
+              <FileName>am_sensor_fxos8700cq.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\sensor\am_sensor_fxos8700cq.c</FilePath>
+            </File>
+            <File>
               <FileName>am_fm175xx_ant.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\components\drivers\source\fm175xx\am_fm175xx_ant.c</FilePath>
@@ -730,6 +730,11 @@
               <FileName>zsn603_platform.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\components\drivers\source\zsn603\zsn603_platform.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_fm175xx_hk32f103rbt6.lib</FileName>
+              <FileType>4</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\fm175xx\am_fm175xx_hk32f103rbt6.lib</FilePath>
             </File>
           </Files>
         </Group>
@@ -1391,6 +1396,126 @@
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\board\hk32f103rbt6_core\miniport_board\demo_hk32f103rbt6_core_miniport_zlg72128.c</FilePath>
             </File>
+            <File>
+              <FileName>demo_hk32f103rbt6_core_dr_fm175xx_cpu_card.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\hk32f103rbt6_core\fm175xx\demo_hk32f103rbt6_core_dr_fm175xx_cpu_card.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_hk32f103rbt6_core_dr_fm175xx_picca_halt.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\hk32f103rbt6_core\fm175xx\demo_hk32f103rbt6_core_dr_fm175xx_picca_halt.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_hk32f103rbt6_core_dr_fm175xx_picca_lpcd_read_id.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\hk32f103rbt6_core\fm175xx\demo_hk32f103rbt6_core_dr_fm175xx_picca_lpcd_read_id.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_hk32f103rbt6_core_dr_fm175xx_picca_read_block.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\hk32f103rbt6_core\fm175xx\demo_hk32f103rbt6_core_dr_fm175xx_picca_read_block.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_hk32f103rbt6_core_dr_fm175xx_picca_read_id.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\hk32f103rbt6_core\fm175xx\demo_hk32f103rbt6_core_dr_fm175xx_picca_read_id.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_hk32f103rbt6_core_dr_fm175xx_picca_val_operate.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\hk32f103rbt6_core\fm175xx\demo_hk32f103rbt6_core_dr_fm175xx_picca_val_operate.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_hk32f103rbt6_core_dr_fm175xx_picca_write_block.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\hk32f103rbt6_core\fm175xx\demo_hk32f103rbt6_core_dr_fm175xx_picca_write_block.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_hk32f103rbt6_core_dr_fm175xx_piccb_read_id.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\hk32f103rbt6_core\fm175xx\demo_hk32f103rbt6_core_dr_fm175xx_piccb_read_id.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_hk32f103rbt6_drv_sleepmode_timer_wake_up.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\hk32f103rbt6_core\wakeup\demo_hk32f103rbt6_drv_sleepmode_timer_wake_up.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_hk32f103rbt6_drv_sleepmode_wake_up.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\hk32f103rbt6_core\wakeup\demo_hk32f103rbt6_drv_sleepmode_wake_up.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_hk32f103rbt6_drv_standbymode_wake_up.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\hk32f103rbt6_core\wakeup\demo_hk32f103rbt6_drv_standbymode_wake_up.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_hk32f103rbt6_drv_stopmode_wake_up.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\hk32f103rbt6_core\wakeup\demo_hk32f103rbt6_drv_stopmode_wake_up.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_hk32f103rbt6_core_can.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\hk32f103rbt6_core\can\demo_hk32f103rbt6_core_can.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_hk32f103rbt6_core_can_int.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\hk32f103rbt6_core\can\demo_hk32f103rbt6_core_can_int.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_hk32f103rbt6_core_zsn60x3auto_detect_test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\hk32f103rbt6_core\zsn603\demo_hk32f103rbt6_core_zsn60x3auto_detect_test.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_hk32f103rbt6_core_zsn603_led_test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\hk32f103rbt6_core\zsn603\demo_hk32f103rbt6_core_zsn603_led_test.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_hk32f103rbt6_core_zsn603_picca_active_test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\hk32f103rbt6_core\zsn603\demo_hk32f103rbt6_core_zsn603_picca_active_test.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_hk32f103rbt6_core_zsn603_piccb_active_test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\hk32f103rbt6_core\zsn603\demo_hk32f103rbt6_core_zsn603_piccb_active_test.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_hk32f103rbt6_core_sensor_bmg160.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\hk32f103rbt6_core\sensor\demo_hk32f103rbt6_core_sensor_bmg160.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_hk32f103rbt6_core_sensor_fxos8700cq.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\hk32f103rbt6_core\sensor\demo_hk32f103rbt6_core_sensor_fxos8700cq.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_hk32f103rbt6_core_sensor_fxos8700cq_int.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\hk32f103rbt6_core\sensor\demo_hk32f103rbt6_core_sensor_fxos8700cq_int.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_hk32f103rbt6_core_sensor_hts221.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\hk32f103rbt6_core\sensor\demo_hk32f103rbt6_core_sensor_hts221.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_hk32f103rbt6_core_sensor_hts221_int.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\hk32f103rbt6_core\sensor\demo_hk32f103rbt6_core_sensor_hts221_int.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_hk32f103rbt6_core_sensor_mmc5883ma.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\hk32f103rbt6_core\sensor\demo_hk32f103rbt6_core_sensor_mmc5883ma.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -1455,6 +1580,26 @@
               <FileName>demo_fm175xx_piccb_read_id.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\components\drivers\demo_fm175xx_piccb_read_id.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zsn603_auto_detect_test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\components\drivers\demo_zsn603_auto_detect_test.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zsn603_led_test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\components\drivers\demo_zsn603_led_test.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zsn603_picca_active_test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\components\drivers\demo_zsn603_picca_active_test.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zsn603_piccb_active_test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\components\drivers\demo_zsn603_piccb_active_test.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -1555,6 +1700,11 @@
               <FileName>demo_hk32f103rbt6_can.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\soc\hk\can\demo_hk32f103rbt6_can.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_hk32f103rbt6_can_int.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\soc\hk\can\demo_hk32f103rbt6_can_int.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -1735,6 +1885,36 @@
               <FileName>demo_std_multichan_adc.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\std\adc\demo_std_multichan_adc.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_std_bmg160.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\std\sensor\bmg160\demo_std_bmg160.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_std_fxos8700cq.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\std\sensor\fxos8700cq\demo_std_fxos8700cq.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_std_fxos8700cq_int.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\std\sensor\fxos8700cq\demo_std_fxos8700cq_int.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_std_hts221.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\std\sensor\hts221\demo_std_hts221.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_std_hts221_int.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\std\sensor\hts221\demo_std_hts221_int.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_std_mmc5883ma.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\std\sensor\mmc5883ma\demo_std_mmc5883ma.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -1947,11 +2127,6 @@
               <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_miniport_zlg72128.c</FilePath>
             </File>
             <File>
-              <FileName>am_hwconf_sensor_hts221.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_sensor_hts221.c</FilePath>
-            </File>
-            <File>
               <FileName>am_hwconf_hk32f103rbt6_i2c.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_hk32f103rbt6_i2c.c</FilePath>
@@ -1985,6 +2160,76 @@
               <FileName>am_hwconf_hk32f103rbt6_spi_slv_dma.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_hk32f103rbt6_spi_slv_dma.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_hk32f103rbt6_can.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_hk32f103rbt6_can.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_zsn603_uart.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zsn603_uart.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_zsn603_i2c.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zsn603_i2c.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_sensor_hts221.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_sensor_hts221.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_sensor_bh1730fvc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_sensor_bh1730fvc.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_sensor_bma253.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_sensor_bma253.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_sensor_bme280.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_sensor_bme280.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_sensor_bmg160.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_sensor_bmg160.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_sensor_bmp280.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_sensor_bmp280.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_sensor_fxos8700cq.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_sensor_fxos8700cq.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_sensor_lis3mdl.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_sensor_lis3mdl.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_sensor_lps22hb.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_sensor_lps22hb.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_sensor_lsm6dsl.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_sensor_lsm6dsl.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_sensor_mmc5883ma.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_sensor_mmc5883ma.c</FilePath>
             </File>
           </Files>
         </Group>
