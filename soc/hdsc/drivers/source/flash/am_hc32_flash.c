@@ -356,6 +356,24 @@ int32_t am_hc32_flash_init(amhw_hc32_flash_t   *p_hw_flash,
         prgtimer[index] = freqcfg * __g_hc32_flash_pcgtimer_4mhz[index];
     }
 
+    /* 开启读FLASH等待周期 */
+    if (8 == freqcfg)
+    {
+        AM_HC32_FLASH_BYPASS(p_hw_flash);
+        AM_BITS_SET(p_hw_flash->cr, 2, 2, 0x01);
+    }
+    else if(12 == freqcfg)
+    {
+        prgtimer[1] = 0xFF;      
+        AM_HC32_FLASH_BYPASS(p_hw_flash);
+        AM_BITS_SET(p_hw_flash->cr, 2, 2, 0x01);
+    }
+    else
+    {
+        AM_HC32_FLASH_BYPASS(p_hw_flash); 
+        AM_BITS_SET(p_hw_flash->cr, 2, 2, 0x00);
+    }
+
     /* flash时间参数寄存器配置 */
     for (index = 0; index < 8; index++) {
         timeout = AM_HC32_FLASH_TIMEOUT_INIT;
