@@ -33,7 +33,7 @@ extern "C" {
 
 #include "am_types.h"
 #include "am_bitops.h"
-
+#include "hc32f460_intctrl.h"
 /**
  * \addtogroup amhw_hc32f460_if_gpio
  * \copydoc amhw_hc32f460_gpio.h
@@ -88,11 +88,10 @@ typedef enum en_portx
  * \brief gpio引脚中断触发方式定义
  */
 typedef enum amhw_hc32f460_gpio_trig_mode {
-    AMHW_HC32F460_PINT_TRIGGER_HIGH       = 0x0,   /**< \brief 高电平触发 */
-    AMHW_HC32F460_PINT_TRIGGER_LOW        = 0x1,   /**< \brief 低电平触发 */
-    AMHW_HC32F460_PINT_TRIGGER_RISE       = 0x2,   /**< \brief 上升沿触发 */
-    AMHW_HC32F460_PINT_TRIGGER_FALL       = 0x3,   /**< \brief 下降沿触发 */
-    AMHW_HC32F460_PINT_TRIGGER_BOTH_EDGES = 0x4    /**< \brief 双边沿触发 */
+    AMHW_HC32F460_PINT_TRIGGER_FALL       = 0x0,   /**< \brief 下降沿触发*/
+    AMHW_HC32F460_PINT_TRIGGER_RISE       = 0x1,   /**< \brief 上升沿触发*/
+    AMHW_HC32F460_PINT_TRIGGER_BOTH_EDGES = 0x2,   /**< \brief 双边沿触发*/
+    AMHW_HC32F460_PINT_TRIGGER_LOW        = 0x3,   /**< \brief 低电平触发*/
 } amhw_hc32f460_pin_trig_mode_t;
 
 /**

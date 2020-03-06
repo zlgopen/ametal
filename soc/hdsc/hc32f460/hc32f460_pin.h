@@ -22,8 +22,8 @@
  * \endinternal
  */
 
-#ifndef __ZMF159_PIN_H
-#define __ZMF159_PIN_H
+#ifndef __HC32F460_PIN_H
+#define __HC32F460_PIN_H
 
 #ifdef __cplusplus
 extern "C" {
@@ -32,13 +32,13 @@ extern "C" {
 #include "../drivers/include/gpio/am_hc32f460_gpio_util.h"
 
  /**
- * \addtogroup zmf159_if_pin
- * \copydoc zmf159_pin.h
+ * \addtogroup hc32f460_if_pin
+ * \copydoc hc32f460_pin.h
  * @{
  */
 
 /**
- * \name ZMF159 GPIO 引脚编号
+ * \name HC32F460 GPIO 引脚编号
  * \anchor grp_gpio_pin_number
  * @{
  */
@@ -138,9 +138,8 @@ extern "C" {
 #define PIOH_1          81        /**< \brief PIOH_1 引脚号 */
 #define PIOH_2          82        /**< \brief PIOH_2 引脚号 */
 /**
- * \brief 引脚数目为67
+ * \brief 引脚数目为83
  */
-//#define PIN_NUM         67
 #define PIN_NUM         83
 
 
@@ -153,17 +152,18 @@ extern "C" {
 /******************************************************************************/
 
 /**
- * @}
+ * \name PIO引脚复用时功能模式(通用)
+ * @{
  */
-
+#define GPIO_AFIO(x)   AM_HC32F460_GPIO_FUNC_CODE(x)
 /**
- * @}if_zmf159_pin
+ * @}
  */
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif /* __ZMF159_PIN_H */
+#endif /* __HC32F460_PIN_H */
 
 /* end of file */

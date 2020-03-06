@@ -142,7 +142,7 @@ typedef struct hc32f460_mstp_regs {
     __IO uint32_t FCG1;
     __IO uint32_t FCG2;
     __IO uint32_t FCG3;
-
+    __IO uint32_t FCG0_PC;
 } hc32f460_mstp_regs_t;
 
 #define HC32F460_MSTP        ((hc32f460_mstp_regs_t *)HC32F460_MSTP_BASE)
@@ -298,26 +298,50 @@ amhw_hc32f460_sys_clk_src amhw_hc32f460_clk_get_sysclk_src(void) {
 
 /* ÔÊÐíÊ±ÖÓ¼Ä´æÆ÷Ð´£¨¹ØµôÐ´±£»¤£© */
 am_static_inline
-void amhw_hc32f460_clk_reg_write_enable (void) {
+void amhw_hc32f460_clk_fprcb0_reg_write_enable (void) {
     HC32F460_SYSCREG->PWR_FPRC = 0xa501;
 }
 
 /* ½ûÖ¹Ê±ÖÓ¼Ä´æÆ÷Ð´£¨¿ªÆôÐ´±£»¤£© */
 am_static_inline
-void amhw_hc32f460_clk_reg_write_disable (void) {
+void amhw_hc32f460_clk_fprcb0_reg_write_disable (void) {
     HC32F460_SYSCREG->PWR_FPRC = 0xa500;
 }
 
 /* ÔÊÐíÊ±ÖÓ¼Ä´æÆ÷Ð´£¨¹ØµôÐ´±£»¤£© */
 am_static_inline
-void amhw_hc32f460_clk1_reg_write_enable (void) {
+void amhw_hc32f460_clk_fprcb1_reg_write_enable (void) {
     HC32F460_SYSCREG->PWR_FPRC = 0xa502;
 }
 
 /* ½ûÖ¹Ê±ÖÓ¼Ä´æÆ÷Ð´£¨¿ªÆôÐ´±£»¤£© */
 am_static_inline
-void amhw_hc32f460_clk1_reg_write_disable (void) {
+void amhw_hc32f460_clk_fprcb1_reg_write_disable (void) {
     HC32F460_SYSCREG->PWR_FPRC = 0xa500;
+}
+
+/* ÔÊÐíÊ±ÖÓ¼Ä´æÆ÷Ð´£¨¹ØµôÐ´±£»¤£© */
+am_static_inline
+void amhw_hc32f460_clk_fprcb3_reg_write_enable (void) {
+    HC32F460_SYSCREG->PWR_FPRC = 0xa508;
+}
+
+/* ½ûÖ¹Ê±ÖÓ¼Ä´æÆ÷Ð´£¨¿ªÆôÐ´±£»¤£© */
+am_static_inline
+void amhw_hc32f460_clk_fprcb3_reg_write_disable (void) {
+    HC32F460_SYSCREG->PWR_FPRC = 0xa500;
+}
+
+/* ÔÊÐí¹¦ÄÜÊ±ÖÓ¼Ä´æÆ÷0£¨FCG0£©Ð´£¨¹ØµôÐ´±£»¤£© */
+am_static_inline
+void amhw_hc32f460_clk_fcg0_reg_write_enable (void) {
+	HC32F460_MSTP->FCG0_PC = 0xa5a50001;
+}
+
+/* ½ûÖ¹¹¦ÄÜÊ±ÖÓ¼Ä´æÆ÷0£¨FCG0£©¼Ä´æÆ÷Ð´£¨¿ªÆôÐ´±£»¤£© */
+am_static_inline
+void amhw_hc32f460_clk_fcg0_reg_write_disable (void) {
+	HC32F460_MSTP->FCG0_PC = 0xa5a50000;
 }
 
 /* ÏµÍ³Ê±ÖÓ·ÖÆµÅäÖÃ */
@@ -381,8 +405,8 @@ void amhw_hc32f460_sysclk_cfg (uint32_t                         clk_id,
 /* ¸´Î»¹¦ÄÜÊ±ÖÓ¿ØÖÆ¼Ä´æÆ÷ */
 am_static_inline
 void amhw_hc32f460_clk_reset_mstb_fcg (void) {
-    HC32F460_MSTP->FCG0 = 0XFFFFFAEE;
-    HC32F460_MSTP->FCG1 = 0XF7FFFFFF;
+    HC32F460_MSTP->FCG0_PC = 0XA5A50001;    HC32F460_MSTP->FCG0 = 0XFFFFFAEE;
+    HC32F460_MSTP->FCG0_PC = 0XA5A50000;    HC32F460_MSTP->FCG1 = 0XF7FFFFFF;
     HC32F460_MSTP->FCG2 = 0XFFFFFFFF;
     HC32F460_MSTP->FCG3 = 0XFFFFFFFF;
 }
@@ -390,8 +414,8 @@ void amhw_hc32f460_clk_reset_mstb_fcg (void) {
 am_static_inline
 void amhw_hc32f460_clk_get_mstb_fcg (uint32_t* value_reg)
 {
-    value_reg[0] = HC32F460_MSTP->FCG0;
-    value_reg[1] = HC32F460_MSTP->FCG1;
+    HC32F460_MSTP->FCG0_PC = 0XA5A50001;    value_reg[0] = HC32F460_MSTP->FCG0;
+    HC32F460_MSTP->FCG0_PC = 0XA5A50000;    value_reg[1] = HC32F460_MSTP->FCG1;
     value_reg[2] = HC32F460_MSTP->FCG2;
     value_reg[3] = HC32F460_MSTP->FCG3;
 }
@@ -400,8 +424,8 @@ void amhw_hc32f460_clk_get_mstb_fcg (uint32_t* value_reg)
 am_static_inline
 void amhw_hc32f460_clk_set_mstb_fcg (uint32_t* value_reg)
 {
-    HC32F460_MSTP->FCG0 = value_reg[0];
-    HC32F460_MSTP->FCG1 = value_reg[1];
+    HC32F460_MSTP->FCG0_PC = 0XA5A50001;    HC32F460_MSTP->FCG0 = value_reg[0];
+    HC32F460_MSTP->FCG0_PC = 0XA5A50000;    HC32F460_MSTP->FCG1 = value_reg[1];
     HC32F460_MSTP->FCG2 = value_reg[2];
     HC32F460_MSTP->FCG3 = value_reg[3];
 }
@@ -410,9 +434,9 @@ void amhw_hc32f460_clk_set_mstb_fcg (uint32_t* value_reg)
 am_static_inline
 void amhw_hc32f460_clk_set_sysclk_src(amhw_hc32f460_sys_clk_src  clk_src)
 {
-	amhw_hc32f460_clk_reg_write_enable();
+    amhw_hc32f460_clk_fprcb0_reg_write_enable();
     HC32F460_SYSCREG->CMU_CKSWR = clk_src;
-    amhw_hc32f460_clk_reg_write_disable();
+    amhw_hc32f460_clk_fprcb0_reg_write_disable();
 }
 
 
@@ -422,11 +446,11 @@ void amhw_hc32f460_clk_set_sysclk_src(amhw_hc32f460_sys_clk_src  clk_src)
 am_static_inline
 void amhw_hc32f460_clk_xtal_cfg (amhw_hc32f460_cmu_xtalcfg_t xtal_cfg)
 {
-	amhw_hc32f460_clk_reg_write_enable();
+amhw_hc32f460_clk_fprcb0_reg_write_enable();
     HC32F460_SYSCREG->CMU_XTALCFGR = (xtal_cfg.drv    << 4) |
                                      (xtal_cfg.mode   << 6) |
                                      (xtal_cfg.supdrv << 7);
-    amhw_hc32f460_clk_reg_write_disable();
+    amhw_hc32f460_clk_fprcb0_reg_write_disable();
 
 }
 
@@ -434,9 +458,9 @@ void amhw_hc32f460_clk_xtal_cfg (amhw_hc32f460_cmu_xtalcfg_t xtal_cfg)
 am_static_inline
 void amhw_hc32f460_clk_xtal_cfg_enable(void)
 {
-	amhw_hc32f460_clk_reg_write_enable();
+    amhw_hc32f460_clk_fprcb0_reg_write_enable();
     HC32F460_SYSCREG->CMU_XTALCR &= ~(0x1ul);
-    amhw_hc32f460_clk_reg_write_disable();
+    amhw_hc32f460_clk_fprcb0_reg_write_disable();
 }
 
 /* XTALÕñµ´Æ÷Í£Ö¹ */
@@ -464,20 +488,20 @@ void amhw_hc32f460_clk_hrc_cfg_disable(void)
 am_static_inline
 void amhw_hc32f460_clk_pll_src_set(amhw_hc32f460_clk_pll_src pll_src)
 {
-	amhw_hc32f460_clk_reg_write_enable();
+    amhw_hc32f460_clk_fprcb0_reg_write_enable();
     if (pll_src == AMHW_HC32F460_CLK_PLLSRC_XTAL) {
         HC32F460_SYSCREG->CMU_PLLCFGR &=  ~(1 << 7);
     } else {
         HC32F460_SYSCREG->CMU_PLLCFGR |=  (1 << 7);
     }
-    amhw_hc32f460_clk_reg_write_disable();
+    amhw_hc32f460_clk_fprcb0_reg_write_disable();
 }
 
 /* MPLLÊ±ÖÓÉèÖÃ */
 am_static_inline
 void amhw_hc32f460_clk_mpll_cfg(amhw_hc32f460_clk_pll_cfg_t mpll_cfg)
 {
-	amhw_hc32f460_clk_reg_write_enable();
+    amhw_hc32f460_clk_fprcb0_reg_write_enable();
 
     HC32F460_SYSCREG->CMU_PLLCFGR &= (1 << 7);
 
@@ -487,23 +511,23 @@ void amhw_hc32f460_clk_mpll_cfg(amhw_hc32f460_clk_pll_cfg_t mpll_cfg)
                                      ((mpll_cfg.PllqDiv - 1) << 24) |
                                      ((mpll_cfg.PllqDiv - 1) << 28);
 
-    amhw_hc32f460_clk_reg_write_disable();
+    amhw_hc32f460_clk_fprcb0_reg_write_disable();
 }
 
 /* MPLLÊ±ÖÓÊ¹ÄÜ */
 am_static_inline
 void amhw_hc32f460_clk_upll_enable(void)
 {
-	amhw_hc32f460_clk_reg_write_enable();
+    amhw_hc32f460_clk_fprcb0_reg_write_enable();
     HC32F460_SYSCREG->CMU_UPLLCR &= ~(1ul);
-    amhw_hc32f460_clk_reg_write_disable();
+    amhw_hc32f460_clk_fprcb0_reg_write_disable();
 }
 
 /* MPLLÊ±ÖÓÉèÖÃ */
 am_static_inline
 void amhw_hc32f460_clk_upll_cfg(amhw_hc32f460_clk_pll_cfg_t upll_cfg)
 {
-	amhw_hc32f460_clk_reg_write_enable();
+    amhw_hc32f460_clk_fprcb0_reg_write_enable();
 
     HC32F460_SYSCREG->CMU_UPLLCFGR &= (1 << 7);
 
@@ -513,16 +537,16 @@ void amhw_hc32f460_clk_upll_cfg(amhw_hc32f460_clk_pll_cfg_t upll_cfg)
                                       (upll_cfg.PllqDiv << 24) |
                                       (upll_cfg.PllqDiv << 28);
 
-    amhw_hc32f460_clk_reg_write_disable();
+    amhw_hc32f460_clk_fprcb0_reg_write_disable();
 }
 
 /* MPLLÊ±ÖÓÊ¹ÄÜ */
 am_static_inline
 void amhw_hc32f460_clk_mpll_enable(void)
 {
-	amhw_hc32f460_clk_reg_write_enable();
+    amhw_hc32f460_clk_fprcb0_reg_write_enable();
     HC32F460_SYSCREG->CMU_PLLCR &= ~(1ul);
-    amhw_hc32f460_clk_reg_write_disable();
+    amhw_hc32f460_clk_fprcb0_reg_write_disable();
 }
 
 

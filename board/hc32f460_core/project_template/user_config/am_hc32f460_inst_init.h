@@ -12,7 +12,7 @@
 
 /**
  * \file
- * \brief ZLG118 外设 实例初始化函数声明
+ * \brief HC32F460 外设 实例初始化函数声明
  *
  * 所有外设设备（I2C、SPI、ADC...）的实例初始化函数均在本头文件中声明，使用实例
  * 初始化函数，可以轻松获得一个外设的句柄，然后使用相关的接口函数对外设进行操作。
@@ -24,8 +24,8 @@
  * \endinternal
  */
 
-#ifndef __AM_ZLG118_INST_INIT_H
-#define __AM_ZLG118_INST_INIT_H
+#ifndef __AM_HC32F460_INST_INIT_H
+#define __AM_HC32F460_INST_INIT_H
 
 #ifdef __cplusplus
 extern "C" {
@@ -247,14 +247,14 @@ extern "C" {
 // */
 //int am_key_gpio_inst_init (void);
 //
-///**
-// * \brief 中断实例初始化，初始化中断驱动
-// *
-// * \param 无
-// *
-// * \return 返回 AW_OK 为初始化成功，其它为初始化失败
-// */
-//int am_zlg118_nvic_inst_init (void);
+/**
+ * \brief 中断实例初始化，初始化中断驱动
+ *
+ * \param 无
+ *
+ * \return 返回 AW_OK 为初始化成功，其它为初始化失败
+ */
+int am_hc32f460_nvic_inst_init (void);
 //
 ///**
 // * \brief 中断实例解初始化

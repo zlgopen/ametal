@@ -96,7 +96,7 @@ int am_hc32f460_clk_init (am_hc32f460_clk_dev_t           *p_dev,
 
     /* Set bus clk div. */
     if (IS_SYSCLK_CONFIG_VALID(p_devinfo)){
-        amhw_hc32f460_clk_reg_write_enable();
+        amhw_hc32f460_clk_fprcb0_reg_write_enable();
         amhw_hc32f460_sysclk_cfg(CLK_HCLK, p_devinfo->hclk_div);   // Max 168MHz
         amhw_hc32f460_sysclk_cfg(CLK_EXCLK, p_devinfo->exclk_div); // Max 84MHz
         amhw_hc32f460_sysclk_cfg(CLK_PCLK0, p_devinfo->pclk0_div); // Max 168MHz
@@ -104,7 +104,7 @@ int am_hc32f460_clk_init (am_hc32f460_clk_dev_t           *p_dev,
         amhw_hc32f460_sysclk_cfg(CLK_PCLK2, p_devinfo->pclk2_div); // Max 60MHz
         amhw_hc32f460_sysclk_cfg(CLK_PCLK3, p_devinfo->pclk3_div); // Max 42MHz
         amhw_hc32f460_sysclk_cfg(CLK_PCLK4, p_devinfo->pclk4_div); // Max 84MHz
-        amhw_hc32f460_clk_reg_write_disable();
+        amhw_hc32f460_clk_fprcb0_reg_write_disable();
     } else {
         return AM_ERROR;
     }

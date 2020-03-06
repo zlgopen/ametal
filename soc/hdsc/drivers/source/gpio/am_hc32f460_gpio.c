@@ -26,8 +26,7 @@
 #include "am_gpio.h"
 #include "am_int.h"
 #include "am_bitops.h"
-//#include "hw/amhw_zmf159_exti.h"
-//#include "zmf159_pin.h"
+#include "hc32f460_irq_handle.h"
 
 /*******************************************************************************
 * 私有定义
@@ -238,7 +237,7 @@ int am_gpio_pin_cfg (int pin, uint32_t flags)
     /* 管脚的模式 */
     if ((flags & AM_HC32F460_GPIO_MODE) != 0) {
 
-       switch (AM_ZMF159_GPIO_MODE_GET(flags)) {
+       switch (AM_HC32F460_GPIO_MODE_GET(flags)) {
 
        case 0:
            /* 上拉输入 */
@@ -293,12 +292,12 @@ int am_gpio_pin_cfg (int pin, uint32_t flags)
 
     /* 设置管脚的输出速率 */
     if ((flags & AM_HC32F460_GPIO_OUTRES_RATE) != 0) {
-        amhw_hc32f460_gpio_pin_driver_capability(p_hw_gpio, AM_ZMF159_GPIO_OUTRES_RATE_GET(flags), pin);
+        amhw_hc32f460_gpio_pin_driver_capability(p_hw_gpio, AM_HC32F460_GPIO_OUTRES_RATE_GET(flags), pin);
     }
 
     /* 设置管脚的复用功能 */
     if ((flags & AM_HC32F460_GPIO_FUNEN) != 0) {
-        amhw_hc32f460_gpio_pin_afr_set(p_hw_gpio, AM_ZMF159_GPIO_FUNC_GET(flags), pin);
+        amhw_hc32f460_gpio_pin_afr_set(p_hw_gpio, AM_HC32F460_GPIO_FUNC_GET(flags), pin);
     }
     return AM_OK;
 }
@@ -361,6 +360,41 @@ int am_gpio_toggle (int pin)
  */
 int am_gpio_trigger_cfg (int pin, uint32_t flag)
 {
+    uint8_t pin_pos = 0u;
+    en_portx_t en_portx = AMHW_HC32F460_GPIO_PORT_A;
+
+    __pin_calc(pin, &en_portx, &pin_pos);
+
+    __GPIO_DEVINFO_DECL(p_gpio_devinfo, __gp_gpio_dev);
+
+    amhw_hc32f460_gpio_t     *p_hw_gpio  = NULL;
+
+    uint8_t                 slot       = pin & 0x0f;
+
+    if (__gp_gpio_dev == NULL) {
+        return -AM_ENXIO;
+    }
+
+    p_hw_gpio = (amhw_hc32f460_gpio_t *)p_gpio_devinfo->gpio_regbase;
+
+
+    if (slot > (p_gpio_devinfo->exti_num_max - 1)) {
+        return -AM_ENOSPC;
+    }
+
+    if (p_gpio_devinfo->p_infomap[slot] != pin) {
+        return -AM_EINVAL;
+    }
+
+    /* 使用GPIO功能 */
+    //__am_zlg217_peripheral_remap_clear(pin);
+
+    /* 设置管脚为输入方向 */
+    amhw_hc32f460_gpio_pin_dir_input(p_hw_gpio, pin);
+
+    amhw_hc32f460_gpio_pin_out_high(p_hw_gpio, pin);
+
+    amhw_hc32f460_intc_pin_ext_int_trigger_cfg(pin_pos, flag);
     return AM_OK;
 }
 
@@ -369,6 +403,11 @@ int am_gpio_trigger_cfg (int pin, uint32_t flag)
  */
 int am_gpio_trigger_on (int pin)
 {
+    __GPIO_DEVINFO_DECL(p_gpio_devinfo, __gp_gpio_dev);
+
+    amhw_hc32f460_gpio_t *p_hw_gpio = (amhw_hc32f460_gpio_t *)p_gpio_devinfo->gpio_regbase;
+
+    amhw_hc32f460_gpio_pin_ext_int_enable(p_hw_gpio, pin);
     return AM_OK;
 }
 
@@ -377,6 +416,11 @@ int am_gpio_trigger_on (int pin)
  */
 int am_gpio_trigger_off (int pin)
 {
+    __GPIO_DEVINFO_DECL(p_gpio_devinfo, __gp_gpio_dev);
+
+    amhw_hc32f460_gpio_t *p_hw_gpio = (amhw_hc32f460_gpio_t *)p_gpio_devinfo->gpio_regbase;
+
+    amhw_hc32f460_gpio_pin_ext_int_disable(p_hw_gpio, pin);
     return AM_OK;
 }
 
@@ -387,7 +431,39 @@ int am_gpio_trigger_connect (int           pin,
                              am_pfnvoid_t  pfn_callback,
                              void         *p_arg)
 {
-     return AM_OK;
+    __GPIO_DEVINFO_DECL(p_gpio_devinfo, __gp_gpio_dev);
+    uint8_t                  slot        = pin & 0x0f;
+    int key;
+
+    if (__gp_gpio_dev == NULL) {
+        return -AM_ENXIO;
+    }
+
+    if (AM_FALSE == __gp_gpio_dev->valid_flg) {
+        return -AM_ENODEV;
+    }
+
+    if (slot > (p_gpio_devinfo->exti_num_max - 1)) {
+        return -AM_ENOSPC;
+    }
+
+    key = am_int_cpu_lock();
+
+    if (p_gpio_devinfo->p_infomap[slot] == AM_HC32F460_GPIO_INVALID_PIN_MAP) {
+
+        p_gpio_devinfo->p_infomap[slot] = pin;
+        p_gpio_devinfo->p_triginfo[slot].p_arg = p_arg;
+        p_gpio_devinfo->p_triginfo[slot].pfn_callback = pfn_callback;
+
+    } else {
+
+        am_int_cpu_unlock(key);
+        return -AM_EINVAL;
+    }
+
+    am_int_cpu_unlock(key);
+
+    return AM_OK;
 }
 
 /**
@@ -397,7 +473,34 @@ int am_gpio_trigger_disconnect (int           pin,
                                 am_pfnvoid_t  pfn_callback,
                                 void         *p_arg)
 {
-    return AM_OK;
+    __GPIO_DEVINFO_DECL(p_gpio_devinfo, __gp_gpio_dev);
+    uint8_t                  slot        = pin & 0x0f;
+    int key;
+
+    if (__gp_gpio_dev == NULL) {
+        return -AM_ENXIO;
+    }
+
+    if (slot > (p_gpio_devinfo->exti_num_max - 1)) {
+        return -AM_ENOSPC;
+    }
+
+    key = am_int_cpu_lock();
+
+    if (p_gpio_devinfo->p_infomap[slot] == pin) {
+
+        p_gpio_devinfo->p_infomap[slot] = AM_HC32F460_GPIO_INVALID_PIN_MAP;
+        p_gpio_devinfo->p_triginfo[slot].p_arg = NULL;
+        p_gpio_devinfo->p_triginfo[slot].pfn_callback = NULL;
+
+    } else {
+        am_int_cpu_unlock(key);
+        return -AM_EINVAL;
+    }
+
+    am_int_cpu_unlock(key);
+
+    return AM_OK;    return AM_OK;
 }
 
 /**
@@ -445,7 +548,7 @@ int am_hc32f460_gpio_init (am_hc32f460_gpio_dev_t           *p_dev,
         p_devinfo->p_triginfo[i].pfn_callback = NULL;
     }
 
-//    am_int_connect(p_devinfo->inum_pin[0], __port_exit0_int_isr, NULL);
+    am_int_connect(p_devinfo->inum_pin[0], IRQ128_Handler, NULL);
 //    am_int_connect(p_devinfo->inum_pin[1], __port_exit1_int_isr, NULL);
 //    am_int_connect(p_devinfo->inum_pin[2], __port_exit2_int_isr, NULL);
 //    am_int_connect(p_devinfo->inum_pin[3], __port_exit3_int_isr, NULL);
@@ -453,8 +556,8 @@ int am_hc32f460_gpio_init (am_hc32f460_gpio_dev_t           *p_dev,
 
 //    am_int_connect(p_devinfo->inum_pin[5], __port_exit9_5_int_isr, NULL);
 //    am_int_connect(p_devinfo->inum_pin[6], __port_exit15_10_int_isr, NULL);
-
-//    am_int_enable(p_devinfo->inum_pin[0]);
+    amhw_hc32f460_intc_int_vssel_bits_set(p_devinfo->inum_pin[0], 0xF);
+    am_int_enable(p_devinfo->inum_pin[0]);
 //    am_int_enable(p_devinfo->inum_pin[1]);
 //    am_int_enable(p_devinfo->inum_pin[2]);
 //    am_int_enable(p_devinfo->inum_pin[3]);
@@ -507,4 +610,264 @@ void am_hc32f460_gpio_deinit (void)
     }
 }
 
+void Extint00_IrqHandler(void)
+{
+    __GPIO_DEVINFO_DECL(p_gpio_devinfo, __gp_gpio_dev);
+
+    am_pfnvoid_t pfn_isr   = NULL;
+    void        *p_arg_tmp = NULL;
+
+    /* 获取有关回调函数及参数 */
+    pfn_isr   = p_gpio_devinfo->p_triginfo[0].pfn_callback;
+    p_arg_tmp = p_gpio_devinfo->p_triginfo[0].p_arg;
+
+    if (pfn_isr != NULL) {
+        pfn_isr(p_arg_tmp);
+    }
+}
+
+void Extint01_IrqHandler(void)
+{
+    __GPIO_DEVINFO_DECL(p_gpio_devinfo, __gp_gpio_dev);
+
+    am_pfnvoid_t pfn_isr   = NULL;
+    void        *p_arg_tmp = NULL;
+
+    /* 获取有关回调函数及参数 */
+    pfn_isr   = p_gpio_devinfo->p_triginfo[1].pfn_callback;
+    p_arg_tmp = p_gpio_devinfo->p_triginfo[1].p_arg;
+
+    if (pfn_isr != NULL) {
+        pfn_isr(p_arg_tmp);
+    }
+}
+
+void Extint02_IrqHandler(void)
+{
+    __GPIO_DEVINFO_DECL(p_gpio_devinfo, __gp_gpio_dev);
+
+    am_pfnvoid_t pfn_isr   = NULL;
+    void        *p_arg_tmp = NULL;
+
+    /* 获取有关回调函数及参数 */
+    pfn_isr   = p_gpio_devinfo->p_triginfo[2].pfn_callback;
+    p_arg_tmp = p_gpio_devinfo->p_triginfo[2].p_arg;
+
+    if (pfn_isr != NULL) {
+        pfn_isr(p_arg_tmp);
+    }
+}
+
+void Extint03_IrqHandler(void)
+{
+    __GPIO_DEVINFO_DECL(p_gpio_devinfo, __gp_gpio_dev);
+
+    am_pfnvoid_t pfn_isr   = NULL;
+    void        *p_arg_tmp = NULL;
+
+    /* 获取有关回调函数及参数 */
+    pfn_isr   = p_gpio_devinfo->p_triginfo[3].pfn_callback;
+    p_arg_tmp = p_gpio_devinfo->p_triginfo[3].p_arg;
+
+    if (pfn_isr != NULL) {
+        pfn_isr(p_arg_tmp);
+    }
+}
+
+void Extint04_IrqHandler(void)
+{
+    __GPIO_DEVINFO_DECL(p_gpio_devinfo, __gp_gpio_dev);
+
+    am_pfnvoid_t pfn_isr   = NULL;
+    void        *p_arg_tmp = NULL;
+
+    /* 获取有关回调函数及参数 */
+    pfn_isr   = p_gpio_devinfo->p_triginfo[4].pfn_callback;
+    p_arg_tmp = p_gpio_devinfo->p_triginfo[4].p_arg;
+
+    if (pfn_isr != NULL) {
+        pfn_isr(p_arg_tmp);
+    }
+}
+
+void Extint05_IrqHandler(void)
+{
+    __GPIO_DEVINFO_DECL(p_gpio_devinfo, __gp_gpio_dev);
+
+    am_pfnvoid_t pfn_isr   = NULL;
+    void        *p_arg_tmp = NULL;
+
+    /* 获取有关回调函数及参数 */
+    pfn_isr   = p_gpio_devinfo->p_triginfo[5].pfn_callback;
+    p_arg_tmp = p_gpio_devinfo->p_triginfo[5].p_arg;
+
+    if (pfn_isr != NULL) {
+        pfn_isr(p_arg_tmp);
+    }
+}
+
+void Extint06_IrqHandler(void)
+{
+    __GPIO_DEVINFO_DECL(p_gpio_devinfo, __gp_gpio_dev);
+
+    am_pfnvoid_t pfn_isr   = NULL;
+    void        *p_arg_tmp = NULL;
+
+    /* 获取有关回调函数及参数 */
+    pfn_isr   = p_gpio_devinfo->p_triginfo[6].pfn_callback;
+    p_arg_tmp = p_gpio_devinfo->p_triginfo[6].p_arg;
+
+    if (pfn_isr != NULL) {
+        pfn_isr(p_arg_tmp);
+    }
+}
+
+
+void Extint07_IrqHandler(void)
+{
+    __GPIO_DEVINFO_DECL(p_gpio_devinfo, __gp_gpio_dev);
+
+    am_pfnvoid_t pfn_isr   = NULL;
+    void        *p_arg_tmp = NULL;
+
+    /* 获取有关回调函数及参数 */
+    pfn_isr   = p_gpio_devinfo->p_triginfo[7].pfn_callback;
+    p_arg_tmp = p_gpio_devinfo->p_triginfo[7].p_arg;
+
+    if (pfn_isr != NULL) {
+        pfn_isr(p_arg_tmp);
+    }
+}
+
+void Extint08_IrqHandler(void)
+{
+    __GPIO_DEVINFO_DECL(p_gpio_devinfo, __gp_gpio_dev);
+
+    am_pfnvoid_t pfn_isr   = NULL;
+    void        *p_arg_tmp = NULL;
+
+    /* 获取有关回调函数及参数 */
+    pfn_isr   = p_gpio_devinfo->p_triginfo[8].pfn_callback;
+    p_arg_tmp = p_gpio_devinfo->p_triginfo[8].p_arg;
+
+    if (pfn_isr != NULL) {
+        pfn_isr(p_arg_tmp);
+    }
+}
+
+void Extint09_IrqHandler(void)
+{
+    __GPIO_DEVINFO_DECL(p_gpio_devinfo, __gp_gpio_dev);
+
+    am_pfnvoid_t pfn_isr   = NULL;
+    void        *p_arg_tmp = NULL;
+
+    /* 获取有关回调函数及参数 */
+    pfn_isr   = p_gpio_devinfo->p_triginfo[9].pfn_callback;
+    p_arg_tmp = p_gpio_devinfo->p_triginfo[9].p_arg;
+
+    if (pfn_isr != NULL) {
+        pfn_isr(p_arg_tmp);
+    }
+}
+
+void Extint10_IrqHandler(void)
+{
+    __GPIO_DEVINFO_DECL(p_gpio_devinfo, __gp_gpio_dev);
+
+    am_pfnvoid_t pfn_isr   = NULL;
+    void        *p_arg_tmp = NULL;
+
+    /* 获取有关回调函数及参数 */
+    pfn_isr   = p_gpio_devinfo->p_triginfo[10].pfn_callback;
+    p_arg_tmp = p_gpio_devinfo->p_triginfo[10].p_arg;
+
+    if (pfn_isr != NULL) {
+        pfn_isr(p_arg_tmp);
+    }
+}
+
+
+void Extint11_IrqHandler(void)
+{
+    __GPIO_DEVINFO_DECL(p_gpio_devinfo, __gp_gpio_dev);
+
+    am_pfnvoid_t pfn_isr   = NULL;
+    void        *p_arg_tmp = NULL;
+
+    /* 获取有关回调函数及参数 */
+    pfn_isr   = p_gpio_devinfo->p_triginfo[11].pfn_callback;
+    p_arg_tmp = p_gpio_devinfo->p_triginfo[11].p_arg;
+
+    if (pfn_isr != NULL) {
+        pfn_isr(p_arg_tmp);
+    }
+}
+
+void Extint12_IrqHandler(void)
+{
+    __GPIO_DEVINFO_DECL(p_gpio_devinfo, __gp_gpio_dev);
+
+    am_pfnvoid_t pfn_isr   = NULL;
+    void        *p_arg_tmp = NULL;
+
+    /* 获取有关回调函数及参数 */
+    pfn_isr   = p_gpio_devinfo->p_triginfo[12].pfn_callback;
+    p_arg_tmp = p_gpio_devinfo->p_triginfo[12].p_arg;
+
+    if (pfn_isr != NULL) {
+        pfn_isr(p_arg_tmp);
+    }
+}
+
+
+void Extint13_IrqHandler(void)
+{
+    __GPIO_DEVINFO_DECL(p_gpio_devinfo, __gp_gpio_dev);
+
+    am_pfnvoid_t pfn_isr   = NULL;
+    void        *p_arg_tmp = NULL;
+
+    /* 获取有关回调函数及参数 */
+    pfn_isr   = p_gpio_devinfo->p_triginfo[13].pfn_callback;
+    p_arg_tmp = p_gpio_devinfo->p_triginfo[13].p_arg;
+
+    if (pfn_isr != NULL) {
+        pfn_isr(p_arg_tmp);
+    }
+}
+
+
+void Extint14_IrqHandler(void)
+{
+    __GPIO_DEVINFO_DECL(p_gpio_devinfo, __gp_gpio_dev);
+
+    am_pfnvoid_t pfn_isr   = NULL;
+    void        *p_arg_tmp = NULL;
+
+    /* 获取有关回调函数及参数 */
+    pfn_isr   = p_gpio_devinfo->p_triginfo[14].pfn_callback;
+    p_arg_tmp = p_gpio_devinfo->p_triginfo[14].p_arg;
+
+    if (pfn_isr != NULL) {
+        pfn_isr(p_arg_tmp);
+    }
+}
+
+
+void Extint15_IrqHandler(void)
+{
+    __GPIO_DEVINFO_DECL(p_gpio_devinfo, __gp_gpio_dev);
+
+    am_pfnvoid_t pfn_isr   = NULL;
+    void        *p_arg_tmp = NULL;
+
+    /* 获取有关回调函数及参数 */
+    pfn_isr   = p_gpio_devinfo->p_triginfo[15].pfn_callback;
+    p_arg_tmp = p_gpio_devinfo->p_triginfo[15].p_arg;
+
+    if (pfn_isr != NULL) {
+        pfn_isr(p_arg_tmp);
+    }
+}
 /* end of file */
