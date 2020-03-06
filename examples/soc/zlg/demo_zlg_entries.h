@@ -1061,7 +1061,7 @@ void demo_zml166_adc_pt100_measure_entry(void                   *p_handle,
  * \param[in] gpa_index   ZML166 ADC增益倍数设置
  * \return 无
  */
-void dome_zml166_adc_vol_measure_entry(void                   *p_handle,
+void demo_zml166_adc_vol_measure_entry(void                   *p_handle,
                                        float                  *p_para,
                                        uint8_t                 gpa_index);
 
@@ -1072,7 +1072,7 @@ void dome_zml166_adc_vol_measure_entry(void                   *p_handle,
  * \param[in] type        热电偶类型
  * \return 无
  */
-void dome_zml166_adc_thermocouple_measure_entry(void              *p_handle,
+void demo_zml166_adc_thermocouple_measure_entry(void              *p_handle,
                                                 float             *p_para,
                                                 void              *temp_handle);
 
@@ -1087,7 +1087,12 @@ void demo_zml166_adc_vol_para_adjuet_entry(void                   *p_handle,
                                            am_uart_handle_t        uart_handle,
                                            float                  *p_para);
 
-
+/**
+ * \brief ZML165 ADC 电压测量程序
+ * \param[in] handle      ZML165 ADC 服务句柄
+ * \return 无
+ */
+void demo_zml165_adc_vol_measure_entry(void  *p_handle);
 
 /**
  * \brief CAN 中断例程入口

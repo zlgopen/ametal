@@ -12,30 +12,33 @@
 
 /**
  * \file
- * \brief MiniPort-ZLG72128 配置文件
+ * \brief 传感器 LIS3MDL 配置文件
  *
  * \internal
  * \par Modification history
- * - 1.00 17-07-13  tee, first implementation.
+ * - 1.00 19-02-22  YRZ, first implementation.
  * \endinternal
  */
 
-#ifndef __AM_HWCONF_MINIPORT_ZLG72128_H
-#define __AM_HWCONF_MINIPORT_ZLG72128_H
+#ifndef __AM_HWCONF_SENSOR_LIS3MDL_H
+#define __AM_HWCONF_SENSOR_LIS3MDL_H
 
 #include "ametal.h"
+#include "am_sensor.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
 /**
- * \brief MiniPort-ZLG72128 实例初始化
- *
- * \retval  AW_OK  初始化成功，可以使用通用数码管接口和按键接口操作ZLG72128
- * \retval   < 0   初始化失败，请检查C文件中各配置项是否合法
+ * \brief 传感器 LIS3MDL 设备实例化
  */
-int am_miniport_zlg72128_inst_init (void);
+am_sensor_handle_t am_sensor_lis3mdl_inst_init (void);
+
+/**
+ * \brief 传感器 LIS3MDL 实例解初始化
+ */
+am_err_t am_sensor_lis3mdl_inst_deinit (am_sensor_handle_t handle);
 
 #ifdef __cplusplus
 }

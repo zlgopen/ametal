@@ -46,7 +46,7 @@ void demo_am116_core_std_tim3_pwm_entry (void)
 {
     AM_DBG_INFO("demo am116_core std tim3 pwm!\r\n");
 
-    demo_std_timer_pwm_entry(am_zlg116_tim3_pwm_inst_init(), AM_ZLG_TIM_PWM_CH3);
+    demo_std_timer_pwm_entry(am_zlg116_tim3_pwm_inst_init(), AM_ZLG_TIM_PWM_CH1);
 }
 /** [src_am116_core_std_tim3_pwm] */
 
