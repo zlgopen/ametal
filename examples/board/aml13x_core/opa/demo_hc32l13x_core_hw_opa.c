@@ -12,11 +12,18 @@
 
 /**
  * \file
- * \brief OPA 电压跟随例程，通过 HW 层接口实现
+ * \brief OPA不同模式下输入输出关系例程，通过 HW 层接口实现
  *
  * - 实验现象：
  *
- *   PB00输入模拟电压。对应OPA输出引脚PA04也输出与PB00大小相等电压。
+ *    OPA_UintMode_Test
+ *    此时通过示波器观察PC06和PC07信号，PC07输出信号是PC06信号通信幅值是一致的。
+ *    OPA_ForWardMode_Test
+ *    此时通过示波器观察PC06和PC07信号，PC07输出信号是PC06信号通信幅值是其两倍。
+ *    OPA_GpMode_Test
+ *    PC06输入VCOR1.5V，PB15和PC07接电阻22K，PB15接电阻10K对地，
+ *    此时通过示波器观察PC06和PC07信号，PC07输出信号是PC06信号通信幅值是其两倍。
+ *
  *
  * \note
  *    1. 如需观察串口打印的调试信息，需要将 PIOA_10 引脚连接 PC 串口的 TXD，
@@ -47,12 +54,23 @@
 #include "am_hc32_opa.h"
 #include "demo_hc32_entries.h"
 
-#define OPA_MODE    AM_HC32_OPA_GENERAL  /**< \brief OPA通用模式*/
+/**
+ * \brief OPA通道
+ */
+#define OPA_CH    AM_HC32_OPA_CH1
+
+/**
+ * \brief OPA模式
+ */
+#define OPA_MODE    AM_HC32_OPA_MODE_UNITY_GAIN  /**< \brief OPA单位增益模式*/
+//#define OPA_MODE    AM_HC32_OPA_MODE_FORWARD_IN  /**< \biref 正向输入模式 */
+//#define OPA_MODE    AM_HC32_OPA_MODE_UNIVERSAL   /**< \biref 通用模式 */
+
 
 /**
  * \brief 例程入口
  */
-void demo_hc32l13x_core_hw_opa_one_entry (void)
+void demo_hc32l13x_core_hw_opa_entry (void)
 {
 
     AM_DBG_INFO("demo aml13x_core hw opa one test!\r\n");
@@ -63,10 +81,22 @@ void demo_hc32l13x_core_hw_opa_one_entry (void)
     /* 开启BGR时钟 */
     am_clk_enable (CLK_ADC_BGR);
 
-    /* PB00 OPA输入 */
-    am_gpio_pin_cfg (PIOB_0, PIOB_0_AIN);
+    /* OPA1 P N OUT端 */
+    am_gpio_pin_cfg (PIOC_6,  PIOC_6_AIN);
+    am_gpio_pin_cfg (PIOB_15, PIOB_15_AIN);
+    am_gpio_pin_cfg (PIOC_7,  PIOC_7_AOUT);
 
-    demo_hc32_hw_opa_one_entry(HC32_OPA, OPA_MODE);
+    //    /* OPA2 P N OUT端 */
+    //    am_gpio_pin_cfg (PIOB_13, PIOB_13_AIN);
+    //    am_gpio_pin_cfg (PIOB_12, PIOB_12_AIN);
+    //    am_gpio_pin_cfg (PIOB_14, PIOB_14_AOUT);
+    //
+    //    /* OPA3 P N OUT端 */
+    //    am_gpio_pin_cfg (PIOB_10, PIOB_10_AIN);
+    //    am_gpio_pin_cfg (PIOB_2,  PIOB_2_AIN);
+    //    am_gpio_pin_cfg (PIOB_11, PIOB_11_AOUT);
+
+    demo_hc32_hw_opa_entry(HC32_OPA, OPA_MODE, OPA_CH);
 }
 
 /* end of file */

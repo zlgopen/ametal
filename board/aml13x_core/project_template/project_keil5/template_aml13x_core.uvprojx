@@ -13,16 +13,16 @@
       <pCCUsed>5060061::V5.06 update 1 (build 61)::ARMCC</pCCUsed>
       <TargetOption>
         <TargetCommonOption>
-          <Device>HC32L130J8TA</Device>
+          <Device>HC32L136J8TA</Device>
           <Vendor>HDSC</Vendor>
-          <PackID>HDSC.HC32L130.1.0.0</PackID>
+          <PackID>HDSC.HC32L136.1.0.0</PackID>
           <PackURL>https://raw.githubusercontent.com/hdscmcu/pack/master/</PackURL>
           <Cpu>IROM(0x00000000,0x10000) IRAM(0x20000000,0x2000) CPUTYPE("Cortex-M0+") CLOCK(12000000) ELITTLE</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
           <StartupFile></StartupFile>
-          <FlashDriverDll>UL2CM3(-S0 -C0 -P0 -FD20000000 -FC1000 -FN1 -FF0FlashHC32L130_64K -FS00 -FL010000 -FP0($$Device:HC32L130J8TA$Flash\FlashHC32L130_64K.FLM))</FlashDriverDll>
+          <FlashDriverDll>UL2CM3(-S0 -C0 -P0 -FD20000000 -FC1000 -FN1 -FF0FlashHC32L136_64K -FS00 -FL010000 -FP0($$Device:HC32L136J8TA$Flash\FlashHC32L136_64K.FLM))</FlashDriverDll>
           <DeviceId>0</DeviceId>
-          <RegisterFile>$$Device:HC32L130J8TA$Device\Include\HC32L130J8TA.h</RegisterFile>
+          <RegisterFile>$$Device:HC32L136J8TA$Device\Include\HC32L136J8TA.h</RegisterFile>
           <MemoryEnv></MemoryEnv>
           <Cmp></Cmp>
           <Asm></Asm>
@@ -32,7 +32,7 @@
           <SLE66CMisc></SLE66CMisc>
           <SLE66AMisc></SLE66AMisc>
           <SLE66LinkerMisc></SLE66LinkerMisc>
-          <SFDFile>$$Device:HC32L130J8TA$SVD\HC32L130J8TA.sfr</SFDFile>
+          <SFDFile>$$Device:HC32L136J8TA$SVD\HC32L136J8TA.sfr</SFDFile>
           <bCustSvd>0</bCustSvd>
           <UseEnv>0</UseEnv>
           <BinPath></BinPath>
@@ -371,7 +371,7 @@
             <vShortWch>0</vShortWch>
             <VariousControls>
               <MiscControls></MiscControls>
-              <Define>AM_VDEBUG AM_CORTEX_M0 HC32X3X</Define>
+              <Define>AM_VDEBUG AM_CORTEX_M0 HC32L136 HC32X3X</Define>
               <Undefine></Undefine>
               <IncludePath>..\..\..\..\3rdparty/CMSIS/Include;..\..\..\..\arch/arm/include;..\..\..\..\components/drivers/include;..\..\..\..\components/libc/armlib_adapter/include;..\..\..\..\components/libc/microlib_adapter/include;..\..\..\..\components/service/include;..\..\..\..\components/util/include;..\user_code;..\user_config;..\user_config/am_hwconf_usrcfg;..\user_config/am_servconf_usrcfg;..\..\..\..\board/bsp_common/include;..\..\..\..\examples/components;..\..\..\..\examples/soc/hdsc;..\..\..\..\examples/std;..\..\..\..\examples\board\am13x_core;..\..\..\..\interface;..\..\..\..\soc\hdsc\hc32;..\..\..\..\soc\hdsc\drivers\include\adc;..\..\..\..\soc\hdsc\drivers\include\adtim;..\..\..\..\soc\hdsc\drivers\include\aes;..\..\..\..\soc\hdsc\drivers\include\clk;..\..\..\..\soc\hdsc\drivers\include\clktrim;..\..\..\..\soc\hdsc\drivers\include\crc;..\..\..\..\soc\hdsc\drivers\include\dac;..\..\..\..\soc\hdsc\drivers\include\dma;..\..\..\..\soc\hdsc\drivers\include\flash;..\..\..\..\soc\hdsc\drivers\include\gpio;..\..\..\..\soc\hdsc\drivers\include\i2c;..\..\..\..\soc\hdsc\drivers\include\lcd;..\..\..\..\soc\hdsc\drivers\include\lpmode;..\..\..\..\soc\hdsc\drivers\include\lptim;..\..\..\..\soc\hdsc\drivers\include\lpuart;..\..\..\..\soc\hdsc\drivers\include\lvd;..\..\..\..\soc\hdsc\drivers\include\opa;..\..\..\..\soc\hdsc\drivers\include\pca;..\..\..\..\soc\hdsc\drivers\include\pcnt;..\..\..\..\soc\hdsc\drivers\include\ram;..\..\..\..\soc\hdsc\drivers\include\rcc;..\..\..\..\soc\hdsc\drivers\include\rtc;..\..\..\..\soc\hdsc\drivers\include\spi;..\..\..\..\soc\hdsc\drivers\include\tim;..\..\..\..\soc\hdsc\drivers\include\trng;..\..\..\..\soc\hdsc\drivers\include\uart;..\..\..\..\soc\hdsc\drivers\include\vc;..\..\..\..\soc\hdsc\drivers\include\wdt</IncludePath>
             </VariousControls>
@@ -1242,16 +1242,16 @@
       <pCCUsed>5060061::V5.06 update 1 (build 61)::ARMCC</pCCUsed>
       <TargetOption>
         <TargetCommonOption>
-          <Device>HC32F030K8TA</Device>
+          <Device>HC32L136J8TA</Device>
           <Vendor>HDSC</Vendor>
-          <PackID>HDSC.HC32F030.1.0.0</PackID>
+          <PackID>HDSC.HC32L136.1.0.0</PackID>
           <PackURL>https://raw.githubusercontent.com/hdscmcu/pack/master/</PackURL>
           <Cpu>IROM(0x00000000,0x10000) IRAM(0x20000000,0x2000) CPUTYPE("Cortex-M0+") CLOCK(12000000) ELITTLE</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
           <StartupFile></StartupFile>
-          <FlashDriverDll>UL2CM3(-S0 -C0 -P0 -FD20000000 -FC1000 -FN1 -FF0FlashHC32F030_64K -FS00 -FL010000 -FP0($$Device:HC32F030K8TA$Flash\FlashHC32F030_64K.FLM))</FlashDriverDll>
+          <FlashDriverDll>UL2CM3(-S0 -C0 -P0 -FD20000000 -FC1000 -FN1 -FF0FlashHC32L136_64K -FS00 -FL010000 -FP0($$Device:HC32L136J8TA$Flash\FlashHC32L136_64K.FLM))</FlashDriverDll>
           <DeviceId>0</DeviceId>
-          <RegisterFile>$$Device:HC32F030K8TA$Device\Include\HC32F030K8TA.h</RegisterFile>
+          <RegisterFile>$$Device:HC32L136J8TA$Device\Include\HC32L136J8TA.h</RegisterFile>
           <MemoryEnv></MemoryEnv>
           <Cmp></Cmp>
           <Asm></Asm>
@@ -1261,7 +1261,7 @@
           <SLE66CMisc></SLE66CMisc>
           <SLE66AMisc></SLE66AMisc>
           <SLE66LinkerMisc></SLE66LinkerMisc>
-          <SFDFile>$$Device:HC32F030K8TA$SVD\HC32F030K8TA.sfr</SFDFile>
+          <SFDFile>$$Device:HC32L136J8TA$SVD\HC32L136J8TA.sfr</SFDFile>
           <bCustSvd>0</bCustSvd>
           <UseEnv>0</UseEnv>
           <BinPath></BinPath>
@@ -1379,7 +1379,7 @@
             <RestoreSysVw>1</RestoreSysVw>
           </Target>
           <RunDebugAfterBuild>0</RunDebugAfterBuild>
-          <TargetSelection>6</TargetSelection>
+          <TargetSelection>1</TargetSelection>
           <SimDlls>
             <CpuDll></CpuDll>
             <CpuDllArguments></CpuDllArguments>
@@ -1393,7 +1393,7 @@
             <PeripheralDll></PeripheralDll>
             <PeripheralDllArguments></PeripheralDllArguments>
             <InitializationFile></InitializationFile>
-            <Driver>Segger\JL2CM3.dll</Driver>
+            <Driver>BIN\UL2CM3.DLL</Driver>
           </TargetDlls>
         </DebugOption>
         <Utilities>

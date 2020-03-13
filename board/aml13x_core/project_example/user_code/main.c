@@ -115,8 +115,8 @@ int am_main (void)
 //    demo_hc32l13x_core_std_lpuart_ringbuf_entry();
 //    demo_hc32l13x_core_hw_lvd_system_reset_entry ();
 //    demo_hc32l13x_core_hw_lvd_int_entry ();
-//    demo_hc32l13x_core_hw_opa_one_entry ();
-//    demo_hc32l13x_core_hw_opa_dac_entry ();
+//    demo_hc32l13x_core_hw_opa_entry ();
+//    demo_hc32l13x_core_std_opa_entry ();
 //    demo_hc32l13x_core_hw_dac_dma_entry ();
 //    demo_hc32l13x_core_std_dac_entry ();
 //    demo_hc32l13x_core_hw_vc_int_entry();

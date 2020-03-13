@@ -607,10 +607,11 @@ void demo_hc32_hw_lvd_int_entry (void *p_hw_lvd,
  *
  * \param[in] p_hw_opa :指向OPA寄存器指针
  * \param[in] mode     :OPA工作模式
+ * \param[in] ch       :OPA通道
  *
  * \retval :无
  */
-void demo_hc32_hw_opa_one_entry (void *p_hw_opa, uint8_t mode);
+void demo_hc32_hw_opa_entry (void *p_hw_opa, uint8_t mode, uint8_t ch);
 
 /**
  * \brief OPA DAC电压跟随例程，通过 HW 层接口实现

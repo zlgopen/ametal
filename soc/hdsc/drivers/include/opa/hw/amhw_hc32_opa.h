@@ -39,130 +39,491 @@ extern "C" {
  * \brief OPA - 寄存器组
  */
 typedef struct amhw_hc32_opa {
-         uint32_t  res1[12];     /**< \brief  保留 */
-    __IO uint32_t  opacr0;       /**< \brief  OPA 配置寄存器0 */
-         uint32_t  res2[2];      /**< \brief  保留 */
-    __IO uint32_t  opacr1;       /**< \brief  OPA 配置寄存器1 */
+    __IO uint32_t  opa_cr1;      /**< \brief  OPA通道1控制寄存器 */
+    __IO uint32_t  opa_cr2;      /**< \brief  OPA通道2控制寄存器 */
+    __IO uint32_t  opa_cr3;      /**< \brief  OPA通道3控制寄存器 */
 } amhw_hc32_opa_t;
 
 /**
- * \brief OPA 输出使能掩码
+ * \brief OPA 通道选择掩码
  */
-#define  AMHW_HC32_OPA_OEN1   (1U << 3U)
-#define  AMHW_HC32_OPA_OEN2   (1U << 4U)
-#define  AMHW_HC32_OPA_OEN3   (1U << 5U)
-#define  AMHW_HC32_OPA_OEN4   (1U << 6U)
+#define  AMHW_HC32_OPA_CH1   (1U)
+#define  AMHW_HC32_OPA_CH2   (2U)
+#define  AMHW_HC32_OPA_CH3   (3U)
 
 /**
- * \brief OPA 输出使能
+ * \brief OPA工作模式选择掩码
+ */
+#define AMHW_HC32_OPA_MODE_UNITY_GAIN         (1U)    /**< \biref 单位增益模式 */
+#define AMHW_HC32_OPA_MODE_FORWARD_IN         (2U)    /**< \biref 正向输入模式 */
+#define AMHW_HC32_OPA_MODE_OPPOSITE           (3U)    /**< \biref 反向输入模式 */
+#define AMHW_HC32_OPA_MODE_TWO_DIFF           (4U)    /**< \biref 两差分运放模式 */
+#define AMHW_HC32_OPA_MODE_UNIVERSAL          (5U)    /**< \biref 通用模式 */
+#define AMHW_HC32_OPA_MODE_CAS_OPPO           (6U)    /**< \biref 级联反向模式 */
+#define AMHW_HC32_OPA_MODE_CAS_FORWARD        (7U)    /**< \biref 级联正向模式 */
+
+/**
+ * \brief OPA 反向增益选择掩码
+ */
+#define AMHW_HC32_OPA_GAIN_14    (0U)   /**< \brief 14 Gain */
+#define AMHW_HC32_OPA_GAIN_7     (1U)   /**< \brief 7 Gain */
+#define AMHW_HC32_OPA_GAIN_13_3  (2U)   /**< \brief 13/3 Gain */
+#define AMHW_HC32_OPA_GAIN_3     (3U)   /**< \brief 3 Gain */
+#define AMHW_HC32_OPA_GAIN_5_3   (4U)   /**< \brief 5/3 Gain */
+#define AMHW_HC32_OPA_GAIN_1     (5U)   /**< \brief 1 Gain */
+#define AMHW_HC32_OPA_GAIN_1_3   (6U)   /**< \brief 1/3 Gain */
+#define AMHW_HC32_OPA_GAIN_11_5  (7U)   /**< \brief 11/5 Gain */
+
+#define AWHW_HC32_OPA_NO_GAIN    (8u)   /**< \brief 无增益 */
+/**
+ * \brief OPA 正向增益选择掩码
+ */
+#define AMHW_HC32_OPA_NONGAIN_16    (0U)   /**< \brief 14 Non-Gain */
+#define AMHW_HC32_OPA_NONGAIN_8     (1U)   /**< \brief 8 Non-Gain */
+#define AMHW_HC32_OPA_NONGAIN_16_3  (2U)   /**< \brief 16/3 Non-Gain */
+#define AMHW_HC32_OPA_NONGAIN_4     (3U)   /**< \brief 4 Non-Gain */
+#define AMHW_HC32_OPA_NONGAIN_8_3   (4U)   /**< \brief 8/3 Non-Gain */
+#define AMHW_HC32_OPA_NONGAIN_2     (5U)   /**< \brief 2 Non-Gain */
+#define AMHW_HC32_OPA_NONGAIN_4_3   (6U)   /**< \brief 4/3 Non-Gain */
+#define AMHW_HC32_OPA_NONGAIN_16_5  (7U)   /**< \brief 16/5 Non-Gain */
+
+/**
+ * \brief OPA 单位增益PGA模式配置
  *
  * \param[in] p_hw_opa : 指向OPA寄存器组基地址指针
- * \param[in] flag     : 输出x使能掩码，参考宏定义：OPA 输出使能掩码
+ * \param[in] chnel    : OPA通道
  *
  * \retval : 无
  */
 am_static_inline
-void amhw_hc32_opa_out_en (amhw_hc32_opa_t *p_hw_opa, uint32_t flag)
+void amhw_hc32_opa_unity_gain_mode (amhw_hc32_opa_t *p_hw_opa, uint8_t chnel)
 {
-    p_hw_opa->opacr0 |= flag;
+    switch(chnel){
+
+        case AMHW_HC32_OPA_CH1:
+            {
+                p_hw_opa->opa_cr1 |=  (0x3 << 10);
+                p_hw_opa->opa_cr1 &= ~(0x3 << 8);
+                p_hw_opa->opa_cr1 &= ~(0x3 << 16);
+                p_hw_opa->opa_cr1 |=  (0x1 << 3);
+                p_hw_opa->opa_cr1 &= ~(0x1 << 4);
+                p_hw_opa->opa_cr1 &= ~(0x1 << 2);
+            }
+            break;
+        case AMHW_HC32_OPA_CH2:
+            {
+                p_hw_opa->opa_cr2 |=  (0x3 << 10);
+                p_hw_opa->opa_cr2 &= ~(0x3 << 8);
+                p_hw_opa->opa_cr2 &= ~(0x3 << 16);
+                p_hw_opa->opa_cr2 |=  (0x1 << 3);
+                p_hw_opa->opa_cr2 &= ~(0x1 << 4);
+                p_hw_opa->opa_cr2 &= ~(0x1 << 2);
+            }
+            break;
+        case AMHW_HC32_OPA_CH3:
+            {
+                p_hw_opa->opa_cr3 |=  (0x3 << 10);
+                p_hw_opa->opa_cr3 &= ~(0x3 << 8);
+                p_hw_opa->opa_cr3 &= ~(0x3 << 16);
+                p_hw_opa->opa_cr3 |=  (0x1 << 3);
+                p_hw_opa->opa_cr3 &= ~(0x1 << 4);
+                p_hw_opa->opa_cr3 &= ~(0x1 << 2);
+            }
+            break;
+        default :
+            break;
+    }
+
 }
 
 /**
- * \brief OPA 输出禁能掩码
- */
-#define  AMHW_HC32_OPA_ODIS1   ~(1U << 3U)
-#define  AMHW_HC32_OPA_ODIS2   ~(1U << 4U)
-#define  AMHW_HC32_OPA_ODIS3   ~(1U << 5U)
-#define  AMHW_HC32_OPA_ODIS4   ~(1U << 6U)
-
-/**
- * \brief OPA 输出禁能
+ * \brief OPA 正向输入PGA模式配置
  *
  * \param[in] p_hw_opa : 指向OPA寄存器组基地址指针
- * \param[in] flag     : 输出x禁能掩码，参考宏定义：OPA 输出禁能掩码
+ * \param[in] chnel    : OPA通道
+ * \param[in] nongain  : 正向增益
  *
  * \retval : 无
  */
 am_static_inline
-void amhw_hc32_opa_out_dis (amhw_hc32_opa_t *p_hw_opa, uint32_t flag)
+void amhw_hc32_opa_forwar_in_mode (amhw_hc32_opa_t *p_hw_opa,
+                                   uint8_t          chnel,
+                                   uint8_t          nongain)
 {
-    p_hw_opa->opacr0 &= flag;
+    switch(chnel){
+
+        case AMHW_HC32_OPA_CH1:
+            {
+                p_hw_opa->opa_cr1 |=  (0x3 << 10);
+                p_hw_opa->opa_cr1 |=  (0x1 << 8);
+                p_hw_opa->opa_cr1 &= ~(0x3 << 16);
+                p_hw_opa->opa_cr1 &= ~(0x1 << 3);
+                p_hw_opa->opa_cr1 |=  (0x1 << 4);
+                p_hw_opa->opa_cr1 |=  (nongain << 12);
+                p_hw_opa->opa_cr1 &= ~(0x1 << 2);
+            }
+            break;
+        case AMHW_HC32_OPA_CH2:
+            {
+                p_hw_opa->opa_cr2 |=  (0x3 << 10);
+                p_hw_opa->opa_cr2 |=  (0x1 << 8);
+                p_hw_opa->opa_cr2 &= ~(0x3 << 16);
+                p_hw_opa->opa_cr2 &= ~(0x1 << 3);
+                p_hw_opa->opa_cr2 |=  (0x1 << 4);
+                p_hw_opa->opa_cr2 |=  (nongain << 12);
+                p_hw_opa->opa_cr2 &= ~(0x1 << 2);
+            }
+            break;
+        case AMHW_HC32_OPA_CH3:
+            {
+                p_hw_opa->opa_cr3 |=  (0x3 << 10);
+                p_hw_opa->opa_cr3 |=  (0x1 << 8);
+                p_hw_opa->opa_cr3 &= ~(0x3 << 16);
+                p_hw_opa->opa_cr3 &= ~(0x1 << 3);
+                p_hw_opa->opa_cr3 |=  (0x1 << 4);
+                p_hw_opa->opa_cr3 |=  (nongain << 12);
+                p_hw_opa->opa_cr3 &= ~(0x1 << 2);
+            }
+            break;
+        default :
+            break;
+    }
+
 }
 
 /**
- * \brief OPA DAC使用OP3单位增加缓存使能
+ * \brief OPA 反向输入PGA模式配置
  *
  * \param[in] p_hw_opa : 指向OPA寄存器组基地址指针
- *
- * \note : 与OPA使能不能同时使能
+ * \param[in] chnel    : OPA通道
+ * \param[in] gain     : 反向增益
  *
  * \retval : 无
  */
 am_static_inline
-void amhw_hc32_opabuf_en (amhw_hc32_opa_t *p_hw_opa)
+void amhw_hc32_opa_opposite_mode (amhw_hc32_opa_t *p_hw_opa,
+                                   uint8_t          chnel,
+                                   uint8_t          gain)
 {
-    p_hw_opa->opacr0 |= (1 << 2);
-    p_hw_opa->opacr0 &= ~(1 << 0);
+    switch(chnel){
+
+        case AMHW_HC32_OPA_CH1:
+            {
+                p_hw_opa->opa_cr1 |=  (0x3 << 10);
+                p_hw_opa->opa_cr1 |=  (0x1 << 8);
+                p_hw_opa->opa_cr1 |=  (0x2 << 16);
+                p_hw_opa->opa_cr1 &= ~(0x1 << 3);
+                p_hw_opa->opa_cr1 |=  (0x1 << 4);
+                p_hw_opa->opa_cr1 |=  (gain << 12);
+                p_hw_opa->opa_cr1 &= ~(0x1 << 2);
+            }
+            break;
+        case AMHW_HC32_OPA_CH2:
+            {
+                p_hw_opa->opa_cr2 |=  (0x3 << 10);
+                p_hw_opa->opa_cr2 |=  (0x1 << 8);
+                p_hw_opa->opa_cr2 |=  (0x2 << 16);
+                p_hw_opa->opa_cr2 &= ~(0x1 << 3);
+                p_hw_opa->opa_cr2 |=  (0x1 << 4);
+                p_hw_opa->opa_cr2 |=  (gain << 12);
+                p_hw_opa->opa_cr2 &= ~(0x1 << 2);
+            }
+            break;
+        case AMHW_HC32_OPA_CH3:
+            {
+                p_hw_opa->opa_cr3 |=  (0x3 << 10);
+                p_hw_opa->opa_cr3 |=  (0x1 << 8);
+                p_hw_opa->opa_cr3 |=  (0x2 << 16);
+                p_hw_opa->opa_cr3 &= ~(0x1 << 3);
+                p_hw_opa->opa_cr3 |=  (0x1 << 4);
+                p_hw_opa->opa_cr3 |=  (gain << 12);
+                p_hw_opa->opa_cr3 &= ~(0x1 << 2);
+            }
+            break;
+        default :
+            break;
+    }
+
 }
 
 /**
- * \brief OPA DAC使用OP3单位增加缓存禁能
+ * \brief OPA 两运放差分PGA模式配置
  *
  * \param[in] p_hw_opa : 指向OPA寄存器组基地址指针
+ * \param[in] chnel    : OPA通道
+ * \param[in] gain     : 反向增益
  *
  * \retval : 无
  */
 am_static_inline
-void amhw_hc32_opabuf_dis (amhw_hc32_opa_t *p_hw_opa)
+void amhw_hc32_opa_diff_mode (amhw_hc32_opa_t *p_hw_opa,
+                              uint8_t          chnel,
+                              uint8_t          gain)
 {
-    p_hw_opa->opacr0 &= ~(1 << 2);
+    switch(chnel){
+
+        case AMHW_HC32_OPA_CH1:
+            {
+                p_hw_opa->opa_cr1 |=  (0x3 << 10);
+                p_hw_opa->opa_cr1 &= ~(0x3 << 8);
+                p_hw_opa->opa_cr1 &= ~(0x3 << 16);
+                p_hw_opa->opa_cr1 |=  (0x1 << 3);
+                p_hw_opa->opa_cr1 |=  (0x1 << 4);
+                p_hw_opa->opa_cr1 |=  (gain << 12);
+                p_hw_opa->opa_cr1 &= ~(0x1 << 2);
+            }
+            break;
+        case AMHW_HC32_OPA_CH2:
+            {
+                p_hw_opa->opa_cr2 |=  (0x3 << 10);
+                p_hw_opa->opa_cr2 |=  (0x1 << 8);
+                p_hw_opa->opa_cr2 |=  (0x1 << 16);
+                p_hw_opa->opa_cr2 &= ~(0x1 << 3);
+                p_hw_opa->opa_cr2 |=  (0x1 << 4);
+                p_hw_opa->opa_cr2 &= ~(0x7 << 12);
+                p_hw_opa->opa_cr2 &= ~(0x1 << 2);
+            }
+            break;
+        case AMHW_HC32_OPA_CH3:
+            {
+                p_hw_opa->opa_cr3 |=  (0x3 << 10);
+                p_hw_opa->opa_cr3 |=  (0x1 << 8);
+                p_hw_opa->opa_cr3 &= ~(0x3 << 16);
+                p_hw_opa->opa_cr3 &= ~(0x1 << 3);
+                p_hw_opa->opa_cr3 &= ~(0x1 << 4);
+                p_hw_opa->opa_cr3 &= ~(0x7 << 12);
+                p_hw_opa->opa_cr3 &= ~(0x1 << 2);
+            }
+            break;
+        default :
+            break;
+    }
+
 }
 
 /**
- * \brief OPA 自动校零使能
+ * \brief OPA 通用运放模式配置
  *
  * \param[in] p_hw_opa : 指向OPA寄存器组基地址指针
+ * \param[in] chnel    : OPA通道
  *
  * \retval : 无
  */
 am_static_inline
-void amhw_hc32_opa_az_en (amhw_hc32_opa_t *p_hw_opa)
+void amhw_hc32_uinversal_mode (amhw_hc32_opa_t *p_hw_opa,
+                              uint8_t          chnel)
 {
-    p_hw_opa->opacr0 |= (1 << 1);
+    switch(chnel){
+
+        case AMHW_HC32_OPA_CH1:
+            {
+                p_hw_opa->opa_cr1 |=  (0x3 << 10);
+                p_hw_opa->opa_cr1 |=  (0x3 << 8);
+                p_hw_opa->opa_cr1 &= ~(0x3 << 16);
+                p_hw_opa->opa_cr1 &= ~(0x1 << 3);
+                p_hw_opa->opa_cr1 &= ~(0x1 << 4);
+                p_hw_opa->opa_cr1 |=  (0x5 << 12);
+                p_hw_opa->opa_cr1 |= (0x1 << 2);
+            }
+            break;
+        case AMHW_HC32_OPA_CH2:
+            {
+                p_hw_opa->opa_cr2 |=  (0x3 << 10);
+                p_hw_opa->opa_cr2 |=  (0x3 << 8);
+                p_hw_opa->opa_cr2 &= ~(0x3 << 16);
+                p_hw_opa->opa_cr2 &= ~(0x1 << 3);
+                p_hw_opa->opa_cr2 &= ~(0x1 << 4);
+                p_hw_opa->opa_cr2 |=  (0x5 << 12);
+                p_hw_opa->opa_cr2 |= (0x1 << 2);
+            }
+            break;
+        case AMHW_HC32_OPA_CH3:
+            {
+                p_hw_opa->opa_cr3 |=  (0x3 << 10);
+                p_hw_opa->opa_cr3 |=  (0x3 << 8);
+                p_hw_opa->opa_cr3 &= ~(0x3 << 16);
+                p_hw_opa->opa_cr3 &= ~(0x1 << 3);
+                p_hw_opa->opa_cr3 &= ~(0x1 << 4);
+                p_hw_opa->opa_cr3 |=  (0x5 << 12);
+                p_hw_opa->opa_cr3 |= (0x1 << 2);
+            }
+            break;
+        default :
+            break;
+    }
 }
 
 /**
- * \brief OPA 自动校零禁能
+ * \brief OPA 级联反向PGA模式配置
  *
  * \param[in] p_hw_opa : 指向OPA寄存器组基地址指针
+ * \param[in] chnel    : OPA通道
+ * \param[in] gain     : 反向增益
  *
  * \retval : 无
  */
 am_static_inline
-void amhw_hc32_opa_az_dis (amhw_hc32_opa_t *p_hw_opa)
+void amhw_hc32_cas_opposite_mode  (amhw_hc32_opa_t *p_hw_opa,
+                                   uint8_t          chnel,
+                                   uint8_t          gain)
 {
-    p_hw_opa->opacr0 &= ~(1 << 1);
+    switch(chnel){
+
+        case AMHW_HC32_OPA_CH1:
+            {
+                p_hw_opa->opa_cr1 |=  (0x3 << 10);
+                p_hw_opa->opa_cr1 |=  (0x1 << 8);
+                p_hw_opa->opa_cr1 |=  (0x2 << 16);
+                p_hw_opa->opa_cr1 &= ~(0x1 << 3);
+                p_hw_opa->opa_cr1 |=  (0x1 << 4);
+                p_hw_opa->opa_cr1 |=  (gain << 12);
+                p_hw_opa->opa_cr1 &= ~(0x1 << 2);
+            }
+            break;
+        case AMHW_HC32_OPA_CH2:
+            {
+                p_hw_opa->opa_cr2 |=  (0x3 << 10);
+                p_hw_opa->opa_cr2 |=  (0x1 << 8);
+                p_hw_opa->opa_cr2 |=  (0x1 << 16);
+                p_hw_opa->opa_cr2 &= ~(0x1 << 3);
+                p_hw_opa->opa_cr2 |=  (0x1 << 4);
+                p_hw_opa->opa_cr2 |=  (gain << 12);
+                p_hw_opa->opa_cr2 &= ~(0x1 << 2);
+            }
+            break;
+        case AMHW_HC32_OPA_CH3:
+            {
+                p_hw_opa->opa_cr3 |=  (0x3 << 10);
+                p_hw_opa->opa_cr3 |=  (0x1 << 8);
+                p_hw_opa->opa_cr3 |=  (0x1 << 16);
+                p_hw_opa->opa_cr3 &= ~(0x1 << 3);
+                p_hw_opa->opa_cr3 |=  (0x1 << 4);
+                p_hw_opa->opa_cr3 |=  (gain << 12);
+                p_hw_opa->opa_cr3 &= ~(0x1 << 2);
+            }
+            break;
+        default :
+            break;
+    }
+}
+
+/**
+ * \brief OPA 级联正向PGA模式配置
+ *
+ * \param[in] p_hw_opa : 指向OPA寄存器组基地址指针
+ * \param[in] chnel    : OPA通道
+ * \param[in] nongain  : 正向增益
+ *
+ * \retval : 无
+ */
+am_static_inline
+void amhw_hc32_cas_forward_mode  (amhw_hc32_opa_t *p_hw_opa,
+                                   uint8_t          chnel,
+                                   uint8_t          nongain)
+{
+    switch(chnel){
+
+        case AMHW_HC32_OPA_CH1:
+            {
+                p_hw_opa->opa_cr1 |=  (0x3 << 10);
+                p_hw_opa->opa_cr1 |=  (0x1 << 8);
+                p_hw_opa->opa_cr1 &= ~(0x3 << 16);
+                p_hw_opa->opa_cr1 &= ~(0x1 << 3);
+                p_hw_opa->opa_cr1 |=  (0x1 << 4);
+                p_hw_opa->opa_cr1 |=  (nongain << 12);
+                p_hw_opa->opa_cr1 &= ~(0x1 << 2);
+            }
+            break;
+        case AMHW_HC32_OPA_CH2:
+            {
+                p_hw_opa->opa_cr2 |=  (0x2 << 10);
+                p_hw_opa->opa_cr2 |=  (0x1 << 8);
+                p_hw_opa->opa_cr2 &= ~(0x3 << 16);
+                p_hw_opa->opa_cr2 &= ~(0x1 << 3);
+                p_hw_opa->opa_cr2 |=  (0x1 << 4);
+                p_hw_opa->opa_cr2 |=  (nongain << 12);
+                p_hw_opa->opa_cr2 &= ~(0x1 << 2);
+            }
+            break;
+        case AMHW_HC32_OPA_CH3:
+            {
+                p_hw_opa->opa_cr3 |=  (0x2 << 10);
+                p_hw_opa->opa_cr3 |=  (0x1 << 8);
+                p_hw_opa->opa_cr3 &= ~(0x3 << 16);
+                p_hw_opa->opa_cr3 &= ~(0x1 << 3);
+                p_hw_opa->opa_cr3 |=  (0x1 << 4);
+                p_hw_opa->opa_cr3 |=  (nongain << 12);
+                p_hw_opa->opa_cr3 &= ~(0x1 << 2);
+            }
+            break;
+        default :
+            break;
+    }
+
+}
+
+/**
+ * \brief OPA IO端口与内部连接控制宏
+ */
+#define AWHW_HC32_OPA_PO_EN   (1U)     /* 使能IO端口与内部连接 */
+#define AWHW_HC32_OPA_PO_DIS  (0U)     /* 禁能IO端口与内部连接 */
+
+/**
+ * \brief OPA IO端口与内部连接控制
+ *
+ * \param[in] p_hw_opa : 指向OPA寄存器组基地址指针
+ * \param[in] chnel    : OPA通道
+ * \param[in] opt      : 使能或者禁能，参考上面宏定义
+ *
+ * \retval : 无
+ */
+am_static_inline
+void amhw_hc32_opa_po_ctrl(amhw_hc32_opa_t *p_hw_opa, uint8_t chnel, uint8_t opt)
+{
+    switch (chnel){
+
+        case AMHW_HC32_OPA_CH1:
+            if (opt){
+                p_hw_opa->opa_cr1 |= (0x1 << 15);
+            }else{
+                p_hw_opa->opa_cr1 &= ~(0x1 << 15);
+            }
+            break;
+        case AMHW_HC32_OPA_CH2:
+            if (opt){
+                p_hw_opa->opa_cr2 |= (0x1 << 15);
+            }else{
+                p_hw_opa->opa_cr2 &= ~(0x1 << 15);
+            }
+            break;
+        case AMHW_HC32_OPA_CH3:
+            if (opt){
+                p_hw_opa->opa_cr3 |= (0x1 << 15);
+            }else{
+                p_hw_opa->opa_cr3 &= ~(0x1 << 15);
+            }
+            break;
+        default:
+            break;
+    }
 }
 
 /**
  * \brief OPA 使能
- *
  * \param[in] p_hw_opa : 指向OPA寄存器组基地址指针
- *
- * \note : 与OPABUF使能不能同时使能
  *
  * \retval : 无
  */
 am_static_inline
 void amhw_hc32_opa_en (amhw_hc32_opa_t *p_hw_opa)
 {
-    p_hw_opa->opacr0 |= (1 << 0);
-    p_hw_opa->opacr0 &= ~(1 << 2);
+    p_hw_opa->opa_cr1 |= (0x1 << 0);
+    p_hw_opa->opa_cr2 |= (0x1 << 0);
+    p_hw_opa->opa_cr3 |= (0x1 << 0);
 }
 
 /**
  * \brief OPA 禁能
- *
  * \param[in] p_hw_opa : 指向OPA寄存器组基地址指针
  *
  * \retval : 无
@@ -170,102 +531,24 @@ void amhw_hc32_opa_en (amhw_hc32_opa_t *p_hw_opa)
 am_static_inline
 void amhw_hc32_opa_dis (amhw_hc32_opa_t *p_hw_opa)
 {
-    p_hw_opa->opacr0 &= ~(1 << 0);
+    p_hw_opa->opa_cr1 &= ~(0x1 << 0);
+    p_hw_opa->opa_cr2 &= ~(0x1 << 0);
+    p_hw_opa->opa_cr3 &= ~(0x1 << 0);
 }
 
 /**
- * \brief 自动校准脉冲宽度设置
- */
-typedef enum amhw_hc32_opa_clk_sel {
-    AMHW_HC32_OPA_CLK_1 = 0,
-    AMHW_HC32_OPA_CLK_2,
-    AMHW_HC32_OPA_CLK_4,
-    AMHW_HC32_OPA_CLK_8,
-    AMHW_HC32_OPA_CLK_16,
-    AMHW_HC32_OPA_CLK_32,
-    AMHW_HC32_OPA_CLK_64,
-    AMHW_HC32_OPA_CLK_128,
-    AMHW_HC32_OPA_CLK_256,
-    AMHW_HC32_OPA_CLK_512,
-    AMHW_HC32_OPA_CLK_1024,
-    AMHW_HC32_OPA_CLK_2048,
-    AMHW_HC32_OPA_CLK_4096,
-}amhw_hc32_opa_clk_sel_t;
-
-/**
- * \brief OPA 自动校准脉冲宽度设置
- *
- * \param[in] p_hw_opa : 指向OPA寄存器组基地址指针
- * \param[in]  flag    : 校准时钟周期，参考枚举定义：自动校准脉冲宽度设置
- *
- * \retval : 无
- */
-am_static_inline
-void amhw_hc32_opa_clk_sel (amhw_hc32_opa_t *p_hw_opa, uint32_t flag)
-{
-    p_hw_opa->opacr1 = (p_hw_opa->opacr1 & (~(0xf << 4))) | (flag << 4);
-}
-
-/**
- * \brief OPA 自动校零选择掩码
- */
-#define  AMHW_HC32_OPA_AZ_SW      1U /**< \brief 软件校准 */
-#define  AMHW_HC32_OPA_AZ_SW_TRI  2U /**< \brief 软件触发校准 */
-#define  AMHW_HC32_OPA_AZ_ADC     3U /**< \brief ADC触发校准 */
-
-/**
- * \brief OPA 自动校零选择
- *
- * \param[in] p_hw_opa : 指向OPA寄存器组基地址指针
- * \param[in]  flag    : 自动校零方式，参考宏定义：OPA 自动校零选择掩码
- *
- * \retval : 无
- */
-am_static_inline
-void amhw_hc32_opa_az_way_sel (amhw_hc32_opa_t *p_hw_opa, uint32_t flag)
-{
-    if (flag == AMHW_HC32_OPA_AZ_ADC){
-        p_hw_opa->opacr1 |= (1 << 0);
-    }else if (flag == AMHW_HC32_OPA_AZ_SW){
-        p_hw_opa->opacr1 |= (1 << 3);
-    }else {
-        p_hw_opa->opacr1 &= ~(1 << 3);
-    }
-}
-
-/**
- * \brief OPA 校准启动掩码
- */
-#define AMHW_HC32_AZ_SW_START        (1U << 2U)  /**< \brief 软件校准启动 */
-#define AMHW_HC32_AZ_SW_TRI_START    (1U << 1U)  /**< \brief 软件触发校准启动 */
-
-/**
- * \brief OPA 软件、软件触发校准启动
- *
- * \param[in] p_hw_opa : 指向OPA寄存器组基地址指针
- * \param[in]  flag    : 自动校零方式，参考宏定义：OPA 校准启动掩码
- *
- * \retval : 无
- */
-am_static_inline
-void amhw_hc32_az_start (amhw_hc32_opa_t *p_hw_opa, uint32_t flag)
-{
-    p_hw_opa->opacr1 |= flag;
-}
-
-/**
- * \brief OPA 软件触发校准停止
- *
+ * \brief OPA 偏置电流选择
  * \param[in] p_hw_opa : 指向OPA寄存器组基地址指针
  *
  * \retval : 无
  */
 am_static_inline
-void amhw_hc32_az_stop (amhw_hc32_opa_t *p_hw_opa)
+void amhw_hc32_bias_set (amhw_hc32_opa_t *p_hw_opa)
 {
-    p_hw_opa->opacr1 &= ~(1 << 1);
+    p_hw_opa->opa_cr1 &= ~(0x7 << 5);
+    p_hw_opa->opa_cr2 &= ~(0x7 << 5);
+    p_hw_opa->opa_cr3 &= ~(0x7 << 5);
 }
-
 
 /**
  * @} amhw_if_hc32_opa
