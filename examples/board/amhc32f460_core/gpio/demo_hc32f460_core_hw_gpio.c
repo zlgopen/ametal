@@ -14,56 +14,47 @@
  * \brief GPIO 例程，通过 HW 层接口实现
  *
  * - 操作步骤：
- *   1. 将 J14 的 KEY 和 PIOA_8 短接在一起。
  *
  * - 实验现象：
  *   1. 按一次按键 LED0 灯熄灭，再按一次按键 LED0 灯亮，如此反复。
  *
- * \note
- *    LED0 需要短接 J9 跳线帽，才能被 PIOB_1 控制。
  *
  * \par 源代码
- * \snippet demo_am159_core_hw_gpio.c src_am159_core_hw_gpio
+ * \snippet demo_hc32f460_core_hw_gpio.c src_hc32f460_core_hw_gpio
  *
  * \internal
  * \par Modification History
- * - 1.00 17-04-15  nwt, first implementation
+ * - 1.00 20-01-16  cds, first implementation
  * \endinternal
  */
 
 /**
- * \addtogroup demo_if_am159_core_hw_gpio
- * \copydoc demo_am159_core_hw_gpio.c
+ * \addtogroup demo_if_hc32f460_core_hw_gpio
+ * \copydoc demo_hc32f460_core_hw_gpio.c
  */
 
-/** [src_am159_core_hw_gpio] */
+/** [src_hc32f460_core_hw_gpio] */
 #include <hc32f460_pin.h>
 #include <hw/amhw_hc32f460_gpio.h>
 #include "ametal.h"
 #include "am_clk.h"
 #include "am_vdebug.h"
-//#include "am_zmf159.h"
-//#include "demo_zlg_entries.h"
-//#include "demo_zmf159_core_entries.h"
-#include "hc32f460_regbase.h"
+#include "am_hc32f460.h"
+#include "demo_hc32f460_core_entries.h"
+#include "demo_hc32f460_entries.h"
 
-
-#define INPUT_PIN  PIOC_13 /**< \brief 输入引脚 */
-#define OUTPUT_PIN PIOE_6  /**< \brief 输出引脚 */
+#define INPUT_PIN  PIOD_3 /**< \brief 输入引脚 */
+#define OUTPUT_PIN PIOE_6 /**< \brief 输出引脚 */
 
 /**
  * \brief 例程入口
  */
 void demo_hc32f460_core_hw_gpio_entry (void)
 {
-    AM_DBG_INFO("demo zmf159_core hw gpio!\r\n");
+    AM_DBG_INFO("demo hc32f460_core hw gpio!\r\n");
 
-    /* 使能时钟 */
-//    am_clk_enable(CLK_IOPA);
-//    am_clk_enable(CLK_SYSCFG);
-
-    demo_zlg_hw_gpio_entry((amhw_hc32f460_gpio_t*)HC32F460_GPIO_BASE, INPUT_PIN, OUTPUT_PIN);
+    demo_hc32f460_hw_gpio_entry((void*)HC32F460_GPIO, INPUT_PIN, OUTPUT_PIN);
 }
-/** [src_am159_core_hw_gpio] */
+/** [src_hc32f460_core_hw_gpio] */
 
 /* end of file */

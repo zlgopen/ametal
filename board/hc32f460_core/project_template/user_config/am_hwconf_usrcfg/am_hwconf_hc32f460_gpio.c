@@ -21,60 +21,30 @@
  * \endinternal
  */
 
-//#include "am_zmf159.h"
 #include <am_hc32f460_gpio.h>
 #include <hc32f460_pin.h>
 #include "am_gpio.h"
 #include "am_clk.h"
 #include "hc32f460_regbase.h"
+#include "hc32f460_inum.h"
 
 
 /**
- * \addtogroup am_if_src_hwconf_zmf159_gpio
- * \copydoc am_hwconf_zmf159_gpio.c
+ * \addtogroup am_if_src_hwconf_hc32f460_gpio
+ * \copydoc am_hwconf_hc32f460_gpio.c
  * @{
  */
 
 /** \brief GPIO平台初始化 */
 void __hc32f460_plfm_gpio_init (void)
 {
-//    am_clk_enable(CLK_IOPA);
-//    am_clk_enable(CLK_IOPB);
-//    am_clk_enable(CLK_IOPC);
-//    am_clk_enable(CLK_IOPD);
-//    am_clk_enable(CLK_IOPE);
 
-//    /* 系统配置时钟使能(等价于AFIO时钟) */
-//    am_clk_enable(CLK_SYSCFG);
-
-//    am_zmf159_clk_reset(CLK_IOPA);
-//    am_zmf159_clk_reset(CLK_IOPB);
-//    am_zmf159_clk_reset(CLK_IOPC);
-//    am_zmf159_clk_reset(CLK_IOPD);
-//    am_zmf159_clk_reset(CLK_IOPE);
-
-//    am_zmf159_clk_reset(CLK_SYSCFG);
 }
 
 /** \brief GPIO平台解初始化 */
 void __hc32f460_plfm_gpio_deinit (void)
 {
-//    am_zmf159_clk_reset(CLK_IOPA);
-//    am_zmf159_clk_reset(CLK_IOPB);
-//    am_zmf159_clk_reset(CLK_IOPC);
-//    am_zmf159_clk_reset(CLK_IOPD);
-//    am_zmf159_clk_reset(CLK_IOPE);
 
-//    am_zmf159_clk_reset(CLK_SYSCFG);
-
-//    am_clk_disable(CLK_IOPA);
-//    am_clk_disable(CLK_IOPB);
-//    am_clk_disable(CLK_IOPC);
-//    am_clk_disable(CLK_IOPD);
-//    am_clk_disable(CLK_IOPE);
-
-//    /* 系统配置时钟禁能(等价于AFIO时钟) */
-//    am_clk_disable(CLK_SYSCFG);
 }
 
 /** \brief 引脚触发信息内存 */
@@ -85,27 +55,27 @@ static uint8_t __g_gpio_infomap[PIN_INT_MAX];
 
 /** \brief GPIO设备信息 */
 const am_hc32f460_gpio_devinfo_t __g_gpio_devinfo = {
-	HC32F460_GPIO_BASE,            /**< \brief GPIO控制器寄存器块基址 */
-//    ZMF159_EXTI_BASE,            /**< \brief EXTI控制器寄存器块基址 */
-//    ZMF159_SYSCFG_BASE,          /**< \brief AFIO控制器寄存器块基址 */
-    0,            /**< \brief EXTI控制器寄存器块基址 */
-    0,          /**< \brief AFIO控制器寄存器块基址 */
+    HC32F460_GPIO_BASE,   /**< \brief GPIO控制器寄存器块基址 */
+    0,                    /**< \brief EXTI控制器寄存器块基址 */
+    0,                    /**< \brief AFIO控制器寄存器块基址 */
 
     {
-//        INUM_EXTI0,
-//        INUM_EXTI1,
-//        INUM_EXTI2,
-//        INUM_EXTI3,
-//        INUM_EXTI4,
-//        INUM_EXTI9_5,
-//        INUM_EXTI15_10,
-		0,
-		0,
-		0,
-		0,
-		0,
-		0,
-		0,
+        INUM_PORT_EIRQ0,
+        INUM_PORT_EIRQ1,
+        INUM_PORT_EIRQ2,
+        INUM_PORT_EIRQ3,
+        INUM_PORT_EIRQ4,
+        INUM_PORT_EIRQ5,
+        INUM_PORT_EIRQ6,
+        INUM_PORT_EIRQ7,
+        INUM_PORT_EIRQ8,
+        INUM_PORT_EIRQ9,
+        INUM_PORT_EIRQ10,
+        INUM_PORT_EIRQ11,
+        INUM_PORT_EIRQ12,
+        INUM_PORT_EIRQ13,
+        INUM_PORT_EIRQ14,
+        INUM_PORT_EIRQ15,
     },
 
     PIN_NUM,                       /**< \brief GPIO PIN数量 */
@@ -114,8 +84,8 @@ const am_hc32f460_gpio_devinfo_t __g_gpio_devinfo = {
     &__g_gpio_infomap[0],          /**< \brief GPIO 引脚外部事件信息 */
     &__g_gpio_triginfos[0],        /**< \brief GPIO PIN触发信息 */
 
-    __hc32f460_plfm_gpio_init,       /**< \brief GPIO 平台初始化 */
-    __hc32f460_plfm_gpio_deinit      /**< \brief GPIO 平台去初始化 */
+    __hc32f460_plfm_gpio_init,     /**< \brief GPIO 平台初始化 */
+    __hc32f460_plfm_gpio_deinit    /**< \brief GPIO 平台去初始化 */
 };
 
 /** \brief GPIO设备实例 */

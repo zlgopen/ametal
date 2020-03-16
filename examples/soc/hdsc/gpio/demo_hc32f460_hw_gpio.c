@@ -41,30 +41,18 @@
 #include "am_delay.h"
 #include "am_vdebug.h"
 
-
-#define  DELAY_CNT           (1000000ul)
-
-enum 
+enum
 {
     LEVEL_LOW  = 0,
-    LEVEL_HIGH                   
+    LEVEL_HIGH
 };
-
-
-static void delay_cnt(volatile uint32_t u32Cnt)
-{
-    while (u32Cnt-- > 0ul)
-    {
-
-    }
-}
 
 /**
  * \brief Àý³ÌÈë¿Ú
  */
-void demo_zlg_hw_gpio_entry (amhw_hc32f460_gpio_t *p_hw_gpio,
-                             int32_t          input_pin,
-                             int32_t          output_pin)
+void demo_hc32f460_hw_gpio_entry (amhw_hc32f460_gpio_t *p_hw_gpio,
+                                  int32_t          input_pin,
+                                  int32_t          output_pin)
 {
     uint32_t level = 0;
 
@@ -96,16 +84,15 @@ void demo_zlg_hw_gpio_entry (amhw_hc32f460_gpio_t *p_hw_gpio,
     amhw_hc32f460_gpio_pin_pu_enable(p_hw_gpio, output_pin);
 
     amhw_hc32f460_gpio_pin_out_high(p_hw_gpio, output_pin);
-    delay_cnt(DELAY_CNT);
     amhw_hc32f460_gpio_pin_out_low(p_hw_gpio, output_pin);
 
     while (1) {
         level = amhw_hc32f460_gpio_pin_get(p_hw_gpio, input_pin);
-        if (LEVEL_HIGH == level) {  
+        if (LEVEL_HIGH == level) {
             amhw_hc32f460_gpio_pin_toggle(p_hw_gpio, output_pin);
-            delay_cnt(DELAY_CNT);
+            am_mdelay(500);
         }
-    }    
+    }
 }
 /** [src_zlg_hw_gpio] */
 
