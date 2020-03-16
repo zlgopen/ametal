@@ -52,19 +52,19 @@ void demo_zml165_adc_vol_measure_entry(void  *p_handle)
     config.refo_off = AM_ZML165_ADC_VOUT_DISABLE;
 
     am_zml165_adc_config_load(handle, &config);
-    am_mdelay(200);
+	
     while(1){
         uint8_t i = 0;
         int32_t adc_val[10];
         float   vol = 0;
         am_adc_read(&handle->adc_serve, 0, (void *)adc_val, AM_NELEMENTS(adc_val));
-
-        for(i = 0 ; i < AM_NELEMENTS(adc_val); i++){
+        /* 丢弃前四个数据以保证设置生效后数据建立时间 */ 
+        for(i = 4 ; i < AM_NELEMENTS(adc_val); i++){
             if(adc_val[i] >= 0x800000)  {
                 adc_val[i] &= 0x7fffff;
                 adc_val[i] |= 0xff800000;
             }
-            vol += (adc_val[i] / (double)AM_NELEMENTS(adc_val));
+            vol += (adc_val[i] / ((double)AM_NELEMENTS(adc_val) - 4));
         }
 
         vol = (double)((double)(vol  / ((1 << 24) -1)) * handle->p_devinfo->vref);
