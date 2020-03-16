@@ -55,7 +55,7 @@ am_local void __hc32_flash_lockall(amhw_hc32_flash_t *p_hw_flash)
     AM_HC32_FLASH_BYPASS(p_hw_flash);
     p_hw_flash->slock0 = AM_HC32_FLASH_LOCK_ALL;
     AM_HC32_FLASH_BYPASS(p_hw_flash);
-    p_hw_flash->slock0 = AM_HC32_FLASH_LOCK_ALL;
+    p_hw_flash->slock1 = AM_HC32_FLASH_LOCK_ALL;
     AM_HC32_FLASH_BYPASS(p_hw_flash);
     p_hw_flash->slock2 = AM_HC32_FLASH_LOCK_ALL;
     AM_HC32_FLASH_BYPASS(p_hw_flash);

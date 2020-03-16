@@ -479,6 +479,8 @@ int __spi_mst_sm_event (am_hc32_spi_poll_dev_t *p_dev)
     /* Æ¬Ñ¡¹Ø±Õ */
     __spi_cs_off(p_dev, p_dev->p_cur_spi_dev);
 
+    p_cur_msg->status = AM_OK;
+
     return AM_OK;
 }
 
