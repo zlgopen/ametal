@@ -63,7 +63,6 @@ int am_hc32f460_clk_init (am_hc32f460_clk_dev_t           *p_dev,
                           const am_hc32f460_clk_devinfo_t *p_devinfo)
 
 {
-    uint8_t hclk_unit = 0;
 
     uint32_t value_fcg[4] = {0};
     __IO uint32_t timeout = 0ul;
@@ -225,7 +224,6 @@ int am_hc32f460_clk_init (am_hc32f460_clk_dev_t           *p_dev,
     /* 设置系统时钟源 */
     amhw_hc32f460_clk_set_sysclk_src(p_devinfo->sysclk_src);
 
-    __gp_clk_dev->p_devinfo->xth_osc;
     __gp_clk_dev->sys_type = p_devinfo->sysclk_src;
     __gp_clk_dev->hclk = p_dev->sys_clk / p_devinfo->hclk_div;
     __gp_clk_dev->pclk0 = p_dev->sys_clk / p_devinfo->pclk0_div;
@@ -435,12 +433,6 @@ int am_clk_disable (am_clk_id_t clk_id)
 int am_clk_rate_get (am_clk_id_t clk_id)
 {
     int clk = 0;
-    int peri, num;
-
-    peri = clk_id & 0xff;
-    uint32_t clk_pll_in = 0;
-    uint32_t clk_mpllout = 0;
-    am_clk_id_t clk_src = 0;
 
     if ((clk_id & 0xFFFFFFF0) == 0) {
         /* 时钟源ID */

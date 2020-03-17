@@ -33,6 +33,8 @@
 #include "am_gpio.h"
 #include "am_clk.h"
 #include "am_hc32f460.h"
+#include "demo_std_entries.h"
+#include "am_hc32f460_inst_init.h"
 #include "demo_hc32f460_core_entries.h"
 
 

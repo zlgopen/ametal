@@ -71,8 +71,8 @@ static volatile uint8_t g_tx_nbytes = 0;    /**< \brief 需要发送的总字节数 */
  * \note 发送缓冲区最好是全局的，保证在所有数据发送完成前，缓冲区没有被释放掉
  */
 static uint8_t uart_int_send (amhw_hc32f460_uart_t *p_hw_uart,
-                              const uint8_t   *p_buf,
-                              uint32_t         len)
+                              const uint8_t        *p_buf,
+                              uint32_t             len)
 {
     if (g_tx_index >= g_tx_nbytes)  {   /* 上次发送已经发送完成 */
         gp_tx_buf   = p_buf;            /* 重新定义发送缓冲器区 */
@@ -118,8 +118,7 @@ static void uart_hw_irq_rx_handler (void *p_arg)
  */
 static void uart_hw_irq_tx_handler (void *p_arg)
 {
-	amhw_hc32f460_uart_t *p_hw_uart = (amhw_hc32f460_uart_t *)p_arg;
-    uint8_t               data;
+    amhw_hc32f460_uart_t *p_hw_uart = (amhw_hc32f460_uart_t *)p_arg;
 
     /* 发送中断 */
     if(g_tx_index < g_tx_nbytes) {
@@ -140,9 +139,9 @@ static void uart_hw_irq_tx_handler (void *p_arg)
  * \brief UART hw 中断收发初始化
  */
 void uart_int_init (amhw_hc32f460_uart_t *p_hw_uart,
-                    void (* pfn_init)(void),
-                    uint32_t         clk_rate,
-                    unsigned long    uart_base)
+                    void               (* pfn_init)(void),
+                    int                   clk_rate,
+                    unsigned long         uart_base)
 {
     /* 停止位设置 */
     amhw_hc32f460_uart_stop_bit_sel(p_hw_uart  , AMHW_HC32F460_UART_STOP_1BIT);
@@ -186,7 +185,7 @@ void uart_int_init (amhw_hc32f460_uart_t *p_hw_uart,
  */
 void demo_hc32f460_hw_uart_int_entry (void             *p_hw_uart,
                                       void (* pfn_init)(void),
-                                      uint32_t         clk_rate,
+                                      int              clk_rate,
                                       unsigned long    uart_base)
 {
     amhw_hc32f460_uart_t *p_uart = (amhw_hc32f460_uart_t *)p_hw_uart;

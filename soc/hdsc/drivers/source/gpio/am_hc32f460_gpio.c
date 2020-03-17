@@ -46,62 +46,6 @@
 /** \bruef 指向GPIO设备的指针 */
 am_hc32f460_gpio_dev_t *__gp_gpio_dev;
 
-/**
- * \brief 外部中断线0中断函数
- */
-static void __port_exit0_int_isr (void * p_arg)
-{
-
-}
-
-/**
- * \brief 外部中断线1中断函数
- */
-static void __port_exit1_int_isr (void * p_arg)
-{
-
-}
-
-/**
- * \brief 外部中断线2中断函数
- */
-static void __port_exit2_int_isr (void * p_arg)
-{
-
-}
-
-/**
- * \brief 外部中断线2中断函数
- */
-static void __port_exit3_int_isr (void * p_arg)
-{
-
-}
-
-/**
- * \brief 外部中断线4中断函数
- */
-static void __port_exit4_int_isr (void * p_arg)
-{
-
-}
-
-/**
- * \brief 外部中断线9_5中断函数
- */
-static void __port_exit9_5_int_isr (void * p_arg)
-{
-
-}
-
-/**
- * \brief 外部中断线5_10中断函数
- */
-static void __port_exit15_10_int_isr (void * p_arg)
-{
-
-}
-
 /*******************************************************************************
   公共函数
 *******************************************************************************/
@@ -386,9 +330,6 @@ int am_gpio_trigger_cfg (int pin, uint32_t flag)
         return -AM_EINVAL;
     }
 
-    /* 使用GPIO功能 */
-    //__am_zlg217_peripheral_remap_clear(pin);
-
     /* 设置管脚为输入方向 */
     amhw_hc32f460_gpio_pin_dir_input(p_hw_gpio, pin);
 
@@ -533,15 +474,6 @@ int am_hc32f460_gpio_init (am_hc32f460_gpio_dev_t           *p_dev,
         return -AM_EINVAL;
     }
 
-//    for (i = 0 ; i < p_devinfo->pin_count ; i++) {
-//        if ((i == PIOA_13) || (i == PIOA_14) || (i == PIOA_15) ||
-//             (i == PIOB_3) || (i == PIOB_4)) {
-//            p_devinfo->p_remap[i] = AMHW_ZLG217_SWJ_CFG;
-//        } else {
-//            p_devinfo->p_remap[i] = AMHW_ZLG217_NO_REMAP;
-//        }
-//    }
-
     for (i = 0 ; i < p_devinfo->exti_num_max ; i++) {
         p_devinfo->p_infomap[i] = AM_HC32F460_GPIO_INVALID_PIN_MAP;
         p_devinfo->p_triginfo[i].p_arg = NULL;
@@ -549,21 +481,8 @@ int am_hc32f460_gpio_init (am_hc32f460_gpio_dev_t           *p_dev,
     }
 
     am_int_connect(p_devinfo->inum_pin[0], IRQ128_Handler, NULL);
-//    am_int_connect(p_devinfo->inum_pin[1], __port_exit1_int_isr, NULL);
-//    am_int_connect(p_devinfo->inum_pin[2], __port_exit2_int_isr, NULL);
-//    am_int_connect(p_devinfo->inum_pin[3], __port_exit3_int_isr, NULL);
-//    am_int_connect(p_devinfo->inum_pin[4], __port_exit4_int_isr, NULL);
-
-//    am_int_connect(p_devinfo->inum_pin[5], __port_exit9_5_int_isr, NULL);
-//    am_int_connect(p_devinfo->inum_pin[6], __port_exit15_10_int_isr, NULL);
     amhw_hc32f460_intc_int_vssel_bits_set(p_devinfo->inum_pin[0], 0xF);
     am_int_enable(p_devinfo->inum_pin[0]);
-//    am_int_enable(p_devinfo->inum_pin[1]);
-//    am_int_enable(p_devinfo->inum_pin[2]);
-//    am_int_enable(p_devinfo->inum_pin[3]);
-//    am_int_enable(p_devinfo->inum_pin[4]);
-//    am_int_enable(p_devinfo->inum_pin[5]);
-//    am_int_enable(p_devinfo->inum_pin[6]);
 
     p_dev->valid_flg = AM_TRUE;
 
@@ -592,18 +511,9 @@ void am_hc32f460_gpio_deinit (void)
         }
     }
 
-//    am_int_disable((p_gpio_devinfo->inum_pin)[0]);
-//    am_int_disable((p_gpio_devinfo->inum_pin)[1]);
-//    am_int_disable((p_gpio_devinfo->inum_pin)[2]);
+    am_int_disable(p_gpio_devinfo->inum_pin[0]);
+    am_int_disconnect(p_gpio_devinfo->inum_pin[0], IRQ128_Handler, NULL);
 
-//    am_int_disconnect(p_gpio_devinfo->inum_pin[0], __port_exit0_int_isr, NULL);
-//    am_int_disconnect(p_gpio_devinfo->inum_pin[1], __port_exit1_int_isr, NULL);
-//    am_int_disconnect(p_gpio_devinfo->inum_pin[2], __port_exit2_int_isr, NULL);
-//    am_int_disconnect(p_gpio_devinfo->inum_pin[3], __port_exit3_int_isr, NULL);
-//    am_int_disconnect(p_gpio_devinfo->inum_pin[4], __port_exit4_int_isr, NULL);
-
-//    am_int_disconnect(p_gpio_devinfo->inum_pin[5], __port_exit9_5_int_isr, NULL);
-//    am_int_disconnect(p_gpio_devinfo->inum_pin[6], __port_exit15_10_int_isr, NULL);
 
     if (__gp_gpio_dev->p_devinfo->pfn_plfm_deinit) {
         __gp_gpio_dev->p_devinfo->pfn_plfm_deinit();

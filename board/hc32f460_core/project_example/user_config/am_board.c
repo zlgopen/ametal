@@ -27,7 +27,6 @@
 #include "am_event_input_key.h"
 #include "am_event_category_input.h"
 #include "am_bsp_isr_defer_pendsv.h"
-//#include "am_zlg118.h"
 #include "am_bsp_system_heap.h"
 #include "am_bsp_delay_timer.h"
 #include "am_service_inst_init.h"
@@ -104,35 +103,35 @@ void am_board_init (void)
 #endif /* (AM_CFG_DELAY_ENABLE == 1) */
 //
 //#if (AM_CFG_LED_ENABLE == 1)
-//    am_zlg118_led_gpio_inst_init();
+//    am_hc32f460_led_gpio_inst_init();
 //#endif /* (AM_CFG_LED_ENABLE == 1) */
 //
-//#ifdef AM_VDEBUG
-//
+#ifdef AM_VDEBUG
+
 #if (AM_CFG_DEBUG_ENABLE == 1)
     dbg_handle = am_debug_uart_inst_init();
 #endif /* (AM_CFG_DEBUG_ENABLE == 1) */
-//
-//#endif /* AM_VDEBUG */
-//
-//#if (AM_CFG_STDLIB_ENABLE == 1)
-//    #ifdef __CC_ARM
-//        #ifdef __MICROLIB
-//
-//            /* 初始化Micro LIB */
-//            am_bsp_microlib_init(dbg_handle);
-//        #else
-//
-//            /* 初始化ARM LIB */
-//            am_bsp_armlib_init(dbg_handle);
-//        #endif /* __MICROLIB */
-//
-//    #elif defined(__GNUC__)
-//
-//        /* 初始化 NEW LIB 库 */
-//        am_bsp_newlib_init(dbg_handle);
-//    #endif
-//#endif /* (AM_CFG_STDLIB_ENABLE == 1) */
+
+#endif /* AM_VDEBUG */
+
+#if (AM_CFG_STDLIB_ENABLE == 1)
+    #ifdef __CC_ARM
+        #ifdef __MICROLIB
+
+            /* 初始化Micro LIB */
+            am_bsp_microlib_init(dbg_handle);
+        #else
+
+            /* 初始化ARM LIB */
+            am_bsp_armlib_init(dbg_handle);
+        #endif /* __MICROLIB */
+
+    #elif defined(__GNUC__)
+
+        /* 初始化 NEW LIB 库 */
+        am_bsp_newlib_init(dbg_handle);
+    #endif
+#endif /* (AM_CFG_STDLIB_ENABLE == 1) */
 //
 //#if ((AM_CFG_SOFTIMER_ENABLE == 1) || (AM_CFG_KEY_GPIO_ENABLE == 1))
 //    g_system_tick_timer_handle = am_system_tick_softimer_inst_init();

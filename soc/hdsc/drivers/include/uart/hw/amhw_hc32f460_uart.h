@@ -599,7 +599,7 @@ void amhw_hc32f460_uart_br_div_mantissa_set (amhw_hc32f460_uart_t    *p_hw_uart,
  */
 am_static_inline
 void amhw_hc32f460_uart_br_div_fraction_set (amhw_hc32f460_uart_t    *p_hw_uart,
-                                             uint32_t            value)
+                                             uint32_t                 value)
 {
 //    p_hw_uart->fra = (0xf & value);
 }
@@ -613,8 +613,8 @@ void amhw_hc32f460_uart_br_div_fraction_set (amhw_hc32f460_uart_t    *p_hw_uart,
  * \return baud rate / erro
  */
 int amhw_hc32f460_uart_baudrate_set (amhw_hc32f460_uart_t    *p_hw_uart,
-                                uint32_t            uart_clk,
-                                uint32_t            baud);
+                                     int                      uart_clk,
+                                     uint32_t                 baud);
 
 /**
  * \brief UART receive data(polling mode)
@@ -625,8 +625,8 @@ int amhw_hc32f460_uart_baudrate_set (amhw_hc32f460_uart_t    *p_hw_uart,
  * \return bytes
  */
 uint32_t amhw_hc32f460_uart_poll_receive (amhw_hc32f460_uart_t    *p_hw_uart,
-                                     uint8_t            *p_rxbuf,
-                                     uint32_t            nbytes);
+                                          uint8_t                 *p_rxbuf,
+                                          uint32_t                 nbytes);
 
 /**
  * \brief UART transfer data (polling mode)
@@ -637,8 +637,8 @@ uint32_t amhw_hc32f460_uart_poll_receive (amhw_hc32f460_uart_t    *p_hw_uart,
  * \return bytes
  */
 uint32_t amhw_hc32f460_uart_poll_send (amhw_hc32f460_uart_t     *p_hw_uart,
-                                  const uint8_t       *p_txbuf,
-                                  uint32_t             nbytes);
+                                       const uint8_t            *p_txbuf,
+                                       uint32_t                  nbytes);
 /**
  * \brief 使用匿名联合体段结束
  * @{

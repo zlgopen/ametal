@@ -41,7 +41,7 @@
 #include "am_vdebug.h"
 #include "am_hc32f460.h"
 #include "hw/amhw_hc32f460_gpio.h"
-#include "demo_hc32f460_core_entries.h"
+#include "demo_hc32f460_entries.h"
 
 /**
  * \brief Àý³ÌÈë¿Ú
@@ -51,7 +51,7 @@ void demo_hc32f460_core_hw_gpio_trigger_entry (void)
 
     AM_DBG_INFO("demo hc32f460_core hw gpio trigger!\r\n");
 
-    demo_hc32f460_hw_gpio_trigger_entry((void*)HC32F460_GPIO, PIOC_13);
+    demo_hc32f460_hw_gpio_trigger_entry(HC32F460_GPIO, PIOC_13);
 }
 /** [src_zlg118_hw_gpio_trigger] */
 

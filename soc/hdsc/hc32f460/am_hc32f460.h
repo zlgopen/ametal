@@ -42,9 +42,6 @@ extern "C" {
 /** \brief 时钟ID定义 */
 #include "hc32f460_clk.h"
 
-///** \brief DMA通道号定义 */
-//#include "zlg217_dma_chan.h"
-
 /**
  * \name Cortex-M4 内核处理器和外设设置
  * @{

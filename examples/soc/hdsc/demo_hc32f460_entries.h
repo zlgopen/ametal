@@ -56,7 +56,7 @@ void demo_hc32f460_hw_gpio_entry (void    *p_hw_gpio,
  *
  * \return 无
  */
-void demo_hc32f460_hw_gpio_trigger_entry (void *p_hw_gpio, int32_t pin);
+void demo_hc32f460_hw_gpio_trigger_entry (void *p_hw_gpio, int pin);
 
 /**
  * \brief UART 中断发送例程，通过 HW 层接口实现
@@ -71,9 +71,8 @@ void demo_hc32f460_hw_gpio_trigger_entry (void *p_hw_gpio, int32_t pin);
  */
 void demo_hc32f460_hw_uart_int_entry (void             *p_hw_uart,
                                       void (* pfn_init)(void),
-                                      uint32_t         clk_rate,
-                                      unsigned long    uart_base,
-                                      unsigned char    inum_uart);
+                                      int              clk_rate,
+                                      unsigned long    uart_base);
 
 /**
  * \brief UART 轮询方式例程，通过 HW 层接口实现

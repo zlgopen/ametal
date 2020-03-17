@@ -155,6 +155,43 @@ void amhw_hc32f460_intc_pin_ext_int_trigger_cfg (int pin_pos, int mode)
     HC32F460_INTC.EIRQCR[pin_pos] |= (1 << 7);     /* 开启滤波 */
 }
 
+/* 下降沿触发 */
+am_static_inline
+void amhw_hc32f460_intc_pin_falling_int_enable (int pin_pos)
+{
+    HC32F460_INTC.EIRQCR[pin_pos] &= ~(1 << 7);    /* 关闭数字滤波 */
+    HC32F460_INTC.EIRQCR[pin_pos] &= 0x3;          /* 清除模式设置位 */
+    HC32F460_INTC.EIRQCR[pin_pos] |= 0x00;         /* 设置触发模式 */
+    HC32F460_INTC.EIRQCR[pin_pos] |= (1 << 7);     /* 开启滤波 */
+}
+/* 上升沿触发 */
+am_static_inline
+void amhw_hc32f460_intc_pin_rising_int_enable (int pin_pos)
+{
+    HC32F460_INTC.EIRQCR[pin_pos] &= ~(1 << 7);    /* 关闭数字滤波 */
+    HC32F460_INTC.EIRQCR[pin_pos] &= 0x3;          /* 清除模式设置位 */
+    HC32F460_INTC.EIRQCR[pin_pos] |= 0x01;         /* 设置触发模式 */
+    HC32F460_INTC.EIRQCR[pin_pos] |= (1 << 7);     /* 开启滤波 */
+}
+/* 双边沿触发 */
+am_static_inline
+void amhw_hc32f460_intc_pin_double_edge_int_enable (int pin_pos)
+{
+    HC32F460_INTC.EIRQCR[pin_pos] &= ~(1 << 7);    /* 关闭数字滤波 */
+    HC32F460_INTC.EIRQCR[pin_pos] &= 0x3;          /* 清除模式设置位 */
+    HC32F460_INTC.EIRQCR[pin_pos] |= 0x02;         /* 设置触发模式 */
+    HC32F460_INTC.EIRQCR[pin_pos] |= (1 << 7);     /* 开启滤波 */
+}
+/* 低电平触发 */
+am_static_inline
+void amhw_hc32f460_intc_pin_low_int_enable (int pin_pos)
+{
+    HC32F460_INTC.EIRQCR[pin_pos] &= ~(1 << 7);    /* 关闭数字滤波 */
+    HC32F460_INTC.EIRQCR[pin_pos] &= 0x3;          /* 清除模式设置位 */
+    HC32F460_INTC.EIRQCR[pin_pos] |= 0x03;         /* 设置触发模式 */
+    HC32F460_INTC.EIRQCR[pin_pos] |= (1 << 7);     /* 开启滤波 */
+}
+
 am_static_inline
 void amhw_hc32f460_intc_int_vssel_bit_set (int inum, int bit)
 {
