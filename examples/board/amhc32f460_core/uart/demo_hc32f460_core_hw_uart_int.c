@@ -44,7 +44,8 @@
 #include "am_board.h"
 #include "am_gpio.h"
 #include "am_vdebug.h"
-#include "demo_hc32f460_core_entries.h"
+#include "am_clk.h"
+#include "demo_hc32f460_entries.h"
 
 static void __hc32f460_uart_pins_intit (void)
 {

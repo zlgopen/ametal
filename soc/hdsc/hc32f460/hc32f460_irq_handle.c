@@ -190,16 +190,21 @@ void IRQ128_Handler(void)
 #define __HC32F460_UART_CR1_RTOIE_MASK    (1 << 1)    /**< \brief 串口超时中断使能 */
 #define __HC32F460_UART_SR_RTOF_MASK      (1 << 8)    /**< \brief 超时中断标志 */
 
-extern am_hc32f460_uart_dev_t __g_uart1_dev;
-extern am_hc32f460_uart_dev_t __g_uart2_dev;
-extern am_hc32f460_uart_dev_t __g_uart3_dev;
-extern am_hc32f460_uart_dev_t __g_uart4_dev;
+
 #include "amhw_arm_systick.h"
 /**
  *******************************************************************************
  ** \brief Int No.136 share IRQ handler
  **
  ******************************************************************************/
+
+#if 0
+
+extern am_hc32f460_uart_dev_t __g_uart1_dev;
+extern am_hc32f460_uart_dev_t __g_uart2_dev;
+extern am_hc32f460_uart_dev_t __g_uart3_dev;
+extern am_hc32f460_uart_dev_t __g_uart4_dev;
+
 void IRQ136_Handler(void *parg)
 {
     uint32_t u32Tmp1 = 0ul;
@@ -239,27 +244,27 @@ void IRQ136_Handler(void *parg)
     u32Tmp1 = HC32F460_UART2->SR;
     u32Tmp2 = HC32F460_UART2->CR1;
 
-    /* USART Ch.1 Receive error */
+    /* USART Ch.2 Receive error */
     if ((u32Tmp2 & __HC32F460_UART_CR1_RIE_MASK) && (u32Tmp1 & __HC32F460_UART_SR_RX_ERROR_MASK) && (int_vssel136 & __HC32F460_INTC_VSSEL_USART2_EI_MASK))
     {
         UsartRxErr_IrqHandler(&__g_uart2_dev);
     }
-    /* USART Ch.1 Receive completed */
+    /* USART Ch.2 Receive completed */
     if ((u32Tmp2 & u32Tmp1 & __HC32F460_UART_CR1_RIE_MASK) && (int_vssel136 & __HC32F460_INTC_VSSEL_USART2_RI_MASK))
     {
         UsartRxEnd_IrqHandler(&__g_uart2_dev);
     }
-    /* USART Ch.1 Transmit data empty */
+    /* USART Ch.2 Transmit data empty */
     if ((u32Tmp2 & __HC32F460_UART_CR1_TXEIE_MASK) && (u32Tmp1 & __HC32F460_UART_SR_TXE_MASK) && (int_vssel136 & __HC32F460_INTC_VSSEL_USART2_TI_MASK))
     {
         UsartTxEmpty_IrqHandler(&__g_uart2_dev);
     }
-    /* USART Ch.1 Transmit completed */
+    /* USART Ch.2 Transmit completed */
     if ((u32Tmp2 & __HC32F460_UART_CR1_TCIE_MASK) && (u32Tmp1 & __HC32F460_UART_SR_TC_MASK) && (int_vssel136 & __HC32F460_INTC_VSSEL_USART2_TCI_MASK))
     {
         UsartTxEnd_IrqHandler(&__g_uart2_dev);
     }
-    /* USART Ch.1 Receive timeout */
+    /* USART Ch.2 Receive timeout */
     if ((u32Tmp2 & __HC32F460_UART_CR1_RTOIE_MASK) && (u32Tmp1 & __HC32F460_UART_SR_RTOF_MASK) && (int_vssel136 & __HC32F460_INTC_VSSEL_USART2_RTO_MASK))
     {
         UsartRxTO_IrqHandler(&__g_uart2_dev);
@@ -305,45 +310,43 @@ void IRQ137_Handler(void *parg)
         return;
     }
     /* USART Ch.3 Receive timeout */
-//    if ((u32Tmp2 & __HC32F460_UART_CR1_RTOIE_MASK) && (u32Tmp1 & __HC32F460_UART_SR_RTOF_MASK) && (int_vssel137 & __HC32F460_INTC_VSSEL_USART3_RTO_MASK))
-//    {
-//        UsartRxTO_IrqHandler(&__g_uart3_dev);
-//        return;
-//    }
+    if ((u32Tmp2 & __HC32F460_UART_CR1_RTOIE_MASK) && (u32Tmp1 & __HC32F460_UART_SR_RTOF_MASK) && (int_vssel137 & __HC32F460_INTC_VSSEL_USART3_RTO_MASK))
+    {
+        UsartRxTO_IrqHandler(&__g_uart3_dev);
+        return;
+    }
 
-//    u32Tmp1 = HC32F460_UART4->SR;
-//    u32Tmp2 = HC32F460_UART4->CR1;
-//
-//    /* USART Ch.1 Receive error */
-//    if ((u32Tmp2 & __HC32F460_UART_CR1_RIE_MASK) && (u32Tmp1 & __HC32F460_UART_SR_RX_ERROR_MASK) && (int_vssel137 & __HC32F460_INTC_VSSEL_USART4_EI_MASK))
-//    {
-//        UsartRxErr_IrqHandler(&__g_uart4_dev);
-//    }
-//    /* USART Ch.1 Receive completed */
-//    if ((u32Tmp2 & u32Tmp1 & __HC32F460_UART_CR1_RIE_MASK) && (int_vssel137 & __HC32F460_INTC_VSSEL_USART4_RI_MASK))
-//    {
-//        UsartRxEnd_IrqHandler(&__g_uart4_dev);
-//    }
-//    /* USART Ch.1 Transmit data empty */
-//    if ((u32Tmp2 & __HC32F460_UART_CR1_TXEIE_MASK) && (u32Tmp1 & __HC32F460_UART_SR_TXE_MASK) && (int_vssel137 & __HC32F460_INTC_VSSEL_USART4_TI_MASK))
-//    {
-//        UsartTxEmpty_IrqHandler(&__g_uart4_dev);
-//    }
-//    /* USART Ch.1 Transmit completed */
-//    if ((u32Tmp2 & __HC32F460_UART_CR1_TCIE_MASK) && (u32Tmp1 & __HC32F460_UART_SR_TC_MASK) && (int_vssel137 & __HC32F460_INTC_VSSEL_USART4_TCI_MASK))
-//    {
-//        UsartTxEnd_IrqHandler(&__g_uart4_dev);
-//    }
-//    /* USART Ch.1 Receive timeout */
-//    if ((u32Tmp2 & __HC32F460_UART_CR1_RTOIE_MASK) && (u32Tmp1 & __HC32F460_UART_SR_RTOF_MASK) && (int_vssel137 & __HC32F460_INTC_VSSEL_USART4_RTO_MASK))
-//    {
-//        UsartRxTO_IrqHandler(&__g_uart4_dev);
-//    }
-//    count2 = p_hw_systick->val;
-//    count_err = count1 - count2;
-//    uint32_t time = count_err/168000000;
+    u32Tmp1 = HC32F460_UART4->SR;
+    u32Tmp2 = HC32F460_UART4->CR1;
 
+    /* USART Ch.4 Receive error */
+    if ((u32Tmp2 & __HC32F460_UART_CR1_RIE_MASK) && (u32Tmp1 & __HC32F460_UART_SR_RX_ERROR_MASK) && (int_vssel137 & __HC32F460_INTC_VSSEL_USART4_EI_MASK))
+    {
+        UsartRxErr_IrqHandler(&__g_uart4_dev);
+    }
+    /* USART Ch.4 Receive completed */
+    if ((u32Tmp2 & u32Tmp1 & __HC32F460_UART_CR1_RIE_MASK) && (int_vssel137 & __HC32F460_INTC_VSSEL_USART4_RI_MASK))
+    {
+        UsartRxEnd_IrqHandler(&__g_uart4_dev);
+    }
+    /* USART Ch.4 Transmit data empty */
+    if ((u32Tmp2 & __HC32F460_UART_CR1_TXEIE_MASK) && (u32Tmp1 & __HC32F460_UART_SR_TXE_MASK) && (int_vssel137 & __HC32F460_INTC_VSSEL_USART4_TI_MASK))
+    {
+        UsartTxEmpty_IrqHandler(&__g_uart4_dev);
+    }
+    /* USART Ch.4 Transmit completed */
+    if ((u32Tmp2 & __HC32F460_UART_CR1_TCIE_MASK) && (u32Tmp1 & __HC32F460_UART_SR_TC_MASK) && (int_vssel137 & __HC32F460_INTC_VSSEL_USART4_TCI_MASK))
+    {
+        UsartTxEnd_IrqHandler(&__g_uart4_dev);
+    }
+    /* USART Ch.4 Receive timeout */
+    if ((u32Tmp2 & __HC32F460_UART_CR1_RTOIE_MASK) && (u32Tmp1 & __HC32F460_UART_SR_RTOF_MASK) && (int_vssel137 & __HC32F460_INTC_VSSEL_USART4_RTO_MASK))
+    {
+        UsartRxTO_IrqHandler(&__g_uart4_dev);
+    }
 }
+
+#endif
 /**
  *******************************************************************************
  ** \brief Int No.137 share IRQ handler

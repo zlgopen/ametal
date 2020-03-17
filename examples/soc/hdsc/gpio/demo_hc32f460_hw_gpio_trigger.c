@@ -52,7 +52,7 @@ static void __gpio_isr (void *p_arg)
 /**
  * \brief 例程入口
  */
-void demo_hc32f460_hw_gpio_trigger_entry (void *p_hw_gpio, int32_t pin)
+void demo_hc32f460_hw_gpio_trigger_entry (void *p_hw_gpio, int pin)
 {
 	amhw_hc32f460_gpio_t *p_gpio = (amhw_hc32f460_gpio_t *)p_hw_gpio;
 
@@ -69,7 +69,7 @@ void demo_hc32f460_hw_gpio_trigger_entry (void *p_hw_gpio, int32_t pin)
     amhw_hc32f460_gpio_pin_pu_enable(p_gpio, pin);
 
     /* 下降沿触发 */
-    amhw_hc32f460_gpio_pin_falling_int_enable(p_gpio, pin);
+    amhw_hc32f460_intc_pin_falling_int_enable(pin);
 
     /* 连接用户注册的中断回调函数 */
     am_gpio_trigger_connect(pin, __gpio_isr, NULL);

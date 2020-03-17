@@ -23,6 +23,7 @@
 #include "ametal.h"
 #include "am_uart.h"
 #include "am_vdebug.h"
+#include "am_hc32f460_inst_init.h"
 
 
 /**
@@ -66,7 +67,7 @@ am_uart_handle_t am_debug_uart_inst_init (void)
 
 #if (__DEBUG_UART == 3)
 
-    handle = am_hc32f460_uart3_inst_init();
+    handle = (am_uart_handle_t)am_hc32f460_uart3_inst_init();
 
     /* µ÷ÊÔ³õÊ¼»¯ */
     am_debug_init(handle, __DEBUG_BAUDRATE);

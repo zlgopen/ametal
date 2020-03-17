@@ -131,7 +131,9 @@ void Extint10_IrqHandler (void);
 void Extint11_IrqHandler (void);
 void Extint12_IrqHandler (void);
 void Extint13_IrqHandler (void);
-void Extint14_IrqHandler (void);/**
+void Extint14_IrqHandler (void);
+void Extint15_IrqHandler (void);
+/**
  * @}
  */
 

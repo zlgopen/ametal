@@ -29,20 +29,10 @@
 /*******************************************************************************
  * Functions declaration
  *******************************************************************************/
-static uint16_t m_u16RxData;
-static uint16_t COUNT;
-static uint16_t flag;
-static uint16_t COUNT_OPEN_TCI;
-static uint16_t COUNT_TX_STARTUP;
-static uint16_t FLAG_OPEN_TCI;
-static uint16_t FLAG_TE_INT;
-static uint16_t COUNT_RX;
-static uint16_t COUNT_RX_ERR;
-
 #if 1
-void __uart_irq_rx_handler(am_hc32f460_uart_dev_t *p_dev);
-void __uart_irq_tx_handler(am_hc32f460_uart_dev_t *p_dev);
-void __uart_irq_tci_handler(am_hc32f460_uart_dev_t *p_dev);
+void __uart_irq_rx_handler(void *p_arg);
+void __uart_irq_tx_handler(void *p_arg);
+void __uart_irq_tci_handler(void *p_arg);
 #endif
 
 /**
@@ -296,7 +286,8 @@ static int __uart_poll_getchar(void *p_drv, char *p_char)
 
 
 
-void __uart_irq_tci_handler(am_hc32f460_uart_dev_t *p_dev) {
+void __uart_irq_tci_handler(void *p_arg) {
+    am_hc32f460_uart_dev_t *p_dev = (am_hc32f460_uart_dev_t *)p_arg;
     amhw_hc32f460_uart_t *p_hw_uart =
             (amhw_hc32f460_uart_t *) p_dev->p_devinfo->uart_reg_base;
 
@@ -525,8 +516,9 @@ int __uart_opt_set(am_hc32f460_uart_dev_t *p_dev, uint32_t options)
 /**
  * \brief 串口接收中断服务
  */
-void __uart_irq_rx_handler(am_hc32f460_uart_dev_t *p_dev)
+void __uart_irq_rx_handler(void *p_arg)
 {
+    am_hc32f460_uart_dev_t *p_dev = (am_hc32f460_uart_dev_t *)p_arg;
     amhw_hc32f460_uart_t *p_hw_uart =
             (amhw_hc32f460_uart_t *) p_dev->p_devinfo->uart_reg_base;
     char data;
@@ -540,8 +532,9 @@ void __uart_irq_rx_handler(am_hc32f460_uart_dev_t *p_dev)
 /**
  * \brief 串口发送中断服务
  */
-void __uart_irq_tx_handler(am_hc32f460_uart_dev_t *p_dev)
+void __uart_irq_tx_handler(void *p_arg)
 {
+    am_hc32f460_uart_dev_t *p_dev = (am_hc32f460_uart_dev_t *)p_arg;
     amhw_hc32f460_uart_t *p_hw_uart =
             (amhw_hc32f460_uart_t *) p_dev->p_devinfo->uart_reg_base;
     char data;
@@ -690,7 +683,7 @@ am_uart_handle_t am_hc32f460_uart_init(am_hc32f460_uart_dev_t *p_dev,
         p_dev->p_devinfo->pfn_rs485_dir(AM_FALSE);
     }
 
-    return &(p_dev->uart_serv);
+    return (am_uart_handle_t)&(p_dev->uart_serv);
 }
 
 /**
@@ -698,8 +691,6 @@ am_uart_handle_t am_hc32f460_uart_init(am_hc32f460_uart_dev_t *p_dev,
  */
 void am_hc32f460_uart_deinit(am_hc32f460_uart_dev_t *p_dev)
 {
-    amhw_hc32f460_uart_t *p_hw_uart =
-            (amhw_hc32f460_uart_t *) p_dev->p_devinfo->uart_reg_base;
     p_dev->uart_serv.p_funcs = NULL;
     p_dev->uart_serv.p_drv = NULL;
 

@@ -62,7 +62,7 @@ uint32_t amhw_hc32f460_uart_poll_receive(amhw_hc32f460_uart_t *p_hw_uart,
  * \brief LPUART(Version 0) baud ratio set
  */
 int amhw_hc32f460_uart_baudrate_set(amhw_hc32f460_uart_t *p_hw_uart,
-        uint32_t uart_clk, uint32_t baud)
+        int uart_clk, uint32_t baud)
 {
     uint32_t B = 0ul;
     uint32_t C = 0ul;
@@ -73,7 +73,6 @@ int amhw_hc32f460_uart_baudrate_set(amhw_hc32f460_uart_t *p_hw_uart,
     uint32_t DIV_Fraction = 0xFFFFFFFFul;
     int enRet = AM_OK;
 
-    float B_true = 0.0f;
 
     /* 确保有效的 clock value */
     if ((uart_clk > 168000000)) { //todo
@@ -123,8 +122,6 @@ int amhw_hc32f460_uart_baudrate_set(amhw_hc32f460_uart_t *p_hw_uart,
             enRet = AM_ERROR;
         }
     }
-
-    B_true = C * (128 + DIV_Fraction) / (8 * (2 - OVER8) * (DIV_Integer + 1) * 256);
 
     if (AM_OK == enRet) {
         p_hw_uart->CR1_f.FBME = (DIV_Fraction > 0x7f) ? 0ul : 1ul;

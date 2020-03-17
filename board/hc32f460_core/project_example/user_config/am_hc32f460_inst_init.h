@@ -625,14 +625,14 @@ int am_hc32f460_gpio_inst_init (void);
 // */
 //void am_zlg118_spi1_poll_inst_deinit (am_spi_handle_t handle);
 //
-///**
-// * \brief SYSTICK 实例初始化，获得 TIMER 标准服务句柄
-// *
-// * \param 无
-// *
-// * \return TIMER 标准服务句柄，若为 NULL，表明初始化失败
-// */
-//am_timer_handle_t am_zlg118_systick_inst_init (void);
+/**
+ * \brief SYSTICK 实例初始化，获得 TIMER 标准服务句柄
+ *
+ * \param 无
+ *
+ * \return TIMER 标准服务句柄，若为 NULL，表明初始化失败
+ */
+am_timer_handle_t am_hc32f460_systick_inst_init (void);
 //
 ///**
 // * \brief SYSTICK 实例解初始化
@@ -1082,77 +1082,77 @@ int am_hc32f460_gpio_inst_init (void);
 // */
 //void am_zlg118_tim6_timing_inst_deinit (am_timer_handle_t handle);
 //
-///**
-// * \brief UART0 实例初始化，获得 UART 标准服务句柄
-// *
-// * \param 无
-// *
-// * \return UART 标准服务句柄，若为 NULL，表明初始化失败
-// */
-//am_uart_handle_t am_zlg118_uart0_inst_init (void);
-//
-///**
-// * \brief UART0 实例解初始化
-// *
-// * \param[in] handle 通过 am_zlg118_uart1_inst_init() 函数获得的 UART 标准服务句柄
-// *
-// * \return 无
-// */
-//void am_zlg118_uart0_inst_deinit (am_uart_handle_t handle);
-//
-///**
-// * \brief UART1 实例初始化，获得 UART 标准服务句柄
-// *
-// * \param 无
-// *
-// * \return UART 标准服务句柄，若为 NULL，表明初始化失败
-// */
-//am_uart_handle_t am_zlg118_uart1_inst_init (void);
-//
-///**
-// * \brief UART1 实例解初始化
-// *
-// * \param[in] handle 通过 am_zlg118_uart1_inst_init() 函数获得的 UART 标准服务句柄
-// *
-// * \return 无
-// */
-//void am_zlg118_uart1_inst_deinit (am_uart_handle_t handle);
-//
-///**
-// * \brief UART2 实例初始化，获得 UART 标准服务句柄
-// *
-// * \param 无
-// *
-// * \return UART 标准服务句柄，若为 NULL，表明初始化失败
-// */
-//am_uart_handle_t am_zlg118_uart2_inst_init (void);
-//
-///**
-// * \brief UART2 实例解初始化
-// *
-// * \param[in] handle 通过 am_zlg118_uart2_inst_init() 函数获得的 UART 标准服务句柄
-// *
-// * \return 无
-// */
-//void am_zlg118_uart2_inst_deinit (am_uart_handle_t handle);
-//
-///**
-// * \brief UART3 实例初始化，获得 UART 标准服务句柄
-// *
-// * \param 无
-// *
-// * \return UART 标准服务句柄，若为 NULL，表明初始化失败
-// */
-//am_uart_handle_t am_zlg118_uart3_inst_init (void);
-//
-///**
-// * \brief UART3 实例解初始化
-// *
-// * \param[in] handle 通过 am_zlg118_uart3_inst_init() 函数获得的 UART 标准服务句柄
-// *
-// * \return 无
-// */
-//void am_zlg118_uart3_inst_deinit (am_uart_handle_t handle);
+
+/**
+ * \brief UART1 实例初始化，获得 UART 标准服务句柄
+ *
+ * \param 无
+ *
+ * \return UART 标准服务句柄，若为 NULL，表明初始化失败
+ */
+am_uart_handle_t am_hc32f460_uart1_inst_init (void);
+
+/**
+ * \brief UART1 实例解初始化
+ *
+ * \param[in] handle 通过 am_hc32f460_uart1_inst_init() 函数获得的 UART 标准服务句柄
+ *
+ * \return 无
+ */
+void am_hc32f460_uart1_inst_deinit (am_uart_handle_t handle);
+
+/**
+ * \brief UART2 实例初始化，获得 UART 标准服务句柄
+ *
+ * \param 无
+ *
+ * \return UART 标准服务句柄，若为 NULL，表明初始化失败
+ */
+am_uart_handle_t am_hc32f460_uart2_inst_init (void);
+
+/**
+ * \brief UART2 实例解初始化
+ *
+ * \param[in] handle 通过 am_hc32f460_uart2_inst_init() 函数获得的 UART 标准服务句柄
+ *
+ * \return 无
+ */
+void am_hc32f460_uart2_inst_deinit (am_uart_handle_t handle);
+
+/**
+ * \brief UART3 实例初始化，获得 UART 标准服务句柄
+ *
+ * \param 无
+ *
+ * \return UART 标准服务句柄，若为 NULL，表明初始化失败
+ */
+am_uart_handle_t am_hc32f460_uart3_inst_init (void);
+
+/**
+ * \brief UART3 实例解初始化
+ *
+ * \param[in] handle 通过 am_hc32f460_uart3_inst_init() 函数获得的 UART 标准服务句柄
+ *
+ * \return 无
+ */
+void am_hc32f460_uart3_inst_deinit (am_uart_handle_t handle);
+/**
+ * \brief UART4 实例初始化，获得 UART 标准服务句柄
+ *
+ * \param 无
+ *
+ * \return UART 标准服务句柄，若为 NULL，表明初始化失败
+ */
+am_uart_handle_t am_hc32f460_uart4_inst_init (void);
+
+/**
+ * \brief UART4 实例解初始化
+ *
+ * \param[in] handle 通过 am_hc32f460_uart4_inst_init() 函数获得的 UART 标准服务句柄
+ *
+ * \return 无
+ */
+void am_hc32f460_uart4_inst_deinit (am_uart_handle_t handle);
 //
 ///**
 // * \brief LPUART0 实例初始化，获得 UART 标准服务句柄
@@ -1226,6 +1226,7 @@ int am_hc32f460_gpio_inst_init (void);
 // */
 //void am_zlg118_pcnt_inst_deinit (am_zlg118_pcnt_handle_t handle);
 
+am_uart_handle_t am_debug_uart_inst_init (void);
 
 /**
  * @}
