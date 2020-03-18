@@ -43,6 +43,7 @@
 #include "am_sensor.h"
 #include "am_sdcard.h"
 #include "am_dac.h"
+#include "am_hc32_opa.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -158,6 +159,16 @@ void demo_std_i2c_lm75_entry (am_temp_handle_t handle);
 void demo_std_i2c_master_async_entry (am_i2c_handle_t handle,
                                       uint32_t        eeprom_addr,
                                       uint32_t        test_len);
+
+/**
+ * \brief OPA例程，通过异步标准接口实现
+ *
+ * \param[in] handle      OPA 标准服务句柄
+ * \param[in] ch          OPA通道
+ *
+ * \return 无
+ */
+void demo_hc32_std_opa_entry (am_opa_handle_t p_handle, uint8_t ch);
 
 /**
  * \brief I2C 主机访问 EEPROM 设备例程，通过同步标准接口实现

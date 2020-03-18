@@ -632,7 +632,7 @@ void demo_hc32l13x_core_hw_lvd_int_entry (void);
 /**
  * \brief OPA电压跟随例程，通过 HW 层接口实现
  */
-void demo_hc32l13x_core_hw_opa_one_entry (void);
+void demo_hc32l13x_core_hw_opa_entry (void);
 
 /**
  * \brief OPA DAC电压跟随例程，通过 HW 层接口实现

@@ -60,6 +60,7 @@ extern "C" {
 
 #include "am_hc32_pca.h"
 #include "am_hc32_pcnt.h"
+#include "am_hc32_opa.h"
 //#include "amhw_hc32_rtc.h"
 //#include "am_hc32_pwr.h"
 #include "am_hwconf_hc32l13x_led_gpio.h"
@@ -1236,6 +1237,64 @@ am_hc32_pcnt_handle_t am_hc32_pcnt_inst_init (void);
  * \return 无
  */
 void am_hc32_pcnt_inst_deinit (am_hc32_pcnt_handle_t handle);
+
+/**
+ *  \brief HC32 OPA 实例初始化，获得OPA1标准服务句柄
+ *
+ *  \param 无
+ *
+ *  \return OPA1 服务句柄，若为 NULL，表明初始化失败
+ *
+ */
+am_opa_handle_t am_hc32_opa1_inst_init (void);
+
+/**
+ *  \brief HC32 OPA 实例初始化，获得OPA2标准服务句柄
+ *
+ *  \param 无
+ *
+ *  \return OPA2 服务句柄，若为 NULL，表明初始化失败
+ *
+ */
+am_opa_handle_t am_hc32_opa2_inst_init (void);
+
+/**
+ *  \brief HC32 OPA 实例初始化，获得OPA3标准服务句柄
+ *
+ *  \param 无
+ *
+ *  \return OPA3 服务句柄，若为 NULL，表明初始化失败
+ *
+ */
+am_opa_handle_t am_hc32_opa3_inst_init (void);
+
+/**
+ * \brief OPA 实例解初始化
+ *
+ * \param[in] handle 通过 am_hc32_opa_inst_init() 函数获得的 OPA1 服务句柄
+ *
+ * \return 无
+ */
+void am_hc32_opa1_inst_deinit (am_opa_handle_t handle);
+
+/**
+ * \brief OPA 实例解初始化
+ *
+ * \param[in] handle 通过 am_hc32_opa_inst_init() 函数获得的 OPA2 服务句柄
+ *
+ * \return 无
+ */
+void am_hc32_opa2_inst_deinit (am_opa_handle_t handle);
+
+/**
+ * \brief OPA 实例解初始化
+ *
+ * \param[in] handle 通过 am_hc32_opa_inst_init() 函数获得的 OPA3 服务句柄
+ *
+ * \return 无
+ */
+void am_hc32_opa3_inst_deinit (am_opa_handle_t handle);
+
 
 /**
  * \brief MICROPORT RTC 实例初始化，获得RTC 服务句柄

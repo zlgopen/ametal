@@ -10,20 +10,19 @@
       <TargetName>debug</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
-      <pCCUsed>5060750::V5.06 update 6 (build 750)::ARMCC</pCCUsed>
-      <uAC6>0</uAC6>
+      <pCCUsed>5060061::V5.06 update 1 (build 61)::ARMCC</pCCUsed>
       <TargetOption>
         <TargetCommonOption>
-          <Device>HC32L130J8TA</Device>
+          <Device>HC32L136J8TA</Device>
           <Vendor>HDSC</Vendor>
-          <PackID>HDSC.HC32L130.1.0.0</PackID>
+          <PackID>HDSC.HC32L136.1.0.0</PackID>
           <PackURL>https://raw.githubusercontent.com/hdscmcu/pack/master/</PackURL>
           <Cpu>IROM(0x00000000,0x10000) IRAM(0x20000000,0x2000) CPUTYPE("Cortex-M0+") CLOCK(12000000) ELITTLE</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
           <StartupFile></StartupFile>
-          <FlashDriverDll>UL2CM3(-S0 -C0 -P0 -FD20000000 -FC1000 -FN1 -FF0FlashHC32L130_64K -FS00 -FL010000 -FP0($$Device:HC32L130J8TA$Flash\FlashHC32L130_64K.FLM))</FlashDriverDll>
+          <FlashDriverDll>UL2CM3(-S0 -C0 -P0 -FD20000000 -FC1000 -FN1 -FF0FlashHC32L136_64K -FS00 -FL010000 -FP0($$Device:HC32L136J8TA$Flash\FlashHC32L136_64K.FLM))</FlashDriverDll>
           <DeviceId>0</DeviceId>
-          <RegisterFile>$$Device:HC32L130J8TA$Device\Include\HC32L130J8TA.h</RegisterFile>
+          <RegisterFile>$$Device:HC32L136J8TA$Device\Include\HC32L136J8TA.h</RegisterFile>
           <MemoryEnv></MemoryEnv>
           <Cmp></Cmp>
           <Asm></Asm>
@@ -33,7 +32,7 @@
           <SLE66CMisc></SLE66CMisc>
           <SLE66AMisc></SLE66AMisc>
           <SLE66LinkerMisc></SLE66LinkerMisc>
-          <SFDFile>$$Device:HC32L130J8TA$SVD\HC32L130J8TA.sfr</SFDFile>
+          <SFDFile>$$Device:HC32L136J8TA$SVD\HC32L136J8TA.sfr</SFDFile>
           <bCustSvd>0</bCustSvd>
           <UseEnv>0</UseEnv>
           <BinPath></BinPath>
@@ -126,6 +125,47 @@
             <HexOffset>0</HexOffset>
             <Oh166RecLen>16</Oh166RecLen>
           </OPTHX>
+          <Simulator>
+            <UseSimulator>0</UseSimulator>
+            <LoadApplicationAtStartup>1</LoadApplicationAtStartup>
+            <RunToMain>1</RunToMain>
+            <RestoreBreakpoints>1</RestoreBreakpoints>
+            <RestoreWatchpoints>1</RestoreWatchpoints>
+            <RestoreMemoryDisplay>1</RestoreMemoryDisplay>
+            <RestoreFunctions>1</RestoreFunctions>
+            <RestoreToolbox>1</RestoreToolbox>
+            <LimitSpeedToRealTime>0</LimitSpeedToRealTime>
+            <RestoreSysVw>1</RestoreSysVw>
+          </Simulator>
+          <Target>
+            <UseTarget>1</UseTarget>
+            <LoadApplicationAtStartup>1</LoadApplicationAtStartup>
+            <RunToMain>1</RunToMain>
+            <RestoreBreakpoints>1</RestoreBreakpoints>
+            <RestoreWatchpoints>1</RestoreWatchpoints>
+            <RestoreMemoryDisplay>1</RestoreMemoryDisplay>
+            <RestoreFunctions>0</RestoreFunctions>
+            <RestoreToolbox>1</RestoreToolbox>
+            <RestoreTracepoints>1</RestoreTracepoints>
+            <RestoreSysVw>1</RestoreSysVw>
+          </Target>
+          <RunDebugAfterBuild>0</RunDebugAfterBuild>
+          <TargetSelection>1</TargetSelection>
+          <SimDlls>
+            <CpuDll></CpuDll>
+            <CpuDllArguments></CpuDllArguments>
+            <PeripheralDll></PeripheralDll>
+            <PeripheralDllArguments></PeripheralDllArguments>
+            <InitializationFile></InitializationFile>
+          </SimDlls>
+          <TargetDlls>
+            <CpuDll></CpuDll>
+            <CpuDllArguments></CpuDllArguments>
+            <PeripheralDll></PeripheralDll>
+            <PeripheralDllArguments></PeripheralDllArguments>
+            <InitializationFile></InitializationFile>
+            <Driver>BIN\UL2CM3.DLL</Driver>
+          </TargetDlls>
         </DebugOption>
         <Utilities>
           <Flash1>
@@ -184,7 +224,6 @@
             <hadXRAM>0</hadXRAM>
             <uocXRam>0</uocXRam>
             <RvdsVP>0</RvdsVP>
-            <RvdsMve>0</RvdsMve>
             <hadIRAM2>0</hadIRAM2>
             <hadIROM2>0</hadIROM2>
             <StupSel>8</StupSel>
@@ -325,15 +364,11 @@
             <uThumb>0</uThumb>
             <uSurpInc>0</uSurpInc>
             <uC99>1</uC99>
-            <uGnu>0</uGnu>
             <useXO>0</useXO>
             <v6Lang>3</v6Lang>
             <v6LangP>0</v6LangP>
             <vShortEn>0</vShortEn>
             <vShortWch>0</vShortWch>
-            <v6Lto>0</v6Lto>
-            <v6WtE>0</v6WtE>
-            <v6Rtti>0</v6Rtti>
             <VariousControls>
               <MiscControls></MiscControls>
               <Define>AM_VDEBUG AM_CORTEX_M0 HC32L136 HC32X3X</Define>
@@ -351,7 +386,6 @@
             <NoWarn>0</NoWarn>
             <uSurpInc>0</uSurpInc>
             <useXO>0</useXO>
-            <uClangAs>0</uClangAs>
             <VariousControls>
               <MiscControls></MiscControls>
               <Define></Define>
@@ -1178,16 +1212,6 @@
               <FilePath>..\..\..\..\examples\board\aml13x_core\miniport_board\demo_hc32l13x_core_miniport_zlg72128.c</FilePath>
             </File>
             <File>
-              <FileName>demo_hc32l13x_core_opa_dac.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\aml13x_core\opa\demo_hc32l13x_core_opa_dac.c</FilePath>
-            </File>
-            <File>
-              <FileName>demo_hc32l13x_core_opa_one.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\aml13x_core\opa\demo_hc32l13x_core_opa_one.c</FilePath>
-            </File>
-            <File>
               <FileName>demo_hc32l13x_core_drv_rtc.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\board\aml13x_core\rtc\demo_hc32l13x_core_drv_rtc.c</FilePath>
@@ -1427,6 +1451,16 @@
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\board\aml13x_core\wdt\demo_hc32l13x_core_std_wdt.c</FilePath>
             </File>
+            <File>
+              <FileName>demo_hc32l13x_core_hw_opa.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\aml13x_core\opa\demo_hc32l13x_core_hw_opa.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_hc32l13x_core_std_opa.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\aml13x_core\opa\demo_hc32l13x_core_std_opa.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -1563,11 +1597,6 @@
               <FilePath>..\..\..\..\examples\soc\hdsc\lvd\demo_hc32_hw_lvd_system_reset.c</FilePath>
             </File>
             <File>
-              <FileName>demo_hc32_hw_opa_dac.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\soc\hdsc\opa\demo_hc32_hw_opa_dac.c</FilePath>
-            </File>
-            <File>
               <FileName>demo_hc32_hw_opa_one.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\soc\hdsc\opa\demo_hc32_hw_opa_one.c</FilePath>
@@ -1661,6 +1690,11 @@
               <FileName>demo_hc32_hw_i2c_slave_int.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\soc\hdsc\i2c\demo_hc32_hw_i2c_slave_int.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_hc32_std_opa.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\soc\hdsc\opa\demo_hc32_std_opa.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -2191,19 +2225,18 @@
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
       <pCCUsed>5060061::V5.06 update 1 (build 61)::ARMCC</pCCUsed>
-      <uAC6>0</uAC6>
       <TargetOption>
         <TargetCommonOption>
-          <Device>HC32F030K8TA</Device>
+          <Device>HC32L136J8TA</Device>
           <Vendor>HDSC</Vendor>
-          <PackID>HDSC.HC32F030.1.0.0</PackID>
+          <PackID>HDSC.HC32L136.1.0.0</PackID>
           <PackURL>https://raw.githubusercontent.com/hdscmcu/pack/master/</PackURL>
           <Cpu>IROM(0x00000000,0x10000) IRAM(0x20000000,0x2000) CPUTYPE("Cortex-M0+") CLOCK(12000000) ELITTLE</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
           <StartupFile></StartupFile>
-          <FlashDriverDll>UL2CM3(-S0 -C0 -P0 -FD20000000 -FC1000 -FN1 -FF0FlashHC32F030_64K -FS00 -FL010000 -FP0($$Device:HC32F030K8TA$Flash\FlashHC32F030_64K.FLM))</FlashDriverDll>
+          <FlashDriverDll>UL2CM3(-S0 -C0 -P0 -FD20000000 -FC1000 -FN1 -FF0FlashHC32L136_64K -FS00 -FL010000 -FP0($$Device:HC32L136J8TA$Flash\FlashHC32L136_64K.FLM))</FlashDriverDll>
           <DeviceId>0</DeviceId>
-          <RegisterFile>$$Device:HC32F030K8TA$Device\Include\HC32F030K8TA.h</RegisterFile>
+          <RegisterFile>$$Device:HC32L136J8TA$Device\Include\HC32L136J8TA.h</RegisterFile>
           <MemoryEnv></MemoryEnv>
           <Cmp></Cmp>
           <Asm></Asm>
@@ -2213,7 +2246,7 @@
           <SLE66CMisc></SLE66CMisc>
           <SLE66AMisc></SLE66AMisc>
           <SLE66LinkerMisc></SLE66LinkerMisc>
-          <SFDFile>$$Device:HC32F030K8TA$SVD\HC32F030K8TA.sfr</SFDFile>
+          <SFDFile>$$Device:HC32L136J8TA$SVD\HC32L136J8TA.sfr</SFDFile>
           <bCustSvd>0</bCustSvd>
           <UseEnv>0</UseEnv>
           <BinPath></BinPath>
@@ -2306,6 +2339,47 @@
             <HexOffset>0</HexOffset>
             <Oh166RecLen>16</Oh166RecLen>
           </OPTHX>
+          <Simulator>
+            <UseSimulator>0</UseSimulator>
+            <LoadApplicationAtStartup>1</LoadApplicationAtStartup>
+            <RunToMain>1</RunToMain>
+            <RestoreBreakpoints>1</RestoreBreakpoints>
+            <RestoreWatchpoints>1</RestoreWatchpoints>
+            <RestoreMemoryDisplay>1</RestoreMemoryDisplay>
+            <RestoreFunctions>1</RestoreFunctions>
+            <RestoreToolbox>1</RestoreToolbox>
+            <LimitSpeedToRealTime>0</LimitSpeedToRealTime>
+            <RestoreSysVw>1</RestoreSysVw>
+          </Simulator>
+          <Target>
+            <UseTarget>1</UseTarget>
+            <LoadApplicationAtStartup>1</LoadApplicationAtStartup>
+            <RunToMain>1</RunToMain>
+            <RestoreBreakpoints>1</RestoreBreakpoints>
+            <RestoreWatchpoints>1</RestoreWatchpoints>
+            <RestoreMemoryDisplay>1</RestoreMemoryDisplay>
+            <RestoreFunctions>0</RestoreFunctions>
+            <RestoreToolbox>1</RestoreToolbox>
+            <RestoreTracepoints>1</RestoreTracepoints>
+            <RestoreSysVw>1</RestoreSysVw>
+          </Target>
+          <RunDebugAfterBuild>0</RunDebugAfterBuild>
+          <TargetSelection>1</TargetSelection>
+          <SimDlls>
+            <CpuDll></CpuDll>
+            <CpuDllArguments></CpuDllArguments>
+            <PeripheralDll></PeripheralDll>
+            <PeripheralDllArguments></PeripheralDllArguments>
+            <InitializationFile></InitializationFile>
+          </SimDlls>
+          <TargetDlls>
+            <CpuDll></CpuDll>
+            <CpuDllArguments></CpuDllArguments>
+            <PeripheralDll></PeripheralDll>
+            <PeripheralDllArguments></PeripheralDllArguments>
+            <InitializationFile></InitializationFile>
+            <Driver>BIN\UL2CM3.DLL</Driver>
+          </TargetDlls>
         </DebugOption>
         <Utilities>
           <Flash1>
@@ -2364,7 +2438,6 @@
             <hadXRAM>0</hadXRAM>
             <uocXRam>0</uocXRam>
             <RvdsVP>0</RvdsVP>
-            <RvdsMve>0</RvdsMve>
             <hadIRAM2>0</hadIRAM2>
             <hadIROM2>0</hadIROM2>
             <StupSel>8</StupSel>
@@ -2505,15 +2578,11 @@
             <uThumb>0</uThumb>
             <uSurpInc>0</uSurpInc>
             <uC99>1</uC99>
-            <uGnu>0</uGnu>
             <useXO>0</useXO>
             <v6Lang>0</v6Lang>
             <v6LangP>0</v6LangP>
             <vShortEn>0</vShortEn>
             <vShortWch>0</vShortWch>
-            <v6Lto>0</v6Lto>
-            <v6WtE>0</v6WtE>
-            <v6Rtti>0</v6Rtti>
             <VariousControls>
               <MiscControls></MiscControls>
               <Define>AM_VDEBUG AM_CORTEX_M0</Define>
@@ -2531,7 +2600,6 @@
             <NoWarn>0</NoWarn>
             <uSurpInc>0</uSurpInc>
             <useXO>0</useXO>
-            <uClangAs>0</uClangAs>
             <VariousControls>
               <MiscControls></MiscControls>
               <Define></Define>
@@ -3358,16 +3426,6 @@
               <FilePath>..\..\..\..\examples\board\aml13x_core\miniport_board\demo_hc32l13x_core_miniport_zlg72128.c</FilePath>
             </File>
             <File>
-              <FileName>demo_hc32l13x_core_opa_dac.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\aml13x_core\opa\demo_hc32l13x_core_opa_dac.c</FilePath>
-            </File>
-            <File>
-              <FileName>demo_hc32l13x_core_opa_one.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\aml13x_core\opa\demo_hc32l13x_core_opa_one.c</FilePath>
-            </File>
-            <File>
               <FileName>demo_hc32l13x_core_drv_rtc.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\board\aml13x_core\rtc\demo_hc32l13x_core_drv_rtc.c</FilePath>
@@ -3607,6 +3665,16 @@
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\board\aml13x_core\wdt\demo_hc32l13x_core_std_wdt.c</FilePath>
             </File>
+            <File>
+              <FileName>demo_hc32l13x_core_hw_opa.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\aml13x_core\opa\demo_hc32l13x_core_hw_opa.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_hc32l13x_core_std_opa.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\aml13x_core\opa\demo_hc32l13x_core_std_opa.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -3743,11 +3811,6 @@
               <FilePath>..\..\..\..\examples\soc\hdsc\lvd\demo_hc32_hw_lvd_system_reset.c</FilePath>
             </File>
             <File>
-              <FileName>demo_hc32_hw_opa_dac.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\soc\hdsc\opa\demo_hc32_hw_opa_dac.c</FilePath>
-            </File>
-            <File>
               <FileName>demo_hc32_hw_opa_one.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\soc\hdsc\opa\demo_hc32_hw_opa_one.c</FilePath>
@@ -3841,6 +3904,11 @@
               <FileName>demo_hc32_hw_i2c_slave_int.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\soc\hdsc\i2c\demo_hc32_hw_i2c_slave_int.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_hc32_std_opa.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\soc\hdsc\opa\demo_hc32_std_opa.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -4367,11 +4435,5 @@
       </Groups>
     </Target>
   </Targets>
-
-  <RTE>
-    <apis/>
-    <components/>
-    <files/>
-  </RTE>
 
 </Project>
