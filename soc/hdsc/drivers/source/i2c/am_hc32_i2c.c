@@ -419,7 +419,7 @@ static int __i2c_mst_sm_event (am_hc32_i2c_dev_t *p_dev, uint32_t event)
 {
     int                     key;
     uint8_t                 state;
-    amhw_hc32_i2c_t      *p_hw_i2c    = NULL;
+    amhw_hc32_i2c_t        *p_hw_i2c    = NULL;
     struct am_i2c_message  *p_cur_msg   = NULL;
     struct am_i2c_transfer *p_cur_trans = NULL;
 
@@ -602,8 +602,8 @@ static int __i2c_mst_sm_event (am_hc32_i2c_dev_t *p_dev, uint32_t event)
     __softimer_stop(p_dev);
 
     /* 回调消息完成函数 */
-    if (p_dev->p_cur_msg->pfn_complete != NULL) {
-        p_dev->p_cur_msg->pfn_complete(p_dev->p_cur_msg->p_arg);
+    if (p_cur_msg->pfn_complete != NULL) {
+        p_cur_msg->pfn_complete(p_dev->p_cur_msg->p_arg);
     }
 
     return AM_OK;
