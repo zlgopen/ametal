@@ -628,6 +628,16 @@ void demo_hc32_hw_opa_dac_entry (void     *p_hw_opa,
                                  uint16_t *vol_val);
 
 /**
+ * \brief OPA例程，通过异步标准接口实现
+ *
+ * \param[in] handle      OPA 标准服务句柄
+ * \param[in] ch          OPA通道
+ *
+ * \return 无
+ */
+void demo_hc32_std_opa_entry (void *p_handle, uint8_t ch);
+
+/**
  * \brief OPA 电压跟随例程，通过 HW 层接口实现
  *
  * \param[in] p_hw_opa :指向OPA寄存器指针

@@ -44,10 +44,15 @@
 #include "am_hc32.h"
 #include "am_gpio.h"
 #include "hc32x3x_pin.h"
-#include "am_hc32_opa.h"
+#include "am_hc32x3x_opa.h"
 #include "demo_hc32_entries.h"
 
-#define OPA_MODE    AM_HC32_OPA_GENERAL  /**< \brief OPA通用模式*/
+/**
+ * \brief OPA通道
+ */
+#define OPA_CH      AM_HC32_OPA_CH1
+
+#define OPA_MODE    AM_HC32_OPA_MODE_UNITY_GAIN /**< \brief OPA通用模式*/
 
 /**
  * \brief 例程入口
@@ -63,10 +68,12 @@ void demo_hc32f03x_core_hw_opa_one_entry (void)
     /* 开启BGR时钟 */
     am_clk_enable (CLK_ADC_BGR);
 
-    /* PB00 OPA输入 */
-    am_gpio_pin_cfg (PIOB_0, PIOB_0_AIN);
+    /* OPA1 P N OUT端 */
+    am_gpio_pin_cfg (PIOC_6,  PIOC_6_AIN);
+    am_gpio_pin_cfg (PIOB_15, PIOB_15_AIN);
+    am_gpio_pin_cfg (PIOC_7,  PIOC_7_AOUT);
 
-    demo_hc32_hw_opa_one_entry(HC32_OPA, OPA_MODE);
+    demo_hc32x3x_hw_opa_entry(HC32_OPA, OPA_MODE, OPA_CH);
 }
 
 /* end of file */

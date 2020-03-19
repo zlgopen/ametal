@@ -10,7 +10,8 @@
       <TargetName>debug</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
-      <pCCUsed>5060061::V5.06 update 1 (build 61)::ARMCC</pCCUsed>
+      <pCCUsed>5060750::V5.06 update 6 (build 750)::ARMCC</pCCUsed>
+      <uAC6>0</uAC6>
       <TargetOption>
         <TargetCommonOption>
           <Device>HC32L136J8TA</Device>
@@ -48,7 +49,7 @@
             <InvalidFlash>1</InvalidFlash>
           </TargetStatus>
           <OutputDirectory>.\debug\</OutputDirectory>
-          <OutputName>example_am13x_core</OutputName>
+          <OutputName>tempate_aml13x_core</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
           <CreateHexFile>1</CreateHexFile>
@@ -125,47 +126,6 @@
             <HexOffset>0</HexOffset>
             <Oh166RecLen>16</Oh166RecLen>
           </OPTHX>
-          <Simulator>
-            <UseSimulator>0</UseSimulator>
-            <LoadApplicationAtStartup>1</LoadApplicationAtStartup>
-            <RunToMain>1</RunToMain>
-            <RestoreBreakpoints>1</RestoreBreakpoints>
-            <RestoreWatchpoints>1</RestoreWatchpoints>
-            <RestoreMemoryDisplay>1</RestoreMemoryDisplay>
-            <RestoreFunctions>1</RestoreFunctions>
-            <RestoreToolbox>1</RestoreToolbox>
-            <LimitSpeedToRealTime>0</LimitSpeedToRealTime>
-            <RestoreSysVw>1</RestoreSysVw>
-          </Simulator>
-          <Target>
-            <UseTarget>1</UseTarget>
-            <LoadApplicationAtStartup>1</LoadApplicationAtStartup>
-            <RunToMain>1</RunToMain>
-            <RestoreBreakpoints>1</RestoreBreakpoints>
-            <RestoreWatchpoints>1</RestoreWatchpoints>
-            <RestoreMemoryDisplay>1</RestoreMemoryDisplay>
-            <RestoreFunctions>0</RestoreFunctions>
-            <RestoreToolbox>1</RestoreToolbox>
-            <RestoreTracepoints>1</RestoreTracepoints>
-            <RestoreSysVw>1</RestoreSysVw>
-          </Target>
-          <RunDebugAfterBuild>0</RunDebugAfterBuild>
-          <TargetSelection>1</TargetSelection>
-          <SimDlls>
-            <CpuDll></CpuDll>
-            <CpuDllArguments></CpuDllArguments>
-            <PeripheralDll></PeripheralDll>
-            <PeripheralDllArguments></PeripheralDllArguments>
-            <InitializationFile></InitializationFile>
-          </SimDlls>
-          <TargetDlls>
-            <CpuDll></CpuDll>
-            <CpuDllArguments></CpuDllArguments>
-            <PeripheralDll></PeripheralDll>
-            <PeripheralDllArguments></PeripheralDllArguments>
-            <InitializationFile></InitializationFile>
-            <Driver>BIN\UL2CM3.DLL</Driver>
-          </TargetDlls>
         </DebugOption>
         <Utilities>
           <Flash1>
@@ -178,7 +138,7 @@
           </Flash1>
           <bUseTDR>1</bUseTDR>
           <Flash2>BIN\UL2CM3.DLL</Flash2>
-          <Flash3></Flash3>
+          <Flash3>"" ()</Flash3>
           <Flash4></Flash4>
           <pFcarmOut></pFcarmOut>
           <pFcarmGrp></pFcarmGrp>
@@ -203,7 +163,7 @@
             <AdsACrf>1</AdsACrf>
             <AdsANop>0</AdsANop>
             <AdsANot>0</AdsANot>
-            <AdsLLst>1</AdsLLst>
+            <AdsLLst>0</AdsLLst>
             <AdsLmap>1</AdsLmap>
             <AdsLcgr>1</AdsLcgr>
             <AdsLsym>1</AdsLsym>
@@ -224,6 +184,7 @@
             <hadXRAM>0</hadXRAM>
             <uocXRam>0</uocXRam>
             <RvdsVP>0</RvdsVP>
+            <RvdsMve>0</RvdsMve>
             <hadIRAM2>0</hadIRAM2>
             <hadIROM2>0</hadIROM2>
             <StupSel>8</StupSel>
@@ -351,7 +312,7 @@
           </ArmAdsMisc>
           <Cads>
             <interw>1</interw>
-            <Optim>1</Optim>
+            <Optim>4</Optim>
             <oTime>0</oTime>
             <SplitLS>0</SplitLS>
             <OneElfS>1</OneElfS>
@@ -364,16 +325,20 @@
             <uThumb>0</uThumb>
             <uSurpInc>0</uSurpInc>
             <uC99>1</uC99>
+            <uGnu>0</uGnu>
             <useXO>0</useXO>
             <v6Lang>3</v6Lang>
             <v6LangP>0</v6LangP>
             <vShortEn>0</vShortEn>
             <vShortWch>0</vShortWch>
+            <v6Lto>0</v6Lto>
+            <v6WtE>0</v6WtE>
+            <v6Rtti>0</v6Rtti>
             <VariousControls>
               <MiscControls></MiscControls>
               <Define>AM_VDEBUG AM_CORTEX_M0 HC32L136 HC32X3X</Define>
               <Undefine></Undefine>
-              <IncludePath>..\..\..\..\3rdparty/CMSIS/Include;..\..\..\..\arch/arm/include;..\..\..\..\components/drivers/include;..\..\..\..\components/libc/armlib_adapter/include;..\..\..\..\components/libc/microlib_adapter/include;..\..\..\..\components/service/include;..\..\..\..\components/util/include;..\user_code;..\user_config;..\user_config/am_hwconf_usrcfg;..\user_config/am_servconf_usrcfg;..\..\..\..\board/bsp_common/include;..\..\..\..\examples/components;..\..\..\..\examples/soc/hdsc;..\..\..\..\examples/std;..\..\..\..\examples\board\am13x_core;..\..\..\..\interface;..\..\..\..\soc\hdsc\hc32;..\..\..\..\soc\hdsc\drivers\include\adc;..\..\..\..\soc\hdsc\drivers\include\adtim;..\..\..\..\soc\hdsc\drivers\include\aes;..\..\..\..\soc\hdsc\drivers\include\clk;..\..\..\..\soc\hdsc\drivers\include\clktrim;..\..\..\..\soc\hdsc\drivers\include\crc;..\..\..\..\soc\hdsc\drivers\include\dac;..\..\..\..\soc\hdsc\drivers\include\dma;..\..\..\..\soc\hdsc\drivers\include\flash;..\..\..\..\soc\hdsc\drivers\include\gpio;..\..\..\..\soc\hdsc\drivers\include\i2c;..\..\..\..\soc\hdsc\drivers\include\lcd;..\..\..\..\soc\hdsc\drivers\include\lpmode;..\..\..\..\soc\hdsc\drivers\include\lptim;..\..\..\..\soc\hdsc\drivers\include\lpuart;..\..\..\..\soc\hdsc\drivers\include\lvd;..\..\..\..\soc\hdsc\drivers\include\opa;..\..\..\..\soc\hdsc\drivers\include\pca;..\..\..\..\soc\hdsc\drivers\include\pcnt;..\..\..\..\soc\hdsc\drivers\include\ram;..\..\..\..\soc\hdsc\drivers\include\rcc;..\..\..\..\soc\hdsc\drivers\include\rtc;..\..\..\..\soc\hdsc\drivers\include\spi;..\..\..\..\soc\hdsc\drivers\include\tim;..\..\..\..\soc\hdsc\drivers\include\trng;..\..\..\..\soc\hdsc\drivers\include\uart;..\..\..\..\soc\hdsc\drivers\include\vc;..\..\..\..\soc\hdsc\drivers\include\wdt</IncludePath>
+              <IncludePath>..\..\..\..\3rdparty/CMSIS/Include;..\..\..\..\arch/arm/include;..\..\..\..\components/drivers/include;..\..\..\..\components/libc/armlib_adapter/include;..\..\..\..\components/libc/microlib_adapter/include;..\..\..\..\components/service/include;..\..\..\..\components/util/include;..\user_code;..\user_config;..\user_config/am_hwconf_usrcfg;..\user_config/am_servconf_usrcfg;..\..\..\..\board/bsp_common/include;..\..\..\..\examples/components;..\..\..\..\examples/soc/hdsc;..\..\..\..\examples/std;..\..\..\..\examples\board\aml13x_core;..\..\..\..\interface;..\..\..\..\soc\hdsc\hc32;..\..\..\..\soc\hdsc\drivers\include\adc;..\..\..\..\soc\hdsc\drivers\include\adtim;..\..\..\..\soc\hdsc\drivers\include\aes;..\..\..\..\soc\hdsc\drivers\include\clk;..\..\..\..\soc\hdsc\drivers\include\clktrim;..\..\..\..\soc\hdsc\drivers\include\crc;..\..\..\..\soc\hdsc\drivers\include\dac;..\..\..\..\soc\hdsc\drivers\include\dma;..\..\..\..\soc\hdsc\drivers\include\flash;..\..\..\..\soc\hdsc\drivers\include\gpio;..\..\..\..\soc\hdsc\drivers\include\i2c;..\..\..\..\soc\hdsc\drivers\include\lcd;..\..\..\..\soc\hdsc\drivers\include\lpmode;..\..\..\..\soc\hdsc\drivers\include\lptim;..\..\..\..\soc\hdsc\drivers\include\lpuart;..\..\..\..\soc\hdsc\drivers\include\lvd;..\..\..\..\soc\hdsc\drivers\include\opa;..\..\..\..\soc\hdsc\drivers\include\pca;..\..\..\..\soc\hdsc\drivers\include\pcnt;..\..\..\..\soc\hdsc\drivers\include\ram;..\..\..\..\soc\hdsc\drivers\include\rcc;..\..\..\..\soc\hdsc\drivers\include\rtc;..\..\..\..\soc\hdsc\drivers\include\spi;..\..\..\..\soc\hdsc\drivers\include\tim;..\..\..\..\soc\hdsc\drivers\include\trng;..\..\..\..\soc\hdsc\drivers\include\uart;..\..\..\..\soc\hdsc\drivers\include\vc;..\..\..\..\soc\hdsc\drivers\include\wdt</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -386,6 +351,7 @@
             <NoWarn>0</NoWarn>
             <uSurpInc>0</uSurpInc>
             <useXO>0</useXO>
+            <uClangAs>0</uClangAs>
             <VariousControls>
               <MiscControls></MiscControls>
               <Define></Define>
@@ -787,11 +753,6 @@
           <GroupName>soc</GroupName>
           <Files>
             <File>
-              <FileName>am_hc32_adc.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\hdsc\drivers\source\adc\am_hc32_adc.c</FilePath>
-            </File>
-            <File>
               <FileName>am_hc32_adtim_cap.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\soc\hdsc\drivers\source\adtim\am_hc32_adtim_cap.c</FilePath>
@@ -867,11 +828,6 @@
               <FilePath>..\..\..\..\soc\hdsc\drivers\source\i2c\am_hc32_i2c_slv.c</FilePath>
             </File>
             <File>
-              <FileName>am_hc32_lcd.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\hdsc\drivers\source\lcd\am_hc32_lcd.c</FilePath>
-            </File>
-            <File>
               <FileName>am_hc32_lptim_timing.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\soc\hdsc\drivers\source\lptim\am_hc32_lptim_timing.c</FilePath>
@@ -890,11 +846,6 @@
               <FileName>am_hc32_lvd.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\soc\hdsc\drivers\source\lvd\am_hc32_lvd.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hc32_opa.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\hdsc\drivers\source\opa\am_hc32_opa.c</FilePath>
             </File>
             <File>
               <FileName>am_hc32_pca.c</FileName>
@@ -980,6 +931,21 @@
               <FileName>am_hc32_wdt.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\soc\hdsc\drivers\source\wdt\am_hc32_wdt.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hc32_adc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\soc\hdsc\drivers\source\adc\am_hc32_adc.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hc32_lcd.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\soc\hdsc\drivers\source\lcd\am_hc32_lcd.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hc32x3x_opa.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\soc\hdsc\drivers\source\opa\am_hc32x3x_opa.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -1240,6 +1206,7 @@
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
       <pCCUsed>5060061::V5.06 update 1 (build 61)::ARMCC</pCCUsed>
+      <uAC6>0</uAC6>
       <TargetOption>
         <TargetCommonOption>
           <Device>HC32L136J8TA</Device>
@@ -1354,47 +1321,6 @@
             <HexOffset>0</HexOffset>
             <Oh166RecLen>16</Oh166RecLen>
           </OPTHX>
-          <Simulator>
-            <UseSimulator>0</UseSimulator>
-            <LoadApplicationAtStartup>1</LoadApplicationAtStartup>
-            <RunToMain>1</RunToMain>
-            <RestoreBreakpoints>1</RestoreBreakpoints>
-            <RestoreWatchpoints>1</RestoreWatchpoints>
-            <RestoreMemoryDisplay>1</RestoreMemoryDisplay>
-            <RestoreFunctions>1</RestoreFunctions>
-            <RestoreToolbox>1</RestoreToolbox>
-            <LimitSpeedToRealTime>0</LimitSpeedToRealTime>
-            <RestoreSysVw>1</RestoreSysVw>
-          </Simulator>
-          <Target>
-            <UseTarget>1</UseTarget>
-            <LoadApplicationAtStartup>1</LoadApplicationAtStartup>
-            <RunToMain>1</RunToMain>
-            <RestoreBreakpoints>1</RestoreBreakpoints>
-            <RestoreWatchpoints>1</RestoreWatchpoints>
-            <RestoreMemoryDisplay>1</RestoreMemoryDisplay>
-            <RestoreFunctions>0</RestoreFunctions>
-            <RestoreToolbox>1</RestoreToolbox>
-            <RestoreTracepoints>1</RestoreTracepoints>
-            <RestoreSysVw>1</RestoreSysVw>
-          </Target>
-          <RunDebugAfterBuild>0</RunDebugAfterBuild>
-          <TargetSelection>1</TargetSelection>
-          <SimDlls>
-            <CpuDll></CpuDll>
-            <CpuDllArguments></CpuDllArguments>
-            <PeripheralDll></PeripheralDll>
-            <PeripheralDllArguments></PeripheralDllArguments>
-            <InitializationFile></InitializationFile>
-          </SimDlls>
-          <TargetDlls>
-            <CpuDll></CpuDll>
-            <CpuDllArguments></CpuDllArguments>
-            <PeripheralDll></PeripheralDll>
-            <PeripheralDllArguments></PeripheralDllArguments>
-            <InitializationFile></InitializationFile>
-            <Driver>BIN\UL2CM3.DLL</Driver>
-          </TargetDlls>
         </DebugOption>
         <Utilities>
           <Flash1>
@@ -1453,6 +1379,7 @@
             <hadXRAM>0</hadXRAM>
             <uocXRam>0</uocXRam>
             <RvdsVP>0</RvdsVP>
+            <RvdsMve>0</RvdsMve>
             <hadIRAM2>0</hadIRAM2>
             <hadIROM2>0</hadIROM2>
             <StupSel>8</StupSel>
@@ -1593,16 +1520,20 @@
             <uThumb>0</uThumb>
             <uSurpInc>0</uSurpInc>
             <uC99>1</uC99>
+            <uGnu>0</uGnu>
             <useXO>0</useXO>
             <v6Lang>0</v6Lang>
             <v6LangP>0</v6LangP>
             <vShortEn>0</vShortEn>
             <vShortWch>0</vShortWch>
+            <v6Lto>0</v6Lto>
+            <v6WtE>0</v6WtE>
+            <v6Rtti>0</v6Rtti>
             <VariousControls>
               <MiscControls></MiscControls>
               <Define>AM_VDEBUG AM_CORTEX_M0</Define>
               <Undefine></Undefine>
-              <IncludePath>..\..\..\..\3rdparty/CMSIS/Include;..\..\..\..\arch/arm/include;..\..\..\..\components/drivers/include;..\..\..\..\components/libc/armlib_adapter/include;..\..\..\..\components/libc/microlib_adapter/include;..\..\..\..\components/service/include;..\..\..\..\components/util/include;..\user_code;..\user_config;..\user_config/am_hwconf_usrcfg;..\user_config/am_servconf_usrcfg;..\..\..\..\board/bsp_common/include;..\..\..\..\examples/components;..\..\..\..\examples/soc/hdsc;..\..\..\..\examples/std;..\..\..\..\examples\board\am13x_core;..\..\..\..\interface;..\..\..\..\soc\hdsc\hc32;..\..\..\..\soc\hdsc\drivers\include\adc;..\..\..\..\soc\hdsc\drivers\include\adtim;..\..\..\..\soc\hdsc\drivers\include\aes;..\..\..\..\soc\hdsc\drivers\include\clk;..\..\..\..\soc\hdsc\drivers\include\clktrim;..\..\..\..\soc\hdsc\drivers\include\crc;..\..\..\..\soc\hdsc\drivers\include\dac;..\..\..\..\soc\hdsc\drivers\include\dma;..\..\..\..\soc\hdsc\drivers\include\flash;..\..\..\..\soc\hdsc\drivers\include\gpio;..\..\..\..\soc\hdsc\drivers\include\i2c;..\..\..\..\soc\hdsc\drivers\include\lcd;..\..\..\..\soc\hdsc\drivers\include\lpmode;..\..\..\..\soc\hdsc\drivers\include\lptim;..\..\..\..\soc\hdsc\drivers\include\lpuart;..\..\..\..\soc\hdsc\drivers\include\lvd;..\..\..\..\soc\hdsc\drivers\include\opa;..\..\..\..\soc\hdsc\drivers\include\pca;..\..\..\..\soc\hdsc\drivers\include\pcnt;..\..\..\..\soc\hdsc\drivers\include\ram;..\..\..\..\soc\hdsc\drivers\include\rcc;..\..\..\..\soc\hdsc\drivers\include\rtc;..\..\..\..\soc\hdsc\drivers\include\spi;..\..\..\..\soc\hdsc\drivers\include\tim;..\..\..\..\soc\hdsc\drivers\include\trng;..\..\..\..\soc\hdsc\drivers\include\uart;..\..\..\..\soc\hdsc\drivers\include\vc;..\..\..\..\soc\hdsc\drivers\include\wdt</IncludePath>
+              <IncludePath>..\..\..\..\3rdparty/CMSIS/Include;..\..\..\..\arch/arm/include;..\..\..\..\components/drivers/include;..\..\..\..\components/libc/armlib_adapter/include;..\..\..\..\components/libc/microlib_adapter/include;..\..\..\..\components/service/include;..\..\..\..\components/util/include;..\user_code;..\user_config;..\user_config/am_hwconf_usrcfg;..\user_config/am_servconf_usrcfg;..\..\..\..\board/bsp_common/include;..\..\..\..\examples/components;..\..\..\..\examples/soc/hdsc;..\..\..\..\examples/std;..\..\..\..\examples\board\aml13x_core;..\..\..\..\interface;..\..\..\..\soc\hdsc\hc32;..\..\..\..\soc\hdsc\drivers\include\adc;..\..\..\..\soc\hdsc\drivers\include\adtim;..\..\..\..\soc\hdsc\drivers\include\aes;..\..\..\..\soc\hdsc\drivers\include\clk;..\..\..\..\soc\hdsc\drivers\include\clktrim;..\..\..\..\soc\hdsc\drivers\include\crc;..\..\..\..\soc\hdsc\drivers\include\dac;..\..\..\..\soc\hdsc\drivers\include\dma;..\..\..\..\soc\hdsc\drivers\include\flash;..\..\..\..\soc\hdsc\drivers\include\gpio;..\..\..\..\soc\hdsc\drivers\include\i2c;..\..\..\..\soc\hdsc\drivers\include\lcd;..\..\..\..\soc\hdsc\drivers\include\lpmode;..\..\..\..\soc\hdsc\drivers\include\lptim;..\..\..\..\soc\hdsc\drivers\include\lpuart;..\..\..\..\soc\hdsc\drivers\include\lvd;..\..\..\..\soc\hdsc\drivers\include\opa;..\..\..\..\soc\hdsc\drivers\include\pca;..\..\..\..\soc\hdsc\drivers\include\pcnt;..\..\..\..\soc\hdsc\drivers\include\ram;..\..\..\..\soc\hdsc\drivers\include\rcc;..\..\..\..\soc\hdsc\drivers\include\rtc;..\..\..\..\soc\hdsc\drivers\include\spi;..\..\..\..\soc\hdsc\drivers\include\tim;..\..\..\..\soc\hdsc\drivers\include\trng;..\..\..\..\soc\hdsc\drivers\include\uart;..\..\..\..\soc\hdsc\drivers\include\vc;..\..\..\..\soc\hdsc\drivers\include\wdt</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -1615,6 +1546,7 @@
             <NoWarn>0</NoWarn>
             <uSurpInc>0</uSurpInc>
             <useXO>0</useXO>
+            <uClangAs>0</uClangAs>
             <VariousControls>
               <MiscControls></MiscControls>
               <Define></Define>
@@ -2016,11 +1948,6 @@
           <GroupName>soc</GroupName>
           <Files>
             <File>
-              <FileName>am_hc32_adc.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\hdsc\drivers\source\adc\am_hc32_adc.c</FilePath>
-            </File>
-            <File>
               <FileName>am_hc32_adtim_cap.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\soc\hdsc\drivers\source\adtim\am_hc32_adtim_cap.c</FilePath>
@@ -2096,11 +2023,6 @@
               <FilePath>..\..\..\..\soc\hdsc\drivers\source\i2c\am_hc32_i2c_slv.c</FilePath>
             </File>
             <File>
-              <FileName>am_hc32_lcd.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\hdsc\drivers\source\lcd\am_hc32_lcd.c</FilePath>
-            </File>
-            <File>
               <FileName>am_hc32_lptim_timing.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\soc\hdsc\drivers\source\lptim\am_hc32_lptim_timing.c</FilePath>
@@ -2119,11 +2041,6 @@
               <FileName>am_hc32_lvd.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\soc\hdsc\drivers\source\lvd\am_hc32_lvd.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hc32_opa.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\hdsc\drivers\source\opa\am_hc32_opa.c</FilePath>
             </File>
             <File>
               <FileName>am_hc32_pca.c</FileName>
@@ -2209,6 +2126,21 @@
               <FileName>am_hc32_wdt.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\soc\hdsc\drivers\source\wdt\am_hc32_wdt.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hc32_adc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\soc\hdsc\drivers\source\adc\am_hc32_adc.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hc32_lcd.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\soc\hdsc\drivers\source\lcd\am_hc32_lcd.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hc32x3x_opa.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\soc\hdsc\drivers\source\opa\am_hc32x3x_opa.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -2465,5 +2397,11 @@
       </Groups>
     </Target>
   </Targets>
+
+  <RTE>
+    <apis/>
+    <components/>
+    <files/>
+  </RTE>
 
 </Project>

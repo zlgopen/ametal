@@ -21,14 +21,13 @@
  * \endinternal
  */
 
+#include "am_clk.h"
+#include "am_gpio.h"
 #include "am_hc32.h"
-#include "hw/amhw_hc32_rcc.h"
 #include "hc32_inum.h"
 #include "hc32_periph_map.h"
-#include "am_gpio.h"
-#include "hw/amhw_hc32x3x_adc.h"
-#include "am_clk.h"
 #include "am_hc32_adc.h"
+#include "hw/amhw_hc32_rcc.h"
 
 /**
  * \addtogroup am_if_src_hwconf_hc32_adc

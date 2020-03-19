@@ -54,18 +54,11 @@
 #include "am_hc32x3x_opa.h"
 #include "hw/amhw_hc32x3x_opa.h"
 
-/*******************************************************************************
-  全局变量
-*******************************************************************************/
-static amhw_hc32_opa_t       *gp_hw_opa   = NULL;  /**< \brief OPA 外设 */
-
-
 /**
  * \brief 例程入口
  */
 void demo_hc32x3x_hw_opa_entry (void *p_hw_opa, uint8_t mode, uint8_t ch)
 {
-    gp_hw_opa  = (amhw_hc32_opa_t *)p_hw_opa;
 
     /* 使能BGR */
     amhw_hc32_bgr_enable(AM_TRUE);

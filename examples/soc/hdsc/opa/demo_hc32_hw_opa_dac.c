@@ -107,9 +107,9 @@ void opa_hw_init (uint8_t mode)
  * \brief Àý³ÌÈë¿Ú
  */
 void demo_hc32_hw_opa_dac_entry (void     *p_hw_opa,
-                                   void     *p_hw_dac,
-                                   uint8_t   mode,
-                                   uint16_t *vol_val)
+                                 void     *p_hw_dac,
+                                 uint8_t   mode,
+                                 uint16_t *vol_val)
 {
     int i = 0;
 

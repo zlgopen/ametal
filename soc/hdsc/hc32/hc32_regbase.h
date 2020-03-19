@@ -27,8 +27,6 @@
 extern "C" {
 #endif
 
-#include "am_board.h"
-
 /**
  * \addtogroup hc32_if_regbase
  * \copydoc hc32_regbase.h

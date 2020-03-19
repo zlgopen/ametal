@@ -27,8 +27,6 @@
 extern "C" {
 #endif
 
-#include "am_board.h"
-
 /** \brief 芯片引脚定义 */
 #ifdef HC32X3X
 #include "../hc32/hc32x3x_pin.h" /**< \brief 适用于HC32F030、HC32L13X */

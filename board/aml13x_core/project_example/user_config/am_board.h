@@ -30,8 +30,6 @@
 #include "am_timer.h"
 #include "am_vdebug.h"
 
-#define HC32X3X
-
 /** \brief LED Ë÷Òý ID ºÅ */
 #define LED0          0
 #define LED1          1
