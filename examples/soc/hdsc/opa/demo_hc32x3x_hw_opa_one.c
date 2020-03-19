@@ -12,11 +12,17 @@
 
 /**
  * \file
- * \brief OPA 电压跟随例程，通过 HW 层接口实现
+ * \brief OPA不同模式下输入输出关系例程，通过 HW 层接口实现
  *
  * - 实验现象：
  *
- *   PB00输入模拟电压。对应OPA输出引脚PA04也输出与PB00大小相等电压。
+ *    OPA_UintMode_Test
+ *    此时通过示波器观察PC06和PC07信号，PC07输出信号是PC06信号通信幅值是一致的。
+ *    OPA_ForWardMode_Test
+ *    此时通过示波器观察PC06和PC07信号，PC07输出信号是PC06信号通信幅值是其两倍。
+ *    OPA_GpMode_Test
+ *    PC06输入VCOR1.5V，PB15和PC07接电阻22K，PB15接电阻10K对地，
+ *    此时通过示波器观察PC06和PC07信号，PC07输出信号是PC06信号通信幅值是其两倍。
  *
  * \note
  *    1. 如需观察串口打印的调试信息，需要将 PIOA_10 引脚连接 PC 串口的 TXD，
@@ -30,7 +36,7 @@
  *
  * \internal
  * \par Modification History
- * - 1.00 19-10-10  ly, first implementation
+ * - 1.00 20-03-16  ly, first implementation
  * \endinternal
  */
 
@@ -45,63 +51,50 @@
 #include "am_int.h"
 #include "am_delay.h"
 #include "am_board.h"
-#include "am_hc32_opa.h"
-#include "hw/amhw_hc32_opa.h"
-
-/*******************************************************************************
-  宏定义
-*******************************************************************************/
-#define OPA_CLK      AMHW_HC32_OPA_CLK_16    /**< \brief 校准脉宽 */
-#define OPA_AZ_WAY   AMHW_HC32_OPA_AZ_SW     /**< \brief 校准方式 */
+#include "am_hc32x3x_opa.h"
+#include "hw/amhw_hc32x3x_opa.h"
 
 /*******************************************************************************
   全局变量
 *******************************************************************************/
 static amhw_hc32_opa_t       *gp_hw_opa   = NULL;  /**< \brief OPA 外设 */
 
-/**
- * \brief OPA初始化
- */
-void opa_init (uint8_t mode)
-{
-    if (mode == AM_HC32_OPA_GENERAL){
-        /* 使能opa */
-        amhw_hc32_opa_en (gp_hw_opa);
-
-        /* 自动校准使能 */
-        amhw_hc32_opa_az_en (gp_hw_opa);
-
-        /* 自动校准脉冲宽度设置 */
-        amhw_hc32_opa_clk_sel (gp_hw_opa, OPA_CLK);
-
-        /* 选择校准方式 */
-        amhw_hc32_opa_az_way_sel (gp_hw_opa, OPA_AZ_WAY);
-    }else{
-        ;
-    }
-}
 
 /**
  * \brief 例程入口
  */
-void demo_hc32_hw_opa_one_entry (void *p_hw_opa, uint8_t mode)
+void demo_hc32x3x_hw_opa_entry (void *p_hw_opa, uint8_t mode, uint8_t ch)
 {
     gp_hw_opa  = (amhw_hc32_opa_t *)p_hw_opa;
 
     /* 使能BGR */
     amhw_hc32_bgr_enable(AM_TRUE);
 
-    /* OPA初始化 */
-    opa_init (mode);
+    /* 模式配置 */
+    switch (mode){
+        case AM_HC32_OPA_MODE_UNITY_GAIN:
+            amhw_hc32_opa_unity_gain_mode(p_hw_opa, ch);
+            amhw_hc32_opa_po_ctrl (p_hw_opa, ch, AWHW_HC32_OPA_PO_EN);
+            break;
+        case AM_HC32_OPA_MODE_FORWARD_IN:
+            amhw_hc32_opa_forwar_in_mode(p_hw_opa,
+                                         ch,
+                                         AMHW_HC32_OPA_NONGAIN_2);
+            amhw_hc32_opa_po_ctrl (p_hw_opa, ch, AWHW_HC32_OPA_PO_EN);
+            break;
+        case AM_HC32_OPA_MODE_UNIVERSAL:
+            amhw_hc32_uinversal_mode (p_hw_opa,
+                                      ch);
+            amhw_hc32_opa_po_ctrl (p_hw_opa, ch, AWHW_HC32_OPA_PO_EN);
+            break;
+        default:
+            break;
+    }
 
-    /* 启动校准 */
-    amhw_hc32_az_start (p_hw_opa,AMHW_HC32_AZ_SW_START);
+    /* 使能OPA */
+    amhw_hc32_opa_en(p_hw_opa);
 
-    /* 延时 20us*/
-    am_udelay(20);
-
-    while (1)
-    {
+    while(1){
         ;
     }
 }

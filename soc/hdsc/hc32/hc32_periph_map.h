@@ -27,9 +27,17 @@
 extern "C" {
 #endif
 
+#include "am_board.h"
 #include "hc32_regbase.h"
 
+#ifdef HC32X3X
+#include "hw/amhw_hc32x3x_adc.h"
+#include "hw/amhw_hc32x3x_opa.h"
+#else
 #include "hw/amhw_hc32_adc.h"
+#include "hw/amhw_hc32_opa.h"
+#endif
+
 #include "hw/amhw_hc32_adtim.h"
 #include "hw/amhw_hc32_aes.h"
 #include "hw/amhw_hc32_clktrim.h"
@@ -43,7 +51,6 @@ extern "C" {
 #include "hw/amhw_hc32_lptim.h"
 #include "hw/amhw_hc32_lpuart.h"
 #include "hw/amhw_hc32_lvd.h"
-#include "hw/amhw_hc32_opa.h"
 #include "hw/amhw_hc32_pca.h"
 #include "hw/amhw_hc32_pcnt.h"
 #include "hw/amhw_hc32_ram.h"

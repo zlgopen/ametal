@@ -51,7 +51,7 @@
 #include "am_hc32.h"
 #include "am_gpio.h"
 #include "hc32x3x_pin.h"
-#include "am_hc32_opa.h"
+#include "am_hc32x3x_opa.h"
 #include "demo_hc32_entries.h"
 
 /**
@@ -96,7 +96,7 @@ void demo_hc32l13x_core_hw_opa_entry (void)
     //    am_gpio_pin_cfg (PIOB_2,  PIOB_2_AIN);
     //    am_gpio_pin_cfg (PIOB_11, PIOB_11_AOUT);
 
-    demo_hc32_hw_opa_entry(HC32_OPA, OPA_MODE, OPA_CH);
+    demo_hc32x3x_hw_opa_entry(HC32_OPA, OPA_MODE, OPA_CH);
 }
 
 /* end of file */

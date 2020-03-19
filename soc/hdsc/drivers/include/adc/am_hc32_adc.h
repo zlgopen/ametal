@@ -29,8 +29,13 @@ extern "C" {
 
 #include "ametal.h"
 #include "am_adc.h"
+#include "am_board.h"
 
-#include "hw/amhw_hc32_adc.h"
+#ifdef HC32X3X
+#include "hw/amhw_hc32x3x_adc.h"    /**< \brief 适用于HC32F030、HC32L13X */
+#else
+#include "hw/amhw_hc32_adc.h"       /**< \brief 适用于HC32L/F17X、HC32L/F19X */
+#endif
 
 /**
  * \addtogroup am_hc32_if_adc

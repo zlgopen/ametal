@@ -39,7 +39,7 @@
 #include "am_int.h"
 #include "am_delay.h"
 #include "am_board.h"
-#include "am_hc32_opa.h"
+#include "am_hc32x3x_opa.h"
 
 /**
  * \brief Àý³ÌÈë¿Ú

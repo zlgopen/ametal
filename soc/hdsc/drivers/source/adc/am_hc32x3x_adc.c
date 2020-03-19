@@ -20,16 +20,15 @@
  * \endinternal
  */
 
-#include "am_hc32_adc.h"
 #include "ametal.h"
 #include "am_int.h"
 #include "am_clk.h"
 #include "am_gpio.h"
 #include "am_delay.h"
 #include "hw/amhw_hc32_rcc.h"
-#include "hw/amhw_hc32_adc.h"
 #include "hc32_periph_map.h"
 #include "am_hc32.h"
+#include "am_hc32_adc.h"
 
 /*******************************************************************************
 * 私有定义
@@ -209,7 +208,7 @@ static void __adc_int_work_startup (am_hc32_adc_dev_t       *p_dev,
 
         /* 初始化引脚 */
         if(p_dev->p_devinfo->p_ioinfo[chan].chan_sel <
-           AMHW_HC32_CHAN_DAC_OUT) {
+           AWHW_HC32_CHAN_OPA3_OUT) {
 
             /* GPIO引脚模式设置 */
             am_gpio_pin_cfg(p_dev->p_devinfo->p_ioinfo[chan].gpio,
@@ -306,7 +305,7 @@ static int __fn_adc_stop (void *p_drv, int chan)
 
         /* 初始化引脚 */
         if(p_dev->p_devinfo->p_ioinfo[chan].chan_sel <
-           AMHW_HC32_CHAN_DAC_OUT) {
+           AWHW_HC32_CHAN_OPA3_OUT) {
 
             /* GPIO引脚模式设置 */
             am_gpio_pin_cfg(p_dev->p_devinfo->p_ioinfo[chan].gpio,

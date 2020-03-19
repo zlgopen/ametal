@@ -27,6 +27,8 @@
 extern "C" {
 #endif
 
+#include "am_board.h"
+
 /**
  * \addtogroup hc32_if_regbase
  * \copydoc hc32_regbase.h
@@ -69,7 +71,6 @@ extern "C" {
 #define HC32_LCD_BASE                (0x40005C00UL)  /** \brief LCDCTRL基地址 */
 #define HC32_LVD_BASE                (0x40002400UL)  /** \brief LVD基地址 */
 #define HC32_RCC_BASE                (0x40002000UL)  /** \brief RCC基地址 */
-#define HC32_OPA_BASE                (0x40002430UL)  /** \brief OPA基地址 */
 #define HC32_PCNT_BASE               (0x40005400UL)  /** \brief PCNT基地址 */
 #define HC32_RAM_BASE                (0x40020400UL)  /** \brief RAM基地址 */
 #define HC32_PCA_BASE                (0x40001000UL)  /** \brief PCA基地址 */
@@ -79,6 +80,12 @@ extern "C" {
 #define HC32_WDT_BASE                (0x40000F80UL)  /** \brief WDT基地址 */
 #define HC32_BGR_BASE                (0x40002400UL)  /** \brief BGR基地址 */
 #define HC32_SYSTICK                 (0xE000E010UL)  /** \brief SYSTICK基地址 */
+
+#ifdef HC32X3X
+#define HC32_OPA_BASE                (0x40002430UL)  /** \brief OPA基地址 */
+#else
+#define HC32_OPA_BASE                (0x40002400UL)  /** \brief OPA基地址 */
+#endif
 /** @} */
 
 /**
