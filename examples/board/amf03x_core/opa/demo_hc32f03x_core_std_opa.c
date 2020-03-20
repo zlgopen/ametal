@@ -45,7 +45,7 @@
 #include "am_gpio.h"
 #include "hc32x3x_pin.h"
 #include "am_hc32x3x_opa.h"
-#include "am_hc32l13x_inst_init.h"
+#include "am_hc32f03x_inst_init.h"
 #include "demo_std_entries.h"
 #include "demo_hc32_entries.h"
 /**
@@ -56,7 +56,7 @@
 /**
  * \brief Àý³ÌÈë¿Ú
  */
-void demo_hc32l13x_core_std_opa_entry (void)
+void demo_hc32f03x_core_std_opa_entry (void)
 {
     AM_DBG_INFO("demo aml13x_core std opa  test!\r\n");
 

@@ -118,10 +118,18 @@ typedef enum {
     AMHW_HC32_CHAN_AIN22_PB15,        /**< \brief 转换通道22 */
     AMHW_HC32_CHAN_AIN23_PE15,        /**< \brief 转换通道23 */
     /**< \brief 转换通道23,PC6适用于HC32F030、HC32L13X */
-    AMHW_HC32_CHAN_AIN23_PC6 = AMHW_HC32_CHAN_AIN23_PE15,        
+    AMHW_HC32_CHAN_AIN23_PC6 = AMHW_HC32_CHAN_AIN23_PE15,
+
+#ifdef HC32X3X
     AWHW_HC32_CHAN_OPA1_OUT,          /**< \brief OPA1输出 */
     AWHW_HC32_CHAN_OPA2_OUT,          /**< \brief OPA2输出 */
     AWHW_HC32_CHAN_OPA3_OUT,          /**< \brief OPA3输出 */
+#else
+    AMHW_HC32_CHAN_AIN24_PE14,        /**< \brief 转换通道24 */
+    AMHW_HC32_CHAN_AIN25_PE13,        /**< \brief 转换通道25 */
+    AMHW_HC32_CHAN_DAC_OUT,           /**< \brief 与DAC输出连接，ADC_CR0.Buf必须为1 */
+#endif
+
     AMHW_HC32_CHAN_VCC_DIV3,          /**< \brief 与内部1/3VCC连接，ADC_CR0.Buf必须为1 */
     AMHW_HC32_CHAN_INSIDE_TEMP_SENSOR,/**< \brief 与内置温度传感器输出电压连接，ADC_CR0.Buf必须为1 */
     AMHW_HC32_CHAN_INSIDE_REFVCC_12,  /**< \brief 与内部基准1.2V输出电压连接，ADC_CR0.Buf必须为1 */

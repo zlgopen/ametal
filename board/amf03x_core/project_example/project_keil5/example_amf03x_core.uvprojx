@@ -10,7 +10,7 @@
       <TargetName>debug</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
-      <pCCUsed>5060061::V5.06 update 1 (build 61)::ARMCC</pCCUsed>
+      <pCCUsed>5060750::V5.06 update 6 (build 750)::ARMCC</pCCUsed>
       <uAC6>0</uAC6>
       <TargetOption>
         <TargetCommonOption>
@@ -133,7 +133,7 @@
             <UseExternalTool>0</UseExternalTool>
             <RunIndependent>0</RunIndependent>
             <UpdateFlashBeforeDebugging>1</UpdateFlashBeforeDebugging>
-            <Capability>1</Capability>
+            <Capability>0</Capability>
             <DriverSelection>4096</DriverSelection>
           </Flash1>
           <bUseTDR>1</bUseTDR>
@@ -858,11 +858,6 @@
               <FilePath>..\..\..\..\soc\hdsc\drivers\source\lvd\am_hc32_lvd.c</FilePath>
             </File>
             <File>
-              <FileName>am_hc32_opa.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\hdsc\drivers\source\opa\am_hc32_opa.c</FilePath>
-            </File>
-            <File>
               <FileName>am_hc32_pca.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\soc\hdsc\drivers\source\pca\am_hc32_pca.c</FilePath>
@@ -946,6 +941,11 @@
               <FileName>am_hc32_wdt.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\soc\hdsc\drivers\source\wdt\am_hc32_wdt.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hc32x3x_opa.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\soc\hdsc\drivers\source\opa\am_hc32x3x_opa.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -1171,11 +1171,6 @@
               <FileName>demo_hc32f03x_core_miniport_zlg72128.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\board\amf03x_core\miniport_board\demo_hc32f03x_core_miniport_zlg72128.c</FilePath>
-            </File>
-            <File>
-              <FileName>demo_hc32f03x_core_opa_dac.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\amf03x_core\opa\demo_hc32f03x_core_opa_dac.c</FilePath>
             </File>
             <File>
               <FileName>demo_hc32f03x_core_opa_one.c</FileName>
@@ -1422,6 +1417,11 @@
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\board\amf03x_core\wdt\demo_hc32f03x_core_std_wdt.c</FilePath>
             </File>
+            <File>
+              <FileName>demo_hc32f03x_core_std_opa.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\amf03x_core\opa\demo_hc32f03x_core_std_opa.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -1553,16 +1553,6 @@
               <FilePath>..\..\..\..\examples\soc\hdsc\lvd\demo_hc32_hw_lvd_system_reset.c</FilePath>
             </File>
             <File>
-              <FileName>demo_hc32_hw_opa_dac.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\soc\hdsc\opa\demo_hc32_hw_opa_dac.c</FilePath>
-            </File>
-            <File>
-              <FileName>demo_hc32_hw_opa_one.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\soc\hdsc\opa\demo_hc32_hw_opa_one.c</FilePath>
-            </File>
-            <File>
               <FileName>demo_hc32_hw_spi_master.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\soc\hdsc\spi\demo_hc32_hw_spi_master.c</FilePath>
@@ -1651,6 +1641,16 @@
               <FileName>demo_hc32_hw_i2c_slave_int.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\soc\hdsc\i2c\demo_hc32_hw_i2c_slave_int.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_hc32x3x_std_opa.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\soc\hdsc\opa\demo_hc32x3x_std_opa.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_hc32x3x_hw_opa_one.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\soc\hdsc\opa\demo_hc32x3x_hw_opa_one.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -3023,11 +3023,6 @@
               <FilePath>..\..\..\..\soc\hdsc\drivers\source\lvd\am_hc32_lvd.c</FilePath>
             </File>
             <File>
-              <FileName>am_hc32_opa.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\hdsc\drivers\source\opa\am_hc32_opa.c</FilePath>
-            </File>
-            <File>
               <FileName>am_hc32_pca.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\soc\hdsc\drivers\source\pca\am_hc32_pca.c</FilePath>
@@ -3111,6 +3106,11 @@
               <FileName>am_hc32_wdt.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\soc\hdsc\drivers\source\wdt\am_hc32_wdt.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hc32x3x_opa.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\soc\hdsc\drivers\source\opa\am_hc32x3x_opa.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -3336,11 +3336,6 @@
               <FileName>demo_hc32f03x_core_miniport_zlg72128.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\board\amf03x_core\miniport_board\demo_hc32f03x_core_miniport_zlg72128.c</FilePath>
-            </File>
-            <File>
-              <FileName>demo_hc32f03x_core_opa_dac.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\amf03x_core\opa\demo_hc32f03x_core_opa_dac.c</FilePath>
             </File>
             <File>
               <FileName>demo_hc32f03x_core_opa_one.c</FileName>
@@ -3587,6 +3582,11 @@
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\board\amf03x_core\wdt\demo_hc32f03x_core_std_wdt.c</FilePath>
             </File>
+            <File>
+              <FileName>demo_hc32f03x_core_std_opa.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\amf03x_core\opa\demo_hc32f03x_core_std_opa.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -3718,16 +3718,6 @@
               <FilePath>..\..\..\..\examples\soc\hdsc\lvd\demo_hc32_hw_lvd_system_reset.c</FilePath>
             </File>
             <File>
-              <FileName>demo_hc32_hw_opa_dac.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\soc\hdsc\opa\demo_hc32_hw_opa_dac.c</FilePath>
-            </File>
-            <File>
-              <FileName>demo_hc32_hw_opa_one.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\soc\hdsc\opa\demo_hc32_hw_opa_one.c</FilePath>
-            </File>
-            <File>
               <FileName>demo_hc32_hw_spi_master.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\soc\hdsc\spi\demo_hc32_hw_spi_master.c</FilePath>
@@ -3816,6 +3806,16 @@
               <FileName>demo_hc32_hw_i2c_slave_int.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\soc\hdsc\i2c\demo_hc32_hw_i2c_slave_int.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_hc32x3x_std_opa.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\soc\hdsc\opa\demo_hc32x3x_std_opa.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_hc32x3x_hw_opa_one.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\soc\hdsc\opa\demo_hc32x3x_hw_opa_one.c</FilePath>
             </File>
           </Files>
         </Group>

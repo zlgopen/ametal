@@ -24,8 +24,8 @@
 #include "am_clk.h"
 #include "am_gpio.h"
 #include "am_hc32.h"
-#include "am_hc32_opa.h"
-#include "hw/amhw_hc32_opa.h"
+#include "am_hc32x3x_opa.h"
+#include "hw/amhw_hc32x3x_opa.h"
 #include "hc32x3x_pin.h"
 
 /**

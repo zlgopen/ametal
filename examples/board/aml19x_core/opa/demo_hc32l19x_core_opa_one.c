@@ -44,6 +44,7 @@
 #include "am_hc32.h"
 #include "am_gpio.h"
 #include "hc32_pin.h"
+#include "hc32_clk.h"
 #include "am_hc32_opa.h"
 #include "demo_hc32_entries.h"
 

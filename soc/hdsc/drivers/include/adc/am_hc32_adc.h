@@ -29,8 +29,7 @@ extern "C" {
 
 #include "ametal.h"
 #include "am_adc.h"
-
-#include "hw/amhw_hc32_adc.h"
+#include "hw/amhw_hc32_adc.h"       /**< \brief 适用于HC32L/F17X、HC32L/F19X */
 
 /**
  * \addtogroup am_hc32_if_adc
@@ -152,7 +151,7 @@ typedef struct am_hc32_adc_dev {
  * \return ADC标准服务操作句柄 如果为 NULL，表明初始化失败
  */
 am_adc_handle_t am_hc32_adc_init (am_hc32_adc_dev_t           *p_dev,
-                                    const am_hc32_adc_devinfo_t *p_devinfo);
+                                  const am_hc32_adc_devinfo_t *p_devinfo);
 
 /**
  * \brief ADC去初始化

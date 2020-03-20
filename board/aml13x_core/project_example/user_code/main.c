@@ -3,7 +3,7 @@
 *                       ----------------------------
 *                       innovating embedded platform
 *
-* Copyright (c) 2001-2018 Guangzhou ZHIYUAN Electronics Co., Ltd.
+* Copyright (c) 2001-2019 Guangzhou ZHIYUAN Electronics Co., Ltd.
 * All rights reserved.
 *
 * Contact information:

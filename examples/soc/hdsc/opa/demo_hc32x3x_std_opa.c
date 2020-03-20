@@ -39,12 +39,12 @@
 #include "am_int.h"
 #include "am_delay.h"
 #include "am_board.h"
-#include "am_hc32_opa.h"
+#include "am_hc32x3x_opa.h"
 
 /**
  * \brief Àý³ÌÈë¿Ú
  */
-void demo_hc32_std_opa_entry (am_opa_handle_t p_handle, uint8_t ch)
+void demo_hc32_std_opa_entry (void *p_handle, uint8_t ch)
 {
 
    if (p_handle ==NULL){
