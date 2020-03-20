@@ -101,11 +101,11 @@ void am_board_init (void)
 #if (AM_CFG_DELAY_ENABLE == 1)
     am_bsp_delay_timer_init(am_hc32f460_systick_inst_init(), 0);
 #endif /* (AM_CFG_DELAY_ENABLE == 1) */
-//
-//#if (AM_CFG_LED_ENABLE == 1)
-//    am_hc32f460_led_gpio_inst_init();
-//#endif /* (AM_CFG_LED_ENABLE == 1) */
-//
+
+#if (AM_CFG_LED_ENABLE == 1)
+    am_hc32f460_led_gpio_inst_init();
+#endif /* (AM_CFG_LED_ENABLE == 1) */
+
 #ifdef AM_VDEBUG
 
 #if (AM_CFG_DEBUG_ENABLE == 1)

@@ -47,6 +47,22 @@ extern "C" {
 #define HC32F460_DMA1_BASE          (0x40053000UL)  /** \brief DMA1基地址 */
 #define HC32F460_DMA2_BASE          (0x40053400UL)  /** \brief DMA2基地址 */
 #define HC32F460_AOS_BASE           (0x40010800UL)  /** \brief AOS基地址 */
+#define HC32F460_TIMER0_1_BASE      (0x40024000UL)  /** \brief TIMER01?ùμ??· */
+#define HC32F460_TIMER0_2_BASE      (0x40024400UL)  /** \brief TIMER02?ùμ??· */
+#define HC32F460_TMRA1_BASE         (0x40015000UL)  /** \brief TIMERA01?ùμ??· */
+#define HC32F460_TMRA2_BASE         (0x40015400UL)  /** \brief TIMERA02?ùμ??· */
+#define HC32F460_TMRA3_BASE         (0x40015800UL)  /** \brief TIMERA03?ùμ??· */
+#define HC32F460_TMRA4_BASE         (0x40015C00UL)  /** \brief TIMERA04?ùμ??· */
+#define HC32F460_TMRA5_BASE         (0x40016000UL)  /** \brief TIMERA05?ùμ??· */
+#define HC32F460_TMRA6_BASE         (0x40016400UL)  /** \brief TIMERA06?ùμ??· */
+#define HC32F460_TMR41_BASE         (0x40017000UL)  /** \brief TIMER401?ùμ??· */
+#define HC32F460_TMR42_BASE         (0x40024800UL)  /** \brief TIMER402?ùμ??· */
+#define HC32F460_TMR43_BASE         (0x40024C00UL)  /** \brief TIMER403?ùμ??· */
+#define HC32F460_TMR4_CR            (0x40055408UL)  /** \brief TIMER4_CR?ùμ??· */
+#define HC32F460_TMR61_BASE         (0x40018000UL)  /** \brief TIMER601?ùμ??· */
+#define HC32F460_TMR62_BASE         (0x40018400UL)  /** \brief TIMER602?ùμ??· */
+#define HC32F460_TMR63_BASE         (0x40018800UL)  /** \brief TIMER603?ùμ??· */
+#define HC32F460_TMR6_CR            (0x40018000UL)  /** \brief TIMER6_CR?ùμ??· */
 /**
  * \name 外设内存映射地址定义
  * @{

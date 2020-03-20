@@ -1,7 +1,11 @@
 void IRQ128_Handler(void *parg);
-void IRQ129_Handler(void *parg);
+void IRQ130_Handler(void *parg);
+void IRQ131_Handler(void *parg);
+void IRQ132_Handler(void *parg);
 void IRQ136_Handler(void *parg);
 void IRQ137_Handler(void *parg);
+void IRQ138_Handler(void *parg);
+void IRQ139_Handler(void *parg);
 void IRQ141_Handler(void *parg);
 
 typedef struct

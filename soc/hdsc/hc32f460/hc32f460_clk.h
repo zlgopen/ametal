@@ -156,9 +156,9 @@ extern "C" {
 #define CLK_TIMER4_2 (FROM_PCLK1 | (73ul))
 #define CLK_TIMER4_3 (FROM_PCLK1 | (74ul))
 #define CLK_EMB      (FROM_PCLK1 | (79ul))
-#define CLK_TIMER6_1 (FROM_PCLK1 | (80ul))
-#define CLK_TIMER6_2 (FROM_PCLK1 | (81ul))
-#define CLK_TIMER6_3 (FROM_PCLK1 | (82ul))
+#define CLK_TIMER6_1 (FROM_PCLK0 | (80ul))
+#define CLK_TIMER6_2 (FROM_PCLK0 | (81ul))
+#define CLK_TIMER6_3 (FROM_PCLK0 | (82ul))
 
 #define CLK_ADC1     (FROM_PCLK1 | (96ul))
 #define CLK_ADC2     (FROM_PCLK1 | (97ul))
