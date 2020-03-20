@@ -441,7 +441,7 @@ int am_gpio_trigger_disconnect (int           pin,
 
     am_int_cpu_unlock(key);
 
-    return AM_OK;    return AM_OK;
+    return AM_OK;
 }
 
 /**

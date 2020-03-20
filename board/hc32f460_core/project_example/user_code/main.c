@@ -40,13 +40,50 @@
 
 int am_main (void)
 {
+    AM_DBG_INFO("Start up successful!\r\n");
+    /* demoÀý³ÌÈë¿Ú */
+    demo_hc32f460_core_std_led_entry();
 //    demo_hc32f460_core_std_gpio_entry();
 //    demo_hc32f460_core_std_gpio_trigger_entry();
 //    demo_hc32f460_core_hw_gpio_entry();
 //    demo_std_uart_ringbuf_entry(am_hc32f460_uart4_inst_init());
 //    demo_std_uart_polling_entry(am_hc32f460_uart4_inst_init());
 //    demo_hc32f460_core_hw_uart_int_entry();
-    AM_DBG_INFO("Start up successful!\r\n");
+//    demo_hc32f460_core_std_tim01_timing_entry();
+//    demo_hc32f460_core_std_tim02_timing_entry();
+//    demo_hc32f460_core_std_timea1_timing_entry();
+//    demo_hc32f460_core_std_timea2_timing_entry();
+//    demo_hc32f460_core_std_timea3_timing_entry();
+//    demo_hc32f460_core_std_timea4_timing_entry();
+//    demo_hc32f460_core_std_timea5_timing_entry();
+//    demo_hc32f460_core_std_timea6_timing_entry();
+//    demo_hc32f460_core_std_tim41_timing_entry();
+//    demo_hc32f460_core_std_tim42_timing_entry();
+//    demo_hc32f460_core_std_tim43_timing_entry();
+//    demo_hc32f460_core_std_tim61_timing_entry();
+//    demo_hc32f460_core_std_tim62_timing_entry();
+//    demo_hc32f460_core_std_tim63_timing_entry();
+//    demo_hc32f460_core_std_timea1_pwm_entry();
+//    demo_hc32f460_core_std_timea2_pwm_entry();
+//    demo_hc32f460_core_std_timea3_pwm_entry();
+//    demo_hc32f460_core_std_timea4_pwm_entry();
+//    demo_hc32f460_core_std_timea5_pwm_entry();
+//    demo_hc32f460_core_std_timea6_pwm_entry();
+//    demo_hc32f460_core_std_tim41_pwm_entry();
+//    demo_hc32f460_core_std_tim42_pwm_entry();
+//    demo_hc32f460_core_std_tim43_pwm_entry();
+//    demo_hc32f460_core_std_adtim61_pwm_entry();
+//    demo_hc32f460_core_std_adtim62_pwm_entry();
+//    demo_hc32f460_core_std_adtim63_pwm_entry();
+//	  demo_hc32f460_core_std_timea1_cap_entry();
+//    demo_hc32f460_core_std_timea2_cap_entry();
+//    demo_hc32f460_core_std_timea3_cap_entry();
+//    demo_hc32f460_core_std_timea4_cap_entry();
+//    demo_hc32f460_core_std_timea5_cap_entry();
+//    demo_hc32f460_core_std_timea6_cap_entry();
+//    demo_hc32f460_core_std_adtim61_cap_entry();
+//    demo_hc32f460_core_std_adtim62_cap_entry();
+//    demo_hc32f460_core_std_adtim63_cap_entry();
     while (1) {
 
     }

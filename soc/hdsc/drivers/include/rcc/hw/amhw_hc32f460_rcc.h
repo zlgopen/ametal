@@ -405,8 +405,10 @@ void amhw_hc32f460_sysclk_cfg (uint32_t                         clk_id,
 /* 复位功能时钟控制寄存器 */
 am_static_inline
 void amhw_hc32f460_clk_reset_mstb_fcg (void) {
-    HC32F460_MSTP->FCG0_PC = 0XA5A50001;    HC32F460_MSTP->FCG0 = 0XFFFFFAEE;
-    HC32F460_MSTP->FCG0_PC = 0XA5A50000;    HC32F460_MSTP->FCG1 = 0XF7FFFFFF;
+    HC32F460_MSTP->FCG0_PC = 0XA5A50001;    
+    HC32F460_MSTP->FCG0 = 0XFFFFFAEE;
+    HC32F460_MSTP->FCG0_PC = 0XA5A50000;    
+    HC32F460_MSTP->FCG1 = 0XF7FFFFFF;
     HC32F460_MSTP->FCG2 = 0XFFFFFFFF;
     HC32F460_MSTP->FCG3 = 0XFFFFFFFF;
 }
@@ -414,8 +416,10 @@ void amhw_hc32f460_clk_reset_mstb_fcg (void) {
 am_static_inline
 void amhw_hc32f460_clk_get_mstb_fcg (uint32_t* value_reg)
 {
-    HC32F460_MSTP->FCG0_PC = 0XA5A50001;    value_reg[0] = HC32F460_MSTP->FCG0;
-    HC32F460_MSTP->FCG0_PC = 0XA5A50000;    value_reg[1] = HC32F460_MSTP->FCG1;
+    HC32F460_MSTP->FCG0_PC = 0XA5A50001;    
+	value_reg[0] = HC32F460_MSTP->FCG0;
+    HC32F460_MSTP->FCG0_PC = 0XA5A50000;    
+	value_reg[1] = HC32F460_MSTP->FCG1;
     value_reg[2] = HC32F460_MSTP->FCG2;
     value_reg[3] = HC32F460_MSTP->FCG3;
 }
@@ -424,8 +428,10 @@ void amhw_hc32f460_clk_get_mstb_fcg (uint32_t* value_reg)
 am_static_inline
 void amhw_hc32f460_clk_set_mstb_fcg (uint32_t* value_reg)
 {
-    HC32F460_MSTP->FCG0_PC = 0XA5A50001;    HC32F460_MSTP->FCG0 = value_reg[0];
-    HC32F460_MSTP->FCG0_PC = 0XA5A50000;    HC32F460_MSTP->FCG1 = value_reg[1];
+    HC32F460_MSTP->FCG0_PC = 0XA5A50001;    
+	HC32F460_MSTP->FCG0 = value_reg[0];
+    HC32F460_MSTP->FCG0_PC = 0XA5A50000;    
+	HC32F460_MSTP->FCG1 = value_reg[1];
     HC32F460_MSTP->FCG2 = value_reg[2];
     HC32F460_MSTP->FCG3 = value_reg[3];
 }

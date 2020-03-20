@@ -66,7 +66,7 @@ extern "C" {
 //#include "am_hwconf_key_gpio.h"
 //#include "am_hwconf_buzzer_pwm.h"
 //#include "am_hwconf_debug_uart.h"
-//#include "am_hwconf_system_tick_softimer.h"
+#include "am_hwconf_system_tick_softimer.h"
 //#include "am_hwconf_lm75.h"
 //#include "am_hwconf_microport.h"
 //#include "am_hwconf_miniport_zlg72128.h"
@@ -1226,7 +1226,47 @@ void am_hc32f460_uart4_inst_deinit (am_uart_handle_t handle);
 // */
 //void am_zlg118_pcnt_inst_deinit (am_zlg118_pcnt_handle_t handle);
 
+int am_hc32f460_led_gpio_inst_init (void);
 am_uart_handle_t am_debug_uart_inst_init (void);
+
+am_timer_handle_t am_hc32f460_tim01_timing_inst_init (void);
+am_timer_handle_t am_hc32f460_tim02_timing_inst_init (void);
+am_timer_handle_t am_hc32f460_timea1_timing_inst_init (void);
+am_timer_handle_t am_hc32f460_timea2_timing_inst_init (void);
+am_timer_handle_t am_hc32f460_timea3_timing_inst_init (void);
+am_timer_handle_t am_hc32f460_timea4_timing_inst_init (void);
+am_timer_handle_t am_hc32f460_timea5_timing_inst_init (void);
+am_timer_handle_t am_hc32f460_timea6_timing_inst_init (void);
+am_timer_handle_t am_hc32f460_tim41_timing_inst_init (void);
+am_timer_handle_t am_hc32f460_tim42_timing_inst_init (void);
+am_timer_handle_t am_hc32f460_tim43_timing_inst_init (void);
+am_timer_handle_t am_hc32f460_tim61_timing_inst_init (void);
+am_timer_handle_t am_hc32f460_tim62_timing_inst_init (void);
+am_timer_handle_t am_hc32f460_tim63_timing_inst_init (void);
+
+am_pwm_handle_t   am_hc32f460_timea1_pwm_inst_init (void);
+am_pwm_handle_t   am_hc32f460_timea2_pwm_inst_init (void);
+am_pwm_handle_t   am_hc32f460_timea3_pwm_inst_init (void);
+am_pwm_handle_t   am_hc32f460_timea4_pwm_inst_init (void);
+am_pwm_handle_t   am_hc32f460_timea5_pwm_inst_init (void);
+am_pwm_handle_t   am_hc32f460_timea6_pwm_inst_init (void);
+am_pwm_handle_t   am_hc32f460_tim41_pwm_inst_init (void);
+am_pwm_handle_t   am_hc32f460_tim42_pwm_inst_init (void);
+am_pwm_handle_t   am_hc32f460_tim43_pwm_inst_init (void);
+am_pwm_handle_t   am_hc32f460_adtim61_pwm_inst_init (void);
+am_pwm_handle_t   am_hc32f460_adtim62_pwm_inst_init (void);
+am_pwm_handle_t   am_hc32f460_adtim63_pwm_inst_init (void);
+
+am_cap_handle_t   am_hc32f460_timea1_cap_inst_init (void);
+am_cap_handle_t   am_hc32f460_timea2_cap_inst_init (void);
+am_cap_handle_t   am_hc32f460_timea3_cap_inst_init (void);
+am_cap_handle_t   am_hc32f460_timea4_cap_inst_init (void);
+am_cap_handle_t   am_hc32f460_timea5_cap_inst_init (void);
+am_cap_handle_t   am_hc32f460_timea6_cap_inst_init (void);
+am_cap_handle_t   am_hc32f460_adtim61_cap_inst_init (void);
+am_cap_handle_t   am_hc32f460_adtim62_cap_inst_init (void);
+am_cap_handle_t   am_hc32f460_adtim63_cap_inst_init (void);
+
 
 /**
  * @}
