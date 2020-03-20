@@ -61,7 +61,7 @@ extern "C" {
 #include "am_hc32_pca.h"
 #include "am_hc32_pcnt.h"
 #include "am_hc32_lcd.h"
-#include "am_hc32_opa.h"
+#include "am_hc32x3x_opa.h"
 //#include "amhw_hc32_rtc.h"
 #include "am_hwconf_hc32L13x_led_gpio.h"
 //#include "am_hwconf_led_gpio.h"
