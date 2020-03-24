@@ -68,8 +68,6 @@ static void __pfn_temprature (void *p_arg, uint32_t trigger_src)
  */
 void demo_std_tmf8801_int_entry (am_sensor_handle_t handle)
 {
-    am_err_t ret = AM_OK;
-
     /* 使能两路通道 */
     am_sensor_enable(handle, __tmf8801_id, 2, __tmf8801_data);
 

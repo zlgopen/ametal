@@ -9,7 +9,6 @@
 * Contact information:
 * web site:    http://www.zlg.cn/
 *******************************************************************************/
-
 /**
  * \file
  * \brief ZSN700 例程工程
@@ -22,7 +21,6 @@
  * - 1.00 20-03-18  YRZ, first implementation
  * \endinternal
  */
-
 /**
  * \brief 例程入口
  */
@@ -32,11 +30,9 @@
 #include "am_delay.h"
 #include "am_softimer.h"
 #include "demo_am700_core_entries.h"
-
 int am_main (void)
 {
     AM_DBG_INFO("Start up successful!\r\n");
-
     /* demo例程入口 */
     demo_zsn700_core_std_led_entry();
 //    demo_zsn700_core_std_delay_entry();
@@ -130,10 +126,7 @@ int am_main (void)
 //    demo_zsn700_core_miniport_zlg72128_entry();
 //    demo_zsn700_core_miniport_hc595_digitron_entry();
 //    demo_zsn700_core_miniport_hc595_led_entry();
-
     while (1) {
-
     }
 }
-
 /* end of file */
