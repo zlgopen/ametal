@@ -43,7 +43,6 @@
 #include "am_sensor.h"
 #include "am_sdcard.h"
 #include "am_dac.h"
-#include "am_hc32_opa.h"
 
 #ifdef __cplusplus
 extern "C" {

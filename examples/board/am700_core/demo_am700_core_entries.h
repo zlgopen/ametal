@@ -653,3 +653,38 @@ void demo_zsn700_core_hw_trng_generate_entry (void);
  * \brief LCD显示例程，通过 HW 层接口实现
  */
 void demo_zsn700_core_hw_lcd_entry (void);
+
+/**
+ * \brief ZSN700 读卡器读A类卡例程
+ */
+void demo_zsn700_reader_picca_read_id (void);
+
+/**
+ * \brief ZSN700 读卡器读A类挂起例程
+ */
+void demo_zsn700_reader_picca_halt (void);
+
+/**
+ * \brief ZSN700 读卡器读A类LPCD模式例程
+ */
+void demo_zsn700_reader_picca_lpcd_mode (void);
+
+/**
+ * \brief ZSN700 读卡器读A类读块数据例程
+ */
+void demo_zsn700_reader_picca_read_block (void);
+
+/**
+ * \brief A类卡值操作例程
+ */
+void demo_zsn700_reader_picca_val_operate (void);
+
+/**
+ * \brief A类卡写块例程
+ */
+void demo_zsn700_reader_picca_write_block (void);
+
+/**
+ * \brief B类卡读卡例程
+ */
+void demo_zsn700_reader_piccb_read_id (void);

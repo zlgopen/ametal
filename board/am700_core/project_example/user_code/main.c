@@ -32,7 +32,7 @@
 #include "am_delay.h"
 #include "am_softimer.h"
 #include "demo_am700_core_entries.h"
-
+#include "am_zsn700_reader.h"
 int am_main (void)
 {
     AM_DBG_INFO("Start up successful!\r\n");
@@ -41,6 +41,13 @@ int am_main (void)
     demo_zsn700_core_std_led_entry();
 //    demo_zsn700_core_std_delay_entry();
 //    demo_zsn700_core_std_buzzer_entry();
+//    demo_zsn700_reader_picca_halt ();
+//    demo_zsn700_reader_picca_lpcd_mode ();
+//    demo_zsn700_reader_picca_read_block ();
+//    demo_zsn700_reader_picca_val_operate ();
+//    demo_zsn700_reader_picca_write_block ();
+//    demo_zsn700_reader_piccb_read_id ();
+//    demo_zsn700_reader_picca_read_id();
 //    demo_zsn700_core_hw_clk_entry();
 //    demo_zsn700_core_std_adc_entry();
 //    demo_zsn700_core_hw_adc_int_entry();
