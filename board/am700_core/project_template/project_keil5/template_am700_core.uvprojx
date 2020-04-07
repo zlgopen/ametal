@@ -981,6 +981,11 @@
               <FileType>1</FileType>
               <FilePath>..\..\..\..\soc\zlg\drivers\source\lcd\am_zsn700_lcd.c</FilePath>
             </File>
+            <File>
+              <FileName>am_zsn700_reader.lib</FileName>
+              <FileType>4</FileType>
+              <FilePath>..\..\..\..\soc\zlg\drivers\source\reader\am_zsn700_reader.lib</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -1225,6 +1230,11 @@
               <FileName>am_servconf_event_input.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\user_config\am_servconf_usrcfg\am_servconf_event_input.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_zsn700_reader.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zsn700_reader.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -2205,6 +2215,11 @@
               <FileType>1</FileType>
               <FilePath>..\..\..\..\soc\zlg\drivers\source\lcd\am_zsn700_lcd.c</FilePath>
             </File>
+            <File>
+              <FileName>am_zsn700_reader.lib</FileName>
+              <FileType>4</FileType>
+              <FilePath>..\..\..\..\soc\zlg\drivers\source\reader\am_zsn700_reader.lib</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -2449,6 +2464,11 @@
               <FileName>am_servconf_event_input.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\user_config\am_servconf_usrcfg\am_servconf_event_input.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_zsn700_reader.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zsn700_reader.c</FilePath>
             </File>
           </Files>
         </Group>
