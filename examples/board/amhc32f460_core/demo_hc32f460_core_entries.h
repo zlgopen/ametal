@@ -117,16 +117,6 @@ void demo_hc32f460_core_std_i2c_slave_int_entry (void);
 void demo_hc32f460_core_std_i2c_lm75_entry (void);
 
 /**
- * \brief I2C ?~{!B~}?~{(2~}???? EEPROM ???????~{!'~}??????~{!@(:!A~}?????????
- */
-void demo_hc32f460_core_std_i2c_master_async_entry (void);
-
-/**
- * \brief I2C ?~{!B~}?~{(2~}???? EEPROM ???????~{!'~}??????~{!@(:!A~}?????????
- */
-void demo_hc32f460_core_std_i2c_master_sync_entry (void);
-
-/**
  * \brief ~{!c~}??~{(9~}????~{!A~}????????????~{!'~}??~{!@(:!A~}?????????
  */
 void demo_hc32f460_core_std_key_input_event_entry (void);
@@ -678,3 +668,15 @@ void demo_hc32f460_core_std_timea6_cap_entry(void);
 void demo_hc32f460_core_std_adtim61_cap_entry(void);
 void demo_hc32f460_core_std_adtim62_cap_entry(void);
 void demo_hc32f460_core_std_adtim63_cap_entry(void);
+void demo_hc32f460_core_std_i2c_master_sync_entry (void);
+void demo_hc32f460_core_std_i2c_master_async_entry (void);
+void demo_hc32f460_hw_i2c_slave_poll_entry (void     *p_hw_i2c_addr,
+                                            uint32_t clk_id,
+                                            int      slave_speed,
+                                            int      slave_addr);
+void demo_hc32f460_hw_i2c_master_poll_entry (void *p_hw_i2c_addr,
+			                                uint32_t clk_id,
+                                            int      master_speed,
+                                            int      master_addr);
+void demo_hc32f460_core_hw_i2c_master_poll_entry (void);
+void demo_hc32f460_core_hw_i2c_slave_poll_entry (void);

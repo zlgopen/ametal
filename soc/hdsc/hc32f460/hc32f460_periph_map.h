@@ -33,7 +33,7 @@ extern "C" {
 #include "hw/amhw_hc32f460_gpio.h"
 #include "hw/amhw_hc32f460_uart.h"
 #include "hw/amhw_hc32f460_timea.h"
-
+#include "hw/amhw_hc32f460_i2c.h"
 /**
  * \addtogroup amhw_hc32f460_if_periph_map
  * \copydoc amhw_hc32f460_periph_map.h
@@ -65,6 +65,9 @@ extern "C" {
 #define HC32F460_TMR61          ((amhw_hc32f460_adtim_t *)HC32F460_TMR61_BASE)
 #define HC32F460_TMR62          ((amhw_hc32f460_adtim_t *)HC32F460_TMR62_BASE)
 #define HC32F460_TMR63          ((amhw_hc32f460_adtim_t *)HC32F460_TMR63_BASE)
+#define HC32F460_I2C1           ((amhw_hc32f460_i2c_t *)HC32F460_I2C1_BASE)
+#define HC32F460_I2C2           ((amhw_hc32f460_i2c_t *)HC32F460_I2C2_BASE)
+#define HC32F460_I2C3           ((amhw_hc32f460_i2c_t *)HC32F460_I2C3_BASE)
 
 /** @} */
 

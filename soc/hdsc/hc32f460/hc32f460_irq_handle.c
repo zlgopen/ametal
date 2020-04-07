@@ -8,6 +8,7 @@
 #include "am_hc32f460_adtim_timing.h"
 #include "am_hc32f460_timea_cap.h"
 #include "am_hc32f460_adtim_cap.h"
+#include "am_hc32f460_i2c.h"
 
 #define AM_HC32F460_INT_EXTI0_MASK    (1 << 0)
 #define AM_HC32F460_INT_EXTI1_MASK    (1 << 1)
@@ -63,7 +64,15 @@
 #define AM_HC32F460_INT_VSSEL_DMA1_ERR_MASK    (1 << 16)
 #define AM_HC32F460_INT_VSSEL_DMA2_ERR_MASK    (1 << 17)
 
-
+/**
+ *******************************************************************************
+ ** \brief flag status
+ ******************************************************************************/
+typedef enum en_flag_status
+{
+    Reset = 0u,
+    Set   = 1u,
+} en_flag_status_t, en_int_status_t;
 
 /**
  *******************************************************************************
@@ -382,15 +391,8 @@ extern am_hc32f460_adtim_cap_dev_t  __g_adtim61_cap_dev;
 extern am_hc32f460_adtim_cap_dev_t  __g_adtim62_cap_dev;
 extern am_hc32f460_adtim_cap_dev_t  __g_adtim63_cap_dev;
 
-/**
- *******************************************************************************
- ** \brief flag status
- ******************************************************************************/
-typedef enum en_flag_status
-{
-    Reset = 0u,
-    Set   = 1u,
-} en_flag_status_t, en_int_status_t;
+extern am_hc32f460_i2c_dev_t __g_hc32f460_i2c1_dev;
+extern am_hc32f460_i2c_dev_t __g_i2c1_dev;
 
 /*! Bit mask definition*/
 #define     BIT_MASK_00                 (1ul << 0)
@@ -1254,7 +1256,7 @@ void IRQ138_Handler(void)
 void IRQ139_Handler(void)
 {
     uint32_t u32Tmp1 = 0u;
-    uint32_t VSSEL139 = HC32F460_INTC.VSSEL[139 - 128];;
+    uint32_t VSSEL139 = HC32F460_INTC.VSSEL[139 - 128];
 
     u32Tmp1 = HC32F460_TMR43->OCSRU;
     /* Timer4 Ch.3 U phase higher compare match */
@@ -1322,6 +1324,457 @@ void IRQ139_Handler(void)
     }
 }
 
+#define bM4_I2C1_CR1_PE                           (*((volatile unsigned int*)(0x429C0000UL)))
+#define bM4_I2C1_CR1_SMBUS                        (*((volatile unsigned int*)(0x429C0004UL)))
+#define bM4_I2C1_CR1_SMBALRTEN                    (*((volatile unsigned int*)(0x429C0008UL)))
+#define bM4_I2C1_CR1_SMBDEFAULTEN                 (*((volatile unsigned int*)(0x429C000CUL)))
+#define bM4_I2C1_CR1_SMBHOSTEN                    (*((volatile unsigned int*)(0x429C0010UL)))
+#define bM4_I2C1_CR1_ENGC                         (*((volatile unsigned int*)(0x429C0018UL)))
+#define bM4_I2C1_CR1_RESTART                      (*((volatile unsigned int*)(0x429C001CUL)))
+#define bM4_I2C1_CR1_START                        (*((volatile unsigned int*)(0x429C0020UL)))
+#define bM4_I2C1_CR1_STOP                         (*((volatile unsigned int*)(0x429C0024UL)))
+#define bM4_I2C1_CR1_ACK                          (*((volatile unsigned int*)(0x429C0028UL)))
+#define bM4_I2C1_CR1_SWRST                        (*((volatile unsigned int*)(0x429C003CUL)))
+#define bM4_I2C1_CR2_STARTIE                      (*((volatile unsigned int*)(0x429C0080UL)))
+#define bM4_I2C1_CR2_SLADDR0IE                    (*((volatile unsigned int*)(0x429C0084UL)))
+#define bM4_I2C1_CR2_SLADDR1IE                    (*((volatile unsigned int*)(0x429C0088UL)))
+#define bM4_I2C1_CR2_TENDIE                       (*((volatile unsigned int*)(0x429C008CUL)))
+#define bM4_I2C1_CR2_STOPIE                       (*((volatile unsigned int*)(0x429C0090UL)))
+#define bM4_I2C1_CR2_RFULLIE                      (*((volatile unsigned int*)(0x429C0098UL)))
+#define bM4_I2C1_CR2_TEMPTYIE                     (*((volatile unsigned int*)(0x429C009CUL)))
+#define bM4_I2C1_CR2_ARLOIE                       (*((volatile unsigned int*)(0x429C00A4UL)))
+#define bM4_I2C1_CR2_NACKIE                       (*((volatile unsigned int*)(0x429C00B0UL)))
+#define bM4_I2C1_CR2_TMOUTIE                      (*((volatile unsigned int*)(0x429C00B8UL)))
+#define bM4_I2C1_CR2_GENCALLIE                    (*((volatile unsigned int*)(0x429C00D0UL)))
+#define bM4_I2C1_CR2_SMBDEFAULTIE                 (*((volatile unsigned int*)(0x429C00D4UL)))
+#define bM4_I2C1_CR2_SMHOSTIE                     (*((volatile unsigned int*)(0x429C00D8UL)))
+#define bM4_I2C1_CR2_SMBALRTIE                    (*((volatile unsigned int*)(0x429C00DCUL)))
+#define bM4_I2C1_CR3_TMOUTEN                      (*((volatile unsigned int*)(0x429C0100UL)))
+#define bM4_I2C1_CR3_LTMOUT                       (*((volatile unsigned int*)(0x429C0104UL)))
+#define bM4_I2C1_CR3_HTMOUT                       (*((volatile unsigned int*)(0x429C0108UL)))
+#define bM4_I2C1_CR3_FACKEN                       (*((volatile unsigned int*)(0x429C011CUL)))
+#define bM4_I2C1_SLR0_SLADDR00                    (*((volatile unsigned int*)(0x429C0200UL)))
+#define bM4_I2C1_SLR0_SLADDR01                    (*((volatile unsigned int*)(0x429C0204UL)))
+#define bM4_I2C1_SLR0_SLADDR02                    (*((volatile unsigned int*)(0x429C0208UL)))
+#define bM4_I2C1_SLR0_SLADDR03                    (*((volatile unsigned int*)(0x429C020CUL)))
+#define bM4_I2C1_SLR0_SLADDR04                    (*((volatile unsigned int*)(0x429C0210UL)))
+#define bM4_I2C1_SLR0_SLADDR05                    (*((volatile unsigned int*)(0x429C0214UL)))
+#define bM4_I2C1_SLR0_SLADDR06                    (*((volatile unsigned int*)(0x429C0218UL)))
+#define bM4_I2C1_SLR0_SLADDR07                    (*((volatile unsigned int*)(0x429C021CUL)))
+#define bM4_I2C1_SLR0_SLADDR08                    (*((volatile unsigned int*)(0x429C0220UL)))
+#define bM4_I2C1_SLR0_SLADDR09                    (*((volatile unsigned int*)(0x429C0224UL)))
+#define bM4_I2C1_SLR0_SLADDR0EN                   (*((volatile unsigned int*)(0x429C0230UL)))
+#define bM4_I2C1_SLR0_ADDRMOD0                    (*((volatile unsigned int*)(0x429C023CUL)))
+#define bM4_I2C1_SLR1_SLADDR10                    (*((volatile unsigned int*)(0x429C0280UL)))
+#define bM4_I2C1_SLR1_SLADDR11                    (*((volatile unsigned int*)(0x429C0284UL)))
+#define bM4_I2C1_SLR1_SLADDR12                    (*((volatile unsigned int*)(0x429C0288UL)))
+#define bM4_I2C1_SLR1_SLADDR13                    (*((volatile unsigned int*)(0x429C028CUL)))
+#define bM4_I2C1_SLR1_SLADDR14                    (*((volatile unsigned int*)(0x429C0290UL)))
+#define bM4_I2C1_SLR1_SLADDR15                    (*((volatile unsigned int*)(0x429C0294UL)))
+#define bM4_I2C1_SLR1_SLADDR16                    (*((volatile unsigned int*)(0x429C0298UL)))
+#define bM4_I2C1_SLR1_SLADDR17                    (*((volatile unsigned int*)(0x429C029CUL)))
+#define bM4_I2C1_SLR1_SLADDR18                    (*((volatile unsigned int*)(0x429C02A0UL)))
+#define bM4_I2C1_SLR1_SLADDR19                    (*((volatile unsigned int*)(0x429C02A4UL)))
+#define bM4_I2C1_SLR1_SLADDR1EN                   (*((volatile unsigned int*)(0x429C02B0UL)))
+#define bM4_I2C1_SLR1_ADDRMOD1                    (*((volatile unsigned int*)(0x429C02BCUL)))
+#define bM4_I2C1_SLTR_TOUTLOW0                    (*((volatile unsigned int*)(0x429C0300UL)))
+#define bM4_I2C1_SLTR_TOUTLOW1                    (*((volatile unsigned int*)(0x429C0304UL)))
+#define bM4_I2C1_SLTR_TOUTLOW2                    (*((volatile unsigned int*)(0x429C0308UL)))
+#define bM4_I2C1_SLTR_TOUTLOW3                    (*((volatile unsigned int*)(0x429C030CUL)))
+#define bM4_I2C1_SLTR_TOUTLOW4                    (*((volatile unsigned int*)(0x429C0310UL)))
+#define bM4_I2C1_SLTR_TOUTLOW5                    (*((volatile unsigned int*)(0x429C0314UL)))
+#define bM4_I2C1_SLTR_TOUTLOW6                    (*((volatile unsigned int*)(0x429C0318UL)))
+#define bM4_I2C1_SLTR_TOUTLOW7                    (*((volatile unsigned int*)(0x429C031CUL)))
+#define bM4_I2C1_SLTR_TOUTLOW8                    (*((volatile unsigned int*)(0x429C0320UL)))
+#define bM4_I2C1_SLTR_TOUTLOW9                    (*((volatile unsigned int*)(0x429C0324UL)))
+#define bM4_I2C1_SLTR_TOUTLOW10                   (*((volatile unsigned int*)(0x429C0328UL)))
+#define bM4_I2C1_SLTR_TOUTLOW11                   (*((volatile unsigned int*)(0x429C032CUL)))
+#define bM4_I2C1_SLTR_TOUTLOW12                   (*((volatile unsigned int*)(0x429C0330UL)))
+#define bM4_I2C1_SLTR_TOUTLOW13                   (*((volatile unsigned int*)(0x429C0334UL)))
+#define bM4_I2C1_SLTR_TOUTLOW14                   (*((volatile unsigned int*)(0x429C0338UL)))
+#define bM4_I2C1_SLTR_TOUTLOW15                   (*((volatile unsigned int*)(0x429C033CUL)))
+#define bM4_I2C1_SLTR_TOUTHIGH0                   (*((volatile unsigned int*)(0x429C0340UL)))
+#define bM4_I2C1_SLTR_TOUTHIGH1                   (*((volatile unsigned int*)(0x429C0344UL)))
+#define bM4_I2C1_SLTR_TOUTHIGH2                   (*((volatile unsigned int*)(0x429C0348UL)))
+#define bM4_I2C1_SLTR_TOUTHIGH3                   (*((volatile unsigned int*)(0x429C034CUL)))
+#define bM4_I2C1_SLTR_TOUTHIGH4                   (*((volatile unsigned int*)(0x429C0350UL)))
+#define bM4_I2C1_SLTR_TOUTHIGH5                   (*((volatile unsigned int*)(0x429C0354UL)))
+#define bM4_I2C1_SLTR_TOUTHIGH6                   (*((volatile unsigned int*)(0x429C0358UL)))
+#define bM4_I2C1_SLTR_TOUTHIGH7                   (*((volatile unsigned int*)(0x429C035CUL)))
+#define bM4_I2C1_SLTR_TOUTHIGH8                   (*((volatile unsigned int*)(0x429C0360UL)))
+#define bM4_I2C1_SLTR_TOUTHIGH9                   (*((volatile unsigned int*)(0x429C0364UL)))
+#define bM4_I2C1_SLTR_TOUTHIGH10                  (*((volatile unsigned int*)(0x429C0368UL)))
+#define bM4_I2C1_SLTR_TOUTHIGH11                  (*((volatile unsigned int*)(0x429C036CUL)))
+#define bM4_I2C1_SLTR_TOUTHIGH12                  (*((volatile unsigned int*)(0x429C0370UL)))
+#define bM4_I2C1_SLTR_TOUTHIGH13                  (*((volatile unsigned int*)(0x429C0374UL)))
+#define bM4_I2C1_SLTR_TOUTHIGH14                  (*((volatile unsigned int*)(0x429C0378UL)))
+#define bM4_I2C1_SLTR_TOUTHIGH15                  (*((volatile unsigned int*)(0x429C037CUL)))
+#define bM4_I2C1_SR_STARTF                        (*((volatile unsigned int*)(0x429C0380UL)))
+#define bM4_I2C1_SR_SLADDR0F                      (*((volatile unsigned int*)(0x429C0384UL)))
+#define bM4_I2C1_SR_SLADDR1F                      (*((volatile unsigned int*)(0x429C0388UL)))
+#define bM4_I2C1_SR_TENDF                         (*((volatile unsigned int*)(0x429C038CUL)))
+#define bM4_I2C1_SR_STOPF                         (*((volatile unsigned int*)(0x429C0390UL)))
+#define bM4_I2C1_SR_RFULLF                        (*((volatile unsigned int*)(0x429C0398UL)))
+#define bM4_I2C1_SR_TEMPTYF                       (*((volatile unsigned int*)(0x429C039CUL)))
+#define bM4_I2C1_SR_ARLOF                         (*((volatile unsigned int*)(0x429C03A4UL)))
+#define bM4_I2C1_SR_ACKRF                         (*((volatile unsigned int*)(0x429C03A8UL)))
+#define bM4_I2C1_SR_NACKF                         (*((volatile unsigned int*)(0x429C03B0UL)))
+#define bM4_I2C1_SR_TMOUTF                        (*((volatile unsigned int*)(0x429C03B8UL)))
+#define bM4_I2C1_SR_MSL                           (*((volatile unsigned int*)(0x429C03C0UL)))
+#define bM4_I2C1_SR_BUSY                          (*((volatile unsigned int*)(0x429C03C4UL)))
+#define bM4_I2C1_SR_TRA                           (*((volatile unsigned int*)(0x429C03C8UL)))
+#define bM4_I2C1_SR_GENCALLF                      (*((volatile unsigned int*)(0x429C03D0UL)))
+#define bM4_I2C1_SR_SMBDEFAULTF                   (*((volatile unsigned int*)(0x429C03D4UL)))
+#define bM4_I2C1_SR_SMBHOSTF                      (*((volatile unsigned int*)(0x429C03D8UL)))
+#define bM4_I2C1_SR_SMBALRTF                      (*((volatile unsigned int*)(0x429C03DCUL)))
+#define bM4_I2C1_CLR_STARTFCLR                    (*((volatile unsigned int*)(0x429C0400UL)))
+#define bM4_I2C1_CLR_SLADDR0FCLR                  (*((volatile unsigned int*)(0x429C0404UL)))
+#define bM4_I2C1_CLR_SLADDR1FCLR                  (*((volatile unsigned int*)(0x429C0408UL)))
+#define bM4_I2C1_CLR_TENDFCLR                     (*((volatile unsigned int*)(0x429C040CUL)))
+#define bM4_I2C1_CLR_STOPFCLR                     (*((volatile unsigned int*)(0x429C0410UL)))
+#define bM4_I2C1_CLR_RFULLFCLR                    (*((volatile unsigned int*)(0x429C0418UL)))
+#define bM4_I2C1_CLR_TEMPTYFCLR                   (*((volatile unsigned int*)(0x429C041CUL)))
+#define bM4_I2C1_CLR_ARLOFCLR                     (*((volatile unsigned int*)(0x429C0424UL)))
+#define bM4_I2C1_CLR_NACKFCLR                     (*((volatile unsigned int*)(0x429C0430UL)))
+#define bM4_I2C1_CLR_TMOUTFCLR                    (*((volatile unsigned int*)(0x429C0438UL)))
+#define bM4_I2C1_CLR_GENCALLFCLR                  (*((volatile unsigned int*)(0x429C0450UL)))
+#define bM4_I2C1_CLR_SMBDEFAULTFCLR               (*((volatile unsigned int*)(0x429C0454UL)))
+#define bM4_I2C1_CLR_SMBHOSTFCLR                  (*((volatile unsigned int*)(0x429C0458UL)))
+#define bM4_I2C1_CLR_SMBALRTFCLR                  (*((volatile unsigned int*)(0x429C045CUL)))
+#define bM4_I2C1_DTR_DT0                          (*((volatile unsigned int*)(0x429C0480UL)))
+#define bM4_I2C1_DTR_DT1                          (*((volatile unsigned int*)(0x429C0484UL)))
+#define bM4_I2C1_DTR_DT2                          (*((volatile unsigned int*)(0x429C0488UL)))
+#define bM4_I2C1_DTR_DT3                          (*((volatile unsigned int*)(0x429C048CUL)))
+#define bM4_I2C1_DTR_DT4                          (*((volatile unsigned int*)(0x429C0490UL)))
+#define bM4_I2C1_DTR_DT5                          (*((volatile unsigned int*)(0x429C0494UL)))
+#define bM4_I2C1_DTR_DT6                          (*((volatile unsigned int*)(0x429C0498UL)))
+#define bM4_I2C1_DTR_DT7                          (*((volatile unsigned int*)(0x429C049CUL)))
+#define bM4_I2C1_DRR_DR0                          (*((volatile unsigned int*)(0x429C0500UL)))
+#define bM4_I2C1_DRR_DR1                          (*((volatile unsigned int*)(0x429C0504UL)))
+#define bM4_I2C1_DRR_DR2                          (*((volatile unsigned int*)(0x429C0508UL)))
+#define bM4_I2C1_DRR_DR3                          (*((volatile unsigned int*)(0x429C050CUL)))
+#define bM4_I2C1_DRR_DR4                          (*((volatile unsigned int*)(0x429C0510UL)))
+#define bM4_I2C1_DRR_DR5                          (*((volatile unsigned int*)(0x429C0514UL)))
+#define bM4_I2C1_DRR_DR6                          (*((volatile unsigned int*)(0x429C0518UL)))
+#define bM4_I2C1_DRR_DR7                          (*((volatile unsigned int*)(0x429C051CUL)))
+#define bM4_I2C1_CCR_SLOWW0                       (*((volatile unsigned int*)(0x429C0580UL)))
+#define bM4_I2C1_CCR_SLOWW1                       (*((volatile unsigned int*)(0x429C0584UL)))
+#define bM4_I2C1_CCR_SLOWW2                       (*((volatile unsigned int*)(0x429C0588UL)))
+#define bM4_I2C1_CCR_SLOWW3                       (*((volatile unsigned int*)(0x429C058CUL)))
+#define bM4_I2C1_CCR_SLOWW4                       (*((volatile unsigned int*)(0x429C0590UL)))
+#define bM4_I2C1_CCR_SHIGHW0                      (*((volatile unsigned int*)(0x429C05A0UL)))
+#define bM4_I2C1_CCR_SHIGHW1                      (*((volatile unsigned int*)(0x429C05A4UL)))
+#define bM4_I2C1_CCR_SHIGHW2                      (*((volatile unsigned int*)(0x429C05A8UL)))
+#define bM4_I2C1_CCR_SHIGHW3                      (*((volatile unsigned int*)(0x429C05ACUL)))
+#define bM4_I2C1_CCR_SHIGHW4                      (*((volatile unsigned int*)(0x429C05B0UL)))
+#define bM4_I2C1_CCR_FREQ0                        (*((volatile unsigned int*)(0x429C05C0UL)))
+#define bM4_I2C1_CCR_FREQ1                        (*((volatile unsigned int*)(0x429C05C4UL)))
+#define bM4_I2C1_CCR_FREQ2                        (*((volatile unsigned int*)(0x429C05C8UL)))
+#define bM4_I2C1_FLTR_DNF0                        (*((volatile unsigned int*)(0x429C0600UL)))
+#define bM4_I2C1_FLTR_DNF1                        (*((volatile unsigned int*)(0x429C0604UL)))
+#define bM4_I2C1_FLTR_DNFEN                       (*((volatile unsigned int*)(0x429C0610UL)))
+#define bM4_I2C1_FLTR_ANFEN                       (*((volatile unsigned int*)(0x429C0614UL)))
+#define bM4_I2C2_CR1_PE                           (*((volatile unsigned int*)(0x429C8000UL)))
+#define bM4_I2C2_CR1_SMBUS                        (*((volatile unsigned int*)(0x429C8004UL)))
+#define bM4_I2C2_CR1_SMBALRTEN                    (*((volatile unsigned int*)(0x429C8008UL)))
+#define bM4_I2C2_CR1_SMBDEFAULTEN                 (*((volatile unsigned int*)(0x429C800CUL)))
+#define bM4_I2C2_CR1_SMBHOSTEN                    (*((volatile unsigned int*)(0x429C8010UL)))
+#define bM4_I2C2_CR1_ENGC                         (*((volatile unsigned int*)(0x429C8018UL)))
+#define bM4_I2C2_CR1_RESTART                      (*((volatile unsigned int*)(0x429C801CUL)))
+#define bM4_I2C2_CR1_START                        (*((volatile unsigned int*)(0x429C8020UL)))
+#define bM4_I2C2_CR1_STOP                         (*((volatile unsigned int*)(0x429C8024UL)))
+#define bM4_I2C2_CR1_ACK                          (*((volatile unsigned int*)(0x429C8028UL)))
+#define bM4_I2C2_CR1_SWRST                        (*((volatile unsigned int*)(0x429C803CUL)))
+#define bM4_I2C2_CR2_STARTIE                      (*((volatile unsigned int*)(0x429C8080UL)))
+#define bM4_I2C2_CR2_SLADDR0IE                    (*((volatile unsigned int*)(0x429C8084UL)))
+#define bM4_I2C2_CR2_SLADDR1IE                    (*((volatile unsigned int*)(0x429C8088UL)))
+#define bM4_I2C2_CR2_TENDIE                       (*((volatile unsigned int*)(0x429C808CUL)))
+#define bM4_I2C2_CR2_STOPIE                       (*((volatile unsigned int*)(0x429C8090UL)))
+#define bM4_I2C2_CR2_RFULLIE                      (*((volatile unsigned int*)(0x429C8098UL)))
+#define bM4_I2C2_CR2_TEMPTYIE                     (*((volatile unsigned int*)(0x429C809CUL)))
+#define bM4_I2C2_CR2_ARLOIE                       (*((volatile unsigned int*)(0x429C80A4UL)))
+#define bM4_I2C2_CR2_NACKIE                       (*((volatile unsigned int*)(0x429C80B0UL)))
+#define bM4_I2C2_CR2_TMOUTIE                      (*((volatile unsigned int*)(0x429C80B8UL)))
+#define bM4_I2C2_CR2_GENCALLIE                    (*((volatile unsigned int*)(0x429C80D0UL)))
+#define bM4_I2C2_CR2_SMBDEFAULTIE                 (*((volatile unsigned int*)(0x429C80D4UL)))
+#define bM4_I2C2_CR2_SMHOSTIE                     (*((volatile unsigned int*)(0x429C80D8UL)))
+#define bM4_I2C2_CR2_SMBALRTIE                    (*((volatile unsigned int*)(0x429C80DCUL)))
+#define bM4_I2C2_CR3_TMOUTEN                      (*((volatile unsigned int*)(0x429C8100UL)))
+#define bM4_I2C2_CR3_LTMOUT                       (*((volatile unsigned int*)(0x429C8104UL)))
+#define bM4_I2C2_CR3_HTMOUT                       (*((volatile unsigned int*)(0x429C8108UL)))
+#define bM4_I2C2_CR3_FACKEN                       (*((volatile unsigned int*)(0x429C811CUL)))
+#define bM4_I2C2_SLR0_SLADDR00                    (*((volatile unsigned int*)(0x429C8200UL)))
+#define bM4_I2C2_SLR0_SLADDR01                    (*((volatile unsigned int*)(0x429C8204UL)))
+#define bM4_I2C2_SLR0_SLADDR02                    (*((volatile unsigned int*)(0x429C8208UL)))
+#define bM4_I2C2_SLR0_SLADDR03                    (*((volatile unsigned int*)(0x429C820CUL)))
+#define bM4_I2C2_SLR0_SLADDR04                    (*((volatile unsigned int*)(0x429C8210UL)))
+#define bM4_I2C2_SLR0_SLADDR05                    (*((volatile unsigned int*)(0x429C8214UL)))
+#define bM4_I2C2_SLR0_SLADDR06                    (*((volatile unsigned int*)(0x429C8218UL)))
+#define bM4_I2C2_SLR0_SLADDR07                    (*((volatile unsigned int*)(0x429C821CUL)))
+#define bM4_I2C2_SLR0_SLADDR08                    (*((volatile unsigned int*)(0x429C8220UL)))
+#define bM4_I2C2_SLR0_SLADDR09                    (*((volatile unsigned int*)(0x429C8224UL)))
+#define bM4_I2C2_SLR0_SLADDR0EN                   (*((volatile unsigned int*)(0x429C8230UL)))
+#define bM4_I2C2_SLR0_ADDRMOD0                    (*((volatile unsigned int*)(0x429C823CUL)))
+#define bM4_I2C2_SLR1_SLADDR10                    (*((volatile unsigned int*)(0x429C8280UL)))
+#define bM4_I2C2_SLR1_SLADDR11                    (*((volatile unsigned int*)(0x429C8284UL)))
+#define bM4_I2C2_SLR1_SLADDR12                    (*((volatile unsigned int*)(0x429C8288UL)))
+#define bM4_I2C2_SLR1_SLADDR13                    (*((volatile unsigned int*)(0x429C828CUL)))
+#define bM4_I2C2_SLR1_SLADDR14                    (*((volatile unsigned int*)(0x429C8290UL)))
+#define bM4_I2C2_SLR1_SLADDR15                    (*((volatile unsigned int*)(0x429C8294UL)))
+#define bM4_I2C2_SLR1_SLADDR16                    (*((volatile unsigned int*)(0x429C8298UL)))
+#define bM4_I2C2_SLR1_SLADDR17                    (*((volatile unsigned int*)(0x429C829CUL)))
+#define bM4_I2C2_SLR1_SLADDR18                    (*((volatile unsigned int*)(0x429C82A0UL)))
+#define bM4_I2C2_SLR1_SLADDR19                    (*((volatile unsigned int*)(0x429C82A4UL)))
+#define bM4_I2C2_SLR1_SLADDR1EN                   (*((volatile unsigned int*)(0x429C82B0UL)))
+#define bM4_I2C2_SLR1_ADDRMOD1                    (*((volatile unsigned int*)(0x429C82BCUL)))
+#define bM4_I2C2_SLTR_TOUTLOW0                    (*((volatile unsigned int*)(0x429C8300UL)))
+#define bM4_I2C2_SLTR_TOUTLOW1                    (*((volatile unsigned int*)(0x429C8304UL)))
+#define bM4_I2C2_SLTR_TOUTLOW2                    (*((volatile unsigned int*)(0x429C8308UL)))
+#define bM4_I2C2_SLTR_TOUTLOW3                    (*((volatile unsigned int*)(0x429C830CUL)))
+#define bM4_I2C2_SLTR_TOUTLOW4                    (*((volatile unsigned int*)(0x429C8310UL)))
+#define bM4_I2C2_SLTR_TOUTLOW5                    (*((volatile unsigned int*)(0x429C8314UL)))
+#define bM4_I2C2_SLTR_TOUTLOW6                    (*((volatile unsigned int*)(0x429C8318UL)))
+#define bM4_I2C2_SLTR_TOUTLOW7                    (*((volatile unsigned int*)(0x429C831CUL)))
+#define bM4_I2C2_SLTR_TOUTLOW8                    (*((volatile unsigned int*)(0x429C8320UL)))
+#define bM4_I2C2_SLTR_TOUTLOW9                    (*((volatile unsigned int*)(0x429C8324UL)))
+#define bM4_I2C2_SLTR_TOUTLOW10                   (*((volatile unsigned int*)(0x429C8328UL)))
+#define bM4_I2C2_SLTR_TOUTLOW11                   (*((volatile unsigned int*)(0x429C832CUL)))
+#define bM4_I2C2_SLTR_TOUTLOW12                   (*((volatile unsigned int*)(0x429C8330UL)))
+#define bM4_I2C2_SLTR_TOUTLOW13                   (*((volatile unsigned int*)(0x429C8334UL)))
+#define bM4_I2C2_SLTR_TOUTLOW14                   (*((volatile unsigned int*)(0x429C8338UL)))
+#define bM4_I2C2_SLTR_TOUTLOW15                   (*((volatile unsigned int*)(0x429C833CUL)))
+#define bM4_I2C2_SLTR_TOUTHIGH0                   (*((volatile unsigned int*)(0x429C8340UL)))
+#define bM4_I2C2_SLTR_TOUTHIGH1                   (*((volatile unsigned int*)(0x429C8344UL)))
+#define bM4_I2C2_SLTR_TOUTHIGH2                   (*((volatile unsigned int*)(0x429C8348UL)))
+#define bM4_I2C2_SLTR_TOUTHIGH3                   (*((volatile unsigned int*)(0x429C834CUL)))
+#define bM4_I2C2_SLTR_TOUTHIGH4                   (*((volatile unsigned int*)(0x429C8350UL)))
+#define bM4_I2C2_SLTR_TOUTHIGH5                   (*((volatile unsigned int*)(0x429C8354UL)))
+#define bM4_I2C2_SLTR_TOUTHIGH6                   (*((volatile unsigned int*)(0x429C8358UL)))
+#define bM4_I2C2_SLTR_TOUTHIGH7                   (*((volatile unsigned int*)(0x429C835CUL)))
+#define bM4_I2C2_SLTR_TOUTHIGH8                   (*((volatile unsigned int*)(0x429C8360UL)))
+#define bM4_I2C2_SLTR_TOUTHIGH9                   (*((volatile unsigned int*)(0x429C8364UL)))
+#define bM4_I2C2_SLTR_TOUTHIGH10                  (*((volatile unsigned int*)(0x429C8368UL)))
+#define bM4_I2C2_SLTR_TOUTHIGH11                  (*((volatile unsigned int*)(0x429C836CUL)))
+#define bM4_I2C2_SLTR_TOUTHIGH12                  (*((volatile unsigned int*)(0x429C8370UL)))
+#define bM4_I2C2_SLTR_TOUTHIGH13                  (*((volatile unsigned int*)(0x429C8374UL)))
+#define bM4_I2C2_SLTR_TOUTHIGH14                  (*((volatile unsigned int*)(0x429C8378UL)))
+#define bM4_I2C2_SLTR_TOUTHIGH15                  (*((volatile unsigned int*)(0x429C837CUL)))
+#define bM4_I2C2_SR_STARTF                        (*((volatile unsigned int*)(0x429C8380UL)))
+#define bM4_I2C2_SR_SLADDR0F                      (*((volatile unsigned int*)(0x429C8384UL)))
+#define bM4_I2C2_SR_SLADDR1F                      (*((volatile unsigned int*)(0x429C8388UL)))
+#define bM4_I2C2_SR_TENDF                         (*((volatile unsigned int*)(0x429C838CUL)))
+#define bM4_I2C2_SR_STOPF                         (*((volatile unsigned int*)(0x429C8390UL)))
+#define bM4_I2C2_SR_RFULLF                        (*((volatile unsigned int*)(0x429C8398UL)))
+#define bM4_I2C2_SR_TEMPTYF                       (*((volatile unsigned int*)(0x429C839CUL)))
+#define bM4_I2C2_SR_ARLOF                         (*((volatile unsigned int*)(0x429C83A4UL)))
+#define bM4_I2C2_SR_ACKRF                         (*((volatile unsigned int*)(0x429C83A8UL)))
+#define bM4_I2C2_SR_NACKF                         (*((volatile unsigned int*)(0x429C83B0UL)))
+#define bM4_I2C2_SR_TMOUTF                        (*((volatile unsigned int*)(0x429C83B8UL)))
+#define bM4_I2C2_SR_MSL                           (*((volatile unsigned int*)(0x429C83C0UL)))
+#define bM4_I2C2_SR_BUSY                          (*((volatile unsigned int*)(0x429C83C4UL)))
+#define bM4_I2C2_SR_TRA                           (*((volatile unsigned int*)(0x429C83C8UL)))
+#define bM4_I2C2_SR_GENCALLF                      (*((volatile unsigned int*)(0x429C83D0UL)))
+#define bM4_I2C2_SR_SMBDEFAULTF                   (*((volatile unsigned int*)(0x429C83D4UL)))
+#define bM4_I2C2_SR_SMBHOSTF                      (*((volatile unsigned int*)(0x429C83D8UL)))
+#define bM4_I2C2_SR_SMBALRTF                      (*((volatile unsigned int*)(0x429C83DCUL)))
+#define bM4_I2C2_CLR_STARTFCLR                    (*((volatile unsigned int*)(0x429C8400UL)))
+#define bM4_I2C2_CLR_SLADDR0FCLR                  (*((volatile unsigned int*)(0x429C8404UL)))
+#define bM4_I2C2_CLR_SLADDR1FCLR                  (*((volatile unsigned int*)(0x429C8408UL)))
+#define bM4_I2C2_CLR_TENDFCLR                     (*((volatile unsigned int*)(0x429C840CUL)))
+#define bM4_I2C2_CLR_STOPFCLR                     (*((volatile unsigned int*)(0x429C8410UL)))
+#define bM4_I2C2_CLR_RFULLFCLR                    (*((volatile unsigned int*)(0x429C8418UL)))
+#define bM4_I2C2_CLR_TEMPTYFCLR                   (*((volatile unsigned int*)(0x429C841CUL)))
+#define bM4_I2C2_CLR_ARLOFCLR                     (*((volatile unsigned int*)(0x429C8424UL)))
+#define bM4_I2C2_CLR_NACKFCLR                     (*((volatile unsigned int*)(0x429C8430UL)))
+#define bM4_I2C2_CLR_TMOUTFCLR                    (*((volatile unsigned int*)(0x429C8438UL)))
+#define bM4_I2C2_CLR_GENCALLFCLR                  (*((volatile unsigned int*)(0x429C8450UL)))
+#define bM4_I2C2_CLR_SMBDEFAULTFCLR               (*((volatile unsigned int*)(0x429C8454UL)))
+#define bM4_I2C2_CLR_SMBHOSTFCLR                  (*((volatile unsigned int*)(0x429C8458UL)))
+#define bM4_I2C2_CLR_SMBALRTFCLR                  (*((volatile unsigned int*)(0x429C845CUL)))
+#define bM4_I2C2_DTR_DT0                          (*((volatile unsigned int*)(0x429C8480UL)))
+#define bM4_I2C2_DTR_DT1                          (*((volatile unsigned int*)(0x429C8484UL)))
+#define bM4_I2C2_DTR_DT2                          (*((volatile unsigned int*)(0x429C8488UL)))
+#define bM4_I2C2_DTR_DT3                          (*((volatile unsigned int*)(0x429C848CUL)))
+#define bM4_I2C2_DTR_DT4                          (*((volatile unsigned int*)(0x429C8490UL)))
+#define bM4_I2C2_DTR_DT5                          (*((volatile unsigned int*)(0x429C8494UL)))
+#define bM4_I2C2_DTR_DT6                          (*((volatile unsigned int*)(0x429C8498UL)))
+#define bM4_I2C2_DTR_DT7                          (*((volatile unsigned int*)(0x429C849CUL)))
+#define bM4_I2C2_DRR_DR0                          (*((volatile unsigned int*)(0x429C8500UL)))
+#define bM4_I2C2_DRR_DR1                          (*((volatile unsigned int*)(0x429C8504UL)))
+#define bM4_I2C2_DRR_DR2                          (*((volatile unsigned int*)(0x429C8508UL)))
+#define bM4_I2C2_DRR_DR3                          (*((volatile unsigned int*)(0x429C850CUL)))
+#define bM4_I2C2_DRR_DR4                          (*((volatile unsigned int*)(0x429C8510UL)))
+#define bM4_I2C2_DRR_DR5                          (*((volatile unsigned int*)(0x429C8514UL)))
+#define bM4_I2C2_DRR_DR6                          (*((volatile unsigned int*)(0x429C8518UL)))
+#define bM4_I2C2_DRR_DR7                          (*((volatile unsigned int*)(0x429C851CUL)))
+#define bM4_I2C2_CCR_SLOWW0                       (*((volatile unsigned int*)(0x429C8580UL)))
+#define bM4_I2C2_CCR_SLOWW1                       (*((volatile unsigned int*)(0x429C8584UL)))
+#define bM4_I2C2_CCR_SLOWW2                       (*((volatile unsigned int*)(0x429C8588UL)))
+#define bM4_I2C2_CCR_SLOWW3                       (*((volatile unsigned int*)(0x429C858CUL)))
+#define bM4_I2C2_CCR_SLOWW4                       (*((volatile unsigned int*)(0x429C8590UL)))
+#define bM4_I2C2_CCR_SHIGHW0                      (*((volatile unsigned int*)(0x429C85A0UL)))
+#define bM4_I2C2_CCR_SHIGHW1                      (*((volatile unsigned int*)(0x429C85A4UL)))
+#define bM4_I2C2_CCR_SHIGHW2                      (*((volatile unsigned int*)(0x429C85A8UL)))
+#define bM4_I2C2_CCR_SHIGHW3                      (*((volatile unsigned int*)(0x429C85ACUL)))
+#define bM4_I2C2_CCR_SHIGHW4                      (*((volatile unsigned int*)(0x429C85B0UL)))
+#define bM4_I2C2_CCR_FREQ0                        (*((volatile unsigned int*)(0x429C85C0UL)))
+#define bM4_I2C2_CCR_FREQ1                        (*((volatile unsigned int*)(0x429C85C4UL)))
+#define bM4_I2C2_CCR_FREQ2                        (*((volatile unsigned int*)(0x429C85C8UL)))
+#define bM4_I2C2_FLTR_DNF0                        (*((volatile unsigned int*)(0x429C8600UL)))
+#define bM4_I2C2_FLTR_DNF1                        (*((volatile unsigned int*)(0x429C8604UL)))
+#define bM4_I2C2_FLTR_DNFEN                       (*((volatile unsigned int*)(0x429C8610UL)))
+#define bM4_I2C2_FLTR_ANFEN                       (*((volatile unsigned int*)(0x429C8614UL)))
+#define bM4_I2C3_CR1_PE                           (*((volatile unsigned int*)(0x429D0000UL)))
+#define bM4_I2C3_CR1_SMBUS                        (*((volatile unsigned int*)(0x429D0004UL)))
+#define bM4_I2C3_CR1_SMBALRTEN                    (*((volatile unsigned int*)(0x429D0008UL)))
+#define bM4_I2C3_CR1_SMBDEFAULTEN                 (*((volatile unsigned int*)(0x429D000CUL)))
+#define bM4_I2C3_CR1_SMBHOSTEN                    (*((volatile unsigned int*)(0x429D0010UL)))
+#define bM4_I2C3_CR1_ENGC                         (*((volatile unsigned int*)(0x429D0018UL)))
+#define bM4_I2C3_CR1_RESTART                      (*((volatile unsigned int*)(0x429D001CUL)))
+#define bM4_I2C3_CR1_START                        (*((volatile unsigned int*)(0x429D0020UL)))
+#define bM4_I2C3_CR1_STOP                         (*((volatile unsigned int*)(0x429D0024UL)))
+#define bM4_I2C3_CR1_ACK                          (*((volatile unsigned int*)(0x429D0028UL)))
+#define bM4_I2C3_CR1_SWRST                        (*((volatile unsigned int*)(0x429D003CUL)))
+#define bM4_I2C3_CR2_STARTIE                      (*((volatile unsigned int*)(0x429D0080UL)))
+#define bM4_I2C3_CR2_SLADDR0IE                    (*((volatile unsigned int*)(0x429D0084UL)))
+#define bM4_I2C3_CR2_SLADDR1IE                    (*((volatile unsigned int*)(0x429D0088UL)))
+#define bM4_I2C3_CR2_TENDIE                       (*((volatile unsigned int*)(0x429D008CUL)))
+#define bM4_I2C3_CR2_STOPIE                       (*((volatile unsigned int*)(0x429D0090UL)))
+#define bM4_I2C3_CR2_RFULLIE                      (*((volatile unsigned int*)(0x429D0098UL)))
+#define bM4_I2C3_CR2_TEMPTYIE                     (*((volatile unsigned int*)(0x429D009CUL)))
+#define bM4_I2C3_CR2_ARLOIE                       (*((volatile unsigned int*)(0x429D00A4UL)))
+#define bM4_I2C3_CR2_NACKIE                       (*((volatile unsigned int*)(0x429D00B0UL)))
+#define bM4_I2C3_CR2_TMOUTIE                      (*((volatile unsigned int*)(0x429D00B8UL)))
+#define bM4_I2C3_CR2_GENCALLIE                    (*((volatile unsigned int*)(0x429D00D0UL)))
+#define bM4_I2C3_CR2_SMBDEFAULTIE                 (*((volatile unsigned int*)(0x429D00D4UL)))
+#define bM4_I2C3_CR2_SMHOSTIE                     (*((volatile unsigned int*)(0x429D00D8UL)))
+#define bM4_I2C3_CR2_SMBALRTIE                    (*((volatile unsigned int*)(0x429D00DCUL)))
+#define bM4_I2C3_CR3_TMOUTEN                      (*((volatile unsigned int*)(0x429D0100UL)))
+#define bM4_I2C3_CR3_LTMOUT                       (*((volatile unsigned int*)(0x429D0104UL)))
+#define bM4_I2C3_CR3_HTMOUT                       (*((volatile unsigned int*)(0x429D0108UL)))
+#define bM4_I2C3_CR3_FACKEN                       (*((volatile unsigned int*)(0x429D011CUL)))
+#define bM4_I2C3_SLR0_SLADDR00                    (*((volatile unsigned int*)(0x429D0200UL)))
+#define bM4_I2C3_SLR0_SLADDR01                    (*((volatile unsigned int*)(0x429D0204UL)))
+#define bM4_I2C3_SLR0_SLADDR02                    (*((volatile unsigned int*)(0x429D0208UL)))
+#define bM4_I2C3_SLR0_SLADDR03                    (*((volatile unsigned int*)(0x429D020CUL)))
+#define bM4_I2C3_SLR0_SLADDR04                    (*((volatile unsigned int*)(0x429D0210UL)))
+#define bM4_I2C3_SLR0_SLADDR05                    (*((volatile unsigned int*)(0x429D0214UL)))
+#define bM4_I2C3_SLR0_SLADDR06                    (*((volatile unsigned int*)(0x429D0218UL)))
+#define bM4_I2C3_SLR0_SLADDR07                    (*((volatile unsigned int*)(0x429D021CUL)))
+#define bM4_I2C3_SLR0_SLADDR08                    (*((volatile unsigned int*)(0x429D0220UL)))
+#define bM4_I2C3_SLR0_SLADDR09                    (*((volatile unsigned int*)(0x429D0224UL)))
+#define bM4_I2C3_SLR0_SLADDR0EN                   (*((volatile unsigned int*)(0x429D0230UL)))
+#define bM4_I2C3_SLR0_ADDRMOD0                    (*((volatile unsigned int*)(0x429D023CUL)))
+#define bM4_I2C3_SLR1_SLADDR10                    (*((volatile unsigned int*)(0x429D0280UL)))
+#define bM4_I2C3_SLR1_SLADDR11                    (*((volatile unsigned int*)(0x429D0284UL)))
+#define bM4_I2C3_SLR1_SLADDR12                    (*((volatile unsigned int*)(0x429D0288UL)))
+#define bM4_I2C3_SLR1_SLADDR13                    (*((volatile unsigned int*)(0x429D028CUL)))
+#define bM4_I2C3_SLR1_SLADDR14                    (*((volatile unsigned int*)(0x429D0290UL)))
+#define bM4_I2C3_SLR1_SLADDR15                    (*((volatile unsigned int*)(0x429D0294UL)))
+#define bM4_I2C3_SLR1_SLADDR16                    (*((volatile unsigned int*)(0x429D0298UL)))
+#define bM4_I2C3_SLR1_SLADDR17                    (*((volatile unsigned int*)(0x429D029CUL)))
+#define bM4_I2C3_SLR1_SLADDR18                    (*((volatile unsigned int*)(0x429D02A0UL)))
+#define bM4_I2C3_SLR1_SLADDR19                    (*((volatile unsigned int*)(0x429D02A4UL)))
+#define bM4_I2C3_SLR1_SLADDR1EN                   (*((volatile unsigned int*)(0x429D02B0UL)))
+#define bM4_I2C3_SLR1_ADDRMOD1                    (*((volatile unsigned int*)(0x429D02BCUL)))
+#define bM4_I2C3_SLTR_TOUTLOW0                    (*((volatile unsigned int*)(0x429D0300UL)))
+#define bM4_I2C3_SLTR_TOUTLOW1                    (*((volatile unsigned int*)(0x429D0304UL)))
+#define bM4_I2C3_SLTR_TOUTLOW2                    (*((volatile unsigned int*)(0x429D0308UL)))
+#define bM4_I2C3_SLTR_TOUTLOW3                    (*((volatile unsigned int*)(0x429D030CUL)))
+#define bM4_I2C3_SLTR_TOUTLOW4                    (*((volatile unsigned int*)(0x429D0310UL)))
+#define bM4_I2C3_SLTR_TOUTLOW5                    (*((volatile unsigned int*)(0x429D0314UL)))
+#define bM4_I2C3_SLTR_TOUTLOW6                    (*((volatile unsigned int*)(0x429D0318UL)))
+#define bM4_I2C3_SLTR_TOUTLOW7                    (*((volatile unsigned int*)(0x429D031CUL)))
+#define bM4_I2C3_SLTR_TOUTLOW8                    (*((volatile unsigned int*)(0x429D0320UL)))
+#define bM4_I2C3_SLTR_TOUTLOW9                    (*((volatile unsigned int*)(0x429D0324UL)))
+#define bM4_I2C3_SLTR_TOUTLOW10                   (*((volatile unsigned int*)(0x429D0328UL)))
+#define bM4_I2C3_SLTR_TOUTLOW11                   (*((volatile unsigned int*)(0x429D032CUL)))
+#define bM4_I2C3_SLTR_TOUTLOW12                   (*((volatile unsigned int*)(0x429D0330UL)))
+#define bM4_I2C3_SLTR_TOUTLOW13                   (*((volatile unsigned int*)(0x429D0334UL)))
+#define bM4_I2C3_SLTR_TOUTLOW14                   (*((volatile unsigned int*)(0x429D0338UL)))
+#define bM4_I2C3_SLTR_TOUTLOW15                   (*((volatile unsigned int*)(0x429D033CUL)))
+#define bM4_I2C3_SLTR_TOUTHIGH0                   (*((volatile unsigned int*)(0x429D0340UL)))
+#define bM4_I2C3_SLTR_TOUTHIGH1                   (*((volatile unsigned int*)(0x429D0344UL)))
+#define bM4_I2C3_SLTR_TOUTHIGH2                   (*((volatile unsigned int*)(0x429D0348UL)))
+#define bM4_I2C3_SLTR_TOUTHIGH3                   (*((volatile unsigned int*)(0x429D034CUL)))
+#define bM4_I2C3_SLTR_TOUTHIGH4                   (*((volatile unsigned int*)(0x429D0350UL)))
+#define bM4_I2C3_SLTR_TOUTHIGH5                   (*((volatile unsigned int*)(0x429D0354UL)))
+#define bM4_I2C3_SLTR_TOUTHIGH6                   (*((volatile unsigned int*)(0x429D0358UL)))
+#define bM4_I2C3_SLTR_TOUTHIGH7                   (*((volatile unsigned int*)(0x429D035CUL)))
+#define bM4_I2C3_SLTR_TOUTHIGH8                   (*((volatile unsigned int*)(0x429D0360UL)))
+#define bM4_I2C3_SLTR_TOUTHIGH9                   (*((volatile unsigned int*)(0x429D0364UL)))
+#define bM4_I2C3_SLTR_TOUTHIGH10                  (*((volatile unsigned int*)(0x429D0368UL)))
+#define bM4_I2C3_SLTR_TOUTHIGH11                  (*((volatile unsigned int*)(0x429D036CUL)))
+#define bM4_I2C3_SLTR_TOUTHIGH12                  (*((volatile unsigned int*)(0x429D0370UL)))
+#define bM4_I2C3_SLTR_TOUTHIGH13                  (*((volatile unsigned int*)(0x429D0374UL)))
+#define bM4_I2C3_SLTR_TOUTHIGH14                  (*((volatile unsigned int*)(0x429D0378UL)))
+#define bM4_I2C3_SLTR_TOUTHIGH15                  (*((volatile unsigned int*)(0x429D037CUL)))
+#define bM4_I2C3_SR_STARTF                        (*((volatile unsigned int*)(0x429D0380UL)))
+#define bM4_I2C3_SR_SLADDR0F                      (*((volatile unsigned int*)(0x429D0384UL)))
+#define bM4_I2C3_SR_SLADDR1F                      (*((volatile unsigned int*)(0x429D0388UL)))
+#define bM4_I2C3_SR_TENDF                         (*((volatile unsigned int*)(0x429D038CUL)))
+#define bM4_I2C3_SR_STOPF                         (*((volatile unsigned int*)(0x429D0390UL)))
+#define bM4_I2C3_SR_RFULLF                        (*((volatile unsigned int*)(0x429D0398UL)))
+#define bM4_I2C3_SR_TEMPTYF                       (*((volatile unsigned int*)(0x429D039CUL)))
+#define bM4_I2C3_SR_ARLOF                         (*((volatile unsigned int*)(0x429D03A4UL)))
+#define bM4_I2C3_SR_ACKRF                         (*((volatile unsigned int*)(0x429D03A8UL)))
+#define bM4_I2C3_SR_NACKF                         (*((volatile unsigned int*)(0x429D03B0UL)))
+#define bM4_I2C3_SR_TMOUTF                        (*((volatile unsigned int*)(0x429D03B8UL)))
+#define bM4_I2C3_SR_MSL                           (*((volatile unsigned int*)(0x429D03C0UL)))
+#define bM4_I2C3_SR_BUSY                          (*((volatile unsigned int*)(0x429D03C4UL)))
+#define bM4_I2C3_SR_TRA                           (*((volatile unsigned int*)(0x429D03C8UL)))
+#define bM4_I2C3_SR_GENCALLF                      (*((volatile unsigned int*)(0x429D03D0UL)))
+#define bM4_I2C3_SR_SMBDEFAULTF                   (*((volatile unsigned int*)(0x429D03D4UL)))
+#define bM4_I2C3_SR_SMBHOSTF                      (*((volatile unsigned int*)(0x429D03D8UL)))
+#define bM4_I2C3_SR_SMBALRTF                      (*((volatile unsigned int*)(0x429D03DCUL)))
+#define bM4_I2C3_CLR_STARTFCLR                    (*((volatile unsigned int*)(0x429D0400UL)))
+#define bM4_I2C3_CLR_SLADDR0FCLR                  (*((volatile unsigned int*)(0x429D0404UL)))
+#define bM4_I2C3_CLR_SLADDR1FCLR                  (*((volatile unsigned int*)(0x429D0408UL)))
+#define bM4_I2C3_CLR_TENDFCLR                     (*((volatile unsigned int*)(0x429D040CUL)))
+#define bM4_I2C3_CLR_STOPFCLR                     (*((volatile unsigned int*)(0x429D0410UL)))
+#define bM4_I2C3_CLR_RFULLFCLR                    (*((volatile unsigned int*)(0x429D0418UL)))
+#define bM4_I2C3_CLR_TEMPTYFCLR                   (*((volatile unsigned int*)(0x429D041CUL)))
+#define bM4_I2C3_CLR_ARLOFCLR                     (*((volatile unsigned int*)(0x429D0424UL)))
+#define bM4_I2C3_CLR_NACKFCLR                     (*((volatile unsigned int*)(0x429D0430UL)))
+#define bM4_I2C3_CLR_TMOUTFCLR                    (*((volatile unsigned int*)(0x429D0438UL)))
+#define bM4_I2C3_CLR_GENCALLFCLR                  (*((volatile unsigned int*)(0x429D0450UL)))
+#define bM4_I2C3_CLR_SMBDEFAULTFCLR               (*((volatile unsigned int*)(0x429D0454UL)))
+#define bM4_I2C3_CLR_SMBHOSTFCLR                  (*((volatile unsigned int*)(0x429D0458UL)))
+#define bM4_I2C3_CLR_SMBALRTFCLR                  (*((volatile unsigned int*)(0x429D045CUL)))
+#define bM4_I2C3_DTR_DT0                          (*((volatile unsigned int*)(0x429D0480UL)))
+#define bM4_I2C3_DTR_DT1                          (*((volatile unsigned int*)(0x429D0484UL)))
+#define bM4_I2C3_DTR_DT2                          (*((volatile unsigned int*)(0x429D0488UL)))
+#define bM4_I2C3_DTR_DT3                          (*((volatile unsigned int*)(0x429D048CUL)))
+#define bM4_I2C3_DTR_DT4                          (*((volatile unsigned int*)(0x429D0490UL)))
+#define bM4_I2C3_DTR_DT5                          (*((volatile unsigned int*)(0x429D0494UL)))
+#define bM4_I2C3_DTR_DT6                          (*((volatile unsigned int*)(0x429D0498UL)))
+#define bM4_I2C3_DTR_DT7                          (*((volatile unsigned int*)(0x429D049CUL)))
+#define bM4_I2C3_DRR_DR0                          (*((volatile unsigned int*)(0x429D0500UL)))
+#define bM4_I2C3_DRR_DR1                          (*((volatile unsigned int*)(0x429D0504UL)))
+#define bM4_I2C3_DRR_DR2                          (*((volatile unsigned int*)(0x429D0508UL)))
+#define bM4_I2C3_DRR_DR3                          (*((volatile unsigned int*)(0x429D050CUL)))
+#define bM4_I2C3_DRR_DR4                          (*((volatile unsigned int*)(0x429D0510UL)))
+#define bM4_I2C3_DRR_DR5                          (*((volatile unsigned int*)(0x429D0514UL)))
+#define bM4_I2C3_DRR_DR6                          (*((volatile unsigned int*)(0x429D0518UL)))
+#define bM4_I2C3_DRR_DR7                          (*((volatile unsigned int*)(0x429D051CUL)))
+#define bM4_I2C3_CCR_SLOWW0                       (*((volatile unsigned int*)(0x429D0580UL)))
+#define bM4_I2C3_CCR_SLOWW1                       (*((volatile unsigned int*)(0x429D0584UL)))
+#define bM4_I2C3_CCR_SLOWW2                       (*((volatile unsigned int*)(0x429D0588UL)))
+#define bM4_I2C3_CCR_SLOWW3                       (*((volatile unsigned int*)(0x429D058CUL)))
+#define bM4_I2C3_CCR_SLOWW4                       (*((volatile unsigned int*)(0x429D0590UL)))
+#define bM4_I2C3_CCR_SHIGHW0                      (*((volatile unsigned int*)(0x429D05A0UL)))
+#define bM4_I2C3_CCR_SHIGHW1                      (*((volatile unsigned int*)(0x429D05A4UL)))
+#define bM4_I2C3_CCR_SHIGHW2                      (*((volatile unsigned int*)(0x429D05A8UL)))
+#define bM4_I2C3_CCR_SHIGHW3                      (*((volatile unsigned int*)(0x429D05ACUL)))
+#define bM4_I2C3_CCR_SHIGHW4                      (*((volatile unsigned int*)(0x429D05B0UL)))
+#define bM4_I2C3_CCR_FREQ0                        (*((volatile unsigned int*)(0x429D05C0UL)))
+#define bM4_I2C3_CCR_FREQ1                        (*((volatile unsigned int*)(0x429D05C4UL)))
+#define bM4_I2C3_CCR_FREQ2                        (*((volatile unsigned int*)(0x429D05C8UL)))
+#define bM4_I2C3_FLTR_DNF0                        (*((volatile unsigned int*)(0x429D0600UL)))
+#define bM4_I2C3_FLTR_DNF1                        (*((volatile unsigned int*)(0x429D0604UL)))
+#define bM4_I2C3_FLTR_DNFEN                       (*((volatile unsigned int*)(0x429D0610UL)))
+#define bM4_I2C3_FLTR_ANFEN                       (*((volatile unsigned int*)(0x429D0614UL)))
+
 /**
  *******************************************************************************
  ** \brief Int No.137 share IRQ handler
@@ -1329,7 +1782,151 @@ void IRQ139_Handler(void)
  ******************************************************************************/
 void IRQ141_Handler(void *parg)
 {
+    uint32_t VSSEL141 = HC32F460_INTC.VSSEL[141 - 128];
+//    uint32_t  VSSEL141 = M4_INTC->VSSEL141;
+    uint32_t u32Tmp1 = 0ul;
+    uint32_t u32Tmp2 = 0ul;
+    /* I2C Ch.1 Receive completed */
+    if(Set == bM4_I2C1_CR2_RFULLIE)
+    {
+        if ((Set == bM4_I2C1_SR_RFULLF) && (VSSEL141 & BIT_MASK_04))
+        {
+            I2c1RxEnd_IrqHandler(&__g_i2c1_dev);
+        }
+    }
+    /* I2C Ch.1 Transmit completed */
+    if(Set == bM4_I2C1_CR2_TENDIE)
+    {
+        if ((Set == bM4_I2C1_SR_TENDF) && (VSSEL141 & BIT_MASK_05))
+        {
+            I2c1TxEnd_IrqHandler(&__g_i2c1_dev);
+        }
+    }
+    /* I2C Ch.1 Transmit data empty */
+    if(Set == bM4_I2C1_CR2_TEMPTYIE)
+    {
+        if ((Set == bM4_I2C1_SR_TEMPTYF) && (VSSEL141 & BIT_MASK_06))
+        {
+            I2c1TxEmpty_IrqHandler(&__g_i2c1_dev);
+        }
+    }
+    /* I2C Ch.1 Error */
+    u32Tmp1 = HC32F460_I2C1->CR2 & 0x00F05217ul;
+    u32Tmp2 = HC32F460_I2C1->SR & 0x00F05217ul;
+    if ((u32Tmp1 & u32Tmp2) && (VSSEL141 & BIT_MASK_07))
+    {
+        I2c1Err_IrqHandler(&__g_i2c1_dev);
+    }
+//    /* I2C Ch.2 Receive completed */
+//    if(Set == bM4_I2C2_CR2_RFULLIE)
+//    {
+//        if ((Set == bM4_I2C2_SR_RFULLF) && (VSSEL141 & BIT_MASK_08))
+//        {
+//            I2c2RxEnd_IrqHandler();
+//        }
+//    }
+//    /* I2C Ch.2 Transmit completed */
+//    if(Set == bM4_I2C2_CR2_TENDIE)
+//    {
+//        if ((Set == bM4_I2C2_SR_TENDF)  && (VSSEL141 & BIT_MASK_09))
+//        {
+//            I2c2TxEnd_IrqHandler();
+//        }
+//    }
+//    /* I2C Ch.2 Transmit data empty */
+//    if(Set == bM4_I2C2_CR2_TEMPTYIE)
+//    {
+//        if ((Set == bM4_I2C2_SR_TEMPTYF) && (VSSEL141 & BIT_MASK_10))
+//        {
+//            I2c2TxEmpty_IrqHandler();
+//        }
+//    }
+//    /* I2C Ch.2 Error */
+//    u32Tmp1 = HC32F460_I2C2->CR2 & 0x00F05217ul;
+//    u32Tmp2 = HC32F460_I2C2->SR & 0x00F05217ul;
+//    if ((u32Tmp1 & u32Tmp2) && (VSSEL141 & BIT_MASK_11))
+//    {
+//        I2c2Err_IrqHandler();
+//    }
+//    /* I2C Ch.3 Receive completed */
+//    if(Set == bM4_I2C3_CR2_RFULLIE)
+//    {
+//        if ((Set == bM4_I2C3_SR_RFULLF) && (VSSEL141 & BIT_MASK_12))
+//        {
+//            I2c3RxEnd_IrqHandler();
+//        }
+//    }
+//    /* I2C Ch.3 Transmit completed */
+//    if(Set == bM4_I2C3_CR2_TENDIE)
+//    {
+//        if ((Set == bM4_I2C3_SR_TENDF)  && (VSSEL141 & BIT_MASK_13))
+//        {
+//            I2c3TxEnd_IrqHandler();
+//        }
+//    }
+//    /* I2C Ch.3 Transmit data empty */
+//    if(Set == bM4_I2C3_CR2_TEMPTYIE)
+//    {
+//        if ((Set == bM4_I2C3_SR_TEMPTYF) && (VSSEL141 & BIT_MASK_14))
+//        {
+//            I2c3TxEmpty_IrqHandler();
+//        }
+//    }
+//    /* I2C Ch.3 Error */
+//    u32Tmp1 = HC32F460_I2C3->CR2 & 0x00F05217ul;
+//    u32Tmp2 = HC32F460_I2C3->SR & 0x00F05217ul;
+//    if ((u32Tmp1 & u32Tmp2) && (VSSEL141 & BIT_MASK_15))
+//    {
+//        I2c3Err_IrqHandler();
+//    }
+#if 0    
+    /* LVD Ch.1 detected */
+    if (Set == bM4_SYSREG_PWR_PVDCR1_PVD1IRE)
+    {
+        if((Set == bM4_SYSREG_PWR_PVDDSR_PVD1DETFLG) && (VSSEL141 & BIT_MASK_17))
+        {
+            Lvd1_IrqHandler();
+        }
+    }
+    if (Set == bM4_SYSREG_PWR_PVDCR1_PVD2IRE)
+    {
+        /* LVD Ch.2 detected */
+        if((Set == bM4_SYSREG_PWR_PVDDSR_PVD2DETFLG) && (VSSEL141 & BIT_MASK_18))
+        {
+            Lvd2_IrqHandler();
+        }
+    }
+    /* Freq. calculate error detected */
+    if(Set == bM4_FCM_RIER_ERRIE)
+    {
+        if((Set == bM4_FCM_SR_ERRF) && (VSSEL141 & BIT_MASK_20))
+        {
+            FcmErr_IrqHandler();
+        }
+    }
+    /* Freq. calculate completed */
+    if(Set == bM4_FCM_RIER_MENDIE)
+    {
+        if((Set == bM4_FCM_SR_MENDF) && (VSSEL141 & BIT_MASK_21))
+        {
+            FcmEnd_IrqHandler();
+        }
+    }
+    /* Freq. calculate overflow */
+    if(Set == bM4_FCM_RIER_OVFIE)
+    {
+        if((Set == bM4_FCM_SR_OVF) && (VSSEL141 & BIT_MASK_22))
+        {
+            FcmOV_IrqHandler();
+        }
+    }
 
+    /* WDT */
+    if ((M4_WDT->SR & (BIT_MASK_16 | BIT_MASK_17)) && (VSSEL141 & BIT_MASK_23))
+    {
+        Wdt_IrqHandler();
+    }
+#endif
 }
 
 

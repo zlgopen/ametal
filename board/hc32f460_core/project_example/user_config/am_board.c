@@ -132,28 +132,28 @@ void am_board_init (void)
         am_bsp_newlib_init(dbg_handle);
     #endif
 #endif /* (AM_CFG_STDLIB_ENABLE == 1) */
-//
-//#if ((AM_CFG_SOFTIMER_ENABLE == 1) || (AM_CFG_KEY_GPIO_ENABLE == 1))
-//    g_system_tick_timer_handle = am_system_tick_softimer_inst_init();
-//#elif (AM_CFG_SYSTEM_TICK_ENABLE == 1)
-//    g_system_tick_timer_handle = am_system_tick_inst_init();
-//#endif /* ((AM_CFG_SOFTIMER_ENABLE == 1) || (AM_CFG_KEY_GPIO_ENABLE == 1)) */
-//
-//#if (AM_CFG_BUZZER_ENABLE == 1)
+
+#if ((AM_CFG_SOFTIMER_ENABLE == 1) || (AM_CFG_KEY_GPIO_ENABLE == 1))
+    g_system_tick_timer_handle = am_system_tick_softimer_inst_init();
+#elif (AM_CFG_SYSTEM_TICK_ENABLE == 1)
+    g_system_tick_timer_handle = am_system_tick_inst_init();
+#endif /* ((AM_CFG_SOFTIMER_ENABLE == 1) || (AM_CFG_KEY_GPIO_ENABLE == 1)) */
+
+#if (AM_CFG_BUZZER_ENABLE == 1)
 //    g_buzzer_pwm_handle = am_buzzer_pwm_inst_init();
-//#endif /* (AM_CFG_BUZZER_ENABLE == 1) */
-//
-//#if (AM_CFG_KEY_ENABLE == 1) || (AM_CFG_KEY_GPIO_ENABLE == 1)
+#endif /* (AM_CFG_BUZZER_ENABLE == 1) */
+
+#if (AM_CFG_KEY_ENABLE == 1) || (AM_CFG_KEY_GPIO_ENABLE == 1)
 //    am_event_input_inst_init();                   /* 事件输入管理器服务初始化 */
-//#endif /* (AM_CFG_KEY_ENABLE == 1) || (AM_CFG_KEY_GPIO_ENABLE == 1) */
-//
-//#if (AM_CFG_KEY_GPIO_ENABLE == 1)
+#endif /* (AM_CFG_KEY_ENABLE == 1) || (AM_CFG_KEY_GPIO_ENABLE == 1) */
+
+#if (AM_CFG_KEY_GPIO_ENABLE == 1)
 //    am_key_gpio_inst_init();
-//#endif /* (AM_CFG_KEY_GPIO_ENABLE == 1) */
-//
-//#if (AM_CFG_ISR_DEFER_ENABLE == 1)
+#endif /* (AM_CFG_KEY_GPIO_ENABLE == 1) */
+
+#if (AM_CFG_ISR_DEFER_ENABLE == 1)
 //    am_bsp_isr_defer_pendsv_init();
-//#endif /* (AM_CFG_ISR_DEFER_ENABLE == 1) */
+#endif /* (AM_CFG_ISR_DEFER_ENABLE == 1) */
 
     /* 其它内容待添加 */
 }

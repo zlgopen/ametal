@@ -25,7 +25,7 @@
 #include "am_hc32f460.h"
 #include "am_gpio.h"
 #include "am_hc32f460_timea_pwm.h"
-//#include "am_hc32_adtim_pwm.h"
+//#include "am_hc32f460_adtim_pwm.h"
 #include "am_clk.h"
 #include "am_hc32f460_clk.h"
 
