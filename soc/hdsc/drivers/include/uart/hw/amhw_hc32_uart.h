@@ -223,6 +223,21 @@ void amhw_hc32_uart_int_enable (amhw_hc32_uart_t *p_hw_uart,
     }
 }
 
+/**
+ * \brief UART 接受中断标志查看
+ *
+ * \param[in] p_hw_uart : 指向UART寄存器结构体的指针
+ *
+ * \return 1 中断使能
+ *         0 中断禁能
+ */
+
+am_static_inline
+uint8_t amhw_hc32_uart_int_check (amhw_hc32_uart_t *p_hw_uart)
+{
+    return (p_hw_uart->scon & 0x01);
+}
+
 #define AMHW_HC32_UART_CTS          (1ul << 19) /* 硬件流CTS使能位 */
 #define AMHW_HC32_UART_RTS          (1ul << 18) /* 硬件流RTS使能位 */
 #define AMHW_HC32_UART_DMA_TX       (1ul << 17) /* 发送DMA使能位 */
