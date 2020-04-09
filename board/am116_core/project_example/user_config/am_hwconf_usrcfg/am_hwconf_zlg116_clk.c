@@ -48,7 +48,7 @@ static const am_zlg116_clk_devinfo_t __g_clk_devinfo =
      *    -# AMHW_ZLG116_PLLCLK_HSI_DIV4 : HSI 振荡器  4 分频作为PLL输入时钟
      *    -# AMHW_ZLG116_PLLCLK_HSE      : HSE 作为PLL输入时钟
      */
-	AMHW_ZLG116_PLLCLK_HSE,
+    AMHW_ZLG116_PLLCLK_HSE,
     /**
      * \brief PLL 倍频系数，可选1-64
      *        PLLOUT = PLLIN * pll_mul / pll_div
