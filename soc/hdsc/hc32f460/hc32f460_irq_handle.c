@@ -9,6 +9,7 @@
 #include "am_hc32f460_timea_cap.h"
 #include "am_hc32f460_adtim_cap.h"
 #include "am_hc32f460_i2c.h"
+#include "am_hc32f460_rtc.h"
 
 #define AM_HC32F460_INT_EXTI0_MASK    (1 << 0)
 #define AM_HC32F460_INT_EXTI1_MASK    (1 << 1)
@@ -394,6 +395,8 @@ extern am_hc32f460_adtim_cap_dev_t  __g_adtim63_cap_dev;
 extern am_hc32f460_i2c_dev_t __g_hc32f460_i2c1_dev;
 extern am_hc32f460_i2c_dev_t __g_i2c1_dev;
 
+extern am_hc32f460_rtc_dev_t __g_rtc_dev;
+
 /*! Bit mask definition*/
 #define     BIT_MASK_00                 (1ul << 0)
 #define     BIT_MASK_01                 (1ul << 1)
@@ -445,7 +448,7 @@ extern am_hc32f460_i2c_dev_t __g_i2c1_dev;
 void IRQ130_Handler(void)
 {
     uint32_t VSSEL130 = HC32F460_INTC.VSSEL[130 - 128];
-
+    uint32_t u32Tmp1 = 0ul;
     /* Timer0 Ch. 1 A compare match */
     if (Set == bM4_TMR01_BCONR_INTENA)
     {
@@ -479,6 +482,16 @@ void IRQ130_Handler(void)
         }
     }
     
+    u32Tmp1 = HC32F460_RTC->CR2;
+
+    if ((u32Tmp1 & BIT_MASK_06) && (u32Tmp1 & BIT_MASK_03) && (VSSEL130 & BIT_MASK_17))
+    {
+        RTC_ALM_IrqHandler(&__g_rtc_dev);
+    }
+    if ((u32Tmp1 & BIT_MASK_05) && (u32Tmp1 & BIT_MASK_02) && (VSSEL130 & BIT_MASK_18))
+    {
+        RTC_PRD_IrqHandler(&__g_rtc_dev);
+    }
 //    /* Main-OSC stop */
 //    if (Set == bM4_SYSREG_CMU_XTALSTDCR_XTALSTDIE)
 //    {

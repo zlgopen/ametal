@@ -680,3 +680,4 @@ void demo_hc32f460_hw_i2c_master_poll_entry (void *p_hw_i2c_addr,
                                             int      master_addr);
 void demo_hc32f460_core_hw_i2c_master_poll_entry (void);
 void demo_hc32f460_core_hw_i2c_slave_poll_entry (void);
+void demo_hc32f460_core_std_rtc_entry (void);
