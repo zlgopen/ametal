@@ -165,12 +165,10 @@ static int __tim_pwm_config (void          *p_drv,
  */
 static int __tim_pwm_enable (void *p_drv, int chan)
 {
-    int i = 0, t = 0, t1 = 0, t2 = 0, enable_flag = 0;
+    int i = 0, enable_flag = 0;
     am_hc32f460_timea_pwm_dev_t    *p_dev    = (am_hc32f460_timea_pwm_dev_t *)p_drv;
     amhw_hc32f460_timea_t          *p_hw_tim = (amhw_hc32f460_timea_t *)p_dev->p_devinfo->tim_regbase;
     am_hc32f460_timea_pwm_chaninfo_t *p_chaninfo = p_dev->p_devinfo->p_chaninfo;
-
-    uint8_t comp_pin_flag = 0;
 
     /* 判断引脚列表中是否有对应通道配置信息 */
     for(i = 0; i <= p_dev->chan_max; i++){
@@ -197,12 +195,10 @@ static int __tim_pwm_enable (void *p_drv, int chan)
  */
 static int __tim_pwm_disable (void *p_drv, int chan)
 {
-    int  i = 0, t = 0, t1 = 0, t2 = 0, disable_flag = 0;
+    int  i = 0, disable_flag = 0;
     am_hc32f460_timea_pwm_dev_t      *p_dev    = (am_hc32f460_timea_pwm_dev_t *)p_drv;
     amhw_hc32f460_timea_t            *p_hw_tim = (amhw_hc32f460_timea_t *)p_dev->p_devinfo->tim_regbase;
     am_hc32f460_timea_pwm_chaninfo_t *p_chaninfo = p_dev->p_devinfo->p_chaninfo;
-
-    uint8_t comp_pin_flag = 0;
 
     /* 判断引脚列表中是否有对应通道配置信息 */
     for(i = 0; i <= p_dev->chan_max; i++){

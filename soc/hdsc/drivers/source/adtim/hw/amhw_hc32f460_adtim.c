@@ -225,7 +225,7 @@ am_bool_t amhw_hc32f460_adtim_disable3cfg(
 //    p_hw_adtim4->aossr |= (p_cfg->fltenable << 4);
 //    p_hw_adtim4->aossr |= (p_cfg->fltclk << 2);
 
-//    return AM_TRUE;
+    return AM_TRUE;
 }
 
 /**

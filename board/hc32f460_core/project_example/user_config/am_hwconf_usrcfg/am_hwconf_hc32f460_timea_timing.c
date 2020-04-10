@@ -13,7 +13,7 @@
 /**
   \file
   \brief HC32 TIM 定时功能用户配置文件
-  \sa am_hwconf_hc32l19x_tim_timing.c
+  \sa am_hwconf_hc32f460_tim_timing.c
  *
  *
   \internal
@@ -30,8 +30,8 @@
 #include "hc32f460_inum.h"
 
 /**
-  \addtogroup am_if_src_hwconf_hc32l19x_tim_timing
-  \copydoc am_hwconf_hc32l19x_tim_timing.c
+  \addtogroup am_if_src_hwconf_hc32f460_tim_timing
+  \copydoc am_hwconf_hc32f460_tim_timing.c
   @{
  */
  

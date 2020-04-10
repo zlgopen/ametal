@@ -1266,8 +1266,8 @@ am_cap_handle_t   am_hc32f460_timea6_cap_inst_init (void);
 am_cap_handle_t   am_hc32f460_adtim61_cap_inst_init (void);
 am_cap_handle_t   am_hc32f460_adtim62_cap_inst_init (void);
 am_cap_handle_t   am_hc32f460_adtim63_cap_inst_init (void);
-
-
+am_i2c_handle_t   am_hc32f460_i2c1_inst_init (void);
+am_i2c_slv_handle_t  am_hc32f460_i2c1_slv_inst_init (void);
 /**
  * @}
  */

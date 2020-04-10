@@ -92,7 +92,7 @@ am_timer_handle_t am_system_tick_inst_init (void)
 
     return handle;
 }
-extern am_timer_handle_t am_hc32f460_tim0_timing_inst_init (void);
+extern am_timer_handle_t am_hc32f460_tim01_timing_inst_init (void);
 /** \brief 系统滴答实例初始化(使用软件定时器) */
 am_timer_handle_t am_system_tick_softimer_inst_init (void)
 {
@@ -101,7 +101,7 @@ am_timer_handle_t am_system_tick_softimer_inst_init (void)
     /* 获取定时器频率 */
 	  uint32_t freq = 0;
 
-    handle = am_hc32f460_tim0_timing_inst_init();
+    handle = am_hc32f460_tim01_timing_inst_init();
 
     if (NULL != handle) {
 

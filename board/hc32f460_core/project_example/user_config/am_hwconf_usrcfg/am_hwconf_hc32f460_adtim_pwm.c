@@ -7,7 +7,7 @@
 * All rights reserved.
 *
 * Contact information:
-* web site:    http://www.hc32l19x.cn/
+* web site:    http://www.hc32f460.cn/
 *******************************************************************************/
 
 /**

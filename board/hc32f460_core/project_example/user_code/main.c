@@ -75,7 +75,7 @@ int am_main (void)
 //    demo_hc32f460_core_std_adtim61_pwm_entry();
 //    demo_hc32f460_core_std_adtim62_pwm_entry();
 //    demo_hc32f460_core_std_adtim63_pwm_entry();
-//	  demo_hc32f460_core_std_timea1_cap_entry();
+//    demo_hc32f460_core_std_timea1_cap_entry();
 //    demo_hc32f460_core_std_timea2_cap_entry();
 //    demo_hc32f460_core_std_timea3_cap_entry();
 //    demo_hc32f460_core_std_timea4_cap_entry();
@@ -84,6 +84,11 @@ int am_main (void)
 //    demo_hc32f460_core_std_adtim61_cap_entry();
 //    demo_hc32f460_core_std_adtim62_cap_entry();
 //    demo_hc32f460_core_std_adtim63_cap_entry();
+//    demo_hc32f460_core_std_i2c_master_sync_entry();
+//    demo_hc32f460_core_std_i2c_master_async_entry();
+//    demo_hc32f460_core_hw_i2c_master_poll_entry();
+//    demo_hc32f460_core_hw_i2c_slave_poll_entry();
+    
     while (1) {
 
     }
