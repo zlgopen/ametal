@@ -54,8 +54,8 @@ void demo_aml165_core_hw_uart_polling_entry (void)
     AM_DBG_INFO("demo aml165_core hw uart polling!\r\n");
 
     /* 初始化引脚 */
-    am_gpio_pin_cfg(PIOA_9, PIOA_9_UART1_TX | PIOA_9_AF_PP);
-    am_gpio_pin_cfg(PIOA_10, PIOA_10_UART1_RX| PIOA_10_INPUT_FLOAT);
+    am_gpio_pin_cfg(PIOB_3, PIOB_3_UART1_TX | PIOB_3_AF_PP);
+    am_gpio_pin_cfg(PIOB_4, PIOB_4_UART1_RX | PIOB_4_INPUT_FLOAT);
 
     /* 使能时钟 */
     am_clk_enable(CLK_UART1);

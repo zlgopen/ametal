@@ -21,7 +21,7 @@
  *      uart tx dma test done
  *
  * \note
- *    1. 如需观察串口打印的调试信息，需要将 PIOA_9 引脚连接 PC 串口的 RXD；
+ *    1. 如需观察串口打印的调试信息，需要将 PIOB_3 引脚连接 PC 串口的 RXD；
  *    2. 如果调试串口使用与本例程相同，则不应在后续继续使用调试信息输出函数
  *      （如：AM_DBG_INFO()）；
  *    3. 在 DMA 操作期间不要对串口数据寄存器进行操作。
@@ -55,7 +55,8 @@
 void demo_aml165_core_hw_uart_tx_dma_entry (void)
 {
     AM_DBG_INFO("demo aml165_core hw uart tx dma!\r\n");
-
+    am_gpio_pin_cfg(PIOB_3, PIOB_3_UART1_TX | PIOB_3_AF_PP);
+    am_gpio_pin_cfg(PIOB_4, PIOB_4_UART1_RX | PIOB_4_INPUT_FLOAT);
     demo_zlg_hw_uart_tx_dma_entry(ZLG116_UART1,
                                   am_clk_rate_get(CLK_UART1),
                                   DMA_CHAN_UART1_TX);

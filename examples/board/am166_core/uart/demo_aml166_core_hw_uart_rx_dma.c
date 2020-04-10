@@ -55,7 +55,8 @@
 void demo_aml166_core_hw_uart_rx_dma_entry (void)
 {
     AM_DBG_INFO("demo aml166_core hw uart rx dma!\r\n");
-
+    am_gpio_pin_cfg(PIOA_9, PIOA_9_UART1_TX | PIOA_9_AF_PP);
+    am_gpio_pin_cfg(PIOA_10, PIOA_10_UART1_RX| PIOA_10_INPUT_FLOAT);
     demo_zlg_hw_uart_rx_dma_entry(ZLG116_UART1,
                                   am_clk_rate_get(CLK_UART1),
                                   DMA_CHAN_UART1_RX);
