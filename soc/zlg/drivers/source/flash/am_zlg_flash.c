@@ -136,13 +136,20 @@ int32_t am_zlg_flash_sector_program (amhw_zlg_flash_t *p_hw_flash,
 
         /** 半字写入 */
         *(uint16_t *)(dst_addr + i * 4)     = (uint16_t)p_src[i];
+
+        /** 等待写入完成 */
+        while (amhw_zlg_flash_status_check(p_hw_flash,
+                                           AMHW_ZLG_FLASH_BUSY_FLAG)) {
+           ;
+        }
+
         *(uint16_t *)(dst_addr + i * 4 + 2) = (uint16_t)(p_src[i] >> 16);
+        while (amhw_zlg_flash_status_check(p_hw_flash,
+                                           AMHW_ZLG_FLASH_BUSY_FLAG)) {
+           ;
+        }
     }
 
-    while (amhw_zlg_flash_status_check(p_hw_flash,
-                                       AMHW_ZLG_FLASH_BUSY_FLAG)) {
-       ;
-    }
     for (i = 0; i < size; i++) {
 
        /** 半字写入 */
