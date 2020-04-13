@@ -68,6 +68,7 @@ extern "C" {
 #define HC32F460_I2C1           ((amhw_hc32f460_i2c_t *)HC32F460_I2C1_BASE)
 #define HC32F460_I2C2           ((amhw_hc32f460_i2c_t *)HC32F460_I2C2_BASE)
 #define HC32F460_I2C3           ((amhw_hc32f460_i2c_t *)HC32F460_I2C3_BASE)
+#define HC32F460_RTC            ((amhw_hc32f460_rtc_t *)HC32F460_RTC_BASE)
 
 /** @} */
 
