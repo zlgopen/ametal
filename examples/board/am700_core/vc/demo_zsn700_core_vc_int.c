@@ -71,14 +71,14 @@ void demo_zsn700_core_hw_vc_int_entry (void)
     /* 开启DAC时钟 */
     am_clk_enable(CLK_DAC);
 
-    /* 配置PIOA_6为VC_OUT功能 */
-    am_gpio_pin_cfg(PIOA_6, PIOA_6_VC0_OUT | PIOA_6_OUT_PP);
+    /* 配置PIOA_0为VC_OUT功能 */
+    am_gpio_pin_cfg(PIOA_0, PIOA_0_VC0_OUT | PIOA_0_OUT_PP);
 
     /* 配置PIOC_0为VC0 P端输入 */
     am_gpio_pin_cfg(PIOC_0, PIOC_0_AIN);
 
     /* 配置PIOC_0为VC0 P端输入 */
-    am_gpio_pin_cfg(PIOA_7, PIOA_7_AIN);
+    am_gpio_pin_cfg(PIOC_1, PIOC_1_AIN);
 
     /* 开启VC时钟 */
     am_clk_enable(CLK_VC_LVD);

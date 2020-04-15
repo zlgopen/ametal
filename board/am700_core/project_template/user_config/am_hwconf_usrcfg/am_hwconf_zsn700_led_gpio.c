@@ -32,7 +32,7 @@
  */
 
 /** \brief 定义 LED 相关的 GPIO 管脚信息 */
-static const int __g_zsn700_led_pins[] = {PIOD_14};
+static const int __g_zsn700_led_pins[] = {PIOF_6, PIOF_7};
 
 /** \brief 设备信息 */
 static const am_led_gpio_info_t __g_zsn700_led_gpio_info = {

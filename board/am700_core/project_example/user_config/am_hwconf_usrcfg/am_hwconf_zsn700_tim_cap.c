@@ -276,16 +276,16 @@ am_zsn700_tim_cap_ioinfo_t __g_tim3_cap_ioinfo_list[] = {
     /**< \brief 通道4 */
     {
         AM_ZSN700_TIM_CAP_CH2A,
-        PIOE_13,
-        PIOE_13_TIM3_CH2A | PIOE_13_INPUT_FLOAT,
-        PIOE_13_GPIO | PIOE_13_INPUT_PU
+        PIOB_8,
+        PIOB_8_TIM3_CH2A | PIOB_8_INPUT_FLOAT,
+        PIOB_8_GPIO | PIOB_8_INPUT_PU
     },
     /**< \brief 通道5 */
     {
         AM_ZSN700_TIM_CAP_CH2B,
-        PIOE_12,
-        PIOE_12_TIM3_CH2B | PIOE_12_INPUT_FLOAT,
-        PIOE_12_GPIO | PIOE_12_INPUT_PU
+        PIOB_15,
+        PIOB_15_TIM3_CH2B | PIOB_15_INPUT_FLOAT,
+        PIOB_15_GPIO | PIOB_15_INPUT_PU
     },
 };
 
@@ -344,9 +344,9 @@ am_zsn700_adtim_cap_ioinfo_t __g_adtim4_cap_ioinfo_list[] = {
 
     {
         AM_ZSN700_ADTIM_CAP_CHB,
-        PIOA_7,
-        PIOA_7_TIM4_CHB  | PIOA_7_INPUT_FLOAT ,
-        PIOA_7_GPIO  | PIOA_7_INPUT_PU
+        PIOA_11,
+        PIOA_11_TIM4_CHB  | PIOA_11_INPUT_FLOAT ,
+        PIOA_11_GPIO  | PIOA_11_INPUT_PU
     },
 };
 
@@ -404,9 +404,9 @@ am_zsn700_adtim_cap_ioinfo_t __g_adtim5_cap_ioinfo_list[] = {
 
     {
         AM_ZSN700_ADTIM_CAP_CHB,
-        PIOA_5,
-        PIOA_5_TIM5_CHB  | PIOA_5_INPUT_FLOAT ,
-        PIOA_5_GPIO  | PIOA_5_INPUT_PU
+        PIOC_1,
+        PIOC_1_TIM5_CHB  | PIOC_1_INPUT_FLOAT ,
+        PIOC_1_GPIO  | PIOC_1_INPUT_PU
     },
 };
 

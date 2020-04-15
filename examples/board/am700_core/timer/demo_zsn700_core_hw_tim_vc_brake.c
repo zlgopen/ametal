@@ -64,8 +64,8 @@
 
     AM_DBG_INFO("demo am118_core hw tim vc_brake!\r\n");
 
-    /* 配置PIOA_6为VC_OUT功能 */
-    am_gpio_pin_cfg(PIOA_6, PIOA_6_VC0_OUT | PIOA_6_OUT_PP);
+    /* 配置PIOA_0为VC_OUT功能 */
+    am_gpio_pin_cfg(PIOA_0, PIOA_0_VC0_OUT | PIOA_0_OUT_PP);
 
     /* VC0_N、VC0_P输入端引脚初始化 */
     am_gpio_pin_cfg(PIOA_0, PIOA_0_AIN);

@@ -40,14 +40,14 @@
 void __zsn700_plfm_vc_init (void)
 {
 
-    /* 配置PIOA_6为VC_OUT功能 */
-    am_gpio_pin_cfg(PIOA_6, PIOA_6_VC0_OUT | PIOA_6_OUT_PP);
+    /* 配置PIOA_11为VC_OUT功能 */
+    am_gpio_pin_cfg(PIOA_11, PIOA_11_VC0_OUT | PIOA_11_OUT_PP);
 
     /* 配置PIOC_0为VC0 P端输入 */
     am_gpio_pin_cfg(PIOC_0, PIOC_0_AIN);
 
     /* 配置PIOA_7为VC0 P端输入 */
-    am_gpio_pin_cfg(PIOA_7, PIOA_7_AIN);
+    am_gpio_pin_cfg(PIOC_1, PIOC_1_AIN);
 
     /* 开启VC时钟 */
     am_clk_enable(CLK_VC_LVD);

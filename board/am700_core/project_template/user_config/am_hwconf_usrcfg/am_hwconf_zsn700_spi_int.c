@@ -35,8 +35,6 @@
  * \copydoc am_hwconf_zsn700_spi_int.c
  * @{
  */
-
-
 /** \brief SPI1 平台初始化 */
 static void __zsn700_plfm_spi1_int_init (void)
 {
