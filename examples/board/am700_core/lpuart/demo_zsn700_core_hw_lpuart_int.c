@@ -59,7 +59,7 @@ static void __zsn700_lpuart_pins_intit (void)
  */
 void demo_zsn700_core_hw_lpuart_int_entry (void)
 {
-    AM_DBG_INFO("demo am118_core hw lpuart int!\r\n");
+    AM_DBG_INFO("demo am700_core hw lpuart int!\r\n");
 
      /* 等待发送数据完成 */
     am_mdelay(100);

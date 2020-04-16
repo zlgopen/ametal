@@ -50,7 +50,7 @@
  */
 void demo_zsn700_core_std_gpio_entry (void)
 {
-    AM_DBG_INFO("demo am118_core std gpio!\r\n");
+    AM_DBG_INFO("demo am700_core std gpio!\r\n");
 
     demo_std_gpio_entry(INPUT_PIN, OUTPUT_PIN);
 }

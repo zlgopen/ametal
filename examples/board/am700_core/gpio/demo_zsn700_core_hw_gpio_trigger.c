@@ -55,7 +55,7 @@ void demo_zsn700_core_hw_gpio_trigger_entry (void)
     /* ¿ªÆô GPIOC ¶Ë¿ÚÊ±ÖÓ */
     am_clk_enable(CLK_GPIO);
 
-    demo_zsn700_hw_gpio_trigger_entry((void *)ZSN700_GPIO0, PIOA_7);
+    demo_zsn700_hw_gpio_trigger_entry((void *)ZSN700_GPIO0, PIOA_8);
 }
 /** [src_zsn700_hw_gpio_trigger] */
 

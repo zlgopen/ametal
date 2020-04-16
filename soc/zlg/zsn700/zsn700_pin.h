@@ -52,9 +52,6 @@ extern "C" {
 #define PIOA_2          2         /**< \brief PIOA_2 引脚号 */
 #define PIOA_3          3         /**< \brief PIOA_3 引脚号 */
 #define PIOA_4          4         /**< \brief PIOA_4 引脚号 */
-#define PIOA_5          5         /**< \brief PIOA_5 引脚号 */
-#define PIOA_6          6         /**< \brief PIOA_6 引脚号 */
-#define PIOA_7          7         /**< \brief PIOA_7 引脚号 */
 #define PIOA_8          8         /**< \brief PIOA_8 引脚号 */
 #define PIOA_9          9         /**< \brief PIOA_9 引脚号 */
 #define PIOA_10         10        /**< \brief PIOA_10 引脚号 */
@@ -62,7 +59,6 @@ extern "C" {
 #define PIOA_12         12        /**< \brief PIOA_13 引脚号 */
 #define PIOA_13         13        /**< \brief PIOA_13 引脚号 */
 #define PIOA_14         14        /**< \brief PIOA_14 引脚号 */
-#define PIOA_15         15        /**< \brief PIOA_15 引脚号 */
 
 #define PIOB            16        /**< \brief 端口B引脚起始号 */
 #define PIOB_0          16        /**< \brief PIOB_8 引脚号 */
@@ -474,33 +470,6 @@ extern "C" {
 #define PIOA_14_OUT_PP         AM_ZSN700_GPIO_MODE_CODE(0x4)   /**< \brief 推挽输出模式 */
 #define PIOA_14_OUT_OD         AM_ZSN700_GPIO_MODE_CODE(0x5)   /**< \brief 开漏输出模式 */
 #define PIOA_14_AOUT           AM_ZSN700_GPIO_MODE_CODE(0x6)   /**< \brief 模拟输出模式 */
-/** @} */
-
-/**
- * \name PIOA_15引脚复用功能
- * @{
- */
-#define PIOA_15_GPIO           AM_ZSN700_GPIO_REMAP_CODE(0x01, 0)
-#define PIOA_15_SPI0_CS        AM_ZSN700_GPIO_REMAP_CODE(0x01, 1)
-#define PIOA_15_UART1_RXD      AM_ZSN700_GPIO_REMAP_CODE(0x01, 2)
-#define PIOA_15_LPUART1_RTS    AM_ZSN700_GPIO_REMAP_CODE(0x01, 3)
-#define PIOA_15_TIM0_ETR       AM_ZSN700_GPIO_REMAP_CODE(0x01, 4)
-#define PIOA_15_TIM0_CHA       AM_ZSN700_GPIO_REMAP_CODE(0x01, 5)
-#define PIOA_15_TIM3_CH1A      AM_ZSN700_GPIO_REMAP_CODE(0x01, 6)
-
-/** @} */
-
-/**
- * \name PIOA_15引脚复用时功能模式
- * @{
- */
-#define PIOA_15_INPUT_PU       AM_ZSN700_GPIO_MODE_CODE(0x0)   /**< \brief 上拉输入模式 (默认) */
-#define PIOA_15_INPUT_PD       AM_ZSN700_GPIO_MODE_CODE(0x1)   /**< \brief 下拉输入模式 */
-#define PIOA_15_AIN            AM_ZSN700_GPIO_MODE_CODE(0x2)   /**< \brief 模拟输入模式 */
-#define PIOA_15_INPUT_FLOAT    AM_ZSN700_GPIO_MODE_CODE(0x3)   /**< \brief 浮空输入模式 */
-#define PIOA_15_OUT_PP         AM_ZSN700_GPIO_MODE_CODE(0x4)   /**< \brief 推挽输出模式 */
-#define PIOA_15_OUT_OD         AM_ZSN700_GPIO_MODE_CODE(0x5)   /**< \brief 开漏输出模式 */
-#define PIOA_15_AOUT           AM_ZSN700_GPIO_MODE_CODE(0x6)   /**< \brief 模拟输出模式 */
 /** @} */
 
 /**

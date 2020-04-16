@@ -64,7 +64,7 @@
  */
 void demo_zsn700_core_std_i2c_master_sync_entry (void)
 {
-    AM_DBG_INFO("demo am118_core std i2c master sync!\r\n");
+    AM_DBG_INFO("demo am700_core std i2c master sync!\r\n");
 
     demo_std_i2c_master_sync_entry(am_zsn700_i2c1_inst_init(),
                                    EEPROM_ADDR,

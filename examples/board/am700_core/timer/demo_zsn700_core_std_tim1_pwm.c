@@ -46,7 +46,7 @@
 void demo_zsn700_core_std_tim1_pwm_entry (void)
 {
 
-    AM_DBG_INFO("demo am118_core std tim1 pwm!\r\n");
+    AM_DBG_INFO("demo am700_core std tim1 pwm!\r\n");
 
     demo_std_timer_pwm_entry(am_zsn700_tim1_pwm_inst_init(), AM_ZSN700_TIM_PWM_CH0A);
 }

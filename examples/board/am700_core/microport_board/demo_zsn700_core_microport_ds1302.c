@@ -53,7 +53,7 @@
  */
 void demo_zsn700_core_microport_ds1302_entry (void)
 {
-    AM_DBG_INFO("demo am118_core microport ds1302!\r\n");
+    AM_DBG_INFO("demo am700_core microport ds1302!\r\n");
 
     demo_std_rtc_entry(am_microport_ds1302_rtc_inst_init());
 

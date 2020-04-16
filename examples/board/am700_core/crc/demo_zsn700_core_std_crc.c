@@ -53,7 +53,7 @@
  */
 void demo_zsn700_core_std_crc_entry (void)
 {
-    AM_DBG_INFO("demo am118_core std crc!\r\n");
+    AM_DBG_INFO("demo am700_core std crc!\r\n");
 
     am_crc_handle_t crc_handle;
 

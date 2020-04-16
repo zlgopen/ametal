@@ -54,7 +54,7 @@
  */
 void demo_zsn700_core_std_i2c_slave_int_entry (void)
 {
-    am_kprintf("demo am118_core std i2c slave int!\r\n");
+    am_kprintf("demo am700_core std i2c slave int!\r\n");
 
     demo_std_i2c_slave_entry(am_zsn700_i2c1_slv_inst_init(), DEV_ADDR);
 }

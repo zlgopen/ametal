@@ -53,7 +53,7 @@
  */
 void demo_zsn700_core_drv_flash_entry (void)
 {
-    AM_DBG_INFO("demo am118_core drv flash!\r\n");
+    AM_DBG_INFO("demo am700_core drv flash!\r\n");
 
     demo_zsn700_drv_flash_entry(ZSN700_FLASH, FLASH_SECTOR);
 }

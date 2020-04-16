@@ -35,9 +35,9 @@
 
 /** \brief 设备信息 */
 am_local am_const am_ds1302_gpio_devinfo_t __g_microport_ds1302_gpio_devinfo = {
-    PIOA_5,      /**< \brief SCLK 对应的 IO 引脚号 */
-    PIOA_4,      /**< \brief CE 对应的 IO 引脚号 */
-    PIOA_7,      /**< \brief IO 对应的 IO 引脚号 */
+    PIOA_0,      /**< \brief SCLK 对应的 IO 引脚号 */
+    PIOA_1,      /**< \brief CE 对应的 IO 引脚号 */
+    PIOA_2,      /**< \brief IO 对应的 IO 引脚号 */
 };
 
 /*******************************************************************************

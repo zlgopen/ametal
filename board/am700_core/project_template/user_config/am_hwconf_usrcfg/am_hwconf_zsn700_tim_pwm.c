@@ -123,9 +123,9 @@ am_zsn700_tim_pwm_chaninfo_t __g_tim1_pwm_chaninfo_list[] = {
     /** \brief 通道0引脚配置 */
     {
         AM_ZSN700_TIM_PWM_CH0A,
-        PIOA_0,
-        PIOA_0_TIM1_CHA | PIOA_0_OUT_PP,
-        PIOA_0_GPIO  | PIOA_0_INPUT_PU
+        PIOB_10,
+        PIOB_10_TIM1_CHA | PIOB_10_OUT_PP,
+        PIOB_10_GPIO  | PIOB_10_INPUT_PU
     },
 
     /** \brief 通道1引脚配置 */

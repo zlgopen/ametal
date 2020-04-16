@@ -65,7 +65,7 @@
 void demo_zsn700_core_std_i2c_master_async_entry (void)
 {
 
-    AM_DBG_INFO("demo am118_core std i2c master async!\r\n");
+    AM_DBG_INFO("demo am700_core std i2c master async!\r\n");
 
     demo_std_i2c_master_async_entry(am_zsn700_i2c1_inst_init(),
                                     EEPROM_ADDR,

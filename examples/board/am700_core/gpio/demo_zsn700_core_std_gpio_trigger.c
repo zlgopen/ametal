@@ -49,9 +49,9 @@
  */
 void demo_zsn700_core_std_gpio_trigger_entry (void)
 {
-    AM_DBG_INFO("demo am118_core std gpio trigger!\r\n");
+    AM_DBG_INFO("demo am700_core std gpio trigger!\r\n");
 
-    demo_std_gpio_trigger_entry(PIOA_7);
+    demo_std_gpio_trigger_entry(PIOA_8);
 }
 /** [src_zsn700_std_gpio_trigger] */
 

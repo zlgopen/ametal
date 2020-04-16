@@ -51,7 +51,7 @@
  */
 void demo_zsn700_core_std_lptim1_timing_entry (void)
 {
-    AM_DBG_INFO("demo am118_core std lptim1 timing!\r\n");
+    AM_DBG_INFO("demo am700_core std lptim1 timing!\r\n");
 
     demo_std_timer_timing_entry(am_zsn700_lptim1_timing_inst_init(), 0);
 }

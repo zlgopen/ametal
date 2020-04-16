@@ -59,7 +59,7 @@ void demo_zsn700_core_std_multichan_adc_entry (void)
     /* ADCÍ¨µÀ0,1,2,3 */
     int adc_chan[] = {0, 1, 2, 3};
 
-    AM_DBG_INFO("demo am118_core std adc int!\r\n");
+    AM_DBG_INFO("demo am700_core std adc int!\r\n");
 
     demo_std_multichan_adc_entry(am_zsn700_adc_inst_init(),
                                  adc_chan,

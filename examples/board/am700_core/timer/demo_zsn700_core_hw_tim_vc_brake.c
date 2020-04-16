@@ -62,7 +62,7 @@
 
 {
 
-    AM_DBG_INFO("demo am118_core hw tim vc_brake!\r\n");
+    AM_DBG_INFO("demo am700_core hw tim vc_brake!\r\n");
 
     /* ÅäÖÃPIOA_0ÎªVC_OUT¹¦ÄÜ */
     am_gpio_pin_cfg(PIOA_0, PIOA_0_VC0_OUT | PIOA_0_OUT_PP);

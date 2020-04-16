@@ -69,7 +69,7 @@ void demo_zsn700_core_hw_adc_dma_entry (void)
                         AMHW_ZSN700_CHAN_AIN14_PC4,
                         AMHW_ZSN700_CHAN_AIN15_PC5};
     
-    AM_DBG_INFO("demo am118_core hw adc dma!\r\n");
+    AM_DBG_INFO("demo am700_core hw adc dma!\r\n");
 
     /* ≈‰÷√“˝Ω≈ */
     am_gpio_pin_cfg(PIOA_0, PIOA_0_GPIO | PIOA_0_AIN);
