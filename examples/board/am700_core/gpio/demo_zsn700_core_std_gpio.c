@@ -42,15 +42,15 @@
 #include "demo_std_entries.h"
 #include "demo_am700_core_entries.h"
 
-#define INPUT_PIN  PIOA_7  /**< \brief 输入引脚 */
-#define OUTPUT_PIN PIOD_14 /**< \brief 与LED相连 */
+#define INPUT_PIN  PIOA_8  /**< \brief 输入引脚 */
+#define OUTPUT_PIN PIOF_6  /**< \brief 与LED相连 */
 
 /**
  * \brief 例程入口
  */
 void demo_zsn700_core_std_gpio_entry (void)
 {
-    AM_DBG_INFO("demo am118_core std gpio!\r\n");
+    AM_DBG_INFO("demo am700_core std gpio!\r\n");
 
     demo_std_gpio_entry(INPUT_PIN, OUTPUT_PIN);
 }

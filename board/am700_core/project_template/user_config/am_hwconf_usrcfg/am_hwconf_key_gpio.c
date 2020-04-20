@@ -32,7 +32,7 @@
  * @{
  */
 
-static const int __g_key_pins[]  = {PIOA_7};
+static const int __g_key_pins[]  = {PIOA_8};
 static const int __g_key_codes[] = {KEY_KP0};
 
 /** \brief 设备信息 */

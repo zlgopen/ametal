@@ -47,7 +47,7 @@
  */
 void demo_zsn700_core_std_led_entry (void)
 {
-    AM_DBG_INFO("demo am118_core std led!\r\n");
+    AM_DBG_INFO("demo am700_core std led!\r\n");
 
     demo_std_led_entry(LED0);
 }

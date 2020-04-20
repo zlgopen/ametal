@@ -64,7 +64,7 @@ void demo_zsn700_core_std_lptim_timing_gate_entry (void)
 {
     am_timer_handle_t  handle = am_zsn700_lptim0_timing_inst_init();
     
-    AM_DBG_INFO("demo am118_core std lptim timing gate!\r\n");
+    AM_DBG_INFO("demo am700_core std lptim timing gate!\r\n");
 
     /* 设置回调函数 */
     am_timer_callback_set(handle, 0, NULL, NULL);

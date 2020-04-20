@@ -45,8 +45,8 @@
 #include "demo_zlg_entries.h"
 #include "demo_am700_core_entries.h"
 
-#define INPUT_PIN  PIOA_7  /**< \brief 输入引脚 */
-#define OUTPUT_PIN PIOD_14 /**< \brief 输出引脚 */
+#define INPUT_PIN  PIOA_8  /**< \brief 输入引脚 */
+#define OUTPUT_PIN PIOF_6  /**< \brief 输出引脚 */
 
 /**
  * \brief 例程入口
@@ -54,7 +54,7 @@
 void demo_zsn700_core_hw_gpio_entry (void)
 {
 
-    AM_DBG_INFO("demo am118_core hw gpio!\r\n");
+    AM_DBG_INFO("demo am700_core hw gpio!\r\n");
 
     /* 开启 GPIOC 端口时钟 */
     am_clk_enable(CLK_GPIO);

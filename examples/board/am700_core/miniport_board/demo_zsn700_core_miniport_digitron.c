@@ -47,7 +47,7 @@
  */
 void demo_zsn700_core_miniport_digitron_entry (void)
 {
-    AM_DBG_INFO("demo am118_core miniport digitron!\r\n");
+    AM_DBG_INFO("demo am700_core miniport digitron!\r\n");
 
     am_miniport_view_inst_init();
 

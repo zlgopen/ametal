@@ -39,8 +39,8 @@ static void __zsn700_plfm_uart0_init (void)
 {
     am_clk_enable(CLK_UART0);
 
-    am_gpio_pin_cfg(PIOA_9,  PIOA_9_UART0_TXD  | PIOA_9_OUT_PP );
-    am_gpio_pin_cfg(PIOA_10, PIOA_10_UART0_RXD | PIOA_10_INPUT_FLOAT);
+    am_gpio_pin_cfg(PIOB_6, PIOB_6_UART0_TXD | PIOB_6_OUT_PP );
+    am_gpio_pin_cfg(PIOB_7, PIOB_7_UART0_RXD | PIOB_7_INPUT_FLOAT);
 }
 
 /** \brief 解除串口0平台初始化 */
@@ -48,8 +48,8 @@ static void __zsn700_plfm_uart0_deinit (void)
 {
     am_clk_disable(CLK_UART0);
 
-    am_gpio_pin_cfg(PIOA_9, PIOA_9_GPIO  | PIOA_9_INPUT_PU);
-    am_gpio_pin_cfg(PIOA_10, PIOA_10_GPIO | PIOA_10_INPUT_PU);
+    am_gpio_pin_cfg(PIOB_6, PIOB_6_GPIO | PIOB_6_INPUT_PU);
+    am_gpio_pin_cfg(PIOB_7, PIOB_7_GPIO | PIOB_7_INPUT_PU);
 }
 
 /** \brief 串口0设备信息 */

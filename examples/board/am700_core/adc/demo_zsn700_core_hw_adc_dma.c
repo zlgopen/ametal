@@ -60,9 +60,6 @@ void demo_zsn700_core_hw_adc_dma_entry (void)
                         AMHW_ZSN700_CHAN_AIN2_PA2,
                         AMHW_ZSN700_CHAN_AIN3_PA3,
                         AMHW_ZSN700_CHAN_AIN4_PA4,
-                        AMHW_ZSN700_CHAN_AIN5_PA5,
-                        AMHW_ZSN700_CHAN_AIN6_PA6,
-                        AMHW_ZSN700_CHAN_AIN7_PA7,
                         AMHW_ZSN700_CHAN_AIN8_PB0,
                         AMHW_ZSN700_CHAN_AIN9_PB1,
                         AMHW_ZSN700_CHAN_AIN10_PC0,
@@ -72,7 +69,7 @@ void demo_zsn700_core_hw_adc_dma_entry (void)
                         AMHW_ZSN700_CHAN_AIN14_PC4,
                         AMHW_ZSN700_CHAN_AIN15_PC5};
     
-    AM_DBG_INFO("demo am118_core hw adc dma!\r\n");
+    AM_DBG_INFO("demo am700_core hw adc dma!\r\n");
 
     /* ≈‰÷√“˝Ω≈ */
     am_gpio_pin_cfg(PIOA_0, PIOA_0_GPIO | PIOA_0_AIN);
@@ -80,9 +77,6 @@ void demo_zsn700_core_hw_adc_dma_entry (void)
     am_gpio_pin_cfg(PIOA_2, PIOA_2_GPIO | PIOA_2_AIN);
     am_gpio_pin_cfg(PIOA_3, PIOA_3_GPIO | PIOA_3_AIN);
     am_gpio_pin_cfg(PIOA_4, PIOA_4_GPIO | PIOA_4_AIN);
-    am_gpio_pin_cfg(PIOA_5, PIOA_5_GPIO | PIOA_5_AIN);
-    am_gpio_pin_cfg(PIOA_6, PIOA_6_GPIO | PIOA_6_AIN);
-    am_gpio_pin_cfg(PIOA_7, PIOA_7_GPIO | PIOA_7_AIN);
     am_gpio_pin_cfg(PIOB_0, PIOB_0_GPIO | PIOB_0_AIN);
     am_gpio_pin_cfg(PIOB_1, PIOB_1_GPIO | PIOB_1_AIN);
     am_gpio_pin_cfg(PIOC_0, PIOC_0_GPIO | PIOC_0_AIN);
@@ -96,7 +90,7 @@ void demo_zsn700_core_hw_adc_dma_entry (void)
 
     demo_zsn700_hw_adc_dma_entry(ZSN700_ADC,
                                  adc_chan,
-                                 16,
+                                 13,
                                  3300,
                                  DMA_CHAN_1,
                                  ZSN700_DMA_SRC_TYPE_ADC_SRQ0_RX);

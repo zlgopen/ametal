@@ -117,11 +117,11 @@ void __zsn700_plfm_lptim1_timing_init (void)
     am_gpio_pin_cfg(PIOC_6, PIOC_6_INPUT_FLOAT | PIOC_6_LPTIM1_GATE);
 
     /* 配置ETR引脚，以外部时钟作为计数时钟功能 */
-    am_gpio_pin_cfg(PIOD_6, PIOD_6_INPUT_FLOAT | PIOD_6_LPTIM1_ETR);
+    am_gpio_pin_cfg(PIOC_7, PIOC_7_INPUT_FLOAT | PIOC_7_LPTIM1_ETR);
 
     /* 配置TOG、TOGN引脚，输出相关电平 */
-    am_gpio_pin_cfg(PIOD_3, PIOD_3_OUT_PP | PIOD_3_LPTIM1_TOG);
-    am_gpio_pin_cfg(PIOD_4, PIOD_4_OUT_PP | PIOD_4_LPTIM1_TOGN);
+    am_gpio_pin_cfg(PIOC_8, PIOC_8_OUT_PP | PIOC_8_LPTIM1_TOG);
+    am_gpio_pin_cfg(PIOC_9, PIOC_9_OUT_PP | PIOC_9_LPTIM1_TOGN);
 
     am_clk_enable(CLK_LPTIM1);
 }
@@ -130,9 +130,9 @@ void __zsn700_plfm_lptim1_timing_init (void)
 void __zsn700_plfm_lptim1_timing_deinit (void)
 {
     am_gpio_pin_cfg(PIOC_6, PIOC_6_INPUT_PU | PIOC_6_GPIO);
-    am_gpio_pin_cfg(PIOD_6, PIOD_6_INPUT_PU | PIOD_6_GPIO);
-    am_gpio_pin_cfg(PIOD_3, PIOD_3_INPUT_PU | PIOD_3_GPIO);
-    am_gpio_pin_cfg(PIOD_4, PIOD_4_INPUT_PU | PIOD_4_GPIO);
+    am_gpio_pin_cfg(PIOC_7, PIOC_7_INPUT_PU | PIOC_7_GPIO);
+    am_gpio_pin_cfg(PIOC_8, PIOC_8_INPUT_PU | PIOC_8_GPIO);
+    am_gpio_pin_cfg(PIOC_9, PIOC_9_INPUT_PU | PIOC_9_GPIO);
 
     am_clk_disable(CLK_LPTIM1);
 }

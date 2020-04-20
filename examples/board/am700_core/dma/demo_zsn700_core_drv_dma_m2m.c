@@ -52,7 +52,7 @@
  */
 void demo_zsn700_core_drv_dma_m2m_entry (void)
 {
-    AM_DBG_INFO("demo am118_core drv dma m2m!\r\n");
+    AM_DBG_INFO("demo am700_core drv dma m2m!\r\n");
 
     demo_zsn700_drv_dma_m2m_entry(DMA_M2M_CH);
 }

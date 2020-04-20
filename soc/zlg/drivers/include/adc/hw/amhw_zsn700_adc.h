@@ -98,10 +98,7 @@ typedef enum {
     AMHW_ZSN700_CHAN_AIN2_PA2,          /**< \brief 转换通道2 */
     AMHW_ZSN700_CHAN_AIN3_PA3,          /**< \brief 转换通道3 */
     AMHW_ZSN700_CHAN_AIN4_PA4,          /**< \brief 转换通道4 */
-    AMHW_ZSN700_CHAN_AIN5_PA5,          /**< \brief 转换通道5 */
-    AMHW_ZSN700_CHAN_AIN6_PA6,          /**< \brief 转换通道6 */
-    AMHW_ZSN700_CHAN_AIN7_PA7,          /**< \brief 转换通道7 */
-    AMHW_ZSN700_CHAN_AIN8_PB0,          /**< \brief 转换通道8 */
+    AMHW_ZSN700_CHAN_AIN8_PB0 = 8,      /**< \brief 转换通道8 */
     AMHW_ZSN700_CHAN_AIN9_PB1,          /**< \brief 转换通道9 */
     AMHW_ZSN700_CHAN_AIN10_PC0,         /**< \brief 转换通道10 */
     AMHW_ZSN700_CHAN_AIN11_PC1,         /**< \brief 转换通道11 */
@@ -116,10 +113,7 @@ typedef enum {
     AMHW_ZSN700_CHAN_AIN20_PB13,        /**< \brief 转换通道20 */
     AMHW_ZSN700_CHAN_AIN21_PB14,        /**< \brief 转换通道21 */
     AMHW_ZSN700_CHAN_AIN22_PB15,        /**< \brief 转换通道22 */
-    AMHW_ZSN700_CHAN_AIN23_PE15,        /**< \brief 转换通道23 */
-    AMHW_ZSN700_CHAN_AIN24_PE14,        /**< \brief 转换通道24 */
-    AMHW_ZSN700_CHAN_AIN25_PE13,        /**< \brief 转换通道25 */
-    AMHW_ZSN700_CHAN_DAC_OUT,           /**< \brief 与DAC输出连接，ADC_CR0.Buf必须为1 */
+    AMHW_ZSN700_CHAN_DAC_OUT = 26,      /**< \brief 与DAC输出连接，ADC_CR0.Buf必须为1 */
     AMHW_ZSN700_CHAN_VCC_DIV3,          /**< \brief 与内部1/3VCC连接，ADC_CR0.Buf必须为1 */
     AMHW_ZSN700_CHAN_INSIDE_TEMP_SENSOR,/**< \brief 与内置温度传感器输出电压连接，ADC_CR0.Buf必须为1 */
     AMHW_ZSN700_CHAN_INSIDE_REFVCC_12,  /**< \brief 与内部基准1.2V输出电压连接，ADC_CR0.Buf必须为1 */

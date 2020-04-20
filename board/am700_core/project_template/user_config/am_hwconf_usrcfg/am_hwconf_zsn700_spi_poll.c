@@ -33,7 +33,6 @@
  * \copydoc am_hwconf_zsn700_spi_poll.c
  * @{
  */
-
 /** \brief SPI1 平台初始化 */
 static void __zsn700_plfm_spi1_poll_init (void)
 {

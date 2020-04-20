@@ -67,10 +67,10 @@ void demo_zsn700_drv_lpmode_wake_up_entry (void)
     am_mdelay(100);
 
     /* 引脚中断配置 */
-    am_gpio_pin_cfg(PIOA_7, PIOA_7_INPUT_PU);
-    am_gpio_trigger_connect(PIOA_7, __gpio_isr, NULL);
-    am_gpio_trigger_cfg(PIOA_7, AM_GPIO_TRIGGER_FALL);
-    am_gpio_trigger_on(PIOA_7);
+    am_gpio_pin_cfg(PIOA_8, PIOA_8_INPUT_PU);
+    am_gpio_trigger_connect(PIOA_8, __gpio_isr, NULL);
+    am_gpio_trigger_cfg(PIOA_8, AM_GPIO_TRIGGER_FALL);
+    am_gpio_trigger_on(PIOA_8);
 
     /* 低功耗模式初始化 */
     am_zsn700_lpmode_init();

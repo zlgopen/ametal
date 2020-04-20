@@ -56,7 +56,7 @@
  */
 void demo_zsn700_core_std_wdt_entry (void)
 {
-    AM_DBG_INFO("demo am118_core std wdt!\r\n");
+    AM_DBG_INFO("demo am700_core std wdt!\r\n");
 
     demo_std_wdt_entry(am_zsn700_wdt_inst_init(),
                        __WDT_TIMEOUT_MS,

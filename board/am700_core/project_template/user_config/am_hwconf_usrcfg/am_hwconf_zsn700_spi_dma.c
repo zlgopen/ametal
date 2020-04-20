@@ -34,7 +34,6 @@
  * \copydoc am_hwconf_zsn700_spi_dma.c
  * @{
  */
-
 /** \brief SPI1 平台初始化 */
 static void __zsn700_plfm_spi1_dma_init (void)
 {
@@ -67,7 +66,6 @@ static const  struct am_zsn700_spi_dma_devinfo  __g_spi1_dma_devinfo = {
 };
 /** \brief SPI1 设备实例 */
 static am_zsn700_spi_dma_dev_t __g_spi1_dma_dev;
-
 
 /** \brief SPI1 实例初始化，获得SPI标准服务句柄 */
 am_spi_handle_t am_zsn700_spi1_dma_inst_init (void)

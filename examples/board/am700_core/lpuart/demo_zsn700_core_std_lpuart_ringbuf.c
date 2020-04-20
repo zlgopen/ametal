@@ -50,7 +50,7 @@
  */
 void demo_zsn700_core_std_lpuart_ringbuf_entry (void)
 {
-    AM_DBG_INFO("demo am118_core std lpuart ringbuf!\r\n");
+    AM_DBG_INFO("demo am700_core std lpuart ringbuf!\r\n");
 
      /* 等待发送数据完成 */
     am_mdelay(100);
