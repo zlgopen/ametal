@@ -38,7 +38,7 @@ int am_main (void)
     AM_DBG_INFO("Start up successful!\r\n");
 
     /* demoÀý³ÌÈë¿Ú */
-//    demo_hc32l19x_core_std_led_entry();
+    demo_hc32l19x_core_std_led_entry();
 //    demo_hc32l19x_core_std_delay_entry();
 //    demo_hc32l19x_core_std_buzzer_entry();
 //    demo_hc32l19x_core_hw_clk_entry();
@@ -107,7 +107,7 @@ int am_main (void)
 //    demo_hc32l19x_core_hw_uart_rx_dma_entry();
 //    demo_hc32l19x_core_hw_uart_tx_dma_entry();
 //    demo_hc32l19x_core_std_uart_polling_entry();
-    demo_hc32l19x_core_std_uart_ringbuf_entry();
+//    demo_hc32l19x_core_std_uart_ringbuf_entry();
 //    demo_hc32l19x_core_hw_lpuart_int_entry();
 //    demo_hc32l19x_core_hw_lpuart_polling_entry();
 //    demo_hc32l19x_core_hw_lpuart_rx_dma_entry();

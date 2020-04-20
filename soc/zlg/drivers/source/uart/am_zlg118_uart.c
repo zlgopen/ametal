@@ -723,7 +723,12 @@ am_uart_handle_t am_zlg118_uart_init (am_zlg118_uart_dev_t           *p_dev,
     }
 
     /* 工作模式设置 */
-    amhw_zlg118_uart_mode_sel(p_hw_uart, p_devinfo->work_mode);
+    if (p_devinfo->work_mode == AMHW_ZLG118_UART_WORK_MODE_4) {
+        amhw_zlg118_uart_single_line_half_enable(p_hw_uart);
+        amhw_zlg118_uart_mode_sel(p_hw_uart, AMHW_ZLG118_UART_WORK_MODE_1);
+    } else {
+        amhw_zlg118_uart_mode_sel(p_hw_uart, p_devinfo->work_mode);
+    }
     p_dev->work_mode = p_devinfo->work_mode;
 
     if(p_devinfo->work_mode == AMHW_ZLG118_UART_WORK_MODE_0) {

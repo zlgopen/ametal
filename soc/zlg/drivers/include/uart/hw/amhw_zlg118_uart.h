@@ -313,21 +313,27 @@ void amhw_zlg118_uart_stop_bit_sel (amhw_zlg118_uart_t *p_hw_uart,
  *        和 1/1.5/2-Bit结束位。额外的 TB8位用于在多机通讯环境下使用，
  *        当 TB8=1，表明所接收的是地址帧；当 TB8=0，表明所接收的是数据帧。当不需要多机通讯时，此位也可以作为奇
  *        偶校验位或者数据位来使用。结束位。
+ *
+ *  模式4--异步传输模式，半双工。 波特率计算与模式1、2、3相同。通过 TXD 发送与接收数据，RXD不再使用。
+ *        TX 信号的方向控制由硬件逻辑完成，无需软件控制。当发送缓存为空时，TX 信号始终为输入（接收状态）。
+ *        当向发送缓存填入一个数据，TX 信号变为输出（发送状态）。当发送完成，发送缓存变为空，
+ *        TX 信号又回到输入（接收状态）。
  */
 typedef enum {
     AMHW_ZLG118_UART_WORK_MODE_0 = 0,
     AMHW_ZLG118_UART_WORK_MODE_1,
     AMHW_ZLG118_UART_WORK_MODE_2,
     AMHW_ZLG118_UART_WORK_MODE_3,
+    AMHW_ZLG118_UART_WORK_MODE_4,
 }amhw_zlg118_uart_work_mode_t;
 /**
  * \brief 工作模式设定
  *
  * \param[in] p_hw_uart : 指向UART寄存器结构体的指针
- * \param[in] stop_bit  : 模式宏定义       AMHW_ZLG118_UART_MODE_0 或
- *                                 AMHW_ZLG118_UART_MODE_1 或
- *                                 AMHW_ZLG118_UART_MODE_2 或
- *                                 AMHW_ZLG118_UART_MODE_3
+ * \param[in] stop_bit  : AMHW_ZLG118_UART_WORK_MODE_0 或
+ *                        AMHW_ZLG118_UART_WORK_MODE_1 或
+ *                        AMHW_ZLG118_UART_WORK_MODE_2 或
+ *                        AMHW_ZLG118_UART_WORK_MODE_3
  *
  * \return none
  */

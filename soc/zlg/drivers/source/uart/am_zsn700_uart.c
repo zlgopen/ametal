@@ -887,7 +887,12 @@ am_uart_handle_t am_zsn700_uart_init (am_zsn700_uart_dev_t           *p_dev,
     }
 
     /* 工作模式设置 */
-    amhw_zsn700_uart_mode_sel(p_hw_uart, p_devinfo->work_mode);
+    if (p_devinfo->work_mode == AMHW_ZSN700_UART_WORK_MODE_4) {
+        amhw_zsn700_uart_single_line_half_enable(p_hw_uart);
+        amhw_zsn700_uart_mode_sel(p_hw_uart, AMHW_ZSN700_UART_WORK_MODE_1);
+    } else {
+        amhw_zsn700_uart_mode_sel(p_hw_uart, p_devinfo->work_mode);
+    }
     p_dev->work_mode = p_devinfo->work_mode;
 
     if(p_devinfo->work_mode == AMHW_ZSN700_UART_WORK_MODE_0) {
