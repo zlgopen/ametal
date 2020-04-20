@@ -23,7 +23,7 @@
  *   3. 串口打印出利用捕获功能得到的 PWM 信号的周期和频率。
  *
  * \note
- *    如需观察串口打印的调试信息，需要将 PIOA_9 引脚连接 PC 串口的 RXD。
+ *    如需观察串口打印的调试信息，需要将 PIOB_3 引脚连接 PC 串口的 RXD。
  *
  * \par 源代码
  * \snippet demo_aml165_core_hw_tim_cap.c src_aml165_core_hw_tim_cap
@@ -40,7 +40,7 @@
  */
 
 /** [src_aml165_core_hw_tim_cap] */
-#include <am_aml165_inst_init.h>
+
 #include "ametal.h"
 #include "am_clk.h"
 #include "am_pwm.h"
@@ -48,7 +48,9 @@
 #include "am_vdebug.h"
 #include "am_zml165.h"
 #include "am_zml165_clk.h"
+#include "am_zlg_tim_pwm.h"
 #include "demo_zlg_entries.h"
+#include "am_aml165_inst_init.h"
 #include "demo_aml165_core_entries.h"
 
 /**
@@ -75,7 +77,7 @@ void demo_aml165_core_hw_tim_cap_entry (void)
 
     demo_zlg_hw_tim_cap_entry(ZML165_TIM3,
                               AMHW_ZLG_TIM_TYPE1,
-                              0,
+                              AM_ZLG_TIM_PWM_CH1,
                               am_clk_rate_get(CLK_TIM3),
                               INUM_TIM3);
 }

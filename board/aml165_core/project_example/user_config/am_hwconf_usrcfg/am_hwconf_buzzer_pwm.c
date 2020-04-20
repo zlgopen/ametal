@@ -37,13 +37,13 @@
 /** \brief PWM 的占空比，50 代表 50% */
 #define __BUZZER_PWM_DUTY       50
 
-/** \brief 使用通道 1, TIM16_CH1, PIOB_8 */
+/** \brief 使用通道 1, TIM2_CH1, PIOA_0 */
 #define __BUZZER_TIMER_CHAN     (1 - 1)
 
 /** \brief 蜂鸣器实例初始化 */
 void am_buzzer_pwm_inst_init (void)
 {
-    am_pwm_handle_t handle = am_zml165_tim1_pwm_inst_init();
+    am_pwm_handle_t handle = am_zml165_tim2_pwm_inst_init();
 
     if (NULL != handle) {
         am_buzzer_pwm_init(handle,

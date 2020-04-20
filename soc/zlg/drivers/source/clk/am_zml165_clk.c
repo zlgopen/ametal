@@ -23,14 +23,13 @@
  */
 
 #include "ametal.h"
-#include "am_zlg115_clk.h"
+#include "am_zml165_clk.h"
 #include "zml165_clk.h"
 #include "zml165_periph_map.h"
 #include "hw/amhw_zml165_rcc.h"
-#include "hw/amhw_zlg115_rcc.h"
 #include "hw/amhw_zlg_flash.h"
 
-am_zlg115_clk_dev_t *__gp_dev = NULL;
+am_zml165_clk_dev_t *__gp_dev = NULL;
 
 #define __LSI_CLK    40000ul
 
@@ -312,7 +311,7 @@ int am_zml165_clk_update (am_clk_id_t clk_id, int clk)
     return AM_OK;
 }
 
-const am_zlg115_clk_dev_t *am_zml165_clk_devinfo_get (void)
+const am_zml165_clk_dev_t *am_zml165_clk_devinfo_get (void)
 {
     if (__gp_dev == NULL)  {
         return NULL;
@@ -353,8 +352,8 @@ int am_zml165_div_get (am_clk_id_t clk_id)
 /**
  * \brief CLK 初始化
  */
-int am_zlg115_clk_init (am_zlg115_clk_dev_t           *p_dev,
-                        const am_zlg115_clk_devinfo_t *p_devinfo)
+int am_zml165_clk_init (am_zml165_clk_dev_t           *p_dev,
+                        const am_zml165_clk_devinfo_t *p_devinfo)
 {
     uint8_t i = 0,div = 1;
     uint8_t temp;
@@ -381,7 +380,7 @@ int am_zlg115_clk_init (am_zlg115_clk_dev_t           *p_dev,
 
     ZML165_RCC->cir = 0x009F0000;
 
-    if (p_devinfo->sys_clk_src == AMHW_ZLG115_SYSCLK_HSE) {
+    if (p_devinfo->sys_clk_src == AMHW_ZML165_SYSCLK_HSE) {
 
         /* CLK平台初始化，配置时钟引脚 */
         if (p_devinfo->pfn_plfm_init) {
@@ -429,7 +428,7 @@ int am_zlg115_clk_init (am_zlg115_clk_dev_t           *p_dev,
 
     amhw_zml165_rcc_apb1_div_set(p_devinfo->apb1_div + 3);
 
-    amhw_zml165_rcc_sys_clk_set ((amhw_zml165_sys_clk_src)AMHW_ZLG115_SYSCLK_HSI);
+    amhw_zml165_rcc_sys_clk_set ((amhw_zml165_sys_clk_src)AMHW_ZML165_SYSCLK_HSI);
 
     while (temp != 0x02) {
         temp = ZML165_RCC->cfgr >> 2;

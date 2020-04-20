@@ -25,7 +25,7 @@
  *   4. 每五秒中就会执行定时器中断的回调函数。
  *
  * \note
- *    如需观察串口打印的调试信息，需要将 PIOA_9 引脚连接 PC 串口的 RXD。
+ *    如需观察串口打印的调试信息，需要将 PIOB_3 引脚连接 PC 串口的 RXD。
  *
  * \par 源代码
  * \snippet demo_aml165_core_microport_rx8025t.c src_aml165_core_microport_rx8025t

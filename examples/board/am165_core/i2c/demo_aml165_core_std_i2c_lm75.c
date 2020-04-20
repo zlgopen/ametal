@@ -22,7 +22,7 @@
  *   2. 按下 RES 按键，过一会儿，串口输出温度值升高。
  *
  * \note
- *    如需观察串口打印的调试信息，需要将 PIOA_9 引脚连接 PC 串口的 RXD；
+ *    如需观察串口打印的调试信息，需要将 PIOB_3 引脚连接 PC 串口的 RXD；
  *
  * \par 源代码
  * \snippet demo_aml165_core_std_i2c_lm75.c src_aml165_core_std_i2c_lm75

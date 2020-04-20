@@ -18,7 +18,7 @@
  *   2. DMA 传输出错，打印 "transfer failure";
  *
  * \note
- *    如需观察串口打印的调试信息，需要将 PIOA_9 引脚连接 PC 串口的 RXD。
+ *    如需观察串口打印的调试信息，需要将 PIOB_3 引脚连接 PC 串口的 RXD。
  *
  * \par 源代码
  * \snippet demo_aml165_core_drv_dma_m2m.c src_aml165_core_drv_dma_m2m

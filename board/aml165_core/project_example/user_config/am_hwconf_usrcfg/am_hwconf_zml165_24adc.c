@@ -12,8 +12,8 @@
 
 /**
  * \file
- * \brief CS1237 配置文件
- * \sa am_hwconf_cs1237.c
+ * \brief ZML165_ADC 配置文件
+ * \sa am_hwconf_zml165_adc.c
  *
  * \internal
  * \par Modification history
@@ -23,32 +23,30 @@
 
 #include "ametal.h"
 #include "zml165_pin.h"
-#include "am_cs1237.h"
-
+#include "am_zml165_adc.h"
 /**
- * \addtogroup am_if_src_hwconf_cs1237
- * \copydoc am_hwconf_cs1237.c
+ * \addtogroup am_if_src_hwconf_zml165_adc
+ * \copydoc am_hwconf_zml165_adc.c
  * @{
  */
 
-/* 定义 CS1237 实例 */
-static am_cs1237_adc_dev_t __g_cs1237_dev;
+/* 定义 ZML165_ADC 实例 */
+static am_zml165_adc_dev_t __g_zml165_adc_dev;
 
-/* 定义 CS1237 实例信息 */
-const am_cs1237_adc_devinfo_t __g_cs1237_info = {
-    PIOB_8,
-    PIOB_0,
-    PIOB_0,
-    0,
-    3000,
-    0,
-    0,
-    100
+/* 定义 ZML165_ADC 实例信息 */
+const am_zml165_adc_devinfo_t __g_zml165_adc_info = {
+    {
+        AM_ZML165_ADC_PGA_1,
+        AM_ZML165_ADC_SPEED_10HZ,
+        AM_ZML165_ADC_CHANNEL_A,
+        AM_ZML165_ADC_VOUT_ENABLE
+    },
+    2493
 };
 
-am_cs1237_adc_handle_t am_cs1237_inst_init(void)
+am_zml165_adc_handle_t am_zml165_24adc_inst_init(void)
 {
-    return am_cs1237_init(&__g_cs1237_dev, &__g_cs1237_info);
+    return am_zml165_adc_init(&__g_zml165_adc_dev, &__g_zml165_adc_info);
 }
 /**
  * @}

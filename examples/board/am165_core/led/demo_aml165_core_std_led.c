@@ -18,7 +18,7 @@
  *   1. LED0 以 0.5s 的时间间隔闪烁。
  *
  * \note
- *    1. LED0 需要短接 J9 跳线帽，才能被 PIOB_1 控制；
+ *    1. LED0 需要短接 J9 跳线帽，才能被 PIOB_3 控制；
  *    2. 测试本 Demo 必须在 am_prj_config.h 内将 AM_CFG_LED_ENABLE 定义为 1。
  *       但这个宏已经默认配置为 1， 用户不必再次配置；
  *
@@ -45,6 +45,9 @@
 
 /**
  * \brief 例程入口
+ *
+ * note: 该SDK中LED引脚与串口引脚复用，默认未开启LED功能，需在 aw_prj_config.h 文件中调整对应宏进行测试
+ *
  */
 void demo_aml165_core_std_led_entry (void)
 {

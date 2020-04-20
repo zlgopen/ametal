@@ -373,7 +373,7 @@
               <MiscControls></MiscControls>
               <Define>AM_VDEBUG AM_CORTEX_M0 ZLG115</Define>
               <Undefine></Undefine>
-              <IncludePath>..\user_code;..\user_config;..\user_config/am_hwconf_usrcfg;..\user_config/am_servconf_usrcfg;..\..\..\..\3rdparty/CMSIS/Include;..\..\..\..\arch/arm/include;..\..\..\..\board/bsp_common/include;..\..\..\..\components/drivers/include;..\..\..\..\components/libc/armlib_adapter/include;..\..\..\..\components/libc/microlib_adapter/include;..\..\..\..\components/service/include;..\..\..\..\components/util/include;..\..\..\..\examples/board/am116_core;..\..\..\..\examples/components;..\..\..\..\examples/soc/zlg;..\..\..\..\examples/std;..\..\..\..\interface;..\..\..\..\soc/zlg/zlg116;..\..\..\..\soc/zlg/drivers/include/adc;..\..\..\..\soc/zlg/drivers/include/bkp;..\..\..\..\soc/zlg/drivers/include/clk;..\..\..\..\soc/zlg/drivers/include/cmp;..\..\..\..\soc/zlg/drivers/include/crc;..\..\..\..\soc/zlg/drivers/include/dac;..\..\..\..\soc/zlg/drivers/include/dma;..\..\..\..\soc/zlg/drivers/include/exti;..\..\..\..\soc/zlg/drivers/include/flash;..\..\..\..\soc/zlg/drivers/include/gpio;..\..\..\..\soc/zlg/drivers/include/i2c;..\..\..\..\soc/zlg/drivers/include/pwr;..\..\..\..\soc/zlg/drivers/include/rcc;..\..\..\..\soc/zlg/drivers/include/spi;..\..\..\..\soc/zlg/drivers/include/syscfg;..\..\..\..\soc/zlg/drivers/include/tim;..\..\..\..\soc/zlg/drivers/include/uart;..\..\..\..\soc/zlg/drivers/include/wdt</IncludePath>
+              <IncludePath>..\user_code;..\user_config;..\user_config/am_hwconf_usrcfg;..\user_config/am_servconf_usrcfg;..\..\..\..\3rdparty/CMSIS/Include;..\..\..\..\arch/arm/include;..\..\..\..\board/bsp_common/include;..\..\..\..\components/drivers/include;..\..\..\..\components/libc/armlib_adapter/include;..\..\..\..\components/libc/microlib_adapter/include;..\..\..\..\components/service/include;..\..\..\..\components/util/include;..\..\..\..\examples/board/am116_core;..\..\..\..\examples/components;..\..\..\..\examples/soc/zlg;..\..\..\..\examples/std;..\..\..\..\interface;..\..\..\..\soc/zlg/zml165;..\..\..\..\soc/zlg/drivers/include/adc;..\..\..\..\soc/zlg/drivers/include/bkp;..\..\..\..\soc/zlg/drivers/include/clk;..\..\..\..\soc/zlg/drivers/include/cmp;..\..\..\..\soc/zlg/drivers/include/crc;..\..\..\..\soc/zlg/drivers/include/dac;..\..\..\..\soc/zlg/drivers/include/dma;..\..\..\..\soc/zlg/drivers/include/exti;..\..\..\..\soc/zlg/drivers/include/flash;..\..\..\..\soc/zlg/drivers/include/gpio;..\..\..\..\soc/zlg/drivers/include/i2c;..\..\..\..\soc/zlg/drivers/include/pwr;..\..\..\..\soc/zlg/drivers/include/rcc;..\..\..\..\soc/zlg/drivers/include/spi;..\..\..\..\soc/zlg/drivers/include/syscfg;..\..\..\..\soc/zlg/drivers/include/tim;..\..\..\..\soc/zlg/drivers/include/uart;..\..\..\..\soc/zlg/drivers/include/wdt</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -962,11 +962,6 @@
               <FilePath>..\..\..\..\soc\zlg\drivers\source\flash\am_zlg_flash.c</FilePath>
             </File>
             <File>
-              <FileName>am_zlg116_gpio.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\zlg\drivers\source\gpio\am_zlg116_gpio.c</FilePath>
-            </File>
-            <File>
               <FileName>am_zlg_i2c_slv.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\soc\zlg\drivers\source\i2c\am_zlg_i2c_slv.c</FilePath>
@@ -975,16 +970,6 @@
               <FileName>am_zlg_i2c.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\soc\zlg\drivers\source\i2c\am_zlg_i2c.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_zlg116_pwr.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\zlg\drivers\source\pwr\am_zlg116_pwr.c</FilePath>
-            </File>
-            <File>
-              <FileName>amhw_zlg116_rcc.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\zlg\drivers\source\rcc\hw\amhw_zlg116_rcc.c</FilePath>
             </File>
             <File>
               <FileName>am_zlg_spi_dma.c</FileName>
@@ -1042,19 +1027,29 @@
               <FilePath>..\..\..\..\soc\zlg\drivers\source\spi\am_zlg_spi_poll.c</FilePath>
             </File>
             <File>
-              <FileName>am_zml166_adc.lib</FileName>
-              <FileType>4</FileType>
-              <FilePath>..\..\..\..\soc\zlg\zml166\adc\am_zml166_adc.lib</FilePath>
-            </File>
-            <File>
-              <FileName>am_zlg115_clk.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\zlg\drivers\source\clk\am_zlg115_clk.c</FilePath>
-            </File>
-            <File>
               <FileName>am_zml165_adc.lib</FileName>
               <FileType>4</FileType>
               <FilePath>..\..\..\..\soc\zlg\zml165\am_zml165_adc.lib</FilePath>
+            </File>
+            <File>
+              <FileName>am_zml165_clk.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\soc\zlg\drivers\source\clk\am_zml165_clk.c</FilePath>
+            </File>
+            <File>
+              <FileName>amhw_zml165_rcc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\soc\zlg\drivers\source\rcc\hw\amhw_zml165_rcc.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_zml165_pwr.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\soc\zlg\drivers\source\pwr\am_zml165_pwr.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_zml165_gpio.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\soc\zlg\drivers\source\gpio\am_zml165_gpio.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -1062,9 +1057,9 @@
           <GroupName>startup</GroupName>
           <Files>
             <File>
-              <FileName>am_aml166_armcc_startup.s</FileName>
+              <FileName>am_zml165_armcc_startup.s</FileName>
               <FileType>2</FileType>
-              <FilePath>..\startup\am_aml166_armcc_startup.s</FilePath>
+              <FilePath>..\startup\am_zml165_armcc_startup.s</FilePath>
             </File>
           </Files>
         </Group>
@@ -1247,96 +1242,6 @@
               <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_system_tick_softimer.c</FilePath>
             </File>
             <File>
-              <FileName>am_hwconf_zlg115_clk.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg115_clk.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_zlg116_adc.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_adc.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_zlg116_dma.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_dma.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_zlg116_gpio.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_gpio.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_zlg116_i2c.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_i2c.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_zlg116_i2c_slv.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_i2c_slv.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_zlg116_iwdg.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_iwdg.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_zlg116_pwr.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_pwr.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_zlg116_spi_dma.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_spi_dma.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_zlg116_spi_int.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_spi_int.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_zlg116_spi_poll.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_spi_poll.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_zlg116_spi_slv_dma.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_spi_slv_dma.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_zlg116_systick.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_systick.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_zlg116_tim_cap.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_tim_cap.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_zlg116_tim_pwm.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_tim_pwm.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_zlg116_tim_timing.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_tim_timing.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_zlg116_uart.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_uart.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_zlg116_wwdg.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_wwdg.c</FilePath>
-            </File>
-            <File>
               <FileName>am_hwconf_zml165_adc.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zml165_adc.c</FilePath>
@@ -1350,6 +1255,96 @@
               <FileName>am_servconf_nvram.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\user_config\am_servconf_usrcfg\am_servconf_nvram.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_zml165_24adc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zml165_24adc.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_zml165_clk.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zml165_clk.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_zml165_dma.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zml165_dma.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_zml165_gpio.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zml165_gpio.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_zml165_i2c.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zml165_i2c.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_zml165_i2c_slv.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zml165_i2c_slv.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_zml165_iwdg.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zml165_iwdg.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_zml165_pwr.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zml165_pwr.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_zml165_spi_dma.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zml165_spi_dma.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_zml165_spi_int.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zml165_spi_int.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_zml165_spi_poll.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zml165_spi_poll.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_zml165_spi_slv_dma.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zml165_spi_slv_dma.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_zml165_systick.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zml165_systick.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_zml165_tim_cap.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zml165_tim_cap.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_zml165_tim_pwm.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zml165_tim_pwm.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_zml165_tim_timing.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zml165_tim_timing.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_zml165_uart.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zml165_uart.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_zml165_wwdg.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zml165_wwdg.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -2311,11 +2306,6 @@
               <FilePath>..\..\..\..\soc\zlg\drivers\source\flash\am_zlg_flash.c</FilePath>
             </File>
             <File>
-              <FileName>am_zlg116_gpio.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\zlg\drivers\source\gpio\am_zlg116_gpio.c</FilePath>
-            </File>
-            <File>
               <FileName>am_zlg_i2c_slv.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\soc\zlg\drivers\source\i2c\am_zlg_i2c_slv.c</FilePath>
@@ -2324,16 +2314,6 @@
               <FileName>am_zlg_i2c.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\soc\zlg\drivers\source\i2c\am_zlg_i2c.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_zlg116_pwr.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\zlg\drivers\source\pwr\am_zlg116_pwr.c</FilePath>
-            </File>
-            <File>
-              <FileName>amhw_zlg116_rcc.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\zlg\drivers\source\rcc\hw\amhw_zlg116_rcc.c</FilePath>
             </File>
             <File>
               <FileName>am_zlg_spi_dma.c</FileName>
@@ -2391,19 +2371,29 @@
               <FilePath>..\..\..\..\soc\zlg\drivers\source\spi\am_zlg_spi_poll.c</FilePath>
             </File>
             <File>
-              <FileName>am_zml166_adc.lib</FileName>
-              <FileType>4</FileType>
-              <FilePath>..\..\..\..\soc\zlg\zml166\adc\am_zml166_adc.lib</FilePath>
-            </File>
-            <File>
-              <FileName>am_zlg115_clk.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\zlg\drivers\source\clk\am_zlg115_clk.c</FilePath>
-            </File>
-            <File>
               <FileName>am_zml165_adc.lib</FileName>
               <FileType>4</FileType>
               <FilePath>..\..\..\..\soc\zlg\zml165\am_zml165_adc.lib</FilePath>
+            </File>
+            <File>
+              <FileName>am_zml165_clk.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\soc\zlg\drivers\source\clk\am_zml165_clk.c</FilePath>
+            </File>
+            <File>
+              <FileName>amhw_zml165_rcc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\soc\zlg\drivers\source\rcc\hw\amhw_zml165_rcc.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_zml165_pwr.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\soc\zlg\drivers\source\pwr\am_zml165_pwr.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_zml165_gpio.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\soc\zlg\drivers\source\gpio\am_zml165_gpio.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -2411,9 +2401,9 @@
           <GroupName>startup</GroupName>
           <Files>
             <File>
-              <FileName>am_aml166_armcc_startup.s</FileName>
+              <FileName>am_zml165_armcc_startup.s</FileName>
               <FileType>2</FileType>
-              <FilePath>..\startup\am_aml166_armcc_startup.s</FilePath>
+              <FilePath>..\startup\am_zml165_armcc_startup.s</FilePath>
             </File>
           </Files>
         </Group>
@@ -2596,96 +2586,6 @@
               <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_system_tick_softimer.c</FilePath>
             </File>
             <File>
-              <FileName>am_hwconf_zlg115_clk.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg115_clk.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_zlg116_adc.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_adc.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_zlg116_dma.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_dma.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_zlg116_gpio.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_gpio.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_zlg116_i2c.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_i2c.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_zlg116_i2c_slv.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_i2c_slv.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_zlg116_iwdg.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_iwdg.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_zlg116_pwr.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_pwr.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_zlg116_spi_dma.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_spi_dma.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_zlg116_spi_int.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_spi_int.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_zlg116_spi_poll.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_spi_poll.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_zlg116_spi_slv_dma.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_spi_slv_dma.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_zlg116_systick.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_systick.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_zlg116_tim_cap.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_tim_cap.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_zlg116_tim_pwm.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_tim_pwm.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_zlg116_tim_timing.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_tim_timing.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_zlg116_uart.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_uart.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_zlg116_wwdg.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_wwdg.c</FilePath>
-            </File>
-            <File>
               <FileName>am_hwconf_zml165_adc.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zml165_adc.c</FilePath>
@@ -2699,6 +2599,96 @@
               <FileName>am_servconf_nvram.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\user_config\am_servconf_usrcfg\am_servconf_nvram.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_zml165_24adc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zml165_24adc.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_zml165_clk.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zml165_clk.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_zml165_dma.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zml165_dma.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_zml165_gpio.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zml165_gpio.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_zml165_i2c.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zml165_i2c.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_zml165_i2c_slv.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zml165_i2c_slv.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_zml165_iwdg.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zml165_iwdg.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_zml165_pwr.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zml165_pwr.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_zml165_spi_dma.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zml165_spi_dma.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_zml165_spi_int.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zml165_spi_int.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_zml165_spi_poll.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zml165_spi_poll.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_zml165_spi_slv_dma.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zml165_spi_slv_dma.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_zml165_systick.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zml165_systick.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_zml165_tim_cap.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zml165_tim_cap.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_zml165_tim_pwm.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zml165_tim_pwm.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_zml165_tim_timing.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zml165_tim_timing.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_zml165_uart.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zml165_uart.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_zml165_wwdg.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zml165_wwdg.c</FilePath>
             </File>
           </Files>
         </Group>

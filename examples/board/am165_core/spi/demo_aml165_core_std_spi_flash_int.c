@@ -23,7 +23,7 @@
  *   3. 调试串口打印测试结果。
  *
  * \note
- *    1. 如需观察串口打印的调试信息，需要将 PIOA_9 引脚连接 PC 串口的 RXD；
+ *    1. 如需观察串口打印的调试信息，需要将 PIOB_3 引脚连接 PC 串口的 RXD；
  *    2. 大多数情况下，直接使用 am_spi_write_then_read() 和
  *       am_spi_write_then_write() 函数即可。
  *

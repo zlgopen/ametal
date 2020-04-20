@@ -23,7 +23,7 @@
  */
 #include "hw/amhw_zlg116_rcc.h"
 
-#ifdef ZLG115
+#ifdef ZML165
 /* 使能或禁能外设 */
 static void __rcc_ahb_cmd (amhw_zlg116_ahb_peripheral peri, uint8_t cmd)
 {
