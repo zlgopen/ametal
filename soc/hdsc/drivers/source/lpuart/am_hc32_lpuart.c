@@ -94,9 +94,9 @@ static const struct am_uart_drv_funcs __g_lpuart_drv_funcs = {
  */
 static int __lpuart_ioctl (void *p_drv, int request, void *p_arg)
 {
-    am_hc32_lpuart_dev_t *p_dev     = (am_hc32_lpuart_dev_t *)p_drv;
-    amhw_hc32_lpuart_t   *p_hw_lpuart = (amhw_hc32_lpuart_t *)
-                                      p_dev->p_devinfo->lpuart_reg_base;
+    am_hc32_lpuart_dev_t *p_dev       = (am_hc32_lpuart_dev_t *)p_drv;
+    amhw_hc32_lpuart_t   *p_hw_lpuart =
+            (amhw_hc32_lpuart_t *)p_dev->p_devinfo->lpuart_reg_base;
 
     int status = AM_OK;
 
@@ -110,8 +110,8 @@ static int __lpuart_ioctl (void *p_drv, int request, void *p_arg)
                    p_hw_lpuart, AMHW_HC32_LPUART_FLAG_TX_EMPTY) == AM_FALSE);
 
         status = amhw_hc32_lpuart_baudrate_set(p_hw_lpuart,
-                                                 p_dev->clk_rate,
-                                                 (uint32_t)p_arg);
+                                               p_dev->clk_rate,
+                                               (uint32_t)p_arg);
 
         if (status > 0) {
             p_dev->baud_rate = status;
@@ -195,8 +195,8 @@ int __lpuart_tx_startup (void *p_drv)
     char data  = 0;
 
     am_hc32_lpuart_dev_t *p_dev       = (am_hc32_lpuart_dev_t *)p_drv;
-    amhw_hc32_lpuart_t   *p_hw_lpuart = (amhw_hc32_lpuart_t *)
-                                          p_dev->p_devinfo->lpuart_reg_base;
+    amhw_hc32_lpuart_t   *p_hw_lpuart =
+            (amhw_hc32_lpuart_t *)p_dev->p_devinfo->lpuart_reg_base;
 
     /* 使能 485 发送控制引脚 */
     if (p_dev->rs485_en && p_dev->p_devinfo->pfn_rs485_dir) {
@@ -215,7 +215,7 @@ int __lpuart_tx_startup (void *p_drv)
 
     /* 使能发送完成中断 */
     amhw_hc32_lpuart_int_enable(p_hw_lpuart,
-                                  AMHW_HC32_LPUART_INT_TX_COMPLETE);
+                                AMHW_HC32_LPUART_INT_TX_COMPLETE);
 
     return AM_OK;
 }
@@ -296,9 +296,10 @@ static int __lpuart_poll_putchar (void *p_drv, char outchar)
 static int __lpuart_poll_getchar (void *p_drv, char *p_char)
 {
     am_hc32_lpuart_dev_t *p_dev       = (am_hc32_lpuart_dev_t *)p_drv;
-    amhw_hc32_lpuart_t   *p_hw_lpuart = (amhw_hc32_lpuart_t *)
-                                           p_dev->p_devinfo->lpuart_reg_base;
-    uint8_t           *p_inchar  = (uint8_t *)p_char;
+    amhw_hc32_lpuart_t   *p_hw_lpuart =
+            (amhw_hc32_lpuart_t *)p_dev->p_devinfo->lpuart_reg_base;
+
+    uint8_t *p_inchar  = (uint8_t *)p_char;
 
     /* 接收模块是否空闲，AM_FALSE:忙,正在接收; TURE: 已经接收到一个字符 */
     if(amhw_hc32_lpuart_flag_check(
@@ -310,7 +311,7 @@ static int __lpuart_poll_getchar (void *p_drv, char *p_char)
         *p_inchar = amhw_hc32_lpuart_data_read(p_hw_lpuart);
 
         amhw_hc32_lpuart_flag_clr(p_hw_lpuart,
-                                    AMHW_HC32_LPUART_FLAG_RX_COMPLETE);
+                                  AMHW_HC32_LPUART_FLAG_RX_COMPLETE);
     }
 
     return (AM_OK);
@@ -321,8 +322,8 @@ static int __lpuart_poll_getchar (void *p_drv, char *p_char)
  */
 int __lpuart_mode_set (am_hc32_lpuart_dev_t *p_dev, uint32_t new_mode)
 {
-    amhw_hc32_lpuart_t *p_hw_lpuart = (amhw_hc32_lpuart_t *)
-                                        p_dev->p_devinfo->lpuart_reg_base;
+    amhw_hc32_lpuart_t *p_hw_lpuart =
+            (amhw_hc32_lpuart_t *)p_dev->p_devinfo->lpuart_reg_base;
 
     /* 仅支持以下模式 */
     if ((new_mode != AM_UART_MODE_POLL) && (new_mode != AM_UART_MODE_INT)) {
@@ -339,7 +340,7 @@ int __lpuart_mode_set (am_hc32_lpuart_dev_t *p_dev, uint32_t new_mode)
 
         /* 使能接收完成中断 */
         amhw_hc32_lpuart_int_enable(p_hw_lpuart,
-                                      AMHW_HC32_LPUART_INT_RX_COMPLETE);
+                                    AMHW_HC32_LPUART_INT_RX_COMPLETE);
     } else {
 
         /* 关闭所有串口中断 */
@@ -356,8 +357,8 @@ int __lpuart_mode_set (am_hc32_lpuart_dev_t *p_dev, uint32_t new_mode)
  */
 int __lpuart_opt_set (am_hc32_lpuart_dev_t *p_dev, uint32_t options)
 {
-    amhw_hc32_lpuart_t *p_hw_lpuart = (amhw_hc32_lpuart_t *)
-                                        p_dev->p_devinfo->lpuart_reg_base;
+    amhw_hc32_lpuart_t *p_hw_lpuart =
+            (amhw_hc32_lpuart_t *)p_dev->p_devinfo->lpuart_reg_base;
     uint32_t            cfg_flags = 0;
 
     if (p_dev == NULL) {
@@ -400,7 +401,7 @@ int __lpuart_opt_set (am_hc32_lpuart_dev_t *p_dev, uint32_t options)
  * \brief 接收器流控状态设置（开或关）
  */
 static int __lpuart_flow_rxstat_set (am_hc32_lpuart_dev_t *p_dev,
-                                     uint32_t                ctrl)
+                                     uint32_t              ctrl)
 {
     amhw_hc32_lpuart_t *p_hw_lpuart = NULL;
 
@@ -509,7 +510,7 @@ static int __lpuart_flow_txstat_get (am_hc32_lpuart_dev_t *p_dev)
 
             /* 清除cts状态位 */
             amhw_hc32_lpuart_flag_clr(p_hw_lpuart,
-                                        AMHW_HC32_LPUART_FLAG_CTS_TRIGGER);
+                                      AMHW_HC32_LPUART_FLAG_CTS_TRIGGER);
 
             /* 判断cts当前高低电平 */
             if (am_gpio_get(p_dev->p_devinfo->hwflowctl_cfg.cts_pin) == 0) {
@@ -534,8 +535,8 @@ static int __lpuart_flow_txstat_get (am_hc32_lpuart_dev_t *p_dev)
  */
 void __lpuart_irq_rx_handler (am_hc32_lpuart_dev_t *p_dev)
 {
-    amhw_hc32_lpuart_t *p_hw_lpuart = (amhw_hc32_lpuart_t *)
-                                        p_dev->p_devinfo->lpuart_reg_base;
+    amhw_hc32_lpuart_t *p_hw_lpuart =
+            (amhw_hc32_lpuart_t *)p_dev->p_devinfo->lpuart_reg_base;
     char data;
 
     /* 是否为接收Rx中断 */
@@ -543,7 +544,7 @@ void __lpuart_irq_rx_handler (am_hc32_lpuart_dev_t *p_dev)
             p_hw_lpuart, AMHW_HC32_LPUART_FLAG_RX_COMPLETE) == AM_TRUE) {
 
         amhw_hc32_lpuart_flag_clr(p_hw_lpuart,
-                                    AMHW_HC32_LPUART_FLAG_RX_COMPLETE);
+                                  AMHW_HC32_LPUART_FLAG_RX_COMPLETE);
 
         /* 获取新接收数据 */
         data = amhw_hc32_lpuart_data_read(p_hw_lpuart);
@@ -558,8 +559,8 @@ void __lpuart_irq_rx_handler (am_hc32_lpuart_dev_t *p_dev)
  */
 void __lpuart_irq_tx_handler (am_hc32_lpuart_dev_t *p_dev)
 {
-    amhw_hc32_lpuart_t *p_hw_lpuart = (amhw_hc32_lpuart_t *)
-                                        p_dev->p_devinfo->lpuart_reg_base;
+    amhw_hc32_lpuart_t *p_hw_lpuart =
+            (amhw_hc32_lpuart_t *)p_dev->p_devinfo->lpuart_reg_base;
 
     char data;
 
@@ -567,7 +568,7 @@ void __lpuart_irq_tx_handler (am_hc32_lpuart_dev_t *p_dev)
             p_hw_lpuart, AMHW_HC32_LPUART_FLAG_TX_COMPLETE) == AM_TRUE) {
 
         amhw_hc32_lpuart_flag_clr(p_hw_lpuart,
-                                    AMHW_HC32_LPUART_FLAG_TX_COMPLETE);
+                                  AMHW_HC32_LPUART_FLAG_TX_COMPLETE);
 
         /* 获取发送数据并发送 */
         if ((p_dev->pfn_txchar_get(p_dev->txget_arg, &data)) == AM_OK) {
@@ -576,7 +577,7 @@ void __lpuart_irq_tx_handler (am_hc32_lpuart_dev_t *p_dev)
 
             /* 没有数据传送就关闭发送中断 */
             amhw_hc32_lpuart_int_disable(p_hw_lpuart,
-                                           AMHW_HC32_LPUART_FLAG_TX_COMPLETE);
+                                         AMHW_HC32_LPUART_FLAG_TX_COMPLETE);
 
             /* 禁能485发送控制引脚 */
             if ((p_dev->rs485_en) && (p_dev->p_devinfo->pfn_rs485_dir)) {
@@ -593,9 +594,9 @@ void __lpuart_irq_tx_handler (am_hc32_lpuart_dev_t *p_dev)
  */
 void __lpuart_irq_handler (void *p_arg)
 {
-    am_hc32_lpuart_dev_t  *p_dev     = (am_hc32_lpuart_dev_t *)p_arg;
-    amhw_hc32_lpuart_t    *p_hw_lpuart = (amhw_hc32_lpuart_t *)
-                                       p_dev->p_devinfo->lpuart_reg_base;
+    am_hc32_lpuart_dev_t  *p_dev       = (am_hc32_lpuart_dev_t *)p_arg;
+    amhw_hc32_lpuart_t    *p_hw_lpuart =
+            (amhw_hc32_lpuart_t *)p_dev->p_devinfo->lpuart_reg_base;
 
     uint32_t lpuart_int_stat = amhw_hc32_lpuart_flag_get(p_hw_lpuart);
 
@@ -670,8 +671,8 @@ am_uart_handle_t am_hc32_lpuart_init (
     }
 
     /* 获取配置参数 */
-    p_hw_lpuart                = (amhw_hc32_lpuart_t  *)
-                                  p_devinfo->lpuart_reg_base;
+    p_hw_lpuart                =
+            (amhw_hc32_lpuart_t  *)p_devinfo->lpuart_reg_base;
     p_dev->p_devinfo           = p_devinfo;
     p_dev->lpuart_serv.p_funcs = (struct am_uart_drv_funcs *)
                                   &__g_lpuart_drv_funcs;
@@ -752,16 +753,21 @@ am_uart_handle_t am_hc32_lpuart_init (
 
         /* 模式0通信时钟分频系数设置无效 */
         amhw_hc32_lpuart_clk_div_sel(p_hw_lpuart,
-                                       AMHW_HC32_LPUART_SCLK_DIV_MODE0_NO);
+                                     AMHW_HC32_LPUART_SCLK_DIV_MODE0_NO);
     } else {
 
         /* 设置通信时钟分频系数为最小 */
         amhw_hc32_lpuart_clk_div_sel(p_hw_lpuart,
-                                       AMHW_HC32_LPUART_SCLK_DIV_MODE2_8);
+                                     AMHW_HC32_LPUART_SCLK_DIV_MODE2_8);
     }
 
     /* 工作模式设置 */
-    amhw_hc32_lpuart_mode_sel(p_hw_lpuart, p_devinfo->work_mode);
+    if (p_devinfo->work_mode == AMHW_HC32_LPUART_WORK_MODE_4) {
+        amhw_hc32_lpuart_single_line_half_enable(p_hw_lpuart);
+        amhw_hc32_lpuart_mode_sel(p_hw_lpuart, AMHW_HC32_LPUART_WORK_MODE_1);
+    } else {
+        amhw_hc32_lpuart_mode_sel(p_hw_lpuart, p_devinfo->work_mode);
+    }
     p_dev->work_mode = p_devinfo->work_mode;
 
 
@@ -772,15 +778,15 @@ am_uart_handle_t am_hc32_lpuart_init (
 
             /* 设置从机地址（针对本机接收其他设备发送的数据而言）*/
             amhw_hc32_lpuart_slaver_addr_set(p_hw_lpuart,
-                                               p_devinfo->mut_addr.addr);
+                                             p_devinfo->mut_addr.addr);
 
             /* 设置地址掩码 */
             amhw_hc32_lpuart_slaver_addr_set(p_hw_lpuart,
-                                               p_devinfo->mut_addr.addr_mask);
+                                             p_devinfo->mut_addr.addr_mask);
 
             /* 多机地址自动识别使能 */
             amhw_hc32_lpuart_enable(p_hw_lpuart,
-                                      AMHW_HC32_LPUART_MUT_ADR_AUTO);
+                                    AMHW_HC32_LPUART_MUT_ADR_AUTO);
         }
     }
 
@@ -811,8 +817,8 @@ am_uart_handle_t am_hc32_lpuart_init (
 
     /* 设置波特率 */
     p_dev->baud_rate = amhw_hc32_lpuart_baudrate_set(p_hw_lpuart,
-                                                       p_dev->clk_rate,
-                                                       p_devinfo->baud_rate);
+                                                     p_dev->clk_rate,
+                                                     p_devinfo->baud_rate);
     /* 默认轮询模式 */
     __lpuart_mode_set(p_dev, AM_UART_MODE_POLL);
 
@@ -820,7 +826,7 @@ am_uart_handle_t am_hc32_lpuart_init (
      * Mode0:     0：发送; 1：接收
      * Mode1/2/3: 0：发送; 1： 接收/发送
      */
-    amhw_hc32_lpuart_enable(p_hw_lpuart,AMHW_HC32_LPUART_RX);
+    amhw_hc32_lpuart_enable(p_hw_lpuart, AMHW_HC32_LPUART_RX);
 
     if (p_dev->p_devinfo->pfn_rs485_dir) {
 
@@ -836,8 +842,8 @@ am_uart_handle_t am_hc32_lpuart_init (
  */
 void am_hc32_lpuart_deinit (am_hc32_lpuart_dev_t *p_dev)
 {
-    amhw_hc32_lpuart_t *p_hw_lpuart = (amhw_hc32_lpuart_t *)
-                                        p_dev->p_devinfo->lpuart_reg_base;
+    amhw_hc32_lpuart_t *p_hw_lpuart =
+            (amhw_hc32_lpuart_t *)p_dev->p_devinfo->lpuart_reg_base;
     p_dev->lpuart_serv.p_funcs   = NULL;
     p_dev->lpuart_serv.p_drv     = NULL;
 

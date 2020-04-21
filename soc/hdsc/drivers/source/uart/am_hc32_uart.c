@@ -95,8 +95,8 @@ static const struct am_uart_drv_funcs __g_uart_drv_funcs = {
 static int __uart_ioctl (void *p_drv, int request, void *p_arg)
 {
     am_hc32_uart_dev_t *p_dev     = (am_hc32_uart_dev_t *)p_drv;
-    amhw_hc32_uart_t   *p_hw_uart = (amhw_hc32_uart_t *)
-                                      p_dev->p_devinfo->uart_reg_base;
+    amhw_hc32_uart_t   *p_hw_uart =
+            (amhw_hc32_uart_t *)p_dev->p_devinfo->uart_reg_base;
 
     int status = AM_OK;
 
@@ -194,7 +194,8 @@ int __uart_tx_startup (void *p_drv)
     char data  = 0;
 
     am_hc32_uart_dev_t *p_dev     = (am_hc32_uart_dev_t *)p_drv;
-    amhw_hc32_uart_t   *p_hw_uart = (amhw_hc32_uart_t *)p_dev->p_devinfo->uart_reg_base;
+    amhw_hc32_uart_t   *p_hw_uart =
+            (amhw_hc32_uart_t *)p_dev->p_devinfo->uart_reg_base;
 
     /* 使能 485 发送控制引脚 */
     if (p_dev->rs485_en && p_dev->p_devinfo->pfn_rs485_dir) {
@@ -216,7 +217,7 @@ int __uart_tx_startup (void *p_drv)
             amhw_hc32_uart_data_write(p_hw_uart, data);
 
             /* 使能发送完成中断 */
-            amhw_hc32_uart_int_enable(p_hw_uart, AMHW_HC32_UART_INT_TX_COMPLETE);            
+            amhw_hc32_uart_int_enable(p_hw_uart, AMHW_HC32_UART_INT_TX_COMPLETE);
         }
     }
 
@@ -264,7 +265,8 @@ static int __uart_callback_set (void  *p_drv,
 static int __uart_poll_putchar (void *p_drv, char outchar)
 {
     am_hc32_uart_dev_t *p_dev     = (am_hc32_uart_dev_t *)p_drv;
-    amhw_hc32_uart_t   *p_hw_uart = (amhw_hc32_uart_t *)p_dev->p_devinfo->uart_reg_base;
+    amhw_hc32_uart_t   *p_hw_uart =
+            (amhw_hc32_uart_t *)p_dev->p_devinfo->uart_reg_base;
 
     /* 发送模块是否空闲, AM_FALSE:忙; TURE: 空闲 */
     if(amhw_hc32_uart_flag_check(
@@ -299,8 +301,10 @@ static int __uart_poll_putchar (void *p_drv, char outchar)
 static int __uart_poll_getchar (void *p_drv, char *p_char)
 {
     am_hc32_uart_dev_t *p_dev     = (am_hc32_uart_dev_t *)p_drv;
-    amhw_hc32_uart_t   *p_hw_uart = (amhw_hc32_uart_t *)p_dev->p_devinfo->uart_reg_base;
-    uint8_t           *p_inchar  = (uint8_t *)p_char;
+    amhw_hc32_uart_t   *p_hw_uart =
+            (amhw_hc32_uart_t *)p_dev->p_devinfo->uart_reg_base;
+
+    uint8_t *p_inchar = (uint8_t *)p_char;
 
     /* 接收模块是否空闲，AM_FALSE:忙,正在接收; TURE: 已经接收到一个字符 */
     if(amhw_hc32_uart_flag_check(
@@ -312,7 +316,7 @@ static int __uart_poll_getchar (void *p_drv, char *p_char)
         *p_inchar = amhw_hc32_uart_data_read(p_hw_uart);
 
         amhw_hc32_uart_flag_clr(p_hw_uart,
-                                  AMHW_HC32_UART_FLAG_RX_COMPLETE);
+                                AMHW_HC32_UART_FLAG_RX_COMPLETE);
     }
 
     return (AM_OK);
@@ -323,7 +327,8 @@ static int __uart_poll_getchar (void *p_drv, char *p_char)
  */
 int __uart_mode_set (am_hc32_uart_dev_t *p_dev, uint32_t new_mode)
 {
-    amhw_hc32_uart_t *p_hw_uart = (amhw_hc32_uart_t *)p_dev->p_devinfo->uart_reg_base;
+    amhw_hc32_uart_t *p_hw_uart =
+            (amhw_hc32_uart_t *)p_dev->p_devinfo->uart_reg_base;
 
     /* 仅支持以下模式 */
     if ((new_mode != AM_UART_MODE_POLL) && (new_mode != AM_UART_MODE_INT)) {
@@ -361,8 +366,9 @@ int __uart_mode_set (am_hc32_uart_dev_t *p_dev, uint32_t new_mode)
  */
 int __uart_opt_set (am_hc32_uart_dev_t *p_dev, uint32_t options)
 {
-    amhw_hc32_uart_t *p_hw_uart = (amhw_hc32_uart_t *)p_dev->p_devinfo->uart_reg_base;
-    uint32_t            cfg_flags = 0;
+    amhw_hc32_uart_t *p_hw_uart =
+            (amhw_hc32_uart_t *)p_dev->p_devinfo->uart_reg_base;
+    uint32_t          cfg_flags = 0;
 
     if (p_dev == NULL) {
         return -AM_EINVAL;
@@ -525,13 +531,12 @@ static int __uart_flow_txstat_get (am_hc32_uart_dev_t *p_dev)
     if(AM_UART_FLOWCTL_HW == p_dev->flowctl_mode) {
 
         /* cts的状态发生变化时，状态位有效 */
-        if(amhw_hc32_uart_flag_check(p_hw_uart,
-                                       AMHW_HC32_UART_FLAG_CTS_TRIGGER) ==
-                                       AM_TRUE) {
+        if(amhw_hc32_uart_flag_check(
+                p_hw_uart,AMHW_HC32_UART_FLAG_CTS_TRIGGER) == AM_TRUE) {
 
             /* 清除cts状态位 */
             amhw_hc32_uart_flag_clr(p_hw_uart,
-                                      AMHW_HC32_UART_FLAG_CTS_TRIGGER);
+                                    AMHW_HC32_UART_FLAG_CTS_TRIGGER);
 
             /* 判断cts当前高低电平 */
             if (am_gpio_get(p_dev->p_devinfo->hwflowctl_cfg.cts_pin) == 0) {
@@ -556,7 +561,8 @@ static int __uart_flow_txstat_get (am_hc32_uart_dev_t *p_dev)
  */
 void __uart_irq_rx_handler (am_hc32_uart_dev_t *p_dev)
 {
-    amhw_hc32_uart_t *p_hw_uart = (amhw_hc32_uart_t *)p_dev->p_devinfo->uart_reg_base;
+    amhw_hc32_uart_t *p_hw_uart =
+            (amhw_hc32_uart_t *)p_dev->p_devinfo->uart_reg_base;
     char data;
 
     /* 是否为接收Rx中断 */
@@ -578,7 +584,8 @@ void __uart_irq_rx_handler (am_hc32_uart_dev_t *p_dev)
  */
 void __uart_irq_tx_handler (am_hc32_uart_dev_t *p_dev)
 {
-    amhw_hc32_uart_t *p_hw_uart = (amhw_hc32_uart_t *)p_dev->p_devinfo->uart_reg_base;
+    amhw_hc32_uart_t *p_hw_uart =
+            (amhw_hc32_uart_t *)p_dev->p_devinfo->uart_reg_base;
 
     char data;
 
@@ -619,8 +626,8 @@ void __uart0_2_irq_handler (void *p_arg)
     uint8_t  flag_event    = 0;
     uint32_t uart_int_stat = 0;
 
-    amhw_hc32_uart_t *p_hw_uart  = NULL;
-    am_hc32_uart_dev_t  *p_dev   = NULL;
+    amhw_hc32_uart_t    *p_hw_uart  = NULL;
+    am_hc32_uart_dev_t  *p_dev      = NULL;
 
     amhw_hc32_uart_t    *p_hw_uart0 = NULL;
     amhw_hc32_uart_t    *p_hw_uart2 = NULL;
@@ -717,8 +724,8 @@ void __uart1_3_irq_handler (void *p_arg)
     uint8_t  flag_event    = 0;
     uint32_t uart_int_stat = 0;
 
-    amhw_hc32_uart_t *p_hw_uart  = NULL;
-    am_hc32_uart_dev_t  *p_dev   = NULL;
+    amhw_hc32_uart_t    *p_hw_uart  = NULL;
+    am_hc32_uart_dev_t  *p_dev      = NULL;
 
     amhw_hc32_uart_t    *p_hw_uart1 = NULL;
     amhw_hc32_uart_t    *p_hw_uart3 = NULL;
@@ -835,7 +842,7 @@ static int __uart_dummy_callback (void *p_arg, char *p_outchar)
  * \brief 串口初始化函数
  */
 am_uart_handle_t am_hc32_uart_init (am_hc32_uart_dev_t           *p_dev,
-                                      const am_hc32_uart_devinfo_t *p_devinfo)
+                                    const am_hc32_uart_devinfo_t *p_devinfo)
 {
     amhw_hc32_uart_t  *p_hw_uart;
 
@@ -881,11 +888,11 @@ am_uart_handle_t am_hc32_uart_init (am_hc32_uart_dev_t           *p_dev,
 
             /* 设置从机地址（针对本机接收其他设备发送的数据而言）*/
             amhw_hc32_uart_slaver_addr_set(p_hw_uart,
-                                             p_devinfo->mut_addr.addr);
+                                           p_devinfo->mut_addr.addr);
 
             /* 设置地址掩码 */
             amhw_hc32_uart_slaver_addr_set(p_hw_uart,
-                                             p_devinfo->mut_addr.addr_mask);
+                                           p_devinfo->mut_addr.addr_mask);
 
             /* 多机地址自动识别使能 */
             amhw_hc32_uart_enable(p_hw_uart, AMHW_HC32_UART_MUT_ADR_AUTO);
@@ -893,19 +900,24 @@ am_uart_handle_t am_hc32_uart_init (am_hc32_uart_dev_t           *p_dev,
     }
 
     /* 工作模式设置 */
-    amhw_hc32_uart_mode_sel(p_hw_uart, p_devinfo->work_mode);
+    if (p_devinfo->work_mode == AMHW_HC32_UART_WORK_MODE_4) {
+        amhw_hc32_uart_single_line_half_enable(p_hw_uart);
+        amhw_hc32_uart_mode_sel(p_hw_uart, AMHW_HC32_UART_WORK_MODE_1);
+    } else {
+        amhw_hc32_uart_mode_sel(p_hw_uart, p_devinfo->work_mode);
+    }
     p_dev->work_mode = p_devinfo->work_mode;
 
     if(p_devinfo->work_mode == AMHW_HC32_UART_WORK_MODE_0) {
 
         /* 模式0通信时钟分频系数设置无效 */
         amhw_hc32_uart_clk_div_sel(p_hw_uart,
-                                     AMHW_HC32_UART_CLK_DIV_MODE0_NO);
+                                   AMHW_HC32_UART_CLK_DIV_MODE0_NO);
     } else {
 
         /* 设置通信时钟分频系数为最小 */
         amhw_hc32_uart_clk_div_sel(p_hw_uart,
-                                     AMHW_HC32_UART_CLK_DIV_MODE2_16);
+                                   AMHW_HC32_UART_CLK_DIV_MODE2_16);
     }
 
     /* 获取串口检验方式配置选项 */
@@ -925,9 +937,8 @@ am_uart_handle_t am_hc32_uart_init (am_hc32_uart_dev_t           *p_dev,
     }
 
     /* 等待发送空完成 */
-    while (amhw_hc32_uart_flag_check(p_hw_uart,
-                                       AMHW_HC32_UART_FLAG_TX_EMPTY) ==
-                                       AM_FALSE);
+    while (amhw_hc32_uart_flag_check(
+            p_hw_uart, AMHW_HC32_UART_FLAG_TX_EMPTY) == AM_FALSE);
 
     __uart_opt_set (p_dev, p_dev->options);
 
@@ -948,7 +959,7 @@ am_uart_handle_t am_hc32_uart_init (am_hc32_uart_dev_t           *p_dev,
      * Mode0:     0：发送; 1：接收
      * Mode1/2/3: 0：发送; 1： 接收/发送
      */
-    amhw_hc32_uart_enable(p_hw_uart,AMHW_HC32_UART_RX);
+    amhw_hc32_uart_enable(p_hw_uart, AMHW_HC32_UART_RX);
 
     if (p_dev->p_devinfo->pfn_rs485_dir) {
 
@@ -964,9 +975,10 @@ am_uart_handle_t am_hc32_uart_init (am_hc32_uart_dev_t           *p_dev,
  */
 void am_hc32_uart_deinit (am_hc32_uart_dev_t *p_dev)
 {
-    amhw_hc32_uart_t *p_hw_uart = (amhw_hc32_uart_t *)p_dev->p_devinfo->uart_reg_base;
-    p_dev->uart_serv.p_funcs   = NULL;
-    p_dev->uart_serv.p_drv     = NULL;
+    amhw_hc32_uart_t *p_hw_uart =
+            (amhw_hc32_uart_t *)p_dev->p_devinfo->uart_reg_base;
+    p_dev->uart_serv.p_funcs    = NULL;
+    p_dev->uart_serv.p_drv      = NULL;
 
     if (p_dev->channel_mode == AM_UART_MODE_INT) {
 

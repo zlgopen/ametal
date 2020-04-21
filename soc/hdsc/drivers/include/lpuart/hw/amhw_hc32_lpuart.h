@@ -82,7 +82,7 @@ typedef struct amhw_hc32_lpuart {
  */
 am_static_inline
 void amhw_hc32_lpuart_data_8th_set (amhw_hc32_lpuart_t *p_hw_lpuart,
-                                      am_bool_t             stat)
+                                    am_bool_t           stat)
 {
     p_hw_lpuart->sbuf = (p_hw_lpuart->sbuf & (~(0x1ul << 8))) | (stat << 8);
 }
@@ -110,7 +110,7 @@ am_bool_t amhw_hc32_lpuart_data_8th_get (amhw_hc32_lpuart_t *p_hw_lpuart)
  */
 am_static_inline
 void amhw_hc32_lpuart_data_write (amhw_hc32_lpuart_t *p_hw_lpuart,
-                                    uint8_t               data_w)
+                                  uint8_t             data_w)
 {
     p_hw_lpuart->sbuf = (p_hw_lpuart->sbuf & (~0xfful)) | (0xff & data_w);
 }
@@ -180,7 +180,7 @@ void amhw_hc32_lpuart_single_line_half_enable (amhw_hc32_lpuart_t *p_hw_lpuart)
 
 am_static_inline
 void amhw_hc32_lpuart_int_disable (amhw_hc32_lpuart_t *p_hw_lpuart,
-                                     uint32_t            type)
+                                   uint32_t            type)
 {
     if(type == 0xFF) {
         p_hw_lpuart->scon &= ~(1ul << 21);
@@ -209,7 +209,7 @@ void amhw_hc32_lpuart_int_disable (amhw_hc32_lpuart_t *p_hw_lpuart,
 
 am_static_inline
 void amhw_hc32_lpuart_int_enable (amhw_hc32_lpuart_t *p_hw_lpuart,
-                                    uint32_t              type)
+                                  uint32_t            type)
 {
     if(type == 0xFF) {
         p_hw_lpuart->scon |= (1ul << 21);
@@ -267,7 +267,7 @@ void amhw_hc32_lpuart_disable (amhw_hc32_lpuart_t *p_hw_lpuart,
 
 am_static_inline
 void amhw_hc32_lpuart_enable (amhw_hc32_lpuart_t *p_hw_lpuart,
-                                uint32_t            type)
+                              uint32_t            type)
 {
     p_hw_lpuart->scon |= type;
 }
@@ -288,7 +288,7 @@ void amhw_hc32_lpuart_enable (amhw_hc32_lpuart_t *p_hw_lpuart,
  */
 am_static_inline
 void amhw_hc32_lpuart_stop_bit_sel (amhw_hc32_lpuart_t *p_hw_lpuart,
-                                      uint32_t              stop_bit)
+                                    uint32_t            stop_bit)
 {
     p_hw_lpuart->scon = (p_hw_lpuart->scon & (~(0x3ul << 14))) | stop_bit;
 }
@@ -314,27 +314,33 @@ void amhw_hc32_lpuart_stop_bit_sel (amhw_hc32_lpuart_t *p_hw_lpuart,
  *        和 1/1.5/2-Bit结束位。额外的 TB8位用于在多机通讯环境下使用，
  *        当 TB8=1，表明所接收的是地址帧；当 TB8=0，表明所接收的是数据帧。当不需要多机通讯时，此位也可以作为奇
  *        偶校验位或者数据位来使用。结束位。
+ *
+ *  模式4--异步传输模式，半双工。 波特率计算与模式1、2、3相同。通过 TXD 发送与接收数据，RXD不再使用。
+ *        TX 信号的方向控制由硬件逻辑完成，无需软件控制。当发送缓存为空时，TX 信号始终为输入（接收状态）。
+ *        当向发送缓存填入一个数据，TX 信号变为输出（发送状态）。当发送完成，发送缓存变为空，
+ *        TX 信号又回到输入（接收状态）。
  */
 typedef enum {
     AMHW_HC32_LPUART_WORK_MODE_0 = 0,
     AMHW_HC32_LPUART_WORK_MODE_1,
     AMHW_HC32_LPUART_WORK_MODE_2,
     AMHW_HC32_LPUART_WORK_MODE_3,
+    AMHW_HC32_LPUART_WORK_MODE_4,
 }amhw_hc32_lpuart_work_mode_t;
 /**
  * \brief 工作模式设定
  *
  * \param[in] p_hw_lpuart : 指向UART寄存器结构体的指针
- * \param[in] stop_bit    : 模式宏定义       AMHW_HC32_LPUART_MODE_0 或
- *                                   AMHW_HC32_LPUART_MODE_1 或
- *                                   AMHW_HC32_LPUART_MODE_2 或
- *                                   AMHW_HC32_LPUART_MODE_3
+ * \param[in] stop_bit    : AMHW_HC32_LPUART_WORK_MODE_0 或
+ *                          AMHW_HC32_LPUART_WORK_MODE_1 或
+ *                          AMHW_HC32_LPUART_WORK_MODE_2 或
+ *                          AMHW_HC32_LPUART_WORK_MODE_3
  *
  * \return none
  */
 am_static_inline
 void amhw_hc32_lpuart_mode_sel (amhw_hc32_lpuart_t           *p_hw_lpuart,
-                                  amhw_hc32_lpuart_work_mode_t  mode_type)
+                                amhw_hc32_lpuart_work_mode_t  mode_type)
 {
     p_hw_lpuart->scon = (p_hw_lpuart->scon & (~(0x3ul << 6))) |
                         ((mode_type & 0x3ul) << 6);
@@ -348,8 +354,8 @@ void amhw_hc32_lpuart_mode_sel (amhw_hc32_lpuart_t           *p_hw_lpuart,
  * \return 当前工作模式0/1/2/3
  */
 am_static_inline
-amhw_hc32_lpuart_work_mode_t amhw_hc32_lpuart_mode_get (amhw_hc32_lpuart_t
-                                                            *p_hw_lpuart)
+amhw_hc32_lpuart_work_mode_t amhw_hc32_lpuart_mode_get (
+        amhw_hc32_lpuart_t  *p_hw_lpuart)
 {
     return (amhw_hc32_lpuart_work_mode_t)((p_hw_lpuart->scon >> 6) & 0x3ul);
 }
@@ -370,7 +376,7 @@ amhw_hc32_lpuart_work_mode_t amhw_hc32_lpuart_mode_get (amhw_hc32_lpuart_t
  */
 am_static_inline
 void amhw_hc32_lpuart_parity_bit_sel (amhw_hc32_lpuart_t *p_hw_lpuart,
-                                        uint32_t              parity)
+                                      uint32_t            parity)
 {
     p_hw_lpuart->scon = (p_hw_lpuart->scon & (~(0x3ul << 2))) | parity;
 }
@@ -394,7 +400,7 @@ typedef enum {
  */
 am_static_inline
 void amhw_hc32_lpuart_clk_div_sel (amhw_hc32_lpuart_t          *p_hw_lpuart,
-                                     amhw_hc32_lpuart_sclk_div_t  clk_div)
+                                   amhw_hc32_lpuart_sclk_div_t  clk_div)
 {
     p_hw_lpuart->scon = (p_hw_lpuart->scon & (~(0x3ul << 9))) | (clk_div << 9);
 }
@@ -429,7 +435,7 @@ typedef enum {
  */
 am_static_inline
 void amhw_hc32_lpuart_clk_src_sel (amhw_hc32_lpuart_t          *p_hw_lpuart,
-                                     amhw_hc32_lpuart_sclk_src_t  clk_src)
+                                   amhw_hc32_lpuart_sclk_src_t  clk_src)
 {
     p_hw_lpuart->scon = (p_hw_lpuart->scon & (~(0x3ul << 11))) | (clk_src << 11);
 }
@@ -458,7 +464,7 @@ amhw_hc32_lpuart_clk_src_get (amhw_hc32_lpuart_t *p_hw_lpuart)
  */
 am_static_inline
 void amhw_hc32_lpuart_slaver_addr_set (amhw_hc32_lpuart_t *p_hw_lpuart,
-                                         uint8_t             slaver_addr)
+                                       uint8_t             slaver_addr)
 {
     p_hw_lpuart->saddr = slaver_addr & 0xFF;
 }
@@ -486,7 +492,7 @@ uint8_t amhw_hc32_lpuart_slaver_addr_get (amhw_hc32_lpuart_t *p_hw_lpuart)
  */
 am_static_inline
 void amhw_hc32_lpuart_slaver_addr_mask_set (amhw_hc32_lpuart_t *p_hw_lpuart,
-                                              uint8_t               addr_mask)
+                                            uint8_t             addr_mask)
 {
     p_hw_lpuart->saden = addr_mask & 0xFF;
 }
@@ -529,7 +535,7 @@ uint8_t amhw_hc32_lpuart_slaver_addr_mask_get (amhw_hc32_lpuart_t *p_hw_lpuart)
  */
 am_static_inline
 am_bool_t amhw_hc32_lpuart_flag_check (amhw_hc32_lpuart_t *p_hw_lpuart,
-                                         uint8_t               flag)
+                                       uint8_t             flag)
 {
     return (p_hw_lpuart->isr & flag) ? AM_TRUE : AM_FALSE;
 }
@@ -548,7 +554,7 @@ am_bool_t amhw_hc32_lpuart_flag_check (amhw_hc32_lpuart_t *p_hw_lpuart,
  */
 am_static_inline
 void amhw_hc32_lpuart_flag_clr (amhw_hc32_lpuart_t *p_hw_lpuart,
-                                  uint8_t               flag)
+                                uint8_t             flag)
 {
     p_hw_lpuart->icr &= ~ flag;
 }
@@ -577,8 +583,8 @@ uint32_t amhw_hc32_lpuart_flag_get(amhw_hc32_lpuart_t *p_hw_lpuart)
  * \return baud rate
  */
 int amhw_hc32_lpuart_baudrate_set (amhw_hc32_lpuart_t *p_hw_lpuart,
-                                     uint32_t              uart_clk,
-                                     uint32_t              baud);
+                                   uint32_t            uart_clk,
+                                   uint32_t            baud);
 
 /**
  * \brief UART receive data(polling mode)
@@ -589,8 +595,8 @@ int amhw_hc32_lpuart_baudrate_set (amhw_hc32_lpuart_t *p_hw_lpuart,
  * \return bytes
  */
 uint32_t amhw_hc32_lpuart_poll_receive (amhw_hc32_lpuart_t *p_hw_lpuart,
-                                          uint8_t              *p_rxbuf,
-                                          uint32_t              nbytes);
+                                        uint8_t            *p_rxbuf,
+                                        uint32_t            nbytes);
 
 /**
  * \brief UART transfer data (polling mode)
@@ -601,8 +607,8 @@ uint32_t amhw_hc32_lpuart_poll_receive (amhw_hc32_lpuart_t *p_hw_lpuart,
  * \return bytes
  */
 uint32_t amhw_hc32_lpuart_poll_send (amhw_hc32_lpuart_t  *p_hw_lpuart,
-                                       const uint8_t         *p_txbuf,
-                                       uint32_t               nbytes);
+                                     const uint8_t       *p_txbuf,
+                                     uint32_t             nbytes);
 /**
  * \brief 使用匿名联合体段结束
  * @{
