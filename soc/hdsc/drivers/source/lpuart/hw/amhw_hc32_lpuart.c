@@ -25,8 +25,8 @@
  * \brief LPUART数据发送(查询模式)
  */
 uint32_t amhw_hc32_lpuart_poll_send (amhw_hc32_lpuart_t *p_hw_lpuart,
-                                       const uint8_t        *p_txbuf,
-                                       uint32_t              nbytes)
+                                     const uint8_t      *p_txbuf,
+                                     uint32_t            nbytes)
 {
     uint32_t len = nbytes;
 
@@ -45,7 +45,7 @@ uint32_t amhw_hc32_lpuart_poll_send (amhw_hc32_lpuart_t *p_hw_lpuart,
 /**
  * \brief LPUART数据接收(查询模式)
  */
-uint32_t amhw_hc32_lpuart_poll_receive (amhw_hc32_lpuart_t    *p_hw_lpuart,
+uint32_t amhw_hc32_lpuart_poll_receive (amhw_hc32_lpuart_t *p_hw_lpuart,
                                         uint8_t            *p_rxbuf,
                                         uint32_t            nbytes)
 {
@@ -54,14 +54,12 @@ uint32_t amhw_hc32_lpuart_poll_receive (amhw_hc32_lpuart_t    *p_hw_lpuart,
     while (len--) {
 
         while(amhw_hc32_lpuart_flag_check(
-                  p_hw_lpuart,
-                  AMHW_HC32_LPUART_FLAG_RX_COMPLETE)==
-                  AM_FALSE);
+                  p_hw_lpuart, AMHW_HC32_LPUART_FLAG_RX_COMPLETE)== AM_FALSE);
 
         *p_rxbuf++ = (uint8_t)amhw_hc32_lpuart_data_read(p_hw_lpuart);
 
         amhw_hc32_lpuart_flag_clr(p_hw_lpuart,
-                                    AMHW_HC32_LPUART_FLAG_RX_COMPLETE);
+                                  AMHW_HC32_LPUART_FLAG_RX_COMPLETE);
     }
 
     return nbytes;
@@ -71,8 +69,8 @@ uint32_t amhw_hc32_lpuart_poll_receive (amhw_hc32_lpuart_t    *p_hw_lpuart,
  * \brief LPLPUART(Version 0) baud ratio set
  */
 int amhw_hc32_lpuart_baudrate_set (amhw_hc32_lpuart_t *p_hw_lpuart,
-                                     uint32_t              lpuart_clk,
-                                     uint32_t              baud)
+                                   uint32_t            lpuart_clk,
+                                   uint32_t            baud)
 {
     uint8_t                        clk_bits = 0;
     uint8_t                        clk_div  = 0;
@@ -120,7 +118,8 @@ int amhw_hc32_lpuart_baudrate_set (amhw_hc32_lpuart_t *p_hw_lpuart,
 
     /* 模式1/3情况下，波特率 = 时钟 / （分频系数*波特率寄存器设定值） */
     } else if ((mode == AMHW_HC32_LPUART_WORK_MODE_1) ||
-               (mode == AMHW_HC32_LPUART_WORK_MODE_3)) {
+               (mode == AMHW_HC32_LPUART_WORK_MODE_3) ||
+               (mode == AMHW_HC32_LPUART_WORK_MODE_4)) {
 
         /* 获取分频系数设置位的数字量 */
         clk_bits = amhw_hc32_lpuart_clk_div_get(p_hw_lpuart);

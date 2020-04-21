@@ -761,7 +761,12 @@ am_uart_handle_t am_zlg118_lpuart_init (
     }
 
     /* 工作模式设置 */
-    amhw_zlg118_lpuart_mode_sel(p_hw_lpuart, p_devinfo->work_mode);
+    if (p_devinfo->work_mode == AMHW_ZLG118_LPUART_WORK_MODE_4) {
+        amhw_zlg118_lpuart_single_line_half_enable(p_hw_lpuart);
+        amhw_zlg118_lpuart_mode_sel(p_hw_lpuart, AMHW_ZLG118_LPUART_WORK_MODE_1);
+    } else {
+        amhw_zlg118_lpuart_mode_sel(p_hw_lpuart, p_devinfo->work_mode);
+    }
     p_dev->work_mode = p_devinfo->work_mode;
 
 
