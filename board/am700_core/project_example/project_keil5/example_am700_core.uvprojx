@@ -1506,6 +1506,21 @@
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\board\am700_core\reader\demo_zsn700_piccb_read_id.c</FilePath>
             </File>
+            <File>
+              <FileName>demo_zsn700_ntag_read_id.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am700_core\reader\demo_zsn700_ntag_read_id.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zsn700_picca_read_cpu_card.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am700_core\reader\demo_zsn700_picca_read_cpu_card.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zsn700_picca_read_id_8ant.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am700_core\reader\demo_zsn700_picca_read_id_8ant.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -3764,6 +3779,21 @@
               <FileName>demo_zsn700_piccb_read_id.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\board\am700_core\reader\demo_zsn700_piccb_read_id.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zsn700_ntag_read_id.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am700_core\reader\demo_zsn700_ntag_read_id.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zsn700_picca_read_cpu_card.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am700_core\reader\demo_zsn700_picca_read_cpu_card.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zsn700_picca_read_id_8ant.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am700_core\reader\demo_zsn700_picca_read_id_8ant.c</FilePath>
             </File>
           </Files>
         </Group>

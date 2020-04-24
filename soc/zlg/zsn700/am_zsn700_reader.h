@@ -431,9 +431,9 @@ extern "C" {
  * \name  函数配置
  * @{
  */
-#define AM_ZSN700_READER_MAX_FS_TAB_NO    9    /**< \brief 接口设备能接收的字节数表 */
-#define AM_ZSN700_READER_MAX_FSDI         8    /**< \brief 接口设备最大能接收缓冲区为256字节 */
-#define AM_ZSN700_READER_MAX_FSCI         8    /**< \brief 接口设备最大能发送缓冲区为256字节  */
+#define AM_ZSN700_READER_MAX_FS_TAB_NO               9    /**< \brief 接口设备能接收的字节数表 */
+#define AM_ZSN700_READER_MAX_FSDI                    8    /**< \brief 接口设备最大能接收缓冲区为256字节 */
+#define AM_ZSN700_READER_MAX_FSCI                    8    /**< \brief 接口设备最大能发送缓冲区为256字节  */
                                          /**< \brief 0 -> 16字节; 1 -> 24字节;  2 -> 32字节; */
                                          /**< \brief 3 -> 40字节; 4 -> 48字节;  5 -> 64字节; */
                                          /**< \brief 6 -> 96字节; 7 -> 128字节; 8 -> 256字节 */
@@ -658,8 +658,8 @@ am_err_t am_zsn700_reader_set_reg (am_zsn700_reader_dev_t *p_dev,
  * \retval -AM_EIO    : 传输出错
  */
 am_err_t am_zsn700_reader_set_reg_ext (am_zsn700_reader_dev_t *p_dev,
-                                       uint8_t          nregadr,
-                                       uint8_t          nregval);
+                                       uint8_t                 nregadr,
+                                       uint8_t                 nregval);
 
 
 /**
@@ -692,8 +692,8 @@ uint8_t am_zsn700_reader_get_reg_ext (am_zsn700_reader_dev_t *p_dev, uint8_t nre
  * \retval -AM_EIO    : 传输出错
  */
 am_err_t am_zsn700_reader_set_bit (am_zsn700_reader_dev_t *p_dev,
-                                   uint8_t          nregadr,
-                                   uint8_t          mask);
+                                   uint8_t                 nregadr,
+                                   uint8_t                 mask);
 
 
 /**
@@ -708,8 +708,8 @@ am_err_t am_zsn700_reader_set_bit (am_zsn700_reader_dev_t *p_dev,
  * \retval -AM_EIO    : 传输出错
  */
 am_err_t am_zsn700_reader_clr_bit (am_zsn700_reader_dev_t *p_dev,
-                                   uint8_t          nregadr,
-                                   uint8_t          mask);
+                                   uint8_t                 nregadr,
+                                   uint8_t                 mask);
 
 
 /**
@@ -743,7 +743,7 @@ am_err_t am_zsn700_reader_modify_reg (am_zsn700_reader_dev_t *p_dev,
  */
 am_err_t am_zsn700_reader_set_extend_reg (am_zsn700_reader_dev_t *p_dev,
                                           uint8_t                 nregaddr,
-                                          uint8_t                    nregval);
+                                          uint8_t                 nregval);
 
 
 /**
@@ -802,7 +802,7 @@ am_err_t am_zsn700_reader_set_tmo (am_zsn700_reader_dev_t *p_dev, uint16_t _1ms)
  * \retval 操作结果(详细说明见am_zsn700_reader.h中的状态码定义)
  */
 uint8_t am_zsn700_reader_set_iso_type (am_zsn700_reader_dev_t       *p_dev,
-                                am_zsn700_reader_prot_type_t  type);
+                                       am_zsn700_reader_prot_type_t  type);
 
 
 /**
@@ -826,7 +826,7 @@ uint8_t am_zsn700_reader_reset (am_zsn700_reader_dev_t *p_dev);
  * \retval 操作结果(详细说明见am_zsn700_reader.h中的状态码定义)
  */
 uint8_t am_zsn700_reader_config (am_zsn700_reader_dev_t         *p_dev,
-                          am_zsn700_reader_prot_type_t    type);
+                                 am_zsn700_reader_prot_type_t    type);
 
 
 /**
@@ -840,7 +840,7 @@ uint8_t am_zsn700_reader_config (am_zsn700_reader_dev_t         *p_dev,
  * \retval -AM_EIO    : 传输出错
  */
 am_err_t am_zsn700_reader_set_tx_last_bits (am_zsn700_reader_dev_t *p_dev,
-                                     uint8_t          ntxlastbits);
+                                            uint8_t                 ntxlastbits);
 
 
 /**
@@ -868,7 +868,7 @@ am_err_t am_zsn700_reader_set_rx_align (am_zsn700_reader_dev_t *p_dev, uint8_t n
  * \retval -AM_EIO    : 传输出错
  */
 am_err_t am_zsn700_reader_set_keep_after_coll (am_zsn700_reader_dev_t *p_dev,
-                                        uint8_t          keep_or_clr);
+                                               uint8_t                 keep_or_clr);
 
 
 /**
@@ -937,8 +937,8 @@ am_err_t am_zsn700_reader_dis_crypto1 (am_zsn700_reader_dev_t *p_dev);
  * \retval 操作结果(详细说明见am_zsn700_reader.h中的状态码定义)
  */
 uint8_t am_zsn700_reader_cmd (am_zsn700_reader_dev_t                    *p_dev,
-                       const am_zsn700_reader_cmd_input_para_t   *p_in,
-                       am_zsn700_reader_cmd_output_para_t        *p_out);
+                              const am_zsn700_reader_cmd_input_para_t   *p_in,
+                              am_zsn700_reader_cmd_output_para_t        *p_out);
 
 
 /**
@@ -986,7 +986,7 @@ uint8_t am_zsn700_reader_get_tx_mode (am_zsn700_reader_dev_t *p_dev);
  *       设置的天线驱动端，而不是打开所有的天线驱动端
  */
 am_err_t am_zsn700_reader_turn_carrier_wave (am_zsn700_reader_dev_t *p_dev,
-                                      am_bool_t        on_or_off);
+                                             am_bool_t               on_or_off);
 
 
 /**
@@ -1004,8 +1004,8 @@ am_err_t am_zsn700_reader_turn_carrier_wave (am_zsn700_reader_dev_t *p_dev,
  *       而CPU卡功耗较大，需要等待10毫秒左右。
  */
 am_err_t am_zsn700_reader_pause_carrier (am_zsn700_reader_dev_t *p_dev,
-                                  uint8_t          pause_ms,
-                                  uint8_t          wait_ms);
+                                         uint8_t                 pause_ms,
+                                         uint8_t                 wait_ms);
 
 
 /**
@@ -1028,10 +1028,10 @@ am_err_t am_zsn700_reader_pause_carrier (am_zsn700_reader_dev_t *p_dev,
  * \note 执行成功后，以后的通信被加密
  */
 uint8_t am_zsn700_reader_crypto1 (am_zsn700_reader_dev_t *p_dev,
-                            uint8_t           mode,
-                            const uint8_t     p_key[6],
-                            const uint8_t     p_uid[4],
-                            uint8_t           nblock);
+                                  uint8_t                 mode,
+                                  const uint8_t           p_key[6],
+                                  const uint8_t           p_uid[4],
+                                  uint8_t                 nblock);
 
 
 /**
@@ -1073,8 +1073,8 @@ uint8_t am_zsn700_reader_crypto1 (am_zsn700_reader_dev_t *p_dev,
  * 模式的请求，除非将卡离开天线感应区后再进入。
  */
 uint8_t am_zsn700_reader_picca_request (am_zsn700_reader_dev_t  *p_dev,
-                                  uint8_t            req_mode,
-                                  uint8_t            p_atq[2]);
+                                        uint8_t                  req_mode,
+                                        uint8_t                  p_atq[2]);
 
 
 /**
@@ -1107,9 +1107,9 @@ uint8_t am_zsn700_reader_picca_request (am_zsn700_reader_dev_t  *p_dev,
  * 大的卡来操作。
  */
 uint8_t am_zsn700_reader_picca_anticoll (am_zsn700_reader_dev_t  *p_dev,
-                                   uint8_t            anticoll_level,
-                                   uint8_t           *p_uid,
-                                   uint8_t           *p_real_uid_len);
+                                         uint8_t                  anticoll_level,
+                                         uint8_t                 *p_uid,
+                                         uint8_t                 *p_real_uid_len);
 
 /**
  * \brief Mifare卡的选择操作
@@ -1134,10 +1134,10 @@ uint8_t am_zsn700_reader_picca_anticoll (am_zsn700_reader_dev_t  *p_dev,
  * 和DesFire等；10字节的以此类推，但至今还未发现此类卡。
  */
 uint8_t am_zsn700_reader_picca_select (am_zsn700_reader_dev_t  *p_dev,
-                                 uint8_t            anticoll_level,
-                                 const uint8_t     *p_uid,
-                                 uint8_t            uid_len,
-                                 uint8_t           *p_sak);
+                                       uint8_t                  anticoll_level,
+                                       const uint8_t           *p_uid,
+                                       uint8_t                  uid_len,
+                                       uint8_t                 *p_sak);
 
 /**
  * \brief Mifare卡的挂起操作，使所选择的卡进入HALT状态
@@ -1168,11 +1168,11 @@ uint8_t am_zsn700_reader_picca_halt (am_zsn700_reader_dev_t  *p_dev);
  * \retval 操作结果(详细说明见am_zsn700_reader.h中的状态码定义)
  */
 uint8_t am_zsn700_reader_picca_active (am_zsn700_reader_dev_t   *p_dev,
-                                 uint8_t             req_mode,
-                                 uint8_t             p_atq[2],
-                                 uint8_t             p_uid[10],
-                                 uint8_t            *p_uid_real_len,
-                                 uint8_t             p_sak[1]);
+                                       uint8_t                   req_mode,
+                                       uint8_t                   p_atq[2],
+                                       uint8_t                   p_uid[10],
+                                       uint8_t                  *p_uid_real_len,
+                                       uint8_t                   p_sak[1]);
 
 /**
  * \name IC卡密匙类型
@@ -1206,10 +1206,10 @@ uint8_t am_zsn700_reader_picca_active (am_zsn700_reader_dev_t   *p_dev,
  *       只需要将卡号的高4字节（等级2防碰撞得到的卡号）作为验证的卡号即可。
  */
 uint8_t am_zsn700_reader_picca_authent (am_zsn700_reader_dev_t  *p_dev,
-                                  uint8_t            key_type,
-                                  const uint8_t      p_uid[4],
-                                  const uint8_t      p_key[6],
-                                  uint8_t            nblock);
+                                        uint8_t                  key_type,
+                                        const uint8_t            p_uid[4],
+                                        const uint8_t            p_key[6],
+                                        uint8_t                  nblock);
 
 /**
  * \brief Mifare卡数据读取
@@ -1231,8 +1231,8 @@ uint8_t am_zsn700_reader_picca_authent (am_zsn700_reader_dev_t  *p_dev,
  * \retval 操作结果(详细说明见am_zsn700_reader.h中的状态码定义)
  */
 uint8_t am_zsn700_reader_picca_read (am_zsn700_reader_dev_t  *p_dev,
-                               uint8_t            nblock,
-                               uint8_t            p_buf[16]);
+                                     uint8_t                  nblock,
+                                     uint8_t                  p_buf[16]);
 
 
 /**
@@ -1253,8 +1253,8 @@ uint8_t am_zsn700_reader_picca_read (am_zsn700_reader_dev_t  *p_dev,
  * \retval 操作结果(详细说明见am_zsn700_reader.h中的状态码定义)
  */
 uint8_t am_zsn700_reader_picca_write (am_zsn700_reader_dev_t  *p_dev,
-                                uint8_t            nblock,
-                                const uint8_t      p_buf[16]);
+                                      uint8_t                  nblock,
+                                      const uint8_t            p_buf[16]);
 
 /**
  * \name Mifare卡值操作模式
@@ -1292,10 +1292,10 @@ uint8_t am_zsn700_reader_picca_write (am_zsn700_reader_dev_t  *p_dev,
  *       可以通过传入不同的块，并将value的值设为0来备份数据。
  */
 uint8_t am_zsn700_reader_picca_val_operate (am_zsn700_reader_dev_t  *p_dev,
-                                      uint8_t            mode,
-                                      uint8_t            nblock,
-                                      uint8_t            ntransblk,
-                                      int32_t            value);
+                                            uint8_t                  mode,
+                                            uint8_t                  nblock,
+                                            uint8_t                  ntransblk,
+                                            int32_t                  value);
 
 /**
  * \brief Mifare值操作，设置值块的值
@@ -1310,8 +1310,8 @@ uint8_t am_zsn700_reader_picca_val_operate (am_zsn700_reader_dev_t  *p_dev,
  *       变数值块的值。对卡内某一块进行验证成功后，并且访问条件允许才能进行此操作。
  */
 uint8_t am_zsn700_reader_picca_val_set (am_zsn700_reader_dev_t  *p_dev,
-                                  uint8_t            nblock,
-                                  int32_t            value);
+                                         uint8_t                 nblock,
+                                         int32_t                 value);
 
 
 /**
@@ -1327,8 +1327,8 @@ uint8_t am_zsn700_reader_picca_val_set (am_zsn700_reader_dev_t  *p_dev,
  *       变数值块的值。对卡内某一块进行验证成功后，并且访问条件允许才能进行此操作。
  */
 uint8_t am_zsn700_reader_picca_val_get (am_zsn700_reader_dev_t  *p_dev,
-                                  uint8_t            nblock,
-                                  int32_t           *p_value);
+                                        uint8_t                  nblock,
+                                        int32_t                 *p_value);
 
 /**
  * \brief A卡协议分析
@@ -1340,8 +1340,8 @@ uint8_t am_zsn700_reader_picca_val_get (am_zsn700_reader_dev_t  *p_dev,
  * \return 操作结果(详细说明见am_zsn700_reader.h中的状态码定义)
  */
 uint8_t am_zsn700_reader_picca_prot_parse (am_zsn700_reader_dev_t  *p_dev,
-                                     uint8_t            cid,
-                                     const uint8_t     *p_ats);
+                                           uint8_t                  cid,
+                                           const uint8_t           *p_ats);
 
 /**
  * \brief RATS
@@ -1355,10 +1355,10 @@ uint8_t am_zsn700_reader_picca_prot_parse (am_zsn700_reader_dev_t  *p_dev,
  * \retval 操作结果(详细说明见am_zsn700_reader.h中的状态码定义)
  */
 uint8_t am_zsn700_reader_picca_rats_get (am_zsn700_reader_dev_t *p_dev,
-                                   uint8_t   cid,
-                                   void     *p_rats,
-                                   uint32_t  buf_size,
-                                   uint32_t *p_nbytes);
+                                         uint8_t                 cid,
+                                         void                   *p_rats,
+                                         uint32_t                buf_size,
+                                         uint32_t               *p_nbytes);
 
 /**
  * \brief A卡协议和参数选择请求
@@ -1375,7 +1375,7 @@ uint8_t am_zsn700_reader_picca_rats_get (am_zsn700_reader_dev_t *p_dev,
  * \retval 操作结果(详细说明见am_zsn700_reader.h中的状态码定义)
  */
 uint8_t am_zsn700_reader_picca_pps_set (am_zsn700_reader_dev_t *p_dev,
-                                  uint8_t flags);
+                                        uint8_t                 flags);
 
 /**
  * \brief A卡取消选择
@@ -1398,11 +1398,24 @@ uint8_t am_zsn700_reader_picca_deselect (am_zsn700_reader_dev_t *p_dev);
  * \retval 操作结果(详细说明见am_zsn700_reader.h中的状态码定义)
  */
 uint8_t am_zsn700_reader_picca_transfer (am_zsn700_reader_dev_t *p_dev,
-                                   const void       *p_txbuf,
-                                   uint32_t          n_tx,
-                                   void             *p_rxbuf,
-                                   uint32_t          buf_size,
-                                   uint32_t         *p_n_rx);
+                                         const void             *p_txbuf,
+                                         uint32_t                n_tx,
+                                         void                   *p_rxbuf,
+                                         uint32_t                buf_size,
+                                         uint32_t               *p_n_rx);
+
+/**
+ * \brief zsn700_reader ultralight 卡 传输
+ *
+ * \param[in] p_dev   : zsn700_reader设备
+ * \param[in] p_txbuf : 发送缓冲区
+ * \param[out] p_rxbuf: 接收缓冲区
+ * \param[out] p_rx_nbytes: 接收字节数
+ */
+int am_zsn700_reader_mifare_ultralight_transfer (am_zsn700_reader_handle_t    handle,
+                                                 const void                  *p_txbuf,
+                                                 void                        *p_rxbuf,
+                                                 uint32_t                    *p_rx_nbytes);
 
 /**
  * \brief 读写器与IC卡数据交互
@@ -1419,13 +1432,13 @@ uint8_t am_zsn700_reader_picca_transfer (am_zsn700_reader_dev_t *p_dev,
  * \retval 操作结果(详细说明见am_zsn700_reader.h中的状态码定义)
  */
 uint8_t am_zsn700_reader_exchange_block (am_zsn700_reader_dev_t *p_dev,
-                                   uint8_t          *sendbuf,
-                                   uint32_t          sendlen,
-                                   uint8_t          *recvbuf,
-                                   uint32_t          recvbufsize,
-                                   uint16_t         *recvlen,
-                                   uint8_t           nwtxm_crc,
-                                   uint8_t           nfwi);
+                                         uint8_t                *sendbuf,
+                                         uint32_t                sendlen,
+                                         uint8_t                *recvbuf,
+                                         uint32_t                recvbufsize,
+                                         uint16_t               *recvlen,
+                                         uint8_t                 nwtxm_crc,
+                                         uint8_t                 nfwi);
 
 /**
  * \name PICCB卡请求模式
@@ -1453,10 +1466,10 @@ uint8_t am_zsn700_reader_exchange_block (am_zsn700_reader_dev_t *p_dev,
  * \retval 操作结果(详细说明见am_zsn700_reader.h中的状态码定义)
  */
 uint8_t am_zsn700_reader_piccb_request (am_zsn700_reader_dev_t *p_dev,
-                                  uint8_t           req_mode,
-                                  uint8_t           afi,
-                                  uint8_t           slot_time,
-                                  uint8_t           atqb[12]);
+                                        uint8_t                 req_mode,
+                                        uint8_t                 afi,
+                                        uint8_t                 slot_time,
+                                        uint8_t                 atqb[12]);
 
 /**
  * \brief B类卡的ATTRIB命令
@@ -1480,9 +1493,9 @@ uint8_t am_zsn700_reader_piccb_request (am_zsn700_reader_dev_t *p_dev,
  * \note 执行该命令时必须先成功执行一次request命令
  */
 uint8_t am_zsn700_reader_piccb_attrib (am_zsn700_reader_dev_t *p_dev,
-                                 const uint8_t     pupi[4],
-                                 uint8_t           cid,
-                                 uint8_t           protype);
+                                       const uint8_t           pupi[4],
+                                       uint8_t                 cid,
+                                       uint8_t                 protype);
 
 /**
  * \brief 获取B类卡的UID
@@ -1510,9 +1523,9 @@ uint8_t am_zsn700_reader_piccb_guid (am_zsn700_reader_dev_t *p_dev, uint8_t uid[
  * \note 在调用该函数前，需要确保IC工作模式已经配置为TypeB模式。
  */
 uint8_t am_zsn700_reader_piccb_active (am_zsn700_reader_dev_t *p_dev,
-                                 uint8_t           req_mode,
-                                 uint8_t           afi,
-                                 uint8_t           uid[12]);
+                                       uint8_t                 req_mode,
+                                       uint8_t                 afi,
+                                       uint8_t                 uid[12]);
 
 /**
  * \brief PICC B卡的挂起操作，使所选择的卡进入HALT状态
@@ -1527,7 +1540,7 @@ uint8_t am_zsn700_reader_piccb_active (am_zsn700_reader_dev_t *p_dev,
  * \retval 操作结果(详细说明见am_zsn700_reader.h中的状态码定义)
  */
 uint8_t am_zsn700_reader_piccb_halt (am_zsn700_reader_dev_t *p_dev,
-                               const uint8_t     pupi[4]);
+                                     const uint8_t           pupi[4]);
 
 /**
  * \brief PCD进入LPCD模式的初始化
@@ -1578,8 +1591,8 @@ void  am_zsn700_reader_exit_lpcd_config(am_zsn700_reader_dev_t   *p_dev);
  *
  */
 void  am_zsn700_reader_lpcd_cb_set(am_zsn700_reader_dev_t   *p_dev,
-                            am_pfnvoid_t        pfn_callback,
-                            void               *p_lpcd_cb_arg);
+                                   am_pfnvoid_t              pfn_callback,
+                                   void                     *p_lpcd_cb_arg);
 
 /**
  * \brief zsn700_reader  fm11rf005m 卡请求操作
@@ -1589,7 +1602,7 @@ void  am_zsn700_reader_lpcd_cb_set(am_zsn700_reader_dev_t   *p_dev,
  *
  */
 int8_t am_zsn700_reader_fm11rf005m_reqa(am_zsn700_reader_handle_t handle,
-                                 uint8_t             reqa_mode);
+                                        uint8_t                   reqa_mode);
 
 /**
  * \brief zsn700_reader  fm11rf005m 卡读块操作
@@ -1600,8 +1613,8 @@ int8_t am_zsn700_reader_fm11rf005m_reqa(am_zsn700_reader_handle_t handle,
  *
  */
 int8_t am_zsn700_reader_fm11rf005m_read_block(am_zsn700_reader_handle_t handle,
-                                       uint8_t             block_num,
-                                       uint8_t            *p_buff);
+                                              uint8_t                   block_num,
+                                              uint8_t                  *p_buff);
 /**
  * \brief zsn700_reader  fm11rf005m 卡写块操作
  *
@@ -1611,13 +1624,28 @@ int8_t am_zsn700_reader_fm11rf005m_read_block(am_zsn700_reader_handle_t handle,
  *
  */
 int8_t am_zsn700_reader_fm11rf005m_write_block(am_zsn700_reader_handle_t handle,
-                                        uint8_t             block_num,
-                                        uint8_t            *p_buff);
+                                               uint8_t                   block_num,
+                                               uint8_t                  *p_buff);
+
+/**
+ * \brief zsn700_reader  身份证物理ID读取
+ *
+ * \param[in] p_dev   : zsn700_reader设备
+ * \param[in] id      : ID读取缓冲区
+ */
+uint8_t am_zsn700_reader_idcard_readr_id (am_zsn700_reader_dev_t *p_dev,
+                                          uint8_t                 id[10]);
+
 /** @} */
 
 /**
  * @} am_if_zsn700_reader
  */
+
+
+
+
+
 
 #ifdef __cplusplus
 }
