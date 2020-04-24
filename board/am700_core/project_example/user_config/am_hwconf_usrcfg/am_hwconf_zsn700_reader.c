@@ -37,19 +37,20 @@ static am_zsn700_reader_dev_t  __g_zsn700_reader_dev;
 am_local am_const am_zsn700_reader_lpcd_cfginfo_t  __g_lpcd_cfg_info = {
     AM_ZSN700_READER_LCPD_SLEEP500MS,
     AM_ZSN700_READER_LCPD_DETECT47US,
-    AM_ZSN700_READER_LCPD_TX2_RF_ENABLE,
-    AM_ZSN700_READER_LCPD_RF_NMOS_23,
-    AM_ZSN700_READER_LCPD_RF_PMOS_1,
-    0.07,
-    AM_ZSN700_READER_LCPD_AUTO_DETECT_TIMES_1,
+    AM_ZSN700_READER_LPCD_VMID_3_3MS,
+    20,
+    10,
     AM_ZSN700_READER_LCPD_INT_ENABLE,
+    AM_ZSN700_READER_LCPD_AUTO_DETECT_TIMES_1,
     AM_ZSN700_READER_LCPD_AUTO_WUP_ENABLE,
-    AM_ZSN700_READER_LCPD_AUTO_WUP_TIME_432MIN,
+    AM_ZSN700_READER_LCPD_AUTO_WUP_TIME_6S,
+    AM_ZSN700_READER_BIAS_CURRENT_150NA
 };
 
 /* 定义 zsn700_reader 实例信息 */
 am_local am_const am_zsn700_reader_devinfo_t __g_zsn700_reader_devinfo = {
     AM_ZSN700_READER_PROT_TYPE_ISO14443A_106,
+//    &__g_lpcd_cfg_info
     NULL
 };
 

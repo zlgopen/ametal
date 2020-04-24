@@ -81,31 +81,37 @@ void demo_zsn700_reader_picca_read_block (void)
 
             /* 验证A密钥 */
             if (AM_ZSN700_READER_STATUS_SUCCESS == am_zsn700_reader_picca_authent\
-                                             (handle,
-                                              AM_ZSN700_READER_IC_KEY_TYPE_A,
-                                              uid,
-                                              keya,
-                                              2)) {     /* 验证的是块2 */
+                    (handle,
+                     AM_ZSN700_READER_IC_KEY_TYPE_A,
+                     uid,
+                     keya,
+                     2)) {     /* 验证的是块2 */
 
                 /* 读块数据 */
                 am_zsn700_reader_picca_read(handle, 0, buff); /* 读取块0 */
                 am_kprintf("block0: ");
                 for (i = 0; i < 16; i++) {
-                    am_kprintf("%x ", buff[i]);
+                    am_kprintf("%02x ", buff[i]);
                 }
                 am_kprintf("\n");
 
                 am_zsn700_reader_picca_read(handle, 3, buff); /* 读取块3 */
                 am_kprintf("block3: ");
                 for (i = 0; i < 16; i++) {
-                    am_kprintf("%x ", buff[i]);
+                    am_kprintf("%02x ", buff[i]);
                 }
                 am_kprintf("\n");
+
+                am_zsn700_reader_picca_authent(handle,
+                                               AM_ZSN700_READER_IC_KEY_TYPE_A,
+                                               uid,
+                                               keya,
+                                               4);
 
                 am_zsn700_reader_picca_read(handle, 4, buff); /* 读取块4 */
                 am_kprintf("block4: ");
                 for (i = 0; i < 16; i++) {
-                    am_kprintf("%x ", buff[i]);
+                    am_kprintf("%02x ", buff[i]);
                 }
                 am_kprintf("\n\n");
             } else {

@@ -57,7 +57,7 @@ void demo_zsn700_reader_picca_val_operate (void)
     uint8_t uid[10]      = { 0 };      /* UID */
     uint8_t uid_real_len = 0;          /* 接收到的UID的长度 */
     uint8_t sak[3]       = { 0 };      /* SAK */
-    uint8_t keya[4]      = {0xff, 0xff, 0xff, 0xff};  /* 验证密钥A */
+    uint8_t keya[6]      = {0xff, 0xff, 0xff, 0xff, 0xff, 0xff};  /* 验证密钥A */
     uint8_t blocknum     = 9;          /* 要读写的块 */
     int32_t value        = 0;          /* 数值块中的值 */
     am_zsn700_reader_handle_t handle = am_zsn700_reader_inst_init();
@@ -74,14 +74,14 @@ void demo_zsn700_reader_picca_val_operate (void)
             am_kprintf("actived\n");
 
             /* 验证A密钥 */
-            if (AM_ZSN700_READER_STATUS_SUCCESS == am_zsn700_reader_picca_authent\
-                                             (handle,
-                                              0X1b,
-                                              uid,
-                                              keya,
-                                              blocknum)) {
+            if (AM_ZSN700_READER_STATUS_SUCCESS == \
+                    am_zsn700_reader_picca_authent (handle,
+                                                    AM_ZSN700_READER_IC_KEY_TYPE_A,
+                                                    uid,
+                                                    keya,
+                                                    blocknum)) {
 
-#if 1
+#if 0
                 /* 若卡块格式不是数值块的格式，则使用下面这段程序将卡块初始化为数值块的格式 */
                 uint8_t once_flag = 0;            /* 只进行一次初始化块的标识 */
                 if (once_flag == 0) {

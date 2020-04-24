@@ -48,6 +48,9 @@ int am_main (void)
 //    demo_zsn700_reader_picca_write_block ();
 //    demo_zsn700_reader_piccb_read_id ();
 //    demo_zsn700_reader_picca_read_id();
+//    demo_zsn700_reader_picca_read_id_8ant();
+//    demo_zsn700_reader_ntag_read_id();
+//    demo_zsn700_reader_picca_read_cpu_card();
 //    demo_zsn700_core_hw_clk_entry();
 //    demo_zsn700_core_std_adc_entry();
 //    demo_zsn700_core_hw_adc_int_entry();

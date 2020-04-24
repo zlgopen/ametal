@@ -53,8 +53,12 @@
 void demo_zsn700_reader_piccb_read_id (void)
 { 
     uint8_t uid[12]     = { 0 };       /* UID */
+    uint8_t id_card[12] = { 0 };
     uint8_t i;
     am_zsn700_reader_handle_t handle = am_zsn700_reader_inst_init();
+
+    am_zsn700_reader_config(handle, AM_ZSN700_READER_PROT_TYPE_ISO14443B_106);
+
     while (1) {
         if (!am_zsn700_reader_piccb_active(handle,
                                            AM_ZSN700_READER_PICCB_REQ_IDLE,
@@ -62,12 +66,20 @@ void demo_zsn700_reader_piccb_read_id (void)
                                            uid)) {
             am_kprintf("PUPI : ");
             for(i = 0; i < 4; i ++){
-                    am_kprintf("%02x ", uid[i]);
+                am_kprintf("%02x ", uid[i]);
             }
             am_kprintf("\r\n");
             am_kprintf("UID : ");
             for(i = 4; i < 12; i ++){
-                    am_kprintf("%02x ", uid[i]);
+                am_kprintf("%02x ", uid[i]);
+            }
+            am_kprintf("\r\n");
+
+            // 如果该卡为身份即可使用该函数进行物理ID读取
+            am_zsn700_reader_idcard_readr_id(handle, id_card);
+            am_kprintf("IDCard ID : ");
+            for(i = 0; i < 10; i ++){
+                am_kprintf("%02x ", id_card[i]);
             }
             am_kprintf("\r\n");
         }

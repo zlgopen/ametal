@@ -660,6 +660,16 @@ void demo_zsn700_core_hw_lcd_entry (void);
 void demo_zsn700_reader_picca_read_id (void);
 
 /**
+ * \brief A类卡读卡类型和卡号例程(8天线)
+ */
+void demo_zsn700_reader_picca_read_id_8ant (void);
+
+/**
+ * \brief NTAG卡读卡类型和卡号例程
+ */
+void demo_zsn700_reader_ntag_read_id (void);
+
+/**
  * \brief ZSN700 读卡器读A类挂起例程
  */
 void demo_zsn700_reader_picca_halt (void);
@@ -673,6 +683,11 @@ void demo_zsn700_reader_picca_lpcd_mode (void);
  * \brief ZSN700 读卡器读A类读块数据例程
  */
 void demo_zsn700_reader_picca_read_block (void);
+
+/**
+ * \brief CPU卡读卡类型和卡号例程
+ */
+void demo_zsn700_reader_picca_read_cpu_card (void);
 
 /**
  * \brief A类卡值操作例程

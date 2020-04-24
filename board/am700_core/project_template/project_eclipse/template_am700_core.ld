@@ -75,7 +75,7 @@ SECTIONS
     .flash_op :
     {
         . = ALIGN(4);        /* Align the start of the section */
-        *am_zlg118_flash.o(*.text* .rodata .rodata.* .constdata .constdata.*);
+        *am_zsn700_flash.o(*.text* .rodata .rodata.* .constdata .constdata.*);
         . = ALIGN(4);        /* Align the end of the section */
     } > FLASH 
     
