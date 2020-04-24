@@ -386,6 +386,9 @@ amhw_zsn700_uart_work_mode_t amhw_zsn700_uart_mode_get (amhw_zsn700_uart_t
  *                                    AMHW_ZSN700_UART_HW_PARITY_EVEN    或
  *                                    AMHW_ZSN700_UART_HW_PARITY_ODD     或
  *                                    AMHW_ZSN700_UART_PARITY_NO
+ *
+ * \note : 在Mode0/1下，不能使用数据校验；在Mode2/3下，必须使用数据校验；
+ *
  * \return none
  */
 am_static_inline

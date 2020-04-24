@@ -889,7 +889,11 @@ am_uart_handle_t am_zsn700_uart_init (am_zsn700_uart_dev_t           *p_dev,
     /* 工作模式设置 */
     if (p_devinfo->work_mode == AMHW_ZSN700_UART_WORK_MODE_4) {
         amhw_zsn700_uart_single_line_half_enable(p_hw_uart);
-        amhw_zsn700_uart_mode_sel(p_hw_uart, AMHW_ZSN700_UART_WORK_MODE_1);
+        if ((p_devinfo->cfg_flags & (0xc)) == AMHW_ZSN700_UART_PARITY_NO){
+            amhw_zsn700_uart_mode_sel(p_hw_uart, AMHW_ZSN700_UART_WORK_MODE_1);
+        }else {
+            amhw_zsn700_uart_mode_sel(p_hw_uart, AMHW_ZSN700_UART_WORK_MODE_3);
+        }
     } else {
         amhw_zsn700_uart_mode_sel(p_hw_uart, p_devinfo->work_mode);
     }
@@ -908,9 +912,9 @@ am_uart_handle_t am_zsn700_uart_init (am_zsn700_uart_dev_t           *p_dev,
     }
 
     /* 获取串口检验方式配置选项 */
-    if (p_devinfo->cfg_flags & (AMHW_ZSN700_UART_HW_PARITY_ODD)) {
+    if ((p_devinfo->cfg_flags & (0xc)) == (AMHW_ZSN700_UART_HW_PARITY_ODD)) {
         p_dev->options |= AM_UART_PARENB | AM_UART_PARODD;
-    } else if(p_devinfo->cfg_flags & (AMHW_ZSN700_UART_HW_PARITY_EVEN)){
+    } else if ((p_devinfo->cfg_flags & (0xc)) == (AMHW_ZSN700_UART_HW_PARITY_EVEN)){
         p_dev->options |= AM_UART_PARENB;
     } else {
 
@@ -963,7 +967,8 @@ am_uart_handle_t am_zsn700_uart_init (am_zsn700_uart_dev_t           *p_dev,
  */
 void am_zsn700_uart_deinit (am_zsn700_uart_dev_t *p_dev)
 {
-    amhw_zsn700_uart_t *p_hw_uart = (amhw_zsn700_uart_t *)p_dev->p_devinfo->uart_reg_base;
+    amhw_zsn700_uart_t *p_hw_uart =
+                          (amhw_zsn700_uart_t *)p_dev->p_devinfo->uart_reg_base;
     p_dev->uart_serv.p_funcs   = NULL;
     p_dev->uart_serv.p_drv     = NULL;
 

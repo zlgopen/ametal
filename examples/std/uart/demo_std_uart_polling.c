@@ -52,7 +52,6 @@ void demo_std_uart_polling_entry (am_uart_handle_t handle)
     am_uart_poll_send(handle, __ch, sizeof(__ch));
 
     while (1) {
-
         /* ½ÓÊÕ×Ö·û */
         am_uart_poll_receive(handle, uart1_buf, 1);
 

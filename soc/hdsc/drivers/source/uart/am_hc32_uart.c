@@ -902,7 +902,12 @@ am_uart_handle_t am_hc32_uart_init (am_hc32_uart_dev_t           *p_dev,
     /* 工作模式设置 */
     if (p_devinfo->work_mode == AMHW_HC32_UART_WORK_MODE_4) {
         amhw_hc32_uart_single_line_half_enable(p_hw_uart);
-        amhw_hc32_uart_mode_sel(p_hw_uart, AMHW_HC32_UART_WORK_MODE_1);
+
+        if ((p_devinfo->cfg_flags & (0xc)) == AMHW_HC32_UART_PARITY_NO){
+            amhw_hc32_uart_mode_sel(p_hw_uart, AMHW_HC32_UART_WORK_MODE_1);
+        } else {
+            amhw_hc32_uart_mode_sel(p_hw_uart, AMHW_HC32_UART_WORK_MODE_3);
+        }
     } else {
         amhw_hc32_uart_mode_sel(p_hw_uart, p_devinfo->work_mode);
     }
@@ -921,9 +926,9 @@ am_uart_handle_t am_hc32_uart_init (am_hc32_uart_dev_t           *p_dev,
     }
 
     /* 获取串口检验方式配置选项 */
-    if (p_devinfo->cfg_flags & (AMHW_HC32_UART_HW_PARITY_ODD)) {
+    if ((p_devinfo->cfg_flags & (0xc)) == (AMHW_HC32_UART_HW_PARITY_ODD)) {
         p_dev->options |= AM_UART_PARENB | AM_UART_PARODD;
-    } else if(p_devinfo->cfg_flags & (AMHW_HC32_UART_HW_PARITY_EVEN)){
+    } else if ((p_devinfo->cfg_flags & (0xc)) == (AMHW_HC32_UART_HW_PARITY_EVEN)){
         p_dev->options |= AM_UART_PARENB;
     } else {
 
