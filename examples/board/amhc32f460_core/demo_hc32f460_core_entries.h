@@ -134,7 +134,7 @@ void demo_hc32f460_core_hw_rtc_sec_int_entry (void);
 /**
  * \brief RTC ???????~{!'~}??~{!@(:!A~}?????????????????????????
  */
-void demo_hc32f460_core_drv_rtc_entry (void);
+void demo_hc32f460_core_std_rtc_entry (void);
 
 /**
  * \brief SPI ?~{!B~}?~{(2~}???????~{!'~}?? HW ??????????
@@ -681,3 +681,6 @@ void demo_hc32f460_hw_i2c_master_poll_entry (void *p_hw_i2c_addr,
 void demo_hc32f460_core_hw_i2c_master_poll_entry (void);
 void demo_hc32f460_core_hw_i2c_slave_poll_entry (void);
 void demo_hc32f460_core_std_rtc_entry (void);
+void demo_hc32f460_core_std_can_entry (void);
+
+

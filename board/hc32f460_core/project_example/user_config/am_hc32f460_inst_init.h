@@ -57,6 +57,7 @@ extern "C" {
 #include "am_mtd.h"
 #include "am_rngbuf.h"
 #include "am_input.h"
+#include "am_can.h"
 
 //#include "am_zlg118_pcnt.h"
 //#include "amhw_zlg118_rtc.h"
@@ -1269,6 +1270,7 @@ am_cap_handle_t   am_hc32f460_adtim63_cap_inst_init (void);
 am_i2c_handle_t   am_hc32f460_i2c1_inst_init (void);
 am_i2c_slv_handle_t  am_hc32f460_i2c1_slv_inst_init (void);
 am_rtc_handle_t   am_hc32f460_rtc_inst_init (void);
+am_can_handle_t   am_hc32f460_can_inst_init (void);
 /**
  * @}
  */

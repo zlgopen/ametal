@@ -57,9 +57,6 @@ const struct am_hc32f460_rtc_devinfo __g_rtc_devinfo = {
     /** \brief RTC设备基地址 */
     HC32F460_RTC_BASE,
 
-    /** \brief RTC设备时钟源 */
-    AMHW_HC32F460_RTC_CLK_SRC_XTL_32768Hz,
-
     /**< \brief RTC 中断号 */
     INUM_RTC,
 

@@ -67,6 +67,7 @@ extern "C" {
 #define HC32F460_I2C2_BASE          (0x4004E400UL)  /** \brief I2C2基地址 */
 #define HC32F460_I2C3_BASE          (0x4004E800UL)  /** \brief I2C3基地址 */
 #define HC32F460_RTC_BASE           (0x4004C000UL)  /** \brief RTC基地址 */
+#define HC32F460_CAN_BASE           (0x40070400UL)  /** \brief CAN基地址 */
 
 /**
  * \name 外设内存映射地址定义
