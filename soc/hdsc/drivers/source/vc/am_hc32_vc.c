@@ -16,6 +16,7 @@
  *
  * \internal
  * \par Modification history
+ * - 1.01 20-04-27 zcb, Add callback function parameters
  * - 1.00 19-09-27
  * \endinternal
  */
@@ -56,37 +57,50 @@ void __vc_irq_handler (void *p_cookie)
         return ;
     }
 
-    p_dev->pfn_trigger_cb(p_dev);
+    if (p_dev->pfn_trigger_cb) {
+        p_dev->pfn_trigger_cb(p_dev->p_arg);
+    }
 }
 
-/* VC通道使能 */
-int am_hc32_vc_chan_enable (am_vc_handle_t vc_handle)
+/**
+ * \brief VC通道使能
+ */
+int am_hc32_vc_chan_enable (am_hc32_vc_handle_t    handle)
 {
 
     amhw_hc32_vc_t *p_hw_vc;
 
-    if (vc_handle == NULL){
-
+    if (handle == NULL){
        return AM_ERROR;
     }
 
-    p_hw_vc = (amhw_hc32_vc_t *)(vc_handle->p_devinfo->vc_reg_base);
+    p_hw_vc = (amhw_hc32_vc_t *)(handle->p_devinfo->vc_reg_base);
 
     /*使能电压比较器*/
-    amhw_hc32_vc_volt_cmp_enable(p_hw_vc, vc_handle->chan);
+    amhw_hc32_vc_volt_cmp_enable(p_hw_vc, handle->chan);
 
     return AM_OK;
 }
 
-/* 中断触发函数连接 */
-int am_hc32_tri_set (am_vc_handle_t vc_handle, void (*pfn_tri_cb) (void *))
+/**
+ * \brief 中断触发函数连接
+ */
+int am_hc32_tri_set (am_hc32_vc_handle_t           handle,
+                     am_pfnvoid_t                  pfn_cb,
+                     void                         *p_arg)
 {
-    if (vc_handle == NULL || pfn_tri_cb == NULL ){
+    int key;
 
+    if (handle == NULL) {
         return AM_ERROR;
     }
 
-    vc_handle->pfn_trigger_cb = pfn_tri_cb;
+    key = am_int_cpu_lock();
+
+    handle->pfn_trigger_cb = pfn_cb;
+    handle->p_arg          = p_arg;
+
+    am_int_cpu_unlock(key);
 
     return AM_OK;
 }
@@ -94,8 +108,8 @@ int am_hc32_tri_set (am_vc_handle_t vc_handle, void (*pfn_tri_cb) (void *))
 /**
  * \brief VC初始化
  */
-am_vc_handle_t am_hc32_vc_init (am_hc32_vc_dev_t           *p_dev,
-                                  const am_hc32_vc_devinfo_t *p_devinfo)
+am_hc32_vc_handle_t am_hc32_vc_init (am_hc32_vc_dev_t           *p_dev,
+                                     const am_hc32_vc_devinfo_t *p_devinfo)
 {
     amhw_hc32_vc_t *p_hw_vc;
 
@@ -121,43 +135,43 @@ am_vc_handle_t am_hc32_vc_init (am_hc32_vc_dev_t           *p_dev,
     /* 选择 迟滞电压、功耗、 滤波时间、  通道N、P端输入 、中断类型*/
     switch (p_dev->chan){
 
-        case AMHW_HC32_VC0 :
-                amhw_hc32_vc0_hys_sel (p_hw_vc, p_dev->p_devinfo->vc_delay);
-                amhw_hc32_vc0_bias_sel (p_hw_vc, p_dev->p_devinfo->vc_bias);
-                amhw_hc32_vc0_flt_time_sel (p_hw_vc,
-                                              p_dev->p_devinfo->vc_flt_time);
-                amhw_hc32_vc0_n_sel (p_hw_vc, p_dev->p_devinfo->vc_n_in);
-                amhw_hc32_vc0_p_sel (p_hw_vc, p_dev->p_devinfo->vc_p_in);
-                amhw_hc32_vc0_out_tri_int_sel (p_hw_vc,
-                                                 p_dev->p_devinfo->vc_out_int);
-            break;
+    case AMHW_HC32_VC0 :
+        amhw_hc32_vc0_hys_sel(p_hw_vc, p_dev->p_devinfo->vc_delay);
+        amhw_hc32_vc0_bias_sel(p_hw_vc, p_dev->p_devinfo->vc_bias);
+        amhw_hc32_vc0_flt_time_sel(p_hw_vc,
+                                   p_dev->p_devinfo->vc_flt_time);
+        amhw_hc32_vc0_n_sel(p_hw_vc, p_dev->p_devinfo->vc_n_in);
+        amhw_hc32_vc0_p_sel(p_hw_vc, p_dev->p_devinfo->vc_p_in);
+        amhw_hc32_vc0_out_tri_int_sel(p_hw_vc,
+                                      p_dev->p_devinfo->vc_out_int);
+        break;
 
-        case AMHW_HC32_VC1 :
-                amhw_hc32_vc1_hys_sel (p_hw_vc, p_dev->p_devinfo->vc_delay);
-                amhw_hc32_vc1_bias_sel (p_hw_vc, p_dev->p_devinfo->vc_bias);
-                amhw_hc32_vc1_flt_time_sel (p_hw_vc,
-                                              p_dev->p_devinfo->vc_flt_time);
-                amhw_hc32_vc1_n_sel (p_hw_vc, p_dev->p_devinfo->vc_n_in);
-                amhw_hc32_vc1_p_sel (p_hw_vc, p_dev->p_devinfo->vc_p_in);
-                amhw_hc32_vc1_out_tri_int_sel (p_hw_vc,
-                                                 p_dev->p_devinfo->vc_out_int);
-            break;
-        case AMHW_HC32_VC2 :
-                amhw_hc32_vc2_hys_sel (p_hw_vc, p_dev->p_devinfo->vc_delay);
-                amhw_hc32_vc2_bias_sel (p_hw_vc, p_dev->p_devinfo->vc_bias);
-                amhw_hc32_vc2_flt_time_sel (p_hw_vc,
-                                              p_dev->p_devinfo->vc_flt_time);
-                amhw_hc32_vc2_n_sel (p_hw_vc, p_dev->p_devinfo->vc_n_in);
-                amhw_hc32_vc2_p_sel (p_hw_vc, p_dev->p_devinfo->vc_p_in);
-                amhw_hc32_vc1_out_tri_int_sel (p_hw_vc,
-                                                 p_dev->p_devinfo->vc_out_int);
-            break;
+    case AMHW_HC32_VC1 :
+        amhw_hc32_vc1_hys_sel(p_hw_vc, p_dev->p_devinfo->vc_delay);
+        amhw_hc32_vc1_bias_sel(p_hw_vc, p_dev->p_devinfo->vc_bias);
+        amhw_hc32_vc1_flt_time_sel(p_hw_vc,
+                                   p_dev->p_devinfo->vc_flt_time);
+        amhw_hc32_vc1_n_sel(p_hw_vc, p_dev->p_devinfo->vc_n_in);
+        amhw_hc32_vc1_p_sel(p_hw_vc, p_dev->p_devinfo->vc_p_in);
+        amhw_hc32_vc1_out_tri_int_sel(p_hw_vc,
+                                      p_dev->p_devinfo->vc_out_int);
+        break;
+    case AMHW_HC32_VC2 :
+        amhw_hc32_vc2_hys_sel(p_hw_vc, p_dev->p_devinfo->vc_delay);
+        amhw_hc32_vc2_bias_sel(p_hw_vc, p_dev->p_devinfo->vc_bias);
+        amhw_hc32_vc2_flt_time_sel(p_hw_vc,
+                                   p_dev->p_devinfo->vc_flt_time);
+        amhw_hc32_vc2_n_sel(p_hw_vc, p_dev->p_devinfo->vc_n_in);
+        amhw_hc32_vc2_p_sel(p_hw_vc, p_dev->p_devinfo->vc_p_in);
+        amhw_hc32_vc1_out_tri_int_sel(p_hw_vc,
+                                      p_dev->p_devinfo->vc_out_int);
+        break;
     }
 
     /* 配置输出 */
-    amhw_hc32_vc_outcfg_enable (p_hw_vc,
-                                  p_dev->p_devinfo->vc_out_cfg,
-                                  p_dev->chan);
+    amhw_hc32_vc_outcfg_enable(p_hw_vc,
+                               p_dev->p_devinfo->vc_out_cfg,
+                               p_dev->chan);
 
     if (p_dev->p_devinfo->vc_flt_time != AMHW_HC32_DEB_TIME_NO){
 
@@ -181,7 +195,7 @@ am_vc_handle_t am_hc32_vc_init (am_hc32_vc_dev_t           *p_dev,
 /**
  * \brief VC去初始化
  */
-void am_hc32_vc_deinit (am_vc_handle_t handle)
+void am_hc32_vc_deinit (am_hc32_vc_handle_t        handle)
 {
     am_hc32_vc_dev_t *p_dev  = (am_hc32_vc_dev_t *)handle;
     amhw_hc32_vc_t *p_hw_vc  =

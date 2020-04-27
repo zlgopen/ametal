@@ -49,81 +49,79 @@
 #include "hw/amhw_hc32_lvd.h"
 #include "hw/amhw_hc32_rcc_reset.h"
 
-/*******************************************************************************
-  宏定义
-*******************************************************************************/
-#define LVD_TRI_TYPE AMHW_HC32_LVD_HTEN                /**< \brief LVD触发条件 */
-#define LVD_DEB_TIME AMHW_HC32_LVD_DEB_TIME_7P2_MS     /**< \brief LVD滤波时间 */
-#define LVD_VIDS     AMHW_HC32_LVD_VIDS_2P5_V          /**< \brief LVD基准电压 */
-#define LVD_SRC      ANHW_HC32_LVD_SRC_PB07            /**< \brief LVD监测源*/
-#define LVD_TRI_ACT  ANHW_HC32_LVD_TRI_ACT_SYSTEM_RESET /**< \brief LVD触发动作*/
+/** \brief LVD触发条件 */
+#define __LVD_TRI_TYPE         AMHW_HC32_LVD_HTEN
 
-/*******************************************************************************
-  全局变量
-*******************************************************************************/
-static amhw_hc32_lvd_t       *gp_hw_lvd   = NULL;  /**< \brief lvd 外设 */
+/** \brief LVD滤波时间 */
+#define __LVD_DEB_TIME         AMHW_HC32_LVD_DEB_TIME_7P2_MS
+
+/** \brief LVD触发动作*/
+#define __LVD_TRI_ACT          AMHW_HC32_LVD_TRI_ACT_SYSTEM_RESET
 
 /**
- * \brief LVD初始化
+ * \brief LVD 初始化
  */
-static void lvd_init ()
+static void __lvd_hw_init (amhw_hc32_lvd_t       *p_hw_base,
+                           amhw_hc32_lvd_vids_t   lvd_vids,
+                           uint32_t               lvd_src)
 {
-    /* cr寄存器清零 */
-    amhw_hc32_lvd_cr_clr (gp_hw_lvd);
+    /* CR 寄存器清零 */
+    amhw_hc32_lvd_cr_clr (p_hw_base);
 
     /* 触发条件使能 */
-    amhw_hc32_lvd_tri_enable (gp_hw_lvd, LVD_TRI_TYPE);
+    amhw_hc32_lvd_tri_enable (p_hw_base, __LVD_TRI_TYPE);
 
     /* 数字滤波时间选择 */
-    amhw_hc32_lvd_deb_time_sel (gp_hw_lvd, LVD_DEB_TIME);
+    amhw_hc32_lvd_deb_time_sel (p_hw_base, __LVD_DEB_TIME);
 
     /* 使能数字滤波 */
-    amhw_hc32_lvd_deb_time_enable (gp_hw_lvd);
+    amhw_hc32_lvd_deb_time_enable (p_hw_base);
 
     /* 阈值电压选择 */
-    amhw_hc32_lvd_vids_sel (gp_hw_lvd, LVD_VIDS);
+    amhw_hc32_lvd_vids_sel (p_hw_base, lvd_vids);
 
     /* 监测来源选择 */
-    amhw_hc32_lvd_src_sel (gp_hw_lvd, LVD_SRC);
+    amhw_hc32_lvd_src_sel (p_hw_base, lvd_src);
 
     /* 触发动作配置 */
-    amhw_hc32_lvd_tri_act_sel (gp_hw_lvd, LVD_TRI_ACT);
-
+    amhw_hc32_lvd_tri_act_sel (p_hw_base, __LVD_TRI_ACT);
 }
 
 /**
- * \brief 例程入口
+ * \brief LVD系统复位例程，hw接口层实现
  */
-void demo_hc32_hw_lvd_system_reset_entry (void *p_hw_lvd)
+void demo_hc32_hw_lvd_system_reset_entry (amhw_hc32_lvd_t     *p_hw_base,
+                                          amhw_hc32_lvd_vids_t lvd_vids,
+                                          uint32_t             lvd_src)
 {
-    if (p_hw_lvd == NULL)
-    {
-        return ;
+    if (p_hw_base == NULL) {
+        return;
     }
 
-    gp_hw_lvd  = (amhw_hc32_lvd_t *)p_hw_lvd;
-
     /* 判断复位标志 */
-    if (amhw_hc32_rcc_reset_flag_check (AMHW_HC32_RCC_RESET_FLAG_LVD))
-        {
-        am_led_on(LED0);
-        am_mdelay(1000);
+    if (amhw_hc32_rcc_reset_flag_check (AMHW_HC32_RCC_RESET_FLAG_LVD)) {
+
         am_led_off(LED0);
-        am_mdelay(1000);
+        am_mdelay(500);
         am_led_on(LED0);
+        am_mdelay(500);
+        am_led_off(LED0);
 
         /* 清除复位标志 */
         amhw_hc32_rcc_reset_flag_clr(AMHW_HC32_RCC_RESET_FLAG_LVD);
     }
 
     /* LVD初始化 */
-    lvd_init ();
+    __lvd_hw_init(p_hw_base, lvd_vids, lvd_src);
 
     /* LVD使能 */
-    amhw_hc32_lvd_enable (p_hw_lvd);
+    amhw_hc32_lvd_enable (p_hw_base);
 
-    while (1){
+    AM_FOREVER {
+
         am_kprintf ("Mcu is running!\r\n");
+
+        am_mdelay(1000);
     }
 }
 

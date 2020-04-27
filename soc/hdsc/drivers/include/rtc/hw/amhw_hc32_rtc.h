@@ -16,6 +16,9 @@
  *
  * \internal
  * \par Modification history
+ * - 1.10 20-04-23 zcb, Modify the read and write interface of the
+ *                      BCD encoding format register, read and write
+ *                      only once
  * - 1.00 19-10-16  zp, first implementation
  * \endinternal
  */
@@ -447,45 +450,30 @@ void amhw_hc32_rtc_mode_sel (amhw_hc32_rtc_t     *p_hw_rtc,
 }
 
 /**
- * \brief SECH、SECL 秒计数器设置
+ * \brief 秒计数器设置
  *
- * \param[in] p_hw_rtc 指向 amhw_hc32_rtc_t结构的指针
- * \param[in] value    秒计数值
+ * \param[in] p_hw_rtc : 指向 amhw_hc32_rtc_t结构的指针
+ * \param[in] value    : 秒计数值
  *
- * \return AM_FALSE : 设置失败，参数错误
- *         AM_TRUE  ： 设置成功
+ * \retval 无
  */
 am_static_inline
-am_bool_t amhw_hc32_rtc_sec_set (amhw_hc32_rtc_t *p_hw_rtc,
-                                   uint8_t            value)
+void amhw_hc32_rtc_sec_set (amhw_hc32_rtc_t *p_hw_rtc, uint8_t value)
 {
-    if(value > 59) {
-        return AM_FALSE;
-    }
-
-    p_hw_rtc->sec = (p_hw_rtc->sec & (~0x7ful)) | ((value / 10) << 4);
-    p_hw_rtc->sec = p_hw_rtc->sec | ((value % 10) << 0);
-
-    return AM_TRUE;
+    p_hw_rtc->sec = AM_HEX_TO_BCD(value);
 }
 
 /**
- * \brief SECH、SECL 秒计数器获取
+ * \brief 秒计数器获取
  *
- * \param[in] p_hw_rtc 指向 amhw_hc32_rtc_t结构的指针
+ * \param[in] p_hw_rtc : 指向 amhw_hc32_rtc_t结构的指针
  *
- * \return 秒数值
+ * \return 秒
  */
 am_static_inline
 uint8_t amhw_hc32_rtc_sec_get (amhw_hc32_rtc_t *p_hw_rtc)
 {
-    uint8_t value = 0;
-
-    value = ((p_hw_rtc->sec >> 4) & 0x7ul);
-
-    value = value * 10 + ((p_hw_rtc->sec >> 0) & 0xful);
-
-    return value;
+    return AM_BCD_TO_HEX(p_hw_rtc->sec);
 }
 
 /**
@@ -498,17 +486,9 @@ uint8_t amhw_hc32_rtc_sec_get (amhw_hc32_rtc_t *p_hw_rtc)
  *         AM_TRUE  ： 设置成功
  */
 am_static_inline
-am_bool_t amhw_hc32_rtc_min_set (amhw_hc32_rtc_t *p_hw_rtc,
-                                   uint8_t            value)
+void amhw_hc32_rtc_min_set (amhw_hc32_rtc_t *p_hw_rtc, uint8_t value)
 {
-    if(value > 59) {
-        return AM_FALSE;
-    }
-
-    p_hw_rtc->min = (p_hw_rtc->min & (~0x7ful)) | ((value / 10) << 4);
-    p_hw_rtc->min = p_hw_rtc->min | ((value % 10) << 0);
-
-    return AM_TRUE;
+    p_hw_rtc->min = AM_HEX_TO_BCD(value);
 }
 
 /**
@@ -521,13 +501,7 @@ am_bool_t amhw_hc32_rtc_min_set (amhw_hc32_rtc_t *p_hw_rtc,
 am_static_inline
 uint8_t amhw_hc32_rtc_min_get (amhw_hc32_rtc_t *p_hw_rtc)
 {
-    uint8_t value = 0;
-
-    value = ((p_hw_rtc->min >> 4) & 0x7ul);
-
-    value = value * 10 + ((p_hw_rtc->min >> 0) & 0xful);
-
-    return value;
+    return AM_BCD_TO_HEX(p_hw_rtc->min);
 }
 
 /**
@@ -540,17 +514,9 @@ uint8_t amhw_hc32_rtc_min_get (amhw_hc32_rtc_t *p_hw_rtc)
  *         AM_TRUE  ： 设置成功
  */
 am_static_inline
-am_bool_t amhw_hc32_rtc_hour_set (amhw_hc32_rtc_t *p_hw_rtc,
-                                    uint8_t            value)
+void amhw_hc32_rtc_hour_set (amhw_hc32_rtc_t *p_hw_rtc, uint8_t value)
 {
-    if(value > 32) {
-        return AM_FALSE;
-    }
-
-    p_hw_rtc->hour = (p_hw_rtc->hour & (~0x3ful)) | ((value / 10) << 4);
-    p_hw_rtc->hour = p_hw_rtc->hour | ((value % 10) << 0);
-
-    return AM_TRUE;
+    p_hw_rtc->hour = AM_HEX_TO_BCD(value);
 }
 
 /**
@@ -563,13 +529,7 @@ am_bool_t amhw_hc32_rtc_hour_set (amhw_hc32_rtc_t *p_hw_rtc,
 am_static_inline
 uint8_t amhw_hc32_rtc_hour_get (amhw_hc32_rtc_t *p_hw_rtc)
 {
-    uint8_t value = 0;
-
-    value = ((p_hw_rtc->hour >> 4) & 0x3ul);
-
-    value = value * 10 + ((p_hw_rtc->hour >> 0) & 0xful);
-
-    return value;
+    return AM_BCD_TO_HEX(p_hw_rtc->hour);
 }
 
 /**
@@ -582,17 +542,9 @@ uint8_t amhw_hc32_rtc_hour_get (amhw_hc32_rtc_t *p_hw_rtc)
  *         AM_TRUE  ： 设置成功
  */
 am_static_inline
-am_bool_t amhw_hc32_rtc_day_set (amhw_hc32_rtc_t *p_hw_rtc,
-                                   uint8_t            value)
+void amhw_hc32_rtc_day_set (amhw_hc32_rtc_t *p_hw_rtc, uint8_t value)
 {
-    if(value > 31) {
-        return AM_FALSE;
-    }
-
-    p_hw_rtc->day = (p_hw_rtc->day & (~0x3ful)) | ((value / 10) << 4);
-    p_hw_rtc->day = p_hw_rtc->day | ((value % 10) << 0);
-
-    return AM_TRUE;
+    p_hw_rtc->day = AM_HEX_TO_BCD(value);
 }
 
 /**
@@ -605,13 +557,7 @@ am_bool_t amhw_hc32_rtc_day_set (amhw_hc32_rtc_t *p_hw_rtc,
 am_static_inline
 uint8_t amhw_hc32_rtc_day_get (amhw_hc32_rtc_t *p_hw_rtc)
 {
-    uint8_t value = 0;
-
-    value = ((p_hw_rtc->day >> 4) & 0x3ul);
-
-    value = value * 10 + ((p_hw_rtc->day >> 0) & 0xful);
-
-    return value;
+    return AM_BCD_TO_HEX(p_hw_rtc->day);
 }
 
 /**
@@ -624,17 +570,9 @@ uint8_t amhw_hc32_rtc_day_get (amhw_hc32_rtc_t *p_hw_rtc)
  *         AM_TRUE  ： 设置成功
  */
 am_static_inline
-am_bool_t amhw_hc32_rtc_week_set (amhw_hc32_rtc_t *p_hw_rtc,
-                                    uint8_t            value)
+void amhw_hc32_rtc_week_set (amhw_hc32_rtc_t *p_hw_rtc, uint8_t value)
 {
-    if(value > 6) {
-        return AM_FALSE;
-    }
-
-    p_hw_rtc->week = (p_hw_rtc->week & (~(0x7ul << 0))) |
-                     (value << 0);
-
-    return AM_TRUE;
+    p_hw_rtc->week = (uint32_t)(value & 0x7);
 }
 
 /**
@@ -647,7 +585,7 @@ am_bool_t amhw_hc32_rtc_week_set (amhw_hc32_rtc_t *p_hw_rtc,
 am_static_inline
 uint8_t amhw_hc32_rtc_week_get (amhw_hc32_rtc_t *p_hw_rtc)
 {
-    return ((p_hw_rtc->week >> 0) & 0x7ul);
+    return (p_hw_rtc->week & 0x7ul);
 }
 
 /**
@@ -660,17 +598,9 @@ uint8_t amhw_hc32_rtc_week_get (amhw_hc32_rtc_t *p_hw_rtc)
  *         AM_TRUE  ： 设置成功
  */
 am_static_inline
-am_bool_t amhw_hc32_rtc_mon_set (amhw_hc32_rtc_t *p_hw_rtc,
-                                   uint8_t            value)
+void amhw_hc32_rtc_mon_set (amhw_hc32_rtc_t *p_hw_rtc, uint8_t  value)
 {
-    if(value > 12) {
-        return AM_FALSE;
-    }
-
-    p_hw_rtc->mon = (p_hw_rtc->mon & (~0x1eul)) | ((value / 10) << 4);
-    p_hw_rtc->mon = (p_hw_rtc->mon & (~(0xful << 0))) | ((value % 10) << 0);
-
-    return AM_TRUE;
+    p_hw_rtc->mon = AM_HEX_TO_BCD(value);
 }
 
 /**
@@ -683,13 +613,7 @@ am_bool_t amhw_hc32_rtc_mon_set (amhw_hc32_rtc_t *p_hw_rtc,
 am_static_inline
 uint8_t amhw_hc32_rtc_mon_get (amhw_hc32_rtc_t *p_hw_rtc)
 {
-    uint8_t value = 0;
-
-    value = ((p_hw_rtc->mon >> 4) & 0x1ul);
-
-    value = value * 10 + ((p_hw_rtc->mon >> 0) & 0xful);
-
-    return value;
+    return AM_BCD_TO_HEX(p_hw_rtc->mon);
 }
 
 /**
@@ -702,17 +626,9 @@ uint8_t amhw_hc32_rtc_mon_get (amhw_hc32_rtc_t *p_hw_rtc)
  *         AM_TRUE  ： 设置成功
  */
 am_static_inline
-am_bool_t amhw_hc32_rtc_year_set (amhw_hc32_rtc_t *p_hw_rtc,
-                                    uint8_t            value)
+void amhw_hc32_rtc_year_set (amhw_hc32_rtc_t *p_hw_rtc, uint8_t value)
 {
-    if(value > 99) {
-        return AM_FALSE;
-    }
-
-    p_hw_rtc->year = (p_hw_rtc->year & (~0xfful)) | ((value / 10) << 4);
-    p_hw_rtc->year = p_hw_rtc->year | ((value % 10) << 0);
-
-    return AM_TRUE;
+    p_hw_rtc->year = AM_HEX_TO_BCD(value);
 }
 
 /**
@@ -725,13 +641,7 @@ am_bool_t amhw_hc32_rtc_year_set (amhw_hc32_rtc_t *p_hw_rtc,
 am_static_inline
 uint8_t amhw_hc32_rtc_year_get (amhw_hc32_rtc_t *p_hw_rtc)
 {
-    uint8_t value = 0;
-
-    value = ((p_hw_rtc->year >> 4) & 0xful);
-
-    value = value * 10 + ((p_hw_rtc->year >> 0) & 0xful);
-
-    return value;
+    return AM_BCD_TO_HEX(p_hw_rtc->year);
 }
 
 /**
@@ -744,17 +654,10 @@ uint8_t amhw_hc32_rtc_year_get (amhw_hc32_rtc_t *p_hw_rtc)
  *         AM_TRUE  ： 设置成功
  */
 am_static_inline
-am_bool_t amhw_hc32_rtc_sec_alarm_clock_set (amhw_hc32_rtc_t *p_hw_rtc,
-                                               uint8_t            value)
+void amhw_hc32_rtc_sec_alarm_clock_set (amhw_hc32_rtc_t *p_hw_rtc,
+                                        uint8_t          value)
 {
-    if(value > 59) {
-        return AM_FALSE;
-    }
-
-    p_hw_rtc->almsec = (p_hw_rtc->almsec & (~0x7ful)) | ((value / 10) << 4);
-    p_hw_rtc->almsec = p_hw_rtc->almsec | ((value % 10) << 0);
-
-    return AM_TRUE;
+    p_hw_rtc->almsec = AM_HEX_TO_BCD(value);
 }
 
 /**
@@ -767,13 +670,7 @@ am_bool_t amhw_hc32_rtc_sec_alarm_clock_set (amhw_hc32_rtc_t *p_hw_rtc,
 am_static_inline
 uint8_t amhw_hc32_rtc_sec_alarm_clock_get (amhw_hc32_rtc_t *p_hw_rtc)
 {
-    uint8_t value = 0;
-
-    value = ((p_hw_rtc->almsec >> 4) & 0x7ul);
-
-    value = value * 10 + ((p_hw_rtc->almsec >> 0) & 0xful);
-
-    return value;
+    return AM_BCD_TO_HEX(p_hw_rtc->almsec);
 }
 
 /**
@@ -786,17 +683,10 @@ uint8_t amhw_hc32_rtc_sec_alarm_clock_get (amhw_hc32_rtc_t *p_hw_rtc)
  *         AM_TRUE  ： 设置成功
  */
 am_static_inline
-am_bool_t amhw_hc32_rtc_min_alarm_clock_set (amhw_hc32_rtc_t *p_hw_rtc,
-                                               uint8_t            value)
+void amhw_hc32_rtc_min_alarm_clock_set (amhw_hc32_rtc_t *p_hw_rtc,
+                                        uint8_t          value)
 {
-    if(value > 59) {
-        return AM_FALSE;
-    }
-
-    p_hw_rtc->almmin = (p_hw_rtc->almmin & (~0x7ful)) | ((value / 10) << 4);
-    p_hw_rtc->almmin = p_hw_rtc->almmin | ((value % 10) << 0);
-
-    return AM_TRUE;
+    p_hw_rtc->almmin = AM_HEX_TO_BCD(value);
 }
 
 /**
@@ -809,13 +699,7 @@ am_bool_t amhw_hc32_rtc_min_alarm_clock_set (amhw_hc32_rtc_t *p_hw_rtc,
 am_static_inline
 uint8_t amhw_hc32_rtc_min_alarm_clock_get (amhw_hc32_rtc_t *p_hw_rtc)
 {
-    uint8_t value = 0;
-
-    value = ((p_hw_rtc->almmin >> 4) & 0x7ul);
-
-    value = value * 10 + ((p_hw_rtc->almmin >> 0) & 0xful);
-
-    return value;
+    return AM_BCD_TO_HEX(p_hw_rtc->almmin);
 }
 
 /**
@@ -828,18 +712,10 @@ uint8_t amhw_hc32_rtc_min_alarm_clock_get (amhw_hc32_rtc_t *p_hw_rtc)
  *         AM_TRUE  ： 设置成功
  */
 am_static_inline
-am_bool_t amhw_hc32_rtc_hour_alarm_clock_set (amhw_hc32_rtc_t *p_hw_rtc,
-                                                uint8_t            value)
+void amhw_hc32_rtc_hour_alarm_clock_set (amhw_hc32_rtc_t *p_hw_rtc,
+                                         uint8_t          value)
 {
-    if(value > 32) {
-        return AM_FALSE;
-    }
-
-    p_hw_rtc->almhour = (p_hw_rtc->almhour & (~0x3ful)) | ((value / 10) << 4);
-
-    p_hw_rtc->almhour = p_hw_rtc->almhour | ((value % 10) << 0);
-
-    return AM_TRUE;
+    p_hw_rtc->almhour = AM_HEX_TO_BCD(value);
 }
 
 /**
@@ -852,15 +728,8 @@ am_bool_t amhw_hc32_rtc_hour_alarm_clock_set (amhw_hc32_rtc_t *p_hw_rtc,
 am_static_inline
 uint8_t amhw_hc32_rtc_hour_alarm_clock_get (amhw_hc32_rtc_t *p_hw_rtc)
 {
-    uint8_t value = 0;
-
-    value = ((p_hw_rtc->almhour >> 4) & 0x3ul);
-
-    value = value * 10 + ((p_hw_rtc->almhour >> 0) & 0xful);
-
-    return value;
+    return AM_BCD_TO_HEX(p_hw_rtc->almhour);
 }
-
 
 /**
  * \brief ALMWEEK 周闹钟数值设置
@@ -872,17 +741,10 @@ uint8_t amhw_hc32_rtc_hour_alarm_clock_get (amhw_hc32_rtc_t *p_hw_rtc)
  *         AM_TRUE  ： 设置成功
  */
 am_static_inline
-am_bool_t amhw_hc32_rtc_week_alarm_clock_set (amhw_hc32_rtc_t *p_hw_rtc,
-                                                uint8_t            value)
+void amhw_hc32_rtc_week_alarm_clock_set (amhw_hc32_rtc_t  *p_hw_rtc,
+                                         uint8_t           value)
 {
-    if(value > 6) {
-        return AM_FALSE;
-    }
-
-    p_hw_rtc->almweek = (p_hw_rtc->almweek & (~(0x7ful << 0))) |
-                        (1ul << value);
-
-    return AM_TRUE;
+    p_hw_rtc->almweek = (uint32_t)(0x1 << (value & 0x7));
 }
 
 /**
@@ -895,18 +757,13 @@ am_bool_t amhw_hc32_rtc_week_alarm_clock_set (amhw_hc32_rtc_t *p_hw_rtc,
 am_static_inline
 uint8_t amhw_hc32_rtc_week_alarm_clock_get (amhw_hc32_rtc_t *p_hw_rtc)
 {
-    uint8_t value = 0;
-    uint8_t i     = 0;
-
-    value = (p_hw_rtc->almweek >> 0) & 0x7ful;
+    uint8_t i = 0;
 
     for(i = 0; i < 7; i++) {
-        value = value >> i;
-        if((value & 1) == 1) {
+        if (AM_BIT_ISSET(p_hw_rtc->almweek, i)) {
             return i;
         }
     }
-
     return 255;
 }
 

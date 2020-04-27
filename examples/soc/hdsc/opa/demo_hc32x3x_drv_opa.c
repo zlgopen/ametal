@@ -42,9 +42,9 @@
 #include "am_hc32x3x_opa.h"
 
 /**
- * \brief 例程入口
+ * \brief OPA例程，通过异步标准接口实现
  */
-void demo_hc32_std_opa_entry (void *p_handle, uint8_t ch)
+void demo_hc32x3x_drv_opa_entry (void *p_handle, uint8_t ch)
 {
 
    if (p_handle ==NULL){

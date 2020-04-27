@@ -228,7 +228,7 @@ am_static_inline
 void amhw_hc32_pca_int_clear (amhw_hc32_pca_t  *p_hw_pca,
                                 uint8_t             flag)
 {
-    p_hw_pca->iclr &= ~flag;
+    p_hw_pca->iclr &= ~(uint32_t)flag;
 }
 
 /**

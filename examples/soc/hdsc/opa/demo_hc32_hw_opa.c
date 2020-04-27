@@ -48,60 +48,48 @@
 #include "am_hc32_opa.h"
 #include "hw/amhw_hc32_opa.h"
 
-/*******************************************************************************
-  宏定义
-*******************************************************************************/
-#define OPA_CLK      AMHW_HC32_OPA_CLK_16    /**< \brief 校准脉宽 */
-#define OPA_AZ_WAY   AMHW_HC32_OPA_AZ_SW     /**< \brief 校准方式 */
+/** \brief 校准脉宽 */
+#define __OPA_CLK        AMHW_HC32_OPA_CLK_16
 
-/*******************************************************************************
-  全局变量
-*******************************************************************************/
-static amhw_hc32_opa_t       *gp_hw_opa   = NULL;  /**< \brief OPA 外设 */
+/** \brief 校准方式 */
+#define __OPA_AZ_WAY     AMHW_HC32_OPA_AZ_SW
 
 /**
  * \brief OPA初始化
  */
-void opa_init (uint8_t mode)
+static void __opa_general_purpose_init (amhw_hc32_opa_t *p_hw_opa)
 {
-    if (mode == AM_HC32_OPA_GENERAL){
-        /* 使能opa */
-        amhw_hc32_opa_en (gp_hw_opa);
+    /* 使能 OPA */
+    amhw_hc32_opa_en(p_hw_opa);
 
-        /* 自动校准使能 */
-        amhw_hc32_opa_az_en (gp_hw_opa);
+    /* 自动校准使能 */
+    amhw_hc32_opa_az_en(p_hw_opa);
 
-        /* 自动校准脉冲宽度设置 */
-        amhw_hc32_opa_clk_sel (gp_hw_opa, OPA_CLK);
+    /* 自动校准脉冲宽度设置 */
+    amhw_hc32_opa_clk_sel(p_hw_opa, __OPA_CLK);
 
-        /* 选择校准方式 */
-        amhw_hc32_opa_az_way_sel (gp_hw_opa, OPA_AZ_WAY);
-    }else{
-        ;
-    }
+    /* 选择校准方式 */
+    amhw_hc32_opa_az_way_sel(p_hw_opa, __OPA_AZ_WAY);
 }
 
 /**
- * \brief 例程入口
+ * \brief OPA 通用运算放大器模式，通过 HW 层接口实现
  */
-void demo_hc32_hw_opa_one_entry (void *p_hw_opa, uint8_t mode)
+void demo_hc32_hw_opa_entry (void *p_hw_opa)
 {
-    gp_hw_opa  = (amhw_hc32_opa_t *)p_hw_opa;
-
     /* 使能BGR */
     amhw_hc32_bgr_enable(AM_TRUE);
 
     /* OPA初始化 */
-    opa_init (mode);
+    __opa_general_purpose_init((amhw_hc32_opa_t *)p_hw_opa);
 
     /* 启动校准 */
-    amhw_hc32_az_start (p_hw_opa,AMHW_HC32_AZ_SW_START);
+    amhw_hc32_az_start (p_hw_opa, AMHW_HC32_AZ_SW_START);
 
     /* 延时 20us*/
     am_udelay(20);
 
-    while (1)
-    {
+    while (1) {
         ;
     }
 }

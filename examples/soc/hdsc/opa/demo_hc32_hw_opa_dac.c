@@ -14,19 +14,18 @@
  * \file
  * \brief OPA DAC电压跟随例程，通过 HW 层接口实现
  *
- * - 实验现象：
+ * - 操作步骤：
+ *   1. 示波器接 J8 PA4 脚
+ *   2. 将 ZSL420_EVK USB 接口与电脑连接，打开串口助手
  *
- *   PB00输入模拟电压。对应OPA输出引脚PA04也输出与PB00大小相等电压。
+ * - 实验现象：
+ *   1. DAC 输出正弦波 经过 OPA 后由 PA4 脚输出
  *
  * \note
- *    1. 如需观察串口打印的调试信息，需要将 PIOA_10 引脚连接 PC 串口的 TXD，
- *       PIOA_9 引脚连接 PC 串口的 RXD；
- *    2. 如果调试串口使用与本例程相同，则不应在后续继续使用调试信息输出函数
- *      （如：AM_DBG_INFO()）。
+ *   1. 观察串口输出信息需要在 am_prj_config.h 中使能 AM_CFG_DEBUG_ENABLE
  *
  * \par 源代码
  * \snippet demo_hc32_hw_opa_dac.c src_hc32_hw_opa_dac
- *
  *
  * \internal
  * \par Modification History
@@ -104,12 +103,13 @@ void opa_hw_init (uint8_t mode)
 }
 
 /**
- * \brief 例程入口
+ * \brief OPA DAC电压跟随例程，通过 HW 层接口实现
  */
-void demo_hc32_hw_opa_dac_entry (void     *p_hw_opa,
-                                 void     *p_hw_dac,
-                                 uint8_t   mode,
-                                 uint16_t *vol_val)
+void demo_hc32_hw_opa_dac_entry (void      *p_hw_opa,
+                                 void      *p_hw_dac,
+                                 uint8_t    mode,
+                                 uint16_t  *p_vol_val,
+                                 uint32_t   number)
 {
     int i = 0;
 
@@ -130,15 +130,13 @@ void demo_hc32_hw_opa_dac_entry (void     *p_hw_opa,
         /* 软件触发 */
         amhw_hc32_dac_chan_software_trg_enable(gp_hw_dac);
 
-        if (i < 128)
-        {
-            amhw_hc32_dac_chan_12bit_right_aligned_data (gp_hw_dac,
-                                                           vol_val[i]);
+        if (i < number) {
+            amhw_hc32_dac_chan_12bit_right_aligned_data(gp_hw_dac,
+                                                        p_vol_val[i]);
             i++;
         }else{
             i = 0;
         }
-
         am_mdelay(1000);
     }
 }

@@ -176,13 +176,13 @@ void uart_int_init (amhw_hc32_uart_t *p_hw_uart,
 }
 
 /**
- * \brief 例程入口
+ * \brief UART 中断发送例程，通过 HW 层接口实现
  */
 void demo_hc32_hw_uart_int_entry (void             *p_hw_uart,
-                                    void (* pfn_init)(void),
-                                    uint32_t         clk_rate,
-                                    unsigned long    uart_base,
-                                    unsigned char    inum_uart)
+                                  void            (*pfn_init) (void),
+                                  uint32_t          clk_rate,
+                                  unsigned long     uart_base,
+                                  unsigned char     inum_uart)
 {
     amhw_hc32_uart_t *p_uart = (amhw_hc32_uart_t *)p_hw_uart;
 

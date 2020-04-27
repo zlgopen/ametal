@@ -105,10 +105,12 @@ am_local am_const struct am_spi_drv_funcs __g_spi_drv_funcs = {
 #define __SPI_FRQIIN_GET(p_hw_spi)    am_clk_rate_get(p_this->p_devinfo->clk_id)
 
 /* 获取SPI支持的最大速度 */
-#define __SPI_MAXSPEED_GET(p_hw_spi) (__SPI_FRQIIN_GET(p_hw_spi) / 2)
+#define __SPI_MAXSPEED_GET(p_hw_spi)  \
+    ((uint32_t)(__SPI_FRQIIN_GET(p_hw_spi) / 2))
 
 /* 获取SPI支持的最小速度 */
-#define __SPI_MINSPEED_GET(p_hw_spi) (__SPI_FRQIIN_GET(p_hw_spi) / 128)
+#define __SPI_MINSPEED_GET(p_hw_spi)  \
+    ((uint32_t)(__SPI_FRQIIN_GET(p_hw_spi) / 128))
 
 /**
  * \brief 位数转字节

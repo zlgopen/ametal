@@ -40,8 +40,7 @@
 #include "am_vdebug.h"
 #include "hw/amhw_hc32_tim.h"
 #include "am_led.h"
-
-#define LED0            0
+#include "am_board.h"
 
 static uint8_t chan_num = 0;
 
@@ -166,7 +165,7 @@ void tim_pwm_chan_config (amhw_hc32_tim_t *p_hw_tim,
     duty_c = period_c - duty_c;
 
     /* 设置某一通道的比较值 */
-    amhw_hc32_tim_mode23_ccrxy_set(p_hw_tim, chan, duty_c - 1);
+    amhw_hc32_tim_mode23_ccr_set(p_hw_tim, chan, duty_c - 1);
 
     /* 设置PWM输出模式为PWM2 */
     amhw_hc32_tim_mode23_compare_set(
@@ -243,14 +242,14 @@ void tim_pwm_init (amhw_hc32_tim_t *p_hw_tim, uint8_t type, uint8_t chan)
 }
 
 /**
- * \brief 例程入口
+ * \brief 定时器 PWM 输出例程，通过 HW 层接口实现
  */
 void demo_hc32_hw_tim_pwm_entry (void    *p_hw_tim,
-                                   uint8_t  type,
-                                   uint32_t chan,
-                                   uint32_t clk_rate,
-                                   uint8_t  clk_div,
-                                   int32_t  inum)
+                                 uint8_t  type,
+                                 uint32_t chan,
+                                 uint32_t clk_rate,
+                                 uint8_t  clk_div,
+                                 int32_t  inum)
 {
 
     amhw_hc32_tim_t *p_tim = (amhw_hc32_tim_t *)p_hw_tim;

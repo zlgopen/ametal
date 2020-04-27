@@ -225,14 +225,14 @@ static void __hc32_hw_adc_init (amhw_hc32_adtim_t *p_hw_adtim,
 }
 
 /**
- * \brief 例程入口
+ * \brief 高级定时器定时触发ADC转换例程，通过 HW 层接口实现
  */
 void demo_hc32_hw_adtim_trig_adc_sqr_entry (void    *p_hw_adtim,
-                                              uint32_t period_us,
-                                              void    *p_hw_adc,
-                                              int      adc_int_num,
-                                              int     *p_adc_chan,
-                                              uint8_t  sqr_num)
+                                            uint32_t period_us,
+                                            void    *p_hw_adc,
+                                            int      adc_int_num,
+                                            int     *p_adc_chan,
+                                            uint8_t  sqr_num)
 {
 
     amhw_hc32_adtim_t *p_adtim = (amhw_hc32_adtim_t *)p_hw_adtim;
