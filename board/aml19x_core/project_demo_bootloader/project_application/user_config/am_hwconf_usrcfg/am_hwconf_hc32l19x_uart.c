@@ -56,10 +56,10 @@ static void __hc32_plfm_uart0_deinit (void)
 static const am_hc32_uart_devinfo_t __g_uart0_devinfo = {
 
     HC32_UART0_BASE,            /**< \brief 串口0 */
-    INUM_UART0_2,               /**< \brief 串口0的中断编号 */
+    INUM_UART0_2,                 /**< \brief 串口0的中断编号 */
     AMHW_HC32_UART_WORK_MODE_1, /**< \brief 串口工作模式 */
 
-    AMHW_HC32_UART_PARITY_NO |  /**< \brief 无极性 */
+    AMHW_HC32_UART_PARITY_NO |  /**< \brief 无极性  MODE0/1:无需校验  MODE2/3:必须校验*/
     AMHW_HC32_UART_STOP_1_0_BIT,/**< \brief 1个停止位 */
 
     115200,                       /**< \brief 设置的波特率 */
@@ -83,12 +83,16 @@ static const am_hc32_uart_devinfo_t __g_uart0_devinfo = {
     __hc32_plfm_uart0_deinit,   /**< \brief UART0的平台去初始化 */
 };
 
+/* 串口中断源复用需要调用设备信息 */
+am_hc32_uart_dev_t  *__gp_uart0 = NULL;
+
 /**< \brief 定义串口0 设备 */
 static am_hc32_uart_dev_t  __g_uart0_dev;
 
 /** \brief UART0实例初始化，获得uart0标准服务句柄 */
 am_uart_handle_t am_hc32_uart0_inst_init (void)
 {
+    __gp_uart0 = &__g_uart0_dev;
     return am_hc32_uart_init(&__g_uart0_dev, &__g_uart0_devinfo);
 }
 
@@ -123,7 +127,7 @@ static const am_hc32_uart_devinfo_t __g_uart1_devinfo = {
     INUM_UART1_3,                 /**< \brief 串口1的中断编号 */
     AMHW_HC32_UART_WORK_MODE_1, /**< \brief 串口工作模式 */
 
-    AMHW_HC32_UART_PARITY_NO |  /**< \brief 无极性 */
+    AMHW_HC32_UART_PARITY_NO |  /**< \brief 无极性  MODE0/1:无需校验  MODE2/3:必须校验*/
     AMHW_HC32_UART_STOP_1_0_BIT,/**< \brief 1个停止位 */
 
     115200,                       /**< \brief 设置的波特率 */
@@ -147,12 +151,16 @@ static const am_hc32_uart_devinfo_t __g_uart1_devinfo = {
     __hc32_plfm_uart1_deinit,   /**< \brief UART1的平台去初始化 */
 };
 
+/* 串口中断源复用需要调用设备信息 */
+am_hc32_uart_dev_t  *__gp_uart1 = NULL;
+
 /**< \brief 定义串口1 设备 */
 static am_hc32_uart_dev_t  __g_uart1_dev;
 
 /** \brief UART1实例初始化，获得uart1标准服务句柄 */
 am_uart_handle_t am_hc32_uart1_inst_init (void)
 {
+    __gp_uart1 = &__g_uart1_dev;
     return am_hc32_uart_init(&__g_uart1_dev, &__g_uart1_devinfo);
 }
 
@@ -187,7 +195,7 @@ static const am_hc32_uart_devinfo_t __g_uart2_devinfo = {
     INUM_UART0_2,                 /**< \brief 串口2的中断编号 */
     AMHW_HC32_UART_WORK_MODE_1, /**< \brief 串口工作模式 */
 
-    AMHW_HC32_UART_PARITY_NO |  /**< \brief 无极性 */
+    AMHW_HC32_UART_PARITY_NO |  /**< \brief 无极性  MODE0/1:无需校验  MODE2/3:必须校验*/
     AMHW_HC32_UART_STOP_1_0_BIT,/**< \brief 1个停止位 */
 
     115200,                       /**< \brief 设置的波特率 */
@@ -211,12 +219,16 @@ static const am_hc32_uart_devinfo_t __g_uart2_devinfo = {
     __hc32_plfm_uart2_deinit,   /**< \brief UART2的平台去初始化 */
 };
 
+/* 串口中断源复用需要调用设备信息 */
+am_hc32_uart_dev_t  *__gp_uart2 = NULL;
+
 /**< \brief 定义串口2 设备 */
 static am_hc32_uart_dev_t  __g_uart2_dev;
 
 /** \brief UART2实例初始化，获得uart2标准服务句柄 */
 am_uart_handle_t am_hc32_uart2_inst_init (void)
 {
+    __gp_uart2 = &__g_uart2_dev;
     return am_hc32_uart_init(&__g_uart2_dev, &__g_uart2_devinfo);
 }
 
@@ -251,7 +263,7 @@ static const am_hc32_uart_devinfo_t __g_uart3_devinfo = {
     INUM_UART0_2,                 /**< \brief 串口3的中断编号 */
     AMHW_HC32_UART_WORK_MODE_1, /**< \brief 串口工作模式 */
 
-    AMHW_HC32_UART_PARITY_NO |  /**< \brief 无极性 */
+    AMHW_HC32_UART_PARITY_NO |  /**< \brief 无极性  MODE0/1:无需校验  MODE2/3:必须校验*/
     AMHW_HC32_UART_STOP_1_0_BIT,/**< \brief 1个停止位 */
 
     115200,                       /**< \brief 设置的波特率 */
@@ -275,12 +287,16 @@ static const am_hc32_uart_devinfo_t __g_uart3_devinfo = {
     __hc32_plfm_uart3_deinit,   /**< \brief UART3的平台去初始化 */
 };
 
+/* 串口中断源复用需要调用设备信息 */
+am_hc32_uart_dev_t *__gp_uart3 = NULL;
+
 /**< \brief 定义串口3 设备 */
 static am_hc32_uart_dev_t  __g_uart3_dev;
 
 /** \brief UART3实例初始化，获得uart3标准服务句柄 */
 am_uart_handle_t am_hc32_uart3_inst_init (void)
 {
+    __gp_uart3 = &__g_uart3_dev;
     return am_hc32_uart_init(&__g_uart3_dev, &__g_uart3_devinfo);
 }
 

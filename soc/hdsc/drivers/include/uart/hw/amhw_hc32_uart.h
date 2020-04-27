@@ -386,6 +386,9 @@ amhw_hc32_uart_work_mode_t amhw_hc32_uart_mode_get (
  *                                    AMHW_HC32_UART_HW_PARITY_EVEN    或
  *                                    AMHW_HC32_UART_HW_PARITY_ODD     或
  *                                    AMHW_HC32_UART_PARITY_NO
+ *
+ * \note : 在Mode0/1下，不能使用数据校验；在Mode2/3下，必须使用数据校验；
+ *
  * \return none
  */
 am_static_inline

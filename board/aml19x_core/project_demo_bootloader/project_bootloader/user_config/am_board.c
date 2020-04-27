@@ -79,8 +79,6 @@ am_timer_handle_t g_system_tick_timer_handle;
  */
 void am_board_init (void)
 {
-    am_uart_handle_t dbg_handle = NULL;
-
 #ifdef  __GNUC__
     extern char __heap_start__;            /* Defined by the linker */
     extern char __heap_end__;              /* Defined by the linker */

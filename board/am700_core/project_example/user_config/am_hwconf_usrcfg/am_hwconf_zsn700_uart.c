@@ -59,7 +59,7 @@ static const am_zsn700_uart_devinfo_t __g_uart0_devinfo = {
     INUM_UART0_2,                 /**< \brief 串口0的中断编号 */
     AMHW_ZSN700_UART_WORK_MODE_1, /**< \brief 串口工作模式 */
 
-    AMHW_ZSN700_UART_PARITY_NO |  /**< \brief 无极性 */
+    AMHW_ZSN700_UART_PARITY_NO |  /**< \brief 无极性  MODE0/1:无需校验  MODE2/3:必须校验*/
     AMHW_ZSN700_UART_STOP_1_0_BIT,/**< \brief 1个停止位 */
 
     115200,                       /**< \brief 设置的波特率 */
@@ -127,7 +127,7 @@ static const am_zsn700_uart_devinfo_t __g_uart1_devinfo = {
     INUM_UART1_3,                 /**< \brief 串口1的中断编号 */
     AMHW_ZSN700_UART_WORK_MODE_1, /**< \brief 串口工作模式 */
 
-    AMHW_ZSN700_UART_PARITY_NO |  /**< \brief 无极性 */
+    AMHW_ZSN700_UART_PARITY_NO |  /**< \brief 无极性  MODE0/1:无需校验  MODE2/3:必须校验*/
     AMHW_ZSN700_UART_STOP_1_0_BIT,/**< \brief 1个停止位 */
 
     115200,                       /**< \brief 设置的波特率 */
@@ -195,7 +195,7 @@ static const am_zsn700_uart_devinfo_t __g_uart2_devinfo = {
     INUM_UART0_2,                 /**< \brief 串口2的中断编号 */
     AMHW_ZSN700_UART_WORK_MODE_1, /**< \brief 串口工作模式 */
 
-    AMHW_ZSN700_UART_PARITY_NO |  /**< \brief 无极性 */
+    AMHW_ZSN700_UART_PARITY_NO |  /**< \brief 无极性  MODE0/1:无需校验  MODE2/3:必须校验*/
     AMHW_ZSN700_UART_STOP_1_0_BIT,/**< \brief 1个停止位 */
 
     115200,                       /**< \brief 设置的波特率 */
@@ -263,7 +263,7 @@ static const am_zsn700_uart_devinfo_t __g_uart3_devinfo = {
     INUM_UART0_2,                 /**< \brief 串口3的中断编号 */
     AMHW_ZSN700_UART_WORK_MODE_1, /**< \brief 串口工作模式 */
 
-    AMHW_ZSN700_UART_PARITY_NO |  /**< \brief 无极性 */
+    AMHW_ZSN700_UART_PARITY_NO |  /**< \brief 无极性  MODE0/1:无需校验  MODE2/3:必须校验*/
     AMHW_ZSN700_UART_STOP_1_0_BIT,/**< \brief 1个停止位 */
 
     115200,                       /**< \brief 设置的波特率 */

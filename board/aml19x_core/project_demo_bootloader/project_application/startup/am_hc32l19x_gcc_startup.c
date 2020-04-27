@@ -68,8 +68,6 @@ void ResetHandler_function (void)
 {
     uint32_t *p_src;
     uint32_t *p_dest;
-    uint32_t length;
-    uint32_t *section_table_addr;
 
     SystemInit();
 
