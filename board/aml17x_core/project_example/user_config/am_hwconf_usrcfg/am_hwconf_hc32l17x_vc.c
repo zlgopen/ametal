@@ -143,13 +143,13 @@ static const am_hc32_vc_devinfo_t __g_vc_devinfo =
 static am_hc32_vc_dev_t __g_vc_dev;
 
 /** \brief VC 实例初始化，获得VC标准服务句柄 */
-am_vc_handle_t am_hc32_vc_inst_init (void)
+am_hc32_vc_handle_t am_hc32_vc_inst_init (void)
 {
     return am_hc32_vc_init(&__g_vc_dev, &__g_vc_devinfo);
 }
 
 /** \brief VC 实例解初始化 */
-void am_hc32_vc_inst_deinit (am_vc_handle_t handle)
+void am_hc32_vc_inst_deinit (am_hc32_vc_handle_t handle)
 {
     am_hc32_vc_deinit(handle);
 }

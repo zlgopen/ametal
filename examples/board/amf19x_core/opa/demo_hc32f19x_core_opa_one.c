@@ -47,8 +47,6 @@
 #include "am_hc32_opa.h"
 #include "demo_hc32_entries.h"
 
-#define OPA_MODE    AM_HC32_OPA_GENERAL  /**< \brief OPA通用模式*/
-
 /**
  * \brief 例程入口
  */
@@ -66,7 +64,7 @@ void demo_hc32f19x_core_hw_opa_one_entry (void)
     /* PB00 OPA输入 */
     am_gpio_pin_cfg (PIOB_0, PIOB_0_AIN);
 
-    demo_hc32_hw_opa_one_entry(HC32_OPA, OPA_MODE);
+    demo_hc32_hw_opa_entry(HC32_OPA);
 }
 
 /* end of file */

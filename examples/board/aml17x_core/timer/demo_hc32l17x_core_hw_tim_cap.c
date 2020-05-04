@@ -75,10 +75,9 @@ void demo_hc32l17x_core_hw_tim_cap_entry (void)
     am_clk_enable(CLK_TIM012);
 
     demo_hc32_hw_tim_cap_entry(HC32_TIM1,
-                                 AMHW_HC32_TIM_TYPE_TIM1,
-                                 HC32_TIM_CH0A,
-                                 am_clk_rate_get(CLK_TIM012),
-                                 INUM_TIM1);
+                               HC32_TIM_CH0A,
+                               am_clk_rate_get(CLK_TIM012),
+                               INUM_TIM1);
 }
 /** [src_hc32l17x_hw_tim_cap] */
 

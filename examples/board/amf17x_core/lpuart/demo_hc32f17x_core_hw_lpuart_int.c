@@ -72,7 +72,6 @@ void demo_hc32f17x_core_hw_lpuart_int_entry (void)
                                     AMHW_HC32_LPUART_SCLK_SRC_PCLK,
                                     16000000,
                                     115200,
-                                    HC32_LPUART0_BASE,
                                     INUM_LPUART0);
 }
 /** [src_hc32f17x_hw_lpuart_int] */

@@ -42,108 +42,127 @@
  */
 
 /** [src_hc32l17x_std_rtc] */
-
 #include "ametal.h"
-#include "am_vdebug.h"
 #include "am_rtc.h"
+#include "am_delay.h"
+#include "am_vdebug.h"
 #include "am_hc32_rtc.h"
-#include "am_hc32l17x_inst_init.h"
+#include "am_hc32.h"
 #include "demo_aml17x_core_entries.h"
 
-am_tm_t   __time;
-am_bool_t __get_flag =  AM_FALSE;
+/** \brief 当前时间 */
+static am_tm_t     __g_time;
 
+/** \brief 指示是否获取到时间 */
+static am_bool_t   __g_get_flag = AM_FALSE;
 
-am_local am_tm_t __g_current_time = {
-    0,           /**< \brief 秒 */
-    20,          /**< \brief 分 */
-    11,          /**< \brief 时 */
-    17,          /**< \brief 日 */
-    10,          /**< \brief 月 */
-    19,          /**< \brief 年 */
-    4,           /**< \brief 周 */
+/** \brief 初始化时间 */
+static am_tm_t     __g_init_time = {
+    00,   /** 0  秒             */
+    16,   /** 16 分             */
+    10,   /** 10 时             */
+    23,   /** 23 日             */
+    3,    /** 4 月             */
+    120,  /** 2020 年     */
+    4,    /** 周 4   */
+    114,  /** 天 当年的第 114 天 */
+    0,    /** 夏令时         */
 };
 
-void period_int_callback(void *drv)
+/**
+ * \brief 周期回调函数
+ */
+static void __rtc_period_callback (void *p_arg)
 {
+    am_rtc_handle_t rtc_handle = (am_rtc_handle_t )p_arg;
 
-    am_rtc_handle_t rtc_handle = (am_rtc_handle_t )drv;
-
-    if(am_rtc_time_get(rtc_handle, &__time) == AM_OK) {
-        __get_flag = AM_TRUE;
+    if(am_rtc_time_get(rtc_handle, &__g_time) == AM_OK) {
+        __g_get_flag = AM_TRUE;
     }
 }
 
-void alarm_clock_int_callback(void *drv)
+/**
+ * \brief 闹钟回调函数
+ */
+static void __rtc_alarm_callback (void *p_arg)
 {
-    AM_DBG_INFO("\r\n\r\n");
+    (void)p_arg;
     AM_DBG_INFO("alarm clock int!\r\n");
-    AM_DBG_INFO("alarm clock int!\r\n");
-    AM_DBG_INFO("alarm clock int!\r\n");
-    AM_DBG_INFO("alarm clock int!\r\n");
-    AM_DBG_INFO("\r\n\r\n");
 }
 
 /**
  * \brief 例程入口
  */
-void demo_hc32l17x_core_drv_rtc_entry (void)
+void demo_zsl420_hw_rtc_int_entry (void)
 {
-    int             ret          = AM_OK;
-    am_rtc_handle_t p_rtc_handle = am_hc32_rtc_inst_init();
+    int             ret        = AM_OK;
+    am_rtc_handle_t rtc_handle = am_hc32_rtc_inst_init();
 
-    AM_DBG_INFO("demo aml17x_core rtc entry!\r\n");
+    AM_DBG_INFO("demo zsl420 RTC entry!\r\n");
 
     /* 设置时间 */
-    ret= am_rtc_time_set(p_rtc_handle, &__g_current_time);
-
-
+    ret= am_rtc_time_set(rtc_handle, &__g_init_time);
     if(ret == AM_OK){
         AM_DBG_INFO("set time success \r\n");
     } else {
         AM_DBG_INFO("set time fail \r\n");
     }
 
-    /* 设置周期中断回调函数 */
-    am_hc32_rtc_callback_set(p_rtc_handle,
-                               AM_HC32_RTC_CALLBACK_PERIOD,
-                               period_int_callback,
-                               (void *)p_rtc_handle);
+    /* 连接周期中断回调函数 */
+    am_hc32_rtc_int_connect(
+        rtc_handle,
+        AM_HC32_RTC_INT_PERIOD,
+        __rtc_period_callback,
+        rtc_handle);
+    /* 使能周期中断 */
+    am_hc32_rtc_int_enable(
+        rtc_handle,
+        AM_HC32_RTC_INT_PERIOD);
 
-    /* 使用自定义周期中断时间选择，20s发生一次中期中断 */
-    am_hc32_rtc_period_int_enable(p_rtc_handle,
-                                    AMHW_HC32_RTC_PERIOD_INT_TYPE_CUSTOM,
-                                    AMHW_HC32_RTC_PERIOD_INT_TIME_1_MIN,
-                                    10.0);
+    /* 设置 PRDX 周期 */
+    amhw_hc32_rtc_period_int_time_set(HC32_RTC, 10.0);
+    /* 使用 PRDX 所设定的周期中断时间间隔 */
+    amhw_hc32_rtc_period_int_time_set_enable(HC32_RTC, AM_TRUE);
 
-    /* 设置闹钟中断回调函数 */
-    am_hc32_rtc_callback_set(p_rtc_handle,
-                               AM_HC32_RTC_CALLBACK_ALARM,
-                               alarm_clock_int_callback,
-                               (void *)p_rtc_handle);
+    /* 设置闹钟时间为每周4 11:21:00 */
+    amhw_hc32_rtc_hour_alarm_clock_set(HC32_RTC, 10);
+    amhw_hc32_rtc_min_alarm_clock_set(HC32_RTC,  16);
+    amhw_hc32_rtc_sec_alarm_clock_set(HC32_RTC,  25);
+    amhw_hc32_rtc_week_alarm_clock_set(HC32_RTC, 4);
 
-    /* 闹钟中断设置，在周四的11点21分0秒产生闹钟中断 */
-    am_hc32_rtc_alarm_clock_int_enable(p_rtc_handle,
-                                         0,
-                                         21,
-                                         11,
-                                         4);
+    /* 连接闹钟中断回调函数 */
+    am_hc32_rtc_int_connect(
+        rtc_handle,
+        AM_HC32_RTC_INT_ALARM,
+        __rtc_alarm_callback,
+        rtc_handle);
+    /* 使能闹钟中断 */
+    am_hc32_rtc_int_enable(
+        rtc_handle,
+        AM_HC32_RTC_INT_ALARM);
+
+    /* 启动闹钟 */
+    amhw_hc32_rtc_alarm_clock_enable(HC32_RTC, AM_TRUE);
 
     while(1) {
 
-        if(__get_flag == AM_TRUE) {
-            AM_DBG_INFO("%02d-%02d-%02d %02d:%02d:%02d %02d\n",
-                        __time.tm_year,
-                        __time.tm_mon,
-                        __time.tm_mday,
-                        __time.tm_hour,
-                        __time.tm_min,
-                        __time.tm_sec,
-                        __time.tm_wday);
-
-            __get_flag =  AM_FALSE;
-        }
         am_mdelay(20);
+
+        if(__g_get_flag != AM_TRUE) {
+            continue;
+        }
+
+        AM_DBG_INFO(
+            "%02d-%02d-%02d %02d:%02d:%02d %02d\n",
+            __g_time.tm_year,
+            __g_time.tm_mon,
+            __g_time.tm_mday,
+            __g_time.tm_hour,
+            __g_time.tm_min,
+            __g_time.tm_sec,
+            __g_time.tm_wday);
+
+        __g_get_flag =  AM_FALSE;
     }
 }
 /** [src_hc32l17x_std_rtc] */
