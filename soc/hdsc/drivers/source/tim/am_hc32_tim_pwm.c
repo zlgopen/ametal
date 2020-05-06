@@ -129,10 +129,10 @@ static int __tim_pwm_config (void          *p_drv,
     if(p_dev->p_devinfo->comp == 1) {
 
         /* 设置某一通道A的比较值 */
-        amhw_hc32_tim_mode23_ccrxy_set(p_hw_tim, (chan / 2) * 2, duty_c - 1);
+        amhw_hc32_tim_mode23_ccr_set(p_hw_tim, (chan / 2) * 2, duty_c - 1);
 
         /* 设置某一通道B的比较值 */
-        amhw_hc32_tim_mode23_ccrxy_set(p_hw_tim, (chan / 2) * 2 + 1, duty_c - 1);
+        amhw_hc32_tim_mode23_ccr_set(p_hw_tim, (chan / 2) * 2 + 1, duty_c - 1);
 
         /* 设置PWM输出极性设置 */
         amhw_hc32_tim_mode23_compare_set(
@@ -149,7 +149,7 @@ static int __tim_pwm_config (void          *p_drv,
     } else {
 
         /* 设置某一通道的比较值 */
-        amhw_hc32_tim_mode23_ccrxy_set(p_hw_tim, chan, duty_c - 1);
+        amhw_hc32_tim_mode23_ccr_set(p_hw_tim, chan, duty_c - 1);
 
         /* 设置PWM输出模式为PWM1 */
         amhw_hc32_tim_mode23_compare_set(

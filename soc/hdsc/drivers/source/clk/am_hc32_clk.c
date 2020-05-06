@@ -487,13 +487,9 @@ int am_hc32_clk_init (am_hc32_clk_dev_t           *p_dev,
     p_dev->p_devinfo  = p_devinfo;
     __gp_clk_dev      = p_dev;
 
-
-    if (p_devinfo->pllin_src == AMHW_HC32_PLL_INPUT_FRE_SRC_XTH_PF00) {
-
-        /* CLK平台初始化，配置时钟引脚 */
-        if (p_devinfo->pfn_plfm_init) {
-            p_devinfo->pfn_plfm_init();
-        }
+    /* CLK平台初始化，配置时钟引脚 */
+    if (p_devinfo->pfn_plfm_init) {
+        p_devinfo->pfn_plfm_init();
     }
 
     switch(p_devinfo->sysclk_src) {
@@ -605,7 +601,7 @@ int am_hc32_lpmode_clk_change (am_hc32_lpmode_mode_t mode)
     case AM_HC32_LPMODE_MODE_DEEPSLEEP:
         __g_lpmode_dev.lpmode_mode = AM_HC32_LPMODE_MODE_DEEPSLEEP;
         amhw_hc32_lpmode_sevonpend(AM_FALSE);
-        amhw_hc32_lpmode_sleepdeep(AM_FALSE);
+        amhw_hc32_lpmode_sleepdeep(AM_TRUE);
         amhw_hc32_lpmode_sleeponexit(AM_FALSE);
 
         if((__gp_clk_dev->sys_type != AMHW_HC32_SYSCLK_RCL) ||

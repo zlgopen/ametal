@@ -15,6 +15,7 @@
  * \brief LVD 底层操作接口
  * \internal
  * \par Modification History
+ * - 1.01 20-04-27 zcb, Modify the error namespace ANHW_ to AMHW_
  * - 1.00 19-10-08
  * \endinternal
  */
@@ -242,10 +243,10 @@ void amhw_hc32_lvd_vids_sel (amhw_hc32_lvd_t *p_hw_lvd, uint32_t flag)
 /*
  * \brief LVD 监测来源选择掩码
  */
-#define ANHW_HC32_LVD_SRC_PB07 (3U) /**< \brief PB07端口输入电压 */
-#define ANHW_HC32_LVD_SRC_PB08 (2U) /**< \brief PB08端口输入电压 */
-#define ANHW_HC32_LVD_SRC_PC13 (1U) /**< \brief PC13端口输入电压 */
-#define ANHW_HC32_LVD_SRC_AVCC (0U) /**< \brief AVCC电源电压*/
+#define AMHW_HC32_LVD_SRC_PB07 (3U) /**< \brief PB07端口输入电压 */
+#define AMHW_HC32_LVD_SRC_PB08 (2U) /**< \brief PB08端口输入电压 */
+#define AMHW_HC32_LVD_SRC_PC13 (1U) /**< \brief PC13端口输入电压 */
+#define AMHW_HC32_LVD_SRC_AVCC (0U) /**< \brief AVCC电源电压*/
 
 /**
  * \brief LVD 检测来源选择
@@ -264,8 +265,8 @@ void amhw_hc32_lvd_src_sel (amhw_hc32_lvd_t *p_hw_lvd, uint32_t flag)
 /*
  * \brief LVD 触发动作选择掩码
  */
-#define ANHW_HC32_LVD_TRI_ACT_SYSTEM_RESET  (1U)   /**< \brief 系统复位 */
-#define ANHW_HC32_LVD_TRI_ACT_NVIC_INT      (0U)   /**< \brief NVIC中断 */
+#define AMHW_HC32_LVD_TRI_ACT_SYSTEM_RESET  (1U)   /**< \brief 系统复位 */
+#define AMHW_HC32_LVD_TRI_ACT_NVIC_INT      (0U)   /**< \brief NVIC中断 */
 
 /**
  * \brief LVD 触发动作选择

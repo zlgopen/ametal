@@ -50,9 +50,6 @@ void __hc32_plfm_gpio_deinit (void)
     am_clk_disable(CLK_GPIO);
 }
 
-/** \brief 引脚重映像信息 */
-static amhw_hc32_gpio_afio_t __g_pin_afio[PIN_NUM];
-
 /** \brief 引脚触发信息内存 */
 static struct am_hc32_gpio_trigger_info __g_gpio_triginfos[PIN_INT_MAX];
 
@@ -70,11 +67,9 @@ const am_hc32_gpio_devinfo_t __g_gpio_devinfo = {
         INUM_PORTD_F,
     },
 
-    PIN_NUM,                       /**< \brief GPIO PIN数量 */
     PIN_INT_MAX,                   /**< \brief GPIO使用的最大外部中断线编号+1 */
 
     &__g_gpio_infomap[0],          /**< \brief GPIO 引脚外部事件信息 */
-    &__g_pin_afio[0],              /**< \brief GPIO PIN重映像信息 */
     &__g_gpio_triginfos[0],        /**< \brief GPIO PIN触发信息 */
 
     __hc32_plfm_gpio_init,       /**< \brief GPIO 平台初始化 */

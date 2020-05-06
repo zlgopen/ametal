@@ -16,6 +16,7 @@
  *
  * \internal
  * \par Modification history
+ * - 1.01 20-05-03 zcb, Delete bad global variable "__update_num"
  * - 1.00 19-10-08  zp, first implementation
  * \endinternal
  */
@@ -25,21 +26,12 @@
 #include "am_int.h"
 #include "am_clk.h"
 
-/*******************************************************************************
-* 私有定义
-*******************************************************************************/
-static uint16_t  __update_num = 0;
-
-/*******************************************************************************
-* 函数声明
-*******************************************************************************/
-
 /** \brief 捕获参数配置 */
 static int __hc32_adtim_cap_config (void              *p_cookie,
-                                      int                chan,
-                                      unsigned int       flags,
-                                      am_cap_callback_t  pfn_callback,
-                                      void              *p_arg);
+                                    int                chan,
+                                    unsigned int       flags,
+                                    am_cap_callback_t  pfn_callback,
+                                    void              *p_arg);
 
 /** \brief 使能捕获通道 */
 static int __hc32_adtim_cap_enable (void *p_drv, int chan);
@@ -51,10 +43,10 @@ static int __hc32_adtim_cap_disable (void *p_drv, int chan);
 static int __hc32_adtim_cap_reset (void *p_drv, int chan);
 
 static int __hc32_adtim_cap_count_to_adtime (void         *p_drv,
-                                               int           chan,
-                                               unsigned int  count1,
-                                               unsigned int  count2,
-                                               unsigned int *p_adtime_ns);
+                                             int           chan,
+                                             unsigned int  count1,
+                                             unsigned int  count2,
+                                             unsigned int *p_adtime_ns);
 
 static void __hc32_adtim_cap_irq_handler (void *p_arg);
 
@@ -71,10 +63,10 @@ static const struct am_cap_drv_funcs __g_adtim_cap_drv_funcs = {
 
 /** \brief 配置一个输入捕获通道 */
 static int __hc32_adtim_cap_config (void              *p_drv,
-                                      int                chan,
-                                      unsigned int       options,
-                                      am_cap_callback_t  pfn_callback,
-                                      void              *p_arg)
+                                    int                chan,
+                                    unsigned int       options,
+                                    am_cap_callback_t  pfn_callback,
+                                    void              *p_arg)
 {
     am_hc32_adtim_cap_dev_t *p_dev      = (am_hc32_adtim_cap_dev_t *)p_drv;
     amhw_hc32_adtim_t       *p_hw_adtim = (amhw_hc32_adtim_t *)
@@ -259,7 +251,7 @@ static int __hc32_adtim_cap_reset (void *p_drv, int chan)
 {
     am_hc32_adtim_cap_dev_t *p_dev      = (am_hc32_adtim_cap_dev_t *)p_drv;
     amhw_hc32_adtim_t       *p_hw_adtim = (amhw_hc32_adtim_t *)
-                                            p_dev->p_devinfo->tim_regbase;
+                                           p_dev->p_devinfo->tim_regbase;
 
     /* 定时器停止 */
     amhw_hc32_adtim_stopcount(p_hw_adtim);
@@ -280,10 +272,10 @@ static int __hc32_adtim_cap_reset (void *p_drv, int chan)
   * \brief 转换两次捕获值为时间值
   */
 static int __hc32_adtim_cap_count_to_adtime (void         *p_drv,
-                                               int           chan,
-                                               unsigned int  count1,
-                                               unsigned int  count2,
-                                               unsigned int *p_adtime_ns)
+                                             int           chan,
+                                             unsigned int  count1,
+                                             unsigned int  count2,
+                                             unsigned int *p_adtime_ns)
 {
     am_hc32_adtim_cap_dev_t *p_dev      = (am_hc32_adtim_cap_dev_t *)p_drv;
 
@@ -321,14 +313,12 @@ static void __hc32_adtim_cap_irq_handler (void *p_arg)
 {
     am_hc32_adtim_cap_dev_t *p_dev       = (am_hc32_adtim_cap_dev_t *)p_arg;
     amhw_hc32_adtim_t       *p_hw_adtim  = (amhw_hc32_adtim_t *)
-                                             p_dev->p_devinfo->tim_regbase;
+                                            p_dev->p_devinfo->tim_regbase;
 
     am_cap_callback_t callback_func;
     uint32_t          value;
 
     if ((amhw_hc32_adtim_getirqflag(p_hw_adtim, AMHW_HC32_ADTIM_OVFIrq)) == AM_TRUE) {
-
-        __update_num++;
 
         amhw_hc32_adtim_clearcount(p_hw_adtim);
 
@@ -340,8 +330,7 @@ static void __hc32_adtim_cap_irq_handler (void *p_arg)
         callback_func = p_dev->adtim_callback_info[0].callback_func;
 
         /* 得到通道A的值 */
-        value = amhw_hc32_adtim_getcapturevalue(p_hw_adtim, AMHW_HC32_ADTIM_CHX_A) +
-                (__update_num << 16ul);
+        value = amhw_hc32_adtim_getcapturevalue(p_hw_adtim, AMHW_HC32_ADTIM_CHX_A);
 
         if (callback_func != NULL) {
             callback_func(p_dev->adtim_callback_info[0].p_arg, value);
@@ -356,8 +345,7 @@ static void __hc32_adtim_cap_irq_handler (void *p_arg)
         callback_func = p_dev->adtim_callback_info[1].callback_func;
 
         /* 得到通道B的值 */
-        value = amhw_hc32_adtim_getcapturevalue(p_hw_adtim, AMHW_HC32_ADTIM_CHX_B) +
-                (__update_num << 16ul);
+        value = amhw_hc32_adtim_getcapturevalue(p_hw_adtim, AMHW_HC32_ADTIM_CHX_B);
 
         if (callback_func != NULL) {
             callback_func(p_dev->adtim_callback_info[1].p_arg, value);
@@ -372,7 +360,7 @@ static void __hc32_adtim_cap_irq_handler (void *p_arg)
   * \brief 捕获初始化
   */
 void __hc32_adtim_cap_init (amhw_hc32_adtim_t       *p_hw_adtim,
-                              am_hc32_adtim_cap_dev_t *p_dev)
+                            am_hc32_adtim_cap_dev_t *p_dev)
 {
     amhw_hc32_adtim_basecnt_cfg_t basecnt;
 
@@ -385,9 +373,6 @@ void __hc32_adtim_cap_init (amhw_hc32_adtim_t       *p_hw_adtim,
 
     /* 清零计数器 */
     amhw_hc32_adtim_clearcount(p_hw_adtim);
-
-    __update_num = 0;
-
 }
 
 am_cap_handle_t am_hc32_adtim_cap_init (
@@ -445,8 +430,6 @@ void am_hc32_adtim_cap_deinit (am_cap_handle_t handle)
 
     /* 清零计数器 */
     amhw_hc32_adtim_clearcount(p_hw_adtim);
-
-    __update_num = 0;
 
     /* 关闭TIM模块 */
     amhw_hc32_adtim_stopcount(p_hw_adtim);

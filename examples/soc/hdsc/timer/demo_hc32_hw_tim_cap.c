@@ -42,126 +42,61 @@
 #include "am_vdebug.h"
 #include "hw/amhw_hc32_tim.h"
 
-static volatile am_bool_t g_flag       = AM_FALSE; /**< \brief 捕获标志 */
-static volatile uint32_t  g_time_ns    = 0;        /**< \brief 捕获计数值 */
-static uint32_t           __g_clk_rate = 0;        /**< \brief 时钟频率 */
-static uint8_t            chans_num    = 0;        /**< \brief 某一定时器的通道数量 */
-static uint16_t           __update_num = 0;        /**< \brief 更新溢出 */
-static uint16_t           pre          = 1;        /**< \brief 分频系数 */
+/** \brief 捕获通道 */
+static uint8_t            __g_cap_chan;
 
-static void __hc32_tim_hw_cap_irq_handler (void *p_arg)
+/** \brief 捕获完成标志 */
+static volatile am_bool_t __g_flag     = AM_FALSE;
+
+/** \brief 捕获到的周期时间 */
+static volatile uint32_t  __g_time_ns  = 0;
+
+/** \brief TIM 工作频率 */
+static uint32_t           __g_clk_rate = 0;
+
+/**
+ *  \brief 捕获中断处理函数
+ */
+static void __tim_cap_irq_handler (void *p_arg)
 {
-    amhw_hc32_tim_t *p_hw_tim  = (amhw_hc32_tim_t *)p_arg;
+    amhw_hc32_tim_t      *p_hw_tim = (amhw_hc32_tim_t *)p_arg;
+    volatile uint32_t     ifr      =  p_hw_tim->ifr;
+    static am_bool_t      first    = AM_TRUE;
+    static uint32_t       count;
+    volatile uint16_t     val;
+    uint32_t              chan_flag;
 
-    uint8_t            i         = 1;
-    uint32_t           value     = 0;
-
-    uint32_t           count_err = 0;
-    uint64_t           time_ns   = 0;
-
-    static uint32_t   count16   = 0;
-
-    static am_bool_t  first     = AM_TRUE;
-
-    if ((amhw_hc32_tim_mode23_int_flag_check(p_hw_tim,
-                AMHW_HC32_TIM_INT_FLAG_UPDATE)) == AM_TRUE) {
-
-        __update_num++;
-
-        amhw_hc32_tim_mode23_int_flag_clr(p_hw_tim,
-                                            AMHW_HC32_TIM_INT_FLAG_UPDATE);
+    /* Update interrupt flag */
+    if (AM_BIT_ISSET(ifr, AMHW_HC32_TIM_INT_FLAG_UPDATE)) {
+        /* 无法判断是否是当前通道溢出导致的更新 */
     }
 
-    for(i = 0; i < chans_num;i = i + 2) {
-           if ((amhw_hc32_tim_mode23_int_flag_check(p_hw_tim,
-                                                      (i / 2) + 2)) ==
-                                                      AM_TRUE) {
+    /* ((channel % 2) * 3 + 2) + (channel / 2) */
+    chan_flag = ((__g_cap_chan & 0x1) * 3 + 2) + (__g_cap_chan >> 1);
 
-               /* 得到对应通道的值 */
-               value = amhw_hc32_tim_mode23_ccrxy_get(p_hw_tim, i) +
-                       (__update_num << 16ul);
+    /* Channel flag */
+    if (AM_BIT_ISSET(ifr, chan_flag)) {
+        /* CCR */
+        val = amhw_hc32_tim_mode23_ccr_get(p_hw_tim, __g_cap_chan);
+        if (__g_flag  == AM_FALSE) {
+            if (first == AM_TRUE) {
+                /* First */
+                first =  AM_FALSE;
+                count =  val;
+            } else {
+                /* Second */
+                if (count < val) {
+                    count       = val - count;
+                    __g_time_ns = (uint64_t)1000000000 * count / __g_clk_rate;
+                }
 
-               if (g_flag == AM_FALSE) {
-
-                   if (first == AM_TRUE) {
-
-                       count16 = value;
-
-                       first  = AM_FALSE;
-
-                   } else {
-
-                       /* 定时器TIM不是32位计数器时, 避免溢出时数据错误 */
-                       if(count16 < value) {
-
-                            count_err = value - count16;
-
-                            /* 将两次读取值的差转换成时间 */
-                            time_ns = (uint64_t)1000000000 *
-                                                (uint64_t)count_err *
-                                                pre /
-                                                (uint64_t)__g_clk_rate;
-
-                            g_time_ns = time_ns;
-                       }
-
-                       first = AM_TRUE;
-
-                       /* 置标志为真，表明捕获完成 */
-                       g_flag = AM_TRUE;
-                   }
-               }
-
-               /* 清除通道i标志 */
-               amhw_hc32_tim_mode23_int_flag_clr(p_hw_tim, (i / 2) + 2);
-           }
-       }
-
-       /* 判断标志  （CH0B、CH1B、CH2B */
-       for(i = 1; i < chans_num;i = i + 2) {
-           if ((amhw_hc32_tim_mode23_int_flag_check(p_hw_tim,
-                                                      (i / 2) + 5)) ==
-                                                      AM_TRUE) {
-
-               /* 得到对应通道的值 */
-               value = amhw_hc32_tim_mode23_ccrxy_get(p_hw_tim, i) +
-                       (__update_num << 16ul);
-
-               if (g_flag == AM_FALSE) {
-
-                   if (first == AM_TRUE) {
-
-                       count16 = value;
-
-                       first  = AM_FALSE;
-
-                   } else {
-
-                       /* 定时器TIM不是32位计数器时, 避免溢出时数据错误 */
-                       if(count16 < value) {
-
-                            count_err = value - count16;
-
-                            /* 将两次读取值的差转换成时间 */
-                            time_ns = (uint64_t)1000000000 *
-                                                (uint64_t)count_err *
-                                                pre /
-                                                (uint64_t)__g_clk_rate;
-
-                            g_time_ns = time_ns;
-                       }
-
-                       first = AM_TRUE;
-
-                       /* 置标志为真，表明捕获完成 */
-                       g_flag = AM_TRUE;
-                   }
-               }
-
-               /* 清除通道i标志 */
-               amhw_hc32_tim_mode23_int_flag_clr(p_hw_tim,  (i / 2) + 5);
-           }
-       }
+                first       = AM_TRUE;
+                __g_flag    = AM_TRUE;
+            }
+        }
+    }
+    /* 清除中断标志 */
+    p_hw_tim->iclr &= ~ifr;
 }
 
 /**
@@ -177,8 +112,6 @@ static void tim_cap_chan_config (amhw_hc32_tim_t *p_hw_tim,
 
     /* 分频系数设置 */
     amhw_hc32_tim_mode_clkdiv_set(p_hw_tim, AMHW_HC32_TIM_CLK_DIV1);
-
-    pre = 1;
 
     switch(chan) {
     case 0:
@@ -244,7 +177,7 @@ static void tim_cap_enable (amhw_hc32_tim_t *p_hw_tim,
 {
 
     /* 中断连接并使能 */
-    am_int_connect(int_num, __hc32_tim_hw_cap_irq_handler, (void *)p_hw_tim);
+    am_int_connect(int_num, __tim_cap_irq_handler, (void *)p_hw_tim);
     am_int_enable(int_num);
 
     /* 设置自动重装寄存器的值 */
@@ -296,25 +229,18 @@ static void tim_cap_init (amhw_hc32_tim_t *p_hw_tim, uint32_t chan)
 }
 
 /**
- * \brief 例程入口
+ * \brief 定时器捕获例程，通过 HW 层接口实现
  */
 void demo_hc32_hw_tim_cap_entry (void     *p_hw_tim,
-                                   uint8_t   type,
-                                   uint32_t  chan,
-                                   uint32_t  clk_rate,
-                                   int32_t   inum)
+                                 uint32_t  chan,
+                                 uint32_t  clk_rate,
+                                 int32_t   inum)
 {
     amhw_hc32_tim_t *p_tim = (amhw_hc32_tim_t *)p_hw_tim;
 
     uint32_t freq = 0; /* 捕获到的频率 */
 
     __g_clk_rate = clk_rate;
-
-    if((amhw_hc32_tim_type_t)type == AMHW_HC32_TIM_TYPE_TIM3) {
-        chans_num = 6;
-    } else {
-        chans_num = 2;
-    }
 
     /* 初始化定时器为捕获功能 */
     tim_cap_init(p_tim, chan);
@@ -328,13 +254,12 @@ void demo_hc32_hw_tim_cap_entry (void     *p_hw_tim,
 
     while (1) {
 
-        if (g_flag == AM_TRUE) {
-
-            freq = 1000000000 / g_time_ns;
+        if (__g_flag == AM_TRUE) {
+            freq = 1000000000 / __g_time_ns;
             AM_DBG_INFO("The period is %d ns, The freq is %d Hz \r\n",
-                        g_time_ns,
+                        __g_time_ns,
                         freq);
-            g_flag = AM_FALSE;
+            __g_flag = AM_FALSE;
         }
     }
 }

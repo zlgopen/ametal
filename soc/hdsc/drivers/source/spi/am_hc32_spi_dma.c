@@ -39,13 +39,16 @@ includes
 *******************************************************************************/
 
 /** \brief 获取SPI的输入频率 */
-#define __SPI_FRQIIN_GET(p_hw_spi)    am_clk_rate_get(p_this->p_devinfo->clk_id)
+#define __SPI_FRQIIN_GET(p_hw_spi)    \
+    am_clk_rate_get(p_this->p_devinfo->clk_id)
 
 /** \brief 获取SPI的支持的最大速度 */
-#define __SPI_MAXSPEED_GET(p_hw_spi) (__SPI_FRQIIN_GET(p_hw_spi) / 2)
+#define __SPI_MAXSPEED_GET(p_hw_spi)  \
+    ((uint32_t)(__SPI_FRQIIN_GET(p_hw_spi) / 2))
 
 /** \brief 获取SPI支持的最小速度 */
-#define __SPI_MINSPEED_GET(p_hw_spi) (__SPI_FRQIIN_GET(p_hw_spi) / 128)
+#define __SPI_MINSPEED_GET(p_hw_spi)  \
+    ((uint32_t)(__SPI_FRQIIN_GET(p_hw_spi) / 128))
 
 /**
  * \brief SPI 控制器状态

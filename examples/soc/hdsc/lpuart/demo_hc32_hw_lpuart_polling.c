@@ -123,12 +123,12 @@ static void lpuart_polling_init (amhw_hc32_lpuart_t *p_hw_lpuart,
 }
 
 /**
- * \brief 例程入口
+ * \brief LPUART 轮询方式例程，通过 HW 层接口实现
  */
 void demo_hc32_hw_lpuart_polling_entry (void     *p_hw_lpuart,
-                                          uint8_t   clk_src,
-                                          uint32_t  clk_rate,
-                                          uint32_t  baudrate)
+                                        uint8_t   clk_src,
+                                        uint32_t  clk_rate,
+                                        uint32_t  baudrate)
 {
 
     /* 数据缓冲区 */

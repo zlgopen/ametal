@@ -40,16 +40,32 @@
 /** \brief RTC 平台初始化 */
 void __hc32_plfm_rtc_init()
 {
+    /* 外部晶振驱动能力选择 */
+    amhw_hc32_rcc_xtl_xtal_driver_set(AMHW_HC32_XTL_XTAL_DRIVER_DEFAULT);
+
+    /* XTL晶振振荡幅度的调整 */
+    amhw_hc32_rcc_xtl_xtal_amplitude_set(
+    AMHW_HC32_XTL_XTAL_AMPLITUDE_BIG_DEFAULT);
+
+    /* 外部高速时钟XTL稳定时间选择 */
+    amhw_hc32_rcc_xtl_waittime_set(AMHW_HC32_XTL_WAITTIME_16384);
+
+    amhw_hc32_rcc_set_start(0x5A5A);
+    amhw_hc32_rcc_set_start(0xA5A5);
+    amhw_hc32_rcc_xtl_enable();
+
+    /* 等待稳定*/
+    while(amhw_hc32_rcc_xtl_state_get() == AM_FALSE);
+
     am_clk_enable(CLK_RTC);
 
-    am_gpio_pin_cfg(PIOB_14, PIOB_14_RTC_1HZ | PIOB_14_OUT_PP);
+    /* RTC 时钟源选择 */
+    amhw_hc32_rtc_clk_src_sel(HC32_RTC, AMHW_HC32_RTC_CLK_SRC_XTL_32768Hz);
 }
 
 /** 解除 RTC 平台初始化 */
 void __hc32_plfm_rtc_deinit(void)
 {
-    am_clk_disable(CLK_RTC);
-
     am_gpio_pin_cfg(PIOB_14, PIOB_14_GPIO | PIOB_14_INPUT_PU);
 }
 
@@ -59,26 +75,11 @@ const struct am_hc32_rtc_devinfo __g_rtc_devinfo = {
     /** \brief RTC设备基地址 */
     HC32_RTC_BASE,
 
-    /** \brief RTC设备时钟源 */
-    AMHW_HC32_RTC_CLK_SRC_XTL_32768Hz,
-
     /**< \brief RTC 中断号 */
     INUM_RTC,
 
-    {
-        AM_TRUE,                      /* 是否使能1Hz输出功能
-                                       * AM_TRUE ： 使能 （请阅读下面两项配置的注释）
-                                       * AM_FALSE： 禁能（下面两项配置无效）
-                                       */
-        -92.554,                      /* 误差补偿值（-274.6 ~ 212.6）ppm，范围外代表关闭*/
-        AM_TRUE,                      /* 在ppm处于范围内时（即开启补偿的情况下），
-                                       * 选择是否开启高速时钟作为补偿时钟
-                                       *
-                                       * AM_TRUE ： 开启高速时钟作为补偿时钟
-                                       * AM_FALSE： 关闭高速时钟作为补偿时钟
-                                       */
-        AMHW_HC32_RTCCLK_ADJUST_24M,/* 高速时钟补偿时钟选择 ，和PCLK频率保持一致相同  */
-    },
+    /** \brief 从 1970-1-1 0:0:0 开始计算 */
+    1970,
 
     /** \brief 平台初始化函数 */
     __hc32_plfm_rtc_init,

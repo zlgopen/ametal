@@ -230,14 +230,14 @@ static void lpuart_hw_dma_init (amhw_hc32_lpuart_t *p_hw_lpuart)
 }
 
 /**
- * \brief 例程入口
+ * \brief LPUART DMA 发送例程，通过 HW 层接口实现
  */
 void demo_hc32_hw_lpuart_tx_dma_entry (void    *p_hw_lpuart,
-                                         uint8_t  clk_src,
-                                         uint32_t clk_rate,
-                                         uint32_t baudrate,
-                                         int32_t  dma_chan,
-                                         int32_t  dma_src)
+                                       uint8_t  clk_src,
+                                       uint32_t clk_rate,
+                                       uint32_t baudrate,
+                                       int32_t  dma_chan,
+                                       int32_t  dma_src)
 {
     uint8_t i = 0;
     uint8_t j = 0;

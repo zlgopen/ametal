@@ -191,12 +191,12 @@ static void aes_decy (uint8_t key_len,
 }
 
 /**
- * \brief 例程入口
+ * \brief AES 加密解密例程，通过 HW 层接口实现
  */
 void demo_hc32_hw_aes_ency_decy_entry (void     *p_hw_aes,
-                                         uint8_t   key_len,
-                                         uint32_t *p_aes_data,
-                                         uint32_t *p_key_data)
+                                       uint8_t   key_len,
+                                       uint32_t *p_aes_data,
+                                       uint32_t *p_key_data)
 {
     int i = 0;
 

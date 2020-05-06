@@ -112,14 +112,14 @@ static am_bool_t __hc32_hw_adtim_init(void          *p_hw_adtim,
 }
 
 /**
- * \brief 例程入口
+ * \brief 高级定时器端口、软件刹车例程，通过 HW 层接口实现
  */
 void demo_hc32_hw_adtim_port_sw_brake_entry (void          *p_hw_adtim,
-                                               uint8_t        chan,
-                                               unsigned long  duty_ns,
-                                               unsigned long  period_ns,
-                                               int            output_pin,
-                                               uint8_t        src)
+                                             uint8_t        chan,
+                                             unsigned long  duty_ns,
+                                             unsigned long  period_ns,
+                                             int            output_pin,
+                                             uint8_t        src)
 {
     char                              i;
     uint8_t                           t;

@@ -61,5 +61,5 @@ void demo_hc32f03x_core_std_opa_entry (void)
     AM_DBG_INFO("demo aml13x_core std opa  test!\r\n");
 
     /* 底层文件需要配置 模式、增益等参数*/
-    demo_hc32_std_opa_entry(am_hc32_opa1_inst_init(), OPA_CH);
+    demo_hc32x3x_drv_opa_entry(am_hc32_opa1_inst_init(), OPA_CH);
 }

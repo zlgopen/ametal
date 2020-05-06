@@ -82,14 +82,14 @@ static const am_hc32_lvd_devinfo_t __g_lvd_devinfo =
     /**
      * \brief LVD监测来源,用户配置值参考宏定义：LVD 监测来源选择掩码
      */
-    ANHW_HC32_LVD_SRC_AVCC,
+    AMHW_HC32_LVD_SRC_AVCC,
 
     /**
      * \brief LVD触发动作,用户配置值参考宏定义：LVD 触发动作选择掩码
      *
      * \note 此配置位只能选择为中断或者复位触发动作
      */
-    ANHW_HC32_LVD_TRI_ACT_SYSTEM_RESET,
+    AMHW_HC32_LVD_TRI_ACT_SYSTEM_RESET,
 
     /**< \brief LVD平台初始化函数 */
     __hc32_plfm_lvd_init,
@@ -102,13 +102,13 @@ static const am_hc32_lvd_devinfo_t __g_lvd_devinfo =
 static am_hc32_lvd_dev_t __g_lvd_dev;
 
 /** \brief LVD 实例初始化，获得LVD标准服务句柄 */
-am_lvd_handle_t am_hc32_lvd_inst_init (void)
+am_hc32_lvd_handle_t am_hc32_lvd_inst_init (void)
 {
     return am_hc32_lvd_init(&__g_lvd_dev, &__g_lvd_devinfo);
 }
 
 /** \brief LVD 实例解初始化 */
-void am_hc32_lvd_inst_deinit (am_lvd_handle_t handle)
+void am_hc32_lvd_inst_deinit (am_hc32_lvd_handle_t handle)
 {
     am_hc32_lvd_deinit(handle);
 }

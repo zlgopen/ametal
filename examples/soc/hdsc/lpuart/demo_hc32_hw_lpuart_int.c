@@ -138,11 +138,10 @@ static void lpuart_hw_irq_handler (void *p_arg)
 /**
  * \brief LPUART hw 中断收发初始化
  */
-void lpuart_int_init (amhw_hc32_lpuart_t *p_hw_lpuart,
-                      void (* pfn_init)(void),
+void lpuart_int_init (amhw_hc32_lpuart_t   *p_hw_lpuart,
+                      void                (*pfn_init) (void),
                       uint8_t               clk_src,
                       uint32_t              clk_rate,
-                      unsigned long         lpuart_base,
                       unsigned char         inum_lpuart)
 {
     /* 工作模式设置  */
@@ -222,15 +221,14 @@ void lpuart_int_init (amhw_hc32_lpuart_t *p_hw_lpuart,
 }
 
 /**
- * \brief 例程入口
+ * \brief LPUART 中断发送例程，通过 HW 层接口实现
  */
 void demo_hc32_hw_lpuart_int_entry (void             *p_hw_lpuart,
-                                      void (* pfn_init)(void),
-                                      uint8_t           sclk_src,
-                                      uint32_t          sclk_rate,
-                                      uint32_t          baudrate,
-                                      unsigned long     lpuart_base,
-                                      unsigned char     inum_lpuart)
+                                    void            (*pfn_init) (void),
+                                    uint8_t           sclk_src,
+                                    uint32_t          clk_rate,
+                                    uint32_t          baudrate,
+                                    unsigned char     inum_lpuart)
 {
     amhw_hc32_lpuart_t *p_lpuart = (amhw_hc32_lpuart_t *)p_hw_lpuart;
 
@@ -243,8 +241,7 @@ void demo_hc32_hw_lpuart_int_entry (void             *p_hw_lpuart,
     lpuart_int_init(p_lpuart,
                     pfn_init,
                     sclk_src,
-                    sclk_rate,
-                    lpuart_base,
+                    clk_rate,
                     inum_lpuart);
 
     lpuart_int_send(p_lpuart, hw_polling_str, sizeof(hw_polling_str));

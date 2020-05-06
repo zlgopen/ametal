@@ -39,8 +39,7 @@
 #include "am_vdebug.h"
 #include "hw/amhw_hc32_tim.h"
 #include "am_led.h"
-
-#define LED0          0
+#include "am_board.h"
 
 static uint8_t chan_num = 0;
 
@@ -152,7 +151,7 @@ static void tim_cmp_toggle_chan_config (amhw_hc32_tim_t *p_hw_tim,
     amhw_hc32_tim_cnt16_count_set(p_hw_tim, 0);
 
     /* 设置某一通道的比较值 */
-    amhw_hc32_tim_mode23_ccrxy_set(p_hw_tim, chan, match / 2 - 1);
+    amhw_hc32_tim_mode23_ccr_set(p_hw_tim, chan, match / 2 - 1);
 
     /* 比较匹配时翻转 */
     amhw_hc32_tim_mode23_compare_set(
@@ -229,14 +228,14 @@ void tim_cmp_toggle_init (amhw_hc32_tim_t     *p_hw_tim,
 }
 
 /**
- * \brief 例程入口
+ * \brief 定时器通道比较匹配引脚翻转例程，通过 HW 层接口实现
  */
 void demo_hc32_hw_tim_cmp_toggle_entry (void    *p_hw_tim,
-                                          uint8_t  type,
-                                          uint32_t chan,
-                                          uint32_t clk_rate,
-                                          uint8_t  clk_div,
-                                          uint8_t  inum)
+                                        uint8_t  type,
+                                        uint32_t chan,
+                                        uint32_t clk_rate,
+                                        uint8_t  clk_div,
+                                        uint8_t  inum)
 {
     amhw_hc32_tim_t *p_tim = (amhw_hc32_tim_t *)p_hw_tim;
 

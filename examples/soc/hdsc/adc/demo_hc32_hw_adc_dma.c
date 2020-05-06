@@ -132,14 +132,14 @@ static void __hc32_adc_init (amhw_hc32_adc_t *p_hw_adc,
 }
 
 /**
- * \brief 例程入口
+ * \brief ADC 硬件层（DMA）例程入口
  */
 void demo_hc32_hw_adc_dma_entry (void    *p_hw_adc,
-                                   int     *p_adc_chan,
-                                   int      chan_num,
-                                   uint32_t vref_mv,
-                                   int      dma_chan,
-                                   uint8_t  dma_src)
+                                 int     *p_adc_chan,
+                                 int      chan_num,
+                                 uint32_t vref_mv,
+                                 int      dma_chan,
+                                 uint8_t  dma_src)
 {
     uint32_t adc_mv = 0;    /* 采样电压 */
     uint32_t flags;
@@ -205,7 +205,7 @@ void demo_hc32_hw_adc_dma_entry (void    *p_hw_adc,
         for (i = 0; i < chan_num; i++) {
 
             /* 转换为电压值对应的整数值 */
-            adc_mv = __g_adc_dat[p_adc_chan[i]] * vref_mv / ((1UL << 12) -1);
+            adc_mv = __g_adc_dat[i] * vref_mv / ((1UL << 12) -1);
 
             am_kprintf("chan: %d, Sample : %d, Vol: %d mv\r\n", i,
                                                                 __g_adc_dat[i],

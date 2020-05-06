@@ -80,10 +80,10 @@ static void uart_polling_init (amhw_hc32_uart_t *p_hw_uart, uint32_t clk_rate)
 }
 
 /**
- * \brief 例程入口
+ * \brief UART 轮询方式例程，通过 HW 层接口实现
  */
 void demo_hc32_hw_uart_polling_entry (void     *p_hw_uart,
-                                        uint32_t  clk_rate)
+                                      uint32_t  clk_rate)
 {
 
     /* 数据缓冲区 */

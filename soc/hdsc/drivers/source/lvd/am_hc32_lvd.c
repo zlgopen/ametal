@@ -16,6 +16,7 @@
  *
  * \internal
  * \par Modification history
+ * - 1.01 20-04-27 zcb, Add callback function parameters
  * - 1.00 19-10-08
  * \endinternal
  */
@@ -51,21 +52,31 @@ void __lvd_irq_handler (void *p_cookie)
         amhw_hc32_int_falg_clr (p_hw_lvd);
 
         /* 用户回调函数 */
-        p_dev->pfn_trigger_cb(p_dev);
+        if (p_dev->pfn_trigger_cb) {
+            p_dev->pfn_trigger_cb(p_dev->p_arg);
+        }
     }
 }
 
 /**
  * \brief 中断触发函数连接
  */
-int am_hc32_lvd_tri_set (am_lvd_handle_t handle, void (*pfn_tri_cb) (void *))
+int am_hc32_lvd_tri_set (am_hc32_lvd_handle_t     handle,
+                         am_pfnvoid_t             pfn_tri_cb,
+                         void                    *p_arg)
 {
-    if (handle == NULL || pfn_tri_cb == NULL ){
+    int key;
 
+    if (handle == NULL || pfn_tri_cb == NULL ){
         return AM_ERROR;
     }
 
+    key = am_int_cpu_lock();
+
     handle->pfn_trigger_cb = pfn_tri_cb;
+    handle->p_arg          = p_arg;
+
+    am_int_cpu_unlock(key);
 
     return AM_OK;
 }
@@ -73,7 +84,7 @@ int am_hc32_lvd_tri_set (am_lvd_handle_t handle, void (*pfn_tri_cb) (void *))
 /**
  * \brief lvd 使能
  */
-int am_hc32_lvd_enable (am_lvd_handle_t handle)
+int am_hc32_lvd_enable (am_hc32_lvd_handle_t      handle)
 {
     amhw_hc32_lvd_t *p_hw_lvd;
 
@@ -93,8 +104,8 @@ int am_hc32_lvd_enable (am_lvd_handle_t handle)
 /**
  * \brief lvd 初始化
  */
-am_lvd_handle_t  am_hc32_lvd_init (am_hc32_lvd_dev_t           *p_dev,
-                                     const am_hc32_lvd_devinfo_t *p_devinfo)
+am_hc32_lvd_handle_t am_hc32_lvd_init (am_hc32_lvd_dev_t           *p_dev,
+                                       const am_hc32_lvd_devinfo_t *p_devinfo)
 {
     amhw_hc32_lvd_t *p_hw_lvd;
 
@@ -131,7 +142,7 @@ am_lvd_handle_t  am_hc32_lvd_init (am_hc32_lvd_dev_t           *p_dev,
     /* 触发动作配置 */
     amhw_hc32_lvd_tri_act_sel (p_hw_lvd, p_dev->p_devinfo->tri_act);
 
-    if (p_devinfo->tri_act == ANHW_HC32_LVD_TRI_ACT_NVIC_INT){
+    if (p_devinfo->tri_act == AMHW_HC32_LVD_TRI_ACT_NVIC_INT){
 
         /* 中断状态标志清除 */
         amhw_hc32_int_falg_clr (p_hw_lvd);
@@ -153,7 +164,7 @@ am_lvd_handle_t  am_hc32_lvd_init (am_hc32_lvd_dev_t           *p_dev,
 /**
  * \brief lvd 去初始化
  */
-void am_hc32_lvd_deinit (am_lvd_handle_t handle)
+void am_hc32_lvd_deinit (am_hc32_lvd_handle_t     handle)
 {
     am_hc32_lvd_dev_t *p_dev  = (am_hc32_lvd_dev_t *)handle;
     amhw_hc32_lvd_t *p_hw_lvd =
@@ -167,7 +178,7 @@ void am_hc32_lvd_deinit (am_lvd_handle_t handle)
     /* 滤波禁能 */
     amhw_hc32_lvd_deb_time_disable (p_hw_lvd);
 
-    if (p_dev->p_devinfo->tri_act == ANHW_HC32_LVD_TRI_ACT_NVIC_INT){
+    if (p_dev->p_devinfo->tri_act == AMHW_HC32_LVD_TRI_ACT_NVIC_INT){
 
         /* 禁能中断 */
         amhw_hc32_lvd_int_disable (p_hw_lvd);
