@@ -41,7 +41,6 @@ extern "C" {
  */
 typedef struct am_hc32f460_rtc_devinfo {
     uint32_t                  rtc_regbase;           /**< \brief RTC 寄存器基地址 */
-    amhw_hc32f460_rtc_clk_src_t rtc_clk_sour;          /**< \brief RTC 时钟源 */
     int                       inum;              /**< \brief RTC 中断号 */
     void                    (*pfn_plfm_init)(void);  /**< \brief 平台初始化函数 */
     void                    (*pfn_plfm_deinit)(void);/**< \brief 平台解初始化函数 */
