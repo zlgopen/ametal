@@ -226,7 +226,7 @@ typedef struct amhw_fsl_uart {
 #define AMHW_FSL_UART_INT_C2_TIE      (1UL << 7) /**< \brief TDRE发送准备就绪中断 */
 #define AMHW_FSL_UART_INT_C2_TCIE     (1UL << 6) /**< \brief TC发送完成中断       */
 #define AMHW_FSL_UART_INT_C2_IRIE     (1UL << 5) /**< \brief RDRF接收准备就绪中断 */
-#define AMHW_FSL_UART_INT_C2_ILIE     (1UL << 4) /**< \brief IDLE空闲线路中断使能 */
+#define AMHW_FSL_UART_INT_C2_IDIE     (1UL << 4) /**< \brief IDLE空闲线路中断使能 */
 #define AMHW_FSL_UART_INT_C3_OVR      (1UL << 3) /**< \brief 溢出中断             */
 #define AMHW_FSL_UART_INT_C3_NEIE     (1UL << 2) /**< \brief 噪声错误中断         */
 #define AMHW_FSL_UART_INT_C3_IFRMERR  (1UL << 1) /**< \brief 帧错误中断           */

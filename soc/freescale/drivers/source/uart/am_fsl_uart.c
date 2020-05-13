@@ -161,8 +161,11 @@ int __uart_tx_startup (void *p_drv)
         p_dev->p_devinfo->uart_int_485_send(AM_TRUE);
     }
 
-    /* 使能发送中断 */
-    amhw_fsl_uart_int_enable(p_hw_uart, AMHW_FSL_UART_INT_C2_TIE);
+    /* 使能发送中断  使能发送完成中断 */
+    amhw_fsl_uart_int_enable(p_hw_uart,
+                             AMHW_FSL_UART_INT_C2_TIE | \
+                             AMHW_FSL_UART_INT_C2_TCIE);
+
 
     return AM_OK;
 }
@@ -423,7 +426,7 @@ void __uart_irq_tx_handler (am_fsl_uart_dev_t *p_dev)
     }
 
     if (((int_stat & AMHW_FSL_UART_INTSTAT_S1_TDRE) != 0) || /* 是否为发送Tx中断 */
-        ((int_stat & AMHW_FSL_UART_INTSTAT_S1_IDLE) != 0)) {
+        ((int_stat & AMHW_FSL_UART_INTSTAT_S1_TC) != 0)) {
 
         /* 获取发送数据并发送 */
         if ((p_dev->pfn_txchar_get(p_dev->txget_arg, &data)) == AM_OK) {
@@ -433,8 +436,13 @@ void __uart_irq_tx_handler (am_fsl_uart_dev_t *p_dev)
             amhw_fsl_uart_int_disable(p_hw_uart, AMHW_FSL_UART_INT_C2_TIE);
             
             /* 禁止能485发送控制引脚 */
-            if (p_dev->p_devinfo->uart_int_485_send) {
-                p_dev->p_devinfo->uart_int_485_send(AM_FALSE);
+            if (int_stat & AMHW_FSL_UART_INTSTAT_S1_TC) {
+
+                if (p_dev->p_devinfo->uart_int_485_send) {
+
+                    p_dev->p_devinfo->uart_int_485_send(AM_FALSE);
+                }
+                amhw_fsl_uart_int_disable(p_hw_uart, AMHW_FSL_UART_INT_C2_TCIE);
             }
         }
     }
@@ -554,7 +562,7 @@ am_uart_handle_t am_fsl_uart_init (am_fsl_uart_dev_t           *p_dev,
                                 AMHW_FSL_UART_INT_C3_OVR)   &
                               ~(AMHW_FSL_UART_INT_C2_TCIE   |
                                 AMHW_FSL_UART_INT_C2_IRIE   |
-                                AMHW_FSL_UART_INT_C2_ILIE   |
+                                AMHW_FSL_UART_INT_C2_IDIE   |
                                 AMHW_FSL_UART_INT_C2_TIE);
 
     if (p_dev->p_devinfo->pfn_plfm_init) {
