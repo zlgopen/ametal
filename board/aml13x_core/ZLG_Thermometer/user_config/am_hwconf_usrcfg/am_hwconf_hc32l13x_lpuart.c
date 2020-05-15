@@ -56,29 +56,19 @@ static void __hc32_plfm_lpuart0_deinit (void)
 static const am_hc32_lpuart_devinfo_t __g_lpuart0_devinfo = {
 
     HC32_LPUART0_BASE,              /**< \brief LPUART0 */
-    INUM_LPUART0,                     /**< \brief LPUART0的中断编号 */
-    AMHW_HC32_LPUART_WORK_MODE_1,   /**< \brief LPUART工作模式 */
+    INUM_LPUART0,                   /**< \brief LPUART0的中断编号 */
     AMHW_HC32_LPUART_SCLK_SRC_PCLK, /**< \brief 通信传输时钟  */
+
     AMHW_HC32_LPUART_PARITY_NO |    /**< \brief 无极性 */
     AMHW_HC32_LPUART_STOP_1_0_BIT,  /**< \brief 1个停止位 */
 
-    115200,                           /**< \brief 设置的波特率 */
+    AM_FALSE,
 
-    0,                                /**< \brief 无其他中断 */
+    115200,                         /**< \brief 设置的波特率 */
 
-    {
-        AM_FALSE,                     /**< \brief 禁能多机地址自动识别 */
-        0x00,                         /**< \brief 地址0x00 */
-        0x00,                         /**< \brief 地址全部不关心 */
-    },
+    0,                              /**< \brief 无其他中断 */
 
-    {
-        NULL,                         /**< \brief 硬件流控引脚初始化、解初始化函数 */
-        0,                            /**< \brief CTS引脚编号 */
-        0,                            /**< \brief RTS引脚编号*/
-    },
-
-    NULL,                             /**< \brief 使用RS485 */
+    NULL,                           /**< \brief 使用RS485 */
     __hc32_plfm_lpuart0_init,       /**< \brief LPUART0的平台初始化 */
     __hc32_plfm_lpuart0_deinit,     /**< \brief LPUART0的平台去初始化 */
 };
@@ -120,29 +110,19 @@ static void __hc32_plfm_lpuart1_deinit (void)
 static const am_hc32_lpuart_devinfo_t __g_lpuart1_devinfo = {
 
     HC32_LPUART1_BASE,              /**< \brief LPUART1 */
-    INUM_LPUART1,                     /**< \brief LPUART1的中断编号 */
-    AMHW_HC32_LPUART_WORK_MODE_1,   /**< \brief LPUART工作模式 */
+    INUM_LPUART1,                   /**< \brief LPUART1的中断编号 */
     AMHW_HC32_LPUART_SCLK_SRC_PCLK, /**< \brief 通信传输时钟  */
+
     AMHW_HC32_LPUART_PARITY_NO |    /**< \brief 无极性 */
     AMHW_HC32_LPUART_STOP_1_0_BIT,  /**< \brief 1个停止位 */
 
-    115200,                           /**< \brief 设置的波特率 */
+    AM_FALSE,
 
-    0,                                /**< \brief 无其他中断 */
+    115200,                         /**< \brief 设置的波特率 */
 
-    {
-        AM_FALSE,                     /**< \brief 禁能多机地址自动识别 */
-        0x00,                         /**< \brief 地址0x00 */
-        0x00,                         /**< \brief 地址全部不关心 */
-    },
+    0,                              /**< \brief 无其他中断 */
 
-    {
-        NULL,                         /**< \brief 硬件流控引脚初始化、解初始化函数 */
-        0,                            /**< \brief CTS引脚编号 */
-        0,                            /**< \brief RTS引脚编号*/
-    },
-
-    NULL,                             /**< \brief 使用RS485 */
+    NULL,                           /**< \brief 使用RS485 */
     __hc32_plfm_lpuart1_init,       /**< \brief LPUART1的平台初始化 */
     __hc32_plfm_lpuart1_deinit,     /**< \brief LPUART1的平台去初始化 */
 };

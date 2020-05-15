@@ -55,36 +55,23 @@ static void __hc32_plfm_uart0_deinit (void)
 /** \brief 串口0设备信息 */
 static const am_hc32_uart_devinfo_t __g_uart0_devinfo = {
 
-    HC32_UART0_BASE,            /**< \brief 串口0 */
-    INUM_UART0_2,                 /**< \brief 串口0的中断编号 */
-    AMHW_HC32_UART_WORK_MODE_1, /**< \brief 串口工作模式 */
+    HC32_UART0_BASE,                /**< \brief 串口0 */
+    INUM_UART0_2,                   /**< \brief 串口0的中断编号 */
+    CLK_UART0,                      /**< \brief 串口时钟ID */
 
-    AMHW_HC32_UART_PARITY_NO |  /**< \brief 无极性  MODE0/1:无需校验  MODE2/3:必须校验*/
-    AMHW_HC32_UART_STOP_1_0_BIT,/**< \brief 1个停止位 */
+    AMHW_HC32_UART_PARITY_NO |      /**< \brief 无极性 */
+    AMHW_HC32_UART_STOP_1_0_BIT,    /**< \brief 1个停止位 */
 
-    115200,                       /**< \brief 设置的波特率 */
+    AM_FALSE,                       /**< \brief 不使用异步半双工（单线）模式 */
 
-    0,                            /**< \brief 无其他中断 */
+    115200,                         /**< \brief 设置的波特率 */
 
-    {
-        AM_FALSE,                 /**< \brief 禁能多机地址自动识别 */
-        0x00,                     /**< \brief 地址0x00 */
-        0x00,                     /**< \brief 地址全部不关心 */
-    },
+    0,                              /**< \brief 无其他中断 */
 
-    {
-        AM_FALSE,                 /**< \brief 禁能流控 */
-        0,                        /**< \brief CTS引脚编号 */
-        0,                        /**< \brief RTS引脚编号*/
-    },
-
-    NULL,                         /**< \brief 使用RS485 */
-    __hc32_plfm_uart0_init,     /**< \brief UART0的平台初始化 */
-    __hc32_plfm_uart0_deinit,   /**< \brief UART0的平台去初始化 */
+    NULL,                           /**< \brief 使用RS485 */
+    __hc32_plfm_uart0_init,         /**< \brief UART0的平台初始化 */
+    __hc32_plfm_uart0_deinit,       /**< \brief UART0的平台去初始化 */
 };
-
-/* 串口中断源复用需要调用设备信息 */
-am_hc32_uart_dev_t  *__gp_uart0 = NULL;
 
 /**< \brief 定义串口0 设备 */
 static am_hc32_uart_dev_t  __g_uart0_dev;
@@ -92,7 +79,6 @@ static am_hc32_uart_dev_t  __g_uart0_dev;
 /** \brief UART0实例初始化，获得uart0标准服务句柄 */
 am_uart_handle_t am_hc32_uart0_inst_init (void)
 {
-    __gp_uart0 = &__g_uart0_dev;
     return am_hc32_uart_init(&__g_uart0_dev, &__g_uart0_devinfo);
 }
 
@@ -123,36 +109,23 @@ static void __hc32_plfm_uart1_deinit (void)
 /** \brief 串口1设备信息 */
 static const am_hc32_uart_devinfo_t __g_uart1_devinfo = {
 
-    HC32_UART1_BASE,            /**< \brief 串口1 */
-    INUM_UART1_3,                 /**< \brief 串口1的中断编号 */
-    AMHW_HC32_UART_WORK_MODE_1, /**< \brief 串口工作模式 */
+    HC32_UART1_BASE,                /**< \brief 串口1 */
+    INUM_UART1_3,                   /**< \brief 串口1的中断编号 */
+    CLK_UART1,                      /**< \brief 串口时钟ID */
 
-    AMHW_HC32_UART_PARITY_NO |  /**< \brief 无极性  MODE0/1:无需校验  MODE2/3:必须校验*/
-    AMHW_HC32_UART_STOP_1_0_BIT,/**< \brief 1个停止位 */
+    AMHW_HC32_UART_PARITY_NO |      /**< \brief 无极性 */
+    AMHW_HC32_UART_STOP_1_0_BIT,    /**< \brief 1个停止位 */
 
-    115200,                       /**< \brief 设置的波特率 */
+    AM_FALSE,                       /**< \brief 不使用异步半双工（单线）模式 */
 
-    0,                            /**< \brief 无其他中断 */
+    115200,                         /**< \brief 设置的波特率 */
 
-    {
-        AM_FALSE,                 /**< \brief 禁能多机地址自动识别 */
-        0x00,                     /**< \brief 地址0x00 */
-        0x00,                     /**< \brief 地址全部不关心 */
-    },
+    0,                              /**< \brief 无其他中断 */
 
-    {
-        AM_FALSE,                 /**< \brief 禁能流控 */
-        0,                        /**< \brief CTS引脚编号 */
-        0,                        /**< \brief RTS引脚编号*/
-    },
-
-    NULL,                         /**< \brief 使用RS485 */
-    __hc32_plfm_uart1_init,     /**< \brief UART1的平台初始化 */
-    __hc32_plfm_uart1_deinit,   /**< \brief UART1的平台去初始化 */
+    NULL,                           /**< \brief 使用RS485 */
+    __hc32_plfm_uart1_init,         /**< \brief UART1的平台初始化 */
+    __hc32_plfm_uart1_deinit,       /**< \brief UART1的平台去初始化 */
 };
-
-/* 串口中断源复用需要调用设备信息 */
-am_hc32_uart_dev_t  *__gp_uart1 = NULL;
 
 /**< \brief 定义串口1 设备 */
 static am_hc32_uart_dev_t  __g_uart1_dev;
@@ -160,7 +133,6 @@ static am_hc32_uart_dev_t  __g_uart1_dev;
 /** \brief UART1实例初始化，获得uart1标准服务句柄 */
 am_uart_handle_t am_hc32_uart1_inst_init (void)
 {
-    __gp_uart1 = &__g_uart1_dev;
     return am_hc32_uart_init(&__g_uart1_dev, &__g_uart1_devinfo);
 }
 
@@ -191,36 +163,23 @@ static void __hc32_plfm_uart2_deinit (void)
 /** \brief 串口2设备信息 */
 static const am_hc32_uart_devinfo_t __g_uart2_devinfo = {
 
-    HC32_UART2_BASE,            /**< \brief 串口2 */
-    INUM_UART0_2,                 /**< \brief 串口2的中断编号 */
-    AMHW_HC32_UART_WORK_MODE_1, /**< \brief 串口工作模式 */
+    HC32_UART2_BASE,                /**< \brief 串口2 */
+    INUM_UART0_2,                   /**< \brief 串口2的中断编号 */
+    CLK_UART2,                      /**< \brief 串口时钟ID */
 
-    AMHW_HC32_UART_PARITY_NO |  /**< \brief 无极性  MODE0/1:无需校验  MODE2/3:必须校验*/
-    AMHW_HC32_UART_STOP_1_0_BIT,/**< \brief 1个停止位 */
+    AMHW_HC32_UART_PARITY_NO |      /**< \brief 无极性 */
+    AMHW_HC32_UART_STOP_1_0_BIT,    /**< \brief 1个停止位 */
 
-    115200,                       /**< \brief 设置的波特率 */
+    AM_FALSE,                       /**< \brief 不使用异步半双工（单线）模式 */
 
-    0,                            /**< \brief 无其他中断 */
+    115200,                         /**< \brief 设置的波特率 */
 
-    {
-        AM_FALSE,                 /**< \brief 禁能多机地址自动识别 */
-        0x00,                     /**< \brief 地址0x00 */
-        0x00,                     /**< \brief 地址全部不关心 */
-    },
+    0,                              /**< \brief 无其他中断 */
 
-    {
-        AM_FALSE,                 /**< \brief 禁能流控 */
-        0,                        /**< \brief CTS引脚编号 */
-        0,                        /**< \brief RTS引脚编号*/
-    },
-
-    NULL,                         /**< \brief 使用RS485 */
-    __hc32_plfm_uart2_init,     /**< \brief UART2的平台初始化 */
-    __hc32_plfm_uart2_deinit,   /**< \brief UART2的平台去初始化 */
+    NULL,                           /**< \brief 使用RS485 */
+    __hc32_plfm_uart2_init,         /**< \brief UART2的平台初始化 */
+    __hc32_plfm_uart2_deinit,       /**< \brief UART2的平台去初始化 */
 };
-
-/* 串口中断源复用需要调用设备信息 */
-am_hc32_uart_dev_t  *__gp_uart2 = NULL;
 
 /**< \brief 定义串口2 设备 */
 static am_hc32_uart_dev_t  __g_uart2_dev;
@@ -228,7 +187,6 @@ static am_hc32_uart_dev_t  __g_uart2_dev;
 /** \brief UART2实例初始化，获得uart2标准服务句柄 */
 am_uart_handle_t am_hc32_uart2_inst_init (void)
 {
-    __gp_uart2 = &__g_uart2_dev;
     return am_hc32_uart_init(&__g_uart2_dev, &__g_uart2_devinfo);
 }
 
@@ -259,36 +217,23 @@ static void __hc32_plfm_uart3_deinit (void)
 /** \brief 串口3设备信息 */
 static const am_hc32_uart_devinfo_t __g_uart3_devinfo = {
 
-    HC32_UART3_BASE,            /**< \brief 串口3 */
-    INUM_UART0_2,                 /**< \brief 串口3的中断编号 */
-    AMHW_HC32_UART_WORK_MODE_1, /**< \brief 串口工作模式 */
+    HC32_UART3_BASE,                /**< \brief 串口3 */
+    INUM_UART0_2,                   /**< \brief 串口3的中断编号 */
+    CLK_UART3,                      /**< \brief 串口时钟ID */
 
-    AMHW_HC32_UART_PARITY_NO |  /**< \brief 无极性  MODE0/1:无需校验  MODE2/3:必须校验*/
-    AMHW_HC32_UART_STOP_1_0_BIT,/**< \brief 1个停止位 */
+    AMHW_HC32_UART_PARITY_NO |      /**< \brief 无极性 */
+    AMHW_HC32_UART_STOP_1_0_BIT,    /**< \brief 1个停止位 */
 
-    115200,                       /**< \brief 设置的波特率 */
+    AM_FALSE,                       /**< \brief 不使用异步半双工（单线）模式 */
 
-    0,                            /**< \brief 无其他中断 */
+    115200,                         /**< \brief 设置的波特率 */
 
-    {
-        AM_FALSE,                 /**< \brief 禁能多机地址自动识别 */
-        0x00,                     /**< \brief 地址0x00 */
-        0x00,                     /**< \brief 地址全部不关心 */
-    },
+    0,                              /**< \brief 无其他中断 */
 
-    {
-        AM_FALSE,                 /**< \brief 禁能流控 */
-        0,                        /**< \brief CTS引脚编号 */
-        0,                        /**< \brief RTS引脚编号*/
-    },
-
-    NULL,                         /**< \brief 使用RS485 */
-    __hc32_plfm_uart3_init,     /**< \brief UART3的平台初始化 */
-    __hc32_plfm_uart3_deinit,   /**< \brief UART3的平台去初始化 */
+    NULL,                           /**< \brief 使用RS485 */
+    __hc32_plfm_uart3_init,         /**< \brief UART3的平台初始化 */
+    __hc32_plfm_uart3_deinit,       /**< \brief UART3的平台去初始化 */
 };
-
-/* 串口中断源复用需要调用设备信息 */
-am_hc32_uart_dev_t *__gp_uart3 = NULL;
 
 /**< \brief 定义串口3 设备 */
 static am_hc32_uart_dev_t  __g_uart3_dev;
@@ -296,7 +241,6 @@ static am_hc32_uart_dev_t  __g_uart3_dev;
 /** \brief UART3实例初始化，获得uart3标准服务句柄 */
 am_uart_handle_t am_hc32_uart3_inst_init (void)
 {
-    __gp_uart3 = &__g_uart3_dev;
     return am_hc32_uart_init(&__g_uart3_dev, &__g_uart3_devinfo);
 }
 

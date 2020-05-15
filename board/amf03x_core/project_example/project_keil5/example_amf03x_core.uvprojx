@@ -10,12 +10,13 @@
       <TargetName>debug</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
-      <pCCUsed>5060061::V5.06 update 1 (build 61)::ARMCC</pCCUsed>
+      <pCCUsed>5060750::V5.06 update 6 (build 750)::ARMCC</pCCUsed>
+      <uAC6>0</uAC6>
       <TargetOption>
         <TargetCommonOption>
           <Device>ARMCM0P</Device>
           <Vendor>ARM</Vendor>
-          <PackID>ARM.CMSIS.4.5.0</PackID>
+          <PackID>ARM.CMSIS.5.5.1</PackID>
           <PackURL>http://www.keil.com/pack/</PackURL>
           <Cpu>IROM(0x00000000,0x40000) IRAM(0x20000000,0x20000) CPUTYPE("Cortex-M0+") CLOCK(12000000) ESEL ELITTLE</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
@@ -125,47 +126,6 @@
             <HexOffset>0</HexOffset>
             <Oh166RecLen>16</Oh166RecLen>
           </OPTHX>
-          <Simulator>
-            <UseSimulator>0</UseSimulator>
-            <LoadApplicationAtStartup>1</LoadApplicationAtStartup>
-            <RunToMain>1</RunToMain>
-            <RestoreBreakpoints>1</RestoreBreakpoints>
-            <RestoreWatchpoints>1</RestoreWatchpoints>
-            <RestoreMemoryDisplay>1</RestoreMemoryDisplay>
-            <RestoreFunctions>1</RestoreFunctions>
-            <RestoreToolbox>1</RestoreToolbox>
-            <LimitSpeedToRealTime>0</LimitSpeedToRealTime>
-            <RestoreSysVw>1</RestoreSysVw>
-          </Simulator>
-          <Target>
-            <UseTarget>1</UseTarget>
-            <LoadApplicationAtStartup>1</LoadApplicationAtStartup>
-            <RunToMain>1</RunToMain>
-            <RestoreBreakpoints>1</RestoreBreakpoints>
-            <RestoreWatchpoints>1</RestoreWatchpoints>
-            <RestoreMemoryDisplay>1</RestoreMemoryDisplay>
-            <RestoreFunctions>0</RestoreFunctions>
-            <RestoreToolbox>1</RestoreToolbox>
-            <RestoreTracepoints>1</RestoreTracepoints>
-            <RestoreSysVw>1</RestoreSysVw>
-          </Target>
-          <RunDebugAfterBuild>0</RunDebugAfterBuild>
-          <TargetSelection>1</TargetSelection>
-          <SimDlls>
-            <CpuDll></CpuDll>
-            <CpuDllArguments></CpuDllArguments>
-            <PeripheralDll></PeripheralDll>
-            <PeripheralDllArguments></PeripheralDllArguments>
-            <InitializationFile></InitializationFile>
-          </SimDlls>
-          <TargetDlls>
-            <CpuDll></CpuDll>
-            <CpuDllArguments></CpuDllArguments>
-            <PeripheralDll></PeripheralDll>
-            <PeripheralDllArguments></PeripheralDllArguments>
-            <InitializationFile></InitializationFile>
-            <Driver>BIN\UL2CM3.DLL</Driver>
-          </TargetDlls>
         </DebugOption>
         <Utilities>
           <Flash1>
@@ -173,7 +133,7 @@
             <UseExternalTool>0</UseExternalTool>
             <RunIndependent>0</RunIndependent>
             <UpdateFlashBeforeDebugging>1</UpdateFlashBeforeDebugging>
-            <Capability>0</Capability>
+            <Capability>1</Capability>
             <DriverSelection>4096</DriverSelection>
           </Flash1>
           <bUseTDR>1</bUseTDR>
@@ -224,6 +184,7 @@
             <hadXRAM>0</hadXRAM>
             <uocXRam>0</uocXRam>
             <RvdsVP>0</RvdsVP>
+            <RvdsMve>0</RvdsMve>
             <hadIRAM2>0</hadIRAM2>
             <hadIROM2>0</hadIROM2>
             <StupSel>8</StupSel>
@@ -364,11 +325,15 @@
             <uThumb>0</uThumb>
             <uSurpInc>0</uSurpInc>
             <uC99>1</uC99>
+            <uGnu>0</uGnu>
             <useXO>0</useXO>
             <v6Lang>3</v6Lang>
             <v6LangP>0</v6LangP>
             <vShortEn>0</vShortEn>
             <vShortWch>0</vShortWch>
+            <v6Lto>0</v6Lto>
+            <v6WtE>0</v6WtE>
+            <v6Rtti>0</v6Rtti>
             <VariousControls>
               <MiscControls></MiscControls>
               <Define>AM_VDEBUG AM_CORTEX_M0 HC32X3X</Define>
@@ -386,6 +351,7 @@
             <NoWarn>0</NoWarn>
             <uSurpInc>0</uSurpInc>
             <useXO>0</useXO>
+            <uClangAs>0</uClangAs>
             <VariousControls>
               <MiscControls></MiscControls>
               <Define></Define>
@@ -1212,11 +1178,6 @@
               <FilePath>..\..\..\..\examples\board\amf03x_core\opa\demo_hc32f03x_core_opa_one.c</FilePath>
             </File>
             <File>
-              <FileName>demo_hc32f03x_core_drv_rtc.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\amf03x_core\rtc\demo_hc32f03x_core_drv_rtc.c</FilePath>
-            </File>
-            <File>
               <FileName>demo_hc32f03x_core_hw_spi_master.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\board\amf03x_core\spi\demo_hc32f03x_core_hw_spi_master.c</FilePath>
@@ -1456,6 +1417,16 @@
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\board\amf03x_core\opa\demo_hc32f03x_core_std_opa.c</FilePath>
             </File>
+            <File>
+              <FileName>demo_hc32f03x_core_hw_rtc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\amf03x_core\rtc\demo_hc32f03x_core_hw_rtc.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_hc32f03x_core_std_rtc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\amf03x_core\rtc\demo_hc32f03x_core_std_rtc.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -1677,14 +1648,19 @@
               <FilePath>..\..\..\..\examples\soc\hdsc\i2c\demo_hc32_hw_i2c_slave_int.c</FilePath>
             </File>
             <File>
-              <FileName>demo_hc32x3x_std_opa.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\soc\hdsc\opa\demo_hc32x3x_std_opa.c</FilePath>
-            </File>
-            <File>
               <FileName>demo_hc32x3x_hw_opa_one.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\soc\hdsc\opa\demo_hc32x3x_hw_opa_one.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_hc32x3x_drv_opa.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\soc\hdsc\opa\demo_hc32x3x_drv_opa.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_hc32_hw_rtc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\soc\hdsc\rtc\demo_hc32_hw_rtc.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -2210,6 +2186,7 @@
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
       <pCCUsed>5060061::V5.06 update 1 (build 61)::ARMCC</pCCUsed>
+      <uAC6>0</uAC6>
       <TargetOption>
         <TargetCommonOption>
           <Device>HC32L196PCTA</Device>
@@ -2324,47 +2301,6 @@
             <HexOffset>0</HexOffset>
             <Oh166RecLen>16</Oh166RecLen>
           </OPTHX>
-          <Simulator>
-            <UseSimulator>0</UseSimulator>
-            <LoadApplicationAtStartup>1</LoadApplicationAtStartup>
-            <RunToMain>1</RunToMain>
-            <RestoreBreakpoints>1</RestoreBreakpoints>
-            <RestoreWatchpoints>1</RestoreWatchpoints>
-            <RestoreMemoryDisplay>1</RestoreMemoryDisplay>
-            <RestoreFunctions>1</RestoreFunctions>
-            <RestoreToolbox>1</RestoreToolbox>
-            <LimitSpeedToRealTime>0</LimitSpeedToRealTime>
-            <RestoreSysVw>1</RestoreSysVw>
-          </Simulator>
-          <Target>
-            <UseTarget>1</UseTarget>
-            <LoadApplicationAtStartup>1</LoadApplicationAtStartup>
-            <RunToMain>1</RunToMain>
-            <RestoreBreakpoints>1</RestoreBreakpoints>
-            <RestoreWatchpoints>1</RestoreWatchpoints>
-            <RestoreMemoryDisplay>1</RestoreMemoryDisplay>
-            <RestoreFunctions>0</RestoreFunctions>
-            <RestoreToolbox>1</RestoreToolbox>
-            <RestoreTracepoints>1</RestoreTracepoints>
-            <RestoreSysVw>1</RestoreSysVw>
-          </Target>
-          <RunDebugAfterBuild>0</RunDebugAfterBuild>
-          <TargetSelection>1</TargetSelection>
-          <SimDlls>
-            <CpuDll></CpuDll>
-            <CpuDllArguments></CpuDllArguments>
-            <PeripheralDll></PeripheralDll>
-            <PeripheralDllArguments></PeripheralDllArguments>
-            <InitializationFile></InitializationFile>
-          </SimDlls>
-          <TargetDlls>
-            <CpuDll></CpuDll>
-            <CpuDllArguments></CpuDllArguments>
-            <PeripheralDll></PeripheralDll>
-            <PeripheralDllArguments></PeripheralDllArguments>
-            <InitializationFile></InitializationFile>
-            <Driver>BIN\UL2CM3.DLL</Driver>
-          </TargetDlls>
         </DebugOption>
         <Utilities>
           <Flash1>
@@ -2423,6 +2359,7 @@
             <hadXRAM>0</hadXRAM>
             <uocXRam>0</uocXRam>
             <RvdsVP>0</RvdsVP>
+            <RvdsMve>0</RvdsMve>
             <hadIRAM2>0</hadIRAM2>
             <hadIROM2>0</hadIROM2>
             <StupSel>8</StupSel>
@@ -2563,11 +2500,15 @@
             <uThumb>0</uThumb>
             <uSurpInc>0</uSurpInc>
             <uC99>1</uC99>
+            <uGnu>0</uGnu>
             <useXO>0</useXO>
             <v6Lang>0</v6Lang>
             <v6LangP>0</v6LangP>
             <vShortEn>0</vShortEn>
             <vShortWch>0</vShortWch>
+            <v6Lto>0</v6Lto>
+            <v6WtE>0</v6WtE>
+            <v6Rtti>0</v6Rtti>
             <VariousControls>
               <MiscControls></MiscControls>
               <Define>AM_VDEBUG AM_CORTEX_M0</Define>
@@ -2585,6 +2526,7 @@
             <NoWarn>0</NoWarn>
             <uSurpInc>0</uSurpInc>
             <useXO>0</useXO>
+            <uClangAs>0</uClangAs>
             <VariousControls>
               <MiscControls></MiscControls>
               <Define></Define>
@@ -3411,11 +3353,6 @@
               <FilePath>..\..\..\..\examples\board\amf03x_core\opa\demo_hc32f03x_core_opa_one.c</FilePath>
             </File>
             <File>
-              <FileName>demo_hc32f03x_core_drv_rtc.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\amf03x_core\rtc\demo_hc32f03x_core_drv_rtc.c</FilePath>
-            </File>
-            <File>
               <FileName>demo_hc32f03x_core_hw_spi_master.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\board\amf03x_core\spi\demo_hc32f03x_core_hw_spi_master.c</FilePath>
@@ -3655,6 +3592,16 @@
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\board\amf03x_core\opa\demo_hc32f03x_core_std_opa.c</FilePath>
             </File>
+            <File>
+              <FileName>demo_hc32f03x_core_hw_rtc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\amf03x_core\rtc\demo_hc32f03x_core_hw_rtc.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_hc32f03x_core_std_rtc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\amf03x_core\rtc\demo_hc32f03x_core_std_rtc.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -3876,14 +3823,19 @@
               <FilePath>..\..\..\..\examples\soc\hdsc\i2c\demo_hc32_hw_i2c_slave_int.c</FilePath>
             </File>
             <File>
-              <FileName>demo_hc32x3x_std_opa.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\soc\hdsc\opa\demo_hc32x3x_std_opa.c</FilePath>
-            </File>
-            <File>
               <FileName>demo_hc32x3x_hw_opa_one.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\soc\hdsc\opa\demo_hc32x3x_hw_opa_one.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_hc32x3x_drv_opa.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\soc\hdsc\opa\demo_hc32x3x_drv_opa.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_hc32_hw_rtc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\soc\hdsc\rtc\demo_hc32_hw_rtc.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -4405,5 +4357,11 @@
       </Groups>
     </Target>
   </Targets>
+
+  <RTE>
+    <apis/>
+    <components/>
+    <files/>
+  </RTE>
 
 </Project>

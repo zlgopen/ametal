@@ -110,8 +110,7 @@ int amhw_hc32_uart_baudrate_set (amhw_hc32_uart_t *p_hw_uart,
 
     /* 模式1/3情况下，波特率 = 时钟 / （分频系数*波特率寄存器设定值） */
     } else if ((mode == AMHW_HC32_UART_WORK_MODE_1) ||
-               (mode == AMHW_HC32_UART_WORK_MODE_3) ||
-               (mode == AMHW_HC32_UART_WORK_MODE_4)) {
+               (mode == AMHW_HC32_UART_WORK_MODE_3)) {
 
         /* 获取分频系数设置位的数字量 */
         clk_bit = amhw_hc32_uart_clk_div_get(p_hw_uart);

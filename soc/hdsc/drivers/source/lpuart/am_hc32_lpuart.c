@@ -41,21 +41,6 @@ int __lpuart_mode_set (am_hc32_lpuart_dev_t *p_dev, uint32_t new_mode);
  */
 int __lpuart_opt_set (am_hc32_lpuart_dev_t *p_dev, uint32_t opts);
 
-/**
- * \brief 流控接受器流控状态设置
- */
-static int __lpuart_flow_rxstat_set (am_hc32_lpuart_dev_t *p_dev, uint32_t ctrl);
-
-/**
- * \brief 流控模式设置
- */
-static int __lpuart_flow_mode_set (am_hc32_lpuart_dev_t *p_dev, uint32_t mode);
-
-/**
- * \brief 流控发送器流控状态获取
- */
-static int __lpuart_flow_txstat_get (am_hc32_lpuart_dev_t *p_dev);
-
 /* HC32 串口驱动函数声明 */
 static int __lpuart_ioctl (void *p_drv, int, void *);
 
@@ -69,10 +54,6 @@ static int __lpuart_callback_set (void *p_drv,
 static int __lpuart_poll_getchar (void *p_drv, char *p_char);
 
 static int __lpuart_poll_putchar (void *p_drv, char outchar);
-
-#if 0
-static int __lpuart_connect (void *p_drv);
-#endif
 
 static void __lpuart_irq_handler (void *p_arg);
 
@@ -166,17 +147,17 @@ static int __lpuart_ioctl (void *p_drv, int request, void *p_arg)
 
     /* 设置流控模式 */
     case AM_UART_FLOWMODE_SET:
-        __lpuart_flow_mode_set(p_dev, (int)p_arg);
+        status = -AM_ENOTSUP;
     break;
 
     /* 设置接收器流控状态 */
     case AM_UART_FLOWSTAT_RX_SET:
-        __lpuart_flow_rxstat_set(p_dev, (int)p_arg);
+        status = -AM_ENOTSUP;
     break;
 
     /* 获取发送器流控状态 */
     case AM_UART_FLOWSTAT_TX_GET:
-        *(int *)p_arg = __lpuart_flow_txstat_get(p_dev);
+        status = -AM_ENOTSUP;
     break;
 
     default:
@@ -383,9 +364,11 @@ int __lpuart_opt_set (am_hc32_lpuart_dev_t *p_dev, uint32_t options)
         } else {
             cfg_flags |= AMHW_HC32_LPUART_HW_PARITY_EVEN;
         }
+        amhw_hc32_lpuart_mode_sel(p_hw_lpuart, AMHW_HC32_LPUART_WORK_MODE_3);
     } else {
         cfg_flags &= ~(0x3ul << 2);
         cfg_flags |= AMHW_HC32_LPUART_PARITY_NO;
+        amhw_hc32_lpuart_mode_sel(p_hw_lpuart, AMHW_HC32_LPUART_WORK_MODE_1);
     }
 
     /* 保存和生效配置 */
@@ -395,135 +378,6 @@ int __lpuart_opt_set (am_hc32_lpuart_dev_t *p_dev, uint32_t options)
     p_dev->options = options;
 
     return (AM_OK);
-}
-/******************************************************************************/
-/**
- * \brief 接收器流控状态设置（开或关）
- */
-static int __lpuart_flow_rxstat_set (am_hc32_lpuart_dev_t *p_dev,
-                                     uint32_t              ctrl)
-{
-    amhw_hc32_lpuart_t *p_hw_lpuart = NULL;
-
-    if (NULL == p_dev) {
-        return -AM_EINVAL;
-    }
-
-    p_hw_lpuart = (amhw_hc32_lpuart_t *)p_dev->p_devinfo->lpuart_reg_base;
-
-    if (AM_UART_FLOWCTL_NO == p_dev->flowctl_mode) {
-        return -AM_ENOTSUP;
-
-    /* 如果是硬件流控，配置RTS输出引脚电位 */
-    } else if (AM_UART_FLOWCTL_HW == p_dev->flowctl_mode) {
-        if (AM_UART_FLOWSTAT_ON == ctrl) {
-            /* 拉低RTS管脚,开流     */
-            am_gpio_set(p_dev->p_devinfo->hwflowctl_cfg.rts_pin, 0);
-
-        } else {
-            /* 拉高RTS管脚,限流     */
-            am_gpio_set(p_dev->p_devinfo->hwflowctl_cfg.rts_pin, 1);
-        }
-    } else {
-        /* 如果是软件流控，发送XON/XOFF流控字符 */
-        if (AM_UART_FLOWSTAT_ON == ctrl) {
-            amhw_hc32_lpuart_data_write(p_hw_lpuart, AM_HC32_LPUART_XON);
-        } else {
-            amhw_hc32_lpuart_data_write(p_hw_lpuart, AM_HC32_LPUART_XOFF);
-        }
-    }
-
-    return AM_OK;
-}
-
-/******************************************************************************/
-/**
- * \brief 流控模式设置（无流控，软件流控，硬件流控）
- */
-static int __lpuart_flow_mode_set(am_hc32_lpuart_dev_t *p_dev, uint32_t mode)
-{
-    amhw_hc32_lpuart_t *p_hw_lpuart = NULL;
-
-    if (NULL == p_dev) {
-        return -AM_EINVAL;
-    }
-
-    p_hw_lpuart = (amhw_hc32_lpuart_t *)p_dev->p_devinfo->lpuart_reg_base;
-    p_dev->flowctl_mode = mode;
-
-    /* 无流控 */
-    if(AM_UART_FLOWCTL_NO == p_dev->flowctl_mode) {
-        p_dev->flowctl_tx_stat = AM_UART_FLOWSTAT_ON;
-
-        /* 硬件流控禁能     */
-        amhw_hc32_lpuart_disable(p_hw_lpuart, AMHW_HC32_LPUART_CTS);
-        amhw_hc32_lpuart_disable(p_hw_lpuart, AMHW_HC32_LPUART_RTS);
-
-        /* 硬件流控引脚解初始化 */
-        if(p_dev->p_devinfo->hwflowctl_cfg.pfn_hwflowctl_ioconfig != NULL) {
-            p_dev->p_devinfo->hwflowctl_cfg.pfn_hwflowctl_ioconfig(AM_FALSE);
-        }
-
-    /* 硬件流控 */
-    } else if (AM_UART_FLOWCTL_HW == p_dev->flowctl_mode) {
-
-        /* 硬件流控引脚初始化 */
-        if(p_dev->p_devinfo->hwflowctl_cfg.pfn_hwflowctl_ioconfig != NULL) {
-            p_dev->p_devinfo->hwflowctl_cfg.pfn_hwflowctl_ioconfig(AM_TRUE);
-        }
-
-        amhw_hc32_lpuart_enable(p_hw_lpuart, AMHW_HC32_LPUART_CTS);
-        amhw_hc32_lpuart_enable(p_hw_lpuart, AMHW_HC32_LPUART_RTS);
-    } else {
-
-        amhw_hc32_lpuart_disable(p_hw_lpuart, AMHW_HC32_LPUART_CTS);
-        amhw_hc32_lpuart_disable(p_hw_lpuart, AMHW_HC32_LPUART_RTS);
-
-        /* 硬件流控引脚解初始化 */
-        if(p_dev->p_devinfo->hwflowctl_cfg.pfn_hwflowctl_ioconfig != NULL) {
-            p_dev->p_devinfo->hwflowctl_cfg.pfn_hwflowctl_ioconfig(AM_FALSE);
-        }
-    }
-
-    return AM_OK;
-}
-
-/******************************************************************************/
-/**
- * \brief 发送器流控状态获取
- */
-static int __lpuart_flow_txstat_get (am_hc32_lpuart_dev_t *p_dev)
-{
-    amhw_hc32_lpuart_t *p_hw_lpuart = NULL;
-
-    if (NULL == p_dev) {
-        return -AM_EINVAL;
-    }
-
-    p_hw_lpuart = (amhw_hc32_lpuart_t *)p_dev->p_devinfo->lpuart_reg_base;
-
-    if(AM_UART_FLOWCTL_HW == p_dev->flowctl_mode) {
-
-        /* cts的状态发生变化时，状态位有效 */
-        if(amhw_hc32_lpuart_flag_check(
-               p_hw_lpuart, AMHW_HC32_LPUART_FLAG_CTS_TRIGGER) == AM_TRUE) {
-
-            /* 清除cts状态位 */
-            amhw_hc32_lpuart_flag_clr(p_hw_lpuart,
-                                      AMHW_HC32_LPUART_FLAG_CTS_TRIGGER);
-
-            /* 判断cts当前高低电平 */
-            if (am_gpio_get(p_dev->p_devinfo->hwflowctl_cfg.cts_pin) == 0) {
-                return (int)AM_UART_FLOWSTAT_ON;
-            } else {
-                return (int)AM_UART_FLOWSTAT_OFF;
-            }
-        } else {
-            return (int)p_dev->flowctl_tx_stat;
-        }
-    } else {
-        return (int)p_dev->flowctl_tx_stat;
-    }
 }
 
 /*******************************************************************************
@@ -629,24 +483,6 @@ void __lpuart_irq_handler (void *p_arg)
 
 }
 
-#if 0
-/**
- * \brief LPUART中断函数连接，仅使用中断模式时需要调用此函数
- */
-int __lpuart_connect (void *p_drv)
-{
-    am_hc32_lpuart_dev_t *p_dev = (am_hc32_lpuart_dev_t *)p_drv;
-
-    /* 关联中断向量号，开启中断 */
-    am_int_connect(p_dev->p_devinfo->inum, __lpuart_irq_handler, (void *)p_dev);
-    am_int_enable(p_dev->p_devinfo->inum);
-    amhw_hc32_lpuart_int_enable(p_dev->p_devinfo->lpuart_reg_base,
-                                  p_dev->other_int_enable);
-
-    return AM_OK;
-}
-#endif /* 0 */
-
 /**
  * \brief 默认回调函数
  *
@@ -689,9 +525,6 @@ am_uart_handle_t am_hc32_lpuart_init (
                      (int (*) (void *, int, void*, int))__lpuart_dummy_callback;
 
     p_dev->err_arg           = NULL;
-
-    p_dev->flowctl_mode      = AM_UART_FLOWCTL_NO;
-    p_dev->flowctl_tx_stat   = AM_UART_FLOWSTAT_ON;
 
     p_dev->other_int_enable  = p_devinfo->other_int_enable  &
                                ~(AMHW_HC32_LPUART_INT_TX_COMPLETE |
@@ -749,51 +582,15 @@ am_uart_handle_t am_hc32_lpuart_init (
         p_dev->clk_rate = am_clk_rate_get(CLK_PCLK);
     }
 
-    if(p_devinfo->work_mode == AMHW_HC32_LPUART_WORK_MODE_0) {
-
-        /* 模式0通信时钟分频系数设置无效 */
-        amhw_hc32_lpuart_clk_div_sel(p_hw_lpuart,
-                                     AMHW_HC32_LPUART_SCLK_DIV_MODE0_NO);
-    } else {
-
-        /* 设置通信时钟分频系数为最小 */
-        amhw_hc32_lpuart_clk_div_sel(p_hw_lpuart,
-                                     AMHW_HC32_LPUART_SCLK_DIV_MODE2_8);
-    }
-
     /* 工作模式设置 */
-    if (p_devinfo->work_mode == AMHW_HC32_LPUART_WORK_MODE_4) {
+    if (AM_TRUE == p_devinfo->asyn_hd) {
         amhw_hc32_lpuart_single_line_half_enable(p_hw_lpuart);
-        amhw_hc32_lpuart_mode_sel(p_hw_lpuart, AMHW_HC32_LPUART_WORK_MODE_1);
-    } else {
-        amhw_hc32_lpuart_mode_sel(p_hw_lpuart, p_devinfo->work_mode);
-    }
-    p_dev->work_mode = p_devinfo->work_mode;
-
-
-    /* 工作模式2/3，且开启了多机地址自动识别，则做如下配置 */
-    if((p_devinfo->work_mode == 2) || (p_devinfo->work_mode == 3)) {
-
-        if((p_devinfo->mut_addr.enable == AM_TRUE)) {
-
-            /* 设置从机地址（针对本机接收其他设备发送的数据而言）*/
-            amhw_hc32_lpuart_slaver_addr_set(p_hw_lpuart,
-                                             p_devinfo->mut_addr.addr);
-
-            /* 设置地址掩码 */
-            amhw_hc32_lpuart_slaver_addr_set(p_hw_lpuart,
-                                             p_devinfo->mut_addr.addr_mask);
-
-            /* 多机地址自动识别使能 */
-            amhw_hc32_lpuart_enable(p_hw_lpuart,
-                                    AMHW_HC32_LPUART_MUT_ADR_AUTO);
-        }
     }
 
     /* 获取串口检验方式配置选项 */
-    if (p_devinfo->cfg_flags & (AMHW_HC32_LPUART_HW_PARITY_ODD)) {
+    if ((p_devinfo->cfg_flags & (0xc)) == (AMHW_HC32_LPUART_HW_PARITY_ODD)) {
         p_dev->options |= AM_UART_PARENB | AM_UART_PARODD;
-    } else if(p_devinfo->cfg_flags & (AMHW_HC32_LPUART_HW_PARITY_EVEN)){
+    } else if((p_devinfo->cfg_flags & (0xc)) == (AMHW_HC32_LPUART_HW_PARITY_EVEN)){
         p_dev->options |= AM_UART_PARENB;
     } else {
 
@@ -811,9 +608,6 @@ am_uart_handle_t am_hc32_lpuart_init (
                p_hw_lpuart, AMHW_HC32_LPUART_FLAG_TX_EMPTY) == AM_FALSE);
 
     __lpuart_opt_set (p_dev, p_dev->options);
-
-    /* 流控模式设置（无流控，软件流控，硬件流控）*/
-    __lpuart_flow_mode_set(p_dev, AM_UART_FLOWCTL_NO);
 
     /* 设置波特率 */
     p_dev->baud_rate = amhw_hc32_lpuart_baudrate_set(p_hw_lpuart,

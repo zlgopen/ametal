@@ -1193,11 +1193,6 @@
               <FilePath>..\..\..\..\examples\board\amf17x_core\opa\demo_hc32f17x_core_opa_one.c</FilePath>
             </File>
             <File>
-              <FileName>demo_hc32f17x_core_drv_rtc.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\amf17x_core\rtc\demo_hc32f17x_core_drv_rtc.c</FilePath>
-            </File>
-            <File>
               <FileName>demo_hc32f17x_core_hw_spi_master.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\board\amf17x_core\spi\demo_hc32f17x_core_hw_spi_master.c</FilePath>
@@ -1432,6 +1427,16 @@
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\board\amf17x_core\wdt\demo_hc32f17x_core_std_wdt.c</FilePath>
             </File>
+            <File>
+              <FileName>demo_hc32f17x_core_hw_rtc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\amf17x_core\rtc\demo_hc32f17x_core_hw_rtc.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_hc32f17x_core_std_rtc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\amf17x_core\rtc\demo_hc32f17x_core_std_rtc.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -1573,11 +1578,6 @@
               <FilePath>..\..\..\..\examples\soc\hdsc\opa\demo_hc32_hw_opa_dac.c</FilePath>
             </File>
             <File>
-              <FileName>demo_hc32_hw_opa_one.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\soc\hdsc\opa\demo_hc32_hw_opa_one.c</FilePath>
-            </File>
-            <File>
               <FileName>demo_hc32_hw_spi_master.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\soc\hdsc\spi\demo_hc32_hw_spi_master.c</FilePath>
@@ -1666,6 +1666,16 @@
               <FileName>demo_hc32_hw_i2c_slave_int.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\soc\hdsc\i2c\demo_hc32_hw_i2c_slave_int.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_hc32_hw_opa.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\soc\hdsc\opa\demo_hc32_hw_opa.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_hc32_hw_rtc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\soc\hdsc\rtc\demo_hc32_hw_rtc.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -3378,11 +3388,6 @@
               <FilePath>..\..\..\..\examples\board\amf17x_core\opa\demo_hc32f17x_core_opa_one.c</FilePath>
             </File>
             <File>
-              <FileName>demo_hc32f17x_core_drv_rtc.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\amf17x_core\rtc\demo_hc32f17x_core_drv_rtc.c</FilePath>
-            </File>
-            <File>
               <FileName>demo_hc32f17x_core_hw_spi_master.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\board\amf17x_core\spi\demo_hc32f17x_core_hw_spi_master.c</FilePath>
@@ -3617,6 +3622,16 @@
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\board\amf17x_core\wdt\demo_hc32f17x_core_std_wdt.c</FilePath>
             </File>
+            <File>
+              <FileName>demo_hc32f17x_core_hw_rtc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\amf17x_core\rtc\demo_hc32f17x_core_hw_rtc.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_hc32f17x_core_std_rtc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\amf17x_core\rtc\demo_hc32f17x_core_std_rtc.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -3758,11 +3773,6 @@
               <FilePath>..\..\..\..\examples\soc\hdsc\opa\demo_hc32_hw_opa_dac.c</FilePath>
             </File>
             <File>
-              <FileName>demo_hc32_hw_opa_one.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\soc\hdsc\opa\demo_hc32_hw_opa_one.c</FilePath>
-            </File>
-            <File>
               <FileName>demo_hc32_hw_spi_master.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\soc\hdsc\spi\demo_hc32_hw_spi_master.c</FilePath>
@@ -3851,6 +3861,16 @@
               <FileName>demo_hc32_hw_i2c_slave_int.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\soc\hdsc\i2c\demo_hc32_hw_i2c_slave_int.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_hc32_hw_opa.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\soc\hdsc\opa\demo_hc32_hw_opa.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_hc32_hw_rtc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\soc\hdsc\rtc\demo_hc32_hw_rtc.c</FilePath>
             </File>
           </Files>
         </Group>
