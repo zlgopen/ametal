@@ -41,7 +41,7 @@
 #include "ametal.h"
 #include "am_gpio.h"
 #include "am_vdebug.h"
-#include "am_zlg116.h"
+#include "am_zml165.h"
 #include "demo_zlg_entries.h"
 #include "demo_aml165_core_entries.h"
 
@@ -62,10 +62,10 @@ void demo_aml165_core_hw_uart_int_entry (void)
     /*  πƒ‹ ±÷” */
     am_clk_enable(CLK_UART1);
 
-    demo_zlg_hw_uart_int_entry(ZLG116_UART1, 
+    demo_zlg_hw_uart_int_entry(ZML165_UART1, 
                                __zlg165_uart_pins_intit, 
                                am_clk_rate_get(CLK_UART1), 
-                               ZLG116_UART1_BASE, 
+                               ZML165_UART1_BASE, 
                                INUM_UART1);
 }
 /** [src_aml165_core_hw_uart_int] */

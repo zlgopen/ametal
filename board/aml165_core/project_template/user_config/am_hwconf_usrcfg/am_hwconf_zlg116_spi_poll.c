@@ -12,8 +12,8 @@
 
 /**
  * \file
- * \brief ZLG116 SPI 用户配置文件
- * \sa am_hwconf_zlg116_spi_int.c
+ * \brief ZML165 SPI 用户配置文件
+ * \sa am_hwconf_zml165_spi_int.c
  *
  * \internal
  * \par Modification history
@@ -22,15 +22,15 @@
  */
 
 #include "ametal.h"
-#include "am_zlg116.h"
+#include "am_zml165.h"
 #include "am_zlg_spi_poll.h"
 #include "am_gpio.h"
 #include "hw/amhw_zlg_spi.h"
 #include "am_clk.h"
 
 /**
- * \addtogroup am_if_src_hwconf_zlg116_spi_poll
- * \copydoc am_hwconf_zlg116_spi_poll.c
+ * \addtogroup am_if_src_hwconf_zml165_spi_poll
+ * \copydoc am_hwconf_zml165_spi_poll.c
  * @{
  */
 
@@ -60,7 +60,7 @@ static void __zlg_plfm_spi1_poll_deinit (void)
  * \brief SPI1 设备信息
  */
 const  struct am_zlg_spi_poll_devinfo  __g_spi1_poll_devinfo = {
-    ZLG116_SPI1_BASE,                   /**< \brief SPI1寄存器指针 */
+    ZML165_SPI1_BASE,                   /**< \brief SPI1寄存器指针 */
     CLK_SPI1,                           /**< \brief 时钟ID号 */
     PIOB_5_SPI1_MOSI | PIOB_5_AF_PP,    /**< \brief SPI1配置标识 */
     PIOB_5,                             /**< \brief MOSI引脚号 */
@@ -72,13 +72,13 @@ const  struct am_zlg_spi_poll_devinfo  __g_spi1_poll_devinfo = {
 static am_zlg_spi_poll_dev_t __g_spi1_poll_dev;
 
 /** \brief SPI1 实例初始化，获得SPI标准服务句柄 */
-am_spi_handle_t am_zlg116_spi1_poll_inst_init (void)
+am_spi_handle_t am_zml165_spi1_poll_inst_init (void)
 {
     return am_zlg_spi_poll_init(&__g_spi1_poll_dev, &__g_spi1_poll_devinfo);
 }
 
 /** \brief SPI1 实例解初始化 */
-void am_zlg116_spi1_poll_inst_deinit (am_spi_handle_t handle)
+void am_zml165_spi1_poll_inst_deinit (am_spi_handle_t handle)
 {
     am_zlg_spi_poll_deinit(handle);
 }

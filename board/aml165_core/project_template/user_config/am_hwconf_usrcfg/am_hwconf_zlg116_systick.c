@@ -12,8 +12,8 @@
 
 /**
  * \file
- * \brief ZLG116 SYSTICK 用户配置文件
- * \sa am_hwconf_zlg116_systick.c
+ * \brief ZML165 SYSTICK 用户配置文件
+ * \sa am_hwconf_zml165_systick.c
  *
  * \internal
  * \par Modification History
@@ -22,12 +22,12 @@
  */
 
 #include "am_arm_systick.h"
-#include "am_zlg116.h"
+#include "am_zml165.h"
 #include "hw/amhw_arm_systick.h"
 
 /**
- * \addtogroup am_if_src_hwconf_zlg116_systick
- * \copydoc am_hwconf_zlg116_systick.c
+ * \addtogroup am_if_src_hwconf_zml165_systick
+ * \copydoc am_hwconf_zml165_systick.c
  * @{
  */
 
@@ -37,7 +37,7 @@
  *       （#AMHW_ARM_SYSTICK_CONFIG_CLKSRC_SYSTEM_HALF）
  */
 static const am_arm_systick_devinfo_t __g_systick_devinfo = {
-    ZLG116_SYSTICK_BASE,                   /**< \brief 指向 SYSTICK 寄存器块指针 */
+    ZML165_SYSTICK_BASE,                   /**< \brief 指向 SYSTICK 寄存器块指针 */
     CLK_SYSCFG,                            /**< \brief SYSTICK 时钟 ID */
     AMHW_ARM_SYSTICK_CONFIG_CLKSRC_SYSTEM, /**< \brief SYSTICK 时钟选择系统时钟 */
 
@@ -50,7 +50,7 @@ static am_arm_systick_dev_t __g_systick_dev;
 static am_timer_handle_t    __g_systick_timer_handle = NULL;
 
 /** \brief SYSTICK 实例初始化，获得 TIMER 标准服务句柄 */
-am_timer_handle_t am_zlg116_systick_inst_init (void)
+am_timer_handle_t am_zml165_systick_inst_init (void)
 {
     if (__g_systick_timer_handle == NULL) {
         __g_systick_timer_handle = am_arm_systick_init(&__g_systick_dev,
@@ -61,7 +61,7 @@ am_timer_handle_t am_zlg116_systick_inst_init (void)
 }
 
 /** \brief SYSTICK 实例解初始化 */
-void am_zlg116_systick_inst_deinit (am_timer_handle_t handle)
+void am_zml165_systick_inst_deinit (am_timer_handle_t handle)
 {
     if (__g_systick_timer_handle == handle) {
         am_arm_systick_deinit(handle);

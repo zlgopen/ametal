@@ -39,7 +39,7 @@
 /** [src_aml165_core_drv_flash] */
 #include "ametal.h"
 #include "am_vdebug.h"
-#include "am_zlg116.h"
+#include "am_zml165.h"
 #include "demo_zlg_entries.h"
 #include "demo_aml165_core_entries.h"
 
@@ -52,7 +52,7 @@ void demo_aml165_core_drv_flash_entry (void)
 {
     AM_DBG_INFO("demo aml165_core drv flash!\r\n");
 
-    demo_zlg_drv_flash_entry(ZLG116_FLASH, FLASH_SECTOR);
+    demo_zlg_drv_flash_entry(ZML165_FLASH, FLASH_SECTOR);
 }
 /** [src_aml165_core_drv_flash] */
 

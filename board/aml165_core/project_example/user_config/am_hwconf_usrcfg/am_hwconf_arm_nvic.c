@@ -22,7 +22,7 @@
  */
 
 #include "ametal.h"
-#include "am_zlg116.h"
+#include "am_zml165.h"
 #include "am_arm_nvic.h"
 
 /**
@@ -87,7 +87,7 @@ static am_arm_nvic_dev_t __g_nvic_dev;
 /**
  * \brief 中断实例初始化，初始化中断驱动
  */
-int am_zlg116_nvic_inst_init (void)
+int am_zml165_nvic_inst_init (void)
 {
     return am_arm_nvic_init(&__g_nvic_dev, &__g_nvic_devinfo);
 }
@@ -95,7 +95,7 @@ int am_zlg116_nvic_inst_init (void)
 /** 
  * \brief 中断实例解初始化
  */
-void am_zlg116_nvic_inst_deinit (void)
+void am_zml165_nvic_inst_deinit (void)
 {
     am_arm_nvic_deinit();
 }

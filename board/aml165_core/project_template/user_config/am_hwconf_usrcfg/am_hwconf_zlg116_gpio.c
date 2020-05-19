@@ -12,8 +12,8 @@
 
 /**
  * \file
- * \brief ZLG116 GPIO 用户配置文件。
- * \sa am_hwconf_zlg116_gpio.c
+ * \brief ZML165 GPIO 用户配置文件。
+ * \sa am_hwconf_zml165_gpio.c
  * 
  * \internal
  * \par Modification history
@@ -21,20 +21,20 @@
  * \endinternal
  */
 
-#include "am_zlg116.h"
+#include "am_zml165.h"
 #include "am_gpio.h"
-#include "am_zlg116_gpio.h"
+#include "am_zml165_gpio.h"
 #include "hw/amhw_zlg_gpio.h"
-#include "am_zlg116_clk.h"
+#include "am_zml165_clk.h"
 
 /**
- * \addtogroup am_if_src_hwconf_zlg116_gpio
- * \copydoc am_hwconf_zlg116_gpio.c
+ * \addtogroup am_if_src_hwconf_zml165_gpio
+ * \copydoc am_hwconf_zml165_gpio.c
  * @{
  */
 
 /** \brief GPIO平台初始化 */
-void __zlg116_plfm_gpio_init (void)
+void __zml165_plfm_gpio_init (void)
 {
 
     /* 使能GPIO相关外设时钟 */
@@ -49,23 +49,23 @@ void __zlg116_plfm_gpio_init (void)
     am_clk_enable(CLK_SYSCFG);
 
     /* 复位GPIO相关外设 */
-    am_zlg116_clk_reset(CLK_GPIOA);
-    am_zlg116_clk_reset(CLK_GPIOB);
-    am_zlg116_clk_reset(CLK_GPIOC);
-    am_zlg116_clk_reset(CLK_GPIOD);
-    am_zlg116_clk_reset(CLK_SYSCFG);
+    am_zml165_clk_reset(CLK_GPIOA);
+    am_zml165_clk_reset(CLK_GPIOB);
+    am_zml165_clk_reset(CLK_GPIOC);
+    am_zml165_clk_reset(CLK_GPIOD);
+    am_zml165_clk_reset(CLK_SYSCFG);
 }
 
 /** \brief GPIO平台去初始化 */
-void __zlg116_plfm_gpio_deinit (void)
+void __zml165_plfm_gpio_deinit (void)
 {
 
     /* 复位GPIO相关外设 */
-    am_zlg116_clk_reset(CLK_GPIOA);
-    am_zlg116_clk_reset(CLK_GPIOB);
-    am_zlg116_clk_reset(CLK_GPIOC);
-    am_zlg116_clk_reset(CLK_GPIOD);
-    am_zlg116_clk_reset(CLK_SYSCFG);
+    am_zml165_clk_reset(CLK_GPIOA);
+    am_zml165_clk_reset(CLK_GPIOB);
+    am_zml165_clk_reset(CLK_GPIOC);
+    am_zml165_clk_reset(CLK_GPIOD);
+    am_zml165_clk_reset(CLK_SYSCFG);
 
     /* 禁能GPIO相关外设时钟 */
 
@@ -80,16 +80,16 @@ void __zlg116_plfm_gpio_deinit (void)
 }
 
 /** \brief 引脚触发信息内存 */
-static struct am_zlg116_gpio_trigger_info __g_gpio_triginfos[PIN_INT_MAX];
+static struct am_zml165_gpio_trigger_info __g_gpio_triginfos[PIN_INT_MAX];
 
 /** \brief 引脚触发信息映射 */
 static uint8_t __g_gpio_infomap[PIN_INT_MAX];
 
 /** \brief GPIO设备信息 */
-const am_zlg116_gpio_devinfo_t __g_gpio_devinfo = {
-     ZLG116_GPIO_BASE,          /**< \brief GPIO控制器寄存器块基址 */
-     ZLG116_SYSCFG_BASE,        /**< \brief SYSCFG配置寄存器块基址 */
-     ZLG116_EXTI_BASE,          /**< \brief 外部事件控制器寄存器块基址 */
+const am_zml165_gpio_devinfo_t __g_gpio_devinfo = {
+     ZML165_GPIO_BASE,          /**< \brief GPIO控制器寄存器块基址 */
+     ZML165_SYSCFG_BASE,        /**< \brief SYSCFG配置寄存器块基址 */
+     ZML165_EXTI_BASE,          /**< \brief 外部事件控制器寄存器块基址 */
 
      {
           INUM_EXTI0_1,         /**< \brief 外部中断线0与线1 */
@@ -100,23 +100,23 @@ const am_zlg116_gpio_devinfo_t __g_gpio_devinfo = {
      PIN_INT_MAX,               /**< \brief GPIO支持的引脚中断号数量 */
     __g_gpio_infomap,           /**< \brief 引脚触发信息映射 */
     __g_gpio_triginfos,         /**< \brief 引脚触发信息内存 */
-    __zlg116_plfm_gpio_init,
-    __zlg116_plfm_gpio_deinit
+    __zml165_plfm_gpio_init,
+    __zml165_plfm_gpio_deinit
 };
 
 /** \brief GPIO设备实例 */
-am_zlg116_gpio_dev_t __g_gpio_dev;
+am_zml165_gpio_dev_t __g_gpio_dev;
 
 /** \brief GPIO 实例初始化 */
-int am_zlg116_gpio_inst_init (void)
+int am_zml165_gpio_inst_init (void)
 {
-    return am_zlg116_gpio_init(&__g_gpio_dev, &__g_gpio_devinfo);
+    return am_zml165_gpio_init(&__g_gpio_dev, &__g_gpio_devinfo);
 }
 
 /** \brief GPIO 实例解初始化 */
-void am_zlg116_gpio_inst_deinit (void)
+void am_zml165_gpio_inst_deinit (void)
 {
-    am_zlg116_gpio_deinit();
+    am_zml165_gpio_deinit();
 }
 
 

@@ -60,7 +60,7 @@ void demo_aml165_core_std_i2c_master_sync_entry (void)
 {
     AM_DBG_INFO("demo aml165_core std i2c master sync!\r\n");
 
-    demo_std_i2c_master_sync_entry(am_zlg116_i2c1_inst_init(),
+    demo_std_i2c_master_sync_entry(am_zml165_i2c1_inst_init(),
                                    EEPROM_ADDR,
                                    TEST_LEN);
 }

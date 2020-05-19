@@ -1493,6 +1493,44 @@ void demo_zlg116_drv_standbymode_wake_up_entry (void);
 void demo_zlg116_drv_stopmode_wake_up_entry (void);
 
 /**
+ * \brief 睡眠模式例程，使用定时器周期唤醒，通过驱动层接口实现
+ *
+ * \param[in] timer_handle   定时器标准服务句柄
+ * \param[in] timer_clk_rate 在系统时钟切换为 LSI 时，定时器的时钟频率
+ *
+ * \return 无
+ */
+void demo_zml165_drv_sleepmode_timer_wake_up_entry (am_timer_handle_t timer_handle,
+                                                    uint32_t          timer_clk_rate);
+
+/**
+ * \brief 睡眠模式例程，通过驱动层接口实现
+ *
+ * \param 无
+ *
+ * \return 无
+ */
+void demo_zml165_drv_sleepmode_wake_up_entry (void);
+
+/**
+ * \brief 待机模式例程，通过驱动层接口实现
+ *
+ * \param 无
+ *
+ * \return 无
+ */
+void demo_zml165_drv_standbymode_wake_up_entry (void);
+
+/**
+ * \brief 停机模式例程，通过驱动层接口实现
+ *
+ * \param 无
+ *
+ * \return 无
+ */
+void demo_zml165_drv_stopmode_wake_up_entry (void);
+
+/**
  * \brief IWDG 例程，通过 HW 层接口实现
  *
  * \param[in] p_hw_iwdg    指向 IWDG 外设寄存器块的指针

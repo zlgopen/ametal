@@ -24,7 +24,7 @@
 #include "ametal.h"
 #include "am_mtd.h"
 #include "am_mx25xx.h"
-#include "zlg116_pin.h"
+#include "zml165_pin.h"
 
 /**
  * \addtogroup am_if_src_hwconf_microport_flash
@@ -52,7 +52,7 @@ am_mx25xx_handle_t am_microport_flash_inst_init (void)
 {
 
     /* »ñÈ¡ SPI0 ÊµÀý¾ä±ú */
-    am_spi_handle_t spi_handle = am_zlg116_spi1_dma_inst_init();
+    am_spi_handle_t spi_handle = am_zml165_spi1_dma_inst_init();
 
     return am_mx25xx_init(&__g_microport_flash_dev,
                           &__g_microport_flash_devinfo,

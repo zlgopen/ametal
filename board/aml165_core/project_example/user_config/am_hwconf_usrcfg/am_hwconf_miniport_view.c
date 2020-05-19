@@ -34,7 +34,7 @@
 #include "am_digitron_scan_gpio.h"
 #include "am_digitron_scan_hc595_gpio.h"
 #include "am_miniport_view_key.h"
-#include "zlg116_pin.h"
+#include "zml165_pin.h"
 #include "am_input.h"
 #include "am_miniport_view_key_595.h"
 

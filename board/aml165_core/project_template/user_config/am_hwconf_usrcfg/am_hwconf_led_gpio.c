@@ -22,7 +22,7 @@
  */
 #include "ametal.h"
 #include "am_led_gpio.h"
-#include "zlg116_pin.h"
+#include "zml165_pin.h"
 #include "am_input.h"
 
 /**

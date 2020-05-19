@@ -57,7 +57,7 @@ void demo_aml165_core_std_wwdg_entry (void)
 {
     AM_DBG_INFO("demo aml165_core std wwdg!\r\n");
 
-    demo_std_wdt_entry(am_zlg116_wwdg_inst_init(),
+    demo_std_wdt_entry(am_zml165_wwdg_inst_init(),
                        __WWDG_TIMEOUT_MS,
                        __WWDG_FEED_TIME_MS);
 }

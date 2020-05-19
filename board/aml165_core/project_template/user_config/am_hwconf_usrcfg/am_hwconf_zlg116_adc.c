@@ -12,8 +12,8 @@
 
 /**
  * \file
- * \brief ZLG116 ADC 用户配置文件
- * \sa am_hwconf_zlg116_adc.c
+ * \brief ZML165 ADC 用户配置文件
+ * \sa am_hwconf_zml165_adc.c
  *
  * \internal
  * \par Modification history
@@ -21,16 +21,16 @@
  * \endinternal
  */
 #include "ametal.h"
-#include "am_zlg116.h"
+#include "am_zml165.h"
 #include "am_gpio.h"
 #include "am_zlg_adc.h"
 #include "hw/amhw_zlg_adc.h"
-#include "hw/amhw_zlg116_rcc.h"
+#include "hw/amhw_zml165_rcc.h"
 #include "am_clk.h"
 
 /**
- * \addtogroup am_if_src_hwconf_zlg116_adc
- * \copydoc am_hwconf_zlg116_adc.c
+ * \addtogroup am_if_src_hwconf_zml165_adc
+ * \copydoc am_hwconf_zml165_adc.c
  * @{
  */
 
@@ -53,7 +53,7 @@ static void __zlg_plfm_adc_deinit (void)
 /** \brief ADC设备信息 */
 static const am_zlg_adc_devinfo_t __g_adc_devinfo = {
 
-    ZLG116_ADC_BASE,                  /**< \brief ADC */
+    ZML165_ADC_BASE,                  /**< \brief ADC */
     INUM_ADC_COMP,                    /**< \brief ADC的中断编号 */
     CLK_ADC1,                         /**< \brief ADC时钟号 */
 
@@ -68,13 +68,13 @@ static const am_zlg_adc_devinfo_t __g_adc_devinfo = {
 static am_zlg_adc_dev_t  __g_adc_dev;   /**< \brief 定义ADC 设备 */
 
 /** \brief ADC实例初始化，获得ADC标准服务句柄 */
-am_adc_handle_t am_zlg116_adc_inst_init (void)
+am_adc_handle_t am_zml165_adc_inst_init (void)
 {
     return am_zlg_adc_init(&__g_adc_dev, &__g_adc_devinfo);
 }
 
 /** \brief ADC实例解初始化 */
-void am_zlg116_adc_inst_deinit (am_adc_handle_t handle)
+void am_zml165_adc_inst_deinit (am_adc_handle_t handle)
 {
     am_zlg_adc_deinit(handle);
 }

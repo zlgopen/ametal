@@ -25,7 +25,7 @@
 #include "ametal.h"
 #include "am_time.h"
 #include "am_ds1302.h"
-#include "zlg116_pin.h"
+#include "zml165_pin.h"
 
 /**
  * \addtogroup am_if_src_hwconf_microport_ds1302

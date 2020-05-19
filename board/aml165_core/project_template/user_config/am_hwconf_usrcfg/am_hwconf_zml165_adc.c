@@ -22,7 +22,7 @@
  */
 
 #include "ametal.h"
-#include "zlg116_pin.h"
+#include "zml165_pin.h"
 #include "am_zml165_adc.h"
 /**
  * \addtogroup am_if_src_hwconf_zml165_adc

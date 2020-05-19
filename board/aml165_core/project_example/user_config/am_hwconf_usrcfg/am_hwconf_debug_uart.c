@@ -47,7 +47,7 @@ am_uart_handle_t am_debug_uart_inst_init (void)
 
 #if (__DEBUG_UART == 1)
 
-    handle = am_zlg116_uart1_inst_init();
+    handle = am_zml165_uart1_inst_init();
 
     /* 调试初始化 */
     am_debug_init(handle, __DEBUG_BAUDRATE);
@@ -56,7 +56,7 @@ am_uart_handle_t am_debug_uart_inst_init (void)
 
 #if (__DEBUG_UART == 2)
 
-    handle = am_zlg116_uart2_inst_init();
+    handle = am_zml165_uart2_inst_init();
 
     /* 调试初始化 */
     am_debug_init(handle, __DEBUG_BAUDRATE);

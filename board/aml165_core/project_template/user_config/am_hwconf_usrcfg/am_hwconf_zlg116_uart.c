@@ -12,8 +12,8 @@
 
 /**
  * \file
- * \brief ZLG116 UART 用户配置文件
- * \sa am_hwconf_zlg116_uart.c
+ * \brief ZML165 UART 用户配置文件
+ * \sa am_hwconf_zml165_uart.c
  *
  * \internal
  * \par Modification history
@@ -21,17 +21,17 @@
  * \endinternal
  */
 
-#include "am_zlg116.h"
+#include "am_zml165.h"
 #include "am_zlg_uart.h"
 #include "am_gpio.h"
 #include "hw/amhw_zlg_uart.h"
 #include "hw/amhw_zlg_gpio.h"
-#include "hw/amhw_zlg116_rcc.h"
+#include "hw/amhw_zml165_rcc.h"
 #include "am_clk.h"
 
 /**
- * \addtogroup am_if_src_hwconf_zlg116_uart
- * \copydoc am_hwconf_zlg116_uart.c
+ * \addtogroup am_if_src_hwconf_zml165_uart
+ * \copydoc am_hwconf_zml165_uart.c
  * @{
  */
 
@@ -54,7 +54,7 @@ static void __zlg_plfm_uart1_deinit (void)
 
 /** \brief 串口1设备信息 */
 static const am_zlg_uart_devinfo_t __g_uart1_devinfo = {
-    ZLG116_UART1_BASE,              /**< \brief 串口1 */
+    ZML165_UART1_BASE,              /**< \brief 串口1 */
     INUM_UART1,                     /**< \brief 串口1的中断编号 */
     CLK_UART1,                      /**< \brief 串口1的时钟 */
 
@@ -74,13 +74,13 @@ static const am_zlg_uart_devinfo_t __g_uart1_devinfo = {
 static am_zlg_uart_dev_t  __g_uart1_dev;   /**< \brief 定义串口1 设备 */
 
 /** \brief UART1实例初始化，获得uart1标准服务句柄 */
-am_uart_handle_t am_zlg116_uart1_inst_init (void)
+am_uart_handle_t am_zml165_uart1_inst_init (void)
 {
     return am_zlg_uart_init(&__g_uart1_dev, &__g_uart1_devinfo);
 }
 
 /** \brief UART1实例解初始化 */
-void am_zlg116_uart1_inst_deinit (am_uart_handle_t handle)
+void am_zml165_uart1_inst_deinit (am_uart_handle_t handle)
 {
     am_zlg_uart_deinit((am_zlg_uart_dev_t *)handle);
 }

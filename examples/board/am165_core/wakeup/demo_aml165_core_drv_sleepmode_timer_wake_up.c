@@ -58,9 +58,9 @@ void demo_aml165_core_drv_sleepmode_timer_wake_up_entry (void)
     AM_DBG_INFO("demo aml165_core drv sleepmode timer wake up!\r\n");
 
     /* ≥ı ºªØ PWR */
-    am_zlg116_pwr_inst_init();
+    am_zml165_pwr_inst_init();
 
-    demo_zlg116_drv_sleepmode_timer_wake_up_entry(am_zlg116_tim14_timing_inst_init(),
+    demo_zml165_drv_sleepmode_timer_wake_up_entry(am_zml165_tim14_timing_inst_init(),
                                                   __LSI_CLK);
 }
 /** [src_aml165_core_drv_sleepmode_timer_wake_up] */

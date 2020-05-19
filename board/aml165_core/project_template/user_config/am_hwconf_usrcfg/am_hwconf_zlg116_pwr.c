@@ -12,8 +12,8 @@
 
 /**
  * \file
- * \brief ZLG116电源管理(低功耗模式配置文件)
- * \sa am_hwconf_zlg116_pwr.c
+ * \brief ZML165电源管理(低功耗模式配置文件)
+ * \sa am_hwconf_zml165_pwr.c
  * 
  * \internal
  * \par Modification history
@@ -21,80 +21,80 @@
  * \endinternal
  */
 
-#include "am_zlg116.h"
-#include "am_zlg116_pwr.h"
-#include "am_zlg116_clk.h"
+#include "am_zml165.h"
+#include "am_zml165_pwr.h"
+#include "am_zml165_clk.h"
 
 /**
- * \addtogroup am_if_src_hwconf_zlg116_pwr
- * \copydoc am_hwconf_zlg116_pwr.c
+ * \addtogroup am_if_src_hwconf_zml165_pwr
+ * \copydoc am_hwconf_zml165_pwr.c
  * @{
  */
 
 /** \brief PWR平台初始化 */
-void __zlg116_plfm_pwr_init (void)
+void __zml165_plfm_pwr_init (void)
 {
 
     /* PWR电源接口时钟使能 */
     am_clk_enable(CLK_PWR);
 
     /* 复位PWR电源接口 */
-    am_zlg116_clk_reset(CLK_PWR);
+    am_zml165_clk_reset(CLK_PWR);
 }
 
 /** \brief PWR平台去初始化 */
-void __zlg116_plfm_pwr_deinit (void)
+void __zml165_plfm_pwr_deinit (void)
 {
 
     /* 复位PWR电源接口 */
-    am_zlg116_clk_reset(CLK_PWR);
+    am_zml165_clk_reset(CLK_PWR);
 
     /* 禁能PWR相关外设时钟 */
     am_clk_disable(CLK_PWR);
 
 }
 /** \brief 引脚触发信息内存 */
-static struct am_zlg116_pwr_mode_init __g_pwr_mode_init[3] = {
-     {AM_ZLG116_PWR_MODE_SLEEP,   PIOA_8},
-     {AM_ZLG116_PWR_MODE_STOP,    PIOA_8},
-     {AM_ZLG116_PWR_MODE_STANBY,  PIOA_0},
+static struct am_zml165_pwr_mode_init __g_pwr_mode_init[3] = {
+     {AM_ZML165_PWR_MODE_SLEEP,   PIOA_8},
+     {AM_ZML165_PWR_MODE_STOP,    PIOA_8},
+     {AM_ZML165_PWR_MODE_STANBY,  PIOA_0},
 };
 
 /** \brief PVD触发信息内存 */
-static struct am_zlg116_pwr_pvd_info __g_pwr_pvd_info = {
+static struct am_zml165_pwr_pvd_info __g_pwr_pvd_info = {
      AMHW_ZLG_PVD_LEVER_3_3V,    /**< \brief PVD监控电压 */
      AM_TRUE,                    /**< \brief 使能监控电压 */
      2,                          /**< \brief 监控电压模式 */
 };
 
 /** \brief PWR设备信息 */
-const am_zlg116_pwr_devinfo_t __g_pwr_devinfo = {
-    ZLG116_PWR_BASE,        /**< \brief PWR控制器寄存器块基址 */
-    ZLG116_BKP_BASE,        /**< \brief BKP配置寄存器块基址 */
-	ZLG116_EXTI_BASE,       /**< \brief EXTI寄存器块基址 */
+const am_zml165_pwr_devinfo_t __g_pwr_devinfo = {
+    ZML165_PWR_BASE,        /**< \brief PWR控制器寄存器块基址 */
+    ZML165_BKP_BASE,        /**< \brief BKP配置寄存器块基址 */
+	ZML165_EXTI_BASE,       /**< \brief EXTI寄存器块基址 */
     CLK_AHB,                /**< \brief AHB时钟ID */
     CLK_APB1,               /**< \brief APB1时钟ID */
     CLK_APB2,               /**< \brief APB2时钟ID */
     INUM_PVD,               /**< \brief pvd中断ID */
     __g_pwr_mode_init,      /**< \brief 指向pwr功耗模式数组的指针 */
     &__g_pwr_pvd_info,      /**< \brief 指向pvd电压监控信息的指针 */
-    __zlg116_plfm_pwr_init,
-    __zlg116_plfm_pwr_deinit
+    __zml165_plfm_pwr_init,
+    __zml165_plfm_pwr_deinit
 };
 
 /** \brief PWR设备实例 */
-am_zlg116_pwr_dev_t __g_pwr_dev;
+am_zml165_pwr_dev_t __g_pwr_dev;
 
 /** \brief PWR 实例初始化 */
-am_zlg116_pwr_handle_t am_zlg116_pwr_inst_init (void)
+am_zml165_pwr_handle_t am_zml165_pwr_inst_init (void)
 {
-    return am_zlg116_pwr_init(&__g_pwr_dev, &__g_pwr_devinfo);
+    return am_zml165_pwr_init(&__g_pwr_dev, &__g_pwr_devinfo);
 }
 
 /** \brief PWR 实例解初始化 */
-void am_zlg116_pwr_inst_deinit (void)
+void am_zml165_pwr_inst_deinit (void)
 {
-    am_zlg116_pwr_deinit();
+    am_zml165_pwr_deinit();
 }
 
 /**

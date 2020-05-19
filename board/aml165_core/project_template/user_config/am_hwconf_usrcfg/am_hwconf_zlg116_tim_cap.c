@@ -12,8 +12,8 @@
 
 /**
  * \file
- * \brief ZLG116 TIM用于捕获功能的用户配置文件
- * \sa am_hwconf_zlg116_tim_cap.c
+ * \brief ZML165 TIM用于捕获功能的用户配置文件
+ * \sa am_hwconf_zml165_tim_cap.c
  * 
  * \internal
  * \par Modification history
@@ -22,15 +22,15 @@
  */
 
 #include "ametal.h"
-#include "am_zlg116.h"
+#include "am_zml165.h"
 #include "am_zlg_tim_cap.h"
 #include "am_gpio.h"
 #include "am_clk.h"
-#include "am_zlg116_clk.h"
+#include "am_zml165_clk.h"
 
 /**
- * \addtogroup am_if_src_hwconf_zlg116_tim_cap
- * \copydoc am_hwconf_zlg116_tim_cap.c
+ * \addtogroup am_if_src_hwconf_zml165_tim_cap
+ * \copydoc am_hwconf_zml165_tim_cap.c
  * @{
  */
  
@@ -46,7 +46,7 @@ void __zlg_plfm_tim1_cap_init (void)
     am_clk_enable(CLK_TIM1);
 
     /* 复位高级定时器1 */
-    am_zlg116_clk_reset(CLK_TIM1);
+    am_zml165_clk_reset(CLK_TIM1);
 }
 
 /** \brief 解除TIM1平台初始化 */
@@ -54,7 +54,7 @@ void __zlg_plfm_tim1_cap_deinit (void)
 {
 
     /* 复位高级定时器1 */
-    am_zlg116_clk_reset(CLK_TIM1);
+    am_zml165_clk_reset(CLK_TIM1);
 
     /* 禁能高级定时器1时钟 */
     am_clk_disable(CLK_TIM1);
@@ -76,7 +76,7 @@ am_zlg_tim_cap_ioinfo_t __g_tim1_cap_ioinfo_list[] = {
 
 /** \brief TIM1用于捕获功能的设备信息 */
 const am_zlg_tim_cap_devinfo_t  __g_tim1_cap_devinfo = {
-    ZLG116_TIM1_BASE,               /**< \brief TIM1寄存器块的基地址 */
+    ZML165_TIM1_BASE,               /**< \brief TIM1寄存器块的基地址 */
     INUM_TIM1_CC,                   /**< \brief TIM1中断编号 */
     CLK_TIM1,                       /**< \brief TIM1时钟ID */
     4,                              /**< \brief 4个捕获通道 */
@@ -90,14 +90,14 @@ const am_zlg_tim_cap_devinfo_t  __g_tim1_cap_devinfo = {
 am_zlg_tim_cap_dev_t  __g_tim1_cap_dev;
 
 /** \brief tim1 cap实例初始化，获得cap标准服务句柄 */
-am_cap_handle_t am_zlg116_tim1_cap_inst_init (void)
+am_cap_handle_t am_zml165_tim1_cap_inst_init (void)
 {
     return am_zlg_tim_cap_init(&__g_tim1_cap_dev,
                                &__g_tim1_cap_devinfo);
 }
 
 /** \brief tim1 cap实例解初始化 */
-void am_zlg116_tim1_cap_inst_deinit (am_cap_handle_t handle)
+void am_zml165_tim1_cap_inst_deinit (am_cap_handle_t handle)
 {
     am_zlg_tim_cap_deinit(handle);
 }
@@ -114,7 +114,7 @@ void __zlg_plfm_tim2_cap_init (void)
     am_clk_enable(CLK_TIM2);
 
     /* 复位通用定时器2 */
-    am_zlg116_clk_reset(CLK_TIM2);
+    am_zml165_clk_reset(CLK_TIM2);
 }
 
 /** \brief 解除TIM2平台初始化 */
@@ -122,7 +122,7 @@ void __zlg_plfm_tim2_cap_deinit (void)
 {
 
     /* 复位通用定时器2 */
-    am_zlg116_clk_reset(CLK_TIM2);
+    am_zml165_clk_reset(CLK_TIM2);
 
     /* 禁能通用定时器2时钟 */
     am_clk_disable(CLK_TIM2);
@@ -144,7 +144,7 @@ am_zlg_tim_cap_ioinfo_t __g_tim2_cap_ioinfo_list[] = {
 
 /** \brief TIM2用于捕获功能的设备信息 */
 const am_zlg_tim_cap_devinfo_t  __g_tim2_cap_devinfo = {
-    ZLG116_TIM2_BASE,               /**< \brief TIM2寄存器块的基地址 */
+    ZML165_TIM2_BASE,               /**< \brief TIM2寄存器块的基地址 */
     INUM_TIM2,                      /**< \brief TIM2中断编号 */
     CLK_TIM2,                       /**< \brief TIM2时钟ID */
     4,                              /**< \brief 4个捕获通道 */
@@ -158,14 +158,14 @@ const am_zlg_tim_cap_devinfo_t  __g_tim2_cap_devinfo = {
 am_zlg_tim_cap_dev_t  __g_tim2_cap_dev;
 
 /** \brief tim2 cap实例初始化，获得cap标准服务句柄 */
-am_cap_handle_t am_zlg116_tim2_cap_inst_init (void)
+am_cap_handle_t am_zml165_tim2_cap_inst_init (void)
 {
     return am_zlg_tim_cap_init(&__g_tim2_cap_dev,
                                   &__g_tim2_cap_devinfo);
 }
 
 /** \brief tim2 cap实例解初始化 */
-void am_zlg116_tim2_cap_inst_deinit (am_cap_handle_t handle)
+void am_zml165_tim2_cap_inst_deinit (am_cap_handle_t handle)
 {
     am_zlg_tim_cap_deinit(handle);
 }
@@ -182,7 +182,7 @@ void __zlg_plfm_tim3_cap_init (void)
     am_clk_enable(CLK_TIM3);
 
     /* 复位通用定时器3 */
-    am_zlg116_clk_reset(CLK_TIM3);
+    am_zml165_clk_reset(CLK_TIM3);
 }
 
 /** \brief 解除TIM3平台初始化 */
@@ -190,7 +190,7 @@ void __zlg_plfm_tim3_cap_deinit (void)
 {
 
     /* 复位通用定时器3 */
-    am_zlg116_clk_reset(CLK_TIM3);
+    am_zml165_clk_reset(CLK_TIM3);
 
     /* 禁能通用定时器3时钟 */
     am_clk_disable(CLK_TIM3);
@@ -209,7 +209,7 @@ am_zlg_tim_cap_ioinfo_t __g_tim3_cap_ioinfo_list[] = {
 
 /** \brief TIM3用于捕获功能的设备信息 */
 const am_zlg_tim_cap_devinfo_t  __g_tim3_cap_devinfo = {
-    ZLG116_TIM3_BASE,               /**< \brief TIM3寄存器块的基地址 */
+    ZML165_TIM3_BASE,               /**< \brief TIM3寄存器块的基地址 */
     INUM_TIM3,                      /**< \brief TIM3中断编号 */
     CLK_TIM3,                       /**< \brief TIM3时钟ID */
     4,                              /**< \brief 4个捕获通道 */
@@ -224,14 +224,14 @@ const am_zlg_tim_cap_devinfo_t  __g_tim3_cap_devinfo = {
 am_zlg_tim_cap_dev_t  __g_tim3_cap_dev;
 
 /** \brief tim3 cap实例初始化，获得cap标准服务句柄 */
-am_cap_handle_t am_zlg116_tim3_cap_inst_init (void)
+am_cap_handle_t am_zml165_tim3_cap_inst_init (void)
 {
     return am_zlg_tim_cap_init(&__g_tim3_cap_dev,
                                   &__g_tim3_cap_devinfo);
 }
 
 /** \brief tim3 cap实例解初始化 */
-void am_zlg116_tim3_cap_inst_deinit (am_cap_handle_t handle)
+void am_zml165_tim3_cap_inst_deinit (am_cap_handle_t handle)
 {
     am_zlg_tim_cap_deinit(handle);
 }
@@ -248,7 +248,7 @@ void __zlg_plfm_tim14_cap_init (void)
     am_clk_enable(CLK_TIM14);
 
     /* 复位通用定时器14 */
-    am_zlg116_clk_reset(CLK_TIM14);
+    am_zml165_clk_reset(CLK_TIM14);
 }
 
 /** \brief 解除TIM14平台初始化 */
@@ -256,7 +256,7 @@ void __zlg_plfm_tim14_cap_deinit (void)
 {
 
     /* 复位通用定时器14 */
-    am_zlg116_clk_reset(CLK_TIM14);
+    am_zml165_clk_reset(CLK_TIM14);
 
     /* 禁能通用定时器14时钟 */
     am_clk_disable(CLK_TIM14);
@@ -271,7 +271,7 @@ am_zlg_tim_cap_ioinfo_t __g_tim14_cap_ioinfo_list[] = {
 
 /** \brief TIM14用于捕获功能的设备信息 */
 const am_zlg_tim_cap_devinfo_t  __g_tim14_cap_devinfo = {
-    ZLG116_TIM14_BASE,               /**< \brief TIM14寄存器块的基地址 */
+    ZML165_TIM14_BASE,               /**< \brief TIM14寄存器块的基地址 */
     INUM_TIM14,                      /**< \brief TIM14中断编号 */
     CLK_TIM14,                       /**< \brief TIM14时钟ID */
     1,                               /**< \brief 1个捕获通道 */
@@ -285,14 +285,14 @@ const am_zlg_tim_cap_devinfo_t  __g_tim14_cap_devinfo = {
 am_zlg_tim_cap_dev_t  __g_tim14_cap_dev;
 
 /** \brief tim14 cap实例初始化，获得cap标准服务句柄 */
-am_cap_handle_t am_zlg116_tim14_cap_inst_init (void)
+am_cap_handle_t am_zml165_tim14_cap_inst_init (void)
 {
     return am_zlg_tim_cap_init(&__g_tim14_cap_dev,
                                   &__g_tim14_cap_devinfo);
 }
 
 /** \brief tim14 cap实例解初始化 */
-void am_zlg116_tim14_cap_inst_deinit (am_cap_handle_t handle)
+void am_zml165_tim14_cap_inst_deinit (am_cap_handle_t handle)
 {
     am_zlg_tim_cap_deinit(handle);
 }

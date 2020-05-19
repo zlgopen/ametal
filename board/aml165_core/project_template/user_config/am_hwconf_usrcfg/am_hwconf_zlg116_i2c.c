@@ -12,8 +12,8 @@
 
 /**
  * \file
- * \brief ZLG116 I2C 用户配置文件
- * \sa am_hwconf_zlg116_i2c.c
+ * \brief ZML165 I2C 用户配置文件
+ * \sa am_hwconf_zml165_i2c.c
  *
  * \internal
  * \par Modification history
@@ -22,16 +22,16 @@
  */
 
 #include "ametal.h"
-#include "am_zlg116.h"
+#include "am_zml165.h"
 #include "am_gpio.h"
 #include "am_clk.h"
 #include "am_zlg_i2c.h"
-#include "am_zlg116_clk.h"
+#include "am_zml165_clk.h"
 #include "hw/amhw_zlg_i2c.h"
 
 /**
- * \addtogroup am_if_src_hwconf_zlg116_i2c
- * \copydoc am_hwconf_zlg116_i2c.c
+ * \addtogroup am_if_src_hwconf_zml165_i2c
+ * \copydoc am_hwconf_zml165_i2c.c
  * @{
  */
 
@@ -65,7 +65,7 @@ static void __zlg_i2c1_plfm_init (void)
     am_gpio_pin_cfg(PIOA_4, PIOA_4_I2C_SDA | PIOA_4_AF_OD | PIOA_4_SPEED_20MHz);
 
     am_clk_enable(CLK_I2C1);
-    am_zlg116_clk_reset(CLK_I2C1);
+    am_zml165_clk_reset(CLK_I2C1);
 }
 
 /** \brief 解除I2C1 平台初始化函数 */
@@ -86,7 +86,7 @@ static void __zlg_i2c1_plfm_deinit (void)
  */
 static const am_zlg_i2c_devinfo_t __g_i2c1_devinfo = {
 
-    ZLG116_I2C1_BASE,                 /**< \brief I2C1寄存器块基址 */
+    ZML165_I2C1_BASE,                 /**< \brief I2C1寄存器块基址 */
     CLK_I2C1,                         /**< \brief 时钟ID值 */
     INUM_I2C1,                        /**< \brief I2C1 中断编号 */
 
@@ -101,7 +101,7 @@ static am_zlg_i2c_dev_t __g_i2c1_dev;           /**< \brief I2C1 设备实例 */
 static am_i2c_handle_t  __g_i2c1_handle = NULL; /**< \brief I2C 标准服务句柄 */
 
 /** \brief I2C1 实例初始化，获得I2C标准服务句柄 */
-am_i2c_handle_t am_zlg116_i2c1_inst_init (void)
+am_i2c_handle_t am_zml165_i2c1_inst_init (void)
 {
     if (NULL == __g_i2c1_handle) {
         __g_i2c1_handle = am_zlg_i2c_init(&__g_i2c1_dev, &__g_i2c1_devinfo);
@@ -111,7 +111,7 @@ am_i2c_handle_t am_zlg116_i2c1_inst_init (void)
 }
 
 /** \brief I2C1 实例解初始化 */
-void am_zlg116_i2c1_inst_deinit (am_i2c_handle_t handle)
+void am_zml165_i2c1_inst_deinit (am_i2c_handle_t handle)
 {
     am_zlg_i2c_deinit(handle);
     __g_i2c1_handle = NULL;

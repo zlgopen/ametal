@@ -25,7 +25,7 @@
 #include "am_time.h"
 #include "am_alarm_clk.h"
 #include "am_rx8025t.h"
-#include "zlg116_pin.h"
+#include "zml165_pin.h"
 
 /**
  * \addtogroup am_if_src_hwconf_microport_rx8025t
@@ -51,7 +51,7 @@ am_rx8025t_handle_t am_microport_rx8025t_inst_init (void)
 {
 
     /* »ñÈ¡ I2C ÊµÀý¾ä±ú */
-    am_i2c_handle_t i2c_handle = am_zlg116_i2c1_inst_init();
+    am_i2c_handle_t i2c_handle = am_zml165_i2c1_inst_init();
 
     return am_rx8025t_init(&__g_microport_rx8025t_dev,
                            &__g_microport_rx8025t_devinfo,

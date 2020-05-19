@@ -44,14 +44,10 @@ int am_main (void)
      *
      * 注意：同一时刻只能运行一个 demo，即只能使某一行处于取消注释状态。
      */
-    demo_aml165_core_std_led_entry();
+//    demo_aml165_core_std_led_entry();
 //    demo_aml165_core_zml165_adc_vol_measure();
 //    demo_aml165_core_std_delay_entry();
-//    demo_aml165_core_hw_adc_int_entry();
-//    demo_aml165_core_std_adc_entry();
-//    demo_aml165_core_std_adc_ntc_entry();
 //    demo_aml165_core_std_buzzer_entry();
-//    demo_aml165_core_hw_clk_entry();
 //    demo_aml165_core_drv_dma_m2m_entry();
 //    demo_aml165_core_drv_flash_entry();
 //    demo_aml165_core_hw_gpio_entry();
@@ -60,7 +56,7 @@ int am_main (void)
 //    demo_aml165_core_std_gpio_trigger_entry();
 //    demo_aml165_core_hw_i2c_master_poll_entry();
 //    demo_aml165_core_hw_i2c_slave_poll_entry();
-//    demo_aml165_core_std_i2c_lm75_entry();
+    demo_aml165_core_std_i2c_lm75_entry();
 //    demo_aml165_core_std_i2c_master_async_entry();
 //    demo_aml165_core_std_i2c_master_sync_entry();
 //    demo_aml165_core_std_i2c_slave_entry();
@@ -74,13 +70,8 @@ int am_main (void)
 //    demo_aml165_core_std_spi_master_int_entry();
 //    demo_aml165_core_std_spi_slave_dma_entry();
 //    demo_aml165_core_hw_tim_cap_entry();
-//    demo_aml165_core_hw_tim_cmp_toggle_entry();
 //    demo_aml165_core_hw_tim_pwm_entry();
-//    demo_aml165_core_hw_tim_pwm_dead_entry();
 //    demo_aml165_core_hw_tim_timing_entry();
-//    demo_aml165_core_std_tim14_cap_entry();
-//    demo_aml165_core_std_tim14_pwm_entry();
-//    demo_aml165_core_std_tim14_timing_entry();
 //    demo_aml165_core_std_tim16_timing_entry();
 //    demo_aml165_core_std_tim17_timing_entry();
 //    demo_aml165_core_std_tim1_cap_entry();
@@ -124,18 +115,6 @@ int am_main (void)
 //    demo_aml165_core_miniport_key_entry();
 //    demo_aml165_core_miniport_key_digitron_entry();
 //    demo_aml165_core_miniport_led_entry();
-//    demo_aml165_core_miniport_zlg72128_entry();
-//    demo_aml165_core_dr_fm175xx_picca_read_id();
-//    demo_aml165_core_dr_fm175xx_picca_halt();
-//    demo_aml165_core_dr_fm175xx_picca_read_block ();
-//    demo_aml165_core_dr_fm175xx_picca_val_operate();
-//    demo_aml165_core_dr_fm175xx_picca_write_block();
-//    demo_aml165_core_dr_fm175xx_piccb_read_id();
-//    demo_aml165_core_dr_fm175xx_picca_lpcd_read_id();
-//    demo_aml165_zsn60x_led_test_entry();
-//    demo_aml165_zsn60x_picca_test_entry();
-//    demo_aml165_zsn60x_piccb_test_entry();
-//    demo_aml165_zsn60x_auto_detect_test_entry();
     while (1) {
     }
 }

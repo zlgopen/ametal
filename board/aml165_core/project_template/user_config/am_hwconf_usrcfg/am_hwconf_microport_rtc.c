@@ -26,7 +26,7 @@
 #include "am_time.h"
 #include "am_pcf85063.h"
 #include "am_alarm_clk.h"
-#include "zlg116_pin.h"
+#include "zml165_pin.h"
 
 /**
  * \addtogroup am_if_src_hwconf_microport_rtc
@@ -50,7 +50,7 @@ am_local am_pcf85063_dev_t __g_microport_rtc_dev;
 /** \brief ÊµÀý³õÊ¼»¯ */
 am_pcf85063_handle_t am_microport_rtc_inst_init (void)
 {
-    am_i2c_handle_t               i2c_handle           = am_zlg116_i2c1_inst_init();
+    am_i2c_handle_t               i2c_handle           = am_zml165_i2c1_inst_init();
     am_local am_pcf85063_handle_t microport_rtc_handle = NULL;
 
     if (microport_rtc_handle == NULL) {

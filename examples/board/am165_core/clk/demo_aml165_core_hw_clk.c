@@ -41,7 +41,7 @@
 #include <am_aml165_inst_init.h>
 #include "ametal.h"
 #include "am_vdebug.h"
-#include "am_zlg116.h"
+#include "am_zml165.h"
 #include "demo_zlg_entries.h"
 #include "demo_aml165_core_entries.h"
 
@@ -55,7 +55,7 @@ am_local void __uart_init (void)
 {
     am_uart_handle_t handle = NULL;
 
-    handle = am_zlg116_uart2_inst_init();
+    handle = am_zml165_uart2_inst_init();
 
     /* µ÷ÊÔ³õÊ¼»¯ */
     am_debug_init(handle, __DEBUG_BAUDRATE);
@@ -81,7 +81,7 @@ void demo_aml165_core_hw_clk_entry (void)
 
     am_gpio_pin_cfg(PIOA_9, PIOA_9_MCO | PIOA_9_AF_PP | PIOA_9_SPEED_50MHz);
 
-    amhw_zlg116_rcc_mco_src_set(4);
+    amhw_zml165_rcc_mco_src_set(4);
 
     demo_zlg_hw_clk_entry(&clk_id[0], AM_NELEMENTS(clk_id));
 }

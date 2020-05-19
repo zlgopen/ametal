@@ -49,7 +49,7 @@ void demo_aml165_core_std_tim3_timing_entry (void)
 {
     AM_DBG_INFO("demo aml165_core std tim3 timing!\r\n");
 
-    demo_std_timer_timing_entry(am_zlg116_tim3_timing_inst_init(), 0);
+    demo_std_timer_timing_entry(am_zml165_tim3_timing_inst_init(), 0);
 }
 /** [src_aml165_core_std_tim3_timing] */
 

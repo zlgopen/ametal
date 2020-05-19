@@ -24,7 +24,7 @@
 #include <am_aml165_inst_init.h>
 #include "am_sensor_mmc5883ma.h"
 #include "am_common.h"
-#include "zlg116_pin.h"
+#include "zml165_pin.h"
 
 /** \brief 传感器 MMC5883MA 设备信息实例 */
 am_const am_local struct am_sensor_mmc5883ma_devinfo __g_mmc5883ma_info = {
@@ -40,7 +40,7 @@ am_sensor_handle_t am_sensor_mmc5883ma_inst_init (void)
 {
     return am_sensor_mmc5883ma_init(&__g_mmc5883ma_dev,
                                     &__g_mmc5883ma_info,
-                                    am_zlg116_i2c1_inst_init());
+                                    am_zml165_i2c1_inst_init());
 }
 
 /** \brief 传感器 MMC5883MA 实例解初始化 */

@@ -26,7 +26,7 @@
 #define __AMHW_ZLG115_RCC_H
 
 #include "am_types.h"
-#include "zlg116_regbase.h"
+#include "zml165_regbase.h"
 
 /**
  * \brief 系统时钟源

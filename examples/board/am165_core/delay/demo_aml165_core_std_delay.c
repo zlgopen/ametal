@@ -36,7 +36,7 @@
 /** [src_aml165_core_std_delay] */
 #include "ametal.h"
 #include "am_vdebug.h"
-#include "am_zlg116.h"
+#include "am_zml165.h"
 #include "am_board.h"
 #include "demo_std_entries.h"
 #include "demo_aml165_core_entries.h"

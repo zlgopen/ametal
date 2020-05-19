@@ -23,7 +23,7 @@
 #include <am_aml165_inst_init.h>
 #include "am_sensor_bme280.h"
 #include "am_common.h"
-#include "zlg116_pin.h"
+#include "zml165_pin.h"
 
 /** \brief 传感器 bme280 设备信息实例 */
 am_const am_local struct am_sensor_bme280_devinfo __g_bme280_info = {
@@ -38,7 +38,7 @@ am_sensor_handle_t am_sensor_bme280_inst_init (void)
 {
     return am_sensor_bme280_init(&__g_bme280_dev,
                                  &__g_bme280_info,
-                                 am_zlg116_i2c1_inst_init());
+                                 am_zml165_i2c1_inst_init());
 }
 
 /** \brief 传感器 bme280 实例解初始化 */

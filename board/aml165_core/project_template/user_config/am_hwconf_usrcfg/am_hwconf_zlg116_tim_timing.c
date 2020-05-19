@@ -12,8 +12,8 @@
 
 /**
  * \file
- * \brief ZLG116 TIM 定时功能用户配置文件
- * \sa am_hwconf_zlg116_tim_timing.c
+ * \brief ZML165 TIM 定时功能用户配置文件
+ * \sa am_hwconf_zml165_tim_timing.c
  * 
  * \internal
  * \par Modification history
@@ -23,13 +23,13 @@
 
 #include "ametal.h"
 #include "am_clk.h"
-#include "am_zlg116.h"
-#include "am_zlg116_clk.h"
+#include "am_zml165.h"
+#include "am_zml165_clk.h"
 #include "am_zlg_tim_timing.h"
 
 /**
- * \addtogroup am_if_src_hwconf_zlg116_tim_timing
- * \copydoc am_hwconf_zlg116_tim_timing.c
+ * \addtogroup am_if_src_hwconf_zml165_tim_timing
+ * \copydoc am_hwconf_zml165_tim_timing.c
  * @{
  */
 
@@ -45,7 +45,7 @@ void __zlg_plfm_tim1_timing_init (void)
     am_clk_enable(CLK_TIM1);
 
     /* 复位高级定时器1 */
-    am_zlg116_clk_reset(CLK_TIM1);
+    am_zml165_clk_reset(CLK_TIM1);
 }
 
 /** \brief 解除 TIM1 平台初始化 */
@@ -53,7 +53,7 @@ void __zlg_plfm_tim1_timing_deinit (void)
 {
 
     /* 复位高级定时器1 */
-    am_zlg116_clk_reset(CLK_TIM1);
+    am_zml165_clk_reset(CLK_TIM1);
 
     /* 禁能高级定时器1时钟 */
     am_clk_disable(CLK_TIM1);
@@ -62,7 +62,7 @@ void __zlg_plfm_tim1_timing_deinit (void)
 
 /** \brief TIM1 设备信息 */
 const am_zlg_tim_timing_devinfo_t  __g_tim1_timing_devinfo = {
-    ZLG116_TIM1_BASE,                /**< \brief TIM1寄存器块的基地址 */
+    ZML165_TIM1_BASE,                /**< \brief TIM1寄存器块的基地址 */
     INUM_TIM1_BRK_UP_TRG_COM,        /**< \brief TIM1中断编号 */
     CLK_TIM1,                        /**< \brief TIM1时钟ID */
     AMHW_ZLG_TIM_TYPE0,              /**< \brief 定时器类型 */
@@ -74,14 +74,14 @@ const am_zlg_tim_timing_devinfo_t  __g_tim1_timing_devinfo = {
 am_zlg_tim_timing_dev_t  __g_tim1_timing_dev;
 
 /** \brief 定时器TIM1 Timing实例初始化，获得Timer标准服务句柄 */
-am_timer_handle_t am_zlg116_tim1_timing_inst_init (void)
+am_timer_handle_t am_zml165_tim1_timing_inst_init (void)
 {
     return am_zlg_tim_timing_init(&__g_tim1_timing_dev,
                                   &__g_tim1_timing_devinfo);
 }
 
 /** \brief TIM1 Timing实例解初始化 */
-void am_zlg116_tim1_timing_inst_deinit (am_timer_handle_t handle)
+void am_zml165_tim1_timing_inst_deinit (am_timer_handle_t handle)
 {
     am_zlg_tim_timing_deinit(handle);
 }
@@ -98,7 +98,7 @@ void __zlg_plfm_tim2_timing_init (void)
     am_clk_enable(CLK_TIM2);
 
     /* 复位通用定时器2 */
-    am_zlg116_clk_reset(CLK_TIM2);
+    am_zml165_clk_reset(CLK_TIM2);
 }
 
 /** \brief 解除 TIM2 平台初始化 */
@@ -106,7 +106,7 @@ void __zlg_plfm_tim2_timing_deinit (void)
 {
 
     /* 复位通用定时器2 */
-    am_zlg116_clk_reset(CLK_TIM2);
+    am_zml165_clk_reset(CLK_TIM2);
 
     /* 禁能通用定时器2时钟 */
     am_clk_disable(CLK_TIM2);
@@ -114,7 +114,7 @@ void __zlg_plfm_tim2_timing_deinit (void)
 
 /** \brief TIM2 设备信息 */
 const am_zlg_tim_timing_devinfo_t  __g_tim2_timing_devinfo = {
-    ZLG116_TIM2_BASE,                /**< \brief TIM2寄存器块的基地址 */
+    ZML165_TIM2_BASE,                /**< \brief TIM2寄存器块的基地址 */
     INUM_TIM2,                       /**< \brief TIM2中断编号 */
     CLK_TIM2,                        /**< \brief TIM2时钟ID */
     AMHW_ZLG_TIM_TYPE1,              /**< \brief 定时器类型 */
@@ -126,14 +126,14 @@ const am_zlg_tim_timing_devinfo_t  __g_tim2_timing_devinfo = {
 am_zlg_tim_timing_dev_t  __g_tim2_timing_dev;
 
 /** \brief TIM2 Timing实例初始化，获得Timer标准服务句柄 */
-am_timer_handle_t am_zlg116_tim2_timing_inst_init (void)
+am_timer_handle_t am_zml165_tim2_timing_inst_init (void)
 {
     return am_zlg_tim_timing_init(&__g_tim2_timing_dev,
                                   &__g_tim2_timing_devinfo);
 }
 
 /** \brief TIM2 Timing实例解初始化 */
-void am_zlg116_tim2_timing_inst_deinit (am_timer_handle_t handle)
+void am_zml165_tim2_timing_inst_deinit (am_timer_handle_t handle)
 {
     am_zlg_tim_timing_deinit(handle);
 }
@@ -150,7 +150,7 @@ void __zlg_plfm_tim3_timing_init (void)
     am_clk_enable(CLK_TIM3);
 
     /* 复位通用定时器3 */
-    am_zlg116_clk_reset(CLK_TIM3);
+    am_zml165_clk_reset(CLK_TIM3);
 }
 
 /** \brief 解除TIM3平台初始化 */
@@ -158,7 +158,7 @@ void __zlg_plfm_tim3_timing_deinit (void)
 {
 
     /* 复位通用定时器3 */
-    am_zlg116_clk_reset(CLK_TIM3);
+    am_zml165_clk_reset(CLK_TIM3);
 
     /* 禁能通用定时器3时钟 */
     am_clk_disable(CLK_TIM3);
@@ -166,7 +166,7 @@ void __zlg_plfm_tim3_timing_deinit (void)
 
 /** \brief TIM3 设备信息 */
 const am_zlg_tim_timing_devinfo_t  __g_tim3_timing_devinfo = {
-    ZLG116_TIM3_BASE,                /**< \brief TIM3寄存器块的基地址 */
+    ZML165_TIM3_BASE,                /**< \brief TIM3寄存器块的基地址 */
     INUM_TIM3,                       /**< \brief TIM3中断编号 */
     CLK_TIM3,                        /**< \brief TIM3时钟ID */
     AMHW_ZLG_TIM_TYPE2,              /**< \brief 定时器类型 */
@@ -178,14 +178,14 @@ const am_zlg_tim_timing_devinfo_t  __g_tim3_timing_devinfo = {
 am_zlg_tim_timing_dev_t  __g_tim3_timing_dev;
 
 /** \brief TIM3 Timing实例初始化，获得Timer标准服务句柄 */
-am_timer_handle_t am_zlg116_tim3_timing_inst_init (void)
+am_timer_handle_t am_zml165_tim3_timing_inst_init (void)
 {
     return am_zlg_tim_timing_init(&__g_tim3_timing_dev,
                                   &__g_tim3_timing_devinfo);
 }
 
 /** \brief TIM3 Timing实例解初始化 */
-void am_zlg116_tim3_timing_inst_deinit (am_timer_handle_t handle)
+void am_zml165_tim3_timing_inst_deinit (am_timer_handle_t handle)
 {
     am_zlg_tim_timing_deinit(handle);
 }
@@ -201,7 +201,7 @@ void __zlg_plfm_tim14_timing_init (void)
     am_clk_enable(CLK_TIM14);
 
     /* 复位通用定时器14 */
-    am_zlg116_clk_reset(CLK_TIM14);
+    am_zml165_clk_reset(CLK_TIM14);
 }
 
 /** \brief 解除TIM14平台初始化 */
@@ -209,7 +209,7 @@ void __zlg_plfm_tim14_timing_deinit (void)
 {
 
     /* 复位通用定时器14 */
-    am_zlg116_clk_reset(CLK_TIM14);
+    am_zml165_clk_reset(CLK_TIM14);
 
     /* 禁能通用定时器14时钟 */
     am_clk_disable(CLK_TIM14);
@@ -217,7 +217,7 @@ void __zlg_plfm_tim14_timing_deinit (void)
 
 /** \brief TIM14设备信息 */
 const am_zlg_tim_timing_devinfo_t  __g_tim14_timing_devinfo = {
-    ZLG116_TIM14_BASE,                /**< \brief TIM14寄存器块的基地址 */
+    ZML165_TIM14_BASE,                /**< \brief TIM14寄存器块的基地址 */
     INUM_TIM14,                       /**< \brief TIM14中断编号 */
     CLK_TIM14,                        /**< \brief TIM14时钟ID */
     AMHW_ZLG_TIM_TYPE3,               /**< \brief 定时器类型 */
@@ -229,14 +229,14 @@ const am_zlg_tim_timing_devinfo_t  __g_tim14_timing_devinfo = {
 am_zlg_tim_timing_dev_t  __g_tim14_timing_dev;
 
 /** \brief TIM14 Timing实例初始化，获得Timer标准服务句柄 */
-am_timer_handle_t am_zlg116_tim14_timing_inst_init (void)
+am_timer_handle_t am_zml165_tim14_timing_inst_init (void)
 {
     return am_zlg_tim_timing_init(&__g_tim14_timing_dev,
                                   &__g_tim14_timing_devinfo);
 }
 
 /** \brief TIM14 Timing实例解初始化 */
-void am_zlg116_tim14_timing_inst_deinit (am_timer_handle_t handle)
+void am_zml165_tim14_timing_inst_deinit (am_timer_handle_t handle)
 {
     am_zlg_tim_timing_deinit(handle);
 }
@@ -253,7 +253,7 @@ void __zlg_plfm_tim16_timing_init (void)
     am_clk_enable(CLK_TIM16);
 
     /* 复位通用定时器16 */
-    am_zlg116_clk_reset(CLK_TIM16);
+    am_zml165_clk_reset(CLK_TIM16);
 }
 
 /** \brief 解除TIM16平台初始化 */
@@ -261,7 +261,7 @@ void __zlg_plfm_tim16_timing_deinit (void)
 {
 
     /* 复位通用定时器16 */
-    am_zlg116_clk_reset(CLK_TIM16);
+    am_zml165_clk_reset(CLK_TIM16);
 
     /* 禁能通用定时器16时钟 */
     am_clk_disable(CLK_TIM16);
@@ -269,7 +269,7 @@ void __zlg_plfm_tim16_timing_deinit (void)
 
 /** \brief TIM16设备信息 */
 const am_zlg_tim_timing_devinfo_t  __g_tim16_timing_devinfo = {
-    ZLG116_TIM16_BASE,                /**< \brief TIM16寄存器块的基地址 */
+    ZML165_TIM16_BASE,                /**< \brief TIM16寄存器块的基地址 */
     INUM_TIM16,                       /**< \brief TIM16中断编号 */
     CLK_TIM16,                        /**< \brief TIM16时钟ID */
     AMHW_ZLG_TIM_TYPE3,               /**< \brief 定时器类型 */
@@ -281,14 +281,14 @@ const am_zlg_tim_timing_devinfo_t  __g_tim16_timing_devinfo = {
 am_zlg_tim_timing_dev_t  __g_tim16_timing_dev;
 
 /** \brief 定时器TIM16 Timing实例初始化，获得Timer标准服务句柄 */
-am_timer_handle_t am_zlg116_tim16_timing_inst_init (void)
+am_timer_handle_t am_zml165_tim16_timing_inst_init (void)
 {
     return am_zlg_tim_timing_init(&__g_tim16_timing_dev,
                                   &__g_tim16_timing_devinfo);
 }
 
 /** \brief TIM16 Timing实例解初始化 */
-void am_zlg116_tim16_timing_inst_deinit (am_timer_handle_t handle)
+void am_zml165_tim16_timing_inst_deinit (am_timer_handle_t handle)
 {
     am_zlg_tim_timing_deinit(handle);
 }
@@ -305,7 +305,7 @@ void __zlg_plfm_tim17_timing_init (void)
     am_clk_enable(CLK_TIM17);
 
     /* 复位通用定时器17 */
-    am_zlg116_clk_reset(CLK_TIM17);
+    am_zml165_clk_reset(CLK_TIM17);
 }
 
 /** \brief 解除TIM17平台初始化 */
@@ -313,7 +313,7 @@ void __zlg_plfm_tim17_timing_deinit (void)
 {
 
     /* 复位通用定时器17 */
-    am_zlg116_clk_reset(CLK_TIM17);
+    am_zml165_clk_reset(CLK_TIM17);
 
     /* 禁能通用定时器17时钟 */
     am_clk_disable(CLK_TIM17);
@@ -321,7 +321,7 @@ void __zlg_plfm_tim17_timing_deinit (void)
 
 /** \brief TIM17设备信息 */
 const am_zlg_tim_timing_devinfo_t  __g_tim17_timing_devinfo = {
-    ZLG116_TIM17_BASE,                /**< \brief TIM17寄存器块的基地址 */
+    ZML165_TIM17_BASE,                /**< \brief TIM17寄存器块的基地址 */
     INUM_TIM17,                       /**< \brief TIM17中断编号 */
     CLK_TIM17,                        /**< \brief TIM17时钟ID */
     AMHW_ZLG_TIM_TYPE3,               /**< \brief 定时器类型 */
@@ -333,14 +333,14 @@ const am_zlg_tim_timing_devinfo_t  __g_tim17_timing_devinfo = {
 am_zlg_tim_timing_dev_t  __g_tim17_timing_dev;
 
 /** \brief 定时器TIM17 Timing实例初始化，获得Timer标准服务句柄 */
-am_timer_handle_t am_zlg116_tim17_timing_inst_init (void)
+am_timer_handle_t am_zml165_tim17_timing_inst_init (void)
 {
     return am_zlg_tim_timing_init(&__g_tim17_timing_dev,
                                      &__g_tim17_timing_devinfo);
 }
 
 /** \brief TIM17 Timing实例解初始化 */
-void am_zlg116_tim17_timing_inst_deinit (am_timer_handle_t handle)
+void am_zml165_tim17_timing_inst_deinit (am_timer_handle_t handle)
 {
     am_zlg_tim_timing_deinit(handle);
 }

@@ -22,13 +22,13 @@
  */
 
 #include "ametal.h"
-#include "am_zlg116.h"
+#include "am_zml165.h"
 #include "am_gpio.h"
 #include "am_clk.h"
 #include "am_zlg_uart.h"
 #include "hw/amhw_zlg_uart.h"
 #include "hw/amhw_zlg_gpio.h"
-#include "hw/amhw_zlg116_rcc.h"
+#include "hw/amhw_zml165_rcc.h"
 
 /**
  * \addtogroup am_if_src_hwconf_microport_rs485
@@ -73,7 +73,7 @@ am_local void __microport_rs485_plfm_deinit (void)
 
 /** \brief MicroPort RS485 设备信息 */
 am_local am_const am_zlg_uart_devinfo_t __g_microport_rs485_devinfo = {
-    ZLG116_UART1_BASE,              /**< \brief 串口 1 */
+    ZML165_UART1_BASE,              /**< \brief 串口 1 */
     INUM_UART1,                     /**< \brief 串口 1 的中断编号 */
     CLK_UART1,                      /**< \brief 串口 1 的时钟 */
 

@@ -12,8 +12,8 @@
 
 /**
  * \file
- * \brief ZLG116 时钟用户配置文件
- * \sa am_hwconf_zlg116_clk.c
+ * \brief ZML165 时钟用户配置文件
+ * \sa am_hwconf_zml165_clk.c
  *
  * \internal
  * \par Modification history
@@ -23,11 +23,11 @@
  
 #include "am_zlg115_clk.h"
 #include "hw/amhw_zlg115_rcc.h"
-#include "hw/amhw_zlg116_rcc.h"
+#include "hw/amhw_zml165_rcc.h"
 
 /**
- * \addtogroup am_if_src_hwconf_zlg116_clk
- * \copydoc am_hwconf_zlg116_clk.c
+ * \addtogroup am_if_src_hwconf_zml165_clk
+ * \copydoc am_hwconf_zml165_clk.c
  * @{
  */
 

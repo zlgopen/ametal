@@ -23,7 +23,7 @@
 #include <am_aml165_inst_init.h>
 #include "am_sensor_hts221.h"
 #include "am_common.h"
-#include "zlg116_pin.h"
+#include "zml165_pin.h"
 
 /** \brief 传感器 HTS221 设备信息实例 */
 am_const am_local struct am_sensor_hts221_devinfo __g_hts221_info = {
@@ -39,7 +39,7 @@ am_sensor_handle_t am_sensor_hts221_inst_init (void)
 {
     return am_sensor_hts221_init(&__g_hts221_dev,
                                  &__g_hts221_info,
-                                 am_zlg116_i2c1_inst_init());
+                                 am_zml165_i2c1_inst_init());
 }
 
 /** \brief 传感器 HTS221 实例解初始化 */

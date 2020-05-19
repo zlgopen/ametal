@@ -52,7 +52,7 @@ void demo_aml165_core_std_i2c_slave_entry (void)
 {
     AM_DBG_INFO("demo aml165_core std i2c slave!\r\n");
 
-    demo_std_i2c_slave_entry(am_zlg116_i2c1_slv_inst_init(), __I2C_SLV_ADDR);
+    demo_std_i2c_slave_entry(am_zml165_i2c1_slv_inst_init(), __I2C_SLV_ADDR);
 }
 /** [src_aml165_core_std_i2c_slave] */
 

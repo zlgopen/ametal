@@ -23,7 +23,7 @@
 #include <am_aml165_inst_init.h>
 #include "ametal.h"
 #include "am_temp_lm75.h"
-#include "zlg116_pin.h"
+#include "zml165_pin.h"
 
 /**
  * \addtogroup am_if_src_hwconf_lm75
@@ -43,7 +43,7 @@ am_temp_handle_t am_temp_lm75_inst_init (void)
 {
     return  am_temp_lm75_init(&__g_temp_lm75,
                               &__g_temp_lm75_info,
-                              am_zlg116_i2c1_inst_init());
+                              am_zml165_i2c1_inst_init());
 }
 
 /**
