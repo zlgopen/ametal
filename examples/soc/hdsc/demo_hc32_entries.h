@@ -700,6 +700,15 @@ void demo_hc32x3x_drv_opa_entry (void *p_handle, uint8_t ch);
  */
 void demo_hc32x3x_hw_opa_entry (void *p_hw_opa, uint8_t mode, uint8_t ch);
 
+/**
+ * \brief RTC 实时时钟例程，通过 HW 层接口实现
+ *
+ * \param[in] p_hw_rtc    : 指向RTC寄存器指针
+ *
+ * \retval 无
+ */
+void demo_hc32_hw_rtc_entry (void *p_hw_rtc);
+
 #ifdef __cplusplus
 }
 #endif

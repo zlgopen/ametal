@@ -52,16 +52,6 @@ extern "C" {
  */
 #define AM_HC32_UART_ERRCODE_UART_OTHER_INT  3
 
-/**
- * \brief 用于软件流控的XON字符定义，默认0x11
- */
-#define AM_HC32_UART_XON       0x11
-
-/**
- * \brief 用于软件流控的XOFF字符定义，默认0x13
- */
-#define AM_HC32_UART_XOFF      0x13
-
 /** @} */
 
 /**
@@ -69,33 +59,17 @@ extern "C" {
  */
 typedef struct am_hc32_uart_devinfo {
 
-    uint32_t uart_reg_base;     /**< \brief 指向UART寄存器块的指针 */
-
-    uint8_t  inum;              /**< \brief 串口中断号 */
-
-    amhw_hc32_uart_work_mode_t work_mode; /**< \brief 串口工作模式 */
-
-    uint32_t cfg_flags;         /**< \brief 串口配置标志 */
-
-    uint32_t baud_rate;         /**< \brief 初始化波特率 */
+    uint32_t    uart_reg_base;  /**< \brief 指向UART寄存器块的指针 */
+    uint8_t     inum;           /**< \brief 串口中断号 */
+    int         clk_num;        /**<  \brief 时钟ID */
+    uint32_t    cfg_flags;      /**< \brief 串口配置标志 */
+    am_bool_t   asyn_hd;        /**< \brief 异步半双工模式（单线）标志 */
+    uint32_t    baud_rate;      /**< \brief 初始化波特率 */
 
     /**
      * \brief 指定使能的中断,AMHW_HC32_UART_INT_*宏值或多个AMHW_HC32_UART_INT_*宏
      */
-    uint32_t other_int_enable;
-
-    struct {
-        am_bool_t enable;          /**< \brief 使能位 */
-        uint8_t   addr;            /**< \brief 设备地址 */
-        uint8_t   addr_mask;       /**< \brief 设备地址掩码（配合地址使用 0：不关心   1：必须匹配） */
-    } mut_addr;                    /**< \brief 多机地址自动识别信息 */
-
-
-    struct {
-        am_bool_t enable;          /**< \brief 是否使能硬件流控 */
-        uint32_t  cts_pin;         /**< \brief cts 输出引脚相关定义 */
-        uint32_t  rts_pin;         /**< \brief rts 输入引脚相关定义 */
-    }hwflowctl_cfg;
+    uint32_t    other_int_enable;
 
     /** \brief RS485 方向控制函数, AM_TRUE: 发送模式， AM_FALSE: 接收模式 */
     void (*pfn_rs485_dir) (am_bool_t is_txmode);
@@ -126,10 +100,6 @@ typedef struct am_hc32_uart_dev {
     void     *rxput_arg;                    /**< \brief rxchar_put函数参数 */
     void     *err_arg;                      /**< \brief 错误回调函数用户参数 */
 
-    uint8_t   flowctl_mode;                 /**< \brief 流控模式（无，软件，硬件）   */
-    uint8_t   flowctl_tx_stat;              /**< \brief 流控发送器状态（用于软流控） */
-
-    amhw_hc32_uart_work_mode_t work_mode; /**< \brief 串口工作模式*/
     uint8_t   channel_mode;                 /**< \brief 串口模式 中断/查询 */
     uint32_t  clk_rate;                     /**< \brief 串口模式时钟频率 */
     uint32_t  baud_rate;                    /**< \brief 串口波特率 */

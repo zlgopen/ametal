@@ -154,12 +154,12 @@ void demo_hc32l19x_core_std_led_entry (void);
 /**
  * \brief RTC 例程，通过 HW 层接口实现
  */
-void demo_hc32l19x_core_hw_rtc_sec_int_entry (void);
+void demo_hc32l19x_core_hw_rtc_entry (void);
 
 /**
- * \brief RTC 例程，通过标准接口和中间驱动层函数实现
+ * \brief RTC 例程，通过标准接口实现
  */
-void demo_hc32l19x_core_drv_rtc_entry (void);
+void demo_hc32l19x_core_std_rtc_entry (void);
 
 /**
  * \brief SPI 主机例程，通过 HW 层接口实现

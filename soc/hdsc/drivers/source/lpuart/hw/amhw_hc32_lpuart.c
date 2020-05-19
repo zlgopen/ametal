@@ -118,8 +118,7 @@ int amhw_hc32_lpuart_baudrate_set (amhw_hc32_lpuart_t *p_hw_lpuart,
 
     /* 模式1/3情况下，波特率 = 时钟 / （分频系数*波特率寄存器设定值） */
     } else if ((mode == AMHW_HC32_LPUART_WORK_MODE_1) ||
-               (mode == AMHW_HC32_LPUART_WORK_MODE_3) ||
-               (mode == AMHW_HC32_LPUART_WORK_MODE_4)) {
+               (mode == AMHW_HC32_LPUART_WORK_MODE_3)) {
 
         /* 获取分频系数设置位的数字量 */
         clk_bits = amhw_hc32_lpuart_clk_div_get(p_hw_lpuart);

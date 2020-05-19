@@ -68,11 +68,11 @@ void demo_hc32l19x_core_hw_lpuart_int_entry (void)
     am_clk_enable(CLK_LPUART0);
 
     demo_hc32_hw_lpuart_int_entry(HC32_LPUART0,
-                                    __hc32l19x_lpuart_pins_intit,
-                                    AMHW_HC32_LPUART_SCLK_SRC_PCLK,
-                                    16000000,
-                                    115200,
-                                    INUM_LPUART0);
+                                  __hc32l19x_lpuart_pins_intit,
+                                  AMHW_HC32_LPUART_SCLK_SRC_PCLK,
+                                  am_clk_rate_get(CLK_LPUART0),
+                                  115200,
+                                  INUM_LPUART0);
 }
 /** [src_hc32l19x_hw_lpuart_int] */
 

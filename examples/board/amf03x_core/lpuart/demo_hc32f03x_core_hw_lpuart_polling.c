@@ -65,9 +65,9 @@ void demo_hc32f03x_core_hw_lpuart_polling_entry (void)
     am_clk_enable(CLK_LPUART0);
 
     demo_hc32_hw_lpuart_polling_entry(HC32_LPUART0,
-                                        AMHW_HC32_LPUART_SCLK_SRC_PCLK,
-                                        16000000,
-                                        115200);
+                                      AMHW_HC32_LPUART_SCLK_SRC_PCLK,
+                                      am_clk_rate_get(CLK_LPUART0),
+                                      115200);
 }
 /** [src_hc32f03x_hw_lpuart_polling] */
 

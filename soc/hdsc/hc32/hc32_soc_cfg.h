@@ -31,7 +31,7 @@ extern "C" {
 #endif
 
 /**
- * \name HC32L13X 硬件配置，配置项来自于使用到的各个驱动
+ * \name HC32L1xx 硬件配置，配置项来自于使用到的各个驱动
  * @{
  */
 
@@ -39,10 +39,10 @@ extern "C" {
 #define SOC_CFG_HC32_DMA_CHAN_CNT          2
 
 /**< \brief flash的大小 以字节(8bit)为单位 */
-#define FLASH_SIZE  (1024 * 256UL)
+#define FLASH_SIZE  (512 * 512UL)
 
-/**< \brief 扇区大小 以字(32bit)为单位 */
-#define SECTOR_SIZE (128UL)
+/**< \brief 页大小 以字节(8bit)为单位 */
+#define SECTOR_SIZE (512)
 
 /**@} */
 
