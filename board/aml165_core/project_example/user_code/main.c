@@ -44,7 +44,7 @@ int am_main (void)
      *
      * 注意：同一时刻只能运行一个 demo，即只能使某一行处于取消注释状态。
      */
-//    demo_aml165_core_std_led_entry();
+    demo_aml165_core_std_led_entry();
 //    demo_aml165_core_zml165_adc_vol_measure();
 //    demo_aml165_core_std_delay_entry();
 //    demo_aml165_core_std_buzzer_entry();
@@ -56,7 +56,7 @@ int am_main (void)
 //    demo_aml165_core_std_gpio_trigger_entry();
 //    demo_aml165_core_hw_i2c_master_poll_entry();
 //    demo_aml165_core_hw_i2c_slave_poll_entry();
-    demo_aml165_core_std_i2c_lm75_entry();
+//    demo_aml165_core_std_i2c_lm75_entry();
 //    demo_aml165_core_std_i2c_master_async_entry();
 //    demo_aml165_core_std_i2c_master_sync_entry();
 //    demo_aml165_core_std_i2c_slave_entry();
