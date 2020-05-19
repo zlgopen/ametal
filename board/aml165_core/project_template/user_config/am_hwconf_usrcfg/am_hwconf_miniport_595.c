@@ -24,7 +24,7 @@
 #include "ametal.h"
 #include "am_hc595_gpio.h"
 #include "am_hc595_spi.h"
-#include "zlg116_pin.h"
+#include "zml165_pin.h"
 
 /**
  * \addtogroup am_if_src_hwconf_miniport_595
@@ -63,7 +63,7 @@ am_hc595_handle_t am_miniport_595_inst_init (void)
 
     return  am_hc595_spi_init(&miniport_595,
                               &__hc595_spi_info,
-                               am_zlg116_spi1_int_inst_init());
+                               am_zml165_spi1_int_inst_init());
 #endif
 
 }

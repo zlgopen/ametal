@@ -12,7 +12,7 @@
 
 /**
  * \file
- * \brief ZLG116 用户配置文件
+ * \brief ZML165 用户配置文件
  * \sa am_prj_config.c
  *
  * \internal
@@ -33,19 +33,19 @@ int main (void)
 {
 
 #if (AM_CFG_INT_ENABLE == 1)
-    am_zlg116_nvic_inst_init();
+    am_zml165_nvic_inst_init();
 #endif /* (AM_CFG_INT_ENABLE == 1) */
 
 #if (AM_CFG_CLK_ENABLE == 1)
-    am_zlg115_clk_inst_init();
+    am_zml165_clk_inst_init();
 #endif /* (AM_CFG_CLK_ENABLE == 1) */
 
 #if (AM_CFG_GPIO_ENABLE == 1)
-    am_zlg116_gpio_inst_init();
+    am_zml165_gpio_inst_init();
 #endif /* (AM_CFG_GPIO_ENABLE == 1) */
 
 #if (AM_CFG_DMA_ENABLE == 1)
-    am_zlg116_dma_inst_init();
+    am_zml165_dma_inst_init();
 #endif /* (AM_CFG_DMA_ENABLE == 1) */
 
 #if (AM_CFG_NVRAM_ENABLE == 1)

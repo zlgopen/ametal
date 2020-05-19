@@ -25,7 +25,7 @@
 #include "ametal.h"
 #include "am_key_matrix_gpio.h"
 #include "am_input.h"
-#include "zlg116_pin.h"
+#include "zml165_pin.h"
 
 /**
  * \addtogroup am_if_src_hwconf_miniport_key

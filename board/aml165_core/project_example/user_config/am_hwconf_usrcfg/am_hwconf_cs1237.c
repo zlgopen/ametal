@@ -22,7 +22,7 @@
  */
 
 #include "ametal.h"
-#include "zlg116_pin.h"
+#include "zml165_pin.h"
 #include "am_cs1237.h"
 
 /**

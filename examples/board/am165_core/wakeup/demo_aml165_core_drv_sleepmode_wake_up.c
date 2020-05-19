@@ -53,7 +53,10 @@ void demo_aml165_core_drv_sleepmode_wake_up_entry (void)
 {
     AM_DBG_INFO("demo aml165_core drv sleepmode wake up!\r\n");
 
-    demo_zlg116_drv_sleepmode_wake_up_entry();
+    /* ≥ı ºªØ PWR */
+    am_zml165_pwr_inst_init();
+
+    demo_zml165_drv_sleepmode_wake_up_entry();
 }
 /** [src_aml165_core_drv_sleepmode_wake_up] */
 

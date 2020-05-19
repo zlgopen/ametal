@@ -23,7 +23,7 @@
 #include <am_aml165_inst_init.h>
 #include "ametal.h"
 #include "am_fm175xx.h"
-#include "zlg116_pin.h"
+#include "zml165_pin.h"
 
 /**
  * \addtogroup am_if_src_hwconf_fm175xx
@@ -61,7 +61,7 @@ am_local am_const am_fm175xx_devinfo_t __g_fm175xx_devinfo = {
 am_fm175xx_handle_t am_fm175xx_inst_init (void)
 {
       am_fm175xx_init(&__g_fm175xx_dev,
-                       am_zlg116_spi1_poll_inst_init(),
+                       am_zml165_spi1_poll_inst_init(),
                       &__g_fm175xx_devinfo);
 
       return &__g_fm175xx_dev;

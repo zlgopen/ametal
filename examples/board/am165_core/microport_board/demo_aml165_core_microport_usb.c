@@ -55,7 +55,7 @@ void demo_aml165_core_microport_usb_entry (void)
 {
     AM_DBG_INFO("demo aml165_core microport usb!\r\n");
 
-    demo_std_uart_polling_entry(am_zlg116_uart1_inst_init());
+    demo_std_uart_polling_entry(am_zml165_uart1_inst_init());
 }
 /** [src_aml165_core_microport_usb] */
 

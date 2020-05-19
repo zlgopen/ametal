@@ -39,8 +39,8 @@
 #include "ametal.h"
 #include "am_clk.h"
 #include "am_vdebug.h"
-#include "am_zlg116.h"
-#include "am_zlg116_clk.h"
+#include "am_zml165.h"
+#include "am_zml165_clk.h"
 #include "demo_zlg_entries.h"
 #include "demo_aml165_core_entries.h"
 
@@ -55,9 +55,9 @@ void demo_aml165_core_hw_tim_timing_entry (void)
     am_clk_enable(CLK_TIM2);
 
     /* ¸´Î»¶¨Ê±Æ÷ */
-    am_zlg116_clk_reset(CLK_TIM2);
+    am_zml165_clk_reset(CLK_TIM2);
 
-    demo_zlg_hw_tim_timing_entry(ZLG116_TIM2,
+    demo_zlg_hw_tim_timing_entry(ZML165_TIM2,
                                  AMHW_ZLG_TIM_TYPE1,
                                  am_clk_rate_get(CLK_TIM2),
                                  INUM_TIM2);

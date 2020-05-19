@@ -87,7 +87,7 @@
  * 注意，默认的延时函数由 am_delay.c文件实现，如有特别需求，可以自行更新为其它实现方式
  *
  */
-#define AM_CFG_DELAY_ENABLE          0
+#define AM_CFG_DELAY_ENABLE          1
 
 /**
  * \brief 如果为1，则初始化led的相关功能，板上默认有两个LED
@@ -121,7 +121,7 @@
  * 软件定时器默认使用 SYSTICK
  * 软件定时器的使用详见 am_softimer.h
  */
-#define AM_CFG_SOFTIMER_ENABLE       0
+#define AM_CFG_SOFTIMER_ENABLE       1
 
 /**
  * \brief 如果为1，则初始化串口调试输出，调试串口默认为UART0

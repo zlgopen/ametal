@@ -24,7 +24,7 @@
 #include "ametal.h"
 #include "am_aml165_inst_init.h"
 #include "am_zlg72128_std.h"
-#include "zlg116_pin.h"
+#include "zml165_pin.h"
 #include "am_input.h"
 
 /**
@@ -70,7 +70,7 @@ int am_miniport_zlg72128_inst_init (void)
 {
     return  am_zlg72128_std_init(&__g_miniport_zlg72128,
                                  &__g_miniport_zlg72128_info,
-                                 am_zlg116_i2c1_inst_init());
+                                 am_zml165_i2c1_inst_init());
 }
 
 /**

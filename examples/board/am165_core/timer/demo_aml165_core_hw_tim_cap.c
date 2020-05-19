@@ -46,8 +46,8 @@
 #include "am_pwm.h"
 #include "am_gpio.h"
 #include "am_vdebug.h"
-#include "am_zlg116.h"
-#include "am_zlg116_clk.h"
+#include "am_zml165.h"
+#include "am_zml165_clk.h"
 #include "demo_zlg_entries.h"
 #include "demo_aml165_core_entries.h"
 
@@ -56,7 +56,7 @@
  */
 void demo_aml165_core_hw_tim_cap_entry (void)
 {
-    am_pwm_handle_t pwm_handle = am_zlg116_tim2_pwm_inst_init();
+    am_pwm_handle_t pwm_handle = am_zml165_tim2_pwm_inst_init();
 
     AM_DBG_INFO("demo aml165_core hw tim cap!\r\n");
 
@@ -71,9 +71,9 @@ void demo_aml165_core_hw_tim_cap_entry (void)
     am_clk_enable(CLK_TIM3);
 
     /* ¸´Î»¶¨Ê±Æ÷ */
-    am_zlg116_clk_reset(CLK_TIM3);
+    am_zml165_clk_reset(CLK_TIM3);
 
-    demo_zlg_hw_tim_cap_entry(ZLG116_TIM3,
+    demo_zlg_hw_tim_cap_entry(ZML165_TIM3,
                               AMHW_ZLG_TIM_TYPE1,
                               0,
                               am_clk_rate_get(CLK_TIM3),

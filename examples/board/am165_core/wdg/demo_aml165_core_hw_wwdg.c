@@ -36,9 +36,9 @@
 #include "ametal.h"
 #include "am_clk.h"
 #include "am_vdebug.h"
-#include "am_zlg116.h"
+#include "am_zml165.h"
 #include "demo_zlg_entries.h"
-#include "am_zlg116_clk.h"
+#include "am_zml165_clk.h"
 #include "demo_aml165_core_entries.h"
 
 /**
@@ -59,9 +59,9 @@ void demo_aml165_core_hw_wwdg_entry (void)
     AM_DBG_INFO("demo aml165_core hw wwdg!\r\n");
 
     am_clk_enable(CLK_WWDG);
-    am_zlg116_clk_reset(CLK_WWDG);
+    am_zml165_clk_reset(CLK_WWDG);
 
-    demo_zlg_hw_wwdg_entry(ZLG116_WWDG,
+    demo_zlg_hw_wwdg_entry(ZML165_WWDG,
                            am_clk_rate_get(CLK_WWDG),
                            __WWDG_TIMEOUT_MS,
                            __WWDG_FEED_TIME_MS);

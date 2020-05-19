@@ -40,7 +40,7 @@
 #include "ametal.h"
 #include "am_clk.h"
 #include "am_vdebug.h"
-#include "am_zlg116.h"
+#include "am_zml165.h"
 #include "demo_zlg_entries.h"
 #include "demo_aml165_core_entries.h"
 
@@ -59,7 +59,7 @@ void demo_aml165_core_hw_gpio_entry (void)
     am_clk_enable(CLK_GPIOA);
     am_clk_enable(CLK_SYSCFG);
 
-    demo_zlg_hw_gpio_entry(ZLG116_GPIO, INPUT_PIN, OUTPUT_PIN);
+    demo_zlg_hw_gpio_entry(ZML165_GPIO, INPUT_PIN, OUTPUT_PIN);
 }
 /** [src_aml165_core_hw_gpio] */
 

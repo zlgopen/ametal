@@ -43,7 +43,7 @@
 /** \brief ·äÃùÆ÷ÊµÀı³õÊ¼»¯ */
 void am_buzzer_pwm_inst_init (void)
 {
-    am_pwm_handle_t handle = am_zlg116_tim1_pwm_inst_init();
+    am_pwm_handle_t handle = am_zml165_tim1_pwm_inst_init();
 
     if (NULL != handle) {
         am_buzzer_pwm_init(handle,

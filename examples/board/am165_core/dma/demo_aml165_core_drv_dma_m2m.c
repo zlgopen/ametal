@@ -37,7 +37,7 @@
 /** [src_aml165_core_drv_dma_m2m] */
 #include "ametal.h"
 #include "am_vdebug.h"
-#include "am_zlg116.h"
+#include "am_zml165.h"
 #include "demo_zlg_entries.h"
 #include "demo_aml165_core_entries.h"
 

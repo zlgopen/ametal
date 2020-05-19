@@ -12,3 +12,4 @@ _build
 *.TMP
 *.uvoptx
 *.ini
+am_hwconf_usrcfg

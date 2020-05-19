@@ -22,7 +22,7 @@
  */
 #include <am_aml165_inst_init.h>
 #include "ametal.h"
-#include "am_zlg116.h"
+#include "am_zml165.h"
 #include "am_timer.h"
 #include "am_softimer.h"
 #include "am_system.h"
@@ -51,7 +51,7 @@ am_local void __system_tick_callback (void *p_arg)
 /** \brief 系统滴答实例初始化(不使用软件定时器) */
 void am_system_tick_inst_init (void)
 {
-    am_timer_handle_t handle  = am_zlg116_systick_inst_init();
+    am_timer_handle_t handle  = am_zml165_systick_inst_init();
 
     if (NULL != handle) {
 
@@ -82,7 +82,7 @@ am_local void __system_tick_softimer_callback (void *p_arg)
 /** \brief 系统滴答实例初始化(使用软件定时器) */
 void am_system_tick_softimer_inst_init (void)
 {
-    am_timer_handle_t handle = am_zlg116_systick_inst_init();
+    am_timer_handle_t handle = am_zml165_systick_inst_init();
 
     if (NULL != handle) {
  

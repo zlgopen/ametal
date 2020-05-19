@@ -30,7 +30,7 @@
 #include <am_aml165_inst_init.h>
 #include "ametal.h"
 #include "am_input.h"
-#include "zlg116_pin.h"
+#include "zml165_pin.h"
 #include "am_miniport_view_key.h"
 #include "am_miniport_view_key_595.h"
 

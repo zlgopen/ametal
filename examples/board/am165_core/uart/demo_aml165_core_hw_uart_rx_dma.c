@@ -45,7 +45,7 @@
 #include "ametal.h"
 #include "am_gpio.h"
 #include "am_vdebug.h"
-#include "am_zlg116.h"
+#include "am_zml165.h"
 #include "demo_zlg_entries.h"
 #include "demo_aml165_core_entries.h"
 
@@ -57,7 +57,7 @@ void demo_aml165_core_hw_uart_rx_dma_entry (void)
     AM_DBG_INFO("demo aml165_core hw uart rx dma!\r\n");
     am_gpio_pin_cfg(PIOB_3, PIOB_3_UART1_TX | PIOB_3_AF_PP);
     am_gpio_pin_cfg(PIOB_4, PIOB_4_UART1_RX | PIOB_4_INPUT_FLOAT);
-    demo_zlg_hw_uart_rx_dma_entry(ZLG116_UART1,
+    demo_zlg_hw_uart_rx_dma_entry(ZML165_UART1,
                                   am_clk_rate_get(CLK_UART1),
                                   DMA_CHAN_UART1_RX);
 }

@@ -52,7 +52,7 @@
  */
 void demo_aml165_core_std_tim1_cap_entry (void)
 {
-    am_pwm_handle_t pwm_handle = am_zlg116_tim2_pwm_inst_init();
+    am_pwm_handle_t pwm_handle = am_zml165_tim2_pwm_inst_init();
 
     AM_DBG_INFO("demo aml165_core std tim1 cap!\r\n");
 
@@ -60,7 +60,7 @@ void demo_aml165_core_std_tim1_cap_entry (void)
     am_pwm_config(pwm_handle, 0, 500000 / 2, 500000);
     am_pwm_enable(pwm_handle, 0);
 
-    demo_std_timer_cap_entry(am_zlg116_tim1_cap_inst_init(), 3);
+    demo_std_timer_cap_entry(am_zml165_tim1_cap_inst_init(), 3);
 }
 /** [src_aml165_core_std_tim1_cap] */
 

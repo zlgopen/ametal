@@ -47,8 +47,8 @@
 #include "am_clk.h"
 #include "am_gpio.h"
 #include "am_vdebug.h"
-#include "am_zlg116.h"
-#include "am_zlg116_clk.h"
+#include "am_zml165.h"
+#include "am_zml165_clk.h"
 #include "hw/amhw_zlg_i2c.h"
 #include "demo_zlg_entries.h"
 #include "demo_aml165_core_entries.h"
@@ -64,9 +64,9 @@ void demo_aml165_core_hw_i2c_master_poll_entry (void)
     am_gpio_pin_cfg(PIOB_7, PIOB_7_I2C_SDA | PIOB_7_AF_OD | PIOB_7_SPEED_20MHz);
 
     am_clk_enable(CLK_I2C1);
-    am_zlg116_clk_reset(CLK_I2C1);
+    am_zml165_clk_reset(CLK_I2C1);
 
-    demo_zlg_hw_i2c_master_poll_entry(ZLG116_I2C, am_clk_rate_get (CLK_APB1));
+    demo_zlg_hw_i2c_master_poll_entry(ZML165_I2C, am_clk_rate_get (CLK_APB1));
 }
 /** [src_aml165_core_hw_i2c_master_poll] */
 

@@ -33,7 +33,7 @@
 #include "am_led_gpio.h"
 #include "am_hc595_gpio.h"
 #include "am_hc595_spi.h"
-#include "zlg116_pin.h"
+#include "zml165_pin.h"
 
 /**
  * \addtogroup am_if_src_hwconf_miniport_led

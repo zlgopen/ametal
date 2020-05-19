@@ -35,8 +35,8 @@
 /** [src_aml165_core_hw_iwdg] */
 #include "ametal.h"
 #include "am_vdebug.h"
-#include "am_zlg116.h"
-#include "hw/amhw_zlg116_rcc.h"
+#include "am_zml165.h"
+#include "hw/amhw_zml165_rcc.h"
 #include "demo_zlg_entries.h"
 #include "demo_aml165_core_entries.h"
 
@@ -61,9 +61,9 @@ void demo_aml165_core_hw_iwdg_entry (void)
 {
     AM_DBG_INFO("demo aml165_core hw iwdg!\r\n");
 
-    amhw_zlg116_rcc_lsi_enable();
+    amhw_zml165_rcc_lsi_enable();
 
-    demo_zlg_hw_iwdg_entry(ZLG116_IWDG,
+    demo_zlg_hw_iwdg_entry(ZML165_IWDG,
                            __IWDG_TIMEOUT_MS,
                            __IWDG_FEED_TIME_MS);
 }

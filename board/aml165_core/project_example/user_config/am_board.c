@@ -27,7 +27,7 @@
 #include "am_prj_config.h"
 #include "am_event_input_key.h"
 #include "am_event_category_input.h"
-#include "am_zlg116.h"
+#include "am_zml165.h"
 #include "am_bsp_system_heap.h"
 #include "am_bsp_delay_timer.h"
 #include "am_bsp_isr_defer_pendsv.h"
@@ -110,7 +110,7 @@ void am_board_init (void)
 
     /* 延时函数可以使用 用作系统滴答的定时器 (与软件定时器复用 SYSTICK) */
 #if (AM_CFG_DELAY_ENABLE == 1)
-    am_bsp_delay_timer_init(am_zlg116_systick_inst_init(), 0);
+    am_bsp_delay_timer_init(am_zml165_systick_inst_init(), 0);
 #endif /* (AM_CFG_DELAY_ENABLE == 1) */
 
 #if (AM_CFG_LED_ENABLE == 1)

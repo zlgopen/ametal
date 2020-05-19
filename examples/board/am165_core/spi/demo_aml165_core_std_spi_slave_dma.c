@@ -47,7 +47,7 @@ void demo_aml165_core_std_spi_slave_dma_entry (void)
 {
     AM_DBG_INFO("demo aml165_core std spi slave dma!\r\n");
 
-    demo_std_spi_slave_entry(am_zlg116_spi1_slv_dma_inst_init());
+    demo_std_spi_slave_entry(am_zml165_spi1_slv_dma_inst_init());
 }
 /** [src_aml165_core_std_spi_slave_dma] */
 

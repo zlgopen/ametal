@@ -42,7 +42,7 @@
 #include "ametal.h"
 #include "am_clk.h"
 #include "am_vdebug.h"
-#include "am_zlg116.h"
+#include "am_zml165.h"
 #include "demo_zlg_entries.h"
 #include "demo_aml165_core_entries.h"
 
@@ -62,7 +62,7 @@ void demo_aml165_core_hw_spi_master_entry (void)
     am_gpio_pin_cfg(PIOA_6, PIOA_6_SPI1_MISO | PIOA_6_INPUT_FLOAT);
     am_gpio_pin_cfg(PIOA_7, PIOA_7_SPI1_MOSI | PIOA_7_AF_PP);
 
-    demo_zlg_hw_spi_master_entry(ZLG116_SPI1,
+    demo_zlg_hw_spi_master_entry(ZML165_SPI1,
                                  PIOA_4,
                                  am_clk_rate_get(CLK_SPI1));
 }
