@@ -34,6 +34,7 @@ extern "C" {
 #include "hw/amhw_hc32f460_uart.h"
 #include "hw/amhw_hc32f460_timea.h"
 #include "hw/amhw_hc32f460_i2c.h"
+#include "hw/amhw_hc32f460_dma.h"
 /**
  * \addtogroup amhw_hc32f460_if_periph_map
  * \copydoc amhw_hc32f460_periph_map.h

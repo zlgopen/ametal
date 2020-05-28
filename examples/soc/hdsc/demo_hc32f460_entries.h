@@ -29,6 +29,8 @@
 #include "am_can.h"
 #include "hw/amhw_hc32f460_gpio.h"
 #include "hw/amhw_hc32f460_uart.h"
+#include "hw/amhw_hc32f460_dma.h"
+#include "am_hc32f460_dma.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -58,6 +60,26 @@ void demo_hc32f460_hw_gpio_entry (void    *p_hw_gpio,
  */
 void demo_hc32f460_hw_gpio_trigger_entry (void *p_hw_gpio, int pin);
 
+
+/**
+ * \brief DMA 内存到内存例程，通过驱动层接口实现
+ *
+ * \param[in] dma_chan DMA 通道号
+ *
+ * \return 无
+ */
+void demo_hc32f460_drv_dma_m2m_entry (uint32_t dma_chan);
+
+/**
+ * \brief DMA 内存到内存连锁传输例程，通过驱动层接口实现
+ *
+ * \param[in] p_dev    DMA 设备指针
+ * \param[in] dma_chan DMA 通道号
+ *
+ * \return 无
+ */
+void demo_hc32f460_drv_dma_m2m_chain_entry (am_hc32f460_dma_dev_t *p_dev, uint32_t dma_chan);
+
 /**
  * \brief UART 中断发送例程，通过 HW 层接口实现
  *
@@ -84,6 +106,20 @@ void demo_hc32f460_hw_uart_int_entry (void             *p_hw_uart,
  */
 void demo_hc32f460_hw_uart_polling_entry (void     *p_hw_uart,
                                           uint32_t  clk_rate);
+
+
+/**
+ * \brief UART DMA发送例程，通过 HW 层接口实现
+ *
+
+ * \param[in] p_hw_uart 指向 UART 外设寄存器块的指针
+ * \param[in] clk_rate  UART 时钟源频率
+ *
+ * \return 无
+ */
+void demo_hc32f460_hw_uart_tx_dma_entry (void                   *p_hw_uart,
+                                         uint32_t                clk_rate,
+                                         int32_t                 dma_chan);
 
 
 #ifdef __cplusplus
