@@ -91,6 +91,7 @@ int am_main (void)
 //    demo_hc32f460_core_std_can_entry();
 //    demo_hc32f460_core_drv_dma_m2m_entry();
 //    demo_hc32f460_core_drv_dma_m2m_chain_entry();
+    demo_hc32f460_core_drv_qspi_entry();
     while (1) {
 
     }

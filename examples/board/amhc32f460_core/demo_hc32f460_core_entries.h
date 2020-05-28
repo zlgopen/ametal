@@ -143,6 +143,11 @@ void demo_hc32f460_core_hw_rtc_sec_int_entry (void);
 void demo_hc32f460_core_std_rtc_entry (void);
 
 /**
+ * \brief QSPI 例程，通过驱动层接口实现
+ */
+void demo_hc32f460_core_drv_qspi_entry (void);
+
+/**
  * \brief SPI 主机例程，通过 HW 层接口实现
  */
 void demo_hc32f460_core_hw_spi_master_entry (void);

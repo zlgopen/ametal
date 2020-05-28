@@ -31,6 +31,7 @@
 #include "hw/amhw_hc32f460_uart.h"
 #include "hw/amhw_hc32f460_dma.h"
 #include "am_hc32f460_dma.h"
+#include "am_hc32f460_qspi.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -120,6 +121,16 @@ void demo_hc32f460_hw_uart_polling_entry (void     *p_hw_uart,
 void demo_hc32f460_hw_uart_tx_dma_entry (void                   *p_hw_uart,
                                          uint32_t                clk_rate,
                                          int32_t                 dma_chan);
+
+/**
+ * \brief QSPI读写测试例程
+ *
+ * \param[in] p_hw_uart 指向 QSPI设备的指针
+ *
+ * \return 无
+ */
+void demo_hc32f460_drv_qspi_entry (am_hc32f460_qspi_dev_t *p_dev);
+
 
 
 #ifdef __cplusplus

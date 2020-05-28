@@ -128,7 +128,7 @@ static const am_hc32f460_clk_devinfo_t __g_clk_devinfo =
      * 作用范围：CPU、DMAn(n=1,2)、EFM(主闪存)、SRAM0、SRAM1、SRAM2、SRAMHS、Ret-SRAM、
      *         MPU、GPIO、DCU、INTC、QSPI.
      **/
-	AMHW_HC32F460_SYSCLK_DIV_2,
+    AMHW_HC32F460_SYSCLK_DIV_1,
 
     /*
      * EXCLK = SYSCLK / EXCLK_DIV，最高84MHz

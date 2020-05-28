@@ -59,10 +59,10 @@ void amhw_hc32f460_rcc_peripheral_enable(amhw_hc32f460_peripheral peri)
     switch (num) {
 
     case 0:
-        amhw_hc32f460_clk_fcg0_reg_write_enable();        
-		HC32F460_MSTP->FCG0 = (HC32F460_MSTP->FCG0 & (~(0x01 << peri_shift)));
-        amhw_hc32f460_clk_fcg0_reg_write_disable();        
-		break;
+        amhw_hc32f460_clk_fcg0_reg_write_enable();       
+        HC32F460_MSTP->FCG0 = (HC32F460_MSTP->FCG0 & (~(0x01 << peri_shift)));
+        amhw_hc32f460_clk_fcg0_reg_write_disable();      
+        break;
     case 1:
         HC32F460_MSTP->FCG1 = (HC32F460_MSTP->FCG1 & (~(0x01 << peri_shift)));
         break;
@@ -90,9 +90,9 @@ void amhw_hc32f460_rcc_peripheral_disable(amhw_hc32f460_peripheral peri)
 
     case 0:
         amhw_hc32f460_clk_fcg0_reg_write_enable();        
-		HC32F460_MSTP->FCG0 = (HC32F460_MSTP->FCG0 | ((0x01ul) << peri_shift));
+        HC32F460_MSTP->FCG0 = (HC32F460_MSTP->FCG0 | ((0x01ul) << peri_shift));
         amhw_hc32f460_clk_fcg0_reg_write_disable();        
-		break;
+        break;
     case 1:
         HC32F460_MSTP->FCG1 = (HC32F460_MSTP->FCG1 | ((0x01ul) << peri_shift));
         break;
