@@ -172,13 +172,13 @@ typedef enum {
  * \brief 系统时钟分频系数(输出到各工作时钟)
  */
 typedef enum {
-    AMHW_HC32F460_SYSCLK_DIV_1 = 1,  /**< \brief 系统时钟的1分频 */
-    AMHW_HC32F460_SYSCLK_DIV_2 = 2,      /**< \brief 系统时钟的2分频 */
-    AMHW_HC32F460_SYSCLK_DIV_4 = 4,      /**< \brief 系统时钟的4分频 */
-    AMHW_HC32F460_SYSCLK_DIV_8 = 8,      /**< \brief 系统时钟的8分频 */
-    AMHW_HC32F460_SYSCLK_DIV_16 = 16,     /**< \brief 系统时钟的16分频 */
-    AMHW_HC32F460_SYSCLK_DIV_32 = 32,     /**< \brief 系统时钟的32分频 */
-    AMHW_HC32F460_SYSCLK_DIV_64 =64     /**< \brief 系统时钟的64分频 */
+    AMHW_HC32F460_SYSCLK_DIV_1 = 0,  /**< \brief 系统时钟的1分频 */
+    AMHW_HC32F460_SYSCLK_DIV_2 = 1,      /**< \brief 系统时钟的2分频 */
+    AMHW_HC32F460_SYSCLK_DIV_4 = 2,      /**< \brief 系统时钟的4分频 */
+    AMHW_HC32F460_SYSCLK_DIV_8 = 3,      /**< \brief 系统时钟的8分频 */
+    AMHW_HC32F460_SYSCLK_DIV_16 = 4,     /**< \brief 系统时钟的16分频 */
+    AMHW_HC32F460_SYSCLK_DIV_32 = 5,     /**< \brief 系统时钟的32分频 */
+    AMHW_HC32F460_SYSCLK_DIV_64 =6     /**< \brief 系统时钟的64分频 */
 }amhw_hc32f460_sys_clk_div;
 
 typedef enum {
@@ -350,64 +350,17 @@ void amhw_hc32f460_sysclk_cfg (uint32_t                         clk_id,
                                uint32_t                         clk_div)
 {
     uint8_t reg_val = 0;
-
-    switch (clk_div) {
-
-    case 1:
-        reg_val = 0;
-        break;
-    case 2:
-        reg_val = 1;
-        break;
-    case 4:
-        reg_val = 2;
-        break;
-    case 8:
-        reg_val = 3;
-        break;
-    case 16:
-        reg_val = 4;
-        break;
-    case 32:
-        reg_val = 5;
-        break;
-    case 64:
-        reg_val = 6;
-        break;
-    }
-
-    switch (clk_id) {
-
-    case CLK_HCLK :
-        HC32F460_SYSCREG->CMU_SCFGR |= (reg_val << 24);
-        break;
-    case CLK_PCLK0:
-        HC32F460_SYSCREG->CMU_SCFGR |= (reg_val << 0);
-        break;
-    case CLK_PCLK1:
-        HC32F460_SYSCREG->CMU_SCFGR |= (reg_val << 4);
-        break;
-    case CLK_PCLK2:
-        HC32F460_SYSCREG->CMU_SCFGR |= (reg_val << 8);
-        break;
-    case CLK_PCLK3:
-        HC32F460_SYSCREG->CMU_SCFGR |= (reg_val << 12);
-        break;
-    case CLK_PCLK4:
-        HC32F460_SYSCREG->CMU_SCFGR |= (reg_val << 16);
-        break;
-    case CLK_EXCLK:
-        HC32F460_SYSCREG->CMU_SCFGR |= (reg_val << 20);
-        break;
-    }
+    amhw_hc32f460_clk_fprcb0_reg_write_enable();
+    HC32F460_SYSCREG->CMU_SCFGR = clk_div;
+    amhw_hc32f460_clk_fprcb0_reg_write_disable();
 }
 
 /* 复位功能时钟控制寄存器 */
 am_static_inline
 void amhw_hc32f460_clk_reset_mstb_fcg (void) {
-    HC32F460_MSTP->FCG0_PC = 0XA5A50001;    
+    HC32F460_MSTP->FCG0_PC = 0XA5A50001;
     HC32F460_MSTP->FCG0 = 0XFFFFFAEE;
-    HC32F460_MSTP->FCG0_PC = 0XA5A50000;    
+    HC32F460_MSTP->FCG0_PC = 0XA5A50000;
     HC32F460_MSTP->FCG1 = 0XF7FFFFFF;
     HC32F460_MSTP->FCG2 = 0XFFFFFFFF;
     HC32F460_MSTP->FCG3 = 0XFFFFFFFF;
@@ -416,10 +369,8 @@ void amhw_hc32f460_clk_reset_mstb_fcg (void) {
 am_static_inline
 void amhw_hc32f460_clk_get_mstb_fcg (uint32_t* value_reg)
 {
-    HC32F460_MSTP->FCG0_PC = 0XA5A50001;    
-	value_reg[0] = HC32F460_MSTP->FCG0;
-    HC32F460_MSTP->FCG0_PC = 0XA5A50000;    
-	value_reg[1] = HC32F460_MSTP->FCG1;
+    value_reg[0] = HC32F460_MSTP->FCG0;
+    value_reg[1] = HC32F460_MSTP->FCG1;
     value_reg[2] = HC32F460_MSTP->FCG2;
     value_reg[3] = HC32F460_MSTP->FCG3;
 }
@@ -428,10 +379,10 @@ void amhw_hc32f460_clk_get_mstb_fcg (uint32_t* value_reg)
 am_static_inline
 void amhw_hc32f460_clk_set_mstb_fcg (uint32_t* value_reg)
 {
-    HC32F460_MSTP->FCG0_PC = 0XA5A50001;    
-	HC32F460_MSTP->FCG0 = value_reg[0];
-    HC32F460_MSTP->FCG0_PC = 0XA5A50000;    
-	HC32F460_MSTP->FCG1 = value_reg[1];
+    HC32F460_MSTP->FCG0_PC = 0XA5A50001;
+    HC32F460_MSTP->FCG0 = value_reg[0];
+    HC32F460_MSTP->FCG0_PC = 0XA5A50000;
+    HC32F460_MSTP->FCG1 = value_reg[1];
     HC32F460_MSTP->FCG2 = value_reg[2];
     HC32F460_MSTP->FCG3 = value_reg[3];
 }
@@ -452,7 +403,7 @@ void amhw_hc32f460_clk_set_sysclk_src(amhw_hc32f460_sys_clk_src  clk_src)
 am_static_inline
 void amhw_hc32f460_clk_xtal_cfg (amhw_hc32f460_cmu_xtalcfg_t xtal_cfg)
 {
-amhw_hc32f460_clk_fprcb0_reg_write_enable();
+    amhw_hc32f460_clk_fprcb0_reg_write_enable();
     HC32F460_SYSCREG->CMU_XTALCFGR = (xtal_cfg.drv    << 4) |
                                      (xtal_cfg.mode   << 6) |
                                      (xtal_cfg.supdrv << 7);
@@ -473,21 +424,27 @@ void amhw_hc32f460_clk_xtal_cfg_enable(void)
 am_static_inline
 void amhw_hc32f460_clk_xtal_cfg_disable(void)
 {
+    amhw_hc32f460_clk_fprcb0_reg_write_enable();
     HC32F460_SYSCREG->CMU_XTALCR |=  (0x1ul);
+    amhw_hc32f460_clk_fprcb0_reg_write_disable();
 }
 
 /* HRC振荡器振荡 */
 am_static_inline
 void amhw_hc32f460_clk_hrc_cfg_enable(void)
 {
+    amhw_hc32f460_clk_fprcb0_reg_write_enable();
     HC32F460_SYSCREG->CMU_HRCCR &= ~(0x1ul);
+    amhw_hc32f460_clk_fprcb0_reg_write_disable();
 }
 
 /* HRC振荡器停止 */
 am_static_inline
 void amhw_hc32f460_clk_hrc_cfg_disable(void)
 {
+    amhw_hc32f460_clk_fprcb0_reg_write_enable();
     HC32F460_SYSCREG->CMU_HRCCR |=  (0x1ul);
+    amhw_hc32f460_clk_fprcb0_reg_write_disable();
 }
 
 /* PLL时钟源设置 */
@@ -596,7 +553,9 @@ int amhw_hc32f460_clk_status_get(uint32_t clk_src_id)
 am_static_inline
 void amhw_hc32f460_clk_mpll_disable(void)
 {
+    amhw_hc32f460_clk_fprcb0_reg_write_enable();
     HC32F460_SYSCREG->CMU_PLLCR |= (1ul);
+    amhw_hc32f460_clk_fprcb0_reg_write_disable();
 }
 
 /* 系统时钟分频获取 */

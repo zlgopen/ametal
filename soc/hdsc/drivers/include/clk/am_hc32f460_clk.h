@@ -234,6 +234,7 @@ const am_hc32f460_clk_dev_t *am_hc32f460_clk_devinfo_get (void);
  */
 int am_hc32f460_div_get (am_clk_id_t clk_id);
 
+void SystemClk_Init(void);
 /**
  * @}
  */

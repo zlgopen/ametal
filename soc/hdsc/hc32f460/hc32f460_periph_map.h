@@ -35,6 +35,7 @@ extern "C" {
 #include "hw/amhw_hc32f460_timea.h"
 #include "hw/amhw_hc32f460_i2c.h"
 #include "hw/amhw_hc32f460_dma.h"
+#include "hw/amhw_hc32f460_qspi.h"
 /**
  * \addtogroup amhw_hc32f460_if_periph_map
  * \copydoc amhw_hc32f460_periph_map.h
@@ -70,6 +71,7 @@ extern "C" {
 #define HC32F460_I2C2           ((amhw_hc32f460_i2c_t *)HC32F460_I2C2_BASE)
 #define HC32F460_I2C3           ((amhw_hc32f460_i2c_t *)HC32F460_I2C3_BASE)
 #define HC32F460_RTC            ((amhw_hc32f460_rtc_t *)HC32F460_RTC_BASE)
+#define HC32F460_QSPI           ((amhw_hc32f460_qspi_t *)HC32F460_QSPI_BASE)
 
 /** @} */
 

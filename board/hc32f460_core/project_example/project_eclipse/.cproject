@@ -99,6 +99,7 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/hdsc/drivers/include/usbd}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/hdsc/drivers/include/vc}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/hdsc/drivers/include/wdt}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/hdsc/drivers/include/qspi}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/hdsc/hc32f460}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/user_config}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/user_config/am_hwconf_usrcfg}&quot;"/>
