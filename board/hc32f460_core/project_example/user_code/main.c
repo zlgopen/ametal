@@ -37,12 +37,11 @@
 #include "am_hc32f460_inst_init.h"
 #include "demo_hc32f460_core_entries.h"
 
-
 int am_main (void)
 {
     AM_DBG_INFO("Start up successful!\r\n");
     /* demoÀý³ÌÈë¿Ú */
-    demo_hc32f460_core_std_led_entry();
+//    demo_hc32f460_core_std_led_entry();
 //    demo_hc32f460_core_std_gpio_entry();
 //    demo_hc32f460_core_std_gpio_trigger_entry();
 //    demo_hc32f460_core_hw_gpio_entry();
@@ -90,6 +89,8 @@ int am_main (void)
 //    demo_hc32f460_core_hw_i2c_slave_poll_entry();
 //    demo_hc32f460_core_std_rtc_entry();
 //    demo_hc32f460_core_std_can_entry();
+//    demo_hc32f460_core_drv_dma_m2m_entry();
+//    demo_hc32f460_core_drv_dma_m2m_chain_entry();
     while (1) {
 
     }

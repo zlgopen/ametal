@@ -10,6 +10,7 @@
 #include "am_hc32f460_adtim_cap.h"
 #include "am_hc32f460_i2c.h"
 #include "am_hc32f460_rtc.h"
+#include "am_hc32f460_dma.h"
 
 #define AM_HC32F460_INT_EXTI0_MASK    (1 << 0)
 #define AM_HC32F460_INT_EXTI1_MASK    (1 << 1)
@@ -165,6 +166,290 @@ void IRQ128_Handler(void)
     {
         Extint15_IrqHandler();
     }
+}
+
+
+extern void dma_int_handler (void *p_arg);
+extern am_hc32f460_dma_dev_t __g_dma1_dev;
+extern am_hc32f460_dma_dev_t __g_dma2_dev;
+/**
+ *******************************************************************************
+ ** \brief Int No.129 share IRQ handler
+ **
+ ******************************************************************************/
+void IRQ129_Handler(void)
+{
+    uint32_t VSSEL129 = HC32F460_INTC.VSSEL[129 - 128];
+    uint32_t u32Tmp1 = 0ul;
+    uint32_t u32Tmp2 = 0ul;
+
+    /****************** DMA1 中断处理  *******************/
+    if (1ul == HC32F460_DMA1->CH0CTL_f.IE)
+    {
+        /* DMA1 ch.0 Tx completed */
+        if (0ul == (HC32F460_DMA1->INTMASK1_f.MSKTC & (1 << 0)))
+        {
+            if (((1ul << 0) & HC32F460_DMA1->INTSTAT1_f.TC) && (VSSEL129 & AM_HC32F460_INT_VSSEL_DMA1_TC0_MASK))
+            {
+            	dma_int_handler(&__g_dma1_dev);
+            }
+        }
+        /* DMA1 ch.0 Block Tx completed */
+        if (0ul == (HC32F460_DMA1->INTMASK1_f.MSKBTC & (1 << 0)))
+        {
+            if (((1ul << 0) & HC32F460_DMA1->INTSTAT1_f.BTC) && (VSSEL129 & AM_HC32F460_INT_VSSEL_DMA1_BTC0_MASK))
+            {
+            	dma_int_handler(&__g_dma1_dev);
+            }
+        }
+        /* DMA1 ch.0 Transfer/Request Error */
+        u32Tmp1 = HC32F460_DMA1->INTSTAT0 & 0x00010001ul;
+        u32Tmp2 = (uint32_t)(~(HC32F460_DMA1->INTMASK0) & 0x00010001ul);
+        if ((u32Tmp1 & u32Tmp2) && (VSSEL129 & AM_HC32F460_INT_VSSEL_DMA1_ERR_MASK))
+        {
+        	dma_int_handler(&__g_dma1_dev);
+        }
+    }
+    if (1ul == HC32F460_DMA1->CH1CTL_f.IE)
+    {
+        /* DMA1 ch.1 Tx completed */
+    	if (0ul == (HC32F460_DMA1->INTMASK1_f.MSKTC & (1 << 1)))
+        {
+            if (((1ul << 1) & HC32F460_DMA1->INTSTAT1_f.TC) && (VSSEL129 & AM_HC32F460_INT_VSSEL_DMA1_TC1_MASK))
+            {
+            	dma_int_handler(&__g_dma1_dev);
+            }
+        }
+        /* DMA1 ch.0 Block Tx completed */
+        if (0ul == (HC32F460_DMA1->INTMASK1_f.MSKBTC & (1 << 1)))
+        {
+            if (((1ul << 1) & HC32F460_DMA1->INTSTAT1_f.BTC) && (VSSEL129 & AM_HC32F460_INT_VSSEL_DMA1_BTC1_MASK))
+            {
+            	dma_int_handler(&__g_dma1_dev);
+            }
+        }
+        /* DMA1 ch.1 Transfer/Request Error */
+        u32Tmp1 = HC32F460_DMA1->INTSTAT0 & 0x00020002ul;
+        u32Tmp2 = (uint32_t)(~(HC32F460_DMA1->INTMASK0) & 0x00020002ul);
+        if ((u32Tmp1 & u32Tmp2) && (VSSEL129 & AM_HC32F460_INT_VSSEL_DMA1_ERR_MASK))
+        {
+        	dma_int_handler(&__g_dma1_dev);
+        }
+    }
+    if (1ul == HC32F460_DMA1->CH2CTL_f.IE)
+    {
+        /* DMA1 ch.1 Tx completed */
+    	if (0ul == (HC32F460_DMA1->INTMASK1_f.MSKTC & (1 << 2)))
+        {
+            if (((1ul << 2) & HC32F460_DMA1->INTSTAT1_f.TC) && (VSSEL129 & AM_HC32F460_INT_VSSEL_DMA1_TC2_MASK))
+            {
+            	dma_int_handler(&__g_dma1_dev);
+            }
+        }
+        /* DMA1 ch.0 Block Tx completed */
+        if (0ul == (HC32F460_DMA1->INTMASK1_f.MSKBTC & (1 << 2)))
+        {
+            if (((1ul << 2) & HC32F460_DMA1->INTSTAT1_f.BTC) && (VSSEL129 & AM_HC32F460_INT_VSSEL_DMA1_BTC2_MASK))
+            {
+            	dma_int_handler(&__g_dma1_dev);
+            }
+        }
+        /* DMA1 ch.1 Transfer/Request Error */
+        u32Tmp1 = HC32F460_DMA1->INTSTAT0 & 0x00040004ul;
+        u32Tmp2 = (uint32_t)(~(HC32F460_DMA1->INTMASK0) & 0x00040004ul);
+        if ((u32Tmp1 & u32Tmp2) && (VSSEL129 & AM_HC32F460_INT_VSSEL_DMA1_ERR_MASK))
+        {
+        	dma_int_handler(&__g_dma1_dev);
+        }
+    }
+    if (1ul == HC32F460_DMA1->CH3CTL_f.IE)
+    {
+        /* DMA1 ch.3 Tx completed */
+    	if (0ul == (HC32F460_DMA1->INTMASK1_f.MSKTC & (1 << 3)))
+        {
+            if (((1ul << 3) & HC32F460_DMA1->INTSTAT1_f.TC) && (VSSEL129 & AM_HC32F460_INT_VSSEL_DMA1_TC3_MASK))
+            {
+            	dma_int_handler(&__g_dma1_dev);
+            }
+        }
+        /* DMA1 ch.3 Block Tx completed */
+        if (0ul == (HC32F460_DMA1->INTMASK1_f.MSKBTC & (1 << 3)))
+        {
+            if (((1ul << 3) & HC32F460_DMA1->INTSTAT1_f.BTC) && (VSSEL129 & AM_HC32F460_INT_VSSEL_DMA1_BTC3_MASK))
+            {
+            	dma_int_handler(&__g_dma1_dev);
+            }
+        }
+        /* DMA1 ch.1 Transfer/Request Error */
+        u32Tmp1 = HC32F460_DMA1->INTSTAT0 & 0x00080008ul;
+        u32Tmp2 = (uint32_t)(~(HC32F460_DMA1->INTMASK0) & 0x00080008ul);
+        if ((u32Tmp1 & u32Tmp2) && (VSSEL129 & AM_HC32F460_INT_VSSEL_DMA1_ERR_MASK))
+        {
+        	dma_int_handler(&__g_dma1_dev);
+        }
+    }
+    /****************** DMA2 中断处理  *******************/
+    if (1ul == HC32F460_DMA2->CH0CTL_f.IE)
+    {
+        /* DMA1 ch.0 Tx completed */
+        if (0ul == (HC32F460_DMA2->INTMASK1_f.MSKTC & (1 << 0)))
+        {
+            if (((1ul << 0) & HC32F460_DMA2->INTSTAT1_f.TC) && (VSSEL129 & AM_HC32F460_INT_VSSEL_DMA2_TC0_MASK))
+            {
+            	dma_int_handler(&__g_dma2_dev);
+            }
+        }
+        /* DMA2 ch.0 Block Tx completed */
+        if (0ul == (HC32F460_DMA2->INTMASK1_f.MSKBTC & (1 << 0)))
+        {
+            if (((1ul << 0) & HC32F460_DMA2->INTSTAT1_f.BTC) && (VSSEL129 & AM_HC32F460_INT_VSSEL_DMA2_BTC0_MASK))
+            {
+            	dma_int_handler(&__g_dma2_dev);
+            }
+        }
+        /* DMA2 ch.0 Transfer/Request Error */
+        u32Tmp1 = HC32F460_DMA2->INTSTAT0 & 0x00010001ul;
+        u32Tmp2 = (uint32_t)(~(HC32F460_DMA2->INTMASK0) & 0x00010001ul);
+        if ((u32Tmp1 & u32Tmp2) && (VSSEL129 & AM_HC32F460_INT_VSSEL_DMA2_ERR_MASK))
+        {
+        	dma_int_handler(&__g_dma2_dev);
+        }
+    }
+    if (1ul == HC32F460_DMA2->CH1CTL_f.IE)
+    {
+        /* DMA2 ch.1 Tx completed */
+    	if (0ul == (HC32F460_DMA2->INTMASK1_f.MSKTC & (1 << 1)))
+        {
+            if (((1ul << 1) & HC32F460_DMA2->INTSTAT1_f.TC) && (VSSEL129 & AM_HC32F460_INT_VSSEL_DMA2_TC1_MASK))
+            {
+            	dma_int_handler(&__g_dma2_dev);
+            }
+        }
+        /* DMA2 ch.0 Block Tx completed */
+        if (0ul == (HC32F460_DMA2->INTMASK1_f.MSKBTC & (1 << 1)))
+        {
+            if (((1ul << 1) & HC32F460_DMA2->INTSTAT1_f.BTC) && (VSSEL129 & AM_HC32F460_INT_VSSEL_DMA2_BTC1_MASK))
+            {
+            	dma_int_handler(&__g_dma2_dev);
+            }
+        }
+        /* DMA2 ch.1 Transfer/Request Error */
+        u32Tmp1 = HC32F460_DMA2->INTSTAT0 & 0x00020002ul;
+        u32Tmp2 = (uint32_t)(~(HC32F460_DMA2->INTMASK0) & 0x00020002ul);
+        if ((u32Tmp1 & u32Tmp2) && (VSSEL129 & AM_HC32F460_INT_VSSEL_DMA2_ERR_MASK))
+        {
+        	dma_int_handler(&__g_dma2_dev);
+        }
+    }
+    if (1ul == HC32F460_DMA2->CH2CTL_f.IE)
+    {
+        /* DMA2 ch.1 Tx completed */
+    	if (0ul == (HC32F460_DMA2->INTMASK1_f.MSKTC & (1 << 2)))
+        {
+            if (((1ul << 2) & HC32F460_DMA2->INTSTAT1_f.TC) && (VSSEL129 & AM_HC32F460_INT_VSSEL_DMA2_TC2_MASK))
+            {
+            	dma_int_handler(&__g_dma2_dev);
+            }
+        }
+        /* DMA2 ch.0 Block Tx completed */
+        if (0ul == (HC32F460_DMA2->INTMASK1_f.MSKBTC & (1 << 2)))
+        {
+            if (((1ul << 2) & HC32F460_DMA2->INTSTAT1_f.BTC) && (VSSEL129 & AM_HC32F460_INT_VSSEL_DMA2_BTC2_MASK))
+            {
+            	dma_int_handler(&__g_dma2_dev);
+            }
+        }
+        /* DMA2 ch.1 Transfer/Request Error */
+        u32Tmp1 = HC32F460_DMA2->INTSTAT0 & 0x00040004ul;
+        u32Tmp2 = (uint32_t)(~(HC32F460_DMA2->INTMASK0) & 0x00040004ul);
+        if ((u32Tmp1 & u32Tmp2) && (VSSEL129 & AM_HC32F460_INT_VSSEL_DMA2_ERR_MASK))
+        {
+        	dma_int_handler(&__g_dma2_dev);
+        }
+    }
+    if (1ul == HC32F460_DMA2->CH3CTL_f.IE)
+    {
+        /* DMA2 ch.3 Tx completed */
+    	if (0ul == (HC32F460_DMA2->INTMASK1_f.MSKTC & (1 << 3)))
+        {
+            if (((1ul << 3) & HC32F460_DMA2->INTSTAT1_f.TC) && (VSSEL129 & AM_HC32F460_INT_VSSEL_DMA2_TC3_MASK))
+            {
+            	dma_int_handler(&__g_dma2_dev);
+            }
+        }
+        /* DMA2 ch.3 Block Tx completed */
+        if (0ul == (HC32F460_DMA2->INTMASK1_f.MSKBTC & (1 << 3)))
+        {
+            if (((1ul << 3) & HC32F460_DMA2->INTSTAT1_f.BTC) && (VSSEL129 & AM_HC32F460_INT_VSSEL_DMA2_BTC3_MASK))
+            {
+            	dma_int_handler(&__g_dma2_dev);
+            }
+        }
+        /* DMA2 ch.1 Transfer/Request Error */
+        u32Tmp1 = HC32F460_DMA2->INTSTAT0 & 0x00080008ul;
+        u32Tmp2 = (uint32_t)(~(HC32F460_DMA2->INTMASK0) & 0x00080008ul);
+        if ((u32Tmp1 & u32Tmp2) && (VSSEL129 & AM_HC32F460_INT_VSSEL_DMA2_ERR_MASK))
+        {
+        	dma_int_handler(&__g_dma2_dev);
+        }
+    }
+    /* EFM program/erase Error */
+//    if (1ul == bM4_EFM_FITE_PEERRITE)
+//    {
+//        if ((M4_EFM->FSR & 0x0Fu) && (VSSEL129 & BIT_MASK_18))
+//        {
+//            EfmPgmEraseErr_IrqHandler();
+//        }
+//    }
+//    /* EFM collision Error */
+//    if (1ul == bM4_EFM_FITE_RDCOLERRITE)
+//    {
+//        if ((1ul == bM4_EFM_FSR_RDCOLERR) && (VSSEL129 & BIT_MASK_19))
+//        {
+//            EfmColErr_IrqHandler();
+//        }
+//    }
+//    /* EFM operate end */
+//    if (1ul == bM4_EFM_FITE_OPTENDITE)
+//    {
+//        if ((1ul == bM4_EFM_FSR_OPTEND) && (VSSEL129 & BIT_MASK_20))
+//        {
+//            EfmOpEnd_IrqHandler();
+//        }
+//    }
+//    /* QSPI interrupt */
+//    if ((1ul == M4_QSPI->SR_f.RAER) && (VSSEL129 & BIT_MASK_22))
+//    {
+//        QspiInt_IrqHandler();
+//    }
+//    /* DCU ch.1 */
+//    u32Tmp1 = M4_DCU1->INTSEL;
+//    u32Tmp2 = M4_DCU1->FLAG;
+//    if ((u32Tmp1 & u32Tmp2 & 0x7Ful) && (VSSEL129 & BIT_MASK_23))
+//    {
+//        Dcu1_IrqHandler();
+//    }
+//    /* DCU ch.2 */
+//    u32Tmp1 = M4_DCU2->INTSEL;
+//    u32Tmp2 = M4_DCU2->FLAG;
+//    if ((u32Tmp1 & u32Tmp2 & 0x7Ful) && (VSSEL129 & BIT_MASK_24))
+//    {
+//        Dcu2_IrqHandler();
+//    }
+//    /* DCU ch.3 */
+//    u32Tmp1 = M4_DCU3->INTSEL;
+//    u32Tmp2 = M4_DCU3->FLAG;
+//    if ((u32Tmp1 & u32Tmp2 & 0x7Ful) && (VSSEL129 & BIT_MASK_25))
+//    {
+//        Dcu3_IrqHandler();
+//    }
+//    /* DCU ch.4 */
+//    u32Tmp1 = M4_DCU4->INTSEL;
+//    u32Tmp2 = M4_DCU4->FLAG;
+//    if ((u32Tmp1 & u32Tmp2 & 0x7Ful) && (VSSEL129 & BIT_MASK_26))
+//    {
+//        Dcu4_IrqHandler();
+//    }
 }
 
 #define __HC32F460_UART_CR1_RIE_MASK    (1 << 5)    /**< \brief 接收中断使能 */

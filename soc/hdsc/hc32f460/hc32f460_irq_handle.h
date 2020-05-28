@@ -1,4 +1,5 @@
 void IRQ128_Handler(void *parg);
+void IRQ129_Handler(void *parg);
 void IRQ130_Handler(void *parg);
 void IRQ131_Handler(void *parg);
 void IRQ132_Handler(void *parg);
