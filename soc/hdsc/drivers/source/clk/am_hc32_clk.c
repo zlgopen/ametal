@@ -360,14 +360,14 @@ static void __xth_enable (uint32_t xth_clk, uint32_t *sysclk)
     amhw_hc32_rcc_xth_xtal_driver_set(AMHW_HC32_XTH_XTAL_DRIVER_DEFAULT);
 
     /* 外部晶振工作频率选择 */
-    if((xth_clk >= 4000000) && (xth_clk < 6000000)) {
-        amhw_hc32_rcc_xth_xtal_fre_set(AMHW_HC32_XTH_XTAL_FRE_4_6);
-    } else if((xth_clk >= 6000000) && (xth_clk < 12000000)) {
-        amhw_hc32_rcc_xth_xtal_fre_set(AMHW_HC32_XTH_XTAL_FRE_6_12);
-    } else if((xth_clk >= 12000000) && (xth_clk < 20000000)) {
-        amhw_hc32_rcc_xth_xtal_fre_set(AMHW_HC32_XTH_XTAL_FRE_12_20);
+    if((xth_clk >= 4000000) && (xth_clk < 8000000)) {
+        amhw_hc32_rcc_xth_xtal_fre_set(AMHW_HC32_XTH_XTAL_FRE_4_8);
+    } else if((xth_clk >= 8000000) && (xth_clk < 16000000)) {
+        amhw_hc32_rcc_xth_xtal_fre_set(AMHW_HC32_XTH_XTAL_FRE_8_16);
+    } else if((xth_clk >= 16000000) && (xth_clk < 24000000)) {
+        amhw_hc32_rcc_xth_xtal_fre_set(AMHW_HC32_XTH_XTAL_FRE_16_24);
     } else {
-        amhw_hc32_rcc_xth_xtal_fre_set(AMHW_HC32_XTH_XTAL_FRE_20_32);
+        amhw_hc32_rcc_xth_xtal_fre_set(AMHW_HC32_XTH_XTAL_FRE_24_32);
     }
 
     /* 外部高速时钟XTH稳定时间选择 */
