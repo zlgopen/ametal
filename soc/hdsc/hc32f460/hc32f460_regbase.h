@@ -69,6 +69,10 @@ extern "C" {
 #define HC32F460_RTC_BASE           (0x4004C000UL)  /** \brief RTC基地址 */
 #define HC32F460_CAN_BASE           (0x40070400UL)  /** \brief CAN基地址 */
 #define HC32F460_QSPI_BASE          (0x9C000000UL)  /** \brief QSPI基地址 */
+#define HC32F460_SPI1_BASE          (0x4001C000UL)  /** \brief SPI1基地址 */
+#define HC32F460_SPI2_BASE          (0x4001C400UL)  /** \brief SPI2基地址 */
+#define HC32F460_SPI3_BASE          (0x40020000UL)  /** \brief SPI3基地址 */
+#define HC32F460_SPI4_BASE          (0x40020400UL)  /** \brief SPI4基地址 */
 
 /**
  * \name 外设内存映射地址定义

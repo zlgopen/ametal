@@ -41,12 +41,15 @@ int am_main (void)
 {
     AM_DBG_INFO("Start up successful!\r\n");
     /* demoÀý³ÌÈë¿Ú */
-//    demo_hc32f460_core_std_led_entry();
+    demo_hc32f460_core_std_led_entry();
 //    demo_hc32f460_core_std_gpio_entry();
 //    demo_hc32f460_core_std_gpio_trigger_entry();
 //    demo_hc32f460_core_hw_gpio_entry();
-//    demo_std_uart_ringbuf_entry(am_hc32f460_uart4_inst_init());
-//    demo_std_uart_polling_entry(am_hc32f460_uart4_inst_init());
+//    demo_hc32f460_core_hw_uart_tx_dma_entry();
+//    demo_hc32f460_core_hw_uart_rx_dma_entry();
+//    demo_hc32f460_core_hw_uart_polling_entry();
+//    demo_hc32f460_core_std_uart_polling_entry();
+//    demo_hc32f460_core_std_uart_ringbuf_entry();
 //    demo_hc32f460_core_hw_uart_int_entry();
 //    demo_hc32f460_core_std_tim01_timing_entry();
 //    demo_hc32f460_core_std_tim02_timing_entry();
@@ -91,7 +94,12 @@ int am_main (void)
 //    demo_hc32f460_core_std_can_entry();
 //    demo_hc32f460_core_drv_dma_m2m_entry();
 //    demo_hc32f460_core_drv_dma_m2m_chain_entry();
-    demo_hc32f460_core_drv_qspi_entry();
+//    demo_hc32f460_core_drv_qspi_entry();
+//    demo_hc32f460_core_hw_spi_master_entry ();
+//    demo_hc32f460_core_std_spi_master_dma_entry();
+//    demo_hc32f460_core_std_spi_master_int_entry();
+//    demo_hc32f460_core_std_spi_master_poll_entry();
+//    demo_hc32f460_core_std_spi_slaver_dma_entry();
     while (1) {
 
     }

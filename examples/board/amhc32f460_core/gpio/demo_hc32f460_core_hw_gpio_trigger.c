@@ -18,11 +18,11 @@
  *    每次按键时串口打印 "the gpio interrupt happen!"。
  *
  * \note
- *    1. 如需观察串口打印的调试信息，需要将 PIOA_10 引脚连接 PC 串口的 TXD，
- *       PIOA_9 引脚连接 PC 串口的 RXD。
+ *    1. 如需观察串口打印的调试信息，需要将 PIOE_4 引脚连接 PC 串口的 TXD，
+ *       PIOE_5 引脚连接 PC 串口的 RXD。
  *
  * \par 源代码
- * \snippet demo_zlg118_hw_gpio_trigger.c src_zlg118_hw_gpio_trigger
+ * \snippet demo_hc32f460_hw_gpio_trigger.c src_hc32f460_hw_gpio_trigger
  *
  * \internal
  * \par Modification History
@@ -31,11 +31,11 @@
  */
 
 /**
- * \addtogroup demo_if_zlg118_hw_gpio_trigger
- * \copydoc demo_zlg118_hw_gpio_trigger.c
+ * \addtogroup demo_if_hc32f460_hw_gpio_trigger
+ * \copydoc demo_hc32f460_hw_gpio_trigger.c
  */
 
-/** [src_zlg118_hw_gpio_trigger] */
+/** [src_hc32f460_hw_gpio_trigger] */
 #include "ametal.h"
 #include "am_gpio.h"
 #include "am_vdebug.h"
@@ -51,8 +51,8 @@ void demo_hc32f460_core_hw_gpio_trigger_entry (void)
 
     AM_DBG_INFO("demo hc32f460_core hw gpio trigger!\r\n");
 
-    demo_hc32f460_hw_gpio_trigger_entry(HC32F460_GPIO, PIOC_13);
+    demo_hc32f460_hw_gpio_trigger_entry(HC32F460_GPIO, PIOD_3);
 }
-/** [src_zlg118_hw_gpio_trigger] */
+/** [src_hc32f460_hw_gpio_trigger] */
 
 /* end of file */

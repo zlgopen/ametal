@@ -32,6 +32,7 @@
 #include "hw/amhw_hc32f460_dma.h"
 #include "am_hc32f460_dma.h"
 #include "am_hc32f460_qspi.h"
+#include "hw/amhw_hc32f460_spi.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -120,7 +121,21 @@ void demo_hc32f460_hw_uart_polling_entry (void     *p_hw_uart,
  */
 void demo_hc32f460_hw_uart_tx_dma_entry (void                   *p_hw_uart,
                                          uint32_t                clk_rate,
+                                         am_hc32f460_dma_dev_t  *p_dma_dev,
                                          int32_t                 dma_chan);
+/**
+ * \brief UART DMA接收例程，通过 HW 层接口实现
+ *
+
+ * \param[in] p_hw_uart 指向 UART 外设寄存器块的指针
+ * \param[in] clk_rate  UART 时钟源频率
+ *
+ * \return 无
+ */
+void demo_hc32f460_hw_uart_rx_dma_entry (void    *p_hw_uart,
+                                         uint32_t clk_rate,
+                                         am_hc32f460_dma_dev_t *p_dma_dev,
+                                         int32_t  dma_chan);
 
 /**
  * \brief QSPI读写测试例程
@@ -131,7 +146,16 @@ void demo_hc32f460_hw_uart_tx_dma_entry (void                   *p_hw_uart,
  */
 void demo_hc32f460_drv_qspi_entry (am_hc32f460_qspi_dev_t *p_dev);
 
-
+/**
+ * \brief SPI 主机例程，通过 HW 层接口实现
+ *
+ * \param[in] p_hw_uart 指向 UART 外设寄存器块的指针
+ * \param[in] cs_pin    片选引脚
+ *
+ * \return 无
+ */
+void demo_hc32f460_hw_spi_master_entry (void    *p_hw_spi,
+                                        int32_t  cs_pin);
 
 #ifdef __cplusplus
 }

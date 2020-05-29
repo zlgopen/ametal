@@ -98,7 +98,7 @@ int am_gpio_pin_cfg (int pin, uint32_t flags)
             break;
 
         case AM_GPIO_OUTPUT_INIT_HIGH_VAL:
-            /* 输出高电平 */                                          
+            /* 输出高电平 */
             amhw_hc32f460_gpio_pin_out_high(p_hw_gpio, pin);
             /* 推挽输出 */
             amhw_hc32f460_gpio_pin_mode_set(p_hw_gpio,
@@ -108,7 +108,7 @@ int am_gpio_pin_cfg (int pin, uint32_t flags)
 
         case AM_GPIO_OUTPUT_INIT_LOW_VAL:
             /* 输出低电平 */
-            amhw_hc32f460_gpio_pin_out_low(p_hw_gpio, pin);        
+            amhw_hc32f460_gpio_pin_out_low(p_hw_gpio, pin);
             /* 推挽输出 */
             amhw_hc32f460_gpio_pin_mode_set(p_hw_gpio,
                                           AMHW_HC32F460_GPIO_MODE_OUT_PP,

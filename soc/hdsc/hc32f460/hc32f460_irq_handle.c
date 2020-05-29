@@ -11,6 +11,7 @@
 #include "am_hc32f460_i2c.h"
 #include "am_hc32f460_rtc.h"
 #include "am_hc32f460_dma.h"
+#include "am_hc32f460_spi_int.h"
 
 #define AM_HC32F460_INT_EXTI0_MASK    (1 << 0)
 #define AM_HC32F460_INT_EXTI1_MASK    (1 << 1)
@@ -65,6 +66,44 @@
 #define AM_HC32F460_INT_VSSEL_DMA2_BTC3_MASK   (1 << 15)
 #define AM_HC32F460_INT_VSSEL_DMA1_ERR_MASK    (1 << 16)
 #define AM_HC32F460_INT_VSSEL_DMA2_ERR_MASK    (1 << 17)
+
+/* SPI */
+#define __HC32F460_SPI_CR1_IDIE_MASK    (1 << 11)   /**< \brief SPI空闲中断使能 */
+#define __HC32F460_SPI_CR1_RXIE_MASK    (1 << 10)   /**< \brief SPI接收中断使能 */
+#define __HC32F460_SPI_CR1_TXIE_MASK    (1 << 9)    /**< \brief SPI发送中断使能 */
+#define __HC32F460_SPI_CR1_EIE_MASK     (1 << 8)    /**< \brief SPI错误中断使能 */
+
+#define __HC32F460_SPI_SR_RDFF_MASK     (1 << 7)    /**< \brief 接收缓冲器满标志 */
+#define __HC32F460_SPI_SR_TDEF_MASK     (1 << 5)    /**< \brief 发送缓冲器空标志 */
+#define __HC32F460_SPI_SR_UDRERF_MASK   (1 << 4)    /**< \brief 欠载错误标志 */
+#define __HC32F460_SPI_SR_PERF_MASK     (1 << 3)    /**< \brief 奇偶校验错误标志 */
+#define __HC32F460_SPI_SR_MODFERF_MASK  (1 << 2)    /**< \brief 模式故障错误标志 */
+#define __HC32F460_SPI_SR_IDLNF_MASK    (1 << 1)    /**< \brief SPI空闲标志 */
+#define __HC32F460_SPI_SR_OVRERF_MASK   (1 << 0)    /**< \brief 过载错误标志 */
+
+#define __HC32F460_INTC_VSSEL_SPI1_SRRI_MASK   (1 << 11)
+#define __HC32F460_INTC_VSSEL_SPI1_SRTI_MASK   (1 << 12)
+#define __HC32F460_INTC_VSSEL_SPI1_SPII_MASK   (1 << 13)
+#define __HC32F460_INTC_VSSEL_SPI1_SPEI_MASK   (1 << 14)
+#define __HC32F460_INTC_VSSEL_SPI1_SPTEND_MASK (1 << 15)
+
+#define __HC32F460_INTC_VSSEL_SPI2_SRRI_MASK   (1 << 16)
+#define __HC32F460_INTC_VSSEL_SPI2_SRTI_MASK   (1 << 17)
+#define __HC32F460_INTC_VSSEL_SPI2_SPII_MASK   (1 << 18)
+#define __HC32F460_INTC_VSSEL_SPI2_SPEI_MASK   (1 << 19)
+#define __HC32F460_INTC_VSSEL_SPI2_SPTEND_MASK (1 << 20)
+
+#define __HC32F460_INTC_VSSEL_SPI3_SRRI_MASK   (1 << 21)
+#define __HC32F460_INTC_VSSEL_SPI3_SRTI_MASK   (1 << 22)
+#define __HC32F460_INTC_VSSEL_SPI3_SPII_MASK   (1 << 23)
+#define __HC32F460_INTC_VSSEL_SPI3_SPEI_MASK   (1 << 24)
+#define __HC32F460_INTC_VSSEL_SPI3_SPTEND_MASK (1 << 25)
+
+#define __HC32F460_INTC_VSSEL_SPI4_SRRI_MASK   (1 << 26)
+#define __HC32F460_INTC_VSSEL_SPI4_SRTI_MASK   (1 << 27)
+#define __HC32F460_INTC_VSSEL_SPI4_SPII_MASK   (1 << 28)
+#define __HC32F460_INTC_VSSEL_SPI4_SPEI_MASK   (1 << 29)
+#define __HC32F460_INTC_VSSEL_SPI4_SPTEND_MASK (1 << 30)
 
 /**
  *******************************************************************************
@@ -1325,36 +1364,34 @@ void IRQ136_Handler(void)
         TimerA6CMP_IrqHandler(&__g_timea6_cap_dev);
     }    
 }
-
+extern void __spi_irq_handler (void *p_arg);
+extern am_hc32f460_spi_int_dev_t __g_spi1_int_dev;
+extern am_hc32f460_spi_int_dev_t __g_spi2_int_dev;
+extern am_hc32f460_spi_int_dev_t __g_spi3_int_dev;
+extern am_hc32f460_spi_int_dev_t __g_spi4_int_dev;
 /**
  *******************************************************************************
  ** \brief Int No.137 share IRQ handler
  **
  ******************************************************************************/
-void IRQ137_Handler(void)
+void IRQ137_Handler(void *parg)
 {
-#if 0
     uint32_t u32Tmp1 = 0ul;
     uint32_t u32Tmp2 = 0ul;
-
-    uint32_t int_vssel136 = HC32F460_INTC.VSSEL[136 - 128];
     uint32_t int_vssel137 = HC32F460_INTC.VSSEL[137 - 128];
-    uint32_t int_vssel141 = HC32F460_INTC.VSSEL[141 - 128];
-    uint32_t int_flag_uart1 = HC32F460_UART1->SR;
-    uint32_t int_flag_uart2 = HC32F460_UART2->SR;
-    uint32_t int_flag_uart3 = HC32F460_UART3->SR;
-    uint32_t int_flag_uart4 = HC32F460_UART4->SR;
 
+#if 0
     u32Tmp1 = HC32F460_UART3->SR;
     u32Tmp2 = HC32F460_UART3->CR1;
 
     /* USART Ch.3 Receive error */
-    if ((u32Tmp2 & __HC32F460_UART_CR1_RIE_MASK) && (u32Tmp1 & __HC32F460_UART_SR_RX_ERROR_MASK) && (int_vssel137 & __HC32F460_INTC_VSSEL_USART3_EI_MASK))
-    {
-        UsartRxErr_IrqHandler(&__g_uart3_dev);
-    }
+//    if ((u32Tmp2 & __HC32F460_UART_CR1_RIE_MASK) && (u32Tmp1 & __HC32F460_UART_SR_RX_ERROR_MASK) && (int_vssel137 & __HC32F460_INTC_VSSEL_USART3_EI_MASK))
+//    {
+//        UsartRxErr_IrqHandler(&__g_uart3_dev);
+//        return;
+//    }
     /* USART Ch.3 Receive completed */
-    if ((u32Tmp2 & u32Tmp1 & __HC32F460_UART_CR1_RIE_MASK) && (int_vssel137 & __HC32F460_INTC_VSSEL_USART3_RI_MASK))
+    if ((u32Tmp2 & u32Tmp1 & __HC32F460_UART_CR1_RIE_MASK) && (u32Tmp1 & (1 << 5)) && (int_vssel137 & __HC32F460_INTC_VSSEL_USART3_RI_MASK))
     {
         UsartRxEnd_IrqHandler(&__g_uart3_dev);
     }
@@ -1362,48 +1399,164 @@ void IRQ137_Handler(void)
     if ((u32Tmp2 & __HC32F460_UART_CR1_TXEIE_MASK) && (u32Tmp1 & __HC32F460_UART_SR_TXE_MASK) && (int_vssel137 & __HC32F460_INTC_VSSEL_USART3_TI_MASK))
     {
         UsartTxEmpty_IrqHandler(&__g_uart3_dev);
+        return;
     }
     /* USART Ch.3 Transmit completed */
     if ((u32Tmp2 & __HC32F460_UART_CR1_TCIE_MASK) && (u32Tmp1 & __HC32F460_UART_SR_TC_MASK) && (int_vssel137 & __HC32F460_INTC_VSSEL_USART3_TCI_MASK))
     {
         UsartTxEnd_IrqHandler(&__g_uart3_dev);
+        return;
     }
     /* USART Ch.3 Receive timeout */
     if ((u32Tmp2 & __HC32F460_UART_CR1_RTOIE_MASK) && (u32Tmp1 & __HC32F460_UART_SR_RTOF_MASK) && (int_vssel137 & __HC32F460_INTC_VSSEL_USART3_RTO_MASK))
     {
         UsartRxTO_IrqHandler(&__g_uart3_dev);
+        return;
     }
 
     u32Tmp1 = HC32F460_UART4->SR;
     u32Tmp2 = HC32F460_UART4->CR1;
 
-    /* USART Ch.1 Receive error */
+    /* USART Ch.4 Receive error */
     if ((u32Tmp2 & __HC32F460_UART_CR1_RIE_MASK) && (u32Tmp1 & __HC32F460_UART_SR_RX_ERROR_MASK) && (int_vssel137 & __HC32F460_INTC_VSSEL_USART4_EI_MASK))
     {
         UsartRxErr_IrqHandler(&__g_uart4_dev);
     }
-    /* USART Ch.1 Receive completed */
+    /* USART Ch.4 Receive completed */
     if ((u32Tmp2 & u32Tmp1 & __HC32F460_UART_CR1_RIE_MASK) && (int_vssel137 & __HC32F460_INTC_VSSEL_USART4_RI_MASK))
     {
         UsartRxEnd_IrqHandler(&__g_uart4_dev);
     }
-    /* USART Ch.1 Transmit data empty */
+    /* USART Ch.4 Transmit data empty */
     if ((u32Tmp2 & __HC32F460_UART_CR1_TXEIE_MASK) && (u32Tmp1 & __HC32F460_UART_SR_TXE_MASK) && (int_vssel137 & __HC32F460_INTC_VSSEL_USART4_TI_MASK))
     {
         UsartTxEmpty_IrqHandler(&__g_uart4_dev);
     }
-    /* USART Ch.1 Transmit completed */
+    /* USART Ch.4 Transmit completed */
     if ((u32Tmp2 & __HC32F460_UART_CR1_TCIE_MASK) && (u32Tmp1 & __HC32F460_UART_SR_TC_MASK) && (int_vssel137 & __HC32F460_INTC_VSSEL_USART4_TCI_MASK))
     {
         UsartTxEnd_IrqHandler(&__g_uart4_dev);
     }
-    /* USART Ch.1 Receive timeout */
+    /* USART Ch.4 Receive timeout */
     if ((u32Tmp2 & __HC32F460_UART_CR1_RTOIE_MASK) && (u32Tmp1 & __HC32F460_UART_SR_RTOF_MASK) && (int_vssel137 & __HC32F460_INTC_VSSEL_USART4_RTO_MASK))
     {
         UsartRxTO_IrqHandler(&__g_uart4_dev);
     }
-#endif    
+#endif
+    u32Tmp1 = HC32F460_SPI1->CR1;
+    u32Tmp2 = HC32F460_SPI1->SR;
+     /* SPI Ch.1 Receive completed */
+     if ((u32Tmp1 & __HC32F460_SPI_CR1_RXIE_MASK) && (u32Tmp2 & __HC32F460_SPI_SR_RDFF_MASK) && (int_vssel137 & __HC32F460_INTC_VSSEL_SPI1_SRRI_MASK))
+     {
+    	 __spi_irq_handler(&__g_spi1_int_dev);
+     }
+     /* SPI Ch.1 Transmit buf empty */
+     if ((u32Tmp1 & __HC32F460_SPI_CR1_TXIE_MASK) && (u32Tmp2 & __HC32F460_SPI_SR_TDEF_MASK) && (int_vssel137 & __HC32F460_INTC_VSSEL_SPI1_SRTI_MASK))
+     {
+    	 __spi_irq_handler(&__g_spi1_int_dev);
+     }
+     /* SPI Ch.1 bus idle */
+     if ((u32Tmp1 & __HC32F460_SPI_CR1_IDIE_MASK) && (!(u32Tmp2 & __HC32F460_SPI_SR_IDLNF_MASK)) && (int_vssel137 & __HC32F460_INTC_VSSEL_SPI1_SPII_MASK))
+     {
+    	 __spi_irq_handler(&__g_spi1_int_dev);
+     }
+     /* SPI Ch.1 parity/overflow/underflow/mode error */
+     if ((u32Tmp1 & __HC32F460_SPI_CR1_EIE_MASK)         &&  \
+         ((u32Tmp2 & (__HC32F460_SPI_SR_OVRERF_MASK  |
+                      __HC32F460_SPI_SR_MODFERF_MASK |
+                      __HC32F460_SPI_SR_PERF_MASK    |
+                      __HC32F460_SPI_SR_UDRERF_MASK)))   &&  \
+         (int_vssel137 & __HC32F460_INTC_VSSEL_SPI1_SPEI_MASK))
+     {
+    	 __spi_irq_handler(&__g_spi1_int_dev);
+     }
+
+     u32Tmp1 = HC32F460_SPI2->CR1;
+     u32Tmp2 = HC32F460_SPI2->SR;
+     /* SPI Ch.2 Receive completed */
+     if ((u32Tmp1 & __HC32F460_SPI_CR1_RXIE_MASK) && (u32Tmp2 & __HC32F460_SPI_SR_RDFF_MASK) && (int_vssel137 & __HC32F460_INTC_VSSEL_SPI2_SRRI_MASK))
+     {
+    	 __spi_irq_handler(&__g_spi2_int_dev);
+     }
+     /* SPI Ch.2 Transmit buf empty */
+     if ((u32Tmp1 & __HC32F460_SPI_CR1_TXIE_MASK) && (u32Tmp2 & __HC32F460_SPI_SR_TDEF_MASK) && (int_vssel137 & __HC32F460_INTC_VSSEL_SPI2_SRTI_MASK))
+     {
+    	 __spi_irq_handler(&__g_spi2_int_dev);
+     }
+     /* SPI Ch.2 bus idle */
+     if ((u32Tmp1 & __HC32F460_SPI_CR1_IDIE_MASK) && (!(u32Tmp2 & __HC32F460_SPI_SR_IDLNF_MASK)) && (int_vssel137 & __HC32F460_INTC_VSSEL_SPI2_SPII_MASK))
+     {
+    	 __spi_irq_handler(&__g_spi2_int_dev);
+     }
+     /* SPI Ch.2 parity/overflow/underflow/mode error */
+     if ((u32Tmp1 & __HC32F460_SPI_CR1_EIE_MASK)         &&  \
+         ((u32Tmp2 & (__HC32F460_SPI_SR_OVRERF_MASK  |
+                      __HC32F460_SPI_SR_MODFERF_MASK |
+                      __HC32F460_SPI_SR_PERF_MASK    |
+                      __HC32F460_SPI_SR_UDRERF_MASK)))   &&  \
+         (int_vssel137 & __HC32F460_INTC_VSSEL_SPI2_SPEI_MASK))
+     {
+    	 __spi_irq_handler(&__g_spi2_int_dev);
+     }
+
+     u32Tmp1 = HC32F460_SPI3->CR1;
+     u32Tmp2 = HC32F460_SPI3->SR;
+     uint32_t temp3 = HC32F460_SPI3->SR;
+     /* SPI Ch.3 Receive completed */
+     if ((u32Tmp1 & __HC32F460_SPI_CR1_RXIE_MASK) && (u32Tmp2 & __HC32F460_SPI_SR_RDFF_MASK) && (int_vssel137 & __HC32F460_INTC_VSSEL_SPI3_SRRI_MASK))
+     {
+    	 __spi_irq_handler(&__g_spi3_int_dev);
+     }
+     /* SPI Ch.3 Transmit buf empty */
+     if ((u32Tmp1 & __HC32F460_SPI_CR1_TXIE_MASK) && (u32Tmp2 & __HC32F460_SPI_SR_TDEF_MASK) && (int_vssel137 & __HC32F460_INTC_VSSEL_SPI3_SRTI_MASK))
+     {
+    	 __spi_irq_handler(&__g_spi3_int_dev);
+     }
+     /* SPI Ch.3 bus idle */
+     if ((u32Tmp1 & __HC32F460_SPI_CR1_IDIE_MASK) && (!(u32Tmp2 & __HC32F460_SPI_SR_IDLNF_MASK)) && (int_vssel137 & __HC32F460_INTC_VSSEL_SPI3_SPII_MASK))
+     {
+    	 __spi_irq_handler(&__g_spi3_int_dev);
+     }
+     /* SPI Ch.3 parity/overflow/underflow/mode error */
+     if ((u32Tmp1 & __HC32F460_SPI_CR1_EIE_MASK)         &&  \
+         ((u32Tmp2 & (__HC32F460_SPI_SR_OVRERF_MASK  |
+                      __HC32F460_SPI_SR_MODFERF_MASK |
+                      __HC32F460_SPI_SR_PERF_MASK    |
+                      __HC32F460_SPI_SR_UDRERF_MASK)))   &&  \
+         (int_vssel137 & __HC32F460_INTC_VSSEL_SPI3_SPEI_MASK))
+     {
+    	 __spi_irq_handler(&__g_spi3_int_dev);
+     }
+
+     u32Tmp1 = HC32F460_SPI4->CR1;
+     u32Tmp2 = HC32F460_SPI4->SR;
+    /* SPI Ch.4 Receive completed */
+     if ((u32Tmp1 & __HC32F460_SPI_CR1_RXIE_MASK) && (u32Tmp2 & __HC32F460_SPI_SR_RDFF_MASK) && (int_vssel137 & __HC32F460_INTC_VSSEL_SPI4_SRRI_MASK))
+     {
+    	 __spi_irq_handler(&__g_spi4_int_dev);
+     }
+     /* SPI Ch.4 Transmit buf empty */
+     if ((u32Tmp1 & __HC32F460_SPI_CR1_TXIE_MASK) && (u32Tmp2 & __HC32F460_SPI_SR_TDEF_MASK) && (int_vssel137 & __HC32F460_INTC_VSSEL_SPI4_SRTI_MASK))
+     {
+    	 __spi_irq_handler(&__g_spi4_int_dev);
+     }
+     /* SPI Ch.4 bus idle */
+     if ((u32Tmp1 & __HC32F460_SPI_CR1_IDIE_MASK) && (!(u32Tmp2 & __HC32F460_SPI_SR_IDLNF_MASK)) && (int_vssel137 & __HC32F460_INTC_VSSEL_SPI3_SPII_MASK))
+     {
+    	 __spi_irq_handler(&__g_spi4_int_dev);
+     }
+     /* SPI Ch.4 parity/overflow/underflow/mode error */
+     if ((u32Tmp1 & __HC32F460_SPI_CR1_EIE_MASK)         &&  \
+         ((u32Tmp2 & (__HC32F460_SPI_SR_OVRERF_MASK  |
+                      __HC32F460_SPI_SR_MODFERF_MASK |
+                      __HC32F460_SPI_SR_PERF_MASK    |
+                      __HC32F460_SPI_SR_UDRERF_MASK)))   &&  \
+         (int_vssel137 & __HC32F460_INTC_VSSEL_SPI4_SPEI_MASK))
+     {
+    	 __spi_irq_handler(&__g_spi4_int_dev);
+     }
 }
+
 
 /**
  *******************************************************************************
