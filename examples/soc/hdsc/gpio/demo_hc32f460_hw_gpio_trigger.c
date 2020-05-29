@@ -54,10 +54,10 @@ static void __gpio_isr (void *p_arg)
  */
 void demo_hc32f460_hw_gpio_trigger_entry (void *p_hw_gpio, int pin)
 {
-	amhw_hc32f460_gpio_t *p_gpio = (amhw_hc32f460_gpio_t *)p_hw_gpio;
+    amhw_hc32f460_gpio_t *p_gpio = (amhw_hc32f460_gpio_t *)p_hw_gpio;
 
     /* 取消引脚的复用功能 */
-	amhw_hc32f460_gpio_pin_afr_set(p_hw_gpio, AMHW_HC32F460_AFIO_GPIO, pin);;
+    amhw_hc32f460_gpio_pin_afr_set(p_hw_gpio, AMHW_HC32F460_AFIO_GPIO, pin);
 
     /* 数字端口设置*/
     amhw_hc32f460_gpio_pin_digital_set(p_gpio, pin);
@@ -68,8 +68,11 @@ void demo_hc32f460_hw_gpio_trigger_entry (void *p_hw_gpio, int pin)
     /* 使能引脚的上拉电阻 */
     amhw_hc32f460_gpio_pin_pu_enable(p_gpio, pin);
 
-    /* 下降沿触发 */
-    amhw_hc32f460_intc_pin_falling_int_enable(pin);
+    /* 设置触发方式 */
+    amhw_hc32f460_intc_pin_rising_int_enable(pin & 0xf);
+
+    /* 引脚外部中断输入许可 */
+    amhw_hc32f460_gpio_pin_ext_int_enable(p_hw_gpio, pin);
 
     /* 连接用户注册的中断回调函数 */
     am_gpio_trigger_connect(pin, __gpio_isr, NULL);
