@@ -662,10 +662,10 @@ void amhw_hc32_rcc_xth_waittime_set (amhw_hc32_xth_waittime time_set)
  * \brief 外部晶振工作频率选择
  */
 typedef enum {
-    AMHW_HC32_XTH_XTAL_FRE_4_6 = 0,       /**< \brief 4M~6M */
-    AMHW_HC32_XTH_XTAL_FRE_6_12,          /**< \brief 6M~12M */
-    AMHW_HC32_XTH_XTAL_FRE_12_20,         /**< \brief 12M~20M */
-    AMHW_HC32_XTH_XTAL_FRE_20_32,         /**< \brief 20M~32M */
+    AMHW_HC32_XTH_XTAL_FRE_4_8 = 0,       /**< \brief 4M~6M */
+    AMHW_HC32_XTH_XTAL_FRE_8_16,          /**< \brief 6M~12M */
+    AMHW_HC32_XTH_XTAL_FRE_16_24,         /**< \brief 12M~20M */
+    AMHW_HC32_XTH_XTAL_FRE_24_32,         /**< \brief 20M~32M */
 }amhw_hc32_xth_xtal_fre;
 
 /**
