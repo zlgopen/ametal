@@ -454,14 +454,7 @@ static int __i2c_mst_sm_event (am_hc32_i2c_dev_t *p_dev, uint32_t event)
     while(1) {
         /* 获取中断标志 */
         while(0 == amhw_hc32_i2c_irq_get(p_hw_i2c)) {
-            if(p_dev->busy == AM_FALSE) {
-                p_dev->state = __I2C_ST_IDLE;
-                amhw_hc32_i2c_cr_clear(p_hw_i2c,
-                                         AMHW_HC32_I2C_START_ENABLE);
-                break;
-            } else {
-                p_dev->state = __I2C_ST_MSG_START;
-            }
+            p_dev->state = __I2C_ST_MSG_START;
         }
 
         /* 获取I2C状态 */
@@ -472,15 +465,14 @@ static int __i2c_mst_sm_event (am_hc32_i2c_dev_t *p_dev, uint32_t event)
             /* 判断i2c状态 */
             switch (state) {
             case 0x08: /* 已发送起始条件 */
-            case 0x10: /* 已发送重复起始条件 */
-
+            case 0x10: /* 已发送起始条件 */
                 /* 清除起始条件 */
                 amhw_hc32_i2c_cr_clear(p_hw_i2c,
-                                         AMHW_HC32_I2C_START_ENABLE);
+                                       AMHW_HC32_I2C_START_ENABLE);
 
                 /* 传输从机地址和读命令 */
                 amhw_hc32_i2c_dat_write(p_hw_i2c,
-                                          ((p_cur_trans->addr << 1) | 0x1));
+                                        ((p_cur_trans->addr << 1) | 0x1));
                 break;
 
             case 0x18: /* 已发送SLA+W，已接收ACK */
@@ -531,20 +523,34 @@ static int __i2c_mst_sm_event (am_hc32_i2c_dev_t *p_dev, uint32_t event)
                 /* 接收最后一个数据 */
                 p_cur_trans[p_cur_msg->done_num].p_buf[p_dev->data_ptr++] = \
                     amhw_hc32_i2c_dat_read(p_hw_i2c);
-                p_dev->state = __I2C_ST_IDLE;
+                amhw_hc32_i2c_cr_set(p_hw_i2c, AMHW_HC32_I2C_STOP_ENABLE);
                 break;
 
             case 0x38: /* 在SLA+ 读写或写数据字节时丢失仲裁 */
             default:
-                p_dev->state = __I2C_ST_IDLE;
+                amhw_hc32_i2c_cr_set(p_hw_i2c, AMHW_HC32_I2C_START_ENABLE);
                 break;
             }
+
+            /* 清除中断标志位 */
+            amhw_hc32_i2c_cr_clear(p_hw_i2c, AMHW_HC32_I2C_INT_FLAG);
+
+            /* 判断消息是否传输完成 */
+            if(p_dev->data_ptr >= p_cur_trans[p_cur_msg->done_num].nbytes) {
+                p_cur_msg->done_num++;
+                p_dev->data_ptr = 0;
+            }
+
+            if(p_cur_msg->done_num >= p_cur_msg->trans_num) {
+                break;
+            }
+
         } else {    /* 写操作 */
 
             /* 判断i2c状态 */
             switch (state) {
             case 0x08: /* 已发送起始条件 */
-
+            case 0x10: /* 已发送起始条件 */
                 /* 清除起始条件 */
                 amhw_hc32_i2c_cr_clear(p_hw_i2c,
                                          AMHW_HC32_I2C_START_ENABLE);
@@ -555,44 +561,48 @@ static int __i2c_mst_sm_event (am_hc32_i2c_dev_t *p_dev, uint32_t event)
 
             case 0x18: /* 已发送SLA+W，已接收ACK */
             case 0x28: /* 已发送数据，已接收ACK */
-                if(p_cur_msg->done_num <= p_cur_msg->trans_num) {
+                if(p_cur_msg->done_num < p_cur_msg->trans_num) {
 
                 /* 传输数据 */
                 amhw_hc32_i2c_dat_write(p_hw_i2c,
-                                          p_cur_trans[p_cur_msg->done_num].\
-                                          p_buf[p_dev->data_ptr++]);
+                                        p_cur_trans[p_cur_msg->done_num].\
+                                        p_buf[p_dev->data_ptr++]);
                 }
                 break;
 
             case 0x20: /* 已发送SLA+W，已接收非ACK */
+            case 0x38: /* 在SLA+ 读写或写数据字节时丢失仲裁 */ 
+                amhw_hc32_i2c_cr_set(p_hw_i2c, AMHW_HC32_I2C_START_ENABLE);
+                break;
+            
             case 0x30: /* 已发送数据 */
-            case 0x38: /* 在SLA+ 读写或写数据字节时丢失仲裁 */
+                amhw_hc32_i2c_cr_set(p_hw_i2c, AMHW_HC32_I2C_STOP_ENABLE);
+                break;
+
             default:
-                p_dev->state = __I2C_ST_IDLE;
                 break;
             }
-        }
 
-        /* 判断消息是否传输完成 */
-        if(p_dev->data_ptr >= p_cur_trans[p_cur_msg->done_num].nbytes) {
-            p_cur_msg->done_num++;
-            p_dev->data_ptr = 0;
-        }
+            /* 判断消息是否传输完成 */
+            if(p_dev->data_ptr >= p_cur_trans[p_cur_msg->done_num].nbytes) {
+                p_cur_msg->done_num++;
+                p_dev->data_ptr = 0;
+            }
 
-        if(p_dev->state == __I2C_ST_IDLE ||
-           p_cur_msg->done_num > p_cur_msg->trans_num) {
-            /* 设置停止停止标志 */
-            amhw_hc32_i2c_cr_set(p_hw_i2c, AMHW_HC32_I2C_STOP_ENABLE);
+            if(p_cur_msg->done_num > p_cur_msg->trans_num) {
+                /* 设置停止停止标志 */
+                amhw_hc32_i2c_cr_set(p_hw_i2c, AMHW_HC32_I2C_STOP_ENABLE);
+
+                /* 清除中断标志位 */
+                amhw_hc32_i2c_cr_clear(p_hw_i2c, AMHW_HC32_I2C_INT_FLAG);
+                break;
+            } else if(p_cur_msg->done_num == p_cur_msg->trans_num) {
+                p_cur_msg->done_num++;
+            }
 
             /* 清除中断标志位 */
-            amhw_hc32_i2c_cr_clear(p_hw_i2c, AMHW_HC32_I2C_INT_FLAG);
-            break;
-        } else if(p_cur_msg->done_num == p_cur_msg->trans_num) {
-            p_cur_msg->done_num++;
+            amhw_hc32_i2c_cr_clear(p_hw_i2c, AMHW_HC32_I2C_INT_FLAG);            
         }
-
-        /* 清除中断标志位 */
-        amhw_hc32_i2c_cr_clear(p_hw_i2c, AMHW_HC32_I2C_INT_FLAG);
     }
 
     p_dev->busy = AM_FALSE;
