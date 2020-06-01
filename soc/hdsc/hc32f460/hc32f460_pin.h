@@ -160,6 +160,16 @@ extern "C" {
  * @}
  */
 
+
+/**
+ * \name PIO引脚复用时功能模式(通用)
+ * @{
+ */
+#define GPIO_MODE(x)   AM_HC32F460_GPIO_MODE_CODE(x)
+/**
+ * @}
+ */
+
 #ifdef __cplusplus
 }
 #endif

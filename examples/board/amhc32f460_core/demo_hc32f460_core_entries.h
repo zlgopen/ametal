@@ -33,9 +33,14 @@ void demo_hc32f460_core_hw_adc_int_entry (void);
 void demo_hc32f460_core_hw_adc_dma_entry (void);
 
 /**
- * \brief 例程入口
+ * \brief ADC 多通道转换例程， 通过 HW 层接口实现
  */
 void demo_hc32f460_core_hw_multichan_adc_entry (void);
+
+/**
+ * \brief ADC 多通道连续扫描例程， 通过 HW 层接口实现
+ */
+void demo_hc32f460_core_hw_multichan_seq_adc_entry (void);
 
 /**
  * \brief ADC 例程，通过标准接口实现
@@ -46,6 +51,31 @@ void demo_hc32f460_core_std_adc_entry (void);
  * \brief 多通道ADC 例程，通过标准接口实现
  */
 void demo_hc32f460_core_std_multichan_adc_entry (void);
+
+/**
+ * \brief ADC 序列A事件触发例程，通过HW接口实现
+ */
+void demo_hc32f460_core_hw_adc_seq_a_event_trigger_entry(void);
+
+/**
+ * \brief ADC 序列A、B双序列事件触发例程，通过HW接口实现
+ */
+void demo_hc32f460_core_hw_adc_seq_a_b_event_trigger_entry(void);
+
+/**
+ * \brief ADC 可编程增益放大器PGA例程 通过HW接口实现
+ */
+void demo_hc32f460_core_hw_adc_pga_entry(void);
+
+/**
+ * \brief ADC 模拟看门狗AWD例程 通过HW接口实现
+ */
+void demo_hc32f460_core_hw_adc_awd_entry(void);
+
+/**
+ * \brief 多ADC 协同工作例程 通过HW接口实现
+ */
+void demo_hc32f460_core_hw_adc_sync_entry(void);
 
 /**
  * \brief 蜂鸣器例程，通过标准接口实现

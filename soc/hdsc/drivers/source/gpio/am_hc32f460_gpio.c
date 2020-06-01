@@ -184,7 +184,7 @@ int am_gpio_pin_cfg (int pin, uint32_t flags)
        switch (AM_HC32F460_GPIO_MODE_GET(flags)) {
 
        case 0:
-           /* 上拉输入 */
+           /* 模拟输入 */
            pin_mode = AMHW_HC32F460_GPIO_MODE_AIN;
            break;
 

@@ -20,8 +20,8 @@
  * \endinternal
  */
 
-#ifndef __ZLG217_INUM_H
-#define __ZLG217_INUM_H
+#ifndef __HC32F460_INUM_H
+#define __HC32F460_INUM_H
 
 #ifdef __cplusplus
 extern "C" {
@@ -30,13 +30,175 @@ extern "C" {
 #include "ametal.h"
 
 /**
- * \addtogroup zlg217_if_inum
- * \copydoc zlg217_inum.h
+ * \addtogroup hc32f460_if_inum
+ * \copydoc hc32f460_inum.h
+ * @{
+ */
+
+
+/**
+ * \name HC32F460 CPU 中断向量号
  * @{
  */
 
 /**
- * \name ZLG217 CPU 中断号
+ * \name HC32F460 CPU 中断向量类型一
+ */
+#define INT_VECTOR_0    (0)
+#define INT_VECTOR_1    (1)
+#define INT_VECTOR_2    (2)
+#define INT_VECTOR_3    (3)
+#define INT_VECTOR_4    (4)
+#define INT_VECTOR_5    (5)
+#define INT_VECTOR_6    (6)
+#define INT_VECTOR_7    (7)
+#define INT_VECTOR_8    (8)
+#define INT_VECTOR_9    (9)
+#define INT_VECTOR_10   (10)
+#define INT_VECTOR_11   (11)
+#define INT_VECTOR_12   (12)
+#define INT_VECTOR_13   (13)
+#define INT_VECTOR_14   (14)
+#define INT_VECTOR_15   (15)
+#define INT_VECTOR_16   (16)
+#define INT_VECTOR_17   (17)
+#define INT_VECTOR_18   (18)
+#define INT_VECTOR_19   (19)
+#define INT_VECTOR_20   (20)
+#define INT_VECTOR_21   (21)
+#define INT_VECTOR_22   (22)
+#define INT_VECTOR_23   (23)
+#define INT_VECTOR_24   (24)
+#define INT_VECTOR_25   (25)
+#define INT_VECTOR_26   (26)
+#define INT_VECTOR_27   (27)
+#define INT_VECTOR_28   (28)
+#define INT_VECTOR_29   (29)
+#define INT_VECTOR_30   (30)
+#define INT_VECTOR_31   (31)
+
+/**
+ * \name HC32F460 CPU 中断向量类型二
+ */
+#define INT_VECTOR_32   (32)
+#define INT_VECTOR_33   (33)
+#define INT_VECTOR_34   (34)
+#define INT_VECTOR_35   (35)
+#define INT_VECTOR_36   (36)
+#define INT_VECTOR_37   (37)
+#define INT_VECTOR_38   (38)
+#define INT_VECTOR_39   (39)
+#define INT_VECTOR_40   (40)
+#define INT_VECTOR_41   (41)
+#define INT_VECTOR_42   (42)
+#define INT_VECTOR_43   (43)
+#define INT_VECTOR_44   (44)
+#define INT_VECTOR_45   (45)
+#define INT_VECTOR_46   (46)
+#define INT_VECTOR_47   (47)
+#define INT_VECTOR_48   (48)
+#define INT_VECTOR_49   (49)
+#define INT_VECTOR_50   (50)
+#define INT_VECTOR_51   (51)
+#define INT_VECTOR_52   (52)
+#define INT_VECTOR_53   (53)
+#define INT_VECTOR_54   (54)
+#define INT_VECTOR_55   (55)
+#define INT_VECTOR_56   (56)
+#define INT_VECTOR_57   (57)
+#define INT_VECTOR_58   (58)
+#define INT_VECTOR_59   (59)
+#define INT_VECTOR_60   (60)
+#define INT_VECTOR_61   (61)
+#define INT_VECTOR_62   (62)
+#define INT_VECTOR_63   (63)
+#define INT_VECTOR_64   (64)
+#define INT_VECTOR_65   (65)
+#define INT_VECTOR_66   (66)
+#define INT_VECTOR_67   (67)
+#define INT_VECTOR_68   (68)
+#define INT_VECTOR_69   (69)
+#define INT_VECTOR_70   (70)
+#define INT_VECTOR_71   (71)
+#define INT_VECTOR_72   (72)
+#define INT_VECTOR_73   (73)
+#define INT_VECTOR_74   (74)
+#define INT_VECTOR_75   (75)
+#define INT_VECTOR_76   (76)
+#define INT_VECTOR_77   (77)
+#define INT_VECTOR_78   (78)
+#define INT_VECTOR_79   (79)
+#define INT_VECTOR_80   (80)
+#define INT_VECTOR_81   (81)
+#define INT_VECTOR_82   (82)
+#define INT_VECTOR_83   (83)
+#define INT_VECTOR_84   (84)
+#define INT_VECTOR_85   (85)
+#define INT_VECTOR_86   (86)
+#define INT_VECTOR_87   (87)
+#define INT_VECTOR_88   (88)
+#define INT_VECTOR_89   (89)
+#define INT_VECTOR_90   (90)
+#define INT_VECTOR_91   (91)
+#define INT_VECTOR_92   (92)
+#define INT_VECTOR_93   (93)
+#define INT_VECTOR_94   (94)
+#define INT_VECTOR_95   (95)
+#define INT_VECTOR_96   (96)
+#define INT_VECTOR_97   (97)
+#define INT_VECTOR_98   (98)
+#define INT_VECTOR_99   (99)
+#define INT_VECTOR_100  (100)
+#define INT_VECTOR_101  (101)
+#define INT_VECTOR_102  (102)
+#define INT_VECTOR_103  (103)
+#define INT_VECTOR_104  (104)
+#define INT_VECTOR_105  (105)
+#define INT_VECTOR_106  (106)
+#define INT_VECTOR_107  (107)
+#define INT_VECTOR_108  (108)
+#define INT_VECTOR_109  (109)
+#define INT_VECTOR_110  (110)
+#define INT_VECTOR_111  (111)
+#define INT_VECTOR_112  (112)
+#define INT_VECTOR_113  (113)
+#define INT_VECTOR_114  (114)
+#define INT_VECTOR_115  (115)
+#define INT_VECTOR_116  (116)
+#define INT_VECTOR_117  (117)
+#define INT_VECTOR_118  (118)
+#define INT_VECTOR_119  (119)
+#define INT_VECTOR_120  (120)
+#define INT_VECTOR_121  (121)
+#define INT_VECTOR_122  (122)
+#define INT_VECTOR_123  (123)
+#define INT_VECTOR_124  (124)
+#define INT_VECTOR_125  (125)
+#define INT_VECTOR_126  (126)
+#define INT_VECTOR_127  (127)
+
+/**
+ * \name HC32F460 CPU 中断向量类型三
+ */
+#define INT_VECTOR_128  (128)
+#define INT_VECTOR_129  (129)
+#define INT_VECTOR_130  (130)
+#define INT_VECTOR_131  (131)
+#define INT_VECTOR_132  (132)
+#define INT_VECTOR_133  (133)
+#define INT_VECTOR_134  (134)
+#define INT_VECTOR_135  (135)
+#define INT_VECTOR_136  (136)
+#define INT_VECTOR_137  (137)
+#define INT_VECTOR_138  (138)
+#define INT_VECTOR_139  (139)
+#define INT_VECTOR_140  (140)
+#define INT_VECTOR_141  (141)
+#define INT_VECTOR_142  (142)
+#define INT_VECTOR_143  (143)
+
+/**
+ * \name HC32F460 CPU 中断号
  * @{
  */
 
@@ -120,6 +282,294 @@ extern "C" {
 #define INUM_SDIOC1          143    /**< \brief SDIOC1中断 */
 #define INUM_SDIOC2          143    /**< \brief SDIOC2中断 */
 #define INUM_CAN             143    /**< \brief CAN中断 */
+
+
+/**
+ * \name 启动对应通道进行传输的事件编号
+ * \anchor dma_request_src
+ * @{
+ */
+/**
+ *******************************************************************************
+ ** \brief Event number enumeration
+ ******************************************************************************/
+typedef enum en_event_src
+{
+    EVT_SWI_IRQ0            = 0u,
+    EVT_SWI_IRQ1            = 1u,
+    EVT_SWI_IRQ2            = 2u,
+    EVT_SWI_IRQ3            = 3u,
+    EVT_SWI_IRQ4            = 4u,
+    EVT_SWI_IRQ5            = 5u,
+    EVT_SWI_IRQ6            = 6u,
+    EVT_SWI_IRQ7            = 7u,
+    EVT_SWI_IRQ8            = 8u,
+    EVT_SWI_IRQ9            = 9u,
+    EVT_SWI_IRQ10           = 10u,
+    EVT_SWI_IRQ11           = 11u,
+    EVT_SWI_IRQ12           = 12u,
+    EVT_SWI_IRQ13           = 13u,
+    EVT_SWI_IRQ14           = 14u,
+    EVT_SWI_IRQ15           = 15u,
+    EVT_SWI_IRQ16           = 16u,
+    EVT_SWI_IRQ17           = 17u,
+    EVT_SWI_IRQ18           = 18u,
+    EVT_SWI_IRQ19           = 19u,
+    EVT_SWI_IRQ20           = 20u,
+    EVT_SWI_IRQ21           = 21u,
+    EVT_SWI_IRQ22           = 22u,
+    EVT_SWI_IRQ23           = 23u,
+    EVT_SWI_IRQ24           = 24u,
+    EVT_SWI_IRQ25           = 25u,
+    EVT_SWI_IRQ26           = 26u,
+    EVT_SWI_IRQ27           = 27u,
+    EVT_SWI_IRQ28           = 28u,
+    EVT_SWI_IRQ29           = 29u,
+    EVT_SWI_IRQ30           = 30u,
+    EVT_SWI_IRQ31           = 31u,
+
+    /* External Interrupt. */
+    EVT_PORT_EIRQ0          = 0u,
+    EVT_PORT_EIRQ1          = 1u,
+    EVT_PORT_EIRQ2          = 2u,
+    EVT_PORT_EIRQ3          = 3u,
+    EVT_PORT_EIRQ4          = 4u,
+    EVT_PORT_EIRQ5          = 5u,
+    EVT_PORT_EIRQ6          = 6u,
+    EVT_PORT_EIRQ7          = 7u,
+    EVT_PORT_EIRQ8          = 8u,
+    EVT_PORT_EIRQ9          = 9u,
+    EVT_PORT_EIRQ10         = 10u,
+    EVT_PORT_EIRQ11         = 11u,
+    EVT_PORT_EIRQ12         = 12u,
+    EVT_PORT_EIRQ13         = 13u,
+    EVT_PORT_EIRQ14         = 14u,
+    EVT_PORT_EIRQ15         = 15u,
+
+    /* DMAC */
+    EVT_DMA1_TC0            = 32u,
+    EVT_DMA1_TC1            = 33u,
+    EVT_DMA1_TC2            = 34u,
+    EVT_DMA1_TC3            = 35u,
+    EVT_DMA2_TC0            = 36u,
+    EVT_DMA2_TC1            = 37u,
+    EVT_DMA2_TC2            = 38u,
+    EVT_DMA2_TC3            = 39u,
+    EVT_DMA1_BTC0           = 40u,
+    EVT_DMA1_BTC1           = 41u,
+    EVT_DMA1_BTC2           = 42u,
+    EVT_DMA1_BTC3           = 43u,
+    EVT_DMA2_BTC0           = 44u,
+    EVT_DMA2_BTC1           = 45u,
+    EVT_DMA2_BTC2           = 46u,
+    EVT_DMA2_BTC3           = 47u,
+
+    /* EFM */
+    EVT_EFM_OPTEND          = 52u,
+
+    /* USB SOF */
+    EVT_USBFS_SOF           = 53u,
+
+    /* DCU */
+    EVT_DCU1                = 55u,
+    EVT_DCU2                = 56u,
+    EVT_DCU3                = 57u,
+    EVT_DCU4                = 58u,
+
+    /* TIMER 0 */
+    EVT_TMR01_GCMA          = 64u,
+    EVT_TMR01_GCMB          = 65u,
+    EVT_TMR02_GCMA          = 66u,
+    EVT_TMR02_GCMB          = 67u,
+
+    /* RTC */
+    EVT_RTC_ALM             = 81u,
+    EVT_RTC_PRD             = 82u,
+
+    /* TIMER 6 */
+    EVT_TMR61_GCMA          = 96u,
+    EVT_TMR61_GCMB          = 97u,
+    EVT_TMR61_GCMC          = 98u,
+    EVT_TMR61_GCMD          = 99u,
+    EVT_TMR61_GCME          = 100u,
+    EVT_TMR61_GCMF          = 101u,
+    EVT_TMR61_GOVF          = 102u,
+    EVT_TMR61_GUDF          = 103u,
+    EVT_TMR61_SCMA          = 107u,
+    EVT_TMR61_SCMB          = 108u,
+    EVT_TMR62_GCMA          = 112u,
+    EVT_TMR62_GCMB          = 113u,
+    EVT_TMR62_GCMC          = 114u,
+    EVT_TMR62_GCMD          = 115u,
+    EVT_TMR62_GCME          = 116u,
+    EVT_TMR62_GCMF          = 117u,
+    EVT_TMR62_GOVF          = 118u,
+    EVT_TMR62_GUDF          = 119u,
+    EVT_TMR62_SCMA          = 123u,
+    EVT_TMR62_SCMB          = 124u,
+    EVT_TMR63_GCMA          = 128u,
+    EVT_TMR63_GCMB          = 129u,
+    EVT_TMR63_GCMC          = 130u,
+    EVT_TMR63_GCMD          = 131u,
+    EVT_TMR63_GCME          = 132u,
+    EVT_TMR63_GCMF          = 133u,
+    EVT_TMR63_GOVF          = 134u,
+    EVT_TMR63_GUDF          = 135u,
+    EVT_TMR63_SCMA          = 139u,
+    EVT_TMR63_SCMB          = 140u,
+
+    /* TIMER A */
+    EVT_TMRA1_OVF           = 256u,
+    EVT_TMRA1_UDF           = 257u,
+    EVT_TMRA1_CMP           = 258u,
+    EVT_TMRA2_OVF           = 259u,
+    EVT_TMRA2_UDF           = 260u,
+    EVT_TMRA2_CMP           = 261u,
+    EVT_TMRA3_OVF           = 262u,
+    EVT_TMRA3_UDF           = 263u,
+    EVT_TMRA3_CMP           = 264u,
+    EVT_TMRA4_OVF           = 265u,
+    EVT_TMRA4_UDF           = 266u,
+    EVT_TMRA4_CMP           = 267u,
+    EVT_TMRA5_OVF           = 268u,
+    EVT_TMRA5_UDF           = 269u,
+    EVT_TMRA5_CMP           = 270u,
+    EVT_TMRA6_OVF           = 272u,
+    EVT_TMRA6_UDF           = 273u,
+    EVT_TMRA6_CMP           = 274u,
+
+    /* USART */
+    EVT_USART1_EI           = 278u,
+    EVT_USART1_RI           = 279u,
+    EVT_USART1_TI           = 280u,
+    EVT_USART1_TCI          = 281u,
+    EVT_USART1_RTO          = 282u,
+    EVT_USART2_EI           = 283u,
+    EVT_USART2_RI           = 284u,
+    EVT_USART2_TI           = 285u,
+    EVT_USART2_TCI          = 286u,
+    EVT_USART2_RTO          = 287u,
+    EVT_USART3_EI           = 288u,
+    EVT_USART3_RI           = 289u,
+    EVT_USART3_TI           = 290u,
+    EVT_USART3_TCI          = 291u,
+    EVT_USART3_RTO          = 292u,
+    EVT_USART4_EI           = 293u,
+    EVT_USART4_RI           = 294u,
+    EVT_USART4_TI           = 295u,
+    EVT_USART4_TCI          = 296u,
+    EVT_USART4_RTO          = 297u,
+
+    /* SPI */
+    EVT_SPI1_SRRI           = 299u,
+    EVT_SPI1_SRTI           = 300u,
+    EVT_SPI1_SPII           = 301u,
+    EVT_SPI1_SPEI           = 302u,
+    EVT_SPI1_SPTEND         = 303u,
+    EVT_SPI2_SRRI           = 304u,
+    EVT_SPI2_SRTI           = 305u,
+    EVT_SPI2_SPII           = 306u,
+    EVT_SPI2_SPEI           = 307u,
+    EVT_SPI2_SPTEND         = 308u,
+    EVT_SPI3_SRRI           = 309u,
+    EVT_SPI3_SRTI           = 310u,
+    EVT_SPI3_SPII           = 311u,
+    EVT_SPI3_SPEI           = 312u,
+    EVT_SPI3_SPTEND         = 313u,
+    EVT_SPI4_SRRI           = 314u,
+    EVT_SPI4_SRTI           = 315u,
+    EVT_SPI4_SPII           = 316u,
+    EVT_SPI4_SPEI           = 317u,
+    EVT_SPI4_SPTEND         = 318u,
+
+    /* AOS */
+    EVT_AOS_STRG            = 319u,
+
+    /* TIMER 4 */
+    EVT_TMR41_SCMUH         = 368u,
+    EVT_TMR41_SCMUL         = 369u,
+    EVT_TMR41_SCMVH         = 370u,
+    EVT_TMR41_SCMVL         = 371u,
+    EVT_TMR41_SCMWH         = 372u,
+    EVT_TMR41_SCMWL         = 373u,
+    EVT_TMR42_SCMUH         = 374u,
+    EVT_TMR42_SCMUL         = 375u,
+    EVT_TMR42_SCMVH         = 376u,
+    EVT_TMR42_SCMVL         = 377u,
+    EVT_TMR42_SCMWH         = 378u,
+    EVT_TMR42_SCMWL         = 379u,
+    EVT_TMR43_SCMUH         = 384u,
+    EVT_TMR43_SCMUL         = 385u,
+    EVT_TMR43_SCMVH         = 386u,
+    EVT_TMR43_SCMVL         = 387u,
+    EVT_TMR43_SCMWH         = 388u,
+    EVT_TMR43_SCMWL         = 389u,
+
+    /* EVENT PORT */
+    EVT_EVENT_PORT1         = 394u,
+    EVT_EVENT_PORT2         = 395u,
+    EVT_EVENT_PORT3         = 396u,
+    EVT_EVENT_PORT4         = 397u,
+
+    /* I2S */
+    EVT_I2S1_TXIRQOUT       = 400u,
+    EVT_I2S1_RXIRQOUT       = 401u,
+    EVT_I2S2_TXIRQOUT       = 403u,
+    EVT_I2S2_RXIRQOUT       = 404u,
+    EVT_I2S3_TXIRQOUT       = 406u,
+    EVT_I2S3_RXIRQOUT       = 407u,
+    EVT_I2S4_TXIRQOUT       = 409u,
+    EVT_I2S4_RXIRQOUT       = 410u,
+
+    /* COMPARATOR */
+    EVT_ACMP1               = 416u,
+    EVT_ACMP2               = 417u,
+    EVT_ACMP3               = 418u,
+
+    /* I2C */
+    EVT_I2C1_RXI            = 420u,
+    EVT_I2C1_TXI            = 421u,
+    EVT_I2C1_TEI            = 422u,
+    EVT_I2C1_EE1            = 423u,
+    EVT_I2C2_RXI            = 424u,
+    EVT_I2C2_TXI            = 425u,
+    EVT_I2C2_TEI            = 426u,
+    EVT_I2C2_EE1            = 427u,
+    EVT_I2C3_RXI            = 428u,
+    EVT_I2C3_TXI            = 429u,
+    EVT_I2C3_TEI            = 430u,
+    EVT_I2C3_EE1            = 431u,
+
+    /* PVD */
+    EVT_PVD_PVD1            = 433u,
+    EVT_PVD_PVD2            = 434u,
+
+    /* OTS */
+    EVT_OTS                 = 435u,
+
+    /* WDT */
+    EVT_WDT_REFUDF          = 439u,
+
+    /* ADC */
+    EVT_ADC1_EOCA           = 448u,
+    EVT_ADC1_EOCB           = 449u,
+    EVT_ADC1_CHCMP          = 450u,
+    EVT_ADC1_SEQCMP         = 451u,
+    EVT_ADC2_EOCA           = 452u,
+    EVT_ADC2_EOCB           = 453u,
+    EVT_ADC2_CHCMP          = 454u,
+    EVT_ADC2_SEQCMP         = 455u,
+
+    /* TRNG */
+    EVT_TRNG_END            = 456u,
+
+    /* SDIO */
+    EVT_SDIOC1_DMAR         = 480u,
+    EVT_SDIOC1_DMAW         = 481u,
+    EVT_SDIOC2_DMAR         = 483u,
+    EVT_SDIOC2_DMAW         = 484u,
+    EVT_MAX                 = 511u,
+}en_event_src_t;
 
 
 /** @} */

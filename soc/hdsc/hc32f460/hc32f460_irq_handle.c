@@ -12,6 +12,7 @@
 #include "am_hc32f460_rtc.h"
 #include "am_hc32f460_dma.h"
 #include "am_hc32f460_spi_int.h"
+#include "am_hc32f460_adc.h"
 
 #define AM_HC32F460_INT_EXTI0_MASK    (1 << 0)
 #define AM_HC32F460_INT_EXTI1_MASK    (1 << 1)
@@ -2380,4 +2381,105 @@ void IRQ141_Handler(void *parg)
 #endif
 }
 
+#define __HC32F460_ADC_ICR_EOCBIEN_MASK    (1 << 1)   /**< \brief 序列B转换完成中断使能 */
+#define __HC32F460_ADC_ICR_EOCAIEN_MASK    (1 << 0)   /**< \brief 序列A转换完成中断使能 */
 
+#define __HC32F460_ADC_ISR_EOCBIEN_MASK    (1 << 1)   /**< \brief 序列B转换完成中断标志 */
+#define __HC32F460_ADC_ISR_EOCAIEN_MASK    (1 << 0)   /**< \brief 序列A转换完成中断标志 */
+
+#define __HC32F460_INTC_VSSEL_ADC1_EOCA_MASK   (1 << 0)
+#define __HC32F460_INTC_VSSEL_ADC1_EOCB_MASK   (1 << 1)
+#define __HC32F460_INTC_VSSEL_ADC1_CHCMP_MASK  (1 << 2)
+#define __HC32F460_INTC_VSSEL_ADC1_SEQCMP_MASK (1 << 3)
+#define __HC32F460_INTC_VSSEL_ADC2_EOCA_MASK   (1 << 4)
+#define __HC32F460_INTC_VSSEL_ADC2_EOCB_MASK   (1 << 5)
+#define __HC32F460_INTC_VSSEL_ADC2_CHCMP_MASK  (1 << 6)
+#define __HC32F460_INTC_VSSEL_ADC2_SEQCMP_MASK (1 << 7)
+extern void hc32f460_adc_irq_handle (void *p_arg);
+extern am_hc32f460_adc_dev_t __g_adc1_dev;
+extern am_hc32f460_adc_dev_t __g_adc2_dev;
+
+/**
+ *******************************************************************************
+ ** \brief Int No.142 share IRQ handler
+ **
+ ******************************************************************************/
+void IRQ142_Handler(void)
+{
+    uint32_t u32Tmp1 = 0ul;
+    uint32_t u32Tmp2 = 0ul;
+    uint32_t int_vssel142 = HC32F460_INTC.VSSEL[142 - 128];
+
+    /* ADC unit.1 seq. A */
+    u32Tmp1 = HC32F460_ADC1->ICR;
+    u32Tmp2 = HC32F460_ADC1->ISR;
+
+
+    if (u32Tmp1 & __HC32F460_ADC_ICR_EOCAIEN_MASK)
+    {
+        if ((u32Tmp2 & __HC32F460_ADC_ISR_EOCAIEN_MASK) && (int_vssel142 & __HC32F460_INTC_VSSEL_ADC1_EOCA_MASK))
+        {
+            hc32f460_adc_irq_handle(&__g_adc1_dev);
+        }
+    }
+    /* ADC unit.1 seq. B */
+    if (u32Tmp1 == __HC32F460_ADC_ICR_EOCAIEN_MASK)
+    {
+        if ((u32Tmp2 == __HC32F460_ADC_ISR_EOCAIEN_MASK) && (int_vssel142 & __HC32F460_INTC_VSSEL_ADC1_EOCB_MASK))
+        {
+            hc32f460_adc_irq_handle(&__g_adc1_dev);
+        }
+    }
+//    /* ADC unit.1 seq. A */
+//    u16Tmp = M4_ADC1->AWDSR0;
+//    if (Set == bM4_ADC1_AWDCR_AWDIEN)
+//    {
+//        if (((Set == bM4_ADC1_AWDSR1_AWDF16) || (u16Tmp)) && (int_vssel142 & __HC32F460_INTC_VSSEL_ADC1_CHCMP_MASK))
+//        {
+//            ADC1ChCmp_IrqHandler();
+//        }
+//    }
+//    /* ADC unit.1 seq. cmp */
+//    if (Set == bM4_ADC1_AWDCR_AWDIEN)
+//    {
+//        if (((Set == bM4_ADC1_AWDSR1_AWDF16) || (u16Tmp)) && (int_vssel142 & __HC32F460_INTC_VSSEL_ADC1_SEQCMP_MASK))
+//        {
+//            ADC1SeqCmp_IrqHandler();
+//        }
+//    }
+
+    u32Tmp1 = HC32F460_ADC2->ICR;
+    u32Tmp2 = HC32F460_ADC2->ISR;
+    /* ADC unit.2 seq. A */
+    if (u32Tmp1 & __HC32F460_ADC_ICR_EOCAIEN_MASK)
+    {
+        if ((u32Tmp2 & __HC32F460_ADC_ISR_EOCAIEN_MASK) && (int_vssel142 & __HC32F460_INTC_VSSEL_ADC2_EOCA_MASK))
+        {
+            hc32f460_adc_irq_handle(&__g_adc2_dev);
+        }
+    }
+    /* ADC unit.1 seq. B */
+    if (u32Tmp1 == __HC32F460_ADC_ICR_EOCAIEN_MASK)
+    {
+        if ((u32Tmp2 == __HC32F460_ADC_ISR_EOCAIEN_MASK) && (int_vssel142 & __HC32F460_INTC_VSSEL_ADC2_EOCB_MASK))
+        {
+            hc32f460_adc_irq_handle(&__g_adc2_dev);
+        }
+    }
+//    /* ADC unit.2 seq. A */
+//    if (Set == bM4_ADC2_AWDCR_AWDIEN)
+//    {
+//        if ((M4_ADC2->AWDSR0 & 0x1FFu) && (u32VSSEL142 & BIT_MASK_06))
+//        {
+//            ADC2ChCmp_IrqHandler();
+//        }
+//    }
+//    /* ADC unit.2 seq. cmp */
+//    if (Set == bM4_ADC2_AWDCR_AWDIEN)
+//    {
+//        if ((M4_ADC2->AWDSR0 & 0x1FFu) && (u32VSSEL142 & BIT_MASK_07))
+//        {
+//            ADC2SeqCmp_IrqHandler();
+//        }
+//    }
+}

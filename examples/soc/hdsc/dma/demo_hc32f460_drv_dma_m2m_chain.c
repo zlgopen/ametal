@@ -40,6 +40,7 @@
 #include "hw/amhw_hc32f460_dma.h"
 #include "hc32f460_intctrl.h"
 #include "hc32f460_clk.h"
+#include "hc32f460_inum.h"
 
 static uint8_t g_buf_src1[32];           /**< \brief 源端数据缓冲区1 */
 static uint8_t g_buf_dst1[32];           /**< \brief 目标端数据缓冲区1 */
