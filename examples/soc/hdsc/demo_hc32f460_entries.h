@@ -38,6 +38,160 @@
 extern "C" {
 #endif
 
+/**
+ * \brief ADC INT 例程，通过 HW 层接口实现
+ *
+ * \param[in] p_hw_adc   指向ADC外设寄存器块的指针
+ * \param[in] int_num    中断编号
+ * \param[in] chan       ADC通道号
+ * \param[in] vref_mv    参考电压
+ *
+ * \return 无
+ */
+void demo_hc32f460_hw_adc_int_entry (void    *p_hw_adc,
+                                     int      int_num,
+                                     uint8_t  chan,
+                                     uint32_t vref_mv);
+
+/**
+ * \brief ADC多通道DMA传输例程，通过驱动层接口实现
+ *
+ * \param[in] p_hw_adc   指向 ADC外设寄存器块的指针
+ * \param[in] p_adc_chan ADC通道属性配置
+ * \param[in] p_dma_dev  指向 DMA设备的指针
+ * \param[in] chan_num   ADC通道号
+ * \param[in] vref_mv    参考电压
+ * \param[in] dma_chan   DMA通道号
+ *
+ * \return 无
+ */
+void demo_hc32f460_hw_adc_dma_entry (void                  *p_hw_adc,
+                                     amhw_adc_chmux_t      *p_adc_chan,
+                                     am_hc32f460_dma_dev_t *p_dma_dev,
+                                     int                    chan_num,
+                                     uint32_t               vref_mv,
+                                     int                    dma_chan);
+
+
+/**
+ * \brief ADC 多通道转换 例程，通过 HW 层接口实现
+ *
+ * \param[in] p_hw_adc   指向 ADC外设寄存器块的指针
+ * \param[in] int_num    中断编号
+ * \param[in] vref_mv    参考电压
+ * \param[in] p_adc_chan ADC通道属性配置
+ * \param[in] chan_num   ADC通道号
+ *
+ * \return 无
+ */
+void demo_hc32f460_hw_multichan_adc_entry (void    *p_hw_adc,
+                                           int      int_num,
+                                           uint32_t vref_mv,
+                                           amhw_adc_chmux_t     *p_adc_chan,
+                                           uint8_t  chan_num);
+
+/**
+ * \brief ADC 多通道连续转换 例程，通过 HW 层接口实现
+ *
+ * \param[in] p_hw_adc   指向 ADC外设寄存器块的指针
+ * \param[in] int_num    中断编号
+ * \param[in] vref_mv    参考电压
+ * \param[in] p_adc_chan ADC通道属性配置
+ * \param[in] chan_num   ADC通道号
+ *
+ * \return 无
+ */
+void demo_hc32f460_hw_multichan_seq_adc_entry (void             *p_hw_adc,
+                                               int               int_num,
+                                               uint32_t          vref_mv,
+                                               amhw_adc_chmux_t *p_adc_chan,
+                                               uint8_t           chan_num);
+
+/**
+ * \brief ADC 序列A事件触发 例程，通过 HW 层接口实现
+ *
+ * \param[in] p_hw_adc   指向 ADC外设寄存器块的指针
+ * \param[in] int_num    中断编号
+ * \param[in] chan_num   ADC通道号
+ * \param[in] vref_mv    参考电压
+ *
+ * \return 无
+ */
+void demo_hc32f460_hw_adc_seq_a_event_trigger_entry (void    *p_hw_adc,
+                                                     int      int_num,
+                                                     uint8_t  chan,
+                                                     uint32_t vref_mv);
+
+/**
+ * \brief ADC 序列A、B双序列事件触发 例程，通过 HW 层接口实现
+ *
+ * \param[in] p_hw_adc 指向 ADC外设寄存器块的指针
+ * \param[in] int_num  中断编号
+ * \param[in] chan_a   ADC序列A通道号
+ * \param[in] chan_b   ADC序列B通道号
+ * \param[in] vref_mv  参考电压
+ *
+ * \return 无
+ */
+void demo_hc32f460_hw_adc_seq_a_b_event_trigger_entry (void    *p_hw_adc,
+                                                       int      int_num,
+                                                       uint8_t  chan_a,
+                                                       uint8_t  chan_b,
+                                                       uint32_t vref_mv);
+
+/**
+ * \brief 多ADC 协同工作 例程，通过 HW 层接口实现
+ *
+ * \param[in] p_hw_adc1    指向 ADC1外设寄存器块的指针
+ * \param[in] p_hw_adc2    指向 ADC2外设寄存器块的指针
+ * \param[in] int_num_adc1 ADC1中断编号
+ * \param[in] int_num_adc2 ADC2中断编号
+ * \param[in] chan_adc1    ADC1通道号
+ * \param[in] chan_adc2    ADC2通道号
+ * \param[in] vref_mv      参考电压
+ *
+ * \return 无
+ */
+void demo_hc32f460_hw_adc_sync_entry (void    *p_hw_adc1,
+                                      void    *p_hw_adc2,
+                                      int      int_num_adc1,
+                                      int      int_num_adc2,
+                                      uint8_t  chan_adc1,
+                                      uint8_t  chan_adc2,
+                                      uint32_t vref_mv);
+
+/**
+ * \brief ADC PGA 例程，通过 HW 层接口实现
+ *
+ * \param[in] p_hw_adc  指向 ADC外设寄存器块的指针
+ * \param[in] int_num   ADC中断编号
+ * \param[in] chan      ADC通道号
+ * \param[in] vref_mv   参考电压
+ *
+ * \return 无
+ */
+void demo_hc32f460_hw_adc_pga_entry (void    *p_hw_adc,
+                                     int      int_num,
+                                     uint8_t  chan,
+                                     uint32_t vref_mv);
+
+/**
+ * \brief ADC PGA 例程，通过 HW 层接口实现
+ *
+ * \param[in] p_hw_adc  指向 ADC外设寄存器块的指针
+ * \param[in] int_num   EOC中断编号
+ * \param[in] chan      SEQCMP中断编号
+ * \param[in] chan      ADC通道号
+ * \param[in] vref_mv   参考电压
+ *
+ * \return 无
+ */
+void demo_hc32f460_hw_adc_awd_entry (void    *p_hw_adc,
+                                     int      int_num_eoc,
+                                     int      int_num_seqcmp,
+                                     uint8_t  chan,
+                                     uint32_t vref_mv);
+
 
 /**
  * \brief GPIO 例程，通过 HW 层接口实现

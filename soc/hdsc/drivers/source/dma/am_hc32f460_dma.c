@@ -25,6 +25,7 @@
 #include "am_vdebug.h"
 #include "hc32f460_intctrl.h"
 #include "hc32f460_irq_handle.h"
+#include "hc32f460_inum.h"
 
 /*******************************************************************************
   私有定义
@@ -41,7 +42,29 @@
 #define __DMA_DEVINFO_DECL(p_dma_devinfo, p_dev)  \
         const am_hc32f460_dma_devinfo_t *p_dma_devinfo = p_dev->p_devinfo
 
+#define AMHW_HC32F460_DMA_TRAN_COUNT_MAX   (0xFFFF)  /* 最大传输次数 */
+#define AMHW_HC32F460_DMA_BLK_SIZE_MAX     (1024)    /* 最大数据块大小 */
+#define AMHW_HC32F460_DMA_DRPT_SIZE_MAX    (0x3FF)   /* 目标地址最大重复区域大小 */
+#define AMHW_HC32F460_DMA_SRPT_SIZE_MAX    (0x3FF)   /* 源地址最大重复区域大小 */
+#define AMHW_HC32F460_DMA_SNSCNT_SIZE_MAX  (0xFFF)   /* 源地址跳转的最大数据量 */
+#define AMHW_HC32F460_DMA_SOFFSET_SIZE_MAX (0xFFFFF) /* 源地址跳转的最大地址偏移量 */
+#define AMHW_HC32F460_DMA_DNSCNT_SIZE_MAX  (0xFFF)   /* 目标地址跳转的最大数据量 */
+#define AMHW_HC32F460_DMA_DOFFSET_SIZE_MAX (0xFFFFF) /* 目标地址跳转的最大地址偏移量 */
 
+#define AMHW_HC32F460_DMA_RPT_DRPT_BITS_SHIFT        (16)
+#define AMHW_HC32F460_DMA_DTCTL_CNT_BITS_SHIFT       (16)
+#define AMHW_HC32F460_DMA_SNSEQCTL_SNSCNT_BITS_SHIFT (20)
+#define AMHW_HC32F460_DMA_DNSEQCTL_DNSCNT_BITS_SHIFT (20)
+
+#define AMHW_HC32F460_DMA_RCFGCTL_CNTMD_REG_BIT_SHIFT   (20)
+#define AMHW_HC32F460_DMA_RCFGCTL_DARMD_REG_BIT_SHIFT   (18)
+#define AMHW_HC32F460_DMA_RCFGCTL_SARMD_REG_BIT_SHIFT   (16)
+#define AMHW_HC32F460_DMA_RCFGCTL_RCFGCHS_REG_BIT_SHIFT (8)
+#define AMHW_HC32F460_DMA_RCFGCTL_RCFGLLP_REG_BIT_SHIFT (1)
+#define AMHW_HC32F460_DMA_RCFGCTL_RCFGEN_REG_BIT_SHIFT  (0)
+
+#define AMHW_HC32F460_DMA1_INT_VSSEL_BITS_MASK    (0x10F0F)
+#define AMHW_HC32F460_DMA2_INT_VSSEL_BITS_MASK    (0x2F0F0)
 /*******************************************************************************
   公共函数
 *******************************************************************************/
@@ -110,10 +133,15 @@ int am_hc32f460_dma_xfer_desc_chan_cfg (am_hc32f460_dma_dev_t            *p_dev,
         break;
     }
 
+    amhw_hc32f460_dma_chan_config_set(p_hw_dma,
+                                      chan,
+                                      p_desc->xfercfg);
+
+
     /* 获取指定通道数据块的大小(默认一个块只有1个数据) */
     reg_val = amhw_hc32f460_dma_chan_blksize_get(p_hw_dma, chan);
     if (reg_val == 0) {
-        blk_size = 1024;
+        blk_size = AMHW_HC32F460_DMA_BLK_SIZE_MAX;
     } else {
         blk_size = reg_val;
     }
@@ -137,52 +165,49 @@ int am_hc32f460_dma_xfer_desc_chan_cfg (am_hc32f460_dma_dev_t            *p_dev,
 
     amhw_hc32f460_dma_chan_tran_data_num_set(p_hw_dma,
                                              chan,
-                                             p_desc->nbytes);
-
-    amhw_hc32f460_dma_chan_config_set(p_hw_dma,
-                                      chan,
-                                      p_desc->xfercfg);
+                                             count_trans);
 
     return AM_OK;
 }
 
+
 /* 建立连锁传输描述符 */
 int am_hc32f460_dma_chain_xfer_desc_build (amhw_hc32f460_dma_chain_xfer_desc_t *p_desc,   /* 描述符结构体指针地址 */
-                                           uint32_t                             src_addr,
-                                           uint32_t                             dst_addr,
-                                           uint32_t                             count,
-                                           uint32_t                             blk_size,
-                                           uint32_t                             drpt,
-                                           uint32_t                             srpt,
-                                           uint32_t                             snscnt,
-                                           uint32_t                             soffset,
-                                           uint32_t                             dnscnt,
-                                           uint32_t                             dsoffset,
-                                           uint32_t                             link,
-                                           uint32_t                             ch_ctl)
+                                           uint32_t                             src_addr, /* 源地址  */
+                                           uint32_t                             dst_addr, /* 目的地址  */
+                                           uint32_t                             count,    /* 传输次数  */
+                                           uint32_t                             blk_size, /* 数据块大小  */
+                                           uint32_t                             drpt,     /* 目标地址重复区域大小  */
+                                           uint32_t                             srpt,     /* 源地址重复区域大小  */
+                                           uint32_t                             snscnt,   /* 源地址跳转的数据量  */
+                                           uint32_t                             soffset,  /* 源地址跳转的地址偏移量  */
+                                           uint32_t                             dnscnt,   /* 目标地址跳转的数据量  */
+                                           uint32_t                             dsoffset, /* 目标地址跳转的地址偏移量  */
+                                           uint32_t                             link,     /* 下一次传输的描述符所在地址  */
+                                           uint32_t                             ch_ctl)   /* 通道控制寄存器设置值  */
 {
     if (p_desc == NULL) {
         return AM_ERROR;
     }
 
-    if ((count > 0xFFFF)    ||
-        (blk_size > 0x3FF)  ||
-        (drpt > 0x3FF)      ||
-        (srpt > 0x3FF)      ||
-        (snscnt > 0xFFF)    ||
-        (soffset > 0xFFFFF) ||
-        (dnscnt > 0xFFF)    ||
-        (dsoffset > 0xFFFFF)||
+    if ((count    > AMHW_HC32F460_DMA_TRAN_COUNT_MAX)   ||
+        (blk_size > AMHW_HC32F460_DMA_BLK_SIZE_MAX)     ||
+        (drpt     > AMHW_HC32F460_DMA_DRPT_SIZE_MAX)    ||
+        (srpt     > AMHW_HC32F460_DMA_SRPT_SIZE_MAX)    ||
+        (snscnt   > AMHW_HC32F460_DMA_SNSCNT_SIZE_MAX)  ||
+        (soffset  > AMHW_HC32F460_DMA_SOFFSET_SIZE_MAX) ||
+        (dnscnt   > AMHW_HC32F460_DMA_DNSCNT_SIZE_MAX)  ||
+        (dsoffset > AMHW_HC32F460_DMA_DOFFSET_SIZE_MAX) ||
         ((link & 0x3) != 0)) {
         return -AM_EINVAL;
     }
 
     p_desc->src_addr  = src_addr;
     p_desc->dst_addr  = dst_addr;
-    p_desc->data_ctrl = (count << 16) | blk_size;
-    p_desc->rpt       = (drpt << 16) | srpt;
-    p_desc->snseqctl  = (snscnt << 20) | soffset;
-    p_desc->dnseqctl  = (dnscnt << 20) | dsoffset;
+    p_desc->data_ctrl = (count  << AMHW_HC32F460_DMA_DTCTL_CNT_BITS_SHIFT)       | blk_size;
+    p_desc->rpt       = (drpt   << AMHW_HC32F460_DMA_RPT_DRPT_BITS_SHIFT)        | srpt;
+    p_desc->snseqctl  = (snscnt << AMHW_HC32F460_DMA_SNSEQCTL_SNSCNT_BITS_SHIFT) | soffset;
+    p_desc->dnseqctl  = (dnscnt << AMHW_HC32F460_DMA_DNSEQCTL_DNSCNT_BITS_SHIFT) | dsoffset;
     p_desc->llp       = link;
     p_desc->ch_ctl    = ch_ctl;
 
@@ -190,10 +215,10 @@ int am_hc32f460_dma_chain_xfer_desc_build (amhw_hc32f460_dma_chain_xfer_desc_t *
 }
 
 /* DMA连锁传输配置 */
-void am_hc32f460_dma_chain_xfer_desc_chan_cfg (am_hc32f460_dma_dev_t                  *p_dev,
-                                               amhw_hc32f460_dma_chain_xfer_desc_t    *p_desc,
-                                               amhw_hc32f460_dma_transfer_type_t       type,
-                                               uint8_t                                 chan)
+int am_hc32f460_dma_chain_xfer_desc_chan_cfg (am_hc32f460_dma_dev_t                  *p_dev,
+                                              amhw_hc32f460_dma_chain_xfer_desc_t    *p_desc,
+                                              amhw_hc32f460_dma_transfer_type_t       type,
+                                              uint8_t                                 chan)
 {
     amhw_hc32f460_dma_t *p_hw_dma =
         (amhw_hc32f460_dma_t *) p_dev->p_devinfo->dma_reg_base;
@@ -224,6 +249,8 @@ void am_hc32f460_dma_chain_xfer_desc_chan_cfg (am_hc32f460_dma_dev_t            
     amhw_hc32f460_dma_chan_dnseqctl_set(p_hw_dma, chan, p_desc->dnseqctl);
     amhw_hc32f460_dma_chan_llp_set(p_hw_dma, chan, p_desc->llp);
     amhw_hc32f460_dma_chan_config_set(p_hw_dma, chan, p_desc->ch_ctl);
+
+    return AM_OK;
 }
 
 
@@ -414,7 +441,9 @@ uint16_t am_hc32f460_dma_tran_data_get (am_hc32f460_dma_dev_t *p_dev, int chan)
 /**
  * \brief 设置传输的次数(传输字节数=传输次数 * 块的数据量 * 每个数据的大小)
  */
-void am_hc32f460_dma_tran_data_size (am_hc32f460_dma_dev_t *p_dev, int chan, uint32_t trans_data_byte)
+void am_hc32f460_dma_tran_data_size (am_hc32f460_dma_dev_t *p_dev,
+                                     int                    chan,
+                                     uint32_t               trans_data_byte)
 {
     amhw_hc32f460_dma_t *p_hw_dma =
         (amhw_hc32f460_dma_t *) p_dev->p_devinfo->dma_reg_base;
@@ -427,20 +456,28 @@ void am_hc32f460_dma_tran_data_size (am_hc32f460_dma_dev_t *p_dev, int chan, uin
 /**
  * \brief 设置一个块的数据量
  */
-void am_hc32f460_dma_block_data_size (am_hc32f460_dma_dev_t *p_dev, int chan, uint16_t block_data_num)
+int am_hc32f460_dma_block_data_size (am_hc32f460_dma_dev_t *p_dev,
+                                      int                    chan,
+                                      uint16_t               block_data_num)
 {
     amhw_hc32f460_dma_t *p_hw_dma =
         (amhw_hc32f460_dma_t *) p_dev->p_devinfo->dma_reg_base;
 
-    if (block_data_num == 1024) {
+    if ((block_data_num == 0) || (block_data_num > AMHW_HC32F460_DMA_BLK_SIZE_MAX)) {
+        return -AM_EINVAL;
+    }
+
+    if (block_data_num == AMHW_HC32F460_DMA_BLK_SIZE_MAX) {
         amhw_hc32f460_dma_chan_blksize_set(p_hw_dma,
                                            chan,
                                            0);
-    } else if(block_data_num < 1024){
+    } else {
         amhw_hc32f460_dma_chan_blksize_set(p_hw_dma,
                                            chan,
                                            block_data_num);
     }
+
+    return AM_OK;
 
 }
 
@@ -448,17 +485,19 @@ void am_hc32f460_dma_block_data_size (am_hc32f460_dma_dev_t *p_dev, int chan, ui
  * \brief 设置目标地址重复区域大小
  *        目标设备在每传输size个数据后，目标地址重载为DMA_DARx寄存器的值。
  */
-int am_hc32f460_dma_drpt_size_set (am_hc32f460_dma_dev_t *p_dev, int chan, uint16_t size)
+int am_hc32f460_dma_drpt_size_set (am_hc32f460_dma_dev_t *p_dev,
+                                   int                    chan,
+                                   uint16_t               size)
 {
     amhw_hc32f460_dma_t *p_hw_dma =
         (amhw_hc32f460_dma_t *) p_dev->p_devinfo->dma_reg_base;
 
-    if (size > 0x3FF) {
+    if (size > AMHW_HC32F460_DMA_DRPT_SIZE_MAX) {
         return -AM_EINVAL;
     } else {
-        amhw_hc32f460_dma_chan_drpt_size_set(p_hw_dma,
-                                             chan,
-                                             size);
+        amhw_hc32f460_dma_chan_drpt_set(p_hw_dma,
+                                        chan,
+                                        size);
     }
 
     return AM_OK;
@@ -469,17 +508,19 @@ int am_hc32f460_dma_drpt_size_set (am_hc32f460_dma_dev_t *p_dev, int chan, uint1
  * \brief 设置源地址重复区域大小
  *        源设备在每传输size个数据后，源地址重载为DMA_DARx寄存器的值。
  */
-int am_hc32f460_dma_srpt_size_set (am_hc32f460_dma_dev_t *p_dev, int chan, uint16_t size)
+int am_hc32f460_dma_srpt_size_set (am_hc32f460_dma_dev_t *p_dev,
+                                   int                    chan,
+                                   uint16_t               size)
 {
     amhw_hc32f460_dma_t *p_hw_dma =
         (amhw_hc32f460_dma_t *) p_dev->p_devinfo->dma_reg_base;
 
-    if (size > 0x3FF) {
+    if (size > AMHW_HC32F460_DMA_SRPT_SIZE_MAX) {
         return -AM_EINVAL;
     } else {
-        amhw_hc32f460_dma_chan_srpt_size_set(p_hw_dma,
-                                             chan,
-                                             size);
+        amhw_hc32f460_dma_chan_srpt_set(p_hw_dma,
+                                        chan,
+                                        size);
     }
 
     return AM_OK;
@@ -496,13 +537,13 @@ int am_hc32f460_dma_snseqctl_cfg (am_hc32f460_dma_dev_t *p_dev,
     amhw_hc32f460_dma_t *p_hw_dma =
         (amhw_hc32f460_dma_t *) p_dev->p_devinfo->dma_reg_base;
 
-    if ((snscnt < 0xFFF) && (soffset < 0xFFFFF)) {
+    if ((snscnt < AMHW_HC32F460_DMA_SNSCNT_SIZE_MAX) &&
+        (soffset < AMHW_HC32F460_DMA_SOFFSET_SIZE_MAX)) {
         amhw_hc32f460_dma_chan_snseqctl_set(p_hw_dma, chan, (snscnt << 20) | (soffset));
+        return AM_OK;
     } else {
         return -AM_EINVAL;
     }
-
-    return AM_OK;
 }
 
 /**
@@ -517,13 +558,15 @@ int am_hc32f460_dma_dnseqctl_cfg (am_hc32f460_dma_dev_t *p_dev,
         (amhw_hc32f460_dma_t *) p_dev->p_devinfo->dma_reg_base;
 
     if ((dnscnt < 0xFFF) && (doffset < 0xFFFFF)) {
-        amhw_hc32f460_dma_chan_dnseqctl_set(p_hw_dma, chan, (dnscnt << 20) | (doffset));
+        amhw_hc32f460_dma_chan_dnseqctl_set(p_hw_dma,
+                                            chan,
+                                            (dnscnt << AMHW_HC32F460_DMA_DNSEQCTL_DNSCNT_BITS_SHIFT) | (doffset));
+        return AM_OK;
     } else {
         return -AM_EINVAL;
     }
-
-    return AM_OK;
 }
+
 
 
 /**
@@ -540,12 +583,12 @@ void am_hc32f460_dma_chan_rcfg_set (am_hc32f460_dma_dev_t *p_dev,
     amhw_hc32f460_dma_t *p_hw_dma =
         (amhw_hc32f460_dma_t *) p_dev->p_devinfo->dma_reg_base;
 
-    uint32_t flag = (cntmd << 20) |
-                    (darmd << 18) |
-                    (sarmd << 16) |
-                    (chan  << 8 ) |
-                    (rcfgllp << 1) |
-                    (rcfgen);
+    uint32_t flag = (cntmd   << AMHW_HC32F460_DMA_RCFGCTL_CNTMD_REG_BIT_SHIFT)    |
+                    (darmd   << AMHW_HC32F460_DMA_RCFGCTL_DARMD_REG_BIT_SHIFT)    |
+                    (sarmd   << AMHW_HC32F460_DMA_RCFGCTL_SARMD_REG_BIT_SHIFT)    |
+                    (chan    << AMHW_HC32F460_DMA_RCFGCTL_RCFGCHS_REG_BIT_SHIFT ) |
+                    (rcfgllp << AMHW_HC32F460_DMA_RCFGCTL_RCFGLLP_REG_BIT_SHIFT)  |
+                    (rcfgen  << AMHW_HC32F460_DMA_RCFGCTL_RCFGEN_REG_BIT_SHIFT);
 
     amhw_hc32f460_dma_chan_rcfg_set(p_hw_dma, flag);
 }
@@ -575,9 +618,11 @@ int am_hc32f460_dma_init (am_hc32f460_dma_dev_t           *p_dev,
 
     /* 使能共享中断DMA相关位 */
     if (p_dev->p_devinfo->id == 1) {
-        amhw_hc32f460_intc_int_vssel_bits_set(p_dev->p_devinfo->inum, 0x10F0F);
+        amhw_hc32f460_intc_int_vssel_bits_set(p_dev->p_devinfo->inum,
+                                              AMHW_HC32F460_DMA1_INT_VSSEL_BITS_MASK);
     } else if (p_dev->p_devinfo->id == 2) {
-        amhw_hc32f460_intc_int_vssel_bits_set(p_dev->p_devinfo->inum, 0x2F0F0);
+        amhw_hc32f460_intc_int_vssel_bits_set(p_dev->p_devinfo->inum,
+                                              AMHW_HC32F460_DMA2_INT_VSSEL_BITS_MASK);
     }
 
     am_int_connect(p_devinfo->inum, IRQ129_Handler, (void *)0);
@@ -609,12 +654,14 @@ void am_hc32f460_dma_deinit (am_hc32f460_dma_dev_t *p_dev)
 
     /* 禁能共享中断DMA相关位 */
     if (p_dev->p_devinfo->id == 1) {
-        amhw_hc32f460_intc_int_vssel_bits_clr(p_dev->p_devinfo->inum, 0x10F0F);
+        amhw_hc32f460_intc_int_vssel_bits_clr(p_dev->p_devinfo->inum,
+                                              AMHW_HC32F460_DMA1_INT_VSSEL_BITS_MASK);
     } else if (p_dev->p_devinfo->id == 2) {
-        amhw_hc32f460_intc_int_vssel_bits_clr(p_dev->p_devinfo->inum, 0x2F0F0);
+        amhw_hc32f460_intc_int_vssel_bits_clr(p_dev->p_devinfo->inum,
+                                              AMHW_HC32F460_DMA2_INT_VSSEL_BITS_MASK);
     }
 
-    am_int_disconnect(p_dma_devinfo->inum, dma_int_handler, (void *)0);
+    am_int_disconnect(p_dma_devinfo->inum, IRQ129_Handler, (void *)0);
 
     /* 若该中断号相关的所有中断源的共享中断都被禁能，关闭中断 */
     if (amhw_hc32f460_intc_int_vssel_get(p_dma_devinfo->inum) == 0) {

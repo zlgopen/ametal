@@ -100,6 +100,17 @@ int am_main (void)
 //    demo_hc32f460_core_std_spi_master_int_entry();
 //    demo_hc32f460_core_std_spi_master_poll_entry();
 //    demo_hc32f460_core_std_spi_slaver_dma_entry();
+//    demo_hc32f460_core_hw_adc_int_entry();
+//    demo_hc32f460_core_std_adc_entry();
+//    demo_hc32f460_core_std_multichan_adc_entry();
+//    demo_hc32f460_core_hw_multichan_adc_entry();
+//    demo_hc32f460_core_hw_adc_dma_entry();
+//    demo_hc32f460_core_hw_multichan_seq_adc_entry();
+//    demo_hc32f460_core_hw_adc_seq_a_event_trigger_entry();
+//    demo_hc32f460_core_hw_adc_seq_b_event_trigger_entry();
+//    demo_hc32f460_core_hw_adc_pga_entry();
+//    demo_hc32f460_core_hw_adc_awd_entry();
+//    demo_hc32f460_core_hw_adc_sync_entry();
     while (1) {
 
     }

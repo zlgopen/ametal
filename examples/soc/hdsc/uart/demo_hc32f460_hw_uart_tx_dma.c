@@ -44,6 +44,7 @@
 #include "am_hc32f460_dma.h"
 #include "hw/amhw_hc32f460_uart.h"
 #include "hc32f460_intctrl.h"
+#include "hc32f460_inum.h"
 
 /*******************************************************************************
   ∫Í∂®“Â

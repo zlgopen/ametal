@@ -29,6 +29,7 @@ extern "C" {
 
 #include "am_types.h"
 #include "hw/amhw_hc32f460_dma.h"
+#include "hc32f460_inum.h"
 
 /**
  * \addtogroup am_hc32f460_if_dma
@@ -278,11 +279,12 @@ void am_hc32f460_dma_tran_data_size (am_hc32f460_dma_dev_t *p_dev, int chan, uin
  * \param[in] chan            DMA 通道号，值为 DMA_CHAN_* (#DMA_CHAN_1) 或 (#DMA_CHAN_2)
  * \param[in] block_data_num  块大小数量
  *
- * \retval  无
+ * \retval  AM_OK     : 设置成功
+ *          -AM_EINVAL: 参数错误
  *
  * \note 在设置传输的字节数之前必须停止通道传输
  */
-void am_hc32f460_dma_block_data_size (am_hc32f460_dma_dev_t *p_dev, int chan, uint16_t block_data_num);
+int am_hc32f460_dma_block_data_size (am_hc32f460_dma_dev_t *p_dev, int chan, uint16_t block_data_num);
 
 /* 设定通道重置请求的触发源（请查看hc32f460_dma_chan.h宏定义）*/
 void am_hc32f460_dma_chan_rcfg_src_set (en_event_src_t src);

@@ -39,6 +39,7 @@ extern "C" {
 #include "am_vdebug.h"
 #include "hc32f460_dma_chan.h"
 #include "hc32f460_regbase.h"
+#include "hc32f460_inum.h"
 /**
  * \addtogroup amhw_hc32f460_if_dma
  * \copydoc amhw_hc32f460_dma.h
