@@ -81,6 +81,7 @@ void (* const gVectors[])(void) =
     am_exc_eint_handler,  /* IRQ007_Handler */
     am_exc_eint_handler,  /* IRQ008_Handler */
     am_exc_eint_handler,  /* IRQ009_Handler */
+    am_exc_eint_handler,  /* IRQ010_Handler */
     am_exc_eint_handler,  /* IRQ011_Handler */
     am_exc_eint_handler,  /* IRQ012_Handler */
     am_exc_eint_handler,  /* IRQ013_Handler */

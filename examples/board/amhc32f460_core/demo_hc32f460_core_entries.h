@@ -730,4 +730,7 @@ void demo_hc32f460_core_hw_i2c_slave_poll_entry (void);
 void demo_hc32f460_core_std_rtc_entry (void);
 void demo_hc32f460_core_std_can_entry (void);
 
-
+/**
+ * \brief SD卡多块读写例程，通过标准层接口实现
+ */
+void demo_hc32f460_core_std_sdcard_entry (void);

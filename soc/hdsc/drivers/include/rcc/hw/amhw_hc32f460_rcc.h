@@ -217,6 +217,22 @@ typedef struct amhw_hc32f460_clk_pll_cfg{
     uint32_t         pllmDiv;       ///< Division factor of VCO in, ensure between 1M~12M.
 }amhw_hc32f460_clk_pll_cfg_t;
 
+
+/**
+ * \brief USBCK时钟源
+ */
+typedef enum {
+    AMHW_HC32F460_CLK_USBCKS_SYSCLK_DIV_2 = 2,   /**< \brief 系统时钟2分频 */
+    AMHW_HC32F460_CLK_USBCKS_SYSCLK_DIV_3 = 3,   /**< \brief 系统时钟3分频 */
+    AMHW_HC32F460_CLK_USBCKS_SYSCLK_DIV_4 = 4,   /**< \brief 系统时钟4分频 */
+    AMHW_HC32F460_CLK_USBCKS_MPLL_P       = 8,   /**< \brief MPLL/P */
+    AMHW_HC32F460_CLK_USBCKS_MPLL_Q       = 9,   /**< \brief MPLL/Q */
+    AMHW_HC32F460_CLK_USBCKS_MPLL_R       = 10,  /**< \brief MPLL/R */
+    AMHW_HC32F460_CLK_USBCKS_UPLL_P       = 11,  /**< \brief UPLL/P */
+    AMHW_HC32F460_CLK_USBCKS_UPLL_Q       = 12,  /**< \brief UPLL/Q */
+    AMHW_HC32F460_CLK_USBCKS_UPLL_R       = 13,  /**< \brief UPLL/R */
+}amhw_hc32f460_clk_usbcks_t;
+
 /**
  * \brief 外设枚举
  */
@@ -468,8 +484,8 @@ void amhw_hc32f460_clk_mpll_cfg(amhw_hc32f460_clk_pll_cfg_t mpll_cfg)
 
     HC32F460_SYSCREG->CMU_PLLCFGR &= (1 << 7);
 
-    HC32F460_SYSCREG->CMU_PLLCFGR |= (mpll_cfg.pllmDiv - 1)         |
-                                     ((mpll_cfg.plln - 1)    << 8)  |
+    HC32F460_SYSCREG->CMU_PLLCFGR |= (mpll_cfg.pllmDiv  - 1)        |
+                                     ((mpll_cfg.plln    - 1) << 8)  |
                                      ((mpll_cfg.PllrDiv - 1) << 20) |
                                      ((mpll_cfg.PllqDiv - 1) << 24) |
                                      ((mpll_cfg.PllqDiv - 1) << 28);
@@ -477,7 +493,7 @@ void amhw_hc32f460_clk_mpll_cfg(amhw_hc32f460_clk_pll_cfg_t mpll_cfg)
     amhw_hc32f460_clk_fprcb0_reg_write_disable();
 }
 
-/* MPLL时钟使能 */
+/* UPLL时钟使能 */
 am_static_inline
 void amhw_hc32f460_clk_upll_enable(void)
 {
@@ -486,7 +502,7 @@ void amhw_hc32f460_clk_upll_enable(void)
     amhw_hc32f460_clk_fprcb0_reg_write_disable();
 }
 
-/* MPLL时钟设置 */
+/* UPLL时钟设置 */
 am_static_inline
 void amhw_hc32f460_clk_upll_cfg(amhw_hc32f460_clk_pll_cfg_t upll_cfg)
 {
@@ -494,11 +510,11 @@ void amhw_hc32f460_clk_upll_cfg(amhw_hc32f460_clk_pll_cfg_t upll_cfg)
 
     HC32F460_SYSCREG->CMU_UPLLCFGR &= (1 << 7);
 
-    HC32F460_SYSCREG->CMU_UPLLCFGR |= (upll_cfg.pllmDiv)       |
-                                      (upll_cfg.plln << 8)     |
-                                      (upll_cfg.PllrDiv << 20) |
-                                      (upll_cfg.PllqDiv << 24) |
-                                      (upll_cfg.PllqDiv << 28);
+    HC32F460_SYSCREG->CMU_UPLLCFGR |= (upll_cfg.pllmDiv  - 1)        |
+                                      ((upll_cfg.plln    - 1) << 8)  |
+                                      ((upll_cfg.PllrDiv - 1) << 20) |
+                                      ((upll_cfg.PllqDiv - 1) << 24) |
+                                      ((upll_cfg.PllqDiv - 1) << 28);
 
     amhw_hc32f460_clk_fprcb0_reg_write_disable();
 }
@@ -597,6 +613,13 @@ uint8_t amhw_hc32f460_clk_cmu_scfgr_div_get(am_clk_id_t clk_id)
     }
 
     return clk_div;
+}
+
+/* usb时钟源设置 */
+am_static_inline
+void amhw_hc32f460_clk_cmu_usbcks_set(amhw_hc32f460_clk_usbcks_t clk_src)
+{
+    HC32F460_SYSCREG->CMU_UFSCKCFGR = (clk_src << 4);
 }
 
 /* usb时钟源获取 */

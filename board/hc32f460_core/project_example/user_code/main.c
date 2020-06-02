@@ -41,7 +41,7 @@ int am_main (void)
 {
     AM_DBG_INFO("Start up successful!\r\n");
     /* demoÀý³ÌÈë¿Ú */
-    demo_hc32f460_core_std_led_entry();
+//    demo_hc32f460_core_std_led_entry();
 //    demo_hc32f460_core_std_gpio_entry();
 //    demo_hc32f460_core_std_gpio_trigger_entry();
 //    demo_hc32f460_core_hw_gpio_entry();
@@ -111,6 +111,7 @@ int am_main (void)
 //    demo_hc32f460_core_hw_adc_pga_entry();
 //    demo_hc32f460_core_hw_adc_awd_entry();
 //    demo_hc32f460_core_hw_adc_sync_entry();
+//    demo_hc32f460_core_std_sdcard_entry();
     while (1) {
 
     }

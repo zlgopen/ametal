@@ -223,6 +223,9 @@ int am_hc32f460_clk_init (am_hc32f460_clk_dev_t           *p_dev,
     /* 设置系统时钟源 */
     amhw_hc32f460_clk_set_sysclk_src(p_devinfo->sysclk_src);
 
+    /* 设置USBCK时钟源 */
+    amhw_hc32f460_clk_cmu_usbcks_set(p_devinfo->usbck_src);
+
     __gp_clk_dev->sys_type = p_devinfo->sysclk_src;
     __gp_clk_dev->hclk = p_dev->sys_clk / p_devinfo->hclk_div;
     __gp_clk_dev->pclk0 = p_dev->sys_clk / p_devinfo->pclk0_div;

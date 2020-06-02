@@ -13,6 +13,7 @@
 #include "am_hc32f460_dma.h"
 #include "am_hc32f460_spi_int.h"
 #include "am_hc32f460_adc.h"
+#include "am_hc32f460_sdioc.h"
 
 #define AM_HC32F460_INT_EXTI0_MASK    (1 << 0)
 #define AM_HC32F460_INT_EXTI1_MASK    (1 << 1)
@@ -2480,6 +2481,74 @@ void IRQ142_Handler(void)
 //        if ((M4_ADC2->AWDSR0 & 0x1FFu) && (u32VSSEL142 & BIT_MASK_07))
 //        {
 //            ADC2SeqCmp_IrqHandler();
+//        }
+//    }
+}
+
+#define __HC32F460_SDIOC_NORINT_MASK         (0x1F7)
+#define __HC32F460_SDIOC_ERRINT_MASK         (0x17F)
+extern void hc32f460_sdioc_irq_handle (void *p_arg);
+extern am_hc32f460_sdioc_dev_t __g_sdioc1_dev;
+extern am_hc32f460_sdioc_dev_t __g_sdioc2_dev;
+/**
+ *******************************************************************************
+ ** \brief Int No.143 share IRQ handler
+ **
+ ******************************************************************************/
+void IRQ143_Handler(void)
+{
+    uint16_t NORINTST = 0u;
+    uint16_t NORINTSGEN = 0u;
+    uint16_t ERRINTST = 0u;
+    uint16_t ERRINTSGEN = 0u;
+
+    uint32_t int_vssel143 = HC32F460_INTC.VSSEL[143 - 128];
+
+    /* SDIO Ch.1 */
+    if (int_vssel143 & AMHW_HC32F460_SDIOC1_INT_VSSEL_BITS_MASK)
+    {
+        NORINTST = HC32F460_SDIOC1->NORINTST;
+        NORINTSGEN = HC32F460_SDIOC1->NORINTSGEN;
+        ERRINTST = HC32F460_SDIOC1->ERRINTST;
+        ERRINTSGEN = HC32F460_SDIOC1->ERRINTSGEN;
+
+        if ((NORINTST & NORINTSGEN & __HC32F460_SDIOC_NORINT_MASK) || (ERRINTST & ERRINTSGEN & __HC32F460_SDIOC_ERRINT_MASK))
+        {
+            hc32f460_sdioc_irq_handle(&__g_sdioc1_dev);
+        }
+    }
+
+    /* SDIO Ch.2 */
+    if (int_vssel143 == AMHW_HC32F460_SDIOC2_INT_VSSEL_BITS_MASK)
+    {
+        NORINTST = HC32F460_SDIOC2->NORINTST;
+        NORINTSGEN = HC32F460_SDIOC2->NORINTSGEN;
+        ERRINTST = HC32F460_SDIOC2->ERRINTST;
+        ERRINTSGEN = HC32F460_SDIOC2->ERRINTSGEN;
+
+        if ((NORINTST & NORINTSGEN & __HC32F460_SDIOC_NORINT_MASK) || (ERRINTST & ERRINTSGEN & __HC32F460_SDIOC_ERRINT_MASK))
+        {
+        	hc32f460_sdioc_irq_handle(&__g_sdioc2_dev);
+        }
+    }
+
+    /* CAN */
+//    if (Set == bM4_INTC_VSSEL143_VSEL6)
+//    {
+//        RTIF = M4_CAN->RTIF;
+//        RTIE = M4_CAN->RTIE;
+//        ERRINT = M4_CAN->ERRINT;
+//        TTCFG = M4_CAN->TTCFG;
+//        if ( (TTCFG & BIT_MASK_05)                                  ||         \
+//             (RTIF & BIT_MASK_00)                                   ||         \
+//             (RTIF & RTIE & 0xFEu)                                  ||         \
+//             ((ERRINT & BIT_MASK_00) && (ERRINT & BIT_MASK_01))     ||         \
+//             ((ERRINT & BIT_MASK_02) && (ERRINT & BIT_MASK_03))     ||         \
+//             ((ERRINT & BIT_MASK_04) && (ERRINT & BIT_MASK_05))     ||         \
+//             ((TTCFG & BIT_MASK_03) && (TTCFG & BIT_MASK_04))       ||         \
+//             ((TTCFG & BIT_MASK_06) && (TTCFG & BIT_MASK_07)))
+//        {
+//            Can_IrqHandler();
 //        }
 //    }
 }
