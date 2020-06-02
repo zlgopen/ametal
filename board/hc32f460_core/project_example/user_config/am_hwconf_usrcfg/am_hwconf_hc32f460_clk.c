@@ -122,6 +122,20 @@ static const am_hc32f460_clk_devinfo_t __g_clk_devinfo =
      */
 	AMHW_HC32F460_SYSCLK_MPLL,
 
+    /** \brief
+     *    USBCK时钟源选择
+     *    -# AMHW_HC32F460_CLK_USBCKS_SYSCLK_DIV_2 : 系统时钟2分频
+     *    -# AMHW_HC32F460_CLK_USBCKS_SYSCLK_DIV_3 : 系统时钟3分频
+     *    -# AMHW_HC32F460_CLK_USBCKS_SYSCLK_DIV_4 : 系统时钟4分频
+     *    -# AMHW_HC32F460_CLK_USBCKS_MPLL_P ： MPLL/P
+     *    -# AMHW_HC32F460_CLK_USBCKS_MPLL_Q ： MPLL/Q
+     *    -# AMHW_HC32F460_CLK_USBCKS_MPLL_R : MPLL/R
+     *    -# AMHW_HC32F460_CLK_USBCKS_UPLL_P : UPLL/P
+     *    -# AMHW_HC32F460_CLK_USBCKS_UPLL_Q : UPLL/Q
+     *    -# AMHW_HC32F460_CLK_USBCKS_UPLL_R ：  UPLL/R
+     */
+    AMHW_HC32F460_CLK_USBCKS_UPLL_P,
+
 
     /*
      * HCLK = SYSCLK / HCLK_DIV，最高168MHz

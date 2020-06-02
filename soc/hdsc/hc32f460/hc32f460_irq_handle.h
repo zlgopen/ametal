@@ -9,6 +9,7 @@ void IRQ138_Handler(void *parg);
 void IRQ139_Handler(void *parg);
 void IRQ141_Handler(void *parg);
 void IRQ142_Handler(void *parg);
+void IRQ143_Handler(void *parg);
 
 typedef struct
 {

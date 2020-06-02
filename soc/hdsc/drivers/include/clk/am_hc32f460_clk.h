@@ -102,6 +102,20 @@ typedef struct am_hc32f460_clk_devinfo {
      */
     amhw_hc32f460_sys_clk_src sysclk_src;
 
+    /** \brief
+     *    USBCK时钟源选择
+     *    -# AMHW_HC32F460_CLK_USBCKS_SYSCLK_DIV_2 : 系统时钟2分频
+     *    -# AMHW_HC32F460_CLK_USBCKS_SYSCLK_DIV_3 : 系统时钟3分频
+     *    -# AMHW_HC32F460_CLK_USBCKS_SYSCLK_DIV_4 : 系统时钟4分频
+     *    -# AMHW_HC32F460_CLK_USBCKS_MPLL_P ： MPLL/P
+     *    -# AMHW_HC32F460_CLK_USBCKS_MPLL_Q ： MPLL/Q
+     *    -# AMHW_HC32F460_CLK_USBCKS_MPLL_R : MPLL/R
+     *    -# AMHW_HC32F460_CLK_USBCKS_UPLL_P : UPLL/P
+     *    -# AMHW_HC32F460_CLK_USBCKS_UPLL_Q : UPLL/Q
+     *    -# AMHW_HC32F460_CLK_USBCKS_UPLL_R ：  UPLL/R
+     */
+    amhw_hc32f460_clk_usbcks_t usbck_src;
+
     uint8_t hclk_div;
 
     uint8_t exclk_div;
