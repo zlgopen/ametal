@@ -619,7 +619,9 @@ uint8_t amhw_hc32f460_clk_cmu_scfgr_div_get(am_clk_id_t clk_id)
 am_static_inline
 void amhw_hc32f460_clk_cmu_usbcks_set(amhw_hc32f460_clk_usbcks_t clk_src)
 {
+    amhw_hc32f460_clk_fprcb0_reg_write_enable();
     HC32F460_SYSCREG->CMU_UFSCKCFGR = (clk_src << 4);
+    amhw_hc32f460_clk_fprcb0_reg_write_disable();
 }
 
 /* usb时钟源获取 */

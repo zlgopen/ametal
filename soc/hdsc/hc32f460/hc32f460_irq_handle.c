@@ -14,6 +14,8 @@
 #include "am_hc32f460_spi_int.h"
 #include "am_hc32f460_adc.h"
 #include "am_hc32f460_sdioc.h"
+#include "am_hc32f460_wdt.h"
+#include "am_hc32f460_swdt.h"
 
 #define AM_HC32F460_INT_EXTI0_MASK    (1 << 0)
 #define AM_HC32F460_INT_EXTI1_MASK    (1 << 1)
@@ -232,7 +234,7 @@ void IRQ129_Handler(void)
         {
             if (((1ul << 0) & HC32F460_DMA1->INTSTAT1_f.TC) && (VSSEL129 & AM_HC32F460_INT_VSSEL_DMA1_TC0_MASK))
             {
-            	dma_int_handler(&__g_dma1_dev);
+                dma_int_handler(&__g_dma1_dev);
             }
         }
         /* DMA1 ch.0 Block Tx completed */
@@ -240,7 +242,7 @@ void IRQ129_Handler(void)
         {
             if (((1ul << 0) & HC32F460_DMA1->INTSTAT1_f.BTC) && (VSSEL129 & AM_HC32F460_INT_VSSEL_DMA1_BTC0_MASK))
             {
-            	dma_int_handler(&__g_dma1_dev);
+                dma_int_handler(&__g_dma1_dev);
             }
         }
         /* DMA1 ch.0 Transfer/Request Error */
@@ -248,17 +250,17 @@ void IRQ129_Handler(void)
         u32Tmp2 = (uint32_t)(~(HC32F460_DMA1->INTMASK0) & 0x00010001ul);
         if ((u32Tmp1 & u32Tmp2) && (VSSEL129 & AM_HC32F460_INT_VSSEL_DMA1_ERR_MASK))
         {
-        	dma_int_handler(&__g_dma1_dev);
+            dma_int_handler(&__g_dma1_dev);
         }
     }
     if (1ul == HC32F460_DMA1->CH1CTL_f.IE)
     {
         /* DMA1 ch.1 Tx completed */
-    	if (0ul == (HC32F460_DMA1->INTMASK1_f.MSKTC & (1 << 1)))
+        if (0ul == (HC32F460_DMA1->INTMASK1_f.MSKTC & (1 << 1)))
         {
             if (((1ul << 1) & HC32F460_DMA1->INTSTAT1_f.TC) && (VSSEL129 & AM_HC32F460_INT_VSSEL_DMA1_TC1_MASK))
             {
-            	dma_int_handler(&__g_dma1_dev);
+                dma_int_handler(&__g_dma1_dev);
             }
         }
         /* DMA1 ch.0 Block Tx completed */
@@ -266,7 +268,7 @@ void IRQ129_Handler(void)
         {
             if (((1ul << 1) & HC32F460_DMA1->INTSTAT1_f.BTC) && (VSSEL129 & AM_HC32F460_INT_VSSEL_DMA1_BTC1_MASK))
             {
-            	dma_int_handler(&__g_dma1_dev);
+                dma_int_handler(&__g_dma1_dev);
             }
         }
         /* DMA1 ch.1 Transfer/Request Error */
@@ -274,17 +276,17 @@ void IRQ129_Handler(void)
         u32Tmp2 = (uint32_t)(~(HC32F460_DMA1->INTMASK0) & 0x00020002ul);
         if ((u32Tmp1 & u32Tmp2) && (VSSEL129 & AM_HC32F460_INT_VSSEL_DMA1_ERR_MASK))
         {
-        	dma_int_handler(&__g_dma1_dev);
+            dma_int_handler(&__g_dma1_dev);
         }
     }
     if (1ul == HC32F460_DMA1->CH2CTL_f.IE)
     {
         /* DMA1 ch.1 Tx completed */
-    	if (0ul == (HC32F460_DMA1->INTMASK1_f.MSKTC & (1 << 2)))
+        if (0ul == (HC32F460_DMA1->INTMASK1_f.MSKTC & (1 << 2)))
         {
             if (((1ul << 2) & HC32F460_DMA1->INTSTAT1_f.TC) && (VSSEL129 & AM_HC32F460_INT_VSSEL_DMA1_TC2_MASK))
             {
-            	dma_int_handler(&__g_dma1_dev);
+                dma_int_handler(&__g_dma1_dev);
             }
         }
         /* DMA1 ch.0 Block Tx completed */
@@ -292,7 +294,7 @@ void IRQ129_Handler(void)
         {
             if (((1ul << 2) & HC32F460_DMA1->INTSTAT1_f.BTC) && (VSSEL129 & AM_HC32F460_INT_VSSEL_DMA1_BTC2_MASK))
             {
-            	dma_int_handler(&__g_dma1_dev);
+                dma_int_handler(&__g_dma1_dev);
             }
         }
         /* DMA1 ch.1 Transfer/Request Error */
@@ -300,17 +302,17 @@ void IRQ129_Handler(void)
         u32Tmp2 = (uint32_t)(~(HC32F460_DMA1->INTMASK0) & 0x00040004ul);
         if ((u32Tmp1 & u32Tmp2) && (VSSEL129 & AM_HC32F460_INT_VSSEL_DMA1_ERR_MASK))
         {
-        	dma_int_handler(&__g_dma1_dev);
+            dma_int_handler(&__g_dma1_dev);
         }
     }
     if (1ul == HC32F460_DMA1->CH3CTL_f.IE)
     {
         /* DMA1 ch.3 Tx completed */
-    	if (0ul == (HC32F460_DMA1->INTMASK1_f.MSKTC & (1 << 3)))
+        if (0ul == (HC32F460_DMA1->INTMASK1_f.MSKTC & (1 << 3)))
         {
             if (((1ul << 3) & HC32F460_DMA1->INTSTAT1_f.TC) && (VSSEL129 & AM_HC32F460_INT_VSSEL_DMA1_TC3_MASK))
             {
-            	dma_int_handler(&__g_dma1_dev);
+                dma_int_handler(&__g_dma1_dev);
             }
         }
         /* DMA1 ch.3 Block Tx completed */
@@ -318,7 +320,7 @@ void IRQ129_Handler(void)
         {
             if (((1ul << 3) & HC32F460_DMA1->INTSTAT1_f.BTC) && (VSSEL129 & AM_HC32F460_INT_VSSEL_DMA1_BTC3_MASK))
             {
-            	dma_int_handler(&__g_dma1_dev);
+                dma_int_handler(&__g_dma1_dev);
             }
         }
         /* DMA1 ch.1 Transfer/Request Error */
@@ -326,7 +328,7 @@ void IRQ129_Handler(void)
         u32Tmp2 = (uint32_t)(~(HC32F460_DMA1->INTMASK0) & 0x00080008ul);
         if ((u32Tmp1 & u32Tmp2) && (VSSEL129 & AM_HC32F460_INT_VSSEL_DMA1_ERR_MASK))
         {
-        	dma_int_handler(&__g_dma1_dev);
+            dma_int_handler(&__g_dma1_dev);
         }
     }
     /****************** DMA2 中断处理  *******************/
@@ -337,7 +339,7 @@ void IRQ129_Handler(void)
         {
             if (((1ul << 0) & HC32F460_DMA2->INTSTAT1_f.TC) && (VSSEL129 & AM_HC32F460_INT_VSSEL_DMA2_TC0_MASK))
             {
-            	dma_int_handler(&__g_dma2_dev);
+                dma_int_handler(&__g_dma2_dev);
             }
         }
         /* DMA2 ch.0 Block Tx completed */
@@ -345,7 +347,7 @@ void IRQ129_Handler(void)
         {
             if (((1ul << 0) & HC32F460_DMA2->INTSTAT1_f.BTC) && (VSSEL129 & AM_HC32F460_INT_VSSEL_DMA2_BTC0_MASK))
             {
-            	dma_int_handler(&__g_dma2_dev);
+                dma_int_handler(&__g_dma2_dev);
             }
         }
         /* DMA2 ch.0 Transfer/Request Error */
@@ -359,11 +361,11 @@ void IRQ129_Handler(void)
     if (1ul == HC32F460_DMA2->CH1CTL_f.IE)
     {
         /* DMA2 ch.1 Tx completed */
-    	if (0ul == (HC32F460_DMA2->INTMASK1_f.MSKTC & (1 << 1)))
+        if (0ul == (HC32F460_DMA2->INTMASK1_f.MSKTC & (1 << 1)))
         {
             if (((1ul << 1) & HC32F460_DMA2->INTSTAT1_f.TC) && (VSSEL129 & AM_HC32F460_INT_VSSEL_DMA2_TC1_MASK))
             {
-            	dma_int_handler(&__g_dma2_dev);
+                dma_int_handler(&__g_dma2_dev);
             }
         }
         /* DMA2 ch.0 Block Tx completed */
@@ -371,7 +373,7 @@ void IRQ129_Handler(void)
         {
             if (((1ul << 1) & HC32F460_DMA2->INTSTAT1_f.BTC) && (VSSEL129 & AM_HC32F460_INT_VSSEL_DMA2_BTC1_MASK))
             {
-            	dma_int_handler(&__g_dma2_dev);
+                dma_int_handler(&__g_dma2_dev);
             }
         }
         /* DMA2 ch.1 Transfer/Request Error */
@@ -379,7 +381,7 @@ void IRQ129_Handler(void)
         u32Tmp2 = (uint32_t)(~(HC32F460_DMA2->INTMASK0) & 0x00020002ul);
         if ((u32Tmp1 & u32Tmp2) && (VSSEL129 & AM_HC32F460_INT_VSSEL_DMA2_ERR_MASK))
         {
-        	dma_int_handler(&__g_dma2_dev);
+            dma_int_handler(&__g_dma2_dev);
         }
     }
     if (1ul == HC32F460_DMA2->CH2CTL_f.IE)
@@ -397,7 +399,7 @@ void IRQ129_Handler(void)
         {
             if (((1ul << 2) & HC32F460_DMA2->INTSTAT1_f.BTC) && (VSSEL129 & AM_HC32F460_INT_VSSEL_DMA2_BTC2_MASK))
             {
-            	dma_int_handler(&__g_dma2_dev);
+                dma_int_handler(&__g_dma2_dev);
             }
         }
         /* DMA2 ch.1 Transfer/Request Error */
@@ -405,7 +407,7 @@ void IRQ129_Handler(void)
         u32Tmp2 = (uint32_t)(~(HC32F460_DMA2->INTMASK0) & 0x00040004ul);
         if ((u32Tmp1 & u32Tmp2) && (VSSEL129 & AM_HC32F460_INT_VSSEL_DMA2_ERR_MASK))
         {
-        	dma_int_handler(&__g_dma2_dev);
+            dma_int_handler(&__g_dma2_dev);
         }
     }
     if (1ul == HC32F460_DMA2->CH3CTL_f.IE)
@@ -766,6 +768,13 @@ extern am_hc32f460_rtc_dev_t __g_rtc_dev;
 #define bM4_TMR02_BCONR_INTENB                    (*((volatile unsigned int*)(0x42488248UL)))
 #define bM4_TMR02_STFLR_CMBF                      (*((volatile unsigned int*)(0x424882C0UL)))
 
+extern void hc32f460_swdt_irq_handler (void *p_arg);
+extern am_hc32f460_swdt_dev_t __g_swdt_dev;
+#define __HC32F460_SWDT_STATUS_UNDERFLOW_MASK    (1 << 16)    /**< \brief 计数溢出标志 */
+#define __HC32F460_SWDT_STATUS_REFRESH_MASK      (1 << 17)    /**< \brief 刷新错误标志 */
+
+#define __HC32F460_INTC_VSSEL_SWDT_INT_MASK  (1 << 23)
+
 /**
  *******************************************************************************
  ** \brief Int No.130 share IRQ handler
@@ -831,11 +840,12 @@ void IRQ130_Handler(void)
 //    {
 //        WakeupTimer_IrqHandler();
 //    }
-//    /* SWDT */
-//    if ((M4_SWDT->SR & (BIT_MASK_16 | BIT_MASK_17)) && (VSSEL130 & BIT_MASK_23))
-//    {
-//        Swdt_IrqHandler();
-//    }
+    /* SWDT */
+    if ((HC32F460_SWDT->SR & (__HC32F460_SWDT_STATUS_UNDERFLOW_MASK | __HC32F460_SWDT_STATUS_REFRESH_MASK)) &&
+        (VSSEL130 & __HC32F460_INTC_VSSEL_SWDT_INT_MASK))
+    {
+        hc32f460_swdt_irq_handler(&__g_swdt_dev);
+    }
 }
 #define bM4_TMR61_ICONR_INTENA                    (*((volatile unsigned int*)(0x42300A80UL)))
 #define bM4_TMR61_ICONR_INTENB                    (*((volatile unsigned int*)(0x42300A84UL)))
@@ -2228,6 +2238,13 @@ void IRQ139_Handler(void)
 #define bM4_I2C3_FLTR_DNFEN                       (*((volatile unsigned int*)(0x429D0610UL)))
 #define bM4_I2C3_FLTR_ANFEN                       (*((volatile unsigned int*)(0x429D0614UL)))
 
+extern void hc32f460_wdt_irq_handler (void *p_arg);
+extern am_hc32f460_wdt_dev_t __g_wdt_dev;
+#define __HC32F460_WDT_STATUS_UNDERFLOW_MASK    (1 << 16)    /**< \brief 计数溢出标志 */
+#define __HC32F460_WDT_STATUS_REFRESH_MASK      (1 << 17)    /**< \brief 刷新错误标志 */
+
+#define __HC32F460_INTC_VSSEL_WDT_INT_MASK  (1 << 23)
+
 /**
  *******************************************************************************
  ** \brief Int No.137 share IRQ handler
@@ -2236,40 +2253,39 @@ void IRQ139_Handler(void)
 void IRQ141_Handler(void *parg)
 {
     uint32_t VSSEL141 = HC32F460_INTC.VSSEL[141 - 128];
-//    uint32_t  VSSEL141 = M4_INTC->VSSEL141;
     uint32_t u32Tmp1 = 0ul;
     uint32_t u32Tmp2 = 0ul;
-    /* I2C Ch.1 Receive completed */
-    if(Set == bM4_I2C1_CR2_RFULLIE)
-    {
-        if ((Set == bM4_I2C1_SR_RFULLF) && (VSSEL141 & BIT_MASK_04))
-        {
-            I2c1RxEnd_IrqHandler(&__g_i2c1_dev);
-        }
-    }
-    /* I2C Ch.1 Transmit completed */
-    if(Set == bM4_I2C1_CR2_TENDIE)
-    {
-        if ((Set == bM4_I2C1_SR_TENDF) && (VSSEL141 & BIT_MASK_05))
-        {
-            I2c1TxEnd_IrqHandler(&__g_i2c1_dev);
-        }
-    }
-    /* I2C Ch.1 Transmit data empty */
-    if(Set == bM4_I2C1_CR2_TEMPTYIE)
-    {
-        if ((Set == bM4_I2C1_SR_TEMPTYF) && (VSSEL141 & BIT_MASK_06))
-        {
-            I2c1TxEmpty_IrqHandler(&__g_i2c1_dev);
-        }
-    }
-    /* I2C Ch.1 Error */
-    u32Tmp1 = HC32F460_I2C1->CR2 & 0x00F05217ul;
-    u32Tmp2 = HC32F460_I2C1->SR & 0x00F05217ul;
-    if ((u32Tmp1 & u32Tmp2) && (VSSEL141 & BIT_MASK_07))
-    {
-        I2c1Err_IrqHandler(&__g_i2c1_dev);
-    }
+//    /* I2C Ch.1 Receive completed */
+//    if(Set == bM4_I2C1_CR2_RFULLIE)
+//    {
+//        if ((Set == bM4_I2C1_SR_RFULLF) && (VSSEL141 & BIT_MASK_04))
+//        {
+//            I2c1RxEnd_IrqHandler(&__g_hc32f460_i2c1_dev);
+//        }
+//    }
+//    /* I2C Ch.1 Transmit completed */
+//    if(Set == bM4_I2C1_CR2_TENDIE)
+//    {
+//        if ((Set == bM4_I2C1_SR_TENDF) && (VSSEL141 & BIT_MASK_05))
+//        {
+//            I2c1TxEnd_IrqHandler(&__g_hc32f460_i2c1_dev);
+//        }
+//    }
+//    /* I2C Ch.1 Transmit data empty */
+//    if(Set == bM4_I2C1_CR2_TEMPTYIE)
+//    {
+//        if ((Set == bM4_I2C1_SR_TEMPTYF) && (VSSEL141 & BIT_MASK_06))
+//        {
+//            I2c1TxEmpty_IrqHandler(&__g_hc32f460_i2c1_dev);
+//        }
+//    }
+//    /* I2C Ch.1 Error */
+//    u32Tmp1 = HC32F460_I2C1->CR2 & 0x00F05217ul;
+//    u32Tmp2 = HC32F460_I2C1->SR & 0x00F05217ul;
+//    if ((u32Tmp1 & u32Tmp2) && (VSSEL141 & BIT_MASK_07))
+//    {
+//        I2c1Err_IrqHandler(&__g_hc32f460_i2c1_dev);
+//    }
 //    /* I2C Ch.2 Receive completed */
 //    if(Set == bM4_I2C2_CR2_RFULLIE)
 //    {
@@ -2374,12 +2390,14 @@ void IRQ141_Handler(void *parg)
         }
     }
 
-    /* WDT */
-    if ((M4_WDT->SR & (BIT_MASK_16 | BIT_MASK_17)) && (VSSEL141 & BIT_MASK_23))
-    {
-        Wdt_IrqHandler();
-    }
 #endif
+    /* WDT */
+    if ((HC32F460_WDT->SR & (__HC32F460_WDT_STATUS_UNDERFLOW_MASK | __HC32F460_WDT_STATUS_REFRESH_MASK)) &&
+        (VSSEL141 & __HC32F460_INTC_VSSEL_WDT_INT_MASK))
+    {
+        hc32f460_wdt_irq_handler(&__g_wdt_dev);
+    }
+
 }
 
 #define __HC32F460_ADC_ICR_EOCBIEN_MASK    (1 << 1)   /**< \brief 序列B转换完成中断使能 */

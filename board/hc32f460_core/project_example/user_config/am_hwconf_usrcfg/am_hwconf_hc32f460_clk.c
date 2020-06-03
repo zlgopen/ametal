@@ -105,11 +105,11 @@ static const am_hc32f460_clk_devinfo_t __g_clk_devinfo =
      *        UPLLQ = PLLIN / upll_div * upll_mul / upllq_div。
      *        UPLLR = PLLIN / upll_div * upll_mul / upllr_div。
      */
-    1,     /* UPLL 输入时钟分频系数，应确保UPLLIN介于1MHz到12MHz之间 */
-    50,    /* UPLL 输出时钟倍频系数，20~480倍,240M~480M */
-    8,     /* UPLLP时钟分频系数，2~16 */
-    2,     /* UPLLQ时钟分频系数，2~16 */
-    2,     /* UPLLR时钟分频系数，2~16 */
+    2,     /* UPLL 输入时钟分频系数，应确保UPLLIN介于1MHz到12MHz之间 */
+    84,    /* UPLL 输出时钟倍频系数，20~480倍,240M~480M */
+    7,     /* UPLLP时钟分频系数，2~16 */
+    7,     /* UPLLQ时钟分频系数，2~16 */
+    7,     /* UPLLR时钟分频系数，2~16 */
 
     /** \brief
      *    系统 时钟源选择

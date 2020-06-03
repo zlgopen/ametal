@@ -1191,14 +1191,14 @@ void am_hc32f460_uart4_inst_deinit (am_uart_handle_t handle);
 // */
 //void am_zlg118_lpuart1_inst_deinit (am_uart_handle_t handle);
 //
-///**
-// * \brief WDT 实例初始化，获得 WDT 标准服务句柄
-// *
-// * \param 无
-// *
-// * \return WDT 标准服务句柄，若为 NULL，表明初始化失败
-// */
-//am_wdt_handle_t am_zlg118_wdt_inst_init (void);
+/**
+ * \brief WDT 实例初始化，获得 WDT 标准服务句柄
+ *
+ * \param 无
+ *
+ * \return WDT 标准服务句柄，若为 NULL，表明初始化失败
+ */
+//am_wdt_handle_t am_hc32f460_wdt_inst_init (void);
 //
 ///**
 // * \brief WDT 实例解初始化
@@ -1207,7 +1207,7 @@ void am_hc32f460_uart4_inst_deinit (am_uart_handle_t handle);
 // *
 // * \return 无
 // */
-//void am_zlg118_wdt_inst_deinit (am_wdt_handle_t handle);
+//void am_hc32f460_wdt_inst_deinit (am_wdt_handle_t handle);
 //
 ///**
 // * \brief PCNT 实例初始化，获得PCNT 服务句柄

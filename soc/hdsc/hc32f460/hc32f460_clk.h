@@ -12,7 +12,7 @@
 
 /**
  * \file
- * \brief ZLG217 时钟ID定义
+ * \brief HC32F460 时钟ID定义
  *
  * \internal
  * \par Modification History
@@ -20,8 +20,8 @@
  * \endinternal
  */
 
-#ifndef __HD32F460_CLK_H
-#define __HD32F460_CLK_H
+#ifndef __HC32F460_CLK_H
+#define __HC32F460_CLK_H
 
 #ifdef __cplusplus
 extern "C" {

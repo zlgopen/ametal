@@ -823,7 +823,7 @@ am_static_inline
 void amhw_hc32f460_sdioc_data_write (amhw_hc32f460_sdioc_t *p_hw_sdioc,
                                      uint32_t               data)
 {
-    uint32_t *addr_buffer = &(p_hw_sdioc->BUF0);
+    uint32_t *addr_buffer = (uint32_t *)&(p_hw_sdioc->BUF0);
     *addr_buffer = data;
 }
 

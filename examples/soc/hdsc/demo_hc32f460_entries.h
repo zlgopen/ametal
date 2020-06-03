@@ -33,6 +33,9 @@
 #include "am_hc32f460_dma.h"
 #include "am_hc32f460_qspi.h"
 #include "hw/amhw_hc32f460_spi.h"
+#include "hw/amhw_hc32f460_wdt.h"
+#include "am_wdt.h"
+
 
 #ifdef __cplusplus
 extern "C" {
@@ -310,6 +313,55 @@ void demo_hc32f460_drv_qspi_entry (am_hc32f460_qspi_dev_t *p_dev);
  */
 void demo_hc32f460_hw_spi_master_entry (void    *p_hw_spi,
                                         int32_t  cs_pin);
+
+/**
+ * \brief WDT 例程，通过 HW 层接口实现
+ *
+ * \param[in] p_hw_wdt     指向 WDT 外设寄存器块的指针
+ * \param[in] time_out_ms  WDT超时时间
+ * \param[in] feed_time_ms 喂狗间隔时间
+ * \param[in] clk_rate     wdt时钟频率
+ *
+ * \return 无
+ */
+void demo_hc32f460_hw_wdt_entry (void     *p_hw_wdt,
+                                 uint32_t  time_out_ms,
+                                 uint32_t  feed_time_ms,
+                                 uint32_t  clk_rate);
+
+/**
+ * \brief WDT DRV例程，通过 HW 层接口实现
+ *
+ * \param[in] handle       WDT handler
+ * \param[in] time_out_ms  WDT超时时间
+ * \param[in] feed_time_ms 喂狗间隔时间
+ *
+ * \return 无
+ */
+void demo_hc32f460_drv_wdt_int_entry (am_wdt_handle_t handle,
+                                      uint32_t        time_out_ms,
+                                      uint32_t        feed_time_ms);
+
+/**
+ * \brief SWDT DRV例程，通过 HW 层接口实现
+ *
+ * \param[in] handle       SWDT handler
+ * \param[in] feed_time_ms 喂狗间隔时间
+ *
+ * \return 无
+ */
+void demo_hc32f460_drv_swdt_int_entry (am_wdt_handle_t handle,
+                                       uint32_t         feed_time_ms);
+
+
+/**
+ * \brief MPU 例程，通过 HW 层接口实现
+ *
+ * \param[in] p_hw_mpu     MPU寄存器结构体指针
+ *
+ * \return 无
+ */
+void demo_hc32f460_hw_mpu_entry (void *p_hw_mpu);
 
 #ifdef __cplusplus
 }

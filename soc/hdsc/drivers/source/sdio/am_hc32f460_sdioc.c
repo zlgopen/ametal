@@ -58,10 +58,8 @@ void hc32f460_sdioc_irq_handle (void *p_arg)
     am_hc32f460_sdioc_dev_t *p_dev     = (am_hc32f460_sdioc_dev_t *)p_arg;
     amhw_hc32f460_sdioc_t   *p_hw_sdioc = (amhw_hc32f460_sdioc_t *)p_dev->p_devinfo->regbase;
     uint16_t                 status_normal    = 0;
-    uint16_t                 status_err       = 0;
 
     status_normal = amhw_hc32f460_sdioc_normal_intstat_all_get(p_hw_sdioc);
-    status_err    = amhw_hc32f460_sdioc_err_intstat_all_get(p_hw_sdioc);
 
     if (AMHW_HC32F460_SDIOC_NORMAL_INT_CC & status_normal) {
         if (p_dev->int_normal_status == AMHW_HC32F460_SDIOC_NORMAL_INT_CC) {
@@ -77,66 +75,6 @@ void hc32f460_sdioc_irq_handle (void *p_arg)
             am_wait_done(&p_dev->wait);
         }
         amhw_hc32f460_sdioc_normal_intstat_clr(p_hw_sdioc, AMHW_HC32F460_SDIOC_NORMAL_INT_TC);
-    }
-
-    if (AMHW_HC32F460_SDIOC_NORMAL_INT_EI & status_normal) {
-        amhw_hc32f460_sdioc_normal_intstat_clr(p_hw_sdioc, AMHW_HC32F460_SDIOC_NORMAL_INT_EI);
-    }
-
-    if (AMHW_HC32F460_SDIOC_NORMAL_INT_CINT & status_normal) {
-        ;
-    }
-
-    if (AMHW_HC32F460_SDIOC_NORMAL_INT_CRM & status_normal) {
-        amhw_hc32f460_sdioc_normal_intstat_clr(p_hw_sdioc, AMHW_HC32F460_SDIOC_NORMAL_INT_CRM);
-    }
-
-    if (AMHW_HC32F460_SDIOC_NORMAL_INT_CIST & status_normal) {
-        amhw_hc32f460_sdioc_normal_intstat_clr(p_hw_sdioc, AMHW_HC32F460_SDIOC_NORMAL_INT_CIST);
-    }
-
-    if (AMHW_HC32F460_SDIOC_NORMAL_INT_BRR & status_normal) {
-//        amhw_hc32f460_sdioc_normal_intstat_clr(p_hw_sdioc, AMHW_HC32F460_SDIOC_NORMAL_INT_BRR);
-    }
-
-    if (AMHW_HC32F460_SDIOC_NORMAL_INT_BWR & status_normal) {
-//        amhw_hc32f460_sdioc_normal_intstat_clr(p_hw_sdioc, AMHW_HC32F460_SDIOC_NORMAL_INT_BWR);
-    }
-
-    if (AMHW_HC32F460_SDIOC_NORMAL_INT_BGE & status_normal) {
-        amhw_hc32f460_sdioc_normal_intstat_clr(p_hw_sdioc, AMHW_HC32F460_SDIOC_NORMAL_INT_BGE);
-    }
-
-    if (AMHW_HC32F460_SDIOC_ERR_INT_ACE & status_err) {
-        amhw_hc32f460_sdioc_err_intstat_clr(p_hw_sdioc, AMHW_HC32F460_SDIOC_ERR_INT_ACE);
-    }
-
-    if (AMHW_HC32F460_SDIOC_ERR_INT_DEBE & status_err) {
-        amhw_hc32f460_sdioc_err_intstat_clr(p_hw_sdioc, AMHW_HC32F460_SDIOC_ERR_INT_DEBE);
-    }
-
-    if (AMHW_HC32F460_SDIOC_ERR_INT_DCE & status_err) {
-        amhw_hc32f460_sdioc_err_intstat_clr(p_hw_sdioc, AMHW_HC32F460_SDIOC_ERR_INT_DCE);
-    }
-
-    if (AMHW_HC32F460_SDIOC_ERR_INT_DTOE & status_err) {
-        amhw_hc32f460_sdioc_err_intstat_clr(p_hw_sdioc, AMHW_HC32F460_SDIOC_ERR_INT_DTOE);
-    }
-
-    if (AMHW_HC32F460_SDIOC_ERR_INT_CIE & status_err) {
-        amhw_hc32f460_sdioc_normal_intstat_clr(p_hw_sdioc, AMHW_HC32F460_SDIOC_ERR_INT_CIE);
-    }
-
-    if (AMHW_HC32F460_SDIOC_ERR_INT_CEBE & status_err) {
-        amhw_hc32f460_sdioc_normal_intstat_clr(p_hw_sdioc, AMHW_HC32F460_SDIOC_ERR_INT_CEBE);
-    }
-
-    if (AMHW_HC32F460_SDIOC_ERR_INT_CCE & status_err) {
-        amhw_hc32f460_sdioc_normal_intstat_clr(p_hw_sdioc, AMHW_HC32F460_SDIOC_ERR_INT_CCE);
-    }
-
-    if (AMHW_HC32F460_SDIOC_ERR_INT_CTOE & status_err) {
-        amhw_hc32f460_sdioc_normal_intstat_clr(p_hw_sdioc, AMHW_HC32F460_SDIOC_ERR_INT_CTOE);
     }
 }
 
@@ -261,10 +199,10 @@ static int __sdio_data_send (am_hc32f460_sdioc_dev_t *p_dev,
     while(blk_num) {
         if (amhw_hc32f460_sdioc_normal_intstat_get(p_hw_sdioc, AMHW_HC32F460_SDIOC_NORMAL_INT_BWR) &&
            amhw_hc32f460_sdioc_pstat_get(p_hw_sdioc, AMHW_HC32F460_SDIOC_PSTAT_BWE)){
-        	for(i = 0; i < p_trans->blk_size; i += 4) {
-        		amhw_hc32f460_sdioc_data_write(p_hw_sdioc, *p_data++);
-        	}
-        	blk_num--;
+            for(i = 0; i < p_trans->blk_size; i += 4) {
+                amhw_hc32f460_sdioc_data_write(p_hw_sdioc, *p_data++);
+            }
+            blk_num--;
         }
     }
 
@@ -276,7 +214,6 @@ static int __sdio_data_send (am_hc32f460_sdioc_dev_t *p_dev,
 static int __sdio_data_recv(am_hc32f460_sdioc_dev_t *p_dev,
                             am_sdio_trans_t   *p_trans)
 {
-    int                    ret;
     uint32_t               i            = 0;
     uint32_t              *p_buf        = (uint32_t *)p_trans->p_data;
     amhw_hc32f460_sdioc_t *p_hw_sdioc   = (amhw_hc32f460_sdioc_t *)p_dev->p_devinfo->regbase;

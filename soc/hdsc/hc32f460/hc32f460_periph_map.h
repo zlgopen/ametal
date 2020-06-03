@@ -39,6 +39,9 @@ extern "C" {
 #include "hw/amhw_hc32f460_spi.h"
 #include "hw/amhw_hc32f460_adc.h"
 #include "hw/amhw_hc32f460_sdioc.h"
+#include "hw/amhw_hc32f460_wdt.h"
+#include "hw/amhw_hc32f460_swdt.h"
+#include "hw/amhw_hc32f460_mpu.h"
 /**
  * \addtogroup amhw_hc32f460_if_periph_map
  * \copydoc amhw_hc32f460_periph_map.h
@@ -83,6 +86,9 @@ extern "C" {
 #define HC32F460_ADC2           ((amhw_hc32f460_adc_t  *)HC32F460_ADC2_BASE)
 #define HC32F460_SDIOC1         ((amhw_hc32f460_sdioc_t  *)HC32F460_SDIOC1_BASE)
 #define HC32F460_SDIOC2         ((amhw_hc32f460_sdioc_t  *)HC32F460_SDIOC2_BASE)
+#define HC32F460_WDT            ((amhw_hc32f460_wdt_t  *)HC32F460_WDT_BASE)
+#define HC32F460_SWDT           ((amhw_hc32f460_swdt_t  *)HC32F460_SWDT_BASE)
+#define HC32F460_MPU            ((amhw_hc32f460_mpu_t  *)HC32F460_MPU_BASE)
 
 /** @} */
 
