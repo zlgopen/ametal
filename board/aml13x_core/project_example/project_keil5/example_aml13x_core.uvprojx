@@ -10,8 +10,7 @@
       <TargetName>debug</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
-      <pCCUsed>5060750::V5.06 update 6 (build 750)::ARMCC</pCCUsed>
-      <uAC6>0</uAC6>
+      <pCCUsed>5060300::V5.06 update 3 (build 300)::ARMCC</pCCUsed>
       <TargetOption>
         <TargetCommonOption>
           <Device>HC32L196PCTA</Device>
@@ -184,7 +183,6 @@
             <hadXRAM>0</hadXRAM>
             <uocXRam>0</uocXRam>
             <RvdsVP>0</RvdsVP>
-            <RvdsMve>0</RvdsMve>
             <hadIRAM2>0</hadIRAM2>
             <hadIROM2>0</hadIROM2>
             <StupSel>8</StupSel>
@@ -325,7 +323,6 @@
             <uThumb>0</uThumb>
             <uSurpInc>0</uSurpInc>
             <uC99>1</uC99>
-            <uGnu>0</uGnu>
             <useXO>0</useXO>
             <v6Lang>3</v6Lang>
             <v6LangP>0</v6LangP>
@@ -338,7 +335,7 @@
               <MiscControls></MiscControls>
               <Define>AM_VDEBUG AM_CORTEX_M0 HC32L136 HC32X3X</Define>
               <Undefine></Undefine>
-              <IncludePath>..\..\..\..\3rdparty/CMSIS/Include;..\..\..\..\arch/arm/include;..\..\..\..\components/drivers/include;..\..\..\..\components/libc/armlib_adapter/include;..\..\..\..\components/libc/microlib_adapter/include;..\..\..\..\components/service/include;..\..\..\..\components/util/include;..\user_code;..\user_config;..\user_config/am_hwconf_usrcfg;..\user_config/am_servconf_usrcfg;..\..\..\..\board/bsp_common/include;..\..\..\..\examples/components;..\..\..\..\examples/soc/hdsc;..\..\..\..\examples/std;..\..\..\..\examples\board\aml13x_core;..\..\..\..\interface;..\..\..\..\soc\hdsc\hc32;..\..\..\..\soc\hdsc\drivers\include\adc;..\..\..\..\soc\hdsc\drivers\include\adtim;..\..\..\..\soc\hdsc\drivers\include\aes;..\..\..\..\soc\hdsc\drivers\include\clk;..\..\..\..\soc\hdsc\drivers\include\clktrim;..\..\..\..\soc\hdsc\drivers\include\crc;..\..\..\..\soc\hdsc\drivers\include\dac;..\..\..\..\soc\hdsc\drivers\include\dma;..\..\..\..\soc\hdsc\drivers\include\flash;..\..\..\..\soc\hdsc\drivers\include\gpio;..\..\..\..\soc\hdsc\drivers\include\i2c;..\..\..\..\soc\hdsc\drivers\include\lcd;..\..\..\..\soc\hdsc\drivers\include\lpmode;..\..\..\..\soc\hdsc\drivers\include\lptim;..\..\..\..\soc\hdsc\drivers\include\lpuart;..\..\..\..\soc\hdsc\drivers\include\lvd;..\..\..\..\soc\hdsc\drivers\include\opa;..\..\..\..\soc\hdsc\drivers\include\pca;..\..\..\..\soc\hdsc\drivers\include\pcnt;..\..\..\..\soc\hdsc\drivers\include\ram;..\..\..\..\soc\hdsc\drivers\include\rcc;..\..\..\..\soc\hdsc\drivers\include\rtc;..\..\..\..\soc\hdsc\drivers\include\spi;..\..\..\..\soc\hdsc\drivers\include\tim;..\..\..\..\soc\hdsc\drivers\include\trng;..\..\..\..\soc\hdsc\drivers\include\uart;..\..\..\..\soc\hdsc\drivers\include\vc;..\..\..\..\soc\hdsc\drivers\include\wdt</IncludePath>
+              <IncludePath>..\..\..\..\3rdparty/CMSIS/Include;..\..\..\..\arch/arm/include;..\..\..\..\components/drivers/include;..\..\..\..\components/libc/armlib_adapter/include;..\..\..\..\components/libc/microlib_adapter/include;..\..\..\..\components/service/include;..\..\..\..\components/util/include;..\user_code;..\user_config;..\user_config/am_hwconf_usrcfg;..\user_config/am_servconf_usrcfg;..\..\..\..\board/bsp_common/include;..\..\..\..\examples/components;..\..\..\..\examples/soc/hdsc;..\..\..\..\examples/std;..\..\..\..\examples\board\aml13x_core;..\..\..\..\interface;..\..\..\..\soc\hdsc\hc32;..\..\..\..\soc\hdsc\drivers\include\adc;..\..\..\..\soc\hdsc\drivers\include\adtim;..\..\..\..\soc\hdsc\drivers\include\aes;..\..\..\..\soc\hdsc\drivers\include\clk;..\..\..\..\soc\hdsc\drivers\include\clktrim;..\..\..\..\soc\hdsc\drivers\include\crc;..\..\..\..\soc\hdsc\drivers\include\dac;..\..\..\..\soc\hdsc\drivers\include\dma;..\..\..\..\soc\hdsc\drivers\include\flash;..\..\..\..\soc\hdsc\drivers\include\gpio;..\..\..\..\soc\hdsc\drivers\include\i2c;..\..\..\..\soc\hdsc\drivers\include\lcd;..\..\..\..\soc\hdsc\drivers\include\lpmode;..\..\..\..\soc\hdsc\drivers\include\lptim;..\..\..\..\soc\hdsc\drivers\include\lpuart;..\..\..\..\soc\hdsc\drivers\include\lvd;..\..\..\..\soc\hdsc\drivers\include\opa;..\..\..\..\soc\hdsc\drivers\include\pca;..\..\..\..\soc\hdsc\drivers\include\pcnt;..\..\..\..\soc\hdsc\drivers\include\ram;..\..\..\..\soc\hdsc\drivers\include\rcc;..\..\..\..\soc\hdsc\drivers\include\rtc;..\..\..\..\soc\hdsc\drivers\include\spi;..\..\..\..\soc\hdsc\drivers\include\tim;..\..\..\..\soc\hdsc\drivers\include\trng;..\..\..\..\soc\hdsc\drivers\include\uart;..\..\..\..\soc\hdsc\drivers\include\vc;..\..\..\..\soc\hdsc\drivers\include\wdt;..\..\..\..\components\modbus\include</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -541,6 +538,26 @@
               <FileName>am_sensor_hts221.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\components\drivers\source\sensor\am_sensor_hts221.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_ds1302.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\rtc\am_ds1302.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_pcf85063.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\rtc\am_pcf85063.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_rx8025sa.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\rtc\am_rx8025sa.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_rx8025t.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\rtc\am_rx8025t.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -1432,32 +1449,20 @@
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\board\aml13x_core\rtc\demo_hc32l13x_core_std_rtc.c</FilePath>
             </File>
+            <File>
+              <FileName>demo_hc32l13x_core_mb_master.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\aml13x_core\modbus\demo_hc32l13x_core_mb_master.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_hc32l13x_core_mb_slave.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\aml13x_core\modbus\demo_hc32l13x_core_mb_slave.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
           <GroupName>examples_components</GroupName>
-          <Files>
-            <File>
-              <FileName>am_ds1302.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\components\drivers\source\rtc\am_ds1302.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_pcf85063.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\components\drivers\source\rtc\am_pcf85063.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_rx8025sa.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\components\drivers\source\rtc\am_rx8025sa.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_rx8025t.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\components\drivers\source\rtc\am_rx8025t.c</FilePath>
-            </File>
-          </Files>
         </Group>
         <Group>
           <GroupName>examples_soc</GroupName>
@@ -2194,6 +2199,16 @@
             </File>
           </Files>
         </Group>
+        <Group>
+          <GroupName>modbus</GroupName>
+          <Files>
+            <File>
+              <FileName>modbus.lib</FileName>
+              <FileType>4</FileType>
+              <FilePath>..\..\..\..\components\modbus\modbus.lib</FilePath>
+            </File>
+          </Files>
+        </Group>
       </Groups>
     </Target>
     <Target>
@@ -2201,7 +2216,6 @@
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
       <pCCUsed>5060061::V5.06 update 1 (build 61)::ARMCC</pCCUsed>
-      <uAC6>0</uAC6>
       <TargetOption>
         <TargetCommonOption>
           <Device>HC32L196PCTA</Device>
@@ -2374,7 +2388,6 @@
             <hadXRAM>0</hadXRAM>
             <uocXRam>0</uocXRam>
             <RvdsVP>0</RvdsVP>
-            <RvdsMve>0</RvdsMve>
             <hadIRAM2>0</hadIRAM2>
             <hadIROM2>0</hadIROM2>
             <StupSel>8</StupSel>
@@ -2515,7 +2528,6 @@
             <uThumb>0</uThumb>
             <uSurpInc>0</uSurpInc>
             <uC99>1</uC99>
-            <uGnu>0</uGnu>
             <useXO>0</useXO>
             <v6Lang>0</v6Lang>
             <v6LangP>0</v6LangP>
@@ -2732,6 +2744,26 @@
               <FileType>1</FileType>
               <FilePath>..\..\..\..\components\drivers\source\sensor\am_sensor_hts221.c</FilePath>
             </File>
+            <File>
+              <FileName>am_ds1302.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\rtc\am_ds1302.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_pcf85063.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\rtc\am_pcf85063.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_rx8025sa.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\rtc\am_rx8025sa.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_rx8025t.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\rtc\am_rx8025t.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -3622,32 +3654,20 @@
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\board\aml13x_core\rtc\demo_hc32l13x_core_std_rtc.c</FilePath>
             </File>
+            <File>
+              <FileName>demo_hc32l13x_core_mb_master.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\aml13x_core\modbus\demo_hc32l13x_core_mb_master.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_hc32l13x_core_mb_slave.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\aml13x_core\modbus\demo_hc32l13x_core_mb_slave.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
           <GroupName>examples_components</GroupName>
-          <Files>
-            <File>
-              <FileName>am_ds1302.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\components\drivers\source\rtc\am_ds1302.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_pcf85063.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\components\drivers\source\rtc\am_pcf85063.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_rx8025sa.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\components\drivers\source\rtc\am_rx8025sa.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_rx8025t.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\components\drivers\source\rtc\am_rx8025t.c</FilePath>
-            </File>
-          </Files>
         </Group>
         <Group>
           <GroupName>examples_soc</GroupName>
@@ -4384,14 +4404,18 @@
             </File>
           </Files>
         </Group>
+        <Group>
+          <GroupName>modbus</GroupName>
+          <Files>
+            <File>
+              <FileName>modbus.lib</FileName>
+              <FileType>4</FileType>
+              <FilePath>..\..\..\..\components\modbus\modbus.lib</FilePath>
+            </File>
+          </Files>
+        </Group>
       </Groups>
     </Target>
   </Targets>
-
-  <RTE>
-    <apis/>
-    <components/>
-    <files/>
-  </RTE>
 
 </Project>

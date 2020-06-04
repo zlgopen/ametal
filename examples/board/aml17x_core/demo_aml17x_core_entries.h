@@ -653,3 +653,12 @@ void demo_hc32l17x_core_hw_trng_generate_entry (void);
  * \brief LCD显示例程，通过 HW 层接口实现
  */
 void demo_hc32l17x_core_hw_lcd_entry (void);
+/**
+ * \brief modbus 主机通信例程
+ */
+void demo_hc32l17x_core_mb_master_demo_entry (void);
+/**
+ * \brief modbus 从站通信例程
+ */
+void demo_hc32l17x_core_mb_slave_test_entry (void);
+
