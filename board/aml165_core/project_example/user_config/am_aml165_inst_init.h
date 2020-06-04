@@ -106,7 +106,7 @@ void am_zml165_adc_inst_deinit (am_adc_handle_t handle);
 int am_zml165_clk_inst_init (void);
 
 /**
- * \brief ZLG115 CLK 实例初始化，初始化系统时钟
+ * \brief ZML165 CLK 实例初始化，初始化系统时钟
  *
  * \param 无
  *

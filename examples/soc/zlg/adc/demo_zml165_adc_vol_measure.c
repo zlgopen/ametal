@@ -44,20 +44,22 @@ void demo_zml165_adc_vol_measure_entry(void  *p_handle)
 {
     uint8_t  gpa[4] = {1, 2, 64, 128};
     am_zml165_adc_handle_t  handle = (am_zml165_adc_handle_t)p_handle;
-    am_zml165_adc_config_t config;
+    am_zml165_adc_config_t  config;
 
     config.pga = AM_ZML165_ADC_PGA_1;
-    config.speed = AM_ZML165_ADC_SPEED_10HZ;
-    config.channel = AM_ZML165_ADC_CHANNEL_B;
+    config.speed = AM_ZML165_ADC_SPEED_1280HZ;
+    config.channel = AM_ZML165_ADC_CHANNEL_A;
     config.refo_off = AM_ZML165_ADC_VOUT_DISABLE;
 
     am_zml165_adc_config_load(handle, &config);
-	
+
     while(1){
         uint8_t i = 0;
         int32_t adc_val[10];
         float   vol = 0;
+        volatile uint32_t time = am_sys_tick_get();
         am_adc_read(&handle->adc_serve, 0, (void *)adc_val, AM_NELEMENTS(adc_val));
+        time = am_sys_tick_get() - time;
         /* 丢弃前四个数据以保证设置生效后数据建立时间 */ 
         for(i = 4 ; i < AM_NELEMENTS(adc_val); i++){
             if(adc_val[i] >= 0x800000)  {
@@ -78,5 +80,6 @@ void demo_zml165_adc_vol_measure_entry(void  *p_handle)
             vol *= -1;
             am_kprintf("Voltage is  -%d.%04d mV\r\n", (int32_t)vol/10000, (int32_t)vol%10000);
         }
+        am_mdelay(500);
     }
 }

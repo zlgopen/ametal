@@ -40,6 +40,7 @@ extern "C" {
 #define  AM_ZML165_HSI_72M         72000000
 #define  AM_ZML165_HSI_48M         48000000
 
+
 /**
  * \brief CLK 设备信息参数结构体
  */
@@ -50,30 +51,12 @@ typedef struct am_zml165_clk_devinfo {
      *
      *  如果pllin_src选择 AMHW_ZML165_PLLCLK_HSE 则 PLLIN = hse_osc）
      */
-    uint32_t hse_osc;
-
-    /** \brief
-     *    PLL 时钟源选择
-     *    -# AMHW_ZML165_PLLCLK_HSI_DIV4 : HSI 振荡器 4 分频作为PLL输入时钟
-     *    -# AMHW_ZML165_PLLCLK_HSE      : HSE 作为PLL输入时钟
-     */
-    amhw_zml165_pll_clk_src pllin_src;
+    uint32_t input_clk;
 
     /**
-     * \brief PLL 倍频系数，可选1-64
-     *        PLLOUT = PLLIN * pll_mul / pll_div
+     * \brief 系统时钟源选额
      */
-    uint8_t pll_mul;
-
-    /**
-     * \brief PLL 分频系数，可选1-8
-     *        PLLOUT = PLLIN * pll_mul / pll_div
-     */
-    uint8_t pll_div;
-
-    /** \brief USB分频系数，USBCLK = PLLOUT / (usb_div + 1),建议配置成48Mhz */
-    uint8_t usb_div;
-
+    amhw_zml165_sys_clk_src sys_clk_src;
     /**
      * \brief AHB分频系数，AHBCLK = PLLOUT / DIV,AHB最大频率为48Mhz
      *
@@ -119,11 +102,8 @@ typedef struct am_zml165_clk_dev {
     /** \brief 指向CLK 设备信息的指针 */
     const am_zml165_clk_devinfo_t *p_devinfo;
 
-    /** \brief PLL输入频率 */
-    uint32_t pllin_clk;
-
-    /** \brief PLL输出频率 */
-    uint32_t pllout_clk;
+    /** \brief 系统运行频率 */
+    uint32_t sys_clk;
 
     /** \brief AHB时钟频率 */
     uint32_t ahb_clk;

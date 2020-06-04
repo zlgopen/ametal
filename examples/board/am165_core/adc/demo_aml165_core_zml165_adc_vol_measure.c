@@ -14,15 +14,15 @@
  * \file
  * \brief
  * - 实验现象：
- *   1. 连接好串口，并将测量电压输入对应的通道。
- *   2. 串口将会打印出电压值
+ *   1. 连接好串口,连接好PT100。
+ *   2. 串口将会打印对应的温度值
  *
  * \par 源代码
  * \snippet demo_aml165_core_adc24_vol_measure.c src_aml165_core_adc24_vol_measure
  *
  * \internal
  * \par Modification history
- * - 1.00 17-11-17  sdq, first implementation.
+ * - 1.00 20-04-15  htf, first implementation.
  * \endinternal
  */
 
@@ -33,9 +33,9 @@
 
 /** [src_aml165_core_adc24_vol_measure] */
 
+#include <am_hwconf_zml165_24adc.h>
 #include "am_zml165_adc.h"
 #include "demo_zlg_entries.h"
-#include "am_hwconf_zml165_adc.h"
 #include "demo_aml165_core_entries.h"
 
 
@@ -44,7 +44,7 @@
  */
 void demo_aml165_core_zml165_adc_vol_measure (void)
 {
-    am_zml165_adc_handle_t handle = am_zml165_adc_inst_init();
+    am_zml165_adc_handle_t handle = am_zml165_24adc_inst_init();
     demo_zml165_adc_vol_measure_entry((void *)handle);
 }
 

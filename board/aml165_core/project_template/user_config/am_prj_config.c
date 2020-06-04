@@ -37,7 +37,7 @@ int main (void)
 #endif /* (AM_CFG_INT_ENABLE == 1) */
 
 #if (AM_CFG_CLK_ENABLE == 1)
-    am_zlg115_clk_inst_init();
+    am_zml165_clk_inst_init();
 #endif /* (AM_CFG_CLK_ENABLE == 1) */
 
 #if (AM_CFG_GPIO_ENABLE == 1)

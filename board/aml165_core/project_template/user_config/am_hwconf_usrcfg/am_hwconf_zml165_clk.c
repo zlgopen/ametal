@@ -21,7 +21,7 @@
  * \endinternal
  */
  
-#include "am_zlg115_clk.h"
+
 #include "am_zml165_clk.h"
 #include "hw/amhw_zlg115_rcc.h"
 #include "hw/amhw_zml165_rcc.h"
@@ -30,18 +30,13 @@
  * \addtogroup am_if_src_hwconf_zml165_clk
  * \copydoc am_hwconf_zml165_clk.c
  * @{
+ *
  */
-
-/** \brief CLK 平台初始化 */
-static void __zml165_clk_plfm_init (void)
-{
-
-}
 
 /**
  * \brief CLK设备信息
  */
-static const am_zlg115_clk_devinfo_t __g_clk_devinfo =
+static const am_zml165_clk_devinfo_t __g_clk_devinfo =
 {
 
     /**
@@ -91,14 +86,14 @@ static const am_zlg115_clk_devinfo_t __g_clk_devinfo =
     0,
 
     /* 平台初始化函数，配置时钟引脚等操作 */
-    __zml165_clk_plfm_init,
+    NULL,
 
     /* CLK无平台去初始化函数 */
     NULL
 };
 
 /** \brief 时钟设备实例 */
-static am_zlg115_clk_dev_t __g_clk_dev;
+static am_zml165_clk_dev_t __g_clk_dev;
 
 /**
  * \brief CLK 实例初始化，初始化系统时钟
@@ -106,7 +101,7 @@ static am_zlg115_clk_dev_t __g_clk_dev;
  */
 int am_zml165_clk_inst_init (void)
 {
-    return am_zlg115_clk_init(&__g_clk_dev, &__g_clk_devinfo);
+    return am_zml165_clk_init(&__g_clk_dev, &__g_clk_devinfo);
 }
 
 /**

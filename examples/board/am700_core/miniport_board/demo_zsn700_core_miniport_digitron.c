@@ -40,7 +40,7 @@
 #include "am_vdebug.h"
 #include "am_zsn700_inst_init.h"
 #include "am_digitron_disp.h"
-#include "demo_am700_core_entries.h"
+#include "demo_std_entries.h"
 
 /**
  * \brief Àı³ÌÈë¿Ú

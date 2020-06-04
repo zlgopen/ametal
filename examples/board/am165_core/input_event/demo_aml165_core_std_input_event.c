@@ -15,13 +15,13 @@
  * \brief 输入子系统例程，通过标准接口实现
  *
  * - 操作步骤：
- *   1. 将 J14 的 KEY 和 PIOA_8 短接在一起。
+ *   1. 将 J14 的 KEY 和 PIOA_13 短接在一起。
  *
  * - 实验现象：
  *   1. 调试串口打印按键事件。
  *
  * \note
- *    1. 如需观察串口打印的调试信息，需要将 PIOA_9 引脚连接 PC 串口的 RXD。
+ *    1. 如需观察串口打印的调试信息，需要将 PIOB_3 引脚连接 PC 串口的 RXD。
  *    3. 测试本 Demo 必须在 am_prj_config.h 内将 AM_CFG_KEY_GPIO_ENABLE、
  *       AM_CFG_KEY_ENABLE 和 AM_CFG_SOFTIMER_ENABLE 定义为 1。但这些宏
  *       已经默认配置为 1， 用户不必再次配置；

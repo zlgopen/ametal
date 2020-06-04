@@ -32,11 +32,11 @@
  */
 
 /** [src_aml165_core_std_tim2_pwm] */
-#include <am_aml165_inst_init.h>
 #include "ametal.h"
 #include "am_vdebug.h"
 #include "am_zlg_tim_pwm.h"
 #include "demo_std_entries.h"
+#include "am_aml165_inst_init.h"
 #include "demo_aml165_core_entries.h"
 
 /**

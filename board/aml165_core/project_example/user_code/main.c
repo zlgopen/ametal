@@ -46,6 +46,8 @@ int am_main (void)
      */
     demo_aml165_core_std_led_entry();
 //    demo_aml165_core_zml165_adc_vol_measure();
+//    demo_aml165_core_zml165_adc_vol_gain_measure();
+//    demo_aml165_core_zml165_adc_thermistor_measure();
 //    demo_aml165_core_std_delay_entry();
 //    demo_aml165_core_std_buzzer_entry();
 //    demo_aml165_core_drv_dma_m2m_entry();

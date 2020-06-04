@@ -92,23 +92,23 @@
 /**
  * \brief 如果为1，则初始化led的相关功能，板上默认有两个LED
  *
- * ID: 0 --- PIOB.1 （需要短接跳线帽 J9）
- * ID: 1 --- PIOB.2 （需要短接跳线帽 J10）
+ * ID: 0 --- PIOB.3 （需要短接跳线帽 J9）
+ * ID: 1 --- PIOB.4 （需要短接跳线帽 J10）
  */
 #define AM_CFG_LED_ENABLE            0
 
 /**
  * \brief 如果为1，则初始化板载按键
- * KEY_KP0 （默认按键编号） ：PIOA_8 （需要短接跳线帽 J14的1和2，用作独立按键功能）
+ * KEY_KP0 （默认按键编号） ：PIOA_13 （需要短接跳线帽 J14的1和2，用作独立按键功能）
  */
 #define AM_CFG_KEY_GPIO_ENABLE       0
 
 /**
  * \brief 如果为1，则初始化蜂鸣器的相关功能
  *
- * 默认使用 TIM16_CH1（PIOB_8）输出PWM （需要短接跳线帽 J7）
+ * 默认使用 TIM16_CH1（PIOA_0）输出PWM （需要短接跳线帽 J7）
  */
-#define AM_CFG_BUZZER_ENABLE         0
+#define AM_CFG_BUZZER_ENABLE         1
 
 /**
  * \brief 如果为1，则初始化系统滴答
@@ -126,7 +126,7 @@
 /**
  * \brief 如果为1，则初始化串口调试输出，调试串口默认为UART0
  *
- * UART1 的 TXD 引脚默认为 PIOA_10 只需要将 PIOA_10 连接到串口模块的输入引脚，
+ * UART1 的 TXD 引脚默认为 PIOB_3 只需要将 PIOB_4 连接到串口模块的输入引脚，
  * 即可看到 AM_DBG_INFO() 打印的调试信息
  */
 #define AM_CFG_DEBUG_ENABLE          1

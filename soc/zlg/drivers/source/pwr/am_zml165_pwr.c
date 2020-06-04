@@ -176,7 +176,7 @@ static void __sys_clk_change (uint8_t pwr_mode)
 
     if (pwr_mode == AM_ZML165_PWR_MODE_RUN) {
 
-        if (p_clk_dev->p_devinfo->pllin_src == AMHW_ZML165_PLLCLK_HSE) {
+        if (p_clk_dev->p_devinfo->input_clk == AMHW_ZML165_PLLCLK_HSE) {
             amhw_zml165_rcc_hseon_enable ();
             while (amhw_zml165_rcc_hserdy_read () == AM_FALSE);
         } else {
@@ -192,13 +192,13 @@ static void __sys_clk_change (uint8_t pwr_mode)
         while (amhw_zml165_rcc_pllrdy_read() == AM_FALSE);
 
         /* 系统时钟选为 PLL */
-        amhw_zml165_rcc_sys_clk_set(AMHW_ZML165_SYSCLK_PLL);
+        amhw_zml165_rcc_sys_clk_set(AMHW_ZML165_SYSCLK_HSI);
 
         /* 在正常模式下禁能 LSI 作为系统时钟 */
         amhw_zml165_rcc_lsi_disable();
 
         /* 更新 AHB、APB1、APB2 总线桥的时钟频率 */
-        __sys_clk_ahbfrq_update(__gp_pwr_dev->p_pwrdevinfo->ahb_clk_num, p_clk_dev->pllout_clk);
+        __sys_clk_ahbfrq_update(__gp_pwr_dev->p_pwrdevinfo->ahb_clk_num, p_clk_dev->sys_clk);
         am_zml165_clk_update(__gp_pwr_dev->p_pwrdevinfo->apb1_clk_num, p_clk_dev->ahb_clk  / apb1_div);
         am_zml165_clk_update(__gp_pwr_dev->p_pwrdevinfo->apb2_clk_num, p_clk_dev->ahb_clk  / apb2_div);
     }
@@ -222,7 +222,7 @@ static void __sys_clk_change (uint8_t pwr_mode)
 
         /* 更新 AHB、APB1、APB2 总线桥的时钟频率 */
         __sys_clk_ahbfrq_update(__gp_pwr_dev->p_pwrdevinfo->ahb_clk_num,
-                                p_clk_dev->ahb_clk);
+                                p_clk_dev->sys_clk);
         am_zml165_clk_update(__gp_pwr_dev->p_pwrdevinfo->apb1_clk_num,
                                p_clk_dev->ahb_clk / p_clk_dev->p_devinfo->apb1_div);
         am_zml165_clk_update(__gp_pwr_dev->p_pwrdevinfo->apb2_clk_num,
