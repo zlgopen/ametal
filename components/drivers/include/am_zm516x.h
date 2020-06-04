@@ -44,7 +44,66 @@ extern "C" {
 
 #include "am_types.h"
 #include "am_wait.h"
-#include "am_uart_rngbuf.h"
+#include "am_uart.h"
+#include "am_rngbuf.h"
+
+#define ZM516X_UART_RNGBUF_NREAD     0x0100   /**< \brief 可读数据个数        */
+#define ZM516X_UART_RNGBUF_NWRITE    0x0200   /**< \brief 已经写入的数据个数  */
+#define ZM516X_UART_RNGBUF_FLUSH     0x0300   /**< \brief 清空读/写缓冲区     */
+#define ZM516X_UART_RNGBUF_WFLUSH    0x0400   /**< \brief 清空写缓冲区        */
+#define ZM516X_UART_RNGBUF_RFLUSH    0x0500   /**< \brief 清空读缓冲区        */
+#define ZM516X_UART_RNGBUF_TIMEOUT   0x0600   /**< \brief 设置等待超时        */
+
+typedef struct am_zm516x_rngbuf_dev {
+
+    /** \brief UART标准服务操作句柄    */
+    am_uart_handle_t  handle;
+
+    /** \brief 接收数据环形缓冲区      */
+    struct am_rngbuf  rx_rngbuf;
+
+    /** \brief 发送数据环形缓冲区      */
+    struct am_rngbuf  tx_rngbuf;
+
+    /** \brief 读超时                 */
+    uint32_t          timeout_ms;
+
+    /** \brief 用于接收等待           */
+    am_wait_t         rx_wait;
+} am_zm516x_rngbuf_dev_t;
+
+/** \brief UART（带ring buffer的中断模式）标准服务操作句柄类型定义 */
+typedef struct am_zm516x_rngbuf_dev * am_zm516x_rngbuf_handle_t;
+
+#define __ZM516X_CMD_BUF_LEN       100    /**< \brief 命令缓存长度 */
+#define __ZM516X_RSP_BUF_LEN       100    /**< \brief 应答缓存长度 */
+
+/** \brief ZM516X 模块实例信息
+ * IO 字节的bit0~bit3 为IO1~IO4，bit0 表示IO1，bit1 表示IO2，bit2 表示IO3，bit3 表示 IO4。
+ * 该字节返回模块IO 当前的电平值，1 为高电平，0 为低电平。
+ *
+ * 在自组网模式下，IO1 和IO2 被用作自组网的功能管脚，不能设置为IO 触发。
+ * AD0~AD3 表示返回模块4 路的AD 转换值，返回为10 位的AD 转换值，需要自行转换 为电压值，
+ * 模块ADC 的参考电压为2.47V。
+ */
+typedef struct am_zm516x_io_adc_info {
+    uint8_t  io;     /**< \brief IO状态  */
+    uint16_t adc0;   /**< \brief AD0 */
+    uint16_t adc1;   /**< \brief AD1 */
+    uint16_t adc2;   /**< \brief AD2 */
+    uint16_t adc3;   /**< \brief AD3  */
+} *am_zm516x_io_adc_info_t;
+
+typedef void (*pfn_upload_callback_t) (void                   *p_arg,
+                                       am_zm516x_io_adc_info_t p_info);
+
+/** \brief ZM516X 缓冲区信息 */
+typedef struct am_zm516x_buf_info {
+    uint8_t                 cmd_buf[__ZM516X_CMD_BUF_LEN]; /**< \brief 命令缓冲区 */
+    uint8_t                 rsp_buf[__ZM516X_RSP_BUF_LEN]; /**< \brief 应答缓冲区 */
+    uint32_t                cur_rsp_len;       /**< \brief 当前应答长度 */
+    uint32_t                rsp_len;           /**< \brief 期望应答长度 */
+} am_zm516x_buf_info_t;
 
 /** \brief ZM516X 模块实例信息 */
 typedef struct am_zm516x_dev_info {
@@ -59,11 +118,15 @@ typedef struct am_zm516x_dev_info {
 
 /** \brief ZM516X 模块操作句柄 */
 typedef struct am_zm516x_dev {
-    am_uart_rngbuf_handle_t uart_handle;     /**< \brief UART 句柄(环形缓冲区) */
-    am_uart_rngbuf_dev_t    uart_rngbuf_dev; /**< \brief UART 设备(环形缓冲区) */
-    am_wait_t               ack_wait;        /**< \brief ACK 等待信号 */
-    am_zm516x_dev_info_t   *p_devinfo;       /**< \brief 设备实例信息 */
-    uint8_t                 dev_type[2];     /**< \brief 设备类型 */
+    am_zm516x_rngbuf_handle_t uart_handle;     /**< \brief UART 句柄(环形缓冲区) */
+    am_zm516x_rngbuf_dev_t    uart_rngbuf_dev; /**< \brief UART 设备(环形缓冲区) */
+    am_zm516x_buf_info_t      buf_info;        /**< \brief ZM516X 缓冲区信息 */
+
+    am_wait_t                 ack_wait;        /**< \brief ACK 等待信号 */
+    am_zm516x_dev_info_t     *p_devinfo;       /**< \brief 设备实例信息 */
+    uint8_t                   prtl_type[2];    /**< \brief 协议类型 */
+
+    uint8_t                   is_rsp;          /**< \brief 当前rsp接收状态 */
 } am_zm516x_dev_t;
 
 /** \brief ZM516X 模块标准服务操作句柄类型定义 */
@@ -268,13 +331,15 @@ am_err_t am_zm516x_cfg_channel_set (am_zm516x_handle_t handle, uint8_t chan);
  *
  * 模块接收到本命令后，会向本网段内的相同通道的其他模块发出广播搜索包，运行本公
  * 司固件的 ZigBee 模块都会应答此广播，应答内容会将自己的相关基本信息返回到搜索
- * 发起目标节点。所以搜索前需要设置通道号才能搜索到对应通道的模块
+ * 发起目标节点。所以搜索前需要设置通道号才能搜索到对应通道的模块。
+ * 此函数为同步接口，将强制等待timeout时间以接收应答
  *
  * \param[in]  handle      ZM516X 模块操作句柄
  * \param[in]  buf_size    p_base_info 指向的缓冲区大小，单位为
  *                         sizeof(am_zm516x_base_info_t)
  * \param[out] p_base_info 存储接收到的从机信息的缓冲区
  * \param[out] p_get_size  实际搜索到的模块数量
+ * \param[in]  timeout     超时时间，此时间段外的应答将被忽略
  *
  * \retval  AM_OK     读取成功
  * \retval -AM_EPERM  读取失败
@@ -283,7 +348,8 @@ am_err_t am_zm516x_cfg_channel_set (am_zm516x_handle_t handle, uint8_t chan);
 am_err_t am_zm516x_discover (am_zm516x_handle_t     handle,
                              uint8_t                buf_size,
                              am_zm516x_base_info_t *p_base_info,
-                             uint8_t               *p_get_size);
+                             uint8_t               *p_get_size,
+                             uint32_t               timeout);
 
 /**
  * \brief 获取远程配置信息（永久命令：D5）
