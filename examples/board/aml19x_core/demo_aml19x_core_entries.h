@@ -682,3 +682,11 @@ void demo_hc32l19x_core_drv_pcnt_double_entry (void);
  */
 void demo_hc32l19x_core_drv_pcnt_special_entry (void);
 
+/**
+ * \brief modbus 主机通信例程
+ */
+void demo_hc32l19x_core_mb_master_demo_entry (void);
+/**
+ * \brief modbus 从站通信例程
+ */
+void demo_hc32l19x_core_mb_slave_test_entry (void);
