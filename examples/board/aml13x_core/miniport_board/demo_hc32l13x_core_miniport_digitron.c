@@ -40,7 +40,7 @@
 #include "am_vdebug.h"
 #include "am_hc32l13x_inst_init.h"
 #include "am_digitron_disp.h"
-#include "demo_aml13x_core_entries.h"
+#include "demo_std_entries.h"
 
 /**
  * \brief Àı³ÌÈë¿Ú
