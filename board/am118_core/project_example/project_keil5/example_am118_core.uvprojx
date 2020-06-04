@@ -10,8 +10,7 @@
       <TargetName>debug</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
-      <pCCUsed>5060750::V5.06 update 6 (build 750)::ARMCC</pCCUsed>
-      <uAC6>0</uAC6>
+      <pCCUsed>5060300::V5.06 update 3 (build 300)::ARMCC</pCCUsed>
       <TargetOption>
         <TargetCommonOption>
           <Device>HC32L196PCTA</Device>
@@ -184,7 +183,6 @@
             <hadXRAM>0</hadXRAM>
             <uocXRam>0</uocXRam>
             <RvdsVP>0</RvdsVP>
-            <RvdsMve>0</RvdsMve>
             <hadIRAM2>0</hadIRAM2>
             <hadIROM2>0</hadIROM2>
             <StupSel>8</StupSel>
@@ -325,7 +323,6 @@
             <uThumb>0</uThumb>
             <uSurpInc>0</uSurpInc>
             <uC99>1</uC99>
-            <uGnu>0</uGnu>
             <useXO>0</useXO>
             <v6Lang>3</v6Lang>
             <v6LangP>0</v6LangP>
@@ -541,6 +538,26 @@
               <FileName>am_sensor_hts221.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\components\drivers\source\sensor\am_sensor_hts221.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_ds1302.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\rtc\am_ds1302.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_pcf85063.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\rtc\am_pcf85063.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_rx8025sa.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\rtc\am_rx8025sa.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_rx8025t.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\rtc\am_rx8025t.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -1436,28 +1453,6 @@
         </Group>
         <Group>
           <GroupName>examples_components</GroupName>
-          <Files>
-            <File>
-              <FileName>am_ds1302.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\components\drivers\source\rtc\am_ds1302.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_pcf85063.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\components\drivers\source\rtc\am_pcf85063.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_rx8025sa.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\components\drivers\source\rtc\am_rx8025sa.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_rx8025t.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\components\drivers\source\rtc\am_rx8025t.c</FilePath>
-            </File>
-          </Files>
         </Group>
         <Group>
           <GroupName>examples_soc</GroupName>
@@ -2191,7 +2186,6 @@
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
       <pCCUsed>5060061::V5.06 update 1 (build 61)::ARMCC</pCCUsed>
-      <uAC6>0</uAC6>
       <TargetOption>
         <TargetCommonOption>
           <Device>ARMCM0</Device>
@@ -2364,7 +2358,6 @@
             <hadXRAM>0</hadXRAM>
             <uocXRam>0</uocXRam>
             <RvdsVP>0</RvdsVP>
-            <RvdsMve>0</RvdsMve>
             <hadIRAM2>0</hadIRAM2>
             <hadIROM2>0</hadIROM2>
             <StupSel>8</StupSel>
@@ -2505,7 +2498,6 @@
             <uThumb>0</uThumb>
             <uSurpInc>0</uSurpInc>
             <uC99>1</uC99>
-            <uGnu>0</uGnu>
             <useXO>0</useXO>
             <v6Lang>0</v6Lang>
             <v6LangP>0</v6LangP>
@@ -2721,6 +2713,26 @@
               <FileName>am_sensor_hts221.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\components\drivers\source\sensor\am_sensor_hts221.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_ds1302.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\rtc\am_ds1302.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_pcf85063.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\rtc\am_pcf85063.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_rx8025sa.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\rtc\am_rx8025sa.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_rx8025t.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\rtc\am_rx8025t.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -3616,28 +3628,6 @@
         </Group>
         <Group>
           <GroupName>examples_components</GroupName>
-          <Files>
-            <File>
-              <FileName>am_ds1302.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\components\drivers\source\rtc\am_ds1302.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_pcf85063.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\components\drivers\source\rtc\am_pcf85063.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_rx8025sa.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\components\drivers\source\rtc\am_rx8025sa.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_rx8025t.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\components\drivers\source\rtc\am_rx8025t.c</FilePath>
-            </File>
-          </Files>
         </Group>
         <Group>
           <GroupName>examples_soc</GroupName>
@@ -4367,11 +4357,5 @@
       </Groups>
     </Target>
   </Targets>
-
-  <RTE>
-    <apis/>
-    <components/>
-    <files/>
-  </RTE>
 
 </Project>

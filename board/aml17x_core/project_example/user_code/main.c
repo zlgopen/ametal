@@ -38,7 +38,7 @@ int am_main (void)
     AM_DBG_INFO("Start up successful!\r\n");
 
     /* demoÀý³ÌÈë¿Ú */
-    demo_hc32l17x_core_std_led_entry();
+//    demo_hc32l17x_core_std_led_entry();
 //    demo_hc32l17x_core_std_delay_entry();
 //    demo_hc32l17x_core_std_buzzer_entry();
 //    demo_hc32l17x_core_hw_clk_entry();
@@ -131,7 +131,8 @@ int am_main (void)
 //    demo_hc32l17x_core_miniport_zlg72128_entry();
 //    demo_hc32l17x_core_miniport_hc595_digitron_entry();
 //    demo_hc32l17x_core_miniport_hc595_led_entry();
-
+//    demo_hc32l17x_core_mb_master_demo_entry ();
+      demo_hc32l17x_core_mb_slave_test_entry ();
     while (1) {
 
     }
