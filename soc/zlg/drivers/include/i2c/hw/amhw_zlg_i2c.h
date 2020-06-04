@@ -800,6 +800,33 @@ void amhw_zlg_i2c_sda_setup_set (amhw_zlg_i2c_t *p_hw_i2c, uint8_t val)
 }
 
 /**
+ * \brief I2C 传输终止
+ *        note:  ZML165芯片在读结束时,需要调用该函数进行传输终止,产生停止位,停止位产生后会触发TX_ABRT中断,
+ *               需要在中断产生后在ic_clr_tx_abrt寄存器中写0以保证下次I2C正常传输。
+ * \param[in]  p_hw_i2c  : 指向I2C寄存器结构体的指针
+ *
+ * \return 无
+ */
+am_static_inline
+void amhw_zlg_i2c_trans_abort (amhw_zlg_i2c_t *p_hw_i2c)
+{
+    p_hw_i2c->ic_enable |= 0x02;
+}
+
+/**
+ * \brief I2C 清除tx_abrt寄存器
+ * \param[in]  p_hw_i2c  : 指向I2C寄存器结构体的指针
+ *
+ * \return 无
+ */
+am_static_inline
+void amhw_zlg_i2c_clr_tx_abort (amhw_zlg_i2c_t *p_hw_i2c)
+{
+    p_hw_i2c->ic_clr_tx_abrt = 0;
+}
+
+
+/**
  * \brief I2C接受广播呼叫 响应 ACK
  *
  */

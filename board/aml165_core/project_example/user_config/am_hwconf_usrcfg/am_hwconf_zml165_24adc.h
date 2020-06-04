@@ -12,27 +12,31 @@
 
 /**
  * \file
- * \brief ZLG116 ResetHandler code for GCC compiler
+ * \brief aml165 配置文件
  *
  * \internal
- * \par Modification History
- * - 1.00 18-11-09  htf, first implementation
+ * \par Modification history
+ * - 1.00 19-11-11  htf, first implementation.
  * \endinternal
  */
+#ifndef __AM_HWCONF_ZMF165_ADC_H
+#define __AM_HWCONF_ZMF165_ADC_H
 
-.word  _estack
+#include "ametal.h"
+#include "am_zml165_adc.h"
 
-.section  .text.ResetHandler
-.type    ResetHandler, %function
-.global  ResetHandler
+#ifdef __cplusplus
+extern "C" {
+#endif
 
-ResetHandler:
-    //关中断
-    CPSID  I
-    //初始化SP指针
-    ldr    r0, = _estack
-    msr    msp,r0
-    //调用初始化函数
-    bl     ResetHandler_function
-    b      .
+/**
+ * \brief aml165实例初始化
+ * \return aml165服务句柄，若为NULL，表明初始化失败
+ */
+am_zml165_adc_handle_t am_zml165_24adc_inst_init(void);
 
+#ifdef __cplusplus
+}
+#endif
+
+#endif

@@ -34,7 +34,7 @@
 /* 定义GPIO LED 实例 */
 static am_led_gpio_dev_t  __g_led_gpio;
 
-static const int __g_led_pins[] = {PIOA_12, PIOB_2};
+static const int __g_led_pins[] = {PIOB_4, PIOB_3};
 
 /* 定义GPIO按键实例信息 */
 static const am_led_gpio_info_t __g_led_gpio_info = {

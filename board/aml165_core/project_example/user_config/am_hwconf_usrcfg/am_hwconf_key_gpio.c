@@ -20,7 +20,7 @@
  * - 1.00 17-06-01  nwt, first implementation.
  * \endinternal
  */
-#include <am_aml165_inst_init.h>
+#include "am_aml165_inst_init.h"
 #include "ametal.h"
 #include "am_key_gpio.h"
 #include "zml165_pin.h"
@@ -35,7 +35,7 @@
 /* 定义GPIO按键实例 */
 static am_key_gpio_t __g_key_gpio;
 
-static const int __g_key_pins[]  = {PIOA_8};
+static const int __g_key_pins[]  = {PIOA_13};
 static const int __g_key_codes[] = {KEY_KP0};
 
 /* 定义GPIO按键实例信息 */

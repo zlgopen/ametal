@@ -83,7 +83,7 @@ typedef struct amhw_zml165_rcc {
 typedef enum {
     AMHW_ZML165_SYSCLK_HSI_DIV6,  /**< \brief HSI 振荡器  6 分频作为系统时钟 */
     AMHW_ZML165_SYSCLK_HSE,       /**< \brief HSE 作为系统时钟 */
-    AMHW_ZML165_SYSCLK_PLL,       /**< \brief PLL 输出作为系统时钟 */
+    AMHW_ZML165_SYSCLK_HSI,       /**< \brief PLL 输出作为系统时钟 */
     AMHW_ZML165_SYSCLK_LSI,       /**< \brief LSI 输出作为系统时钟 */
 }amhw_zml165_sys_clk_src;
 

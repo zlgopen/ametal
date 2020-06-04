@@ -40,11 +40,11 @@
  */
 
 /** [src_aml165_core_std_tim3_cap] */
-#include <am_aml165_inst_init.h>
 #include "ametal.h"
 #include "am_pwm.h"
 #include "am_vdebug.h"
 #include "demo_std_entries.h"
+#include "am_aml165_inst_init.h"
 #include "demo_aml165_core_entries.h"
 
 /**

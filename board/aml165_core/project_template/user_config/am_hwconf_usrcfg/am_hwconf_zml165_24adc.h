@@ -33,7 +33,7 @@ extern "C" {
  * \brief aml165实例初始化
  * \return aml165服务句柄，若为NULL，表明初始化失败
  */
-am_zml165_adc_handle_t am_zml165_adc_inst_init(void);
+am_zml165_adc_handle_t am_zml165_24adc_inst_init(void);
 
 #ifdef __cplusplus
 }

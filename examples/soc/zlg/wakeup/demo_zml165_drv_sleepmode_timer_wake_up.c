@@ -42,7 +42,7 @@
 #include "am_vdebug.h"
 #include "am_zml165.h"
 #include "am_zml165_pwr.h"
-#include "am_zlg115_clk.h"
+#include "am_zml165_clk.h"
 #include "hw/amhw_zlg_uart.h"
 /**
  * \brief 定时器回调函数
@@ -81,7 +81,7 @@ am_local void __sysclk_switch_to_pll (void)
     while (amhw_zml165_rcc_hsirdy_read() == AM_FALSE);
 
     /* 系统时钟选为 PLL */
-    amhw_zml165_rcc_sys_clk_set(AMHW_ZLG115_SYSCLK_HSI);
+    amhw_zml165_rcc_sys_clk_set(AMHW_ZML165_SYSCLK_HSI);
 
     /* 在正常模式下禁能 LSI 作为系统时钟 */
     amhw_zml165_rcc_lsi_disable();
