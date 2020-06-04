@@ -1566,6 +1566,16 @@
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\board\aml17x_core\rtc\demo_hc32l17x_core_std_rtc.c</FilePath>
             </File>
+            <File>
+              <FileName>demo_hc32l17x_core_mb_master.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\aml17x_core\modbus\demo_hc32l17x_core_mb_master.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_hc32l17x_core_mb_slave.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\aml17x_core\modbus\demo_hc32l17x_core_mb_slave.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -2175,16 +2185,6 @@
               <FileName>demo_std_shtc1.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\std\sensor\shtc1\demo_std_shtc1.c</FilePath>
-            </File>
-            <File>
-              <FileName>demo_hc32l17x_core_mb_master.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\aml17x_core\modbus\demo_hc32l17x_core_mb_master.c</FilePath>
-            </File>
-            <File>
-              <FileName>demo_hc32l17x_core_mb_slave.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\aml17x_core\modbus\demo_hc32l17x_core_mb_slave.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -4025,6 +4025,16 @@
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\board\aml17x_core\rtc\demo_hc32l17x_core_std_rtc.c</FilePath>
             </File>
+            <File>
+              <FileName>demo_hc32l17x_core_mb_master.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\aml17x_core\modbus\demo_hc32l17x_core_mb_master.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_hc32l17x_core_mb_slave.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\aml17x_core\modbus\demo_hc32l17x_core_mb_slave.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -4634,16 +4644,6 @@
               <FileName>demo_std_shtc1.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\std\sensor\shtc1\demo_std_shtc1.c</FilePath>
-            </File>
-            <File>
-              <FileName>demo_hc32l17x_core_mb_master.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\aml17x_core\modbus\demo_hc32l17x_core_mb_master.c</FilePath>
-            </File>
-            <File>
-              <FileName>demo_hc32l17x_core_mb_slave.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\aml17x_core\modbus\demo_hc32l17x_core_mb_slave.c</FilePath>
             </File>
           </Files>
         </Group>

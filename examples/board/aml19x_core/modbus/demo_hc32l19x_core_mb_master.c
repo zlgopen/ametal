@@ -435,7 +435,7 @@ am_mb_err_t _mb_mst_com_funcode_interfaces_test(am_mb_master_handle mb_mst_handl
 }
 
 /******************************************************************************/
-void demo_hc32l17x_core_mb_master_demo_entry (void)
+void demo_hc32l19x_core_mb_master_demo_entry (void)
 {
     uint8_t             slave_addr  = 0x01;
     uint32_t            ack_timeout = 3000;
@@ -508,9 +508,6 @@ void demo_hc32l17x_core_mb_master_demo_entry (void)
     if (AM_MB_ERR_NOERR != err) {
         AM_DBG_INFO("Modbus Master Station Delete Error! Error Code = %d\n", err);
     }
-
-
-
 
     while(1);
 }

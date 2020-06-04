@@ -1596,6 +1596,16 @@
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\board\aml19x_core\rtc\demo_hc32l19x_core_std_rtc.c</FilePath>
             </File>
+            <File>
+              <FileName>demo_hc32l19x_core_mb_master.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\aml19x_core\modbus\demo_hc32l19x_core_mb_master.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_hc32l19x_core_mb_slave.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\aml19x_core\modbus\demo_hc32l19x_core_mb_slave.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -1737,9 +1747,6 @@
               <FilePath>..\..\..\..\examples\components\drivers\demo_zsn603_piccb_active_test.c</FilePath>
             </File>
           </Files>
-        </Group>
-        <Group>
-          <GroupName>examples_components</GroupName>
         </Group>
         <Group>
           <GroupName>examples_soc</GroupName>
@@ -4084,6 +4091,21 @@
               <FilePath>..\..\..\..\examples\board\aml19x_core\rtc\demo_hc32l19x_core_std_rtc.c</FilePath>
             </File>
             <File>
+              <FileName>demo_hc32l19x_core_mb_master.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\aml19x_core\modbus\demo_hc32l19x_core_mb_master.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_hc32l19x_core_mb_slave.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\aml19x_core\modbus\demo_hc32l19x_core_mb_slave.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>examples_components</GroupName>
+          <Files>
+            <File>
               <FileName>demo_ep24cxx.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\components\drivers\demo_ep24cxx.c</FilePath>
@@ -4219,9 +4241,6 @@
               <FilePath>..\..\..\..\examples\components\drivers\demo_zsn603_piccb_active_test.c</FilePath>
             </File>
           </Files>
-        </Group>
-        <Group>
-          <GroupName>examples_components</GroupName>
         </Group>
         <Group>
           <GroupName>examples_soc</GroupName>
