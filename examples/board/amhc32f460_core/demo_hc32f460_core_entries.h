@@ -467,6 +467,10 @@ void demo_hc32f460_drv_lpmode_wake_up_entry (void);
  * \brief WWDG 例程，通过 HW 层接口实现
  */
 void demo_hc32f460_core_hw_wdt_entry (void);
+/**
+ * \brief WWDG 中断例程，通过 驱动 层接口实现
+ */
+void demo_hc32f460_core_drv_wdt_int_entry (void);
 
 /**
  * \brief WWDG 例程，通过标准接口实现
@@ -734,3 +738,13 @@ void demo_hc32f460_core_std_can_entry (void);
  * \brief SD卡多块读写例程，通过标准层接口实现
  */
 void demo_hc32f460_core_std_sdcard_entry (void);
+
+/**
+ * \brief 专用看门狗 中断例程，通过 驱动 层接口实现
+ */
+void demo_hc32f460_core_drv_swdt_int_entry (void);
+
+/**
+ * \brief MPU 内存保护例程，通过 HW 层接口实现
+ */
+void demo_hc32f460_core_hw_mpu_entry (void);

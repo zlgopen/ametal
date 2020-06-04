@@ -112,6 +112,11 @@ int am_main (void)
 //    demo_hc32f460_core_hw_adc_awd_entry();
 //    demo_hc32f460_core_hw_adc_sync_entry();
 //    demo_hc32f460_core_std_sdcard_entry();
+//    demo_hc32f460_core_hw_wdt_entry();
+//    demo_hc32f460_core_std_wdt_entry();
+//    demo_hc32f460_core_drv_wdt_int_entry();
+//    demo_hc32f460_core_drv_swdt_int_entry();
+//    demo_hc32f460_core_hw_mpu_entry();
     while (1) {
 
     }

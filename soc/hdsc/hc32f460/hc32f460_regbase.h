@@ -77,6 +77,9 @@ extern "C" {
 #define HC32F460_ADC2_BASE          (0x40040400UL)  /** \brief ADC2基地址 */
 #define HC32F460_SDIOC1_BASE        (0x4006FC00UL)  /** \brief SDIOC1基地址 */
 #define HC32F460_SDIOC2_BASE        (0x40070000UL)  /** \brief SDIOC2基地址 */
+#define HC32F460_WDT_BASE           (0x40049000UL)  /** \brief WDT基地址 */
+#define HC32F460_SWDT_BASE          (0x40049400UL)  /** \brief SWDT基地址 */
+#define HC32F460_MPU_BASE           (0x40050000UL)  /** \brief MPU基地址 */
 
 /**
  * \name 外设内存映射地址定义
