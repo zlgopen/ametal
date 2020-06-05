@@ -748,3 +748,38 @@ void demo_hc32f460_core_drv_swdt_int_entry (void);
  * \brief MPU 内存保护例程，通过 HW 层接口实现
  */
 void demo_hc32f460_core_hw_mpu_entry (void);
+
+/**
+ * \brief HASH 消息摘要计算例程，通过 HW 层接口实现
+ */
+void demo_hc32f460_core_hw_hash_entry (void);
+
+/**
+ * \brief HASH 消息摘要计算例程，通过 DRV 层接口实现
+ */
+void demo_hc32f460_core_drv_hash_entry(void);
+
+/**
+ * \brief TRNG 随机数产生例程，通过 HW 层接口实现
+ */
+void demo_hc32f460_core_hw_trng_generate_entry (void);
+
+/**
+ * \brief TRNG 随机数产生例程，通过 DRV 层接口实现
+ */
+void demo_hc32f460_core_drv_trng_entry(void);
+
+/**
+ * \brief AES 加密解密例程，通过 HW 层接口实现
+ */
+void demo_hc32f460_core_hw_aes_ency_decy_entry (void);
+
+/**
+ * \brief AES 加密解密例程，通过 DRV 层接口实现
+ */
+void demo_hc32f460_core_drv_aes_entry (void);
+
+/**
+ * \brief DCU 数据计算例程，通过HW接口实现
+ */
+void demo_hc32f460_core_hw_dcu_entry (void);

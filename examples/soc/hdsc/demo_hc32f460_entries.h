@@ -34,6 +34,13 @@
 #include "am_hc32f460_qspi.h"
 #include "hw/amhw_hc32f460_spi.h"
 #include "hw/amhw_hc32f460_wdt.h"
+#include "hw/amhw_hc32f460_hash.h"
+#include "hw/amhw_hc32f460_trng.h"
+#include "hw/amhw_hc32f460_aes.h"
+#include "hw/amhw_hc32f460_dcu.h"
+#include "am_hc32f460_hash.h"
+#include "am_hc32f460_trng.h"
+#include "am_hc32f460_aes.h"
 #include "am_wdt.h"
 
 
@@ -362,6 +369,83 @@ void demo_hc32f460_drv_swdt_int_entry (am_wdt_handle_t handle,
  * \return 无
  */
 void demo_hc32f460_hw_mpu_entry (void *p_hw_mpu);
+
+/**
+ * \brief HASH 消息摘要产生例程，通过 HW 层接口实现
+ *
+ * \param[in] p_hw_hash     指向 HASH 外设寄存器块的指针
+ * \param[in] data_len      原始数据长度（字节）
+ * \param[in] p_hash_data   指向存放原始数据的BUFFER的指针
+ * \param[in] p_hash_digest 指向存放消息摘要的BUFFER的指针
+ *
+ * \return 无
+ */
+void demo_hc32f460_hw_hash_entry(void     *p_hw_hash,
+                                 uint32_t  data_len,
+                                 uint8_t  *p_hash_data,
+                                 uint8_t  *p_hash_digest);
+
+/**
+ * \brief HASH 消息摘要产生例程，通过 驱动 层接口实现
+ *
+ * \param[in] p_hw_trng 指向 HASH服务的handle
+ *
+ * \return 无
+ */
+void demo_hc32f460_drv_hash_generate_entry (am_hash_handle_t handle);
+
+/**
+ * \brief TRNG 随机数产生例程，通过 HW 层接口实现
+ *
+ * \param[in] p_hw_trng 指向 TRNG 外设寄存器块的指针
+ *
+ * \return 无
+ */
+void demo_hc32f460_hw_trng_generate_entry (void *p_hw_trng);
+
+/**
+ * \brief TRNG 随机数产生例程，通过 DRV 层接口实现
+ *
+ * \param[in] p_hw_trng 指向 TRNG服务的handle
+ *
+ * \return 无
+ */
+void demo_hc32f460_drv_trng_generate_entry (am_trng_handle_t handle);
+
+/**
+ * \brief AES 加密解密例程，通过 HW 层接口实现
+ *
+ * \param[in] p_hw_uart  指向 AES 外设寄存器块的指针
+ * \param[in] p_aes_data 指向 要加密的数据
+ * \param[in] p_key_data 指向 密钥
+ *
+ * \return 无
+ */
+void demo_hc32f460_hw_aes_ency_decy_entry (void     *p_hw_aes,
+                                           uint32_t *p_aes_data,
+                                           uint32_t *p_key_data);
+
+/**
+ * \brief AES 加密解密例程，通过 DRV 层接口实现
+ *
+ * \param[in] p_hw_uart  指向 AES 服务的handle
+ * \param[in] p_aes_data 指向 要加密的数据
+ * \param[in] p_key_data 指向 密钥
+ *
+ * \return 无
+ */
+void demo_hc32f460_drv_aes_ency_decy_entry (am_aes_handle_t  handle,
+                                            uint32_t        *p_aes_data,
+                                            uint32_t        *p_key_data);
+
+/**
+ * \brief DCU 数据计算单元例程，通过 硬件 层接口实现
+ *
+ * \param[in] p_hw_dcu 指向 DCU 外设寄存器块的指针
+ *
+ * \return 无
+ */
+void demo_hc32f460_hw_dcu_entry (void *p_hw_dcu);
 
 #ifdef __cplusplus
 }
