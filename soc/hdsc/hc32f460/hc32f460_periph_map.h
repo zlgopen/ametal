@@ -42,6 +42,9 @@ extern "C" {
 #include "hw/amhw_hc32f460_wdt.h"
 #include "hw/amhw_hc32f460_swdt.h"
 #include "hw/amhw_hc32f460_mpu.h"
+#include "hw/amhw_hc32f460_hash.h"
+#include "hw/amhw_hc32f460_trng.h"
+#include "hw/amhw_hc32f460_aes.h"
 /**
  * \addtogroup amhw_hc32f460_if_periph_map
  * \copydoc amhw_hc32f460_periph_map.h
@@ -89,6 +92,13 @@ extern "C" {
 #define HC32F460_WDT            ((amhw_hc32f460_wdt_t  *)HC32F460_WDT_BASE)
 #define HC32F460_SWDT           ((amhw_hc32f460_swdt_t  *)HC32F460_SWDT_BASE)
 #define HC32F460_MPU            ((amhw_hc32f460_mpu_t  *)HC32F460_MPU_BASE)
+#define HC32F460_HASH           ((amhw_hc32f460_hash_t *)HC32F460_HASH_BASE)
+#define HC32F460_TRNG           ((amhw_hc32f460_trng_t *)HC32F460_TRNG_BASE)
+#define HC32F460_AES            ((amhw_hc32f460_aes_t *)HC32F460_AES_BASE)
+#define HC32F460_DCU1           ((amhw_hc32f460_dcu_t *)HC32F460_DCU1_BASE)
+#define HC32F460_DCU2           ((amhw_hc32f460_dcu_t *)HC32F460_DCU2_BASE)
+#define HC32F460_DCU3           ((amhw_hc32f460_dcu_t *)HC32F460_DCU3_BASE)
+#define HC32F460_DCU4           ((amhw_hc32f460_dcu_t *)HC32F460_DCU4_BASE)
 
 /** @} */
 

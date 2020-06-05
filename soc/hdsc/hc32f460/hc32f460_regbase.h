@@ -80,6 +80,13 @@ extern "C" {
 #define HC32F460_WDT_BASE           (0x40049000UL)  /** \brief WDT基地址 */
 #define HC32F460_SWDT_BASE          (0x40049400UL)  /** \brief SWDT基地址 */
 #define HC32F460_MPU_BASE           (0x40050000UL)  /** \brief MPU基地址 */
+#define HC32F460_HASH_BASE          (0x40008400UL)  /** \brief HASH基地址 */
+#define HC32F460_TRNG_BASE          (0x40041000UL)  /** \brief TRNG基地址 */
+#define HC32F460_AES_BASE           (0x40008000UL)  /** \brief AES基地址 */
+#define HC32F460_DCU1_BASE          (0x40052000UL)  /** \brief DCU1基地址 */
+#define HC32F460_DCU2_BASE          (0x40052400UL)  /** \brief DCU2基地址 */
+#define HC32F460_DCU3_BASE          (0x40052800UL)  /** \brief DCU3基地址 */
+#define HC32F460_DCU4_BASE          (0x40052C00UL)  /** \brief DCU4基地址 */
 
 /**
  * \name 外设内存映射地址定义
