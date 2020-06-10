@@ -37,6 +37,7 @@
 #include "am_delay.h"
 #include "am_thermocouple.h"
 #include "math.h"
+#include "demo_zlg_entries.h"
 /**
  * \brief 测试AML166外接热电偶测量温度例程
  */
