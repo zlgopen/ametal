@@ -100,9 +100,9 @@ int am_main (void)
 //    demo_aml166_core_std_iwdg_entry();
 //    demo_aml166_core_std_wwdg_entry();
     demo_aml166_core_zml166_adc_pt100_measure();
-//    demo_aml166_core_zml166_adc_vol_measure();
-//    demo_aml166_core_zml166_adc_thermocouple_measure();
-//    demo_aml166_core_zml166_adc_vol_para_adjuet();
+    demo_aml166_core_zml166_adc_vol_measure();
+    demo_aml166_core_zml166_adc_thermocouple_measure();
+    demo_aml166_core_zml166_adc_vol_para_adjuet();
 //    demo_aml166_core_microport_ds1302_entry();
 //    demo_aml166_core_microport_eeprom_entry();
 //    demo_aml166_core_microport_eeprom_nvram_entry();
