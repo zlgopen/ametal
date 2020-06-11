@@ -37,7 +37,7 @@
 #include "string.h"
 #include "am_vdebug.h"
 #include "am_zml166_adc.h"
-#include "demo_zlg_entries.h"
+
 
 /*\brief  ∫Í∂®“Â*/
 #define AM_ADJUST_RANGE_ADJUST_1    (0.01)
