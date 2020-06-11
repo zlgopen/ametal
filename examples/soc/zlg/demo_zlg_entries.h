@@ -1612,9 +1612,9 @@ void demo_zml166_adc_vol_measure_entry(void                   *p_handle,
  * \param[in] type        热电偶类型
  * \return 无
  */
-void demo_zml166_adc_thermocouple_measure_entry(void              *p_handle,
-                                                float             *p_para,
-                                                void              *temp_handle);
+void dome_zml166_adc_thermocouple_measure_entry(void     *p_handle,
+                                                float    *p_para,
+                                                void     *p_ther_handle);
 
 /**
  * \brief ZML166 ADC 电压校准程序

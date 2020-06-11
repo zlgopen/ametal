@@ -590,11 +590,6 @@
               <FilePath>..\..\..\..\components\drivers\source\uart\am_sc16is7xx.c</FilePath>
             </File>
             <File>
-              <FileName>am_zm516x.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\components\drivers\source\zigbee\am_zm516x.c</FilePath>
-            </File>
-            <File>
               <FileName>am_pt100_to_temperature.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\components\drivers\source\pt100\am_pt100_to_temperature.c</FilePath>
@@ -1765,11 +1760,6 @@
               <FileName>am_sc16is7xx.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\components\drivers\source\uart\am_sc16is7xx.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_zm516x.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\components\drivers\source\zigbee\am_zm516x.c</FilePath>
             </File>
             <File>
               <FileName>am_pt100_to_temperature.c</FileName>
