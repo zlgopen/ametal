@@ -42,6 +42,7 @@ int am_main (void)
     AM_DBG_INFO("Start up successful!\r\n");
     /* demoÀý³ÌÈë¿Ú */
     demo_hc32f460_core_std_led_entry();
+//    demo_hc32f460_core_std_key_input_event_entry();
 //    demo_hc32f460_core_std_gpio_entry();
 //    demo_hc32f460_core_std_gpio_trigger_entry();
 //    demo_hc32f460_core_hw_gpio_entry();
