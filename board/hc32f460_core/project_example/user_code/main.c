@@ -91,6 +91,7 @@ int am_main (void)
 //    demo_hc32f460_core_std_i2c_master_async_entry();
 //    demo_hc32f460_core_hw_i2c_master_poll_entry();
 //    demo_hc32f460_core_hw_i2c_slave_poll_entry();
+//    demo_hc32f460_core_std_i2c_slave_int_entry();
 //    demo_hc32f460_core_std_rtc_entry();
 //    demo_hc32f460_core_std_can_entry();
 //    demo_hc32f460_core_drv_dma_m2m_entry();
