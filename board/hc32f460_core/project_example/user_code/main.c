@@ -126,6 +126,7 @@ int am_main (void)
 //    demo_hc32f460_core_hw_aes_ency_decy_entry();
 //    demo_hc32f460_core_drv_aes_entry();
 //    demo_hc32f460_core_hw_dcu_entry();
+//    demo_hc32f460_core_hw_cmp_entry();
     while (1) {
 
     }
