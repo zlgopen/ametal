@@ -72,9 +72,9 @@ static void dma_isr (void *p_arg , uint32_t flag)
     }
 }
 
-static void __hc32_adc_init (amhw_hc32_adc_t *p_hw_adc,
-                               int               *p_adc_chan,
-                               int                chan_num)
+static void __hc32_adc_init (amhw_hc32_adc_t   *p_hw_adc,
+                             int               *p_adc_chan,
+                             int                chan_num)
 {
     int i;
 
@@ -103,20 +103,20 @@ static void __hc32_adc_init (amhw_hc32_adc_t *p_hw_adc,
 
     /* 设置转换周期 */
     amhw_hc32_adc_sample_period_sel(p_hw_adc,
-                                  AMHW_HC32_ADC_SAMPLE_PERIOD_12);
+                                    AMHW_HC32_ADC_SAMPLE_PERIOD_12);
 
     /* 设置ADC时钟分频 */
     amhw_hc32_adc_pclk_div_sel(p_hw_adc, AMHW_HC32_ADC_PCLK_DIV8);
 
     /* 对齐方式设置 */
     amhw_hc32_adc_align_way_sel(p_hw_adc,
-                              AMHW_HC32_ADC_DATA_ALIGN_RIGHT);
+                                AMHW_HC32_ADC_DATA_ALIGN_RIGHT);
 
     /* 链接ADC顺序扫描转换通道和引脚 */
     for(i = 0; i < chan_num; i++) {
         amhw_hc32_adc_sqr_chan_sel(p_hw_adc,
-                                     i,
-                                     (amhw_hc32_adc_chan_sel_t)p_adc_chan[i]);
+                                   i,
+                                   (amhw_hc32_adc_chan_sel_t)p_adc_chan[i]);
     }
 
     amhw_hc32_adc_sqr_num_set(p_hw_adc, chan_num - 1);
@@ -173,15 +173,15 @@ void demo_hc32_hw_adc_dma_entry (void    *p_hw_adc,
             AMHW_HC32_DMA_CHAN_CIRCULAR_MODE_ENABLE ;   /* 开启循环模式 */
 
     /* 建立通道描述符 */
-    am_hc32_dma_xfer_desc_build(&g_desc,                        /* 通道描述符 */
-                                  (uint32_t)(&(p_adc->sqrresult[0])),/* 源端数据缓冲 */
-                                  (uint32_t)(__g_buf_dst),        /* 目标数据缓冲 */
-                                  (uint32_t)1,                    /* 传输字节数 */
-                                  flags);                         /* 传输配置 */
+    am_hc32_dma_xfer_desc_build(&g_desc,                            /* 通道描述符 */
+                                (uint32_t)(&(p_adc->sqrresult[0])), /* 源端数据缓冲 */
+                                (uint32_t)(__g_buf_dst),            /* 目标数据缓冲 */
+                                (uint32_t)1,                        /* 传输字节数 */
+                                flags);                             /* 传输配置 */
 
     am_hc32_dma_xfer_desc_chan_cfg(&g_desc,
-                                     AMHW_HC32_DMA_PER_TO_MER, /* 外设到内存 */
-                                     dma_chan);
+                                   AMHW_HC32_DMA_PER_TO_MER,    /* 外设到内存 */
+                                   dma_chan);
 
     /* 默认通道0和通道1优先级一样（轮询）*/
     am_hc32_dma_priority_same();
@@ -200,20 +200,24 @@ void demo_hc32_hw_adc_dma_entry (void    *p_hw_adc,
         /* 顺序扫描转换启动 */
         amhw_hc32_adc_sqr_convert_start(p_adc);
 
-        while(g_trans_done == AM_FALSE); /* 等待传输完成 */
+        /* 等待传输完成 */
+        if (AM_FALSE == g_trans_done) {
+            am_mdelay(500);
+            continue;
+        }
 
         for (i = 0; i < chan_num; i++) {
 
             /* 转换为电压值对应的整数值 */
             adc_mv = __g_adc_dat[i] * vref_mv / ((1UL << 12) -1);
 
-            am_kprintf("chan: %d, Sample : %d, Vol: %d mv\r\n", i,
-                                                                __g_adc_dat[i],
-                                                                adc_mv);
+            am_kprintf("chan: %d, Sample : %d, Vol: %d mv\r\n",
+                       i,
+                       __g_adc_dat[i],
+                       adc_mv);
         }
 
         am_kprintf("\r\n");
-        am_mdelay(500);
 
         g_trans_done = AM_FALSE;
     }

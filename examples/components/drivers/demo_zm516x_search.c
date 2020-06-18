@@ -241,7 +241,8 @@ void demo_zm516x_search_entry (am_zm516x_handle_t zm516x_handle)
         if (am_zm516x_discover(zm516x_handle,
                                5,
                                base_info,
-                              &get_size) != AM_OK) {
+                              &get_size,
+                               1000) != AM_OK) {
             AM_DBG_INFO("channel %d has not found the device\r\n", i);
         } else {
             AM_DBG_INFO("\r\nchannel %d has found %d device\r\n", i, get_size);
