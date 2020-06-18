@@ -119,7 +119,7 @@ const am_hc32f460_timea_cap_devinfo_t  __g_timea1_cap_devinfo = {
     INUM_TIMERA_1,                          /**< \brief TIMEA1中断编号 */
 //    AMHW_HC32F460_TIMEA_CLK_DIV256,         /**< \brief 时钟分频系数 */
     AMHW_HC32F460_TIMEA_CLK_DIV1024,         /**< \brief 时钟分频系数 */
-    8,                                      /**< \brief 2个捕获通道 */
+    8,                                      /**< \brief 8个捕获通道 */
     0,                                      /**< \brief 是否使能同步模式
                                             *          1：使能
                                             *          0：失能

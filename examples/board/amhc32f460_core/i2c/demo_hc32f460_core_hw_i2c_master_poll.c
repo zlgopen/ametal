@@ -14,11 +14,11 @@
  * \brief I2C 从机例程(此例程可以用来模拟 EEPROM)，通过 HW 层接口实现
  *
  * - 操作步骤：
- *   1. PIOA_11 引脚连接 I2C 主机的 SCL 引脚；
- *   2. PIOA_12 引脚连接 I2C 主机的 SDA 引脚。
+ *   1. PIOC_4 引脚连接 I2C 从机的 SCL 引脚；
+ *   2. PIOC_5 引脚连接 I2C 从机的 SDA 引脚。
  *
  * \note
- *    当前 I2C 的 SCL 引脚使用的是 PIOA_11，SDA 引脚使用的是 PIOA_12，
+ *    当前 I2C 的 SCL 引脚使用的是 PIOC_4，SDA 引脚使用的是 PIOC_5，
  *    可根据实际情况更换引脚。
  *
  * \par 源代码

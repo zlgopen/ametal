@@ -722,7 +722,8 @@ extern am_hc32f460_adtim_cap_dev_t  __g_adtim63_cap_dev;
 
 extern am_hc32f460_i2c_dev_t __g_hc32f460_i2c1_dev;
 extern am_hc32f460_i2c_dev_t __g_i2c1_dev;
-
+extern am_hc32f460_i2c_dev_t __g_i2c2_dev;
+extern am_hc32f460_i2c_dev_t __g_i2c3_dev;
 extern am_hc32f460_rtc_dev_t __g_rtc_dev;
 
 /*! Bit mask definition*/
@@ -2255,99 +2256,99 @@ void IRQ141_Handler(void *parg)
     uint32_t VSSEL141 = HC32F460_INTC.VSSEL[141 - 128];
     uint32_t u32Tmp1 = 0ul;
     uint32_t u32Tmp2 = 0ul;
-//    /* I2C Ch.1 Receive completed */
-//    if(Set == bM4_I2C1_CR2_RFULLIE)
-//    {
-//        if ((Set == bM4_I2C1_SR_RFULLF) && (VSSEL141 & BIT_MASK_04))
-//        {
-//            I2c1RxEnd_IrqHandler(&__g_hc32f460_i2c1_dev);
-//        }
-//    }
-//    /* I2C Ch.1 Transmit completed */
-//    if(Set == bM4_I2C1_CR2_TENDIE)
-//    {
-//        if ((Set == bM4_I2C1_SR_TENDF) && (VSSEL141 & BIT_MASK_05))
-//        {
-//            I2c1TxEnd_IrqHandler(&__g_hc32f460_i2c1_dev);
-//        }
-//    }
-//    /* I2C Ch.1 Transmit data empty */
-//    if(Set == bM4_I2C1_CR2_TEMPTYIE)
-//    {
-//        if ((Set == bM4_I2C1_SR_TEMPTYF) && (VSSEL141 & BIT_MASK_06))
-//        {
-//            I2c1TxEmpty_IrqHandler(&__g_hc32f460_i2c1_dev);
-//        }
-//    }
-//    /* I2C Ch.1 Error */
-//    u32Tmp1 = HC32F460_I2C1->CR2 & 0x00F05217ul;
-//    u32Tmp2 = HC32F460_I2C1->SR & 0x00F05217ul;
-//    if ((u32Tmp1 & u32Tmp2) && (VSSEL141 & BIT_MASK_07))
-//    {
-//        I2c1Err_IrqHandler(&__g_hc32f460_i2c1_dev);
-//    }
-//    /* I2C Ch.2 Receive completed */
-//    if(Set == bM4_I2C2_CR2_RFULLIE)
-//    {
-//        if ((Set == bM4_I2C2_SR_RFULLF) && (VSSEL141 & BIT_MASK_08))
-//        {
-//            I2c2RxEnd_IrqHandler();
-//        }
-//    }
-//    /* I2C Ch.2 Transmit completed */
-//    if(Set == bM4_I2C2_CR2_TENDIE)
-//    {
-//        if ((Set == bM4_I2C2_SR_TENDF)  && (VSSEL141 & BIT_MASK_09))
-//        {
-//            I2c2TxEnd_IrqHandler();
-//        }
-//    }
-//    /* I2C Ch.2 Transmit data empty */
-//    if(Set == bM4_I2C2_CR2_TEMPTYIE)
-//    {
-//        if ((Set == bM4_I2C2_SR_TEMPTYF) && (VSSEL141 & BIT_MASK_10))
-//        {
-//            I2c2TxEmpty_IrqHandler();
-//        }
-//    }
-//    /* I2C Ch.2 Error */
-//    u32Tmp1 = HC32F460_I2C2->CR2 & 0x00F05217ul;
-//    u32Tmp2 = HC32F460_I2C2->SR & 0x00F05217ul;
-//    if ((u32Tmp1 & u32Tmp2) && (VSSEL141 & BIT_MASK_11))
-//    {
-//        I2c2Err_IrqHandler();
-//    }
-//    /* I2C Ch.3 Receive completed */
-//    if(Set == bM4_I2C3_CR2_RFULLIE)
-//    {
-//        if ((Set == bM4_I2C3_SR_RFULLF) && (VSSEL141 & BIT_MASK_12))
-//        {
-//            I2c3RxEnd_IrqHandler();
-//        }
-//    }
-//    /* I2C Ch.3 Transmit completed */
-//    if(Set == bM4_I2C3_CR2_TENDIE)
-//    {
-//        if ((Set == bM4_I2C3_SR_TENDF)  && (VSSEL141 & BIT_MASK_13))
-//        {
-//            I2c3TxEnd_IrqHandler();
-//        }
-//    }
-//    /* I2C Ch.3 Transmit data empty */
-//    if(Set == bM4_I2C3_CR2_TEMPTYIE)
-//    {
-//        if ((Set == bM4_I2C3_SR_TEMPTYF) && (VSSEL141 & BIT_MASK_14))
-//        {
-//            I2c3TxEmpty_IrqHandler();
-//        }
-//    }
-//    /* I2C Ch.3 Error */
-//    u32Tmp1 = HC32F460_I2C3->CR2 & 0x00F05217ul;
-//    u32Tmp2 = HC32F460_I2C3->SR & 0x00F05217ul;
-//    if ((u32Tmp1 & u32Tmp2) && (VSSEL141 & BIT_MASK_15))
-//    {
-//        I2c3Err_IrqHandler();
-//    }
+    /* I2C Ch.1 Receive completed */
+    if(Set == bM4_I2C1_CR2_RFULLIE)
+    {
+        if ((Set == bM4_I2C1_SR_RFULLF) && (VSSEL141 & BIT_MASK_04))
+        {
+            I2c1RxEnd_IrqHandler(&__g_i2c1_dev);
+        }
+    }
+    /* I2C Ch.1 Transmit completed */
+    if(Set == bM4_I2C1_CR2_TENDIE)
+    {
+        if ((Set == bM4_I2C1_SR_TENDF) && (VSSEL141 & BIT_MASK_05))
+        {
+            I2c1TxEnd_IrqHandler(&__g_i2c1_dev);
+        }
+    }
+    /* I2C Ch.1 Transmit data empty */
+    if(Set == bM4_I2C1_CR2_TEMPTYIE)
+    {
+        if ((Set == bM4_I2C1_SR_TEMPTYF) && (VSSEL141 & BIT_MASK_06))
+        {
+            I2c1TxEmpty_IrqHandler(&__g_i2c1_dev);
+        }
+    }
+    /* I2C Ch.1 Error */
+    u32Tmp1 = HC32F460_I2C1->CR2 & 0x00F05217ul;
+    u32Tmp2 = HC32F460_I2C1->SR & 0x00F05217ul;
+    if ((u32Tmp1 & u32Tmp2) && (VSSEL141 & BIT_MASK_07))
+    {
+        I2c1Err_IrqHandler(&__g_i2c1_dev);
+    }
+    /* I2C Ch.2 Receive completed */
+    if(Set == bM4_I2C2_CR2_RFULLIE)
+    {
+        if ((Set == bM4_I2C2_SR_RFULLF) && (VSSEL141 & BIT_MASK_08))
+        {
+            I2c2RxEnd_IrqHandler(&__g_i2c2_dev);
+        }
+    }
+    /* I2C Ch.2 Transmit completed */
+    if(Set == bM4_I2C2_CR2_TENDIE)
+    {
+        if ((Set == bM4_I2C2_SR_TENDF)  && (VSSEL141 & BIT_MASK_09))
+        {
+            I2c2TxEnd_IrqHandler(&__g_i2c2_dev);
+        }
+    }
+    /* I2C Ch.2 Transmit data empty */
+    if(Set == bM4_I2C2_CR2_TEMPTYIE)
+    {
+        if ((Set == bM4_I2C2_SR_TEMPTYF) && (VSSEL141 & BIT_MASK_10))
+        {
+            I2c2TxEmpty_IrqHandler(&__g_i2c2_dev);
+        }
+    }
+    /* I2C Ch.2 Error */
+    u32Tmp1 = HC32F460_I2C2->CR2 & 0x00F05217ul;
+    u32Tmp2 = HC32F460_I2C2->SR & 0x00F05217ul;
+    if ((u32Tmp1 & u32Tmp2) && (VSSEL141 & BIT_MASK_11))
+    {
+        I2c2Err_IrqHandler(&__g_i2c2_dev);
+    }
+    /* I2C Ch.3 Receive completed */
+    if(Set == bM4_I2C3_CR2_RFULLIE)
+    {
+        if ((Set == bM4_I2C3_SR_RFULLF) && (VSSEL141 & BIT_MASK_12))
+        {
+            I2c3RxEnd_IrqHandler(&__g_i2c3_dev);
+        }
+    }
+    /* I2C Ch.3 Transmit completed */
+    if(Set == bM4_I2C3_CR2_TENDIE)
+    {
+        if ((Set == bM4_I2C3_SR_TENDF)  && (VSSEL141 & BIT_MASK_13))
+        {
+            I2c3TxEnd_IrqHandler(&__g_i2c3_dev);
+        }
+    }
+    /* I2C Ch.3 Transmit data empty */
+    if(Set == bM4_I2C3_CR2_TEMPTYIE)
+    {
+        if ((Set == bM4_I2C3_SR_TEMPTYF) && (VSSEL141 & BIT_MASK_14))
+        {
+            I2c3TxEmpty_IrqHandler(&__g_i2c3_dev);
+        }
+    }
+    /* I2C Ch.3 Error */
+    u32Tmp1 = HC32F460_I2C3->CR2 & 0x00F05217ul;
+    u32Tmp2 = HC32F460_I2C3->SR & 0x00F05217ul;
+    if ((u32Tmp1 & u32Tmp2) && (VSSEL141 & BIT_MASK_15))
+    {
+        I2c3Err_IrqHandler(&__g_i2c3_dev);
+    }
 #if 0    
     /* LVD Ch.1 detected */
     if (Set == bM4_SYSREG_PWR_PVDCR1_PVD1IRE)

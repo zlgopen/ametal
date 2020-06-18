@@ -489,7 +489,7 @@ void amhw_hc32f460_i2c_baud_config (amhw_hc32f460_i2c_t * p_hw_i2c,
 
     if (u32Baudrate > 400000ul)
     {
-        while(1);
+        u32Baudrate = 400000ul;
     }
 
     /* Judge digitial filter status*/

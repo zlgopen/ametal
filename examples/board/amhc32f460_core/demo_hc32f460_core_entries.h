@@ -783,3 +783,8 @@ void demo_hc32f460_core_drv_aes_entry (void);
  * \brief DCU 数据计算例程，通过HW接口实现
  */
 void demo_hc32f460_core_hw_dcu_entry (void);
+
+/**
+ * \brief KEY例程，通过标准接口实现
+ */
+void demo_hc32f460_core_std_key_input_event_entry (void);
