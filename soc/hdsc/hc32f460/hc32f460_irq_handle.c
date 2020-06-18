@@ -16,6 +16,7 @@
 #include "am_hc32f460_sdioc.h"
 #include "am_hc32f460_wdt.h"
 #include "am_hc32f460_swdt.h"
+#include "am_hc32f460_usbd.h"
 
 #define AM_HC32F460_INT_EXTI0_MASK    (1 << 0)
 #define AM_HC32F460_INT_EXTI1_MASK    (1 << 1)
@@ -725,7 +726,7 @@ extern am_hc32f460_i2c_dev_t __g_i2c1_dev;
 extern am_hc32f460_i2c_dev_t __g_i2c2_dev;
 extern am_hc32f460_i2c_dev_t __g_i2c3_dev;
 extern am_hc32f460_rtc_dev_t __g_rtc_dev;
-
+extern am_hc32f460_usbd_dev_t  __g_hc32f460_usbd_msc;
 /*! Bit mask definition*/
 #define     BIT_MASK_00                 (1ul << 0)
 #define     BIT_MASK_01                 (1ul << 1)
@@ -909,6 +910,7 @@ void IRQ130_Handler(void)
 #define bM4_TMR63_STFLR_UDFF                      (*((volatile unsigned int*)(0x42310E1CUL)))
 #define bM4_TMR63_STFLR_DTEF                      (*((volatile unsigned int*)(0x42310E20UL)))
 
+#define bM4_USBFS_GAHBCFG_GINTMSK                 (*((volatile unsigned int*)(0x43800100UL)))
 /**
  *******************************************************************************
  ** \brief Int No.131 share IRQ handler
@@ -1375,7 +1377,18 @@ void IRQ136_Handler(void)
     if ((u32Tmp1 & u32Tmp2 & 0xFFul) && (int_vssel136 & BIT_MASK_18))
     {
         TimerA6CMP_IrqHandler(&__g_timea6_cap_dev);
-    }    
+    }
+
+    /* USBFS global interrupt */
+    if(Set == bM4_USBFS_GAHBCFG_GINTMSK)
+    {
+        u32Tmp1 = HC32F460_USB->GINTMSK & 0xF77CFCFBul;
+        u32Tmp2 = HC32F460_USB->GINTSTS & 0xF77CFCFBul;
+        if ((u32Tmp1 & u32Tmp2) && (int_vssel136 & BIT_MASK_19))
+        {
+            UsbGlobal_IrqHandler(&__g_hc32f460_usbd_msc);
+        }
+    }
 }
 extern void __spi_irq_handler (void *p_arg);
 extern am_hc32f460_spi_int_dev_t __g_spi1_int_dev;
