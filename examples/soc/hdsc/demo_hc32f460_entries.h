@@ -42,6 +42,7 @@
 #include "am_hc32f460_trng.h"
 #include "am_hc32f460_aes.h"
 #include "am_wdt.h"
+#include "hw/amhw_hc32f460_adc.h"
 
 
 #ifdef __cplusplus

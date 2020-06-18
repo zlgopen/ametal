@@ -99,6 +99,7 @@ extern "C" {
 #define HC32F460_DCU2           ((amhw_hc32f460_dcu_t *)HC32F460_DCU2_BASE)
 #define HC32F460_DCU3           ((amhw_hc32f460_dcu_t *)HC32F460_DCU3_BASE)
 #define HC32F460_DCU4           ((amhw_hc32f460_dcu_t *)HC32F460_DCU4_BASE)
+#define HC32F460_USB            ((amhw_hc32f460_usbd_t *)HC32F460_USB_OTG_FS_BASE)
 
 /** @} */
 
