@@ -103,15 +103,13 @@ void demo_hc32f460_hw_adc_sync_entry (void    *p_hw_adc1,
                                       uint8_t  chan_adc2,
                                       uint32_t vref_mv)
 {
-    uint8_t                    i        = 0;
-    uint32_t                   adc_mv   = 0;    /* 采样电压 */
-    uint32_t                   sum      = 0;
+    uint32_t                   adc1_mv   = 0;    /* 采样电压 */
+    uint32_t                   sum_adc1  = 0;
+    uint32_t                   adc2_mv   = 0;    /* 采样电压 */
+    uint32_t                   sum_adc2  = 0;
     amhw_hc32f460_adc_t       *p_adc1   = (amhw_hc32f460_adc_t *)p_hw_adc1;
     amhw_hc32f460_adc_t       *p_adc2   = (amhw_hc32f460_adc_t *)p_hw_adc2;
-    amhw_hc32f460_adc_t       *p_adc[2];
 
-    p_adc[0] = p_adc1;
-    p_adc[1] = p_adc2;
     __g_adc1_chan = chan_adc1;
     __g_adc2_chan = chan_adc2;
 
@@ -120,13 +118,13 @@ void demo_hc32f460_hw_adc_sync_entry (void    *p_hw_adc1,
     /* 映射中断源到具体中断向量 */
     amhw_hc32f460_int_sel0_31(int_num_adc1, EVT_ADC1_EOCA);
     /* 连接转换完成中断 */
-    am_int_connect(int_num_adc1, __adc1_isr, p_adc);
+    am_int_connect(int_num_adc1, __adc1_isr, p_adc1);
     am_int_enable(int_num_adc1);
 
     /* 映射中断源到具体中断向量 */
     amhw_hc32f460_int_sel0_31(int_num_adc2, EVT_ADC2_EOCA);
     /* 连接转换完成中断 */
-    am_int_connect(int_num_adc2, __adc2_isr, p_adc);
+    am_int_connect(int_num_adc2, __adc2_isr, p_adc2);
     am_int_enable(int_num_adc2);
 
     /* 停止ADC转换 */
@@ -190,25 +188,25 @@ void demo_hc32f460_hw_adc_sync_entry (void    *p_hw_adc1,
     while(1) {
 
         /* 等待转换完成 */
-        while ((__g_adc1_complete == AM_FALSE) &&
+        while ((__g_adc1_complete == AM_FALSE) ||
                (__g_adc2_complete == AM_FALSE));
 
         __g_adc1_complete = AM_FALSE;
         __g_adc2_complete = AM_FALSE;
 
-        sum = __g_adc1_data;
+        sum_adc1 = __g_adc1_data;
 
         /* 转换为电压值对应的整数值 */
-        adc_mv = sum * 3300 / ((1UL << 12) -1);
+        adc1_mv = sum_adc1 * 3300 / ((1UL << 12) -1);
 
-        AM_DBG_INFO("ADC1 Sample : %d, Vol: %d mv\r\n", sum, adc_mv);
+        AM_DBG_INFO("ADC1 Sample : %d, Vol: %d mv\r\n", sum_adc1, adc1_mv);
 
-        sum = __g_adc2_data;
+        sum_adc2 = __g_adc2_data;
 
         /* 转换为电压值对应的整数值 */
-        adc_mv = sum * 3300 / ((1UL << 12) -1);
+        adc2_mv = sum_adc2 * 3300 / ((1UL << 12) -1);
 
-        AM_DBG_INFO("ADC2 Sample : %d, Vol: %d mv\r\n", sum, adc_mv);
+        AM_DBG_INFO("ADC2 Sample : %d, Vol: %d mv\r\n", sum_adc2, adc2_mv);
 
         am_mdelay(500);
     }

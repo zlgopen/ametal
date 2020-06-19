@@ -120,7 +120,7 @@ static const am_hc32f460_clk_devinfo_t __g_clk_devinfo =
      *    -# AMHW_HC32F460_SYSCLK_XTAL32 ： 外部低速振荡器作为系统时钟
      *    -# AMHW_HC32F460_SYSCLK_MPLL ： MPLL作为系统时钟
      */
-	AMHW_HC32F460_SYSCLK_MPLL,
+    AMHW_HC32F460_SYSCLK_MPLL,
 
     /** \brief
      *    USBCK时钟源选择
@@ -150,36 +150,36 @@ static const am_hc32f460_clk_devinfo_t __g_clk_devinfo =
      **/
     AMHW_HC32F460_SYSCLK_DIV_2,
 
-	/*
-	 *  PCLK0 = SYSCLK / PCLK0_DIV，最高168MHz
-	 *  作用范围：Timer6计数器用时钟
-	 **/
-	AMHW_HC32F460_SYSCLK_DIV_1,
+    /*
+     *  PCLK0 = SYSCLK / PCLK0_DIV，最高168MHz
+     *  作用范围：Timer6计数器用时钟
+     **/
+    AMHW_HC32F460_SYSCLK_DIV_1,
 
-	/*
-	 * PCLK1 = SYSCLK / PCLK1_DIV，最高84MHz
-	 * 作用范围：USARTn(n = 1~4)、SPIn(n=1~4)、USBFS(控制逻辑)、Timer0n(n=1、2)、TimerAn(n=1~6)、
-	 *         Timer6(控制逻辑)、EMB、CRC、HASH、AES、I2Sn(n=1~4)控制逻辑
-	 **/
-	AMHW_HC32F460_SYSCLK_DIV_2,
+    /*
+     * PCLK1 = SYSCLK / PCLK1_DIV，最高84MHz
+     * 作用范围：USARTn(n = 1~4)、SPIn(n=1~4)、USBFS(控制逻辑)、Timer0n(n=1、2)、TimerAn(n=1~6)、
+     *         Timer6(控制逻辑)、EMB、CRC、HASH、AES、I2Sn(n=1~4)控制逻辑
+     **/
+    AMHW_HC32F460_SYSCLK_DIV_2,
 
-	/*
-	 * PCLK2 = SYSCLK / PCLK2_DIV，最高60MHz
-	 * 作用范围：AD变换时钟
-	 **/
-	AMHW_HC32F460_SYSCLK_DIV_4,
+    /*
+     * PCLK2 = SYSCLK / PCLK2_DIV，最高60MHz
+     * 作用范围：AD变换时钟
+     **/
+    AMHW_HC32F460_SYSCLK_DIV_4,
 
-	/*
-	 * PCLK3 = SYSCLK / PCLK3_DIV，最高42MHz
-	 * 作用范围：RTC(控制逻辑)、I2Cn(n=1、2、3)、CMP、WDT、SWDT(控制逻辑)
-	 **/
-	AMHW_HC32F460_SYSCLK_DIV_4,
+    /*
+     * PCLK3 = SYSCLK / PCLK3_DIV，最高42MHz
+     * 作用范围：RTC(控制逻辑)、I2Cn(n=1、2、3)、CMP、WDT、SWDT(控制逻辑)
+     **/
+    AMHW_HC32F460_SYSCLK_DIV_4,
 
-	/*
-	 * PCLK4 = SYSCLK / PCLK4_DIV，最高84MHz
-	 * 作用范围： ADC(控制逻辑)、TRNG
-	 **/
-	AMHW_HC32F460_SYSCLK_DIV_2,
+    /*
+     * PCLK4 = SYSCLK / PCLK4_DIV，最高84MHz
+     * 作用范围： ADC(控制逻辑)、TRNG
+     **/
+    AMHW_HC32F460_SYSCLK_DIV_2,
 
     /** \brief 平台初始化函数，配置引脚等工作 */
     __hc32f460_clk_plfm_init,

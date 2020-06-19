@@ -26,7 +26,6 @@
 #define __CRT_C__
 
 #include <stdint.h>
-
 /***************************************************************************
   外部变量声明
 ***************************************************************************/
@@ -128,9 +127,10 @@ void SystemCoreClockUpdate(void)  // Update SystemCoreClock variable
  */
 void SystemInit (void)
 {
-	SystemCoreClockUpdate();
+    SystemCoreClockUpdate();
 }
-
+#pragma GCC push_options
+#pragma GCC optimize("O0")
 /**
  * \brief 复位中断处理函数，初始化 C 运行环境，包括中断向量表、.data 段、.bss 段，
  *        最后调用 main() 函数
@@ -140,18 +140,23 @@ void ResetHandler_function (void)
     uint32_t *p_src;
     uint32_t *p_dest;
 
+    unsigned int *pSCB_CPACR = (unsigned int *) (0xE000E088UL);
+
     SystemInit();
 
     /* set sram3 wait */
-    *((uint32_t*)0x40050804) = 0x77;
-    *((uint32_t*)0x4005080C) = 0x77;
-    *((uint32_t*)0x40050800) = 0x1100;
-    *((uint32_t*)0x40050804) = 0x76;
-    *((uint32_t*)0x4005080C) = 0x76;
+    *((volatile uint32_t*)0x40050804) = 0x77;
+    *((volatile uint32_t*)0x4005080C) = 0x77;
+    *((volatile uint32_t*)0x40050800) = 0x1100;
+    *((volatile uint32_t*)0x40050804) = 0x76;
+    *((volatile uint32_t*)0x4005080C) = 0x76;
 
 
     /* 中断向量表重定位 */
     *((uint32_t*)0xE000ED08) = (uint32_t)&_stext;
+
+    /* 使能浮点单元为全访问 */
+    *pSCB_CPACR |= 0x00F00000;
 
     /* 从 .text 段中读取数据初始化 .data 段 */
     p_src  = &_etext;
@@ -173,5 +178,4 @@ void ResetHandler_function (void)
         ; /* VOID */
     }
 }
-
 /* end of file */

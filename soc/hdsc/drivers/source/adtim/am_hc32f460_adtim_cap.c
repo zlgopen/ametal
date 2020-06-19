@@ -192,17 +192,14 @@ static int __hc32f460_adtim_cap_enable (void *p_drv, int chan)
     if ((amhw_hc32f460_adtim_t *)HC32F460_TMR61_BASE == p_hw_adtim)
     {    
         am_int_connect(p_dev->p_devinfo->inum, IRQ131_Handler, NULL);
-//        amhw_hc32f460_intc_int_vssel_bits_set(p_dev->p_devinfo->inum, (TMR6x_GCMA) << 0);
         amhw_hc32f460_intc_int_vssel_bits_set(p_dev->p_devinfo->inum, (tmr6x_gcmx) << 0);
     }else if ((amhw_hc32f460_adtim_t *)HC32F460_TMR62_BASE == p_hw_adtim)
     {    
-        am_int_connect(p_dev->p_devinfo->inum, IRQ131_Handler, NULL);
-//        amhw_hc32f460_intc_int_vssel_bits_set(p_dev->p_devinfo->inum, (TMR6x_GCMA) << 16);        
+        am_int_connect(p_dev->p_devinfo->inum, IRQ131_Handler, NULL);      
         amhw_hc32f460_intc_int_vssel_bits_set(p_dev->p_devinfo->inum, (tmr6x_gcmx) << 16);
     }else if ((amhw_hc32f460_adtim_t *)HC32F460_TMR63_BASE == p_hw_adtim)
     {
         am_int_connect(p_dev->p_devinfo->inum, IRQ132_Handler, NULL);    
-//        amhw_hc32f460_intc_int_vssel_bits_set(p_dev->p_devinfo->inum, (TMR6x_GCMA) << 0);
         amhw_hc32f460_intc_int_vssel_bits_set(p_dev->p_devinfo->inum, (tmr6x_gcmx) << 0);
     }else {
         ;
@@ -212,8 +209,7 @@ static int __hc32f460_adtim_cap_enable (void *p_drv, int chan)
     am_int_enable(p_dev->p_devinfo->inum);
 
     /* 设置计数周期 */
-//    amhw_hc32f460_adtim_setperiod(p_hw_adtim, ADTIM_PERIODA, 0xffff);
-    amhw_hc32f460_adtim_setperiod(p_hw_adtim, adtim_period, 0xffff);
+    amhw_hc32f460_adtim_setperiod(p_hw_adtim, (adtim_period_x_t)adtim_period, 0xffff);
     
     /* 清零计数器 */
     amhw_hc32f460_adtim_clearcount(p_hw_adtim);
@@ -368,16 +364,16 @@ static void __hc32f460_adtim_cap_irq_handler (void *p_arg)
     am_cap_callback_t callback_func;
     uint32_t          value;
     
-    if ((amhw_hc32f460_adtim_get_status_flag(p_hw_adtim, AMHW_HC32F460_ADTIM_OVFIrq)) == AM_TRUE) {
+    if ((amhw_hc32f460_adtim_get_status_flag(p_hw_adtim, AMHW_HC32F460_ADTIM_OVFF_FLAG)) == AM_TRUE) {
 
         __update_num++;
 
         amhw_hc32f460_adtim_clearcount(p_hw_adtim);
 
-        amhw_hc32f460_adtim_clear_status_flag(p_hw_adtim, AMHW_HC32F460_ADTIM_OVFIrq);
+        amhw_hc32f460_adtim_clear_status_flag(p_hw_adtim, AMHW_HC32F460_ADTIM_OVFF_FLAG);
     }
 
-    if (amhw_hc32f460_adtim_get_status_flag(p_hw_adtim, AMHW_HC32F460_ADTIM_CMAIrq) == AM_TRUE) {
+    if (amhw_hc32f460_adtim_get_status_flag(p_hw_adtim, AMHW_HC32F460_ADTIM_CMAF_FLAG) == AM_TRUE) {
 
         callback_func = p_dev->adtim_callback_info[0].callback_func;
 
@@ -390,10 +386,10 @@ static void __hc32f460_adtim_cap_irq_handler (void *p_arg)
         }
 
         /* 清除通道A标志 */
-        amhw_hc32f460_adtim_clear_status_flag(p_hw_adtim, AMHW_HC32F460_ADTIM_CMAIrq);
+        amhw_hc32f460_adtim_clear_status_flag(p_hw_adtim, AMHW_HC32F460_ADTIM_CMAF_FLAG);
     }
 
-    if (amhw_hc32f460_adtim_get_status_flag(p_hw_adtim, AMHW_HC32F460_ADTIM_CMBIrq) == AM_TRUE) {
+    if (amhw_hc32f460_adtim_get_status_flag(p_hw_adtim, AMHW_HC32F460_ADTIM_CMBF_FLAG) == AM_TRUE) {
 
         callback_func = p_dev->adtim_callback_info[1].callback_func;
 
@@ -406,7 +402,7 @@ static void __hc32f460_adtim_cap_irq_handler (void *p_arg)
         }
 
         /* 清除通道B标志 */
-        amhw_hc32f460_adtim_clear_status_flag(p_hw_adtim, AMHW_HC32F460_ADTIM_CMBIrq);
+        amhw_hc32f460_adtim_clear_status_flag(p_hw_adtim, AMHW_HC32F460_ADTIM_CMBF_FLAG);
     }
 }
 
@@ -513,96 +509,78 @@ void am_hc32f460_adtim_cap_deinit (am_cap_handle_t handle)
 
 void Timer61GCMA_IrqHandler(void *p_arg)
 {
-//    AM_DBG_INFO("Timer61GCMA_IrqHandler!\r\n");
     __hc32f460_adtim_cap_irq_handler(p_arg);
 }
 void Timer61GCMB_IrqHandler(void *p_arg)
 {
-//    AM_DBG_INFO("Timer61GCMB_IrqHandler!\r\n");
     __hc32f460_adtim_cap_irq_handler(p_arg);
 }
 void Timer61GCMC_IrqHandler(void *p_arg)
 {
-//    AM_DBG_INFO("Timer61GCMC_IrqHandler!\r\n");
     __hc32f460_adtim_cap_irq_handler(p_arg);
 }
 void Timer61GCMD_IrqHandler(void *p_arg)
 {
-//    AM_DBG_INFO("Timer61GCMD_IrqHandler!\r\n");
     __hc32f460_adtim_cap_irq_handler(p_arg);
 }
 void Timer61GCME_IrqHandler(void *p_arg)
 {
-//    AM_DBG_INFO("Timer61GCME_IrqHandler!\r\n");
     __hc32f460_adtim_cap_irq_handler(p_arg);
 }
 void Timer61GCMF_IrqHandler(void *p_arg)
 {
-//    AM_DBG_INFO("Timer61GCMF_IrqHandler!\r\n");
     __hc32f460_adtim_cap_irq_handler(p_arg);
 }
 
 
 void Timer62GCMA_IrqHandler(void *p_arg)
 {
-//    AM_DBG_INFO("Timer62GCMA_IrqHandler!\r\n");
     __hc32f460_adtim_cap_irq_handler(p_arg);
 }
 void Timer62GCMB_IrqHandler(void *p_arg)
 {
-//    AM_DBG_INFO("Timer62GCMB_IrqHandler!\r\n");
     __hc32f460_adtim_cap_irq_handler(p_arg);
 }
 void Timer62GCMC_IrqHandler(void *p_arg)
 {
-//    AM_DBG_INFO("Timer62GCMC_IrqHandler!\r\n");
     __hc32f460_adtim_cap_irq_handler(p_arg);
 }
 void Timer62GCMD_IrqHandler(void *p_arg)
 {
-//    AM_DBG_INFO("Timer62GCMD_IrqHandler!\r\n");
     __hc32f460_adtim_cap_irq_handler(p_arg);
 }
 void Timer62GCME_IrqHandler(void *p_arg)
 {
-//    AM_DBG_INFO("Timer62GCME_IrqHandler!\r\n");
     __hc32f460_adtim_cap_irq_handler(p_arg);
 }
 void Timer62GCMF_IrqHandler(void *p_arg)
 {
-//    AM_DBG_INFO("Timer62GCMF_IrqHandler!\r\n");
     __hc32f460_adtim_cap_irq_handler(p_arg);
 }
 
 
 void Timer63GCMA_IrqHandler(void *p_arg)
 {
-//    AM_DBG_INFO("Timer63GCMA_IrqHandler!\r\n");
     __hc32f460_adtim_cap_irq_handler(p_arg);
 }
 void Timer63GCMB_IrqHandler(void *p_arg)
 {
-//    AM_DBG_INFO("Timer63GCMB_IrqHandler!\r\n");
     __hc32f460_adtim_cap_irq_handler(p_arg);
 }
 void Timer63GCMC_IrqHandler(void *p_arg)
 {
-//    AM_DBG_INFO("Timer63GCMC_IrqHandler!\r\n");
     __hc32f460_adtim_cap_irq_handler(p_arg);
 }
 void Timer63GCMD_IrqHandler(void *p_arg)
 {
-//    AM_DBG_INFO("Timer63GCMD_IrqHandler!\r\n");
     __hc32f460_adtim_cap_irq_handler(p_arg);
 }
 void Timer63GCME_IrqHandler(void *p_arg)
 {
-//    AM_DBG_INFO("Timer63GCME_IrqHandler!\r\n");
     __hc32f460_adtim_cap_irq_handler(p_arg);
 }
 void Timer63GCMF_IrqHandler(void *p_arg)
 {
-//    AM_DBG_INFO(Timer63GCMF_IrqHandler);
     __hc32f460_adtim_cap_irq_handler(p_arg);
 }
 

@@ -88,7 +88,7 @@ void demo_hc32f460_hw_gpio_entry (amhw_hc32f460_gpio_t *p_hw_gpio,
 
     while (1) {
         level = amhw_hc32f460_gpio_pin_get(p_hw_gpio, input_pin);
-        if (LEVEL_HIGH == level) {
+        if (LEVEL_LOW == level) {
             amhw_hc32f460_gpio_pin_toggle(p_hw_gpio, output_pin);
             am_mdelay(500);
         }

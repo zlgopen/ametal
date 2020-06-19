@@ -127,9 +127,6 @@ void __spi_default_cs_dummy (am_spi_device_t *p_dev, int state)
 am_local
 void __spi_cs_on (am_hc32f460_spi_poll_dev_t *p_this, am_spi_device_t *p_dev)
 {
-    const am_hc32f460_spi_poll_devinfo_t *p_devinfo = p_this->p_devinfo;
-    amhw_hc32f460_spi_t *p_hw_spi = (amhw_hc32f460_spi_t *)(p_this->p_devinfo->spi_reg_base);
-
     /* if last device toggled after message */
     if (p_this->p_tgl_dev != NULL) {
 
@@ -150,9 +147,6 @@ am_local
 void __spi_cs_off (am_hc32f460_spi_poll_dev_t *p_this,
                    am_spi_device_t      *p_dev)
 {
-    const am_hc32f460_spi_poll_devinfo_t *p_devinfo = p_this->p_devinfo;
-    amhw_hc32f460_spi_t     *p_hw_spi = (amhw_hc32f460_spi_t *)(p_this->p_devinfo->spi_reg_base);
-
     if (p_this->p_tgl_dev == p_dev) {
         p_this->p_tgl_dev = NULL;
     }
@@ -244,8 +238,6 @@ am_local
 int __spi_setup (void *p_arg, am_spi_device_t *p_dev)
 {
     am_hc32f460_spi_poll_dev_t *p_this = (am_hc32f460_spi_poll_dev_t *)p_arg;
-    const am_hc32f460_spi_poll_devinfo_t *p_devinfo = p_this->p_devinfo;
-    amhw_hc32f460_spi_t  *p_hw_spi = (amhw_hc32f460_spi_t *)(p_this->p_devinfo->spi_reg_base);
 
     int max_speed, min_speed;
 

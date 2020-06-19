@@ -38,6 +38,7 @@
 #include "am_vdebug.h"
 #include "am_hc32f460.h"
 #include "am_hc32f460_aes.h"
+#include "am_hc32f460_inst_init.h"
 #include "demo_hc32f460_entries.h"
 
 /*******************************************************************************

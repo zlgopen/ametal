@@ -33,14 +33,18 @@
  */
 
 /** [src_hc32f460_hw_mpu] */
+
 #include "ametal.h"
 #include "am_delay.h"
 #include "am_vdebug.h"
+#include "am_clk.h"
 #include "hw/amhw_hc32f460_mpu.h"
 #include "am_hc32f460_dma.h"
 #include "hw/amhw_hc32f460_dma.h"
 #include "hc32f460_intctrl.h"
 #include "hc32f460_clk.h"
+#include "string.h"
+
 
 /* 区域大小 */
 #define __REGION_SIZE    32
@@ -175,10 +179,9 @@ am_err_t dma_mpu_test(am_hc32f460_dma_dev_t *p_dma_dev, int dma_chan) {
 
     while(g_trans_done == AM_FALSE); /* 等待传输完成 */
 
-    for (i = 0; i < __REGION_SIZE; i++) {
-        if (g_buf_dst[i] != 0) {
-            return AM_ERROR;
-        }
+    if (!memcmp(g_buf_src, g_buf_dst, sizeof(g_buf_dst)))
+    {
+        return AM_ERROR;
     }
 
     return AM_OK;
@@ -197,10 +200,10 @@ static am_err_t __smpu1_cfg(void *p_hw_mpu)
 
     /* 区域0读禁能 */
     amhw_hc32f460_mpu_rgcrn_smpu1_rd_disable(p_hw_mpu, __REGION_NUM);
-
+	
     /* smpu1使能 */
-    amhw_hc32f460_mpu_rgcrn_smpu1_enable(p_hw_mpu, __REGION_NUM);
-
+    amhw_hc32f460_mpu_rgcrn_smpu1_enable(p_hw_mpu, __REGION_NUM);	
+  
     /* 设置发生非法访问时的操作为无视（即读访问读到0，写访问忽略） */
     amhw_hc32f460_mpu_smpu1act_set(p_hw_mpu, AMHW_HC32F460_MPU_ACT_NONEACTION);
 
@@ -228,7 +231,7 @@ void demo_hc32f460_hw_mpu_entry (void *p_hw_mpu)
     /* 使能MPU */
     amhw_hc32f460_mpu_smpu1_enable(p_hw_mpu);
 
-    /* 测试MPU是否生效，若生效，则DMA无法读取相应内存，读取值为0 */
+    /* 测试MPU是否生效，若生效，则DMA无法读取相应内存 */
     if (dma_mpu_test(&DMA_TEST_DEV, DMA_M2M_CH) == AM_OK){
         am_kprintf("mpu test success\n");
     } else {
@@ -240,5 +243,4 @@ void demo_hc32f460_hw_mpu_entry (void *p_hw_mpu)
     }
 }
 /** [src_hc32f460_hw_mpu] */
-
 /* end of file */

@@ -46,7 +46,7 @@ static uint16_t __g_buf_dst[BUF_SIZE];   /**< \brief 目标端数据缓冲区 */
 
 static uint16_t __g_adc_dat[16];         /**< \brief ADC数据缓冲区 */
 
-static am_bool_t g_trans_done;           /**< \brief 传输完成标志 */
+static volatile am_bool_t g_trans_done;           /**< \brief 传输完成标志 */
 
 #define __ADC_CHAN_NUM_MAX    17         /* ADC最大通道数 */
 static int __g_adc_chan_num;             /* ADC通道数 */
@@ -78,12 +78,13 @@ static void dma_isr (void *p_arg , uint32_t flag)
         g_trans_done = AM_TRUE;
     }
 }
-
+//#pragma GCC push_options
+//#pragma GCC optimize("O0")
 static void __hc32f460_adc_init (amhw_hc32f460_adc_t *p_hw_adc,
                                  amhw_adc_chmux_t    *p_adc_chan,
                                  int                  chan_num)
 {
-	uint8_t i = 0;
+    uint8_t i = 0;
     uint8_t j = 0;
 
     /* 停止ADC转换 */
@@ -98,7 +99,7 @@ static void __hc32f460_adc_init (amhw_hc32f460_adc_t *p_hw_adc,
 
     /* 设置转换周期 */
     for(j = 0; j < chan_num; j++ ){
-    amhw_hc32f460_adc_sampling_period_set(p_hw_adc, p_adc_chan[j].chan, 10);
+        amhw_hc32f460_adc_sampling_period_set(p_hw_adc, p_adc_chan[j].chan, 10);
     }
     /* 链接ADC顺序扫描转换通道和引脚 */
     for(i = 0; i < chan_num; i++) {
@@ -114,7 +115,7 @@ static void __hc32f460_adc_init (amhw_hc32f460_adc_t *p_hw_adc,
     amhw_hc32f460_adc_int_disable(p_hw_adc, AMHW_HC32F460_ADC_INT_EOCAF);
     amhw_hc32f460_adc_int_disable(p_hw_adc, AMHW_HC32F460_ADC_INT_EOCBF);
 }
-
+//#pragma GCC push_options
 /**
  * \brief 例程入口
  */
@@ -174,7 +175,6 @@ void demo_hc32f460_hw_adc_dma_entry (void                  *p_hw_adc,
 
     while(1) {
 
-    	/* 可设置DMA重置方式代替重复配置？ */
         am_hc32f460_dma_xfer_desc_chan_cfg(p_dma_dev,
                                            &g_desc,
                                            AMHW_HC32F460_DMA_PER_TO_MER, /* 外设到内存 */
@@ -184,7 +184,7 @@ void demo_hc32f460_hw_adc_dma_entry (void                  *p_hw_adc,
         am_hc32f460_dma_chan_start(p_dma_dev, dma_chan);
 
         /* 扫描转换启动 */
-    	amhw_hc32f460_adc_convert_start(p_adc);
+        amhw_hc32f460_adc_convert_start(p_adc);
 
         while(g_trans_done == AM_FALSE); /* 等待传输完成 */
 

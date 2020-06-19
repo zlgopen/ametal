@@ -36,6 +36,30 @@ extern "C" {
  * @{
  */
 
+/**
+ * \brief 使用匿名联合体段开始
+ * @{
+ */
+
+#if defined(__CC_ARM)
+  #pragma push
+  #pragma anon_unions
+#elif defined(__ICCARM__)
+  #pragma language=extended
+#elif defined(__GNUC__)
+
+  /* 默认使能匿名联合体 */
+#elif defined(__TMS470__)
+
+  /* 默认使能匿名联合体 */
+#elif defined(__TASKING__)
+  #pragma warning 586
+#else
+  #warning Not supported compiler t
+#endif
+
+/** @} */
+
 typedef struct
 {
     __IO uint32_t SPIMDS                    : 1;
@@ -321,7 +345,7 @@ void amhw_hc32f460_spi_rx_int_enable(amhw_hc32f460_spi_t *p_hw_spi,
 }
 
 /**
- * \brief  SPI接收中断允许/禁能
+ * \brief  SPI发送中断允许/禁能
  * \param[in] p_hw_spi : 指向SPI寄存器结构体的指针
  * \param[in] flag     : AM_TRUE/AM_FALSE
  *
@@ -976,6 +1000,29 @@ void amhw_hc32f460_spi_clk_mode_set(amhw_hc32f460_spi_t *p_hw_spi, uint8_t flag)
 {
     p_hw_spi->CFG2 = (p_hw_spi->CFG2 & (~(3u << 0))) | (flag << 0);
 }
+
+/**
+ * \brief 使用匿名联合体段结束
+ * @{
+ */
+
+#if defined(__CC_ARM)
+  #pragma pop
+#elif defined(__ICCARM__)
+
+  /* 允许匿名联合体使能 */
+#elif defined(__GNUC__)
+
+  /* 默认使用匿名联合体 */
+#elif defined(__TMS470__)
+
+  /* 默认使用匿名联合体 */
+#elif defined(__TASKING__)
+  #pragma warning restore
+#else
+  #warning Not supported compiler t
+#endif
+/** @} */
 
 /**
  * @} amhw_hc32f460_if_spi

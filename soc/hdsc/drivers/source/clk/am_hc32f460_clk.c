@@ -20,10 +20,10 @@
  * \endinternal
  */
 #include "ametal.h"
+#include "am_hc32f460.h"
 #include "am_hc32f460_clk.h"
 #include "am_hc32f460_flash.h"
 #include "hw/amhw_hc32f460_rcc.h"
-
 
 am_hc32f460_clk_dev_t    *__gp_clk_dev;
 
@@ -69,7 +69,7 @@ int am_hc32f460_clk_init (am_hc32f460_clk_dev_t           *p_dev,
     amhw_hc32f460_cmu_xtalcfg_t xtal_cfg;
     amhw_hc32f460_clk_pll_cfg_t mpll_cfg;
     amhw_hc32f460_clk_pll_cfg_t upll_cfg;
-    uint32_t efm_latency = 0;
+    amhw_hc32f460_flash_read_waittime efm_latency = AMHW_HC32F460_FLASH_READ_WAITTIME_0;
 
     if (p_dev == NULL || p_devinfo == NULL) {
         return -AM_EINVAL;
@@ -202,23 +202,23 @@ int am_hc32f460_clk_init (am_hc32f460_clk_dev_t           *p_dev,
     }
 
     if (p_dev->sys_clk > 132000000 && p_dev->sys_clk <= 168000000) {
-        efm_latency = 0x4ul;
+        efm_latency = AMHW_HC32F460_FLASH_READ_WAITTIME_4;
     } else if (p_dev->sys_clk > 99000000 && p_dev->sys_clk <= 132000000) {
-        efm_latency = 0x3ul;
+        efm_latency = AMHW_HC32F460_FLASH_READ_WAITTIME_3;
     } else if (p_dev->sys_clk > 66000000 && p_dev->sys_clk <= 99000000) {
-        efm_latency = 0x2ul;
+        efm_latency = AMHW_HC32F460_FLASH_READ_WAITTIME_2;
     } else if (p_dev->sys_clk > 33000000 && p_dev->sys_clk <= 66000000){
-        efm_latency = 0x1ul;
+        efm_latency = AMHW_HC32F460_FLASH_READ_WAITTIME_1;
     } else if (p_dev->sys_clk > 2000000 && p_dev->sys_clk <= 33000000){
-        efm_latency = 0x0ul;
+        efm_latency = AMHW_HC32F460_FLASH_READ_WAITTIME_0;
     } else if (p_dev->sys_clk <= 2000000) {
-        efm_latency = 0x0ul;
+        efm_latency = AMHW_HC32F460_FLASH_READ_WAITTIME_0;
     }
 
     /* flash read wait cycle setting */
-    am_hc32f460_flash_unlock(AM_HC32F460_FLASH);
-    am_hc32f460_flash_waitcycle(AM_HC32F460_FLASH, efm_latency);
-    am_hc32f460_flash_lock(AM_HC32F460_FLASH);
+    am_hc32f460_flash_unlock(HC32F460_EFM);
+    am_hc32f460_flash_waitcycle(HC32F460_EFM, efm_latency);
+    am_hc32f460_flash_lock(HC32F460_EFM);
 
     /* 设置系统时钟源 */
     amhw_hc32f460_clk_set_sysclk_src(p_devinfo->sysclk_src);
@@ -484,4 +484,5 @@ int am_clk_rate_get (am_clk_id_t clk_id)
 
     return clk;
 }
+
 /* end of file */

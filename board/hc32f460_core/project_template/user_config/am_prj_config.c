@@ -17,7 +17,7 @@
  *
  * \internal
  * \par Modification history
- * - 1.00 19-09-23  zp, first implementation
+ * - 1.00 20-01-10  cds, first implementation
  * \endinternal
  */
 
@@ -45,8 +45,8 @@ int main (void)
 #endif /* (AM_CFG_GPIO_ENABLE == 1) */
 
 #if (AM_CFG_DMA_ENABLE == 1)
-//    am_hc32f460_dma1_inst_init();
-//    am_hc32f460_dma2_inst_init();
+    am_hc32f460_dma1_inst_init();
+    am_hc32f460_dma2_inst_init();
 #endif /* (AM_CFG_DMA_ENABLE == 1) */
 //
 //#if (AM_CFG_NVRAM_ENABLE == 1)

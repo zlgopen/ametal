@@ -39,6 +39,30 @@ extern "C" {
  * @{
  */
 
+/**
+ * \brief 使用匿名联合体段开始
+ * @{
+ */
+
+#if defined(__CC_ARM)
+  #pragma push
+  #pragma anon_unions
+#elif defined(__ICCARM__)
+  #pragma language=extended
+#elif defined(__GNUC__)
+
+/* 默认使能匿名联合体 */
+#elif defined(__TMS470__)
+
+/* 默认使能匿名联合体 */
+#elif defined(__TASKING__)
+  #pragma warning 586
+#else
+  #warning Not supported compiler t
+#endif
+
+/** @} */
+
 typedef struct
 {
     __IO uint8_t BUSOFF                     : 1;
@@ -683,10 +707,10 @@ void amhw_hc32f460_can_lowlevel_get(amhw_hc32f460_can_t *p_hw_can, stc_can_init_
 {
     if (NULL != pstcCanInitCfg)
     {
-        pstcCanInitCfg->enCanSAck      = p_hw_can->RCTRL_f.SACK;
-        pstcCanInitCfg->enCanSTBMode   = p_hw_can->TCTRL_f.TSMODE;
-        pstcCanInitCfg->enCanRxBufAll  = p_hw_can->RCTRL_f.RBALL;
-        pstcCanInitCfg->enCanRxBufMode = p_hw_can->RCTRL_f.ROM;
+        pstcCanInitCfg->enCanSAck      = (en_can_self_ack_en_t)p_hw_can->RCTRL_f.SACK;
+        pstcCanInitCfg->enCanSTBMode   = (en_can_stb_mode_t)p_hw_can->TCTRL_f.TSMODE;
+        pstcCanInitCfg->enCanRxBufAll  = (en_can_rx_buf_all_t)p_hw_can->RCTRL_f.RBALL;
+        pstcCanInitCfg->enCanRxBufMode = (en_can_rx_buf_mode_en_t)p_hw_can->RCTRL_f.ROM;
 
         p_hw_can->RTIE = 0x00u;
 
@@ -880,6 +904,29 @@ en_can_error_t amhw_hc32f460_can_error_status_get(amhw_hc32f460_can_t *p_hw_can)
     return enRet;
 
 }
+
+/**
+ * \brief 使用匿名联合体段结束
+ * @{
+ */
+
+#if defined(__CC_ARM)
+  #pragma pop
+#elif defined(__ICCARM__)
+
+/* 允许匿名联合体使能 */
+#elif defined(__GNUC__)
+
+/* 默认使用匿名联合体 */
+#elif defined(__TMS470__)
+
+/* 默认使用匿名联合体 */
+#elif defined(__TASKING__)
+  #pragma warning restore
+#else
+  #warning Not supported compiler t
+#endif
+/** @} */
 
 /**
  * @} amhw_hc32f460_if_can

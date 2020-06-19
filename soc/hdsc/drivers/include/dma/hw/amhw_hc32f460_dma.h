@@ -46,6 +46,30 @@ extern "C" {
  * @{
  */
 
+/**
+ * \brief 使用匿名联合体段开始
+ * @{
+ */
+
+#if defined(__CC_ARM)
+  #pragma push
+  #pragma anon_unions
+#elif defined(__ICCARM__)
+  #pragma language=extended
+#elif defined(__GNUC__)
+
+/* 默认使能匿名联合体 */
+#elif defined(__TMS470__)
+
+/* 默认使能匿名联合体 */
+#elif defined(__TASKING__)
+  #pragma warning 586
+#else
+  #warning Not supported compiler t
+#endif
+
+/** @} */
+
 /** \brief DMA 通道数目  */
 #define AMHW_HC32F460_DMA_CHAN_CNT  4
 
@@ -684,7 +708,7 @@ typedef enum {
  * \return none
  */
 am_static_inline
-am_bool_t amhw_hc32f460_dma_transfer_check (amhw_hc32f460_dma_t             *p_hw_dma,
+int amhw_hc32f460_dma_transfer_check (amhw_hc32f460_dma_t             *p_hw_dma,
                                             uint8_t                          channel,
                                             amhw_hc32f460_dma_trans_status_t flag)
 {
@@ -698,8 +722,8 @@ am_bool_t amhw_hc32f460_dma_transfer_check (amhw_hc32f460_dma_t             *p_h
         /* DMA对应通道是否处于动作中 */
         return (((p_hw_dma->CHSTAT) >> 16) & (1 << channel)) ? AM_TRUE : AM_FALSE;
     } else {
-        return -AM_EINVAL;
-    }
+		    return -AM_EINVAL;
+		}
 }
 
 
@@ -799,8 +823,11 @@ void amhw_hc32f460_dma_chan_blksize_set(amhw_hc32f460_dma_t *p_hw_dma,
                                         uint8_t              channel,
                                         uint16_t              size)
 {
-    *(uint32_t *)(((uint32_t)&(p_hw_dma->DTCTL0)) + (channel * 0x40)) &= (~0x3FF);
-    *(uint32_t *)(((uint32_t)&(p_hw_dma->DTCTL0)) + (channel * 0x40)) |= size;
+	  uint32_t *addr = (uint32_t *)(((uint32_t)&(p_hw_dma->DTCTL0)) + (channel * 0x40));
+    volatile uint32_t value_reg = *addr;
+	  value_reg &= (~0x3FF);
+	  value_reg |= size;
+    *addr = value_reg;
 }
 
 /**
@@ -815,11 +842,37 @@ void amhw_hc32f460_dma_chan_blksize_set(amhw_hc32f460_dma_t *p_hw_dma,
  *
  * \return 数据块的大小。
  */
+
+//static uint32_t value_test = 0xff;
+//static uint32_t value_test2 = 0x12345678;
+//static uint16_t value_test3 = 0xffff;
+//static uint16_t value_test4 = 0xffff;
 am_static_inline
 uint16_t amhw_hc32f460_dma_chan_blksize_get(amhw_hc32f460_dma_t *p_hw_dma,
                                             uint8_t              channel)
 {
-    return *(uint32_t *)((uint32_t)(&(p_hw_dma->DTCTL0)) + (channel * 0x40)) & (0x3FF);
+	  
+//	  uint32_t value = ((*(uint32_t *)((uint32_t)(&(p_hw_dma->DTCTL0)) + (channel * 0x40))) & (0x3FF));
+	 volatile uint32_t value = *(volatile uint32_t *)((uint32_t)(&(p_hw_dma->DTCTL0)) + (channel * 0x40));
+	 value &= 0x3ff;
+   return (uint16_t)value;	  
+//	  uint32_t *addr = (uint32_t *)0x40053088;
+//	
+//	  *(uint32_t *)(0x40053088) = 0x12345678;
+//	  AM_DBG_INFO("%x\r\n", *(uint32_t *)(0x40053088));	
+
+//	  value_test2 = *(uint32_t *)(0x40053088);
+//	  AM_DBG_INFO("%x\r\n", (uint16_t)value_test2);
+//	
+//	  value_test4 = value_test2;
+//		  AM_DBG_INFO("%x\r\n", value_test4);
+
+//	  value_test3 = *addr;
+//	  AM_DBG_INFO("%x\r\n", value_test3);		
+//	
+//	  value_test =(uint16_t) (*addr);
+//    AM_DBG_INFO("%x\r\n", value_test);	  
+
 }
 
 /**
@@ -839,8 +892,10 @@ void amhw_hc32f460_dma_chan_tran_data_num_set (amhw_hc32f460_dma_t *p_hw_dma,
                                                uint8_t              channel,
                                                uint16_t             num)
 {
-    *(uint32_t *)((uint32_t)(&(p_hw_dma->DTCTL0)) + (channel * 0x40)) &= (~0xFFFF0000);
-    *(uint32_t *)((uint32_t)(&(p_hw_dma->DTCTL0)) + (channel * 0x40)) |= (num << 16);
+	   volatile uint32_t reg_val = *(volatile uint32_t *)((uint32_t)(&(p_hw_dma->DTCTL0)) + (channel * 0x40));
+     reg_val &= (~0xFFFF0000);
+	   reg_val |= (num << 16);
+    *(uint32_t *)((uint32_t)(&(p_hw_dma->DTCTL0)) + (channel * 0x40)) = reg_val;
 
 }
 
@@ -858,7 +913,8 @@ am_static_inline
 uint16_t amhw_hc32f460_dma_chan_tran_data_num_get (amhw_hc32f460_dma_t *p_hw_dma,
                                                    uint8_t              channel)
 {
-    return (*(uint32_t *)((uint32_t)(&(p_hw_dma->DTCTL0)) + (channel * 0x40)) >> 16);
+	  volatile uint32_t reg_val = *(volatile uint32_t *)((uint32_t)(&(p_hw_dma->DTCTL0)) + (channel * 0x40));
+    return (uint16_t)(reg_val >> 16);
 }
 
 
@@ -879,8 +935,11 @@ void amhw_hc32f460_dma_chan_data_hsize_set (amhw_hc32f460_dma_t *p_hw_dma,
                                             uint8_t              channel,
                                             uint8_t              hsize)
 {
-    *(uint32_t *)((uint32_t)&(p_hw_dma->CH0CTL) + (channel * 0x40)) &= (~(0x3 << 8));
-    *(uint32_t *)((uint32_t)&(p_hw_dma->CH0CTL) + (channel * 0x40)) |= (hsize << 8);
+	  volatile uint32_t *addr = (volatile uint32_t *)((uint32_t)&(p_hw_dma->CH0CTL) + (channel * 0x40));
+    volatile uint32_t value_reg = *addr;
+	  value_reg &= (~(0x3 << 8));
+	  value_reg |= (hsize << 8);
+    *addr = value_reg;
 }
 
 /**
@@ -899,7 +958,8 @@ am_static_inline
 uint8_t amhw_hc32f460_dma_chan_data_hsize_get (amhw_hc32f460_dma_t *p_hw_dma,
                                                uint8_t              channel)
 {
-    return (*(uint32_t *)((uint32_t)&(p_hw_dma->CH0CTL) + (channel * 0x40)) & (0x3 << 8)) >> 8;
+	  volatile uint32_t reg_val = *(uint32_t *)((uint32_t)&(p_hw_dma->CH0CTL) + (channel * 0x40));
+    return (uint8_t)((reg_val & (0x3 << 8)) >> 8);
 }
 
 /**
@@ -915,9 +975,12 @@ am_static_inline
 void amhw_hc32f460_dma_chan_srcaddr_update_set (amhw_hc32f460_dma_t *p_hw_dma,
                                                 uint8_t              channel,
                                                 uint8_t              method)
-{
-    *(uint32_t *)((uint32_t)&(p_hw_dma->CH0CTL) + (channel * 0x40)) &= (~(0x3 << 2));
-    *(uint32_t *)((uint32_t)&(p_hw_dma->CH0CTL) + (channel * 0x40)) |= (method << 2);
+{	
+		volatile uint32_t *addr = (volatile uint32_t *)((uint32_t)&(p_hw_dma->CH0CTL) + (channel * 0x40));
+    volatile uint32_t value_reg = *addr;
+	  value_reg &= (~(0x3 << 2));
+	  value_reg |= (method << 2);
+    *addr = value_reg;
 }
 
 /**
@@ -933,9 +996,12 @@ am_static_inline
 void amhw_hc32f460_dma_chan_dstaddr_update_set (amhw_hc32f460_dma_t *p_hw_dma,
                                                 uint8_t              channel,
                                                 uint8_t              method)
-{
-    *(uint32_t *)((uint32_t)&(p_hw_dma->CH0CTL) + (channel * 0x40)) &= (~(0x3 << 0));
-    *(uint32_t *)((uint32_t)&(p_hw_dma->CH0CTL) + (channel * 0x40)) |= (method << 0);
+{	
+		volatile uint32_t *addr = (volatile uint32_t *)((uint32_t)&(p_hw_dma->CH0CTL) + (channel * 0x40));
+    volatile uint32_t value_reg = *addr;
+	  value_reg &= (~(0x3 << 0));
+	  value_reg |= (method << 0);
+    *addr = value_reg;
 }
 
 
@@ -1016,7 +1082,10 @@ am_static_inline
 void amhw_hc32f460_dma_chan_int_enable(amhw_hc32f460_dma_t *p_hw_dma,
                                        uint8_t              channel)
 {
-    *(uint32_t *)((uint32_t)&(p_hw_dma->CH0CTL) + (channel * 0x40)) |= (1 << 12);
+	  volatile uint32_t *addr = (volatile uint32_t *)((uint32_t)&(p_hw_dma->CH0CTL) + (channel * 0x40));
+    volatile uint32_t value_reg = *addr;
+	  value_reg |= (1 << 12);
+    *addr = value_reg;
 }
 
 /**
@@ -1031,7 +1100,10 @@ am_static_inline
 void amhw_hc32f460_dma_chan_int_disable(amhw_hc32f460_dma_t *p_hw_dma,
                                         uint8_t              channel)
 {
-    *(uint32_t *)((uint32_t)&(p_hw_dma->CH0CTL) + (channel * 0x40)) &= (~(1 << 12));
+		volatile uint32_t *addr = (volatile uint32_t *)((uint32_t)&(p_hw_dma->CH0CTL) + (channel * 0x40));
+    volatile uint32_t value_reg = *addr;
+	  value_reg &= (~(1 << 12));
+    *addr = value_reg;
 }
 
 /**
@@ -1099,7 +1171,7 @@ void amhw_hc32f460_dma_int_mask_clr(amhw_hc32f460_dma_t *p_hw_dma,
  * \return AM_TRUE or AM_FALSE
  */
 am_static_inline
-am_bool_t amhw_hc32f460_dma_chan_stat_check (amhw_hc32f460_dma_t         *p_hw_dma,
+int amhw_hc32f460_dma_chan_stat_check (amhw_hc32f460_dma_t         *p_hw_dma,
                                              uint8_t                      channel,
                                              amhw_hc32f460_dma_int_flag_t flag)
 {
@@ -1111,9 +1183,9 @@ am_bool_t amhw_hc32f460_dma_chan_stat_check (amhw_hc32f460_dma_t         *p_hw_d
         return (((p_hw_dma->INTSTAT1 >> 16) & (1 << channel)) ? AM_TRUE: AM_FALSE);
     } else if (flag == AMHW_HC32F460_DMA_INT_FLAG_TX_COMPLETE) {
         return (((p_hw_dma->INTSTAT1 >> 0) & (1 << channel)) ? AM_TRUE: AM_FALSE);
-    } else {
-        return -AM_EINVAL;
-    }
+    } else{
+		    return -AM_EINVAL;
+		}
 }
 
 /**
@@ -1233,8 +1305,11 @@ void amhw_hc32f460_dma_chan_drpt_set(amhw_hc32f460_dma_t *p_hw_dma,
                                      uint8_t              channel,
                                      uint32_t             size)
 {
-    *(uint32_t *)((uint32_t)&(p_hw_dma->RPT0) + (channel * 0x40)) &= (~(0x3FF << 16));
-    *(uint32_t *)((uint32_t)&(p_hw_dma->RPT0) + (channel * 0x40)) |= (size << 16);
+	  volatile uint32_t *addr = (volatile uint32_t *)((uint32_t)&(p_hw_dma->RPT0) + (channel * 0x40));
+    volatile uint32_t value_reg = *addr;
+	  value_reg &= (~(0x3FF << 16));
+	  value_reg |= (size << 16);
+    *addr = value_reg;
 }
 
 /**
@@ -1253,8 +1328,11 @@ void amhw_hc32f460_dma_chan_srpt_set(amhw_hc32f460_dma_t *p_hw_dma,
                                      uint8_t              channel,
                                      uint32_t             size)
 {
-    *(uint32_t *)((uint32_t)&(p_hw_dma->RPT0) + (channel * 0x40)) &= (~0x3FF);
-    *(uint32_t *)((uint32_t)&(p_hw_dma->RPT0) + (channel * 0x40)) |= size;
+		volatile uint32_t *addr = (volatile uint32_t *)((uint32_t)&(p_hw_dma->RPT0) + (channel * 0x40));
+    volatile uint32_t value_reg = *addr;
+	  value_reg &= (~0x3FF);
+	  value_reg |= size;
+    *addr = value_reg;
 }
 
 /**
@@ -1330,7 +1408,28 @@ void amhw_hc32f460_dma_chan_rcfg_set(amhw_hc32f460_dma_t *p_hw_dma, uint32_t fla
     p_hw_dma->RCFGCTL = flag;
 }
 
+/**
+ * \brief 使用匿名联合体段结束
+ * @{
+ */
 
+#if defined(__CC_ARM)
+  #pragma pop
+#elif defined(__ICCARM__)
+
+/* 允许匿名联合体使能 */
+#elif defined(__GNUC__)
+
+/* 默认使用匿名联合体 */
+#elif defined(__TMS470__)
+
+/* 默认使用匿名联合体 */
+#elif defined(__TASKING__)
+  #pragma warning restore
+#else
+  #warning Not supported compiler t
+#endif
+/** @} */
 
 
 /**

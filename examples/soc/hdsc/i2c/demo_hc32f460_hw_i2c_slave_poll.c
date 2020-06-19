@@ -52,7 +52,7 @@
 #define BUFF_DATA_LEN                   32u
 #define TIMEOUT                         ((uint32_t)0x10000)
 
-uint8_t u8RxBuf[BUFF_DATA_LEN];
+static uint8_t u8RxBuf[BUFF_DATA_LEN];
 
 static uint8_t slave_revc_data(amhw_hc32f460_i2c_t *p_hw_i2c, uint8_t *pu8RxData)
 {

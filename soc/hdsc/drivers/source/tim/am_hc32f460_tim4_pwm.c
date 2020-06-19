@@ -63,8 +63,8 @@ static int __tim_pwm_config (void          *p_drv,
     uint32_t clkfreq;
     uint16_t fre_div = 1;
     uint32_t period_c, duty_c, temp;
-    timer4_oco_ch_t enOcohigCh;
-    timer4_oco_ch_t enOcoLowCh;
+    timer4_oco_ch_t enOcohigCh = TIMER4_OCO_OUH;
+    timer4_oco_ch_t enOcoLowCh = TIMER4_OCO_OUL;
     uint16_t u8OcoOccrVal = 0;
     
     /* 参数不合法 */
@@ -252,8 +252,8 @@ void __tim_pwm_init (amhw_hc32f460_tim4_t       *p_hw_tim,
     stc_timer4_oco_init_t stcOcoInit;
     stc_oco_low_ch_compare_mode_t stcLowChCmpMode;
     stc_oco_high_ch_compare_mode_t stcHighChCmpMode;    
-    timer4_oco_ch_t enOcohigCh;
-    timer4_oco_ch_t enOcoLowCh;
+    timer4_oco_ch_t enOcohigCh = TIMER4_OCO_OUH;
+    timer4_oco_ch_t enOcoLowCh = TIMER4_OCO_OUL;
     
     /* 设置定时器模式2 */
     amhw_hc32f460_tim4_mode_set(p_hw_tim, TIM4_COUNT_MODE_SAWTOOTH_WAVE);

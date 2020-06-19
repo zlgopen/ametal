@@ -157,7 +157,12 @@ void demo_hc32f460_hw_adc_seq_a_b_event_trigger_entry (void    *p_hw_adc,
         /* 转换为电压值对应的整数值 */
         adc_mv = __g_adc_dat[0] * 3300 / ((1UL << 12) -1);
 
-        AM_DBG_INFO("Sample : %d, Vol: %d mv\r\n", __g_adc_dat[0], adc_mv);
+        AM_DBG_INFO("Seq A Sample : %d, Vol: %d mv\r\n", __g_adc_dat[0], adc_mv);
+
+        /* 转换为电压值对应的整数值 */
+        adc_mv = __g_adc_dat[1] * 3300 / ((1UL << 12) -1);
+
+        AM_DBG_INFO("Seq B Sample : %d, Vol: %d mv\r\n", __g_adc_dat[1], adc_mv);
 
         __g_adc_complete = AM_FALSE;
 

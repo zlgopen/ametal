@@ -285,7 +285,6 @@ static int __uart_poll_getchar(void *p_drv, char *p_char)
 }
 
 
-
 void __uart_irq_tci_handler(void *p_arg) {
     am_hc32f460_uart_dev_t *p_dev = (am_hc32f460_uart_dev_t *)p_arg;
     amhw_hc32f460_uart_t *p_hw_uart =
@@ -710,7 +709,5 @@ void am_hc32f460_uart_deinit(am_hc32f460_uart_dev_t *p_dev)
         p_dev->p_devinfo->pfn_plfm_deinit();
     }
 }
-
-
 
 /* end of file */

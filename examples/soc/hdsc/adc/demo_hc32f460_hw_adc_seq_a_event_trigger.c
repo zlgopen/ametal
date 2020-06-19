@@ -18,7 +18,7 @@
  *   1. 将指定ADC通道对应的引脚连接模拟输入。
  *
  * - 实验现象：
- *   1. 拉低引脚PB6 后触发ADC1 序列A转换。
+ *   1. 拉低引脚PB7 后触发ADC1 序列A转换。
  *   2. 调试串口输出电压采样值，输出结果为32次转换的平均值。。
  *
  * \par 源代码
@@ -85,10 +85,7 @@ void demo_hc32f460_hw_adc_seq_a_event_trigger_entry (void    *p_hw_adc,
                                                      uint8_t  chan,
                                                      uint32_t vref_mv)
 {
-    uint8_t                    i        = 0;
     uint32_t                   adc_mv   = 0;    /* 采样电压 */
-    uint32_t                   sum      = 0;
-    amhw_hc32f460_adc_chan_sel_t chan_sel = (amhw_hc32f460_adc_chan_sel_t)chan;
     amhw_hc32f460_adc_t         *p_adc    = (amhw_hc32f460_adc_t *)p_hw_adc;
 
     am_kprintf("The ADC HW Int Demo\r\n");

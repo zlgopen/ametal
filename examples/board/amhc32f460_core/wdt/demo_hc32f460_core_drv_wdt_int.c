@@ -38,7 +38,7 @@
 #include "am_hc32f460_wdt.h"
 #include "am_hc32f460_inst_init.h"
 #include "demo_std_entries.h"
-#include "demo_hc32f460_core_entries.h"
+#include "demo_hc32f460_entries.h"
 
 /**
  * \brief 看门狗超时时间
@@ -50,7 +50,7 @@
  *        会产生看门狗事件。
  */
 #define __WDT_FEED_TIME_MS     1200
-
+extern am_hc32f460_wdt_dev_t __g_wdt_dev;
 /**
  * \brief 例程入口
  */
@@ -59,6 +59,7 @@ void demo_hc32f460_core_drv_wdt_int_entry (void)
     AM_DBG_INFO("demo hc32f460_core drv wdt int !\r\n");
 
     demo_hc32f460_drv_wdt_int_entry(am_hc32f460_wdt_inst_init(),
+                                    &__g_wdt_dev,
                                     __WDT_TIMEOUT_MS,
                                     __WDT_FEED_TIME_MS);
 }

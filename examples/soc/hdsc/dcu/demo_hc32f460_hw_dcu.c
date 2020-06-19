@@ -51,9 +51,9 @@ static uint32_t data_cmp_data1 = 1000;
 static uint32_t data_cmp_data2 = 10000;
 
 
-uint32_t __hc32f460_dcu_add_test(amhw_hc32f460_dcu_t *p_hw_dcu,
-                                 uint32_t            *p_data,
-                                 uint32_t             data_length)
+int __hc32f460_dcu_add_test(amhw_hc32f460_dcu_t *p_hw_dcu,
+                            uint32_t            *p_data,
+                            uint32_t             data_length)
 {
     uint32_t i = 0;
 
@@ -82,10 +82,10 @@ uint32_t __hc32f460_dcu_add_test(amhw_hc32f460_dcu_t *p_hw_dcu,
 
 }
 
-uint32_t __hc32f460_dcu_sub_test(amhw_hc32f460_dcu_t *p_hw_dcu,
-                                 uint32_t             data1,
-                                 uint32_t            *p_data2,
-                                 uint32_t             data2_length)
+int __hc32f460_dcu_sub_test(amhw_hc32f460_dcu_t *p_hw_dcu,
+                            uint32_t             data1,
+                            uint32_t            *p_data2,
+                            uint32_t             data2_length)
 {
     uint32_t i = 0;
 

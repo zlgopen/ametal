@@ -28,6 +28,7 @@
 #include "am_timer.h"
 #include "am_can.h"
 #include "hw/amhw_hc32f460_gpio.h"
+#include "hw/amhw_hc32f460_adc.h"
 #include "hw/amhw_hc32f460_uart.h"
 #include "hw/amhw_hc32f460_dma.h"
 #include "am_hc32f460_dma.h"
@@ -38,9 +39,12 @@
 #include "hw/amhw_hc32f460_trng.h"
 #include "hw/amhw_hc32f460_aes.h"
 #include "hw/amhw_hc32f460_dcu.h"
+#include "hw/amhw_hc32f460_cmp.h"
 #include "am_hc32f460_hash.h"
 #include "am_hc32f460_trng.h"
 #include "am_hc32f460_aes.h"
+#include "am_hc32f460_swdt.h"
+#include "am_hc32f460_wdt.h"
 #include "am_wdt.h"
 #include "hw/amhw_hc32f460_adc.h"
 
@@ -48,6 +52,19 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
+
+/**
+ * \brief CLK 例程，通过 HW 层接口实现
+ *
+ * \param[in] p_clk_id_buf   指向要打印的时钟ID的数组
+ * \param[in] buf_lenth      时钟ID数组的长度
+ *
+ * \return 无
+ */
+void demo_hc32f460_hw_clk_entry (am_clk_id_t  *p_clk_id_buf,
+                                 uint8_t       buf_lenth,
+                                 char         *p_clk_name,
+                                 uint8_t       name_length);
 
 /**
  * \brief ADC INT 例程，通过 HW 层接口实现
@@ -235,7 +252,7 @@ void demo_hc32f460_hw_gpio_trigger_entry (void *p_hw_gpio, int pin);
  *
  * \return 无
  */
-void demo_hc32f460_drv_dma_m2m_entry (uint32_t dma_chan);
+void demo_hc32f460_drv_dma_m2m_entry (am_hc32f460_dma_dev_t *p_dev, uint32_t dma_chan);
 
 /**
  * \brief DMA 内存到内存连锁传输例程，通过驱动层接口实现
@@ -341,25 +358,29 @@ void demo_hc32f460_hw_wdt_entry (void     *p_hw_wdt,
  * \brief WDT DRV例程，通过 HW 层接口实现
  *
  * \param[in] handle       WDT handler
+ * \param[in] p_dev        指向WDT设备的指针
  * \param[in] time_out_ms  WDT超时时间
  * \param[in] feed_time_ms 喂狗间隔时间
  *
  * \return 无
  */
-void demo_hc32f460_drv_wdt_int_entry (am_wdt_handle_t handle,
-                                      uint32_t        time_out_ms,
-                                      uint32_t        feed_time_ms);
+void demo_hc32f460_drv_wdt_int_entry (am_wdt_handle_t        handle,
+                                      am_hc32f460_wdt_dev_t *p_dev,
+                                      uint32_t               time_out_ms,
+                                      uint32_t               feed_time_ms);
 
 /**
  * \brief SWDT DRV例程，通过 HW 层接口实现
  *
  * \param[in] handle       SWDT handler
+ * \param[in] p_dev        指向SWDT设备的指针
  * \param[in] feed_time_ms 喂狗间隔时间
  *
  * \return 无
  */
-void demo_hc32f460_drv_swdt_int_entry (am_wdt_handle_t handle,
-                                       uint32_t         feed_time_ms);
+void demo_hc32f460_drv_swdt_int_entry (am_wdt_handle_t         handle,
+                                       am_hc32f460_swdt_dev_t *p_dev,
+                                       uint32_t                feed_time_ms);
 
 
 /**
@@ -447,6 +468,42 @@ void demo_hc32f460_drv_aes_ency_decy_entry (am_aes_handle_t  handle,
  * \return 无
  */
 void demo_hc32f460_hw_dcu_entry (void *p_hw_dcu);
+
+/**
+ * \brief FLASH读写例程，通过 DRV 层接口实现
+ *
+ * \param[in] p_hw_dcu 指向 EFM 外设寄存器块的指针
+ * \param[in] sector   扇区编号
+ *
+ * \return 无
+ */
+void demo_hc32f460_drv_flash_entry (void *p_hw_flash, uint16_t sector);
+
+/**
+ * \brief I2C 从机例程(此例程可以用来模拟 EEPROM)，通过 HW 层接口实现
+ */
+void demo_hc32f460_hw_i2c_slave_poll_entry (void     *p_hw_i2c_addr,
+                                            uint32_t  clk_id,
+                                            int       slave_speed,
+                                            int       slave_addr);
+
+/**
+ * \brief I2C 主机轮询例程，通过 HW 层接口实现
+ */
+void demo_hc32f460_hw_i2c_master_poll_entry (void     *p_hw_i2c_addr,
+                                             uint32_t  clk_id,
+                                             int       master_speed,
+                                             int       master_addr);
+
+/**
+ * \brief USB模拟U盘例程，通过driver层的接口实现
+ */
+void demo_usbd_msc_entry (void* p_handle);
+
+/**
+ * \brief CMP例程，通过 HW 层接口实现
+ */
+void demo_hc32f460_hw_cmp_entry (amhw_hc32f460_cmp_t *p_hw_cmp);
 
 #ifdef __cplusplus
 }

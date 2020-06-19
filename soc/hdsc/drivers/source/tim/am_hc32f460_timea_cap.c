@@ -192,7 +192,7 @@ static int __hc32f460_timea_cap_enable (void *p_drv, int chan)
 
     amhw_hc32f460_timea_enable(p_hw_tim, chan);
 
-    amhw_hc32f460_timea_int_flag_clr(p_hw_tim, (timea_irq_type_t)chan);
+    amhw_hc32f460_timea_int_flag_clr(p_hw_tim, (timea_flag_type_t)chan);
     amhw_hc32f460_timea_int_flag_clr(p_hw_tim, TIMEA_FLAG_OVERFLOW);
     
     return AM_OK;
@@ -314,18 +314,17 @@ static void __hc32f460_timea_cap_irq_handler (void *p_arg)
     }            
 
     for(i = 0; i < p_dev->chan_max; i++) {
-        if ((amhw_hc32f460_timea_int_flag_check(p_hw_tim,
-                     i)) == AM_TRUE) {
+        if ((amhw_hc32f460_timea_int_flag_check(p_hw_tim,(timea_flag_type_t)i)) == AM_TRUE) {
                      
             callback_func = p_dev->callback_info[i].callback_func;
-            value = amhw_hc32f460_timea_get_compare_value(p_hw_tim, i) + (__update_num << 16ul);
+            value = amhw_hc32f460_timea_get_compare_value(p_hw_tim, (timea_channel_t)i) + (__update_num << 16ul);
 
 
             if (callback_func != NULL) {
                 callback_func(p_dev->callback_info[i].p_arg, value);
             }     
 
-            amhw_hc32f460_timea_int_flag_clr(p_hw_tim, i);
+            amhw_hc32f460_timea_int_flag_clr(p_hw_tim, (timea_flag_type_t)i);
         }
     }
 

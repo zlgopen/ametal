@@ -31,8 +31,6 @@
 #include "am_vdebug.h"
 #include "am_delay.h"
 #include "am_gpio.h"
-#include "hc32f460_clk.h"
-#include "am_clk.h"
 
 int am_main (void)
 {
@@ -40,6 +38,9 @@ int am_main (void)
 
     while (1) {
 
+        am_led_toggle(LED0);
+
+        am_mdelay(1000);
     }
 }
 

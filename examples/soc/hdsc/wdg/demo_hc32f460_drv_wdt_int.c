@@ -56,9 +56,10 @@ static void wdt_isr (void *p_arg , uint32_t flag)
 /**
  * \brief Àý³ÌÈë¿Ú
  */
-void demo_hc32f460_drv_wdt_int_entry (am_wdt_handle_t handle,
-                                      uint32_t        time_out_ms,
-                                      uint32_t        feed_time_ms)
+void demo_hc32f460_drv_wdt_int_entry (am_wdt_handle_t         handle,
+                                      am_hc32f460_wdt_dev_t  *p_dev,
+                                      uint32_t                time_out_ms,
+                                      uint32_t                feed_time_ms)
 {
     am_wdt_info_t info;
 
@@ -69,7 +70,7 @@ void demo_hc32f460_drv_wdt_int_entry (am_wdt_handle_t handle,
     AM_DBG_INFO("The WDT support min time is %d ms\r\n", info.min_timeout_ms);
     AM_DBG_INFO("The WDT support max time is %d ms\r\n", info.max_timeout_ms);
 
-    am_hc32f460_wdt_isr_connect(handle, wdt_isr, (void *)0);
+    am_hc32f460_wdt_isr_connect(p_dev, wdt_isr, (void *)0);
 
     am_wdt_enable(handle, time_out_ms);
 

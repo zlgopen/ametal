@@ -12,7 +12,7 @@
 
 /**
  * \file
- * \brief TIMERA 定时器 PWM 例程，通过标准接口实现
+ * \brief ADTIMER61 定时器 PWM 例程，通过标准接口实现
  *
  * - 实验现象：
  *   1. PIOE_8(TIMERA_CH1)输出 2KHz 的 PWM，占空比为 50%；

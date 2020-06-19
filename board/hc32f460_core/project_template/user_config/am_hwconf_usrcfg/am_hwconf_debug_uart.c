@@ -25,6 +25,7 @@
 #include "am_vdebug.h"
 #include "am_hc32f460_inst_init.h"
 
+
 /**
  * \addtogroup am_if_src_hwconf_debug_uart
  * \copydoc am_hwconf_debug_uart.c

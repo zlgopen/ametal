@@ -721,7 +721,6 @@ extern am_hc32f460_adtim_cap_dev_t  __g_adtim61_cap_dev;
 extern am_hc32f460_adtim_cap_dev_t  __g_adtim62_cap_dev;
 extern am_hc32f460_adtim_cap_dev_t  __g_adtim63_cap_dev;
 
-extern am_hc32f460_i2c_dev_t __g_hc32f460_i2c1_dev;
 extern am_hc32f460_i2c_dev_t __g_i2c1_dev;
 extern am_hc32f460_i2c_dev_t __g_i2c2_dev;
 extern am_hc32f460_i2c_dev_t __g_i2c3_dev;
@@ -1474,17 +1473,17 @@ void IRQ137_Handler(void *parg)
      /* SPI Ch.1 Receive completed */
      if ((u32Tmp1 & __HC32F460_SPI_CR1_RXIE_MASK) && (u32Tmp2 & __HC32F460_SPI_SR_RDFF_MASK) && (int_vssel137 & __HC32F460_INTC_VSSEL_SPI1_SRRI_MASK))
      {
-    	 __spi_irq_handler(&__g_spi1_int_dev);
+        __spi_irq_handler(&__g_spi1_int_dev);
      }
      /* SPI Ch.1 Transmit buf empty */
      if ((u32Tmp1 & __HC32F460_SPI_CR1_TXIE_MASK) && (u32Tmp2 & __HC32F460_SPI_SR_TDEF_MASK) && (int_vssel137 & __HC32F460_INTC_VSSEL_SPI1_SRTI_MASK))
      {
-    	 __spi_irq_handler(&__g_spi1_int_dev);
+        __spi_irq_handler(&__g_spi1_int_dev);
      }
      /* SPI Ch.1 bus idle */
      if ((u32Tmp1 & __HC32F460_SPI_CR1_IDIE_MASK) && (!(u32Tmp2 & __HC32F460_SPI_SR_IDLNF_MASK)) && (int_vssel137 & __HC32F460_INTC_VSSEL_SPI1_SPII_MASK))
      {
-    	 __spi_irq_handler(&__g_spi1_int_dev);
+        __spi_irq_handler(&__g_spi1_int_dev);
      }
      /* SPI Ch.1 parity/overflow/underflow/mode error */
      if ((u32Tmp1 & __HC32F460_SPI_CR1_EIE_MASK)         &&  \
@@ -1494,7 +1493,7 @@ void IRQ137_Handler(void *parg)
                       __HC32F460_SPI_SR_UDRERF_MASK)))   &&  \
          (int_vssel137 & __HC32F460_INTC_VSSEL_SPI1_SPEI_MASK))
      {
-    	 __spi_irq_handler(&__g_spi1_int_dev);
+        __spi_irq_handler(&__g_spi1_int_dev);
      }
 
      u32Tmp1 = HC32F460_SPI2->CR1;
@@ -1502,17 +1501,17 @@ void IRQ137_Handler(void *parg)
      /* SPI Ch.2 Receive completed */
      if ((u32Tmp1 & __HC32F460_SPI_CR1_RXIE_MASK) && (u32Tmp2 & __HC32F460_SPI_SR_RDFF_MASK) && (int_vssel137 & __HC32F460_INTC_VSSEL_SPI2_SRRI_MASK))
      {
-    	 __spi_irq_handler(&__g_spi2_int_dev);
+        __spi_irq_handler(&__g_spi2_int_dev);
      }
      /* SPI Ch.2 Transmit buf empty */
      if ((u32Tmp1 & __HC32F460_SPI_CR1_TXIE_MASK) && (u32Tmp2 & __HC32F460_SPI_SR_TDEF_MASK) && (int_vssel137 & __HC32F460_INTC_VSSEL_SPI2_SRTI_MASK))
      {
-    	 __spi_irq_handler(&__g_spi2_int_dev);
+        __spi_irq_handler(&__g_spi2_int_dev);
      }
      /* SPI Ch.2 bus idle */
      if ((u32Tmp1 & __HC32F460_SPI_CR1_IDIE_MASK) && (!(u32Tmp2 & __HC32F460_SPI_SR_IDLNF_MASK)) && (int_vssel137 & __HC32F460_INTC_VSSEL_SPI2_SPII_MASK))
      {
-    	 __spi_irq_handler(&__g_spi2_int_dev);
+        __spi_irq_handler(&__g_spi2_int_dev);
      }
      /* SPI Ch.2 parity/overflow/underflow/mode error */
      if ((u32Tmp1 & __HC32F460_SPI_CR1_EIE_MASK)         &&  \
@@ -1522,26 +1521,25 @@ void IRQ137_Handler(void *parg)
                       __HC32F460_SPI_SR_UDRERF_MASK)))   &&  \
          (int_vssel137 & __HC32F460_INTC_VSSEL_SPI2_SPEI_MASK))
      {
-    	 __spi_irq_handler(&__g_spi2_int_dev);
+        __spi_irq_handler(&__g_spi2_int_dev);
      }
 
      u32Tmp1 = HC32F460_SPI3->CR1;
      u32Tmp2 = HC32F460_SPI3->SR;
-     uint32_t temp3 = HC32F460_SPI3->SR;
      /* SPI Ch.3 Receive completed */
      if ((u32Tmp1 & __HC32F460_SPI_CR1_RXIE_MASK) && (u32Tmp2 & __HC32F460_SPI_SR_RDFF_MASK) && (int_vssel137 & __HC32F460_INTC_VSSEL_SPI3_SRRI_MASK))
      {
-    	 __spi_irq_handler(&__g_spi3_int_dev);
+        __spi_irq_handler(&__g_spi3_int_dev);
      }
      /* SPI Ch.3 Transmit buf empty */
      if ((u32Tmp1 & __HC32F460_SPI_CR1_TXIE_MASK) && (u32Tmp2 & __HC32F460_SPI_SR_TDEF_MASK) && (int_vssel137 & __HC32F460_INTC_VSSEL_SPI3_SRTI_MASK))
      {
-    	 __spi_irq_handler(&__g_spi3_int_dev);
+        __spi_irq_handler(&__g_spi3_int_dev);
      }
      /* SPI Ch.3 bus idle */
      if ((u32Tmp1 & __HC32F460_SPI_CR1_IDIE_MASK) && (!(u32Tmp2 & __HC32F460_SPI_SR_IDLNF_MASK)) && (int_vssel137 & __HC32F460_INTC_VSSEL_SPI3_SPII_MASK))
      {
-    	 __spi_irq_handler(&__g_spi3_int_dev);
+        __spi_irq_handler(&__g_spi3_int_dev);
      }
      /* SPI Ch.3 parity/overflow/underflow/mode error */
      if ((u32Tmp1 & __HC32F460_SPI_CR1_EIE_MASK)         &&  \
@@ -1551,7 +1549,7 @@ void IRQ137_Handler(void *parg)
                       __HC32F460_SPI_SR_UDRERF_MASK)))   &&  \
          (int_vssel137 & __HC32F460_INTC_VSSEL_SPI3_SPEI_MASK))
      {
-    	 __spi_irq_handler(&__g_spi3_int_dev);
+       __spi_irq_handler(&__g_spi3_int_dev);
      }
 
      u32Tmp1 = HC32F460_SPI4->CR1;
@@ -1559,17 +1557,17 @@ void IRQ137_Handler(void *parg)
     /* SPI Ch.4 Receive completed */
      if ((u32Tmp1 & __HC32F460_SPI_CR1_RXIE_MASK) && (u32Tmp2 & __HC32F460_SPI_SR_RDFF_MASK) && (int_vssel137 & __HC32F460_INTC_VSSEL_SPI4_SRRI_MASK))
      {
-    	 __spi_irq_handler(&__g_spi4_int_dev);
+        __spi_irq_handler(&__g_spi4_int_dev);
      }
      /* SPI Ch.4 Transmit buf empty */
      if ((u32Tmp1 & __HC32F460_SPI_CR1_TXIE_MASK) && (u32Tmp2 & __HC32F460_SPI_SR_TDEF_MASK) && (int_vssel137 & __HC32F460_INTC_VSSEL_SPI4_SRTI_MASK))
      {
-    	 __spi_irq_handler(&__g_spi4_int_dev);
+        __spi_irq_handler(&__g_spi4_int_dev);
      }
      /* SPI Ch.4 bus idle */
      if ((u32Tmp1 & __HC32F460_SPI_CR1_IDIE_MASK) && (!(u32Tmp2 & __HC32F460_SPI_SR_IDLNF_MASK)) && (int_vssel137 & __HC32F460_INTC_VSSEL_SPI3_SPII_MASK))
      {
-    	 __spi_irq_handler(&__g_spi4_int_dev);
+        __spi_irq_handler(&__g_spi4_int_dev);
      }
      /* SPI Ch.4 parity/overflow/underflow/mode error */
      if ((u32Tmp1 & __HC32F460_SPI_CR1_EIE_MASK)         &&  \
@@ -1579,7 +1577,7 @@ void IRQ137_Handler(void *parg)
                       __HC32F460_SPI_SR_UDRERF_MASK)))   &&  \
          (int_vssel137 & __HC32F460_INTC_VSSEL_SPI4_SPEI_MASK))
      {
-    	 __spi_irq_handler(&__g_spi4_int_dev);
+        __spi_irq_handler(&__g_spi4_int_dev);
      }
 }
 
@@ -2563,24 +2561,25 @@ void IRQ143_Handler(void)
         	hc32f460_sdioc_irq_handle(&__g_sdioc2_dev);
         }
     }
-
+#if 0
     /* CAN */
-//    if (Set == bM4_INTC_VSSEL143_VSEL6)
-//    {
-//        RTIF = M4_CAN->RTIF;
-//        RTIE = M4_CAN->RTIE;
-//        ERRINT = M4_CAN->ERRINT;
-//        TTCFG = M4_CAN->TTCFG;
-//        if ( (TTCFG & BIT_MASK_05)                                  ||         \
-//             (RTIF & BIT_MASK_00)                                   ||         \
-//             (RTIF & RTIE & 0xFEu)                                  ||         \
-//             ((ERRINT & BIT_MASK_00) && (ERRINT & BIT_MASK_01))     ||         \
-//             ((ERRINT & BIT_MASK_02) && (ERRINT & BIT_MASK_03))     ||         \
-//             ((ERRINT & BIT_MASK_04) && (ERRINT & BIT_MASK_05))     ||         \
-//             ((TTCFG & BIT_MASK_03) && (TTCFG & BIT_MASK_04))       ||         \
-//             ((TTCFG & BIT_MASK_06) && (TTCFG & BIT_MASK_07)))
-//        {
-//            Can_IrqHandler();
-//        }
-//    }
+    if (Set == bM4_INTC_VSSEL143_VSEL6)
+    {
+        RTIF = M4_CAN->RTIF;
+        RTIE = M4_CAN->RTIE;
+        ERRINT = M4_CAN->ERRINT;
+        TTCFG = M4_CAN->TTCFG;
+        if ( (TTCFG & BIT_MASK_05)                                  ||         \
+             (RTIF & BIT_MASK_00)                                   ||         \
+             (RTIF & RTIE & 0xFEu)                                  ||         \
+             ((ERRINT & BIT_MASK_00) && (ERRINT & BIT_MASK_01))     ||         \
+             ((ERRINT & BIT_MASK_02) && (ERRINT & BIT_MASK_03))     ||         \
+             ((ERRINT & BIT_MASK_04) && (ERRINT & BIT_MASK_05))     ||         \
+             ((TTCFG & BIT_MASK_03) && (TTCFG & BIT_MASK_04))       ||         \
+             ((TTCFG & BIT_MASK_06) && (TTCFG & BIT_MASK_07)))
+        {
+            Can_IrqHandler();
+        }
+    }
+#endif
 }

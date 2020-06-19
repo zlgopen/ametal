@@ -48,6 +48,9 @@ static volatile am_bool_t __g_adc_complete = AM_FALSE;
 static volatile am_bool_t __g_adc_seqcmp = AM_FALSE;
 #define ADC_CHAN    0
 
+#define THRESHOLD_VALUE_LOW  500
+#define THRESHOLD_VALUE_HIGH 1000
+
 /**
  * \brief ADC 中断服务函数
  */
@@ -98,10 +101,11 @@ void demo_hc32f460_hw_adc_awd_entry (void    *p_hw_adc,
                                      uint8_t  chan,
                                      uint32_t vref_mv)
 {
-    uint8_t                    i        = 0;
     uint32_t                   adc_mv   = 0;    /* 采样电压 */
     uint32_t                   sum      = 0;
     amhw_hc32f460_adc_t       *p_adc    = (amhw_hc32f460_adc_t *)p_hw_adc;
+	  uint16_t                   threshold_value_low  = THRESHOLD_VALUE_LOW;
+	  uint16_t                   threshold_value_high = THRESHOLD_VALUE_HIGH;	
 
     am_kprintf("The ADC HW Int Demo\r\n");
 
@@ -136,13 +140,13 @@ void demo_hc32f460_hw_adc_awd_entry (void    *p_hw_adc,
 
     /* 设定低阀值 */
     amhw_hc32f460_adc_awd_low_threshold_set(p_hw_adc,
-                                            500,
+                                            threshold_value_low,
                                             AMHW_HC32F460_ADC_RESOLUTION_12BIT,
                                             AMHW_HC32F460_ADC_DATA_ALIGN_FORMAT_RIGHT);
 
     /* 设定高阀值 */
     amhw_hc32f460_adc_awd_high_threshold_set(p_hw_adc,
-                                            1000,
+                                            threshold_value_high,
                                             AMHW_HC32F460_ADC_RESOLUTION_12BIT,
                                             AMHW_HC32F460_ADC_DATA_ALIGN_FORMAT_RIGHT);
 
@@ -171,7 +175,7 @@ void demo_hc32f460_hw_adc_awd_entry (void    *p_hw_adc,
         while (__g_adc_complete == AM_FALSE);
 
         if (__g_adc_seqcmp == AM_TRUE) {
-            AM_DBG_INFO("ADC_SEQCMP happen !");
+            AM_DBG_INFO("ADC_SEQCMP happen !\r\n");
             __g_adc_seqcmp = AM_FALSE;
         }
 
@@ -180,6 +184,8 @@ void demo_hc32f460_hw_adc_awd_entry (void    *p_hw_adc,
         /* 转换为电压值对应的整数值 */
         adc_mv = sum * 3300 / ((1UL << 12) -1);
 
+				AM_DBG_INFO("threshold value low  : %d\r\n", threshold_value_low);
+				AM_DBG_INFO("threshold value high : %d\r\n", threshold_value_high);
         AM_DBG_INFO("Sample : %d, Vol: %d mv\r\n", sum, adc_mv);
 
         __g_adc_complete = AM_FALSE;

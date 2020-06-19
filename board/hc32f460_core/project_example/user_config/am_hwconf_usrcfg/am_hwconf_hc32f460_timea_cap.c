@@ -463,14 +463,14 @@ const am_hc32f460_timea_cap_devinfo_t  __g_timea4_cap_devinfo = {
 /** \brief TIMEA1用于捕获功能的设备定义 */
 am_hc32f460_timea_cap_dev_t  __g_timea4_cap_dev;
 
-/** \brief timea1 cap实例初始化，获得cap标准服务句柄 */
+/** \brief timea4 cap实例初始化，获得cap标准服务句柄 */
 am_cap_handle_t am_hc32f460_timea4_cap_inst_init (void)
 {
     return am_hc32f460_timea_cap_init(&__g_timea4_cap_dev,
                                   &__g_timea4_cap_devinfo);
 }
 
-/** \brief timea1 cap实例解初始化 */
+/** \brief timea4 cap实例解初始化 */
 void am_hc32f460_timea4_cap_inst_deinit (am_cap_handle_t handle)
 {
     am_hc32f460_timea_cap_deinit(handle);
@@ -580,7 +580,7 @@ am_cap_handle_t am_hc32f460_timea5_cap_inst_init (void)
                                   &__g_timea5_cap_devinfo);
 }
 
-/** \brief timea1 cap实例解初始化 */
+/** \brief timea5 cap实例解初始化 */
 void am_hc32f460_timea5_cap_inst_deinit (am_cap_handle_t handle)
 {
     am_hc32f460_timea_cap_deinit(handle);
@@ -683,14 +683,14 @@ const am_hc32f460_timea_cap_devinfo_t  __g_timea6_cap_devinfo = {
 /** \brief TIMEA1用于捕获功能的设备定义 */
 am_hc32f460_timea_cap_dev_t  __g_timea6_cap_dev;
 
-/** \brief timea5 cap实例初始化，获得cap标准服务句柄 */
+/** \brief timea6 cap实例初始化，获得cap标准服务句柄 */
 am_cap_handle_t am_hc32f460_timea6_cap_inst_init (void)
 {
     return am_hc32f460_timea_cap_init(&__g_timea6_cap_dev,
                                   &__g_timea6_cap_devinfo);
 }
 
-/** \brief timea1 cap实例解初始化 */
+/** \brief timea6 cap实例解初始化 */
 void am_hc32f460_timea6_cap_inst_deinit (am_cap_handle_t handle)
 {
     am_hc32f460_timea_cap_deinit(handle);

@@ -66,8 +66,9 @@ static void swdt_isr (void *p_arg , uint32_t flag)
 /**
  * \brief Àý³ÌÈë¿Ú
  */
-void demo_hc32f460_drv_swdt_int_entry (am_wdt_handle_t handle,
-                                       uint32_t        feed_time_ms)
+void demo_hc32f460_drv_swdt_int_entry (am_wdt_handle_t         handle,
+                                       am_hc32f460_swdt_dev_t *p_dev,
+                                       uint32_t                feed_time_ms)
 {
     am_wdt_info_t info;
 
@@ -78,7 +79,7 @@ void demo_hc32f460_drv_swdt_int_entry (am_wdt_handle_t handle,
     AM_DBG_INFO("The SWDT support min time is %d ms\r\n", info.min_timeout_ms);
     AM_DBG_INFO("The SWDT support max time is %d ms\r\n", info.max_timeout_ms);
 
-    am_hc32f460_swdt_isr_connect(handle, swdt_isr, (void *)0);
+    am_hc32f460_swdt_isr_connect(p_dev, swdt_isr, (void *)0);
 
     while (1) {
 

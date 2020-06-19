@@ -65,9 +65,6 @@
 /** \brief I2C 硬件初始化 */
 static int __i2c_hard_init (am_hc32f460_i2c_dev_t *p_dev);
 
-/** \brief I2C 中断处理函数 */
-static void __i2c_irq_handler (void *p_arg);
-
 /** \brief I2C 状态机函数 */
 static int __i2c_mst_sm_event (am_hc32f460_i2c_dev_t *p_dev, uint32_t event);
 
@@ -519,20 +516,6 @@ am_local void __softimer_callback (void *p_arg)
     __i2c_re_init(p_arg);
     p_dev->busy = AM_FALSE;
 }
-
-/**
- * \brief I2C 中断处理函数
- *
- * \param[in] p_arg : 指向I2C设备结构体的指针
- *
- * \return 无
- */
-#if 1
-static void __i2c_irq_handler (void *p_arg)
-{
-
-}
-#endif
 /******************************************************************************/
 
 static int __i2c_msg_start (void *p_drv, am_i2c_message_t *p_msg)

@@ -92,7 +92,7 @@ extern "C" {
 #define HC32F460_CMP3_BASE          (0x4004A020UL)  /** \brief CMP3基地址 */
 #define HC32F460_CMP_CR_BASE        (0x4004A000UL)  /** \brief CMP_CR基地址 */
 #define HC32F460_USB_OTG_FS_BASE    (0x400C0000UL)  /** \brief USB基地址 */
-
+#define HC32F460_CRC_BASE           (0x40008C00UL)  /** \brief CRC基地址 */
 /**
  * \name 外设内存映射地址定义
  * @{

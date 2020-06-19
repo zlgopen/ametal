@@ -54,7 +54,7 @@ void demo_hc32f460_core_std_spi_master_dma_entry (void)
 {
     AM_DBG_INFO("demo amhc32f460_core std spi master dma!\r\n");
 
-    demo_std_spi_master_entry(am_hc32f460_spi3_dma_inst_init(), PIOE_1);
+    demo_std_spi_master_entry(am_hc32f460_spi4_dma_inst_init(), PIOE_1);
 }
 /** [src_hc32f460_std_spi_master_dma] */
 

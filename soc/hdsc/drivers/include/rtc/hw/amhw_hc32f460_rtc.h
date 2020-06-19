@@ -36,6 +36,30 @@ extern "C" {
  * @{
  */
 
+/**
+ * \brief 使用匿名联合体段开始
+ * @{
+ */
+
+#if defined(__CC_ARM)
+  #pragma push
+  #pragma anon_unions
+#elif defined(__ICCARM__)
+  #pragma language=extended
+#elif defined(__GNUC__)
+
+  /* 默认使能匿名联合体 */
+#elif defined(__TMS470__)
+
+  /* 默认使能匿名联合体 */
+#elif defined(__TASKING__)
+  #pragma warning 586
+#else
+  #warning Not supported compiler t
+#endif
+
+/** @} */
+
 typedef struct
 {
     __IO uint32_t RESET                     : 1;
@@ -470,7 +494,7 @@ void amhw_hc32f460_rtc_period_int_time_set_enable (amhw_hc32f460_rtc_t *p_hw_rtc
  */
 am_static_inline
 void amhw_hc32f460_rtc_enable (amhw_hc32f460_rtc_t *p_hw_rtc,
-                             am_bool_t          stata)
+                               am_bool_t          stata)
 {
 //    if(stata == AM_TRUE) {
 //        p_hw_rtc->CR1_f.START = 1;
@@ -500,17 +524,17 @@ typedef enum {
 } amhw_hc32f460_rtc_clk_src_t;
 
 am_static_inline
-am_bool_t amhw_hc32f460_rtc_deinit(amhw_hc32f460_rtc_t *p_hw_rtc)
+am_err_t amhw_hc32f460_rtc_deinit(amhw_hc32f460_rtc_t *p_hw_rtc)
 {
     uint8_t u8RegSta;
-    am_bool_t enRet = AM_OK;
+    am_err_t enRet = AM_OK;
     
     p_hw_rtc->CR0_f.RESET = 0u;
     /* Waiting for normal count status or end of RTC software reset */    
     do
     {
         u8RegSta = (uint8_t)p_hw_rtc->CR0_f.RESET;
-    } while ((u8RegSta == 1u));
+    } while ((1u == u8RegSta));
 
     if (1u == u8RegSta)
     {
@@ -526,9 +550,9 @@ am_bool_t amhw_hc32f460_rtc_deinit(amhw_hc32f460_rtc_t *p_hw_rtc)
 }
 
 am_static_inline
-am_bool_t amhw_hc32f460_rtc_init(amhw_hc32f460_rtc_t *p_hw_rtc, const stc_rtc_init_t *pstcRtcInit)
+am_err_t amhw_hc32f460_rtc_init(amhw_hc32f460_rtc_t *p_hw_rtc, const stc_rtc_init_t *pstcRtcInit)
 {
-    am_bool_t enRet = AM_OK;
+    am_err_t enRet = AM_OK;
 
     if (NULL == pstcRtcInit)
     {
@@ -589,10 +613,10 @@ am_bool_t amhw_hc32f460_rtc_cmd(amhw_hc32f460_rtc_t *p_hw_rtc, en_rtc_functional
 }
 
 am_static_inline
-am_bool_t amhw_hc32f460_rtc_enter_rw_mode(amhw_hc32f460_rtc_t *p_hw_rtc)
+am_err_t amhw_hc32f460_rtc_enter_rw_mode(amhw_hc32f460_rtc_t *p_hw_rtc)
 {
     uint8_t u8RegSta;
-    am_bool_t enRet = AM_OK;
+    am_err_t enRet = AM_OK;
 
 
     /* Mode switch when RTC is running */
@@ -603,7 +627,7 @@ am_bool_t amhw_hc32f460_rtc_enter_rw_mode(amhw_hc32f460_rtc_t *p_hw_rtc)
         do
         {
             u8RegSta = (uint8_t)p_hw_rtc->CR2_f.WAITF;
-        } while ((u8RegSta == 0u));
+        } while ((0u == u8RegSta));
 
         if (0u == u8RegSta)
         {
@@ -615,10 +639,10 @@ am_bool_t amhw_hc32f460_rtc_enter_rw_mode(amhw_hc32f460_rtc_t *p_hw_rtc)
 }
 
 am_static_inline
-am_bool_t amhw_hc32f460_rtc_exit_rw_mode(amhw_hc32f460_rtc_t *p_hw_rtc)
+am_err_t amhw_hc32f460_rtc_exit_rw_mode(amhw_hc32f460_rtc_t *p_hw_rtc)
 {
     uint8_t u8RegSta;
-    am_bool_t enRet = AM_OK;
+    am_err_t enRet = AM_OK;
     
     /* Mode switch when RTC is running */
     if (0u != p_hw_rtc->CR1_f.START)
@@ -628,7 +652,7 @@ am_bool_t amhw_hc32f460_rtc_exit_rw_mode(amhw_hc32f460_rtc_t *p_hw_rtc)
         do
         {
             u8RegSta = (uint8_t)p_hw_rtc->CR2_f.WAITF;
-        } while ((u8RegSta == 1u));
+        } while ((1u == u8RegSta));
 
         if (1u == u8RegSta)
         {
@@ -640,10 +664,10 @@ am_bool_t amhw_hc32f460_rtc_exit_rw_mode(amhw_hc32f460_rtc_t *p_hw_rtc)
 }
 
 am_static_inline
-am_bool_t amhw_hc32f460_rtc_set_data_time(amhw_hc32f460_rtc_t *p_hw_rtc, en_rtc_data_format_t enFormat, const stc_rtc_date_time_t *pstcRtcDateTime,
+am_err_t amhw_hc32f460_rtc_set_data_time(amhw_hc32f460_rtc_t *p_hw_rtc, en_rtc_data_format_t enFormat, const stc_rtc_date_time_t *pstcRtcDateTime,
                             en_rtc_functional_state_t enUpdateDateEn, en_rtc_functional_state_t enUpdateTimeEn)
 {
-    am_bool_t enRet = AM_OK;
+    am_err_t enRet = AM_OK;
     /* Check update status */
     if (((RTC_DISABLE == enUpdateDateEn) && (RTC_DISABLE == enUpdateTimeEn)) || (NULL == pstcRtcDateTime))
     {
@@ -762,9 +786,9 @@ am_bool_t amhw_hc32f460_rtc_set_data_time(amhw_hc32f460_rtc_t *p_hw_rtc, en_rtc_
 }
 
 am_static_inline
-am_bool_t amhw_hc32f460_rtc_get_data_time(amhw_hc32f460_rtc_t *p_hw_rtc, en_rtc_data_format_t enFormat, stc_rtc_date_time_t *pstcRtcDateTime)
+am_err_t amhw_hc32f460_rtc_get_data_time(amhw_hc32f460_rtc_t *p_hw_rtc, en_rtc_data_format_t enFormat, stc_rtc_date_time_t *pstcRtcDateTime)
 {
-    am_bool_t enRet = AM_OK;
+    am_err_t enRet = AM_OK;
 
     if(NULL == pstcRtcDateTime)
     {
@@ -821,6 +845,29 @@ am_bool_t amhw_hc32f460_rtc_get_data_time(amhw_hc32f460_rtc_t *p_hw_rtc, en_rtc_
 
     return enRet;
 }
+
+/**
+ * \brief 使用匿名联合体段结束
+ * @{
+ */
+
+#if defined(__CC_ARM)
+  #pragma pop
+#elif defined(__ICCARM__)
+
+  /* 允许匿名联合体使能 */
+#elif defined(__GNUC__)
+
+  /* 默认使用匿名联合体 */
+#elif defined(__TMS470__)
+
+  /* 默认使用匿名联合体 */
+#elif defined(__TASKING__)
+  #pragma warning restore
+#else
+  #warning Not supported compiler t
+#endif
+/** @} */
 
 /**
  * @}

@@ -294,9 +294,9 @@ static int __timea_timing_enable (void *p_drv, uint8_t chan, void *p_count)
 
 /******************************************************************************/
 static int __timea_timing_callback_set (void     *p_drv,
-                                      uint8_t   chan,
-                                      void    (*pfn_callback)(void *),
-                                      void     *p_arg)
+                                        uint8_t   chan,
+                                        void    (*pfn_callback)(void *),
+                                        void     *p_arg)
 {
     am_hc32f460_timea_timing_dev_t *p_dev = (am_hc32f460_timea_timing_dev_t *)p_drv;
     amhw_hc32f460_timea_t          *p_hw_tim;
@@ -309,10 +309,10 @@ static int __timea_timing_callback_set (void     *p_drv,
 
     /* 不需要开启中断 */
     if (pfn_callback == NULL) {
-        amhw_hc32f460_timea_int_disable(p_hw_tim, chan);
+        amhw_hc32f460_timea_int_disable(p_hw_tim, (timea_irq_type_t)chan);
     } else {
         p_dev->pfn_callback = pfn_callback;
-        p_dev->p_arg   = p_arg;
+        p_dev->p_arg        = p_arg;
     }
 
     return AM_OK;
@@ -393,10 +393,10 @@ void am_hc32f460_timea_timing_deinit (am_timer_handle_t handle)
     p_hw_tim = (amhw_hc32f460_timea_t *)p_dev->p_devinfo->timea_regbase;
 
     /* 关闭更新中断 */
-    amhw_hc32f460_timea_int_disable(p_hw_tim, 0);
+    amhw_hc32f460_timea_int_disable(p_hw_tim, TIMERA_IRQ_CAPTURE_OR_COMPARE_CH1);
 
     /* 关闭定时器 */
-    amhw_hc32f460_timea_disable(p_hw_tim, 0);
+    amhw_hc32f460_timea_disable(p_hw_tim, TIMERA_IRQ_CAPTURE_OR_COMPARE_CH1);
 
 //    am_int_disconnect(p_dev->p_devinfo->inum, IRQ130_Handler, (void *)p_dev);
 //    am_int_disable(p_dev->p_devinfo->inum);

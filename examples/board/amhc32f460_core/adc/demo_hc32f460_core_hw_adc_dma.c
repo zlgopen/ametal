@@ -46,7 +46,7 @@
 #include "am_gpio.h"
 #include "am_clk.h"
 #include "am_hc32f460_dma.h"
-#include "demo_hc32f460_core_entries.h"
+#include "demo_hc32f460_entries.h"
 
 extern am_hc32f460_dma_dev_t __g_dma1_dev;
 

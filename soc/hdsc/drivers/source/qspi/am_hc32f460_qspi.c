@@ -1,6 +1,6 @@
 #include "am_common.h"
 #include "am_types.h"
-#include "qspi/am_hc32f460_qspi.h"
+#include "am_hc32f460_qspi.h"
 
 /**
  * \brief qspi读函数
@@ -68,10 +68,6 @@ int am_hc32f460_qspi_exit_directcom (am_hc32f460_qspi_dev_t *p_dev)
  */
 uint8_t am_hc32f460_qspi_directcom_read (am_hc32f460_qspi_dev_t *p_dev)
 {
-    if (p_dev == NULL) {
-        return -AM_EINVAL;
-    }
-
     amhw_hc32f460_qspi_t *p_hw_qspi =
          (amhw_hc32f460_qspi_t *)p_dev->p_devinfo->regbase;
 
@@ -98,8 +94,8 @@ int am_hc32f460_qspi_directcom_write (am_hc32f460_qspi_dev_t *p_dev, uint8_t dat
 /**
  * \brief qspi初始化函数
  */
-am_qspi_handle_t am_hc32f460_qspi_init (am_hc32f460_qspi_dev_t      *p_dev,
-                                        am_hc32f460_qspi_devinfo_t  *p_devinfo)
+am_qspi_handle_t am_hc32f460_qspi_init (am_hc32f460_qspi_dev_t            *p_dev,
+                                        const am_hc32f460_qspi_devinfo_t  *p_devinfo)
 {
     amhw_hc32f460_qspi_t *p_hw_qspi;
 
@@ -147,3 +143,20 @@ am_qspi_handle_t am_hc32f460_qspi_init (am_hc32f460_qspi_dev_t      *p_dev,
 }
 
 
+/**
+ * \brief QSPI 去初始化
+ */
+void am_hc32f460_qspi_deinit (am_qspi_handle_t handle)
+{
+    am_hc32f460_qspi_dev_t *p_dev  = (am_hc32f460_qspi_dev_t *)handle;
+
+    if (handle == NULL){
+        return ;
+    }
+
+    /* 平台去初始化 */
+    if (p_dev->p_devinfo->pfn_plfm_deinit) {
+        p_dev->p_devinfo->pfn_plfm_deinit();
+    }
+
+}

@@ -20,13 +20,19 @@
  * \endinternal
  */
 
-
 #include "ametal.h"
 
 #include "hc32f460_icg.h"
 
+#if defined (__CC_ARM)
+const uint32_t ICG[8] __attribute__((at(0x400))) =
+#elif defined(__GNUC__)
 __attribute__ (( section(".icg")))
-const uint32_t ICG[8] = {
+const uint32_t ICG[8] =
+#else
+#error "unsupported compiler!!"
+#endif
+{
     /* ICG 0~ 3 */
     HC32F460_ICG0_REGISTER_CONSTANT,
     HC32F460_ICG1_REGISTER_CONSTANT,
@@ -38,7 +44,5 @@ const uint32_t ICG[8] = {
     HC32F460_ICG6_REGISTER_CONSTANT,
     HC32F460_ICG7_REGISTER_CONSTANT,
 };
-
-
 
 /* end of file */

@@ -12,7 +12,7 @@
 
 /**
  * \file
- * \brief I2C 从机例程(此例程可以用来模拟 EEPROM)，通过 HW 层接口实现
+ * \brief I2C 主机轮询例程，通过 HW 层接口实现
  *
  * - 操作步骤：
  *   1. PIOA_11 引脚连接 I2C 主机的 SCL 引脚；
@@ -52,8 +52,8 @@
 #define BUFF_DATA_LEN                   8u
 #define TIMEOUT                         ((uint32_t)0x10000)
 
-uint8_t u8TxBuf[BUFF_DATA_LEN];
-uint8_t u8RxBuf[BUFF_DATA_LEN];
+static uint8_t u8TxBuf[BUFF_DATA_LEN];
+static uint8_t u8RxBuf[BUFF_DATA_LEN];
 
 static uint8_t __master_start_or_restart(amhw_hc32f460_i2c_t *p_hw_i2c, uint8_t u8Start)
 {

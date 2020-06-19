@@ -45,7 +45,7 @@
 #include "am_gpio.h"
 #include "am_vdebug.h"
 #include "am_hc32f460_inst_init.h"
-#include "demo_hc32f460_core_entries.h"
+#include "demo_hc32f460_entries.h"
 
 /**
  * \brief Àý³ÌÈë¿Ú
@@ -65,7 +65,7 @@ void demo_hc32f460_core_hw_spi_master_entry (void)
     am_gpio_pin_cfg(PIOE_2,  GPIO_AFIO(AMHW_HC32F460_AFIO_SPI3_MOSI));
     am_gpio_pin_cfg(PIOE_3,  GPIO_AFIO(AMHW_HC32F460_AFIO_SPI3_MISO));
 
-    demo_hc32f460_hw_spi_master_entry((void *)HC32F460_SPI3_BASE, PIOE_1);
+    demo_hc32f460_hw_spi_master_entry(HC32F460_SPI3, PIOE_1);
 }
 /** [src_hc32f460_hw_spi_master] */
 

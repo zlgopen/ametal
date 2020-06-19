@@ -29,6 +29,30 @@ extern "C" {
 
 #include "am_types.h"
 #include "am_bitops.h"
+
+/**
+ * \brief 使用匿名联合体段开始
+ * @{
+ */
+
+#if defined(__CC_ARM)
+  #pragma push
+  #pragma anon_unions
+#elif defined(__ICCARM__)
+  #pragma language=extended
+#elif defined(__GNUC__)
+
+  /* 默认使能匿名联合体 */
+#elif defined(__TMS470__)
+
+  /* 默认使能匿名联合体 */
+#elif defined(__TASKING__)
+  #pragma warning 586
+#else
+  #warning Not supported compiler t
+#endif
+
+/** @} */
 /**
  *******************************************************************************
  ** \brief Timer0 channel enumeration
@@ -365,16 +389,15 @@ am_static_inline
 amhw_hc32f460_tim_clkdiv_t
     amhw_hc32f460_tim_mode_clkdiv_get (amhw_hc32f460_tim_t *p_hw_tim, uint8_t chan)
 {
-//    return (amhw_hc32_tim_clkdiv_t)((p_hw_tim->mxcr_t.m0cr >> 4) & 0x7ul);
     amhw_hc32f460_tim_clkdiv_t clkdiv;
 
     if (TIM0_CHANNEL_A == chan)
     {
-        clkdiv = p_hw_tim->BCONR_f.CKDIVA;
+        clkdiv = (amhw_hc32f460_tim_clkdiv_t)p_hw_tim->BCONR_f.CKDIVA;
     }
     else
     {
-        clkdiv = p_hw_tim->BCONR_f.CKDIVB;
+        clkdiv = (amhw_hc32f460_tim_clkdiv_t)p_hw_tim->BCONR_f.CKDIVB;
     }
     return clkdiv;
 }
@@ -498,6 +521,29 @@ void amhw_hc32f460_tim_int_flag_clr(amhw_hc32f460_tim_t *p_hw_tim, uint8_t chan)
         }
     }
 }
+
+/**
+ * \brief 使用匿名联合体段结束
+ * @{
+ */
+
+#if defined(__CC_ARM)
+  #pragma pop
+#elif defined(__ICCARM__)
+
+  /* 允许匿名联合体使能 */
+#elif defined(__GNUC__)
+
+  /* 默认使用匿名联合体 */
+#elif defined(__TMS470__)
+
+  /* 默认使用匿名联合体 */
+#elif defined(__TASKING__)
+  #pragma warning restore
+#else
+  #warning Not supported compiler t
+#endif
+/** @} */
 
 /**
  * @}

@@ -21,6 +21,7 @@
 
 #include "ametal.h"
 #include "am_clk.h"
+#include "am_int.h"
 #include "am_hc32f460_swdt.h"
 #include "hc32f460_intctrl.h"
 #include "hc32f460_inum.h"

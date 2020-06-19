@@ -7,7 +7,7 @@
 * All rights reserved.
 *
 * Contact information:
-* web site:    http://www.zlg118.cn/
+* web site:    http://www.zlg.cn/
 *******************************************************************************/
 
 /**
@@ -168,6 +168,26 @@ int am_hc32f460_dma_xfer_desc_build (amhw_hc32f460_dma_xfer_desc_t *p_desc,
                                      uint32_t                       dst_addr,
                                      uint32_t                       nbytes,
                                      uint32_t                       flags);
+
+int am_hc32f460_dma_chain_xfer_desc_build (amhw_hc32f460_dma_chain_xfer_desc_t *p_desc,   /* 描述符结构体指针地址 */
+                                           uint32_t                             src_addr, /* 源地址  */
+                                           uint32_t                             dst_addr, /* 目的地址  */
+                                           uint32_t                             count,    /* 传输次数  */
+                                           uint32_t                             blk_size, /* 数据块大小  */
+                                           uint32_t                             drpt,     /* 目标地址重复区域大小  */
+                                           uint32_t                             srpt,     /* 源地址重复区域大小  */
+                                           uint32_t                             snscnt,   /* 源地址跳转的数据量  */
+                                           uint32_t                             soffset,  /* 源地址跳转的地址偏移量  */
+                                           uint32_t                             dnscnt,   /* 目标地址跳转的数据量  */
+                                           uint32_t                             dsoffset, /* 目标地址跳转的地址偏移量  */
+                                           uint32_t                             link,     /* 下一次传输的描述符所在地址  */
+                                           uint32_t                             ch_ctl);  /* 通道控制寄存器设置值  */
+
+/* DMA连锁传输配置 */
+int am_hc32f460_dma_chain_xfer_desc_chan_cfg (am_hc32f460_dma_dev_t                  *p_dev,
+                                              amhw_hc32f460_dma_chain_xfer_desc_t    *p_desc,
+                                              amhw_hc32f460_dma_transfer_type_t       type,
+                                              uint8_t                                 chan);
 
 /**
  * \brief 开始DMA传输

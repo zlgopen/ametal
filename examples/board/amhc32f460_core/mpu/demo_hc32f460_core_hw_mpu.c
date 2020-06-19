@@ -45,7 +45,7 @@ void demo_hc32f460_core_hw_mpu_entry (void)
 {
     AM_DBG_INFO("demo amhc32f460_core hw mpu !\r\n");
 
-    demo_hc32f460_hw_mpu_entry((void *)HC32F460_MPU_BASE);
+    demo_hc32f460_hw_mpu_entry(HC32F460_MPU);
 }
 /** [src_hc32f460_hw_mpu] */
 

@@ -23,8 +23,8 @@
 /*******************************************************************************
   Í·ÎÄ¼þ
 *******************************************************************************/
-#include <sdio/am_hc32f460_sdioc.h>
-#include <sdio/hw/amhw_hc32f460_sdioc.h>
+#include "am_hc32f460_sdioc.h"
+#include "hw/amhw_hc32f460_sdioc.h"
 #include "ametal.h"
 #include "am_clk.h"
 #include "hc32f460_clk.h"
@@ -262,7 +262,7 @@ static int __sdio_transfer (void *p_drv, am_sdio_trans_t *p_trans)
     return ret;
 }
 
-static uint8_t __clk_div_set(amhw_hc32f460_sdioc_t   *p_hw_sdioc,
+static void __clk_div_set(amhw_hc32f460_sdioc_t   *p_hw_sdioc,
                              uint32_t                 sdio_speed)
 {
     uint32_t clk_exclk = am_clk_rate_get(CLK_EXCLK);

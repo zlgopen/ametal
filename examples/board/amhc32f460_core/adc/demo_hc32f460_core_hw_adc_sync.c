@@ -16,6 +16,7 @@
  *
  * - 操作步骤：
  *   1. PIOA_0、 PIOA_4连接模拟输入。
+ *   2. PIOB_7接地触发ADC转换。
  *
  * - 实验现象：
  *   1. 串口输出电压采样值。
@@ -45,7 +46,7 @@
 #include "am_hc32f460.h"
 #include "am_gpio.h"
 #include "am_clk.h"
-#include "demo_hc32f460_core_entries.h"
+#include "demo_hc32f460_entries.h"
 
 /**
  * \brief 例程入口

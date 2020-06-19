@@ -1746,9 +1746,9 @@ void amhw_hc32f460_gpio_pin_pu_disable (amhw_hc32f460_gpio_t *p_hw_gpio, int pin
  * \return нч
  */
 am_static_inline
-void amhw_hc32f460_gpio_pin_driver_capability  (amhw_hc32f460_gpio_t *p_hw_gpio, 
-                                           amhw_hc32f460_gpio_speed_mode_t speed_mode,
-                                           int pin
+void amhw_hc32f460_gpio_pin_driver_capability  (amhw_hc32f460_gpio_t           *p_hw_gpio, 
+                                                amhw_hc32f460_gpio_speed_mode_t speed_mode,
+                                                int                             pin
 )
 {
     amhw_hc32f460_port_pcr_field_t *PCRx;
