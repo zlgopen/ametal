@@ -221,9 +221,6 @@ void __cs_irq_handle (void *p_arg)
     size_t                         count     = 0;
     am_hc32f460_dma_dev_t         *p_dma_dev = &__g_dma1_dev;
 
-    /* 片选有效模式 1 高电平有效 0 低电平有效 */
-    uint8_t  cs_mode   = p_dev->mode & AM_SPI_SLV_CS_HIGH;
-
     if((cs_status == 1)) { /* 传输结束 */
         count = p_this->sum_nbytes - \
              am_hc32f460_dma_tran_data_get(p_dma_dev, p_this->p_devinfo->dma_chan_rx);
@@ -322,9 +319,6 @@ static int __cs_irq_cfg_deinit (am_hc32f460_spi_slv_dma_dev_t *p_this)
 static int __spi_slv_setup (void *p_drv, am_spi_slv_device_t *p_dev)
 {
     am_hc32f460_spi_slv_dma_dev_t *p_this = (am_hc32f460_spi_slv_dma_dev_t *)p_drv;
-
-    amhw_hc32f460_spi_t *p_hw_spi = (amhw_hc32f460_spi_t *)
-                                        (p_this->p_devinfo->spi_reg_base);
 
     if (p_dev == NULL || p_drv == NULL) {
         return -AM_EINVAL;

@@ -46,7 +46,7 @@
 #include "am_hc32f460.h"
 #include "am_gpio.h"
 #include "am_clk.h"
-#include "demo_hc32f460_core_entries.h"
+#include "demo_hc32f460_entries.h"
 
 /**
  * \brief Àý³ÌÈë¿Ú

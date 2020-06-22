@@ -101,6 +101,32 @@ typedef struct am_hc32f460_swdt_dev {
     const am_hc32f460_swdt_devinfo_t  *p_devinfo;
 } am_hc32f460_swdt_dev_t;
 
+/**
+ * \brief 连接SWDT中断服务函数
+ *
+ * \param[in] p_dev     : 指向SWDT设备
+ * \param[in] p_devinfo : 指向连接SWDT中断服务函数
+ * \param[in] p_arg     : 回调函数参数
+ *
+ * \return 成功则返回AM_OK，其他则为失败
+ */
+int am_hc32f460_swdt_isr_connect (am_hc32f460_swdt_dev_t     *p_dev,
+                                  am_hc32f460_pfn_swdt_isr_t  pfn_isr,
+                                  void                       *p_arg);
+
+/**
+ * \brief 删除SWDT中断服务函数
+ *
+ * \param[in] p_dev     : 指向SWDT设备
+ * \param[in] p_devinfo : 指向连接SWDT中断服务函数
+ * \param[in] p_arg     : 回调函数参数
+ *
+ * \return 成功则返回AM_OK，其他则为失败
+ */
+int am_hc32f460_swdt_isr_disconnect (am_hc32f460_swdt_dev_t    *p_dev,
+                                     am_hc32f460_pfn_swdt_isr_t pfn_isr,
+                                     void                      *p_arg);
+
 
 /**
  * \brief SWDT初始化

@@ -248,43 +248,6 @@ uint32_t u32DataInOffset = 0ul;
 uint32_t u32DataOutOffset = 0ul;
 uint8_t u8FinishFlag = 0u;
 
-
-
-static void BufWrite(uint8_t u8Data)
-{
-    if(u32DataInOffset >= TEST_DATA_LEN)
-    {
-        //error
-        while(1)
-        {
-
-        }
-    }
-    u8RxBuf[u32DataInOffset] = u8Data;
-    u32DataInOffset++;
-    
-//    AM_DBG_INFO("BufWrite = %d\r\n", u8Data);
-}
-
-static uint8_t BufRead(void)
-{
-    uint8_t temp;
-    if(u32DataOutOffset >= TEST_DATA_LEN)
-    {
-        //error
-        while(1)
-        {
-            ;
-        }
-    }
-    temp = u8RxBuf[u32DataOutOffset];
-    u32DataOutOffset++;
-    
-//    AM_DBG_INFO("BufRead = %d\r\n", temp);
-
-    return temp;
-}
-
 /**
  * \brief I2C 中断处理函数
  *
@@ -348,7 +311,6 @@ static void __i2c_slv_irq_handler (void *p_arg)
     if(I2C_SET == amhw_hc32f460_i2c_get_status(p_hw_i2c_slv, I2C_SR_RFULLF))
     {
         // TODO: I2C_ReadData
-//        BufWrite(amhw_hc32f460_i2c_dat_read(p_hw_i2c_slv));
 #if 1       
         rx_data = amhw_hc32f460_i2c_dat_read(p_hw_i2c_slv);//接收数据
 //        if(rx_len) {    /* 忽略接收的第一个数据(从机设备子地址) */
@@ -371,7 +333,6 @@ static void __i2c_slv_irq_handler (void *p_arg)
     if(I2C_SET == amhw_hc32f460_i2c_get_status(p_hw_i2c_slv, I2C_SR_TEMPTYF))
     {   
         // TODO: I2C_wirteData
-//        amhw_hc32f460_i2c_dat_write(p_hw_i2c_slv, BufRead());
         if (NULL != p_i2c_slv_dev->p_cb_funs->pfn_txbyte_get) {
             p_i2c_slv_dev->p_cb_funs->pfn_txbyte_get(p_i2c_slv_dev->p_arg, &tx_data);
         }
@@ -391,7 +352,6 @@ static void __i2c_slv_irq_handler (void *p_arg)
            amhw_hc32f460_i2c_intr_enable(p_hw_i2c_slv, I2C_CR2_TEMPTYIE | I2C_CR2_TENDIE);
            /* Write the first data to DTR immediately */
            // TODO: I2C_writeData           
-//           amhw_hc32f460_i2c_dat_write(p_hw_i2c_slv, BufRead());
            if (NULL != p_i2c_slv_dev->p_cb_funs->pfn_txbyte_get) {
                p_i2c_slv_dev->p_cb_funs->pfn_txbyte_get(p_i2c_slv_dev->p_arg, &tx_data);
            }
@@ -430,16 +390,12 @@ void I2C_EEI_Callback(void *p_arg)
            amhw_hc32f460_i2c_intr_enable(p_hw_i2c_slv, I2C_CR2_TEMPTYIE | I2C_CR2_TENDIE);
            /* Write the first data to DTR immediately */
            // TODO: I2C_writeData           
-#if 0               
-           
-           amhw_hc32f460_i2c_dat_write(p_hw_i2c_slv, BufRead());
-#else
+
            if (NULL != p_i2c_slv_dev->p_cb_funs->pfn_txbyte_get) {
                p_i2c_slv_dev->p_cb_funs->pfn_txbyte_get(p_i2c_slv_dev->p_arg, &tx_data);               
                amhw_hc32f460_i2c_dat_write(p_hw_i2c_slv,tx_data);
 //               AM_DBG_INFO("I2C_EEI_Callback pfn_txbyte_get tx_data = %d\r\n", tx_data);
            }
-#endif           
        }
        else
        {
@@ -505,9 +461,6 @@ void I2C_RXI_Callback(void *p_arg)
     if(I2C_SET == amhw_hc32f460_i2c_get_status(p_hw_i2c_slv, I2C_SR_RFULLF))
     {
         // TODO: I2C_ReadData
-#if 0               
-        BufWrite(amhw_hc32f460_i2c_dat_read(p_hw_i2c_slv));
-#else       
         rx_data = amhw_hc32f460_i2c_dat_read(p_hw_i2c_slv);//接收数据
 //        if(rx_len) {    /* 忽略接收的第一个数据(从机设备子地址) */
             /* 接受回调 */
@@ -524,7 +477,6 @@ void I2C_RXI_Callback(void *p_arg)
             }
 //        }
         rx_len++;
-#endif 
     }
 }
 
@@ -539,15 +491,11 @@ void I2C_TEI_Callback(void *p_arg)
     if(I2C_SET == amhw_hc32f460_i2c_get_status(p_hw_i2c_slv, I2C_SR_TEMPTYF))
     {   
         // TODO: I2C_wirteData
-#if 0        
-        amhw_hc32f460_i2c_dat_write(p_hw_i2c_slv, BufRead());
-#else
         if (NULL != p_i2c_slv_dev->p_cb_funs->pfn_txbyte_get) {
             p_i2c_slv_dev->p_cb_funs->pfn_txbyte_get(p_i2c_slv_dev->p_arg, &tx_data);            
             amhw_hc32f460_i2c_dat_write(p_hw_i2c_slv,tx_data);    
 //            AM_DBG_INFO("I2C_TEI_Callback pfn_txbyte_get tx_data = %d\r\n", tx_data);
         }
-#endif
     }
 }
 

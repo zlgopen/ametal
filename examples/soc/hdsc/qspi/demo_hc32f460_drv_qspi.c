@@ -34,8 +34,8 @@
 /** [src_hc32f460_drv_qspi] */
 #include "string.h"
 #include "am_vdebug.h"
-#include "qspi/am_hc32f460_qspi.h"
-#include "qspi/hw/amhw_hc32f460_qspi.h"
+#include "am_hc32f460_qspi.h"
+#include "hw/amhw_hc32f460_qspi.h"
 
 /* QSPI memory bus address definition */
 #define QSPI_BUS_ADDRESS                (0x98000000ul)

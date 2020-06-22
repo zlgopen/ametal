@@ -39,7 +39,7 @@
 #include "am_hc32f460.h"
 #include "demo_hc32f460_entries.h"
 
-static char *data_src = "abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789\
+static uint8_t data_src[] = "abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789\
 01234567890123456789012345678901234567890123456789";
 static uint8_t hash_digest[32];
 
@@ -53,7 +53,7 @@ void demo_hc32f460_core_hw_hash_entry (void)
     am_clk_enable(CLK_HASH);
 
     demo_hc32f460_hw_hash_entry(HC32F460_HASH,
-                                strlen((char *)data_src),
+                                sizeof(data_src),
                                 data_src,
                                 hash_digest);
 

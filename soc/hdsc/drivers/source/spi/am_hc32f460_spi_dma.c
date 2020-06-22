@@ -28,6 +28,7 @@ includes
 #include "am_int.h"
 #include "am_gpio.h"
 #include "am_clk.h"
+#include "am_delay.h"
 #include "am_hc32f460_dma.h"
 #include "am_hc32f460.h"
 #include "hw/amhw_hc32f460_spi.h"
@@ -335,8 +336,6 @@ void __dma_isr (void *p_arg, uint32_t stat)
 
         /* 传输就绪 */
         __spi_mst_sm_event(p_this, __SPI_EVT_TRANS_LAUNCH);
-
-        am_udelay(100);
 
         /* 片选关闭 */
         __spi_cs_off(p_this, p_this->p_cur_spi_dev);
@@ -772,7 +771,7 @@ int __spi_mst_sm_event (am_hc32f460_spi_dma_dev_t *p_dev, uint32_t event)
                 /* CS选通 */
                 __spi_cs_on(p_dev, p_dev->p_cur_spi_dev);
 
-                am_udelay(5);
+                am_udelay(10);
 
                 __SPI_NEXT_STATE(__SPI_ST_DMA_TRANS_DATA, __SPI_EVT_DMA_TRANS_DATA);
 

@@ -54,9 +54,11 @@
 /*******************************************************************************
  * Include files
  ******************************************************************************/
+#include "ametal.h"
 #include <stdio.h>
 #include "usb_core.h"
 #include "usb_bsp.h"
+
 
 /*******************************************************************************
  * Local type definitions ('typedef')
@@ -121,7 +123,8 @@ static USB_OTG_STS USB_OTG_CoreReset(USB_OTG_CORE_HANDLE *pdev)
     USB_OTG_STS status = USB_OTG_OK;
     __IO USB_OTG_GRSTCTL_TypeDef  greset;
     uint32_t count = 0ul;
-    *(__IO uint32_t*)&greset.b = 0ul; /* C-STAT */
+    uint32_t addr = (uint32_t)&greset.b;
+    *(__IO uint32_t*)addr = 0ul; /* C-STAT */
     /* Wait for AHB master IDLE state. */
     do
     {
@@ -397,10 +400,8 @@ USB_OTG_STS USB_OTG_CoreInit(USB_OTG_CORE_HANDLE *pdev)
 {
     USB_OTG_STS status = USB_OTG_OK;
     USB_OTG_GUSBCFG_TypeDef  usbcfg;
-    USB_OTG_GAHBCFG_TypeDef  ahbcfg;
 
     usbcfg.d32 = 0ul;
-    ahbcfg.d32 = 0ul;
 
     USB_OTG_CoreReset(pdev);
 

@@ -98,7 +98,6 @@ void demo_hc32f460_hw_adc_pga_entry (void    *p_hw_adc,
     uint8_t                    i        = 0;
     uint32_t                   adc_mv   = 0;    /* ²ÉÑùµçÑ¹ */
     uint32_t                   sum      = 0;
-    amhw_hc32f460_adc_chan_sel_t chan_sel = (amhw_hc32f460_adc_chan_sel_t)chan;
     amhw_hc32f460_adc_t         *p_adc    = (amhw_hc32f460_adc_t *)p_hw_adc;
 
     am_kprintf("The ADC HW Int Demo\r\n");

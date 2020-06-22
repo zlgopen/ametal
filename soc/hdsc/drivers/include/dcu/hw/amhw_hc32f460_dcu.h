@@ -35,6 +35,30 @@ extern "C" {
  * @{
  */
 
+/**
+ * \brief 使用匿名联合体段开始
+ * @{
+ */
+
+#if defined(__CC_ARM)
+  #pragma push
+  #pragma anon_unions
+#elif defined(__ICCARM__)
+  #pragma language=extended
+#elif defined(__GNUC__)
+
+/* 默认使能匿名联合体 */
+#elif defined(__TMS470__)
+
+/* 默认使能匿名联合体 */
+#elif defined(__TASKING__)
+  #pragma warning 586
+#else
+  #warning Not supported compiler t
+#endif
+
+/** @} */
+
 typedef struct
 {
     __IO uint32_t MODE                      : 3;
@@ -564,7 +588,28 @@ void amhw_hc32f460_dcu_trigger_src_set (uint8_t dev_id, int trigger_src)
     }
 }
 
+/**
+ * \brief 使用匿名联合体段结束
+ * @{
+ */
 
+#if defined(__CC_ARM)
+  #pragma pop
+#elif defined(__ICCARM__)
+
+/* 允许匿名联合体使能 */
+#elif defined(__GNUC__)
+
+/* 默认使用匿名联合体 */
+#elif defined(__TMS470__)
+
+/* 默认使用匿名联合体 */
+#elif defined(__TASKING__)
+  #pragma warning restore
+#else
+  #warning Not supported compiler t
+#endif
+/** @} */
 
 /**
  * @} amhw_if_hc32f460_dcu

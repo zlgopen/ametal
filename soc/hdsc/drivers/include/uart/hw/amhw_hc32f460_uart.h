@@ -283,7 +283,7 @@ uint8_t amhw_hc32f460_uart_data_read (amhw_hc32f460_uart_t *p_hw_uart)
  */
 am_static_inline
 am_bool_t amhw_hc32f460_uart_status_flag_check (amhw_hc32f460_uart_t    *p_hw_uart,
-                                           uint32_t            flag)
+                                                uint32_t            flag)
 {
     return ((0xffffu & p_hw_uart->SR) & flag) ? AM_TRUE : AM_FALSE;
 }

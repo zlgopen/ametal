@@ -12,7 +12,7 @@
 
 /**
  * \file
- * \brief am217_core
+ * \brief amhc32f460_core
  *
  * \internal
  * \par Modification history
@@ -27,7 +27,6 @@
 #include "am_event_input_key.h"
 #include "am_event_category_input.h"
 #include "am_bsp_isr_defer_pendsv.h"
-//#include "am_zlg118.h"
 #include "am_bsp_system_heap.h"
 #include "am_bsp_delay_timer.h"
 #include "am_service_inst_init.h"
@@ -102,11 +101,11 @@ void am_board_init (void)
 #if (AM_CFG_DELAY_ENABLE == 1)
     am_bsp_delay_timer_init(am_hc32f460_systick_inst_init(), 0);
 #endif /* (AM_CFG_DELAY_ENABLE == 1) */
-//
-//#if (AM_CFG_LED_ENABLE == 1)
-//    am_zlg118_led_gpio_inst_init();
-//#endif /* (AM_CFG_LED_ENABLE == 1) */
-//
+
+#if (AM_CFG_LED_ENABLE == 1)
+    am_hc32f460_led_gpio_inst_init();
+#endif /* (AM_CFG_LED_ENABLE == 1) */
+
 #ifdef AM_VDEBUG
 
 #if (AM_CFG_DEBUG_ENABLE == 1)
@@ -133,28 +132,28 @@ void am_board_init (void)
         am_bsp_newlib_init(dbg_handle);
     #endif
 #endif /* (AM_CFG_STDLIB_ENABLE == 1) */
-//
-//#if ((AM_CFG_SOFTIMER_ENABLE == 1) || (AM_CFG_KEY_GPIO_ENABLE == 1))
-//    g_system_tick_timer_handle = am_system_tick_softimer_inst_init();
-//#elif (AM_CFG_SYSTEM_TICK_ENABLE == 1)
-//    g_system_tick_timer_handle = am_system_tick_inst_init();
-//#endif /* ((AM_CFG_SOFTIMER_ENABLE == 1) || (AM_CFG_KEY_GPIO_ENABLE == 1)) */
-//
-//#if (AM_CFG_BUZZER_ENABLE == 1)
+
+#if ((AM_CFG_SOFTIMER_ENABLE == 1) || (AM_CFG_KEY_GPIO_ENABLE == 1))
+    g_system_tick_timer_handle = am_system_tick_softimer_inst_init();
+#elif (AM_CFG_SYSTEM_TICK_ENABLE == 1)
+    g_system_tick_timer_handle = am_system_tick_inst_init();
+#endif /* ((AM_CFG_SOFTIMER_ENABLE == 1) || (AM_CFG_KEY_GPIO_ENABLE == 1)) */
+
+#if (AM_CFG_BUZZER_ENABLE == 1)
 //    g_buzzer_pwm_handle = am_buzzer_pwm_inst_init();
-//#endif /* (AM_CFG_BUZZER_ENABLE == 1) */
-//
-//#if (AM_CFG_KEY_ENABLE == 1) || (AM_CFG_KEY_GPIO_ENABLE == 1)
+#endif /* (AM_CFG_BUZZER_ENABLE == 1) */
+
+#if (AM_CFG_KEY_ENABLE == 1) || (AM_CFG_KEY_GPIO_ENABLE == 1)
 //    am_event_input_inst_init();                   /* 事件输入管理器服务初始化 */
-//#endif /* (AM_CFG_KEY_ENABLE == 1) || (AM_CFG_KEY_GPIO_ENABLE == 1) */
-//
-//#if (AM_CFG_KEY_GPIO_ENABLE == 1)
+#endif /* (AM_CFG_KEY_ENABLE == 1) || (AM_CFG_KEY_GPIO_ENABLE == 1) */
+
+#if (AM_CFG_KEY_GPIO_ENABLE == 1)
 //    am_key_gpio_inst_init();
-//#endif /* (AM_CFG_KEY_GPIO_ENABLE == 1) */
-//
-//#if (AM_CFG_ISR_DEFER_ENABLE == 1)
+#endif /* (AM_CFG_KEY_GPIO_ENABLE == 1) */
+
+#if (AM_CFG_ISR_DEFER_ENABLE == 1)
 //    am_bsp_isr_defer_pendsv_init();
-//#endif /* (AM_CFG_ISR_DEFER_ENABLE == 1) */
+#endif /* (AM_CFG_ISR_DEFER_ENABLE == 1) */
 
     /* 其它内容待添加 */
 }

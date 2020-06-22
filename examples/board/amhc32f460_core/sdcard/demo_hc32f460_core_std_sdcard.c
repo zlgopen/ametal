@@ -45,7 +45,7 @@
 #include "am_sdcard.h"
 #include "demo_std_entries.h"
 #include "am_hc32f460_inst_init.h"
-#include "demo_hc32f460_core_entries.h"
+#include "demo_hc32f460_entries.h"
 
 /**
  * \brief Àı³ÌÈë¿Ú

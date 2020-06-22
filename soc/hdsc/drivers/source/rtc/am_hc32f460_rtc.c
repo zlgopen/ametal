@@ -160,7 +160,7 @@ am_rtc_handle_t am_hc32f460_rtc_init (am_hc32f460_rtc_dev_t           *p_dev,
     p_dev->rtc_serv.p_funcs = (struct am_rtc_drv_funcs *)&__g_rtc_drv_funcs;
     p_dev->rtc_serv.p_drv   = p_dev;
     p_dev->int_state        = 0;
-    p_dev->rtc_continue     = AM_ERROR;
+    p_dev->rtc_continue     = AM_FALSE;
     p_dev->pfn_callback[0]  = NULL;
     p_dev->pfn_callback[1]  = NULL;
     p_dev->p_devinfo        = p_devinfo;
@@ -195,7 +195,7 @@ am_rtc_handle_t am_hc32f460_rtc_init (am_hc32f460_rtc_dev_t           *p_dev,
     am_int_connect(p_dev->p_devinfo->inum, IRQ130_Handler, NULL);
     amhw_hc32f460_intc_int_vssel_bits_set(p_dev->p_devinfo->inum, (RTC_PRD));
     am_int_enable(p_devinfo->inum);
-    p_dev->rtc_continue = AM_OK;
+    p_dev->rtc_continue = AM_TRUE;
 
     return &p_dev->rtc_serv;
 }
@@ -222,7 +222,7 @@ void am_hc32f460_rtc_deinit (am_rtc_handle_t handle)
     p_dev                   = NULL;
 
     /* RTC½ûÄÜ */
-    amhw_hc32f460_rtc_enable(p_hw_rtc, AM_ERROR);
+    amhw_hc32f460_rtc_enable(p_hw_rtc, AM_FALSE);
 
     if (p_dev->p_devinfo->pfn_plfm_deinit) {
         p_dev->p_devinfo->pfn_plfm_deinit();

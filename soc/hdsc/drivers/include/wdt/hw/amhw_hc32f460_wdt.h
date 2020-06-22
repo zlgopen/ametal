@@ -99,10 +99,10 @@ typedef struct amhw_hc32f460_wdt{
 } amhw_hc32f460_wdt_t;
 
 
-typedef enum {
-    AMHW_HC32F460_WDT_TRIGGER_INTERRUPT_REQUEST = (0 << 31),
-    AMHW_HC32F460_WDT_TRIGGER_RESET_REQUEST     = (1 << 31),
-} amhw_hc32f460_wdt_event_request_type_t;
+//typedef enum {
+#define    AMHW_HC32F460_WDT_TRIGGER_INTERRUPT_REQUEST  (0ul << 31)
+#define    AMHW_HC32F460_WDT_TRIGGER_RESET_REQUEST      (1ul << 31)
+//} amhw_hc32f460_wdt_event_request_type_t;
 
 typedef enum {
     AMHW_HC32F460_WDT_SLEEPOFF = (1 << 16),

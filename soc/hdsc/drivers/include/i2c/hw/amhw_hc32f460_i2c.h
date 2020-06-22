@@ -29,9 +29,29 @@ extern "C" {
 
 #include "am_types.h"
 
-/*
- * \brief 匿名结构体段的开始
+/**
+ * \brief 使用匿名联合体段开始
+ * @{
  */
+
+#if defined(__CC_ARM)
+  #pragma push
+  #pragma anon_unions
+#elif defined(__ICCARM__)
+  #pragma language=extended
+#elif defined(__GNUC__)
+
+  /* 默认使能匿名联合体 */
+#elif defined(__TMS470__)
+
+  /* 默认使能匿名联合体 */
+#elif defined(__TASKING__)
+  #pragma warning 586
+#else
+  #warning Not supported compiler t
+#endif
+
+/** @} */
 
 typedef enum en_address_bit
 {
@@ -629,19 +649,6 @@ am_static_inline
 uint8_t amhw_hc32f460_i2c_dat_read (amhw_hc32f460_i2c_t *p_hw_i2c)
 {
     return (uint8_t)(p_hw_i2c->DRR);
-}
-
-/**
- * \brief 获取I2C状态
- *
- * \param[in]  p_hw_i2c  : 指向I2C寄存器结构体的指针
- *
- * \return 状态（或关系）
- */
-am_static_inline
-en_i2c_flag_status_t amhw_hc32f460_i2c_status_get (amhw_hc32f460_i2c_t *p_hw_i2c)
-{
-    return (amhw_hc32f460_status_flag_t)(p_hw_i2c->SR);
 }
 
 am_static_inline

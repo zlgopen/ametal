@@ -31,6 +31,7 @@ extern "C" {
 
 
 #include "hw/amhw_hc32f460_gpio.h"
+#include "hw/amhw_hc32f460_flash.h"
 #include "hw/amhw_hc32f460_uart.h"
 #include "hw/amhw_hc32f460_timea.h"
 #include "hw/amhw_hc32f460_i2c.h"
@@ -45,6 +46,8 @@ extern "C" {
 #include "hw/amhw_hc32f460_hash.h"
 #include "hw/amhw_hc32f460_trng.h"
 #include "hw/amhw_hc32f460_aes.h"
+#include "hw/amhw_hc32f460_crc.h"
+#include "hw/amhw_hc32f460_cmp.h"
 /**
  * \addtogroup amhw_hc32f460_if_periph_map
  * \copydoc amhw_hc32f460_periph_map.h
@@ -58,6 +61,7 @@ extern "C" {
 
 
 #define HC32F460_GPIO           ((amhw_hc32f460_gpio_t *)HC32F460_GPIO_BASE)
+#define HC32F460_EFM            ((amhw_hc32f460_flash_t *)HC32F460_EFM_BASE)
 #define HC32F460_UART1          ((amhw_hc32f460_uart_t *)HC32F460_UART1_BASE)
 #define HC32F460_UART2          ((amhw_hc32f460_uart_t *)HC32F460_UART2_BASE)
 #define HC32F460_UART3          ((amhw_hc32f460_uart_t *)HC32F460_UART3_BASE)
@@ -100,6 +104,10 @@ extern "C" {
 #define HC32F460_DCU3           ((amhw_hc32f460_dcu_t *)HC32F460_DCU3_BASE)
 #define HC32F460_DCU4           ((amhw_hc32f460_dcu_t *)HC32F460_DCU4_BASE)
 #define HC32F460_USB            ((amhw_hc32f460_usbd_t *)HC32F460_USB_OTG_FS_BASE)
+#define HC32F460_CRC            ((amhw_hc32f460_crc_t *)HC32F460_CRC_BASE)
+#define HC32F460_CMP1           ((amhw_hc32f460_cmp_t *)HC32F460_CMP1_BASE)
+#define HC32F460_CMP2           ((amhw_hc32f460_cmp_t *)HC32F460_CMP2_BASE)
+#define HC32F460_CMP3           ((amhw_hc32f460_cmp_t *)HC32F460_CMP3_BASE)
 
 /** @} */
 

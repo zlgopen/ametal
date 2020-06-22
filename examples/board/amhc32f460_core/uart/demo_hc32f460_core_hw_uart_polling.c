@@ -62,7 +62,7 @@ void demo_hc32f460_core_hw_uart_polling_entry (void)
     /*  πƒ‹ ±÷” */
     am_clk_enable(CLK_USART4);
 
-    demo_hc32f460_hw_uart_polling_entry(HC32F460_UART4_BASE, am_clk_rate_get(CLK_USART4));
+    demo_hc32f460_hw_uart_polling_entry(HC32F460_UART4, am_clk_rate_get(CLK_USART4));
 }
 /** [src_hc32f460_hw_uart_polling] */
 

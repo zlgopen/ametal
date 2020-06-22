@@ -60,22 +60,16 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/hdsc/drivers/include/adc}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/hdsc/drivers/include/adtim}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/hdsc/drivers/include/aes}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/hdsc/drivers/include/afio}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/hdsc/drivers/include/bkp}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/hdsc/drivers/include/bootloader}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/hdsc/drivers/include/can}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/hdsc/drivers/include/clk}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/hdsc/drivers/include/clktrim}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/hdsc/drivers/include/cmp}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/hdsc/drivers/include/crc}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/hdsc/drivers/include/dac}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/hdsc/drivers/include/dma}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/hdsc/drivers/include/eth}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/hdsc/drivers/include/exti}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/hdsc/drivers/include/flash}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/hdsc/drivers/include/gpio}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/hdsc/drivers/include/i2c}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/hdsc/drivers/include/ili9341}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/hdsc/drivers/include/lcd}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/hdsc/drivers/include/lpmode}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/hdsc/drivers/include/lptim}&quot;"/>
@@ -84,19 +78,27 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/hdsc/drivers/include/opa}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/hdsc/drivers/include/pca}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/hdsc/drivers/include/pcnt}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/hdsc/drivers/include/pwr}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/hdsc/drivers/include/ram}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/hdsc/drivers/include/rcc}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/hdsc/drivers/include/rtc}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/hdsc/drivers/include/sdio}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/hdsc/drivers/include/spi}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/hdsc/drivers/include/syscfg}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/hdsc/drivers/include/tim}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/hdsc/drivers/include/trng}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/hdsc/drivers/include/uart}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/hdsc/drivers/include/usbd}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/hdsc/drivers/include/vc}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/hdsc/drivers/include/wdt}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/hdsc/drivers/include/qspi}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/hdsc/drivers/include/mpu}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/hdsc/drivers/include/hash}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/hdsc/drivers/include/cmp}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/hdsc/drivers/include/dcu}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/hdsc/drivers/include/usbd}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/hdsc/drivers/include/usbd/hw}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/hdsc/drivers/source/usbd/internal_usb_core/usbd_msc/source}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/hdsc/drivers/source/usbd/internal_usb_core/usb_lib/device_core}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/hdsc/drivers/source/usbd/internal_usb_core/usb_lib/ctl_drv}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/hdsc/drivers/source/usbd/internal_usb_core/usb_lib/device_class/msc}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/hdsc/hc32f460}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/user_config}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/user_config/am_hwconf_usrcfg}&quot;"/>
@@ -107,6 +109,11 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/interface}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/components/drivers/include}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/components/service/include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/components/usb/include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/components/usb/device}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/components/usb/device/common/include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/components/usb/device/class/include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/components/usb/osa}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/components/util/include}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/3rdparty/CMSIS/Include}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/arch/arm/include}&quot;"/>
@@ -115,7 +122,7 @@
 								</option>
 								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.defs.209409753" name="Defined symbols (-D)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.defs" useByScannerDiscovery="false" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="AM_VDEBUG"/>
-									<listOptionValue builtIn="false" value="AM_CORTEX_M0"/>
+									<listOptionValue builtIn="false" value="AM_CORTEX_M4"/>
 								</option>
 								<inputType id="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.input.672529060" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.input"/>
 							</tool>
@@ -139,13 +146,17 @@
 							</tool>
 							<tool command="${cross_prefix}${cross_cpp}${cross_suffix}" commandLinePattern="${COMMAND} ${cross_toolchain_flags} ${FLAGS} ${OUTPUT_FLAG} ${OUTPUT_PREFIX}${OUTPUT} ${INPUTS}" errorParsers="" id="ilg.gnuarmeclipse.managedbuild.cross.tool.cpp.linker.99531571" name="Cross ARM C++ Linker" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.cpp.linker">
 								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.linker.gcsections.372882866" name="Remove unused sections (-Xlinker --gc-sections)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.linker.gcsections" useByScannerDiscovery="false" value="true" valueType="boolean"/>
-								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.linker.paths.37985049" name="Library search path (-L)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.linker.paths" useByScannerDiscovery="false"/>
+								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.linker.paths.37985049" name="Library search path (-L)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.linker.paths" useByScannerDiscovery="false" valueType="libPaths">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/components/usb}&quot;"/>
+								</option>
 								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.linker.scriptfile.347344202" name="Script files (-T)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.linker.scriptfile" useByScannerDiscovery="false" valueType="stringList">
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/template_hc32f460_core.ld}&quot;"/>
 								</option>
 								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.linker.nostart.1532393853" name="Do not use standard start files (-nostartfiles)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.linker.nostart" useByScannerDiscovery="false" value="true" valueType="boolean"/>
 								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.linker.usenewlibnano.1346330969" name="Use newlib-nano (--specs=nano.specs)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.linker.usenewlibnano" useByScannerDiscovery="false" value="true" valueType="boolean"/>
-								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.linker.libs.0000000000" name="Libraries (-l)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.linker.libs" useByScannerDiscovery="false"/>
+								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.linker.libs.0000000000" name="Libraries (-l)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.linker.libs" useByScannerDiscovery="false" valueType="libs">
+									<listOptionValue builtIn="false" value="am_usbd_lib_m3"/>
+								</option>
 								<inputType id="ilg.gnuarmeclipse.managedbuild.cross.tool.cpp.linker.input.430537863" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.cpp.linker.input">
 									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
 									<additionalInput kind="additionalinput" paths="$(LIBS)"/>
@@ -266,6 +277,22 @@
 							<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.printsize.1883816827" name="Cross ARM GNU Print Size" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.printsize.1297867746"/>
 						</toolChain>
 					</folderInfo>
+					<fileInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1913533800.1908076654" name="am_hc32_rtc.h" rcbsApplicability="disable" resourcePath="soc/hdsc/drivers/include/rtc/am_hc32_rtc.h" toolsToInvoke="">
+						<tool customBuildStep="true" id="org.eclipse.cdt.managedbuilder.ui.rcbs.1134131704" name="Resource Custom Build Step">
+							<inputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.inputtype.1937099822" name="Resource Custom Build Step Input Type">
+								<additionalInput kind="additionalinputdependency" paths=""/>
+							</inputType>
+							<outputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.outputtype.1825795409" name="Resource Custom Build Step Output Type"/>
+						</tool>
+					</fileInfo>
+					<fileInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1913533800.1654407695" name="amhw_hc32_rtc.h" rcbsApplicability="disable" resourcePath="soc/hdsc/drivers/include/rtc/hw/amhw_hc32_rtc.h" toolsToInvoke="">
+						<tool customBuildStep="true" id="org.eclipse.cdt.managedbuilder.ui.rcbs.1967632523" name="Resource Custom Build Step">
+							<inputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.inputtype.118276740" name="Resource Custom Build Step Input Type">
+								<additionalInput kind="additionalinputdependency" paths=""/>
+							</inputType>
+							<outputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.outputtype.202626075" name="Resource Custom Build Step Output Type"/>
+						</tool>
+					</fileInfo>
 					<folderInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1913533800.1319493869" name="/" resourcePath="soc/hdsc/drivers/include/adc">
 						<toolChain id="ilg.gnuarmeclipse.managedbuild.cross.toolchain.elf.debug.899371264" name="Cross ARM GCC" superClass="ilg.gnuarmeclipse.managedbuild.cross.toolchain.elf.debug" unusedChildren="">
 							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.level.178039126.1105994819.1911570246" name="Optimization Level" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.level.178039126.1105994819"/>
@@ -319,6 +346,209 @@
 							<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.printsize.263512539" name="Cross ARM GNU Print Size" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.printsize.1297867746"/>
 						</toolChain>
 					</folderInfo>
+					<fileInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1913533800.319062006" name="am_hc32_adc.h" rcbsApplicability="disable" resourcePath="soc/hdsc/drivers/include/adc/am_hc32_adc.h" toolsToInvoke="">
+						<tool customBuildStep="true" id="org.eclipse.cdt.managedbuilder.ui.rcbs.152495644" name="Resource Custom Build Step">
+							<inputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.inputtype.836578554" name="Resource Custom Build Step Input Type">
+								<additionalInput kind="additionalinputdependency" paths=""/>
+							</inputType>
+							<outputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.outputtype.1660924386" name="Resource Custom Build Step Output Type"/>
+						</tool>
+					</fileInfo>
+					<fileInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1913533800.744650680" name="amhw_hc32_adc.h" rcbsApplicability="disable" resourcePath="soc/hdsc/drivers/include/adc/hw/amhw_hc32_adc.h" toolsToInvoke="">
+						<tool customBuildStep="true" id="org.eclipse.cdt.managedbuilder.ui.rcbs.1934138387" name="Resource Custom Build Step">
+							<inputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.inputtype.240232498" name="Resource Custom Build Step Input Type">
+								<additionalInput kind="additionalinputdependency" paths=""/>
+							</inputType>
+							<outputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.outputtype.1477574857" name="Resource Custom Build Step Output Type"/>
+						</tool>
+					</fileInfo>
+					<fileInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1913533800.661100964" name="am_hc32_trng.h" rcbsApplicability="disable" resourcePath="soc/hdsc/drivers/include/trng/am_hc32_trng.h" toolsToInvoke="">
+						<tool customBuildStep="true" id="org.eclipse.cdt.managedbuilder.ui.rcbs.73589797" name="Resource Custom Build Step">
+							<inputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.inputtype.762935799" name="Resource Custom Build Step Input Type">
+								<additionalInput kind="additionalinputdependency" paths=""/>
+							</inputType>
+							<outputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.outputtype.806639886" name="Resource Custom Build Step Output Type"/>
+						</tool>
+					</fileInfo>
+					<fileInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1913533800.1658955251" name="amhw_hc32_trng.h" rcbsApplicability="disable" resourcePath="soc/hdsc/drivers/include/trng/hw/amhw_hc32_trng.h" toolsToInvoke="">
+						<tool customBuildStep="true" id="org.eclipse.cdt.managedbuilder.ui.rcbs.1021595555" name="Resource Custom Build Step">
+							<inputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.inputtype.2031190516" name="Resource Custom Build Step Input Type">
+								<additionalInput kind="additionalinputdependency" paths=""/>
+							</inputType>
+							<outputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.outputtype.982508504" name="Resource Custom Build Step Output Type"/>
+						</tool>
+					</fileInfo>
+					<fileInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1913533800.1174473643" name="am_hc32_clk.h" rcbsApplicability="disable" resourcePath="soc/hdsc/drivers/include/clk/am_hc32_clk.h" toolsToInvoke=""/>
+					<fileInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1913533800.1150688576" name="amhw_hc32_wdt.h" rcbsApplicability="disable" resourcePath="soc/hdsc/drivers/include/wdt/hw/amhw_hc32_wdt.h" toolsToInvoke="">
+						<tool customBuildStep="true" id="org.eclipse.cdt.managedbuilder.ui.rcbs.520822184" name="Resource Custom Build Step">
+							<inputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.inputtype.611793564" name="Resource Custom Build Step Input Type">
+								<additionalInput kind="additionalinputdependency" paths=""/>
+							</inputType>
+							<outputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.outputtype.768921657" name="Resource Custom Build Step Output Type"/>
+						</tool>
+					</fileInfo>
+					<fileInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1913533800.129597621" name="am_hc32_wdt.h" rcbsApplicability="disable" resourcePath="soc/hdsc/drivers/include/wdt/am_hc32_wdt.h" toolsToInvoke="">
+						<tool customBuildStep="true" id="org.eclipse.cdt.managedbuilder.ui.rcbs.1884761433" name="Resource Custom Build Step">
+							<inputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.inputtype.1243385568" name="Resource Custom Build Step Input Type">
+								<additionalInput kind="additionalinputdependency" paths=""/>
+							</inputType>
+							<outputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.outputtype.1915760766" name="Resource Custom Build Step Output Type"/>
+						</tool>
+					</fileInfo>
+					<folderInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1913533800.1774650197" name="/" resourcePath="soc/hdsc/drivers/include/clktrim">
+						<toolChain id="ilg.gnuarmeclipse.managedbuild.cross.toolchain.elf.debug.2144257817" name="Cross ARM GCC" superClass="ilg.gnuarmeclipse.managedbuild.cross.toolchain.elf.debug" unusedChildren="">
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.level.178039126.1105994819.306541511" name="Optimization Level" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.level.178039126.1105994819"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.messagelength.2105322281.577685243.1213674858" name="Message length (-fmessage-length=0)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.messagelength.2105322281.577685243"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.signedchar.1345915582.2065578837.910613204" name="'char' is signed (-fsigned-char)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.signedchar.1345915582.2065578837"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.functionsections.496433148.213987586.1707235771" name="Function sections (-ffunction-sections)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.functionsections.496433148.213987586"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.datasections.1382397822.2055471168.1413637745" name="Data sections (-fdata-sections)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.datasections.1382397822.2055471168"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.debugging.level.1010006684.2020264987.136108620" name="Debug level" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.debugging.level.1010006684.2020264987"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.debugging.format.1918189622.1232996381.1333802653" name="Debug format" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.debugging.format.1918189622.1232996381"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.arm.target.family.1700127919.1037764098.19936714" name="ARM family" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.arm.target.family.1700127919.1037764098"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.warnings.allwarn.595014887.477592824.129539045" name="Enable all common warnings (-Wall)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.warnings.allwarn.595014887.477592824"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.warnings.extrawarn.2144874804.40107684.1556406310" name="Enable extra warnings (-Wextra)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.warnings.extrawarn.2144874804.40107684"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.freestanding.1472533061.965957675.1675641808" name="Assume freestanding environment (-ffreestanding)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.freestanding.1472533061.965957675"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.nomoveloopinvariants.786526921.437880480.1070844136" name="Disable loop invariant move (-fno-move-loop-invariants)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.nomoveloopinvariants.786526921.437880480"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.toolchain.name.27173674.240375422.1171034570" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.toolchain.name.27173674.240375422"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.architecture.355472562.1501807170.1390116439" name="Architecture" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.architecture.355472562.1501807170"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.arm.target.instructionset.176721627.950164198.609209624" name="Instruction set" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.arm.target.instructionset.176721627.950164198"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.command.prefix.929779304.15084061.1825990980" name="Prefix" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.command.prefix.929779304.15084061"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.command.c.271097289.1564292278.203674202" name="C compiler" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.command.c.271097289.1564292278"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.command.cpp.2143050880.757477104.1515231596" name="C++ compiler" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.command.cpp.2143050880.757477104"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.command.ar.642651662.742772741.636305377" name="Archiver" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.command.ar.642651662.742772741"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.command.objcopy.1073871826.1085460281.1851593240" name="Hex/Bin converter" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.command.objcopy.1073871826.1085460281"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.command.objdump.2084274940.1017628648.497844826" name="Listing generator" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.command.objdump.2084274940.1017628648"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.command.size.727651524.1818388003.1545986287" name="Size command" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.command.size.727651524.1818388003"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.command.make.1147329007.169042736.689313347" name="Build command" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.command.make.1147329007.169042736"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.command.rm.522070421.1390081346.556432945" name="Remove command" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.command.rm.522070421.1390081346"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.addtools.createflash.1251348973.599585264.381890900" name="Create flash image" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.addtools.createflash.1251348973.599585264"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.addtools.printsize.1043712751.448438313.242416182" name="Print size" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.addtools.printsize.1043712751.448438313"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.level.904270608" name="Optimization Level" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.level" value="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.level.none" valueType="enumerated"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.messagelength.5200707" name="Message length (-fmessage-length=0)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.messagelength" value="true" valueType="boolean"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.signedchar.1448258924" name="'char' is signed (-fsigned-char)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.signedchar" value="true" valueType="boolean"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.functionsections.1409678565" name="Function sections (-ffunction-sections)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.functionsections" value="true" valueType="boolean"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.datasections.1286825578" name="Data sections (-fdata-sections)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.datasections" value="true" valueType="boolean"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.debugging.level.126655501" name="Debug level" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.debugging.level" value="ilg.gnuarmeclipse.managedbuild.cross.option.debugging.level.max" valueType="enumerated"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.debugging.format.233934779" name="Debug format" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.debugging.format"/>
+							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.ELF" id="ilg.gnuarmeclipse.managedbuild.cross.targetPlatform" isAbstract="false" osList="all" superClass="ilg.gnuarmeclipse.managedbuild.cross.targetPlatform"/>
+							<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.assembler.1956178807" name="Cross ARM GNU Assembler" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.assembler.320024367">
+								<inputType id="ilg.gnuarmeclipse.managedbuild.cross.tool.assembler.input.44953279" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.assembler.input"/>
+							</tool>
+							<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.420508645" name="Cross ARM C Compiler" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.1667131568">
+								<inputType id="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.input.507395739" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.input"/>
+							</tool>
+							<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.cpp.compiler.2049384778" name="Cross ARM C++ Compiler" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.cpp.compiler.949290790">
+								<inputType id="ilg.gnuarmeclipse.managedbuild.cross.tool.cpp.compiler.input.811563817" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.cpp.compiler.input"/>
+							</tool>
+							<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.c.linker.343143541" name="Cross ARM C Linker" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.c.linker.2059385160"/>
+							<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.cpp.linker.784996049" name="Cross ARM C++ Linker" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.cpp.linker.815263622"/>
+							<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.archiver.1627222112" name="Cross ARM GNU Archiver" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.archiver.676254689"/>
+							<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.createflash.1630116228" name="Cross ARM GNU Create Flash Image" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.createflash.1009171651"/>
+							<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.createlisting.1949127239" name="Cross ARM GNU Create Listing" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.createlisting.1350337457"/>
+							<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.printsize.1172940213" name="Cross ARM GNU Print Size" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.printsize.1297867746"/>
+						</toolChain>
+					</folderInfo>
+					<fileInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1913533800.29235966" name="am_hc32_spi_int.h" rcbsApplicability="disable" resourcePath="soc/hdsc/drivers/include/spi/am_hc32_spi_int.h" toolsToInvoke="">
+						<tool customBuildStep="true" id="org.eclipse.cdt.managedbuilder.ui.rcbs.712906032" name="Resource Custom Build Step">
+							<inputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.inputtype.1589898661" name="Resource Custom Build Step Input Type">
+								<additionalInput kind="additionalinputdependency" paths=""/>
+							</inputType>
+							<outputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.outputtype.186910440" name="Resource Custom Build Step Output Type"/>
+						</tool>
+					</fileInfo>
+					<fileInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1913533800.244951420" name="am_hc32_spi_dma.h" rcbsApplicability="disable" resourcePath="soc/hdsc/drivers/include/spi/am_hc32_spi_dma.h" toolsToInvoke="">
+						<tool customBuildStep="true" id="org.eclipse.cdt.managedbuilder.ui.rcbs.1528356358" name="Resource Custom Build Step">
+							<inputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.inputtype.37594471" name="Resource Custom Build Step Input Type">
+								<additionalInput kind="additionalinputdependency" paths=""/>
+							</inputType>
+							<outputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.outputtype.1670687326" name="Resource Custom Build Step Output Type"/>
+						</tool>
+					</fileInfo>
+					<fileInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1913533800.359974436" name="am_hc32_spi_poll.h" rcbsApplicability="disable" resourcePath="soc/hdsc/drivers/include/spi/am_hc32_spi_poll.h" toolsToInvoke="">
+						<tool customBuildStep="true" id="org.eclipse.cdt.managedbuilder.ui.rcbs.752865894" name="Resource Custom Build Step">
+							<inputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.inputtype.742524317" name="Resource Custom Build Step Input Type">
+								<additionalInput kind="additionalinputdependency" paths=""/>
+							</inputType>
+							<outputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.outputtype.651900436" name="Resource Custom Build Step Output Type"/>
+						</tool>
+					</fileInfo>
+					<fileInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1913533800.1070610766" name="amhw_hc32_spi.h" rcbsApplicability="disable" resourcePath="soc/hdsc/drivers/include/spi/hw/amhw_hc32_spi.h" toolsToInvoke="">
+						<tool customBuildStep="true" id="org.eclipse.cdt.managedbuilder.ui.rcbs.249173653" name="Resource Custom Build Step">
+							<inputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.inputtype.2012240222" name="Resource Custom Build Step Input Type">
+								<additionalInput kind="additionalinputdependency" paths=""/>
+							</inputType>
+							<outputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.outputtype.1770897339" name="Resource Custom Build Step Output Type"/>
+						</tool>
+					</fileInfo>
+					<folderInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1913533800.1638711276" name="/" resourcePath="soc/hdsc/drivers/include/aes">
+						<toolChain id="ilg.gnuarmeclipse.managedbuild.cross.toolchain.elf.debug.889471875" name="Cross ARM GCC" superClass="ilg.gnuarmeclipse.managedbuild.cross.toolchain.elf.debug" unusedChildren="">
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.level.178039126.1105994819.1192412258" name="Optimization Level" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.level.178039126.1105994819"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.messagelength.2105322281.577685243.71102978" name="Message length (-fmessage-length=0)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.messagelength.2105322281.577685243"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.signedchar.1345915582.2065578837.343476984" name="'char' is signed (-fsigned-char)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.signedchar.1345915582.2065578837"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.functionsections.496433148.213987586.336652862" name="Function sections (-ffunction-sections)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.functionsections.496433148.213987586"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.datasections.1382397822.2055471168.1190218677" name="Data sections (-fdata-sections)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.datasections.1382397822.2055471168"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.debugging.level.1010006684.2020264987.1704590879" name="Debug level" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.debugging.level.1010006684.2020264987"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.debugging.format.1918189622.1232996381.990006882" name="Debug format" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.debugging.format.1918189622.1232996381"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.arm.target.family.1700127919.1037764098.584204729" name="ARM family" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.arm.target.family.1700127919.1037764098"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.warnings.allwarn.595014887.477592824.1543111609" name="Enable all common warnings (-Wall)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.warnings.allwarn.595014887.477592824"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.warnings.extrawarn.2144874804.40107684.1602955024" name="Enable extra warnings (-Wextra)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.warnings.extrawarn.2144874804.40107684"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.freestanding.1472533061.965957675.615649038" name="Assume freestanding environment (-ffreestanding)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.freestanding.1472533061.965957675"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.nomoveloopinvariants.786526921.437880480.350345540" name="Disable loop invariant move (-fno-move-loop-invariants)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.nomoveloopinvariants.786526921.437880480"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.toolchain.name.27173674.240375422.406940109" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.toolchain.name.27173674.240375422"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.architecture.355472562.1501807170.1996425480" name="Architecture" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.architecture.355472562.1501807170"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.arm.target.instructionset.176721627.950164198.937193647" name="Instruction set" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.arm.target.instructionset.176721627.950164198"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.command.prefix.929779304.15084061.254227627" name="Prefix" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.command.prefix.929779304.15084061"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.command.c.271097289.1564292278.419653846" name="C compiler" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.command.c.271097289.1564292278"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.command.cpp.2143050880.757477104.1249651509" name="C++ compiler" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.command.cpp.2143050880.757477104"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.command.ar.642651662.742772741.768181581" name="Archiver" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.command.ar.642651662.742772741"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.command.objcopy.1073871826.1085460281.252066046" name="Hex/Bin converter" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.command.objcopy.1073871826.1085460281"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.command.objdump.2084274940.1017628648.171766723" name="Listing generator" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.command.objdump.2084274940.1017628648"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.command.size.727651524.1818388003.575669225" name="Size command" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.command.size.727651524.1818388003"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.command.make.1147329007.169042736.821474733" name="Build command" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.command.make.1147329007.169042736"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.command.rm.522070421.1390081346.2012850989" name="Remove command" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.command.rm.522070421.1390081346"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.addtools.createflash.1251348973.599585264.1315388080" name="Create flash image" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.addtools.createflash.1251348973.599585264"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.addtools.printsize.1043712751.448438313.1354967832" name="Print size" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.addtools.printsize.1043712751.448438313"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.level.1897013112" name="Optimization Level" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.level" value="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.level.none" valueType="enumerated"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.messagelength.838193952" name="Message length (-fmessage-length=0)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.messagelength" value="true" valueType="boolean"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.signedchar.961947938" name="'char' is signed (-fsigned-char)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.signedchar" value="true" valueType="boolean"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.functionsections.1903977829" name="Function sections (-ffunction-sections)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.functionsections" value="true" valueType="boolean"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.datasections.1525759451" name="Data sections (-fdata-sections)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.datasections" value="true" valueType="boolean"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.debugging.level.1328374028" name="Debug level" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.debugging.level" value="ilg.gnuarmeclipse.managedbuild.cross.option.debugging.level.max" valueType="enumerated"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.debugging.format.1626886589" name="Debug format" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.debugging.format"/>
+							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.ELF" id="ilg.gnuarmeclipse.managedbuild.cross.targetPlatform" isAbstract="false" osList="all" superClass="ilg.gnuarmeclipse.managedbuild.cross.targetPlatform"/>
+							<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.assembler.924604180" name="Cross ARM GNU Assembler" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.assembler.320024367">
+								<inputType id="ilg.gnuarmeclipse.managedbuild.cross.tool.assembler.input.210770173" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.assembler.input"/>
+							</tool>
+							<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.96440071" name="Cross ARM C Compiler" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.1667131568">
+								<inputType id="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.input.1657926099" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.input"/>
+							</tool>
+							<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.cpp.compiler.160792763" name="Cross ARM C++ Compiler" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.cpp.compiler.949290790">
+								<inputType id="ilg.gnuarmeclipse.managedbuild.cross.tool.cpp.compiler.input.334312915" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.cpp.compiler.input"/>
+							</tool>
+							<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.c.linker.699152601" name="Cross ARM C Linker" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.c.linker.2059385160"/>
+							<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.cpp.linker.609157210" name="Cross ARM C++ Linker" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.cpp.linker.815263622"/>
+							<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.archiver.546020402" name="Cross ARM GNU Archiver" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.archiver.676254689"/>
+							<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.createflash.28962657" name="Cross ARM GNU Create Flash Image" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.createflash.1009171651"/>
+							<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.createlisting.720334947" name="Cross ARM GNU Create Listing" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.createlisting.1350337457"/>
+							<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.printsize.110707871" name="Cross ARM GNU Print Size" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.printsize.1297867746"/>
+						</toolChain>
+					</folderInfo>
+					<fileInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1913533800.287133784" name="am_hc32_aes.h" rcbsApplicability="disable" resourcePath="soc/hdsc/drivers/include/aes/am_hc32_aes.h" toolsToInvoke="">
+						<tool customBuildStep="true" id="org.eclipse.cdt.managedbuilder.ui.rcbs.1626119494" name="Resource Custom Build Step">
+							<inputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.inputtype.231480876" name="Resource Custom Build Step Input Type">
+								<additionalInput kind="additionalinputdependency" paths=""/>
+							</inputType>
+							<outputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.outputtype.1625566296" name="Resource Custom Build Step Output Type"/>
+						</tool>
+					</fileInfo>
+					<fileInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1913533800.1077829348" name="amhw_hc32_aes.h" rcbsApplicability="disable" resourcePath="soc/hdsc/drivers/include/aes/hw/amhw_hc32_aes.h" toolsToInvoke="">
+						<tool customBuildStep="true" id="org.eclipse.cdt.managedbuilder.ui.rcbs.825732168" name="Resource Custom Build Step">
+							<inputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.inputtype.184840301" name="Resource Custom Build Step Input Type">
+								<additionalInput kind="additionalinputdependency" paths=""/>
+							</inputType>
+							<outputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.outputtype.871320127" name="Resource Custom Build Step Output Type"/>
+						</tool>
+					</fileInfo>
 					<folderInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1913533800.253021710" name="/" resourcePath="soc/hdsc/drivers/include/adtim">
 						<toolChain id="ilg.gnuarmeclipse.managedbuild.cross.toolchain.elf.debug.1603674599" name="Cross ARM GCC" superClass="ilg.gnuarmeclipse.managedbuild.cross.toolchain.elf.debug" unusedChildren="">
 							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.level.178039126.1105994819.1584830999" name="Optimization Level" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.level.178039126.1105994819"/>
@@ -372,7 +602,38 @@
 							<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.printsize.982766407" name="Cross ARM GNU Print Size" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.printsize.1297867746"/>
 						</toolChain>
 					</folderInfo>
-					<fileInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1913533800.1174473643" name="am_hc32_clk.h" rcbsApplicability="disable" resourcePath="soc/hdsc/drivers/include/clk/am_hc32_clk.h" toolsToInvoke=""/>
+					<fileInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1913533800.1621147136" name="am_hc32_adtim_pwm.h" rcbsApplicability="disable" resourcePath="soc/hdsc/drivers/include/adtim/am_hc32_adtim_pwm.h" toolsToInvoke="">
+						<tool customBuildStep="true" id="org.eclipse.cdt.managedbuilder.ui.rcbs.1017537791" name="Resource Custom Build Step">
+							<inputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.inputtype.584484564" name="Resource Custom Build Step Input Type">
+								<additionalInput kind="additionalinputdependency" paths=""/>
+							</inputType>
+							<outputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.outputtype.1551528659" name="Resource Custom Build Step Output Type"/>
+						</tool>
+					</fileInfo>
+					<fileInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1913533800.581942561" name="am_hc32_adtim_cap.h" rcbsApplicability="disable" resourcePath="soc/hdsc/drivers/include/adtim/am_hc32_adtim_cap.h" toolsToInvoke="">
+						<tool customBuildStep="true" id="org.eclipse.cdt.managedbuilder.ui.rcbs.1132466434" name="Resource Custom Build Step">
+							<inputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.inputtype.1027634892" name="Resource Custom Build Step Input Type">
+								<additionalInput kind="additionalinputdependency" paths=""/>
+							</inputType>
+							<outputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.outputtype.1078242882" name="Resource Custom Build Step Output Type"/>
+						</tool>
+					</fileInfo>
+					<fileInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1913533800.1959549767" name="am_hc32_adtim_timing.h" rcbsApplicability="disable" resourcePath="soc/hdsc/drivers/include/adtim/am_hc32_adtim_timing.h" toolsToInvoke="">
+						<tool customBuildStep="true" id="org.eclipse.cdt.managedbuilder.ui.rcbs.2045240156" name="Resource Custom Build Step">
+							<inputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.inputtype.415868475" name="Resource Custom Build Step Input Type">
+								<additionalInput kind="additionalinputdependency" paths=""/>
+							</inputType>
+							<outputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.outputtype.1999120688" name="Resource Custom Build Step Output Type"/>
+						</tool>
+					</fileInfo>
+					<fileInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1913533800.1007983007" name="amhw_hc32_adtim.h" rcbsApplicability="disable" resourcePath="soc/hdsc/drivers/include/adtim/hw/amhw_hc32_adtim.h" toolsToInvoke="">
+						<tool customBuildStep="true" id="org.eclipse.cdt.managedbuilder.ui.rcbs.519877824" name="Resource Custom Build Step">
+							<inputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.inputtype.1048944289" name="Resource Custom Build Step Input Type">
+								<additionalInput kind="additionalinputdependency" paths=""/>
+							</inputType>
+							<outputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.outputtype.1557456265" name="Resource Custom Build Step Output Type"/>
+						</tool>
+					</fileInfo>
 					<fileInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1913533800.127952909" name="amhw_hc32_rcc.h" rcbsApplicability="disable" resourcePath="soc/hdsc/drivers/include/rcc/hw/amhw_hc32_rcc.h" toolsToInvoke="">
 						<tool customBuildStep="true" id="org.eclipse.cdt.managedbuilder.ui.rcbs.1705368510" name="Resource Custom Build Step">
 							<inputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.inputtype.1556695087" name="Resource Custom Build Step Input Type">
@@ -387,6 +648,22 @@
 								<additionalInput kind="additionalinputdependency" paths=""/>
 							</inputType>
 							<outputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.outputtype.792982003" name="Resource Custom Build Step Output Type"/>
+						</tool>
+					</fileInfo>
+					<fileInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1913533800.2121255693" name="am_hc32_crc.h" rcbsApplicability="disable" resourcePath="soc/hdsc/drivers/include/crc/am_hc32_crc.h" toolsToInvoke="">
+						<tool customBuildStep="true" id="org.eclipse.cdt.managedbuilder.ui.rcbs.1010140833" name="Resource Custom Build Step">
+							<inputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.inputtype.818580929" name="Resource Custom Build Step Input Type">
+								<additionalInput kind="additionalinputdependency" paths=""/>
+							</inputType>
+							<outputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.outputtype.469772380" name="Resource Custom Build Step Output Type"/>
+						</tool>
+					</fileInfo>
+					<fileInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1913533800.337704428" name="amhw_hc32_crc.h" rcbsApplicability="disable" resourcePath="soc/hdsc/drivers/include/crc/hw/amhw_hc32_crc.h" toolsToInvoke="">
+						<tool customBuildStep="true" id="org.eclipse.cdt.managedbuilder.ui.rcbs.634768272" name="Resource Custom Build Step">
+							<inputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.inputtype.62366346" name="Resource Custom Build Step Input Type">
+								<additionalInput kind="additionalinputdependency" paths=""/>
+							</inputType>
+							<outputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.outputtype.1954469497" name="Resource Custom Build Step Output Type"/>
 						</tool>
 					</fileInfo>
 					<folderInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1913533800.1432609630" name="/" resourcePath="soc/hdsc/drivers/include/bootloader">
@@ -442,112 +719,94 @@
 							<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.printsize.721002353" name="Cross ARM GNU Print Size" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.printsize.1297867746"/>
 						</toolChain>
 					</folderInfo>
-					<folderInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1913533800.1774650197" name="/" resourcePath="soc/hdsc/drivers/include/clktrim">
-						<toolChain id="ilg.gnuarmeclipse.managedbuild.cross.toolchain.elf.debug.2144257817" name="Cross ARM GCC" superClass="ilg.gnuarmeclipse.managedbuild.cross.toolchain.elf.debug" unusedChildren="">
-							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.level.178039126.1105994819.306541511" name="Optimization Level" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.level.178039126.1105994819"/>
-							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.messagelength.2105322281.577685243.1213674858" name="Message length (-fmessage-length=0)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.messagelength.2105322281.577685243"/>
-							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.signedchar.1345915582.2065578837.910613204" name="'char' is signed (-fsigned-char)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.signedchar.1345915582.2065578837"/>
-							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.functionsections.496433148.213987586.1707235771" name="Function sections (-ffunction-sections)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.functionsections.496433148.213987586"/>
-							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.datasections.1382397822.2055471168.1413637745" name="Data sections (-fdata-sections)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.datasections.1382397822.2055471168"/>
-							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.debugging.level.1010006684.2020264987.136108620" name="Debug level" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.debugging.level.1010006684.2020264987"/>
-							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.debugging.format.1918189622.1232996381.1333802653" name="Debug format" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.debugging.format.1918189622.1232996381"/>
-							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.arm.target.family.1700127919.1037764098.19936714" name="ARM family" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.arm.target.family.1700127919.1037764098"/>
-							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.warnings.allwarn.595014887.477592824.129539045" name="Enable all common warnings (-Wall)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.warnings.allwarn.595014887.477592824"/>
-							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.warnings.extrawarn.2144874804.40107684.1556406310" name="Enable extra warnings (-Wextra)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.warnings.extrawarn.2144874804.40107684"/>
-							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.freestanding.1472533061.965957675.1675641808" name="Assume freestanding environment (-ffreestanding)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.freestanding.1472533061.965957675"/>
-							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.nomoveloopinvariants.786526921.437880480.1070844136" name="Disable loop invariant move (-fno-move-loop-invariants)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.nomoveloopinvariants.786526921.437880480"/>
-							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.toolchain.name.27173674.240375422.1171034570" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.toolchain.name.27173674.240375422"/>
-							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.architecture.355472562.1501807170.1390116439" name="Architecture" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.architecture.355472562.1501807170"/>
-							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.arm.target.instructionset.176721627.950164198.609209624" name="Instruction set" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.arm.target.instructionset.176721627.950164198"/>
-							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.command.prefix.929779304.15084061.1825990980" name="Prefix" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.command.prefix.929779304.15084061"/>
-							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.command.c.271097289.1564292278.203674202" name="C compiler" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.command.c.271097289.1564292278"/>
-							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.command.cpp.2143050880.757477104.1515231596" name="C++ compiler" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.command.cpp.2143050880.757477104"/>
-							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.command.ar.642651662.742772741.636305377" name="Archiver" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.command.ar.642651662.742772741"/>
-							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.command.objcopy.1073871826.1085460281.1851593240" name="Hex/Bin converter" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.command.objcopy.1073871826.1085460281"/>
-							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.command.objdump.2084274940.1017628648.497844826" name="Listing generator" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.command.objdump.2084274940.1017628648"/>
-							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.command.size.727651524.1818388003.1545986287" name="Size command" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.command.size.727651524.1818388003"/>
-							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.command.make.1147329007.169042736.689313347" name="Build command" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.command.make.1147329007.169042736"/>
-							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.command.rm.522070421.1390081346.556432945" name="Remove command" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.command.rm.522070421.1390081346"/>
-							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.addtools.createflash.1251348973.599585264.381890900" name="Create flash image" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.addtools.createflash.1251348973.599585264"/>
-							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.addtools.printsize.1043712751.448438313.242416182" name="Print size" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.addtools.printsize.1043712751.448438313"/>
-							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.level.904270608" name="Optimization Level" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.level" value="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.level.none" valueType="enumerated"/>
-							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.messagelength.5200707" name="Message length (-fmessage-length=0)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.messagelength" value="true" valueType="boolean"/>
-							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.signedchar.1448258924" name="'char' is signed (-fsigned-char)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.signedchar" value="true" valueType="boolean"/>
-							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.functionsections.1409678565" name="Function sections (-ffunction-sections)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.functionsections" value="true" valueType="boolean"/>
-							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.datasections.1286825578" name="Data sections (-fdata-sections)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.datasections" value="true" valueType="boolean"/>
-							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.debugging.level.126655501" name="Debug level" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.debugging.level" value="ilg.gnuarmeclipse.managedbuild.cross.option.debugging.level.max" valueType="enumerated"/>
-							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.debugging.format.233934779" name="Debug format" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.debugging.format"/>
-							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.ELF" id="ilg.gnuarmeclipse.managedbuild.cross.targetPlatform" isAbstract="false" osList="all" superClass="ilg.gnuarmeclipse.managedbuild.cross.targetPlatform"/>
-							<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.assembler.1956178807" name="Cross ARM GNU Assembler" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.assembler.320024367">
-								<inputType id="ilg.gnuarmeclipse.managedbuild.cross.tool.assembler.input.44953279" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.assembler.input"/>
-							</tool>
-							<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.420508645" name="Cross ARM C Compiler" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.1667131568">
-								<inputType id="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.input.507395739" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.input"/>
-							</tool>
-							<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.cpp.compiler.2049384778" name="Cross ARM C++ Compiler" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.cpp.compiler.949290790">
-								<inputType id="ilg.gnuarmeclipse.managedbuild.cross.tool.cpp.compiler.input.811563817" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.cpp.compiler.input"/>
-							</tool>
-							<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.c.linker.343143541" name="Cross ARM C Linker" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.c.linker.2059385160"/>
-							<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.cpp.linker.784996049" name="Cross ARM C++ Linker" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.cpp.linker.815263622"/>
-							<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.archiver.1627222112" name="Cross ARM GNU Archiver" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.archiver.676254689"/>
-							<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.createflash.1630116228" name="Cross ARM GNU Create Flash Image" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.createflash.1009171651"/>
-							<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.createlisting.1949127239" name="Cross ARM GNU Create Listing" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.createlisting.1350337457"/>
-							<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.printsize.1172940213" name="Cross ARM GNU Print Size" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.printsize.1297867746"/>
-						</toolChain>
-					</folderInfo>
-					<folderInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1913533800.1638711276" name="/" resourcePath="soc/hdsc/drivers/include/aes">
-						<toolChain id="ilg.gnuarmeclipse.managedbuild.cross.toolchain.elf.debug.889471875" name="Cross ARM GCC" superClass="ilg.gnuarmeclipse.managedbuild.cross.toolchain.elf.debug" unusedChildren="">
-							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.level.178039126.1105994819.1192412258" name="Optimization Level" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.level.178039126.1105994819"/>
-							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.messagelength.2105322281.577685243.71102978" name="Message length (-fmessage-length=0)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.messagelength.2105322281.577685243"/>
-							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.signedchar.1345915582.2065578837.343476984" name="'char' is signed (-fsigned-char)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.signedchar.1345915582.2065578837"/>
-							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.functionsections.496433148.213987586.336652862" name="Function sections (-ffunction-sections)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.functionsections.496433148.213987586"/>
-							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.datasections.1382397822.2055471168.1190218677" name="Data sections (-fdata-sections)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.datasections.1382397822.2055471168"/>
-							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.debugging.level.1010006684.2020264987.1704590879" name="Debug level" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.debugging.level.1010006684.2020264987"/>
-							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.debugging.format.1918189622.1232996381.990006882" name="Debug format" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.debugging.format.1918189622.1232996381"/>
-							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.arm.target.family.1700127919.1037764098.584204729" name="ARM family" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.arm.target.family.1700127919.1037764098"/>
-							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.warnings.allwarn.595014887.477592824.1543111609" name="Enable all common warnings (-Wall)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.warnings.allwarn.595014887.477592824"/>
-							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.warnings.extrawarn.2144874804.40107684.1602955024" name="Enable extra warnings (-Wextra)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.warnings.extrawarn.2144874804.40107684"/>
-							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.freestanding.1472533061.965957675.615649038" name="Assume freestanding environment (-ffreestanding)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.freestanding.1472533061.965957675"/>
-							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.nomoveloopinvariants.786526921.437880480.350345540" name="Disable loop invariant move (-fno-move-loop-invariants)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.nomoveloopinvariants.786526921.437880480"/>
-							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.toolchain.name.27173674.240375422.406940109" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.toolchain.name.27173674.240375422"/>
-							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.architecture.355472562.1501807170.1996425480" name="Architecture" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.architecture.355472562.1501807170"/>
-							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.arm.target.instructionset.176721627.950164198.937193647" name="Instruction set" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.arm.target.instructionset.176721627.950164198"/>
-							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.command.prefix.929779304.15084061.254227627" name="Prefix" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.command.prefix.929779304.15084061"/>
-							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.command.c.271097289.1564292278.419653846" name="C compiler" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.command.c.271097289.1564292278"/>
-							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.command.cpp.2143050880.757477104.1249651509" name="C++ compiler" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.command.cpp.2143050880.757477104"/>
-							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.command.ar.642651662.742772741.768181581" name="Archiver" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.command.ar.642651662.742772741"/>
-							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.command.objcopy.1073871826.1085460281.252066046" name="Hex/Bin converter" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.command.objcopy.1073871826.1085460281"/>
-							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.command.objdump.2084274940.1017628648.171766723" name="Listing generator" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.command.objdump.2084274940.1017628648"/>
-							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.command.size.727651524.1818388003.575669225" name="Size command" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.command.size.727651524.1818388003"/>
-							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.command.make.1147329007.169042736.821474733" name="Build command" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.command.make.1147329007.169042736"/>
-							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.command.rm.522070421.1390081346.2012850989" name="Remove command" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.command.rm.522070421.1390081346"/>
-							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.addtools.createflash.1251348973.599585264.1315388080" name="Create flash image" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.addtools.createflash.1251348973.599585264"/>
-							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.addtools.printsize.1043712751.448438313.1354967832" name="Print size" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.addtools.printsize.1043712751.448438313"/>
-							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.level.1897013112" name="Optimization Level" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.level" value="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.level.none" valueType="enumerated"/>
-							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.messagelength.838193952" name="Message length (-fmessage-length=0)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.messagelength" value="true" valueType="boolean"/>
-							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.signedchar.961947938" name="'char' is signed (-fsigned-char)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.signedchar" value="true" valueType="boolean"/>
-							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.functionsections.1903977829" name="Function sections (-ffunction-sections)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.functionsections" value="true" valueType="boolean"/>
-							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.datasections.1525759451" name="Data sections (-fdata-sections)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.datasections" value="true" valueType="boolean"/>
-							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.debugging.level.1328374028" name="Debug level" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.debugging.level" value="ilg.gnuarmeclipse.managedbuild.cross.option.debugging.level.max" valueType="enumerated"/>
-							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.debugging.format.1626886589" name="Debug format" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.debugging.format"/>
-							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.ELF" id="ilg.gnuarmeclipse.managedbuild.cross.targetPlatform" isAbstract="false" osList="all" superClass="ilg.gnuarmeclipse.managedbuild.cross.targetPlatform"/>
-							<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.assembler.924604180" name="Cross ARM GNU Assembler" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.assembler.320024367">
-								<inputType id="ilg.gnuarmeclipse.managedbuild.cross.tool.assembler.input.210770173" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.assembler.input"/>
-							</tool>
-							<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.96440071" name="Cross ARM C Compiler" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.1667131568">
-								<inputType id="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.input.1657926099" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.input"/>
-							</tool>
-							<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.cpp.compiler.160792763" name="Cross ARM C++ Compiler" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.cpp.compiler.949290790">
-								<inputType id="ilg.gnuarmeclipse.managedbuild.cross.tool.cpp.compiler.input.334312915" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.cpp.compiler.input"/>
-							</tool>
-							<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.c.linker.699152601" name="Cross ARM C Linker" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.c.linker.2059385160"/>
-							<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.cpp.linker.609157210" name="Cross ARM C++ Linker" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.cpp.linker.815263622"/>
-							<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.archiver.546020402" name="Cross ARM GNU Archiver" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.archiver.676254689"/>
-							<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.createflash.28962657" name="Cross ARM GNU Create Flash Image" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.createflash.1009171651"/>
-							<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.createlisting.720334947" name="Cross ARM GNU Create Listing" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.createlisting.1350337457"/>
-							<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.printsize.110707871" name="Cross ARM GNU Print Size" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.printsize.1297867746"/>
-						</toolChain>
-					</folderInfo>
+					<fileInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1913533800.724141988" name="am_hc32_uart.h" rcbsApplicability="disable" resourcePath="soc/hdsc/drivers/include/uart/am_hc32_uart.h" toolsToInvoke="">
+						<tool customBuildStep="true" id="org.eclipse.cdt.managedbuilder.ui.rcbs.863928789" name="Resource Custom Build Step">
+							<inputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.inputtype.518262872" name="Resource Custom Build Step Input Type">
+								<additionalInput kind="additionalinputdependency" paths=""/>
+							</inputType>
+							<outputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.outputtype.1381818204" name="Resource Custom Build Step Output Type"/>
+						</tool>
+					</fileInfo>
+					<fileInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1913533800.538972731" name="amhw_hc32_uart.h" rcbsApplicability="disable" resourcePath="soc/hdsc/drivers/include/uart/hw/amhw_hc32_uart.h" toolsToInvoke="">
+						<tool customBuildStep="true" id="org.eclipse.cdt.managedbuilder.ui.rcbs.248524577" name="Resource Custom Build Step">
+							<inputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.inputtype.1713542148" name="Resource Custom Build Step Input Type">
+								<additionalInput kind="additionalinputdependency" paths=""/>
+							</inputType>
+							<outputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.outputtype.1023332192" name="Resource Custom Build Step Output Type"/>
+						</tool>
+					</fileInfo>
+					<fileInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1913533800.428228719" name="am_hc32_tim_timing.h" rcbsApplicability="disable" resourcePath="soc/hdsc/drivers/include/tim/am_hc32_tim_timing.h" toolsToInvoke="">
+						<tool customBuildStep="true" id="org.eclipse.cdt.managedbuilder.ui.rcbs.642107114" name="Resource Custom Build Step">
+							<inputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.inputtype.1714608290" name="Resource Custom Build Step Input Type">
+								<additionalInput kind="additionalinputdependency" paths=""/>
+							</inputType>
+							<outputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.outputtype.409116214" name="Resource Custom Build Step Output Type"/>
+						</tool>
+					</fileInfo>
+					<fileInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1913533800.1280203303" name="am_hc32_tim_pwm.h" rcbsApplicability="disable" resourcePath="soc/hdsc/drivers/include/tim/am_hc32_tim_pwm.h" toolsToInvoke="">
+						<tool customBuildStep="true" id="org.eclipse.cdt.managedbuilder.ui.rcbs.1838225640" name="Resource Custom Build Step">
+							<inputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.inputtype.8587571" name="Resource Custom Build Step Input Type">
+								<additionalInput kind="additionalinputdependency" paths=""/>
+							</inputType>
+							<outputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.outputtype.305309793" name="Resource Custom Build Step Output Type"/>
+						</tool>
+					</fileInfo>
+					<fileInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1913533800.1705699833" name="am_hc32_tim_cap.h" rcbsApplicability="disable" resourcePath="soc/hdsc/drivers/include/tim/am_hc32_tim_cap.h" toolsToInvoke="">
+						<tool customBuildStep="true" id="org.eclipse.cdt.managedbuilder.ui.rcbs.1012717640" name="Resource Custom Build Step">
+							<inputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.inputtype.421769399" name="Resource Custom Build Step Input Type">
+								<additionalInput kind="additionalinputdependency" paths=""/>
+							</inputType>
+							<outputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.outputtype.1721229120" name="Resource Custom Build Step Output Type"/>
+						</tool>
+					</fileInfo>
+					<fileInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1913533800.1459548634" name="amhw_hc32_tim.h" rcbsApplicability="disable" resourcePath="soc/hdsc/drivers/include/tim/hw/amhw_hc32_tim.h" toolsToInvoke="">
+						<tool customBuildStep="true" id="org.eclipse.cdt.managedbuilder.ui.rcbs.1242586154" name="Resource Custom Build Step">
+							<inputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.inputtype.900644965" name="Resource Custom Build Step Input Type">
+								<additionalInput kind="additionalinputdependency" paths=""/>
+							</inputType>
+							<outputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.outputtype.91397757" name="Resource Custom Build Step Output Type"/>
+						</tool>
+					</fileInfo>
+					<fileInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1913533800.2022356055" name="am_hc32_dma.h" rcbsApplicability="disable" resourcePath="soc/hdsc/drivers/include/dma/am_hc32_dma.h" toolsToInvoke="">
+						<tool customBuildStep="true" id="org.eclipse.cdt.managedbuilder.ui.rcbs.1947473733" name="Resource Custom Build Step">
+							<inputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.inputtype.447822304" name="Resource Custom Build Step Input Type">
+								<additionalInput kind="additionalinputdependency" paths=""/>
+							</inputType>
+							<outputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.outputtype.1004790403" name="Resource Custom Build Step Output Type"/>
+						</tool>
+					</fileInfo>
+					<fileInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1913533800.1057900023" name="amhw_hc32_dma.h" rcbsApplicability="disable" resourcePath="soc/hdsc/drivers/include/dma/hw/amhw_hc32_dma.h" toolsToInvoke="">
+						<tool customBuildStep="true" id="org.eclipse.cdt.managedbuilder.ui.rcbs.1539018232" name="Resource Custom Build Step">
+							<inputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.inputtype.1154780661" name="Resource Custom Build Step Input Type">
+								<additionalInput kind="additionalinputdependency" paths=""/>
+							</inputType>
+							<outputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.outputtype.801534432" name="Resource Custom Build Step Output Type"/>
+						</tool>
+					</fileInfo>
+					<fileInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1913533800.573256175" name="am_hc32_i2c.h" rcbsApplicability="disable" resourcePath="soc/hdsc/drivers/include/i2c/am_hc32_i2c.h" toolsToInvoke="">
+						<tool customBuildStep="true" id="org.eclipse.cdt.managedbuilder.ui.rcbs.552484117" name="Resource Custom Build Step">
+							<inputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.inputtype.1718921395" name="Resource Custom Build Step Input Type">
+								<additionalInput kind="additionalinputdependency" paths=""/>
+							</inputType>
+							<outputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.outputtype.927533885" name="Resource Custom Build Step Output Type"/>
+						</tool>
+					</fileInfo>
+					<fileInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1913533800.1968952966" name="am_hc32_i2c_slv.h" rcbsApplicability="disable" resourcePath="soc/hdsc/drivers/include/i2c/am_hc32_i2c_slv.h" toolsToInvoke="">
+						<tool customBuildStep="true" id="org.eclipse.cdt.managedbuilder.ui.rcbs.18927447" name="Resource Custom Build Step">
+							<inputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.inputtype.489452907" name="Resource Custom Build Step Input Type">
+								<additionalInput kind="additionalinputdependency" paths=""/>
+							</inputType>
+							<outputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.outputtype.272987308" name="Resource Custom Build Step Output Type"/>
+						</tool>
+					</fileInfo>
+					<fileInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1913533800.217506417" name="amhw_hc32_i2c.h" rcbsApplicability="disable" resourcePath="soc/hdsc/drivers/include/i2c/hw/amhw_hc32_i2c.h" toolsToInvoke="">
+						<tool customBuildStep="true" id="org.eclipse.cdt.managedbuilder.ui.rcbs.1851633222" name="Resource Custom Build Step">
+							<inputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.inputtype.579933120" name="Resource Custom Build Step Input Type">
+								<additionalInput kind="additionalinputdependency" paths=""/>
+							</inputType>
+							<outputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.outputtype.1732781938" name="Resource Custom Build Step Output Type"/>
+						</tool>
+					</fileInfo>
 					<fileInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1913533800.344611709" name="am_hc32_gpio.h" rcbsApplicability="disable" resourcePath="soc/hdsc/drivers/include/gpio/am_hc32_gpio.h" toolsToInvoke=""/>
 					<fileInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1913533800.615628460" name="am_hc32_gpio_util.h" rcbsApplicability="disable" resourcePath="soc/hdsc/drivers/include/gpio/am_hc32_gpio_util.h" toolsToInvoke=""/>
 					<fileInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1913533800.916187474" name="amhw_hc32_gpio.h" rcbsApplicability="disable" resourcePath="soc/hdsc/drivers/include/gpio/hw/amhw_hc32_gpio.h" toolsToInvoke=""/>
@@ -604,8 +863,24 @@
 							<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.printsize.652368927" name="Cross ARM GNU Print Size" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.printsize.1297867746"/>
 						</toolChain>
 					</folderInfo>
+					<fileInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1913533800.1883863999" name="am_hc32_flash.h" rcbsApplicability="disable" resourcePath="soc/hdsc/drivers/include/flash/am_hc32_flash.h" toolsToInvoke="">
+						<tool customBuildStep="true" id="org.eclipse.cdt.managedbuilder.ui.rcbs.1948114990" name="Resource Custom Build Step">
+							<inputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.inputtype.2063005419" name="Resource Custom Build Step Input Type">
+								<additionalInput kind="additionalinputdependency" paths=""/>
+							</inputType>
+							<outputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.outputtype.726537029" name="Resource Custom Build Step Output Type"/>
+						</tool>
+					</fileInfo>
+					<fileInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1913533800.2033846177" name="amhw_hc32_flash.h" rcbsApplicability="disable" resourcePath="soc/hdsc/drivers/include/flash/hw/amhw_hc32_flash.h" toolsToInvoke="">
+						<tool customBuildStep="true" id="org.eclipse.cdt.managedbuilder.ui.rcbs.1388552462" name="Resource Custom Build Step">
+							<inputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.inputtype.836659079" name="Resource Custom Build Step Input Type">
+								<additionalInput kind="additionalinputdependency" paths=""/>
+							</inputType>
+							<outputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.outputtype.785360864" name="Resource Custom Build Step Output Type"/>
+						</tool>
+					</fileInfo>
 					<sourceEntries>
-						<entry excluding="soc/mm32|soc/zlg|soc/hdsc/drivers/include/gpio/hw/amhw_hc32_gpio.h|soc/hdsc/drivers/include/gpio/am_hc32_gpio.h|soc/hdsc/drivers/include/gpio/am_hc32_gpio_util.h|soc/hdsc/drivers/source/rcc/hw/amhw_hc32_rcc.c|soc/hdsc/drivers/source/rcc/hw/amhw_hc32_rcc_reset.c|soc/hdsc/drivers/source/clk/am_hc32_clk.c|soc/zlg/drivers/source/lpuart/hw/amhw_zlg118_lpuart.c|soc/hdsc/drivers/include/rcc/hw/amhw_hc32_rcc.h|soc/hdsc/drivers/include/rcc/hw/amhw_hc32_rcc_reset.h|soc/zlg/drivers/source/rcc/hw/amhw_zlg118_rcc.c|soc/zlg/drivers/source/rcc/hw/amhw_zlg118_rcc_reset.c|soc/zlg/drivers/source/uart/am_zlg118_uart.c|soc/zlg/zlg118|soc/zlg/drivers/source/wdt/am_zlg118_wdt.c|soc/zlg/drivers/source/vc/am_zlg118_vc.c|soc/zlg/drivers/source/uart/hw/amhw_zlg118_uart.c|soc/zlg/drivers/source/trng/am_zlg118_trng.c|soc/zlg/drivers/source/tim/am_zlg118_tim_timing.c|soc/zlg/drivers/source/tim/am_zlg118_tim_pwm.c|soc/zlg/drivers/source/tim/am_zlg118_tim_cap.c|soc/zlg/drivers/source/spi/am_zlg118_spi_poll.c|soc/zlg/drivers/source/spi/am_zlg118_spi_int.c|soc/zlg/drivers/source/spi/am_zlg118_spi_dma.c|soc/zlg/drivers/source/ram/am_zlg118_ram.c|soc/zlg/drivers/source/pcnt/am_zlg118_pcnt.c|soc/zlg/drivers/source/opa/am_zlg118_opa.c|soc/zlg/drivers/source/lvd/am_zlg118_lvd.c|soc/zlg/drivers/source/lpuart/am_zlg118_lpuart.c|soc/zlg/drivers/source/lptim/am_zlg118_lptim_timing.c|soc/zlg/drivers/source/lcd/am_zlg118_lcd.c|soc/zlg/drivers/source/i2c/am_zlg118_i2c.c|soc/zlg/drivers/source/i2c/am_zlg118_i2c_slv.c|soc/zlg/drivers/source/gpio/am_zlg118_gpio.c|soc/zlg/drivers/source/gpio/hw/amhw_zlg118_gpio.c|soc/zlg/drivers/source/flash/am_zlg118_flash.c|soc/zlg/drivers/source/dma/am_zlg118_dma.c|soc/zlg/drivers/source/dac/am_zlg118_dac.c|soc/zlg/drivers/source/crc/am_zlg118_crc.c|soc/zlg/drivers/source/clktrim/am_zlg118_clktrim.c|soc/zlg/drivers/source/clk/am_zlg118_clk.c|soc/zlg/drivers/source/aes/am_zlg118_aes.c|soc/zlg/drivers/source/adtim/am_zlg118_adtim_timing.c|soc/zlg/drivers/source/adtim/am_zlg118_adtim_pwm.c|soc/zlg/drivers/source/adtim/am_zlg118_adtim_cap.c|soc/zlg/drivers/source/adtim/hw/amhw_zlg118_adtim.c|soc/zlg/drivers/source/adc/am_zlg118_adc.c|soc/hdsc/drivers/source/wdt/am_hc32_wdt.c|soc/hdsc/drivers/source/vc/am_hc32_vc.c|soc/hdsc/drivers/source/uart/am_hc32_uart.c|soc/hdsc/drivers/source/uart/hw/amhw_hc32_uart.c|soc/hdsc/drivers/source/trng/am_hc32_trng.c|soc/hdsc/drivers/source/tim/am_hc32_tim_timing.c|soc/hdsc/drivers/source/tim/am_hc32_tim_pwm.c|soc/hdsc/drivers/source/tim/am_hc32_tim_cap.c|soc/hdsc/drivers/source/spi/am_hc32_spi_poll.c|soc/hdsc/drivers/source/spi/am_hc32_spi_int.c|soc/hdsc/drivers/source/spi/am_hc32_spi_dma.c|soc/hdsc/drivers/source/rtc/am_hc32_rtc.c|soc/hdsc/drivers/source/ram/am_hc32_ram.c|soc/hdsc/drivers/source/pcnt/am_hc32_pcnt.c|soc/hdsc/drivers/source/pca/am_hc32_pca.c|soc/hdsc/drivers/source/opa/am_hc32_opa.c|soc/hdsc/drivers/source/lvd/am_hc32_lvd.c|soc/hdsc/drivers/source/lpuart/am_hc32_lpuart.c|soc/hdsc/drivers/source/lpuart/hw/amhw_hc32_lpuart.c|soc/hdsc/drivers/source/lptim/am_hc32_lptim_timing.c|soc/hdsc/drivers/source/lcd/am_hc32_lcd.c|soc/hdsc/drivers/source/i2c/am_hc32_i2c.c|soc/hdsc/drivers/source/i2c/am_hc32_i2c_slv.c|soc/hdsc/drivers/source/gpio/am_hc32_gpio.c|soc/hdsc/drivers/source/gpio/hw/amhw_hc32_gpio.c|soc/hdsc/drivers/source/flash/am_hc32_flash.c|soc/hdsc/drivers/source/dma/am_hc32_dma.c|soc/hdsc/drivers/source/dac/am_hc32_dac.c|soc/hdsc/drivers/source/crc/am_hc32_crc.c|soc/hdsc/drivers/source/clktrim/am_hc32_clktrim.c|soc/hdsc/drivers/source/bootloader/am_hc32_boot_flash.c|soc/hdsc/drivers/source/aes/am_hc32_aes.c|soc/hdsc/drivers/source/adtim/am_hc32_adtim_timing.c|soc/hdsc/drivers/source/adtim/am_hc32_adtim_pwm.c|soc/hdsc/drivers/source/adtim/am_hc32_adtim_cap.c|soc/hdsc/drivers/source/adtim/hw/amhw_hc32_adtim.c|soc/hdsc/drivers/source/adc/am_hc32_adc.c|soc/hdsc/drivers/include/clk/am_hc32_clk.h|soc/hdsc/drivers/include/wdt|soc/hdsc/drivers/include/vc|soc/hdsc/drivers/include/uart|soc/hdsc/drivers/include/trng|soc/hdsc/drivers/include/tim|soc/hdsc/drivers/include/spi|soc/hdsc/drivers/include/rtc|soc/hdsc/drivers/include/ram|soc/hdsc/drivers/include/pcnt|soc/hdsc/drivers/include/pca|soc/hdsc/drivers/include/opa|soc/hdsc/drivers/include/lvd|soc/hdsc/drivers/include/lptim|soc/hdsc/drivers/include/lpmode|soc/hdsc/drivers/include/lcd|soc/hdsc/drivers/include/i2c|soc/hdsc/drivers/include/dma|soc/hdsc/drivers/include/dac|soc/hdsc/drivers/include/crc|soc/hdsc/drivers/include/clktrim|soc/hdsc/drivers/include/bootloader|soc/hdsc/drivers/include/aes|soc/hdsc/drivers/include/adtim|soc/hdsc/drivers/include/adc|soc/hdsc/hc32|soc/zlg/zlg237|soc/zlg/drivers/source/uart/am_zlg237_usart.c|soc/zlg/drivers/source/uart/hw/amhw_zlg237_usart.c|soc/zlg/drivers/source/spi/am_zlg237_spi_slv_dma.c|soc/zlg/drivers/source/spi/am_zlg237_spi_poll.c|soc/zlg/drivers/source/spi/am_zlg237_spi_int.c|soc/zlg/drivers/source/spi/am_zlg237_spi_dma.c|soc/zlg/drivers/source/rcc/hw/amhw_zlg237_rcc.c|soc/zlg/drivers/source/i2c/am_zlg237_i2c.c|soc/zlg/drivers/source/i2c/am_zlg237_i2c_slv.c|soc/zlg/drivers/source/gpio/am_zlg237_gpio.c|soc/zlg/drivers/source/flash/am_zlg237_flash.c|soc/zlg/drivers/source/flash/am_zlg_flash.c|soc/zlg/drivers/source/crc/am_zlg_crc.c|soc/zlg/drivers/source/clk/am_zlg237_clk.c|soc/zlg/drivers/source/adc/am_zlg237_adc.c|components/drivers/source/miniport|components/drivers/source/led/am_led_hc595.c|components/drivers/source/lcd|components/drivers/source/hc595|components/drivers/source/fram|components/drivers/source/fm175xx|components/drivers/source/flash|components/drivers/source/fingerprint|components/drivers/source/ble|components/drivers/source/adc|components/drivers/source/sdcard|components/drivers/source/pt100|components/drivers/source/nvram|components/drivers/source/i2c|soc/zlg/drivers/source/adc/am_zlg_adc.c|soc/zlg/drivers/source/i2c/am_zlg_i2c.c|soc/zlg/drivers/source/i2c/am_zlg_i2c_slv.c|soc/zlg/drivers/source/wdt/am_zlg_wwdg.c|soc/zlg/drivers/source/wdt/am_zlg_iwdg.c|soc/zlg/zml166|soc/zlg/zmf159|soc/zlg/zlg217|soc/zlg/zlg116|soc/zlg/drivers/source/rcc/hw/amhw_zlg217_rcc.c|soc/zlg/drivers/source/rcc/hw/amhw_zlg116_rcc.c|components/drivers/source/zsn60x|components/drivers/source/zlg600|components/drivers/source/zigbee|components/drivers/source/wdt|components/drivers/source/uart|components/drivers/source/thermocouple|components/drivers/source/temperature|components/drivers/source/spi|components/drivers/source/sht20|components/drivers/source/sensor|user_config/am_hwconf_usrcfg/am_hwconf_microport_flash.c|user_config/am_hwconf_usrcfg/am_hwconf_microport_eeprom.c|user_config/am_hwconf_usrcfg/am_hwconf_lm75.c|soc/zlg/drivers/source/pca|soc/zlg/drivers/source/dac/am_zlg_dac.c|soc/zlg/drivers/source/uart/am_zlg_uart.c|soc/zlg/drivers/source/uart/hw/amhw_zlg_uart.c|soc/zlg/drivers/source/dma/am_zlg_dma.c|soc/zlg/drivers/source/spi/am_zlg_spi_slv_dma.c|soc/zlg/drivers/source/spi/am_zlg_spi_poll.c|soc/zlg/drivers/source/spi/am_zlg_spi_int.c|soc/zlg/drivers/source/spi/am_zlg_spi_dma.c|soc/zlg/drivers/source/tim/am_zlg_tim_timing.c|soc/zlg/drivers/source/tim/am_zlg_tim_pwm.c|soc/zlg/drivers/source/tim/am_zlg_tim_cap.c|soc/zlg/drivers/source/clk/am_zlg217_clk.c|soc/zlg/drivers/source/rtc|soc/zlg/drivers/source/pwr|soc/zlg/drivers/source/ili9341|user_config/am_hwconf_usrcfg/am_hwconf_zlg217_wwdg.c|user_config/am_hwconf_usrcfg/am_hwconf_zlg217_uart.c|user_config/am_hwconf_usrcfg/am_hwconf_zlg217_tim_timing.c|user_config/am_hwconf_usrcfg/am_hwconf_zlg217_tim_pwm.c|user_config/am_hwconf_usrcfg/am_hwconf_zlg217_tim_cap.c|user_config/am_hwconf_usrcfg/am_hwconf_zlg217_systick.c|user_config/am_hwconf_usrcfg/am_hwconf_zlg217_spi_int.c|user_config/am_hwconf_usrcfg/am_hwconf_zlg217_spi_dma.c|user_config/am_hwconf_usrcfg/am_hwconf_zlg217_rtc.c|user_config/am_hwconf_usrcfg/am_hwconf_zlg217_pwr.c|user_config/am_hwconf_usrcfg/am_hwconf_zlg217_iwdg.c|user_config/am_hwconf_usrcfg/am_hwconf_zlg217_i2c.c|user_config/am_hwconf_usrcfg/am_hwconf_zlg217_i2c_slv.c|user_config/am_hwconf_usrcfg/am_hwconf_zlg217_gpio.c|user_config/am_hwconf_usrcfg/am_hwconf_zlg217_dma.c|user_config/am_hwconf_usrcfg/am_hwconf_zlg217_dac.c|user_config/am_hwconf_usrcfg/am_hwconf_zlg217_crc.c|user_config/am_hwconf_usrcfg/am_hwconf_zlg217_clk.c|user_config/am_hwconf_usrcfg/am_hwconf_zlg217_adc.c|soc/zlg/drivers/source/gpio/am_zlg217_gpio.c|ametal/board/am116_core/am_bsp_armlib.h|ametal/soc/zlg/zlg116/drivers/source/am_zlg116_spi_slave_dma.c|soc/nxp|soc/soc/nxp|user_config/am_delay.c|ametal/board/am116_core/am_bsp_microlib.c|ametal/common/components/usb|soc/zlg/drivers/source/can|soc/zlg/drivers/source/gpio/am_zlg116_gpio.c|examples/components/drivers/demo_fm175xx_picca_lpcd_read_id.c|soc/soc/zlg/drivers/include/pwr/am_zlg116_pwr.h|user_config/am_bootloader.c|components/drivers/source/fm175xx/am_fm175xx.c|examples/examples/soc/zlg/wakeup/demo_zlg116_drv_sleepmode_wake_up.c|components/usb|examples/examples/soc/nxp|examples/soc/zlg/wakeup/demo_zlg217_drv_stopmode_wake_up.c|ametal/soc/zlg/zlg217|soc/zlg/drivers/source/rtc/am_zmf159_rtc.c|components/libc/armlib_adapter|soc/zlg/zlg217/bootloader|examples/examples/board/am116_core|soc/zlg/drivers/source/gpio/am_zmf159_gpio.c|examples/soc/freescale|soc/zlg/drivers/source/pwr/am_zmf159_pwr.c|examples|soc/soc/zlg/drivers/include/gpio/am_zlg116_gpio_util.h|components/libc/microlib_adapter|soc/soc/zlg/drivers/include/gpio/am_zlg116_gpio.h|soc/soc/zlg/drivers/include/clk/am_zlg116_clk.h|examples/soc/zlg/wakeup/demo_zlg217_drv_standbymode_wake_up.c|ametal/soc/zlg/zlg116/drivers/include/am_zlg116_spi_slave_dma.h|examples/soc/nxp|examples/examples/soc/freescale|soc/soc/zlg/drivers/include/rcc/hw/amhw_zlg116_rcc.h|examples/components/drivers/demo_fm175xx_picca_read_id.c|examples/soc/zlg/clk/demo_zlg217_hw_clk.c|soc/zlg/drivers/source/sdio|soc/zlg/drivers/source/bootloader|soc/zlg/drivers/source/usbd|ametal/common/components/libc/microlib_adapter|ametal/board/am116_core/am_bsp_armlib.c|examples/board/am116_core|soc/soc/freescale|examples/board/amks16rfid|soc/zlg/drivers/source/clk/am_zmf159_clk.c|startup/am_zlg217_armcc_startup.s|examples/examples/board/am824_core|startup/am_am196_armcc_startup.s|ametal/board/am116_core/am_bsp_microlib.h|examples/board/am824_core|soc/zlg/drivers/source/clk/am_zlg116_clk.c|ametal/common/components/libc/armlib_adapter|soc/soc/zlg/zlg116|examples/components/drivers/demo_zm516x_network.c|examples/soc/zlg/wakeup/demo_zlg217_drv_sleepmode_wake_up.c|examples/examples/soc/zlg/wakeup/demo_zlg116_drv_standbymode_wake_up.c|soc/zlg/drivers/source/eth|soc/zlg/zlg217/zlg217_sdk_version_temp.c|examples/examples/soc/zlg/wakeup/demo_zlg116_drv_stopmode_wake_up.c|soc/soc/zlg/drivers/source/pwr/am_zlg116_pwr.c|soc/freescale|examples/examples/board/amks16z_core|components/bootloader|startup/am_zlg116_armcc_startup.s|examples/board/am824zb|examples/board/am824ble|examples/soc/zlg/wakeup/demo_zlg217_drv_sleepmode_timer_wake_up.c|soc/zlg/drivers/source/pwr/am_zlg116_pwr.c|examples/board/amks16z_core|examples/examples/soc/zlg/wakeup/demo_zlg116_drv_sleepmode_timer_wake_up.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+						<entry excluding="soc/hdsc/drivers/include/adc/hw/amhw_hc32_adc.h|soc/hdsc/drivers/include/adc/am_hc32_adc.h|soc/hdsc/drivers/include/adtim/hw/amhw_hc32_adtim.h|soc/hdsc/drivers/include/adtim/am_hc32_adtim_timing.h|soc/hdsc/drivers/include/adtim/am_hc32_adtim_pwm.h|soc/hdsc/drivers/include/adtim/am_hc32_adtim_cap.h|soc/hdsc/drivers/include/aes/hw/amhw_hc32_aes.h|soc/hdsc/drivers/include/aes/am_hc32_aes.h|soc/hdsc/drivers/include/crc/am_hc32_crc.h|soc/hdsc/drivers/include/crc/hw/amhw_hc32_crc.h|soc/hdsc/drivers/include/dma/hw/amhw_hc32_dma.h|soc/hdsc/drivers/include/dma/am_hc32_dma.h|soc/hdsc/drivers/include/flash/hw/amhw_hc32_flash.h|soc/hdsc/drivers/include/flash/am_hc32_flash.h|soc/hdsc/drivers/include/i2c/hw/amhw_hc32_i2c.h|soc/hdsc/drivers/include/i2c/am_hc32_i2c.h|soc/hdsc/drivers/include/i2c/am_hc32_i2c_slv.h|soc/hdsc/drivers/include/rtc/hw/amhw_hc32_rtc.h|soc/hdsc/drivers/include/rtc/am_hc32_rtc.h|soc/hdsc/drivers/include/spi/hw/amhw_hc32_spi.h|soc/hdsc/drivers/include/spi/am_hc32_spi_poll.h|soc/hdsc/drivers/include/spi/am_hc32_spi_int.h|soc/hdsc/drivers/include/spi/am_hc32_spi_dma.h|soc/hdsc/drivers/include/tim/hw/amhw_hc32_tim.h|soc/hdsc/drivers/include/tim/am_hc32_tim_timing.h|soc/hdsc/drivers/include/tim/am_hc32_tim_pwm.h|soc/hdsc/drivers/include/tim/am_hc32_tim_cap.h|soc/hdsc/drivers/include/trng/hw/amhw_hc32_trng.h|soc/hdsc/drivers/include/trng/am_hc32_trng.h|soc/hdsc/drivers/include/wdt/am_hc32_wdt.h|soc/hdsc/drivers/include/wdt/hw/amhw_hc32_wdt.h|soc/hdsc/drivers/include/uart/hw/amhw_hc32_uart.h|soc/hdsc/drivers/include/uart/am_hc32_uart.h|soc/hdsc/drivers/include/lpuart|startup/am_hc32f460_armcc_sys.c|startup/am_hc32f460_armcc_startup.s|soc/hdsc/drivers/source/uart/am_hc32x3x_uart.c|soc/hdsc/drivers/source/clktrim|soc/hdsc/drivers/source/bootloader|soc/hdsc/drivers/source/dac|soc/hdsc/drivers/source/ram|soc/hdsc/drivers/source/lcd|soc/hdsc/drivers/source/lvd|soc/hdsc/drivers/source/lpuart|soc/hdsc/drivers/source/lptim|soc/hdsc/drivers/source/pcnt|soc/hdsc/drivers/source/vc|soc/hdsc/drivers/source/pca|soc/hdsc/drivers/source/opa|soc/mm32|soc/zlg|soc/hdsc/drivers/include/gpio/hw/amhw_hc32_gpio.h|soc/hdsc/drivers/include/gpio/am_hc32_gpio.h|soc/hdsc/drivers/include/gpio/am_hc32_gpio_util.h|soc/hdsc/drivers/source/rcc/hw/amhw_hc32_rcc.c|soc/hdsc/drivers/source/rcc/hw/amhw_hc32_rcc_reset.c|soc/hdsc/drivers/source/clk/am_hc32_clk.c|soc/zlg/drivers/source/lpuart/hw/amhw_zlg118_lpuart.c|soc/hdsc/drivers/include/rcc/hw/amhw_hc32_rcc.h|soc/hdsc/drivers/include/rcc/hw/amhw_hc32_rcc_reset.h|soc/zlg/drivers/source/rcc/hw/amhw_zlg118_rcc.c|soc/zlg/drivers/source/rcc/hw/amhw_zlg118_rcc_reset.c|soc/zlg/drivers/source/uart/am_zlg118_uart.c|soc/zlg/zlg118|soc/zlg/drivers/source/wdt/am_zlg118_wdt.c|soc/zlg/drivers/source/vc/am_zlg118_vc.c|soc/zlg/drivers/source/uart/hw/amhw_zlg118_uart.c|soc/zlg/drivers/source/trng/am_zlg118_trng.c|soc/zlg/drivers/source/tim/am_zlg118_tim_timing.c|soc/zlg/drivers/source/tim/am_zlg118_tim_pwm.c|soc/zlg/drivers/source/tim/am_zlg118_tim_cap.c|soc/zlg/drivers/source/spi/am_zlg118_spi_poll.c|soc/zlg/drivers/source/spi/am_zlg118_spi_int.c|soc/zlg/drivers/source/spi/am_zlg118_spi_dma.c|soc/zlg/drivers/source/ram/am_zlg118_ram.c|soc/zlg/drivers/source/pcnt/am_zlg118_pcnt.c|soc/zlg/drivers/source/opa/am_zlg118_opa.c|soc/zlg/drivers/source/lvd/am_zlg118_lvd.c|soc/zlg/drivers/source/lpuart/am_zlg118_lpuart.c|soc/zlg/drivers/source/lptim/am_zlg118_lptim_timing.c|soc/zlg/drivers/source/lcd/am_zlg118_lcd.c|soc/zlg/drivers/source/i2c/am_zlg118_i2c.c|soc/zlg/drivers/source/i2c/am_zlg118_i2c_slv.c|soc/zlg/drivers/source/gpio/am_zlg118_gpio.c|soc/zlg/drivers/source/gpio/hw/amhw_zlg118_gpio.c|soc/zlg/drivers/source/flash/am_zlg118_flash.c|soc/zlg/drivers/source/dma/am_zlg118_dma.c|soc/zlg/drivers/source/dac/am_zlg118_dac.c|soc/zlg/drivers/source/crc/am_zlg118_crc.c|soc/zlg/drivers/source/clktrim/am_zlg118_clktrim.c|soc/zlg/drivers/source/clk/am_zlg118_clk.c|soc/zlg/drivers/source/aes/am_zlg118_aes.c|soc/zlg/drivers/source/adtim/am_zlg118_adtim_timing.c|soc/zlg/drivers/source/adtim/am_zlg118_adtim_pwm.c|soc/zlg/drivers/source/adtim/am_zlg118_adtim_cap.c|soc/zlg/drivers/source/adtim/hw/amhw_zlg118_adtim.c|soc/zlg/drivers/source/adc/am_zlg118_adc.c|soc/hdsc/drivers/source/wdt/am_hc32_wdt.c|soc/hdsc/drivers/source/vc/am_hc32_vc.c|soc/hdsc/drivers/source/uart/am_hc32_uart.c|soc/hdsc/drivers/source/uart/hw/amhw_hc32_uart.c|soc/hdsc/drivers/source/trng/am_hc32_trng.c|soc/hdsc/drivers/source/tim/am_hc32_tim_timing.c|soc/hdsc/drivers/source/tim/am_hc32_tim_pwm.c|soc/hdsc/drivers/source/tim/am_hc32_tim_cap.c|soc/hdsc/drivers/source/spi/am_hc32_spi_poll.c|soc/hdsc/drivers/source/spi/am_hc32_spi_int.c|soc/hdsc/drivers/source/spi/am_hc32_spi_dma.c|soc/hdsc/drivers/source/rtc/am_hc32_rtc.c|soc/hdsc/drivers/source/ram/am_hc32_ram.c|soc/hdsc/drivers/source/pcnt/am_hc32_pcnt.c|soc/hdsc/drivers/source/pca/am_hc32_pca.c|soc/hdsc/drivers/source/opa/am_hc32_opa.c|soc/hdsc/drivers/source/lvd/am_hc32_lvd.c|soc/hdsc/drivers/source/lpuart/am_hc32_lpuart.c|soc/hdsc/drivers/source/lpuart/hw/amhw_hc32_lpuart.c|soc/hdsc/drivers/source/lptim/am_hc32_lptim_timing.c|soc/hdsc/drivers/source/lcd/am_hc32_lcd.c|soc/hdsc/drivers/source/i2c/am_hc32_i2c.c|soc/hdsc/drivers/source/i2c/am_hc32_i2c_slv.c|soc/hdsc/drivers/source/gpio/am_hc32_gpio.c|soc/hdsc/drivers/source/gpio/hw/amhw_hc32_gpio.c|soc/hdsc/drivers/source/flash/am_hc32_flash.c|soc/hdsc/drivers/source/dma/am_hc32_dma.c|soc/hdsc/drivers/source/dac/am_hc32_dac.c|soc/hdsc/drivers/source/crc/am_hc32_crc.c|soc/hdsc/drivers/source/clktrim/am_hc32_clktrim.c|soc/hdsc/drivers/source/bootloader/am_hc32_boot_flash.c|soc/hdsc/drivers/source/aes/am_hc32_aes.c|soc/hdsc/drivers/source/adtim/am_hc32_adtim_timing.c|soc/hdsc/drivers/source/adtim/am_hc32_adtim_pwm.c|soc/hdsc/drivers/source/adtim/am_hc32_adtim_cap.c|soc/hdsc/drivers/source/adtim/hw/amhw_hc32_adtim.c|soc/hdsc/drivers/source/adc/am_hc32_adc.c|soc/hdsc/drivers/include/clk/am_hc32_clk.h|soc/hdsc/drivers/include/vc|soc/hdsc/drivers/include/ram|soc/hdsc/drivers/include/pcnt|soc/hdsc/drivers/include/pca|soc/hdsc/drivers/include/opa|soc/hdsc/drivers/include/lvd|soc/hdsc/drivers/include/lptim|soc/hdsc/drivers/include/lpmode|soc/hdsc/drivers/include/lcd|soc/hdsc/drivers/include/dac|soc/hdsc/drivers/include/clktrim|soc/hdsc/drivers/include/bootloader|soc/hdsc/hc32|soc/zlg/zlg237|soc/zlg/drivers/source/uart/am_zlg237_usart.c|soc/zlg/drivers/source/uart/hw/amhw_zlg237_usart.c|soc/zlg/drivers/source/spi/am_zlg237_spi_slv_dma.c|soc/zlg/drivers/source/spi/am_zlg237_spi_poll.c|soc/zlg/drivers/source/spi/am_zlg237_spi_int.c|soc/zlg/drivers/source/spi/am_zlg237_spi_dma.c|soc/zlg/drivers/source/rcc/hw/amhw_zlg237_rcc.c|soc/zlg/drivers/source/i2c/am_zlg237_i2c.c|soc/zlg/drivers/source/i2c/am_zlg237_i2c_slv.c|soc/zlg/drivers/source/gpio/am_zlg237_gpio.c|soc/zlg/drivers/source/flash/am_zlg237_flash.c|soc/zlg/drivers/source/flash/am_zlg_flash.c|soc/zlg/drivers/source/crc/am_zlg_crc.c|soc/zlg/drivers/source/clk/am_zlg237_clk.c|soc/zlg/drivers/source/adc/am_zlg237_adc.c|components/drivers/source/miniport|components/drivers/source/led/am_led_hc595.c|components/drivers/source/lcd|components/drivers/source/hc595|components/drivers/source/fram|components/drivers/source/fm175xx|components/drivers/source/flash|components/drivers/source/fingerprint|components/drivers/source/ble|components/drivers/source/adc|components/drivers/source/sdcard|components/drivers/source/pt100|components/drivers/source/nvram|components/drivers/source/i2c|soc/zlg/drivers/source/adc/am_zlg_adc.c|soc/zlg/drivers/source/i2c/am_zlg_i2c.c|soc/zlg/drivers/source/i2c/am_zlg_i2c_slv.c|soc/zlg/drivers/source/wdt/am_zlg_wwdg.c|soc/zlg/drivers/source/wdt/am_zlg_iwdg.c|soc/zlg/zml166|soc/zlg/zmf159|soc/zlg/zlg217|soc/zlg/zlg116|soc/zlg/drivers/source/rcc/hw/amhw_zlg217_rcc.c|soc/zlg/drivers/source/rcc/hw/amhw_zlg116_rcc.c|components/drivers/source/zsn60x|components/drivers/source/zlg600|components/drivers/source/zigbee|components/drivers/source/wdt|components/drivers/source/uart|components/drivers/source/thermocouple|components/drivers/source/temperature|components/drivers/source/spi|components/drivers/source/sht20|components/drivers/source/sensor|user_config/am_hwconf_usrcfg/am_hwconf_microport_flash.c|user_config/am_hwconf_usrcfg/am_hwconf_microport_eeprom.c|user_config/am_hwconf_usrcfg/am_hwconf_lm75.c|soc/zlg/drivers/source/pca|soc/zlg/drivers/source/dac/am_zlg_dac.c|soc/zlg/drivers/source/uart/am_zlg_uart.c|soc/zlg/drivers/source/uart/hw/amhw_zlg_uart.c|soc/zlg/drivers/source/dma/am_zlg_dma.c|soc/zlg/drivers/source/spi/am_zlg_spi_slv_dma.c|soc/zlg/drivers/source/spi/am_zlg_spi_poll.c|soc/zlg/drivers/source/spi/am_zlg_spi_int.c|soc/zlg/drivers/source/spi/am_zlg_spi_dma.c|soc/zlg/drivers/source/tim/am_zlg_tim_timing.c|soc/zlg/drivers/source/tim/am_zlg_tim_pwm.c|soc/zlg/drivers/source/tim/am_zlg_tim_cap.c|soc/zlg/drivers/source/clk/am_zlg217_clk.c|soc/zlg/drivers/source/rtc|soc/zlg/drivers/source/pwr|soc/zlg/drivers/source/ili9341|user_config/am_hwconf_usrcfg/am_hwconf_zlg217_wwdg.c|user_config/am_hwconf_usrcfg/am_hwconf_zlg217_uart.c|user_config/am_hwconf_usrcfg/am_hwconf_zlg217_tim_timing.c|user_config/am_hwconf_usrcfg/am_hwconf_zlg217_tim_pwm.c|user_config/am_hwconf_usrcfg/am_hwconf_zlg217_tim_cap.c|user_config/am_hwconf_usrcfg/am_hwconf_zlg217_systick.c|user_config/am_hwconf_usrcfg/am_hwconf_zlg217_spi_int.c|user_config/am_hwconf_usrcfg/am_hwconf_zlg217_spi_dma.c|user_config/am_hwconf_usrcfg/am_hwconf_zlg217_rtc.c|user_config/am_hwconf_usrcfg/am_hwconf_zlg217_pwr.c|user_config/am_hwconf_usrcfg/am_hwconf_zlg217_iwdg.c|user_config/am_hwconf_usrcfg/am_hwconf_zlg217_i2c.c|user_config/am_hwconf_usrcfg/am_hwconf_zlg217_i2c_slv.c|user_config/am_hwconf_usrcfg/am_hwconf_zlg217_gpio.c|user_config/am_hwconf_usrcfg/am_hwconf_zlg217_dma.c|user_config/am_hwconf_usrcfg/am_hwconf_zlg217_dac.c|user_config/am_hwconf_usrcfg/am_hwconf_zlg217_crc.c|user_config/am_hwconf_usrcfg/am_hwconf_zlg217_clk.c|user_config/am_hwconf_usrcfg/am_hwconf_zlg217_adc.c|soc/zlg/drivers/source/gpio/am_zlg217_gpio.c|ametal/board/am116_core/am_bsp_armlib.h|ametal/soc/zlg/zlg116/drivers/source/am_zlg116_spi_slave_dma.c|soc/nxp|soc/soc/nxp|user_config/am_delay.c|ametal/board/am116_core/am_bsp_microlib.c|ametal/common/components/usb|soc/zlg/drivers/source/can|soc/zlg/drivers/source/gpio/am_zlg116_gpio.c|examples/components/drivers/demo_fm175xx_picca_lpcd_read_id.c|soc/soc/zlg/drivers/include/pwr/am_zlg116_pwr.h|user_config/am_bootloader.c|components/drivers/source/fm175xx/am_fm175xx.c|examples/examples/soc/zlg/wakeup/demo_zlg116_drv_sleepmode_wake_up.c|components/usb|examples/examples/soc/nxp|examples/soc/zlg/wakeup/demo_zlg217_drv_stopmode_wake_up.c|ametal/soc/zlg/zlg217|soc/zlg/drivers/source/rtc/am_zmf159_rtc.c|components/libc/armlib_adapter|soc/zlg/zlg217/bootloader|examples/examples/board/am116_core|soc/zlg/drivers/source/gpio/am_zmf159_gpio.c|examples/soc/freescale|soc/zlg/drivers/source/pwr/am_zmf159_pwr.c|examples|soc/soc/zlg/drivers/include/gpio/am_zlg116_gpio_util.h|components/libc/microlib_adapter|soc/soc/zlg/drivers/include/gpio/am_zlg116_gpio.h|soc/soc/zlg/drivers/include/clk/am_zlg116_clk.h|examples/soc/zlg/wakeup/demo_zlg217_drv_standbymode_wake_up.c|ametal/soc/zlg/zlg116/drivers/include/am_zlg116_spi_slave_dma.h|examples/soc/nxp|examples/examples/soc/freescale|soc/soc/zlg/drivers/include/rcc/hw/amhw_zlg116_rcc.h|examples/components/drivers/demo_fm175xx_picca_read_id.c|examples/soc/zlg/clk/demo_zlg217_hw_clk.c|soc/zlg/drivers/source/sdio|soc/zlg/drivers/source/bootloader|soc/zlg/drivers/source/usbd|ametal/common/components/libc/microlib_adapter|ametal/board/am116_core/am_bsp_armlib.c|examples/board/am116_core|soc/soc/freescale|examples/board/amks16rfid|soc/zlg/drivers/source/clk/am_zmf159_clk.c|startup/am_zlg217_armcc_startup.s|examples/examples/board/am824_core|startup/am_am196_armcc_startup.s|ametal/board/am116_core/am_bsp_microlib.h|examples/board/am824_core|soc/zlg/drivers/source/clk/am_zlg116_clk.c|ametal/common/components/libc/armlib_adapter|soc/soc/zlg/zlg116|examples/components/drivers/demo_zm516x_network.c|examples/soc/zlg/wakeup/demo_zlg217_drv_sleepmode_wake_up.c|examples/examples/soc/zlg/wakeup/demo_zlg116_drv_standbymode_wake_up.c|soc/zlg/drivers/source/eth|soc/zlg/zlg217/zlg217_sdk_version_temp.c|examples/examples/soc/zlg/wakeup/demo_zlg116_drv_stopmode_wake_up.c|soc/soc/zlg/drivers/source/pwr/am_zlg116_pwr.c|soc/freescale|examples/examples/board/amks16z_core|components/bootloader|startup/am_zlg116_armcc_startup.s|examples/board/am824zb|examples/board/am824ble|examples/soc/zlg/wakeup/demo_zlg217_drv_sleepmode_timer_wake_up.c|soc/zlg/drivers/source/pwr/am_zlg116_pwr.c|examples/board/amks16z_core|examples/examples/soc/zlg/wakeup/demo_zlg116_drv_sleepmode_timer_wake_up.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>
@@ -651,7 +926,7 @@
 							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.datasections.1771236313" name="Data sections (-fdata-sections)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.datasections" useByScannerDiscovery="true" value="true" valueType="boolean"/>
 							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.debugging.level.1273138209" name="Debug level" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.debugging.level" useByScannerDiscovery="true" value="ilg.gnuarmeclipse.managedbuild.cross.option.debugging.level.max" valueType="enumerated"/>
 							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.debugging.format.1506583718" name="Debug format" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.debugging.format" useByScannerDiscovery="true"/>
-							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.arm.target.family.1762857089" name="ARM family" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.arm.target.family" useByScannerDiscovery="false" value="ilg.gnuarmeclipse.managedbuild.cross.option.arm.target.mcpu.cortex-m0plus" valueType="enumerated"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.arm.target.family.1762857089" name="ARM family" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.arm.target.family" useByScannerDiscovery="false" value="ilg.gnuarmeclipse.managedbuild.cross.option.arm.target.mcpu.cortex-m4" valueType="enumerated"/>
 							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.warnings.allwarn.814481162" name="Enable all common warnings (-Wall)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.warnings.allwarn" useByScannerDiscovery="true" value="true" valueType="boolean"/>
 							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.warnings.extrawarn.512782533" name="Enable extra warnings (-Wextra)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.warnings.extrawarn" useByScannerDiscovery="true" value="false" valueType="boolean"/>
 							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.freestanding.671140371" name="Assume freestanding environment (-ffreestanding)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.freestanding" useByScannerDiscovery="true" value="true" valueType="boolean"/>
@@ -680,48 +955,50 @@
 							</tool>
 							<tool command="${cross_prefix}${cross_c}${cross_suffix}" commandLinePattern="${COMMAND} ${cross_toolchain_flags} ${FLAGS} -c ${OUTPUT_FLAG} ${OUTPUT_PREFIX}${OUTPUT} ${INPUTS}" errorParsers="org.eclipse.cdt.core.GLDErrorParser;org.eclipse.cdt.core.GCCErrorParser" id="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.2138511912" name="Cross ARM C Compiler" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler">
 								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.include.paths.1850229892" name="Include paths (-I)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.include.paths" useByScannerDiscovery="false" valueType="includePath">
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/drivers/include}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/drivers/include/adc}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/drivers/include/adtim}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/drivers/include/aes}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/drivers/include/afio}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/drivers/include/bkp}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/drivers/include/bootloader}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/drivers/include/can}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/drivers/include/clk}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/drivers/include/clktrim}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/drivers/include/cmp}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/drivers/include/crc}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/drivers/include/dac}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/drivers/include/dma}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/drivers/include/eth}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/drivers/include/exti}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/drivers/include/flash}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/drivers/include/gpio}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/drivers/include/i2c}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/drivers/include/ili9341}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/drivers/include/lcd}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/drivers/include/lpmode}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/drivers/include/lptim}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/drivers/include/lpuart}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/drivers/include/lvd}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/drivers/include/opa}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/drivers/include/pca}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/drivers/include/pcnt}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/drivers/include/pwr}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/drivers/include/ram}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/drivers/include/rcc}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/drivers/include/rtc}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/drivers/include/sdio}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/drivers/include/spi}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/drivers/include/syscfg}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/drivers/include/tim}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/drivers/include/trng}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/drivers/include/uart}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/drivers/include/usbd}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/drivers/include/vc}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/drivers/include/wdt}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/zlg/zlg118}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/hdsc/drivers/include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/hdsc/drivers/include/adc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/hdsc/drivers/include/adtim}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/hdsc/drivers/include/aes}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/hdsc/drivers/include/bootloader}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/hdsc/drivers/include/can}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/hdsc/drivers/include/clk}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/hdsc/drivers/include/clktrim}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/hdsc/drivers/include/crc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/hdsc/drivers/include/dac}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/hdsc/drivers/include/dma}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/hdsc/drivers/include/flash}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/hdsc/drivers/include/gpio}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/hdsc/drivers/include/i2c}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/hdsc/drivers/include/lcd}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/hdsc/drivers/include/lpmode}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/hdsc/drivers/include/lptim}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/hdsc/drivers/include/lpuart}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/hdsc/drivers/include/lvd}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/hdsc/drivers/include/opa}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/hdsc/drivers/include/pca}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/hdsc/drivers/include/pcnt}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/hdsc/drivers/include/ram}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/hdsc/drivers/include/rcc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/hdsc/drivers/include/rtc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/hdsc/drivers/include/sdio}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/hdsc/drivers/include/spi}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/hdsc/drivers/include/tim}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/hdsc/drivers/include/trng}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/hdsc/drivers/include/uart}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/hdsc/drivers/include/vc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/hdsc/drivers/include/wdt}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/hdsc/drivers/include/qspi}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/hdsc/drivers/include/mpu}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/hdsc/drivers/include/hash}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/hdsc/drivers/include/cmp}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/hdsc/drivers/include/dcu}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/hdsc/drivers/include/usbd}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/hdsc/drivers/include/usbd/hw}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/hdsc/drivers/source/usbd/internal_usb_core/usbd_msc/source}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/hdsc/drivers/source/usbd/internal_usb_core/usb_lib/device_core}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/hdsc/drivers/source/usbd/internal_usb_core/usb_lib/ctl_drv}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/hdsc/drivers/source/usbd/internal_usb_core/usb_lib/device_class/msc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/soc/hdsc/hc32f460}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/user_config}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/user_config/am_hwconf_usrcfg}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/user_config/am_servconf_usrcfg}&quot;"/>
@@ -731,6 +1008,11 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/interface}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/components/drivers/include}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/components/service/include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/components/usb/include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/components/usb/device}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/components/usb/device/common/include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/components/usb/device/class/include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/components/usb/osa}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/components/util/include}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/3rdparty/CMSIS/Include}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/arch/arm/include}&quot;"/>
@@ -747,7 +1029,7 @@
 								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.compiler.include.paths.1898658329" name="Include paths (-I)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.compiler.include.paths" useByScannerDiscovery="false"/>
 								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.compiler.defs.2136402748" name="Defined symbols (-D)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.compiler.defs" useByScannerDiscovery="false" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="AM_VDEBUG"/>
-									<listOptionValue builtIn="false" value="AM_CORTEX_M0"/>
+									<listOptionValue builtIn="false" value="AM_CORTEX_M4"/>
 								</option>
 								<inputType id="ilg.gnuarmeclipse.managedbuild.cross.tool.cpp.compiler.input.913774748" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.cpp.compiler.input"/>
 							</tool>
@@ -766,13 +1048,17 @@
 							</tool>
 							<tool command="${cross_prefix}${cross_cpp}${cross_suffix}" commandLinePattern="${COMMAND} ${cross_toolchain_flags} ${FLAGS} ${OUTPUT_FLAG} ${OUTPUT_PREFIX}${OUTPUT} ${INPUTS}" errorParsers="" id="ilg.gnuarmeclipse.managedbuild.cross.tool.cpp.linker.458774256" name="Cross ARM C++ Linker" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.cpp.linker">
 								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.linker.gcsections.613631194" name="Remove unused sections (-Xlinker --gc-sections)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.linker.gcsections" useByScannerDiscovery="false" value="true" valueType="boolean"/>
-								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.linker.paths.466802785" name="Library search path (-L)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.linker.paths" useByScannerDiscovery="false"/>
+								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.linker.paths.466802785" name="Library search path (-L)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.linker.paths" useByScannerDiscovery="false" valueType="libPaths">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/components/usb}&quot;"/>
+								</option>
 								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.linker.scriptfile.1301419844" name="Script files (-T)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.linker.scriptfile" useByScannerDiscovery="false" valueType="stringList">
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/template_am118_core.ld}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/template_hc32f460_core.ld}&quot;"/>
 								</option>
 								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.linker.nostart.633381211" name="Do not use standard start files (-nostartfiles)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.linker.nostart" useByScannerDiscovery="false" value="true" valueType="boolean"/>
 								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.linker.usenewlibnano.934483089" name="Use newlib-nano (--specs=nano.specs)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.linker.usenewlibnano" useByScannerDiscovery="false" value="true" valueType="boolean"/>
-								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.linker.libs.218790126" name="Libraries (-l)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.linker.libs" useByScannerDiscovery="false"/>
+								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.linker.libs.218790126" name="Libraries (-l)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.linker.libs" useByScannerDiscovery="false" valueType="libs">
+									<listOptionValue builtIn="false" value="am_usbd_lib_m3"/>
+								</option>
 								<inputType id="ilg.gnuarmeclipse.managedbuild.cross.tool.cpp.linker.input.1742976682" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.cpp.linker.input">
 									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
 									<additionalInput kind="additionalinput" paths="$(LIBS)"/>
@@ -794,12 +1080,362 @@
 							</tool>
 						</toolChain>
 					</folderInfo>
+					<folderInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1913533800.422754405.116303949" name="/" resourcePath="soc/hdsc/hc32f460">
+						<toolChain id="ilg.gnuarmeclipse.managedbuild.cross.toolchain.elf.debug.714668896" name="Cross ARM GCC" superClass="ilg.gnuarmeclipse.managedbuild.cross.toolchain.elf.debug" unusedChildren="">
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.level.1045673072.654294559" name="Optimization Level" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.level.1045673072"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.messagelength.816831180.390206484" name="Message length (-fmessage-length=0)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.messagelength.816831180"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.signedchar.447514151.1849593917" name="'char' is signed (-fsigned-char)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.signedchar.447514151"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.functionsections.1844790840.1612251749" name="Function sections (-ffunction-sections)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.functionsections.1844790840"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.datasections.1771236313.1018099219" name="Data sections (-fdata-sections)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.datasections.1771236313"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.debugging.level.1273138209.1882658365" name="Debug level" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.debugging.level.1273138209"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.debugging.format.1506583718.909202115" name="Debug format" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.debugging.format.1506583718"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.arm.target.family.1762857089.294319537" name="ARM family" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.arm.target.family.1762857089"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.warnings.allwarn.814481162.1216015541" name="Enable all common warnings (-Wall)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.warnings.allwarn.814481162"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.warnings.extrawarn.512782533.1507479518" name="Enable extra warnings (-Wextra)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.warnings.extrawarn.512782533"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.freestanding.671140371.627792705" name="Assume freestanding environment (-ffreestanding)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.freestanding.671140371"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.nomoveloopinvariants.891506360.1127446800" name="Disable loop invariant move (-fno-move-loop-invariants)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.nomoveloopinvariants.891506360"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.toolchain.name.447728092.452534704" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.toolchain.name.447728092"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.architecture.1979496831.1027536852" name="Architecture" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.architecture.1979496831"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.arm.target.instructionset.615017896.1743692250" name="Instruction set" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.arm.target.instructionset.615017896"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.command.prefix.1162525279.330441454" name="Prefix" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.command.prefix.1162525279"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.command.c.1070213575.1355001543" name="C compiler" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.command.c.1070213575"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.command.cpp.446846224.1440215184" name="C++ compiler" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.command.cpp.446846224"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.command.ar.1409922947.1968408778" name="Archiver" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.command.ar.1409922947"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.command.objcopy.1192291361.454926341" name="Hex/Bin converter" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.command.objcopy.1192291361"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.command.objdump.806044967.526019984" name="Listing generator" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.command.objdump.806044967"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.command.size.708930837.1408666664" name="Size command" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.command.size.708930837"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.command.make.954957216.69498836" name="Build command" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.command.make.954957216"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.command.rm.1618024650.922023426" name="Remove command" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.command.rm.1618024650"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.addtools.createflash.322724872.1876409439" name="Create flash image" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.addtools.createflash.322724872"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.addtools.printsize.1180299521.164673911" name="Print size" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.addtools.printsize.1180299521"/>
+							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.ELF" id="ilg.gnuarmeclipse.managedbuild.cross.targetPlatform" isAbstract="false" osList="all" superClass="ilg.gnuarmeclipse.managedbuild.cross.targetPlatform"/>
+							<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.assembler.429986414" name="Cross ARM GNU Assembler" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.assembler.1848937215">
+								<inputType id="ilg.gnuarmeclipse.managedbuild.cross.tool.assembler.input.1572221106" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.assembler.input"/>
+							</tool>
+							<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.1557292886" name="Cross ARM C Compiler" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.2138511912">
+								<inputType id="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.input.413262568" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.input"/>
+							</tool>
+							<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.cpp.compiler.584526971" name="Cross ARM C++ Compiler" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.cpp.compiler.463759011">
+								<inputType id="ilg.gnuarmeclipse.managedbuild.cross.tool.cpp.compiler.input.81548677" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.cpp.compiler.input"/>
+							</tool>
+							<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.c.linker.173005988" name="Cross ARM C Linker" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.c.linker.126984051"/>
+							<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.cpp.linker.1214058998" name="Cross ARM C++ Linker" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.cpp.linker.458774256"/>
+							<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.archiver.472133028" name="Cross ARM GNU Archiver" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.archiver.1683767303"/>
+							<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.createflash.599955592" name="Cross ARM GNU Create Flash Image" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.createflash.70295120"/>
+							<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.createlisting.1362416589" name="Cross ARM GNU Create Listing" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.createlisting.436597913"/>
+							<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.printsize.1704785010" name="Cross ARM GNU Print Size" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.printsize.217394990"/>
+						</toolChain>
+					</folderInfo>
+					<fileInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1913533800.422754405.1072950779" name="am_hc32_rtc.h" rcbsApplicability="disable" resourcePath="soc/hdsc/drivers/include/rtc/am_hc32_rtc.h" toolsToInvoke="">
+						<tool customBuildStep="true" id="org.eclipse.cdt.managedbuilder.ui.rcbs.1541099784" name="Resource Custom Build Step">
+							<inputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.inputtype.531538876" name="Resource Custom Build Step Input Type">
+								<additionalInput kind="additionalinputdependency" paths=""/>
+							</inputType>
+							<outputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.outputtype.835272920" name="Resource Custom Build Step Output Type"/>
+						</tool>
+					</fileInfo>
+					<fileInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1913533800.422754405.1234979836" name="amhw_hc32_rtc.h" rcbsApplicability="disable" resourcePath="soc/hdsc/drivers/include/rtc/hw/amhw_hc32_rtc.h" toolsToInvoke="">
+						<tool customBuildStep="true" id="org.eclipse.cdt.managedbuilder.ui.rcbs.78014046" name="Resource Custom Build Step">
+							<inputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.inputtype.1127287073" name="Resource Custom Build Step Input Type">
+								<additionalInput kind="additionalinputdependency" paths=""/>
+							</inputType>
+							<outputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.outputtype.2049886140" name="Resource Custom Build Step Output Type"/>
+						</tool>
+					</fileInfo>
+					<fileInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1913533800.422754405.625799767" name="am_hc32_adc.h" rcbsApplicability="disable" resourcePath="soc/hdsc/drivers/include/adc/am_hc32_adc.h" toolsToInvoke="">
+						<tool customBuildStep="true" id="org.eclipse.cdt.managedbuilder.ui.rcbs.680986966" name="Resource Custom Build Step">
+							<inputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.inputtype.561634873" name="Resource Custom Build Step Input Type">
+								<additionalInput kind="additionalinputdependency" paths=""/>
+							</inputType>
+							<outputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.outputtype.1711185493" name="Resource Custom Build Step Output Type"/>
+						</tool>
+					</fileInfo>
+					<fileInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1913533800.422754405.980233308" name="amhw_hc32_adc.h" rcbsApplicability="disable" resourcePath="soc/hdsc/drivers/include/adc/hw/amhw_hc32_adc.h" toolsToInvoke="">
+						<tool customBuildStep="true" id="org.eclipse.cdt.managedbuilder.ui.rcbs.745700066" name="Resource Custom Build Step">
+							<inputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.inputtype.321332928" name="Resource Custom Build Step Input Type">
+								<additionalInput kind="additionalinputdependency" paths=""/>
+							</inputType>
+							<outputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.outputtype.1467573190" name="Resource Custom Build Step Output Type"/>
+						</tool>
+					</fileInfo>
+					<fileInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1913533800.422754405.810795556" name="am_hc32_trng.h" rcbsApplicability="disable" resourcePath="soc/hdsc/drivers/include/trng/am_hc32_trng.h" toolsToInvoke="">
+						<tool customBuildStep="true" id="org.eclipse.cdt.managedbuilder.ui.rcbs.768838738" name="Resource Custom Build Step">
+							<inputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.inputtype.1361760792" name="Resource Custom Build Step Input Type">
+								<additionalInput kind="additionalinputdependency" paths=""/>
+							</inputType>
+							<outputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.outputtype.731136532" name="Resource Custom Build Step Output Type"/>
+						</tool>
+					</fileInfo>
+					<fileInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1913533800.422754405.689611813" name="amhw_hc32_trng.h" rcbsApplicability="disable" resourcePath="soc/hdsc/drivers/include/trng/hw/amhw_hc32_trng.h" toolsToInvoke="">
+						<tool customBuildStep="true" id="org.eclipse.cdt.managedbuilder.ui.rcbs.1267232024" name="Resource Custom Build Step">
+							<inputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.inputtype.709259921" name="Resource Custom Build Step Input Type">
+								<additionalInput kind="additionalinputdependency" paths=""/>
+							</inputType>
+							<outputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.outputtype.1906955974" name="Resource Custom Build Step Output Type"/>
+						</tool>
+					</fileInfo>
+					<fileInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1913533800.422754405.814101767" name="amhw_hc32_wdt.h" rcbsApplicability="disable" resourcePath="soc/hdsc/drivers/include/wdt/hw/amhw_hc32_wdt.h" toolsToInvoke="">
+						<tool customBuildStep="true" id="org.eclipse.cdt.managedbuilder.ui.rcbs.616616499" name="Resource Custom Build Step">
+							<inputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.inputtype.1971667134" name="Resource Custom Build Step Input Type">
+								<additionalInput kind="additionalinputdependency" paths=""/>
+							</inputType>
+							<outputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.outputtype.1870364908" name="Resource Custom Build Step Output Type"/>
+						</tool>
+					</fileInfo>
+					<fileInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1913533800.422754405.1784191249" name="am_hc32_wdt.h" rcbsApplicability="disable" resourcePath="soc/hdsc/drivers/include/wdt/am_hc32_wdt.h" toolsToInvoke="">
+						<tool customBuildStep="true" id="org.eclipse.cdt.managedbuilder.ui.rcbs.1533686551" name="Resource Custom Build Step">
+							<inputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.inputtype.2106740591" name="Resource Custom Build Step Input Type">
+								<additionalInput kind="additionalinputdependency" paths=""/>
+							</inputType>
+							<outputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.outputtype.1288184730" name="Resource Custom Build Step Output Type"/>
+						</tool>
+					</fileInfo>
+					<fileInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1913533800.422754405.1233250494" name="am_hc32_spi_int.h" rcbsApplicability="disable" resourcePath="soc/hdsc/drivers/include/spi/am_hc32_spi_int.h" toolsToInvoke="">
+						<tool customBuildStep="true" id="org.eclipse.cdt.managedbuilder.ui.rcbs.1416111971" name="Resource Custom Build Step">
+							<inputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.inputtype.1150059149" name="Resource Custom Build Step Input Type">
+								<additionalInput kind="additionalinputdependency" paths=""/>
+							</inputType>
+							<outputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.outputtype.1675714998" name="Resource Custom Build Step Output Type"/>
+						</tool>
+					</fileInfo>
+					<fileInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1913533800.422754405.1329218863" name="am_hc32_spi_dma.h" rcbsApplicability="disable" resourcePath="soc/hdsc/drivers/include/spi/am_hc32_spi_dma.h" toolsToInvoke="">
+						<tool customBuildStep="true" id="org.eclipse.cdt.managedbuilder.ui.rcbs.2019212827" name="Resource Custom Build Step">
+							<inputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.inputtype.646038626" name="Resource Custom Build Step Input Type">
+								<additionalInput kind="additionalinputdependency" paths=""/>
+							</inputType>
+							<outputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.outputtype.48788601" name="Resource Custom Build Step Output Type"/>
+						</tool>
+					</fileInfo>
+					<fileInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1913533800.422754405.2035917510" name="am_hc32_spi_poll.h" rcbsApplicability="disable" resourcePath="soc/hdsc/drivers/include/spi/am_hc32_spi_poll.h" toolsToInvoke="">
+						<tool customBuildStep="true" id="org.eclipse.cdt.managedbuilder.ui.rcbs.650950537" name="Resource Custom Build Step">
+							<inputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.inputtype.126035363" name="Resource Custom Build Step Input Type">
+								<additionalInput kind="additionalinputdependency" paths=""/>
+							</inputType>
+							<outputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.outputtype.532126882" name="Resource Custom Build Step Output Type"/>
+						</tool>
+					</fileInfo>
+					<fileInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1913533800.422754405.302253910" name="amhw_hc32_spi.h" rcbsApplicability="disable" resourcePath="soc/hdsc/drivers/include/spi/hw/amhw_hc32_spi.h" toolsToInvoke="">
+						<tool customBuildStep="true" id="org.eclipse.cdt.managedbuilder.ui.rcbs.1873406871" name="Resource Custom Build Step">
+							<inputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.inputtype.433116335" name="Resource Custom Build Step Input Type">
+								<additionalInput kind="additionalinputdependency" paths=""/>
+							</inputType>
+							<outputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.outputtype.1511624206" name="Resource Custom Build Step Output Type"/>
+						</tool>
+					</fileInfo>
+					<fileInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1913533800.422754405.1452013746" name="am_hc32_aes.h" rcbsApplicability="disable" resourcePath="soc/hdsc/drivers/include/aes/am_hc32_aes.h" toolsToInvoke="">
+						<tool customBuildStep="true" id="org.eclipse.cdt.managedbuilder.ui.rcbs.2118114704" name="Resource Custom Build Step">
+							<inputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.inputtype.1463239588" name="Resource Custom Build Step Input Type">
+								<additionalInput kind="additionalinputdependency" paths=""/>
+							</inputType>
+							<outputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.outputtype.487074445" name="Resource Custom Build Step Output Type"/>
+						</tool>
+					</fileInfo>
+					<fileInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1913533800.422754405.608467809" name="amhw_hc32_aes.h" rcbsApplicability="disable" resourcePath="soc/hdsc/drivers/include/aes/hw/amhw_hc32_aes.h" toolsToInvoke="">
+						<tool customBuildStep="true" id="org.eclipse.cdt.managedbuilder.ui.rcbs.554246325" name="Resource Custom Build Step">
+							<inputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.inputtype.309561540" name="Resource Custom Build Step Input Type">
+								<additionalInput kind="additionalinputdependency" paths=""/>
+							</inputType>
+							<outputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.outputtype.660620675" name="Resource Custom Build Step Output Type"/>
+						</tool>
+					</fileInfo>
 					<fileInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1913533800.422754405.688300769" name="amhw_hc32_rcc.h" rcbsApplicability="disable" resourcePath="soc/hdsc/drivers/include/rcc/hw/amhw_hc32_rcc.h" toolsToInvoke=""/>
 					<fileInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1913533800.422754405.48543057" name="amhw_hc32_rcc_reset.h" rcbsApplicability="disable" resourcePath="soc/hdsc/drivers/include/rcc/hw/amhw_hc32_rcc_reset.h" toolsToInvoke=""/>
+					<fileInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1913533800.422754405.1290454415" name="am_hc32_adtim_pwm.h" rcbsApplicability="disable" resourcePath="soc/hdsc/drivers/include/adtim/am_hc32_adtim_pwm.h" toolsToInvoke="">
+						<tool customBuildStep="true" id="org.eclipse.cdt.managedbuilder.ui.rcbs.1258191072" name="Resource Custom Build Step">
+							<inputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.inputtype.551113280" name="Resource Custom Build Step Input Type">
+								<additionalInput kind="additionalinputdependency" paths=""/>
+							</inputType>
+							<outputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.outputtype.1748660570" name="Resource Custom Build Step Output Type"/>
+						</tool>
+					</fileInfo>
+					<fileInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1913533800.422754405.488417516" name="am_hc32_adtim_cap.h" rcbsApplicability="disable" resourcePath="soc/hdsc/drivers/include/adtim/am_hc32_adtim_cap.h" toolsToInvoke="">
+						<tool customBuildStep="true" id="org.eclipse.cdt.managedbuilder.ui.rcbs.1145554041" name="Resource Custom Build Step">
+							<inputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.inputtype.1441366427" name="Resource Custom Build Step Input Type">
+								<additionalInput kind="additionalinputdependency" paths=""/>
+							</inputType>
+							<outputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.outputtype.1033678996" name="Resource Custom Build Step Output Type"/>
+						</tool>
+					</fileInfo>
+					<fileInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1913533800.422754405.205065548" name="am_hc32_adtim_timing.h" rcbsApplicability="disable" resourcePath="soc/hdsc/drivers/include/adtim/am_hc32_adtim_timing.h" toolsToInvoke="">
+						<tool customBuildStep="true" id="org.eclipse.cdt.managedbuilder.ui.rcbs.1838453712" name="Resource Custom Build Step">
+							<inputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.inputtype.1514632122" name="Resource Custom Build Step Input Type">
+								<additionalInput kind="additionalinputdependency" paths=""/>
+							</inputType>
+							<outputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.outputtype.954641943" name="Resource Custom Build Step Output Type"/>
+						</tool>
+					</fileInfo>
+					<fileInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1913533800.422754405.453211629" name="amhw_hc32_adtim.h" rcbsApplicability="disable" resourcePath="soc/hdsc/drivers/include/adtim/hw/amhw_hc32_adtim.h" toolsToInvoke="">
+						<tool customBuildStep="true" id="org.eclipse.cdt.managedbuilder.ui.rcbs.1386847078" name="Resource Custom Build Step">
+							<inputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.inputtype.1313433423" name="Resource Custom Build Step Input Type">
+								<additionalInput kind="additionalinputdependency" paths=""/>
+							</inputType>
+							<outputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.outputtype.805173559" name="Resource Custom Build Step Output Type"/>
+						</tool>
+					</fileInfo>
+					<fileInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1913533800.422754405.1878851677" name="am_hc32_crc.h" rcbsApplicability="disable" resourcePath="soc/hdsc/drivers/include/crc/am_hc32_crc.h" toolsToInvoke="">
+						<tool customBuildStep="true" id="org.eclipse.cdt.managedbuilder.ui.rcbs.72212199" name="Resource Custom Build Step">
+							<inputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.inputtype.821960814" name="Resource Custom Build Step Input Type">
+								<additionalInput kind="additionalinputdependency" paths=""/>
+							</inputType>
+							<outputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.outputtype.919635959" name="Resource Custom Build Step Output Type"/>
+						</tool>
+					</fileInfo>
+					<fileInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1913533800.422754405.1008102063" name="amhw_hc32_crc.h" rcbsApplicability="disable" resourcePath="soc/hdsc/drivers/include/crc/hw/amhw_hc32_crc.h" toolsToInvoke="">
+						<tool customBuildStep="true" id="org.eclipse.cdt.managedbuilder.ui.rcbs.1019581789" name="Resource Custom Build Step">
+							<inputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.inputtype.382543419" name="Resource Custom Build Step Input Type">
+								<additionalInput kind="additionalinputdependency" paths=""/>
+							</inputType>
+							<outputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.outputtype.1326839405" name="Resource Custom Build Step Output Type"/>
+						</tool>
+					</fileInfo>
+					<fileInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1913533800.422754405.1781328129" name="am_hc32_uart.h" rcbsApplicability="disable" resourcePath="soc/hdsc/drivers/include/uart/am_hc32_uart.h" toolsToInvoke="">
+						<tool customBuildStep="true" id="org.eclipse.cdt.managedbuilder.ui.rcbs.1024406625" name="Resource Custom Build Step">
+							<inputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.inputtype.534168816" name="Resource Custom Build Step Input Type">
+								<additionalInput kind="additionalinputdependency" paths=""/>
+							</inputType>
+							<outputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.outputtype.1143002130" name="Resource Custom Build Step Output Type"/>
+						</tool>
+					</fileInfo>
+					<fileInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1913533800.422754405.682580535" name="amhw_hc32_uart.h" rcbsApplicability="disable" resourcePath="soc/hdsc/drivers/include/uart/hw/amhw_hc32_uart.h" toolsToInvoke="">
+						<tool customBuildStep="true" id="org.eclipse.cdt.managedbuilder.ui.rcbs.1120756841" name="Resource Custom Build Step">
+							<inputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.inputtype.1393479986" name="Resource Custom Build Step Input Type">
+								<additionalInput kind="additionalinputdependency" paths=""/>
+							</inputType>
+							<outputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.outputtype.304887836" name="Resource Custom Build Step Output Type"/>
+						</tool>
+					</fileInfo>
+					<fileInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1913533800.422754405.623698733" name="am_hc32_dma.h" rcbsApplicability="disable" resourcePath="soc/hdsc/drivers/include/dma/am_hc32_dma.h" toolsToInvoke="">
+						<tool customBuildStep="true" id="org.eclipse.cdt.managedbuilder.ui.rcbs.824418044" name="Resource Custom Build Step">
+							<inputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.inputtype.645147808" name="Resource Custom Build Step Input Type">
+								<additionalInput kind="additionalinputdependency" paths=""/>
+							</inputType>
+							<outputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.outputtype.1699093386" name="Resource Custom Build Step Output Type"/>
+						</tool>
+					</fileInfo>
+					<fileInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1913533800.422754405.621015338" name="amhw_hc32_dma.h" rcbsApplicability="disable" resourcePath="soc/hdsc/drivers/include/dma/hw/amhw_hc32_dma.h" toolsToInvoke="">
+						<tool customBuildStep="true" id="org.eclipse.cdt.managedbuilder.ui.rcbs.2020018426" name="Resource Custom Build Step">
+							<inputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.inputtype.1408610428" name="Resource Custom Build Step Input Type">
+								<additionalInput kind="additionalinputdependency" paths=""/>
+							</inputType>
+							<outputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.outputtype.1646443830" name="Resource Custom Build Step Output Type"/>
+						</tool>
+					</fileInfo>
+					<fileInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1913533800.422754405.652853784" name="am_hc32_tim_timing.h" rcbsApplicability="disable" resourcePath="soc/hdsc/drivers/include/tim/am_hc32_tim_timing.h" toolsToInvoke="">
+						<tool customBuildStep="true" id="org.eclipse.cdt.managedbuilder.ui.rcbs.1056687246" name="Resource Custom Build Step">
+							<inputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.inputtype.309612041" name="Resource Custom Build Step Input Type">
+								<additionalInput kind="additionalinputdependency" paths=""/>
+							</inputType>
+							<outputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.outputtype.664033213" name="Resource Custom Build Step Output Type"/>
+						</tool>
+					</fileInfo>
+					<fileInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1913533800.422754405.1709282364" name="am_hc32_tim_pwm.h" rcbsApplicability="disable" resourcePath="soc/hdsc/drivers/include/tim/am_hc32_tim_pwm.h" toolsToInvoke="">
+						<tool customBuildStep="true" id="org.eclipse.cdt.managedbuilder.ui.rcbs.1749593234" name="Resource Custom Build Step">
+							<inputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.inputtype.1088469199" name="Resource Custom Build Step Input Type">
+								<additionalInput kind="additionalinputdependency" paths=""/>
+							</inputType>
+							<outputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.outputtype.1981651235" name="Resource Custom Build Step Output Type"/>
+						</tool>
+					</fileInfo>
+					<fileInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1913533800.422754405.896492286" name="amhw_hc32_tim.h" rcbsApplicability="disable" resourcePath="soc/hdsc/drivers/include/tim/hw/amhw_hc32_tim.h" toolsToInvoke="">
+						<tool customBuildStep="true" id="org.eclipse.cdt.managedbuilder.ui.rcbs.1961700372" name="Resource Custom Build Step">
+							<inputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.inputtype.347598738" name="Resource Custom Build Step Input Type">
+								<additionalInput kind="additionalinputdependency" paths=""/>
+							</inputType>
+							<outputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.outputtype.1301189847" name="Resource Custom Build Step Output Type"/>
+						</tool>
+					</fileInfo>
+					<fileInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1913533800.422754405.2042194790" name="am_hc32_tim_cap.h" rcbsApplicability="disable" resourcePath="soc/hdsc/drivers/include/tim/am_hc32_tim_cap.h" toolsToInvoke="">
+						<tool customBuildStep="true" id="org.eclipse.cdt.managedbuilder.ui.rcbs.879896181" name="Resource Custom Build Step">
+							<inputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.inputtype.535042677" name="Resource Custom Build Step Input Type">
+								<additionalInput kind="additionalinputdependency" paths=""/>
+							</inputType>
+							<outputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.outputtype.162005047" name="Resource Custom Build Step Output Type"/>
+						</tool>
+					</fileInfo>
+					<fileInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1913533800.422754405.1393556518" name="am_hc32_i2c.h" rcbsApplicability="disable" resourcePath="soc/hdsc/drivers/include/i2c/am_hc32_i2c.h" toolsToInvoke="">
+						<tool customBuildStep="true" id="org.eclipse.cdt.managedbuilder.ui.rcbs.162299240" name="Resource Custom Build Step">
+							<inputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.inputtype.2124528652" name="Resource Custom Build Step Input Type">
+								<additionalInput kind="additionalinputdependency" paths=""/>
+							</inputType>
+							<outputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.outputtype.1156744721" name="Resource Custom Build Step Output Type"/>
+						</tool>
+					</fileInfo>
+					<fileInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1913533800.422754405.1415631550" name="am_hc32_i2c_slv.h" rcbsApplicability="disable" resourcePath="soc/hdsc/drivers/include/i2c/am_hc32_i2c_slv.h" toolsToInvoke="">
+						<tool customBuildStep="true" id="org.eclipse.cdt.managedbuilder.ui.rcbs.229040243" name="Resource Custom Build Step">
+							<inputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.inputtype.1157108180" name="Resource Custom Build Step Input Type">
+								<additionalInput kind="additionalinputdependency" paths=""/>
+							</inputType>
+							<outputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.outputtype.1956400371" name="Resource Custom Build Step Output Type"/>
+						</tool>
+					</fileInfo>
+					<fileInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1913533800.422754405.1218891824" name="amhw_hc32_i2c.h" rcbsApplicability="disable" resourcePath="soc/hdsc/drivers/include/i2c/hw/amhw_hc32_i2c.h" toolsToInvoke="">
+						<tool customBuildStep="true" id="org.eclipse.cdt.managedbuilder.ui.rcbs.646163293" name="Resource Custom Build Step">
+							<inputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.inputtype.1699012230" name="Resource Custom Build Step Input Type">
+								<additionalInput kind="additionalinputdependency" paths=""/>
+							</inputType>
+							<outputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.outputtype.114762311" name="Resource Custom Build Step Output Type"/>
+						</tool>
+					</fileInfo>
+					<fileInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1913533800.422754405.588213647" name="am_hc32_gpio.h" rcbsApplicability="disable" resourcePath="soc/hdsc/drivers/include/gpio/am_hc32_gpio.h" toolsToInvoke="">
+						<tool customBuildStep="true" id="org.eclipse.cdt.managedbuilder.ui.rcbs.1518631159" name="Resource Custom Build Step">
+							<inputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.inputtype.825151847" name="Resource Custom Build Step Input Type">
+								<additionalInput kind="additionalinputdependency" paths=""/>
+							</inputType>
+							<outputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.outputtype.785310407" name="Resource Custom Build Step Output Type"/>
+						</tool>
+					</fileInfo>
+					<fileInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1913533800.422754405.849222411" name="am_hc32_gpio_util.h" rcbsApplicability="disable" resourcePath="soc/hdsc/drivers/include/gpio/am_hc32_gpio_util.h" toolsToInvoke="">
+						<tool customBuildStep="true" id="org.eclipse.cdt.managedbuilder.ui.rcbs.1979832711" name="Resource Custom Build Step">
+							<inputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.inputtype.552367569" name="Resource Custom Build Step Input Type">
+								<additionalInput kind="additionalinputdependency" paths=""/>
+							</inputType>
+							<outputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.outputtype.299433528" name="Resource Custom Build Step Output Type"/>
+						</tool>
+					</fileInfo>
+					<fileInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1913533800.422754405.618706336" name="amhw_hc32_gpio.h" rcbsApplicability="disable" resourcePath="soc/hdsc/drivers/include/gpio/hw/amhw_hc32_gpio.h" toolsToInvoke="">
+						<tool customBuildStep="true" id="org.eclipse.cdt.managedbuilder.ui.rcbs.1589105592" name="Resource Custom Build Step">
+							<inputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.inputtype.2046869336" name="Resource Custom Build Step Input Type">
+								<additionalInput kind="additionalinputdependency" paths=""/>
+							</inputType>
+							<outputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.outputtype.2067535766" name="Resource Custom Build Step Output Type"/>
+						</tool>
+					</fileInfo>
 					<sourceEntries>
-						<entry excluding="soc/zlg|soc/zlg/drivers/source/rcc/hw/amhw_zlg118_rcc.c|soc/zlg/drivers/source/rcc/hw/amhw_zlg118_rcc_reset.c|soc/zlg/drivers/source/uart/am_zlg118_uart.c|soc/zlg/zlg118|soc/zlg/drivers/source/wdt/am_zlg118_wdt.c|soc/zlg/drivers/source/vc/am_zlg118_vc.c|soc/zlg/drivers/source/uart/hw/amhw_zlg118_uart.c|soc/zlg/drivers/source/trng/am_zlg118_trng.c|soc/zlg/drivers/source/tim/am_zlg118_tim_timing.c|soc/zlg/drivers/source/tim/am_zlg118_tim_pwm.c|soc/zlg/drivers/source/tim/am_zlg118_tim_cap.c|soc/zlg/drivers/source/spi/am_zlg118_spi_poll.c|soc/zlg/drivers/source/spi/am_zlg118_spi_int.c|soc/zlg/drivers/source/spi/am_zlg118_spi_dma.c|soc/zlg/drivers/source/ram/am_zlg118_ram.c|soc/zlg/drivers/source/pcnt/am_zlg118_pcnt.c|soc/zlg/drivers/source/opa/am_zlg118_opa.c|soc/zlg/drivers/source/lvd/am_zlg118_lvd.c|soc/zlg/drivers/source/lpuart/am_zlg118_lpuart.c|soc/zlg/drivers/source/lptim/am_zlg118_lptim_timing.c|soc/zlg/drivers/source/lcd/am_zlg118_lcd.c|soc/zlg/drivers/source/i2c/am_zlg118_i2c.c|soc/zlg/drivers/source/i2c/am_zlg118_i2c_slv.c|soc/zlg/drivers/source/gpio/am_zlg118_gpio.c|soc/zlg/drivers/source/gpio/hw/amhw_zlg118_gpio.c|soc/zlg/drivers/source/flash/am_zlg118_flash.c|soc/zlg/drivers/source/dma/am_zlg118_dma.c|soc/zlg/drivers/source/dac/am_zlg118_dac.c|soc/zlg/drivers/source/crc/am_zlg118_crc.c|soc/zlg/drivers/source/clktrim/am_zlg118_clktrim.c|soc/zlg/drivers/source/clk/am_zlg118_clk.c|soc/zlg/drivers/source/aes/am_zlg118_aes.c|soc/zlg/drivers/source/adtim/am_zlg118_adtim_timing.c|soc/zlg/drivers/source/adtim/am_zlg118_adtim_pwm.c|soc/zlg/drivers/source/adtim/am_zlg118_adtim_cap.c|soc/zlg/drivers/source/adtim/hw/amhw_zlg118_adtim.c|soc/zlg/drivers/source/adc/am_zlg118_adc.c|soc/hdsc|soc/zlg/zlg237|soc/zlg/drivers/source/uart/am_zlg237_usart.c|soc/zlg/drivers/source/uart/hw/amhw_zlg237_usart.c|soc/zlg/drivers/source/spi/am_zlg237_spi_slv_dma.c|soc/zlg/drivers/source/spi/am_zlg237_spi_poll.c|soc/zlg/drivers/source/spi/am_zlg237_spi_int.c|soc/zlg/drivers/source/spi/am_zlg237_spi_dma.c|soc/zlg/drivers/source/rcc/hw/amhw_zlg237_rcc.c|soc/zlg/drivers/source/i2c/am_zlg237_i2c.c|soc/zlg/drivers/source/i2c/am_zlg237_i2c_slv.c|soc/zlg/drivers/source/gpio/am_zlg237_gpio.c|soc/zlg/drivers/source/flash/am_zlg237_flash.c|soc/zlg/drivers/source/flash/am_zlg_flash.c|soc/zlg/drivers/source/crc/am_zlg_crc.c|soc/zlg/drivers/source/clk/am_zlg237_clk.c|soc/zlg/drivers/source/adc/am_zlg237_adc.c|components/drivers/source/miniport|components/drivers/source/led/am_led_hc595.c|components/drivers/source/lcd|components/drivers/source/hc595|components/drivers/source/fram|components/drivers/source/fm175xx|components/drivers/source/flash|components/drivers/source/fingerprint|components/drivers/source/ble|components/drivers/source/adc|components/drivers/source/sdcard|components/drivers/source/pt100|components/drivers/source/nvram|components/drivers/source/i2c|components/drivers/source/zsn60x|components/drivers/source/zlg600|components/drivers/source/zigbee|components/drivers/source/wdt|components/drivers/source/uart|components/drivers/source/thermocouple|components/drivers/source/temperature|components/drivers/source/spi|components/drivers/source/sht20|components/drivers/source/sensor|components/libc/microlib_adapter|components/libc/armlib_adapter|components/usb|components/bootloader|soc/zlg/drivers/source/adc/am_zlg_adc.c|soc/zlg/drivers/source/clk/am_zmf159_clk.c|soc/zlg/drivers/source/clk/am_zlg217_clk.c|soc/zlg/drivers/source/clk/am_zlg116_clk.c|soc/zlg/drivers/source/dac/am_zlg_dac.c|soc/zlg/drivers/source/dma/am_zlg_dma.c|soc/zlg/drivers/source/gpio/am_zmf159_gpio.c|soc/zlg/drivers/source/gpio/am_zlg217_gpio.c|soc/zlg/drivers/source/gpio/am_zlg116_gpio.c|soc/zlg/drivers/source/i2c/am_zlg_i2c.c|soc/zlg/drivers/source/i2c/am_zlg_i2c_slv.c|soc/zlg/drivers/source/spi/am_zlg_spi_slv_dma.c|soc/zlg/drivers/source/spi/am_zlg_spi_poll.c|soc/zlg/drivers/source/spi/am_zlg_spi_int.c|soc/zlg/drivers/source/spi/am_zlg_spi_dma.c|soc/zlg/drivers/source/tim/am_zlg_tim_timing.c|soc/zlg/drivers/source/tim/am_zlg_tim_pwm.c|soc/zlg/drivers/source/tim/am_zlg_tim_cap.c|soc/zlg/drivers/source/uart/am_zlg_uart.c|soc/zlg/drivers/source/uart/hw/amhw_zlg_uart.c|soc/zlg/drivers/source/usbd|soc/zlg/drivers/source/sdio|soc/zlg/drivers/source/rtc|soc/zlg/drivers/source/pwr|soc/zlg/drivers/source/pca|soc/zlg/drivers/source/ili9341|soc/zlg/drivers/source/eth|soc/zlg/drivers/source/can|soc/zlg/drivers/source/bootloader|soc/zlg/drivers/source/wdt/am_zlg_wwdg.c|soc/zlg/drivers/source/wdt/am_zlg_iwdg.c|soc/zlg/zml166|soc/zlg/zmf159|soc/zlg/zlg217|soc/zlg/zlg116|soc/nxp|soc/freescale|soc/zlg/drivers/source/rcc/hw/amhw_zlg217_rcc.c|soc/zlg/drivers/source/rcc/hw/amhw_zlg116_rcc.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
-						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="soc/hdsc/drivers/include/gpio"/>
-						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="soc/hdsc/drivers/include/lpuart"/>
+						<entry excluding="soc/mm32|startup/am_hc32f460_armcc_sys.c|startup/am_hc32f460_armcc_startup.s|soc/zlg|soc/zlg/drivers/source/rcc/hw/amhw_zlg118_rcc.c|soc/zlg/drivers/source/rcc/hw/amhw_zlg118_rcc_reset.c|soc/zlg/drivers/source/uart/am_zlg118_uart.c|soc/zlg/zlg118|soc/zlg/drivers/source/wdt/am_zlg118_wdt.c|soc/zlg/drivers/source/vc/am_zlg118_vc.c|soc/zlg/drivers/source/uart/hw/amhw_zlg118_uart.c|soc/zlg/drivers/source/trng/am_zlg118_trng.c|soc/zlg/drivers/source/tim/am_zlg118_tim_timing.c|soc/zlg/drivers/source/tim/am_zlg118_tim_pwm.c|soc/zlg/drivers/source/tim/am_zlg118_tim_cap.c|soc/zlg/drivers/source/spi/am_zlg118_spi_poll.c|soc/zlg/drivers/source/spi/am_zlg118_spi_int.c|soc/zlg/drivers/source/spi/am_zlg118_spi_dma.c|soc/zlg/drivers/source/ram/am_zlg118_ram.c|soc/zlg/drivers/source/pcnt/am_zlg118_pcnt.c|soc/zlg/drivers/source/opa/am_zlg118_opa.c|soc/zlg/drivers/source/lvd/am_zlg118_lvd.c|soc/zlg/drivers/source/lpuart/am_zlg118_lpuart.c|soc/zlg/drivers/source/lptim/am_zlg118_lptim_timing.c|soc/zlg/drivers/source/lcd/am_zlg118_lcd.c|soc/zlg/drivers/source/i2c/am_zlg118_i2c.c|soc/zlg/drivers/source/i2c/am_zlg118_i2c_slv.c|soc/zlg/drivers/source/gpio/am_zlg118_gpio.c|soc/zlg/drivers/source/gpio/hw/amhw_zlg118_gpio.c|soc/zlg/drivers/source/flash/am_zlg118_flash.c|soc/zlg/drivers/source/dma/am_zlg118_dma.c|soc/zlg/drivers/source/dac/am_zlg118_dac.c|soc/zlg/drivers/source/crc/am_zlg118_crc.c|soc/zlg/drivers/source/clktrim/am_zlg118_clktrim.c|soc/zlg/drivers/source/clk/am_zlg118_clk.c|soc/zlg/drivers/source/aes/am_zlg118_aes.c|soc/zlg/drivers/source/adtim/am_zlg118_adtim_timing.c|soc/zlg/drivers/source/adtim/am_zlg118_adtim_pwm.c|soc/zlg/drivers/source/adtim/am_zlg118_adtim_cap.c|soc/zlg/drivers/source/adtim/hw/amhw_zlg118_adtim.c|soc/zlg/drivers/source/adc/am_zlg118_adc.c|soc/hdsc|soc/zlg/zlg237|soc/zlg/drivers/source/uart/am_zlg237_usart.c|soc/zlg/drivers/source/uart/hw/amhw_zlg237_usart.c|soc/zlg/drivers/source/spi/am_zlg237_spi_slv_dma.c|soc/zlg/drivers/source/spi/am_zlg237_spi_poll.c|soc/zlg/drivers/source/spi/am_zlg237_spi_int.c|soc/zlg/drivers/source/spi/am_zlg237_spi_dma.c|soc/zlg/drivers/source/rcc/hw/amhw_zlg237_rcc.c|soc/zlg/drivers/source/i2c/am_zlg237_i2c.c|soc/zlg/drivers/source/i2c/am_zlg237_i2c_slv.c|soc/zlg/drivers/source/gpio/am_zlg237_gpio.c|soc/zlg/drivers/source/flash/am_zlg237_flash.c|soc/zlg/drivers/source/flash/am_zlg_flash.c|soc/zlg/drivers/source/crc/am_zlg_crc.c|soc/zlg/drivers/source/clk/am_zlg237_clk.c|soc/zlg/drivers/source/adc/am_zlg237_adc.c|components/drivers/source/miniport|components/drivers/source/led/am_led_hc595.c|components/drivers/source/lcd|components/drivers/source/hc595|components/drivers/source/fram|components/drivers/source/fm175xx|components/drivers/source/flash|components/drivers/source/fingerprint|components/drivers/source/ble|components/drivers/source/adc|components/drivers/source/sdcard|components/drivers/source/pt100|components/drivers/source/nvram|components/drivers/source/i2c|components/drivers/source/zsn60x|components/drivers/source/zlg600|components/drivers/source/zigbee|components/drivers/source/wdt|components/drivers/source/uart|components/drivers/source/thermocouple|components/drivers/source/temperature|components/drivers/source/spi|components/drivers/source/sht20|components/drivers/source/sensor|components/libc/microlib_adapter|components/libc/armlib_adapter|components/usb|components/bootloader|soc/zlg/drivers/source/adc/am_zlg_adc.c|soc/zlg/drivers/source/clk/am_zmf159_clk.c|soc/zlg/drivers/source/clk/am_zlg217_clk.c|soc/zlg/drivers/source/clk/am_zlg116_clk.c|soc/zlg/drivers/source/dac/am_zlg_dac.c|soc/zlg/drivers/source/dma/am_zlg_dma.c|soc/zlg/drivers/source/gpio/am_zmf159_gpio.c|soc/zlg/drivers/source/gpio/am_zlg217_gpio.c|soc/zlg/drivers/source/gpio/am_zlg116_gpio.c|soc/zlg/drivers/source/i2c/am_zlg_i2c.c|soc/zlg/drivers/source/i2c/am_zlg_i2c_slv.c|soc/zlg/drivers/source/spi/am_zlg_spi_slv_dma.c|soc/zlg/drivers/source/spi/am_zlg_spi_poll.c|soc/zlg/drivers/source/spi/am_zlg_spi_int.c|soc/zlg/drivers/source/spi/am_zlg_spi_dma.c|soc/zlg/drivers/source/tim/am_zlg_tim_timing.c|soc/zlg/drivers/source/tim/am_zlg_tim_pwm.c|soc/zlg/drivers/source/tim/am_zlg_tim_cap.c|soc/zlg/drivers/source/uart/am_zlg_uart.c|soc/zlg/drivers/source/uart/hw/amhw_zlg_uart.c|soc/zlg/drivers/source/usbd|soc/zlg/drivers/source/sdio|soc/zlg/drivers/source/rtc|soc/zlg/drivers/source/pwr|soc/zlg/drivers/source/pca|soc/zlg/drivers/source/ili9341|soc/zlg/drivers/source/eth|soc/zlg/drivers/source/can|soc/zlg/drivers/source/bootloader|soc/zlg/drivers/source/wdt/am_zlg_wwdg.c|soc/zlg/drivers/source/wdt/am_zlg_iwdg.c|soc/zlg/zml166|soc/zlg/zmf159|soc/zlg/zlg217|soc/zlg/zlg116|soc/nxp|soc/freescale|soc/zlg/drivers/source/rcc/hw/amhw_zlg217_rcc.c|soc/zlg/drivers/source/rcc/hw/amhw_zlg116_rcc.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+						<entry excluding="hw/amhw_hc32_adc.h|am_hc32_adc.h" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="soc/hdsc/drivers/include/adc"/>
+						<entry excluding="am_hc32_adtim_timing.h|am_hc32_adtim_pwm.h|am_hc32_adtim_cap.h|hw/amhw_hc32_adtim.h" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="soc/hdsc/drivers/include/adtim"/>
+						<entry excluding="am_hc32_aes.h|hw/amhw_hc32_aes.h" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="soc/hdsc/drivers/include/aes"/>
+						<entry excluding="hw/amhw_hc32_crc.h|am_hc32_crc.h" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="soc/hdsc/drivers/include/crc"/>
+						<entry excluding="am_hc32_dma.h|hw/amhw_hc32_dma.h" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="soc/hdsc/drivers/include/dma"/>
+						<entry excluding="am_hc32_gpio.h|am_hc32_gpio_util.h|hw/amhw_hc32_gpio.h" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="soc/hdsc/drivers/include/gpio"/>
+						<entry excluding="am_hc32_i2c.h|am_hc32_i2c_slv.h|hw/amhw_hc32_i2c.h" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="soc/hdsc/drivers/include/i2c"/>
+						<entry excluding="am_hc32_rtc.h|hw/amhw_hc32_rtc.h" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="soc/hdsc/drivers/include/rtc"/>
+						<entry excluding="am_hc32_spi_poll.h|am_hc32_spi_int.h|am_hc32_spi_dma.h|hw/amhw_hc32_spi.h" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="soc/hdsc/drivers/include/spi"/>
+						<entry excluding="am_hc32_tim_timing.h|am_hc32_tim_pwm.h|am_hc32_tim_cap.h|hw/amhw_hc32_tim.h" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="soc/hdsc/drivers/include/tim"/>
+						<entry excluding="am_hc32_trng.h|hw/amhw_hc32_trng.h" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="soc/hdsc/drivers/include/trng"/>
+						<entry excluding="am_hc32_uart.h|hw/amhw_hc32_uart.h" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="soc/hdsc/drivers/include/uart"/>
+						<entry excluding="am_hc32_wdt.h|hw/amhw_hc32_wdt.h" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="soc/hdsc/drivers/include/wdt"/>
+						<entry excluding="am_hc32_adc.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="soc/hdsc/drivers/source/adc"/>
+						<entry excluding="hw/amhw_hc32_adtim.c|am_hc32_adtim_timing.c|am_hc32_adtim_pwm.c|am_hc32_adtim_cap.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="soc/hdsc/drivers/source/adtim"/>
+						<entry excluding="am_hc32_aes.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="soc/hdsc/drivers/source/aes"/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="soc/hdsc/drivers/source/can"/>
+						<entry excluding="am_hc32_clk.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="soc/hdsc/drivers/source/clk"/>
+						<entry excluding="am_hc32_crc.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="soc/hdsc/drivers/source/crc"/>
+						<entry excluding="am_hc32_dma.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="soc/hdsc/drivers/source/dma"/>
+						<entry excluding="am_hc32_flash.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="soc/hdsc/drivers/source/flash"/>
+						<entry excluding="hw/amhw_hc32_gpio.c|am_hc32_gpio.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="soc/hdsc/drivers/source/gpio"/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="soc/hdsc/drivers/source/hash"/>
+						<entry excluding="am_hc32_i2c.c|am_hc32_i2c_slv.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="soc/hdsc/drivers/source/i2c"/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="soc/hdsc/drivers/source/qspi"/>
+						<entry excluding="hw/amhw_hc32_rcc.c|hw/amhw_hc32_rcc_reset.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="soc/hdsc/drivers/source/rcc"/>
+						<entry excluding="am_hc32_rtc.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="soc/hdsc/drivers/source/rtc"/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="soc/hdsc/drivers/source/sdio"/>
+						<entry excluding="am_hc32_spi_poll.c|am_hc32_spi_int.c|am_hc32_spi_dma.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="soc/hdsc/drivers/source/spi"/>
+						<entry excluding="am_hc32_tim_timing.c|am_hc32_tim_pwm.c|am_hc32_tim_cap.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="soc/hdsc/drivers/source/tim"/>
+						<entry excluding="am_hc32_trng.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="soc/hdsc/drivers/source/trng"/>
+						<entry excluding="am_hc32x3x_uart.c|am_hc32_uart.c|hw/amhw_hc32_uart.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="soc/hdsc/drivers/source/uart"/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="soc/hdsc/drivers/source/wdt"/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="soc/hdsc/hc32f460"/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>

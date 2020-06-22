@@ -69,7 +69,7 @@ void demo_hc32f460_core_hw_cmp_entry (void)
     am_clk_enable(CLK_CMP);
     am_clk_enable(CLK_DAC);
 
-    demo_hc32f460_hw_cmp_entry(HC32F460_CMP2_BASE);
+    demo_hc32f460_hw_cmp_entry(HC32F460_CMP2);
 }
 /** [src_hc32f460_core_hw_i2c_slave_poll] */
 

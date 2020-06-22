@@ -236,7 +236,7 @@ int am_gpio_pin_cfg (int pin, uint32_t flags)
 
     /* 设置管脚的输出速率 */
     if ((flags & AM_HC32F460_GPIO_OUTRES_RATE) != 0) {
-        amhw_hc32f460_gpio_pin_driver_capability(p_hw_gpio, AM_HC32F460_GPIO_OUTRES_RATE_GET(flags), pin);
+        amhw_hc32f460_gpio_pin_driver_capability(p_hw_gpio,(amhw_hc32f460_gpio_speed_mode_t)(AM_HC32F460_GPIO_OUTRES_RATE_GET(flags)), pin);
     }
 
     /* 设置管脚的复用功能 */
@@ -333,9 +333,26 @@ int am_gpio_trigger_cfg (int pin, uint32_t flag)
     /* 设置管脚为输入方向 */
     amhw_hc32f460_gpio_pin_dir_input(p_hw_gpio, pin);
 
-    amhw_hc32f460_gpio_pin_out_high(p_hw_gpio, pin);
+    switch (flag) {
 
-    amhw_hc32f460_intc_pin_ext_int_trigger_cfg(pin_pos, flag);
+    case AM_GPIO_TRIGGER_OFF:
+        break;
+    case AM_GPIO_TRIGGER_LOW:
+        __gp_gpio_dev->int_type = AM_GPIO_TRIGGER_LOW;
+        break;
+    case AM_GPIO_TRIGGER_RISE:
+        __gp_gpio_dev->int_type = AM_GPIO_TRIGGER_RISE;
+        break;
+    case AM_GPIO_TRIGGER_FALL:
+        __gp_gpio_dev->int_type = AM_GPIO_TRIGGER_FALL;
+        break;
+    case AM_GPIO_TRIGGER_BOTH_EDGES:
+        __gp_gpio_dev->int_type = AM_GPIO_TRIGGER_BOTH_EDGES;
+        break;
+
+    default:
+        return -AM_ENOTSUP;
+    }
     return AM_OK;
 }
 
@@ -346,9 +363,57 @@ int am_gpio_trigger_on (int pin)
 {
     __GPIO_DEVINFO_DECL(p_gpio_devinfo, __gp_gpio_dev);
 
+    uint8_t               slot       = pin & 0x0f;
     amhw_hc32f460_gpio_t *p_hw_gpio = (amhw_hc32f460_gpio_t *)p_gpio_devinfo->gpio_regbase;
 
-    amhw_hc32f460_gpio_pin_ext_int_enable(p_hw_gpio, pin);
+    if (__gp_gpio_dev == NULL) {
+        return -AM_ENXIO;
+    }
+
+    if (slot > (p_gpio_devinfo->exti_num_max - 1)) {
+        return -AM_ENOSPC;
+    }
+
+    if (p_gpio_devinfo->p_infomap[slot] == pin) {
+
+        /* 使能引脚外部中断输入许可 */
+        amhw_hc32f460_gpio_pin_ext_int_enable(p_hw_gpio, pin);
+
+        switch (__gp_gpio_dev->int_type) {
+
+            case AM_GPIO_TRIGGER_OFF:
+            break;
+
+            case AM_GPIO_TRIGGER_LOW:
+                /* 配置为上拉 */
+                amhw_hc32f460_gpio_pin_out_high(p_hw_gpio, pin);
+                amhw_hc32f460_intc_pin_ext_int_trigger_cfg(slot, AMHW_HC32F460_INTC_PIN_EXT_INT_LOW);
+                break;
+
+            case AM_GPIO_TRIGGER_RISE:
+                /* 配置为下拉 */
+                amhw_hc32f460_gpio_pin_out_low(p_hw_gpio, pin);
+                /* rising  edge */
+                amhw_hc32f460_intc_pin_ext_int_trigger_cfg(slot, AMHW_HC32F460_INTC_PIN_EXT_INT_RISE);
+                break;
+
+            case AM_GPIO_TRIGGER_FALL:
+                /* 配置为上拉 */
+                amhw_hc32f460_gpio_pin_out_high(p_hw_gpio, pin);
+                /* falling  edge */
+                amhw_hc32f460_intc_pin_ext_int_trigger_cfg(slot, AMHW_HC32F460_INTC_PIN_EXT_INT_FALL);
+                break;
+            case AM_GPIO_TRIGGER_BOTH_EDGES:
+                /* 配置为上拉 */
+                amhw_hc32f460_gpio_pin_out_high(p_hw_gpio, pin);
+                /* both  edge */
+                amhw_hc32f460_intc_pin_ext_int_trigger_cfg(slot, AMHW_HC32F460_INTC_PIN_EXT_INT_BOTHEDGE);
+                break;
+        }
+    } else {
+        return -AM_ENXIO;
+    }
+
     return AM_OK;
 }
 

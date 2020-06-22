@@ -78,10 +78,10 @@ typedef struct am_hc32f460_adc_devinfo {
     uint32_t   vref;
 
     /** \brief 转换精度 */
-    uint8_t    bits_mode;
+    amhw_hc32f460_adc_resolution_t bits_mode;
 
     /** \brief ADC对应通道的引脚信息  */
-    am_hc32f460_adc_ioinfo_t *p_ioinfo;
+    am_hc32f460_adc_ioinfo_t      *p_ioinfo;
 
     /** \brief 平台初始化函数，如打开时钟，配置引脚等工作 */
     void     (*pfn_plfm_init)(void);

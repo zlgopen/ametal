@@ -34,6 +34,7 @@
 #include "hc32f460_irq_handle.h"
 #include "am_vdebug.h"
 #include "usbd_msc_bot.h"
+#include "string.h"
 
 
 #define USBFS_GLB       (1 << 19)
@@ -42,7 +43,7 @@ extern MSC_BOT_CBW_TypeDef MSC_BOT_cbw;
 extern uint8_t data_update_flag;
 
 /* Interrupt Handlers */
-extern uint32_t DCD_ReadDevInEP (USB_OTG_CORE_HANDLE *pdev, uint8_t epnum);
+//extern uint32_t DCD_ReadDevInEP (USB_OTG_CORE_HANDLE *pdev, uint8_t epnum);
 extern uint32_t DCD_HandleInEP_ISR(am_hc32f460_usbd_dev_t *p_dev, USB_OTG_CORE_HANDLE *pdev);
 extern uint32_t DCD_HandleOutEP_ISR(am_hc32f460_usbd_dev_t *p_dev, USB_OTG_CORE_HANDLE *pdev);
 extern uint32_t DCD_HandleSof_ISR(USB_OTG_CORE_HANDLE *pdev);
@@ -306,7 +307,7 @@ static uint8_t __usb_device_recv(am_usbd_handle_t handle,
     uint8_t endpoint = endpoint_address & AM_USBD_ENDPOINT_NUMBER_MASK;
     uint8_t *p_cbw = NULL;
 
-    DCD_EP_PrepareRx(pdev, endpoint_address, &MSC_BOT_cbw, length);
+    DCD_EP_PrepareRx(pdev, endpoint_address, (uint8_t *)&MSC_BOT_cbw, length);
 
     while (0 == data_update_flag)
         ;
@@ -343,9 +344,9 @@ static am_usb_status_t __usb_device_cancel(am_usbd_handle_t handle,
  *
  * \note 默认状态为使能所有中断并使能所有端点，将设备地址置0
  */
-static void __usb_device_setdefault_state(am_hc32f460_usbd_dev_t *p_dev)
-{
-}
+//static void __usb_device_setdefault_state(am_hc32f460_usbd_dev_t *p_dev)
+//{
+//}
 
 /**
  * \brief USB控制函数，用于设置USB为指定的状态
@@ -391,21 +392,21 @@ static am_usb_status_t __usb_device_control(am_usbd_handle_t handle,
     case AM_USBD_CONTROL_ENDPOINT_DEINIT: /* 对某个端点去初始化 */
         if (param) {
             temp8 = (uint8_t *) param;
-            error = __usb_device_endpoint_deinit(p_dev, *temp8);
+            error = __usb_device_endpoint_deinit((USB_OTG_CORE_HANDLE *)p_dev, *temp8);
         }
         break;
 
     case AM_USBD_CONTROL_ENDPOINT_STALL: /* 控制端点阻塞 */
         if (param) {
             temp8 = (uint8_t *) param;
-            error = __usb_device_endpoint_stall(p_dev, *temp8);
+            error = __usb_device_endpoint_stall((USB_OTG_CORE_HANDLE *)p_dev, *temp8);
         }
         break;
 
     case AM_USBD_CONTROL_ENDPOINT_UNSTALL: /* 控制端点不阻塞 */
         if (param) {
             temp8 = (uint8_t *) param;
-            error = __usb_device_endpoint_unstall(p_dev, *temp8);
+            error = __usb_device_endpoint_unstall((USB_OTG_CORE_HANDLE *)p_dev, *temp8);
         }
         break;
 
@@ -491,12 +492,14 @@ static void __usbd_isr_function(void *p_device)
 
     USB_OTG_CORE_HANDLE *pdev = &USB_OTG_dev;
 
+    uint32_t addr = (uint32_t)&ReadCoreItrTemp;
+
     if (USB_OTG_IsDeviceMode(pdev)) /* ensure that we are in device mode */
     {
         ReadCoreItrTemp = USB_OTG_ReadCoreItr(pdev);
-        gintr_status.b = *(stc_bUSB_OTG_GINTSTS_t*) &ReadCoreItrTemp;
+        gintr_status.b = *(stc_bUSB_OTG_GINTSTS_t*) addr;
         /* avoid spurious interrupt */
-        if (!*(uint32_t*) &gintr_status.b) {
+        if (!*(uint32_t*) addr) {
             retval = 0ul;
         }
         /* Out endpoint interrupt */

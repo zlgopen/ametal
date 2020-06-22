@@ -30,7 +30,29 @@ extern "C" {
 #include "am_types.h"
 #include "am_bitops.h"
 
+/**
+ * \brief 使用匿名联合体段开始
+ * @{
+ */
 
+#if defined(__CC_ARM)
+  #pragma push
+  #pragma anon_unions
+#elif defined(__ICCARM__)
+  #pragma language=extended
+#elif defined(__GNUC__)
+
+  /* 默认使能匿名联合体 */
+#elif defined(__TMS470__)
+
+  /* 默认使能匿名联合体 */
+#elif defined(__TASKING__)
+  #pragma warning 586
+#else
+  #warning Not supported compiler t
+#endif
+
+/** @} */
 /**
  *******************************************************************************
  ** \brief Timer4 counter mode enumeration
@@ -859,7 +881,7 @@ amhw_hc32f460_tim4_clkdiv_t
     amhw_hc32f460_tim4_mode_clkdiv_get (amhw_hc32f460_tim4_t *p_hw_tim, uint8_t chan)
 {
     amhw_hc32f460_tim4_clkdiv_t clkdiv;
-    clkdiv = p_hw_tim->CCSR_f.CKDIV;
+    clkdiv = (amhw_hc32f460_tim4_clkdiv_t)p_hw_tim->CCSR_f.CKDIV;
     return clkdiv;
 }
 
@@ -1294,6 +1316,29 @@ am_bool_t  amhw_hc32f460_tim4_oco_set_l_ch_cmp_mode(amhw_hc32f460_tim4_t *p_hw_t
 
     return enRet;
 }
+
+/**
+ * \brief 使用匿名联合体段结束
+ * @{
+ */
+
+#if defined(__CC_ARM)
+  #pragma pop
+#elif defined(__ICCARM__)
+
+  /* 允许匿名联合体使能 */
+#elif defined(__GNUC__)
+
+  /* 默认使用匿名联合体 */
+#elif defined(__TMS470__)
+
+  /* 默认使用匿名联合体 */
+#elif defined(__TASKING__)
+  #pragma warning restore
+#else
+  #warning Not supported compiler t
+#endif
+/** @} */
 
 /**
  * @}

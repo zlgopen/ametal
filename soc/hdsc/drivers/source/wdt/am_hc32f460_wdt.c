@@ -21,6 +21,7 @@
 
 #include "ametal.h"
 #include "am_clk.h"
+#include "am_int.h"
 #include "am_hc32f460_wdt.h"
 #include "hc32f460_intctrl.h"
 #include "hc32f460_inum.h"
@@ -147,8 +148,6 @@ static int __wdt_enable (void *p_drv, uint32_t timeout_ms)
     }
 
     uint8_t i ,j = 0;
-    uint32_t clk_div = 0;
-    uint32_t preiod_count = 0;
     float temp_time = 0;
     float err_currunt = 0; /* 当前误差 */
     float err_min = 0;     /* 最小误差 */
@@ -158,7 +157,6 @@ static int __wdt_enable (void *p_drv, uint32_t timeout_ms)
     uint8_t temp_period_regval = 0;
     uint8_t clk_div_regval = 0;
     uint8_t period_regval = 0;
-    float time_true = 0;
     uint32_t reg_cr_val = 0;
 
     for (i = 0; i < 8; i++) {
@@ -191,13 +189,11 @@ static int __wdt_enable (void *p_drv, uint32_t timeout_ms)
                 err_min = err_currunt;
                 clk_div_regval = temp_clk_div_regval;
                 period_regval = temp_period_regval;
-                time_true = temp_time;
             } else {
                if (err_currunt < err_min) {
                    err_min = err_currunt;
                    clk_div_regval = temp_clk_div_regval;
                    period_regval = temp_period_regval;
-                   time_true = temp_time;
                }
             }
         }

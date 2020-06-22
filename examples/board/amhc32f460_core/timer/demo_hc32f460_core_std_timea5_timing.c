@@ -12,7 +12,7 @@
 
 /**
  * \file
- * \brief TIM0 定时器 TIMING 例程，通过标准接口实现
+ * \brief TIMA5 定时器 TIMING 例程，通过标准接口实现
  *
  * - 实验现象：
  *   1. LED0 以 5Hz 的频率闪烁。(计数周期是10Hz，led翻转周期为10/2=5Hz)

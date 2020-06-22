@@ -27,7 +27,7 @@
 extern "C" {
 #endif
 
-#include "qspi/hw/amhw_hc32f460_qspi.h"
+#include "hw/amhw_hc32f460_qspi.h"
 
 /**
  * \brief hc32f460 qspi 设备信息
@@ -140,8 +140,8 @@ int am_hc32f460_qspi_directcom_write (am_hc32f460_qspi_dev_t *p_dev,
  *
  * \retval : qspi标准服务操作句柄
  */
-am_qspi_handle_t am_hc32f460_qspi_init (am_hc32f460_qspi_dev_t      *p_dev,
-                                        am_hc32f460_qspi_devinfo_t  *p_devinfo);
+am_qspi_handle_t am_hc32f460_qspi_init (am_hc32f460_qspi_dev_t            *p_dev,
+                                        const am_hc32f460_qspi_devinfo_t  *p_devinfo);
 
 /**
  * \brief QSPI 设备解初始化

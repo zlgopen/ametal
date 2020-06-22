@@ -40,7 +40,7 @@
 #include "am_hc32f460_hash.h"
 #include "demo_hc32f460_entries.h"
 
-static char *data_src = "abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789\
+static char data_src[] = "abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789\
 01234567890123456789012345678901234567890123456789";
 static uint8_t hash_digest[32];
 
@@ -55,7 +55,7 @@ void demo_hc32f460_drv_hash_generate_entry (am_hash_handle_t handle)
 
     if (am_hc32f460_hash_compute(handle,
                                  (uint8_t *)data_src,
-                                 strlen((char *)data_src),
+                                 sizeof(data_src),
                                  hash_digest) == AM_OK) {
 
         AM_DBG_INFO("compute success! the message digest is : \r\n");

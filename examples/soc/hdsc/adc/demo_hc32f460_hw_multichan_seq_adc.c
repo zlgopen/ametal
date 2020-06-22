@@ -69,7 +69,7 @@ static void __adc_isr (void *p_arg)
 
         for(i = 0; i < __adc_chan_num; i++) {
 
-            __g_adc_dat[__g_scan_counter][i] = amhw_hc32f460_adc_ch_data_get(p_hw_adc, __adc_chmux[i].chan, 12, AMHW_HC32F460_ADC_DATA_ALIGN_FORMAT_RIGHT);
+            __g_adc_dat[__g_scan_counter][i] = amhw_hc32f460_adc_ch_data_get(p_hw_adc, __adc_chmux[i].chan, AMHW_HC32F460_ADC_RESOLUTION_12BIT, AMHW_HC32F460_ADC_DATA_ALIGN_FORMAT_RIGHT);
         }
      }
 
@@ -128,8 +128,8 @@ void demo_hc32f460_hw_multichan_seq_adc_entry (void             *p_hw_adc,
     }
     /* 链接ADC顺序扫描转换通道和引脚 */
     for(i = 0; i < chan_num; i++) {
-    	__adc_chmux[i].chan = p_adc_chan[i].chan;
-    	__adc_chmux[i].type =  p_adc_chan[i].type;
+        __adc_chmux[i].chan = p_adc_chan[i].chan;
+        __adc_chmux[i].type =  p_adc_chan[i].type;
         amhw_hc32f460_adc_channel_mux_set(p_adc, p_adc_chan[i].chan,p_adc_chan[i].type);
         amhw_hc32f460_adc_seq_a_channel_sel0(p_adc, p_adc_chan[i].chan);
     }

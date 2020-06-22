@@ -46,6 +46,7 @@ int am_main (void)
 //    demo_hc32f460_core_std_gpio_entry();
 //    demo_hc32f460_core_std_gpio_trigger_entry();
 //    demo_hc32f460_core_hw_gpio_entry();
+//    demo_hc32f460_core_hw_clk_entry();
 //    demo_hc32f460_core_hw_uart_tx_dma_entry();
 //    demo_hc32f460_core_hw_uart_rx_dma_entry();
 //    demo_hc32f460_core_hw_uart_polling_entry();
@@ -109,7 +110,7 @@ int am_main (void)
 //    demo_hc32f460_core_hw_adc_dma_entry();
 //    demo_hc32f460_core_hw_multichan_seq_adc_entry();
 //    demo_hc32f460_core_hw_adc_seq_a_event_trigger_entry();
-//    demo_hc32f460_core_hw_adc_seq_b_event_trigger_entry();
+//    demo_hc32f460_core_hw_adc_seq_a_b_event_trigger_entry();
 //    demo_hc32f460_core_hw_adc_pga_entry();
 //    demo_hc32f460_core_hw_adc_awd_entry();
 //    demo_hc32f460_core_hw_adc_sync_entry();
@@ -128,6 +129,8 @@ int am_main (void)
 //    demo_hc32f460_core_hw_dcu_entry();
 //    demo_hc32f460_core_hw_cmp_entry();
 //    demo_hc32f460_usbd_msc_entry();
+//    demo_hc32f460_core_drv_flash_entry();
+//    demo_hc32f460_core_std_crc_entry();    
     while (1) {
 
     }

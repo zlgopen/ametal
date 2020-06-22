@@ -113,6 +113,8 @@ am_usbd_dev_t *am_hc32f460_usbd_init (am_hc32f460_usbd_dev_t           *p_dev,
 
 void am_hc32f460_usbd_deinit (const am_hc32f460_usbd_devinfo_t *p_info);
 
+void UsbGlobal_IrqHandler(void *p_arg);
+
 /**
  * @} mm32_if_usbd
  */

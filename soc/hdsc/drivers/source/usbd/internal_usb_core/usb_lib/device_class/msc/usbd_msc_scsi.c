@@ -51,6 +51,7 @@
 /*******************************************************************************
  * Include files
  ******************************************************************************/
+#include "ametal.h"
 #include "usbd_msc_bot.h"
 #include "usbd_msc_scsi.h"
 #include "usbd_msc_mem.h"
@@ -261,9 +262,9 @@ static int8_t SCSI_ReadCapacity10(uint8_t lun, uint8_t *params)
     }else
     {
 
-        MSC_BOT_Data[0] = (uint8_t)(SCSI_blk_nbr - 1u >> 24u);
-        MSC_BOT_Data[1] = (uint8_t)(SCSI_blk_nbr - 1u >> 16u);
-        MSC_BOT_Data[2] = (uint8_t)(SCSI_blk_nbr - 1u >> 8u);
+        MSC_BOT_Data[0] = (uint8_t)((SCSI_blk_nbr - 1u) >> 24u);
+        MSC_BOT_Data[1] = (uint8_t)((SCSI_blk_nbr - 1u) >> 16u);
+        MSC_BOT_Data[2] = (uint8_t)((SCSI_blk_nbr - 1u) >> 8u);
         MSC_BOT_Data[3] = (uint8_t)(SCSI_blk_nbr - 1u);
 
         MSC_BOT_Data[4] = (uint8_t)(SCSI_blk_size >> 24u);
@@ -304,9 +305,9 @@ static int8_t SCSI_ReadFormatCapacity(uint8_t lun, uint8_t *params)
     }else
     {
         MSC_BOT_Data[3]  = 0x08u;
-        MSC_BOT_Data[4]  = (uint8_t)(blk_nbr - 1u >> 24u);
-        MSC_BOT_Data[5]  = (uint8_t)(blk_nbr - 1u >> 16u);
-        MSC_BOT_Data[6]  = (uint8_t)(blk_nbr - 1u >> 8u);
+        MSC_BOT_Data[4]  = (uint8_t)((blk_nbr - 1u) >> 24u);
+        MSC_BOT_Data[5]  = (uint8_t)((blk_nbr - 1u) >> 16u);
+        MSC_BOT_Data[6]  = (uint8_t)((blk_nbr - 1u) >> 8u);
         MSC_BOT_Data[7]  = (uint8_t)(blk_nbr - 1u);
 
         MSC_BOT_Data[8]  = 0x02u;
@@ -574,7 +575,7 @@ static int8_t SCSI_Write10(uint8_t lun, uint8_t *params)
                         DCD_EP_PrepareRx(cdev,
                                          MSC_OUT_EP,
                                          MSC_BOT_Data,
-                                         (uint16_t)MIN(SCSI_blk_len, MSC_MEDIA_PACKET));
+                                         (uint16_t)min(SCSI_blk_len, MSC_MEDIA_PACKET));
                     }
                 }
             }
@@ -643,7 +644,7 @@ static int8_t SCSI_ProcessRead(uint8_t lun)
     uint32_t len;
     int8_t i8Ret = (int8_t)0;
 
-    len = MIN(SCSI_blk_len, MSC_MEDIA_PACKET);
+    len = min(SCSI_blk_len, MSC_MEDIA_PACKET);
 
     if(0u == SCSI_blk_size)    /* C-STAT */
     {
@@ -691,7 +692,7 @@ static int8_t SCSI_ProcessWrite(uint8_t lun)
     uint32_t len;
     int8_t i8Ret = (int8_t)0;
 
-    len = MIN(SCSI_blk_len, MSC_MEDIA_PACKET);
+    len = min(SCSI_blk_len, MSC_MEDIA_PACKET);
 
     if(0u == SCSI_blk_size)/* C-STAT */
     {
@@ -722,7 +723,7 @@ static int8_t SCSI_ProcessWrite(uint8_t lun)
             DCD_EP_PrepareRx(cdev,
                              MSC_OUT_EP,
                              MSC_BOT_Data,
-                             (uint16_t)MIN(SCSI_blk_len, MSC_MEDIA_PACKET));
+                             (uint16_t)min(SCSI_blk_len, MSC_MEDIA_PACKET));
         }
     }
     return i8Ret;

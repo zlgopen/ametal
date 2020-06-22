@@ -53,7 +53,7 @@ typedef struct am_hc32f460_clk_devinfo {
     uint32_t xtl_osc;
 
     /**
-     * \brief RCH内部高速时钟晶振频率（Hz）
+     * \brief HRC内部高速时钟晶振频率（Hz）
      *
      * \note 频率选择    24M、 22.12M、16M、 8M或4M
      *       设置其他频率，将默认使用4M

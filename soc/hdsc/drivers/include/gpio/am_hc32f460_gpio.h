@@ -95,6 +95,9 @@ typedef struct am_hc32f460_gpio_dev {
     /** \brief 参数有效标志 */
     am_bool_t                         valid_flg;
 
+    /** \brief 引脚触发中断类别 */
+    uint8_t                         int_type;
+
 } am_hc32f460_gpio_dev_t;
 
 /**

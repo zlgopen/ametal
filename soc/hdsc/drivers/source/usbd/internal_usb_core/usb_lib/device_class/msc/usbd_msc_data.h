@@ -56,7 +56,7 @@
  ******************************************************************************/
 //#include "hc32_ddl.h"
 #include "usbd_conf.h"
-#include "stdint-gcc.h"
+#include "stdint.h"
 
 /*******************************************************************************
  * Global type definitions ('typedef')

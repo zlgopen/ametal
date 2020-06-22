@@ -12,7 +12,7 @@
 
 /**
  * \file
- * \brief CAN hardware operation interface
+ * \brief CMP hardware operation interface
  *
  * -note:在对同一寄存器进行读写时其所对应的功能不同
  *
@@ -38,6 +38,31 @@ extern "C" {
  * \copydoc amhw_hc32f460_cmp.h
  * @{
  */
+
+/**
+ * \brief 使用匿名联合体段开始
+ * @{
+ */
+
+#if defined(__CC_ARM)
+  #pragma push
+  #pragma anon_unions
+#elif defined(__ICCARM__)
+  #pragma language=extended
+#elif defined(__GNUC__)
+
+/* 默认使能匿名联合体 */
+#elif defined(__TMS470__)
+
+/* 默认使能匿名联合体 */
+#elif defined(__TASKING__)
+  #pragma warning 586
+#else
+  #warning Not supported compiler t
+#endif
+
+/** @} */
+
 typedef struct
 {
     __IO uint16_t FLTSL                     : 3;
@@ -275,7 +300,7 @@ typedef struct stc_cmp_input_sel
     en_cmp_inp4_sel_t enInp4Sel;                ///< CMP INP4 sel
 } stc_cmp_input_sel_t;
 
-
+am_static_inline
 am_bool_t CMP_DAC_Init(amhw_hc32f460_cmp_cr_t *p_hw_cmp_cr, en_cmp_dac_ch_t enCh,
                             const stc_cmp_dac_init_t *pstcInitCfg)
 {
@@ -305,6 +330,7 @@ am_bool_t CMP_DAC_Init(amhw_hc32f460_cmp_cr_t *p_hw_cmp_cr, en_cmp_dac_ch_t enCh
     return enRet;
 }
 
+am_static_inline
 am_bool_t CMP_Init(amhw_hc32f460_cmp_t *p_hw_cmp, const stc_cmp_init_t *pstcInitCfg)
 {
     am_bool_t enRet = AM_FALSE;
@@ -330,6 +356,7 @@ am_bool_t CMP_Init(amhw_hc32f460_cmp_t *p_hw_cmp, const stc_cmp_init_t *pstcInit
     return enRet;
 }
 
+am_static_inline
 am_bool_t CMP_InputSel(amhw_hc32f460_cmp_t *p_hw_cmp,
                             const stc_cmp_input_sel_t *pstcInputSel)
 {
@@ -369,6 +396,7 @@ am_bool_t CMP_InputSel(amhw_hc32f460_cmp_t *p_hw_cmp,
     return enRet;
 }
 
+am_static_inline
 am_bool_t CMP_Cmd(amhw_hc32f460_cmp_t *p_hw_cmp, en_cmp_functional_state_t enCmd)
 {
     am_bool_t enRet = AM_FALSE;
@@ -383,8 +411,32 @@ am_bool_t CMP_Cmd(amhw_hc32f460_cmp_t *p_hw_cmp, en_cmp_functional_state_t enCmd
     return enRet;
 }
 
+
 /**
- * @} amhw_hc32f460_if_can
+ * \brief 使用匿名联合体段结束
+ * @{
+ */
+
+#if defined(__CC_ARM)
+  #pragma pop
+#elif defined(__ICCARM__)
+
+/* 允许匿名联合体使能 */
+#elif defined(__GNUC__)
+
+/* 默认使用匿名联合体 */
+#elif defined(__TMS470__)
+
+/* 默认使用匿名联合体 */
+#elif defined(__TASKING__)
+  #pragma warning restore
+#else
+  #warning Not supported compiler t
+#endif
+/** @} */
+
+/**
+ * @} amhw_hc32f460_if_cmp
  */
 
 #ifdef __cplusplus

@@ -98,7 +98,7 @@ void demo_hc32f460_hw_cmp_entry (amhw_hc32f460_cmp_t *p_hw_cmp)
     /* Registration IRQ : CMP */        
     stc_int_sel = (stc_intc_sel_field_t *)((uint32_t)(0x40051000UL + 0x5c) + (4u * 2));
     stc_int_sel->INTSEL = INT_ACMP2;
-    am_int_connect(2, cmp_callback_function, NULL);
+    am_int_connect(2, (am_pfnvoid_t)cmp_callback_function, NULL);
     am_int_enable(2);
 
     /* Enable CMP */

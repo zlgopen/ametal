@@ -214,13 +214,13 @@ void amhw_hc32f460_intc_int_vssel_bit_clr (int inum, int bit)
 }
 
 am_static_inline
-void amhw_hc32f460_intc_int_vssel_bits_set (int inum, int mask)
+void amhw_hc32f460_intc_int_vssel_bits_set (int inum, uint32_t mask)
 {
     HC32F460_INTC.VSSEL[inum - 128] |= mask;
 }
 
 am_static_inline
-void amhw_hc32f460_intc_int_vssel_bits_clr (int inum, int mask)
+void amhw_hc32f460_intc_int_vssel_bits_clr (int inum, uint32_t mask)
 {
     HC32F460_INTC.VSSEL[inum - 128] &= ~mask;
 }

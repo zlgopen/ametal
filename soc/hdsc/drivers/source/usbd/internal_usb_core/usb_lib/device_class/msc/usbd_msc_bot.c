@@ -54,6 +54,7 @@
 /*******************************************************************************
  * Include files
  ******************************************************************************/
+#include "ametal.h"
 #include "usbd_msc_bot.h"
 #include "usbd_msc_scsi.h"
 #include "usbd_ioreq.h"
@@ -299,7 +300,7 @@ static void  MSC_BOT_SendData(USB_OTG_CORE_HANDLE  *pdev,
                               uint16_t len)
 {
 
-    len                       = (uint16_t)MIN(MSC_BOT_cbw.dDataLength, len);
+    len                       = (uint16_t)min(MSC_BOT_cbw.dDataLength, len);
     MSC_BOT_csw.dDataResidue -= len;
     MSC_BOT_csw.bStatus       = CSW_CMD_PASSED;
     MSC_BOT_State             = BOT_SEND_DATA;

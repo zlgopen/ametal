@@ -36,6 +36,31 @@ extern "C" {
  * \copydoc amhw_hc32f460_adtim.h
  * @{
  */
+
+/**
+ * \brief 使用匿名联合体段开始
+ * @{
+ */
+
+#if defined(__CC_ARM)
+  #pragma push
+  #pragma anon_unions
+#elif defined(__ICCARM__)
+  #pragma language=extended
+#elif defined(__GNUC__)
+
+/* 默认使能匿名联合体 */
+#elif defined(__TMS470__)
+
+/* 默认使能匿名联合体 */
+#elif defined(__TASKING__)
+  #pragma warning 586
+#else
+  #warning Not supported compiler t
+#endif
+
+/** @} */
+
 typedef struct
 {
     __IO uint32_t CNT                       :16;
@@ -1984,8 +2009,8 @@ typedef enum adtim_period_x
  */
 am_static_inline
 am_bool_t amhw_hc32f460_adtim_setperiod(amhw_hc32f460_adtim_t *p_hw_adtim,
-                                      adtim_period_x_t     pri,
-                                      uint16_t             data) {
+                                        adtim_period_x_t       pri,
+                                        uint16_t               data) {
     switch (pri)
     {
         case ADTIM_PERIODA:
@@ -2420,6 +2445,30 @@ am_bool_t amhw_hc32f460_adtim_cfgzmask(amhw_hc32f460_adtim_t           *p_hw_adt
 
     return AM_TRUE;
 }
+
+/**
+ * \brief 使用匿名联合体段结束
+ * @{
+ */
+
+#if defined(__CC_ARM)
+  #pragma pop
+#elif defined(__ICCARM__)
+
+/* 允许匿名联合体使能 */
+#elif defined(__GNUC__)
+
+/* 默认使用匿名联合体 */
+#elif defined(__TMS470__)
+
+/* 默认使用匿名联合体 */
+#elif defined(__TASKING__)
+  #pragma warning restore
+#else
+  #warning Not supported compiler t
+#endif
+/** @} */
+
 
 /**
  * @}

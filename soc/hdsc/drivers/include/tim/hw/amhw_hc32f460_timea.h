@@ -41,6 +41,21 @@ extern "C" {
 #define TMRA_UDF   (1 << 1)
 #define TMRA_CMP   (1 << 2)
  
+ #if defined(__CC_ARM)
+    #pragma push
+    #pragma anon_unions
+#elif defined(__ICCARM__)
+    #pragma language=extended
+#elif defined(__GNUC__)
+#elif defined(__TMS470__)
+#elif defined(__TASKING__)
+    #pragma warning 586
+#else
+    #warning Not supported compiler t
+#endif
+ 
+ 
+ 
 /**
  * \brief 定时器类型
  */
@@ -730,7 +745,7 @@ amhw_hc32f460_timea_clkdiv_t
     amhw_hc32f460_timea_mode_clkdiv_get (amhw_hc32f460_timea_t *p_hw_tim, uint8_t chan)
 {
     amhw_hc32f460_timea_clkdiv_t clkdiv;
-    clkdiv = p_hw_tim->BCSTR_f.CKDIV;
+    clkdiv = (amhw_hc32f460_timea_clkdiv_t)p_hw_tim->BCSTR_f.CKDIV;
     return clkdiv;
 }
 
@@ -744,8 +759,8 @@ amhw_hc32f460_timea_clkdiv_t
  */
 am_static_inline
 void amhw_hc32f460_timea_mode_clkdiv_set (amhw_hc32f460_timea_t       *p_hw_tim,
-                                      uint8_t  chan, 
-                                      amhw_hc32f460_timea_clkdiv_t clkdiv)
+                                          uint8_t                      chan, 
+                                          amhw_hc32f460_timea_clkdiv_t clkdiv)
 {
     p_hw_tim->BCSTR_f.CKDIV = clkdiv;
 }
@@ -1092,6 +1107,19 @@ am_bool_t  amhw_hc32f460_timea_compare_cache_cmd(amhw_hc32f460_timea_t *p_hw_tim
 /**
  * @}
  */
+
+
+/* 使用无名结构体和联合体区域的结束 */
+#if defined(__CC_ARM)
+    #pragma pop
+#elif defined(__ICCARM__)
+#elif defined(__GNUC__)
+#elif defined(__TMS470__)
+#elif defined(__TASKING__)
+    #pragma warning restore
+#else
+    #warning Not supported compiler t
+#endif
 
 #ifdef __cplusplus
 }

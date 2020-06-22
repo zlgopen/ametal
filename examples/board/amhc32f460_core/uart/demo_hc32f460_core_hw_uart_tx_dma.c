@@ -69,7 +69,7 @@ void demo_hc32f460_core_hw_uart_tx_dma_entry (void)
     /* 等待发送数据完成 */
     am_mdelay(100);
 
-    demo_hc32f460_hw_uart_tx_dma_entry((void *)HC32F460_UART4_BASE,
+    demo_hc32f460_hw_uart_tx_dma_entry(HC32F460_UART4,
                                        am_clk_rate_get(CLK_USART4),
                                        &__g_dma1_dev,
                                        DMA_CHAN_2);

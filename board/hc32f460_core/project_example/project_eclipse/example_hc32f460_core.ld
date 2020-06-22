@@ -38,7 +38,7 @@
  * In this linker script there is no heap available.
  * The stack start at the end of the ram segment.
  */
-STACK_SIZE = 0x800;             /*  stack size config   1K       */
+STACK_SIZE = 0x800;             /*  stack size config   2K       */
 
 /*
  * Take a look in the "The GNU linker" manual, here you get

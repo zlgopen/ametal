@@ -36,6 +36,7 @@
 #include "ametal.h"
 #include "am_delay.h"
 #include "am_vdebug.h"
+#include "am_clk.h"
 #include "am_hc32f460_dma.h"
 #include "hw/amhw_hc32f460_dma.h"
 #include "hc32f460_intctrl.h"
@@ -92,112 +93,112 @@ static int dma_m2m_chain_test (am_hc32f460_dma_dev_t *p_dev, uint8_t dma_chan)
 
     /* DMA 传输配置 */
     flags1 = AMHW_HC32F460_DMA_CHAN_CFG_INT_DISABLE           |  /* 通道中断禁能 */
-    		 AMHW_HC32F460_DMA_CHAN_CFG_SIZE_8BIT             |  /* 数据宽度 1 字节 */
-			 AMHW_HC32F460_DMA_CHAN_CFG_LLPRUN_ENABLE         |  /* 连锁传输模式下，新描述符载入后，立即开始传输 */
-			 AMHW_HC32F460_DMA_CHAN_CFG_LLP_ENABLE            |  /* 连锁传输使能 */
-			 AMHW_HC32F460_DMA_CHAN_CFG_DSTADD_NOTSEQ_DISABLE |  /* 目标地址不连续传输禁能 */
-			 AMHW_HC32F460_DMA_CHAN_CFG_SRCADD_NOTSEQ_DISABLE |  /* 源地址不连续传输禁能 */
-			 AMHW_HC32F460_DMA_CHAN_CFG_DST_DRPT_DISABLE      |  /* 目标重复传输禁能 */
-			 AMHW_HC32F460_DMA_CHAN_CFG_SRC_DRPT_DISABLE      |  /* 源重复传输禁能 */
-			 AMHW_HC32F460_DMA_CHAN_DST_ADD_INCREASING        |  /* 目标地址自增 */
-			 AMHW_HC32F460_DMA_CHAN_SRC_ADD_INCREASING;          /* 源地址自增 */
+             AMHW_HC32F460_DMA_CHAN_CFG_SIZE_8BIT             |  /* 数据宽度 1 字节 */
+             AMHW_HC32F460_DMA_CHAN_CFG_LLPRUN_ENABLE         |  /* 连锁传输模式下，新描述符载入后，立即开始传输 */
+             AMHW_HC32F460_DMA_CHAN_CFG_LLP_ENABLE            |  /* 连锁传输使能 */
+             AMHW_HC32F460_DMA_CHAN_CFG_DSTADD_NOTSEQ_DISABLE |  /* 目标地址不连续传输禁能 */
+             AMHW_HC32F460_DMA_CHAN_CFG_SRCADD_NOTSEQ_DISABLE |  /* 源地址不连续传输禁能 */
+             AMHW_HC32F460_DMA_CHAN_CFG_DST_DRPT_DISABLE      |  /* 目标重复传输禁能 */
+             AMHW_HC32F460_DMA_CHAN_CFG_SRC_DRPT_DISABLE      |  /* 源重复传输禁能 */
+             AMHW_HC32F460_DMA_CHAN_DST_ADD_INCREASING        |  /* 目标地址自增 */
+             AMHW_HC32F460_DMA_CHAN_SRC_ADD_INCREASING;          /* 源地址自增 */
 
 
 
     /* 建立第一个描述符 */
     am_hc32f460_dma_chain_xfer_desc_build(&g_desc1,
-    		                              &g_buf_src1,
-										  &g_buf_dst1,
-										  1,
-										  32,
-										  0,
-										  0,
-										  0,
-										  0,
-										  0,
-										  0,
-										  &g_desc2,
-										  flags1);
+                                          (uint32_t)&g_buf_src1,
+                                          (uint32_t)&g_buf_dst1,
+                                          1,
+                                          32,
+                                          0,
+                                          0,
+                                          0,
+                                          0,
+                                          0,
+                                          0,
+                                          (uint32_t)&g_desc2,
+                                          flags1);
 
     /* DMA 传输配置 */
     flags2 = AMHW_HC32F460_DMA_CHAN_CFG_INT_DISABLE           |  /* 通道中断禁能 */
-    		 AMHW_HC32F460_DMA_CHAN_CFG_SIZE_8BIT             |  /* 数据宽度 1 字节 */
-			 AMHW_HC32F460_DMA_CHAN_CFG_LLPRUN_ENABLE         |  /* 连锁传输模式下，新描述符载入后，立即开始传输 */
-			 AMHW_HC32F460_DMA_CHAN_CFG_LLP_ENABLE            |  /* 连锁传输使能 */
-			 AMHW_HC32F460_DMA_CHAN_CFG_DSTADD_NOTSEQ_DISABLE |  /* 目标地址不连续传输禁能 */
-			 AMHW_HC32F460_DMA_CHAN_CFG_SRCADD_NOTSEQ_DISABLE |  /* 源地址不连续传输禁能 */
-			 AMHW_HC32F460_DMA_CHAN_CFG_DST_DRPT_DISABLE      |  /* 目标重复传输禁能 */
-			 AMHW_HC32F460_DMA_CHAN_CFG_SRC_DRPT_DISABLE      |  /* 源重复传输禁能 */
-			 AMHW_HC32F460_DMA_CHAN_DST_ADD_INCREASING        |  /* 目标地址自增 */
-			 AMHW_HC32F460_DMA_CHAN_SRC_ADD_INCREASING;          /* 源地址自增 */
+             AMHW_HC32F460_DMA_CHAN_CFG_SIZE_8BIT             |  /* 数据宽度 1 字节 */
+             AMHW_HC32F460_DMA_CHAN_CFG_LLPRUN_ENABLE         |  /* 连锁传输模式下，新描述符载入后，立即开始传输 */
+             AMHW_HC32F460_DMA_CHAN_CFG_LLP_ENABLE            |  /* 连锁传输使能 */
+             AMHW_HC32F460_DMA_CHAN_CFG_DSTADD_NOTSEQ_DISABLE |  /* 目标地址不连续传输禁能 */
+             AMHW_HC32F460_DMA_CHAN_CFG_SRCADD_NOTSEQ_DISABLE |  /* 源地址不连续传输禁能 */
+             AMHW_HC32F460_DMA_CHAN_CFG_DST_DRPT_DISABLE      |  /* 目标重复传输禁能 */
+             AMHW_HC32F460_DMA_CHAN_CFG_SRC_DRPT_DISABLE      |  /* 源重复传输禁能 */
+             AMHW_HC32F460_DMA_CHAN_DST_ADD_INCREASING        |  /* 目标地址自增 */
+             AMHW_HC32F460_DMA_CHAN_SRC_ADD_INCREASING;          /* 源地址自增 */
 
 
 
     /* 建立第二个描述符 */
     am_hc32f460_dma_chain_xfer_desc_build(&g_desc2,
-    		                              &g_buf_src2,
-										  &g_buf_dst2,
-										  1,
-										  32,
-										  0,
-										  0,
-										  0,
-										  0,
-										  0,
-										  0,
-										  &g_desc3,
-										  flags2);
+                                          (uint32_t)&g_buf_src2,
+                                          (uint32_t)&g_buf_dst2,
+                                          1,
+                                          32,
+                                          0,
+                                          0,
+                                          0,
+                                          0,
+                                          0,
+                                          0,
+                                          (uint32_t)&g_desc3,
+                                          flags2);
 
     /* DMA 传输配置 */
     flags3 = AMHW_HC32F460_DMA_CHAN_CFG_INT_DISABLE           |  /* 通道中断使能 */
-    		 AMHW_HC32F460_DMA_CHAN_CFG_SIZE_8BIT             |  /* 数据宽度 1 字节 */
-			 AMHW_HC32F460_DMA_CHAN_CFG_LLPRUN_ENABLE         |  /* 连锁传输模式下，新描述符载入后，立即开始传输 */
-			 AMHW_HC32F460_DMA_CHAN_CFG_LLP_DISABLE           |  /* 连锁传输禁能 */
-			 AMHW_HC32F460_DMA_CHAN_CFG_DSTADD_NOTSEQ_DISABLE |  /* 目标地址不连续传输禁能 */
-			 AMHW_HC32F460_DMA_CHAN_CFG_SRCADD_NOTSEQ_DISABLE |  /* 源地址不连续传输禁能 */
-			 AMHW_HC32F460_DMA_CHAN_CFG_DST_DRPT_DISABLE      |  /* 目标重复传输禁能 */
-			 AMHW_HC32F460_DMA_CHAN_CFG_SRC_DRPT_DISABLE      |  /* 源重复传输禁能 */
-			 AMHW_HC32F460_DMA_CHAN_DST_ADD_INCREASING        |  /* 目标地址自增 */
-			 AMHW_HC32F460_DMA_CHAN_SRC_ADD_INCREASING;          /* 源地址自增 */
+             AMHW_HC32F460_DMA_CHAN_CFG_SIZE_8BIT             |  /* 数据宽度 1 字节 */
+             AMHW_HC32F460_DMA_CHAN_CFG_LLPRUN_ENABLE         |  /* 连锁传输模式下，新描述符载入后，立即开始传输 */
+             AMHW_HC32F460_DMA_CHAN_CFG_LLP_DISABLE           |  /* 连锁传输禁能 */
+             AMHW_HC32F460_DMA_CHAN_CFG_DSTADD_NOTSEQ_DISABLE |  /* 目标地址不连续传输禁能 */
+             AMHW_HC32F460_DMA_CHAN_CFG_SRCADD_NOTSEQ_DISABLE |  /* 源地址不连续传输禁能 */
+             AMHW_HC32F460_DMA_CHAN_CFG_DST_DRPT_DISABLE      |  /* 目标重复传输禁能 */
+             AMHW_HC32F460_DMA_CHAN_CFG_SRC_DRPT_DISABLE      |  /* 源重复传输禁能 */
+             AMHW_HC32F460_DMA_CHAN_DST_ADD_INCREASING        |  /* 目标地址自增 */
+             AMHW_HC32F460_DMA_CHAN_SRC_ADD_INCREASING;          /* 源地址自增 */
 
 
 
     /* 建立第三个描述符 */
     am_hc32f460_dma_chain_xfer_desc_build(&g_desc3,
-    		                              &g_buf_src3,
-										  &g_buf_dst3,
-										  1,
-										  32,
-										  0,
-										  0,
-										  0,
-										  0,
-										  0,
-										  0,
-										  0,
-										  flags3);
+                                          (uint32_t)&g_buf_src3,
+                                          (uint32_t)&g_buf_dst3,
+                                          1,
+                                          32,
+                                          0,
+                                          0,
+                                          0,
+                                          0,
+                                          0,
+                                          0,
+                                          0,
+                                          (uint32_t)flags3);
 
 
 
     /* 启动 DMA 传输，马上开始传输 */
     if (am_hc32f460_dma_chain_xfer_desc_chan_cfg(p_dev,
-    		                                  &g_desc1,
-                                              AMHW_HC32F460_DMA_MER_TO_MER, /* 内存到内存 */
-                                              dma_chan) == AM_ERROR) {
+                                                &g_desc1,
+                                                 AMHW_HC32F460_DMA_MER_TO_MER, /* 内存到内存 */
+                                                 dma_chan) == AM_ERROR) {
         return AM_ERROR;
     } else {
-    	/*外设电路触发功能使能*/
-    	am_clk_enable(CLK_PTDIS);
+        /*外设电路触发功能使能*/
+        am_clk_enable(CLK_PTDIS);
 
-    	amhw_hc32f460_intc_int_vssel_bits_set(137, (0x1 << 31));
+        amhw_hc32f460_intc_int_vssel_bits_set(137, (0x1ul << 31ul));
 
-    	am_mdelay(500);
+        am_mdelay(500);
 
-    	/* 屏蔽块中断 */
-    	am_hc32f460_dma_chan_int_mask_set(p_dev, dma_chan, AM_HC32F460_DMA_INT_BLK_COMPLETE);
+        /* 屏蔽块中断 */
+        am_hc32f460_dma_chan_int_mask_set(p_dev, dma_chan, AM_HC32F460_DMA_INT_BLK_COMPLETE);
 
-    	/* 设置触发源为内部事件触发 */
-    	am_hc32f460_dma_chan_src_set(p_dev, dma_chan, EVT_AOS_STRG);
+        /* 设置触发源为内部事件触发 */
+        am_hc32f460_dma_chan_src_set(p_dev, dma_chan, EVT_AOS_STRG);
 
         am_hc32f460_dma_chan_start(p_dev, dma_chan);
     }

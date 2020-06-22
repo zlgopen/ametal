@@ -67,7 +67,7 @@ static void __adc_isr (void *p_arg)
 
         for(i = 0; i < __adc_chan_num; i++) {
 
-            __g_adc_dat[i] = amhw_hc32f460_adc_ch_data_get(p_hw_adc, __adc_chmux[i].chan, 12, AMHW_HC32F460_ADC_DATA_ALIGN_FORMAT_RIGHT);
+            __g_adc_dat[i] = amhw_hc32f460_adc_ch_data_get(p_hw_adc, __adc_chmux[i].chan, AMHW_HC32F460_ADC_RESOLUTION_12BIT, AMHW_HC32F460_ADC_DATA_ALIGN_FORMAT_RIGHT);
         }
      }
 

@@ -12,7 +12,7 @@
 
 /**
  * \file
- * \brief am217_core
+ * \brief amhc32f460_core
  *
  * \internal
  * \par Modification history

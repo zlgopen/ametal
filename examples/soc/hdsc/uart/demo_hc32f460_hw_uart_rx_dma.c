@@ -117,7 +117,7 @@ static int uart_rx_dma_tran_cfg (amhw_hc32f460_uart_t  *p_hw_uart,
 
     /* 启动DMA传输，马上开始传输 */
     if (am_hc32f460_dma_xfer_desc_chan_cfg(p_dma_dev,
-    		                               &g_desc,
+                                           &g_desc,
                                            AMHW_HC32F460_DMA_PER_TO_MER, /* 外设到 内存 */
                                            (uint8_t)dma_chan) == AM_ERROR) {
         return AM_ERROR;

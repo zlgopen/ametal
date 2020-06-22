@@ -309,7 +309,7 @@ typedef enum {
 /* 获取当前系统时钟源 */
 am_static_inline
 amhw_hc32f460_sys_clk_src amhw_hc32f460_clk_get_sysclk_src(void) {
-    return (HC32F460_SYSCREG->CMU_CKSWR & 0x7);
+    return (amhw_hc32f460_sys_clk_src)(HC32F460_SYSCREG->CMU_CKSWR & 0x7);
 }
 
 /* 允许时钟寄存器写（关掉写保护） */
@@ -365,7 +365,6 @@ am_static_inline
 void amhw_hc32f460_sysclk_cfg (uint32_t                         clk_id,
                                uint32_t                         clk_div)
 {
-    uint8_t reg_val = 0;
     amhw_hc32f460_clk_fprcb0_reg_write_enable();
     HC32F460_SYSCREG->CMU_SCFGR = clk_div;
     amhw_hc32f460_clk_fprcb0_reg_write_disable();
@@ -514,7 +513,7 @@ void amhw_hc32f460_clk_upll_cfg(amhw_hc32f460_clk_pll_cfg_t upll_cfg)
                                       ((upll_cfg.plln    - 1) << 8)  |
                                       ((upll_cfg.PllrDiv - 1) << 20) |
                                       ((upll_cfg.PllqDiv - 1) << 24) |
-                                      ((upll_cfg.PllqDiv - 1) << 28);
+                                      ((upll_cfg.PllpDiv - 1) << 28);
 
     amhw_hc32f460_clk_fprcb0_reg_write_disable();
 }
@@ -576,10 +575,10 @@ void amhw_hc32f460_clk_mpll_disable(void)
 
 /* 系统时钟分频获取 */
 am_static_inline
-uint8_t amhw_hc32f460_clk_cmu_scfgr_div_get(am_clk_id_t clk_id)
+int amhw_hc32f460_clk_cmu_scfgr_div_get(am_clk_id_t clk_id)
 {
     uint8_t clk_div = 1;
-    uint8_t reg_val = 0;
+    uint32_t reg_val = 0;
 
     switch (clk_id) {
 
@@ -778,6 +777,162 @@ int amhw_hc32f460_rcc_peripheral_enable_check (amhw_hc32f460_peripheral peri);
  */
 void amhw_hc32f460_rcc_peripheral_disable (amhw_hc32f460_peripheral peri);
 
+/**
+ * \brief MCO1输出使能
+ *
+ * \return 无
+ *
+ */
+am_static_inline
+void amhw_hc32f460_rcc_mco1_enable (void)
+{
+    amhw_hc32f460_clk_fprcb0_reg_write_enable();
+    HC32F460_SYSCREG->CMU_MCO1CFGR |= (1 << 7);
+    amhw_hc32f460_clk_fprcb0_reg_write_disable();
+}
+
+/**
+ * \brief MCO1输出禁止
+ *
+ * \return 无
+ *
+ */
+am_static_inline
+void amhw_hc32f460_rcc_mco1_disable (void)
+{
+    amhw_hc32f460_clk_fprcb0_reg_write_enable();
+    HC32F460_SYSCREG->CMU_MCO1CFGR &= ~(1 << 7);
+    amhw_hc32f460_clk_fprcb0_reg_write_disable();
+}
+
+/**
+ * \brief MCO2输出使能
+ *
+ * \return 无
+ *
+ */
+am_static_inline
+void amhw_hc32f460_rcc_mco2_enable (void)
+{
+    amhw_hc32f460_clk_fprcb0_reg_write_enable();
+    HC32F460_SYSCREG->CMU_MCO2CFGR |= (1 << 7);
+    amhw_hc32f460_clk_fprcb0_reg_write_disable();
+}
+
+/**
+ * \brief MCO2输出禁止
+ *
+ * \return 无
+ *
+ */
+am_static_inline
+void amhw_hc32f460_rcc_mco2_disable (void)
+{
+    amhw_hc32f460_clk_fprcb0_reg_write_enable();
+    HC32F460_SYSCREG->CMU_MCO2CFGR &= ~(1 << 7);
+    amhw_hc32f460_clk_fprcb0_reg_write_disable();
+}
+
+
+typedef enum {
+    AMHW_HC32F460_RCC_MCO_DIV_1 = 0,
+    AMHW_HC32F460_RCC_MCO_DIV_2,
+    AMHW_HC32F460_RCC_MCO_DIV_4,
+    AMHW_HC32F460_RCC_MCO_DIV_8,
+    AMHW_HC32F460_RCC_MCO_DIV_16,
+    AMHW_HC32F460_RCC_MCO_DIV_32,
+    AMHW_HC32F460_RCC_MCO_DIV_64,
+    AMHW_HC32F460_RCC_MCO_DIV_128,
+} amhw_hc32f460_rcc_mco_div_t;
+
+typedef enum {
+    AMHW_HC32F460_RCC_MCO_SRC_HRC    = 0,
+    AMHW_HC32F460_RCC_MCO_SRC_MRC    = 1,
+    AMHW_HC32F460_RCC_MCO_SRC_LRC    = 2,
+    AMHW_HC32F460_RCC_MCO_SRC_XTAL   = 3,
+    AMHW_HC32F460_RCC_MCO_SRC_XTAL32 = 4,
+    AMHW_HC32F460_RCC_MCO_SRC_MPLLP  = 6,
+    AMHW_HC32F460_RCC_MCO_SRC_UPLLP  = 7,
+    AMHW_HC32F460_RCC_MCO_SRC_MPLLQ  = 8,
+    AMHW_HC32F460_RCC_MCO_SRC_UPLLQ  = 9,
+    AMHW_HC32F460_RCC_MCO_SRC_SYSCLK = 11,
+} amhw_hc32f460_rcc_mco_src_t;
+
+/**
+ * \brief MCO1分频选择
+ *
+ * \param[in]  clk_div ：时钟分频
+ *
+ * \return 无
+ *
+ */
+am_static_inline
+void amhw_hc32f460_rcc_mco1_div_set (amhw_hc32f460_rcc_mco_div_t mco1_div)
+{
+    amhw_hc32f460_clk_fprcb0_reg_write_enable();
+    uint8_t reg_val = HC32F460_SYSCREG->CMU_MCO1CFGR;
+    reg_val &= ~(0x7 << 4);
+    reg_val |= (mco1_div << 4);
+    HC32F460_SYSCREG->CMU_MCO1CFGR = reg_val;
+    amhw_hc32f460_clk_fprcb0_reg_write_disable();
+}
+
+/**
+ * \brief MCO1时钟源选择
+ *
+ * \param[in]  clk_src ：时钟源
+ *
+ * \return 无
+ *
+ */
+am_static_inline
+void amhw_hc32f460_rcc_mco1_src_set (amhw_hc32f460_rcc_mco_src_t mco1_src)
+{
+    amhw_hc32f460_clk_fprcb0_reg_write_enable();
+    uint8_t reg_val = HC32F460_SYSCREG->CMU_MCO1CFGR;
+    reg_val &= ~0xF;
+    reg_val |= mco1_src;
+    HC32F460_SYSCREG->CMU_MCO1CFGR = reg_val;
+    amhw_hc32f460_clk_fprcb0_reg_write_disable();
+}
+
+/**
+ * \brief MCO2分频选择
+ *
+ * \param[in]  clk_div ：时钟分频
+ *
+ * \return 无
+ *
+ */
+am_static_inline
+void amhw_hc32f460_rcc_mco2_div_set (amhw_hc32f460_rcc_mco_div_t mco2_div)
+{
+    amhw_hc32f460_clk_fprcb0_reg_write_enable();
+    uint8_t reg_val = HC32F460_SYSCREG->CMU_MCO2CFGR;
+    reg_val &= ~(0x7 << 4);
+    reg_val |= (mco2_div << 4);
+    HC32F460_SYSCREG->CMU_MCO2CFGR = reg_val;
+    amhw_hc32f460_clk_fprcb0_reg_write_disable();
+}
+
+/**
+ * \brief MCO2时钟源选择
+ *
+ * \param[in]  clk_src ：时钟源
+ *
+ * \return 无
+ *
+ */
+am_static_inline
+void amhw_hc32f460_rcc_mco2_src_set (amhw_hc32f460_rcc_mco_src_t mco2_src)
+{
+    amhw_hc32f460_clk_fprcb0_reg_write_enable();
+    uint8_t reg_val = HC32F460_SYSCREG->CMU_MCO2CFGR;
+    reg_val &= ~0xF;
+    reg_val |= mco2_src;
+    HC32F460_SYSCREG->CMU_MCO2CFGR = reg_val;
+    amhw_hc32f460_clk_fprcb0_reg_write_disable();
+}
 
 /*
  * \brief 匿名结构体段的结束

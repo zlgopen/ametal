@@ -879,9 +879,11 @@ void amhw_hc32f460_adc_channel_mux_set(amhw_hc32f460_adc_t               *p_hw_a
                                        amhw_hc32f460_adc_chan_sel_t      type)
 {
     if ((uint32_t)p_hw_adc == HC32F460_ADC1_BASE) {
-        *(uint16_t *)((&p_hw_adc->CHMUXR0) + (channel / 4)) = (type) << (4 * (channel % 4));
+        *(uint16_t *)((&p_hw_adc->CHMUXR0) + (channel / 4)) &= ~(0xf << (4 * (channel % 4)));
+        *(uint16_t *)((&p_hw_adc->CHMUXR0) + (channel / 4)) |= (type) << (4 * (channel % 4));
     } else {
-    	*(uint16_t *)((&p_hw_adc->CHMUXR0) + (channel / 4)) = ((type < 16) ? (type - 4) : 8) << (4 * (channel % 4));
+        *(uint16_t *)((&p_hw_adc->CHMUXR0) + (channel / 4)) &= ~(((type < 16) ? (type - 4) : 8) << (4 * (channel % 4)));
+        *(uint16_t *)((&p_hw_adc->CHMUXR0) + (channel / 4)) = ((type < 16) ? (type - 4) : 8) << (4 * (channel % 4));
     }
 
 }

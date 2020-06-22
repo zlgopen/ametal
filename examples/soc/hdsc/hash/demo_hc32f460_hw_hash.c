@@ -52,7 +52,6 @@ static uint32_t __hash_data_fill(uint8_t        *p_data_src,
                                  uint8_t        *group2)
 {
     uint32_t i = 0;
-    uint32_t group_num = 0;
     uint32_t group_num_fill = 0;
     uint32_t group1_bytes_fill = 0;
     uint32_t group2_bytes_fill = 0;
@@ -67,11 +66,9 @@ static uint32_t __hash_data_fill(uint8_t        *p_data_src,
     u32BitLenLo    = (src_data_size << 3u);
 
     if (bytes_src < AMHW_HC32F460_HASH_LAST_GROUP_SIZE) {
-        group_num = src_data_size / AMHW_HC32F460_HASH_MAX_GROUP_SIZE + 1;
         group1_bytes_fill = AMHW_HC32F460_HASH_LAST_GROUP_SIZE - bytes_src;
         group_num_fill = 1;
     } else {
-        group_num = src_data_size / AMHW_HC32F460_HASH_MAX_GROUP_SIZE + 2;
         group1_bytes_fill = AMHW_HC32F460_HASH_MAX_GROUP_SIZE - bytes_src;
         group2_bytes_fill = AMHW_HC32F460_HASH_LAST_GROUP_SIZE;
         group_num_fill =2;
