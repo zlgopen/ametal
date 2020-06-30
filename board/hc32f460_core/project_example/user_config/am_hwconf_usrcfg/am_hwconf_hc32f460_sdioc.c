@@ -47,7 +47,6 @@ static void __hc32f460_sdioc1_plfm_init (void)
     am_gpio_pin_cfg(PIOD_2,  GPIO_AFIO(AMHW_HC32F460_AFIO_SDIO));
 
     am_clk_enable(CLK_SDIOC1);
-//    am_hc32f460_clk_reset(CLK_SDIOC2);
 }
 
 /** \brief 解除SDIO 平台初始化函数 */
@@ -66,12 +65,12 @@ static const am_hc32f460_sdioc_devinfo_t __g_sdioc1_devinfo = {
     INUM_SDIOC1,                        /**< \brief 中断编号 */
     CLK_SDIOC1,                         /**< \brief 时钟ID值 */
 
-    AMHW_HC32F460_SDIO_SPEED_MODE_LOW,  /** \brief SDIO速率模式 */
+    AMHW_HC32F460_SDIO_SPEED_MODE_LOW,  /**< \brief SDIO速率模式 */
     __hc32f460_sdioc1_plfm_init,        /**< \brief 平台初始化 */
     __hc32f460_sdioc1_plfm_deinit       /**< \brief 平台去初始化 */
 };
 
-am_hc32f460_sdioc_dev_t __g_sdioc1_dev;   /**< \brief  设备实例 */
+am_hc32f460_sdioc_dev_t __g_sdioc1_dev;          /**< \brief  设备实例 */
 static am_sdio_handle_t  __g_sdio_handle = NULL; /**< \brief  标准服务句柄 */
 
 /** \brief SDIO 实例初始化，获得SDIO标准服务句柄 */

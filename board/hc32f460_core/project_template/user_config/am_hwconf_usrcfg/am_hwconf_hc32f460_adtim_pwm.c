@@ -89,7 +89,7 @@ am_hc32f460_adtim_pwm_dev_t __g_adtim61_pwm_dev;
 am_pwm_handle_t am_hc32f460_adtim61_pwm_inst_init (void)
 {
     return am_hc32f460_adtim_pwm_init(&__g_adtim61_pwm_dev,
-                                    &__g_adtim61_pwm_devinfo);
+                                      &__g_adtim61_pwm_devinfo);
 }
 
 /** \brief adtim6 pwm 实例解初始化 */
@@ -153,7 +153,7 @@ am_hc32f460_adtim_pwm_dev_t __g_adtim62_pwm_dev;
 am_pwm_handle_t am_hc32f460_adtim62_pwm_inst_init (void)
 {
     return am_hc32f460_adtim_pwm_init(&__g_adtim62_pwm_dev,
-                                    &__g_adtim62_pwm_devinfo);
+                                      &__g_adtim62_pwm_devinfo);
 }
 
 /** \brief adtim6 pwm 实例解初始化 */
@@ -217,7 +217,7 @@ am_hc32f460_adtim_pwm_dev_t __g_adtim63_pwm_dev;
 am_pwm_handle_t am_hc32f460_adtim63_pwm_inst_init (void)
 {
     return am_hc32f460_adtim_pwm_init(&__g_adtim63_pwm_dev,
-                                    &__g_adtim63_pwm_devinfo);
+                                      &__g_adtim63_pwm_devinfo);
 }
 
 /** \brief adtim6 pwm 实例解初始化 */

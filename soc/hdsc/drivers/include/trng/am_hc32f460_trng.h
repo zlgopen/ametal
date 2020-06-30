@@ -104,7 +104,7 @@ void am_hc32f460_trng_deinit (am_trng_handle_t handle);
  */
 int am_hc32f460_trng_generate (am_trng_handle_t handle,
                                uint8_t          env_flag,
-                               uint32_t         *p_data);
+                               uint32_t        *p_data);
 
 /**
  * @}

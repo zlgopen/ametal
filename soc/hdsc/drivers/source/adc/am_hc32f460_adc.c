@@ -143,7 +143,7 @@ void hc32f460_adc_irq_handle (void *p_arg)
 
             p_dev->desc_index++;
 
-            /* 判断整个序列描述符是否完成一轮转换 */
+            /** \brief 判断整个序列描述符是否完成一轮转换 */
             if (p_dev->desc_index == p_dev->desc_num) {
 
                 p_dev->desc_index = 0;
@@ -157,7 +157,7 @@ void hc32f460_adc_irq_handle (void *p_arg)
 
                     __fn_adc_stop (p_dev, p_dev->chan);  /* 关闭模块 */
 
-                    return ; /* 返回 */
+                    return ;
                 }
             }
         } else {

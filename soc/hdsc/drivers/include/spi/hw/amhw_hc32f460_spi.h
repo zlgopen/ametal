@@ -60,95 +60,107 @@ extern "C" {
 
 /** @} */
 
+/**
+ * \brief SPI 控制寄存器位域结构体
+ */
 typedef struct
 {
-    __IO uint32_t SPIMDS                    : 1;
-    __IO uint32_t TXMDS                     : 1;
-    uint32_t RESERVED2                      : 1;
-    __IO uint32_t MSTR                      : 1;
-    __IO uint32_t SPLPBK                    : 1;
-    __IO uint32_t SPLPBK2                   : 1;
-    __IO uint32_t SPE                       : 1;
-    __IO uint32_t CSUSPE                    : 1;
-    __IO uint32_t EIE                       : 1;
-    __IO uint32_t TXIE                      : 1;
-    __IO uint32_t RXIE                      : 1;
-    __IO uint32_t IDIE                      : 1;
-    __IO uint32_t MODFE                     : 1;
-    __IO uint32_t PATE                      : 1;
-    __IO uint32_t PAOE                      : 1;
-    __IO uint32_t PAE                       : 1;
-    uint32_t RESERVED16                     :16;
+    __IO uint32_t SPIMDS                    : 1;  /**< \brief SPI模式选择 */
+    __IO uint32_t TXMDS                     : 1;  /**< \brief 通信模式选择 */
+    uint32_t RESERVED2                      : 1;  /**< \brief 保留 */
+    __IO uint32_t MSTR                      : 1;  /**< \brief SPI主从模式选择 */
+    __IO uint32_t SPLPBK                    : 1;  /**< \brief SPI回环1 */
+    __IO uint32_t SPLPBK2                   : 1;  /**< \brief SPI回环2 */
+    __IO uint32_t SPE                       : 1;  /**< \brief SPI功能允许 */
+    __IO uint32_t CSUSPE                    : 1;  /**< \brief 通讯自动挂起功能允许 */
+    __IO uint32_t EIE                       : 1;  /**< \brief SPI错误中断允许 */
+    __IO uint32_t TXIE                      : 1;  /**< \brief SPI发送中断允许 */
+    __IO uint32_t RXIE                      : 1;  /**< \brief SPI接收中断允许 */
+    __IO uint32_t IDIE                      : 1;  /**< \brief SPI空闲中断允许 */
+    __IO uint32_t MODFE                     : 1;  /**< \brief 模式故障错误检测允许 */
+    __IO uint32_t PATE                      : 1;  /**< \brief 奇偶校验自诊断 */
+    __IO uint32_t PAOE                      : 1;  /**< \brief 奇偶校验模式选择 */
+    __IO uint32_t PAE                       : 1;  /**< \brief 奇偶校验允许 */
+    uint32_t RESERVED16                     :16;  /**< \brief 保留 */
 } stc_spi_cr1_field_t;
 
+/**
+ * \brief SPI 通信配置寄存器1位域结构体
+ */
 typedef struct
 {
-    __IO uint32_t FTHLV                     : 2;
-    uint32_t RESERVED2                      : 4;
-    __IO uint32_t SPRDTD                    : 1;
-    uint32_t RESERVED7                      : 1;
-    __IO uint32_t SS0PV                     : 1;
-    __IO uint32_t SS1PV                     : 1;
-    __IO uint32_t SS2PV                     : 1;
-    __IO uint32_t SS3PV                     : 1;
-    uint32_t RESERVED12                     : 8;
-    __IO uint32_t MSSI                      : 3;
-    uint32_t RESERVED23                     : 1;
-    __IO uint32_t MSSDL                     : 3;
-    uint32_t RESERVED27                     : 1;
-    __IO uint32_t MIDI                      : 3;
-    uint32_t RESERVED31                     : 1;
+    __IO uint32_t FTHLV                     : 2;  /**< \brief 帧数设定位 */
+    uint32_t RESERVED2                      : 4;  /**< \brief 保留 */
+    __IO uint32_t SPRDTD                    : 1;  /**< \brief 数据寄存器读取对象选择*/
+    uint32_t RESERVED7                      : 1;  /**< \brief 保留 */
+    __IO uint32_t SS0PV                     : 1;  /**< \brief SS0信号极性设定 */
+    __IO uint32_t SS1PV                     : 1;  /**< \brief SS1信号极性设定 */
+    __IO uint32_t SS2PV                     : 1;  /**< \brief SS2信号极性设定 */
+    __IO uint32_t SS3PV                     : 1;  /**< \brief SS3信号极性设定 */
+    uint32_t RESERVED12                     : 8;  /**< \brief 保留 */
+    __IO uint32_t MSSI                      : 3;  /**< \brief SCK延迟设定位 */
+    uint32_t RESERVED23                     : 1;  /**< \brief 保留 */
+    __IO uint32_t MSSDL                     : 3;  /**< \brief SS无效延迟设定位 */
+    uint32_t RESERVED27                     : 1;  /**< \brief 保留 */
+    __IO uint32_t MIDI                      : 3;  /**< \brief SPI下次存取延迟设定位 */
+    uint32_t RESERVED31                     : 1;  /**< \brief 保留 */
 } stc_spi_cfg1_field_t;
 
+/**
+ * \brief SPI 状态寄存器位域结构体
+ */
 typedef struct
 {
-    __IO uint32_t OVRERF                    : 1;
-    __IO uint32_t IDLNF                     : 1;
-    __IO uint32_t MODFERF                   : 1;
-    __IO uint32_t PERF                      : 1;
-    __IO uint32_t UDRERF                    : 1;
-    __IO uint32_t TDEF                      : 1;
-    uint32_t RESERVED6                      : 1;
-    __IO uint32_t RDFF                      : 1;
-    uint32_t RESERVED8                      :24;
+    __IO uint32_t OVRERF                    : 1;  /**< \brief 过载错误标志 */
+    __IO uint32_t IDLNF                     : 1;  /**< \brief SPI空闲标志 */
+    __IO uint32_t MODFERF                   : 1;  /**< \brief 模式故障错误标志 */
+    __IO uint32_t PERF                      : 1;  /**< \brief 奇偶校验错误标志 */
+    __IO uint32_t UDRERF                    : 1;  /**< \brief 欠载错误标志 */
+    __IO uint32_t TDEF                      : 1;  /**< \brief 发送缓冲器空标志 */
+    uint32_t RESERVED6                      : 1;  /**< \brief 保留 */
+    __IO uint32_t RDFF                      : 1;  /**< \brief 接收缓冲器满标志 */
+    uint32_t RESERVED8                      :24;  /**< \brief 保留 */
 } stc_spi_sr_field_t;
 
+/**
+ * \brief SPI 通信配置寄存器2位域结构体
+ */
 typedef struct
 {
-    __IO uint32_t CPHA                      : 1;
-    __IO uint32_t CPOL                      : 1;
-    __IO uint32_t MBR                       : 3;
-    __IO uint32_t SSA                       : 3;
-    __IO uint32_t DSIZE                     : 4;
-    __IO uint32_t LSBF                      : 1;
-    __IO uint32_t NXTDLE                    : 1;
-    __IO uint32_t SSDLE                     : 1;
-    __IO uint32_t SCKDLE                    : 1;
-    uint32_t RESERVED16                     :16;
+    __IO uint32_t CPHA                      : 1;  /**< \brief SCK相位设定位 */
+    __IO uint32_t CPOL                      : 1;  /**< \brief SCK极性设定位 */
+    __IO uint32_t MBR                       : 3;  /**< \brief 位速率分频设定位 */
+    __IO uint32_t SSA                       : 3;  /**< \brief SS信号有效设定位 */
+    __IO uint32_t DSIZE                     : 4;  /**< \brief SPI数据长度设定位 */
+    __IO uint32_t LSBF                      : 1;  /**< \brief SPI LSB first位 */
+    __IO uint32_t NXTDLE                    : 1;  /**< \brief SPI下次存取延迟允许 */
+    __IO uint32_t SSDLE                     : 1;  /**< \brief SS无效延迟允许 */
+    __IO uint32_t SCKDLE                    : 1;  /**< \brief SCK延迟允许 */
+    uint32_t RESERVED16                     :16;  /**< \brief 保留 */
 } stc_spi_cfg2_field_t;
 
 typedef struct amhw_hc32f460_spi_t {
-    __IO uint32_t DR;
+    __IO uint32_t DR;               /**< \brief SPI数据寄存器*/
     union
     {
-        __IO uint32_t CR1;
+        __IO uint32_t CR1;          /**< \brief SPI控制寄存器*/
         stc_spi_cr1_field_t CR1_f;
     };
-    uint8_t RESERVED2[4];
+    uint8_t RESERVED2[4];           /**< \brief 保留*/
     union
     {
-        __IO uint32_t CFG1;
+        __IO uint32_t CFG1;         /**< \brief SPI通信配置寄存器1*/
         stc_spi_cfg1_field_t CFG1_f;
     };
-    uint8_t RESERVED3[4];
+    uint8_t RESERVED3[4];           /**< \brief 保留*/
     union
     {
-        __IO uint32_t SR;
+        __IO uint32_t SR;           /**< \brief SPI状态寄存器*/
         stc_spi_sr_field_t SR_f;
     };
     union
     {
-        __IO uint32_t CFG2;
+        __IO uint32_t CFG2;         /**< \brief SPI通信配置寄存器2*/
         stc_spi_cfg2_field_t CFG2_f;
     };
 }amhw_hc32f460_spi_t;
@@ -658,7 +670,7 @@ void amhw_hc32f460_spi_ss2_valid_level_set(amhw_hc32f460_spi_t *p_hw_spi,
  */
 am_static_inline
 void amhw_hc32f460_spi_ss1_valid_level_set(amhw_hc32f460_spi_t *p_hw_spi,
-                                          uint32_t             level)
+                                           uint32_t             level)
 {
     p_hw_spi->CFG1_f.SS1PV = level;
 }
@@ -672,7 +684,7 @@ void amhw_hc32f460_spi_ss1_valid_level_set(amhw_hc32f460_spi_t *p_hw_spi,
  */
 am_static_inline
 void amhw_hc32f460_spi_ss0_valid_level_set(amhw_hc32f460_spi_t *p_hw_spi,
-                                          uint32_t             level)
+                                           uint32_t             level)
 {
     p_hw_spi->CFG1_f.SS0PV = level;
 }

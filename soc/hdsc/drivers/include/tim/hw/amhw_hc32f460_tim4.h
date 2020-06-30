@@ -97,372 +97,414 @@ typedef enum timer4_cnt_int
     TIMER4_CNT_PEAK_MATCH_INT = (1ul << 13),    
 } timer4_cnt_int_t;
 
+/**
+ * \brief TMR4 通用控制状态寄存器位域结构体
+ */
 typedef struct
 {
-    __IO uint16_t OCEH                      : 1;
-    __IO uint16_t OCEL                      : 1;
-    __IO uint16_t OCPH                      : 1;
-    __IO uint16_t OCPL                      : 1;
-    __IO uint16_t OCIEH                     : 1;
-    __IO uint16_t OCIEL                     : 1;
-    __IO uint16_t OCFH                      : 1;
-    __IO uint16_t OCFL                      : 1;
-    uint16_t RESERVED8                      : 8;
+    __IO uint16_t OCEH                      : 1;  /**< \brief 端口输出使能H*/
+    __IO uint16_t OCEL                      : 1;  /**< \brief 端口输出使能L*/
+    __IO uint16_t OCPH                      : 1;  /**< \brief 输出无效时端口状态H*/
+    __IO uint16_t OCPL                      : 1;  /**< \brief 输出无效时端口状态L*/
+    __IO uint16_t OCIEH                     : 1;  /**< \brief 计数匹配H中断使能*/
+    __IO uint16_t OCIEL                     : 1;  /**< \brief 计数匹配L中断使能*/
+    __IO uint16_t OCFH                      : 1;  /**< \brief 计数匹配H*/
+    __IO uint16_t OCFL                      : 1;  /**< \brief 计数匹配L*/
+    uint16_t RESERVED8                      : 8;  /**< \brief 保留*/
 } stc_tmr4_ocsr_field_t;
 
+/**
+ * \brief TMR4 通用扩展控制寄存器位域结构体
+ */
 typedef struct
 {
-    __IO uint16_t CHBUFEN                   : 2;
-    __IO uint16_t CLBUFEN                   : 2;
-    __IO uint16_t MHBUFEN                   : 2;
-    __IO uint16_t MLBUFEN                   : 2;
-    __IO uint16_t LMCH                      : 1;
-    __IO uint16_t LMCL                      : 1;
-    __IO uint16_t LMMH                      : 1;
-    __IO uint16_t LMML                      : 1;
-    __IO uint16_t MCECH                     : 1;
-    __IO uint16_t MCECL                     : 1;
-    uint16_t RESERVED14                     : 2;
+    __IO uint16_t CHBUFEN                   : 2;  /**< \brief OCCRxh缓存传送*/
+    __IO uint16_t CLBUFEN                   : 2;  /**< \brief OCCRxl缓存传送*/
+    __IO uint16_t MHBUFEN                   : 2;  /**< \brief OCMRxh缓存转送*/
+    __IO uint16_t MLBUFEN                   : 2;  /**< \brief OCMRxl缓存转送*/
+    __IO uint16_t LMCH                      : 1;  /**< \brief 周期间隔响应功能链接H*/
+    __IO uint16_t LMCL                      : 1;  /**< \brief 周期间隔响应功能链接L*/
+    __IO uint16_t LMMH                      : 1;  /**< \brief 周期间隔响应功能链接H*/
+    __IO uint16_t LMML                      : 1;  /**< \brief 周期间隔响应功能链接L*/
+    __IO uint16_t MCECH                     : 1;  /**< \brief 扩展控制使能H*/
+    __IO uint16_t MCECL                     : 1;  /**< \brief 扩展控制使能L*/
+    uint16_t RESERVED14                     : 2;  /**< \brief 保留*/
 } stc_tmr4_ocer_field_t;
 
+/**
+ * \brief TMR4 通用模式控制寄存器位域结构体
+ */
 typedef struct
 {
-    __IO uint16_t OCFDCH                    : 1;
-    __IO uint16_t OCFPKH                    : 1;
-    __IO uint16_t OCFUCH                    : 1;
-    __IO uint16_t OCFZRH                    : 1;
-    __IO uint16_t OPDCH                     : 2;
-    __IO uint16_t OPPKH                     : 2;
-    __IO uint16_t OPUCH                     : 2;
-    __IO uint16_t OPZRH                     : 2;
-    __IO uint16_t OPNPKH                    : 2;
-    __IO uint16_t OPNZRH                    : 2;
+    __IO uint16_t OCFDCH                    : 1;  /**< \brief 向下计数OCFH状态H*/
+    __IO uint16_t OCFPKH                    : 1;  /**< \brief 上溢点OCFH状态H*/
+    __IO uint16_t OCFUCH                    : 1;  /**< \brief 向上计数OCFH状态H*/
+    __IO uint16_t OCFZRH                    : 1;  /**< \brief 下溢点OCFH状态H*/
+    __IO uint16_t OPDCH                     : 2;  /**< \brief 向下计数端口状态H*/
+    __IO uint16_t OPPKH                     : 2;  /**< \brief 上溢点端口状态H*/
+    __IO uint16_t OPUCH                     : 2;  /**< \brief 向上计数端口状态H*/
+    __IO uint16_t OPZRH                     : 2;  /**< \brief 下溢点端口状态H*/
+    __IO uint16_t OPNPKH                    : 2;  /**< \brief 上溢点端口状态H*/
+    __IO uint16_t OPNZRH                    : 2;  /**< \brief 下溢点端口状态H*/
 } stc_tmr4_ocmrh_field_t;
 
+/**
+ * \brief TMR4 通用模式控制寄存器位域结构体
+ */
 typedef struct
 {
-    __IO uint32_t OCFDCL                    : 1;
-    __IO uint32_t OCFPKL                    : 1;
-    __IO uint32_t OCFUCL                    : 1;
-    __IO uint32_t OCFZRL                    : 1;
-    __IO uint32_t OPDCL                     : 2;
-    __IO uint32_t OPPKL                     : 2;
-    __IO uint32_t OPUCL                     : 2;
-    __IO uint32_t OPZRL                     : 2;
-    __IO uint32_t OPNPKL                    : 2;
-    __IO uint32_t OPNZRL                    : 2;
-    __IO uint32_t EOPNDCL                   : 2;
-    __IO uint32_t EOPNUCL                   : 2;
-    __IO uint32_t EOPDCL                    : 2;
-    __IO uint32_t EOPPKL                    : 2;
-    __IO uint32_t EOPUCL                    : 2;
-    __IO uint32_t EOPZRL                    : 2;
-    __IO uint32_t EOPNPKL                   : 2;
-    __IO uint32_t EOPNZRL                   : 2;
+    __IO uint32_t OCFDCL                    : 1;  /**< \brief 向下计数OCFL状态L*/
+    __IO uint32_t OCFPKL                    : 1;  /**< \brief 上溢点OCFL状态L*/
+    __IO uint32_t OCFUCL                    : 1;  /**< \brief 向上计数OCFL状态L*/
+    __IO uint32_t OCFZRL                    : 1;  /**< \brief 下溢点OCFL状态L*/
+    __IO uint32_t OPDCL                     : 2;  /**< \brief 向下计数端口状态L*/
+    __IO uint32_t OPPKL                     : 2;  /**< \brief 上溢点端口状态L*/
+    __IO uint32_t OPUCL                     : 2;  /**< \brief 向上计数端口状态L*/
+    __IO uint32_t OPZRL                     : 2;  /**< \brief 下溢点端口状态L*/
+    __IO uint32_t OPNPKL                    : 2;  /**< \brief 上溢点端口状态L*/
+    __IO uint32_t OPNZRL                    : 2;  /**< \brief 下溢点端口状态L*/
+    __IO uint32_t EOPNDCL                   : 2;  /**< \brief 扩张向下计数端口状态L*/
+    __IO uint32_t EOPNUCL                   : 2;  /**< \brief 扩张向上计数端口状态L*/
+    __IO uint32_t EOPDCL                    : 2;  /**< \brief 扩张向下计数端口状态L*/
+    __IO uint32_t EOPPKL                    : 2;  /**< \brief 扩张上溢点端口状态L*/
+    __IO uint32_t EOPUCL                    : 2;  /**< \brief 扩张向上计数端口状态L*/
+    __IO uint32_t EOPZRL                    : 2;  /**< \brief 扩张下溢点端口*/
+    __IO uint32_t EOPNPKL                   : 2;  /**< \brief 扩张上溢点端口状态L*/
+    __IO uint32_t EOPNZRL                   : 2;  /**< \brief 扩张下溢点端口状态L*/
 } stc_tmr4_ocmrl_field_t;
 
+/**
+ * \brief TMR4 控制状态寄存器位域结构体
+ */
 typedef struct
 {
-    __IO uint16_t CKDIV                     : 4;
-    __IO uint16_t CLEAR                     : 1;
-    __IO uint16_t MODE                      : 1;
-    __IO uint16_t STOP                      : 1;
-    __IO uint16_t BUFEN                     : 1;
-    __IO uint16_t IRQPEN                    : 1;
-    __IO uint16_t IRQPF                     : 1;
-    uint16_t RESERVED10                     : 3;
-    __IO uint16_t IRQZEN                    : 1;
-    __IO uint16_t IRQZF                     : 1;
-    __IO uint16_t ECKEN                     : 1;
+    __IO uint16_t CKDIV                     : 4;  /**< \brief 计数时钟分频*/
+    __IO uint16_t CLEAR                     : 1;  /**< \brief 计数器清零*/
+    __IO uint16_t MODE                      : 1;  /**< \brief 波形模式*/
+    __IO uint16_t STOP                      : 1;  /**< \brief 计数器使能*/
+    __IO uint16_t BUFEN                     : 1;  /**< \brief 缓存使能*/
+    __IO uint16_t IRQPEN                    : 1;  /**< \brief 上溢中断使能*/
+    __IO uint16_t IRQPF                     : 1;  /**< \brief 上溢状态*/
+    uint16_t RESERVED10                     : 3;  /**< \brief 保留*/
+    __IO uint16_t IRQZEN                    : 1;  /**< \brief 下溢中断使能*/
+    __IO uint16_t IRQZF                     : 1;  /**< \brief 下溢状态*/
+    __IO uint16_t ECKEN                     : 1;  /**< \brief 时钟源选择*/
 } stc_tmr4_ccsr_field_t;
 
+/**
+ * \brief TMR4 有效周期寄存器位域结构体
+ */
 typedef struct
 {
-    __IO uint16_t ZIM                       : 4;
-    __IO uint16_t PIM                       : 4;
-    __IO uint16_t ZIC                       : 4;
-    __IO uint16_t PIC                       : 4;
+    __IO uint16_t ZIM                       : 4;  /**< \brief 下溢中断屏蔽设定*/
+    __IO uint16_t PIM                       : 4;  /**< \brief 上溢中断屏蔽设定*/
+    __IO uint16_t ZIC                       : 4;  /**< \brief 下溢中断屏蔽状态*/
+    __IO uint16_t PIC                       : 4;  /**< \brief 上溢中断屏蔽状态*/
 } stc_tmr4_cvpr_field_t;
 
+/**
+ * \brief TMR4 PWM基本控制寄存器位域结构体
+ */
 typedef struct
 {
-    __IO uint16_t DIVCK                     : 4;
-    __IO uint16_t PWMMD                     : 2;
-    __IO uint16_t LVLS                      : 2;
-    uint16_t RESERVED8                      : 8;
+    __IO uint16_t DIVCK                     : 4;  /**< \brief 计数时钟分频*/
+    __IO uint16_t PWMMD                     : 2;  /**< \brief PWM输出模式*/
+    __IO uint16_t LVLS                      : 2;  /**< \brief PWM输出极性控制*/
+    uint16_t RESERVED8                      : 8;  /**< \brief 保留*/
 } stc_tmr4_pocr_field_t;
 
+/**
+ * \brief TMR4 重载控制状态寄存器位域结构体
+ */
 typedef struct
 {
-    __IO uint16_t RTIDU                     : 1;
-    __IO uint16_t RTIDV                     : 1;
-    __IO uint16_t RTIDW                     : 1;
-    uint16_t RESERVED3                      : 1;
-    __IO uint16_t RTIFU                     : 1;
-    __IO uint16_t RTICU                     : 1;
-    __IO uint16_t RTEU                      : 1;
-    __IO uint16_t RTSU                      : 1;
-    __IO uint16_t RTIFV                     : 1;
-    __IO uint16_t RTICV                     : 1;
-    __IO uint16_t RTEV                      : 1;
-    __IO uint16_t RTSV                      : 1;
-    __IO uint16_t RTIFW                     : 1;
-    __IO uint16_t RTICW                     : 1;
-    __IO uint16_t RTEW                      : 1;
-    __IO uint16_t RTSW                      : 1;
+    __IO uint16_t RTIDU                     : 1;  /**< \brief 重载中断屏蔽U*/
+    __IO uint16_t RTIDV                     : 1;  /**< \brief 重载中断屏蔽V*/
+    __IO uint16_t RTIDW                     : 1;  /**< \brief 重载中断屏蔽W*/
+    uint16_t RESERVED3                      : 1;  /**< \brief 保留*/
+    __IO uint16_t RTIFU                     : 1;  /**< \brief 计数匹配状态U*/
+    __IO uint16_t RTICU                     : 1;  /**< \brief 清零计数匹配状态U*/
+    __IO uint16_t RTEU                      : 1;  /**< \brief 重载计数器启动U*/
+    __IO uint16_t RTSU                      : 1;  /**< \brief 重载计数器停止U*/
+    __IO uint16_t RTIFV                     : 1;  /**< \brief 计数匹配状态V*/
+    __IO uint16_t RTICV                     : 1;  /**< \brief 清零计数匹配状态V*/
+    __IO uint16_t RTEV                      : 1;  /**< \brief 重载计数器启动V*/
+    __IO uint16_t RTSV                      : 1;  /**< \brief 重载计数器停止V*/
+    __IO uint16_t RTIFW                     : 1;  /**< \brief 计数匹配状态W*/
+    __IO uint16_t RTICW                     : 1;  /**< \brief 清零计数匹配状态W*/
+    __IO uint16_t RTEW                      : 1;  /**< \brief 重载计数器启动W*/
+    __IO uint16_t RTSW                      : 1;  /**< \brief 重载计数器停止W*/
 } stc_tmr4_rcsr_field_t;
 
+/**
+ * \brief TMR4 专用控制状态寄存器位域结构体
+ */
 typedef struct
 {
-    __IO uint16_t BUFEN                     : 2;
-    __IO uint16_t EVTOS                     : 3;
-    __IO uint16_t LMC                       : 1;
-    uint16_t RESERVED6                      : 2;
-    __IO uint16_t EVTMS                     : 1;
-    __IO uint16_t EVTDS                     : 1;
-    uint16_t RESERVED10                     : 2;
-    __IO uint16_t DEN                       : 1;
-    __IO uint16_t PEN                       : 1;
-    __IO uint16_t UEN                       : 1;
-    __IO uint16_t ZEN                       : 1;
+    __IO uint16_t BUFEN                     : 2;  /**< \brief SCCR&SCMR缓存传送*/
+    __IO uint16_t EVTOS                     : 3;  /**< \brief EVT输出选择*/
+    __IO uint16_t LMC                       : 1;  /**< \brief 周期间隔响应功能链接*/
+    uint16_t RESERVED6                      : 2;  /**< \brief 保留*/
+    __IO uint16_t EVTMS                     : 1;  /**< \brief EVT模式选择*/
+    __IO uint16_t EVTDS                     : 1;  /**< \brief EVT延时对象选择*/
+    uint16_t RESERVED10                     : 2;  /**< \brief 保留*/
+    __IO uint16_t DEN                       : 1;  /**< \brief 向下计数EVT使能*/
+    __IO uint16_t PEN                       : 1;  /**< \brief 上溢点EVT使能*/
+    __IO uint16_t UEN                       : 1;  /**< \brief 向上计数EVT使能*/
+    __IO uint16_t ZEN                       : 1;  /**< \brief 下溢点EVT使能*/
 } stc_tmr4_scsr_field_t;
 
+/**
+ * \brief TMR4 专用模式控制寄存器位域结构体
+ */
 typedef struct
 {
-    __IO uint16_t AMC                       : 4;
-    uint16_t RESERVED4                      : 2;
-    __IO uint16_t MZCE                      : 1;
-    __IO uint16_t MPCE                      : 1;
-    uint16_t RESERVED8                      : 8;
+    __IO uint16_t AMC                       : 4;  /**< \brief 专用事件输出周期间隔值*/
+    uint16_t RESERVED4                      : 2;  /**< \brief 保留*/
+    __IO uint16_t MZCE                      : 1;  /**< \brief 周期间隔响应使能*/
+    __IO uint16_t MPCE                      : 1;  /**< \brief 周期间隔响应使能*/
+    uint16_t RESERVED8                      : 8;  /**< \brief 保留*/
 } stc_tmr4_scmr_field_t;
 
+/**
+ * \brief TMR4 EMB控制状态寄存器
+ */
 typedef struct
 {
-    uint16_t RESERVED0                      : 7;
-    __IO uint16_t HOLD                      : 1;
-    uint16_t RESERVED8                      : 8;
+    uint16_t RESERVED0                      : 7;  /**< \brief 保留*/
+    __IO uint16_t HOLD                      : 1;  /**< \brief PWM保持*/
+    uint16_t RESERVED8                      : 8;  /**< \brief 保留*/
 } stc_tmr4_ecsr_field_t;
 
+/**
+ * \brief TMR4 EMB扩展控制寄存器
+ */
 typedef struct
 {
-    __IO uint16_t EMBVAL                    : 2;
-    uint16_t RESERVED2                      :14;
+    __IO uint16_t EMBVAL                    : 2;  /**< \brief EMB状态控制*/
+    uint16_t RESERVED2                      :14;  /**< \brief 保留*/
 } stc_tmr4_cr_ecer1_field_t;
 
+/**
+ * \brief TMR4 EMB扩展控制寄存器
+ */
 typedef struct
 {
-    __IO uint16_t EMBVAL                    : 2;
-    uint16_t RESERVED2                      :14;
+    __IO uint16_t EMBVAL                    : 2;  /**< \brief EMB状态控制*/
+    uint16_t RESERVED2                      :14;  /**< \brief 保留*/
 } stc_tmr4_cr_ecer2_field_t;
 
+/**
+ * \brief TMR4 EMB扩展控制寄存器
+ */
 typedef struct
 {
-    __IO uint16_t EMBVAL                    : 2;
-    uint16_t RESERVED2                      :14;
+    __IO uint16_t EMBVAL                    : 2;  /**< \brief EMB状态控制*/
+    uint16_t RESERVED2                      :14;  /**< \brief 保留*/
 } stc_tmr4_cr_ecer3_field_t;
 
 typedef struct
 {
-    uint8_t RESERVED0[2];
-    __IO uint16_t OCCRUH;
-    uint8_t RESERVED1[2];
-    __IO uint16_t OCCRUL;
-    uint8_t RESERVED2[2];
-    __IO uint16_t OCCRVH;
-    uint8_t RESERVED3[2];
-    __IO uint16_t OCCRVL;
-    uint8_t RESERVED4[2];
-    __IO uint16_t OCCRWH;
-    uint8_t RESERVED5[2];
-    __IO uint16_t OCCRWL;
+    uint8_t RESERVED0[2];               /**< \brief 保留*/
+    __IO uint16_t OCCRUH;               /**< \brief 通用比较基准寄存器UH*/
+    uint8_t RESERVED1[2];               /**< \brief 保留*/
+    __IO uint16_t OCCRUL;               /**< \brief 通用比较基准寄存器UL*/
+    uint8_t RESERVED2[2];               /**< \brief 保留*/
+    __IO uint16_t OCCRVH;               /**< \brief 通用比较基准寄存器VH*/
+    uint8_t RESERVED3[2];               /**< \brief 保留*/
+    __IO uint16_t OCCRVL;               /**< \brief 通用比较基准寄存器VL*/
+    uint8_t RESERVED4[2];               /**< \brief 保留*/
+    __IO uint16_t OCCRWH;               /**< \brief 通用比较基准寄存器WH*/
+    uint8_t RESERVED5[2];               /**< \brief 保留*/
+    __IO uint16_t OCCRWL;               /**< \brief 通用比较基准寄存器WL*/
     union
     {
-        __IO uint16_t OCSRU;
+        __IO uint16_t OCSRU;            /**< \brief 通用控制状态寄存器U*/
         stc_tmr4_ocsr_field_t OCSRU_f;
     };
     union
     {
-        __IO uint16_t OCERU;
+        __IO uint16_t OCERU;            /**< \brief 通用扩展控制寄存器U*/
         stc_tmr4_ocer_field_t OCERU_f;
     };
     union
     {
-        __IO uint16_t OCSRV;
+        __IO uint16_t OCSRV;            /**< \brief 通用控制状态寄存器V*/
         stc_tmr4_ocsr_field_t OCSRV_f;
     };
     union
     {
-        __IO uint16_t OCERV;
+        __IO uint16_t OCERV;            /**< \brief 通用扩展控制寄存器V*/
         stc_tmr4_ocer_field_t OCERV_f;
     };
     union
     {
-        __IO uint16_t OCSRW;
+        __IO uint16_t OCSRW;            /**< \brief 通用控制状态寄存器W*/
         stc_tmr4_ocsr_field_t OCSRW_f;
     };
     union
     {
-        __IO uint16_t OCERW;
+        __IO uint16_t OCERW;            /**< \brief 通用扩展控制寄存器W*/
         stc_tmr4_ocer_field_t OCERW_f;
     };
     union
     {
-        __IO uint16_t OCMRHUH;
+        __IO uint16_t OCMRHUH;          /**< \brief 通用模式控制寄存器UH*/
         stc_tmr4_ocmrh_field_t OCMRHUH_f;
     };
-    uint8_t RESERVED13[2];
+    uint8_t RESERVED13[2];              /**< \brief 保留*/
     union
     {
-        __IO uint32_t OCMRLUL;
+        __IO uint32_t OCMRLUL;          /**< \brief 通用模式控制寄存器UL*/
         stc_tmr4_ocmrl_field_t OCMRLUL_f;
     };
     union
     {
-        __IO uint16_t OCMRHVH;
+        __IO uint16_t OCMRHVH;          /**< \brief 通用模式控制寄存器VH*/
         stc_tmr4_ocmrh_field_t OCMRHVH_f;
     };
-    uint8_t RESERVED15[2];
+    uint8_t RESERVED15[2];              /**< \brief 保留*/
     union
     {
-        __IO uint32_t OCMRLVL;
+        __IO uint32_t OCMRLVL;          /**< \brief 通用模式控制寄存器VL*/
         stc_tmr4_ocmrl_field_t OCMRLVL_f;
     };
     union
     {
-        __IO uint16_t OCMRHWH;
+        __IO uint16_t OCMRHWH;          /**< \brief 通用模式控制寄存器WH*/
         stc_tmr4_ocmrh_field_t OCMRHWH_f;
     };
-    uint8_t RESERVED17[2];
+    uint8_t RESERVED17[2];              /**< \brief 保留*/
     union
     {
-        __IO uint32_t OCMRLWL;
+        __IO uint32_t OCMRLWL;          /**< \brief 通用模式控制寄存器WL*/
         stc_tmr4_ocmrl_field_t OCMRLWL_f;
     };
-    uint8_t RESERVED18[6];
-    __IO uint16_t CPSR;
-    uint8_t RESERVED19[2];
-    __IO uint16_t CNTR;
+    uint8_t RESERVED18[6];              /**< \brief 保留*/
+    __IO uint16_t CPSR;                 /**< \brief 周期基准寄存器*/
+    uint8_t RESERVED19[2];              /**< \brief 保留*/
+    __IO uint16_t CNTR;                 /**< \brief 计数值寄存器*/
     union
     {
-        __IO uint16_t CCSR;
+        __IO uint16_t CCSR;             /**< \brief 控制状态寄存器*/
         stc_tmr4_ccsr_field_t CCSR_f;
     };
     union
     {
-        __IO uint16_t CVPR;
+        __IO uint16_t CVPR;             /**< \brief 有效周期寄存器*/
         stc_tmr4_cvpr_field_t CVPR_f;
     };
-    uint8_t RESERVED22[54];
-    __IO uint16_t PFSRU;
-    __IO uint16_t PDARU;
-    __IO uint16_t PDBRU;
-    uint8_t RESERVED25[2];
-    __IO uint16_t PFSRV;
-    __IO uint16_t PDARV;
-    __IO uint16_t PDBRV;
-    uint8_t RESERVED28[2];
-    __IO uint16_t PFSRW;
-    __IO uint16_t PDARW;
-    __IO uint16_t PDBRW;
+    uint8_t RESERVED22[54];             /**< \brief 保留*/
+    __IO uint16_t PFSRU;                /**< \brief PWM滤波控制寄存器U*/
+    __IO uint16_t PDARU;                /**< \brief PWM死区控制寄存器AU*/
+    __IO uint16_t PDBRU;                /**< \brief PWM死区控制寄存器BU*/
+    uint8_t RESERVED25[2];              /**< \brief 保留*/
+    __IO uint16_t PFSRV;                /**< \brief PWM滤波控制寄存器V*/
+    __IO uint16_t PDARV;                /**< \brief PWM死区控制寄存器AU*/
+    __IO uint16_t PDBRV;                /**< \brief PWM死区控制寄存器BU*/
+    uint8_t RESERVED28[2];              /**< \brief 保留*/
+    __IO uint16_t PFSRW;                /**< \brief PWM滤波控制寄存器V*/
+    __IO uint16_t PDARW;                /**< \brief PWM死区控制寄存器AW*/
+    __IO uint16_t PDBRW;                /**< \brief PWM死区控制寄存器BW*/
     union
     {
-        __IO uint16_t POCRU;
+        __IO uint16_t POCRU;            /**< \brief PWM基本控制寄存器U*/
         stc_tmr4_pocr_field_t POCRU_f;
     };
-    uint8_t RESERVED32[2];
+    uint8_t RESERVED32[2];              /**< \brief 保留*/
     union
     {
-        __IO uint16_t POCRV;
+        __IO uint16_t POCRV;            /**< \brief PWM基本控制寄存器V*/
         stc_tmr4_pocr_field_t POCRV_f;
     };
-    uint8_t RESERVED33[2];
+    uint8_t RESERVED33[2];              /**< \brief 保留*/
     union
     {
-        __IO uint16_t POCRW;
+        __IO uint16_t POCRW;            /**< \brief PWM基本控制寄存器W*/
         stc_tmr4_pocr_field_t POCRW_f;
     };
-    uint8_t RESERVED34[2];
+    uint8_t RESERVED34[2];              /**< \brief 保留*/
     union
     {
-        __IO uint16_t RCSR;
+        __IO uint16_t RCSR;             /**< \brief 重载控制状态寄存器*/
         stc_tmr4_rcsr_field_t RCSR_f;
     };
-    uint8_t RESERVED35[12];
-    __IO uint16_t SCCRUH;
-    uint8_t RESERVED36[2];
-    __IO uint16_t SCCRUL;
-    uint8_t RESERVED37[2];
-    __IO uint16_t SCCRVH;
-    uint8_t RESERVED38[2];
-    __IO uint16_t SCCRVL;
-    uint8_t RESERVED39[2];
-    __IO uint16_t SCCRWH;
-    uint8_t RESERVED40[2];
-    __IO uint16_t SCCRWL;
+    uint8_t RESERVED35[12];             /**< \brief 保留*/
+    __IO uint16_t SCCRUH;               /**< \brief 专用比较基准寄存器UH*/
+    uint8_t RESERVED36[2];              /**< \brief 保留*/
+    __IO uint16_t SCCRUL;               /**< \brief 专用比较基准寄存器UL*/
+    uint8_t RESERVED37[2];              /**< \brief 保留*/
+    __IO uint16_t SCCRVH;               /**< \brief 专用比较基准寄存器VH*/
+    uint8_t RESERVED38[2];              /**< \brief 保留*/
+    __IO uint16_t SCCRVL;               /**< \brief 专用比较基准寄存器VL*/
+    uint8_t RESERVED39[2];              /**< \brief 保留*/
+    __IO uint16_t SCCRWH;               /**< \brief 专用比较基准寄存器WH*/
+    uint8_t RESERVED40[2];              /**< \brief 保留*/
+    __IO uint16_t SCCRWL;               /**< \brief 专用比较基准寄存器WL*/
     union
     {
-        __IO uint16_t SCSRUH;
+        __IO uint16_t SCSRUH;           /**< \brief 专用控制状态寄存器UH*/
         stc_tmr4_scsr_field_t SCSRUH_f;
     };
     union
     {
-        __IO uint16_t SCMRUH;
+        __IO uint16_t SCMRUH;           /**< \brief 专用模式控制寄存器UH*/
         stc_tmr4_scmr_field_t SCMRUH_f;
     };
     union
     {
-        __IO uint16_t SCSRUL;
+        __IO uint16_t SCSRUL;           /**< \brief 专用控制状态寄存器UL*/
         stc_tmr4_scsr_field_t SCSRUL_f;
     };
     union
     {
-        __IO uint16_t SCMRUL;
+        __IO uint16_t SCMRUL;           /**< \brief 专用模式控制寄存器UL*/
         stc_tmr4_scmr_field_t SCMRUL_f;
     };
     union
     {
-        __IO uint16_t SCSRVH;
+        __IO uint16_t SCSRVH;           /**< \brief 专用控制状态寄存器VH*/
         stc_tmr4_scsr_field_t SCSRVH_f;
     };
     union
     {
-        __IO uint16_t SCMRVH;
+        __IO uint16_t SCMRVH;           /**< \brief 专用模式控制寄存器VH*/
         stc_tmr4_scmr_field_t SCMRVH_f;
     };
     union
     {
-        __IO uint16_t SCSRVL;
+        __IO uint16_t SCSRVL;           /**< \brief 专用控制状态寄存器VL*/
         stc_tmr4_scsr_field_t SCSRVL_f;
     };
     union
     {
-        __IO uint16_t SCMRVL;
+        __IO uint16_t SCMRVL;           /**< \brief 专用模式控制寄存器VL*/
         stc_tmr4_scmr_field_t SCMRVL_f;
     };
     union
     {
-        __IO uint16_t SCSRWH;
+        __IO uint16_t SCSRWH;           /**< \brief 专用控制状态寄存器WH*/
         stc_tmr4_scsr_field_t SCSRWH_f;
     };
     union
     {
-        __IO uint16_t SCMRWH;
+        __IO uint16_t SCMRWH;           /**< \brief 专用模式控制寄存器WH*/
         stc_tmr4_scmr_field_t SCMRWH_f;
     };
     union
     {
-        __IO uint16_t SCSRWL;
+        __IO uint16_t SCSRWL;           /**< \brief 专用控制状态寄存器WL*/
         stc_tmr4_scsr_field_t SCSRWL_f;
     };
     union
     {
-        __IO uint16_t SCMRWL;
+        __IO uint16_t SCMRWL;           /**< \brief 专用模式控制寄存器WL*/
         stc_tmr4_scmr_field_t SCMRWL_f;
     };
-    uint8_t RESERVED53[16];
+    uint8_t RESERVED53[16];             /**< \brief 保留*/
     union
     {
-        __IO uint16_t ECSR;
+        __IO uint16_t ECSR;             /**< \brief EMB控制状态寄存器*/
         stc_tmr4_ecsr_field_t ECSR_f;
     };
 }amhw_hc32f460_tim4_t;
@@ -472,22 +514,22 @@ typedef struct
 {
     union
     {
-        __IO uint16_t ECER1;
+        __IO uint16_t ECER1;              /**< \brief EMB扩展控制寄存器1*/
         stc_tmr4_cr_ecer1_field_t ECER1_f;
     };
-    uint8_t RESERVED1[2];
+    uint8_t RESERVED1[2];                 /**< \brief 保留*/
     union
     {
-        __IO uint16_t ECER2;
+        __IO uint16_t ECER2;              /**< \brief EMB扩展控制寄存器2*/
         stc_tmr4_cr_ecer2_field_t ECER2_f;
     };
-    uint8_t RESERVED2[2];
+    uint8_t RESERVED2[2];                 /**< \brief 保留*/
     union
     {
-        __IO uint16_t ECER3;
+        __IO uint16_t ECER3;              /**< \brief EMB扩展控制寄存器3*/
         stc_tmr4_cr_ecer3_field_t ECER3_f;
     };
-}amhw_hc32f460_tim4_cr_t;
+} amhw_hc32f460_tim4_cr_t;
 
 typedef enum timer4_cnt_int_mask
 {
@@ -689,7 +731,8 @@ typedef enum en_timer4_pwm_ch
  * \return ARR重载寄存器的值
  */
 am_static_inline
-uint16_t amhw_hc32f460_tim4_arr_count_get (amhw_hc32f460_tim4_t *p_hw_tim, uint8_t chan)
+uint16_t amhw_hc32f460_tim4_arr_count_get (amhw_hc32f460_tim4_t *p_hw_tim,
+                                           uint8_t               chan)
 {
     return p_hw_tim->CPSR;
 }
@@ -717,21 +760,24 @@ void amhw_hc32f460_tim4_arr_count_set (amhw_hc32f460_tim4_t *p_hw_tim, uint8_t c
  * \return CNT计数寄存器的值
  */
 am_static_inline
-uint16_t amhw_hc32f460_tim4_cnt16_count_get (amhw_hc32f460_tim4_t *p_hw_tim, uint8_t chan)
+uint16_t amhw_hc32f460_tim4_cnt16_count_get (amhw_hc32f460_tim4_t *p_hw_tim,
+                                             uint8_t               chan)
 {
     return (uint16_t)p_hw_tim->CNTR;
 }
 
 am_static_inline
-void amhw_hc32f460_tim4_cnt16_count_set (amhw_hc32f460_tim4_t *p_hw_tim, uint8_t chan, uint16_t value)
+void amhw_hc32f460_tim4_cnt16_count_set (amhw_hc32f460_tim4_t *p_hw_tim,
+                                         uint8_t               chan,
+                                         uint16_t              value)
 {
     p_hw_tim->CNTR = value;
 }
 
 am_static_inline
 am_bool_t amhw_hc32f460_tim4_oco_write_occr(amhw_hc32f460_tim4_t *p_hw_tim,
-                                timer4_oco_ch_t enCh,
-                                uint16_t u16Occr)
+                                            timer4_oco_ch_t       enCh,
+                                            uint16_t              u16Occr)
 {
     __IO uint16_t *pu16OCCR = NULL;
     am_bool_t enRet = AM_FALSE;
@@ -751,9 +797,9 @@ am_bool_t amhw_hc32f460_tim4_oco_write_occr(amhw_hc32f460_tim4_t *p_hw_tim,
 }
 
 am_static_inline
-am_bool_t amhw_hc32f460_tim4_oco_output_cmp_cmd(amhw_hc32f460_tim4_t *p_hw_tim,
-                                timer4_oco_ch_t enCh,
-                                tim4_functional_state_t enCmd)
+am_bool_t amhw_hc32f460_tim4_oco_output_cmp_cmd(amhw_hc32f460_tim4_t   *p_hw_tim,
+                                                timer4_oco_ch_t         enCh,
+                                                tim4_functional_state_t enCmd)
 {
     __IO stc_tmr4_ocsr_field_t *pstcOCSR = NULL;
     am_bool_t enRet = AM_FALSE;
@@ -803,21 +849,21 @@ tim4_counter_mode_t amhw_hc32f460_tim4_mode_get (amhw_hc32f460_tim4_t *p_hw_tim)
  */
 am_static_inline
 void amhw_hc32f460_tim4_mode_set (amhw_hc32f460_tim4_t     *p_hw_tim,
-                               tim4_counter_mode_t mode)
+                                  tim4_counter_mode_t       mode)
 {
     p_hw_tim->CCSR_f.MODE = mode;
 }
 
 am_static_inline
 void amhw_hc32f460_tim4_buf_set (amhw_hc32f460_tim4_t     *p_hw_tim,
-                               am_bool_t value)
+                                 am_bool_t                 value)
 {
     p_hw_tim->CCSR_f.BUFEN = value;
 }
 
 am_static_inline
 void amhw_hc32f460_tim4_ext_clk_set (amhw_hc32f460_tim4_t     *p_hw_tim,
-                               am_bool_t value)
+                                     am_bool_t                 value)
 {
     p_hw_tim->CCSR_f.ECKEN = value;
 }
@@ -856,17 +902,17 @@ void amhw_hc32f460_tim4_enable (amhw_hc32f460_tim4_t *p_hw_tim, uint8_t chan)
  * \brief 内部时钟分频选择
  */
 typedef enum {
-    AMHW_HC32F460_TIM4_CLK_DIV0 = 0,    /* 1分频 */
-    AMHW_HC32F460_TIM4_CLK_DIV2,        /* 2分频 */
-    AMHW_HC32F460_TIM4_CLK_DIV4,        /* 4分频 */
-    AMHW_HC32F460_TIM4_CLK_DIV8,        /* 8分频 */
-    AMHW_HC32F460_TIM4_CLK_DIV16,       /* 16分频 */
-    AMHW_HC32F460_TIM4_CLK_DIV32,       /* 32分频 */
-    AMHW_HC32F460_TIM4_CLK_DIV64,       /* 64分频 */
-    AMHW_HC32F460_TIM4_CLK_DIV128,      /* 128分频 */
-    AMHW_HC32F460_TIM4_CLK_DIV256,      /* 256分频 */
-    AMHW_HC32F460_TIM4_CLK_DIV512,      /* 512分频 */
-    AMHW_HC32F460_TIM4_CLK_DIV1024,     /* 1024分频 */
+    AMHW_HC32F460_TIM4_CLK_DIV0 = 0,    /**< \brief 1分频 */
+    AMHW_HC32F460_TIM4_CLK_DIV2,        /**< \brief 2分频 */
+    AMHW_HC32F460_TIM4_CLK_DIV4,        /**< \brief 4分频 */
+    AMHW_HC32F460_TIM4_CLK_DIV8,        /**< \brief 8分频 */
+    AMHW_HC32F460_TIM4_CLK_DIV16,       /**< \brief 16分频 */
+    AMHW_HC32F460_TIM4_CLK_DIV32,       /**< \brief 32分频 */
+    AMHW_HC32F460_TIM4_CLK_DIV64,       /**< \brief 64分频 */
+    AMHW_HC32F460_TIM4_CLK_DIV128,      /**< \brief 128分频 */
+    AMHW_HC32F460_TIM4_CLK_DIV256,      /**< \brief 256分频 */
+    AMHW_HC32F460_TIM4_CLK_DIV512,      /**< \brief 512分频 */
+    AMHW_HC32F460_TIM4_CLK_DIV1024,     /**< \brief 1024分频 */
 }amhw_hc32f460_tim4_clkdiv_t;
 
 /**
@@ -892,9 +938,9 @@ amhw_hc32f460_tim4_clkdiv_t
 #define TMR4_PFSRx(__TMR4x__, __CH__)       ((uint32_t)&(__TMR4x__)->PFSRU + ((uint32_t)(__CH__))*8ul)
 
 am_static_inline
-am_bool_t amhw_hc32f460_tim4_pwm_init(amhw_hc32f460_tim4_t *p_hw_tim,
-                                en_timer4_pwm_ch_t enCh,
-                                const stc_timer4_pwm_init_t *pstcInitCfg)
+am_bool_t amhw_hc32f460_tim4_pwm_init(amhw_hc32f460_tim4_t        *p_hw_tim,
+                                      en_timer4_pwm_ch_t           enCh,
+                                      const stc_timer4_pwm_init_t *pstcInitCfg)
 {
     __IO stc_tmr4_pocr_field_t *pstcPOCR_f = NULL;
     __IO stc_tmr4_rcsr_field_t *pstcRCSR_f = NULL;
@@ -952,40 +998,44 @@ am_bool_t amhw_hc32f460_tim4_pwm_init(amhw_hc32f460_tim4_t *p_hw_tim,
  */
 am_static_inline
 void amhw_hc32f460_tim4_mode_clkdiv_set (amhw_hc32f460_tim4_t       *p_hw_tim,
-                                      uint8_t  chan, 
-                                      amhw_hc32f460_tim4_clkdiv_t clkdiv)
+                                         uint8_t                     chan,
+                                         amhw_hc32f460_tim4_clkdiv_t clkdiv)
 {
     p_hw_tim->CCSR_f.CKDIV = clkdiv;
 }
 
 am_static_inline
-void amhw_hc32f460_tim4_intz_set (amhw_hc32f460_tim4_t *p_hw_tim, am_bool_t value)
+void amhw_hc32f460_tim4_intz_set (amhw_hc32f460_tim4_t *p_hw_tim,
+                                  am_bool_t             value)
 {
     p_hw_tim->CCSR_f.IRQZEN = value;
 }
 
 am_static_inline
-void amhw_hc32f460_tim4_intp_set (amhw_hc32f460_tim4_t *p_hw_tim, am_bool_t value)
+void amhw_hc32f460_tim4_intp_set (amhw_hc32f460_tim4_t *p_hw_tim,
+                                  am_bool_t             value)
 {
     p_hw_tim->CCSR_f.IRQPEN = value;
 }
 
 am_static_inline
-void amhw_hc32f460_tim4_zim_set (amhw_hc32f460_tim4_t *p_hw_tim, timer4_cnt_int_mask_t mask)
+void amhw_hc32f460_tim4_zim_set (amhw_hc32f460_tim4_t *p_hw_tim,
+                                 timer4_cnt_int_mask_t mask)
 {
     p_hw_tim->CVPR_f.ZIM = mask;
 }
 
 am_static_inline
-void amhw_hc32f460_tim4_pim_set (amhw_hc32f460_tim4_t *p_hw_tim, timer4_cnt_int_mask_t mask)
+void amhw_hc32f460_tim4_pim_set (amhw_hc32f460_tim4_t *p_hw_tim,
+                                 timer4_cnt_int_mask_t mask)
 {
     p_hw_tim->CVPR_f.PIM = mask;
 }
 
 am_static_inline
-am_bool_t amhw_hc32f460_tim4_oco_init(amhw_hc32f460_tim4_t *p_hw_tim,
-                                timer4_oco_ch_t enCh,
-                                const stc_timer4_oco_init_t* pstcInitCfg)
+am_bool_t amhw_hc32f460_tim4_oco_init(amhw_hc32f460_tim4_t        *p_hw_tim,
+                                      timer4_oco_ch_t              enCh,
+                                      const stc_timer4_oco_init_t *pstcInitCfg)
 {
     __IO stc_tmr4_ocsr_field_t* pstcOCSR = NULL;
     __IO stc_tmr4_ocer_field_t* pstcOCER = NULL;
@@ -1087,8 +1137,8 @@ am_bool_t amhw_hc32f460_tim4_oco_init(amhw_hc32f460_tim4_t *p_hw_tim,
                 /* set interrupt enable */
                 pstcOCSR->OCIEH = (uint16_t)(pstcInitCfg->enOcoIntCmd);
             }
-        }
-        else if (IS_VALID_OCO_LOW_CH(enCh)) /* channel: Timer4OcoOul, Timer4OcoOvl, Timer4OcoOwl */
+        }/* channel: Timer4OcoOul, Timer4OcoOvl, Timer4OcoOwl */
+        else if (IS_VALID_OCO_LOW_CH(enCh))
         {
             pstcOCSR->OCEL = (uint16_t)0u;
             pstcOCSR->OCFL = (uint16_t)0u;
@@ -1195,7 +1245,8 @@ am_bool_t amhw_hc32f460_tim4_oco_init(amhw_hc32f460_tim4_t *p_hw_tim,
  *         AM_FALSE ： 标志无效
  */
 am_static_inline
-am_bool_t amhw_hc32f460_tim4_int_flag_check(amhw_hc32f460_tim4_t *p_hw_tim, timer4_cnt_int_t flag)
+am_bool_t amhw_hc32f460_tim4_int_flag_check(amhw_hc32f460_tim4_t *p_hw_tim,
+                                            timer4_cnt_int_t      flag)
 {
     uint8_t value = 0;
     if(TIMER4_CNT_ZERO_MATCH_INT == flag)
@@ -1211,7 +1262,8 @@ am_bool_t amhw_hc32f460_tim4_int_flag_check(amhw_hc32f460_tim4_t *p_hw_tim, time
 }
 
 am_static_inline
-void amhw_hc32f460_tim4_int_flag_clr(amhw_hc32f460_tim4_t *p_hw_tim, timer4_cnt_int_t flag)
+void amhw_hc32f460_tim4_int_flag_clr(amhw_hc32f460_tim4_t *p_hw_tim,
+                                     timer4_cnt_int_t      flag)
 {
     if(TIMER4_CNT_ZERO_MATCH_INT == flag)
     {
@@ -1238,9 +1290,9 @@ void amhw_hc32f460_tim4_cnt_value_clr(amhw_hc32f460_tim4_t *p_hw_tim)
 }
 
 am_static_inline
-am_bool_t amhw_hc32f460_tim4_oco_set_h_ch_cmp_mode(amhw_hc32f460_tim4_t *p_hw_tim,
-                                timer4_oco_ch_t enCh,
-                                const stc_oco_high_ch_compare_mode_t *pstcMode)
+am_bool_t amhw_hc32f460_tim4_oco_set_h_ch_cmp_mode(amhw_hc32f460_tim4_t                 *p_hw_tim,
+                                                   timer4_oco_ch_t                       enCh,
+                                                   const stc_oco_high_ch_compare_mode_t *pstcMode)
 {
     uint16_t u16OCMR = 0u;
     __IO uint16_t *pu16OCMR = NULL;
@@ -1274,9 +1326,9 @@ am_bool_t amhw_hc32f460_tim4_oco_set_h_ch_cmp_mode(amhw_hc32f460_tim4_t *p_hw_ti
 }
 
 am_static_inline
-am_bool_t  amhw_hc32f460_tim4_oco_set_l_ch_cmp_mode(amhw_hc32f460_tim4_t *p_hw_tim,
-                                 timer4_oco_ch_t enCh,
-                                 const stc_oco_low_ch_compare_mode_t *pstcMode)
+am_bool_t  amhw_hc32f460_tim4_oco_set_l_ch_cmp_mode(amhw_hc32f460_tim4_t                *p_hw_tim,
+                                                    timer4_oco_ch_t                      enCh,
+                                                    const stc_oco_low_ch_compare_mode_t *pstcMode)
 {
     uint32_t u32OCMR = 0ul;
     __IO uint32_t *pu32OCMR = NULL;

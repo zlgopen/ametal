@@ -41,11 +41,11 @@ includes
  * SPI 控制器状态
  */
 
-#define __SPI_ST_IDLE               0                   /* 空闲状态 */
-#define __SPI_ST_MSG_START          1                   /* 消息开始 */
-#define __SPI_ST_TRANS_START        2                   /* 传输开始 */
-#define __SPI_ST_M_SEND_DATA        3                   /* 主机发送 */
-#define __SPI_ST_M_RECV_DATA        4                   /* 主机接收 */
+#define __SPI_ST_IDLE               0                   /**< \brief 空闲状态 */
+#define __SPI_ST_MSG_START          1                   /**< \brief 消息开始 */
+#define __SPI_ST_TRANS_START        2                   /**< \brief 传输开始 */
+#define __SPI_ST_M_SEND_DATA        3                   /**< \brief 主机发送 */
+#define __SPI_ST_M_RECV_DATA        4                   /**< \brief 主机接收 */
 
 /**
  * SPI 控制器事件
@@ -57,10 +57,10 @@ includes
 #define __SPI_EVT_PAR_GET(event)    ((event >> 16) & 0xFFFF)
 #define __SPI_EVT(evt_num, evt_par) (((evt_num) & 0xFFFF) | ((evt_par) << 16))
 
-#define __SPI_EVT_NONE              __SPI_EVT(0, 0)     /* 无事件 */
-#define __SPI_EVT_TRANS_LAUNCH      __SPI_EVT(1, 0)     /* 传输就绪 */
-#define __SPI_EVT_M_SEND_DATA       __SPI_EVT(2, 0)     /* 发送数据 */
-#define __SPI_EVT_M_RECV_DATA       __SPI_EVT(3, 0)     /* 接收数据 */
+#define __SPI_EVT_NONE              __SPI_EVT(0, 0)     /**< \brief 无事件 */
+#define __SPI_EVT_TRANS_LAUNCH      __SPI_EVT(1, 0)     /**< \brief 传输就绪 */
+#define __SPI_EVT_M_SEND_DATA       __SPI_EVT(2, 0)     /**< \brief 发送数据 */
+#define __SPI_EVT_M_RECV_DATA       __SPI_EVT(3, 0)     /**< \brief 接收数据 */
 
 /*******************************************************************************
   模块内函数声明
@@ -103,13 +103,13 @@ am_local am_const struct am_spi_drv_funcs __g_spi_drv_funcs = {
 
 /******************************************************************************/
 
-/* 获取SPI的输入频率 */
+/** \brief 获取SPI的输入频率 */
 #define __SPI_FRQIIN_GET(p_hw_spi)    am_clk_rate_get(p_this->p_devinfo->clk_id)
 
-/* 获取SPI支持的最大速度 */
+/** \brief 获取SPI支持的最大速度 */
 #define __SPI_MAXSPEED_GET(p_hw_spi) (__SPI_FRQIIN_GET(p_hw_spi) / 2)
 
-/* 获取SPI支持的最小速度 */
+/** \brief 获取SPI支持的最小速度 */
 #define __SPI_MINSPEED_GET(p_hw_spi) (__SPI_FRQIIN_GET(p_hw_spi) / 128)
 
 /**
@@ -155,10 +155,10 @@ void __spi_default_cs_dummy (am_spi_device_t *p_dev, int state)
 am_local
 void __spi_cs_on (am_hc32f460_spi_int_dev_t *p_this, am_spi_device_t *p_dev)
 {
-    /* if last device toggled after message */
+    /** \brief if last device toggled after message */
     if (p_this->p_tgl_dev != NULL) {
 
-        /* last message on defferent device */
+        /** \brief last message on defferent device */
         if (p_this->p_tgl_dev != p_dev) {
             p_this->p_tgl_dev->pfunc_cs(p_this->p_tgl_dev, 0);
         }
@@ -573,10 +573,10 @@ int __spi_msg_start (void              *p_drv,
         return -AM_EINVAL;
     }
 
-    p_msg->p_spi_dev       = p_dev; /* 设备参数信息存入到消息中 */
-    p_this->p_cur_msg      = p_msg; /* 将当前设备传输消息存入 */
-    p_this->nbytes_to_recv = 0;     /* 待接收字符数清0 */
-    p_this->data_ptr       = 0;     /* 已接收字符数清0 */
+    p_msg->p_spi_dev       = p_dev; /**< \brief 设备参数信息存入到消息中 */
+    p_this->p_cur_msg      = p_msg; /**< \brief 将当前设备传输消息存入 */
+    p_this->nbytes_to_recv = 0;     /**< \brief 待接收字符数清0 */
+    p_this->data_ptr       = 0;     /**< \brief 已接收字符数清0 */
 
     key = am_int_cpu_lock();
 
@@ -621,31 +621,31 @@ int __spi_mst_sm_event (am_hc32f460_spi_int_dev_t *p_dev, uint32_t event)
 
     while (1) {
 
-        if (new_event != __SPI_EVT_NONE) {     /* 检查新事件是否来自内部 */
+        if (new_event != __SPI_EVT_NONE) {     /**< \brief 检查新事件是否来自内部 */
             event     = new_event;
             new_event  = __SPI_EVT_NONE;
         }
 
         switch (p_dev->state) {
 
-        case __SPI_ST_IDLE:         /* 控制器处于空闲状态 */
+        case __SPI_ST_IDLE:         /**< \brief 控制器处于空闲状态 */
         {
             if (event != __SPI_EVT_TRANS_LAUNCH) {
-                return -AM_EINVAL;     /* 空闲状态等待的消息必须是启动传输 */
+                return -AM_EINVAL;     /**< \brief 空闲状态等待的消息必须是启动传输 */
             }
 
             /* 切换到消息开始状态，不用break */
         }
         /* no break */
 
-        case __SPI_ST_MSG_START:    /* 消息开始 */
+        case __SPI_ST_MSG_START:    /**< \brief 消息开始 */
         {
             am_spi_message_t  *p_cur_msg   = NULL;
 
             int key;
 
             if (event != __SPI_EVT_TRANS_LAUNCH) {
-                return -AM_EINVAL;  /* 消息开始状态等待的消息必须是启动传输 */
+                return -AM_EINVAL;  /**< \brief 消息开始状态等待的消息必须是启动传输 */
             }
 
             key = am_int_cpu_lock();
@@ -678,12 +678,12 @@ int __spi_mst_sm_event (am_hc32f460_spi_int_dev_t *p_dev, uint32_t event)
         }
         /* no break */
 
-        case __SPI_ST_TRANS_START:  /* 传输开始 */
+        case __SPI_ST_TRANS_START:  /**< \brief 传输开始 */
         {
             am_spi_message_t  *p_cur_msg   = p_dev->p_cur_msg;
 
             if (event != __SPI_EVT_TRANS_LAUNCH) {
-                return -AM_EINVAL;  /* 传输开始状态等待的消息必须是启动传输 */
+                return -AM_EINVAL;  /**< \brief 传输开始状态等待的消息必须是启动传输 */
             }
 
             /* 当前消息传输完成 */
@@ -736,12 +736,12 @@ int __spi_mst_sm_event (am_hc32f460_spi_int_dev_t *p_dev, uint32_t event)
             break;
         }
 
-        case __SPI_ST_M_SEND_DATA:    /* 发送数据 */
+        case __SPI_ST_M_SEND_DATA:    /**< \brief 发送数据 */
         {
             am_spi_transfer_t *p_cur_trans = p_dev->p_cur_trans;
 
             if (event != __SPI_EVT_M_SEND_DATA) {
-                return -AM_EINVAL;  /* 主机发送状态等待的消息必须是发送数据 */
+                return -AM_EINVAL;  /**< \brief 主机发送状态等待的消息必须是发送数据 */
             }
 
             /* 没有更多需要传送的数据了 */
@@ -776,10 +776,10 @@ int __spi_mst_sm_event (am_hc32f460_spi_int_dev_t *p_dev, uint32_t event)
             break;
         }
 
-        case __SPI_ST_M_RECV_DATA:   /* 接收数据 */
+        case __SPI_ST_M_RECV_DATA:   /**< \brief 接收数据 */
         {
             if (event != __SPI_EVT_M_RECV_DATA) {
-                return -AM_EINVAL;      /* 主机接收状态等待的消息必须是接收数据 */
+                return -AM_EINVAL;   /**< \brief 主机接收状态等待的消息必须是接收数据 */
             }
 
             /* 读取数据 */
@@ -959,7 +959,7 @@ uint32_t __spi_speed_cfg (am_hc32f460_spi_int_dev_t *p_dev,
                           uint32_t                target_speed)
 {
 
-    uint32_t clk, best_speed;  /* 计算出的速度 */
+    uint32_t clk, best_speed;  /**< \brief 计算出的速度 */
     uint8_t  i = 0;
     amhw_hc32f460_spi_clk_div_t baud_div = AMHW_HC32F460_SPI_CLK_DIV_2;
 

@@ -34,29 +34,29 @@
 /*******************************************************************************
   宏定义
 *******************************************************************************/
-#define __I2C_ST_IDLE             (0x10u)          /* 空闲状态 */
-#define __I2C_ST_MSG_START        (0x11u)          /* 消息传输开始状态 */
-#define __I2C_ST_TRANS_START      (0x12u)          /* 单个传输开始状态 */
-#define __I2C_ST_SEND_SLA_ADDR    (0x13u)          /* 发送从机地址状态 */
-#define __I2C_ST_M_SEND_DATA      (0x14u)          /* 发送数据状态 */
-#define __I2C_ST_M_RECV_DATA      (0x15u)          /* 接收数据状态 */
-#define __I2C_ST_ARBI_LOST        (0x16u)          /* 仲裁丢失状态         */
-#define __I2C_ST_TIMEOUT          (0x17u)          /* 超时状态            */
+#define __I2C_ST_IDLE             (0x10u)          /**< \brief 空闲状态 */
+#define __I2C_ST_MSG_START        (0x11u)          /**< \brief 消息传输开始状态 */
+#define __I2C_ST_TRANS_START      (0x12u)          /**< \brief 单个传输开始状态 */
+#define __I2C_ST_SEND_SLA_ADDR    (0x13u)          /**< \brief 发送从机地址状态 */
+#define __I2C_ST_M_SEND_DATA      (0x14u)          /**< \brief 发送数据状态 */
+#define __I2C_ST_M_RECV_DATA      (0x15u)          /**< \brief 接收数据状态 */
+#define __I2C_ST_ARBI_LOST        (0x16u)          /**< \brief 仲裁丢失状态         */
+#define __I2C_ST_TIMEOUT          (0x17u)          /**< \brief 超时状态            */
 
 
-#define __I2C_EVT_NONE            (0xFFu)          /* 无事件 */
-#define __I2C_EVT_MSG_LAUNCH      (0xFEu)          /* 开始处理一个新的消息 */
-#define __I2C_EVT_TRANS_LAUNCH    (0xFDu)          /* 开始处理一个新的传输 */
+#define __I2C_EVT_NONE            (0xFFu)          /**< \brief 无事件 */
+#define __I2C_EVT_MSG_LAUNCH      (0xFEu)          /**< \brief 开始处理一个新的消息 */
+#define __I2C_EVT_TRANS_LAUNCH    (0xFDu)          /**< \brief 开始处理一个新的传输 */
 
-#define __I2C_EVT_MST_IDLE         AM_SBF(0x0, 1)  /* 主机空闲事件 */
-#define __I2C_EVT_MST_RX           AM_SBF(0x1, 1)  /* 可以接收数据 */
-#define __I2C_EVT_MST_TX           AM_SBF(0x2, 1)  /* 可以发送数据 */
+#define __I2C_EVT_MST_IDLE         AM_SBF(0x0, 1)  /**< \brief 主机空闲事件 */
+#define __I2C_EVT_MST_RX           AM_SBF(0x1, 1)  /**< \brief 可以接收数据 */
+#define __I2C_EVT_MST_TX           AM_SBF(0x2, 1)  /**< \brief 可以发送数据 */
 
-#define __I2C_EVT_MST_ADDR_NO_ACK  AM_SBF(0x3, 1)  /* 地址无应答           */
-#define __I2C_EVT_MST_DATA_NO_ACK  AM_SBF(0x4, 1)  /* 数据无应答           */
-#define __I2C_EVT_MST_BERR         AM_SBF(0x5, 1)  /* 总线错误             */
+#define __I2C_EVT_MST_ADDR_NO_ACK  AM_SBF(0x3, 1)  /**< \brief 地址无应答           */
+#define __I2C_EVT_MST_DATA_NO_ACK  AM_SBF(0x4, 1)  /**< \brief 数据无应答           */
+#define __I2C_EVT_MST_BERR         AM_SBF(0x5, 1)  /**< \brief 总线错误             */
 
-#define __I2C_EVT_MST_TIMEOUT      AM_SBF(0x6, 1)  /* 超时错误             */
+#define __I2C_EVT_MST_TIMEOUT      AM_SBF(0x6, 1)  /**< \brief 超时错误             */
 
 /*******************************************************************************
   函数声明
@@ -243,7 +243,9 @@ static uint8_t __hc32f460_master_send_addr(amhw_hc32f460_i2c_t *p_hw_i2c, uint8_
     return AM_TRUE;
 }
 
-static uint8_t __hc32f460_master_read_data(amhw_hc32f460_i2c_t *p_hw_i2c, uint8_t *pRxData, uint32_t u32Size)
+static uint8_t __hc32f460_master_read_data(amhw_hc32f460_i2c_t *p_hw_i2c,
+                                           uint8_t             *pRxData,
+                                           uint32_t             u32Size)
 {
     uint32_t u32TimeOut = TIMEOUT;
 
@@ -272,7 +274,9 @@ static uint8_t __hc32f460_master_read_data(amhw_hc32f460_i2c_t *p_hw_i2c, uint8_
     return AM_OK;
 }
 
-static uint8_t __hc32f460_master_write_data(amhw_hc32f460_i2c_t *p_hw_i2c, uint8_t *pTxData, uint32_t u32Size)
+static uint8_t __hc32f460_master_write_data(amhw_hc32f460_i2c_t *p_hw_i2c,
+                                            uint8_t             *pTxData,
+                                            uint32_t             u32Size)
 {
     uint32_t u32TimeOut = TIMEOUT;
 
@@ -521,7 +525,7 @@ am_local void __softimer_callback (void *p_arg)
 static int __i2c_msg_start (void *p_drv, am_i2c_message_t *p_msg)
 {
     am_hc32f460_i2c_dev_t *p_dev    = (am_hc32f460_i2c_dev_t *)p_drv;    
-//    amhw_hc32f460_i2c_t   *p_hw_i2c = (amhw_hc32f460_i2c_t *)p_dev->p_devinfo->i2c_regbase;
+
     int key;
 
     if ( (p_dev              == NULL) ||
@@ -558,7 +562,7 @@ static int __i2c_msg_start (void *p_drv, am_i2c_message_t *p_msg)
  * \brief I2C初始化
  */
 am_i2c_handle_t am_hc32f460_i2c_init (am_hc32f460_i2c_dev_t           *p_dev,
-                                 const am_hc32f460_i2c_devinfo_t *p_devinfo)
+                                      const am_hc32f460_i2c_devinfo_t *p_devinfo)
 {
     if (p_dev == NULL || p_devinfo == NULL) {
         return NULL;
@@ -684,7 +688,6 @@ static int __i2c_mst_sm_event (am_hc32f460_i2c_dev_t *p_dev, uint32_t event)
         if(p_cur_trans[p_cur_msg->done_num].flags & AM_I2C_M_RD) {  /* 读操作 */
             p_dev->state = __I2C_ST_MSG_START;
             __hc32f460_master_start_or_restart(p_hw_i2c, GENERATE_RESTART);
-//            __hc32f460_master_start_or_restart(p_hw_i2c, GENERATE_START);
             __hc32f460_master_send_addr(p_hw_i2c, (uint8_t)(p_cur_trans->addr << 1u) | ADDRESS_R);
             
             /* 接收数据 */

@@ -43,10 +43,10 @@
 #include "hc32f460_inum.h"
 #include "am_clk.h"
 
-static volatile uint8_t g_buf_src[128];           /**< \brief 源端数据缓冲区 */
-static volatile uint8_t g_buf_dst[128];           /**< \brief 目标端数据缓冲区 */
+static volatile uint8_t g_buf_src[128];      /**< \brief 源端数据缓冲区 */
+static volatile uint8_t g_buf_dst[128];      /**< \brief 目标端数据缓冲区 */
 
-static volatile am_bool_t g_trans_done; /**< \brief 传输完成标志 */
+static volatile am_bool_t g_trans_done;      /**< \brief 传输完成标志 */
 
 static amhw_hc32f460_dma_xfer_desc_t g_desc; /**< \brief 描述符 */
 /**
@@ -57,7 +57,7 @@ static void dma_isr (void *p_arg , uint32_t flag)
     if (flag == AM_HC32F460_DMA_INT_COMPLETE) {
         g_trans_done = AM_TRUE;
     } else if (flag == AM_HC32F460_DMA_INT_BLK_COMPLETE) {
-        *(volatile uint32_t *)HC32F460_AOS_BASE = 0x1;
+        am_hc32f460_dma_soft_trig();
     }
 }
 
@@ -102,24 +102,24 @@ static int dma_m2m_test (am_hc32f460_dma_dev_t *p_dev, uint8_t dma_chan)
 
     /* 启动 DMA 传输，马上开始传输 */
     if (am_hc32f460_dma_xfer_desc_chan_cfg(p_dev,
-    		                               &g_desc,
+                                           &g_desc,
                                            AMHW_HC32F460_DMA_MER_TO_MER, /* 内存到内存 */
                                            dma_chan) == AM_ERROR) {
         return AM_ERROR;
     } else {
-    	/*外设电路触发功能使能*/
-    	am_clk_enable(CLK_PTDIS);
+        /*外设电路触发功能使能*/
+        am_clk_enable(CLK_PTDIS);
 
-    	am_mdelay(500);
+        am_mdelay(500);
 
-    	/* 设置触发源为内部事件触发 */
-    	am_hc32f460_dma_chan_src_set(p_dev, dma_chan, EVT_AOS_STRG);
+        /* 设置触发源为内部事件触发 */
+        am_hc32f460_dma_chan_src_set(p_dev, dma_chan, EVT_AOS_STRG);
 
         am_hc32f460_dma_chan_start(p_dev, dma_chan);
     }
 
     /* 软件使能内部触发事件触发DMA */
-    *(volatile uint32_t *)HC32F460_AOS_BASE = 0x1;
+    am_hc32f460_dma_soft_trig();
 
     while(g_trans_done == AM_FALSE); /* 等待传输完成 */
 

@@ -78,8 +78,7 @@ static void dma_isr (void *p_arg , uint32_t flag)
         g_trans_done = AM_TRUE;
     }
 }
-//#pragma GCC push_options
-//#pragma GCC optimize("O0")
+
 static void __hc32f460_adc_init (amhw_hc32f460_adc_t *p_hw_adc,
                                  amhw_adc_chmux_t    *p_adc_chan,
                                  int                  chan_num)
@@ -115,7 +114,7 @@ static void __hc32f460_adc_init (amhw_hc32f460_adc_t *p_hw_adc,
     amhw_hc32f460_adc_int_disable(p_hw_adc, AMHW_HC32F460_ADC_INT_EOCAF);
     amhw_hc32f460_adc_int_disable(p_hw_adc, AMHW_HC32F460_ADC_INT_EOCBF);
 }
-//#pragma GCC push_options
+
 /**
  * \brief Àý³ÌÈë¿Ú
  */

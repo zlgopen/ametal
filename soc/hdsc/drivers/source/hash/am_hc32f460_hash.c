@@ -130,7 +130,10 @@ uint32_t am_hc32f460_hash_compute (am_hash_handle_t handle,
 
     p_hw_hash = (amhw_hc32f460_hash_t *)(handle->p_devinfo->reg_base);
 
-    group_num_to_fill = __hc32f460_hash_data_fill(p_hash_data, data_length, group1, group2);
+    group_num_to_fill = __hc32f460_hash_data_fill(p_hash_data,
+                                                  data_length,
+                                                  group1,
+                                                  group2);
 
     while(amhw_hc32f460_hash_status_check (p_hw_hash));
     for (i = 0; i < group_num - 1; i++) {

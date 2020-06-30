@@ -59,7 +59,7 @@ typedef struct am_hc32f460_hash_dev {
 
 } am_hc32f460_hash_dev_t;
 
-/** \brief aes标准服务操作句柄类型定义 */
+/** \brief hash标准服务操作句柄类型定义 */
 typedef am_hc32f460_hash_dev_t *am_hash_handle_t;
 
 /**

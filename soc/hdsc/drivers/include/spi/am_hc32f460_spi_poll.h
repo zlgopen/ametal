@@ -74,7 +74,7 @@ typedef struct am_hc32f460_spi_poll_devinfo {
  */
 typedef struct am_hc32f460_spi_poll_dev {
 
-    am_spi_serv_t                   spi_serve;         /**< \brief SPI标准服务句柄 */
+    am_spi_serv_t                   spi_serve;       /**< \brief SPI标准服务句柄 */
     const am_hc32f460_spi_poll_devinfo_t *p_devinfo; /**< \brief SPI设备信息的指针 */
 
     /** \brief 指向SPI消息结构体的指针,同一时间只能处理一个消息 */

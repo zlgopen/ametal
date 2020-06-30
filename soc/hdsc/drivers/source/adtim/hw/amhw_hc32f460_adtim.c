@@ -22,102 +22,6 @@
 #include "hw/amhw_hc32f460_adtim.h"
 
 /**
- * \brief 中断触发使能配置
- *
- * \param[in] p_hw_adtim : 指向ADTIM定时器寄存器块的指针
- * \param[in] p_cfg      : 指向中断使能配置结构体的指针
- *
- * \return AM_FALSE ：设置失败
- *         AM_TRUE  ：设置成功
- */
-am_bool_t amhw_hc32f460_adtim_irqtrigcfg(
-              amhw_hc32f460_adtim_t              *p_hw_adtim,
-              amhw_hc32f460_adtim_irq_trig_cfg_t *p_cfg) {
-
-//    if(p_cfg == NULL) {
-//        return AM_FALSE;
-//    }
-
-//    p_hw_adtim->cr |= (p_cfg->cntmatch_A_trig << 0);
-//    p_hw_adtim->cr |= (p_cfg->cntmatch_B_trig << 1);
-//    p_hw_adtim->cr |= (p_cfg->cntmatch_C_trig << 2);
-//    p_hw_adtim->cr |= (p_cfg->cntmatch_D_trig << 3);
-//    p_hw_adtim->cr |= (p_cfg->overflow_trig << 6);
-//    p_hw_adtim->cr |= (p_cfg->underflow_trig << 7);
-//    p_hw_adtim->cr |= (p_cfg->specilmatch_A_trig << 11);
-//    p_hw_adtim->cr |= (p_cfg->specilmatch_B_trig << 12);
-//    p_hw_adtim->cr |= (p_cfg->cntmatch_A_trigdma << 13);
-//    p_hw_adtim->cr |= (p_cfg->cntmatch_B_trigdma << 14);
-//    p_hw_adtim->cr |= (p_cfg->cntmatch_C_trigdma << 15);
-//    p_hw_adtim->cr |= (p_cfg->cntmatch_D_trigdma << 16);
-//    p_hw_adtim->cr |= (p_cfg->overflow_trigdma << 19);
-//    p_hw_adtim->cr |= (p_cfg->underflow_trigdma << 20);
-//    p_hw_adtim->cr |= (p_cfg->specilmatch_A_trigdma << 21);
-//    p_hw_adtim->cr |= (p_cfg->specilmatch_B_trigdma << 22);
-
-    return AM_TRUE;
-}
-
-/**
- * \brief 端口触发配置
- *
- * \param[in] trigport : amhw_hc32f460_adtim_trig_port_t端口枚举量
- * \param[in] p_cfg    : 指向端口配置结构体的指针
- *
- * \return AM_FALSE ：设置失败
- *         AM_TRUE  ：设置成功
- */
-am_bool_t amhw_hc32f460_adtim_porttrigcfg(
-              amhw_hc32f460_adtim_trig_port_t      trigport,
-              amhw_hc32f460_adtim_port_trig_cfg_t *p_cfg) {
-
-//    amhw_hc32f460_adtim_t *p_hw_adtim4 = (amhw_hc32f460_adtim_t *)HC32_TIM4_BASE;
-
-//    if(p_cfg == NULL) {
-//        return AM_FALSE;
-//    }
-
-//    switch(trigport) {
-//    case AMHW_HC32F460_ADTIM_TRIG_PORT_A:
-//        p_hw_adtim4->ttrig = (p_hw_adtim4->ttrig & (~(0xful << 0))) |
-//                            (p_cfg->trigsrc << 0);
-//        p_hw_adtim4->FCONR = (p_hw_adtim4->FCONR & (~(1ul << 16))) |
-//                            (p_cfg->flt_enable << 16);
-//        p_hw_adtim4->FCONR = (p_hw_adtim4->FCONR & (~(3ul << 17))) |
-//                            (p_cfg->flt_enable << 17);
-//        break;
-//    case AMHW_HC32F460_ADTIM_TRIG_PORT_B:
-//        p_hw_adtim4->ttrig = (p_hw_adtim4->ttrig & (~(0xful << 4))) |
-//                            (p_cfg->trigsrc << 4);
-//        p_hw_adtim4->FCONR = (p_hw_adtim4->FCONR & (~(1ul << 20))) |
-//                            (p_cfg->flt_enable << 20);
-//        p_hw_adtim4->FCONR = (p_hw_adtim4->FCONR & (~(3ul << 21))) |
-//                            (p_cfg->flt_enable << 21);
-//        break;
-//    case AMHW_HC32F460_ADTIM_TRIG_PORT_C:
-//        p_hw_adtim4->ttrig = (p_hw_adtim4->ttrig & (~(0xful << 8))) |
-//                            (p_cfg->trigsrc << 8);
-//        p_hw_adtim4->FCONR = (p_hw_adtim4->FCONR & (~(1ul << 24))) |
-//                            (p_cfg->flt_enable << 24);
-//        p_hw_adtim4->FCONR = (p_hw_adtim4->FCONR & (~(3ul << 25))) |
-//                            (p_cfg->flt_enable << 25);
-//        break;
-//    case AMHW_HC32F460_ADTIM_TRIG_PORT_D:
-//        p_hw_adtim4->ttrig = (p_hw_adtim4->ttrig & (~(0xful << 12))) |
-//                            (p_cfg->trigsrc << 12);
-//        p_hw_adtim4->FCONR = (p_hw_adtim4->FCONR & (~(1ul << 28))) |
-//                            (p_cfg->flt_enable << 28);
-//        p_hw_adtim4->FCONR = (p_hw_adtim4->FCONR & (~(3ul << 29))) |
-//                            (p_cfg->flt_enable << 29);
-//        break;
-//    default:
-//        return AM_FALSE;
-//    }
-
-    return AM_TRUE;
-}
-
-/**
  * \brief CHxX端口配置
  *
  * \param[in] p_hw_adtim : 指向ADTIM定时器寄存器块的指针
@@ -192,43 +96,6 @@ am_bool_t amhw_hc32f460_adtim_timxchxportcfg(
 }
 
 /**
- * \brief 无效条件3配置(端口刹车)
- *
- * \param[in] p_cfg      : 指向TADT无效条件3配置结构体的指针
- *
- * \return AM_FALSE ：设置失败
- *         AM_TRUE  ：设置成功
- */
-am_bool_t amhw_hc32f460_adtim_disable3cfg(
-              amhw_hc32f460_adtim_disable_3_cfg_t *p_cfg) {
-
-//    amhw_hc32f460_adtim_t *p_hw_adtim4 = (amhw_hc32f460_adtim_t *)HC32_TIM4_BASE;
-
-//    uint8_t i = 0;
-
-//    if(p_cfg == NULL) {
-//        return AM_FALSE;
-//    }
-
-//    amhw_hc32f460_adtim_clearbrakeport();
-
-//    for(i = 0; i <= AMHW_HC32F460_ADTIM_TRIG_PD5; i++) {
-
-//        if(AM_TRUE == p_cfg->stcbrkptcfg[i].portenable) {
-//            amhw_hc32f460_adtim_enablebrakeport(i, &(p_cfg->stcbrkptcfg[i]));
-//        }
-//    }
-
-//    p_hw_adtim4->aossr &= ~(1ul << 4);
-//    p_hw_adtim4->aossr &= ~(3ul << 2);
-
-//    p_hw_adtim4->aossr |= (p_cfg->fltenable << 4);
-//    p_hw_adtim4->aossr |= (p_cfg->fltclk << 2);
-
-    return AM_TRUE;
-}
-
-/**
  * \brief ADTIM去初始化
  *
  * \param[in] p_hw_adtim : 指向ADTIM定时器寄存器块的指针
@@ -237,43 +104,6 @@ am_bool_t amhw_hc32f460_adtim_disable3cfg(
  *         AM_TRUE  ：设置成功
  */
 am_bool_t amhw_hc32f460_adtim_deinit(amhw_hc32f460_adtim_t *p_hw_adtim) {
-
-//    p_hw_adtim->gconr   &= ~(1ul << 0);
-//    p_hw_adtim->cnter    = 0;
-//    p_hw_adtim->PCONR    = 0;
-//    p_hw_adtim->gconr    = 0x00000100;
-//    p_hw_adtim->dconr    = 0;
-//    p_hw_adtim->iconr    = 0;
-//    p_hw_adtim->bconr    = 0;
-//    p_hw_adtim->FCONR    = 0;
-//    p_hw_adtim->vperr    = 0;
-//    p_hw_adtim->perar    = 0xFFFF;
-//    p_hw_adtim->perbr    = 0xFFFF;
-//    p_hw_adtim->gcmxr[0] = 0xFFFF;
-//    p_hw_adtim->gcmxr[1] = 0xFFFF;
-//    p_hw_adtim->gcmxr[2] = 0xFFFF;
-//    p_hw_adtim->gcmxr[3] = 0xFFFF;
-//    p_hw_adtim->dtdar    = 0xFFFF;
-//    p_hw_adtim->dtuar    = 0xFFFF;
-//    p_hw_adtim->hstar    = 0;
-//    p_hw_adtim->hstpr    = 0;
-//    p_hw_adtim->hcelr    = 0;
-//    p_hw_adtim->hcpar    = 0;
-//    p_hw_adtim->hcpbr    = 0;
-//    p_hw_adtim->hcupr    = 0;
-//    p_hw_adtim->hcdor    = 0;
-//    p_hw_adtim->sstar    = 0;
-//    p_hw_adtim->sstpr    = 0;
-//    p_hw_adtim->sclrr    = 0;
-//    p_hw_adtim->ifr      = 0;
-//    p_hw_adtim->cr       = 0x00000300;
-//    p_hw_adtim->aossr    = 0;
-//    p_hw_adtim->aoscl    = 0;
-//    p_hw_adtim->ptbks    = 0;
-//    p_hw_adtim->ptbkp    = 0;
-//    p_hw_adtim->ttrig    = 0;
-//    p_hw_adtim->itrig    = 0;
-
     return AM_TRUE;
 }
 

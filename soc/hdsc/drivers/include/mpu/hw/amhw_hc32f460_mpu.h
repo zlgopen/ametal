@@ -63,12 +63,12 @@ extern "C" {
  * \brief MPU¼Ä´æÆ÷¿é½á¹¹Ìå
  */
 typedef struct amhw_hc32f460_mpu {
-    __IO uint32_t MPU_RGD[16];
-    __IO uint32_t MPU_RGCR[16];
-    __IO uint32_t MPU_CR;
-    __I  uint32_t MPU_SR;
-    __IO uint32_t MPU_ECLR;
-    __IO uint32_t MPU_WP;
+    __IO uint32_t MPU_RGD[16];   /**< \brief ÇøÓò0~15·¶Î§ÃèÊö¼Ä´æÆ÷ */
+    __IO uint32_t MPU_RGCR[16];  /**< \brief ÇøÓò0~15¿ØÖÆ¼Ä´æÆ÷ */
+    __IO uint32_t MPU_CR;        /**< \brief MPU¿ØÖÆ¼Ä´æÆ÷ */
+    __I  uint32_t MPU_SR;        /**< \brief MPU×´Ì¬¼Ä´æÆ÷  */
+    __IO uint32_t MPU_ECLR;      /**< \brief MPU´íÎó±êÖ¾Çå³ý¼Ä´æÆ÷  */
+    __IO uint32_t MPU_WP;        /**< \brief MPUÐ´±£»¤¼Ä´æÆ÷  */
 
 } amhw_hc32f460_mpu_t;
 

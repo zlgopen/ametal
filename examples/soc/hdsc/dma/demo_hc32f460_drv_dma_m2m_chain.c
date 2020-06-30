@@ -61,10 +61,10 @@ static amhw_hc32f460_dma_chain_xfer_desc_t g_desc3; /**< \brief 描述符3 */
 static void dma_isr (void *p_arg , uint32_t flag)
 {
     if (flag == AM_HC32F460_DMA_INT_COMPLETE) {
-    	*(volatile uint32_t *)HC32F460_AOS_BASE = 0x1;
+        am_hc32f460_dma_soft_trig();
         g_trans_done = AM_TRUE;
     } else if (flag == AM_HC32F460_DMA_INT_BLK_COMPLETE) {
-    	*(volatile uint32_t *)HC32F460_AOS_BASE = 0x1;
+        am_hc32f460_dma_soft_trig();
     }
 }
 
@@ -204,7 +204,7 @@ static int dma_m2m_chain_test (am_hc32f460_dma_dev_t *p_dev, uint8_t dma_chan)
     }
 
     /* 软件使能内部触发事件触发DMA */
-    *(volatile uint32_t *)HC32F460_AOS_BASE = 0x1;
+    am_hc32f460_dma_soft_trig();
 
     while(g_trans_done == AM_FALSE); /* 等待传输完成 */
 

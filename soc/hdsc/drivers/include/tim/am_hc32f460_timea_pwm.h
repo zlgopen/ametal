@@ -41,7 +41,7 @@ extern "C" {
 #include "hw/amhw_hc32f460_timea.h"
 
 /**
- * \addtogroup am_hc32_if_tim_pwm
+ * \addtogroup am_hc32f460_if_tim_pwm
  * \copydoc am_hc32f460_tim_pwm.h
  * @{
  */
@@ -101,8 +101,8 @@ typedef struct am_hc32f460_timea_pwm_dev {
  *
  * \return PWM标准服务操作句柄，值为NULL时表明初始化失败
  */
-am_pwm_handle_t am_hc32f460_timea_pwm_init(am_hc32f460_timea_pwm_dev_t              *p_dev,
-                                    const am_hc32f460_timea_pwm_devinfo_t    *p_devinfo);
+am_pwm_handle_t am_hc32f460_timea_pwm_init(am_hc32f460_timea_pwm_dev_t            *p_dev,
+                                           const am_hc32f460_timea_pwm_devinfo_t  *p_devinfo);
 
 /**
  * \brief 不使用TIMPWM输出功能时，解初始化TIMPWM输出功能，释放相关资源

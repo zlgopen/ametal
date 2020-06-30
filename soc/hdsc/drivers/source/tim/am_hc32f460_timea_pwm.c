@@ -138,12 +138,7 @@ static int __tim_pwm_config (void          *p_drv,
     /* 清零计数器 */
     amhw_hc32f460_timea_cnt16_count_set(p_hw_tim, 0);
 
-// wyy test
-//    amhw_hc32f460_timea_mode_clkdiv_set(p_hw_tim, chan, AMHW_HC32F460_TIMEA_CLK_DIV128);
-//    amhw_hc32f460_timea_arr_count_set(p_hw_tim, chan,  0xCD0u);
-
     /* Configuration timera unit 1 compare structure */
-//    stcTimerCompareInit.u16CompareVal = 0xCD0u * 3 / 5;
     stcTimerCompareInit.u16CompareVal = duty_c;
     stcTimerCompareInit.enStartCountOutput = TimeraCountStartOutputLow;
     stcTimerCompareInit.enStopCountOutput = TimeraCountStopOutputLow;
@@ -166,8 +161,8 @@ static int __tim_pwm_config (void          *p_drv,
 static int __tim_pwm_enable (void *p_drv, int chan)
 {
     int i = 0, enable_flag = 0;
-    am_hc32f460_timea_pwm_dev_t    *p_dev    = (am_hc32f460_timea_pwm_dev_t *)p_drv;
-    amhw_hc32f460_timea_t          *p_hw_tim = (amhw_hc32f460_timea_t *)p_dev->p_devinfo->tim_regbase;
+    am_hc32f460_timea_pwm_dev_t      *p_dev    = (am_hc32f460_timea_pwm_dev_t *)p_drv;
+    amhw_hc32f460_timea_t            *p_hw_tim = (amhw_hc32f460_timea_t *)p_dev->p_devinfo->tim_regbase;
     am_hc32f460_timea_pwm_chaninfo_t *p_chaninfo = p_dev->p_devinfo->p_chaninfo;
 
     /* 判断引脚列表中是否有对应通道配置信息 */
@@ -232,8 +227,9 @@ static void __tim_pwm_init (amhw_hc32f460_timea_t       *p_hw_tim,
     /* 向上计数 */
     amhw_hc32f460_timea_dir_set(p_hw_tim, timea_count_dir_up);
 
-    //Unit 1 sync startup invalid
-    if(((amhw_hc32f460_timea_t *)HC32F460_TMRA1_BASE == p_hw_tim) && (1 == p_dev->p_devinfo->sync_startup_en))
+    /* Unit 1 sync startup invalid */
+    if(((amhw_hc32f460_timea_t *)HC32F460_TMRA1_BASE == p_hw_tim) &&
+       (1 == p_dev->p_devinfo->sync_startup_en))
     {
         while(1);
     }
@@ -245,7 +241,7 @@ static void __tim_pwm_init (amhw_hc32f460_timea_t       *p_hw_tim,
   * \brief tim pwm服务初始化
   */
 am_pwm_handle_t am_hc32f460_timea_pwm_init (am_hc32f460_timea_pwm_dev_t           *p_dev,
-                                        const am_hc32f460_timea_pwm_devinfo_t *p_devinfo)
+                                            const am_hc32f460_timea_pwm_devinfo_t *p_devinfo)
 {
     amhw_hc32f460_timea_t  *p_hw_tim = NULL;
 

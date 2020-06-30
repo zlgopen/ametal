@@ -60,37 +60,40 @@ extern "C" {
 /** @} */
 
 /**
- * \brief TRNG - 寄存器组
+ * \brief TRNG 控制寄存器位域结构体
  */
 typedef struct
 {
-    __IO uint32_t EN                        : 1;
-    __IO uint32_t RUN                       : 1;
-    uint32_t RESERVED2                      :30;
+    __IO uint32_t EN                        : 1;  /**< \brief 模拟发振器使能*/
+    __IO uint32_t RUN                       : 1;  /**< \brief 随机数运算开始*/
+    uint32_t RESERVED2                      :30;  /**< \brief 保留*/
 } stc_trng_cr_field_t;
 
+/**
+ * \brief TRNG 模式寄存器位域结构体
+ */
 typedef struct
 {
-    __IO uint32_t LOAD                      : 1;
-    uint32_t RESERVED1                      : 1;
-    __IO uint32_t CNT                       : 3;
-    uint32_t RESERVED5                      :27;
+    __IO uint32_t LOAD                      : 1;  /**< \brief 装载控制位*/
+    uint32_t RESERVED1                      : 1;  /**< \brief 保留*/
+    __IO uint32_t CNT                       : 3;  /**< \brief 移位次数控制位*/
+    uint32_t RESERVED5                      :27;  /**< \brief 保留*/
 } stc_trng_mr_field_t;
 
 typedef struct amhw_hc32f460_trng {
     union
     {
-        __IO uint32_t CR;
+        __IO uint32_t CR;           /**< \brief TRNG控制寄存器*/
         stc_trng_cr_field_t CR_f;
     };
     union
     {
-        __IO uint32_t MR;
+        __IO uint32_t MR;           /**< \brief TRNG模式寄存器*/
         stc_trng_mr_field_t MR_f;
     };
-    uint8_t RESERVED2[4];
-    __IO uint32_t DR0;
-    __IO uint32_t DR1;
+    uint8_t RESERVED2[4];           /**< \brief 保留*/
+    __IO uint32_t DR0;              /**< \brief 数据寄存器0*/
+    __IO uint32_t DR1;              /**< \brief 数据寄存器1*/
 } amhw_hc32f460_trng_t;
 
 /**
@@ -181,7 +184,8 @@ void amhw_hc32f460_trng_cnt_sel (amhw_hc32f460_trng_t *p_hw_trng ,uint32_t flag)
  * \retval : 无
  */
 am_static_inline
-void amhw_hc32f460_trng_load_set (amhw_hc32f460_trng_t *p_hw_trng, am_bool_t flag)
+void amhw_hc32f460_trng_load_set (amhw_hc32f460_trng_t *p_hw_trng,
+                                  am_bool_t             flag)
 {
     p_hw_trng->MR_f.LOAD = flag;
 }

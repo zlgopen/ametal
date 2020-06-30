@@ -42,10 +42,10 @@ static const struct am_wdt_drv_funcs __g_swdt_drv_funcs = {
     __wdt_feed
 };
 
-#define AMHW_HC32F460_SWDT_COUNTER_MAX_CLK_DIV  (2048ULL)  /* 看门狗计数时钟最大分频 */
-#define AMHW_HC32F460_SWDT_COUNTER_MIN_CLK_DIV  (1UL)      /* 看门狗计数时钟最小分频 */
-#define AMHW_HC32F460_SWDT_COUNTER_MAX_PERIOD   (65536ULL) /* 看门狗最大计数周期 */
-#define AMHW_HC32F460_SWDT_COUNTER_MIN_PERIOD   (256UL)    /* 看门狗最小计数周期 */
+#define AMHW_HC32F460_SWDT_COUNTER_MAX_CLK_DIV  (2048ULL)  /**< \brief 看门狗计数时钟最大分频 */
+#define AMHW_HC32F460_SWDT_COUNTER_MIN_CLK_DIV  (1UL)      /**< \brief 看门狗计数时钟最小分频 */
+#define AMHW_HC32F460_SWDT_COUNTER_MAX_PERIOD   (65536ULL) /**< \brief 看门狗最大计数周期 */
+#define AMHW_HC32F460_SWDT_COUNTER_MIN_PERIOD   (256UL)    /**< \brief 看门狗最小计数周期 */
 
 /** \brief 获取看门狗信息 */
 static int __swdt_info_get (void *p_drv, am_wdt_info_t *p_info)
@@ -135,7 +135,7 @@ int am_hc32f460_swdt_isr_disconnect (am_hc32f460_swdt_dev_t    *p_dev,
 /** \brief 初始化WDT设备指针 */
 am_wdt_handle_t
 am_hc32f460_swdt_init (am_hc32f460_swdt_dev_t           *p_dev,
-                      const am_hc32f460_swdt_devinfo_t *p_devinfo)
+                       const am_hc32f460_swdt_devinfo_t *p_devinfo)
 {
     if (p_devinfo == NULL) {
         return NULL;

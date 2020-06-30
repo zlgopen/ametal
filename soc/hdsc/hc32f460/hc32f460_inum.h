@@ -681,6 +681,6 @@ typedef enum {
 }
 #endif
 
-#endif /* __ZLG217_INUM_H */
+#endif /* __HC32F460_INUM_H */
 
 /* end of file */

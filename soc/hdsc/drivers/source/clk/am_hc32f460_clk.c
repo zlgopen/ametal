@@ -95,13 +95,13 @@ int am_hc32f460_clk_init (am_hc32f460_clk_dev_t           *p_dev,
 
     /* Set bus clk div. */
     if (IS_SYSCLK_CONFIG_VALID(p_devinfo)){
-        amhw_hc32f460_sysclk_cfg(CLK_HCLK, (p_devinfo->hclk_div  << 24) |
-                                           (p_devinfo->exclk_div << 20) |
-                                           (p_devinfo->pclk0_div << 0)  |
-                                           (p_devinfo->pclk1_div << 4)  |
-                                           (p_devinfo->pclk2_div << 8)  |
-                                           (p_devinfo->pclk3_div << 12) |
-                                           (p_devinfo->pclk4_div << 16));
+        amhw_hc32f460_sysclk_cfg((p_devinfo->hclk_div  << 24) |
+                                 (p_devinfo->exclk_div << 20) |
+                                 (p_devinfo->pclk0_div << 0)  |
+                                 (p_devinfo->pclk1_div << 4)  |
+                                 (p_devinfo->pclk2_div << 8)  |
+                                 (p_devinfo->pclk3_div << 12) |
+                                 (p_devinfo->pclk4_div << 16));
 
     } else {
         return AM_ERROR;

@@ -58,16 +58,16 @@ static am_hc32f460_can_intcb_info_t    __g_can_intcb_info[MAX];
 static const am_hc32f460_can_devinfo_t __g_can_devinfo = {
 
     HC32F460_CAN_BASE,                 /**< \brief CAN */
-    INUM_CAN,                    /**< \brief CAN的中断编号 */
+    INUM_CAN,                          /**< \brief CAN的中断编号 */
     AMHW_HC32F460_CAN_PELI_CAN,        /**< \brief CAN模式定义 */
-    __g_can_intcb_info,              /**< \brief 回调信息 */
-    MAX,                             /**< \brief 回调信息内存大小*/
+    __g_can_intcb_info,                /**< \brief 回调信息 */
+    MAX,                               /**< \brief 回调信息内存大小*/
     __hc32f460_plfm_can_init,          /**< \brief CAN1的平台初始化 */
     __hc32f460_plfm_can_deinit,        /**< \brief CAN1的平台去初始化 */
 
 };
 
-/**< \brief 设备实例 */
+/** \brief 设备实例 */
 am_hc32f460_can_dev_t  __g_can_dev;
 
 /** \brief CAN实例初始化，获得CAN标准服务句柄 */

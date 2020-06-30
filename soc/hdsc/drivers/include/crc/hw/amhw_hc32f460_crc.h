@@ -65,68 +65,74 @@ extern "C" {
  * \brief CRC - 寄存器结构体
  */
 
+/**
+ * \brief CRC控制寄存器位域结构体
+ */
 typedef struct
 {
-    uint32_t RESERVED0                      : 1;
-    __IO uint32_t SEL                       : 1;
-    __IO uint32_t REFIN                     : 1;
-    __IO uint32_t REFOUT                    : 1;
-    __IO uint32_t XOROUT                    : 1;
-    uint32_t RESERVED5                      :27;
+    uint32_t RESERVED0                      : 1;  /** <brief 保留 */
+    __IO uint32_t SEL                       : 1;  /** <brief 运算位数选择 */
+    __IO uint32_t REFIN                     : 1;  /** <brief 输入数据字节内位数颠倒 */
+    __IO uint32_t REFOUT                    : 1;  /** <brief 结果所有位数颠倒输出 */
+    __IO uint32_t XOROUT                    : 1;  /** <brief 结果取反输出 */
+    uint32_t RESERVED5                      :27;  /** <brief 保留 */
 } stc_crc_cr_field_t;
 
+/**
+ * \brief 标志寄存器位域结构体
+ */
 typedef struct
 {
-    __IO uint32_t FLAG                      : 1;
-    uint32_t RESERVED1                      :31;
+    __IO uint32_t FLAG                      : 1;  /** <brief CRC校验结果标志位 */
+    uint32_t RESERVED1                      :31;  /** <brief 保留 */
 } stc_crc_flg_field_t;
 
 typedef struct amhw_hc32f460_crc {
     union
     {
-        __IO uint32_t CR;
+        __IO uint32_t CR;         /** <brief CRC控制寄存器 */
         stc_crc_cr_field_t CR_f;
     };
-    __IO uint32_t RESLT;
-    uint8_t RESERVED2[4];
+    __IO uint32_t RESLT;          /** <brief CRC结果寄存器 */
+    uint8_t RESERVED2[4];         /** <brief 保留 */
     union
     {
-        __IO uint32_t FLG;
+        __IO uint32_t FLG;        /** <brief CRC标志寄存器 */
         stc_crc_flg_field_t FLG_f;
     };
-    uint8_t RESERVED3[112];
-    __IO uint32_t DAT0;
-    __IO uint32_t DAT1;
-    __IO uint32_t DAT2;
-    __IO uint32_t DAT3;
-    __IO uint32_t DAT4;
-    __IO uint32_t DAT5;
-    __IO uint32_t DAT6;
-    __IO uint32_t DAT7;
-    __IO uint32_t DAT8;
-    __IO uint32_t DAT9;
-    __IO uint32_t DAT10;
-    __IO uint32_t DAT11;
-    __IO uint32_t DAT12;
-    __IO uint32_t DAT13;
-    __IO uint32_t DAT14;
-    __IO uint32_t DAT15;
-    __IO uint32_t DAT16;
-    __IO uint32_t DAT17;
-    __IO uint32_t DAT18;
-    __IO uint32_t DAT19;
-    __IO uint32_t DAT20;
-    __IO uint32_t DAT21;
-    __IO uint32_t DAT22;
-    __IO uint32_t DAT23;
-    __IO uint32_t DAT24;
-    __IO uint32_t DAT25;
-    __IO uint32_t DAT26;
-    __IO uint32_t DAT27;
-    __IO uint32_t DAT28;
-    __IO uint32_t DAT29;
-    __IO uint32_t DAT30;
-    __IO uint32_t DAT31;
+    uint8_t RESERVED3[112];       /** <brief 保留 */
+    __IO uint32_t DAT0;           /** <brief CRC数据寄存器0 */
+    __IO uint32_t DAT1;           /** <brief CRC数据寄存器1 */
+    __IO uint32_t DAT2;           /** <brief CRC数据寄存器2 */
+    __IO uint32_t DAT3;           /** <brief CRC数据寄存器3 */
+    __IO uint32_t DAT4;           /** <brief CRC数据寄存器4 */
+    __IO uint32_t DAT5;           /** <brief CRC数据寄存器5 */
+    __IO uint32_t DAT6;           /** <brief CRC数据寄存器6 */
+    __IO uint32_t DAT7;           /** <brief CRC数据寄存器7 */
+    __IO uint32_t DAT8;           /** <brief CRC数据寄存器8 */
+    __IO uint32_t DAT9;           /** <brief CRC数据寄存器9 */
+    __IO uint32_t DAT10;          /** <brief CRC数据寄存器10 */
+    __IO uint32_t DAT11;          /** <brief CRC数据寄存器11 */
+    __IO uint32_t DAT12;          /** <brief CRC数据寄存器12 */
+    __IO uint32_t DAT13;          /** <brief CRC数据寄存器13*/
+    __IO uint32_t DAT14;          /** <brief CRC数据寄存器14 */
+    __IO uint32_t DAT15;          /** <brief CRC数据寄存器15 */
+    __IO uint32_t DAT16;          /** <brief CRC数据寄存器16 */
+    __IO uint32_t DAT17;          /** <brief CRC数据寄存器17 */
+    __IO uint32_t DAT18;          /** <brief CRC数据寄存器18 */
+    __IO uint32_t DAT19;          /** <brief CRC数据寄存器19 */
+    __IO uint32_t DAT20;          /** <brief CRC数据寄存器20 */
+    __IO uint32_t DAT21;          /** <brief CRC数据寄存器21 */
+    __IO uint32_t DAT22;          /** <brief CRC数据寄存器22 */
+    __IO uint32_t DAT23;          /** <brief CRC数据寄存器23 */
+    __IO uint32_t DAT24;          /** <brief CRC数据寄存器24 */
+    __IO uint32_t DAT25;          /** <brief CRC数据寄存器25 */
+    __IO uint32_t DAT26;          /** <brief CRC数据寄存器26 */
+    __IO uint32_t DAT27;          /** <brief CRC数据寄存器27 */
+    __IO uint32_t DAT28;          /** <brief CRC数据寄存器28 */
+    __IO uint32_t DAT29;          /** <brief CRC数据寄存器29*/
+    __IO uint32_t DAT30;          /** <brief CRC数据寄存器30 */
+    __IO uint32_t DAT31;          /** <brief CRC数据寄存器31 */
 } amhw_hc32f460_crc_t;
 
 /**
@@ -139,7 +145,7 @@ typedef struct amhw_hc32f460_crc {
  */
 am_static_inline
 void amhw_hc32f460_crc_32bit_write_data (amhw_hc32f460_crc_t    *p_hw_crc,
-                                         uint32_t              data)
+                                         uint32_t                data)
 {
     p_hw_crc->DAT0 = data;
 }
@@ -156,7 +162,7 @@ void amhw_hc32f460_crc_32bit_write_data (amhw_hc32f460_crc_t    *p_hw_crc,
  */
 am_static_inline
 void amhw_hc32f460_crc_16bit_write_data (amhw_hc32f460_crc_t  *p_hw_crc,
-                                         uint16_t            data)
+                                         uint16_t              data)
 {
     uint32_t addr = (uint32_t)&p_hw_crc->DAT0;
     *(volatile uint16_t *)addr =  data;

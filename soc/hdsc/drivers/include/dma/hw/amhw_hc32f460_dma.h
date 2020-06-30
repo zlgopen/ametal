@@ -73,175 +73,233 @@ extern "C" {
 /** \brief DMA 通道数目  */
 #define AMHW_HC32F460_DMA_CHAN_CNT  4
 
-#define AMHW_HC32F460_DMA_DTCTL_CNT_MAX         (0XFFFFUL)
-#define AMHW_HC32F460_DMA_DTCTL_BLKSIZE_MAX     (1024UL)
-#define AMHW_HC32F460_DMA_RPT_DRPT_MAX          (0X3FFUL)
-#define AMHW_HC32F460_DMA_RPT_SRPT_MAX          (0X3FFUL)
-#define AMHW_HC32F460_DMA_SNSEQCTL_SNSCNT_MAX   (0XFFFUL)
-#define AMHW_HC32F460_DMA_SNSEQCTL_SOFFSET_MAX  (0XFFFFFUL)
-#define AMHW_HC32F460_DMA_DNSEQCTL_DNSCNT_MAX   (0XFFFUL)
-#define AMHW_HC32F460_DMA_DNSEQCTL_DSOFFSET_MAX (0XFFFFFUL)
+#define AMHW_HC32F460_DMA_DTCTL_CNT_MAX         (0XFFFFUL)  /** <brief 数据控制寄存器最大传输次数 */
+#define AMHW_HC32F460_DMA_DTCTL_BLKSIZE_MAX     (1024UL)    /** <brief 数据控制寄存器最大数据块大小 */
+#define AMHW_HC32F460_DMA_RPT_DRPT_MAX          (0X3FFUL)   /** <brief 目标地址重复区域最大大小 */
+#define AMHW_HC32F460_DMA_RPT_SRPT_MAX          (0X3FFUL)   /** <brief 源地址重复区域最大大小 */
+#define AMHW_HC32F460_DMA_SNSEQCTL_SNSCNT_MAX   (0XFFFUL)   /** <brief 源地址跳转最大数据量 */
+#define AMHW_HC32F460_DMA_SNSEQCTL_SOFFSET_MAX  (0XFFFFFUL) /** <brief 源地址跳转的最大地址偏移量 */
+#define AMHW_HC32F460_DMA_DNSEQCTL_DNSCNT_MAX   (0XFFFUL)   /** <brief 目标地址跳转最大数据量 */
+#define AMHW_HC32F460_DMA_DNSEQCTL_DSOFFSET_MAX (0XFFFFFUL) /** <brief 目标地址跳转的最大地址偏移量 */
 
-#define AMHW_HC32F460_DMA_DTCTL_CNT_SHIFT        (16UL)
-#define AMHW_HC32F460_DMA_RPT_DRPT_SHIFT         (16UL)
-#define AMHW_HC32F460_DMA_SNSEQCTL_SNSCNT_SHIFT  (20UL)
-#define AMHW_HC32F460_DMA_DNSEQCTL_DNSCNT_SHIFT  (20UL)
+#define AMHW_HC32F460_DMA_DTCTL_CNT_SHIFT        (16UL)     /** <brief DTCTL寄存器CNT位 */
+#define AMHW_HC32F460_DMA_RPT_DRPT_SHIFT         (16UL)     /** <brief RPT寄存器DRPT位 */
+#define AMHW_HC32F460_DMA_SNSEQCTL_SNSCNT_SHIFT  (20UL)     /** <brief SNSEQCTL寄存器SNSCNT位 */
+#define AMHW_HC32F460_DMA_DNSEQCTL_DNSCNT_SHIFT  (20UL)     /** <brief DNSEQCTL寄存器DNSCNT位 */
 
-#define AMHW_HC32F460_DMA_RCFGCTL_CNTMD_SHIFT    (20UL)
-#define AMHW_HC32F460_DMA_RCFGCTL_DARMD_SHIFT    (18UL)
-#define AMHW_HC32F460_DMA_RCFGCTL_SARMD_SHIFT    (16UL)
-#define AMHW_HC32F460_DMA_RCFGCTL_RCFGCHS_SHIFT  (8UL)
-#define AMHW_HC32F460_DMA_RCFGCTL_RCFGLLP_SHIFT  (1UL)
-#define AMHW_HC32F460_DMA_RCFGCTL_RCFGEN_SHIFT   (0UL)
+#define AMHW_HC32F460_DMA_RCFGCTL_CNTMD_SHIFT    (20UL)     /** <brief RCFGCTL寄存器CNTMD位 */
+#define AMHW_HC32F460_DMA_RCFGCTL_DARMD_SHIFT    (18UL)     /** <brief RCFGCTL寄存器DARMD位 */
+#define AMHW_HC32F460_DMA_RCFGCTL_SARMD_SHIFT    (16UL)     /** <brief RCFGCTL寄存器SARMD位 */
+#define AMHW_HC32F460_DMA_RCFGCTL_RCFGCHS_SHIFT  (8UL)      /** <brief RCFGCTL寄存器RCFGCHS位 */
+#define AMHW_HC32F460_DMA_RCFGCTL_RCFGLLP_SHIFT  (1UL)      /** <brief RCFGCTL寄存器RCFGLLP位 */
+#define AMHW_HC32F460_DMA_RCFGCTL_RCFGEN_SHIFT   (0UL)      /** <brief RCFGCTL寄存器RCFGEN位 */
 
+/**
+ * \brief DMA使能寄存器位域结构体
+ */
 typedef struct
 {
-    __IO uint32_t EN                        : 1;
-    uint32_t RESERVED1                      :31;
+    __IO uint32_t EN                        : 1;  /** <brief DMA使能位 */
+    uint32_t RESERVED1                      :31;  /** <brief 保留 */
 } stc_dma_en_field_t;
 
+/**
+ * \brief DMA中断状态寄存器0位域结构体
+ */
 typedef struct
 {
-    __IO uint32_t TRNERR                    : 4;
-    uint32_t RESERVED4                      :12;
-    __IO uint32_t REQERR                    : 4;
-    uint32_t RESERVED20                     :12;
+    __IO uint32_t TRNERR                    : 4;  /** <brief 传输错误中断位 */
+    uint32_t RESERVED4                      :12;  /** <brief 保留 */
+    __IO uint32_t REQERR                    : 4;  /** <brief 传输请求溢出错误中断位 */
+    uint32_t RESERVED20                     :12;  /** <brief 保留 */
 } stc_dma_intstat0_field_t;
 
+/**
+ * \brief DMA中断状态寄存器1位域结构体
+ */
 typedef struct
 {
-    __IO uint32_t TC                        : 4;
-    uint32_t RESERVED4                      :12;
-    __IO uint32_t BTC                       : 4;
-    uint32_t RESERVED20                     :12;
+    __IO uint32_t TC                        : 4;  /** <brief 传输完成中断位 */
+    uint32_t RESERVED4                      :12;  /** <brief 保留 */
+    __IO uint32_t BTC                       : 4;  /** <brief 块传输完成中断位 */
+    uint32_t RESERVED20                     :12;  /** <brief 保留 */
 } stc_dma_intstat1_field_t;
 
+/**
+ * \brief DMA中断屏蔽寄存器0位域结构体
+ */
 typedef struct
 {
-    __IO uint32_t MSKTRNERR                 : 4;
-    uint32_t RESERVED4                      :12;
-    __IO uint32_t MSKREQERR                 : 4;
-    uint32_t RESERVED20                     :12;
+    __IO uint32_t MSKTRNERR                 : 4;  /** <brief 传输错误中断屏蔽*/
+    uint32_t RESERVED4                      :12;  /** <brief 保留 */
+    __IO uint32_t MSKREQERR                 : 4;  /** <brief 传输请求溢出中断屏蔽*/
+    uint32_t RESERVED20                     :12;  /** <brief 保留 */
 } stc_dma_intmask0_field_t;
 
+/**
+ * \brief DMA中断屏蔽寄存器1位域结构体
+ */
 typedef struct
 {
-    __IO uint32_t MSKTC                     : 4;
-    uint32_t RESERVED4                      :12;
-    __IO uint32_t MSKBTC                    : 4;
-    uint32_t RESERVED20                     :12;
+    __IO uint32_t MSKTC                     : 4;  /** <brief 传输完成中断屏蔽 */
+    uint32_t RESERVED4                      :12;  /** <brief 保留 */
+    __IO uint32_t MSKBTC                    : 4;  /** <brief 块传输完成中断屏蔽*/
+    uint32_t RESERVED20                     :12;  /** <brief 保留 */
 } stc_dma_intmask1_field_t;
 
+/**
+ * \brief DMA中断复位寄存器0位域结构体
+ */
 typedef struct
 {
-    __IO uint32_t CLRTRNERR                 : 4;
-    uint32_t RESERVED4                      :12;
-    __IO uint32_t CLRREQERR                 : 4;
-    uint32_t RESERVED20                     :12;
+    __IO uint32_t CLRTRNERR                 : 4;  /** <brief 传输错误中断复位 */
+    uint32_t RESERVED4                      :12;  /** <brief 保留 */
+    __IO uint32_t CLRREQERR                 : 4;  /** <brief 传输请求溢出中断复位 */
+    uint32_t RESERVED20                     :12;  /** <brief 保留 */
 } stc_dma_intclr0_field_t;
 
+/**
+ * \brief DMA中断复位寄存器1位域结构体
+ */
 typedef struct
 {
-    __IO uint32_t CLRTC                     : 4;
-    uint32_t RESERVED4                      :12;
-    __IO uint32_t CLRBTC                    : 4;
-    uint32_t RESERVED20                     :12;
+    __IO uint32_t CLRTC                     : 4;  /** <brief 传输完成中断复位 */
+    uint32_t RESERVED4                      :12;  /** <brief 保留 */
+    __IO uint32_t CLRBTC                    : 4;  /** <brief 块传输完成中断复位 */
+    uint32_t RESERVED20                     :12;  /** <brief 保留 */
 } stc_dma_intclr1_field_t;
 
+/**
+ * \brief DMA通道使能寄存器位域结构体
+ */
 typedef struct
 {
-    __IO uint32_t CHEN                      : 4;
-    uint32_t RESERVED4                      :28;
+    __IO uint32_t CHEN                      : 4;  /** <brief 通道使能位 */
+    uint32_t RESERVED4                      :28;  /** <brief 保留 */
 } stc_dma_chen_field_t;
 
+/**
+ * \brief DMA通道状态观测寄存器位域结构体
+ */
 typedef struct
 {
-    __IO uint32_t DMAACT                    : 1;
-    __IO uint32_t RCFGACT                   : 1;
-    uint32_t RESERVED2                      :14;
-    __IO uint32_t CHACT                     : 4;
-    uint32_t RESERVED20                     :12;
+    __IO uint32_t DMAACT                    : 1;  /** <brief DMA动作中监视位 */
+    __IO uint32_t RCFGACT                   : 1;  /** <brief DMA重置动作中监视位 */
+    uint32_t RESERVED2                      :14;  /** <brief 保留 */
+    __IO uint32_t CHACT                     : 4;  /** <brief 传输动作中通道监视位 */
+    uint32_t RESERVED20                     :12;  /** <brief 保留 */
 } stc_dma_chstat_field_t;
 
+/**
+ * \brief DMA通道重置控制寄存器位域结构体
+ */
 typedef struct
 {
-    __IO uint32_t RCFGEN                    : 1;
-    __IO uint32_t RCFGLLP                   : 1;
-    uint32_t RESERVED2                      : 6;
-    __IO uint32_t RCFGCHS                   : 4;
-    uint32_t RESERVED12                     : 4;
-    __IO uint32_t SARMD                     : 2;
-    __IO uint32_t DARMD                     : 2;
-    __IO uint32_t CNTMD                     : 2;
-    uint32_t RESERVED22                     :10;
+    __IO uint32_t RCFGEN                    : 1;  /** <brief 通道重置许可 */
+    __IO uint32_t RCFGLLP                   : 1;  /** <brief 链指针式通道重置 */
+    uint32_t RESERVED2                      : 6;  /** <brief 保留 */
+    __IO uint32_t RCFGCHS                   : 4;  /** <brief 重置通道选择 */
+    uint32_t RESERVED12                     : 4;  /** <brief 保留 */
+    __IO uint32_t SARMD                     : 2;  /** <brief 源地址重置方式 */
+    __IO uint32_t DARMD                     : 2;  /** <brief 目标地址重置方式 */
+    __IO uint32_t CNTMD                     : 2;  /** <brief 剩余传输次数计数器重置方式 */
+    uint32_t RESERVED22                     :10;  /** <brief 保留 */
 } stc_dma_rcfgctl_field_t;
 
+/**
+ * \brief DMA数据控制寄存器位域结构体
+ */
 typedef struct
 {
-    __IO uint32_t BLKSIZE                   :10;
-    uint32_t RESERVED10                     : 6;
-    __IO uint32_t CNT                       :16;
+    __IO uint32_t BLKSIZE                   :10;  /** <brief 数据块的大小 */
+    uint32_t RESERVED10                     : 6;  /** <brief 保留 */
+    __IO uint32_t CNT                       :16;  /** <brief 传输次数 */
 } stc_dma_dtctl_field_t;
 
+/**
+ * \brief DMA重复区域大小寄存器位域结构体
+ */
 typedef struct
 {
-    __IO uint32_t SRPT                      :10;
-    uint32_t RESERVED10                     : 6;
-    __IO uint32_t DRPT                      :10;
-    uint32_t RESERVED26                     : 6;
+    __IO uint32_t SRPT                      :10;  /** <brief 源地址重复区域大小 */
+    uint32_t RESERVED10                     : 6;  /** <brief 保留 */
+    __IO uint32_t DRPT                      :10;  /** <brief 目标地址重复区域大小 */
+    uint32_t RESERVED26                     : 6;  /** <brief 保留 */
 } stc_dma_rpt_field_t;
 
+/**
+ * \brief DMA重复区域大小寄存器B位域结构体
+ */
 typedef struct
 {
-    __IO uint32_t SRPTB                     :10;
-    uint32_t RESERVED10                     : 6;
-    __IO uint32_t DRPTB                     :10;
-    uint32_t RESERVED26                     : 6;
+    __IO uint32_t SRPTB                     :10;  /** <brief 源地址重复区域大小 */
+    uint32_t RESERVED10                     : 6;  /** <brief 保留 */
+    __IO uint32_t DRPTB                     :10;  /** <brief 目标地址重复区域大小 */
+    uint32_t RESERVED26                     : 6;  /** <brief 保留 */
 } stc_dma_rptb_field_t;
 
+/**
+ * \brief DMA源设备不连续地址传输控制寄存器位域结构体
+ */
 typedef struct
 {
-    __IO uint32_t SOFFSET                   :20;
-    __IO uint32_t SNSCNT                    :12;
+    __IO uint32_t SOFFSET                   :20;  /** <brief 源地址跳转的地址偏移量 */
+    __IO uint32_t SNSCNT                    :12;  /** <brief 源地址跳转的数据量 */
 } stc_dma_snseqctl_field_t;
 
+/**
+ * \brief DMA源设备不连续地址传输控制寄存器B位域结构体
+ */
 typedef struct
 {
-    __IO uint32_t SNSDIST                   :20;
-    __IO uint32_t SNSCNTB                   :12;
+    __IO uint32_t SNSDIST                   :20;  /** <brief 源设备不连续区域地址间距 */
+    __IO uint32_t SNSCNTB                   :12;  /** <brief 源地址跳转的数据量 */
 } stc_dma_snseqctlb_field_t;
 
+/**
+ * \brief DMA目标设备不连续地址传输控制寄存器位域结构体
+ */
 typedef struct
 {
-    __IO uint32_t DOFFSET                   :20;
-    __IO uint32_t DNSCNT                    :12;
+    __IO uint32_t DOFFSET                   :20;  /** <brief 目标地址跳转的地址偏移量 */
+    __IO uint32_t DNSCNT                    :12;  /** <brief 目标地址跳转的数据量 */
 } stc_dma_dnseqctl_field_t;
 
+
+/**
+ * \brief DMA目标设备不连续地址传输控制寄存器B位域结构体
+ */
 typedef struct
 {
-    __IO uint32_t DNSDIST                   :20;
-    __IO uint32_t DNSCNTB                   :12;
+    __IO uint32_t DNSDIST                   :20;  /** <brief 目标不连续区域地址间距 */
+    __IO uint32_t DNSCNTB                   :12;  /** <brief 目标地址跳转的数据量 */
 } stc_dma_dnseqctlb_field_t;
 
+/**
+ * \brief DMA链指针寄存器位域结构体
+ */
 typedef struct
 {
-    uint32_t RESERVED0                      : 2;
-    __IO uint32_t LLP                       :30;
+    uint32_t RESERVED0                      : 2;  /** <brief 保留 */
+    __IO uint32_t LLP                       :30;  /** <brief 链指针 */
 } stc_dma_llp_field_t;
 
+/**
+ * \brief DMA通道控制寄存器0位域结构体
+ */
 typedef struct
 {
-    __IO uint32_t SINC                      : 2;
-    __IO uint32_t DINC                      : 2;
-    __IO uint32_t SRTPEN                    : 1;
-    __IO uint32_t DRPTEN                    : 1;
-    __IO uint32_t SNSEQEN                   : 1;
-    __IO uint32_t DNSEQEN                   : 1;
-    __IO uint32_t HSIZE                     : 2;
-    __IO uint32_t LLPEN                     : 1;
-    __IO uint32_t LLPRUN                    : 1;
-    __IO uint32_t IE                        : 1;
-    uint32_t RESERVED13                     :19;
+    __IO uint32_t SINC                      : 2;  /** <brief 源地址的更新方式 */
+    __IO uint32_t DINC                      : 2;  /** <brief 目标地址的更新方式 */
+    __IO uint32_t SRTPEN                    : 1;  /** <brief 源重复传输功能使能位 */
+    __IO uint32_t DRPTEN                    : 1;  /** <brief 目标重复传输功能使能位 */
+    __IO uint32_t SNSEQEN                   : 1;  /** <brief 源地址不连续传输使能 */
+    __IO uint32_t DNSEQEN                   : 1;  /** <brief 目标地址不连续传输使能 */
+    __IO uint32_t HSIZE                     : 2;  /** <brief 传输数据的宽度 */
+    __IO uint32_t LLPEN                     : 1;  /** <brief 连锁传输使能 */
+    __IO uint32_t LLPRUN                    : 1;  /** <brief 连锁传输模式选择 */
+    __IO uint32_t IE                        : 1;  /** <brief 中断使能位 */
+    uint32_t RESERVED13                     :19;  /** <brief 保留 */
 } stc_dma_ch0ctl_field_t;
 
 typedef struct
@@ -271,49 +329,58 @@ typedef struct
     __IO uint32_t DNSCNT                    :12;
 } stc_dma_mondnseqctl_field_t;
 
+/**
+ * \brief DMA通道控制寄存器1位域结构体
+ */
 typedef struct
 {
-    __IO uint32_t SINC                      : 2;
-    __IO uint32_t DINC                      : 2;
-    __IO uint32_t SRTPEN                    : 1;
-    __IO uint32_t DRPTEN                    : 1;
-    __IO uint32_t SNSEQEN                   : 1;
-    __IO uint32_t DNSEQEN                   : 1;
-    __IO uint32_t HSIZE                     : 2;
-    __IO uint32_t LLPEN                     : 1;
-    __IO uint32_t LLPRUN                    : 1;
-    __IO uint32_t IE                        : 1;
-    uint32_t RESERVED13                     :19;
+    __IO uint32_t SINC                      : 2;  /** <brief 源地址的更新方式 */
+    __IO uint32_t DINC                      : 2;  /** <brief 目标地址的更新方式 */
+    __IO uint32_t SRTPEN                    : 1;  /** <brief 源重复传输功能使能位 */
+    __IO uint32_t DRPTEN                    : 1;  /** <brief 目标重复传输功能使能位 */
+    __IO uint32_t SNSEQEN                   : 1;  /** <brief 源地址不连续传输使能 */
+    __IO uint32_t DNSEQEN                   : 1;  /** <brief 目标地址不连续传输使能 */
+    __IO uint32_t HSIZE                     : 2;  /** <brief 传输数据的宽度 */
+    __IO uint32_t LLPEN                     : 1;  /** <brief 连锁传输使能 */
+    __IO uint32_t LLPRUN                    : 1;  /** <brief 连锁传输模式选择 */
+    __IO uint32_t IE                        : 1;  /** <brief 中断使能位 */
+    uint32_t RESERVED13                     :19;  /** <brief 保留 */
 } stc_dma_ch1ctl_field_t;
 
+/**
+ * \brief DMA通道控制寄存器2位域结构体
+ */
 typedef struct
 {
-    __IO uint32_t SINC                      : 2;
-    __IO uint32_t DINC                      : 2;
-    __IO uint32_t SRTPEN                    : 1;
-    __IO uint32_t DRPTEN                    : 1;
-    __IO uint32_t SNSEQEN                   : 1;
-    __IO uint32_t DNSEQEN                   : 1;
-    __IO uint32_t HSIZE                     : 2;
-    __IO uint32_t LLPEN                     : 1;
-    __IO uint32_t LLPRUN                    : 1;
-    __IO uint32_t IE                        : 1;
-    uint32_t RESERVED13                     :19;
+    __IO uint32_t SINC                      : 2;  /** <brief 源地址的更新方式 */
+    __IO uint32_t DINC                      : 2;  /** <brief 目标地址的更新方式 */
+    __IO uint32_t SRTPEN                    : 1;  /** <brief 源重复传输功能使能位 */
+    __IO uint32_t DRPTEN                    : 1;  /** <brief 目标重复传输功能使能位 */
+    __IO uint32_t SNSEQEN                   : 1;  /** <brief 源地址不连续传输使能 */
+    __IO uint32_t DNSEQEN                   : 1;  /** <brief 目标地址不连续传输使能 */
+    __IO uint32_t HSIZE                     : 2;  /** <brief 传输数据的宽度 */
+    __IO uint32_t LLPEN                     : 1;  /** <brief 连锁传输使能 */
+    __IO uint32_t LLPRUN                    : 1;  /** <brief 连锁传输模式选择 */
+    __IO uint32_t IE                        : 1;  /** <brief 中断使能位 */
+    uint32_t RESERVED13                     :19;  /** <brief 保留 */
 } stc_dma_ch2ctl_field_t;
 
+/**
+ * \brief DMA通道控制寄存器3位域结构体
+ */
 typedef struct
 {
-    __IO uint32_t SINC                      : 2;
-    __IO uint32_t DINC                      : 2;
-    __IO uint32_t SRTPEN                    : 1;
-    __IO uint32_t DRPTEN                    : 1;
-    __IO uint32_t SNSEQEN                   : 1;
-    __IO uint32_t DNSEQEN                   : 1;
-    __IO uint32_t HSIZE                     : 2;
-    __IO uint32_t LLPEN                     : 1;
-    __IO uint32_t LLPRUN                    : 1;
-    __IO uint32_t IE                        : 1;
-    uint32_t RESERVED13                     :19;
+    __IO uint32_t SINC                      : 2;  /** <brief 源地址的更新方式 */
+    __IO uint32_t DINC                      : 2;  /** <brief 目标地址的更新方式 */
+    __IO uint32_t SRTPEN                    : 1;  /** <brief 源重复传输功能使能位 */
+    __IO uint32_t DRPTEN                    : 1;  /** <brief 目标重复传输功能使能位 */
+    __IO uint32_t SNSEQEN                   : 1;  /** <brief 源地址不连续传输使能 */
+    __IO uint32_t DNSEQEN                   : 1;  /** <brief 目标地址不连续传输使能 */
+    __IO uint32_t HSIZE                     : 2;  /** <brief 传输数据的宽度 */
+    __IO uint32_t LLPEN                     : 1;  /** <brief 连锁传输使能 */
+    __IO uint32_t LLPRUN                    : 1;  /** <brief 连锁传输模式选择 */
+    __IO uint32_t IE                        : 1;  /** <brief 中断使能位 */
+    uint32_t RESERVED13                     :19;  /** <brief 保留 */
 } stc_dma_ch3ctl_field_t;
 
 /**
@@ -321,91 +388,91 @@ typedef struct
  */
 typedef struct amhw_hc32f460_dma_chan {
     union
-    {   /* DMA使能寄存器 */
-        __IO uint32_t EN;
+    {
+        __IO uint32_t EN;                /**< \brief DMA使能寄存器 */
         stc_dma_en_field_t EN_f;
     };
     union
-    {   /* 中断状态寄存器0 */
-        __IO uint32_t INTSTAT0;
+    {
+        __IO uint32_t INTSTAT0;          /**< \brief 中断状态寄存器0 */
         stc_dma_intstat0_field_t INTSTAT0_f;
     };
     union
-    {   /* 中断状态寄存器1 */
-        __IO uint32_t INTSTAT1;
+    {
+        __IO uint32_t INTSTAT1;          /**< \brief 中断状态寄存器1 */
         stc_dma_intstat1_field_t INTSTAT1_f;
     };
     union
-    {   /* 中断屏蔽寄存器0 */
-        __IO uint32_t INTMASK0;
+    {
+        __IO uint32_t INTMASK0;          /**< \brief 中断屏蔽寄存器0 */
         stc_dma_intmask0_field_t INTMASK0_f;
     };
     union
-    {   /* 中断屏蔽寄存器1 */
-        __IO uint32_t INTMASK1;
+    {
+        __IO uint32_t INTMASK1;          /**< \brief 中断屏蔽寄存器1 */
         stc_dma_intmask1_field_t INTMASK1_f;
     };
     union
-    {   /* 中断复位寄存器0 */
-        __IO uint32_t INTCLR0;
+    {
+        __IO uint32_t INTCLR0;           /**< \brief 中断复位寄存器0 */
         stc_dma_intclr0_field_t INTCLR0_f;
     };
     union
-    {   /* 中断复位寄存器1 */
-        __IO uint32_t INTCLR1;
+    {
+        __IO uint32_t INTCLR1;           /**< \brief 中断复位寄存器1 */
         stc_dma_intclr1_field_t INTCLR1_f;
     };
     union
-    {   /* 通道使能寄存器 */
-        __IO uint32_t CHEN;
+    {
+        __IO uint32_t CHEN;              /**< \brief 通道使能寄存器 */
         stc_dma_chen_field_t CHEN_f;
     };
     uint8_t RESERVED8[4];
     union
-    {   /* 传输中通道监视寄存器 */
-        __IO uint32_t CHSTAT;
+    {
+        __IO uint32_t CHSTAT;            /**< \brief 传输中通道监视寄存器 */
         stc_dma_chstat_field_t CHSTAT_f;
     };
     uint8_t RESERVED9[4];
     union
-    {   /* 通道重置控制寄存器 */
-        __IO uint32_t RCFGCTL;
+    {
+        __IO uint32_t RCFGCTL;           /**< \brief 通道重置控制寄存器 */
         stc_dma_rcfgctl_field_t RCFGCTL_f;
     };
     uint8_t RESERVED10[16];
-    /* 传输源地址寄存器 */
-    __IO uint32_t SAR0;
-    /* 传输目标地址寄存器 */
-    __IO uint32_t DAR0;
+
+    __IO uint32_t SAR0;                  /**< \brief 传输源地址寄存器 */
+
+    __IO uint32_t DAR0;                  /**< \brief 传输目标地址寄存器 */
     union
-    {   /* 数据控制寄存器 */
-        __IO uint32_t DTCTL0;
+    {
+        __IO uint32_t DTCTL0;            /**< \brief 数据控制寄存器 */
         stc_dma_dtctl_field_t DTCTL0_f;
     };
     union
-    {   /* 重复区域大小寄存器 */
-        __IO uint32_t RPT0;
+    {
+        __IO uint32_t RPT0;              /**< \brief 重复区域大小寄存器 */
         stc_dma_rpt_field_t RPT0_f;
-        /* 重复区域大小寄存器B */
-        __IO uint32_t RPTB0;
+
+        __IO uint32_t RPTB0;             /**< \brief 重复区域大小寄存器B */
         stc_dma_rptb_field_t RPTB0_f;
     };
     union
     {
-        /* 源设备不连续地址传输控制寄存器 */
-        __IO uint32_t SNSEQCTL0;
+
+        __IO uint32_t SNSEQCTL0;         /**< \brief 源设备不连续地址传输控制寄存器 */
         stc_dma_snseqctl_field_t SNSEQCTL0_f;
-        /* 源设备不连续地址传输控制寄存器B */
-        __IO uint32_t SNSEQCTLB0;
+
+        __IO uint32_t SNSEQCTLB0;        /**< \brief 源设备不连续地址传输控制寄存器B */
         stc_dma_snseqctlb_field_t SNSEQCTLB0_f;
     };
     union
     {
-        /* 目标设备不连续地址传输控制寄存器 */
-        __IO uint32_t DNSEQCTL0;
+
+        __IO uint32_t DNSEQCTL0;         /**< \brief 目标设备不连续地址传输控制寄存器 */
         stc_dma_dnseqctl_field_t DNSEQCTL0_f;
-        /* 目标设备不连续地址传输控制寄存器B */
-        __IO uint32_t DNSEQCTLB0;
+
+        __IO uint32_t DNSEQCTLB0;        /**< \brief 目标设备不连续地址传输控制寄存器B */
         stc_dma_dnseqctlb_field_t DNSEQCTLB0_f;
     };
     union
@@ -414,8 +481,8 @@ typedef struct amhw_hc32f460_dma_chan {
         stc_dma_llp_field_t LLP0_f;
     };
     union
-    {   /* 通道控制寄存器 */
-        __IO uint32_t CH0CTL;
+    {
+        __IO uint32_t CH0CTL;            /**< \brief 通道控制寄存器 */
         stc_dma_ch0ctl_field_t CH0CTL_f;
     };
     __IO uint32_t MONSAR0;
@@ -440,43 +507,43 @@ typedef struct amhw_hc32f460_dma_chan {
         __IO uint32_t MONDNSEQCTL0;
         stc_dma_mondnseqctl_field_t MONDNSEQCTL0_f;
     };
-    uint8_t RESERVED27[8];
-    __IO uint32_t SAR1;
-    __IO uint32_t DAR1;
+    uint8_t RESERVED27[8];            /**< \brief 保留 */
+    __IO uint32_t SAR1;               /**< \brief 传输源地址寄存器 */
+    __IO uint32_t DAR1;               /**< \brief 传输目标地址寄存器 */
     union
     {
-        __IO uint32_t DTCTL1;
+        __IO uint32_t DTCTL1;         /**< \brief 数据控制寄存器 */
         stc_dma_dtctl_field_t DTCTL1_f;
     };
     union
     {
-        __IO uint32_t RPT1;
+        __IO uint32_t RPT1;           /**< \brief 重复区域大小寄存器 */
         stc_dma_rpt_field_t RPT1_f;
-        __IO uint32_t RPTB1;
+        __IO uint32_t RPTB1;          /**< \brief 重复区域大小寄存器B */
         stc_dma_rptb_field_t RPTB1_f;
     };
     union
     {
-        __IO uint32_t SNSEQCTL1;
+        __IO uint32_t SNSEQCTL1;      /**< \brief 源设备不连续地址传输控制寄存器 */
         stc_dma_snseqctl_field_t SNSEQCTL1_f;
-        __IO uint32_t SNSEQCTLB1;
+        __IO uint32_t SNSEQCTLB1;     /**< \brief 源设备不连续地址传输控制寄存器B */
         stc_dma_snseqctlb_field_t SNSEQCTLB1_f;
     };
     union
     {
-        __IO uint32_t DNSEQCTL1;
+        __IO uint32_t DNSEQCTL1;      /**< \brief 目标设备不连续地址传输控制寄存器 */
         stc_dma_dnseqctl_field_t DNSEQCTL1_f;
-        __IO uint32_t DNSEQCTLB1;
+        __IO uint32_t DNSEQCTLB1;     /**< \brief 目标设备不连续地址传输控制寄存器B */
         stc_dma_dnseqctlb_field_t DNSEQCTLB1_f;
     };
     union
     {
-        __IO uint32_t LLP1;
+        __IO uint32_t LLP1;           /**< \brief 链指针寄存器 */
         stc_dma_llp_field_t LLP1_f;
     };
     union
     {
-        __IO uint32_t CH1CTL;
+        __IO uint32_t CH1CTL;         /**< \brief 通道控制寄存器 */
         stc_dma_ch1ctl_field_t CH1CTL_f;
     };
     __IO uint32_t MONSAR1;
@@ -501,43 +568,43 @@ typedef struct amhw_hc32f460_dma_chan {
         __IO uint32_t MONDNSEQCTL1;
         stc_dma_mondnseqctl_field_t MONDNSEQCTL1_f;
     };
-    uint8_t RESERVED44[8];
-    __IO uint32_t SAR2;
-    __IO uint32_t DAR2;
+    uint8_t RESERVED44[8];            /**< \brief 保留 */
+    __IO uint32_t SAR2;               /**< \brief 传输源地址寄存器 */
+    __IO uint32_t DAR2;               /**< \brief 传输目标地址寄存器 */
     union
     {
-        __IO uint32_t DTCTL2;
+        __IO uint32_t DTCTL2;         /**< \brief 数据控制寄存器 */
         stc_dma_dtctl_field_t DTCTL2_f;
     };
     union
     {
-        __IO uint32_t RPT2;
+        __IO uint32_t RPT2;           /**< \brief 重复区域大小寄存器 */
         stc_dma_rpt_field_t RPT2_f;
         __IO uint32_t RPTB2;
-        stc_dma_rptb_field_t RPTB2_f;
+        stc_dma_rptb_field_t RPTB2_f; /**< \brief 重复区域大小寄存器B */
     };
     union
     {
-        __IO uint32_t SNSEQCTL2;
+        __IO uint32_t SNSEQCTL2;     /**< \brief 源设备不连续地址传输控制寄存器 */
         stc_dma_snseqctl_field_t SNSEQCTL2_f;
-        __IO uint32_t SNSEQCTLB2;
+        __IO uint32_t SNSEQCTLB2;    /**< \brief 源设备不连续地址传输控制寄存器B */
         stc_dma_snseqctlb_field_t SNSEQCTLB2_f;
     };
     union
     {
-        __IO uint32_t DNSEQCTL2;
+        __IO uint32_t DNSEQCTL2;     /**< \brief 目标设备不连续地址传输控制寄存器 */
         stc_dma_dnseqctl_field_t DNSEQCTL2_f;
-        __IO uint32_t DNSEQCTLB2;
+        __IO uint32_t DNSEQCTLB2;    /**< \brief 目标设备不连续地址传输控制寄存器B */
         stc_dma_dnseqctlb_field_t DNSEQCTLB2_f;
     };
     union
     {
-        __IO uint32_t LLP2;
+        __IO uint32_t LLP2;          /**< \brief 链指针寄存器 */
         stc_dma_llp_field_t LLP2_f;
     };
     union
     {
-        __IO uint32_t CH2CTL;
+        __IO uint32_t CH2CTL;        /**< \brief 通道控制寄存器 */
         stc_dma_ch2ctl_field_t CH2CTL_f;
     };
     __IO uint32_t MONSAR2;
@@ -562,43 +629,43 @@ typedef struct amhw_hc32f460_dma_chan {
         __IO uint32_t MONDNSEQCTL2;
         stc_dma_mondnseqctl_field_t MONDNSEQCTL2_f;
     };
-    uint8_t RESERVED61[8];
-    __IO uint32_t SAR3;
-    __IO uint32_t DAR3;
+    uint8_t RESERVED61[8];            /**< \brief 保留 */
+    __IO uint32_t SAR3;               /**< \brief 传输源地址寄存器 */
+    __IO uint32_t DAR3;               /**< \brief 传输目标地址寄存器 */
     union
     {
-        __IO uint32_t DTCTL3;
+        __IO uint32_t DTCTL3;         /**< \brief 数据控制寄存器 */
         stc_dma_dtctl_field_t DTCTL3_f;
     };
     union
     {
-        __IO uint32_t RPT3;
+        __IO uint32_t RPT3;           /**< \brief 重复区域大小寄存器 */
         stc_dma_rpt_field_t RPT3_f;
         __IO uint32_t RPTB3;
-        stc_dma_rptb_field_t RPTB3_f;
+        stc_dma_rptb_field_t RPTB3_f; /**< \brief 重复区域大小寄存器B */
     };
     union
     {
-        __IO uint32_t SNSEQCTL3;
+        __IO uint32_t SNSEQCTL3;      /**< \brief 源设备不连续地址传输控制寄存器 */
         stc_dma_snseqctl_field_t SNSEQCTL3_f;
-        __IO uint32_t SNSEQCTLB3;
+        __IO uint32_t SNSEQCTLB3;     /**< \brief 源设备不连续地址传输控制寄存器B */
         stc_dma_snseqctlb_field_t SNSEQCTLB3_f;
     };
     union
     {
-        __IO uint32_t DNSEQCTL3;
+        __IO uint32_t DNSEQCTL3;      /**< \brief 目标设备不连续地址传输控制寄存器 */
         stc_dma_dnseqctl_field_t DNSEQCTL3_f;
-        __IO uint32_t DNSEQCTLB3;
+        __IO uint32_t DNSEQCTLB3;     /**< \brief 目标设备不连续地址传输控制寄存器B */
         stc_dma_dnseqctlb_field_t DNSEQCTLB3_f;
     };
     union
     {
-        __IO uint32_t LLP3;
+        __IO uint32_t LLP3;           /**< \brief 链指针寄存器 */
         stc_dma_llp_field_t LLP3_f;
     };
     union
     {
-        __IO uint32_t CH3CTL;
+        __IO uint32_t CH3CTL;         /**< \brief 通道控制寄存器 */
         stc_dma_ch3ctl_field_t CH3CTL_f;
     };
     __IO uint32_t MONSAR3;
@@ -709,8 +776,8 @@ typedef enum {
  */
 am_static_inline
 int amhw_hc32f460_dma_transfer_check (amhw_hc32f460_dma_t             *p_hw_dma,
-                                            uint8_t                          channel,
-                                            amhw_hc32f460_dma_trans_status_t flag)
+                                      uint8_t                          channel,
+                                      amhw_hc32f460_dma_trans_status_t flag)
 {
     if (flag == AMHW_HC32F460_DMA_CHSTAT_DMAACT) {
         /* DMA是否处于传输动作中 */
@@ -722,8 +789,8 @@ int amhw_hc32f460_dma_transfer_check (amhw_hc32f460_dma_t             *p_hw_dma,
         /* DMA对应通道是否处于动作中 */
         return (((p_hw_dma->CHSTAT) >> 16) & (1 << channel)) ? AM_TRUE : AM_FALSE;
     } else {
-		    return -AM_EINVAL;
-		}
+            return -AM_EINVAL;
+    }
 }
 
 
@@ -823,10 +890,10 @@ void amhw_hc32f460_dma_chan_blksize_set(amhw_hc32f460_dma_t *p_hw_dma,
                                         uint8_t              channel,
                                         uint16_t              size)
 {
-	  uint32_t *addr = (uint32_t *)(((uint32_t)&(p_hw_dma->DTCTL0)) + (channel * 0x40));
+      uint32_t *addr = (uint32_t *)(((uint32_t)&(p_hw_dma->DTCTL0)) + (channel * 0x40));
     volatile uint32_t value_reg = *addr;
-	  value_reg &= (~0x3FF);
-	  value_reg |= size;
+      value_reg &= (~0x3FF);
+      value_reg |= size;
     *addr = value_reg;
 }
 
@@ -842,37 +909,13 @@ void amhw_hc32f460_dma_chan_blksize_set(amhw_hc32f460_dma_t *p_hw_dma,
  *
  * \return 数据块的大小。
  */
-
-//static uint32_t value_test = 0xff;
-//static uint32_t value_test2 = 0x12345678;
-//static uint16_t value_test3 = 0xffff;
-//static uint16_t value_test4 = 0xffff;
 am_static_inline
 uint16_t amhw_hc32f460_dma_chan_blksize_get(amhw_hc32f460_dma_t *p_hw_dma,
                                             uint8_t              channel)
 {
-	  
-//	  uint32_t value = ((*(uint32_t *)((uint32_t)(&(p_hw_dma->DTCTL0)) + (channel * 0x40))) & (0x3FF));
-	 volatile uint32_t value = *(volatile uint32_t *)((uint32_t)(&(p_hw_dma->DTCTL0)) + (channel * 0x40));
-	 value &= 0x3ff;
-   return (uint16_t)value;	  
-//	  uint32_t *addr = (uint32_t *)0x40053088;
-//	
-//	  *(uint32_t *)(0x40053088) = 0x12345678;
-//	  AM_DBG_INFO("%x\r\n", *(uint32_t *)(0x40053088));	
-
-//	  value_test2 = *(uint32_t *)(0x40053088);
-//	  AM_DBG_INFO("%x\r\n", (uint16_t)value_test2);
-//	
-//	  value_test4 = value_test2;
-//		  AM_DBG_INFO("%x\r\n", value_test4);
-
-//	  value_test3 = *addr;
-//	  AM_DBG_INFO("%x\r\n", value_test3);		
-//	
-//	  value_test =(uint16_t) (*addr);
-//    AM_DBG_INFO("%x\r\n", value_test);	  
-
+    volatile uint32_t value = *(volatile uint32_t *)((uint32_t)(&(p_hw_dma->DTCTL0)) + (channel * 0x40));
+    value &= 0x3ff;
+    return (uint16_t)value;
 }
 
 /**
@@ -892,11 +935,10 @@ void amhw_hc32f460_dma_chan_tran_data_num_set (amhw_hc32f460_dma_t *p_hw_dma,
                                                uint8_t              channel,
                                                uint16_t             num)
 {
-	   volatile uint32_t reg_val = *(volatile uint32_t *)((uint32_t)(&(p_hw_dma->DTCTL0)) + (channel * 0x40));
-     reg_val &= (~0xFFFF0000);
-	   reg_val |= (num << 16);
+    volatile uint32_t reg_val = *(volatile uint32_t *)((uint32_t)(&(p_hw_dma->DTCTL0)) + (channel * 0x40));
+    reg_val &= (~0xFFFF0000);
+    reg_val |= (num << 16);
     *(uint32_t *)((uint32_t)(&(p_hw_dma->DTCTL0)) + (channel * 0x40)) = reg_val;
-
 }
 
 /**
@@ -913,7 +955,7 @@ am_static_inline
 uint16_t amhw_hc32f460_dma_chan_tran_data_num_get (amhw_hc32f460_dma_t *p_hw_dma,
                                                    uint8_t              channel)
 {
-	  volatile uint32_t reg_val = *(volatile uint32_t *)((uint32_t)(&(p_hw_dma->DTCTL0)) + (channel * 0x40));
+    volatile uint32_t reg_val = *(volatile uint32_t *)((uint32_t)(&(p_hw_dma->DTCTL0)) + (channel * 0x40));
     return (uint16_t)(reg_val >> 16);
 }
 
@@ -935,10 +977,10 @@ void amhw_hc32f460_dma_chan_data_hsize_set (amhw_hc32f460_dma_t *p_hw_dma,
                                             uint8_t              channel,
                                             uint8_t              hsize)
 {
-	  volatile uint32_t *addr = (volatile uint32_t *)((uint32_t)&(p_hw_dma->CH0CTL) + (channel * 0x40));
+    volatile uint32_t *addr = (volatile uint32_t *)((uint32_t)&(p_hw_dma->CH0CTL) + (channel * 0x40));
     volatile uint32_t value_reg = *addr;
-	  value_reg &= (~(0x3 << 8));
-	  value_reg |= (hsize << 8);
+    value_reg &= (~(0x3 << 8));
+    value_reg |= (hsize << 8);
     *addr = value_reg;
 }
 
@@ -958,7 +1000,7 @@ am_static_inline
 uint8_t amhw_hc32f460_dma_chan_data_hsize_get (amhw_hc32f460_dma_t *p_hw_dma,
                                                uint8_t              channel)
 {
-	  volatile uint32_t reg_val = *(uint32_t *)((uint32_t)&(p_hw_dma->CH0CTL) + (channel * 0x40));
+    volatile uint32_t reg_val = *(uint32_t *)((uint32_t)&(p_hw_dma->CH0CTL) + (channel * 0x40));
     return (uint8_t)((reg_val & (0x3 << 8)) >> 8);
 }
 
@@ -975,11 +1017,11 @@ am_static_inline
 void amhw_hc32f460_dma_chan_srcaddr_update_set (amhw_hc32f460_dma_t *p_hw_dma,
                                                 uint8_t              channel,
                                                 uint8_t              method)
-{	
-		volatile uint32_t *addr = (volatile uint32_t *)((uint32_t)&(p_hw_dma->CH0CTL) + (channel * 0x40));
+{
+    volatile uint32_t *addr = (volatile uint32_t *)((uint32_t)&(p_hw_dma->CH0CTL) + (channel * 0x40));
     volatile uint32_t value_reg = *addr;
-	  value_reg &= (~(0x3 << 2));
-	  value_reg |= (method << 2);
+    value_reg &= (~(0x3 << 2));
+    value_reg |= (method << 2);
     *addr = value_reg;
 }
 
@@ -996,11 +1038,11 @@ am_static_inline
 void amhw_hc32f460_dma_chan_dstaddr_update_set (amhw_hc32f460_dma_t *p_hw_dma,
                                                 uint8_t              channel,
                                                 uint8_t              method)
-{	
-		volatile uint32_t *addr = (volatile uint32_t *)((uint32_t)&(p_hw_dma->CH0CTL) + (channel * 0x40));
+{
+    volatile uint32_t *addr = (volatile uint32_t *)((uint32_t)&(p_hw_dma->CH0CTL) + (channel * 0x40));
     volatile uint32_t value_reg = *addr;
-	  value_reg &= (~(0x3 << 0));
-	  value_reg |= (method << 0);
+    value_reg &= (~(0x3 << 0));
+    value_reg |= (method << 0);
     *addr = value_reg;
 }
 
@@ -1082,9 +1124,9 @@ am_static_inline
 void amhw_hc32f460_dma_chan_int_enable(amhw_hc32f460_dma_t *p_hw_dma,
                                        uint8_t              channel)
 {
-	  volatile uint32_t *addr = (volatile uint32_t *)((uint32_t)&(p_hw_dma->CH0CTL) + (channel * 0x40));
+    volatile uint32_t *addr = (volatile uint32_t *)((uint32_t)&(p_hw_dma->CH0CTL) + (channel * 0x40));
     volatile uint32_t value_reg = *addr;
-	  value_reg |= (1 << 12);
+    value_reg |= (1 << 12);
     *addr = value_reg;
 }
 
@@ -1100,9 +1142,9 @@ am_static_inline
 void amhw_hc32f460_dma_chan_int_disable(amhw_hc32f460_dma_t *p_hw_dma,
                                         uint8_t              channel)
 {
-		volatile uint32_t *addr = (volatile uint32_t *)((uint32_t)&(p_hw_dma->CH0CTL) + (channel * 0x40));
+    volatile uint32_t *addr = (volatile uint32_t *)((uint32_t)&(p_hw_dma->CH0CTL) + (channel * 0x40));
     volatile uint32_t value_reg = *addr;
-	  value_reg &= (~(1 << 12));
+    value_reg &= (~(1 << 12));
     *addr = value_reg;
 }
 
@@ -1184,8 +1226,8 @@ int amhw_hc32f460_dma_chan_stat_check (amhw_hc32f460_dma_t         *p_hw_dma,
     } else if (flag == AMHW_HC32F460_DMA_INT_FLAG_TX_COMPLETE) {
         return (((p_hw_dma->INTSTAT1 >> 0) & (1 << channel)) ? AM_TRUE: AM_FALSE);
     } else{
-		    return -AM_EINVAL;
-		}
+        return -AM_EINVAL;
+    }
 }
 
 /**
@@ -1305,10 +1347,10 @@ void amhw_hc32f460_dma_chan_drpt_set(amhw_hc32f460_dma_t *p_hw_dma,
                                      uint8_t              channel,
                                      uint32_t             size)
 {
-	  volatile uint32_t *addr = (volatile uint32_t *)((uint32_t)&(p_hw_dma->RPT0) + (channel * 0x40));
+    volatile uint32_t *addr = (volatile uint32_t *)((uint32_t)&(p_hw_dma->RPT0) + (channel * 0x40));
     volatile uint32_t value_reg = *addr;
-	  value_reg &= (~(0x3FF << 16));
-	  value_reg |= (size << 16);
+    value_reg &= (~(0x3FF << 16));
+    value_reg |= (size << 16);
     *addr = value_reg;
 }
 
@@ -1328,10 +1370,10 @@ void amhw_hc32f460_dma_chan_srpt_set(amhw_hc32f460_dma_t *p_hw_dma,
                                      uint8_t              channel,
                                      uint32_t             size)
 {
-		volatile uint32_t *addr = (volatile uint32_t *)((uint32_t)&(p_hw_dma->RPT0) + (channel * 0x40));
+    volatile uint32_t *addr = (volatile uint32_t *)((uint32_t)&(p_hw_dma->RPT0) + (channel * 0x40));
     volatile uint32_t value_reg = *addr;
-	  value_reg &= (~0x3FF);
-	  value_reg |= size;
+    value_reg &= (~0x3FF);
+    value_reg |= size;
     *addr = value_reg;
 }
 
@@ -1406,6 +1448,17 @@ am_static_inline
 void amhw_hc32f460_dma_chan_rcfg_set(amhw_hc32f460_dma_t *p_hw_dma, uint32_t flag)
 {
     p_hw_dma->RCFGCTL = flag;
+}
+
+/**
+ * \brief 软件触发DMA
+ *
+ * \return none
+ */
+am_static_inline
+void amhw_hc32f460_dma_soft_trig(void)
+{
+    *(volatile uint32_t *)HC32F460_AOS_BASE = 0x1;
 }
 
 /**

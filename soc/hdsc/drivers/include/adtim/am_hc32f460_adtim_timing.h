@@ -47,9 +47,11 @@ extern "C" {
  */
 typedef struct am_hc32f460_adtim_timing_devinfo {
 
-    uint32_t                        adtim_regbase;    /**< \brief ADTIM寄存器块基址 */
+    /**< \brief ADTIM寄存器块基址 */
+    uint32_t                        adtim_regbase;
 
-    uint8_t                         inum;           /**< \brief ADTIM中断号 */
+    /**< \brief ADTIM中断号 */
+    uint8_t                         inum;
 
     /** \brief 平台初始化函数，如打开时钟，配置引脚等工作 */
     void                            (*pfn_plfm_init)(void);
@@ -64,7 +66,7 @@ typedef struct am_hc32f460_adtim_timing_devinfo {
  */
 typedef struct am_hc32f460_adtim_timing_dev {
 
-    am_timer_serv_t adtimer_serv;         /**< \brief 标准定时(Timer)服务 */
+    am_timer_serv_t adtimer_serv;       /**< \brief 标准定时(Timer)服务 */
 
     void (*pfn_callback)(void *);       /**< \brief 回调函数 */
     void  *p_arg;                       /**< \brief 回调函数的用户参数 */
@@ -87,7 +89,7 @@ typedef struct am_hc32f460_adtim_timing_dev {
  */
 am_timer_handle_t
 am_hc32f460_adtim_timing_init (am_hc32f460_adtim_timing_dev_t           *p_dev,
-                             const am_hc32f460_adtim_timing_devinfo_t *p_devinfo);
+                               const am_hc32f460_adtim_timing_devinfo_t *p_devinfo);
 
 /**
  * \brief 不使用ADTIM定时功能时，解初始化ADTIM定时功能，释放相关资源

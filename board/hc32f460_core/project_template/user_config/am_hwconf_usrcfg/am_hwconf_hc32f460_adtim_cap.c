@@ -71,7 +71,7 @@ am_hc32f460_adtim_cap_ioinfo_t __g_adtim61_cap_ioinfo_list[] = {
 const am_hc32f460_adtim_cap_devinfo_t  __g_adtim61_cap_devinfo = {
     HC32F460_TMR61_BASE,                   /**< \brief ADTIM6寄存器块的基地址 */
     INUM_TIMER6_1,                         /**< \brief ADTIM6中断编号 */
-    AMHW_HC32F460_ADTIM_PCLK_DIV1024,        /**< \brief 时钟分频系数 */
+    AMHW_HC32F460_ADTIM_PCLK_DIV1024,      /**< \brief 时钟分频系数 */
     2,                                     /**< \brief 2个捕获通道 */
 
     &__g_adtim61_cap_ioinfo_list[0],       /**< \brief 引脚配置信息列表 */
@@ -86,7 +86,7 @@ am_hc32f460_adtim_cap_dev_t  __g_adtim61_cap_dev;
 am_cap_handle_t am_hc32f460_adtim61_cap_inst_init (void)
 {
     return am_hc32f460_adtim_cap_init(&__g_adtim61_cap_dev,
-                                    &__g_adtim61_cap_devinfo);
+                                      &__g_adtim61_cap_devinfo);
 }
 
 /** \brief adtim61 cap实例解初始化 */
@@ -148,7 +148,7 @@ am_hc32f460_adtim_cap_dev_t  __g_adtim62_cap_dev;
 am_cap_handle_t am_hc32f460_adtim62_cap_inst_init (void)
 {
     return am_hc32f460_adtim_cap_init(&__g_adtim62_cap_dev,
-                                    &__g_adtim62_cap_devinfo);
+                                      &__g_adtim62_cap_devinfo);
 }
 
 /** \brief adtim61 cap实例解初始化 */
@@ -209,7 +209,7 @@ am_hc32f460_adtim_cap_dev_t  __g_adtim63_cap_dev;
 am_cap_handle_t am_hc32f460_adtim63_cap_inst_init (void)
 {
     return am_hc32f460_adtim_cap_init(&__g_adtim63_cap_dev,
-                                    &__g_adtim63_cap_devinfo);
+                                      &__g_adtim63_cap_devinfo);
 }
 
 /** \brief adtim63 cap实例解初始化 */

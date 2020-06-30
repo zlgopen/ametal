@@ -139,7 +139,7 @@ void __hc32f460_plfm_tim42_pwm_deinit (void)
     am_clk_disable(CLK_TIMER4_2);    
 }
 
-/** \brief TIM41用于PWM功能的引脚配置信息列表 */
+/** \brief TIM42用于PWM功能的引脚配置信息列表 */
 am_hc32f460_tim4_pwm_chaninfo_t __g_tim42_pwm_chaninfo_list[] = {
 
     /** \brief 通道1引脚配置 */

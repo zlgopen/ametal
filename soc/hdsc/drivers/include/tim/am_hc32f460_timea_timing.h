@@ -26,8 +26,8 @@
  * \endinternal
  */
 
-#ifndef __AM_HC32_TIMEA_TIMING_H
-#define __AM_HC32_TIMEA_TIMING_H
+#ifndef __AM_HC32F460_TIMEA_TIMING_H
+#define __AM_HC32F460_TIMEA_TIMING_H
 
 #ifdef __cplusplus
 extern "C" {
@@ -37,8 +37,8 @@ extern "C" {
 #include "hw/amhw_hc32f460_timea.h"
 
 /**
- * \addtogroup am_hc32_if_tim_timing
- * \copydoc am_hc32_tim_timing.h
+ * \addtogroup am_hc32f460_if_tim_timing
+ * \copydoc am_hc32f460_tim_timing.h
  * @{
  */
 
@@ -47,7 +47,7 @@ extern "C" {
  */
 typedef struct am_hc32f460_timea_timing_devinfo {
 
-    uint32_t                      timea_regbase;    /**< \brief TIM寄存器块基址 */
+    uint32_t                      timea_regbase;  /**< \brief TIM寄存器块基址 */
     uint8_t                       inum;           /**< \brief TIM中断号 */    
     timea_counter_mode_t          timea_counter_mode;     
     timea_count_dir_t             timea_count_dir;
@@ -88,8 +88,8 @@ typedef struct am_hc32f460_timea_timing_dev {
  * \return Timer标准服务操作句柄，值为NULL时表明初始化失败
  */
 am_timer_handle_t
-am_hc32f460_timea_timing_init (am_hc32f460_timea_timing_dev_t              *p_dev,
-                           const am_hc32f460_timea_timing_devinfo_t *p_devinfo);
+am_hc32f460_timea_timing_init (am_hc32f460_timea_timing_dev_t           *p_dev,
+                               const am_hc32f460_timea_timing_devinfo_t *p_devinfo);
 
 /**
  * \brief 不使用TIM定时功能时，解初始化TIM定时功能，释放相关资源
@@ -128,6 +128,6 @@ void TimerA6CMP_IrqHandler(void *p_arg);
 }
 #endif
 
-#endif /* __AM_HC32_TIMEA_TIMING_H */
+#endif /* __AM_HC32F460_TIMEA_TIMING_H */
 
 /* end of file */

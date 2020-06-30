@@ -60,124 +60,172 @@ extern "C" {
 
 /** @} */
 
+/**
+ * \brief RTC 控制寄存器0位域结构体
+ */
 typedef struct
 {
-    __IO uint32_t RESET                     : 1;
-    uint32_t RESERVED1                      :31;
+    __IO uint32_t RESET                     : 1;  /**< \brief RTC日历计数器复位 */
+    uint32_t RESERVED1                      :31;  /**< \brief 保留 */
 } stc_rtc_cr0_field_t;
 
+/**
+ * \brief RTC 控制寄存器1位域结构体
+ */
 typedef struct
 {
-    __IO uint32_t PRDS                      : 3;
-    __IO uint32_t AMPM                      : 1;
+    __IO uint32_t PRDS                      : 3;  /**< \brief 周期中断选择 */
+    __IO uint32_t AMPM                      : 1;  /**< \brief 时制选择 */
     __IO uint32_t ALMFCLR                   : 1;
-    __IO uint32_t ONEHZOE                   : 1;
-    __IO uint32_t ONEHZSEL                  : 1;
-    __IO uint32_t START                     : 1;
-    uint32_t RESERVED8                      :24;
+    __IO uint32_t ONEHZOE                   : 1;  /**< \brief 1Hz输出使能 */
+    __IO uint32_t ONEHZSEL                  : 1;  /**< \brief 1Hz输出选择 */
+    __IO uint32_t START                     : 1;  /**< \brief RTC计数开始 */
+    uint32_t RESERVED8                      :24;  /**< \brief 保留 */
 } stc_rtc_cr1_field_t;
 
+/**
+ * \brief RTC 控制寄存器2位域结构体
+ */
 typedef struct
 {
-    __IO uint32_t WAIT                      : 1;
-    __IO uint32_t WAITF                     : 1;
-    uint32_t RESERVED2                      : 1;
-    __IO uint32_t ALMF                      : 1;
-    uint32_t RESERVED4                      : 1;
-    __IO uint32_t PRDIE                     : 1;
-    __IO uint32_t ALMIE                     : 1;
-    __IO uint32_t ALME                      : 1;
-    uint32_t RESERVED8                      :24;
+    __IO uint32_t WAIT                      : 1;  /**< \brief 写入/读出控制 */
+    __IO uint32_t WAITF                     : 1;  /**< \brief 等待标志 */
+    uint32_t RESERVED2                      : 1;  /**< \brief 保留 */
+    __IO uint32_t ALMF                      : 1;  /**< \brief 闹钟标志 */
+    uint32_t RESERVED4                      : 1;  /**< \brief 保留 */
+    __IO uint32_t PRDIE                     : 1;  /**< \brief 周期中断使能 */
+    __IO uint32_t ALMIE                     : 1;  /**< \brief 闹钟中断使能 */
+    __IO uint32_t ALME                      : 1;  /**< \brief 闹钟使能 */
+    uint32_t RESERVED8                      :24;  /**< \brief 保留 */
 } stc_rtc_cr2_field_t;
 
+/**
+ * \brief RTC 控制寄存器3位域结构体
+ */
 typedef struct
 {
-    uint32_t RESERVED0                      : 4;
-    __IO uint32_t LRCEN                     : 1;
-    uint32_t RESERVED5                      : 2;
-    __IO uint32_t RCKSEL                    : 1;
-    uint32_t RESERVED8                      :24;
+    uint32_t RESERVED0                      : 4;  /**< \brief 保留 */
+    __IO uint32_t LRCEN                     : 1;  /**< \brief 低速振发器使能 */
+    uint32_t RESERVED5                      : 2;  /**< \brief 保留 */
+    __IO uint32_t RCKSEL                    : 1;  /**< \brief RTC计数时钟选择 */
+    uint32_t RESERVED8                      :24;  /**< \brief 保留 */
 } stc_rtc_cr3_field_t;
 
+/**
+ * \brief RTC 秒计数寄存器位域结构体
+ */
 typedef struct
 {
-    __IO uint32_t SECU                      : 4;
-    __IO uint32_t SECD                      : 3;
-    uint32_t RESERVED7                      :25;
+    __IO uint32_t SECU                      : 4;  /**< \brief 秒个位计数值  */
+    __IO uint32_t SECD                      : 3;  /**< \brief 秒十位计数值 */
+    uint32_t RESERVED7                      :25;  /**< \brief 保留 */
 } stc_rtc_sec_field_t;
 
+/**
+ * \brief RTC 分计数寄存器位域结构体
+ */
 typedef struct
 {
-    __IO uint32_t MINU                      : 4;
-    __IO uint32_t MIND                      : 3;
-    uint32_t RESERVED7                      :25;
+    __IO uint32_t MINU                      : 4;  /**< \brief 分个位计数值  */
+    __IO uint32_t MIND                      : 3;  /**< \brief 分十位计数值  */
+    uint32_t RESERVED7                      :25;  /**< \brief 保留 */
 } stc_rtc_min_field_t;
 
+/**
+ * \brief RTC 时计数寄存器位域结构体
+ */
 typedef struct
 {
-    __IO uint32_t HOURU                     : 4;
-    __IO uint32_t HOURD                     : 2;
-    uint32_t RESERVED6                      :26;
+    __IO uint32_t HOURU                     : 4;  /**< \brief 时个位计数值  */
+    __IO uint32_t HOURD                     : 2;  /**< \brief 时十位计数值  */
+    uint32_t RESERVED6                      :26;  /**< \brief 保留 */
 } stc_rtc_hour_field_t;
 
+/**
+ * \brief RTC 周计数寄存器位域结构体
+ */
 typedef struct
 {
-    __IO uint32_t WEEK                      : 3;
-    uint32_t RESERVED3                      :29;
+    __IO uint32_t WEEK                      : 3;  /**< \brief 周计数值  */
+    uint32_t RESERVED3                      :29;  /**< \brief 保留 */
 } stc_rtc_week_field_t;
 
+/**
+ * \brief RTC 日计数寄存器位域结构体
+ */
 typedef struct
 {
-    __IO uint32_t DAYU                      : 4;
-    __IO uint32_t DAYD                      : 2;
-    uint32_t RESERVED6                      :26;
+    __IO uint32_t DAYU                      : 4;  /**< \brief 日个位计数值  */
+    __IO uint32_t DAYD                      : 2;  /**< \brief 日十位计数值  */
+    uint32_t RESERVED6                      :26;  /**< \brief 保留 */
 } stc_rtc_day_field_t;
 
+/**
+ * \brief RTC 月计数寄存器位域结构体
+ */
 typedef struct
 {
-    __IO uint32_t MON                       : 5;
-    uint32_t RESERVED5                      :27;
+    __IO uint32_t MON                       : 5;  /**< \brief 月计数值 */
+    uint32_t RESERVED5                      :27;  /**< \brief 保留 */
 } stc_rtc_mon_field_t;
 
+/**
+ * \brief RTC 年计数寄存器位域结构体
+ */
 typedef struct
 {
-    __IO uint32_t YEARU                     : 4;
-    __IO uint32_t YEARD                     : 4;
-    uint32_t RESERVED8                      :24;
+    __IO uint32_t YEARU                     : 4;  /**< \brief 年个位 */
+    __IO uint32_t YEARD                     : 4;  /**< \brief 年十位 */
+    uint32_t RESERVED8                      :24;  /**< \brief 保留 */
 } stc_rtc_year_field_t;
 
+/**
+ * \brief RTC 分闹钟寄存器位域结构体
+ */
 typedef struct
 {
-    __IO uint32_t ALMMINU                   : 4;
-    __IO uint32_t ALMMIND                   : 3;
-    uint32_t RESERVED7                      :25;
+    __IO uint32_t ALMMINU                   : 4;  /**< \brief 分闹钟个位 */
+    __IO uint32_t ALMMIND                   : 3;  /**< \brief 分闹钟十位 */
+    uint32_t RESERVED7                      :25;  /**< \brief 保留 */
 } stc_rtc_almmin_field_t;
 
+/**
+ * \brief RTC 时闹钟寄存器位域结构体
+ */
 typedef struct
 {
-    __IO uint32_t ALMHOURU                  : 4;
-    __IO uint32_t ALMHOURD                  : 2;
-    uint32_t RESERVED6                      :26;
+    __IO uint32_t ALMHOURU                  : 4;  /**< \brief 时闹钟个位 */
+    __IO uint32_t ALMHOURD                  : 2;  /**< \brief 时闹钟十位 */
+    uint32_t RESERVED6                      :26;  /**< \brief 保留 */
 } stc_rtc_almhour_field_t;
 
+/**
+ * \brief RTC 周闹钟寄存器位域结构体
+ */
 typedef struct
 {
-    __IO uint32_t ALMWEEK                   : 7;
-    uint32_t RESERVED7                      :25;
+    __IO uint32_t ALMWEEK                   : 7;  /**< \brief 周闹钟匹配值 */
+    uint32_t RESERVED7                      :25;  /**< \brief 保留 */
 } stc_rtc_almweek_field_t;
 
+/**
+ * \brief RTC 时钟误差补偿寄存器位域结构体
+ */
 typedef struct
 {
-    __IO uint32_t COMP8                     : 1;
-    uint32_t RESERVED1                      : 6;
-    __IO uint32_t COMPEN                    : 1;
-    uint32_t RESERVED8                      :24;
+    __IO uint32_t COMP8                     : 1;  /**< \brief 补偿值 */
+    uint32_t RESERVED1                      : 6;  /**< \brief 保留 */
+    __IO uint32_t COMPEN                    : 1;  /**< \brief 补偿使能 */
+    uint32_t RESERVED8                      :24;  /**< \brief 保留 */
 } stc_rtc_errcrh_field_t;
 
+/**
+ * \brief RTC 时钟误差补偿寄存器位域结构体
+ */
 typedef struct
 {
-    __IO uint32_t COMP                      : 8;
-    uint32_t RESERVED8                      :24;
+    __IO uint32_t COMP                      : 8;  /**< \brief 补偿值 */
+    uint32_t RESERVED8                      :24;  /**< \brief 保留 */
 } stc_rtc_errcrl_field_t;
 
 /**
@@ -186,113 +234,113 @@ typedef struct
 typedef struct amhw_hc32f460_rtc {
     union
     {
-        __IO uint32_t CR0;
+        __IO uint32_t CR0;        /**< \brief 控制寄存器0 */
         stc_rtc_cr0_field_t CR0_f;
     };
     union
     {
-        __IO uint32_t CR1;
+        __IO uint32_t CR1;        /**< \brief 控制寄存器1 */
         stc_rtc_cr1_field_t CR1_f;
     };
     union
     {
-        __IO uint32_t CR2;
+        __IO uint32_t CR2;        /**< \brief 控制寄存器2 */
         stc_rtc_cr2_field_t CR2_f;
     };
     union
     {
-        __IO uint32_t CR3;
+        __IO uint32_t CR3;        /**< \brief 控制寄存器3 */
         stc_rtc_cr3_field_t CR3_f;
     };
     union
     {
-        __IO uint32_t SEC;
+        __IO uint32_t SEC;        /**< \brief 秒计数寄存器 */
         stc_rtc_sec_field_t SEC_f;
     };
     union
     {
-        __IO uint32_t MIN;
+        __IO uint32_t MIN;        /**< \brief 分计数寄存器 */
         stc_rtc_min_field_t MIN_f;
     };
     union
     {
-        __IO uint32_t HOUR;
+        __IO uint32_t HOUR;       /**< \brief 时计数寄存器 */
         stc_rtc_hour_field_t HOUR_f;
     };
     union
     {
-        __IO uint32_t WEEK;
+        __IO uint32_t WEEK;       /**< \brief 周计数寄存器 */
         stc_rtc_week_field_t WEEK_f;
     };
     union
     {
-        __IO uint32_t DAY;
+        __IO uint32_t DAY;        /**< \brief 日计数寄存器 */
         stc_rtc_day_field_t DAY_f;
     };
     union
     {
-        __IO uint32_t MON;
+        __IO uint32_t MON;        /**< \brief 月计数寄存器 */
         stc_rtc_mon_field_t MON_f;
     };
     union
     {
-        __IO uint32_t YEAR;
+        __IO uint32_t YEAR;       /**< \brief 年计数寄存器 */
         stc_rtc_year_field_t YEAR_f;
     };
     union
     {
-        __IO uint32_t ALMMIN;
+        __IO uint32_t ALMMIN;      /**< \brief 分闹钟寄存器 */
         stc_rtc_almmin_field_t ALMMIN_f;
     };
     union
     {
-        __IO uint32_t ALMHOUR;
+        __IO uint32_t ALMHOUR;     /**< \brief 时闹钟寄存器 */
         stc_rtc_almhour_field_t ALMHOUR_f;
     };
     union
     {
-        __IO uint32_t ALMWEEK;
+        __IO uint32_t ALMWEEK;     /**< \brief 周闹钟寄存器 */
         stc_rtc_almweek_field_t ALMWEEK_f;
     };
     union
     {
-        __IO uint32_t ERRCRH;
+        __IO uint32_t ERRCRH;      /**< \brief 时钟误差补偿寄存器 */
         stc_rtc_errcrh_field_t ERRCRH_f;
     };
     union
     {
-        __IO uint32_t ERRCRL;
+        __IO uint32_t ERRCRL;      /**< \brief 时钟误差补偿寄存器 */
         stc_rtc_errcrl_field_t ERRCRL_f;
     };
 } amhw_hc32f460_rtc_t;
 
 typedef enum en_rtc_clk_source
 {
-    RtcClkXtal32 = 0u,                  ///< XTAL32 as clock source
-    RtcClkLrc    = 1u,                  ///< LRC as clock source
+    RtcClkXtal32 = 0u,                  /**< \brief XTAL32 as clock source*/
+    RtcClkLrc    = 1u,                  /**< \brief LRC as clock source*/
 } en_rtc_clk_source_t;
 
 typedef enum en_rtc_period_int_type
 {
-    RtcPeriodIntInvalid = 0u,           ///< Period interrupt invalid
-    RtcPeriodIntHalfSec = 1u,           ///< 0.5 second period interrupt
-    RtcPeriodIntOneSec  = 2u,           ///< 1 second period interrupt
-    RtcPeriodIntOneMin  = 3u,           ///< 1 minute period interrupt
-    RtcPeriodIntOneHour = 4u,           ///< 1 hour period interrupt
-    RtcPeriodIntOneDay  = 5u,           ///< 1 day period interrupt
-    RtcPeriodIntOneMon  = 6u            ///< 1 month period interrupt
+    RtcPeriodIntInvalid = 0u,           /**< \brief Period interrupt invalid*/
+    RtcPeriodIntHalfSec = 1u,           /**< \brief 0.5 second period interrupt*/
+    RtcPeriodIntOneSec  = 2u,           /**< \brief 1 second period interrupt*/
+    RtcPeriodIntOneMin  = 3u,           /**< \brief 1 minute period interrupt*/
+    RtcPeriodIntOneHour = 4u,           /**< \brief 1 hour period interrupt*/
+    RtcPeriodIntOneDay  = 5u,           /**< \brief 1 day period interrupt*/
+    RtcPeriodIntOneMon  = 6u            /**< \brief 1 month period interrupt*/
 } en_rtc_period_int_type_t;
 
 typedef enum en_rtc_time_format
 {
-    RtcTimeFormat12Hour = 0u,           ///< 12 hours mode
-    RtcTimeFormat24Hour = 1u,           ///< 24 hours mode
+    RtcTimeFormat12Hour = 0u,           /**< \brief 12 hours mode*/
+    RtcTimeFormat24Hour = 1u,           /**< \brief 24 hours mode*/
 } en_rtc_time_format_t;
 
 typedef enum en_rtc_output_compen
 {
-    RtcOutputCompenDistributed = 0u,    ///< Distributed compensation 1hz output
-    RtcOutputCompenUniform     = 1u,    ///< Uniform Compensation 1hz output
+    RtcOutputCompenDistributed = 0u,    /**< \brief Distributed compensation 1hz output*/
+    RtcOutputCompenUniform     = 1u,    /**< \brief Uniform Compensation 1hz output*/
 } en_rtc_output_compen_t;
 
 typedef enum en_rtc_functional_state
@@ -304,59 +352,59 @@ typedef enum en_rtc_functional_state
 
 typedef struct stc_rtc_init
 {
-    en_rtc_clk_source_t      enClkSource;       ///< Clock source
-    en_rtc_period_int_type_t enPeriodInt;       ///< Period interrupt condition
-    en_rtc_time_format_t     enTimeFormat;      ///< RTC time format
-    en_rtc_output_compen_t   enCompenWay;       ///< 1HZ output compensation way
-    uint16_t                 u16CompenVal;      ///< Clock error compensation value
-    en_rtc_functional_state_t    enCompenEn;        ///< Enable/Disable clock error compensation
+    en_rtc_clk_source_t      enClkSource;       /**< \brief Clock source*/
+    en_rtc_period_int_type_t enPeriodInt;       /**< \brief Period interrupt condition*/
+    en_rtc_time_format_t     enTimeFormat;      /**< \brief RTC time format*/
+    en_rtc_output_compen_t   enCompenWay;       /**< \brief 1HZ output compensation way*/
+    uint16_t                 u16CompenVal;      /**< \brief Clock error compensation value*/
+    en_rtc_functional_state_t    enCompenEn;    /**< \brief Enable/Disable clock error compensation*/
 } stc_rtc_init_t;
 
 typedef enum en_rtc_irq_type_
 {
-    RtcIrqPeriod = 0u,                  ///< Period count interrupt request
-    RtcIrqAlarm  = 1u,                  ///< Alarm interrupt request
+    RtcIrqPeriod = 0u,                  /**< \brief Period count interrupt request*/
+    RtcIrqAlarm  = 1u,                  /**< \brief Alarm interrupt request*/
 } en_rtc_irq_type_t;
 
 typedef enum en_rtc_hour12_ampm
 {
-    RtcHour12Am = 0u,                   ///< Ante meridiem
-    RtcHour12Pm = 1u,                   ///< Post meridiem
+    RtcHour12Am = 0u,                   /**< \brief Ante meridiem*/
+    RtcHour12Pm = 1u,                   /**< \brief Post meridiem*/
 } en_rtc_hour12_ampm_t;
 
 typedef struct stc_rtc_date_time
 {
-    uint8_t              u8Year;        ///< Year (range 0-99)
-    uint8_t              u8Month;       ///< Month (range 1-12)
-    uint8_t              u8Day;         ///< Day (range 1-31)
-    uint8_t              u8Hour;        ///< Hours (range 1-12 when 12 hour format; range 0-23 when 24 hour format)
-    uint8_t              u8Minute;      ///< Minutes (range 0-59)
-    uint8_t              u8Second;      ///< Seconds (range 0-59)
-    uint8_t              u8Weekday;     ///< Weekday (range 0-6)
-    en_rtc_hour12_ampm_t enAmPm;        ///< The value is valid when 12-hour format
+    uint8_t              u8Year;        /**< \brief Year (range 0-99)*/
+    uint8_t              u8Month;       /**< \brief Month (range 1-12)*/
+    uint8_t              u8Day;         /**< \brief Day (range 1-31)*/
+    uint8_t              u8Hour;        /**< \brief Hours (range 1-12 when 12 hour format; range 0-23 when 24 hour format)*/
+    uint8_t              u8Minute;      /**< \brief Minutes (range 0-59)*/
+    uint8_t              u8Second;      /**< \brief Seconds (range 0-59)*/
+    uint8_t              u8Weekday;     /**< \brief Weekday (range 0-6)*/
+    en_rtc_hour12_ampm_t enAmPm;        /**< \brief The value is valid when 12-hour format*/
 } stc_rtc_date_time_t;
 
 typedef enum en_rtc_weekday
 {
-    RtcWeekdaySunday    = 0u,           ///< Sunday
-    RtcWeekdayMonday    = 1u,           ///< Monday
-    RtcWeekdayTuesday   = 2u,           ///< Tuesday
-    RtcWeekdayWednesday = 3u,           ///< Wednesday
-    RtcWeekdayThursday  = 4u,           ///< Thursday
-    RtcWeekdayFriday    = 5u,           ///< Friday
-    RtcWeekdaySaturday  = 6u            ///< Saturday
+    RtcWeekdaySunday    = 0u,           /**< \brief Sunday*/
+    RtcWeekdayMonday    = 1u,           /**< \brief Monday*/
+    RtcWeekdayTuesday   = 2u,           /**< \brief Tuesday*/
+    RtcWeekdayWednesday = 3u,           /**< \brief Wednesday*/
+    RtcWeekdayThursday  = 4u,           /**< \brief Thursday*/
+    RtcWeekdayFriday    = 5u,           /**< \brief Friday*/
+    RtcWeekdaySaturday  = 6u            /**< \brief Saturday*/
 } en_rtc_weekday_t;
 
 typedef enum en_rtc_data_format
 {
-    RtcDataFormatDec = 0u,              ///< Decimal format
-    RtcDataFormatBcd = 1u,              ///< BCD format
+    RtcDataFormatDec = 0u,              /**< \brief Decimal format*/
+    RtcDataFormatBcd = 1u,              /**< \brief BCD format*/
 } en_rtc_data_format_t;
 
-/*! Decimal to BCD */
+/** \brief  Decimal to BCD */
 #define DEC2BCD(x)                      ((((x) / 10u) << 4u) + ((x) % 10u))
 
-/*! BCD to decimal */
+/** \brief  BCD to decimal */
 #define BCD2DEC(x)                      ((((x) >> 4u) * 10u) + ((x) & 0x0Fu))
 
 #define RTC_HOUR12_AMPM_MASK                    (0x20u)
@@ -365,21 +413,21 @@ typedef enum en_rtc_data_format
  * \brief RTC周期中断选择
  */
 typedef enum {
-    AMHW_HC32F460_RTC_PERIOD_INT_TYPE_CUSTOM  = 0,    /* 用户自定义时间 */
-    AMHW_HC32F460_RTC_PERIOD_INT_TYPE_SYSTEAM = 1,    /* 外设规定内容选择 */
+    AMHW_HC32F460_RTC_PERIOD_INT_TYPE_CUSTOM  = 0,    /**< \brief 用户自定义时间 */
+    AMHW_HC32F460_RTC_PERIOD_INT_TYPE_SYSTEAM = 1,    /**< \brief 外设规定内容选择 */
 } amhw_hc32f460_rtc_period_int_type_t;
 
 /**
  * \brief RTC周期中断时间选择
  */
 typedef enum {
-    AMHW_HC32F460_RTC_PERIOD_INT_TIME_NO      = 0ul,    /* 不产生周期中断 */
-    AMHW_HC32F460_RTC_PERIOD_INT_TIME_0_5_SEC = 1ul,    /* 0.5秒 */
-    AMHW_HC32F460_RTC_PERIOD_INT_TIME_1_SEC   = 2ul,    /* 1秒 */
-    AMHW_HC32F460_RTC_PERIOD_INT_TIME_1_MIN   = 3ul,    /* 1分钟 */
-    AMHW_HC32F460_RTC_PERIOD_INT_TIME_1_HOUR  = 4ul,    /* 1小时 */
-    AMHW_HC32F460_RTC_PERIOD_INT_TIME_1_DAY   = 5ul,    /* 1天 */
-    AMHW_HC32F460_RTC_PERIOD_INT_TIME_1_MON   = 6ul,    /* 1月 */
+    AMHW_HC32F460_RTC_PERIOD_INT_TIME_NO      = 0ul,    /**< \brief 不产生周期中断 */
+    AMHW_HC32F460_RTC_PERIOD_INT_TIME_0_5_SEC = 1ul,    /**< \brief 0.5秒 */
+    AMHW_HC32F460_RTC_PERIOD_INT_TIME_1_SEC   = 2ul,    /**< \brief 1秒 */
+    AMHW_HC32F460_RTC_PERIOD_INT_TIME_1_MIN   = 3ul,    /**< \brief 1分钟 */
+    AMHW_HC32F460_RTC_PERIOD_INT_TIME_1_HOUR  = 4ul,    /**< \brief 1小时 */
+    AMHW_HC32F460_RTC_PERIOD_INT_TIME_1_DAY   = 5ul,    /**< \brief 1天 */
+    AMHW_HC32F460_RTC_PERIOD_INT_TIME_1_MON   = 6ul,    /**< \brief 1月 */
 } amhw_hc32f460_rtc_period_int_time_t;
 
 typedef enum {
@@ -391,97 +439,7 @@ typedef enum {
     AMHW_HC32F460_RTCCLK_ADJUST_20M,       /**< \brief 20 MHz补偿时钟频率 */
     AMHW_HC32F460_RTCCLK_ADJUST_24M,       /**< \brief 24 MHz补偿时钟频率 */
     AMHW_HC32F460_RTCCLK_ADJUST_32M,       /**< \brief 32 MHz补偿时钟频率 */
-}amhw_hc32f460_rtcclk_adjust;
-
-
-/**
- * \brief PRDS RTC周期中断选择
- *
- * \param[in] p_hw_rtc 指向 amhw_hc32f460_rtc_t结构的指针
- * \param[in] stata    amhw_hc32f460_rtc_period_int_time_t枚举选择
- *
- * \note 如需要在 START=1时写入更改周期中断的时间间隔操作步骤如下：
- *          step1，在 NVIC 中关闭 RTC 中断；
- *          step2，更改周期中断的时间间隔；
- *          step3，清除 RTC 中断标志；
- *          step4，使能 RTC 中断。
- *
- * \return 无
- */
-am_static_inline
-void amhw_hc32f460_rtc_period_int_time_sel (
-         amhw_hc32f460_rtc_t                *p_hw_rtc,
-         amhw_hc32f460_rtc_period_int_time_t choice)
-{
-//    p_hw_rtc->cr0 = (p_hw_rtc->cr0 & (~(0x7ul << 0))) |
-//                    (choice << 0);
-}
-
-/**
- * \brief PRDX 周期中断时间值设置
- *
- * \param[in] p_hw_rtc 指向 amhw_hc32f460_rtc_t结构的指针
- * \param[in] time     周期中断时间值设置（0.5 ~ 32s）
- *
- * \return AM_FALSE ：时间参数设置错误
- *         AM_TRUE  ：设置成功
- */
-am_static_inline
-am_bool_t amhw_hc32f460_rtc_period_int_time_set (amhw_hc32f460_rtc_t *p_hw_rtc,
-                                               float              time)
-{
-//    uint8_t setvalue = 0;
-
-//    if(time > 32.0 || time < 0.5) {
-//        return AM_FALSE;
-//    }
-
-//    setvalue = (uint8_t)(time / 0.5 - 1.0);
-
-//    p_hw_rtc->cr0 = (p_hw_rtc->cr0 & (~(0x3f << 8))) |
-//                    (setvalue << 8);
-
-    return AM_TRUE;
-}
-
-/**
- * \brief PRDX 周期中断时间值获取
- *
- * \param[in] p_hw_rtc 指向 amhw_hc32f460_rtc_t结构的指针
- *
- * \return 获取的周期中断时间值
- */
-am_static_inline
-float amhw_hc32f460_rtc_period_int_time_get (amhw_hc32f460_rtc_t *p_hw_rtc)
-{
-//    uint8_t setvalue = 0;
-    float   getvalue = 0.0;
-
-//    setvalue = (p_hw_rtc->cr0 >> 8) & 0x3f;
-
-//    getvalue = (float)(setvalue + 1) * 0.5;
-
-    return getvalue;
-}
-
-/**
- * \brief PRDSEL 是否使用设置的周期中断时间值
- *
- * \param[in] p_hw_rtc 指向 amhw_hc32f460_rtc_t结构的指针
- * \param[in] stata  AM_FALSE ：使用amhw_hc32f460_rtc_period_int_time_sel配置的中断时间
- *                   AM_TRUE  ：使用amhw_hc32f460_rtc_period_int_time_set配置的中断时间
- * \return 无
- */
-am_static_inline
-void amhw_hc32f460_rtc_period_int_time_set_enable (amhw_hc32f460_rtc_t *p_hw_rtc,
-                                                 am_bool_t          stata)
-{
-//    if(stata == AM_TRUE) {
-//        p_hw_rtc->cr0 |= (1ul << 14);
-//    } else {
-//        p_hw_rtc->cr0 &= ~(1ul << 14);
-//    }
-}
+} amhw_hc32f460_rtcclk_adjust;
 
 /**
  * \brief START RTC计数器停止/开启
@@ -496,31 +454,27 @@ am_static_inline
 void amhw_hc32f460_rtc_enable (amhw_hc32f460_rtc_t *p_hw_rtc,
                                am_bool_t          stata)
 {
-//    if(stata == AM_TRUE) {
-//        p_hw_rtc->CR1_f.START = 1;
-//    } else {
-//        p_hw_rtc->CR1_f.START = 0;
-//    }
+
 }
 
 /**
  * \brief RTC小时制选择枚举
  */
 typedef enum {
-    AMHW_HC32F460_RTC_TIME_MODE_12h = 0ul,    /* 12小时制 */
-    AMHW_HC32F460_RTC_TIME_MODE_24H = 1ul,    /* 24小时制 */
+    AMHW_HC32F460_RTC_TIME_MODE_12h = 0ul,    /**< \brief 12小时制 */
+    AMHW_HC32F460_RTC_TIME_MODE_24H = 1ul,    /**< \brief 24小时制 */
 } amhw_hc32f460_rtc_time_mode_t;
 
 /**
  * \brief RTC时钟选择枚举
  */
 typedef enum {
-    AMHW_HC32F460_RTC_CLK_SRC_XTL_32768Hz       = 0,  /* XTL 32.768k */
-    AMHW_HC32F460_RTC_CLK_SRC_RCL_32KHz         = 2,  /* RCL 32k */
-    AMHW_HC32F460_RTC_CLK_SRC_XTH_4MHz_DIV128   = 4,  /* XTH 4M */
-    AMHW_HC32F460_RTC_CLK_SRC_XTH_8MHz_DIV256   = 5,  /* XTH 4M */
-    AMHW_HC32F460_RTC_CLK_SRC_XTH_16MHz_DIV512  = 6,  /* XTH 4M */
-    AMHW_HC32F460_RTC_CLK_SRC_XTH_32MHz_DIV1024 = 7,  /* XTH 4M */
+    AMHW_HC32F460_RTC_CLK_SRC_XTL_32768Hz       = 0,  /**< \brief XTL 32.768k */
+    AMHW_HC32F460_RTC_CLK_SRC_RCL_32KHz         = 2,  /**< \brief RCL 32k */
+    AMHW_HC32F460_RTC_CLK_SRC_XTH_4MHz_DIV128   = 4,  /**< \brief XTH 4M */
+    AMHW_HC32F460_RTC_CLK_SRC_XTH_8MHz_DIV256   = 5,  /**< \brief XTH 4M */
+    AMHW_HC32F460_RTC_CLK_SRC_XTH_16MHz_DIV512  = 6,  /**< \brief XTH 4M */
+    AMHW_HC32F460_RTC_CLK_SRC_XTH_32MHz_DIV1024 = 7,  /**< \brief XTH 4M */
 } amhw_hc32f460_rtc_clk_src_t;
 
 am_static_inline
@@ -530,7 +484,7 @@ am_err_t amhw_hc32f460_rtc_deinit(amhw_hc32f460_rtc_t *p_hw_rtc)
     am_err_t enRet = AM_OK;
     
     p_hw_rtc->CR0_f.RESET = 0u;
-    /* Waiting for normal count status or end of RTC software reset */    
+    /** \brief Waiting for normal count status or end of RTC software reset */
     do
     {
         u8RegSta = (uint8_t)p_hw_rtc->CR0_f.RESET;
@@ -542,7 +496,7 @@ am_err_t amhw_hc32f460_rtc_deinit(amhw_hc32f460_rtc_t *p_hw_rtc)
     }
     else
     {
-        /* Initialize all RTC registers */
+        /** \brief Initialize all RTC registers */
         p_hw_rtc->CR0_f.RESET = 1u;
     }
 
@@ -560,19 +514,19 @@ am_err_t amhw_hc32f460_rtc_init(amhw_hc32f460_rtc_t *p_hw_rtc, const stc_rtc_ini
     }
     else
     {
-        /* Configure clock */
+        /** \brief Configure clock */
         if (RtcClkLrc == pstcRtcInit->enClkSource)
         {
             p_hw_rtc->CR3_f.LRCEN = 1u;
         }
         p_hw_rtc->CR3_f.RCKSEL = pstcRtcInit->enClkSource;
 
-        /* Configure control register */
+        /** \brief Configure control register */
         p_hw_rtc->CR1_f.PRDS = pstcRtcInit->enPeriodInt;
         p_hw_rtc->CR1_f.AMPM = pstcRtcInit->enTimeFormat;
         p_hw_rtc->CR1_f.ONEHZSEL = pstcRtcInit->enCompenWay;
 
-        /* Configure clock error compensation register */
+        /** \brief Configure clock error compensation register */
         p_hw_rtc->ERRCRH_f.COMP8 = ((uint32_t)pstcRtcInit->u16CompenVal >> 8u) & 0x01u;
         p_hw_rtc->ERRCRL = (uint32_t)pstcRtcInit->u16CompenVal & 0x00FFu;
         p_hw_rtc->ERRCRH_f.COMPEN = pstcRtcInit->enCompenEn;
@@ -582,11 +536,13 @@ am_err_t amhw_hc32f460_rtc_init(amhw_hc32f460_rtc_t *p_hw_rtc, const stc_rtc_ini
 }
 
 am_static_inline
-am_bool_t amhw_hc32f460_rtc_irq_cmd(amhw_hc32f460_rtc_t *p_hw_rtc, en_rtc_irq_type_t enIrq, en_rtc_functional_state_t enNewSta)
+am_bool_t amhw_hc32f460_rtc_irq_cmd(amhw_hc32f460_rtc_t      *p_hw_rtc,
+                                    en_rtc_irq_type_t         enIrq,
+                                    en_rtc_functional_state_t enNewSta)
 {
     am_bool_t enRet = AM_OK;
 
-    /* enable/disable interrupt */
+    /** \brief enable/disable interrupt */
     switch (enIrq)
     {
         case RtcIrqPeriod:
@@ -603,7 +559,8 @@ am_bool_t amhw_hc32f460_rtc_irq_cmd(amhw_hc32f460_rtc_t *p_hw_rtc, en_rtc_irq_ty
 }
 
 am_static_inline
-am_bool_t amhw_hc32f460_rtc_cmd(amhw_hc32f460_rtc_t *p_hw_rtc, en_rtc_functional_state_t enNewSta)
+am_bool_t amhw_hc32f460_rtc_cmd(amhw_hc32f460_rtc_t      *p_hw_rtc,
+                                en_rtc_functional_state_t enNewSta)
 {
     am_bool_t enRet = AM_OK;
 
@@ -619,11 +576,12 @@ am_err_t amhw_hc32f460_rtc_enter_rw_mode(amhw_hc32f460_rtc_t *p_hw_rtc)
     am_err_t enRet = AM_OK;
 
 
-    /* Mode switch when RTC is running */
+    /** \brief Mode switch when RTC is running */
     if (0u != p_hw_rtc->CR1_f.START)
     {
         p_hw_rtc->CR2_f.WAIT = 1u;
-        /* Waiting for WAITF bit set */
+
+        /** \brief Waiting for WAITF bit set */
         do
         {
             u8RegSta = (uint8_t)p_hw_rtc->CR2_f.WAITF;
@@ -644,11 +602,12 @@ am_err_t amhw_hc32f460_rtc_exit_rw_mode(amhw_hc32f460_rtc_t *p_hw_rtc)
     uint8_t u8RegSta;
     am_err_t enRet = AM_OK;
     
-    /* Mode switch when RTC is running */
+    /** \brief Mode switch when RTC is running */
     if (0u != p_hw_rtc->CR1_f.START)
     {
         p_hw_rtc->CR2_f.WAIT = 0u;
-        /* Waiting for WAITF bit reset */
+
+        /** \brief Waiting for WAITF bit reset */
         do
         {
             u8RegSta = (uint8_t)p_hw_rtc->CR2_f.WAITF;
@@ -664,11 +623,14 @@ am_err_t amhw_hc32f460_rtc_exit_rw_mode(amhw_hc32f460_rtc_t *p_hw_rtc)
 }
 
 am_static_inline
-am_err_t amhw_hc32f460_rtc_set_data_time(amhw_hc32f460_rtc_t *p_hw_rtc, en_rtc_data_format_t enFormat, const stc_rtc_date_time_t *pstcRtcDateTime,
-                            en_rtc_functional_state_t enUpdateDateEn, en_rtc_functional_state_t enUpdateTimeEn)
+am_err_t amhw_hc32f460_rtc_set_data_time(amhw_hc32f460_rtc_t       *p_hw_rtc,
+                                         en_rtc_data_format_t       enFormat,
+                                         const stc_rtc_date_time_t *pstcRtcDateTime,
+                                         en_rtc_functional_state_t  enUpdateDateEn,
+                                         en_rtc_functional_state_t  enUpdateTimeEn)
 {
     am_err_t enRet = AM_OK;
-    /* Check update status */
+    /** \brief Check update status */
     if (((RTC_DISABLE == enUpdateDateEn) && (RTC_DISABLE == enUpdateTimeEn)) || (NULL == pstcRtcDateTime))
     {
         enRet = AM_ERROR;
@@ -774,7 +736,7 @@ am_err_t amhw_hc32f460_rtc_set_data_time(amhw_hc32f460_rtc_t *p_hw_rtc, en_rtc_d
                     p_hw_rtc->SEC = pstcRtcDateTime->u8Second;
                 }
             }
-            /* Exit read/write mode */
+            /** \brief Exit read/write mode */
             if (amhw_hc32f460_rtc_exit_rw_mode(p_hw_rtc) == AM_ERROR)
             {
                 enRet = AM_ERROR;
@@ -786,7 +748,9 @@ am_err_t amhw_hc32f460_rtc_set_data_time(amhw_hc32f460_rtc_t *p_hw_rtc, en_rtc_d
 }
 
 am_static_inline
-am_err_t amhw_hc32f460_rtc_get_data_time(amhw_hc32f460_rtc_t *p_hw_rtc, en_rtc_data_format_t enFormat, stc_rtc_date_time_t *pstcRtcDateTime)
+am_err_t amhw_hc32f460_rtc_get_data_time(amhw_hc32f460_rtc_t *p_hw_rtc,
+                                         en_rtc_data_format_t enFormat,
+                                         stc_rtc_date_time_t *pstcRtcDateTime)
 {
     am_err_t enRet = AM_OK;
 
@@ -796,14 +760,14 @@ am_err_t amhw_hc32f460_rtc_get_data_time(amhw_hc32f460_rtc_t *p_hw_rtc, en_rtc_d
     }
     else
     {
-        /* Enter read/write mode */
+        /** \brief Enter read/write mode */
         if (amhw_hc32f460_rtc_enter_rw_mode(p_hw_rtc) == AM_ERROR)
         {
             enRet = AM_ERROR;
         }
         else
         {
-            /* Get RTC date and time registers */
+            /** \brief Get RTC date and time registers */
             pstcRtcDateTime->u8Year = (uint8_t)(p_hw_rtc->YEAR);
             pstcRtcDateTime->u8Month = (uint8_t)(p_hw_rtc->MON);
             pstcRtcDateTime->u8Day = (uint8_t)(p_hw_rtc->DAY);
@@ -824,7 +788,7 @@ am_err_t amhw_hc32f460_rtc_get_data_time(amhw_hc32f460_rtc_t *p_hw_rtc, en_rtc_d
                 }
             }
 
-            /* Check decimal format*/
+            /** \brief Check decimal format*/
             if (RtcDataFormatDec == enFormat)
             {
                 pstcRtcDateTime->u8Year = BCD2DEC(pstcRtcDateTime->u8Year);
@@ -835,7 +799,7 @@ am_err_t amhw_hc32f460_rtc_get_data_time(amhw_hc32f460_rtc_t *p_hw_rtc, en_rtc_d
                 pstcRtcDateTime->u8Second = BCD2DEC(pstcRtcDateTime->u8Second);
             }
 
-            /* exit read/write mode */
+            /** \brief exit read/write mode */
             if (amhw_hc32f460_rtc_exit_rw_mode(p_hw_rtc) == AM_ERROR)
             {
                 enRet = AM_ERROR;
@@ -877,6 +841,6 @@ am_err_t amhw_hc32f460_rtc_get_data_time(amhw_hc32f460_rtc_t *p_hw_rtc, en_rtc_d
 }
 #endif
 
-#endif/* __HC32_RTC_H */
+#endif/* __HC32F460_RTC_H */
 
 /* end of file */

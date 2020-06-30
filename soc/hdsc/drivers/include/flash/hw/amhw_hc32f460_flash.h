@@ -12,7 +12,7 @@
 
 /**
  * \file
- * \brief FTFC Peripheral Access Layer
+ * \brief EFM Peripheral Access Layer
  *
  *   The Miscellaneous System Control Module (FTFC) contains CPU configuration
  *   registers and on-chip memory controller registers.
@@ -67,35 +67,35 @@ extern "C" {
 
 typedef struct amhw_hc32f460_flash {
 
-    __IO uint32_t FAPRT; /**< \brief FLASH访问保护寄存器 */
+    __IO uint32_t FAPRT;    /**< \brief FLASH访问保护寄存器 */
 
-    __IO uint32_t FSTP;  /**< \brief FLASH停止寄存器 */
+    __IO uint32_t FSTP;     /**< \brief FLASH停止寄存器 */
 
-    __IO uint32_t FRMC;  /**< \brief FLASH读模式寄存器 */
+    __IO uint32_t FRMC;     /**< \brief FLASH读模式寄存器 */
 
-    __IO uint32_t FWMC;  /**< \brief FLASH擦写模式寄存器 */
+    __IO uint32_t FWMC;     /**< \brief FLASH擦写模式寄存器 */
 
-    __IO uint32_t FSR;   /**< \brief FLASH状态寄存器 */
+    __IO uint32_t FSR;      /**< \brief FLASH状态寄存器 */
 
-    __IO uint32_t FSCLR; /**< \brief FLASH状态清除寄存器 */
+    __IO uint32_t FSCLR;    /**< \brief FLASH状态清除寄存器 */
 
-    __IO uint32_t FITE;  /**< \brief FLASH中断许可寄存器 */
+    __IO uint32_t FITE;     /**< \brief FLASH中断许可寄存器 */
 
-    __IO uint32_t FSWP;  /**< \brief FLASH引导交换状态寄存器 */
+    __IO uint32_t FSWP;     /**< \brief FLASH引导交换状态寄存器 */
 
-    __IO uint32_t FPMTSW; /**< \brief FLASH改写允许区域起始地址寄存器 */
+    __IO uint32_t FPMTSW;   /**< \brief FLASH改写允许区域起始地址寄存器 */
 
-    __IO uint32_t FPMTEW; /**< \brief FLASH改写允许区域结束地址寄存器 */
+    __IO uint32_t FPMTEW;   /**< \brief FLASH改写允许区域结束地址寄存器 */
 
-    uint8_t RESERVED10[40];
+    uint8_t RESERVED10[40]; /**< \brief 保留 */
 
-    __IO uint32_t UQID1; /**< \brief FLASH 芯片ID寄存器1 */
+    __IO uint32_t UQID1;    /**< \brief FLASH 芯片ID寄存器1 */
 
-    __IO uint32_t UQID2; /**< \brief FLASH 芯片ID寄存器2 */
+    __IO uint32_t UQID2;    /**< \brief FLASH 芯片ID寄存器2 */
 
-    __IO uint32_t UQID3; /**< \brief FLASH 芯片ID寄存器3 */
+    __IO uint32_t UQID3;    /**< \brief FLASH 芯片ID寄存器3 */
 
-    uint8_t RESERVED13[164];
+    uint8_t RESERVED13[164];/**< \brief 保留 */
 
     __IO uint32_t MMF_REMPRT;
 
@@ -109,22 +109,22 @@ typedef struct amhw_hc32f460_flash {
  * \brief 读FLASH周期
  */
 typedef enum {
-    AMHW_HC32F460_FLASH_READ_WAITTIME_0 = 0,  /**< \brief  0~24MHz: 00/11: 1个周期 */
-    AMHW_HC32F460_FLASH_READ_WAITTIME_1 ,     /**< \brief  24~48MHz：01:    2个周期 */
-    AMHW_HC32F460_FLASH_READ_WAITTIME_2 ,     /**< \brief  48~72MHz：10:    3个周期 */
-    AMHW_HC32F460_FLASH_READ_WAITTIME_3 ,
-    AMHW_HC32F460_FLASH_READ_WAITTIME_4 ,
-    AMHW_HC32F460_FLASH_READ_WAITTIME_5 ,
-    AMHW_HC32F460_FLASH_READ_WAITTIME_6 ,
-    AMHW_HC32F460_FLASH_READ_WAITTIME_7 ,
-    AMHW_HC32F460_FLASH_READ_WAITTIME_8 ,
-    AMHW_HC32F460_FLASH_READ_WAITTIME_9 ,
-    AMHW_HC32F460_FLASH_READ_WAITTIME_10 ,
-    AMHW_HC32F460_FLASH_READ_WAITTIME_11 ,
-    AMHW_HC32F460_FLASH_READ_WAITTIME_12 ,
-    AMHW_HC32F460_FLASH_READ_WAITTIME_13 ,
-    AMHW_HC32F460_FLASH_READ_WAITTIME_14 ,
-    AMHW_HC32F460_FLASH_READ_WAITTIME_15 ,
+    AMHW_HC32F460_FLASH_READ_WAITTIME_0 = 0,  /**< \brief 不插入等待周期 */
+    AMHW_HC32F460_FLASH_READ_WAITTIME_1 ,     /**< \brief 插入1个等待周期 */
+    AMHW_HC32F460_FLASH_READ_WAITTIME_2 ,     /**< \brief 插入2个等待周期 */
+    AMHW_HC32F460_FLASH_READ_WAITTIME_3 ,     /**< \brief 插入3个等待周期 */
+    AMHW_HC32F460_FLASH_READ_WAITTIME_4 ,     /**< \brief 插入4个等待周期 */
+    AMHW_HC32F460_FLASH_READ_WAITTIME_5 ,     /**< \brief 插入5个等待周期 */
+    AMHW_HC32F460_FLASH_READ_WAITTIME_6 ,     /**< \brief 插入6个等待周期 */
+    AMHW_HC32F460_FLASH_READ_WAITTIME_7 ,     /**< \brief 插入7个等待周期 */
+    AMHW_HC32F460_FLASH_READ_WAITTIME_8 ,     /**< \brief 插入8个等待周期 */
+    AMHW_HC32F460_FLASH_READ_WAITTIME_9 ,     /**< \brief 插入9个等待周期 */
+    AMHW_HC32F460_FLASH_READ_WAITTIME_10 ,    /**< \brief 插入10个等待周期 */
+    AMHW_HC32F460_FLASH_READ_WAITTIME_11 ,    /**< \brief 插入11个等待周期 */
+    AMHW_HC32F460_FLASH_READ_WAITTIME_12 ,    /**< \brief 插入12个等待周期 */
+    AMHW_HC32F460_FLASH_READ_WAITTIME_13 ,    /**< \brief 插入13个等待周期 */
+    AMHW_HC32F460_FLASH_READ_WAITTIME_14 ,    /**< \brief 插入14个等待周期 */
+    AMHW_HC32F460_FLASH_READ_WAITTIME_15 ,    /**< \brief 插入15个等待周期 */
 } amhw_hc32f460_flash_read_waittime;
 
 #define __AMHW_HC32F460_EFM_LOCK            (0x00000000u)
@@ -393,7 +393,8 @@ uint32_t amhw_hc32f460_flash_efm_status_get(amhw_hc32f460_flash_t *p_hw_flash)
  * return EFM状态标志
  */
 am_static_inline
-void amhw_hc32f460_flash_efm_status_clr(amhw_hc32f460_flash_t *p_hw_flash, uint32_t flag)
+void amhw_hc32f460_flash_efm_status_clr(amhw_hc32f460_flash_t *p_hw_flash,
+                                        uint32_t               flag)
 {
     p_hw_flash->FSCLR = flag;
 }
@@ -413,7 +414,8 @@ typedef enum {
  * return EFM状态标志
  */
 am_static_inline
-void amhw_hc32f460_flash_efm_int_enable(amhw_hc32f460_flash_t *p_hw_flash, amhw_hc32f460_efm_int_type_t flag)
+void amhw_hc32f460_flash_efm_int_enable(amhw_hc32f460_flash_t       *p_hw_flash,
+                                        amhw_hc32f460_efm_int_type_t flag)
 {
     p_hw_flash->FITE |= (1 << flag);
 }
@@ -427,7 +429,8 @@ void amhw_hc32f460_flash_efm_int_enable(amhw_hc32f460_flash_t *p_hw_flash, amhw_
  * return EFM状态标志
  */
 am_static_inline
-void amhw_hc32f460_flash_efm_int_disable(amhw_hc32f460_flash_t *p_hw_flash, amhw_hc32f460_efm_int_type_t flag)
+void amhw_hc32f460_flash_efm_int_disable(amhw_hc32f460_flash_t       *p_hw_flash,
+                                         amhw_hc32f460_efm_int_type_t flag)
 {
     p_hw_flash->FITE &= ~(1 << flag);
 }
@@ -442,7 +445,8 @@ void amhw_hc32f460_flash_efm_int_disable(amhw_hc32f460_flash_t *p_hw_flash, amhw
  * return
  */
 am_static_inline
-void amhw_hc32f460_flash_efm_fpmtsw_set(amhw_hc32f460_flash_t *p_hw_flash, uint32_t addr)
+void amhw_hc32f460_flash_efm_fpmtsw_set(amhw_hc32f460_flash_t *p_hw_flash,
+                                        uint32_t               addr)
 {
     p_hw_flash->FPMTSW = addr;
 }
@@ -456,7 +460,8 @@ void amhw_hc32f460_flash_efm_fpmtsw_set(amhw_hc32f460_flash_t *p_hw_flash, uint3
  * return
  */
 am_static_inline
-void amhw_hc32f460_flash_efm_fpmtew_set(amhw_hc32f460_flash_t *p_hw_flash, uint32_t addr)
+void amhw_hc32f460_flash_efm_fpmtew_set(amhw_hc32f460_flash_t *p_hw_flash,
+                                        uint32_t               addr)
 {
     p_hw_flash->FPMTEW = addr;
 }
@@ -533,6 +538,6 @@ uint32_t amhw_hc32f460_flash_efm_uqid3_get(amhw_hc32f460_flash_t *p_hw_flash)
 }
 #endif
 
-#endif /* __AMHW_HC32_FLASH_H */
+#endif /* __AMHW_HC32F460_FLASH_H */
 
 /* end of file */

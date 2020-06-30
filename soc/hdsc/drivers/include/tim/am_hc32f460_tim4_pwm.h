@@ -41,7 +41,7 @@ extern "C" {
 #include "hw/amhw_hc32f460_tim4.h"
 
 /**
- * \addtogroup am_hc32_if_tim_pwm
+ * \addtogroup am_hc32f460_if_tim_pwm
  * \copydoc am_hc32f460_tim_pwm.h
  * @{
  */
@@ -60,19 +60,23 @@ typedef struct am_hc32f460_tim4_pwm_chaninfo {
  * \brief TIMPWM输出功能相关的设备信息
  */
 typedef struct am_hc32f460_tim4_pwm_devinfo {
-    uint32_t                    tim_regbase;    /**< \brief TIM寄存器块基址 */
 
-    uint8_t                     channels_num;   /**< \brief 使用的通道数，最大为6 */
+    /** \brief TIM寄存器块基址 */
+    uint32_t                          tim_regbase;
 
-    en_timer4_pwm_ch_t                 pwm_ch;
+    /** \brief 使用的通道数，最大为6 */
+    uint8_t                           channels_num;
 
-    am_hc32f460_tim4_pwm_chaninfo_t  *p_chaninfo;     /**< \brief 指向PWM输出通道信息结构体 */
+    en_timer4_pwm_ch_t                pwm_ch;
+
+    /** \brief 指向PWM输出通道信息结构体 */
+    am_hc32f460_tim4_pwm_chaninfo_t  *p_chaninfo;
 
     /** \brief 平台初始化函数，如打开时钟，配置引脚等工作 */
-    void                      (*pfn_plfm_init)(void);
+    void                            (*pfn_plfm_init)(void);
 
     /** \brief 平台解初始化函数 */
-    void                      (*pfn_plfm_deinit)(void);
+    void                            (*pfn_plfm_deinit)(void);
 
 } am_hc32f460_tim4_pwm_devinfo_t;
 
@@ -99,7 +103,7 @@ typedef struct am_hc32f460_tim4_pwm_dev {
  * \return PWM标准服务操作句柄，值为NULL时表明初始化失败
  */
 am_pwm_handle_t am_hc32f460_tim4_pwm_init(am_hc32f460_tim4_pwm_dev_t              *p_dev,
-                                    const am_hc32f460_tim4_pwm_devinfo_t    *p_devinfo);
+                                          const am_hc32f460_tim4_pwm_devinfo_t    *p_devinfo);
 
 /**
  * \brief 不使用TIMPWM输出功能时，解初始化TIMPWM输出功能，释放相关资源

@@ -44,8 +44,7 @@
 /** \brief 使用的定时器的中断号 */
 #define __TIMER_INUM            INUM_TIMER0_2
 
-/** \brief 使用定时器通道 0 */
-//#define __TIMER_CHAN            0
+/** \brief 使用定时器通道 1 */
 #define __TIMER_CHAN            1
 
 /** \brief 定时器回调函数，用于产生系统滴答 */

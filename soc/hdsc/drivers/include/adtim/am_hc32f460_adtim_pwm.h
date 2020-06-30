@@ -62,9 +62,12 @@ typedef struct am_hc32f460_adtim_pwm_chaninfo {
  * \brief ADTIMPWM输出功能相关的设备信息
  */
 typedef struct am_hc32f460_adtim_pwm_devinfo {
-    uint32_t                     adtim_regbase;    /**< \brief ADTIM寄存器块基址 */
 
-    uint8_t                      channels_num;   /**< \brief 使用的通道数，最大为2 */
+    /** \brief ADTIM寄存器块基址 */
+    uint32_t                     adtim_regbase;
+
+    /** \brief 使用的通道数，最大为2 */
+    uint8_t                      channels_num;
 
     /** \brief 互补PWM选择  1：互补PWM   0：独立PWM */
     uint8_t                     comp;
@@ -72,8 +75,8 @@ typedef struct am_hc32f460_adtim_pwm_devinfo {
     /** \brief PWM输出极性,AM_HC32F460_LPTIM_PWM_OCPOLARITY_HIGH或AM_HC32F460_LPTIM_PWM_OCPOLARITY_LOW */
     uint8_t                     ocpolarity;
 
-    am_hc32f460_adtim_pwm_chaninfo_t  *p_chaninfo;     /**< \brief 指向PWM输出通道信息结构体 */
-
+    /**< \brief 指向PWM输出通道信息结构体 */
+    am_hc32f460_adtim_pwm_chaninfo_t  *p_chaninfo;
 
     /** \brief 平台初始化函数，如打开时钟，配置引脚等工作 */
     void                      (*pfn_plfm_init)(void);
@@ -88,12 +91,14 @@ typedef struct am_hc32f460_adtim_pwm_devinfo {
  */
 typedef struct am_hc32f460_adtim_pwm_dev {
 
-    am_pwm_serv_t                      pwm_serv;   /**< \brief 标准PWM服务 */
+    /** \brief 标准PWM服务 */
+    am_pwm_serv_t                          pwm_serv;
 
     /** \brief 指向ADTIM(PWM输出功能)设备信息常量的指针 */
     const am_hc32f460_adtim_pwm_devinfo_t *p_devinfo;
 
-    uint8_t                            chan_max;   /**< \brief 有效的最大通道数  */
+    /** \brief 有效的最大通道数  */
+    uint8_t                                chan_max;
 
 } am_hc32f460_adtim_pwm_dev_t;
 

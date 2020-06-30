@@ -62,321 +62,387 @@ extern "C" {
 
 /** @} */
 
-
+/**
+ * \brief ADC - 启动寄存器位域结构体
+ */
 typedef struct
 {
-    __IO uint8_t STRT                       : 1;
-    uint8_t RESERVED1                       : 7;
+    __IO uint8_t STRT                       : 1;   /**< \brief 转换开始*/
+    uint8_t RESERVED1                       : 7;   /**< \brief 保留*/
 } stc_adc_str_field_t;
 
+/**
+ * \brief ADC - 控制寄存器0位域结构体
+ */
 typedef struct
 {
-    __IO uint16_t MS                        : 2;
-    uint16_t RESERVED2                      : 2;
-    __IO uint16_t ACCSEL                    : 2;
-    __IO uint16_t CLREN                     : 1;
-    __IO uint16_t DFMT                      : 1;
-    __IO uint16_t AVCNT                     : 3;
-    uint16_t RESERVED11                     : 5;
+    __IO uint16_t MS                        : 2;  /**< \brief 模式选择*/
+    uint16_t RESERVED2                      : 2;  /**< \brief 保留*/
+    __IO uint16_t ACCSEL                    : 2;  /**< \brief 分辨率选择*/
+    __IO uint16_t CLREN                     : 1;  /**< \brief 数据寄存器自动清除*/
+    __IO uint16_t DFMT                      : 1;  /**< \brief 数据格式*/
+    __IO uint16_t AVCNT                     : 3;  /**< \brief 次数选择*/
+    uint16_t RESERVED11                     : 5;  /**< \brief 保留*/
 } stc_adc_cr0_field_t;
 
+/**
+ * \brief ADC - 控制寄存器1位域结构体
+ */
 typedef struct
 {
-    uint16_t RESERVED0                      : 2;
-    __IO uint16_t RSCHSEL                   : 1;
-    uint16_t RESERVED3                      :13;
+    uint16_t RESERVED0                      : 2;  /**< \brief 保留*/
+    __IO uint16_t RSCHSEL                   : 1;  /**< \brief 序列A重启通道选择*/
+    uint16_t RESERVED3                      :13;  /**< \brief 保留*/
 } stc_adc_cr1_field_t;
 
+/**
+ * \brief ADC - 转换开始触发寄存器位域结构体
+ */
 typedef struct
 {
-    __IO uint16_t TRGSELA                   : 3;
-    uint16_t RESERVED3                      : 4;
-    __IO uint16_t TRGENA                    : 1;
-    __IO uint16_t TRGSELB                   : 3;
-    uint16_t RESERVED11                     : 4;
-    __IO uint16_t TRGENB                    : 1;
+    __IO uint16_t TRGSELA                   : 3;  /**< \brief 序列A触发条件选择*/
+    uint16_t RESERVED3                      : 4;  /**< \brief 保留*/
+    __IO uint16_t TRGENA                    : 1;  /**< \brief 序列A触发使能*/
+    __IO uint16_t TRGSELB                   : 3;  /**< \brief 序列B触发条件选择*/
+    uint16_t RESERVED11                     : 4;  /**< \brief 保留*/
+    __IO uint16_t TRGENB                    : 1;  /**< \brief 序列B触发使能*/
 } stc_adc_trgsr_field_t;
 
+/**
+ * \brief ADC - 转换通道选择寄存器A位域结构体
+ */
 typedef struct
 {
-    __IO uint16_t CHSELA16                  : 1;
-    uint16_t RESERVED1                      :15;
+    __IO uint16_t CHSELA16                  : 1;  /**< \brief 转换通道选择*/
+    uint16_t RESERVED1                      :15;  /**< \brief 保留*/
 } stc_adc_chselra1_field_t;
 
+/**
+ * \brief ADC - 转换通道选择寄存器B位域结构体
+ */
 typedef struct
 {
-    __IO uint16_t CHSELB16                  : 1;
-    uint16_t RESERVED1                      :15;
+    __IO uint16_t CHSELB16                  : 1;  /**< \brief 转换通道选择*/
+    uint16_t RESERVED1                      :15;  /**< \brief 保留*/
 } stc_adc_chselrb1_field_t;
 
+/**
+ * \brief ADC - 平均通道选择寄存器位域结构体
+ */
 typedef struct
 {
-    __IO uint16_t AVCHSEL16                 : 1;
-    uint16_t RESERVED1                      :15;
+    __IO uint16_t AVCHSEL16                 : 1;  /**< \brief 平均通道选择*/
+    uint16_t RESERVED1                      :15;  /**< \brief 保留*/
 } stc_adc_avchselr1_field_t;
 
+/**
+ * \brief ADC - AD通道映射控制寄存器0位域结构体
+ */
 typedef struct
 {
-    __IO uint16_t CH00MUX                   : 4;
-    __IO uint16_t CH01MUX                   : 4;
-    __IO uint16_t CH02MUX                   : 4;
-    __IO uint16_t CH03MUX                   : 4;
+    __IO uint16_t CH00MUX                   : 4;  /**< \brief 通道0映射选择*/
+    __IO uint16_t CH01MUX                   : 4;  /**< \brief 通道1映射选择*/
+    __IO uint16_t CH02MUX                   : 4;  /**< \brief 通道2映射选择*/
+    __IO uint16_t CH03MUX                   : 4;  /**< \brief 通道3映射选择*/
 } stc_adc_chmuxr0_field_t;
 
+/**
+ * \brief ADC - AD通道映射控制寄存器1位域结构体
+ */
 typedef struct
 {
-    __IO uint16_t CH04MUX                   : 4;
-    __IO uint16_t CH05MUX                   : 4;
-    __IO uint16_t CH06MUX                   : 4;
-    __IO uint16_t CH07MUX                   : 4;
+    __IO uint16_t CH04MUX                   : 4;  /**< \brief 通道4映射选择*/
+    __IO uint16_t CH05MUX                   : 4;  /**< \brief 通道5映射选择*/
+    __IO uint16_t CH06MUX                   : 4;  /**< \brief 通道6映射选择*/
+    __IO uint16_t CH07MUX                   : 4;  /**< \brief 通道7映射选择*/
 } stc_adc_chmuxr1_field_t;
 
+/**
+ * \brief ADC - AD通道映射控制寄存器2位域结构体
+ */
 typedef struct
 {
-    __IO uint16_t CH08MUX                   : 4;
-    __IO uint16_t CH09MUX                   : 4;
-    __IO uint16_t CH10MUX                   : 4;
-    __IO uint16_t CH11MUX                   : 4;
+    __IO uint16_t CH08MUX                   : 4;  /**< \brief 通道8映射选择*/
+    __IO uint16_t CH09MUX                   : 4;  /**< \brief 通道9映射选择*/
+    __IO uint16_t CH10MUX                   : 4;  /**< \brief 通道10映射选择*/
+    __IO uint16_t CH11MUX                   : 4;  /**< \brief 通道11映射选择*/
 } stc_adc_chmuxr2_field_t;
 
+/**
+ * \brief ADC - AD通道映射控制寄存器3位域结构体
+ */
 typedef struct
 {
-    __IO uint16_t CH12MUX                   : 4;
-    __IO uint16_t CH13MUX                   : 4;
-    __IO uint16_t CH14MUX                   : 4;
-    __IO uint16_t CH15MUX                   : 4;
+    __IO uint16_t CH12MUX                   : 4;  /**< \brief 通道12映射选择*/
+    __IO uint16_t CH13MUX                   : 4;  /**< \brief 通道13映射选择*/
+    __IO uint16_t CH14MUX                   : 4;  /**< \brief 通道14映射选择*/
+    __IO uint16_t CH15MUX                   : 4;  /**< \brief 通道15映射选择*/
 } stc_adc_chmuxr3_field_t;
 
+/**
+ * \brief ADC - AD中断状态寄存器位域结构体
+ */
 typedef struct
 {
-    __IO uint8_t EOCAF                      : 1;
-    __IO uint8_t EOCBF                      : 1;
-    uint8_t RESERVED2                       : 6;
+    __IO uint8_t EOCAF                      : 1;  /**< \brief 序列A转换完成标志*/
+    __IO uint8_t EOCBF                      : 1;  /**< \brief 序列B转换完成标志*/
+    uint8_t RESERVED2                       : 6;  /**< \brief 保留*/
 } stc_adc_isr_field_t;
 
+/**
+ * \brief ADC - AD中断使能寄存器位域结构体
+ */
 typedef struct
 {
-    __IO uint8_t EOCAIEN                    : 1;
-    __IO uint8_t EOCBIEN                    : 1;
-    uint8_t RESERVED2                       : 6;
+    __IO uint8_t EOCAIEN                    : 1;  /**< \brief 序列A转换完成中断使能*/
+    __IO uint8_t EOCBIEN                    : 1;  /**< \brief 序列A转换完成中断使能*/
+    uint8_t RESERVED2                       : 6;  /**< \brief 保留*/
 } stc_adc_icr_field_t;
 
+/**
+ * \brief ADC - 协同模式控制寄存器位域结构体
+ */
 typedef struct
 {
-    __IO uint16_t SYNCEN                    : 1;
-    uint16_t RESERVED1                      : 3;
-    __IO uint16_t SYNCMD                    : 3;
-    uint16_t RESERVED7                      : 1;
-    __IO uint16_t SYNCDLY                   : 8;
+    __IO uint16_t SYNCEN                    : 1;  /**< \brief 同步模式许可*/
+    uint16_t RESERVED1                      : 3;  /**< \brief 保留*/
+    __IO uint16_t SYNCMD                    : 3;  /**< \brief 同步模式选择*/
+    uint16_t RESERVED7                      : 1;  /**< \brief 保留*/
+    __IO uint16_t SYNCDLY                   : 8;  /**< \brief 同步延迟时间*/
 } stc_adc_synccr_field_t;
 
+/**
+ * \brief ADC - 模拟看门狗控制寄存器位域结构体
+ */
 typedef struct
 {
-    __IO uint16_t AWDEN                     : 1;
-    uint16_t RESERVED1                      : 3;
-    __IO uint16_t AWDMD                     : 1;
-    uint16_t RESERVED5                      : 1;
-    __IO uint16_t AWDSS                     : 2;
-    __IO uint16_t AWDIEN                    : 1;
-    uint16_t RESERVED9                      : 7;
+    __IO uint16_t AWDEN                     : 1;  /**< \brief 看门狗比较功能使能*/
+    uint16_t RESERVED1                      : 3;  /**< \brief 保留*/
+    __IO uint16_t AWDMD                     : 1;  /**< \brief 看门狗比较模式*/
+    uint16_t RESERVED5                      : 1;  /**< \brief 保留*/
+    __IO uint16_t AWDSS                     : 2;  /**< \brief 看门狗序列选择*/
+    __IO uint16_t AWDIEN                    : 1;  /**< \brief 看门狗中断使能*/
+    uint16_t RESERVED9                      : 7;  /**< \brief 保留*/
 } stc_adc_awdcr_field_t;
 
+/**
+ * \brief ADC - 模拟看门狗比较通道选择寄存器位域结构体
+ */
 typedef struct
 {
-    __IO uint16_t AWDCH16                   : 1;
-    uint16_t RESERVED1                      :15;
+    __IO uint16_t AWDCH16                   : 1;  /**< \brief 看门狗比较功能通道选择*/
+    uint16_t RESERVED1                      :15;  /**< \brief 保留*/
 } stc_adc_awdchsr1_field_t;
 
+/**
+ * \brief ADC - 模拟看门狗状态寄存器位域结构体
+ */
 typedef struct
 {
-    __IO uint16_t AWDF16                    : 1;
-    uint16_t RESERVED1                      :15;
+    __IO uint16_t AWDF16                    : 1;  /**< \brief 看门狗比较状态位*/
+    uint16_t RESERVED1                      :15;  /**< \brief 保留*/
 } stc_adc_awdsr1_field_t;
 
+/**
+ * \brief ADC - 可编程增益放大器控制寄存器位域结构体
+ */
 typedef struct
 {
-    __IO uint16_t PGACTL                    : 4;
-    uint16_t RESERVED4                      :12;
+    __IO uint16_t PGACTL                    : 4;  /**< \brief 放大器控制*/
+    uint16_t RESERVED4                      :12;  /**< \brief 保留*/
 } stc_adc_pgacr_field_t;
 
+/**
+ * \brief ADC - 可编程增益倍数寄存器位域结构体
+ */
 typedef struct
 {
-    __IO uint16_t GAIN                      : 4;
-    uint16_t RESERVED4                      :12;
+    __IO uint16_t GAIN                      : 4;  /**< \brief 放大器增益设定*/
+    uint16_t RESERVED4                      :12;  /**< \brief 保留*/
 } stc_adc_pgagsr_field_t;
 
+/**
+ * \brief ADC - 可编程增益放大器输入选择寄存器0位域结构体
+ */
 typedef struct
 {
-    __IO uint16_t PGAINSEL                  : 9;
-    uint16_t RESERVED9                      : 7;
+    __IO uint16_t PGAINSEL                  : 9;  /**< \brief 放大器模拟输入选择*/
+    uint16_t RESERVED9                      : 7;  /**< \brief 保留*/
 } stc_adc_pgainsr0_field_t;
 
+/**
+ * \brief ADC - 可编程增益放大器输入选择寄存器1位域结构体
+ */
 typedef struct
 {
-    __IO uint16_t PGAVSSEN                  : 1;
-    uint16_t RESERVED1                      :15;
+    __IO uint16_t PGAVSSEN                  : 1;  /**< \brief 放大器地切除控制选择*/
+    uint16_t RESERVED1                      :15;  /**< \brief 保留*/
 } stc_adc_pgainsr1_field_t;
 
+
+/**
+ * \brief ADC - Register Layout Typedef
+ */
 typedef struct amhw_hc32f460_adc{
     union
     {
-        __IO uint8_t STR;
-        stc_adc_str_field_t STR_f;
+        __IO uint8_t STR;             /**< \brief AD启动寄存器 */
+        stc_adc_str_field_t STR_f;    /**< \brief AD启动寄存器位域结构体 */
     };
-    uint8_t RESERVED1[1];
+    uint8_t RESERVED1[1];             /**< \brief 保留*/
     union
     {
-        __IO uint16_t CR0;
-        stc_adc_cr0_field_t CR0_f;
+        __IO uint16_t CR0;            /**< \brief AD 控制寄存器0*/
+        stc_adc_cr0_field_t CR0_f;    /**< \brief AD 控制寄存器0位域结构体*/
     };
     union
     {
-        __IO uint16_t CR1;
-        stc_adc_cr1_field_t CR1_f;
+        __IO uint16_t CR1;            /**< \brief AD 控制寄存器1*/
+        stc_adc_cr1_field_t CR1_f;    /**< \brief AD 控制寄存器1位域结构体*/
     };
     uint8_t RESERVED3[4];
     union
     {
-        __IO uint16_t TRGSR;
-        stc_adc_trgsr_field_t TRGSR_f;
+        __IO uint16_t TRGSR;          /**< \brief AD 转换开始触发寄存器*/
+        stc_adc_trgsr_field_t TRGSR_f;/**< \brief AD 转换开始触发寄存器位域结构体*/
     };
-    __IO uint16_t CHSELRA0;
+    __IO uint16_t CHSELRA0;           /**< \brief AD 通道选择寄存器A0*/
     union
     {
-        __IO uint16_t CHSELRA1;
-        stc_adc_chselra1_field_t CHSELRA1_f;
+        __IO uint16_t CHSELRA1;       /**< \brief AD 通道选择寄存器A1*/
+        stc_adc_chselra1_field_t CHSELRA1_f;  /**< \brief AD 通道选择寄存器A1位域结构体*/
     };
-    __IO uint16_t CHSELRB0;
+    __IO uint16_t CHSELRB0;           /**< \brief AD 通道选择寄存器B0*/
     union
     {
-        __IO uint16_t CHSELRB1;
-        stc_adc_chselrb1_field_t CHSELRB1_f;
+        __IO uint16_t CHSELRB1;       /**< \brief AD 通道选择寄存器B1*/
+        stc_adc_chselrb1_field_t CHSELRB1_f;  /**< \brief AD 通道选择寄存器B1位域结构体*/
     };
-    __IO uint16_t AVCHSELR0;
+    __IO uint16_t AVCHSELR0;          /**< \brief AD 平均通道选择寄存器0*/
     union
     {
-        __IO uint16_t AVCHSELR1;
-        stc_adc_avchselr1_field_t AVCHSELR1_f;
+        __IO uint16_t AVCHSELR1;      /**< \brief AD 平均通道选择寄存器1*/
+        stc_adc_avchselr1_field_t AVCHSELR1_f;  /**< \brief AD 平均通道选择寄存器1位域结构体*/
     };
     uint8_t RESERVED10[8];
-    __IO uint8_t SSTR0;
-    __IO uint8_t SSTR1;
-    __IO uint8_t SSTR2;
-    __IO uint8_t SSTR3;
-    __IO uint8_t SSTR4;
-    __IO uint8_t SSTR5;
-    __IO uint8_t SSTR6;
-    __IO uint8_t SSTR7;
-    __IO uint8_t SSTR8;
-    __IO uint8_t SSTR9;
-    __IO uint8_t SSTR10;
-    __IO uint8_t SSTR11;
-    __IO uint8_t SSTR12;
-    __IO uint8_t SSTR13;
-    __IO uint8_t SSTR14;
-    __IO uint8_t SSTR15;
-    __IO uint8_t SSTRL;
-    uint8_t RESERVED27[7];
+    __IO uint8_t SSTR0;               /**< \brief AD 采样周期寄存器*/
+    __IO uint8_t SSTR1;               /**< \brief AD 采样周期寄存器*/
+    __IO uint8_t SSTR2;               /**< \brief AD 采样周期寄存器*/
+    __IO uint8_t SSTR3;               /**< \brief AD 采样周期寄存器*/
+    __IO uint8_t SSTR4;               /**< \brief AD 采样周期寄存器*/
+    __IO uint8_t SSTR5;               /**< \brief AD 采样周期寄存器*/
+    __IO uint8_t SSTR6;               /**< \brief AD 采样周期寄存器*/
+    __IO uint8_t SSTR7;               /**< \brief AD 采样周期寄存器*/
+    __IO uint8_t SSTR8;               /**< \brief AD 采样周期寄存器*/
+    __IO uint8_t SSTR9;               /**< \brief AD 采样周期寄存器*/
+    __IO uint8_t SSTR10;              /**< \brief AD 采样周期寄存器*/
+    __IO uint8_t SSTR11;              /**< \brief AD 采样周期寄存器*/
+    __IO uint8_t SSTR12;              /**< \brief AD 采样周期寄存器*/
+    __IO uint8_t SSTR13;              /**< \brief AD 采样周期寄存器*/
+    __IO uint8_t SSTR14;              /**< \brief AD 采样周期寄存器*/
+    __IO uint8_t SSTR15;              /**< \brief AD 采样周期寄存器*/
+    __IO uint8_t SSTRL;               /**< \brief AD 采样周期寄存器*/
+    uint8_t RESERVED27[7];            /**< \brief 保留*/
     union
     {
-        __IO uint16_t CHMUXR0;
-        stc_adc_chmuxr0_field_t CHMUXR0_f;
+        __IO uint16_t CHMUXR0;             /**< \brief AD通道映射控制寄存器0*/
+        stc_adc_chmuxr0_field_t CHMUXR0_f; /**< \brief AD通道映射控制寄存器0位域结构体*/
     };
     union
     {
-        __IO uint16_t CHMUXR1;
-        stc_adc_chmuxr1_field_t CHMUXR1_f;
+        __IO uint16_t CHMUXR1;             /**< \brief AD通道映射控制寄存器1*/
+        stc_adc_chmuxr1_field_t CHMUXR1_f; /**< \brief AD通道映射控制寄存器1位域结构体*/
     };
     union
     {
-        __IO uint16_t CHMUXR2;
-        stc_adc_chmuxr2_field_t CHMUXR2_f;
+        __IO uint16_t CHMUXR2;             /**< \brief AD通道映射控制寄存器2*/
+        stc_adc_chmuxr2_field_t CHMUXR2_f; /**< \brief AD通道映射控制寄存器2位域结构体*/
     };
     union
     {
-        __IO uint16_t CHMUXR3;
-        stc_adc_chmuxr3_field_t CHMUXR3_f;
+        __IO uint16_t CHMUXR3;             /**< \brief AD通道映射控制寄存器3*/
+        stc_adc_chmuxr3_field_t CHMUXR3_f; /**< \brief AD通道映射控制寄存器3位域结构体*/
     };
-    uint8_t RESERVED31[6];
+    uint8_t RESERVED31[6];                 /**< \brief 保留*/
     union
     {
-        __IO uint8_t ISR;
-        stc_adc_isr_field_t ISR_f;
+        __IO uint8_t ISR;                  /**< \brief AD中断状态寄存器*/
+        stc_adc_isr_field_t ISR_f;         /**< \brief AD中断状态寄存器位域结构体*/
     };
     union
     {
-        __IO uint8_t ICR;
-        stc_adc_icr_field_t ICR_f;
+        __IO uint8_t ICR;                  /**< \brief AD中断许可寄存器*/
+        stc_adc_icr_field_t ICR_f;         /**< \brief AD中断许可寄存器位域结构体*/
     };
-    uint8_t RESERVED33[4];
+    uint8_t RESERVED33[4];                 /**< \brief 保留*/
     union
     {
-        __IO uint16_t SYNCCR;
-        stc_adc_synccr_field_t SYNCCR_f;
+        __IO uint16_t SYNCCR;              /**< \brief AD协同模式控制寄存器*/
+        stc_adc_synccr_field_t SYNCCR_f;   /**< \brief AD协同模式控制寄存器位域结构体*/
     };
     uint8_t RESERVED34[2];
-    __IO uint16_t DR0;
-    __IO uint16_t DR1;
-    __IO uint16_t DR2;
-    __IO uint16_t DR3;
-    __IO uint16_t DR4;
-    __IO uint16_t DR5;
-    __IO uint16_t DR6;
-    __IO uint16_t DR7;
-    __IO uint16_t DR8;
-    __IO uint16_t DR9;
-    __IO uint16_t DR10;
-    __IO uint16_t DR11;
-    __IO uint16_t DR12;
-    __IO uint16_t DR13;
-    __IO uint16_t DR14;
-    __IO uint16_t DR15;
-    __IO uint16_t DR16;
-    uint8_t RESERVED51[46];
+    __IO uint16_t DR0;                     /**< \brief ch0 AD数据寄存器*/
+    __IO uint16_t DR1;                     /**< \brief ch1 AD数据寄存器*/
+    __IO uint16_t DR2;                     /**< \brief ch2 AD数据寄存器*/
+    __IO uint16_t DR3;                     /**< \brief ch3 AD数据寄存器*/
+    __IO uint16_t DR4;                     /**< \brief ch4 AD数据寄存器*/
+    __IO uint16_t DR5;                     /**< \brief ch5 AD数据寄存器*/
+    __IO uint16_t DR6;                     /**< \brief ch6 AD数据寄存器*/
+    __IO uint16_t DR7;                     /**< \brief ch7 AD数据寄存器*/
+    __IO uint16_t DR8;                     /**< \brief ch8 AD数据寄存器*/
+    __IO uint16_t DR9;                     /**< \brief ch9 AD数据寄存器*/
+    __IO uint16_t DR10;                    /**< \brief ch10 AD数据寄存器*/
+    __IO uint16_t DR11;                    /**< \brief ch11 AD数据寄存器*/
+    __IO uint16_t DR12;                    /**< \brief ch12 AD数据寄存器*/
+    __IO uint16_t DR13;                    /**< \brief ch13 AD数据寄存器*/
+    __IO uint16_t DR14;                    /**< \brief ch14 AD数据寄存器*/
+    __IO uint16_t DR15;                    /**< \brief ch15 AD数据寄存器*/
+    __IO uint16_t DR16;                    /**< \brief ch16 AD数据寄存器*/
+    uint8_t RESERVED51[46];                /**< \brief 保留*/
     union
     {
-        __IO uint16_t AWDCR;
-        stc_adc_awdcr_field_t AWDCR_f;
+        __IO uint16_t AWDCR;               /**< \brief 模拟看门狗控制寄存器*/
+        stc_adc_awdcr_field_t AWDCR_f;     /**< \brief 模拟看门狗控制寄存器位域结构体*/
     };
-    uint8_t RESERVED52[2];
-    __IO uint16_t AWDDR0;
-    __IO uint16_t AWDDR1;
-    uint8_t RESERVED54[4];
-    __IO uint16_t AWDCHSR0;
+    uint8_t RESERVED52[2];                 /**< \brief 保留*/
+    __IO uint16_t AWDDR0;                  /**< \brief 模拟看门狗阀值寄存器0*/
+    __IO uint16_t AWDDR1;                  /**< \brief 模拟看门狗阀值寄存器1*/
+    uint8_t RESERVED54[4];                 /**< \brief 保留*/
+    __IO uint16_t AWDCHSR0;                /**< \brief 模拟看门狗比较通道选择寄存器0*/
     union
     {
-        __IO uint16_t AWDCHSR1;
-        stc_adc_awdchsr1_field_t AWDCHSR1_f;
+        __IO uint16_t AWDCHSR1;               /**< \brief 模拟看门狗比较通道选择寄存器1*/
+        stc_adc_awdchsr1_field_t AWDCHSR1_f;  /**< \brief 模拟看门狗比较通道选择寄存器1位域结构体*/
     };
-    __IO uint16_t AWDSR0;
+    __IO uint16_t AWDSR0;                  /**< \brief 模拟看门狗状态寄存器0*/
     union
     {
-        __IO uint16_t AWDSR1;
-        stc_adc_awdsr1_field_t AWDSR1_f;
+        __IO uint16_t AWDSR1;              /**< \brief 模拟看门狗状态寄存器1*/
+        stc_adc_awdsr1_field_t AWDSR1_f;   /**< \brief 模拟看门狗状态寄存器1位域结构体*/
     };
-    uint8_t RESERVED58[12];
+    uint8_t RESERVED58[12];                /**< \brief 保留*/
     union
     {
-        __IO uint16_t PGACR;
-        stc_adc_pgacr_field_t PGACR_f;
-    };
-    union
-    {
-        __IO uint16_t PGAGSR;
-        stc_adc_pgagsr_field_t PGAGSR_f;
-    };
-    uint8_t RESERVED60[8];
-    union
-    {
-        __IO uint16_t PGAINSR0;
-        stc_adc_pgainsr0_field_t PGAINSR0_f;
+        __IO uint16_t PGACR;               /**< \brief AD可编程增益放大控制寄存器*/
+        stc_adc_pgacr_field_t PGACR_f;     /**< \brief AD可编程增益放大控制寄存器位域结构体*/
     };
     union
     {
-        __IO uint16_t PGAINSR1;
-        stc_adc_pgainsr1_field_t PGAINSR1_f;
+        __IO uint16_t PGAGSR;              /**< \brief AD可编程增益倍数寄存器*/
+        stc_adc_pgagsr_field_t PGAGSR_f;   /**< \brief AD可编程增益倍数寄存器位域结构体*/
     };
-}amhw_hc32f460_adc_t;
+    uint8_t RESERVED60[8];                 /**< \brief 保留*/
+    union
+    {
+        __IO uint16_t PGAINSR0;               /**< \brief AD可编程增益放大器输入选择寄存器0*/
+        stc_adc_pgainsr0_field_t PGAINSR0_f;  /**< \brief AD可编程增益放大器输入选择寄存器0位域结构体*/
+    };
+    union
+    {
+        __IO uint16_t PGAINSR1;               /**< \brief AD可编程增益放大器输入选择寄存器1*/
+        stc_adc_pgainsr1_field_t PGAINSR1_f;  /**< \brief AD可编程增益放大器输入选择寄存器1位域结构体*/
+    };
+} amhw_hc32f460_adc_t;
 
 /* 通道类型 */
 typedef enum {
@@ -499,11 +565,13 @@ void amhw_hc32f460_adc_data_autoclr_disable(amhw_hc32f460_adc_t *p_hw_adc)
     p_hw_adc->CR0_f.CLREN = 0;
 }
 
-
+/**
+ * \brief ADC转换精度
+ */
 typedef enum amhw_hc32f460_adc_resolution{
     AMHW_HC32F460_ADC_RESOLUTION_12BIT = 12, /** <brief 12位分辨率 */
     AMHW_HC32F460_ADC_RESOLUTION_10BIT = 10, /** <brief 10位分辨率 */
-    AMHW_HC32F460_ADC_RESOLUTION_8BIT  = 8, /** <brief 8位分辨率 */
+    AMHW_HC32F460_ADC_RESOLUTION_8BIT  = 8,  /** <brief 8位分辨率 */
 }amhw_hc32f460_adc_resolution_t;
 
 /**
@@ -544,6 +612,7 @@ typedef enum amhw_hc32f460_adc_seq_a_restart_position{
     AMHW_HC32F460_ADC_SEQ_A_RESTART_POSITION_CONTINUOUS = 0x0, /** <brief 被序列B中断后，序列A重启时从被中断通道开始继续扫描 */
     AMHW_HC32F460_ADC_SEQ_A_RESTART_POSITION_RESTART    = 0x1, /** <brief 被序列B中断后，序列A重启时从第一个通道开始重新扫描 */
 }amhw_hc32f460_adc_seq_a_restart_position_t;
+
 /**
  * \brief ADC序列A重启方式设置
  *

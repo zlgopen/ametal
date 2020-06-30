@@ -65,9 +65,9 @@ static void __hc32f460_i2c1_plfm_deinit (void)
  */
 static const am_hc32f460_i2c_slv_devinfo_t __g_i2c1_devinfo = {
     HC32F460_I2C1_BASE,              /**< \brief I2C1寄存器块基址 */
-    CLK_IIC1,                        /* I2C1 时钟号 */
+    CLK_IIC1,                        /**< \brief I2C1 时钟号 */
     INUM_I2C1,                       /**< \brief I2C1 中断编号 */
-    __BUS_SPEED_I2C1_SLAVE,          /* I2C0 总线速率 */    
+    __BUS_SPEED_I2C1_SLAVE,          /**< \brief I2C1 总线速率 */
     __hc32f460_i2c1_plfm_init,       /**< \brief 平台初始化 */
     __hc32f460_i2c1_plfm_deinit      /**< \brief 平台去初始化 */
 };

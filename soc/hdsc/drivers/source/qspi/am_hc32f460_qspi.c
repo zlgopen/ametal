@@ -1,3 +1,29 @@
+/*******************************************************************************
+*                                 AMetal
+*                       ----------------------------
+*                       innovating embedded platform
+*
+* Copyright (c) 2001-2018 Guangzhou ZHIYUAN Electronics Co., Ltd.
+* All rights reserved.
+*
+* Contact information:
+* web site:    http://www.zlg.cn/
+*******************************************************************************/
+
+/**
+ * \file
+ * \brief QSPI驱动
+ *
+ * \internal
+ * \par Modification History
+ * - 1.00
+ * \endinternal
+ */
+
+/*******************************************************************************
+  头文件
+*******************************************************************************/
+
 #include "am_common.h"
 #include "am_types.h"
 #include "am_hc32f460_qspi.h"
@@ -160,3 +186,5 @@ void am_hc32f460_qspi_deinit (am_qspi_handle_t handle)
     }
 
 }
+
+/* end of file */

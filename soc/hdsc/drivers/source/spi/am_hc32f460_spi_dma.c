@@ -51,10 +51,10 @@ includes
  * \brief SPI 控制器状态
  */
 
-#define __SPI_ST_IDLE               0                   /**< \brief空闲状态 */
-#define __SPI_ST_MSG_START          1                   /**< \brief消息开始 */
-#define __SPI_ST_TRANS_START        2                   /**< \brief传输开始 */
-#define __SPI_ST_DMA_TRANS_DATA     3                   /**< \briefDMA 传输 */
+#define __SPI_ST_IDLE               0                   /**< \brief 空闲状态 */
+#define __SPI_ST_MSG_START          1                   /**< \brief 消息开始 */
+#define __SPI_ST_TRANS_START        2                   /**< \brief 传输开始 */
+#define __SPI_ST_DMA_TRANS_DATA     3                   /**< \brief DMA 传输 */
 
 /**
  * \briefSPI 控制器事件
@@ -360,32 +360,32 @@ int __spi_dma_trans (am_hc32f460_spi_dma_dev_t *p_dev)
 
 
     static uint16_t tx_rx_trans = 0; 
-    uint32_t   dma_flags[2]     = {0};  /* DMA发送通道描述符 */
+    uint32_t   dma_flags[2]     = {0};  /**< \brief DMA发送通道描述符 */
 
     /* 连接DMA中断服务函数 */
     am_hc32f460_dma_isr_connect(p_this->p_devinfo->p_dma, p_this->p_devinfo->dma_chan_tx, __dma_isr, p_this);
 
     /* DMA发送通道配置 */
     /* DMA 传输配置 */
-    dma_flags[0]  = AMHW_HC32F460_DMA_CHAN_CFG_INT_ENABLE            |  /* 通道中断使能 */
-                    AMHW_HC32F460_DMA_CHAN_CFG_SIZE_8BIT             |  /* 数据宽度 1 字节 */
-                    AMHW_HC32F460_DMA_CHAN_CFG_LLP_DISABLE           |  /* 连锁传输禁能 */
-                    AMHW_HC32F460_DMA_CHAN_CFG_DSTADD_NOTSEQ_DISABLE |  /* 目标地址不连续传输禁能 */
-                    AMHW_HC32F460_DMA_CHAN_CFG_SRCADD_NOTSEQ_DISABLE |  /* 源地址不连续传输禁能 */
-                    AMHW_HC32F460_DMA_CHAN_CFG_DST_DRPT_DISABLE      |  /* 目标重复传输禁能 */
-                    AMHW_HC32F460_DMA_CHAN_CFG_SRC_DRPT_DISABLE      |  /* 源重复传输禁能 */
-                    AMHW_HC32F460_DMA_CHAN_SRC_ADD_INCREASING;          /* 源地址自增 */
+    dma_flags[0]  = AMHW_HC32F460_DMA_CHAN_CFG_INT_ENABLE            |  /**< \brief 通道中断使能 */
+                    AMHW_HC32F460_DMA_CHAN_CFG_SIZE_8BIT             |  /**< \brief 数据宽度 1 字节 */
+                    AMHW_HC32F460_DMA_CHAN_CFG_LLP_DISABLE           |  /**< \brief 连锁传输禁能 */
+                    AMHW_HC32F460_DMA_CHAN_CFG_DSTADD_NOTSEQ_DISABLE |  /**< \brief 目标地址不连续传输禁能 */
+                    AMHW_HC32F460_DMA_CHAN_CFG_SRCADD_NOTSEQ_DISABLE |  /**< \brief 源地址不连续传输禁能 */
+                    AMHW_HC32F460_DMA_CHAN_CFG_DST_DRPT_DISABLE      |  /**< \brief 目标重复传输禁能 */
+                    AMHW_HC32F460_DMA_CHAN_CFG_SRC_DRPT_DISABLE      |  /**< \brief 源重复传输禁能 */
+                    AMHW_HC32F460_DMA_CHAN_SRC_ADD_INCREASING;          /**< \brief 源地址自增 */
 
 
     /* DMA接收通道配置 */
-    dma_flags[1] = AMHW_HC32F460_DMA_CHAN_CFG_INT_ENABLE            |  /* 通道中断使能 */
-                   AMHW_HC32F460_DMA_CHAN_CFG_SIZE_8BIT             |  /* 数据宽度 1 字节 */
-                   AMHW_HC32F460_DMA_CHAN_CFG_LLP_DISABLE           |  /* 连锁传输禁能 */
-                   AMHW_HC32F460_DMA_CHAN_CFG_DSTADD_NOTSEQ_DISABLE |  /* 目标地址不连续传输禁能 */
-                   AMHW_HC32F460_DMA_CHAN_CFG_SRCADD_NOTSEQ_DISABLE |  /* 源地址不连续传输禁能 */
-                   AMHW_HC32F460_DMA_CHAN_CFG_DST_DRPT_DISABLE      |  /* 目标重复传输禁能 */
-                   AMHW_HC32F460_DMA_CHAN_CFG_SRC_DRPT_DISABLE      |  /* 源重复传输禁能 */
-                   AMHW_HC32F460_DMA_CHAN_SRC_ADD_FIXED;               /* 源地址固定 */
+    dma_flags[1] = AMHW_HC32F460_DMA_CHAN_CFG_INT_ENABLE            |  /**< \brief 通道中断使能 */
+                   AMHW_HC32F460_DMA_CHAN_CFG_SIZE_8BIT             |  /**< \brief 数据宽度 1 字节 */
+                   AMHW_HC32F460_DMA_CHAN_CFG_LLP_DISABLE           |  /**< \brief 连锁传输禁能 */
+                   AMHW_HC32F460_DMA_CHAN_CFG_DSTADD_NOTSEQ_DISABLE |  /**< \brief 目标地址不连续传输禁能 */
+                   AMHW_HC32F460_DMA_CHAN_CFG_SRCADD_NOTSEQ_DISABLE |  /**< \brief 源地址不连续传输禁能 */
+                   AMHW_HC32F460_DMA_CHAN_CFG_DST_DRPT_DISABLE      |  /**< \brief 目标重复传输禁能 */
+                   AMHW_HC32F460_DMA_CHAN_CFG_SRC_DRPT_DISABLE      |  /**< \brief 源重复传输禁能 */
+                   AMHW_HC32F460_DMA_CHAN_SRC_ADD_FIXED;               /**< \brief 源地址固定 */
 
 
     /* 只发送不接收数据 */
@@ -395,11 +395,11 @@ int __spi_dma_trans (am_hc32f460_spi_dma_dev_t *p_dev)
         dma_flags[1] |= AMHW_HC32F460_DMA_CHAN_DST_ADD_FIXED;
 
         /* 建立通道描述符 */
-        am_hc32f460_dma_xfer_desc_build(&(p_this->g_desc[1]),          /* 通道描述符 */
-                                        (uint32_t)(&(p_hw_spi->DR)),   /* 源端数据缓冲区 */
-                                        (uint32_t)(&tx_rx_trans),      /* 目标端数据缓冲区 */
-                                        p_cur_trans->nbytes,           /* 传输字节数 */
-                                        dma_flags[1]);                 /* 传输配置 */
+        am_hc32f460_dma_xfer_desc_build(&(p_this->g_desc[1]),          /**< \brief 通道描述符 */
+                                        (uint32_t)(&(p_hw_spi->DR)),   /**< \brief 源端数据缓冲区 */
+                                        (uint32_t)(&tx_rx_trans),      /**< \brief 目标端数据缓冲区 */
+                                        p_cur_trans->nbytes,           /**< \brief 传输字节数 */
+                                        dma_flags[1]);                 /**< \brief 传输配置 */
 
     /* 存在接收数据 */
     } else {
@@ -408,11 +408,11 @@ int __spi_dma_trans (am_hc32f460_spi_dma_dev_t *p_dev)
         dma_flags[1] |= AMHW_HC32F460_DMA_CHAN_DST_ADD_INCREASING;
 
         /* 建立通道描述符 */
-        am_hc32f460_dma_xfer_desc_build(&(p_this->g_desc[1]),             /* 通道描述符 */
-                                        (uint32_t)(&(p_hw_spi->DR)),      /* 源端数据缓冲区 */
-                                        (uint32_t)(p_cur_trans->p_rxbuf), /* 目标端数据缓冲区 */
-                                        p_cur_trans->nbytes,              /* 传输字节数 */
-                                        dma_flags[1]);                    /* 传输配置 */
+        am_hc32f460_dma_xfer_desc_build(&(p_this->g_desc[1]),             /**< \brief 通道描述符 */
+                                        (uint32_t)(&(p_hw_spi->DR)),      /**< \brief 源端数据缓冲区 */
+                                        (uint32_t)(p_cur_trans->p_rxbuf), /**< \brief 目标端数据缓冲区 */
+                                        p_cur_trans->nbytes,              /**< \brief 传输字节数 */
+                                        dma_flags[1]);                    /**< \brief 传输配置 */
     }
 
     if (p_cur_trans->p_txbuf == NULL) {
@@ -421,60 +421,80 @@ int __spi_dma_trans (am_hc32f460_spi_dma_dev_t *p_dev)
         dma_flags[0] |= AMHW_HC32F460_DMA_CHAN_SRC_ADD_FIXED;
 
         /* 建立发送通道描述符 */
-        am_hc32f460_dma_xfer_desc_build(&(p_this->g_desc[0]),             /* 通道描述符 */
-                                        (uint32_t)((uint8_t*)p_cur_trans->p_txbuf + 1), /* 源缓冲区首地址 */
-                                        (uint32_t)(&(p_hw_spi->DR)),      /* 目的缓冲区首地址 */
-                                        p_cur_trans->nbytes,              /* 传输字节数 */
-                                        dma_flags[0]);                    /* 传输配置 */
+        am_hc32f460_dma_xfer_desc_build(&(p_this->g_desc[0]),             /**< \brief 通道描述符 */
+                                        (uint32_t)((uint8_t*)p_cur_trans->p_txbuf + 1), /**< \brief 源缓冲区首地址 */
+                                        (uint32_t)(&(p_hw_spi->DR)),      /**< \brief 目的缓冲区首地址 */
+                                        p_cur_trans->nbytes,              /**< \brief 传输字节数 */
+                                        dma_flags[0]);                    /**< \brief 传输配置 */
     } else {
 
         /* 源地址自增(发送数据buff地址自增) */
         dma_flags[0] |= AMHW_HC32F460_DMA_CHAN_SRC_ADD_INCREASING;
 
         /* 建立发送通道描述符 */
-        am_hc32f460_dma_xfer_desc_build(&(p_this->g_desc[0]),            /* 通道描述符 */
-                                        (uint32_t)((uint8_t*)p_cur_trans->p_txbuf + 1),/* 源缓冲区首地址 */
-                                        (uint32_t)(&(p_hw_spi->DR)),     /* 目的缓冲区首地址 */
-                                        p_cur_trans->nbytes,             /* 传输字节数 */
-                                        dma_flags[0]);                   /* 传输配置 */
+        am_hc32f460_dma_xfer_desc_build(&(p_this->g_desc[0]),            /**< \brief 通道描述符 */
+                                        (uint32_t)((uint8_t*)p_cur_trans->p_txbuf + 1),/**< \brief 源缓冲区首地址 */
+                                        (uint32_t)(&(p_hw_spi->DR)),     /**< \brief 目的缓冲区首地址 */
+                                        p_cur_trans->nbytes,             /**< \brief 传输字节数 */
+                                        dma_flags[0]);                   /**< \brief 传输配置 */
     }
 
     if (am_hc32f460_dma_xfer_desc_chan_cfg(p_devinfo->p_dma,
                                            &(p_this->g_desc[0]),
-                                           AMHW_HC32F460_DMA_MER_TO_PER,  /* 内存到外设 */
+                                           AMHW_HC32F460_DMA_MER_TO_PER,  /**< \brief 内存到外设 */
                                            p_this->p_devinfo->dma_chan_tx) == AM_ERROR) {
         return AM_ERROR;
     }
 
     if (am_hc32f460_dma_xfer_desc_chan_cfg(p_devinfo->p_dma,
                                            &(p_this->g_desc[1]),
-                                           AMHW_HC32F460_DMA_PER_TO_MER,  /* 外设到内存 */
+                                           AMHW_HC32F460_DMA_PER_TO_MER,  /**< \brief 外设到内存 */
                                            p_this->p_devinfo->dma_chan_rx) == AM_ERROR) {
         return AM_ERROR;
     }
 
     /* 设置每个DMA传输块大小为已开启的通道个数（1） */
-    am_hc32f460_dma_block_data_size(p_devinfo->p_dma, p_this->p_devinfo->dma_chan_rx, 1);
-    am_hc32f460_dma_block_data_size(p_devinfo->p_dma, p_this->p_devinfo->dma_chan_tx, 1);
+    am_hc32f460_dma_block_data_size(p_devinfo->p_dma,
+                                    p_this->p_devinfo->dma_chan_rx,
+                                    1);
+    am_hc32f460_dma_block_data_size(p_devinfo->p_dma,
+                                    p_this->p_devinfo->dma_chan_tx,
+                                    1);
 
 
     /* 设置DMA触发源*/
     if((p_devinfo->spi_id) == 1) {
-        am_hc32f460_dma_chan_src_set(p_devinfo->p_dma, p_this->p_devinfo->dma_chan_rx, EVT_SPI1_SRRI);
-        am_hc32f460_dma_chan_src_set(p_devinfo->p_dma, p_this->p_devinfo->dma_chan_tx, EVT_SPI1_SRTI);
+        am_hc32f460_dma_chan_src_set(p_devinfo->p_dma,
+                                     p_this->p_devinfo->dma_chan_rx,
+                                     EVT_SPI1_SRRI);
+        am_hc32f460_dma_chan_src_set(p_devinfo->p_dma,
+                                     p_this->p_devinfo->dma_chan_tx,
+                                     EVT_SPI1_SRTI);
 
     } else if((p_devinfo->spi_id) == 2) {
 
-        am_hc32f460_dma_chan_src_set(p_devinfo->p_dma, p_this->p_devinfo->dma_chan_rx, EVT_SPI2_SRRI);
-        am_hc32f460_dma_chan_src_set(p_devinfo->p_dma, p_this->p_devinfo->dma_chan_tx, EVT_SPI2_SRTI);
+        am_hc32f460_dma_chan_src_set(p_devinfo->p_dma,
+                                     p_this->p_devinfo->dma_chan_rx,
+                                     EVT_SPI2_SRRI);
+        am_hc32f460_dma_chan_src_set(p_devinfo->p_dma,
+                                     p_this->p_devinfo->dma_chan_tx,
+                                     EVT_SPI2_SRTI);
     } else if((p_devinfo->spi_id) == 3) {
 
-        am_hc32f460_dma_chan_src_set(p_devinfo->p_dma, p_this->p_devinfo->dma_chan_rx, EVT_SPI3_SRRI);
-        am_hc32f460_dma_chan_src_set(p_devinfo->p_dma, p_this->p_devinfo->dma_chan_tx, EVT_SPI3_SRTI);
+        am_hc32f460_dma_chan_src_set(p_devinfo->p_dma,
+                                     p_this->p_devinfo->dma_chan_rx,
+                                     EVT_SPI3_SRRI);
+        am_hc32f460_dma_chan_src_set(p_devinfo->p_dma,
+                                     p_this->p_devinfo->dma_chan_tx,
+                                     EVT_SPI3_SRTI);
     } else if((p_devinfo->spi_id) == 4) {
 
-        am_hc32f460_dma_chan_src_set(p_devinfo->p_dma, p_this->p_devinfo->dma_chan_rx, EVT_SPI4_SRRI);
-        am_hc32f460_dma_chan_src_set(p_devinfo->p_dma, p_this->p_devinfo->dma_chan_tx, EVT_SPI4_SRTI);
+        am_hc32f460_dma_chan_src_set(p_devinfo->p_dma,
+                                     p_this->p_devinfo->dma_chan_rx,
+                                     EVT_SPI4_SRRI);
+        am_hc32f460_dma_chan_src_set(p_devinfo->p_dma,
+                                     p_this->p_devinfo->dma_chan_tx,
+                                     EVT_SPI4_SRTI);
     }
 
     am_hc32f460_dma_chan_start(p_devinfo->p_dma, p_this->p_devinfo->dma_chan_rx);
@@ -600,13 +620,13 @@ int __spi_config (am_hc32f460_spi_dma_dev_t *p_this)
     }
 
 
-    /* 配置为主机模式 */
+    /** \brief 配置为主机模式 */
     amhw_hc32f460_spi_mode_sel(p_hw_spi, AMHW_HC32F460_SPI_MODE_MASTER);
 
-    /* 配置SPI模式（时钟相位和极性） */
+    /** \brief 配置SPI模式（时钟相位和极性） */
     amhw_hc32f460_spi_clk_mode_set(p_hw_spi, 0x3 & p_this->p_cur_spi_dev->mode);
 
-    /* 设置SPI速率 */
+    /** \brief 设置SPI速率 */
     __spi_speed_cfg(p_this, p_trans->speed_hz);
 
     return AM_OK;
@@ -624,19 +644,19 @@ int __spi_msg_start (void              *p_drv,
 
     int key;
 
-    /* 设备有效性检查 */
+    /** \brief 设备有效性检查 */
     if ((p_drv == NULL) || (p_dev == NULL) || (p_msg == NULL) ){
         return -AM_EINVAL;
     }
 
-    p_msg->p_spi_dev       = p_dev; /* 设备参数信息存入到消息中 */
-    p_this->p_cur_msg      = p_msg; /* 将当前设备传输消息存入 */
-    p_this->nbytes_to_recv = 0;     /* 待接收字符数清0 */
-    p_this->data_ptr       = 0;     /* 已接收字符数清0 */
+    p_msg->p_spi_dev       = p_dev; /**< \brief 设备参数信息存入到消息中 */
+    p_this->p_cur_msg      = p_msg; /**< \brief 将当前设备传输消息存入 */
+    p_this->nbytes_to_recv = 0;     /**< \brief 待接收字符数清0 */
+    p_this->data_ptr       = 0;     /**< \brief 已接收字符数清0 */
 
     key = am_int_cpu_lock();
 
-    /* 当前正在处理消息，只需要将新的消息加入链表即可 */
+    /** \brief 当前正在处理消息，只需要将新的消息加入链表即可 */
     if (p_this->busy == AM_TRUE) {
         __spi_msg_in(p_this, p_msg);
         am_int_cpu_unlock(key);
@@ -644,17 +664,17 @@ int __spi_msg_start (void              *p_drv,
     } else {
         p_this->busy = AM_TRUE;
         __spi_msg_in(p_this, p_msg);
-        p_msg->status = -AM_EISCONN; /* 正在排队中 */
+        p_msg->status = -AM_EISCONN; /**< \brief 正在排队中 */
         am_int_cpu_unlock(key);
 
-        /* 启动状态机 */
+        /** \brief 启动状态机 */
         return __spi_mst_sm_event(p_this, __SPI_EVT_TRANS_LAUNCH);
     }
 }
 
 /******************************************************************************/
 
-/*  状态机内部状态切换 */
+/** \brief 状态机内部状态切换 */
 #define __SPI_NEXT_STATE(s, e) \
     do { \
         p_dev->state = (s); \
@@ -668,7 +688,8 @@ am_local
 int __spi_mst_sm_event (am_hc32f460_spi_dma_dev_t *p_dev, uint32_t event)
 {
     volatile uint32_t new_event = __SPI_EVT_NONE;
-    amhw_hc32f460_spi_t *p_hw_spi = (amhw_hc32f460_spi_t *)(p_dev->p_devinfo->spi_reg_base);
+    amhw_hc32f460_spi_t *p_hw_spi = (amhw_hc32f460_spi_t *)
+                                    (p_dev->p_devinfo->spi_reg_base);
 
 
     if (p_dev == NULL) {
@@ -677,31 +698,31 @@ int __spi_mst_sm_event (am_hc32f460_spi_dma_dev_t *p_dev, uint32_t event)
 
     while (1) {
 
-        if (new_event != __SPI_EVT_NONE) {  /* 检查新事件是否来自内部 */
+        if (new_event != __SPI_EVT_NONE) {  /**< \brief 检查新事件是否来自内部 */
             event     = new_event;
             new_event  = __SPI_EVT_NONE;
         }
 
         switch (p_dev->state) {
 
-        case __SPI_ST_IDLE:         /* 控制器处于空闲状态 */
+        case __SPI_ST_IDLE:         /**< \brief 控制器处于空闲状态 */
         {
             if (event != __SPI_EVT_TRANS_LAUNCH) {
-                return -AM_EINVAL;  /* 空闲状态等待的消息必须是启动传输 */
+                return -AM_EINVAL;  /**< \brief 空闲状态等待的消息必须是启动传输 */
             }
 
-            /* 切换到消息开始状态，不用break */
+            /** \brief 切换到消息开始状态，不用break */
         }
-        /* no break */
+        /** \brief no break */
 
-        case __SPI_ST_MSG_START:    /* 消息开始 */
+        case __SPI_ST_MSG_START:    /**< \brief 消息开始 */
         {
             am_spi_message_t  *p_cur_msg   = NULL;
 
             int key;
 
             if (event != __SPI_EVT_TRANS_LAUNCH) {
-                return -AM_EINVAL;  /* 消息开始状态等待的消息必须是启动传输 */
+                return -AM_EINVAL;  /**< \brief 消息开始状态等待的消息必须是启动传输 */
             }
 
             key = am_int_cpu_lock();
@@ -716,7 +737,7 @@ int __spi_mst_sm_event (am_hc32f460_spi_dma_dev_t *p_dev, uint32_t event)
             }
             am_int_cpu_unlock(key);
 
-            /* 无需要处理的消息 */
+            /** \brief 无需要处理的消息 */
             if (p_cur_msg == NULL) {
                 __SPI_NEXT_STATE(__SPI_ST_IDLE, __SPI_EVT_NONE);
                 break;
@@ -724,31 +745,31 @@ int __spi_mst_sm_event (am_hc32f460_spi_dma_dev_t *p_dev, uint32_t event)
 
                 p_dev->p_cur_spi_dev = p_cur_msg->p_spi_dev;
 
-                /* 直接进入下一个状态，开始一个传输，此处无需break */
+                /** \brief 直接进入下一个状态，开始一个传输，此处无需break */
                 __SPI_NEXT_STATE(__SPI_ST_TRANS_START, __SPI_EVT_TRANS_LAUNCH);
 
                 event     = new_event;
                 new_event = __SPI_EVT_NONE;
             }
         }
-        /* no break */
+        /** \brief no break */
 
-        case __SPI_ST_TRANS_START:  /* 传输开始 */
+        case __SPI_ST_TRANS_START:  /**< \brief 传输开始 */
         {
             am_spi_message_t *p_cur_msg = p_dev->p_cur_msg;
 
             p_dev->p_isr_msg = p_cur_msg;
 
             if (event != __SPI_EVT_TRANS_LAUNCH) {
-                return -AM_EINVAL;  /* 传输开始状态等待的消息必须是启动传输 */
+                return -AM_EINVAL;  /**< \brief 传输开始状态等待的消息必须是启动传输 */
             }
 
-            /* 当前消息传输完成 */
+            /** \brief 当前消息传输完成 */
             if (am_list_empty(&(p_cur_msg->transfers))) {
 
                 p_cur_msg->actual_length = 0;
 
-                /* 消息正在处理中 */
+                /** \brief 消息正在处理中 */
                 if (p_cur_msg->status == -AM_EINPROGRESS) {
                     p_cur_msg->status = AM_OK;
                 }
@@ -757,18 +778,18 @@ int __spi_mst_sm_event (am_hc32f460_spi_dma_dev_t *p_dev, uint32_t event)
 
             } else {
 
-                /* 获取到一个传输，正确处理该传输即可 */
+            	/** \brief 获取到一个传输，正确处理该传输即可 */
                 am_spi_transfer_t *p_cur_trans = __spi_trans_out(p_cur_msg);
                 p_dev->p_cur_trans             = p_cur_trans;
 
-                /* reset current data pointer */
+                /** \brief reset current data pointer */
                 p_dev->data_ptr       = 0;
                 p_dev->nbytes_to_recv = 0;
 
-                /* 配置SPI传输参数 */
+                /** \brief 配置SPI传输参数 */
                 __spi_config(p_dev);
 
-                /* CS选通 */
+                /** \brief CS选通 */
                 __spi_cs_on(p_dev, p_dev->p_cur_spi_dev);
 
                 am_udelay(10);
@@ -779,16 +800,16 @@ int __spi_mst_sm_event (am_hc32f460_spi_dma_dev_t *p_dev, uint32_t event)
             break;
         }
 
-        case __SPI_ST_DMA_TRANS_DATA:    /* DMA发送数据 */
+        case __SPI_ST_DMA_TRANS_DATA:    /**< \brief DMA发送数据 */
         {
             if (event != __SPI_EVT_DMA_TRANS_DATA) {
-                return -AM_EINVAL;  /* 主机发送状态等待的消息必须是发送数据 */
+                return -AM_EINVAL;  /**< \brief 主机发送状态等待的消息必须是发送数据 */
             }
 
-            /* 下一状态还是发送状态 */
+            /** \brief 下一状态还是发送状态 */
             __SPI_NEXT_STATE(__SPI_ST_TRANS_START, __SPI_EVT_NONE);
 
-            /* 使用DMA传输 */
+            /** \brief 使用DMA传输 */
             __spi_dma_trans(p_dev);
 
             /*
@@ -797,7 +818,8 @@ int __spi_mst_sm_event (am_hc32f460_spi_dma_dev_t *p_dev, uint32_t event)
              * 产生发送空事件，触发DMA
              *  */
             if ((p_dev->p_cur_trans->p_txbuf != NULL) && (p_dev->p_cur_trans->nbytes != 0)) {
-                amhw_hc32f460_spi_tx_data8_put(p_hw_spi, ((uint8_t *)(p_dev->p_cur_trans->p_txbuf))[0]);
+                amhw_hc32f460_spi_tx_data8_put(p_hw_spi,
+                                               ((uint8_t *)(p_dev->p_cur_trans->p_txbuf))[0]);
             }
 
             break;
@@ -846,7 +868,7 @@ am_spi_handle_t am_hc32f460_spi_dma_init (am_hc32f460_spi_dma_dev_t           *p
     p_dev->p_cur_trans      = NULL;
     p_dev->data_ptr         = 0;
     p_dev->nbytes_to_recv   = 0;
-    p_dev->state            = __SPI_ST_IDLE;     /* 初始化为空闲状态 */
+    p_dev->state            = __SPI_ST_IDLE;     /**< \brief 初始化为空闲状态 */
 
     am_list_head_init(&(p_dev->msg_list));
 
@@ -863,7 +885,8 @@ am_spi_handle_t am_hc32f460_spi_dma_init (am_hc32f460_spi_dma_dev_t           *p
 void am_hc32f460_spi_dma_deinit (am_spi_handle_t handle)
 {
     am_hc32f460_spi_dma_dev_t *p_dev    = (am_hc32f460_spi_dma_dev_t *)handle;
-    amhw_hc32f460_spi_t       *p_hw_spi = (amhw_hc32f460_spi_t *)(p_dev->p_devinfo->spi_reg_base);
+    amhw_hc32f460_spi_t       *p_hw_spi = (amhw_hc32f460_spi_t *)
+                                          (p_dev->p_devinfo->spi_reg_base);
 
     if (NULL == p_dev) {
         return ;
@@ -889,7 +912,7 @@ uint32_t __spi_speed_cfg (am_hc32f460_spi_dma_dev_t *p_dev,
                           uint32_t                   target_speed)
 {
 
-    uint32_t clk, best_speed;  /* 计算出的速度 */
+    uint32_t clk, best_speed;  /**< \brief 计算出的速度 */
     uint8_t  i = 0;
     amhw_hc32f460_spi_clk_div_t baud_div = AMHW_HC32F460_SPI_CLK_DIV_2;
 

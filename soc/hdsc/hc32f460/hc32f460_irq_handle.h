@@ -1,3 +1,32 @@
+/*******************************************************************************
+*                                 AMetal
+*                       ----------------------------
+*                       innovating embedded platform
+*
+* Copyright (c) 2001-2018 Guangzhou ZHIYUAN Electronics Co., Ltd.
+* All rights reserved.
+*
+* Contact information:
+* web site:    http://www.zlg.cn/
+*******************************************************************************/
+
+/**
+ * \file
+ * \brief HC32F460 中断处理函数
+ *
+ * \internal
+ * \par Modification history
+ * - 1.00 20-01-13  cds, first implementation
+ * \endinternal
+ */
+
+#ifndef __HC32F460_IRQ_HANDLE_H
+#define __HC32F460_IRQ_HANDLE_H
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 void IRQ128_Handler(void *parg);
 void IRQ129_Handler(void *parg);
 void IRQ130_Handler(void *parg);
@@ -32,3 +61,11 @@ void amhw_hc32f460_int_sel0_31(uint8_t inum, uint16_t src_num)
     stcIntSel = (stc_intc_sel_field_t *)((uint32_t)(0x40051000UL + 0x5c) + (4u * inum));
     stcIntSel->INTSEL = src_num;
 }
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* __HC32F460_IRQ_HANDLE_H */
+
+/* end of file */

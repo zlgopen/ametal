@@ -126,8 +126,8 @@ typedef struct am_hc32f460_dma_dev {
 /**
  * \brief 配置DMA传输通道
  *
- * \param[in] chan : DMA 通道号，值为：DMA_CHAN_* (#DMA_CHAN_1) 或 (#DMA_CHAN_2)
- * \param[in] src  : 设定通道请求的触发源（请查看zlg118_dma_chan.h宏定义）
+ * \param[in] chan : DMA 通道号，值为：DMA_CHAN_*(* 为1/2/3/4)
+ * \param[in] src  : 设定通道请求的触发源（en_event_src_t）
  *
  */
 void am_hc32f460_dma_chan_src_set (am_hc32f460_dma_dev_t *p_dev, int chan, en_event_src_t src);
@@ -135,8 +135,8 @@ void am_hc32f460_dma_chan_src_set (am_hc32f460_dma_dev_t *p_dev, int chan, en_ev
 /**
  * \brief 配置DMA传输通道
  *
- * \param[in] chan : DMA 通道号，值为：DMA_CHAN_* (#DMA_CHAN_1) 或 (#DMA_CHAN_2)
- * \param[in] src  : 设定通道请求的触发源（请查看zlg118_dma_chan.h宏定义）
+ * \param[in] chan : DMA 通道号，值为：DMA_CHAN_*(* 为1/2/3/4)
+ * \param[in] src  : 设定通道请求的触发源（en_event_src_t）
  *
  * \retval AM_OK    : 配置成功
  * \retval AM_ERROR : 配置错误，该通道之前配置过
@@ -145,7 +145,7 @@ int am_hc32f460_dma_chan_start (am_hc32f460_dma_dev_t *p_dev, int chan);
 
 /**
  * \brief 停止通道传输
- * \param[in] chan : DMA 通道号，值为：DMA_CHAN_* (#DMA_CHAN_1) 或 (#DMA_CHAN_2)
+ * \param[in] chan : DMA 通道号，值为：DMA_CHAN_*(* 为1/2/3/4)
  *
  * \retval AM_OK   : 操作成功
  */
@@ -169,21 +169,21 @@ int am_hc32f460_dma_xfer_desc_build (amhw_hc32f460_dma_xfer_desc_t *p_desc,
                                      uint32_t                       nbytes,
                                      uint32_t                       flags);
 
-int am_hc32f460_dma_chain_xfer_desc_build (amhw_hc32f460_dma_chain_xfer_desc_t *p_desc,   /* 描述符结构体指针地址 */
-                                           uint32_t                             src_addr, /* 源地址  */
-                                           uint32_t                             dst_addr, /* 目的地址  */
-                                           uint32_t                             count,    /* 传输次数  */
-                                           uint32_t                             blk_size, /* 数据块大小  */
-                                           uint32_t                             drpt,     /* 目标地址重复区域大小  */
-                                           uint32_t                             srpt,     /* 源地址重复区域大小  */
-                                           uint32_t                             snscnt,   /* 源地址跳转的数据量  */
-                                           uint32_t                             soffset,  /* 源地址跳转的地址偏移量  */
-                                           uint32_t                             dnscnt,   /* 目标地址跳转的数据量  */
-                                           uint32_t                             dsoffset, /* 目标地址跳转的地址偏移量  */
-                                           uint32_t                             link,     /* 下一次传输的描述符所在地址  */
-                                           uint32_t                             ch_ctl);  /* 通道控制寄存器设置值  */
+int am_hc32f460_dma_chain_xfer_desc_build (amhw_hc32f460_dma_chain_xfer_desc_t *p_desc,   /**< \brief 描述符结构体指针地址 */
+                                           uint32_t                             src_addr, /**< \brief 源地址  */
+                                           uint32_t                             dst_addr, /**< \brief 目的地址  */
+                                           uint32_t                             count,    /**< \brief 传输次数  */
+                                           uint32_t                             blk_size, /**< \brief 数据块大小  */
+                                           uint32_t                             drpt,     /**< \brief 目标地址重复区域大小  */
+                                           uint32_t                             srpt,     /**< \brief 源地址重复区域大小  */
+                                           uint32_t                             snscnt,   /**< \brief 源地址跳转的数据量  */
+                                           uint32_t                             soffset,  /**< \brief 源地址跳转的地址偏移量  */
+                                           uint32_t                             dnscnt,   /**< \brief 目标地址跳转的数据量  */
+                                           uint32_t                             dsoffset, /**< \brief 目标地址跳转的地址偏移量  */
+                                           uint32_t                             link,     /**< \brief 下一次传输的描述符所在地址  */
+                                           uint32_t                             ch_ctl);  /**< \brief 通道控制寄存器设置值  */
 
-/* DMA连锁传输配置 */
+/** \brief DMA连锁传输配置 */
 int am_hc32f460_dma_chain_xfer_desc_chan_cfg (am_hc32f460_dma_dev_t                  *p_dev,
                                               amhw_hc32f460_dma_chain_xfer_desc_t    *p_desc,
                                               amhw_hc32f460_dma_transfer_type_t       type,
@@ -192,25 +192,24 @@ int am_hc32f460_dma_chain_xfer_desc_chan_cfg (am_hc32f460_dma_dev_t             
 /**
  * \brief 开始DMA传输
  *
+ * \param[in] p_dev   : 指向DMA设备的指针
  * \param[in] p_desc  : 指向DMA传输描述符的指针
  * \param[in] type    : DMA传输模式设置 ：有对应的枚举体dma_transfer_type_t
- * \param[in] chan    : DMA 通道号，值为：DMA_CHAN_* (#DMA_CHAN_1) 或 (#DMA_CHAN_2)
+ * \param[in] chan : DMA 通道号，值为：DMA_CHAN_*(* 为1/2/3/4)
  *
  * \retval  AM_OK     : 操作成功
  * \retval -AM_EINVAL : 参数无效
  */
 int am_hc32f460_dma_xfer_desc_chan_cfg (am_hc32f460_dma_dev_t            *p_dev,
-		                                amhw_hc32f460_dma_xfer_desc_t    *p_desc,
+                                        amhw_hc32f460_dma_xfer_desc_t    *p_desc,
                                         amhw_hc32f460_dma_transfer_type_t type,
                                         uint8_t                           chan);
 
 /**
  * \brief 连接DMA回调函数
  *
- * \attention 该回调函数的第二个参数可从驱动获得，该参数的取值范围是 AM_ZLG118_DMA_INT*
- *            见本文件上方宏定义处
- *
- * \param[in] chan    : DMA 通道号，值为：DMA_CHAN_* (#DMA_CHAN_1) 或 (#DMA_CHAN_2)
+ * \param[in] p_dev   : 指向DMA设备的指针
+ * \param[in] chan : DMA 通道号，值为：DMA_CHAN_*(* 为1/2/3/4)
  * \param[in] pfn_isr : 回调函数指针
  * \param[in] p_arg   : 回调函数的第一个入口参数 ，在连接过程中，对应通道写上对应数字，
  *                      例如DMA0通道，则该参数为(void *)0
@@ -219,18 +218,15 @@ int am_hc32f460_dma_xfer_desc_chan_cfg (am_hc32f460_dma_dev_t            *p_dev,
  * \retval -AM_EPERM  : 参数错误
  */
 int am_hc32f460_dma_isr_connect (am_hc32f460_dma_dev_t    *p_dev,
-		                         int                       chan,
+                                 int                       chan,
                                  am_hc32f460_pfn_dma_isr_t pfn_isr,
                                  void                     *p_arg);
 
 /**
  * \brief 删除DMA回调函数的连接
  *
- * \attention 该回调函数的第二个参数可从驱动获得，该参数的取值范围是 AM_ZLG118_DMA_INT*
- *            见本文件上方宏定义处
- *            该回调函数的第三个参数是产生中断的通道，其取值范围是DMA_CHAN_* (#DMA_CHAN_1)
- *
- * \param[in] chan    : DMA 通道号，值为：DMA_CHAN_* (#DMA_CHAN_1) 或 (#DMA_CHAN_2)
+ * \param[in] p_dev   : 指向DMA设备的指针
+ * \param[in] chan : DMA 通道号，值为：DMA_CHAN_*(* 为1/2/3/4)
  * \param[in] pfn_isr : 回调函数指针
  * \param[in] p_arg   : 回调函数的第一个入口参数，在连接过程中，对应通道写上对应数字，
  *                      例如DMA0通道，则该参数为(void *)0
@@ -239,7 +235,7 @@ int am_hc32f460_dma_isr_connect (am_hc32f460_dma_dev_t    *p_dev,
  * \retval -AM_EPERM  : 参数错误
  */
 int am_hc32f460_dma_isr_disconnect (am_hc32f460_dma_dev_t     *p_dev,
-		                            int                        chan,
+                                    int                        chan,
                                     am_hc32f460_pfn_dma_isr_t  pfn_isr,
                                     void                      *p_arg);
 
@@ -248,34 +244,34 @@ int am_hc32f460_dma_isr_disconnect (am_hc32f460_dma_dev_t     *p_dev,
  * \brief 设置中断屏蔽
  *
  * \param[in] p_dev    : 指向DMA设备的指针
- * \param[in] chan     : DMA 通道号，值为：DMA_CHAN_* (#DMA_CHAN_1) 或 (#DMA_CHAN_2)/(#DMA_CHAN_3)/(#DMA_CHAN_4)
+ * \param[in] chan : DMA 通道号，值为：DMA_CHAN_*(* 为1/2/3/4)
  * \param[in] int_flag : 中断标志
  *
  * \retval  AM_OK     : 操作成功
  * \retval -AM_EINVAL : 参数无效
  */
 void am_hc32f460_dma_chan_int_mask_set (am_hc32f460_dma_dev_t *p_dev,
-		                                int                    chan,
-		                                uint32_t               int_flag);
+                                        int                    chan,
+                                        uint32_t               int_flag);
 
 /**
  * \brief 清除中断屏蔽
  *
  * \param[in] p_dev    : 指向DMA设备的指针
- * \param[in] chan     : DMA 通道号，值为：DMA_CHAN_* (#DMA_CHAN_1) 或 (#DMA_CHAN_2)/(#DMA_CHAN_3)/(#DMA_CHAN_4)
+ * \param[in] chan : DMA 通道号，值为：DMA_CHAN_*(* 为1/2/3/4)
  * \param[in] int_flag : 中断标志
  *
  * \retval  AM_OK     : 操作成功
  * \retval -AM_EINVAL : 参数无效
  */
 void am_hc32f460_dma_chan_int_mask_clr (am_hc32f460_dma_dev_t *p_dev,
-		                                int                    chan,
-		                                uint32_t               int_flag);
+                                        int                    chan,
+                                        uint32_t               int_flag);
 
 /**
  * \breif 获取  某通道当前传输剩余的字节数
  *
- * \param[in] chan DMA 通道号，值为 DMA_CHAN_* (#DMA_CHAN_1) 或 (#DMA_CHAN_2)
+ * \param[in] chan : DMA 通道号，值为：DMA_CHAN_*(* 为1/2/3/4)
  *
  * \retval  字节数
  */
@@ -284,19 +280,21 @@ uint16_t am_hc32f460_dma_tran_data_get (am_hc32f460_dma_dev_t *p_dev, int chan);
 /**
  * \breif 设置 某通道当前传输剩余的字节数
  *
- * \param[in] chan            DMA 通道号，值为 DMA_CHAN_* (#DMA_CHAN_1) 或 (#DMA_CHAN_2)
+ * \param[in] chan : DMA 通道号，值为：DMA_CHAN_*(* 为1/2/3/4)
  * \param[in] trans_data_byte 要传输的字节数
  *
  * \retval  无
  *
  * \note 在设置传输的字节数之前必须停止通道传输
  */
-void am_hc32f460_dma_tran_data_size (am_hc32f460_dma_dev_t *p_dev, int chan, uint32_t trans_data_byte);
+void am_hc32f460_dma_tran_data_size (am_hc32f460_dma_dev_t *p_dev,
+                                     int                    chan,
+                                     uint32_t               trans_data_byte);
 
 /**
  * \breif 设置每次传输时，块大小
  *
- * \param[in] chan            DMA 通道号，值为 DMA_CHAN_* (#DMA_CHAN_1) 或 (#DMA_CHAN_2)
+ * \param[in] chan : DMA 通道号，值为：DMA_CHAN_*(* 为1/2/3/4)
  * \param[in] block_data_num  块大小数量
  *
  * \retval  AM_OK     : 设置成功
@@ -304,9 +302,17 @@ void am_hc32f460_dma_tran_data_size (am_hc32f460_dma_dev_t *p_dev, int chan, uin
  *
  * \note 在设置传输的字节数之前必须停止通道传输
  */
-int am_hc32f460_dma_block_data_size (am_hc32f460_dma_dev_t *p_dev, int chan, uint16_t block_data_num);
+int am_hc32f460_dma_block_data_size (am_hc32f460_dma_dev_t *p_dev,
+                                     int                    chan,
+                                     uint16_t               block_data_num);
 
-/* 设定通道重置请求的触发源（请查看hc32f460_dma_chan.h宏定义）*/
+/**
+ * \breif 设定通道重置请求的触发源
+ *
+ * \param[in] src : 触发源
+ *
+ * \retval  无
+ */
 void am_hc32f460_dma_chan_rcfg_src_set (en_event_src_t src);
 
 /**
@@ -325,41 +331,72 @@ void am_hc32f460_dma_chan_rcfg_src_set (en_event_src_t src);
  * \note 在DMA使能前设置该寄存器，该寄存器必须在重置通道的第一次传输前设置。
  */
 void am_hc32f460_dma_chan_rcfg_set (am_hc32f460_dma_dev_t *p_dev,
-		                            uint8_t                cntmd,
-									uint8_t                darmd,
-									uint8_t                sarmd,
-									uint8_t                chan,
-									uint8_t                rcfgllp,
-									uint8_t                rcfgen);
+                                    uint8_t                cntmd,
+                                    uint8_t                darmd,
+                                    uint8_t                sarmd,
+                                    uint8_t                chan,
+                                    uint8_t                rcfgllp,
+                                    uint8_t                rcfgen);
 
 /**
  * \brief 设置源地址重复区域大小
- *        源设备在每传输size个数据后，源地址重载为DMA_DARx寄存器的值。
+ *        源设备在每传输size个数据后，源地址重载为DMA_SARx寄存器的值。
+ *
+ * \param[in] p_dev  指向DMA设备的指针
+ * \param[in] chan : 通道号
+ * \param[in] size : 源地址重复区域大小
+ *
+ * \retval  无
  */
-int am_hc32f460_dma_srpt_size_set (am_hc32f460_dma_dev_t *p_dev, int chan, uint16_t size);
-
+int am_hc32f460_dma_srpt_size_set (am_hc32f460_dma_dev_t *p_dev,
+                                   int                    chan,
+                                   uint16_t               size);
 /**
  * \brief 设置目标地址重复区域大小
- *        目标设备在每传输size个数据后，目标地址重载为DMA_DARx寄存器的值。
+ *        源设备在每传输size个数据后，目标地址重载为DMA_DARx寄存器的值。
+ *
+ * \param[in] p_dev  指向DMA设备的指针
+ * \param[in] chan : 通道号
+ * \param[in] size : 源地址重复区域大小
+ *
+ * \retval  无
  */
 int am_hc32f460_dma_drpt_size_set (am_hc32f460_dma_dev_t *p_dev, int chan, uint16_t size);
 
 /**
  * \brief 源设备不连续地址传输配置
+ *
+ * \param[in] p_dev   : 指向DMA设备的指针
+ * \param[in] chan    : 通道号
+ * \param[in] snscnt  : 源地址跳转的数据量
+ * \param[in] soffset : 源地址跳转的地址偏移量
+ *
+ * \retval  无
  */
 int am_hc32f460_dma_snseqctl_cfg (am_hc32f460_dma_dev_t *p_dev,
-		                          int                    chan,
-								  uint16_t               snscnt,
-								  uint16_t               soffset);
-
+                                  int                    chan,
+                                  uint16_t               snscnt,
+                                  uint16_t               soffset);
 
 /**
  * \brief 目标设备不连续地址传输配置
+ *
+ * \param[in] p_dev   : 指向DMA设备的指针
+ * \param[in] chan    : 通道号
+ * \param[in] dnscnt  : 目标地址跳转的数据量
+ * \param[in] doffset : 目标地址跳转的地址偏移量
+ *
+ * \retval  无
  */
 int am_hc32f460_dma_dnseqctl_cfg (am_hc32f460_dma_dev_t *p_dev,
-		                          int                    chan,
-								  uint16_t               dnscnt,
-								  uint16_t               doffset);
+                                  int                    chan,
+                                  uint16_t               dnscnt,
+                                  uint16_t               doffset);
+
+/**
+ * \brief DMA软件触发
+ */
+void am_hc32f460_dma_soft_trig(void);
 
 
 /**
@@ -376,11 +413,19 @@ int am_hc32f460_dma_init (am_hc32f460_dma_dev_t           *p_dev,
 /**
  * \brief DMA去初始化
  *
+ * \param[in] p_dev      : 指向DMA设备的指针
+ *
  * \return 无
  */
 void am_hc32f460_dma_deinit (am_hc32f460_dma_dev_t *p_dev);
 
-
+/**
+ * \brief DMA中断函数
+ *
+ * \param[in] p_arg : 中断函数参数
+ *
+ * \return 无
+ */
 void dma_int_handler(void *p_arg);
 /**
  * @}
@@ -390,6 +435,6 @@ void dma_int_handler(void *p_arg);
 }
 #endif
 
-#endif /* __AM_ZLG118_DMA_H */
+#endif /* __AM_HC32F460_DMA_H */
 
 /* end of file */

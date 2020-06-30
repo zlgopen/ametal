@@ -24,7 +24,6 @@
 #include "ametal.h"
 #include "am_hc32f460.h"
 #include "am_hc32f460_timea_cap.h"
-//#include "am_hc32f460_adtim_cap.h"
 #include "am_gpio.h"
 #include "am_clk.h"
 #include "am_hc32f460_clk.h"
@@ -54,7 +53,7 @@ void __hc32f460_plfm_timea1_cap_deinit (void)
 
 /** \brief TIMEA1用于捕获功能的引脚配置信息列表 */
 am_hc32f460_timea_cap_ioinfo_t __g_timea1_cap_ioinfo_list[] = {
-    /**< \brief 通道0 */
+    /** \brief 通道0 */
     {
         TIMERA_CH1,
         PIOE_9,
@@ -62,7 +61,7 @@ am_hc32f460_timea_cap_ioinfo_t __g_timea1_cap_ioinfo_list[] = {
         AM_GPIO_INPUT
     },
 
-    /**< \brief 通道1 */
+    /** \brief 通道1 */
     {
         TIMERA_CH2,
         PIOE_11,
@@ -117,13 +116,12 @@ am_hc32f460_timea_cap_ioinfo_t __g_timea1_cap_ioinfo_list[] = {
 const am_hc32f460_timea_cap_devinfo_t  __g_timea1_cap_devinfo = {
     HC32F460_TMRA1_BASE,                    /**< \brief TIMEA1寄存器块的基地址 */
     INUM_TIMERA_1,                          /**< \brief TIMEA1中断编号 */
-//    AMHW_HC32F460_TIMEA_CLK_DIV256,         /**< \brief 时钟分频系数 */
-    AMHW_HC32F460_TIMEA_CLK_DIV1024,         /**< \brief 时钟分频系数 */
-    8,                                      /**< \brief 2个捕获通道 */
+    AMHW_HC32F460_TIMEA_CLK_DIV1024,        /**< \brief 时钟分频系数 */
+    8,                                      /**< \brief 8个捕获通道 */
     0,                                      /**< \brief 是否使能同步模式
-                                            *          1：使能
-                                            *          0：失能
-                                            */
+                                             *          1：使能
+                                             *          0：失能
+                                             */
 
     &__g_timea1_cap_ioinfo_list[0],
     __hc32f460_plfm_timea1_cap_init,        /**< \brief 平台初始化函数 */
@@ -137,7 +135,7 @@ am_hc32f460_timea_cap_dev_t  __g_timea1_cap_dev;
 am_cap_handle_t am_hc32f460_timea1_cap_inst_init (void)
 {
     return am_hc32f460_timea_cap_init(&__g_timea1_cap_dev,
-                                  &__g_timea1_cap_devinfo);
+                                      &__g_timea1_cap_devinfo);
 }
 
 /** \brief timea1 cap实例解初始化 */
@@ -231,9 +229,9 @@ const am_hc32f460_timea_cap_devinfo_t  __g_timea2_cap_devinfo = {
     AMHW_HC32F460_TIMEA_CLK_DIV256,         /**< \brief 时钟分频系数 */
     2,                                      /**< \brief 2个捕获通道 */
     0,                                      /**< \brief 是否使能同步模式
-                                            *          1：使能
-                                            *          0：失能
-                                            */
+                                             *          1：使能
+                                             *          0：失能
+                                             */
 
     &__g_timea2_cap_ioinfo_list[0],
     __hc32f460_plfm_timea2_cap_init,        /**< \brief 平台初始化函数 */
@@ -247,7 +245,7 @@ am_hc32f460_timea_cap_dev_t  __g_timea2_cap_dev;
 am_cap_handle_t am_hc32f460_timea2_cap_inst_init (void)
 {
     return am_hc32f460_timea_cap_init(&__g_timea2_cap_dev,
-                                  &__g_timea2_cap_devinfo);
+                                      &__g_timea2_cap_devinfo);
 }
 
 /** \brief timea1 cap实例解初始化 */
@@ -341,9 +339,9 @@ const am_hc32f460_timea_cap_devinfo_t  __g_timea3_cap_devinfo = {
     AMHW_HC32F460_TIMEA_CLK_DIV256,         /**< \brief 时钟分频系数 */
     2,                                      /**< \brief 2个捕获通道 */
     0,                                      /**< \brief 是否使能同步模式
-                                            *          1：使能
-                                            *          0：失能
-                                            */
+                                             *          1：使能
+                                             *          0：失能
+                                             */
 
     &__g_timea3_cap_ioinfo_list[0],
     __hc32f460_plfm_timea3_cap_init,        /**< \brief 平台初始化函数 */
@@ -357,7 +355,7 @@ am_hc32f460_timea_cap_dev_t  __g_timea3_cap_dev;
 am_cap_handle_t am_hc32f460_timea3_cap_inst_init (void)
 {
     return am_hc32f460_timea_cap_init(&__g_timea3_cap_dev,
-                                  &__g_timea3_cap_devinfo);
+                                      &__g_timea3_cap_devinfo);
 }
 
 /** \brief timea1 cap实例解初始化 */
@@ -451,9 +449,9 @@ const am_hc32f460_timea_cap_devinfo_t  __g_timea4_cap_devinfo = {
     AMHW_HC32F460_TIMEA_CLK_DIV256,         /**< \brief 时钟分频系数 */
     2,                                      /**< \brief 2个捕获通道 */
     0,                                      /**< \brief 是否使能同步模式
-                                            *          1：使能
-                                            *          0：失能
-                                            */
+                                             *          1：使能
+                                             *          0：失能
+                                             */
 
     &__g_timea4_cap_ioinfo_list[0],
     __hc32f460_plfm_timea4_cap_init,        /**< \brief 平台初始化函数 */
@@ -467,7 +465,7 @@ am_hc32f460_timea_cap_dev_t  __g_timea4_cap_dev;
 am_cap_handle_t am_hc32f460_timea4_cap_inst_init (void)
 {
     return am_hc32f460_timea_cap_init(&__g_timea4_cap_dev,
-                                  &__g_timea4_cap_devinfo);
+                                      &__g_timea4_cap_devinfo);
 }
 
 /** \brief timea4 cap实例解初始化 */
@@ -561,9 +559,9 @@ const am_hc32f460_timea_cap_devinfo_t  __g_timea5_cap_devinfo = {
     AMHW_HC32F460_TIMEA_CLK_DIV256,         /**< \brief 时钟分频系数 */
     2,                                      /**< \brief 2个捕获通道 */
     0,                                      /**< \brief 是否使能同步模式
-                                            *          1：使能
-                                            *          0：失能
-                                            */
+                                             *          1：使能
+                                             *          0：失能
+                                             */
 
     &__g_timea5_cap_ioinfo_list[0],
     __hc32f460_plfm_timea5_cap_init,        /**< \brief 平台初始化函数 */
@@ -577,7 +575,7 @@ am_hc32f460_timea_cap_dev_t  __g_timea5_cap_dev;
 am_cap_handle_t am_hc32f460_timea5_cap_inst_init (void)
 {
     return am_hc32f460_timea_cap_init(&__g_timea5_cap_dev,
-                                  &__g_timea5_cap_devinfo);
+                                      &__g_timea5_cap_devinfo);
 }
 
 /** \brief timea5 cap实例解初始化 */
@@ -671,9 +669,9 @@ const am_hc32f460_timea_cap_devinfo_t  __g_timea6_cap_devinfo = {
     AMHW_HC32F460_TIMEA_CLK_DIV256,         /**< \brief 时钟分频系数 */
     2,                                      /**< \brief 2个捕获通道 */
     0,                                      /**< \brief 是否使能同步模式
-                                            *          1：使能
-                                            *          0：失能
-                                            */
+                                             *          1：使能
+                                             *          0：失能
+                                             */
 
     &__g_timea6_cap_ioinfo_list[0],
     __hc32f460_plfm_timea6_cap_init,        /**< \brief 平台初始化函数 */
@@ -687,7 +685,7 @@ am_hc32f460_timea_cap_dev_t  __g_timea6_cap_dev;
 am_cap_handle_t am_hc32f460_timea6_cap_inst_init (void)
 {
     return am_hc32f460_timea_cap_init(&__g_timea6_cap_dev,
-                                  &__g_timea6_cap_devinfo);
+                                      &__g_timea6_cap_devinfo);
 }
 
 /** \brief timea6 cap实例解初始化 */

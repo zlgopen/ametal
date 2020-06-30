@@ -53,10 +53,10 @@ static int __hc32f460_adtim_cap_disable (void *p_drv, int chan);
 static int __hc32f460_adtim_cap_reset (void *p_drv, int chan);
 
 static int __hc32f460_adtim_cap_count_to_adtime (void         *p_drv,
-                                               int           chan,
-                                               unsigned int  count1,
-                                               unsigned int  count2,
-                                               unsigned int *p_adtime_ns);
+                                                 int           chan,
+                                                 unsigned int  count1,
+                                                 unsigned int  count2,
+                                                 unsigned int *p_adtime_ns);
 
 static void __hc32f460_adtim_cap_irq_handler (void *p_arg);
 
@@ -86,14 +86,14 @@ static const struct am_cap_drv_funcs __g_adtim_cap_drv_funcs = {
 
 /** \brief 配置一个输入捕获通道 */
 static int __hc32f460_adtim_cap_config (void              *p_drv,
-                                      int                chan,
-                                      unsigned int       options,
-                                      am_cap_callback_t  pfn_callback,
-                                      void              *p_arg)
+                                        int                chan,
+                                        unsigned int       options,
+                                        am_cap_callback_t  pfn_callback,
+                                        void              *p_arg)
 {
     am_hc32f460_adtim_cap_dev_t *p_dev      = (am_hc32f460_adtim_cap_dev_t *)p_drv;
     amhw_hc32f460_adtim_t       *p_hw_adtim = (amhw_hc32f460_adtim_t *)
-                                            p_dev->p_devinfo->tim_regbase;
+                                              p_dev->p_devinfo->tim_regbase;
 
     amhw_hc32f460_adtim_timx_chx_port_cfg_t portcfg;
 
@@ -116,17 +116,17 @@ static int __hc32f460_adtim_cap_config (void              *p_drv,
 
     /* 端口配置 */
     amhw_hc32f460_adtim_timxchxportcfg(p_hw_adtim, 
-                                     (amhw_hc32f460_adtim_chx_t)chan,
-                                     &portcfg);
+                                       (amhw_hc32f460_adtim_chx_t)chan,
+                                       &portcfg);
 
     /*  选择上升沿触发 */
     if ((options & AM_CAP_TRIGGER_RISE) == AM_CAP_TRIGGER_RISE) {
         if(chan == 0) {
             amhw_hc32f460_adtim_cfghwcaptureA(p_hw_adtim,
-                                            AMHW_HC32F460_ADTIM_HwTrigCHxARise);
+                                              AMHW_HC32F460_ADTIM_HwTrigCHxARise);
         } else {
             amhw_hc32f460_adtim_cfghwcaptureB(p_hw_adtim,
-                                            AMHW_HC32F460_ADTIM_HwTrigCHxBRise);
+                                              AMHW_HC32F460_ADTIM_HwTrigCHxBRise);
         }
     }
 
@@ -134,10 +134,10 @@ static int __hc32f460_adtim_cap_config (void              *p_drv,
     if ((options & AM_CAP_TRIGGER_FALL) == AM_CAP_TRIGGER_FALL) {
         if(chan == 0) {
             amhw_hc32f460_adtim_cfghwcaptureA(p_hw_adtim,
-                                            AMHW_HC32F460_ADTIM_HwTrigCHxAFall);
+                                              AMHW_HC32F460_ADTIM_HwTrigCHxAFall);
         } else {
             amhw_hc32f460_adtim_cfghwcaptureB(p_hw_adtim,
-                                            AMHW_HC32F460_ADTIM_HwTrigCHxBFall);
+                                              AMHW_HC32F460_ADTIM_HwTrigCHxBFall);
         }
     }
 
@@ -153,9 +153,9 @@ static int __hc32f460_adtim_cap_enable (void *p_drv, int chan)
     int i = 0, enable_flag = 0, tmr6x_gcmx = 0, adtim_period = 0;
 
     am_hc32f460_adtim_cap_dev_t    *p_dev      = (am_hc32f460_adtim_cap_dev_t *)
-                                               p_drv;
+                                                  p_drv;
     amhw_hc32f460_adtim_t          *p_hw_adtim = (amhw_hc32f460_adtim_t *)
-                                               p_dev->p_devinfo->tim_regbase;
+                                                  p_dev->p_devinfo->tim_regbase;
     am_hc32f460_adtim_cap_ioinfo_t *p_ioinfo   = p_dev->p_devinfo->p_ioinfo;
 
     /* 有效通道号范围 0 ~ (channels_num - 1) */
@@ -238,9 +238,9 @@ static int __hc32f460_adtim_cap_disable (void *p_drv, int chan)
 {
     int i = 0, disable_flag = 0;
     am_hc32f460_adtim_cap_dev_t    *p_dev      = (am_hc32f460_adtim_cap_dev_t *)
-                                               p_drv;
+                                                  p_drv;
     amhw_hc32f460_adtim_t          *p_hw_adtim = (amhw_hc32f460_adtim_t *)
-                                               p_dev->p_devinfo->tim_regbase;
+                                                  p_dev->p_devinfo->tim_regbase;
     am_hc32f460_adtim_cap_ioinfo_t *p_ioinfo   = p_dev->p_devinfo->p_ioinfo;
 
     /* 有效通道号范围 0 ~ (channels_num - 1) */
@@ -297,7 +297,7 @@ static int __hc32f460_adtim_cap_reset (void *p_drv, int chan)
 {
     am_hc32f460_adtim_cap_dev_t *p_dev      = (am_hc32f460_adtim_cap_dev_t *)p_drv;
     amhw_hc32f460_adtim_t       *p_hw_adtim = (amhw_hc32f460_adtim_t *)
-                                            p_dev->p_devinfo->tim_regbase;
+                                               p_dev->p_devinfo->tim_regbase;
 
     /* 定时器停止 */
     amhw_hc32f460_adtim_stopcount(p_hw_adtim);
@@ -318,10 +318,10 @@ static int __hc32f460_adtim_cap_reset (void *p_drv, int chan)
   * \brief 转换两次捕获值为时间值
   */
 static int __hc32f460_adtim_cap_count_to_adtime (void         *p_drv,
-                                               int           chan,
-                                               unsigned int  count1,
-                                               unsigned int  count2,
-                                               unsigned int *p_adtime_ns)
+                                                 int           chan,
+                                                 unsigned int  count1,
+                                                 unsigned int  count2,
+                                                 unsigned int *p_adtime_ns)
 {
     am_hc32f460_adtim_cap_dev_t *p_dev      = (am_hc32f460_adtim_cap_dev_t *)p_drv;
 
@@ -359,7 +359,7 @@ static void __hc32f460_adtim_cap_irq_handler (void *p_arg)
 {
     am_hc32f460_adtim_cap_dev_t *p_dev       = (am_hc32f460_adtim_cap_dev_t *)p_arg;
     amhw_hc32f460_adtim_t       *p_hw_adtim  = (amhw_hc32f460_adtim_t *)
-                                             p_dev->p_devinfo->tim_regbase;
+                                                p_dev->p_devinfo->tim_regbase;
 
     am_cap_callback_t callback_func;
     uint32_t          value;
@@ -410,7 +410,7 @@ static void __hc32f460_adtim_cap_irq_handler (void *p_arg)
   * \brief 捕获初始化
   */
 void __hc32f460_adtim_cap_init (amhw_hc32f460_adtim_t       *p_hw_adtim,
-                              am_hc32f460_adtim_cap_dev_t *p_dev)
+                                am_hc32f460_adtim_cap_dev_t *p_dev)
 {
     amhw_hc32f460_adtim_basecnt_cfg_t basecnt;
 

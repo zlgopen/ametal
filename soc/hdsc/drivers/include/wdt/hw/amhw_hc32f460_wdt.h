@@ -51,30 +51,36 @@ extern "C" {
  * @{
  */
 
+/**
+ * \brief WDT 控制寄存器位域结构体
+ */
 typedef struct
 {
-    __IO uint32_t PERI                      : 2;
-    uint32_t RESERVED2                      : 2;
-    __IO uint32_t CKS                       : 4;
-    __IO uint32_t WDPT                      : 4;
-    uint32_t RESERVED12                     : 4;
-    __IO uint32_t SLPOFF                    : 1;
-    uint32_t RESERVED17                     :14;
-    __IO uint32_t ITS                       : 1;
+    __IO uint32_t PERI                      : 2;  /**< \brief 计数周期*/
+    uint32_t RESERVED2                      : 2;  /**< \brief 保留*/
+    __IO uint32_t CKS                       : 4;  /**< \brief 计数时钟*/
+    __IO uint32_t WDPT                      : 4;  /**< \brief 刷新允许区域计数值百分比*/
+    uint32_t RESERVED12                     : 4;  /**< \brief 保留*/
+    __IO uint32_t SLPOFF                    : 1;  /**< \brief WDT在sleep模式下计数许可*/
+    uint32_t RESERVED17                     :14;  /**< \brief 保留*/
+    __IO uint32_t ITS                       : 1;  /**< \brief 刷新错误/溢出中断/复位选择*/
 } stc_wdt_cr_field_t;
 
+/**
+ * \brief WDT 状态寄存器位域结构体
+ */
 typedef struct
 {
-    __IO uint32_t CNT                       :16;
-    __IO uint32_t UDF                       : 1;
-    __IO uint32_t REF                       : 1;
-    uint32_t RESERVED18                     :14;
+    __IO uint32_t CNT                       :16;  /**< \brief 计数值*/
+    __IO uint32_t UDF                       : 1;  /**< \brief 计数下溢标志*/
+    __IO uint32_t REF                       : 1;  /**< \brief 刷新错误标志*/
+    uint32_t RESERVED18                     :14;  /**< \brief 保留*/
 } stc_wdt_sr_field_t;
 
 typedef struct
 {
-    __IO uint32_t RF                        :16;
-    uint32_t RESERVED16                     :16;
+    __IO uint32_t RF                        :16;  /**< \brief 刷新值*/
+    uint32_t RESERVED16                     :16;  /**< \brief 保留*/
 } stc_wdt_rr_field_t;
 
 /**
@@ -83,26 +89,25 @@ typedef struct
 typedef struct amhw_hc32f460_wdt{
     union
     {
-        __IO uint32_t CR;
+        __IO uint32_t CR;         /**< \brief 控制寄存器*/
         stc_wdt_cr_field_t CR_f;
     };
     union
     {
-        __IO uint32_t SR;
+        __IO uint32_t SR;         /**< \brief 状态寄存器*/
         stc_wdt_sr_field_t SR_f;
     };
     union
     {
-        __IO uint32_t RR;
+        __IO uint32_t RR;         /**< \brief 刷新寄存器*/
         stc_wdt_rr_field_t RR_f;
     };
 } amhw_hc32f460_wdt_t;
 
 
-//typedef enum {
+
 #define    AMHW_HC32F460_WDT_TRIGGER_INTERRUPT_REQUEST  (0ul << 31)
 #define    AMHW_HC32F460_WDT_TRIGGER_RESET_REQUEST      (1ul << 31)
-//} amhw_hc32f460_wdt_event_request_type_t;
 
 typedef enum {
     AMHW_HC32F460_WDT_SLEEPOFF = (1 << 16),
@@ -111,42 +116,42 @@ typedef enum {
 
 
 typedef enum {
-    AMHW_HC32F460_WDT_REFRESH_RANGE_100              = 0 << 8,  /* 100% */
-    AMHW_HC32F460_WDT_REFRESH_RANGE_0_25             = 1 << 8,  /* 0%~25% */
-    AMHW_HC32F460_WDT_REFRESH_RANGE_25_50            = 2 << 8,  /* 25%~50% */
-    AMHW_HC32F460_WDT_REFRESH_RANGE_0_50             = 3 << 8,  /* 0%~50% */
-    AMHW_HC32F460_WDT_REFRESH_RANGE_50_75            = 4 << 8,  /* 50%~75% */
-    AMHW_HC32F460_WDT_REFRESH_RANGE_0_25_AND_50_75   = 5 << 8,  /* 0%~25% & 50%~75% */
-    AMHW_HC32F460_WDT_REFRESH_RANGE_25_75            = 6 << 8,  /* 25%~75% */
-    AMHW_HC32F460_WDT_REFRESH_RANGE_0_75             = 7 << 8,  /* 0%~75% */
-    AMHW_HC32F460_WDT_REFRESH_RANGE_75_100           = 8 << 8,  /* 75%~100% */
-    AMHW_HC32F460_WDT_REFRESH_RANGE_0_25_AND_75_100  = 9 << 8,  /* 0%~25% & 75%~100% */
-    AMHW_HC32F460_WDT_REFRESH_RANGE_25_50_AND_75_100 = 10 << 8, /* 25%~50% & 75%~100% */
-    AMHW_HC32F460_WDT_REFRESH_RANGE_0_50_AND_75_100  = 11 << 8, /* 0%~50% & 75%~100% */
-    AMHW_HC32F460_WDT_REFRESH_RANGE_50_100           = 12 << 8, /* 50%~100% */
-    AMHW_HC32F460_WDT_REFRESH_RANGE_0_25_AND_50_100  = 13 << 8, /* 0%~25% & 50%~100% */
-    AMHW_HC32F460_WDT_REFRESH_RANGE_25_100           = 14 << 8, /* 25%~100% */
-    AMHW_HC32F460_WDT_REFRESH_RANGE_0_100            = 15 << 8, /* 0%~100% */
+    AMHW_HC32F460_WDT_REFRESH_RANGE_100              = 0 << 8,  /**< \brief 100% */
+    AMHW_HC32F460_WDT_REFRESH_RANGE_0_25             = 1 << 8,  /**< \brief 0%~25% */
+    AMHW_HC32F460_WDT_REFRESH_RANGE_25_50            = 2 << 8,  /**< \brief 25%~50% */
+    AMHW_HC32F460_WDT_REFRESH_RANGE_0_50             = 3 << 8,  /**< \brief 0%~50% */
+    AMHW_HC32F460_WDT_REFRESH_RANGE_50_75            = 4 << 8,  /**< \brief 50%~75% */
+    AMHW_HC32F460_WDT_REFRESH_RANGE_0_25_AND_50_75   = 5 << 8,  /**< \brief 0%~25% & 50%~75% */
+    AMHW_HC32F460_WDT_REFRESH_RANGE_25_75            = 6 << 8,  /**< \brief 25%~75% */
+    AMHW_HC32F460_WDT_REFRESH_RANGE_0_75             = 7 << 8,  /**< \brief 0%~75% */
+    AMHW_HC32F460_WDT_REFRESH_RANGE_75_100           = 8 << 8,  /**< \brief 75%~100% */
+    AMHW_HC32F460_WDT_REFRESH_RANGE_0_25_AND_75_100  = 9 << 8,  /**< \brief 0%~25% & 75%~100% */
+    AMHW_HC32F460_WDT_REFRESH_RANGE_25_50_AND_75_100 = 10 << 8, /**< \brief 25%~50% & 75%~100% */
+    AMHW_HC32F460_WDT_REFRESH_RANGE_0_50_AND_75_100  = 11 << 8, /**< \brief 0%~50% & 75%~100% */
+    AMHW_HC32F460_WDT_REFRESH_RANGE_50_100           = 12 << 8, /**< \brief 50%~100% */
+    AMHW_HC32F460_WDT_REFRESH_RANGE_0_25_AND_50_100  = 13 << 8, /**< \brief 0%~25% & 50%~100% */
+    AMHW_HC32F460_WDT_REFRESH_RANGE_25_100           = 14 << 8, /**< \brief 25%~100% */
+    AMHW_HC32F460_WDT_REFRESH_RANGE_0_100            = 15 << 8, /**< \brief 0%~100% */
 } amhw_hc32f460_wdt_refresh_range_t;
 
 
 typedef enum {
-    AMHW_HC32F460_WDT_COUNT_CLK_DIV_4    = 2,   /* PCLK3/4 */
-    AMHW_HC32F460_WDT_COUNT_CLK_DIV_64   = 6,   /* PCLK3/64 */
-    AMHW_HC32F460_WDT_COUNT_CLK_DIV_128  = 7,   /* PCLK3/128 */
-    AMHW_HC32F460_WDT_COUNT_CLK_DIV_256  = 8,   /* PCLK3/256 */
-    AMHW_HC32F460_WDT_COUNT_CLK_DIV_512  = 9,   /* PCLK3/512 */
-    AMHW_HC32F460_WDT_COUNT_CLK_DIV_1024 = 0xA, /* PCLK3/1024 */
-    AMHW_HC32F460_WDT_COUNT_CLK_DIV_2048 = 0xB, /* PCLK3/2048 */
-    AMHW_HC32F460_WDT_COUNT_CLK_DIV_8192 = 0xD, /* PCLK3/8192 */
+    AMHW_HC32F460_WDT_COUNT_CLK_DIV_4    = 2,   /**< \brief PCLK3/4 */
+    AMHW_HC32F460_WDT_COUNT_CLK_DIV_64   = 6,   /**< \brief PCLK3/64 */
+    AMHW_HC32F460_WDT_COUNT_CLK_DIV_128  = 7,   /**< \brief PCLK3/128 */
+    AMHW_HC32F460_WDT_COUNT_CLK_DIV_256  = 8,   /**< \brief PCLK3/256 */
+    AMHW_HC32F460_WDT_COUNT_CLK_DIV_512  = 9,   /**< \brief PCLK3/512 */
+    AMHW_HC32F460_WDT_COUNT_CLK_DIV_1024 = 0xA, /**< \brief PCLK3/1024 */
+    AMHW_HC32F460_WDT_COUNT_CLK_DIV_2048 = 0xB, /**< \brief PCLK3/2048 */
+    AMHW_HC32F460_WDT_COUNT_CLK_DIV_8192 = 0xD, /**< \brief PCLK3/8192 */
 } amhw_hc32f460_wdt_count_clk_div_t;
 
 
 typedef enum {
-    AMHW_HC32F460_WDT_COUNT_PERIOD_256    = 0,   /* 256 cycle */
-    AMHW_HC32F460_WDT_COUNT_PERIOD_4096   = 1,   /* 4096 cycle */
-    AMHW_HC32F460_WDT_COUNT_PERIOD_16384  = 2,   /* 16384 cycle */
-    AMHW_HC32F460_WDT_COUNT_PERIOD_65536  = 3,   /* 65536 cycle */
+    AMHW_HC32F460_WDT_COUNT_PERIOD_256    = 0,   /**< \brief 256 cycle */
+    AMHW_HC32F460_WDT_COUNT_PERIOD_4096   = 1,   /**< \brief 4096 cycle */
+    AMHW_HC32F460_WDT_COUNT_PERIOD_16384  = 2,   /**< \brief 16384 cycle */
+    AMHW_HC32F460_WDT_COUNT_PERIOD_65536  = 3,   /**< \brief 65536 cycle */
 } amhw_hc32f460_wdt_count_period_t;
 
 
@@ -179,8 +184,8 @@ uint16_t amhw_hc32f460_wdt_count_value_get (amhw_hc32f460_wdt_t  *p_hw_wdt)
 }
 
 typedef enum {
-    AMHW_HC32F460_WDT_STATUS_REF   = 1 << 17,   /* 刷新错误标志 */
-    AMHW_HC32F460_WDT_STATUS_UDF   = 1 << 16,   /* 计数下溢标志 */
+    AMHW_HC32F460_WDT_STATUS_REF   = 1 << 17,   /**< \brief 刷新错误标志 */
+    AMHW_HC32F460_WDT_STATUS_UDF   = 1 << 16,   /**< \brief 计数下溢标志 */
 } amhw_hc32f460_wdt_status_flag_t;
 
 /**
@@ -216,8 +221,8 @@ void amhw_hc32f460_wdt_status_clr (amhw_hc32f460_wdt_t             *p_hw_wdt,
 
 
 typedef enum {
-    AMHW_HC32F460_WDT_REFRESH_START = 0x0123, /* 刷新计数器要写入的第一个值 */
-    AMHW_HC32F460_WDT_REFRESH_END   = 0x3210, /* 刷新计数器要写入的第二个值 */
+    AMHW_HC32F460_WDT_REFRESH_START = 0x0123, /**< \brief 刷新计数器要写入的第一个值 */
+    AMHW_HC32F460_WDT_REFRESH_END   = 0x3210, /**< \brief 刷新计数器要写入的第二个值 */
 } amhw_hc32f460_wdt_refresh_set_t;
 
 /**

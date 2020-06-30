@@ -53,7 +53,7 @@ void __hc32f460_plfm_adtim61_timing_deinit (void)
 /** \brief ADTIM6 设备信息 */
 const am_hc32f460_adtim_timing_devinfo_t  __g_adtim61_timing_devinfo = {
     HC32F460_TMR61_BASE,                    /**< \brief ADTIM6寄存器块的基地址 */
-    INUM_TIMER6_1,                           /**< \brief ADTIM6中断编号 */
+    INUM_TIMER6_1,                          /**< \brief ADTIM6中断编号 */
     __hc32f460_plfm_adtim61_timing_init,    /**< \brief 平台初始化函数 */
     __hc32f460_plfm_adtim61_timing_deinit   /**< \brief 平台解析初始化函数 */
 };
@@ -65,7 +65,7 @@ am_hc32f460_adtim_timing_dev_t __g_adtim61_timing_dev;
 am_timer_handle_t am_hc32f460_tim61_timing_inst_init (void)
 {
     return am_hc32f460_adtim_timing_init(&__g_adtim61_timing_dev,
-                                       &__g_adtim61_timing_devinfo);
+                                         &__g_adtim61_timing_devinfo);
 }
 
 /** \brief ADTIM6 Timing实例解初始化 */
@@ -92,7 +92,7 @@ void __hc32f460_plfm_adtim62_timing_deinit (void)
 /** \brief ADTIM6 设备信息 */
 const am_hc32f460_adtim_timing_devinfo_t  __g_adtim62_timing_devinfo = {
     HC32F460_TMR62_BASE,                    /**< \brief ADTIM6寄存器块的基地址 */
-    INUM_TIMER6_2,                           /**< \brief ADTIM6中断编号 */
+    INUM_TIMER6_2,                          /**< \brief ADTIM6中断编号 */
     __hc32f460_plfm_adtim62_timing_init,    /**< \brief 平台初始化函数 */
     __hc32f460_plfm_adtim62_timing_deinit   /**< \brief 平台解析初始化函数 */
 };
@@ -104,7 +104,7 @@ am_hc32f460_adtim_timing_dev_t __g_adtim62_timing_dev;
 am_timer_handle_t am_hc32f460_tim62_timing_inst_init (void)
 {
     return am_hc32f460_adtim_timing_init(&__g_adtim62_timing_dev,
-                                       &__g_adtim62_timing_devinfo);
+                                         &__g_adtim62_timing_devinfo);
 }
 
 /** \brief ADTIM6 Timing实例解初始化 */
@@ -131,7 +131,7 @@ void __hc32f460_plfm_adtim63_timing_deinit (void)
 /** \brief ADTIM6 设备信息 */
 const am_hc32f460_adtim_timing_devinfo_t  __g_adtim63_timing_devinfo = {
     HC32F460_TMR63_BASE,                    /**< \brief ADTIM6寄存器块的基地址 */
-    INUM_TIMER6_3,                           /**< \brief ADTIM6中断编号 */
+    INUM_TIMER6_3,                          /**< \brief ADTIM6中断编号 */
     __hc32f460_plfm_adtim63_timing_init,    /**< \brief 平台初始化函数 */
     __hc32f460_plfm_adtim63_timing_deinit   /**< \brief 平台解析初始化函数 */
 };
@@ -143,7 +143,7 @@ am_hc32f460_adtim_timing_dev_t __g_adtim63_timing_dev;
 am_timer_handle_t am_hc32f460_tim63_timing_inst_init (void)
 {
     return am_hc32f460_adtim_timing_init(&__g_adtim63_timing_dev,
-                                       &__g_adtim63_timing_devinfo);
+                                         &__g_adtim63_timing_devinfo);
 }
 
 /** \brief ADTIM6 Timing实例解初始化 */
