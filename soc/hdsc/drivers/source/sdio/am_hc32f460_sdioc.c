@@ -66,7 +66,8 @@ void hc32f460_sdioc_irq_handle (void *p_arg)
             p_dev->int_normal_status = 0;
             am_wait_done(&p_dev->wait);
         }
-        amhw_hc32f460_sdioc_normal_intstat_clr(p_hw_sdioc, AMHW_HC32F460_SDIOC_NORMAL_INT_CC);
+        amhw_hc32f460_sdioc_normal_intstat_clr(p_hw_sdioc,
+                                               AMHW_HC32F460_SDIOC_NORMAL_INT_CC);
     }
 
     if (AMHW_HC32F460_SDIOC_NORMAL_INT_TC & status_normal) {
@@ -74,7 +75,8 @@ void hc32f460_sdioc_irq_handle (void *p_arg)
             p_dev->int_normal_status = 0;
             am_wait_done(&p_dev->wait);
         }
-        amhw_hc32f460_sdioc_normal_intstat_clr(p_hw_sdioc, AMHW_HC32F460_SDIOC_NORMAL_INT_TC);
+        amhw_hc32f460_sdioc_normal_intstat_clr(p_hw_sdioc,
+                                               AMHW_HC32F460_SDIOC_NORMAL_INT_TC);
     }
 }
 
@@ -183,7 +185,8 @@ static int __sdio_data_send (am_hc32f460_sdioc_dev_t *p_dev,
 
     amhw_hc32f460_sdioc_blksize_set(p_hw_sdioc, p_trans->blk_size);
 
-    amhw_hc32f460_sdioc_transmode_dir_set (p_hw_sdioc, AMHW_HC32F460_SDIOC_TRANSMODE_DIR_WRITE);
+    amhw_hc32f460_sdioc_transmode_dir_set (p_hw_sdioc,
+                                           AMHW_HC32F460_SDIOC_TRANSMODE_DIR_WRITE);
 
     p_dev->int_normal_status = AMHW_HC32F460_SDIOC_NORMAL_INT_TC;
 
@@ -192,13 +195,14 @@ static int __sdio_data_send (am_hc32f460_sdioc_dev_t *p_dev,
         if (am_sdio_timeout(&timeout)) {
             return -AM_ETIME;
         }
-    } while(!amhw_hc32f460_sdioc_normal_intstat_get(p_hw_sdioc, AMHW_HC32F460_SDIOC_NORMAL_INT_BWR));
+    } while(!amhw_hc32f460_sdioc_normal_intstat_get(p_hw_sdioc,
+                                                    AMHW_HC32F460_SDIOC_NORMAL_INT_BWR));
 
     uint32_t blk_num = p_trans->nblock;
 
     while(blk_num) {
         if (amhw_hc32f460_sdioc_normal_intstat_get(p_hw_sdioc, AMHW_HC32F460_SDIOC_NORMAL_INT_BWR) &&
-           amhw_hc32f460_sdioc_pstat_get(p_hw_sdioc, AMHW_HC32F460_SDIOC_PSTAT_BWE)){
+            amhw_hc32f460_sdioc_pstat_get(p_hw_sdioc, AMHW_HC32F460_SDIOC_PSTAT_BWE)){
             for(i = 0; i < p_trans->blk_size; i += 4) {
                 amhw_hc32f460_sdioc_data_write(p_hw_sdioc, *p_data++);
             }

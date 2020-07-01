@@ -71,44 +71,6 @@ am_sdcard_handle_t am_sdcard1_inst_init (void)
 
 }
 
-
-
-///**
-// * \brief SDCARD 设备信息实例
-// */
-//static const am_sdcard_devinfo_t __g_sdcard2_info = {
-//
-//        /** \brief SDIO SD 4线模式 */
-//        AM_SDIO_SD_4B_M,
-//
-//        /** \brief SDIO速率*/
-//        1000000,
-//
-//        /** \brief SDIO CRC使能标志*/
-//        AM_TRUE,
-//
-//        /** \brief SD Card支持的ORC（电压范围） */
-//        (AM_SD_OCR_VDD_27_28 | AM_SD_OCR_VDD_28_29 | AM_SD_OCR_VDD_29_30 |
-//         AM_SD_OCR_VDD_30_31 | AM_SD_OCR_VDD_31_32 | AM_SD_OCR_VDD_32_33 |
-//         AM_SD_OCR_VDD_33_34 | AM_SD_OCR_VDD_34_35 | AM_SD_OCR_VDD_35_36),
-//};
-//
-///**
-// * \brief SDCARD 设备实例
-// */
-//static am_sdcard_dev_t    __g_sdcard2_dev;
-//
-///* 实例初始化 */
-//am_sdcard_handle_t am_sdcard2_inst_init (void)
-//{
-//
-//    return  am_sdcard_init(&__g_sdcard2_dev,
-//                           &__g_sdcard2_info,
-//                           am_hc32f460_sdioc2_inst_init());
-//
-//}
-
-
 /**
  * @}
  */

@@ -63,23 +63,26 @@ extern "C" {
  * \brief HASH - 寄存器组
  */
 
+/**
+ * \brief HASH控制寄存器位域结构体
+ */
 typedef struct
 {
-    __IO uint32_t START                     : 1;
-    __IO uint32_t FST_GRP                   : 1;
-    uint32_t RESERVED2                      :30;
+    __IO uint32_t START                     : 1;  /**< \brief 启动*/
+    __IO uint32_t FST_GRP                   : 1;  /**< \brief 消息分组的第一组*/
+    uint32_t RESERVED2                      :30;  /**< \brief 保留 */
 } stc_hash_cr_field_t;
 
 typedef struct amhw_hc32f460_hash{
     union
     {
-        __IO uint32_t CR;
+        __IO uint32_t CR;         /**< \brief HASH控制寄存器 */
         stc_hash_cr_field_t CR_f;
     };
-    uint8_t RESERVED1[12];
-    __IO uint32_t HR[8];
-    uint8_t RESERVED9[16];
-    __IO uint32_t DR[16];
+    uint8_t RESERVED1[12];        /**< \brief 保留 */
+    __IO uint32_t HR[8];          /**< \brief HASH摘要寄存器 */
+    uint8_t RESERVED9[16];        /**< \brief 保留 */
+    __IO uint32_t DR[16];         /**< \brief HASH数据寄存器 */
 } amhw_hc32f460_hash_t;
 
 /* 数据组的最大字节数 */

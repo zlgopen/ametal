@@ -59,8 +59,8 @@ static am_const struct am_i2c_slv_drv_funcs __g_i2c_slv_drv_funcs = {
 static int __i2c_slv_hard_init (am_hc32f460_i2c_slv_dev_t *p_dev)
 {
     amhw_hc32f460_i2c_t *p_hw_i2c  = NULL;
-    stc_i2c_init_t stcI2cInit;
-    uint32_t pclk3Freq;
+    stc_i2c_init_t       stcI2cInit;
+    uint32_t             pclk3Freq;
 
     if (p_dev == NULL) {
         return -AM_EINVAL;
@@ -68,14 +68,6 @@ static int __i2c_slv_hard_init (am_hc32f460_i2c_slv_dev_t *p_dev)
 
     p_hw_i2c = (amhw_hc32f460_i2c_t *) (p_dev->p_devinfo->i2c_regbase);
 
-//    /* 清空I2C控制寄存器 */
-//    p_hw_i2c->i2c_cr = 0;
-
-//    /* 从机模式，开启应答 */
-//    amhw_hc32f460_i2c_cr_set(p_hw_i2c, AMHW_HC32_I2C_REPLY_ENABLE);
-
-//    /* 禁用波特率计数器 */
-//    amhw_hc32f460_i2c_tm_disable(p_hw_i2c);
     amhw_hc32f460_i2c_deinit(p_hw_i2c);
     
     /* Get system clock frequency */
@@ -96,10 +88,10 @@ static int __i2c_slv_hard_init (am_hc32f460_i2c_slv_dev_t *p_dev)
  */
 static int __i2c_slv_setup (void *p_drv, am_i2c_slv_device_t *p_i2c_slv_dev)
 {
-    int                     i;
-    uint8_t                 zlg_i2c_slv_dev_num ;
-    am_hc32f460_i2c_slv_dev_t   *p_dev      = NULL;
-    amhw_hc32f460_i2c_t      *p_hw_i2c   = NULL;
+    int                        i;
+    uint8_t                    zlg_i2c_slv_dev_num ;
+    am_hc32f460_i2c_slv_dev_t *p_dev      = NULL;
+    amhw_hc32f460_i2c_t       *p_hw_i2c   = NULL;
 
     
     if ((p_drv == NULL) || (p_i2c_slv_dev == NULL)) {
@@ -124,17 +116,6 @@ static int __i2c_slv_setup (void *p_drv, am_i2c_slv_device_t *p_i2c_slv_dev)
         return -AM_EAGAIN;
     }
 
-    /* 关闭I2C控制器，配置参数 */
-//    amhw_hc32f460_i2c_disable (p_hw_i2c);
-
-
-//    /* 判断是否 需要响应 广播地址 */
-//    if ( p_i2c_slv_dev->dev_flags & AM_I2C_SLV_GEN_CALL_ACK) {
-//        amhw_hc32f460_i2c_gen_call_ack(p_hw_i2c);
-//    } else {
-//        amhw_hc32f460_i2c_gen_call_nack(p_hw_i2c);
-//    }
-
     /**
      * \brief 根据  i 存放从机设备地址。
      *         i = 0 ,存放到第1个从地址
@@ -142,16 +123,14 @@ static int __i2c_slv_setup (void *p_drv, am_i2c_slv_device_t *p_i2c_slv_dev)
      *
      * \note ZLG只有一个从机地址 ,直接存放即可 。
      */
-    amhw_hc32f460_i2c_slave_addr0_config(p_hw_i2c, I2C_ENABLE, Adr7bit, p_i2c_slv_dev->dev_addr);
-
-//    amhw_hc32f460_i2c_enable(p_hw_i2c);
+    amhw_hc32f460_i2c_slave_addr0_config(p_hw_i2c,
+                                         I2C_ENABLE,
+                                         Adr7bit,
+                                         p_i2c_slv_dev->dev_addr);
     
     /* Config slave address match interrupt function*/
     amhw_hc32f460_i2c_intr_enable(p_hw_i2c, I2C_CR2_SLADDR0EN);
     am_int_enable(p_dev->p_devinfo->inum);
-//    am_int_enable(1);
-//    am_int_enable(2);
-//    am_int_enable(3);
 
     return AM_OK;
 }
@@ -162,7 +141,7 @@ static int __i2c_slv_setup (void *p_drv, am_i2c_slv_device_t *p_i2c_slv_dev)
 static int __i2c_slv_shutdown (void *p_drv, am_i2c_slv_device_t *p_i2c_slv_dev)
 {
     am_hc32f460_i2c_slv_dev_t *p_dev    = (am_hc32f460_i2c_slv_dev_t *)p_drv;
-    amhw_hc32f460_i2c_t   *p_hw_i2c_slv = NULL;
+    amhw_hc32f460_i2c_t       *p_hw_i2c_slv = NULL;
 
     if ( (p_dev              == NULL) ||
          (p_i2c_slv_dev      == NULL)) {
@@ -214,7 +193,7 @@ static int __i2c_slv_num_get (void *p_drv)
 static void __i2c_slv_timing_callback (void *p_arg)
 {
     am_hc32f460_i2c_slv_dev_t  *p_dev     = ( am_hc32f460_i2c_slv_dev_t *) p_arg;
-    amhw_hc32f460_i2c_t     *p_hw_i2c  = NULL;
+    amhw_hc32f460_i2c_t        *p_hw_i2c  = NULL;
     p_hw_i2c  = (amhw_hc32f460_i2c_t *) (p_dev->p_devinfo->i2c_regbase);
 
     /* 平台初始化之后将 寄存器的值复位 */
@@ -232,8 +211,10 @@ static void __i2c_slv_timing_callback (void *p_arg)
         amhw_hc32f460_i2c_gen_call_nack(p_hw_i2c);
     }
 
-//    amhw_hc32f460_i2c_slave_addr_set(p_hw_i2c, p_dev->p_i2c_slv_dev[0]->dev_addr);
-    amhw_hc32f460_i2c_slave_addr0_config(p_hw_i2c, I2C_ENABLE, Adr7bit, p_dev->p_i2c_slv_dev[0]->dev_addr);
+    amhw_hc32f460_i2c_slave_addr0_config(p_hw_i2c,
+                                         I2C_ENABLE,
+                                         Adr7bit,
+                                         p_dev->p_i2c_slv_dev[0]->dev_addr);
 
     amhw_hc32f460_i2c_enable(p_hw_i2c);
 
@@ -257,12 +238,12 @@ uint8_t u8FinishFlag = 0u;
  */
 static void __i2c_slv_irq_handler (void *p_arg)
 {
-    static uint8_t           rx_len = 0;
-    uint8_t                  rx_data;
-    uint8_t                  tx_data;
+    static uint8_t             rx_len = 0;
+    uint8_t                    rx_data;
+    uint8_t                    tx_data;
     amhw_hc32f460_i2c_t       *p_hw_i2c_slv;
-    am_hc32f460_i2c_slv_dev_t    *p_dev          = (am_hc32f460_i2c_slv_dev_t *)p_arg;
-    am_i2c_slv_device_t     *p_i2c_slv_dev  = p_dev->p_i2c_slv_dev[0];
+    am_hc32f460_i2c_slv_dev_t *p_dev         = (am_hc32f460_i2c_slv_dev_t *)p_arg;
+    am_i2c_slv_device_t       *p_i2c_slv_dev = p_dev->p_i2c_slv_dev[0];
 
     p_hw_i2c_slv = (amhw_hc32f460_i2c_t *)p_dev->p_devinfo->i2c_regbase;
 
@@ -280,7 +261,8 @@ static void __i2c_slv_irq_handler (void *p_arg)
        if(I2C_SET == amhw_hc32f460_i2c_get_status(p_hw_i2c_slv, I2C_SR_TRA))
        {
            /* Config tx buffer empty interrupt function disable*/
-           amhw_hc32f460_i2c_intr_disable(p_hw_i2c_slv, I2C_CR2_TEMPTYIE | I2C_CR2_TENDIE);
+           amhw_hc32f460_i2c_intr_disable(p_hw_i2c_slv,
+                                          I2C_CR2_TEMPTYIE | I2C_CR2_TENDIE);
 
            /* Read DRR register to release SCL*/
            amhw_hc32f460_i2c_dat_read(p_hw_i2c_slv);
@@ -296,7 +278,12 @@ static void __i2c_slv_irq_handler (void *p_arg)
     if(I2C_SET == amhw_hc32f460_i2c_get_status(p_hw_i2c_slv, I2C_SR_STOPF))
     {
        /* Disable all interrupt enable flag except SLADDR0IE*/
-       amhw_hc32f460_i2c_intr_disable(p_hw_i2c_slv, I2C_CR2_TEMPTYIE | I2C_CR2_TENDIE |  I2C_CR2_RFULLIE | I2C_CR2_STOPIE | I2C_CR2_NACKIE);
+       amhw_hc32f460_i2c_intr_disable(p_hw_i2c_slv,
+                                      I2C_CR2_TEMPTYIE |
+                                      I2C_CR2_TENDIE   |
+                                      I2C_CR2_RFULLIE  |
+                                      I2C_CR2_STOPIE   |
+                                      I2C_CR2_NACKIE);
 
        /* Clear STOPF flag */
        amhw_hc32f460_i2c_clear_status(p_hw_i2c_slv, I2C_CLR_STOPFCLR);
@@ -313,7 +300,6 @@ static void __i2c_slv_irq_handler (void *p_arg)
         // TODO: I2C_ReadData
 #if 1       
         rx_data = amhw_hc32f460_i2c_dat_read(p_hw_i2c_slv);//接收数据
-//        if(rx_len) {    /* 忽略接收的第一个数据(从机设备子地址) */
             /* 接受回调 */
             if (p_dev->is_gen_call == AM_TRUE) {
                 /** 如果是广播呼叫 */
@@ -325,7 +311,6 @@ static void __i2c_slv_irq_handler (void *p_arg)
                     p_i2c_slv_dev->p_cb_funs->pfn_rxbyte_put(p_i2c_slv_dev->p_arg, rx_data);
                 }
             }
-//        }
         rx_len++;
 #endif        
     }
@@ -373,9 +358,9 @@ static uint8_t           rx_len = 0;
 
 void I2C_EEI_Callback(void *p_arg)
 {
-    uint8_t                  tx_data = 0;
+    uint8_t                    tx_data = 0;
     amhw_hc32f460_i2c_t       *p_hw_i2c_slv;
-    am_hc32f460_i2c_slv_dev_t    *p_dev          = (am_hc32f460_i2c_slv_dev_t *)p_arg;
+    am_hc32f460_i2c_slv_dev_t *p_dev = (am_hc32f460_i2c_slv_dev_t *)p_arg;
     p_hw_i2c_slv = (amhw_hc32f460_i2c_t *)p_dev->p_devinfo->i2c_regbase;
     am_i2c_slv_device_t     *p_i2c_slv_dev  = p_dev->p_i2c_slv_dev[0];
 
@@ -387,14 +372,14 @@ void I2C_EEI_Callback(void *p_arg)
        if(I2C_SET == amhw_hc32f460_i2c_get_status(p_hw_i2c_slv, I2C_SR_TRA))
        {
            /* Config tx buffer empty interrupt function*/
-           amhw_hc32f460_i2c_intr_enable(p_hw_i2c_slv, I2C_CR2_TEMPTYIE | I2C_CR2_TENDIE);
+           amhw_hc32f460_i2c_intr_enable(p_hw_i2c_slv,
+                                         I2C_CR2_TEMPTYIE | I2C_CR2_TENDIE);
            /* Write the first data to DTR immediately */
            // TODO: I2C_writeData           
 
            if (NULL != p_i2c_slv_dev->p_cb_funs->pfn_txbyte_get) {
                p_i2c_slv_dev->p_cb_funs->pfn_txbyte_get(p_i2c_slv_dev->p_arg, &tx_data);               
                amhw_hc32f460_i2c_dat_write(p_hw_i2c_slv,tx_data);
-//               AM_DBG_INFO("I2C_EEI_Callback pfn_txbyte_get tx_data = %d\r\n", tx_data);
            }
        }
        else
@@ -421,7 +406,8 @@ void I2C_EEI_Callback(void *p_arg)
        if(I2C_SET == amhw_hc32f460_i2c_get_status(p_hw_i2c_slv, I2C_SR_TRA))
        {
            /* Config tx buffer empty interrupt function disable*/
-           amhw_hc32f460_i2c_intr_disable(p_hw_i2c_slv, I2C_CR2_TEMPTYIE | I2C_CR2_TENDIE);
+           amhw_hc32f460_i2c_intr_disable(p_hw_i2c_slv,
+                                          I2C_CR2_TEMPTYIE | I2C_CR2_TENDIE);
 
            /* Read DRR register to release SCL*/
            amhw_hc32f460_i2c_dat_read(p_hw_i2c_slv);
@@ -437,7 +423,12 @@ void I2C_EEI_Callback(void *p_arg)
     if(I2C_SET == amhw_hc32f460_i2c_get_status(p_hw_i2c_slv, I2C_SR_STOPF))
     {
        /* Disable all interrupt enable flag except SLADDR0IE*/
-       amhw_hc32f460_i2c_intr_disable(p_hw_i2c_slv, I2C_CR2_TEMPTYIE | I2C_CR2_TENDIE |  I2C_CR2_RFULLIE | I2C_CR2_STOPIE | I2C_CR2_NACKIE);
+       amhw_hc32f460_i2c_intr_disable(p_hw_i2c_slv,
+                                      I2C_CR2_TEMPTYIE |
+                                      I2C_CR2_TENDIE   |
+                                      I2C_CR2_RFULLIE  |
+                                      I2C_CR2_STOPIE   |
+                                      I2C_CR2_NACKIE);
 
        /* Clear STOPF flag */
        amhw_hc32f460_i2c_clear_status(p_hw_i2c_slv, I2C_CLR_STOPFCLR);
@@ -462,7 +453,6 @@ void I2C_RXI_Callback(void *p_arg)
     {
         // TODO: I2C_ReadData
         rx_data = amhw_hc32f460_i2c_dat_read(p_hw_i2c_slv);//接收数据
-//        if(rx_len) {    /* 忽略接收的第一个数据(从机设备子地址) */
             /* 接受回调 */
             if (p_dev->is_gen_call == AM_TRUE) {
                 /** 如果是广播呼叫 */
@@ -475,7 +465,6 @@ void I2C_RXI_Callback(void *p_arg)
 //                    AM_DBG_INFO("I2C_RXI_Callback pfn_rxbyte_put rx_data = %d\r\n", rx_data);
                 }
             }
-//        }
         rx_len++;
     }
 }
@@ -494,7 +483,6 @@ void I2C_TEI_Callback(void *p_arg)
         if (NULL != p_i2c_slv_dev->p_cb_funs->pfn_txbyte_get) {
             p_i2c_slv_dev->p_cb_funs->pfn_txbyte_get(p_i2c_slv_dev->p_arg, &tx_data);            
             amhw_hc32f460_i2c_dat_write(p_hw_i2c_slv,tx_data);    
-//            AM_DBG_INFO("I2C_TEI_Callback pfn_txbyte_get tx_data = %d\r\n", tx_data);
         }
     }
 }
@@ -531,25 +519,32 @@ am_i2c_slv_handle_t am_hc32f460_i2c_slv_init (
     __i2c_slv_hard_init(p_dev);
 
     /* 连接中断 */
-//    am_int_connect(p_dev->p_devinfo->inum,
-//                   __i2c_slv_irq_handler,
-//                   (void *)p_dev);
-
-    /* 连接中断 */
     am_int_connect(p_dev->p_devinfo->inum, IRQ141_Handler, NULL);
     if (HC32F460_I2C1_BASE == p_dev->p_devinfo->i2c_regbase)
     {
-        amhw_hc32f460_intc_int_vssel_bits_set(p_dev->p_devinfo->inum, I2C1_RXI | I2C1_TXI | I2C1_TEI | I2C1_EEI);
+        amhw_hc32f460_intc_int_vssel_bits_set(p_dev->p_devinfo->inum,
+                                              I2C1_RXI |
+                                              I2C1_TXI |
+                                              I2C1_TEI |
+                                              I2C1_EEI);
     }
 
     if (HC32F460_I2C2_BASE == p_dev->p_devinfo->i2c_regbase)
     {
-        amhw_hc32f460_intc_int_vssel_bits_set(p_dev->p_devinfo->inum, I2C2_RXI | I2C2_TXI | I2C2_TEI | I2C2_EEI);
+        amhw_hc32f460_intc_int_vssel_bits_set(p_dev->p_devinfo->inum,
+                                              I2C2_RXI |
+                                              I2C2_TXI |
+                                              I2C2_TEI |
+                                              I2C2_EEI);
     }
     
     if (HC32F460_I2C3_BASE == p_dev->p_devinfo->i2c_regbase)
     {
-        amhw_hc32f460_intc_int_vssel_bits_set(p_dev->p_devinfo->inum, I2C3_RXI | I2C3_TXI | I2C3_TEI | I2C3_EEI);
+        amhw_hc32f460_intc_int_vssel_bits_set(p_dev->p_devinfo->inum,
+                                              I2C3_RXI |
+                                              I2C3_TXI |
+                                              I2C3_TEI |
+                                              I2C3_EEI);
     } 
 #if 0
 #define INT_I2C1_EE1            423u

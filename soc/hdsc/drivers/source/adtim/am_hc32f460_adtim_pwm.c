@@ -58,7 +58,7 @@ static int __adtim_pwm_config (void          *p_drv,
 {
     am_hc32f460_adtim_pwm_dev_t *p_dev      = (am_hc32f460_adtim_pwm_dev_t *)p_drv;
     amhw_hc32f460_adtim_t       *p_hw_adtim = (amhw_hc32f460_adtim_t *)
-                                            p_dev->p_devinfo->adtim_regbase;
+                                               p_dev->p_devinfo->adtim_regbase;
 
     amhw_hc32f460_adtim_basecnt_cfg_t basecnt;
 
@@ -166,21 +166,21 @@ static int __adtim_pwm_config (void          *p_drv,
         portcfg.staout = (amhw_hc32f460_adtim_port_out_t)(!p_dev->p_devinfo->ocpolarity);
         portcfg.stpout = (amhw_hc32f460_adtim_port_out_t)(!p_dev->p_devinfo->ocpolarity);
         amhw_hc32f460_adtim_timxchxportcfg(p_hw_adtim,
-                                         AMHW_HC32F460_ADTIM_CHX_B,
-                                         &portcfg);
+                                           AMHW_HC32F460_ADTIM_CHX_B,
+                                           &portcfg);
 
     /* 独立PWM输出*/
     } else {
 
         amhw_hc32f460_adtim_setcomparevalue(p_hw_adtim, 
-                                          (amhw_hc32f460_adtim_compare_x_t)chan, 
-                                          duty_c);
+                                           (amhw_hc32f460_adtim_compare_x_t)chan,
+                                           duty_c);
 
         portcfg.staout = (amhw_hc32f460_adtim_port_out_t)p_dev->p_devinfo->ocpolarity;
         portcfg.stpout = (amhw_hc32f460_adtim_port_out_t)p_dev->p_devinfo->ocpolarity;
         amhw_hc32f460_adtim_timxchxportcfg(p_hw_adtim,
-                                         (amhw_hc32f460_adtim_chx_t)chan,
-                                         &portcfg);
+                                          (amhw_hc32f460_adtim_chx_t)chan,
+                                          &portcfg);
     }
 
     return AM_OK;
@@ -193,9 +193,9 @@ static int __adtim_pwm_enable (void *p_drv, int chan)
 {
     int i = 0, t = 0, enable_flag = 0;
     am_hc32f460_adtim_pwm_dev_t      *p_dev      = (am_hc32f460_adtim_pwm_dev_t *)
-                                                 p_drv;
+                                                   p_drv;
     amhw_hc32f460_adtim_t            *p_hw_adtim = (amhw_hc32f460_adtim_t *)
-                                                 p_dev->p_devinfo->adtim_regbase;
+                                                   p_dev->p_devinfo->adtim_regbase;
     am_hc32f460_adtim_pwm_chaninfo_t *p_chaninfo = p_dev->p_devinfo->p_chaninfo;
 
     uint8_t comp_pin_flag = 0;
@@ -319,8 +319,8 @@ static int __adtim_pwm_disable (void *p_drv, int chan)
 /**
   * \brief adtim pwm服务初始化
   */
-am_pwm_handle_t am_hc32f460_adtim_pwm_init (am_hc32f460_adtim_pwm_dev_t      *p_dev,
-                                     const am_hc32f460_adtim_pwm_devinfo_t *p_devinfo)
+am_pwm_handle_t am_hc32f460_adtim_pwm_init (am_hc32f460_adtim_pwm_dev_t           *p_dev,
+                                            const am_hc32f460_adtim_pwm_devinfo_t *p_devinfo)
 {
     amhw_hc32f460_adtim_basecnt_cfg_t basecnt;
     amhw_hc32f460_adtim_t  *p_hw_adtim = NULL;

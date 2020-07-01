@@ -42,14 +42,14 @@
 #define __DMA_DEVINFO_DECL(p_dma_devinfo, p_dev)  \
         const am_hc32f460_dma_devinfo_t *p_dma_devinfo = p_dev->p_devinfo
 
-#define AMHW_HC32F460_DMA_TRAN_COUNT_MAX   (0xFFFF)  /* 最大传输次数 */
-#define AMHW_HC32F460_DMA_BLK_SIZE_MAX     (1024)    /* 最大数据块大小 */
-#define AMHW_HC32F460_DMA_DRPT_SIZE_MAX    (0x3FF)   /* 目标地址最大重复区域大小 */
-#define AMHW_HC32F460_DMA_SRPT_SIZE_MAX    (0x3FF)   /* 源地址最大重复区域大小 */
-#define AMHW_HC32F460_DMA_SNSCNT_SIZE_MAX  (0xFFF)   /* 源地址跳转的最大数据量 */
-#define AMHW_HC32F460_DMA_SOFFSET_SIZE_MAX (0xFFFFF) /* 源地址跳转的最大地址偏移量 */
-#define AMHW_HC32F460_DMA_DNSCNT_SIZE_MAX  (0xFFF)   /* 目标地址跳转的最大数据量 */
-#define AMHW_HC32F460_DMA_DOFFSET_SIZE_MAX (0xFFFFF) /* 目标地址跳转的最大地址偏移量 */
+#define AMHW_HC32F460_DMA_TRAN_COUNT_MAX   (0xFFFF)  /**< \brief 最大传输次数 */
+#define AMHW_HC32F460_DMA_BLK_SIZE_MAX     (1024)    /**< \brief 最大数据块大小 */
+#define AMHW_HC32F460_DMA_DRPT_SIZE_MAX    (0x3FF)   /**< \brief 目标地址最大重复区域大小 */
+#define AMHW_HC32F460_DMA_SRPT_SIZE_MAX    (0x3FF)   /**< \brief 源地址最大重复区域大小 */
+#define AMHW_HC32F460_DMA_SNSCNT_SIZE_MAX  (0xFFF)   /**< \brief 源地址跳转的最大数据量 */
+#define AMHW_HC32F460_DMA_SOFFSET_SIZE_MAX (0xFFFFF) /**< \brief 源地址跳转的最大地址偏移量 */
+#define AMHW_HC32F460_DMA_DNSCNT_SIZE_MAX  (0xFFF)   /**< \brief 目标地址跳转的最大数据量 */
+#define AMHW_HC32F460_DMA_DOFFSET_SIZE_MAX (0xFFFFF) /**< \brief 目标地址跳转的最大地址偏移量 */
 
 #define AMHW_HC32F460_DMA_RPT_DRPT_BITS_SHIFT        (16)
 #define AMHW_HC32F460_DMA_DTCTL_CNT_BITS_SHIFT       (16)
@@ -172,19 +172,19 @@ int am_hc32f460_dma_xfer_desc_chan_cfg (am_hc32f460_dma_dev_t            *p_dev,
 
 
 /* 建立连锁传输描述符 */
-int am_hc32f460_dma_chain_xfer_desc_build (amhw_hc32f460_dma_chain_xfer_desc_t *p_desc,   /* 描述符结构体指针地址 */
-                                           uint32_t                             src_addr, /* 源地址  */
-                                           uint32_t                             dst_addr, /* 目的地址  */
-                                           uint32_t                             count,    /* 传输次数  */
-                                           uint32_t                             blk_size, /* 数据块大小  */
-                                           uint32_t                             drpt,     /* 目标地址重复区域大小  */
-                                           uint32_t                             srpt,     /* 源地址重复区域大小  */
-                                           uint32_t                             snscnt,   /* 源地址跳转的数据量  */
-                                           uint32_t                             soffset,  /* 源地址跳转的地址偏移量  */
-                                           uint32_t                             dnscnt,   /* 目标地址跳转的数据量  */
-                                           uint32_t                             dsoffset, /* 目标地址跳转的地址偏移量  */
-                                           uint32_t                             link,     /* 下一次传输的描述符所在地址  */
-                                           uint32_t                             ch_ctl)   /* 通道控制寄存器设置值  */
+int am_hc32f460_dma_chain_xfer_desc_build (amhw_hc32f460_dma_chain_xfer_desc_t *p_desc,   /**< \brief 描述符结构体指针地址 */
+                                           uint32_t                             src_addr, /**< \brief 源地址  */
+                                           uint32_t                             dst_addr, /**< \brief 目的地址  */
+                                           uint32_t                             count,    /**< \brief 传输次数  */
+                                           uint32_t                             blk_size, /**< \brief 数据块大小  */
+                                           uint32_t                             drpt,     /**< \brief 目标地址重复区域大小  */
+                                           uint32_t                             srpt,     /**< \brief 源地址重复区域大小  */
+                                           uint32_t                             snscnt,   /**< \brief 源地址跳转的数据量  */
+                                           uint32_t                             soffset,  /**< \brief 源地址跳转的地址偏移量  */
+                                           uint32_t                             dnscnt,   /**< \brief 目标地址跳转的数据量  */
+                                           uint32_t                             dsoffset, /**< \brief 目标地址跳转的地址偏移量  */
+                                           uint32_t                             link,     /**< \brief 下一次传输的描述符所在地址  */
+                                           uint32_t                             ch_ctl)   /**< \brief 通道控制寄存器设置值  */
 {
     if (p_desc == NULL) {
         return AM_ERROR;
@@ -506,7 +506,7 @@ int am_hc32f460_dma_drpt_size_set (am_hc32f460_dma_dev_t *p_dev,
 
 /**
  * \brief 设置源地址重复区域大小
- *        源设备在每传输size个数据后，源地址重载为DMA_DARx寄存器的值。
+ *        源设备在每传输size个数据后，源地址重载为DMA_SARx寄存器的值。
  */
 int am_hc32f460_dma_srpt_size_set (am_hc32f460_dma_dev_t *p_dev,
                                    int                    chan,
@@ -591,6 +591,16 @@ void am_hc32f460_dma_chan_rcfg_set (am_hc32f460_dma_dev_t *p_dev,
                     (rcfgen  << AMHW_HC32F460_DMA_RCFGCTL_RCFGEN_REG_BIT_SHIFT);
 
     amhw_hc32f460_dma_chan_rcfg_set(p_hw_dma, flag);
+}
+
+/**
+ * \brief 软件触发DMA
+ *
+ * \return none
+ */
+void am_hc32f460_dma_soft_trig(void)
+{
+    amhw_hc32f460_dma_soft_trig();
 }
 
 

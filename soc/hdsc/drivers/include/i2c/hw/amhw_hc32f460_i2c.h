@@ -55,14 +55,14 @@ extern "C" {
 
 typedef enum en_address_bit
 {
-    Adr7bit = 0u,       ///< I2C address length is 7 bits
-    Adr10bit = 1u,      ///< I2C address length is 10 bits
+    Adr7bit = 0u,       /**< \brief I2C address length is 7 bits */
+    Adr10bit = 1u,      /**< \brief I2C address length is 10 bits */
 }en_address_bit_t;
 
 /*******************************************************************************
  * Global pre-processor symbols/macros ('#define')
  ******************************************************************************/
-/* define interrupt enable bit for I2C_CR2 register */
+/**< \brief define interrupt enable bit for I2C_CR2 register */
 #define I2C_CR2_STARTIE         (0x00000001ul)
 #define I2C_CR2_SLADDR0EN       (0x00000002ul)
 #define I2C_CR2_SLADDR1EN       (0x00000004ul)
@@ -78,7 +78,7 @@ typedef enum en_address_bit
 #define I2C_CR2_SMBHOSTIE       (0x00400000ul)
 #define I2C_CR2_SMBALRTIE       (0x00800000ul)
 
-/* define status bit for I2C_SR register */
+/**< \brief define status bit for I2C_SR register */
 #define I2C_SR_STARTF           (0x00000001ul)
 #define I2C_SR_SLADDR0F         (0x00000002ul)
 #define I2C_SR_SLADDR1F         (0x00000004ul)
@@ -98,7 +98,7 @@ typedef enum en_address_bit
 #define I2C_SR_SMBHOSTF         (0x00400000ul)
 #define I2C_SR_SMBALRTF         (0x00800000ul)
 
-/* define status clear bit for I2C_CLR register*/
+/**< \brief define status clear bit for I2C_CLR register*/
 #define I2C_CLR_STARTFCLR           (0x00000001ul)
 #define I2C_CLR_SLADDR0FCLR         (0x00000002ul)
 #define I2C_CLR_SLADDR1FCLR         (0x00000004ul)
@@ -134,166 +134,202 @@ typedef enum en_i2c_flag_status
  * @{
  */
 
+/**
+ * \brief I2C控制寄存器1位域结构体
+ */
 typedef struct
 {
-    __IO uint32_t PE                        : 1;
-    __IO uint32_t SMBUS                     : 1;
-    __IO uint32_t SMBALRTEN                 : 1;
-    __IO uint32_t SMBDEFAULTEN              : 1;
-    __IO uint32_t SMBHOSTEN                 : 1;
-    uint32_t RESERVED5                      : 1;
-    __IO uint32_t ENGC                      : 1;
-    __IO uint32_t RESTART                   : 1;
-    __IO uint32_t START                     : 1;
-    __IO uint32_t STOP                      : 1;
-    __IO uint32_t ACK                       : 1;
-    uint32_t RESERVED11                     : 4;
-    __IO uint32_t SWRST                     : 1;
-    uint32_t RESERVED16                     :16;
+    __IO uint32_t PE                        : 1;  /**< \brief PC功能使能*/
+    __IO uint32_t SMBUS                     : 1;  /**< \brief SMBUS/I2C总线模式选择位*/
+    __IO uint32_t SMBALRTEN                 : 1;  /**< \brief 允许匹配SMBUS报警响应地址位*/
+    __IO uint32_t SMBDEFAULTEN              : 1;  /**< \brief 允许匹配SMBUS默认地址位*/
+    __IO uint32_t SMBHOSTEN                 : 1;  /**< \brief 允许匹配SMBUS主机地址位*/
+    uint32_t RESERVED5                      : 1;  /**< \brief 保留 */
+    __IO uint32_t ENGC                      : 1;  /**< \brief 广播呼叫使能*/
+    __IO uint32_t RESTART                   : 1;  /**< \brief 重复起始条件生成位*/
+    __IO uint32_t START                     : 1;  /**< \brief 起始条件生成位*/
+    __IO uint32_t STOP                      : 1;  /**< \brief 停止条件生成位*/
+    __IO uint32_t ACK                       : 1;  /**< \brief 发送应答*/
+    uint32_t RESERVED11                     : 4;  /**< \brief 保留 */
+    __IO uint32_t SWRST                     : 1;  /**< \brief 软件复位 */
+    uint32_t RESERVED16                     :16;  /**< \brief 保留 */
 } stc_i2c_cr1_field_t;
 
+/**
+ * \brief I2C控制寄存器2位域结构体
+ */
 typedef struct
 {
-    __IO uint32_t STARTIE                   : 1;
-    __IO uint32_t SLADDR0IE                 : 1;
-    __IO uint32_t SLADDR1IE                 : 1;
-    __IO uint32_t TENDIE                    : 1;
-    __IO uint32_t STOPIE                    : 1;
-    uint32_t RESERVED5                      : 1;
-    __IO uint32_t RFULLIE                   : 1;
-    __IO uint32_t TEMPTYIE                  : 1;
-    uint32_t RESERVED8                      : 1;
-    __IO uint32_t ARLOIE                    : 1;
-    uint32_t RESERVED10                     : 2;
-    __IO uint32_t NACKIE                    : 1;
-    uint32_t RESERVED13                     : 1;
-    __IO uint32_t TMOUTIE                   : 1;
-    uint32_t RESERVED15                     : 5;
-    __IO uint32_t GENCALLIE                 : 1;
-    __IO uint32_t SMBDEFAULTIE              : 1;
-    __IO uint32_t SMHOSTIE                  : 1;
-    __IO uint32_t SMBALRTIE                 : 1;
-    uint32_t RESERVED24                     : 8;
+    __IO uint32_t STARTIE                   : 1;  /**< \brief 开始条件/重新开始条件中断允许 */
+    __IO uint32_t SLADDR0IE                 : 1;  /**< \brief 从机地址0匹配一致中断允许 */
+    __IO uint32_t SLADDR1IE                 : 1;  /**< \brief 从机地址1匹配一致中断允许 */
+    __IO uint32_t TENDIE                    : 1;  /**< \brief 发送一帧数据结束中断允许位 */
+    __IO uint32_t STOPIE                    : 1;  /**< \brief 停止条件中断允许 */
+    uint32_t RESERVED5                      : 1;  /**< \brief 保留 */
+    __IO uint32_t RFULLIE                   : 1;  /**< \brief 接收数据满中断允许位 */
+    __IO uint32_t TEMPTYIE                  : 1;  /**< \brief 发送数据空中断允许位 */
+    uint32_t RESERVED8                      : 1;  /**< \brief 保留 */
+    __IO uint32_t ARLOIE                    : 1;  /**< \brief 仲裁失败中断允许 */
+    uint32_t RESERVED10                     : 2;  /**< \brief 保留 */
+    __IO uint32_t NACKIE                    : 1;  /**< \brief NACK中断允许 */
+    uint32_t RESERVED13                     : 1;  /**< \brief 保留 */
+    __IO uint32_t TMOUTIE                   : 1;  /**< \brief 超时中断允许 */
+    uint32_t RESERVED15                     : 5;  /**< \brief 保留 */
+    __IO uint32_t GENCALLIE                 : 1;  /**< \brief 广播呼叫地址匹配一致中断允许 */
+    __IO uint32_t SMBDEFAULTIE              : 1;  /**< \brief SMBUS默认地址匹配一致中断允许 */
+    __IO uint32_t SMHOSTIE                  : 1;  /**< \brief SMBUS主机地址匹配一致中断允许 */
+    __IO uint32_t SMBALRTIE                 : 1;  /**< \brief SMBUS报警响应地址匹配一致中断允许 */
+    uint32_t RESERVED24                     : 8;  /**< \brief 保留 */
 } stc_i2c_cr2_field_t;
 
+/**
+ * \brief I2C控制寄存器3位域结构体
+ */
 typedef struct
 {
-    __IO uint32_t TMOUTEN                   : 1;
-    __IO uint32_t LTMOUT                    : 1;
-    __IO uint32_t HTMOUT                    : 1;
-    uint32_t RESERVED3                      : 4;
-    __IO uint32_t FACKEN                    : 1;
-    uint32_t RESERVED8                      :24;
+    __IO uint32_t TMOUTEN                   : 1;  /**< \brief 超时功能允许位 */
+    __IO uint32_t LTMOUT                    : 1;  /**< \brief 低电平超时检测允许 */
+    __IO uint32_t HTMOUT                    : 1;  /**< \brief 高电平超时检测允许 */
+    uint32_t RESERVED3                      : 4;  /**< \brief 保留 */
+    __IO uint32_t FACKEN                    : 1;  /**< \brief RFULL标志位置为时间点选择 */
+    uint32_t RESERVED8                      :24;  /**< \brief 保留 */
 } stc_i2c_cr3_field_t;
 
+/**
+ * \brief I2C从机地址寄存器0位域结构体
+ */
 typedef struct
 {
-    __IO uint32_t SLADDR0                   :10;
-    uint32_t RESERVED10                     : 2;
-    __IO uint32_t SLADDR0EN                 : 1;
-    uint32_t RESERVED13                     : 2;
-    __IO uint32_t ADDRMOD0                  : 1;
-    uint32_t RESERVED16                     :16;
+    __IO uint32_t SLADDR0                   :10;  /**< \brief 从机地址 */
+    uint32_t RESERVED10                     : 2;  /**< \brief 保留 */
+    __IO uint32_t SLADDR0EN                 : 1;  /**< \brief 从机地址0有效位 */
+    uint32_t RESERVED13                     : 2;  /**< \brief 保留 */
+    __IO uint32_t ADDRMOD0                  : 1;  /**< \brief 7位/10位地址格式选择位 */
+    uint32_t RESERVED16                     :16;  /**< \brief 保留 */
 } stc_i2c_slr0_field_t;
 
+/**
+ * \brief I2C从机地址寄存器1位域结构体
+ */
 typedef struct
 {
-    __IO uint32_t SLADDR1                   :10;
-    uint32_t RESERVED10                     : 2;
-    __IO uint32_t SLADDR1EN                 : 1;
-    uint32_t RESERVED13                     : 2;
-    __IO uint32_t ADDRMOD1                  : 1;
-    uint32_t RESERVED16                     :16;
+    __IO uint32_t SLADDR1                   :10;  /**< \brief 从机地址 */
+    uint32_t RESERVED10                     : 2;  /**< \brief 保留 */
+    __IO uint32_t SLADDR1EN                 : 1;  /**< \brief 从机地址1有效位 */
+    uint32_t RESERVED13                     : 2;  /**< \brief 保留 */
+    __IO uint32_t ADDRMOD1                  : 1;  /**< \brief 7位/10位地址格式选择位 */
+    uint32_t RESERVED16                     :16;  /**< \brief 保留 */
 } stc_i2c_slr1_field_t;
 
+/**
+ * \brief I2C SCL电平超时控制寄存器位域结构体
+ */
 typedef struct
 {
-    __IO uint32_t TOUTLOW                   :16;
-    __IO uint32_t TOUTHIGH                  :16;
+    __IO uint32_t TOUTLOW                   :16;  /**< \brief SCL低电平超时周期 */
+    __IO uint32_t TOUTHIGH                  :16;  /**< \brief SCL高电平超时周期 */
 } stc_i2c_sltr_field_t;
 
+/**
+ * \brief I2C 状态寄存器位域结构体
+ */
 typedef struct
 {
-    __IO uint32_t STARTF                    : 1;
-    __IO uint32_t SLADDR0F                  : 1;
-    __IO uint32_t SLADDR1F                  : 1;
-    __IO uint32_t TENDF                     : 1;
-    __IO uint32_t STOPF                     : 1;
-    uint32_t RESERVED5                      : 1;
-    __IO uint32_t RFULLF                    : 1;
-    __IO uint32_t TEMPTYF                   : 1;
-    uint32_t RESERVED8                      : 1;
-    __IO uint32_t ARLOF                     : 1;
-    __IO uint32_t ACKRF                     : 1;
-    uint32_t RESERVED11                     : 1;
-    __IO uint32_t NACKF                     : 1;
-    uint32_t RESERVED13                     : 1;
-    __IO uint32_t TMOUTF                    : 1;
-    uint32_t RESERVED15                     : 1;
-    __IO uint32_t MSL                       : 1;
-    __IO uint32_t BUSY                      : 1;
-    __IO uint32_t TRA                       : 1;
-    uint32_t RESERVED19                     : 1;
-    __IO uint32_t GENCALLF                  : 1;
-    __IO uint32_t SMBDEFAULTF               : 1;
-    __IO uint32_t SMBHOSTF                  : 1;
-    __IO uint32_t SMBALRTF                  : 1;
-    uint32_t RESERVED24                     : 8;
+    __IO uint32_t STARTF                    : 1;  /**< \brief 开始条件/重新开始条件标志位 */
+    __IO uint32_t SLADDR0F                  : 1;  /**< \brief 从机地址寄存器0匹配一致标志 */
+    __IO uint32_t SLADDR1F                  : 1;  /**< \brief 从机地址寄存器1匹配一致标志 */
+    __IO uint32_t TENDF                     : 1;  /**< \brief 发送数据结束标志位 */
+    __IO uint32_t STOPF                     : 1;  /**< \brief 停止条件标志位 */
+    uint32_t RESERVED5                      : 1;  /**< \brief 保留 */
+    __IO uint32_t RFULLF                    : 1;  /**< \brief 接收数据满标志位 */
+    __IO uint32_t TEMPTYF                   : 1;  /**< \brief 发送数据空标志位 */
+    uint32_t RESERVED8                      : 1;  /**< \brief 保留 */
+    __IO uint32_t ARLOF                     : 1;  /**< \brief 仲裁失败标志位 */
+    __IO uint32_t ACKRF                     : 1;  /**< \brief 接收应答位 */
+    uint32_t RESERVED11                     : 1;  /**< \brief 保留 */
+    __IO uint32_t NACKF                     : 1;  /**< \brief NACK标志位 */
+    uint32_t RESERVED13                     : 1;  /**< \brief 保留 */
+    __IO uint32_t TMOUTF                    : 1;  /**< \brief 超时标志位 */
+    uint32_t RESERVED15                     : 1;  /**< \brief 保留 */
+    __IO uint32_t MSL                       : 1;  /**< \brief 主从机选择位 */
+    __IO uint32_t BUSY                      : 1;  /**< \brief 总线忙标志位 */
+    __IO uint32_t TRA                       : 1;  /**< \brief 发送接收选择位 */
+    uint32_t RESERVED19                     : 1;  /**< \brief 保留 */
+    __IO uint32_t GENCALLF                  : 1;  /**< \brief 广播呼叫地址匹配一致标志 */
+    __IO uint32_t SMBDEFAULTF               : 1;  /**< \brief SMBUS默认地址匹配一致标志位 */
+    __IO uint32_t SMBHOSTF                  : 1;  /**< \brief SMBUS主机地址匹配一致标志位 */
+    __IO uint32_t SMBALRTF                  : 1;  /**< \brief SMBUS报警响应地址匹配一致标志位 */
+    uint32_t RESERVED24                     : 8;  /**< \brief 保留 */
 } stc_i2c_sr_field_t;
 
+/**
+ * \brief I2C 状态清零寄存器位域结构体
+ */
 typedef struct
 {
-    __IO uint32_t STARTFCLR                 : 1;
-    __IO uint32_t SLADDR0FCLR               : 1;
-    __IO uint32_t SLADDR1FCLR               : 1;
-    __IO uint32_t TENDFCLR                  : 1;
-    __IO uint32_t STOPFCLR                  : 1;
-    uint32_t RESERVED5                      : 1;
-    __IO uint32_t RFULLFCLR                 : 1;
-    __IO uint32_t TEMPTYFCLR                : 1;
-    uint32_t RESERVED8                      : 1;
-    __IO uint32_t ARLOFCLR                  : 1;
-    uint32_t RESERVED10                     : 2;
-    __IO uint32_t NACKFCLR                  : 1;
-    uint32_t RESERVED13                     : 1;
-    __IO uint32_t TMOUTFCLR                 : 1;
-    uint32_t RESERVED15                     : 5;
-    __IO uint32_t GENCALLFCLR               : 1;
-    __IO uint32_t SMBDEFAULTFCLR            : 1;
-    __IO uint32_t SMBHOSTFCLR               : 1;
-    __IO uint32_t SMBALRTFCLR               : 1;
-    uint32_t RESERVED24                     : 8;
+    __IO uint32_t STARTFCLR                 : 1;  /**< \brief 开始条件/重新开始条件标志清零位 */
+    __IO uint32_t SLADDR0FCLR               : 1;  /**< \brief 从机地址寄存器0匹配一致标志清零位 */
+    __IO uint32_t SLADDR1FCLR               : 1;  /**< \brief 从机地址寄存器1匹配一致标志清零位 */
+    __IO uint32_t TENDFCLR                  : 1;  /**< \brief 发送数据结束标志位清零位 */
+    __IO uint32_t STOPFCLR                  : 1;  /**< \brief 停止条件标志位清零位 */
+    uint32_t RESERVED5                      : 1;  /**< \brief 保留 */
+    __IO uint32_t RFULLFCLR                 : 1;  /**< \brief 接收数据满标志位清零位 */
+    __IO uint32_t TEMPTYFCLR                : 1;  /**< \brief 发送数据空标志位清零位 */
+    uint32_t RESERVED8                      : 1;  /**< \brief 保留 */
+    __IO uint32_t ARLOFCLR                  : 1;  /**< \brief 仲裁失败标志位清零位 */
+    uint32_t RESERVED10                     : 2;  /**< \brief 保留 */
+    __IO uint32_t NACKFCLR                  : 1;  /**< \brief NACK标志位清零位 */
+    uint32_t RESERVED13                     : 1;  /**< \brief 保留 */
+    __IO uint32_t TMOUTFCLR                 : 1;  /**< \brief 超时标志位清零位 */
+    uint32_t RESERVED15                     : 5;  /**< \brief 保留 */
+    __IO uint32_t GENCALLFCLR               : 1;  /**< \brief 广播呼叫地址匹配一致标志清零位 */
+    __IO uint32_t SMBDEFAULTFCLR            : 1;  /**< \brief SMBUS默认地址匹配一致标志清零位 */
+    __IO uint32_t SMBHOSTFCLR               : 1;  /**< \brief SMBUS主机地址匹配一致标志清零位 */
+    __IO uint32_t SMBALRTFCLR               : 1;  /**< \brief SMBUS报警响应地址匹配一致标志清零位 */
+    uint32_t RESERVED24                     : 8;  /**< \brief 保留 */
 } stc_i2c_clr_field_t;
 
+/**
+ * \brief I2C 数据发送寄存器位域结构体
+ */
 typedef struct
 {
-    __IO uint32_t DT                        : 8;
-    uint32_t RESERVED8                      :24;
+    __IO uint32_t DT                        : 8;  /**< \brief 数据 */
+    uint32_t RESERVED8                      :24;  /**< \brief 保留 */
 } stc_i2c_dtr_field_t;
 
+/**
+ * \brief I2C 数据接收寄存器位域结构体
+ */
 typedef struct
 {
-    __IO uint32_t DR                        : 8;
-    uint32_t RESERVED8                      :24;
+    __IO uint32_t DR                        : 8;  /**< \brief 数据 */
+    uint32_t RESERVED8                      :24;  /**< \brief 保留 */
 } stc_i2c_drr_field_t;
 
+/**
+ * \brief I2C 时钟控制寄存器位域结构体
+ */
 typedef struct
 {
-    __IO uint32_t SLOWW                     : 5;
-    uint32_t RESERVED5                      : 3;
-    __IO uint32_t SHIGHW                    : 5;
-    uint32_t RESERVED13                     : 3;
-    __IO uint32_t FREQ                      : 3;
-    uint32_t RESERVED19                     :13;
+    __IO uint32_t SLOWW                     : 5;  /**< \brief 设定SCL时钟的低电平宽度 */
+    uint32_t RESERVED5                      : 3;  /**< \brief 保留 */
+    __IO uint32_t SHIGHW                    : 5;  /**< \brief 设定SCL高电平宽度位 */
+    uint32_t RESERVED13                     : 3;  /**< \brief 保留 */
+    __IO uint32_t FREQ                      : 3;  /**< \brief I2C基准时钟频率设定位 */
+    uint32_t RESERVED19                     :13;  /**< \brief 保留 */
 } stc_i2c_ccr_field_t;
 
+/**
+ * \brief I2C 滤波控制寄存器位域结构体
+ */
 typedef struct
 {
-    __IO uint32_t DNF                       : 2;
-    uint32_t RESERVED2                      : 2;
-    __IO uint32_t DNFEN                     : 1;
-    __IO uint32_t ANFEN                     : 1;
-    uint32_t RESERVED6                      :26;
+    __IO uint32_t DNF                       : 2;  /**< \brief 数字滤波器滤波能力选择 */
+    uint32_t RESERVED2                      : 2;  /**< \brief 保留 */
+    __IO uint32_t DNFEN                     : 1;  /**< \brief 数字滤波功能允许位 */
+    __IO uint32_t ANFEN                     : 1;  /**< \brief 模拟滤波功能允许位 */
+    uint32_t RESERVED6                      :26;  /**< \brief 保留 */
 } stc_i2c_fltr_field_t;
 
 
@@ -303,63 +339,63 @@ typedef struct
 typedef struct amhw_hc32f460_i2c {
     union
     {
-        __IO uint32_t CR1;
+        __IO uint32_t CR1;        /**< \brief I2C控制寄存器1 */
         stc_i2c_cr1_field_t CR1_f;
     };
     union
     {
-        __IO uint32_t CR2;
+        __IO uint32_t CR2;        /**< \brief I2C控制寄存器2 */
         stc_i2c_cr2_field_t CR2_f;
     };
     union
     {
-        __IO uint32_t CR3;
+        __IO uint32_t CR3;        /**< \brief I2C控制寄存器3 */
         stc_i2c_cr3_field_t CR3_f;
     };
-    uint8_t RESERVED3[4];
+    uint8_t RESERVED3[4];         /**< \brief 保留 */
     union
     {
-        __IO uint32_t SLR0;
+        __IO uint32_t SLR0;       /**< \brief I2C从机地址寄存器0 */
         stc_i2c_slr0_field_t SLR0_f;
     };
     union
     {
-        __IO uint32_t SLR1;
+        __IO uint32_t SLR1;        /**< \brief I2C从机地址寄存器1 */
         stc_i2c_slr1_field_t SLR1_f;
     };
     union
     {
-        __IO uint32_t SLTR;
+        __IO uint32_t SLTR;        /**< \brief I2C状态寄存器 */
         stc_i2c_sltr_field_t SLTR_f;
     };
     union
     {
-        __IO uint32_t SR;
+        __IO uint32_t SR;          /**< \brief I2C状态寄存器 */
         stc_i2c_sr_field_t SR_f;
     };
     union
     {
-        __IO uint32_t CLR;
+        __IO uint32_t CLR;         /**< \brief I2C状态寄存器 */
         stc_i2c_clr_field_t CLR_f;
     };
     union
     {
-        __IO uint32_t DTR;
+        __IO uint32_t DTR;         /**< \brief I2C数据发送寄存器 */
         stc_i2c_dtr_field_t DTR_f;
     };
     union
     {
-        __IO uint32_t DRR;
+        __IO uint32_t DRR;         /**< \brief I2C数据接收寄存器 */
         stc_i2c_drr_field_t DRR_f;
     };
     union
     {
-        __IO uint32_t CCR;
+        __IO uint32_t CCR;         /**< \brief I2C波特率控制寄存器 */
         stc_i2c_ccr_field_t CCR_f;
     };
     union
     {
-        __IO uint32_t FLTR;
+        __IO uint32_t FLTR;        /**< \brief I2C波特率控制寄存器 */
         stc_i2c_fltr_field_t FLTR_f;
     };
 } amhw_hc32f460_i2c_t;
@@ -407,41 +443,41 @@ typedef struct amhw_hc32f460_i2c {
 
 typedef enum en_i2c_mode
 {
-    I2cMaster = 0u,         ///< I2C master mode
-    I2cSlave,              ///< I2C slave mode
+    I2cMaster = 0u,        /**< \brief I2C master mode */
+    I2cSlave,              /**< \brief I2C slave mode */
 }en_i2c_mode_t;
 
 typedef struct stc_i2c_init
 {
-    en_i2c_mode_t enI2cMode; ///< I2C mode config, master or slave
-    uint32_t u32Pclk3;       ///< Plck3 frequency
-    uint32_t u32Baudrate;    ///< I2C baudrate config
-    uint32_t u32SclTime;     ///< The SCL rising and falling time, count of T(pclk3)
+    en_i2c_mode_t enI2cMode; /**< \brief I2C mode config, master or slave */
+    uint32_t u32Pclk3;       /**< \brief Plck3 frequency */
+    uint32_t u32Baudrate;    /**< \brief I2C baudrate config */
+    uint32_t u32SclTime;     /**< \brief The SCL rising and falling time, count of T(pclk3) */
 }stc_i2c_init_t;
 /**
  * \brief I2C状态标志
  */
 typedef enum amhw_hc32f460_status_flag{
 
-    /* 无指定模式状态 */
+	/** \brief 无指定模式状态 */
     AMHW_HC32F460_STATUS_FLAG_0   = (0x00),   /**< \brief 出现总线错误或I2C进入未定义的状态 */
     AMHW_HC32F460_STATUS_FLAG_1   = (0x08),   /**< \brief 已发送起始条件 */
     AMHW_HC32F460_STATUS_FLAG_2   = (0x10),   /**< \brief 已发送重复起始条件 */
 
-    /* 主发送器状态 */
+	/** \brief 主发送器状态 */
     AMHW_HC32F460_STATUS_FLAG_3   = (0x18),   /**< \brief 已发送SLA+W，已接收ACK */
     AMHW_HC32F460_STATUS_FLAG_4   = (0x20),   /**< \brief 已发送SLA+W，已接收非ACK */
     AMHW_HC32F460_STATUS_FLAG_5   = (0x28),   /**< \brief 已发送数据，已接收ACK */
     AMHW_HC32F460_STATUS_FLAG_6   = (0x30),   /**< \brief 已发送数据 */
     AMHW_HC32F460_STATUS_FLAG_7   = (0x38),   /**< \brief 在SLA+ 读写或写数据字节时丢失仲裁 */
 
-    /* 主接收器状态 */
+    /** \brief 主接收器状态 */
     AMHW_HC32F460_STATUS_FLAG_8   = (0x40),   /**< \brief 已发送SLA +R,已接收ACK */
     AMHW_HC32F460_STATUS_FLAG_9   = (0x48),   /**< \brief 已发送SLA +R,已接收非ACK */
     AMHW_HC32F460_STATUS_FLAG_10  = (0x50),   /**< \brief 已接收数据字节，ACK已返回 */
     AMHW_HC32F460_STATUS_FLAG_11  = (0x58),   /**< \brief 已接收数据字节，非ACK已返回 */
 
-    /* 从接收器状态 */
+    /** \brief 从接收器状态 */
     AMHW_HC32F460_STATUS_FLAG_12  = (0x60),   /**< \brief 已接收自身的SLA+W；已接收ACK */
     AMHW_HC32F460_STATUS_FLAG_13  = (0x68),   /**< \brief 主控时在SLA+读写丢失仲裁；已接收自身的SLA+W；已返回ACK； */
     AMHW_HC32F460_STATUS_FLAG_14  = (0x70),   /**< \brief 已接收通用调用地址（0x00）；已返回ACK */
@@ -452,30 +488,30 @@ typedef enum amhw_hc32f460_status_flag{
     AMHW_HC32F460_STATUS_FLAG_19  = (0x98),   /**< \brief 前一次寻址使用通用调用地址；已接收数据；已返回非ACK； */
     AMHW_HC32F460_STATUS_FLAG_20  = (0xa0),   /**< \brief 当使用从接收/从发送模式中静态寻址时，接收到停止条件或重复起始条件 */
 
-    /* 从发送器状态 */
+    /** \brief 从发送器状态 */
     AMHW_HC32F460_STATUS_FLAG_22  = (0xa8),   /**< \brief 已接收自身的SLA+R；已返回ACK */
     AMHW_HC32F460_STATUS_FLAG_23  = (0xb0),   /**< \brief 当主控时在SLA+ 读写中丢失仲裁；已接收自身SLA+R；已返回ACK； */
     AMHW_HC32F460_STATUS_FLAG_24  = (0xb8),   /**< \brief 已发送数据；已接收ACK； */
     AMHW_HC32F460_STATUS_FLAG_25  = (0xc0),   /**< \brief 已发送数据字节；已接收非ACK; */
     AMHW_HC32F460_STATUS_FLAG_26  = (0xc8),   /**< \brief 装入的数据字节已被发送；已接收ACK； */
 
-    /* 其它状态 */
+    /** \brief 其它状态 */
     AMHW_HC32F460_STATUS_FLAG_27  = (0xf8)    /**< \brief 无可用的相关状态信息；si=0； */
 }amhw_hc32f460_status_flag_t;
 
 typedef enum en_clock_timeout_switch
 {
-    TimeoutFunOff = 0u,  ///< I2C SCL pin time out function off
-    LowTimerOutOn = 3u,  ///< I2C SCL pin high level time out function on
-    HighTimeOutOn = 5u,  ///< I2C SCL pin low level time out function on
-    BothTimeOutOn = 7u,  ///< I2C SCL pin both(low and high) level time out function on
+    TimeoutFunOff = 0u,  /**< \brief I2C SCL pin time out function off */
+    LowTimerOutOn = 3u,  /**< \brief I2C SCL pin high level time out function on */
+    HighTimeOutOn = 5u,  /**< \brief I2C SCL pin low level time out function on */
+    BothTimeOutOn = 7u,  /**< \brief I2C SCL pin both(low and high) level time out function on */
 }en_clock_timeout_switch_t;
 
 typedef struct stc_clock_timeout_init
 {
-    en_clock_timeout_switch_t   enClkTimeOutSwitch;  ///< I2C clock timeout function switch
-    uint16_t                    u16TimeOutHigh;      ///< I2C clock timeout period for High level
-    uint16_t                    u16TimeOutLow;       ///< I2C clock timeout period for Low level
+    en_clock_timeout_switch_t   enClkTimeOutSwitch;   /**< \brief I2C clock timeout function switch */
+    uint16_t                    u16TimeOutHigh;       /**< \brief I2C clock timeout period for High level */
+    uint16_t                    u16TimeOutLow;        /**< \brief I2C clock timeout period for Low level */
 }stc_clock_timeout_init_t;
 
 
@@ -512,7 +548,7 @@ void amhw_hc32f460_i2c_baud_config (amhw_hc32f460_i2c_t * p_hw_i2c,
         u32Baudrate = 400000ul;
     }
 
-    /* Judge digitial filter status*/
+    /** \brief Judge digitial filter status */
     if(1u == p_hw_i2c->FLTR_f.DNFEN)
     {
         dnfsum = p_hw_i2c->FLTR_f.DNF+1ul;
@@ -521,14 +557,14 @@ void amhw_hc32f460_i2c_baud_config (amhw_hc32f460_i2c_t * p_hw_i2c,
     {
         dnfsum = 0ul;
     }
-    divsum = 2ul;  //default
+    divsum = 2ul;  /**< \brief default */
 
     if (0ul != u32Baudrate)
     {
         tmp = u32Pclk3/u32Baudrate - u32SclTime;
     }
 
-    /* Calculate the pclk3 div */
+    /** \brief Calculate the pclk3 div */
     fDivIndex = (float)tmp / ((32.0f + (float)dnfsum + (float)divsum) * 2.0f);
 
     if (fDivIndex > 128.0f)
@@ -538,7 +574,7 @@ void amhw_hc32f460_i2c_baud_config (amhw_hc32f460_i2c_t * p_hw_i2c,
     
     u8DivIndex = amhw_hc32f460_i2c_get_freq_reg(fDivIndex);
 
-    /* Judge if clock divider on*/
+    /** \brief Judge if clock divider on*/
     if(0u == u8DivIndex)
     {
         divsum = 3ul;
@@ -609,7 +645,10 @@ void amhw_hc32f460_i2c_gen_call_nack (amhw_hc32f460_i2c_t *p_hw_i2c)
 }
 
 am_static_inline
-void amhw_hc32f460_i2c_slave_addr0_config(amhw_hc32f460_i2c_t *pstcI2Cx, en_i2c_functional_state_t enNewState, en_address_bit_t enAdrMode, uint8_t u8Adr)
+void amhw_hc32f460_i2c_slave_addr0_config(amhw_hc32f460_i2c_t      *pstcI2Cx,
+                                          en_i2c_functional_state_t enNewState,
+                                          en_address_bit_t          enAdrMode,
+                                          uint8_t                   u8Adr)
 {
     pstcI2Cx->SLR0_f.SLADDR0EN = enNewState;
     pstcI2Cx->SLR0_f.ADDRMOD0 = enAdrMode;
@@ -632,8 +671,8 @@ void amhw_hc32f460_i2c_slave_addr0_config(amhw_hc32f460_i2c_t *pstcI2Cx, en_i2c_
  * \return 无
  */
 am_static_inline
-void amhw_hc32f460_i2c_dat_write (amhw_hc32f460_i2c_t   *p_hw_i2c,
-                                uint8_t              dat)
+void amhw_hc32f460_i2c_dat_write (amhw_hc32f460_i2c_t  *p_hw_i2c,
+                                  uint8_t               dat)
 {
     p_hw_i2c->DTR = dat;
 }
@@ -652,26 +691,30 @@ uint8_t amhw_hc32f460_i2c_dat_read (amhw_hc32f460_i2c_t *p_hw_i2c)
 }
 
 am_static_inline
-void amhw_hc32f460_i2c_status_clr (amhw_hc32f460_i2c_t *p_hw_i2c, uint32_t u32StatusBit)
+void amhw_hc32f460_i2c_status_clr (amhw_hc32f460_i2c_t *p_hw_i2c,
+                                   uint32_t             u32StatusBit)
 {
     p_hw_i2c->CLR |= (u32StatusBit & I2C_CLR_MASK);
 }
 
 am_static_inline
-void amhw_hc32f460_i2c_intr_enable (amhw_hc32f460_i2c_t *p_hw_i2c, uint32_t u32IntEn)
+void amhw_hc32f460_i2c_intr_enable (amhw_hc32f460_i2c_t *p_hw_i2c,
+                                    uint32_t             u32IntEn)
 {
     p_hw_i2c->CR2 |= u32IntEn;
 }
 
 am_static_inline
-void amhw_hc32f460_i2c_intr_disable (amhw_hc32f460_i2c_t *p_hw_i2c, uint32_t u32IntEn)
+void amhw_hc32f460_i2c_intr_disable (amhw_hc32f460_i2c_t *p_hw_i2c,
+                                     uint32_t             u32IntEn)
 {
     p_hw_i2c->CR2 &= ~u32IntEn;
 }
 
 
 am_static_inline
-en_i2c_flag_status_t amhw_hc32f460_i2c_get_status(amhw_hc32f460_i2c_t *p_hw_i2c, uint32_t u32StatusBit)
+en_i2c_flag_status_t amhw_hc32f460_i2c_get_status(amhw_hc32f460_i2c_t *p_hw_i2c,
+                                                  uint32_t             u32StatusBit)
 {
     en_i2c_flag_status_t enRet = I2C_RESET;
 
@@ -688,25 +731,29 @@ en_i2c_flag_status_t amhw_hc32f460_i2c_get_status(amhw_hc32f460_i2c_t *p_hw_i2c,
 }
 
 am_static_inline
-void amhw_hc32f460_i2c_generate_start(amhw_hc32f460_i2c_t *p_hw_i2c, en_i2c_functional_state_t enNewState)
+void amhw_hc32f460_i2c_generate_start(amhw_hc32f460_i2c_t      *p_hw_i2c,
+                                      en_i2c_functional_state_t enNewState)
 {
     p_hw_i2c->CR1_f.START = enNewState;
 }
 
 am_static_inline
-void amhw_hc32f460_i2c_clear_status(amhw_hc32f460_i2c_t *p_hw_i2c, uint32_t u32StatusBit)
+void amhw_hc32f460_i2c_clear_status(amhw_hc32f460_i2c_t *p_hw_i2c,
+                                    uint32_t             u32StatusBit)
 {
     p_hw_i2c->CLR |= (u32StatusBit & I2C_CLR_MASK);
 }
 
 am_static_inline
-void amhw_hc32f460_i2c_generate_restart(amhw_hc32f460_i2c_t *p_hw_i2c, en_i2c_functional_state_t enNewState)
+void amhw_hc32f460_i2c_generate_restart(amhw_hc32f460_i2c_t      *p_hw_i2c,
+                                        en_i2c_functional_state_t enNewState)
 {
     p_hw_i2c->CR1_f.RESTART = enNewState;
 }
 
 am_static_inline
-void amhw_hc32f460_i2c_generate_stop(amhw_hc32f460_i2c_t *p_hw_i2c, en_i2c_functional_state_t enNewState)
+void amhw_hc32f460_i2c_generate_stop(amhw_hc32f460_i2c_t       *p_hw_i2c,
+                                     en_i2c_functional_state_t  enNewState)
 {
     p_hw_i2c->CR1_f.STOP = enNewState;
 }
@@ -718,7 +765,8 @@ void amhw_hc32f460_i2c_send_data(amhw_hc32f460_i2c_t *p_hw_i2c, uint8_t u8Data)
 }
 
 am_static_inline
-void amhw_hc32f460_i2c_nack_config(amhw_hc32f460_i2c_t *p_hw_i2c, en_i2c_functional_state_t enNewState)
+void amhw_hc32f460_i2c_nack_config(amhw_hc32f460_i2c_t      *p_hw_i2c,
+                                   en_i2c_functional_state_t enNewState)
 {
     p_hw_i2c->CR1_f.ACK = enNewState;
 }
@@ -733,7 +781,8 @@ am_bool_t amhw_hc32f460_i2c_deinit(amhw_hc32f460_i2c_t *p_hw_i2c)
 }
 
 am_static_inline
-am_bool_t amhw_hc32f460_i2c_init(amhw_hc32f460_i2c_t *p_hw_i2c, const stc_i2c_init_t *pstcI2C_InitStruct)
+am_bool_t amhw_hc32f460_i2c_init(amhw_hc32f460_i2c_t  *p_hw_i2c,
+                                 const stc_i2c_init_t *pstcI2C_InitStruct)
 {
     am_bool_t enRes = AM_OK;
     if((NULL == pstcI2C_InitStruct) || (NULL == p_hw_i2c))

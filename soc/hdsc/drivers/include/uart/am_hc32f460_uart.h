@@ -50,7 +50,6 @@ extern "C" {
  * \brief 用户指定的其它中断发生,p_data的类型为uint32_t，值为串口的中断状态，方
  *        便用户判断具体的中断源，size为1。
  */
-//#define AM_HC32F460_UART_ERRCODE_UART_OTHER_INT  3
 #define AM_HC32F460_USART_ERRCODE_USART_RXERR_INT   3
 #define AM_HC32F460_USART_ERRCODE_USART_TIMEOUT_INT 4
 
@@ -63,15 +62,15 @@ typedef struct am_hc32f460_uart_devinfo {
 
     uint32_t uart_reg_base; /**< \brief 指向UART寄存器块的指针 */
 
-    uint8_t inum_ei;  /**< \brief 串口接收错误中断号 */
-    uint8_t inum_ri;  /**< \brief 串口接受满中断号 */
-    uint8_t inum_ti;  /**< \brief 串口发送空中断号 */
-    uint8_t inum_tci; /**< \brief 串口发送完成中断号 */
-    uint8_t inum_rto; /**< \brief 串口超时中断号 */
+    uint8_t inum_ei;        /**< \brief 串口接收错误中断号 */
+    uint8_t inum_ri;        /**< \brief 串口接受满中断号 */
+    uint8_t inum_ti;        /**< \brief 串口发送空中断号 */
+    uint8_t inum_tci;       /**< \brief 串口发送完成中断号 */
+    uint8_t inum_rto;       /**< \brief 串口超时中断号 */
 
-    uint8_t dev_id; /**< \brief 设备ID号 */
+    uint8_t dev_id;         /**< \brief 设备ID号 */
 
-    int clk_num; /**<  \brief 时钟ID */
+    int clk_num;            /**<  \brief 时钟ID */
 
     /**
      * \brief 串口配置标志，AMHW_HC32F460_UART_DATA_*宏或AMHW_HC32F460_UART_PARITY_*宏
@@ -94,7 +93,7 @@ typedef struct am_hc32f460_uart_devinfo {
     /** \brief RS485 方向控制函数, AM_TRUE: 发送模式， AM_FALSE: 接收模式 */
     void (*pfn_rs485_dir)(am_bool_t is_txmode);
 
-    void (*pfn_plfm_init)(void); /**< \brief 平台初始化函数 */
+    void (*pfn_plfm_init)(void);   /**< \brief 平台初始化函数 */
 
     void (*pfn_plfm_deinit)(void); /**< \brief 平台去初始化函数 */
 
@@ -105,7 +104,7 @@ typedef struct am_hc32f460_uart_devinfo {
  */
 typedef struct am_hc32f460_uart_dev {
 
-    am_uart_serv_t uart_serv; /**< \brief 标准UART服务 */
+    am_uart_serv_t uart_serv;                    /**< \brief 标准UART服务 */
 
     /** \brief 指向用户注册的txchar_get函数 */
     int (*pfn_txchar_get)(void *, char *);
@@ -116,17 +115,17 @@ typedef struct am_hc32f460_uart_dev {
     /** \brief 指向用户注册的错误回调函数 */
     int (*pfn_err)(void *, int, void *, int);
 
-    void *txget_arg;      /**< \brief txchar_get函数参数 */
-    void *rxput_arg;      /**< \brief rxchar_put函数参数 */
-    void *err_arg;        /**< \brief 错误回调函数用户参数 */
+    void *txget_arg;                             /**< \brief txchar_get函数参数 */
+    void *rxput_arg;                             /**< \brief rxchar_put函数参数 */
+    void *err_arg;                               /**< \brief 错误回调函数用户参数 */
 
-    uint8_t  channel_mode; /**< \brief 串口模式 中断/查询 */
-    uint32_t baud_rate;    /**< \brief 串口波特率 */
-    uint16_t options;      /**< \brief 硬件设置选项 */
+    uint8_t  channel_mode;                       /**< \brief 串口模式 中断/查询 */
+    uint32_t baud_rate;                          /**< \brief 串口波特率 */
+    uint16_t options;                            /**< \brief 硬件设置选项 */
 
-    uint32_t other_int_enable; /**< \brief 指定使能的其它中断 */
+    uint32_t other_int_enable;                   /**< \brief 指定使能的其它中断 */
 
-    am_bool_t rs485_en;        /**< \brief 是否使能了 485 模式 */
+    am_bool_t rs485_en;                          /**< \brief 是否使能了 485 模式 */
 
     const am_hc32f460_uart_devinfo_t *p_devinfo; /**< \brief 指向设备信息常量的指针 */
 
@@ -140,8 +139,8 @@ typedef struct am_hc32f460_uart_dev {
  *
  * \return UART标准服务操作句柄，值为NULL时表明初始化失败
  */
-am_uart_handle_t am_hc32f460_uart_init(am_hc32f460_uart_dev_t *p_dev,
-        const am_hc32f460_uart_devinfo_t *p_devinfo);
+am_uart_handle_t am_hc32f460_uart_init(am_hc32f460_uart_dev_t           *p_dev,
+                                       const am_hc32f460_uart_devinfo_t *p_devinfo);
 
 /**
  * \brief 不使用UART时，解初始化UART，释放相关资源

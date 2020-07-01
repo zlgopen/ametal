@@ -51,18 +51,24 @@ extern "C" {
  * @{
  */
 
+/**
+ * \brief SWDT 状态寄存器位域结构体
+ */
 typedef struct
 {
-    __IO uint32_t CNT                       :16;
-    __IO uint32_t UDF                       : 1;
-    __IO uint32_t REF                       : 1;
-    uint32_t RESERVED18                     :14;
+    __IO uint32_t CNT                       :16;  /**< \brief 计数值*/
+    __IO uint32_t UDF                       : 1;  /**< \brief 计数下溢标志*/
+    __IO uint32_t REF                       : 1;  /**< \brief 刷新错误标志*/
+    uint32_t RESERVED18                     :14;  /**< \brief 保留*/
 } stc_swdt_sr_field_t;
 
+/**
+ * \brief SWDT 刷新寄存器位域结构体
+ */
 typedef struct
 {
-    __IO uint32_t RF                        :16;
-    uint32_t RESERVED16                     :16;
+    __IO uint32_t RF                        :16;  /**< \brief 刷新值*/
+    uint32_t RESERVED16                     :16;  /**< \brief 保留*/
 } stc_swdt_rr_field_t;
 
 /**
@@ -70,15 +76,15 @@ typedef struct
  */
 typedef struct
 {
-    uint8_t RESERVED0[4];
+    uint8_t RESERVED0[4];        /**< \brief 保留*/
     union
     {
-        __IO uint32_t SR;
+        __IO uint32_t SR;        /**< \brief 状态寄存器*/
         stc_swdt_sr_field_t SR_f;
     };
     union
     {
-        __IO uint32_t RR;
+        __IO uint32_t RR;        /**< \brief 刷新寄存器*/
         stc_swdt_rr_field_t RR_f;
     };
 }amhw_hc32f460_swdt_t;
@@ -98,8 +104,8 @@ uint16_t amhw_hc32f460_swdt_count_value_get (amhw_hc32f460_swdt_t  *p_hw_swdt)
 }
 
 typedef enum {
-    AMHW_HC32F460_SWDT_STATUS_REF   = 1 << 17,   /* 刷新错误标志 */
-    AMHW_HC32F460_SWDT_STATUS_UDF   = 1 << 16,   /* 计数下溢标志 */
+    AMHW_HC32F460_SWDT_STATUS_REF   = 1 << 17,   /**< \brief 刷新错误标志 */
+    AMHW_HC32F460_SWDT_STATUS_UDF   = 1 << 16,   /**< \brief 计数下溢标志 */
 } amhw_hc32f460_swdt_status_flag_t;
 
 /**
@@ -133,8 +139,8 @@ void amhw_hc32f460_swdt_status_clr (amhw_hc32f460_swdt_t             *p_hw_swdt,
 }
 
 typedef enum {
-    AMHW_HC32F460_SWDT_REFRESH_START = 0x0123, /* 刷新计数器要写入的第一个值 */
-    AMHW_HC32F460_SWDT_REFRESH_END   = 0x3210, /* 刷新计数器要写入的第二个值 */
+    AMHW_HC32F460_SWDT_REFRESH_START = 0x0123, /**< \brief 刷新计数器要写入的第一个值 */
+    AMHW_HC32F460_SWDT_REFRESH_END   = 0x3210, /**< \brief 刷新计数器要写入的第二个值 */
 } amhw_hc32f460_swdt_refresh_set_t;
 
 /**

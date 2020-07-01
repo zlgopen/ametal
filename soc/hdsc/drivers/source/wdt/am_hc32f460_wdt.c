@@ -42,10 +42,10 @@ static const struct am_wdt_drv_funcs __g_wdt_drv_funcs = {
     __wdt_feed
 };
 
-#define AMHW_HC32F460_WDT_COUNTER_MAX_CLK_DIV  (8192ULL)  /* 看门狗计数时钟最大分频 */
-#define AMHW_HC32F460_WDT_COUNTER_MIN_CLK_DIV  (4UL)      /* 看门狗计数时钟最小分频 */
-#define AMHW_HC32F460_WDT_COUNTER_MAX_PERIOD   (65536ULL) /* 看门狗最大计数周期 */
-#define AMHW_HC32F460_WDT_COUNTER_MIN_PERIOD   (256UL)    /* 看门狗最小计数周期 */
+#define AMHW_HC32F460_WDT_COUNTER_MAX_CLK_DIV  (8192ULL)  /**< \brief 看门狗计数时钟最大分频 */
+#define AMHW_HC32F460_WDT_COUNTER_MIN_CLK_DIV  (4UL)      /**< \brief 看门狗计数时钟最小分频 */
+#define AMHW_HC32F460_WDT_COUNTER_MAX_PERIOD   (65536ULL) /**< \brief 看门狗最大计数周期 */
+#define AMHW_HC32F460_WDT_COUNTER_MIN_PERIOD   (256UL)    /**< \brief 看门狗最小计数周期 */
 
 /** \brief 获取看门狗信息 */
 static int __wdt_info_get (void *p_drv, am_wdt_info_t *p_info)

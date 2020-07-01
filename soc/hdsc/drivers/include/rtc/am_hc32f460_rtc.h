@@ -41,7 +41,7 @@ extern "C" {
  */
 typedef struct am_hc32f460_rtc_devinfo {
     uint32_t                  rtc_regbase;           /**< \brief RTC 寄存器基地址 */
-    int                       inum;              /**< \brief RTC 中断号 */
+    int                       inum;                  /**< \brief RTC 中断号 */
     void                    (*pfn_plfm_init)(void);  /**< \brief 平台初始化函数 */
     void                    (*pfn_plfm_deinit)(void);/**< \brief 平台解初始化函数 */
 } am_hc32f460_rtc_devinfo_t;
@@ -55,7 +55,7 @@ typedef struct am_hc32f460_rtc_dev {
     am_bool_t                      rtc_continue;    /**< \brief RTC是否继续运行 */
     am_pfnvoid_t                   pfn_callback[2]; /**< \brief 回调函数 */
     void                          *p_arg[2];        /**< \brief 回调函数参数 */
-    const am_hc32f460_rtc_devinfo_t *p_devinfo;       /**< \brief RTC设备信息 */
+    const am_hc32f460_rtc_devinfo_t *p_devinfo;     /**< \brief RTC设备信息 */
 }am_hc32f460_rtc_dev_t;
 
 /**
@@ -67,7 +67,7 @@ typedef struct am_hc32f460_rtc_dev {
  * \return RTC 标准服务操作句柄，如果为 NULL，表明初始化失败
  */
 am_rtc_handle_t am_hc32f460_rtc_init (am_hc32f460_rtc_dev_t           *p_dev,
-                                    const am_hc32f460_rtc_devinfo_t *p_devinfo);
+                                      const am_hc32f460_rtc_devinfo_t *p_devinfo);
 
 /**
  * \brief 解初始化 RTC
@@ -85,13 +85,13 @@ void RTC_PRD_IrqHandler(void *p_arg);
 /** @} */
 
 /**
- * @} zlg_if_rtc
+ * @} hc32f460_if_rtc
  */
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif/* __HC32_RTC_H */
+#endif/* __HC32F460_RTC_H */
 
 /* end of file */

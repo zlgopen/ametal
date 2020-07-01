@@ -35,17 +35,17 @@ extern "C" {
  * \brief
  */
 typedef struct am_hc32f460_usbd_devinfo{
-    uint32_t usb_regbase;          /**< \brief usb 基地址*/
+    uint32_t usb_regbase;            /**< \brief usb 基地址*/
 
-    int inum;                      /**< \brief 中断号 */
+    int      inum;                   /**< \brief 中断号 */
 
-    void (*pfn_plfm_init)(void);   /**< \brief 平台初始化函数  */
+    void   (*pfn_plfm_init)(void);   /**< \brief 平台初始化函数  */
 
-    void (*pfn_plfm_deinit)(void); /**< \brief 平台去初始化函数 */
+    void   (*pfn_plfm_deinit)(void); /**< \brief 平台去初始化函数 */
 
     const am_usbd_devinfo_t *p_devinfo;
 
-}am_hc32f460_usbd_devinfo_t;
+} am_hc32f460_usbd_devinfo_t;
 
 
 typedef struct am_hc32f460_usbd_dev am_hc32f460_usbd_dev_t;
@@ -54,10 +54,10 @@ typedef struct am_hc32f460_usbd_dev am_hc32f460_usbd_dev_t;
  * \brief zlg USBD device structure
  */
 struct am_hc32f460_usbd_dev {
-    /**< \brief Device handle used to identify the device object belongs to */
+    /** \brief Device handle used to identify the device object belongs to */
     am_usbd_dev_t  device;
 
-    /**< \brief 发生中断的端点，为1表示发生中断，为0表示没有发生中断
+    /** \brief 发生中断的端点，为1表示发生中断，为0表示没有发生中断
      *   D7:D5  保留
      *   D4~D0  对应发生中断的端点4~端点0。
      */
@@ -103,9 +103,9 @@ struct am_hc32f460_usbd_dev {
 
 
 
-///*******************************************************************************
-//   外部声明函数
-//*******************************************************************************/
+/*******************************************************************************
+**   外部声明函数
+********************************************************************************/
 
 
 am_usbd_dev_t *am_hc32f460_usbd_init (am_hc32f460_usbd_dev_t           *p_dev,

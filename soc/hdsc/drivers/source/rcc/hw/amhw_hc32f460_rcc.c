@@ -106,3 +106,5 @@ void amhw_hc32f460_rcc_peripheral_disable(amhw_hc32f460_peripheral peri)
         break;
     }
 }
+
+/* end of file */

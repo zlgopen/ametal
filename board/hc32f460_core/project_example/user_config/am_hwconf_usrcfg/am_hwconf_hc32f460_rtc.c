@@ -12,7 +12,7 @@
 
 /**
  * \file
- * \brief HC32 RTC 用户配置文件
+ * \brief HC32F460 RTC 用户配置文件
  * \sa am_hwconf_hc32f460_rtc.c
  *
  * \internal
@@ -40,7 +40,6 @@
 /** \brief RTC 平台初始化 */
 void __hc32f460_plfm_rtc_init()
 {
-//    am_gpio_pin_cfg(PIOC_13, GPIO_AFIO(AMHW_HC32F460_AFIO_RTCOUT));
     am_clk_enable(CLK_XTAL32);
 }
 
@@ -48,7 +47,6 @@ void __hc32f460_plfm_rtc_init()
 void __hc32f460_plfm_rtc_deinit(void)
 {
     am_clk_disable(CLK_XTAL32);
-//    am_gpio_pin_cfg(PIOC_13, GPIO_AFIO(AMHW_HC32F460_AFIO_GPIO));
 }
 
 /** \brief RTC设备信息 */

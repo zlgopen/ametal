@@ -1,3 +1,33 @@
+/*******************************************************************************
+*                                 AMetal
+*                       ----------------------------
+*                       innovating embedded platform
+*
+* Copyright (c) 2001-2018 Guangzhou ZHIYUAN Electronics Co., Ltd.
+* All rights reserved.
+*
+* Contact information:
+* web site:    http://www.zlg.cn/
+*******************************************************************************/
+
+/**
+ * \file
+ * \brief INTC Access Layer
+ *
+ * \internal
+ * \par Modification history
+ * - 1.00 20-04-16  cds, first implementation
+ *
+ * \endinternal
+ */
+
+#ifndef __HC32F460_INTCTRL_H
+#define __HC32F460_INTCTRL_H
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include "ametal.h"
 #include "hc32f460_regbase.h"
 
@@ -154,79 +184,160 @@ typedef enum amhw_hc32f460_intc_pin_ext_int_mode {
     AMHW_HC32F460_INTC_PIN_EXT_INT_LOW      = 3,
 }amhw_hc32f460_intc_pin_ext_int_mode_t;
 
-
+/**
+ * \brief 外部中断触发模式设置
+ *
+ * \param[in] pin_pos : 引脚外部中断编号（0-15）
+ * \param[in] mode    : 触发模式（amhw_hc32f460_intc_pin_ext_int_mode_t）
+ *
+ * \return none
+ */
 am_static_inline
 void amhw_hc32f460_intc_pin_ext_int_trigger_cfg (int pin_pos, int mode)
 {
     HC32F460_INTC.EIRQCR[pin_pos] &= ~(1 << 7);    /* 关闭数字滤波 */
-    HC32F460_INTC.EIRQCR[pin_pos] &= ~(0x3);          /* 清除模式设置位 */
+    HC32F460_INTC.EIRQCR[pin_pos] &= ~(0x3);       /* 清除模式设置位 */
     HC32F460_INTC.EIRQCR[pin_pos] |= mode;         /* 设置触发模式 */
     HC32F460_INTC.EIRQCR[pin_pos] |= (1 << 7);     /* 开启滤波 */
 }
 
-/* 下降沿触发 */
+/**
+ * \brief 设置外部中断为下降沿触发
+ *
+ * \param[in] pin_pos : 引脚外部中断编号（0-15）
+ *
+ * \return none
+ */
 am_static_inline
 void amhw_hc32f460_intc_pin_falling_int_enable (int pin_pos)
 {
     HC32F460_INTC.EIRQCR[pin_pos] &= ~(1 << 7);    /* 关闭数字滤波 */
     HC32F460_INTC.EIRQCR[pin_pos] &= ~(0x3);       /* 清除模式设置位 */
-    HC32F460_INTC.EIRQCR[pin_pos] |= 0x00;         /* 设置触发模式 */
+    HC32F460_INTC.EIRQCR[pin_pos] |= AMHW_HC32F460_INTC_PIN_EXT_INT_FALL; /* 设置触发模式 */
     HC32F460_INTC.EIRQCR[pin_pos] |= (1 << 7);     /* 开启滤波 */
 }
-/* 上升沿触发 */
+
+/**
+ * \brief 设置外部中断为上升沿触发
+ *
+ * \param[in] pin_pos : 引脚外部中断编号（0-15）
+ *
+ * \return none
+ */
 am_static_inline
 void amhw_hc32f460_intc_pin_rising_int_enable (int pin_pos)
 {
     HC32F460_INTC.EIRQCR[pin_pos] &= ~(1 << 7);    /* 关闭数字滤波 */
     HC32F460_INTC.EIRQCR[pin_pos] &= ~(0x3);       /* 清除模式设置位 */
-    HC32F460_INTC.EIRQCR[pin_pos] |= 0x01;         /* 设置触发模式 */
+    HC32F460_INTC.EIRQCR[pin_pos] |= AMHW_HC32F460_INTC_PIN_EXT_INT_RISE; /* 设置触发模式 */
     HC32F460_INTC.EIRQCR[pin_pos] |= (1 << 7);     /* 开启滤波 */
 }
-/* 双边沿触发 */
+
+/**
+ * \brief 设置外部中断为双边沿触发
+ *
+ * \param[in] pin_pos : 引脚外部中断编号（0-15）
+ *
+ * \return none
+ */
 am_static_inline
 void amhw_hc32f460_intc_pin_double_edge_int_enable (int pin_pos)
 {
     HC32F460_INTC.EIRQCR[pin_pos] &= ~(1 << 7);    /* 关闭数字滤波 */
     HC32F460_INTC.EIRQCR[pin_pos] &= ~(0x3);       /* 清除模式设置位 */
-    HC32F460_INTC.EIRQCR[pin_pos] |= 0x02;         /* 设置触发模式 */
+    HC32F460_INTC.EIRQCR[pin_pos] |= AMHW_HC32F460_INTC_PIN_EXT_INT_BOTHEDGE; /* 设置触发模式 */
     HC32F460_INTC.EIRQCR[pin_pos] |= (1 << 7);     /* 开启滤波 */
 }
-/* 低电平触发 */
+
+/**
+ * \brief 设置外部中断为低电平触发
+ *
+ * \param[in] pin_pos : 引脚外部中断编号（0-15）
+ *
+ * \return none
+ */
 am_static_inline
 void amhw_hc32f460_intc_pin_low_int_enable (int pin_pos)
 {
     HC32F460_INTC.EIRQCR[pin_pos] &= ~(1 << 7);    /* 关闭数字滤波 */
     HC32F460_INTC.EIRQCR[pin_pos] &= ~(0x3);       /* 清除模式设置位 */
-    HC32F460_INTC.EIRQCR[pin_pos] |= 0x03;         /* 设置触发模式 */
+    HC32F460_INTC.EIRQCR[pin_pos] |= AMHW_HC32F460_INTC_PIN_EXT_INT_LOW; /* 设置触发模式 */
     HC32F460_INTC.EIRQCR[pin_pos] |= (1 << 7);     /* 开启滤波 */
 }
 
+/**
+ * \brief 使能外设共享中断位
+ *
+ * \param[in] inum : 中断编号
+ * \param[in] bit  : 要使能的位
+ *
+ * \return none
+ */
 am_static_inline
 void amhw_hc32f460_intc_int_vssel_bit_set (int inum, int bit)
 {
     HC32F460_INTC.VSSEL[inum - 128] |= (1 << bit);
 }
 
+/**
+ * \brief 禁能外设共享中断位
+ *
+ * \param[in] inum : 中断编号
+ * \param[in] bit  : 要禁能的位
+ *
+ * \return none
+ */
 am_static_inline
 void amhw_hc32f460_intc_int_vssel_bit_clr (int inum, int bit)
 {
     HC32F460_INTC.VSSEL[inum - 128] &= ~(1 << bit);
 }
 
+/**
+ * \brief 使能外设共享中断位
+ *
+ * \param[in] inum  : 中断编号
+ * \param[in] mask  : 要使能的位的掩码
+ *
+ * \return none
+ */
 am_static_inline
 void amhw_hc32f460_intc_int_vssel_bits_set (int inum, uint32_t mask)
 {
     HC32F460_INTC.VSSEL[inum - 128] |= mask;
 }
 
+/**
+ * \brief 禁能外设共享中断位
+ *
+ * \param[in] inum  : 中断编号
+ * \param[in] mask  : 要禁能的位的掩码
+ *
+ * \return none
+ */
 am_static_inline
 void amhw_hc32f460_intc_int_vssel_bits_clr (int inum, uint32_t mask)
 {
     HC32F460_INTC.VSSEL[inum - 128] &= ~mask;
 }
 
+/**
+ * \brief 获取中断共享中断位使能状态
+ *
+ * \param[in] inum  : 中断编号
+ *
+ * \return 该中断号对应的共享中断使能状况
+ */
 am_static_inline
 uint32_t amhw_hc32f460_intc_int_vssel_get (int inum)
 {
     return HC32F460_INTC.VSSEL[inum - 128];
 }
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* __HC32F460_INTCTRL_H */
+
+/* end of file */

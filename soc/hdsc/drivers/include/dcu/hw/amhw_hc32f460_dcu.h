@@ -59,51 +59,63 @@ extern "C" {
 
 /** @} */
 
+/**
+ * \brief DCU控制寄存器位域结构体
+ */
 typedef struct
 {
-    __IO uint32_t MODE                      : 3;
-    __IO uint32_t DATASIZE                  : 2;
-    uint32_t RESERVED5                      : 3;
-    __IO uint32_t COMP_TRG                  : 1;
-    uint32_t RESERVED9                      :22;
-    __IO uint32_t INTEN                     : 1;
+    __IO uint32_t MODE                      : 3;  /** <brief 动作模式 */
+    __IO uint32_t DATASIZE                  : 2;  /** <brief 数据大小 */
+    uint32_t RESERVED5                      : 3;  /** <brief 保留 */
+    __IO uint32_t COMP_TRG                  : 1;  /** <brief 比较模式触发比较的时机 */
+    uint32_t RESERVED9                      :22;  /** <brief 保留 */
+    __IO uint32_t INTEN                     : 1;  /** <brief 中断使能 */
 } stc_dcu_ctl_field_t;
 
+/**
+ * \brief DCU标志寄存器位域结构体
+ */
 typedef struct
 {
-    __IO uint32_t FLAG_OP                   : 1;
-    __IO uint32_t FLAG_LS2                  : 1;
-    __IO uint32_t FLAG_EQ2                  : 1;
-    __IO uint32_t FLAG_GT2                  : 1;
-    __IO uint32_t FLAG_LS1                  : 1;
-    __IO uint32_t FLAG_EQ1                  : 1;
-    __IO uint32_t FLAG_GT1                  : 1;
-    uint32_t RESERVED7                      :25;
+    __IO uint32_t FLAG_OP                   : 1;  /** <brief 运算标志位 */
+    __IO uint32_t FLAG_LS2                  : 1;  /** <brief 小于标志位2 */
+    __IO uint32_t FLAG_EQ2                  : 1;  /** <brief 等于标志位2 */
+    __IO uint32_t FLAG_GT2                  : 1;  /** <brief 大于标志位2 */
+    __IO uint32_t FLAG_LS1                  : 1;  /** <brief 小于标志位1 */
+    __IO uint32_t FLAG_EQ1                  : 1;  /** <brief 等于标志位1 */
+    __IO uint32_t FLAG_GT1                  : 1;  /** <brief 大于标志位1 */
+    uint32_t RESERVED7                      :25;  /** <brief 保留 */
 } stc_dcu_flag_field_t;
 
+/**
+ * \brief DCU标志复位寄存器位域结构体
+ */
 typedef struct
 {
-    __IO uint32_t CLR_OP                    : 1;
-    __IO uint32_t CLR_LS2                   : 1;
-    __IO uint32_t CLR_EQ2                   : 1;
-    __IO uint32_t CLR_GT2                   : 1;
-    __IO uint32_t CLR_LS1                   : 1;
-    __IO uint32_t CLR_EQ1                   : 1;
-    __IO uint32_t CLR_GT1                   : 1;
-    uint32_t RESERVED7                      :25;
+    __IO uint32_t CLR_OP                    : 1;  /** <brief 清除运算标志位 */
+    __IO uint32_t CLR_LS2                   : 1;  /** <brief 清除小于标志位2 */
+    __IO uint32_t CLR_EQ2                   : 1;  /** <brief 清除等于标志位2 */
+    __IO uint32_t CLR_GT2                   : 1;  /** <brief 清除大于标志位2 */
+    __IO uint32_t CLR_LS1                   : 1;  /** <brief 清除小于标志位1 */
+    __IO uint32_t CLR_EQ1                   : 1;  /** <brief 清除等于标志位1 */
+    __IO uint32_t CLR_GT1                   : 1;  /** <brief 清除大于标志位1 */
+    uint32_t RESERVED7                      :25;  /** <brief 保留 */
 } stc_dcu_flagclr_field_t;
 
+/**
+ * \brief DCU标志复位寄存器位域结构体
+ */
 typedef struct
 {
-    __IO uint32_t INT_OP                    : 1;
-    __IO uint32_t INT_LS2                   : 1;
-    __IO uint32_t INT_EQ2                   : 1;
-    __IO uint32_t INT_GT2                   : 1;
-    __IO uint32_t INT_LS1                   : 1;
-    __IO uint32_t INT_EQ1                   : 1;
-    __IO uint32_t INT_GT1                   : 1;
-    __IO uint32_t INT_WIN                   : 2;
-    uint32_t RESERVED9                      :23;
+    __IO uint32_t INT_OP                    : 1;  /** <brief 运算标志位 */
+    __IO uint32_t INT_LS2                   : 1;  /** <brief 小于中断条件选择2 */
+    __IO uint32_t INT_EQ2                   : 1;  /** <brief 等于中断条件选择2 */
+    __IO uint32_t INT_GT2                   : 1;  /** <brief 大于中断条件选择2 */
+    __IO uint32_t INT_LS1                   : 1;  /** <brief 小于中断条件选择1 */
+    __IO uint32_t INT_EQ1                   : 1;  /** <brief 等于中断条件选择1 */
+    __IO uint32_t INT_GT1                   : 1;  /** <brief 大于中断条件选择1 */
+    __IO uint32_t INT_WIN                   : 2;  /** <brief 窗口比较中断条件选择 */
+    uint32_t RESERVED9                      :23;  /** <brief 保留 */
 } stc_dcu_intsel_field_t;
 
 /**
@@ -112,25 +124,25 @@ typedef struct
 typedef struct amhw_hc32f460_dcu {
     union
     {
-        __IO uint32_t CTL;
-        stc_dcu_ctl_field_t CTL_f;
+        __IO uint32_t CTL;          /**< \brief DCU0控制寄存器 */
+        stc_dcu_ctl_field_t CTL_f;  /**< \brief DCU0标志寄存器 */
     };
     union
     {
-        __IO uint32_t FLAG;
+        __IO uint32_t FLAG;         /**< \brief DCU0标志寄存器 */
         stc_dcu_flag_field_t FLAG_f;
     };
-    __IO uint32_t DATA0;
-    __IO uint32_t DATA1;
-    __IO uint32_t DATA2;
+    __IO uint32_t DATA0;            /**< \brief DCU0数据寄存器0 */
+    __IO uint32_t DATA1;            /**< \brief DCU0数据寄存器1 */
+    __IO uint32_t DATA2;            /**< \brief DCU0数据寄存器2 */
     union
     {
-        __IO uint32_t FLAGCLR;
+        __IO uint32_t FLAGCLR;      /**< \brief DCU0标志复位寄存器 */
         stc_dcu_flagclr_field_t FLAGCLR_f;
     };
     union
     {
-        __IO uint32_t INTSEL;
+        __IO uint32_t INTSEL;       /**< \brief DCU0中断条件选择寄存器 */
         stc_dcu_intsel_field_t INTSEL_f;
     };
 } amhw_hc32f460_dcu_t;
@@ -203,7 +215,8 @@ typedef enum {
  * \retval : 无
  */
 am_static_inline
-void amhw_hc32f460_dcu_datasize_set (amhw_hc32f460_dcu_t *p_hw_dcu, amhw_hc32f460_dcu_datasize_t datasize)
+void amhw_hc32f460_dcu_datasize_set (amhw_hc32f460_dcu_t         *p_hw_dcu,
+                                     amhw_hc32f460_dcu_datasize_t datasize)
 {
     p_hw_dcu->CTL_f.DATASIZE = datasize;
 }
@@ -258,7 +271,8 @@ typedef enum {
  * \retval : 无
  */
 am_static_inline
-am_bool_t amhw_hc32f460_dcu_result_flag_check (amhw_hc32f460_dcu_t *p_hw_dcu, amhw_hc32f460_dcu_result_flag_t flag)
+am_bool_t amhw_hc32f460_dcu_result_flag_check (amhw_hc32f460_dcu_t            *p_hw_dcu,
+                                               amhw_hc32f460_dcu_result_flag_t flag)
 {
     return (p_hw_dcu->FLAG & flag) ? AM_TRUE : AM_FALSE;
 }
@@ -558,7 +572,8 @@ typedef enum {
  * \retval : 读取出的数据
  */
 am_static_inline
-void amhw_hc32f460_dcu_int_condition_set (amhw_hc32f460_dcu_t *p_hw_dcu, amhw_hc32f460_dcu_int_condition_t flag)
+void amhw_hc32f460_dcu_int_condition_set (amhw_hc32f460_dcu_t              *p_hw_dcu,
+                                          amhw_hc32f460_dcu_int_condition_t flag)
 {
     p_hw_dcu->INTSEL = flag;
 }

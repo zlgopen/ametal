@@ -77,14 +77,14 @@ am_local void __hc32f460_i2c1_plfm_deinit (void)
 
 /** \brief I2C1 设备信息 */
 am_local am_const am_hc32f460_i2c_devinfo_t __g_hc32f460_i2c1_devinfo = {
-    HC32F460_I2C1_BASE,         /* I2C0 寄存器块基址 */
-    CLK_IIC1,                   /* I2C0 时钟号 */
-    INUM_I2C1,                  /* I2C0 中断号 */
-    __BUS_SPEED_I2C1,           /* I2C0 总线速率 */
-    10,                         /* 超时时间 */
-    __hc32f460_i2c1_bus_clean,    /* 总线恢复函数 */
-    __hc32f460_i2c1_plfm_init,    /* 平台初始化函数 */
-    __hc32f460_i2c1_plfm_deinit   /* 平台解初始化函数 */
+    HC32F460_I2C1_BASE,           /**< \brief I2C1 寄存器块基址 */
+    CLK_IIC1,                     /**< \brief I2C1 时钟号 */
+    INUM_I2C1,                    /**< \brief I2C1 中断号 */
+    __BUS_SPEED_I2C1,             /**< \brief I2C1 总线速率 */
+    10,                           /**< \brief 超时时间 */
+    __hc32f460_i2c1_bus_clean,    /**< \brief 总线恢复函数 */
+    __hc32f460_i2c1_plfm_init,    /**< \brief 平台初始化函数 */
+    __hc32f460_i2c1_plfm_deinit   /**< \brief 平台解初始化函数 */
 };
 
 /** \brief I2C1 设备实例 */
@@ -106,7 +106,7 @@ void am_hc32f460_i2c_inst1_deinit (am_i2c_handle_t handle)
     am_hc32f460_i2c_deinit(handle);
 }
 
-////////////////////////////////////////////////////////////////////////////////
+/******************************************************************************/
 
 /** \brief I2C2 总线恢复函数 */
 static void __hc32f460_i2c2_bus_clean (void)
@@ -152,14 +152,14 @@ am_local void __hc32f460_i2c2_plfm_deinit (void)
 
 /** \brief I2C2 设备信息 */
 am_local am_const am_hc32f460_i2c_devinfo_t __g_hc32f460_i2c2_devinfo = {
-    HC32F460_I2C2_BASE,         /* I2C0 寄存器块基址 */
-    CLK_IIC2,                   /* I2C0 时钟号 */
-    INUM_I2C2,                  /* I2C0 中断号 */
-    __BUS_SPEED_I2C2,           /* I2C0 总线速率 */
-    10,                         /* 超时时间 */
-    __hc32f460_i2c2_bus_clean,    /* 总线恢复函数 */
-    __hc32f460_i2c2_plfm_init,    /* 平台初始化函数 */
-    __hc32f460_i2c2_plfm_deinit   /* 平台解初始化函数 */
+    HC32F460_I2C2_BASE,           /**< \brief I2C2 寄存器块基址 */
+    CLK_IIC2,                     /**< \brief I2C2 时钟号 */
+    INUM_I2C2,                    /**< \brief I2C2 中断号 */
+    __BUS_SPEED_I2C2,             /**< \brief I2C2 总线速率 */
+    10,                           /**< \brief 超时时间 */
+    __hc32f460_i2c2_bus_clean,    /**< \brief 总线恢复函数 */
+    __hc32f460_i2c2_plfm_init,    /**< \brief 平台初始化函数 */
+    __hc32f460_i2c2_plfm_deinit   /**< \brief 平台解初始化函数 */
 };
 
 /** \brief I2C2 设备实例 */

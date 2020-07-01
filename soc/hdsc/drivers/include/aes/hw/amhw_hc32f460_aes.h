@@ -63,22 +63,25 @@ extern "C" {
  * \brief AES - 寄存器组
  */
 
+/**
+ * \brief AES控制寄存器位域结构体
+ */
 typedef struct
 {
-    __IO uint32_t START                     : 1;
-    __IO uint32_t MODE                      : 1;
-    uint32_t RESERVED2                      :30;
+    __IO uint32_t START                     : 1;  /** <brief 启动 */
+    __IO uint32_t MODE                      : 1;  /** <brief 功能选择 */
+    uint32_t RESERVED2                      :30;  /** <brief 保留 */
 } stc_aes_cr_field_t;
 
 typedef struct amhw_hc32f460_aes {
     union
     {
-        __IO uint32_t CR;
+        __IO uint32_t CR;       /** <brief AES控制寄存器 */
         stc_aes_cr_field_t CR_f;
     };
-    uint8_t RESERVED1[12];
-    __IO uint32_t DR[4];
-    __IO uint32_t KR[4];
+    uint8_t RESERVED1[12];      /** <brief 保留 */
+    __IO uint32_t DR[4];        /** <brief AES数据寄存器 */
+    __IO uint32_t KR[4];        /** <brief AES密钥寄存器 */
 } amhw_hc32f460_aes_t;
 
 

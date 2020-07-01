@@ -48,7 +48,7 @@ extern "C" {
 typedef struct am_hc32f460_tim4_timing_devinfo {
 
     uint32_t                      tim4_regbase;    /**< \brief TIM寄存器块基址 */
-    uint8_t                       inum;           /**< \brief TIM中断号 */    
+    uint8_t                       inum;            /**< \brief TIM中断号 */
     tim4_counter_mode_t           tim4_counter_mode;     
     
     /** \brief 平台初始化函数，如打开时钟，配置引脚等工作 */
@@ -87,7 +87,7 @@ typedef struct am_hc32f460_tim4_timing_dev {
  */
 am_timer_handle_t
 am_hc32f460_tim4_timing_init (am_hc32f460_tim4_timing_dev_t              *p_dev,
-                           const am_hc32f460_tim4_timing_devinfo_t *p_devinfo);
+                              const am_hc32f460_tim4_timing_devinfo_t    *p_devinfo);
 
 /**
  * \brief 不使用TIM定时功能时，解初始化TIM定时功能，释放相关资源

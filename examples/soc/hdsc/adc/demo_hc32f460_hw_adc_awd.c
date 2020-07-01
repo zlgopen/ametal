@@ -45,7 +45,7 @@
 
 static volatile uint16_t  __g_adc_dat[10];              /**< \brief 采样值缓存 */
 static volatile am_bool_t __g_adc_complete = AM_FALSE;
-static volatile am_bool_t __g_adc_seqcmp = AM_FALSE;
+static volatile am_bool_t __g_adc_seqcmp   = AM_FALSE;
 #define ADC_CHAN    0
 
 #define THRESHOLD_VALUE_LOW  500
@@ -184,8 +184,8 @@ void demo_hc32f460_hw_adc_awd_entry (void    *p_hw_adc,
         /* 转换为电压值对应的整数值 */
         adc_mv = sum * 3300 / ((1UL << 12) -1);
 
-				AM_DBG_INFO("threshold value low  : %d\r\n", threshold_value_low);
-				AM_DBG_INFO("threshold value high : %d\r\n", threshold_value_high);
+        AM_DBG_INFO("threshold value low  : %d\r\n", threshold_value_low);
+        AM_DBG_INFO("threshold value high : %d\r\n", threshold_value_high);
         AM_DBG_INFO("Sample : %d, Vol: %d mv\r\n", sum, adc_mv);
 
         __g_adc_complete = AM_FALSE;

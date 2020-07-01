@@ -47,27 +47,25 @@ void __hc32f460_plfm_trng_init (void)
  */
 void __hc32f460_plfm_trng_deinit (void)
 {
-    /* 关闭TRNG时钟 */
+	/** \brief 关闭TRNG时钟 */
     am_clk_disable (CLK_TRNG);
 }
 
 /** \brief TRNG 设备信息 */
 static const am_hc32f460_trng_devinfo_t __g_trng_devinfo =
 {
-    /**< \brief 指向TRNG寄存器块的指针 */
+    /** \brief trng寄存器块基地址 */
     HC32F460_TRNG_BASE,
 
     /**
      * \brief TRNG 反馈移位次数
-     *
-     * \note : 参考amhw_zlg118_trng.h中枚举定义：RNG 反馈的移位次数
      */
     AMHW_HC32F460_TRNG_CNT_256,
 
-    /**< \brief trng平台初始化函数 */
+    /** \brief trng平台初始化函数 */
     __hc32f460_plfm_trng_init,
 
-    /**< \brief trng平台解初始化函数  */
+    /** \brief trng平台解初始化函数  */
     __hc32f460_plfm_trng_deinit,
 };
 

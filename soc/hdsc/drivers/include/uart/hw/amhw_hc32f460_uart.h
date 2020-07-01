@@ -58,94 +58,115 @@ extern "C" {
   #warning Not supported compiler t
 #endif
 
+/**
+ * \brief UART 状态寄存器位域结构体
+ */
 typedef struct
 {
-    __IO uint32_t PE                        : 1;
-    __IO uint32_t FE                        : 1;
-    uint32_t RESERVED2                      : 1;
-    __IO uint32_t ORE                       : 1;
-    uint32_t RESERVED4                      : 1;
-    __IO uint32_t RXNE                      : 1;
-    __IO uint32_t TC                        : 1;
-    __IO uint32_t TXE                       : 1;
-    __IO uint32_t RTOF                      : 1;
-    uint32_t RESERVED9                      : 7;
-    __IO uint32_t MPB                       : 1;
-    uint32_t RESERVED17                     :15;
+    __IO uint32_t PE                        : 1;  /**< \brief 接收数据校验错误标志*/
+    __IO uint32_t FE                        : 1;  /**< \brief 接收帧错误标志*/
+    uint32_t RESERVED2                      : 1;  /**< \brief 保留*/
+    __IO uint32_t ORE                       : 1;  /**< \brief 接收上溢错误标志*/
+    uint32_t RESERVED4                      : 1;  /**< \brief 保留*/
+    __IO uint32_t RXNE                      : 1;  /**< \brief 接收数据寄存器不为空*/
+    __IO uint32_t TC                        : 1;  /**< \brief 发送完成标志*/
+    __IO uint32_t TXE                       : 1;  /**< \brief 发送数据寄存器为空*/
+    __IO uint32_t RTOF                      : 1;  /**< \brief UART接收TIMEOUT标志位*/
+    uint32_t RESERVED9                      : 7;  /**< \brief 保留*/
+    __IO uint32_t MPB                       : 1;  /**< \brief 接收数据的多处理器位*/
+    uint32_t RESERVED17                     :15;  /**< \brief 保留*/
 } stc_usart_sr_field_t;
 
+/**
+ * \brief UART 数据寄存器位域结构体
+ */
 typedef struct
 {
-    __IO uint32_t TDR                       : 9;
-    __IO uint32_t MPID                      : 1;
-    uint32_t RESERVED10                     : 6;
-    __IO uint32_t RDR                       : 9;
-    uint32_t RESERVED25                     : 7;
+    __IO uint32_t TDR                       : 9;  /**< \brief 发送数据值*/
+    __IO uint32_t MPID                      : 1;  /**< \brief 多处理器模式ID位*/
+    uint32_t RESERVED10                     : 6;  /**< \brief 保留*/
+    __IO uint32_t RDR                       : 9;  /**< \brief 接收数据值*/
+    uint32_t RESERVED25                     : 7;  /**< \brief 保留*/
 } stc_usart_dr_field_t;
 
+/**
+ * \brief UART 波特率寄存器位域结构体
+ */
 typedef struct
 {
-    __IO uint32_t DIV_FRACTION              : 7;
-    uint32_t RESERVED7                      : 1;
-    __IO uint32_t DIV_INTEGER               : 8;
-    uint32_t RESERVED16                     :16;
+    __IO uint32_t DIV_FRACTION              : 7;  /**< \brief 小数分频寄存器*/
+    uint32_t RESERVED7                      : 1;  /**< \brief 保留*/
+    __IO uint32_t DIV_INTEGER               : 8;  /**< \brief 整数分频寄存器*/
+    uint32_t RESERVED16                     :16;  /**< \brief 保留*/
 } stc_usart_brr_field_t;
 
+/**
+ * \brief UART 控制寄存器1位域结构体
+ */
 typedef struct
 {
-    __IO uint32_t RTOE                      : 1;
-    __IO uint32_t RTOIE                     : 1;
-    __IO uint32_t RE                        : 1;
-    __IO uint32_t TE                        : 1;
-    __IO uint32_t SLME                      : 1;
-    __IO uint32_t RIE                       : 1;
-    __IO uint32_t TCIE                      : 1;
-    __IO uint32_t TXEIE                     : 1;
-    uint32_t RESERVED8                      : 1;
-    __IO uint32_t PS                        : 1;
-    __IO uint32_t PCE                       : 1;
-    uint32_t RESERVED11                     : 1;
-    __IO uint32_t M                         : 1;
-    uint32_t RESERVED13                     : 2;
-    __IO uint32_t OVER8                     : 1;
-    __IO uint32_t CPE                       : 1;
-    __IO uint32_t CFE                       : 1;
-    uint32_t RESERVED18                     : 1;
-    __IO uint32_t CORE                      : 1;
-    __IO uint32_t CRTOF                     : 1;
-    uint32_t RESERVED21                     : 3;
-    __IO uint32_t MS                        : 1;
-    uint32_t RESERVED25                     : 3;
-    __IO uint32_t ML                        : 1;
-    __IO uint32_t FBME                      : 1;
-    __IO uint32_t NFE                       : 1;
-    __IO uint32_t SBS                       : 1;
+    __IO uint32_t RTOE                      : 1;  /**< \brief UART TIMEOUT 功能使能位*/
+    __IO uint32_t RTOIE                     : 1;  /**< \brief UART TIMEOUT 中断使能位*/
+    __IO uint32_t RE                        : 1;  /**< \brief 接收使能位*/
+    __IO uint32_t TE                        : 1;  /**< \brief 发送使能位*/
+    __IO uint32_t SLME                      : 1;  /**< \brief 静默模式使能位*/
+    __IO uint32_t RIE                       : 1;  /**< \brief 接收中断请求有效位*/
+    __IO uint32_t TCIE                      : 1;  /**< \brief 发送完成中断请求使能位*/
+    __IO uint32_t TXEIE                     : 1;  /**< \brief 发送中断请求使能位*/
+    uint32_t RESERVED8                      : 1;  /**< \brief 保留*/
+    __IO uint32_t PS                        : 1;  /**< \brief 校验位*/
+    __IO uint32_t PCE                       : 1;  /**< \brief 校验有效位*/
+    uint32_t RESERVED11                     : 1;  /**< \brief 保留*/
+    __IO uint32_t M                         : 1;  /**< \brief 字长设定位*/
+    uint32_t RESERVED13                     : 2;  /**< \brief 保留*/
+    __IO uint32_t OVER8                     : 1;  /**< \brief UART过采样模式*/
+    __IO uint32_t CPE                       : 1;  /**< \brief PEF清零位*/
+    __IO uint32_t CFE                       : 1;  /**< \brief FE清零位*/
+    uint32_t RESERVED18                     : 1;  /**< \brief 保留*/
+    __IO uint32_t CORE                      : 1;  /**< \brief ORE清零位*/
+    __IO uint32_t CRTOF                     : 1;  /**< \brief RTOF清零位*/
+    uint32_t RESERVED21                     : 3;  /**< \brief 保留*/
+    __IO uint32_t MS                        : 1;  /**< \brief 模式选择位*/
+    uint32_t RESERVED25                     : 3;  /**< \brief 保留*/
+    __IO uint32_t ML                        : 1;  /**< \brief MSB/LSB选择位*/
+    __IO uint32_t FBME                      : 1;  /**< \brief 小数波特率生成使能信号*/
+    __IO uint32_t NFE                       : 1;  /**< \brief Noise Filter有效设定位*/
+    __IO uint32_t SBS                       : 1;  /**< \brief UART模式接收数据起始位检测方式设定位*/
 } stc_usart_cr1_field_t;
 
+/**
+ * \brief UART 控制寄存器2位域结构体
+ */
 typedef struct
 {
-    __IO uint32_t MPE                       : 1;
-    uint32_t RESERVED1                      :10;
-    __IO uint32_t CLKC                      : 2;
-    __IO uint32_t STOP                      : 1;
-    uint32_t RESERVED14                     :18;
+    __IO uint32_t MPE                       : 1;  /**< \brief 多处理器功能有效位*/
+    uint32_t RESERVED1                      :10;  /**< \brief 保留*/
+    __IO uint32_t CLKC                      : 2;  /**< \brief 时钟控制位*/
+    __IO uint32_t STOP                      : 1;  /**< \brief 停止位设定位*/
+    uint32_t RESERVED14                     :18;  /**< \brief 保留*/
 } stc_usart_cr2_field_t;
 
+/**
+ * \brief UART 控制寄存器3位域结构体
+ */
 typedef struct
 {
-    uint32_t RESERVED0                      : 5;
-    __IO uint32_t SCEN                      : 1;
-    uint32_t RESERVED6                      : 3;
-    __IO uint32_t CTSE                      : 1;
-    uint32_t RESERVED10                     :11;
-    __IO uint32_t BCN                       : 3;
-    uint32_t RESERVED24                     : 8;
+    uint32_t RESERVED0                      : 5;  /**< \brief 保留*/
+    __IO uint32_t SCEN                      : 1;  /**< \brief 智能卡模式使能位*/
+    uint32_t RESERVED6                      : 3;  /**< \brief 保留*/
+    __IO uint32_t CTSE                      : 1;  /**< \brief CTS功能使能位*/
+    uint32_t RESERVED10                     :11;  /**< \brief 保留*/
+    __IO uint32_t BCN                       : 3;  /**< \brief 基本时钟数*/
+    uint32_t RESERVED24                     : 8;  /**< \brief 保留*/
 } stc_usart_cr3_field_t;
 
+/**
+ * \brief UART 预分频寄存器位域结构体
+ */
 typedef struct
 {
-    __IO uint32_t PSC                       : 2;
-    uint32_t RESERVED2                      :30;
+    __IO uint32_t PSC                       : 2;  /**< \brief 预分频器值*/
+    uint32_t RESERVED2                      :30;  /**< \brief 保留*/
 } stc_usart_pr_field_t;
 
 /** @} */
@@ -156,37 +177,37 @@ typedef struct
 typedef struct amhw_hc32f460_uart {
     union
     {
-        __IO uint32_t SR;
+        __IO uint32_t SR;            /**< \brief 状态寄存器*/
         stc_usart_sr_field_t SR_f;
     };
     union
     {
-        __IO uint32_t DR;
+        __IO uint32_t DR;            /**< \brief 数据寄存器*/
         stc_usart_dr_field_t DR_f;
     };
     union
     {
-        __IO uint32_t BRR;
+        __IO uint32_t BRR;           /**< \brief 波特率寄存器*/
         stc_usart_brr_field_t BRR_f;
     };
     union
     {
-        __IO uint32_t CR1;
+        __IO uint32_t CR1;           /**< \brief 控制寄存器1*/
         stc_usart_cr1_field_t CR1_f;
     };
     union
     {
-        __IO uint32_t CR2;
+        __IO uint32_t CR2;           /**< \brief 控制寄存器2*/
         stc_usart_cr2_field_t CR2_f;
     };
     union
     {
-        __IO uint32_t CR3;
+        __IO uint32_t CR3;           /**< \brief 控制寄存器2*/
         stc_usart_cr3_field_t CR3_f;
     };
     union
     {
-        __IO uint32_t PR;
+        __IO uint32_t PR;            /**< \brief 预分频寄存器*/
         stc_usart_pr_field_t PR_f;
     };
 } amhw_hc32f460_uart_t;
@@ -235,13 +256,7 @@ am_static_inline
 void amhw_hc32f460_uart_data_write (amhw_hc32f460_uart_t    *p_hw_uart,
                                     uint32_t                 data_w)
 {
-//	if(data_w == '3'){
-//		while(1);
-//	}
     p_hw_uart->DR_f.TDR = (uint32_t)(0xffu & data_w);
-//	if(data_w == '3'){
-//		while(1);
-//	}
 }
 /**
  * \brief read data form receive data register
@@ -282,49 +297,10 @@ uint8_t amhw_hc32f460_uart_data_read (amhw_hc32f460_uart_t *p_hw_uart)
  * \retval TRUE or FALSE
  */
 am_static_inline
-am_bool_t amhw_hc32f460_uart_status_flag_check (amhw_hc32f460_uart_t    *p_hw_uart,
-                                                uint32_t            flag)
+am_bool_t amhw_hc32f460_uart_status_flag_check (amhw_hc32f460_uart_t *p_hw_uart,
+                                                uint32_t              flag)
 {
     return ((0xffffu & p_hw_uart->SR) & flag) ? AM_TRUE : AM_FALSE;
-}
-
-/**
- * \name  Interrupt flag
- * \anchor amhw_hc32f460_uart_
- * @{
- */
-
-/** \brief Receive  break frame interrupt flag */
-//#define AMHW_HC32F460_UART_INT_RXBRK_FLAG      AM_BIT(6)
-
-/** \brief Frame error interrupt flag */
-//#define AMHW_HC32F460_UART_INT_RXFERR_FLAG     AM_BIT(5)
-
-/** \brief Parity error interrupt flag */
-//#define AMHW_HC32F460_UART_INT_RXPERR_FLAG     AM_BIT(4)
-
-/** \brief Receive overflow error interrupt flag */
-//#define AMHW_HC32F460_UART_INT_RXOERR_FLAG     AM_BIT(3)
-
-/** \brief Receive valid interrupt flag */
-//#define AMHW_HC32F460_UART_INT_RX_VAL_FLAG     AM_BIT(5)
-
-/** \brief Transmit buffer empty interrupt flag */
-//#define AMHW_HC32F460_UART_INT_TX_EMPTY_FLAG   AM_BIT(0)
-/** @} */
-
-
-/**
- * \brief get the value of interrupt status register
- *
- * \param[in] p_hw_uart : pointer to UART register block
- * \return The value of ISR register
- */
-am_static_inline
-uint32_t amhw_hc32f460_uart_int_flag_get (amhw_hc32f460_uart_t *p_hw_uart)
-{
-//    return p_hw_uart->isr;
-    return AM_TRUE;
 }
 
 /**
@@ -360,19 +336,6 @@ uint32_t amhw_hc32f460_uart_int_flag_get (amhw_hc32f460_uart_t *p_hw_uart)
  * \anchor amhw_hc32f460_uart_
  * @{
  */
-
-/** \brief Receive  break frame interrupt enable */
-//#define AMHW_HC32F460_UART_INT_RXBRK_ENABLE       AM_BIT(6)
-
-/** \brief Frame error interrupt enable */
-//#define AMHW_HC32F460_UART_INT_RXFERR_ENABLE      AM_BIT(5)
-
-/** \brief Parity error interrupt enable */
-//#define AMHW_HC32F460_UART_INT_RXPERR_ENABLE      AM_BIT(4)
-
-/** \brief Receive overflow error interrupt enable */
-//#define AMHW_HC32F460_UART_INT_RXOERR_ENABLE      AM_BIT(3)
-
 /** \brief Receive timeout interrupt enable */
 #define AMHW_HC32F460_UART_INT_TIME_OUT_ENABLE    AM_BIT(1)
 
@@ -401,14 +364,16 @@ uint32_t amhw_hc32f460_uart_int_flag_get (amhw_hc32f460_uart_t *p_hw_uart)
  * \return none
  */
 am_static_inline
-void amhw_hc32f460_uart_int_enable (amhw_hc32f460_uart_t *p_hw_uart, uint32_t flag)
+void amhw_hc32f460_uart_int_enable (amhw_hc32f460_uart_t *p_hw_uart,
+                                    uint32_t              flag)
 {
-	/* 使能发送数据寄存器空中断（必须同时使能发送功能） */
-	if (flag & AMHW_HC32F460_UART_INT_TX_EMPTY_ENABLE) {
-		p_hw_uart->CR1 = (p_hw_uart->CR1 & (~(flag))) | (flag | AMHW_HC32F460_UART_TX_ENABLE);
-	} else {
-		p_hw_uart->CR1 = (p_hw_uart->CR1 & (~(flag))) | flag;
-	}
+    /** \brief 使能发送数据寄存器空中断（必须同时使能发送功能） */
+    if (flag & AMHW_HC32F460_UART_INT_TX_EMPTY_ENABLE) {
+        p_hw_uart->CR1 = (p_hw_uart->CR1 & (~(flag))) |
+                         (flag | AMHW_HC32F460_UART_TX_ENABLE);
+    } else {
+        p_hw_uart->CR1 = (p_hw_uart->CR1 & (~(flag))) | flag;
+    }
 }
 
 /**
@@ -419,7 +384,8 @@ void amhw_hc32f460_uart_int_enable (amhw_hc32f460_uart_t *p_hw_uart, uint32_t fl
  * \return none
  */
 am_static_inline
-void amhw_hc32f460_uart_int_disable (amhw_hc32f460_uart_t *p_hw_uart, uint32_t flag)
+void amhw_hc32f460_uart_int_disable (amhw_hc32f460_uart_t *p_hw_uart,
+                                     uint32_t              flag)
 {
     p_hw_uart->CR1 = p_hw_uart->CR1 & (~(flag));
 }
@@ -432,7 +398,8 @@ void amhw_hc32f460_uart_int_disable (amhw_hc32f460_uart_t *p_hw_uart, uint32_t f
  * \return none
  */
 am_static_inline
-void amhw_hc32f460_uart_tx_enable (amhw_hc32f460_uart_t *p_hw_uart, am_bool_t flag)
+void amhw_hc32f460_uart_tx_enable (amhw_hc32f460_uart_t *p_hw_uart,
+                                   am_bool_t             flag)
 {
     p_hw_uart->CR1_f.TE = flag;
 }
@@ -445,7 +412,8 @@ void amhw_hc32f460_uart_tx_enable (amhw_hc32f460_uart_t *p_hw_uart, am_bool_t fl
  * \return none
  */
 am_static_inline
-void amhw_hc32f460_uart_rx_enable (amhw_hc32f460_uart_t *p_hw_uart, am_bool_t flag)
+void amhw_hc32f460_uart_rx_enable (amhw_hc32f460_uart_t *p_hw_uart,
+                                   am_bool_t             flag)
 {
     p_hw_uart->CR1_f.RE = flag;
 }
@@ -458,63 +426,11 @@ void amhw_hc32f460_uart_rx_enable (amhw_hc32f460_uart_t *p_hw_uart, am_bool_t fl
  * \return none
  */
 am_static_inline
-void amhw_hc32f460_uart_timeout_enable (amhw_hc32f460_uart_t *p_hw_uart, am_bool_t flag)
+void amhw_hc32f460_uart_timeout_enable (amhw_hc32f460_uart_t *p_hw_uart,
+                                        am_bool_t             flag)
 {
     p_hw_uart->CR1_f.RTOE = flag;
 }
-
-/**
- * \brief Automatic flow control enable
- *
- * \param[in] p_hw_uart : pointer to UART register block
- * \param[in] flag      : TURE or FALSE
- * \return none
- */
-am_static_inline
-void amhw_hc32f460_uart_auto_flow_enable (amhw_hc32f460_uart_t *p_hw_uart,
-                                        am_bool_t           flag)
-{
-//    p_hw_uart->gcr = (p_hw_uart->gcr & (~(1u << 2))) | (flag << 2);
-}
-
-/**
- * \brief DMA mode enable
- *
- * \param[in] p_hw_uart : pointer to UART register block
- * \param[in] flag      : TURE or FALSE
- * \return none
- */
-am_static_inline
-void amhw_hc32f460_uart_dma_mode_enable (amhw_hc32f460_uart_t    *p_hw_uart,
-                                    am_bool_t           flag)
-{
-//    p_hw_uart->gcr = (p_hw_uart->gcr & (~(1u << 1))) | (flag << 1);
-}
-
-/**
- * \brief UART modules enable
- *
- * \param[in] p_hw_uart : pointer to UART register block
- * \return none
- */
-am_static_inline
-void amhw_hc32f460_uart_enable (amhw_hc32f460_uart_t *p_hw_uart)
-{
-//    p_hw_uart->gcr |= (1u << 0);
-}
-
-/**
- * \brief UART modules disable
- *
- * \param[in] p_hw_uart : pointer to UART register block
- * \return none
- */
-am_static_inline
-void amhw_hc32f460_uart_disable (amhw_hc32f460_uart_t *p_hw_uart)
-{
-//    p_hw_uart->gcr &= ~(1u << 0);
-}
-
 
 /**
  * \brief UART data data length select
@@ -574,34 +490,6 @@ void amhw_hc32f460_uart_parity_bit_sel (amhw_hc32f460_uart_t    *p_hw_uart,
         default:
             break;
     }
-}
-
-/**
- * \brief baud rate divide factor mantissa set
- *
- * \param[in] p_hw_uart : pointer to UART register block
- * \param[in] value     : divide factor mantissa
- * \return none
- */
-am_static_inline
-void amhw_hc32f460_uart_br_div_mantissa_set (amhw_hc32f460_uart_t    *p_hw_uart,
-                                             uint32_t                 value)
-{
-//    p_hw_uart->brr = (0xffff & value);
-}
-
-/**
- * \brief baud rate divide factor fraction set
- *
- * \param[in] p_hw_uart : pointer to UART register block
- * \param[in] value     : divide factor fraction
- * \return none
- */
-am_static_inline
-void amhw_hc32f460_uart_br_div_fraction_set (amhw_hc32f460_uart_t    *p_hw_uart,
-                                             uint32_t                 value)
-{
-//    p_hw_uart->fra = (0xf & value);
 }
 
 /**

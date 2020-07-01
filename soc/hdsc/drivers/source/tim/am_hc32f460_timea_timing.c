@@ -74,7 +74,7 @@ void __timea_irq_handler (void *p_arg)
 {
     am_hc32f460_timea_timing_dev_t *p_dev    = (am_hc32f460_timea_timing_dev_t *)p_arg;
     amhw_hc32f460_timea_t          *p_hw_tim = (amhw_hc32f460_timea_t *)
-                                           p_dev->p_devinfo->timea_regbase;
+                                                p_dev->p_devinfo->timea_regbase;
                                            
     timea_flag_type_t flag = TIMEA_FLAG_OVERFLOW;                                          
     /*
@@ -115,8 +115,8 @@ static int __timea_timing_clkin_freq_get (void *p_drv, uint32_t *p_freq)
 
 /******************************************************************************/
 static int __timea_timing_prescale_set (void    *p_drv, 
-                                      uint8_t  chan, 
-                                      uint32_t prescale)
+                                        uint8_t  chan,
+                                        uint32_t prescale)
 {
     am_hc32f460_timea_timing_dev_t *p_dev = (am_hc32f460_timea_timing_dev_t *)p_drv;
     amhw_hc32f460_timea_t          *p_hw_tim;
@@ -165,8 +165,8 @@ static int __timea_timing_prescale_set (void    *p_drv,
 
 /******************************************************************************/
 static int __timea_timing_prescale_get (void     *p_drv, 
-                                      uint8_t   chan, 
-                                      uint32_t *p_prescale)
+                                        uint8_t   chan,
+                                        uint32_t *p_prescale)
 {
 
     am_hc32f460_timea_timing_dev_t *p_dev = (am_hc32f460_timea_timing_dev_t *)p_drv;
@@ -245,15 +245,16 @@ static int __timea_timing_enable (void *p_drv, uint8_t chan, void *p_count)
 {
     am_hc32f460_timea_timing_dev_t *p_dev = (am_hc32f460_timea_timing_dev_t *)p_drv;
     amhw_hc32f460_timea_t          *p_hw_tim;
-    uint16_t                     count = *(uint16_t *)p_count;
+    uint16_t                        count = *(uint16_t *)p_count;
 
     if ((p_dev == NULL) || (p_count == NULL)) {
         return -AM_EINVAL;
     }
     p_hw_tim = (amhw_hc32f460_timea_t *)p_dev->p_devinfo->timea_regbase;
     am_hc32f460_timea_timing_devinfo_t  *p_devinfo = (am_hc32f460_timea_timing_devinfo_t *)p_dev->p_devinfo;
-    //Unit 1 sync startup invalid
-    if(((amhw_hc32f460_timea_t *)HC32F460_TMRA1_BASE == p_hw_tim) && (1 == p_devinfo->sync_startup_en))
+    /* Unit 1 sync startup invalid */
+    if(((amhw_hc32f460_timea_t *)HC32F460_TMRA1_BASE == p_hw_tim) &&
+       (1 == p_devinfo->sync_startup_en))
     {
         while(1);
     }
@@ -324,7 +325,7 @@ static int __timea_timing_callback_set (void     *p_drv,
 
 am_timer_handle_t am_hc32f460_timea_timing_init (
     am_hc32f460_timea_timing_dev_t             *p_dev,
-    const am_hc32f460_timea_timing_devinfo_t  *p_devinfo)
+    const am_hc32f460_timea_timing_devinfo_t   *p_devinfo)
 {
     amhw_hc32f460_timea_t *p_hw_tim = NULL;
 
@@ -410,73 +411,61 @@ void am_hc32f460_timea_timing_deinit (am_timer_handle_t handle)
 
 void TimerA1OV_IrqHandler(void *p_arg)
 {
-//    AM_DBG_INFO("TimerA1OV_IrqHandler!\r\n");
     __timea_irq_handler(p_arg);
 }
 
 void TimerA1UD_IrqHandler(void *p_arg)
 {
-//    AM_DBG_INFO("TimerA1UD_IrqHandler!\r\n");
     __timea_irq_handler(p_arg);
 }
 
 void TimerA2OV_IrqHandler(void *p_arg)
 {
-//    AM_DBG_INFO("TimerA2OV_IrqHandler!\r\n");
     __timea_irq_handler(p_arg);
 }
 
 void TimerA2UD_IrqHandler(void *p_arg)
 {
-//    AM_DBG_INFO("TimerA2UD_IrqHandler!\r\n");
     __timea_irq_handler(p_arg);
 }
 
 void TimerA3OV_IrqHandler(void *p_arg)
 {
-//    AM_DBG_INFO("TimerA3OV_IrqHandler!\r\n");
     __timea_irq_handler(p_arg);
 }
 
 void TimerA3UD_IrqHandler(void *p_arg)
 {
-//    AM_DBG_INFO("TimerA3UD_IrqHandler!\r\n");
     __timea_irq_handler(p_arg);
 }
 
 void TimerA4OV_IrqHandler(void *p_arg)
 {
-//    AM_DBG_INFO("TimerA4OV_IrqHandler!\r\n");
     __timea_irq_handler(p_arg);
 }
 
 void TimerA4UD_IrqHandler(void *p_arg)
 {
-//    AM_DBG_INFO("TimerA4UD_IrqHandler!\r\n");
     __timea_irq_handler(p_arg);
 }
 
 void TimerA5OV_IrqHandler(void *p_arg)
 {
-//    AM_DBG_INFO("TimerA5OV_IrqHandler!\r\n");
     __timea_irq_handler(p_arg);
 }
 
 void TimerA5UD_IrqHandler(void *p_arg)
 {
-//    AM_DBG_INFO("TimerA5UD_IrqHandler!\r\n");
     __timea_irq_handler(p_arg);
 }
 
 void TimerA6OV_IrqHandler(void *p_arg)
 {
-//    AM_DBG_INFO("TimerA6OV_IrqHandler!\r\n");
     __timea_irq_handler(p_arg);
 }
 
 void TimerA6UD_IrqHandler(void *p_arg)
 {
-//    AM_DBG_INFO("TimerA6UD_IrqHandler!\r\n");
     __timea_irq_handler(p_arg);
 }
 /* end of file */

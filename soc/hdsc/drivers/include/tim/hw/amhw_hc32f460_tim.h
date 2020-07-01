@@ -128,98 +128,116 @@ typedef enum tim0_clock_div
     tim0_clk_div1024
 }tim0_clock_div_t;
 
+/**
+ * \brief TMR0 计数值寄存器位域结构体
+ */
 typedef struct
 {
-    __IO uint32_t CNTA                      :16;
-    uint32_t RESERVED16                     :16;
+    __IO uint32_t CNTA                      :16;  /**< \brief 计数值*/
+    uint32_t RESERVED16                     :16;  /**< \brief 保留*/
 } stc_tmr0_cntar_field_t;
 
+/**
+ * \brief TMR0 计数值寄存器位域结构体
+ */
 typedef struct
 {
-    __IO uint32_t CNTB                      :16;
-    uint32_t RESERVED16                     :16;
+    __IO uint32_t CNTB                      :16;  /**< \brief 计数值*/
+    uint32_t RESERVED16                     :16;  /**< \brief 保留*/
 } stc_tmr0_cntbr_field_t;
 
+/**
+ * \brief TMR0 基准值寄存器位域结构体
+ */
 typedef struct
 {
-    __IO uint32_t CMPA                      :16;
-    uint32_t RESERVED16                     :16;
+    __IO uint32_t CMPA                      :16;  /**< \brief 基准值*/
+    uint32_t RESERVED16                     :16;  /**< \brief 保留*/
 } stc_tmr0_cmpar_field_t;
 
+/**
+ * \brief TMR0 基准值寄存器位域结构体
+ */
 typedef struct
 {
-    __IO uint32_t CMPB                      :16;
-    uint32_t RESERVED16                     :16;
+    __IO uint32_t CMPB                      :16;  /**< \brief 基准值*/
+    uint32_t RESERVED16                     :16;  /**< \brief 保留*/
 } stc_tmr0_cmpbr_field_t;
 
+/**
+ * \brief TMR0 基本控制寄存器位域结构体
+ */
 typedef struct
 {
-    __IO uint32_t CSTA                      : 1;
-    __IO uint32_t CAPMDA                    : 1;
-    __IO uint32_t INTENA                    : 1;
-    uint32_t RESERVED3                      : 1;
-    __IO uint32_t CKDIVA                    : 4;
-    __IO uint32_t SYNSA                     : 1;
-    __IO uint32_t SYNCLKA                   : 1;
-    __IO uint32_t ASYNCLKA                  : 1;
-    uint32_t RESERVED11                     : 1;
-    __IO uint32_t HSTAA                     : 1;
-    __IO uint32_t HSTPA                     : 1;
-    __IO uint32_t HCLEA                     : 1;
-    __IO uint32_t HICPA                     : 1;
-    __IO uint32_t CSTB                      : 1;
-    __IO uint32_t CAPMDB                    : 1;
-    __IO uint32_t INTENB                    : 1;
-    uint32_t RESERVED19                     : 1;
-    __IO uint32_t CKDIVB                    : 4;
-    __IO uint32_t SYNSB                     : 1;
-    __IO uint32_t SYNCLKB                   : 1;
-    __IO uint32_t ASYNCLKB                  : 1;
-    uint32_t RESERVED27                     : 1;
-    __IO uint32_t HSTAB                     : 1;
-    __IO uint32_t HSTPB                     : 1;
-    __IO uint32_t HCLEB                     : 1;
-    __IO uint32_t HICPB                     : 1;
+    __IO uint32_t CSTA                      : 1;  /**< \brief 定时器启动*/
+    __IO uint32_t CAPMDA                    : 1;  /**< \brief 功能模式选择A*/
+    __IO uint32_t INTENA                    : 1;  /**< \brief 计数匹配中断使能A*/
+    uint32_t RESERVED3                      : 1;  /**< \brief 保留*/
+    __IO uint32_t CKDIVA                    : 4;  /**< \brief 通道A计数时钟分频选择*/
+    __IO uint32_t SYNSA                     : 1;  /**< \brief 通道A计数方式选择*/
+    __IO uint32_t SYNCLKA                   : 1;  /**< \brief 通道A同步计数时钟源选择*/
+    __IO uint32_t ASYNCLKA                  : 1;  /**< \brief 通道A异步计数时钟源选择*/
+    uint32_t RESERVED11                     : 1;  /**< \brief 保留*/
+    __IO uint32_t HSTAA                     : 1;  /**< \brief 硬件触发启动A*/
+    __IO uint32_t HSTPA                     : 1;  /**< \brief 硬件触发停止A*/
+    __IO uint32_t HCLEA                     : 1;  /**< \brief 硬件触发清零A*/
+    __IO uint32_t HICPA                     : 1;  /**< \brief 硬件触发输入捕获A*/
+    __IO uint32_t CSTB                      : 1;  /**< \brief 定时器启动*/
+    __IO uint32_t CAPMDB                    : 1;  /**< \brief 功能模式选择B*/
+    __IO uint32_t INTENB                    : 1;  /**< \brief 计数匹配中断使能B*/
+    uint32_t RESERVED19                     : 1;  /**< \brief 保留*/
+    __IO uint32_t CKDIVB                    : 4;  /**< \brief 通道B计数时钟分频选择*/
+    __IO uint32_t SYNSB                     : 1;  /**< \brief 通道B计数方式选择*/
+    __IO uint32_t SYNCLKB                   : 1;  /**< \brief 通道B同步计数时钟源选择*/
+    __IO uint32_t ASYNCLKB                  : 1;  /**< \brief 通道B异步计数时钟源选择*/
+    uint32_t RESERVED27                     : 1;  /**< \brief 保留*/
+    __IO uint32_t HSTAB                     : 1;  /**< \brief 硬件触发启动B*/
+    __IO uint32_t HSTPB                     : 1;  /**< \brief 硬件触发停止B*/
+    __IO uint32_t HCLEB                     : 1;  /**< \brief 硬件触发清零B*/
+    __IO uint32_t HICPB                     : 1;  /**< \brief 硬件触发输入捕获B*/
 } stc_tmr0_bconr_field_t;
 
+/**
+ * \brief TMR0 状态标志寄存器位域结构体
+ */
 typedef struct
 {
-    __IO uint32_t CMAF                      : 1;
-    uint32_t RESERVED1                      :15;
-    __IO uint32_t CMBF                      : 1;
-    uint32_t RESERVED17                     :15;
+    __IO uint32_t CMAF                      : 1;  /**< \brief 计数匹配A*/
+    uint32_t RESERVED1                      :15;  /**< \brief 保留*/
+    __IO uint32_t CMBF                      : 1;  /**< \brief 计数匹配B*/
+    uint32_t RESERVED17                     :15;  /**< \brief 保留*/
 } stc_tmr0_stflr_field_t;
 
 typedef struct
 {
     union
     {
-        __IO uint32_t CNTAR;
+        __IO uint32_t CNTAR;           /**< \brief 计数值寄存器*/
         stc_tmr0_cntar_field_t CNTAR_f;
     };
     union
     {
-        __IO uint32_t CNTBR;
+        __IO uint32_t CNTBR;           /**< \brief 计数值寄存器*/
         stc_tmr0_cntbr_field_t CNTBR_f;
     };
     union
     {
-        __IO uint32_t CMPAR;
+        __IO uint32_t CMPAR;           /**< \brief 基准值寄存器*/
         stc_tmr0_cmpar_field_t CMPAR_f;
     };
     union
     {
-        __IO uint32_t CMPBR;
+        __IO uint32_t CMPBR;           /**< \brief 基准值寄存器*/
         stc_tmr0_cmpbr_field_t CMPBR_f;
     };
     union
     {
-        __IO uint32_t BCONR;
+        __IO uint32_t BCONR;           /**< \brief 基本控制寄存器*/
         stc_tmr0_bconr_field_t BCONR_f;
     };
     union
     {
-        __IO uint32_t STFLR;
+        __IO uint32_t STFLR;           /**< \brief 状态标识寄存器*/
         stc_tmr0_stflr_field_t STFLR_f;
     };
 }amhw_hc32f460_tim_t;
@@ -232,9 +250,9 @@ typedef struct
  * \return ARR重载寄存器的值
  */
 am_static_inline
-uint16_t amhw_hc32f460_tim_arr_count_get (amhw_hc32f460_tim_t *p_hw_tim, uint8_t chan)
+uint16_t amhw_hc32f460_tim_arr_count_get (amhw_hc32f460_tim_t *p_hw_tim,
+                                          uint8_t              chan)
 {
-//    return p_hw_tim->arr;
     uint16_t arr = 0;
 
     if (TIM0_CHANNEL_A == chan)
@@ -257,9 +275,10 @@ uint16_t amhw_hc32f460_tim_arr_count_get (amhw_hc32f460_tim_t *p_hw_tim, uint8_t
  *\ return 无
  */
 am_static_inline
-void amhw_hc32f460_tim_arr_count_set (amhw_hc32f460_tim_t *p_hw_tim, uint8_t chan, uint16_t value)
+void amhw_hc32f460_tim_arr_count_set (amhw_hc32f460_tim_t *p_hw_tim,
+                                      uint8_t              chan,
+                                      uint16_t             value)
 {
-//    p_hw_tim->arr = value;
     if (TIM0_CHANNEL_A == chan)
     {
         p_hw_tim->CMPAR = value;
@@ -278,9 +297,9 @@ void amhw_hc32f460_tim_arr_count_set (amhw_hc32f460_tim_t *p_hw_tim, uint8_t cha
  * \return CNT计数寄存器的值
  */
 am_static_inline
-uint16_t amhw_hc32f460_tim_cnt16_count_get (amhw_hc32f460_tim_t *p_hw_tim, uint8_t chan)
+uint16_t amhw_hc32f460_tim_cnt16_count_get (amhw_hc32f460_tim_t *p_hw_tim,
+                                            uint8_t              chan)
 {
-//    return p_hw_tim->cnt;
     uint16_t cnt = 0;
     if (TIM0_CHANNEL_A == chan)
     {
@@ -302,9 +321,10 @@ uint16_t amhw_hc32f460_tim_cnt16_count_get (amhw_hc32f460_tim_t *p_hw_tim, uint8
  *\ return 无
  */
 am_static_inline
-void amhw_hc32f460_tim_cnt16_count_set (amhw_hc32f460_tim_t *p_hw_tim, uint8_t chan, uint16_t value)
+void amhw_hc32f460_tim_cnt16_count_set (amhw_hc32f460_tim_t *p_hw_tim,
+                                        uint8_t              chan,
+                                        uint16_t             value)
 {
-//    p_hw_tim->cnt = value;
     if (TIM0_CHANNEL_A == chan)
     {
         p_hw_tim->CNTAR = value;
@@ -327,7 +347,6 @@ void amhw_hc32f460_tim_cnt16_count_set (amhw_hc32f460_tim_t *p_hw_tim, uint8_t c
 am_static_inline
 void amhw_hc32f460_tim_disable (amhw_hc32f460_tim_t *p_hw_tim, uint8_t chan)
 {
-//    p_hw_tim->mxcr_t.m0cr &= ~(0x1ul << 0);
     if (TIM0_CHANNEL_A == chan)
     {
         p_hw_tim->BCONR_f.CSTA = 0;
@@ -350,7 +369,6 @@ void amhw_hc32f460_tim_disable (amhw_hc32f460_tim_t *p_hw_tim, uint8_t chan)
 am_static_inline
 void amhw_hc32f460_tim_enable (amhw_hc32f460_tim_t *p_hw_tim, uint8_t chan)
 {
-//    p_hw_tim->mxcr_t.m0cr |= (0x1ul << 0);
     if (TIM0_CHANNEL_A == chan)
     {
         p_hw_tim->BCONR_f.CSTA = 1;
@@ -365,17 +383,17 @@ void amhw_hc32f460_tim_enable (amhw_hc32f460_tim_t *p_hw_tim, uint8_t chan)
  * \brief 内部时钟分频选择
  */
 typedef enum {
-    AMHW_HC32F460_TIM_CLK_DIV0 = 0,    /* 1分频 */
-    AMHW_HC32F460_TIM_CLK_DIV2,        /* 2分频 */
-    AMHW_HC32F460_TIM_CLK_DIV4,        /* 4分频 */
-    AMHW_HC32F460_TIM_CLK_DIV8,        /* 8分频 */
-    AMHW_HC32F460_TIM_CLK_DIV16,       /* 16分频 */
-    AMHW_HC32F460_TIM_CLK_DIV32,       /* 32分频 */
-    AMHW_HC32F460_TIM_CLK_DIV64,       /* 64分频 */
-    AMHW_HC32F460_TIM_CLK_DIV128,      /* 128分频 */
-    AMHW_HC32F460_TIM_CLK_DIV256,      /* 256分频 */
-    AMHW_HC32F460_TIM_CLK_DIV512,      /* 512分频 */
-    AMHW_HC32F460_TIM_CLK_DIV1024,     /* 1024分频 */
+    AMHW_HC32F460_TIM_CLK_DIV0 = 0,    /**< \brief 1分频 */
+    AMHW_HC32F460_TIM_CLK_DIV2,        /**< \brief 2分频 */
+    AMHW_HC32F460_TIM_CLK_DIV4,        /**< \brief 4分频 */
+    AMHW_HC32F460_TIM_CLK_DIV8,        /**< \brief 8分频 */
+    AMHW_HC32F460_TIM_CLK_DIV16,       /**< \brief 16分频 */
+    AMHW_HC32F460_TIM_CLK_DIV32,       /**< \brief 32分频 */
+    AMHW_HC32F460_TIM_CLK_DIV64,       /**< \brief 64分频 */
+    AMHW_HC32F460_TIM_CLK_DIV128,      /**< \brief 128分频 */
+    AMHW_HC32F460_TIM_CLK_DIV256,      /**< \brief 256分频 */
+    AMHW_HC32F460_TIM_CLK_DIV512,      /**< \brief 512分频 */
+    AMHW_HC32F460_TIM_CLK_DIV1024,     /**< \brief 1024分频 */
 }amhw_hc32f460_tim_clkdiv_t;
 
 /**
@@ -412,11 +430,9 @@ amhw_hc32f460_tim_clkdiv_t
  */
 am_static_inline
 void amhw_hc32f460_tim_mode_clkdiv_set (amhw_hc32f460_tim_t       *p_hw_tim,
-                                      uint8_t  chan, 
-                                      amhw_hc32f460_tim_clkdiv_t clkdiv)
+                                        uint8_t                    chan,
+                                        amhw_hc32f460_tim_clkdiv_t clkdiv)
 {
-//    p_hw_tim->mxcr_t.m0cr = (p_hw_tim->mxcr_t.m0cr & (~(0x7ul << 4))) |
-//                            ((clkdiv & 0x7ul) << 4);
     if (TIM0_CHANNEL_A == chan)
     {
         p_hw_tim->BCONR_f.CKDIVA = clkdiv;
@@ -437,7 +453,6 @@ void amhw_hc32f460_tim_mode_clkdiv_set (amhw_hc32f460_tim_t       *p_hw_tim,
 am_static_inline
 void amhw_hc32f460_tim_int_disable (amhw_hc32f460_tim_t *p_hw_tim, uint8_t chan)
 {
-//    p_hw_tim->mxcr_t.m0cr &= ~(0x1ul << 10);
     if (TIM0_CHANNEL_A == chan)
     {
         p_hw_tim->BCONR_f.INTENA = 0;
@@ -458,7 +473,6 @@ void amhw_hc32f460_tim_int_disable (amhw_hc32f460_tim_t *p_hw_tim, uint8_t chan)
 am_static_inline
 void amhw_hc32f460_tim_int_enable (amhw_hc32f460_tim_t *p_hw_tim, uint8_t chan)
 {
-//    p_hw_tim->mxcr_t.m0cr |= (0x1ul << 10);
     if (TIM0_CHANNEL_A == chan)
     {
         p_hw_tim->BCONR_f.INTENA = 1;
@@ -480,7 +494,6 @@ void amhw_hc32f460_tim_int_enable (amhw_hc32f460_tim_t *p_hw_tim, uint8_t chan)
 am_static_inline
 am_bool_t amhw_hc32f460_tim_int_flag_check(amhw_hc32f460_tim_t *p_hw_tim, uint8_t chan)
 {
-//    return (p_hw_tim->ifr & 0x1ul) ? AM_TRUE : AM_FALSE;
     uint8_t value = 0;
     if(TIM0_CHANNEL_A == chan)
     {
@@ -503,7 +516,6 @@ am_bool_t amhw_hc32f460_tim_int_flag_check(amhw_hc32f460_tim_t *p_hw_tim, uint8_
 am_static_inline
 void amhw_hc32f460_tim_int_flag_clr(amhw_hc32f460_tim_t *p_hw_tim, uint8_t chan)
 {
-//    p_hw_tim->iclr &= ~(0x1ul << 0);
     if(TIM0_CHANNEL_A == chan)
     {
         p_hw_tim->STFLR_f.CMAF =0u;

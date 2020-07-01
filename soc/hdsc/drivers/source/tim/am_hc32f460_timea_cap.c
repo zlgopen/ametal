@@ -39,10 +39,10 @@ static uint16_t  __update_num = 0;
 
 /** \brief 捕获参数配置 */
 static int __hc32f460_timea_cap_config (void              *p_cookie,
-                                    int                chan,
-                                    unsigned int       flags,
-                                    am_cap_callback_t  pfn_callback,
-                                    void              *p_arg);
+                                        int                chan,
+                                        unsigned int       flags,
+                                        am_cap_callback_t  pfn_callback,
+                                        void              *p_arg);
 
 /** \brief 使能捕获通道 */
 static int __hc32f460_timea_cap_enable (void *p_drv, int chan);
@@ -54,10 +54,10 @@ static int __hc32f460_timea_cap_disable (void *p_drv, int chan);
 static int __hc32f460_timea_cap_reset (void *p_drv, int chan);
 
 static int __hc32f460_timea_cap_count_to_time (void         *p_drv,
-                                           int           chan,
-                                           unsigned int  count1,
-                                           unsigned int  count2,
-                                           unsigned int *p_time_ns);
+                                               int           chan,
+                                               unsigned int  count1,
+                                               unsigned int  count2,
+                                               unsigned int *p_time_ns);
 
 static void __hc32f460_timea_cap_irq_handler (void *p_arg);
 
@@ -74,10 +74,10 @@ static const struct am_cap_drv_funcs __g_tim_cap_drv_funcs = {
 
 /** \brief 配置一个输入捕获通道 */
 static int __hc32f460_timea_cap_config (void              *p_drv,
-                                    int                chan,
-                                    unsigned int       options,
-                                    am_cap_callback_t  pfn_callback,
-                                    void              *p_arg)
+                                        int                chan,
+                                        unsigned int       options,
+                                        am_cap_callback_t  pfn_callback,
+                                        void              *p_arg)
 {
     am_hc32f460_timea_cap_dev_t *p_dev    = (am_hc32f460_timea_cap_dev_t *)p_drv;
     amhw_hc32f460_timea_t       *p_hw_tim = (amhw_hc32f460_timea_t *)p_dev->p_devinfo->tim_regbase;
@@ -118,7 +118,9 @@ static int __hc32f460_timea_cap_config (void              *p_drv,
     stcTimeraCaptureInit.enTrigClkDiv = TimeraFilterPclkDiv1;
     stcTimeraCaptureInit.enTrigFilterEn = Disable;
     /* Enable channel 1 capture and interrupt */
-    amhw_hc32f460_timea_capture_init(p_hw_tim, (timea_channel_t)chan, &stcTimeraCaptureInit);
+    amhw_hc32f460_timea_capture_init(p_hw_tim,
+                                     (timea_channel_t)chan,
+                                     &stcTimeraCaptureInit);
     
     p_dev->callback_info[chan].callback_func = pfn_callback;
     p_dev->callback_info[chan].p_arg         = p_arg;
@@ -179,9 +181,7 @@ static int __hc32f460_timea_cap_enable (void *p_drv, int chan)
     am_int_enable(p_dev->p_devinfo->inum);
 
     /* 设置自动重装寄存器的值 */
-//    amhw_hc32f460_timea_arr_count_set(p_hw_tim, chan, 0x802Cu);
     amhw_hc32f460_timea_arr_count_set(p_hw_tim, chan, 0xFFFF - 1);
-//    amhw_hc32f460_timea_arr_count_set(p_hw_tim, chan, 0xFFFF);
 
 
     /* 清零计数器 */
@@ -266,10 +266,10 @@ static int __hc32f460_timea_cap_reset (void *p_drv, int chan)
   * \brief 转换两次捕获值为时间值
   */
 static int __hc32f460_timea_cap_count_to_time (void         *p_drv,
-                                           int           chan,
-                                           unsigned int  count1,
-                                           unsigned int  count2,
-                                           unsigned int *p_time_ns)
+                                               int           chan,
+                                               unsigned int  count1,
+                                               unsigned int  count2,
+                                               unsigned int *p_time_ns)
 {
     am_hc32f460_timea_cap_dev_t *p_dev    = (am_hc32f460_timea_cap_dev_t *)p_drv;
     amhw_hc32f460_timea_t       *p_hw_tim = (amhw_hc32f460_timea_t *)p_dev->p_devinfo->tim_regbase;
@@ -335,7 +335,7 @@ static void __hc32f460_timea_cap_irq_handler (void *p_arg)
   * \brief 捕获初始化
   */
 void __hc32f460_timea_cap_init (amhw_hc32f460_timea_t       *p_hw_tim,
-                            am_hc32f460_timea_cap_dev_t *p_dev)
+                                am_hc32f460_timea_cap_dev_t *p_dev)
 {
     /* 设置定时器模式2 */
     amhw_hc32f460_timea_mode_set(p_hw_tim, timea_count_mode_sawtooth_wave);
@@ -343,8 +343,9 @@ void __hc32f460_timea_cap_init (amhw_hc32f460_timea_t       *p_hw_tim,
     /* 向上计数 */
     amhw_hc32f460_timea_dir_set(p_hw_tim, timea_count_dir_up);
 
-    //Unit 1 sync startup invalid
-    if(((amhw_hc32f460_timea_t *)HC32F460_TMRA1_BASE == p_hw_tim) && (1 == p_dev->p_devinfo->sync_startup_en))
+    /* Unit 1 sync startup invalid */
+    if(((amhw_hc32f460_timea_t *)HC32F460_TMRA1_BASE == p_hw_tim) &&
+       (1 == p_dev->p_devinfo->sync_startup_en))
     {
         while(1);
     }
@@ -355,7 +356,7 @@ void __hc32f460_timea_cap_init (amhw_hc32f460_timea_t       *p_hw_tim,
 }
 
 am_cap_handle_t am_hc32f460_timea_cap_init (am_hc32f460_timea_cap_dev_t           *p_dev,
-                                        const am_hc32f460_timea_cap_devinfo_t *p_devinfo)
+                                            const am_hc32f460_timea_cap_devinfo_t *p_devinfo)
 {
     amhw_hc32f460_timea_t *p_hw_tim = NULL;
     uint8_t    i;
@@ -425,37 +426,31 @@ void am_hc32f460_timea_cap_deinit (am_cap_handle_t handle)
 
 void TimerA1CMP_IrqHandler(void *p_arg)
 {
-//    AM_DBG_INFO("TimerA1CMP_IrqHandler!\r\n");
     __hc32f460_timea_cap_irq_handler(p_arg);
 }
 
 void TimerA2CMP_IrqHandler(void *p_arg)
 {
-//    AM_DBG_INFO("TimerA2CMP_IrqHandler!\r\n");
     __hc32f460_timea_cap_irq_handler(p_arg);
 }
 
 void TimerA3CMP_IrqHandler(void *p_arg)
 {
-//    AM_DBG_INFO("TimerA3CMP_IrqHandler!\r\n");
     __hc32f460_timea_cap_irq_handler(p_arg);
 }
 
 void TimerA4CMP_IrqHandler(void *p_arg)
 {
-//    AM_DBG_INFO("TimerA4CMP_IrqHandler!\r\n");
     __hc32f460_timea_cap_irq_handler(p_arg);
 }
 
 void TimerA5CMP_IrqHandler(void *p_arg)
 {
-//    AM_DBG_INFO("TimerA5CMP_IrqHandler!\r\n");
     __hc32f460_timea_cap_irq_handler(p_arg);
 }
 
 void TimerA6CMP_IrqHandler(void *p_arg)
 {
-//    AM_DBG_INFO("TimerA6CMP_IrqHandler!\r\n");
     __hc32f460_timea_cap_irq_handler(p_arg);
 }
 

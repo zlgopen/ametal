@@ -37,8 +37,8 @@ static const int __g_hc32f460_led_pins[] = {PIOE_6, PIOA_7, PIOB_5, PIOB_9};
 /** \brief 设备信息 */
 static const am_led_gpio_info_t __g_hc32f460_led_gpio_info = {
     {
-        0,                             /* 起始编号 */
-        AM_NELEMENTS(__g_hc32f460_led_pins) - 1 /* 结束编号 */
+        0,                                       /**< \brief 起始编号 */
+        AM_NELEMENTS(__g_hc32f460_led_pins) - 1  /**< \brief 结束编号 */
     },
     __g_hc32f460_led_pins,
     AM_FALSE

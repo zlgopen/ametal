@@ -96,7 +96,7 @@ typedef struct am_hc32f460_spi_dma_dev {
     am_bool_t                   busy;           /**< \brief SPIÃ¦±êÊ¶         */
     uint32_t                    state;          /**< \brief SPI¿ØÖÆÆ÷×´Ì¬»ú×´Ì¬ */
 
-    amhw_hc32f460_dma_xfer_desc_t    g_desc[2];      /**< \brief DMAÍ¨µÀÃèÊö·û */
+    amhw_hc32f460_dma_xfer_desc_t    g_desc[2]; /**< \brief DMAÍ¨µÀÃèÊö·û */
 
 } am_hc32f460_spi_dma_dev_t;
 

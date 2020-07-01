@@ -62,7 +62,8 @@ uint32_t amhw_hc32f460_uart_poll_receive(amhw_hc32f460_uart_t *p_hw_uart,
  * \brief LPUART(Version 0) baud ratio set
  */
 int amhw_hc32f460_uart_baudrate_set(amhw_hc32f460_uart_t *p_hw_uart,
-        int uart_clk, uint32_t baud)
+                                    int                   uart_clk,
+                                    uint32_t              baud)
 {
     uint32_t B = 0ul;
     uint32_t C = 0ul;
@@ -87,26 +88,26 @@ int amhw_hc32f460_uart_baudrate_set(amhw_hc32f460_uart_t *p_hw_uart,
 
     /* 寻找合适的内部时钟分频（1 << 2 * reg_pr_psc） */
     for (i = 0; i < 4; i++) {
-    	C = uart_clk / (1 << 2 * reg_pr_psc);
+        C = uart_clk / (1 << 2 * reg_pr_psc);
         if (C > 0ul) {
-    	    B = baud;
-    	    OVER8 = p_hw_uart->CR1_f.OVER8;
-    	    /* FBME = 0 Calculation formula */
-    	    /* B = C / (8 * (2 - OVER8) * (DIV_Integer + 1)) */
-    	    /* DIV_Integer = (C / (B * 8 * (2 - OVER8))) - 1 */
-    	    DIV = ((float) C / ((float) B * 8.0f * (2.0f - (float) OVER8))) - 1.0f;
-    	    DIV_Integer = (uint32_t) (DIV);
-    	    if (!((DIV < 0.0f) || (DIV_Integer > 0xFFul))) {
-    	    	break;
-    	    }
+            B = baud;
+            OVER8 = p_hw_uart->CR1_f.OVER8;
+            /* FBME = 0 Calculation formula */
+            /* B = C / (8 * (2 - OVER8) * (DIV_Integer + 1)) */
+            /* DIV_Integer = (C / (B * 8 * (2 - OVER8))) - 1 */
+            DIV = ((float) C / ((float) B * 8.0f * (2.0f - (float) OVER8))) - 1.0f;
+            DIV_Integer = (uint32_t) (DIV);
+            if (!((DIV < 0.0f) || (DIV_Integer > 0xFFul))) {
+                break;
+            }
         }
         reg_pr_psc++;
     }
 
     if (reg_pr_psc > 3) {
-    	return AM_ERROR;
+        return AM_ERROR;
     } else {
-    	p_hw_uart->PR_f.PSC = reg_pr_psc;
+        p_hw_uart->PR_f.PSC = reg_pr_psc;
     }
 
     if ((DIV - (float) DIV_Integer) > 0.00001f) {
@@ -128,7 +129,7 @@ int amhw_hc32f460_uart_baudrate_set(amhw_hc32f460_uart_t *p_hw_uart,
         p_hw_uart->BRR_f.DIV_FRACTION = DIV_Fraction;
         p_hw_uart->BRR_f.DIV_INTEGER = DIV_Integer;
     } else {
-    	return AM_ERROR;
+        return AM_ERROR;
     }
     
     return baud;

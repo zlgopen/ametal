@@ -147,7 +147,7 @@ static int __tim_timing_prescale_set (void    *p_drv,
 {
     am_hc32f460_tim_timing_dev_t *p_dev = (am_hc32f460_tim_timing_dev_t *)p_drv;
     amhw_hc32f460_tim_t          *p_hw_tim;
-    amhw_hc32f460_tim_clkdiv_t clkdiv;
+    amhw_hc32f460_tim_clkdiv_t    clkdiv;
     
     if (p_drv == NULL) {
         return -AM_EINVAL;
@@ -294,8 +294,9 @@ static int __tim_timing_enable (void *p_drv, uint8_t chan, void *p_count)
     amhw_hc32f460_tim_cnt16_count_set(p_hw_tim, chan, count);
 
     /* 计数时钟设置 */
-    //TMR0_U1_GCMA仅在异步模式下可用
-    if(((amhw_hc32f460_tim_t *)HC32F460_TIMER0_1_BASE == p_hw_tim) && (TIM0_CHANNEL_A == p_devinfo->channel_num))
+    /* TMR0_U1_GCMA仅在异步模式下可用 */
+    if(((amhw_hc32f460_tim_t *)HC32F460_TIMER0_1_BASE == p_hw_tim) &&
+        (TIM0_CHANNEL_A == p_devinfo->channel_num))
     {
         if(tim0_async != p_devinfo->tim0_counter_mode)
         {
@@ -392,7 +393,7 @@ static int __tim_timing_callback_set (void     *p_drv,
 
 am_timer_handle_t am_hc32f460_tim_timing_init (
     am_hc32f460_tim_timing_dev_t             *p_dev,
-    const am_hc32f460_tim_timing_devinfo_t  *p_devinfo)
+    const am_hc32f460_tim_timing_devinfo_t   *p_devinfo)
 {
     amhw_hc32f460_tim_t *p_hw_tim = NULL;
 
@@ -481,26 +482,22 @@ void am_hc32f460_tim_timing_deinit (am_timer_handle_t handle)
 
 void Timer01GCMA_IrqHandler(void *p_arg)
 {
-//    AM_DBG_INFO("Timer01GCMA_IrqHandler!\r\n");
     __tim_irq_handler(p_arg);
 }
 
 void Timer01GCMB_IrqHandler(void *p_arg)
 {
-//    AM_DBG_INFO("Timer01GCMB_IrqHandler!\r\n");
     __tim_irq_handler(p_arg);
 }
 
 
 void Timer02GCMA_IrqHandler(void *p_arg)
 {
-//    AM_DBG_INFO("Timer02GCMA_IrqHandler!\r\n");
     __tim_irq_handler(p_arg);
 }
 
 void Timer02GCMB_IrqHandler(void *p_arg)
 {
-//    AM_DBG_INFO("Timer02GCMB_IrqHandler!\r\n");
     __tim_irq_handler(p_arg);
 }
 /* end of file */

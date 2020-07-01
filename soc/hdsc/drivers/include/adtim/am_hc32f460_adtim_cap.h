@@ -53,10 +53,10 @@ typedef struct am_hc32f460_adtim_cap_ioinfo {
  * \brief TIM捕获功能相关的设备信息
  */
 typedef struct am_hc32f460_adtim_cap_devinfo {
-    uint32_t                      tim_regbase;   /**< \brief TIM寄存器块基址 */
-    uint8_t                       inum;          /**< \brief TIM对应的中断号 */
+    uint32_t                        tim_regbase;   /**< \brief TIM寄存器块基址 */
+    uint8_t                         inum;          /**< \brief TIM对应的中断号 */
     amhw_hc32f460_adtim_pclk_div_t  clk_div;       /**< \brief 时钟分频系数 */
-    uint8_t                       channels_num;  /**< \brief 使用的通道数，最大为2 */
+    uint8_t                         channels_num;  /**< \brief 使用的通道数，最大为2 */
     am_hc32f460_adtim_cap_ioinfo_t *p_ioinfo;      /**< \brief 指向捕获管脚信息结构体 */
 
     /** \brief 平台初始化函数，如打开时钟，配置引脚等工作 */
@@ -92,8 +92,8 @@ typedef struct am_hc32f460_adtim_cap_dev {
  *
  * \return CAP标准服务操作句柄，值为NULL时表明初始化失败
  */
-am_cap_handle_t am_hc32f460_adtim_cap_init (am_hc32f460_adtim_cap_dev_t              *p_dev,
-                                        const am_hc32f460_adtim_cap_devinfo_t *p_devinfo);
+am_cap_handle_t am_hc32f460_adtim_cap_init (am_hc32f460_adtim_cap_dev_t           *p_dev,
+                                            const am_hc32f460_adtim_cap_devinfo_t *p_devinfo);
 
 /**
  * \brief 不使用TIM捕获功能时，解初始化TIM捕获功能，释放相关资源

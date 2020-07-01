@@ -50,8 +50,10 @@ static int __uart_ioctl(void *p_drv, int, void *);
 
 static int __uart_tx_startup(void *p_drv);
 
-static int __uart_callback_set(void *p_drv, int callback_type,
-        void *pfn_callback, void *p_arg);
+static int __uart_callback_set(void *p_drv,
+                               int   callback_type,
+                               void *pfn_callback,
+                               void *p_arg);
 
 static int __uart_poll_getchar(void *p_drv, char *p_char);
 
@@ -172,13 +174,12 @@ int __uart_tx_startup(void *p_drv)
 
     /* 等待上一次传输完成 */
     while (amhw_hc32f460_uart_status_flag_check(p_hw_uart,
-    		AMHW_HC32F460_UART_TX_EMPTY_FLAG) == AM_FALSE);
+            AMHW_HC32F460_UART_TX_EMPTY_FLAG) == AM_FALSE);
 
     /* 获取发送数据并发送 */
     if ((p_dev->pfn_txchar_get(p_dev->txget_arg, &data)) == AM_OK) {
-    	amhw_hc32f460_uart_data_write(p_hw_uart, data);
+        amhw_hc32f460_uart_data_write(p_hw_uart, data);
     }
-//    p_hw_uart->CR1_f.TE = 0;
 
     /* 使能发送数据寄存器空中断并打开发送功能  */
     CR1_f = p_hw_uart->CR1_f;
@@ -291,10 +292,11 @@ void __uart_irq_tci_handler(void *p_arg) {
             (amhw_hc32f460_uart_t *) p_dev->p_devinfo->uart_reg_base;
 
     /* 关闭发送完成中断 */
-    amhw_hc32f460_uart_int_disable(p_hw_uart, AMHW_HC32F460_UART_INT_TX_COMPLETE_ENABLE);
+    amhw_hc32f460_uart_int_disable(p_hw_uart,
+                                   AMHW_HC32F460_UART_INT_TX_COMPLETE_ENABLE);
 
-	/* 关闭发送功能 */
-	amhw_hc32f460_uart_tx_enable(p_hw_uart, AM_FALSE);
+    /* 关闭发送功能 */
+    amhw_hc32f460_uart_tx_enable(p_hw_uart, AM_FALSE);
 }
 
 /**
@@ -311,25 +313,6 @@ int __uart_mode_set(am_hc32f460_uart_dev_t *p_dev, uint32_t new_mode)
     }
 
     if (new_mode == AM_UART_MODE_INT) {
-//        if (p_dev->p_devinfo->dev_id == 1) {
-//            am_int_connect(p_dev->p_devinfo->inum, IRQ136_Handler,
-//                           NULL);
-//            amhw_hc32f460_intc_int_vssel_bits_set(p_dev->p_devinfo->inum, (0x1f << 22));
-//        } else if (p_dev->p_devinfo->dev_id == 2) {
-//            am_int_connect(p_dev->p_devinfo->inum, IRQ136_Handler,
-//                           NULL);
-//            amhw_hc32f460_intc_int_vssel_bits_set(p_dev->p_devinfo->inum, (0x1f << 27));
-//        } else if (p_dev->p_devinfo->dev_id == 3) {
-//            am_int_connect(p_dev->p_devinfo->inum, IRQ137_Handler,
-//                           NULL);
-//            amhw_hc32f460_intc_int_vssel_bits_set(p_dev->p_devinfo->inum, (0x1f << 0));
-//        } else if (p_dev->p_devinfo->dev_id == 4) {
-//            am_int_connect(p_dev->p_devinfo->inum, IRQ137_Handler,
-//                           NULL);
-//            amhw_hc32f460_intc_int_vssel_bits_set(p_dev->p_devinfo->inum, (0x1f << 5));
-//        }
-//
-//        am_int_enable(p_dev->p_devinfo->inum);
 #if 1
         uint8_t uart_id = p_dev->p_devinfo->dev_id;
 
@@ -341,11 +324,11 @@ int __uart_mode_set(am_hc32f460_uart_dev_t *p_dev, uint32_t new_mode)
 
         uint32_t INT_USART_EI    = 278u + 5 * (uart_id - 1);
         uint32_t INT_USART_RI    = 279u + 5 * (uart_id - 1);
-		uint32_t INT_USART_TI    = 280u + 5 * (uart_id - 1);
-		uint32_t INT_USART_TCI   = 281u + 5 * (uart_id - 1);
-		uint32_t INT_USART_RTO   = 282u + 5 * (uart_id - 1);
+        uint32_t INT_USART_TI    = 280u + 5 * (uart_id - 1);
+        uint32_t INT_USART_TCI   = 281u + 5 * (uart_id - 1);
+        uint32_t INT_USART_RTO   = 282u + 5 * (uart_id - 1);
 
-    	stc_intc_sel_field_t *stcIntSel;
+        stc_intc_sel_field_t *stcIntSel;
 
         stcIntSel = (stc_intc_sel_field_t *)((uint32_t)(0x40051000UL + 0x5c) + (4u * enIRQ_RI));
         stcIntSel->INTSEL = INT_USART_RI;
@@ -412,7 +395,7 @@ int __uart_opt_set(am_hc32f460_uart_dev_t *p_dev, uint32_t options)
     p_hw_uart->CR2 = (uint32_t) 0x00000000ul;
     p_hw_uart->CR3 = (uint32_t) 0x00000000ul;
     p_hw_uart->BRR = (uint32_t) 0x0000FFFFul;
-    p_hw_uart->PR = (uint32_t) 0x00000000ul;
+    p_hw_uart->PR  = (uint32_t) 0x00000000ul;
 
     /* 配置数据长度 */
     switch (options & AM_UART_CSIZE) {
@@ -501,9 +484,9 @@ int __uart_opt_set(am_hc32f460_uart_dev_t *p_dev, uint32_t options)
         break;
     }
 
-    p_hw_uart->CR3_f.CTSE  = (uint32_t) (0);  //0-RTS功能 1-CTS功能
-    p_hw_uart->CR1_f.SBS   = (uint32_t) (1);  //1-接收数据RX管脚下降沿作为起始位
-    p_hw_uart->CR1_f.OVER8 = (uint32_t) (1);  //1-8位UART过采样模式
+    p_hw_uart->CR3_f.CTSE  = (uint32_t) (0);  /* 0-RTS功能 1-CTS功能 */
+    p_hw_uart->CR1_f.SBS   = (uint32_t) (1);  /* 1-接收数据RX管脚下降沿作为起始位*/
+    p_hw_uart->CR1_f.OVER8 = (uint32_t) (1);  /* 1-8位UART过采样模式*/
     p_dev->options = options;
     return (AM_OK);
 }

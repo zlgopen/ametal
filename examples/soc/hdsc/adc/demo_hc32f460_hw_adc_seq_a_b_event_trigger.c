@@ -169,6 +169,6 @@ void demo_hc32f460_hw_adc_seq_a_b_event_trigger_entry (void    *p_hw_adc,
         am_mdelay(500);
     }
 }
-/** [src_hc32_hw_adc_int] */
+/** [src_hc32f460_hw_adc_int] */
 
 /* end of file */

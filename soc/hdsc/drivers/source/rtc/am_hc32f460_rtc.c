@@ -57,8 +57,8 @@ am_local int __rtc_time_get (void *p_drv, am_tm_t *p_tm);
 
 /** \brief 适配 RTC 标准接口需要的函数 */
 am_local am_const struct am_rtc_drv_funcs __g_rtc_drv_funcs = {
-    __rtc_time_set,  /* 设置当前的细分时间 */
-    __rtc_time_get,  /* 获取当前的细分时间 */
+    __rtc_time_set,  /**< \brief 设置当前的细分时间 */
+    __rtc_time_get,  /**< \brief 获取当前的细分时间 */
 };
 /*******************************************************************************
   本地函数定义
@@ -117,7 +117,10 @@ am_local int __rtc_time_set (void *p_drv, am_tm_t *p_tm)
     stcRtcDateTimeCfg.u8Hour = p_tm->tm_hour;
     stcRtcDateTimeCfg.u8Minute = p_tm->tm_min;
     stcRtcDateTimeCfg.u8Second = p_tm->tm_sec;
-    if (amhw_hc32f460_rtc_set_data_time(p_hw_rtc, RtcDataFormatDec, &stcRtcDateTimeCfg, RTC_ENABLE, RTC_ENABLE) != AM_OK)
+    if (amhw_hc32f460_rtc_set_data_time(p_hw_rtc,
+                                        RtcDataFormatDec,
+                                        &stcRtcDateTimeCfg,
+                                        RTC_ENABLE, RTC_ENABLE) != AM_OK)
     {
         while(1);  /* write calendar failed */
     }
@@ -147,7 +150,7 @@ am_local void __rtc_isr (void *p_arg)
  * \brief 初始化 RTC
  */
 am_rtc_handle_t am_hc32f460_rtc_init (am_hc32f460_rtc_dev_t           *p_dev,
-                                    const am_hc32f460_rtc_devinfo_t *p_devinfo)
+                                      const am_hc32f460_rtc_devinfo_t *p_devinfo)
 {
     amhw_hc32f460_rtc_t   *p_hw_rtc  = NULL;
     stc_rtc_init_t stcRtcInit;
@@ -231,13 +234,11 @@ void am_hc32f460_rtc_deinit (am_rtc_handle_t handle)
 
 void RTC_ALM_IrqHandler(void *p_arg)
 {
-//    AM_DBG_INFO("RTC_ALM_IrqHandler!\r\n");
     __rtc_isr(p_arg);
 }
 
 void RTC_PRD_IrqHandler(void *p_arg)
 {
-//    AM_DBG_INFO("RTC_PRD_IrqHandler!\r\n");
     __rtc_isr(p_arg);
 }
 
