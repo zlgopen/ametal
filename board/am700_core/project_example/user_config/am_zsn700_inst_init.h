@@ -57,6 +57,7 @@ extern "C" {
 #include "am_mtd.h"
 #include "am_rngbuf.h"
 #include "am_input.h"
+#include "am_iso7816.h"
 #include "am_zsn700_pca.h"
 #include "am_zsn700_pcnt.h"
 #include "am_hwconf_zsn700_led_gpio.h"
@@ -1112,6 +1113,15 @@ am_rtc_handle_t am_microport_ds1302_rtc_inst_init (void);
  * \return RTC 服务句柄，若为 NULL，表明初始化失败
  */
 am_rtc_handle_t am_microport_rx8025t_rtc_inst_init (void);
+
+/**
+ * \brief ISO7816 实例初始化，获得 ISO7816 服务句柄
+ *
+ * \param 无
+ *
+ * \return ISO7816 服务句柄，若为 NULL，表明初始化失败
+ */
+am_iso7816_handle_t am_iso7816_inst_init (void);
 
 /**
  * @}

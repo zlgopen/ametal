@@ -10,7 +10,8 @@
       <TargetName>debug</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
-      <pCCUsed>5060061::V5.06 update 1 (build 61)::ARMCC</pCCUsed>
+      <pCCUsed>5060750::V5.06 update 6 (build 750)::ARMCC</pCCUsed>
+      <uAC6>0</uAC6>
       <TargetOption>
         <TargetCommonOption>
           <Device>ZSN700</Device>
@@ -125,47 +126,6 @@
             <HexOffset>0</HexOffset>
             <Oh166RecLen>16</Oh166RecLen>
           </OPTHX>
-          <Simulator>
-            <UseSimulator>0</UseSimulator>
-            <LoadApplicationAtStartup>1</LoadApplicationAtStartup>
-            <RunToMain>1</RunToMain>
-            <RestoreBreakpoints>1</RestoreBreakpoints>
-            <RestoreWatchpoints>1</RestoreWatchpoints>
-            <RestoreMemoryDisplay>1</RestoreMemoryDisplay>
-            <RestoreFunctions>1</RestoreFunctions>
-            <RestoreToolbox>1</RestoreToolbox>
-            <LimitSpeedToRealTime>0</LimitSpeedToRealTime>
-            <RestoreSysVw>1</RestoreSysVw>
-          </Simulator>
-          <Target>
-            <UseTarget>1</UseTarget>
-            <LoadApplicationAtStartup>1</LoadApplicationAtStartup>
-            <RunToMain>1</RunToMain>
-            <RestoreBreakpoints>1</RestoreBreakpoints>
-            <RestoreWatchpoints>1</RestoreWatchpoints>
-            <RestoreMemoryDisplay>1</RestoreMemoryDisplay>
-            <RestoreFunctions>0</RestoreFunctions>
-            <RestoreToolbox>1</RestoreToolbox>
-            <RestoreTracepoints>1</RestoreTracepoints>
-            <RestoreSysVw>1</RestoreSysVw>
-          </Target>
-          <RunDebugAfterBuild>0</RunDebugAfterBuild>
-          <TargetSelection>1</TargetSelection>
-          <SimDlls>
-            <CpuDll></CpuDll>
-            <CpuDllArguments></CpuDllArguments>
-            <PeripheralDll></PeripheralDll>
-            <PeripheralDllArguments></PeripheralDllArguments>
-            <InitializationFile></InitializationFile>
-          </SimDlls>
-          <TargetDlls>
-            <CpuDll></CpuDll>
-            <CpuDllArguments></CpuDllArguments>
-            <PeripheralDll></PeripheralDll>
-            <PeripheralDllArguments></PeripheralDllArguments>
-            <InitializationFile></InitializationFile>
-            <Driver>BIN\UL2CM3.DLL</Driver>
-          </TargetDlls>
         </DebugOption>
         <Utilities>
           <Flash1>
@@ -224,6 +184,7 @@
             <hadXRAM>0</hadXRAM>
             <uocXRam>0</uocXRam>
             <RvdsVP>0</RvdsVP>
+            <RvdsMve>0</RvdsMve>
             <hadIRAM2>0</hadIRAM2>
             <hadIROM2>0</hadIROM2>
             <StupSel>8</StupSel>
@@ -364,11 +325,15 @@
             <uThumb>0</uThumb>
             <uSurpInc>0</uSurpInc>
             <uC99>1</uC99>
+            <uGnu>0</uGnu>
             <useXO>0</useXO>
             <v6Lang>3</v6Lang>
             <v6LangP>0</v6LangP>
             <vShortEn>0</vShortEn>
             <vShortWch>0</vShortWch>
+            <v6Lto>0</v6Lto>
+            <v6WtE>0</v6WtE>
+            <v6Rtti>0</v6Rtti>
             <VariousControls>
               <MiscControls></MiscControls>
               <Define>AM_VDEBUG AM_CORTEX_M0</Define>
@@ -386,6 +351,7 @@
             <NoWarn>0</NoWarn>
             <uSurpInc>0</uSurpInc>
             <useXO>0</useXO>
+            <uClangAs>0</uClangAs>
             <VariousControls>
               <MiscControls></MiscControls>
               <Define></Define>
@@ -650,6 +616,11 @@
               <FileName>am_rx8025t.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\components\drivers\source\rtc\am_rx8025t.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_iso7816.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\iso7816\am_iso7816.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -1596,6 +1567,11 @@
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\board\am700_core\reader\demo_zsn700_picca_read_id_8ant.c</FilePath>
             </File>
+            <File>
+              <FileName>demo_zsn700_iso7816.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am700_core\iso7816\demo_zsn700_iso7816.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -1615,6 +1591,11 @@
               <FileName>demo_gs200_baudrate.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\components\drivers\demo_gs200_baudrate.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_iso7816.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\components\drivers\demo_iso7816.c</FilePath>
             </File>
             <File>
               <FileName>demo_mk100.c</FileName>
@@ -2401,6 +2382,11 @@
               <FileType>1</FileType>
               <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zsn700_reader.c</FilePath>
             </File>
+            <File>
+              <FileName>am_hwconf_iso7816.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_iso7816.c</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>
@@ -2410,11 +2396,12 @@
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
       <pCCUsed>5060061::V5.06 update 1 (build 61)::ARMCC</pCCUsed>
+      <uAC6>0</uAC6>
       <TargetOption>
         <TargetCommonOption>
           <Device>ARMCM0</Device>
           <Vendor>ARM</Vendor>
-          <PackID>ARM.CMSIS.4.5.0</PackID>
+          <PackID>ARM.CMSIS.5.5.1</PackID>
           <PackURL>http://www.keil.com/pack/</PackURL>
           <Cpu>IROM(0x00000000,0x40000) IRAM(0x20000000,0x20000) CPUTYPE("Cortex-M0") CLOCK(12000000) ESEL ELITTLE</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
@@ -2524,47 +2511,6 @@
             <HexOffset>0</HexOffset>
             <Oh166RecLen>16</Oh166RecLen>
           </OPTHX>
-          <Simulator>
-            <UseSimulator>1</UseSimulator>
-            <LoadApplicationAtStartup>1</LoadApplicationAtStartup>
-            <RunToMain>1</RunToMain>
-            <RestoreBreakpoints>1</RestoreBreakpoints>
-            <RestoreWatchpoints>1</RestoreWatchpoints>
-            <RestoreMemoryDisplay>1</RestoreMemoryDisplay>
-            <RestoreFunctions>1</RestoreFunctions>
-            <RestoreToolbox>1</RestoreToolbox>
-            <LimitSpeedToRealTime>0</LimitSpeedToRealTime>
-            <RestoreSysVw>1</RestoreSysVw>
-          </Simulator>
-          <Target>
-            <UseTarget>0</UseTarget>
-            <LoadApplicationAtStartup>1</LoadApplicationAtStartup>
-            <RunToMain>0</RunToMain>
-            <RestoreBreakpoints>1</RestoreBreakpoints>
-            <RestoreWatchpoints>1</RestoreWatchpoints>
-            <RestoreMemoryDisplay>1</RestoreMemoryDisplay>
-            <RestoreFunctions>0</RestoreFunctions>
-            <RestoreToolbox>1</RestoreToolbox>
-            <RestoreTracepoints>1</RestoreTracepoints>
-            <RestoreSysVw>1</RestoreSysVw>
-          </Target>
-          <RunDebugAfterBuild>0</RunDebugAfterBuild>
-          <TargetSelection>-1</TargetSelection>
-          <SimDlls>
-            <CpuDll></CpuDll>
-            <CpuDllArguments></CpuDllArguments>
-            <PeripheralDll></PeripheralDll>
-            <PeripheralDllArguments></PeripheralDllArguments>
-            <InitializationFile></InitializationFile>
-          </SimDlls>
-          <TargetDlls>
-            <CpuDll></CpuDll>
-            <CpuDllArguments></CpuDllArguments>
-            <PeripheralDll></PeripheralDll>
-            <PeripheralDllArguments></PeripheralDllArguments>
-            <InitializationFile></InitializationFile>
-            <Driver></Driver>
-          </TargetDlls>
         </DebugOption>
         <Utilities>
           <Flash1>
@@ -2623,6 +2569,7 @@
             <hadXRAM>0</hadXRAM>
             <uocXRam>0</uocXRam>
             <RvdsVP>0</RvdsVP>
+            <RvdsMve>0</RvdsMve>
             <hadIRAM2>0</hadIRAM2>
             <hadIROM2>0</hadIROM2>
             <StupSel>8</StupSel>
@@ -2763,11 +2710,15 @@
             <uThumb>0</uThumb>
             <uSurpInc>0</uSurpInc>
             <uC99>1</uC99>
+            <uGnu>0</uGnu>
             <useXO>0</useXO>
             <v6Lang>0</v6Lang>
             <v6LangP>0</v6LangP>
             <vShortEn>0</vShortEn>
             <vShortWch>0</vShortWch>
+            <v6Lto>0</v6Lto>
+            <v6WtE>0</v6WtE>
+            <v6Rtti>0</v6Rtti>
             <VariousControls>
               <MiscControls></MiscControls>
               <Define>AM_VDEBUG AM_CORTEX_M0</Define>
@@ -2785,6 +2736,7 @@
             <NoWarn>0</NoWarn>
             <uSurpInc>0</uSurpInc>
             <useXO>0</useXO>
+            <uClangAs>0</uClangAs>
             <VariousControls>
               <MiscControls></MiscControls>
               <Define></Define>
@@ -3049,6 +3001,11 @@
               <FileName>am_rx8025t.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\components\drivers\source\rtc\am_rx8025t.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_iso7816.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\iso7816\am_iso7816.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -3995,6 +3952,11 @@
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\board\am700_core\reader\demo_zsn700_picca_read_id_8ant.c</FilePath>
             </File>
+            <File>
+              <FileName>demo_zsn700_iso7816.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am700_core\iso7816\demo_zsn700_iso7816.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -4014,6 +3976,11 @@
               <FileName>demo_gs200_baudrate.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\components\drivers\demo_gs200_baudrate.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_iso7816.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\components\drivers\demo_iso7816.c</FilePath>
             </File>
             <File>
               <FileName>demo_mk100.c</FileName>
@@ -4800,10 +4767,21 @@
               <FileType>1</FileType>
               <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zsn700_reader.c</FilePath>
             </File>
+            <File>
+              <FileName>am_hwconf_iso7816.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_iso7816.c</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>
     </Target>
   </Targets>
+
+  <RTE>
+    <apis/>
+    <components/>
+    <files/>
+  </RTE>
 
 </Project>

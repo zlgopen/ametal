@@ -43,6 +43,7 @@ extern "C" {
 #include "zsn603.h"
 #include "am_xmodem.h"
 #include "am_baudrate_detect.h"
+#include "am_iso7816.h"
 /**
  * \brief EP24CXX 器件例程
  *
@@ -298,6 +299,13 @@ void demo_gs200_baudrate_entry (am_gs200_handle_t gs200_handle,uint32_t gs200_ba
  * \return 无
  */
 void demo_rs200_entry (am_rs200_handle_t handle);
+
+/**
+ * \brief ISO7816 接触式卡例程
+ * \param[in] iso7816_handle  ISO7816设备服务句柄
+ * \return 无
+ */
+void demo_iso7816_entry(am_iso7816_handle_t iso7816_handle);
 
 #ifdef __cplusplus
 }
