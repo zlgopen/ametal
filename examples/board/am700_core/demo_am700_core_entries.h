@@ -703,3 +703,8 @@ void demo_zsn700_reader_picca_write_block (void);
  * \brief B类卡读卡例程
  */
 void demo_zsn700_reader_piccb_read_id (void);
+
+/**
+ * \brief ISO7816 接触式卡例程
+ */
+void demo_zsn700_iso7816_entry (void);

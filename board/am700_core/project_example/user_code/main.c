@@ -140,6 +140,7 @@ int am_main (void)
 //    demo_zsn700_core_miniport_zlg72128_entry();
 //    demo_zsn700_core_miniport_hc595_digitron_entry();
 //    demo_zsn700_core_miniport_hc595_led_entry();
+//    demo_zsn700_iso7816_entry();
     while (1) {
 
     }

@@ -93,7 +93,7 @@ static void __hc32_plfm_lpuart1_init (void)
 {
     am_clk_enable(CLK_LPUART1);
 
-    am_gpio_pin_cfg(PIOC_11, PIOC_11_LPUART0_RXD | PIOC_11_INPUT_FLOAT );
+    am_gpio_pin_cfg(PIOC_11, PIOC_11_LPUART1_RXD | PIOC_11_INPUT_FLOAT );
     am_gpio_pin_cfg(PIOC_12, PIOC_12_LPUART1_TXD | PIOC_12_OUT_PP);
 }
 

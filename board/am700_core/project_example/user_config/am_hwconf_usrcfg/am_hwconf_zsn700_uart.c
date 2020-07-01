@@ -39,8 +39,8 @@ static void __zsn700_plfm_uart0_init (void)
 {
     am_clk_enable(CLK_UART0);
 
-    am_gpio_pin_cfg(PIOB_6, PIOB_6_UART0_TXD | PIOB_6_OUT_PP );
-    am_gpio_pin_cfg(PIOB_7, PIOB_7_UART0_RXD | PIOB_7_INPUT_FLOAT);
+    am_gpio_pin_cfg(PIOB_8, PIOB_8_UART0_TXD | PIOB_8_OUT_PP );
+    am_gpio_pin_cfg(PIOB_9, PIOB_9_UART0_RXD | PIOB_9_INPUT_FLOAT);
 }
 
 /** \brief 解除串口0平台初始化 */
@@ -48,8 +48,8 @@ static void __zsn700_plfm_uart0_deinit (void)
 {
     am_clk_disable(CLK_UART0);
 
-    am_gpio_pin_cfg(PIOB_6, PIOB_6_GPIO | PIOB_6_INPUT_PU);
-    am_gpio_pin_cfg(PIOB_7, PIOB_7_GPIO | PIOB_7_INPUT_PU);
+    am_gpio_pin_cfg(PIOB_8, PIOB_8_GPIO | PIOB_8_INPUT_PU);
+    am_gpio_pin_cfg(PIOB_9, PIOB_9_GPIO | PIOB_9_INPUT_PU);
 }
 
 /** \brief 串口0设备信息 */
@@ -57,10 +57,10 @@ static const am_zsn700_uart_devinfo_t __g_uart0_devinfo = {
 
     ZSN700_UART0_BASE,            /**< \brief 串口0 */
     INUM_UART0_2,                 /**< \brief 串口0的中断编号 */
-    AMHW_ZSN700_UART_WORK_MODE_1, /**< \brief 串口工作模式 */
+    AMHW_ZSN700_UART_WORK_MODE_4, /**< \brief 串口工作模式 */
 
-    AMHW_ZSN700_UART_PARITY_NO |  /**< \brief 无极性  MODE0/1:无需校验  MODE2/3:必须校验*/
-    AMHW_ZSN700_UART_STOP_1_0_BIT,/**< \brief 1个停止位 */
+    AMHW_ZSN700_UART_HW_PARITY_EVEN |   /**< \brief 偶校验  MODE0/1:无需校验  MODE2/3:必须校验 */
+    AMHW_ZSN700_UART_STOP_1_0_BIT,      /**< \brief 1个停止位 */
 
     115200,                       /**< \brief 设置的波特率 */
 
