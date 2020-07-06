@@ -31,14 +31,10 @@ extern "C" {
 
 #include "hw/amhw_mm32_adc.h"
 #include "hw/amhw_mm32_bkp.h"
-#include "hw/amhw_mm32_cmp.h"
-#include "hw/amhw_mm32_crc.h"
-#include "hw/amhw_mm32_dac.h"
 #include "hw/amhw_mm32_flash.h"
 #include "hw/amhw_mm32_i2c.h"
 #include "hw/amhw_mm32_spi.h"
 #include "hw/amhw_mm32_tim.h"
-#include "hw/amhw_mm32_uart.h"
 #include "hw/amhw_mm32_iwdg.h"
 #include "hw/amhw_mm32_wwdg.h"
 #include "hw/amhw_mm32_pwr.h"
@@ -46,7 +42,10 @@ extern "C" {
 #include "hw/amhw_mm32_syscfg.h"
 #include "hw/amhw_mm32_gpio.h"
 #include "hw/amhw_mm32_dma.h"
-
+#include "hw/amhw_mm32_crc.h"
+#include "hw/amhw_mm32_dac.h"
+#include "hw/amhw_mm32_uart.h"
+#include "hw/amhw_mm32_cmp.h"
 
 /**
  * \addtogroup amhw_mm32l373_if_periph_map
