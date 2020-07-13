@@ -36,7 +36,7 @@
 #include "string.h"
 #include "am_zml165_adc.h"
 #include "am_zlg_flash.h"
-#include "zlg116_periph_map.h"
+#include "zml165_periph_map.h"
 #include "demo_zlg_entries.h"
 #include "am_aml165_inst_init.h"
 #include "am_pt100_to_temperature.h"
@@ -255,18 +255,18 @@ void demo_aml165_thermistor_para_adjust_entry(am_uart_handle_t       uart_handle
     //判断温度系数修调是否成功
     if((pt100_para[0] < 1.02 && pt100_para[0] > 0.98) &&
             (pt100_para[1] < 0.3 && pt100_para[1] > -0.3)){
-        am_kprintf("Demo-a Success!\r\n\r\n");
+        am_kprintf("Demo-2 Success!\r\n\r\n");
     }else{
-        am_kprintf("Demo-a Fail!\r\n\r\n");
+        am_kprintf("Demo-2 Fail!\r\n\r\n");
         pt100_para[0] = 1;
         pt100_para[1] = 0;
     }
 
-    am_zlg_flash_init(ZLG116_FLASH);
+    am_zlg_flash_init(ZML165_FLASH);
 
-    am_zlg_flash_sector_erase (ZLG116_FLASH, (1024 * FLASH_BLOCK_NUM));
+    am_zlg_flash_sector_erase (ZML165_FLASH, (1024 * FLASH_BLOCK_NUM));
 
-    am_zlg_flash_sector_program(ZLG116_FLASH,
+    am_zlg_flash_sector_program(ZML165_FLASH,
                                (1024 * FLASH_BLOCK_NUM),
                                (uint32_t *)pt100_para,
                                 2);
@@ -284,7 +284,7 @@ void demo_aml165_core_zml165_adc_thermistor_measure (void)
     am_uart_handle_t uart_handle  = am_zml165_uart1_inst_init();
     float para[2] = {0};
     /* 从flash中获取PT100电阻的修正系数 */
-    am_zlg_flash_init(ZLG116_FLASH);
+    am_zlg_flash_init(ZML165_FLASH);
     memcpy((void *)para, (uint32_t *)(0x08000000 + 1024 * FLASH_BLOCK_NUM), 2 * 4);
     __print_adjust_function(para[0], para[1]);
     /* 若flash中未保存系数 */
@@ -301,6 +301,7 @@ void demo_aml165_core_zml165_adc_thermistor_measure (void)
             am_kprintf("please select which demo you want to do:(eg: ‘demo-1\\n’) \r\n\r\n");
             am_kprintf("demo-1. PT100 temperature measure  Demo\r\n");
             am_kprintf("demo-2. PT100 temperature para adjust Demo\r\n");
+            am_kprintf("demo-3. 24bit ADC Test Voltage Demo\r\n");
             uart_str_get(uart_handle, buffer);
         }
         if(buffer[5] == '1'){
@@ -341,6 +342,9 @@ void demo_aml165_core_zml165_adc_thermistor_measure (void)
                 am_zml165_adc_handle_t handle = am_zml165_24adc_inst_init();
                 demo_aml165_thermistor_para_adjust_entry(uart_handle, handle);
             }
+        }else if(buffer[5] == '3'){
+            am_zml165_adc_handle_t handle = am_zml165_24adc_inst_init();
+            demo_zml165_adc_vol_measure_entry((void *)handle);
         }
     }
 }

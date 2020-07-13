@@ -337,11 +337,11 @@ am_zm516x_rngbuf_handle_t __zm516x_rngbuf_init (am_zm516x_handle_t zm516x_handle
                                                 uint8_t           *p_txbuf,
                                                 uint32_t           txbuf_size)
 {
+    am_zm516x_rngbuf_dev_t *p_dev = &zm516x_handle->uart_rngbuf_dev;
+
     if (handle == NULL) {
         return NULL;
     }
-
-    am_zm516x_rngbuf_dev_t *p_dev = &zm516x_handle->uart_rngbuf_dev;
 
     p_dev->handle = handle;
 
