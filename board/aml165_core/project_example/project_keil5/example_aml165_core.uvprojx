@@ -632,6 +632,11 @@
               <FilePath>..\..\..\..\components\drivers\source\fm175xx\am_fm175xx_zlg116.lib</FilePath>
             </File>
             <File>
+              <FileName>am_pt100_to_temperature.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\pt100\am_pt100_to_temperature.c</FilePath>
+            </File>
+            <File>
               <FileName>am_sensor_hts221.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\components\drivers\source\sensor\am_sensor_hts221.c</FilePath>
@@ -1010,6 +1015,11 @@
               <FileName>demo_aml165_core_zml165_adc_vol_measure.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\board\am165_core\adc\demo_aml165_core_zml165_adc_vol_measure.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_aml165_core_zml165_adc_pt100_measure.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am165_core\adc\demo_aml165_core_zml165_adc_pt100_measure.c</FilePath>
             </File>
             <File>
               <FileName>demo_aml165_core_std_buzzer.c</FileName>
@@ -2080,11 +2090,6 @@
               <FileName>am_hwconf_sensor_shtc1.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_sensor_shtc1.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_cs1237.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_cs1237.c</FilePath>
             </File>
             <File>
               <FileName>am_hwconf_zml165_24adc.c</FileName>
@@ -2721,6 +2726,11 @@
               <FilePath>..\..\..\..\components\drivers\source\fm175xx\am_fm175xx_zlg116.lib</FilePath>
             </File>
             <File>
+              <FileName>am_pt100_to_temperature.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\pt100\am_pt100_to_temperature.c</FilePath>
+            </File>
+            <File>
               <FileName>am_sensor_hts221.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\components\drivers\source\sensor\am_sensor_hts221.c</FilePath>
@@ -3099,6 +3109,11 @@
               <FileName>demo_aml165_core_zml165_adc_vol_measure.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\board\am165_core\adc\demo_aml165_core_zml165_adc_vol_measure.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_aml165_core_zml165_adc_pt100_measure.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am165_core\adc\demo_aml165_core_zml165_adc_pt100_measure.c</FilePath>
             </File>
             <File>
               <FileName>demo_aml165_core_std_buzzer.c</FileName>
@@ -4169,11 +4184,6 @@
               <FileName>am_hwconf_sensor_shtc1.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_sensor_shtc1.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_cs1237.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_cs1237.c</FilePath>
             </File>
             <File>
               <FileName>am_hwconf_zml165_24adc.c</FileName>

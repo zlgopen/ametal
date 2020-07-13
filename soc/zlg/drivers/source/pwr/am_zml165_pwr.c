@@ -145,6 +145,8 @@ static void __sys_clk_change (uint8_t pwr_mode)
     uint32_t apb1_div = 0, apb2_div = 0;
     uint32_t i = 0;
 
+    uint8_t temp = 0;
+
     /* 计算 APB1 时钟频率 */
     apb1_div = 1;
     for (i = 0; i < (p_clk_dev->p_devinfo->apb1_div & 0x7); i++) {
@@ -182,17 +184,24 @@ static void __sys_clk_change (uint8_t pwr_mode)
         } else {
             amhw_zml165_rcc_hsion_enable();
             while (amhw_zml165_rcc_hsirdy_read () == AM_FALSE);
+            if (p_clk_dev->p_devinfo->input_clk == 48000000) {
+                ZML165_RCC->cr &= ~((uint32_t)0x01 << 20);
+            } else if (p_clk_dev->p_devinfo->input_clk == 72000000) {
+                ZML165_RCC->cr |= (1 << 20);
+            }
         }
 
         /* 设置 FLASH 延迟间隔 */
-        ZML165_FLASH->acr &= ~0x07;
-        ZML165_FLASH->acr |= 0x31;
+        ZML165_FLASH->acr |= 0x10;
+        amhw_zlg_flash_latency_set(ZML165_FLASH, 2);
 
-        amhw_zml165_rcc_pll_enable();
-        while (amhw_zml165_rcc_pllrdy_read() == AM_FALSE);
+        amhw_zml165_rcc_sys_clk_set((amhw_zml165_sys_clk_src)AMHW_ZML165_SYSCLK_HSI);
 
         /* 系统时钟选为 PLL */
-        amhw_zml165_rcc_sys_clk_set(AMHW_ZML165_SYSCLK_HSI);
+        while (temp != 0x02) {
+            temp = ZML165_RCC->cfgr >> 2;
+            temp &= 0x03;
+        }
 
         /* 在正常模式下禁能 LSI 作为系统时钟 */
         amhw_zml165_rcc_lsi_disable();

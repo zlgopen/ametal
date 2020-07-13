@@ -54,7 +54,7 @@ static const am_zml165_clk_devinfo_t __g_clk_devinfo =
      *    -# AMHW_ZML165_SYSCLK_HSI      : HSI 作为系统时钟
      *    -# AMHW_ZML165_SYSCLK_LSI      : LSI 作为系统时钟
      */
-    AMHW_ZLG115_SYSCLK_HSI,
+    AMHW_ZML165_SYSCLK_HSI,
 
     /**
      * \brief AHB分频系数，AHBCLK = PLLOUT / DIV,AHB最大频率为48Mhz
