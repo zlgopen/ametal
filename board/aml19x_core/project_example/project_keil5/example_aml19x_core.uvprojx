@@ -150,7 +150,7 @@
             <RestoreSysVw>1</RestoreSysVw>
           </Target>
           <RunDebugAfterBuild>0</RunDebugAfterBuild>
-          <TargetSelection>1</TargetSelection>
+          <TargetSelection>6</TargetSelection>
           <SimDlls>
             <CpuDll></CpuDll>
             <CpuDllArguments></CpuDllArguments>
@@ -164,7 +164,7 @@
             <PeripheralDll></PeripheralDll>
             <PeripheralDllArguments></PeripheralDllArguments>
             <InitializationFile></InitializationFile>
-            <Driver>BIN\UL2CM3.DLL</Driver>
+            <Driver>Segger\JL2CM3.dll</Driver>
           </TargetDlls>
         </DebugOption>
         <Utilities>
@@ -351,7 +351,7 @@
           </ArmAdsMisc>
           <Cads>
             <interw>1</interw>
-            <Optim>4</Optim>
+            <Optim>1</Optim>
             <oTime>0</oTime>
             <SplitLS>0</SplitLS>
             <OneElfS>1</OneElfS>
@@ -1565,6 +1565,11 @@
               <FileName>demo_hc32l19x_wake_up.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\board\aml19x_core\wakeup\demo_hc32l19x_wake_up.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_hc32l19x_lpuart_wake_up.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\aml19x_core\wakeup\demo_hc32l19x_lpuart_wake_up.c</FilePath>
             </File>
             <File>
               <FileName>demo_hc32l19x_core_hw_wdt.c</FileName>
@@ -4124,6 +4129,11 @@
               <FileName>demo_hc32l19x_wake_up.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\board\aml19x_core\wakeup\demo_hc32l19x_wake_up.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_hc32l19x_lpuart_wake_up.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\aml19x_core\wakeup\demo_hc32l19x_lpuart_wake_up.c</FilePath>
             </File>
             <File>
               <FileName>demo_hc32l19x_core_hw_wdt.c</FileName>

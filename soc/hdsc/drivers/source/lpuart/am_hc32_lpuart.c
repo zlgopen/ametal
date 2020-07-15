@@ -577,7 +577,7 @@ am_uart_handle_t am_hc32_lpuart_init (
         while(amhw_hc32_rcc_rcl_state_get() == AM_FALSE);
 
         /* 串口时钟获取 */
-        p_dev->clk_rate = 32768;
+        p_dev->clk_rate = 38400;
     } else {
         p_dev->clk_rate = am_clk_rate_get(CLK_PCLK);
     }
@@ -609,6 +609,21 @@ am_uart_handle_t am_hc32_lpuart_init (
 
     __lpuart_opt_set (p_dev, p_dev->options);
 
+    /* 模式0情况下，波特率固定为 PCLK/12 */
+    if(amhw_hc32_lpuart_mode_get(p_hw_lpuart) == AMHW_HC32_LPUART_WORK_MODE_0) {
+
+        /* 模式0通信时钟分频系数设置无效 */
+        amhw_hc32_lpuart_clk_div_sel(p_hw_lpuart,
+                                       AMHW_HC32_LPUART_SCLK_DIV_MODE0_NO);
+
+    /* 模式2情况下，波特率 = 时钟 / 分频系数 */
+    } else {
+
+        /* 设置通信时钟分频系数为最小 */
+        amhw_hc32_lpuart_clk_div_sel(p_hw_lpuart,
+                                       AMHW_HC32_LPUART_SCLK_DIV_MODE2_8);
+    }
+    
     /* 设置波特率 */
     p_dev->baud_rate = amhw_hc32_lpuart_baudrate_set(p_hw_lpuart,
                                                      p_dev->clk_rate,

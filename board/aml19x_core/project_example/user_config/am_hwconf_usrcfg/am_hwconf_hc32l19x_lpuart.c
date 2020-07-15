@@ -57,14 +57,14 @@ static const am_hc32_lpuart_devinfo_t __g_lpuart0_devinfo = {
 
     HC32_LPUART0_BASE,              /**< \brief LPUART0 */
     INUM_LPUART0,                   /**< \brief LPUART0的中断编号 */
-    AMHW_HC32_LPUART_SCLK_SRC_PCLK, /**< \brief 通信传输时钟  */
+    AMHW_HC32_LPUART_SCLK_SRC_RCL,  /**< \brief 通信传输时钟  */
 
     AMHW_HC32_LPUART_PARITY_NO |    /**< \brief 无极性 */
     AMHW_HC32_LPUART_STOP_1_0_BIT,  /**< \brief 1个停止位 */
 
     AM_FALSE,
 
-    115200,                         /**< \brief 设置的波特率 */
+    9600,                           /**< \brief 设置的波特率 */
 
     0,                              /**< \brief 无其他中断 */
 

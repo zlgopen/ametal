@@ -438,6 +438,11 @@ void demo_hc32l19x_core_std_lpuart_ringbuf_entry (void);
 void demo_hc32l19x_drv_lpmode_wake_up_entry (void);
 
 /**
+ * \brief 低功耗模式（深度睡眠）低功耗串口唤醒例程
+ */
+void demo_hc32l19x_lpuart_wake_up_entry (void);
+
+/**
  * \brief WWDG 例程，通过 HW 层接口实现
  */
 void demo_hc32l19x_core_hw_wdt_entry (void);
