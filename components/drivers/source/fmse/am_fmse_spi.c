@@ -82,13 +82,13 @@ static uint8_t __fmse_spi_state_get (void *p_drv)
 
     uint8_t cmd   = SPI_CMD_CHK_STATE;
     uint8_t temp  = 0xff;
-	uint8_t state;
+    uint8_t state;
 
     am_wait_init(&msg_wait);
 
     am_spi_msg_init(&spi_msg,
-                     __message_complete,
-                     (void *)&msg_wait);
+                    __message_complete,
+                    (void *)&msg_wait);
     /* send cmd */
     am_spi_mktrans(&trans[0],
                    &cmd,
@@ -119,7 +119,7 @@ static uint8_t __fmse_spi_state_get (void *p_drv)
 
     am_wait_on(&msg_wait);
 
-	return state;
+    return state;
 }
 
 /**
@@ -135,24 +135,24 @@ static uint8_t __fmse_spi_chk_state(void *p_drv, uint16_t inv, uint32_t timeout)
 {
     am_spi_device_t *p_dev = (am_spi_device_t*)(p_drv);
 
-	uint8_t state = 1; 
+    uint8_t state = 1; 
 
     /* 轮询间隔强制为1~9毫秒 */
     inv = ((inv == 0) || (inv > 9)) ? 1 : inv;
 
-	/* chk state and wait se ok */
-	do{
+    /* chk state and wait se ok */
+    do {
         state = __fmse_spi_state_get(p_dev);
         
-		if(state) {
+        if(state) {
             am_mdelay(inv);
             timeout -= inv;
         } else {
             break;
         }
-	} while (timeout > 10);    /* 预留10ms余量 */
+    } while (timeout > 10);    /* 预留10ms余量 */
 
-	return state;
+    return state;
 }
 
 /**
@@ -171,32 +171,31 @@ static uint8_t __fmse_spi_frame_send (void *p_drv, uint8_t *sbuf, uint16_t slen)
     am_spi_transfer_t trans[4];
     am_wait_t         msg_wait;
     am_spi_message_t  spi_msg;  
-    
+
     const uint8_t cmd = SPI_CMD_SEND_DATA;
-	uint16_t i;
+    uint16_t i;
     uint8_t  lrc;
     uint8_t  len[2];
 
-	/* length */
-	len[0] = slen >> 8;
-	len[1] = slen;
+    /* length */
+    len[0] = slen >> 8;
+    len[1] = slen;
 
-	/* calc lrc */
-	lrc = 0xFF^len[0]^len[1];
+    /* calc lrc */
+    lrc = 0xFF^len[0]^len[1];
 
-	/* send frame */
-	for(i = 0; i < slen; i++)
-	{
-		lrc ^= sbuf[i];
-	}
+    /* send frame */
+    for(i = 0; i < slen; i++) {
+        lrc ^= sbuf[i];
+    }
 
     am_wait_init(&msg_wait);
 
     am_spi_msg_init(&spi_msg,
-                     __message_complete,
-                     (void *)&msg_wait);
+                    __message_complete,
+                    (void *)&msg_wait);
 
-	/* send cmd */
+    /* send cmd */
     am_spi_mktrans(&trans[0],
                    &cmd,
                     NULL,
@@ -209,7 +208,7 @@ static uint8_t __fmse_spi_frame_send (void *p_drv, uint8_t *sbuf, uint16_t slen)
 
     am_spi_trans_add_tail(&spi_msg, &trans[0]);
 
-	/* send length */
+    /* send length */
     am_spi_mktrans(&trans[1],
                    &len[0],
                     NULL,
@@ -221,8 +220,8 @@ static uint8_t __fmse_spi_frame_send (void *p_drv, uint8_t *sbuf, uint16_t slen)
                     0);
 
     am_spi_trans_add_tail(&spi_msg, &trans[1]);
-    
-	/* send data */
+
+    /* send data */
     am_spi_mktrans(&trans[2],
                    &sbuf[0],
                     NULL,
@@ -234,8 +233,8 @@ static uint8_t __fmse_spi_frame_send (void *p_drv, uint8_t *sbuf, uint16_t slen)
                     0);
 
     am_spi_trans_add_tail(&spi_msg, &trans[2]);
-    
-	/* send lrc */
+
+    /* send lrc */
     am_spi_mktrans(&trans[3],
                    &lrc,
                     NULL,
@@ -251,7 +250,7 @@ static uint8_t __fmse_spi_frame_send (void *p_drv, uint8_t *sbuf, uint16_t slen)
     am_spi_msg_start(p_dev, &spi_msg);
 
     am_wait_on(&msg_wait);
-    
+
     return 0;
 }
 
@@ -275,7 +274,7 @@ static uint8_t __fmse_spi_frame_recv (void     *p_drv,
     am_spi_message_t  spi_msg;    
 
     const uint8_t cmd = SPI_CMD_RECV_DATA;
-	uint16_t i;
+    uint16_t i;
     uint8_t  temp;
     uint8_t  lrc;
     uint8_t  len[2];
@@ -283,10 +282,10 @@ static uint8_t __fmse_spi_frame_recv (void     *p_drv,
     am_wait_init(&msg_wait);
 
     am_spi_msg_init(&spi_msg,
-                     __message_complete,
-                     (void *)&msg_wait);
-    
-	/* send cmd */
+                    __message_complete,
+                    (void *)&msg_wait);
+
+    /* send cmd */
     am_spi_mktrans(&trans[0],
                    &cmd,
                     NULL,
@@ -299,7 +298,7 @@ static uint8_t __fmse_spi_frame_recv (void     *p_drv,
 
     am_spi_trans_add_tail(&spi_msg, &trans[0]);
 
-	/* recieve length */
+    /* recieve length */
     am_spi_mktrans(&trans[1],
                     NULL,
                    &len[0],
@@ -312,7 +311,7 @@ static uint8_t __fmse_spi_frame_recv (void     *p_drv,
 
     am_spi_trans_add_tail(&spi_msg, &trans[1]);
 
-	/* recieve data */
+    /* recieve data */
     am_spi_mktrans(&trans[2],
                     NULL,
                    &rbuf[0],
@@ -325,7 +324,7 @@ static uint8_t __fmse_spi_frame_recv (void     *p_drv,
 
     am_spi_trans_add_tail(&spi_msg, &trans[2]);
 
-	/* recieve lrc */
+    /* recieve lrc */
     am_spi_mktrans(&trans[3],
                     NULL,
                    &temp,
@@ -348,18 +347,16 @@ static uint8_t __fmse_spi_frame_recv (void     *p_drv,
     /* 计算校验 */
     lrc = 0xFF^len[0]^len[1];
 
-	for(i = 0; i < *rlen; i++)
-	{
-		lrc ^= rbuf[i];
-	}
+    for (i = 0; i < *rlen; i++) {
+        lrc ^= rbuf[i];
+    }
 
     lrc ^= temp;
-    
-	if(lrc)
-	{
-		*rlen = 0;
-		return 14;
-	}
+
+    if (lrc) {
+        *rlen = 0;
+        return 14;
+    }
 
     return 0;
 }
@@ -386,12 +383,12 @@ static uint8_t __fmse_spi_frame_length_get (void     *p_drv,
     am_wait_init(&msg_wait);
 
     am_spi_msg_init(&spi_msg,
-                     __message_complete,
-                     (void *)&msg_wait);
-    
-	/* send cmd */
+                    __message_complete,
+                    (void *)&msg_wait);
+
+    /* send cmd */
     am_spi_mktrans(&trans[0],
-                   &cmd,
+                &cmd,
                     NULL,
                     1,
                     0,
@@ -402,7 +399,7 @@ static uint8_t __fmse_spi_frame_length_get (void     *p_drv,
 
     am_spi_trans_add_tail(&spi_msg, &trans[0]);
 
-	/* recieve length */
+    /* recieve length */
     am_spi_mktrans(&trans[1],
                     NULL,
                    &len[0],
@@ -414,11 +411,11 @@ static uint8_t __fmse_spi_frame_length_get (void     *p_drv,
                     0);
 
     am_spi_trans_add_tail(&spi_msg, &trans[1]);
-
+    
     am_spi_msg_start(p_dev, &spi_msg);
-
+    
     am_wait_on(&msg_wait);
-
+    
     *rlen = len[0] << 8 | len[1];
 
     return 0;
@@ -449,29 +446,28 @@ static uint8_t __fmse_spi_transceive (void     *p_drv,
     am_spi_device_t   *p_dev = (am_spi_device_t*)(&p_this->spi_dev);
 
     uint8_t state;
-    
-	if(p_dev == NULL) {
-		return 11;
+
+    if(p_dev == NULL) {
+        return 11;
     }
-    
+
     __fmse_spi_frame_send(p_dev, sbuf, slen);
-    
-	/* chk se state */
-	if(__fmse_spi_chk_state(p_dev, poll_inv, poll_timeout)) {
-		return 12;
+
+    /* chk se state */
+    if (__fmse_spi_chk_state(p_dev, poll_inv, poll_timeout)) {
+        return 12;
     }
 
     __fmse_spi_frame_length_get(p_dev, rlen);
 
-	if(*rlen < SPI_MIN_LEN || *rlen > SPI_MAX_LEN)
-	{
-		*rlen = 0;
-		return 13;
-	}
-    
+    if (*rlen < SPI_MIN_LEN || *rlen > SPI_MAX_LEN) {
+        *rlen = 0;
+        return 13;
+    }
+
     state = __fmse_spi_frame_recv(p_dev, rbuf, rlen);
 
-	return state;
+    return state;
 }
 
 /**
@@ -494,7 +490,7 @@ am_fmse_handle_t am_fmse_spi_init (am_fmse_spi_dev_t           *p_dev,
     p_dev->fmse_dev.p_drv   = p_dev;
     p_dev->fmse_dev.p_funcs = &__fmse_spi_drv_funcs;
     p_dev->dev_info         = p_devinfo;
-    
+
     am_spi_mkdev(&(p_dev->spi_dev),
                   handle,
                   8,

@@ -17,7 +17,7 @@
  * - 实验现象：
  *
  * \par 源代码
- * \snippet demo_std_fmse_rsa_load_test.c src_std_fmse_rsa_load_test
+ * \snippet demo_fmse_rsa_load_test.c src_fmse_rsa_load_test
  *
  * \internal
  * \par Modification history
@@ -26,8 +26,8 @@
  */
 
 /**
- * \addtogroup demo_if_std_fmse_rsa_load_test
- * \copydoc demo_std_fmse_rsa_load_test.c
+ * \addtogroup demo_if_fmse_rsa_load_test
+ * \copydoc demo_fmse_rsa_load_test.c
  */
 
 #include "ametal.h"
@@ -43,28 +43,28 @@
 /**
  * \brief 例程入口
  */
-void demo_std_fmse_rsa_load_test_entry (am_fmse_handle_t  handle)
+void demo_fmse_rsa_load_test_entry (am_fmse_handle_t  handle)
 {
-	uint8_t i;
-    uint8_t  relt_n[150] = {0}; //大小要大于等于144字节
-    uint8_t  relt_e[16] = {0};  //大小要大于等于16字节    
-	uint8_t relt_rbuf[512];
- 	uint8_t relt_inbuf[256];   
-	uint16_t relt_rlen = 0;
-	uint16_t relt_sw = 0;    
+    uint8_t i;
+    uint8_t  relt_n[150] = {0}; /* 大小要大于等于144字节 */
+    uint8_t  relt_e[16] = {0};  /* 大小要大于等于16字节 */  
+    uint8_t relt_rbuf[512];
+    uint8_t relt_inbuf[256];   
+    uint16_t relt_rlen = 0;
+    uint16_t relt_sw = 0;    
     uint8_t relt_session_key_index = 0;   
-	uint8_t pin[4];
+    uint8_t pin[4];
 
     relt_sw = am_fmse_file_select(handle, 0xDF01, relt_rbuf, &relt_rlen);
-    if(relt_sw != 0x9000){
+    if(relt_sw != 0x9000) {
         printf("1. file selection failed\r\n");
     }
-    
+
     pin[0] = 0x11;
     pin[1] = 0x22;
     pin[2] = 0x33;
     relt_sw = am_fmse_pin_verify(handle, 3, pin);
-    if(relt_sw != 0x9000){
+    if(relt_sw != 0x9000) {
         printf("2. pin verify failed\r\n");
     }
 
@@ -75,32 +75,30 @@ void demo_std_fmse_rsa_load_test_entry (am_fmse_handle_t  handle)
                                        EXP65537,
                                        FILE_ID_11,
                                        relt_rbuf,
-                                      &relt_rlen); //生成RSA密钥对，并放于对应文件当中
-    if(relt_sw != 0x9000){
+                                      &relt_rlen);
+    if(relt_sw != 0x9000) {
         printf("3. rsa key pair gen failed\r\n");
     }
     printf("gen RSA key pair: sw = %04x, rlen = %d\r\n", relt_sw, relt_rlen);
-    for(i = 0; i < relt_rlen; i++)
-    {
+    for(i = 0; i < relt_rlen; i++) {
         printf("%02x,",relt_rbuf[i]);
     }
     printf("\r\n");
 
     /* key len: 2 + 128 + 4 = 134 即0x86 */
     relt_sw = am_fmse_binary_read(handle, 0, 0x86, relt_rbuf, &relt_rlen);
-    if(relt_sw != 0x9000){ 
+    if(relt_sw != 0x9000) { 
         printf("4. binary reading failed\r\n");
     }
     printf("read binary: sw = %04x, rlen = %d\r\n", relt_sw, relt_rlen);          
-    for(i = 0; i < relt_rlen; i++)
-    {
+    for(i = 0; i < relt_rlen; i++) {
         printf("%02x,",relt_rbuf[i]);
     }
     printf("\r\n");
 
 /* 密文导入测试 */
 #ifdef ZLG_RSA_ECPT_LOAD_TEST
-    
+
     printf("\r\n");
     printf("RSA ECPT LOAD TEST ！\r\n");
     relt_n[0] = 128;           /* 加密是对“len(N)||N”进行加密，预先写入长度 */
@@ -122,7 +120,7 @@ void demo_std_fmse_rsa_load_test_entry (am_fmse_handle_t  handle)
                                          relt_inbuf,
                                          relt_rbuf,
                                         &relt_rlen);
-    if(relt_sw != 0x9000){
+    if(relt_sw != 0x9000) {
         printf("5. session key import failed\r\n");
     }
     relt_session_key_index = relt_rbuf[0];
@@ -141,7 +139,7 @@ void demo_std_fmse_rsa_load_test_entry (am_fmse_handle_t  handle)
     /* 0x000000xx，最后一字节表示会话密钥的索引号 */
     relt_inbuf[3] = relt_session_key_index;
     for(i = 0; i < 144; i++) {
-        relt_inbuf[i+4] = relt_n[i];                                                
+        relt_inbuf[i + 4] = relt_n[i];                                                
     }
 
     /* Data Encrypt calc
@@ -151,11 +149,11 @@ void demo_std_fmse_rsa_load_test_entry (am_fmse_handle_t  handle)
      */
     relt_sw = am_fmse_data_encrypt_and_decrypt(handle,
                                                0x0040,
-                                               4+1+128+15,
+                                               4 + 1 + 128 + 15,
                                                relt_inbuf,
                                                relt_rbuf,
-                                               &relt_rlen);
-    if(relt_sw != 0x9000){
+                                              &relt_rlen);
+    if(relt_sw != 0x9000) {
         printf("6. data encrypt failed\r\n");
     }
 
@@ -170,7 +168,7 @@ void demo_std_fmse_rsa_load_test_entry (am_fmse_handle_t  handle)
      * 即1+128+15 = 144
      */
     am_fmse_memmove(relt_n, relt_rbuf, 144);
-    
+
     /* pre data E */
     am_fmse_memset(relt_inbuf, 0, sizeof(relt_inbuf));
 
@@ -178,17 +176,17 @@ void demo_std_fmse_rsa_load_test_entry (am_fmse_handle_t  handle)
     relt_inbuf[3] = relt_session_key_index;
 
     for(i = 0; i < 16; i++) {
-        relt_inbuf[i+4] = relt_e[i];                                            
+        relt_inbuf[i + 4] = relt_e[i];                                            
     }
 
     /* Data Encrypt calc
-     * 0040，唯一数据块，加密操作，使用以导入的会话密钥,ECB模式，
-     * 4字节密钥索引（不算做待加密的数据长度），1字节E参数长度，
-     * 4字节E参数，11个字节填充（填充为0）
-     */
+    * 0040，唯一数据块，加密操作，使用以导入的会话密钥,ECB模式，
+    * 4字节密钥索引（不算做待加密的数据长度），1字节E参数长度，
+    * 4字节E参数，11个字节填充（填充为0）
+    */
     relt_sw = am_fmse_data_encrypt_and_decrypt(handle,
                                                0x0040,
-                                               4+1+4+11,
+                                               4 + 1 + 4 + 11,
                                                relt_inbuf,
                                                relt_rbuf,
                                               &relt_rlen);
@@ -214,17 +212,17 @@ void demo_std_fmse_rsa_load_test_entry (am_fmse_handle_t  handle)
 
     /* 装载到0a05文件,内容是加密后的参数N */
     for(i = 0; i < 144; i++) {                       
-        relt_inbuf[i+7] = relt_n[i]; 
+        relt_inbuf[i + 7] = relt_n[i]; 
     }
 
     /* 0x8001,加密传入，RSA1024 */
     relt_sw = am_fmse_rsa_key_install(handle,
                                       0x8001,
-                                      7+144,
+                                      7 + 144,
                                       relt_inbuf,
                                       relt_rbuf,
                                      &relt_rlen);
-    if(relt_sw != 0x9000){
+    if(relt_sw != 0x9000) {
         printf("8. rsa key install failed\r\n");
     }
 
@@ -233,17 +231,17 @@ void demo_std_fmse_rsa_load_test_entry (am_fmse_handle_t  handle)
 
     /* 装载到0a05文件，内容是加密后的参数E */
     for(i = 0; i < 16; i++) {
-        relt_inbuf[i+6] = relt_e[i];
+        relt_inbuf[i + 6] = relt_e[i];
     }
 
     /* 0x8001,加密传入，RSA1024 */
     relt_sw = am_fmse_rsa_key_install(handle,
                                       0x8001,
-                                      6+16,
+                                      6 + 16,
                                       relt_inbuf,
                                       relt_rbuf,
                                      &relt_rlen);
-    if(relt_sw != 0x9000){
+    if(relt_sw != 0x9000) {
         printf("9. rsa key install failed\r\n");
     }
 
@@ -252,24 +250,24 @@ void demo_std_fmse_rsa_load_test_entry (am_fmse_handle_t  handle)
     printf("RSA LOAD TEST！\r\n");
     am_fmse_memmove(relt_n, &relt_rbuf[2], 128);
     am_fmse_memmove(relt_e, &relt_rbuf[2 + 128], 4);
-    
+
     /* 分两次导入公钥的N和E参数 */     
     am_fmse_memset(relt_inbuf, 0, sizeof(relt_inbuf));
 
     /* 装载到0a05文件，内容是参数N */
     am_fmse_memmove(relt_inbuf, "\xc0\x02\x0a\x05\xc3\x81\x80", 7);
     for(i = 0; i < 128; i++) {
-        relt_inbuf[i+7] = relt_n[i];
+        relt_inbuf[i + 7] = relt_n[i];
     }
 
     /* 0x0001,明文传入，RSA1024 */
     relt_sw = am_fmse_rsa_key_install(handle,
                                       0x0001,
-                                      7+128,
+                                      7 + 128,
                                       relt_inbuf,
                                       relt_rbuf,
                                      &relt_rlen);
-    if(relt_sw != 0x9000){
+    if(relt_sw != 0x9000) {
         printf("10. rsa key install failed\r\n");
     }
 
@@ -278,7 +276,7 @@ void demo_std_fmse_rsa_load_test_entry (am_fmse_handle_t  handle)
     /* 导入0a05文件 */
     am_fmse_memmove(relt_inbuf, "\xc0\x02\x0A\x05\xc9\x04", 6);
     for(i = 0; i < 4; i++) {
-        relt_inbuf[i+6] = relt_e[i];
+        relt_inbuf[i + 6] = relt_e[i];
     }
 
     /* 0x0001,明文传入，RSA1024 */
@@ -288,7 +286,7 @@ void demo_std_fmse_rsa_load_test_entry (am_fmse_handle_t  handle)
                                       relt_inbuf,
                                       relt_rbuf,
                                      &relt_rlen);
-    if(relt_sw != 0x9000){
+    if(relt_sw != 0x9000) {
         printf("11. rsa key install failed\r\n");
     }    
 
@@ -302,7 +300,7 @@ void demo_std_fmse_rsa_load_test_entry (am_fmse_handle_t  handle)
 
     /* 准备任意的待加密的数据，因此原始数据是1~128 */
     for(i = 0; i < 128; i++) {
-        relt_inbuf[i+7] = i+1;
+        relt_inbuf[i + 7] = i + 1;
     }
 
     /* RSA PUB key calc
@@ -310,14 +308,14 @@ void demo_std_fmse_rsa_load_test_entry (am_fmse_handle_t  handle)
      */
     relt_sw = am_fmse_rsa_pub_key_cal(handle,
                                       0x4000,
-                                      128+7,
+                                      128 + 7,
                                       relt_inbuf,
                                       relt_rbuf,
                                      &relt_rlen);
     if(relt_sw != 0x9000){
         relt_sw = 8;
     }
-    
+
     printf("RSA pub key cal: relt_sw = %04x, relt_rlen = %d\r\n", relt_sw, relt_rlen);
     for(i = 0; i < relt_rlen; i++) {
         printf("%02x,",relt_rbuf[i]);
@@ -328,13 +326,13 @@ void demo_std_fmse_rsa_load_test_entry (am_fmse_handle_t  handle)
 
     /* 切换成私钥文件 */
     am_fmse_memmove(relt_inbuf, "\xc2\x02\x0a\x98\xc1\x81\x80", 7);
-    
+
     relt_inbuf[2] = (FILE_ID_11 >> 8) & 0xff;
     relt_inbuf[3] = (FILE_ID_11 >> 0) & 0xff; 
 
     /* 把公钥对数据计算后的结果，作为后续私钥的待计算数据 */
     for(i = 0; i < 128; i++) {
-        relt_inbuf[i+7] = relt_rbuf[i];
+        relt_inbuf[i + 7] = relt_rbuf[i];
     }
 
     /* RSA PRI key calc
@@ -346,13 +344,13 @@ void demo_std_fmse_rsa_load_test_entry (am_fmse_handle_t  handle)
                                       relt_inbuf,
                                       relt_rbuf,
                                      &relt_rlen);
-    if(relt_sw != 0x9000){
+    if(relt_sw != 0x9000) {
         printf("12. rsa pri key cal failed\r\n");
     }
 
     /* 公钥计算的数据经私钥计算后，变为最开始的原始数据 */
     printf("RSA pri key cal: relt_sw = %04x, relt_rlen = %d\r\n", relt_sw, relt_rlen);
-    for(i = 0; i < relt_rlen; i++){
+    for(i = 0; i < relt_rlen; i++) {
         printf("%02x,",relt_rbuf[i]);
     }
     printf("\r\n");   

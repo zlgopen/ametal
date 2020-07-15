@@ -17,7 +17,7 @@
  * - 实验现象：
  *
  * \par 源代码
- * \snippet demo_std_fmse_data_compress_test.c src_std_fmse_data_compress_test
+ * \snippet demo_fmse_data_compress_test.c src_fmse_data_compress_test
  *
  * \internal
  * \par Modification history
@@ -26,8 +26,8 @@
  */
 
 /**
- * \addtogroup demo_if_std_fmse_data_compress_test
- * \copydoc demo_std_fmse_data_compress_test.c
+ * \addtogroup demo_if_fmse_data_compress_test
+ * \copydoc demo_fmse_data_compress_test.c
  */
 
 #include "ametal.h"
@@ -38,36 +38,36 @@
 /**
  * \brief 例程入口
  */
-void demo_std_fmse_data_compress_test_entry (am_fmse_handle_t handle)
+void demo_fmse_data_compress_test_entry (am_fmse_handle_t handle)
 {
-	uint8_t  i;  
-	uint8_t  dct_rbuf[512];
- 	uint8_t  dct_inbuf[256];   
-	uint8_t  rbuf[1028];
-	uint8_t  pin[4];
-	uint16_t dct_rlen = 0;
-	uint16_t dct_sw   = 0;
-	uint16_t rlen     = 0;
+    uint8_t  i;  
+    uint8_t  dct_rbuf[512];
+    uint8_t  dct_inbuf[256];   
+    uint8_t  rbuf[1028];
+    uint8_t  pin[4];
+    uint16_t dct_rlen = 0;
+    uint16_t dct_sw   = 0;
+    uint16_t rlen     = 0;
 
     printf("\r\n\r\n"); 
     printf("SHA-1 Test!\r\n");   
     am_fmse_memmove(dct_inbuf, "\xc1\xc8", 2);
 
     dct_sw = am_fmse_file_select(handle, 0xDF01, rbuf, &rlen);               //选择DF01
-    if(dct_sw != 0x9000){
+    if(dct_sw != 0x9000) {
         printf("1. file selection failed\r\n");
     }
-    
+
     pin[0] = 0x11;
     pin[1] = 0x22;
     pin[2] = 0x33;
     dct_sw = am_fmse_pin_verify(handle, 3, pin);                             //校验默认口令
-    if(dct_sw != 0x9000){
+    if(dct_sw != 0x9000) {
         printf("2. pin verify failed\r\n");
     }
-    
+
     /* 准备任意数据 */
-    for(i = 0; i < 200; i++){
+    for(i = 0; i < 200; i++) {
         dct_inbuf[2 + i] = i;
     }
 
@@ -77,8 +77,8 @@ void demo_std_fmse_data_compress_test_entry (am_fmse_handle_t handle)
                                    2 + 200,
                                    dct_inbuf,
                                    dct_rbuf,
-                                   &dct_rlen);
-    if(dct_sw != 0x9000){
+                                  &dct_rlen);
+    if(dct_sw != 0x9000) {
         printf("3. data compress failed\r\n");
     }
     printf("data compress with SHA-1: dct_sw = %04x, dct_rlen = %d\r\n",dct_sw, dct_rlen);          
@@ -91,7 +91,7 @@ void demo_std_fmse_data_compress_test_entry (am_fmse_handle_t handle)
     am_fmse_memmove(dct_inbuf, "\xc1\xc8", 2);
 
     /* 准备任意数据 */
-    for(i = 0; i < 200; i++){
+    for(i = 0; i < 200; i++) {
         dct_inbuf[2 + i] = i;
     }
 
@@ -101,8 +101,8 @@ void demo_std_fmse_data_compress_test_entry (am_fmse_handle_t handle)
                                    2 + 200,
                                    dct_inbuf,
                                    dct_rbuf,
-                                   &dct_rlen);
-    if(dct_sw != 0x9000){
+                                  &dct_rlen);
+    if(dct_sw != 0x9000) {
         printf("4. data compress failed\r\n");
     }
     printf("data compress with SHA256: dct_sw = %04x, dct_rlen = %d\r\n",
@@ -112,12 +112,12 @@ void demo_std_fmse_data_compress_test_entry (am_fmse_handle_t handle)
         printf("%02x,",dct_rbuf[i]);
     }
     printf("\r\n\r\n");       
-    
+
     printf("SM3 Test!\r\n");    
     am_fmse_memmove(dct_inbuf, "\xc1\xc8", 2);
 
     /* 准备任意数据 */
-    for(i = 0; i < 200; i++){
+    for(i = 0; i < 200; i++) {
         dct_inbuf[2 + i] = i;
     }
 
@@ -127,8 +127,8 @@ void demo_std_fmse_data_compress_test_entry (am_fmse_handle_t handle)
                                    2 + 200,
                                    dct_inbuf,
                                    dct_rbuf,
-                                   &dct_rlen);
-    if(dct_sw != 0x9000){
+                                  &dct_rlen);
+    if(dct_sw != 0x9000) {
         printf("5. data compress failed\r\n");
     }
     printf("data compress with SM3: dct_sw = %04x, dct_rlen = %d\r\n", dct_sw, dct_rlen); 
@@ -137,13 +137,12 @@ void demo_std_fmse_data_compress_test_entry (am_fmse_handle_t handle)
         printf("%02x,",dct_rbuf[i]);
     }
     printf("\r\n\r\n");   
-    
-    
+
     printf("MD5 Test!\r\n");    
     am_fmse_memmove(dct_inbuf, "\xc1\xc8", 2);
 
     /* 准备任意数据 */
-    for(i = 0; i < 200; i++){
+    for(i = 0; i < 200; i++) {
         dct_inbuf[2 + i] = i;
     }
 
@@ -154,7 +153,7 @@ void demo_std_fmse_data_compress_test_entry (am_fmse_handle_t handle)
                                    dct_inbuf,
                                    dct_rbuf,
                                   &dct_rlen);
-    if(dct_sw != 0x9000){
+    if(dct_sw != 0x9000) {
         printf("6. data compress failed\r\n");
     }
     printf("data compress with MD5: dct_sw = %04x, dct_rlen = %d\r\n", dct_sw, dct_rlen);          

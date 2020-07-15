@@ -671,6 +671,26 @@
               <FileType>1</FileType>
               <FilePath>..\..\..\..\components\drivers\source\zsn603\zsn603_platform.c</FilePath>
             </File>
+            <File>
+              <FileName>am_des.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\fmse\am_des.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_fmse_a03.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\fmse\am_fmse_a03.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_fmse_i2c.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\fmse\am_fmse_i2c.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_fmse_spi.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\fmse\am_fmse_spi.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -1746,6 +1766,41 @@
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\components\drivers\demo_zsn603_piccb_active_test.c</FilePath>
             </File>
+            <File>
+              <FileName>demo_fmse_binary_rw_test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\components\drivers\demo_fmse_binary_rw_test.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_fmse_cmd_test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\components\drivers\demo_fmse_cmd_test.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_fmse_data_compress_test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\components\drivers\demo_fmse_data_compress_test.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_fmse_data_encrypt_and_decrypt_test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\components\drivers\demo_fmse_data_encrypt_and_decrypt_test.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_fmse_ecc_calc_test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\components\drivers\demo_fmse_ecc_calc_test.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_fmse_key_pair_gen_test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\components\drivers\demo_fmse_key_pair_gen_test.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_fmse_rsa_load_test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\components\drivers\demo_fmse_rsa_load_test.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -2485,6 +2540,16 @@
               <FileName>am_servconf_nvram.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\user_config\am_servconf_usrcfg\am_servconf_nvram.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_fmse_i2c.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_fmse_i2c.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_fmse_spi.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_fmse_spi.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -3165,6 +3230,26 @@
               <FileType>1</FileType>
               <FilePath>..\..\..\..\components\drivers\source\zsn603\zsn603_platform.c</FilePath>
             </File>
+            <File>
+              <FileName>am_des.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\fmse\am_des.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_fmse_a03.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\fmse\am_fmse_a03.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_fmse_i2c.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\fmse\am_fmse_i2c.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_fmse_spi.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\fmse\am_fmse_spi.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -4240,6 +4325,41 @@
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\components\drivers\demo_zsn603_piccb_active_test.c</FilePath>
             </File>
+            <File>
+              <FileName>demo_fmse_binary_rw_test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\components\drivers\demo_fmse_binary_rw_test.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_fmse_cmd_test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\components\drivers\demo_fmse_cmd_test.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_fmse_data_compress_test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\components\drivers\demo_fmse_data_compress_test.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_fmse_data_encrypt_and_decrypt_test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\components\drivers\demo_fmse_data_encrypt_and_decrypt_test.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_fmse_ecc_calc_test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\components\drivers\demo_fmse_ecc_calc_test.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_fmse_key_pair_gen_test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\components\drivers\demo_fmse_key_pair_gen_test.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_fmse_rsa_load_test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\components\drivers\demo_fmse_rsa_load_test.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -4979,6 +5099,16 @@
               <FileName>am_servconf_nvram.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\user_config\am_servconf_usrcfg\am_servconf_nvram.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_fmse_i2c.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_fmse_i2c.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_fmse_spi.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_fmse_spi.c</FilePath>
             </File>
           </Files>
         </Group>
