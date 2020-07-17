@@ -128,6 +128,7 @@ int am_main (void)
 //    demo_hc32l19x_core_hw_wdt_entry();
 //    demo_hc32l19x_core_std_wdt_entry();
 //    demo_hc32l19x_drv_lpmode_wake_up_entry();
+//    demo_hc32l19x_lpuart_wake_up_entry();
 //    demo_hc32l19x_core_hw_lcd_entry ();
 //    demo_hc32l19x_core_drv_pca_8bit_pwm_entry();
 //    demo_hc32l19x_core_drv_pca_16bit_pwm_entry();
