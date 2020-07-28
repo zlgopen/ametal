@@ -67,6 +67,21 @@ extern "C" {
 /** \brief 方向，角度制 0/90/180/270 分别表示正北/正东/正南/正西 */
 #define AM_SENSOR_TYPE_ORIENT           (105)
 
+/** \brief 环境光 */
+#define AM_SENSOR_TYPE_ALS              (106)
+
+/** \brief 环境光，可见光 */
+#define AM_SENSOR_TYPE_ALS_VISIBLE      (107)
+
+/** \brief 环境光，红外光 */
+#define AM_SENSOR_TYPE_ALS_IR           (108)
+
+/** \brief 手势 */
+#define AM_SENSOR_TYPE_GESTURE          (109)
+
+/** \brief 光谱 */
+#define AM_SENSOR_TYPE_SPECTRAL         (110)
+
 /**
  * \brief 加速度，单位: m/s^2
  *
