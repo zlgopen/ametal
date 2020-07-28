@@ -123,9 +123,9 @@ am_hc32_tim_pwm_chaninfo_t __g_tim1_pwm_chaninfo_list[] = {
     /** \brief 通道0引脚配置 */
     {
         AM_HC32_TIM_PWM_CH0A,
-        PIOA_0,
-        PIOA_0_TIM1_CHA | PIOA_0_OUT_PP,
-        PIOA_0_GPIO  | PIOA_0_INPUT_PU
+        PIOA_6,
+        PIOA_6_TIM1_CHA | PIOA_6_OUT_PP,
+        PIOA_6_GPIO  | PIOA_6_INPUT_PU
     },
 
     /** \brief 通道1引脚配置 */

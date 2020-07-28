@@ -38,18 +38,18 @@ static void __hc32l13x_i2c0_bus_clean (void)
 {
     uint8_t i;
 
-    am_gpio_pin_cfg(PIOB_8, AM_GPIO_PUSH_PULL | AM_GPIO_OUTPUT_INIT_HIGH);
-    am_gpio_pin_cfg(PIOB_9, AM_GPIO_PULLUP | AM_GPIO_INPUT);
+    am_gpio_pin_cfg(PIOA_9, AM_GPIO_PUSH_PULL | AM_GPIO_OUTPUT_INIT_HIGH);
+    am_gpio_pin_cfg(PIOA_10, AM_GPIO_PULLUP | AM_GPIO_INPUT);
 
-    if (am_gpio_get(PIOB_9) != 1) {
+    if (am_gpio_get(PIOA_10) != 1) {
         for (i = 0; i < 9; i++) {
-            am_gpio_set(PIOB_8, 0);
-            am_gpio_set(PIOB_8, 1);
+            am_gpio_set(PIOA_9, 0);
+            am_gpio_set(PIOA_9, 1);
         }
     }
 
-    am_gpio_pin_cfg(PIOB_8, PIOB_8_I2C0_SCL | PIOB_8_OUT_OD);
-    am_gpio_pin_cfg(PIOB_9, PIOB_9_I2C0_SDA | PIOB_9_OUT_OD);
+    am_gpio_pin_cfg(PIOA_9, PIOA_9_I2C0_SCL | PIOA_9_OUT_OD);
+    am_gpio_pin_cfg(PIOA_10, PIOA_10_I2C0_SDA | PIOA_10_OUT_OD);
 }
 
 
@@ -59,8 +59,8 @@ static void __hc32l13x_i2c0_bus_clean (void)
  */
 am_local void __hc32l13x_i2c0_plfm_init (void)
 {
-    am_gpio_pin_cfg(PIOB_8, PIOB_8_I2C0_SCL | PIOB_8_OUT_OD);
-    am_gpio_pin_cfg(PIOB_9, PIOB_9_I2C0_SDA | PIOB_9_OUT_OD);
+    am_gpio_pin_cfg(PIOA_9, PIOA_9_I2C0_SCL | PIOA_9_OUT_OD);
+    am_gpio_pin_cfg(PIOA_10, PIOA_10_I2C0_SDA | PIOA_10_OUT_OD);
 
     am_clk_enable(CLK_I2C0);
 }
