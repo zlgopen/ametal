@@ -27,7 +27,7 @@
 #include "am_int.h"
 
 /**< 调试信息输出 */
-#define __AS7262_DEBUG                              (1)
+#define __AS7262_DEBUG                              (0)
 
 /* \brief   命令接收解析状态机  */
 #define __AS7262_CMD_PROC_STAT_NONE                 0   /* 无命令流程       */
@@ -1438,8 +1438,8 @@ am_local int __as7262_cmd_result (am_sensor_as7262_uart_dev_t  *p_this,
     /* 等待发送完成 */
     am_wait_on(&p_this->ack_wait);
 
-    /* 一帧数据要在10ms内接收完毕，否则判断为帧数据接收超时 */
-    am_softimer_start(&p_this->timer, 10);
+    /* 一帧数据要在100ms内接收完毕，否则判断为帧数据接收超时 */
+    am_softimer_start(&p_this->timer, 100);
 
     am_rngbuf_init(&(p_this->tx_rngbuf),
                     (char *)p_this->sensor_uart_dev_info->p_uart_txbuf,
@@ -1447,8 +1447,8 @@ am_local int __as7262_cmd_result (am_sensor_as7262_uart_dev_t  *p_this,
 
     while (1) {
 
-        /* wait 20ms */
-        if (am_wait_on_timeout(&p_this->ack_wait, 20) == AM_OK) {
+        /* wait 200ms */
+        if (am_wait_on_timeout(&p_this->ack_wait, 200) == AM_OK) {
 
             key = am_int_cpu_lock();
 
@@ -1723,7 +1723,7 @@ am_local int __as7262_cmd_result_info_get (am_sensor_as7262_uart_dev_t  *p_this,
                     break;
                 }
 
-                p_res->cal_data[i] = strtoul(p, NULL, 10);
+                p_res->cal_data[i] = (float)atof(p);
 
                 i++;
 
