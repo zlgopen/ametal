@@ -141,10 +141,10 @@ void amhw_hc32_gpio_pin_mode_set (amhw_hc32_gpio_t     *p_hw_gpio,
         amhw_hc32_gpio_pin_driver_high(p_hw_gpio, pin);
 
         /* 上拉设置 */
-        amhw_hc32_gpio_pin_pu_enable(p_hw_gpio, pin);
+        amhw_hc32_gpio_pin_pu_disable(p_hw_gpio, pin);
 
         /* 下拉设置 */
-        amhw_hc32_gpio_pin_pd_enable(p_hw_gpio, pin);
+        amhw_hc32_gpio_pin_pd_disable(p_hw_gpio, pin);
 
         /* 开漏输出设置*/
         amhw_hc32_gpio_pin_od_disable(p_hw_gpio, pin);
