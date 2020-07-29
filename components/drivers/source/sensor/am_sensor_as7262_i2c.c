@@ -143,6 +143,12 @@
 /** \brief 将两个uint8转换为一个uint16_t类型 */
 #define __AS7262_UINT8_TO_UINT16(buff)              ((uint16_t)((*buff) << 8 | (*(buff + 1))))
 
+/** \brief 将四个uint8转换为一个uint32_t类型 */
+#define __AS7262_UINT8_TO_UINT32(buff)              ((uint32_t)((*(buff + 0) << 24)      | \
+                                                     (uint32_t)(*(buff + 1) << 16)       | \
+                                                     (uint32_t)(*(buff + 2) << 8)        | \
+                                                     (uint32_t)(*(buff + 3) << 0)))
+
 /*******************************************************************************
  * 本地函数声明
  ******************************************************************************/
@@ -597,14 +603,26 @@ am_local void __as7262_int_disable(am_sensor_as7262_i2c_dev_t   *p_this)
 am_local am_err_t __as7262_result_get(am_sensor_as7262_i2c_dev_t    *p_this,
                                       as7262_result_info_t          *p_result)
 {
+
     am_err_t ret = AM_OK;
 
     uint16_t i = 0;
 
     uint8_t result_buf[13]  = {0};         /* 缓存寄存器值 */
 
+    uint8_t cal_buf[24];
+
+    uint32_t caldata[6] = {0};
+
     for (i = 0; i < 12; i++) {
         ret = __as7262_read(p_this, (__AS7262_REG_V_H + i), &result_buf[i], 1);
+        if (ret != AM_OK) {
+            return ret;
+        }
+    }
+
+    for (i = 0; i < 24; i++) {
+        ret = __as7262_read(p_this, (__AS7262_REG_V_CAL_XH + i), &cal_buf[i], 1);
         if (ret != AM_OK) {
             return ret;
         }
@@ -624,8 +642,21 @@ am_local am_err_t __as7262_result_get(am_sensor_as7262_i2c_dev_t    *p_this,
     p_result->raw_data[5] = __AS7262_UINT8_TO_UINT16(&result_buf[10]);  //r
 
     /* 校准数据 */
+    caldata[0] = __AS7262_UINT8_TO_UINT32(&cal_buf[0]);   //v
+    caldata[1] = __AS7262_UINT8_TO_UINT32(&cal_buf[4]);   //b
+    caldata[2] = __AS7262_UINT8_TO_UINT32(&cal_buf[8]);   //g
+    caldata[3] = __AS7262_UINT8_TO_UINT32(&cal_buf[12]);  //y
+    caldata[4] = __AS7262_UINT8_TO_UINT32(&cal_buf[16]);  //o
+    caldata[5] = __AS7262_UINT8_TO_UINT32(&cal_buf[20]);  //r
+    memcpy((void *)&(p_result->cal_data[0]), (void *)&caldata[0], sizeof(float));
+    memcpy((void *)&(p_result->cal_data[1]), (void *)&caldata[1], sizeof(float));
+    memcpy((void *)&(p_result->cal_data[2]), (void *)&caldata[2], sizeof(float));
+    memcpy((void *)&(p_result->cal_data[3]), (void *)&caldata[3], sizeof(float));
+    memcpy((void *)&(p_result->cal_data[4]), (void *)&caldata[4], sizeof(float));
+    memcpy((void *)&(p_result->cal_data[5]), (void *)&caldata[5], sizeof(float));
+
     for (i = 0; i < 6; i++) {
-        p_result->cal_data[i] = p_this->isa.cal_val[0].cal[i];
+        p_result->cal_data[i] = p_this->isa.cal_val[0].cal[i];    /* 此处将校准值清零，不使用校准值 */
     }
 
     /* 校准后的数据值 */
@@ -638,6 +669,9 @@ am_local am_err_t __as7262_result_get(am_sensor_as7262_i2c_dev_t    *p_this,
 
     /* 温度 */
     p_result->device_temp = result_buf[12];
+//    #if __AS7262_DEBUG
+        am_kprintf("\r\nDevice temperature = %d ℃ \r\n", p_result->device_temp);
+//    #endif
 
     return ret;
 }
@@ -683,11 +717,6 @@ am_local void __am_pfnvoid_t (void *p_arg)
 
     p_this->isa.data[5].val = result.channel_r;
     p_this->isa.data[5].unit = AM_SENSOR_UNIT_BASE;
-
-    /* 获取温度 */
-    #if __AS7262_DEBUG
-        am_kprintf("Device temperature = %d ℃ \r\n", result.device_temp);
-    #endif
 
     for (i = 0; i < 6; i++) {
         if (p_this->isa.pfn_trigger_cb[i] &&

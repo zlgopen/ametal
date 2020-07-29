@@ -768,18 +768,28 @@ am_local am_err_t __as7262_result_get(am_sensor_as7262_uart_dev_t   *p_this,
 {
     am_err_t ret = AM_OK;
 
-    uint16_t i = 0;
     uint32_t temperature = 0;
 
+    uint16_t i = 0;
+    uint16_t rawdata[6] = {0};
+    float    caldata[6];
+
     /* 原始数据 */
-    ret = __as7262_uart_ioctl(p_this, AM_SENSOR_AS7262_ATDATA, (void *)p_result);
+    ret = __as7262_uart_ioctl(p_this, AM_SENSOR_AS7262_ATDATA, (void *)rawdata);
     if (ret != AM_OK) {
         return ret;
     }
 
     /* 校准数据 */
+    ret = __as7262_uart_ioctl(p_this, AM_SENSOR_AS7262_ATCDATA, (void *)caldata);
+    if (ret != AM_OK) {
+        return ret;
+    }
+
     for (i = 0; i < 6; i++) {
-        p_result->cal_data[i] = p_this->isa.cal_val[0].cal[i];
+        p_result->raw_data[i] = rawdata[i];
+        p_result->cal_data[i] = caldata[i];
+        p_result->cal_data[i] = p_this->isa.cal_val[0].cal[i];  /* 此处将校准值清零，不使用校准值 */
     }
 
     /* 校准后的数据值 */
@@ -796,6 +806,9 @@ am_local am_err_t __as7262_result_get(am_sensor_as7262_uart_dev_t   *p_this,
         return ret;
     }
     p_result->device_temp = (int8_t)temperature;
+//    #if __AS7262_DEBUG
+        am_kprintf("\r\nDevice temperature = %d ℃ \r\n", p_result->device_temp);
+//    #endif
 
     return ret;
 }
@@ -841,11 +854,6 @@ am_local void __am_pfnvoid_t (void *p_arg)
 
     p_this->isa.data[5].val = result.channel_r;
     p_this->isa.data[5].unit = AM_SENSOR_UNIT_BASE;
-
-    /* 获取温度 */
-    #if __AS7262_DEBUG
-        am_kprintf("Device temperature = %d ℃ \r\n", result.device_temp);
-    #endif
 
     for (i = 0; i < 6; i++) {
         if (p_this->isa.pfn_trigger_cb[i] &&
@@ -1641,8 +1649,6 @@ am_local int __as7262_cmd_result_info_get (am_sensor_as7262_uart_dev_t  *p_this,
 
     uint8_t i = 0;
 
-    as7262_result_info_t    *p_res = NULL;
-
     p_this->p_cmd_rxbuf[p_this->cmd_rx_len] = '\0';
 
     AM_DBG_INFO("\r\nack is %d bytes : \r\n%s",
@@ -1685,7 +1691,7 @@ am_local int __as7262_cmd_result_info_get (am_sensor_as7262_uart_dev_t  *p_this,
 
         } else if (arg_type == __AS7262_ARG_TYPE_RAW_DATA) {
 
-            p_res = (as7262_result_info_t *)p_arg;
+            uint16_t *p_raw_data = (uint16_t *)p_arg;
 
             /* 复制接收到的字符串 */
             strcpy(data_str, p_start);
@@ -1699,7 +1705,7 @@ am_local int __as7262_cmd_result_info_get (am_sensor_as7262_uart_dev_t  *p_this,
                     break;
                 }
 
-                p_res->raw_data[i] = strtoul(p, NULL, 10);
+                p_raw_data[i] = strtoul(p, NULL, 10);
 
                 i++;
 
@@ -1709,7 +1715,7 @@ am_local int __as7262_cmd_result_info_get (am_sensor_as7262_uart_dev_t  *p_this,
 
         } else if (arg_type == __AS7262_ARG_TYPE_CAL_DATA) {
 
-            p_res = (as7262_result_info_t *)p_arg;
+            float *p_cal_data = (float *)p_arg;
 
             /* 复制接收到的字符串 */
             strcpy(data_str, p_start);
@@ -1723,7 +1729,7 @@ am_local int __as7262_cmd_result_info_get (am_sensor_as7262_uart_dev_t  *p_this,
                     break;
                 }
 
-                p_res->cal_data[i] = (float)atof(p);
+                p_cal_data[i] = (float)atof(p);
 
                 i++;
 
