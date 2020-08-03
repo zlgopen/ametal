@@ -13,16 +13,16 @@
       <pCCUsed>5060061::V5.06 update 1 (build 61)::ARMCC</pCCUsed>
       <TargetOption>
         <TargetCommonOption>
-          <Device>HC32L196PCTA</Device>
+          <Device>HC32L136K8TA</Device>
           <Vendor>HDSC</Vendor>
-          <PackID>HDSC.HC32L19X.1.0.0</PackID>
+          <PackID>HDSC.HC32L136.1.0.0</PackID>
           <PackURL>https://raw.githubusercontent.com/hdscmcu/pack/master/</PackURL>
-          <Cpu>IROM(0x00000000,0x40000) IRAM(0x20000000,0x8000) CPUTYPE("Cortex-M0+") CLOCK(12000000) ELITTLE</Cpu>
+          <Cpu>IROM(0x00000000,0x10000) IRAM(0x20000000,0x2000) CPUTYPE("Cortex-M0+") CLOCK(12000000) ELITTLE</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
           <StartupFile></StartupFile>
-          <FlashDriverDll>UL2CM3(-S0 -C0 -P0 -FD20000000 -FC1000 -FN1 -FF0FlashHC32L19X_256K -FS00 -FL040000 -FP0($$Device:HC32L196PCTA$Flash\FlashHC32L19X_256K.FLM))</FlashDriverDll>
+          <FlashDriverDll>UL2CM3(-S0 -C0 -P0 -FD20000000 -FC1000 -FN1 -FF0FlashHC32L136_64K -FS00 -FL010000 -FP0($$Device:HC32L136K8TA$Flash\FlashHC32L136_64K.FLM))</FlashDriverDll>
           <DeviceId>0</DeviceId>
-          <RegisterFile>$$Device:HC32L196PCTA$Device\Include\HC32L196PCTA.h</RegisterFile>
+          <RegisterFile>$$Device:HC32L136K8TA$Device\Include\HC32L136K8TA.h</RegisterFile>
           <MemoryEnv></MemoryEnv>
           <Cmp></Cmp>
           <Asm></Asm>
@@ -32,7 +32,7 @@
           <SLE66CMisc></SLE66CMisc>
           <SLE66AMisc></SLE66AMisc>
           <SLE66LinkerMisc></SLE66LinkerMisc>
-          <SFDFile>$$Device:HC32L196PCTA$SVD\HC32L196PCTA.sfr</SFDFile>
+          <SFDFile>$$Device:HC32L136K8TA$SVD\HC32L136K8TA.sfr</SFDFile>
           <bCustSvd>0</bCustSvd>
           <UseEnv>0</UseEnv>
           <BinPath></BinPath>
@@ -150,7 +150,7 @@
             <RestoreSysVw>1</RestoreSysVw>
           </Target>
           <RunDebugAfterBuild>0</RunDebugAfterBuild>
-          <TargetSelection>1</TargetSelection>
+          <TargetSelection>6</TargetSelection>
           <SimDlls>
             <CpuDll></CpuDll>
             <CpuDllArguments></CpuDllArguments>
@@ -164,7 +164,7 @@
             <PeripheralDll></PeripheralDll>
             <PeripheralDllArguments></PeripheralDllArguments>
             <InitializationFile></InitializationFile>
-            <Driver>BIN\UL2CM3.DLL</Driver>
+            <Driver>Segger\JL2CM3.dll</Driver>
           </TargetDlls>
         </DebugOption>
         <Utilities>
@@ -284,12 +284,12 @@
               <IRAM>
                 <Type>0</Type>
                 <StartAddress>0x20000000</StartAddress>
-                <Size>0x8000</Size>
+                <Size>0x2000</Size>
               </IRAM>
               <IROM>
                 <Type>1</Type>
                 <StartAddress>0x0</StartAddress>
-                <Size>0x40000</Size>
+                <Size>0x10000</Size>
               </IROM>
               <XRAM>
                 <Type>0</Type>
@@ -314,7 +314,7 @@
               <OCR_RVCT4>
                 <Type>1</Type>
                 <StartAddress>0x0</StartAddress>
-                <Size>0x40000</Size>
+                <Size>0x10000</Size>
               </OCR_RVCT4>
               <OCR_RVCT5>
                 <Type>1</Type>
@@ -339,7 +339,7 @@
               <OCR_RVCT9>
                 <Type>0</Type>
                 <StartAddress>0x20000000</StartAddress>
-                <Size>0x8000</Size>
+                <Size>0x2000</Size>
               </OCR_RVCT9>
               <OCR_RVCT10>
                 <Type>0</Type>
@@ -1190,6 +1190,11 @@
               <FileName>demo_hc32l13x_core_std_i2c_slave_int.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\board\aml13x_core\i2c\demo_hc32l13x_core_std_i2c_slave_int.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_hc32l13x_core_std_i2c_lm75.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\aml13x_core\i2c\demo_hc32l13x_core_std_i2c_lm75.c</FilePath>
             </File>
             <File>
               <FileName>demo_hc32l13x_core_std_key_input_event.c</FileName>
@@ -2365,6 +2370,11 @@
               <FileName>am_hwconf_hc32l13x_wdt.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_hc32l13x_wdt.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_lm75.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_lm75.c</FilePath>
             </File>
             <File>
               <FileName>am_hwconf_key_gpio.c</FileName>
@@ -3636,6 +3646,11 @@
               <FilePath>..\..\..\..\examples\board\aml13x_core\i2c\demo_hc32l13x_core_std_i2c_slave_int.c</FilePath>
             </File>
             <File>
+              <FileName>demo_hc32l13x_core_std_i2c_lm75.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\aml13x_core\i2c\demo_hc32l13x_core_std_i2c_lm75.c</FilePath>
+            </File>
+            <File>
               <FileName>demo_hc32l13x_core_std_key_input_event.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\board\aml13x_core\input_event\demo_hc32l13x_core_std_key_input_event.c</FilePath>
@@ -4809,6 +4824,11 @@
               <FileName>am_hwconf_hc32l13x_wdt.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_hc32l13x_wdt.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_lm75.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_lm75.c</FilePath>
             </File>
             <File>
               <FileName>am_hwconf_key_gpio.c</FileName>

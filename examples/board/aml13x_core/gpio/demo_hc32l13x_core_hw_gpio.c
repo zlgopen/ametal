@@ -45,8 +45,8 @@
 #include "demo_hc32_entries.h"
 #include "demo_aml13x_core_entries.h"
 
-#define INPUT_PIN  PIOA_7  /**< \brief 输入引脚 */
-#define OUTPUT_PIN PIOD_5 /**< \brief 输出引脚 */
+#define INPUT_PIN  PIOA_15  /**< \brief 输入引脚 */
+#define OUTPUT_PIN PIOD_5   /**< \brief 输出引脚 */
 
 /**
  * \brief 例程入口

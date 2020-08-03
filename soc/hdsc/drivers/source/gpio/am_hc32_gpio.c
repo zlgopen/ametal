@@ -403,6 +403,7 @@ static void __port_c_e_int_isr (void * p_arg)
         }
     }
 
+#ifndef HC32X3X
     /* 有中断触发 */
     for(pin = 64; pin < 80; pin++) {
         if (1 == amhw_hc32_gpio_pin_int_flag_get(p_hw_gpio, pin)) {
@@ -418,6 +419,7 @@ static void __port_c_e_int_isr (void * p_arg)
             amhw_hc32_gpio_pin_int_flag_clr(p_hw_gpio, pin);
         }
     }
+#endif
 }
 
 /**
@@ -451,6 +453,7 @@ static void __port_d_f_int_isr (void * p_arg)
         }
     }
 
+#ifndef HC32X3X
     /* 有中断触发 */
     for(pin = 80; pin < 91; pin++) {
         if (1 == amhw_hc32_gpio_pin_int_flag_get(p_hw_gpio, pin)) {
@@ -466,6 +469,7 @@ static void __port_d_f_int_isr (void * p_arg)
             amhw_hc32_gpio_pin_int_flag_clr(p_hw_gpio, pin);
         }
     }
+#endif
 }
 
 /**

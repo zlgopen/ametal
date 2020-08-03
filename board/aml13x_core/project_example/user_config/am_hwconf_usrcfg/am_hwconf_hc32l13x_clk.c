@@ -65,7 +65,7 @@ static const am_hc32_clk_devinfo_t __g_clk_devinfo =
     /**
      * \brief XTH外部高速时钟晶振频率（Hz）
      */
-    32000000,
+    12000000,
 
     /**
      * \brief XTL外部低速时钟晶振频率（Hz）

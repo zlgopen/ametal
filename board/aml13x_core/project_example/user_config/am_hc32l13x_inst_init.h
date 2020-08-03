@@ -69,7 +69,7 @@ extern "C" {
 #include "am_hwconf_buzzer_pwm.h"
 #include "am_hwconf_debug_uart.h"
 #include "am_hwconf_system_tick_softimer.h"
-//#include "am_hwconf_lm75.h"
+#include "am_hwconf_lm75.h"
 //#include "am_hwconf_microport.h"
 #include "am_hwconf_miniport_zlg72128.h"
 #include "am_hwconf_miniport_595.h"
