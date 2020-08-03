@@ -145,6 +145,7 @@ int am_main (void)
 //    demo_zlg237_core_sensor_as7262_i2c_entry();
 //    demo_zlg237_core_sensor_as7262_i2c_int_entry();
 //    demo_zlg237_core_sensor_as7262_uart_entry();
+//    demo_zlg237_core_sensor_as5600_entry();
 
     while (1) {
 
