@@ -47,8 +47,8 @@
 #define __AS7262_ARG_TYPE_UINT32                    1   /* 传入参数为uint32_t 类型  */
 #define __AS7262_ARG_TYPE_STRING                    2   /* 传入参数为char * 类型    */
 #define __AS7262_ARG_TYPE_FLOAT                     3   /* 传入参数为float 类型     */
-#define __AS7262_ARG_TYPE_RAW_DATA                  4   /* 传入参数为as7262_result_info_t * 类型 */
-#define __AS7262_ARG_TYPE_CAL_DATA                  5   /* 传入参数为as7262_result_info_t * 类型 */
+#define __AS7262_ARG_TYPE_RAW_DATA                  4   /* 传入参数为uint16_t * 类型 */
+#define __AS7262_ARG_TYPE_CAL_DATA                  5   /* 传入参数为float * 类型 */
 
 /** \brief 将两个uint8转换为一个uint16_t类型 */
 #define __AS7262_UINT8_TO_UINT16(buff)              ((uint16_t)((*buff) << 8 | (*(buff + 1))))
@@ -726,7 +726,7 @@ am_local am_err_t __as7262_param_init(am_sensor_as7262_uart_dev_t   *p_this)
     /* ICL_IND、ICL_DRV (LED_IND和LED_DRV的电流设置发相同的命令，一个字节中不同的位域) */
     regval = ((p_param_config->icl_drv) << 4 ) | (p_param_config->icl_ind);
     sprintf((char *)temp, "%d", regval);
-    ret = __as7262_uart_ioctl(p_this, AM_SENSOR_AS7262_ICL_IND_SET, (void *)temp);//(void *)(uint32_t)(p_param_config->icl_ind));
+    ret = __as7262_uart_ioctl(p_this, AM_SENSOR_AS7262_ICL_IND_SET, (void *)temp);
     if (ret != AM_OK) {
         return ret;
     }

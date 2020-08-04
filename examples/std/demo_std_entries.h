@@ -652,6 +652,13 @@ void demo_std_as7262_entry (am_sensor_handle_t handle);
 void demo_std_as7262_int_entry (am_sensor_handle_t handle);
 
 /**
+ * \brief 角度传感器 AS5600例程，通过查询模式实现
+ *
+ * \return 无
+ */
+void demo_std_as5600_entry (am_sensor_handle_t handle);
+
+/**
  * \brief SD Card读写例程
  *
  * \return 无
