@@ -401,7 +401,7 @@ static uint8_t USBD_Suspend(USB_OTG_CORE_HANDLE  *pdev)
     pdev->dev.device_old_status = pdev->dev.device_status;
     pdev->dev.device_status  = USB_OTG_SUSPENDED;
     /* Upon Resume call usr call back */
-//    pdev->dev.usr_cb->DeviceSuspended();
+    pdev->dev.usr_cb->DeviceSuspended();
     return USBD_OK;
 }
 

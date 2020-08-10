@@ -35,7 +35,10 @@
 #include "am_hc32f460_usbd.h"
 #include "amhw_hc32f460_usbd.h"
 #include "am_usbd_msc.h"
-
+#include "usb_core.h"
+#include "usbd_desc.h"
+#include "usbd_usr.h"
+#include "usbd_msc_core.h"
 /**
  * \addtogroup am_hc32f460_if_hwconfig_src_usb_msc
  * \copydoc am_hc32f460_hwconfig_usb_msc.c
@@ -295,6 +298,7 @@ static const am_usbd_descriptor_t __g_usb_msc_descriptor[] = {
 /******************************************************************************
  * 平台初始化函数、解初始化函数已经设备信息
  ******************************************************************************/
+extern USB_OTG_CORE_HANDLE USB_OTG_dev;
 /**
  * \brief 平台初始化
  */
@@ -308,6 +312,8 @@ static void __usb_msc_init (void) {
                              GPIO_AFIO(AMHW_HC32F460_AFIO_USBF));/**< \brief USBDM */
     am_gpio_pin_cfg(PIOA_12, GPIO_MODE(AMHW_HC32F460_GPIO_MODE_AIN) |
                              GPIO_AFIO(AMHW_HC32F460_AFIO_USBF));/**< \brief USBDP */
+    USBD_Init(&USB_OTG_dev, USB_OTG_FS_CORE_ID, &USR_desc, &USBD_MSC_cb,
+            &USR_cb);
 }
 
 

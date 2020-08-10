@@ -13,22 +13,22 @@
 
 /**
  * \file
- * \brief USB模拟U盘例程，通过driver层的接口实现
+ * \brief USB_mouse例程，通过driver层的接口实现
  *
  * - 操作步骤：
  *   1. 在usb通用配置文件按如下配置user_config\am_hwconf_usrcfg\am_usb_common_config.h
- *   #define USB_DEVICE_CLASS_MSC_ON   1
- *   //#define USB_DEVICE_CLASS_HID_MOUSE   1
- *   //#define USB_DEVICE_CLASS_HID_CUSTOM   1
+ *   #define USB_DEVICE_CLASS_HID_MOUSE    1
+ *   //#define USB_DEVICE_CLASS_HID_CUSTOM 1
+ *   //#define USB_DEVICE_CLASS_MSC_ON     1
  *   2. 将USB连接上电脑后下载程序；
- *   3. 在电脑上会显示出一个盘符；
+ *
  *
  * - 实验现象：
- *   1. 打开盘符，可以看到里面有一个README.TXT文件。
- *   2. 可以往U盘中里面拖动文件,串口会显示你拖动文件的信息。
+ *   1. 使用开发板上的SW2~SW4可以控制鼠标移动
+ *
  *
  * \par 源代码
- * \snippet demo_hc32f460_core_usbd_msc.c src_hc32f460_core_usbd_msc
+ * \snippet demo_hc32f460_core_usbd_mouse.c src_hc32f460_core_usbd_msc
  *
  * \internal
  * \par Modification History
@@ -37,11 +37,11 @@
  */
 
 /**
- * \addtogroup demo_if_demo_hc32f460_core_usbd_msc
- * \copydoc demo_hc32f460_core_usbd_msc.c
+ * \addtogroup demo_if_demo_hc32f460_core_usbd_mouse
+ * \copydoc demo_hc32f460_core_usbd_mouse.c
  */
 
-/** [src_demo_hc32f460_core_usbd_msc] */
+/** [src_demo_hc32f460_core_usbd_mouse] */
 
 #include "demo_hc32f460_entries.h"
 #include "am_hc32f460_inst_init.h"
@@ -49,17 +49,16 @@
 #include "am_usbd_msc.h"
 #include "am_vdebug.h"
 
-void demo_hc32f460_usbd_msc_entry (void)
+
+void demo_hc32f460_usbd_mouse_entry (void)
 {
+    AM_DBG_INFO("demo hc32f460_core usbd mouse!\r\n");
 
-    AM_DBG_INFO("demo hc32f460_core usbd msc!\r\n");
+    am_usbd_dev_t handle = am_hc32f460_usb_mouse_inst_init();
 
-    /* usb U盘实例初始化*/
-    am_usbd_msc_handle handle = am_hc32f460_usb_msc_inst_init();
-
-    demo_usbd_msc_entry(handle);
+    demo_usbd_mouse_entry(&handle);  
 }
 
-/** [src_demo_hc32f460_core_usbd_msc] */
+/** [src_demo_hc32f460_core_usbd_mouse] */
 
 /* end of file */

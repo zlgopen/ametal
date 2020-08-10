@@ -127,7 +127,7 @@ void DCD_Init(USB_OTG_CORE_HANDLE *pdev ,
         ep->xfer_len = 0u;
     }
 
-    pdev->dev.device_address = pdev->dev.device_address;
+//    pdev->dev.device_address = pdev->dev.device_address;
 
     USB_OTG_DisableGlobalInt(pdev);
 
@@ -135,7 +135,9 @@ void DCD_Init(USB_OTG_CORE_HANDLE *pdev ,
     USB_OTG_CoreInit(pdev);
 
     /* Force Device Mode*/
+#ifndef USE_OTG_MODE
     USB_OTG_SetCurrentMode(pdev, DEVICE_MODE);
+#endif
 
     /* Init Device */
     USB_OTG_CoreInitDev(pdev);
