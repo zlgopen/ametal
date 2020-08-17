@@ -25,7 +25,7 @@
  *      （如：AM_DBG_INFO()）。
  *
  * \par 源代码
- * \snippet demo_hc32f19x_hw_lpuart_int.c src_hc32f19x_hw_lpuart_int
+ * \snippet demo_hc32f07x_hw_lpuart_int.c src_hc32f07x_hw_lpuart_int
  *
  * \internal
  * \par Modification History
@@ -34,11 +34,11 @@
  */
 
  /**
- * \addtogroup demo_if_hc32f19x_hw_lpuart_int
- * \copydoc demo_hc32f19x_hw_lpuart_int.c
+ * \addtogroup demo_if_hc32f07x_hw_lpuart_int
+ * \copydoc demo_hc32f07x_hw_lpuart_int.c
  */
 
-/** [src_hc32f19x_hw_lpuart_int] */
+/** [src_hc32f07x_hw_lpuart_int] */
 #include "ametal.h"
 #include "am_hc32.h"
 #include "am_board.h"
@@ -47,7 +47,7 @@
 #include "demo_hc32_entries.h"
 #include "demo_amf07x_core_entries.h"
 
-static void __hc32f19x_lpuart_pins_intit (void)
+static void __hc32f07x_lpuart_pins_intit (void)
 {
     /* 初始化引脚 */
     am_gpio_pin_cfg(PIOB_11, PIOB_11_LPUART0_RXD | PIOB_11_INPUT_FLOAT);
@@ -68,12 +68,12 @@ void demo_hc32f07x_core_hw_lpuart_int_entry (void)
     am_clk_enable(CLK_LPUART0);
 
     demo_hc32_hw_lpuart_int_entry(HC32_LPUART0,
-                                  __hc32f19x_lpuart_pins_intit,
+                                  __hc32f07x_lpuart_pins_intit,
                                   AMHW_HC32_LPUART_SCLK_SRC_PCLK,
                                   am_clk_rate_get(CLK_LPUART0),
                                   115200,
                                   INUM_LPUART0);
 }
-/** [src_hc32f19x_hw_lpuart_int] */
+/** [src_hc32f07x_hw_lpuart_int] */
 
 /* end of file */

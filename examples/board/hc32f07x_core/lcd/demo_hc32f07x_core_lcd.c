@@ -25,7 +25,7 @@
  *      £¨Èç£ºAM_DBG_INFO()£©¡£
  *
  * \par Ô´´úÂë
- * \snippet demo_hc32f19x_core_lcd.c src_hc32f19x_core_lcd
+ * \snippet demo_hc32f07x_core_lcd.c src_hc32f07x_core_lcd
  *
  *
  * \internal
@@ -35,11 +35,11 @@
  */
 
 /**
- * \addtogroup demo_if_hc32f19x_core_lcd
- * \copydoc demo_hc32f19x_core_lcd.c
+ * \addtogroup demo_if_hc32f07x_core_lcd
+ * \copydoc demo_hc32f07x_core_lcd.c
  */
 
-/** [src_hc32f19x_hw_lcd] */
+/** [src_hc32f07x_hw_lcd] */
 #include "ametal.h"
 #include "am_hc32.h"
 #include "am_gpio.h"

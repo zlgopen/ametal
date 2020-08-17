@@ -26,7 +26,7 @@
  *      （如：AM_DBG_INFO()）。
  *
  * \par 源代码
- * \snippet demo_hc32f19x_hw_lvd_int.c src_hc32f19x_hw_lvd_int
+ * \snippet demo_hc32f07x_hw_lvd_int.c src_hc32f07x_hw_lvd_int
  *
  *
  * \internal
@@ -36,11 +36,11 @@
  */
 
 /**
- * \addtogroup demo_if_hc32f19x_hw_lvd_int
- * \copydoc demo_hc32f19x_hw_lvd_int.c
+ * \addtogroup demo_if_hc32f07x_hw_lvd_int
+ * \copydoc demo_hc32f07x_hw_lvd_int.c
  */
 
-/** [src_hc32f19x_hw_lvd_int] */
+/** [src_hc32f07x_hw_lvd_int] */
 #include "ametal.h"
 #include "am_hc32.h"
 #include "am_gpio.h"
@@ -51,7 +51,7 @@
 /**
  * \brief 例程入口
  */
-void demo_hc32f19x_core_hw_lvd_system_reset_entry (void)
+void demo_hc32f07x_core_hw_lvd_system_reset_entry (void)
 {
     /* 开启LVD时钟 */
     am_clk_enable (CLK_VC_LVD);

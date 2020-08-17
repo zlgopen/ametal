@@ -26,7 +26,7 @@
  *      （如：AM_DBG_INFO()）。
  *
  * \par 源代码
- * \snippet demo_hc32f19x_core_lvd_int.c src_hc32f19x_core_lvd_int
+ * \snippet demo_hc32f07x_core_lvd_int.c src_hc32f07x_core_lvd_int
  *
  *
  * \internal
@@ -36,11 +36,11 @@
  */
 
 /**
- * \addtogroup demo_if_hc32f19x_core_lvd_int
- * \copydoc demo_hc32f19x_core_lvd_int.c
+ * \addtogroup demo_if_hc32f07x_core_lvd_int
+ * \copydoc demo_hc32f07x_core_lvd_int.c
  */
 
-/** [src_hc32f19x_hw_lvd_int] */
+/** [src_hc32f07x_hw_lvd_int] */
 #include "ametal.h"
 #include "am_hc32.h"
 #include "am_gpio.h"
@@ -51,7 +51,7 @@
 /**
  * \brief 用户回调函数
  */
-static void __hc32f19x_lvd_callback (void *data)
+static void __hc32f07x_lvd_callback (void *data)
 {
     am_kprintf ("LVD interrupt!\r\n");
 }
@@ -59,7 +59,7 @@ static void __hc32f19x_lvd_callback (void *data)
 /**
  * \brief 例程入口
  */
-void demo_hc32f19x_core_hw_lvd_int_entry (void)
+void demo_hc32f07x_core_hw_lvd_int_entry (void)
 {
     AM_DBG_INFO("Test start: demo-lvd-intterput !\r\n");
 
@@ -76,7 +76,7 @@ void demo_hc32f19x_core_hw_lvd_int_entry (void)
         (void *)HC32_LVD, 
         AMHW_HC32_LVD_VIDS_1P9_V,
         AMHW_HC32_LVD_SRC_PB07,
-        __hc32f19x_lvd_callback,
+        __hc32f07x_lvd_callback,
         NULL);
 }
 

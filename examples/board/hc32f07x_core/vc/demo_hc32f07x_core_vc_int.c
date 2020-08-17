@@ -26,7 +26,7 @@
  *      （如：AM_DBG_INFO()）。
  *
  * \par 源代码
- * \snippet demo_hc32f19x_hw_vc_int.c src_hc32f19x_hw_vc_int
+ * \snippet demo_hc32f07x_hw_vc_int.c src_hc32f07x_hw_vc_int
  *
  *
  * \internal
@@ -36,11 +36,11 @@
  */
 
 /**
- * \addtogroup demo_if_hc32f19x_hw_vc_int
- * \copydoc demo_hc32f19x_hw_vc_int.c
+ * \addtogroup demo_if_hc32f07x_hw_vc_int
+ * \copydoc demo_hc32f07x_hw_vc_int.c
  */
 
-/** [src_hc32f19x_hw_vc_int] */
+/** [src_hc32f07x_hw_vc_int] */
 #include "ametal.h"
 #include "am_hc32.h"
 #include "am_gpio.h"
@@ -62,7 +62,7 @@ static uint16_t mv_val = 2400;
 /**
  * \brief 例程入口
  */
-void demo_hc32f19x_core_hw_vc_int_entry (void)
+void demo_hc32f07x_core_hw_vc_int_entry (void)
 {
 
     /* 配置PIOA_4为DAC0_OUT功能 */

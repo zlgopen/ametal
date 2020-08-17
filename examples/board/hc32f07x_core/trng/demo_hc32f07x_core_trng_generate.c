@@ -26,7 +26,7 @@
  *      £¨Èç£ºAM_DBG_INFO()£©¡£
  *
  * \par Ô´´úÂë
- * \snippet demo_hc32f19x_core_trng_dac.c src_hc32f19x_core_trng_generate
+ * \snippet demo_hc32f07x_core_trng_dac.c src_hc32f07x_core_trng_generate
  *
  *
  * \internal
@@ -36,11 +36,11 @@
  */
 
 /**
- * \addtogroup demo_if_hc32f19x_core_trng_generate
- * \copydoc demo_hc32f19x_core_trng_generate.c
+ * \addtogroup demo_if_hc32f07x_core_trng_generate
+ * \copydoc demo_hc32f07x_core_trng_generate.c
  */
 
-/** [src_hc32f19x_core_trng_generate] */
+/** [src_hc32f07x_core_trng_generate] */
 #include "ametal.h"
 #include "am_hc32.h"
 #include "am_gpio.h"

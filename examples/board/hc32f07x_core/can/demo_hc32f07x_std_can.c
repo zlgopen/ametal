@@ -96,7 +96,7 @@ void demo_hc32f072_core_std_can_entry (void)
 
     __can_auto_cfg_baud(&can_btr_baud, APB1_CLK, CAN_BAUD);
 
-    demo_std_can_entry (am_hc32f072_can_inst_init (), &can_btr_baud);
+    demo_std_can_entry (am_hc32f07x_can_inst_init (), &can_btr_baud);
 }
 
 /** [src_test_flexcan] */

@@ -61,6 +61,7 @@ extern "C" {
 #include "am_usbd_msc.h"
 
 #include "am_hc32_pca.h"
+#include "am_hc32f07x_opa.h"
 //#include "am_hc32_pcnt.h"
 //#include "amhw_hc32_rtc.h"
 //#include "am_hc32_pwr.h"
@@ -186,43 +187,6 @@ void demo_std_digitron_60s_counting_entry (int32_t id);
 void demo_std_rtc_entry (am_rtc_handle_t rtc_handle);
 
 /**
- * \brief  mtd 例程
- *
- * \param[in] mtd_handle     : mtd 句柄
- *
- * \param[in] test_lenth     : 测试长度
- */
-//void demo_mtd_entry (am_mtd_handle_t mtd_handle, int32_t test_lenth);
-
-/**
- * \brief  ftl 例程
- *
- * \param[in] ftl_handle     : ftl 句柄
- *
- * \param[in] test_lenth     : 测试长度
- */
-//void demo_ftl_entry (am_ftl_handle_t ftl_handle, int32_t test_lenth);
-
-/**
- * \brief ep24cxx例程
- *
- * \param[in] mx25xx_handle    :    mx25xx句柄
- *
- * \param[in] test_lenth       :   测试长度
- */
-//void demo_mx25xx_entry (am_mx25xx_handle_t mx25xx_handle,
-//                        int32_t test_lenth);
-/**
- * \brief ep24cxx例程
- *
- * \param[in] ep24cxx_handle    :   ep24cxx句柄
- *
- * \param[in] test_lenth        :   测试长度
- */
-//void demo_ep24cxx_entry (am_ep24cxx_handle_t ep24cxx_handle,
-//                         int32_t test_lenth);
-
-/**
  * \brief timer定时器
  *
  * \param[in] am_timer_handle_t  : timer句柄
@@ -231,15 +195,6 @@ void demo_std_rtc_entry (am_rtc_handle_t rtc_handle);
  */
 void demo_std_timer_timing_entry (am_timer_handle_t handle,
                                   int               timing_chan);
-
-/**
- * \brief MiniPort-ZLG72128 实例初始化
- *
- * \param 无
- *
- * \return 返回 AW_OK 为初始化成功，其它为初始化失败
- */
-//int am_miniport_zlg72128_inst_init (void);
 
 /**
  * \brief 实例初始化函数
@@ -267,25 +222,6 @@ int am_hc32_nvic_inst_init (void);
  * \return 无
  */
 void am_hc32_nvic_inst_deinit (void);
-
-/**
- * \brief ILI9341 实例初始化，获得 ILI9341 标准服务句柄
- *
- * \param 无
- *
- * \return ILI9341 标准服务句柄，若为 NULL，表明初始化失败
- */
-//am_ili9341_handle_t am_hc32_ili9341_inst_init (void);
-
-/**
- * \brief ILI9341 实例解初始化
- *
- * \param[in] handle 通过 am_hc32_ili9341_inst_init() 函数获得的 ILI9341
- *                   标准服务句柄
- *
- * \return 无
- */
-//void am_hc32_ili9341_inst_deinit (am_ili9341_handle_t handle);
 
 /**
  * \brief ADC 实例初始化，获得 ADC 标准服务句柄
@@ -477,42 +413,6 @@ am_i2c_slv_handle_t am_hc32_i2c0_slv_inst_init (void);
  * \return 无
  */
 void am_hc32_i2c0_slv_inst_deinit (am_i2c_slv_handle_t handle);
-
-/**
- * \brief IWDG 实例初始化，获得 WDT 标准服务句柄
- *
- * \param 无
- *
- * \return WDT 标准服务句柄，若为 NULL，表明初始化失败
- */
-//am_wdt_handle_t am_hc32_iwdg_inst_init (void);
-
-/**
- * \brief IWDG 实例解初始化
- *
- * \param[in] handle 通过 am_hc32_iwdg_inst_init() 函数获得的 WDT 标准服务句柄
- *
- * \return 无
- */
-//void am_hc32_iwdg_inst_deinit (am_wdt_handle_t handle);
-
-/**
- * \brief PWR 实例初始化
- *
- * \param 无
- *
- * \return PWR 标准服务句柄，若为 NULL，表明初始化失败
- */
-//am_hc32_pwr_handle_t am_hc32_pwr_inst_init (void);
-
-/**
- * \brief PWR 实例解初始化
- *
- * \param 无
- *
- * \return 无
- */
-//void am_hc32_pwr_inst_deinit (void);
 
 /**
  * \brief RTC 实例初始化，获得 RTC 标准服务句柄
@@ -1232,57 +1132,57 @@ void am_hc32_wdt_inst_deinit (am_wdt_handle_t handle);
 /**
  * \brief PCA 实例初始化
  */
-am_hc32_pca_handle_t am_hc32_pca1_inst_init (void);
+am_hc32_pca_handle_t am_hc32_pca_inst_init (void);
 
 /**
  * \brief PCA 实例解初始化
  */
 void am_hc32_pca_inst_deinit (am_hc32_pca_handle_t handle);
 
-///**
-// * \brief PCNT 实例初始化，获得PCNT 服务句柄
-// *
-// * \param 无
-// *
-// * \return PCNT 服务句柄，若为 NULL，表明初始化失败
-// */
-//am_hc32_pcnt_handle_t am_hc32_pcnt_inst_init (void);
-//
-///**
-// * \brief PCNT 实例解初始化
-// *
-// * \param[in] handle 通过 am_hc32_pcnt1_inst_init() 函数获得的 PCNT 服务句柄
-// *
-// * \return 无
-// */
-//void am_hc32_pcnt_inst_deinit (am_hc32_pcnt_handle_t handle);
-//
-///**
-// * \brief MICROPORT RTC 实例初始化，获得RTC 服务句柄
-// *
-// * \param 无
-// *
-// * \return RTC 服务句柄，若为 NULL，表明初始化失败
-// */
-//am_rtc_handle_t am_microport_std_rtc_inst_init (void);
-//
-///**
-// * \brief MICROPORT 1302 RTC 实例初始化，获得RTC 服务句柄
-// *
-// * \param 无
-// *
-// * \return RTC 服务句柄，若为 NULL，表明初始化失败
-// */
-//am_rtc_handle_t am_microport_ds1302_rtc_inst_init (void);
-//
-///**
-// * \brief MICROPORT RX8025 RTC 实例初始化，获得RTC 服务句柄
-// *
-// * \param 无
-// *
-// * \return RTC 服务句柄，若为 NULL，表明初始化失败
-// */
-//am_rtc_handle_t am_microport_rx8025t_rtc_inst_init (void);
+/**
+ * \brief OPA 实例初始化，获得OPA 服务句柄
+ *
+ * \param 无
+ *
+ * \return OPA 服务句柄，若为 NULL，表明初始化失败
+ */
+am_opa_handle_t am_hc32_opa0_inst_init (void);
+
+/**
+ * \brief OPA 实例初始化，获得OPA 服务句柄
+ *
+ * \param 无
+ *
+ * \return OPA 服务句柄，若为 NULL，表明初始化失败
+ */
+am_opa_handle_t am_hc32_opa1_inst_init (void);
+
+/**
+ * \brief OPA 实例初始化，获得OPA 服务句柄
+ *
+ * \param 无
+ *
+ * \return OPA 服务句柄，若为 NULL，表明初始化失败
+ */
+am_opa_handle_t am_hc32_opa2_inst_init (void);
+
+/**
+ * \brief OPA 实例初始化，获得OPA 服务句柄
+ *
+ * \param 无
+ *
+ * \return OPA 服务句柄，若为 NULL，表明初始化失败
+ */
+am_opa_handle_t am_hc32_opa3_inst_init (void);
+
+/**
+ * \brief OPA 实例初始化，获得OPA 服务句柄
+ *
+ * \param 无
+ *
+ * \return OPA 服务句柄，若为 NULL，表明初始化失败
+ */
+am_opa_handle_t am_hc32_opa4_inst_init (void);
 
 /**
  * \brief CAN 实例初始化，获得CAN 服务句柄
@@ -1291,7 +1191,7 @@ void am_hc32_pca_inst_deinit (am_hc32_pca_handle_t handle);
  *
  * \return CAN 服务句柄
  */
-am_can_handle_t am_hc32f072_can_inst_init (void);
+am_can_handle_t am_hc32f07x_can_inst_init (void);
 
 /**
  * \brief CAN 实例解初始化
@@ -1300,7 +1200,7 @@ am_can_handle_t am_hc32f072_can_inst_init (void);
  *
  * \return 无
  */
-void am_hc32f072_can_inst_deinit (am_can_handle_t handle);
+void am_hc32f07x_can_inst_deinit (am_can_handle_t handle);
 
 /**
  * \brief USB 实例初始化，获得USB 服务句柄

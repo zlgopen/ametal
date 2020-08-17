@@ -1182,16 +1182,6 @@
               <FilePath>..\..\..\..\examples\board\hc32f07x_core\opa\demo_hc32f07x_core_opa_one.c</FilePath>
             </File>
             <File>
-              <FileName>demo_hc32l07x_core_drv_pca_8bit_pwm.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\hc32f07x_core\pca\demo_hc32l07x_core_drv_pca_8bit_pwm.c</FilePath>
-            </File>
-            <File>
-              <FileName>demo_hc32l07x_core_drv_pca_16bit_pwm.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\hc32f07x_core\pca\demo_hc32l07x_core_drv_pca_16bit_pwm.c</FilePath>
-            </File>
-            <File>
               <FileName>demo_hc32f07x_core_hw_spi_master.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\board\hc32f07x_core\spi\demo_hc32f07x_core_hw_spi_master.c</FilePath>
@@ -1465,6 +1455,16 @@
               <FileName>demo_hc32f07x_core_std_key_input_event.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\board\hc32f07x_core\input_event\demo_hc32f07x_core_std_key_input_event.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_hc32f07x_core_drv_pca_16bit_pwm.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\hc32f07x_core\pca\demo_hc32f07x_core_drv_pca_16bit_pwm.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_hc32f07x_core_drv_pca_8bit_pwm.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\hc32f07x_core\pca\demo_hc32f07x_core_drv_pca_8bit_pwm.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -3356,16 +3356,6 @@
               <FilePath>..\..\..\..\examples\board\hc32f07x_core\opa\demo_hc32f07x_core_opa_one.c</FilePath>
             </File>
             <File>
-              <FileName>demo_hc32l07x_core_drv_pca_8bit_pwm.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\hc32f07x_core\pca\demo_hc32l07x_core_drv_pca_8bit_pwm.c</FilePath>
-            </File>
-            <File>
-              <FileName>demo_hc32l07x_core_drv_pca_16bit_pwm.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\hc32f07x_core\pca\demo_hc32l07x_core_drv_pca_16bit_pwm.c</FilePath>
-            </File>
-            <File>
               <FileName>demo_hc32f07x_core_hw_spi_master.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\board\hc32f07x_core\spi\demo_hc32f07x_core_hw_spi_master.c</FilePath>
@@ -3639,6 +3629,16 @@
               <FileName>demo_hc32f07x_core_std_key_input_event.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\board\hc32f07x_core\input_event\demo_hc32f07x_core_std_key_input_event.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_hc32f07x_core_drv_pca_16bit_pwm.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\hc32f07x_core\pca\demo_hc32f07x_core_drv_pca_16bit_pwm.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_hc32f07x_core_drv_pca_8bit_pwm.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\hc32f07x_core\pca\demo_hc32f07x_core_drv_pca_8bit_pwm.c</FilePath>
             </File>
           </Files>
         </Group>

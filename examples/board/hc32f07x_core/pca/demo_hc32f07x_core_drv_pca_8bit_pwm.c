@@ -46,13 +46,13 @@
 /**
  * \brief Àý³ÌÈë¿Ú
  */
-void demo_hc32l07x_core_drv_pca_8bit_pwm_entry (void)
+void demo_hc32f07x_core_drv_pca_8bit_pwm_entry (void)
 {
     am_hc32_pca_handle_t handle;
 
     AM_DBG_INFO("demo amf07x_core pca 8bit pwm entry!\r\n");
 
-    handle = am_hc32_pca1_inst_init();
+    handle = am_hc32_pca_inst_init();
 
     am_hc32_pca_pwm_set(handle, 0, 0, HC32_PCA_PWM_8, 0, 50);
 

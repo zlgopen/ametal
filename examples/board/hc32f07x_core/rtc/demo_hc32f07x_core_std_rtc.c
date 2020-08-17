@@ -22,7 +22,7 @@
  *    PIOA_9 引脚连接 PC 串口的 RXD。
  *
  * \par 源代码
- * \snippet demo_hc32l19x_core_std_rtc.c src_hc32l19x_core_std_rtc
+ * \snippet demo_hc32f07x_core_std_rtc.c src_hc32f07x_core_std_rtc
  *
  * \internal
  * \par Modification history
@@ -31,11 +31,11 @@
  */
 
 /**
- * \addtogroup demo_if_hc32l19x_core_std_rtc
- * \copydoc demo_hc32l19x_core_std_rtc.c
+ * \addtogroup demo_if_hc32f07x_core_std_rtc
+ * \copydoc demo_hc32f07x_core_std_rtc.c
  */
 
-/** [src_hc32l19x_core_std_rtc] */
+/** [src_hc32f07x_core_std_rtc] */
 #include "ametal.h"
 #include "am_vdebug.h"
 #include "demo_std_entries.h"
@@ -51,6 +51,6 @@ void demo_hc32f07x_core_std_rtc_entry (void)
 
     demo_std_rtc_entry(am_hc32_rtc_inst_init());
 }
-/** [src_hc32l19x_core_std_rtc] */
+/** [src_hc32f07x_core_std_rtc] */
 
 /* end of file */
