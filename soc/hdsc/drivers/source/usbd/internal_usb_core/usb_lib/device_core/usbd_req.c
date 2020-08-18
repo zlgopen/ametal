@@ -390,6 +390,12 @@ static void USBD_GetDescriptor(USB_OTG_CORE_HANDLE  *pdev,
             break;
         case USB_DESC_TYPE_CONFIGURATION:
             pbuf   = (uint8_t *)pdev->dev.class_cb->GetConfigDescriptor(pdev->cfg.speed, &len);
+#ifdef USB_OTG_HS_CORE
+            if((pdev->cfg.speed == USB_OTG_SPEED_FULL )&&(pdev->cfg.phy_itface  == USB_OTG_ULPI_PHY))
+            {
+                pbuf = (uint8_t *)pdev->dev.class_cb->GetOtherConfigDescriptor(pdev->cfg.speed, &len);
+            }
+#endif
             pbuf[1] = USB_DESC_TYPE_CONFIGURATION;
             pdev->dev.pConfig_descriptor = pbuf;
             break;
@@ -415,19 +421,60 @@ static void USBD_GetDescriptor(USB_OTG_CORE_HANDLE  *pdev,
                     pbuf = pdev->dev.usr_device->GetInterfaceStrDescriptor(pdev->cfg.speed, &len);
                     break;
                 default:
+#ifdef USB_SUPPORT_USER_STRING_DESC
+                    pbuf = pdev->dev.class_cb->GetUsrStrDescriptor(pdev->cfg.speed, (req->wValue) , &len);
+                    break;
+#else
                     USBD_CtlError(pdev);
                     u8ErrFlag = 1u;
                     break;
+#endif /* USBD_CtlError(pdev); */
                 }
                 break;
         case USB_DESC_TYPE_DEVICE_QUALIFIER:
+#ifdef USB_OTG_HS_CORE
+            if(pdev->cfg.speed == USB_OTG_SPEED_HIGH  )
+            {
+                pbuf   = (uint8_t *)pdev->dev.class_cb->GetConfigDescriptor(pdev->cfg.speed, &len);
+
+                USBD_DeviceQualifierDesc[4]= pbuf[14];
+                USBD_DeviceQualifierDesc[5]= pbuf[15];
+                USBD_DeviceQualifierDesc[6]= pbuf[16];
+
+                pbuf = USBD_DeviceQualifierDesc;
+                len  = USB_LEN_DEV_QUALIFIER_DESC;
+                break;
+            }
+            else
+            {
+                USBD_CtlError(pdev);
+                u8ErrFlag = 1u;
+                break;
+            }
+#else
             USBD_CtlError(pdev);
             u8ErrFlag = 1u;
             break;
+#endif
         case USB_DESC_TYPE_OTHER_SPEED_CONFIGURATION:
+#ifdef USB_OTG_HS_CORE
+            if(pdev->cfg.speed == USB_OTG_SPEED_HIGH  )
+            {
+                pbuf = (uint8_t *)pdev->dev.class_cb->GetOtherConfigDescriptor(pdev->cfg.speed, &len);
+                pbuf[1] = USB_DESC_TYPE_OTHER_SPEED_CONFIGURATION;
+                break;
+            }
+            else
+            {
+                USBD_CtlError(pdev);
+                u8ErrFlag = 1u;
+                break;
+            }
+#else
             USBD_CtlError(pdev);
             u8ErrFlag = 1u;
             break;
+#endif
         default:
             USBD_CtlError(pdev);
             u8ErrFlag = 1u;

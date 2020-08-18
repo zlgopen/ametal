@@ -501,6 +501,11 @@ void demo_hc32f460_hw_i2c_master_poll_entry (void     *p_hw_i2c_addr,
 void demo_usbd_msc_entry (void* p_handle);
 
 /**
+ * \brief USB模拟鼠标例程，通过driver层的接口实现
+ */
+void demo_usbd_mouse_entry (void* p_handle);
+
+/**
  * \brief CMP例程，通过 HW 层接口实现
  */
 void demo_hc32f460_hw_cmp_entry (amhw_hc32f460_cmp_t *p_hw_cmp);

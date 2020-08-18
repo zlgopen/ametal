@@ -319,13 +319,23 @@ uint32_t USBD_OTG_ISR_Handler (USB_OTG_CORE_HANDLE *pdev)
 uint32_t DCD_SessionRequest_ISR(USB_OTG_CORE_HANDLE *pdev)
 {
     USB_OTG_GINTSTS_TypeDef  gintsts;
-//    USBD_DCD_INT_fops->DevConnected (pdev);
+    USB_OTG_PCGCCTL_TypeDef  power;
+    USBD_DCD_INT_fops->DevConnected (pdev);
 
 //    printf("SessionRequest !!\r\n");
     /* Clear interrupt */
     gintsts.d32 = 0ul;
     gintsts.b.vbusvint = 1u;
     USB_OTG_WRITE_REG32 (&pdev->regs.GREGS->GINTSTS, gintsts.d32);
+    if(pdev->cfg.low_power)
+    {
+        /* un-gate USB Core clock */
+        power.d32 = USB_OTG_READ_REG32(&pdev->regs.PCGCCTL);
+        power.b.gatehclk = 0u;
+        power.b.stoppclk = 0u;
+        USB_OTG_WRITE_REG32(pdev->regs.PCGCCTL, power.d32);
+    }
+
     return 1ul;
 }
 
@@ -924,13 +934,17 @@ uint32_t DCD_HandleUsbReset_ISR(USB_OTG_CORE_HANDLE *pdev)
     doepmsk.b.epdisabled = 1u;
     doepmsk.b.stsphsercvd = 1u;
     USB_OTG_WRITE_REG32( &pdev->regs.DREGS->DOEPMSK, doepmsk.d32 );
-
+#ifdef USB_OTG_HS_DEDICATED_EP1_ENABLED
+    USB_OTG_WRITE_REG32( &pdev->regs.DREGS->DOUTEP1MSK, doepmsk.d32 );
+#endif
     diepmsk.b.xfercompl = 1u;
     diepmsk.b.timeout = 1u;
     diepmsk.b.epdisabled = 1u;
 
     USB_OTG_WRITE_REG32( &pdev->regs.DREGS->DIEPMSK, diepmsk.d32 );
-
+#ifdef USB_OTG_HS_DEDICATED_EP1_ENABLED
+    USB_OTG_WRITE_REG32( &pdev->regs.DREGS->DINEP1MSK, diepmsk.d32 );
+#endif
     /* Reset Device Address */
     dcfg.d32 = USB_OTG_READ_REG32( &pdev->regs.DREGS->DCFG);
     dcfg.b.devaddr = 0u;

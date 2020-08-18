@@ -51,6 +51,7 @@
  **   - 2019-05-15  1.0  Zhangxl First version for USB MSC device demo.
  **
  ******************************************************************************/
+#include <am_usb_common_config.h>
 #include "usbd_core.h"
 #include "usbd_desc.h"
 #include "usbd_req.h"
@@ -60,6 +61,7 @@
 /*******************************************************************************
  * Local pre-processor symbols/macros ('#define')
  ******************************************************************************/
+#ifdef  USB_DEVICE_CLASS_MSC_ON
 #define USBD_VID                        0x2E88
 #define USBD_PID                        0x4601
 
@@ -75,6 +77,47 @@
 #define USBD_INTERFACE_HS_STRING        "MSC Interface"
 #define USBD_CONFIGURATION_FS_STRING    "MSC Config"
 #define USBD_INTERFACE_FS_STRING        "MSC Interface"
+#endif
+
+#ifdef  USB_DEVICE_CLASS_HID_MOUSE
+#define USBD_VID                     0x2E88
+#define USBD_PID                     0x4602
+
+#define USBD_LANGID_STRING            0x409
+#define USBD_MANUFACTURER_STRING      "HDSC_mcu"
+
+#define USBD_PRODUCT_HS_STRING        "Joystick in HS mode"
+#define USBD_SERIALNUMBER_HS_STRING   "00000000011B"
+
+#define USBD_PRODUCT_FS_STRING        "Joystick in HS mode in FS Mode"
+#define USBD_SERIALNUMBER_FS_STRING   "00000000011C"
+
+#define USBD_CONFIGURATION_HS_STRING  "HID Config"
+#define USBD_INTERFACE_HS_STRING      "HID Interface"
+
+#define USBD_CONFIGURATION_FS_STRING  "HID Config"
+#define USBD_INTERFACE_FS_STRING      "HID Interface"
+#endif
+
+#ifdef  USB_DEVICE_CLASS_HID_CUSTOM
+#define USBD_VID                     0x2E88
+#define USBD_PID                     0x4606
+
+#define USBD_LANGID_STRING            0x409
+#define USBD_MANUFACTURER_STRING      "HDSC_mcu"
+
+#define USBD_PRODUCT_HS_STRING        "HID in HS mode"
+#define USBD_SERIALNUMBER_HS_STRING   "00000000011B"
+
+#define USBD_PRODUCT_FS_STRING        "HID in FS mode"
+#define USBD_SERIALNUMBER_FS_STRING   "00000000011C"
+
+#define USBD_CONFIGURATION_HS_STRING  "HID Config"
+#define USBD_INTERFACE_HS_STRING      "HID Interface"
+
+#define USBD_CONFIGURATION_FS_STRING  "HID Config"
+#define USBD_INTERFACE_FS_STRING      "HID Interface"
+#endif
 
 /*******************************************************************************
  * Local variable definitions ('static')

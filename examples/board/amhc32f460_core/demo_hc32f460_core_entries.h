@@ -425,7 +425,20 @@ void demo_hc32f460_core_std_rtc_entry (void);
  * \brief CAN 例程，通过标准接口实现
  */
 void demo_hc32f460_core_std_can_entry (void);
+/**
+ * \brief USB msc例程，通过标准接口实现
+ */
 void demo_hc32f460_usbd_msc_entry (void);
+/**
+ * \brief USB mouse例程，通过标准接口实现
+ */
+void demo_hc32f460_usbd_mouse_entry (void);
+
+/**
+ * \brief USB hid custom例程，通过标准接口实现
+ */
+void demo_hc32f460_usbd_hid_custom_entry (void);
+
 /**
  * \brief SD卡多块读写例程，通过标准层接口实现
  */

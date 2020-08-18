@@ -1,8 +1,8 @@
-/*******************************************************************************
- * Copyright (C) 2016, Huada Semiconductor Co., Ltd. All rights reserved.
+/******************************************************************************
+ * Copyright (C) 2016, Huada Semiconductor Co.,Ltd. All rights reserved.
  *
  * This software is owned and published by:
- * Huada Semiconductor Co., Ltd. ("HDSC").
+ * Huada Semiconductor Co.,Ltd ("HDSC").
  *
  * BY DOWNLOADING, INSTALLING OR USING THIS SOFTWARE, YOU AGREE TO BE BOUND
  * BY ALL THE TERMS AND CONDITIONS OF THIS AGREEMENT.
@@ -40,33 +40,21 @@
  * at all times.
  */
 /******************************************************************************/
-/** \file usblib_config.h
+/** \file usbd_hid_mouse_core.h
  **
  ** A detailed description is available at
- ** @link UsbLibConfigGroup USB LIB Config description @endlink
+ ** @link header file for the usbd_hid_core.c @endlink
  **
- **   - 2018-12-25  1.0  Wangmin First version for Device Driver Library config.
+ **   - 2018-12-26  1.0  wangmin First version for USB demo.
  **
  ******************************************************************************/
-#ifndef __USBLIB_CONFIG_H__
-#define __USBLIB_CONFIG_H__
+#ifndef __USB_HID_CORE_H_
+#define __USB_HID_CORE_H_
 
 /*******************************************************************************
  * Include files
  ******************************************************************************/
-
-/* C binding of definitions if building with C++ compiler */
-#ifdef __cplusplus
-extern "C"
-{
-#endif
-
-/**
- *******************************************************************************
- ** \defgroup UsbLibConfigGroup Device Driver Library config(USBLIBCONFIG)
- **
- ******************************************************************************/
-//@{
+#include  "usbd_ioreq.h"
 
 /*******************************************************************************
  * Global type definitions ('typedef')
@@ -75,58 +63,42 @@ extern "C"
 /*******************************************************************************
  * Global pre-processor symbols/macros ('#define')
  ******************************************************************************/
-
-
 /**
  *******************************************************************************
- ** \brief This is the list of modules to be used in the usb lib
- ** Select the modules you need
+ ** \brief USBD_HID_Exported_Defines
  **
- ** \note
  ******************************************************************************/
+#define USB_HID_CONFIG_DESC_SIZ       (41u)
+#define USB_HID_DESC_SIZ              (9u)
+#define HID_MOUSE_REPORT_DESC_SIZE    (74u)
 
-/*! File folder on-off define */
-#define USBLIB_DEVICE_CORE                          (DDL_ON)
-#define USBLIB_HOST_CORE                            (DDL_OFF)
-#define USBLIB_DEVICE_CLASS                         (DDL_ON)
-#define USBLIB_HOST_CLASS                           (DDL_OFF)
+#define HID_DESCRIPTOR_TYPE           (0x21u)
+#define HID_REPORT_DESC               (0x22u)
 
-/*! ctl_drv file on-off define */
-#define CTL_DRV_USB_CORE                            (DDL_ON)
-#define CTL_DRV_USB_OTG                             (DDL_ON)
-#define CTL_DRV_USB_DCD                             (DDL_ON)
-#define CTL_DRV_USB_DCD_INT                         (DDL_ON)
-#define CTL_DRV_USB_HCD                             (DDL_OFF)
-#define CTL_DRV_USB_HCD_INT                         (DDL_OFF)
 
-/*! device class on-off define */
-#define DEVICE_CLASS_AUDIO                          (DDL_OFF)
-#define DEVICE_CLASS_HID_MOUSE                      (DDL_OFF)
-#define DEVICE_CLASS_MSC                            (DDL_ON)
-#define DEVICE_CLASS_CDC_VCP                        (DDL_OFF)
-#define DEVICE_CLASS_HID_CUSTOM                     (DDL_OFF)
-#define DEVICE_CLASS_HID_CDC_WRAPPER                (DDL_OFF)
+#define HID_REQ_SET_PROTOCOL          (0x0Bu)
+#define HID_REQ_GET_PROTOCOL          (0x03u)
 
-/*! host class on-off define */
-#define HOST_CLASS_HID                              (DDL_OFF)
-#define HOST_CLASS_MSC                              (DDL_OFF)
+#define HID_REQ_SET_IDLE              (0x0Au)
+#define HID_REQ_GET_IDLE              (0x02u)
+
+#define HID_REQ_SET_REPORT            (0x09u)
+#define HID_REQ_GET_REPORT            (0x01u)
 
 /*******************************************************************************
  * Global variable definitions ('extern')
  ******************************************************************************/
-
+extern USBD_Class_cb_TypeDef  USBD_HID_cb;
 /*******************************************************************************
- * Global function prototypes (definition in C source)
+  Global function prototypes (definition in C source)
  ******************************************************************************/
+uint8_t USBD_HID_SendReport (USB_OTG_CORE_HANDLE  *pdev,
+                                 uint8_t *report,
+                                 uint16_t len);
 
-//@} // UsbLibConfigGroup
-
-#ifdef __cplusplus
-}
-#endif
-
-#endif /* __USBLIB_CONFIG_H__*/
+#endif  // __USB_HID_CORE_H_
 
 /*******************************************************************************
  * EOF (not truncated)
  ******************************************************************************/
+

@@ -17,7 +17,7 @@
  *
  * \internal
  * \par Modification history
- * - 1.00 17-09-29  sdq, first implementation.
+ * - 1.00 
  * \endinternal
  */
 
@@ -35,7 +35,7 @@
 #include "am_vdebug.h"
 #include "usbd_msc_bot.h"
 #include "string.h"
-
+#include "usbd_hid_mouse_core.h"
 
 #define USBFS_GLB       (1 << 19)
 USB_OTG_CORE_HANDLE USB_OTG_dev;
@@ -208,9 +208,6 @@ static am_usb_status_t __usb_device_init(am_usbd_handle_t handle)
     int i = 0;
     am_usbd_endpoint_init_t endpoint;
     am_hc32f460_usbd_dev_t *p_dev = (am_hc32f460_usbd_dev_t *) handle;
-
-    USBD_Init(&USB_OTG_dev, USB_OTG_FS_CORE_ID, &USR_desc, &USBD_MSC_cb,
-            &USR_cb);
 
     p_dev->int_ep_union.int_ep_flag = 0;
     p_dev->ep_int_type_union.ep_int_type[0] = 0;

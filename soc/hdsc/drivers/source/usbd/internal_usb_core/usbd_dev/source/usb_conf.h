@@ -144,7 +144,8 @@
 #define MSC_IN_EP                         0x81u
 //#define MSC_OUT_EP                        0x01u
 #define MSC_OUT_EP                        0x02u
-
+#define HID_IN_EP                       0x81u
+#define HID_OUT_EP                      0x01u
 
 /****************** USB OTG HS CONFIGURATION **********************************/
 #ifdef USB_OTG_HS_CORE
@@ -155,7 +156,8 @@
     #define TX3_FIFO_HS_SIZE                          0u
     #define TX4_FIFO_HS_SIZE                          0u
     #define TX5_FIFO_HS_SIZE                          0u
-
+    #define TX6_FIFO_HS_SIZE                          0u
+    #define TX7_FIFO_HS_SIZE                          0u
 //  #define USB_OTG_HS_LOW_PWR_MGMT_SUPPORT
 //  #define USB_OTG_HS_SOF_OUTPUT_ENABLED
 
@@ -250,7 +252,7 @@
 #elif defined (__ICCARM__)     /* IAR Compiler */
 //    #define __packed    __packed
 #elif defined   (__GNUC__)     /* GNU Compiler */
-    #define __packed    __attribute__ ((__packed__))
+//    #define __packed    __attribute__ ((__packed__))
 #elif defined   (__TASKING__)  /* TASKING Compiler */
     #define __packed    __unaligned
 #endif /* __CC_ARM */
