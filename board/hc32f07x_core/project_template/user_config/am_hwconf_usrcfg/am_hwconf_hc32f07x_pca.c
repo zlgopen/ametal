@@ -83,7 +83,7 @@ am_local am_hc32_pca_dev_t __g_hc32f07x_pca_dev;
 /**
  * \brief PCA ÊµÀý³õÊ¼»¯
  */
-am_hc32_pca_handle_t am_hc32_pca1_inst_init (void)
+am_hc32_pca_handle_t am_hc32_pca_inst_init (void)
 {
     return am_hc32_pca_init(&__g_hc32f07x_pca_dev, &__g_hc32f07x_pca_devinfo);
 }

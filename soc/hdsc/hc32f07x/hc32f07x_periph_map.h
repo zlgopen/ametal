@@ -89,8 +89,6 @@ extern "C" {
 #define HC32_TIM4           ((amhw_hc32_adtim_t *)HC32F07X_TIM4_BASE)
 #define HC32_TIM5           ((amhw_hc32_adtim_t *)HC32F07X_TIM5_BASE)
 #define HC32_TIM6           ((amhw_hc32_adtim_t *)HC32F07X_TIM6_BASE)
-#define HC32_LPTIM0         ((amhw_hc32_lptim_t *)HC32F07X_LPTIM0_BASE)
-#define HC32_LPTIM1         ((amhw_hc32_lptim_t *)HC32F07X_LPTIM1_BASE)
 #define HC32_AES            ((amhw_hc32_aes_t *)HC32F07X_AES_BASE)
 #define HC32_ADC            ((amhw_hc32_adc_t *)HC32F07X_ADC_BASE)
 #define HC32_CLKTRIM        ((amhw_hc32f07x_clktrim_t *)HC32F07X_CLKTRIM_BASE)
@@ -103,7 +101,6 @@ extern "C" {
 #define HC32_LVD            ((amhw_hc32_lvd_t *)HC32F07X_LVD_BASE)
 #define HC32_RCC            ((amhw_hc32f07x_rcc_t *)HC32F07X_RCC_BASE)
 #define HC32_OPA            ((amhw_hc32f07x_opa_t *)HC32F07X_OPA_BASE)
-#define HC32_PCNT           ((amhw_hc32_pcnt_t *)HC32F07X_PCNT_BASE)
 #define HC32_RAM            ((amhw_hc32_ram_t *)HC32F07X_RAM_BASE)
 #define HC32_PCA            ((amhw_hc32_pca_t *)HC32F07X_PCA_BASE)
 #define HC32_RTC            ((amhw_hc32_rtc_t *)HC32F07X_RTC_BASE)
@@ -113,6 +110,9 @@ extern "C" {
 #define HC32_CAN            ((amhw_hc32f07x_can_t *)HC32F07X_CAN_BASE)
 #define HC32_USB            ((amhw_hc32_usbfs_t *)HC32F07X_USB_BASE)
 #define HC32_CTS            ((amhw_hc32f07x_cts_t *)HC32F07X_CTS_BASE)
+#define HC32_I2S0            ((amhw_hc32f07x_i2s_t *)HC32F07X_I2S0_BASE)
+#define HC32_I2S1            ((amhw_hc32f07x_i2s_t *)HC32F07X_I2S1_BASE)
+#define HC32_HDIV            ((amhw_hc32f07x_hdiv_t *)HC32F07X_HDIV_BASE)
 
 /** @} */
 

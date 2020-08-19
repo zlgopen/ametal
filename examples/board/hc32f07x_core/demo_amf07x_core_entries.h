@@ -24,12 +24,12 @@
 /**
  * \brief PCA 8bit PWM例程，通过标准接口和中间驱动层函数实现
  */
-void demo_hc32l07x_core_drv_pca_8bit_pwm_entry (void);
+void demo_hc32f07x_core_drv_pca_8bit_pwm_entry (void);
 
 /**
  * \brief PCA 16bit PWM例程，通过标准接口和中间驱动层函数实现
  */
-void demo_hc32l07x_core_drv_pca_16bit_pwm_entry (void);
+void demo_hc32f07x_core_drv_pca_16bit_pwm_entry (void);
 
 /**
  * \brief ADC INT 例程，通过 HW 层接口实现

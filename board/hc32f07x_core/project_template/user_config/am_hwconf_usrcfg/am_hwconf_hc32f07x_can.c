@@ -37,7 +37,7 @@
 #define MAX     10
 
 /** \brief CAN平台初始化 */
-static void __hc32f072_plfm_can_init (void)
+static void __hc32f07x_plfm_can_init (void)
 {
     am_clk_enable(CLK_CAN);
  
@@ -48,7 +48,7 @@ static void __hc32f072_plfm_can_init (void)
 }
 
 /** \brief 解除CAN平台初始化 */
-static void __hc32f072_plfm_can_deinit (void)
+static void __hc32f07x_plfm_can_deinit (void)
 {
     am_clk_disable (CLK_CAN);
 }
@@ -80,8 +80,8 @@ static const am_hc32f07x_can_devinfo_t __g_can_devinfo = {
     AMHW_HC32F07X_CAN_PTB,
     __g_can_intcb_info,              /**< \brief 回调信息 */
     MAX,                             /**< \brief 回调信息内存大小*/
-    __hc32f072_plfm_can_init,          /**< \brief CAN的平台初始化 */
-    __hc32f072_plfm_can_deinit,        /**< \brief CAN的平台去初始化 */
+    __hc32f07x_plfm_can_init,          /**< \brief CAN的平台初始化 */
+    __hc32f07x_plfm_can_deinit,        /**< \brief CAN的平台去初始化 */
 //    &__g_can_filter,
     &__g_can_initfo
 
@@ -91,13 +91,13 @@ static const am_hc32f07x_can_devinfo_t __g_can_devinfo = {
 static am_hc32f07x_can_dev_t  __g_can_dev;
 
 /** \brief CAN实例初始化，获得CAN标准服务句柄 */
-am_can_handle_t am_hc32f072_can_inst_init (void)
+am_can_handle_t am_hc32f07x_can_inst_init (void)
 {
     return am_hc32f07x_can_init(&__g_can_dev, &__g_can_devinfo);
 }
 
 /** \brief CAN实例解初始化 */
-void am_hc32f072_can_inst_deinit (am_can_handle_t handle)
+void am_hc32f07x_can_inst_deinit (am_can_handle_t handle)
 {
     am_hc32f07x_can_deinit(handle);
 }
