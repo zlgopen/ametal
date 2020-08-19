@@ -546,7 +546,7 @@ int am_hc32f460_gpio_init (am_hc32f460_gpio_dev_t           *p_dev,
     }
 
     am_int_connect(p_devinfo->inum_pin[0], IRQ128_Handler, NULL);
-    amhw_hc32f460_intc_int_vssel_bits_set(p_devinfo->inum_pin[0], 0xF);
+    amhw_hc32f460_intc_int_vssel_bits_set(p_devinfo->inum_pin[0], 0xFFFF);
     am_int_enable(p_devinfo->inum_pin[0]);
 
     p_dev->valid_flg = AM_TRUE;
