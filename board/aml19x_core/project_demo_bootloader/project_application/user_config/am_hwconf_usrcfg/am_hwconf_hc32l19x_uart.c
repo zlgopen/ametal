@@ -218,7 +218,7 @@ static void __hc32_plfm_uart3_deinit (void)
 static const am_hc32_uart_devinfo_t __g_uart3_devinfo = {
 
     HC32_UART3_BASE,                /**< \brief 串口3 */
-    INUM_UART0_2,                   /**< \brief 串口3的中断编号 */
+    INUM_UART1_3,                   /**< \brief 串口3的中断编号 */
     CLK_UART3,                      /**< \brief 串口时钟ID */
 
     AMHW_HC32_UART_PARITY_NO |      /**< \brief 无极性 */

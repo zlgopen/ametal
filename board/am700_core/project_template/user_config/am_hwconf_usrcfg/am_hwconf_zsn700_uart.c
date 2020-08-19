@@ -260,7 +260,7 @@ static void __zsn700_plfm_uart3_deinit (void)
 static const am_zsn700_uart_devinfo_t __g_uart3_devinfo = {
 
     ZSN700_UART3_BASE,            /**< \brief 串口3 */
-    INUM_UART0_2,                 /**< \brief 串口3的中断编号 */
+    INUM_UART1_3,                 /**< \brief 串口3的中断编号 */
     AMHW_ZSN700_UART_WORK_MODE_1, /**< \brief 串口工作模式 */
 
     AMHW_ZSN700_UART_PARITY_NO |  /**< \brief 无极性  MODE0/1:无需校验  MODE2/3:必须校验*/

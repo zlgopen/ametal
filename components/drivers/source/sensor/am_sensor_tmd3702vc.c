@@ -1104,13 +1104,17 @@ am_local am_err_t __tmd3702vc_result_get(am_sensor_tmd3702vc_dev_t  *p_this,
     p_result->blue_channel_data = __TMD3702VC_UINT8_TO_UINT16(&result_buf[6]);
 
     /* Prox ADÖµ */
-    p_result->raw_prox_value = __TMD3702VC_UINT8_TO_UINT16(&result_buf[8]);
+    if (p_this->dev_info->p_param_default->apc_disable == AM_TMD3702VC_APC_ENABLE) {
+        p_result->raw_prox_value = __TMD3702VC_UINT8_TO_UINT16(&result_buf[8]);
+    } else {
+        p_result->raw_prox_value = (uint16_t)((result_buf[8] << 2) | (result_buf[9] & 0x03));
+    }
 
     /* prox Æ«ÒÆÖµ */
     p_result->prox_offset_adjust_value = p_this->cal_val[0].prox_offset_adj;
 
     /* Prox */
-    p_result->prox_value = p_result->raw_prox_value - p_result->prox_offset_adjust_value;
+    p_result->prox_value = p_result->raw_prox_value;
 
     return ret;
 }
