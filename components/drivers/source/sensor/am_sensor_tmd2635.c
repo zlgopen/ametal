@@ -1270,13 +1270,17 @@ am_local am_err_t __tmd2635_result_get(am_sensor_tmd2635_dev_t  *p_this,
     __tmd2635_read(p_this, __TMD2635_REG_PDATAL, result_buf, 2);
 
     /* Prox ADÖµ */
-    p_result->raw_prox_value = __TMD2635_UINT8_TO_UINT16(&result_buf[0]);
+    if (p_this->dev_info->p_param_default->apc_disable == AM_TMD2635_APC_ENABLE) {
+        p_result->raw_prox_value = __TMD2635_UINT8_TO_UINT16(&result_buf[0]);
+    } else {
+        p_result->raw_prox_value = (uint16_t)((result_buf[0] << 2) | (result_buf[1] & 0x03));
+    }
 
     /* prox Æ«ÒÆÖµ */
     p_result->prox_offset_adjust_value = p_this->cal_val[0].prox_offset_adj;
 
     /* Prox */
-    p_result->prox_value = p_result->raw_prox_value - p_result->prox_offset_adjust_value;
+    p_result->prox_value = p_result->raw_prox_value;
 
     return ret;
 }
