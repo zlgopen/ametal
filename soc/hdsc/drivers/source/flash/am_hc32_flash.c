@@ -253,6 +253,7 @@ int32_t am_hc32_flash_sector_erase (amhw_hc32_flash_t *p_hw_flash,
     timeout = AM_HC32_FLASH_TIMEOUT_ERASE;
     while(AMHW_HC32_FLASH_SECTOR_ERASE != amhw_hc32_flash_opt_get(p_hw_flash)) {
         if(timeout--) {
+            
             amhw_hc32_flash_opt_set(p_hw_flash, AMHW_HC32_FLASH_SECTOR_ERASE);
         } else {
             return -AM_EAGAIN;
