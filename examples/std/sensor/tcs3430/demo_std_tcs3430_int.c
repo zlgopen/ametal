@@ -98,8 +98,8 @@ static void __pfn_ch3 (void *p_arg, uint32_t trigger_src)
 void demo_std_tcs3430_int_entry (am_sensor_handle_t handle)
 {
     /* 设置低、高阈值 */
-    am_sensor_tcs3430_ioctl(handle, AM_SENSOR_TCS3430_LOW_ALS_THRESHOLD_SET, (void *)200);
-    am_sensor_tcs3430_ioctl(handle, AM_SENSOR_TCS3430_HIGH_ALS_THRESHOLD_SET, (void *)500);
+    am_sensor_tcs3430_ioctl(handle, AM_SENSOR_TCS3430_LOW_ALS_THRESHOLD_SET, (void *)300);
+    am_sensor_tcs3430_ioctl(handle, AM_SENSOR_TCS3430_HIGH_ALS_THRESHOLD_SET, (void *)2000);
 
     /* 使能四路通道 */
     am_sensor_enable(handle, __tcs3430_id, 4, __tcs3430_data);

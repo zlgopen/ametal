@@ -439,12 +439,20 @@ am_local am_err_t __tmd3702vc_ioctl (am_sensor_tmd3702vc_dev_t  *p_dev,
 
     /* 设置Prox低阈值 */
     case AM_SENSOR_TMD3702VC_LOW_PROX_THRESHOLD_SET:
-        ret = __tmd3702vc_threshold_set(p_dev, __TMD3702VC_REG_PILTL, (uint16_t)(int)p_arg);
+        if (p_dev->dev_info->p_param_default->apc_disable == AM_TMD3702VC_APC_ENABLE) {
+            ret = __tmd3702vc_threshold_set(p_dev, __TMD3702VC_REG_PILTL, (uint16_t)(int)p_arg);
+        } else {
+            ret = __tmd3702vc_threshold_set(p_dev, __TMD3702VC_REG_PILTL, (uint16_t)(((int)p_arg) >> 2));
+        }
         break;
 
     /* 设置Prox高阈值 */
     case AM_SENSOR_TMD3702VC_HIGH_PROX_THRESHOLD_SET:
-        ret = __tmd3702vc_threshold_set(p_dev, __TMD3702VC_REG_PIHTL, (uint16_t)(int)p_arg);
+        if (p_dev->dev_info->p_param_default->apc_disable == AM_TMD3702VC_APC_ENABLE) {
+            ret = __tmd3702vc_threshold_set(p_dev, __TMD3702VC_REG_PIHTL, (uint16_t)(int)p_arg);
+        } else {
+            ret = __tmd3702vc_threshold_set(p_dev, __TMD3702VC_REG_PIHTL, (uint16_t)(((int)p_arg) >> 2));
+        }
         break;
 
     /* 获取ALS低阈值 */

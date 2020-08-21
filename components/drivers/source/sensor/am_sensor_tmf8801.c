@@ -1382,8 +1382,7 @@ static int8_t __tmf8801_app0_start (am_sensor_tmf8801_dev_t *p_this,
      */
     uint8_t cmd_buf[9] = {0x00, 0xA3, 0x00, 0x00, 0x00, 0x64, 0x84, 0x03, 0x02};    
 
-    uint8_t  regval    =  0;    
-    uint8_t  i         =  0;
+    uint8_t  regval    =  0;
     int      ret       = AM_OK;
     
     __tmf8801_read(p_this, __TMF8801_REG_ENABLE, &regval, 1);
@@ -1558,10 +1557,9 @@ static int8_t __tmf8801_app0_stop (am_sensor_tmf8801_dev_t *p_this)
  */
 static int8_t __tmf8801_factory_calibration (am_sensor_tmf8801_dev_t *p_this)
 {
-    uint8_t  regval  = 0;    
+    uint8_t  regval  = 0;
     uint32_t tick    = 0;
-    uint8_t  i       = 0;
-    
+
     __tmf8801_read(p_this, __TMF8801_REG_ENABLE, &regval, 1);
     if (regval != 0x41) 
     {
@@ -2094,10 +2092,11 @@ am_sensor_handle_t am_sensor_tmf8801_init (
 
     /* TOF硬件复位 */
     am_gpio_pin_cfg(p_devinfo->enable_pin, AM_GPIO_OUTPUT_INIT_LOW);
-    am_mdelay(10);
+    am_mdelay(50);
 
     /* TOF使能 */
     am_gpio_set(p_devinfo->enable_pin, AM_GPIO_LEVEL_HIGH);
+    am_mdelay(50);
 
     /* TOF软件复位 */
     reg = __TMF8801_SW_RST;

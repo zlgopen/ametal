@@ -661,4 +661,14 @@ void demo_zlg237_core_sensor_as7262_uart_entry (void);
  */
 void demo_zlg237_core_sensor_as5600_entry (void);
 
+/**
+ * \brief TOF传感器查询模式例程入口
+ */
+void demo_zlg237_core_sensor_tmf8801_entry (void);
+
+/**
+ * \brief TOF传感器触发模式例程入口
+ */
+void demo_zlg237_core_sensor_tmf8801_int_entry (void);
+
 
