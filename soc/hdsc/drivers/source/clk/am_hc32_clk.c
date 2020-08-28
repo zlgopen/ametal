@@ -548,7 +548,7 @@ int am_hc32_clk_init (am_hc32_clk_dev_t           *p_dev,
 
     hclk_unit = p_dev->hclk / 4000000;
 
-	am_hc32_flash_init(HC32_FLASH, hclk_unit, AM_TRUE);
+    am_hc32_flash_init(HC32_FLASH, hclk_unit, AM_TRUE);
 
     return AM_OK;
 }

@@ -69,9 +69,9 @@ void am_hc32f07x_i2s_init (amhw_hc32f07x_i2s_t *p_hw_i2s,
 
     /* 通道长度设置 */
     if(chlen == 16){
-        amhw_hc32f07x_i2s_ch_length(p_hw_i2s, 0);
+        amhw_hc32f07x_i2s_ch_length(p_hw_i2s, AMHW_HC32F07X_I2S_CH_LEN16);
     }else {
-        amhw_hc32f07x_i2s_ch_length(p_hw_i2s, 1);
+        amhw_hc32f07x_i2s_ch_length(p_hw_i2s, AMHW_HC32F07X_I2S_CH_LEN32);
     }
 
     if(p_dev->mclk_en){

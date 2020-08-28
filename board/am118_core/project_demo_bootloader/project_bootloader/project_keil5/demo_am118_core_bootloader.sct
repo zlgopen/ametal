@@ -1,0 +1,42 @@
+#! armcc -E
+;/*********************************************************************************************************
+;*                                 AMteal
+;*                       ---------------------------
+;*                       innovating embedded platform
+;*
+;* Copyright (c) 2001-2019 Guangzhou ZHIYUAN Electronics Stock Co., Ltd.
+;* All rights reserved.
+;*
+;* Contact information:
+;* web site:    http://www.zlg.cn/
+;* e-mail:      support@zlg.cn
+;**********************************************************************************************************/
+
+#define     ALL_START              0X00000000
+#define     ALL_SIZE               0X00040000 
+
+#define     RESET_SIZE             0x000001CC
+#define     FLASH_DRV_SIZE         0x000003E0
+
+LR_IROM2 (ALL_START+RESET_SIZE) FLASH_DRV_SIZE  {    ; load region size_region
+    ER_IROM2 (ALL_START+RESET_SIZE) FLASH_DRV_SIZE  {  ; load address = execution address
+    * (InRoot$$Sections)
+      am_zlg118_flash.o
+	}
+}
+
+LR_IROM3 (ALL_START+RESET_SIZE+FLASH_DRV_SIZE) (ALL_SIZE-RESET_SIZE-FLASH_DRV_SIZE)  {    ; load region size_region
+    ER_IROM3 (ALL_START+RESET_SIZE+FLASH_DRV_SIZE) (ALL_SIZE-RESET_SIZE-FLASH_DRV_SIZE)  {  ; load address = execution address
+	 .ANY (+RO)
+	}
+}
+
+LR_IROM1 ALL_START RESET_SIZE {
+    ER_IROM1 ALL_START RESET_SIZE {
+	* (RESET,+FIRST)
+    }
+    RW_IRAM1 0x20000000 0x00008000  {  ; RW data
+     .ANY (+RW +ZI)
+    }
+}
+

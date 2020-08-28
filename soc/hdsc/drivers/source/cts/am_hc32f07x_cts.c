@@ -84,14 +84,14 @@ uint8_t am_hc32f07x_cts_calibrate( uint32_t                    fclk,
         prs = 1;
         fref /= 2; 
     }
-		
+
     arr = fclk/fref-1;
     felim = (fclk/fref)*2/100/2;
-		
+
     amhw_hc32f07x_cts_clksrc_set (p_hw_cts, clksrc);
     amhw_hc32f07x_cts_refsrc_set (p_hw_cts, refsrc);
     amhw_hc32f07x_cts_prs_set (p_hw_cts,
-                               AMHW_HC32F07X_CTS_PRS_0DIV + prs);
+                               (amhw_hc32f07x_cts_prs_t)(AMHW_HC32F07X_CTS_PRS_0DIV + prs));
     amhw_hc32f07x_cts_felim_set (p_hw_cts, felim);
     amhw_hc32f07x_cts_arr_set (p_hw_cts,arr);
 //		AM_DBG_INFO("felim: %d\r\n",felim);

@@ -366,8 +366,8 @@ typedef enum {
  * \return none
  */
 am_static_inline
-void amhw_hc32f07x_i2s_ch_length (amhw_hc32f07x_i2s_t          *p_hw_i2s,
-                                      amhw_hc32f07x_i2s_ch_t ch_length)
+void amhw_hc32f07x_i2s_ch_length (amhw_hc32f07x_i2s_t   *p_hw_i2s,
+                                  amhw_hc32f07x_i2s_ch_t ch_length)
 {
     p_hw_i2s->cfgr = (p_hw_i2s->cfgr & (~(1u << 1))) | (ch_length << 0 );
 }

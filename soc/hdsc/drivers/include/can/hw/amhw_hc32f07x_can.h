@@ -567,7 +567,7 @@ typedef enum {
  */
 am_static_inline
 void amhw_hc32f07x_can_rxbuf_stores_all_set (amhw_hc32f07x_can_t *p_hw_can,
-	                                        amhw_hc32f07x_can_rxbuf_all_t flag)
+                                             amhw_hc32f07x_can_rxbuf_all_t flag)
 {
     p_hw_can->rctrl = (p_hw_can->rctrl & (~(1u << 3)))|(flag << 3);
 }
@@ -622,7 +622,7 @@ amhw_hc32f07x_can_get_rxbuf_status (amhw_hc32f07x_can_t *p_hw_can)
  */
 am_static_inline
 void amhw_hc32f07x_can_int_enable (amhw_hc32f07x_can_t *p_hw_can,
-	                                  uint8_t                  flag)
+                                   uint8_t              flag)
 {
     if(flag == AMHW_HC32F07X_CAN_INT_PASSIVE ||
        flag == AMHW_HC32F07X_CAN_INT_ARBILOST||
@@ -643,7 +643,7 @@ void amhw_hc32f07x_can_int_enable (amhw_hc32f07x_can_t *p_hw_can,
  */
 am_static_inline
 void amhw_hc32f07x_can_int_disable (amhw_hc32f07x_can_t *p_hw_can,
-	                                  uint8_t                  flag)
+                                    uint8_t              flag)
 {
     if(flag == AMHW_HC32F07X_CAN_INT_PASSIVE ||
        flag == AMHW_HC32F07X_CAN_INT_ARBILOST||
@@ -694,7 +694,7 @@ void amhw_hc32f07x_can_int_all_disable (amhw_hc32f07x_can_t *p_hw_can)
  */
 am_static_inline
 am_bool_t amhw_hc32f07x_can_get_irq_status (amhw_hc32f07x_can_t *p_hw_can,
-                                              uint8_t            flag)
+                                            uint8_t              flag)
 {
    return (uint8_t) ((p_hw_can->rtif & flag ) ? AM_TRUE : AM_FALSE);
 }
@@ -708,7 +708,7 @@ am_bool_t amhw_hc32f07x_can_get_irq_status (amhw_hc32f07x_can_t *p_hw_can,
  */
 am_static_inline
 void amhw_hc32f07x_can_irq_status_clr (amhw_hc32f07x_can_t *p_hw_can,
-                                         uint8_t            flag)
+                                       uint8_t              flag)
 {
      p_hw_can->rtif |= (flag);
 }
@@ -749,7 +749,7 @@ am_bool_t amhw_hc32f07x_can_get_err_status (amhw_hc32f07x_can_t *p_hw_can,
  */
 am_static_inline
 void amhw_hc32f07x_can_err_status_clr (amhw_hc32f07x_can_t *p_hw_can,
-                                         uint8_t            flag)
+                                       uint8_t              flag)
 {
      p_hw_can->errint |= (flag);
 }
@@ -777,7 +777,7 @@ am_bool_t amhw_hc32f07x_can_err_active_get (amhw_hc32f07x_can_t *p_hw_can)
  */
 am_static_inline
 void amhw_hc32f07x_can_brp_set (amhw_hc32f07x_can_t *p_hw_can,
-                                         uint8_t       presc)
+                                uint8_t              presc)
 {
      p_hw_can->bt = (p_hw_can->bt & (~(0xfful << 24))) | ((presc & 0xfful) << 24);
 }
@@ -803,7 +803,7 @@ uint8_t amhw_hc32f07x_can_brp_get (amhw_hc32f07x_can_t *p_hw_can)
  */
 am_static_inline
 void amhw_hc32f07x_can_sjw_set (amhw_hc32f07x_can_t *p_hw_can,
-                                         uint8_t       sjw)
+                                uint8_t              sjw)
 {
      p_hw_can->bt = (p_hw_can->bt & (~(0x7f << 16))) | ((sjw & 0x7f) << 16);
 }
@@ -829,7 +829,7 @@ uint8_t amhw_hc32f07x_can_sjw_get (amhw_hc32f07x_can_t *p_hw_can)
  */
 am_static_inline
 void amhw_hc32f07x_can_tseg2_set (amhw_hc32f07x_can_t *p_hw_can,
-                                       uint8_t       seg2  )
+                                  uint8_t              seg2  )
 {
      p_hw_can->bt = (p_hw_can->bt & (~(0x7f << 8))) | ((seg2 & 0x7f) << 8);
 }
@@ -855,7 +855,7 @@ uint8_t amhw_hc32f07x_can_tseg2_get (amhw_hc32f07x_can_t *p_hw_can )
  */
 am_static_inline
 void amhw_hc32f07x_can_tseg1_set (amhw_hc32f07x_can_t *p_hw_can,
-                                       uint8_t       seg1  )
+                                  uint8_t              seg1  )
 {
      p_hw_can->bt = (p_hw_can->bt & (~0xff )) | (seg1 & 0xff);
 }
@@ -919,7 +919,7 @@ uint8_t amhw_hc32f07x_can_arbitration_lost_get (amhw_hc32f07x_can_t *p_hw_can)
  */
 am_static_inline
 void amhw_hc32f07x_can_rxbuf_warning_set (amhw_hc32f07x_can_t *p_hw_can,
-                                                 uint8_t       val  )
+                                          uint8_t              val  )
 {
      p_hw_can->limit = (p_hw_can->limit & (~(0x0f << 4))) | ((val & 0x0f) << 4);
 }
@@ -933,7 +933,7 @@ void amhw_hc32f07x_can_rxbuf_warning_set (amhw_hc32f07x_can_t *p_hw_can,
  */
 am_static_inline
 void amhw_hc32f07x_can_err_warning_set (amhw_hc32f07x_can_t *p_hw_can,
-                                                 uint8_t       val  )
+                                        uint8_t              val  )
 {
      p_hw_can->limit = (p_hw_can->limit & (~0x0f)) | (val & 0x0f);
 }
@@ -978,7 +978,7 @@ typedef enum {
  * \return none
  */
 am_static_inline
-void amhw_hc32f07x_can_acf_select_set (amhw_hc32f07x_can_t *p_hw_can,
+void amhw_hc32f07x_can_acf_select_set (amhw_hc32f07x_can_t      *p_hw_can,
                                        amhw_hc32f07x_can_acf_t   flag)
 {
      p_hw_can->acfctrl = (p_hw_can->acfctrl & (~(0x01 << 5))) | (flag << 5);
@@ -1006,8 +1006,8 @@ typedef enum {
  * \return none
  */
 am_static_inline
-void amhw_hc32f07x_can_filter_addr (amhw_hc32f07x_can_t   *p_hw_can,
-                                     amhw_hc32f07x_can_filter_t  filter)
+void amhw_hc32f07x_can_filter_addr (amhw_hc32f07x_can_t        *p_hw_can,
+                                    amhw_hc32f07x_can_filter_t  filter)
 {
      p_hw_can->acfctrl = (filter & 0x0f);
 }
@@ -1020,8 +1020,8 @@ void amhw_hc32f07x_can_filter_addr (amhw_hc32f07x_can_t   *p_hw_can,
  * \return none
  */
 am_static_inline
-void amhw_hc32f07x_can_filter_enable (amhw_hc32f07x_can_t   *p_hw_can,
-                                     amhw_hc32f07x_can_filter_t  filter)
+void amhw_hc32f07x_can_filter_enable (amhw_hc32f07x_can_t        *p_hw_can,
+                                      amhw_hc32f07x_can_filter_t  filter)
 {
      p_hw_can->acfen |= (1u << filter);
 }
@@ -1034,8 +1034,8 @@ void amhw_hc32f07x_can_filter_enable (amhw_hc32f07x_can_t   *p_hw_can,
  * \return none
  */
 am_static_inline
-void amhw_hc32f07x_can_filter_disable (amhw_hc32f07x_can_t   *p_hw_can,
-                                     amhw_hc32f07x_can_filter_t  filter)
+void amhw_hc32f07x_can_filter_disable (amhw_hc32f07x_can_t        *p_hw_can,
+                                       amhw_hc32f07x_can_filter_t  filter)
 {
     p_hw_can->acfen &= ~(1u << filter);
 }
@@ -1056,8 +1056,8 @@ typedef enum {
  * \return none
  */
 am_static_inline
-void amhw_hc32f07x_can_ide_set (amhw_hc32f07x_can_t *p_hw_can,
-                                   amhw_hc32f07x_can_aide_t flag)
+void amhw_hc32f07x_can_ide_set (amhw_hc32f07x_can_t     *p_hw_can,
+                                amhw_hc32f07x_can_aide_t flag)
 {
      p_hw_can->acf = (p_hw_can->acf & (~(0x03 << 29))) | (flag << 29);
 }
@@ -1071,7 +1071,7 @@ void amhw_hc32f07x_can_ide_set (amhw_hc32f07x_can_t *p_hw_can,
  */
 am_static_inline
 void amhw_hc32f07x_can_filter_code_set (amhw_hc32f07x_can_t *p_hw_can,
-                                         uint32_t            val )
+                                        uint32_t             val)
 {
      p_hw_can->acf = (p_hw_can->acf & (~(0x1fffffff << 0))) | (val & 0x1fffffff);
 }
@@ -1119,8 +1119,8 @@ typedef enum {
  * \return none
  */
 am_static_inline
-void amhw_hc32f07x_can_tbptr_set (amhw_hc32f07x_can_t *p_hw_can,
-                                 amhw_hc32f07x_can_tbptr_t  flag)
+void amhw_hc32f07x_can_tbptr_set (amhw_hc32f07x_can_t       *p_hw_can,
+                                  amhw_hc32f07x_can_tbptr_t  flag)
 {
      p_hw_can->tbslot = (p_hw_can->tbslot & (~(0x07<< 0))) | (flag & 0x07);
 }
@@ -1144,7 +1144,7 @@ void amhw_hc32f07x_can_tbptr_set (amhw_hc32f07x_can_t *p_hw_can,
  */
 am_static_inline
 void amhw_hc32f07x_can_tt_int_enable (amhw_hc32f07x_can_t *p_hw_can,
-                                       uint8_t             flag)
+                                      uint8_t              flag)
 {
      p_hw_can->ttcfg |= flag;
 }
@@ -1158,7 +1158,7 @@ void amhw_hc32f07x_can_tt_int_enable (amhw_hc32f07x_can_t *p_hw_can,
  */
 am_static_inline
 void amhw_hc32f07x_can_tt_int_disable (amhw_hc32f07x_can_t *p_hw_can,
-                                       uint8_t             flag)
+                                       uint8_t              flag)
 {
      p_hw_can->ttcfg &= ~flag;
 }
@@ -1184,7 +1184,7 @@ void amhw_hc32f07x_can_tt_int_disable (amhw_hc32f07x_can_t *p_hw_can,
  */
 am_static_inline
 am_bool_t amhw_hc32f07x_can_tt_status_get (amhw_hc32f07x_can_t *p_hw_can,
-                                              uint8_t            flag)
+                                           uint8_t              flag)
 {
     return (uint8_t) ((p_hw_can->ttcfg & flag ) ? AM_TRUE : AM_FALSE);
 }
@@ -1199,7 +1199,7 @@ am_bool_t amhw_hc32f07x_can_tt_status_get (amhw_hc32f07x_can_t *p_hw_can,
  */
 am_static_inline
 void amhw_hc32f07x_can_tt_status_clr (amhw_hc32f07x_can_t *p_hw_can,
-                                        uint8_t            flag)
+                                      uint8_t              flag)
 {
     p_hw_can->ttcfg |= flag;
 }
@@ -1223,7 +1223,7 @@ typedef enum {
  */
 am_static_inline
 void amhw_hc32f07x_can_tt_prescdiv_set (amhw_hc32f07x_can_t *p_hw_can,
-                                        uint8_t            flag)
+                                        uint8_t              flag)
 {
     p_hw_can->ttcfg = (p_hw_can->ttcfg & (~(0x03<< 1))) | ((flag & 0x03) << 1);
 }
@@ -1269,7 +1269,7 @@ typedef enum {
  */
 am_static_inline
 void amhw_hc32f07x_can_tt_refide_format_set (amhw_hc32f07x_can_t *p_hw_can,
-                                        uint8_t            flag)
+                                             uint8_t              flag)
 {
     p_hw_can->refmsg = (p_hw_can->refmsg & (~(1U << 31))) | ((flag & 0x01) << 31);;
 }
@@ -1283,7 +1283,7 @@ void amhw_hc32f07x_can_tt_refide_format_set (amhw_hc32f07x_can_t *p_hw_can,
  */
 am_static_inline
 void amhw_hc32f07x_can_tt_refid_set (amhw_hc32f07x_can_t *p_hw_can,
-                                      uint32_t            val)
+                                     uint32_t             val)
 {
     p_hw_can->refmsg = (p_hw_can->refmsg & (1U << 31)) | (val & (~(1U << 31)));
 }
@@ -1307,8 +1307,8 @@ typedef enum {
  * \return none
  */
 am_static_inline
-void amhw_hc32f07x_can_tt_trigger_type_set (amhw_hc32f07x_can_t *p_hw_can,
-                                    amhw_hc32f07x_can_tt_trigger_type_t  flag)
+void amhw_hc32f07x_can_tt_trigger_type_set (amhw_hc32f07x_can_t                 *p_hw_can,
+                                            amhw_hc32f07x_can_tt_trigger_type_t  flag)
 {
     p_hw_can->refmsg  = (p_hw_can->refmsg & (~(0x03 << 8))) | 
                        ((flag & 0x03) << 8);
@@ -1323,7 +1323,7 @@ void amhw_hc32f07x_can_tt_trigger_type_set (amhw_hc32f07x_can_t *p_hw_can,
  */
 am_static_inline
 void amhw_hc32f07x_can_tt_tew_set (amhw_hc32f07x_can_t *p_hw_can,
-                                    uint8_t             flag)
+                                   uint8_t              flag)
 {
     p_hw_can->trgcfg = (p_hw_can->trgcfg & (~(0x0f << 12))) | 
                        ((flag & 0x0f) << 12   );
@@ -1348,7 +1348,7 @@ typedef enum {
  * \return none
  */
 am_static_inline
-void amhw_hc32f07x_can_ttcan_ttptr_set (amhw_hc32f07x_can_t *p_hw_can,
+void amhw_hc32f07x_can_ttcan_ttptr_set (amhw_hc32f07x_can_t       *p_hw_can,
                                         amhw_hc32f07x_can_ttptr_t  flag)
 {
      p_hw_can->trgcfg = (p_hw_can->trgcfg & (~(0x07<< 0))) | (flag & 0x07);
@@ -1363,7 +1363,7 @@ void amhw_hc32f07x_can_ttcan_ttptr_set (amhw_hc32f07x_can_t *p_hw_can,
  */
 am_static_inline
 void amhw_hc32f07x_can_ttcan_trig_set (amhw_hc32f07x_can_t *p_hw_can,
-                                        uint16_t             flag)
+                                       uint16_t             flag)
 {
      p_hw_can->trgtrig  = (p_hw_can->trgtrig & (~0xffff)) | flag;
 }

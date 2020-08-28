@@ -63,3 +63,4 @@ uint8_t am_hc32f07x_cts_calibrate( uint32_t                    fclk,
 #endif /* __AM_HC32F07X_CTS_H */
 
 /* end of file */
+

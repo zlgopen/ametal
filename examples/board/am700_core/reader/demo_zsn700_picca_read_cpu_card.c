@@ -64,7 +64,7 @@ void demo_zsn700_reader_picca_read_cpu_card (void)
 
     am_zsn700_reader_handle_t handle = am_zsn700_reader_inst_init();
     while (1) {
-        int i ;
+
         if (AM_ZSN700_READER_STATUS_SUCCESS == am_zsn700_reader_picca_active\
                                                   (handle,
                                                     AM_ZSN700_READER_PICCA_REQ_IDLE,
