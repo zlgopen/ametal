@@ -95,18 +95,22 @@ am_local void __hc32_flash_locksector(amhw_hc32_flash_t *p_hw_flash,
     switch (slock) {
 
     case 0:
+        AM_HC32_FLASH_BYPASS(p_hw_flash);
         p_hw_flash->slock0 &= bit;
         break;
 
     case 1:
+        AM_HC32_FLASH_BYPASS(p_hw_flash);
         p_hw_flash->slock1 &= bit;
         break;
 
     case 2:
+        AM_HC32_FLASH_BYPASS(p_hw_flash);
         p_hw_flash->slock2 &= bit;
         break;
 
     case 3:
+        AM_HC32_FLASH_BYPASS(p_hw_flash);
         p_hw_flash->slock3 &= bit;
         break;
 
@@ -132,18 +136,22 @@ am_local void __hc32_flash_unlocksector(amhw_hc32_flash_t *p_hw_flash,
     switch (slock) {
 
     case 0:
+        AM_HC32_FLASH_BYPASS(p_hw_flash);
         p_hw_flash->slock0 |= bit;
         break;
 
     case 1:
+        AM_HC32_FLASH_BYPASS(p_hw_flash);
         p_hw_flash->slock1 |= bit;
         break;
 
     case 2:
+        AM_HC32_FLASH_BYPASS(p_hw_flash);
         p_hw_flash->slock2 |= bit;
         break;
 
     case 3:
+        AM_HC32_FLASH_BYPASS(p_hw_flash);
         p_hw_flash->slock3 |= bit;
         break;
 

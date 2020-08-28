@@ -1781,14 +1781,24 @@ am_err_t am_sensor_tmd2635_ioctl (am_sensor_handle_t  handle,
 
     /* 设置Prox低阈值 */
     case AM_SENSOR_TMD2635_LOW_PROX_THRESHOLD_SET:
-        ret = __tmd2635_low_prox_threshold_set(p_dev,
-                                                (uint16_t)(int)p_arg);
+        if (p_dev->dev_info->p_param_default->apc_disable == AM_TMD2635_APC_ENABLE) {
+            ret = __tmd2635_low_prox_threshold_set(p_dev,
+                                                    (uint16_t)(int)p_arg);
+        } else {
+            ret = __tmd2635_low_prox_threshold_set(p_dev,
+                                                    (uint16_t)(((int)p_arg) >> 2));
+        }
         break;
 
     /* 设置Prox高阈值 */
     case AM_SENSOR_TMD2635_HIGH_PROX_THRESHOLD_SET:
-        ret = __tmd2635_high_prox_threshold_set(p_dev,
-                                                 (uint16_t)(int)p_arg);
+        if (p_dev->dev_info->p_param_default->apc_disable == AM_TMD2635_APC_ENABLE) {
+            ret = __tmd2635_high_prox_threshold_set(p_dev,
+                                                     (uint16_t)(int)p_arg);
+        } else {
+            ret = __tmd2635_high_prox_threshold_set(p_dev,
+                                                    (uint16_t)(((int)p_arg) >> 2));
+        }
         break;
 
     /* 获取Prox低阈值 */
