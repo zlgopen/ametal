@@ -104,7 +104,7 @@ static am_usb_status_t __usb_device_endpoint_init (am_hc32f07x_usbd_dev_t       
                                       endpoint,
                                       endpoint);
         amhw_hc32_usbfs_in_eptyp_set(p_usb,
-                                     epinit->transfer_type,
+                                     (amhw_hc32f07x_usbfs_eptype_t)(epinit->transfer_type),
                                      endpoint);
         amhw_hc32_usbfs_in_usbaep_set(p_usb,
                                       endpoint);
@@ -114,12 +114,12 @@ static am_usb_status_t __usb_device_endpoint_init (am_hc32f07x_usbd_dev_t       
 
         amhw_hc32_usbfs_out_mpsiz_set(p_usb,
                                       epinit->max_packet_size,
-                                      endpoint);			
+                                      endpoint);
         amhw_hc32_usbfs_doepctl_set(p_usb,
                                     AMHW_HC32F07X_USBFS_CTL_SD0PID,
                                     endpoint);
         amhw_hc32_usbfs_out_eptyp_set(p_usb,
-                                      epinit->transfer_type,
+                                      (amhw_hc32f07x_usbfs_eptype_t)(epinit->transfer_type),
                                       endpoint);
         amhw_hc32_usbfs_out_usbaep_set(p_usb,
                                        endpoint);
@@ -210,7 +210,7 @@ static am_usb_status_t __usb_device_endpoint_unstall (am_hc32f07x_usbd_dev_t *p_
 static am_usb_status_t __usb_device_init (am_usbd_handle_t handle)
 {
     uint32_t i = 0;
-    am_usbd_endpoint_init_t endpoint;
+
     am_hc32f07x_usbd_dev_t *p_dev = (am_hc32f07x_usbd_dev_t *)handle;
     amhw_hc32_usbfs_t   *p_usb = (amhw_hc32_usbfs_t *)p_dev->p_info->usb_regbase;
 
@@ -371,7 +371,7 @@ static am_usb_status_t __usb_device_send (am_usbd_handle_t handle,
     amhw_hc32_usbfs_t *p_usb = (amhw_hc32_usbfs_t *)p_dev->p_info->usb_regbase;
 
     __attribute__((aligned(4U))) uint32_t data_buf[16];     /* 四字节对齐发送缓冲区 */
-    uint32_t           *send_buff = data_buf;
+    uint32_t *send_buff = data_buf;
 
     int i=0;
 
@@ -803,7 +803,7 @@ static void __usb_setup_handle (am_hc32f07x_usbd_dev_t *p_dev)
     am_usbd_dev_t      *p_usb_dev = &(p_dev->device);
     am_data_info_t     *p_data_info = &(p_usb_dev->ctrl_info);
     int i=0;
-	  am_usbd_endpoint_init_t    epinit;
+    am_usbd_endpoint_init_t    epinit;
     p_data_info->offset = 0;
     p_data_info->p_buf  = NULL;
 
@@ -1041,7 +1041,7 @@ static void __usb_device_interrupt_endpoint (am_hc32f07x_usbd_dev_t *p_dev)
                                                 i);
                     p_usbd_dev->state = AM_USBD_CTRL_IDLE;
 
-                    amhw_hc32_usbfs_txfnum_write (p_usb, i);
+                    amhw_hc32_usbfs_txfnum_write (p_usb, (amhw_hc32_usbfs_txfifonum_type_t)(i));
                     amhw_hc32_usbfs_txfflsh_enable (p_usb);
                     while( ((p_usb->grstctl >>5)&0x01)==1);
                 }
@@ -1125,14 +1125,14 @@ static void __usb_device_reset_isr (am_hc32f07x_usbd_dev_t *p_dev)
                                   0,
                                   0);
     amhw_hc32_usbfs_in_eptyp_set(p_usb,
-                                 0,
+                                 AMHW_HC32F07X_USBFS_EPTYPE_CTRL,
                                  0);
     amhw_hc32_usbfs_in_usbaep_set(p_usb,
                                   0);
 
     amhw_hc32_usbfs_out_eptyp_set(p_usb,
-                                 0,
-                                 0);
+                                  AMHW_HC32F07X_USBFS_EPTYPE_CTRL,
+                                  0);
     amhw_hc32_usbfs_out_usbaep_set(p_usb,
                                    0);
 }

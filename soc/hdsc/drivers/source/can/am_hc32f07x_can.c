@@ -691,17 +691,17 @@ am_can_err_t __can_hc32f07x_stop_msg_snd (void *p_drv)
  * \brief ÉèÖÃÂË²¨º¯Êý(À©Õ¹)
  */
 am_can_err_t __can_hc32f07x_filter_tab_ext_set (void              *p_drv,
-                                              am_can_filter_t   *p_filterbuff,
-                                              size_t             lenth)
+                                                am_can_filter_t   *p_filterbuff,
+                                                size_t             lenth)
 {
-    am_hc32f07x_can_dev_t         *p_dev    = (am_hc32f07x_can_dev_t *)p_drv;
-    amhw_hc32f07x_can_t           *p_hw_can = NULL;
+    am_hc32f07x_can_dev_t       *p_dev    = (am_hc32f07x_can_dev_t *)p_drv;
+    amhw_hc32f07x_can_t         *p_hw_can = NULL;
     uint8_t                      filt_num = 0;
-    uint8_t                     filt_pos = 0;
+    uint8_t                      filt_pos = 0;
     uint32_t                     id       = 0;
     uint32_t                     id_mask  = 0;
     am_can_err_t                 state    = AM_CAN_NOERROR;
-    int                           i = 0;
+    int                          i        = 0;
     if (NULL == p_drv || NULL == p_filterbuff || 0 == lenth || (lenth > 8)) {
         return AM_CAN_INVALID_PARAMETER;
     }
@@ -709,7 +709,7 @@ am_can_err_t __can_hc32f07x_filter_tab_ext_set (void              *p_drv,
     p_hw_can = (amhw_hc32f07x_can_t *)p_dev->p_devinfo->regbase;
 
     amhw_hc32f07x_can_reset_set(p_hw_can);
-		
+
     for ( i = 0; i < lenth; i++) {
 
         /* ÂË²¨Æ÷×éºÅ  */
@@ -733,10 +733,10 @@ am_can_err_t __can_hc32f07x_filter_tab_ext_set (void              *p_drv,
         }else {
             id      = (p_filterbuff->id[0] & 0x1fffffff);
             id_mask = (p_filterbuff->mask[0] & 0x1fffffff);
-        }	
+        }
 
         amhw_hc32f07x_can_filter_addr (p_hw_can,
-                                       filt_num);
+                                       (amhw_hc32f07x_can_filter_t)filt_num);
 
         if (p_filterbuff->ide == AM_CAN_FRAME_TYPE_STD) {
 

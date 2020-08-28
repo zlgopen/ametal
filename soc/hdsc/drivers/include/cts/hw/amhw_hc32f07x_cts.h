@@ -236,11 +236,11 @@ typedef enum amhw_hc32f07x_cts_clksrc {
  * \return  нч
  */
 am_static_inline
-void amhw_hc32f07x_cts_clksrc_set (amhw_hc32f07x_cts_t   *p_hw_cts,
-	                                 amhw_hc32f07x_cts_clksrc_t  src)
+void amhw_hc32f07x_cts_clksrc_set (amhw_hc32f07x_cts_t        *p_hw_cts,
+                                   amhw_hc32f07x_cts_clksrc_t  src)
 {
-    p_hw_cts->cfgr = (p_hw_cts->cfgr & ~(0x03 << 30)) | 
-	                   (src << 30);
+    p_hw_cts->cfgr = (p_hw_cts->cfgr & ~(0x03u << 30)) | 
+                      (src << 30);
 }
 
 /**
@@ -263,10 +263,10 @@ typedef enum amhw_hc32f07x_cts_refsrc {
  */
 am_static_inline
 void amhw_hc32f07x_cts_refsrc_set (amhw_hc32f07x_cts_t   *p_hw_cts,
-	                                 amhw_hc32f07x_cts_refsrc_t  src)
+                                   amhw_hc32f07x_cts_refsrc_t  src)
 {
-    p_hw_cts->cfgr = (p_hw_cts->cfgr & ~(0x03 << 28)) | 
-	                   (src << 28);
+    p_hw_cts->cfgr = (p_hw_cts->cfgr & ~(0x03u << 28)) | 
+                      (src << 28);
 }
 
 /**
@@ -317,10 +317,10 @@ typedef enum amhw_hc32f07x_cts_prs {
  */
 am_static_inline
 void amhw_hc32f07x_cts_prs_set (amhw_hc32f07x_cts_t   *p_hw_cts,
-	                              amhw_hc32f07x_cts_prs_t  src)
+                                amhw_hc32f07x_cts_prs_t  src)
 {
     p_hw_cts->cfgr = (p_hw_cts->cfgr & ~(0x07 << 24)) | 
-	                   (src << 24);
+                      (src << 24);
 }
 
 /**
@@ -387,7 +387,7 @@ am_static_inline
 amhw_hc32f07x_cts_dir_t 
 amhw_hc32f07x_cts_dir_get (amhw_hc32f07x_cts_t   *p_hw_cts)
 {
-    return  ((p_hw_cts->isr >> 15) & 0x01);
+    return  (amhw_hc32f07x_cts_dir_t)((p_hw_cts->isr >> 15) & 0x01);
 }
 
 /**

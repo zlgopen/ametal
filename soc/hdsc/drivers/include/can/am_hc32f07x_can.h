@@ -26,10 +26,10 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-	
+
 #include "ametal.h"
 #include "am_can.h"
-#include "hw/amhw_hc32f07x_can.h"	
+#include "hw/amhw_hc32f07x_can.h"
 
 /**
  * \addtogroup am_hc32_if_lvd
@@ -47,7 +47,7 @@ typedef struct am_hc32f07x_can_init_info {
      *   1 使能
      */
     am_bool_t   can_ttcm;
-	
+
     /** \brief 接收缓冲器数据存储模式
      *   0 正常模式
      *   1 存储所有 
@@ -65,7 +65,7 @@ typedef struct am_hc32f07x_can_init_info {
      *   1 优先级模式
      */
     amhw_hc32f07x_can_stb_mode_t    can_stb_mode;
-	
+
     /** \brief 接收缓冲器将满设定值 */
     uint8_t warning_limitval;
 
@@ -76,7 +76,7 @@ typedef struct am_hc32f07x_can_init_info {
 
 /**
  * \brief 中断回调信息
- */	
+ */
 typedef struct am_hc32f07x_can_intcb_info{
 
     /** \brief 触发回调函数 */
@@ -134,7 +134,7 @@ typedef struct am_hc32f07x_can_dev {
  * \return handle
  */
 am_can_handle_t am_hc32f07x_can_init (am_hc32f07x_can_dev_t           *p_dev,
-                                    const am_hc32f07x_can_devinfo_t *p_devinfo);
+                                      const am_hc32f07x_can_devinfo_t *p_devinfo);
 
 /**
  * \brief 解初始化
@@ -143,8 +143,8 @@ am_can_handle_t am_hc32f07x_can_init (am_hc32f07x_can_dev_t           *p_dev,
  *
  * \return 无
  */
-void am_hc32f07x_can_deinit (am_can_handle_t handle);	
-	
+void am_hc32f07x_can_deinit (am_can_handle_t handle);
+
 /**
  * @} am_hc32f07x_if_can
  */
