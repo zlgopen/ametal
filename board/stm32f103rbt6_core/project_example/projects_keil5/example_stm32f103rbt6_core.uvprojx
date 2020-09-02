@@ -1032,119 +1032,104 @@
           <GroupName>soc</GroupName>
           <Files>
             <File>
-              <FileName>am_zlg237_clk.c</FileName>
+              <FileName>am_stm32f103rbt6_clk.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\zlg\drivers\source\clk\am_zlg237_clk.c</FilePath>
+              <FilePath>..\..\..\..\soc\stm\drivers\source\clk\am_stm32f103rbt6_clk.c</FilePath>
             </File>
             <File>
-              <FileName>am_zlg_crc.c</FileName>
+              <FileName>am_stm32f103rbt6_crc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\zlg\drivers\source\crc\am_zlg_crc.c</FilePath>
+              <FilePath>..\..\..\..\soc\stm\drivers\source\crc\am_stm32f103rbt6_crc.c</FilePath>
             </File>
             <File>
-              <FileName>am_zlg_dma.c</FileName>
+              <FileName>am_stm32f103rbt6_dma.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\zlg\drivers\source\dma\am_zlg_dma.c</FilePath>
+              <FilePath>..\..\..\..\soc\stm\drivers\source\dma\am_stm32f103rbt6_dma.c</FilePath>
             </File>
             <File>
-              <FileName>am_zlg237_flash.c</FileName>
+              <FileName>am_stm32f103rbt6_flash.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\zlg\drivers\source\flash\am_zlg237_flash.c</FilePath>
+              <FilePath>..\..\..\..\soc\stm\drivers\source\flash\am_stm32f103rbt6_flash.c</FilePath>
             </File>
             <File>
-              <FileName>am_zlg237_gpio.c</FileName>
+              <FileName>am_stm32f103rbt6_gpio.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\zlg\drivers\source\gpio\am_zlg237_gpio.c</FilePath>
+              <FilePath>..\..\..\..\soc\stm\drivers\source\gpio\am_stm32f103rbt6_gpio.c</FilePath>
             </File>
             <File>
-              <FileName>am_zlg_ili9341_3wire_spi.c</FileName>
+              <FileName>amhw_stm32f103rbt6_rcc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\zlg\drivers\source\ili9341\am_zlg_ili9341_3wire_spi.c</FilePath>
+              <FilePath>..\..\..\..\soc\stm\drivers\source\rcc\hw\amhw_stm32f103rbt6_rcc.c</FilePath>
             </File>
             <File>
-              <FileName>amhw_zlg237_rcc.c</FileName>
+              <FileName>am_stm32f103rbt6_rtc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\zlg\drivers\source\rcc\hw\amhw_zlg237_rcc.c</FilePath>
+              <FilePath>..\..\..\..\soc\stm\drivers\source\rtc\am_stm32f103rbt6_rtc.c</FilePath>
             </File>
             <File>
-              <FileName>am_zlg237_rtc.c</FileName>
+              <FileName>am_stm32f103rbt6_tim_cap.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\zlg\drivers\source\rtc\am_zlg237_rtc.c</FilePath>
+              <FilePath>..\..\..\..\soc\stm\drivers\source\tim\am_stm32f103rbt6_tim_cap.c</FilePath>
             </File>
             <File>
-              <FileName>am_zlg_tim_cap.c</FileName>
+              <FileName>am_stm32f103rbt6_tim_pwm.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\zlg\drivers\source\tim\am_zlg_tim_cap.c</FilePath>
+              <FilePath>..\..\..\..\soc\stm\drivers\source\tim\am_stm32f103rbt6_tim_pwm.c</FilePath>
             </File>
             <File>
-              <FileName>am_zlg_tim_pwm.c</FileName>
+              <FileName>am_stm32f103rbt6_tim_timing.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\zlg\drivers\source\tim\am_zlg_tim_pwm.c</FilePath>
+              <FilePath>..\..\..\..\soc\stm\drivers\source\tim\am_stm32f103rbt6_tim_timing.c</FilePath>
             </File>
             <File>
-              <FileName>am_zlg_tim_timing.c</FileName>
+              <FileName>amhw_stm32f103rbt6_usart.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\zlg\drivers\source\tim\am_zlg_tim_timing.c</FilePath>
+              <FilePath>..\..\..\..\soc\stm\drivers\source\uart\hw\amhw_stm32f103rbt6_usart.c</FilePath>
             </File>
             <File>
-              <FileName>am_zlg237_usart.c</FileName>
+              <FileName>am_stm32f103rbt6_adc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\zlg\drivers\source\uart\am_zlg237_usart.c</FilePath>
+              <FilePath>..\..\..\..\soc\stm\drivers\source\adc\am_stm32f103rbt6_adc.c</FilePath>
             </File>
             <File>
-              <FileName>am_zlg_iwdg.c</FileName>
+              <FileName>am_stm32f103rbt6_i2c.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\zlg\drivers\source\wdt\am_zlg_iwdg.c</FilePath>
+              <FilePath>..\..\..\..\soc\stm\drivers\source\i2c\am_stm32f103rbt6_i2c.c</FilePath>
             </File>
             <File>
-              <FileName>am_zlg_wwdg.c</FileName>
+              <FileName>am_stm32f103rbt6_i2c_slv.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\zlg\drivers\source\wdt\am_zlg_wwdg.c</FilePath>
+              <FilePath>..\..\..\..\soc\stm\drivers\source\i2c\am_stm32f103rbt6_i2c_slv.c</FilePath>
             </File>
             <File>
-              <FileName>amhw_zlg237_usart.c</FileName>
+              <FileName>am_stm32f103rbt6_pwr.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\zlg\drivers\source\uart\hw\amhw_zlg237_usart.c</FilePath>
+              <FilePath>..\..\..\..\soc\stm\drivers\source\pwr\am_stm32f103rbt6_pwr.c</FilePath>
             </File>
             <File>
-              <FileName>am_zlg237_adc.c</FileName>
+              <FileName>am_stm32f103rbt6_usart.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\zlg\drivers\source\adc\am_zlg237_adc.c</FilePath>
+              <FilePath>..\..\..\..\soc\stm\drivers\source\uart\am_stm32f103rbt6_usart.c</FilePath>
             </File>
             <File>
-              <FileName>am_zlg237_i2c.c</FileName>
+              <FileName>am_stm32f103rbt6_spi_dma.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\zlg\drivers\source\i2c\am_zlg237_i2c.c</FilePath>
+              <FilePath>..\..\..\..\soc\stm\drivers\source\spi\am_stm32f103rbt6_spi_dma.c</FilePath>
             </File>
             <File>
-              <FileName>am_zlg237_i2c_slv.c</FileName>
+              <FileName>am_stm32f103rbt6_spi_int.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\zlg\drivers\source\i2c\am_zlg237_i2c_slv.c</FilePath>
+              <FilePath>..\..\..\..\soc\stm\drivers\source\spi\am_stm32f103rbt6_spi_int.c</FilePath>
             </File>
             <File>
-              <FileName>am_zlg237_pwr.c</FileName>
+              <FileName>am_stm32f103rbt6_spi_poll.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\zlg\drivers\source\pwr\am_zlg237_pwr.c</FilePath>
+              <FilePath>..\..\..\..\soc\stm\drivers\source\spi\am_stm32f103rbt6_spi_poll.c</FilePath>
             </File>
             <File>
-              <FileName>am_zlg237_spi_dma.c</FileName>
+              <FileName>am_stm32f103rbt6_spi_slv_dma.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\zlg\drivers\source\spi\am_zlg237_spi_dma.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_zlg237_spi_int.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\zlg\drivers\source\spi\am_zlg237_spi_int.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_zlg237_spi_poll.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\zlg\drivers\source\spi\am_zlg237_spi_poll.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_zlg237_spi_slv_dma.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\zlg\drivers\source\spi\am_zlg237_spi_slv_dma.c</FilePath>
+              <FilePath>..\..\..\..\soc\stm\drivers\source\spi\am_stm32f103rbt6_spi_slv_dma.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -1152,449 +1137,449 @@
           <GroupName>examples_board</GroupName>
           <Files>
             <File>
-              <FileName>demo_zlg237_core_hw_adc_dma.c</FileName>
+              <FileName>demo_stm32f103rbt6_core_hw_adc_dma.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am237_core\adc\demo_zlg237_core_hw_adc_dma.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\stm32f103rbt6_core\adc\demo_stm32f103rbt6_core_hw_adc_dma.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg237_core_hw_adc_int.c</FileName>
+              <FileName>demo_stm32f103rbt6_core_hw_adc_dma_int.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am237_core\adc\demo_zlg237_core_hw_adc_int.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\stm32f103rbt6_core\adc\demo_stm32f103rbt6_core_hw_adc_dma_int.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg237_core_std_adc.c</FileName>
+              <FileName>demo_stm32f103rbt6_core_std_adc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am237_core\adc\demo_zlg237_core_std_adc.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\stm32f103rbt6_core\adc\demo_stm32f103rbt6_core_std_adc.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg237_core_std_multichan_adc.c</FileName>
+              <FileName>demo_stm32f103rbt6_core_std_multichan_adc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am237_core\adc\demo_zlg237_core_std_multichan_adc.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\stm32f103rbt6_core\adc\demo_stm32f103rbt6_core_std_multichan_adc.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg237_core_std_buzzer.c</FileName>
+              <FileName>demo_stm32f103rbt6_core_std_buzzer.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am237_core\buzzer\demo_zlg237_core_std_buzzer.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\stm32f103rbt6_core\buzzer\demo_stm32f103rbt6_core_std_buzzer.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg237_core_hw_clk.c</FileName>
+              <FileName>demo_stm32f103rbt6_core_hw_clk.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am237_core\clk\demo_zlg237_core_hw_clk.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\stm32f103rbt6_core\clk\demo_stm32f103rbt6_core_hw_clk.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg237_core_std_crc.c</FileName>
+              <FileName>demo_stm32f103rbt6_core_std_crc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am237_core\crc\demo_zlg237_core_std_crc.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\stm32f103rbt6_core\crc\demo_stm32f103rbt6_core_std_crc.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg237_core_std_delay.c</FileName>
+              <FileName>demo_stm32f103rbt6_core_std_delay.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am237_core\delay\demo_zlg237_core_std_delay.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\stm32f103rbt6_core\delay\demo_stm32f103rbt6_core_std_delay.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg237_core_drv_dma_m2m.c</FileName>
+              <FileName>demo_stm32f103rbt6_core_drv_dma_m2m.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am237_core\dma\demo_zlg237_core_drv_dma_m2m.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\stm32f103rbt6_core\dma\demo_stm32f103rbt6_core_drv_dma_m2m.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg237_core_drv_flash.c</FileName>
+              <FileName>demo_stm32f103rbt6_core_drv_flash.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am237_core\flash\demo_zlg237_core_drv_flash.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\stm32f103rbt6_core\flash\demo_stm32f103rbt6_core_drv_flash.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg237_core_hw_gpio.c</FileName>
+              <FileName>demo_stm32f103rbt6_core_hw_gpio.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am237_core\gpio\demo_zlg237_core_hw_gpio.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\stm32f103rbt6_core\gpio\demo_stm32f103rbt6_core_hw_gpio.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg237_core_hw_gpio_trigger.c</FileName>
+              <FileName>demo_stm32f103rbt6_core_hw_gpio_trigger.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am237_core\gpio\demo_zlg237_core_hw_gpio_trigger.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\stm32f103rbt6_core\gpio\demo_stm32f103rbt6_core_hw_gpio_trigger.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg237_core_std_gpio.c</FileName>
+              <FileName>demo_stm32f103rbt6_core_std_gpio.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am237_core\gpio\demo_zlg237_core_std_gpio.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\stm32f103rbt6_core\gpio\demo_stm32f103rbt6_core_std_gpio.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg237_core_std_gpio_trigger.c</FileName>
+              <FileName>demo_stm32f103rbt6_core_std_gpio_trigger.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am237_core\gpio\demo_zlg237_core_std_gpio_trigger.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\stm32f103rbt6_core\gpio\demo_stm32f103rbt6_core_std_gpio_trigger.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg237_core_std_key_input_event.c</FileName>
+              <FileName>demo_stm32f103rbt6_core_std_key_input_event.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am237_core\input_event\demo_zlg237_core_std_key_input_event.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\stm32f103rbt6_core\input_event\demo_stm32f103rbt6_core_std_key_input_event.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg237_core_hw_iwdg.c</FileName>
+              <FileName>demo_stm32f103rbt6_core_hw_iwdg.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am237_core\iwdg\demo_zlg237_core_hw_iwdg.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\stm32f103rbt6_core\iwdg\demo_stm32f103rbt6_core_hw_iwdg.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg237_core_std_iwdg.c</FileName>
+              <FileName>demo_stm32f103rbt6_core_std_iwdg.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am237_core\iwdg\demo_zlg237_core_std_iwdg.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\stm32f103rbt6_core\iwdg\demo_stm32f103rbt6_core_std_iwdg.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg237_core_std_led.c</FileName>
+              <FileName>demo_stm32f103rbt6_core_std_led.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am237_core\led\demo_zlg237_core_std_led.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\stm32f103rbt6_core\led\demo_stm32f103rbt6_core_std_led.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg237_core_std_rtc.c</FileName>
+              <FileName>demo_stm32f103rbt6_core_std_rtc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am237_core\rtc\demo_zlg237_core_std_rtc.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\stm32f103rbt6_core\rtc\demo_stm32f103rbt6_core_std_rtc.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg237_core_hw_tim_cap.c</FileName>
+              <FileName>demo_stm32f103rbt6_core_hw_tim_cap.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am237_core\timer\demo_zlg237_core_hw_tim_cap.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\stm32f103rbt6_core\timer\demo_stm32f103rbt6_core_hw_tim_cap.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg237_core_hw_tim_cmp_toggle.c</FileName>
+              <FileName>demo_stm32f103rbt6_core_hw_tim_cmp_toggle.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am237_core\timer\demo_zlg237_core_hw_tim_cmp_toggle.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\stm32f103rbt6_core\timer\demo_stm32f103rbt6_core_hw_tim_cmp_toggle.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg237_core_hw_tim_pwm.c</FileName>
+              <FileName>demo_stm32f103rbt6_core_hw_tim_pwm.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am237_core\timer\demo_zlg237_core_hw_tim_pwm.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\stm32f103rbt6_core\timer\demo_stm32f103rbt6_core_hw_tim_pwm.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg237_core_hw_tim_timing.c</FileName>
+              <FileName>demo_stm32f103rbt6_core_hw_tim_timing.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am237_core\timer\demo_zlg237_core_hw_tim_timing.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\stm32f103rbt6_core\timer\demo_stm32f103rbt6_core_hw_tim_timing.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg237_core_std_tim1_cap.c</FileName>
+              <FileName>demo_stm32f103rbt6_core_std_tim1_cap.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am237_core\timer\demo_zlg237_core_std_tim1_cap.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\stm32f103rbt6_core\timer\demo_stm32f103rbt6_core_std_tim1_cap.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg237_core_std_tim1_pwm.c</FileName>
+              <FileName>demo_stm32f103rbt6_core_std_tim1_pwm.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am237_core\timer\demo_zlg237_core_std_tim1_pwm.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\stm32f103rbt6_core\timer\demo_stm32f103rbt6_core_std_tim1_pwm.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg237_core_std_tim1_timing.c</FileName>
+              <FileName>demo_stm32f103rbt6_core_std_tim1_timing.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am237_core\timer\demo_zlg237_core_std_tim1_timing.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\stm32f103rbt6_core\timer\demo_stm32f103rbt6_core_std_tim1_timing.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg237_core_std_tim2_cap.c</FileName>
+              <FileName>demo_stm32f103rbt6_core_std_tim2_cap.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am237_core\timer\demo_zlg237_core_std_tim2_cap.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\stm32f103rbt6_core\timer\demo_stm32f103rbt6_core_std_tim2_cap.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg237_core_std_tim2_pwm.c</FileName>
+              <FileName>demo_stm32f103rbt6_core_std_tim2_pwm.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am237_core\timer\demo_zlg237_core_std_tim2_pwm.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\stm32f103rbt6_core\timer\demo_stm32f103rbt6_core_std_tim2_pwm.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg237_core_std_tim2_timing.c</FileName>
+              <FileName>demo_stm32f103rbt6_core_std_tim2_timing.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am237_core\timer\demo_zlg237_core_std_tim2_timing.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\stm32f103rbt6_core\timer\demo_stm32f103rbt6_core_std_tim2_timing.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg237_core_std_tim3_cap.c</FileName>
+              <FileName>demo_stm32f103rbt6_core_std_tim3_cap.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am237_core\timer\demo_zlg237_core_std_tim3_cap.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\stm32f103rbt6_core\timer\demo_stm32f103rbt6_core_std_tim3_cap.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg237_core_std_tim3_pwm.c</FileName>
+              <FileName>demo_stm32f103rbt6_core_std_tim3_pwm.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am237_core\timer\demo_zlg237_core_std_tim3_pwm.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\stm32f103rbt6_core\timer\demo_stm32f103rbt6_core_std_tim3_pwm.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg237_core_std_tim3_timing.c</FileName>
+              <FileName>demo_stm32f103rbt6_core_std_tim3_timing.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am237_core\timer\demo_zlg237_core_std_tim3_timing.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\stm32f103rbt6_core\timer\demo_stm32f103rbt6_core_std_tim3_timing.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg237_core_std_tim4_cap.c</FileName>
+              <FileName>demo_stm32f103rbt6_core_std_tim4_cap.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am237_core\timer\demo_zlg237_core_std_tim4_cap.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\stm32f103rbt6_core\timer\demo_stm32f103rbt6_core_std_tim4_cap.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg237_core_std_tim4_pwm.c</FileName>
+              <FileName>demo_stm32f103rbt6_core_std_tim4_pwm.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am237_core\timer\demo_zlg237_core_std_tim4_pwm.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\stm32f103rbt6_core\timer\demo_stm32f103rbt6_core_std_tim4_pwm.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg237_core_std_tim4_timing.c</FileName>
+              <FileName>demo_stm32f103rbt6_core_std_tim4_timing.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am237_core\timer\demo_zlg237_core_std_tim4_timing.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\stm32f103rbt6_core\timer\demo_stm32f103rbt6_core_std_tim4_timing.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg237_core_hw_usart_int.c</FileName>
+              <FileName>demo_stm32f103rbt6_core_hw_usart_int.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am237_core\usart\demo_zlg237_core_hw_usart_int.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\stm32f103rbt6_core\usart\demo_stm32f103rbt6_core_hw_usart_int.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg237_core_hw_usart_polling.c</FileName>
+              <FileName>demo_stm32f103rbt6_core_hw_usart_polling.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am237_core\usart\demo_zlg237_core_hw_usart_polling.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\stm32f103rbt6_core\usart\demo_stm32f103rbt6_core_hw_usart_polling.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg237_core_hw_usart_rx_dma.c</FileName>
+              <FileName>demo_stm32f103rbt6_core_hw_usart_rx_dma.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am237_core\usart\demo_zlg237_core_hw_usart_rx_dma.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\stm32f103rbt6_core\usart\demo_stm32f103rbt6_core_hw_usart_rx_dma.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg237_core_hw_usart_tx_dma.c</FileName>
+              <FileName>demo_stm32f103rbt6_core_hw_usart_tx_dma.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am237_core\usart\demo_zlg237_core_hw_usart_tx_dma.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\stm32f103rbt6_core\usart\demo_stm32f103rbt6_core_hw_usart_tx_dma.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg237_core_std_usart_polling.c</FileName>
+              <FileName>demo_stm32f103rbt6_core_std_usart_polling.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am237_core\usart\demo_zlg237_core_std_usart_polling.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\stm32f103rbt6_core\usart\demo_stm32f103rbt6_core_std_usart_polling.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg237_core_std_usart_ringbuf.c</FileName>
+              <FileName>demo_stm32f103rbt6_core_std_usart_ringbuf.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am237_core\usart\demo_zlg237_core_std_usart_ringbuf.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\stm32f103rbt6_core\usart\demo_stm32f103rbt6_core_std_usart_ringbuf.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg237_core_hw_wwdg.c</FileName>
+              <FileName>demo_stm32f103rbt6_core_hw_wwdg.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am237_core\wwdg\demo_zlg237_core_hw_wwdg.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\stm32f103rbt6_core\wwdg\demo_stm32f103rbt6_core_hw_wwdg.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg237_core_std_wwdg.c</FileName>
+              <FileName>demo_stm32f103rbt6_core_std_wwdg.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am237_core\wwdg\demo_zlg237_core_std_wwdg.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\stm32f103rbt6_core\wwdg\demo_stm32f103rbt6_core_std_wwdg.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg237_core_microport_ds1302.c</FileName>
+              <FileName>demo_stm32f103rbt6_core_microport_ds1302.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am237_core\microport_board\demo_zlg237_core_microport_ds1302.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\stm32f103rbt6_core\microport_board\demo_stm32f103rbt6_core_microport_ds1302.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg237_core_microport_eeprom.c</FileName>
+              <FileName>demo_stm32f103rbt6_core_microport_eeprom.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am237_core\microport_board\demo_zlg237_core_microport_eeprom.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\stm32f103rbt6_core\microport_board\demo_stm32f103rbt6_core_microport_eeprom.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg237_core_microport_eeprom_nvram.c</FileName>
+              <FileName>demo_stm32f103rbt6_core_microport_eeprom_nvram.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am237_core\microport_board\demo_zlg237_core_microport_eeprom_nvram.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\stm32f103rbt6_core\microport_board\demo_stm32f103rbt6_core_microport_eeprom_nvram.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg237_core_microport_flash.c</FileName>
+              <FileName>demo_stm32f103rbt6_core_microport_flash.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am237_core\microport_board\demo_zlg237_core_microport_flash.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\stm32f103rbt6_core\microport_board\demo_stm32f103rbt6_core_microport_flash.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg237_core_microport_flash_ftl.c</FileName>
+              <FileName>demo_stm32f103rbt6_core_microport_flash_ftl.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am237_core\microport_board\demo_zlg237_core_microport_flash_ftl.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\stm32f103rbt6_core\microport_board\demo_stm32f103rbt6_core_microport_flash_ftl.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg237_core_microport_flash_mtd.c</FileName>
+              <FileName>demo_stm32f103rbt6_core_microport_flash_mtd.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am237_core\microport_board\demo_zlg237_core_microport_flash_mtd.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\stm32f103rbt6_core\microport_board\demo_stm32f103rbt6_core_microport_flash_mtd.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg237_core_microport_rs485.c</FileName>
+              <FileName>demo_stm32f103rbt6_core_microport_rs485.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am237_core\microport_board\demo_zlg237_core_microport_rs485.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\stm32f103rbt6_core\microport_board\demo_stm32f103rbt6_core_microport_rs485.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg237_core_microport_rtc.c</FileName>
+              <FileName>demo_stm32f103rbt6_core_microport_rtc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am237_core\microport_board\demo_zlg237_core_microport_rtc.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\stm32f103rbt6_core\microport_board\demo_stm32f103rbt6_core_microport_rtc.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg237_core_microport_rx8025t.c</FileName>
+              <FileName>demo_stm32f103rbt6_core_microport_rx8025t.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am237_core\microport_board\demo_zlg237_core_microport_rx8025t.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\stm32f103rbt6_core\microport_board\demo_stm32f103rbt6_core_microport_rx8025t.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg237_core_miniport_digitron.c</FileName>
+              <FileName>demo_stm32f103rbt6_core_miniport_digitron.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am237_core\miniport_board\demo_zlg237_core_miniport_digitron.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\stm32f103rbt6_core\miniport_board\demo_stm32f103rbt6_core_miniport_digitron.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg237_core_miniport_hc595_digitron.c</FileName>
+              <FileName>demo_stm32f103rbt6_core_miniport_hc595_digitron.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am237_core\miniport_board\demo_zlg237_core_miniport_hc595_digitron.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\stm32f103rbt6_core\miniport_board\demo_stm32f103rbt6_core_miniport_hc595_digitron.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg237_core_miniport_hc595_digitron_key.c</FileName>
+              <FileName>demo_stm32f103rbt6_core_miniport_hc595_digitron_key.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am237_core\miniport_board\demo_zlg237_core_miniport_hc595_digitron_key.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\stm32f103rbt6_core\miniport_board\demo_stm32f103rbt6_core_miniport_hc595_digitron_key.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg237_core_miniport_hc595_digitron_temp.c</FileName>
+              <FileName>demo_stm32f103rbt6_core_miniport_hc595_digitron_temp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am237_core\miniport_board\demo_zlg237_core_miniport_hc595_digitron_temp.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\stm32f103rbt6_core\miniport_board\demo_stm32f103rbt6_core_miniport_hc595_digitron_temp.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg237_core_miniport_hc595_led.c</FileName>
+              <FileName>demo_stm32f103rbt6_core_miniport_hc595_led.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am237_core\miniport_board\demo_zlg237_core_miniport_hc595_led.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\stm32f103rbt6_core\miniport_board\demo_stm32f103rbt6_core_miniport_hc595_led.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg237_core_miniport_key.c</FileName>
+              <FileName>demo_stm32f103rbt6_core_miniport_key.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am237_core\miniport_board\demo_zlg237_core_miniport_key.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\stm32f103rbt6_core\miniport_board\demo_stm32f103rbt6_core_miniport_key.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg237_core_miniport_key_digitron.c</FileName>
+              <FileName>demo_stm32f103rbt6_core_miniport_key_digitron.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am237_core\miniport_board\demo_zlg237_core_miniport_key_digitron.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\stm32f103rbt6_core\miniport_board\demo_stm32f103rbt6_core_miniport_key_digitron.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg237_core_miniport_led.c</FileName>
+              <FileName>demo_stm32f103rbt6_core_miniport_led.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am237_core\miniport_board\demo_zlg237_core_miniport_led.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\stm32f103rbt6_core\miniport_board\demo_stm32f103rbt6_core_miniport_led.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg237_core_miniport_zlg72128.c</FileName>
+              <FileName>demo_stm32f103rbt6_core_miniport_zlg72128.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am237_core\miniport_board\demo_zlg237_core_miniport_zlg72128.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\stm32f103rbt6_core\miniport_board\demo_stm32f103rbt6_core_miniport_zlg72128.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zmf237_drv_sleepmode_timer_wake_up.c</FileName>
+              <FileName>demo_stm32f103rbt6_drv_sleepmode_timer_wake_up.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am237_core\wakeup\demo_zmf237_drv_sleepmode_timer_wake_up.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\stm32f103rbt6_core\wakeup\demo_stm32f103rbt6_drv_sleepmode_timer_wake_up.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zmf237_drv_sleepmode_wake_up.c</FileName>
+              <FileName>demo_stm32f103rbt6_drv_sleepmode_wake_up.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am237_core\wakeup\demo_zmf237_drv_sleepmode_wake_up.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\stm32f103rbt6_core\wakeup\demo_stm32f103rbt6_drv_sleepmode_wake_up.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zmf237_drv_standbymode_wake_up.c</FileName>
+              <FileName>demo_stm32f103rbt6_drv_standbymode_wake_up.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am237_core\wakeup\demo_zmf237_drv_standbymode_wake_up.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\stm32f103rbt6_core\wakeup\demo_stm32f103rbt6_drv_standbymode_wake_up.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zmf237_drv_stopmode_wake_up.c</FileName>
+              <FileName>demo_stm32f103rbt6_drv_stopmode_wake_up.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am237_core\wakeup\demo_zmf237_drv_stopmode_wake_up.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\stm32f103rbt6_core\wakeup\demo_stm32f103rbt6_drv_stopmode_wake_up.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg237_core_sensor_tmd3702vc.c</FileName>
+              <FileName>demo_stm32f103rbt6_core_sensor_tmd3702vc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am237_core\sensor\demo_zlg237_core_sensor_tmd3702vc.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\stm32f103rbt6_core\sensor\demo_stm32f103rbt6_core_sensor_tmd3702vc.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg237_core_sensor_tmd3702vc_int.c</FileName>
+              <FileName>demo_stm32f103rbt6_core_sensor_tmd3702vc_int.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am237_core\sensor\demo_zlg237_core_sensor_tmd3702vc_int.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\stm32f103rbt6_core\sensor\demo_stm32f103rbt6_core_sensor_tmd3702vc_int.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg237_core_sensor_tsl2540.c</FileName>
+              <FileName>demo_stm32f103rbt6_core_sensor_tsl2540.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am237_core\sensor\demo_zlg237_core_sensor_tsl2540.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\stm32f103rbt6_core\sensor\demo_stm32f103rbt6_core_sensor_tsl2540.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg237_core_sensor_tsl2540_int.c</FileName>
+              <FileName>demo_stm32f103rbt6_core_sensor_tsl2540_int.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am237_core\sensor\demo_zlg237_core_sensor_tsl2540_int.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\stm32f103rbt6_core\sensor\demo_stm32f103rbt6_core_sensor_tsl2540_int.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg237_core_sensor_tcs3430.c</FileName>
+              <FileName>demo_stm32f103rbt6_core_sensor_tcs3430.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am237_core\sensor\demo_zlg237_core_sensor_tcs3430.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\stm32f103rbt6_core\sensor\demo_stm32f103rbt6_core_sensor_tcs3430.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg237_core_sensor_tcs3430_int.c</FileName>
+              <FileName>demo_stm32f103rbt6_core_sensor_tcs3430_int.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am237_core\sensor\demo_zlg237_core_sensor_tcs3430_int.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\stm32f103rbt6_core\sensor\demo_stm32f103rbt6_core_sensor_tcs3430_int.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg237_core_sensor_tmd2635.c</FileName>
+              <FileName>demo_stm32f103rbt6_core_sensor_tmd2635.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am237_core\sensor\demo_zlg237_core_sensor_tmd2635.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\stm32f103rbt6_core\sensor\demo_stm32f103rbt6_core_sensor_tmd2635.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg237_core_sensor_tmd2635_int.c</FileName>
+              <FileName>demo_stm32f103rbt6_core_sensor_tmd2635_int.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am237_core\sensor\demo_zlg237_core_sensor_tmd2635_int.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\stm32f103rbt6_core\sensor\demo_stm32f103rbt6_core_sensor_tmd2635_int.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg237_core_sensor_tmd2750.c</FileName>
+              <FileName>demo_stm32f103rbt6_core_sensor_tmd2750.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am237_core\sensor\demo_zlg237_core_sensor_tmd2750.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\stm32f103rbt6_core\sensor\demo_stm32f103rbt6_core_sensor_tmd2750.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg237_core_sensor_tmd2750_int.c</FileName>
+              <FileName>demo_stm32f103rbt6_core_sensor_tmd2750_int.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am237_core\sensor\demo_zlg237_core_sensor_tmd2750_int.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\stm32f103rbt6_core\sensor\demo_stm32f103rbt6_core_sensor_tmd2750_int.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg237_core_sensor_as621x_comparator_mode.c</FileName>
+              <FileName>demo_stm32f103rbt6_core_sensor_as621x_comparator_mode.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am237_core\sensor\demo_zlg237_core_sensor_as621x_comparator_mode.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\stm32f103rbt6_core\sensor\demo_stm32f103rbt6_core_sensor_as621x_comparator_mode.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg237_core_sensor_as621x_interrupt_mode.c</FileName>
+              <FileName>demo_stm32f103rbt6_core_sensor_as621x_interrupt_mode.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am237_core\sensor\demo_zlg237_core_sensor_as621x_interrupt_mode.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\stm32f103rbt6_core\sensor\demo_stm32f103rbt6_core_sensor_as621x_interrupt_mode.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg237_core_sensor_tmg49037.c</FileName>
+              <FileName>demo_stm32f103rbt6_core_sensor_tmg49037.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am237_core\sensor\demo_zlg237_core_sensor_tmg49037.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\stm32f103rbt6_core\sensor\demo_stm32f103rbt6_core_sensor_tmg49037.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg237_core_sensor_tmg49037_int.c</FileName>
+              <FileName>demo_stm32f103rbt6_core_sensor_tmg49037_int.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am237_core\sensor\demo_zlg237_core_sensor_tmg49037_int.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\stm32f103rbt6_core\sensor\demo_stm32f103rbt6_core_sensor_tmg49037_int.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg237_core_sensor_as7341.c</FileName>
+              <FileName>demo_stm32f103rbt6_core_sensor_as7341.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am237_core\sensor\demo_zlg237_core_sensor_as7341.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\stm32f103rbt6_core\sensor\demo_stm32f103rbt6_core_sensor_as7341.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg237_core_sensor_as7341_int.c</FileName>
+              <FileName>demo_stm32f103rbt6_core_sensor_as7341_int.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am237_core\sensor\demo_zlg237_core_sensor_as7341_int.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\stm32f103rbt6_core\sensor\demo_stm32f103rbt6_core_sensor_as7341_int.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg237_core_sensor_as7421.c</FileName>
+              <FileName>demo_stm32f103rbt6_core_sensor_as7421.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am237_core\sensor\demo_zlg237_core_sensor_as7421.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\stm32f103rbt6_core\sensor\demo_stm32f103rbt6_core_sensor_as7421.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg237_core_sensor_as7421_int.c</FileName>
+              <FileName>demo_stm32f103rbt6_core_sensor_as7421_int.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am237_core\sensor\demo_zlg237_core_sensor_as7421_int.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\stm32f103rbt6_core\sensor\demo_stm32f103rbt6_core_sensor_as7421_int.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg237_core_sensor_as7262_i2c.c</FileName>
+              <FileName>demo_stm32f103rbt6_core_sensor_as7262_i2c.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am237_core\sensor\demo_zlg237_core_sensor_as7262_i2c.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\stm32f103rbt6_core\sensor\demo_stm32f103rbt6_core_sensor_as7262_i2c.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg237_core_sensor_as7262_i2c_int.c</FileName>
+              <FileName>demo_stm32f103rbt6_core_sensor_as7262_i2c_int.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am237_core\sensor\demo_zlg237_core_sensor_as7262_i2c_int.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\stm32f103rbt6_core\sensor\demo_stm32f103rbt6_core_sensor_as7262_i2c_int.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg237_core_sensor_as7262_uart.c</FileName>
+              <FileName>demo_stm32f103rbt6_core_sensor_as7262_uart.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am237_core\sensor\demo_zlg237_core_sensor_as7262_uart.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\stm32f103rbt6_core\sensor\demo_stm32f103rbt6_core_sensor_as7262_uart.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg237_core_sensor_as5600.c</FileName>
+              <FileName>demo_stm32f103rbt6_core_sensor_as5600.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am237_core\sensor\demo_zlg237_core_sensor_as5600.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\stm32f103rbt6_core\sensor\demo_stm32f103rbt6_core_sensor_as5600.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg237_core_sensor_tmf8801.c</FileName>
+              <FileName>demo_stm32f103rbt6_core_sensor_tmf8801.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am237_core\sensor\demo_zlg237_core_sensor_tmf8801.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\stm32f103rbt6_core\sensor\demo_stm32f103rbt6_core_sensor_tmf8801.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg237_core_sensor_tmf8801_int.c</FileName>
+              <FileName>demo_stm32f103rbt6_core_sensor_tmf8801_int.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\board\am237_core\sensor\demo_zlg237_core_sensor_tmf8801_int.c</FilePath>
+              <FilePath>..\..\..\..\examples\board\stm32f103rbt6_core\sensor\demo_stm32f103rbt6_core_sensor_tmf8801_int.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -1667,99 +1652,99 @@
           <GroupName>examples_soc</GroupName>
           <Files>
             <File>
-              <FileName>demo_zlg_drv_dma_m2m.c</FileName>
+              <FileName>demo_stm32f103rbt6_drv_dma_m2m.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\soc\zlg\dma\demo_zlg_drv_dma_m2m.c</FilePath>
+              <FilePath>..\..\..\..\examples\soc\stm\dma\demo_stm32f103rbt6_drv_dma_m2m.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg_hw_gpio_trigger.c</FileName>
+              <FileName>demo_stm32f103rbt6_hw_gpio_trigger.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\soc\zlg\gpio\demo_zlg_hw_gpio_trigger.c</FilePath>
+              <FilePath>..\..\..\..\examples\soc\stm\gpio\demo_stm32f103rbt6_hw_gpio_trigger.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg_hw_tim_cap.c</FileName>
+              <FileName>demo_stm32f103rbt6_hw_tim_cap.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\soc\zlg\timer\demo_zlg_hw_tim_cap.c</FilePath>
+              <FilePath>..\..\..\..\examples\soc\stm\timer\demo_stm32f103rbt6_hw_tim_cap.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg_hw_tim_cmp_toggle.c</FileName>
+              <FileName>demo_stm32f103rbt6_hw_tim_cmp_toggle.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\soc\zlg\timer\demo_zlg_hw_tim_cmp_toggle.c</FilePath>
+              <FilePath>..\..\..\..\examples\soc\stm\timer\demo_stm32f103rbt6_hw_tim_cmp_toggle.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg_hw_tim_pwm.c</FileName>
+              <FileName>demo_stm32f103rbt6_hw_tim_pwm.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\soc\zlg\timer\demo_zlg_hw_tim_pwm.c</FilePath>
+              <FilePath>..\..\..\..\examples\soc\stm\timer\demo_stm32f103rbt6_hw_tim_pwm.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg_hw_tim_pwm_dead.c</FileName>
+              <FileName>demo_stm32f103rbt6_hw_tim_pwm_dead.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\soc\zlg\timer\demo_zlg_hw_tim_pwm_dead.c</FilePath>
+              <FilePath>..\..\..\..\examples\soc\stm\timer\demo_stm32f103rbt6_hw_tim_pwm_dead.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg_hw_tim_timing.c</FileName>
+              <FileName>demo_stm32f103rbt6_hw_tim_timing.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\soc\zlg\timer\demo_zlg_hw_tim_timing.c</FilePath>
+              <FilePath>..\..\..\..\examples\soc\stm\timer\demo_stm32f103rbt6_hw_tim_timing.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg_hw_iwdg.c</FileName>
+              <FileName>demo_stm32f103rbt6_hw_iwdg.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\soc\zlg\wdg\demo_zlg_hw_iwdg.c</FilePath>
+              <FilePath>..\..\..\..\examples\soc\stm\wdg\demo_stm32f103rbt6_hw_iwdg.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg_hw_wwdg.c</FileName>
+              <FileName>demo_stm32f103rbt6_hw_wwdg.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\soc\zlg\wdg\demo_zlg_hw_wwdg.c</FilePath>
+              <FilePath>..\..\..\..\examples\soc\stm\wdg\demo_stm32f103rbt6_hw_wwdg.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg_hw_gpio.c</FileName>
+              <FileName>demo_stm32f103rbt6_hw_gpio.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\soc\zlg\gpio\demo_zlg_hw_gpio.c</FilePath>
+              <FilePath>..\..\..\..\examples\soc\stm\gpio\demo_stm32f103rbt6_hw_gpio.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg_hw_clk.c</FileName>
+              <FileName>demo_stm32f103rbt6_hw_clk.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\soc\zlg\clk\demo_zlg_hw_clk.c</FilePath>
+              <FilePath>..\..\..\..\examples\soc\stm\clk\demo_stm32f103rbt6_hw_clk.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg237_hw_usart_int.c</FileName>
+              <FileName>demo_stm32f103rbt6_hw_usart_int.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\soc\zlg\uart\demo_zlg237_hw_usart_int.c</FilePath>
+              <FilePath>..\..\..\..\examples\soc\stm\uart\demo_stm32f103rbt6_hw_usart_int.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg237_hw_usart_polling.c</FileName>
+              <FileName>demo_stm32f103rbt6_hw_usart_polling.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\soc\zlg\uart\demo_zlg237_hw_usart_polling.c</FilePath>
+              <FilePath>..\..\..\..\examples\soc\stm\uart\demo_stm32f103rbt6_hw_usart_polling.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg237_hw_usart_rx_dma.c</FileName>
+              <FileName>demo_stm32f103rbt6_hw_usart_rx_dma.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\soc\zlg\uart\demo_zlg237_hw_usart_rx_dma.c</FilePath>
+              <FilePath>..\..\..\..\examples\soc\stm\uart\demo_stm32f103rbt6_hw_usart_rx_dma.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg237_hw_usart_tx_dma.c</FileName>
+              <FileName>demo_stm32f103rbt6_hw_usart_tx_dma.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\soc\zlg\uart\demo_zlg237_hw_usart_tx_dma.c</FilePath>
+              <FilePath>..\..\..\..\examples\soc\stm\uart\demo_stm32f103rbt6_hw_usart_tx_dma.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg237_drv_flash.c</FileName>
+              <FileName>demo_stm32f103rbt6_drv_flash.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\soc\zlg\flash\demo_zlg237_drv_flash.c</FilePath>
+              <FilePath>..\..\..\..\examples\soc\stm\flash\demo_stm32f103rbt6_drv_flash.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg237_hw_adc_dma.c</FileName>
+              <FileName>demo_stm32f103rbt6_hw_adc_dma.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\soc\zlg\adc\demo_zlg237_hw_adc_dma.c</FilePath>
+              <FilePath>..\..\..\..\examples\soc\stm\adc\demo_stm32f103rbt6_hw_adc_dma.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg237_hw_adc_int.c</FileName>
+              <FileName>demo_stm32f103rbt6_hw_adc_int.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\soc\zlg\adc\demo_zlg237_hw_adc_int.c</FilePath>
+              <FilePath>..\..\..\..\examples\soc\stm\adc\demo_stm32f103rbt6_hw_adc_int.c</FilePath>
             </File>
             <File>
-              <FileName>demo_zlg237_can.c</FileName>
+              <FileName>demo_stm32f103rbt6_can.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\examples\soc\zlg\can\demo_zlg237_can.c</FilePath>
+              <FilePath>..\..\..\..\examples\soc\stm\can\demo_stm32f103rbt6_can.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -2062,9 +2047,9 @@
           <GroupName>startup</GroupName>
           <Files>
             <File>
-              <FileName>am_zlg237_armcc_startup.s</FileName>
+              <FileName>am_stm32f103rbt6_armcc_startup.s</FileName>
               <FileType>2</FileType>
-              <FilePath>..\startup\am_zlg237_armcc_startup.s</FilePath>
+              <FilePath>..\startup\am_stm32f103rbt6_armcc_startup.s</FilePath>
             </File>
           </Files>
         </Group>
@@ -2112,64 +2097,64 @@
               <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_system_tick_softimer.c</FilePath>
             </File>
             <File>
-              <FileName>am_hwconf_zlg237_clk.c</FileName>
+              <FileName>am_hwconf_stm32f103rbt6_clk.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg237_clk.c</FilePath>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_stm32f103rbt6_clk.c</FilePath>
             </File>
             <File>
-              <FileName>am_hwconf_zlg237_crc.c</FileName>
+              <FileName>am_hwconf_stm32f103rbt6_crc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg237_crc.c</FilePath>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_stm32f103rbt6_crc.c</FilePath>
             </File>
             <File>
-              <FileName>am_hwconf_zlg237_dma.c</FileName>
+              <FileName>am_hwconf_stm32f103rbt6_dma.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg237_dma.c</FilePath>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_stm32f103rbt6_dma.c</FilePath>
             </File>
             <File>
-              <FileName>am_hwconf_zlg237_gpio.c</FileName>
+              <FileName>am_hwconf_stm32f103rbt6_gpio.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg237_gpio.c</FilePath>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_stm32f103rbt6_gpio.c</FilePath>
             </File>
             <File>
-              <FileName>am_hwconf_zlg237_iwdg.c</FileName>
+              <FileName>am_hwconf_stm32f103rbt6_iwdg.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg237_iwdg.c</FilePath>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_stm32f103rbt6_iwdg.c</FilePath>
             </File>
             <File>
-              <FileName>am_hwconf_zlg237_rtc.c</FileName>
+              <FileName>am_hwconf_stm32f103rbt6_rtc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg237_rtc.c</FilePath>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_stm32f103rbt6_rtc.c</FilePath>
             </File>
             <File>
-              <FileName>am_hwconf_zlg237_systick.c</FileName>
+              <FileName>am_hwconf_stm32f103rbt6_systick.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg237_systick.c</FilePath>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_stm32f103rbt6_systick.c</FilePath>
             </File>
             <File>
-              <FileName>am_hwconf_zlg237_tim_cap.c</FileName>
+              <FileName>am_hwconf_stm32f103rbt6_tim_cap.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg237_tim_cap.c</FilePath>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_stm32f103rbt6_tim_cap.c</FilePath>
             </File>
             <File>
-              <FileName>am_hwconf_zlg237_tim_pwm.c</FileName>
+              <FileName>am_hwconf_stm32f103rbt6_tim_pwm.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg237_tim_pwm.c</FilePath>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_stm32f103rbt6_tim_pwm.c</FilePath>
             </File>
             <File>
-              <FileName>am_hwconf_zlg237_tim_timing.c</FileName>
+              <FileName>am_hwconf_stm32f103rbt6_tim_timing.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg237_tim_timing.c</FilePath>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_stm32f103rbt6_tim_timing.c</FilePath>
             </File>
             <File>
-              <FileName>am_hwconf_zlg237_usart.c</FileName>
+              <FileName>am_hwconf_stm32f103rbt6_usart.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg237_usart.c</FilePath>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_stm32f103rbt6_usart.c</FilePath>
             </File>
             <File>
-              <FileName>am_hwconf_zlg237_wwdg.c</FileName>
+              <FileName>am_hwconf_stm32f103rbt6_wwdg.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg237_wwdg.c</FilePath>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_stm32f103rbt6_wwdg.c</FilePath>
             </File>
             <File>
               <FileName>am_servconf_event_input.c</FileName>
@@ -2192,9 +2177,9 @@
               <FilePath>..\user_config\am_prj_config.c</FilePath>
             </File>
             <File>
-              <FileName>am_hwconf_zlg237_adc.c</FileName>
+              <FileName>am_hwconf_stm32f103rbt6_adc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg237_adc.c</FilePath>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_stm32f103rbt6_adc.c</FilePath>
             </File>
             <File>
               <FileName>am_hwconf_fm175xx.c</FileName>
@@ -2272,39 +2257,39 @@
               <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_sensor_hts221.c</FilePath>
             </File>
             <File>
-              <FileName>am_hwconf_zlg237_i2c.c</FileName>
+              <FileName>am_hwconf_stm32f103rbt6_i2c.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg237_i2c.c</FilePath>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_stm32f103rbt6_i2c.c</FilePath>
             </File>
             <File>
-              <FileName>am_hwconf_zlg237_i2c_slv.c</FileName>
+              <FileName>am_hwconf_stm32f103rbt6_i2c_slv.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg237_i2c_slv.c</FilePath>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_stm32f103rbt6_i2c_slv.c</FilePath>
             </File>
             <File>
-              <FileName>am_hwconf_zlg237_pwr.c</FileName>
+              <FileName>am_hwconf_stm32f103rbt6_pwr.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg237_pwr.c</FilePath>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_stm32f103rbt6_pwr.c</FilePath>
             </File>
             <File>
-              <FileName>am_hwconf_zlg237_spi_dma.c</FileName>
+              <FileName>am_hwconf_stm32f103rbt6_spi_dma.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg237_spi_dma.c</FilePath>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_stm32f103rbt6_spi_dma.c</FilePath>
             </File>
             <File>
-              <FileName>am_hwconf_zlg237_spi_int.c</FileName>
+              <FileName>am_hwconf_stm32f103rbt6_spi_int.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg237_spi_int.c</FilePath>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_stm32f103rbt6_spi_int.c</FilePath>
             </File>
             <File>
-              <FileName>am_hwconf_zlg237_spi_poll.c</FileName>
+              <FileName>am_hwconf_stm32f103rbt6_spi_poll.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg237_spi_poll.c</FilePath>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_stm32f103rbt6_spi_poll.c</FilePath>
             </File>
             <File>
-              <FileName>am_hwconf_zlg237_spi_slv_dma.c</FileName>
+              <FileName>am_hwconf_stm32f103rbt6_spi_slv_dma.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg237_spi_slv_dma.c</FilePath>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_stm32f103rbt6_spi_slv_dma.c</FilePath>
             </File>
             <File>
               <FileName>am_hwconf_sensor_tmd3702vc.c</FileName>
