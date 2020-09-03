@@ -12,7 +12,7 @@
 
 /**
  * \file
- * \brief AM237_CORE
+ * \brief STM32F103RBT6_CORE
  *
  * \internal
  * \par Modification history
