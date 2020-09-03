@@ -15,11 +15,11 @@
  * \brief MiniPort-KEY 例程，通过标准接口实现
  *
  * - 操作步骤
- *   1. 将 MiniPort-KEY 板子直接与 AM237 的 MiniPort接口相连接。
+ *   1. 将 MiniPort-KEY 板子直接与 STM32F103RBT6 的 MiniPort接口相连接。
  *
  * - 实验现象：
  *   1. 若连接了调试串口，则按下按键时，会打印出当前的按键信息；
- *   2. 按键按下，同时用 AM237BLE 板上的LED灯反应出当前的按键编号，
+ *   2. 按键按下，同时用 STM32F103RBT6BLE 板上的LED灯反应出当前的按键编号，
  *      需要短接 J9 和 J10。
  *
  *           ------------------------------------
@@ -54,16 +54,16 @@
 #include "am_vdebug.h"
 #include "am_event_category_input.h"
 #include "am_event_input_key.h"
-#include "am_zlg237_inst_init.h"
+#include "am_stm32f103rbt6_inst_init.h"
 #include "demo_std_entries.h"
-#include "demo_am237_core_entries.h"
+#include "demo_stm32f103rbt6_core_entries.h"
 
 /**
  * \brief 例程入口
  */
-void demo_zlg237_core_miniport_key_entry (void)
+void demo_stm32f103rbt6_core_miniport_key_entry (void)
 {
-    AM_DBG_INFO("demo am237_core miniport key!\r\n");
+    AM_DBG_INFO("demo stm32f103rbt6_core miniport key!\r\n");
 
     am_miniport_key_inst_init();
 

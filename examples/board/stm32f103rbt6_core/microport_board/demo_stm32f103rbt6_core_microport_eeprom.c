@@ -15,7 +15,7 @@
  * \brief MicroPort EEPROM 例程，通过标准接口实现
  *
  * - 操作步骤:
- *   1. 将 MicroPort EEPROM 配板连接到 AM237 的 MicroPort 接口。
+ *   1. 将 MicroPort EEPROM 配板连接到 STM32F103RBT6 的 MicroPort 接口。
  *
  * - 实验现象:
  *   1. 主机写数据到 EEPROM；
@@ -45,8 +45,8 @@
 #include "am_vdebug.h"
 #include "am_delay.h"
 #include "am_ep24cxx.h"
-#include "am_zlg237_inst_init.h"
-#include "demo_am237_core_entries.h"
+#include "am_stm32f103rbt6_inst_init.h"
+#include "demo_stm32f103rbt6_core_entries.h"
 
 
 #define __TEST_LENTH      16    /**< \brief 读写字节数 */
@@ -58,11 +58,11 @@
  *
  * \return 无
  */
-void demo_zlg237_core_microport_eeprom_entry (void)
+void demo_stm32f103rbt6_core_microport_eeprom_entry (void)
 {
     am_ep24cxx_handle_t ep24cxx_handle    = am_microport_eeprom_inst_init();
 
-    AM_DBG_INFO("demo am237_core microport eeprom!\r\n");
+    AM_DBG_INFO("demo stm32f103rbt6_core microport eeprom!\r\n");
 
     demo_ep24cxx_entry(ep24cxx_handle, __TEST_LENTH);
 }

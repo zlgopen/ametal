@@ -22,7 +22,7 @@
  *    2. 16 位定时器定时计数值不为 65536 的倍数，则定时会有一些偏差。
  *
  * \par 源代码
- * \snippet demo_zlg237_std_tim2_timing.c src_zlg237_std_tim2_timing
+ * \snippet demo_stm32f103rbt6_std_tim2_timing.c src_stm32f103rbt6_std_tim2_timing
  *
  * \internal
  * \par Modification history
@@ -31,26 +31,26 @@
  */
 
 /**
- * \addtogroup demo_if_zlg237_std_tim2_timing
- * \copydoc demo_zlg237_std_tim2_timing.c
+ * \addtogroup demo_if_stm32f103rbt6_std_tim2_timing
+ * \copydoc demo_stm32f103rbt6_std_tim2_timing.c
  */
 
-/** [src_zlg237_std_tim2_timing] */
+/** [src_stm32f103rbt6_std_tim2_timing] */
 #include "ametal.h"
 #include "am_vdebug.h"
 #include "demo_std_entries.h"
-#include "am_zlg237_inst_init.h"
-#include "demo_am237_core_entries.h"
+#include "am_stm32f103rbt6_inst_init.h"
+#include "demo_stm32f103rbt6_core_entries.h"
 
 /**
  * \brief 例程入口
  */
-void demo_zlg237_core_std_tim2_timing_entry (void)
+void demo_stm32f103rbt6_core_std_tim2_timing_entry (void)
 {
-    AM_DBG_INFO("demo am237_core std tim2 timing!\r\n");
+    AM_DBG_INFO("demo stm32f103rbt6_core std tim2 timing!\r\n");
 
-    demo_std_timer_timing_entry(am_zlg237_tim2_timing_inst_init(), 0);
+    demo_std_timer_timing_entry(am_stm32f103rbt6_tim2_timing_inst_init(), 0);
 }
-/** [src_zlg237_std_tim2_timing] */
+/** [src_stm32f103rbt6_std_tim2_timing] */
 
 /* end of file */

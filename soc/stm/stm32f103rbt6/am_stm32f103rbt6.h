@@ -12,7 +12,7 @@
 
 /**
  * \file
- * \brief ZMF237 芯片特性相关头文件定义
+ * \brief STM32F103RBT6 芯片特性相关头文件定义
  *
  * \internal
  * \par Modification history
@@ -20,30 +20,30 @@
  * \endinternal
  */
 
-#ifndef __AM_ZMF237_H
-#define __AM_ZMF237_H
+#ifndef __AM_STM32F103RBT6_H
+#define __AM_STM32F103RBT6_H
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
 /** \brief 芯片引脚定义 */
-#include "../zlg237/zlg237_pin.h"
+#include "../stm32f103rbt6/stm32f103rbt6_pin.h"
 
 /** \brief 芯片中断编号定义 */
-#include "../zlg237/zlg237_inum.h"
+#include "../stm32f103rbt6/stm32f103rbt6_inum.h"
 
 /** \brief 芯片外设寄存器基址定义 */
-#include "../zlg237/zlg237_regbase.h"
+#include "../stm32f103rbt6/stm32f103rbt6_regbase.h"
 
 /** \brief 芯片外设映射 */
-#include "../zlg237/zlg237_periph_map.h"
+#include "../stm32f103rbt6/stm32f103rbt6_periph_map.h"
 
 /** \brief 时钟ID定义 */
-#include "../zlg237/zlg237_clk.h"
+#include "../stm32f103rbt6/stm32f103rbt6_clk.h"
 
 /** \brief DMA通道号定义 */
-#include "../zlg237/zlg237_dma_chan.h"
+#include "../stm32f103rbt6/stm32f103rbt6_dma_chan.h"
 
 /**
  * \name Cortex-M3 内核处理器和外设设置
@@ -71,6 +71,6 @@ extern "C" {
 }
 #endif
 
-#endif /* __AM_ZMF237_H */
+#endif /* __AM_STM32F103RBT6_H */
 
 /* end of file */

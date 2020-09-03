@@ -46,12 +46,12 @@
 #include "am_fm175xx_reg.h"
 #include "am_hwconf_fm175xx.h"
 #include "demo_components_entries.h"
-#include "demo_am237_core_entries.h"
+#include "demo_stm32f103rbt6_core_entries.h"
 
 /**
  * \brief A类卡值操作例程
  */
-void demo_zlg237_core_dr_fm175xx_picca_val_operate (void)
+void demo_stm32f103rbt6_core_dr_fm175xx_picca_val_operate (void)
 {
     am_fm175xx_handle_t handle = am_fm175xx_inst_init();
 

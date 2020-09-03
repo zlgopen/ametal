@@ -15,7 +15,7 @@
  * \brief MicroPort DS1302 例程，通过 RTC 标准接口实现
  *
  * - 操作步骤：
- *   1. 将 MicroPort DS1302 配板连接到 AM237 的 MicroPort 接口。
+ *   1. 将 MicroPort DS1302 配板连接到 STM32F103RBT6 的 MicroPort 接口。
  *
  * - 实验现象：
  *   1. 串口将每一秒的时间信息打印出来。
@@ -41,8 +41,8 @@
 /** [src_microport_ds1302] */
 #include "am_vdebug.h"
 #include "demo_std_entries.h"
-#include "am_zlg237_inst_init.h"
-#include "demo_am237_core_entries.h"
+#include "am_stm32f103rbt6_inst_init.h"
+#include "demo_stm32f103rbt6_core_entries.h"
 
 /**
  * \brief MicroPort DS1302 例程，通过标准接口实现
@@ -51,9 +51,9 @@
  *
  * \return 无
  */
-void demo_zlg237_core_microport_ds1302_entry (void)
+void demo_stm32f103rbt6_core_microport_ds1302_entry (void)
 {
-    AM_DBG_INFO("demo am237_core microport ds1302!\r\n");
+    AM_DBG_INFO("demo stm32f103rbt6_core microport ds1302!\r\n");
 
     demo_std_rtc_entry(am_microport_ds1302_rtc_inst_init());
 

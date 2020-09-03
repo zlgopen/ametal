@@ -18,7 +18,7 @@
  *   1. 每过一秒，通过串口打印接近AD值
  *
  * \par 源代码
- * \snippet demo_zlg237_core_sensor_tmd2635.c src_zlg237_core_sensor_tmd2635
+ * \snippet demo_stm32f103rbt6_core_sensor_tmd2635.c src_stm32f103rbt6_core_sensor_tmd2635
  *
  * \internal
  * \par Modification history
@@ -28,11 +28,11 @@
 
 #include "am_gpio.h"
 #include "am_delay.h"
-#include "am_zlg237.h"
+#include "am_stm32f103rbt6.h"
 #include "am_sensor.h"
 #include "am_hwconf_sensor_tmd2635.h"
 #include "demo_std_entries.h"
-#include "demo_am237_core_entries.h"
+#include "demo_stm32f103rbt6_core_entries.h"
 
 /* 1.8V使能引脚，用于控制相同从机地址的通断电 */
 #define PIN_1P8_OUT1    PIOC_4
@@ -41,7 +41,7 @@
 /**
  * \brief 传感器例程入口
  */
-void demo_zlg237_core_sensor_tmd2635_entry (void)
+void demo_stm32f103rbt6_core_sensor_tmd2635_entry (void)
 {
     /* 使能 1.8V_OUT2 引脚 */
     am_gpio_pin_cfg(PIN_1P8_OUT2, AM_GPIO_OUTPUT_INIT_HIGH);

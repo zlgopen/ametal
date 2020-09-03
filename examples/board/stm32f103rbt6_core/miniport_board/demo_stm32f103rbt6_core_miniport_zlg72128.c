@@ -15,7 +15,7 @@
  * \brief MiniPort-ZLG72128 例程，通过标准接口实现
  *
  * - 操作步骤
- *   1. 将 MiniPort-ZLG72128 板子与 AM237 的 MiniPort 相连接。
+ *   1. 将 MiniPort-ZLG72128 板子与 STM32F103RBT6 的 MiniPort 相连接。
  *
  * - 实验现象：
  *   1. 按下一个按键，两位数码管显示按键编号的二进制；
@@ -43,16 +43,16 @@
 /** [src_miniport_zlg72128] */
 #include "ametal.h"
 #include "am_vdebug.h"
-#include "am_zlg237_inst_init.h"
+#include "am_stm32f103rbt6_inst_init.h"
 #include "demo_std_entries.h"
-#include "demo_am237_core_entries.h"
+#include "demo_stm32f103rbt6_core_entries.h"
 
 /**
  * \brief 例程入口
  */
-void demo_zlg237_core_miniport_zlg72128_entry (void)
+void demo_stm32f103rbt6_core_miniport_zlg72128_entry (void)
 {
-    AM_DBG_INFO("demo am237_core miniport zlg72128!\r\n");
+    AM_DBG_INFO("demo stm32f103rbt6_core miniport zlg72128!\r\n");
 
     am_miniport_zlg72128_inst_init();
 

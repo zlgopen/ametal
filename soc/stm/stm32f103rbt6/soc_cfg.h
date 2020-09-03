@@ -31,12 +31,12 @@ extern "C" {
 #endif
 
 /**
- * \name ZMF237 硬件配置，配置项来自于使用到的各个驱动
+ * \name STM32F103RBT6 硬件配置，配置项来自于使用到的各个驱动
  * @{
  */
 
-/** \brief DMA 通道数目配置，该配置项被用于  hw/amhw_zlg_dma.h 文件中 */
-#define SOC_CFG_ZLG_DMA_CHAN_CNT          7
+/** \brief DMA 通道数目配置，该配置项被用于  hw/amhw_stm32f103rbt6_dma.h 文件中 */
+#define SOC_CFG_STM32F103RBT6_DMA_CHAN_CNT          7
 
 /**< \brief flash的大小 以字节(8bit)为单位 */
 #define FLASH_SIZE  (128 * 1024UL)

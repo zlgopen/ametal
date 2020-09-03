@@ -21,19 +21,19 @@
  *   3. 打开CAN上位机后，设置波特率为50k。
  *   4. 打开串口调试终端，波特率115200-8-N-1.
  *   5. 上位机 发送帧格式为 扩展帧  远程请求无要求(数据帧和远程帧都可) ID为 0x -7- 即  第4-6 位为1
- *   6. 若要修改 配置文件注意上位机发送的帧格式和类型  配置文件在 amh_hwconf_zlg237_can.c
+ *   6. 若要修改 配置文件注意上位机发送的帧格式和类型  配置文件在 amh_hwconf_stm32f103rbt6_can.c
  *    默认设置在 CAN_ID_EXT
- *               AMHW_ZLG237_CAN_FILTER_MODE_IDMASK 
- *               AMHW_ZLG237_CAN_FILTER_SCALE_32BIT
+ *               AMHW_STM32F103RBT6_CAN_FILTER_MODE_IDMASK 
+ *               AMHW_STM32F103RBT6_CAN_FILTER_SCALE_32BIT
  *      修改帧格式和类型后 ， 需要在注意table的设置 格式变化
- *      详情见 下方注释 和 ZLG237用户手册17.6.4章  标识符过滤
+ *      详情见 下方注释 和 STM32F103RBT6用户手册17.6.4章  标识符过滤
  * - 实验现象：
  *   1. 上位机发送数据后，收到发送的数据。
  *   2. 串口打印相关调试信息。
  *
  *
  * \par 源代码
- * \snippet demo_zlg237_can.c src_std_can
+ * \snippet demo_stm32f103rbt6_can.c src_std_can
  *
  * \internal
  * \par Modification History
@@ -52,8 +52,8 @@
 #include "am_can.h"
 #include "am_delay.h"
 #include "am_vdebug.h"
-#include "amhw_zlg237_can.h"
-#include "am_zlg237_can.h"
+#include "amhw_stm32f103rbt6_can.h"
+#include "am_stm32f103rbt6_can.h"
 
 
 /**\brief 滤波表 */
@@ -117,7 +117,7 @@ static void __can_err_sta( am_can_bus_err_t err)
 /**
  * \brief 例程入口
  */
-void demo_zlg237_can_entry (am_can_handle_t      can_handle,
+void demo_stm32f103rbt6_can_entry (am_can_handle_t      can_handle,
                             am_can_bps_param_t  *can_btr_baud)
 {
     am_can_err_t ret;
@@ -193,6 +193,6 @@ void demo_zlg237_can_entry (am_can_handle_t      can_handle,
         }
     }
 }
-/** [src_zlg237_can] */
+/** [src_stm32f103rbt6_can] */
 
 /* end of file */

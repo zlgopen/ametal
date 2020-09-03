@@ -7,7 +7,7 @@
 * All rights reserved.
 *
 * Contact information:
-* web site:    http://www.zlg237.cn/
+* web site:    http://www.stm32f103rbt6.cn/
 *******************************************************************************/
 
 /**
@@ -20,8 +20,8 @@
  * \endinternal
  */
 
-#ifndef  __AM_ZLG237_ADC_H
-#define  __AM_ZLG237_ADC_H
+#ifndef  __AM_STM32F103RBT6_ADC_H
+#define  __AM_STM32F103RBT6_ADC_H
 
 #ifdef __cplusplus
 extern "C" {
@@ -30,18 +30,18 @@ extern "C" {
 #include "ametal.h"
 #include "am_adc.h"
 
-#include "hw/amhw_zlg237_adc.h"
+#include "hw/amhw_stm32f103rbt6_adc.h"
 
 /**
- * \addtogroup am_zlg237_if_adc
- * \copydoc am_zlg237_adc.h
+ * \addtogroup am_stm32f103rbt6_if_adc
+ * \copydoc am_stm32f103rbt6_adc.h
  * @{
  */
 
 /**
  * \brief ADC设备信息
  */
-typedef struct am_zlg237_adc_devinfo {
+typedef struct am_stm32f103rbt6_adc_devinfo {
 
     /** \brief ADC寄存器块的基地址 */
     uint32_t   adc_reg_base;
@@ -75,18 +75,18 @@ typedef struct am_zlg237_adc_devinfo {
     /** \brief 平台解初始化函数 */
     void     (*pfn_plfm_deinit)(void);
 
-} am_zlg237_adc_devinfo_t;
+} am_stm32f103rbt6_adc_devinfo_t;
 
 /**
  * \brief ADC设备实例
  */
-typedef struct am_zlg237_adc_dev {
+typedef struct am_stm32f103rbt6_adc_dev {
 
     /** \brief ADC标准服务 */
     am_adc_serv_t                  adc_serve;
 
     /** \brief 指向ADC设备信息的指针 */
-    const am_zlg237_adc_devinfo_t    *p_devinfo;
+    const am_stm32f103rbt6_adc_devinfo_t    *p_devinfo;
 
     /** \brief 存放用户启动转换后的回调函数 */
     am_adc_seq_cb_t                pfn_callback;
@@ -121,7 +121,7 @@ typedef struct am_zlg237_adc_dev {
     /** \brief 数据右移位数 */
     uint16_t                       right_bit;
 
-} am_zlg237_adc_dev_t;
+} am_stm32f103rbt6_adc_dev_t;
 
 /**
  * \brief ADC初始化
@@ -133,19 +133,19 @@ typedef struct am_zlg237_adc_dev {
  *
  * \return ADC标准服务操作句柄 如果为 NULL，表明初始化失败
  */
-am_adc_handle_t am_zlg237_adc_init (am_zlg237_adc_dev_t           *p_dev,
-                                    const am_zlg237_adc_devinfo_t *p_devinfo);
+am_adc_handle_t am_stm32f103rbt6_adc_init (am_stm32f103rbt6_adc_dev_t           *p_dev,
+                                    const am_stm32f103rbt6_adc_devinfo_t *p_devinfo);
 
 /**
  * \brief ADC去初始化
  *
  * 默认去初始化序列A
  *
- * \param[in] handle : am_zlg237_adc_init() 初始化函数获得的ADC服务句柄
+ * \param[in] handle : am_stm32f103rbt6_adc_init() 初始化函数获得的ADC服务句柄
  *
  * \return 无
  */
-void am_zlg237_adc_deinit (am_adc_handle_t handle);
+void am_stm32f103rbt6_adc_deinit (am_adc_handle_t handle);
 
 /**
  * @}
@@ -155,6 +155,6 @@ void am_zlg237_adc_deinit (am_adc_handle_t handle);
 }
 #endif
 
-#endif /* __AM_ZLG237_ADC_H */
+#endif /* __AM_STM32F103RBT6_ADC_H */
 
 /* end of file */

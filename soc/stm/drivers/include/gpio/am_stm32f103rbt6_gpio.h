@@ -20,8 +20,8 @@
  * \endinternal
  */
 
-#ifndef __AM_ZLG237_GPIO_H
-#define __AM_ZLG237_GPIO_H
+#ifndef __AM_STM32F103RBT6_GPIO_H
+#define __AM_STM32F103RBT6_GPIO_H
 
 #ifdef __cplusplus
 extern "C" {
@@ -29,20 +29,20 @@ extern "C" {
 
 #include "am_types.h"
 #include "am_bitops.h"
-#include "amhw_zlg237_gpio.h"
-#include "am_zlg237_gpio_util.h"
-#include "amhw_zlg237_afio.h"
+#include "amhw_stm32f103rbt6_gpio.h"
+#include "am_stm32f103rbt6_gpio_util.h"
+#include "amhw_stm32f103rbt6_afio.h"
 
 /**
- * \addtogroup am_zlg237_if_gpio
- * \copydoc am_zlg237_gpio.h
+ * \addtogroup am_stm32f103rbt6_if_gpio
+ * \copydoc am_stm32f103rbt6_gpio.h
  * @{
  */
 
 /**
  * \brief 引脚的触发信息
  */
-struct am_zlg237_gpio_trigger_info {
+struct am_stm32f103rbt6_gpio_trigger_info {
 
     /** \brief 触发回调函数 */
     am_pfnvoid_t  pfn_callback;
@@ -54,7 +54,7 @@ struct am_zlg237_gpio_trigger_info {
 /**
  * \brief GPIO 设备信息
  */
-typedef struct am_zlg237_gpio_devinfo {
+typedef struct am_stm32f103rbt6_gpio_devinfo {
 
     /** \brief GPIO寄存器块基址 */
     uint32_t      gpio_regbase;
@@ -78,29 +78,29 @@ typedef struct am_zlg237_gpio_devinfo {
     uint8_t      *p_infomap;
 
     /** \brief 引脚重映像外设信息 */
-    amhw_zlg237_afio_remap_peripheral_t  *p_remap;
+    amhw_stm32f103rbt6_afio_remap_peripheral_t  *p_remap;
 
     /** \brief 指向引脚触发信息的指针 */
-    struct am_zlg237_gpio_trigger_info   *p_triginfo;
+    struct am_stm32f103rbt6_gpio_trigger_info   *p_triginfo;
 
     void (*pfn_plfm_init)(void);   /**< \brief 平台初始化函数 */
 
     void (*pfn_plfm_deinit)(void); /**< \brief 平台去初始化函数 */
 
-} am_zlg237_gpio_devinfo_t;
+} am_stm32f103rbt6_gpio_devinfo_t;
 
 /**
  * \brief GPIO设备实例
  */
-typedef struct am_zlg237_gpio_dev {
+typedef struct am_stm32f103rbt6_gpio_dev {
 
     /** \brief 指向GPIO设备信息的指针 */
-    const am_zlg237_gpio_devinfo_t *p_devinfo;
+    const am_stm32f103rbt6_gpio_devinfo_t *p_devinfo;
 
     /** \brief 参数有效标志 */
     am_bool_t                         valid_flg;
 
-} am_zlg237_gpio_dev_t;
+} am_stm32f103rbt6_gpio_dev_t;
 
 /**
  * \brief GPIO初始化
@@ -110,8 +110,8 @@ typedef struct am_zlg237_gpio_dev {
  *
  * \retval AM_OK : 操作成功
  */
-int am_zlg237_gpio_init (am_zlg237_gpio_dev_t           *p_dev,
-                         const am_zlg237_gpio_devinfo_t *p_devinfo);
+int am_stm32f103rbt6_gpio_init (am_stm32f103rbt6_gpio_dev_t           *p_dev,
+                         const am_stm32f103rbt6_gpio_devinfo_t *p_devinfo);
 
 /**
  * \brief GPIO解初始化
@@ -120,7 +120,7 @@ int am_zlg237_gpio_init (am_zlg237_gpio_dev_t           *p_dev,
  *
  * \return 无
  */
-void am_zlg237_gpio_deinit (void);
+void am_stm32f103rbt6_gpio_deinit (void);
 
 /**
  * @}
@@ -130,6 +130,6 @@ void am_zlg237_gpio_deinit (void);
 }
 #endif
 
-#endif /* __AM_ZLG237_GPIO_H */
+#endif /* __AM_STM32F103RBT6_GPIO_H */
 
 /* end of file */

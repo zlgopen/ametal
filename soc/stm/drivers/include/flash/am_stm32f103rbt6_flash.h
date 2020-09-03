@@ -7,7 +7,7 @@
 * All rights reserved.
 *
 * Contact information:
-* web site:    http://www.zlg237.cn/
+* web site:    http://www.stm32f103rbt6.cn/
 *******************************************************************************/
 
 /**
@@ -20,8 +20,8 @@
  * \endinternal
  */
 
-#ifndef __AM_ZLG237_FLASH_H
-#define __AM_ZLG237_FLASH_H
+#ifndef __AM_STM32F103RBT6_FLASH_H
+#define __AM_STM32F103RBT6_FLASH_H
 
 #ifdef __cplusplus
 extern "C" {
@@ -30,11 +30,11 @@ extern "C" {
 #include "am_types.h"
 #include "am_bitops.h"
 #include "soc_cfg.h"
-#include "hw/amhw_zlg237_flash.h"
+#include "hw/amhw_stm32f103rbt6_flash.h"
 
 /**
- * \addtogroup am_zlg237_if_flash
- * \copydoc am_zlg237_flash.h
+ * \addtogroup am_stm32f103rbt6_if_flash
+ * \copydoc am_stm32f103rbt6_flash.h
  * @{
  */
 
@@ -45,7 +45,7 @@ extern "C" {
  *
  * \return 无
  */
-void am_zlg237_flash_init (amhw_zlg237_flash_t *p_hw_flash);
+void am_stm32f103rbt6_flash_init (amhw_stm32f103rbt6_flash_t *p_hw_flash);
 
 /**
  * \brief 擦除页区（页大小为1024）
@@ -55,7 +55,7 @@ void am_zlg237_flash_init (amhw_zlg237_flash_t *p_hw_flash);
  *
  * \return >0: 执行结果, -AM_EINVAL: 输入地址过大
  */
-int32_t am_zlg237_flash_page_erase (amhw_zlg237_flash_t *p_hw_flash,
+int32_t am_stm32f103rbt6_flash_page_erase (amhw_stm32f103rbt6_flash_t *p_hw_flash,
                                     uint32_t             start_addr);
 
 /**
@@ -66,7 +66,7 @@ int32_t am_zlg237_flash_page_erase (amhw_zlg237_flash_t *p_hw_flash,
  *
  * \return > 0: 执行结果, -AM_EINVAL: 输入地址过大
  */
-int32_t am_zlg237_flash_half_page_erase (amhw_zlg237_flash_t *p_hw_flash,
+int32_t am_stm32f103rbt6_flash_half_page_erase (amhw_stm32f103rbt6_flash_t *p_hw_flash,
                                          uint32_t             start_addr);
 
 /**
@@ -79,7 +79,7 @@ int32_t am_zlg237_flash_half_page_erase (amhw_zlg237_flash_t *p_hw_flash,
  *
  * \retval 0 实际成功写入的字数
  */
-int32_t am_zlg237_flash_sector_program (amhw_zlg237_flash_t *p_hw_flash,
+int32_t am_stm32f103rbt6_flash_sector_program (amhw_stm32f103rbt6_flash_t *p_hw_flash,
                                         uint32_t             dst_addr,
                                         uint32_t            *p_src,
                                         uint32_t             size);
@@ -92,7 +92,7 @@ int32_t am_zlg237_flash_sector_program (amhw_zlg237_flash_t *p_hw_flash,
  * \return 执行结果
  *
  */
-uint32_t am_zlg237_flash_all_sector_erase (amhw_zlg237_flash_t *p_hw_flash);
+uint32_t am_stm32f103rbt6_flash_all_sector_erase (amhw_stm32f103rbt6_flash_t *p_hw_flash);
 
 /**
  * @}
@@ -102,4 +102,4 @@ uint32_t am_zlg237_flash_all_sector_erase (amhw_zlg237_flash_t *p_hw_flash);
 }
 #endif
 
-#endif /** __AM_ZLG237_FLASH_H */
+#endif /** __AM_STM32F103RBT6_FLASH_H */

@@ -24,7 +24,7 @@
  *    PIOA_9 引脚连接 PC 串口的 RXD。
  *
  * \par 源代码
- * \snippet demo_zlg237_drv_flash.c src_zlg237_drv_flash
+ * \snippet demo_stm32f103rbt6_drv_flash.c src_stm32f103rbt6_drv_flash
  *
  * \internal
  * \par Modification history
@@ -33,18 +33,18 @@
  */
 
 /**
- * \addtogroup demo_if_zlg237_drv_flash
- * \copydoc demo_zlg237_drv_flash.c
+ * \addtogroup demo_if_stm32f103rbt6_drv_flash
+ * \copydoc demo_stm32f103rbt6_drv_flash.c
  */
 
-/** [src_zlg237_drv_flash] */
+/** [src_stm32f103rbt6_drv_flash] */
 #include "ametal.h"
 #include "am_board.h"
 #include "am_vdebug.h"
-#include "am_zlg237_flash.h"
-#include "am_zlg237.h"
-#include "demo_zlg_entries.h"
-#include "demo_am237_core_entries.h"
+#include "am_stm32f103rbt6_flash.h"
+#include "am_stm32f103rbt6.h"
+#include "demo_stm32f103rbt6_entries.h"
+#include "demo_stm32f103rbt6_core_entries.h"
 
 #define FLASH_PAGE           50    /**< \brief 页区 */
 
@@ -53,13 +53,13 @@
 /**
  * \brief 例程入口
  */
-void demo_zlg237_core_drv_flash_entry (void)
+void demo_stm32f103rbt6_core_drv_flash_entry (void)
 {
-    AM_DBG_INFO("demo am237_core drv flash!\r\n");
+    AM_DBG_INFO("demo stm32f103rbt6_core drv flash!\r\n");
 
-    demo_zlg237_drv_flash_entry((void *)ZLG237_FLASH, FLASH_PAGE);
+    demo_stm32f103rbt6_drv_flash_entry((void *)STM32F103RBT6_FLASH, FLASH_PAGE);
 }
 
-/** [src_zlg237_drv_flash] */
+/** [src_stm32f103rbt6_drv_flash] */
 
 /* end of file */

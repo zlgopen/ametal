@@ -7,7 +7,7 @@
 * All rights reserved.
 *
 * Contact information:
-* web site:    http://www.zlg237.cn/
+* web site:    http://www.stm32f103rbt6.cn/
 *******************************************************************************/
 
 /**
@@ -20,7 +20,7 @@
  * \endinternal
  */
 
-#include "am_zlg237_flash.h"
+#include "am_stm32f103rbt6_flash.h"
 #include "am_types.h"
 #include "am_bitops.h"
 #include "ametal.h"
@@ -45,18 +45,18 @@
  *
  * \return 无
  */
-void am_zlg237_flash_init (amhw_zlg237_flash_t *p_hw_flash)
+void am_stm32f103rbt6_flash_init (amhw_stm32f103rbt6_flash_t *p_hw_flash)
 {
-    amhw_zlg237_flash_key_set(p_hw_flash, UNLOCK_FALSH_KEY1);
-    amhw_zlg237_flash_key_set(p_hw_flash, UNLOCK_FALSH_KEY2);
+    amhw_stm32f103rbt6_flash_key_set(p_hw_flash, UNLOCK_FALSH_KEY1);
+    amhw_stm32f103rbt6_flash_key_set(p_hw_flash, UNLOCK_FALSH_KEY2);
 
-    amhw_zlg237_flash_status_flag_clr(p_hw_flash,
-                                      AMHW_ZLG237_FLASH_WRPRTERR_FLAG |
-                                      AMHW_ZLG237_FLASH_PGERR_FLAG    |
-                                      AMHW_ZLG237_FLASH_BUSY_FLAG);
+    amhw_stm32f103rbt6_flash_status_flag_clr(p_hw_flash,
+                                      AMHW_STM32F103RBT6_FLASH_WRPRTERR_FLAG |
+                                      AMHW_STM32F103RBT6_FLASH_PGERR_FLAG    |
+                                      AMHW_STM32F103RBT6_FLASH_BUSY_FLAG);
 
-    //amhw_zlg237_flash_set_prebuff_on(p_hw_flash, AM_FALSE);
-    //amhw_zlg237_flash_half_cycle_enable(p_hw_flash, AM_FALSE);
+    //amhw_stm32f103rbt6_flash_set_prebuff_on(p_hw_flash, AM_FALSE);
+    //amhw_stm32f103rbt6_flash_half_cycle_enable(p_hw_flash, AM_FALSE);
 
     return;
 }
@@ -69,7 +69,7 @@ void am_zlg237_flash_init (amhw_zlg237_flash_t *p_hw_flash)
  *
  * \return > 0: 执行结果, -AM_EINVAL: 输入地址过大
  */
-int32_t am_zlg237_flash_page_erase (amhw_zlg237_flash_t *p_hw_flash,
+int32_t am_stm32f103rbt6_flash_page_erase (amhw_stm32f103rbt6_flash_t *p_hw_flash,
                                     uint32_t             start_addr)
 {
     if (start_addr < FALSH_ADDRESS_BASE) {
@@ -78,32 +78,32 @@ int32_t am_zlg237_flash_page_erase (amhw_zlg237_flash_t *p_hw_flash,
     if (FALSH_ADDRESS_SIZE < start_addr) {
         return -AM_EINVAL;
     }
-    while (amhw_zlg237_flash_status_check(p_hw_flash,
-                                          AMHW_ZLG237_FLASH_BUSY_FLAG)) {
+    while (amhw_stm32f103rbt6_flash_status_check(p_hw_flash,
+                                          AMHW_STM32F103RBT6_FLASH_BUSY_FLAG)) {
         ;
     }
 
-    if (amhw_zlg237_flash_cs_reg_get(p_hw_flash) & AMHW_ZLG237_FLASH_LOCK_MASK) {
-        amhw_zlg237_flash_key_set(p_hw_flash, UNLOCK_FALSH_KEY1);
-        amhw_zlg237_flash_key_set(p_hw_flash, UNLOCK_FALSH_KEY2);
+    if (amhw_stm32f103rbt6_flash_cs_reg_get(p_hw_flash) & AMHW_STM32F103RBT6_FLASH_LOCK_MASK) {
+        amhw_stm32f103rbt6_flash_key_set(p_hw_flash, UNLOCK_FALSH_KEY1);
+        amhw_stm32f103rbt6_flash_key_set(p_hw_flash, UNLOCK_FALSH_KEY2);
     }
 
-    amhw_zlg237_flash_cs_reg_clr(p_hw_flash, AMHW_ZLG237_FLASH_PROGRAM_MASK |
-                                             AMHW_ZLG237_FLASH_MASS_ERASE_MASK);
+    amhw_stm32f103rbt6_flash_cs_reg_clr(p_hw_flash, AMHW_STM32F103RBT6_FLASH_PROGRAM_MASK |
+                                             AMHW_STM32F103RBT6_FLASH_MASS_ERASE_MASK);
 
-    amhw_zlg237_flash_cs_reg_set(p_hw_flash,
-            AMHW_ZLG237_FLASH_PAGE_ERASE_MASK);
+    amhw_stm32f103rbt6_flash_cs_reg_set(p_hw_flash,
+            AMHW_STM32F103RBT6_FLASH_PAGE_ERASE_MASK);
 
-    amhw_zlg237_flash_ecr_haer_set(p_hw_flash,
-                                   AMHW_ZLG237_FLASH_NO_HALF_PAGE_ERASE);
+    amhw_stm32f103rbt6_flash_ecr_haer_set(p_hw_flash,
+                                   AMHW_STM32F103RBT6_FLASH_NO_HALF_PAGE_ERASE);
 
-    amhw_zlg237_flash_address_set(p_hw_flash, start_addr);
+    amhw_stm32f103rbt6_flash_address_set(p_hw_flash, start_addr);
 
-    amhw_zlg237_flash_cs_reg_set(p_hw_flash,
-                                 AMHW_ZLG237_FLASH_START_MASK);
+    amhw_stm32f103rbt6_flash_cs_reg_set(p_hw_flash,
+                                 AMHW_STM32F103RBT6_FLASH_START_MASK);
 
-    while (amhw_zlg237_flash_status_check(p_hw_flash,
-                                          AMHW_ZLG237_FLASH_BUSY_FLAG)) {
+    while (amhw_stm32f103rbt6_flash_status_check(p_hw_flash,
+                                          AMHW_STM32F103RBT6_FLASH_BUSY_FLAG)) {
         ;
     }
 
@@ -119,7 +119,7 @@ int32_t am_zlg237_flash_page_erase (amhw_zlg237_flash_t *p_hw_flash,
  *
  * \return > 0: 执行结果, -AM_EINVAL: 输入地址过大
  */
-int32_t am_zlg237_flash_half_page_erase (amhw_zlg237_flash_t *p_hw_flash,
+int32_t am_stm32f103rbt6_flash_half_page_erase (amhw_stm32f103rbt6_flash_t *p_hw_flash,
                                          uint32_t             start_addr)
 {
     if (start_addr < FALSH_ADDRESS_BASE) {
@@ -128,32 +128,32 @@ int32_t am_zlg237_flash_half_page_erase (amhw_zlg237_flash_t *p_hw_flash,
     if (FALSH_ADDRESS_SIZE < start_addr) {
         return -AM_EINVAL;
     }
-    while (amhw_zlg237_flash_status_check(p_hw_flash,
-                                          AMHW_ZLG237_FLASH_BUSY_FLAG)) {
+    while (amhw_stm32f103rbt6_flash_status_check(p_hw_flash,
+                                          AMHW_STM32F103RBT6_FLASH_BUSY_FLAG)) {
         ;
     }
 
-    if (amhw_zlg237_flash_cs_reg_get(p_hw_flash) & AMHW_ZLG237_FLASH_LOCK_MASK) {
-        amhw_zlg237_flash_key_set(p_hw_flash, UNLOCK_FALSH_KEY1);
-        amhw_zlg237_flash_key_set(p_hw_flash, UNLOCK_FALSH_KEY2);
+    if (amhw_stm32f103rbt6_flash_cs_reg_get(p_hw_flash) & AMHW_STM32F103RBT6_FLASH_LOCK_MASK) {
+        amhw_stm32f103rbt6_flash_key_set(p_hw_flash, UNLOCK_FALSH_KEY1);
+        amhw_stm32f103rbt6_flash_key_set(p_hw_flash, UNLOCK_FALSH_KEY2);
     }
 
-    amhw_zlg237_flash_cs_reg_clr(p_hw_flash, AMHW_ZLG237_FLASH_PAGE_ERASE_MASK |
-                                             AMHW_ZLG237_FLASH_PROGRAM_MASK);
+    amhw_stm32f103rbt6_flash_cs_reg_clr(p_hw_flash, AMHW_STM32F103RBT6_FLASH_PAGE_ERASE_MASK |
+                                             AMHW_STM32F103RBT6_FLASH_PROGRAM_MASK);
 
-    amhw_zlg237_flash_ecr_haer_set(p_hw_flash,
-                                   AMHW_ZLG237_FLASH_HALF_PAGE_ERASE);
+    amhw_stm32f103rbt6_flash_ecr_haer_set(p_hw_flash,
+                                   AMHW_STM32F103RBT6_FLASH_HALF_PAGE_ERASE);
 
-    amhw_zlg237_flash_address_set(p_hw_flash, start_addr);
+    amhw_stm32f103rbt6_flash_address_set(p_hw_flash, start_addr);
 
-    amhw_zlg237_flash_cs_reg_set(p_hw_flash,
-                                 AMHW_ZLG237_FLASH_START_MASK);
+    amhw_stm32f103rbt6_flash_cs_reg_set(p_hw_flash,
+                                 AMHW_STM32F103RBT6_FLASH_START_MASK);
 
-    while (amhw_zlg237_flash_status_check(p_hw_flash,
-                                          AMHW_ZLG237_FLASH_BUSY_FLAG)) {
+    while (amhw_stm32f103rbt6_flash_status_check(p_hw_flash,
+                                          AMHW_STM32F103RBT6_FLASH_BUSY_FLAG)) {
         ;
     }
-    amhw_zlg237_flash_ecr_haer_set(p_hw_flash, AMHW_ZLG237_FLASH_NO_HALF_PAGE_ERASE);
+    amhw_stm32f103rbt6_flash_ecr_haer_set(p_hw_flash, AMHW_STM32F103RBT6_FLASH_NO_HALF_PAGE_ERASE);
 
     return AM_OK;
 }
@@ -169,7 +169,7 @@ int32_t am_zlg237_flash_half_page_erase (amhw_zlg237_flash_t *p_hw_flash,
  *
  * \retval 0 实际成功写入的字数
  */
-int32_t am_zlg237_flash_sector_program (amhw_zlg237_flash_t *p_hw_flash,
+int32_t am_stm32f103rbt6_flash_sector_program (amhw_stm32f103rbt6_flash_t *p_hw_flash,
                                         uint32_t             dst_addr,
                                         uint32_t            *p_src,
                                         uint32_t             size)
@@ -185,15 +185,15 @@ int32_t am_zlg237_flash_sector_program (amhw_zlg237_flash_t *p_hw_flash,
         return -AM_EINVAL;
     }
 
-    if (amhw_zlg237_flash_cs_reg_get(p_hw_flash) & AMHW_ZLG237_FLASH_LOCK_MASK) {
-        amhw_zlg237_flash_key_set(p_hw_flash, UNLOCK_FALSH_KEY1);
-        amhw_zlg237_flash_key_set(p_hw_flash, UNLOCK_FALSH_KEY2);
+    if (amhw_stm32f103rbt6_flash_cs_reg_get(p_hw_flash) & AMHW_STM32F103RBT6_FLASH_LOCK_MASK) {
+        amhw_stm32f103rbt6_flash_key_set(p_hw_flash, UNLOCK_FALSH_KEY1);
+        amhw_stm32f103rbt6_flash_key_set(p_hw_flash, UNLOCK_FALSH_KEY2);
     }
 
-    amhw_zlg237_flash_cs_reg_clr(p_hw_flash, AMHW_ZLG237_FLASH_PROGRAM_MASK |
-                                             AMHW_ZLG237_FLASH_PAGE_ERASE_MASK);
+    amhw_stm32f103rbt6_flash_cs_reg_clr(p_hw_flash, AMHW_STM32F103RBT6_FLASH_PROGRAM_MASK |
+                                             AMHW_STM32F103RBT6_FLASH_PAGE_ERASE_MASK);
 
-    amhw_zlg237_flash_ecr_wpg_set(p_hw_flash, AMHW_ZLG237_FLASH_WORD_PROGRAM);
+    amhw_stm32f103rbt6_flash_ecr_wpg_set(p_hw_flash, AMHW_STM32F103RBT6_FLASH_WORD_PROGRAM);
     /** 对flash编程 */
     for (i = 0; i < size; i++) {
         /** 字写入 */
@@ -204,12 +204,12 @@ int32_t am_zlg237_flash_sector_program (amhw_zlg237_flash_t *p_hw_flash,
 //        *(uint16_t *)(dst_addr + i * 4 + 2) = (uint16_t)(p_src[i] >> 16);
     }
 
-    while (amhw_zlg237_flash_status_check(p_hw_flash,
-                                          AMHW_ZLG237_FLASH_BUSY_FLAG)) {
+    while (amhw_stm32f103rbt6_flash_status_check(p_hw_flash,
+                                          AMHW_STM32F103RBT6_FLASH_BUSY_FLAG)) {
        ;
     }
 
-    amhw_zlg237_flash_ecr_wpg_set(p_hw_flash, AMHW_ZLG237_FLASH_NO_WORD_PROGRAM);
+    amhw_stm32f103rbt6_flash_ecr_wpg_set(p_hw_flash, AMHW_STM32F103RBT6_FLASH_NO_WORD_PROGRAM);
 
     for (i = 0; i < size; i++) {
 
@@ -228,21 +228,21 @@ int32_t am_zlg237_flash_sector_program (amhw_zlg237_flash_t *p_hw_flash,
  * \return 执行结果
  *
  */
-uint32_t am_zlg237_flash_all_sector_erase (amhw_zlg237_flash_t *p_hw_flash)
+uint32_t am_stm32f103rbt6_flash_all_sector_erase (amhw_stm32f103rbt6_flash_t *p_hw_flash)
 {
-    while (amhw_zlg237_flash_status_check(p_hw_flash,
-                                          AMHW_ZLG237_FLASH_BUSY_FLAG)) {
+    while (amhw_stm32f103rbt6_flash_status_check(p_hw_flash,
+                                          AMHW_STM32F103RBT6_FLASH_BUSY_FLAG)) {
         ;
     }
 
-    amhw_zlg237_flash_cs_reg_clr(p_hw_flash, AMHW_ZLG237_FLASH_PROGRAM_MASK |
-                                             AMHW_ZLG237_FLASH_PAGE_ERASE_MASK);
+    amhw_stm32f103rbt6_flash_cs_reg_clr(p_hw_flash, AMHW_STM32F103RBT6_FLASH_PROGRAM_MASK |
+                                             AMHW_STM32F103RBT6_FLASH_PAGE_ERASE_MASK);
 
-    amhw_zlg237_flash_cs_reg_set(p_hw_flash, AMHW_ZLG237_FLASH_MASS_ERASE_MASK);
-    amhw_zlg237_flash_cs_reg_set(p_hw_flash, AMHW_ZLG237_FLASH_START_MASK);
+    amhw_stm32f103rbt6_flash_cs_reg_set(p_hw_flash, AMHW_STM32F103RBT6_FLASH_MASS_ERASE_MASK);
+    amhw_stm32f103rbt6_flash_cs_reg_set(p_hw_flash, AMHW_STM32F103RBT6_FLASH_START_MASK);
 
-    while (amhw_zlg237_flash_status_check(p_hw_flash,
-                                          AMHW_ZLG237_FLASH_BUSY_FLAG)) {
+    while (amhw_stm32f103rbt6_flash_status_check(p_hw_flash,
+                                          AMHW_STM32F103RBT6_FLASH_BUSY_FLAG)) {
          ;
     }
     return AM_OK;

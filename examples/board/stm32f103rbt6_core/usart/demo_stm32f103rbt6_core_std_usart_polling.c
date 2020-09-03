@@ -25,7 +25,7 @@
  *      （如：AM_DBG_INFO()）。
  *
  * \par 源代码
- * \snippet demo_zlg_std_uart_polling.c src_zlg_std_uart_polling
+ * \snippet demo_stm32f103rbt6_std_uart_polling.c src_stm32f103rbt6_std_uart_polling
  *
  * \internal
  * \par Modification History
@@ -34,29 +34,29 @@
  */
 
 /**
- * \addtogroup demo_if_zlg_std_uart_polling
- * \copydoc demo_zlg_std_uart_polling.c
+ * \addtogroup demo_if_stm32f103rbt6_std_uart_polling
+ * \copydoc demo_stm32f103rbt6_std_uart_polling.c
  */
 
-/** [src_zlg_std_uart_polling] */
+/** [src_stm32f103rbt6_std_uart_polling] */
 #include "ametal.h"
 #include "am_board.h"
-#include "am_zlg237_inst_init.h"
+#include "am_stm32f103rbt6_inst_init.h"
 #include "demo_std_entries.h"
-#include "demo_am237_core_entries.h"
+#include "demo_stm32f103rbt6_core_entries.h"
 
 /**
  * \brief 例程入口
  */
-void demo_zlg237_core_std_usart_polling_entry (void)
+void demo_stm32f103rbt6_core_std_usart_polling_entry (void)
 {
-    AM_DBG_INFO("demo am237_core std usart polling!\r\n");
+    AM_DBG_INFO("demo stm32f103rbt6_core std usart polling!\r\n");
 
      /* 等待发送数据完成 */
     am_mdelay(100);
 
-    demo_std_uart_polling_entry(am_zlg237_usart2_inst_init());
+    demo_std_uart_polling_entry(am_stm32f103rbt6_usart2_inst_init());
 }
-/** [src_zlg_std_uart_polling] */
+/** [src_stm32f103rbt6_std_uart_polling] */
 
 /* end of file */

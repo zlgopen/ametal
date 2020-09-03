@@ -22,8 +22,8 @@
 
 #include "am_sensor_as7262_i2c.h"
 #include "am_common.h"
-#include "zlg237_pin.h"
-#include "am_zlg237_inst_init.h"
+#include "stm32f103rbt6_pin.h"
+#include "am_stm32f103rbt6_inst_init.h"
 
 am_const am_local as7262_param_config_t __g_as7262_param_default = {
     AM_AS7262_GAIN_1,                   /**< \brief GAIN    */
@@ -45,8 +45,8 @@ am_const am_local struct am_sensor_as7262_devinfo __g_as7262_info = {
 /** \brief 传感器 AS7262 (I2C模式) 设备信息实例 */
 am_const am_local am_sensor_as7262_i2c_devinfo_t __g_as7262_i2c_info = {
     &__g_as7262_info,                   /**< \brief 设备信息 */
-    am_zlg237_i2c2_inst_init,           /**< \brief I2C句柄获取函数*/
-    am_zlg237_i2c2_inst_deinit,         /**< \brief I2C解初始化函数*/
+    am_stm32f103rbt6_i2c2_inst_init,           /**< \brief I2C句柄获取函数*/
+    am_stm32f103rbt6_i2c2_inst_deinit,         /**< \brief I2C解初始化函数*/
     0x49,                               /**< \brief I2C 7位 设备地址 */
 };
 

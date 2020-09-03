@@ -22,8 +22,8 @@
 
 #include "am_sensor_tmd2635.h"
 #include "am_common.h"
-#include "zlg237_pin.h"
-#include "am_zlg237_inst_init.h"
+#include "stm32f103rbt6_pin.h"
+#include "am_stm32f103rbt6_inst_init.h"
 
 am_const am_local tmd2635_param_config_t __g_tmd2635_param_default = {
         0,                                          /* 连续故障次数进入Prox中断，该操作直接配置寄存器值，详细内容查阅数据手册Page16 */
@@ -61,7 +61,7 @@ am_sensor_handle_t am_sensor_tmd2635_inst_init (void)
 {
     return am_sensor_tmd2635_init(&__g_tmd2635_dev,
                                   &__g_tmd2635_info,
-                                  am_zlg237_i2c1_inst_init());
+                                  am_stm32f103rbt6_i2c1_inst_init());
 }
 
 /** \brief 传感器 TMD2635 实例解初始化 */

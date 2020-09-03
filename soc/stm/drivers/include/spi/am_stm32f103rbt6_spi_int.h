@@ -20,22 +20,22 @@
  * \endinternal
  */
 
-#ifndef __AM_ZLG237_SPI_INT_H
-#define __AM_ZLG237_SPI_INT_H
+#ifndef __AM_STM32F103RBT6_SPI_INT_H
+#define __AM_STM32F103RBT6_SPI_INT_H
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-#include "am_zlg237_spi_int.h"
+#include "am_stm32f103rbt6_spi_int.h"
 #include "am_types.h"
 #include "am_spi.h"
 #include "am_int.h"
-#include "hw/amhw_zlg237_spi.h"
+#include "hw/amhw_stm32f103rbt6_spi.h"
 
 /**
- * \addtogroup am_zlg237_if_spi_int
- * \copydoc am_zlg237_spi_int.h
+ * \addtogroup am_stm32f103rbt6_if_spi_int
+ * \copydoc am_stm32f103rbt6_spi_int.h
  * @{
  */
 
@@ -49,7 +49,7 @@ extern "C" {
 /**
  * \brief SPI设备信息结构体
  */
-typedef struct am_zlg237_spi_int_devinfo {
+typedef struct am_stm32f103rbt6_spi_int_devinfo {
     uint32_t  spi_reg_base;   /**< \brief SPI寄存器块的基地址 */
     int       clk_id;         /**< \brief 时钟ID */
     uint8_t   baud_div;       /**< \brief 时钟分频系数 */
@@ -64,15 +64,15 @@ typedef struct am_zlg237_spi_int_devinfo {
     /** \brief SPI平台解初始化函数 */
     void    (*pfn_plfm_deinit)(void);
 
-} am_zlg237_spi_int_devinfo_t;
+} am_stm32f103rbt6_spi_int_devinfo_t;
 
 /**
  * \brief SPI设备
  */
-typedef struct am_zlg237_spi_int_dev {
+typedef struct am_stm32f103rbt6_spi_int_dev {
 
     am_spi_serv_t                   spi_serve;    /**< \brief SPI标准服务句柄 */
-    const am_zlg237_spi_int_devinfo_t *p_devinfo; /**< \brief SPI设备信息的指针 */
+    const am_stm32f103rbt6_spi_int_devinfo_t *p_devinfo; /**< \brief SPI设备信息的指针 */
 
     struct am_list_head             msg_list;     /**< \brief SPI控制器消息队列 */
 
@@ -91,7 +91,7 @@ typedef struct am_zlg237_spi_int_dev {
     am_bool_t                  busy;              /**< \brief SPI忙标识 */
     uint32_t                   state;             /**< \brief SPI控制器状态机状态 */
 
-} am_zlg237_spi_int_dev_t;
+} am_stm32f103rbt6_spi_int_dev_t;
 
 /**
  * \brief SPI初始化
@@ -101,9 +101,9 @@ typedef struct am_zlg237_spi_int_dev {
  *
  * \return SPI标准服务操作句柄
  */
-am_spi_handle_t am_zlg237_spi_int_init (
-    am_zlg237_spi_int_dev_t           *p_dev,
-    const am_zlg237_spi_int_devinfo_t *p_devinfo);
+am_spi_handle_t am_stm32f103rbt6_spi_int_init (
+    am_stm32f103rbt6_spi_int_dev_t           *p_dev,
+    const am_stm32f103rbt6_spi_int_devinfo_t *p_devinfo);
 
 /**
  * \brief 解除SPI初始化
@@ -112,7 +112,7 @@ am_spi_handle_t am_zlg237_spi_int_init (
  *
  * \return 无
  */
-void am_zlg237_spi_int_deinit (am_spi_handle_t handle);
+void am_stm32f103rbt6_spi_int_deinit (am_spi_handle_t handle);
 
 /**
  * @}
@@ -122,6 +122,6 @@ void am_zlg237_spi_int_deinit (am_spi_handle_t handle);
 }
 #endif
 
-#endif /* __AM_ZLG_SPI_INT_H */
+#endif /* __AM_STM32F103RBT6_SPI_INT_H */
 
 /* end of file */

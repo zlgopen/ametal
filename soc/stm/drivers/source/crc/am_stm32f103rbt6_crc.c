@@ -24,8 +24,8 @@
  */
 
 #include "ametal.h"
-#include "am_zlg_crc.h"
-#include "hw/amhw_zlg_crc.h"
+#include "am_stm32f103rbt6_crc.h"
+#include "hw/amhw_stm32f103rbt6_crc.h"
 
 /*******************************************************************************
 * 模块内函数声明
@@ -83,8 +83,8 @@ static uint8_t __rev8bit (uint8_t data)
 
 static int __crc_init (void *p_cookie, am_crc_pattern_t *p_pattern)
 {
-    am_zlg_crc_dev_t *p_dev      = (am_zlg_crc_dev_t *)p_cookie;
-    amhw_zlg_crc_t   *p_hw_crc   = NULL;
+    am_stm32f103rbt6_crc_dev_t *p_dev      = (am_stm32f103rbt6_crc_dev_t *)p_cookie;
+    amhw_stm32f103rbt6_crc_t   *p_hw_crc   = NULL;
 
     if (p_dev == NULL || p_pattern == NULL) {
        return -AM_EINVAL;
@@ -98,10 +98,10 @@ static int __crc_init (void *p_cookie, am_crc_pattern_t *p_pattern)
 
     p_dev->p_pattern = p_pattern;
 
-    p_hw_crc = (amhw_zlg_crc_t *)(p_dev->p_devinfo->crc_reg_base);
+    p_hw_crc = (amhw_stm32f103rbt6_crc_t *)(p_dev->p_devinfo->crc_reg_base);
 
     /* 重置寄存器CRC_DATA 为0xFFFF FFFF */
-    amhw_zlg_crc_reset(p_hw_crc);
+    amhw_stm32f103rbt6_crc_reset(p_hw_crc);
 
     return AM_OK;
 }
@@ -113,8 +113,8 @@ static int __crc_cal (void *p_cookie, const uint8_t *p_data, uint32_t nbytes)
 {
     uint32_t i;
     uint32_t tdata;
-    am_zlg_crc_dev_t *p_dev    = (am_zlg_crc_dev_t *)p_cookie;
-    amhw_zlg_crc_t   *p_hw_crc = (amhw_zlg_crc_t *)(p_dev->p_devinfo->crc_reg_base);
+    am_stm32f103rbt6_crc_dev_t *p_dev    = (am_stm32f103rbt6_crc_dev_t *)p_cookie;
+    amhw_stm32f103rbt6_crc_t   *p_hw_crc = (amhw_stm32f103rbt6_crc_t *)(p_dev->p_devinfo->crc_reg_base);
 
     if (p_dev->p_pattern == NULL || p_data == NULL) {
         return -AM_EINVAL;
@@ -137,7 +137,7 @@ static int __crc_cal (void *p_cookie, const uint8_t *p_data, uint32_t nbytes)
                     (p_data[i+2] << 8) | p_data[i+3];
         }
 
-        amhw_zlg_crc_32bit_write_data(p_hw_crc, tdata);
+        amhw_stm32f103rbt6_crc_32bit_write_data(p_hw_crc, tdata);
     }
 
     return AM_OK;
@@ -148,14 +148,14 @@ static int __crc_cal (void *p_cookie, const uint8_t *p_data, uint32_t nbytes)
  */
 static int __crc_final (void *p_cookie, uint32_t *p_value)
 {
-    am_zlg_crc_dev_t *p_dev    = (am_zlg_crc_dev_t *)p_cookie;
-    amhw_zlg_crc_t   *p_hw_crc = (amhw_zlg_crc_t   *)(p_dev->p_devinfo->crc_reg_base);
+    am_stm32f103rbt6_crc_dev_t *p_dev    = (am_stm32f103rbt6_crc_dev_t *)p_cookie;
+    amhw_stm32f103rbt6_crc_t   *p_hw_crc = (amhw_stm32f103rbt6_crc_t   *)(p_dev->p_devinfo->crc_reg_base);
 
     if (p_dev->p_pattern == NULL) {
         return -AM_EINVAL;
     }
 
-   *p_value = amhw_zlg_crc_32bit_read_data(p_hw_crc);
+   *p_value = amhw_stm32f103rbt6_crc_32bit_read_data(p_hw_crc);
 
    if (p_dev->p_pattern->refout == AM_TRUE){
 
@@ -177,8 +177,8 @@ static int __crc_final (void *p_cookie, uint32_t *p_value)
 /**
  * \brief CRC初始化
  */
-am_crc_handle_t am_zlg_crc_init (am_zlg_crc_dev_t           *p_dev,
-                                 const am_zlg_crc_devinfo_t *p_devinfo)
+am_crc_handle_t am_stm32f103rbt6_crc_init (am_stm32f103rbt6_crc_dev_t           *p_dev,
+                                 const am_stm32f103rbt6_crc_devinfo_t *p_devinfo)
 {
     if (p_dev == NULL || p_devinfo == NULL) {
         return NULL;
@@ -200,9 +200,9 @@ am_crc_handle_t am_zlg_crc_init (am_zlg_crc_dev_t           *p_dev,
 /**
  * \brief CRC解初始化
  */
-void am_zlg_crc_deinit (am_crc_handle_t handle)
+void am_stm32f103rbt6_crc_deinit (am_crc_handle_t handle)
 {
-    am_zlg_crc_dev_t *p_dev    = (am_zlg_crc_dev_t *)handle;
+    am_stm32f103rbt6_crc_dev_t *p_dev    = (am_stm32f103rbt6_crc_dev_t *)handle;
 
     if (NULL == handle) {
         return ;

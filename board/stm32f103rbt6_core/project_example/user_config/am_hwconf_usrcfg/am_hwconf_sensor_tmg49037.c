@@ -22,8 +22,8 @@
 
 #include "am_sensor_tmg49037.h"
 #include "am_common.h"
-#include "zlg237_pin.h"
-#include "am_zlg237_inst_init.h"
+#include "stm32f103rbt6_pin.h"
+#include "am_stm32f103rbt6_inst_init.h"
 
 am_const am_local tmg49037_param_config_t __g_tmg49037_param_default = {
         AM_TMG49037_ATIME_2_78MS,                   /* ALS ADC的积分时间 */
@@ -92,7 +92,7 @@ am_sensor_handle_t am_sensor_tmg49037_inst_init (void)
 {
     return am_sensor_tmg49037_init(&__g_tmg49037_dev,
                                    &__g_tmg49037_info,
-                                   am_zlg237_i2c1_inst_init());
+                                   am_stm32f103rbt6_i2c1_inst_init());
 }
 
 /** \brief 传感器 TMG49037 实例解初始化 */

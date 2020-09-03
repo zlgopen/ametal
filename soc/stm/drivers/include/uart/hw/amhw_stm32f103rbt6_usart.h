@@ -20,8 +20,8 @@
  * \endinternal
  */
 
-#ifndef __AMHW_ZLG237_USART_H
-#define __AMHW_ZLG237_USART_H
+#ifndef __AMHW_STM32F103RBT6_USART_H
+#define __AMHW_STM32F103RBT6_USART_H
 
 #ifdef __cplusplus
 extern "C" {
@@ -30,8 +30,8 @@ extern "C" {
 #include "am_common.h"
 
 /**
- * \addtogroup amhw_zlg237_if_usart
- * \copydoc amhw_zlg237_usart.h
+ * \addtogroup amhw_stm32f103rbt6_if_usart
+ * \copydoc amhw_stm32f103rbt6_usart.h
  * @{
  */
 
@@ -62,7 +62,7 @@ extern "C" {
 /**
  * \brief usart 寄存器块结构体
  */
-typedef struct amhw_zlg237_usart {
+typedef struct amhw_stm32f103rbt6_usart {
     __IO uint32_t sr;        /**< \brief USART 状态寄存器 */
     __IO uint32_t dr;        /**< \brief USART 数据寄存器 */
     __IO uint32_t brr;       /**< \brief USART 波特比率寄存器 */
@@ -70,7 +70,7 @@ typedef struct amhw_zlg237_usart {
     __IO uint32_t cr2;       /**< \brief USART 控制寄存器2 */
     __IO uint32_t cr3;       /**< \brief USART 控制寄存器3 */
     __IO uint32_t gtpr;      /**< \brief USART 保护时间和预分频寄存器 */
-} amhw_zlg237_usart_t;
+} amhw_stm32f103rbt6_usart_t;
 
 
 /**
@@ -81,7 +81,7 @@ typedef struct amhw_zlg237_usart {
  * \retval none
  */
 am_static_inline
-void amhw_zlg237_usart_all_clr (amhw_zlg237_usart_t *p_hw_usart)
+void amhw_stm32f103rbt6_usart_all_clr (amhw_stm32f103rbt6_usart_t *p_hw_usart)
 {
     p_hw_usart->sr   = 0x00c0;
     p_hw_usart->dr   = 0x0000;
@@ -95,38 +95,38 @@ void amhw_zlg237_usart_all_clr (amhw_zlg237_usart_t *p_hw_usart)
 
 /**
  * \name  状态标志
- * \anchor amhw_zlg237_usart_
+ * \anchor amhw_stm32f103rbt6_usart_
  * @{
  */
 /** \brief CTS nCTS状态线变化标志 */
-#define AMHW_ZLG237_USART_CTS_FLAG               AM_BIT(9)
+#define AMHW_STM32F103RBT6_USART_CTS_FLAG               AM_BIT(9)
 
 /** \brief LIN 断开检测标志 */
-#define AMHW_ZLG237_USART_LIN_BREAK_FLAG         AM_BIT(8)
+#define AMHW_STM32F103RBT6_USART_LIN_BREAK_FLAG         AM_BIT(8)
 
 /** \brief TXE 发送数据寄存器空标志 */
-#define AMHW_ZLG237_USART_TX_EMPTY_FLAG          AM_BIT(7)
+#define AMHW_STM32F103RBT6_USART_TX_EMPTY_FLAG          AM_BIT(7)
 
 /** \brief TC 发送完成标志 */
-#define AMHW_ZLG237_USART_TX_COMPLETE_FLAG       AM_BIT(6)
+#define AMHW_STM32F103RBT6_USART_TX_COMPLETE_FLAG       AM_BIT(6)
 
 /** \brief RXNE 读数据寄存器非空标志 */
-#define AMHW_ZLG237_USART_RX_NOT_EMPTY_FLAG      AM_BIT(5)
+#define AMHW_STM32F103RBT6_USART_RX_NOT_EMPTY_FLAG      AM_BIT(5)
 
 /** \brief IDLE 检测到总线空闲标志 */
-#define AMHW_ZLG237_USART_IDLE_FREE_FLAG         AM_BIT(4)
+#define AMHW_STM32F103RBT6_USART_IDLE_FREE_FLAG         AM_BIT(4)
 
 /** \brief ORE 过载错误标志 */
-#define AMHW_ZLG237_USART_OVERRUN_ERROR_FLAG     AM_BIT(3)
+#define AMHW_STM32F103RBT6_USART_OVERRUN_ERROR_FLAG     AM_BIT(3)
 
 /** \brief NE 噪声错误标志 */
-#define AMHW_ZLG237_USART_NOISE_ERROR_FLAG       AM_BIT(2)
+#define AMHW_STM32F103RBT6_USART_NOISE_ERROR_FLAG       AM_BIT(2)
 
 /** \brief FE 帧错误标志 */
-#define AMHW_ZLG237_USART_FRAMING_ERROR_FLAG     AM_BIT(1)
+#define AMHW_STM32F103RBT6_USART_FRAMING_ERROR_FLAG     AM_BIT(1)
 
 /** \brief PE 检验错误标志 */
-#define AMHW_ZLG237_USART_PARITY_ERROR_FLAG      AM_BIT(0)
+#define AMHW_STM32F103RBT6_USART_PARITY_ERROR_FLAG      AM_BIT(0)
 /** @} */
 
 /**
@@ -138,7 +138,7 @@ void amhw_zlg237_usart_all_clr (amhw_zlg237_usart_t *p_hw_usart)
  * \retval TRUE or FALSE
  */
 am_static_inline
-am_bool_t amhw_zlg237_usart_status_flag_check (amhw_zlg237_usart_t *p_hw_usart,
+am_bool_t amhw_stm32f103rbt6_usart_status_flag_check (amhw_stm32f103rbt6_usart_t *p_hw_usart,
                                                uint32_t             flag)
 {
     return ((0x3ffu & p_hw_usart->sr) & flag) ? AM_TRUE : AM_FALSE;
@@ -153,7 +153,7 @@ am_bool_t amhw_zlg237_usart_status_flag_check (amhw_zlg237_usart_t *p_hw_usart,
  * \retval none
  */
 am_static_inline
-void amhw_zlg237_usart_status_flag_clr (amhw_zlg237_usart_t    *p_hw_usart,
+void amhw_stm32f103rbt6_usart_status_flag_clr (amhw_stm32f103rbt6_usart_t    *p_hw_usart,
                                         uint32_t                flag)
 {
     p_hw_usart->sr = p_hw_usart->sr & (~(flag));
@@ -168,7 +168,7 @@ void amhw_zlg237_usart_status_flag_clr (amhw_zlg237_usart_t    *p_hw_usart,
  * \return none
  */
 am_static_inline
-void amhw_zlg237_usart_data_write (amhw_zlg237_usart_t    *p_hw_usart,
+void amhw_stm32f103rbt6_usart_data_write (amhw_stm32f103rbt6_usart_t    *p_hw_usart,
                                    uint32_t                data_w)
 {
     p_hw_usart->dr = (uint32_t)(0x1ffu & data_w);
@@ -181,7 +181,7 @@ void amhw_zlg237_usart_data_write (amhw_zlg237_usart_t    *p_hw_usart,
  * \return the data of RDR register
  */
 am_static_inline
-uint8_t amhw_zlg237_usart_data_read (amhw_zlg237_usart_t *p_hw_usart)
+uint8_t amhw_stm32f103rbt6_usart_data_read (amhw_stm32f103rbt6_usart_t *p_hw_usart)
 {
     return (uint8_t)(0x1ffu & p_hw_usart->dr);
 }
@@ -196,7 +196,7 @@ uint8_t amhw_zlg237_usart_data_read (amhw_zlg237_usart_t *p_hw_usart)
  * \return none
  */
 am_static_inline
-void amhw_zlg237_usart_br_div_mantissa_set (amhw_zlg237_usart_t    *p_hw_usart,
+void amhw_stm32f103rbt6_usart_br_div_mantissa_set (amhw_stm32f103rbt6_usart_t    *p_hw_usart,
                                             uint32_t                data_w)
 {
     AM_BITS_SET(p_hw_usart->brr, 4, 12, data_w);
@@ -211,7 +211,7 @@ void amhw_zlg237_usart_br_div_mantissa_set (amhw_zlg237_usart_t    *p_hw_usart,
  * \return none
  */
 am_static_inline
-void amhw_zlg237_usart_br_div_fraction_set (amhw_zlg237_usart_t    *p_hw_usart,
+void amhw_stm32f103rbt6_usart_br_div_fraction_set (amhw_stm32f103rbt6_usart_t    *p_hw_usart,
                                             uint32_t                data_w)
 {
     AM_BITS_SET(p_hw_usart->brr, 0, 4, data_w);
@@ -225,7 +225,7 @@ void amhw_zlg237_usart_br_div_fraction_set (amhw_zlg237_usart_t    *p_hw_usart,
  * \return none
  */
 am_static_inline
-void amhw_zlg237_usart_send_break_set (amhw_zlg237_usart_t *p_hw_usart)
+void amhw_stm32f103rbt6_usart_send_break_set (amhw_stm32f103rbt6_usart_t *p_hw_usart)
 {
     p_hw_usart->cr1 |= (1u << 0);
 }
@@ -238,7 +238,7 @@ void amhw_zlg237_usart_send_break_set (amhw_zlg237_usart_t *p_hw_usart)
  * \return none
  */
 am_static_inline
-am_bool_t amhw_zlg237_usart_send_break_check (amhw_zlg237_usart_t *p_hw_usart)
+am_bool_t amhw_stm32f103rbt6_usart_send_break_check (amhw_stm32f103rbt6_usart_t *p_hw_usart)
 {
     return ((p_hw_usart->cr1) & (1u << 0)) ? AM_TRUE : AM_FALSE;
 }
@@ -253,7 +253,7 @@ am_bool_t amhw_zlg237_usart_send_break_check (amhw_zlg237_usart_t *p_hw_usart)
  * \return none
  */
 am_static_inline
-void amhw_zlg237_usart_receiver_wakeup_enable (amhw_zlg237_usart_t *p_hw_usart)
+void amhw_stm32f103rbt6_usart_receiver_wakeup_enable (amhw_stm32f103rbt6_usart_t *p_hw_usart)
 {
     p_hw_usart->cr1 |= (1u << 1);
 }
@@ -265,7 +265,7 @@ void amhw_zlg237_usart_receiver_wakeup_enable (amhw_zlg237_usart_t *p_hw_usart)
  * \return none
  */
 am_static_inline
-void amhw_zlg237_usart_receiver_wakeup_disable (amhw_zlg237_usart_t *p_hw_usart)
+void amhw_stm32f103rbt6_usart_receiver_wakeup_disable (amhw_stm32f103rbt6_usart_t *p_hw_usart)
 {
     p_hw_usart->cr1 &= ~(1u << 1);
 }
@@ -278,7 +278,7 @@ void amhw_zlg237_usart_receiver_wakeup_disable (amhw_zlg237_usart_t *p_hw_usart)
  * \return none
  */
 am_static_inline
-void amhw_zlg237_usart_receiver_enable (amhw_zlg237_usart_t *p_hw_usart)
+void amhw_stm32f103rbt6_usart_receiver_enable (amhw_stm32f103rbt6_usart_t *p_hw_usart)
 {
     p_hw_usart->cr1 |= (1u << 2);
 }
@@ -290,7 +290,7 @@ void amhw_zlg237_usart_receiver_enable (amhw_zlg237_usart_t *p_hw_usart)
  * \return none
  */
 am_static_inline
-void amhw_zlg237_usart_receiver_disable (amhw_zlg237_usart_t *p_hw_usart)
+void amhw_stm32f103rbt6_usart_receiver_disable (amhw_stm32f103rbt6_usart_t *p_hw_usart)
 {
     p_hw_usart->cr1 &= ~(1u << 2);
 }
@@ -303,7 +303,7 @@ void amhw_zlg237_usart_receiver_disable (amhw_zlg237_usart_t *p_hw_usart)
  * \return none
  */
 am_static_inline
-void amhw_zlg237_usart_transmitter_enable (amhw_zlg237_usart_t *p_hw_usart)
+void amhw_stm32f103rbt6_usart_transmitter_enable (amhw_stm32f103rbt6_usart_t *p_hw_usart)
 {
     p_hw_usart->cr1 |= (1u << 3);
 }
@@ -315,42 +315,42 @@ void amhw_zlg237_usart_transmitter_enable (amhw_zlg237_usart_t *p_hw_usart)
  * \return none
  */
 am_static_inline
-void amhw_zlg237_usart_transmitter_disable (amhw_zlg237_usart_t *p_hw_usart)
+void amhw_stm32f103rbt6_usart_transmitter_disable (amhw_stm32f103rbt6_usart_t *p_hw_usart)
 {
     p_hw_usart->cr1 &= ~(1u << 3);
 }
 
 /**
  * \name  Interrupt enable
- * \anchor amhw_zlg_uart_
+ * \anchor amhw_stm32f103rbt6_uart_
  * @{
  */
 /** \brief CTSIE CTS中断使能          CR3 BIT 10*/
-#define AMHW_ZLG237_USART_INT_CTS_ENABLE               (0x1u << 11)
+#define AMHW_STM32F103RBT6_USART_INT_CTS_ENABLE               (0x1u << 11)
 
 /** \brief EIE 错误中断使能                 CR3 BIT 0*/
-#define AMHW_ZLG237_USART_INT_ERROR_ENABLE             (0x1u << 10)
+#define AMHW_STM32F103RBT6_USART_INT_ERROR_ENABLE             (0x1u << 10)
 
 /** \brief LBDIE 断开符检测中断使能     CR2 BIT 6*/
-#define AMHW_ZLG237_USART_LIN_ENABLE                   (0x1u << 9)
+#define AMHW_STM32F103RBT6_USART_LIN_ENABLE                   (0x1u << 9)
 
 /** \brief PE interrupt enable */
-#define AMHW_ZLG237_USART_INT_PARITY_ENABLE            (0x1u << 8)
+#define AMHW_STM32F103RBT6_USART_INT_PARITY_ENABLE            (0x1u << 8)
 
 /** \brief TXE interrupt enable */
-#define AMHW_ZLG237_USART_INT_TX_EMPTY_ENABLE          (0x1u << 7)
+#define AMHW_STM32F103RBT6_USART_INT_TX_EMPTY_ENABLE          (0x1u << 7)
 
 /** \brief TCIE interrupt enable */
-#define AMHW_ZLG237_USART_INT_COMPLETE_ENABLE          (0x1u << 6)
+#define AMHW_STM32F103RBT6_USART_INT_COMPLETE_ENABLE          (0x1u << 6)
 
 /** \brief RXNE interrupt enable */
-#define AMHW_ZLG237_USART_INT_RX_NOT_EMPTY_ENABLE      (0x1u << 5)
+#define AMHW_STM32F103RBT6_USART_INT_RX_NOT_EMPTY_ENABLE      (0x1u << 5)
 
 /** \brief IDLE interrupt enable */
-#define AMHW_ZLG237_USART_INT_IDLE_FREE_ENABLE         (0x1u << 4)
+#define AMHW_STM32F103RBT6_USART_INT_IDLE_FREE_ENABLE         (0x1u << 4)
 
 /** \brief 所有中断标志位 */
-#define AMHW_ZLG237_USART_INT_ALL_ENABLE_MASK         (0xffu << 4)
+#define AMHW_STM32F103RBT6_USART_INT_ALL_ENABLE_MASK         (0xffu << 4)
 /** @} */
 
 
@@ -362,7 +362,7 @@ void amhw_zlg237_usart_transmitter_disable (amhw_zlg237_usart_t *p_hw_usart)
  * \return none
  */
 am_static_inline
-void amhw_zlg237_usart_int_enable (amhw_zlg237_usart_t *p_hw_uart, uint32_t flag)
+void amhw_stm32f103rbt6_usart_int_enable (amhw_stm32f103rbt6_usart_t *p_hw_uart, uint32_t flag)
 {
 
     /* 开启所有中断的情况 */
@@ -372,11 +372,11 @@ void amhw_zlg237_usart_int_enable (amhw_zlg237_usart_t *p_hw_uart, uint32_t flag
         p_hw_uart->cr3 |= (0x01u << 0);             /* 开启cr3中的EIE*/
         p_hw_uart->cr3 |= (0x01u << 10);            /* 开启cr3中的CTSIE*/
     }else {
-        if (flag == AMHW_ZLG237_USART_LIN_ENABLE){
+        if (flag == AMHW_STM32F103RBT6_USART_LIN_ENABLE){
             p_hw_uart->cr2 |= (0x01u << 6);         /* 开启cr2中的LBDIE*/
-        } else if (flag == AMHW_ZLG237_USART_INT_ERROR_ENABLE) {
+        } else if (flag == AMHW_STM32F103RBT6_USART_INT_ERROR_ENABLE) {
             p_hw_uart->cr3 |= (0x01u << 0);         /* 开启cr3中的EIE*/
-        } else if (flag == AMHW_ZLG237_USART_INT_CTS_ENABLE) {
+        } else if (flag == AMHW_STM32F103RBT6_USART_INT_CTS_ENABLE) {
             p_hw_uart->cr3 |= (0x01u << 10);        /* 开启cr3中的CTSIE*/
         } else {
             p_hw_uart->cr1 |= (flag);               /* 开启cr1中的对应中断*/
@@ -392,7 +392,7 @@ void amhw_zlg237_usart_int_enable (amhw_zlg237_usart_t *p_hw_uart, uint32_t flag
  * \return none
  */
 am_static_inline
-void amhw_zlg237_usart_int_disable (amhw_zlg237_usart_t *p_hw_uart, uint32_t flag)
+void amhw_stm32f103rbt6_usart_int_disable (amhw_stm32f103rbt6_usart_t *p_hw_uart, uint32_t flag)
 {
     /* 关闭所有中断的情况 */
     if(flag == (0xffu << 4)) {
@@ -401,11 +401,11 @@ void amhw_zlg237_usart_int_disable (amhw_zlg237_usart_t *p_hw_uart, uint32_t fla
         p_hw_uart->cr3 &= ~(0x01u << 0);             /* 关闭cr3中的EIE*/
         p_hw_uart->cr3 &= ~(0x01u << 10);            /* 关闭cr3中的CTSIE*/
     }else {
-        if (flag == AMHW_ZLG237_USART_LIN_ENABLE){
+        if (flag == AMHW_STM32F103RBT6_USART_LIN_ENABLE){
             p_hw_uart->cr2 &= ~(0x01u << 6);         /* 关闭cr2中的LBDIE*/
-        } else if (flag == AMHW_ZLG237_USART_INT_ERROR_ENABLE) {
+        } else if (flag == AMHW_STM32F103RBT6_USART_INT_ERROR_ENABLE) {
             p_hw_uart->cr3 &= ~(0x01u << 0);         /* 关闭cr3中的EIE*/
-        } else if (flag == AMHW_ZLG237_USART_INT_CTS_ENABLE) {
+        } else if (flag == AMHW_STM32F103RBT6_USART_INT_CTS_ENABLE) {
             p_hw_uart->cr3 &= ~(0x01u << 10);        /* 关闭cr3中的CTSIE*/
         } else {
             p_hw_uart->cr1 &= ~(flag);               /* 关闭cr1中的对应中断*/
@@ -416,9 +416,9 @@ void amhw_zlg237_usart_int_disable (amhw_zlg237_usart_t *p_hw_uart, uint32_t fla
  * \brief USART parity bit select
  * @{
  */
-#define AMHW_ZLG237_USART_PARITY_NO   (0U)  /** <brief 无校验  00 */
-#define AMHW_ZLG237_USART_PARITY_ODD  (3U)  /** <brief 奇校验  11 */
-#define AMHW_ZLG237_USART_PARITY_EVEN (2U)  /** <brief 偶校验  10 */
+#define AMHW_STM32F103RBT6_USART_PARITY_NO   (0U)  /** <brief 无校验  00 */
+#define AMHW_STM32F103RBT6_USART_PARITY_ODD  (3U)  /** <brief 奇校验  11 */
+#define AMHW_STM32F103RBT6_USART_PARITY_EVEN (2U)  /** <brief 偶校验  10 */
 /** @} */
 
 /**
@@ -430,7 +430,7 @@ void amhw_zlg237_usart_int_disable (amhw_zlg237_usart_t *p_hw_uart, uint32_t fla
  * \retval none
  */
 am_static_inline
-void amhw_zlg237_usart_parity_bit_sel (amhw_zlg237_usart_t    *p_hw_usart,
+void amhw_stm32f103rbt6_usart_parity_bit_sel (amhw_stm32f103rbt6_usart_t    *p_hw_usart,
                                        uint32_t                parity)
 {
     p_hw_usart->cr1 = (p_hw_usart->cr1 & (~(0x3u << 9))) | (parity << 9);
@@ -446,7 +446,7 @@ void amhw_zlg237_usart_parity_bit_sel (amhw_zlg237_usart_t    *p_hw_usart,
  * \retval none
  */
 am_static_inline
-void amhw_zlg237_usart_wakeup_method_sel (amhw_zlg237_usart_t    *p_hw_usart,
+void amhw_stm32f103rbt6_usart_wakeup_method_sel (amhw_stm32f103rbt6_usart_t    *p_hw_usart,
                                           uint32_t                flag)
 {
     p_hw_usart->cr1 = (p_hw_usart->cr1 & (~(0x1u << 11))) | (flag << 11);
@@ -456,8 +456,8 @@ void amhw_zlg237_usart_wakeup_method_sel (amhw_zlg237_usart_t    *p_hw_usart,
  * \brief USART data length
  * @{
  */
-#define AMHW_ZLG237_USART_DATA_8BIT   (0u << 4) /** <brief 8-bit data */
-#define AMHW_ZLG237_USART_DATA_9BIT   (1u << 4) /** <brief 9-bit data */
+#define AMHW_STM32F103RBT6_USART_DATA_8BIT   (0u << 4) /** <brief 8-bit data */
+#define AMHW_STM32F103RBT6_USART_DATA_9BIT   (1u << 4) /** <brief 9-bit data */
 /** @} */
 /**
  * \brief 字长设置
@@ -469,7 +469,7 @@ void amhw_zlg237_usart_wakeup_method_sel (amhw_zlg237_usart_t    *p_hw_usart,
  * \retval none
  */
 am_static_inline
-void amhw_zlg237_usart_word_length_sel (amhw_zlg237_usart_t    *p_hw_usart,
+void amhw_stm32f103rbt6_usart_word_length_sel (amhw_stm32f103rbt6_usart_t    *p_hw_usart,
                                         uint32_t                flag)
 {
     p_hw_usart->cr1 = (p_hw_usart->cr1 & (~(0x1u << 12))) | ((flag >> 4) << 12);
@@ -483,7 +483,7 @@ void amhw_zlg237_usart_word_length_sel (amhw_zlg237_usart_t    *p_hw_usart,
  * \return none
  */
 am_static_inline
-void amhw_zlg237_usart_enable (amhw_zlg237_usart_t *p_hw_usart)
+void amhw_stm32f103rbt6_usart_enable (amhw_stm32f103rbt6_usart_t *p_hw_usart)
 {
     p_hw_usart->cr1 |= (1 << 13);
 }
@@ -496,7 +496,7 @@ void amhw_zlg237_usart_enable (amhw_zlg237_usart_t *p_hw_usart)
  * \return none
  */
 am_static_inline
-void amhw_zlg237_usart_disable (amhw_zlg237_usart_t *p_hw_usart)
+void amhw_stm32f103rbt6_usart_disable (amhw_stm32f103rbt6_usart_t *p_hw_usart)
 {
     p_hw_usart->cr1 &= ~(1u << 13);
 }
@@ -512,7 +512,7 @@ void amhw_zlg237_usart_disable (amhw_zlg237_usart_t *p_hw_usart)
  * \retval none
  */
 am_static_inline
-void amhw_zlg237_usart_addr_set (amhw_zlg237_usart_t    *p_hw_usart,
+void amhw_stm32f103rbt6_usart_addr_set (amhw_stm32f103rbt6_usart_t    *p_hw_usart,
                                  uint32_t                flag)
 {
     p_hw_usart->cr2 = (p_hw_usart->cr2 & (~(0xfu << 0))) | (flag << 0);
@@ -528,7 +528,7 @@ void amhw_zlg237_usart_addr_set (amhw_zlg237_usart_t    *p_hw_usart,
  * \retval none
  */
 am_static_inline
-void amhw_zlg237_usart_lbd_length_sel (amhw_zlg237_usart_t    *p_hw_usart,
+void amhw_stm32f103rbt6_usart_lbd_length_sel (amhw_stm32f103rbt6_usart_t    *p_hw_usart,
                                        uint32_t                flag)
 {
     p_hw_usart->cr2 = (p_hw_usart->cr2 & (~(0x1u << 5))) | (flag << 5);
@@ -547,7 +547,7 @@ void amhw_zlg237_usart_lbd_length_sel (amhw_zlg237_usart_t    *p_hw_usart,
  * \retval none
  */
 am_static_inline
-void amhw_zlg237_usart_last_bit_clock_pulse (amhw_zlg237_usart_t    *p_hw_usart,
+void amhw_stm32f103rbt6_usart_last_bit_clock_pulse (amhw_stm32f103rbt6_usart_t    *p_hw_usart,
                                              uint32_t                flag)
 {
     p_hw_usart->cr2 = (p_hw_usart->cr2 & (~(0x1u << 8))) | (flag << 8);
@@ -566,7 +566,7 @@ void amhw_zlg237_usart_last_bit_clock_pulse (amhw_zlg237_usart_t    *p_hw_usart,
  * \retval none
  */
 am_static_inline
-void amhw_zlg237_usart_clock_phase (amhw_zlg237_usart_t    *p_hw_usart,
+void amhw_stm32f103rbt6_usart_clock_phase (amhw_stm32f103rbt6_usart_t    *p_hw_usart,
                                     uint32_t                flag)
 {
     p_hw_usart->cr2 = (p_hw_usart->cr2 & (~(0x1u << 9))) | (flag << 9);
@@ -585,7 +585,7 @@ void amhw_zlg237_usart_clock_phase (amhw_zlg237_usart_t    *p_hw_usart,
  * \retval none
  */
 am_static_inline
-void amhw_zlg237_usart_clock_polarity (amhw_zlg237_usart_t    *p_hw_usart,
+void amhw_stm32f103rbt6_usart_clock_polarity (amhw_stm32f103rbt6_usart_t    *p_hw_usart,
                                        uint32_t                flag)
 {
     p_hw_usart->cr2 = (p_hw_usart->cr2 & (~(0x1u << 10))) | (flag << 10);
@@ -599,7 +599,7 @@ void amhw_zlg237_usart_clock_polarity (amhw_zlg237_usart_t    *p_hw_usart,
  * \return none
  */
 am_static_inline
-void amhw_zlg237_usart_clock_enable (amhw_zlg237_usart_t *p_hw_usart)
+void amhw_stm32f103rbt6_usart_clock_enable (amhw_stm32f103rbt6_usart_t *p_hw_usart)
 {
     p_hw_usart->cr2 |= (0x1u << 11);
 }
@@ -612,7 +612,7 @@ void amhw_zlg237_usart_clock_enable (amhw_zlg237_usart_t *p_hw_usart)
  * \return none
  */
 am_static_inline
-void amhw_zlg237_usart_clock_disable (amhw_zlg237_usart_t *p_hw_usart)
+void amhw_stm32f103rbt6_usart_clock_disable (amhw_stm32f103rbt6_usart_t *p_hw_usart)
 {
     p_hw_usart->cr2 &= ~(0x1u << 11);
 }
@@ -622,10 +622,10 @@ void amhw_zlg237_usart_clock_disable (amhw_zlg237_usart_t *p_hw_usart)
  * \brief USART stop bit select
  * @{
  */
-#define AMHW_ZLG237_USART_STOP_10_BIT   (0u << 2)  /** <brief 1   stop bit */
-#define AMHW_ZLG237_USART_STOP_05_BIT   (1u << 2)  /** <brief 0.5 stop bit */
-#define AMHW_ZLG237_USART_STOP_20_BIT   (2u << 2)  /** <brief 2   stop bit */
-#define AMHW_ZLG237_USART_STOP_15_BIT   (3u << 2)  /** <brief 1.5 stop bit */
+#define AMHW_STM32F103RBT6_USART_STOP_10_BIT   (0u << 2)  /** <brief 1   stop bit */
+#define AMHW_STM32F103RBT6_USART_STOP_05_BIT   (1u << 2)  /** <brief 0.5 stop bit */
+#define AMHW_STM32F103RBT6_USART_STOP_20_BIT   (2u << 2)  /** <brief 2   stop bit */
+#define AMHW_STM32F103RBT6_USART_STOP_15_BIT   (3u << 2)  /** <brief 1.5 stop bit */
 /** @} */
 
 /**
@@ -637,7 +637,7 @@ void amhw_zlg237_usart_clock_disable (amhw_zlg237_usart_t *p_hw_usart)
  * \retval none
  */
 am_static_inline
-void amhw_zlg237_usart_stop_bit_sel (amhw_zlg237_usart_t    *p_hw_usart,
+void amhw_stm32f103rbt6_usart_stop_bit_sel (amhw_stm32f103rbt6_usart_t    *p_hw_usart,
                                      uint32_t                flag)
 {
     p_hw_usart->cr2 = (p_hw_usart->cr2 & (~(0x3u << 12))) | ((flag >> 2) << 12);
@@ -651,7 +651,7 @@ void amhw_zlg237_usart_stop_bit_sel (amhw_zlg237_usart_t    *p_hw_usart,
  * \return none
  */
 am_static_inline
-void amhw_zlg237_usart_lin_mode_enable (amhw_zlg237_usart_t *p_hw_usart)
+void amhw_stm32f103rbt6_usart_lin_mode_enable (amhw_stm32f103rbt6_usart_t *p_hw_usart)
 {
     p_hw_usart->cr2 |= (1u << 14);
 }
@@ -664,7 +664,7 @@ void amhw_zlg237_usart_lin_mode_enable (amhw_zlg237_usart_t *p_hw_usart)
  * \return none
  */
 am_static_inline
-void amhw_zlg237_usart_lin_mode_disable (amhw_zlg237_usart_t *p_hw_usart)
+void amhw_stm32f103rbt6_usart_lin_mode_disable (amhw_stm32f103rbt6_usart_t *p_hw_usart)
 {
     p_hw_usart->cr2 &= ~(1u << 14);
 }
@@ -680,7 +680,7 @@ void amhw_zlg237_usart_lin_mode_disable (amhw_zlg237_usart_t *p_hw_usart)
  * \return none
  */
 am_static_inline
-void amhw_zlg237_usart_irda_mode_enable (amhw_zlg237_usart_t *p_hw_usart)
+void amhw_stm32f103rbt6_usart_irda_mode_enable (amhw_stm32f103rbt6_usart_t *p_hw_usart)
 {
     p_hw_usart->cr3 |= (1u << 1);
 }
@@ -693,7 +693,7 @@ void amhw_zlg237_usart_irda_mode_enable (amhw_zlg237_usart_t *p_hw_usart)
  * \return none
  */
 am_static_inline
-void amhw_zlg237_usart_irda_mode_disable (amhw_zlg237_usart_t *p_hw_usart)
+void amhw_stm32f103rbt6_usart_irda_mode_disable (amhw_stm32f103rbt6_usart_t *p_hw_usart)
 {
     p_hw_usart->cr3 &= ~(1u << 1);
 }
@@ -706,7 +706,7 @@ void amhw_zlg237_usart_irda_mode_disable (amhw_zlg237_usart_t *p_hw_usart)
  * \return none
  */
 am_static_inline
-void amhw_zlg237_usart_irda_lowpower_enable (amhw_zlg237_usart_t *p_hw_usart)
+void amhw_stm32f103rbt6_usart_irda_lowpower_enable (amhw_stm32f103rbt6_usart_t *p_hw_usart)
 {
     p_hw_usart->cr3 |= (1u << 2);
 }
@@ -719,7 +719,7 @@ void amhw_zlg237_usart_irda_lowpower_enable (amhw_zlg237_usart_t *p_hw_usart)
  * \return none
  */
 am_static_inline
-void amhw_zlg237_usart_irda_lowpower_disable (amhw_zlg237_usart_t *p_hw_usart)
+void amhw_stm32f103rbt6_usart_irda_lowpower_disable (amhw_stm32f103rbt6_usart_t *p_hw_usart)
 {
     p_hw_usart->cr3 &= ~(1u << 2);
 }
@@ -734,7 +734,7 @@ void amhw_zlg237_usart_irda_lowpower_disable (amhw_zlg237_usart_t *p_hw_usart)
  * \retval none
  */
 am_static_inline
-void amhw_zlg237_usart_half_duplex_sel (amhw_zlg237_usart_t    *p_hw_usart,
+void amhw_stm32f103rbt6_usart_half_duplex_sel (amhw_stm32f103rbt6_usart_t    *p_hw_usart,
                                         uint32_t                flag)
 {
     p_hw_usart->cr3 = (p_hw_usart->cr3 & (~(0x1u << 3))) | (flag << 3);
@@ -748,7 +748,7 @@ void amhw_zlg237_usart_half_duplex_sel (amhw_zlg237_usart_t    *p_hw_usart,
  * \return none
  */
 am_static_inline
-void amhw_zlg237_usart_smartcard_nack_enable (amhw_zlg237_usart_t *p_hw_usart)
+void amhw_stm32f103rbt6_usart_smartcard_nack_enable (amhw_stm32f103rbt6_usart_t *p_hw_usart)
 {
     p_hw_usart->cr3 |= (1u << 4);
 }
@@ -761,7 +761,7 @@ void amhw_zlg237_usart_smartcard_nack_enable (amhw_zlg237_usart_t *p_hw_usart)
  * \return none
  */
 am_static_inline
-void amhw_zlg237_usart_smartcard_nack_disable (amhw_zlg237_usart_t *p_hw_usart)
+void amhw_stm32f103rbt6_usart_smartcard_nack_disable (amhw_stm32f103rbt6_usart_t *p_hw_usart)
 {
     p_hw_usart->cr3 &= ~(1u << 4);
 }
@@ -774,7 +774,7 @@ void amhw_zlg237_usart_smartcard_nack_disable (amhw_zlg237_usart_t *p_hw_usart)
  * \return none
  */
 am_static_inline
-void amhw_zlg237_usart_smartcard_mode_enable (amhw_zlg237_usart_t *p_hw_usart)
+void amhw_stm32f103rbt6_usart_smartcard_mode_enable (amhw_stm32f103rbt6_usart_t *p_hw_usart)
 {
     p_hw_usart->cr3 |= (1u << 5);
 }
@@ -787,7 +787,7 @@ void amhw_zlg237_usart_smartcard_mode_enable (amhw_zlg237_usart_t *p_hw_usart)
  * \return none
  */
 am_static_inline
-void amhw_zlg237_usart_smartcard_mode_disable (amhw_zlg237_usart_t *p_hw_usart)
+void amhw_stm32f103rbt6_usart_smartcard_mode_disable (amhw_stm32f103rbt6_usart_t *p_hw_usart)
 {
     p_hw_usart->cr3 &= ~(1u << 5);
 }
@@ -800,7 +800,7 @@ void amhw_zlg237_usart_smartcard_mode_disable (amhw_zlg237_usart_t *p_hw_usart)
  * \return none
  */
 am_static_inline
-void amhw_zlg237_usart_dmar_enable (amhw_zlg237_usart_t *p_hw_usart)
+void amhw_stm32f103rbt6_usart_dmar_enable (amhw_stm32f103rbt6_usart_t *p_hw_usart)
 {
     p_hw_usart->cr3 |= (1u << 6);
 }
@@ -813,7 +813,7 @@ void amhw_zlg237_usart_dmar_enable (amhw_zlg237_usart_t *p_hw_usart)
  * \return none
  */
 am_static_inline
-void amhw_zlg237_usart_dmar_disable (amhw_zlg237_usart_t *p_hw_usart)
+void amhw_stm32f103rbt6_usart_dmar_disable (amhw_stm32f103rbt6_usart_t *p_hw_usart)
 {
     p_hw_usart->cr3 &= ~(1u << 6);
 }
@@ -826,7 +826,7 @@ void amhw_zlg237_usart_dmar_disable (amhw_zlg237_usart_t *p_hw_usart)
  * \return none
  */
 am_static_inline
-void amhw_zlg237_usart_dmat_enable (amhw_zlg237_usart_t *p_hw_usart)
+void amhw_stm32f103rbt6_usart_dmat_enable (amhw_stm32f103rbt6_usart_t *p_hw_usart)
 {
     p_hw_usart->cr3 |= (1u << 7);
 }
@@ -839,7 +839,7 @@ void amhw_zlg237_usart_dmat_enable (amhw_zlg237_usart_t *p_hw_usart)
  * \return none
  */
 am_static_inline
-void amhw_zlg237_usart_dmat_disable (amhw_zlg237_usart_t *p_hw_usart)
+void amhw_stm32f103rbt6_usart_dmat_disable (amhw_stm32f103rbt6_usart_t *p_hw_usart)
 {
     p_hw_usart->cr3 &= ~(1u << 7);
 }
@@ -856,7 +856,7 @@ void amhw_zlg237_usart_dmat_disable (amhw_zlg237_usart_t *p_hw_usart)
  * \return none
  */
 am_static_inline
-void amhw_zlg237_usart_rts_enable (amhw_zlg237_usart_t *p_hw_usart)
+void amhw_stm32f103rbt6_usart_rts_enable (amhw_stm32f103rbt6_usart_t *p_hw_usart)
 {
     p_hw_usart->cr3 |= (1u << 8);
 }
@@ -869,7 +869,7 @@ void amhw_zlg237_usart_rts_enable (amhw_zlg237_usart_t *p_hw_usart)
  * \return none
  */
 am_static_inline
-void amhw_zlg237_usart_rts_disable (amhw_zlg237_usart_t *p_hw_usart)
+void amhw_stm32f103rbt6_usart_rts_disable (amhw_stm32f103rbt6_usart_t *p_hw_usart)
 {
     p_hw_usart->cr3 &= ~(1u << 8);
 }
@@ -887,7 +887,7 @@ void amhw_zlg237_usart_rts_disable (amhw_zlg237_usart_t *p_hw_usart)
  * \return none
  */
 am_static_inline
-void amhw_zlg237_usart_cts_enable (amhw_zlg237_usart_t *p_hw_usart)
+void amhw_stm32f103rbt6_usart_cts_enable (amhw_stm32f103rbt6_usart_t *p_hw_usart)
 {
     p_hw_usart->cr3 |= (1u << 9);
 }
@@ -900,7 +900,7 @@ void amhw_zlg237_usart_cts_enable (amhw_zlg237_usart_t *p_hw_usart)
  * \return none
  */
 am_static_inline
-void amhw_zlg237_usart_cts_disable (amhw_zlg237_usart_t *p_hw_usart)
+void amhw_stm32f103rbt6_usart_cts_disable (amhw_stm32f103rbt6_usart_t *p_hw_usart)
 {
     p_hw_usart->cr3 &= ~(1u << 9);
 }
@@ -930,7 +930,7 @@ void amhw_zlg237_usart_cts_disable (amhw_zlg237_usart_t *p_hw_usart)
  * \retval none
  */
 am_static_inline
-void amhw_zlg237_usart_prescaler_value_sel (amhw_zlg237_usart_t    *p_hw_usart,
+void amhw_stm32f103rbt6_usart_prescaler_value_sel (amhw_stm32f103rbt6_usart_t    *p_hw_usart,
                                             uint32_t                data)
 {
     p_hw_usart->gtpr = (p_hw_usart->gtpr & (~(0xffu << 0))) | (data << 0);
@@ -948,7 +948,7 @@ void amhw_zlg237_usart_prescaler_value_sel (amhw_zlg237_usart_t    *p_hw_usart,
  * \retval none
  */
 am_static_inline
-void amhw_zlg237_usart_guard_time_value_sel (amhw_zlg237_usart_t    *p_hw_usart,
+void amhw_stm32f103rbt6_usart_guard_time_value_sel (amhw_stm32f103rbt6_usart_t    *p_hw_usart,
                                              uint32_t                data)
 {
     p_hw_usart->gtpr = (p_hw_usart->gtpr & (~(0xffu << 8))) | (data << 8);
@@ -963,7 +963,7 @@ void amhw_zlg237_usart_guard_time_value_sel (amhw_zlg237_usart_t    *p_hw_usart,
  * \param[in] baud      :  baud rate
  * \return baud rate
  */
-int amhw_zlg237_usart_baudrate_set (amhw_zlg237_usart_t    *p_hw_usart,
+int amhw_stm32f103rbt6_usart_baudrate_set (amhw_stm32f103rbt6_usart_t    *p_hw_usart,
                                     uint32_t                usart_clk,
                                     uint32_t                baud);
 
@@ -975,7 +975,7 @@ int amhw_zlg237_usart_baudrate_set (amhw_zlg237_usart_t    *p_hw_usart,
  *
  * \return bytes
  */
-uint32_t amhw_zlg237_usart_poll_receive (amhw_zlg237_usart_t    *p_hw_usart,
+uint32_t amhw_stm32f103rbt6_usart_poll_receive (amhw_stm32f103rbt6_usart_t    *p_hw_usart,
                                          uint8_t                *p_rxbuf,
                                          uint32_t                nbytes);
 
@@ -987,7 +987,7 @@ uint32_t amhw_zlg237_usart_poll_receive (amhw_zlg237_usart_t    *p_hw_usart,
  *
  * \return bytes
  */
-uint32_t amhw_zlg237_usart_poll_send (amhw_zlg237_usart_t     *p_hw_usart,
+uint32_t amhw_stm32f103rbt6_usart_poll_send (amhw_stm32f103rbt6_usart_t     *p_hw_usart,
                                       const uint8_t           *p_txbuf,
                                       uint32_t                 nbytes);
 /**
@@ -1015,13 +1015,13 @@ uint32_t amhw_zlg237_usart_poll_send (amhw_zlg237_usart_t     *p_hw_usart,
 /** @} */
 
 /**
- * @} amhw_zlg237_if_usart
+ * @} amhw_stm32f103rbt6_if_usart
  */
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif /* __AMHW_ZLG237_USART_H */
+#endif /* __AMHW_STM32F103RBT6_USART_H */
 
 /* end of file */

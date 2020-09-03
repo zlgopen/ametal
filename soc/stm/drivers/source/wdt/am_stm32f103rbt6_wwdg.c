@@ -20,9 +20,9 @@
  */
 
 #include "ametal.h"
-#include "am_zlg_wwdg.h"
+#include "am_stm32f103rbt6_wwdg.h"
 #include "am_clk.h"
-#include "hw/amhw_zlg_wwdg.h"
+#include "hw/amhw_stm32f103rbt6_wwdg.h"
 
 /****************************************************************************
  * Functions Declaration
@@ -41,7 +41,7 @@ static const struct am_wdt_drv_funcs __g_wwdg_drv_funcs = {
 /** \brief 获取看门狗信息 */
 static int __wwdg_info_get (void *p_drv, am_wdt_info_t *p_info)
 {
-    am_zlg_wwdg_dev_t    *p_dev        = (am_zlg_wwdg_dev_t *)p_drv;
+    am_stm32f103rbt6_wwdg_dev_t    *p_dev        = (am_stm32f103rbt6_wwdg_dev_t *)p_drv;
     uint32_t              wdt_freq     = am_clk_rate_get (p_dev->p_devinfo->clk_num) / 4096;
     uint32_t              wdt_freq_max = wdt_freq / 1;
     uint32_t              wdt_freq_min = wdt_freq / 8;
@@ -56,11 +56,11 @@ static int __wwdg_info_get (void *p_drv, am_wdt_info_t *p_info)
 /** \brief 喂狗操作 */
 static int __wwdg_feed (void *p_drv)
 {
-    am_zlg_wwdg_dev_t *p_dev     = (am_zlg_wwdg_dev_t *)p_drv;
-    amhw_zlg_wwdg_t   *p_hw_wwdg =
-                           (amhw_zlg_wwdg_t *)p_dev->p_devinfo->wwdg_regbase;
+    am_stm32f103rbt6_wwdg_dev_t *p_dev     = (am_stm32f103rbt6_wwdg_dev_t *)p_drv;
+    amhw_stm32f103rbt6_wwdg_t   *p_hw_wwdg =
+                           (amhw_stm32f103rbt6_wwdg_t *)p_dev->p_devinfo->wwdg_regbase;
 
-    amhw_zlg_wwdg_counter_set(p_hw_wwdg, p_dev->count);
+    amhw_stm32f103rbt6_wwdg_counter_set(p_hw_wwdg, p_dev->count);
 
     return AM_OK;
 }
@@ -68,9 +68,9 @@ static int __wwdg_feed (void *p_drv)
 /** \brief 配置超时时间并启动看门狗 */
 static int __wwdg_enable (void *p_drv, uint32_t timeout_ms)
 {
-    am_zlg_wwdg_dev_t *p_dev     = (am_zlg_wwdg_dev_t *)p_drv;
-    amhw_zlg_wwdg_t   *p_hw_wwdg =
-                           (amhw_zlg_wwdg_t *)p_dev->p_devinfo->wwdg_regbase;
+    am_stm32f103rbt6_wwdg_dev_t *p_dev     = (am_stm32f103rbt6_wwdg_dev_t *)p_drv;
+    amhw_stm32f103rbt6_wwdg_t   *p_hw_wwdg =
+                           (amhw_stm32f103rbt6_wwdg_t *)p_dev->p_devinfo->wwdg_regbase;
 
     uint32_t wdt_freq = am_clk_rate_get (p_dev->p_devinfo->clk_num) / 4096;
     uint32_t ticks;
@@ -80,19 +80,19 @@ static int __wwdg_enable (void *p_drv, uint32_t timeout_ms)
 
     div = ticks / 0x40 + 1;
 
-    amhw_zlg_wwdg_winvalue_set (p_hw_wwdg, 0x7f);
+    amhw_stm32f103rbt6_wwdg_winvalue_set (p_hw_wwdg, 0x7f);
 
     if (div <= 1) {
-        amhw_zlg_wwdg_timerbase_set(p_hw_wwdg, 0);
+        amhw_stm32f103rbt6_wwdg_timerbase_set(p_hw_wwdg, 0);
         p_dev->div = 1;
     } else if (div <= 2) {
-        amhw_zlg_wwdg_timerbase_set (p_hw_wwdg, 1);
+        amhw_stm32f103rbt6_wwdg_timerbase_set (p_hw_wwdg, 1);
         p_dev->div = 2;
     } else if (div <= 4) {
-        amhw_zlg_wwdg_timerbase_set (p_hw_wwdg, 2);
+        amhw_stm32f103rbt6_wwdg_timerbase_set (p_hw_wwdg, 2);
         p_dev->div = 4;
     } else if (div <= 8) {
-        amhw_zlg_wwdg_timerbase_set (p_hw_wwdg, 3);
+        amhw_stm32f103rbt6_wwdg_timerbase_set (p_hw_wwdg, 3);
         p_dev->div = 8;
     } else {
         return AM_ERROR;
@@ -102,18 +102,18 @@ static int __wwdg_enable (void *p_drv, uint32_t timeout_ms)
     ticks = (uint64_t) (timeout_ms) * wdt_freq / 1000;
     p_dev->count = (ticks + 0x3f) % 0x7f;
 
-    amhw_zlg_wwdg_counter_set (p_hw_wwdg, p_dev->count);
+    amhw_stm32f103rbt6_wwdg_counter_set (p_hw_wwdg, p_dev->count);
 
     /* 启动看门狗 */
-    amhw_zlg_wwdg_enable(p_hw_wwdg);
+    amhw_stm32f103rbt6_wwdg_enable(p_hw_wwdg);
 
     return AM_OK;
 }
 
 /** \brief 初始化WWDT，获取标准服务句柄 */
 am_wdt_handle_t
-am_zlg_wwdg_init (am_zlg_wwdg_dev_t              *p_dev,
-                     const am_zlg_wwdg_devinfo_t *p_devinfo)
+am_stm32f103rbt6_wwdg_init (am_stm32f103rbt6_wwdg_dev_t              *p_dev,
+                     const am_stm32f103rbt6_wwdg_devinfo_t *p_devinfo)
 {
     if (p_devinfo == NULL) {
         return NULL;
@@ -134,9 +134,9 @@ am_zlg_wwdg_init (am_zlg_wwdg_dev_t              *p_dev,
 }
 
 /** \brief WWDT解初始化 */
-void am_zlg_wwdg_deinit (am_wdt_handle_t handle)
+void am_stm32f103rbt6_wwdg_deinit (am_wdt_handle_t handle)
 {
-    am_zlg_wwdg_dev_t *p_dev = (am_zlg_wwdg_dev_t *)handle;
+    am_stm32f103rbt6_wwdg_dev_t *p_dev = (am_stm32f103rbt6_wwdg_dev_t *)handle;
 
     if (NULL == p_dev) {
         return ;

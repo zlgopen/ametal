@@ -12,62 +12,62 @@
 
 /**
  * \file
- * \brief ZLG237 CLK 用户配置文件
- * \sa am_hwconf_zlg237_clk.c
+ * \brief STM32F103RBT6 CLK 用户配置文件
+ * \sa am_hwconf_stm32f103rbt6_clk.c
  *
  * \internal
  * \par Modification history
  * - 1.00 15-07-03  bob, first implementation
  * \endinternal
  */
-#include "zlg237_pin.h"
+#include "stm32f103rbt6_pin.h"
 #include "am_gpio.h"
-#include "am_zlg237_clk.h"
-#include "amhw_zlg237_rcc.h"
+#include "am_stm32f103rbt6_clk.h"
+#include "amhw_stm32f103rbt6_rcc.h"
 /**
- * \addtogroup am_if_src_hwconf_zlg237_clk
- * \copydoc am_hwconf_zlg237_clk.c
+ * \addtogroup am_if_src_hwconf_stm32f103rbt6_clk
+ * \copydoc am_hwconf_stm32f103rbt6_clk.c
  * @{
  */
 /** \brief CLK 平台初始化 */
-static void __zlg237_clk_plfm_init (void)
+static void __stm32f103rbt6_clk_plfm_init (void)
 {
 }
 
 /** \brief CLK设备信息 */
-static const am_zlg237_clk_devinfo_t __g_clk_devinfo =
+static const am_stm32f103rbt6_clk_devinfo_t __g_clk_devinfo =
 {
     /**
      * \brief 系统时钟源选择
      *
-     * AM_ZLG237_SYSCLK_HSI : HSI 作为系统时钟
-     * AM_ZLG237_SYSCLK_HSE : HSE 作为系统时钟
-     * AM_ZLG237_SYSCLK_PLL : PLL 输出作为系统时钟
-     * AM_ZLG237_SYSCLK_LSI : LSI 输出作为系统时钟
-     * AM_ZLG237_SYSCLK_LSE : LSE 输出作为系统时钟
+     * AM_STM32F103RBT6_SYSCLK_HSI : HSI 作为系统时钟
+     * AM_STM32F103RBT6_SYSCLK_HSE : HSE 作为系统时钟
+     * AM_STM32F103RBT6_SYSCLK_PLL : PLL 输出作为系统时钟
+     * AM_STM32F103RBT6_SYSCLK_LSI : LSI 输出作为系统时钟
+     * AM_STM32F103RBT6_SYSCLK_LSE : LSE 输出作为系统时钟
      */
-    AM_ZLG237_SYSCLK_PLL,
+    AM_STM32F103RBT6_SYSCLK_PLL,
 
     /**
      * \brief HSEOSC外部晶振频率
      *
-     *  如果pllin_src选择 AMHW_ZLG237_PLLCLK_HSE 则 PLLIN = hse_osc）
+     *  如果pllin_src选择 AMHW_STM32F103RBT6_PLLCLK_HSE 则 PLLIN = hse_osc）
      */
     12000000,
 
     /**
      * \brief LSEOSC外部晶振频率
      *
-     *  如果rtc_src选择 AMHW_ZLG237_RTCCLK_LSE 则 rtcclk = lse_osc）
+     *  如果rtc_src选择 AMHW_STM32F103RBT6_RTCCLK_LSE 则 rtcclk = lse_osc）
      */
     0,
 
     /** \brief
      *    PLL 时钟源选择
-     *    -# AMHW_ZLG237_PLLCLK_HSI : HSI 作为PLL输入时钟
-     *    -# AMHW_ZLG237_PLLCLK_HSE : HSE 作为PLL输入时钟
+     *    -# AMHW_STM32F103RBT6_PLLCLK_HSI : HSI 作为PLL输入时钟
+     *    -# AMHW_STM32F103RBT6_PLLCLK_HSE : HSE 作为PLL输入时钟
      */
-    AMHW_ZLG237_PLLCLK_HSE,
+    AMHW_STM32F103RBT6_PLLCLK_HSE,
 
     /**
      * \brief PLL 倍频系数，可选2-17
@@ -77,12 +77,12 @@ static const am_zlg237_clk_devinfo_t __g_clk_devinfo =
 
     /** \brief USB分频系数，
      *
-     *  AMHW_ZLG237_PLL_USB_DIV1P5 : PLL 1.5 分频作为usb输入时钟 ,USBCLK = PLLOUT / 1.5;
-     *  AMHW_ZLG237_PLL_USB_DIV1   : PLL 1 分频作为usb输入时钟 ,  USBCLK = PLLOUT / 1。
+     *  AMHW_STM32F103RBT6_PLL_USB_DIV1P5 : PLL 1.5 分频作为usb输入时钟 ,USBCLK = PLLOUT / 1.5;
+     *  AMHW_STM32F103RBT6_PLL_USB_DIV1   : PLL 1 分频作为usb输入时钟 ,  USBCLK = PLLOUT / 1。
      *
      *  建议配置成48Mhz
      */
-    AMHW_ZLG237_PLL_USB_DIV1,
+    AMHW_STM32F103RBT6_PLL_USB_DIV1,
 
     /**
      * \brief AHB分频系数，AHBCLK = PLLOUT / DIV,AHB最大频率为80Mhz
@@ -127,23 +127,23 @@ static const am_zlg237_clk_devinfo_t __g_clk_devinfo =
     0,
 
     /** \brief 平台初始化函数，配置引脚等工作 */
-    __zlg237_clk_plfm_init,
+    __stm32f103rbt6_clk_plfm_init,
 
     /** \brief 平台解初始化函数 */
     NULL,
 };
 
 /** \brief 时钟设备实例 */
-static am_zlg237_clk_dev_t __g_clk_dev;
+static am_stm32f103rbt6_clk_dev_t __g_clk_dev;
 
 /**
  * \brief CLK 实例初始化，初始化系统时钟
  *
  * \retval AM_OK : 时钟成功初始化
  */
-int am_zlg237_clk_inst_init (void)
+int am_stm32f103rbt6_clk_inst_init (void)
 {
-    return am_zlg237_clk_init(&__g_clk_dev, &__g_clk_devinfo);
+    return am_stm32f103rbt6_clk_init(&__g_clk_dev, &__g_clk_devinfo);
 }
 
 /**

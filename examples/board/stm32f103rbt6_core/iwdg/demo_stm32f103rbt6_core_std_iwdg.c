@@ -19,7 +19,7 @@
  *   2. 修改宏定义 __IWDG_FEED_TIME_MS 的值，小于 1500ms(存在 5ms 误差)，程序正常运行。
  *
  * \par 源代码
- * \snippet demo_zlg237_std_iwdg.c src_zlg237_std_iwdg
+ * \snippet demo_stm32f103rbt6_std_iwdg.c src_stm32f103rbt6_std_iwdg
  *
  * \internal
  * \par Modification history
@@ -28,18 +28,18 @@
  */
 
 /**
- * \addtogroup demo_if_zlg237_std_iwdg
- * \copydoc demo_zlg237_std_iwdg.c
+ * \addtogroup demo_if_stm32f103rbt6_std_iwdg
+ * \copydoc demo_stm32f103rbt6_std_iwdg.c
  */
 
-/** [src_zlg237_std_iwdg] */
+/** [src_stm32f103rbt6_std_iwdg] */
 #include "ametal.h"
 #include "am_board.h"
 #include "am_vdebug.h"
 #include "am_wdt.h"
-#include "am_zlg237_inst_init.h"
+#include "am_stm32f103rbt6_inst_init.h"
 #include "demo_std_entries.h"
-#include "demo_am237_core_entries.h"
+#include "demo_stm32f103rbt6_core_entries.h"
 
 /**
  * \brief 看门狗超时时间
@@ -57,14 +57,14 @@
 /**
  * \brief 例程入口
  */
-void demo_zlg237_core_std_iwdg_entry (void)
+void demo_stm32f103rbt6_core_std_iwdg_entry (void)
 {
-    AM_DBG_INFO("demo am237_core std iwdg!\r\n");
+    AM_DBG_INFO("demo stm32f103rbt6_core std iwdg!\r\n");
 
-    demo_std_wdt_entry(am_zlg237_iwdg_inst_init(),
+    demo_std_wdt_entry(am_stm32f103rbt6_iwdg_inst_init(),
                         __IWDG_TIMEOUT_MS, 
                         __IWDG_FEED_TIME_MS);
 }
-/** [src_zlg237_std_iwdg] */
+/** [src_stm32f103rbt6_std_iwdg] */
 
 /* end of file */

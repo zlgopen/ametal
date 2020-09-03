@@ -20,8 +20,8 @@
  * \endinternal
  */
 
-#ifndef __AM_ZLG237_SPI_SLV_DMA_H
-#define __AM_ZLG237_SPI_SLV_DMA_H
+#ifndef __AM_STM32F103RBT6_SPI_SLV_DMA_H
+#define __AM_STM32F103RBT6_SPI_SLV_DMA_H
 
 #ifdef __cplusplus
 extern "C" {
@@ -29,19 +29,19 @@ extern "C" {
 
 #include "am_spi_slv.h"
 #include "am_softimer.h"
-#include "am_zlg_dma.h"
-#include "hw/amhw_zlg237_spi.h"
+#include "am_stm32f103rbt6_dma.h"
+#include "hw/amhw_stm32f103rbt6_spi.h"
 
 /**
- * \addtogroup am_zlg237_if_spi_slv_dma
- * \copydoc am_zlg_spi_slv_dma.h
+ * \addtogroup am_stm32f103rbt6_if_spi_slv_dma
+ * \copydoc am_stm32f103rbt6_spi_slv_dma.h
  * @{
  */
 
 /**
  * \brief SPI 从机设备信息结构体
  */
-typedef struct am_zlg237_spi_slv_dma_devinfo {
+typedef struct am_stm32f103rbt6_spi_slv_dma_devinfo {
     uint32_t spi_reg_base;           /**< \brief 从机 SPI 寄存器块的基地址 */
     int      clk_id;                 /**< \brief 时钟 ID */
     uint32_t dma_chan_tx;            /**< \brief DMA 发送通道号 */
@@ -49,18 +49,18 @@ typedef struct am_zlg237_spi_slv_dma_devinfo {
     int      cs_pin;                 /**< \breif 片选引脚 */
     void   (*pfn_plfm_init)(void);   /**< \brief SPI 平台初始化函数 */
     void   (*pfn_plfm_deinit)(void); /**< \brief SPI 平台解初始化函数 */
-} am_zlg237_spi_slv_dma_devinfo_t;
+} am_stm32f103rbt6_spi_slv_dma_devinfo_t;
 
 /**
  * \brief SPI 设备结构体
  */
-typedef struct am_zlg237_spi_slv_dma_dev {
+typedef struct am_stm32f103rbt6_spi_slv_dma_dev {
 
     /** \brief SPI 从机标准服务句柄 */
     am_spi_slv_serv_t                      spi_slv_serve;
 
     /** \brief SPI 从机设备信息的指针 */
-    const am_zlg237_spi_slv_dma_devinfo_t *p_devinfo;
+    const am_stm32f103rbt6_spi_slv_dma_devinfo_t *p_devinfo;
 
     /** \brief 从机设备  */
     am_spi_slv_device_t                   *p_spi_slv_dev;
@@ -72,7 +72,7 @@ typedef struct am_zlg237_spi_slv_dma_dev {
     size_t                                 sum_nbytes;
 
     /** \brief DMA 通道描述符 */
-    amhw_zlg_dma_xfer_desc_t               g_desc[2];
+    amhw_stm32f103rbt6_dma_xfer_desc_t               g_desc[2];
 
     uint32_t                               dma_flags;
 
@@ -82,7 +82,7 @@ typedef struct am_zlg237_spi_slv_dma_dev {
     uint32_t                               dummy_txbuf;
     uint32_t                               dummy_rxbuf;
 
-} am_zlg237_spi_slv_dma_dev_t;
+} am_stm32f103rbt6_spi_slv_dma_dev_t;
 
 /**
  * \brief SPI 从机初始化
@@ -93,8 +93,8 @@ typedef struct am_zlg237_spi_slv_dma_dev {
  * \return SPI 标准服务操作句柄
  */
 am_spi_slv_handle_t
-am_zlg237_spi_slv_dma_init (am_zlg237_spi_slv_dma_dev_t           *p_dev,
-                            const am_zlg237_spi_slv_dma_devinfo_t *p_devinfo);
+am_stm32f103rbt6_spi_slv_dma_init (am_stm32f103rbt6_spi_slv_dma_dev_t           *p_dev,
+                            const am_stm32f103rbt6_spi_slv_dma_devinfo_t *p_devinfo);
 
 /**
  * \brief 解除 SPI 从机初始化
@@ -103,7 +103,7 @@ am_zlg237_spi_slv_dma_init (am_zlg237_spi_slv_dma_dev_t           *p_dev,
  *
  * \return 无
  */
-void am_zlg237_spi_slv_dma_deinit (am_spi_slv_handle_t handle);
+void am_stm32f103rbt6_spi_slv_dma_deinit (am_spi_slv_handle_t handle);
 
 /**
  * @}
@@ -113,6 +113,6 @@ void am_zlg237_spi_slv_dma_deinit (am_spi_slv_handle_t handle);
 }
 #endif
 
-#endif /* __AM_ZLG_SPI_SLV_DMA_H */
+#endif /* __AM_STM32F103RBT6_SPI_SLV_DMA_H */
 
 /* end of file */

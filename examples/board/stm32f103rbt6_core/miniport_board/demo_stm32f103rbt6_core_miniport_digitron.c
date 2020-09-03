@@ -15,7 +15,7 @@
  * \brief MiniPort-View 例程，通过标准接口实现
  *
  * - 操作步骤
- *   1. 将 MiniPort-View 板子直接与 AM237 的 MiniPort 接口相连接。
+ *   1. 将 MiniPort-View 板子直接与 STM32F103RBT6 的 MiniPort 接口相连接。
  *
  * - 实验现象：
  *   1. 可以看到数值 0 ~ 59 的秒计数器；
@@ -38,16 +38,16 @@
 /** [src_miniport_digitron] */
 #include "ametal.h"
 #include "am_vdebug.h"
-#include "am_zlg237_inst_init.h"
+#include "am_stm32f103rbt6_inst_init.h"
 #include "am_digitron_disp.h"
-#include "demo_am237_core_entries.h"
+#include "demo_stm32f103rbt6_core_entries.h"
 
 /**
  * \brief 例程入口
  */
-void demo_zlg237_core_miniport_digitron_entry (void)
+void demo_stm32f103rbt6_core_miniport_digitron_entry (void)
 {
-    AM_DBG_INFO("demo am237_core miniport digitron!\r\n");
+    AM_DBG_INFO("demo stm32f103rbt6_core miniport digitron!\r\n");
 
     am_miniport_view_inst_init();
 

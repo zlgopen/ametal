@@ -24,13 +24,13 @@
 includes
 *******************************************************************************/
 
-#include "am_zlg237_spi_int.h"
+#include "am_stm32f103rbt6_spi_int.h"
 #include "ametal.h"
 #include "am_int.h"
 #include "am_gpio.h"
 #include "am_delay.h"
 #include "am_clk.h"
-#include "hw/amhw_zlg237_spi.h"
+#include "hw/amhw_stm32f103rbt6_spi.h"
 
 /*******************************************************************************
   SPI 状态和事件定义
@@ -68,19 +68,19 @@ am_local void __spi_default_cs_ha    (am_spi_device_t *p_dev, int state);
 am_local void __spi_default_cs_la    (am_spi_device_t *p_dev, int state);
 am_local void __spi_default_cs_dummy (am_spi_device_t *p_dev, int state);
 
-am_local void __spi_cs_on  (am_zlg237_spi_int_dev_t *p_this,
+am_local void __spi_cs_on  (am_stm32f103rbt6_spi_int_dev_t *p_this,
                             am_spi_device_t         *p_dev);
-am_local void __spi_cs_off (am_zlg237_spi_int_dev_t *p_this,
+am_local void __spi_cs_off (am_stm32f103rbt6_spi_int_dev_t *p_this,
                             am_spi_device_t         *p_dev);
 
-am_local void __spi_write_data (am_zlg237_spi_int_dev_t *p_dev);
-am_local void __spi_read_data (am_zlg237_spi_int_dev_t *p_dev);
+am_local void __spi_write_data (am_stm32f103rbt6_spi_int_dev_t *p_dev);
+am_local void __spi_read_data (am_stm32f103rbt6_spi_int_dev_t *p_dev);
 
 am_local void __spi_irq_handler (void *p_arg);
-am_local int  __spi_hard_init (am_zlg237_spi_int_dev_t *p_this);
-am_local int  __spi_config (am_zlg237_spi_int_dev_t *p_this);
+am_local int  __spi_hard_init (am_stm32f103rbt6_spi_int_dev_t *p_this);
+am_local int  __spi_config (am_stm32f103rbt6_spi_int_dev_t *p_this);
 
-am_local int  __spi_mst_sm_event (am_zlg237_spi_int_dev_t *p_dev,
+am_local int  __spi_mst_sm_event (am_stm32f103rbt6_spi_int_dev_t *p_dev,
                                   uint32_t                 event);
 /*******************************************************************************
   SPI驱动函数声明
@@ -152,7 +152,7 @@ void __spi_default_cs_dummy (am_spi_device_t *p_dev, int state)
  * \brief CS引脚激活
  */
 am_local
-void __spi_cs_on (am_zlg237_spi_int_dev_t *p_this, am_spi_device_t *p_dev)
+void __spi_cs_on (am_stm32f103rbt6_spi_int_dev_t *p_this, am_spi_device_t *p_dev)
 {
     /* if last device toggled after message */
     if (p_this->p_tgl_dev != NULL) {
@@ -171,7 +171,7 @@ void __spi_cs_on (am_zlg237_spi_int_dev_t *p_this, am_spi_device_t *p_dev)
  * \brief CS引脚去活
  */
 am_local
-void __spi_cs_off (am_zlg237_spi_int_dev_t *p_this,
+void __spi_cs_off (am_stm32f103rbt6_spi_int_dev_t *p_this,
                    am_spi_device_t      *p_dev)
 {
     if (p_this->p_tgl_dev == p_dev) {
@@ -184,16 +184,16 @@ void __spi_cs_off (am_zlg237_spi_int_dev_t *p_this,
 /******************************************************************************/
 
 am_local
-void __spi_write_data (am_zlg237_spi_int_dev_t *p_dev)
+void __spi_write_data (am_stm32f103rbt6_spi_int_dev_t *p_dev)
 {
-    amhw_zlg237_spi_t *p_hw_spi = (amhw_zlg237_spi_t *)(p_dev->p_devinfo->spi_reg_base);
+    amhw_stm32f103rbt6_spi_t *p_hw_spi = (amhw_stm32f103rbt6_spi_t *)(p_dev->p_devinfo->spi_reg_base);
     am_spi_transfer_t *p_trans  = p_dev->p_cur_trans;
 
     if (p_dev == NULL) {
         return ;
     }
 
-    while(amhw_zlg237_spi_status_flag_check (p_hw_spi, AMHW_ZLG237_SPI_TX_EMPTY_FLAG) == AM_FALSE);
+    while(amhw_stm32f103rbt6_spi_status_flag_check (p_hw_spi, AMHW_STM32F103RBT6_SPI_TX_EMPTY_FLAG) == AM_FALSE);
 
     /* tx_buf 有效 */
     if (p_trans->p_txbuf != NULL) {
@@ -201,11 +201,11 @@ void __spi_write_data (am_zlg237_spi_int_dev_t *p_dev)
 
             /** \brief 待发送数据的基址+偏移 */
             uint8_t *ptr = (uint8_t *)(p_trans->p_txbuf) + p_dev->data_ptr;
-            amhw_zlg237_spi_tx_put(p_hw_spi, *ptr);
+            amhw_stm32f103rbt6_spi_tx_put(p_hw_spi, *ptr);
 
         } else {
             uint32_t *ptr = (uint32_t *)(p_trans->p_txbuf) + p_dev->data_ptr;
-            amhw_zlg237_spi_tx_put(p_hw_spi, *ptr);
+            amhw_stm32f103rbt6_spi_tx_put(p_hw_spi, *ptr);
         }
 
     /* tx_buf 无效 */
@@ -213,9 +213,9 @@ void __spi_write_data (am_zlg237_spi_int_dev_t *p_dev)
 
         /* 待发送数据无效 直接发0 */
         if ((p_dev->p_cur_spi_dev->bits_per_word) <= 8) {
-            amhw_zlg237_spi_tx_put(p_hw_spi, 0x00);
+            amhw_stm32f103rbt6_spi_tx_put(p_hw_spi, 0x00);
         } else {
-            amhw_zlg237_spi_tx_put(p_hw_spi, 0x0000);
+            amhw_stm32f103rbt6_spi_tx_put(p_hw_spi, 0x0000);
         }
     }
 
@@ -225,9 +225,9 @@ void __spi_write_data (am_zlg237_spi_int_dev_t *p_dev)
 }
 
 am_local
-void __spi_read_data (am_zlg237_spi_int_dev_t *p_dev)
+void __spi_read_data (am_stm32f103rbt6_spi_int_dev_t *p_dev)
 {
-    amhw_zlg237_spi_t *p_hw_spi = (amhw_zlg237_spi_t *)(p_dev->p_devinfo->spi_reg_base);
+    amhw_stm32f103rbt6_spi_t *p_hw_spi = (amhw_stm32f103rbt6_spi_t *)(p_dev->p_devinfo->spi_reg_base);
 
     am_spi_transfer_t   *p_trans  = p_dev->p_cur_trans;
     uint32_t *p_buf32;
@@ -242,23 +242,23 @@ void __spi_read_data (am_zlg237_spi_int_dev_t *p_dev)
         return ;
     }
 
-    if (amhw_zlg237_spi_status_flag_check (p_hw_spi, AMHW_ZLG237_SPI_RX_NOT_EMPTY_FLAG) == AM_TRUE) {
+    if (amhw_stm32f103rbt6_spi_status_flag_check (p_hw_spi, AMHW_STM32F103RBT6_SPI_RX_NOT_EMPTY_FLAG) == AM_TRUE) {
 
         /* rx_buf 有效 */
         if (p_trans->p_rxbuf != NULL && p_dev->nbytes_to_recv) {
             if ((p_dev->p_cur_spi_dev->bits_per_word) <= 8) {
-                 *p_buf8 = amhw_zlg237_spi_rx_get(p_hw_spi);
+                 *p_buf8 = amhw_stm32f103rbt6_spi_rx_get(p_hw_spi);
             } else {
-                 *p_buf32 = amhw_zlg237_spi_rx_get(p_hw_spi);
+                 *p_buf32 = amhw_stm32f103rbt6_spi_rx_get(p_hw_spi);
             }
 
         /* rx_buf 无效或者不需要接收数据 */
         } else {
             if ((p_dev->p_cur_spi_dev->bits_per_word) <= 8) {
-                (void)amhw_zlg237_spi_rx_get(p_hw_spi);
+                (void)amhw_stm32f103rbt6_spi_rx_get(p_hw_spi);
 
             } else {
-                (void)amhw_zlg237_spi_rx_get(p_hw_spi);
+                (void)amhw_stm32f103rbt6_spi_rx_get(p_hw_spi);
             }
         }
 
@@ -276,7 +276,7 @@ void __spi_read_data (am_zlg237_spi_int_dev_t *p_dev)
  * \attention 调用此函数必须锁定控制器
  */
 am_static_inline
-void __spi_msg_in (am_zlg237_spi_int_dev_t *p_dev,
+void __spi_msg_in (am_stm32f103rbt6_spi_int_dev_t *p_dev,
                    struct am_spi_message   *p_msg)
 {
     am_list_add_tail((struct am_list_head *)(&p_msg->ctlrdata),
@@ -288,7 +288,7 @@ void __spi_msg_in (am_zlg237_spi_int_dev_t *p_dev,
  * \attention 调用此函数必须锁定控制器
  */
 am_static_inline
-struct am_spi_message *__spi_msg_out (am_zlg237_spi_int_dev_t *p_dev)
+struct am_spi_message *__spi_msg_out (am_stm32f103rbt6_spi_int_dev_t *p_dev)
 {
     if (am_list_empty_careful(&(p_dev->msg_list))) {
         return NULL;
@@ -319,7 +319,7 @@ struct am_spi_transfer *__spi_trans_out (am_spi_message_t *msg)
 am_local
 int __spi_setup (void *p_arg, am_spi_device_t *p_dev)
 {
-    am_zlg237_spi_int_dev_t *p_this = (am_zlg237_spi_int_dev_t *)p_arg;
+    am_stm32f103rbt6_spi_int_dev_t *p_this = (am_stm32f103rbt6_spi_int_dev_t *)p_arg;
 
     uint32_t max_speed, min_speed;
 
@@ -376,7 +376,7 @@ int __spi_setup (void *p_arg, am_spi_device_t *p_dev)
 am_local
 int __spi_info_get (void *p_arg, am_spi_info_t *p_info)
 {
-    am_zlg237_spi_int_dev_t  *p_this   = (am_zlg237_spi_int_dev_t *)p_arg;
+    am_stm32f103rbt6_spi_int_dev_t  *p_this   = (am_stm32f103rbt6_spi_int_dev_t *)p_arg;
 
     if (p_info == NULL) {
         return -AM_EINVAL;
@@ -398,9 +398,9 @@ int __spi_info_get (void *p_arg, am_spi_info_t *p_info)
  * \brief SPI 硬件初始化
  */
 am_local
-int __spi_hard_init (am_zlg237_spi_int_dev_t *p_this)
+int __spi_hard_init (am_stm32f103rbt6_spi_int_dev_t *p_this)
 {
-    amhw_zlg237_spi_t *p_hw_spi = (amhw_zlg237_spi_t *)
+    amhw_stm32f103rbt6_spi_t *p_hw_spi = (amhw_stm32f103rbt6_spi_t *)
                                   (p_this->p_devinfo->spi_reg_base);
 
     if (p_this == NULL) {
@@ -408,19 +408,19 @@ int __spi_hard_init (am_zlg237_spi_int_dev_t *p_this)
     }
 
     /* NSS采用软件管理*/
-    amhw_zlg237_spi_ssm_enable(p_hw_spi);
+    amhw_stm32f103rbt6_spi_ssm_enable(p_hw_spi);
 
     /* 关闭硬件SPI的NSS引脚输出*/
-    amhw_zlg237_spi_ssout_disable(p_hw_spi);
+    amhw_stm32f103rbt6_spi_ssout_disable(p_hw_spi);
 
     /* 软件管理下，NSS内部为高，与引脚无关。特别注意，无论硬件、软件管理，配置成主机模式，NSS必须为高*/
-    amhw_zlg237_spi_ssi_set(p_hw_spi,AMHW_ZLG237_SPI_SSI_TO_NSS_ENABLE);
+    amhw_stm32f103rbt6_spi_ssi_set(p_hw_spi,AMHW_STM32F103RBT6_SPI_SSI_TO_NSS_ENABLE);
 
     /* 配置为主机模式 */
-    amhw_zlg237_spi_master_salver_set(p_hw_spi, AMHW_ZLG237_SPI_MASTER);
+    amhw_stm32f103rbt6_spi_master_salver_set(p_hw_spi, AMHW_STM32F103RBT6_SPI_MASTER);
 
     /* SPI使能 */
-    amhw_zlg237_spi_enable(p_hw_spi);
+    amhw_stm32f103rbt6_spi_enable(p_hw_spi);
 
     return AM_OK;
 }
@@ -431,30 +431,30 @@ int __spi_hard_init (am_zlg237_spi_int_dev_t *p_this)
 am_local
 void __spi_irq_handler (void *p_arg)
 {
-    am_zlg237_spi_int_dev_t  *p_dev    = (am_zlg237_spi_int_dev_t *)p_arg;
-    amhw_zlg237_spi_t     *p_hw_spi    = (amhw_zlg237_spi_t *)
+    am_stm32f103rbt6_spi_int_dev_t  *p_dev    = (am_stm32f103rbt6_spi_int_dev_t *)p_arg;
+    amhw_stm32f103rbt6_spi_t     *p_hw_spi    = (amhw_stm32f103rbt6_spi_t *)
                                          (p_dev->p_devinfo->spi_reg_base);
 
     /* 发送数据 */
-    if(amhw_zlg237_spi_status_flag_check(
-        p_hw_spi, AMHW_ZLG237_SPI_TX_EMPTY_FLAG) == AM_TRUE) {
+    if(amhw_stm32f103rbt6_spi_status_flag_check(
+        p_hw_spi, AMHW_STM32F103RBT6_SPI_TX_EMPTY_FLAG) == AM_TRUE) {
 
         __spi_mst_sm_event(p_dev, __SPI_EVT_M_SEND_DATA);
     }
 
     /* 接收数据 */
-    if(amhw_zlg237_spi_status_flag_check(
-        p_hw_spi, AMHW_ZLG237_SPI_RX_NOT_EMPTY_FLAG) == AM_TRUE) {
+    if(amhw_stm32f103rbt6_spi_status_flag_check(
+        p_hw_spi, AMHW_STM32F103RBT6_SPI_RX_NOT_EMPTY_FLAG) == AM_TRUE) {
 
         __spi_mst_sm_event(p_dev, __SPI_EVT_M_RECV_DATA);
     }
 }
 
 am_local
-int __spi_config (am_zlg237_spi_int_dev_t *p_this)
+int __spi_config (am_stm32f103rbt6_spi_int_dev_t *p_this)
 {
-    const am_zlg237_spi_int_devinfo_t *p_devinfo = p_this->p_devinfo;
-    amhw_zlg237_spi_t              *p_hw_spi     = (amhw_zlg237_spi_t *)
+    const am_stm32f103rbt6_spi_int_devinfo_t *p_devinfo = p_this->p_devinfo;
+    amhw_stm32f103rbt6_spi_t              *p_hw_spi     = (amhw_stm32f103rbt6_spi_t *)
                                                    (p_devinfo->spi_reg_base);
     am_spi_transfer_t              *p_trans      = p_this->p_cur_trans;
 
@@ -496,60 +496,60 @@ int __spi_config (am_zlg237_spi_int_dev_t *p_this)
     mode_flag = 0;
 
     if (p_this->p_cur_spi_dev->mode & AM_SPI_LSB_FIRST) {
-         mode_flag |= AMHW_ZLG237_SPI_LSB_FIRST_SEND_LSB;
+         mode_flag |= AMHW_STM32F103RBT6_SPI_LSB_FIRST_SEND_LSB;
     }
 
-    amhw_zlg237_spi_disable(p_hw_spi);
+    amhw_stm32f103rbt6_spi_disable(p_hw_spi);
 
     /* 关闭spi外设*/
-    amhw_zlg237_spi_disable(p_hw_spi);
+    amhw_stm32f103rbt6_spi_disable(p_hw_spi);
 
     /* NSS采用软件管理*/
-    amhw_zlg237_spi_ssm_enable(p_hw_spi);
+    amhw_stm32f103rbt6_spi_ssm_enable(p_hw_spi);
 
     /* 关闭硬件SPI的NSS引脚输出*/
-    amhw_zlg237_spi_ssout_disable(p_hw_spi);
+    amhw_stm32f103rbt6_spi_ssout_disable(p_hw_spi);
 
     /* 软件管理下，NSS内部为高，与引脚无关。特别注意，无论硬件、软件管理，配置成主机模式，NSS必须为高*/
-    amhw_zlg237_spi_ssi_set(p_hw_spi,AMHW_ZLG237_SPI_SSI_TO_NSS_ENABLE);
+    amhw_stm32f103rbt6_spi_ssi_set(p_hw_spi,AMHW_STM32F103RBT6_SPI_SSI_TO_NSS_ENABLE);
 
     /* 设置为主机模式*/
-    amhw_zlg237_spi_master_salver_set(p_hw_spi, AMHW_ZLG237_SPI_MASTER);
+    amhw_stm32f103rbt6_spi_master_salver_set(p_hw_spi, AMHW_STM32F103RBT6_SPI_MASTER);
 
     /* 配置SPI模式（时钟相位和极性） */
-    amhw_zlg237_spi_clk_mode_set(p_hw_spi, 0x3 & p_this->p_cur_spi_dev->mode);
+    amhw_stm32f103rbt6_spi_clk_mode_set(p_hw_spi, 0x3 & p_this->p_cur_spi_dev->mode);
 
     /* 配置SPI工作特性 */
-    amhw_zlg237_spi_lsbfirst_set(p_hw_spi, mode_flag);
+    amhw_stm32f103rbt6_spi_lsbfirst_set(p_hw_spi, mode_flag);
 
     /* 配置SPI数据长度 */
-    amhw_zlg237_spi_data_length_set(p_hw_spi, AMHW_ZLG237_SPI_DATA_8BIT);
+    amhw_stm32f103rbt6_spi_data_length_set(p_hw_spi, AMHW_STM32F103RBT6_SPI_DATA_8BIT);
 
     /* 配置SPI数据长度和帧格式 */
     if (p_this->p_cur_spi_dev->bits_per_word == 8) {
-        amhw_zlg237_spi_lsbfirst_set(p_hw_spi, mode_flag);
-        amhw_zlg237_spi_data_length_set(p_hw_spi, AMHW_ZLG237_SPI_DATA_8BIT);
+        amhw_stm32f103rbt6_spi_lsbfirst_set(p_hw_spi, mode_flag);
+        amhw_stm32f103rbt6_spi_data_length_set(p_hw_spi, AMHW_STM32F103RBT6_SPI_DATA_8BIT);
     }
     else if (p_this->p_cur_spi_dev->bits_per_word == 16) {
-        amhw_zlg237_spi_lsbfirst_set(p_hw_spi, mode_flag);
-        amhw_zlg237_spi_data_length_set(p_hw_spi, AMHW_ZLG237_SPI_DATA_16BIT);
+        amhw_stm32f103rbt6_spi_lsbfirst_set(p_hw_spi, mode_flag);
+        amhw_stm32f103rbt6_spi_data_length_set(p_hw_spi, AMHW_STM32F103RBT6_SPI_DATA_16BIT);
     }
     else if ((p_this->p_cur_spi_dev->bits_per_word >= 1) ||
              (p_this->p_cur_spi_dev->bits_per_word <= 32)) {
-        amhw_zlg237_spi_lsbfirst_set(p_hw_spi, mode_flag);
-        amhw_zlg237_spi_flex_length_set(p_hw_spi,
+        amhw_stm32f103rbt6_spi_lsbfirst_set(p_hw_spi, mode_flag);
+        amhw_stm32f103rbt6_spi_flex_length_set(p_hw_spi,
                                         p_this->p_cur_spi_dev->bits_per_word);
-        amhw_zlg237_spi_flexlength_enable(p_hw_spi);
+        amhw_stm32f103rbt6_spi_flexlength_enable(p_hw_spi);
     }
     else {
-        amhw_zlg237_spi_lsbfirst_set(p_hw_spi, mode_flag);
-        amhw_zlg237_spi_data_length_set(p_hw_spi, AMHW_ZLG237_SPI_DATA_8BIT);
+        amhw_stm32f103rbt6_spi_lsbfirst_set(p_hw_spi, mode_flag);
+        amhw_stm32f103rbt6_spi_data_length_set(p_hw_spi, AMHW_STM32F103RBT6_SPI_DATA_8BIT);
     }
 
     /* 设置SPI速率 */
-    amhw_zlg237_spi_baudratefre_set(p_hw_spi, p_this->p_devinfo->baud_div);
+    amhw_stm32f103rbt6_spi_baudratefre_set(p_hw_spi, p_this->p_devinfo->baud_div);
 
-    amhw_zlg237_spi_enable(p_hw_spi);
+    amhw_stm32f103rbt6_spi_enable(p_hw_spi);
 
     return AM_OK;
 }
@@ -562,7 +562,7 @@ int __spi_msg_start (void              *p_drv,
                      am_spi_device_t   *p_dev,
                      am_spi_message_t  *p_msg)
 {
-    am_zlg237_spi_int_dev_t *p_this = (am_zlg237_spi_int_dev_t *)p_drv;
+    am_stm32f103rbt6_spi_int_dev_t *p_this = (am_stm32f103rbt6_spi_int_dev_t *)p_drv;
 
     int key;
 
@@ -609,9 +609,9 @@ int __spi_msg_start (void              *p_drv,
  * \brief SPI 使用状态机传输
  */
 am_local
-int __spi_mst_sm_event (am_zlg237_spi_int_dev_t *p_dev, uint32_t event)
+int __spi_mst_sm_event (am_stm32f103rbt6_spi_int_dev_t *p_dev, uint32_t event)
 {
-    amhw_zlg237_spi_t *p_hw_spi = (amhw_zlg237_spi_t *)
+    amhw_stm32f103rbt6_spi_t *p_hw_spi = (amhw_stm32f103rbt6_spi_t *)
                                   (p_dev->p_devinfo->spi_reg_base);
 
     volatile uint32_t new_event = __SPI_EVT_NONE;
@@ -658,7 +658,7 @@ int __spi_mst_sm_event (am_zlg237_spi_int_dev_t *p_dev, uint32_t event)
             } else {
 
                 /* 禁能所有中断 */
-                amhw_zlg237_spi_int_disable(p_hw_spi, AMHW_ZLG237_SPI_INT_ALL);
+                amhw_stm32f103rbt6_spi_int_disable(p_hw_spi, AMHW_STM32F103RBT6_SPI_INT_ALL);
 
                 p_dev->busy = AM_FALSE;
             }
@@ -760,15 +760,15 @@ int __spi_mst_sm_event (am_zlg237_spi_int_dev_t *p_dev, uint32_t event)
             if (p_dev->data_ptr >= p_cur_trans->nbytes) {
 
                  /* 关闭中断等待发送就绪 */
-                 amhw_zlg237_spi_int_disable(p_hw_spi, AMHW_ZLG237_SPI_INT_ALL);
+                 amhw_stm32f103rbt6_spi_int_disable(p_hw_spi, AMHW_STM32F103RBT6_SPI_INT_ALL);
 
                  /* 回到传输开始状态 */
                  __SPI_NEXT_STATE(__SPI_ST_TRANS_START, __SPI_EVT_TRANS_LAUNCH);
 
                  break;
             } else {
-                if (amhw_zlg237_spi_status_flag_check (
-                    p_hw_spi, AMHW_ZLG237_SPI_TX_EMPTY_FLAG) == AM_TRUE) {
+                if (amhw_stm32f103rbt6_spi_status_flag_check (
+                    p_hw_spi, AMHW_STM32F103RBT6_SPI_TX_EMPTY_FLAG) == AM_TRUE) {
 
                     /* 向从机写数据 */
                     __spi_write_data(p_dev);
@@ -776,15 +776,15 @@ int __spi_mst_sm_event (am_zlg237_spi_int_dev_t *p_dev, uint32_t event)
                     __SPI_NEXT_STATE(__SPI_ST_M_RECV_DATA, __SPI_EVT_NONE);
 
                     /* Enable RX interrupt */
-                    amhw_zlg237_spi_int_enable(
-                        p_hw_spi,AMHW_ZLG237_SPI_INT_RX_NOT_EMPTY);
+                    amhw_stm32f103rbt6_spi_int_enable(
+                        p_hw_spi,AMHW_STM32F103RBT6_SPI_INT_RX_NOT_EMPTY);
 
 
                 } else {
 
                     /* 打开中断等待发送就绪 */
-                    amhw_zlg237_spi_int_enable(p_hw_spi,
-                                               AMHW_ZLG237_SPI_INT_TX_EMPTY);
+                    amhw_stm32f103rbt6_spi_int_enable(p_hw_spi,
+                                               AMHW_STM32F103RBT6_SPI_INT_TX_EMPTY);
                 }
             }
             break;
@@ -815,10 +815,10 @@ int __spi_mst_sm_event (am_zlg237_spi_int_dev_t *p_dev, uint32_t event)
                 __SPI_NEXT_STATE(__SPI_ST_M_SEND_DATA, __SPI_EVT_M_SEND_DATA);
 
                 /* 禁能发送及接收中断 */
-                amhw_zlg237_spi_int_disable(p_hw_spi,
-                                            AMHW_ZLG237_SPI_INT_TX_EMPTY);
-                amhw_zlg237_spi_int_disable(p_hw_spi,
-                                            AMHW_ZLG237_SPI_INT_RX_NOT_EMPTY);
+                amhw_stm32f103rbt6_spi_int_disable(p_hw_spi,
+                                            AMHW_STM32F103RBT6_SPI_INT_TX_EMPTY);
+                amhw_stm32f103rbt6_spi_int_disable(p_hw_spi,
+                                            AMHW_STM32F103RBT6_SPI_INT_RX_NOT_EMPTY);
 
             /* 需要接收更多数据 */
             } else {
@@ -848,9 +848,9 @@ int __spi_mst_sm_event (am_zlg237_spi_int_dev_t *p_dev, uint32_t event)
 /**
  * \brief SPI初始化
  */
-am_spi_handle_t am_zlg237_spi_int_init (
-    am_zlg237_spi_int_dev_t           *p_dev,
-    const am_zlg237_spi_int_devinfo_t *p_devinfo)
+am_spi_handle_t am_stm32f103rbt6_spi_int_init (
+    am_stm32f103rbt6_spi_int_dev_t           *p_dev,
+    const am_stm32f103rbt6_spi_int_devinfo_t *p_devinfo)
 {
     if (NULL == p_devinfo || NULL == p_dev ) {
         return NULL;
@@ -892,10 +892,10 @@ am_spi_handle_t am_zlg237_spi_int_init (
 /**
  * \brief SPI 去除初始化
  */
-void am_zlg237_spi_int_deinit (am_spi_handle_t handle)
+void am_stm32f103rbt6_spi_int_deinit (am_spi_handle_t handle)
 {
-    am_zlg237_spi_int_dev_t *p_dev    = (am_zlg237_spi_int_dev_t *)handle;
-    amhw_zlg237_spi_t       *p_hw_spi = (amhw_zlg237_spi_t *)
+    am_stm32f103rbt6_spi_int_dev_t *p_dev    = (am_stm32f103rbt6_spi_int_dev_t *)handle;
+    amhw_stm32f103rbt6_spi_t       *p_hw_spi = (amhw_stm32f103rbt6_spi_t *)
                                         (p_dev->p_devinfo->spi_reg_base);
 
     if (NULL == p_dev) {
@@ -906,7 +906,7 @@ void am_zlg237_spi_int_deinit (am_spi_handle_t handle)
     p_dev->spi_serve.p_drv   = NULL;
 
     /* 禁能SPI */
-    amhw_zlg237_spi_disable(p_hw_spi);
+    amhw_stm32f103rbt6_spi_disable(p_hw_spi);
 
     /* 关闭SPI中断号并断开连接 */
     am_int_disable(p_dev->p_devinfo->inum);

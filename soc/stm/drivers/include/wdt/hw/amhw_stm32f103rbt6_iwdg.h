@@ -46,20 +46,20 @@ extern "C" {
 #endif
 
 /**
- * \addtogroup amhw_zlg_if_iwdg
- * \copydoc amhw_zlg_iwdg.h
+ * \addtogroup amhw_stm32f103rbt6_if_iwdg
+ * \copydoc amhw_stm32f103rbt6_iwdg.h
  * @{
  */
 
 /**
  * \brief IWDG寄存器块结构体
  */
-typedef struct amhw_zlg_iwdg {
+typedef struct amhw_stm32f103rbt6_iwdg {
     __IO uint32_t kr;  /**< \brief 键寄存器 */
     __IO uint32_t pr;  /**< \brief 预分频寄存器 */
     __IO uint32_t rlr; /**< \brief 重装载寄存器 */
     __IO uint32_t sr;  /**< \brief 状态寄存器 */
-} amhw_zlg_iwdg_t;
+} amhw_stm32f103rbt6_iwdg_t;
 
 /**
  * \brief 写键值
@@ -74,7 +74,7 @@ typedef struct amhw_zlg_iwdg {
  * \return 无
  */
 am_static_inline
-void amhw_zlg_iwdg_keyvalue_set (amhw_zlg_iwdg_t    *p_hw_iwdg,
+void amhw_stm32f103rbt6_iwdg_keyvalue_set (amhw_stm32f103rbt6_iwdg_t    *p_hw_iwdg,
                                  uint16_t            key)
 {
     p_hw_iwdg->kr = key;
@@ -98,7 +98,7 @@ void amhw_zlg_iwdg_keyvalue_set (amhw_zlg_iwdg_t    *p_hw_iwdg,
  * \return 无
  */
 am_static_inline
-void amhw_zlg_iwdg_div_set (amhw_zlg_iwdg_t    *p_hw_iwdg,
+void amhw_stm32f103rbt6_iwdg_div_set (amhw_stm32f103rbt6_iwdg_t    *p_hw_iwdg,
                             uint8_t             div)
 {
     p_hw_iwdg->pr = (div & 0x7ul);
@@ -113,7 +113,7 @@ void amhw_zlg_iwdg_div_set (amhw_zlg_iwdg_t    *p_hw_iwdg,
  * \return 无
  */
 am_static_inline
-void amhw_zlg_iwdg_reload_set (amhw_zlg_iwdg_t    *p_hw_iwdg,
+void amhw_stm32f103rbt6_iwdg_reload_set (amhw_stm32f103rbt6_iwdg_t    *p_hw_iwdg,
                                uint16_t            val)
 {
     p_hw_iwdg->rlr = (val & 0xffful);
@@ -131,7 +131,7 @@ void amhw_zlg_iwdg_reload_set (amhw_zlg_iwdg_t    *p_hw_iwdg,
  *        - 2 ： 看门狗计数器重装载值更新
  */
 am_static_inline
-uint8_t amhw_zlg_iwdg_status_get (amhw_zlg_iwdg_t *p_hw_iwdg)
+uint8_t amhw_stm32f103rbt6_iwdg_status_get (amhw_stm32f103rbt6_iwdg_t *p_hw_iwdg)
 {
    return (uint8_t)(p_hw_iwdg->sr & 0x3);
 }

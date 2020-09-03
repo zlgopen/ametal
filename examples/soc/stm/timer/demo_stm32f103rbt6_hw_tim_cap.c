@@ -21,7 +21,7 @@
  *   1. 调试串口打印捕获到的 PWM 信号的周期和频率。
  *
  * \par 源代码
- * \snippet demo_zlg_hw_tim_cap.c src_zlg_hw_tim_cap
+ * \snippet demo_stm32f103rbt6_hw_tim_cap.c src_stm32f103rbt6_hw_tim_cap
  *
  * \internal
  * \par Modification history
@@ -30,25 +30,25 @@
  */
 
 /**
- * \addtogroup demo_if_zlg_hw_tim_cap
- * \copydoc demo_zlg_hw_tim_cap.c
+ * \addtogroup demo_if_stm32f103rbt6_hw_tim_cap
+ * \copydoc demo_stm32f103rbt6_hw_tim_cap.c
  */
 
-/** [src_zlg_hw_tim_cap] */
+/** [src_stm32f103rbt6_hw_tim_cap] */
 #include "ametal.h"
 #include "am_cap.h"
 #include "am_int.h"
 #include "am_delay.h"
 #include "am_vdebug.h"
-#include "hw/amhw_zlg_tim.h"
+#include "hw/amhw_stm32f103rbt6_tim.h"
 
 static volatile am_bool_t g_flag       = AM_FALSE; /**< \brief 捕获标志 */
 static volatile uint32_t  g_time_ns    = 0;        /**< \brief 捕获计数值 */
 static uint32_t           __g_clk_rate = 0;        /**< \brief 时钟频率 */
 
-static void __zlg_tim_hw_cap_irq_handler (void *p_arg)
+static void __stm32f103rbt6_tim_hw_cap_irq_handler (void *p_arg)
 {
-    amhw_zlg_tim_t   *p_hw_tim  = (amhw_zlg_tim_t *)p_arg;
+    amhw_stm32f103rbt6_tim_t   *p_hw_tim  = (amhw_stm32f103rbt6_tim_t *)p_arg;
     uint8_t           chans_num = 4;
 
     uint8_t           i         = 1;
@@ -64,10 +64,10 @@ static void __zlg_tim_hw_cap_irq_handler (void *p_arg)
 
 
     for (i = 1; i <= chans_num; i++) {
-        if ((amhw_zlg_tim_status_flg_get(p_hw_tim, 1UL << i)) != 0) {
+        if ((amhw_stm32f103rbt6_tim_status_flg_get(p_hw_tim, 1UL << i)) != 0) {
 
             /* 得到对应通道的值 */
-            value = amhw_zlg_tim_ccr_cap_val_get(p_hw_tim, i - 1);
+            value = amhw_stm32f103rbt6_tim_ccr_cap_val_get(p_hw_tim, i - 1);
                       if(0 == i - 1) {
                 if (g_flag == AM_FALSE) {
 
@@ -82,7 +82,7 @@ static void __zlg_tim_hw_cap_irq_handler (void *p_arg)
                         /* 定时器TIM不是32位计数器时, 避免溢出时数据错误 */
                         if(count16 < value) {
 
-                            reg_pre = (uint16_t)amhw_zlg_tim_prescale_get(p_hw_tim);
+                            reg_pre = (uint16_t)amhw_stm32f103rbt6_tim_prescale_get(p_hw_tim);
 
                             pre = reg_pre + 1;
 
@@ -105,7 +105,7 @@ static void __zlg_tim_hw_cap_irq_handler (void *p_arg)
                 }
                       }
             /* 清除通道i标志 */
-            amhw_zlg_tim_status_flg_clr(p_hw_tim, (1UL << i));
+            amhw_stm32f103rbt6_tim_status_flg_clr(p_hw_tim, (1UL << i));
         }
     }
 }
@@ -113,24 +113,24 @@ static void __zlg_tim_hw_cap_irq_handler (void *p_arg)
 /**
  * \brief 配置定时器为输入捕获
  */
-static void tim_cap_chan_config (amhw_zlg_tim_t     *p_hw_tim,
-                                 amhw_zlg_tim_type_t type,
+static void tim_cap_chan_config (amhw_stm32f103rbt6_tim_t     *p_hw_tim,
+                                 amhw_stm32f103rbt6_tim_type_t type,
                                  uint32_t            chan,
                                  uint32_t            cap_edge)
 {
 
     /* 配置输入不分频, 1 次边沿就触发 1 次捕获 */
-    amhw_zlg_tim_icpsc_set(p_hw_tim, 0, chan);
+    amhw_stm32f103rbt6_tim_icpsc_set(p_hw_tim, 0, chan);
 
     /* 选择输入端通道映射不反相 */
-    amhw_zlg_tim_ccs_set(p_hw_tim, 1, chan);
+    amhw_stm32f103rbt6_tim_ccs_set(p_hw_tim, 1, chan);
 
     /* 设置输入滤波器的分频值为 0(默认不使用滤波) */
-    amhw_zlg_tim_icf_set(p_hw_tim, AMHW_ZLG_TIM_ICF_FSAMPLING0, chan);
+    amhw_stm32f103rbt6_tim_icf_set(p_hw_tim, AMHW_STM32F103RBT6_TIM_ICF_FSAMPLING0, chan);
 
     /*  选择上升沿触发 */
     if ((cap_edge & AM_CAP_TRIGGER_RISE) == AM_CAP_TRIGGER_RISE) {
-        amhw_zlg_tim_ccp_captrigger_set(p_hw_tim,
+        amhw_stm32f103rbt6_tim_ccp_captrigger_set(p_hw_tim,
                                            type,
                                            AM_CAP_TRIGGER_RISE,
                                            chan);
@@ -138,79 +138,79 @@ static void tim_cap_chan_config (amhw_zlg_tim_t     *p_hw_tim,
 
     /*  选择下降沿触发 */
     if ((cap_edge & AM_CAP_TRIGGER_FALL) == AM_CAP_TRIGGER_FALL) {
-        amhw_zlg_tim_ccp_captrigger_set(p_hw_tim,
+        amhw_stm32f103rbt6_tim_ccp_captrigger_set(p_hw_tim,
                                            type,
                                            AM_CAP_TRIGGER_FALL,
                                            chan);
     }
 }
 
-static void tim_cap_enable (amhw_zlg_tim_t *p_hw_tim,
+static void tim_cap_enable (amhw_stm32f103rbt6_tim_t *p_hw_tim,
                             uint32_t        chan,
                             uint8_t         int_num)
 {
 
     /* 中断连接并使能 */
-    am_int_connect(int_num, __zlg_tim_hw_cap_irq_handler, (void *)p_hw_tim);
+    am_int_connect(int_num, __stm32f103rbt6_tim_hw_cap_irq_handler, (void *)p_hw_tim);
     am_int_enable(int_num);
 
     /* 设置自动重装寄存器的值 */
-    amhw_zlg_tim_arr_set(p_hw_tim, 0xffffffff);
+    amhw_stm32f103rbt6_tim_arr_set(p_hw_tim, 0xffffffff);
 
     /* 清零计数器 */
-    amhw_zlg_tim_count_set(p_hw_tim, 0);
+    amhw_stm32f103rbt6_tim_count_set(p_hw_tim, 0);
 
     /* 产生更新事件，重新初始化Prescaler计数器 及Repetition计数器 */
-    amhw_zlg_tim_egr_set(p_hw_tim, AMHW_ZLG_TIM_UG);
+    amhw_stm32f103rbt6_tim_egr_set(p_hw_tim, AMHW_STM32F103RBT6_TIM_UG);
 
-    if (amhw_zlg_tim_status_flg_get(p_hw_tim, AMHW_ZLG_TIM_UG) != 0) {
+    if (amhw_stm32f103rbt6_tim_status_flg_get(p_hw_tim, AMHW_STM32F103RBT6_TIM_UG) != 0) {
 
         /* 更新定时器时会产生更新事件,清除标志位 */
-        amhw_zlg_tim_status_flg_clr(p_hw_tim, AMHW_ZLG_TIM_UG);
+        amhw_stm32f103rbt6_tim_status_flg_clr(p_hw_tim, AMHW_STM32F103RBT6_TIM_UG);
     }
 
     /* 允许捕获计数器的值到捕获寄存器中 */
-    amhw_zlg_tim_cce_cap_enable(p_hw_tim, chan);
+    amhw_stm32f103rbt6_tim_cce_cap_enable(p_hw_tim, chan);
 
     /* 允许捕获中断 */
-    amhw_zlg_tim_int_enable(p_hw_tim, (1UL << (chan + 1)));
+    amhw_stm32f103rbt6_tim_int_enable(p_hw_tim, (1UL << (chan + 1)));
 
     /*　使能定时器TIM允许计数 */
-    amhw_zlg_tim_enable(p_hw_tim);
+    amhw_stm32f103rbt6_tim_enable(p_hw_tim);
 }
 
 /**
  * \brief 定时器输入捕获初始化函数
  */
-static void tim_cap_init (amhw_zlg_tim_t *p_hw_tim, amhw_zlg_tim_type_t type)
+static void tim_cap_init (amhw_stm32f103rbt6_tim_t *p_hw_tim, amhw_stm32f103rbt6_tim_type_t type)
 {
-    if ((AMHW_ZLG_TIM_TYPE0 == type) || (AMHW_ZLG_TIM_TYPE1 == type)) {
+    if ((AMHW_STM32F103RBT6_TIM_TYPE0 == type) || (AMHW_STM32F103RBT6_TIM_TYPE1 == type)) {
 
         /* 边沿对齐模式 */
-        amhw_zlg_tim_cms_set(p_hw_tim, 0);
+        amhw_stm32f103rbt6_tim_cms_set(p_hw_tim, 0);
 
         /* 向上计数 */
-        amhw_zlg_tim_dir_set(p_hw_tim, 0);
+        amhw_stm32f103rbt6_tim_dir_set(p_hw_tim, 0);
     }
 
     /* 设置时钟分割(用于确定输入滤波器的输入时钟频率,默认 Fdts = Fck_in */
-    amhw_zlg_tim_ckd_set(p_hw_tim, 0);
+    amhw_stm32f103rbt6_tim_ckd_set(p_hw_tim, 0);
 
     /* 清零计数器 */
-    amhw_zlg_tim_count_set(p_hw_tim, 0);
+    amhw_stm32f103rbt6_tim_count_set(p_hw_tim, 0);
 
     /* 设置分频器 */
-    amhw_zlg_tim_prescale_set(p_hw_tim, 0x00);
+    amhw_stm32f103rbt6_tim_prescale_set(p_hw_tim, 0x00);
 
     /* 允许更新事件 */
-    amhw_zlg_tim_udis_enable(p_hw_tim);
+    amhw_stm32f103rbt6_tim_udis_enable(p_hw_tim);
 }
 
 /**
  * \brief 例程入口
  */
-void demo_zlg_hw_tim_cap_entry (amhw_zlg_tim_t      *p_hw_tim,
-                                amhw_zlg_tim_type_t  type,
+void demo_stm32f103rbt6_hw_tim_cap_entry (amhw_stm32f103rbt6_tim_t      *p_hw_tim,
+                                amhw_stm32f103rbt6_tim_type_t  type,
                                 uint32_t             chan,
                                 uint32_t             clk_rate,
                                 int32_t              inum)
@@ -242,6 +242,6 @@ void demo_zlg_hw_tim_cap_entry (amhw_zlg_tim_t      *p_hw_tim,
         }
     }
 }
-/** [src_zlg_hw_tim_cap] */
+/** [src_stm32f103rbt6_hw_tim_cap] */
 
 /* end of file */

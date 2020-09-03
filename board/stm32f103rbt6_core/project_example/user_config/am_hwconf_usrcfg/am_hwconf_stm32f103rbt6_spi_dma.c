@@ -12,8 +12,8 @@
 
 /**
  * \file
- * \brief ZLG237 SPI DMA 用户配置文件
- * \sa am_hwconf_zlg237_spi.c
+ * \brief STM32F103RBT6 SPI DMA 用户配置文件
+ * \sa am_hwconf_stm32f103rbt6_spi.c
  *
  * \internal
  * \par Modification history
@@ -21,22 +21,22 @@
  * \endinternal
  */
 
-#include "am_zlg237.h"
-#include "zlg237_dma_chan.h"
+#include "am_stm32f103rbt6.h"
+#include "stm32f103rbt6_dma_chan.h"
 #include "ametal.h"
-#include "am_zlg237_spi_dma.h"
+#include "am_stm32f103rbt6_spi_dma.h"
 #include "am_gpio.h"
-#include "amhw_zlg237_spi.h"
+#include "amhw_stm32f103rbt6_spi.h"
 #include "am_clk.h"
 
 /**
- * \addtogroup am_if_src_hwconf_zlg237_spi_dma
- * \copydoc am_hwconf_zlg237_spi_dma.c
+ * \addtogroup am_if_src_hwconf_stm32f103rbt6_spi_dma
+ * \copydoc am_hwconf_stm32f103rbt6_spi_dma.c
  * @{
  */
 
 /** \brief SPI1 平台初始化 */
-static void __zlg237_plfm_spi1_dma_init (void)
+static void __stm32f103rbt6_plfm_spi1_dma_init (void)
 {
     am_gpio_pin_cfg(PIOA_5, PIOA_5_SPI1_SCK_REMAP0  | PIOA_5_AF_PP);
     am_gpio_pin_cfg(PIOA_6, PIOA_6_SPI1_MISO_REMAP0 | PIOA_6_INPUT_FLOAT);
@@ -46,7 +46,7 @@ static void __zlg237_plfm_spi1_dma_init (void)
 }
 
 /** \brief 解除 SPI1 平台初始化 */
-static void __zlg237_plfm_spi1_dma_deinit (void)
+static void __stm32f103rbt6_plfm_spi1_dma_deinit (void)
 {
     am_gpio_pin_cfg(PIOA_5, AM_GPIO_INPUT);
     am_gpio_pin_cfg(PIOA_6, AM_GPIO_INPUT);
@@ -56,15 +56,15 @@ static void __zlg237_plfm_spi1_dma_deinit (void)
 }
 
 /** \brief SPI1 设备信息 */
-static const  struct am_zlg237_spi_dma_devinfo  __g_spi1_dma_devinfo = {
-    ZLG237_SPI1_BASE,                        /**< \brief SPI1寄存器指针 */
+static const  struct am_stm32f103rbt6_spi_dma_devinfo  __g_spi1_dma_devinfo = {
+    STM32F103RBT6_SPI1_BASE,                        /**< \brief SPI1寄存器指针 */
     CLK_SPI1,                                /**< \brief 时钟ID号 */
-    AMHW_ZLG237_SPI_BAUDRATE_PRESCALER_128,  /**< \brief 时钟分频系数 */
+    AMHW_STM32F103RBT6_SPI_BAUDRATE_PRESCALER_128,  /**< \brief 时钟分频系数 */
     INUM_SPI1,                               /**< \brief SPI1中断号 */
 
     0,                                       /**< \brief SPI1 CS拉低后延时等待（ms），再进行数据传输。
                                               *
-                                              *   从机为本zlg237软件包对应的spi_slaver时，请将延时设置为
+                                              *   从机为本stm32f103rbt6软件包对应的spi_slaver时，请将延时设置为
                                               *   100ms。请打开AM_CFG_DELAY_ENABLE宏定义
                                               *   从机不满足上述条件时，延时一般设置为0ms。
                                               **/
@@ -72,27 +72,27 @@ static const  struct am_zlg237_spi_dma_devinfo  __g_spi1_dma_devinfo = {
     PIOA_7_SPI1_MOSI_REMAP0 | PIOA_7_AF_PP,  /**< \brief SPI1配置标识 */
     DMA_CHAN_SPI1_TX,
     DMA_CHAN_SPI1_RX,
-    __zlg237_plfm_spi1_dma_init,             /**< \brief SPI1平台初始化函数 */
-    __zlg237_plfm_spi1_dma_deinit            /**< \brief SPI1平台解初始化函数 */
+    __stm32f103rbt6_plfm_spi1_dma_init,             /**< \brief SPI1平台初始化函数 */
+    __stm32f103rbt6_plfm_spi1_dma_deinit            /**< \brief SPI1平台解初始化函数 */
 };
 /** \brief SPI1 设备实例 */
-static am_zlg237_spi_dma_dev_t __g_spi1_dma_dev;
+static am_stm32f103rbt6_spi_dma_dev_t __g_spi1_dma_dev;
 
 
 /** \brief SPI1 实例初始化，获得SPI标准服务句柄 */
-am_spi_handle_t am_zlg237_spi1_dma_inst_init (void)
+am_spi_handle_t am_stm32f103rbt6_spi1_dma_inst_init (void)
 {
-    return am_zlg237_spi_dma_init(&__g_spi1_dma_dev, &__g_spi1_dma_devinfo);
+    return am_stm32f103rbt6_spi_dma_init(&__g_spi1_dma_dev, &__g_spi1_dma_devinfo);
 }
 
 /** \brief SPI1 实例解初始化 */
-void am_zlg237_spi1_dma_inst_deinit (am_spi_handle_t handle)
+void am_stm32f103rbt6_spi1_dma_inst_deinit (am_spi_handle_t handle)
 {
-    am_zlg237_spi_dma_deinit(handle);
+    am_stm32f103rbt6_spi_dma_deinit(handle);
 }
 
 /** \brief SPI2 平台初始化 */
-static void __zlg237_plfm_spi2_dma_init (void)
+static void __stm32f103rbt6_plfm_spi2_dma_init (void)
 {
     am_gpio_pin_cfg(PIOB_14, PIOB_14_SPI2_MISO | PIOB_14_INPUT_FLOAT);
     am_gpio_pin_cfg(PIOB_15, PIOB_15_SPI2_MOSI | PIOB_15_AF_PP);
@@ -102,7 +102,7 @@ static void __zlg237_plfm_spi2_dma_init (void)
 }
 
 /** \brief 解除SPI2 平台初始化 */
-static void __zlg237_plfm_spi2_dma_deinit (void)
+static void __stm32f103rbt6_plfm_spi2_dma_deinit (void)
 {
     am_gpio_pin_cfg(PIOB_13, AM_GPIO_INPUT);
     am_gpio_pin_cfg(PIOB_14, AM_GPIO_INPUT);
@@ -114,15 +114,15 @@ static void __zlg237_plfm_spi2_dma_deinit (void)
 /**
  * \brief SPI2 设备信息
  */
-static const struct am_zlg237_spi_dma_devinfo  __g_spi2_dma_devinfo = {
-    ZLG237_SPI2_BASE,                       /**< \brief SPI2寄存器指针 */
+static const struct am_stm32f103rbt6_spi_dma_devinfo  __g_spi2_dma_devinfo = {
+    STM32F103RBT6_SPI2_BASE,                       /**< \brief SPI2寄存器指针 */
     CLK_SPI2,                               /**< \brief 时钟ID号 */
-    AMHW_ZLG237_SPI_BAUDRATE_PRESCALER_128, /**< \brief 时钟分频系数 */
+    AMHW_STM32F103RBT6_SPI_BAUDRATE_PRESCALER_128, /**< \brief 时钟分频系数 */
     INUM_SPI2,                              /**< \brief SPI2 中断号 */
 
     0,                                      /**< \brief SPI1 CS拉低后延时等待（ms），再进行数据传输。
                                              *
-                                             *   从机为本zlg237软件包对应的spi_slaver时，请将延时设置为
+                                             *   从机为本stm32f103rbt6软件包对应的spi_slaver时，请将延时设置为
                                              *   100ms。
                                              *   从机不满足上述条件时，延时一般设置为0ms。
                                              **/
@@ -130,24 +130,24 @@ static const struct am_zlg237_spi_dma_devinfo  __g_spi2_dma_devinfo = {
     PIOB_15_SPI2_MOSI | PIOB_15_AF_PP,      /**< \brief SPI2 配置标识 */
     DMA_CHAN_SPI2_TX,
     DMA_CHAN_SPI2_RX,
-    __zlg237_plfm_spi2_dma_init,            /**< \brief SPI2平台初始化函数 */
-    __zlg237_plfm_spi2_dma_deinit           /**< \brief SPI2平台解初始化函数 */
+    __stm32f103rbt6_plfm_spi2_dma_init,            /**< \brief SPI2平台初始化函数 */
+    __stm32f103rbt6_plfm_spi2_dma_deinit           /**< \brief SPI2平台解初始化函数 */
 };
 
 /** \brief SPI2 设备实例 */
-static am_zlg237_spi_dma_dev_t __g_spi2_dma_dev;
+static am_stm32f103rbt6_spi_dma_dev_t __g_spi2_dma_dev;
 
 /** \brief SPI2 实例初始化，获得SPI标准服务句柄 */
-am_spi_handle_t am_zlg237_spi2_dma_inst_init (void)
+am_spi_handle_t am_stm32f103rbt6_spi2_dma_inst_init (void)
 {
-    return am_zlg237_spi_dma_init(&__g_spi2_dma_dev, &__g_spi2_dma_devinfo);
+    return am_stm32f103rbt6_spi_dma_init(&__g_spi2_dma_dev, &__g_spi2_dma_devinfo);
 }
 
 
 /** \brief SPI2 实例解初始化 */
-void am_zlg237_spi2_dma_inst_deinit (am_spi_handle_t handle)
+void am_stm32f103rbt6_spi2_dma_inst_deinit (am_spi_handle_t handle)
 {
-    am_zlg237_spi_dma_deinit(handle);
+    am_stm32f103rbt6_spi_dma_deinit(handle);
 }
 
 /**

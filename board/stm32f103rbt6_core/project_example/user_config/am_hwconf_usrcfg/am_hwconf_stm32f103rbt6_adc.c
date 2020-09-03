@@ -12,8 +12,8 @@
 
 /**
  * \file
- * \brief ZLG237 ADC 用户配置文件
- * \sa am_hwconf_zlg237_adc.c
+ * \brief STM32F103RBT6 ADC 用户配置文件
+ * \sa am_hwconf_stm32f103rbt6_adc.c
  *
  * \internal
  * \par Modification history
@@ -21,25 +21,25 @@
  * \endinternal
  */
 
-#include "am_zlg237.h"
-#include "amhw_zlg237_rcc.h"
-#include "zlg237_inum.h"
-#include "zlg237_periph_map.h"
+#include "am_stm32f103rbt6.h"
+#include "amhw_stm32f103rbt6_rcc.h"
+#include "stm32f103rbt6_inum.h"
+#include "stm32f103rbt6_periph_map.h"
 #include "am_gpio.h"
-#include "am_zlg237_adc.h"
-#include "amhw_zlg237_adc.h"
+#include "am_stm32f103rbt6_adc.h"
+#include "amhw_stm32f103rbt6_adc.h"
 #include "am_clk.h"
 
 /**
- * \addtogroup am_if_src_hwconf_zlg237_adc
- * \copydoc am_hwconf_zlg237_adc.c
+ * \addtogroup am_if_src_hwconf_stm32f103rbt6_adc
+ * \copydoc am_hwconf_stm32f103rbt6_adc.c
  * @{
  */
 
 
 
 /** \brief ADC平台初始化 */
-static void __zlg237_plfm_adc1_init (void)
+static void __stm32f103rbt6_plfm_adc1_init (void)
 {
     /* ADC1和ADC2共用通道，实际上不可同时用作ADC12,除非特殊模式使能*/
     /* 此处用作ADC1采集通道*/
@@ -57,16 +57,16 @@ static void __zlg237_plfm_adc1_init (void)
 }
 
 /** \brief 解除ADC平台初始化 */
-static void __zlg237_plfm_adc1_deinit (void)
+static void __stm32f103rbt6_plfm_adc1_deinit (void)
 {
     /* 失能ADC1时钟*/
     am_clk_disable (CLK_ADC1);
 }
 
 /** \brief 设备信息 */
-static const am_zlg237_adc_devinfo_t __g_adc1_devinfo = {
+static const am_stm32f103rbt6_adc_devinfo_t __g_adc1_devinfo = {
 
-    ZLG237_ADC1_BASE,                    /**< \brief ADC */
+    STM32F103RBT6_ADC1_BASE,                    /**< \brief ADC */
     INUM_ADC1_2,                         /**< \brief ADC的中断编号 */
     CLK_ADC1,                            /**< \brief ADC时钟号 */
 
@@ -77,30 +77,30 @@ static const am_zlg237_adc_devinfo_t __g_adc1_devinfo = {
                                           *          仅ADC1有效
                                           */
 
-    AMHW_ZLG237_ADC_DATA_VALID_12BIT,    /**< \brief 转换精度，zlg237精度只能为12位 */
+    AMHW_STM32F103RBT6_ADC_DATA_VALID_12BIT,    /**< \brief 转换精度，stm32f103rbt6精度只能为12位 */
 
-    __zlg237_plfm_adc1_init,             /**< \brief ADC1的平台初始化 */
-    __zlg237_plfm_adc1_deinit,           /**< \brief ADC1的平台去初始化 */
+    __stm32f103rbt6_plfm_adc1_init,             /**< \brief ADC1的平台初始化 */
+    __stm32f103rbt6_plfm_adc1_deinit,           /**< \brief ADC1的平台去初始化 */
 
 };
 
 /**< \brief 设备实例 */
-static am_zlg237_adc_dev_t  __g_adc1_dev;
+static am_stm32f103rbt6_adc_dev_t  __g_adc1_dev;
 
 /** \brief ADC实例初始化，获得ADC标准服务句柄 */
-am_adc_handle_t am_zlg237_adc1_inst_init (void)
+am_adc_handle_t am_stm32f103rbt6_adc1_inst_init (void)
 {
-    return am_zlg237_adc_init(&__g_adc1_dev, &__g_adc1_devinfo);
+    return am_stm32f103rbt6_adc_init(&__g_adc1_dev, &__g_adc1_devinfo);
 }
 
 /** \brief ADC实例解初始化 */
-void am_zlg237_adc1_inst_deinit (am_adc_handle_t handle)
+void am_stm32f103rbt6_adc1_inst_deinit (am_adc_handle_t handle)
 {
-    am_zlg237_adc_deinit(handle);
+    am_stm32f103rbt6_adc_deinit(handle);
 }
 
 /** \brief ADC2平台初始化 */
-static void __zlg237_plfm_adc2_init (void)
+static void __stm32f103rbt6_plfm_adc2_init (void)
 {
     /* ADC1和ADC2共用通道，实际上不可同时用作ADC12,除非特殊模式使能*/
     /* 此处用作ADC2采集通道*/
@@ -118,16 +118,16 @@ static void __zlg237_plfm_adc2_init (void)
 }
 
 /** \brief 解除ADC平台初始化 */
-static void __zlg237_plfm_adc2_deinit (void)
+static void __stm32f103rbt6_plfm_adc2_deinit (void)
 {
     /* 失能ADC2时钟*/
     am_clk_disable (CLK_ADC2);
 }
 
 /** \brief ADC设备信息 */
-static const am_zlg237_adc_devinfo_t __g_adc2_devinfo = {
+static const am_stm32f103rbt6_adc_devinfo_t __g_adc2_devinfo = {
 
-    ZLG237_ADC2_BASE,                 /**< \brief ADC */
+    STM32F103RBT6_ADC2_BASE,                 /**< \brief ADC */
     INUM_ADC1_2,                      /**< \brief ADC的中断编号 */
     CLK_ADC2,                         /**< \brief ADC时钟号 */
 
@@ -138,26 +138,26 @@ static const am_zlg237_adc_devinfo_t __g_adc2_devinfo = {
                                        *          仅ADC1有效
                                        */
 
-    AMHW_ZLG237_ADC_DATA_VALID_12BIT, /**< \brief 转换精度，zlg237精度只能为12位 */
+    AMHW_STM32F103RBT6_ADC_DATA_VALID_12BIT, /**< \brief 转换精度，stm32f103rbt6精度只能为12位 */
 
-    __zlg237_plfm_adc2_init,          /**< \brief ADC2的平台初始化 */
-    __zlg237_plfm_adc2_deinit,        /**< \brief ADC2的平台去初始化 */
+    __stm32f103rbt6_plfm_adc2_init,          /**< \brief ADC2的平台初始化 */
+    __stm32f103rbt6_plfm_adc2_deinit,        /**< \brief ADC2的平台去初始化 */
 
 };
 
 /**< \brief 设备实例 */
-static am_zlg237_adc_dev_t  __g_adc2_dev;
+static am_stm32f103rbt6_adc_dev_t  __g_adc2_dev;
 
 /** \brief ADC实例初始化，获得ADC标准服务句柄 */
-am_adc_handle_t am_zlg237_adc2_inst_init (void)
+am_adc_handle_t am_stm32f103rbt6_adc2_inst_init (void)
 {
-    return am_zlg237_adc_init(&__g_adc2_dev, &__g_adc2_devinfo);
+    return am_stm32f103rbt6_adc_init(&__g_adc2_dev, &__g_adc2_devinfo);
 }
 
 /** \brief ADC实例解初始化 */
-void am_zlg237_adc2_inst_deinit (am_adc_handle_t handle)
+void am_stm32f103rbt6_adc2_inst_deinit (am_adc_handle_t handle)
 {
-    am_zlg237_adc_deinit(handle);
+    am_stm32f103rbt6_adc_deinit(handle);
 }
 
 /**

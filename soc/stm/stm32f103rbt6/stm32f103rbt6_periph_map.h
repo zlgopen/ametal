@@ -12,7 +12,7 @@
 
 /**
  * \file
- * \brief ZLG237 ÍâÉèÓ³Éä
+ * \brief STM32F103RBT6 ÍâÉèÓ³Éä
  *
  * \internal
  * \par Modification history
@@ -20,35 +20,35 @@
  * \endinternal
  */
 
-#ifndef __AMHW_ZLG237_PERIPH_MAP_H
-#define __AMHW_ZLG237_PERIPH_MAP_H
+#ifndef __AMHW_STM32F103RBT6_PERIPH_MAP_H
+#define __AMHW_STM32F103RBT6_PERIPH_MAP_H
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-#include "zlg237_regbase.h"
-#include "hw/amhw_zlg237_adc.h"
-#include "hw/amhw_zlg237_bkp.h"
-#include "hw/amhw_zlg_cmp.h"
-#include "hw/amhw_zlg_crc.h"
-#include "hw/amhw_zlg237_flash.h"
-#include "hw/amhw_zlg_i2c.h"
-#include "hw/amhw_zlg237_rtc.h"
-#include "hw/amhw_zlg237_spi.h"
-#include "hw/amhw_zlg_tim.h"
-#include "hw/amhw_zlg237_usart.h"
-#include "hw/amhw_zlg_iwdg.h"
-#include "hw/amhw_zlg_wwdg.h"
-#include "hw/amhw_zlg237_pwr.h"
-#include "hw/amhw_zlg237_exti.h"
-#include "hw/amhw_zlg_gpio.h"
-#include "hw/amhw_zlg_dma.h"
-//#include "hw/amhw_zlg237_usbd.h"
+#include "stm32f103rbt6_regbase.h"
+#include "hw/amhw_stm32f103rbt6_adc.h"
+#include "hw/amhw_stm32f103rbt6_bkp.h"
+#include "hw/amhw_stm32f103rbt6_cmp.h"
+#include "hw/amhw_stm32f103rbt6_crc.h"
+#include "hw/amhw_stm32f103rbt6_flash.h"
+#include "hw/amhw_stm32f103rbt6_i2c.h"
+#include "hw/amhw_stm32f103rbt6_rtc.h"
+#include "hw/amhw_stm32f103rbt6_spi.h"
+#include "hw/amhw_stm32f103rbt6_tim.h"
+#include "hw/amhw_stm32f103rbt6_usart.h"
+#include "hw/amhw_stm32f103rbt6_iwdg.h"
+#include "hw/amhw_stm32f103rbt6_wwdg.h"
+#include "hw/amhw_stm32f103rbt6_pwr.h"
+#include "hw/amhw_stm32f103rbt6_exti.h"
+#include "hw/amhw_stm32f103rbt6_gpio.h"
+#include "hw/amhw_stm32f103rbt6_dma.h"
+//#include "hw/amhw_stm32f103rbt6_usbd.h"
 
 /**
- * \addtogroup amhw_zlg237_if_periph_map
- * \copydoc amhw_zlg237_periph_map.h
+ * \addtogroup amhw_stm32f103rbt6_if_periph_map
+ * \copydoc amhw_stm32f103rbt6_periph_map.h
  * @{
  */
 
@@ -58,110 +58,110 @@ extern "C" {
  */
 
 /** \brief GPIO¶Ë¿ÚA¼Ä´æÆ÷¿éÖ¸Õë */
-#define ZLG237_GPIOA   ((amhw_zlg237_gpio_reg_t  *)ZLG237_GPIOA_BASE)
+#define STM32F103RBT6_GPIOA   ((amhw_stm32f103rbt6_gpio_reg_t  *)STM32F103RBT6_GPIOA_BASE)
 
 /** \brief GPIO¶Ë¿ÚB¼Ä´æÆ÷¿éÖ¸Õë */
-#define ZLG237_GPIOB   ((amhw_zlg237_gpio_reg_t  *)ZLG237_GPIOB_BASE)
+#define STM32F103RBT6_GPIOB   ((amhw_stm32f103rbt6_gpio_reg_t  *)STM32F103RBT6_GPIOB_BASE)
 
 /** \brief GPIO¶Ë¿ÚC¼Ä´æÆ÷¿éÖ¸Õë */
-#define ZLG237_GPIOC   ((amhw_zlg237_gpio_reg_t  *)ZLG237_GPIOC_BASE)
+#define STM32F103RBT6_GPIOC   ((amhw_stm32f103rbt6_gpio_reg_t  *)STM32F103RBT6_GPIOC_BASE)
 
 /** \brief GPIO¶Ë¿ÚD¼Ä´æÆ÷¿éÖ¸Õë */
-#define ZLG237_GPIOD   ((amhw_zlg237_gpio_reg_t  *)ZLG237_GPIOD_BASE)
+#define STM32F103RBT6_GPIOD   ((amhw_stm32f103rbt6_gpio_reg_t  *)STM32F103RBT6_GPIOD_BASE)
 
 /** \brief GPIO¼Ä´æÆ÷¿éÖ¸Õë */
-#define ZLG237_GPIO    ((amhw_zlg237_gpio_t      *)ZLG237_GPIO_BASE)
+#define STM32F103RBT6_GPIO    ((amhw_stm32f103rbt6_gpio_t      *)STM32F103RBT6_GPIO_BASE)
 
 /** \brief AFIO¼Ä´æÆ÷¿éÖ¸Õë */
-#define ZLG237_AFIO    ((amhw_zlg237_afio_t      *)ZLG237_AFIO_BASE)
+#define STM32F103RBT6_AFIO    ((amhw_stm32f103rbt6_afio_t      *)STM32F103RBT6_AFIO_BASE)
 
 /** \brief TIM1¼Ä´æÆ÷¿éÖ¸Õë */
-#define ZLG237_TIM1    ((amhw_zlg_tim_t          *)ZLG237_TIM1_BASE)
+#define STM32F103RBT6_TIM1    ((amhw_stm32f103rbt6_tim_t          *)STM32F103RBT6_TIM1_BASE)
 
 /** \brief Í¨ÓÃ¶¨Ê±Æ÷2¼Ä´æÆ÷¿éÖ¸Õë */
-#define ZLG237_TIM2    ((amhw_zlg_tim_t          *)ZLG237_TIM2_BASE)
+#define STM32F103RBT6_TIM2    ((amhw_stm32f103rbt6_tim_t          *)STM32F103RBT6_TIM2_BASE)
 
 /** \brief Í¨ÓÃ¶¨Ê±Æ÷3¼Ä´æÆ÷¿éÖ¸Õë */
-#define ZLG237_TIM3    ((amhw_zlg_tim_t          *)ZLG237_TIM3_BASE)
+#define STM32F103RBT6_TIM3    ((amhw_stm32f103rbt6_tim_t          *)STM32F103RBT6_TIM3_BASE)
 
 /** \brief Í¨ÓÃ¶¨Ê±Æ÷4¼Ä´æÆ÷¿éÖ¸Õë */
-#define ZLG237_TIM4    ((amhw_zlg_tim_t          *)ZLG237_TIM4_BASE)
+#define STM32F103RBT6_TIM4    ((amhw_stm32f103rbt6_tim_t          *)STM32F103RBT6_TIM4_BASE)
 
 /** \brief RTC¼Ä´æÆ÷¿éÖ¸Õë */
-#define ZLG237_RTC     ((amhw_zlg237_rtc_t       *)ZLG237_RTC_BASE)
+#define STM32F103RBT6_RTC     ((amhw_stm32f103rbt6_rtc_t       *)STM32F103RBT6_RTC_BASE)
 
 /** \brief µçÔ´¿ØÖÆPWR¼Ä´æÆ÷¿éÖ¸Õë */
-#define ZLG237_PWR     ((amhw_zlg237_pwr_t       *)ZLG237_PWR_BASE)
+#define STM32F103RBT6_PWR     ((amhw_stm32f103rbt6_pwr_t       *)STM32F103RBT6_PWR_BASE)
 
 /** \brief ±¸·Ý¿ØÖÆBKP¼Ä´æÆ÷¿éÖ¸Õë */
-#define ZLG237_BKP     ((amhw_zlg237_bkp_t       *)ZLG237_BKP_BASE)
+#define STM32F103RBT6_BKP     ((amhw_stm32f103rbt6_bkp_t       *)STM32F103RBT6_BKP_BASE)
 
 /** \brief UART1 ¼Ä´æÆ÷¿éÖ¸Õë */
-#define ZLG237_USART1  ((amhw_zlg237_usart_t     *)ZLG237_USART1_BASE)
+#define STM32F103RBT6_USART1  ((amhw_stm32f103rbt6_usart_t     *)STM32F103RBT6_USART1_BASE)
 
 /** \brief UART2 ¼Ä´æÆ÷¿éÖ¸Õë */
-#define ZLG237_USART2  ((amhw_zlg237_usart_t     *)ZLG237_USART2_BASE)
+#define STM32F103RBT6_USART2  ((amhw_stm32f103rbt6_usart_t     *)STM32F103RBT6_USART2_BASE)
 
 /** \brief UART3 ¼Ä´æÆ÷¿éÖ¸Õë */
-#define ZLG237_USART3  ((amhw_zlg237_usart_t     *)ZLG237_USART3_BASE)
+#define STM32F103RBT6_USART3  ((amhw_stm32f103rbt6_usart_t     *)STM32F103RBT6_USART3_BASE)
 
 /** \brief ADC1 ¼Ä´æÆ÷¿éÖ¸Õë */
-#define ZLG237_ADC1    ((amhw_zlg237_adc_t       *)ZLG237_ADC1_BASE)
+#define STM32F103RBT6_ADC1    ((amhw_stm32f103rbt6_adc_t       *)STM32F103RBT6_ADC1_BASE)
 
 /** \brief ADC2 ¼Ä´æÆ÷¿éÖ¸Õë */
-#define ZLG237_ADC2    ((amhw_zlg237_adc_t       *)ZLG237_ADC2_BASE)
+#define STM32F103RBT6_ADC2    ((amhw_stm32f103rbt6_adc_t       *)STM32F103RBT6_ADC2_BASE)
 
 /** \brief DMA ¼Ä´æÆ÷¿éÖ¸Õë */
-#define ZLG237_DMA     ((amhw_zlg237_dma_t       *)ZLG237_DMA_BASE)
+#define STM32F103RBT6_DMA     ((amhw_stm32f103rbt6_dma_t       *)STM32F103RBT6_DMA_BASE)
 
 /** \brief RCC¿ØÖÆÆ÷¼Ä´æÆ÷¿éÖ¸Õë */
-#define ZLG237_RCC     ((amhw_zlg237_rcc_t       *)ZLG237_RCC_BASE)
+#define STM32F103RBT6_RCC     ((amhw_stm32f103rbt6_rcc_t       *)STM32F103RBT6_RCC_BASE)
 
 /** \brief SPI1¿ØÖÆÆ÷¼Ä´æÆ÷¿éÖ¸Õë */
-#define ZLG237_SPI1    ((amhw_zlg237_spi_t       *)ZLG237_SPI1_BASE)
+#define STM32F103RBT6_SPI1    ((amhw_stm32f103rbt6_spi_t       *)STM32F103RBT6_SPI1_BASE)
 
 /** \brief SPI2¿ØÖÆÆ÷¼Ä´æÆ÷¿éÖ¸Õë */
-#define ZLG237_SPI2    ((amhw_zlg237_spi_t       *)ZLG237_SPI2_BASE)
+#define STM32F103RBT6_SPI2    ((amhw_stm32f103rbt6_spi_t       *)STM32F103RBT6_SPI2_BASE)
 
 /** \brief I2C1¼Ä´æÆ÷¿éÖ¸Õë */
-#define ZLG237_I2C1    ((amhw_zlg237_i2c_t       *)ZLG237_I2C1_BASE)
+#define STM32F103RBT6_I2C1    ((amhw_stm32f103rbt6_i2c_t       *)STM32F103RBT6_I2C1_BASE)
 
 /** \brief I2C2¼Ä´æÆ÷¿éÖ¸Õë */
-#define ZLG237_I2C2    ((amhw_zlg237_i2c_t       *)ZLG237_I2C2_BASE)
+#define STM32F103RBT6_I2C2    ((amhw_stm32f103rbt6_i2c_t       *)STM32F103RBT6_I2C2_BASE)
 
 /** \brief IWDG¿ØÖÆÆ÷¼Ä´æÆ÷¿éÖ¸Õë */
-#define ZLG237_IWDG    ((amhw_zlg_iwdg_t         *)ZLG237_IWDG_BASE)
+#define STM32F103RBT6_IWDG    ((amhw_stm32f103rbt6_iwdg_t         *)STM32F103RBT6_IWDG_BASE)
 
 /** \brief WWDG¿ØÖÆÆ÷¼Ä´æÆ÷¿éÖ¸Õë */
-#define ZLG237_WWDG    ((amhw_zlg_wwdg_t         *)ZLG237_WWDG_BASE)
+#define STM32F103RBT6_WWDG    ((amhw_stm32f103rbt6_wwdg_t         *)STM32F103RBT6_WWDG_BASE)
 
 /** \brief CAN¿ØÖÆÆ÷¼Ä´æÆ÷¿éÖ¸Õë */
-#define ZLG237_CAN     ((amhw_zlg237_can_t       *)ZLG237_CAN_BASE)
+#define STM32F103RBT6_CAN     ((amhw_stm32f103rbt6_can_t       *)STM32F103RBT6_CAN_BASE)
 
 /** \brief USB¿ØÖÆÆ÷¼Ä´æÆ÷¿éÖ¸Õë */
-#define ZLG237_USB     ((amhw_zlg237_usb_t       *)ZLG237_USB_BASE)
+#define STM32F103RBT6_USB     ((amhw_stm32f103rbt6_usb_t       *)STM32F103RBT6_USB_BASE)
 
 /** \brief Íâ²¿ÖÐ¶Ï(ÊÂ¼þ)¿ØÖÆÆ÷EXTI¼Ä´æÆ÷¿éÖ¸Õë */
-#define ZLG237_EXTI    ((amhw_zlg237_exti_t      *)ZLG237_EXTI_BASE)
+#define STM32F103RBT6_EXTI    ((amhw_stm32f103rbt6_exti_t      *)STM32F103RBT6_EXTI_BASE)
 
 /** \brief FLASH¼Ä´æÆ÷¿éÖ¸Õë */
-#define ZLG237_FLASH   ((amhw_zlg237_flash_t     *)ZLG237_FLASH_BASE)
+#define STM32F103RBT6_FLASH   ((amhw_stm32f103rbt6_flash_t     *)STM32F103RBT6_FLASH_BASE)
 
 /** \brief CRC¼Ä´æÆ÷¿éÖ¸Õë */
-#define ZLG237_CRC     (amhw_zlg_crc_t           *)(ZLG237_CRC_BASE)
+#define STM32F103RBT6_CRC     (amhw_stm32f103rbt6_crc_t           *)(STM32F103RBT6_CRC_BASE)
 
 /** \brief CMP ¼Ä´æÆ÷¿éÖ¸Õë */
-#define ZLG237_CMP     ((amhw_zlg_cmp_t           *)ZLG237_CMP_BASE)
+#define STM32F103RBT6_CMP     ((amhw_stm32f103rbt6_cmp_t           *)STM32F103RBT6_CMP_BASE)
 /** @} */
 
 /**
- * @} amhw_zlg237_if_periph_map
+ * @} amhw_stm32f103rbt6_if_periph_map
  */
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif /* __AMHW_ZLG237_REG_BASE_H */
+#endif /* __AMHW_STM32F103RBT6_REG_BASE_H */
 
 /* end of file */

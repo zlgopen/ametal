@@ -19,12 +19,12 @@
  * - 1.00 17-04-07  ari, first implementation
  * \endinternal
  */
-#include "amhw_zlg237_usart.h"
+#include "amhw_stm32f103rbt6_usart.h"
 
 /**
  * \brief UART数据发送(查询模式)
  */
-uint32_t amhw_zlg237_usart_poll_send (amhw_zlg237_usart_t     *p_hw_usart,
+uint32_t amhw_stm32f103rbt6_usart_poll_send (amhw_stm32f103rbt6_usart_t     *p_hw_usart,
                                       const uint8_t       *p_txbuf,
                                       uint32_t             nbytes)
 {
@@ -32,10 +32,10 @@ uint32_t amhw_zlg237_usart_poll_send (amhw_zlg237_usart_t     *p_hw_usart,
 
     while (len--) {
 
-         while(amhw_zlg237_usart_status_flag_check(p_hw_usart,
-                                                   AMHW_ZLG237_USART_TX_EMPTY_FLAG)
+         while(amhw_stm32f103rbt6_usart_status_flag_check(p_hw_usart,
+                                                   AMHW_STM32F103RBT6_USART_TX_EMPTY_FLAG)
                                                    == AM_FALSE);
-         amhw_zlg237_usart_data_write(p_hw_usart, (*p_txbuf++));
+         amhw_stm32f103rbt6_usart_data_write(p_hw_usart, (*p_txbuf++));
     }
 
     return nbytes;
@@ -44,17 +44,17 @@ uint32_t amhw_zlg237_usart_poll_send (amhw_zlg237_usart_t     *p_hw_usart,
 /**
  * \brief UART数据接收(查询模式)
  */
-uint32_t amhw_zlg237_usart_poll_receive (amhw_zlg237_usart_t    *p_hw_usart,
+uint32_t amhw_stm32f103rbt6_usart_poll_receive (amhw_stm32f103rbt6_usart_t    *p_hw_usart,
                                          uint8_t                *p_rxbuf,
                                          uint32_t                nbytes)
 {
     uint32_t len = nbytes;
 
     while (len--) {
-        while(amhw_zlg237_usart_status_flag_check(p_hw_usart,
-                                                  AMHW_ZLG237_USART_RX_NOT_EMPTY_FLAG)
+        while(amhw_stm32f103rbt6_usart_status_flag_check(p_hw_usart,
+                                                  AMHW_STM32F103RBT6_USART_RX_NOT_EMPTY_FLAG)
                                                    == AM_FALSE);
-        *p_rxbuf++ = (uint8_t)amhw_zlg237_usart_data_read(p_hw_usart);
+        *p_rxbuf++ = (uint8_t)amhw_stm32f103rbt6_usart_data_read(p_hw_usart);
     }
 
     return nbytes;
@@ -63,7 +63,7 @@ uint32_t amhw_zlg237_usart_poll_receive (amhw_zlg237_usart_t    *p_hw_usart,
 /**
  * \brief LPUSART(Version 0) baud ratio set
  */
-int amhw_zlg237_usart_baudrate_set (amhw_zlg237_usart_t *p_hw_usart,
+int amhw_stm32f103rbt6_usart_baudrate_set (amhw_stm32f103rbt6_usart_t *p_hw_usart,
                                     uint32_t             usart_clk,
                                     uint32_t             baud)
 {
@@ -82,8 +82,8 @@ int amhw_zlg237_usart_baudrate_set (amhw_zlg237_usart_t *p_hw_usart,
     int_val  = (usart_clk /baud)/16;
     deci_val = (usart_clk /baud)%16;
 
-    amhw_zlg237_usart_br_div_mantissa_set(p_hw_usart, int_val);
-    amhw_zlg237_usart_br_div_fraction_set(p_hw_usart, deci_val);
+    amhw_stm32f103rbt6_usart_br_div_mantissa_set(p_hw_usart, int_val);
+    amhw_stm32f103rbt6_usart_br_div_fraction_set(p_hw_usart, deci_val);
 
     return baud;
 }

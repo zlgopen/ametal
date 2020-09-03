@@ -15,7 +15,7 @@
  * \brief MicroPort RS485 例程，通过标准接口实现
  *
  * - 操作步骤：
- *   1. 将 MicroPort RS485 配板连接到 AM237 的 MicroPort 接口。
+ *   1. 将 MicroPort RS485 配板连接到 STM32F103RBT6 的 MicroPort 接口。
  *
  * - 实验现象：
  *   1. 串口输出"MicroPort RS485 Test:"；
@@ -41,9 +41,9 @@
 /** [src_microport_rs485] */
 #include "ametal.h"
 #include "am_vdebug.h"
-#include "am_zlg237_inst_init.h"
+#include "am_stm32f103rbt6_inst_init.h"
 #include "demo_std_entries.h"
-#include "demo_am237_core_entries.h"
+#include "demo_stm32f103rbt6_core_entries.h"
 
 /**
  * \brief MicroPort RS485 例程，通过标准接口实现
@@ -52,9 +52,9 @@
  *
  * \return 无
  */
-void demo_zlg237_core_microport_rs485_entry (void)
+void demo_stm32f103rbt6_core_microport_rs485_entry (void)
 {
-    AM_DBG_INFO("demo am237_core microport rs485!\r\n");
+    AM_DBG_INFO("demo stm32f103rbt6_core microport rs485!\r\n");
 
     demo_std_uart_rs485_entry(am_microport_rs485_inst_init());
 

@@ -22,8 +22,8 @@
 
 #include "am_sensor_tsl2540.h"
 #include "am_common.h"
-#include "zlg237_pin.h"
-#include "am_zlg237_inst_init.h"
+#include "stm32f103rbt6_pin.h"
+#include "am_stm32f103rbt6_inst_init.h"
 
 am_const am_local tsl2540_param_config_t __g_tsl2540_param_default = {
         AM_TSL2540_ATIME_2_8MS,                 /* ALS ADC的积分时间 */
@@ -50,7 +50,7 @@ am_sensor_handle_t am_sensor_tsl2540_inst_init (void)
 {
     return am_sensor_tsl2540_init(&__g_tsl2540_dev,
                                   &__g_tsl2540_info,
-                                  am_zlg237_i2c1_inst_init());
+                                  am_stm32f103rbt6_i2c1_inst_init());
 }
 
 /** \brief 传感器 TSL2540 实例解初始化 */

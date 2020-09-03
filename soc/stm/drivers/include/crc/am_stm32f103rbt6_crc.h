@@ -23,8 +23,8 @@
  * \endinternal
  */
 
-#ifndef  __AM_ZLG_CRC_H
-#define  __AM_ZLG_CRC_H
+#ifndef  __AM_STM32F103RBT6_CRC_H
+#define  __AM_STM32F103RBT6_CRC_H
 
 #ifdef __cplusplus
 extern "C" {
@@ -33,18 +33,18 @@ extern "C" {
 #include "ametal.h"
 #include "am_crc.h"
 
-#include "hw/amhw_zlg_crc.h"
+#include "hw/amhw_stm32f103rbt6_crc.h"
 
 /**
- * \addtogroup am_zlg_if_crc
- * \copydoc am_zlg_crc.h
+ * \addtogroup am_stm32f103rbt6_if_crc
+ * \copydoc am_stm32f103rbt6_crc.h
  * @{
  */
 
 /**
  * \brief CRC设备信息
  */
-typedef struct am_zlg_crc_devinfo {
+typedef struct am_stm32f103rbt6_crc_devinfo {
 
     /** \brief CRC寄存器块的基地址 */
     uint32_t   crc_reg_base;
@@ -55,23 +55,23 @@ typedef struct am_zlg_crc_devinfo {
     /** \brief 平台解初始化函数 */
     void     (*pfn_plfm_deinit)(void);
 
-} am_zlg_crc_devinfo_t;
+} am_stm32f103rbt6_crc_devinfo_t;
 
 /**
  * \brief CRC设备实例
  */
-typedef struct am_zlg_crc_dev {
+typedef struct am_stm32f103rbt6_crc_dev {
 
     /** \brief CRC标准服务 */
     am_crc_serv_t               crc_serve;
 
     /** \brief 指向CRC设备信息的指针 */
-    const am_zlg_crc_devinfo_t *p_devinfo;
+    const am_stm32f103rbt6_crc_devinfo_t *p_devinfo;
 
     /** \brief 指向CRC模型的指针 */
     am_crc_pattern_t           *p_pattern;
 
-} am_zlg_crc_dev_t;
+} am_stm32f103rbt6_crc_dev_t;
 
 /**
  * \brief CRC初始化
@@ -81,17 +81,17 @@ typedef struct am_zlg_crc_dev {
  *
  * \return CRC标准服务操作句柄，如果为 NULL，表明初始化失败
  */
-am_crc_handle_t am_zlg_crc_init (am_zlg_crc_dev_t           *p_dev,
-                                 const am_zlg_crc_devinfo_t *p_devinfo);
+am_crc_handle_t am_stm32f103rbt6_crc_init (am_stm32f103rbt6_crc_dev_t           *p_dev,
+                                 const am_stm32f103rbt6_crc_devinfo_t *p_devinfo);
 
 /**
  * \brief CRC去初始化
  *
- * \param[in] handle : am_zlg_crc_init() 初始化函数获得的CRC服务句柄
+ * \param[in] handle : am_stm32f103rbt6_crc_init() 初始化函数获得的CRC服务句柄
  *
  * \return 无
  */
-void am_zlg_crc_deinit (am_crc_handle_t handle);
+void am_stm32f103rbt6_crc_deinit (am_crc_handle_t handle);
 
 /**
  * @}
@@ -101,6 +101,6 @@ void am_zlg_crc_deinit (am_crc_handle_t handle);
 }
 #endif
 
-#endif /* __AM_ZLG_CRC_H */
+#endif /* __AM_STM32F103RBT6_CRC_H */
 
 /* end of file */

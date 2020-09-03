@@ -20,7 +20,7 @@
  *   3. 写入成功：串口打印指定扇区的(1024 / 4)个 32bit 十六进制数据。
  *
  * \par 源代码
- * \snippet demo_zlg_drv_flash.c src_zlg_drv_flash
+ * \snippet demo_stm32f103rbt6_drv_flash.c src_stm32f103rbt6_drv_flash
  *
  * \internal
  * \par Modification history
@@ -29,21 +29,21 @@
  */
 
 /**
- * \addtogroup demo_if_zlg_drv_flash
- * \copydoc demo_zlg_drv_flash.c
+ * \addtogroup demo_if_stm32f103rbt6_drv_flash
+ * \copydoc demo_stm32f103rbt6_drv_flash.c
  */
 
-/** [src_zlg_drv_flash] */
+/** [src_stm32f103rbt6_drv_flash] */
 #include "ametal.h"
 #include "am_delay.h"
 #include "am_vdebug.h"
-#include "am_zlg237_flash.h"
+#include "am_stm32f103rbt6_flash.h"
 
 /**
  * \brief 例程入口
  */
 
-void demo_zlg237_drv_flash_entry (amhw_zlg237_flash_t *p_hw_flash, uint8_t page_num)
+void demo_stm32f103rbt6_drv_flash_entry (amhw_stm32f103rbt6_flash_t *p_hw_flash, uint8_t page_num)
 {
     int             i;
     uint32_t        status;         /* FLASH 命令执行状态 */
@@ -56,10 +56,10 @@ void demo_zlg237_drv_flash_entry (amhw_zlg237_flash_t *p_hw_flash, uint8_t page_
     }
 
     /* FLASH 初始化 */
-    am_zlg237_flash_init(p_hw_flash);
+    am_stm32f103rbt6_flash_init(p_hw_flash);
 
     /* 擦除扇区 */
-    status = am_zlg237_flash_page_erase(p_hw_flash, page_num * 1024);
+    status = am_stm32f103rbt6_flash_page_erase(p_hw_flash, page_num * 1024);
 
     /* 扇区擦除出错， 程序停在此处 */
     if (0 != status) {
@@ -69,7 +69,7 @@ void demo_zlg237_drv_flash_entry (amhw_zlg237_flash_t *p_hw_flash, uint8_t page_
     }
 
     /* 向扇区中写入数据 */
-    status = am_zlg237_flash_sector_program(p_hw_flash,
+    status = am_stm32f103rbt6_flash_sector_program(p_hw_flash,
                                             page_num * 1024,
                                             data,
                                             1024 / 4);
@@ -99,6 +99,6 @@ void demo_zlg237_drv_flash_entry (amhw_zlg237_flash_t *p_hw_flash, uint8_t page_
     }
 }
 
-/** [src_zlg237_drv_flash] */
+/** [src_stm32f103rbt6_drv_flash] */
 
 /* end of file */

@@ -15,13 +15,13 @@
  * \brief bootloader 例程，本demo是作为应用程序固件。
  *
  * - 操作步骤:
- *   1.eclipse工程打开demo_am237_core_application.ld文件，打开:
+ *   1.eclipse工程打开demo_stm32f103rbt6_core_application.ld文件，打开:
  *
  *       FLASH (rx)  : ORIGIN = 0x08007800, LENGTH = 49K  //double
  *
  *     的配置, 屏蔽其他flash配置。
  *
- *     keil工程打开demo_am237_core_application.sct文件，打开双区的配置，屏蔽其他配置
+ *     keil工程打开demo_stm32f103rbt6_core_application.sct文件，打开双区的配置，屏蔽其他配置
  *
  *   2.编译工程
  *   3.固件处理，参考下面note提示
@@ -49,7 +49,7 @@
  * \endinternal
  */
 
-#include "am_appconf_double_zlg237.h"
+#include "am_appconf_double_stm32f103rbt6.h"
 #include "ametal.h"
 #include "am_vdebug.h"
 #include "am_led.h"
@@ -58,26 +58,26 @@
 #include "am_boot_firmware_recv_uart.h"
 #include "am_boot_msg.h"
 #include "am_boot_firmware.h"
-#include "am_zlg237_inst_init.h"
+#include "am_stm32f103rbt6_inst_init.h"
 #include "demo_boot_entries.h"
 
-void demo_zlg237_core_double_application_entry (void)
+void demo_stm32f103rbt6_core_double_application_entry (void)
 {
-    AM_DBG_INFO("application : am237_core double application start up successful!\r\n");
+    AM_DBG_INFO("application : stm32f103rbt6_core double application start up successful!\r\n");
 
     am_uart_handle_t             uart_handle;
     am_boot_firmware_handle_t    firmware_handle;
     am_boot_enter_check_handle_t check_handle;
     am_boot_firwa_recv_handle_t  firwa_recv_handle;
     am_boot_msg_handle_t         msg_handle;
-    am_zlg237_boot_inst_init();
-    firmware_handle = am_zlg237_boot_firmware_flash_inst_init();
+    am_stm32f103rbt6_boot_inst_init();
+    firmware_handle = am_stm32f103rbt6_boot_firmware_flash_inst_init();
 
-    uart_handle = am_zlg237_usart1_inst_init();
+    uart_handle = am_stm32f103rbt6_usart1_inst_init();
     am_debug_init(uart_handle, 115200);
     firwa_recv_handle = am_boot_firwa_recv_uart_init(firmware_handle, uart_handle);
     check_handle = am_boot_enter_check_uart_cmd_init(uart_handle);
-    msg_handle = am_zlg237_boot_msg_flag_inst_init();
+    msg_handle = am_stm32f103rbt6_boot_msg_flag_inst_init();
 
     while(1) {
         /* 此demo需要循环调用 */
@@ -88,7 +88,7 @@ void demo_zlg237_core_double_application_entry (void)
 
         am_led_toggle(0);
         am_mdelay(1000);
-        AM_DBG_INFO("application : am237_core double application running!\r\n");
+        AM_DBG_INFO("application : stm32f103rbt6_core double application running!\r\n");
     }
 }
 

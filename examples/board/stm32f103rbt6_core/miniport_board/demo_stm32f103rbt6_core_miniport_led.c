@@ -15,7 +15,7 @@
  * \brief MiniPort-LED 例程，通过标准接口实现
  *
  * - 操作步骤
- *   1. 将 MiniPort-LED 板子直接与 AM237 的 MiniPort接口相连接。
+ *   1. 将 MiniPort-LED 板子直接与 STM32F103RBT6 的 MiniPort接口相连接。
  *
  * - 实验现象：
  *   1. 流水灯现象。
@@ -40,16 +40,16 @@
 /** [src_miniport_led] */
 #include "ametal.h"
 #include "am_vdebug.h"
-#include "am_zlg237_inst_init.h"
+#include "am_stm32f103rbt6_inst_init.h"
 #include "demo_std_entries.h"
-#include "demo_am237_core_entries.h"
+#include "demo_stm32f103rbt6_core_entries.h"
 
 /**
  * \brief 例程入口
  */
-void demo_zlg237_core_miniport_led_entry (void)
+void demo_stm32f103rbt6_core_miniport_led_entry (void)
 {
-    AM_DBG_INFO("demo am237_core miniport led!\r\n");
+    AM_DBG_INFO("demo stm32f103rbt6_core miniport led!\r\n");
 
     am_miniport_led_inst_init();
 

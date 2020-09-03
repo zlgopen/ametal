@@ -22,8 +22,8 @@
 
 #include "am_sensor_as621x.h"
 #include "am_common.h"
-#include "zlg237_pin.h"
-#include "am_zlg237_inst_init.h"
+#include "stm32f103rbt6_pin.h"
+#include "am_stm32f103rbt6_inst_init.h"
 
 am_const am_local as621x_param_config_t __g_as621x_param_default = {
         AM_AS621X_CONVERSION_RATE_1HZ,          /* 转换速率 */
@@ -66,7 +66,7 @@ am_sensor_handle_t am_sensor_as621x_inst_init (void)
 {
     return am_sensor_as621x_init(&__g_as621x_dev,
                                  &__g_as621x_info,
-                                 am_zlg237_i2c2_inst_init());
+                                 am_stm32f103rbt6_i2c2_inst_init());
 }
 
 /** \brief 传感器 AS621X 实例解初始化 */

@@ -20,67 +20,67 @@
  * \endinternal
  */
 
-#include "am_zlg237_gpio.h"
+#include "am_stm32f103rbt6_gpio.h"
 #include "am_gpio_util.h"
 #include "am_gpio.h"
 #include "am_int.h"
 #include "am_bitops.h"
-#include "am_zlg237_gpio_util.h"
-#include "amhw_zlg237_afio.h"
-#include "amhw_zlg237_exti.h"
-#include "zlg237_pin.h"
+#include "am_stm32f103rbt6_gpio_util.h"
+#include "amhw_stm32f103rbt6_afio.h"
+#include "amhw_stm32f103rbt6_exti.h"
+#include "stm32f103rbt6_pin.h"
 
 /*******************************************************************************
 * 私有定义
 *******************************************************************************/
 
 /** \brief 中断未连接标识 */
-#define AM_ZLG237_GPIO_INVALID_PIN_MAP    0xFF
+#define AM_STM32F103RBT6_GPIO_INVALID_PIN_MAP    0xFF
 
 /** \brief 定义指向GPIO设备信息的指针 */
 #define __GPIO_DEVINFO_DECL(p_gpio_devinfo, p_dev)  \
-        const am_zlg237_gpio_devinfo_t *p_gpio_devinfo = p_dev->p_devinfo
+        const am_stm32f103rbt6_gpio_devinfo_t *p_gpio_devinfo = p_dev->p_devinfo
 
 /******************************************************************************
   全局变量
 ******************************************************************************/
 
 /** \bruef 指向GPIO设备的指针 */
-am_zlg237_gpio_dev_t *__gp_gpio_dev;
+am_stm32f103rbt6_gpio_dev_t *__gp_gpio_dev;
 
 /*******************************************************************************
   公共函数 关闭外设重映射
 *******************************************************************************/
 
-static int __am_zlg237_peripheral_remap_clear(int pin)
+static int __am_stm32f103rbt6_peripheral_remap_clear(int pin)
 {
     __GPIO_DEVINFO_DECL(p_gpio_devinfo, __gp_gpio_dev);
-    amhw_zlg237_afio_remap_peripheral_t peripheral;
-    amhw_zlg237_afio_t                  *p_hw_afio;
+    amhw_stm32f103rbt6_afio_remap_peripheral_t peripheral;
+    amhw_stm32f103rbt6_afio_t                  *p_hw_afio;
     uint8_t i = 0;
 
     if (NULL == p_gpio_devinfo) {
         return -AM_ENXIO;
     }
 
-    p_hw_afio  = (amhw_zlg237_afio_t *)p_gpio_devinfo->afio_regbase;
+    p_hw_afio  = (amhw_stm32f103rbt6_afio_t *)p_gpio_devinfo->afio_regbase;
     peripheral = p_gpio_devinfo->p_remap[pin];
 
-    if (peripheral == AMHW_ZLG237_NO_REMAP) {
+    if (peripheral == AMHW_STM32F103RBT6_NO_REMAP) {
         return -AM_ENXIO;
     }
 
     /* JATG / SWD 引脚选择性关闭 */
-    if (peripheral != AMHW_ZLG237_SWJ_CFG) {
+    if (peripheral != AMHW_STM32F103RBT6_SWJ_CFG) {
 
         /*
-         * 将外设在GPIO中重映像的改组引脚全部重置为AMHW_ZLG237_NO_REMAP
+         * 将外设在GPIO中重映像的改组引脚全部重置为AMHW_STM32F103RBT6_NO_REMAP
          * 表明改组引脚现在已没有重映像
          */
 
         for (i = 0 ; i < p_gpio_devinfo->pin_count ; i++) {
             if (p_gpio_devinfo->p_remap[i] == peripheral) {
-                p_gpio_devinfo->p_remap[i] = AMHW_ZLG237_NO_REMAP;
+                p_gpio_devinfo->p_remap[i] = AMHW_STM32F103RBT6_NO_REMAP;
             }
         }
 
@@ -97,104 +97,104 @@ static int __am_zlg237_peripheral_remap_clear(int pin)
          */
         if ((PIOA_13 == pin) || (PIOA_14 == pin)) {
 
-            amhw_zlg237_afio_swj_cfg_remap_mode_set(p_hw_afio, AMHW_ZLG237_AFIO_SWJ_CFG_4);
+            amhw_stm32f103rbt6_afio_swj_cfg_remap_mode_set(p_hw_afio, AMHW_STM32F103RBT6_AFIO_SWJ_CFG_4);
 
             /* 清除引脚重映像信息 */
             for (i = PIOA_13 ; i < PIOB_5 ; i++) {
-                if (p_gpio_devinfo->p_remap[i] == AMHW_ZLG237_SWJ_CFG) {
-                    p_gpio_devinfo->p_remap[i] = AMHW_ZLG237_NO_REMAP;
+                if (p_gpio_devinfo->p_remap[i] == AMHW_STM32F103RBT6_SWJ_CFG) {
+                    p_gpio_devinfo->p_remap[i] = AMHW_STM32F103RBT6_NO_REMAP;
                 }
             }
 
             /* 如果使用A15/B3 且模式不是位于7 */
         } else if (((PIOA_15 == pin) || (PIOB_3 == pin)) &&
-                 (p_gpio_devinfo->p_remap[PIOA_13] != AMHW_ZLG237_NO_REMAP)){
+                 (p_gpio_devinfo->p_remap[PIOA_13] != AMHW_STM32F103RBT6_NO_REMAP)){
 
-            amhw_zlg237_afio_swj_cfg_remap_mode_set(p_hw_afio, AMHW_ZLG237_AFIO_SWJ_CFG_2);
+            amhw_stm32f103rbt6_afio_swj_cfg_remap_mode_set(p_hw_afio, AMHW_STM32F103RBT6_AFIO_SWJ_CFG_2);
 
             /* 清除引脚重映像信息 */
-            p_gpio_devinfo->p_remap[PIOB_3]  = AMHW_ZLG237_NO_REMAP;
-            p_gpio_devinfo->p_remap[PIOB_4]  = AMHW_ZLG237_NO_REMAP;
-            p_gpio_devinfo->p_remap[PIOA_15] = AMHW_ZLG237_NO_REMAP;
+            p_gpio_devinfo->p_remap[PIOB_3]  = AMHW_STM32F103RBT6_NO_REMAP;
+            p_gpio_devinfo->p_remap[PIOB_4]  = AMHW_STM32F103RBT6_NO_REMAP;
+            p_gpio_devinfo->p_remap[PIOA_15] = AMHW_STM32F103RBT6_NO_REMAP;
 
         } else if ((PIOB_4 == pin) &&
-                 (p_gpio_devinfo->p_remap[PIOB_3] != AMHW_ZLG237_NO_REMAP)) {
+                 (p_gpio_devinfo->p_remap[PIOB_3] != AMHW_STM32F103RBT6_NO_REMAP)) {
 
-            amhw_zlg237_afio_swj_cfg_remap_mode_set(p_hw_afio, AMHW_ZLG237_AFIO_SWJ_CFG_1);
+            amhw_stm32f103rbt6_afio_swj_cfg_remap_mode_set(p_hw_afio, AMHW_STM32F103RBT6_AFIO_SWJ_CFG_1);
 
             /* 清除引脚重映像信息 */
-            p_gpio_devinfo->p_remap[PIOB_4]  = AMHW_ZLG237_NO_REMAP;
+            p_gpio_devinfo->p_remap[PIOB_4]  = AMHW_STM32F103RBT6_NO_REMAP;
         }
     }
 
     /* 关闭外设重映像 */
     switch (peripheral) {
 
-    case AMHW_ZLG237_SPI1_REMAP:
-        amhw_zlg237_afio_spi1_pin_remap_disable(p_hw_afio);
+    case AMHW_STM32F103RBT6_SPI1_REMAP:
+        amhw_stm32f103rbt6_afio_spi1_pin_remap_disable(p_hw_afio);
         break;
 
-    case AMHW_ZLG237_I2C1_REMAP:
-        amhw_zlg237_afio_i2c1_pin_remap_disable(p_hw_afio);
+    case AMHW_STM32F103RBT6_I2C1_REMAP:
+        amhw_stm32f103rbt6_afio_i2c1_pin_remap_disable(p_hw_afio);
         break;
 
-    case AMHW_ZLG237_UART1_REMAP:
-        amhw_zlg237_afio_uart_pin_remap_disable(p_hw_afio, 1);
+    case AMHW_STM32F103RBT6_UART1_REMAP:
+        amhw_stm32f103rbt6_afio_uart_pin_remap_disable(p_hw_afio, 1);
         break;
 
-    case AMHW_ZLG237_UART2_REMAP:
-        amhw_zlg237_afio_uart_pin_remap_disable(p_hw_afio, 2);
+    case AMHW_STM32F103RBT6_UART2_REMAP:
+        amhw_stm32f103rbt6_afio_uart_pin_remap_disable(p_hw_afio, 2);
         break;
 
-    case AMHW_ZLG237_UART3_REMAP:
-        amhw_zlg237_afio_uart3_remap_mode_set(p_hw_afio, AMHW_ZLG237_AFIO_UART3_REMAP_NO);
+    case AMHW_STM32F103RBT6_UART3_REMAP:
+        amhw_stm32f103rbt6_afio_uart3_remap_mode_set(p_hw_afio, AMHW_STM32F103RBT6_AFIO_UART3_REMAP_NO);
         break;
 
-    case AMHW_ZLG237_TIM1_REMAP:
-        amhw_zlg237_afio_tim1_remap_mode_set(p_hw_afio, AMHW_ZLG237_AFIO_TIM1_REMAP_NO);
+    case AMHW_STM32F103RBT6_TIM1_REMAP:
+        amhw_stm32f103rbt6_afio_tim1_remap_mode_set(p_hw_afio, AMHW_STM32F103RBT6_AFIO_TIM1_REMAP_NO);
         break;
 
-    case AMHW_ZLG237_TIM2_REMAP:
-        amhw_zlg237_afio_tim2_remap_mode_set(p_hw_afio, AMHW_ZLG237_AFIO_TIM2_REMAP_NO);
+    case AMHW_STM32F103RBT6_TIM2_REMAP:
+        amhw_stm32f103rbt6_afio_tim2_remap_mode_set(p_hw_afio, AMHW_STM32F103RBT6_AFIO_TIM2_REMAP_NO);
         break;
 
-    case AMHW_ZLG237_TIM3_REMAP:
-        amhw_zlg237_afio_tim3_remap_mode_set(p_hw_afio ,AMHW_ZLG237_AFIO_TIM3_REMAP_NO);
+    case AMHW_STM32F103RBT6_TIM3_REMAP:
+        amhw_stm32f103rbt6_afio_tim3_remap_mode_set(p_hw_afio ,AMHW_STM32F103RBT6_AFIO_TIM3_REMAP_NO);
         break;
 
-    case AMHW_ZLG237_TIM4_REMAP:
-        amhw_zlg237_afio_tim4_pin_remap_disable(p_hw_afio);
+    case AMHW_STM32F103RBT6_TIM4_REMAP:
+        amhw_stm32f103rbt6_afio_tim4_pin_remap_disable(p_hw_afio);
         break;
 
-    case AMHW_ZLG237_CAN_REMAP:
-        amhw_zlg237_afio_can_remap_mode_set(p_hw_afio ,AMHW_ZLG237_AFIO_CAN_RX_PA11_TX_PA12);
+    case AMHW_STM32F103RBT6_CAN_REMAP:
+        amhw_stm32f103rbt6_afio_can_remap_mode_set(p_hw_afio ,AMHW_STM32F103RBT6_AFIO_CAN_RX_PA11_TX_PA12);
         break;
 
-    case AMHW_ZLG237_PD01_REMAP:
-        amhw_zlg237_afio_pd01_pin_remap_disable(p_hw_afio);
+    case AMHW_STM32F103RBT6_PD01_REMAP:
+        amhw_stm32f103rbt6_afio_pd01_pin_remap_disable(p_hw_afio);
         break;
 
-    case AMHW_ZLG237_TIM5_CH4_REMAP:
-        amhw_zlg237_afio_tim5_ch4_pin_remap_disable(p_hw_afio);
+    case AMHW_STM32F103RBT6_TIM5_CH4_REMAP:
+        amhw_stm32f103rbt6_afio_tim5_ch4_pin_remap_disable(p_hw_afio);
         break;
 
-    case AMHW_ZLG237_ADC1_ETRGINJ_REMAP:
-        amhw_zlg237_afio_adc_pin_remap_disable(p_hw_afio ,AMHW_ZLG237_AFIO_MAPR_ADC1_ETRGINJ);
+    case AMHW_STM32F103RBT6_ADC1_ETRGINJ_REMAP:
+        amhw_stm32f103rbt6_afio_adc_pin_remap_disable(p_hw_afio ,AMHW_STM32F103RBT6_AFIO_MAPR_ADC1_ETRGINJ);
         break;
 
-    case AMHW_ZLG237_ADC1_ETRGREG_REMAP:
-        amhw_zlg237_afio_adc_pin_remap_disable(p_hw_afio ,AMHW_ZLG237_AFIO_MAPR_ADC1_ETRGREG);
+    case AMHW_STM32F103RBT6_ADC1_ETRGREG_REMAP:
+        amhw_stm32f103rbt6_afio_adc_pin_remap_disable(p_hw_afio ,AMHW_STM32F103RBT6_AFIO_MAPR_ADC1_ETRGREG);
         break;
 
-    case AMHW_ZLG237_ADC2_ETRGINJ_REMAP:
-        amhw_zlg237_afio_adc_pin_remap_disable(p_hw_afio ,AMHW_ZLG237_AFIO_MAPR_ADC2_ETRGINJ);
+    case AMHW_STM32F103RBT6_ADC2_ETRGINJ_REMAP:
+        amhw_stm32f103rbt6_afio_adc_pin_remap_disable(p_hw_afio ,AMHW_STM32F103RBT6_AFIO_MAPR_ADC2_ETRGINJ);
         break;
 
-    case AMHW_ZLG237_ADC2_ETRGREG_REMAP:
-        amhw_zlg237_afio_adc_pin_remap_disable(p_hw_afio ,AMHW_ZLG237_AFIO_MAPR_ADC2_ETRGREG);
+    case AMHW_STM32F103RBT6_ADC2_ETRGREG_REMAP:
+        amhw_stm32f103rbt6_afio_adc_pin_remap_disable(p_hw_afio ,AMHW_STM32F103RBT6_AFIO_MAPR_ADC2_ETRGREG);
         break;
 
-    case AMHW_ZLG237_SWJ_CFG:
+    case AMHW_STM32F103RBT6_SWJ_CFG:
 
         break;
 
@@ -216,9 +216,9 @@ static int __am_zlg237_peripheral_remap_clear(int pin)
 int am_gpio_pin_cfg (int pin, uint32_t flags)
 {
     __GPIO_DEVINFO_DECL(p_gpio_devinfo, __gp_gpio_dev);
-    amhw_zlg237_gpio_t     *p_hw_gpio  = NULL;
-    amhw_zlg237_afio_t     *p_hw_afio  = NULL;
-    amhw_zlg237_gpiomode_t  pin_mode   = AMHW_ZLG237_GPIO_MODE_AIN;
+    amhw_stm32f103rbt6_gpio_t     *p_hw_gpio  = NULL;
+    amhw_stm32f103rbt6_afio_t     *p_hw_afio  = NULL;
+    amhw_stm32f103rbt6_gpiomode_t  pin_mode   = AMHW_STM32F103RBT6_GPIO_MODE_AIN;
     uint32_t                func = 0, mode = 0;
     /* IO口方向 */
     uint8_t dir = 0;
@@ -231,8 +231,8 @@ int am_gpio_pin_cfg (int pin, uint32_t flags)
         return -AM_ENODEV;
     }
 
-    p_hw_gpio  = (amhw_zlg237_gpio_t *)p_gpio_devinfo->gpio_regbase;
-    p_hw_afio  = (amhw_zlg237_afio_t *)p_gpio_devinfo->afio_regbase;
+    p_hw_gpio  = (amhw_stm32f103rbt6_gpio_t *)p_gpio_devinfo->gpio_regbase;
+    p_hw_afio  = (amhw_stm32f103rbt6_afio_t *)p_gpio_devinfo->afio_regbase;
 
     func = AM_GPIO_COM_FUNC_GET(flags);
     mode = AM_GPIO_COM_MODE_GET(flags);
@@ -241,52 +241,52 @@ int am_gpio_pin_cfg (int pin, uint32_t flags)
     if (0 != func) {
 
         /* 使用标准层前先退回引脚为GPIO模式 */
-        __am_zlg237_peripheral_remap_clear(pin);
+        __am_stm32f103rbt6_peripheral_remap_clear(pin);
 
         switch (func) {
 
         case AM_GPIO_INPUT_VAL:
             /* 设置方向为输入 */
-            amhw_zlg237_gpio_pin_dir_input(p_hw_gpio, pin);
+            amhw_stm32f103rbt6_gpio_pin_dir_input(p_hw_gpio, pin);
             break;
 
         case AM_GPIO_OUTPUT_INIT_HIGH_VAL:
             /* 设置输出模式，如没有设置则默认为50Mhz */
-            if (0 == (flags & AM_ZLG237_GPIO_OUTRES_RATE)) {
-                amhw_zlg237_gpio_pin_dir_output(p_hw_gpio,
-                                                AMHW_ZLG237_GPIO_SPEED_50MHz,
+            if (0 == (flags & AM_STM32F103RBT6_GPIO_OUTRES_RATE)) {
+                amhw_stm32f103rbt6_gpio_pin_dir_output(p_hw_gpio,
+                                                AMHW_STM32F103RBT6_GPIO_SPEED_50MHz,
                                                 pin);
             } else {
-                amhw_zlg237_gpio_pin_dir_output(
+                amhw_stm32f103rbt6_gpio_pin_dir_output(
                     p_hw_gpio,
-                    (amhw_zlg237_gpio_speed_mode_t)AM_ZLG237_GPIO_OUTRES_RATE_GET(flags),
+                    (amhw_stm32f103rbt6_gpio_speed_mode_t)AM_STM32F103RBT6_GPIO_OUTRES_RATE_GET(flags),
                     pin);
             }
             /* 输出高电平 */
-            amhw_zlg237_gpio_pin_out_high(p_hw_gpio, pin);
+            amhw_stm32f103rbt6_gpio_pin_out_high(p_hw_gpio, pin);
             /* 推挽输出 */
-            amhw_zlg237_gpio_pin_mode_set(p_hw_gpio,
-                                          AMHW_ZLG237_GPIO_MODE_OUT_PP,
+            amhw_stm32f103rbt6_gpio_pin_mode_set(p_hw_gpio,
+                                          AMHW_STM32F103RBT6_GPIO_MODE_OUT_PP,
                                           pin);
             break;
 
         case AM_GPIO_OUTPUT_INIT_LOW_VAL:
             /* 设置输出模式，如没有设置则默认为50Mhz */
-            if (0 == (flags & AM_ZLG237_GPIO_OUTRES_RATE)) {
-                amhw_zlg237_gpio_pin_dir_output(p_hw_gpio,
-                                                AMHW_ZLG237_GPIO_SPEED_50MHz,
+            if (0 == (flags & AM_STM32F103RBT6_GPIO_OUTRES_RATE)) {
+                amhw_stm32f103rbt6_gpio_pin_dir_output(p_hw_gpio,
+                                                AMHW_STM32F103RBT6_GPIO_SPEED_50MHz,
                                                 pin);
             } else {
-                amhw_zlg237_gpio_pin_dir_output(
+                amhw_stm32f103rbt6_gpio_pin_dir_output(
                     p_hw_gpio,
-                    (amhw_zlg237_gpio_speed_mode_t)AM_ZLG237_GPIO_OUTRES_RATE_GET(flags),
+                    (amhw_stm32f103rbt6_gpio_speed_mode_t)AM_STM32F103RBT6_GPIO_OUTRES_RATE_GET(flags),
                     pin);
             }
             /* 输出低电平 */
-            amhw_zlg237_gpio_pin_out_low(p_hw_gpio, pin);
+            amhw_stm32f103rbt6_gpio_pin_out_low(p_hw_gpio, pin);
             /* 推挽输出 */
-            amhw_zlg237_gpio_pin_mode_set(p_hw_gpio,
-                                          AMHW_ZLG237_GPIO_MODE_OUT_PP,
+            amhw_stm32f103rbt6_gpio_pin_mode_set(p_hw_gpio,
+                                          AMHW_STM32F103RBT6_GPIO_MODE_OUT_PP,
                                           pin);
             break;
 
@@ -298,7 +298,7 @@ int am_gpio_pin_cfg (int pin, uint32_t flags)
     if (mode != 0x00) {
 
         /* 获取输入输出方向 */
-        dir = amhw_zlg237_gpio_pin_dir_get(p_hw_gpio, pin);
+        dir = amhw_stm32f103rbt6_gpio_pin_dir_get(p_hw_gpio, pin);
 
         switch (mode) {
 
@@ -306,13 +306,13 @@ int am_gpio_pin_cfg (int pin, uint32_t flags)
             if (dir != 1) {
 
                 /* 使OD位置为1, 表明是上拉 */
-                amhw_zlg237_gpio_pin_out_high(p_hw_gpio, pin);
+                amhw_stm32f103rbt6_gpio_pin_out_high(p_hw_gpio, pin);
 
-                pin_mode = AMHW_ZLG237_GPIO_MODE_IPU;
+                pin_mode = AMHW_STM32F103RBT6_GPIO_MODE_IPU;
             } else {
 
                 /* 输出没有上拉模式，设置为推挽模式 */
-                pin_mode = AMHW_ZLG237_GPIO_MODE_OUT_PP;
+                pin_mode = AMHW_STM32F103RBT6_GPIO_MODE_OUT_PP;
             }
             break;
 
@@ -320,40 +320,40 @@ int am_gpio_pin_cfg (int pin, uint32_t flags)
             if (dir != 1) {
 
                 /* 使OD位置为0, 表明是下拉 */
-                amhw_zlg237_gpio_pin_out_low(p_hw_gpio, pin);
-                pin_mode = AMHW_ZLG237_GPIO_MODE_IPD;
+                amhw_stm32f103rbt6_gpio_pin_out_low(p_hw_gpio, pin);
+                pin_mode = AMHW_STM32F103RBT6_GPIO_MODE_IPD;
             } else {
 
                 /* 输出没有下拉模式，设置为推挽模式 */
-                pin_mode = AMHW_ZLG237_GPIO_MODE_OUT_PP;
+                pin_mode = AMHW_STM32F103RBT6_GPIO_MODE_OUT_PP;
             }
             break;
 
         case AM_GPIO_FLOAT_VAL:
             if (dir != 1) {
-                pin_mode = AMHW_ZLG237_GPIO_MODE_IN_FLOATING;
+                pin_mode = AMHW_STM32F103RBT6_GPIO_MODE_IN_FLOATING;
             } else {
 
                 /* 输出没有浮空模式，设置为开漏模式 */
-                pin_mode = AMHW_ZLG237_GPIO_MODE_OUT_OD;
+                pin_mode = AMHW_STM32F103RBT6_GPIO_MODE_OUT_OD;
             }
             break;
 
         case AM_GPIO_OPEN_DRAIN_VAL:
             if (dir == 0) {
                 /* 输入没有开漏模式，设置为浮空 */
-                pin_mode = AMHW_ZLG237_GPIO_MODE_IN_FLOATING;
+                pin_mode = AMHW_STM32F103RBT6_GPIO_MODE_IN_FLOATING;
             } else {
-                pin_mode = AMHW_ZLG237_GPIO_MODE_OUT_OD;
+                pin_mode = AMHW_STM32F103RBT6_GPIO_MODE_OUT_OD;
             }
             break;
 
         case AM_GPIO_PUSH_PULL_VAL:
             if (dir == 0) {
                 /* 输入没有推挽模式，设置为上拉 */
-                pin_mode = AMHW_ZLG237_GPIO_MODE_IPU;
+                pin_mode = AMHW_STM32F103RBT6_GPIO_MODE_IPU;
             } else {
-                pin_mode = AMHW_ZLG237_GPIO_MODE_OUT_PP;
+                pin_mode = AMHW_STM32F103RBT6_GPIO_MODE_OUT_PP;
             }
             break;
 
@@ -361,125 +361,125 @@ int am_gpio_pin_cfg (int pin, uint32_t flags)
             return -AM_ENOTSUP;
         }
 
-        amhw_zlg237_gpio_pin_mode_set(p_hw_gpio, pin_mode, pin);
+        amhw_stm32f103rbt6_gpio_pin_mode_set(p_hw_gpio, pin_mode, pin);
     }
 
     /* 平台相关 */
-    if (0 != (flags & AM_ZLG237_GPIO_MODE)) {
+    if (0 != (flags & AM_STM32F103RBT6_GPIO_MODE)) {
 
         /* 输入输出相应模式设置 */
 
-        switch (AM_ZLG237_GPIO_MODE_GET(flags)) {
+        switch (AM_STM32F103RBT6_GPIO_MODE_GET(flags)) {
 
         case 0:
             /* 设置为输入 */
-            amhw_zlg237_gpio_pin_dir_input(p_hw_gpio, pin);
-            pin_mode = AMHW_ZLG237_GPIO_MODE_AIN;
+            amhw_stm32f103rbt6_gpio_pin_dir_input(p_hw_gpio, pin);
+            pin_mode = AMHW_STM32F103RBT6_GPIO_MODE_AIN;
             break;
 
         case 1:
             /* 设置为输入 */
-            amhw_zlg237_gpio_pin_dir_input(p_hw_gpio, pin);
-            pin_mode = AMHW_ZLG237_GPIO_MODE_IN_FLOATING;
+            amhw_stm32f103rbt6_gpio_pin_dir_input(p_hw_gpio, pin);
+            pin_mode = AMHW_STM32F103RBT6_GPIO_MODE_IN_FLOATING;
             break;
 
         case 2:
             /* 使OD位置为0, 表明是下拉 */
-            amhw_zlg237_gpio_pin_out_low(p_hw_gpio, pin);
+            amhw_stm32f103rbt6_gpio_pin_out_low(p_hw_gpio, pin);
             /* 设置为输入 */
-            amhw_zlg237_gpio_pin_dir_input(p_hw_gpio, pin);
-            pin_mode = AMHW_ZLG237_GPIO_MODE_IPD;
+            amhw_stm32f103rbt6_gpio_pin_dir_input(p_hw_gpio, pin);
+            pin_mode = AMHW_STM32F103RBT6_GPIO_MODE_IPD;
             break;
 
         case 3:
             /* 使OD位置为1, 表明是上拉 */
-            amhw_zlg237_gpio_pin_out_high(p_hw_gpio, pin);
+            amhw_stm32f103rbt6_gpio_pin_out_high(p_hw_gpio, pin);
             /* 设置为输入 */
-            amhw_zlg237_gpio_pin_dir_input(p_hw_gpio, pin);
-            pin_mode = AMHW_ZLG237_GPIO_MODE_IPU;
+            amhw_stm32f103rbt6_gpio_pin_dir_input(p_hw_gpio, pin);
+            pin_mode = AMHW_STM32F103RBT6_GPIO_MODE_IPU;
             break;
 
         case 4:
             /* 设置为输出并设置响应频率，默认为50Mhz */
-            if (0 != (flags & AM_ZLG237_GPIO_OUTRES_RATE)) {
-                amhw_zlg237_gpio_pin_dir_output(
+            if (0 != (flags & AM_STM32F103RBT6_GPIO_OUTRES_RATE)) {
+                amhw_stm32f103rbt6_gpio_pin_dir_output(
                     p_hw_gpio,
-                    (amhw_zlg237_gpio_speed_mode_t)AM_ZLG237_GPIO_OUTRES_RATE_GET(flags),
+                    (amhw_stm32f103rbt6_gpio_speed_mode_t)AM_STM32F103RBT6_GPIO_OUTRES_RATE_GET(flags),
                     pin);
             } else {
-                amhw_zlg237_gpio_pin_dir_output(p_hw_gpio,
-                                                AMHW_ZLG237_GPIO_SPEED_50MHz,
+                amhw_stm32f103rbt6_gpio_pin_dir_output(p_hw_gpio,
+                                                AMHW_STM32F103RBT6_GPIO_SPEED_50MHz,
                                                 pin);
             }
-            pin_mode = AMHW_ZLG237_GPIO_MODE_OUT_PP;
+            pin_mode = AMHW_STM32F103RBT6_GPIO_MODE_OUT_PP;
             break;
 
         case 5:
             /* 设置为输出并设置响应频率，默认为50Mhz */
-            if (0 != (flags & AM_ZLG237_GPIO_OUTRES_RATE)) {
-                amhw_zlg237_gpio_pin_dir_output(
+            if (0 != (flags & AM_STM32F103RBT6_GPIO_OUTRES_RATE)) {
+                amhw_stm32f103rbt6_gpio_pin_dir_output(
                     p_hw_gpio,
-                    (amhw_zlg237_gpio_speed_mode_t)AM_ZLG237_GPIO_OUTRES_RATE_GET(flags),
+                    (amhw_stm32f103rbt6_gpio_speed_mode_t)AM_STM32F103RBT6_GPIO_OUTRES_RATE_GET(flags),
                     pin);
             } else {
-                amhw_zlg237_gpio_pin_dir_output(p_hw_gpio,
-                                                AMHW_ZLG237_GPIO_SPEED_50MHz,
+                amhw_stm32f103rbt6_gpio_pin_dir_output(p_hw_gpio,
+                                                AMHW_STM32F103RBT6_GPIO_SPEED_50MHz,
                                                 pin);
             }
-            pin_mode = AMHW_ZLG237_GPIO_MODE_OUT_OD;
+            pin_mode = AMHW_STM32F103RBT6_GPIO_MODE_OUT_OD;
             break;
 
         case 6:
             /* 设置为输出并设置响应频率，默认为50Mhz */
-            if (0 != (flags & AM_ZLG237_GPIO_OUTRES_RATE)) {
-                amhw_zlg237_gpio_pin_dir_output(
+            if (0 != (flags & AM_STM32F103RBT6_GPIO_OUTRES_RATE)) {
+                amhw_stm32f103rbt6_gpio_pin_dir_output(
                     p_hw_gpio,
-                    (amhw_zlg237_gpio_speed_mode_t)AM_ZLG237_GPIO_OUTRES_RATE_GET(flags),
+                    (amhw_stm32f103rbt6_gpio_speed_mode_t)AM_STM32F103RBT6_GPIO_OUTRES_RATE_GET(flags),
                     pin);
             } else {
-                amhw_zlg237_gpio_pin_dir_output(p_hw_gpio,
-                                AMHW_ZLG237_GPIO_SPEED_50MHz, pin);
+                amhw_stm32f103rbt6_gpio_pin_dir_output(p_hw_gpio,
+                                AMHW_STM32F103RBT6_GPIO_SPEED_50MHz, pin);
             }
-            pin_mode = AMHW_ZLG237_GPIO_MODE_AF_PP;
+            pin_mode = AMHW_STM32F103RBT6_GPIO_MODE_AF_PP;
             break;
 
         case 7:
             /* 设置为输出并设置响应频率，默认为50Mhz */
-            if (0 != (flags & AM_ZLG237_GPIO_OUTRES_RATE)) {
-                amhw_zlg237_gpio_pin_dir_output(
+            if (0 != (flags & AM_STM32F103RBT6_GPIO_OUTRES_RATE)) {
+                amhw_stm32f103rbt6_gpio_pin_dir_output(
                     p_hw_gpio,
-                    (amhw_zlg237_gpio_speed_mode_t)AM_ZLG237_GPIO_OUTRES_RATE_GET(flags),
+                    (amhw_stm32f103rbt6_gpio_speed_mode_t)AM_STM32F103RBT6_GPIO_OUTRES_RATE_GET(flags),
                     pin);
             } else {
-                amhw_zlg237_gpio_pin_dir_output(p_hw_gpio,
-                                AMHW_ZLG237_GPIO_SPEED_50MHz, pin);
+                amhw_stm32f103rbt6_gpio_pin_dir_output(p_hw_gpio,
+                                AMHW_STM32F103RBT6_GPIO_SPEED_50MHz, pin);
             }
-            pin_mode = AMHW_ZLG237_GPIO_MODE_AF_OD;
+            pin_mode = AMHW_STM32F103RBT6_GPIO_MODE_AF_OD;
             break;
 
         default:
             return -AM_ENOTSUP;
         }
 
-        amhw_zlg237_gpio_pin_mode_set(p_hw_gpio, pin_mode, pin);
+        amhw_stm32f103rbt6_gpio_pin_mode_set(p_hw_gpio, pin_mode, pin);
     }
 
     /* 重映像设置 */
-    if (0 != (flags & AM_ZLG237_GPIO_REMAP)) {
+    if (0 != (flags & AM_STM32F103RBT6_GPIO_REMAP)) {
 
         /* 新重映像与当前重映像不等， NO -> 外设重映像 ； 外设重映像 -> NO ； 外设1 -> 外设2 */
-        if (AM_ZLG237_GPIO_REMAP_PERIPHERAL_GET(flags) !=
+        if (AM_STM32F103RBT6_GPIO_REMAP_PERIPHERAL_GET(flags) !=
                                                p_gpio_devinfo->p_remap[pin]) {
 
             /* NO -> 外设重映像，当前引脚无重映像可不做任何处理 */
-            if (p_gpio_devinfo->p_remap[pin] == AMHW_ZLG237_NO_REMAP) {
+            if (p_gpio_devinfo->p_remap[pin] == AMHW_STM32F103RBT6_NO_REMAP) {
 
                 /* 保存当前引脚重映像信息 */
                 p_gpio_devinfo->p_remap[pin] =
-                                     (amhw_zlg237_afio_remap_peripheral_t)
-                                     AM_ZLG237_GPIO_REMAP_PERIPHERAL_GET(flags);
+                                     (amhw_stm32f103rbt6_afio_remap_peripheral_t)
+                                     AM_STM32F103RBT6_GPIO_REMAP_PERIPHERAL_GET(flags);
 
-            } else if (AM_ZLG237_GPIO_REMAP_PERIPHERAL_GET(flags) == AMHW_ZLG237_NO_REMAP) {
+            } else if (AM_STM32F103RBT6_GPIO_REMAP_PERIPHERAL_GET(flags) == AMHW_STM32F103RBT6_NO_REMAP) {
 
                 /*
                  * 外设重映像 -> NO
@@ -488,10 +488,10 @@ int am_gpio_pin_cfg (int pin, uint32_t flags)
                  */
 
                 /* 清除外设的重映像，并对所影响的GPIO初始化 */
-                __am_zlg237_peripheral_remap_clear(pin);
+                __am_stm32f103rbt6_peripheral_remap_clear(pin);
 
                 /* 保存当前引脚重映像信息 */
-                p_gpio_devinfo->p_remap[pin] = AMHW_ZLG237_NO_REMAP;
+                p_gpio_devinfo->p_remap[pin] = AMHW_STM32F103RBT6_NO_REMAP;
 
                 return AM_OK;
             } else {
@@ -503,166 +503,166 @@ int am_gpio_pin_cfg (int pin, uint32_t flags)
                  */
 
                 /* 清除外设的重映像，并对所影响的GPIO初始化 */
-                __am_zlg237_peripheral_remap_clear(pin);
+                __am_stm32f103rbt6_peripheral_remap_clear(pin);
 
                 /* 保存当前引脚重映像信息 */
                 p_gpio_devinfo->p_remap[pin] =
-                                     (amhw_zlg237_afio_remap_peripheral_t)
-                                     AM_ZLG237_GPIO_REMAP_PERIPHERAL_GET(flags);
+                                     (amhw_stm32f103rbt6_afio_remap_peripheral_t)
+                                     AM_STM32F103RBT6_GPIO_REMAP_PERIPHERAL_GET(flags);
             }
         } else {
 
             /* 新重映像与当前重映像相等，按外设重新写入相应对应重映像前需要清楚前前重映像影响的GPIO */
-            if (p_gpio_devinfo->p_remap[pin] != AMHW_ZLG237_NO_REMAP) {
+            if (p_gpio_devinfo->p_remap[pin] != AMHW_STM32F103RBT6_NO_REMAP) {
 
-                __am_zlg237_peripheral_remap_clear(pin);
+                __am_stm32f103rbt6_peripheral_remap_clear(pin);
             }
         }
 
         /* 按外设设置重映像模式 */
-        switch (AM_ZLG237_GPIO_REMAP_PERIPHERAL_GET(flags)) {
+        switch (AM_STM32F103RBT6_GPIO_REMAP_PERIPHERAL_GET(flags)) {
 
-        case AMHW_ZLG237_SPI1_REMAP:
-            if (1 == AM_ZLG237_GPIO_REMAP_MODE_GET(flags)) {
+        case AMHW_STM32F103RBT6_SPI1_REMAP:
+            if (1 == AM_STM32F103RBT6_GPIO_REMAP_MODE_GET(flags)) {
 
-                amhw_zlg237_afio_spi1_pin_remap_enable(p_hw_afio);
-            } else if (0 == AM_ZLG237_GPIO_REMAP_MODE_GET(flags)) {
+                amhw_stm32f103rbt6_afio_spi1_pin_remap_enable(p_hw_afio);
+            } else if (0 == AM_STM32F103RBT6_GPIO_REMAP_MODE_GET(flags)) {
 
-                amhw_zlg237_afio_spi1_pin_remap_disable(p_hw_afio);
+                amhw_stm32f103rbt6_afio_spi1_pin_remap_disable(p_hw_afio);
             }
             break;
 
-        case AMHW_ZLG237_I2C1_REMAP:
-            if (1 == AM_ZLG237_GPIO_REMAP_MODE_GET(flags)) {
+        case AMHW_STM32F103RBT6_I2C1_REMAP:
+            if (1 == AM_STM32F103RBT6_GPIO_REMAP_MODE_GET(flags)) {
 
-                amhw_zlg237_afio_i2c1_pin_remap_enable(p_hw_afio);
-            } else if (0 == AM_ZLG237_GPIO_REMAP_MODE_GET(flags)) {
+                amhw_stm32f103rbt6_afio_i2c1_pin_remap_enable(p_hw_afio);
+            } else if (0 == AM_STM32F103RBT6_GPIO_REMAP_MODE_GET(flags)) {
 
-                amhw_zlg237_afio_i2c1_pin_remap_disable(p_hw_afio);
+                amhw_stm32f103rbt6_afio_i2c1_pin_remap_disable(p_hw_afio);
             }
             break;
 
-        case AMHW_ZLG237_UART1_REMAP:
-            if (1 == AM_ZLG237_GPIO_REMAP_MODE_GET(flags)) {
+        case AMHW_STM32F103RBT6_UART1_REMAP:
+            if (1 == AM_STM32F103RBT6_GPIO_REMAP_MODE_GET(flags)) {
 
-                amhw_zlg237_afio_uart_pin_remap_enable(p_hw_afio, 1);
-            } else if (0 == AM_ZLG237_GPIO_REMAP_MODE_GET(flags)) {
+                amhw_stm32f103rbt6_afio_uart_pin_remap_enable(p_hw_afio, 1);
+            } else if (0 == AM_STM32F103RBT6_GPIO_REMAP_MODE_GET(flags)) {
 
-                amhw_zlg237_afio_uart_pin_remap_disable(p_hw_afio, 1);
+                amhw_stm32f103rbt6_afio_uart_pin_remap_disable(p_hw_afio, 1);
             }
             break;
 
-        case AMHW_ZLG237_UART2_REMAP:
-            if (1 == AM_ZLG237_GPIO_REMAP_MODE_GET(flags)) {
+        case AMHW_STM32F103RBT6_UART2_REMAP:
+            if (1 == AM_STM32F103RBT6_GPIO_REMAP_MODE_GET(flags)) {
 
-                amhw_zlg237_afio_uart_pin_remap_enable(p_hw_afio, 2);
-            } else if (0 == AM_ZLG237_GPIO_REMAP_MODE_GET(flags)) {
+                amhw_stm32f103rbt6_afio_uart_pin_remap_enable(p_hw_afio, 2);
+            } else if (0 == AM_STM32F103RBT6_GPIO_REMAP_MODE_GET(flags)) {
 
-                amhw_zlg237_afio_uart_pin_remap_disable(p_hw_afio, 2);
+                amhw_stm32f103rbt6_afio_uart_pin_remap_disable(p_hw_afio, 2);
             }
             break;
 
-        case AMHW_ZLG237_UART3_REMAP:
-            amhw_zlg237_afio_uart3_remap_mode_set(
+        case AMHW_STM32F103RBT6_UART3_REMAP:
+            amhw_stm32f103rbt6_afio_uart3_remap_mode_set(
                 p_hw_afio,
-                (amhw_zlg237_afio_uart3_remap_mode_t)AM_ZLG237_GPIO_REMAP_MODE_GET(flags));
+                (amhw_stm32f103rbt6_afio_uart3_remap_mode_t)AM_STM32F103RBT6_GPIO_REMAP_MODE_GET(flags));
             break;
 
-        case AMHW_ZLG237_TIM1_REMAP:
-            amhw_zlg237_afio_tim1_remap_mode_set(
+        case AMHW_STM32F103RBT6_TIM1_REMAP:
+            amhw_stm32f103rbt6_afio_tim1_remap_mode_set(
                 p_hw_afio,
-                (amhw_zlg237_afio_tim1_remap_mode_t)AM_ZLG237_GPIO_REMAP_MODE_GET(flags));
+                (amhw_stm32f103rbt6_afio_tim1_remap_mode_t)AM_STM32F103RBT6_GPIO_REMAP_MODE_GET(flags));
             break;
 
-        case AMHW_ZLG237_TIM2_REMAP:
-            amhw_zlg237_afio_tim2_remap_mode_set(
+        case AMHW_STM32F103RBT6_TIM2_REMAP:
+            amhw_stm32f103rbt6_afio_tim2_remap_mode_set(
                 p_hw_afio,
-                (amhw_zlg237_afio_tim2_remap_mode_t)AM_ZLG237_GPIO_REMAP_MODE_GET(flags));
+                (amhw_stm32f103rbt6_afio_tim2_remap_mode_t)AM_STM32F103RBT6_GPIO_REMAP_MODE_GET(flags));
             break;
 
-        case AMHW_ZLG237_TIM3_REMAP:
-            amhw_zlg237_afio_tim3_remap_mode_set(
+        case AMHW_STM32F103RBT6_TIM3_REMAP:
+            amhw_stm32f103rbt6_afio_tim3_remap_mode_set(
                 p_hw_afio,
-                (amhw_zlg237_afio_tim3_remap_mode_t)AM_ZLG237_GPIO_REMAP_MODE_GET(flags));
+                (amhw_stm32f103rbt6_afio_tim3_remap_mode_t)AM_STM32F103RBT6_GPIO_REMAP_MODE_GET(flags));
             break;
 
-        case AMHW_ZLG237_TIM4_REMAP:
-            amhw_zlg237_afio_tim4_pin_remap_enable(p_hw_afio);
+        case AMHW_STM32F103RBT6_TIM4_REMAP:
+            amhw_stm32f103rbt6_afio_tim4_pin_remap_enable(p_hw_afio);
             break;
 
-        case AMHW_ZLG237_CAN_REMAP:
-            amhw_zlg237_afio_can_remap_mode_set(
+        case AMHW_STM32F103RBT6_CAN_REMAP:
+            amhw_stm32f103rbt6_afio_can_remap_mode_set(
                 p_hw_afio,
-                (amhw_zlg237_afio_can_remap_mode_t)AM_ZLG237_GPIO_REMAP_MODE_GET(flags));
+                (amhw_stm32f103rbt6_afio_can_remap_mode_t)AM_STM32F103RBT6_GPIO_REMAP_MODE_GET(flags));
             break;
 
-        case AMHW_ZLG237_PD01_REMAP:
-            if (1 == AM_ZLG237_GPIO_REMAP_MODE_GET(flags)) {
+        case AMHW_STM32F103RBT6_PD01_REMAP:
+            if (1 == AM_STM32F103RBT6_GPIO_REMAP_MODE_GET(flags)) {
 
-                amhw_zlg237_afio_pd01_pin_remap_enable(p_hw_afio);
-            } else if (0 == AM_ZLG237_GPIO_REMAP_MODE_GET(flags)) {
+                amhw_stm32f103rbt6_afio_pd01_pin_remap_enable(p_hw_afio);
+            } else if (0 == AM_STM32F103RBT6_GPIO_REMAP_MODE_GET(flags)) {
 
-                amhw_zlg237_afio_pd01_pin_remap_disable(p_hw_afio);
+                amhw_stm32f103rbt6_afio_pd01_pin_remap_disable(p_hw_afio);
             }
             break;
 
-        case AMHW_ZLG237_TIM5_CH4_REMAP:
-            if (1 == AM_ZLG237_GPIO_REMAP_MODE_GET(flags)) {
+        case AMHW_STM32F103RBT6_TIM5_CH4_REMAP:
+            if (1 == AM_STM32F103RBT6_GPIO_REMAP_MODE_GET(flags)) {
 
-                amhw_zlg237_afio_tim5_ch4_pin_remap_enable(p_hw_afio);
-            } else if (0 == AM_ZLG237_GPIO_REMAP_MODE_GET(flags)) {
+                amhw_stm32f103rbt6_afio_tim5_ch4_pin_remap_enable(p_hw_afio);
+            } else if (0 == AM_STM32F103RBT6_GPIO_REMAP_MODE_GET(flags)) {
 
-                amhw_zlg237_afio_tim5_ch4_pin_remap_disable(p_hw_afio);
+                amhw_stm32f103rbt6_afio_tim5_ch4_pin_remap_disable(p_hw_afio);
             }
             break;
 
-        case AMHW_ZLG237_ADC1_ETRGINJ_REMAP:
-            if (1 == AM_ZLG237_GPIO_REMAP_MODE_GET(flags)) {
+        case AMHW_STM32F103RBT6_ADC1_ETRGINJ_REMAP:
+            if (1 == AM_STM32F103RBT6_GPIO_REMAP_MODE_GET(flags)) {
 
-                amhw_zlg237_afio_adc_pin_remap_enable(p_hw_afio ,AMHW_ZLG237_AFIO_MAPR_ADC1_ETRGINJ);
-            } else if (0 == AM_ZLG237_GPIO_REMAP_MODE_GET(flags)) {
+                amhw_stm32f103rbt6_afio_adc_pin_remap_enable(p_hw_afio ,AMHW_STM32F103RBT6_AFIO_MAPR_ADC1_ETRGINJ);
+            } else if (0 == AM_STM32F103RBT6_GPIO_REMAP_MODE_GET(flags)) {
 
-                amhw_zlg237_afio_adc_pin_remap_disable(p_hw_afio ,AMHW_ZLG237_AFIO_MAPR_ADC1_ETRGINJ);
+                amhw_stm32f103rbt6_afio_adc_pin_remap_disable(p_hw_afio ,AMHW_STM32F103RBT6_AFIO_MAPR_ADC1_ETRGINJ);
             }
             break;
 
-        case AMHW_ZLG237_ADC1_ETRGREG_REMAP:
-            if (1 == AM_ZLG237_GPIO_REMAP_MODE_GET(flags)) {
+        case AMHW_STM32F103RBT6_ADC1_ETRGREG_REMAP:
+            if (1 == AM_STM32F103RBT6_GPIO_REMAP_MODE_GET(flags)) {
 
-                amhw_zlg237_afio_adc_pin_remap_enable(p_hw_afio ,AMHW_ZLG237_AFIO_MAPR_ADC1_ETRGREG);
-            } else if (0 == AM_ZLG237_GPIO_REMAP_MODE_GET(flags)) {
+                amhw_stm32f103rbt6_afio_adc_pin_remap_enable(p_hw_afio ,AMHW_STM32F103RBT6_AFIO_MAPR_ADC1_ETRGREG);
+            } else if (0 == AM_STM32F103RBT6_GPIO_REMAP_MODE_GET(flags)) {
 
-                amhw_zlg237_afio_adc_pin_remap_disable(p_hw_afio ,AMHW_ZLG237_AFIO_MAPR_ADC1_ETRGREG);
+                amhw_stm32f103rbt6_afio_adc_pin_remap_disable(p_hw_afio ,AMHW_STM32F103RBT6_AFIO_MAPR_ADC1_ETRGREG);
             }
             break;
 
-        case AMHW_ZLG237_ADC2_ETRGINJ_REMAP:
-            if (1 == AM_ZLG237_GPIO_REMAP_MODE_GET(flags)) {
+        case AMHW_STM32F103RBT6_ADC2_ETRGINJ_REMAP:
+            if (1 == AM_STM32F103RBT6_GPIO_REMAP_MODE_GET(flags)) {
 
-                amhw_zlg237_afio_adc_pin_remap_enable(p_hw_afio ,AMHW_ZLG237_AFIO_MAPR_ADC2_ETRGINJ);
-            } else if (0 == AM_ZLG237_GPIO_REMAP_MODE_GET(flags)) {
+                amhw_stm32f103rbt6_afio_adc_pin_remap_enable(p_hw_afio ,AMHW_STM32F103RBT6_AFIO_MAPR_ADC2_ETRGINJ);
+            } else if (0 == AM_STM32F103RBT6_GPIO_REMAP_MODE_GET(flags)) {
 
-                amhw_zlg237_afio_adc_pin_remap_disable(p_hw_afio ,AMHW_ZLG237_AFIO_MAPR_ADC2_ETRGINJ);
+                amhw_stm32f103rbt6_afio_adc_pin_remap_disable(p_hw_afio ,AMHW_STM32F103RBT6_AFIO_MAPR_ADC2_ETRGINJ);
             }
             break;
 
-        case AMHW_ZLG237_ADC2_ETRGREG_REMAP:
-            if (1 == AM_ZLG237_GPIO_REMAP_MODE_GET(flags)) {
+        case AMHW_STM32F103RBT6_ADC2_ETRGREG_REMAP:
+            if (1 == AM_STM32F103RBT6_GPIO_REMAP_MODE_GET(flags)) {
 
-                amhw_zlg237_afio_adc_pin_remap_enable(p_hw_afio ,AMHW_ZLG237_AFIO_MAPR_ADC2_ETRGREG);
-            } else if (0 == AM_ZLG237_GPIO_REMAP_MODE_GET(flags)) {
+                amhw_stm32f103rbt6_afio_adc_pin_remap_enable(p_hw_afio ,AMHW_STM32F103RBT6_AFIO_MAPR_ADC2_ETRGREG);
+            } else if (0 == AM_STM32F103RBT6_GPIO_REMAP_MODE_GET(flags)) {
 
-                amhw_zlg237_afio_adc_pin_remap_disable(p_hw_afio ,AMHW_ZLG237_AFIO_MAPR_ADC2_ETRGREG);
+                amhw_stm32f103rbt6_afio_adc_pin_remap_disable(p_hw_afio ,AMHW_STM32F103RBT6_AFIO_MAPR_ADC2_ETRGREG);
             }
             break;
 
-        case AMHW_ZLG237_SWJ_CFG:
-            amhw_zlg237_afio_swj_cfg_remap_mode_set(
+        case AMHW_STM32F103RBT6_SWJ_CFG:
+            amhw_stm32f103rbt6_afio_swj_cfg_remap_mode_set(
                 p_hw_afio,
-                (amhw_zlg237_afio_swj_cfg_mode_t)AM_ZLG237_GPIO_REMAP_MODE_GET(flags));
+                (amhw_stm32f103rbt6_afio_swj_cfg_mode_t)AM_STM32F103RBT6_GPIO_REMAP_MODE_GET(flags));
             break;
 
-        case AMHW_ZLG237_NO_REMAP:
+        case AMHW_STM32F103RBT6_NO_REMAP:
             break;
 
         default:
@@ -682,18 +682,18 @@ int am_gpio_get (int pin)
 {
     __GPIO_DEVINFO_DECL(p_gpio_devinfo, __gp_gpio_dev);
 
-    amhw_zlg237_gpio_t     *p_hw_gpio  = NULL;
+    amhw_stm32f103rbt6_gpio_t     *p_hw_gpio  = NULL;
 
     if (__gp_gpio_dev == NULL) {
         return -AM_ENXIO;
     }
 
-    p_hw_gpio  = (amhw_zlg237_gpio_t *)p_gpio_devinfo->gpio_regbase;
+    p_hw_gpio  = (amhw_stm32f103rbt6_gpio_t *)p_gpio_devinfo->gpio_regbase;
 
-    if (amhw_zlg237_gpio_pin_dir_get(p_hw_gpio, pin)) {
-        return amhw_zlg237_gpio_pin_output_get(p_hw_gpio, pin);
+    if (amhw_stm32f103rbt6_gpio_pin_dir_get(p_hw_gpio, pin)) {
+        return amhw_stm32f103rbt6_gpio_pin_output_get(p_hw_gpio, pin);
     } else {
-        return amhw_zlg237_gpio_pin_input_get(p_hw_gpio, pin);
+        return amhw_stm32f103rbt6_gpio_pin_input_get(p_hw_gpio, pin);
     }
 }
 
@@ -710,18 +710,18 @@ int am_gpio_set (int pin, int value)
 {
     __GPIO_DEVINFO_DECL(p_gpio_devinfo, __gp_gpio_dev);
 
-    amhw_zlg237_gpio_t     *p_hw_gpio  = NULL;
+    amhw_stm32f103rbt6_gpio_t     *p_hw_gpio  = NULL;
 
     if (__gp_gpio_dev == NULL) {
         return -AM_ENXIO;
     }
 
-    p_hw_gpio  = (amhw_zlg237_gpio_t *)p_gpio_devinfo->gpio_regbase;
+    p_hw_gpio  = (amhw_stm32f103rbt6_gpio_t *)p_gpio_devinfo->gpio_regbase;
 
     if (value == 0) {
-        amhw_zlg237_gpio_pin_out_low(p_hw_gpio, pin);
+        amhw_stm32f103rbt6_gpio_pin_out_low(p_hw_gpio, pin);
     } else {
-        amhw_zlg237_gpio_pin_out_high(p_hw_gpio, pin);
+        amhw_stm32f103rbt6_gpio_pin_out_high(p_hw_gpio, pin);
     }
 
     return AM_OK;
@@ -736,15 +736,15 @@ int am_gpio_toggle (int pin)
 {
     __GPIO_DEVINFO_DECL(p_gpio_devinfo, __gp_gpio_dev);
 
-    amhw_zlg237_gpio_t     *p_hw_gpio  = NULL;
+    amhw_stm32f103rbt6_gpio_t     *p_hw_gpio  = NULL;
 
     if (__gp_gpio_dev == NULL) {
         return -AM_ENXIO;
     }
 
-    p_hw_gpio  = (amhw_zlg237_gpio_t *)p_gpio_devinfo->gpio_regbase;
+    p_hw_gpio  = (amhw_stm32f103rbt6_gpio_t *)p_gpio_devinfo->gpio_regbase;
 
-    amhw_zlg237_gpio_pin_out_toggle(p_hw_gpio, pin);
+    amhw_stm32f103rbt6_gpio_pin_out_toggle(p_hw_gpio, pin);
 
     return AM_OK;
 }
@@ -760,24 +760,24 @@ static void __port_exit0_int_isr (void * p_arg)
     am_pfnvoid_t pfn_isr   = NULL;
     void        *p_arg_tmp = NULL;
 
-    amhw_zlg237_exti_t   *p_hw_exti   = NULL;
+    amhw_stm32f103rbt6_exti_t   *p_hw_exti   = NULL;
 
-    p_hw_exti   = (amhw_zlg237_exti_t   *)p_gpio_devinfo->exti_regbase;
+    p_hw_exti   = (amhw_stm32f103rbt6_exti_t   *)p_gpio_devinfo->exti_regbase;
 
     /* 获取有关回调函数及参数 */
     pfn_isr   = p_gpio_devinfo->p_triginfo[slot].pfn_callback;
     p_arg_tmp = p_gpio_devinfo->p_triginfo[slot].p_arg;
 
-    if (amhw_zlg237_exti_pr_read(p_hw_exti,
-                                 (amhw_zlg237_line_num_t)(1ul << slot))) {
+    if (amhw_stm32f103rbt6_exti_pr_read(p_hw_exti,
+                                 (amhw_stm32f103rbt6_line_num_t)(1ul << slot))) {
         if (pfn_isr != NULL) {
             pfn_isr(p_arg_tmp);
         }
     }
 
     /* 清中断标志 */
-    amhw_zlg237_exti_pending_clear(p_hw_exti,
-                                   (amhw_zlg237_line_num_t)(1ul << slot));
+    amhw_stm32f103rbt6_exti_pending_clear(p_hw_exti,
+                                   (amhw_stm32f103rbt6_line_num_t)(1ul << slot));
 }
 
 /**
@@ -791,24 +791,24 @@ static void __port_exit1_int_isr (void * p_arg)
     am_pfnvoid_t pfn_isr   = NULL;
     void        *p_arg_tmp = NULL;
 
-    amhw_zlg237_exti_t   *p_hw_exti   = NULL;
+    amhw_stm32f103rbt6_exti_t   *p_hw_exti   = NULL;
 
-    p_hw_exti   = (amhw_zlg237_exti_t *)p_gpio_devinfo->exti_regbase;
+    p_hw_exti   = (amhw_stm32f103rbt6_exti_t *)p_gpio_devinfo->exti_regbase;
 
     /* 获取有关回调函数及参数 */
     pfn_isr   = p_gpio_devinfo->p_triginfo[slot].pfn_callback;
     p_arg_tmp = p_gpio_devinfo->p_triginfo[slot].p_arg;
 
-    if (amhw_zlg237_exti_pr_read(p_hw_exti,
-                                 (amhw_zlg237_line_num_t)(1ul << slot))) {
+    if (amhw_stm32f103rbt6_exti_pr_read(p_hw_exti,
+                                 (amhw_stm32f103rbt6_line_num_t)(1ul << slot))) {
         if (pfn_isr != NULL) {
             pfn_isr(p_arg_tmp);
         }
     }
 
     /* 清中断标志 */
-    amhw_zlg237_exti_pending_clear(p_hw_exti,
-                                   (amhw_zlg237_line_num_t)(1ul << slot));
+    amhw_stm32f103rbt6_exti_pending_clear(p_hw_exti,
+                                   (amhw_stm32f103rbt6_line_num_t)(1ul << slot));
 }
 
 /**
@@ -822,24 +822,24 @@ static void __port_exit2_int_isr (void * p_arg)
     am_pfnvoid_t pfn_isr   = NULL;
     void        *p_arg_tmp = NULL;
 
-    amhw_zlg237_exti_t   *p_hw_exti   = NULL;
+    amhw_stm32f103rbt6_exti_t   *p_hw_exti   = NULL;
 
-    p_hw_exti   = (amhw_zlg237_exti_t *)p_gpio_devinfo->exti_regbase;
+    p_hw_exti   = (amhw_stm32f103rbt6_exti_t *)p_gpio_devinfo->exti_regbase;
 
     /* 获取有关回调函数及参数 */
     pfn_isr   = p_gpio_devinfo->p_triginfo[slot].pfn_callback;
     p_arg_tmp = p_gpio_devinfo->p_triginfo[slot].p_arg;
 
-    if (amhw_zlg237_exti_pr_read(p_hw_exti,
-                                 (amhw_zlg237_line_num_t)(1ul << slot))) {
+    if (amhw_stm32f103rbt6_exti_pr_read(p_hw_exti,
+                                 (amhw_stm32f103rbt6_line_num_t)(1ul << slot))) {
         if (pfn_isr != NULL) {
             pfn_isr(p_arg_tmp);
         }
     }
 
     /* 清中断标志 */
-    amhw_zlg237_exti_pending_clear(p_hw_exti,
-                                   (amhw_zlg237_line_num_t)(1ul << slot));
+    amhw_stm32f103rbt6_exti_pending_clear(p_hw_exti,
+                                   (amhw_stm32f103rbt6_line_num_t)(1ul << slot));
 }
 
 /**
@@ -853,24 +853,24 @@ static void __port_exit3_int_isr (void * p_arg)
     am_pfnvoid_t pfn_isr   = NULL;
     void        *p_arg_tmp = NULL;
 
-    amhw_zlg237_exti_t   *p_hw_exti   = NULL;
+    amhw_stm32f103rbt6_exti_t   *p_hw_exti   = NULL;
 
-    p_hw_exti   = (amhw_zlg237_exti_t *)p_gpio_devinfo->exti_regbase;
+    p_hw_exti   = (amhw_stm32f103rbt6_exti_t *)p_gpio_devinfo->exti_regbase;
 
     /* 获取有关回调函数及参数 */
     pfn_isr   = p_gpio_devinfo->p_triginfo[slot].pfn_callback;
     p_arg_tmp = p_gpio_devinfo->p_triginfo[slot].p_arg;
 
-    if (amhw_zlg237_exti_pr_read(p_hw_exti,
-                                 (amhw_zlg237_line_num_t)(1ul << slot))) {
+    if (amhw_stm32f103rbt6_exti_pr_read(p_hw_exti,
+                                 (amhw_stm32f103rbt6_line_num_t)(1ul << slot))) {
         if (pfn_isr != NULL) {
             pfn_isr(p_arg_tmp);
         }
     }
 
     /* 清中断标志 */
-    amhw_zlg237_exti_pending_clear(p_hw_exti,
-                                   (amhw_zlg237_line_num_t)(1ul << slot));
+    amhw_stm32f103rbt6_exti_pending_clear(p_hw_exti,
+                                   (amhw_stm32f103rbt6_line_num_t)(1ul << slot));
 }
 
 /**
@@ -884,24 +884,24 @@ static void __port_exit4_int_isr (void * p_arg)
     am_pfnvoid_t pfn_isr   = NULL;
     void        *p_arg_tmp = NULL;
 
-    amhw_zlg237_exti_t   *p_hw_exti   = NULL;
+    amhw_stm32f103rbt6_exti_t   *p_hw_exti   = NULL;
 
-    p_hw_exti   = (amhw_zlg237_exti_t *)p_gpio_devinfo->exti_regbase;
+    p_hw_exti   = (amhw_stm32f103rbt6_exti_t *)p_gpio_devinfo->exti_regbase;
 
     /* 获取有关回调函数及参数 */
     pfn_isr   = p_gpio_devinfo->p_triginfo[slot].pfn_callback;
     p_arg_tmp = p_gpio_devinfo->p_triginfo[slot].p_arg;
 
-    if (amhw_zlg237_exti_pr_read(p_hw_exti,
-                                 (amhw_zlg237_line_num_t)(1ul << slot))) {
+    if (amhw_stm32f103rbt6_exti_pr_read(p_hw_exti,
+                                 (amhw_stm32f103rbt6_line_num_t)(1ul << slot))) {
         if (pfn_isr != NULL) {
             pfn_isr(p_arg_tmp);
         }
     }
 
     /* 清中断标志 */
-    amhw_zlg237_exti_pending_clear(p_hw_exti,
-                                   (amhw_zlg237_line_num_t)(1ul << slot));
+    amhw_stm32f103rbt6_exti_pending_clear(p_hw_exti,
+                                   (amhw_stm32f103rbt6_line_num_t)(1ul << slot));
 }
 
 /**
@@ -914,13 +914,13 @@ static void __port_exit9_5_int_isr (void * p_arg)
     void         *p_arg_tmp = NULL;
     uint8_t      slot       = 5;
 
-    amhw_zlg237_exti_t   *p_hw_exti   = NULL;
+    amhw_stm32f103rbt6_exti_t   *p_hw_exti   = NULL;
 
-    p_hw_exti   = (amhw_zlg237_exti_t   *)p_gpio_devinfo->exti_regbase;
+    p_hw_exti   = (amhw_stm32f103rbt6_exti_t   *)p_gpio_devinfo->exti_regbase;
 
     for (slot = 5 ; slot < 10 ; slot++) {
-        if (amhw_zlg237_exti_pr_read(p_hw_exti,
-                                     (amhw_zlg237_line_num_t)(1ul << slot))) {
+        if (amhw_stm32f103rbt6_exti_pr_read(p_hw_exti,
+                                     (amhw_stm32f103rbt6_line_num_t)(1ul << slot))) {
 
             pfn_isr   = p_gpio_devinfo->p_triginfo[slot].pfn_callback;
             p_arg_tmp = p_gpio_devinfo->p_triginfo[slot].p_arg;
@@ -929,8 +929,8 @@ static void __port_exit9_5_int_isr (void * p_arg)
                 pfn_isr(p_arg_tmp);
             }
 
-            amhw_zlg237_exti_pending_clear(p_hw_exti,
-                                         (amhw_zlg237_line_num_t)(1ul << slot));
+            amhw_stm32f103rbt6_exti_pending_clear(p_hw_exti,
+                                         (amhw_stm32f103rbt6_line_num_t)(1ul << slot));
 
             break;
         }
@@ -947,13 +947,13 @@ static void __port_exit15_10_int_isr (void * p_arg)
     void         *p_arg_tmp = NULL;
     uint8_t      slot       = 10;
 
-    amhw_zlg237_exti_t   *p_hw_exti   = NULL;
+    amhw_stm32f103rbt6_exti_t   *p_hw_exti   = NULL;
 
-    p_hw_exti   = (amhw_zlg237_exti_t   *)p_gpio_devinfo->exti_regbase;
+    p_hw_exti   = (amhw_stm32f103rbt6_exti_t   *)p_gpio_devinfo->exti_regbase;
 
     for (slot = 10 ; slot < 16 ; slot++) {
-        if (amhw_zlg237_exti_pr_read(p_hw_exti,
-                                     (amhw_zlg237_line_num_t)(1ul << slot))) {
+        if (amhw_stm32f103rbt6_exti_pr_read(p_hw_exti,
+                                     (amhw_stm32f103rbt6_line_num_t)(1ul << slot))) {
 
             pfn_isr   = p_gpio_devinfo->p_triginfo[slot].pfn_callback;
             p_arg_tmp = p_gpio_devinfo->p_triginfo[slot].p_arg;
@@ -962,8 +962,8 @@ static void __port_exit15_10_int_isr (void * p_arg)
                 pfn_isr(p_arg_tmp);
             }
 
-            amhw_zlg237_exti_pending_clear(p_hw_exti,
-                                         (amhw_zlg237_line_num_t)(1ul << slot));
+            amhw_stm32f103rbt6_exti_pending_clear(p_hw_exti,
+                                         (amhw_stm32f103rbt6_line_num_t)(1ul << slot));
 
             break;
         }
@@ -978,8 +978,8 @@ static void __port_exit15_10_int_isr (void * p_arg)
  *
  * \retval AM_OK : 操作成功
  */
-int am_zlg237_gpio_init (am_zlg237_gpio_dev_t           *p_dev,
-                         const am_zlg237_gpio_devinfo_t *p_devinfo)
+int am_stm32f103rbt6_gpio_init (am_stm32f103rbt6_gpio_dev_t           *p_dev,
+                         const am_stm32f103rbt6_gpio_devinfo_t *p_devinfo)
 {
     uint8_t i = 0;
 
@@ -1002,14 +1002,14 @@ int am_zlg237_gpio_init (am_zlg237_gpio_dev_t           *p_dev,
     for (i = 0 ; i < p_devinfo->pin_count ; i++) {
         if ((i == PIOA_13) || (i == PIOA_14) || (i == PIOA_15) ||
              (i == PIOB_3) || (i == PIOB_4)) {
-            p_devinfo->p_remap[i] = AMHW_ZLG237_SWJ_CFG;
+            p_devinfo->p_remap[i] = AMHW_STM32F103RBT6_SWJ_CFG;
         } else {
-            p_devinfo->p_remap[i] = AMHW_ZLG237_NO_REMAP;
+            p_devinfo->p_remap[i] = AMHW_STM32F103RBT6_NO_REMAP;
         }
     }
 
     for (i = 0 ; i < p_devinfo->exti_num_max ; i++) {
-        p_devinfo->p_infomap[i] = AM_ZLG237_GPIO_INVALID_PIN_MAP;
+        p_devinfo->p_infomap[i] = AM_STM32F103RBT6_GPIO_INVALID_PIN_MAP;
         p_devinfo->p_triginfo[i].p_arg = NULL;
         p_devinfo->p_triginfo[i].pfn_callback = NULL;
     }
@@ -1045,7 +1045,7 @@ int am_zlg237_gpio_init (am_zlg237_gpio_dev_t           *p_dev,
  *
  * \return 无
  */
-void am_zlg237_gpio_deinit (void)
+void am_stm32f103rbt6_gpio_deinit (void)
 {
     __GPIO_DEVINFO_DECL(p_gpio_devinfo, __gp_gpio_dev);
     uint8_t i;
@@ -1061,14 +1061,14 @@ void am_zlg237_gpio_deinit (void)
     for (i = 0 ; i < p_gpio_devinfo->pin_count ; i++) {
         if ((i == PIOA_13) || (i == PIOA_14) || (i == PIOA_15) ||
              (i == PIOB_3) || (i == PIOB_4)) {
-            p_gpio_devinfo->p_remap[i] = AMHW_ZLG237_SWJ_CFG;
+            p_gpio_devinfo->p_remap[i] = AMHW_STM32F103RBT6_SWJ_CFG;
         } else {
-            p_gpio_devinfo->p_remap[i] = AMHW_ZLG237_NO_REMAP;
+            p_gpio_devinfo->p_remap[i] = AMHW_STM32F103RBT6_NO_REMAP;
         }
     }
 
     for (i = 0 ; i < p_gpio_devinfo->exti_num_max ; i++) {
-        p_gpio_devinfo->p_infomap[i] = AM_ZLG237_GPIO_INVALID_PIN_MAP;
+        p_gpio_devinfo->p_infomap[i] = AM_STM32F103RBT6_GPIO_INVALID_PIN_MAP;
         p_gpio_devinfo->p_triginfo[i].p_arg = NULL;
         p_gpio_devinfo->p_triginfo[i].pfn_callback = NULL;
     }
@@ -1105,18 +1105,18 @@ int am_gpio_trigger_cfg (int pin, uint32_t flag)
 {
     __GPIO_DEVINFO_DECL(p_gpio_devinfo, __gp_gpio_dev);
 
-    amhw_zlg237_gpio_t     *p_hw_gpio  = NULL;
-    amhw_zlg237_exti_t     *p_hw_exti  = NULL;
-    amhw_zlg237_afio_t     *p_hw_afio  = NULL;
+    amhw_stm32f103rbt6_gpio_t     *p_hw_gpio  = NULL;
+    amhw_stm32f103rbt6_exti_t     *p_hw_exti  = NULL;
+    amhw_stm32f103rbt6_afio_t     *p_hw_afio  = NULL;
     uint8_t                 slot       = pin & 0x0f;
 
     if (__gp_gpio_dev == NULL) {
         return -AM_ENXIO;
     }
 
-    p_hw_gpio = (amhw_zlg237_gpio_t *)p_gpio_devinfo->gpio_regbase;
-    p_hw_exti = (amhw_zlg237_exti_t *)p_gpio_devinfo->exti_regbase;
-    p_hw_afio = (amhw_zlg237_afio_t *)p_gpio_devinfo->afio_regbase;
+    p_hw_gpio = (amhw_stm32f103rbt6_gpio_t *)p_gpio_devinfo->gpio_regbase;
+    p_hw_exti = (amhw_stm32f103rbt6_exti_t *)p_gpio_devinfo->exti_regbase;
+    p_hw_afio = (amhw_stm32f103rbt6_afio_t *)p_gpio_devinfo->afio_regbase;
 
     if (slot > (p_gpio_devinfo->exti_num_max - 1)) {
         return -AM_ENOSPC;
@@ -1127,30 +1127,30 @@ int am_gpio_trigger_cfg (int pin, uint32_t flag)
     }
 
     /* 使用GPIO功能 */
-    __am_zlg237_peripheral_remap_clear(pin);
+    __am_stm32f103rbt6_peripheral_remap_clear(pin);
 
     /* 设置管脚为输入方向 */
-    amhw_zlg237_gpio_pin_dir_input(p_hw_gpio, pin);
+    amhw_stm32f103rbt6_gpio_pin_dir_input(p_hw_gpio, pin);
 
     /* 管脚为上拉/下拉模式 */
-    amhw_zlg237_gpio_pin_mode_set(p_hw_gpio, AMHW_ZLG237_GPIO_MODE_IPD, pin);
+    amhw_stm32f103rbt6_gpio_pin_mode_set(p_hw_gpio, AMHW_STM32F103RBT6_GPIO_MODE_IPD, pin);
     /*
      * 中断线0只能连一个端口编号为0的GPIO引脚，比如说，PIOA_0连接到了中断线0，
      * PIOB_0、PIOC_0、PIOD_0就不能连到中断线0, 但此时PIOA_1可以连接到中断线1。
      */
-    amhw_zlg237_afio_exti_pin_set(p_hw_afio, pin);
+    amhw_stm32f103rbt6_afio_exti_pin_set(p_hw_afio, pin);
 
     /* 清除中断线配置 */
-    amhw_zlg237_exti_imr_clear(p_hw_exti,
-                               (amhw_zlg237_line_num_t)(1ul << slot));
-    amhw_zlg237_exti_emr_clear(p_hw_exti,
-                               (amhw_zlg237_line_num_t)(1ul << slot));
+    amhw_stm32f103rbt6_exti_imr_clear(p_hw_exti,
+                               (amhw_stm32f103rbt6_line_num_t)(1ul << slot));
+    amhw_stm32f103rbt6_exti_emr_clear(p_hw_exti,
+                               (amhw_stm32f103rbt6_line_num_t)(1ul << slot));
 
     /* 清除中断线触发方式配置 */
-    amhw_zlg237_exti_rtsr_clear(p_hw_exti,
-                                (amhw_zlg237_line_num_t)(1ul << slot));
-    amhw_zlg237_exti_ftsr_clear(p_hw_exti,
-                                (amhw_zlg237_line_num_t)(1ul << slot));
+    amhw_stm32f103rbt6_exti_rtsr_clear(p_hw_exti,
+                                (amhw_stm32f103rbt6_line_num_t)(1ul << slot));
+    amhw_stm32f103rbt6_exti_ftsr_clear(p_hw_exti,
+                                (amhw_stm32f103rbt6_line_num_t)(1ul << slot));
 
     switch (flag) {
 
@@ -1159,27 +1159,27 @@ int am_gpio_trigger_cfg (int pin, uint32_t flag)
 
     case AM_GPIO_TRIGGER_RISE:
         /* 使OD位置为0, 表明是下拉 */
-        amhw_zlg237_gpio_pin_out_low(p_hw_gpio, pin);
-        amhw_zlg237_exti_rtsr_set(p_hw_exti,
-                                  (amhw_zlg237_line_num_t)(1ul << slot));
+        amhw_stm32f103rbt6_gpio_pin_out_low(p_hw_gpio, pin);
+        amhw_stm32f103rbt6_exti_rtsr_set(p_hw_exti,
+                                  (amhw_stm32f103rbt6_line_num_t)(1ul << slot));
         break;
 
     case AM_GPIO_TRIGGER_FALL:
         /* 使OD位置为1, 表明是上拉 */
-        amhw_zlg237_gpio_pin_out_high(p_hw_gpio, pin);
+        amhw_stm32f103rbt6_gpio_pin_out_high(p_hw_gpio, pin);
         /* falling  edge */
-        amhw_zlg237_exti_ftsr_set(p_hw_exti,
-                                  (amhw_zlg237_line_num_t)(1ul << slot));
+        amhw_stm32f103rbt6_exti_ftsr_set(p_hw_exti,
+                                  (amhw_stm32f103rbt6_line_num_t)(1ul << slot));
         break;
 
     case AM_GPIO_TRIGGER_BOTH_EDGES:
         /* 使OD位置为1, 表明是上拉 */
-        amhw_zlg237_gpio_pin_out_high(p_hw_gpio, pin);
+        amhw_stm32f103rbt6_gpio_pin_out_high(p_hw_gpio, pin);
         /* falling  edge */
-        amhw_zlg237_exti_ftsr_set(p_hw_exti,
-                                  (amhw_zlg237_line_num_t)(1ul << slot));
-        amhw_zlg237_exti_rtsr_set(p_hw_exti,
-                                  (amhw_zlg237_line_num_t)(1ul << slot));
+        amhw_stm32f103rbt6_exti_ftsr_set(p_hw_exti,
+                                  (amhw_stm32f103rbt6_line_num_t)(1ul << slot));
+        amhw_stm32f103rbt6_exti_rtsr_set(p_hw_exti,
+                                  (amhw_stm32f103rbt6_line_num_t)(1ul << slot));
         break;
 
     default:
@@ -1220,7 +1220,7 @@ int am_gpio_trigger_connect(int           pin,
 
     key = am_int_cpu_lock();
 
-    if (p_gpio_devinfo->p_infomap[slot] == AM_ZLG237_GPIO_INVALID_PIN_MAP) {
+    if (p_gpio_devinfo->p_infomap[slot] == AM_STM32F103RBT6_GPIO_INVALID_PIN_MAP) {
 
         p_gpio_devinfo->p_infomap[slot] = pin;
         p_gpio_devinfo->p_triginfo[slot].p_arg = p_arg;
@@ -1266,7 +1266,7 @@ int am_gpio_trigger_disconnect(int           pin,
 
     if (p_gpio_devinfo->p_infomap[slot] == pin) {
 
-        p_gpio_devinfo->p_infomap[slot] = AM_ZLG237_GPIO_INVALID_PIN_MAP;
+        p_gpio_devinfo->p_infomap[slot] = AM_STM32F103RBT6_GPIO_INVALID_PIN_MAP;
         p_gpio_devinfo->p_triginfo[slot].p_arg = NULL;
         p_gpio_devinfo->p_triginfo[slot].pfn_callback = NULL;
 
@@ -1288,7 +1288,7 @@ int am_gpio_trigger_disconnect(int           pin,
 int am_gpio_trigger_on(int pin)
 {
     __GPIO_DEVINFO_DECL(p_gpio_devinfo, __gp_gpio_dev);
-    amhw_zlg237_exti_t *p_hw_exti  = NULL;
+    amhw_stm32f103rbt6_exti_t *p_hw_exti  = NULL;
     uint8_t             slot       = pin & 0x0f;
 
     if (__gp_gpio_dev == NULL) {
@@ -1299,14 +1299,14 @@ int am_gpio_trigger_on(int pin)
         return -AM_ENOSPC;
     }
 
-    p_hw_exti = (amhw_zlg237_exti_t *)p_gpio_devinfo->exti_regbase;
+    p_hw_exti = (amhw_stm32f103rbt6_exti_t *)p_gpio_devinfo->exti_regbase;
 
     if (p_gpio_devinfo->p_infomap[slot] == pin) {
 
-        amhw_zlg237_exti_pending_clear(p_hw_exti,
-                                       (amhw_zlg237_line_num_t)(1ul << slot));
-        amhw_zlg237_exti_imr_set(p_hw_exti,
-                                 (amhw_zlg237_line_num_t)(1ul << slot));
+        amhw_stm32f103rbt6_exti_pending_clear(p_hw_exti,
+                                       (amhw_stm32f103rbt6_line_num_t)(1ul << slot));
+        amhw_stm32f103rbt6_exti_imr_set(p_hw_exti,
+                                 (amhw_stm32f103rbt6_line_num_t)(1ul << slot));
 
     } else {
         return -AM_ENXIO;
@@ -1323,21 +1323,21 @@ int am_gpio_trigger_on(int pin)
 int am_gpio_trigger_off(int pin)
 {
     __GPIO_DEVINFO_DECL(p_gpio_devinfo, __gp_gpio_dev);
-    amhw_zlg237_exti_t *p_hw_exti  = NULL;
+    amhw_stm32f103rbt6_exti_t *p_hw_exti  = NULL;
     uint8_t             slot       = pin & 0x0f;
 
     if (__gp_gpio_dev == NULL) {
         return -AM_ENXIO;
     }
 
-    p_hw_exti = (amhw_zlg237_exti_t *)p_gpio_devinfo->exti_regbase;
+    p_hw_exti = (amhw_stm32f103rbt6_exti_t *)p_gpio_devinfo->exti_regbase;
 
     if (p_gpio_devinfo->p_infomap[slot] == pin) {
 
-        amhw_zlg237_exti_imr_clear(p_hw_exti,
-                                   (amhw_zlg237_line_num_t)(1ul << slot));
-        amhw_zlg237_exti_emr_clear(p_hw_exti,
-                                   (amhw_zlg237_line_num_t)(1ul << slot));
+        amhw_stm32f103rbt6_exti_imr_clear(p_hw_exti,
+                                   (amhw_stm32f103rbt6_line_num_t)(1ul << slot));
+        amhw_stm32f103rbt6_exti_emr_clear(p_hw_exti,
+                                   (amhw_stm32f103rbt6_line_num_t)(1ul << slot));
 
     } else {
         return -AM_ENXIO;

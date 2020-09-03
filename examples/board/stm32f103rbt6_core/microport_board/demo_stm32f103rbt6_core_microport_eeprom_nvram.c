@@ -18,7 +18,7 @@
  * 易失性存储器）标准接口读写数据就无需关心具体的器件了。
  *
  * - 操作步骤:
- *   1. 将 MicroPort EEPROM 配板连接到 AM237 的 MicroPort 接口。
+ *   1. 将 MicroPort EEPROM 配板连接到 STM32F103RBT6 的 MicroPort 接口。
  *
  * - 实验现象:
  *   1. 主机写数据到 EEPROM；
@@ -48,9 +48,9 @@
 #include "am_vdebug.h"
 #include "am_ep24cxx.h"
 #include "am_nvram.h"
-#include "am_zlg237_inst_init.h"
+#include "am_stm32f103rbt6_inst_init.h"
 #include "demo_std_entries.h"
-#include "demo_am237_core_entries.h"
+#include "demo_stm32f103rbt6_core_entries.h"
 
 #define __TEST_LENTH      16                  /**< \brief 读写字节数 */
 #define __NVRAM_SEG_NAME  "microport_eeprom"  /**< \brief NVRAM 储存段名称 */
@@ -63,9 +63,9 @@
  *
  * \return 无
  */
-void demo_zlg237_core_microport_eeprom_nvram_entry (void)
+void demo_stm32f103rbt6_core_microport_eeprom_nvram_entry (void)
 {
-    AM_DBG_INFO("demo am237_core microport eeprom nvram!\r\n");
+    AM_DBG_INFO("demo stm32f103rbt6_core microport eeprom nvram!\r\n");
 
     am_microport_eeprom_nvram_inst_init();
 

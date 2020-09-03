@@ -12,7 +12,7 @@
 
 /**
  * \file
- * \brief zlg237 I2C驱动接口
+ * \brief stm32f103rbt6 I2C驱动接口
  *
  * \internal
  * \par Modification History
@@ -26,12 +26,13 @@
 #include "ametal.h"
 #include "am_clk.h"
 #include "am_int.h"
-#include "am_zlg237_i2c.h"
-#include "hw/amhw_zlg237_i2c.h"
-#include "zlg237_clk.h"
 #include "am_gpio.h"
-#include "zlg237_pin.h"
-#include "amhw_zlg237_gpio.h"
+#include "am_stm32f103rbt6_i2c.h"
+#include "hw/amhw_stm32f103rbt6_i2c.h"
+#include "stm32f103rbt6_regbase.h"
+#include "stm32f103rbt6_clk.h"
+#include "stm32f103rbt6_pin.h"
+#include "amhw_stm32f103rbt6_gpio.h"
 /*******************************************************************************
   宏定义
 *******************************************************************************/
@@ -62,20 +63,20 @@
 *******************************************************************************/
 
 /** \brief I2C 硬件初始化 */
-static int __i2c_hard_init (am_zlg237_i2c_dev_t *p_dev);
+static int __i2c_hard_init (am_stm32f103rbt6_i2c_dev_t *p_dev);
 
 /** \brief I2C 中断处理函数 */
 static void __i2c_irq_handler (void *p_arg);
 
 /** \brief I2C 状态机函数 */
-static int __i2c_mst_sm_event (am_zlg237_i2c_dev_t *p_dev, uint32_t event);
+static int __i2c_mst_sm_event (am_stm32f103rbt6_i2c_dev_t *p_dev, uint32_t event);
 
 /** \brief I2C 消息处理函数 */
 static int __i2c_msg_start (void *p_drv, am_i2c_message_t *p_trans);
 
 /** \brief 从控制器传输列表表头取出一条 message */
 am_static_inline
-struct am_i2c_message *__i2c_msg_out (am_zlg237_i2c_dev_t *p_dev);
+struct am_i2c_message *__i2c_msg_out (am_stm32f103rbt6_i2c_dev_t *p_dev);
 
 /*******************************************************************************
   全局变量
@@ -91,9 +92,9 @@ static am_const struct am_i2c_drv_funcs __g_i2c_drv_funcs = {
 /******************************************************************************/
 
 /** \brief I2C 硬件初始化 */
-am_local int __i2c_hard_init (am_zlg237_i2c_dev_t *p_dev)
+am_local int __i2c_hard_init (am_stm32f103rbt6_i2c_dev_t *p_dev)
 {
-    amhw_zlg237_i2c_t *p_hw_i2c = NULL;
+    amhw_stm32f103rbt6_i2c_t *p_hw_i2c = NULL;
     uint16_t tmpreg = 0, i2c_freq_value = 0;
     uint32_t pclk1 = 0;
     uint16_t result = 0x04;
@@ -102,7 +103,7 @@ am_local int __i2c_hard_init (am_zlg237_i2c_dev_t *p_dev)
         return -AM_EINVAL;
     }
 
-    p_hw_i2c = (amhw_zlg237_i2c_t *)p_dev->p_devinfo->i2c_regbase;
+    p_hw_i2c = (amhw_stm32f103rbt6_i2c_t *)p_dev->p_devinfo->i2c_regbase;
 
     if (p_hw_i2c == NULL) {
         return -AM_EINVAL;
@@ -128,7 +129,7 @@ am_local int __i2c_hard_init (am_zlg237_i2c_dev_t *p_dev)
     /**
      *  \brief 禁能 I2C  配置 TRISE 清零 F/S DUTY CCR[11:0]
      */
-    amhw_zlg237_i2c_disable(p_hw_i2c);
+    amhw_stm32f103rbt6_i2c_disable(p_hw_i2c);
     tmpreg = 0;
 
     /** <brief 最高为 100khz */
@@ -147,11 +148,11 @@ am_local int __i2c_hard_init (am_zlg237_i2c_dev_t *p_dev)
     } else {
 
         /** <brief 最高为 400khz */
-        if (p_dev->i2c_dutycycle == AMHW_ZLG237_I2C_DUTY_CYCLE_2 ) {
+        if (p_dev->i2c_dutycycle == AMHW_STM32F103RBT6_I2C_DUTY_CYCLE_2 ) {
             result = (uint16_t)(pclk1 / (p_dev->i2c_clock_speed *3));
         } else {
             result = (uint16_t)(pclk1 / (p_dev->i2c_clock_speed * 25));
-            result |= AMHW_ZLG237_I2C_DUTY_CYCLE_16_9;
+            result |= AMHW_STM32F103RBT6_I2C_DUTY_CYCLE_16_9;
         }
 
         /** < 测试 CCR[11:0] 是否小于 0x01 */
@@ -172,7 +173,7 @@ am_local int __i2c_hard_init (am_zlg237_i2c_dev_t *p_dev)
     p_hw_i2c->i2c_ccr = tmpreg;
 
     /** <brief 启动I2C外设 */
-    amhw_zlg237_i2c_enable(p_hw_i2c);
+    amhw_stm32f103rbt6_i2c_enable(p_hw_i2c);
 
     /** <brief 配置 CR1 */
 
@@ -196,20 +197,20 @@ am_local int __i2c_hard_init (am_zlg237_i2c_dev_t *p_dev)
                           (p_dev->i2c_ownaddress1 <<1 ) );
 
     /* 默认不使用 10bit地址*/
-    amhw_zlg237_i2c_endual(p_hw_i2c,DISABLE);
-    amhw_zlg237_i2c_iten_mode_set(p_hw_i2c,
+    amhw_stm32f103rbt6_i2c_endual(p_hw_i2c,DISABLE);
+    amhw_stm32f103rbt6_i2c_iten_mode_set(p_hw_i2c,
                                   I2C_CR2_ITERREN |
                                   I2C_CR2_ITEVTEN |
                                   I2C_CR2_ITBUFEN,
                                   DISABLE);
 
     /** 启动 I2C外设  */
-    amhw_zlg237_i2c_enable(p_hw_i2c);
+    amhw_stm32f103rbt6_i2c_enable(p_hw_i2c);
 
     return AM_OK;
 }
 
-am_local int __i2c_hard_re_init (am_zlg237_i2c_dev_t *p_dev)
+am_local int __i2c_hard_re_init (am_stm32f103rbt6_i2c_dev_t *p_dev)
 /** \brief I2C 硬件重新初始化 */
 {
     if (p_dev->p_devinfo->pfn_plfm_deinit) {
@@ -231,7 +232,7 @@ am_local int __i2c_hard_re_init (am_zlg237_i2c_dev_t *p_dev)
  */
 am_local void __i2c_re_init (void *p_arg)
 {
-    am_zlg237_i2c_dev_t *p_dev = (am_zlg237_i2c_dev_t *)p_arg;
+    am_stm32f103rbt6_i2c_dev_t *p_dev = (am_stm32f103rbt6_i2c_dev_t *)p_arg;
     uint32_t          key   = 0;
 
     if (p_arg == NULL) {
@@ -267,11 +268,11 @@ am_local void __i2c_re_init (void *p_arg)
     p_dev->slave_addr  = 0;
 
     p_dev->i2c_clock_speed         = p_dev->p_devinfo->speed;
-    p_dev->i2c_mode                = AMHW_ZLG237_I2C_MODE_I2C;
-    p_dev->i2c_dutycycle           = AMHW_ZLG237_I2C_DUTY_CYCLE_2;
+    p_dev->i2c_mode                = AMHW_STM32F103RBT6_I2C_MODE_I2C;
+    p_dev->i2c_dutycycle           = AMHW_STM32F103RBT6_I2C_DUTY_CYCLE_2;
     p_dev->i2c_ownaddress1         = 0x01;
-    p_dev->i2c_ack                 = AMHW_ZLG237_I2C_ACK_ENABLE;
-    p_dev->i2c_acknowledgedaddress = AMHW_ZLG237_I2C_ACK_ADDRESS_7_BIT;
+    p_dev->i2c_ack                 = AMHW_STM32F103RBT6_I2C_ACK_ENABLE;
+    p_dev->i2c_acknowledgedaddress = AMHW_STM32F103RBT6_I2C_ACK_ADDRESS_7_BIT;
 
     am_list_head_init(&(p_dev->msg_list));
 
@@ -290,7 +291,7 @@ am_local void __i2c_re_init (void *p_arg)
  *
  * \return 无
  */
-am_local void __softimer_start (am_zlg237_i2c_dev_t *p_dev)
+am_local void __softimer_start (am_stm32f103rbt6_i2c_dev_t *p_dev)
 {
     p_dev->is_abort = AM_FALSE;
 
@@ -316,7 +317,7 @@ am_local void __softimer_start (am_zlg237_i2c_dev_t *p_dev)
  *
  * \return 无
  */
-am_local void __softimer_stop (am_zlg237_i2c_dev_t *p_dev)
+am_local void __softimer_stop (am_stm32f103rbt6_i2c_dev_t *p_dev)
 {
     if (p_dev->p_devinfo->timeout_ms == 0) {
         return;
@@ -335,7 +336,7 @@ am_local void __softimer_stop (am_zlg237_i2c_dev_t *p_dev)
  * \attention 调用此函数必须锁定控制器
  */
 am_static_inline
-void __i2c_msg_in (am_zlg237_i2c_dev_t *p_dev, struct am_i2c_message *p_msg)
+void __i2c_msg_in (am_stm32f103rbt6_i2c_dev_t *p_dev, struct am_i2c_message *p_msg)
 {
     am_list_add_tail((struct am_list_head *)(&p_msg->ctlrdata),
                     &(p_dev->msg_list));
@@ -347,7 +348,7 @@ void __i2c_msg_in (am_zlg237_i2c_dev_t *p_dev, struct am_i2c_message *p_msg)
  * \attention 调用此函数必须锁定控制器
  */
 am_static_inline
-struct am_i2c_message *__i2c_msg_out (am_zlg237_i2c_dev_t *p_dev)
+struct am_i2c_message *__i2c_msg_out (am_stm32f103rbt6_i2c_dev_t *p_dev)
 {
     if (am_list_empty_careful(&(p_dev->msg_list))) {
         return NULL;
@@ -369,7 +370,7 @@ struct am_i2c_message *__i2c_msg_out (am_zlg237_i2c_dev_t *p_dev)
  */
 am_local void __softimer_callback (void *p_arg)
 {
-    am_zlg237_i2c_dev_t *p_dev = (am_zlg237_i2c_dev_t *)p_arg;
+    am_stm32f103rbt6_i2c_dev_t *p_dev = (am_stm32f103rbt6_i2c_dev_t *)p_arg;
 
     if (p_arg == NULL) {
         return;
@@ -388,26 +389,26 @@ am_local void __softimer_callback (void *p_arg)
  */
 static void __i2c_irq_handler (void *p_arg)
 {
-    am_zlg237_i2c_dev_t *p_dev          = NULL;
-    amhw_zlg237_i2c_t   *p_hw_i2c       = NULL;
+    am_stm32f103rbt6_i2c_dev_t *p_dev          = NULL;
+    amhw_stm32f103rbt6_i2c_t   *p_hw_i2c       = NULL;
     uint16_t             i2c_int_status = 0;
 
-    p_dev    = (am_zlg237_i2c_dev_t *)p_arg;
-    p_hw_i2c = (amhw_zlg237_i2c_t *)p_dev->p_devinfo->i2c_regbase;
+    p_dev    = (am_stm32f103rbt6_i2c_dev_t *)p_arg;
+    p_hw_i2c = (amhw_stm32f103rbt6_i2c_t *)p_dev->p_devinfo->i2c_regbase;
     struct am_i2c_transfer *p_cur_trans = p_dev->p_cur_trans;
     if (p_arg == NULL) {
         return;
     }
 
-     i2c_int_status = amhw_zlg237_i2c_getitstatus(p_hw_i2c);
+     i2c_int_status = amhw_stm32f103rbt6_i2c_getitstatus(p_hw_i2c);
 
 
      /* 等待BTF事件中断 来发送和读取数据 */
-     if (i2c_int_status & (uint16_t)AMHW_ZLG_INT_FLAG__BTF) {
-         if (i2c_int_status & (uint16_t)AMHW_ZLG_INT_FLAG__RXNE) {
+     if (i2c_int_status & (uint16_t)AMHW_STM32F103RBT6_INT_FLAG__BTF) {
+         if (i2c_int_status & (uint16_t)AMHW_STM32F103RBT6_INT_FLAG__RXNE) {
              __i2c_mst_sm_event(p_dev, __I2C_EVT_MST_RX);
              return ;
-         } else if (i2c_int_status & (uint16_t)AMHW_ZLG_INT_FLAG__TXE) {
+         } else if (i2c_int_status & (uint16_t)AMHW_STM32F103RBT6_INT_FLAG__TXE) {
              __i2c_mst_sm_event(p_dev, __I2C_EVT_MST_TX);
              return;
          }
@@ -416,7 +417,7 @@ static void __i2c_irq_handler (void *p_arg)
      if ( p_cur_trans->flags & AM_I2C_M_RD) {
          if (p_cur_trans->nbytes == 1)
         /* 接收非空，进入接收状态 */
-        if (i2c_int_status & (uint16_t)AMHW_ZLG_INT_FLAG__RXNE) {
+        if (i2c_int_status & (uint16_t)AMHW_STM32F103RBT6_INT_FLAG__RXNE) {
 
             /** \brief 接收模式  读取 DR寄存器  清除中断标志位 */
             __i2c_mst_sm_event(p_dev, __I2C_EVT_MST_RX);
@@ -429,8 +430,8 @@ static void __i2c_irq_handler (void *p_arg)
 
 static int __i2c_msg_start (void *p_drv, am_i2c_message_t *p_msg)
 {
-    am_zlg237_i2c_dev_t  *p_dev    = (am_zlg237_i2c_dev_t *)p_drv;
-    amhw_zlg237_i2c_t *p_hw_i2c    = (amhw_zlg237_i2c_t *)
+    am_stm32f103rbt6_i2c_dev_t  *p_dev    = (am_stm32f103rbt6_i2c_dev_t *)p_drv;
+    amhw_stm32f103rbt6_i2c_t *p_hw_i2c    = (amhw_stm32f103rbt6_i2c_t *)
                                       p_dev->p_devinfo->i2c_regbase;
     int key;
 
@@ -469,8 +470,8 @@ static int __i2c_msg_start (void *p_drv, am_i2c_message_t *p_msg)
 /**
  * \brief I2C初始化
  */
-am_i2c_handle_t am_zlg237_i2c_init (am_zlg237_i2c_dev_t           *p_dev,
-                                 const am_zlg237_i2c_devinfo_t *p_devinfo)
+am_i2c_handle_t am_stm32f103rbt6_i2c_init (am_stm32f103rbt6_i2c_dev_t           *p_dev,
+                                 const am_stm32f103rbt6_i2c_devinfo_t *p_devinfo)
 {
     if (p_dev == NULL || p_devinfo == NULL) {
         return NULL;
@@ -491,11 +492,11 @@ am_i2c_handle_t am_zlg237_i2c_init (am_zlg237_i2c_dev_t           *p_dev,
     p_dev->slave_addr              = 0;
 
     p_dev->i2c_clock_speed         = p_devinfo->speed;
-    p_dev->i2c_mode                = AMHW_ZLG237_I2C_MODE_I2C;
-    p_dev->i2c_dutycycle           = AMHW_ZLG237_I2C_DUTY_CYCLE_2;
+    p_dev->i2c_mode                = AMHW_STM32F103RBT6_I2C_MODE_I2C;
+    p_dev->i2c_dutycycle           = AMHW_STM32F103RBT6_I2C_DUTY_CYCLE_2;
     p_dev->i2c_ownaddress1         = 0x01;
-    p_dev->i2c_ack                 = AMHW_ZLG237_I2C_ACK_ENABLE;
-    p_dev->i2c_acknowledgedaddress = AMHW_ZLG237_I2C_ACK_ADDRESS_7_BIT;
+    p_dev->i2c_ack                 = AMHW_STM32F103RBT6_I2C_ACK_ENABLE;
+    p_dev->i2c_acknowledgedaddress = AMHW_STM32F103RBT6_I2C_ACK_ADDRESS_7_BIT;
 
 
     if (p_devinfo->timeout_ms != 0) {
@@ -533,22 +534,22 @@ am_i2c_handle_t am_zlg237_i2c_init (am_zlg237_i2c_dev_t           *p_dev,
 /**
  * \brief I2C解初始化
  */
-void am_zlg237_i2c_deinit (am_i2c_handle_t handle)
+void am_stm32f103rbt6_i2c_deinit (am_i2c_handle_t handle)
 {
-    amhw_zlg237_i2c_t   *p_hw_i2c = NULL;
-    am_zlg237_i2c_dev_t *p_dev    = NULL;
+    amhw_stm32f103rbt6_i2c_t   *p_hw_i2c = NULL;
+    am_stm32f103rbt6_i2c_dev_t *p_dev    = NULL;
 
     if (NULL == handle) {
         return ;
     }
 
-    p_dev    = (am_zlg237_i2c_dev_t *)handle;
-    p_hw_i2c = (amhw_zlg237_i2c_t *)p_dev->p_devinfo->i2c_regbase;
+    p_dev    = (am_stm32f103rbt6_i2c_dev_t *)handle;
+    p_hw_i2c = (amhw_stm32f103rbt6_i2c_t *)p_dev->p_devinfo->i2c_regbase;
 
     p_dev->i2c_serv.p_funcs = NULL;
     p_dev->i2c_serv.p_drv   = NULL;
 
-    amhw_zlg237_i2c_disable(p_hw_i2c);
+    amhw_stm32f103rbt6_i2c_disable(p_hw_i2c);
 
     /* 去除中断连接 */
     am_int_disable(p_dev->p_devinfo->inum);
@@ -576,11 +577,11 @@ void am_zlg237_i2c_deinit (am_i2c_handle_t handle)
  * \brief 拉低SCL
  */
 am_static_inline
-void i2c_pulldown_scl (am_zlg237_i2c_dev_t *p_dev) {
+void i2c_pulldown_scl (am_stm32f103rbt6_i2c_dev_t *p_dev) {
 
     int i2c_num = p_dev->p_devinfo->clk_num;
-    amhw_zlg237_gpio_reg_t *p_hw_gpio = NULL;
-    p_hw_gpio = (amhw_zlg237_gpio_reg_t *)ZLG237_GPIOB_BASE;
+    amhw_stm32f103rbt6_gpio_reg_t *p_hw_gpio = NULL;
+    p_hw_gpio = (amhw_stm32f103rbt6_gpio_reg_t *)STM32F103RBT6_GPIOB_BASE;
     if (i2c_num == CLK_I2C1) {
         p_hw_gpio->brr |= (uint32_t)(1 << 6);
         p_hw_gpio->crl &= ~0x8000000;
@@ -594,10 +595,10 @@ void i2c_pulldown_scl (am_zlg237_i2c_dev_t *p_dev) {
  * \brief 释放SCL
  */
 am_static_inline
-void i2c_release_scl (am_zlg237_i2c_dev_t *p_dev) {
+void i2c_release_scl (am_stm32f103rbt6_i2c_dev_t *p_dev) {
     int i2c_num = p_dev->p_devinfo->clk_num;
-    amhw_zlg237_gpio_reg_t *p_hw_gpio = NULL;
-    p_hw_gpio = (amhw_zlg237_gpio_reg_t *)ZLG237_GPIOB_BASE;
+    amhw_stm32f103rbt6_gpio_reg_t *p_hw_gpio = NULL;
+    p_hw_gpio = (amhw_stm32f103rbt6_gpio_reg_t *)STM32F103RBT6_GPIOB_BASE;
     if (i2c_num == CLK_I2C1) {
         p_hw_gpio->crl |= 0x8000000;
     } else if (i2c_num == CLK_I2C2) {
@@ -607,16 +608,16 @@ void i2c_release_scl (am_zlg237_i2c_dev_t *p_dev) {
 /**
  * \brief I2C 状态机函数
  */
-static int __i2c_mst_sm_event (am_zlg237_i2c_dev_t *p_dev, uint32_t event)
+static int __i2c_mst_sm_event (am_stm32f103rbt6_i2c_dev_t *p_dev, uint32_t event)
 {
     volatile uint32_t  new_event = __I2C_EVT_NONE;
-    amhw_zlg237_i2c_t *p_hw_i2c = NULL;
+    amhw_stm32f103rbt6_i2c_t *p_hw_i2c = NULL;
 
     if (p_dev == NULL) {
         return -AM_EINVAL;
     }
 
-    p_hw_i2c = (amhw_zlg237_i2c_t *)p_dev->p_devinfo->i2c_regbase;
+    p_hw_i2c = (amhw_stm32f103rbt6_i2c_t *)p_dev->p_devinfo->i2c_regbase;
 
     /* 消除警告 */
     (void)event;
@@ -641,8 +642,8 @@ static int __i2c_mst_sm_event (am_zlg237_i2c_dev_t *p_dev, uint32_t event)
         case __I2C_ST_IDLE:
         {
             /* 检 测BUSY位是否等  0*/
-            while(amhw_zlg237_i2c_checkflagstaus(p_hw_i2c,
-                                                 AMHW_ZLG_I2C_FLAG_BUSY));
+            while(amhw_stm32f103rbt6_i2c_checkflagstaus(p_hw_i2c,
+                                                 AMHW_STM32F103RBT6_I2C_FLAG_BUSY));
         }
         case __I2C_ST_MSG_START:
         {
@@ -723,17 +724,17 @@ static int __i2c_mst_sm_event (am_zlg237_i2c_dev_t *p_dev, uint32_t event)
                 p_dev->is_complete = AM_TRUE;
 
                 /*判断是处于主接收还是发送模式*/
-                am_bool_t is_send = amhw_zlg237_i2c_checkflagstaus(
-                    p_hw_i2c, AMHW_ZLG_I2C_FLAG_TRA);
+                am_bool_t is_send = amhw_stm32f103rbt6_i2c_checkflagstaus(
+                    p_hw_i2c, AMHW_STM32F103RBT6_I2C_FLAG_TRA);
 
                 /* 发送EV8_2 事件时   产生停止条件   主发送*/
                 if (is_send == AM_TRUE) {
 
                     /* 主发送模式下产生停止信号后，I2C自动回到从机模式 */
-                    amhw_zlg237_i2c_genstop(p_hw_i2c, ENABLE);
+                    amhw_stm32f103rbt6_i2c_genstop(p_hw_i2c, ENABLE);
 
                     /* 关闭中断TXE RXNE */
-                    amhw_zlg237_i2c_iten_mode_set(p_hw_i2c,
+                    amhw_stm32f103rbt6_i2c_iten_mode_set(p_hw_i2c,
                                                   I2C_CR2_ITEVTEN |
                                                   I2C_CR2_ITBUFEN,
                                                   DISABLE);
@@ -760,7 +761,7 @@ static int __i2c_mst_sm_event (am_zlg237_i2c_dev_t *p_dev, uint32_t event)
 
                     /* 接收模式  产生停止条件前  还应在倒数第二个数据 是设置    EV7: RXE = 1 读DR清除该事件 */
 
-                    amhw_zlg237_i2c_iten_mode_set(p_hw_i2c,
+                    amhw_stm32f103rbt6_i2c_iten_mode_set(p_hw_i2c,
                                                   I2C_CR2_ITEVTEN |
                                                   I2C_CR2_ITBUFEN,
                                                   DISABLE);
@@ -867,14 +868,14 @@ static int __i2c_mst_sm_event (am_zlg237_i2c_dev_t *p_dev, uint32_t event)
             }
 
             /* 产生起始条件 切换至主模式 */
-            amhw_zlg237_i2c_genstrat(p_hw_i2c, ENABLE);
+            amhw_stm32f103rbt6_i2c_genstrat(p_hw_i2c, ENABLE);
 
             /* EV5事件 ： 等待SB */
-            while (!amhw_zlg237_i2c_checkevent(p_hw_i2c,
+            while (!amhw_stm32f103rbt6_i2c_checkevent(p_hw_i2c,
                     I2C_EVENT_MASTER_MODE_SELECT ));
 
             /* 清除SB */
-            amhw_zlg237_i2c_read_reg(p_hw_i2c->i2c_sr1);
+            amhw_stm32f103rbt6_i2c_read_reg(p_hw_i2c->i2c_sr1);
 
             /* 发送从机地址 */
             if ( p_cur_trans->flags & AM_I2C_M_RD) {
@@ -882,14 +883,14 @@ static int __i2c_mst_sm_event (am_zlg237_i2c_dev_t *p_dev, uint32_t event)
                 __I2C_NEXT_STATE(__I2C_ST_M_RECV_DATA,
                         __I2C_EVT_NONE);
                 /* 读*/
-                amhw_zlg237_i2c_send7bit_address(
+                amhw_stm32f103rbt6_i2c_send7bit_address(
                     p_hw_i2c, p_dev->slave_addr, 1);
             } else {
 
                 __I2C_NEXT_STATE(__I2C_ST_M_SEND_DATA,
                         __I2C_EVT_NONE);
                 /* 写 */
-                amhw_zlg237_i2c_send7bit_address(
+                amhw_stm32f103rbt6_i2c_send7bit_address(
                     p_hw_i2c, p_dev->slave_addr, 0);
             }
 
@@ -904,44 +905,44 @@ static int __i2c_mst_sm_event (am_zlg237_i2c_dev_t *p_dev, uint32_t event)
                 if (p_cur_trans->nbytes == 1) {
                     i2c_pulldown_scl(p_dev);
 
-                    amhw_zlg237_i2c_read_reg(p_hw_i2c->i2c_sr1);
-                    amhw_zlg237_i2c_read_reg(p_hw_i2c->i2c_sr2);
+                    amhw_stm32f103rbt6_i2c_read_reg(p_hw_i2c->i2c_sr1);
+                    amhw_stm32f103rbt6_i2c_read_reg(p_hw_i2c->i2c_sr2);
 
-                    amhw_zlg237_i2c_ack_en(p_hw_i2c, DISABLE);
-                    amhw_zlg237_i2c_genstop(p_hw_i2c, ENABLE);
+                    amhw_stm32f103rbt6_i2c_ack_en(p_hw_i2c, DISABLE);
+                    amhw_stm32f103rbt6_i2c_genstop(p_hw_i2c, ENABLE);
                     i2c_release_scl(p_dev);
                 } else if (p_cur_trans->nbytes == 2) {
-                    amhw_zlg237_i2c_ack_en(p_hw_i2c, ENABLE);
+                    amhw_stm32f103rbt6_i2c_ack_en(p_hw_i2c, ENABLE);
 
                     /* 设置POS位 */
-                    amhw_zlg237_i2c_pos(p_hw_i2c, ENABLE);
+                    amhw_stm32f103rbt6_i2c_pos(p_hw_i2c, ENABLE);
 
                     i2c_pulldown_scl(p_dev);
 
-                    amhw_zlg237_i2c_read_reg(p_hw_i2c->i2c_sr1);
-                    amhw_zlg237_i2c_read_reg(p_hw_i2c->i2c_sr2);
-                    amhw_zlg237_i2c_ack_en(p_hw_i2c, DISABLE);
+                    amhw_stm32f103rbt6_i2c_read_reg(p_hw_i2c->i2c_sr1);
+                    amhw_stm32f103rbt6_i2c_read_reg(p_hw_i2c->i2c_sr2);
+                    amhw_stm32f103rbt6_i2c_ack_en(p_hw_i2c, DISABLE);
 
                     i2c_release_scl(p_dev);
                 } else {
 
                     /* 读取sr2寄存器清除EV6事件 */
-                    amhw_zlg237_i2c_read_reg(p_hw_i2c->i2c_sr1);
-                    amhw_zlg237_i2c_read_reg(p_hw_i2c->i2c_sr2);
+                    amhw_stm32f103rbt6_i2c_read_reg(p_hw_i2c->i2c_sr1);
+                    amhw_stm32f103rbt6_i2c_read_reg(p_hw_i2c->i2c_sr2);
                 }
             } else {
 
                 /* 读取sr2寄存器清除EV6事件 */
-                amhw_zlg237_i2c_read_reg(p_hw_i2c->i2c_sr1);
-                amhw_zlg237_i2c_read_reg(p_hw_i2c->i2c_sr2);
+                amhw_stm32f103rbt6_i2c_read_reg(p_hw_i2c->i2c_sr1);
+                amhw_stm32f103rbt6_i2c_read_reg(p_hw_i2c->i2c_sr2);
                 if ( ((p_cur_trans->flags & 0x01) == 0) && (p_dev->data_ptr == 0)) {
-                    amhw_zlg237_i2c_send_data(p_hw_i2c,
+                    amhw_stm32f103rbt6_i2c_send_data(p_hw_i2c,
                          (p_cur_trans->p_buf)[p_dev->data_ptr++]);
                 }
             }
 
             /* 打开TXE RXNE中断使能 */
-            amhw_zlg237_i2c_iten_mode_set(p_hw_i2c,
+            amhw_stm32f103rbt6_i2c_iten_mode_set(p_hw_i2c,
                                           I2C_CR2_ITEVTEN |
                                           I2C_CR2_ITBUFEN ,
                                           ENABLE);
@@ -964,54 +965,54 @@ static int __i2c_mst_sm_event (am_zlg237_i2c_dev_t *p_dev, uint32_t event)
 
                 /* 读取一个数据 */
                 (p_cur_trans->p_buf)[p_dev->data_ptr++] = \
-                        amhw_zlg237_i2c_recv_data(p_hw_i2c);
+                        amhw_stm32f103rbt6_i2c_recv_data(p_hw_i2c);
             } else if (p_cur_trans->nbytes ==2) {
 
                 /* 读取两个数据 */
                 i2c_pulldown_scl(p_dev);
 
                 /* 清除POS位 */
-                amhw_zlg237_i2c_pos(p_hw_i2c, DISABLE);
+                amhw_stm32f103rbt6_i2c_pos(p_hw_i2c, DISABLE);
 
-                amhw_zlg237_i2c_ack_en(p_hw_i2c, ENABLE);
-                amhw_zlg237_i2c_genstop(p_hw_i2c, ENABLE);
+                amhw_stm32f103rbt6_i2c_ack_en(p_hw_i2c, ENABLE);
+                amhw_stm32f103rbt6_i2c_genstop(p_hw_i2c, ENABLE);
                 (p_cur_trans->p_buf)[p_dev->data_ptr++] = \
-                        amhw_zlg237_i2c_recv_data(p_hw_i2c);
+                        amhw_stm32f103rbt6_i2c_recv_data(p_hw_i2c);
 
                 i2c_release_scl(p_dev);
                 (p_cur_trans->p_buf)[p_dev->data_ptr++] = \
-                        amhw_zlg237_i2c_recv_data(p_hw_i2c);
+                        amhw_stm32f103rbt6_i2c_recv_data(p_hw_i2c);
             }else if (p_dev->data_ptr == (p_cur_trans->nbytes - 3) &&
                      (p_cur_trans->nbytes !=1) &&
                      (p_cur_trans->nbytes !=2)) {
 
                 /* 读取第N-2 个数据 */
                 i2c_pulldown_scl(p_dev);
-                amhw_zlg237_i2c_ack_en(p_hw_i2c, DISABLE);
+                amhw_stm32f103rbt6_i2c_ack_en(p_hw_i2c, DISABLE);
                 i2c_release_scl(p_dev);
-                amhw_zlg237_i2c_read_reg(p_hw_i2c->i2c_sr1);
+                amhw_stm32f103rbt6_i2c_read_reg(p_hw_i2c->i2c_sr1);
                 (p_cur_trans->p_buf)[p_dev->data_ptr++] = \
-                        amhw_zlg237_i2c_recv_data(p_hw_i2c);
+                        amhw_stm32f103rbt6_i2c_recv_data(p_hw_i2c);
             } else if (p_dev->data_ptr == (p_cur_trans->nbytes - 2) &&
                       (p_cur_trans->nbytes !=1) &&
                       (p_cur_trans->nbytes !=2)) {
 
                 /* 读取第N-1 第N 个数据 */
                 i2c_pulldown_scl(p_dev);
-                amhw_zlg237_i2c_ack_en(p_hw_i2c, ENABLE);
-                amhw_zlg237_i2c_genstop(p_hw_i2c, ENABLE);
-                amhw_zlg237_i2c_read_reg(p_hw_i2c->i2c_sr1);
+                amhw_stm32f103rbt6_i2c_ack_en(p_hw_i2c, ENABLE);
+                amhw_stm32f103rbt6_i2c_genstop(p_hw_i2c, ENABLE);
+                amhw_stm32f103rbt6_i2c_read_reg(p_hw_i2c->i2c_sr1);
                 (p_cur_trans->p_buf)[p_dev->data_ptr++] = \
-                        amhw_zlg237_i2c_recv_data(p_hw_i2c);
+                        amhw_stm32f103rbt6_i2c_recv_data(p_hw_i2c);
                 i2c_release_scl(p_dev);
-                amhw_zlg237_i2c_read_reg(p_hw_i2c->i2c_sr1);
+                amhw_stm32f103rbt6_i2c_read_reg(p_hw_i2c->i2c_sr1);
                 (p_cur_trans->p_buf)[p_dev->data_ptr++] = \
-                        amhw_zlg237_i2c_recv_data(p_hw_i2c);
+                        amhw_stm32f103rbt6_i2c_recv_data(p_hw_i2c);
             } else {
 
                 /* 读取多个数据 */
                 (p_cur_trans->p_buf)[p_dev->data_ptr++] = \
-                        amhw_zlg237_i2c_recv_data(p_hw_i2c);
+                        amhw_stm32f103rbt6_i2c_recv_data(p_hw_i2c);
             }
 
 
@@ -1028,7 +1029,7 @@ static int __i2c_mst_sm_event (am_zlg237_i2c_dev_t *p_dev, uint32_t event)
                 p_dev->p_cur_trans++;
 
                 /* 关闭 TXE RXNE中断 */
-                amhw_zlg237_i2c_iten_mode_set(p_hw_i2c,
+                amhw_stm32f103rbt6_i2c_iten_mode_set(p_hw_i2c,
                                               I2C_CR2_ITEVTEN |
                                               I2C_CR2_ITBUFEN ,
                                               DISABLE);
@@ -1036,7 +1037,7 @@ static int __i2c_mst_sm_event (am_zlg237_i2c_dev_t *p_dev, uint32_t event)
                 while((p_hw_i2c->i2c_cr1 & 0x200));
 
                 /* 在读数据结束后，使能ACK位*/
-                amhw_zlg237_i2c_ack_en(p_hw_i2c, ENABLE);
+                amhw_stm32f103rbt6_i2c_ack_en(p_hw_i2c, ENABLE);
 
                 /* 本传输完毕，进入下一传输 */
                 __I2C_NEXT_STATE(__I2C_ST_TRANS_START,
@@ -1060,7 +1061,7 @@ static int __i2c_mst_sm_event (am_zlg237_i2c_dev_t *p_dev, uint32_t event)
 
             if (p_dev->data_ptr < p_cur_trans->nbytes) {
 
-                amhw_zlg237_i2c_send_data(p_hw_i2c,
+                amhw_stm32f103rbt6_i2c_send_data(p_hw_i2c,
                      (p_cur_trans->p_buf)[p_dev->data_ptr++]);
 
             } else {
@@ -1075,8 +1076,8 @@ static int __i2c_mst_sm_event (am_zlg237_i2c_dev_t *p_dev, uint32_t event)
                  */
                 if((p_dev->p_cur_trans->flags & AM_I2C_M_RD) &&
                     (!((p_dev->p_cur_trans - 1)->flags & AM_I2C_M_RD))) {
-                    amhw_zlg237_i2c_genstop(p_hw_i2c, ENABLE);
-                    amhw_zlg237_i2c_iten_mode_set(p_hw_i2c,
+                    amhw_stm32f103rbt6_i2c_genstop(p_hw_i2c, ENABLE);
+                    amhw_stm32f103rbt6_i2c_iten_mode_set(p_hw_i2c,
                             I2C_CR2_ITEVTEN | I2C_CR2_ITBUFEN , DISABLE);
 
                 }

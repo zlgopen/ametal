@@ -21,7 +21,7 @@
  *   1. 调试串口输出电压采样值。
  *
  * \par 源代码
- * \snippet demo_zlg_hw_adc_int.c src_zlg_hw_adc_int
+ * \snippet demo_stm32f103rbt6_hw_adc_int.c src_stm32f103rbt6_hw_adc_int
  *
  * \internal
  * \par Modification History
@@ -30,17 +30,17 @@
  */
 
 /**
- * \addtogroup demo_if_zlg_hw_adc_int
- * \copydoc demo_zlg_hw_adc_int.c
+ * \addtogroup demo_if_stm32f103rbt6_hw_adc_int
+ * \copydoc demo_stm32f103rbt6_hw_adc_int.c
  */
 
-/** [src_zlg_hw_adc_int] */
+/** [src_stm32f103rbt6_hw_adc_int] */
 #include "ametal.h"
 #include "am_vdebug.h"
 #include "am_delay.h"
 #include "am_int.h"
-#include "am_zlg237_clk.h"
-#include "hw/amhw_zlg237_adc.h"
+#include "am_stm32f103rbt6_clk.h"
+#include "hw/amhw_stm32f103rbt6_adc.h"
 
 static volatile uint16_t  __g_adc_dat[4];               /**< \brief 采样值缓存 */
 static volatile am_bool_t __g_adc_complete = AM_FALSE;
@@ -52,15 +52,15 @@ static void __adc_isr (void *p_arg)
 {
     static uint8_t i = 0;
 
-    amhw_zlg237_adc_t *p_hw_adc = (amhw_zlg237_adc_t *)p_arg;
+    amhw_stm32f103rbt6_adc_t *p_hw_adc = (amhw_stm32f103rbt6_adc_t *)p_arg;
 
-    amhw_zlg237_adc_status_flag_clr(p_hw_adc, AMHW_ZLG237_ADC_INJECTED_CHAN_END_FLAG);
+    amhw_stm32f103rbt6_adc_status_flag_clr(p_hw_adc, AMHW_STM32F103RBT6_ADC_INJECTED_CHAN_END_FLAG);
 
     for (i = 0 ; i < 4; i++) {
 
         /* AD值的获取 */
         /* 特别注意 ：从数据寄存器的读到的值 = AD实际转换值 - 数据偏移寄存器的偏移值*/
-        __g_adc_dat[i]  = amhw_zlg237_adc_injected_data_get(p_hw_adc, i);
+        __g_adc_dat[i]  = amhw_stm32f103rbt6_adc_injected_data_get(p_hw_adc, i);
         __g_adc_dat[i] &= 0x0fff;
     }
 
@@ -68,7 +68,7 @@ static void __adc_isr (void *p_arg)
 }
 
 /** \brief 例程入口  */
-void demo_zlg237_hw_adc_injected_int_entry (amhw_zlg237_adc_t *p_hw_adc,
+void demo_stm32f103rbt6_hw_adc_injected_int_entry (amhw_stm32f103rbt6_adc_t *p_hw_adc,
                                             int                int_num,
                                             uint32_t           vref_mv,
                                             int               *p_adc_chan,
@@ -80,21 +80,21 @@ void demo_zlg237_hw_adc_injected_int_entry (amhw_zlg237_adc_t *p_hw_adc,
     am_kprintf("The ADC HW Int Demo\r\n");
 
     /* ADC禁能 */
-    amhw_zlg237_adc_disable(p_hw_adc);
+    amhw_stm32f103rbt6_adc_disable(p_hw_adc);
 
     /* 设置ADC工作频率，72MHz的8分频 */
-    amhw_zlg237_rcc_adc_div_set (2);
+    amhw_stm32f103rbt6_rcc_adc_div_set (2);
 
     /* 设置ADC注入通道长度 */
     if(adc_chan_num < 4) {
-        amhw_zlg237_adc_injected_channel_length_set(
+        amhw_stm32f103rbt6_adc_injected_channel_length_set(
             p_hw_adc,
-            (amhw_zlg237_adc_injected_channel_length_t)(adc_chan_num-1));
+            (amhw_stm32f103rbt6_adc_injected_channel_length_t)(adc_chan_num-1));
     }
     else
     {
-        amhw_zlg237_adc_injected_channel_length_set(
-            p_hw_adc, AMHW_ZLG237_ADC_INJECTED_CHAN_LENGTH_4);
+        amhw_stm32f103rbt6_adc_injected_channel_length_set(
+            p_hw_adc, AMHW_STM32F103RBT6_ADC_INJECTED_CHAN_LENGTH_4);
 
     }
 
@@ -109,75 +109,75 @@ void demo_zlg237_hw_adc_injected_int_entry (amhw_zlg237_adc_t *p_hw_adc,
     for(i=0;i<adc_chan_num;i++) {
 
     /* 链接注入通道序列和ADC采样通道 */
-    amhw_zlg237_adc_injected_channel_order_set(
+    amhw_stm32f103rbt6_adc_injected_channel_order_set(
         p_hw_adc,
-        AMHW_ZLG237_ADC_INJECTED_CHAN_ORDER_4th - i,
+        AMHW_STM32F103RBT6_ADC_INJECTED_CHAN_ORDER_4th - i,
         p_adc_chan[adc_chan_num - 1 - i]);
 
     /* 注入通道数据偏移寄存器赋值（复位值为0） */
     /* 数据寄存器的值 = 实际转换值 - 偏移值*/
-    amhw_zlg237_adc_jofr_set(
+    amhw_stm32f103rbt6_adc_jofr_set(
         p_hw_adc,
-        AMHW_ZLG237_ADC_INJECTED_DATA_CHAN_4 - i,
+        AMHW_STM32F103RBT6_ADC_INJECTED_DATA_CHAN_4 - i,
         0);
 
     /* 设置采样通道的采样周期 */
-    amhw_zlg237_adc_smpr_set(
+    amhw_stm32f103rbt6_adc_smpr_set(
         p_hw_adc,
-        AMHW_ZLG237_ADC_CHAN_ST55_5,
+        AMHW_STM32F103RBT6_ADC_CHAN_ST55_5,
         p_adc_chan[adc_chan_num - 1 - i]);
 
     }
 
     /* 开启扫描模式 */
-    amhw_zlg237_adc_scan_mode_enable(p_hw_adc);
+    amhw_stm32f103rbt6_adc_scan_mode_enable(p_hw_adc);
 
     /* 关闭注入通道间断模式、规则通道间断模式*/
-    amhw_zlg237_adc_injected_disc_disable(p_hw_adc);
-    amhw_zlg237_adc_regular_disc_disable(p_hw_adc);
+    amhw_stm32f103rbt6_adc_injected_disc_disable(p_hw_adc);
+    amhw_stm32f103rbt6_adc_regular_disc_disable(p_hw_adc);
 
     /* 单次转换 */
-    amhw_zlg237_adc_cont_set(p_hw_adc, AMHW_ZLG237_ADC_CONVERSION_SINGLE);
+    amhw_stm32f103rbt6_adc_cont_set(p_hw_adc, AMHW_STM32F103RBT6_ADC_CONVERSION_SINGLE);
 
     /* 启用注入通道外部触发，并设置成软件触发方式 */
-    amhw_zlg237_adc_jextirig_enable(p_hw_adc);
-    amhw_zlg237_adc_jextsel_set(p_hw_adc, AMHW_ZLG237_ADC12_INJECTED_JSWSTART);
+    amhw_stm32f103rbt6_adc_jextirig_enable(p_hw_adc);
+    amhw_stm32f103rbt6_adc_jextsel_set(p_hw_adc, AMHW_STM32F103RBT6_ADC12_INJECTED_JSWSTART);
 
     /* 设置成独立模式,ADC1和ADC2独立工作*/
-    amhw_zlg237_adc_dul_mode_set(p_hw_adc, AMHW_ZLG237_ADC_DUL_MODE_0);
+    amhw_stm32f103rbt6_adc_dul_mode_set(p_hw_adc, AMHW_STM32F103RBT6_ADC_DUL_MODE_0);
 
     /* 对齐方式--右对齐*/
-    amhw_zlg237_adc_data_alignment_set(p_hw_adc,AMHW_ZLG237_ADC_DATA_RIGHT);
+    amhw_stm32f103rbt6_adc_data_alignment_set(p_hw_adc,AMHW_STM32F103RBT6_ADC_DATA_RIGHT);
 
     /* 关闭ADC16通道内部温度传感器（仅ADC1有效）*/
-    amhw_zlg237_adc_tsvrefe_disable(p_hw_adc);
+    amhw_stm32f103rbt6_adc_tsvrefe_disable(p_hw_adc);
 
     /* ADC使能*/
-    amhw_zlg237_adc_enable(p_hw_adc);
+    amhw_stm32f103rbt6_adc_enable(p_hw_adc);
 
     /* 启用复位校准*/
-    amhw_zlg237_adc_rstcal_enable(p_hw_adc);
+    amhw_stm32f103rbt6_adc_rstcal_enable(p_hw_adc);
 
     /* 等待复位校准结束*/
-    while(amhw_zlg237_adc_rstcal_check(p_hw_adc) == AM_FALSE);
+    while(amhw_stm32f103rbt6_adc_rstcal_check(p_hw_adc) == AM_FALSE);
 
     /* 启用AD校准*/
-    amhw_zlg237_adc_cal_enable(p_hw_adc);
+    amhw_stm32f103rbt6_adc_cal_enable(p_hw_adc);
 
     /* 等待AD校准结束*/
-    while(amhw_zlg237_adc_cal_check(p_hw_adc) == AM_FALSE);
+    while(amhw_stm32f103rbt6_adc_cal_check(p_hw_adc) == AM_FALSE);
 
     /* 连接转换完成中断 */
     am_int_connect(int_num, __adc_isr, p_hw_adc);
     am_int_enable(int_num);
 
     /* 转换结束中断使能*/
-    amhw_zlg237_adc_int_enable(p_hw_adc, AMHW_ZLG237_ADC_INT_INJECTED_END);
+    amhw_stm32f103rbt6_adc_int_enable(p_hw_adc, AMHW_STM32F103RBT6_ADC_INT_INJECTED_END);
 
     while(1) {
 
         /* 开始转换 */
-        amhw_zlg237_adc_jswstart_enable(p_hw_adc);
+        amhw_stm32f103rbt6_adc_jswstart_enable(p_hw_adc);
 
         /* 等待转换完成 */
         while (__g_adc_complete == AM_FALSE);
@@ -196,6 +196,6 @@ void demo_zlg237_hw_adc_injected_int_entry (amhw_zlg237_adc_t *p_hw_adc,
     }
 
 }
-/** [src_zlg_hw_adc_int] */
+/** [src_stm32f103rbt6_hw_adc_int] */
 
 /* end of file */

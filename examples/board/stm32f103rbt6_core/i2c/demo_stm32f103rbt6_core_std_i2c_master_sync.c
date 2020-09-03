@@ -31,7 +31,7 @@
  *       可根据实际情况更换引脚。
  *
  * \par 源代码
- * \snippet demo_zlg237_std_i2c_master_sync.c src_zlg237_std_i2c_master_sync
+ * \snippet demo_stm32f103rbt6_std_i2c_master_sync.c src_stm32f103rbt6_std_i2c_master_sync
  *
  * \internal
  * \par Modification history
@@ -40,18 +40,18 @@
  */
 
 /**
- * \addtogroup demo_if_zlg237_std_i2c_master_sync
- * \copydoc demo_zlg237_std_i2c_master_sync.c
+ * \addtogroup demo_if_stm32f103rbt6_std_i2c_master_sync
+ * \copydoc demo_stm32f103rbt6_std_i2c_master_sync.c
  */
 
-/** [src_zlg237_std_i2c_master_sync] */
+/** [src_stm32f103rbt6_std_i2c_master_sync] */
 #include "ametal.h"
 #include "am_board.h"
 #include "am_vdebug.h"
 #include "am_i2c.h"
-#include "am_zlg237_inst_init.h"
+#include "am_stm32f103rbt6_inst_init.h"
 #include "demo_std_entries.h"
-#include "demo_am237_core_entries.h"
+#include "demo_stm32f103rbt6_core_entries.h"
 
 /*******************************************************************************
   宏定义
@@ -64,14 +64,14 @@
 /**
  * \brief 例程入口
  */
-void demo_zlg237_core_std_i2c_master_sync_entry (void)
+void demo_stm32f103rbt6_core_std_i2c_master_sync_entry (void)
 {
-    AM_DBG_INFO("demo am237_core std i2c master sync!\r\n");
+    AM_DBG_INFO("demo stm32f103rbt6_core std i2c master sync!\r\n");
 
-    demo_std_i2c_master_sync_entry(am_zlg237_i2c1_inst_init(),
+    demo_std_i2c_master_sync_entry(am_stm32f103rbt6_i2c1_inst_init(),
                                    EEPROM_ADDR,
                                    TEST_LEN);
 }
-/** [src_zlg237_std_i2c_master_sync] */
+/** [src_stm32f103rbt6_std_i2c_master_sync] */
 
 /* end of file */

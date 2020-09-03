@@ -19,7 +19,7 @@
  *   2. 修改宏定义 __WWDG_FEED_TIME_MS 的值，小于 __WWDG_TIMEOUT_MS，程序正常运行。
  *
  * \par 源代码
- * \snippet demo_zlg237_hw_wwdg.c src_zlg237_hw_wwdg
+ * \snippet demo_stm32f103rbt6_hw_wwdg.c src_stm32f103rbt6_hw_wwdg
  *
  * \internal
  * \par Modification history
@@ -28,17 +28,17 @@
  */
 
 /**
- * \addtogroup demo_if_zlg237_hw_wwdg
- * \copydoc demo_zlg237_hw_wwdg.c
+ * \addtogroup demo_if_stm32f103rbt6_hw_wwdg
+ * \copydoc demo_stm32f103rbt6_hw_wwdg.c
  */
 
-/** [src_zlg237_hw_wwdg] */
+/** [src_stm32f103rbt6_hw_wwdg] */
 #include "ametal.h"
 #include "am_vdebug.h"
-#include "am_zlg237.h"
-#include "am_zlg237_clk.h"
-#include "demo_zlg_entries.h"
-#include "demo_am237_core_entries.h"
+#include "am_stm32f103rbt6.h"
+#include "am_stm32f103rbt6_clk.h"
+#include "demo_stm32f103rbt6_entries.h"
+#include "demo_stm32f103rbt6_core_entries.h"
 
 /**
  * \brief 看门狗超时时间
@@ -54,21 +54,21 @@
 /**
  * \brief 例程入口
  */
-void demo_zlg237_core_hw_wwdg_entry (void)
+void demo_stm32f103rbt6_core_hw_wwdg_entry (void)
 {
-    AM_DBG_INFO("demo am237_core hw wwdg!\r\n");
+    AM_DBG_INFO("demo stm32f103rbt6_core hw wwdg!\r\n");
 
-    amhw_zlg237_rcc_lsi_enable();
+    amhw_stm32f103rbt6_rcc_lsi_enable();
 
     am_clk_enable(CLK_WWDG);
 
-    am_zlg237_clk_reset(CLK_WWDG);
+    am_stm32f103rbt6_clk_reset(CLK_WWDG);
 
-    demo_zlg_hw_wwdg_entry(ZLG237_WWDG,
+    demo_stm32f103rbt6_hw_wwdg_entry(STM32F103RBT6_WWDG,
                            am_clk_rate_get(CLK_WWDG),
                            __WWDG_TIMEOUT_MS,
                            __WWDG_FEED_TIME_MS);
 }
-/** [src_zlg237_hw_wwdg] */
+/** [src_stm32f103rbt6_hw_wwdg] */
 
 /* end of file */

@@ -21,8 +21,8 @@
  * \endinternal
  */
 
-#ifndef __AMHW_ZLG_CRC_H
-#define __AMHW_ZLG_CRC_H
+#ifndef __AMHW_STM32F103RBT6_CRC_H
+#define __AMHW_STM32F103RBT6_CRC_H
 
 #ifdef __cplusplus
 extern "C" {
@@ -32,19 +32,19 @@ extern "C" {
 #include "am_types.h"
 
 /**
- * \addtogroup amhw_zlg_if_crc
- * \copydoc amhw_zlg_crc.h
+ * \addtogroup amhw_stm32f103rbt6_if_crc
+ * \copydoc amhw_stm32f103rbt6_crc.h
  * @{
  */
 
 /**
  * \brief CRC - Register Layout Typedef
  */
-typedef struct amhw_zlg_crc {
+typedef struct amhw_stm32f103rbt6_crc {
     __IO uint32_t crcdr;   /**< \brief CRC Data register */
     __IO uint32_t crcidr;  /**< \brief CRC independent register */
     __O  uint32_t crcctl;  /**< \brief CRC control register */
-} amhw_zlg_crc_t;
+} amhw_stm32f103rbt6_crc_t;
 
 /**
  * \brief CRC 32bit write data
@@ -55,7 +55,7 @@ typedef struct amhw_zlg_crc {
  * retval : none
  */
 am_static_inline
-void amhw_zlg_crc_32bit_write_data (amhw_zlg_crc_t    *p_hw_crc,
+void amhw_stm32f103rbt6_crc_32bit_write_data (amhw_stm32f103rbt6_crc_t    *p_hw_crc,
                                     uint32_t           data)
 {
     p_hw_crc->crcdr = data;
@@ -69,7 +69,7 @@ void amhw_zlg_crc_32bit_write_data (amhw_zlg_crc_t    *p_hw_crc,
  * \retval : the result of caculate value
  */
 am_static_inline
-uint32_t amhw_zlg_crc_32bit_read_data (amhw_zlg_crc_t *p_hw_crc)
+uint32_t amhw_stm32f103rbt6_crc_32bit_read_data (amhw_stm32f103rbt6_crc_t *p_hw_crc)
 {
     return p_hw_crc->crcdr;
 }
@@ -85,7 +85,7 @@ uint32_t amhw_zlg_crc_32bit_read_data (amhw_zlg_crc_t *p_hw_crc)
  * \note this register can not  caculate data
  */
 am_static_inline
-void amhw_zlg_crc_8bit_write_data (amhw_zlg_crc_t *p_hw_crc, uint8_t data)
+void amhw_stm32f103rbt6_crc_8bit_write_data (amhw_stm32f103rbt6_crc_t *p_hw_crc, uint8_t data)
 {
     p_hw_crc->crcidr = data;
 }
@@ -100,7 +100,7 @@ void amhw_zlg_crc_8bit_write_data (amhw_zlg_crc_t *p_hw_crc, uint8_t data)
  * \note this register can not  caculate data
  */
 am_static_inline
-uint8_t amhw_zlg_crc_8bit_read_data (amhw_zlg_crc_t *p_hw_crc)
+uint8_t amhw_stm32f103rbt6_crc_8bit_read_data (amhw_stm32f103rbt6_crc_t *p_hw_crc)
 {
     return p_hw_crc->crcidr;
 }
@@ -113,7 +113,7 @@ uint8_t amhw_zlg_crc_8bit_read_data (amhw_zlg_crc_t *p_hw_crc)
  * \retval : none
  */
 am_static_inline
-void amhw_zlg_crc_reset (amhw_zlg_crc_t *p_hw_crc)
+void amhw_stm32f103rbt6_crc_reset (amhw_stm32f103rbt6_crc_t *p_hw_crc)
 {
     p_hw_crc->crcctl = 1;
 }
@@ -126,6 +126,6 @@ void amhw_zlg_crc_reset (amhw_zlg_crc_t *p_hw_crc)
 }
 #endif
 
-#endif /* __AMHW_ZLG_CRC_H */
+#endif /* __AMHW_STM32F103RBT6_CRC_H */
 
 /* end of file */

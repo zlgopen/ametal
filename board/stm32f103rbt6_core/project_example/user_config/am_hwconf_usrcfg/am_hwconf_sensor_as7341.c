@@ -22,8 +22,8 @@
 
 #include "am_sensor_as7341.h"
 #include "am_common.h"
-#include "zlg237_pin.h"
-#include "am_zlg237_inst_init.h"
+#include "stm32f103rbt6_pin.h"
+#include "am_stm32f103rbt6_inst_init.h"
 
 am_const am_local as7341_param_config_t __g_as7341_param_default = {
     AM_AS7341_LED_CONTROLLED,           /* LED_SEL                  */
@@ -87,7 +87,7 @@ am_sensor_handle_t am_sensor_as7341_inst_init (void)
 {
     return am_sensor_as7341_init(&__g_as7341_dev,
                                  &__g_as7341_info,
-                                 am_zlg237_i2c1_inst_init());
+                                 am_stm32f103rbt6_i2c1_inst_init());
 }
 
 /** \brief 传感器 AS7341 实例解初始化 */

@@ -37,7 +37,7 @@
 #include "am_delay.h"
 #include "am_vdebug.h"
 //#include "am_zlg116.h"
-#include "hw/amhw_zlg_wwdg.h"
+#include "hw/amhw_stm32f103rbt6_wwdg.h"
 
 static uint8_t __g_count = 0x7f;
 
@@ -49,7 +49,7 @@ static uint8_t __g_count = 0x7f;
  * \return 无
  *
  */
-static int __zlg_wwdg_enable (amhw_zlg_wwdg_t *p_hw_wwdg,
+static int __stm32f103rbt6_wwdg_enable (amhw_stm32f103rbt6_wwdg_t *p_hw_wwdg,
                               uint32_t         timeout_ms,
                               uint32_t         clk_rate)
 {
@@ -61,19 +61,19 @@ static int __zlg_wwdg_enable (amhw_zlg_wwdg_t *p_hw_wwdg,
 
     div = ticks / 0x40 + 1;
 
-    amhw_zlg_wwdg_winvalue_set (p_hw_wwdg, 0x7f);
+    amhw_stm32f103rbt6_wwdg_winvalue_set (p_hw_wwdg, 0x7f);
 
     if (div <= 1) {
-        amhw_zlg_wwdg_timerbase_set(p_hw_wwdg, 0);
+        amhw_stm32f103rbt6_wwdg_timerbase_set(p_hw_wwdg, 0);
         div = 1;
     } else if (div <= 2) {
-        amhw_zlg_wwdg_timerbase_set (p_hw_wwdg, 1);
+        amhw_stm32f103rbt6_wwdg_timerbase_set (p_hw_wwdg, 1);
         div = 2;
     } else if (div <= 4) {
-        amhw_zlg_wwdg_timerbase_set (p_hw_wwdg, 2);
+        amhw_stm32f103rbt6_wwdg_timerbase_set (p_hw_wwdg, 2);
         div = 4;
     } else if (div <= 8) {
-        amhw_zlg_wwdg_timerbase_set (p_hw_wwdg, 3);
+        amhw_stm32f103rbt6_wwdg_timerbase_set (p_hw_wwdg, 3);
         div = 8;
     } else {
         return AM_ERROR;
@@ -83,10 +83,10 @@ static int __zlg_wwdg_enable (amhw_zlg_wwdg_t *p_hw_wwdg,
     ticks = (uint64_t) (timeout_ms) * wdt_freq / 1000;
     __g_count = (ticks + 0x3f) % 0x7f;
 
-    amhw_zlg_wwdg_counter_set (p_hw_wwdg, __g_count);
+    amhw_stm32f103rbt6_wwdg_counter_set (p_hw_wwdg, __g_count);
 
     /* 启动看门狗 */
-    amhw_zlg_wwdg_enable(p_hw_wwdg);
+    amhw_stm32f103rbt6_wwdg_enable(p_hw_wwdg);
 
     return AM_OK;
 }
@@ -97,25 +97,25 @@ static int __zlg_wwdg_enable (amhw_zlg_wwdg_t *p_hw_wwdg,
  * \return 无
  *
  */
-static void __zlg_sdt_feed (amhw_zlg_wwdg_t *p_hw_wwdg)
+static void __stm32f103rbt6_sdt_feed (amhw_stm32f103rbt6_wwdg_t *p_hw_wwdg)
 {
-    amhw_zlg_wwdg_counter_set(p_hw_wwdg, __g_count);
+    amhw_stm32f103rbt6_wwdg_counter_set(p_hw_wwdg, __g_count);
 }
 
 /**
  * \brief 例程入口
  */
-void demo_zlg_hw_wwdg_entry (amhw_zlg_wwdg_t *p_hw_wwdg,
+void demo_stm32f103rbt6_hw_wwdg_entry (amhw_stm32f103rbt6_wwdg_t *p_hw_wwdg,
                              uint32_t         clk_rate,
                              uint32_t         time_out_ms,
                              uint32_t         feed_time_ms)
 {
-    __zlg_wwdg_enable(p_hw_wwdg, time_out_ms, clk_rate);
+    __stm32f103rbt6_wwdg_enable(p_hw_wwdg, time_out_ms, clk_rate);
 
     while (1) {
 
         /* 喂狗操作 */
-        __zlg_sdt_feed(p_hw_wwdg);
+        __stm32f103rbt6_sdt_feed(p_hw_wwdg);
 
         /* 延时，当延时大于喂狗时间时,会产生看门狗事件，MCU复位 */
         am_mdelay(feed_time_ms);

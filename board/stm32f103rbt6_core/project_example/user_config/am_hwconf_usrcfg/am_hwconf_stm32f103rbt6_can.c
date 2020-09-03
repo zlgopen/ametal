@@ -12,8 +12,8 @@
 
 /**
  * \file
- * \brief ZLG237 CAN 用户配置文件
- * \sa am_hwconf_zlg237_can.c
+ * \brief STM32F103RBT6 CAN 用户配置文件
+ * \sa am_hwconf_stm32f103rbt6_can.c
  *
  * \internal
  * \par Modification history
@@ -21,23 +21,23 @@
  * \endinternal
  */
 
-#include "zlg237_periph_map.h"
-#include "am_zlg237.h"
-#include "zlg237_inum.h"
+#include "stm32f103rbt6_periph_map.h"
+#include "am_stm32f103rbt6.h"
+#include "stm32f103rbt6_inum.h"
 #include "am_gpio.h"
-#include "am_zlg237_can.h"
+#include "am_stm32f103rbt6_can.h"
 #include "am_clk.h"
 
 /**
- * \addtogroup am_if_src_hwconf_zlg237_can
- * \copydoc am_hwconf_zlg237_can.c
+ * \addtogroup am_if_src_hwconf_stm32f103rbt6_can
+ * \copydoc am_hwconf_stm32f103rbt6_can.c
  * @{
  */
 
 #define MAX     10
 
 /** \brief CAN平台初始化 */
-static void __zlg237_plfm_can_init (void)
+static void __stm32f103rbt6_plfm_can_init (void)
 {
     am_clk_enable(CLK_CAN);
 
@@ -48,32 +48,32 @@ static void __zlg237_plfm_can_init (void)
 }
 
 /** \brief 解除CAN平台初始化 */
-static void __zlg237_plfm_can_deinit (void)
+static void __stm32f103rbt6_plfm_can_deinit (void)
 {
     am_clk_disable (CLK_CAN);
 }
 
-static am_zlg237_can_intcb_info_t    __g_can_intcb_info[MAX];
+static am_stm32f103rbt6_can_intcb_info_t    __g_can_intcb_info[MAX];
 
-amhw_zlg237_can_filter_t __g_can_filter = {
+amhw_stm32f103rbt6_can_filter_t __g_can_filter = {
 
     /* 关联FIFO */
-    AMHW_ZLG237_CAN_FILTER_FIFO0,
+    AMHW_STM32F103RBT6_CAN_FILTER_FIFO0,
 
     /* 滤波器模式 */
-    AMHW_ZLG237_CAN_FILTER_MODE_IDMASK,
+    AMHW_STM32F103RBT6_CAN_FILTER_MODE_IDMASK,
 
     /* 滤波器位宽 */
-    AMHW_ZLG237_CAN_FILTER_SCALE_32BIT,
+    AMHW_STM32F103RBT6_CAN_FILTER_SCALE_32BIT,
 
     /* 滤波器激活状态 */
     1
 };
 
-am_zlg237_can_init_info_t __g_can_initfo = {
+am_stm32f103rbt6_can_init_info_t __g_can_initfo = {
 
     /** \brief 0 普通模式   1 回环模式 */
-    AMHW_ZLG237_CAN_MODE_NORMAL,
+    AMHW_STM32F103RBT6_CAN_MODE_NORMAL,
 
     /** \brief 时间触发通信模式  0 非触发  1 触发 */
     0,
@@ -110,32 +110,32 @@ am_zlg237_can_init_info_t __g_can_initfo = {
 };
 
 /** \brief 设备信息 */
-static const am_zlg237_can_devinfo_t __g_can_devinfo = {
+static const am_stm32f103rbt6_can_devinfo_t __g_can_devinfo = {
 
-    ZLG237_CAN_BASE,                 /**< \brief CAN */
+    STM32F103RBT6_CAN_BASE,                 /**< \brief CAN */
     INUM_USB_HP_CAN_TX,              /**< \brief CAN的中断编号  此处不可修改*/
     __g_can_intcb_info,              /**< \brief 回调信息 */
     MAX,                             /**< \brief 回调信息内存大小*/
-    __zlg237_plfm_can_init,          /**< \brief CAN1的平台初始化 */
-    __zlg237_plfm_can_deinit,        /**< \brief CAN1的平台去初始化 */
+    __stm32f103rbt6_plfm_can_init,          /**< \brief CAN1的平台初始化 */
+    __stm32f103rbt6_plfm_can_deinit,        /**< \brief CAN1的平台去初始化 */
     &__g_can_filter,
     &__g_can_initfo
 
 };
 
 /**< \brief 设备实例 */
-static am_zlg237_can_dev_t  __g_can_dev;
+static am_stm32f103rbt6_can_dev_t  __g_can_dev;
 
 /** \brief CAN实例初始化，获得CAN标准服务句柄 */
-am_can_handle_t am_zlg237_can_inst_init (void)
+am_can_handle_t am_stm32f103rbt6_can_inst_init (void)
 {
-    return am_zlg237_can_init(&__g_can_dev, &__g_can_devinfo);
+    return am_stm32f103rbt6_can_init(&__g_can_dev, &__g_can_devinfo);
 }
 
 /** \brief CAN实例解初始化 */
-void am_zlg237_can_inst_deinit (am_can_handle_t handle)
+void am_stm32f103rbt6_can_inst_deinit (am_can_handle_t handle)
 {
-    am_zlg237_can_deinit(handle);
+    am_stm32f103rbt6_can_deinit(handle);
 }
 
 /**

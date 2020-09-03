@@ -20,10 +20,10 @@
  * \endinternal
  */
 
-#include "zlg237_pin.h"
+#include "stm32f103rbt6_pin.h"
 #include "am_sensor_tmf8801.h"
 #include "am_common.h"
-#include "am_zlg237_inst_init.h"
+#include "am_stm32f103rbt6_inst_init.h"
 
 /** \brief TOF传感器 TMF8801 设备信息实例 */
 am_const am_local struct am_sensor_tmf8801_devinfo __g_tmf8801_info = {
@@ -40,7 +40,7 @@ am_sensor_handle_t am_sensor_tmf8801_inst_init (void)
 {
     return am_sensor_tmf8801_init(&__g_tmf8801_dev,
                                   &__g_tmf8801_info,
-                                   am_zlg237_i2c2_inst_init());
+                                   am_stm32f103rbt6_i2c2_inst_init());
 }
 
 /** \brief TOF传感器 TMF8801 实例解初始化 */

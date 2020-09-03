@@ -12,8 +12,8 @@
 
 /**
  * \file
- * \brief ZMF237 I2C 用户配置文件
- * \sa am_hwconf_zlg237_i2c.c
+ * \brief STM32F103RBT6 I2C 用户配置文件
+ * \sa am_hwconf_stm32f103rbt6_i2c.c
  *
  * \internal
  * \par Modification history
@@ -22,21 +22,21 @@
  */
 
 #include "ametal.h"
-#include "am_zlg237.h"
+#include "am_stm32f103rbt6.h"
 #include "am_gpio.h"
 #include "am_clk.h"
-#include "am_zlg237_i2c.h"
-#include "am_zlg237_clk.h"
-#include "amhw_zlg237_i2c.h"
+#include "am_stm32f103rbt6_i2c.h"
+#include "am_stm32f103rbt6_clk.h"
+#include "amhw_stm32f103rbt6_i2c.h"
 
 /**
- * \addtogroup am_if_src_hwconf_zlg237_i2c
- * \copydoc am_hwconf_zlg237_i2c.c
+ * \addtogroup am_if_src_hwconf_stm32f103rbt6_i2c
+ * \copydoc am_hwconf_stm32f103rbt6_i2c.c
  * @{
  */
 
 /** \brief I2C1 总线恢复函数 */
-static void __zlg_i2c1_bus_clean (void)
+static void __stm32f103rbt6_i2c1_bus_clean (void)
 {
     uint8_t i;
 
@@ -54,17 +54,17 @@ static void __zlg_i2c1_bus_clean (void)
     am_gpio_pin_cfg(PIOB_7, PIOB_7_I2C1_SDA_REMAP0 | PIOB_7_AF_OD);
 }
 /** \brief I2C1 平台初始化函数 */
-static void __zlg_i2c1_plfm_init (void)
+static void __stm32f103rbt6_i2c1_plfm_init (void)
 {
     am_gpio_pin_cfg(PIOB_6, PIOB_6_I2C1_SCL_REMAP0 | PIOB_6_AF_OD|PIOB_6_SPEED_50MHz);
     am_gpio_pin_cfg(PIOB_7, PIOB_7_I2C1_SDA_REMAP0 | PIOB_7_AF_OD|PIOB_7_SPEED_2MHz);
 
     am_clk_enable(CLK_I2C1);
-    am_zlg237_clk_reset(CLK_I2C1);
+    am_stm32f103rbt6_clk_reset(CLK_I2C1);
 }
 
 /** \brief 解除I2C1 平台初始化函数 */
-static void __zlg_i2c1_plfm_deinit (void)
+static void __stm32f103rbt6_i2c1_plfm_deinit (void)
 {
     am_clk_disable(CLK_I2C1);
 
@@ -75,36 +75,36 @@ static void __zlg_i2c1_plfm_deinit (void)
 /**
  * \brief I2C1 设备信息
  */
-static const am_zlg237_i2c_devinfo_t __g_i2c1_devinfo = {
+static const am_stm32f103rbt6_i2c_devinfo_t __g_i2c1_devinfo = {
 
-    ZLG237_I2C1_BASE,                   /**< \brief I2C1寄存器块基址 */
+    STM32F103RBT6_I2C1_BASE,                   /**< \brief I2C1寄存器块基址 */
     CLK_I2C1,                           /**< \brief 时钟ID值 */
     INUM_I2C1_EV,                       /**< \brief I2C1 中断编号 */
 
     100000,                             /**< \brief I2C 速率 */
     10,                                 /**< \brief 超时值0 */
 
-    __zlg_i2c1_bus_clean,               /**< \brief 总线恢复函数 */
-    __zlg_i2c1_plfm_init,               /**< \brief 平台初始化 */
-    __zlg_i2c1_plfm_deinit              /**< \brief 平台去初始化 */
+    __stm32f103rbt6_i2c1_bus_clean,               /**< \brief 总线恢复函数 */
+    __stm32f103rbt6_i2c1_plfm_init,               /**< \brief 平台初始化 */
+    __stm32f103rbt6_i2c1_plfm_deinit              /**< \brief 平台去初始化 */
 };
 
-static am_zlg237_i2c_dev_t __g_i2c1_dev; /**< \brief I2C1 设备实例 */
+static am_stm32f103rbt6_i2c_dev_t __g_i2c1_dev; /**< \brief I2C1 设备实例 */
 
 /** \brief I2C1 实例初始化，获得I2C标准服务句柄 */
-am_i2c_handle_t am_zlg237_i2c1_inst_init (void)
+am_i2c_handle_t am_stm32f103rbt6_i2c1_inst_init (void)
 {
-    return am_zlg237_i2c_init(&__g_i2c1_dev, &__g_i2c1_devinfo);
+    return am_stm32f103rbt6_i2c_init(&__g_i2c1_dev, &__g_i2c1_devinfo);
 }
 
 /** \brief I2C1 实例解初始化 */
-void am_zlg237_i2c1_inst_deinit (am_i2c_handle_t handle)
+void am_stm32f103rbt6_i2c1_inst_deinit (am_i2c_handle_t handle)
 {
-    am_zlg237_i2c_deinit(handle);
+    am_stm32f103rbt6_i2c_deinit(handle);
 }
 
 /** \brief I2C2 总线恢复函数 */
-static void __zlg_i2c2_bus_clean (void)
+static void __stm32f103rbt6_i2c2_bus_clean (void)
 {
     uint8_t i;
 
@@ -123,17 +123,17 @@ static void __zlg_i2c2_bus_clean (void)
 }
 
 /** \brief I2C2 平台初始化函数 */
-static void __zlg_i2c2_plfm_init (void)
+static void __stm32f103rbt6_i2c2_plfm_init (void)
 {
     am_gpio_pin_cfg(PIOB_10, PIOB_10_I2C2_SCL | PIOB_10_AF_OD | PIOB_10_SPEED_50MHz );
     am_gpio_pin_cfg(PIOB_11, PIOB_11_I2C2_SDA | PIOB_11_AF_OD | PIOB_11_SPEED_2MHz);
 
     am_clk_enable(CLK_I2C2);
-    am_zlg237_clk_reset(CLK_I2C2);
+    am_stm32f103rbt6_clk_reset(CLK_I2C2);
 }
 
 /** \brief 解除I2C2 平台初始化函数 */
-static void __zlg_i2c2_plfm_deinit (void)
+static void __stm32f103rbt6_i2c2_plfm_deinit (void)
 {
     am_clk_disable(CLK_I2C2);
 }
@@ -141,32 +141,32 @@ static void __zlg_i2c2_plfm_deinit (void)
 /**
  * \brief I2C2 设备信息
  */
-static const am_zlg237_i2c_devinfo_t __g_i2c2_devinfo = {
+static const am_stm32f103rbt6_i2c_devinfo_t __g_i2c2_devinfo = {
 
-    ZLG237_I2C2_BASE,                   /**< \brief I2C2寄存器块基址 */
+    STM32F103RBT6_I2C2_BASE,                   /**< \brief I2C2寄存器块基址 */
     CLK_I2C2,                           /**< \brief 时钟ID值 */
     INUM_I2C2_EV,                       /**< \brief I2C2 中断编号 */
 
     400000,                             /**< \brief I2C 速率 */
     10,                                 /**< \brief 超时值0 */
 
-    __zlg_i2c2_bus_clean,               /**< \brief 总线恢复函数 */
-    __zlg_i2c2_plfm_init,               /**< \brief 平台初始化 */
-    __zlg_i2c2_plfm_deinit              /**< \brief 平台去初始化 */
+    __stm32f103rbt6_i2c2_bus_clean,               /**< \brief 总线恢复函数 */
+    __stm32f103rbt6_i2c2_plfm_init,               /**< \brief 平台初始化 */
+    __stm32f103rbt6_i2c2_plfm_deinit              /**< \brief 平台去初始化 */
 };
 
-static am_zlg237_i2c_dev_t __g_i2c2_dev; /**< \brief I2C2 设备实例 */
+static am_stm32f103rbt6_i2c_dev_t __g_i2c2_dev; /**< \brief I2C2 设备实例 */
 
 /** \brief I2C2 实例初始化，获得I2C标准服务句柄 */
-am_i2c_handle_t am_zlg237_i2c2_inst_init (void)
+am_i2c_handle_t am_stm32f103rbt6_i2c2_inst_init (void)
 {
-    return am_zlg237_i2c_init(&__g_i2c2_dev, &__g_i2c2_devinfo);
+    return am_stm32f103rbt6_i2c_init(&__g_i2c2_dev, &__g_i2c2_devinfo);
 }
 
 /** \brief I2C2 实例解初始化 */
-void am_zlg237_i2c2_inst_deinit (am_i2c_handle_t handle)
+void am_stm32f103rbt6_i2c2_inst_deinit (am_i2c_handle_t handle)
 {
-    am_zlg237_i2c_deinit(handle);
+    am_stm32f103rbt6_i2c_deinit(handle);
 }
 
 /** @} */

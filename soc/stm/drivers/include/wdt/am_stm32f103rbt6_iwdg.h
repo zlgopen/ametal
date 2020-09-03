@@ -20,8 +20,8 @@
  * \endinternal
  */
 
-#ifndef __AM_ZLG_IWDG_H
-#define __AM_ZLG_IWDG_H
+#ifndef __AM_STM32F103RBT6_IWDG_H
+#define __AM_STM32F103RBT6_IWDG_H
 
 #ifdef __cplusplus
 extern "C" {
@@ -31,15 +31,15 @@ extern "C" {
 #include "am_wdt.h"
 
 /**
- * \addtogroup am_zlg_if_iwdg
- * \copydoc am_zlg_iwdg.h
+ * \addtogroup am_stm32f103rbt6_if_iwdg
+ * \copydoc am_stm32f103rbt6_iwdg.h
  * @{
  */
 
 /**
  * \brief IWDG设备信息结构体
  */
-typedef struct am_zlg_iwdg_devinfo {
+typedef struct am_stm32f103rbt6_iwdg_devinfo {
 
     /** \brief IWDG寄存器块基地址 */
     uint32_t iwdg_regbase;
@@ -50,12 +50,12 @@ typedef struct am_zlg_iwdg_devinfo {
     /** \brief 平台解初始化函数 */
     void   (*pfn_plfm_deinit)(void);
 
-} am_zlg_iwdg_devinfo_t;
+} am_stm32f103rbt6_iwdg_devinfo_t;
 
 /**
  * \brief IWDG设备结构体
  */
-typedef struct am_zlg_iwdg_dev {
+typedef struct am_stm32f103rbt6_iwdg_dev {
 
     /** \brief IWDG提供的标准服务 */
     am_wdt_serv_t                 wdt_serv;
@@ -64,8 +64,8 @@ typedef struct am_zlg_iwdg_dev {
     uint16_t                      div;
 
     /** \brief 指向IWDG设备的信息指针 */
-    const am_zlg_iwdg_devinfo_t  *p_devinfo;
-} am_zlg_iwdg_dev_t;
+    const am_stm32f103rbt6_iwdg_devinfo_t  *p_devinfo;
+} am_stm32f103rbt6_iwdg_dev_t;
 
 /**
  * \brief IWDG初始化
@@ -75,17 +75,17 @@ typedef struct am_zlg_iwdg_dev {
  *
  * \return IWDG标准服务句柄，失败则返回NULL
  */
-am_wdt_handle_t am_zlg_iwdg_init (am_zlg_iwdg_dev_t              *p_dev,
-                                     const am_zlg_iwdg_devinfo_t *p_devinfo);
+am_wdt_handle_t am_stm32f103rbt6_iwdg_init (am_stm32f103rbt6_iwdg_dev_t              *p_dev,
+                                     const am_stm32f103rbt6_iwdg_devinfo_t *p_devinfo);
 
 /**
  * \brief 解除IWDG设备初始化
  *
- * \param[in] handle : 使用IWDG初始化函数am_zlg_iwdg_init()获取到的handle
+ * \param[in] handle : 使用IWDG初始化函数am_stm32f103rbt6_iwdg_init()获取到的handle
  *
  * \return 无
  */
-void am_zlg_iwdg_deinit (am_wdt_handle_t handle);
+void am_stm32f103rbt6_iwdg_deinit (am_wdt_handle_t handle);
 
 /**
  * @}

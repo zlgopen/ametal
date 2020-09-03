@@ -24,7 +24,7 @@
  *   2. 可以往U盘中里面拖动文件,串口会显示你拖动文件的信息。
  *
  * \par 源代码
- * \snippet demo_zlg237_core_usbd_msc.c src_zlg237_core_usbd_msc
+ * \snippet demo_stm32f103rbt6_core_usbd_msc.c src_stm32f103rbt6_core_usbd_msc
  *
  * \internal
  * \par Modification History
@@ -33,27 +33,27 @@
  */
 
 /**
- * \addtogroup demo_if_demo_zlg237_core_usbd_msc
- * \copydoc demo_zlg237_core_usbd_msc.c
+ * \addtogroup demo_if_demo_stm32f103rbt6_core_usbd_msc
+ * \copydoc demo_stm32f103rbt6_core_usbd_msc.c
  */
 
-/** [src_demo_zlg237_core_usbd_msc] */
+/** [src_demo_stm32f103rbt6_core_usbd_msc] */
 
-#include "demo_zlg_entries.h"
-#include "am_zlg237_inst_init.h"
-#include "demo_am237_core_entries.h"
+#include "demo_stm32f103rbt6_entries.h"
+#include "am_stm32f103rbt6_inst_init.h"
+#include "demo_stm32f103rbt6_core_entries.h"
 
-void demo_zlg237_usbd_msc_entry (void)
+void demo_stm32f103rbt6_usbd_msc_entry (void)
 {
 
-    AM_DBG_INFO("demo zlg237_core usbd msc!\r\n");
+    AM_DBG_INFO("demo stm32f103rbt6_core usbd msc!\r\n");
 
     /* usb U盘实例初始化*/
-    am_usbd_msc_handle handle = am_zlg237_usb_msc_inst_init();
+    am_usbd_msc_handle handle = am_stm32f103rbt6_usb_msc_inst_init();
 
     demo_usbd_msc_entry(handle);
 }
 
-/** [src_demo_zlg237_core_usbd_msc] */
+/** [src_demo_stm32f103rbt6_core_usbd_msc] */
 
 /* end of file */

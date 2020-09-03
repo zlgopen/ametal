@@ -29,7 +29,7 @@
  *   1. 其中 CAN ID 和 波特率配置 需要根据具体硬件平台修改。
  *
  * \par 源代码
- * \snippet demo_zlg237_core_can.c
+ * \snippet demo_stm32f103rbt6_core_can.c
  *
  * \internal
  * \par modification history:
@@ -41,8 +41,8 @@
 #include "am_can.h"
 #include "am_delay.h"
 #include "am_vdebug.h"
-#include "am_zlg237_inst_init.h"
-#include "demo_zlg_entries.h"
+#include "am_stm32f103rbt6_inst_init.h"
+#include "demo_stm32f103rbt6_entries.h"
 
 
 #define  APB1_CLK        36000000 /*CAN 的输入时钟 */
@@ -84,15 +84,15 @@ static void __can_auto_cfg_baud(am_can_bps_param_t  *can_btr_baud,
  *
  * \return 无
  */
-void demo_zlg237_core_can_entry (void)
+void demo_stm32f103rbt6_core_can_entry (void)
 {
     am_can_bps_param_t  can_btr_baud = {0};
 
-    AM_DBG_INFO("demo zlg237_core  can!\r\n");
+    AM_DBG_INFO("demo stm32f103rbt6_core  can!\r\n");
 
     __can_auto_cfg_baud(&can_btr_baud, APB1_CLK, CAN_BAUD);
 
-    demo_zlg237_can_entry (am_zlg237_can_inst_init (), &can_btr_baud);
+    demo_stm32f103rbt6_can_entry (am_stm32f103rbt6_can_inst_init (), &can_btr_baud);
 }
 
 /** [src_test_flexcan] */

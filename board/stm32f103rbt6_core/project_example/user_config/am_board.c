@@ -12,7 +12,7 @@
 
 /**
  * \file
- * \brief am237_core
+ * \brief stm32f103rbt6_core
  *
  * \internal
  * \par Modification history
@@ -20,7 +20,7 @@
  * \endinternal
  */
 
-#include "am_zlg237_inst_init.h"
+#include "am_stm32f103rbt6_inst_init.h"
 #include "ametal.h"
 #include "am_board.h"
 #include "am_prj_config.h"
@@ -30,7 +30,7 @@
 #include "am_bsp_system_heap.h"
 #include "am_bsp_delay_timer.h"
 #include "am_service_inst_init.h"
-#include "am_zlg237.h"
+#include "am_stm32f103rbt6.h"
 
 #ifdef __CC_ARM
 #ifdef __MICROLIB
@@ -100,7 +100,7 @@ void am_board_init (void)
     am_bsp_system_heap_init((void *)heap_start, (void *)heap_end);
 
 #if (AM_CFG_DELAY_ENABLE == 1)
-    am_bsp_delay_timer_init(am_zlg237_systick_inst_init(), 0);
+    am_bsp_delay_timer_init(am_stm32f103rbt6_systick_inst_init(), 0);
 #endif /* (AM_CFG_DELAY_ENABLE == 1) */
 
 #if (AM_CFG_LED_ENABLE == 1)

@@ -16,7 +16,7 @@
  *        RTC、闹钟的功能，通过标准接口实现
  *
  * - 操作步骤：
- *   1. 将 MicroPort RTC 配板连接到 AM237 的 MicroPort 接口。
+ *   1. 将 MicroPort RTC 配板连接到 STM32F103RBT6 的 MicroPort 接口。
  *
  * - 实验现象：
  *   1. 串口将每一秒的时间信息打印出来；
@@ -44,9 +44,9 @@
 /** [src_microport_rtc] */
 #include "am_pcf85063.h"
 #include "am_vdebug.h"
-#include "am_zlg237_inst_init.h"
+#include "am_stm32f103rbt6_inst_init.h"
 #include "demo_std_entries.h"
-#include "demo_am237_core_entries.h"
+#include "demo_stm32f103rbt6_core_entries.h"
 
 /**
  * \brief MicroPort RTC 例程，通过标准接口实现
@@ -55,9 +55,9 @@
  *
  * \return 无
  */
-void demo_zlg237_core_microport_rtc_entry (void)
+void demo_stm32f103rbt6_core_microport_rtc_entry (void)
 {
-    AM_DBG_INFO("demo am237_core microport rtc!\r\n");
+    AM_DBG_INFO("demo stm32f103rbt6_core microport rtc!\r\n");
 
     demo_std_rtc_entry(am_microport_std_rtc_inst_init());
 }

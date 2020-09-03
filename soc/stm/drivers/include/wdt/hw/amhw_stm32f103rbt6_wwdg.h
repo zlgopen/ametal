@@ -20,8 +20,8 @@
  * \endinternal
  */
 
-#ifndef __AMHW_ZLG_WWDG_H
-#define __AMHW_ZLG_WWDG_H
+#ifndef __AMHW_STM32F103RBT6_WWDG_H
+#define __AMHW_STM32F103RBT6_WWDG_H
 
 #ifdef __cplusplus
 extern "C" {
@@ -46,22 +46,22 @@ extern "C" {
 #endif
 
 /**
- * \addtogroup amhw_zlg_if_wwdg
- * \copydoc amhw_zlg_wwdg.h
+ * \addtogroup amhw_stm32f103rbt6_if_wwdg
+ * \copydoc amhw_stm32f103rbt6_wwdg.h
  * @{
  */
 
 /**
  * \brief WWDG寄存器块结构体
  */
-typedef struct amhw_zlg_wwdg {
+typedef struct amhw_stm32f103rbt6_wwdg {
     __IO uint32_t cr;    /**< \brief 控制寄存器 */
     __IO uint32_t cfr;   /**< \brief 配置寄存器 */
     __IO uint32_t sr;    /**< \brief 状态寄存器 */
-} amhw_zlg_wwdg_t;
+} amhw_stm32f103rbt6_wwdg_t;
 
-#ifndef AMHW_ZLG_WWDG
-#define AMHW_ZLG_WWDG  ((amhw_zlg_wwdg_t *)0x40002C00UL) /**< \brief 外设基地址 */
+#ifndef AMHW_STM32F103RBT6_WWDG
+#define AMHW_STM32F103RBT6_WWDG  ((amhw_stm32f103rbt6_wwdg_t *)0x40002C00UL) /**< \brief 外设基地址 */
 #endif
 
 /**
@@ -73,7 +73,7 @@ typedef struct amhw_zlg_wwdg {
  * \return 无
  */
 am_static_inline
-void amhw_zlg_wwdg_counter_set (amhw_zlg_wwdg_t *p_hw_wwdg,
+void amhw_stm32f103rbt6_wwdg_counter_set (amhw_stm32f103rbt6_wwdg_t *p_hw_wwdg,
                                    uint8_t             count)
 {
     p_hw_wwdg->cr = (p_hw_wwdg->cr & ~0x7ful) |
@@ -88,7 +88,7 @@ void amhw_zlg_wwdg_counter_set (amhw_zlg_wwdg_t *p_hw_wwdg,
  * \return 无
  */
 am_static_inline
-void amhw_zlg_wwdg_enable (amhw_zlg_wwdg_t *p_hw_wwdg)
+void amhw_stm32f103rbt6_wwdg_enable (amhw_stm32f103rbt6_wwdg_t *p_hw_wwdg)
 {
     p_hw_wwdg->cr |= (1ul << 7);
 }
@@ -102,7 +102,7 @@ void amhw_zlg_wwdg_enable (amhw_zlg_wwdg_t *p_hw_wwdg)
  * \return 无
  */
 am_static_inline
-void amhw_zlg_wwdg_winvalue_set (amhw_zlg_wwdg_t    *p_hw_wwdg,
+void amhw_stm32f103rbt6_wwdg_winvalue_set (amhw_stm32f103rbt6_wwdg_t    *p_hw_wwdg,
                                  uint8_t             key)
 {
     p_hw_wwdg->cfr = (p_hw_wwdg->cfr & ~0x7ful) |
@@ -118,7 +118,7 @@ void amhw_zlg_wwdg_winvalue_set (amhw_zlg_wwdg_t    *p_hw_wwdg,
  * \return 无
  */
 am_static_inline
-void amhw_zlg_wwdg_timerbase_set (amhw_zlg_wwdg_t    *p_hw_wwdg,
+void amhw_stm32f103rbt6_wwdg_timerbase_set (amhw_stm32f103rbt6_wwdg_t    *p_hw_wwdg,
                                   uint8_t             val)
 {
     p_hw_wwdg->cfr = (p_hw_wwdg->cfr & ~(0x3ul << 7)) |
@@ -133,7 +133,7 @@ void amhw_zlg_wwdg_timerbase_set (amhw_zlg_wwdg_t    *p_hw_wwdg,
  * \return 无
  */
 am_static_inline
-void amhw_zlg_wwdg_ewi_set (amhw_zlg_wwdg_t *p_hw_wwdg)
+void amhw_stm32f103rbt6_wwdg_ewi_set (amhw_stm32f103rbt6_wwdg_t *p_hw_wwdg)
 {
     p_hw_wwdg->cfr |= (1ul << 9);
 }
@@ -146,7 +146,7 @@ void amhw_zlg_wwdg_ewi_set (amhw_zlg_wwdg_t *p_hw_wwdg)
  * \return 无
  */
 am_static_inline
-am_bool_t amhw_zlg_wwdg_ewif_read (amhw_zlg_wwdg_t *p_hw_wwdg)
+am_bool_t amhw_stm32f103rbt6_wwdg_ewif_read (amhw_stm32f103rbt6_wwdg_t *p_hw_wwdg)
 {
     return (am_bool_t)((p_hw_wwdg->sr & 1ul) ? AM_TRUE : AM_FALSE);
 }
@@ -159,7 +159,7 @@ am_bool_t amhw_zlg_wwdg_ewif_read (amhw_zlg_wwdg_t *p_hw_wwdg)
  * \return 无
  */
 am_static_inline
-void amhw_zlg_wwdg_ewif_clear (amhw_zlg_wwdg_t *p_hw_wwdg)
+void amhw_stm32f103rbt6_wwdg_ewif_clear (amhw_stm32f103rbt6_wwdg_t *p_hw_wwdg)
 {
     p_hw_wwdg->sr &= ~1ul;
 }
@@ -184,7 +184,7 @@ void amhw_zlg_wwdg_ewif_clear (amhw_zlg_wwdg_t *p_hw_wwdg)
 
 #ifdef __cplusplus
 }
-#endif /* __AMHW_ZLG_WWDG_H */
+#endif /* __AMHW_STM32F103RBT6_WWDG_H */
 
 #endif
 

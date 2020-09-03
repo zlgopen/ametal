@@ -26,26 +26,26 @@
  * \endinternal
  */
 
-#ifndef __AM_ZLG_TIM_TIMING_H
-#define __AM_ZLG_TIM_TIMING_H
+#ifndef __AM_STM32F103RBT6_TIM_TIMING_H
+#define __AM_STM32F103RBT6_TIM_TIMING_H
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
 #include "am_timer.h"
-#include "hw/amhw_zlg_tim.h"
+#include "hw/amhw_stm32f103rbt6_tim.h"
 
 /**
- * \addtogroup am_zlg_if_tim_timing
- * \copydoc am_zlg_tim_timing.h
+ * \addtogroup am_stm32f103rbt6_if_tim_timing
+ * \copydoc am_stm32f103rbt6_tim_timing.h
  * @{
  */
 
 /**
  * \brief TIM定时功能相关的设备信息
  */
-typedef struct am_zlg_tim_timing_devinfo {
+typedef struct am_stm32f103rbt6_tim_timing_devinfo {
 
     uint32_t               tim_regbase; /**< \brief TIM寄存器块基址 */
 
@@ -53,7 +53,7 @@ typedef struct am_zlg_tim_timing_devinfo {
 
     int                    clk_num;     /**< \brief 时钟ID */
 
-    amhw_zlg_tim_type_t    tim_type;    /**< \brief 定时器类型 */
+    amhw_stm32f103rbt6_tim_type_t    tim_type;    /**< \brief 定时器类型 */
 
     /** \brief 平台初始化函数，如打开时钟，配置引脚等工作 */
     void                 (*pfn_plfm_init)(void);
@@ -61,12 +61,12 @@ typedef struct am_zlg_tim_timing_devinfo {
     /** \brief 平台解初始化函数 */
     void                 (*pfn_plfm_deinit)(void);
 
-} am_zlg_tim_timing_devinfo_t;
+} am_stm32f103rbt6_tim_timing_devinfo_t;
 
 /**
  * \brief TIM定时功能设备
  */
-typedef struct am_zlg_tim_timing_dev {
+typedef struct am_stm32f103rbt6_tim_timing_dev {
 
     am_timer_serv_t timer_serv;         /**< \brief 标准定时(Timer)服务 */
 
@@ -74,9 +74,9 @@ typedef struct am_zlg_tim_timing_dev {
     void  *p_arg;                       /**< \brief 回调函数的用户参数 */
 
     /** \brief 指向TIM(定时功能)设备信息常量的指针 */
-    const am_zlg_tim_timing_devinfo_t  *p_devinfo;
+    const am_stm32f103rbt6_tim_timing_devinfo_t  *p_devinfo;
 
-} am_zlg_tim_timing_dev_t;
+} am_stm32f103rbt6_tim_timing_dev_t;
 
 /**
  * \brief 初始化TIM为定时功能
@@ -87,17 +87,17 @@ typedef struct am_zlg_tim_timing_dev {
  * \return Timer标准服务操作句柄，值为NULL时表明初始化失败
  */
 am_timer_handle_t
-am_zlg_tim_timing_init (am_zlg_tim_timing_dev_t              *p_dev,
-                           const am_zlg_tim_timing_devinfo_t *p_devinfo);
+am_stm32f103rbt6_tim_timing_init (am_stm32f103rbt6_tim_timing_dev_t              *p_dev,
+                           const am_stm32f103rbt6_tim_timing_devinfo_t *p_devinfo);
 
 /**
  * \brief 不使用TIM定时功能时，解初始化TIM定时功能，释放相关资源
  *
- * \param[in] handle : am_zlg_tim_timing_init() 初始化函数获得的Timer服务句柄
+ * \param[in] handle : am_stm32f103rbt6_tim_timing_init() 初始化函数获得的Timer服务句柄
  *
  * \return 无
  */
-void am_zlg_tim_timing_deinit (am_timer_handle_t handle);
+void am_stm32f103rbt6_tim_timing_deinit (am_timer_handle_t handle);
 
 /**
  * @}
@@ -107,6 +107,6 @@ void am_zlg_tim_timing_deinit (am_timer_handle_t handle);
 }
 #endif
 
-#endif /* __AM_ZLG_TIM_TIMING_H */
+#endif /* __AM_STM32F103RBT6_TIM_TIMING_H */
 
 /* end of file */

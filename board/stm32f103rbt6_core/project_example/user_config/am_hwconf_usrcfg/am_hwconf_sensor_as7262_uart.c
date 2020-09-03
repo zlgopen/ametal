@@ -22,8 +22,8 @@
 
 #include "am_sensor_as7262_uart.h"
 #include "am_common.h"
-#include "zlg237_pin.h"
-#include "am_zlg237_inst_init.h"
+#include "stm32f103rbt6_pin.h"
+#include "am_stm32f103rbt6_inst_init.h"
 
 am_local uint8_t __g_as7262_txbuf[128]; /**< \brief 发送缓冲区 */
 am_local uint8_t __g_as7262_rxbuf[128]; /**< \brief 接收缓冲区 */
@@ -48,8 +48,8 @@ am_const am_local struct am_sensor_as7262_devinfo __g_as7262_info = {
 /** \brief 传感器 AS7262 (UART模式) 设备信息实例 */
 am_const am_local am_sensor_as7262_uart_devinfo_t __g_as7262_uart_info = {
     &__g_as7262_info,                   /**< \brief 设备信息 */
-    am_zlg237_usart3_inst_init,         /**< \brief UART句柄获取函数 */
-    am_zlg237_usart3_inst_deinit,       /**< \brief UART解初始化函数 */
+    am_stm32f103rbt6_usart3_inst_init,         /**< \brief UART句柄获取函数 */
+    am_stm32f103rbt6_usart3_inst_deinit,       /**< \brief UART解初始化函数 */
     115200,                             /**< \brief UART波特率 */
     __g_as7262_rxbuf,                   /**< \brief 接收缓存 */
     __g_as7262_txbuf,                   /**< \brief 发送缓存 */

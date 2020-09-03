@@ -20,30 +20,30 @@
  * \endinternal
  */
 
-#ifndef __AM_ZLG237_RTC_H
-#define __AM_ZLG237_RTC_H
+#ifndef __AM_STM32F103RBT6_RTC_H
+#define __AM_STM32F103RBT6_RTC_H
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
 #include "am_rtc.h"
-#include "hw/amhw_zlg237_rtc.h"
+#include "hw/amhw_stm32f103rbt6_rtc.h"
 
 /**
- * \addtogroup am_zlg237_if_rtc
- * \copydoc am_zlg237_rtc.h
+ * \addtogroup am_stm32f103rbt6_if_rtc
+ * \copydoc am_stm32f103rbt6_rtc.h
  * @{
  */
 
-#define  AM_ZLG237_RTC_CALLBACK_SECOND  (1 << 0)  /**< \brief RTC 秒中断回调函数编号 */
-#define  AM_ZLG237_RTC_CALLBACK_ALARM   (1 << 1)  /**< \brief RTC 闹钟中断回调函数编号 */
-#define  AM_ZLG237_RTC_CALLBACK_OVER    (1 << 2)  /**< \brief RTC 溢出中断回调函数编号 */
+#define  AM_STM32F103RBT6_RTC_CALLBACK_SECOND  (1 << 0)  /**< \brief RTC 秒中断回调函数编号 */
+#define  AM_STM32F103RBT6_RTC_CALLBACK_ALARM   (1 << 1)  /**< \brief RTC 闹钟中断回调函数编号 */
+#define  AM_STM32F103RBT6_RTC_CALLBACK_OVER    (1 << 2)  /**< \brief RTC 溢出中断回调函数编号 */
 
 /**
- * \brief ZLG237 RTC 设备信息
+ * \brief STM32F103RBT6 RTC 设备信息
  */
-typedef struct am_zlg237_rtc_devinfo {
+typedef struct am_stm32f103rbt6_rtc_devinfo {
     uint32_t rtc_regbase;            /**< \brief RTC 寄存器基地址 */
     uint32_t pwr_regbase;            /**< \brief PWR 寄存器基地址 */
     uint32_t bkp_regbase;            /**< \brief BKP 寄存器基地址 */
@@ -51,19 +51,19 @@ typedef struct am_zlg237_rtc_devinfo {
     int      rtc_inum;               /**< \brief RTC 中断号 */
     void   (*pfn_plfm_init)(void);   /**< \brief 平台初始化函数 */
     void   (*pfn_plfm_deinit)(void); /**< \brief 平台解初始化函数 */
-} am_zlg237_rtc_devinfo_t;
+} am_stm32f103rbt6_rtc_devinfo_t;
 
 /**
- * \brief ZLG237 RTC 设备
+ * \brief STM32F103RBT6 RTC 设备
  */
-typedef struct am_zlg237_rtc_dev {
+typedef struct am_stm32f103rbt6_rtc_dev {
     am_rtc_serv_t                  rtc_serv;        /**< \brief RTC 标准服务 */
     uint8_t                        int_state;       /**< \brief 中断使能标志 */
     am_bool_t                      rtc_continue;    /**< \brief RTC 是否继续运行 */
     am_pfnvoid_t                   pfn_callback[3]; /**< \brief 回调函数 */
     void                          *p_arg[3];        /**< \brief 回调函数参数 */
-    const am_zlg237_rtc_devinfo_t *p_devinfo;       /**< \brief RTC 设备信息 */
-}am_zlg237_rtc_dev_t;
+    const am_stm32f103rbt6_rtc_devinfo_t *p_devinfo;       /**< \brief RTC 设备信息 */
+}am_stm32f103rbt6_rtc_dev_t;
 
 /**
  * \brief RTC 状态获取，可以用来判断本次运行前备份区域是否断电
@@ -73,7 +73,7 @@ typedef struct am_zlg237_rtc_dev {
  * \retval AM_TRUE  备份区域未断电，RTC 计数器接着上一次的状态运行
  * \retval AM_FALSE 备份区域断电，RTC 计数器从 0 开始运行
  */
-am_bool_t am_zlg237_rtc_state_get (am_rtc_handle_t handle);
+am_bool_t am_stm32f103rbt6_rtc_state_get (am_rtc_handle_t handle);
 
 /**
  * \brief RTC 同步标志复位，当 APB1 曾经被禁止过，需要调用此接口
@@ -86,7 +86,7 @@ am_bool_t am_zlg237_rtc_state_get (am_rtc_handle_t handle);
  * \note 发生系统复位或电源复位、系统刚从待机模式唤醒、
  *       系统刚从停机模式唤醒时，应该调用此接口
  */
-am_err_t am_zlg237_rtc_apb1_reflush (am_rtc_handle_t handle);
+am_err_t am_stm32f103rbt6_rtc_apb1_reflush (am_rtc_handle_t handle);
 
 /**
  * \brief 获取 RTC 计数器值
@@ -97,7 +97,7 @@ am_err_t am_zlg237_rtc_apb1_reflush (am_rtc_handle_t handle);
  * \retval  AM_OK     成功
  * \retval -AM_EINVAL 参数错误
  */
-am_err_t am_zlg237_rtc_cnt_get (am_rtc_handle_t handle, uint32_t *p_cnt);
+am_err_t am_stm32f103rbt6_rtc_cnt_get (am_rtc_handle_t handle, uint32_t *p_cnt);
 
 /**
  * \brief 设置 RTC 计数器值
@@ -108,7 +108,7 @@ am_err_t am_zlg237_rtc_cnt_get (am_rtc_handle_t handle, uint32_t *p_cnt);
  * \retval  AM_OK     成功
  * \retval -AM_EINVAL 参数错误
  */
-am_err_t am_zlg237_rtc_cnt_set (am_rtc_handle_t handle, uint32_t cnt);
+am_err_t am_stm32f103rbt6_rtc_cnt_set (am_rtc_handle_t handle, uint32_t cnt);
 
 /**
  * \brief 设置 RTC 闹钟值
@@ -119,7 +119,7 @@ am_err_t am_zlg237_rtc_cnt_set (am_rtc_handle_t handle, uint32_t cnt);
  * \retval  AM_OK     成功
  * \retval -AM_EINVAL 参数错误
  */
-am_err_t am_zlg237_rtc_alr_set (am_rtc_handle_t handle, uint32_t alr);
+am_err_t am_stm32f103rbt6_rtc_alr_set (am_rtc_handle_t handle, uint32_t alr);
 
 /**
  * \brief 设置 RTC 闹钟时间
@@ -130,22 +130,22 @@ am_err_t am_zlg237_rtc_alr_set (am_rtc_handle_t handle, uint32_t alr);
  * \retval  AM_OK     成功
  * \retval -AM_EINVAL 参数错误
  */
-am_err_t am_zlg237_rtc_alarm_set (am_rtc_handle_t handle, am_tm_t *p_tm);
+am_err_t am_stm32f103rbt6_rtc_alarm_set (am_rtc_handle_t handle, am_tm_t *p_tm);
 
 /**
  * \brief 设置 RTC 中断回调
  *
  * \param[in] handle       RTC 标准服务操作句柄
- * \param[in] type         中断类型，可选 AM_ZLG237_RTC_CALLBACK_SECOND
- *                                       AM_ZLG237_RTC_CALLBACK_ALARM
- *                                       AM_ZLG237_RTC_CALLBACK_OVER
+ * \param[in] type         中断类型，可选 AM_STM32F103RBT6_RTC_CALLBACK_SECOND
+ *                                       AM_STM32F103RBT6_RTC_CALLBACK_ALARM
+ *                                       AM_STM32F103RBT6_RTC_CALLBACK_OVER
  * \param[in] pfn_callback 回调函数
  * \param[in] p_arg        回调函数参数
  *
  * \retval  AM_OK     成功
  * \retval -AM_EINVAL 参数错误
  */
-am_err_t am_zlg237_rtc_callback_set (am_rtc_handle_t handle,
+am_err_t am_stm32f103rbt6_rtc_callback_set (am_rtc_handle_t handle,
                                      uint8_t         type,
                                      am_pfnvoid_t    pfn_callback,
                                      void           *p_arg);
@@ -154,28 +154,28 @@ am_err_t am_zlg237_rtc_callback_set (am_rtc_handle_t handle,
  * \brief RTC 中断使能
  *
  * \param[in] handle RTC 标准服务操作句柄
- * \param[in] type   中断类型，可选 AM_ZLG237_RTC_CALLBACK_SECOND
- *                                 AM_ZLG237_RTC_CALLBACK_ALARM
- *                                 AM_ZLG237_RTC_CALLBACK_OVER
+ * \param[in] type   中断类型，可选 AM_STM32F103RBT6_RTC_CALLBACK_SECOND
+ *                                 AM_STM32F103RBT6_RTC_CALLBACK_ALARM
+ *                                 AM_STM32F103RBT6_RTC_CALLBACK_OVER
  *
  * \retval  AM_OK     成功
  * \retval -AM_EINVAL 参数错误
  */
-am_err_t am_zlg237_rtc_int_enable (am_rtc_handle_t handle,
+am_err_t am_stm32f103rbt6_rtc_int_enable (am_rtc_handle_t handle,
                                    uint8_t         type);
 
 /**
  * \brief RTC 中断失能
  *
  * \param[in] handle RTC 标准服务操作句柄
- * \param[in] type   中断类型，可选 AM_ZLG237_RTC_CALLBACK_SECOND
- *                                 AM_ZLG237_RTC_CALLBACK_ALARM
- *                                 AM_ZLG237_RTC_CALLBACK_OVER
+ * \param[in] type   中断类型，可选 AM_STM32F103RBT6_RTC_CALLBACK_SECOND
+ *                                 AM_STM32F103RBT6_RTC_CALLBACK_ALARM
+ *                                 AM_STM32F103RBT6_RTC_CALLBACK_OVER
  *
  * \retval  AM_OK     成功
  * \retval -AM_EINVAL 参数错误
  */
-am_err_t am_zlg237_rtc_int_disable (am_rtc_handle_t handle,
+am_err_t am_stm32f103rbt6_rtc_int_disable (am_rtc_handle_t handle,
                                     uint8_t         type);
 /**
  * \brief 初始化 RTC
@@ -185,28 +185,28 @@ am_err_t am_zlg237_rtc_int_disable (am_rtc_handle_t handle,
  *
  * \return RTC 标准服务操作句柄，如果为 NULL，表明初始化失败
  */
-am_rtc_handle_t am_zlg237_rtc_init (am_zlg237_rtc_dev_t           *p_dev,
-                                    const am_zlg237_rtc_devinfo_t *p_devinfo);
+am_rtc_handle_t am_stm32f103rbt6_rtc_init (am_stm32f103rbt6_rtc_dev_t           *p_dev,
+                                    const am_stm32f103rbt6_rtc_devinfo_t *p_devinfo);
 
 /**
  * \brief 解初始化 RTC
  *
- * \param[in] handle 使用 am_zlg237_rtc_init() 获取到的 RTC 标准服务操作句柄
+ * \param[in] handle 使用 am_stm32f103rbt6_rtc_init() 获取到的 RTC 标准服务操作句柄
  *
  * \return 无
  */
-void am_zlg237_rtc_deinit (am_rtc_handle_t handle);
+void am_stm32f103rbt6_rtc_deinit (am_rtc_handle_t handle);
 
 /** @} */
 
 /**
- * @} zlg_if_rtc
+ * @} stm32f103rbt6_if_rtc
  */
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif/* __ZLG237_RTC_H */
+#endif/* __STM32F103RBT6_RTC_H */
 
 /* end of file */

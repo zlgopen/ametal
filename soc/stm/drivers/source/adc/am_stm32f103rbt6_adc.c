@@ -7,7 +7,7 @@
 * All rights reserved.
 *
 * Contact information:
-* web site:    http://www.zlg237.cn/
+* web site:    http://www.stm32f103rbt6.cn/
 *******************************************************************************/
 
 /**
@@ -20,22 +20,22 @@
  * \endinternal
  */
 
-#include "am_zlg237_adc.h"
+#include "am_stm32f103rbt6_adc.h"
 #include "ametal.h"
 #include "am_int.h"
 #include "am_clk.h"
-#include "amhw_zlg237_rcc.h"
-#include "hw/amhw_zlg237_adc.h"
+#include "amhw_stm32f103rbt6_rcc.h"
+#include "hw/amhw_stm32f103rbt6_adc.h"
 
 /*******************************************************************************
 * 私有定义
 *******************************************************************************/
 
 #define __ADC_HW_DECL(p_hw_adc, p_drv)   \
-            amhw_zlg237_adc_t *p_hw_adc =   \
-            ((am_zlg237_adc_dev_t *)p_drv)->p_devinfo->p_hw_adc
+            amhw_stm32f103rbt6_adc_t *p_hw_adc =   \
+            ((am_stm32f103rbt6_adc_dev_t *)p_drv)->p_devinfo->p_hw_adc
 
-#define __ADC_VREF_GET(p_drv)  (((am_zlg237_adc_dev_t *)p_drv)->p_devinfo->vref)
+#define __ADC_VREF_GET(p_drv)  (((am_stm32f103rbt6_adc_dev_t *)p_drv)->p_devinfo->vref)
 
 /*******************************************************************************
 * 函数声明
@@ -87,10 +87,10 @@ static const struct am_adc_drv_funcs __g_adc_drvfuncs = {
 /**
  * \brief ADC数据转换完成中断
  */
-void __zlg237_adc_irq_handle (void *p_arg)
+void __stm32f103rbt6_adc_irq_handle (void *p_arg)
 {
-    am_zlg237_adc_dev_t    *p_dev      = (am_zlg237_adc_dev_t *)p_arg;
-    amhw_zlg237_adc_t      *p_hw_adc   =  NULL;
+    am_stm32f103rbt6_adc_dev_t    *p_dev      = (am_stm32f103rbt6_adc_dev_t *)p_arg;
+    amhw_stm32f103rbt6_adc_t      *p_hw_adc   =  NULL;
 
     /* 当前转换的序列描述符 */
     am_adc_buf_desc_t *p_desc  = &(p_dev->p_desc[p_dev->desc_index]);
@@ -101,18 +101,18 @@ void __zlg237_adc_irq_handle (void *p_arg)
         return ;
     }
 
-    p_hw_adc =  (amhw_zlg237_adc_t *)(p_dev->p_devinfo->adc_reg_base);
+    p_hw_adc =  (amhw_stm32f103rbt6_adc_t *)(p_dev->p_devinfo->adc_reg_base);
 
-    amhw_zlg237_adc_swstart_enable(p_hw_adc);
+    amhw_stm32f103rbt6_adc_swstart_enable(p_hw_adc);
 
     /* 判断是否当前数据是有效的 */
     if (p_dev->conv_cnt < p_desc->length) {
 
         /* 以清除转换结束中断标志 */
-        amhw_zlg237_adc_status_flag_clr(p_hw_adc,AMHW_ZLG237_ADC_END_FLAG);
+        amhw_stm32f103rbt6_adc_status_flag_clr(p_hw_adc,AMHW_STM32F103RBT6_ADC_END_FLAG);
 
         /* 读取数据 */
-        adc_dat = amhw_zlg237_adc_regular_data_get (p_hw_adc);
+        adc_dat = amhw_stm32f103rbt6_adc_regular_data_get (p_hw_adc);
 
         /* 保存数据 */
         if (AM_ADC_DATA_ALIGN_LEFT & p_dev->flags) {
@@ -145,8 +145,8 @@ void __zlg237_adc_irq_handle (void *p_arg)
                 if (p_dev->count != 0 && p_dev->seq_cnt == p_dev->count) {
                     p_dev->seq_cnt = 0;
 
-                    amhw_zlg237_adc_status_flag_clr(p_hw_adc,
-                                                    AMHW_ZLG237_ADC_END_FLAG);
+                    amhw_stm32f103rbt6_adc_status_flag_clr(p_hw_adc,
+                                                    AMHW_STM32F103RBT6_ADC_END_FLAG);
                     __fn_adc_stop (p_dev, p_dev->chan);  /* 关闭模块 */
 
                     return ; /* 返回 */
@@ -157,9 +157,9 @@ void __zlg237_adc_irq_handle (void *p_arg)
         if (NULL != p_dev->pfn_callback) {
             p_dev->pfn_callback(p_dev->p_arg, AM_ERROR);
         }
-        if (amhw_zlg237_adc_status_flag_check(
-            p_hw_adc,AMHW_ZLG237_ADC_END_FLAG) == AM_TRUE) {
-            amhw_zlg237_adc_status_flag_clr(p_hw_adc,AMHW_ZLG237_ADC_END_FLAG);
+        if (amhw_stm32f103rbt6_adc_status_flag_check(
+            p_hw_adc,AMHW_STM32F103RBT6_ADC_END_FLAG) == AM_TRUE) {
+            amhw_stm32f103rbt6_adc_status_flag_clr(p_hw_adc,AMHW_STM32F103RBT6_ADC_END_FLAG);
         }
         __fn_adc_stop (p_dev, p_dev->chan);
     }
@@ -168,22 +168,22 @@ void __zlg237_adc_irq_handle (void *p_arg)
 /** \brief 指向ADC中断连接函数 */
 static int __fn_adc_connect (void *p_drv)
 {
-    am_zlg237_adc_dev_t *p_dev = NULL;
-    amhw_zlg237_adc_t   *p_hw_adc;
+    am_stm32f103rbt6_adc_dev_t *p_dev = NULL;
+    amhw_stm32f103rbt6_adc_t   *p_hw_adc;
     
     if (NULL == p_drv) {
         return -AM_EINVAL;
     }
 
-    p_dev    = (am_zlg237_adc_dev_t *)p_drv;
-    p_hw_adc = (amhw_zlg237_adc_t *)p_dev->p_devinfo->adc_reg_base;
+    p_dev    = (am_stm32f103rbt6_adc_dev_t *)p_drv;
+    p_hw_adc = (amhw_stm32f103rbt6_adc_t *)p_dev->p_devinfo->adc_reg_base;
 
     /* 转换结束中断使能*/
-    amhw_zlg237_adc_int_enable(p_hw_adc, AMHW_ZLG237_ADC_INT_END);
+    amhw_stm32f103rbt6_adc_int_enable(p_hw_adc, AMHW_STM32F103RBT6_ADC_INT_END);
 
     /* 连接转换完成中断 */
     am_int_connect(p_dev->p_devinfo->inum,
-                   __zlg237_adc_irq_handle,
+                   __stm32f103rbt6_adc_irq_handle,
                    (void *)p_dev);
     am_int_enable(p_dev->p_devinfo->inum);
 
@@ -193,50 +193,50 @@ static int __fn_adc_connect (void *p_drv)
 /**
  * \brief ADC 使用中断模式时启动配置
  */
-static void __adc_int_work_startup (am_zlg237_adc_dev_t       *p_dev,
-                                    amhw_zlg237_adc_channel_t  chan)
+static void __adc_int_work_startup (am_stm32f103rbt6_adc_dev_t       *p_dev,
+                                    amhw_stm32f103rbt6_adc_channel_t  chan)
 {
-    amhw_zlg237_adc_t *p_hw_adc = (amhw_zlg237_adc_t *)
+    amhw_stm32f103rbt6_adc_t *p_hw_adc = (amhw_stm32f103rbt6_adc_t *)
                                   (p_dev->p_devinfo->adc_reg_base);
 
     /* ADC禁能*/
-    amhw_zlg237_adc_disable(p_hw_adc);
+    amhw_stm32f103rbt6_adc_disable(p_hw_adc);
 
     /* 设置某一通道的采样时间*/
-    amhw_zlg237_adc_smpr_set(p_hw_adc,
-                             AMHW_ZLG237_ADC_CHAN_ST239_5,
+    amhw_stm32f103rbt6_adc_smpr_set(p_hw_adc,
+                             AMHW_STM32F103RBT6_ADC_CHAN_ST239_5,
                              chan);
 
     /* 设置规则通道个数  1个 */
-    amhw_zlg237_adc_regular_channel_length_set(
-        p_hw_adc,AMHW_ZLG237_ADC_REGULAR_CHAN_LENGTH_1);
+    amhw_stm32f103rbt6_adc_regular_channel_length_set(
+        p_hw_adc,AMHW_STM32F103RBT6_ADC_REGULAR_CHAN_LENGTH_1);
 
     /* 连接规则序列通道和ADC采样通道 */
-    amhw_zlg237_adc_regular_channel_order_set(
+    amhw_stm32f103rbt6_adc_regular_channel_order_set(
         p_hw_adc,
-        AMHW_ZLG237_ADC_REGULAR_CHAN_ORDER_1st,
+        AMHW_STM32F103RBT6_ADC_REGULAR_CHAN_ORDER_1st,
         chan);
 
     /* 转换结束中断使能*/
-    amhw_zlg237_adc_int_enable(p_hw_adc, AMHW_ZLG237_ADC_INT_END);
+    amhw_stm32f103rbt6_adc_int_enable(p_hw_adc, AMHW_STM32F103RBT6_ADC_INT_END);
 
     /* ADC使能*/
-    amhw_zlg237_adc_enable(p_hw_adc);
+    amhw_stm32f103rbt6_adc_enable(p_hw_adc);
 
     /* 启用复位校准*/
-    amhw_zlg237_adc_rstcal_enable(p_hw_adc);
+    amhw_stm32f103rbt6_adc_rstcal_enable(p_hw_adc);
 
     /* 等待复位校准结束*/
-    while(amhw_zlg237_adc_rstcal_check(p_hw_adc) == AM_FALSE);
+    while(amhw_stm32f103rbt6_adc_rstcal_check(p_hw_adc) == AM_FALSE);
 
     /* 启用AD校准*/
-    amhw_zlg237_adc_cal_enable(p_hw_adc);
+    amhw_stm32f103rbt6_adc_cal_enable(p_hw_adc);
 
     /* 等待AD校准结束*/
-    while(amhw_zlg237_adc_cal_check(p_hw_adc) == AM_FALSE);
+    while(amhw_stm32f103rbt6_adc_cal_check(p_hw_adc) == AM_FALSE);
 
     /* 启动转换 */
-    amhw_zlg237_adc_swstart_enable(p_hw_adc);
+    amhw_stm32f103rbt6_adc_swstart_enable(p_hw_adc);
 
 }
 
@@ -252,13 +252,13 @@ static int __fn_adc_start (void                *p_drv,
                            am_adc_seq_cb_t      pfn_callback,
                            void                *p_arg)
 {
-    am_zlg237_adc_dev_t *p_dev = NULL;
+    am_stm32f103rbt6_adc_dev_t *p_dev = NULL;
 
     if (NULL == p_drv) {
         return -AM_EINVAL;
     }
 
-    p_dev = (am_zlg237_adc_dev_t *)p_drv;
+    p_dev = (am_stm32f103rbt6_adc_dev_t *)p_drv;
 
     p_dev->p_desc       = p_desc;
     p_dev->chan         = chan;
@@ -272,7 +272,7 @@ static int __fn_adc_start (void                *p_drv,
     p_dev->conv_cnt     = 0;
 
     am_int_enable(p_dev->p_devinfo->inum); /* 开启中断 */
-    __adc_int_work_startup(p_dev,(amhw_zlg237_adc_channel_t)chan); /* 中断工作模式启动配置 */
+    __adc_int_work_startup(p_dev,(amhw_stm32f103rbt6_adc_channel_t)chan); /* 中断工作模式启动配置 */
 
     return AM_OK;
 }
@@ -282,17 +282,17 @@ static int __fn_adc_start (void                *p_drv,
  */
 static int __fn_adc_stop (void *p_drv, int chan)
 {
-    am_zlg237_adc_dev_t *p_dev    = (am_zlg237_adc_dev_t *)p_drv;
-    amhw_zlg237_adc_t   *p_hw_adc = (amhw_zlg237_adc_t *)
+    am_stm32f103rbt6_adc_dev_t *p_dev    = (am_stm32f103rbt6_adc_dev_t *)p_drv;
+    amhw_stm32f103rbt6_adc_t   *p_hw_adc = (amhw_stm32f103rbt6_adc_t *)
                                     (p_dev->p_devinfo->adc_reg_base);
 
     if (NULL == p_drv) {
         return -AM_EINVAL;
     }
 
-    amhw_zlg237_adc_swstart_disable(p_hw_adc);
-    amhw_zlg237_adc_int_disable(p_hw_adc, AMHW_ZLG237_ADC_INT_END);
-    amhw_zlg237_adc_disable(p_hw_adc);
+    amhw_stm32f103rbt6_adc_swstart_disable(p_hw_adc);
+    amhw_stm32f103rbt6_adc_int_disable(p_hw_adc, AMHW_STM32F103RBT6_ADC_INT_END);
+    amhw_stm32f103rbt6_adc_disable(p_hw_adc);
 
     am_int_disable(p_dev->p_devinfo->inum);
 
@@ -306,8 +306,8 @@ static int __fn_adc_rate_get (void          *p_drv,
                               int            chan,
                               uint32_t      *p_rate)
 {
-    am_zlg237_adc_dev_t *p_dev;
-    amhw_zlg237_adc_t   *p_hw_adc;
+    am_stm32f103rbt6_adc_dev_t *p_dev;
+    amhw_stm32f103rbt6_adc_t   *p_hw_adc;
     
     uint32_t sample;
     uint32_t adc_clkdiv = 1;
@@ -321,15 +321,15 @@ static int __fn_adc_rate_get (void          *p_drv,
         return -AM_EINVAL;
     }
 
-    p_dev    = (am_zlg237_adc_dev_t *)p_drv;
-    p_hw_adc = (amhw_zlg237_adc_t *)(p_dev->p_devinfo->adc_reg_base);
+    p_dev    = (am_stm32f103rbt6_adc_dev_t *)p_drv;
+    p_hw_adc = (amhw_stm32f103rbt6_adc_t *)(p_dev->p_devinfo->adc_reg_base);
 
-    i = amhw_zlg237_adc_smpr_get(p_hw_adc,
-                                (amhw_zlg237_adc_channel_t)p_dev->chan);
+    i = amhw_stm32f103rbt6_adc_smpr_get(p_hw_adc,
+                                (amhw_stm32f103rbt6_adc_channel_t)p_dev->chan);
     sample = sample_time[i];
 
     /* ADC分频设置位于RCC驱动中 */
-    adc_clkdiv = 2 * (amhw_zlg237_rcc_adc_div_get() + 1);
+    adc_clkdiv = 2 * (amhw_stm32f103rbt6_rcc_adc_div_get() + 1);
     *p_rate = am_clk_rate_get(p_dev->p_devinfo->clk_num) /
               (adc_clkdiv * sample);
 
@@ -362,15 +362,15 @@ static int __fn_adc_rate_set (void          *p_drv,
     };
 
     struct adc_err    adc_rate_err;
-    am_zlg237_adc_dev_t *p_dev;
-    amhw_zlg237_adc_t   *p_hw_adc;
+    am_stm32f103rbt6_adc_dev_t *p_dev;
+    amhw_stm32f103rbt6_adc_t   *p_hw_adc;
     
     if (NULL == p_drv) {
         return -AM_EINVAL;
     }
 
-    p_dev    = (am_zlg237_adc_dev_t *)p_drv;
-    p_hw_adc = (amhw_zlg237_adc_t *)(p_dev->p_devinfo->adc_reg_base);
+    p_dev    = (am_stm32f103rbt6_adc_dev_t *)p_drv;
+    p_hw_adc = (amhw_stm32f103rbt6_adc_t *)(p_dev->p_devinfo->adc_reg_base);
     
     adc_rate_err.err         = rate;
     adc_rate_err.sample_time = 0;
@@ -405,10 +405,10 @@ static int __fn_adc_rate_set (void          *p_drv,
               }
         }
     }
-    amhw_zlg237_rcc_adc_div_set (adc_rate_err.adc_div / 2 - 1);
-    amhw_zlg237_adc_smpr_set (p_hw_adc,
-          (amhw_zlg237_adc_sample_time_t)adc_rate_err.sample_time,
-          (amhw_zlg237_adc_channel_t)chan);
+    amhw_stm32f103rbt6_rcc_adc_div_set (adc_rate_err.adc_div / 2 - 1);
+    amhw_stm32f103rbt6_adc_smpr_set (p_hw_adc,
+          (amhw_stm32f103rbt6_adc_sample_time_t)adc_rate_err.sample_time,
+          (amhw_stm32f103rbt6_adc_channel_t)chan);
 
     return AM_OK;
 }
@@ -419,7 +419,7 @@ static int __fn_adc_rate_set (void          *p_drv,
 static uint32_t __fn_bits_get (void *p_drv, int chan)
 {
     /* 仅支持12位分辨率 */
-    return AMHW_ZLG237_ADC_DATA_VALID_12BIT;
+    return AMHW_STM32F103RBT6_ADC_DATA_VALID_12BIT;
 }
 
 /**
@@ -437,12 +437,12 @@ static uint32_t __fn_vref_get (void *p_drv, int chan)
 /**
  * \brief ADC初始化
  */
-am_adc_handle_t am_zlg237_adc_init (am_zlg237_adc_dev_t           *p_dev,
-                                    const am_zlg237_adc_devinfo_t *p_devinfo)
+am_adc_handle_t am_stm32f103rbt6_adc_init (am_stm32f103rbt6_adc_dev_t           *p_dev,
+                                    const am_stm32f103rbt6_adc_devinfo_t *p_devinfo)
 {
     uint16_t bit = 0;
 
-    amhw_zlg237_adc_t   *p_hw_adc = NULL;
+    amhw_stm32f103rbt6_adc_t   *p_hw_adc = NULL;
 
     if (NULL == p_devinfo || NULL == p_dev ) {
         return NULL;
@@ -468,28 +468,28 @@ am_adc_handle_t am_zlg237_adc_init (am_zlg237_adc_dev_t           *p_dev,
         p_devinfo->pfn_plfm_init();
     }
 
-    p_hw_adc = (amhw_zlg237_adc_t *)(p_dev->p_devinfo->adc_reg_base);
+    p_hw_adc = (amhw_stm32f103rbt6_adc_t *)(p_dev->p_devinfo->adc_reg_base);
 
     /* ADC禁能 */
-    amhw_zlg237_adc_disable(p_hw_adc);
+    amhw_stm32f103rbt6_adc_disable(p_hw_adc);
 
     /* 关闭扫描模式、注入通道间断模式、规则通道间断模式*/
-    amhw_zlg237_adc_scan_mode_disable(p_hw_adc);
-    amhw_zlg237_adc_injected_disc_disable(p_hw_adc);
-    amhw_zlg237_adc_regular_disc_disable(p_hw_adc);
+    amhw_stm32f103rbt6_adc_scan_mode_disable(p_hw_adc);
+    amhw_stm32f103rbt6_adc_injected_disc_disable(p_hw_adc);
+    amhw_stm32f103rbt6_adc_regular_disc_disable(p_hw_adc);
 
     /* 单次转换 */
-    amhw_zlg237_adc_cont_set(p_hw_adc, AMHW_ZLG237_ADC_CONVERSION_SINGLE);
+    amhw_stm32f103rbt6_adc_cont_set(p_hw_adc, AMHW_STM32F103RBT6_ADC_CONVERSION_SINGLE);
 
     /* 设置成独立模式*/
-    amhw_zlg237_adc_dul_mode_set(p_hw_adc, AMHW_ZLG237_ADC_DUL_MODE_0);
+    amhw_stm32f103rbt6_adc_dul_mode_set(p_hw_adc, AMHW_STM32F103RBT6_ADC_DUL_MODE_0);
 
     /* 启用规则通道外部触发，并设置成软件触发方式 */
-    amhw_zlg237_adc_extirig_enable(p_hw_adc);
-    amhw_zlg237_adc_extsel_set(p_hw_adc, AMHW_ZLG237_ADC12_REGULAR_SWSTART);
+    amhw_stm32f103rbt6_adc_extirig_enable(p_hw_adc);
+    amhw_stm32f103rbt6_adc_extsel_set(p_hw_adc, AMHW_STM32F103RBT6_ADC12_REGULAR_SWSTART);
 
     /* 对齐方式--右对齐*/
-    amhw_zlg237_adc_data_alignment_set(p_hw_adc,AM_ADC_DATA_ALIGN_RIGHT);
+    amhw_stm32f103rbt6_adc_data_alignment_set(p_hw_adc,AM_ADC_DATA_ALIGN_RIGHT);
 
     /* 有效位数获取 */
     bit = __fn_bits_get(p_dev, 0);
@@ -501,25 +501,25 @@ am_adc_handle_t am_zlg237_adc_init (am_zlg237_adc_dev_t           *p_dev,
     __fn_adc_rate_set(p_dev, 0, 100000);
 
     if( p_dev->p_devinfo->temp_mode == 0) {
-        amhw_zlg237_adc_tsvrefe_disable(p_hw_adc);
+        amhw_stm32f103rbt6_adc_tsvrefe_disable(p_hw_adc);
     } else {
-        amhw_zlg237_adc_tsvrefe_enable(p_hw_adc);
+        amhw_stm32f103rbt6_adc_tsvrefe_enable(p_hw_adc);
     }
 
     /* ADC使能*/
-    amhw_zlg237_adc_enable(p_hw_adc);
+    amhw_stm32f103rbt6_adc_enable(p_hw_adc);
 
     /* 启用复位校准*/
-    amhw_zlg237_adc_rstcal_enable(p_hw_adc);
+    amhw_stm32f103rbt6_adc_rstcal_enable(p_hw_adc);
 
     /* 等待复位校准结束*/
-    while(amhw_zlg237_adc_rstcal_check(p_hw_adc) == AM_FALSE);
+    while(amhw_stm32f103rbt6_adc_rstcal_check(p_hw_adc) == AM_FALSE);
 
     /* 启用AD校准*/
-    amhw_zlg237_adc_cal_enable(p_hw_adc);
+    amhw_stm32f103rbt6_adc_cal_enable(p_hw_adc);
 
     /* 等待AD校准结束*/
-    while(amhw_zlg237_adc_cal_check(p_hw_adc) == AM_FALSE);
+    while(amhw_stm32f103rbt6_adc_cal_check(p_hw_adc) == AM_FALSE);
 
     /* 注册ADC相关中断 */
     __fn_adc_connect(p_dev);
@@ -530,23 +530,23 @@ am_adc_handle_t am_zlg237_adc_init (am_zlg237_adc_dev_t           *p_dev,
 /**
  * \brief ADC去初始化
  */
-void am_zlg237_adc_deinit (am_adc_handle_t handle)
+void am_stm32f103rbt6_adc_deinit (am_adc_handle_t handle)
 {
-    am_zlg237_adc_dev_t *p_dev    = (am_zlg237_adc_dev_t *)handle;
-    amhw_zlg237_adc_t   *p_hw_adc = NULL;
+    am_stm32f103rbt6_adc_dev_t *p_dev    = (am_stm32f103rbt6_adc_dev_t *)handle;
+    amhw_stm32f103rbt6_adc_t   *p_hw_adc = NULL;
 
     if (NULL == p_dev) {
         return ;
     }
 
-    p_hw_adc = (amhw_zlg237_adc_t *)(p_dev->p_devinfo->adc_reg_base);
+    p_hw_adc = (amhw_stm32f103rbt6_adc_t *)(p_dev->p_devinfo->adc_reg_base);
     am_int_disable(p_dev->p_devinfo->inum);
 
     /* 关闭所有中断 */
-    amhw_zlg237_adc_int_disable(p_hw_adc, AMHW_ZLG237_ADC_INT_ALL);
+    amhw_stm32f103rbt6_adc_int_disable(p_hw_adc, AMHW_STM32F103RBT6_ADC_INT_ALL);
 
     /* ADC禁能 */
-    amhw_zlg237_adc_disable(p_hw_adc);
+    amhw_stm32f103rbt6_adc_disable(p_hw_adc);
 
     p_dev->adc_serve.p_drv = NULL;
 

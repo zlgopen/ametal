@@ -18,7 +18,7 @@
  *   1. 对应引脚输出互补 PWM，频率为 100KHz，占空比为 40%，死区时间为 100ns。
  *
  * \par 源代码
- * \snippet demo_zlg_hw_tim_pwm_dead.c src_zlg_hw_tim_pwm_dead
+ * \snippet demo_stm32f103rbt6_hw_tim_pwm_dead.c src_stm32f103rbt6_hw_tim_pwm_dead
  *
  * \internal
  * \par Modification history
@@ -27,17 +27,17 @@
  */ 
 
 /**
- * \addtogroup demo_if_zlg_hw_tim_pwm_dead
- * \copydoc demo_zlg_hw_tim_pwm_dead.c
+ * \addtogroup demo_if_stm32f103rbt6_hw_tim_pwm_dead
+ * \copydoc demo_stm32f103rbt6_hw_tim_pwm_dead.c
  */
 
-/** [src_zlg_hw_tim_pwm_dead] */
+/** [src_stm32f103rbt6_hw_tim_pwm_dead] */
 #include "ametal.h"
 #include "am_delay.h"
 #include "am_vdebug.h"
 #include "am_bitops.h"
 //#include "am_zlg116.h"
-#include "hw/amhw_zlg_tim.h"
+#include "hw/amhw_stm32f103rbt6_tim.h"
 
 /**
  * \brief PWM 输出频率定义，单位为 Hz
@@ -84,7 +84,7 @@
  *
  * \note 由 ARR 寄存器决定所有 PWM 通道使用相同的周期参数
  */
-am_local void __tim_pwm_chan_config (amhw_zlg_tim_t *p_hw_tim,
+am_local void __tim_pwm_chan_config (amhw_stm32f103rbt6_tim_t *p_hw_tim,
                                      uint32_t        chan,
                                      uint32_t        freq,
                                      uint32_t        duty,
@@ -110,35 +110,35 @@ am_local void __tim_pwm_chan_config (amhw_zlg_tim_t *p_hw_tim,
     }
 
     /* 设置分频值 */
-    amhw_zlg_tim_prescale_set(p_hw_tim, pre_reg);
+    amhw_stm32f103rbt6_tim_prescale_set(p_hw_tim, pre_reg);
 
     /* 重新计算 PWM 的周期及脉冲频率 */
     period_c = period_c / pre_real;
     duty_c = duty_c / pre_real;
 
     /* 设置自动重装寄存器的值 */
-    amhw_zlg_tim_arr_set(p_hw_tim, period_c - 1);
+    amhw_stm32f103rbt6_tim_arr_set(p_hw_tim, period_c - 1);
 
     /* 设置比较输出通道的匹配值 */
-    amhw_zlg_tim_ccr_ouput_reload_val_set(p_hw_tim,  duty_c, chan);
+    amhw_stm32f103rbt6_tim_ccr_ouput_reload_val_set(p_hw_tim,  duty_c, chan);
 
     /* 计数器清 0 */
-    amhw_zlg_tim_count_set(p_hw_tim, 0);
+    amhw_stm32f103rbt6_tim_count_set(p_hw_tim, 0);
 
     /* 使能定 ARR 预装载 */
-    amhw_zlg_tim_arpe_enable(p_hw_tim);
+    amhw_stm32f103rbt6_tim_arpe_enable(p_hw_tim);
 
     /* 选择该通道为输出 */
-    amhw_zlg_tim_ccs_set(p_hw_tim, 0, chan);
+    amhw_stm32f103rbt6_tim_ccs_set(p_hw_tim, 0, chan);
 
     /* 选择该通道的模式为 PWM 模式 2 */
-    amhw_zlg_tim_ocm_set(p_hw_tim, AMHW_ZLG_TIM_PWM_MODE2, chan);
+    amhw_stm32f103rbt6_tim_ocm_set(p_hw_tim, AMHW_STM32F103RBT6_TIM_PWM_MODE2, chan);
 
     /* PWM 输出通道预装载使能 */
-    amhw_zlg_tim_ccs_ocpe_enable(p_hw_tim, chan);
+    amhw_stm32f103rbt6_tim_ccs_ocpe_enable(p_hw_tim, chan);
 
     /* 设置比较输出通道 CCP 高电平极性有效 */
-    amhw_zlg_tim_ccp_output_set(p_hw_tim, 0, chan);
+    amhw_stm32f103rbt6_tim_ccp_output_set(p_hw_tim, 0, chan);
 }
 
 /**
@@ -150,26 +150,26 @@ am_local void __tim_pwm_chan_config (amhw_zlg_tim_t *p_hw_tim,
  *
  * \return 无
  */
-am_local void __tim_pwm_enable (amhw_zlg_tim_t *p_hw_tim, uint32_t chan)
+am_local void __tim_pwm_enable (amhw_stm32f103rbt6_tim_t *p_hw_tim, uint32_t chan)
 {
 
     /* 使能通道 PWM 输出 */
-    amhw_zlg_tim_cce_output_enable(p_hw_tim, chan);
+    amhw_stm32f103rbt6_tim_cce_output_enable(p_hw_tim, chan);
 
     /* 高级定时器使能主输出 MOE */
-    amhw_zlg_tim_bdtr_enable(p_hw_tim, AMHW_ZLG_TIM_MOE);
+    amhw_stm32f103rbt6_tim_bdtr_enable(p_hw_tim, AMHW_STM32F103RBT6_TIM_MOE);
 
     /* 产生更新事件，重新初始化 Prescaler 计数器及 Repetition 计数器 */
-    amhw_zlg_tim_egr_set(p_hw_tim, AMHW_ZLG_TIM_UG);
+    amhw_stm32f103rbt6_tim_egr_set(p_hw_tim, AMHW_STM32F103RBT6_TIM_UG);
 
-    if (amhw_zlg_tim_status_flg_get(p_hw_tim, AMHW_ZLG_TIM_UG) != 0) {
+    if (amhw_stm32f103rbt6_tim_status_flg_get(p_hw_tim, AMHW_STM32F103RBT6_TIM_UG) != 0) {
 
         /* 更新定时器时会产生更新事件，清除标志位 */
-        amhw_zlg_tim_status_flg_clr(p_hw_tim, AMHW_ZLG_TIM_UG);
+        amhw_stm32f103rbt6_tim_status_flg_clr(p_hw_tim, AMHW_STM32F103RBT6_TIM_UG);
     }
 
     /* 使能定时器 TIM 允许计数 */
-    amhw_zlg_tim_enable(p_hw_tim);
+    amhw_stm32f103rbt6_tim_enable(p_hw_tim);
 }
 
 /**
@@ -180,19 +180,19 @@ am_local void __tim_pwm_enable (amhw_zlg_tim_t *p_hw_tim, uint32_t chan)
  *
  * \return 无
  */
-am_local void __tim_pwm_init (amhw_zlg_tim_t *p_hw_tim)
+am_local void __tim_pwm_init (amhw_stm32f103rbt6_tim_t *p_hw_tim)
 {
     /* 边沿对齐模式 */
-    amhw_zlg_tim_cms_set(p_hw_tim, 0);
+    amhw_stm32f103rbt6_tim_cms_set(p_hw_tim, 0);
 
     /* 向上计数 */
-    amhw_zlg_tim_dir_set(p_hw_tim, 0);
+    amhw_stm32f103rbt6_tim_dir_set(p_hw_tim, 0);
 
     /* 设置时钟分割:TDTS = Tck_tin */
-    amhw_zlg_tim_ckd_set(p_hw_tim, 0);
+    amhw_stm32f103rbt6_tim_ckd_set(p_hw_tim, 0);
 
     /* 允许更新事件 */
-    amhw_zlg_tim_udis_enable(p_hw_tim);
+    amhw_stm32f103rbt6_tim_udis_enable(p_hw_tim);
 }
 
 /**
@@ -203,7 +203,7 @@ am_local void __tim_pwm_init (amhw_zlg_tim_t *p_hw_tim)
  *
  * \return 死区时间，单位为皮秒
  */
-am_local int32_t __dead_time_get (amhw_zlg_tim_t *p_hw_tim,
+am_local int32_t __dead_time_get (amhw_stm32f103rbt6_tim_t *p_hw_tim,
                                   uint8_t         dtg,
                                   uint32_t        clk_rate)
 {
@@ -241,7 +241,7 @@ am_local int32_t __dead_time_get (amhw_zlg_tim_t *p_hw_tim,
  *
  * \return DTG 配置值
  */
-am_local int32_t __dtg_calculate (amhw_zlg_tim_t *p_hw_tim,
+am_local int32_t __dtg_calculate (amhw_stm32f103rbt6_tim_t *p_hw_tim,
                                   uint32_t        dead_time,
                                   uint32_t        clk_rate)
 {
@@ -261,14 +261,14 @@ am_local int32_t __dtg_calculate (amhw_zlg_tim_t *p_hw_tim,
 /**
  * \brief 例程入口
  */
-void demo_zlg_hw_tim_pwm_dead_entry (amhw_zlg_tim_t     *p_hw_tim,
-                                     amhw_zlg_tim_type_t type,
+void demo_stm32f103rbt6_hw_tim_pwm_dead_entry (amhw_stm32f103rbt6_tim_t     *p_hw_tim,
+                                     amhw_stm32f103rbt6_tim_type_t type,
                                      uint32_t            chan,
                                      uint32_t            clk_rate)
 {
-    if ((AMHW_ZLG_TIM_TYPE0 != type) &&
-        (AMHW_ZLG_TIM_TYPE2 != type) &&
-        (AMHW_ZLG_TIM_TYPE3 != type)) {
+    if ((AMHW_STM32F103RBT6_TIM_TYPE0 != type) &&
+        (AMHW_STM32F103RBT6_TIM_TYPE2 != type) &&
+        (AMHW_STM32F103RBT6_TIM_TYPE3 != type)) {
         AM_DBG_INFO("this timer don't support pwm dead!\r\n");
     }
 
@@ -279,13 +279,13 @@ void demo_zlg_hw_tim_pwm_dead_entry (amhw_zlg_tim_t     *p_hw_tim,
     __tim_pwm_chan_config(p_hw_tim, 0, __PWM_FREQ, __PWM_DUTY, clk_rate);
 
     /* 使能互补输出 */
-    amhw_zlg_tim_ccne_enable(p_hw_tim, AMHW_ZLG_TIM_CC1S);
+    amhw_stm32f103rbt6_tim_ccne_enable(p_hw_tim, AMHW_STM32F103RBT6_TIM_CC1S);
 
     /* 使能互补输出高电平有效 */
-    amhw_zlg_tim_ccne_set(p_hw_tim, 0, AMHW_ZLG_TIM_CC1S);
+    amhw_stm32f103rbt6_tim_ccne_set(p_hw_tim, 0, AMHW_STM32F103RBT6_TIM_CC1S);
 
     /* 设置死区时间 */
-    amhw_zlg_tim_utg_set(p_hw_tim, __dtg_calculate(p_hw_tim, __DEAD_TIME, clk_rate));
+    amhw_stm32f103rbt6_tim_utg_set(p_hw_tim, __dtg_calculate(p_hw_tim, __DEAD_TIME, clk_rate));
 
     /* 启动定时器 */
     __tim_pwm_enable(p_hw_tim, 0);
@@ -294,6 +294,6 @@ void demo_zlg_hw_tim_pwm_dead_entry (amhw_zlg_tim_t     *p_hw_tim,
         ; /* VOID */
     }
 }
-/** [src_zlg_hw_tim_pwm_dead] */
+/** [src_stm32f103rbt6_hw_tim_pwm_dead] */
 
 /* end of file */

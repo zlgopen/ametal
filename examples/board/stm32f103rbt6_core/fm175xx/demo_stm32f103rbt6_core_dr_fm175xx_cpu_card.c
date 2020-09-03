@@ -43,12 +43,12 @@
 #include "am_fm175xx_reg.h"
 #include "am_hwconf_fm175xx.h"
 #include "demo_components_entries.h"
-#include "demo_am237_core_entries.h"
+#include "demo_stm32f103rbt6_core_entries.h"
 
 /**
  * \brief ¶ÁCPU¿¨Àý³Ì
  */
-void demo_zlg237_core_dr_fm175xx_cpu_card (void)
+void demo_stm32f103rbt6_core_dr_fm175xx_cpu_card (void)
 {
     am_fm175xx_handle_t handle = am_fm175xx_inst_init();
 

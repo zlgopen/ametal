@@ -25,7 +25,7 @@
  *   2. 调试串口打印通过SPI接收和发送的具体数据。
  *
  * \par 源代码
- * \snippet demo_zlg237_hw_spi_master.c src_zlg237_hw_spi_master
+ * \snippet demo_stm32f103rbt6_hw_spi_master.c src_stm32f103rbt6_hw_spi_master
  *
  * \internal
  * \par History
@@ -34,16 +34,16 @@
  */ 
  
 /**
- * \addtogroup demo_if_zlg237_hw_spi_master
- * \copydoc demo_zlg237_hw_spi_master.c
+ * \addtogroup demo_if_stm32f103rbt6_hw_spi_master
+ * \copydoc demo_stm32f103rbt6_hw_spi_master.c
  */
  
-/** [src_zlg_hw_spi_master] */
+/** [src_stm32f103rbt6_hw_spi_master] */
 #include "ametal.h"
 #include "am_gpio.h"
 #include "am_delay.h"
 #include "am_vdebug.h"
-#include "hw/amhw_zlg237_spi.h"
+#include "hw/amhw_stm32f103rbt6_spi.h"
 
 /**
  * \name SPI传输结构体配置参数
@@ -69,45 +69,45 @@ typedef struct spi_transfer {
 
 spi_transfer_t g_spi_transfer;      /* 定义一个SPI传输结构体实例 */
 
-static void spi_master_cfg (amhw_zlg237_spi_t *p_hw_spi)
+static void spi_master_cfg (amhw_stm32f103rbt6_spi_t *p_hw_spi)
 {
     /* 关闭spi外设*/
-    amhw_zlg237_spi_disable(p_hw_spi);
+    amhw_stm32f103rbt6_spi_disable(p_hw_spi);
 
     /* NSS采用软件管理*/
-    amhw_zlg237_spi_ssm_enable(p_hw_spi);
+    amhw_stm32f103rbt6_spi_ssm_enable(p_hw_spi);
 
     /* 关闭硬件SPI的NSS引脚输出*/
-    amhw_zlg237_spi_ssout_disable(p_hw_spi);
+    amhw_stm32f103rbt6_spi_ssout_disable(p_hw_spi);
 
     /* 软件管理下，NSS内部为高，与引脚无关。特别注意，无论硬件、软件管理，配置成主机模式，NSS必须为高*/
-    amhw_zlg237_spi_ssi_set(p_hw_spi,AMHW_ZLG237_SPI_SSI_TO_NSS_ENABLE);
+    amhw_stm32f103rbt6_spi_ssi_set(p_hw_spi,AMHW_STM32F103RBT6_SPI_SSI_TO_NSS_ENABLE);
 
     /* 设置为主机模式*/
-    amhw_zlg237_spi_master_salver_set(p_hw_spi, AMHW_ZLG237_SPI_MASTER);
+    amhw_stm32f103rbt6_spi_master_salver_set(p_hw_spi, AMHW_STM32F103RBT6_SPI_MASTER);
 
     /* 配置时钟相位和极性 */
-    amhw_zlg237_spi_clk_mode_set(p_hw_spi, SPI_CFG_MODE_1 );
+    amhw_stm32f103rbt6_spi_clk_mode_set(p_hw_spi, SPI_CFG_MODE_1 );
 
     /* 帧格式设置，先发送MSB*/
-    amhw_zlg237_spi_lsbfirst_set(p_hw_spi, AMHW_ZLG237_SPI_LSB_FIRST_SEND_MSB);
+    amhw_stm32f103rbt6_spi_lsbfirst_set(p_hw_spi, AMHW_STM32F103RBT6_SPI_LSB_FIRST_SEND_MSB);
 
     /* 分频系数为128*/
-    amhw_zlg237_spi_baudratefre_set(p_hw_spi,
-                                    AMHW_ZLG237_SPI_BAUDRATE_PRESCALER_128);
+    amhw_stm32f103rbt6_spi_baudratefre_set(p_hw_spi,
+                                    AMHW_STM32F103RBT6_SPI_BAUDRATE_PRESCALER_128);
 
     /* 数据长度为8*/
-    amhw_zlg237_spi_data_length_set(p_hw_spi, AMHW_ZLG237_SPI_DATA_8BIT);
+    amhw_stm32f103rbt6_spi_data_length_set(p_hw_spi, AMHW_STM32F103RBT6_SPI_DATA_8BIT);
 
     /* SPI使能*/
-    amhw_zlg237_spi_enable(p_hw_spi);
+    amhw_stm32f103rbt6_spi_enable(p_hw_spi);
 
 }
 
 /**
  * \brief SPI回环传输测试
  */
-void spi_loop_trans (amhw_zlg237_spi_t *p_hw_spi,
+void spi_loop_trans (amhw_stm32f103rbt6_spi_t *p_hw_spi,
                      spi_transfer_t    *p_trans,
                      int32_t            cs_pin,
 					 uint32_t           cs_mdelay)
@@ -126,19 +126,19 @@ void spi_loop_trans (amhw_zlg237_spi_t *p_hw_spi,
     while(pos < p_trans->nbytes) {
 
         /* 等待可以发送 */
-        while (amhw_zlg237_spi_status_flag_check (
-            p_hw_spi, AMHW_ZLG237_SPI_TX_EMPTY_FLAG) == AM_FALSE);
+        while (amhw_stm32f103rbt6_spi_status_flag_check (
+            p_hw_spi, AMHW_STM32F103RBT6_SPI_TX_EMPTY_FLAG) == AM_FALSE);
 
-        amhw_zlg237_spi_tx_put(p_hw_spi,*((uint8_t*)(p_trans->p_txbuf) + pos));
+        amhw_stm32f103rbt6_spi_tx_put(p_hw_spi,*((uint8_t*)(p_trans->p_txbuf) + pos));
 
         /* 等待可以接收 */
-        while (amhw_zlg237_spi_status_flag_check (
-            p_hw_spi,AMHW_ZLG237_SPI_RX_NOT_EMPTY_FLAG) == AM_FALSE) {
+        while (amhw_stm32f103rbt6_spi_status_flag_check (
+            p_hw_spi,AMHW_STM32F103RBT6_SPI_RX_NOT_EMPTY_FLAG) == AM_FALSE) {
         	;
         }
 
         *(uint8_t*)((uint8_t*)p_trans->p_rxbuf + pos) =
-            amhw_zlg237_spi_rx_get(p_hw_spi);
+            amhw_stm32f103rbt6_spi_rx_get(p_hw_spi);
         pos += 1;
     }
 
@@ -149,7 +149,7 @@ void spi_loop_trans (amhw_zlg237_spi_t *p_hw_spi,
 /**
  * \brief 例程入口
  */
-void demo_zlg237_hw_spi_master_entry (amhw_zlg237_spi_t *p_hw_spi,
+void demo_stm32f103rbt6_hw_spi_master_entry (amhw_stm32f103rbt6_spi_t *p_hw_spi,
                                       int32_t            cs_pin,
                                       uint32_t           clk_rate,
                                       uint32_t           cs_mdelay)
@@ -199,6 +199,6 @@ void demo_zlg237_hw_spi_master_entry (amhw_zlg237_spi_t *p_hw_spi,
         am_mdelay(1000);
     }
 }
-/** [src_zlg_hw_spi_master] */
+/** [src_stm32f103rbt6_hw_spi_master] */
 
 /* end of file */

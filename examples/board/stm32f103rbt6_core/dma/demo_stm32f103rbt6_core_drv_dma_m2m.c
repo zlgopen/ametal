@@ -23,7 +23,7 @@
  *    PIOA_9 引脚连接 PC 串口的 RXD。
  *
  * \par 源代码
- * \snippet demo_zlg237_drv_dma_m2m.c src_zlg237_drv_dma_m2m
+ * \snippet demo_stm32f103rbt6_drv_dma_m2m.c src_stm32f103rbt6_drv_dma_m2m
  *
  * \internal
  * \par Modification History
@@ -32,17 +32,17 @@
  */
 
 /**
- * \addtogroup demo_if_zlg237_drv_dma_m2m
- * \copydoc demo_zlg237_drv_dma_m2m.c
+ * \addtogroup demo_if_stm32f103rbt6_drv_dma_m2m
+ * \copydoc demo_stm32f103rbt6_drv_dma_m2m.c
  */
 
-/** [src_zlg237_drv_dma_m2m] */
+/** [src_stm32f103rbt6_drv_dma_m2m] */
 #include "ametal.h"
 #include "am_board.h"
 #include "am_vdebug.h"
-#include "am_zlg237.h"
-#include "demo_zlg_entries.h"
-#include "demo_am237_core_entries.h"
+#include "am_stm32f103rbt6.h"
+#include "demo_stm32f103rbt6_entries.h"
+#include "demo_stm32f103rbt6_core_entries.h"
 
 
 #define  DMA_M2M_CH       DMA_CHAN_1   /**< \brief 通道 */
@@ -50,12 +50,12 @@
 /**
  * \brief 例程入口
  */
-void demo_zlg237_core_drv_dma_m2m_entry (void)
+void demo_stm32f103rbt6_core_drv_dma_m2m_entry (void)
 {
-    AM_DBG_INFO("demo am237_core drv dma m2m!\r\n");
+    AM_DBG_INFO("demo stm32f103rbt6_core drv dma m2m!\r\n");
 
-    demo_zlg_drv_dma_m2m_entry(DMA_M2M_CH);
+    demo_stm32f103rbt6_drv_dma_m2m_entry(DMA_M2M_CH);
 }
-/** [src_zlg237_drv_dma_m2m] */
+/** [src_stm32f103rbt6_drv_dma_m2m] */
 
 /* end of file */

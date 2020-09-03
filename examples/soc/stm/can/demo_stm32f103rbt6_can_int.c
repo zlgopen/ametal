@@ -31,13 +31,13 @@
  *      错误警告中断：串口打印提示信息，且打印发送错误计数值，接收错误计数值。
  *      错误被动中断：串口打印提示信息，且打印发送错误计数值，接收错误计数值。
  *
- *      报文结构体can_rcv_msg在demo_zlg237_can_int_entry()中使用的是全局变量，正常工作(已唤醒)，
+ *      报文结构体can_rcv_msg在demo_stm32f103rbt6_can_int_entry()中使用的是全局变量，正常工作(已唤醒)，
  *      开启了接收或溢出中断后，上位机发送的数据，本测试工程会每500ms返回给上位机。
  *
  *   2. 串口打印相关调试信息。
  *
  * \par 源代码
- * \snippet src_zlg237_can_int.c
+ * \snippet src_stm32f103rbt6_can_int.c
  *
  * \internal
  * \par Modification History
@@ -47,8 +47,8 @@
  */
 
 /**
- * \addtogroup demo_zlg237_can_int
- * \copydoc demo_zlg237_can_int.c
+ * \addtogroup demo_stm32f103rbt6_can_int
+ * \copydoc demo_stm32f103rbt6_can_int.c
  */
 
 /** [src_std_can] */
@@ -56,8 +56,8 @@
 #include "am_can.h"
 #include "am_delay.h"
 #include "am_vdebug.h"
-#include "amhw_zlg237_can.h"
-#include "am_zlg237_can.h"
+#include "amhw_stm32f103rbt6_can.h"
+#include "am_stm32f103rbt6_can.h"
 
 am_bool_t int_err_flag   = AM_FALSE;
 am_bool_t int_sleep_flag = AM_FALSE;
@@ -68,14 +68,14 @@ am_can_message_t can_rcv_msg;
 void can_int_handle(void *p_arg)
 {
 
-    am_zlg237_can_dev_t *p_dev    = (am_zlg237_can_dev_t *)p_arg;
-    amhw_zlg237_can_t   *p_hw_can = NULL;
+    am_stm32f103rbt6_can_dev_t *p_dev    = (am_stm32f103rbt6_can_dev_t *)p_arg;
+    amhw_stm32f103rbt6_can_t   *p_hw_can = NULL;
 
     am_can_int_type_t p_int_type     = 0;
     am_can_bus_err_t  p_bus_err      = 0;
     uint8_t           i              = 0;
 
-    p_hw_can = (amhw_zlg237_can_t *)p_dev->p_devinfo->regbase;
+    p_hw_can = (amhw_stm32f103rbt6_can_t *)p_dev->p_devinfo->regbase;
 
     am_can_status_get(p_arg, &p_int_type , &p_bus_err);
 
@@ -100,10 +100,10 @@ void can_int_handle(void *p_arg)
          */
 
 //        /* 释放一次FIFO 0，才能清除该标志 */
-//        amhw_zlg237_can_clear_itstatus (p_hw_can, AMHW_ZLG237_CAN_INT_FOVIE0);
+//        amhw_stm32f103rbt6_can_clear_itstatus (p_hw_can, AMHW_STM32F103RBT6_CAN_INT_FOVIE0);
 //
 //        /* 释放一次FIFO 1，才能清除该标志 */
-//        amhw_zlg237_can_clear_itstatus (p_hw_can, AMHW_ZLG237_CAN_INT_FOVIE1);
+//        amhw_stm32f103rbt6_can_clear_itstatus (p_hw_can, AMHW_STM32F103RBT6_CAN_INT_FOVIE1);
     }
 
     /* FIFO非空（容量为3，>0），接收标志有效 */
@@ -127,10 +127,10 @@ void can_int_handle(void *p_arg)
          */
 
 //        /* 释放一次FIFO 0，FIFO为空时，才能清除该标志*/
-//        amhw_zlg237_can_clear_itstatus(p_hw_can, AMHW_ZLG237_CAN_INT_FMPIE0);
+//        amhw_stm32f103rbt6_can_clear_itstatus(p_hw_can, AMHW_STM32F103RBT6_CAN_INT_FMPIE0);
 //
 //        /* 释放一次FIFO 1，FIFO为空时，才能清除该标志*/
-//        amhw_zlg237_can_clear_itstatus(p_hw_can, AMHW_ZLG237_CAN_INT_FMPIE1);
+//        amhw_stm32f103rbt6_can_clear_itstatus(p_hw_can, AMHW_STM32F103RBT6_CAN_INT_FMPIE1);
     }
 
     /* 发送结束，发送标志有效 */
@@ -139,7 +139,7 @@ void can_int_handle(void *p_arg)
         am_kprintf("\r\nCAN int tx!\r\n");
 
         /* 释放一次FIFO，FIFO为空时，才能清除该标志*/
-        amhw_zlg237_can_clear_itstatus (p_hw_can, AMHW_ZLG237_CAN_INT_TMEIE);
+        amhw_stm32f103rbt6_can_clear_itstatus (p_hw_can, AMHW_STM32F103RBT6_CAN_INT_TMEIE);
     }
 
     /* 在睡眠模式下，接收到帧的SOF位，唤醒标志有效 */
@@ -149,7 +149,7 @@ void can_int_handle(void *p_arg)
         int_sleep_flag = AM_FALSE;
 
         /* 清除唤醒标志 */
-        amhw_zlg237_can_clear_itstatus (p_hw_can, AMHW_ZLG237_CAN_INT_WKUIE);
+        amhw_stm32f103rbt6_can_clear_itstatus (p_hw_can, AMHW_STM32F103RBT6_CAN_INT_WKUIE);
     }
 
     /* 错误计数器超过阈值（固定，不可更改），产生不同错误标志。当接收到正确数据，计数值大小减1 */
@@ -175,7 +175,7 @@ void can_int_handle(void *p_arg)
         }
 
         /* 清除错误标志*/
-        amhw_zlg237_can_clear_itstatus (p_hw_can, AMHW_ZLG237_CAN_INT_ERRIE);
+        amhw_stm32f103rbt6_can_clear_itstatus (p_hw_can, AMHW_STM32F103RBT6_CAN_INT_ERRIE);
     }
 }
 
@@ -227,7 +227,7 @@ void can_err_printf(am_can_handle_t  handle)
 /**
  * \brief 例程入口
  */
-void demo_zlg237_can_int_entry (am_can_handle_t     can_handle,
+void demo_stm32f103rbt6_can_int_entry (am_can_handle_t     can_handle,
                                 am_can_bps_param_t *can_btr_baud,
                                 am_can_int_type_t   int_type,
                                 am_can_filter_t    *p_filterbuff,
@@ -260,7 +260,7 @@ void demo_zlg237_can_int_entry (am_can_handle_t     can_handle,
     }
 
     /* 连接中断服务函数  */
-    /* 第二个参数传入为NULL时，连接内部默认中断服务函数， __can_zlg237_int_handle
+    /* 第二个参数传入为NULL时，连接内部默认中断服务函数， __can_stm32f103rbt6_int_handle
      * 可调用am_can_intcb_connect函数设置用户中断回调函数
      */
     am_can_connect(can_handle,can_int_handle,(void *)can_handle->p_drv);
@@ -306,6 +306,6 @@ void demo_zlg237_can_int_entry (am_can_handle_t     can_handle,
 
     }
 }
-/** [src_zlg237_can_int] */
+/** [src_stm32f103rbt6_can_int] */
 
 /* end of file */

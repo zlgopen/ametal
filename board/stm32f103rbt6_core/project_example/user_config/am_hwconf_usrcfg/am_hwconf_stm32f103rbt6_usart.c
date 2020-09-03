@@ -12,8 +12,8 @@
 
 /**
  * \file
- * \brief ZLG237 USART 用户配置文件
- * \sa am_zlg237l_hwconfig_usart.c
+ * \brief STM32F103RBT6 USART 用户配置文件
+ * \sa am_stm32f103rbt6l_hwconfig_usart.c
  *
  * \internal
  * \par Modification history
@@ -21,24 +21,24 @@
  * \endinternal
  */
 
-#include "am_zlg237.h"
-#include "am_zlg237_usart.h"
-#include "amhw_zlg237_gpio.h"
-#include "amhw_zlg237_rcc.h"
-#include "amhw_zlg237_usart.h"
-#include "zlg237_periph_map.h"
-#include "zlg237_pin.h"
+#include "am_stm32f103rbt6.h"
+#include "am_stm32f103rbt6_usart.h"
+#include "amhw_stm32f103rbt6_gpio.h"
+#include "amhw_stm32f103rbt6_rcc.h"
+#include "amhw_stm32f103rbt6_usart.h"
+#include "stm32f103rbt6_periph_map.h"
+#include "stm32f103rbt6_pin.h"
 #include "am_gpio.h"
 #include "am_clk.h"
 
 /**
- * \addtogroup am_if_src_hwconf_zlg237_usart
- * \copydoc am_hwconf_zlg237_usart.c
+ * \addtogroup am_if_src_hwconf_stm32f103rbt6_usart
+ * \copydoc am_hwconf_stm32f103rbt6_usart.c
  * @{
  */
 
 /** \brief 串口1平台初始化 */
-static void __zlg237_plfm_usart1_init (void)
+static void __stm32f103rbt6_plfm_usart1_init (void)
 {
     am_gpio_pin_cfg(PIOA_9,  PIOA_9_NO_REMAP);
     am_gpio_pin_cfg(PIOA_10, PIOA_10_NO_REMAP);
@@ -48,7 +48,7 @@ static void __zlg237_plfm_usart1_init (void)
 }
 
 /** \brief 解除串口1平台初始化 */
-static void __zlg237_plfm_usart1_deinit (void)
+static void __stm32f103rbt6_plfm_usart1_deinit (void)
 {
     am_clk_disable(CLK_USART1);
 
@@ -57,23 +57,23 @@ static void __zlg237_plfm_usart1_deinit (void)
 }
 
 /** \brief 串口1设备信息 */
-static const am_zlg237_usart_devinfo_t __g_usart1_devinfo = {
+static const am_stm32f103rbt6_usart_devinfo_t __g_usart1_devinfo = {
 
-    ZLG237_USART1_BASE,            /**< \brief 串口1 */
+    STM32F103RBT6_USART1_BASE,            /**< \brief 串口1 */
     INUM_USART1,                   /**< \brief 串口1的中断编号 */
     CLK_USART1,                    /**< \brief 串口1的时钟 */
 
-    AMHW_ZLG237_USART_DATA_8BIT |  /**< \brief 8位数据 */
-    AMHW_ZLG237_USART_PARITY_NO |  /**< \brief 无极性 */
-    AMHW_ZLG237_USART_STOP_10_BIT, /**< \brief 1个停止位 */
+    AMHW_STM32F103RBT6_USART_DATA_8BIT |  /**< \brief 8位数据 */
+    AMHW_STM32F103RBT6_USART_PARITY_NO |  /**< \brief 无极性 */
+    AMHW_STM32F103RBT6_USART_STOP_10_BIT, /**< \brief 1个停止位 */
 
     115200,                       /**< \brief 设置的波特率 */
 
     0,                            /**< \brief 无其他中断 */
 
     NULL,                          /**< \brief USART1使用RS485 */
-    __zlg237_plfm_usart1_init,     /**< \brief USART1的平台初始化 */
-    __zlg237_plfm_usart1_deinit,   /**< \brief USART1的平台去初始化 */
+    __stm32f103rbt6_plfm_usart1_init,     /**< \brief USART1的平台初始化 */
+    __stm32f103rbt6_plfm_usart1_deinit,   /**< \brief USART1的平台去初始化 */
 
     /* 以下引脚在功能设置成对应模式才会进行初始化 */
     {PIOA_8, PIOA_8_NO_REMAP | PIOA_8_AF_PP},             /**< \brief ck引脚相关定义 */
@@ -83,29 +83,29 @@ static const am_zlg237_usart_devinfo_t __g_usart1_devinfo = {
 };
 
 /**< \brief 定义串口1 设备 */
-static am_zlg237_usart_dev_t  __g_usart1_dev;
+static am_stm32f103rbt6_usart_dev_t  __g_usart1_dev;
 
 /** \brief USART1实例初始化，获得usart1标准服务句柄 */
-am_uart_handle_t am_zlg237_usart1_inst_init (void)
+am_uart_handle_t am_stm32f103rbt6_usart1_inst_init (void)
 {
-    return am_zlg237_usart_init(&__g_usart1_dev, &__g_usart1_devinfo);
+    return am_stm32f103rbt6_usart_init(&__g_usart1_dev, &__g_usart1_devinfo);
 }
 
 /** \brief USART1实例解初始化 */
-void am_zlg237_usart1_inst_deinit (am_uart_handle_t handle)
+void am_stm32f103rbt6_usart1_inst_deinit (am_uart_handle_t handle)
 {
-    am_zlg237_usart_deinit((am_zlg237_usart_dev_t *)handle);
+    am_stm32f103rbt6_usart_deinit((am_stm32f103rbt6_usart_dev_t *)handle);
 }
 
 /** \brief 串口2平台初始化 */
-static void __zlg237_plfm_usart2_init (void)
+static void __stm32f103rbt6_plfm_usart2_init (void)
 {
     am_gpio_pin_cfg(PIOA_2, PIOA_2_NO_REMAP | PIOA_2_AF_PP );
     am_gpio_pin_cfg(PIOA_3, PIOA_3_NO_REMAP | PIOA_3_INPUT_FLOAT);
 }
 
 /** \brief 解除串口2 平台初始化 */
-static void __zlg237_plfm_usart2_deinit (void)
+static void __stm32f103rbt6_plfm_usart2_deinit (void)
 {
 
     /* 关闭USART2时钟 */
@@ -116,23 +116,23 @@ static void __zlg237_plfm_usart2_deinit (void)
 }
 
 /** \brief 串口2 设备信息 */
-static const am_zlg237_usart_devinfo_t __g_usart2_devinfo = {
+static const am_stm32f103rbt6_usart_devinfo_t __g_usart2_devinfo = {
 
-    ZLG237_USART2_BASE,              /**< \brief 串口2 */
+    STM32F103RBT6_USART2_BASE,              /**< \brief 串口2 */
     INUM_USART2,                     /**< \brief 串口2的中断编号 */
     CLK_USART2,                     /**< \brief 串口2的时钟 */
 
-    AMHW_ZLG237_USART_DATA_8BIT |    /**< \brief 8位数据 */
-    AMHW_ZLG237_USART_PARITY_NO |    /**< \brief 无极性 */
-    AMHW_ZLG237_USART_STOP_10_BIT,   /**< \brief 1个停止位 */
+    AMHW_STM32F103RBT6_USART_DATA_8BIT |    /**< \brief 8位数据 */
+    AMHW_STM32F103RBT6_USART_PARITY_NO |    /**< \brief 无极性 */
+    AMHW_STM32F103RBT6_USART_STOP_10_BIT,   /**< \brief 1个停止位 */
 
     115200,                         /**< \brief 设置的波特率 */
 
     0,                              /**< \brief 无其他中断 */
 
     NULL,                           /**< \brief USART2使用RS485 */
-    __zlg237_plfm_usart2_init,       /**< \brief USART2的平台初始化 */
-    __zlg237_plfm_usart2_deinit,     /**< \brief USART2的平台去初始化 */
+    __stm32f103rbt6_plfm_usart2_init,       /**< \brief USART2的平台初始化 */
+    __stm32f103rbt6_plfm_usart2_deinit,     /**< \brief USART2的平台去初始化 */
 
     /* 以下引脚在功能设置成对应模式才会进行初始化 */
     {PIOA_4, PIOA_4_NO_REMAP | PIOA_4_AF_PP},          /**< \brief ck引脚相关定义 */
@@ -141,29 +141,29 @@ static const am_zlg237_usart_devinfo_t __g_usart2_devinfo = {
 };
 
 /**< \brief 定义串口2设备 */
-static am_zlg237_usart_dev_t  __g_usart2_dev;
+static am_stm32f103rbt6_usart_dev_t  __g_usart2_dev;
 
 /** \brief USART2实例初始化，获得usart2标准服务句柄 */
-am_uart_handle_t am_zlg237_usart2_inst_init (void)
+am_uart_handle_t am_stm32f103rbt6_usart2_inst_init (void)
 {
-    return am_zlg237_usart_init(&__g_usart2_dev, &__g_usart2_devinfo);
+    return am_stm32f103rbt6_usart_init(&__g_usart2_dev, &__g_usart2_devinfo);
 }
 
 /** \brief USART2实例解初始化 */
-void am_zlg237_usart2_inst_deinit (am_uart_handle_t handle)
+void am_stm32f103rbt6_usart2_inst_deinit (am_uart_handle_t handle)
 {
-    am_zlg237_usart_deinit((am_zlg237_usart_dev_t *)handle);
+    am_stm32f103rbt6_usart_deinit((am_stm32f103rbt6_usart_dev_t *)handle);
 }
 
 /** \brief 串口3平台初始化 */
-static void __zlg237_plfm_usart3_init (void)
+static void __stm32f103rbt6_plfm_usart3_init (void)
 {
      am_gpio_pin_cfg(PIOB_10, PIOB_10_NO_REMAP | PIOB_10_AF_PP | PIOB_10_SPEED_10MHz);
      am_gpio_pin_cfg(PIOB_11, PIOB_11_NO_REMAP | PIOB_11_INPUT_FLOAT);
 }
 
 /** \brief 解除串口3 平台初始化 */
-static void __zlg237_plfm_usart3_deinit (void)
+static void __stm32f103rbt6_plfm_usart3_deinit (void)
 {
     am_clk_disable(CLK_USART3);
 
@@ -172,23 +172,23 @@ static void __zlg237_plfm_usart3_deinit (void)
 }
 
 /** \brief 串口3 设备信息 */
-static const am_zlg237_usart_devinfo_t __g_usart3_devinfo = {
+static const am_stm32f103rbt6_usart_devinfo_t __g_usart3_devinfo = {
 
-    ZLG237_USART3_BASE,              /**< \brief 串口3 */
+    STM32F103RBT6_USART3_BASE,              /**< \brief 串口3 */
     INUM_USART3,                     /**< \brief 串口2的中断编号 */
     CLK_USART3,                     /**< \brief 串口2的时钟 */
 
-    AMHW_ZLG237_USART_DATA_8BIT |    /**< \brief 8位数据 */
-    AMHW_ZLG237_USART_PARITY_NO |    /**< \brief 无极性 */
-    AMHW_ZLG237_USART_STOP_10_BIT,     /**< \brief 1个停止位 */
+    AMHW_STM32F103RBT6_USART_DATA_8BIT |    /**< \brief 8位数据 */
+    AMHW_STM32F103RBT6_USART_PARITY_NO |    /**< \brief 无极性 */
+    AMHW_STM32F103RBT6_USART_STOP_10_BIT,     /**< \brief 1个停止位 */
 
     115200,                         /**< \brief 设置的波特率 */
 
     0,                              /**< \brief 无其他中断 */
 
     NULL,                           /**< \brief USART3使用RS485 */
-    __zlg237_plfm_usart3_init,       /**< \brief USART3的平台初始化 */
-    __zlg237_plfm_usart3_deinit,     /**< \brief USART3的平台去初始化 */
+    __stm32f103rbt6_plfm_usart3_init,       /**< \brief USART3的平台初始化 */
+    __stm32f103rbt6_plfm_usart3_deinit,     /**< \brief USART3的平台去初始化 */
 
     /* 以下引脚在功能设置成对应模式才会进行初始化 */
     {PIOB_12, PIOB_12_NO_REMAP | PIOB_12_AF_PP},          /**< \brief ck引脚相关定义 */
@@ -197,18 +197,18 @@ static const am_zlg237_usart_devinfo_t __g_usart3_devinfo = {
 };
 
 /**< \brief 定义串口2设备 */
-static am_zlg237_usart_dev_t  __g_usart3_dev;
+static am_stm32f103rbt6_usart_dev_t  __g_usart3_dev;
 
 /** \brief USART3实例初始化，获得usart3标准服务句柄 */
-am_uart_handle_t am_zlg237_usart3_inst_init (void)
+am_uart_handle_t am_stm32f103rbt6_usart3_inst_init (void)
 {
-    return am_zlg237_usart_init(&__g_usart3_dev, &__g_usart3_devinfo);
+    return am_stm32f103rbt6_usart_init(&__g_usart3_dev, &__g_usart3_devinfo);
 }
 
 /** \brief USART3实例解初始化 */
-void am_zlg237_usart3_inst_deinit (am_uart_handle_t handle)
+void am_stm32f103rbt6_usart3_inst_deinit (am_uart_handle_t handle)
 {
-    am_zlg237_usart_deinit((am_zlg237_usart_dev_t *)handle);
+    am_stm32f103rbt6_usart_deinit((am_stm32f103rbt6_usart_dev_t *)handle);
 }
 
 /**

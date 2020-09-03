@@ -15,13 +15,13 @@
  * \brief bootloader 例程，本demo是作为单区的应用程序（无法在应用程序中升级）。
  *
  * - 操作步骤:
- *   1.eclipse工程打开demo_am237_core_application.ld文件，打开:
+ *   1.eclipse工程打开demo_stm32f103rbt6_core_application.ld文件，打开:
  *
  *       FLASH (rx)  : ORIGIN = 0x08007000, LENGTH = 100K  //single
  *
  *     的配置, 屏蔽其他flash配置。
  *
- *     keil工程打开demo_am237_core_application.sct文件，打开单区的配置，屏蔽其他配置
+ *     keil工程打开demo_stm32f103rbt6_core_application.sct文件，打开单区的配置，屏蔽其他配置
  *
  *   2.编译工程
  *   3.固件处理，参考下面note提示
@@ -53,12 +53,12 @@
 #include "am_led.h"
 #include "am_delay.h"
 
-void demo_zlg237_core_single_application_entry (void)
+void demo_stm32f103rbt6_core_single_application_entry (void)
 {
-    AM_DBG_INFO("application : am237_core single application start up successful!\r\n");
+    AM_DBG_INFO("application : stm32f103rbt6_core single application start up successful!\r\n");
 
     while(1) {
-        AM_DBG_INFO("application : am237_core single application running\r\n");
+        AM_DBG_INFO("application : stm32f103rbt6_core single application running\r\n");
         am_led_toggle(0);
         am_mdelay(1000);
     }

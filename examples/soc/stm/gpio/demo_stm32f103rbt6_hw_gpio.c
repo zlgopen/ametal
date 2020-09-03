@@ -21,7 +21,7 @@
  *   2. 输入引脚为低电平时，输出引脚状态翻转。
  *
  * \par 源代码
- * \snippet demo_zlg_hw_gpio.c src_zlg_hw_gpio
+ * \snippet demo_stm32f103rbt6_hw_gpio.c src_stm32f103rbt6_hw_gpio
  *
  * \internal
  * \par Modification History
@@ -30,49 +30,49 @@
  */
 
 /**
- * \addtogroup demo_if_zlg_hw_gpio
- * \copydoc demo_zlg_hw_gpio.c
+ * \addtogroup demo_if_stm32f103rbt6_hw_gpio
+ * \copydoc demo_stm32f103rbt6_hw_gpio.c
  */
 
-/** [src_zlg_hw_gpio] */
+/** [src_stm32f103rbt6_hw_gpio] */
 #include "ametal.h"
 #include "am_gpio.h"
 #include "am_delay.h"
-#include "hw/amhw_zlg_gpio.h"
+#include "hw/amhw_stm_gpio.h"
 
 /**
  * \brief 例程入口
  */
-void demo_zlg_hw_gpio_entry (amhw_zlg_gpio_t *p_hw_gpio,
+void demo_stm32f103rbt6_hw_gpio_entry (amhw_stm_gpio_t *p_hw_gpio,
                              int32_t          input_pin,
                              int32_t          output_pin)
 {
     uint32_t dir_input = 0;
 
     /* 取消引脚的复用功能 */
-    amhw_zlg_gpio_pin_afr_set(p_hw_gpio, AMHW_ZLG_GPIO_AF_DEFAULT, input_pin);
+    amhw_stm_gpio_pin_afr_set(p_hw_gpio, AMHW_STM_GPIO_AF_DEFAULT, input_pin);
 
     /* 设置引脚的方向为输入及设置引脚的模式 */
-    amhw_zlg_gpio_pin_set(p_hw_gpio, AMHW_ZLG_GPIO_MODE_IPU << 2 | 0x00, input_pin);
+    amhw_stm_gpio_pin_set(p_hw_gpio, AMHW_STM_GPIO_MODE_IPU << 2 | 0x00, input_pin);
 
     /* 使能引脚的上拉电阻 */
-    amhw_zlg_gpio_pin_out_high(p_hw_gpio, input_pin);
+    amhw_stm_gpio_pin_out_high(p_hw_gpio, input_pin);
 
     /* 取消引脚的复用功能 */
-    amhw_zlg_gpio_pin_afr_set(p_hw_gpio, AMHW_ZLG_GPIO_AF_DEFAULT, output_pin);
+    amhw_stm_gpio_pin_afr_set(p_hw_gpio, AMHW_STM_GPIO_AF_DEFAULT, output_pin);
 
     /* 设置引脚的方向为输出及设置引脚的模式 */
-    amhw_zlg_gpio_pin_set(p_hw_gpio, AMHW_ZLG_GPIO_MODE_OUT_PP << 2 | 0x00, output_pin);
+    amhw_stm_gpio_pin_set(p_hw_gpio, AMHW_STM_GPIO_MODE_OUT_PP << 2 | 0x00, output_pin);
 
     /* 设置引脚的输出速度 */
-    amhw_zlg_gpio_pin_dir_output(p_hw_gpio, AMHW_ZLG_GPIO_SPEED_10MHz, output_pin);
+    amhw_stm_gpio_pin_dir_output(p_hw_gpio, AMHW_STM_GPIO_SPEED_10MHz, output_pin);
 
     /* 使能引脚的上拉电阻 */
-    amhw_zlg_gpio_pin_out_high(p_hw_gpio, output_pin);
+    amhw_stm_gpio_pin_out_high(p_hw_gpio, output_pin);
 
     while (1) {
 
-        dir_input = amhw_zlg_gpio_pin_get(p_hw_gpio, input_pin);
+        dir_input = amhw_stm_gpio_pin_get(p_hw_gpio, input_pin);
 
         if (dir_input == 0) {
             am_gpio_toggle(output_pin);
@@ -80,6 +80,6 @@ void demo_zlg_hw_gpio_entry (amhw_zlg_gpio_t *p_hw_gpio,
         }
     }
 }
-/** [src_zlg_hw_gpio] */
+/** [src_stm32f103rbt6_hw_gpio] */
 
 /* end of file */

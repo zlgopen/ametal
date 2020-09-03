@@ -12,20 +12,20 @@
 
 /**
  * \file
- * \brief ZMF237 外设 实例初始化函数声明
+ * \brief STM32F103RBT6 外设 实例初始化函数声明
  *
  * 所有外设设备（I2C、SPI、ADC...）的实例初始化函数均在本头文件中声明，使用实例
  * 初始化函数，可以轻松获得一个外设的句柄，然后使用相关的接口函数对外设进行操作。
  *
- * \sa am_zlg237_inst_init.h
+ * \sa am_stm32f103rbt6_inst_init.h
  * \internal
  * \par Modification history
  * - 1.00 15-12-11  tee, first implementation
  * \endinternal
  */
 
-#ifndef __AM_ZMF237_INST_INIT_H
-#define __AM_ZMF237_INST_INIT_H
+#ifndef __AM_STM32F103RBT6_INST_INIT_H
+#define __AM_STM32F103RBT6_INST_INIT_H
 
 #ifdef __cplusplus
 extern "C" {
@@ -59,9 +59,9 @@ extern "C" {
 #include "am_mtd.h"
 #include "am_rngbuf.h"
 #include "am_input.h"
-#include "am_zlg_tim_cap.h"
-#include "amhw_zlg237_rtc.h"
-#include "am_zlg237_pwr.h"
+#include "am_stm32f103rbt6_tim_cap.h"
+#include "amhw_stm32f103rbt6_rtc.h"
+#include "am_stm32f103rbt6_pwr.h"
 #include "am_hwconf_led_gpio.h"
 #include "am_hwconf_key_gpio.h"
 #include "am_hwconf_buzzer_pwm.h"
@@ -79,8 +79,8 @@ extern "C" {
 #include "am_event_category_input.h"
 
 /**
- * \addtogroup am_if_zlg237_inst_init
- * \copydoc am_zlg237_inst_init.h
+ * \addtogroup am_if_stm32f103rbt6_inst_init
+ * \copydoc am_stm32f103rbt6_inst_init.h
  * @{
  */
 
@@ -159,7 +159,7 @@ void demo_ep24cxx_entry (am_ep24cxx_handle_t ep24cxx_handle,
  *
  * \return 返回 AW_OK 为初始化成功，其它为初始化失败
  */
-int am_zlg237_nvic_inst_init (void);
+int am_stm32f103rbt6_nvic_inst_init (void);
 
 /**
  * \brief 中断实例解初始化
@@ -168,7 +168,7 @@ int am_zlg237_nvic_inst_init (void);
  *
  * \return 无
  */
-void am_zlg237_nvic_inst_deinit (void);
+void am_stm32f103rbt6_nvic_inst_deinit (void);
 
 /**
  * \brief ILI9341 实例初始化，获得 ILI9341 标准服务句柄
@@ -177,17 +177,17 @@ void am_zlg237_nvic_inst_deinit (void);
  *
  * \return ILI9341 标准服务句柄，若为 NULL，表明初始化失败
  */
-am_ili9341_handle_t am_zlg237_ili9341_inst_init (void);
+am_ili9341_handle_t am_stm32f103rbt6_ili9341_inst_init (void);
 
 /**
  * \brief ILI9341 实例解初始化
  *
- * \param[in] handle 通过 am_zlg237_ili9341_inst_init() 函数获得的 ILI9341
+ * \param[in] handle 通过 am_stm32f103rbt6_ili9341_inst_init() 函数获得的 ILI9341
  *                   标准服务句柄
  *
  * \return 无
  */
-void am_zlg237_ili9341_inst_deinit (am_ili9341_handle_t handle);
+void am_stm32f103rbt6_ili9341_inst_deinit (am_ili9341_handle_t handle);
 
 /**
  * \brief ADC1 实例初始化，获得 ADC 标准服务句柄
@@ -196,16 +196,16 @@ void am_zlg237_ili9341_inst_deinit (am_ili9341_handle_t handle);
  *
  * \return ADC 标准服务句柄，若为 NULL，表明初始化失败
  */
-am_adc_handle_t am_zlg237_adc1_inst_init (void);
+am_adc_handle_t am_stm32f103rbt6_adc1_inst_init (void);
 
 /**
  * \brief ADC1 实例解初始化
  *
- * \param[in] handle 通过 am_zlg237_adc1_inst_init() 函数获得的 ADC 标准服务句柄
+ * \param[in] handle 通过 am_stm32f103rbt6_adc1_inst_init() 函数获得的 ADC 标准服务句柄
  *
  * \return 无
  */
-void am_zlg237_adc1_inst_deinit (am_adc_handle_t handle);
+void am_stm32f103rbt6_adc1_inst_deinit (am_adc_handle_t handle);
 
 /**
  * \brief ADC2 实例初始化，获得 ADC 标准服务句柄
@@ -214,16 +214,16 @@ void am_zlg237_adc1_inst_deinit (am_adc_handle_t handle);
  *
  * \return ADC 标准服务句柄，若为 NULL，表明初始化失败
  */
-am_adc_handle_t am_zlg237_adc2_inst_init (void);
+am_adc_handle_t am_stm32f103rbt6_adc2_inst_init (void);
 
 /**
  * \brief ADC2 实例解初始化
  *
- * \param[in] handle 通过 am_zlg237_adc2_inst_init() 函数获得的 ADC 标准服务句柄
+ * \param[in] handle 通过 am_stm32f103rbt6_adc2_inst_init() 函数获得的 ADC 标准服务句柄
  *
  * \return 无
  */
-void am_zlg237_adc2_inst_deinit (am_adc_handle_t handle);
+void am_stm32f103rbt6_adc2_inst_deinit (am_adc_handle_t handle);
 
 /**
  * \brief CLK 实例初始化，初始化系统时钟
@@ -232,7 +232,7 @@ void am_zlg237_adc2_inst_deinit (am_adc_handle_t handle);
  *
  * \return 返回 AW_OK 为初始化成功，其它为初始化失败
  */
-int am_zlg237_clk_inst_init (void);
+int am_stm32f103rbt6_clk_inst_init (void);
 
 /**
  * \brief CRC 实例初始化，获得 CRC 标准服务句柄
@@ -241,16 +241,16 @@ int am_zlg237_clk_inst_init (void);
  *
  * \return CRC 标准服务句柄，若为 NULL，表明初始化失败
  */
-am_crc_handle_t am_zlg237_crc_inst_init (void);
+am_crc_handle_t am_stm32f103rbt6_crc_inst_init (void);
 
 /**
  * \brief CRC 实例解初始化
  *
- * \param[in] handle 通过 am_zlg237_crc_inst_init() 函数获得的 CRC 标准服务句柄
+ * \param[in] handle 通过 am_stm32f103rbt6_crc_inst_init() 函数获得的 CRC 标准服务句柄
  *
  * \return 无
  */
-void am_zlg237_crc_inst_deinit (am_crc_handle_t handle);
+void am_stm32f103rbt6_crc_inst_deinit (am_crc_handle_t handle);
 
 /**
  * \brief DAC1 实例初始化，获得 DAC 标准服务句柄
@@ -259,16 +259,16 @@ void am_zlg237_crc_inst_deinit (am_crc_handle_t handle);
  *
  * \return DAC 标准服务句柄，若为 NULL，表明初始化失败
  */
-am_dac_handle_t am_zlg237_dac1_inst_init (void);
+am_dac_handle_t am_stm32f103rbt6_dac1_inst_init (void);
 
 /**
  * \brief DAC1 实例解初始化
  *
- * \param[in] handle 通过 am_zlg237_dac1_inst_init() 函数获得的 DAC 标准服务句柄
+ * \param[in] handle 通过 am_stm32f103rbt6_dac1_inst_init() 函数获得的 DAC 标准服务句柄
  *
  * \return 无
  */
-void am_zlg237_dac1_inst_deinit (am_dac_handle_t handle);
+void am_stm32f103rbt6_dac1_inst_deinit (am_dac_handle_t handle);
 
 /**
  * \brief DAC2 实例初始化，获得 DAC 标准服务句柄
@@ -277,16 +277,16 @@ void am_zlg237_dac1_inst_deinit (am_dac_handle_t handle);
  *
  * \return DAC 标准服务句柄，若为 NULL，表明初始化失败
  */
-am_dac_handle_t am_zlg237_dac2_inst_init (void);
+am_dac_handle_t am_stm32f103rbt6_dac2_inst_init (void);
 
 /**
  * \brief DAC2 实例解初始化
  *
- * \param[in] handle 通过 am_zlg237_dac2_inst_init() 函数获得的 DAC 标准服务句柄
+ * \param[in] handle 通过 am_stm32f103rbt6_dac2_inst_init() 函数获得的 DAC 标准服务句柄
  *
  * \return 无
  */
-void am_zlg237_dac2_inst_deinit (am_dac_handle_t handle);
+void am_stm32f103rbt6_dac2_inst_deinit (am_dac_handle_t handle);
 
 /**
  * \brief DMA 实例初始化
@@ -295,7 +295,7 @@ void am_zlg237_dac2_inst_deinit (am_dac_handle_t handle);
  *
  * \return 返回 AW_OK 为初始化成功，其它为初始化失败
  */
-int am_zlg237_dma_inst_init (void);
+int am_stm32f103rbt6_dma_inst_init (void);
 
 /**
  * \brief DMA 实例解初始化
@@ -304,7 +304,7 @@ int am_zlg237_dma_inst_init (void);
  *
  * \return 无
  */
-void am_zlg237_dma_inst_deinit (void);
+void am_stm32f103rbt6_dma_inst_deinit (void);
 
 /**
  * \brief GPIO 实例初始化
@@ -313,7 +313,7 @@ void am_zlg237_dma_inst_deinit (void);
  *
  * \return 返回 AW_OK 为初始化成功，其它为初始化失败
  */
-int am_zlg237_gpio_inst_init (void);
+int am_stm32f103rbt6_gpio_inst_init (void);
 
 /**
  * \brief GPIO 实例解初始化
@@ -322,7 +322,7 @@ int am_zlg237_gpio_inst_init (void);
  *
  * \return 无
  */
-void am_zlg237_gpio_inst_deinit (void);
+void am_stm32f103rbt6_gpio_inst_deinit (void);
 
 /**
  * \brief I2C1 实例初始化，获得 I2C 标准服务句柄
@@ -331,16 +331,16 @@ void am_zlg237_gpio_inst_deinit (void);
  *
  * \return I2C 标准服务句柄，若为 NULL，表明初始化失败
  */
-am_i2c_handle_t am_zlg237_i2c1_inst_init (void);
+am_i2c_handle_t am_stm32f103rbt6_i2c1_inst_init (void);
 
 /**
  * \brief I2C1 实例解初始化
  *
- * \param[in] handle 通过 am_zlg237_i2c1_inst_init() 函数获得的 I2C 标准服务句柄
+ * \param[in] handle 通过 am_stm32f103rbt6_i2c1_inst_init() 函数获得的 I2C 标准服务句柄
  *
  * \return 无
  */
-void am_zlg237_i2c1_inst_deinit (am_i2c_handle_t handle);
+void am_stm32f103rbt6_i2c1_inst_deinit (am_i2c_handle_t handle);
 
 /**
  * \brief I2C2 实例初始化，获得 I2C 标准服务句柄
@@ -349,16 +349,16 @@ void am_zlg237_i2c1_inst_deinit (am_i2c_handle_t handle);
  *
  * \return I2C 标准服务句柄，若为 NULL，表明初始化失败
  */
-am_i2c_handle_t am_zlg237_i2c2_inst_init (void);
+am_i2c_handle_t am_stm32f103rbt6_i2c2_inst_init (void);
 
 /**
  * \brief I2C2 实例解初始化
  *
- * \param[in] handle 通过 am_zlg237_i2c2_inst_init() 函数获得的 I2C 标准服务句柄
+ * \param[in] handle 通过 am_stm32f103rbt6_i2c2_inst_init() 函数获得的 I2C 标准服务句柄
  *
  * \return 无
  */
-void am_zlg237_i2c2_inst_deinit (am_i2c_handle_t handle);
+void am_stm32f103rbt6_i2c2_inst_deinit (am_i2c_handle_t handle);
 
 /**
  * \brief I2C1 从机实例初始化，获得 I2C 从机标准服务句柄
@@ -367,17 +367,17 @@ void am_zlg237_i2c2_inst_deinit (am_i2c_handle_t handle);
  *
  * \return I2C 从机标准服务句柄，若为 NULL，表明初始化失败
  */
-am_i2c_slv_handle_t am_zlg237_i2c1_slv_inst_init (void);
+am_i2c_slv_handle_t am_stm32f103rbt6_i2c1_slv_inst_init (void);
 
 /**
  * \brief I2C1 从机实例解初始化
  *
- * \param[in] handle 通过 am_zlg237_i2c1_slv_inst_init() 函数
+ * \param[in] handle 通过 am_stm32f103rbt6_i2c1_slv_inst_init() 函数
  *                   获得的 I2C 从机标准服务句柄
  *
  * \return 无
  */
-void am_zlg237_i2c1_slv_inst_deinit (am_i2c_slv_handle_t handle);
+void am_stm32f103rbt6_i2c1_slv_inst_deinit (am_i2c_slv_handle_t handle);
 
 /**
  * \brief I2C2 从机实例初始化，获得 I2C 从机标准服务句柄
@@ -386,17 +386,17 @@ void am_zlg237_i2c1_slv_inst_deinit (am_i2c_slv_handle_t handle);
  *
  * \return I2C 从机标准服务句柄，若为 NULL，表明初始化失败
  */
-am_i2c_slv_handle_t am_zlg237_i2c2_slv_inst_init (void);
+am_i2c_slv_handle_t am_stm32f103rbt6_i2c2_slv_inst_init (void);
 
 /**
  * \brief I2C2 从机实例解初始化
  *
- * \param[in] handle 通过 am_zlg237_i2c2_slv_inst_init() 函数
+ * \param[in] handle 通过 am_stm32f103rbt6_i2c2_slv_inst_init() 函数
  *                   获得的 I2C 从机标准服务句柄
  *
  * \return 无
  */
-void am_zlg237_i2c2_slv_inst_deinit (am_i2c_slv_handle_t handle);
+void am_stm32f103rbt6_i2c2_slv_inst_deinit (am_i2c_slv_handle_t handle);
 
 /**
  * \brief IWDG 实例初始化，获得 WDT 标准服务句柄
@@ -405,16 +405,16 @@ void am_zlg237_i2c2_slv_inst_deinit (am_i2c_slv_handle_t handle);
  *
  * \return WDT 标准服务句柄，若为 NULL，表明初始化失败
  */
-am_wdt_handle_t am_zlg237_iwdg_inst_init (void);
+am_wdt_handle_t am_stm32f103rbt6_iwdg_inst_init (void);
 
 /**
  * \brief IWDG 实例解初始化
  *
- * \param[in] handle 通过 am_zlg237_iwdg_inst_init() 函数获得的 WDT 标准服务句柄
+ * \param[in] handle 通过 am_stm32f103rbt6_iwdg_inst_init() 函数获得的 WDT 标准服务句柄
  *
  * \return 无
  */
-void am_zlg237_iwdg_inst_deinit (am_wdt_handle_t handle);
+void am_stm32f103rbt6_iwdg_inst_deinit (am_wdt_handle_t handle);
 
 /**
  * \brief PWR 实例初始化
@@ -423,7 +423,7 @@ void am_zlg237_iwdg_inst_deinit (am_wdt_handle_t handle);
  *
  * \return PWR 标准服务句柄，若为 NULL，表明初始化失败
  */
-am_zlg237_pwr_handle_t am_zlg237_pwr_inst_init (void);
+am_stm32f103rbt6_pwr_handle_t am_stm32f103rbt6_pwr_inst_init (void);
 
 /**
  * \brief PWR 实例解初始化
@@ -432,7 +432,7 @@ am_zlg237_pwr_handle_t am_zlg237_pwr_inst_init (void);
  *
  * \return 无
  */
-void am_zlg237_pwr_inst_deinit (void);
+void am_stm32f103rbt6_pwr_inst_deinit (void);
 
 /**
  * \brief RTC 实例初始化，获得 RTC 标准服务句柄
@@ -441,16 +441,16 @@ void am_zlg237_pwr_inst_deinit (void);
  *
  * \return RTC 标准服务句柄，若为 NULL，表明初始化失败
  */
-am_rtc_handle_t am_zlg237_rtc_inst_init (void);
+am_rtc_handle_t am_stm32f103rbt6_rtc_inst_init (void);
 
 /**
  * \brief RTC 实例解初始化
  *
- * \param[in] handle 通过 am_zlg237_rtc_inst_init() 函数获得的 RTC 标准服务句柄
+ * \param[in] handle 通过 am_stm32f103rbt6_rtc_inst_init() 函数获得的 RTC 标准服务句柄
  *
  * \return 无
  */
-void am_zlg237_rtc_inst_deinit (am_rtc_handle_t handle);
+void am_stm32f103rbt6_rtc_inst_deinit (am_rtc_handle_t handle);
 
 /**
  * \brief SPI1 POLL 实例初始化，获得 SPI 标准服务句柄
@@ -459,17 +459,17 @@ void am_zlg237_rtc_inst_deinit (am_rtc_handle_t handle);
  *
  * \return SPI 标准服务句柄，若为 NULL，表明初始化失败
  */
-am_spi_handle_t am_zlg237_spi1_poll_inst_init (void);
+am_spi_handle_t am_stm32f103rbt6_spi1_poll_inst_init (void);
 
 /**
  * \brief SPI1 POLL 实例解初始化
  *
- * \param[in] handle 通过 am_zlg237_spi1_poll_inst_init() 函数
+ * \param[in] handle 通过 am_stm32f103rbt6_spi1_poll_inst_init() 函数
  *                   获得的 SPI 标准服务句柄
  *
  * \return 无
  */
-void am_zlg237_spi1_poll_inst_deinit (am_spi_handle_t handle);
+void am_stm32f103rbt6_spi1_poll_inst_deinit (am_spi_handle_t handle);
 
 /**
  * \brief SPI2 POLL 实例初始化，获得 SPI 标准服务句柄
@@ -478,17 +478,17 @@ void am_zlg237_spi1_poll_inst_deinit (am_spi_handle_t handle);
  *
  * \return SPI 标准服务句柄，若为 NULL，表明初始化失败
  */
-am_spi_handle_t am_zlg237_spi2_poll_inst_init (void);
+am_spi_handle_t am_stm32f103rbt6_spi2_poll_inst_init (void);
 
 /**
  * \brief SPI2 POLL 实例解初始化
  *
- * \param[in] handle 通过 am_zlg237_spi2_poll_inst_init() 函数
+ * \param[in] handle 通过 am_stm32f103rbt6_spi2_poll_inst_init() 函数
  *                   获得的 SPI 标准服务句柄
  *
  * \return 无
  */
-void am_zlg237_spi2_poll_inst_deinit (am_spi_handle_t handle);
+void am_stm32f103rbt6_spi2_poll_inst_deinit (am_spi_handle_t handle);
 
 /**
  * \brief SPI1 DMA 实例初始化，获得 SPI 标准服务句柄
@@ -497,17 +497,17 @@ void am_zlg237_spi2_poll_inst_deinit (am_spi_handle_t handle);
  *
  * \return SPI 标准服务句柄，若为 NULL，表明初始化失败
  */
-am_spi_handle_t am_zlg237_spi1_dma_inst_init (void);
+am_spi_handle_t am_stm32f103rbt6_spi1_dma_inst_init (void);
 
 /**
  * \brief SPI1 DMA 实例解初始化
  *
- * \param[in] handle 通过 am_zlg237_spi1_dma_inst_init() 函数
+ * \param[in] handle 通过 am_stm32f103rbt6_spi1_dma_inst_init() 函数
  *                   获得的 SPI 标准服务句柄
  *
  * \return 无
  */
-void am_zlg237_spi1_dma_inst_deinit (am_spi_handle_t handle);
+void am_stm32f103rbt6_spi1_dma_inst_deinit (am_spi_handle_t handle);
 
 /**
  * \brief SPI2 DMA 实例初始化，获得 SPI 标准服务句柄
@@ -516,17 +516,17 @@ void am_zlg237_spi1_dma_inst_deinit (am_spi_handle_t handle);
  *
  * \return SPI 标准服务句柄，若为 NULL，表明初始化失败
  */
-am_spi_handle_t am_zlg237_spi2_dma_inst_init (void);
+am_spi_handle_t am_stm32f103rbt6_spi2_dma_inst_init (void);
 
 /**
  * \brief SPI2 DMA 实例解初始化
  *
- * \param[in] handle 通过 am_zlg237_spi2_dma_inst_init() 函数
+ * \param[in] handle 通过 am_stm32f103rbt6_spi2_dma_inst_init() 函数
  *                   获得的 SPI 标准服务句柄
  *
  * \return 无
  */
-void am_zlg237_spi2_dma_inst_deinit (am_spi_handle_t handle);
+void am_stm32f103rbt6_spi2_dma_inst_deinit (am_spi_handle_t handle);
 
 /**
  * \brief SPI1 INT 实例初始化，获得 SPI 标准服务句柄
@@ -535,17 +535,17 @@ void am_zlg237_spi2_dma_inst_deinit (am_spi_handle_t handle);
  *
  * \return SPI 标准服务句柄，若为 NULL，表明初始化失败
  */
-am_spi_handle_t am_zlg237_spi1_int_inst_init (void);
+am_spi_handle_t am_stm32f103rbt6_spi1_int_inst_init (void);
 
 /**
  * \brief SPI1 INT 实例解初始化
  *
- * \param[in] handle 通过 am_zlg237_spi1_int_inst_init() 函数
+ * \param[in] handle 通过 am_stm32f103rbt6_spi1_int_inst_init() 函数
  *                   获得的 SPI 标准服务句柄
  *
  * \return 无
  */
-void am_zlg237_spi1_int_inst_deinit (am_spi_handle_t handle);
+void am_stm32f103rbt6_spi1_int_inst_deinit (am_spi_handle_t handle);
 
 /**
  * \brief SPI2 INT 实例初始化，获得 SPI 标准服务句柄
@@ -554,17 +554,17 @@ void am_zlg237_spi1_int_inst_deinit (am_spi_handle_t handle);
  *
  * \return SPI 标准服务句柄，若为 NULL，表明初始化失败
  */
-am_spi_handle_t am_zlg237_spi2_int_inst_init (void);
+am_spi_handle_t am_stm32f103rbt6_spi2_int_inst_init (void);
 
 /**
  * \brief SPI2 INT 实例解初始化
  *
- * \param[in] handle 通过 am_zlg237_spi2_int_inst_init() 函数
+ * \param[in] handle 通过 am_stm32f103rbt6_spi2_int_inst_init() 函数
  *                   获得的 SPI 标准服务句柄
  *
  * \return 无
  */
-void am_zlg237_spi2_int_inst_deinit (am_spi_handle_t handle);
+void am_stm32f103rbt6_spi2_int_inst_deinit (am_spi_handle_t handle);
 
 /**
  * \brief SPI1 Slaver DMA 实例初始化，获得 SPI SLV标准服务句柄
@@ -573,17 +573,17 @@ void am_zlg237_spi2_int_inst_deinit (am_spi_handle_t handle);
  *
  * \return SPI SLV标准服务句柄，若为 NULL，表明初始化失败
  */
-am_spi_slv_handle_t am_zlg237_spi1_slv_dma_inst_init (void);
+am_spi_slv_handle_t am_stm32f103rbt6_spi1_slv_dma_inst_init (void);
 
 /**
  * \brief SPI1 Slaver DMA 实例解初始化
  *
- * \param[in] handle 通过 am_zlg237_spi1_slv_dma_inst_init() 函数
+ * \param[in] handle 通过 am_stm32f103rbt6_spi1_slv_dma_inst_init() 函数
  *                   获得的 SPI SLV标准服务句柄
  *
  * \return 无
  */
-void am_zlg237_spi1_slv_dma_inst_deinit (am_spi_slv_handle_t handle);
+void am_stm32f103rbt6_spi1_slv_dma_inst_deinit (am_spi_slv_handle_t handle);
 
 /**
  * \brief SPI2 Slaver DMA 实例初始化，获得 SPI SLV标准服务句柄
@@ -592,17 +592,17 @@ void am_zlg237_spi1_slv_dma_inst_deinit (am_spi_slv_handle_t handle);
  *
  * \return SPI SLV标准服务句柄，若为 NULL，表明初始化失败
  */
-am_spi_slv_handle_t am_zlg237_spi2_slv_dma_inst_init (void);
+am_spi_slv_handle_t am_stm32f103rbt6_spi2_slv_dma_inst_init (void);
 
 /**
  * \brief SPI2 Slaver DMA 实例解初始化
  *
- * \param[in] handle 通过 am_zlg237_spi2_slv_dma_inst_init() 函数
+ * \param[in] handle 通过 am_stm32f103rbt6_spi2_slv_dma_inst_init() 函数
  *                   获得的 SPI SLV标准服务句柄
  *
  * \return 无
  */
-void am_zlg237_spi2_slv_dma_inst_deinit (am_spi_slv_handle_t handle);
+void am_stm32f103rbt6_spi2_slv_dma_inst_deinit (am_spi_slv_handle_t handle);
 
 /**
  * \brief SYSTICK 实例初始化，获得 TIMER 标准服务句柄
@@ -611,17 +611,17 @@ void am_zlg237_spi2_slv_dma_inst_deinit (am_spi_slv_handle_t handle);
  *
  * \return TIMER 标准服务句柄，若为 NULL，表明初始化失败
  */
-am_timer_handle_t am_zlg237_systick_inst_init (void);
+am_timer_handle_t am_stm32f103rbt6_systick_inst_init (void);
 
 /**
  * \brief SYSTICK 实例解初始化
  *
- * \param[in] handle 通过 am_zlg237_systick_inst_init() 函数
+ * \param[in] handle 通过 am_stm32f103rbt6_systick_inst_init() 函数
  *                   获得的 TIMER 标准服务句柄
  *
  * \return 无
  */
-void am_zlg237_systick_inst_deinit (am_timer_handle_t handle);
+void am_stm32f103rbt6_systick_inst_deinit (am_timer_handle_t handle);
 
 /**
  * \brief TIM1 CAP 实例初始化，获得 CAP 标准服务句柄
@@ -630,17 +630,17 @@ void am_zlg237_systick_inst_deinit (am_timer_handle_t handle);
  *
  * \return CAP 标准服务句柄，若为 NULL，表明初始化失败
  */
-am_cap_handle_t am_zlg237_tim1_cap_inst_init (void);
+am_cap_handle_t am_stm32f103rbt6_tim1_cap_inst_init (void);
 
 /**
  * \brief TIM1 CAP 实例解初始化
  *
- * \param[in] handle 通过 am_zlg237_tim1_cap_inst_init() 函数
+ * \param[in] handle 通过 am_stm32f103rbt6_tim1_cap_inst_init() 函数
  *                   获得的 CAP 标准服务句柄
  *
  * \return 无
  */
-void am_zlg237_tim1_cap_inst_deinit (am_cap_handle_t handle);
+void am_stm32f103rbt6_tim1_cap_inst_deinit (am_cap_handle_t handle);
 
 /**
  * \brief TIM2 CAP 实例初始化，获得 CAP 标准服务句柄
@@ -649,17 +649,17 @@ void am_zlg237_tim1_cap_inst_deinit (am_cap_handle_t handle);
  *
  * \return CAP 标准服务句柄，若为 NULL，表明初始化失败
  */
-am_cap_handle_t am_zlg237_tim2_cap_inst_init (void);
+am_cap_handle_t am_stm32f103rbt6_tim2_cap_inst_init (void);
 
 /**
  * \brief TIM2 CAP 实例解初始化
  *
- * \param[in] handle 通过 am_zlg237_tim2_cap_inst_init() 函数
+ * \param[in] handle 通过 am_stm32f103rbt6_tim2_cap_inst_init() 函数
  *                   获得的 CAP 标准服务句柄
  *
  * \return 无
  */
-void am_zlg237_tim2_cap_inst_deinit (am_cap_handle_t handle);
+void am_stm32f103rbt6_tim2_cap_inst_deinit (am_cap_handle_t handle);
 
 /**
  * \brief TIM3 CAP 实例初始化，获得 CAP 标准服务句柄
@@ -668,17 +668,17 @@ void am_zlg237_tim2_cap_inst_deinit (am_cap_handle_t handle);
  *
  * \return CAP 标准服务句柄，若为 NULL，表明初始化失败
  */
-am_cap_handle_t am_zlg237_tim3_cap_inst_init (void);
+am_cap_handle_t am_stm32f103rbt6_tim3_cap_inst_init (void);
 
 /**
  * \brief TIM3 CAP 实例解初始化
  *
- * \param[in] handle 通过 am_zlg237_tim3_cap_inst_init() 函数
+ * \param[in] handle 通过 am_stm32f103rbt6_tim3_cap_inst_init() 函数
  *                   获得的 CAP 标准服务句柄
  *
  * \return 无
  */
-void am_zlg237_tim3_cap_inst_deinit (am_cap_handle_t handle);
+void am_stm32f103rbt6_tim3_cap_inst_deinit (am_cap_handle_t handle);
 
 /**
  * \brief TIM4 CAP 实例初始化，获得 CAP 标准服务句柄
@@ -687,17 +687,17 @@ void am_zlg237_tim3_cap_inst_deinit (am_cap_handle_t handle);
  *
  * \return CAP 标准服务句柄，若为 NULL，表明初始化失败
  */
-am_cap_handle_t am_zlg237_tim4_cap_inst_init (void);
+am_cap_handle_t am_stm32f103rbt6_tim4_cap_inst_init (void);
 
 /**
  * \brief TIM4 CAP 实例解初始化
  *
- * \param[in] handle 通过 am_zlg237_tim4_cap_inst_init() 函数
+ * \param[in] handle 通过 am_stm32f103rbt6_tim4_cap_inst_init() 函数
  *                   获得的 CAP 标准服务句柄
  *
  * \return 无
  */
-void am_zlg237_tim4_cap_inst_deinit (am_cap_handle_t handle);
+void am_stm32f103rbt6_tim4_cap_inst_deinit (am_cap_handle_t handle);
 
 /**
  * \brief TIM1 PWM 实例初始化，获得 PWM 标准服务句柄
@@ -706,17 +706,17 @@ void am_zlg237_tim4_cap_inst_deinit (am_cap_handle_t handle);
  *
  * \return PWM 标准服务句柄，若为 NULL，表明初始化失败
  */
-am_pwm_handle_t am_zlg237_tim1_pwm_inst_init (void);
+am_pwm_handle_t am_stm32f103rbt6_tim1_pwm_inst_init (void);
 
 /**
  * \brief TIM1 PWM 实例解初始化
  *
- * \param[in] handle 通过 am_zlg237_tim1_pwm_inst_init() 函数
+ * \param[in] handle 通过 am_stm32f103rbt6_tim1_pwm_inst_init() 函数
  *                   获得的 PWM 标准服务句柄
  *
  * \return 无
  */
-void am_zlg237_tim1_pwm_inst_deinit (am_pwm_handle_t handle);
+void am_stm32f103rbt6_tim1_pwm_inst_deinit (am_pwm_handle_t handle);
 
 /**
  * \brief TIM2 PWM 实例初始化，获得 PWM 标准服务句柄
@@ -725,17 +725,17 @@ void am_zlg237_tim1_pwm_inst_deinit (am_pwm_handle_t handle);
  *
  * \return PWM 标准服务句柄，若为 NULL，表明初始化失败
  */
-am_pwm_handle_t am_zlg237_tim2_pwm_inst_init (void);
+am_pwm_handle_t am_stm32f103rbt6_tim2_pwm_inst_init (void);
 
 /**
  * \brief TIM2 PWM 实例解初始化
  *
- * \param[in] handle 通过 am_zlg237_tim2_pwm_inst_init() 函数
+ * \param[in] handle 通过 am_stm32f103rbt6_tim2_pwm_inst_init() 函数
  *                   获得的 PWM 标准服务句柄
  *
  * \return 无
  */
-void am_zlg237_tim2_pwm_inst_deinit (am_pwm_handle_t handle);
+void am_stm32f103rbt6_tim2_pwm_inst_deinit (am_pwm_handle_t handle);
 
 /**
  * \brief TIM3 PWM 实例初始化，获得 PWM 标准服务句柄
@@ -744,17 +744,17 @@ void am_zlg237_tim2_pwm_inst_deinit (am_pwm_handle_t handle);
  *
  * \return PWM 标准服务句柄，若为 NULL，表明初始化失败
  */
-am_pwm_handle_t am_zlg237_tim3_pwm_inst_init (void);
+am_pwm_handle_t am_stm32f103rbt6_tim3_pwm_inst_init (void);
 
 /**
  * \brief TIM3 PWM 实例解初始化
  *
- * \param[in] handle 通过 am_zlg237_tim3_pwm_inst_init() 函数
+ * \param[in] handle 通过 am_stm32f103rbt6_tim3_pwm_inst_init() 函数
  *                   获得的 PWM 标准服务句柄
  *
  * \return 无
  */
-void am_zlg237_tim3_pwm_inst_deinit (am_pwm_handle_t handle);
+void am_stm32f103rbt6_tim3_pwm_inst_deinit (am_pwm_handle_t handle);
 
 /**
  * \brief TIM4 PWM 实例初始化，获得 PWM 标准服务句柄
@@ -763,17 +763,17 @@ void am_zlg237_tim3_pwm_inst_deinit (am_pwm_handle_t handle);
  *
  * \return PWM 标准服务句柄，若为 NULL，表明初始化失败
  */
-am_pwm_handle_t am_zlg237_tim4_pwm_inst_init (void);
+am_pwm_handle_t am_stm32f103rbt6_tim4_pwm_inst_init (void);
 
 /**
  * \brief TIM4 PWM 实例解初始化
  *
- * \param[in] handle 通过 am_zlg237_tim4_pwm_inst_init() 函数
+ * \param[in] handle 通过 am_stm32f103rbt6_tim4_pwm_inst_init() 函数
  *                   获得的 PWM 标准服务句柄
  *
  * \return 无
  */
-void am_zlg237_tim4_pwm_inst_deinit (am_pwm_handle_t handle);
+void am_stm32f103rbt6_tim4_pwm_inst_deinit (am_pwm_handle_t handle);
 
 /**
  * \brief TIM1 TIMING 实例初始化，获得 TIMER 标准服务句柄
@@ -782,17 +782,17 @@ void am_zlg237_tim4_pwm_inst_deinit (am_pwm_handle_t handle);
  *
  * \return PWM 标准服务句柄，若为 NULL，表明初始化失败
  */
-am_timer_handle_t am_zlg237_tim1_timing_inst_init (void);
+am_timer_handle_t am_stm32f103rbt6_tim1_timing_inst_init (void);
 
 /**
  * \brief TIM1 TIMING 实例解初始化
  *
- * \param[in] handle 通过 am_zlg237_tim1_timing_inst_init() 函数
+ * \param[in] handle 通过 am_stm32f103rbt6_tim1_timing_inst_init() 函数
  *                   获得的 TIMER 标准服务句柄
  *
  * \return 无
  */
-void am_zlg237_tim1_timing_inst_deinit (am_timer_handle_t handle);
+void am_stm32f103rbt6_tim1_timing_inst_deinit (am_timer_handle_t handle);
 
 /**
  * \brief TIM2 TIMING 实例初始化，获得 TIMER 标准服务句柄
@@ -801,17 +801,17 @@ void am_zlg237_tim1_timing_inst_deinit (am_timer_handle_t handle);
  *
  * \return PWM 标准服务句柄，若为 NULL，表明初始化失败
  */
-am_timer_handle_t am_zlg237_tim2_timing_inst_init (void);
+am_timer_handle_t am_stm32f103rbt6_tim2_timing_inst_init (void);
 
 /**
  * \brief TIM2 TIMING 实例解初始化
  *
- * \param[in] handle 通过 am_zlg237_tim2_timing_inst_init() 函数
+ * \param[in] handle 通过 am_stm32f103rbt6_tim2_timing_inst_init() 函数
  *                   获得的 TIMER 标准服务句柄
  *
  * \return 无
  */
-void am_zlg237_tim2_timing_inst_deinit (am_timer_handle_t handle);
+void am_stm32f103rbt6_tim2_timing_inst_deinit (am_timer_handle_t handle);
 
 /**
  * \brief TIM3 TIMING 实例初始化，获得 TIMER 标准服务句柄
@@ -820,17 +820,17 @@ void am_zlg237_tim2_timing_inst_deinit (am_timer_handle_t handle);
  *
  * \return PWM 标准服务句柄，若为 NULL，表明初始化失败
  */
-am_timer_handle_t am_zlg237_tim3_timing_inst_init (void);
+am_timer_handle_t am_stm32f103rbt6_tim3_timing_inst_init (void);
 
 /**
  * \brief TIM3 TIMING 实例解初始化
  *
- * \param[in] handle 通过 am_zlg237_tim3_timing_inst_init() 函数
+ * \param[in] handle 通过 am_stm32f103rbt6_tim3_timing_inst_init() 函数
  *                   获得的 TIMER 标准服务句柄
  *
  * \return 无
  */
-void am_zlg237_tim3_timing_inst_deinit (am_timer_handle_t handle);
+void am_stm32f103rbt6_tim3_timing_inst_deinit (am_timer_handle_t handle);
 
 /**
  * \brief TIM4 TIMING 实例初始化，获得 TIMER 标准服务句柄
@@ -839,17 +839,17 @@ void am_zlg237_tim3_timing_inst_deinit (am_timer_handle_t handle);
  *
  * \return PWM 标准服务句柄，若为 NULL，表明初始化失败
  */
-am_timer_handle_t am_zlg237_tim4_timing_inst_init (void);
+am_timer_handle_t am_stm32f103rbt6_tim4_timing_inst_init (void);
 
 /**
  * \brief TIM4 TIMING 实例解初始化
  *
- * \param[in] handle 通过 am_zlg237_tim4_timing_inst_init() 函数
+ * \param[in] handle 通过 am_stm32f103rbt6_tim4_timing_inst_init() 函数
  *                   获得的 TIMER 标准服务句柄
  *
  * \return 无
  */
-void am_zlg237_tim4_timing_inst_deinit (am_timer_handle_t handle);
+void am_stm32f103rbt6_tim4_timing_inst_deinit (am_timer_handle_t handle);
 
 /**
  * \brief UART1 实例初始化，获得 UART 标准服务句柄
@@ -858,16 +858,16 @@ void am_zlg237_tim4_timing_inst_deinit (am_timer_handle_t handle);
  *
  * \return UART 标准服务句柄，若为 NULL，表明初始化失败
  */
-am_uart_handle_t am_zlg237_usart1_inst_init (void);
+am_uart_handle_t am_stm32f103rbt6_usart1_inst_init (void);
 
 /**
  * \brief UART1 实例解初始化
  *
- * \param[in] handle 通过 am_zlg237_uart1_inst_init() 函数获得的 UART 标准服务句柄
+ * \param[in] handle 通过 am_stm32f103rbt6_uart1_inst_init() 函数获得的 UART 标准服务句柄
  *
  * \return 无
  */
-void am_zlg237_usart1_inst_deinit (am_uart_handle_t handle);
+void am_stm32f103rbt6_usart1_inst_deinit (am_uart_handle_t handle);
 
 /**
  * \brief UART2 实例初始化，获得 UART 标准服务句柄
@@ -876,16 +876,16 @@ void am_zlg237_usart1_inst_deinit (am_uart_handle_t handle);
  *
  * \return UART 标准服务句柄，若为 NULL，表明初始化失败
  */
-am_uart_handle_t am_zlg237_usart2_inst_init (void);
+am_uart_handle_t am_stm32f103rbt6_usart2_inst_init (void);
 
 /**
  * \brief UART2 实例解初始化
  *
- * \param[in] handle 通过 am_zlg237_uart2_inst_init() 函数获得的 UART 标准服务句柄
+ * \param[in] handle 通过 am_stm32f103rbt6_uart2_inst_init() 函数获得的 UART 标准服务句柄
  *
  * \return 无
  */
-void am_zlg237_usart2_inst_deinit (am_uart_handle_t handle);
+void am_stm32f103rbt6_usart2_inst_deinit (am_uart_handle_t handle);
 
 /**
  * \brief UART3 实例初始化，获得 UART 标准服务句柄
@@ -894,16 +894,16 @@ void am_zlg237_usart2_inst_deinit (am_uart_handle_t handle);
  *
  * \return UART 标准服务句柄，若为 NULL，表明初始化失败
  */
-am_uart_handle_t am_zlg237_usart3_inst_init (void);
+am_uart_handle_t am_stm32f103rbt6_usart3_inst_init (void);
 
 /**
  * \brief UART3 实例解初始化
  *
- * \param[in] handle 通过 am_zlg237_uart3_inst_init() 函数获得的 UART 标准服务句柄
+ * \param[in] handle 通过 am_stm32f103rbt6_uart3_inst_init() 函数获得的 UART 标准服务句柄
  *
  * \return 无
  */
-void am_zlg237_usart3_inst_deinit (am_uart_handle_t handle);
+void am_stm32f103rbt6_usart3_inst_deinit (am_uart_handle_t handle);
 
 /**
  * \brief WWDG 实例初始化，获得 WDT 标准服务句柄
@@ -912,23 +912,23 @@ void am_zlg237_usart3_inst_deinit (am_uart_handle_t handle);
  *
  * \return WDT 标准服务句柄，若为 NULL，表明初始化失败
  */
-am_wdt_handle_t am_zlg237_wwdg_inst_init (void);
+am_wdt_handle_t am_stm32f103rbt6_wwdg_inst_init (void);
 
 /**
  * \brief WWDG 实例解初始化
  *
- * \param[in] handle 通过 am_zlg237_wwdg_inst_init() 函数获得的 WDT 标准服务句柄
+ * \param[in] handle 通过 am_stm32f103rbt6_wwdg_inst_init() 函数获得的 WDT 标准服务句柄
  *
  * \return 无
  */
-void am_zlg237_wwdg_inst_deinit (am_wdt_handle_t handle);
+void am_stm32f103rbt6_wwdg_inst_deinit (am_wdt_handle_t handle);
 
 
 /** \brief CAN实例初始化，获得CAN标准服务句柄 */
-am_can_handle_t am_zlg237_can_inst_init (void);
+am_can_handle_t am_stm32f103rbt6_can_inst_init (void);
 
 /** \brief CAN实例解初始化 */
-void am_zlg237_can_inst_deinit (am_can_handle_t handle);
+void am_stm32f103rbt6_can_inst_deinit (am_can_handle_t handle);
 
 /**
  * @}
@@ -938,6 +938,6 @@ void am_zlg237_can_inst_deinit (am_can_handle_t handle);
 }
 #endif
 
-#endif  /* __AM_ZMF237_INST_INIT_H */
+#endif  /* __AM_STM32F103RBT6_INST_INIT_H */
 
 /* end of file */

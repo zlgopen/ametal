@@ -22,7 +22,7 @@
  *   1.若该串口与调试串口一致，需关闭调试串口以免影响效果
  *
  * \par 源代码
- * \snippet demo_zlg237_hw_usart_int.c src_zlg237_hw_usart_int
+ * \snippet demo_stm32f103rbt6_hw_usart_int.c src_stm32f103rbt6_hw_usart_int
  *
  * \internal
  * \par Modification History
@@ -31,12 +31,12 @@
  */
 
  /**
- * \addtogroup demo_if_zlg237_hw_usart_int
- * \copydoc demo_zlg237_hw_usart_int.c
+ * \addtogroup demo_if_stm32f103rbt6_hw_usart_int
+ * \copydoc demo_stm32f103rbt6_hw_usart_int.c
  */
 
-/** [src_zlg237_hw_usart_int] */
-#include "amhw_zlg237_usart.h"
+/** [src_stm32f103rbt6_hw_usart_int] */
+#include "amhw_stm32f103rbt6_usart.h"
 #include "ametal.h"
 #include "am_int.h"
 
@@ -68,7 +68,7 @@ static volatile uint8_t g_tx_nbytes = 0;    /**< \brief 需要发送的总字节数 */
  *
  * \note 发送缓冲区最好是全局的，保证在所有数据发送完成前，缓冲区没有被释放掉
  */
-static uint8_t usart_int_send (amhw_zlg237_usart_t *p_hw_usart,
+static uint8_t usart_int_send (amhw_stm32f103rbt6_usart_t *p_hw_usart,
                                const uint8_t       *p_buf,
                                uint32_t             len)
 {
@@ -78,13 +78,13 @@ static uint8_t usart_int_send (amhw_zlg237_usart_t *p_hw_usart,
         g_tx_nbytes = len;              /* 发送g_tx_nbytes个字节 */
 
         /* 必须先写一个一个字节的数据才以产生发送中断 */
-        while(amhw_zlg237_usart_status_flag_check(p_hw_usart,
-        									      AMHW_ZLG237_USART_TX_COMPLETE_FLAG)
+        while(amhw_stm32f103rbt6_usart_status_flag_check(p_hw_usart,
+        									      AMHW_STM32F103RBT6_USART_TX_COMPLETE_FLAG)
                                                   == AM_FALSE);
 
-        amhw_zlg237_usart_data_write(p_hw_usart, p_buf[g_tx_index++]);
+        amhw_stm32f103rbt6_usart_data_write(p_hw_usart, p_buf[g_tx_index++]);
 
-        amhw_zlg237_usart_int_enable(p_hw_usart,AMHW_ZLG237_USART_INT_TX_EMPTY_ENABLE);
+        amhw_stm32f103rbt6_usart_int_enable(p_hw_usart,AMHW_STM32F103RBT6_USART_INT_TX_EMPTY_ENABLE);
 
         return 1;
     }
@@ -99,32 +99,32 @@ static uint8_t usart_int_send (amhw_zlg237_usart_t *p_hw_usart,
  */
 static void usart_hw_irq_handler (void *p_arg)
 {
-    amhw_zlg237_usart_t *p_hw_usart = (amhw_zlg237_usart_t *)p_arg;
+    amhw_stm32f103rbt6_usart_t *p_hw_usart = (amhw_stm32f103rbt6_usart_t *)p_arg;
     uint8_t          data;
 
-    if (amhw_zlg237_usart_status_flag_check(
-            p_hw_usart, AMHW_ZLG237_USART_RX_NOT_EMPTY_FLAG) == AM_TRUE) {
-        amhw_zlg237_usart_status_flag_clr(p_hw_usart, AMHW_ZLG237_USART_RX_NOT_EMPTY_FLAG);
+    if (amhw_stm32f103rbt6_usart_status_flag_check(
+            p_hw_usart, AMHW_STM32F103RBT6_USART_RX_NOT_EMPTY_FLAG) == AM_TRUE) {
+        amhw_stm32f103rbt6_usart_status_flag_clr(p_hw_usart, AMHW_STM32F103RBT6_USART_RX_NOT_EMPTY_FLAG);
 
         /* 获取新接收数据，并发送出去 */
 
-        data = amhw_zlg237_usart_data_read(p_hw_usart);
-        amhw_zlg237_usart_data_write(p_hw_usart, data);
+        data = amhw_stm32f103rbt6_usart_data_read(p_hw_usart);
+        amhw_stm32f103rbt6_usart_data_write(p_hw_usart, data);
 
-    } else if (amhw_zlg237_usart_status_flag_check(p_hw_usart,
-    		                                AMHW_ZLG237_USART_TX_EMPTY_FLAG) == AM_TRUE) {
-        amhw_zlg237_usart_status_flag_clr(p_hw_usart,
-        		                   AMHW_ZLG237_USART_TX_EMPTY_FLAG);
+    } else if (amhw_stm32f103rbt6_usart_status_flag_check(p_hw_usart,
+    		                                AMHW_STM32F103RBT6_USART_TX_EMPTY_FLAG) == AM_TRUE) {
+        amhw_stm32f103rbt6_usart_status_flag_clr(p_hw_usart,
+        		                   AMHW_STM32F103RBT6_USART_TX_EMPTY_FLAG);
         /* 发送中断 */
         if(g_tx_index < g_tx_nbytes) {
 
             /* 缓冲区还有待发送数据 */
-            amhw_zlg237_usart_data_write(p_hw_usart, gp_tx_buf[g_tx_index++]);
+            amhw_stm32f103rbt6_usart_data_write(p_hw_usart, gp_tx_buf[g_tx_index++]);
 
         } else {
 
             /* 缓冲区没有发送数据，关闭发送中断 */
-        	amhw_zlg237_usart_int_disable(p_hw_usart, AMHW_ZLG237_USART_INT_TX_EMPTY_ENABLE);
+        	amhw_stm32f103rbt6_usart_int_disable(p_hw_usart, AMHW_STM32F103RBT6_USART_INT_TX_EMPTY_ENABLE);
         }
     }
 }
@@ -132,7 +132,7 @@ static void usart_hw_irq_handler (void *p_arg)
 /**
  * \brief USART hw 中断收发初始化
  */
-void usart_int_init (amhw_zlg237_usart_t *p_hw_usart,
+void usart_int_init (amhw_stm32f103rbt6_usart_t *p_hw_usart,
                      void (* pfn_init)(void),
                      uint32_t         clk_rate,
                      unsigned long    usart_base,
@@ -140,15 +140,15 @@ void usart_int_init (amhw_zlg237_usart_t *p_hw_usart,
 {
     uint8_t inum = 0;
 
-    amhw_zlg237_usart_stop_bit_sel(p_hw_usart, AMHW_ZLG237_USART_STOP_10_BIT);
-    amhw_zlg237_usart_word_length_sel(p_hw_usart, AMHW_ZLG237_USART_DATA_8BIT);
-    amhw_zlg237_usart_parity_bit_sel(p_hw_usart,  AMHW_ZLG237_USART_PARITY_NO);
+    amhw_stm32f103rbt6_usart_stop_bit_sel(p_hw_usart, AMHW_STM32F103RBT6_USART_STOP_10_BIT);
+    amhw_stm32f103rbt6_usart_word_length_sel(p_hw_usart, AMHW_STM32F103RBT6_USART_DATA_8BIT);
+    amhw_stm32f103rbt6_usart_parity_bit_sel(p_hw_usart,  AMHW_STM32F103RBT6_USART_PARITY_NO);
 
     /* 设置串口波特率 */
-    amhw_zlg237_usart_baudrate_set(p_hw_usart, clk_rate, USART_BAUDRATE);
+    amhw_stm32f103rbt6_usart_baudrate_set(p_hw_usart, clk_rate, USART_BAUDRATE);
 
     /* 关闭所有串口中断 */
-    amhw_zlg237_usart_int_disable(p_hw_usart, AMHW_ZLG237_USART_INT_ALL_ENABLE_MASK);
+    amhw_stm32f103rbt6_usart_int_disable(p_hw_usart, AMHW_STM32F103RBT6_USART_INT_ALL_ENABLE_MASK);
 
     /* 计算出不同串口对应的中断向量号 */
     if ((uint32_t)p_hw_usart - usart_base) {
@@ -158,12 +158,12 @@ void usart_int_init (amhw_zlg237_usart_t *p_hw_usart,
     }
 
     /* 使能串口 */
-    amhw_zlg237_usart_receiver_enable(p_hw_usart);
-    amhw_zlg237_usart_transmitter_enable(p_hw_usart);
-    amhw_zlg237_usart_enable(p_hw_usart);
+    amhw_stm32f103rbt6_usart_receiver_enable(p_hw_usart);
+    amhw_stm32f103rbt6_usart_transmitter_enable(p_hw_usart);
+    amhw_stm32f103rbt6_usart_enable(p_hw_usart);
 
     /* 使能接收准中断 */
-    amhw_zlg237_usart_int_enable(p_hw_usart,AMHW_ZLG237_USART_INT_RX_NOT_EMPTY_ENABLE);
+    amhw_stm32f103rbt6_usart_int_enable(p_hw_usart,AMHW_STM32F103RBT6_USART_INT_RX_NOT_EMPTY_ENABLE);
 
     /* 关联中断向量号，开启中断 */
     am_int_connect(inum, usart_hw_irq_handler, (void *)p_hw_usart);
@@ -176,7 +176,7 @@ void usart_int_init (amhw_zlg237_usart_t *p_hw_usart,
 /**
  * \brief 例程入口
  */
-void demo_zlg237_hw_usart_int_entry (amhw_zlg237_usart_t *p_hw_usart,
+void demo_stm32f103rbt6_hw_usart_int_entry (amhw_stm32f103rbt6_usart_t *p_hw_usart,
                                      void (* pfn_init)(void),
                                      uint32_t             clk_rate,
                                      unsigned long        usart_base,
@@ -193,6 +193,6 @@ void demo_zlg237_hw_usart_int_entry (amhw_zlg237_usart_t *p_hw_usart,
         ; /* VOID */
     }
 }
-/** [src_zlg237_hw_usart_int] */
+/** [src_stm32f103rbt6_hw_usart_int] */
 
 /* end of file */

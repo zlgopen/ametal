@@ -18,7 +18,7 @@
  * 使之与具体器件无关，实现跨平台调用。
  *
  * - 操作步骤:
- *   1. 将 MicroPort FLASH 配板连接到 AM237 的 MicroPort 接口。
+ *   1. 将 MicroPort FLASH 配板连接到 STM32F103RBT6 的 MicroPort 接口。
  *
  * - 实验现象:
  *   1. 主机写数据到 FLASH；
@@ -46,8 +46,8 @@
 /** [src_microport_flash_mtd] */
 #include "ametal.h"
 #include "am_vdebug.h"
-#include "am_zlg237_inst_init.h"
-#include "demo_am237_core_entries.h"
+#include "am_stm32f103rbt6_inst_init.h"
+#include "demo_stm32f103rbt6_core_entries.h"
 
 #define __TEST_LENTH      16    /**< \brief 读写字节数 */
 
@@ -58,9 +58,9 @@
  *
  * \return 无
  */
-void demo_zlg237_core_microport_flash_mtd_entry (void)
+void demo_stm32f103rbt6_core_microport_flash_mtd_entry (void)
 {
-    AM_DBG_INFO("demo am237_core microport flash mtd!\r\n");
+    AM_DBG_INFO("demo stm32f103rbt6_core microport flash mtd!\r\n");
 
     demo_mtd_entry(am_microport_flash_mtd_inst_init(), 8);
 }

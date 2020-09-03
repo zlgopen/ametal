@@ -20,14 +20,14 @@
  * \endinternal
  */
  
-#include <amhw_zlg237_rcc.h>
+#include <amhw_stm32f103rbt6_rcc.h>
 
 /* 使能或禁能外设 */
-static void __rcc_ahb_cmd(amhw_zlg237_ahb_peripheral peri, uint8_t cmd)
+static void __rcc_ahb_cmd(amhw_stm32f103rbt6_ahb_peripheral peri, uint8_t cmd)
 {
     uint32_t temp = 0;
 
-    temp = ZLG237_RCC->ahbenr;
+    temp = STM32F103RBT6_RCC->ahbenr;
 
     temp = 0x000000ff & temp;
 
@@ -37,7 +37,7 @@ static void __rcc_ahb_cmd(amhw_zlg237_ahb_peripheral peri, uint8_t cmd)
         temp = (~(1ul << peri)) & temp;
     }
 
-    ZLG237_RCC->ahbenr = temp;
+    STM32F103RBT6_RCC->ahbenr = temp;
 }
 
 /**
@@ -48,7 +48,7 @@ static void __rcc_ahb_cmd(amhw_zlg237_ahb_peripheral peri, uint8_t cmd)
  * \return 无
  *
  */
-void amhw_zlg237_rcc_ahb_enable (amhw_zlg237_ahb_peripheral peri)
+void amhw_stm32f103rbt6_rcc_ahb_enable (amhw_stm32f103rbt6_ahb_peripheral peri)
 {
     __rcc_ahb_cmd(peri, 1);
 }
@@ -61,7 +61,7 @@ void amhw_zlg237_rcc_ahb_enable (amhw_zlg237_ahb_peripheral peri)
  * \return 无
  *
  */
-void amhw_zlg237_rcc_ahb_disable (amhw_zlg237_ahb_peripheral peri)
+void amhw_stm32f103rbt6_rcc_ahb_disable (amhw_stm32f103rbt6_ahb_peripheral peri)
 {
 
     __rcc_ahb_cmd(peri, 0);

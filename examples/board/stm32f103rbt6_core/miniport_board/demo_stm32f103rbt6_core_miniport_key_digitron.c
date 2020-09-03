@@ -15,7 +15,7 @@
  * \brief MiniPort-View + MiniPort-KEY 例程，通过标准接口实现
  *
  * - 操作步骤
- *   1. 先将 MiniPort-KEY 板子直接与 AM237 的 MiniPort 相连接；
+ *   1. 先将 MiniPort-KEY 板子直接与 STM32F103RBT6 的 MiniPort 相连接；
  *   2. 将 MiniPort-View 板子与 MiniPort-KEY 接口相连接。
  *
  * - 实验现象：
@@ -44,16 +44,16 @@
 /** [src_miniport_key_digitron] */
 #include "ametal.h"
 #include "am_vdebug.h"
-#include "am_zlg237_inst_init.h"
+#include "am_stm32f103rbt6_inst_init.h"
 #include "demo_std_entries.h"
-#include "demo_am237_core_entries.h"
+#include "demo_stm32f103rbt6_core_entries.h"
 
 /**
  * \brief 例程入口
  */
-void demo_zlg237_core_miniport_key_digitron_entry (void)
+void demo_stm32f103rbt6_core_miniport_key_digitron_entry (void)
 {
-    AM_DBG_INFO("demo am237_core miniport key digitron!\r\n");
+    AM_DBG_INFO("demo stm32f103rbt6_core miniport key digitron!\r\n");
 
     am_miniport_view_key_inst_init();
 

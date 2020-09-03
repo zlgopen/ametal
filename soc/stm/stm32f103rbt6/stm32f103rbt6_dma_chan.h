@@ -12,7 +12,7 @@
 
 /**
  * \file
- * \brief ZLG237 DMA 通道编号定义
+ * \brief STM32F103RBT6 DMA 通道编号定义
  *
  * \internal
  * \par Modification History
@@ -22,21 +22,21 @@
  * \endinternal
  */
 
-#ifndef __ZLG237_DMA_CHAN_H
-#define __ZLG237_DMA_CHAN_H
+#ifndef __STM32F103RBT6_DMA_CHAN_H
+#define __STM32F103RBT6_DMA_CHAN_H
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
 /**
- * \addtogroup zlg237_if_dma_chan
- * \copydoc zlg237_dma_chan.h
+ * \addtogroup stm32f103rbt6_if_dma_chan
+ * \copydoc stm32f103rbt6_dma_chan.h
  * @{
  */
 
 /**
- * \name ZLG237 DMA 通道编号
+ * \name STM32F103RBT6 DMA 通道编号
  * @{
  */
 #define DMA_CHAN_1                0               /**< \brief DMA通道1 */
@@ -112,7 +112,7 @@ extern "C" {
 /** @} */
 
 /**
- * @} zlg237_if_dma_chan
+ * @} stm32f103rbt6_if_dma_chan
  */
 
 #ifdef __cplusplus

@@ -12,8 +12,8 @@
 
 /**
  * \file
- * \brief ZLG237 SYSTICK 用户配置文件
- * \sa am_hwconf_zlg237_systick.c
+ * \brief STM32F103RBT6 SYSTICK 用户配置文件
+ * \sa am_hwconf_stm32f103rbt6_systick.c
  *
  * \internal
  * \par Modification History
@@ -21,13 +21,13 @@
  * \endinternal
  */
 
-#include "am_zlg237.h"
+#include "am_stm32f103rbt6.h"
 #include "am_arm_systick.h"
 #include "amhw_arm_systick.h"
 
 /**
- * \addtogroup am_if_src_hwconf_zlg237_systick
- * \copydoc am_hwconf_zlg237_systick.c
+ * \addtogroup am_if_src_hwconf_stm32f103rbt6_systick
+ * \copydoc am_hwconf_stm32f103rbt6_systick.c
  * @{
  */
 
@@ -37,7 +37,7 @@
  *       的 1/2（#AMHW_ARM_SYSTICK_CONFIG_CLKSRC_SYSTEM_HALF）
  */
 static const am_arm_systick_devinfo_t __g_systick_devinfo = {
-    ZLG237_SYSTICK,                        /**< \brief 指向 SYSTICK 寄存器块指针 */
+    STM32F103RBT6_SYSTICK,                        /**< \brief 指向 SYSTICK 寄存器块指针 */
     CLK_SYS,                               /**< \brief SYSTICK 时钟 ID */
     AMHW_ARM_SYSTICK_CONFIG_CLKSRC_SYSTEM, /**< \brief SYSTICK 时钟选择系统时钟 */
 
@@ -49,13 +49,13 @@ static const am_arm_systick_devinfo_t __g_systick_devinfo = {
 static am_arm_systick_dev_t __g_systick_dev;
 
 /** \brief SYSTICK 实例初始化，获得 TIMER 标准服务句柄 */
-am_timer_handle_t am_zlg237_systick_inst_init (void)
+am_timer_handle_t am_stm32f103rbt6_systick_inst_init (void)
 {
     return am_arm_systick_init(&__g_systick_dev, &__g_systick_devinfo);
 }
 
 /** \brief SYSTICK 实例解初始化 */
-void am_zlg237_systick_inst_deinit (am_timer_handle_t handle)
+void am_stm32f103rbt6_systick_inst_deinit (am_timer_handle_t handle)
 {
     am_arm_systick_deinit(handle);
 }

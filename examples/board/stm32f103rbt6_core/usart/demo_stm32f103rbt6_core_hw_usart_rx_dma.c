@@ -28,7 +28,7 @@
  *      （如：AM_DBG_INFO()）。
  *
  * \par 源代码
- * \snippet demo_zlg237_hw_usart_rx_dma.c src_zlg237_hw_usart_rx_dma
+ * \snippet demo_stm32f103rbt6_hw_usart_rx_dma.c src_stm32f103rbt6_hw_usart_rx_dma
  *
  *
  * \internal
@@ -38,25 +38,25 @@
  */
 
 /**
- * \addtogroup demo_if_zlg237_hw_usart_rx_dma
- * \copydoc demo_zlg237_hw_usart_rx_dma.c
+ * \addtogroup demo_if_stm32f103rbt6_hw_usart_rx_dma
+ * \copydoc demo_stm32f103rbt6_hw_usart_rx_dma.c
  */
 
-/** [src_zlg237_hw_usart_rx_dma] */
+/** [src_stm32f103rbt6_hw_usart_rx_dma] */
 #include "ametal.h"
-#include "am_zlg237.h"
-#include "demo_zlg_entries.h"
-#include "am_zlg237_inst_init.h"
-#include "demo_am237_core_entries.h"
+#include "am_stm32f103rbt6.h"
+#include "demo_stm32f103rbt6_entries.h"
+#include "am_stm32f103rbt6_inst_init.h"
+#include "demo_stm32f103rbt6_core_entries.h"
 
 /**
  * \brief 例程入口
  */
-void demo_zlg237_core_hw_usart_rx_dma_entry (void)
+void demo_stm32f103rbt6_core_hw_usart_rx_dma_entry (void)
 {
 
 
-    AM_DBG_INFO("demo am237_core hw usart tx dma!\r\n");
+    AM_DBG_INFO("demo stm32f103rbt6_core hw usart tx dma!\r\n");
 
     /* 等待调试串口发送数据完成 */
     am_mdelay(100);
@@ -68,11 +68,11 @@ void demo_zlg237_core_hw_usart_rx_dma_entry (void)
     am_gpio_pin_cfg(PIOA_2, PIOA_2_NO_REMAP | PIOA_2_AF_PP );
     am_gpio_pin_cfg(PIOA_3, PIOA_3_NO_REMAP | PIOA_3_INPUT_FLOAT);
 
-    demo_zlg237_hw_usart_rx_dma_entry((void *)ZLG237_USART2,
+    demo_stm32f103rbt6_hw_usart_rx_dma_entry((void *)STM32F103RBT6_USART2,
                                       am_clk_rate_get(CLK_USART2),
                                       DMA_CHAN_USART2_RX);
 }
 
-/** [src_zlg237_hw_usart_rx_dma] */
+/** [src_stm32f103rbt6_hw_usart_rx_dma] */
 
 /* end of file */

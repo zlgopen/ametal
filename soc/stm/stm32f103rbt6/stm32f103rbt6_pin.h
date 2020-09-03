@@ -12,7 +12,7 @@
 
 /**
  * \file
- * \brief ZLG GPIO 引脚配置参数定义
+ * \brief STM32F103RBT6 GPIO 引脚配置参数定义
  *
  * \note: 配置引脚功能的时候一定要同时配置引脚的模式，如上下拉模式、推挽模式等
  *
@@ -22,23 +22,23 @@
  * \endinternal
  */
 
-#ifndef __ZLG237_PIN_H
-#define __ZLG237_PIN_H
+#ifndef __STM32F103RBT6_PIN_H
+#define __STM32F103RBT6_PIN_H
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-#include "am_zlg237_gpio_util.h"
+#include "am_stm32f103rbt6_gpio_util.h"
 
  /**
- * \addtogroup zlg237_if_pin
- * \copydoc zlg237_pin.h
+ * \addtogroup stm32f103rbt6_if_pin
+ * \copydoc stm32f103rbt6_pin.h
  * @{
  */
 
 /**
- * \name ZLG237 GPIO 引脚编号
+ * \name STM32F103RBT6 GPIO 引脚编号
  * \anchor grp_gpio_pin_number
  * @{
  */
@@ -115,7 +115,7 @@ extern "C" {
 /** @} */
 
 /**
- * \name ZLG237 引脚定义,除调试引脚SWCK、SWIO之外，所有引脚复位时都默认为GPIO功能(浮空输入)
+ * \name STM32F103RBT6 引脚定义,除调试引脚SWCK、SWIO之外，所有引脚复位时都默认为GPIO功能(浮空输入)
  * @{
  */
 
@@ -125,27 +125,27 @@ extern "C" {
 
  */
 
-#define TIM5_CH4_LSI_REMAP1                AM_ZLG237_GPIO_REMAP_CODE(0x10, 1)   /**< \brief TIM5_CH4_LSI */
-#define ADC1_ETRGINJ_REMAP0                AM_ZLG237_GPIO_REMAP_CODE(0x11, 0)   /**< \brief EXTI15 */
-#define ADC1_ETRGINJ_REMAP1                AM_ZLG237_GPIO_REMAP_CODE(0x11, 1)   /**< \brief TIM8_CH4 */
-#define ADC1_ETRGREG_REMAP0                AM_ZLG237_GPIO_REMAP_CODE(0x12, 0)   /**< \brief EXTI11 */
-#define ADC1_ETRGREG_REMAP1                AM_ZLG237_GPIO_REMAP_CODE(0x12, 1)   /**< \brief TIM8_TRGO */
-#define ADC2_ETRGINJ_REMAP0                AM_ZLG237_GPIO_REMAP_CODE(0x13, 0)   /**< \brief EXTI15 */
-#define ADC2_ETRGINJ_REMAP1                AM_ZLG237_GPIO_REMAP_CODE(0x13, 1)   /**< \brief TIM8_CH4 */
-#define ADC2_ETRGREG_REMAP0                AM_ZLG237_GPIO_REMAP_CODE(0x14, 0)   /**< \brief EXTI11 */
-#define ADC2_ETRGREG_REMAP1                AM_ZLG237_GPIO_REMAP_CODE(0x14, 1)   /**< \brief TIM8_TRGO */
+#define TIM5_CH4_LSI_REMAP1                AM_STM32F103RBT6_GPIO_REMAP_CODE(0x10, 1)   /**< \brief TIM5_CH4_LSI */
+#define ADC1_ETRGINJ_REMAP0                AM_STM32F103RBT6_GPIO_REMAP_CODE(0x11, 0)   /**< \brief EXTI15 */
+#define ADC1_ETRGINJ_REMAP1                AM_STM32F103RBT6_GPIO_REMAP_CODE(0x11, 1)   /**< \brief TIM8_CH4 */
+#define ADC1_ETRGREG_REMAP0                AM_STM32F103RBT6_GPIO_REMAP_CODE(0x12, 0)   /**< \brief EXTI11 */
+#define ADC1_ETRGREG_REMAP1                AM_STM32F103RBT6_GPIO_REMAP_CODE(0x12, 1)   /**< \brief TIM8_TRGO */
+#define ADC2_ETRGINJ_REMAP0                AM_STM32F103RBT6_GPIO_REMAP_CODE(0x13, 0)   /**< \brief EXTI15 */
+#define ADC2_ETRGINJ_REMAP1                AM_STM32F103RBT6_GPIO_REMAP_CODE(0x13, 1)   /**< \brief TIM8_CH4 */
+#define ADC2_ETRGREG_REMAP0                AM_STM32F103RBT6_GPIO_REMAP_CODE(0x14, 0)   /**< \brief EXTI11 */
+#define ADC2_ETRGREG_REMAP1                AM_STM32F103RBT6_GPIO_REMAP_CODE(0x14, 1)   /**< \brief TIM8_TRGO */
 /**
  * \name PIOA_0引脚复用功能
  * @{
  */
-#define PIOA_0_NO_REMAP              AM_ZLG237_GPIO_REMAP_CODE(0x15, 0)
+#define PIOA_0_NO_REMAP              AM_STM32F103RBT6_GPIO_REMAP_CODE(0x15, 0)
 #define PIOA_0_ADC12_IN0             PIOA_0_NO_REMAP   /**< \brief ADC12_IN0 */
 #define PIOA_0_WKUP                  PIOA_0_NO_REMAP   /**< \brief WAKE_UP */
 #define PIOA_0_GPIO                  PIOA_0_NO_REMAP   /**< \brief GPIO */
 
-#define PIOA_0_USART2_CTS_REMAP0     AM_ZLG237_GPIO_REMAP_CODE(0x03, 0)   /**< \brief USART2_CTS */
-#define PIOA_0_TIM2_CH1_ETR_REMAP0   AM_ZLG237_GPIO_REMAP_CODE(0x08, 0)   /**< \brief TIM2_CH1_ETR */
-#define PIOA_0_TIM2_CH1_ETR_REMAP2   AM_ZLG237_GPIO_REMAP_CODE(0x08, 2)   /**< \brief TIM2_CH1_ETR */
+#define PIOA_0_USART2_CTS_REMAP0     AM_STM32F103RBT6_GPIO_REMAP_CODE(0x03, 0)   /**< \brief USART2_CTS */
+#define PIOA_0_TIM2_CH1_ETR_REMAP0   AM_STM32F103RBT6_GPIO_REMAP_CODE(0x08, 0)   /**< \brief TIM2_CH1_ETR */
+#define PIOA_0_TIM2_CH1_ETR_REMAP2   AM_STM32F103RBT6_GPIO_REMAP_CODE(0x08, 2)   /**< \brief TIM2_CH1_ETR */
 
 /** @} */
 
@@ -154,14 +154,14 @@ extern "C" {
  * @{
  */
 
-#define PIOA_0_AIN                   AM_ZLG237_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
-#define PIOA_0_INPUT_FLOAT           AM_ZLG237_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式(默认) */
-#define PIOA_0_INPUT_PD              AM_ZLG237_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
-#define PIOA_0_INPUT_PU              AM_ZLG237_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
-#define PIOA_0_OUT_PP                AM_ZLG237_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
-#define PIOA_0_OUT_OD                AM_ZLG237_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
-#define PIOA_0_AF_PP                 AM_ZLG237_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
-#define PIOA_0_AF_OD                 AM_ZLG237_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
+#define PIOA_0_AIN                   AM_STM32F103RBT6_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
+#define PIOA_0_INPUT_FLOAT           AM_STM32F103RBT6_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式(默认) */
+#define PIOA_0_INPUT_PD              AM_STM32F103RBT6_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
+#define PIOA_0_INPUT_PU              AM_STM32F103RBT6_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
+#define PIOA_0_OUT_PP                AM_STM32F103RBT6_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
+#define PIOA_0_OUT_OD                AM_STM32F103RBT6_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
+#define PIOA_0_AF_PP                 AM_STM32F103RBT6_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
+#define PIOA_0_AF_OD                 AM_STM32F103RBT6_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
 
 /** @} */
 
@@ -170,9 +170,9 @@ extern "C" {
  * @{
  */
 
-#define PIOA_0_SPEED_10MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
-#define PIOA_0_SPEED_2MHz            AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
-#define PIOA_0_SPEED_50MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
+#define PIOA_0_SPEED_10MHz           AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOA_0_SPEED_2MHz            AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
+#define PIOA_0_SPEED_50MHz           AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
 
@@ -182,13 +182,13 @@ extern "C" {
  * \name PIOA_1引脚复用功能
  * @{
  */
-#define PIOA_1_NO_REMAP              AM_ZLG237_GPIO_REMAP_CODE(0x15, 0)
+#define PIOA_1_NO_REMAP              AM_STM32F103RBT6_GPIO_REMAP_CODE(0x15, 0)
 #define PIOA_1_ADC12_IN1             PIOA_1_NO_REMAP   /**< \brief ADC12_IN1 */
 #define PIOA_1_GPIO                  PIOA_1_NO_REMAP   /**< \brief GPIO */
 
-#define PIOA_1_TIM2_CH2_REMAP0       AM_ZLG237_GPIO_REMAP_CODE(0x08, 0)   /**< \brief TIM2_CH2 */
-#define PIOA_1_TIM2_CH2_REMAP2       AM_ZLG237_GPIO_REMAP_CODE(0x08, 2)   /**< \brief TIM2_CH2 */
-#define PIOA_1_USART2_RTS_REMAP0     AM_ZLG237_GPIO_REMAP_CODE(0x03, 0)   /**< \brief USART2_RTS */
+#define PIOA_1_TIM2_CH2_REMAP0       AM_STM32F103RBT6_GPIO_REMAP_CODE(0x08, 0)   /**< \brief TIM2_CH2 */
+#define PIOA_1_TIM2_CH2_REMAP2       AM_STM32F103RBT6_GPIO_REMAP_CODE(0x08, 2)   /**< \brief TIM2_CH2 */
+#define PIOA_1_USART2_RTS_REMAP0     AM_STM32F103RBT6_GPIO_REMAP_CODE(0x03, 0)   /**< \brief USART2_RTS */
 
 /** @} */
 
@@ -197,14 +197,14 @@ extern "C" {
  * @{
  */
 
-#define PIOA_1_AIN                   AM_ZLG237_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
-#define PIOA_1_INPUT_FLOAT           AM_ZLG237_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式(默认) */
-#define PIOA_1_INPUT_PD              AM_ZLG237_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
-#define PIOA_1_INPUT_PU              AM_ZLG237_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
-#define PIOA_1_OUT_PP                AM_ZLG237_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
-#define PIOA_1_OUT_OD                AM_ZLG237_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
-#define PIOA_1_AF_PP                 AM_ZLG237_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
-#define PIOA_1_AF_OD                 AM_ZLG237_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
+#define PIOA_1_AIN                   AM_STM32F103RBT6_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
+#define PIOA_1_INPUT_FLOAT           AM_STM32F103RBT6_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式(默认) */
+#define PIOA_1_INPUT_PD              AM_STM32F103RBT6_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
+#define PIOA_1_INPUT_PU              AM_STM32F103RBT6_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
+#define PIOA_1_OUT_PP                AM_STM32F103RBT6_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
+#define PIOA_1_OUT_OD                AM_STM32F103RBT6_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
+#define PIOA_1_AF_PP                 AM_STM32F103RBT6_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
+#define PIOA_1_AF_OD                 AM_STM32F103RBT6_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
 
 /** @} */
 
@@ -213,9 +213,9 @@ extern "C" {
  * @{
  */
 
-#define PIOA_1_SPEED_10MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
-#define PIOA_1_SPEED_2MHz            AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
-#define PIOA_1_SPEED_50MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
+#define PIOA_1_SPEED_10MHz           AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOA_1_SPEED_2MHz            AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
+#define PIOA_1_SPEED_50MHz           AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
 
@@ -225,13 +225,13 @@ extern "C" {
  * \name PIOA_2引脚复用功能
  * @{
  */
-#define PIOA_2_NO_REMAP              AM_ZLG237_GPIO_REMAP_CODE(0x15, 0)
+#define PIOA_2_NO_REMAP              AM_STM32F103RBT6_GPIO_REMAP_CODE(0x15, 0)
 #define PIOA_2_ADC12_IN2             PIOA_2_NO_REMAP   /**< \brief ADC12_IN2 */
 #define PIOA_2_GPIO                  PIOA_2_NO_REMAP   /**< \brief GPIO */
 
-#define PIOA_2_TIM2_CH3_REMAP0       AM_ZLG237_GPIO_REMAP_CODE(0x08, 0)   /**< \brief TIM2_CH3 */
-#define PIOA_2_TIM2_CH3_REMAP1       AM_ZLG237_GPIO_REMAP_CODE(0x08, 1)   /**< \brief TIM2_CH3 */
-#define PIOA_2_USART2_TX_REMAP0      AM_ZLG237_GPIO_REMAP_CODE(0x03, 0)   /**< \brief USART2_RTS */
+#define PIOA_2_TIM2_CH3_REMAP0       AM_STM32F103RBT6_GPIO_REMAP_CODE(0x08, 0)   /**< \brief TIM2_CH3 */
+#define PIOA_2_TIM2_CH3_REMAP1       AM_STM32F103RBT6_GPIO_REMAP_CODE(0x08, 1)   /**< \brief TIM2_CH3 */
+#define PIOA_2_USART2_TX_REMAP0      AM_STM32F103RBT6_GPIO_REMAP_CODE(0x03, 0)   /**< \brief USART2_RTS */
 
 
 /** @} */
@@ -241,14 +241,14 @@ extern "C" {
  * @{
  */
 
-#define PIOA_2_AIN                   AM_ZLG237_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
-#define PIOA_2_INPUT_FLOAT           AM_ZLG237_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式(默认) */
-#define PIOA_2_INPUT_PD              AM_ZLG237_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
-#define PIOA_2_INPUT_PU              AM_ZLG237_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
-#define PIOA_2_OUT_PP                AM_ZLG237_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
-#define PIOA_2_OUT_OD                AM_ZLG237_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
-#define PIOA_2_AF_PP                 AM_ZLG237_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
-#define PIOA_2_AF_OD                 AM_ZLG237_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
+#define PIOA_2_AIN                   AM_STM32F103RBT6_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
+#define PIOA_2_INPUT_FLOAT           AM_STM32F103RBT6_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式(默认) */
+#define PIOA_2_INPUT_PD              AM_STM32F103RBT6_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
+#define PIOA_2_INPUT_PU              AM_STM32F103RBT6_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
+#define PIOA_2_OUT_PP                AM_STM32F103RBT6_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
+#define PIOA_2_OUT_OD                AM_STM32F103RBT6_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
+#define PIOA_2_AF_PP                 AM_STM32F103RBT6_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
+#define PIOA_2_AF_OD                 AM_STM32F103RBT6_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
 
 /** @} */
 
@@ -257,9 +257,9 @@ extern "C" {
  * @{
  */
 
-#define PIOA_2_SPEED_10MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
-#define PIOA_2_SPEED_2MHz            AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
-#define PIOA_2_SPEED_50MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
+#define PIOA_2_SPEED_10MHz           AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOA_2_SPEED_2MHz            AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
+#define PIOA_2_SPEED_50MHz           AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
 
@@ -269,14 +269,14 @@ extern "C" {
  * \name PIOA_3引脚复用功能
  * @{
  */
-#define PIOA_3_NO_REMAP              AM_ZLG237_GPIO_REMAP_CODE(0x15, 0)
+#define PIOA_3_NO_REMAP              AM_STM32F103RBT6_GPIO_REMAP_CODE(0x15, 0)
 #define PIOA_3_ADC12_IN3             PIOA_3_NO_REMAP   /**< \brief ADC12_IN3 */
 #define PIOA_3_GPIO                  PIOA_3_NO_REMAP   /**< \brief GPIO */
 
-#define PIOA_3_TIM2_CH4_REMAP0       AM_ZLG237_GPIO_REMAP_CODE(0x08, 0)   /**< \brief TIM2_CH4 */
-#define PIOA_3_TIM2_CH4_REMAP1       AM_ZLG237_GPIO_REMAP_CODE(0x08, 1)   /**< \brief TIM2_CH4 */
-#define PIOA_3_USART2_RX_REMAP0      AM_ZLG237_GPIO_REMAP_CODE(0x03, 0)   /**< \brief USART2_RX */
-#define PIOA_3_TIM5_CH4_REMAP0       AM_ZLG237_GPIO_REMAP_CODE(0x10, 0)   /**< \brief TIM5_CH4 */
+#define PIOA_3_TIM2_CH4_REMAP0       AM_STM32F103RBT6_GPIO_REMAP_CODE(0x08, 0)   /**< \brief TIM2_CH4 */
+#define PIOA_3_TIM2_CH4_REMAP1       AM_STM32F103RBT6_GPIO_REMAP_CODE(0x08, 1)   /**< \brief TIM2_CH4 */
+#define PIOA_3_USART2_RX_REMAP0      AM_STM32F103RBT6_GPIO_REMAP_CODE(0x03, 0)   /**< \brief USART2_RX */
+#define PIOA_3_TIM5_CH4_REMAP0       AM_STM32F103RBT6_GPIO_REMAP_CODE(0x10, 0)   /**< \brief TIM5_CH4 */
 
 
 /** @} */
@@ -286,14 +286,14 @@ extern "C" {
  * @{
  */
 
-#define PIOA_3_AIN                   AM_ZLG237_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
-#define PIOA_3_INPUT_FLOAT           AM_ZLG237_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式(默认) */
-#define PIOA_3_INPUT_PD              AM_ZLG237_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
-#define PIOA_3_INPUT_PU              AM_ZLG237_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
-#define PIOA_3_OUT_PP                AM_ZLG237_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
-#define PIOA_3_OUT_OD                AM_ZLG237_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
-#define PIOA_3_AF_PP                 AM_ZLG237_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
-#define PIOA_3_AF_OD                 AM_ZLG237_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
+#define PIOA_3_AIN                   AM_STM32F103RBT6_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
+#define PIOA_3_INPUT_FLOAT           AM_STM32F103RBT6_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式(默认) */
+#define PIOA_3_INPUT_PD              AM_STM32F103RBT6_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
+#define PIOA_3_INPUT_PU              AM_STM32F103RBT6_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
+#define PIOA_3_OUT_PP                AM_STM32F103RBT6_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
+#define PIOA_3_OUT_OD                AM_STM32F103RBT6_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
+#define PIOA_3_AF_PP                 AM_STM32F103RBT6_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
+#define PIOA_3_AF_OD                 AM_STM32F103RBT6_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
 
 /** @} */
 
@@ -302,9 +302,9 @@ extern "C" {
  * @{
  */
 
-#define PIOA_3_SPEED_10MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
-#define PIOA_3_SPEED_2MHz            AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
-#define PIOA_3_SPEED_50MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
+#define PIOA_3_SPEED_10MHz           AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOA_3_SPEED_2MHz            AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
+#define PIOA_3_SPEED_50MHz           AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
 
@@ -314,13 +314,13 @@ extern "C" {
  * \name PIOA_4引脚复用功能
  * @{
  */
-#define PIOA_4_NO_REMAP              AM_ZLG237_GPIO_REMAP_CODE(0x15, 0)
+#define PIOA_4_NO_REMAP              AM_STM32F103RBT6_GPIO_REMAP_CODE(0x15, 0)
 #define PIOA_4_ADC12_IN4             PIOA_4_NO_REMAP    /**< \brief ADC12_IN4 */
 #define PIOA_4_DAC1_OUT              PIOA_4_NO_REMAP    /**< \brief DAC1_OUT */
 #define PIOA_4_GPIO                  PIOA_4_NO_REMAP    /**< \brief GPIO */
 
-#define PIOA_4_SPI1_NSS              AM_ZLG237_GPIO_REMAP_CODE(0x00, 0)     /**< \brief SPI1_NSS */
-#define PIOA_4_USART2_CK_REMAP0      AM_ZLG237_GPIO_REMAP_CODE(0x03, 0)     /**< \brief USART2_CK */
+#define PIOA_4_SPI1_NSS              AM_STM32F103RBT6_GPIO_REMAP_CODE(0x00, 0)     /**< \brief SPI1_NSS */
+#define PIOA_4_USART2_CK_REMAP0      AM_STM32F103RBT6_GPIO_REMAP_CODE(0x03, 0)     /**< \brief USART2_CK */
 
 /** @} */
 
@@ -329,14 +329,14 @@ extern "C" {
  * @{
  */
 
-#define PIOA_4_AIN                   AM_ZLG237_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
-#define PIOA_4_INPUT_FLOAT           AM_ZLG237_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式(默认) */
-#define PIOA_4_INPUT_PD              AM_ZLG237_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
-#define PIOA_4_INPUT_PU              AM_ZLG237_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
-#define PIOA_4_OUT_PP                AM_ZLG237_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
-#define PIOA_4_OUT_OD                AM_ZLG237_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
-#define PIOA_4_AF_PP                 AM_ZLG237_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
-#define PIOA_4_AF_OD                 AM_ZLG237_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
+#define PIOA_4_AIN                   AM_STM32F103RBT6_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
+#define PIOA_4_INPUT_FLOAT           AM_STM32F103RBT6_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式(默认) */
+#define PIOA_4_INPUT_PD              AM_STM32F103RBT6_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
+#define PIOA_4_INPUT_PU              AM_STM32F103RBT6_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
+#define PIOA_4_OUT_PP                AM_STM32F103RBT6_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
+#define PIOA_4_OUT_OD                AM_STM32F103RBT6_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
+#define PIOA_4_AF_PP                 AM_STM32F103RBT6_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
+#define PIOA_4_AF_OD                 AM_STM32F103RBT6_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
 
 /** @} */
 
@@ -345,9 +345,9 @@ extern "C" {
  * @{
  */
 
-#define PIOA_4_SPEED_10MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
-#define PIOA_4_SPEED_2MHz            AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
-#define PIOA_4_SPEED_50MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
+#define PIOA_4_SPEED_10MHz           AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOA_4_SPEED_2MHz            AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
+#define PIOA_4_SPEED_50MHz           AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
 
@@ -357,12 +357,12 @@ extern "C" {
  * \name PIOA_5引脚复用功能
  * @{
  */
-#define PIOA_5_NO_REMAP              AM_ZLG237_GPIO_REMAP_CODE(0x15, 0)
+#define PIOA_5_NO_REMAP              AM_STM32F103RBT6_GPIO_REMAP_CODE(0x15, 0)
 #define PIOA_5_ADC12_IN5             PIOA_5_NO_REMAP   /**< \brief ADC12_IN5 */
 #define PIOA_5_DAC2_OUT              PIOA_5_NO_REMAP   /**< \brief DAC2_OUT */
 #define PIOA_5_GPIO                  PIOA_5_NO_REMAP   /**< \brief GPIO */
 
-#define PIOA_5_SPI1_SCK_REMAP0       AM_ZLG237_GPIO_REMAP_CODE(0x00, 0)   /**< \brief SPI1_SCK */
+#define PIOA_5_SPI1_SCK_REMAP0       AM_STM32F103RBT6_GPIO_REMAP_CODE(0x00, 0)   /**< \brief SPI1_SCK */
 
 /** @} */
 
@@ -371,14 +371,14 @@ extern "C" {
  * @{
  */
 
-#define PIOA_5_AIN                   AM_ZLG237_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
-#define PIOA_5_INPUT_FLOAT           AM_ZLG237_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式(默认) */
-#define PIOA_5_INPUT_PD              AM_ZLG237_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
-#define PIOA_5_INPUT_PU              AM_ZLG237_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
-#define PIOA_5_OUT_PP                AM_ZLG237_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
-#define PIOA_5_OUT_OD                AM_ZLG237_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
-#define PIOA_5_AF_PP                 AM_ZLG237_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
-#define PIOA_5_AF_OD                 AM_ZLG237_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
+#define PIOA_5_AIN                   AM_STM32F103RBT6_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
+#define PIOA_5_INPUT_FLOAT           AM_STM32F103RBT6_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式(默认) */
+#define PIOA_5_INPUT_PD              AM_STM32F103RBT6_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
+#define PIOA_5_INPUT_PU              AM_STM32F103RBT6_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
+#define PIOA_5_OUT_PP                AM_STM32F103RBT6_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
+#define PIOA_5_OUT_OD                AM_STM32F103RBT6_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
+#define PIOA_5_AF_PP                 AM_STM32F103RBT6_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
+#define PIOA_5_AF_OD                 AM_STM32F103RBT6_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
 
 /** @} */
 
@@ -387,9 +387,9 @@ extern "C" {
  * @{
  */
 
-#define PIOA_5_SPEED_10MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
-#define PIOA_5_SPEED_2MHz            AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
-#define PIOA_5_SPEED_50MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
+#define PIOA_5_SPEED_10MHz           AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOA_5_SPEED_2MHz            AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
+#define PIOA_5_SPEED_50MHz           AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
 
@@ -399,13 +399,13 @@ extern "C" {
  * \name PIOA_6引脚复用功能
  * @{
  */
-#define PIOA_6_NO_REMAP              AM_ZLG237_GPIO_REMAP_CODE(0x15, 0)
+#define PIOA_6_NO_REMAP              AM_STM32F103RBT6_GPIO_REMAP_CODE(0x15, 0)
 #define PIOA_6_ADC12_IN6             PIOA_6_NO_REMAP   /**< \brief ADC12_IN6 */
 #define PIOA_6_GPIO                  PIOA_6_NO_REMAP   /**< \brief GPIO */
 
-#define PIOA_6_SPI1_MISO_REMAP0      AM_ZLG237_GPIO_REMAP_CODE(0x00, 0)   /**< \brief SPI1_MISO */
-#define PIOA_6_TIM3_CH1_REMAP0       AM_ZLG237_GPIO_REMAP_CODE(0x0A, 0)   /**< \brief TIM3_CH3 */
-#define PIOA_6_TIM1_BAKIN_REMAP1      AM_ZLG237_GPIO_REMAP_CODE(0x06, 1)   /**< \brief TIM1_BAKIN */
+#define PIOA_6_SPI1_MISO_REMAP0      AM_STM32F103RBT6_GPIO_REMAP_CODE(0x00, 0)   /**< \brief SPI1_MISO */
+#define PIOA_6_TIM3_CH1_REMAP0       AM_STM32F103RBT6_GPIO_REMAP_CODE(0x0A, 0)   /**< \brief TIM3_CH3 */
+#define PIOA_6_TIM1_BAKIN_REMAP1      AM_STM32F103RBT6_GPIO_REMAP_CODE(0x06, 1)   /**< \brief TIM1_BAKIN */
 
 /** @} */
 
@@ -414,14 +414,14 @@ extern "C" {
  * @{
  */
 
-#define PIOA_6_AIN                   AM_ZLG237_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
-#define PIOA_6_INPUT_FLOAT           AM_ZLG237_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式(默认) */
-#define PIOA_6_INPUT_PD              AM_ZLG237_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
-#define PIOA_6_INPUT_PU              AM_ZLG237_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
-#define PIOA_6_OUT_PP                AM_ZLG237_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
-#define PIOA_6_OUT_OD                AM_ZLG237_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
-#define PIOA_6_AF_PP                 AM_ZLG237_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
-#define PIOA_6_AF_OD                 AM_ZLG237_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
+#define PIOA_6_AIN                   AM_STM32F103RBT6_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
+#define PIOA_6_INPUT_FLOAT           AM_STM32F103RBT6_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式(默认) */
+#define PIOA_6_INPUT_PD              AM_STM32F103RBT6_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
+#define PIOA_6_INPUT_PU              AM_STM32F103RBT6_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
+#define PIOA_6_OUT_PP                AM_STM32F103RBT6_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
+#define PIOA_6_OUT_OD                AM_STM32F103RBT6_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
+#define PIOA_6_AF_PP                 AM_STM32F103RBT6_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
+#define PIOA_6_AF_OD                 AM_STM32F103RBT6_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
 
 /** @} */
 
@@ -430,9 +430,9 @@ extern "C" {
  * @{
  */
 
-#define PIOA_6_SPEED_10MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
-#define PIOA_6_SPEED_2MHz            AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
-#define PIOA_6_SPEED_50MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
+#define PIOA_6_SPEED_10MHz           AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOA_6_SPEED_2MHz            AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
+#define PIOA_6_SPEED_50MHz           AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
 
@@ -442,13 +442,13 @@ extern "C" {
  * \name PIOA_7引脚复用功能
  * @{
  */
-#define PIOA_7_NO_REMAP              AM_ZLG237_GPIO_REMAP_CODE(0x15, 0)
+#define PIOA_7_NO_REMAP              AM_STM32F103RBT6_GPIO_REMAP_CODE(0x15, 0)
 #define PIOA_7_ADC12_IN7             PIOA_7_NO_REMAP   /**< \brief ADC12_IN7 */
 #define PIOA_7_GPIO                  PIOA_7_NO_REMAP   /**< \brief GPIO */
 
-#define PIOA_7_SPI1_MOSI_REMAP0      AM_ZLG237_GPIO_REMAP_CODE(0x00, 0)   /**< \brief SPI1_MOSI */
-#define PIOA_7_TIM3_CH2_REMAP0       AM_ZLG237_GPIO_REMAP_CODE(0x0A, 0)   /**< \brief TIM3_CH2 */
-#define PIOA_7_TIM1_CH1N_REMAP1      AM_ZLG237_GPIO_REMAP_CODE(0x06, 1)   /**< \brief TIM1_CH1N */
+#define PIOA_7_SPI1_MOSI_REMAP0      AM_STM32F103RBT6_GPIO_REMAP_CODE(0x00, 0)   /**< \brief SPI1_MOSI */
+#define PIOA_7_TIM3_CH2_REMAP0       AM_STM32F103RBT6_GPIO_REMAP_CODE(0x0A, 0)   /**< \brief TIM3_CH2 */
+#define PIOA_7_TIM1_CH1N_REMAP1      AM_STM32F103RBT6_GPIO_REMAP_CODE(0x06, 1)   /**< \brief TIM1_CH1N */
 /** @} */
 
 /**
@@ -456,14 +456,14 @@ extern "C" {
  * @{
  */
 
-#define PIOA_7_AIN                   AM_ZLG237_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
-#define PIOA_7_INPUT_FLOAT           AM_ZLG237_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式(默认) */
-#define PIOA_7_INPUT_PD              AM_ZLG237_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
-#define PIOA_7_INPUT_PU              AM_ZLG237_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
-#define PIOA_7_OUT_PP                AM_ZLG237_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
-#define PIOA_7_OUT_OD                AM_ZLG237_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
-#define PIOA_7_AF_PP                 AM_ZLG237_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
-#define PIOA_7_AF_OD                 AM_ZLG237_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
+#define PIOA_7_AIN                   AM_STM32F103RBT6_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
+#define PIOA_7_INPUT_FLOAT           AM_STM32F103RBT6_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式(默认) */
+#define PIOA_7_INPUT_PD              AM_STM32F103RBT6_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
+#define PIOA_7_INPUT_PU              AM_STM32F103RBT6_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
+#define PIOA_7_OUT_PP                AM_STM32F103RBT6_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
+#define PIOA_7_OUT_OD                AM_STM32F103RBT6_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
+#define PIOA_7_AF_PP                 AM_STM32F103RBT6_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
+#define PIOA_7_AF_OD                 AM_STM32F103RBT6_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
 
 /** @} */
 
@@ -472,9 +472,9 @@ extern "C" {
  * @{
  */
 
-#define PIOA_7_SPEED_10MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
-#define PIOA_7_SPEED_2MHz            AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
-#define PIOA_7_SPEED_50MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
+#define PIOA_7_SPEED_10MHz           AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOA_7_SPEED_2MHz            AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
+#define PIOA_7_SPEED_50MHz           AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
 
@@ -484,12 +484,12 @@ extern "C" {
  * \name PIOA_8引脚复用功能
  * @{
  */
-#define PIOA_8_NO_REMAP              AM_ZLG237_GPIO_REMAP_CODE(0x15, 0)
+#define PIOA_8_NO_REMAP              AM_STM32F103RBT6_GPIO_REMAP_CODE(0x15, 0)
 #define PIOA_8_MCO                   PIOA_8_NO_REMAP   /**< \brief MCO */
 #define PIOA_8_GPIO                  PIOA_8_NO_REMAP   /**< \brief GPIO */
 
-#define PIOA_8_TIM1_CH1_REMAP0       AM_ZLG237_GPIO_REMAP_CODE(0x06, 0)   /**< \brief TIM1_CH1 */
-#define PIOA_8_TIM1_CH1_REMAP1       AM_ZLG237_GPIO_REMAP_CODE(0x06, 1)   /**< \brief TIM1_CH1 */
+#define PIOA_8_TIM1_CH1_REMAP0       AM_STM32F103RBT6_GPIO_REMAP_CODE(0x06, 0)   /**< \brief TIM1_CH1 */
+#define PIOA_8_TIM1_CH1_REMAP1       AM_STM32F103RBT6_GPIO_REMAP_CODE(0x06, 1)   /**< \brief TIM1_CH1 */
 
 /** @} */
 
@@ -498,14 +498,14 @@ extern "C" {
  * @{
  */
 
-#define PIOA_8_AIN                   AM_ZLG237_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
-#define PIOA_8_INPUT_FLOAT           AM_ZLG237_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式(默认) */
-#define PIOA_8_INPUT_PD              AM_ZLG237_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
-#define PIOA_8_INPUT_PU              AM_ZLG237_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
-#define PIOA_8_OUT_PP                AM_ZLG237_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
-#define PIOA_8_OUT_OD                AM_ZLG237_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
-#define PIOA_8_AF_PP                 AM_ZLG237_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
-#define PIOA_8_AF_OD                 AM_ZLG237_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
+#define PIOA_8_AIN                   AM_STM32F103RBT6_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
+#define PIOA_8_INPUT_FLOAT           AM_STM32F103RBT6_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式(默认) */
+#define PIOA_8_INPUT_PD              AM_STM32F103RBT6_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
+#define PIOA_8_INPUT_PU              AM_STM32F103RBT6_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
+#define PIOA_8_OUT_PP                AM_STM32F103RBT6_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
+#define PIOA_8_OUT_OD                AM_STM32F103RBT6_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
+#define PIOA_8_AF_PP                 AM_STM32F103RBT6_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
+#define PIOA_8_AF_OD                 AM_STM32F103RBT6_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
 
 /** @} */
 
@@ -514,9 +514,9 @@ extern "C" {
  * @{
  */
 
-#define PIOA_8_SPEED_10MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
-#define PIOA_8_SPEED_2MHz            AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
-#define PIOA_8_SPEED_50MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
+#define PIOA_8_SPEED_10MHz           AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOA_8_SPEED_2MHz            AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
+#define PIOA_8_SPEED_50MHz           AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
 
@@ -526,12 +526,12 @@ extern "C" {
  * \name PIOA_9引脚复用功能
  * @{
  */
-#define PIOA_9_NO_REMAP              AM_ZLG237_GPIO_REMAP_CODE(0x15, 0)
+#define PIOA_9_NO_REMAP              AM_STM32F103RBT6_GPIO_REMAP_CODE(0x15, 0)
 #define PIOA_9_GPIO                  PIOA_9_NO_REMAP   /**< \brief GPIO */
 
-#define PIOA_9_USART1_TX_REMAP0      AM_ZLG237_GPIO_REMAP_CODE(0x02, 0)   /**< \brief USART1_TX */
-#define PIOA_9_TIM1_CH2_REMAP0       AM_ZLG237_GPIO_REMAP_CODE(0x06, 0)   /**< \brief TIM1_CH2 */
-#define PIOA_9_TIM1_CH2_REMAP1       AM_ZLG237_GPIO_REMAP_CODE(0x06, 1)   /**< \brief TIM1_CH2 */
+#define PIOA_9_USART1_TX_REMAP0      AM_STM32F103RBT6_GPIO_REMAP_CODE(0x02, 0)   /**< \brief USART1_TX */
+#define PIOA_9_TIM1_CH2_REMAP0       AM_STM32F103RBT6_GPIO_REMAP_CODE(0x06, 0)   /**< \brief TIM1_CH2 */
+#define PIOA_9_TIM1_CH2_REMAP1       AM_STM32F103RBT6_GPIO_REMAP_CODE(0x06, 1)   /**< \brief TIM1_CH2 */
 
 /** @} */
 
@@ -540,14 +540,14 @@ extern "C" {
  * @{
  */
 
-#define PIOA_9_AIN                   AM_ZLG237_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
-#define PIOA_9_INPUT_FLOAT           AM_ZLG237_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式(默认) */
-#define PIOA_9_INPUT_PD              AM_ZLG237_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
-#define PIOA_9_INPUT_PU              AM_ZLG237_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
-#define PIOA_9_OUT_PP                AM_ZLG237_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
-#define PIOA_9_OUT_OD                AM_ZLG237_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
-#define PIOA_9_AF_PP                 AM_ZLG237_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
-#define PIOA_9_AF_OD                 AM_ZLG237_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
+#define PIOA_9_AIN                   AM_STM32F103RBT6_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
+#define PIOA_9_INPUT_FLOAT           AM_STM32F103RBT6_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式(默认) */
+#define PIOA_9_INPUT_PD              AM_STM32F103RBT6_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
+#define PIOA_9_INPUT_PU              AM_STM32F103RBT6_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
+#define PIOA_9_OUT_PP                AM_STM32F103RBT6_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
+#define PIOA_9_OUT_OD                AM_STM32F103RBT6_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
+#define PIOA_9_AF_PP                 AM_STM32F103RBT6_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
+#define PIOA_9_AF_OD                 AM_STM32F103RBT6_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
 
 /** @} */
 
@@ -556,9 +556,9 @@ extern "C" {
  * @{
  */
 
-#define PIOA_9_SPEED_10MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
-#define PIOA_9_SPEED_2MHz            AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
-#define PIOA_9_SPEED_50MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
+#define PIOA_9_SPEED_10MHz           AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOA_9_SPEED_2MHz            AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
+#define PIOA_9_SPEED_50MHz           AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
 
@@ -568,12 +568,12 @@ extern "C" {
  * \name PIOA_10引脚复用功能
  * @{
  */
-#define PIOA_10_NO_REMAP             AM_ZLG237_GPIO_REMAP_CODE(0x15, 0)
+#define PIOA_10_NO_REMAP             AM_STM32F103RBT6_GPIO_REMAP_CODE(0x15, 0)
 #define PIOA_10_GPIO                 PIOA_10_NO_REMAP   /**< \brief GPIO */
 
-#define PIOA_10_USART1_RX_REMAP0     AM_ZLG237_GPIO_REMAP_CODE(0x02, 0)   /**< \brief USART1_RX */
-#define PIOA_10_TIM1_CH3_REMAP0      AM_ZLG237_GPIO_REMAP_CODE(0x06, 0)   /**< \brief TIM1_CH3 */
-#define PIOA_10_TIM1_CH3_REMAP1      AM_ZLG237_GPIO_REMAP_CODE(0x06, 1)   /**< \brief TIM1_CH3 */
+#define PIOA_10_USART1_RX_REMAP0     AM_STM32F103RBT6_GPIO_REMAP_CODE(0x02, 0)   /**< \brief USART1_RX */
+#define PIOA_10_TIM1_CH3_REMAP0      AM_STM32F103RBT6_GPIO_REMAP_CODE(0x06, 0)   /**< \brief TIM1_CH3 */
+#define PIOA_10_TIM1_CH3_REMAP1      AM_STM32F103RBT6_GPIO_REMAP_CODE(0x06, 1)   /**< \brief TIM1_CH3 */
 /** @} */
 
 /**
@@ -581,14 +581,14 @@ extern "C" {
  * @{
  */
 
-#define PIOA_10_AIN                   AM_ZLG237_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
-#define PIOA_10_INPUT_FLOAT           AM_ZLG237_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式(默认) */
-#define PIOA_10_INPUT_PD              AM_ZLG237_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
-#define PIOA_10_INPUT_PU              AM_ZLG237_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
-#define PIOA_10_OUT_PP                AM_ZLG237_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
-#define PIOA_10_OUT_OD                AM_ZLG237_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
-#define PIOA_10_AF_PP                 AM_ZLG237_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
-#define PIOA_10_AF_OD                 AM_ZLG237_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
+#define PIOA_10_AIN                   AM_STM32F103RBT6_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
+#define PIOA_10_INPUT_FLOAT           AM_STM32F103RBT6_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式(默认) */
+#define PIOA_10_INPUT_PD              AM_STM32F103RBT6_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
+#define PIOA_10_INPUT_PU              AM_STM32F103RBT6_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
+#define PIOA_10_OUT_PP                AM_STM32F103RBT6_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
+#define PIOA_10_OUT_OD                AM_STM32F103RBT6_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
+#define PIOA_10_AF_PP                 AM_STM32F103RBT6_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
+#define PIOA_10_AF_OD                 AM_STM32F103RBT6_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
 
 /** @} */
 
@@ -597,9 +597,9 @@ extern "C" {
  * @{
  */
 
-#define PIOA_10_SPEED_10MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
-#define PIOA_10_SPEED_2MHz            AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
-#define PIOA_10_SPEED_50MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
+#define PIOA_10_SPEED_10MHz           AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOA_10_SPEED_2MHz            AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
+#define PIOA_10_SPEED_50MHz           AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
 
@@ -609,14 +609,14 @@ extern "C" {
  * \name PIOA_11引脚复用功能
  * @{
  */
-#define PIOA_11_NO_REMAP             AM_ZLG237_GPIO_REMAP_CODE(0x15, 0)
+#define PIOA_11_NO_REMAP             AM_STM32F103RBT6_GPIO_REMAP_CODE(0x15, 0)
 #define PIOA_11_USART1_CTS           PIOA_11_NO_REMAP   /**< \brief USART1_CTS */
 #define PIOA_11_USBDM                PIOA_11_NO_REMAP   /**< \brief USBDM */
 #define PIOA_11_GPIO                 PIOA_11_NO_REMAP   /**< \brief GPIO */
 
-#define PIOA_11_TIM1_CH4_REMAP0      AM_ZLG237_GPIO_REMAP_CODE(0X06, 0)  /**< \brief TIM1_CH4 */
-#define PIOA_11_TIM1_CH4_REMAP1      AM_ZLG237_GPIO_REMAP_CODE(0X06, 1)  /**< \brief TIM1_CH4 */
-#define PIOA_11_CAN_RX_REMAP0        AM_ZLG237_GPIO_REMAP_CODE(0X0D, 0)  /**< \brief CAN_RX */
+#define PIOA_11_TIM1_CH4_REMAP0      AM_STM32F103RBT6_GPIO_REMAP_CODE(0X06, 0)  /**< \brief TIM1_CH4 */
+#define PIOA_11_TIM1_CH4_REMAP1      AM_STM32F103RBT6_GPIO_REMAP_CODE(0X06, 1)  /**< \brief TIM1_CH4 */
+#define PIOA_11_CAN_RX_REMAP0        AM_STM32F103RBT6_GPIO_REMAP_CODE(0X0D, 0)  /**< \brief CAN_RX */
 /** @} */
 
 /**
@@ -624,14 +624,14 @@ extern "C" {
  * @{
  */
 
-#define PIOA_11_AIN                   AM_ZLG237_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
-#define PIOA_11_INPUT_FLOAT           AM_ZLG237_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式(默认) */
-#define PIOA_11_INPUT_PD              AM_ZLG237_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
-#define PIOA_11_INPUT_PU              AM_ZLG237_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
-#define PIOA_11_OUT_PP                AM_ZLG237_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
-#define PIOA_11_OUT_OD                AM_ZLG237_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
-#define PIOA_11_AF_PP                 AM_ZLG237_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
-#define PIOA_11_AF_OD                 AM_ZLG237_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
+#define PIOA_11_AIN                   AM_STM32F103RBT6_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
+#define PIOA_11_INPUT_FLOAT           AM_STM32F103RBT6_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式(默认) */
+#define PIOA_11_INPUT_PD              AM_STM32F103RBT6_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
+#define PIOA_11_INPUT_PU              AM_STM32F103RBT6_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
+#define PIOA_11_OUT_PP                AM_STM32F103RBT6_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
+#define PIOA_11_OUT_OD                AM_STM32F103RBT6_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
+#define PIOA_11_AF_PP                 AM_STM32F103RBT6_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
+#define PIOA_11_AF_OD                 AM_STM32F103RBT6_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
 
 /** @} */
 
@@ -640,9 +640,9 @@ extern "C" {
  * @{
  */
 
-#define PIOA_11_SPEED_10MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
-#define PIOA_11_SPEED_2MHz            AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
-#define PIOA_11_SPEED_50MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
+#define PIOA_11_SPEED_10MHz           AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOA_11_SPEED_2MHz            AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
+#define PIOA_11_SPEED_50MHz           AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
 
@@ -652,14 +652,14 @@ extern "C" {
  * \name PIOA_12引脚复用功能
  * @{
  */
-#define PIOA_12_NO_REMAP              AM_ZLG237_GPIO_REMAP_CODE(0x15, 0)
+#define PIOA_12_NO_REMAP              AM_STM32F103RBT6_GPIO_REMAP_CODE(0x15, 0)
 #define PIOA_12_USART1_RTS            PIOA_12_NO_REMAP   /**< \brief USART1_RTS */
 #define PIOA_12_USBDP                 PIOA_12_NO_REMAP
 #define PIOA_12_GPIO                  PIOA_12_NO_REMAP   /**< \brief GPIO */
 
-#define PIOA_12_CAN_TX_REMAP0         AM_ZLG237_GPIO_REMAP_CODE(0x0D, 0)   /**< \brief CAN_TX */
-#define PIOA_12_TIM1_ETR_REMAP0       AM_ZLG237_GPIO_REMAP_CODE(0x06, 0)   /**< \brief TIM1_ETR */
-#define PIOA_12_TIM1_ETR_REMAP1       AM_ZLG237_GPIO_REMAP_CODE(0x06, 1)   /**< \brief TIM1_ETR */
+#define PIOA_12_CAN_TX_REMAP0         AM_STM32F103RBT6_GPIO_REMAP_CODE(0x0D, 0)   /**< \brief CAN_TX */
+#define PIOA_12_TIM1_ETR_REMAP0       AM_STM32F103RBT6_GPIO_REMAP_CODE(0x06, 0)   /**< \brief TIM1_ETR */
+#define PIOA_12_TIM1_ETR_REMAP1       AM_STM32F103RBT6_GPIO_REMAP_CODE(0x06, 1)   /**< \brief TIM1_ETR */
 
 /** @} */
 
@@ -668,14 +668,14 @@ extern "C" {
  * @{
  */
 
-#define PIOA_12_AIN                   AM_ZLG237_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
-#define PIOA_12_INPUT_FLOAT           AM_ZLG237_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式(默认) */
-#define PIOA_12_INPUT_PD              AM_ZLG237_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
-#define PIOA_12_INPUT_PU              AM_ZLG237_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
-#define PIOA_12_OUT_PP                AM_ZLG237_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
-#define PIOA_12_OUT_OD                AM_ZLG237_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
-#define PIOA_12_AF_PP                 AM_ZLG237_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
-#define PIOA_12_AF_OD                 AM_ZLG237_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
+#define PIOA_12_AIN                   AM_STM32F103RBT6_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
+#define PIOA_12_INPUT_FLOAT           AM_STM32F103RBT6_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式(默认) */
+#define PIOA_12_INPUT_PD              AM_STM32F103RBT6_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
+#define PIOA_12_INPUT_PU              AM_STM32F103RBT6_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
+#define PIOA_12_OUT_PP                AM_STM32F103RBT6_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
+#define PIOA_12_OUT_OD                AM_STM32F103RBT6_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
+#define PIOA_12_AF_PP                 AM_STM32F103RBT6_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
+#define PIOA_12_AF_OD                 AM_STM32F103RBT6_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
 
 /** @} */
 
@@ -684,9 +684,9 @@ extern "C" {
  * @{
  */
 
-#define PIOA_12_SPEED_10MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
-#define PIOA_12_SPEED_2MHz            AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
-#define PIOA_12_SPEED_50MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
+#define PIOA_12_SPEED_10MHz           AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOA_12_SPEED_2MHz            AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
+#define PIOA_12_SPEED_50MHz           AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
 
@@ -696,10 +696,10 @@ extern "C" {
  * \name PIOA_13引脚复用功能
  * @{
  */
-#define PIOA_13_NO_REMAP              AM_ZLG237_GPIO_REMAP_CODE(0x15, 0)
+#define PIOA_13_NO_REMAP              AM_STM32F103RBT6_GPIO_REMAP_CODE(0x15, 0)
 #define PIOA_13_GPIO                  PIOA_13_NO_REMAP   /**< \brief GPIO */
 
-#define PIOA_13_SWDIO                 AM_ZLG237_GPIO_REMAP_CODE(0x18, 0)   /**< \brief SWDIO */
+#define PIOA_13_SWDIO                 AM_STM32F103RBT6_GPIO_REMAP_CODE(0x18, 0)   /**< \brief SWDIO */
 /** @} */
 
 /**
@@ -707,14 +707,14 @@ extern "C" {
  * @{
  */
 
-#define PIOA_13_AIN                   AM_ZLG237_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
-#define PIOA_13_INPUT_FLOAT           AM_ZLG237_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式(默认) */
-#define PIOA_13_INPUT_PD              AM_ZLG237_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
-#define PIOA_13_INPUT_PU              AM_ZLG237_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
-#define PIOA_13_OUT_PP                AM_ZLG237_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
-#define PIOA_13_OUT_OD                AM_ZLG237_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
-#define PIOA_13_AF_PP                 AM_ZLG237_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
-#define PIOA_13_AF_OD                 AM_ZLG237_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
+#define PIOA_13_AIN                   AM_STM32F103RBT6_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
+#define PIOA_13_INPUT_FLOAT           AM_STM32F103RBT6_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式(默认) */
+#define PIOA_13_INPUT_PD              AM_STM32F103RBT6_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
+#define PIOA_13_INPUT_PU              AM_STM32F103RBT6_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
+#define PIOA_13_OUT_PP                AM_STM32F103RBT6_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
+#define PIOA_13_OUT_OD                AM_STM32F103RBT6_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
+#define PIOA_13_AF_PP                 AM_STM32F103RBT6_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
+#define PIOA_13_AF_OD                 AM_STM32F103RBT6_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
 
 /** @} */
 
@@ -723,9 +723,9 @@ extern "C" {
  * @{
  */
 
-#define PIOA_13_SPEED_10MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
-#define PIOA_13_SPEED_2MHz            AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
-#define PIOA_13_SPEED_50MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
+#define PIOA_13_SPEED_10MHz           AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOA_13_SPEED_2MHz            AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
+#define PIOA_13_SPEED_50MHz           AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
 
@@ -735,10 +735,10 @@ extern "C" {
  * \name PIOA_14引脚复用功能
  * @{
  */
-#define PIOA_14_NO_REMAP              AM_ZLG237_GPIO_REMAP_CODE(0x15, 0)
+#define PIOA_14_NO_REMAP              AM_STM32F103RBT6_GPIO_REMAP_CODE(0x15, 0)
 #define PIOA_14_GPIO                  PIOA_14_NO_REMAP   /**< \brief GPIO */
 
-#define PIOA_14_SWDCLK                AM_ZLG237_GPIO_REMAP_CODE(0x18, 0)   /**< \brief SWDCLK */
+#define PIOA_14_SWDCLK                AM_STM32F103RBT6_GPIO_REMAP_CODE(0x18, 0)   /**< \brief SWDCLK */
 /** @} */
 
 /**
@@ -746,14 +746,14 @@ extern "C" {
  * @{
  */
 
-#define PIOA_14_AIN                   AM_ZLG237_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
-#define PIOA_14_INPUT_FLOAT           AM_ZLG237_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式(默认) */
-#define PIOA_14_INPUT_PD              AM_ZLG237_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
-#define PIOA_14_INPUT_PU              AM_ZLG237_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
-#define PIOA_14_OUT_PP                AM_ZLG237_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
-#define PIOA_14_OUT_OD                AM_ZLG237_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
-#define PIOA_14_AF_PP                 AM_ZLG237_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
-#define PIOA_14_AF_OD                 AM_ZLG237_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
+#define PIOA_14_AIN                   AM_STM32F103RBT6_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
+#define PIOA_14_INPUT_FLOAT           AM_STM32F103RBT6_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式(默认) */
+#define PIOA_14_INPUT_PD              AM_STM32F103RBT6_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
+#define PIOA_14_INPUT_PU              AM_STM32F103RBT6_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
+#define PIOA_14_OUT_PP                AM_STM32F103RBT6_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
+#define PIOA_14_OUT_OD                AM_STM32F103RBT6_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
+#define PIOA_14_AF_PP                 AM_STM32F103RBT6_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
+#define PIOA_14_AF_OD                 AM_STM32F103RBT6_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
 
 /** @} */
 
@@ -762,9 +762,9 @@ extern "C" {
  * @{
  */
 
-#define PIOA_14_SPEED_10MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
-#define PIOA_14_SPEED_2MHz            AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
-#define PIOA_14_SPEED_50MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
+#define PIOA_14_SPEED_10MHz           AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOA_14_SPEED_2MHz            AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
+#define PIOA_14_SPEED_50MHz           AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
 
@@ -774,13 +774,13 @@ extern "C" {
  * \name PIOA_15引脚复用功能
  * @{
  */
-#define PIOA_15_NO_REMAP              AM_ZLG237_GPIO_REMAP_CODE(0x15, 0)
+#define PIOA_15_NO_REMAP              AM_STM32F103RBT6_GPIO_REMAP_CODE(0x15, 0)
 #define PIOA_15_GPIO                  PIOA_15_NO_REMAP   /**< \brief GPIO */
 
-#define PIOA_15_JTDI                  AM_ZLG237_GPIO_REMAP_CODE(0x18, 0)   /**< \brief JTDI */
-#define PIOA_15_TIM2_CH1_ETR_REMAP1   AM_ZLG237_GPIO_REMAP_CODE(0x08, 1)   /**< \brief TIM2_CH1_ETR */
-#define PIOA_15_TIM2_CH1_ETR_REMAP3   AM_ZLG237_GPIO_REMAP_CODE(0x08, 3)   /**< \brief TIM2_CH1_ETR */
-#define PIOA_15_SPI1_NSS              AM_ZLG237_GPIO_REMAP_CODE(0x00, 1)   /**< \brief SPI1_NSS */
+#define PIOA_15_JTDI                  AM_STM32F103RBT6_GPIO_REMAP_CODE(0x18, 0)   /**< \brief JTDI */
+#define PIOA_15_TIM2_CH1_ETR_REMAP1   AM_STM32F103RBT6_GPIO_REMAP_CODE(0x08, 1)   /**< \brief TIM2_CH1_ETR */
+#define PIOA_15_TIM2_CH1_ETR_REMAP3   AM_STM32F103RBT6_GPIO_REMAP_CODE(0x08, 3)   /**< \brief TIM2_CH1_ETR */
+#define PIOA_15_SPI1_NSS              AM_STM32F103RBT6_GPIO_REMAP_CODE(0x00, 1)   /**< \brief SPI1_NSS */
 /** @} */
 
 /**
@@ -788,14 +788,14 @@ extern "C" {
  * @{
  */
 
-#define PIOA_15_AIN                   AM_ZLG237_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
-#define PIOA_15_INPUT_FLOAT           AM_ZLG237_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式(默认) */
-#define PIOA_15_INPUT_PD              AM_ZLG237_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
-#define PIOA_15_INPUT_PU              AM_ZLG237_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
-#define PIOA_15_OUT_PP                AM_ZLG237_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
-#define PIOA_15_OUT_OD                AM_ZLG237_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
-#define PIOA_15_AF_PP                 AM_ZLG237_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
-#define PIOA_15_AF_OD                 AM_ZLG237_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
+#define PIOA_15_AIN                   AM_STM32F103RBT6_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
+#define PIOA_15_INPUT_FLOAT           AM_STM32F103RBT6_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式(默认) */
+#define PIOA_15_INPUT_PD              AM_STM32F103RBT6_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
+#define PIOA_15_INPUT_PU              AM_STM32F103RBT6_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
+#define PIOA_15_OUT_PP                AM_STM32F103RBT6_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
+#define PIOA_15_OUT_OD                AM_STM32F103RBT6_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
+#define PIOA_15_AF_PP                 AM_STM32F103RBT6_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
+#define PIOA_15_AF_OD                 AM_STM32F103RBT6_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
 
 /** @} */
 
@@ -804,9 +804,9 @@ extern "C" {
  * @{
  */
 
-#define PIOA_15_SPEED_10MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
-#define PIOA_15_SPEED_2MHz            AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
-#define PIOA_15_SPEED_50MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
+#define PIOA_15_SPEED_10MHz           AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOA_15_SPEED_2MHz            AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
+#define PIOA_15_SPEED_50MHz           AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
 
@@ -816,13 +816,13 @@ extern "C" {
  * \name PIOB_0引脚复用功能
  * @{
  */
-#define PIOB_0_NO_REMAP               AM_ZLG237_GPIO_REMAP_CODE(0x15, 0)
+#define PIOB_0_NO_REMAP               AM_STM32F103RBT6_GPIO_REMAP_CODE(0x15, 0)
 #define PIOB_0_ADC12_IN8              PIOB_0_NO_REMAP   /**< \brief ADC12_IN8 */
 #define PIOB_0_GPIO                   PIOB_0_NO_REMAP   /**< \brief GPIO */
 
-#define PIOB_0_TIM3_CH3_REMAP0        AM_ZLG237_GPIO_REMAP_CODE(0x0A, 0)   /**< \brief TIM3_CH3 */
-#define PIOB_0_TIM3_CH3_REMAP2        AM_ZLG237_GPIO_REMAP_CODE(0x0A, 2)   /**< \brief TIM3_CH3 */
-#define PIOB_0_TIM1_CH2N_REMAP1       AM_ZLG237_GPIO_REMAP_CODE(0X06, 1)   /**< \brief TIM1_CH2N */
+#define PIOB_0_TIM3_CH3_REMAP0        AM_STM32F103RBT6_GPIO_REMAP_CODE(0x0A, 0)   /**< \brief TIM3_CH3 */
+#define PIOB_0_TIM3_CH3_REMAP2        AM_STM32F103RBT6_GPIO_REMAP_CODE(0x0A, 2)   /**< \brief TIM3_CH3 */
+#define PIOB_0_TIM1_CH2N_REMAP1       AM_STM32F103RBT6_GPIO_REMAP_CODE(0X06, 1)   /**< \brief TIM1_CH2N */
 /** @} */
 
 /**
@@ -830,14 +830,14 @@ extern "C" {
  * @{
  */
 
-#define PIOB_0_AIN                   AM_ZLG237_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
-#define PIOB_0_INPUT_FLOAT           AM_ZLG237_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式(默认) */
-#define PIOB_0_INPUT_PD              AM_ZLG237_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
-#define PIOB_0_INPUT_PU              AM_ZLG237_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
-#define PIOB_0_OUT_PP                AM_ZLG237_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
-#define PIOB_0_OUT_OD                AM_ZLG237_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
-#define PIOB_0_AF_PP                 AM_ZLG237_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
-#define PIOB_0_AF_OD                 AM_ZLG237_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
+#define PIOB_0_AIN                   AM_STM32F103RBT6_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
+#define PIOB_0_INPUT_FLOAT           AM_STM32F103RBT6_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式(默认) */
+#define PIOB_0_INPUT_PD              AM_STM32F103RBT6_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
+#define PIOB_0_INPUT_PU              AM_STM32F103RBT6_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
+#define PIOB_0_OUT_PP                AM_STM32F103RBT6_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
+#define PIOB_0_OUT_OD                AM_STM32F103RBT6_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
+#define PIOB_0_AF_PP                 AM_STM32F103RBT6_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
+#define PIOB_0_AF_OD                 AM_STM32F103RBT6_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
 
 /** @} */
 
@@ -846,9 +846,9 @@ extern "C" {
  * @{
  */
 
-#define PIOB_0_SPEED_10MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
-#define PIOB_0_SPEED_2MHz            AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
-#define PIOB_0_SPEED_50MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
+#define PIOB_0_SPEED_10MHz           AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOB_0_SPEED_2MHz            AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
+#define PIOB_0_SPEED_50MHz           AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
 
@@ -858,13 +858,13 @@ extern "C" {
  * \name PIOB_1引脚复用功能
  * @{
  */
-#define PIOB_1_NO_REMAP              AM_ZLG237_GPIO_REMAP_CODE(0x15, 0)
+#define PIOB_1_NO_REMAP              AM_STM32F103RBT6_GPIO_REMAP_CODE(0x15, 0)
 #define PIOB_1_ADC12_IN9             PIOB_1_NO_REMAP   /**< \brief ADC12_IN9 */
 #define PIOB_1_GPIO                  PIOB_1_NO_REMAP   /**< \brief GPIO */
 
-#define PIOB_1_TIM3_CH4_REMAP0       AM_ZLG237_GPIO_REMAP_CODE(0x0A, 0)   /**< \brief TIM3_CH4 */
-#define PIOB_1_TIM3_CH4_REMAP1       AM_ZLG237_GPIO_REMAP_CODE(0x0A, 2)   /**< \brief TIM3_CH4 */
-#define PIOB_1_TIM1_CH3N_REMAP1      AM_ZLG237_GPIO_REMAP_CODE(0x06, 1)   /**< \brief TIM1_CH3N */
+#define PIOB_1_TIM3_CH4_REMAP0       AM_STM32F103RBT6_GPIO_REMAP_CODE(0x0A, 0)   /**< \brief TIM3_CH4 */
+#define PIOB_1_TIM3_CH4_REMAP1       AM_STM32F103RBT6_GPIO_REMAP_CODE(0x0A, 2)   /**< \brief TIM3_CH4 */
+#define PIOB_1_TIM1_CH3N_REMAP1      AM_STM32F103RBT6_GPIO_REMAP_CODE(0x06, 1)   /**< \brief TIM1_CH3N */
 
 /** @} */
 
@@ -873,14 +873,14 @@ extern "C" {
  * @{
  */
 
-#define PIOB_1_AIN                  AM_ZLG237_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
-#define PIOB_1_INPUT_FLOAT          AM_ZLG237_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式(默认) */
-#define PIOB_1_INPUT_PD             AM_ZLG237_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
-#define PIOB_1_INPUT_PU             AM_ZLG237_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
-#define PIOB_1_OUT_PP               AM_ZLG237_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
-#define PIOB_1_OUT_OD               AM_ZLG237_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
-#define PIOB_1_AF_PP                AM_ZLG237_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
-#define PIOB_1_AF_OD                AM_ZLG237_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
+#define PIOB_1_AIN                  AM_STM32F103RBT6_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
+#define PIOB_1_INPUT_FLOAT          AM_STM32F103RBT6_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式(默认) */
+#define PIOB_1_INPUT_PD             AM_STM32F103RBT6_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
+#define PIOB_1_INPUT_PU             AM_STM32F103RBT6_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
+#define PIOB_1_OUT_PP               AM_STM32F103RBT6_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
+#define PIOB_1_OUT_OD               AM_STM32F103RBT6_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
+#define PIOB_1_AF_PP                AM_STM32F103RBT6_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
+#define PIOB_1_AF_OD                AM_STM32F103RBT6_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
 
 /** @} */
 
@@ -889,9 +889,9 @@ extern "C" {
  * @{
  */
 
-#define PIOB_1_SPEED_10MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
-#define PIOB_1_SPEED_2MHz            AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
-#define PIOB_1_SPEED_50MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
+#define PIOB_1_SPEED_10MHz           AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOB_1_SPEED_2MHz            AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
+#define PIOB_1_SPEED_50MHz           AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
 
@@ -901,7 +901,7 @@ extern "C" {
  * \name PIOB_2引脚复用功能
  * @{
  */
-#define PIOB_2_NO_REMAP              AM_ZLG237_GPIO_REMAP_CODE(0x15, 0)
+#define PIOB_2_NO_REMAP              AM_STM32F103RBT6_GPIO_REMAP_CODE(0x15, 0)
 #define PIOB_2_GPIO                  PIOB_2_NO_REMAP   /**< \brief GPIO */
 
 /** @} */
@@ -911,14 +911,14 @@ extern "C" {
  * @{
  */
 
-#define PIOB_2_AIN                   AM_ZLG237_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
-#define PIOB_2_INPUT_FLOAT           AM_ZLG237_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式(默认) */
-#define PIOB_2_INPUT_PD              AM_ZLG237_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
-#define PIOB_2_INPUT_PU              AM_ZLG237_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
-#define PIOB_2_OUT_PP                AM_ZLG237_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
-#define PIOB_2_OUT_OD                AM_ZLG237_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
-#define PIOB_2_AF_PP                 AM_ZLG237_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
-#define PIOB_2_AF_OD                 AM_ZLG237_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
+#define PIOB_2_AIN                   AM_STM32F103RBT6_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
+#define PIOB_2_INPUT_FLOAT           AM_STM32F103RBT6_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式(默认) */
+#define PIOB_2_INPUT_PD              AM_STM32F103RBT6_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
+#define PIOB_2_INPUT_PU              AM_STM32F103RBT6_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
+#define PIOB_2_OUT_PP                AM_STM32F103RBT6_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
+#define PIOB_2_OUT_OD                AM_STM32F103RBT6_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
+#define PIOB_2_AF_PP                 AM_STM32F103RBT6_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
+#define PIOB_2_AF_OD                 AM_STM32F103RBT6_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
 
 /** @} */
 
@@ -927,9 +927,9 @@ extern "C" {
  * @{
  */
 
-#define PIOB_2_SPEED_10MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
-#define PIOB_2_SPEED_2MHz            AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
-#define PIOB_2_SPEED_50MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
+#define PIOB_2_SPEED_10MHz           AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOB_2_SPEED_2MHz            AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
+#define PIOB_2_SPEED_50MHz           AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
 
@@ -939,13 +939,13 @@ extern "C" {
  * \name PIOB_3引脚复用功能
  * @{
  */
-#define PIOB_3_NO_REMAP              AM_ZLG237_GPIO_REMAP_CODE(0x15, 0)
+#define PIOB_3_NO_REMAP              AM_STM32F103RBT6_GPIO_REMAP_CODE(0x15, 0)
 #define PIOB_3_GPIO                  PIOB_3_NO_REMAP   /**< \brief GPIO */
 
-#define PIOB_3_TRACESWO              AM_ZLG237_GPIO_REMAP_CODE(0x18, 0)   /**< \brief TRACESWO */
-#define PIOB_3_TIM2_CH2_REMAP1       AM_ZLG237_GPIO_REMAP_CODE(0x08, 1)   /**< \brief TIM2_CH2 */
-#define PIOB_3_TIM2_CH2_REMAP3       AM_ZLG237_GPIO_REMAP_CODE(0x08, 3)   /**< \brief TIM2_CH2 */
-#define PIOB_3_SPI1_SCK_REMAP1       AM_ZLG237_GPIO_REMAP_CODE(0x00, 1)   /**< \brief SPI1_SCK */
+#define PIOB_3_TRACESWO              AM_STM32F103RBT6_GPIO_REMAP_CODE(0x18, 0)   /**< \brief TRACESWO */
+#define PIOB_3_TIM2_CH2_REMAP1       AM_STM32F103RBT6_GPIO_REMAP_CODE(0x08, 1)   /**< \brief TIM2_CH2 */
+#define PIOB_3_TIM2_CH2_REMAP3       AM_STM32F103RBT6_GPIO_REMAP_CODE(0x08, 3)   /**< \brief TIM2_CH2 */
+#define PIOB_3_SPI1_SCK_REMAP1       AM_STM32F103RBT6_GPIO_REMAP_CODE(0x00, 1)   /**< \brief SPI1_SCK */
 
 /** @} */
 
@@ -954,14 +954,14 @@ extern "C" {
  * @{
  */
 
-#define PIOB_3_AIN                   AM_ZLG237_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
-#define PIOB_3_INPUT_FLOAT           AM_ZLG237_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式(默认) */
-#define PIOB_3_INPUT_PD              AM_ZLG237_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
-#define PIOB_3_INPUT_PU              AM_ZLG237_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
-#define PIOB_3_OUT_PP                AM_ZLG237_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
-#define PIOB_3_OUT_OD                AM_ZLG237_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
-#define PIOB_3_AF_PP                 AM_ZLG237_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
-#define PIOB_3_AF_OD                 AM_ZLG237_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
+#define PIOB_3_AIN                   AM_STM32F103RBT6_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
+#define PIOB_3_INPUT_FLOAT           AM_STM32F103RBT6_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式(默认) */
+#define PIOB_3_INPUT_PD              AM_STM32F103RBT6_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
+#define PIOB_3_INPUT_PU              AM_STM32F103RBT6_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
+#define PIOB_3_OUT_PP                AM_STM32F103RBT6_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
+#define PIOB_3_OUT_OD                AM_STM32F103RBT6_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
+#define PIOB_3_AF_PP                 AM_STM32F103RBT6_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
+#define PIOB_3_AF_OD                 AM_STM32F103RBT6_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
 
 /** @} */
 
@@ -970,9 +970,9 @@ extern "C" {
  * @{
  */
 
-#define PIOB_3_SPEED_10MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
-#define PIOB_3_SPEED_2MHz            AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
-#define PIOB_3_SPEED_50MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
+#define PIOB_3_SPEED_10MHz           AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOB_3_SPEED_2MHz            AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
+#define PIOB_3_SPEED_50MHz           AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
 
@@ -982,12 +982,12 @@ extern "C" {
  * \name PIOB_4引脚复用功能
  * @{
  */
-#define PIOB_4_NO_REMAP              AM_ZLG237_GPIO_REMAP_CODE(0x15, 0)
+#define PIOB_4_NO_REMAP              AM_STM32F103RBT6_GPIO_REMAP_CODE(0x15, 0)
 #define PIOB_4_GPIO                  PIOB_4_NO_REMAP   /**< \brief GPIO */
 
-#define PIOB_4_TIM3_CH1_REMAP2       AM_ZLG237_GPIO_REMAP_CODE(0x0A, 2)   /**< \brief TIM3_CH1 */
-#define PIOB_4_SPI1_MISO_REMAP1      AM_ZLG237_GPIO_REMAP_CODE(0x00, 1)   /**< \brief SPI1_MISO */
-#define PIOB_4_JNTRST                AM_ZLG237_GPIO_REMAP_CODE(0x18, 0)   /**< \brief JNTRST */
+#define PIOB_4_TIM3_CH1_REMAP2       AM_STM32F103RBT6_GPIO_REMAP_CODE(0x0A, 2)   /**< \brief TIM3_CH1 */
+#define PIOB_4_SPI1_MISO_REMAP1      AM_STM32F103RBT6_GPIO_REMAP_CODE(0x00, 1)   /**< \brief SPI1_MISO */
+#define PIOB_4_JNTRST                AM_STM32F103RBT6_GPIO_REMAP_CODE(0x18, 0)   /**< \brief JNTRST */
 /** @} */
 
 /**
@@ -995,14 +995,14 @@ extern "C" {
  * @{
  */
 
-#define PIOB_4_AIN                   AM_ZLG237_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
-#define PIOB_4_INPUT_FLOAT           AM_ZLG237_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式(默认) */
-#define PIOB_4_INPUT_PD              AM_ZLG237_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
-#define PIOB_4_INPUT_PU              AM_ZLG237_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
-#define PIOB_4_OUT_PP                AM_ZLG237_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
-#define PIOB_4_OUT_OD                AM_ZLG237_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
-#define PIOB_4_AF_PP                 AM_ZLG237_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
-#define PIOB_4_AF_OD                 AM_ZLG237_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
+#define PIOB_4_AIN                   AM_STM32F103RBT6_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
+#define PIOB_4_INPUT_FLOAT           AM_STM32F103RBT6_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式(默认) */
+#define PIOB_4_INPUT_PD              AM_STM32F103RBT6_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
+#define PIOB_4_INPUT_PU              AM_STM32F103RBT6_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
+#define PIOB_4_OUT_PP                AM_STM32F103RBT6_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
+#define PIOB_4_OUT_OD                AM_STM32F103RBT6_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
+#define PIOB_4_AF_PP                 AM_STM32F103RBT6_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
+#define PIOB_4_AF_OD                 AM_STM32F103RBT6_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
 
 /** @} */
 
@@ -1011,9 +1011,9 @@ extern "C" {
  * @{
  */
 
-#define PIOB_4_SPEED_10MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
-#define PIOB_4_SPEED_2MHz            AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
-#define PIOB_4_SPEED_50MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
+#define PIOB_4_SPEED_10MHz           AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOB_4_SPEED_2MHz            AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
+#define PIOB_4_SPEED_50MHz           AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
 
@@ -1024,12 +1024,12 @@ extern "C" {
  * @{
  */
 
-#define PIOB_5_NO_REMAP              AM_ZLG237_GPIO_REMAP_CODE(0x15, 0)
+#define PIOB_5_NO_REMAP              AM_STM32F103RBT6_GPIO_REMAP_CODE(0x15, 0)
 #define PIOB_5_GPIO                  PIOB_5_NO_REMAP   /**< \brief GPIO */
 #define PIOB_5_I2C1_SMBAI            PIOB_5_NO_REMAP   /**< \brief I2C1_SMBAI */
 
-#define PIOB_5_TIM3_CH2_REMAP2       AM_ZLG237_GPIO_REMAP_CODE(0x0A, 2)   /**< \brief TIM3_CH2 */
-#define PIOB_5_SPI1_MOSI_REMAP1      AM_ZLG237_GPIO_REMAP_CODE(0x00, 1)   /**< \brief SPI1_MOSI */
+#define PIOB_5_TIM3_CH2_REMAP2       AM_STM32F103RBT6_GPIO_REMAP_CODE(0x0A, 2)   /**< \brief TIM3_CH2 */
+#define PIOB_5_SPI1_MOSI_REMAP1      AM_STM32F103RBT6_GPIO_REMAP_CODE(0x00, 1)   /**< \brief SPI1_MOSI */
 
 /** @} */
 
@@ -1038,14 +1038,14 @@ extern "C" {
  * @{
  */
 
-#define PIOB_5_AIN                   AM_ZLG237_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
-#define PIOB_5_INPUT_FLOAT           AM_ZLG237_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式(默认) */
-#define PIOB_5_INPUT_PD              AM_ZLG237_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
-#define PIOB_5_INPUT_PU              AM_ZLG237_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
-#define PIOB_5_OUT_PP                AM_ZLG237_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
-#define PIOB_5_OUT_OD                AM_ZLG237_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
-#define PIOB_5_AF_PP                 AM_ZLG237_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
-#define PIOB_5_AF_OD                 AM_ZLG237_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
+#define PIOB_5_AIN                   AM_STM32F103RBT6_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
+#define PIOB_5_INPUT_FLOAT           AM_STM32F103RBT6_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式(默认) */
+#define PIOB_5_INPUT_PD              AM_STM32F103RBT6_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
+#define PIOB_5_INPUT_PU              AM_STM32F103RBT6_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
+#define PIOB_5_OUT_PP                AM_STM32F103RBT6_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
+#define PIOB_5_OUT_OD                AM_STM32F103RBT6_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
+#define PIOB_5_AF_PP                 AM_STM32F103RBT6_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
+#define PIOB_5_AF_OD                 AM_STM32F103RBT6_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
 
 /** @} */
 
@@ -1054,9 +1054,9 @@ extern "C" {
  * @{
  */
 
-#define PIOB_5_SPEED_10MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
-#define PIOB_5_SPEED_2MHz            AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
-#define PIOB_5_SPEED_50MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
+#define PIOB_5_SPEED_10MHz           AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOB_5_SPEED_2MHz            AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
+#define PIOB_5_SPEED_50MHz           AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
 
@@ -1067,13 +1067,13 @@ extern "C" {
  * @{
  */
 
-#define PIOB_6_NO_REMAP              AM_ZLG237_GPIO_REMAP_CODE(0x15, 0)
+#define PIOB_6_NO_REMAP              AM_STM32F103RBT6_GPIO_REMAP_CODE(0x15, 0)
 #define PIOB_6_GPIO                  PIOB_6_NO_REMAP   /**< \brief GPIO */
 #define PIOB_6_TIM4_CH1              PIOB_6_NO_REMAP   /**< \brief TIM4_CH1 */
 
-#define PIOB_6_I2C1_SCL_REMAP0       AM_ZLG237_GPIO_REMAP_CODE(0x01, 0)   /**< \brief I2C1_SCL */
-#define PIOB_6_USART1_TX_REMAP1      AM_ZLG237_GPIO_REMAP_CODE(0x02, 1)   /**< \brief USART1_TX */
-#define PIOB_6_TIM4_CH1_REMAP        AM_ZLG237_GPIO_REMAP_CODE(0x0C, 0)   /**< \brief TIM4_CH1 */
+#define PIOB_6_I2C1_SCL_REMAP0       AM_STM32F103RBT6_GPIO_REMAP_CODE(0x01, 0)   /**< \brief I2C1_SCL */
+#define PIOB_6_USART1_TX_REMAP1      AM_STM32F103RBT6_GPIO_REMAP_CODE(0x02, 1)   /**< \brief USART1_TX */
+#define PIOB_6_TIM4_CH1_REMAP        AM_STM32F103RBT6_GPIO_REMAP_CODE(0x0C, 0)   /**< \brief TIM4_CH1 */
 
 /** @} */
 
@@ -1082,14 +1082,14 @@ extern "C" {
  * @{
  */
 
-#define PIOB_6_AIN                   AM_ZLG237_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
-#define PIOB_6_INPUT_FLOAT           AM_ZLG237_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式(默认) */
-#define PIOB_6_INPUT_PD              AM_ZLG237_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
-#define PIOB_6_INPUT_PU              AM_ZLG237_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
-#define PIOB_6_OUT_PP                AM_ZLG237_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
-#define PIOB_6_OUT_OD                AM_ZLG237_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
-#define PIOB_6_AF_PP                 AM_ZLG237_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
-#define PIOB_6_AF_OD                 AM_ZLG237_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
+#define PIOB_6_AIN                   AM_STM32F103RBT6_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
+#define PIOB_6_INPUT_FLOAT           AM_STM32F103RBT6_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式(默认) */
+#define PIOB_6_INPUT_PD              AM_STM32F103RBT6_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
+#define PIOB_6_INPUT_PU              AM_STM32F103RBT6_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
+#define PIOB_6_OUT_PP                AM_STM32F103RBT6_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
+#define PIOB_6_OUT_OD                AM_STM32F103RBT6_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
+#define PIOB_6_AF_PP                 AM_STM32F103RBT6_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
+#define PIOB_6_AF_OD                 AM_STM32F103RBT6_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
 
 /** @} */
 
@@ -1098,9 +1098,9 @@ extern "C" {
  * @{
  */
 
-#define PIOB_6_SPEED_10MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
-#define PIOB_6_SPEED_2MHz            AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
-#define PIOB_6_SPEED_50MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
+#define PIOB_6_SPEED_10MHz           AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOB_6_SPEED_2MHz            AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
+#define PIOB_6_SPEED_50MHz           AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
 
@@ -1111,13 +1111,13 @@ extern "C" {
  * @{
  */
 
-#define PIOB_7_NO_REMAP              AM_ZLG237_GPIO_REMAP_CODE(0x15, 0)
+#define PIOB_7_NO_REMAP              AM_STM32F103RBT6_GPIO_REMAP_CODE(0x15, 0)
 #define PIOB_7_TIM4_CH2              PIOB_7_NO_REMAP   /**< \brief TIM4_CH2 */
 #define PIOB_7_GPIO                  PIOB_7_NO_REMAP   /**< \brief GPIO */
 
-#define PIOB_7_I2C1_SDA_REMAP0       AM_ZLG237_GPIO_REMAP_CODE(0x01, 0)   /**< \brief I2C1_SDA */
-#define PIOB_7_USART1_RX_REMAP1      AM_ZLG237_GPIO_REMAP_CODE(0x02, 1)   /**< \brief USART1_RX */
-#define PIOB_7_TIM4_CH2_REMAP        AM_ZLG237_GPIO_REMAP_CODE(0x0C, 0)   /**< \brief TIM4_CH2 */
+#define PIOB_7_I2C1_SDA_REMAP0       AM_STM32F103RBT6_GPIO_REMAP_CODE(0x01, 0)   /**< \brief I2C1_SDA */
+#define PIOB_7_USART1_RX_REMAP1      AM_STM32F103RBT6_GPIO_REMAP_CODE(0x02, 1)   /**< \brief USART1_RX */
+#define PIOB_7_TIM4_CH2_REMAP        AM_STM32F103RBT6_GPIO_REMAP_CODE(0x0C, 0)   /**< \brief TIM4_CH2 */
 
 /** @} */
 
@@ -1126,14 +1126,14 @@ extern "C" {
  * @{
  */
 
-#define PIOB_7_AIN                   AM_ZLG237_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
-#define PIOB_7_INPUT_FLOAT           AM_ZLG237_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式(默认) */
-#define PIOB_7_INPUT_PD              AM_ZLG237_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
-#define PIOB_7_INPUT_PU              AM_ZLG237_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
-#define PIOB_7_OUT_PP                AM_ZLG237_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
-#define PIOB_7_OUT_OD                AM_ZLG237_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
-#define PIOB_7_AF_PP                 AM_ZLG237_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
-#define PIOB_7_AF_OD                 AM_ZLG237_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
+#define PIOB_7_AIN                   AM_STM32F103RBT6_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
+#define PIOB_7_INPUT_FLOAT           AM_STM32F103RBT6_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式(默认) */
+#define PIOB_7_INPUT_PD              AM_STM32F103RBT6_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
+#define PIOB_7_INPUT_PU              AM_STM32F103RBT6_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
+#define PIOB_7_OUT_PP                AM_STM32F103RBT6_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
+#define PIOB_7_OUT_OD                AM_STM32F103RBT6_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
+#define PIOB_7_AF_PP                 AM_STM32F103RBT6_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
+#define PIOB_7_AF_OD                 AM_STM32F103RBT6_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
 
 /** @} */
 
@@ -1142,9 +1142,9 @@ extern "C" {
  * @{
  */
 
-#define PIOB_7_SPEED_10MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
-#define PIOB_7_SPEED_2MHz            AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
-#define PIOB_7_SPEED_50MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
+#define PIOB_7_SPEED_10MHz           AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOB_7_SPEED_2MHz            AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
+#define PIOB_7_SPEED_50MHz           AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
 
@@ -1155,13 +1155,13 @@ extern "C" {
  * @{
  */
 
-#define PIOB_8_NO_REMAP              AM_ZLG237_GPIO_REMAP_CODE(0x15, 0)
+#define PIOB_8_NO_REMAP              AM_STM32F103RBT6_GPIO_REMAP_CODE(0x15, 0)
 #define PIOB_8_TIM4_CH3              PIOB_8_NO_REMAP   /**< \brief TIM4_CH3 */
 #define PIOB_8_GPIO                  PIOB_8_NO_REMAP   /**< \brief GPIO */
 
-#define PIOB_8_I2C1_SCL_REMAP1       AM_ZLG237_GPIO_REMAP_CODE(0x01, 1)   /**< \brief I2C1_SCL */
-#define PIOB_8_CAN_RX_REMAP2         AM_ZLG237_GPIO_REMAP_CODE(0x0D, 2)   /**< \brief CAN_RX */
-#define PIOB_8_TIM4_CH3_REMAP        AM_ZLG237_GPIO_REMAP_CODE(0x0C, 0)   /**< \brief TIM4_CH3 */
+#define PIOB_8_I2C1_SCL_REMAP1       AM_STM32F103RBT6_GPIO_REMAP_CODE(0x01, 1)   /**< \brief I2C1_SCL */
+#define PIOB_8_CAN_RX_REMAP2         AM_STM32F103RBT6_GPIO_REMAP_CODE(0x0D, 2)   /**< \brief CAN_RX */
+#define PIOB_8_TIM4_CH3_REMAP        AM_STM32F103RBT6_GPIO_REMAP_CODE(0x0C, 0)   /**< \brief TIM4_CH3 */
 
 /** @} */
 
@@ -1170,14 +1170,14 @@ extern "C" {
  * @{
  */
 
-#define PIOB_8_AIN                   AM_ZLG237_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
-#define PIOB_8_INPUT_FLOAT           AM_ZLG237_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式（默认） */
-#define PIOB_8_INPUT_PD              AM_ZLG237_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
-#define PIOB_8_INPUT_PU              AM_ZLG237_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
-#define PIOB_8_OUT_PP                AM_ZLG237_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
-#define PIOB_8_OUT_OD                AM_ZLG237_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
-#define PIOB_8_AF_PP                 AM_ZLG237_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
-#define PIOB_8_AF_OD                 AM_ZLG237_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
+#define PIOB_8_AIN                   AM_STM32F103RBT6_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
+#define PIOB_8_INPUT_FLOAT           AM_STM32F103RBT6_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式（默认） */
+#define PIOB_8_INPUT_PD              AM_STM32F103RBT6_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
+#define PIOB_8_INPUT_PU              AM_STM32F103RBT6_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
+#define PIOB_8_OUT_PP                AM_STM32F103RBT6_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
+#define PIOB_8_OUT_OD                AM_STM32F103RBT6_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
+#define PIOB_8_AF_PP                 AM_STM32F103RBT6_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
+#define PIOB_8_AF_OD                 AM_STM32F103RBT6_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
 
 /** @} */
 
@@ -1186,9 +1186,9 @@ extern "C" {
  * @{
  */
 
-#define PIOB_8_SPEED_10MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
-#define PIOB_8_SPEED_2MHz            AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
-#define PIOB_8_SPEED_50MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
+#define PIOB_8_SPEED_10MHz           AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOB_8_SPEED_2MHz            AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
+#define PIOB_8_SPEED_50MHz           AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
 
@@ -1199,13 +1199,13 @@ extern "C" {
  * @{
  */
 
-#define PIOB_9_NO_REMAP              AM_ZLG237_GPIO_REMAP_CODE(0x15, 0)
+#define PIOB_9_NO_REMAP              AM_STM32F103RBT6_GPIO_REMAP_CODE(0x15, 0)
 #define PIOB_9_TIM4_CH4              PIOB_9_NO_REMAP   /**< \brief TIM4_CH4 */
 #define PIOB_9_GPIO                  PIOB_9_NO_REMAP   /**< \brief GPIO */
 
-#define PIOB_9_I2C1_SDA_REMAP1       AM_ZLG237_GPIO_REMAP_CODE(0x01, 1)   /**< \brief I2C1_SDA */
-#define PIOB_9_CAN_TX_REMAP2         AM_ZLG237_GPIO_REMAP_CODE(0x0D, 2)   /**< \brief CAN_TX */
-#define PIOB_9_TIM4_CH4_REMAP        AM_ZLG237_GPIO_REMAP_CODE(0x0C, 0)   /**< \brief TIM4_CH4 */
+#define PIOB_9_I2C1_SDA_REMAP1       AM_STM32F103RBT6_GPIO_REMAP_CODE(0x01, 1)   /**< \brief I2C1_SDA */
+#define PIOB_9_CAN_TX_REMAP2         AM_STM32F103RBT6_GPIO_REMAP_CODE(0x0D, 2)   /**< \brief CAN_TX */
+#define PIOB_9_TIM4_CH4_REMAP        AM_STM32F103RBT6_GPIO_REMAP_CODE(0x0C, 0)   /**< \brief TIM4_CH4 */
 
 /** @} */
 
@@ -1214,14 +1214,14 @@ extern "C" {
  * @{
  */
 
-#define PIOB_9_AIN                   AM_ZLG237_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
-#define PIOB_9_INPUT_FLOAT           AM_ZLG237_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式（默认） */
-#define PIOB_9_INPUT_PD              AM_ZLG237_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
-#define PIOB_9_INPUT_PU              AM_ZLG237_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
-#define PIOB_9_OUT_PP                AM_ZLG237_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
-#define PIOB_9_OUT_OD                AM_ZLG237_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
-#define PIOB_9_AF_PP                 AM_ZLG237_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
-#define PIOB_9_AF_OD                 AM_ZLG237_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
+#define PIOB_9_AIN                   AM_STM32F103RBT6_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
+#define PIOB_9_INPUT_FLOAT           AM_STM32F103RBT6_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式（默认） */
+#define PIOB_9_INPUT_PD              AM_STM32F103RBT6_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
+#define PIOB_9_INPUT_PU              AM_STM32F103RBT6_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
+#define PIOB_9_OUT_PP                AM_STM32F103RBT6_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
+#define PIOB_9_OUT_OD                AM_STM32F103RBT6_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
+#define PIOB_9_AF_PP                 AM_STM32F103RBT6_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
+#define PIOB_9_AF_OD                 AM_STM32F103RBT6_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
 
 /** @} */
 
@@ -1230,9 +1230,9 @@ extern "C" {
  * @{
  */
 
-#define PIOB_9_SPEED_10MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
-#define PIOB_9_SPEED_2MHz            AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
-#define PIOB_9_SPEED_50MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
+#define PIOB_9_SPEED_10MHz           AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOB_9_SPEED_2MHz            AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
+#define PIOB_9_SPEED_50MHz           AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
 
@@ -1243,13 +1243,13 @@ extern "C" {
  * @{
  */
 
-#define PIOB_10_NO_REMAP             AM_ZLG237_GPIO_REMAP_CODE(0x15, 0)
+#define PIOB_10_NO_REMAP             AM_STM32F103RBT6_GPIO_REMAP_CODE(0x15, 0)
 #define PIOB_10_I2C2_SCL             PIOB_10_NO_REMAP   /**< \brief I2C2_SCL */
 #define PIOB_10_GPIO                 PIOB_10_NO_REMAP   /**< \brief GPIO */
 
-#define PIOB_10_USART3_TX_REMAP0     AM_ZLG237_GPIO_REMAP_CODE(0x04, 0)   /**< \brief USART3_TX */
-#define PIOB_10_TIM2_CH3_REMAP2      AM_ZLG237_GPIO_REMAP_CODE(0x08, 2)   /**< \brief TIM2_CH3 */
-#define PIOB_10_TIM2_CH3_REMAP3      AM_ZLG237_GPIO_REMAP_CODE(0x08, 3)   /**< \brief TIM2_CH3 */
+#define PIOB_10_USART3_TX_REMAP0     AM_STM32F103RBT6_GPIO_REMAP_CODE(0x04, 0)   /**< \brief USART3_TX */
+#define PIOB_10_TIM2_CH3_REMAP2      AM_STM32F103RBT6_GPIO_REMAP_CODE(0x08, 2)   /**< \brief TIM2_CH3 */
+#define PIOB_10_TIM2_CH3_REMAP3      AM_STM32F103RBT6_GPIO_REMAP_CODE(0x08, 3)   /**< \brief TIM2_CH3 */
 
 /** @} */
 
@@ -1258,14 +1258,14 @@ extern "C" {
  * @{
  */
 
-#define PIOB_10_AIN                  AM_ZLG237_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
-#define PIOB_10_INPUT_FLOAT          AM_ZLG237_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式（默认） */
-#define PIOB_10_INPUT_PD             AM_ZLG237_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
-#define PIOB_10_INPUT_PU             AM_ZLG237_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
-#define PIOB_10_OUT_PP               AM_ZLG237_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
-#define PIOB_10_OUT_OD               AM_ZLG237_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
-#define PIOB_10_AF_PP                AM_ZLG237_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
-#define PIOB_10_AF_OD                AM_ZLG237_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
+#define PIOB_10_AIN                  AM_STM32F103RBT6_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
+#define PIOB_10_INPUT_FLOAT          AM_STM32F103RBT6_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式（默认） */
+#define PIOB_10_INPUT_PD             AM_STM32F103RBT6_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
+#define PIOB_10_INPUT_PU             AM_STM32F103RBT6_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
+#define PIOB_10_OUT_PP               AM_STM32F103RBT6_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
+#define PIOB_10_OUT_OD               AM_STM32F103RBT6_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
+#define PIOB_10_AF_PP                AM_STM32F103RBT6_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
+#define PIOB_10_AF_OD                AM_STM32F103RBT6_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
 
 /** @} */
 
@@ -1274,9 +1274,9 @@ extern "C" {
  * @{
  */
 
-#define PIOB_10_SPEED_10MHz          AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
-#define PIOB_10_SPEED_2MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
-#define PIOB_10_SPEED_50MHz          AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
+#define PIOB_10_SPEED_10MHz          AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOB_10_SPEED_2MHz           AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
+#define PIOB_10_SPEED_50MHz          AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
 
@@ -1287,13 +1287,13 @@ extern "C" {
  * @{
  */
 
-#define PIOB_11_NO_REMAP             AM_ZLG237_GPIO_REMAP_CODE(0x15, 0)
+#define PIOB_11_NO_REMAP             AM_STM32F103RBT6_GPIO_REMAP_CODE(0x15, 0)
 #define PIOB_11_I2C2_SDA             PIOB_11_NO_REMAP   /**< \brief I2C2_SDA */
 #define PIOB_11_GPIO                 PIOB_11_NO_REMAP   /**< \brief GPIO */
 
-#define PIOB_11_USART3_RX_REMAP0     AM_ZLG237_GPIO_REMAP_CODE(0x04, 0)   /**< \brief USART3_RX */
-#define PIOB_11_TIM2_CH4_REMAP2      AM_ZLG237_GPIO_REMAP_CODE(0x08, 2)   /**< \brief TIM2_CH4 */
-#define PIOB_11_TIM2_CH4_REMAP3      AM_ZLG237_GPIO_REMAP_CODE(0x08, 3)   /**< \brief TIM2_CH4 */
+#define PIOB_11_USART3_RX_REMAP0     AM_STM32F103RBT6_GPIO_REMAP_CODE(0x04, 0)   /**< \brief USART3_RX */
+#define PIOB_11_TIM2_CH4_REMAP2      AM_STM32F103RBT6_GPIO_REMAP_CODE(0x08, 2)   /**< \brief TIM2_CH4 */
+#define PIOB_11_TIM2_CH4_REMAP3      AM_STM32F103RBT6_GPIO_REMAP_CODE(0x08, 3)   /**< \brief TIM2_CH4 */
 
 /** @} */
 
@@ -1302,14 +1302,14 @@ extern "C" {
  * @{
  */
 
-#define PIOB_11_AIN                  AM_ZLG237_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
-#define PIOB_11_INPUT_FLOAT          AM_ZLG237_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式（默认） */
-#define PIOB_11_INPUT_PD             AM_ZLG237_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
-#define PIOB_11_INPUT_PU             AM_ZLG237_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
-#define PIOB_11_OUT_PP               AM_ZLG237_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
-#define PIOB_11_OUT_OD               AM_ZLG237_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
-#define PIOB_11_AF_PP                AM_ZLG237_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
-#define PIOB_11_AF_OD                AM_ZLG237_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
+#define PIOB_11_AIN                  AM_STM32F103RBT6_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
+#define PIOB_11_INPUT_FLOAT          AM_STM32F103RBT6_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式（默认） */
+#define PIOB_11_INPUT_PD             AM_STM32F103RBT6_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
+#define PIOB_11_INPUT_PU             AM_STM32F103RBT6_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
+#define PIOB_11_OUT_PP               AM_STM32F103RBT6_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
+#define PIOB_11_OUT_OD               AM_STM32F103RBT6_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
+#define PIOB_11_AF_PP                AM_STM32F103RBT6_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
+#define PIOB_11_AF_OD                AM_STM32F103RBT6_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
 
 /** @} */
 
@@ -1318,9 +1318,9 @@ extern "C" {
  * @{
  */
 
-#define PIOB_11_SPEED_10MHz          AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
-#define PIOB_11_SPEED_2MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
-#define PIOB_11_SPEED_50MHz          AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
+#define PIOB_11_SPEED_10MHz          AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOB_11_SPEED_2MHz           AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
+#define PIOB_11_SPEED_50MHz          AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
 
@@ -1331,13 +1331,13 @@ extern "C" {
  * @{
  */
 
-#define PIOB_12_NO_REMAP             AM_ZLG237_GPIO_REMAP_CODE(0x15, 0)
+#define PIOB_12_NO_REMAP             AM_STM32F103RBT6_GPIO_REMAP_CODE(0x15, 0)
 #define PIOB_12_SPI2_NSS             PIOB_12_NO_REMAP   /**< \brief SPI2_NSS */
 #define PIOB_12_I2C2_SMBAI           PIOB_12_NO_REMAP   /**< \brief I2C2_SMBAI */
 #define PIOB_12_GPIO                 PIOB_12_NO_REMAP   /**< \brief GPIO */
 
-#define PIOB_12_TIM1_BAKIN_REMAP0    AM_ZLG237_GPIO_REMAP_CODE(0x06, 0)   /**< \brief TIM1_BAKIN */
-#define PIOB_12_USART3_CK_REMAP0     AM_ZLG237_GPIO_REMAP_CODE(0x04, 0)   /**< \brief USART3_CK */
+#define PIOB_12_TIM1_BAKIN_REMAP0    AM_STM32F103RBT6_GPIO_REMAP_CODE(0x06, 0)   /**< \brief TIM1_BAKIN */
+#define PIOB_12_USART3_CK_REMAP0     AM_STM32F103RBT6_GPIO_REMAP_CODE(0x04, 0)   /**< \brief USART3_CK */
 
 /** @} */
 
@@ -1346,14 +1346,14 @@ extern "C" {
  * @{
  */
 
-#define PIOB_12_AIN                  AM_ZLG237_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
-#define PIOB_12_INPUT_FLOAT          AM_ZLG237_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式（默认） */
-#define PIOB_12_INPUT_PD             AM_ZLG237_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
-#define PIOB_12_INPUT_PU             AM_ZLG237_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
-#define PIOB_12_OUT_PP               AM_ZLG237_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
-#define PIOB_12_OUT_OD               AM_ZLG237_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
-#define PIOB_12_AF_PP                AM_ZLG237_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
-#define PIOB_12_AF_OD                AM_ZLG237_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
+#define PIOB_12_AIN                  AM_STM32F103RBT6_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
+#define PIOB_12_INPUT_FLOAT          AM_STM32F103RBT6_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式（默认） */
+#define PIOB_12_INPUT_PD             AM_STM32F103RBT6_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
+#define PIOB_12_INPUT_PU             AM_STM32F103RBT6_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
+#define PIOB_12_OUT_PP               AM_STM32F103RBT6_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
+#define PIOB_12_OUT_OD               AM_STM32F103RBT6_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
+#define PIOB_12_AF_PP                AM_STM32F103RBT6_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
+#define PIOB_12_AF_OD                AM_STM32F103RBT6_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
 
 /** @} */
 
@@ -1363,9 +1363,9 @@ extern "C" {
  * @{
  */
 
-#define PIOB_12_SPEED_10MHz          AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
-#define PIOB_12_SPEED_2MHz           AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
-#define PIOB_12_SPEED_50MHz          AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
+#define PIOB_12_SPEED_10MHz          AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOB_12_SPEED_2MHz           AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
+#define PIOB_12_SPEED_50MHz          AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
 
@@ -1376,13 +1376,13 @@ extern "C" {
  * @{
  */
 
-#define PIOB_13_NO_REMAP            AM_ZLG237_GPIO_REMAP_CODE(0x15, 0)
+#define PIOB_13_NO_REMAP            AM_STM32F103RBT6_GPIO_REMAP_CODE(0x15, 0)
 #define PIOB_13_SPI2_SCK            PIOB_13_NO_REMAP   /**< \brief SPI2_SCK */
 #define PIOB_13_GPIO                PIOB_13_NO_REMAP   /**< \brief GPIO */
 
-#define PIOB_13_TIM1_CH1N_REMAP0    AM_ZLG237_GPIO_REMAP_CODE(0x06, 0)   /**< \brief TIM1_CH1N */
-#define PIOB_13_USART3_CTS_REMAP0   AM_ZLG237_GPIO_REMAP_CODE(0x04, 0)   /**< \brief TIM1_CH1N */
-#define PIOB_13_USART3_CTS_REMAP1   AM_ZLG237_GPIO_REMAP_CODE(0x04, 1)   /**< \brief TIM1_CH1N */
+#define PIOB_13_TIM1_CH1N_REMAP0    AM_STM32F103RBT6_GPIO_REMAP_CODE(0x06, 0)   /**< \brief TIM1_CH1N */
+#define PIOB_13_USART3_CTS_REMAP0   AM_STM32F103RBT6_GPIO_REMAP_CODE(0x04, 0)   /**< \brief TIM1_CH1N */
+#define PIOB_13_USART3_CTS_REMAP1   AM_STM32F103RBT6_GPIO_REMAP_CODE(0x04, 1)   /**< \brief TIM1_CH1N */
 
 /** @} */
 
@@ -1391,14 +1391,14 @@ extern "C" {
  * @{
  */
 
-#define PIOB_13_AIN                 AM_ZLG237_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
-#define PIOB_13_INPUT_FLOAT         AM_ZLG237_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式（默认） */
-#define PIOB_13_INPUT_PD            AM_ZLG237_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
-#define PIOB_13_INPUT_PU            AM_ZLG237_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
-#define PIOB_13_OUT_PP              AM_ZLG237_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
-#define PIOB_13_OUT_OD              AM_ZLG237_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
-#define PIOB_13_AF_PP               AM_ZLG237_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
-#define PIOB_13_AF_OD               AM_ZLG237_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
+#define PIOB_13_AIN                 AM_STM32F103RBT6_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
+#define PIOB_13_INPUT_FLOAT         AM_STM32F103RBT6_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式（默认） */
+#define PIOB_13_INPUT_PD            AM_STM32F103RBT6_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
+#define PIOB_13_INPUT_PU            AM_STM32F103RBT6_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
+#define PIOB_13_OUT_PP              AM_STM32F103RBT6_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
+#define PIOB_13_OUT_OD              AM_STM32F103RBT6_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
+#define PIOB_13_AF_PP               AM_STM32F103RBT6_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
+#define PIOB_13_AF_OD               AM_STM32F103RBT6_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
 
 /** @} */
 
@@ -1407,9 +1407,9 @@ extern "C" {
  * @{
  */
 
-#define PIOB_13_SPEED_10MHz         AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
-#define PIOB_13_SPEED_2MHz          AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
-#define PIOB_13_SPEED_50MHz         AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
+#define PIOB_13_SPEED_10MHz         AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOB_13_SPEED_2MHz          AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
+#define PIOB_13_SPEED_50MHz         AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
 
@@ -1420,13 +1420,13 @@ extern "C" {
  * @{
  */
 
-#define PIOB_14_NO_REMAP           AM_ZLG237_GPIO_REMAP_CODE(0x15, 0)
+#define PIOB_14_NO_REMAP           AM_STM32F103RBT6_GPIO_REMAP_CODE(0x15, 0)
 #define PIOB_14_SPI2_MISO          PIOB_14_NO_REMAP   /**< \brief SPI2_MISO */
 #define PIOB_14_GPIO               PIOB_14_NO_REMAP   /**< \brief GPIO */
 
-#define PIOB_14_TIM1_CH2N_REMAP0   AM_ZLG237_GPIO_REMAP_CODE(0x06, 0)   /**< \brief TIM1_CH2N */
-#define PIOB_14_USART3_RTS_REMAP0  AM_ZLG237_GPIO_REMAP_CODE(0x04, 0)   /**< \brief USART3_RTS */
-#define PIOB_14_USART3_RTS_REMAP1  AM_ZLG237_GPIO_REMAP_CODE(0x04, 1)   /**< \brief USART3_RTS */
+#define PIOB_14_TIM1_CH2N_REMAP0   AM_STM32F103RBT6_GPIO_REMAP_CODE(0x06, 0)   /**< \brief TIM1_CH2N */
+#define PIOB_14_USART3_RTS_REMAP0  AM_STM32F103RBT6_GPIO_REMAP_CODE(0x04, 0)   /**< \brief USART3_RTS */
+#define PIOB_14_USART3_RTS_REMAP1  AM_STM32F103RBT6_GPIO_REMAP_CODE(0x04, 1)   /**< \brief USART3_RTS */
 
 /** @} */
 
@@ -1435,14 +1435,14 @@ extern "C" {
  * @{
  */
 
-#define PIOB_14_AIN                AM_ZLG237_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
-#define PIOB_14_INPUT_FLOAT        AM_ZLG237_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式（默认） */
-#define PIOB_14_INPUT_PD           AM_ZLG237_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
-#define PIOB_14_INPUT_PU           AM_ZLG237_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
-#define PIOB_14_OUT_PP             AM_ZLG237_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
-#define PIOB_14_OUT_OD             AM_ZLG237_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
-#define PIOB_14_AF_PP              AM_ZLG237_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
-#define PIOB_14_AF_OD              AM_ZLG237_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
+#define PIOB_14_AIN                AM_STM32F103RBT6_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
+#define PIOB_14_INPUT_FLOAT        AM_STM32F103RBT6_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式（默认） */
+#define PIOB_14_INPUT_PD           AM_STM32F103RBT6_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
+#define PIOB_14_INPUT_PU           AM_STM32F103RBT6_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
+#define PIOB_14_OUT_PP             AM_STM32F103RBT6_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
+#define PIOB_14_OUT_OD             AM_STM32F103RBT6_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
+#define PIOB_14_AF_PP              AM_STM32F103RBT6_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
+#define PIOB_14_AF_OD              AM_STM32F103RBT6_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
 
 /** @} */
 
@@ -1451,9 +1451,9 @@ extern "C" {
  * @{
  */
 
-#define PIOB_14_SPEED_10MHz        AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
-#define PIOB_14_SPEED_2MHz         AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
-#define PIOB_14_SPEED_50MHz        AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
+#define PIOB_14_SPEED_10MHz        AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOB_14_SPEED_2MHz         AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
+#define PIOB_14_SPEED_50MHz        AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
 
@@ -1464,11 +1464,11 @@ extern "C" {
  * @{
  */
 
-#define PIOB_15_NO_REMAP           AM_ZLG237_GPIO_REMAP_CODE(0x15, 0)
+#define PIOB_15_NO_REMAP           AM_STM32F103RBT6_GPIO_REMAP_CODE(0x15, 0)
 #define PIOB_15_SPI2_MOSI          PIOB_15_NO_REMAP   /**< \brief SPI2_MOSI */
 #define PIOB_15_GPIO               PIOB_15_NO_REMAP   /**< \brief GPIO */
 
-#define PIOB_15_TIM1_CH3N_REMAP0   AM_ZLG237_GPIO_REMAP_CODE(0x06, 0)   /**< \brief TIM1_CH3N */
+#define PIOB_15_TIM1_CH3N_REMAP0   AM_STM32F103RBT6_GPIO_REMAP_CODE(0x06, 0)   /**< \brief TIM1_CH3N */
 
 /** @} */
 
@@ -1477,14 +1477,14 @@ extern "C" {
  * @{
  */
 
-#define PIOB_15_AIN                AM_ZLG237_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
-#define PIOB_15_INPUT_FLOAT        AM_ZLG237_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式（默认） */
-#define PIOB_15_INPUT_PD           AM_ZLG237_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
-#define PIOB_15_INPUT_PU           AM_ZLG237_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
-#define PIOB_15_OUT_PP             AM_ZLG237_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
-#define PIOB_15_OUT_OD             AM_ZLG237_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
-#define PIOB_15_AF_PP              AM_ZLG237_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
-#define PIOB_15_AF_OD              AM_ZLG237_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
+#define PIOB_15_AIN                AM_STM32F103RBT6_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
+#define PIOB_15_INPUT_FLOAT        AM_STM32F103RBT6_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式（默认） */
+#define PIOB_15_INPUT_PD           AM_STM32F103RBT6_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
+#define PIOB_15_INPUT_PU           AM_STM32F103RBT6_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
+#define PIOB_15_OUT_PP             AM_STM32F103RBT6_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
+#define PIOB_15_OUT_OD             AM_STM32F103RBT6_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
+#define PIOB_15_AF_PP              AM_STM32F103RBT6_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
+#define PIOB_15_AF_OD              AM_STM32F103RBT6_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
 
 /** @} */
 
@@ -1493,9 +1493,9 @@ extern "C" {
  * @{
  */
 
-#define PIOB_15_SPEED_10MHz        AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
-#define PIOB_15_SPEED_2MHz         AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
-#define PIOB_15_SPEED_50MHz        AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
+#define PIOB_15_SPEED_10MHz        AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOB_15_SPEED_2MHz         AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
+#define PIOB_15_SPEED_50MHz        AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
 
@@ -1505,7 +1505,7 @@ extern "C" {
  * \name PIOC_0引脚复用功能
  * @{
  */
-#define PIOC_0_NO_REMAP           AM_ZLG237_GPIO_REMAP_CODE(0x15, 0)
+#define PIOC_0_NO_REMAP           AM_STM32F103RBT6_GPIO_REMAP_CODE(0x15, 0)
 #define PIOC_0_ADC12_IN10         PIOC_0_NO_REMAP   /**< \brief ADC12_IN10 */
 #define PIOC_0_GPIO               PIOC_0_NO_REMAP   /**< \brief GPIO */
 
@@ -1516,14 +1516,14 @@ extern "C" {
  * @{
  */
 
-#define PIOC_0_AIN                AM_ZLG237_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
-#define PIOC_0_INPUT_FLOAT        AM_ZLG237_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式（默认） */
-#define PIOC_0_INPUT_PD           AM_ZLG237_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
-#define PIOC_0_INPUT_PU           AM_ZLG237_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
-#define PIOC_0_OUT_PP             AM_ZLG237_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
-#define PIOC_0_OUT_OD             AM_ZLG237_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
-#define PIOC_0_AF_PP              AM_ZLG237_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
-#define PIOC_0_AF_OD              AM_ZLG237_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
+#define PIOC_0_AIN                AM_STM32F103RBT6_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
+#define PIOC_0_INPUT_FLOAT        AM_STM32F103RBT6_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式（默认） */
+#define PIOC_0_INPUT_PD           AM_STM32F103RBT6_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
+#define PIOC_0_INPUT_PU           AM_STM32F103RBT6_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
+#define PIOC_0_OUT_PP             AM_STM32F103RBT6_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
+#define PIOC_0_OUT_OD             AM_STM32F103RBT6_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
+#define PIOC_0_AF_PP              AM_STM32F103RBT6_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
+#define PIOC_0_AF_OD              AM_STM32F103RBT6_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
 
 /** @} */
 
@@ -1532,9 +1532,9 @@ extern "C" {
  * @{
  */
 
-#define PIOC_0_SPEED_10MHz        AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
-#define PIOC_0_SPEED_2MHz         AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
-#define PIOC_0_SPEED_50MHz        AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
+#define PIOC_0_SPEED_10MHz        AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOC_0_SPEED_2MHz         AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
+#define PIOC_0_SPEED_50MHz        AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
 
@@ -1544,7 +1544,7 @@ extern "C" {
  * \name PIOC_1引脚复用功能
  * @{
  */
-#define PIOC_1_NO_REMAP           AM_ZLG237_GPIO_REMAP_CODE(0x15, 0)
+#define PIOC_1_NO_REMAP           AM_STM32F103RBT6_GPIO_REMAP_CODE(0x15, 0)
 #define PIOC_1_ADC12_IN11         PIOC_1_NO_REMAP   /**< \brief ADC12_IN11 */
 #define PIOC_1_GPIO               PIOC_1_NO_REMAP   /**< \brief GPIO */
 
@@ -1555,14 +1555,14 @@ extern "C" {
  * @{
  */
 
-#define PIOC_1_AIN                AM_ZLG237_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
-#define PIOC_1_INPUT_FLOAT        AM_ZLG237_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式（默认） */
-#define PIOC_1_INPUT_PD           AM_ZLG237_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
-#define PIOC_1_INPUT_PU           AM_ZLG237_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
-#define PIOC_1_OUT_PP             AM_ZLG237_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
-#define PIOC_1_OUT_OD             AM_ZLG237_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
-#define PIOC_1_AF_PP              AM_ZLG237_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
-#define PIOC_1_AF_OD              AM_ZLG237_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
+#define PIOC_1_AIN                AM_STM32F103RBT6_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
+#define PIOC_1_INPUT_FLOAT        AM_STM32F103RBT6_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式（默认） */
+#define PIOC_1_INPUT_PD           AM_STM32F103RBT6_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
+#define PIOC_1_INPUT_PU           AM_STM32F103RBT6_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
+#define PIOC_1_OUT_PP             AM_STM32F103RBT6_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
+#define PIOC_1_OUT_OD             AM_STM32F103RBT6_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
+#define PIOC_1_AF_PP              AM_STM32F103RBT6_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
+#define PIOC_1_AF_OD              AM_STM32F103RBT6_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
 
 /** @} */
 
@@ -1571,9 +1571,9 @@ extern "C" {
  * @{
  */
 
-#define PIOC_1_SPEED_10MHz        AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
-#define PIOC_1_SPEED_2MHz         AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
-#define PIOC_1_SPEED_50MHz        AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
+#define PIOC_1_SPEED_10MHz        AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOC_1_SPEED_2MHz         AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
+#define PIOC_1_SPEED_50MHz        AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
 
@@ -1583,7 +1583,7 @@ extern "C" {
  * \name PIOC_2引脚复用功能
  * @{
  */
-#define PIOC_2_NO_REMAP           AM_ZLG237_GPIO_REMAP_CODE(0x15, 0)
+#define PIOC_2_NO_REMAP           AM_STM32F103RBT6_GPIO_REMAP_CODE(0x15, 0)
 #define PIOC_2_ADC12_IN12         PIOC_2_NO_REMAP   /**< \brief ADC12_IN12 */
 #define PIOC_2_GPIO               PIOC_2_NO_REMAP   /**< \brief GPIO */
 
@@ -1594,14 +1594,14 @@ extern "C" {
  * @{
  */
 
-#define PIOC_2_AIN                AM_ZLG237_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
-#define PIOC_2_INPUT_FLOAT        AM_ZLG237_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式（默认） */
-#define PIOC_2_INPUT_PD           AM_ZLG237_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
-#define PIOC_2_INPUT_PU           AM_ZLG237_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
-#define PIOC_2_OUT_PP             AM_ZLG237_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
-#define PIOC_2_OUT_OD             AM_ZLG237_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
-#define PIOC_2_AF_PP              AM_ZLG237_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
-#define PIOC_2_AF_OD              AM_ZLG237_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
+#define PIOC_2_AIN                AM_STM32F103RBT6_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
+#define PIOC_2_INPUT_FLOAT        AM_STM32F103RBT6_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式（默认） */
+#define PIOC_2_INPUT_PD           AM_STM32F103RBT6_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
+#define PIOC_2_INPUT_PU           AM_STM32F103RBT6_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
+#define PIOC_2_OUT_PP             AM_STM32F103RBT6_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
+#define PIOC_2_OUT_OD             AM_STM32F103RBT6_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
+#define PIOC_2_AF_PP              AM_STM32F103RBT6_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
+#define PIOC_2_AF_OD              AM_STM32F103RBT6_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
 
 /** @} */
 
@@ -1610,9 +1610,9 @@ extern "C" {
  * @{
  */
 
-#define PIOC_2_SPEED_10MHz        AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
-#define PIOC_2_SPEED_2MHz         AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
-#define PIOC_2_SPEED_50MHz        AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
+#define PIOC_2_SPEED_10MHz        AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOC_2_SPEED_2MHz         AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
+#define PIOC_2_SPEED_50MHz        AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
 
@@ -1623,7 +1623,7 @@ extern "C" {
  * @{
  */
 
-#define PIOC_3_NO_REMAP           AM_ZLG237_GPIO_REMAP_CODE(0x15, 0)
+#define PIOC_3_NO_REMAP           AM_STM32F103RBT6_GPIO_REMAP_CODE(0x15, 0)
 #define PIOC_3_ADC12_IN13         PIOC_3_NO_REMAP   /**< \brief ADC12_IN13 */
 #define PIOC_3_GPIO               PIOC_3_NO_REMAP   /**< \brief GPIO */
 
@@ -1634,14 +1634,14 @@ extern "C" {
  * @{
  */
 
-#define PIOC_3_AIN                AM_ZLG237_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
-#define PIOC_3_INPUT_FLOAT        AM_ZLG237_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式（默认） */
-#define PIOC_3_INPUT_PD           AM_ZLG237_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
-#define PIOC_3_INPUT_PU           AM_ZLG237_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
-#define PIOC_3_OUT_PP             AM_ZLG237_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
-#define PIOC_3_OUT_OD             AM_ZLG237_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
-#define PIOC_3_AF_PP              AM_ZLG237_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
-#define PIOC_3_AF_OD              AM_ZLG237_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
+#define PIOC_3_AIN                AM_STM32F103RBT6_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
+#define PIOC_3_INPUT_FLOAT        AM_STM32F103RBT6_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式（默认） */
+#define PIOC_3_INPUT_PD           AM_STM32F103RBT6_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
+#define PIOC_3_INPUT_PU           AM_STM32F103RBT6_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
+#define PIOC_3_OUT_PP             AM_STM32F103RBT6_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
+#define PIOC_3_OUT_OD             AM_STM32F103RBT6_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
+#define PIOC_3_AF_PP              AM_STM32F103RBT6_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
+#define PIOC_3_AF_OD              AM_STM32F103RBT6_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
 
 /** @} */
 
@@ -1650,9 +1650,9 @@ extern "C" {
  * @{
  */
 
-#define PIOC_3_SPEED_10MHz        AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
-#define PIOC_3_SPEED_2MHz         AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
-#define PIOC_3_SPEED_50MHz        AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
+#define PIOC_3_SPEED_10MHz        AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOC_3_SPEED_2MHz         AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
+#define PIOC_3_SPEED_50MHz        AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
 
@@ -1663,7 +1663,7 @@ extern "C" {
  * @{
  */
 
-#define PIOC_4_NO_REMAP           AM_ZLG237_GPIO_REMAP_CODE(0x15, 0)
+#define PIOC_4_NO_REMAP           AM_STM32F103RBT6_GPIO_REMAP_CODE(0x15, 0)
 #define PIOC_4_ADC12_IN14         PIOC_4_NO_REMAP   /**< \brief ADC12_IN14 */
 #define PIOC_4_GPIO               PIOC_4_NO_REMAP   /**< \brief GPIO */
 
@@ -1674,14 +1674,14 @@ extern "C" {
  * @{
  */
 
-#define PIOC_4_AIN                AM_ZLG237_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
-#define PIOC_4_INPUT_FLOAT        AM_ZLG237_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式（默认） */
-#define PIOC_4_INPUT_PD           AM_ZLG237_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
-#define PIOC_4_INPUT_PU           AM_ZLG237_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
-#define PIOC_4_OUT_PP             AM_ZLG237_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
-#define PIOC_4_OUT_OD             AM_ZLG237_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
-#define PIOC_4_AF_PP              AM_ZLG237_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
-#define PIOC_4_AF_OD              AM_ZLG237_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
+#define PIOC_4_AIN                AM_STM32F103RBT6_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
+#define PIOC_4_INPUT_FLOAT        AM_STM32F103RBT6_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式（默认） */
+#define PIOC_4_INPUT_PD           AM_STM32F103RBT6_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
+#define PIOC_4_INPUT_PU           AM_STM32F103RBT6_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
+#define PIOC_4_OUT_PP             AM_STM32F103RBT6_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
+#define PIOC_4_OUT_OD             AM_STM32F103RBT6_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
+#define PIOC_4_AF_PP              AM_STM32F103RBT6_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
+#define PIOC_4_AF_OD              AM_STM32F103RBT6_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
 
 /** @} */
 
@@ -1690,9 +1690,9 @@ extern "C" {
  * @{
  */
 
-#define PIOC_4_SPEED_10MHz        AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
-#define PIOC_4_SPEED_2MHz         AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
-#define PIOC_4_SPEED_50MHz        AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
+#define PIOC_4_SPEED_10MHz        AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOC_4_SPEED_2MHz         AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
+#define PIOC_4_SPEED_50MHz        AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
 
@@ -1703,7 +1703,7 @@ extern "C" {
  * @{
  */
 
-#define PIOC_5_NO_REMAP           AM_ZLG237_GPIO_REMAP_CODE(0x15, 0)
+#define PIOC_5_NO_REMAP           AM_STM32F103RBT6_GPIO_REMAP_CODE(0x15, 0)
 #define PIOC_5_ADC12_IN15         PIOC_5_NO_REMAP   /**< \brief ADC12_IN15 */
 #define PIOC_5_GPIO               PIOC_5_NO_REMAP   /**< \brief GPIO */
 
@@ -1714,14 +1714,14 @@ extern "C" {
  * @{
  */
 
-#define PIOC_5_AIN                AM_ZLG237_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
-#define PIOC_5_INPUT_FLOAT        AM_ZLG237_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式（默认） */
-#define PIOC_5_INPUT_PD           AM_ZLG237_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
-#define PIOC_5_INPUT_PU           AM_ZLG237_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
-#define PIOC_5_OUT_PP             AM_ZLG237_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
-#define PIOC_5_OUT_OD             AM_ZLG237_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
-#define PIOC_5_AF_PP              AM_ZLG237_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
-#define PIOC_5_AF_OD              AM_ZLG237_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
+#define PIOC_5_AIN                AM_STM32F103RBT6_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
+#define PIOC_5_INPUT_FLOAT        AM_STM32F103RBT6_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式（默认） */
+#define PIOC_5_INPUT_PD           AM_STM32F103RBT6_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
+#define PIOC_5_INPUT_PU           AM_STM32F103RBT6_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
+#define PIOC_5_OUT_PP             AM_STM32F103RBT6_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
+#define PIOC_5_OUT_OD             AM_STM32F103RBT6_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
+#define PIOC_5_AF_PP              AM_STM32F103RBT6_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
+#define PIOC_5_AF_OD              AM_STM32F103RBT6_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
 
 /** @} */
 
@@ -1730,9 +1730,9 @@ extern "C" {
  * @{
  */
 
-#define PIOC_5_SPEED_10MHz        AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
-#define PIOC_5_SPEED_2MHz         AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
-#define PIOC_5_SPEED_50MHz        AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
+#define PIOC_5_SPEED_10MHz        AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOC_5_SPEED_2MHz         AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
+#define PIOC_5_SPEED_50MHz        AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
 
@@ -1743,10 +1743,10 @@ extern "C" {
  * @{
  */
 
-#define PIOC_6_NO_REMAP           AM_ZLG237_GPIO_REMAP_CODE(0x15, 0)
+#define PIOC_6_NO_REMAP           AM_STM32F103RBT6_GPIO_REMAP_CODE(0x15, 0)
 #define PIOC_6_GPIO               PIOC_6_NO_REMAP   /**< \brief GPIO */
 
-#define PIOC_6_TIM3_CH1_REMAP3    AM_ZLG237_GPIO_REMAP_CODE(0X0A, 3)   /**< \brief TIM3_CH1 */
+#define PIOC_6_TIM3_CH1_REMAP3    AM_STM32F103RBT6_GPIO_REMAP_CODE(0X0A, 3)   /**< \brief TIM3_CH1 */
 
 /** @} */
 
@@ -1755,14 +1755,14 @@ extern "C" {
  * @{
  */
 
-#define PIOC_6_AIN                AM_ZLG237_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
-#define PIOC_6_INPUT_FLOAT        AM_ZLG237_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式（默认） */
-#define PIOC_6_INPUT_PD           AM_ZLG237_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
-#define PIOC_6_INPUT_PU           AM_ZLG237_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
-#define PIOC_6_OUT_PP             AM_ZLG237_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
-#define PIOC_6_OUT_OD             AM_ZLG237_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
-#define PIOC_6_AF_PP              AM_ZLG237_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
-#define PIOC_6_AF_OD              AM_ZLG237_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
+#define PIOC_6_AIN                AM_STM32F103RBT6_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
+#define PIOC_6_INPUT_FLOAT        AM_STM32F103RBT6_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式（默认） */
+#define PIOC_6_INPUT_PD           AM_STM32F103RBT6_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
+#define PIOC_6_INPUT_PU           AM_STM32F103RBT6_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
+#define PIOC_6_OUT_PP             AM_STM32F103RBT6_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
+#define PIOC_6_OUT_OD             AM_STM32F103RBT6_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
+#define PIOC_6_AF_PP              AM_STM32F103RBT6_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
+#define PIOC_6_AF_OD              AM_STM32F103RBT6_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
 
 /** @} */
 
@@ -1771,9 +1771,9 @@ extern "C" {
  * @{
  */
 
-#define PIOC_6_SPEED_10MHz        AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
-#define PIOC_6_SPEED_2MHz         AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
-#define PIOC_6_SPEED_50MHz        AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
+#define PIOC_6_SPEED_10MHz        AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOC_6_SPEED_2MHz         AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
+#define PIOC_6_SPEED_50MHz        AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
 
@@ -1784,10 +1784,10 @@ extern "C" {
  * @{
  */
 
-#define PIOC_7_NO_REMAP           AM_ZLG237_GPIO_REMAP_CODE(0x15, 0)
+#define PIOC_7_NO_REMAP           AM_STM32F103RBT6_GPIO_REMAP_CODE(0x15, 0)
 #define PIOC_7_GPIO               PIOC_7_NO_REMAP   /**< \brief GPIO */
 
-#define PIOC_7_TIM3_CH2_REMAP3    AM_ZLG237_GPIO_REMAP_CODE(0x0A, 3)   /**< \brief TIM3_CH2 */
+#define PIOC_7_TIM3_CH2_REMAP3    AM_STM32F103RBT6_GPIO_REMAP_CODE(0x0A, 3)   /**< \brief TIM3_CH2 */
 
 /** @} */
 
@@ -1796,14 +1796,14 @@ extern "C" {
  * @{
  */
 
-#define PIOC_7_AIN                AM_ZLG237_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
-#define PIOC_7_INPUT_FLOAT        AM_ZLG237_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式（默认） */
-#define PIOC_7_INPUT_PD           AM_ZLG237_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
-#define PIOC_7_INPUT_PU           AM_ZLG237_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
-#define PIOC_7_OUT_PP             AM_ZLG237_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
-#define PIOC_7_OUT_OD             AM_ZLG237_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
-#define PIOC_7_AF_PP              AM_ZLG237_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
-#define PIOC_7_AF_OD              AM_ZLG237_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
+#define PIOC_7_AIN                AM_STM32F103RBT6_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
+#define PIOC_7_INPUT_FLOAT        AM_STM32F103RBT6_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式（默认） */
+#define PIOC_7_INPUT_PD           AM_STM32F103RBT6_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
+#define PIOC_7_INPUT_PU           AM_STM32F103RBT6_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
+#define PIOC_7_OUT_PP             AM_STM32F103RBT6_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
+#define PIOC_7_OUT_OD             AM_STM32F103RBT6_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
+#define PIOC_7_AF_PP              AM_STM32F103RBT6_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
+#define PIOC_7_AF_OD              AM_STM32F103RBT6_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
 
 /** @} */
 
@@ -1812,9 +1812,9 @@ extern "C" {
  * @{
  */
 
-#define PIOC_7_SPEED_10MHz        AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
-#define PIOC_7_SPEED_2MHz         AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
-#define PIOC_7_SPEED_50MHz        AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
+#define PIOC_7_SPEED_10MHz        AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOC_7_SPEED_2MHz         AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
+#define PIOC_7_SPEED_50MHz        AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
 
@@ -1825,10 +1825,10 @@ extern "C" {
  * @{
  */
 
-#define PIOC_8_NO_REMAP           AM_ZLG237_GPIO_REMAP_CODE(0x15, 0)
+#define PIOC_8_NO_REMAP           AM_STM32F103RBT6_GPIO_REMAP_CODE(0x15, 0)
 #define PIOC_8_GPIO               PIOC_8_NO_REMAP   /**< \brief GPIO */
 
-#define PIOC_8_TIM3_CH3_REMAP3    AM_ZLG237_GPIO_REMAP_CODE(0x0A, 3)   /**< \brief TIM3_CH3 */
+#define PIOC_8_TIM3_CH3_REMAP3    AM_STM32F103RBT6_GPIO_REMAP_CODE(0x0A, 3)   /**< \brief TIM3_CH3 */
 
 /** @} */
 
@@ -1837,14 +1837,14 @@ extern "C" {
  * @{
  */
 
-#define PIOC_8_AIN                AM_ZLG237_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
-#define PIOC_8_INPUT_FLOAT        AM_ZLG237_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式（默认） */
-#define PIOC_8_INPUT_PD           AM_ZLG237_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
-#define PIOC_8_INPUT_PU           AM_ZLG237_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
-#define PIOC_8_OUT_PP             AM_ZLG237_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
-#define PIOC_8_OUT_OD             AM_ZLG237_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
-#define PIOC_8_AF_PP              AM_ZLG237_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
-#define PIOC_8_AF_OD              AM_ZLG237_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
+#define PIOC_8_AIN                AM_STM32F103RBT6_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
+#define PIOC_8_INPUT_FLOAT        AM_STM32F103RBT6_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式（默认） */
+#define PIOC_8_INPUT_PD           AM_STM32F103RBT6_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
+#define PIOC_8_INPUT_PU           AM_STM32F103RBT6_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
+#define PIOC_8_OUT_PP             AM_STM32F103RBT6_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
+#define PIOC_8_OUT_OD             AM_STM32F103RBT6_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
+#define PIOC_8_AF_PP              AM_STM32F103RBT6_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
+#define PIOC_8_AF_OD              AM_STM32F103RBT6_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
 
 /** @} */
 
@@ -1853,9 +1853,9 @@ extern "C" {
  * @{
  */
 
-#define PIOC_8_SPEED_10MHz        AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
-#define PIOC_8_SPEED_2MHz         AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
-#define PIOC_8_SPEED_50MHz        AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
+#define PIOC_8_SPEED_10MHz        AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOC_8_SPEED_2MHz         AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
+#define PIOC_8_SPEED_50MHz        AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
 
@@ -1866,10 +1866,10 @@ extern "C" {
  * @{
  */
 
-#define PIOC_9_NO_REMAP           AM_ZLG237_GPIO_REMAP_CODE(0x15, 0)
+#define PIOC_9_NO_REMAP           AM_STM32F103RBT6_GPIO_REMAP_CODE(0x15, 0)
 #define PIOC_9_GPIO               PIOC_9_NO_REMAP   /**< \brief GPIO */
 
-#define PIOC_9_TIM3_CH4_REMAP3    AM_ZLG237_GPIO_REMAP_CODE(0x0A, 3)   /**< \brief TIM3_CH4 */
+#define PIOC_9_TIM3_CH4_REMAP3    AM_STM32F103RBT6_GPIO_REMAP_CODE(0x0A, 3)   /**< \brief TIM3_CH4 */
 
 /** @} */
 
@@ -1878,14 +1878,14 @@ extern "C" {
  * @{
  */
 
-#define PIOC_9_AIN                AM_ZLG237_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
-#define PIOC_9_INPUT_FLOAT        AM_ZLG237_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式（默认） */
-#define PIOC_9_INPUT_PD           AM_ZLG237_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
-#define PIOC_9_INPUT_PU           AM_ZLG237_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
-#define PIOC_9_OUT_PP             AM_ZLG237_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
-#define PIOC_9_OUT_OD             AM_ZLG237_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
-#define PIOC_9_AF_PP              AM_ZLG237_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
-#define PIOC_9_AF_OD              AM_ZLG237_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
+#define PIOC_9_AIN                AM_STM32F103RBT6_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
+#define PIOC_9_INPUT_FLOAT        AM_STM32F103RBT6_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式（默认） */
+#define PIOC_9_INPUT_PD           AM_STM32F103RBT6_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
+#define PIOC_9_INPUT_PU           AM_STM32F103RBT6_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
+#define PIOC_9_OUT_PP             AM_STM32F103RBT6_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
+#define PIOC_9_OUT_OD             AM_STM32F103RBT6_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
+#define PIOC_9_AF_PP              AM_STM32F103RBT6_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
+#define PIOC_9_AF_OD              AM_STM32F103RBT6_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
 
 /** @} */
 
@@ -1894,9 +1894,9 @@ extern "C" {
  * @{
  */
 
-#define PIOC_9_SPEED_10MHz        AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
-#define PIOC_9_SPEED_2MHz         AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
-#define PIOC_9_SPEED_50MHz        AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
+#define PIOC_9_SPEED_10MHz        AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOC_9_SPEED_2MHz         AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
+#define PIOC_9_SPEED_50MHz        AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
 
@@ -1907,10 +1907,10 @@ extern "C" {
  * @{
  */
 
-#define PIOC_10_NO_REMAP          AM_ZLG237_GPIO_REMAP_CODE(0x15, 0)
+#define PIOC_10_NO_REMAP          AM_STM32F103RBT6_GPIO_REMAP_CODE(0x15, 0)
 #define PIOC_10_GPIO              PIOC_10_NO_REMAP   /**< \brief GPIO */
 
-#define PIOC_10_USART3_TX_REMAP1  AM_ZLG237_GPIO_REMAP_CODE(0x04, 1)   /**< \brief USART3_TX */
+#define PIOC_10_USART3_TX_REMAP1  AM_STM32F103RBT6_GPIO_REMAP_CODE(0x04, 1)   /**< \brief USART3_TX */
 
 /** @} */
 
@@ -1919,14 +1919,14 @@ extern "C" {
  * @{
  */
 
-#define PIOC_10_AIN               AM_ZLG237_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
-#define PIOC_10_INPUT_FLOAT       AM_ZLG237_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式（默认） */
-#define PIOC_10_INPUT_PD          AM_ZLG237_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
-#define PIOC_10_INPUT_PU          AM_ZLG237_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
-#define PIOC_10_OUT_PP            AM_ZLG237_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
-#define PIOC_10_OUT_OD            AM_ZLG237_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
-#define PIOC_10_AF_PP             AM_ZLG237_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
-#define PIOC_10_AF_OD             AM_ZLG237_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
+#define PIOC_10_AIN               AM_STM32F103RBT6_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
+#define PIOC_10_INPUT_FLOAT       AM_STM32F103RBT6_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式（默认） */
+#define PIOC_10_INPUT_PD          AM_STM32F103RBT6_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
+#define PIOC_10_INPUT_PU          AM_STM32F103RBT6_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
+#define PIOC_10_OUT_PP            AM_STM32F103RBT6_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
+#define PIOC_10_OUT_OD            AM_STM32F103RBT6_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
+#define PIOC_10_AF_PP             AM_STM32F103RBT6_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
+#define PIOC_10_AF_OD             AM_STM32F103RBT6_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
 
 /** @} */
 
@@ -1935,9 +1935,9 @@ extern "C" {
  * @{
  */
 
-#define PIOC_10_SPEED_10MHz       AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
-#define PIOC_10_SPEED_2MHz        AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
-#define PIOC_10_SPEED_50MHz       AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
+#define PIOC_10_SPEED_10MHz       AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOC_10_SPEED_2MHz        AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
+#define PIOC_10_SPEED_50MHz       AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
 
@@ -1948,10 +1948,10 @@ extern "C" {
  * @{
  */
 
-#define PIOC_11_NO_REMAP          AM_ZLG237_GPIO_REMAP_CODE(0x15, 0)
+#define PIOC_11_NO_REMAP          AM_STM32F103RBT6_GPIO_REMAP_CODE(0x15, 0)
 #define PIOC_11_GPIO              PIOC_11_NO_REMAP   /**< \brief GPIO */
 
-#define PIOC_11_USART3_RX_REMAP1  AM_ZLG237_GPIO_REMAP_CODE(0x04, 1)   /**< \brief USART3_RX */
+#define PIOC_11_USART3_RX_REMAP1  AM_STM32F103RBT6_GPIO_REMAP_CODE(0x04, 1)   /**< \brief USART3_RX */
 
 /** @} */
 
@@ -1960,14 +1960,14 @@ extern "C" {
  * @{
  */
 
-#define PIOC_11_AIN               AM_ZLG237_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
-#define PIOC_11_INPUT_FLOAT       AM_ZLG237_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式（默认） */
-#define PIOC_11_INPUT_PD          AM_ZLG237_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
-#define PIOC_11_INPUT_PU          AM_ZLG237_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
-#define PIOC_11_OUT_PP            AM_ZLG237_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
-#define PIOC_11_OUT_OD            AM_ZLG237_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
-#define PIOC_11_AF_PP             AM_ZLG237_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
-#define PIOC_11_AF_OD             AM_ZLG237_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
+#define PIOC_11_AIN               AM_STM32F103RBT6_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
+#define PIOC_11_INPUT_FLOAT       AM_STM32F103RBT6_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式（默认） */
+#define PIOC_11_INPUT_PD          AM_STM32F103RBT6_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
+#define PIOC_11_INPUT_PU          AM_STM32F103RBT6_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
+#define PIOC_11_OUT_PP            AM_STM32F103RBT6_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
+#define PIOC_11_OUT_OD            AM_STM32F103RBT6_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
+#define PIOC_11_AF_PP             AM_STM32F103RBT6_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
+#define PIOC_11_AF_OD             AM_STM32F103RBT6_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
 
 /** @} */
 
@@ -1976,9 +1976,9 @@ extern "C" {
  * @{
  */
 
-#define PIOC_11_SPEED_10MHz       AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
-#define PIOC_11_SPEED_2MHz        AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
-#define PIOC_11_SPEED_50MHz       AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
+#define PIOC_11_SPEED_10MHz       AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOC_11_SPEED_2MHz        AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
+#define PIOC_11_SPEED_50MHz       AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
 
@@ -1989,10 +1989,10 @@ extern "C" {
  * @{
  */
 
-#define PIOC_12_NO_REMAP          AM_ZLG237_GPIO_REMAP_CODE(0x15, 0)
+#define PIOC_12_NO_REMAP          AM_STM32F103RBT6_GPIO_REMAP_CODE(0x15, 0)
 #define PIOC_12_GPIO              PIOC_12_NO_REMAP   /**< \brief GPIO */
 
-#define PIOC_12_USART3_CK_REMAP1  AM_ZLG237_GPIO_REMAP_CODE(0x04, 1)   /**< \brief USART3_CK */
+#define PIOC_12_USART3_CK_REMAP1  AM_STM32F103RBT6_GPIO_REMAP_CODE(0x04, 1)   /**< \brief USART3_CK */
 
 /** @} */
 
@@ -2001,14 +2001,14 @@ extern "C" {
  * @{
  */
 
-#define PIOC_12_AIN               AM_ZLG237_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
-#define PIOC_12_INPUT_FLOAT       AM_ZLG237_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式（默认） */
-#define PIOC_12_INPUT_PD          AM_ZLG237_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
-#define PIOC_12_INPUT_PU          AM_ZLG237_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
-#define PIOC_12_OUT_PP            AM_ZLG237_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
-#define PIOC_12_OUT_OD            AM_ZLG237_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
-#define PIOC_12_AF_PP             AM_ZLG237_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
-#define PIOC_12_AF_OD             AM_ZLG237_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
+#define PIOC_12_AIN               AM_STM32F103RBT6_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
+#define PIOC_12_INPUT_FLOAT       AM_STM32F103RBT6_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式（默认） */
+#define PIOC_12_INPUT_PD          AM_STM32F103RBT6_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
+#define PIOC_12_INPUT_PU          AM_STM32F103RBT6_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
+#define PIOC_12_OUT_PP            AM_STM32F103RBT6_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
+#define PIOC_12_OUT_OD            AM_STM32F103RBT6_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
+#define PIOC_12_AF_PP             AM_STM32F103RBT6_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
+#define PIOC_12_AF_OD             AM_STM32F103RBT6_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
 
 /** @} */
 
@@ -2017,9 +2017,9 @@ extern "C" {
  * @{
  */
 
-#define PIOC_12_SPEED_10MHz       AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
-#define PIOC_12_SPEED_2MHz        AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
-#define PIOC_12_SPEED_50MHz       AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
+#define PIOC_12_SPEED_10MHz       AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOC_12_SPEED_2MHz        AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
+#define PIOC_12_SPEED_50MHz       AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
 
@@ -2030,7 +2030,7 @@ extern "C" {
  * @{
  */
 
-#define PIOC_13_NO_REMAP         AM_ZLG237_GPIO_REMAP_CODE(0x15, 0)
+#define PIOC_13_NO_REMAP         AM_STM32F103RBT6_GPIO_REMAP_CODE(0x15, 0)
 #define PIOC_13_TAMPER_RTC       PIOC_13_NO_REMAP   /**< \brief TAMPER_RTC */
 #define PIOC_13_GPIO             PIOC_13_NO_REMAP   /**< \brief GPIO */
 
@@ -2041,14 +2041,14 @@ extern "C" {
  * @{
  */
 
-#define PIOC_13_AIN              AM_ZLG237_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
-#define PIOC_13_INPUT_FLOAT      AM_ZLG237_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式（默认） */
-#define PIOC_13_INPUT_PD         AM_ZLG237_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
-#define PIOC_13_INPUT_PU         AM_ZLG237_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
-#define PIOC_13_OUT_PP           AM_ZLG237_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
-#define PIOC_13_OUT_OD           AM_ZLG237_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
-#define PIOC_13_AF_PP            AM_ZLG237_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
-#define PIOC_13_AF_OD            AM_ZLG237_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
+#define PIOC_13_AIN              AM_STM32F103RBT6_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
+#define PIOC_13_INPUT_FLOAT      AM_STM32F103RBT6_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式（默认） */
+#define PIOC_13_INPUT_PD         AM_STM32F103RBT6_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
+#define PIOC_13_INPUT_PU         AM_STM32F103RBT6_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
+#define PIOC_13_OUT_PP           AM_STM32F103RBT6_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
+#define PIOC_13_OUT_OD           AM_STM32F103RBT6_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
+#define PIOC_13_AF_PP            AM_STM32F103RBT6_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
+#define PIOC_13_AF_OD            AM_STM32F103RBT6_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
 
 /** @} */
 
@@ -2057,9 +2057,9 @@ extern "C" {
  * @{
  */
 
-#define PIOC_13_SPEED_10MHz      AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
-#define PIOC_13_SPEED_2MHz       AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
-#define PIOC_13_SPEED_50MHz      AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
+#define PIOC_13_SPEED_10MHz      AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOC_13_SPEED_2MHz       AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
+#define PIOC_13_SPEED_50MHz      AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
 
@@ -2070,7 +2070,7 @@ extern "C" {
  * @{
  */
 
-#define PIOC_14_NO_REMAP        AM_ZLG237_GPIO_REMAP_CODE(0x15, 0)
+#define PIOC_14_NO_REMAP        AM_STM32F103RBT6_GPIO_REMAP_CODE(0x15, 0)
 #define PIOC_14_OSC32_IN        PIOC_14_NO_REMAP   /**< \brief OSC32_IN */
 #define PIOC_14_GPIO            PIOC_14_NO_REMAP   /**< \brief GPIO */
 
@@ -2081,14 +2081,14 @@ extern "C" {
  * @{
  */
 
-#define PIOC_14_AIN             AM_ZLG237_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
-#define PIOC_14_INPUT_FLOAT     AM_ZLG237_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式（默认） */
-#define PIOC_14_INPUT_PD        AM_ZLG237_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
-#define PIOC_14_INPUT_PU        AM_ZLG237_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
-#define PIOC_14_OUT_PP          AM_ZLG237_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
-#define PIOC_14_OUT_OD          AM_ZLG237_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
-#define PIOC_14_AF_PP           AM_ZLG237_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
-#define PIOC_14_AF_OD           AM_ZLG237_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
+#define PIOC_14_AIN             AM_STM32F103RBT6_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
+#define PIOC_14_INPUT_FLOAT     AM_STM32F103RBT6_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式（默认） */
+#define PIOC_14_INPUT_PD        AM_STM32F103RBT6_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
+#define PIOC_14_INPUT_PU        AM_STM32F103RBT6_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
+#define PIOC_14_OUT_PP          AM_STM32F103RBT6_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
+#define PIOC_14_OUT_OD          AM_STM32F103RBT6_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
+#define PIOC_14_AF_PP           AM_STM32F103RBT6_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
+#define PIOC_14_AF_OD           AM_STM32F103RBT6_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
 
 /** @} */
 
@@ -2097,9 +2097,9 @@ extern "C" {
  * @{
  */
 
-#define PIOC_14_SPEED_10MHz     AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
-#define PIOC_14_SPEED_2MHz      AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
-#define PIOC_14_SPEED_50MHz     AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
+#define PIOC_14_SPEED_10MHz     AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOC_14_SPEED_2MHz      AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
+#define PIOC_14_SPEED_50MHz     AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
 
@@ -2110,7 +2110,7 @@ extern "C" {
  * @{
  */
 
-#define PIOC_15_NO_REMAP        AM_ZLG237_GPIO_REMAP_CODE(0x15, 0)
+#define PIOC_15_NO_REMAP        AM_STM32F103RBT6_GPIO_REMAP_CODE(0x15, 0)
 #define PIOC_15_OSC32_OUT       PIOC_15_NO_REMAP   /**< \brief OSC32_OUT */
 #define PIOC_15_GPIO            PIOC_15_NO_REMAP   /**< \brief GPIO */
 
@@ -2121,14 +2121,14 @@ extern "C" {
  * @{
  */
 
-#define PIOC_15_AIN             AM_ZLG237_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
-#define PIOC_15_INPUT_FLOAT     AM_ZLG237_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式（默认） */
-#define PIOC_15_INPUT_PD        AM_ZLG237_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
-#define PIOC_15_INPUT_PU        AM_ZLG237_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
-#define PIOC_15_OUT_PP          AM_ZLG237_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
-#define PIOC_15_OUT_OD          AM_ZLG237_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
-#define PIOC_15_AF_PP           AM_ZLG237_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
-#define PIOC_15_AF_OD           AM_ZLG237_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
+#define PIOC_15_AIN             AM_STM32F103RBT6_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
+#define PIOC_15_INPUT_FLOAT     AM_STM32F103RBT6_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式（默认） */
+#define PIOC_15_INPUT_PD        AM_STM32F103RBT6_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
+#define PIOC_15_INPUT_PU        AM_STM32F103RBT6_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
+#define PIOC_15_OUT_PP          AM_STM32F103RBT6_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
+#define PIOC_15_OUT_OD          AM_STM32F103RBT6_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
+#define PIOC_15_AF_PP           AM_STM32F103RBT6_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
+#define PIOC_15_AF_OD           AM_STM32F103RBT6_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
 
 /** @} */
 
@@ -2137,9 +2137,9 @@ extern "C" {
  * @{
  */
 
-#define PIOC_15_SPEED_10MHz     AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
-#define PIOC_15_SPEED_2MHz      AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
-#define PIOC_15_SPEED_50MHz     AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
+#define PIOC_15_SPEED_10MHz     AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOC_15_SPEED_2MHz      AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
+#define PIOC_15_SPEED_50MHz     AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
 
@@ -2150,12 +2150,12 @@ extern "C" {
  * @{
  */
 
-#define PIOD_0_NO_REMAP         AM_ZLG237_GPIO_REMAP_CODE(0x15, 0)
+#define PIOD_0_NO_REMAP         AM_STM32F103RBT6_GPIO_REMAP_CODE(0x15, 0)
 #define PIOD_0_OSC_IN           PIOD_0_NO_REMAP   /**< \brief OSC_IN */
-#define PIOD_0_GPIO             AM_ZLG237_GPIO_REMAP_CODE(0xF, 1)   /**< \brief GPIO */
+#define PIOD_0_GPIO             AM_STM32F103RBT6_GPIO_REMAP_CODE(0xF, 1)   /**< \brief GPIO */
 
-#define PIOD_0_CAN_RX_REMAP3    AM_ZLG237_GPIO_REMAP_CODE(0xD, 3)   /**< \brief CAN_RX */
-#define PIOD_0_OSC_IN_REMAP     AM_ZLG237_GPIO_REMAP_CODE(0xF, 0)   /**< \brief OSC_IN */
+#define PIOD_0_CAN_RX_REMAP3    AM_STM32F103RBT6_GPIO_REMAP_CODE(0xD, 3)   /**< \brief CAN_RX */
+#define PIOD_0_OSC_IN_REMAP     AM_STM32F103RBT6_GPIO_REMAP_CODE(0xF, 0)   /**< \brief OSC_IN */
 /** @} */
 
 /**
@@ -2163,14 +2163,14 @@ extern "C" {
  * @{
  */
 
-#define PIOD_0_AIN              AM_ZLG237_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
-#define PIOD_0_INPUT_FLOAT      AM_ZLG237_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式（默认） */
-#define PIOD_0_INPUT_PD         AM_ZLG237_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
-#define PIOD_0_INPUT_PU         AM_ZLG237_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
-#define PIOD_0_OUT_PP           AM_ZLG237_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
-#define PIOD_0_OUT_OD           AM_ZLG237_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
-#define PIOD_0_AF_PP            AM_ZLG237_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
-#define PIOD_0_AF_OD            AM_ZLG237_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
+#define PIOD_0_AIN              AM_STM32F103RBT6_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
+#define PIOD_0_INPUT_FLOAT      AM_STM32F103RBT6_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式（默认） */
+#define PIOD_0_INPUT_PD         AM_STM32F103RBT6_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
+#define PIOD_0_INPUT_PU         AM_STM32F103RBT6_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
+#define PIOD_0_OUT_PP           AM_STM32F103RBT6_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
+#define PIOD_0_OUT_OD           AM_STM32F103RBT6_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
+#define PIOD_0_AF_PP            AM_STM32F103RBT6_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
+#define PIOD_0_AF_OD            AM_STM32F103RBT6_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
 
 /** @} */
 
@@ -2179,9 +2179,9 @@ extern "C" {
  * @{
  */
 
-#define PIOD_0_SPEED_10MHz      AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
-#define PIOD_0_SPEED_2MHz       AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
-#define PIOD_0_SPEED_50MHz      AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
+#define PIOD_0_SPEED_10MHz      AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOD_0_SPEED_2MHz       AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
+#define PIOD_0_SPEED_50MHz      AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
 
@@ -2192,12 +2192,12 @@ extern "C" {
  * @{
  */
 
-#define PIOD_1_NO_REMAP         AM_ZLG237_GPIO_REMAP_CODE(0x15, 0)
+#define PIOD_1_NO_REMAP         AM_STM32F103RBT6_GPIO_REMAP_CODE(0x15, 0)
 #define PIOD_1_OSC_OUT          PIOD_1_NO_REMAP   /**< \brief OSC_OUT */
-#define PIOD_1_GPIO             AM_ZLG237_GPIO_REMAP_CODE(0xF, 1)   /**< \brief GPIO */
+#define PIOD_1_GPIO             AM_STM32F103RBT6_GPIO_REMAP_CODE(0xF, 1)   /**< \brief GPIO */
 
-#define PIOD_1_OSC_OUT_REMAP    AM_ZLG237_GPIO_REMAP_CODE(0xF, 0)   /**< \brief OSC_OUT */
-#define PIOD_1_CAN_TX_REMAP3    AM_ZLG237_GPIO_REMAP_CODE(0xD, 3)   /**< \brief CAN_RX */
+#define PIOD_1_OSC_OUT_REMAP    AM_STM32F103RBT6_GPIO_REMAP_CODE(0xF, 0)   /**< \brief OSC_OUT */
+#define PIOD_1_CAN_TX_REMAP3    AM_STM32F103RBT6_GPIO_REMAP_CODE(0xD, 3)   /**< \brief CAN_RX */
 
 /** @} */
 
@@ -2206,14 +2206,14 @@ extern "C" {
  * @{
  */
 
-#define PIOD_1_AIN              AM_ZLG237_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
-#define PIOD_1_INPUT_FLOAT      AM_ZLG237_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式（默认） */
-#define PIOD_1_INPUT_PD         AM_ZLG237_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
-#define PIOD_1_INPUT_PU         AM_ZLG237_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
-#define PIOD_1_OUT_PP           AM_ZLG237_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
-#define PIOD_1_OUT_OD           AM_ZLG237_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
-#define PIOD_1_AF_PP            AM_ZLG237_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
-#define PIOD_1_AF_OD            AM_ZLG237_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
+#define PIOD_1_AIN              AM_STM32F103RBT6_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
+#define PIOD_1_INPUT_FLOAT      AM_STM32F103RBT6_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式（默认） */
+#define PIOD_1_INPUT_PD         AM_STM32F103RBT6_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
+#define PIOD_1_INPUT_PU         AM_STM32F103RBT6_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
+#define PIOD_1_OUT_PP           AM_STM32F103RBT6_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
+#define PIOD_1_OUT_OD           AM_STM32F103RBT6_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
+#define PIOD_1_AF_PP            AM_STM32F103RBT6_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
+#define PIOD_1_AF_OD            AM_STM32F103RBT6_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
 
 /** @} */
 
@@ -2222,9 +2222,9 @@ extern "C" {
  * @{
  */
 
-#define PIOD_1_SPEED_10MHz      AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
-#define PIOD_1_SPEED_2MHz       AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
-#define PIOD_1_SPEED_50MHz      AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
+#define PIOD_1_SPEED_10MHz      AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOD_1_SPEED_2MHz       AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
+#define PIOD_1_SPEED_50MHz      AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
 
@@ -2235,7 +2235,7 @@ extern "C" {
  * @{
  */
 
-#define PIOD_2_NO_REMAP         AM_ZLG237_GPIO_REMAP_CODE(0x15, 0)
+#define PIOD_2_NO_REMAP         AM_STM32F103RBT6_GPIO_REMAP_CODE(0x15, 0)
 #define PIOD_2_GPIO             PIOD_2_NO_REMAP   /**< \brief GPIO */
 #define PIOD_2_TIM3_ETR         PIOD_2_NO_REMAP   /**< \brief TIM3_ETR */
 
@@ -2246,14 +2246,14 @@ extern "C" {
  * @{
  */
 
-#define PIOD_2_AIN              AM_ZLG237_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
-#define PIOD_2_INPUT_FLOAT      AM_ZLG237_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式（默认） */
-#define PIOD_2_INPUT_PD         AM_ZLG237_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
-#define PIOD_2_INPUT_PU         AM_ZLG237_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
-#define PIOD_2_OUT_PP           AM_ZLG237_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
-#define PIOD_2_OUT_OD           AM_ZLG237_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
-#define PIOD_2_AF_PP            AM_ZLG237_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
-#define PIOD_2_AF_OD            AM_ZLG237_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
+#define PIOD_2_AIN              AM_STM32F103RBT6_GPIO_MODE_CODE(0x0)   /**< \brief 模拟模式 */
+#define PIOD_2_INPUT_FLOAT      AM_STM32F103RBT6_GPIO_MODE_CODE(0x1)   /**< \brief 输入浮空模式（默认） */
+#define PIOD_2_INPUT_PD         AM_STM32F103RBT6_GPIO_MODE_CODE(0x2)   /**< \brief 输入下拉模式 */
+#define PIOD_2_INPUT_PU         AM_STM32F103RBT6_GPIO_MODE_CODE(0x3)   /**< \brief 输入上拉模式 */
+#define PIOD_2_OUT_PP           AM_STM32F103RBT6_GPIO_MODE_CODE(0x4)   /**< \brief 通用推挽输出模式 */
+#define PIOD_2_OUT_OD           AM_STM32F103RBT6_GPIO_MODE_CODE(0x5)   /**< \brief 通用开漏输出模式 */
+#define PIOD_2_AF_PP            AM_STM32F103RBT6_GPIO_MODE_CODE(0x6)   /**< \brief 复用推挽输出模式 */
+#define PIOD_2_AF_OD            AM_STM32F103RBT6_GPIO_MODE_CODE(0x7)   /**< \brief 复用开漏输出模式 */
 
 /** @} */
 
@@ -2262,9 +2262,9 @@ extern "C" {
  * @{
  */
 
-#define PIOD_2_SPEED_10MHz      AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
-#define PIOD_2_SPEED_2MHz       AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
-#define PIOD_2_SPEED_50MHz      AM_ZLG237_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
+#define PIOD_2_SPEED_10MHz      AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x01)   /**< \brief 10MHz输出响应速率 */
+#define PIOD_2_SPEED_2MHz       AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x02)   /**< \brief 2MHz输出响应速率 */
+#define PIOD_2_SPEED_50MHz      AM_STM32F103RBT6_GPIO_OUTRES_RATE_CODE(0x03)   /**< \brief 50MHz输出响应速率 */
 
 /** @} */
 
@@ -2275,13 +2275,13 @@ extern "C" {
  */
 
 /**
- * @}if_zlg237_pin
+ * @}if_stm32f103rbt6_pin
  */
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif /* __ZLG237_PIN_H */
+#endif /* __STM32F103RBT6_PIN_H */
 
 /* end of file */

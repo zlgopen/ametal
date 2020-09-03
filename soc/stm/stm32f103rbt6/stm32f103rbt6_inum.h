@@ -12,7 +12,7 @@
 
 /**
  * \file
- * \brief ZLG237 中断号定义
+ * \brief STM32F103RBT6 中断号定义
  *
  * \internal
  * \par Modification history
@@ -20,8 +20,8 @@
  * \endinternal
  */
 
-#ifndef __ZLG237_INUM_H
-#define __ZLG237_INUM_H
+#ifndef __STM32F103RBT6_INUM_H
+#define __STM32F103RBT6_INUM_H
 
 #ifdef __cplusplus
 extern "C" {
@@ -30,13 +30,13 @@ extern "C" {
 #include "ametal.h"
 
 /**
- * \addtogroup zlg237_if_inum
- * \copydoc zlg237_inum.h
+ * \addtogroup stm32f103rbt6_if_inum
+ * \copydoc stm32f103rbt6_inum.h
  * @{
  */
 
 /**
- * \name ZLG237 CPU 中断号
+ * \name STM32F103RBT6 CPU 中断号
  * @{
  */
 
@@ -124,7 +124,7 @@ typedef enum {
     /** \brief 15  系统滴答定时器 */
     SysTick_IRQn             =  -1,
 
-    /******  ZLG237 Specific Interrupt Numbers *******************************************************/
+    /******  STM32F103RBT6 Specific Interrupt Numbers *******************************************************/
     WWDG_IRQn                = 0,         /**< \brief 窗口定时器中断 */
     PVD_IRQn                  =1,         /**< \brief 电源电压检测中断 */
     TAMPER_IRQn               =2,         /**< \brief 侵入检测中断 */
@@ -182,6 +182,6 @@ typedef enum {
 }
 #endif
 
-#endif /* __ZLG237_INUM_H */
+#endif /* __STM32F103RBT6_INUM_H */
 
 /* end of file */

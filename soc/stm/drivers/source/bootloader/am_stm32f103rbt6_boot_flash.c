@@ -19,9 +19,9 @@
  * - 1.00 18-11-15  yrh, first implementation
  * \endinternal
  */
-#include "am_zlg237_boot_flash.h"
+#include "am_stm32f103rbt6_boot_flash.h"
 #include "am_int.h"
-#include "am_zlg237_flash.h"
+#include "am_stm32f103rbt6_flash.h"
 #include "am_boot_flash.h"
 
 static int __boot_flash_erase_region(void     *p_drv,
@@ -48,7 +48,7 @@ static int __boot_flash_erase_region(void     *p_drv,
                                      uint32_t  start_addr,
                                      uint32_t  length)
 {
-    am_zlg237_boot_flash_dev_t *p_dev = (am_zlg237_boot_flash_dev_t *)p_drv;
+    am_stm32f103rbt6_boot_flash_dev_t *p_dev = (am_stm32f103rbt6_boot_flash_dev_t *)p_drv;
     uint32_t page_size = p_dev->p_devinfo->base_info.flash_page_size;
 
     uint32_t erase_page_count = 0;
@@ -70,8 +70,8 @@ static int __boot_flash_erase_region(void     *p_drv,
 
          k = am_int_cpu_lock();
 
-         ret = am_zlg237_flash_page_erase(
-             (amhw_zlg237_flash_t *)p_dev->amhw_zlg237_flash, i * page_size + start_addr);
+         ret = am_stm32f103rbt6_flash_page_erase(
+             (amhw_stm32f103rbt6_flash_t *)p_dev->amhw_stm32f103rbt6_flash, i * page_size + start_addr);
 
          am_int_cpu_unlock(k);
 
@@ -95,7 +95,7 @@ static int __boot_flash_program(void      *p_drv,
                                 void      *p_src,
                                 uint32_t   size)
 {
-    am_zlg237_boot_flash_dev_t *p_dev = (am_zlg237_boot_flash_dev_t *)p_drv;
+    am_stm32f103rbt6_boot_flash_dev_t *p_dev = (am_stm32f103rbt6_boot_flash_dev_t *)p_drv;
     if(p_src == NULL) {
         return AM_ERROR;
     }
@@ -121,7 +121,7 @@ static int __boot_flash_program(void      *p_drv,
     for(i = 0; i < program_page_count; i++) {
 
         key = am_int_cpu_lock();
-        ret = am_zlg237_flash_sector_program((amhw_zlg237_flash_t *)p_dev->amhw_zlg237_flash,
+        ret = am_stm32f103rbt6_flash_sector_program((amhw_stm32f103rbt6_flash_t *)p_dev->amhw_stm32f103rbt6_flash,
                                               dst_addr + i * page_size,
                                              (uint32_t *)((uint32_t)p_src+ i * page_size),
                                               program_size);
@@ -136,7 +136,7 @@ static int __boot_flash_program(void      *p_drv,
         program_size = left_size / sizeof(uint32_t);
 
         key = am_int_cpu_lock();
-        ret = am_zlg237_flash_sector_program((amhw_zlg237_flash_t *)p_dev->amhw_zlg237_flash,
+        ret = am_stm32f103rbt6_flash_sector_program((amhw_stm32f103rbt6_flash_t *)p_dev->amhw_stm32f103rbt6_flash,
                                               dst_addr + i * page_size,
                                              (uint32_t *)((uint32_t)p_src+ i * page_size),
                                               program_size);
@@ -153,7 +153,7 @@ static int __boot_flash_program(void      *p_drv,
  */
 static void __boot_flash_info_get(void *p_drv, am_boot_flash_info_t **pp_flash_info)
 {
-    am_zlg237_boot_flash_dev_t *p_dev = (am_zlg237_boot_flash_dev_t *)p_drv;
+    am_stm32f103rbt6_boot_flash_dev_t *p_dev = (am_stm32f103rbt6_boot_flash_dev_t *)p_drv;
 
     *pp_flash_info = &p_dev->p_devinfo->base_info;
 }
@@ -161,19 +161,19 @@ static void __boot_flash_info_get(void *p_drv, am_boot_flash_info_t **pp_flash_i
 /**
  * \brief BootLoader flash³õÊ¼»¯º¯Êý
  */
-am_boot_flash_handle_t am_zlg237_boot_flash_init(am_zlg237_boot_flash_dev_t     *p_dev,
-                                                 am_zlg237_boot_flash_devinfo_t *p_devinfo)
+am_boot_flash_handle_t am_stm32f103rbt6_boot_flash_init(am_stm32f103rbt6_boot_flash_dev_t     *p_dev,
+                                                 am_stm32f103rbt6_boot_flash_devinfo_t *p_devinfo)
 {
     if(p_dev == NULL || p_devinfo == NULL) {
         return NULL;
     }
-    p_dev->amhw_zlg237_flash = (amhw_zlg237_flash_t *)p_devinfo->flash_reg_rebese;
+    p_dev->amhw_stm32f103rbt6_flash = (amhw_stm32f103rbt6_flash_t *)p_devinfo->flash_reg_rebese;
     p_dev->flash_serv.p_funcs = &__g_flash_drv_funcs;
     p_dev->flash_serv.p_drv   = p_dev;
 
     p_dev->p_devinfo = p_devinfo;
 
-    am_zlg237_flash_init(p_dev->amhw_zlg237_flash);
+    am_stm32f103rbt6_flash_init(p_dev->amhw_stm32f103rbt6_flash);
 
     return &p_dev->flash_serv;
 }

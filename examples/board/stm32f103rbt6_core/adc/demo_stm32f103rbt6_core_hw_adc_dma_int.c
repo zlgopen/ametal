@@ -36,7 +36,7 @@
  *       PIOA_10引脚连接 PC串口的TXD。
  *
  * \par 源代码
- * \snippet demo_zlg237_core_hw_adc_dma_int.c src_zlg237_core_hw_adc_dma_int
+ * \snippet demo_stm32f103rbt6_core_hw_adc_dma_int.c src_stm32f103rbt6_core_hw_adc_dma_int
  *
  * \internal
  * \par Modification History
@@ -45,18 +45,18 @@
  */
 
 /**
- * \addtogroup demo_if_zlg237_core_hw_adc_dma_int
- * \copydoc demo_zlg237_core_hw_adc_dma_int.c
+ * \addtogroup demo_if_stm32f103rbt6_core_hw_adc_dma_int
+ * \copydoc demo_stm32f103rbt6_core_hw_adc_dma_int.c
  */
 
-/** [src_zlg237_core_hw_adc_dma_int] */
+/** [src_stm32f103rbt6_core_hw_adc_dma_int] */
 #include "ametal.h"
 #include "am_vdebug.h"
-#include "am_zlg237.h"
+#include "am_stm32f103rbt6.h"
 #include "am_gpio.h"
 #include "am_clk.h"
-#include "demo_zlg_entries.h"
-#include "demo_am237_core_entries.h"
+#include "demo_stm32f103rbt6_entries.h"
+#include "demo_stm32f103rbt6_core_entries.h"
 
 #define  __ADC1_DMA_CHAN1         DMA_CHAN_1 /* ADC1对应DMA通道1 */
                                              /* 仅ADC1能发起DMA请求 */
@@ -64,9 +64,9 @@
 /**
  * \brief 例程入口
  */
-void demo_zlg237_core_hw_adc_dma_double_entry (void)
+void demo_stm32f103rbt6_core_hw_adc_dma_double_entry (void)
 {
-    AM_DBG_INFO("demo am237_core hw adc dma!\r\n");
+    AM_DBG_INFO("demo stm32f103rbt6_core hw adc dma!\r\n");
 
     int adc1_chan[] = {2, 3, 4, 5, 6, 7};
     int adc2_chan[] = {11, 12, 13};
@@ -87,14 +87,14 @@ void demo_zlg237_core_hw_adc_dma_double_entry (void)
     am_clk_enable(CLK_ADC1);
     am_clk_enable(CLK_ADC2);
 
-    demo_zlg237_hw_adc_dma_double_entry((void *)ZLG237_ADC1,
+    demo_stm32f103rbt6_hw_adc_dma_double_entry((void *)STM32F103RBT6_ADC1,
                                         adc1_chan,
                                         sizeof(adc1_chan)/sizeof(adc1_chan[0]),
                                         __ADC1_DMA_CHAN1,
-                                        (void *)ZLG237_ADC2,
+                                        (void *)STM32F103RBT6_ADC2,
                                         adc2_chan,
                                         sizeof(adc2_chan)/sizeof(adc2_chan[0]));
 }
-/** [src_zlg237_core_hw_adc_dma_int] */
+/** [src_stm32f103rbt6_core_hw_adc_dma_int] */
 
 /* end of file */

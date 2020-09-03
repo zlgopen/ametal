@@ -15,13 +15,13 @@
  * \brief bootloader 单区例程。
  *
  * - 操作步骤（本地升级）：
- *   1. eclipse工程打开demo_am237_core_bootloader.ld文件，打开:
+ *   1. eclipse工程打开demo_stm32f103rbt6_core_bootloader.ld文件，打开:
  *
  *       FLASH (rx)  : ORIGIN = 0x08000000, LENGTH = 28K   // single
  *
  *      的配置, 屏蔽其他flash配置。
  *
- *      keil工程打开demo_am237_core_bootloader.sct文件，打开单区的配置，屏蔽其他配置
+ *      keil工程打开demo_stm32f103rbt6_core_bootloader.sct文件，打开单区的配置，屏蔽其他配置
  *
  *   2. 连接开发板和上位机串口助手，波特率设置为115200。（例程使用串口1）
  *   
@@ -56,23 +56,23 @@
 #include "am_vdebug.h"
 #include "am_boot_firmware.h"
 #include "am_boot_flash.h"
-#include "am_bootconf_zlg237.h"
-#include "am_zlg237_inst_init.h"
+#include "am_bootconf_stm32f103rbt6.h"
+#include "am_stm32f103rbt6_inst_init.h"
 #include "am_boot_enter_check_uart.h"
 #include "am_boot_firmware_recv_uart.h"
 #include "demo_boot_entries.h"
 
-void demo_zlg237_core_single_bootloader_uart_entry (void)
+void demo_stm32f103rbt6_core_single_bootloader_uart_entry (void)
 {
     am_uart_handle_t           uart_handle;
     am_boot_firmware_handle_t  firmware_handle;
 
     /* bootloader 标准接口初始化  */
-    am_zlg237_boot_single_inst_init();
+    am_stm32f103rbt6_boot_single_inst_init();
 
-    firmware_handle = am_zlg237_boot_single_firmware_flash_inst_init();
+    firmware_handle = am_stm32f103rbt6_boot_single_firmware_flash_inst_init();
 
-    uart_handle = am_zlg237_usart1_inst_init();
+    uart_handle = am_stm32f103rbt6_usart1_inst_init();
     am_debug_init(uart_handle, 115200);
 
     //check_handle = am_boot_enter_check_key_init(PIOC_7, AM_GPIO_INPUT | AM_GPIO_PULLUP);

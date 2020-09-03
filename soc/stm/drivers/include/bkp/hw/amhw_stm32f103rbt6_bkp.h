@@ -20,8 +20,8 @@
  * \endinternal
  */
 
-#ifndef __AMHW_ZLG237_BKP_H
-#define __AMHW_ZLG237_BKP_H
+#ifndef __AMHW_STM32F103RBT6_BKP_H
+#define __AMHW_STM32F103RBT6_BKP_H
 
 #ifdef __cplusplus
 extern "C" {
@@ -31,8 +31,8 @@ extern "C" {
 #include "ametal.h"
 
 /**
- * \addtogroup amhw_zlg237_if_bkp
- * \copydoc amhw_zlg237_bkp.h
+ * \addtogroup amhw_stm32f103rbt6_if_bkp
+ * \copydoc amhw_stm32f103rbt6_bkp.h
  * @{
  */
 
@@ -62,32 +62,32 @@ extern "C" {
 
 /** \brief BKP_RTCCR register bit mask */
 /* Calibration value */
-#define  AMHW_ZLG237_BKP_RTCCR_CAL_SET  (0x007F)
+#define  AMHW_STM32F103RBT6_BKP_RTCCR_CAL_SET  (0x007F)
 
 /* Calibration Clock Output */
-#define  AMHW_ZLG237_BKP_RTCCR_CCO_SET  (0x0080)
+#define  AMHW_STM32F103RBT6_BKP_RTCCR_CCO_SET  (0x0080)
 
 /* Alarm or Second Output Enable */
-#define  AMHW_ZLG237_BKP_RTCCR_ASOE_SET (0x0100)
+#define  AMHW_STM32F103RBT6_BKP_RTCCR_ASOE_SET (0x0100)
 
 /* Alarm or Second Output Selection */
-#define  AMHW_ZLG237_BKP_RTCCR_ASOS_SET (0x0200)
+#define  AMHW_STM32F103RBT6_BKP_RTCCR_ASOS_SET (0x0200)
 
 /** \brief BKP_CR register bit mask */
-#define  AMHW_ZLG237_BKP_CR_TPE_SET     (0x01)   /**< TAMPER pin enable */
-#define  AMHW_ZLG237_BKP_CR_TPAL_SET    (0x02)   /**< TAMPER pin active level*/
+#define  AMHW_STM32F103RBT6_BKP_CR_TPE_SET     (0x01)   /**< TAMPER pin enable */
+#define  AMHW_STM32F103RBT6_BKP_CR_TPAL_SET    (0x02)   /**< TAMPER pin active level*/
 
 /** \brief CSR register bit mask */
-#define  AMHW_ZLG237_BKP_CSR_CTE_SET   (0x0001) /* Clear Tamper event */
-#define  AMHW_ZLG237_BKP_CSR_CTI_SET   (0x0002) /* Clear Tamper Interrupt */
-#define  AMHW_ZLG237_BKP_CSR_TPIE_SET  (0x0004) /* TAMPER Pin interrupt enable*/
-#define  AMHW_ZLG237_BKP_CSR_TEF_SET   (0x0100) /* Tamper Event Flag */
-#define  AMHW_ZLG237_BKP_CSR_TIF_SET   (0x0200) /* Tamper Interrupt Flag */
+#define  AMHW_STM32F103RBT6_BKP_CSR_CTE_SET   (0x0001) /* Clear Tamper event */
+#define  AMHW_STM32F103RBT6_BKP_CSR_CTI_SET   (0x0002) /* Clear Tamper Interrupt */
+#define  AMHW_STM32F103RBT6_BKP_CSR_TPIE_SET  (0x0004) /* TAMPER Pin interrupt enable*/
+#define  AMHW_STM32F103RBT6_BKP_CSR_TEF_SET   (0x0100) /* Tamper Event Flag */
+#define  AMHW_STM32F103RBT6_BKP_CSR_TIF_SET   (0x0200) /* Tamper Interrupt Flag */
 
 /**
   * \brief 备份寄存器块结构体
   */
-typedef struct amhw_zlg237_bkp {
+typedef struct amhw_stm32f103rbt6_bkp {
     __I  uint32_t reserve0;  /**< \brief 保留 */
     __IO uint32_t dr[10];    /**< \brief 备份区域数据寄存器 */
     __IO uint16_t rtc_cr;    /**< \brief RTC 控制寄存器 */
@@ -98,19 +98,19 @@ typedef struct amhw_zlg237_bkp {
     __I  uint16_t reserve3;  /**< \brief 保留 */
     __I  uint32_t reserve4;  /**< \brief 保留 */
     __IO uint32_t lse_cfg;   /**< \brief LSE晶振控制寄存器 */
-} amhw_zlg237_bkp_t;
+} amhw_stm32f103rbt6_bkp_t;
 
 /**
  * \brief Clears Tamper Pin Event pending flag.
  *
- * \param[in] p_hw_bkp Pointer to amhw_zlg237_bkp_t Structure
- * \param[in] flag     see AMHW_ZLG237_BKP_CSR_CTE_SET or
- *                         AMHW_ZLG237_BKP_CSR_CTI_SET
+ * \param[in] p_hw_bkp Pointer to amhw_stm32f103rbt6_bkp_t Structure
+ * \param[in] flag     see AMHW_STM32F103RBT6_BKP_CSR_CTE_SET or
+ *                         AMHW_STM32F103RBT6_BKP_CSR_CTI_SET
  *
  * \return None
  */
 am_static_inline
-void amhw_zlg237_bkp_clear_flag (amhw_zlg237_bkp_t *p_hw_bkp, uint16_t flag)
+void amhw_stm32f103rbt6_bkp_clear_flag (amhw_stm32f103rbt6_bkp_t *p_hw_bkp, uint16_t flag)
 {
 
     /* Set CTE bit to clear Tamper Pin Event flag */
@@ -127,7 +127,7 @@ void amhw_zlg237_bkp_clear_flag (amhw_zlg237_bkp_t *p_hw_bkp, uint16_t flag)
  * \return 无
  */
 am_static_inline
-void amhw_zlg237_bkp_dr_write (amhw_zlg237_bkp_t *p_hw_bkp,
+void amhw_stm32f103rbt6_bkp_dr_write (amhw_stm32f103rbt6_bkp_t *p_hw_bkp,
                                uint8_t            index,
                                uint16_t           value)
 {
@@ -143,7 +143,7 @@ void amhw_zlg237_bkp_dr_write (amhw_zlg237_bkp_t *p_hw_bkp,
  * \return 返回对应备份寄存器的值
  */
 am_static_inline
-uint16_t amhw_zlg237_bkp_dr_read (amhw_zlg237_bkp_t *p_hw_bkp, uint8_t index)
+uint16_t amhw_stm32f103rbt6_bkp_dr_read (amhw_stm32f103rbt6_bkp_t *p_hw_bkp, uint8_t index)
 {
     return p_hw_bkp->dr[index] & 0x0000FFFF;
 }
@@ -157,10 +157,10 @@ uint16_t amhw_zlg237_bkp_dr_read (amhw_zlg237_bkp_t *p_hw_bkp, uint8_t index)
  * \return 无
  */
 am_static_inline
-void amhw_zlg237_bkp_rtccr_cal_set (amhw_zlg237_bkp_t *p_hw_bkp, uint8_t cal)
+void amhw_stm32f103rbt6_bkp_rtccr_cal_set (amhw_stm32f103rbt6_bkp_t *p_hw_bkp, uint8_t cal)
 {
-    p_hw_bkp->rtc_cr = ((p_hw_bkp->rtc_cr & (~AMHW_ZLG237_BKP_RTCCR_CAL_SET)) |
-                        (cal & AMHW_ZLG237_BKP_RTCCR_CAL_SET));
+    p_hw_bkp->rtc_cr = ((p_hw_bkp->rtc_cr & (~AMHW_STM32F103RBT6_BKP_RTCCR_CAL_SET)) |
+                        (cal & AMHW_STM32F103RBT6_BKP_RTCCR_CAL_SET));
 }
 
 /**
@@ -171,9 +171,9 @@ void amhw_zlg237_bkp_rtccr_cal_set (amhw_zlg237_bkp_t *p_hw_bkp, uint8_t cal)
  * \return 返回对应备份寄存器的值
  */
 am_static_inline
-uint8_t amhw_zlg237_bkp_rtccr_cal_get (amhw_zlg237_bkp_t *p_hw_bkp)
+uint8_t amhw_stm32f103rbt6_bkp_rtccr_cal_get (amhw_stm32f103rbt6_bkp_t *p_hw_bkp)
 {
-    return (uint8_t)(p_hw_bkp->rtc_cr & AMHW_ZLG237_BKP_RTCCR_CAL_SET);
+    return (uint8_t)(p_hw_bkp->rtc_cr & AMHW_STM32F103RBT6_BKP_RTCCR_CAL_SET);
 }
 
 /**
@@ -184,9 +184,9 @@ uint8_t amhw_zlg237_bkp_rtccr_cal_get (amhw_zlg237_bkp_t *p_hw_bkp)
  * \return 无
  */
 am_static_inline
-void amhw_zlg237_bkp_rtccr_cco_enable (amhw_zlg237_bkp_t *p_hw_bkp)
+void amhw_stm32f103rbt6_bkp_rtccr_cco_enable (amhw_stm32f103rbt6_bkp_t *p_hw_bkp)
 {
-    p_hw_bkp->rtc_cr |= AMHW_ZLG237_BKP_RTCCR_CCO_SET;
+    p_hw_bkp->rtc_cr |= AMHW_STM32F103RBT6_BKP_RTCCR_CCO_SET;
 }
 
 /**
@@ -197,9 +197,9 @@ void amhw_zlg237_bkp_rtccr_cco_enable (amhw_zlg237_bkp_t *p_hw_bkp)
  * \return 无
  */
 am_static_inline
-void amhw_zlg237_bkp_rtccr_cco_disable (amhw_zlg237_bkp_t *p_hw_bkp)
+void amhw_stm32f103rbt6_bkp_rtccr_cco_disable (amhw_stm32f103rbt6_bkp_t *p_hw_bkp)
 {
-    p_hw_bkp->rtc_cr &= ~AMHW_ZLG237_BKP_RTCCR_CCO_SET;
+    p_hw_bkp->rtc_cr &= ~AMHW_STM32F103RBT6_BKP_RTCCR_CCO_SET;
 }
 
 /**
@@ -210,9 +210,9 @@ void amhw_zlg237_bkp_rtccr_cco_disable (amhw_zlg237_bkp_t *p_hw_bkp)
  * \return 返回对应备份寄存器的值
  */
 am_static_inline
-am_bool_t amhw_zlg237_bkp_rtccr_cco_get (amhw_zlg237_bkp_t *p_hw_bkp)
+am_bool_t amhw_stm32f103rbt6_bkp_rtccr_cco_get (amhw_stm32f103rbt6_bkp_t *p_hw_bkp)
 {
-    return (p_hw_bkp->rtc_cr & AMHW_ZLG237_BKP_RTCCR_CCO_SET) ?
+    return (p_hw_bkp->rtc_cr & AMHW_STM32F103RBT6_BKP_RTCCR_CCO_SET) ?
            AM_TRUE : AM_FALSE;
 }
 
@@ -224,9 +224,9 @@ am_bool_t amhw_zlg237_bkp_rtccr_cco_get (amhw_zlg237_bkp_t *p_hw_bkp)
  * \return 无
  */
 am_static_inline
-void amhw_zlg237_bkp_rtccr_asoe_enable (amhw_zlg237_bkp_t *p_hw_bkp)
+void amhw_stm32f103rbt6_bkp_rtccr_asoe_enable (amhw_stm32f103rbt6_bkp_t *p_hw_bkp)
 {
-    p_hw_bkp->rtc_cr |= AMHW_ZLG237_BKP_RTCCR_ASOE_SET;
+    p_hw_bkp->rtc_cr |= AMHW_STM32F103RBT6_BKP_RTCCR_ASOE_SET;
 }
 
 /**
@@ -237,9 +237,9 @@ void amhw_zlg237_bkp_rtccr_asoe_enable (amhw_zlg237_bkp_t *p_hw_bkp)
  * \return 无
  */
 am_static_inline
-void amhw_zlg237_bkp_rtccr_asoe_disable (amhw_zlg237_bkp_t *p_hw_bkp)
+void amhw_stm32f103rbt6_bkp_rtccr_asoe_disable (amhw_stm32f103rbt6_bkp_t *p_hw_bkp)
 {
-    p_hw_bkp->rtc_cr &= ~AMHW_ZLG237_BKP_RTCCR_ASOE_SET;
+    p_hw_bkp->rtc_cr &= ~AMHW_STM32F103RBT6_BKP_RTCCR_ASOE_SET;
 }
 
 /**
@@ -250,9 +250,9 @@ void amhw_zlg237_bkp_rtccr_asoe_disable (amhw_zlg237_bkp_t *p_hw_bkp)
  * \return 返回对应备份寄存器的值
  */
 am_static_inline
-am_bool_t amhw_zlg237_bkp_rtccr_asoe_get (amhw_zlg237_bkp_t *p_hw_bkp)
+am_bool_t amhw_stm32f103rbt6_bkp_rtccr_asoe_get (amhw_stm32f103rbt6_bkp_t *p_hw_bkp)
 {
-    return (p_hw_bkp->rtc_cr & AMHW_ZLG237_BKP_RTCCR_ASOE_SET) ?
+    return (p_hw_bkp->rtc_cr & AMHW_STM32F103RBT6_BKP_RTCCR_ASOE_SET) ?
            AM_TRUE : AM_FALSE;
 }
 
@@ -264,9 +264,9 @@ am_bool_t amhw_zlg237_bkp_rtccr_asoe_get (amhw_zlg237_bkp_t *p_hw_bkp)
  * \return 无
  */
 am_static_inline
-void amhw_zlg237_bkp_rtccr_asos_second (amhw_zlg237_bkp_t *p_hw_bkp)
+void amhw_stm32f103rbt6_bkp_rtccr_asos_second (amhw_stm32f103rbt6_bkp_t *p_hw_bkp)
 {
-    p_hw_bkp->rtc_cr |= AMHW_ZLG237_BKP_RTCCR_ASOS_SET;
+    p_hw_bkp->rtc_cr |= AMHW_STM32F103RBT6_BKP_RTCCR_ASOS_SET;
 }
 
 /**
@@ -277,31 +277,31 @@ void amhw_zlg237_bkp_rtccr_asos_second (amhw_zlg237_bkp_t *p_hw_bkp)
  * \return 无
  */
 am_static_inline
-void amhw_zlg237_bkp_rtccr_asos_alarm (amhw_zlg237_bkp_t *p_hw_bkp)
+void amhw_stm32f103rbt6_bkp_rtccr_asos_alarm (amhw_stm32f103rbt6_bkp_t *p_hw_bkp)
 {
-    p_hw_bkp->rtc_cr &= ~AMHW_ZLG237_BKP_RTCCR_ASOS_SET;
+    p_hw_bkp->rtc_cr &= ~AMHW_STM32F103RBT6_BKP_RTCCR_ASOS_SET;
 }
 
 /**
  * \brief LSE 晶振IO驱动能力配置
  */
-typedef enum amhw_zlg237_bkp_iop {
-    AMHW_ZLG237_BKP_LSECFG_IOP_0 = 0,  /*档位0  最低档位驱动能力 */
-    AMHW_ZLG237_BKP_LSECFG_IOP_1,      /*档位1 */
-    AMHW_ZLG237_BKP_LSECFG_IOP_2,      /*档位2 */
-    AMHW_ZLG237_BKP_LSECFG_IOP_3,      /*档位3  最高档位驱动能力 */
-} amhw_zlg237_bkp_iop_t;
+typedef enum amhw_stm32f103rbt6_bkp_iop {
+    AMHW_STM32F103RBT6_BKP_LSECFG_IOP_0 = 0,  /*档位0  最低档位驱动能力 */
+    AMHW_STM32F103RBT6_BKP_LSECFG_IOP_1,      /*档位1 */
+    AMHW_STM32F103RBT6_BKP_LSECFG_IOP_2,      /*档位2 */
+    AMHW_STM32F103RBT6_BKP_LSECFG_IOP_3,      /*档位3  最高档位驱动能力 */
+} amhw_stm32f103rbt6_bkp_iop_t;
 /**
  * \brief IOP LSE 晶振 IO驱动能力配置
  *
  * \param[in] p_hw_bkp 指向系统配置寄存器块的指针
- * \param[in] flag     传入参数应为  amhw_zlg237_bkp_iop_t 枚举中的变量
+ * \param[in] flag     传入参数应为  amhw_stm32f103rbt6_bkp_iop_t 枚举中的变量
  *
  * \return 返回对应备份寄存器的值
  */
 am_static_inline
-void amhw_zlg237_bkp_lsecfg_iop_set (amhw_zlg237_bkp_t     *p_hw_bkp,
-                                     amhw_zlg237_bkp_iop_t  flag)
+void amhw_stm32f103rbt6_bkp_lsecfg_iop_set (amhw_stm32f103rbt6_bkp_t     *p_hw_bkp,
+                                     amhw_stm32f103rbt6_bkp_iop_t  flag)
 {
     p_hw_bkp->lse_cfg = (p_hw_bkp->lse_cfg & (~(0x3u << 0))) | flag;
 }
@@ -310,7 +310,7 @@ void amhw_zlg237_bkp_lsecfg_iop_set (amhw_zlg237_bkp_t     *p_hw_bkp,
  * \brief IOP_MON 获取IO驱动能力当前档位
  *
  * \param[in] p_hw_bkp 指向系统配置寄存器块的指针
- * \param[in] flag     传入参数应为  amhw_zlg237_bkp_iop_t 枚举中的变量
+ * \param[in] flag     传入参数应为  amhw_stm32f103rbt6_bkp_iop_t 枚举中的变量
  *
  * \note : 当AUTO_IOP比特设置为1时，IOP[1:0]的设置值不会立即生效；LSE的驱动档位
  *         会由2’b11逐渐降为IOP[1:0]的设置值。在此期间，可通过读取IOP_MON[1:0]
@@ -319,10 +319,10 @@ void amhw_zlg237_bkp_lsecfg_iop_set (amhw_zlg237_bkp_t     *p_hw_bkp,
  * \return 返回对应备份寄存器的值
  */
 am_static_inline
-amhw_zlg237_bkp_iop_t amhw_zlg237_bkp_lsecfg_iop_get(
-    amhw_zlg237_bkp_t *p_hw_bkp)
+amhw_stm32f103rbt6_bkp_iop_t amhw_stm32f103rbt6_bkp_lsecfg_iop_get(
+    amhw_stm32f103rbt6_bkp_t *p_hw_bkp)
 {
-    return (amhw_zlg237_bkp_iop_t)(p_hw_bkp->lse_cfg & (0x3u << 3));
+    return (amhw_stm32f103rbt6_bkp_iop_t)(p_hw_bkp->lse_cfg & (0x3u << 3));
 }
 
 /**
@@ -333,7 +333,7 @@ amhw_zlg237_bkp_iop_t amhw_zlg237_bkp_lsecfg_iop_get(
  * \return none
  */
 am_static_inline
-void amhw_zlg237_bkp_lsecfg_nfbyp_enable (amhw_zlg237_bkp_t *p_hw_bkp)
+void amhw_stm32f103rbt6_bkp_lsecfg_nfbyp_enable (amhw_stm32f103rbt6_bkp_t *p_hw_bkp)
 {
     p_hw_bkp->lse_cfg |= (1u << 6);
 }
@@ -346,7 +346,7 @@ void amhw_zlg237_bkp_lsecfg_nfbyp_enable (amhw_zlg237_bkp_t *p_hw_bkp)
  * \return none
  */
 am_static_inline
-void amhw_zlg237_bkp_lsecfg_nfbyp_disable (amhw_zlg237_bkp_t *p_hw_bkp)
+void amhw_stm32f103rbt6_bkp_lsecfg_nfbyp_disable (amhw_stm32f103rbt6_bkp_t *p_hw_bkp)
 {
     p_hw_bkp->lse_cfg &= ~(1u << 6);
 }
@@ -362,7 +362,7 @@ void amhw_zlg237_bkp_lsecfg_nfbyp_disable (amhw_zlg237_bkp_t *p_hw_bkp)
  * \return none
  */
 am_static_inline
-void amhw_zlg237_bkp_lsecfg_autoiop_enable (amhw_zlg237_bkp_t *p_hw_bkp)
+void amhw_stm32f103rbt6_bkp_lsecfg_autoiop_enable (amhw_stm32f103rbt6_bkp_t *p_hw_bkp)
 {
     p_hw_bkp->lse_cfg |= (1u << 7);
 }
@@ -378,7 +378,7 @@ void amhw_zlg237_bkp_lsecfg_autoiop_enable (amhw_zlg237_bkp_t *p_hw_bkp)
  * \return none
  */
 am_static_inline
-void amhw_zlg237_bkp_lsecfg_autoiop_disable (amhw_zlg237_bkp_t *p_hw_bkp)
+void amhw_stm32f103rbt6_bkp_lsecfg_autoiop_disable (amhw_stm32f103rbt6_bkp_t *p_hw_bkp)
 {
     p_hw_bkp->lse_cfg &= ~(1u << 7);
 }
@@ -386,23 +386,23 @@ void amhw_zlg237_bkp_lsecfg_autoiop_disable (amhw_zlg237_bkp_t *p_hw_bkp)
 /**
  * \brief AGC 自动增益幅度设置
  */
-typedef enum amhw_zlg237_bkp_agc {
-    AMHW_ZLG237_BKP_LSECFG_AGC_0 = 0,  /*档位0  最低档 */
-    AMHW_ZLG237_BKP_LSECFG_AGC_1,      /*档位1 */
-    AMHW_ZLG237_BKP_LSECFG_AGC_2,      /*档位2 */
-    AMHW_ZLG237_BKP_LSECFG_AGC_3,      /*档位3  最高档 */
-} amhw_zlg237_bkp_agc_t;
+typedef enum amhw_stm32f103rbt6_bkp_agc {
+    AMHW_STM32F103RBT6_BKP_LSECFG_AGC_0 = 0,  /*档位0  最低档 */
+    AMHW_STM32F103RBT6_BKP_LSECFG_AGC_1,      /*档位1 */
+    AMHW_STM32F103RBT6_BKP_LSECFG_AGC_2,      /*档位2 */
+    AMHW_STM32F103RBT6_BKP_LSECFG_AGC_3,      /*档位3  最高档 */
+} amhw_stm32f103rbt6_bkp_agc_t;
 /**
  * \brief SEL_AGC AGC 自动增益幅度设置
  *
  * \param[in] p_hw_bkp 指向系统配置寄存器块的指针
- * \param[in] flag     传入参数应为  amhw_zlg237_bkp_agc_t 枚举中的变量
+ * \param[in] flag     传入参数应为  amhw_stm32f103rbt6_bkp_agc_t 枚举中的变量
  *
  * \return 返回对应备份寄存器的值
  */
 am_static_inline
-void amhw_zlg237_bkp_lsecfg_agc_set (amhw_zlg237_bkp_t     *p_hw_bkp,
-                                     amhw_zlg237_bkp_agc_t  flag)
+void amhw_stm32f103rbt6_bkp_lsecfg_agc_set (amhw_stm32f103rbt6_bkp_t     *p_hw_bkp,
+                                     amhw_stm32f103rbt6_bkp_agc_t  flag)
 {
     p_hw_bkp->lse_cfg = (p_hw_bkp->lse_cfg & (~(0x3u << 8))) | flag;
 }
@@ -415,7 +415,7 @@ void amhw_zlg237_bkp_lsecfg_agc_set (amhw_zlg237_bkp_t     *p_hw_bkp,
  * \return none
  */
 am_static_inline
-void amhw_zlg237_bkp_lsecfg_agc_enable (amhw_zlg237_bkp_t *p_hw_bkp)
+void amhw_stm32f103rbt6_bkp_lsecfg_agc_enable (amhw_stm32f103rbt6_bkp_t *p_hw_bkp)
 {
     p_hw_bkp->lse_cfg |= (1u << 15);
 }
@@ -428,7 +428,7 @@ void amhw_zlg237_bkp_lsecfg_agc_enable (amhw_zlg237_bkp_t *p_hw_bkp)
  * \return none
  */
 am_static_inline
-void amhw_zlg237_bkp_lsecfg_agc_disable (amhw_zlg237_bkp_t *p_hw_bkp)
+void amhw_stm32f103rbt6_bkp_lsecfg_agc_disable (amhw_stm32f103rbt6_bkp_t *p_hw_bkp)
 {
     p_hw_bkp->lse_cfg &= ~(1u << 15);
 }
@@ -464,6 +464,6 @@ void amhw_zlg237_bkp_lsecfg_agc_disable (amhw_zlg237_bkp_t *p_hw_bkp)
 }
 #endif
 
-#endif /* __AMHW_ZLG237_BKP_H */
+#endif /* __AMHW_STM32F103RBT6_BKP_H */
 
 /* end of file */

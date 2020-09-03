@@ -18,7 +18,7 @@
  *   1. 串口打印指定的总线频率。
  * 
  * \par 源代码
- * \snippet demo_zlg_hw_clk.c src_zlg_hw_clk
+ * \snippet demo_stm32f103rbt6_hw_clk.c src_stm32f103rbt6_hw_clk
  * 
  * \internal
  * \par Modification History
@@ -27,11 +27,11 @@
  */
 
 /**
- * \addtogroup demo_if_zlg_hw_clk
- * \copydoc demo_zlg_hw_clk.c
+ * \addtogroup demo_if_stm32f103rbt6_hw_clk
+ * \copydoc demo_stm32f103rbt6_hw_clk.c
  */
 
-/** [src_zlg_hw_clk] */
+/** [src_stm32f103rbt6_hw_clk] */
 #include "ametal.h"
 #include "am_clk.h"
 #include "am_vdebug.h"
@@ -39,7 +39,7 @@
 /**
  * \brief 例程入口
  */
-void demo_zlg_hw_clk_entry (am_clk_id_t *p_clk_id_buf, uint8_t buf_lenth)
+void demo_stm32f103rbt6_hw_clk_entry (am_clk_id_t *p_clk_id_buf, uint8_t buf_lenth)
 {
     int32_t  i;
     uint32_t clk = 0;
@@ -53,6 +53,6 @@ void demo_zlg_hw_clk_entry (am_clk_id_t *p_clk_id_buf, uint8_t buf_lenth)
         ; /* VOID */
     }
 }
-/** [src_zlg_hw_clk] */
+/** [src_stm32f103rbt6_hw_clk] */
 
 /* end of file */

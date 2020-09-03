@@ -22,8 +22,8 @@
 
 #include "am_sensor_as7421.h"
 #include "am_common.h"
-#include "zlg237_pin.h"
-#include "am_zlg237_inst_init.h"
+#include "stm32f103rbt6_pin.h"
+#include "am_stm32f103rbt6_inst_init.h"
 
 am_const am_local as7421_param_config_t __g_as7421_param_default = {
     AM_FALSE,                                       /* LED_WAIT_OFF    */
@@ -67,7 +67,7 @@ am_sensor_handle_t am_sensor_as7421_inst_init (void)
 {
     return am_sensor_as7421_init(&__g_as7421_dev,
                                  &__g_as7421_info,
-                                 am_zlg237_i2c2_inst_init());
+                                 am_stm32f103rbt6_i2c2_inst_init());
 }
 
 /** \brief 传感器 AS7421 实例解初始化 */

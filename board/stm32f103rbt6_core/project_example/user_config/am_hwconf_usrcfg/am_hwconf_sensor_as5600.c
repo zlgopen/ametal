@@ -22,8 +22,8 @@
 
 #include "am_sensor_as5600.h"
 #include "am_common.h"
-#include "zlg237_pin.h"
-#include "am_zlg237_inst_init.h"
+#include "stm32f103rbt6_pin.h"
+#include "am_stm32f103rbt6_inst_init.h"
 
 am_const am_local as5600_param_config_t __g_as5600_param_default = {
         AM_AS5600_WD_OFF,
@@ -59,7 +59,7 @@ am_sensor_handle_t am_sensor_as5600_inst_init (void)
 {
     return am_sensor_as5600_init(&__g_as5600_dev,
                                  &__g_as5600_info,
-                                 am_zlg237_i2c2_inst_init());
+                                 am_stm32f103rbt6_i2c2_inst_init());
 }
 
 /** \brief 传感器 AS5600 实例解初始化 */

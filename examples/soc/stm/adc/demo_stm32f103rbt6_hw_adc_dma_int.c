@@ -31,7 +31,7 @@
  *   1. 对应ADC通道打印电压值。
  *
  * \par 源代码
- * \snippet demo_zlg237_hw_adc_dma_int.c src_zlg237_hw_adc_dma_int
+ * \snippet demo_stm32f103rbt6_hw_adc_dma_int.c src_stm32f103rbt6_hw_adc_dma_int
  *
  * \internal
  * \par Modification History
@@ -40,20 +40,20 @@
  */
 
 /**
- * \addtogroup demo_if_zlg237_hw_adc_dma_int
- * \copydoc demo_zlg237_hw_adc_dma_int.c
+ * \addtogroup demo_if_stm32f103rbt6_hw_adc_dma_int
+ * \copydoc demo_stm32f103rbt6_hw_adc_dma_int.c
  */
 
-/** [src_zlg237_hw_adc_dma_int] */
-#include "am_zlg237.h"
+/** [src_stm32f103rbt6_hw_adc_dma_int] */
+#include "am_stm32f103rbt6.h"
 #include "ametal.h"
 #include "am_int.h"
 #include "am_delay.h"
 #include "am_vdebug.h"
-#include "am_zlg_dma.h"
-#include "am_zlg237_clk.h"
-#include "hw/amhw_zlg_dma.h"
-#include "hw/amhw_zlg237_adc.h"
+#include "am_stm32f103rbt6_dma.h"
+#include "am_stm32f103rbt6_clk.h"
+#include "hw/amhw_stm32f103rbt6_dma.h"
+#include "hw/amhw_stm32f103rbt6_adc.h"
 
 #define  BUF_SIZE1    6                 /**< \brief 用于设定缓冲区大小
                                           *    建议修改成adc_chan_num的2倍关系
@@ -69,7 +69,7 @@ static uint16_t __g_adc_dat2[BUF_SIZE2];   /**< \brief ADC数据缓冲区 */
 static am_bool_t g_trans_done1;           /**< \brief 传输完成标志 */
 static am_bool_t g_trans_done2;           /**< \brief 传输完成标志 */
 
-static amhw_zlg_dma_xfer_desc_t g_desc1;  /**< \brief DMA描述符 */
+static amhw_stm32f103rbt6_dma_xfer_desc_t g_desc1;  /**< \brief DMA描述符 */
 
 /**
  * \brief DMA 中断服务程序
@@ -78,7 +78,7 @@ static void dma_isr1 (void *p_arg , uint32_t flag)
 {
     int i;
 
-    if (flag == AM_ZLG_DMA_INT_NORMAL) {
+    if (flag == AM_STM32F103RBT6_DMA_INT_NORMAL) {
 
         for (i = 0; i < BUF_SIZE1; i++) {
 
@@ -93,22 +93,22 @@ static void dma_isr1 (void *p_arg , uint32_t flag)
 static void __adc2_isr (void *p_arg)
 {
     int i;
-    amhw_zlg237_adc_t *p_hw_adc = (amhw_zlg237_adc_t *)p_arg;
+    amhw_stm32f103rbt6_adc_t *p_hw_adc = (amhw_stm32f103rbt6_adc_t *)p_arg;
 
-    amhw_zlg237_adc_status_flag_clr(p_hw_adc, AMHW_ZLG237_ADC_INJECTED_CHAN_END_FLAG);
+    amhw_stm32f103rbt6_adc_status_flag_clr(p_hw_adc, AMHW_STM32F103RBT6_ADC_INJECTED_CHAN_END_FLAG);
 
     for (i = 0 ; i < 3; i++) {
 
         /* AD值的获取 */
         /* 特别注意 ：从数据寄存器的读到的值 = AD实际转换值 - 数据偏移寄存器的偏移值*/
-        __g_adc_dat2[i]  = amhw_zlg237_adc_injected_data_get(p_hw_adc, i);
+        __g_adc_dat2[i]  = amhw_stm32f103rbt6_adc_injected_data_get(p_hw_adc, i);
         __g_adc_dat2[i] &= 0x0fff;
     }
 
     g_trans_done2 = AM_TRUE;
 }
 
-static void __zlg_adc1_init (amhw_zlg237_adc_t *p_hw_adc,
+static void __stm32f103rbt6_adc1_init (amhw_stm32f103rbt6_adc_t *p_hw_adc,
                             int                *p_adc_chan,
                             int                 adc_chan_num,
                             uint8_t             dma_chan)
@@ -117,100 +117,100 @@ static void __zlg_adc1_init (amhw_zlg237_adc_t *p_hw_adc,
     uint32_t flags;
 
     /* ADC禁能 */
-    amhw_zlg237_adc_disable(p_hw_adc);
+    amhw_stm32f103rbt6_adc_disable(p_hw_adc);
 
     /* 设置ADC工规则通道长度 */
     if(adc_chan_num < 16) {
-        amhw_zlg237_adc_regular_channel_length_set(
+        amhw_stm32f103rbt6_adc_regular_channel_length_set(
             p_hw_adc,
-            (amhw_zlg237_adc_regular_channel_length_t)adc_chan_num-1);
+            (amhw_stm32f103rbt6_adc_regular_channel_length_t)adc_chan_num-1);
     }
 
     for(i=0;i<adc_chan_num;i++) {
 
         /* 链接规则通道序列和ADC采样通道 */
-        amhw_zlg237_adc_regular_channel_order_set(
+        amhw_stm32f103rbt6_adc_regular_channel_order_set(
             p_hw_adc,
-            AMHW_ZLG237_ADC_REGULAR_CHAN_ORDER_1st + i,
-           (amhw_zlg237_adc_channel_t)p_adc_chan[i]);
+            AMHW_STM32F103RBT6_ADC_REGULAR_CHAN_ORDER_1st + i,
+           (amhw_stm32f103rbt6_adc_channel_t)p_adc_chan[i]);
 
         /* 设置采样通道的采样周期 */
-        amhw_zlg237_adc_smpr_set(
+        amhw_stm32f103rbt6_adc_smpr_set(
             p_hw_adc,
-            AMHW_ZLG237_ADC_CHAN_ST55_5,
-            (amhw_zlg237_adc_channel_t)p_adc_chan[i]);
+            AMHW_STM32F103RBT6_ADC_CHAN_ST55_5,
+            (amhw_stm32f103rbt6_adc_channel_t)p_adc_chan[i]);
     }
     /* 启用规则通道外部触发，并设置成软件触发方式 */
-    amhw_zlg237_adc_extirig_enable(p_hw_adc);
-    amhw_zlg237_adc_extsel_set(p_hw_adc, AMHW_ZLG237_ADC12_REGULAR_SWSTART);
+    amhw_stm32f103rbt6_adc_extirig_enable(p_hw_adc);
+    amhw_stm32f103rbt6_adc_extsel_set(p_hw_adc, AMHW_STM32F103RBT6_ADC12_REGULAR_SWSTART);
 
 
     /* 开启扫描模式 */
-    amhw_zlg237_adc_scan_mode_enable(p_hw_adc);
+    amhw_stm32f103rbt6_adc_scan_mode_enable(p_hw_adc);
 
     /* 单次转换 */
-    amhw_zlg237_adc_cont_set(p_hw_adc, AMHW_ZLG237_ADC_CONVERSION_SINGLE);
+    amhw_stm32f103rbt6_adc_cont_set(p_hw_adc, AMHW_STM32F103RBT6_ADC_CONVERSION_SINGLE);
 
     /* 设置成独立模式 */
-    amhw_zlg237_adc_dul_mode_set(p_hw_adc, AMHW_ZLG237_ADC_DUL_MODE_0);
+    amhw_stm32f103rbt6_adc_dul_mode_set(p_hw_adc, AMHW_STM32F103RBT6_ADC_DUL_MODE_0);
 
     /* 对齐方式--右对齐 */
-    amhw_zlg237_adc_data_alignment_set(p_hw_adc,AMHW_ZLG237_ADC_DATA_RIGHT);
+    amhw_stm32f103rbt6_adc_data_alignment_set(p_hw_adc,AMHW_STM32F103RBT6_ADC_DATA_RIGHT);
 
     /* 关闭ADC16通道内部温度传感器（仅ADC1有效）*/
-    amhw_zlg237_adc_tsvrefe_disable(p_hw_adc);
+    amhw_stm32f103rbt6_adc_tsvrefe_disable(p_hw_adc);
 
     /* 开启ADC的DMA功能 */
-    amhw_zlg237_adc_dma_enable(p_hw_adc);
+    amhw_stm32f103rbt6_adc_dma_enable(p_hw_adc);
 
     /* ADC使能*/
-    amhw_zlg237_adc_enable(p_hw_adc);
+    amhw_stm32f103rbt6_adc_enable(p_hw_adc);
 
     /* DMA 传输配置 */
-    flags = AMHW_ZLG_DMA_CHAN_PRIORITY_HIGH         |  /* 中断优先级 高 */
-            AMHW_ZLG_DMA_CHAN_MEM_SIZE_32BIT        |  /* 内存数据宽度 2 字节 */
-            AMHW_ZLG_DMA_CHAN_PER_SIZE_32BIT        |  /* 外设数据宽度 2 字节 */
-            AMHW_ZLG_DMA_CHAN_MEM_ADD_INC_ENABLE    |  /* 内存地址自增 */
-            AMHW_ZLG_DMA_CHAN_PER_ADD_INC_DISABLE   |  /* 外设地址不自增 */
-            AMHW_ZLG_DMA_CHAN_CIRCULAR_MODE_ENABLE  |  /* 打开循环模式 */
-            AMHW_ZLG_DMA_CHAN_INT_TX_CMP_ENABLE;       /* 使能DMA传输完成中断 */
+    flags = AMHW_STM32F103RBT6_DMA_CHAN_PRIORITY_HIGH         |  /* 中断优先级 高 */
+            AMHW_STM32F103RBT6_DMA_CHAN_MEM_SIZE_32BIT        |  /* 内存数据宽度 2 字节 */
+            AMHW_STM32F103RBT6_DMA_CHAN_PER_SIZE_32BIT        |  /* 外设数据宽度 2 字节 */
+            AMHW_STM32F103RBT6_DMA_CHAN_MEM_ADD_INC_ENABLE    |  /* 内存地址自增 */
+            AMHW_STM32F103RBT6_DMA_CHAN_PER_ADD_INC_DISABLE   |  /* 外设地址不自增 */
+            AMHW_STM32F103RBT6_DMA_CHAN_CIRCULAR_MODE_ENABLE  |  /* 打开循环模式 */
+            AMHW_STM32F103RBT6_DMA_CHAN_INT_TX_CMP_ENABLE;       /* 使能DMA传输完成中断 */
 
 
     /* 连接 DMA 中断服务函数 */
-    am_zlg_dma_isr_connect(dma_chan, dma_isr1, (void *)p_hw_adc);
+    am_stm32f103rbt6_dma_isr_connect(dma_chan, dma_isr1, (void *)p_hw_adc);
 
     /* 建立通道描述符 */
-    am_zlg_dma_xfer_desc_build(&g_desc1,                      /* 通道描述符 */
+    am_stm32f103rbt6_dma_xfer_desc_build(&g_desc1,                      /* 通道描述符 */
                                (uint32_t)(&p_hw_adc->dr),    /* 源端数据缓冲区 */
                                (uint32_t)(__g_buf_dst1),      /* 目标端数据缓冲区 */
                                sizeof(__g_buf_dst1),          /* 传输字节数 */
                                flags);                       /* 传输配置 */
     /* DMA寄存器配置 */
-    am_zlg_dma_xfer_desc_chan_cfg(&g_desc1,
-                                   AMHW_ZLG_DMA_PER_TO_MER, /* 外设到内存 */
+    am_stm32f103rbt6_dma_xfer_desc_chan_cfg(&g_desc1,
+                                   AMHW_STM32F103RBT6_DMA_PER_TO_MER, /* 外设到内存 */
                                    dma_chan);
 
     /* 启动 DMA 传输，马上开始传输 */
-    am_zlg_dma_chan_start(dma_chan);
+    am_stm32f103rbt6_dma_chan_start(dma_chan);
 }
 
-static void __zlg_adc2_init (amhw_zlg237_adc_t *p_hw_adc,
+static void __stm32f103rbt6_adc2_init (amhw_stm32f103rbt6_adc_t *p_hw_adc,
                             int                *p_adc_chan,
                             int                 adc_chan_num)
 {
     int i;
     /* ADC禁能 */
-    amhw_zlg237_adc_disable(p_hw_adc);
+    amhw_stm32f103rbt6_adc_disable(p_hw_adc);
      /* 设置ADC注入通道长度 */
    if(adc_chan_num < 4) {
-       amhw_zlg237_adc_injected_channel_length_set(
+       amhw_stm32f103rbt6_adc_injected_channel_length_set(
            p_hw_adc,
-           (amhw_zlg237_adc_injected_channel_length_t)(adc_chan_num-1));
+           (amhw_stm32f103rbt6_adc_injected_channel_length_t)(adc_chan_num-1));
    }
    else
    {
-       amhw_zlg237_adc_injected_channel_length_set(
-           p_hw_adc, AMHW_ZLG237_ADC_INJECTED_CHAN_LENGTH_4);
+       amhw_stm32f103rbt6_adc_injected_channel_length_set(
+           p_hw_adc, AMHW_STM32F103RBT6_ADC_INJECTED_CHAN_LENGTH_4);
 
    }
 
@@ -225,77 +225,77 @@ static void __zlg_adc2_init (amhw_zlg237_adc_t *p_hw_adc,
    for(i=0;i<adc_chan_num;i++) {
 
        /* 链接注入通道序列和ADC采样通道 */
-       amhw_zlg237_adc_injected_channel_order_set(
+       amhw_stm32f103rbt6_adc_injected_channel_order_set(
            p_hw_adc,
-           AMHW_ZLG237_ADC_INJECTED_CHAN_ORDER_4th - i,
+           AMHW_STM32F103RBT6_ADC_INJECTED_CHAN_ORDER_4th - i,
            p_adc_chan[adc_chan_num - 1 - i]);
 
        /* 注入通道数据偏移寄存器赋值（复位值为0） */
        /* 数据寄存器的值 = 实际转换值 - 偏移值*/
-       amhw_zlg237_adc_jofr_set(
+       amhw_stm32f103rbt6_adc_jofr_set(
            p_hw_adc,
-           AMHW_ZLG237_ADC_INJECTED_DATA_CHAN_4 - i,
+           AMHW_STM32F103RBT6_ADC_INJECTED_DATA_CHAN_4 - i,
            0);
 
        /* 设置采样通道的采样周期 */
-       amhw_zlg237_adc_smpr_set(
+       amhw_stm32f103rbt6_adc_smpr_set(
            p_hw_adc,
-           AMHW_ZLG237_ADC_CHAN_ST55_5,
+           AMHW_STM32F103RBT6_ADC_CHAN_ST55_5,
            p_adc_chan[adc_chan_num - 1 - i]);
 
    }
 
    /* 开启扫描模式 */
-   amhw_zlg237_adc_scan_mode_enable(p_hw_adc);
+   amhw_stm32f103rbt6_adc_scan_mode_enable(p_hw_adc);
 
    /* 关闭注入通道间断模式、规则通道间断模式*/
-   amhw_zlg237_adc_injected_disc_disable(p_hw_adc);
-   amhw_zlg237_adc_regular_disc_disable(p_hw_adc);
+   amhw_stm32f103rbt6_adc_injected_disc_disable(p_hw_adc);
+   amhw_stm32f103rbt6_adc_regular_disc_disable(p_hw_adc);
 
    /* 单次转换 */
-   amhw_zlg237_adc_cont_set(p_hw_adc, AMHW_ZLG237_ADC_CONVERSION_SINGLE);
+   amhw_stm32f103rbt6_adc_cont_set(p_hw_adc, AMHW_STM32F103RBT6_ADC_CONVERSION_SINGLE);
 
    /* 启用注入通道外部触发，并设置成软件触发方式 */
-   amhw_zlg237_adc_jextirig_enable(p_hw_adc);
-   amhw_zlg237_adc_jextsel_set(p_hw_adc, AMHW_ZLG237_ADC12_INJECTED_JSWSTART);
+   amhw_stm32f103rbt6_adc_jextirig_enable(p_hw_adc);
+   amhw_stm32f103rbt6_adc_jextsel_set(p_hw_adc, AMHW_STM32F103RBT6_ADC12_INJECTED_JSWSTART);
 
    /* 设置成独立模式,ADC1和ADC2独立工作*/
-   amhw_zlg237_adc_dul_mode_set(p_hw_adc, AMHW_ZLG237_ADC_DUL_MODE_0);
+   amhw_stm32f103rbt6_adc_dul_mode_set(p_hw_adc, AMHW_STM32F103RBT6_ADC_DUL_MODE_0);
 
    /* 对齐方式--右对齐*/
-   amhw_zlg237_adc_data_alignment_set(p_hw_adc,AMHW_ZLG237_ADC_DATA_RIGHT);
+   amhw_stm32f103rbt6_adc_data_alignment_set(p_hw_adc,AMHW_STM32F103RBT6_ADC_DATA_RIGHT);
 
    /* ADC使能*/
-   amhw_zlg237_adc_enable(p_hw_adc);
+   amhw_stm32f103rbt6_adc_enable(p_hw_adc);
 
    /* 启用复位校准*/
-   amhw_zlg237_adc_rstcal_enable(p_hw_adc);
+   amhw_stm32f103rbt6_adc_rstcal_enable(p_hw_adc);
 
    /* 等待复位校准结束*/
-   while(amhw_zlg237_adc_rstcal_check(p_hw_adc) == AM_FALSE);
+   while(amhw_stm32f103rbt6_adc_rstcal_check(p_hw_adc) == AM_FALSE);
 
    /* 启用AD校准*/
-   amhw_zlg237_adc_cal_enable(p_hw_adc);
+   amhw_stm32f103rbt6_adc_cal_enable(p_hw_adc);
 
    /* 等待AD校准结束*/
-   while(amhw_zlg237_adc_cal_check(p_hw_adc) == AM_FALSE);
+   while(amhw_stm32f103rbt6_adc_cal_check(p_hw_adc) == AM_FALSE);
 
    /* 连接转换完成中断 */
    am_int_connect(INUM_ADC1_2, __adc2_isr, p_hw_adc);
    am_int_enable(INUM_ADC1_2);
 
    /* 转换结束中断使能*/
-   amhw_zlg237_adc_int_enable(p_hw_adc, AMHW_ZLG237_ADC_INT_INJECTED_END);
+   amhw_stm32f103rbt6_adc_int_enable(p_hw_adc, AMHW_STM32F103RBT6_ADC_INT_INJECTED_END);
 
 }
 /**
  * \brief 例程入口
  */
-void demo_zlg237_hw_adc_dma_double_entry (amhw_zlg237_adc_t *p_hw_adc1,
+void demo_stm32f103rbt6_hw_adc_dma_double_entry (amhw_stm32f103rbt6_adc_t *p_hw_adc1,
                                           int               *p_adc1_chan,
                                           int                adc1_chan_num,
                                           uint8_t            dma_chan,
-                                          amhw_zlg237_adc_t *p_hw_adc2,
+                                          amhw_stm32f103rbt6_adc_t *p_hw_adc2,
                                           int               *p_adc2_chan,
                                           int                adc2_chan_num)
 {
@@ -305,17 +305,17 @@ void demo_zlg237_hw_adc_dma_double_entry (amhw_zlg237_adc_t *p_hw_adc1,
     /* 使用非默认demo测试时，请先根据具体使用的ADC通道数量修改BUF_SIZE宏定义*/
     am_kprintf("The ADC HW dma Demo\r\n");
     /* 设置ADC工作频率，72MHz的8分频 */
-    amhw_zlg237_rcc_adc_div_set (2);
+    amhw_stm32f103rbt6_rcc_adc_div_set (2);
 
     /* adc相关初始化配置 */
-    __zlg_adc1_init(p_hw_adc1, p_adc1_chan, adc1_chan_num, dma_chan);
-    __zlg_adc2_init(p_hw_adc2, p_adc2_chan, adc2_chan_num);
+    __stm32f103rbt6_adc1_init(p_hw_adc1, p_adc1_chan, adc1_chan_num, dma_chan);
+    __stm32f103rbt6_adc2_init(p_hw_adc2, p_adc2_chan, adc2_chan_num);
 
 
     while(1) {
         /* 开始转换 */
-        amhw_zlg237_adc_swstart_enable(p_hw_adc1);
-        amhw_zlg237_adc_jswstart_enable(p_hw_adc2);
+        amhw_stm32f103rbt6_adc_swstart_enable(p_hw_adc1);
+        amhw_stm32f103rbt6_adc_jswstart_enable(p_hw_adc2);
 
         while((g_trans_done1 == AM_FALSE) && (g_trans_done2 == AM_FALSE) );
         /* 等待传输完成 */
@@ -354,6 +354,6 @@ void demo_zlg237_hw_adc_dma_double_entry (amhw_zlg237_adc_t *p_hw_adc1,
         /* DMA传输标志失效 */
     }
 }
-/** [src_zlg237_hw_adc_dma_int] */
+/** [src_stm32f103rbt6_hw_adc_dma_int] */
 
 /* end of file */

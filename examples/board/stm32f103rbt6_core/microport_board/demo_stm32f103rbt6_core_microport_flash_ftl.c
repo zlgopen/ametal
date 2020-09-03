@@ -20,7 +20,7 @@
  * 可靠。所以 AMetal 提供 FTL 标准接口给用户使用，降低编程难度。
  *
  * - 操作步骤:
- *   1. 将 MicroPort FLASH 配板连接到 AM237 的 MicroPort 接口。
+ *   1. 将 MicroPort FLASH 配板连接到 STM32F103RBT6 的 MicroPort 接口。
  *
  * - 实验现象:
  *   1. 主机写数据到 FLASH；
@@ -49,8 +49,8 @@
 /** [src_microport_flash_ftl] */
 #include "ametal.h"
 #include "am_vdebug.h"
-#include "am_zlg237_inst_init.h"
-#include "demo_am237_core_entries.h"
+#include "am_stm32f103rbt6_inst_init.h"
+#include "demo_stm32f103rbt6_core_entries.h"
 
 /**
  * \brief MicroPort FLASH 例程，通过 FTL 接口实现
@@ -59,9 +59,9 @@
  *
  * \return 无
  */
-void demo_zlg237_core_microport_flash_ftl_entry (void)
+void demo_stm32f103rbt6_core_microport_flash_ftl_entry (void)
 {
-    AM_DBG_INFO("demo am237_core microport flash ftl!\r\n");
+    AM_DBG_INFO("demo stm32f103rbt6_core microport flash ftl!\r\n");
 
     demo_ftl_entry(am_microport_flash_ftl_inst_init(), 8);
 }

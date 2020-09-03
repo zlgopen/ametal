@@ -26,7 +26,7 @@
  *    PIOA_9 引脚连接 PC 串口的 RXD。
  *
  * \par 源代码
- * \snippet demo_zlg237_std_i2c_lm75.c src_zlg237_std_i2c_lm75
+ * \snippet demo_stm32f103rbt6_std_i2c_lm75.c src_stm32f103rbt6_std_i2c_lm75
  *
  * \internal
  * \par Modification history
@@ -35,29 +35,29 @@
  */
 
 /**
- * \addtogroup demo_if_zlg237_std_i2c_lm75
- * \copydoc demo_zlg237_std_i2c_lm75.c
+ * \addtogroup demo_if_stm32f103rbt6_std_i2c_lm75
+ * \copydoc demo_stm32f103rbt6_std_i2c_lm75.c
  */
 
-/** [src_zlg237_std_i2c_lm75] */
+/** [src_stm32f103rbt6_std_i2c_lm75] */
 #include "ametal.h"
 #include "am_vdebug.h"
 #include "am_delay.h"
 #include "am_temp.h"
 #include "am_hwconf_lm75.h"
 #include "demo_std_entries.h"
-#include "demo_am237_core_entries.h"
+#include "demo_stm32f103rbt6_core_entries.h"
 
 /**
  * \brief 例程入口
  */
-void demo_zlg237_core_std_i2c_lm75_entry (void)
+void demo_stm32f103rbt6_core_std_i2c_lm75_entry (void)
 {
-    am_kprintf("demo am237_core std i2c lm75!\r\n");
+    am_kprintf("demo stm32f103rbt6_core std i2c lm75!\r\n");
 
     demo_std_i2c_lm75_entry(am_temp_lm75_inst_init());
 
 }
-/** [src_zlg237_std_i2c_lm75] */
+/** [src_stm32f103rbt6_std_i2c_lm75] */
 
 /* end of file */

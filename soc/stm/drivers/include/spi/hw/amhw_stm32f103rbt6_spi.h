@@ -29,8 +29,8 @@
  * \endinternal
  */
 
-#ifndef _AMHW_ZLG237_SPI_H_
-#define _AMHW_ZLG237_SPI_H_
+#ifndef _AMHW_STM32F103RBT6_SPI_H_
+#define _AMHW_STM32F103RBT6_SPI_H_
 
 #ifdef __cplusplus
 extern "C" {
@@ -40,15 +40,15 @@ extern "C" {
 #include "am_bitops.h"
 
 /**
- * \addtogroup amhw_zlg237_if_spi
- * \copydoc amhw_zlg237_spi.h
+ * \addtogroup amhw_stm32f103rbt6_if_spi
+ * \copydoc amhw_stm32f103rbt6_spi.h
  * @{
  */
 
 /**
  * \brief SPI structure of register
  */
-typedef struct amhw_zlg237_spi {
+typedef struct amhw_stm32f103rbt6_spi {
     __IO uint16_t  cr1;           /**< \brief SPI 控制寄存器1 */
     __I  uint16_t  reserve1;      /**< \brief 保留位 */
     __IO uint16_t  cr2;           /**< \brief SPI 控制寄存器2 */
@@ -65,7 +65,7 @@ typedef struct amhw_zlg237_spi {
     __I  uint16_t  reserve7;      /**< \brief 保留位 */
     __IO uint16_t  cr3;           /**< \brief SPI 控制寄存器3 */
     __I  uint16_t  reserve8;      /**< \brief 保留位 */
-} amhw_zlg237_spi_t;
+} amhw_stm32f103rbt6_spi_t;
 
 /**
  * \brief BIDIMODE 模式选择——双线双向模式
@@ -74,7 +74,7 @@ typedef struct amhw_zlg237_spi {
  * \return none
  */
 am_static_inline
-void amhw_zlg237_spi_bidimode_double (amhw_zlg237_spi_t *p_hw_spi)
+void amhw_stm32f103rbt6_spi_bidimode_double (amhw_stm32f103rbt6_spi_t *p_hw_spi)
 {
     p_hw_spi->cr1 &= ~(1u << 15);
 }
@@ -86,7 +86,7 @@ void amhw_zlg237_spi_bidimode_double (amhw_zlg237_spi_t *p_hw_spi)
  * \return none
  */
 am_static_inline
-void amhw_zlg237_spi_bidimode_single (amhw_zlg237_spi_t *p_hw_spi)
+void amhw_stm32f103rbt6_spi_bidimode_single (amhw_stm32f103rbt6_spi_t *p_hw_spi)
 {
     p_hw_spi->cr1 |= (1u << 15);
 }
@@ -100,7 +100,7 @@ void amhw_zlg237_spi_bidimode_single (amhw_zlg237_spi_t *p_hw_spi)
  * \return none
  */
 am_static_inline
-void amhw_zlg237_spi_bidioe_input (amhw_zlg237_spi_t *p_hw_spi)
+void amhw_stm32f103rbt6_spi_bidioe_input (amhw_stm32f103rbt6_spi_t *p_hw_spi)
 {
     p_hw_spi->cr1 &= ~(1u << 14);
 }
@@ -114,7 +114,7 @@ void amhw_zlg237_spi_bidioe_input (amhw_zlg237_spi_t *p_hw_spi)
  * \return none
  */
 am_static_inline
-void amhw_zlg237_spi_bidioe_output (amhw_zlg237_spi_t *p_hw_spi)
+void amhw_stm32f103rbt6_spi_bidioe_output (amhw_stm32f103rbt6_spi_t *p_hw_spi)
 {
     p_hw_spi->cr1 |= (1u << 14);
 }
@@ -128,7 +128,7 @@ void amhw_zlg237_spi_bidioe_output (amhw_zlg237_spi_t *p_hw_spi)
  * \return none
  */
 am_static_inline
-void amhw_zlg237_spi_crc_disable (amhw_zlg237_spi_t *p_hw_spi)
+void amhw_stm32f103rbt6_spi_crc_disable (amhw_stm32f103rbt6_spi_t *p_hw_spi)
 {
     p_hw_spi->cr1 &= ~(1u << 13);
 }
@@ -142,7 +142,7 @@ void amhw_zlg237_spi_crc_disable (amhw_zlg237_spi_t *p_hw_spi)
  * \return none
  */
 am_static_inline
-void amhw_zlg237_spi_crc_enable (amhw_zlg237_spi_t *p_hw_spi)
+void amhw_stm32f103rbt6_spi_crc_enable (amhw_stm32f103rbt6_spi_t *p_hw_spi)
 {
     p_hw_spi->cr1 |= (1u << 13);
 }
@@ -151,25 +151,25 @@ void amhw_zlg237_spi_crc_enable (amhw_zlg237_spi_t *p_hw_spi)
  * \brief current status
  *  @{
  */
-#define AMHW_ZLG237_SPI_CRC_NEXT_BUFF          0     /**< 下一个发送的值来自发送缓冲区 */
-#define AMHW_ZLG237_SPI_CRC_NEXT_CRCREG        1     /**< 下一个发送的值来自CRC寄存器 */
+#define AMHW_STM32F103RBT6_SPI_CRC_NEXT_BUFF          0     /**< 下一个发送的值来自发送缓冲区 */
+#define AMHW_STM32F103RBT6_SPI_CRC_NEXT_CRCREG        1     /**< 下一个发送的值来自CRC寄存器 */
 
-#define AMHW_ZLG237_SPI_DATA_8BIT              0     /**<  8位数据帧格式 */
-#define AMHW_ZLG237_SPI_DATA_16BIT             1     /**< 16位数据帧格式 */
+#define AMHW_STM32F103RBT6_SPI_DATA_8BIT              0     /**<  8位数据帧格式 */
+#define AMHW_STM32F103RBT6_SPI_DATA_16BIT             1     /**< 16位数据帧格式 */
 /** @}*/
 
 /**
  * \brief CRCNEXT 下一个发送的值来源设置
  * \param[in] p_hw_spi : 指向SPI结构体的指针
- * \param[in] flag : 传入参数应为   AMHW_ZLG237_SPI_CRC_NEXT_BUFF  或
- *                            AMHW_ZLG237_SPI_CRC_NEXT_CRCREG
+ * \param[in] flag : 传入参数应为   AMHW_STM32F103RBT6_SPI_CRC_NEXT_BUFF  或
+ *                            AMHW_STM32F103RBT6_SPI_CRC_NEXT_CRCREG
  *
  * \note ：在 SPI_DR寄存器写入最后一个数据后应马上设置该位
  *
  * \return none
  */
 am_static_inline
-void amhw_zlg237_spi_crcnext_set (amhw_zlg237_spi_t *p_hw_spi, uint8_t flag)
+void amhw_stm32f103rbt6_spi_crcnext_set (amhw_stm32f103rbt6_spi_t *p_hw_spi, uint8_t flag)
 {
     p_hw_spi->cr1 = (p_hw_spi->cr1 & (~(1u << 12))) | ((uint16_t)flag << 12);
 }
@@ -177,15 +177,15 @@ void amhw_zlg237_spi_crcnext_set (amhw_zlg237_spi_t *p_hw_spi, uint8_t flag)
 /**
  * \brief DFF 数据帧格式长度设置
  * \param[in] p_hw_spi : 指向SPI结构体的指针
- * \param[in] flag : 传入参数应为   AMHW_ZLG237_SPI_DATA_8BIT  或
- *                            AMHW_ZLG237_SPI_DATA_16BIT
+ * \param[in] flag : 传入参数应为   AMHW_STM32F103RBT6_SPI_DATA_8BIT  或
+ *                            AMHW_STM32F103RBT6_SPI_DATA_16BIT
  *
  * \note ：只有当 SPI禁止(SPE=0)时，才能写该位，否则出错
  *
  * \return none
  */
 am_static_inline
-void amhw_zlg237_spi_data_length_set (amhw_zlg237_spi_t *p_hw_spi, uint8_t flag)
+void amhw_stm32f103rbt6_spi_data_length_set (amhw_stm32f103rbt6_spi_t *p_hw_spi, uint8_t flag)
 {
     p_hw_spi->cr1 = (p_hw_spi->cr1 & (~(1u << 11))) | ((uint16_t)flag << 11);
 }
@@ -201,7 +201,7 @@ void amhw_zlg237_spi_data_length_set (amhw_zlg237_spi_t *p_hw_spi, uint8_t flag)
  * \return none
  */
 am_static_inline
-void amhw_zlg237_spi_rxonly_disable (amhw_zlg237_spi_t *p_hw_spi)
+void amhw_stm32f103rbt6_spi_rxonly_disable (amhw_stm32f103rbt6_spi_t *p_hw_spi)
 {
     p_hw_spi->cr1 &= ~(1u << 10);
 }
@@ -217,7 +217,7 @@ void amhw_zlg237_spi_rxonly_disable (amhw_zlg237_spi_t *p_hw_spi)
  * \return none
  */
 am_static_inline
-void amhw_zlg237_spi_rxonly_enable (amhw_zlg237_spi_t *p_hw_spi)
+void amhw_stm32f103rbt6_spi_rxonly_enable (amhw_stm32f103rbt6_spi_t *p_hw_spi)
 {
     p_hw_spi->cr1 |= (1u << 10);
 }
@@ -231,7 +231,7 @@ void amhw_zlg237_spi_rxonly_enable (amhw_zlg237_spi_t *p_hw_spi)
  * \return none
  */
 am_static_inline
-void amhw_zlg237_spi_ssm_disable (amhw_zlg237_spi_t *p_hw_spi)
+void amhw_stm32f103rbt6_spi_ssm_disable (amhw_stm32f103rbt6_spi_t *p_hw_spi)
 {
     p_hw_spi->cr1 &= ~(1u << 9);
 }
@@ -245,7 +245,7 @@ void amhw_zlg237_spi_ssm_disable (amhw_zlg237_spi_t *p_hw_spi)
  * \return none
  */
 am_static_inline
-void amhw_zlg237_spi_ssm_enable (amhw_zlg237_spi_t *p_hw_spi)
+void amhw_stm32f103rbt6_spi_ssm_enable (amhw_stm32f103rbt6_spi_t *p_hw_spi)
 {
     p_hw_spi->cr1 |= (1u << 9);
 }
@@ -254,25 +254,25 @@ void amhw_zlg237_spi_ssm_enable (amhw_zlg237_spi_t *p_hw_spi)
  * \brief current status
  *  @{
  */
-#define AMHW_ZLG237_SPI_SSI_TO_NSS_IGNORED      0     /**< NSS引脚忽略  */
-#define AMHW_ZLG237_SPI_SSI_TO_NSS_ENABLE       1     /**< NSS引脚使能  */
+#define AMHW_STM32F103RBT6_SPI_SSI_TO_NSS_IGNORED      0     /**< NSS引脚忽略  */
+#define AMHW_STM32F103RBT6_SPI_SSI_TO_NSS_ENABLE       1     /**< NSS引脚使能  */
 
-#define AMHW_ZLG237_SPI_LSB_FIRST_SEND_MSB      0     /**< 帧格式设置   先发送 MSB */
-#define AMHW_ZLG237_SPI_LSB_FIRST_SEND_LSB      1     /**< 帧格式设置   先发送LSB */
+#define AMHW_STM32F103RBT6_SPI_LSB_FIRST_SEND_MSB      0     /**< 帧格式设置   先发送 MSB */
+#define AMHW_STM32F103RBT6_SPI_LSB_FIRST_SEND_LSB      1     /**< 帧格式设置   先发送LSB */
 /** @}*/
 
 /**
  * \brief SSI 内部从设备选择
  * \param[in] p_hw_spi : 指向SPI结构体的指针
- * \param[in] flag : 传入参数应为   AMHW_ZLG237_SPI_SSI_TO_NSS_IGNORED  或
- *                            AMHW_ZLG237_SPI_SSI_TO_NSS_ENABLE
+ * \param[in] flag : 传入参数应为   AMHW_STM32F103RBT6_SPI_SSI_TO_NSS_IGNORED  或
+ *                            AMHW_STM32F103RBT6_SPI_SSI_TO_NSS_ENABLE
  *
  * \note ：该位只在 SSM位为‘1’时有意义。它决定了 NSS上的电平，在 NSS引脚上的 I/O操作无效，即与引脚无关
  *
  * \return none
  */
 am_static_inline
-void amhw_zlg237_spi_ssi_set (amhw_zlg237_spi_t *p_hw_spi, uint8_t flag)
+void amhw_stm32f103rbt6_spi_ssi_set (amhw_stm32f103rbt6_spi_t *p_hw_spi, uint8_t flag)
 {
     p_hw_spi->cr1 = (p_hw_spi->cr1 & (~(1u << 8))) | ((uint16_t)flag << 8);
 }
@@ -280,8 +280,8 @@ void amhw_zlg237_spi_ssi_set (amhw_zlg237_spi_t *p_hw_spi, uint8_t flag)
 /**
  * \brief LSBFIRST 帧格式设置
  * \param[in] p_hw_spi : 指向SPI结构体的指针
- * \param[in] flag : 传入参数应为   AMHW_ZLG237_SPI_LSB_FIRST_MSB  或
- *                            AMHW_ZLG237_SPI_LSB_FIRST_LSB
+ * \param[in] flag : 传入参数应为   AMHW_STM32F103RBT6_SPI_LSB_FIRST_MSB  或
+ *                            AMHW_STM32F103RBT6_SPI_LSB_FIRST_LSB
  *
  * \note ：当通信在进行时不能改变该位的值。
  *
@@ -289,7 +289,7 @@ void amhw_zlg237_spi_ssi_set (amhw_zlg237_spi_t *p_hw_spi, uint8_t flag)
  */
 am_static_inline
 
-void amhw_zlg237_spi_lsbfirst_set (amhw_zlg237_spi_t *p_hw_spi, uint8_t flag)
+void amhw_stm32f103rbt6_spi_lsbfirst_set (amhw_stm32f103rbt6_spi_t *p_hw_spi, uint8_t flag)
 {
     p_hw_spi->cr1 = (p_hw_spi->cr1 & (~(1u << 7))) | ((uint16_t)flag << 7);
 }
@@ -301,7 +301,7 @@ void amhw_zlg237_spi_lsbfirst_set (amhw_zlg237_spi_t *p_hw_spi, uint8_t flag)
  * \return none
  */
 am_static_inline
-void amhw_zlg237_spi_disable (amhw_zlg237_spi_t *p_hw_spi)
+void amhw_stm32f103rbt6_spi_disable (amhw_stm32f103rbt6_spi_t *p_hw_spi)
 {
     p_hw_spi->cr1 &= ~(1u << 6);
 }
@@ -313,7 +313,7 @@ void amhw_zlg237_spi_disable (amhw_zlg237_spi_t *p_hw_spi)
  * \return none
  */
 am_static_inline
-void amhw_zlg237_spi_enable (amhw_zlg237_spi_t *p_hw_spi)
+void amhw_stm32f103rbt6_spi_enable (amhw_stm32f103rbt6_spi_t *p_hw_spi)
 {
     p_hw_spi->cr1 |= (1u << 6);
 }
@@ -322,31 +322,31 @@ void amhw_zlg237_spi_enable (amhw_zlg237_spi_t *p_hw_spi)
  * \brief current status
  *  @{
  */
-#define AMHW_ZLG237_SPI_BAUDRATE_PRESCALER_2       0     /**< fPCLK/2 */
-#define AMHW_ZLG237_SPI_BAUDRATE_PRESCALER_4       1     /**< fPCLK/4 */
-#define AMHW_ZLG237_SPI_BAUDRATE_PRESCALER_8       2     /**< fPCLK/8 */
-#define AMHW_ZLG237_SPI_BAUDRATE_PRESCALER_16      3     /**< fPCLK/16 */
-#define AMHW_ZLG237_SPI_BAUDRATE_PRESCALER_32      4     /**< fPCLK/32 */
-#define AMHW_ZLG237_SPI_BAUDRATE_PRESCALER_64      5     /**< fPCLK/64 */
-#define AMHW_ZLG237_SPI_BAUDRATE_PRESCALER_128     6     /**< fPCLK/128 */
-#define AMHW_ZLG237_SPI_BAUDRATE_PRESCALER_256     7     /**< fPCLK/256 */
+#define AMHW_STM32F103RBT6_SPI_BAUDRATE_PRESCALER_2       0     /**< fPCLK/2 */
+#define AMHW_STM32F103RBT6_SPI_BAUDRATE_PRESCALER_4       1     /**< fPCLK/4 */
+#define AMHW_STM32F103RBT6_SPI_BAUDRATE_PRESCALER_8       2     /**< fPCLK/8 */
+#define AMHW_STM32F103RBT6_SPI_BAUDRATE_PRESCALER_16      3     /**< fPCLK/16 */
+#define AMHW_STM32F103RBT6_SPI_BAUDRATE_PRESCALER_32      4     /**< fPCLK/32 */
+#define AMHW_STM32F103RBT6_SPI_BAUDRATE_PRESCALER_64      5     /**< fPCLK/64 */
+#define AMHW_STM32F103RBT6_SPI_BAUDRATE_PRESCALER_128     6     /**< fPCLK/128 */
+#define AMHW_STM32F103RBT6_SPI_BAUDRATE_PRESCALER_256     7     /**< fPCLK/256 */
 /** @}*/
 
 /**
  * \brief BR[2:0] 波特率分频控制
  * \param[in] p_hw_spi : 指向SPI结构体的指针
- * \param[in] flag : 传入参数应为   AMHW_ZLG237_SPI_BAUDRATE_PRESCALER_2
+ * \param[in] flag : 传入参数应为   AMHW_STM32F103RBT6_SPI_BAUDRATE_PRESCALER_2
  *                            .
  *                            .
  *                            .
- *                            AMHW_ZLG237_SPI_BAUDRATE_PRESCALER_256
+ *                            AMHW_STM32F103RBT6_SPI_BAUDRATE_PRESCALER_256
  *
  * \note ：当通信在进行时不能改变该位的值。
  *
  * \return none
  */
 am_static_inline
-void amhw_zlg237_spi_baudratefre_set (amhw_zlg237_spi_t *p_hw_spi, uint8_t flag)
+void amhw_stm32f103rbt6_spi_baudratefre_set (amhw_stm32f103rbt6_spi_t *p_hw_spi, uint8_t flag)
 {
     p_hw_spi->cr1 = (p_hw_spi->cr1 & (~(0x7u << 3))) | ((uint16_t)( 0x7u & flag ) << 3);
 }
@@ -355,22 +355,22 @@ void amhw_zlg237_spi_baudratefre_set (amhw_zlg237_spi_t *p_hw_spi, uint8_t flag)
  * \brief current status
  *  @{
  */
-#define AMHW_ZLG237_SPI_MASTER                   1     /**< 设置为主设备 */
-#define AMHW_ZLG237_SPI_SLAVER                   0     /**< 设置为从设备 */
+#define AMHW_STM32F103RBT6_SPI_MASTER                   1     /**< 设置为主设备 */
+#define AMHW_STM32F103RBT6_SPI_SLAVER                   0     /**< 设置为从设备 */
 /** @}*/
 
 /**
  * \brief MSTR 主设备选择
  * \param[in] p_hw_spi : 指向SPI结构体的指针
- * \param[in] flag : 传入参数应为   AMHW_ZLG237_SPI_MASTER  或
- *                            AMHW_ZLG237_SPI_MASTER
+ * \param[in] flag : 传入参数应为   AMHW_STM32F103RBT6_SPI_MASTER  或
+ *                            AMHW_STM32F103RBT6_SPI_MASTER
  *
  * \note ：当通信在进行时不能改变该位的值。
  *
  * \return none
  */
 am_static_inline
-void amhw_zlg237_spi_master_salver_set (amhw_zlg237_spi_t *p_hw_spi, uint16_t flag)
+void amhw_stm32f103rbt6_spi_master_salver_set (amhw_stm32f103rbt6_spi_t *p_hw_spi, uint16_t flag)
 {
     p_hw_spi->cr1 = (p_hw_spi->cr1 & (~(1u << 2))) | ((uint16_t)flag << 2);
 }
@@ -379,26 +379,26 @@ void amhw_zlg237_spi_master_salver_set (amhw_zlg237_spi_t *p_hw_spi, uint16_t fl
  * \brief SPI Clock mode set
  * \ @{
  */
-#define AMHW_ZLG237_SPI_CLK_MODE_0    (0U << 0) /* 模式0（空闲低电平，第一个时钟沿）*/
-#define AMHW_ZLG237_SPI_CLK_MODE_1    (1U << 0) /* 模式1（空闲低电平，第二个时钟沿）*/
-#define AMHW_ZLG237_SPI_CLK_MODE_2    (2U << 0) /* 模式2（空闲高电平，第一个时钟沿）*/
-#define AMHW_ZLG237_SPI_CLK_MODE_3    (3U << 0) /* 模式3（空闲高电平，第二个时钟沿）*/
+#define AMHW_STM32F103RBT6_SPI_CLK_MODE_0    (0U << 0) /* 模式0（空闲低电平，第一个时钟沿）*/
+#define AMHW_STM32F103RBT6_SPI_CLK_MODE_1    (1U << 0) /* 模式1（空闲低电平，第二个时钟沿）*/
+#define AMHW_STM32F103RBT6_SPI_CLK_MODE_2    (2U << 0) /* 模式2（空闲高电平，第一个时钟沿）*/
+#define AMHW_STM32F103RBT6_SPI_CLK_MODE_3    (3U << 0) /* 模式3（空闲高电平，第二个时钟沿）*/
 /** @}*/
 
 /**
  * \brief SPI 时钟模式选择
  * \param[in] p_hw_spi : 指向SPI结构体的指针
- * \param[in] flag : 传入参数应为   AMHW_ZLG_SPI_CLK_MODE_0  或
- *                            AMHW_ZLG_SPI_CLK_MODE_1  或
- *                            AMHW_ZLG_SPI_CLK_MODE_2  或
- *                            AMHW_ZLG_SPI_CLK_MODE_3  或
+ * \param[in] flag : 传入参数应为   AMHW_STM32F103RBT6_SPI_CLK_MODE_0  或
+ *                            AMHW_STM32F103RBT6_SPI_CLK_MODE_1  或
+ *                            AMHW_STM32F103RBT6_SPI_CLK_MODE_2  或
+ *                            AMHW_STM32F103RBT6_SPI_CLK_MODE_3  或
  *
  * \note ：当通信在进行时不能改变该位的值。
  *
  * \return none
  */
 am_static_inline
-void amhw_zlg237_spi_clk_mode_set (amhw_zlg237_spi_t *p_hw_spi, uint8_t flag)
+void amhw_stm32f103rbt6_spi_clk_mode_set (amhw_stm32f103rbt6_spi_t *p_hw_spi, uint8_t flag)
 {
     p_hw_spi->cr1 = (p_hw_spi->cr1 & (~(3u << 0))) | ((uint16_t)flag << 0);
 }
@@ -407,24 +407,24 @@ void amhw_zlg237_spi_clk_mode_set (amhw_zlg237_spi_t *p_hw_spi, uint8_t flag)
  * \brief current status
  *  @{
  */
-#define AMHW_ZLG237_SPI_INT_TX_EMPTY          (1u << 7)     /**< 发送缓冲区空中断使能控制位 */
-#define AMHW_ZLG237_SPI_INT_RX_NOT_EMPTY      (1u << 6)     /**< 接收缓冲区非空中断使能控制位 */
-#define AMHW_ZLG237_SPI_INT_ERROR             (1u << 5)     /**< 错误中断使能控制位 */
-#define AMHW_ZLG237_SPI_INT_ALL             (0x7u << 5)     /**< 所有中断使能控制位 */
+#define AMHW_STM32F103RBT6_SPI_INT_TX_EMPTY          (1u << 7)     /**< 发送缓冲区空中断使能控制位 */
+#define AMHW_STM32F103RBT6_SPI_INT_RX_NOT_EMPTY      (1u << 6)     /**< 接收缓冲区非空中断使能控制位 */
+#define AMHW_STM32F103RBT6_SPI_INT_ERROR             (1u << 5)     /**< 错误中断使能控制位 */
+#define AMHW_STM32F103RBT6_SPI_INT_ALL             (0x7u << 5)     /**< 所有中断使能控制位 */
 
 /** @}*/
 
 /**
  * \brief cr2中断控制禁能
  * \param[in] p_hw_spi : 指向SPI结构体的指针
- * \param[in] flag : 传入参数应为   AMHW_ZLG237_SPI_INT_TX_EMPTY      或
- *                            AMHW_ZLG237_SPI_INT_RX_NOT_EMPTY  或
- *                            AMHW_ZLG237_SPI_INT_ERROR
+ * \param[in] flag : 传入参数应为   AMHW_STM32F103RBT6_SPI_INT_TX_EMPTY      或
+ *                            AMHW_STM32F103RBT6_SPI_INT_RX_NOT_EMPTY  或
+ *                            AMHW_STM32F103RBT6_SPI_INT_ERROR
  *
  * \return none
  */
 am_static_inline
-void amhw_zlg237_spi_int_disable (amhw_zlg237_spi_t *p_hw_spi, uint8_t flag)
+void amhw_stm32f103rbt6_spi_int_disable (amhw_stm32f103rbt6_spi_t *p_hw_spi, uint8_t flag)
 {
     p_hw_spi->cr2 &= ~flag;
 }
@@ -432,14 +432,14 @@ void amhw_zlg237_spi_int_disable (amhw_zlg237_spi_t *p_hw_spi, uint8_t flag)
 /**
  * \brief cr2中断控制使能
  * \param[in] p_hw_spi : 指向SPI结构体的指针
- * \param[in] flag : 传入参数应为   AMHW_ZLG237_SPI_INT_TX_EMPTY      或
- *                            AMHW_ZLG237_SPI_INT_RX_NOT_EMPTY  或
- *                            AMHW_ZLG237_SPI_INT_ERROR
+ * \param[in] flag : 传入参数应为   AMHW_STM32F103RBT6_SPI_INT_TX_EMPTY      或
+ *                            AMHW_STM32F103RBT6_SPI_INT_RX_NOT_EMPTY  或
+ *                            AMHW_STM32F103RBT6_SPI_INT_ERROR
  *
  * \return none
  */
 am_static_inline
-void amhw_zlg237_spi_int_enable (amhw_zlg237_spi_t *p_hw_spi, uint8_t flag)
+void amhw_stm32f103rbt6_spi_int_enable (amhw_stm32f103rbt6_spi_t *p_hw_spi, uint8_t flag)
 {
     p_hw_spi->cr2 |= flag;
 }
@@ -451,7 +451,7 @@ void amhw_zlg237_spi_int_enable (amhw_zlg237_spi_t *p_hw_spi, uint8_t flag)
  * \return none
  */
 am_static_inline
-void amhw_zlg237_spi_ssout_disable (amhw_zlg237_spi_t *p_hw_spi)
+void amhw_stm32f103rbt6_spi_ssout_disable (amhw_stm32f103rbt6_spi_t *p_hw_spi)
 {
     p_hw_spi->cr2 &= ~(1u << 2);
 }
@@ -463,7 +463,7 @@ void amhw_zlg237_spi_ssout_disable (amhw_zlg237_spi_t *p_hw_spi)
  * \return none
  */
 am_static_inline
-void amhw_zlg237_spi_ssout_enable (amhw_zlg237_spi_t *p_hw_spi)
+void amhw_stm32f103rbt6_spi_ssout_enable (amhw_stm32f103rbt6_spi_t *p_hw_spi)
 {
     p_hw_spi->cr2 |= (1u << 2);
 }
@@ -475,7 +475,7 @@ void amhw_zlg237_spi_ssout_enable (amhw_zlg237_spi_t *p_hw_spi)
  * \return none
  */
 am_static_inline
-void amhw_zlg237_spi_dma_tx_disable (amhw_zlg237_spi_t *p_hw_spi)
+void amhw_stm32f103rbt6_spi_dma_tx_disable (amhw_stm32f103rbt6_spi_t *p_hw_spi)
 {
     p_hw_spi->cr2 &= ~(1u << 1);
 }
@@ -487,7 +487,7 @@ void amhw_zlg237_spi_dma_tx_disable (amhw_zlg237_spi_t *p_hw_spi)
  * \return none
  */
 am_static_inline
-void amhw_zlg237_spi_dma_tx_enable (amhw_zlg237_spi_t *p_hw_spi)
+void amhw_stm32f103rbt6_spi_dma_tx_enable (amhw_stm32f103rbt6_spi_t *p_hw_spi)
 {
     p_hw_spi->cr2 |= (1u << 1);
 }
@@ -499,7 +499,7 @@ void amhw_zlg237_spi_dma_tx_enable (amhw_zlg237_spi_t *p_hw_spi)
  * \return none
  */
 am_static_inline
-void amhw_zlg237_spi_dma_rx_disable (amhw_zlg237_spi_t *p_hw_spi)
+void amhw_stm32f103rbt6_spi_dma_rx_disable (amhw_stm32f103rbt6_spi_t *p_hw_spi)
 {
     p_hw_spi->cr2 &= ~(1u << 0);
 }
@@ -511,7 +511,7 @@ void amhw_zlg237_spi_dma_rx_disable (amhw_zlg237_spi_t *p_hw_spi)
  * \return none
  */
 am_static_inline
-void amhw_zlg237_spi_dma_rx_enable (amhw_zlg237_spi_t *p_hw_spi)
+void amhw_stm32f103rbt6_spi_dma_rx_enable (amhw_stm32f103rbt6_spi_t *p_hw_spi)
 {
     p_hw_spi->cr2 |= (1u << 0);
 }
@@ -524,32 +524,32 @@ void amhw_zlg237_spi_dma_rx_enable (amhw_zlg237_spi_t *p_hw_spi)
  *
  *  note: 该位由硬件置位或者复位
  */
-#define AMHW_ZLG237_SPI_BUSY_FLAG            (1u << 7)
+#define AMHW_STM32F103RBT6_SPI_BUSY_FLAG            (1u << 7)
 
 /** 溢出标志
  *
  *  note: 该位由硬件置位，由软件序列复位
  */
-#define AMHW_ZLG237_SPI_OVERRUN_FLAG         (1u << 6)
+#define AMHW_STM32F103RBT6_SPI_OVERRUN_FLAG         (1u << 6)
 
 /** 模式错误标志
  *
  *  note: 该位由硬件置位，由软件序列复位。
  */
-#define AMHW_ZLG237_SPI_MDOE_ERROR_FLAG      (1u << 5)
+#define AMHW_STM32F103RBT6_SPI_MDOE_ERROR_FLAG      (1u << 5)
 
 /** CRC错误标志
  *
  *  note ：该位由硬件置位，由软件写‘0’而复位。
  */
-#define AMHW_ZLG237_SPI_CRC_ERROR_FLAG       (1u << 4)
+#define AMHW_STM32F103RBT6_SPI_CRC_ERROR_FLAG       (1u << 4)
 
 /** 下溢标志
  *
  *  note: 该标志位由硬件置‘1’，由一个软件序列清‘0’
  *       在 SPI 模式下不使用。
  */
-#define AMHW_ZLG237_SPI_UNDERRUN_FLAG        (1u << 3)
+#define AMHW_STM32F103RBT6_SPI_UNDERRUN_FLAG        (1u << 3)
 
 /** 声道标志
  *  对于声道标志而言，调用函数后的返回值分别代表
@@ -558,38 +558,38 @@ void amhw_zlg237_spi_dma_rx_enable (amhw_zlg237_spi_t *p_hw_spi)
  *
  *  note ：在 SPI 模式下不使用。在 PCM 模式下无意义。
  */
-#define AMHW_ZLG237_SPI_CHANNEL_SIDE_FLAG    (1u << 2)
+#define AMHW_STM32F103RBT6_SPI_CHANNEL_SIDE_FLAG    (1u << 2)
 
 /** 发送缓冲为空标志
  *
  *  note ：只读
  */
-#define AMHW_ZLG237_SPI_TX_EMPTY_FLAG        (1u << 1)
+#define AMHW_STM32F103RBT6_SPI_TX_EMPTY_FLAG        (1u << 1)
 
 /** 接收缓冲非空标志
  *
  *  note ：只读
  */
-#define AMHW_ZLG237_SPI_RX_NOT_EMPTY_FLAG    (1u << 0)
+#define AMHW_STM32F103RBT6_SPI_RX_NOT_EMPTY_FLAG    (1u << 0)
 
 /** @}*/
 
 /**
  * \brief 状态寄存器标志位获取
  * \param[in] p_hw_spi : 指向SPI结构体的指针
- * \param[in] flag : 传入参数应为   AMHW_ZLG237_SPI_BUSY_FLAG          或
- *                            AMHW_ZLG237_SPI_OVERRUN_FLAG       或
- *                            AMHW_ZLG237_SPI_MDOE_ERROR_FLAG    或
- *                            AMHW_ZLG237_SPI_CRC_ERROR_FLAG     或
- *                            AMHW_ZLG237_SPI_UNDERRUN_FLAG      或
- *                            AMHW_ZLG237_SPI_CHANNEL_SIDE_FLAG  或
- *                            AMHW_ZLG237_SPI_TX_EMPTY_FLAG      或
- *                            AMHW_ZLG237_SPI_RX_NOT_EMPTY_FLAG
+ * \param[in] flag : 传入参数应为   AMHW_STM32F103RBT6_SPI_BUSY_FLAG          或
+ *                            AMHW_STM32F103RBT6_SPI_OVERRUN_FLAG       或
+ *                            AMHW_STM32F103RBT6_SPI_MDOE_ERROR_FLAG    或
+ *                            AMHW_STM32F103RBT6_SPI_CRC_ERROR_FLAG     或
+ *                            AMHW_STM32F103RBT6_SPI_UNDERRUN_FLAG      或
+ *                            AMHW_STM32F103RBT6_SPI_CHANNEL_SIDE_FLAG  或
+ *                            AMHW_STM32F103RBT6_SPI_TX_EMPTY_FLAG      或
+ *                            AMHW_STM32F103RBT6_SPI_RX_NOT_EMPTY_FLAG
  *
  * \return none
  */
 am_static_inline
-am_bool_t amhw_zlg237_spi_status_flag_check (amhw_zlg237_spi_t *p_hw_spi, uint8_t flag)
+am_bool_t amhw_stm32f103rbt6_spi_status_flag_check (amhw_stm32f103rbt6_spi_t *p_hw_spi, uint8_t flag)
 {
     return (p_hw_spi->sr & flag) ? AM_TRUE : AM_FALSE;
 }
@@ -597,13 +597,13 @@ am_bool_t amhw_zlg237_spi_status_flag_check (amhw_zlg237_spi_t *p_hw_spi, uint8_
 /**
  * \brief 状态寄存器标志位清除
  * \param[in] p_hw_spi : 指向SPI结构体的指针
- * \param[in] flag     : 传入参数应只能为   AMHW_ZLG237_SPI_CRC_ERROR_FLAG
+ * \param[in] flag     : 传入参数应只能为   AMHW_STM32F103RBT6_SPI_CRC_ERROR_FLAG
  *                       其他宏定义只读或者由软件序列复位
  *
  * \return none
  */
 am_static_inline
-void amhw_zlg237_spi_status_flag_clr (amhw_zlg237_spi_t *p_hw_spi, uint8_t flag)
+void amhw_stm32f103rbt6_spi_status_flag_clr (amhw_stm32f103rbt6_spi_t *p_hw_spi, uint8_t flag)
 {
     p_hw_spi->sr &= ~flag;
 }
@@ -624,7 +624,7 @@ void amhw_zlg237_spi_status_flag_clr (amhw_zlg237_spi_t *p_hw_spi, uint8_t flag)
  * \return none
  */
 am_static_inline
-void amhw_zlg237_spi_tx_put (amhw_zlg237_spi_t *p_hw_spi, uint16_t data)
+void amhw_stm32f103rbt6_spi_tx_put (amhw_stm32f103rbt6_spi_t *p_hw_spi, uint16_t data)
 {
     p_hw_spi->dr = (uint16_t)data;
 }
@@ -644,7 +644,7 @@ void amhw_zlg237_spi_tx_put (amhw_zlg237_spi_t *p_hw_spi, uint16_t data)
  * \return 返回数据
  */
 am_static_inline
-uint16_t amhw_zlg237_spi_rx_get (amhw_zlg237_spi_t *p_hw_spi)
+uint16_t amhw_stm32f103rbt6_spi_rx_get (amhw_stm32f103rbt6_spi_t *p_hw_spi)
 {
     return p_hw_spi->dr;
 }
@@ -660,7 +660,7 @@ uint16_t amhw_zlg237_spi_rx_get (amhw_zlg237_spi_t *p_hw_spi)
  * \return none
  */
 am_static_inline
-void amhw_zlg237_spi_crcpr_write (amhw_zlg237_spi_t *p_hw_spi, uint16_t crc_data)
+void amhw_stm32f103rbt6_spi_crcpr_write (amhw_stm32f103rbt6_spi_t *p_hw_spi, uint16_t crc_data)
 {
     p_hw_spi->crcpr = crc_data;
 }
@@ -675,7 +675,7 @@ void amhw_zlg237_spi_crcpr_write (amhw_zlg237_spi_t *p_hw_spi, uint16_t crc_data
  * \return 当前寄存器存储的CRC计算时用到的多项式数据
  */
 am_static_inline
-uint16_t amhw_zlg237_spi_crcpr_read (amhw_zlg237_spi_t *p_hw_spi)
+uint16_t amhw_stm32f103rbt6_spi_crcpr_read (amhw_stm32f103rbt6_spi_t *p_hw_spi)
 {
     return p_hw_spi->crcpr;
 }
@@ -695,7 +695,7 @@ uint16_t amhw_zlg237_spi_crcpr_read (amhw_zlg237_spi_t *p_hw_spi)
  * \return 依据收到的字节计算的CRC数值
  */
 am_static_inline
-uint16_t amhw_zlg237_spi_rxcrc_read (amhw_zlg237_spi_t *p_hw_spi)
+uint16_t amhw_stm32f103rbt6_spi_rxcrc_read (amhw_stm32f103rbt6_spi_t *p_hw_spi)
 {
     return p_hw_spi->rxcrcr;
 }
@@ -715,7 +715,7 @@ uint16_t amhw_zlg237_spi_rxcrc_read (amhw_zlg237_spi_t *p_hw_spi)
  * \return 将要发送的字节计算的CRC数值
  */
 am_static_inline
-uint16_t amhw_zlg237_spi_txcrc_read (amhw_zlg237_spi_t *p_hw_spi)
+uint16_t amhw_stm32f103rbt6_spi_txcrc_read (amhw_stm32f103rbt6_spi_t *p_hw_spi)
 {
     return p_hw_spi->txcrcr;
 }
@@ -729,7 +729,7 @@ uint16_t amhw_zlg237_spi_txcrc_read (amhw_zlg237_spi_t *p_hw_spi)
  * \return none
  */
 am_static_inline
-void amhw_zlg237_spi_flexlength_disable (amhw_zlg237_spi_t *p_hw_spi)
+void amhw_stm32f103rbt6_spi_flexlength_disable (amhw_stm32f103rbt6_spi_t *p_hw_spi)
 {
     p_hw_spi->cr3 &= ~(1u << 7);
 }
@@ -743,7 +743,7 @@ void amhw_zlg237_spi_flexlength_disable (amhw_zlg237_spi_t *p_hw_spi)
  * \return none
  */
 am_static_inline
-void amhw_zlg237_spi_flexlength_enable (amhw_zlg237_spi_t *p_hw_spi)
+void amhw_stm32f103rbt6_spi_flexlength_enable (amhw_stm32f103rbt6_spi_t *p_hw_spi)
 {
     p_hw_spi->cr3 |= (1u << 7);
 }
@@ -759,7 +759,7 @@ void amhw_zlg237_spi_flexlength_enable (amhw_zlg237_spi_t *p_hw_spi)
  * \return none
  */
 am_static_inline
-void amhw_zlg237_spi_flex_length_set (amhw_zlg237_spi_t *p_hw_spi, uint8_t length)
+void amhw_stm32f103rbt6_spi_flex_length_set (amhw_stm32f103rbt6_spi_t *p_hw_spi, uint8_t length)
 {
     p_hw_spi->crcpr = ( p_hw_spi->crcpr & (~(0x1fu << 0))) | ((0x1fu & length) << 0);
 }
@@ -773,17 +773,17 @@ void amhw_zlg237_spi_flex_length_set (amhw_zlg237_spi_t *p_hw_spi, uint8_t lengt
  * \return 当前数据包长设定值（实际包长度-1）
  */
 am_static_inline
-uint8_t amhw_zlg237_flex_length_get (amhw_zlg237_spi_t *p_hw_spi)
+uint8_t amhw_stm32f103rbt6_flex_length_get (amhw_stm32f103rbt6_spi_t *p_hw_spi)
 {
     return (p_hw_spi->crcpr) & 0x1fu;
 }
 
 /**
- * @} amhw_zlg_if_spi
+ * @} amhw_stm32f103rbt6_if_spi
  */
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif /* SOC_ZLG_DRIVERS_INCLUDE_SPI_HW_AMHW_ZLG237_SPI_H_ */
+#endif /* SOC_STM32F103RBT6_DRIVERS_INCLUDE_SPI_HW_AMHW_STM32F103RBT6_SPI_H_ */

@@ -24,7 +24,7 @@
  *    PIOA_9 引脚连接 PC 串口的 RXD。
  *
  * \par 源代码
- * \snippet demo_zlg237_std_gpio_trigger.c src_zlg237_std_gpio_trigger
+ * \snippet demo_stm32f103rbt6_std_gpio_trigger.c src_stm32f103rbt6_std_gpio_trigger
  *
  * \internal
  * \par Modification History
@@ -33,29 +33,29 @@
  */
 
 /**
- * \addtogroup demo_if_zlg237_std_gpio_trigger
- * \copydoc demo_zlg237_std_gpio_trigger.c
+ * \addtogroup demo_if_stm32f103rbt6_std_gpio_trigger
+ * \copydoc demo_stm32f103rbt6_std_gpio_trigger.c
  */
 
-/** [src_zlg237_std_gpio_trigger] */
+/** [src_stm32f103rbt6_std_gpio_trigger] */
 #include "ametal.h"
 #include "am_board.h"
 #include "am_vdebug.h"
 #include "am_delay.h"
 #include "am_gpio.h"
-#include "am_zlg237.h"
+#include "am_stm32f103rbt6.h"
 #include "demo_std_entries.h"
-#include "demo_am237_core_entries.h"
+#include "demo_stm32f103rbt6_core_entries.h"
 
 /**
  * \brief 例程入口
  */
-void demo_zlg237_core_std_gpio_trigger_entry (void)
+void demo_stm32f103rbt6_core_std_gpio_trigger_entry (void)
 {
-    AM_DBG_INFO("demo am237_core std gpio trigger!\r\n");
+    AM_DBG_INFO("demo stm32f103rbt6_core std gpio trigger!\r\n");
 
     demo_std_gpio_trigger_entry(PIOC_7);
 }
-/** [src_zlg237_std_gpio_trigger] */
+/** [src_stm32f103rbt6_std_gpio_trigger] */
 
 /* end of file */

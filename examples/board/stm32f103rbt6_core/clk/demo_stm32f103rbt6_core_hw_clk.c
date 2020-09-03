@@ -23,7 +23,7 @@
  *       PIOA_9 引脚连接 PC 串口的 RXD。
  *
  * \par 源代码
- * \snippet demo_zlg237_hw_clk.c src_zlg237_hw_clk
+ * \snippet demo_stm32f103rbt6_hw_clk.c src_stm32f103rbt6_hw_clk
  *
  * \internal
  * \par Modification History
@@ -32,19 +32,19 @@
  */
 
 /**
- * \addtogroup demo_if_zlg237_hw_clk
- * \copydoc demo_zlg237_hw_clk.c
+ * \addtogroup demo_if_stm32f103rbt6_hw_clk
+ * \copydoc demo_stm32f103rbt6_hw_clk.c
  */
 
-/** [src_zlg237_hw_clk] */
+/** [src_stm32f103rbt6_hw_clk] */
 #include "ametal.h"
 #include "am_vdebug.h"
 #include "am_gpio.h"
-#include "am_zlg237.h"
-#include "amhw_zlg237_rcc.h"
-#include "am_zlg237_inst_init.h"
-#include "demo_zlg_entries.h"
-#include "demo_am237_core_entries.h"
+#include "am_stm32f103rbt6.h"
+#include "amhw_stm32f103rbt6_rcc.h"
+#include "am_stm32f103rbt6_inst_init.h"
+#include "demo_stm32f103rbt6_entries.h"
+#include "demo_stm32f103rbt6_core_entries.h"
 
 /** \brief 配置调试串口输出的波特率 */
 #define __DEBUG_BAUDRATE        115200
@@ -56,7 +56,7 @@ am_local void __uart_init (void)
 {
     am_uart_handle_t handle = NULL;
 
-    handle = am_zlg237_usart2_inst_init();
+    handle = am_stm32f103rbt6_usart2_inst_init();
 
     /* 调试初始化 */
     am_debug_init(handle, __DEBUG_BAUDRATE);
@@ -66,7 +66,7 @@ am_local void __uart_init (void)
 /**
  * \brief 例程入口
  */
-void demo_zlg237_core_hw_clk_entry (void)
+void demo_stm32f103rbt6_core_hw_clk_entry (void)
 {
     am_clk_id_t clk_id[] = {CLK_PLLIN,
                             CLK_PLLOUT,
@@ -79,15 +79,15 @@ void demo_zlg237_core_hw_clk_entry (void)
 
     __uart_init();
 
-    AM_DBG_INFO("demo am237_core hw clk!\r\n");
+    AM_DBG_INFO("demo stm32f103rbt6_core hw clk!\r\n");
 
     am_gpio_pin_cfg(PIOA_8, PIOA_8_MCO | PIOA_8_AF_PP | PIOA_8_SPEED_2MHz);
 
-    amhw_zlg237_rcc_mco_src_set(7);
+    amhw_stm32f103rbt6_rcc_mco_src_set(7);
 
-    demo_zlg_hw_clk_entry(&clk_id[0], AM_NELEMENTS(clk_id));
+    demo_stm32f103rbt6_hw_clk_entry(&clk_id[0], AM_NELEMENTS(clk_id));
 
 }
-/** [src_zlg237_hw_clk] */
+/** [src_stm32f103rbt6_hw_clk] */
 
 /* end of file */

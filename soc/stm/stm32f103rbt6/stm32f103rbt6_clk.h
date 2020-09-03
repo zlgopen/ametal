@@ -12,7 +12,7 @@
 
 /**
  * \file
- * \brief ZLG237 时钟ID定义
+ * \brief STM32F103RBT6 时钟ID定义
  *
  * \internal
  * \par Modification History
@@ -20,16 +20,16 @@
  * \endinternal
  */
 
-#ifndef __ZLG237_CLK_H
-#define __ZLG237_CLK_H
+#ifndef __STM32F103RBT6_CLK_H
+#define __STM32F103RBT6_CLK_H
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
 /**
- * \addtogroup zlg237_if_clockid
- * \copydoc zlg237_clk.h
+ * \addtogroup stm32f103rbt6_if_clockid
+ * \copydoc stm32f103rbt6_clk.h
  * @{
  */
 
@@ -92,13 +92,13 @@ extern "C" {
  */
 
 /**
- * @} zlg237_if_clk
+ * @} stm32f103rbt6_if_clk
  */
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif /* __ZLG237_CLK_H */
+#endif /* __STM32F103RBT6_CLK_H */
 
 /* end of file */

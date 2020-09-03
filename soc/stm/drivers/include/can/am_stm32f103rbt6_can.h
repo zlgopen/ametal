@@ -20,8 +20,8 @@
  * \endinternal
  */
 
-#ifndef __AM_ZLG237_CAN_H
-#define __AM_ZLG237_CAN_H
+#ifndef __AM_STM32F103RBT6_CAN_H
+#define __AM_STM32F103RBT6_CAN_H
 
 #ifdef __cplusplus
 extern "C" {
@@ -29,11 +29,11 @@ extern "C" {
 
 #include "ametal.h"
 #include "am_can.h"
-#include "amhw_zlg237_can.h"
+#include "amhw_stm32f103rbt6_can.h"
 
 /**
- * \addtogroup am_zlg237_if_can
- * \copydoc am_zlg237_can.h
+ * \addtogroup am_stm32f103rbt6_if_can
+ * \copydoc am_stm32f103rbt6_can.h
  * @{
  */
 
@@ -41,10 +41,10 @@ extern "C" {
 /**
  * \brief can 初始化配置信息
  */
-typedef struct am_zlg237_can_init_info {
+typedef struct am_stm32f103rbt6_can_init_info {
 
     /** \brief 0 普通模式   1 回环模式 */
-    amhw_zlg237_can_test_mode_t     can_mode;
+    amhw_stm32f103rbt6_can_test_mode_t     can_mode;
 
     /** \brief 时间触发通信模式  0 非触发  1 触发 */
     am_bool_t   can_ttcm;
@@ -79,7 +79,7 @@ typedef struct am_zlg237_can_init_info {
      */
     am_bool_t   can_txfp;
 
-}am_zlg237_can_init_info_t;
+}am_stm32f103rbt6_can_init_info_t;
 
 /**<brief 滤波器参数配置信息  */
 typedef struct {
@@ -88,24 +88,24 @@ typedef struct {
     uint8_t  can_filter_scale;       /** <brief 滤波器位宽 0 2个16位   1 单个32位*/
     uint8_t  filter_state;           /** <brief 滤波器激活状态  0 过滤器被禁用 1 过滤器被激活 */
 
-}amhw_zlg237_can_filter_t;
+}amhw_stm32f103rbt6_can_filter_t;
 
 /**
  * \brief 中断回调信息
  */
-typedef struct am_zlg237_can_intcb_info {
+typedef struct am_stm32f103rbt6_can_intcb_info {
 
     /** \brief 触发回调函数 */
     am_pfnvoid_t  pfn_callback;
 
     /** \brief 回调函数的参数 */
     void         *p_arg;
-} am_zlg237_can_intcb_info_t;
+} am_stm32f103rbt6_can_intcb_info_t;
 
 /**
  * \brief CAN 设备信息
  */
-typedef struct am_zlg237_can_devinfo {
+typedef struct am_stm32f103rbt6_can_devinfo {
 
     /** \brief 寄存器基地址 */
     uint32_t                         regbase;
@@ -114,7 +114,7 @@ typedef struct am_zlg237_can_devinfo {
     uint32_t                         int_num;
 
     /** \brief 回调信息 */
-    am_zlg237_can_intcb_info_t      *p_intcb_info;
+    am_stm32f103rbt6_can_intcb_info_t      *p_intcb_info;
 
     /** \brief 回调信息内存大小 */
     uint8_t                          p_intcb_num;
@@ -125,27 +125,27 @@ typedef struct am_zlg237_can_devinfo {
     /** \brief 平台去初始化函数 */
     void                           (*pfn_plfm_deinit)(void);
 
-    amhw_zlg237_can_filter_t       *filter;
+    amhw_stm32f103rbt6_can_filter_t       *filter;
 
-    am_zlg237_can_init_info_t      *init_info;
+    am_stm32f103rbt6_can_init_info_t      *init_info;
 
-} am_zlg237_can_devinfo_t;
+} am_stm32f103rbt6_can_devinfo_t;
 
 /**
  * \brief 设备
  */
-typedef struct am_zlg237_can_dev {
+typedef struct am_stm32f103rbt6_can_dev {
     am_can_serv_t                   handle;
 
     /** \brief 工作模式 */
-    amhw_zlg237_can_mode_t          mode;
+    amhw_stm32f103rbt6_can_mode_t          mode;
 
     /** \brief 过滤器匹配序号*/
     uint8_t                         fmi;
 
 
-    const am_zlg237_can_devinfo_t  *p_devinfo;
-} am_zlg237_can_dev_t;
+    const am_stm32f103rbt6_can_devinfo_t  *p_devinfo;
+} am_stm32f103rbt6_can_dev_t;
 
 /**
  * \brief CAN初始化
@@ -155,8 +155,8 @@ typedef struct am_zlg237_can_dev {
  *
  * \return handle
  */
-am_can_handle_t am_zlg237_can_init (am_zlg237_can_dev_t           *p_dev,
-                                    const am_zlg237_can_devinfo_t *p_devinfo);
+am_can_handle_t am_stm32f103rbt6_can_init (am_stm32f103rbt6_can_dev_t           *p_dev,
+                                    const am_stm32f103rbt6_can_devinfo_t *p_devinfo);
 
 /**
  * \brief 解初始化
@@ -165,7 +165,7 @@ am_can_handle_t am_zlg237_can_init (am_zlg237_can_dev_t           *p_dev,
  *
  * \return 无
  */
-void am_zlg237_can_deinit (am_can_handle_t handle);
+void am_stm32f103rbt6_can_deinit (am_can_handle_t handle);
 
 /**
  * @} am_s32k14x_if_can

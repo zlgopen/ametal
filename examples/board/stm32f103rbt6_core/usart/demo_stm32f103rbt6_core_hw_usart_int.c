@@ -25,7 +25,7 @@
  *      （如：AM_DBG_INFO()）。
  *
  * \par 源代码
- * \snippet demo_zlg237_hw_usart_int.c src_zlg237_hw_usart_int
+ * \snippet demo_stm32f103rbt6_hw_usart_int.c src_stm32f103rbt6_hw_usart_int
  *
  * \internal
  * \par Modification History
@@ -34,21 +34,21 @@
  */
 
  /**
- * \addtogroup demo_if_zlg237_hw_usart_int
- * \copydoc demo_zlg237_hw_usart_int.c
+ * \addtogroup demo_if_stm32f103rbt6_hw_usart_int
+ * \copydoc demo_stm32f103rbt6_hw_usart_int.c
  */
 
-/** [src_zlg237_hw_usart_int] */
+/** [src_stm32f103rbt6_hw_usart_int] */
 #include "ametal.h"
-#include "am_zlg237.h"
+#include "am_stm32f103rbt6.h"
 #include "am_board.h"
 #include "am_gpio.h"
 #include "am_vdebug.h"
-#include "demo_zlg_entries.h"
-#include "demo_am237_core_entries.h"
+#include "demo_stm32f103rbt6_entries.h"
+#include "demo_stm32f103rbt6_core_entries.h"
 
 
-static void __zlg237_usart_pins_intit (void)
+static void __stm32f103rbt6_usart_pins_intit (void)
 {
     /* 初始化引脚 */
     am_gpio_pin_cfg(PIOA_2, PIOA_2_NO_REMAP | PIOA_2_AF_PP );
@@ -58,9 +58,9 @@ static void __zlg237_usart_pins_intit (void)
 /**
  * \brief 例程入口
  */
-void demo_zlg237_core_hw_usart_int_entry (void)
+void demo_stm32f103rbt6_core_hw_usart_int_entry (void)
 {
-    AM_DBG_INFO("demo am237_core hw usart int!\r\n");
+    AM_DBG_INFO("demo stm32f103rbt6_core hw usart int!\r\n");
 
     /* 等待调试串口发送数据完成 */
     am_mdelay(100);
@@ -68,12 +68,12 @@ void demo_zlg237_core_hw_usart_int_entry (void)
     /* 使能串口时钟 */
     am_clk_enable(CLK_USART2);
 
-    demo_zlg237_hw_usart_int_entry((void *)ZLG237_USART2,
-                                   __zlg237_usart_pins_intit,
+    demo_stm32f103rbt6_hw_usart_int_entry((void *)STM32F103RBT6_USART2,
+                                   __stm32f103rbt6_usart_pins_intit,
                                    am_clk_rate_get(CLK_USART2),
-                                   ZLG237_USART2_BASE,
+                                   STM32F103RBT6_USART2_BASE,
                                    INUM_USART2);
 }
-/** [src_zlg237_hw_usart_int] */
+/** [src_stm32f103rbt6_hw_usart_int] */
 
 /* end of file */

@@ -30,7 +30,7 @@
  *       和 AM_CFG_SYSTEM_TICK_ENABLE 定义为 0。
  *
  * \par 源代码
- * \snippet demo_zlg237_hw_tim_cap.c src_zlg237_hw_tim_cap
+ * \snippet demo_stm32f103rbt6_hw_tim_cap.c src_stm32f103rbt6_hw_tim_cap
  *
  * \internal
  * \par Modification history
@@ -39,29 +39,29 @@
  */
 
 /**
- * \addtogroup demo_if_zlg237_hw_tim_cap
- * \copydoc demo_zlg237_hw_tim_cap.c
+ * \addtogroup demo_if_stm32f103rbt6_hw_tim_cap
+ * \copydoc demo_stm32f103rbt6_hw_tim_cap.c
  */
 
-/** [src_zlg237_hw_tim_cap] */
+/** [src_stm32f103rbt6_hw_tim_cap] */
 #include "ametal.h"
 #include "am_gpio.h"
 #include "am_vdebug.h"
 #include "am_board.h"
-#include "am_zlg237.h"
-#include "am_zlg237_clk.h"
-#include "am_zlg237_inst_init.h"
-#include "demo_zlg_entries.h"
-#include "demo_am237_core_entries.h"
+#include "am_stm32f103rbt6.h"
+#include "am_stm32f103rbt6_clk.h"
+#include "am_stm32f103rbt6_inst_init.h"
+#include "demo_stm32f103rbt6_entries.h"
+#include "demo_stm32f103rbt6_core_entries.h"
 
 /**
  * \brief 例程入口
  */
-void demo_zlg237_core_hw_tim_cap_entry (void)
+void demo_stm32f103rbt6_core_hw_tim_cap_entry (void)
 {
-    am_pwm_handle_t tim4_pwm_handle = am_zlg237_tim4_pwm_inst_init();
+    am_pwm_handle_t tim4_pwm_handle = am_stm32f103rbt6_tim4_pwm_inst_init();
 
-    AM_DBG_INFO("demo am237_core hw tim cap!\r\n");
+    AM_DBG_INFO("demo stm32f103rbt6_core hw tim cap!\r\n");
 
     /* TIM4 输出频率为 2KHz 的 PWM */
     am_pwm_config(tim4_pwm_handle, 0, 500000 / 2, 500000);
@@ -75,14 +75,14 @@ void demo_zlg237_core_hw_tim_cap_entry (void)
     am_clk_enable(CLK_TIM3);
 
     /* 复位定时器 */
-    am_zlg237_clk_reset(CLK_TIM3);
+    am_stm32f103rbt6_clk_reset(CLK_TIM3);
 
-    demo_zlg_hw_tim_cap_entry(ZLG237_TIM3,
-                              AMHW_ZLG_TIM_TYPE1,
+    demo_stm32f103rbt6_hw_tim_cap_entry(STM32F103RBT6_TIM3,
+                              AMHW_STM32F103RBT6_TIM_TYPE1,
                               0,
                               am_clk_rate_get(CLK_TIM3),
                               INUM_TIM3);    
 }
-/** [src_zlg237_hw_tim_cap] */
+/** [src_stm32f103rbt6_hw_tim_cap] */
 
 /* end of file */

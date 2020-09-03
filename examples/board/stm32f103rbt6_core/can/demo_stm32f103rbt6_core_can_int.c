@@ -30,7 +30,7 @@
  *      错误警告中断：串口打印提示信息，且打印发送错误计数值，接收错误计数值。
  *      错误被动中断：串口打印提示信息，且打印发送错误计数值，接收错误计数值。
  *
- *      报文结构体can_rcv_msg在demo_zlg237_can_int_entry()中使用的是全局变量，正常工作(已唤醒)，
+ *      报文结构体can_rcv_msg在demo_stm32f103rbt6_can_int_entry()中使用的是全局变量，正常工作(已唤醒)，
  *      开启了接收或溢出中断后，上位机发送的数据，本测试工程会每500ms返回给上位机。
  *
  *   2. 串口打印相关调试信息。
@@ -45,7 +45,7 @@
  *       开启错误中断时，需要上位机主动将波特率设置成不匹配，导致CAN发送失败。（方法不唯一，可自行模拟错误传输）
  *
  * \par 源代码
- * \snippet demo_zlg237_can_int.c demo_zlg237_can_int
+ * \snippet demo_stm32f103rbt6_can_int.c demo_stm32f103rbt6_can_int
  *
  * \internal
  * \par modification history:
@@ -58,13 +58,13 @@
 #include "am_can.h"
 #include "am_delay.h"
 #include "am_vdebug.h"
-#include "am_zlg237_inst_init.h"
+#include "am_stm32f103rbt6_inst_init.h"
 #include "demo_zlg_entries.h"
 
 #define  APB1_CLK        36000000 /*CAN 的输入时钟 */
 #define  CAN_BAUD        50000    /*CAN 的波特率 */
 
-/**\brief 滤波表数组，相关设定请参考demo_zlg237_core_can.c例程 */
+/**\brief 滤波表数组，相关设定请参考demo_stm32f103rbt6_core_can.c例程 */
 am_can_filter_t table[1] = {
         {
                 AM_CAN_FRAME_TYPE_EXT,
@@ -107,12 +107,12 @@ static void __can_auto_cfg_baud(am_can_bps_param_t *can_btr_baud,
  *
  * \return 无
  */
-void demo_zlg237_core_can_int_entry (void)
+void demo_stm32f103rbt6_core_can_int_entry (void)
 {
     am_can_bps_param_t  can_btr_baud = {0};
     am_can_int_type_t   int_type;
 
-    AM_DBG_INFO("demo zlg237_core std can!\r\n");
+    AM_DBG_INFO("demo stm32f103rbt6_core std can!\r\n");
 
     __can_auto_cfg_baud(&can_btr_baud, APB1_CLK, CAN_BAUD);
 
@@ -130,13 +130,13 @@ void demo_zlg237_core_can_int_entry (void)
                AM_CAN_INT_TX            |
                AM_CAN_INT_DATAOVER ;
 
-    demo_zlg237_can_int_entry (am_zlg237_can_inst_init(),
+    demo_stm32f103rbt6_can_int_entry (am_stm32f103rbt6_can_inst_init(),
                                &can_btr_baud,
                                int_type,
                                table,
                                1);
 }
 
-/** [demo_zlg237_can_int] */
+/** [demo_stm32f103rbt6_can_int] */
 
 /* end of file */

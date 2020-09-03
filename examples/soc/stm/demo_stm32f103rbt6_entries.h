@@ -12,8 +12,8 @@
 
 /**
  * \file
- * \brief ZLG系列外设驱动的所有例程函数入口声明
- * \sa    demo_zlg_entries.h
+ * \brief STM32F103RBT6系列外设驱动的所有例程函数入口声明
+ * \sa    demo_stm32f103rbt6_entries.h
  *
  * \internal
  * \par Modification history
@@ -21,26 +21,26 @@
  * \endinternal
  */
 
-#ifndef __DEMO_ZLG_ENTRIES_H
-#define __DEMO_ZLG_ENTRIES_H
+#ifndef __DEMO_STM32F103RBT6_ENTRIES_H
+#define __DEMO_STM32F103RBT6_ENTRIES_H
 
 #include "am_clk.h"
 #include "am_timer.h"
 #include "am_can.h"
 
-#include "hw/amhw_zlg_adc.h"
-#include "hw/amhw_zlg_exti.h"
-#include "hw/amhw_zlg_flash.h"
-#include "hw/amhw_zlg_gpio.h"
-#include "hw/amhw_zlg_i2c.h"
-#include "hw/amhw_zlg_pwr.h"
-#include "hw/amhw_zlg_spi.h"
-#include "hw/amhw_zlg_dma.h"
-#include "hw/amhw_zlg_syscfg.h"
-#include "hw/amhw_zlg_tim.h"
-#include "hw/amhw_zlg_uart.h"
-#include "hw/amhw_zlg_iwdg.h"
-#include "hw/amhw_zlg_wwdg.h"
+#include "hw/amhw_stm32f103rbt6_adc.h"
+#include "hw/amhw_stm32f103rbt6_exti.h"
+#include "hw/amhw_stm32f103rbt6_flash.h"
+#include "hw/amhw_stm32f103rbt6_gpio.h"
+#include "hw/amhw_stm32f103rbt6_i2c.h"
+#include "hw/amhw_stm32f103rbt6_pwr.h"
+#include "hw/amhw_stm32f103rbt6_spi.h"
+#include "hw/amhw_stm32f103rbt6_dma.h"
+#include "hw/amhw_stm32f103rbt6_syscfg.h"
+#include "hw/amhw_stm32f103rbt6_tim.h"
+#include "hw/amhw_stm32f103rbt6_usart.h"
+#include "hw/amhw_stm32f103rbt6_iwdg.h"
+#include "hw/amhw_stm32f103rbt6_wwdg.h"
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -58,7 +58,7 @@ extern "C" {
  *
  * \return 无
  */
-void demo_zlg_hw_adc_int_entry (amhw_zlg_adc_t *p_hw_adc,
+void demo_stm32f103rbt6_hw_adc_int_entry (amhw_stm32f103rbt6_adc_t *p_hw_adc,
                                 int             int_num,
                                 int             chan,
                                 uint32_t        vref_mv);
@@ -67,7 +67,7 @@ void demo_zlg_hw_adc_int_entry (amhw_zlg_adc_t *p_hw_adc,
  * \brief ADC 硬件层（DMA）规则通道例程入口
  *
  */
-void demo_zlg_hw_adc_dma_entry (amhw_zlg_adc_t *p_hw_adc,
+void demo_stm32f103rbt6_hw_adc_dma_entry (amhw_stm32f103rbt6_adc_t *p_hw_adc,
                                 int            *p_adc_chan,
                                 int             adc_chan_num,
                                 uint8_t         dma_chan);
@@ -85,7 +85,7 @@ void demo_zlg_hw_adc_dma_entry (amhw_zlg_adc_t *p_hw_adc,
  *
  * \return 无
  */
-void demo_zlg118_hw_adc_int_entry (void    *p_hw_adc,
+void demo_stm32f103rbt6118_hw_adc_int_entry (void    *p_hw_adc,
                                    int      int_num,
                                    uint8_t  chan,
                                    uint32_t vref_mv);
@@ -105,7 +105,7 @@ void demo_zlg118_hw_adc_int_entry (void    *p_hw_adc,
  *
  * \return 无
  */
-void demo_zlg118_hw_multichan_adc_entry (void    *p_hw_adc,
+void demo_stm32f103rbt6118_hw_multichan_adc_entry (void    *p_hw_adc,
                                          int      int_num,
                                          uint32_t vref_mv,
                                          int     *p_adc_chan,
@@ -127,7 +127,7 @@ void demo_zlg118_hw_multichan_adc_entry (void    *p_hw_adc,
  *
  * \return 无
  */
-void demo_zlg118_hw_adc_dma_entry (void    *p_hw_adc,
+void demo_stm32f103rbt6118_hw_adc_dma_entry (void    *p_hw_adc,
                                    int     *p_adc_chan,
                                    int      chan_num,
                                    uint32_t vref_mv,
@@ -197,7 +197,7 @@ void demo_zsn700_hw_adc_dma_entry (void    *p_hw_adc,
                                    uint8_t  dma_src);
 
 /**
- * \brief zlg237 ADC 硬件层（使用了中断）规则通道例程入口
+ * \brief stm32f103rbt6 ADC 硬件层（使用了中断）规则通道例程入口
  *
  * \param[in] p_hw_adc  : 指向 ADC 外设寄存器块的指针
  * \param[in] int_num   : 中断号
@@ -209,22 +209,22 @@ void demo_zsn700_hw_adc_dma_entry (void    *p_hw_adc,
  *
  * \return 无
  */
-void demo_zlg237_hw_adc_int_entry (void              *p_hw_adc,
+void demo_stm32f103rbt6_hw_adc_int_entry (amhw_stm32f103rbt6_adc_t *p_hw_adc,
                                    int                int_num,
                                    int                chan,
                                    uint32_t           vref_mv);
 
 /**
- * \brief zlg237 DC 硬件层（DMA）规则通道例程入口
+ * \brief stm32f103rbt6 DC 硬件层（DMA）规则通道例程入口
  */
-void demo_zlg237_hw_adc_dma_entry (void              *p_hw_adc,
+void demo_stm32f103rbt6_hw_adc_dma_entry (amhw_stm32f103rbt6_adc_t *p_hw_adc,
                                    int               *p_adc_chan,
                                    int                adc_chan_num,
                                    uint8_t            dma_chan);
 
 
 /**
- * \brief zlg237 ADC 硬件层（使用了中断） 注入通道例程入口
+ * \brief stm32f103rbt6 ADC 硬件层（使用了中断） 注入通道例程入口
  *
  * \param[in] p_hw_adc     : 指向 ADC 外设寄存器块的指针
  * \param[in] int_num      : 中断号
@@ -237,14 +237,14 @@ void demo_zlg237_hw_adc_dma_entry (void              *p_hw_adc,
  *
  * \return 无
  */
-void demo_zlg237_hw_adc_injected_int_entry (void              *p_hw_adc,
+void demo_stm32f103rbt6_hw_adc_injected_int_entry (void              *p_hw_adc,
                                             int                int_num,
                                             uint32_t           vref_mv,
                                             int               *p_adc_chan,
                                             int                adc_chan_num);
 
 /**
- * \brief zlg237 ADC 硬件层（使用了中断）规则通道、注入通道例程入口
+ * \brief stm32f103rbt6 ADC 硬件层（使用了中断）规则通道、注入通道例程入口
  *
  * \param[in] p_hw_adc     : 指向 ADC1外设寄存器块的指针
  * \param[in] p_adc_chan   : 指向ADC1通道数组的指针
@@ -259,7 +259,7 @@ void demo_zlg237_hw_adc_injected_int_entry (void              *p_hw_adc,
  *
  * \return 无
  */
-void demo_zlg237_hw_adc_dma_double_entry (void              *p_hw_adc1,
+void demo_stm32f103rbt6_hw_adc_dma_double_entry (void              *p_hw_adc1,
                                           int               *p_adc1_chan,
                                           int                adc1_chan_num,
                                           uint8_t            dma_chan,
@@ -275,7 +275,7 @@ void demo_zlg237_hw_adc_dma_double_entry (void              *p_hw_adc1,
  *
  * \return 无
  */
-void demo_zlg_hw_clk_entry (am_clk_id_t *p_clk_id_buf, uint8_t buf_lenth);
+void demo_stm32f103rbt6_hw_clk_entry (am_clk_id_t *p_clk_id_buf, uint8_t buf_lenth);
 
 /**
  * \brief DMA 内存到内存例程，通过驱动层接口实现
@@ -284,7 +284,7 @@ void demo_zlg_hw_clk_entry (am_clk_id_t *p_clk_id_buf, uint8_t buf_lenth);
  *
  * \return 无
  */
-void demo_zlg_drv_dma_m2m_entry (uint32_t dma_chan);
+void demo_stm32f103rbt6_drv_dma_m2m_entry (uint32_t dma_chan);
 
 /**
  * \brief DMA 内存到内存例程，通过驱动层接口实现
@@ -293,7 +293,7 @@ void demo_zlg_drv_dma_m2m_entry (uint32_t dma_chan);
  *
  * \return 无
  */
-void demo_zlg118_drv_dma_m2m_entry (uint32_t dma_chan);
+void demo_stm32f103rbt6118_drv_dma_m2m_entry (uint32_t dma_chan);
 
 /**
  * \brief DMA 内存到内存例程，通过驱动层接口实现
@@ -311,7 +311,7 @@ void demo_zsn700_drv_dma_m2m_entry (uint32_t dma_chan);
  *
  * \return 无
  */
-void demo_zlg_drv_flash_entry (amhw_zlg_flash_t *p_hw_flash, uint8_t sector);
+void demo_stm32f103rbt6_drv_flash_entry (amhw_stm32f103rbt6_flash_t *p_hw_flash, uint8_t sector);
 
 /**
  * \brief FLASH 例程，通过驱动层接口实现
@@ -320,7 +320,7 @@ void demo_zlg_drv_flash_entry (amhw_zlg_flash_t *p_hw_flash, uint8_t sector);
  *
  * \return 无
  */
-void demo_zlg118_drv_flash_entry (void *p_hw_flash, uint16_t sector);
+void demo_stm32f103rbt6118_drv_flash_entry (void *p_hw_flash, uint16_t sector);
 
 /**
  * \brief FLASH 例程，通过驱动层接口实现
@@ -332,13 +332,13 @@ void demo_zlg118_drv_flash_entry (void *p_hw_flash, uint16_t sector);
 void demo_zsn700_drv_flash_entry (void *p_hw_flash, uint16_t sector);
 
 /**
- * \brief zlg237 FLASH 例程，通过驱动层接口实现
+ * \brief stm32f103rbt6 FLASH 例程，通过驱动层接口实现
  *
  * \param[in] p_hw_flash 指向 FLASH 外设寄存器块的指针
  *
  * \return 无
  */
-void demo_zlg237_drv_flash_entry (void *p_hw_flash, uint8_t sector);
+void demo_stm32f103rbt6_drv_flash_entry (amhw_stm32f103rbt6_flash_t *p_hw_flash, uint8_t page_num);
 
 /**
  * \brief GPIO 例程，通过 HW 层接口实现
@@ -349,7 +349,7 @@ void demo_zlg237_drv_flash_entry (void *p_hw_flash, uint8_t sector);
  *
  * \return 无
  */
-void demo_zlg_hw_gpio_entry (amhw_zlg_gpio_t *p_hw_gpio,
+void demo_stm32f103rbt6_hw_gpio_entry (amhw_stm32f103rbt6_gpio_t *p_hw_gpio,
                              int32_t          input_pin,
                              int32_t          output_pin);
 
@@ -366,13 +366,13 @@ void demo_zlg_hw_gpio_entry (amhw_zlg_gpio_t *p_hw_gpio,
  *
  * \return 无
  */
-void demo_zlg_hw_gpio_trigger_entry (amhw_zlg_gpio_t         *p_hw_gpio,
-                                     amhw_zlg_syscfg_t       *p_hw_syscfg,
-                                     amhw_zlg_exti_t         *p_hw_exti,
+void demo_stm32f103rbt6_hw_gpio_trigger_entry (amhw_stm32f103rbt6_gpio_t         *p_hw_gpio,
+                                     amhw_stm32f103rbt6_syscfg_t       *p_hw_syscfg,
+                                     amhw_stm32f103rbt6_exti_t         *p_hw_exti,
                                      int32_t                  pin,
                                      uint8_t                  portsource,
                                      uint8_t                  pinsource,
-                                     amhw_zlg_exti_line_num_t exti_line_num);
+                                     amhw_stm32f103rbt6_line_num_t exti_line_num);
 
 /**
  * \brief GPIO 例程，通过 HW 层接口实现
@@ -383,7 +383,7 @@ void demo_zlg_hw_gpio_trigger_entry (amhw_zlg_gpio_t         *p_hw_gpio,
  *
  * \return 无
  */
-void demo_zlg118_hw_gpio_entry (void    *p_hw_gpio,
+void demo_stm32f103rbt6118_hw_gpio_entry (void    *p_hw_gpio,
                                 int32_t  input_pin,
                                 int32_t  output_pin);
 
@@ -408,7 +408,7 @@ void demo_zsn700_hw_gpio_entry (void    *p_hw_gpio,
  *
  * \return 无
  */
-void demo_zlg118_hw_gpio_trigger_entry (void *p_hw_gpio, int32_t pin);
+void demo_stm32f103rbt6118_hw_gpio_trigger_entry (void *p_hw_gpio, int32_t pin);
 
 /**
  * \brief GPIO 引脚中断例程，通过 HW 层接口实现
@@ -428,7 +428,7 @@ void demo_zsn700_hw_gpio_trigger_entry (void *p_hw_gpio, int32_t pin);
  *
  * \return 无
  */
-void demo_zlg_hw_i2c_master_poll_entry (amhw_zlg_i2c_t *p_hw_i2c,
+void demo_stm32f103rbt6_hw_i2c_master_poll_entry (amhw_stm32f103rbt6_i2c_t *p_hw_i2c,
                                         uint32_t        clk_rate);
 
 /**
@@ -438,7 +438,7 @@ void demo_zlg_hw_i2c_master_poll_entry (amhw_zlg_i2c_t *p_hw_i2c,
  *
  * \return 无
  */
-void demo_zlg_hw_i2c_slave_poll_entry (amhw_zlg_i2c_t *p_hw_i2c);
+void demo_stm32f103rbt6_hw_i2c_slave_poll_entry (amhw_stm32f103rbt6_i2c_t *p_hw_i2c);
 
 /**
  * \brief I2C 轮询模式下操作 EEPROM 例程，通过 HW 层接口实现
@@ -448,7 +448,7 @@ void demo_zlg_hw_i2c_slave_poll_entry (amhw_zlg_i2c_t *p_hw_i2c);
  *
  * \return 无
  */
-void demo_zlg118_hw_i2c_master_poll_entry (void        *p_hw_i2c,
+void demo_stm32f103rbt6118_hw_i2c_master_poll_entry (void        *p_hw_i2c,
                                            uint32_t     clk_rate);
 
 /**
@@ -470,7 +470,7 @@ void demo_zsn700_hw_i2c_master_poll_entry (void        *p_hw_i2c,
  *
  * \return 无
  */
-void demo_zlg118_hw_i2c_slave_int_entry (void  *p_hw_i2c,
+void demo_stm32f103rbt6118_hw_i2c_slave_int_entry (void  *p_hw_i2c,
                                          int    inum_num);
 
 /**
@@ -485,26 +485,6 @@ void demo_zsn700_hw_i2c_slave_int_entry (void  *p_hw_i2c,
                                          int    inum_num);
 
 /**
- * \brief I2C 轮询模式下操作 EEPROM 例程，通过 HW 层接口实现
- *
- * \param[in] p_hw_i2c 指向 I2C 外设寄存器块的指针
- * \param[in] clk_rate I2C 时钟源频率
- *
- * \return 无
- */
-void demo_zlg237_hw_i2c_master_poll_entry (void           *p_hw_i2c,
-                                           uint32_t        clk_rate);
-
-/**
- * \brief I2C 从机例程(此例程可以用来模拟 EEPROM)，通过 HW 层接口实现
- *
- * \param[in] p_hw_i2c 指向 I2C 外设寄存器块的指针
- *
- * \return 无
- */
-void demo_zlg237_hw_i2c_slave_poll_entry (void *p_hw_i2c);
-
-/**
  * \brief SPI 主机例程，通过 HW 层接口实现
  *
  * \param[in] p_hw_spi 指向 SPI 外设寄存器块的指针
@@ -513,21 +493,7 @@ void demo_zlg237_hw_i2c_slave_poll_entry (void *p_hw_i2c);
  *
  * \return 无
  */
-void demo_zlg237_hw_spi_master_entry (void              *p_hw_spi,
-                                      int32_t            cs_pin,
-                                      uint32_t           clk_rate,
-                                      uint32_t           cs_mdelay);
-
-/**
- * \brief SPI 主机例程，通过 HW 层接口实现
- *
- * \param[in] p_hw_spi 指向 SPI 外设寄存器块的指针
- * \param[in] cs_pin   片选引脚号
- * \param[in] clk_rate SPI 时钟源频率
- *
- * \return 无
- */
-void demo_zlg_hw_spi_master_entry (amhw_zlg_spi_t *p_hw_spi,
+void demo_stm32f103rbt6_hw_spi_master_entry (amhw_stm32f103rbt6_spi_t *p_hw_spi,
                                    int32_t         cs_pin,
                                    uint32_t        clk_rate);
 
@@ -539,7 +505,7 @@ void demo_zlg_hw_spi_master_entry (amhw_zlg_spi_t *p_hw_spi,
  *
  * \return 无
  */
-void demo_zlg118_hw_spi_master_entry (void    *p_hw_spi,
+void demo_stm32f103rbt6118_hw_spi_master_entry (void    *p_hw_spi,
                                       int32_t  cs_pin);
 
 /**
@@ -564,8 +530,8 @@ void demo_zsn700_hw_spi_master_entry (void    *p_hw_spi,
  *
  * \return 无
  */
-void demo_zlg_hw_tim_cap_entry (amhw_zlg_tim_t      *p_hw_tim,
-                                amhw_zlg_tim_type_t  type,
+void demo_stm32f103rbt6_hw_tim_cap_entry (amhw_stm32f103rbt6_tim_t      *p_hw_tim,
+                                amhw_stm32f103rbt6_tim_type_t  type,
                                 uint32_t             chan,
                                 uint32_t             clk_rate,
                                 int32_t              inum);
@@ -581,8 +547,8 @@ void demo_zlg_hw_tim_cap_entry (amhw_zlg_tim_t      *p_hw_tim,
  *
  * \return 无
  */
-void demo_zlg_hw_tim_cmp_toggle_entry (amhw_zlg_tim_t      *p_hw_tim,
-                                       amhw_zlg_tim_type_t  type,
+void demo_stm32f103rbt6_hw_tim_cmp_toggle_entry (amhw_stm32f103rbt6_tim_t      *p_hw_tim,
+                                       amhw_stm32f103rbt6_tim_type_t  type,
                                        uint32_t             chan,
                                        uint32_t             clk_rate,
                                        uint8_t              inum);
@@ -598,8 +564,8 @@ void demo_zlg_hw_tim_cmp_toggle_entry (amhw_zlg_tim_t      *p_hw_tim,
  *
  * \return 无
  */
-void demo_zlg_hw_tim_pwm_entry (amhw_zlg_tim_t     *p_hw_tim,
-                                amhw_zlg_tim_type_t type,
+void demo_stm32f103rbt6_hw_tim_pwm_entry (amhw_stm32f103rbt6_tim_t     *p_hw_tim,
+                                amhw_stm32f103rbt6_tim_type_t type,
                                 uint32_t            chan,
                                 uint32_t            clk_rate,
                                 int32_t             inum);
@@ -614,8 +580,8 @@ void demo_zlg_hw_tim_pwm_entry (amhw_zlg_tim_t     *p_hw_tim,
  *
  * \return 无
  */
-void demo_zlg_hw_tim_pwm_dead_entry (amhw_zlg_tim_t     *p_hw_tim,
-                                     amhw_zlg_tim_type_t type,
+void demo_stm32f103rbt6_hw_tim_pwm_dead_entry (amhw_stm32f103rbt6_tim_t     *p_hw_tim,
+                                     amhw_stm32f103rbt6_tim_type_t type,
                                      uint32_t            chan,
                                      uint32_t            clk_rate);
 
@@ -629,8 +595,8 @@ void demo_zlg_hw_tim_pwm_dead_entry (amhw_zlg_tim_t     *p_hw_tim,
  *
  * \return 无
  */
-void demo_zlg_hw_tim_timing_entry (amhw_zlg_tim_t     *p_hw_tim,
-                                   amhw_zlg_tim_type_t type,
+void demo_stm32f103rbt6_hw_tim_timing_entry (amhw_stm32f103rbt6_tim_t     *p_hw_tim,
+                                   amhw_stm32f103rbt6_tim_type_t type,
                                    uint32_t            clk_rate,
                                    int32_t             int_num);
 
@@ -645,7 +611,7 @@ void demo_zlg_hw_tim_timing_entry (amhw_zlg_tim_t     *p_hw_tim,
  *
  * \return 无
  */
-void demo_zlg118_hw_tim_cap_entry (void     *p_hw_tim,
+void demo_stm32f103rbt6118_hw_tim_cap_entry (void     *p_hw_tim,
                                    uint8_t   type,
                                    uint32_t  chan,
                                    uint32_t  clk_rate,
@@ -680,7 +646,7 @@ void demo_zsn700_hw_tim_cap_entry (void     *p_hw_tim,
  *
  * \return 无
  */
-void demo_zlg118_hw_tim_cmp_toggle_entry (void    *p_hw_tim,
+void demo_stm32f103rbt6118_hw_tim_cmp_toggle_entry (void    *p_hw_tim,
                                           uint8_t  type,
                                           uint32_t chan,
                                           uint32_t clk_rate,
@@ -719,7 +685,7 @@ void demo_zsn700_hw_tim_cmp_toggle_entry (void    *p_hw_tim,
  *
  * \return 无
  */
-void demo_zlg118_hw_tim_pwm_dead_entry (void    *p_hw_tim,
+void demo_stm32f103rbt6118_hw_tim_pwm_dead_entry (void    *p_hw_tim,
                                         uint8_t  type,
                                         uint8_t  chan_a,
                                         uint8_t  chan_b,
@@ -751,16 +717,16 @@ void demo_zsn700_hw_tim_pwm_dead_entry (void    *p_hw_tim,
 /**
  * \brief 高级定时器软件软件同步开始、同步停止、同步清零例程，通过 HW层接口实现
  *
- * \param[in] p_tim_cfg 指向软件同步配置结构体的指针（amhw_zlg118_adtim_sw_sync_t）
+ * \param[in] p_tim_cfg 指向软件同步配置结构体的指针（amhw_stm32f103rbt6118_adtim_sw_sync_t）
  *
  * \return 无
  */
-void demo_zlg118_hw_adtim_swsync_entry (void *p_tim_cfg);
+void demo_stm32f103rbt6118_hw_adtim_swsync_entry (void *p_tim_cfg);
 
 /**
  * \brief 高级定时器软件软件同步开始、同步停止、同步清零例程，通过 HW层接口实现
  *
- * \param[in] p_tim_cfg 指向软件同步配置结构体的指针（amhw_zlg118_adtim_sw_sync_t）
+ * \param[in] p_tim_cfg 指向软件同步配置结构体的指针（amhw_stm32f103rbt6118_adtim_sw_sync_t）
  *
  * \return 无
  */
@@ -778,7 +744,7 @@ void demo_zsn700_hw_adtim_swsync_entry (void *p_tim_cfg);
  *
  * \return 无
  */
-void demo_zlg118_hw_adtim_port_sw_brake_entry (void          *p_hw_adtim,
+void demo_stm32f103rbt6118_hw_adtim_port_sw_brake_entry (void          *p_hw_adtim,
                                                uint8_t        chan,
                                                unsigned long  duty_ns,
                                                unsigned long  period_ns,
@@ -817,7 +783,7 @@ void demo_zsn700_hw_adtim_port_sw_brake_entry (void          *p_hw_adtim,
  *
  * \return 无
  */
-void demo_zlg118_hw_adtim_vc_brake_entry (void         *p_hw_adtim,
+void demo_stm32f103rbt6118_hw_adtim_vc_brake_entry (void         *p_hw_adtim,
                                           uint8_t       chan,
                                           unsigned long duty_ns,
                                           unsigned long period_ns,
@@ -858,7 +824,7 @@ void demo_zsn700_hw_adtim_vc_brake_entry (void         *p_hw_adtim,
  *
  * \return 无
  */
-void demo_zlg118_hw_adtim_trig_adc_sqr_entry (void    *p_hw_adtim,
+void demo_stm32f103rbt6118_hw_adtim_trig_adc_sqr_entry (void    *p_hw_adtim,
                                               uint32_t period_ns,
                                               void    *p_hw_adc,
                                               int      adc_int_num,
@@ -896,7 +862,7 @@ void demo_zsn700_hw_adtim_trig_adc_sqr_entry (void    *p_hw_adtim,
  *
  * \return 无
  */
-void demo_zlg118_hw_tim_port_brake_entry (void    *p_hw_tim,
+void demo_stm32f103rbt6118_hw_tim_port_brake_entry (void    *p_hw_tim,
                                           uint8_t  type,
                                           uint8_t  chan,
                                           int      inum,
@@ -935,7 +901,7 @@ void demo_zsn700_hw_tim_port_brake_entry (void    *p_hw_tim,
  *
  * \return 无
  */
-void demo_zlg118_hw_tim_vc_brake_entry (void         *p_hw_tim,
+void demo_stm32f103rbt6118_hw_tim_vc_brake_entry (void         *p_hw_tim,
                                         uint8_t       chan,
                                         unsigned long duty_ns,
                                         unsigned long period_ns,
@@ -976,7 +942,7 @@ void demo_zsn700_hw_tim_vc_brake_entry (void         *p_hw_tim,
  *
  * \return 无
  */
-void demo_zlg118_hw_tim_pwm_entry (void    *p_hw_tim,
+void demo_stm32f103rbt6118_hw_tim_pwm_entry (void    *p_hw_tim,
                                    uint8_t  type,
                                    uint32_t chan,
                                    uint32_t clk_rate,
@@ -1012,7 +978,7 @@ void demo_zsn700_hw_tim_pwm_entry (void    *p_hw_tim,
  *
  * \return 无
  */
-void demo_zlg118_hw_tim_timing_entry (void    *p_hw_tim,
+void demo_stm32f103rbt6118_hw_tim_timing_entry (void    *p_hw_tim,
                                       uint8_t  type,
                                       uint32_t clk_rate,
                                       int32_t  int_num);
@@ -1047,7 +1013,7 @@ void demo_zsn700_hw_tim_timing_entry (void    *p_hw_tim,
  *
  * \return 无
  */
-void demo_zlg118_hw_tim_trig_adc_sqr_entry (void    *p_hw_tim,
+void demo_stm32f103rbt6118_hw_tim_trig_adc_sqr_entry (void    *p_hw_tim,
                                             uint8_t  type,
                                             uint8_t  chan,
                                             uint32_t duty_us,
@@ -1083,7 +1049,7 @@ void demo_zsn700_hw_tim_trig_adc_sqr_entry (void    *p_hw_tim,
                                             uint8_t  sqr_num);
 
 /**
- * \brief ZLG UART 中断发送例程，通过 HW 层接口实现
+ * \brief STM32F103RBT6 UART 中断发送例程，通过 HW 层接口实现
  *
  * \param[in] p_hw_uart 指向 UART 外设寄存器块的指针
  * \param[in] pfn_init  指向 UART 引脚初始化函数的指针
@@ -1093,25 +1059,25 @@ void demo_zsn700_hw_tim_trig_adc_sqr_entry (void    *p_hw_tim,
  *
  * \return 无
  */
-void demo_zlg_hw_uart_int_entry (amhw_zlg_uart_t *p_hw_uart,
+void demo_stm32f103rbt6_hw_uart_int_entry (amhw_stm32f103rbt6_usart_t *p_hw_uart,
                                  void (* pfn_init)(void),
                                  uint32_t         clk_rate,
                                  unsigned long    uart_base,
                                  unsigned char    inum_uart);
 
 /**
- * \brief ZLG UART 轮询方式例程，通过 HW 层接口实现
+ * \brief STM32F103RBT6 UART 轮询方式例程，通过 HW 层接口实现
  *
  * \param[in] p_hw_uart 指向 UART 外设寄存器块的指针
  * \param[in] clk_rate  UART 时钟源频率
  *
  * \return 无
  */
-void demo_zlg_hw_uart_polling_entry (amhw_zlg_uart_t *p_hw_uart,
+void demo_stm32f103rbt6_hw_uart_polling_entry (amhw_stm32f103rbt6_usart_t *p_hw_uart,
                                      uint32_t         clk_rate);
 
 /**
- * \brief ZLG UART 接收例程，通过 HW 层接口实现
+ * \brief STM32F103RBT6 UART 接收例程，通过 HW 层接口实现
  *
  * \param[in] p_hw_uart 指向 UART 外设寄存器块的指针
  * \param[in] clk_rate  UART 时钟源频率
@@ -1119,12 +1085,12 @@ void demo_zlg_hw_uart_polling_entry (amhw_zlg_uart_t *p_hw_uart,
  *
  * \return 无
  */
-void demo_zlg_hw_uart_rx_dma_entry (amhw_zlg_uart_t *p_hw_uart,
+void demo_stm32f103rbt6_hw_uart_rx_dma_entry (amhw_stm32f103rbt6_usart_t *p_hw_uart,
                                     uint32_t         clk_rate,
                                     int32_t          dma_chan);
 
 /**
- * \brief ZLG UART 发送例程，通过 HW 层接口实现
+ * \brief STM32F103RBT6 UART 发送例程，通过 HW 层接口实现
  *
  * \param[in] p_hw_uart 指向 UART 外设寄存器块的指针
  * \param[in] clk_rate  UART 时钟源频率
@@ -1132,7 +1098,7 @@ void demo_zlg_hw_uart_rx_dma_entry (amhw_zlg_uart_t *p_hw_uart,
  *
  * \return 无
  */
-void demo_zlg_hw_uart_tx_dma_entry (amhw_zlg_uart_t *p_hw_uart,
+void demo_stm32f103rbt6_hw_uart_tx_dma_entry (amhw_stm32f103rbt6_usart_t *p_hw_uart,
                                     uint32_t         clk_rate,
                                     int32_t          dma_chan);
 
@@ -1147,7 +1113,7 @@ void demo_zlg_hw_uart_tx_dma_entry (amhw_zlg_uart_t *p_hw_uart,
  *
  * \return 无
  */
-void demo_zlg118_hw_uart_int_entry (void             *p_hw_uart,
+void demo_stm32f103rbt6118_hw_uart_int_entry (void             *p_hw_uart,
                                     void (* pfn_init)(void),
                                     uint32_t         clk_rate,
                                     unsigned long    uart_base,
@@ -1178,7 +1144,7 @@ void demo_zsn700_hw_uart_int_entry (void             *p_hw_uart,
  *
  * \return 无
  */
-void demo_zlg118_hw_uart_polling_entry (void     *p_hw_uart,
+void demo_stm32f103rbt6118_hw_uart_polling_entry (void     *p_hw_uart,
                                         uint32_t  clk_rate);
 
 /**
@@ -1202,7 +1168,7 @@ void demo_zsn700_hw_uart_polling_entry (void     *p_hw_uart,
  *
  * \return 无
  */
-void demo_zlg118_hw_uart_rx_dma_entry (void    *p_hw_uart,
+void demo_stm32f103rbt6118_hw_uart_rx_dma_entry (void    *p_hw_uart,
                                        uint32_t clk_rate,
                                        int32_t  dma_chan,
                                        int32_t  dma_src);
@@ -1232,7 +1198,7 @@ void demo_zsn700_hw_uart_rx_dma_entry (void    *p_hw_uart,
  *
  * \return 无
  */
-void demo_zlg118_hw_uart_tx_dma_entry (void    *p_hw_uart,
+void demo_stm32f103rbt6118_hw_uart_tx_dma_entry (void    *p_hw_uart,
                                        uint32_t clk_rate,
                                        int32_t  dma_chan,
                                        int32_t  dma_src);
@@ -1265,7 +1231,7 @@ void demo_zsn700_hw_uart_tx_dma_entry (void    *p_hw_uart,
  *
  * \return 无
  */
-void demo_zlg118_hw_lpuart_int_entry (void             *p_hw_uart,
+void demo_stm32f103rbt6118_hw_lpuart_int_entry (void             *p_hw_uart,
                                       void (* pfn_init)(void),
                                       uint8_t           sclk_src,
                                       uint32_t          clk_rate,
@@ -1304,7 +1270,7 @@ void demo_zsn700_hw_lpuart_int_entry (void             *p_hw_uart,
  *
  * \return 无
  */
-void demo_zlg118_hw_lpuart_polling_entry (void     *p_hw_uart,
+void demo_stm32f103rbt6118_hw_lpuart_polling_entry (void     *p_hw_uart,
                                           uint8_t   clk_src,
                                           uint32_t  clk_rate,
                                           uint32_t  baudrate);
@@ -1336,7 +1302,7 @@ void demo_zsn700_hw_lpuart_polling_entry (void     *p_hw_uart,
  *
  * \return 无
  */
-void demo_zlg118_hw_lpuart_rx_dma_entry (void    *p_hw_uart,
+void demo_stm32f103rbt6118_hw_lpuart_rx_dma_entry (void    *p_hw_uart,
                                          uint8_t  clk_src,
                                          uint32_t clk_rate,
                                          uint32_t baudrate,
@@ -1374,7 +1340,7 @@ void demo_zsn700_hw_lpuart_rx_dma_entry (void    *p_hw_uart,
  *
  * \return 无
  */
-void demo_zlg118_hw_lpuart_tx_dma_entry (void    *p_hw_uart,
+void demo_stm32f103rbt6118_hw_lpuart_tx_dma_entry (void    *p_hw_uart,
                                          uint8_t  clk_src,
                                          uint32_t clk_rate,
                                          uint32_t baudrate,
@@ -1401,7 +1367,7 @@ void demo_zsn700_hw_lpuart_tx_dma_entry (void    *p_hw_uart,
                                          int32_t  dma_src);
 
 /**
- * \brief ZLG237 USART 中断发送例程，通过 HW 层接口实现
+ * \brief STM32F103RBT6 USART 中断发送例程，通过 HW 层接口实现
  *
  * \param[in] p_hw_usart 指向 USART 外设寄存器块的指针
  * \param[in] pfn_init  指向 USART 引脚初始化函数的指针
@@ -1411,25 +1377,25 @@ void demo_zsn700_hw_lpuart_tx_dma_entry (void    *p_hw_uart,
  *
  * \return 无
  */
-void demo_zlg237_hw_usart_int_entry (void                *p_hw_usart,
+void demo_stm32f103rbt6_hw_usart_int_entry (void                *p_hw_usart,
                                      void (* pfn_init)(void),
                                      uint32_t             clk_rate,
                                      unsigned long        usart_base,
                                      unsigned char        inum_usart);
 
 /**
- * \brief ZLG237 USART 轮询方式例程，通过 HW 层接口实现
+ * \brief STM32F103RBT6 USART 轮询方式例程，通过 HW 层接口实现
  *
  * \param[in] p_hw_usart 指向 USART 外设寄存器块的指针
  * \param[in] clk_rate   USART 时钟源频率
  *
  * \return 无
  */
-void demo_zlg237_hw_usart_polling_entry (void                *p_hw_usart,
+void demo_stm32f103rbt6_hw_usart_polling_entry (void                *p_hw_usart,
                                          uint32_t             clk_rate);
 
 /**
- * \brief ZLG237 USART 接收例程，通过 HW 层接口实现
+ * \brief STM32F103RBT6 USART 接收例程，通过 HW 层接口实现
  *
  * \param[in] p_hw_usart 指向 USART 外设寄存器块的指针
  * \param[in] clk_rate   USART 时钟源频率
@@ -1437,12 +1403,12 @@ void demo_zlg237_hw_usart_polling_entry (void                *p_hw_usart,
  *
  * \return 无
  */
-void demo_zlg237_hw_usart_rx_dma_entry (void                *p_hw_usart,
+void demo_stm32f103rbt6_hw_usart_rx_dma_entry (void                *p_hw_usart,
                                         uint32_t             clk_rate,
                                         int32_t              dma_chan);
 
 /**
- * \brief ZLG237 USART 发送例程，通过 HW 层接口实现
+ * \brief STM32F103RBT6 USART 发送例程，通过 HW 层接口实现
  *
  * \param[in] p_hw_usart 指向 USART 外设寄存器块的指针
  * \param[in] clk_rate   USART 时钟源频率
@@ -1450,7 +1416,7 @@ void demo_zlg237_hw_usart_rx_dma_entry (void                *p_hw_usart,
  *
  * \return 无
  */
-void demo_zlg237_hw_usart_tx_dma_entry (void                *p_hw_usart,
+void demo_stm32f103rbt6_hw_usart_tx_dma_entry (void                *p_hw_usart,
                                         uint32_t             clk_rate,
                                         int32_t              dma_chan);
 
@@ -1462,7 +1428,7 @@ void demo_zlg237_hw_usart_tx_dma_entry (void                *p_hw_usart,
  *
  * \return 无
  */
-void demo_zlg116_drv_sleepmode_timer_wake_up_entry (am_timer_handle_t timer_handle,
+void demo_stm32f103rbt6116_drv_sleepmode_timer_wake_up_entry (am_timer_handle_t timer_handle,
                                                     uint32_t          timer_clk_rate);
 
 /**
@@ -1472,7 +1438,7 @@ void demo_zlg116_drv_sleepmode_timer_wake_up_entry (am_timer_handle_t timer_hand
  *
  * \return 无
  */
-void demo_zlg116_drv_sleepmode_wake_up_entry (void);
+void demo_stm32f103rbt6116_drv_sleepmode_wake_up_entry (void);
 
 /**
  * \brief 待机模式例程，通过驱动层接口实现
@@ -1481,7 +1447,7 @@ void demo_zlg116_drv_sleepmode_wake_up_entry (void);
  *
  * \return 无
  */
-void demo_zlg116_drv_standbymode_wake_up_entry (void);
+void demo_stm32f103rbt6116_drv_standbymode_wake_up_entry (void);
 
 /**
  * \brief 停机模式例程，通过驱动层接口实现
@@ -1490,7 +1456,7 @@ void demo_zlg116_drv_standbymode_wake_up_entry (void);
  *
  * \return 无
  */
-void demo_zlg116_drv_stopmode_wake_up_entry (void);
+void demo_stm32f103rbt6116_drv_stopmode_wake_up_entry (void);
 
 /**
  * \brief 睡眠模式例程，使用定时器周期唤醒，通过驱动层接口实现
@@ -1539,7 +1505,7 @@ void demo_zml165_drv_stopmode_wake_up_entry (void);
  *
  * \return 无
  */
-void demo_zlg_hw_iwdg_entry (amhw_zlg_iwdg_t *p_hw_iwdg,
+void demo_stm32f103rbt6_hw_iwdg_entry (amhw_stm32f103rbt6_iwdg_t *p_hw_iwdg,
                              uint32_t         time_out_ms,
                              uint32_t         feed_time_ms);
 
@@ -1553,7 +1519,7 @@ void demo_zlg_hw_iwdg_entry (amhw_zlg_iwdg_t *p_hw_iwdg,
  *
  * \return 无
  */
-void demo_zlg_hw_wwdg_entry (amhw_zlg_wwdg_t *p_hw_wwdg,
+void demo_stm32f103rbt6_hw_wwdg_entry (amhw_stm32f103rbt6_wwdg_t *p_hw_wwdg,
                              uint32_t         clk_rate,
                              uint32_t         time_out_ms,
                              uint32_t         feed_time_ms);
@@ -1567,7 +1533,7 @@ void demo_zlg_hw_wwdg_entry (amhw_zlg_wwdg_t *p_hw_wwdg,
  *
  * \return 无
  */
-void demo_zlg118_hw_wdt_entry (void     *p_hw_wdt,
+void demo_stm32f103rbt6118_hw_wdt_entry (void     *p_hw_wdt,
                                uint32_t  time_out_ms,
                                uint32_t  feed_time_ms);
 
@@ -1644,7 +1610,7 @@ void demo_zml165_adc_vol_measure_entry(void  *p_handle);
  * \param[in] size_t              过滤table的长度
  * \return 无
  */
-void demo_zlg237_can_int_entry (am_can_handle_t     can_handle,
+void demo_stm32f103rbt6_can_int_entry (am_can_handle_t     can_handle,
                                 am_can_bps_param_t *can_btr_baud,
                                 am_can_int_type_t   int_type,
                                 am_can_filter_t    *p_filterbuff,
@@ -1663,7 +1629,7 @@ void demo_zlg237_can_int_entry (am_can_handle_t     can_handle,
  *
  * \return 无
  */
-void demo_zlg237_can_entry (am_can_handle_t     can_handle,
+void demo_stm32f103rbt6_can_entry (am_can_handle_t     can_handle,
                             am_can_bps_param_t *can_btr_baud);
 
 /**
@@ -1712,7 +1678,7 @@ void demo_usbd_msc_entry (void* p_handle);
  *
  * \return 无
  */
-void demo_zlg118_hw_dac_dma_entry(void     *p_hw_dac,
+void demo_stm32f103rbt6118_hw_dac_dma_entry(void     *p_hw_dac,
                                   int32_t  dma_src,
                                   int32_t  dma_chan,
                                   uint16_t *vol_val);
@@ -1740,7 +1706,7 @@ void demo_zsn700_hw_dac_dma_entry(void     *p_hw_dac,
  * \param[in] pfn_cb_t  中断触发回调函数
  *
  */
-void demo_zlg118_hw_vc_int_entry (void    *p_hw_vc,
+void demo_stm32f103rbt6118_hw_vc_int_entry (void    *p_hw_vc,
                                   void   (*pfn_cb_t) (void *),
                                   void    *p_hw_dac,
                                   uint16_t vol_val);
@@ -1765,7 +1731,7 @@ void demo_zsn700_hw_vc_int_entry (void    *p_hw_vc,
  *
  * \return 无
  */
-void demo_zlg118_hw_lvd_system_reset_entry (void *p_hw_lvd);
+void demo_stm32f103rbt6118_hw_lvd_system_reset_entry (void *p_hw_lvd);
 
 /**
  * \brief LVD系统复位例程，hw接口层实现
@@ -1784,7 +1750,7 @@ void demo_zsn700_hw_lvd_system_reset_entry (void *p_hw_lvd);
  *
  * \return 无
  */
-void demo_zlg118_hw_lvd_int_entry (void *p_hw_lvd,
+void demo_stm32f103rbt6118_hw_lvd_int_entry (void *p_hw_lvd,
                                    void (*p_lvd_cb)(void *));
 
 /**
@@ -1806,7 +1772,7 @@ void demo_zsn700_hw_lvd_int_entry (void *p_hw_lvd,
  *
  * \retval :无
  */
-void demo_zlg118_hw_opa_one_entry (void *p_hw_opa, uint8_t mode);
+void demo_stm32f103rbt6118_hw_opa_one_entry (void *p_hw_opa, uint8_t mode);
 
 /**
  * \brief OPA 电压跟随例程，通过 HW 层接口实现
@@ -1828,7 +1794,7 @@ void demo_zsn700_hw_opa_one_entry (void *p_hw_opa, uint8_t mode);
  *
  * \retval :无
  */
-void demo_zlg118_hw_opa_dac_entry (void     *p_hw_opa,
+void demo_stm32f103rbt6118_hw_opa_dac_entry (void     *p_hw_opa,
                                    void     *p_hw_dac,
                                    uint8_t   mode,
                                    uint16_t *vol_val);
@@ -1858,7 +1824,7 @@ void demo_zsn700_hw_opa_dac_entry (void     *p_hw_opa,
  *
  * \retval :无
  */
-void demo_zlg118_hw_aes_ency_decy_entry (void     *p_hw_aes,
+void demo_stm32f103rbt6118_hw_aes_ency_decy_entry (void     *p_hw_aes,
                                          uint8_t   key_len,
                                          uint32_t *p_aes_data,
                                          uint32_t *p_key_data);
@@ -1885,7 +1851,7 @@ void demo_zsn700_hw_aes_ency_decy_entry (void     *p_hw_aes,
  *
  * \retval :无
  */
-void demo_zlg118_hw_trng_generate_entry (void *p_hw_trng);
+void demo_stm32f103rbt6118_hw_trng_generate_entry (void *p_hw_trng);
 
 /**
  * \brief TRNG 随机数产生例程，通过 HW 层接口实现
@@ -1904,7 +1870,7 @@ void demo_zsn700_hw_trng_generate_entry (void *p_hw_trng);
  *
  * \retval :无
  */
-void demo_zlg118_hw_lcd_entry (void                    *p_hw_lcd,
+void demo_stm32f103rbt6118_hw_lcd_entry (void                    *p_hw_lcd,
                                uint32_t                *p_data);
 
 /**
@@ -1922,6 +1888,6 @@ void demo_zsn700_hw_lcd_entry (void                    *p_hw_lcd,
 }
 #endif
 
-#endif /* __DEMO_ZLG_ENTRIES_H */
+#endif /* __DEMO_STM32F103RBT6_ENTRIES_H */
 
 /* end of file */

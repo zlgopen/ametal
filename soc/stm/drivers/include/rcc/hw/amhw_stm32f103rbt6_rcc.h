@@ -20,15 +20,15 @@
  * \endinternal
  */
 
-#ifndef __AMHW_ZLG237_RCC_H
-#define __AMHW_ZLG237_RCC_H
+#ifndef __AMHW_STM32F103RBT6_RCC_H
+#define __AMHW_STM32F103RBT6_RCC_H
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
 #include "am_types.h"
-#include "zlg237_periph_map.h"
+#include "stm32f103rbt6_periph_map.h"
 
 /*
  * \brief 匿名结构体段的开始
@@ -47,15 +47,15 @@ extern "C" {
 #endif
 
 /**
- * \addtogroup amhw_zlg237_if_rcc
- * \copydoc amhw_zlg237_rcc.h
+ * \addtogroup amhw_stm32f103rbt6_if_rcc
+ * \copydoc amhw_stm32f103rbt6_rcc.h
  * @{
  */
 
 /**
  * \brief CRC寄存器块结构体
  */
-typedef struct amhw_zlg237_rcc {
+typedef struct amhw_stm32f103rbt6_rcc {
   __IO uint32_t cr;        /**< \brief 时钟控制寄存器 */
   __IO uint32_t cfgr;      /**< \brief 时钟配置寄存器 */
   __IO uint32_t cir;       /**< \brief 时钟中断寄存器 */
@@ -70,120 +70,120 @@ typedef struct amhw_zlg237_rcc {
   __I  uint32_t reserve;   /**< \brief 保留 */
   __IO uint32_t lpclk_ctl; /**< \brief 低功耗时钟配置寄存器 */
 
-} amhw_zlg237_rcc_t;
+} amhw_stm32f103rbt6_rcc_t;
 
 /**
  * \brief 系统时钟源
  */
 typedef enum {
-    AMHW_ZLG237_SYSCLK_HSI,       /**< \brief HSI 作为系统时钟 */
-    AMHW_ZLG237_SYSCLK_HSE,       /**< \brief HSE 作为系统时钟 */
-    AMHW_ZLG237_SYSCLK_PLL,       /**< \brief PLL 输出作为系统时钟 */
-    AMHW_ZLG237_SYSCLK_LSI_OR_LSE /**< \brief LSI 或  LSE 输出作为系统时钟 */
-}amhw_zlg237_sys_clk_src;
+    AMHW_STM32F103RBT6_SYSCLK_HSI,       /**< \brief HSI 作为系统时钟 */
+    AMHW_STM32F103RBT6_SYSCLK_HSE,       /**< \brief HSE 作为系统时钟 */
+    AMHW_STM32F103RBT6_SYSCLK_PLL,       /**< \brief PLL 输出作为系统时钟 */
+    AMHW_STM32F103RBT6_SYSCLK_LSI_OR_LSE /**< \brief LSI 或  LSE 输出作为系统时钟 */
+}amhw_stm32f103rbt6_sys_clk_src;
 
 /**
  * \brief 低速系统时钟
  */
 typedef enum {
-    AMHW_ZLG237_LCLK_LSI,  /**< \brief 低速内部时钟 */
-    AMHW_ZLG237_LCLK_LSE,  /**< \brief 低速外部时钟 */
-}amhw_zlg237_lclk;
+    AMHW_STM32F103RBT6_LCLK_LSI,  /**< \brief 低速内部时钟 */
+    AMHW_STM32F103RBT6_LCLK_LSE,  /**< \brief 低速外部时钟 */
+}amhw_stm32f103rbt6_lclk;
 
 
 /**
  * \brief RTC时钟源
  */
 typedef enum {
-    AMHW_ZLG237_RTCCLK_LSE = 1,       /**< \brief PLL 输出作为系统时钟 */
-    AMHW_ZLG237_RTCCLK_LSI = 2,       /**< \brief HSI 振荡器  6 分频作为系统时钟 */
-    AMHW_ZLG237_RTCCLK_HSE_DIV128 =3, /**< \brief HSE 作为系统时钟 */
-}amhw_zlg237_rtc_clk_src;
+    AMHW_STM32F103RBT6_RTCCLK_LSE = 1,       /**< \brief PLL 输出作为系统时钟 */
+    AMHW_STM32F103RBT6_RTCCLK_LSI = 2,       /**< \brief HSI 振荡器  6 分频作为系统时钟 */
+    AMHW_STM32F103RBT6_RTCCLK_HSE_DIV128 =3, /**< \brief HSE 作为系统时钟 */
+}amhw_stm32f103rbt6_rtc_clk_src;
 
 /**
  * \brief PLL时钟源
  */
 typedef enum {
-    AMHW_ZLG237_PLLCLK_HSI = 0,  /**< \brief HSI 作为PLL输入时钟 */
-    AMHW_ZLG237_PLLCLK_HSE = 1,  /**< \brief HSE 作为PLL输入时钟 */
-}amhw_zlg237_pll_clk_src;
+    AMHW_STM32F103RBT6_PLLCLK_HSI = 0,  /**< \brief HSI 作为PLL输入时钟 */
+    AMHW_STM32F103RBT6_PLLCLK_HSE = 1,  /**< \brief HSE 作为PLL输入时钟 */
+}amhw_stm32f103rbt6_pll_clk_src;
 
 /**
  * \brief usb 分频系数
  */
 typedef enum {
-    AMHW_ZLG237_PLL_USB_DIV1P5 = 0, /**< \brief PLL 1.5 分频作为usb输入时钟 */
-    AMHW_ZLG237_PLL_USB_DIV1   = 1, /**< \brief PLL 1 分频作为usb输入时钟 */
-}amhw_zlg237_pll_usb_clk_div;
+    AMHW_STM32F103RBT6_PLL_USB_DIV1P5 = 0, /**< \brief PLL 1.5 分频作为usb输入时钟 */
+    AMHW_STM32F103RBT6_PLL_USB_DIV1   = 1, /**< \brief PLL 1 分频作为usb输入时钟 */
+}amhw_stm32f103rbt6_pll_usb_clk_div;
 
 /**
  * \brief 时钟中断标志
  */
 typedef enum {
-    AMHW_ZLG237_CLKINT_INDEX_LSI = 0,  /**< \brief LSI标志 */
-    AMHW_ZLG237_CLKINT_INDEX_LSE = 1,  /**< \brief LSE标志 */
-    AMHW_ZLG237_CLKINT_INDEX_HSI,      /**< \brief HSI标志 */
-    AMHW_ZLG237_CLKINT_INDEX_HSE,      /**< \brief HSE标志 */
-    AMHW_ZLG237_CLKINT_INDEX_PLL,      /**< \brief PLL标志 */
-    AMHW_ZLG237_CLKINT_INDEX_CSSF = 7, /**< \brief CSSF(时钟安全系统中断)标志 */
-}amhw_zlg237_clk_int_index;
+    AMHW_STM32F103RBT6_CLKINT_INDEX_LSI = 0,  /**< \brief LSI标志 */
+    AMHW_STM32F103RBT6_CLKINT_INDEX_LSE = 1,  /**< \brief LSE标志 */
+    AMHW_STM32F103RBT6_CLKINT_INDEX_HSI,      /**< \brief HSI标志 */
+    AMHW_STM32F103RBT6_CLKINT_INDEX_HSE,      /**< \brief HSE标志 */
+    AMHW_STM32F103RBT6_CLKINT_INDEX_PLL,      /**< \brief PLL标志 */
+    AMHW_STM32F103RBT6_CLKINT_INDEX_CSSF = 7, /**< \brief CSSF(时钟安全系统中断)标志 */
+}amhw_stm32f103rbt6_clk_int_index;
 
 /**
  * \brief APB2外设枚举
  */
 typedef enum {
-    AMHW_ZLG237_RCC_APB2_AFIO   = 0,  /**< \brief AFIO */
-    AMHW_ZLG237_RCC_APB2_IOPA   = 2,  /**< \brief IOPA */
-    AMHW_ZLG237_RCC_APB2_IOPB   = 3,  /**< \brief IOPB */
-    AMHW_ZLG237_RCC_APB2_IOPC   = 4,  /**< \brief IOPC */
-    AMHW_ZLG237_RCC_APB2_IOPD   = 5,  /**< \brief IOPD */
-    AMHW_ZLG237_RCC_APB2_ADC1   = 9,  /**< \brief ADC1 */
-    AMHW_ZLG237_RCC_APB2_ADC2   = 10, /**< \brief ADC2 */
-    AMHW_ZLG237_RCC_APB2_TIM1   = 11, /**< \brief TIM1 */
-    AMHW_ZLG237_RCC_APB2_SPI1   = 12, /**< \brief SPI1 */
-    AMHW_ZLG237_RCC_APB2_UART1  = 14, /**< \brief UART1 */
-}amhw_zlg237_apb2_peripheral;
+    AMHW_STM32F103RBT6_RCC_APB2_AFIO   = 0,  /**< \brief AFIO */
+    AMHW_STM32F103RBT6_RCC_APB2_IOPA   = 2,  /**< \brief IOPA */
+    AMHW_STM32F103RBT6_RCC_APB2_IOPB   = 3,  /**< \brief IOPB */
+    AMHW_STM32F103RBT6_RCC_APB2_IOPC   = 4,  /**< \brief IOPC */
+    AMHW_STM32F103RBT6_RCC_APB2_IOPD   = 5,  /**< \brief IOPD */
+    AMHW_STM32F103RBT6_RCC_APB2_ADC1   = 9,  /**< \brief ADC1 */
+    AMHW_STM32F103RBT6_RCC_APB2_ADC2   = 10, /**< \brief ADC2 */
+    AMHW_STM32F103RBT6_RCC_APB2_TIM1   = 11, /**< \brief TIM1 */
+    AMHW_STM32F103RBT6_RCC_APB2_SPI1   = 12, /**< \brief SPI1 */
+    AMHW_STM32F103RBT6_RCC_APB2_UART1  = 14, /**< \brief UART1 */
+}amhw_stm32f103rbt6_apb2_peripheral;
 
 /**
  * \brief APB1外设枚举
  */
 typedef enum {
-    AMHW_ZLG237_RCC_APB1_TIM2   = 0,    /**< \brief TIM2定时器 */
-    AMHW_ZLG237_RCC_APB1_TIM3   = 1,    /**< \brief TIM3定时器 */
-    AMHW_ZLG237_RCC_APB1_TIM4   = 2,    /**< \brief TIM4定时器 */
-    AMHW_ZLG237_RCC_APB1_WWDG   = 11,   /**< \brief WWDG窗口看门狗 */
-    AMHW_ZLG237_RCC_APB1_SPI2   = 14,   /**< \brief SPI2 */
-    AMHW_ZLG237_RCC_APB1_USART2  = 17,  /**< \brief USART2 */
-    AMHW_ZLG237_RCC_APB1_USART3  = 18,  /**< \brief USART3 */
-    AMHW_ZLG237_RCC_APB1_I2C1   = 21,   /**< \brief I2C1 */
-    AMHW_ZLG237_RCC_APB1_I2C2   = 22,   /**< \brief I2C2 */
-    AMHW_ZLG237_RCC_APB1_USB    = 23,   /**< \brief USB */
-    AMHW_ZLG237_RCC_APB1_CAN    = 25,   /**< \brief CAN */
-    AMHW_ZLG237_RCC_APB1_BKP    = 27,   /**< \brief BKP */
-    AMHW_ZLG237_RCC_APB1_PWR    = 28,   /**< \brief 电源接口 */
-}amhw_zlg237_apb1_peripheral;
+    AMHW_STM32F103RBT6_RCC_APB1_TIM2   = 0,    /**< \brief TIM2定时器 */
+    AMHW_STM32F103RBT6_RCC_APB1_TIM3   = 1,    /**< \brief TIM3定时器 */
+    AMHW_STM32F103RBT6_RCC_APB1_TIM4   = 2,    /**< \brief TIM4定时器 */
+    AMHW_STM32F103RBT6_RCC_APB1_WWDG   = 11,   /**< \brief WWDG窗口看门狗 */
+    AMHW_STM32F103RBT6_RCC_APB1_SPI2   = 14,   /**< \brief SPI2 */
+    AMHW_STM32F103RBT6_RCC_APB1_USART2  = 17,  /**< \brief USART2 */
+    AMHW_STM32F103RBT6_RCC_APB1_USART3  = 18,  /**< \brief USART3 */
+    AMHW_STM32F103RBT6_RCC_APB1_I2C1   = 21,   /**< \brief I2C1 */
+    AMHW_STM32F103RBT6_RCC_APB1_I2C2   = 22,   /**< \brief I2C2 */
+    AMHW_STM32F103RBT6_RCC_APB1_USB    = 23,   /**< \brief USB */
+    AMHW_STM32F103RBT6_RCC_APB1_CAN    = 25,   /**< \brief CAN */
+    AMHW_STM32F103RBT6_RCC_APB1_BKP    = 27,   /**< \brief BKP */
+    AMHW_STM32F103RBT6_RCC_APB1_PWR    = 28,   /**< \brief 电源接口 */
+}amhw_stm32f103rbt6_apb1_peripheral;
 
 /**
  * \brief AHB外设枚举
  */
 typedef enum {
-    AMHW_ZLG237_RCC_AHB_DMA   = 0,   /**< \brief DMA */
-    AMHW_ZLG237_RCC_AHB_SRAM  = 2,   /**< \brief SRAM */
-    AMHW_ZLG237_RCC_AHB_FLITF = 4,   /**< \brief FLITF */
-    AMHW_ZLG237_RCC_AHB_CRC   = 6,   /**< \brief CRC */
-}amhw_zlg237_ahb_peripheral;
+    AMHW_STM32F103RBT6_RCC_AHB_DMA   = 0,   /**< \brief DMA */
+    AMHW_STM32F103RBT6_RCC_AHB_SRAM  = 2,   /**< \brief SRAM */
+    AMHW_STM32F103RBT6_RCC_AHB_FLITF = 4,   /**< \brief FLITF */
+    AMHW_STM32F103RBT6_RCC_AHB_CRC   = 6,   /**< \brief CRC */
+}amhw_stm32f103rbt6_ahb_peripheral;
 
 /**
  * \brief 复位标志枚举
  */
 typedef enum {
-    AMHW_ZLG237_RCC_CSR_PINRSTF   = (1ul << 26),      /**< \brief NRST管脚复位标志 */
-    AMHW_ZLG237_RCC_CSR_PORRSTF   = (1ul << 27),      /**< \brief 上电/掉电复位标志 */
-    AMHW_ZLG237_RCC_CSR_SFTRSTF   = (1ul << 28),      /**< \brief 软件复位标志 */
-    AMHW_ZLG237_RCC_CSR_IWDGRSTF  = (1ul << 29),      /**< \brief 独立看门狗复位标志 */
-    AMHW_ZLG237_RCC_CSR_WWDGRSTF  = (1ul << 30),      /**< \brief 窗口看门狗复位标志 */
-    AMHW_ZLG237_RCC_CSR_LPWRRSTF  = (int)(1ul << 31), /**< \brief 低功耗管理复位标志 */
-}amhw_zlg237_reset_flag_t;
+    AMHW_STM32F103RBT6_RCC_CSR_PINRSTF   = (1ul << 26),      /**< \brief NRST管脚复位标志 */
+    AMHW_STM32F103RBT6_RCC_CSR_PORRSTF   = (1ul << 27),      /**< \brief 上电/掉电复位标志 */
+    AMHW_STM32F103RBT6_RCC_CSR_SFTRSTF   = (1ul << 28),      /**< \brief 软件复位标志 */
+    AMHW_STM32F103RBT6_RCC_CSR_IWDGRSTF  = (1ul << 29),      /**< \brief 独立看门狗复位标志 */
+    AMHW_STM32F103RBT6_RCC_CSR_WWDGRSTF  = (1ul << 30),      /**< \brief 窗口看门狗复位标志 */
+    AMHW_STM32F103RBT6_RCC_CSR_LPWRRSTF  = (int)(1ul << 31), /**< \brief 低功耗管理复位标志 */
+}amhw_stm32f103rbt6_reset_flag_t;
 
 
 /**
@@ -193,9 +193,9 @@ typedef enum {
  *
  */
 am_static_inline
-void amhw_zlg237_rcc_hsion_enable (void)
+void amhw_stm32f103rbt6_rcc_hsion_enable (void)
 {
-    ZLG237_RCC->cr |= 1ul;
+    STM32F103RBT6_RCC->cr |= 1ul;
 }
 
 /**
@@ -205,9 +205,9 @@ void amhw_zlg237_rcc_hsion_enable (void)
  * \retval FALSE : 内部 8MHz时钟就绪
  */
 am_static_inline
-am_bool_t amhw_zlg237_rcc_hsirdy_read (void)
+am_bool_t amhw_stm32f103rbt6_rcc_hsirdy_read (void)
 {
-    return (am_bool_t)((ZLG237_RCC->cr & 0x2ul) ? AM_TRUE : AM_FALSE);
+    return (am_bool_t)((STM32F103RBT6_RCC->cr & 0x2ul) ? AM_TRUE : AM_FALSE);
 }
 
 /**
@@ -216,9 +216,9 @@ am_bool_t amhw_zlg237_rcc_hsirdy_read (void)
  * \return 无
  */
 am_static_inline
-void amhw_zlg237_rcc_hseon_enable (void)
+void amhw_stm32f103rbt6_rcc_hseon_enable (void)
 {
-    ZLG237_RCC->cr |= (1ul << 16);
+    STM32F103RBT6_RCC->cr |= (1ul << 16);
 }
 
 /**
@@ -228,9 +228,9 @@ void amhw_zlg237_rcc_hseon_enable (void)
  * \retval FALSE : 外部时钟就绪
  */
 am_static_inline
-am_bool_t amhw_zlg237_rcc_hserdy_read (void)
+am_bool_t amhw_stm32f103rbt6_rcc_hserdy_read (void)
 {
-    return (am_bool_t)((ZLG237_RCC->cr & (1ul << 17)) ? AM_TRUE : AM_FALSE);
+    return (am_bool_t)((STM32F103RBT6_RCC->cr & (1ul << 17)) ? AM_TRUE : AM_FALSE);
 }
 
 /**
@@ -239,9 +239,9 @@ am_bool_t amhw_zlg237_rcc_hserdy_read (void)
  * \return 无
  */
 am_static_inline
-void amhw_zlg237_rcc_hsebyp_enable (void)
+void amhw_stm32f103rbt6_rcc_hsebyp_enable (void)
 {
-    ZLG237_RCC->cr |= (1ul << 18);
+    STM32F103RBT6_RCC->cr |= (1ul << 18);
 }
 
 /**
@@ -252,9 +252,9 @@ void amhw_zlg237_rcc_hsebyp_enable (void)
  * \return 无
  */
 am_static_inline
-void amhw_zlg237_rcc_ccson_enable (void)
+void amhw_stm32f103rbt6_rcc_ccson_enable (void)
 {
-    ZLG237_RCC->cr |= (1ul << 19);
+    STM32F103RBT6_RCC->cr |= (1ul << 19);
 }
 
 
@@ -268,9 +268,9 @@ void amhw_zlg237_rcc_ccson_enable (void)
  * \return 无
  */
 am_static_inline
-void amhw_zlg237_rcc_pll_enable (void)
+void amhw_stm32f103rbt6_rcc_pll_enable (void)
 {
-    ZLG237_RCC->cr |= (1ul << 24);
+    STM32F103RBT6_RCC->cr |= (1ul << 24);
 }
 
 /**
@@ -283,9 +283,9 @@ void amhw_zlg237_rcc_pll_enable (void)
  * \return 无
  */
 am_static_inline
-void amhw_zlg237_rcc_pll_disable (void)
+void amhw_stm32f103rbt6_rcc_pll_disable (void)
 {
-    ZLG237_RCC->cr &= ~(1ul << 24);
+    STM32F103RBT6_RCC->cr &= ~(1ul << 24);
 }
 
 /**
@@ -295,9 +295,9 @@ void amhw_zlg237_rcc_pll_disable (void)
  * \retval FALSE : PLL 锁定
  */
 am_static_inline
-am_bool_t amhw_zlg237_rcc_pllrdy_read (void)
+am_bool_t amhw_stm32f103rbt6_rcc_pllrdy_read (void)
 {
-    return (am_bool_t)((ZLG237_RCC->cr & (1ul << 25)) ? AM_TRUE : AM_FALSE);
+    return (am_bool_t)((STM32F103RBT6_RCC->cr & (1ul << 25)) ? AM_TRUE : AM_FALSE);
 }
 
 /**
@@ -308,11 +308,11 @@ am_bool_t amhw_zlg237_rcc_pllrdy_read (void)
  * \return 无
  */
 am_static_inline
-void amhw_zlg237_rcc_sys_clk_set (amhw_zlg237_sys_clk_src src)
+void amhw_stm32f103rbt6_rcc_sys_clk_set (amhw_stm32f103rbt6_sys_clk_src src)
 {
 
-    ZLG237_RCC->cfgr = ((src & 0x3ul) << 0) |
-                              (ZLG237_RCC->cfgr & ~(0x3ul << 0));
+    STM32F103RBT6_RCC->cfgr = ((src & 0x3ul) << 0) |
+                              (STM32F103RBT6_RCC->cfgr & ~(0x3ul << 0));
 }
 
 /**
@@ -321,10 +321,10 @@ void amhw_zlg237_rcc_sys_clk_set (amhw_zlg237_sys_clk_src src)
  * \return 当前系统时钟源
  */
 am_static_inline
-amhw_zlg237_sys_clk_src amhw_zlg237_rcc_sys_clk_get (void)
+amhw_stm32f103rbt6_sys_clk_src amhw_stm32f103rbt6_rcc_sys_clk_get (void)
 {
 
-    return (amhw_zlg237_sys_clk_src)((ZLG237_RCC->cfgr >> 2ul) & 0x3ul);
+    return (amhw_stm32f103rbt6_sys_clk_src)((STM32F103RBT6_RCC->cfgr >> 2ul) & 0x3ul);
 }
 
 /**
@@ -346,11 +346,11 @@ amhw_zlg237_sys_clk_src amhw_zlg237_rcc_sys_clk_get (void)
  * \return 无
  */
 am_static_inline
-void amhw_zlg237_rcc_ahb_div_set (uint8_t div)
+void amhw_stm32f103rbt6_rcc_ahb_div_set (uint8_t div)
 {
 
-    ZLG237_RCC->cfgr = ((div & 0xful) << 4) |
-                              (ZLG237_RCC->cfgr & ~(0xful << 4));
+    STM32F103RBT6_RCC->cfgr = ((div & 0xful) << 4) |
+                              (STM32F103RBT6_RCC->cfgr & ~(0xful << 4));
 }
 
 /**
@@ -367,11 +367,11 @@ void amhw_zlg237_rcc_ahb_div_set (uint8_t div)
  * \return 无
  */
 am_static_inline
-void amhw_zlg237_rcc_apb1_div_set (uint8_t div)
+void amhw_stm32f103rbt6_rcc_apb1_div_set (uint8_t div)
 {
 
-    ZLG237_RCC->cfgr = ((div & 0x7ul) << 8) |
-                              (ZLG237_RCC->cfgr & ~(0x7ul << 8));
+    STM32F103RBT6_RCC->cfgr = ((div & 0x7ul) << 8) |
+                              (STM32F103RBT6_RCC->cfgr & ~(0x7ul << 8));
 }
 
 /**
@@ -385,10 +385,10 @@ void amhw_zlg237_rcc_apb1_div_set (uint8_t div)
  *       - 7   ： 16分频
  */
 am_static_inline
-uint8_t amhw_zlg237_rcc_apb1_div_get (void)
+uint8_t amhw_stm32f103rbt6_rcc_apb1_div_get (void)
 {
 
-    return (uint8_t)((ZLG237_RCC->cfgr >> 8) & 0x7ul);
+    return (uint8_t)((STM32F103RBT6_RCC->cfgr >> 8) & 0x7ul);
 }
 
 /**
@@ -405,11 +405,11 @@ uint8_t amhw_zlg237_rcc_apb1_div_get (void)
  * \return 无
  */
 am_static_inline
-void amhw_zlg237_rcc_apb2_div_set (uint8_t div)
+void amhw_stm32f103rbt6_rcc_apb2_div_set (uint8_t div)
 {
 
-    ZLG237_RCC->cfgr = ((div & 0x7ul) << 11) |
-                              (ZLG237_RCC->cfgr & ~(0x7ul << 11));
+    STM32F103RBT6_RCC->cfgr = ((div & 0x7ul) << 11) |
+                              (STM32F103RBT6_RCC->cfgr & ~(0x7ul << 11));
 }
 
 /**
@@ -423,10 +423,10 @@ void amhw_zlg237_rcc_apb2_div_set (uint8_t div)
  *       - 7   ： 16分频
  */
 am_static_inline
-uint8_t amhw_zlg237_rcc_apb2_div_get (void)
+uint8_t amhw_stm32f103rbt6_rcc_apb2_div_get (void)
 {
 
-    return (uint8_t)((ZLG237_RCC->cfgr >> 11) & 0x7ul);
+    return (uint8_t)((STM32F103RBT6_RCC->cfgr >> 11) & 0x7ul);
 }
 
 
@@ -443,11 +443,11 @@ uint8_t amhw_zlg237_rcc_apb2_div_get (void)
  * \return 无
  */
 am_static_inline
-void amhw_zlg237_rcc_adc_div_set (uint8_t div)
+void amhw_stm32f103rbt6_rcc_adc_div_set (uint8_t div)
 {
 
-    ZLG237_RCC->cfgr = ((div & 0x3ul) << 14) |
-                              (ZLG237_RCC->cfgr & ~(0x3ul << 14));
+    STM32F103RBT6_RCC->cfgr = ((div & 0x3ul) << 14) |
+                              (STM32F103RBT6_RCC->cfgr & ~(0x3ul << 14));
 }
 
 /**
@@ -460,10 +460,10 @@ void amhw_zlg237_rcc_adc_div_set (uint8_t div)
  *       - 3   ： 16分频
  */
 am_static_inline
-uint8_t amhw_zlg237_rcc_adc_div_get (void)
+uint8_t amhw_stm32f103rbt6_rcc_adc_div_get (void)
 {
 
-    return (uint8_t)((ZLG237_RCC->cfgr >> 14) & 0x3ul);
+    return (uint8_t)((STM32F103RBT6_RCC->cfgr >> 14) & 0x3ul);
 }
 
 
@@ -475,11 +475,11 @@ uint8_t amhw_zlg237_rcc_adc_div_get (void)
  * \return 无
  */
 am_static_inline
-void amhw_zlg237_rcc_pll_clk_set (amhw_zlg237_pll_clk_src src)
+void amhw_stm32f103rbt6_rcc_pll_clk_set (amhw_stm32f103rbt6_pll_clk_src src)
 {
 
-    ZLG237_RCC->cfgr = ((src & 0x3ul) << 16) |
-                              (ZLG237_RCC->cfgr & ~(0x3ul << 16));
+    STM32F103RBT6_RCC->cfgr = ((src & 0x3ul) << 16) |
+                              (STM32F103RBT6_RCC->cfgr & ~(0x3ul << 16));
 }
 
 /**
@@ -488,10 +488,10 @@ void amhw_zlg237_rcc_pll_clk_set (amhw_zlg237_pll_clk_src src)
  * \return 当前PLL输入时钟源
  */
 am_static_inline
-amhw_zlg237_pll_clk_src amhw_zlg237_rcc_pll_clk_get (void)
+amhw_stm32f103rbt6_pll_clk_src amhw_stm32f103rbt6_rcc_pll_clk_get (void)
 {
 
-    return (amhw_zlg237_pll_clk_src)((ZLG237_RCC->cfgr >> 16ul) & 0x3ul);
+    return (amhw_stm32f103rbt6_pll_clk_src)((STM32F103RBT6_RCC->cfgr >> 16ul) & 0x3ul);
 }
 
 /**
@@ -505,11 +505,11 @@ amhw_zlg237_pll_clk_src amhw_zlg237_rcc_pll_clk_get (void)
  * \return 无
  */
 am_static_inline
-void amhw_zlg237_rcc_hseforpll_set (uint8_t div)
+void amhw_stm32f103rbt6_rcc_hseforpll_set (uint8_t div)
 {
 
-    ZLG237_RCC->cfgr = ((div & 0x1ul) << 17) |
-                              (ZLG237_RCC->cfgr & ~(0x1ul << 17));
+    STM32F103RBT6_RCC->cfgr = ((div & 0x1ul) << 17) |
+                              (STM32F103RBT6_RCC->cfgr & ~(0x1ul << 17));
 }
 
 
@@ -521,10 +521,10 @@ void amhw_zlg237_rcc_hseforpll_set (uint8_t div)
 // * \return 无
 // */
 //am_static_inline
-//void amhw_zlg237_rcc_plldm_set (uint8_t div)
+//void amhw_stm32f103rbt6_rcc_plldm_set (uint8_t div)
 //{
-//    ZLG237_RCC->cr = ((div & 0x7ul) << 20) |
-//                            (ZLG237_RCC->cr & ~(0x7ul << 20));
+//    STM32F103RBT6_RCC->cr = ((div & 0x7ul) << 20) |
+//                            (STM32F103RBT6_RCC->cr & ~(0x7ul << 20));
 //}
 
 /**
@@ -535,11 +535,11 @@ void amhw_zlg237_rcc_hseforpll_set (uint8_t div)
  * \return 无
  */
 am_static_inline
-void amhw_zlg237_rcc_plldn_set (uint8_t mul)
+void amhw_stm32f103rbt6_rcc_plldn_set (uint8_t mul)
 {
 
-    ZLG237_RCC->cfgr = ((mul & 0xful) << 18) |
-                            (ZLG237_RCC->cfgr & ~(0xful << 18));
+    STM32F103RBT6_RCC->cfgr = ((mul & 0xful) << 18) |
+                            (STM32F103RBT6_RCC->cfgr & ~(0xful << 18));
 }
 
 
@@ -548,17 +548,17 @@ void amhw_zlg237_rcc_plldn_set (uint8_t mul)
  *
  * \param[in]  div ：分频值
  *
- *      - AMHW_ZLG237_PLL_USB_DIV1P5 ：PLL 时钟1.5分频作为 USB 时钟
- *      - AMHW_ZLG237_PLL_USB_DIV1   ： PLL 时钟直接作为 USB时钟
+ *      - AMHW_STM32F103RBT6_PLL_USB_DIV1P5 ：PLL 时钟1.5分频作为 USB 时钟
+ *      - AMHW_STM32F103RBT6_PLL_USB_DIV1   ： PLL 时钟直接作为 USB时钟
  *
  * \return 无
  */
 am_static_inline
-void amhw_zlg237_rcc_pllforusb_set (amhw_zlg237_pll_usb_clk_div index)
+void amhw_stm32f103rbt6_rcc_pllforusb_set (amhw_stm32f103rbt6_pll_usb_clk_div index)
 {
 
-    ZLG237_RCC->cfgr = ((index & 0x1ul) << 22) |
-                              (ZLG237_RCC->cfgr & ~(0x1ul << 22));
+    STM32F103RBT6_RCC->cfgr = ((index & 0x1ul) << 22) |
+                              (STM32F103RBT6_RCC->cfgr & ~(0x1ul << 22));
 }
 
 /**
@@ -570,10 +570,10 @@ void amhw_zlg237_rcc_pllforusb_set (amhw_zlg237_pll_usb_clk_div index)
  * \retval  3  ： PLL 时钟4 分频作为 USB时钟
  */
 am_static_inline
-uint8_t amhw_zlg237_rcc_pllforusb_get (void)
+uint8_t amhw_stm32f103rbt6_rcc_pllforusb_get (void)
 {
 
-    return (uint8_t)((ZLG237_RCC->cfgr >> 22ul) & 0x1ul);
+    return (uint8_t)((STM32F103RBT6_RCC->cfgr >> 22ul) & 0x1ul);
 }
 
 /**
@@ -594,11 +594,11 @@ uint8_t amhw_zlg237_rcc_pllforusb_get (void)
  * \return 无
  */
 am_static_inline
-void amhw_zlg237_rcc_mco_src_set (uint8_t src)
+void amhw_stm32f103rbt6_rcc_mco_src_set (uint8_t src)
 {
 
-    ZLG237_RCC->cfgr = ((src & 0x7ul) << 24ul) |
-                              (ZLG237_RCC->cfgr & ~(0x7ul << 24ul));
+    STM32F103RBT6_RCC->cfgr = ((src & 0x7ul) << 24ul) |
+                              (STM32F103RBT6_RCC->cfgr & ~(0x7ul << 24ul));
 }
 
 /**
@@ -612,11 +612,11 @@ void amhw_zlg237_rcc_mco_src_set (uint8_t src)
  * \return 无
  */
 am_static_inline
-void amhw_zlg237_rcc_pllcrpre_set (uint8_t div)
+void amhw_stm32f103rbt6_rcc_pllcrpre_set (uint8_t div)
 {
 
-    ZLG237_RCC->cfgr = ((div & 0x1ul) << 31ul) |
-                              (ZLG237_RCC->cfgr & ~(0x1ul << 31ul));
+    STM32F103RBT6_RCC->cfgr = ((div & 0x1ul) << 31ul) |
+                              (STM32F103RBT6_RCC->cfgr & ~(0x1ul << 31ul));
 }
 
 
@@ -628,10 +628,10 @@ void amhw_zlg237_rcc_pllcrpre_set (uint8_t div)
  * \return 无
  */
 am_static_inline
-void amhw_zlg237_rcc_clkint_enable (amhw_zlg237_clk_int_index index)
+void amhw_stm32f103rbt6_rcc_clkint_enable (amhw_stm32f103rbt6_clk_int_index index)
 {
 
-    ZLG237_RCC->cir |= ((index & 0x1ful) << 8);
+    STM32F103RBT6_RCC->cir |= ((index & 0x1ful) << 8);
 }
 
 /**
@@ -642,10 +642,10 @@ void amhw_zlg237_rcc_clkint_enable (amhw_zlg237_clk_int_index index)
  * \return 无
  */
 am_static_inline
-void amhw_zlg237_rcc_clkint_disable (amhw_zlg237_clk_int_index index)
+void amhw_stm32f103rbt6_rcc_clkint_disable (amhw_stm32f103rbt6_clk_int_index index)
 {
 
-    ZLG237_RCC->cir &= ~((index & 0x1ful) << 8);
+    STM32F103RBT6_RCC->cir &= ~((index & 0x1ful) << 8);
 }
 
 /**
@@ -654,10 +654,10 @@ void amhw_zlg237_rcc_clkint_disable (amhw_zlg237_clk_int_index index)
  * \return 中断标志
  */
 am_static_inline
-amhw_zlg237_clk_int_index amhw_zlg237_rcc_clkint_flag_read (void)
+amhw_stm32f103rbt6_clk_int_index amhw_stm32f103rbt6_rcc_clkint_flag_read (void)
 {
 
-    return (amhw_zlg237_clk_int_index)(ZLG237_RCC->cir & 0x9ful);
+    return (amhw_stm32f103rbt6_clk_int_index)(STM32F103RBT6_RCC->cir & 0x9ful);
 }
 
 /**
@@ -666,10 +666,10 @@ amhw_zlg237_clk_int_index amhw_zlg237_rcc_clkint_flag_read (void)
  * \return 无
  */
 am_static_inline
-void amhw_zlg237_rcc_clkint_flag_clear (amhw_zlg237_clk_int_index index)
+void amhw_stm32f103rbt6_rcc_clkint_flag_clear (amhw_stm32f103rbt6_clk_int_index index)
 {
 
-    ZLG237_RCC->cir |= ((index & 0x9ful) << 16);
+    STM32F103RBT6_RCC->cir |= ((index & 0x9ful) << 16);
 }
 
 /**
@@ -680,10 +680,10 @@ void amhw_zlg237_rcc_clkint_flag_clear (amhw_zlg237_clk_int_index index)
  * \return 无
  */
 am_static_inline
-void amhw_zlg237_rcc_apb2_reset (amhw_zlg237_apb2_peripheral reset)
+void amhw_stm32f103rbt6_rcc_apb2_reset (amhw_stm32f103rbt6_apb2_peripheral reset)
 {
 
-    ZLG237_RCC->apb2rstr |= (1ul << reset);
+    STM32F103RBT6_RCC->apb2rstr |= (1ul << reset);
 }
 
 /**
@@ -694,10 +694,10 @@ void amhw_zlg237_rcc_apb2_reset (amhw_zlg237_apb2_peripheral reset)
  * \return 无
  */
 am_static_inline
-void amhw_zlg237_rcc_apb2_reset_stop (amhw_zlg237_apb2_peripheral reset)
+void amhw_stm32f103rbt6_rcc_apb2_reset_stop (amhw_stm32f103rbt6_apb2_peripheral reset)
 {
 
-    ZLG237_RCC->apb2rstr &= ~(1ul << reset);
+    STM32F103RBT6_RCC->apb2rstr &= ~(1ul << reset);
 }
 
 /**
@@ -708,10 +708,10 @@ void amhw_zlg237_rcc_apb2_reset_stop (amhw_zlg237_apb2_peripheral reset)
  * \return 无
  */
 am_static_inline
-void amhw_zlg237_rcc_apb1_reset (amhw_zlg237_apb1_peripheral reset)
+void amhw_stm32f103rbt6_rcc_apb1_reset (amhw_stm32f103rbt6_apb1_peripheral reset)
 {
 
-    ZLG237_RCC->apb1rstr |= (1ul << reset);
+    STM32F103RBT6_RCC->apb1rstr |= (1ul << reset);
 }
 
 /**
@@ -722,10 +722,10 @@ void amhw_zlg237_rcc_apb1_reset (amhw_zlg237_apb1_peripheral reset)
  * \return 无
  */
 am_static_inline
-void amhw_zlg237_rcc_apb1_reset_stop (amhw_zlg237_apb1_peripheral reset)
+void amhw_stm32f103rbt6_rcc_apb1_reset_stop (amhw_stm32f103rbt6_apb1_peripheral reset)
 {
 
-    ZLG237_RCC->apb1rstr &= ~(1ul << reset);
+    STM32F103RBT6_RCC->apb1rstr &= ~(1ul << reset);
 }
 
 /**
@@ -736,10 +736,10 @@ void amhw_zlg237_rcc_apb1_reset_stop (amhw_zlg237_apb1_peripheral reset)
  * \return 无
  */
 am_static_inline
-void amhw_zlg237_rcc_apb1_enable (amhw_zlg237_apb1_peripheral peri)
+void amhw_stm32f103rbt6_rcc_apb1_enable (amhw_stm32f103rbt6_apb1_peripheral peri)
 {
 
-    ZLG237_RCC->apb1enr |= (1ul << peri);
+    STM32F103RBT6_RCC->apb1enr |= (1ul << peri);
 }
 
 /**
@@ -750,10 +750,10 @@ void amhw_zlg237_rcc_apb1_enable (amhw_zlg237_apb1_peripheral peri)
  * \return 无
  */
 am_static_inline
-void amhw_zlg237_rcc_apb1_disable (amhw_zlg237_apb1_peripheral peri)
+void amhw_stm32f103rbt6_rcc_apb1_disable (amhw_stm32f103rbt6_apb1_peripheral peri)
 {
 
-    ZLG237_RCC->apb1enr &= ~(1ul << peri);
+    STM32F103RBT6_RCC->apb1enr &= ~(1ul << peri);
 }
 
 /**
@@ -764,10 +764,10 @@ void amhw_zlg237_rcc_apb1_disable (amhw_zlg237_apb1_peripheral peri)
  * \return 无
  */
 am_static_inline
-void amhw_zlg237_rcc_apb2_enable (amhw_zlg237_apb2_peripheral peri)
+void amhw_stm32f103rbt6_rcc_apb2_enable (amhw_stm32f103rbt6_apb2_peripheral peri)
 {
 
-    ZLG237_RCC->apb2enr |= (1ul << peri);
+    STM32F103RBT6_RCC->apb2enr |= (1ul << peri);
 }
 
 /**
@@ -778,10 +778,10 @@ void amhw_zlg237_rcc_apb2_enable (amhw_zlg237_apb2_peripheral peri)
  * \return 无
  */
 am_static_inline
-void amhw_zlg237_rcc_apb2_disable (amhw_zlg237_apb2_peripheral peri)
+void amhw_stm32f103rbt6_rcc_apb2_disable (amhw_stm32f103rbt6_apb2_peripheral peri)
 {
 
-    ZLG237_RCC->apb2enr &= ~(1ul << peri);
+    STM32F103RBT6_RCC->apb2enr &= ~(1ul << peri);
 }
 
 /**
@@ -791,7 +791,7 @@ void amhw_zlg237_rcc_apb2_disable (amhw_zlg237_apb2_peripheral peri)
  *
  * \return 无
  */
-void amhw_zlg237_rcc_ahb_enable (amhw_zlg237_ahb_peripheral peri);
+void amhw_stm32f103rbt6_rcc_ahb_enable (amhw_stm32f103rbt6_ahb_peripheral peri);
 
 /**
  * \brief 禁能AHB外设
@@ -801,7 +801,7 @@ void amhw_zlg237_rcc_ahb_enable (amhw_zlg237_ahb_peripheral peri);
  * \return 无
  *
  */
-void amhw_zlg237_rcc_ahb_disable (amhw_zlg237_ahb_peripheral peri);
+void amhw_stm32f103rbt6_rcc_ahb_disable (amhw_stm32f103rbt6_ahb_peripheral peri);
 
 /**
  * \brief 使能LSI
@@ -809,10 +809,10 @@ void amhw_zlg237_rcc_ahb_disable (amhw_zlg237_ahb_peripheral peri);
  * \return 无
  */
 am_static_inline
-void amhw_zlg237_rcc_lsi_enable (void)
+void amhw_stm32f103rbt6_rcc_lsi_enable (void)
 {
 
-    ZLG237_RCC->csr |= (1ul << 0);
+    STM32F103RBT6_RCC->csr |= (1ul << 0);
 }
 
 /**
@@ -821,10 +821,10 @@ void amhw_zlg237_rcc_lsi_enable (void)
  * \return 无
  */
 am_static_inline
-void amhw_zlg237_rcc_lsi_disable (void)
+void amhw_stm32f103rbt6_rcc_lsi_disable (void)
 {
 
-    ZLG237_RCC->csr &= ~(1ul << 0);
+    STM32F103RBT6_RCC->csr &= ~(1ul << 0);
 }
 
 /**
@@ -834,9 +834,9 @@ void amhw_zlg237_rcc_lsi_disable (void)
  * \retval FALSE : 内部 40kHz 振荡器时钟未就绪
  */
 am_static_inline
-am_bool_t amhw_zlg237_rcc_lsirdy_read (void)
+am_bool_t amhw_stm32f103rbt6_rcc_lsirdy_read (void)
 {
-    return (am_bool_t)((ZLG237_RCC->csr & (1ul << 1)) ? AM_TRUE : AM_FALSE);
+    return (am_bool_t)((STM32F103RBT6_RCC->csr & (1ul << 1)) ? AM_TRUE : AM_FALSE);
 }
 
 /**
@@ -845,10 +845,10 @@ am_bool_t amhw_zlg237_rcc_lsirdy_read (void)
  * \return 复位标志
  */
 am_static_inline
-amhw_zlg237_reset_flag_t amhw_zlg237_rcc_reset_flag (void)
+amhw_stm32f103rbt6_reset_flag_t amhw_stm32f103rbt6_rcc_reset_flag (void)
 {
 
-    return (amhw_zlg237_reset_flag_t)(ZLG237_RCC->csr & 0xfc000000);
+    return (amhw_stm32f103rbt6_reset_flag_t)(STM32F103RBT6_RCC->csr & 0xfc000000);
 }
 
 /**
@@ -857,10 +857,10 @@ amhw_zlg237_reset_flag_t amhw_zlg237_rcc_reset_flag (void)
  * \return 无
  */
 am_static_inline
-void amhw_zlg237_rcc_reset_flag_clear (void)
+void amhw_stm32f103rbt6_rcc_reset_flag_clear (void)
 {
 
-    ZLG237_RCC->csr |= (1ul << 24);
+    STM32F103RBT6_RCC->csr |= (1ul << 24);
 }
 
 /**
@@ -869,10 +869,10 @@ void amhw_zlg237_rcc_reset_flag_clear (void)
  * \return 无
  */
 am_static_inline
-void amhw_zlg237_rcc_lse_enable (void)
+void amhw_stm32f103rbt6_rcc_lse_enable (void)
 {
 
-    ZLG237_RCC->bdcr |= (1ul << 0);
+    STM32F103RBT6_RCC->bdcr |= (1ul << 0);
 }
 /**
  * \brief 外部低速振荡器禁能
@@ -880,9 +880,9 @@ void amhw_zlg237_rcc_lse_enable (void)
  * \return 无
  */
 am_static_inline
-void amhw_zlg237_rcc_lse_disable (void)
+void amhw_stm32f103rbt6_rcc_lse_disable (void)
 {
-    ZLG237_RCC->bdcr &= ~(1ul << 0);
+    STM32F103RBT6_RCC->bdcr &= ~(1ul << 0);
 }
 
 /**
@@ -892,9 +892,9 @@ void amhw_zlg237_rcc_lse_disable (void)
  * \retval FALSE : 外部 32kHz 振荡器时钟未就绪
  */
 am_static_inline
-am_bool_t amhw_zlg237_rcc_lserdy_read (void)
+am_bool_t amhw_stm32f103rbt6_rcc_lserdy_read (void)
 {
-    return (am_bool_t)((ZLG237_RCC->bdcr & (1ul << 1)) ? AM_TRUE : AM_FALSE);
+    return (am_bool_t)((STM32F103RBT6_RCC->bdcr & (1ul << 1)) ? AM_TRUE : AM_FALSE);
 }
 
 /**
@@ -903,9 +903,9 @@ am_bool_t amhw_zlg237_rcc_lserdy_read (void)
  * \return 无
  */
 am_static_inline
-void amhw_zlg237_rcc_bdcr_lsebyp_set (uint32_t lsebyp)
+void amhw_stm32f103rbt6_rcc_bdcr_lsebyp_set (uint32_t lsebyp)
 {
-    ZLG237_RCC->bdcr |= (lsebyp << 2);
+    STM32F103RBT6_RCC->bdcr |= (lsebyp << 2);
 }
 /**
  * \brief 外部低速时钟旁路状态
@@ -914,9 +914,9 @@ void amhw_zlg237_rcc_bdcr_lsebyp_set (uint32_t lsebyp)
  * \retval FALSE : LSE 时钟未被旁路
  */
 am_static_inline
-am_bool_t amhw_zlg237_rcc_bdcr_lsebyp_get (void)
+am_bool_t amhw_stm32f103rbt6_rcc_bdcr_lsebyp_get (void)
 {
-    return (am_bool_t)((ZLG237_RCC->bdcr & 0x4ul) ? AM_TRUE : AM_FALSE);
+    return (am_bool_t)((STM32F103RBT6_RCC->bdcr & 0x4ul) ? AM_TRUE : AM_FALSE);
 }
 /**
  * \brief RTC输入时钟选择
@@ -926,11 +926,11 @@ am_bool_t amhw_zlg237_rcc_bdcr_lsebyp_get (void)
  * \return 无
  */
 am_static_inline
-void amhw_zlg237_rcc_bdcr_rtc_clk_set (amhw_zlg237_rtc_clk_src src)
+void amhw_stm32f103rbt6_rcc_bdcr_rtc_clk_set (amhw_stm32f103rbt6_rtc_clk_src src)
 {
 
-    ZLG237_RCC->bdcr = ((src & 0x3ul) << 8) |
-                              (ZLG237_RCC->bdcr & ~(0x3ul << 8));
+    STM32F103RBT6_RCC->bdcr = ((src & 0x3ul) << 8) |
+                              (STM32F103RBT6_RCC->bdcr & ~(0x3ul << 8));
 }
 
 /**
@@ -939,9 +939,9 @@ void amhw_zlg237_rcc_bdcr_rtc_clk_set (amhw_zlg237_rtc_clk_src src)
  * \retval  rtc时钟源获取
  */
 am_static_inline
-amhw_zlg237_rtc_clk_src amhw_zlg237_rcc_bdcr_rtc_clk_get (void)
+amhw_stm32f103rbt6_rtc_clk_src amhw_stm32f103rbt6_rcc_bdcr_rtc_clk_get (void)
 {
-    return (amhw_zlg237_rtc_clk_src)((ZLG237_RCC->bdcr >> 8) & 0x3ul);
+    return (amhw_stm32f103rbt6_rtc_clk_src)((STM32F103RBT6_RCC->bdcr >> 8) & 0x3ul);
 }
 
 /**
@@ -950,10 +950,10 @@ amhw_zlg237_rtc_clk_src amhw_zlg237_rcc_bdcr_rtc_clk_get (void)
  * \return 无
  */
 am_static_inline
-void amhw_zlg237_rcc_bdcr_rtc_enable (void)
+void amhw_stm32f103rbt6_rcc_bdcr_rtc_enable (void)
 {
 
-    ZLG237_RCC->bdcr |= (1ul << 15);
+    STM32F103RBT6_RCC->bdcr |= (1ul << 15);
 }
 /**
  * \brief RTC时钟禁能
@@ -961,10 +961,10 @@ void amhw_zlg237_rcc_bdcr_rtc_enable (void)
  * \return 无
  */
 am_static_inline
-void amhw_zlg237_rcc_bdcr_rtc_disable (void)
+void amhw_stm32f103rbt6_rcc_bdcr_rtc_disable (void)
 {
 
-    ZLG237_RCC->bdcr &= ~(1ul << 15);
+    STM32F103RBT6_RCC->bdcr &= ~(1ul << 15);
 }
 
 /**
@@ -972,20 +972,20 @@ void amhw_zlg237_rcc_bdcr_rtc_disable (void)
  * \return 无
  */
 am_static_inline
-void amhw_zlg237_rcc_bdcr_bdrst_reset (void)
+void amhw_stm32f103rbt6_rcc_bdcr_bdrst_reset (void)
 {
 
-    ZLG237_RCC->bdcr |= (1ul << 16);
+    STM32F103RBT6_RCC->bdcr |= (1ul << 16);
 }
 /**
  * \brief 备份域软件复位结束
  * \return 无
  */
 am_static_inline
-void amhw_zlg237_rcc_bdcr_bdrst_reset_end (void)
+void amhw_stm32f103rbt6_rcc_bdcr_bdrst_reset_end (void)
 {
 
-    ZLG237_RCC->bdcr &= ~(1ul << 16);
+    STM32F103RBT6_RCC->bdcr &= ~(1ul << 16);
 }
 
 /**
@@ -996,36 +996,36 @@ void amhw_zlg237_rcc_bdcr_bdrst_reset_end (void)
  * 等待时间 = value * 8 * hse时钟周期
  */
 am_static_inline
-void amhw_zlg237_rcc_hse_wt_set(uint16_t value)
+void amhw_stm32f103rbt6_rcc_hse_wt_set(uint16_t value)
 {
-    ZLG237_RCC->wts = ((value & 0x1ffful) << 0) |
-                                 (ZLG237_RCC->wts & ~(0x1ffful << 0));
+    STM32F103RBT6_RCC->wts = ((value & 0x1ffful) << 0) |
+                                 (STM32F103RBT6_RCC->wts & ~(0x1ffful << 0));
 }
 
 /**
  * \brief XCH_IOp[2:0]  HSE晶振驱动能力配置
  */
-typedef enum amhw_zlg237_rcc_hse_iop_set {
-    AMHW_ZLG237_RCC_HSE_IOP_20 = 0,/**< \brief 驱动电流大约为20uA，推荐使用0.5~3MHz晶振 */
-    AMHW_ZLG237_RCC_HSE_IOP_30,    /**< \brief 驱动电流大约为30uA，推荐使用0.5~4MHz晶振 */
-    AMHW_ZLG237_RCC_HSE_IOP_40,    /**< \brief 驱动电流大约为40uA，推荐使用0.5~5MHz晶振 */
-    AMHW_ZLG237_RCC_HSE_IOP_50,    /**< \brief 驱动电流大约为50uA，推荐使用1~6MHz晶振 */
-    AMHW_ZLG237_RCC_HSE_IOP_60,    /**< \brief 驱动电流大约为60uA，推荐使用2~12MHz晶振 */
-    AMHW_ZLG237_RCC_HSE_IOP_80,    /**< \brief 驱动电流大约为80uA，推荐使用2~15MHz晶振 */
-    AMHW_ZLG237_RCC_HSE_IOP_100,   /**< \brief 驱动电流大约为100uA，推荐使用3~20MHz晶振 */
-    AMHW_ZLG237_RCC_HSE_IOP_200,   /**< \brief 驱动电流大约为200uA，推荐使用5~30MHz晶振 */
-} amhw_zlg237_rcc_hse_iop_set_t;
+typedef enum amhw_stm32f103rbt6_rcc_hse_iop_set {
+    AMHW_STM32F103RBT6_RCC_HSE_IOP_20 = 0,/**< \brief 驱动电流大约为20uA，推荐使用0.5~3MHz晶振 */
+    AMHW_STM32F103RBT6_RCC_HSE_IOP_30,    /**< \brief 驱动电流大约为30uA，推荐使用0.5~4MHz晶振 */
+    AMHW_STM32F103RBT6_RCC_HSE_IOP_40,    /**< \brief 驱动电流大约为40uA，推荐使用0.5~5MHz晶振 */
+    AMHW_STM32F103RBT6_RCC_HSE_IOP_50,    /**< \brief 驱动电流大约为50uA，推荐使用1~6MHz晶振 */
+    AMHW_STM32F103RBT6_RCC_HSE_IOP_60,    /**< \brief 驱动电流大约为60uA，推荐使用2~12MHz晶振 */
+    AMHW_STM32F103RBT6_RCC_HSE_IOP_80,    /**< \brief 驱动电流大约为80uA，推荐使用2~15MHz晶振 */
+    AMHW_STM32F103RBT6_RCC_HSE_IOP_100,   /**< \brief 驱动电流大约为100uA，推荐使用3~20MHz晶振 */
+    AMHW_STM32F103RBT6_RCC_HSE_IOP_200,   /**< \brief 驱动电流大约为200uA，推荐使用5~30MHz晶振 */
+} amhw_stm32f103rbt6_rcc_hse_iop_set_t;
 /**
  * \brief XCH_IOp[2:0]  HSE晶振驱动能力配置
  *
  * \param[in] status_flag：HSE晶振驱动能力配置，
- *                        值为 amhw_zlg237_rcc_hse_iop_set_t 这一枚举类型
+ *                        值为 amhw_stm32f103rbt6_rcc_hse_iop_set_t 这一枚举类型
  *
  */
 am_static_inline
-void amhw_zlg237_rcc_hse_iop_set (amhw_zlg237_rcc_hse_iop_set_t hse_iop_set)
+void amhw_stm32f103rbt6_rcc_hse_iop_set (amhw_stm32f103rbt6_rcc_hse_iop_set_t hse_iop_set)
 {
-    ZLG237_RCC->wts = (ZLG237_RCC->wts & ~(0x7ul << 16)) |
+    STM32F103RBT6_RCC->wts = (STM32F103RBT6_RCC->wts & ~(0x7ul << 16)) |
                       ((hse_iop_set & 0x7ul) << 16) ;
 
 }
@@ -1038,10 +1038,10 @@ void amhw_zlg237_rcc_hse_iop_set (amhw_zlg237_rcc_hse_iop_set_t hse_iop_set)
  *  1 ：bypass 片内HSE 模拟滤噪器。
  */
 am_static_inline
-void amhw_zlg237_rcc_hsenf_byp_cfg(uint8_t index)
+void amhw_stm32f103rbt6_rcc_hsenf_byp_cfg(uint8_t index)
 {
-    ZLG237_RCC->wts = ((index & 0x1ul) << 24) |
-                                       (ZLG237_RCC->wts & ~(0x1ul << 24));
+    STM32F103RBT6_RCC->wts = ((index & 0x1ul) << 24) |
+                                       (STM32F103RBT6_RCC->wts & ~(0x1ul << 24));
 }
 
 /**
@@ -1049,14 +1049,14 @@ void amhw_zlg237_rcc_hsenf_byp_cfg(uint8_t index)
  *
  * \param[in]  index : 低速时钟
  *
- *      - AMHW_ZLG237_LCLK_LSI  ： 低速内部LSI时钟
- *      - AMHW_ZLG237_LCLK_LSE  ： 低速外部LSE时钟
+ *      - AMHW_STM32F103RBT6_LCLK_LSI  ： 低速内部LSI时钟
+ *      - AMHW_STM32F103RBT6_LCLK_LSE  ： 低速外部LSE时钟
  */
 am_static_inline
-void amhw_zlg237_rcc_lclk_sel(amhw_zlg237_lclk index)
+void amhw_stm32f103rbt6_rcc_lclk_sel(amhw_stm32f103rbt6_lclk index)
 {
-    ZLG237_RCC->lpclk_ctl = ((index & 0x1ul) << 0) |
-                                       (ZLG237_RCC->lpclk_ctl & ~(0x1ul << 0));
+    STM32F103RBT6_RCC->lpclk_ctl = ((index & 0x1ul) << 0) |
+                                       (STM32F103RBT6_RCC->lpclk_ctl & ~(0x1ul << 0));
 }
 
 /**
@@ -1064,9 +1064,9 @@ void amhw_zlg237_rcc_lclk_sel(amhw_zlg237_lclk index)
  *
  */
 am_static_inline
-void amhw_zlg237_rcc_usbclk_enable(void)
+void amhw_stm32f103rbt6_rcc_usbclk_enable(void)
 {
-    ZLG237_RCC->lpclk_ctl |= ( 0x1ul << 8);
+    STM32F103RBT6_RCC->lpclk_ctl |= ( 0x1ul << 8);
 }
 
 /**
@@ -1074,9 +1074,9 @@ void amhw_zlg237_rcc_usbclk_enable(void)
  *
  */
 am_static_inline
-void amhw_zlg237_rcc_usbclk_disable(void)
+void amhw_stm32f103rbt6_rcc_usbclk_disable(void)
 {
-    ZLG237_RCC->lpclk_ctl &= ~( 0x1ul << 8);
+    STM32F103RBT6_RCC->lpclk_ctl &= ~( 0x1ul << 8);
 }
 
 /**
@@ -1099,7 +1099,7 @@ void amhw_zlg237_rcc_usbclk_disable(void)
 
 #ifdef __cplusplus
 }
-#endif /* __ZLG237_RCC_H */
+#endif /* __STM32F103RBT6_RCC_H */
 
 #endif
 

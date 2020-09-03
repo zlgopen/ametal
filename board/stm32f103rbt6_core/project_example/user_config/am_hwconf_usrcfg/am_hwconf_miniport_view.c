@@ -27,9 +27,9 @@
  * \endinternal
  */
 
-#include "zlg237_pin.h"
+#include "stm32f103rbt6_pin.h"
 #include "ametal.h"
-#include "am_zlg237_inst_init.h"
+#include "am_stm32f103rbt6_inst_init.h"
 #include "am_key_matrix_gpio.h"
 #include "am_key_matrix_softimer.h"
 #include "am_digitron_scan_gpio.h"

@@ -21,12 +21,12 @@
  * \endinternal
  */
  
-#include "zlg237_clk.h"
-#include "zlg237_periph_map.h"
-#include "zlg237_pin.h"
-#include "zlg237_regbase.h"
-#include "am_zlg_ili9341_3wire_spi.h"
-#include "am_zlg237_inst_init.h"
+#include "stm32f103rbt6_clk.h"
+#include "stm32f103rbt6_periph_map.h"
+#include "stm32f103rbt6_pin.h"
+#include "stm32f103rbt6_regbase.h"
+#include "am_stm32f103rbt6_ili9341_3wire_spi.h"
+#include "am_stm32f103rbt6_inst_init.h"
 
 /**
  * \addtogroup am_if_src_hwconf_lcd_ili9341
@@ -42,7 +42,7 @@ static const am_ili9341_devinfo_t __g_ili9341_devinfo = {
 };
 
 /** \brief 设备信息 */
-static const am_zlg_ili9341_intfc_3wire_devinfo_t __g_ili9341_intfc_devinfo = {
+static const am_stm32f103rbt6_ili9341_intfc_3wire_devinfo_t __g_ili9341_intfc_devinfo = {
         PIOB_12,                                 /**< \brief CS */
         PIOB_13,                                 /**< \brief CLK */
         PIOB_13_SPI2_SCK | PIOB_13_AF_PP,        /**< \brief SCK功能 */
@@ -51,7 +51,7 @@ static const am_zlg_ili9341_intfc_3wire_devinfo_t __g_ili9341_intfc_devinfo = {
         PIOB_14,                                 /**< \brief MISO */
         PIOB_14_SPI2_MISO | PIOB_14_INPUT_FLOAT, /**< \brief MISO功能 */
         PIOB_12_SPI2_NSS | PIOB_12_AF_PP,        /**< \brief CS功能 */
-        ZLG237_SPI2,                             /**< \brief SPI2的基地址 */
+        STM32F103RBT6_SPI2,                             /**< \brief SPI2的基地址 */
         CLK_SPI2,                                /**< \brief SPI的时钟号 */
         24000000,                                /**< \brief 最大速度为24MHz */
 };
@@ -60,20 +60,20 @@ static const am_zlg_ili9341_intfc_3wire_devinfo_t __g_ili9341_intfc_devinfo = {
 static am_ili9341_dev_t __g_ili9341_dev;
 
 /**< \brief ILI9341 三线接口设备实例 */
-static am_zlg_ili9341_intfc_3wire_dev_t  __g_ili9341_intfc_dev;
+static am_stm32f103rbt6_ili9341_intfc_3wire_dev_t  __g_ili9341_intfc_dev;
 
 /*******************************************************************************
   不使用 EMWIN 时初始化函数
 *******************************************************************************/
 
-am_ili9341_handle_t am_zlg237_ili9341_inst_init (void)
+am_ili9341_handle_t am_stm32f103rbt6_ili9341_inst_init (void)
 {
     return am_ili9341_init( &__g_ili9341_dev, &__g_ili9341_devinfo,
-            am_zlg_ili9341_intfc_3wire_init( \
+            am_stm32f103rbt6_ili9341_intfc_3wire_init( \
                            &__g_ili9341_intfc_dev ,&__g_ili9341_intfc_devinfo));
 }
 
-void am_zlg237_ili9341_inst_deinit (am_ili9341_handle_t handle)
+void am_stm32f103rbt6_ili9341_inst_deinit (am_ili9341_handle_t handle)
 {
     am_ili9341_deinit( handle );
 }
@@ -87,7 +87,7 @@ static am_ili9341_handle_t __g_handle_ili9341;
 /** \brief 初始化屏幕 */
 void am_lcd_init (void)
 {
-    am_ili9341_serv_t *p_serv = am_zlg_ili9341_intfc_3wire_init(
+    am_ili9341_serv_t *p_serv = am_stm32f103rbt6_ili9341_intfc_3wire_init(
                                     &__g_ili9341_intfc_dev,
                                     &__g_ili9341_intfc_devinfo);
 

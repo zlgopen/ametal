@@ -18,7 +18,7 @@
  *   1. 每过一秒，通过串口打印64通道光谱AD值
  *
  * \par 源代码
- * \snippet demo_zlg237_core_sensor_as7421.c src_zlg237_core_sensor_as7421
+ * \snippet demo_stm32f103rbt6_core_sensor_as7421.c src_stm32f103rbt6_core_sensor_as7421
  *
  * \internal
  * \par Modification history
@@ -28,11 +28,11 @@
 
 #include "am_gpio.h"
 #include "am_delay.h"
-#include "am_zlg237.h"
+#include "am_stm32f103rbt6.h"
 #include "am_sensor.h"
 #include "am_hwconf_sensor_as7421.h"
 #include "demo_std_entries.h"
-#include "demo_am237_core_entries.h"
+#include "demo_stm32f103rbt6_core_entries.h"
 
 /* 3.3V_LED_EN */
 #define PIN_3P3_LED_EN      PIOA_8
@@ -40,7 +40,7 @@
 /**
  * \brief 传感器例程入口
  */
-void demo_zlg237_core_sensor_as7421_entry (void)
+void demo_stm32f103rbt6_core_sensor_as7421_entry (void)
 {
     /* 使能 3.3V_LED_EN 引脚 */
     am_gpio_pin_cfg(PIN_3P3_LED_EN, AM_GPIO_OUTPUT_INIT_HIGH);

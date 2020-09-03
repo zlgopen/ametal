@@ -22,8 +22,8 @@
 
 #include "am_sensor_tmd3702vc.h"
 #include "am_common.h"
-#include "zlg237_pin.h"
-#include "am_zlg237_inst_init.h"
+#include "stm32f103rbt6_pin.h"
+#include "am_stm32f103rbt6_inst_init.h"
 
 am_const am_local tmd3702vc_param_config_t __g_tmd3702vc_param_default = {
         AM_TMD3702VC_ATIME_50MS,                    /* ALS ADC的积分时间 */
@@ -62,7 +62,7 @@ am_sensor_handle_t am_sensor_tmd3702vc_inst_init (void)
 {
     return am_sensor_tmd3702vc_init(&__g_tmd3702vc_dev,
                                     &__g_tmd3702vc_info,
-                                    am_zlg237_i2c1_inst_init());
+                                    am_stm32f103rbt6_i2c1_inst_init());
 }
 
 /** \brief 传感器 TMD3702VC 实例解初始化 */

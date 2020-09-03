@@ -27,7 +27,7 @@
  *   2. fm17510不支持B类卡的读写。
  *
  * \par 源代码
- * \snippet demo_zlg237_dr_fm175xx_piccb_read_id.c src_zlg237_dr_fm175xx_piccb_read_id
+ * \snippet demo_stm32f103rbt6_dr_fm175xx_piccb_read_id.c src_stm32f103rbt6_dr_fm175xx_piccb_read_id
  *
  * \internal
  * \par Modification history
@@ -37,21 +37,21 @@
 
 /**
  * \addtogroup demo_kl26_if_dr_fm175xx_piccb_read_id
- * \copydoc demo_zlg237_dr_fm175xx_piccb_read_id.c
+ * \copydoc demo_stm32f103rbt6_dr_fm175xx_piccb_read_id.c
  */
 
-/** [src_zlg237_dr_fm175xx_piccb_read_id] */
+/** [src_stm32f103rbt6_dr_fm175xx_piccb_read_id] */
 
 #include "am_fm175xx.h"
 #include "am_fm175xx_reg.h"
 #include "am_hwconf_fm175xx.h"
 #include "demo_components_entries.h"
-#include "demo_am237_core_entries.h"
+#include "demo_stm32f103rbt6_core_entries.h"
 
 /**
  * \brief B类卡读卡号例程
  */
-void demo_zlg237_core_dr_fm175xx_piccb_read_id (void)
+void demo_stm32f103rbt6_core_dr_fm175xx_piccb_read_id (void)
 {
     am_fm175xx_handle_t handle = am_fm175xx_inst_init();
 

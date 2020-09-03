@@ -29,9 +29,9 @@ includes
 #include "am_gpio.h"
 #include "am_delay.h"
 #include "am_clk.h"
-#include "am_zlg_dma.h"
-#include "hw/amhw_zlg237_spi.h"
-#include "am_zlg237_spi_dma.h"
+#include "am_stm32f103rbt6_dma.h"
+#include "hw/amhw_stm32f103rbt6_spi.h"
+#include "am_stm32f103rbt6_spi_dma.h"
 
 /*******************************************************************************
   SPI 状态和事件定义
@@ -75,15 +75,15 @@ am_local void __spi_default_cs_ha    (am_spi_device_t *p_dev, int state);
 am_local void __spi_default_cs_la    (am_spi_device_t *p_dev, int state);
 am_local void __spi_default_cs_dummy (am_spi_device_t *p_dev, int state);
 
-am_local void __spi_cs_on  (am_zlg237_spi_dma_dev_t *p_this,
+am_local void __spi_cs_on  (am_stm32f103rbt6_spi_dma_dev_t *p_this,
                             am_spi_device_t         *p_dev);
-am_local void __spi_cs_off (am_zlg237_spi_dma_dev_t *p_this,
+am_local void __spi_cs_off (am_stm32f103rbt6_spi_dma_dev_t *p_this,
                             am_spi_device_t         *p_dev);
 
-am_local int  __spi_hard_init (am_zlg237_spi_dma_dev_t *p_this);
-am_local int  __spi_config (am_zlg237_spi_dma_dev_t *p_this);
+am_local int  __spi_hard_init (am_stm32f103rbt6_spi_dma_dev_t *p_this);
+am_local int  __spi_config (am_stm32f103rbt6_spi_dma_dev_t *p_this);
 
-am_local int  __spi_mst_sm_event (am_zlg237_spi_dma_dev_t *p_dev,
+am_local int  __spi_mst_sm_event (am_stm32f103rbt6_spi_dma_dev_t *p_dev,
                                   uint32_t                 event);
 
 /*******************************************************************************
@@ -137,7 +137,7 @@ void __spi_default_cs_dummy (am_spi_device_t *p_dev, int state)
  * \brief CS引脚激活
  */
 am_local
-void __spi_cs_on (am_zlg237_spi_dma_dev_t *p_this, am_spi_device_t *p_dev)
+void __spi_cs_on (am_stm32f103rbt6_spi_dma_dev_t *p_this, am_spi_device_t *p_dev)
 {
 
     /* if last device toggled after message */
@@ -157,7 +157,7 @@ void __spi_cs_on (am_zlg237_spi_dma_dev_t *p_this, am_spi_device_t *p_dev)
  * \brief CS引脚去活
  */
 am_local
-void __spi_cs_off (am_zlg237_spi_dma_dev_t   *p_this,
+void __spi_cs_off (am_stm32f103rbt6_spi_dma_dev_t   *p_this,
                    am_spi_device_t           *p_dev)
 {
     if (p_this->p_tgl_dev == p_dev) {
@@ -174,7 +174,7 @@ void __spi_cs_off (am_zlg237_spi_dma_dev_t   *p_this,
  * \note调用此函数必须锁定控制器
  */
 am_static_inline
-void __spi_msg_in (am_zlg237_spi_dma_dev_t *p_dev, struct am_spi_message *p_msg)
+void __spi_msg_in (am_stm32f103rbt6_spi_dma_dev_t *p_dev, struct am_spi_message *p_msg)
 {
     am_list_add_tail((struct am_list_head *)(&p_msg->ctlrdata),
                                              &(p_dev->msg_list));
@@ -185,7 +185,7 @@ void __spi_msg_in (am_zlg237_spi_dma_dev_t *p_dev, struct am_spi_message *p_msg)
  * \note调用此函数必须锁定控制器
  */
 am_static_inline
-struct am_spi_message *__spi_msg_out (am_zlg237_spi_dma_dev_t *p_dev)
+struct am_spi_message *__spi_msg_out (am_stm32f103rbt6_spi_dma_dev_t *p_dev)
 {
     if (am_list_empty_careful(&(p_dev->msg_list))) {
         return NULL;
@@ -217,7 +217,7 @@ struct am_spi_transfer *__spi_trans_out (am_spi_message_t *msg)
 am_local
 int __spi_setup (void *p_arg, am_spi_device_t *p_dev)
 {
-    am_zlg237_spi_dma_dev_t *p_this = (am_zlg237_spi_dma_dev_t *)p_arg;
+    am_stm32f103rbt6_spi_dma_dev_t *p_this = (am_stm32f103rbt6_spi_dma_dev_t *)p_arg;
 
     uint32_t max_speed, min_speed;
 
@@ -274,7 +274,7 @@ int __spi_setup (void *p_arg, am_spi_device_t *p_dev)
 am_local
 int __spi_info_get (void *p_arg, am_spi_info_t *p_info)
 {
-    am_zlg237_spi_dma_dev_t *p_this   = (am_zlg237_spi_dma_dev_t *)p_arg;
+    am_stm32f103rbt6_spi_dma_dev_t *p_this   = (am_stm32f103rbt6_spi_dma_dev_t *)p_arg;
 
     if (p_info == NULL) {
         return -AM_EINVAL;
@@ -294,42 +294,42 @@ int __spi_info_get (void *p_arg, am_spi_info_t *p_info)
  * \brief SPI 硬件初始化
  */
 am_local
-int __spi_hard_init (am_zlg237_spi_dma_dev_t *p_this)
+int __spi_hard_init (am_stm32f103rbt6_spi_dma_dev_t *p_this)
 {
-    amhw_zlg237_spi_t *p_hw_spi =
-        (amhw_zlg237_spi_t *)(p_this->p_devinfo->spi_reg_base);
+    amhw_stm32f103rbt6_spi_t *p_hw_spi =
+        (amhw_stm32f103rbt6_spi_t *)(p_this->p_devinfo->spi_reg_base);
 
     if (p_this == NULL) {
         return -AM_EINVAL;
     }
 
     /* NSS采用软件管理*/
-    amhw_zlg237_spi_ssm_enable(p_hw_spi);
+    amhw_stm32f103rbt6_spi_ssm_enable(p_hw_spi);
 
     /* 关闭硬件SPI的NSS引脚输出*/
-    amhw_zlg237_spi_ssout_disable(p_hw_spi);
+    amhw_stm32f103rbt6_spi_ssout_disable(p_hw_spi);
 
     /* 软件管理下，NSS内部为高，与引脚无关。特别注意，无论硬件、软件管理，配置成主机模式，NSS必须为高*/
-    amhw_zlg237_spi_ssi_set(p_hw_spi,AMHW_ZLG237_SPI_SSI_TO_NSS_ENABLE);
+    amhw_stm32f103rbt6_spi_ssi_set(p_hw_spi,AMHW_STM32F103RBT6_SPI_SSI_TO_NSS_ENABLE);
 
     /* 配置为主机模式 */
-    amhw_zlg237_spi_master_salver_set(p_hw_spi, AMHW_ZLG237_SPI_MASTER);
+    amhw_stm32f103rbt6_spi_master_salver_set(p_hw_spi, AMHW_STM32F103RBT6_SPI_MASTER);
 
     /* 配置时钟相位和极性 */
-    amhw_zlg237_spi_clk_mode_set(p_hw_spi, AMHW_ZLG237_SPI_CLK_MODE_1 );
+    amhw_stm32f103rbt6_spi_clk_mode_set(p_hw_spi, AMHW_STM32F103RBT6_SPI_CLK_MODE_1 );
 
     /* 帧格式设置，先发送MSB*/
-    amhw_zlg237_spi_lsbfirst_set(p_hw_spi, AMHW_ZLG237_SPI_LSB_FIRST_SEND_MSB);
+    amhw_stm32f103rbt6_spi_lsbfirst_set(p_hw_spi, AMHW_STM32F103RBT6_SPI_LSB_FIRST_SEND_MSB);
 
     /* 分频系数为64*/
-    amhw_zlg237_spi_baudratefre_set(p_hw_spi,
-                                    AMHW_ZLG237_SPI_BAUDRATE_PRESCALER_128);
+    amhw_stm32f103rbt6_spi_baudratefre_set(p_hw_spi,
+                                    AMHW_STM32F103RBT6_SPI_BAUDRATE_PRESCALER_128);
 
     /* 数据长度为8*/
-    amhw_zlg237_spi_data_length_set(p_hw_spi, AMHW_ZLG237_SPI_DATA_8BIT);
+    amhw_stm32f103rbt6_spi_data_length_set(p_hw_spi, AMHW_STM32F103RBT6_SPI_DATA_8BIT);
 
     /* SPI使能 */
-    amhw_zlg237_spi_enable(p_hw_spi);
+    amhw_stm32f103rbt6_spi_enable(p_hw_spi);
 
     return AM_OK;
 }
@@ -337,10 +337,10 @@ int __spi_hard_init (am_zlg237_spi_dma_dev_t *p_this)
 am_local
 void __dma_isr (void *p_arg, uint32_t stat)
 {
-    am_zlg237_spi_dma_dev_t *p_this   = (am_zlg237_spi_dma_dev_t *)p_arg;
+    am_stm32f103rbt6_spi_dma_dev_t *p_this   = (am_stm32f103rbt6_spi_dma_dev_t *)p_arg;
 
     /* 中断发生 */
-    if (stat == AM_ZLG_DMA_INT_NORMAL)
+    if (stat == AM_STM32F103RBT6_DMA_INT_NORMAL)
     {
         /* 记录成功传送字节数 */
         if (p_this->p_cur_trans->p_txbuf != NULL) {
@@ -373,12 +373,12 @@ void __dma_isr (void *p_arg, uint32_t stat)
  * \brief SPI 使用DMA传输
  */
 am_local
-int __spi_dma_trans (am_zlg237_spi_dma_dev_t *p_dev)
+int __spi_dma_trans (am_stm32f103rbt6_spi_dma_dev_t *p_dev)
 {
-    am_zlg237_spi_dma_dev_t           *p_this      = (am_zlg237_spi_dma_dev_t *)
+    am_stm32f103rbt6_spi_dma_dev_t           *p_this      = (am_stm32f103rbt6_spi_dma_dev_t *)
                                                      p_dev;
-    const am_zlg237_spi_dma_devinfo_t *p_devinfo   = p_this->p_devinfo;
-    amhw_zlg237_spi_t                 *p_hw_spi    = (amhw_zlg237_spi_t *)
+    const am_stm32f103rbt6_spi_dma_devinfo_t *p_devinfo   = p_this->p_devinfo;
+    amhw_stm32f103rbt6_spi_t                 *p_hw_spi    = (amhw_stm32f103rbt6_spi_t *)
                                                      (p_devinfo->spi_reg_base);
     am_spi_transfer_t                 *p_cur_trans = p_dev->p_cur_trans;
 
@@ -387,47 +387,47 @@ int __spi_dma_trans (am_zlg237_spi_dma_dev_t *p_dev)
     uint32_t        dma_flags[2] = {0};  /* DMA发送通道描述符 */
 
     /* 连接DMA中断服务函数 */
-    am_zlg_dma_isr_connect(p_this->p_devinfo->dma_chan_tx, 
+    am_stm32f103rbt6_dma_isr_connect(p_this->p_devinfo->dma_chan_tx, 
                            __dma_isr, 
                            (void *)p_this);
 
     am_int_enable(p_dev->p_devinfo->inum);
 
     /* DMA发送通道配置 */
-    dma_flags[0] =  AMHW_ZLG_DMA_CHAN_PRIORITY_HIGH         |  /* 中断优先级 高 */
-                    AMHW_ZLG_DMA_CHAN_MEM_SIZE_8BIT         |  /* 内存数据宽度1字节 */
-                    AMHW_ZLG_DMA_CHAN_PER_SIZE_8BIT         |  /* 外设数据宽度1字节 */
-                    AMHW_ZLG_DMA_CHAN_PER_ADD_INC_DISABLE   |  /* 外设地址不自增 */
-                    AMHW_ZLG_DMA_CHAN_CIRCULAR_MODE_DISABLE ;  /* 关闭循环模式 */
+    dma_flags[0] =  AMHW_STM32F103RBT6_DMA_CHAN_PRIORITY_HIGH         |  /* 中断优先级 高 */
+                    AMHW_STM32F103RBT6_DMA_CHAN_MEM_SIZE_8BIT         |  /* 内存数据宽度1字节 */
+                    AMHW_STM32F103RBT6_DMA_CHAN_PER_SIZE_8BIT         |  /* 外设数据宽度1字节 */
+                    AMHW_STM32F103RBT6_DMA_CHAN_PER_ADD_INC_DISABLE   |  /* 外设地址不自增 */
+                    AMHW_STM32F103RBT6_DMA_CHAN_CIRCULAR_MODE_DISABLE ;  /* 关闭循环模式 */
 
     /* DMA接收通道配置 */
-    dma_flags[1] = AMHW_ZLG_DMA_CHAN_PRIORITY_HIGH         |  /* 中断优先级 高 */
-                   AMHW_ZLG_DMA_CHAN_MEM_SIZE_8BIT         |  /* 内存数据宽度1字节 */
-                   AMHW_ZLG_DMA_CHAN_PER_SIZE_8BIT         |  /* 外设数据宽度1字节 */
-                   AMHW_ZLG_DMA_CHAN_PER_ADD_INC_DISABLE   |  /* 外设地址不自增 */
-                   AMHW_ZLG_DMA_CHAN_CIRCULAR_MODE_DISABLE ;  /* 关闭循环模式 */
+    dma_flags[1] = AMHW_STM32F103RBT6_DMA_CHAN_PRIORITY_HIGH         |  /* 中断优先级 高 */
+                   AMHW_STM32F103RBT6_DMA_CHAN_MEM_SIZE_8BIT         |  /* 内存数据宽度1字节 */
+                   AMHW_STM32F103RBT6_DMA_CHAN_PER_SIZE_8BIT         |  /* 外设数据宽度1字节 */
+                   AMHW_STM32F103RBT6_DMA_CHAN_PER_ADD_INC_DISABLE   |  /* 外设地址不自增 */
+                   AMHW_STM32F103RBT6_DMA_CHAN_CIRCULAR_MODE_DISABLE ;  /* 关闭循环模式 */
 
     /* 设置DMA数据位宽 */
     if (p_cur_trans->bits_per_word > 8) {
-        dma_flags[0] |= AMHW_ZLG_DMA_CHAN_MEM_SIZE_16BIT;
-        dma_flags[0] |= AMHW_ZLG_DMA_CHAN_PER_SIZE_16BIT;
-        dma_flags[1] |= AMHW_ZLG_DMA_CHAN_MEM_SIZE_16BIT;
-        dma_flags[1] |= AMHW_ZLG_DMA_CHAN_PER_SIZE_16BIT;
+        dma_flags[0] |= AMHW_STM32F103RBT6_DMA_CHAN_MEM_SIZE_16BIT;
+        dma_flags[0] |= AMHW_STM32F103RBT6_DMA_CHAN_PER_SIZE_16BIT;
+        dma_flags[1] |= AMHW_STM32F103RBT6_DMA_CHAN_MEM_SIZE_16BIT;
+        dma_flags[1] |= AMHW_STM32F103RBT6_DMA_CHAN_PER_SIZE_16BIT;
     } else {
-        dma_flags[0] |= AMHW_ZLG_DMA_CHAN_MEM_SIZE_8BIT;
-        dma_flags[0] |= AMHW_ZLG_DMA_CHAN_PER_SIZE_8BIT;
-        dma_flags[1] |= AMHW_ZLG_DMA_CHAN_MEM_SIZE_8BIT;
-        dma_flags[1] |= AMHW_ZLG_DMA_CHAN_PER_SIZE_8BIT;
+        dma_flags[0] |= AMHW_STM32F103RBT6_DMA_CHAN_MEM_SIZE_8BIT;
+        dma_flags[0] |= AMHW_STM32F103RBT6_DMA_CHAN_PER_SIZE_8BIT;
+        dma_flags[1] |= AMHW_STM32F103RBT6_DMA_CHAN_MEM_SIZE_8BIT;
+        dma_flags[1] |= AMHW_STM32F103RBT6_DMA_CHAN_PER_SIZE_8BIT;
     }
 
     /* 只发送不接收数据 */
     if (p_cur_trans->p_rxbuf == NULL) {
 
         /* 内存地址不自增 */
-        dma_flags[1] |= AMHW_ZLG_DMA_CHAN_MEM_ADD_INC_DISABLE;
+        dma_flags[1] |= AMHW_STM32F103RBT6_DMA_CHAN_MEM_ADD_INC_DISABLE;
 
         /* 建立接收通道描述符 */
-        am_zlg_dma_xfer_desc_build(&(p_this->g_desc[1]),        /* 通道描述符 */
+        am_stm32f103rbt6_dma_xfer_desc_build(&(p_this->g_desc[1]),        /* 通道描述符 */
                                     (uint32_t)(&(p_hw_spi->dr)),/* 源缓冲区首地址 */
                                     (uint32_t)(&tx_rx_trans),   /* 目的缓冲区首地址 */
                                      p_cur_trans->nbytes,       /* 传输字节数 */
@@ -437,10 +437,10 @@ int __spi_dma_trans (am_zlg237_spi_dma_dev_t *p_dev)
     } else {
 
         /* 内存地址自增 */
-        dma_flags[1] |= AMHW_ZLG_DMA_CHAN_MEM_ADD_INC_ENABLE;
+        dma_flags[1] |= AMHW_STM32F103RBT6_DMA_CHAN_MEM_ADD_INC_ENABLE;
 
         /* 建立接收通道描述符 */ 
-        am_zlg_dma_xfer_desc_build(&(p_this->g_desc[1]),         /* 通道描述符 */
+        am_stm32f103rbt6_dma_xfer_desc_build(&(p_this->g_desc[1]),         /* 通道描述符 */
                                     (uint32_t)(&(p_hw_spi->dr)), /* 源缓冲区首地址 */
                                     (uint32_t)(p_cur_trans->p_rxbuf),
                                      p_cur_trans->nbytes,        /* 传输字节数 */
@@ -453,10 +453,10 @@ int __spi_dma_trans (am_zlg237_spi_dma_dev_t *p_dev)
         p_txbuf = &tx_rx_trans;
 
         /* 内存地址不自增 */
-        dma_flags[0] |= AMHW_ZLG_DMA_CHAN_MEM_ADD_INC_DISABLE;
+        dma_flags[0] |= AMHW_STM32F103RBT6_DMA_CHAN_MEM_ADD_INC_DISABLE;
 
         /* 建立发送通道描述符 */
-        am_zlg_dma_xfer_desc_build(&(p_this->g_desc[0]),        /* 通道描述符 */
+        am_stm32f103rbt6_dma_xfer_desc_build(&(p_this->g_desc[0]),        /* 通道描述符 */
                                     (uint32_t)(p_txbuf),        /* 源缓冲区首地址 */
                                     (uint32_t)(&(p_hw_spi->dr)),/* 目的缓冲区首地址 */
                                     p_cur_trans->nbytes,        /* 传输字节数 */
@@ -465,41 +465,41 @@ int __spi_dma_trans (am_zlg237_spi_dma_dev_t *p_dev)
         p_txbuf = p_cur_trans->p_txbuf;
 
         /* 内存地址自增 */
-        dma_flags[0] |= AMHW_ZLG_DMA_CHAN_MEM_ADD_INC_ENABLE;
+        dma_flags[0] |= AMHW_STM32F103RBT6_DMA_CHAN_MEM_ADD_INC_ENABLE;
 
         /* 建立发送通道描述符 */
-        am_zlg_dma_xfer_desc_build(&(p_this->g_desc[0]),        /* 通道描述符 */
+        am_stm32f103rbt6_dma_xfer_desc_build(&(p_this->g_desc[0]),        /* 通道描述符 */
                                     (uint32_t)((uint8_t *)p_txbuf),
                                     (uint32_t)(&(p_hw_spi->dr)),/* 目的缓冲区首地址 */
                                     p_cur_trans->nbytes,        /* 传输字节数 */
                                     dma_flags[0]);              /* 传输配置 */
     }
 
-    if (am_zlg_dma_xfer_desc_chan_cfg(&(p_this->g_desc[0]),
-                                        AMHW_ZLG_DMA_MER_TO_PER,  /* 内存到外设 */
+    if (am_stm32f103rbt6_dma_xfer_desc_chan_cfg(&(p_this->g_desc[0]),
+                                        AMHW_STM32F103RBT6_DMA_MER_TO_PER,  /* 内存到外设 */
                                         p_this->p_devinfo->dma_chan_tx) ==
                                         AM_ERROR) {
         return AM_ERROR;
     }
 
-    if (am_zlg_dma_xfer_desc_chan_cfg(&(p_this->g_desc[1]),
-                                        AMHW_ZLG_DMA_PER_TO_MER,  /* 外设到内存 */
+    if (am_stm32f103rbt6_dma_xfer_desc_chan_cfg(&(p_this->g_desc[1]),
+                                        AMHW_STM32F103RBT6_DMA_PER_TO_MER,  /* 外设到内存 */
                                         p_this->p_devinfo->dma_chan_rx) ==
                                         AM_ERROR) {
         return AM_ERROR;
     }
 
-    am_zlg_dma_chan_start(p_this->p_devinfo->dma_chan_rx);
-    am_zlg_dma_chan_start(p_this->p_devinfo->dma_chan_tx);
+    am_stm32f103rbt6_dma_chan_start(p_this->p_devinfo->dma_chan_rx);
+    am_stm32f103rbt6_dma_chan_start(p_this->p_devinfo->dma_chan_tx);
 
     return AM_OK;
 }
 
 am_local
-int __spi_config (am_zlg237_spi_dma_dev_t *p_this)
+int __spi_config (am_stm32f103rbt6_spi_dma_dev_t *p_this)
 {
-    const am_zlg237_spi_dma_devinfo_t *p_devinfo = p_this->p_devinfo;
-    amhw_zlg237_spi_t              *p_hw_spi     = (amhw_zlg237_spi_t *)
+    const am_stm32f103rbt6_spi_dma_devinfo_t *p_devinfo = p_this->p_devinfo;
+    amhw_stm32f103rbt6_spi_t              *p_hw_spi     = (amhw_stm32f103rbt6_spi_t *)
                                                    (p_devinfo->spi_reg_base);
     am_spi_transfer_t              *p_trans      = p_this->p_cur_trans;
 
@@ -541,56 +541,56 @@ int __spi_config (am_zlg237_spi_dma_dev_t *p_this)
     mode_flag = 0;
 
     if (p_this->p_cur_spi_dev->mode & AM_SPI_LSB_FIRST) {
-        mode_flag |= AMHW_ZLG237_SPI_LSB_FIRST_SEND_LSB;
+        mode_flag |= AMHW_STM32F103RBT6_SPI_LSB_FIRST_SEND_LSB;
     }
 
-    amhw_zlg237_spi_disable(p_hw_spi);
+    amhw_stm32f103rbt6_spi_disable(p_hw_spi);
 
     /* NSS采用软件管理*/
-    amhw_zlg237_spi_ssm_enable(p_hw_spi);
+    amhw_stm32f103rbt6_spi_ssm_enable(p_hw_spi);
 
     /* 关闭硬件SPI的NSS引脚输出*/
-    amhw_zlg237_spi_ssout_disable(p_hw_spi);
+    amhw_stm32f103rbt6_spi_ssout_disable(p_hw_spi);
 
     /* 软件管理下，NSS内部为高，与引脚无关。特别注意，无论硬件、软件管理，配置成主机模式，NSS必须为高*/
-    amhw_zlg237_spi_ssi_set(p_hw_spi,AMHW_ZLG237_SPI_SSI_TO_NSS_ENABLE);
+    amhw_stm32f103rbt6_spi_ssi_set(p_hw_spi,AMHW_STM32F103RBT6_SPI_SSI_TO_NSS_ENABLE);
 
     /* 配置为主机模式 */
-    amhw_zlg237_spi_master_salver_set(p_hw_spi, AMHW_ZLG237_SPI_MASTER);
+    amhw_stm32f103rbt6_spi_master_salver_set(p_hw_spi, AMHW_STM32F103RBT6_SPI_MASTER);
 
     /* 配置SPI模式（时钟相位和极性） */
-    amhw_zlg237_spi_clk_mode_set(p_hw_spi, 0x3 & p_this->p_cur_spi_dev->mode);
+    amhw_stm32f103rbt6_spi_clk_mode_set(p_hw_spi, 0x3 & p_this->p_cur_spi_dev->mode);
 
     /* 配置SPI工作特性 */
-    amhw_zlg237_spi_lsbfirst_set(p_hw_spi, mode_flag);
+    amhw_stm32f103rbt6_spi_lsbfirst_set(p_hw_spi, mode_flag);
 
-    amhw_zlg237_spi_data_length_set(p_hw_spi, AMHW_ZLG237_SPI_DATA_8BIT);
+    amhw_stm32f103rbt6_spi_data_length_set(p_hw_spi, AMHW_STM32F103RBT6_SPI_DATA_8BIT);
 
     /* 配置SPI数据长度和帧格式 */
     if (p_this->p_cur_spi_dev->bits_per_word == 8) {
-        amhw_zlg237_spi_lsbfirst_set(p_hw_spi, mode_flag);
-        amhw_zlg237_spi_data_length_set(p_hw_spi, AMHW_ZLG237_SPI_DATA_8BIT);
+        amhw_stm32f103rbt6_spi_lsbfirst_set(p_hw_spi, mode_flag);
+        amhw_stm32f103rbt6_spi_data_length_set(p_hw_spi, AMHW_STM32F103RBT6_SPI_DATA_8BIT);
     }
     else if (p_this->p_cur_spi_dev->bits_per_word == 16) {
-        amhw_zlg237_spi_lsbfirst_set(p_hw_spi, mode_flag);
-        amhw_zlg237_spi_data_length_set(p_hw_spi, AMHW_ZLG237_SPI_DATA_16BIT);
+        amhw_stm32f103rbt6_spi_lsbfirst_set(p_hw_spi, mode_flag);
+        amhw_stm32f103rbt6_spi_data_length_set(p_hw_spi, AMHW_STM32F103RBT6_SPI_DATA_16BIT);
     }
     else if ((p_this->p_cur_spi_dev->bits_per_word >= 1) ||
              (p_this->p_cur_spi_dev->bits_per_word <= 32)) {
-        amhw_zlg237_spi_lsbfirst_set(p_hw_spi, mode_flag);
-        amhw_zlg237_spi_flex_length_set(p_hw_spi,
+        amhw_stm32f103rbt6_spi_lsbfirst_set(p_hw_spi, mode_flag);
+        amhw_stm32f103rbt6_spi_flex_length_set(p_hw_spi,
                                         p_this->p_cur_spi_dev->bits_per_word);
-        amhw_zlg237_spi_flexlength_enable(p_hw_spi);
+        amhw_stm32f103rbt6_spi_flexlength_enable(p_hw_spi);
     }
     else {
-        amhw_zlg237_spi_lsbfirst_set(p_hw_spi, mode_flag);
-        amhw_zlg237_spi_data_length_set(p_hw_spi, AMHW_ZLG237_SPI_DATA_8BIT);
+        amhw_stm32f103rbt6_spi_lsbfirst_set(p_hw_spi, mode_flag);
+        amhw_stm32f103rbt6_spi_data_length_set(p_hw_spi, AMHW_STM32F103RBT6_SPI_DATA_8BIT);
     }
 
     /* 设置SPI速率 */
-    amhw_zlg237_spi_baudratefre_set(p_hw_spi, p_this->p_devinfo->baud_div);
+    amhw_stm32f103rbt6_spi_baudratefre_set(p_hw_spi, p_this->p_devinfo->baud_div);
 
-    amhw_zlg237_spi_enable(p_hw_spi);
+    amhw_stm32f103rbt6_spi_enable(p_hw_spi);
 
     return AM_OK;
 }
@@ -603,7 +603,7 @@ int __spi_msg_start (void              *p_drv,
                      am_spi_device_t   *p_dev,
                      am_spi_message_t  *p_msg)
 {
-    am_zlg237_spi_dma_dev_t *p_this = (am_zlg237_spi_dma_dev_t *)p_drv;
+    am_stm32f103rbt6_spi_dma_dev_t *p_this = (am_stm32f103rbt6_spi_dma_dev_t *)p_drv;
 
     int key;
 
@@ -650,9 +650,9 @@ int __spi_msg_start (void              *p_drv,
  * \brief SPI 使用状态机传输
  */
 am_local
-int __spi_mst_sm_event (am_zlg237_spi_dma_dev_t *p_dev, uint32_t event)
+int __spi_mst_sm_event (am_stm32f103rbt6_spi_dma_dev_t *p_dev, uint32_t event)
 {
-    amhw_zlg237_spi_t *p_hw_spi = (amhw_zlg237_spi_t *)
+    amhw_stm32f103rbt6_spi_t *p_hw_spi = (amhw_stm32f103rbt6_spi_t *)
                                   (p_dev->p_devinfo->spi_reg_base);
 
     volatile uint32_t new_event = __SPI_EVT_NONE;
@@ -699,10 +699,10 @@ int __spi_mst_sm_event (am_zlg237_spi_dma_dev_t *p_dev, uint32_t event)
             }else {
 
                 /* 禁能所有中断 */
-                amhw_zlg237_spi_int_disable(p_hw_spi, AMHW_ZLG237_SPI_INT_ALL);
+                amhw_stm32f103rbt6_spi_int_disable(p_hw_spi, AMHW_STM32F103RBT6_SPI_INT_ALL);
 
-                amhw_zlg237_spi_dma_tx_disable(p_hw_spi);
-                amhw_zlg237_spi_dma_rx_disable(p_hw_spi);
+                amhw_stm32f103rbt6_spi_dma_tx_disable(p_hw_spi);
+                amhw_stm32f103rbt6_spi_dma_rx_disable(p_hw_spi);
 
                 p_dev->busy = AM_FALSE;
             }
@@ -771,8 +771,8 @@ int __spi_mst_sm_event (am_zlg237_spi_dma_dev_t *p_dev, uint32_t event)
                     am_mdelay(p_dev->p_devinfo->cs_mdelay);
                 }
 
-                amhw_zlg237_spi_dma_tx_enable(p_hw_spi);
-                amhw_zlg237_spi_dma_rx_enable(p_hw_spi);
+                amhw_stm32f103rbt6_spi_dma_tx_enable(p_hw_spi);
+                amhw_stm32f103rbt6_spi_dma_rx_enable(p_hw_spi);
 
                 __SPI_NEXT_STATE(__SPI_ST_DMA_TRANS_DATA,
                                  __SPI_EVT_DMA_TRANS_DATA);
@@ -816,9 +816,9 @@ int __spi_mst_sm_event (am_zlg237_spi_dma_dev_t *p_dev, uint32_t event)
 /**
  * \brief SPI 初始化
  */
-am_spi_handle_t am_zlg237_spi_dma_init (
-    am_zlg237_spi_dma_dev_t           *p_dev,
-    const am_zlg237_spi_dma_devinfo_t *p_devinfo)
+am_spi_handle_t am_stm32f103rbt6_spi_dma_init (
+    am_stm32f103rbt6_spi_dma_dev_t           *p_dev,
+    const am_stm32f103rbt6_spi_dma_devinfo_t *p_devinfo)
 {
     if (NULL == p_devinfo || NULL == p_dev ) {
         return NULL;
@@ -855,10 +855,10 @@ am_spi_handle_t am_zlg237_spi_dma_init (
 /**
  * \brief SPI 去除初始化
  */
-void am_zlg237_spi_dma_deinit (am_spi_handle_t handle)
+void am_stm32f103rbt6_spi_dma_deinit (am_spi_handle_t handle)
 {
-    am_zlg237_spi_dma_dev_t *p_dev    = (am_zlg237_spi_dma_dev_t *)handle;
-    amhw_zlg237_spi_t       *p_hw_spi = (amhw_zlg237_spi_t *)
+    am_stm32f103rbt6_spi_dma_dev_t *p_dev    = (am_stm32f103rbt6_spi_dma_dev_t *)handle;
+    amhw_stm32f103rbt6_spi_t       *p_hw_spi = (amhw_stm32f103rbt6_spi_t *)
                                         (p_dev->p_devinfo->spi_reg_base);
 
     if (NULL == p_dev) {
@@ -869,7 +869,7 @@ void am_zlg237_spi_dma_deinit (am_spi_handle_t handle)
     p_dev->spi_serve.p_drv   = NULL;
 
     /* 禁能 SPI */
-    amhw_zlg237_spi_disable(p_hw_spi);
+    amhw_stm32f103rbt6_spi_disable(p_hw_spi);
 
     am_int_disable(p_dev->p_devinfo->inum);
 

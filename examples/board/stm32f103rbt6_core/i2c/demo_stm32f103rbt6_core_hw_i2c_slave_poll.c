@@ -22,7 +22,7 @@
  *    可根据实际情况更换引脚。
  *
  * \par 源代码
- * \snippet demo_zlg237_hw_i2c_slave_poll.c src_zlg237_hw_i2c_slave_poll
+ * \snippet demo_stm32f103rbt6_hw_i2c_slave_poll.c src_stm32f103rbt6_hw_i2c_slave_poll
  *
  * \internal
  * \par Modification history
@@ -31,28 +31,28 @@
  */
 
 /**
- * \addtogroup demo_if_zlg237_hw_i2c_slave_poll
- * \copydoc demo_zlg237_hw_i2c_slave_poll.c
+ * \addtogroup demo_if_stm32f103rbt6_hw_i2c_slave_poll
+ * \copydoc demo_stm32f103rbt6_hw_i2c_slave_poll.c
  */
 
-/** [src_zlg237_hw_i2c_slave_poll] */
+/** [src_stm32f103rbt6_hw_i2c_slave_poll] */
 #include "ametal.h"
 #include "am_vdebug.h"
 #include "am_board.h"
 #include "am_gpio.h"
-#include "am_zlg237.h"
-#include "am_zlg237_clk.h"
-#include "amhw_zlg_i2c.h"
-#include "amhw_zlg237_rcc.h"
-#include "demo_zlg_entries.h"
-#include "demo_am237_core_entries.h"
+#include "am_stm32f103rbt6.h"
+#include "am_stm32f103rbt6_clk.h"
+#include "amhw_stm32f103rbt6_i2c.h"
+#include "amhw_stm32f103rbt6_rcc.h"
+#include "demo_stm32f103rbt6_entries.h"
+#include "demo_stm32f103rbt6_core_entries.h"
 
 /**
  * \brief 例程入口
  */
-void demo_zlg237_core_hw_i2c_slave_poll_entry (void)
+void demo_stm32f103rbt6_core_hw_i2c_slave_poll_entry (void)
 {
-    am_kprintf("demo am237_core hw i2c slave poll!\r\n");
+    am_kprintf("demo stm32f103rbt6_core hw i2c slave poll!\r\n");
 
     /**
      * PIOB_6 ~ I2C1_SCL, PIOB_7 ~ I2C1_SDA
@@ -61,10 +61,10 @@ void demo_zlg237_core_hw_i2c_slave_poll_entry (void)
     am_gpio_pin_cfg(PIOB_7, PIOB_7_I2C1_SDA_REMAP0 | PIOB_7_AF_OD);
 
     am_clk_enable(CLK_I2C1);
-    am_zlg237_clk_reset(CLK_I2C1);
+    am_stm32f103rbt6_clk_reset(CLK_I2C1);
 
-    demo_zlg237_hw_i2c_slave_poll_entry((void *)ZLG237_I2C1);
+    demo_stm32f103rbt6_hw_i2c_slave_poll_entry((void *)STM32F103RBT6_I2C1);
 }
-/** [src_zlg237_hw_i2c_slave_poll] */
+/** [src_stm32f103rbt6_hw_i2c_slave_poll] */
 
 /* end of file */

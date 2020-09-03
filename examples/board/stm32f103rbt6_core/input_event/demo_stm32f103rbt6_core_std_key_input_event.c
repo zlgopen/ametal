@@ -26,7 +26,7 @@
  *       已经默认配置为 1， 用户不必再次配置；
  *
  * \par 源代码
- * \snippet demo_zlg237_std_key_input_event.c src_zlg237_std_key_input_event
+ * \snippet demo_stm32f103rbt6_std_key_input_event.c src_stm32f103rbt6_std_key_input_event
  *
  * \internal
  * \par Modification history
@@ -35,25 +35,25 @@
  */
 
 /**
- * \addtogroup demo_if_zlg237_std_key_input_event
- * \copydoc demo_zlg237_std_key_input_event.c
+ * \addtogroup demo_if_stm32f103rbt6_std_key_input_event
+ * \copydoc demo_stm32f103rbt6_std_key_input_event.c
  */
 
-/** [src_zlg237_std_key_input_event] */
+/** [src_stm32f103rbt6_std_key_input_event] */
 #include "ametal.h"
 #include "am_vdebug.h"
 #include "demo_std_entries.h"
-#include "demo_am237_core_entries.h"
+#include "demo_stm32f103rbt6_core_entries.h"
 
 /**
  * \brief 例程入口
  */
-void demo_zlg237_core_std_key_input_event_entry (void)
+void demo_stm32f103rbt6_core_std_key_input_event_entry (void)
 {
-    AM_DBG_INFO("demo am237_core std input event!\r\n");
+    AM_DBG_INFO("demo stm32f103rbt6_core std input event!\r\n");
 
     demo_std_key_entry();
 }
-/** [src_zlg237_std_key_input_event] */
+/** [src_stm32f103rbt6_std_key_input_event] */
 
 /* end of file */

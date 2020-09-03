@@ -24,8 +24,8 @@
  * \endinternal
  */
 
-#ifndef __AMHW_ZLG237_FLASH_H
-#define __AMHW_ZLG237_FLASH_H
+#ifndef __AMHW_STM32F103RBT6_FLASH_H
+#define __AMHW_STM32F103RBT6_FLASH_H
 
 #ifdef __cplusplus
 extern "C" {
@@ -35,8 +35,8 @@ extern "C" {
 #include "am_types.h"
 
 /**
- * \addtogroup amhw_zlg237_if_flash
- * \copydoc amhw_zlg237_flash.h
+ * \addtogroup amhw_stm32f103rbt6_if_flash
+ * \copydoc amhw_stm32f103rbt6_flash.h
  * @{
  */
 
@@ -67,7 +67,7 @@ extern "C" {
 /*
  * \brief the structure of  FLASH register
  */
-typedef struct amhw_zlg237_flash {
+typedef struct amhw_stm32f103rbt6_flash {
     __IO uint32_t acr;      /**< \brief access control register offset : 0x00 */
     __IO uint32_t keyr;     /**< \brief key register            offset : 0x04 */
     __IO uint32_t optkeyr;  /**< \brief OPTkey register         offset : 0x08 */
@@ -78,7 +78,7 @@ typedef struct amhw_zlg237_flash {
     __IO uint32_t obr;      /**< \brief option byte register    offset : 0x1c */
     __IO uint32_t wrpr;     /**< \brief write protect register  offset : 0x20 */
     __IO uint32_t ecr;
-} amhw_zlg237_flash_t;
+} amhw_stm32f103rbt6_flash_t;
 
 /**
  * \brief Check if prefetch buffer is on
@@ -89,7 +89,7 @@ typedef struct amhw_zlg237_flash {
  *         AM_FALSE: prefetch buffer is off
  */
 am_static_inline
-am_bool_t amhw_zlg237_flash_check_prebuff_on (amhw_zlg237_flash_t *p_hw_flash)
+am_bool_t amhw_stm32f103rbt6_flash_check_prebuff_on (amhw_stm32f103rbt6_flash_t *p_hw_flash)
 {
     return (p_hw_flash->acr >> 5 & 0x1u) ? AM_TRUE : AM_FALSE;
 }
@@ -104,7 +104,7 @@ am_bool_t amhw_zlg237_flash_check_prebuff_on (amhw_zlg237_flash_t *p_hw_flash)
  * return none
  */
 am_static_inline
-void amhw_zlg237_flash_set_prebuff_on (amhw_zlg237_flash_t      *p_hw_flash,
+void amhw_stm32f103rbt6_flash_set_prebuff_on (amhw_stm32f103rbt6_flash_t      *p_hw_flash,
                                        am_bool_t              flag)
 {
     p_hw_flash->acr = (p_hw_flash->acr & (~(1u << 4))) | (flag << 4);
@@ -120,7 +120,7 @@ void amhw_zlg237_flash_set_prebuff_on (amhw_zlg237_flash_t      *p_hw_flash,
  * return none
  */
 am_static_inline
-void amhw_zlg237_flash_half_cycle_enable (amhw_zlg237_flash_t  *p_hw_flash,
+void amhw_stm32f103rbt6_flash_half_cycle_enable (amhw_stm32f103rbt6_flash_t  *p_hw_flash,
                                           am_bool_t             flag)
 {
     p_hw_flash->acr = (p_hw_flash->acr & (~(1u << 3))) | (flag << 3);
@@ -131,14 +131,14 @@ void amhw_zlg237_flash_half_cycle_enable (amhw_zlg237_flash_t  *p_hw_flash,
  * \ @{
  */
 
-#define AMHW_ZLG237_FLASH_LARENCY_O   0 /**< \brief 0 wait status */
-#define AMHW_ZLG237_FLASH_LARENCY_1   1 /**< \brief 1 wait status */
-#define AMHW_ZLG237_FLASH_LARENCY_2   2 /**< \brief 2 wait status */
-#define AMHW_ZLG237_FLASH_LARENCY_3   3 /**< \brief 3 wait status */
-#define AMHW_ZLG237_FLASH_LARENCY_7   4 /**< \brief 7 wait status */
-#define AMHW_ZLG237_FLASH_LARENCY_9   5 /**< \brief 9 wait status */
-#define AMHW_ZLG237_FLASH_LARENCY_19  6 /**< \brief 19 wait status */
-#define AMHW_ZLG237_FLASH_LARENCY_39  7 /**< \brief 39 wait status */
+#define AMHW_STM32F103RBT6_FLASH_LARENCY_O   0 /**< \brief 0 wait status */
+#define AMHW_STM32F103RBT6_FLASH_LARENCY_1   1 /**< \brief 1 wait status */
+#define AMHW_STM32F103RBT6_FLASH_LARENCY_2   2 /**< \brief 2 wait status */
+#define AMHW_STM32F103RBT6_FLASH_LARENCY_3   3 /**< \brief 3 wait status */
+#define AMHW_STM32F103RBT6_FLASH_LARENCY_7   4 /**< \brief 7 wait status */
+#define AMHW_STM32F103RBT6_FLASH_LARENCY_9   5 /**< \brief 9 wait status */
+#define AMHW_STM32F103RBT6_FLASH_LARENCY_19  6 /**< \brief 19 wait status */
+#define AMHW_STM32F103RBT6_FLASH_LARENCY_39  7 /**< \brief 39 wait status */
 
 /** @}*/
 
@@ -151,7 +151,7 @@ void amhw_zlg237_flash_half_cycle_enable (amhw_zlg237_flash_t  *p_hw_flash,
  * return none
  */
 am_static_inline
-void amhw_zlg237_flash_latency_set (amhw_zlg237_flash_t    *p_hw_flash,
+void amhw_stm32f103rbt6_flash_latency_set (amhw_stm32f103rbt6_flash_t    *p_hw_flash,
                                     uint32_t                flag)
 {
     p_hw_flash->acr = (p_hw_flash->acr & (~(3u << 0))) | (flag << 0);
@@ -166,7 +166,7 @@ void amhw_zlg237_flash_latency_set (amhw_zlg237_flash_t    *p_hw_flash,
  * return none
  */
 am_static_inline
-void amhw_zlg237_flash_key_set (amhw_zlg237_flash_t  *p_hw_flash,
+void amhw_stm32f103rbt6_flash_key_set (amhw_stm32f103rbt6_flash_t  *p_hw_flash,
                                 uint32_t              value)
 {
     p_hw_flash->keyr = value;
@@ -181,7 +181,7 @@ void amhw_zlg237_flash_key_set (amhw_zlg237_flash_t  *p_hw_flash,
  * return none
  */
 am_static_inline
-void amhw_zlg237_flash_optkey_set (amhw_zlg237_flash_t    *p_hw_flash,
+void amhw_stm32f103rbt6_flash_optkey_set (amhw_stm32f103rbt6_flash_t    *p_hw_flash,
                                    uint32_t             value)
 {
     p_hw_flash->optkeyr = value;
@@ -191,10 +191,10 @@ void amhw_zlg237_flash_optkey_set (amhw_zlg237_flash_t    *p_hw_flash,
  * \ @{
  */
 
-#define AMHW_ZLG237_FLASH_EOP_FLAG       (1U << 5) /**< \brief end of operation flag */
-#define AMHW_ZLG237_FLASH_WRPRTERR_FLAG  (1U << 4) /**< \brief write protect error flag */
-#define AMHW_ZLG237_FLASH_PGERR_FLAG     (1U << 2) /**< \brief programming  flag */
-#define AMHW_ZLG237_FLASH_BUSY_FLAG      (1U << 0) /**< \brief busy flag */
+#define AMHW_STM32F103RBT6_FLASH_EOP_FLAG       (1U << 5) /**< \brief end of operation flag */
+#define AMHW_STM32F103RBT6_FLASH_WRPRTERR_FLAG  (1U << 4) /**< \brief write protect error flag */
+#define AMHW_STM32F103RBT6_FLASH_PGERR_FLAG     (1U << 2) /**< \brief programming  flag */
+#define AMHW_STM32F103RBT6_FLASH_BUSY_FLAG      (1U << 0) /**< \brief busy flag */
 /** @}*/
 
 /**
@@ -206,7 +206,7 @@ void amhw_zlg237_flash_optkey_set (amhw_zlg237_flash_t    *p_hw_flash,
  * return AM_TRUE or FLASE
  */
 am_static_inline
-am_bool_t amhw_zlg237_flash_status_check (amhw_zlg237_flash_t *p_hw_flash,
+am_bool_t amhw_stm32f103rbt6_flash_status_check (amhw_stm32f103rbt6_flash_t *p_hw_flash,
                                           uint32_t             flag)
 {
     return (p_hw_flash->sr & flag) ? AM_TRUE : AM_FALSE;
@@ -221,7 +221,7 @@ am_bool_t amhw_zlg237_flash_status_check (amhw_zlg237_flash_t *p_hw_flash,
  * return none
  */
 am_static_inline
-void amhw_zlg237_flash_status_flag_clr (amhw_zlg237_flash_t *p_hw_flash,
+void amhw_stm32f103rbt6_flash_status_flag_clr (amhw_stm32f103rbt6_flash_t *p_hw_flash,
                                         uint32_t             flag)
 {
     p_hw_flash->sr |= flag;
@@ -232,16 +232,16 @@ void amhw_zlg237_flash_status_flag_clr (amhw_zlg237_flash_t *p_hw_flash,
  * \ @{
  */
 
-#define AMHW_ZLG237_FLASH_EOP_INT_EN_MASK  (1U << 12) /**< \brief End of operation interrupt enable */
-#define AMHW_ZLG237_FLASH_ERR_INT_EN_MASK  (1U << 10) /**< \brief error interrupt enable */
-#define AMHW_ZLG237_FLASH_OPTWRE_EN_MASK   (1U << 9)  /**< \brief option byte write enable */
-#define AMHW_ZLG237_FLASH_LOCK_MASK        (1U << 7)  /**< \brief lock */
-#define AMHW_ZLG237_FLASH_START_MASK       (1U << 6)  /**< \brief start erase */
-#define AMHW_ZLG237_FLASH_OPT_ERASE_MASK   (1U << 5)  /**< \brief option byte erase */
-#define AMHW_ZLG237_FLASH_OPT_PROGRAM_MASK (1U << 4)  /**< \brief option byte programming */
-#define AMHW_ZLG237_FLASH_MASS_ERASE_MASK  (1U << 2)  /**< \brief mass erase */
-#define AMHW_ZLG237_FLASH_PAGE_ERASE_MASK  (1U << 1)  /**< \brief page erase */
-#define AMHW_ZLG237_FLASH_PROGRAM_MASK     (1U << 0)  /**< \brief programming */
+#define AMHW_STM32F103RBT6_FLASH_EOP_INT_EN_MASK  (1U << 12) /**< \brief End of operation interrupt enable */
+#define AMHW_STM32F103RBT6_FLASH_ERR_INT_EN_MASK  (1U << 10) /**< \brief error interrupt enable */
+#define AMHW_STM32F103RBT6_FLASH_OPTWRE_EN_MASK   (1U << 9)  /**< \brief option byte write enable */
+#define AMHW_STM32F103RBT6_FLASH_LOCK_MASK        (1U << 7)  /**< \brief lock */
+#define AMHW_STM32F103RBT6_FLASH_START_MASK       (1U << 6)  /**< \brief start erase */
+#define AMHW_STM32F103RBT6_FLASH_OPT_ERASE_MASK   (1U << 5)  /**< \brief option byte erase */
+#define AMHW_STM32F103RBT6_FLASH_OPT_PROGRAM_MASK (1U << 4)  /**< \brief option byte programming */
+#define AMHW_STM32F103RBT6_FLASH_MASS_ERASE_MASK  (1U << 2)  /**< \brief mass erase */
+#define AMHW_STM32F103RBT6_FLASH_PAGE_ERASE_MASK  (1U << 1)  /**< \brief page erase */
+#define AMHW_STM32F103RBT6_FLASH_PROGRAM_MASK     (1U << 0)  /**< \brief programming */
 
 /** @}*/
 
@@ -254,7 +254,7 @@ void amhw_zlg237_flash_status_flag_clr (amhw_zlg237_flash_t *p_hw_flash,
  * return none
  */
 am_static_inline
-void amhw_zlg237_flash_cs_reg_set (amhw_zlg237_flash_t *p_hw_flash, uint32_t flag)
+void amhw_stm32f103rbt6_flash_cs_reg_set (amhw_stm32f103rbt6_flash_t *p_hw_flash, uint32_t flag)
 {
 
     p_hw_flash->cr |= flag;
@@ -270,7 +270,7 @@ void amhw_zlg237_flash_cs_reg_set (amhw_zlg237_flash_t *p_hw_flash, uint32_t fla
  * return none
  */
 am_static_inline
-void amhw_zlg237_flash_cs_reg_clr (amhw_zlg237_flash_t *p_hw_flash, uint32_t flag)
+void amhw_stm32f103rbt6_flash_cs_reg_clr (amhw_stm32f103rbt6_flash_t *p_hw_flash, uint32_t flag)
 {
     p_hw_flash->cr &= ~flag;
 }
@@ -283,7 +283,7 @@ void amhw_zlg237_flash_cs_reg_clr (amhw_zlg237_flash_t *p_hw_flash, uint32_t fla
  * return the value of Flash control register
  */
 am_static_inline
-uint32_t amhw_zlg237_flash_cs_reg_get (amhw_zlg237_flash_t *p_hw_flash)
+uint32_t amhw_stm32f103rbt6_flash_cs_reg_get (amhw_stm32f103rbt6_flash_t *p_hw_flash)
 {
     return p_hw_flash->cr;
 }
@@ -296,7 +296,7 @@ uint32_t amhw_zlg237_flash_cs_reg_get (amhw_zlg237_flash_t *p_hw_flash)
  * return data0
  */
 am_static_inline
-uint8_t amhw_zlg237_flash_opt_data0_get (amhw_zlg237_flash_t *p_hw_flash)
+uint8_t amhw_stm32f103rbt6_flash_opt_data0_get (amhw_stm32f103rbt6_flash_t *p_hw_flash)
 {
     return ((p_hw_flash->obr >> 10) & 0xffu);
 }
@@ -309,7 +309,7 @@ uint8_t amhw_zlg237_flash_opt_data0_get (amhw_zlg237_flash_t *p_hw_flash)
  * return data0
  */
 am_static_inline
-uint8_t amhw_zlg237_flash_opt_data1_get (amhw_zlg237_flash_t *p_hw_flash)
+uint8_t amhw_stm32f103rbt6_flash_opt_data1_get (amhw_stm32f103rbt6_flash_t *p_hw_flash)
 {
     return ((p_hw_flash->obr >> 18) & 0xffu);
 }
@@ -319,12 +319,12 @@ uint8_t amhw_zlg237_flash_opt_data1_get (amhw_zlg237_flash_t *p_hw_flash)
  * \ @{
  */
 
-#define AMHW_ZLG237_FLASH_BOOT1_MASK      (1U << 6) /**< \brief BOOT1 */
-#define AMHW_ZLG237_FLASH_RST_STDBY_MASK  (1U << 4) /**< \brief RST_STDBY */
-#define AMHW_ZLG237_FLASH_RST_STOP_MASK   (1U << 3) /**< \brief RST_STOP */
-#define AMHW_ZLG237_FLASH_WDG_SW_MASK     (1U << 2) /**< \brief WDG_SW */
-#define AMHW_ZLG237_FLASH_RSPRT_MASK      (1U << 1) /**< \brief read protection level status */
-#define AMHW_ZLG237_FLASH_OPT_ERR_MASK    (1U << 0) /**< \brief option byte error */
+#define AMHW_STM32F103RBT6_FLASH_BOOT1_MASK      (1U << 6) /**< \brief BOOT1 */
+#define AMHW_STM32F103RBT6_FLASH_RST_STDBY_MASK  (1U << 4) /**< \brief RST_STDBY */
+#define AMHW_STM32F103RBT6_FLASH_RST_STOP_MASK   (1U << 3) /**< \brief RST_STOP */
+#define AMHW_STM32F103RBT6_FLASH_WDG_SW_MASK     (1U << 2) /**< \brief WDG_SW */
+#define AMHW_STM32F103RBT6_FLASH_RSPRT_MASK      (1U << 1) /**< \brief read protection level status */
+#define AMHW_STM32F103RBT6_FLASH_OPT_ERR_MASK    (1U << 0) /**< \brief option byte error */
 
 /** @}*/
 
@@ -336,7 +336,7 @@ uint8_t amhw_zlg237_flash_opt_data1_get (amhw_zlg237_flash_t *p_hw_flash)
  * return AM_TRUE or FLASE
  */
 am_static_inline
-am_bool_t amhw_zlg237_flash_opt_staus_check (amhw_zlg237_flash_t *p_hw_flash,
+am_bool_t amhw_stm32f103rbt6_flash_opt_staus_check (amhw_stm32f103rbt6_flash_t *p_hw_flash,
                                              uint8_t              flag)
 {
     return ((p_hw_flash->obr & flag) ? AM_TRUE : AM_FALSE);
@@ -351,7 +351,7 @@ am_bool_t amhw_zlg237_flash_opt_staus_check (amhw_zlg237_flash_t *p_hw_flash,
  * return none
  */
 am_static_inline
-void amhw_zlg237_flash_address_set (amhw_zlg237_flash_t *p_hw_flash,
+void amhw_stm32f103rbt6_flash_address_set (amhw_stm32f103rbt6_flash_t *p_hw_flash,
                                     uint32_t             value)
 {
     p_hw_flash->ar = value;
@@ -366,14 +366,14 @@ void amhw_zlg237_flash_address_set (amhw_zlg237_flash_t *p_hw_flash,
  * return none
  */
 am_static_inline
-void amhw_zlg237_flash_wrpr_set (amhw_zlg237_flash_t *p_hw_flash,
+void amhw_stm32f103rbt6_flash_wrpr_set (amhw_stm32f103rbt6_flash_t *p_hw_flash,
                                  uint32_t             value)
 {
     p_hw_flash->wrpr = value;
 }
 
-#define AMHW_ZLG237_FLASH_NO_HALF_PAGE_ERASE   0
-#define AMHW_ZLG237_FLASH_HALF_PAGE_ERASE      1
+#define AMHW_STM32F103RBT6_FLASH_NO_HALF_PAGE_ERASE   0
+#define AMHW_STM32F103RBT6_FLASH_HALF_PAGE_ERASE      1
 
 /**
  * \brief 设置是否半页擦除
@@ -386,14 +386,14 @@ void amhw_zlg237_flash_wrpr_set (amhw_zlg237_flash_t *p_hw_flash,
  * \return none
  */
 am_static_inline
-void amhw_zlg237_flash_ecr_haer_set(amhw_zlg237_flash_t  *p_hw_flash, uint8_t value)
+void amhw_stm32f103rbt6_flash_ecr_haer_set(amhw_stm32f103rbt6_flash_t  *p_hw_flash, uint8_t value)
 {
 
     p_hw_flash->ecr = (p_hw_flash->ecr & (~(1ul << 0))) | ((value & 0x1ul) << 0);
 }
 
-#define AMHW_ZLG237_FLASH_NO_WORD_PROGRAM   0
-#define AMHW_ZLG237_FLASH_WORD_PROGRAM      1
+#define AMHW_STM32F103RBT6_FLASH_NO_WORD_PROGRAM   0
+#define AMHW_STM32F103RBT6_FLASH_WORD_PROGRAM      1
 
 /**
  * \brief 设置是否使用word字编程
@@ -406,7 +406,7 @@ void amhw_zlg237_flash_ecr_haer_set(amhw_zlg237_flash_t  *p_hw_flash, uint8_t va
  * \return none
  */
 am_static_inline
-void amhw_zlg237_flash_ecr_wpg_set(amhw_zlg237_flash_t  *p_hw_flash, uint8_t value)
+void amhw_stm32f103rbt6_flash_ecr_wpg_set(amhw_stm32f103rbt6_flash_t  *p_hw_flash, uint8_t value)
 {
 
     p_hw_flash->ecr = ((p_hw_flash->ecr & (~(1ul << 3))) | ((value & 0x1ul) << 3));
@@ -444,6 +444,6 @@ void amhw_zlg237_flash_ecr_wpg_set(amhw_zlg237_flash_t  *p_hw_flash, uint8_t val
 }
 #endif
 
-#endif /* __AMHW_ZLG_FLASH_H */
+#endif /* __AMHW_STM32F103RBT6_FLASH_H */
 
 /* end of file */

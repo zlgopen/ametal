@@ -23,7 +23,7 @@
  * 4.程序可更换不同的键值来测试，键盘的键值表在"am_usbd_keyboard.h"中获取。
  *
  * \par 源代码
- * \snippet demo_zlg237_core_usbd_keyboard.c src_zlg237_core_usbd_keyboard
+ * \snippet demo_stm32f103rbt6_core_usbd_keyboard.c src_stm32f103rbt6_core_usbd_keyboard
  *
  * \internal
  * \par Modification History
@@ -32,28 +32,28 @@
  */
 
 /**
- * \addtogroup demo_if_demo_zlg237_core_usbd_keyboard
- * \copydoc demo_zlg237_core_usbd_keyboard.c
+ * \addtogroup demo_if_demo_stm32f103rbt6_core_usbd_keyboard
+ * \copydoc demo_stm32f103rbt6_core_usbd_keyboard.c
  */
 
-/** [src_demo_zlg237_core_usbd_keyboard] */
+/** [src_demo_stm32f103rbt6_core_usbd_keyboard] */
 
-#include "demo_zlg_entries.h"
-#include "am_zlg237_inst_init.h"
+#include "demo_stm32f103rbt6_entries.h"
+#include "am_stm32f103rbt6_inst_init.h"
 #include "am_usbd_keyboard.h"
-#include "demo_zlg_entries.h"
-#include "demo_am237_core_entries.h"
+#include "demo_stm32f103rbt6_entries.h"
+#include "demo_stm32f103rbt6_core_entries.h"
 
-void demo_zlg237_usbd_keyboard_entry (void)
+void demo_stm32f103rbt6_usbd_keyboard_entry (void)
 {
 
-    AM_DBG_INFO("demo zlg237_core usbd keyboard!\r\n");
+    AM_DBG_INFO("demo stm32f103rbt6_core usbd keyboard!\r\n");
     /* usb打印机实例初始化*/
-    am_usbd_keyboard_handle handle = am_zlg237_usbd_keyboard_inst_init();
+    am_usbd_keyboard_handle handle = am_stm32f103rbt6_usbd_keyboard_inst_init();
 
     demo_usbd_keyboard_entry(handle);
 }
 
-/** [src_demo_zlg237_core_usbd_keyboard] */
+/** [src_demo_stm32f103rbt6_core_usbd_keyboard] */
 
 /* end of file */

@@ -26,7 +26,7 @@
  *       PIOA_9 引脚连接 PC 串口的 RXD。
  *
  * \par 源代码
- * \snippet demo_zlg237_hw_gpio_trigger.c src_zlg237_hw_gpio_trigger
+ * \snippet demo_stm32f103rbt6_hw_gpio_trigger.c src_stm32f103rbt6_hw_gpio_trigger
  *
  * \internal
  * \par Modification History
@@ -35,42 +35,42 @@
  */
 
 /**
- * \addtogroup demo_if_zlg237_hw_gpio_trigger
- * \copydoc demo_zlg237_hw_gpio_trigger.c
+ * \addtogroup demo_if_stm32f103rbt6_hw_gpio_trigger
+ * \copydoc demo_stm32f103rbt6_hw_gpio_trigger.c
  */
 
-/** [src_zlg237_hw_gpio_trigger] */
+/** [src_stm32f103rbt6_hw_gpio_trigger] */
 #include "ametal.h"
 #include "am_gpio.h"
 #include "am_vdebug.h"
-#include "am_zlg237.h"
-#include "amhw_zlg237_gpio.h"
-#include "amhw_zlg237_exti.h"
-#include "amhw_zlg237_afio.h"
-#include "demo_zlg_entries.h"
-#include "demo_am237_core_entries.h"
+#include "am_stm32f103rbt6.h"
+#include "amhw_stm32f103rbt6_gpio.h"
+#include "amhw_stm32f103rbt6_exti.h"
+#include "amhw_stm32f103rbt6_afio.h"
+#include "demo_stm32f103rbt6_entries.h"
+#include "demo_stm32f103rbt6_core_entries.h"
 
 /**
  * \brief 例程入口
  */
-void demo_zlg237_core_hw_gpio_trigger_entry (void)
+void demo_stm32f103rbt6_core_hw_gpio_trigger_entry (void)
 {
 
-    AM_DBG_INFO("demo am237_core hw gpio trigger!\r\n");
+    AM_DBG_INFO("demo stm32f103rbt6_core hw gpio trigger!\r\n");
 
     /* 开启 GPIOC 端口时钟 */
     am_clk_enable(CLK_IOPC);
 
     am_clk_enable(CLK_AFIO);
 
-    demo_zlg_hw_gpio_trigger_entry((amhw_zlg_gpio_t *)ZLG237_GPIO,
-                                   (amhw_zlg_syscfg_t *)ZLG237_AFIO,
-                                   (amhw_zlg_exti_t *)ZLG237_EXTI,
+    demo_stm32f103rbt6_hw_gpio_trigger_entry((amhw_stm32f103rbt6_gpio_t *)STM32F103RBT6_GPIO,
+                                   (amhw_stm32f103rbt6_syscfg_t *)STM32F103RBT6_AFIO,
+                                   (amhw_stm32f103rbt6_exti_t *)STM32F103RBT6_EXTI,
                                    PIOC_7,
-                                   AMHW_ZLG_SYSCFG_EXTI_PORTSOURCE_GPIOC,
-                                   AMHW_ZLG_SYSCFG_EXTI_PINSOURCE_7,
-                                   (amhw_zlg_exti_line_num_t)AMHW_ZLG237_LINE_NUM7);
+                                   AMHW_STM32F103RBT6_SYSCFG_EXTI_PORTSOURCE_GPIOC,
+                                   AMHW_STM32F103RBT6_SYSCFG_EXTI_PINSOURCE_7,
+                                   (amhw_stm32f103rbt6_line_num_t)AMHW_STM32F103RBT6_LINE_NUM7);
 }
-/** [src_zlg237_hw_gpio_trigger] */
+/** [src_stm32f103rbt6_hw_gpio_trigger] */
 
 /* end of file */

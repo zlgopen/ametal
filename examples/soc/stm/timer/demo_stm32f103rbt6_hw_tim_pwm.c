@@ -39,25 +39,25 @@
 #include "am_delay.h"
 #include "am_vdebug.h"
 //#include "am_zlg116.h"
-#include "hw/amhw_zlg_tim.h"
+#include "hw/amhw_stm32f103rbt6_tim.h"
 #include "am_led.h"
 
 #define LED0          0
 /**
   * \brief PWM 中断服务函数
   */
-static void __zlg_tim_hw_pwm_irq_handler (void *p_arg)
+static void __stm32f103rbt6_tim_hw_pwm_irq_handler (void *p_arg)
 {
-    amhw_zlg_tim_t *p_hw_tim = (amhw_zlg_tim_t *)p_arg;
+    amhw_stm32f103rbt6_tim_t *p_hw_tim = (amhw_stm32f103rbt6_tim_t *)p_arg;
     uint8_t         i        = 1;
 
     for (i = 1; i <= 4 ; i++) {
-        if ((amhw_zlg_tim_status_flg_get(p_hw_tim, 1UL << i)) != 0) {
+        if ((amhw_stm32f103rbt6_tim_status_flg_get(p_hw_tim, 1UL << i)) != 0) {
 
 					  am_led_toggle(LED0);
 
             /* 清除通道 i 标志 */
-            amhw_zlg_tim_status_flg_clr(p_hw_tim, (1UL << i));
+            amhw_stm32f103rbt6_tim_status_flg_clr(p_hw_tim, (1UL << i));
         }
     }
 }
@@ -65,7 +65,7 @@ static void __zlg_tim_hw_pwm_irq_handler (void *p_arg)
 /**
  * \brief 配置定时器为 PWM 输出(PWM 模式 2)
  */
-void tim_pwm_chan_config (amhw_zlg_tim_t *p_hw_tim,
+void tim_pwm_chan_config (amhw_stm32f103rbt6_tim_t *p_hw_tim,
                           uint32_t        chan,
                           uint32_t        duty_ns,
                           uint32_t        period_ns,
@@ -96,72 +96,72 @@ void tim_pwm_chan_config (amhw_zlg_tim_t *p_hw_tim,
      }
 
     /* 设置分频值 */
-    amhw_zlg_tim_prescale_set(p_hw_tim, pre_reg);
+    amhw_stm32f103rbt6_tim_prescale_set(p_hw_tim, pre_reg);
 
     /* 重新计算PWM的周期及脉冲频率 */
     period_c = period_c / pre_real;
     duty_c = duty_c / pre_real;
 
     /* 设置自动重装寄存器的值 */
-    amhw_zlg_tim_arr_set(p_hw_tim, period_c - 1);
+    amhw_stm32f103rbt6_tim_arr_set(p_hw_tim, period_c - 1);
 
     /* 设置比较输出通道的匹配值 */
-    amhw_zlg_tim_ccr_ouput_reload_val_set(p_hw_tim,  duty_c - 1, chan);
+    amhw_stm32f103rbt6_tim_ccr_ouput_reload_val_set(p_hw_tim,  duty_c - 1, chan);
 
     /* 计数器清0 */
-    amhw_zlg_tim_count_set(p_hw_tim, 0);
+    amhw_stm32f103rbt6_tim_count_set(p_hw_tim, 0);
 
     /*　使能定ARR预装载 */
-    amhw_zlg_tim_arpe_enable(p_hw_tim);
+    amhw_stm32f103rbt6_tim_arpe_enable(p_hw_tim);
 
     /* 选择该通道为输出 */
-    amhw_zlg_tim_ccs_set(p_hw_tim, 0, chan);
+    amhw_stm32f103rbt6_tim_ccs_set(p_hw_tim, 0, chan);
 
     /* 选择该通道的模式为PWM模式2 */
-    amhw_zlg_tim_ocm_set(p_hw_tim, AMHW_ZLG_TIM_PWM_MODE2, chan);
+    amhw_stm32f103rbt6_tim_ocm_set(p_hw_tim, AMHW_STM32F103RBT6_TIM_PWM_MODE2, chan);
 
     /* PWM输出通道预装载使能 */
-    amhw_zlg_tim_ccs_ocpe_enable(p_hw_tim, chan);
+    amhw_stm32f103rbt6_tim_ccs_ocpe_enable(p_hw_tim, chan);
 
     /* 设置比较输出通道ccp高电平极性有效 */
-    amhw_zlg_tim_ccp_output_set(p_hw_tim, 0, chan);
+    amhw_stm32f103rbt6_tim_ccp_output_set(p_hw_tim, 0, chan);
 }
 
-void tim_pwm_enable (amhw_zlg_tim_t      *p_hw_tim,
-                     amhw_zlg_tim_type_t  type,
+void tim_pwm_enable (amhw_stm32f103rbt6_tim_t      *p_hw_tim,
+                     amhw_stm32f103rbt6_tim_type_t  type,
                      uint32_t             chan,
                      int32_t              int_num)
 {
 
     /* 使能通道PWM输出 */
-    amhw_zlg_tim_cce_output_enable(p_hw_tim, chan);
+    amhw_stm32f103rbt6_tim_cce_output_enable(p_hw_tim, chan);
 
     /* 高级定时器使能主输出MOE */
-    if ((AMHW_ZLG_TIM_TYPE0 == type) ||
-        (AMHW_ZLG_TIM_TYPE2 == type) ||
-        (AMHW_ZLG_TIM_TYPE3 == type)) {
+    if ((AMHW_STM32F103RBT6_TIM_TYPE0 == type) ||
+        (AMHW_STM32F103RBT6_TIM_TYPE2 == type) ||
+        (AMHW_STM32F103RBT6_TIM_TYPE3 == type)) {
 
-        amhw_zlg_tim_bdtr_enable(p_hw_tim, AMHW_ZLG_TIM_MOE);
+        amhw_stm32f103rbt6_tim_bdtr_enable(p_hw_tim, AMHW_STM32F103RBT6_TIM_MOE);
     }
 
     /* 产生更新事件，重新初始化Prescaler计数器 及Repetition计数器 */
-    amhw_zlg_tim_egr_set(p_hw_tim, AMHW_ZLG_TIM_UG);
+    amhw_stm32f103rbt6_tim_egr_set(p_hw_tim, AMHW_STM32F103RBT6_TIM_UG);
 
-    if (amhw_zlg_tim_status_flg_get(p_hw_tim, AMHW_ZLG_TIM_UG) != 0) {
+    if (amhw_stm32f103rbt6_tim_status_flg_get(p_hw_tim, AMHW_STM32F103RBT6_TIM_UG) != 0) {
         /* 更新定时器时会产生更新事件,清除标志位 */
-        amhw_zlg_tim_status_flg_clr(p_hw_tim, AMHW_ZLG_TIM_UG);
+        amhw_stm32f103rbt6_tim_status_flg_clr(p_hw_tim, AMHW_STM32F103RBT6_TIM_UG);
     }
 
     /* 连接中断回调函数 */
-    am_int_connect(int_num, __zlg_tim_hw_pwm_irq_handler, (void *)p_hw_tim);
+    am_int_connect(int_num, __stm32f103rbt6_tim_hw_pwm_irq_handler, (void *)p_hw_tim);
 
     /* 使能中断 */
-    amhw_zlg_tim_int_enable(p_hw_tim, (1ul << (chan + 1)));
+    amhw_stm32f103rbt6_tim_int_enable(p_hw_tim, (1ul << (chan + 1)));
 
     am_int_enable(int_num);
 
     /*　使能定时器TIM允许计数 */
-    amhw_zlg_tim_enable(p_hw_tim);
+    amhw_stm32f103rbt6_tim_enable(p_hw_tim);
 }
 
 /**
@@ -172,29 +172,29 @@ void tim_pwm_enable (amhw_zlg_tim_t      *p_hw_tim,
  *
  * \return 无
  */
-void tim_pwm_init (amhw_zlg_tim_t     *p_hw_tim, amhw_zlg_tim_type_t type)
+void tim_pwm_init (amhw_stm32f103rbt6_tim_t     *p_hw_tim, amhw_stm32f103rbt6_tim_type_t type)
 {
-    if ((AMHW_ZLG_TIM_TYPE0 == type) || (AMHW_ZLG_TIM_TYPE1 == type)) {
+    if ((AMHW_STM32F103RBT6_TIM_TYPE0 == type) || (AMHW_STM32F103RBT6_TIM_TYPE1 == type)) {
 
         /* 边沿对齐模式 */
-        amhw_zlg_tim_cms_set(p_hw_tim, 0);
+        amhw_stm32f103rbt6_tim_cms_set(p_hw_tim, 0);
 
         /* 向上计数 */
-        amhw_zlg_tim_dir_set(p_hw_tim, 0);
+        amhw_stm32f103rbt6_tim_dir_set(p_hw_tim, 0);
     }
 
     /* 设置时钟分割:TDTS = Tck_tin */
-    amhw_zlg_tim_ckd_set(p_hw_tim, 0);
+    amhw_stm32f103rbt6_tim_ckd_set(p_hw_tim, 0);
 
     /* 允许更新事件 */
-    amhw_zlg_tim_udis_enable(p_hw_tim);
+    amhw_stm32f103rbt6_tim_udis_enable(p_hw_tim);
 }
 
 /**
  * \brief 例程入口
  */
-void demo_zlg_hw_tim_pwm_entry (amhw_zlg_tim_t     *p_hw_tim,
-                                amhw_zlg_tim_type_t type,
+void demo_stm32f103rbt6_hw_tim_pwm_entry (amhw_stm32f103rbt6_tim_t     *p_hw_tim,
+                                amhw_stm32f103rbt6_tim_type_t type,
                                 uint32_t            chan,
                                 uint32_t            clk_rate,
                                 int32_t             inum)

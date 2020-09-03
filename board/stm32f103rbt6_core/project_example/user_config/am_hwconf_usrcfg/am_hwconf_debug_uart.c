@@ -23,7 +23,7 @@
 #include "ametal.h"
 #include "am_uart.h"
 #include "am_vdebug.h"
-#include "am_zlg237_inst_init.h"
+#include "am_stm32f103rbt6_inst_init.h"
 
 /**
  * \addtogroup am_if_src_hwconf_debug_uart
@@ -47,7 +47,7 @@ am_uart_handle_t am_debug_uart_inst_init (void)
 
 #if (__DEBUG_UART == 1)
 
-    handle = am_zlg237_usart1_inst_init();
+    handle = am_stm32f103rbt6_usart1_inst_init();
 
     /* 调试初始化 */
     am_debug_init(handle, __DEBUG_BAUDRATE);
@@ -56,7 +56,7 @@ am_uart_handle_t am_debug_uart_inst_init (void)
 
 #if (__DEBUG_UART == 2)
 
-    handle = am_zlg237_usart2_inst_init();
+    handle = am_stm32f103rbt6_usart2_inst_init();
 
     /* 调试初始化 */
     am_debug_init(handle, __DEBUG_BAUDRATE);
@@ -65,7 +65,7 @@ am_uart_handle_t am_debug_uart_inst_init (void)
 
 #if (__DEBUG_UART == 3)
 
-    handle = am_zlg237_usart3_inst_init();
+    handle = am_stm32f103rbt6_usart3_inst_init();
 
     /* 调试初始化 */
     am_debug_init(handle, __DEBUG_BAUDRATE);

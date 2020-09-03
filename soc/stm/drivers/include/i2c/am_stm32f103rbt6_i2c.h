@@ -12,7 +12,7 @@
 
 /**
  * \file
- * \brief  zlg237 I2C驱动接口
+ * \brief  stm32f103rbt6 I2C驱动接口
  *
  * \internal
  * \par Modification History
@@ -20,8 +20,8 @@
  * \endinternal
  */
 
-#ifndef __AM_ZLG_I2C_H
-#define __AM_ZLG_I2C_H
+#ifndef __AM_STM32F103RBT6_I2C_H
+#define __AM_STM32F103RBT6_I2C_H
 
 #ifdef __cplusplus
 extern "C" {
@@ -34,18 +34,18 @@ extern "C" {
 #include "am_softimer.h"
 
 #include "am_vdebug.h"
-#include "hw/amhw_zlg237_i2c.h"
+#include "hw/amhw_stm32f103rbt6_i2c.h"
 
 /**
- * \addtogroup am_zlg237_if_i2c
- * \copydoc am_zlg_i2c.h
+ * \addtogroup am_stm32f103rbt6_if_i2c
+ * \copydoc am_stm32f103rbt6_i2c.h
  * @{
  */
 
 /**
  * \brief I2C设备信息参数结构体
  */
-typedef struct am_zlg237_i2c_devinfo {
+typedef struct am_stm32f103rbt6_i2c_devinfo {
 
     /** \brief I2C寄存器块基址 */
     uint32_t  i2c_regbase;
@@ -76,12 +76,12 @@ typedef struct am_zlg237_i2c_devinfo {
     /** \brief 平台解初始化函数 */
     void    (*pfn_plfm_deinit)(void);
 
-} am_zlg237_i2c_devinfo_t;
+} am_stm32f103rbt6_i2c_devinfo_t;
 
 /**
  * \brief I2C设备结构体
  */
-typedef struct am_zlg237_i2c_dev {
+typedef struct am_stm32f103rbt6_i2c_dev {
 
     /** \brief 标准I2C服务 */
     am_i2c_serv_t                           i2c_serv;
@@ -126,24 +126,24 @@ typedef struct am_zlg237_i2c_dev {
     volatile uint32_t                       i2c_clock_speed;
 
     /** \brief I2C模式    IIC  SMBus 模式  */
-    volatile amhw_zlg237_i2c_mode_t         i2c_mode;
+    volatile amhw_stm32f103rbt6_i2c_mode_t         i2c_mode;
 
     /** \brief I2C快速模式下占空比 */
-    volatile amhw_zlg237_i2c_duty_t         i2c_dutycycle;
+    volatile amhw_stm32f103rbt6_i2c_duty_t         i2c_dutycycle;
 
     /** \brief I2C 自身地址 */
     volatile uint16_t                       i2c_ownaddress1;
 
     /** \brief I2C ACK信号使能状态  使能 禁能 */
-    volatile amhw_zlg237_i2c_ack_t          i2c_ack;
+    volatile amhw_stm32f103rbt6_i2c_ack_t          i2c_ack;
 
     /** \brief I2C 7位或10位地址是 ack信号地址 */
-    volatile amhw_zlg237_i2c_ack_address_t  i2c_acknowledgedaddress;
+    volatile amhw_stm32f103rbt6_i2c_ack_address_t  i2c_acknowledgedaddress;
 
     /** \brief 指向I2C设备信息的指针 */
-    const am_zlg237_i2c_devinfo_t             *p_devinfo;
+    const am_stm32f103rbt6_i2c_devinfo_t             *p_devinfo;
 
-} am_zlg237_i2c_dev_t;
+} am_stm32f103rbt6_i2c_dev_t;
 
 /**
  * \brief I2C初始化
@@ -153,8 +153,8 @@ typedef struct am_zlg237_i2c_dev {
  *
  * \return I2C标准服务操作句柄
  */
-am_i2c_handle_t am_zlg237_i2c_init (am_zlg237_i2c_dev_t           *p_dev,
-                                 const am_zlg237_i2c_devinfo_t *p_devinfo);
+am_i2c_handle_t am_stm32f103rbt6_i2c_init (am_stm32f103rbt6_i2c_dev_t           *p_dev,
+                                 const am_stm32f103rbt6_i2c_devinfo_t *p_devinfo);
 
 /**
  * \brief 解除I2C初始化
@@ -163,7 +163,7 @@ am_i2c_handle_t am_zlg237_i2c_init (am_zlg237_i2c_dev_t           *p_dev,
  *
  * \return 无
  */
-void am_zlg237_i2c_deinit (am_i2c_handle_t handle);
+void am_stm32f103rbt6_i2c_deinit (am_i2c_handle_t handle);
 
 /** @} */
 
@@ -171,6 +171,6 @@ void am_zlg237_i2c_deinit (am_i2c_handle_t handle);
 }
 #endif
 
-#endif /* __AM_ZLG_I2C_H */
+#endif /* __AM_STM32F103RBT6_I2C_H */
 
 /* end of file */

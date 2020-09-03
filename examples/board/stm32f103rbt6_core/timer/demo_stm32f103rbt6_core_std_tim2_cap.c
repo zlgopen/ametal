@@ -30,7 +30,7 @@
  *       和 AM_CFG_SYSTEM_TICK_ENABLE 定义为 0。
  *
  * \par 源代码
- * \snippet demo_zlg237_std_tim2_cap.c src_zlg237_std_tim2_cap
+ * \snippet demo_stm32f103rbt6_std_tim2_cap.c src_stm32f103rbt6_std_tim2_cap
  *
  * \internal
  * \par Modification history
@@ -39,33 +39,33 @@
  */
 
 /**
- * \addtogroup demo_if_zlg237_std_tim2_cap
- * \copydoc demo_zlg237_std_tim2_cap.c
+ * \addtogroup demo_if_stm32f103rbt6_std_tim2_cap
+ * \copydoc demo_stm32f103rbt6_std_tim2_cap.c
  */
 
-/** [src_zlg237_std_tim2_cap] */
+/** [src_stm32f103rbt6_std_tim2_cap] */
 #include "ametal.h"
 #include "am_vdebug.h"
-#include "am_zlg237_inst_init.h"
+#include "am_stm32f103rbt6_inst_init.h"
 #include "demo_std_entries.h"
-#include "demo_am237_core_entries.h"
+#include "demo_stm32f103rbt6_core_entries.h"
 
 /**
  * \brief 例程入口
  */
-void demo_zlg237_core_std_tim2_cap_entry (void)
+void demo_stm32f103rbt6_core_std_tim2_cap_entry (void)
 {
-    am_pwm_handle_t pwm_handle = am_zlg237_tim4_pwm_inst_init();
+    am_pwm_handle_t pwm_handle = am_stm32f103rbt6_tim4_pwm_inst_init();
 
-    AM_DBG_INFO("demo am237_core std tim2 cap!\r\n");
+    AM_DBG_INFO("demo stm32f103rbt6_core std tim2 cap!\r\n");
 
     /* TIM3 输出频率为 2KHz 的 PWM */
     am_pwm_config(pwm_handle, 0, 500000 / 2, 500000);
     am_pwm_enable(pwm_handle, 0);
 
-    demo_std_timer_cap_entry(am_zlg237_tim2_cap_inst_init(), 0);
+    demo_std_timer_cap_entry(am_stm32f103rbt6_tim2_cap_inst_init(), 0);
 
 }
-/** [src_zlg237_std_tim2_cap] */
+/** [src_stm32f103rbt6_std_tim2_cap] */
 
 /* end of file */

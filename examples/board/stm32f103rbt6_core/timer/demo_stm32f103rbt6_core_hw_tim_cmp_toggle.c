@@ -21,7 +21,7 @@
  *    LED0 需要短接 J9 跳线帽，才能被 PIOC_9 控制。
  *
  * \par 源代码
- * \snippet demo_zlg237_hw_tim_cmp_toggle.c src_zlg237_hw_tim_cmp_toggle
+ * \snippet demo_stm32f103rbt6_hw_tim_cmp_toggle.c src_stm32f103rbt6_hw_tim_cmp_toggle
  *
  * \internal
  * \par Modification history
@@ -30,25 +30,25 @@
  */
 
 /**
- * \addtogroup demo_if_zlg237_hw_tim_cmp_toggle
- * \copydoc demo_zlg237_hw_tim_cmp_toggle.c
+ * \addtogroup demo_if_stm32f103rbt6_hw_tim_cmp_toggle
+ * \copydoc demo_stm32f103rbt6_hw_tim_cmp_toggle.c
  */
 
-/** [src_zlg237_hw_tim_cmp_toggle] */
+/** [src_stm32f103rbt6_hw_tim_cmp_toggle] */
 #include "ametal.h"
 #include "am_vdebug.h"
-#include "am_zlg237.h"
-#include "am_zlg237_clk.h"
-#include "am_zlg237_inst_init.h"
-#include "demo_zlg_entries.h"
-#include "demo_am237_core_entries.h"
+#include "am_stm32f103rbt6.h"
+#include "am_stm32f103rbt6_clk.h"
+#include "am_stm32f103rbt6_inst_init.h"
+#include "demo_stm32f103rbt6_entries.h"
+#include "demo_stm32f103rbt6_core_entries.h"
 
 /**
  * \brief 例程入口
  */
-void demo_zlg237_core_hw_tim_cmp_toggle_entry (void)
+void demo_stm32f103rbt6_core_hw_tim_cmp_toggle_entry (void)
 {
-    AM_DBG_INFO("demo am237_core hw tim cmp toggle!\r\n");
+    AM_DBG_INFO("demo stm32f103rbt6_core hw tim cmp toggle!\r\n");
 
     /* 初始化引脚 */
     am_gpio_pin_cfg(PIOB_11, PIOB_11_TIM2_CH4_REMAP2 | PIOB_11_AF_PP);
@@ -57,14 +57,14 @@ void demo_zlg237_core_hw_tim_cmp_toggle_entry (void)
     am_clk_enable(CLK_TIM2);
 
     /* 复位定时器 */
-    am_zlg237_clk_reset(CLK_TIM2);
+    am_stm32f103rbt6_clk_reset(CLK_TIM2);
 
-    demo_zlg_hw_tim_cmp_toggle_entry(ZLG237_TIM2,
-                                     AMHW_ZLG_TIM_TYPE0,
+    demo_stm32f103rbt6_hw_tim_cmp_toggle_entry(STM32F103RBT6_TIM2,
+                                     AMHW_STM32F103RBT6_TIM_TYPE0,
                                      3,
                                      am_clk_rate_get(CLK_TIM2),
                                      INUM_TIM2);
 }
-/** [src_zlg237_hw_tim_cmp_toggle] */
+/** [src_stm32f103rbt6_hw_tim_cmp_toggle] */
 
 /* end of file */
