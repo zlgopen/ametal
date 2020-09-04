@@ -934,6 +934,11 @@ void am_zlg237_can_inst_deinit (am_can_handle_t handle);
 /** \brief 实例初始化，获得自动波特率服务句柄 */
 am_baudrate_detect_handle_t am_zlg237_baudrate_detect_inst_init (void);
 
+/** \brief  波特率检测 实例解初始化
+ *
+ */
+void am_zlg237_baudrate_detect_inst_deinit(am_baudrate_detect_handle_t handle);
+
 /**
  * @}
  */
