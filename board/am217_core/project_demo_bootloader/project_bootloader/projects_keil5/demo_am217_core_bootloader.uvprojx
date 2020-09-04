@@ -1752,26 +1752,6 @@
               <FilePath>..\..\..\..\..\components\bootloader\source\arch\arm\am_arm_boot.c</FilePath>
             </File>
             <File>
-              <FileName>am_boot_kft_command.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\components\bootloader\source\command_analyse\kboot_KinetisFlashTool\drivers\am_boot_kft_command.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_boot_kft_property.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\components\bootloader\source\command_analyse\kboot_KinetisFlashTool\drivers\am_boot_kft_property.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_boot_kft_serial_packet.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\components\bootloader\source\command_analyse\kboot_KinetisFlashTool\drivers\am_boot_kft_serial_packet.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_boot_kft.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\components\bootloader\source\command_analyse\kboot_KinetisFlashTool\am_boot_kft.c</FilePath>
-            </File>
-            <File>
               <FileName>am_boot.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\components\bootloader\source\drivers\am_boot.c</FilePath>
@@ -1815,6 +1795,26 @@
               <FileName>am_boot_serial_uart.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\components\bootloader\source\drivers\am_boot_serial_uart.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_boot_kft.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\components\bootloader\source\command_analyse\kboot_KinetisFlashTool\am_boot_kft.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_boot_kft_command.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\components\bootloader\source\command_analyse\kboot_KinetisFlashTool\drivers\am_boot_kft_command.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_boot_kft_property.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\components\bootloader\source\command_analyse\kboot_KinetisFlashTool\drivers\am_boot_kft_property.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_boot_kft_serial_packet.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\components\bootloader\source\command_analyse\kboot_KinetisFlashTool\drivers\am_boot_kft_serial_packet.c</FilePath>
             </File>
           </Files>
         </Group>

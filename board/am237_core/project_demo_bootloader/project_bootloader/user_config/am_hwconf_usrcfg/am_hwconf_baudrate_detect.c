@@ -34,7 +34,7 @@ void __zlg237_plfm_autobaud_deinit (void)
 }
 
 /** \brief 自动波特率的设备信息实例 */
-static am_baudrate_detect_devinfo_t __g_kl26_baudrate_detect_devinfo = {
+static am_baudrate_detect_devinfo_t __g_zlg237_baudrate_detect_devinfo = {
     PIOA_10,                           /**< \brief 被捕获引脚 */
     2,                                 /**< \brief CAP捕获通道号 */
     TIMER_WIDTH,                       /**< \brief TIMER定时器位数 */
@@ -45,15 +45,15 @@ static am_baudrate_detect_devinfo_t __g_kl26_baudrate_detect_devinfo = {
 };
 
 /** \brief 自动波特率功能的设备实例 */
-am_baudrate_detect_dev_t  __g_kl26_baudrate_detect_dev;
+am_baudrate_detect_dev_t  __g_zlg237_baudrate_detect_dev;
 
 /** \brief 实例初始化，获得自动波特率服务句柄 */
 am_baudrate_detect_handle_t am_zlg237_baudrate_detect_inst_init (void)
 {
     cap_handle = am_zlg237_tim1_cap_inst_init();
 
-    return am_baudrate_detect_init(&__g_kl26_baudrate_detect_dev,
-                                   &__g_kl26_baudrate_detect_devinfo,
+    return am_baudrate_detect_init(&__g_zlg237_baudrate_detect_dev,
+                                   &__g_zlg237_baudrate_detect_devinfo,
                                     cap_handle);
 }
 
