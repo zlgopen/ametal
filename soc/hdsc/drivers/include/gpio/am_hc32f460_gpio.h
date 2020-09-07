@@ -20,8 +20,8 @@
  * \endinternal
  */
 
-#ifndef __AM_ZMF159_GPIO_H
-#define __AM_ZMF159_GPIO_H
+#ifndef __AM_HC32F460_GPIO_H
+#define __AM_HC32F460_GPIO_H
 
 #ifdef __cplusplus
 extern "C" {
@@ -30,8 +30,6 @@ extern "C" {
 #include "am_types.h"
 #include "am_bitops.h"
 #include "hw/amhw_hc32f460_gpio.h"
-//#include "hw/AMHW_HC32F460_syscfg.h"
-//#include "am_zlg116_gpio_util.h"
 
 /**
  * \addtogroup am_hc32f460_if_gpio
@@ -66,7 +64,7 @@ typedef struct am_hc32f460_gpio_devinfo {
     uint32_t      syscfg_regbase;
 
     /** \brief EXIT中断号列表 */
-    const int8_t  inum_pin[7];
+    const uint8_t  inum_pin[16];
 
     /** \brief GPIO引脚数量 */
     const uint8_t pin_count;
@@ -97,6 +95,9 @@ typedef struct am_hc32f460_gpio_dev {
     /** \brief 参数有效标志 */
     am_bool_t                         valid_flg;
 
+    /** \brief 引脚触发中断类别 */
+    uint8_t                         int_type;
+
 } am_hc32f460_gpio_dev_t;
 
 /**
@@ -119,6 +120,22 @@ int am_hc32f460_gpio_init (am_hc32f460_gpio_dev_t           *p_dev,
  */
 void am_hc32f460_gpio_deinit (void);
 
+void Extint00_IrqHandler (void);
+void Extint01_IrqHandler (void);
+void Extint02_IrqHandler (void);
+void Extint03_IrqHandler (void);
+void Extint04_IrqHandler (void);
+void Extint05_IrqHandler (void);
+void Extint06_IrqHandler (void);
+void Extint07_IrqHandler (void);
+void Extint08_IrqHandler (void);
+void Extint09_IrqHandler (void);
+void Extint10_IrqHandler (void);
+void Extint11_IrqHandler (void);
+void Extint12_IrqHandler (void);
+void Extint13_IrqHandler (void);
+void Extint14_IrqHandler (void);
+void Extint15_IrqHandler (void);
 /**
  * @}
  */
@@ -127,6 +144,6 @@ void am_hc32f460_gpio_deinit (void);
 }
 #endif
 
-#endif /* __AM_ZMF159_GPIO_H */
+#endif /* __AM_HC32F460_GPIO_H */
 
 /* end of file */

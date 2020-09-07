@@ -120,7 +120,7 @@ static am_bool_t __hc32_hw_tim_init (amhw_hc32_tim_t *p_hw_tim,
     duty_c = period_c - duty_c;
 
     /* 设置某一通道的比较值 */
-    amhw_hc32_tim_mode23_ccrxy_set(p_hw_tim, chan, duty_c - 1);
+    amhw_hc32_tim_mode23_ccr_set(p_hw_tim, chan, duty_c - 1);
 
     /* 设置PWM输出模式为PWM2 */
     amhw_hc32_tim_mode23_compare_set(
@@ -169,14 +169,14 @@ static am_bool_t __hc32_hw_tim_init (amhw_hc32_tim_t *p_hw_tim,
 }
 
 /**
- * \brief 例程入口
+ * \brief 通用定时器端口刹车例程，通过 HW 层接口实现
  */
 void demo_hc32_hw_tim_port_brake_entry (void    *p_hw_tim,
-                                          uint8_t  type,
-                                          uint8_t  chan,
-                                          int      inum,
-                                          uint32_t duty_ns,
-                                          uint32_t period_ns)
+                                        uint8_t  type,
+                                        uint8_t  chan,
+                                        int      inum,
+                                        uint32_t duty_ns,
+                                        uint32_t period_ns)
 {
 
     amhw_hc32_tim_t *p_tim = (amhw_hc32_tim_t *)p_hw_tim;

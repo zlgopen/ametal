@@ -178,12 +178,12 @@ static void uart_hw_dma_init (amhw_hc32_uart_t *p_hw_uart)
 }
 
 /**
- * \brief 例程入口
+ * \brief UART DMA 接收例程，通过 HW 层接口实现
  */
 void demo_hc32_hw_uart_rx_dma_entry (void    *p_hw_uart,
-                                       uint32_t clk_rate,
-                                       int32_t  dma_chan,
-                                       int32_t  dma_src)
+                                     uint32_t clk_rate,
+                                     int32_t  dma_chan,
+                                     int32_t  dma_src)
 {
     gp_hw_uart = (amhw_hc32_uart_t *)p_hw_uart;
     g_dma_chan = dma_chan;

@@ -53,6 +53,9 @@ void demo_am116_core_drv_sleepmode_wake_up_entry (void)
 {
     AM_DBG_INFO("demo am116_core drv sleepmode wake up!\r\n");
 
+    /* ≥ı ºªØ PWR */
+    am_zlg116_pwr_inst_init();
+    
     demo_zlg116_drv_sleepmode_wake_up_entry();
 }
 /** [src_am116_core_drv_sleepmode_wake_up] */

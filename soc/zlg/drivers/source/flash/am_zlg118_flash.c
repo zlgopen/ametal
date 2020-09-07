@@ -55,7 +55,7 @@ am_local void __zlg118_flash_lockall(amhw_zlg118_flash_t *p_hw_flash)
     AM_ZLG118_FLASH_BYPASS(p_hw_flash);
     p_hw_flash->slock0 = AM_ZLG118_FLASH_LOCK_ALL;
     AM_ZLG118_FLASH_BYPASS(p_hw_flash);
-    p_hw_flash->slock0 = AM_ZLG118_FLASH_LOCK_ALL;
+    p_hw_flash->slock1 = AM_ZLG118_FLASH_LOCK_ALL;
     AM_ZLG118_FLASH_BYPASS(p_hw_flash);
     p_hw_flash->slock2 = AM_ZLG118_FLASH_LOCK_ALL;
     AM_ZLG118_FLASH_BYPASS(p_hw_flash);

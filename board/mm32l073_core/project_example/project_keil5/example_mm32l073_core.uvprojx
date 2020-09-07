@@ -682,6 +682,21 @@
               <FilePath>..\..\..\..\components\drivers\source\sensor\am_sensor_shtc1.c</FilePath>
             </File>
             <File>
+              <FileName>am_sensor_fxos8700cq.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\sensor\am_sensor_fxos8700cq.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_sensor_mpl3115a2.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\sensor\am_sensor_mpl3115a2.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_sensor_mag3110.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\sensor\am_sensor_mag3110.c</FilePath>
+            </File>
+            <File>
               <FileName>zlg72128.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\components\drivers\source\digitron_key\zlg72128.c</FilePath>
@@ -690,6 +705,31 @@
               <FileName>zlg72128_platform.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\components\drivers\source\digitron_key\zlg72128_platform.c</FilePath>
+            </File>
+            <File>
+              <FileName>zsn603.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\zsn603\zsn603.c</FilePath>
+            </File>
+            <File>
+              <FileName>zsn603_platform.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\zsn603\zsn603_platform.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_mk100.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\mk100\am_mk100.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_gs200.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\gs200\am_gs200.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_rs200.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\rs200\am_rs200.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -1157,6 +1197,11 @@
               <FilePath>..\..\..\..\examples\board\mm32l073_core\microport_board\demo_mm32l073_core_microport_rtc.c</FilePath>
             </File>
             <File>
+              <FileName>demo_mm32l073_core_microport_hmi_int.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\mm32l073_core\microport_board\demo_mm32l073_core_microport_hmi_int.c</FilePath>
+            </File>
+            <File>
               <FileName>demo_mm32l073_core_microport_rx8025t.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\board\mm32l073_core\microport_board\demo_mm32l073_core_microport_rx8025t.c</FilePath>
@@ -1471,6 +1516,71 @@
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\board\mm32l073_core\fm175xx\demo_mm32l073_core_dr_fm175xx_piccb_read_id.c</FilePath>
             </File>
+            <File>
+              <FileName>demo_mm32l073_zsn60x3auto_detect_test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\mm32l073_core\zsn603\demo_mm32l073_zsn60x3auto_detect_test.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_mm32l073_zsn603_led_test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\mm32l073_core\zsn603\demo_mm32l073_zsn603_led_test.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_mm32l073_zsn603_picca_active_test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\mm32l073_core\zsn603\demo_mm32l073_zsn603_picca_active_test.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_mm32l073_zsn603_piccb_active_test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\mm32l073_core\zsn603\demo_mm32l073_zsn603_piccb_active_test.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_mm32l073_core_sensor_fxos8700cq.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\mm32l073_core\sensor\demo_mm32l073_core_sensor_fxos8700cq.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_mm32l073_core_sensor_fxos8700cq_int.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\mm32l073_core\sensor\demo_mm32l073_core_sensor_fxos8700cq_int.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_mm32l073_core_sensor_mag3110.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\mm32l073_core\sensor\demo_mm32l073_core_sensor_mag3110.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_mm32l073_core_sensor_mag3110_int.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\mm32l073_core\sensor\demo_mm32l073_core_sensor_mag3110_int.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_mm32l073_core_sensor_mpl3115a2.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\mm32l073_core\sensor\demo_mm32l073_core_sensor_mpl3115a2.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_mm32l073_core_sensor_mpl3115a2_int.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\mm32l073_core\sensor\demo_mm32l073_core_sensor_mpl3115a2_int.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_mm32l073_core_mk100_test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\mm32l073_core\mk100\demo_mm32l073_core_mk100_test.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_mm32l073_core_gs200_set_baudrate.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\mm32l073_core\gs200\demo_mm32l073_core_gs200_set_baudrate.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_mm32l073_core_rs200_test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\mm32l073_core\rs200\demo_mm32l073_core_rs200_test.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -1530,6 +1640,41 @@
               <FileName>demo_fm175xx_piccb_read_id.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\components\drivers\demo_fm175xx_piccb_read_id.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zsn603_auto_detect_test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\components\drivers\demo_zsn603_auto_detect_test.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zsn603_led_test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\components\drivers\demo_zsn603_led_test.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zsn603_picca_active_test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\components\drivers\demo_zsn603_picca_active_test.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zsn603_piccb_active_test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\components\drivers\demo_zsn603_piccb_active_test.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_mk100.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\components\drivers\demo_mk100.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_gs200_baudrate.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\components\drivers\demo_gs200_baudrate.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_rs200.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\components\drivers\demo_rs200.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -1787,6 +1932,11 @@
               <FilePath>..\..\..\..\examples\std\rtc\demo_std_rtc.c</FilePath>
             </File>
             <File>
+              <FileName>demo_std_hmi_int.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\std\rtc\demo_std_hmi_int.c</FilePath>
+            </File>
+            <File>
               <FileName>demo_std_led_water_light.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\std\led\demo_std_led_water_light.c</FilePath>
@@ -1900,6 +2050,36 @@
               <FileName>demo_std_shtc1.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\std\sensor\shtc1\demo_std_shtc1.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_std_fxos8700cq.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\std\sensor\fxos8700cq\demo_std_fxos8700cq.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_std_fxos8700cq_int.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\std\sensor\fxos8700cq\demo_std_fxos8700cq_int.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_std_mpl3115a2.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\std\sensor\mpl3115a2\demo_std_mpl3115a2.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_std_mpl3115a2_int.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\std\sensor\mpl3115a2\demo_std_mpl3115a2_int.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_std_mag3110.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\std\sensor\mag3110\demo_std_mag3110.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_std_mag3110_int.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\std\sensor\mag3110\demo_std_mag3110_int.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -2195,6 +2375,46 @@
               <FileName>am_hwconf_mm32l073_spi_poll.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_mm32l073_spi_poll.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_zsn603_i2c.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zsn603_i2c.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_zsn603_uart.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zsn603_uart.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_sensor_fxos8700cq.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_sensor_fxos8700cq.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_sensor_mpl3115a2.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_sensor_mpl3115a2.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_sensor_mag3110.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_sensor_mag3110.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_mk100_uart.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_mk100_uart.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_gs200.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_gs200.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_rs200.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_rs200.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -2876,6 +3096,21 @@
               <FilePath>..\..\..\..\components\drivers\source\sensor\am_sensor_shtc1.c</FilePath>
             </File>
             <File>
+              <FileName>am_sensor_fxos8700cq.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\sensor\am_sensor_fxos8700cq.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_sensor_mpl3115a2.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\sensor\am_sensor_mpl3115a2.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_sensor_mag3110.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\sensor\am_sensor_mag3110.c</FilePath>
+            </File>
+            <File>
               <FileName>zlg72128.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\components\drivers\source\digitron_key\zlg72128.c</FilePath>
@@ -2884,6 +3119,31 @@
               <FileName>zlg72128_platform.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\components\drivers\source\digitron_key\zlg72128_platform.c</FilePath>
+            </File>
+            <File>
+              <FileName>zsn603.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\zsn603\zsn603.c</FilePath>
+            </File>
+            <File>
+              <FileName>zsn603_platform.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\zsn603\zsn603_platform.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_mk100.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\mk100\am_mk100.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_gs200.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\gs200\am_gs200.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_rs200.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\rs200\am_rs200.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -3351,6 +3611,11 @@
               <FilePath>..\..\..\..\examples\board\mm32l073_core\microport_board\demo_mm32l073_core_microport_rtc.c</FilePath>
             </File>
             <File>
+              <FileName>demo_mm32l073_core_microport_hmi_int.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\mm32l073_core\microport_board\demo_mm32l073_core_microport_hmi_int.c</FilePath>
+            </File>
+            <File>
               <FileName>demo_mm32l073_core_microport_rx8025t.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\board\mm32l073_core\microport_board\demo_mm32l073_core_microport_rx8025t.c</FilePath>
@@ -3665,6 +3930,71 @@
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\board\mm32l073_core\fm175xx\demo_mm32l073_core_dr_fm175xx_piccb_read_id.c</FilePath>
             </File>
+            <File>
+              <FileName>demo_mm32l073_zsn60x3auto_detect_test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\mm32l073_core\zsn603\demo_mm32l073_zsn60x3auto_detect_test.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_mm32l073_zsn603_led_test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\mm32l073_core\zsn603\demo_mm32l073_zsn603_led_test.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_mm32l073_zsn603_picca_active_test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\mm32l073_core\zsn603\demo_mm32l073_zsn603_picca_active_test.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_mm32l073_zsn603_piccb_active_test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\mm32l073_core\zsn603\demo_mm32l073_zsn603_piccb_active_test.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_mm32l073_core_sensor_fxos8700cq.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\mm32l073_core\sensor\demo_mm32l073_core_sensor_fxos8700cq.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_mm32l073_core_sensor_fxos8700cq_int.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\mm32l073_core\sensor\demo_mm32l073_core_sensor_fxos8700cq_int.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_mm32l073_core_sensor_mag3110.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\mm32l073_core\sensor\demo_mm32l073_core_sensor_mag3110.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_mm32l073_core_sensor_mag3110_int.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\mm32l073_core\sensor\demo_mm32l073_core_sensor_mag3110_int.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_mm32l073_core_sensor_mpl3115a2.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\mm32l073_core\sensor\demo_mm32l073_core_sensor_mpl3115a2.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_mm32l073_core_sensor_mpl3115a2_int.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\mm32l073_core\sensor\demo_mm32l073_core_sensor_mpl3115a2_int.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_mm32l073_core_mk100_test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\mm32l073_core\mk100\demo_mm32l073_core_mk100_test.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_mm32l073_core_gs200_set_baudrate.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\mm32l073_core\gs200\demo_mm32l073_core_gs200_set_baudrate.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_mm32l073_core_rs200_test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\mm32l073_core\rs200\demo_mm32l073_core_rs200_test.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -3724,6 +4054,41 @@
               <FileName>demo_fm175xx_piccb_read_id.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\components\drivers\demo_fm175xx_piccb_read_id.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zsn603_auto_detect_test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\components\drivers\demo_zsn603_auto_detect_test.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zsn603_led_test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\components\drivers\demo_zsn603_led_test.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zsn603_picca_active_test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\components\drivers\demo_zsn603_picca_active_test.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zsn603_piccb_active_test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\components\drivers\demo_zsn603_piccb_active_test.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_mk100.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\components\drivers\demo_mk100.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_gs200_baudrate.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\components\drivers\demo_gs200_baudrate.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_rs200.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\components\drivers\demo_rs200.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -3981,6 +4346,11 @@
               <FilePath>..\..\..\..\examples\std\rtc\demo_std_rtc.c</FilePath>
             </File>
             <File>
+              <FileName>demo_std_hmi_int.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\std\rtc\demo_std_hmi_int.c</FilePath>
+            </File>
+            <File>
               <FileName>demo_std_led_water_light.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\std\led\demo_std_led_water_light.c</FilePath>
@@ -4094,6 +4464,36 @@
               <FileName>demo_std_shtc1.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\std\sensor\shtc1\demo_std_shtc1.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_std_fxos8700cq.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\std\sensor\fxos8700cq\demo_std_fxos8700cq.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_std_fxos8700cq_int.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\std\sensor\fxos8700cq\demo_std_fxos8700cq_int.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_std_mpl3115a2.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\std\sensor\mpl3115a2\demo_std_mpl3115a2.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_std_mpl3115a2_int.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\std\sensor\mpl3115a2\demo_std_mpl3115a2_int.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_std_mag3110.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\std\sensor\mag3110\demo_std_mag3110.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_std_mag3110_int.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\std\sensor\mag3110\demo_std_mag3110_int.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -4389,6 +4789,46 @@
               <FileName>am_hwconf_mm32l073_spi_poll.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_mm32l073_spi_poll.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_zsn603_i2c.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zsn603_i2c.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_zsn603_uart.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zsn603_uart.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_sensor_fxos8700cq.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_sensor_fxos8700cq.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_sensor_mpl3115a2.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_sensor_mpl3115a2.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_sensor_mag3110.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_sensor_mag3110.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_mk100_uart.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_mk100_uart.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_gs200.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_gs200.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_rs200.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_rs200.c</FilePath>
             </File>
           </Files>
         </Group>

@@ -44,13 +44,12 @@
 #include "am_zlg116_pwr.h"
 #include "am_zlg116_clk.h"
 #include "hw/amhw_zlg_uart.h"
-
 /**
  * \brief 定时器回调函数
  */
 am_local void __tim_timing_callback (void *p_arg)
 {
-    ; /* VOID */
+     am_kprintf("1111");
 }
 
 /**
@@ -69,7 +68,7 @@ am_local void __sysclk_switch_to_lsi (void)
     amhw_zlg116_rcc_sys_clk_set(AMHW_ZLG116_SYSCLK_LSI);
 
     /* 失能 PLL */
-    amhw_zlg116_rcc_pll_disable();
+    amhw_zlg116_rcc_hsion_disable();
 }
 
 /**
@@ -77,11 +76,12 @@ am_local void __sysclk_switch_to_lsi (void)
  */
 am_local void __sysclk_switch_to_pll (void)
 {
-    amhw_zlg116_rcc_pll_enable();
-    while (amhw_zlg116_rcc_pllrdy_read() == AM_FALSE);
+    amhw_zlg116_rcc_hsion_enable();
+
+    while (amhw_zlg116_rcc_hsirdy_read() == AM_FALSE);
 
     /* 系统时钟选为 PLL */
-    amhw_zlg116_rcc_sys_clk_set(AMHW_ZLG116_SYSCLK_PLL);
+    amhw_zlg116_rcc_sys_clk_set(AMHW_ZLG116_SYSCLK_HSI_DIV6);
 
     /* 在正常模式下禁能 LSI 作为系统时钟 */
     amhw_zlg116_rcc_lsi_disable();
@@ -109,7 +109,7 @@ void demo_zlg116_drv_sleepmode_timer_wake_up_entry (am_timer_handle_t timer_hand
         __sysclk_switch_to_lsi();
 
         /* 设置定时中断周期为 1S，并启动定时器 */
-        am_timer_enable(timer_handle, 0, timer_clk_rate * 1);
+        am_timer_enable(timer_handle, 0, 40000 * 20);
 
         /* 进入睡眠模式 */
         am_zlg116_pwr_mode_into(AM_ZLG116_PWR_MODE_SLEEP);
@@ -119,10 +119,10 @@ void demo_zlg116_drv_sleepmode_timer_wake_up_entry (am_timer_handle_t timer_hand
 
         /* 将系统时钟源切换为 PLL */
         __sysclk_switch_to_pll();
-
+//        am_zlg116_uart1_inst_init();
         AM_DBG_INFO("wake_up!\r\n");
 
-        am_mdelay(10);
+//        am_mdelay(10);
     }
 }
 /** [src_zlg116_drv_sleepmode_timer_wake_up] */

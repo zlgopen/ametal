@@ -23,6 +23,23 @@
  */
 #include "hw/amhw_zlg116_rcc.h"
 
+#ifdef ZML165
+/* 使能或禁能外设 */
+static void __rcc_ahb_cmd (amhw_zlg116_ahb_peripheral peri, uint8_t cmd)
+{
+    uint32_t tempa = 0;
+
+    tempa = ZLG116_RCC->ahbenr;
+
+    if (cmd) {
+        tempa = (1ul << peri) | tempa;
+    } else {
+        tempa = (~(1ul << peri)) & tempa;
+    }
+
+    ZLG116_RCC->ahbenr = tempa;
+}
+#else
 /* 使能或禁能外设 */
 static void __rcc_ahb_cmd (amhw_zlg116_ahb_peripheral peri, uint8_t cmd)
 {
@@ -44,6 +61,10 @@ static void __rcc_ahb_cmd (amhw_zlg116_ahb_peripheral peri, uint8_t cmd)
 
     ZLG116_RCC->ahbenr = tempa;
 }
+#endif
+
+
+
 
 /**
  * \brief 使能AHB外设

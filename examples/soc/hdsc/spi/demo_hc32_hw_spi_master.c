@@ -119,10 +119,10 @@ void spi_loop_trans (amhw_hc32_spi_t *p_hw_spi,
 }
 
 /**
- * \brief 例程入口
+ * \brief SPI 主机例程，通过 HW 层接口实现
  */
 void demo_hc32_hw_spi_master_entry (void    *p_hw_spi,
-                                      int32_t  cs_pin)
+                                    int32_t  cs_pin)
 {
     uint8_t         i;
     uint8_t         spi_send_buf[40];

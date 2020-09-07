@@ -43,6 +43,8 @@ extern "C" {
 #include "zsn603.h"
 #include "am_xmodem.h"
 #include "am_baudrate_detect.h"
+#include "am_iso7816.h"
+#include "am_fmse_a03.h"
 /**
  * \brief EP24CXX 器件例程
  *
@@ -298,6 +300,63 @@ void demo_gs200_baudrate_entry (am_gs200_handle_t gs200_handle,uint32_t gs200_ba
  * \return 无
  */
 void demo_rs200_entry (am_rs200_handle_t handle);
+
+/**
+ * \brief ISO7816 接触式卡例程
+ * \param[in] iso7816_handle  ISO7816设备服务句柄
+ * \return 无
+ */
+void demo_iso7816_entry(am_iso7816_handle_t iso7816_handle);
+
+/**
+ * \brief FMSE-A03 二进制读写测试例程
+ * \param[in] handle： FMSE标准服务句柄
+ * \return 无
+ */
+void demo_fmse_binary_rw_test_entry (am_fmse_handle_t handle);
+
+/**
+ * \brief FMSE-A03 命令测试例程
+ * \param[in] handle： FMSE标准服务句柄
+ * \return 无
+ */
+void demo_fmse_cmd_test_entry (am_fmse_handle_t handle);
+
+/**
+ * \brief FMSE-A03 数据压缩例程
+ * \param[in] handle： FMSE标准服务句柄
+ * \return 无
+ */
+void demo_fmse_data_compress_test_entry (am_fmse_handle_t handle);
+
+/**
+ * \brief FMSE-A03 加解密测试例程
+ * \param[in] handle： FMSE标准服务句柄
+ * \return 无
+ */
+void demo_fmse_data_encrypt_and_decrypt_entry (am_fmse_handle_t handle);
+
+/**
+ * \brief FMSE-A03 ECC计算例程
+ * \param[in] handle： FMSE标准服务句柄
+ * \return 无
+ */
+void demo_fmse_ecc_calc_test_entry (am_fmse_handle_t handle);
+
+/**
+ * \brief FMSE-A03 密钥对生成例程
+ * \param[in] handle： FMSE标准服务句柄
+ * \param[in] mode  ： 加密模式  0：1024RSA   1：2048RSA   2：SM2
+ * \return 无
+ */
+void demo_fmse_gen_key_pair_entry (am_fmse_handle_t handle, uint8_t mode);
+
+/**
+ * \brief FMSE-A03 RSA载入例程
+ * \param[in] handle： FMSE标准服务句柄
+ * \return 无
+ */
+void demo_fmse_rsa_load_test_entry (am_fmse_handle_t  handle);
 
 #ifdef __cplusplus
 }

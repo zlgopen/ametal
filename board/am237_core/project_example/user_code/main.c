@@ -137,6 +137,19 @@ int am_main (void)
 //    demo_zlg237_core_can_int_entry();
 //    demo_zlg237_core_can_entry();
 //    demo_zlg237_core_std_can_entry();
+//    demo_zlg237_core_sensor_tmd3702vc_entry();
+//    demo_zlg237_core_sensor_tmd3702vc_int_entry();
+//    demo_zlg237_core_sensor_tcs3430_entry();
+//    demo_zlg237_core_sensor_tcs3430_int_entry();
+//    demo_zlg237_core_sensor_as621x_comparator_mode_entry();
+//    demo_zlg237_core_sensor_as621x_interrupt_mode_entry();
+//    demo_zlg237_core_sensor_as7341_entry();
+//    demo_zlg237_core_sensor_as7262_i2c_entry();
+//    demo_zlg237_core_sensor_as7262_i2c_int_entry();
+//    demo_zlg237_core_sensor_as7262_uart_entry();
+//    demo_zlg237_core_sensor_as5600_entry();
+//    demo_zlg237_core_sensor_tmf8801_entry();
+//    demo_zlg237_core_sensor_tmf8801_int_entry();
 
     while (1) {
 

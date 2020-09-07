@@ -67,11 +67,11 @@ void demo_hc32f03x_core_hw_lpuart_rx_dma_entry (void)
     am_clk_enable(CLK_LPUART0);
 
     demo_hc32_hw_lpuart_rx_dma_entry(HC32_LPUART0,
-                                       AMHW_HC32_LPUART_SCLK_SRC_PCLK,
-                                       16000000,
-                                       115200,
-                                       DMA_CHAN_1,
-                                       HC32_DMA_SRC_TYPE_LPUART0_RX);
+                                     AMHW_HC32_LPUART_SCLK_SRC_PCLK,
+                                     am_clk_rate_get(CLK_LPUART0),
+                                     115200,
+                                     DMA_CHAN_1,
+                                     HC32_DMA_SRC_TYPE_LPUART0_RX);
 }
 
 /** [src_hc32f03x_hw_lpuart_rx_dma] */

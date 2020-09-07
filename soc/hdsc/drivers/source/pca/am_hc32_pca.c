@@ -124,7 +124,7 @@ int am_hc32_pca_cap_set (am_hc32_pca_handle_t handle,
                          uint8_t              chan,
                          am_hc32_pca_capn_t   cap)
 {
-    am_hc32_pca_int_t int_clr;
+    am_hc32_pca_int_t int_clr = HC32_PCA_CCF0;
 
     if(num > 4 || handle == NULL || handle->p_devinfo->ioinfo == NULL) {
         return -AM_EINVAL;
@@ -198,7 +198,7 @@ int am_hc32_pca_cmp_cnt_set (am_hc32_pca_handle_t handle,
                              uint16_t             carr,
                              uint16_t             ccap)
 {
-    am_hc32_pca_int_t int_clr;
+    am_hc32_pca_int_t int_clr = HC32_PCA_CCF0;
 
     if(num > 4 || handle == NULL) {
         return -AM_EINVAL;

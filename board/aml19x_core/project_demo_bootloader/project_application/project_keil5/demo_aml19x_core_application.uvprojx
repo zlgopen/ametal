@@ -150,7 +150,7 @@
             <RestoreSysVw>1</RestoreSysVw>
           </Target>
           <RunDebugAfterBuild>0</RunDebugAfterBuild>
-          <TargetSelection>6</TargetSelection>
+          <TargetSelection>1</TargetSelection>
           <SimDlls>
             <CpuDll></CpuDll>
             <CpuDllArguments></CpuDllArguments>
@@ -164,7 +164,7 @@
             <PeripheralDll></PeripheralDll>
             <PeripheralDllArguments></PeripheralDllArguments>
             <InitializationFile></InitializationFile>
-            <Driver>Segger\JL2CM3.dll</Driver>
+            <Driver>BIN\UL2CM3.DLL</Driver>
           </TargetDlls>
         </DebugOption>
         <Utilities>
@@ -595,6 +595,81 @@
               <FileName>am_rx8025sa.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\components\drivers\source\rtc\am_rx8025sa.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_zlg9021.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\components\drivers\source\ble\am_zlg9021.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_zlg52810.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\components\drivers\source\ble\am_zlg52810.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_is25xx.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\components\drivers\source\flash\am_is25xx.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_mx25xx.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\components\drivers\source\flash\am_mx25xx.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_fm175xx_hc32.lib</FileName>
+              <FileType>4</FileType>
+              <FilePath>..\..\..\..\..\components\drivers\source\fm175xx\am_fm175xx_hc32.lib</FilePath>
+            </File>
+            <File>
+              <FileName>am_fm25clxx.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\components\drivers\source\fram\am_fm25clxx.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_mb85rsxx.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\components\drivers\source\fram\am_mb85rsxx.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_gs200.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\components\drivers\source\gs200\am_gs200.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_mk100.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\components\drivers\source\mk100\am_mk100.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_ep24cxx.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\components\drivers\source\nvram\am_ep24cxx.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_rs200.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\components\drivers\source\rs200\am_rs200.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_zm516x.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\components\drivers\source\zigbee\am_zm516x.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_zlg600.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\components\drivers\source\zlg600\am_zlg600.c</FilePath>
+            </File>
+            <File>
+              <FileName>zsn603.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\components\drivers\source\zsn603\zsn603.c</FilePath>
+            </File>
+            <File>
+              <FileName>zsn603_platform.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\components\drivers\source\zsn603\zsn603_platform.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -1267,11 +1342,6 @@
               <FilePath>..\..\..\..\..\examples\board\aml19x_core\opa\demo_hc32l19x_core_opa_one.c</FilePath>
             </File>
             <File>
-              <FileName>demo_hc32l19x_core_drv_rtc.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\aml19x_core\rtc\demo_hc32l19x_core_drv_rtc.c</FilePath>
-            </File>
-            <File>
               <FileName>demo_hc32l19x_core_hw_spi_master.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\examples\board\aml19x_core\spi\demo_hc32l19x_core_hw_spi_master.c</FilePath>
@@ -1516,15 +1586,155 @@
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\examples\board\aml19x_core\bootloader\demo_hc32l19x_core_double_uart_application.c</FilePath>
             </File>
+            <File>
+              <FileName>demo_hc32l19x_core_hw_rtc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\board\aml19x_core\rtc\demo_hc32l19x_core_hw_rtc.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_hc32l19x_core_std_rtc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\board\aml19x_core\rtc\demo_hc32l19x_core_std_rtc.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
           <GroupName>examples_components</GroupName>
           <Files>
             <File>
-              <FileName>demo_std_double_application.c</FileName>
+              <FileName>demo_ep24cxx.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\components\bootloader\demo_std_double_application.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\components\drivers\demo_ep24cxx.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_fm25clxx.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\components\drivers\demo_fm25clxx.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_fm175xx_cpu_card.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\components\drivers\demo_fm175xx_cpu_card.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_fm175xx_fm11rf005m_opra.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\components\drivers\demo_fm175xx_fm11rf005m_opra.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_fm175xx_picca_halt.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\components\drivers\demo_fm175xx_picca_halt.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_fm175xx_picca_lpcd_read_id.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\components\drivers\demo_fm175xx_picca_lpcd_read_id.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_fm175xx_picca_read_block.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\components\drivers\demo_fm175xx_picca_read_block.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_fm175xx_picca_read_id.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\components\drivers\demo_fm175xx_picca_read_id.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_fm175xx_picca_val_operate.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\components\drivers\demo_fm175xx_picca_val_operate.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_fm175xx_picca_write_block.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\components\drivers\demo_fm175xx_picca_write_block.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_fm175xx_piccb_read_id.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\components\drivers\demo_fm175xx_piccb_read_id.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_gs200_baudrate.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\components\drivers\demo_gs200_baudrate.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_mk100.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\components\drivers\demo_mk100.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_mx25xx.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\components\drivers\demo_mx25xx.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_rs200.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\components\drivers\demo_rs200.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zlg9021_baudrate.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\components\drivers\demo_zlg9021_baudrate.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zlg9021_led.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\components\drivers\demo_zlg9021_led.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zlg52810_baudrate.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\components\drivers\demo_zlg52810_baudrate.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zm516x.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\components\drivers\demo_zm516x.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zm516x_baudrate.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\components\drivers\demo_zm516x_baudrate.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zm516x_gpio.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\components\drivers\demo_zm516x_gpio.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zm516x_key_led.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\components\drivers\demo_zm516x_key_led.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zm516x_search.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\components\drivers\demo_zm516x_search.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zsn603_auto_detect_test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\components\drivers\demo_zsn603_auto_detect_test.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zsn603_led_test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\components\drivers\demo_zsn603_led_test.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zsn603_picca_active_test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\components\drivers\demo_zsn603_picca_active_test.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zsn603_piccb_active_test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\components\drivers\demo_zsn603_piccb_active_test.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -1642,11 +1852,6 @@
               <FilePath>..\..\..\..\..\examples\soc\hdsc\opa\demo_hc32_hw_opa_dac.c</FilePath>
             </File>
             <File>
-              <FileName>demo_hc32_hw_opa_one.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\soc\hdsc\opa\demo_hc32_hw_opa_one.c</FilePath>
-            </File>
-            <File>
               <FileName>demo_hc32_hw_spi_master.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\examples\soc\hdsc\spi\demo_hc32_hw_spi_master.c</FilePath>
@@ -1725,6 +1930,16 @@
               <FileName>demo_hc32_hw_wdt.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\examples\soc\hdsc\wdg\demo_hc32_hw_wdt.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_hc32_hw_opa.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\soc\hdsc\opa\demo_hc32_hw_opa.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_hc32_hw_rtc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\soc\hdsc\rtc\demo_hc32_hw_rtc.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -1910,6 +2125,11 @@
               <FileName>demo_std_multichan_adc.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\examples\std\adc\demo_std_multichan_adc.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_std_double_application.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\components\bootloader\demo_std_double_application.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -2370,7 +2590,7 @@
             <Oh166RecLen>16</Oh166RecLen>
           </OPTHX>
           <Simulator>
-            <UseSimulator>0</UseSimulator>
+            <UseSimulator>1</UseSimulator>
             <LoadApplicationAtStartup>1</LoadApplicationAtStartup>
             <RunToMain>1</RunToMain>
             <RestoreBreakpoints>1</RestoreBreakpoints>
@@ -2382,9 +2602,9 @@
             <RestoreSysVw>1</RestoreSysVw>
           </Simulator>
           <Target>
-            <UseTarget>1</UseTarget>
+            <UseTarget>0</UseTarget>
             <LoadApplicationAtStartup>1</LoadApplicationAtStartup>
-            <RunToMain>1</RunToMain>
+            <RunToMain>0</RunToMain>
             <RestoreBreakpoints>1</RestoreBreakpoints>
             <RestoreWatchpoints>1</RestoreWatchpoints>
             <RestoreMemoryDisplay>1</RestoreMemoryDisplay>
@@ -2394,7 +2614,7 @@
             <RestoreSysVw>1</RestoreSysVw>
           </Target>
           <RunDebugAfterBuild>0</RunDebugAfterBuild>
-          <TargetSelection>6</TargetSelection>
+          <TargetSelection>-1</TargetSelection>
           <SimDlls>
             <CpuDll></CpuDll>
             <CpuDllArguments></CpuDllArguments>
@@ -2408,7 +2628,7 @@
             <PeripheralDll></PeripheralDll>
             <PeripheralDllArguments></PeripheralDllArguments>
             <InitializationFile></InitializationFile>
-            <Driver>Segger\JL2CM3.dll</Driver>
+            <Driver></Driver>
           </TargetDlls>
         </DebugOption>
         <Utilities>
@@ -2839,6 +3059,81 @@
               <FileName>am_rx8025sa.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\components\drivers\source\rtc\am_rx8025sa.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_zlg9021.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\components\drivers\source\ble\am_zlg9021.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_zlg52810.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\components\drivers\source\ble\am_zlg52810.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_is25xx.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\components\drivers\source\flash\am_is25xx.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_mx25xx.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\components\drivers\source\flash\am_mx25xx.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_fm175xx_hc32.lib</FileName>
+              <FileType>4</FileType>
+              <FilePath>..\..\..\..\..\components\drivers\source\fm175xx\am_fm175xx_hc32.lib</FilePath>
+            </File>
+            <File>
+              <FileName>am_fm25clxx.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\components\drivers\source\fram\am_fm25clxx.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_mb85rsxx.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\components\drivers\source\fram\am_mb85rsxx.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_gs200.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\components\drivers\source\gs200\am_gs200.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_mk100.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\components\drivers\source\mk100\am_mk100.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_ep24cxx.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\components\drivers\source\nvram\am_ep24cxx.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_rs200.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\components\drivers\source\rs200\am_rs200.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_zm516x.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\components\drivers\source\zigbee\am_zm516x.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_zlg600.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\components\drivers\source\zlg600\am_zlg600.c</FilePath>
+            </File>
+            <File>
+              <FileName>zsn603.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\components\drivers\source\zsn603\zsn603.c</FilePath>
+            </File>
+            <File>
+              <FileName>zsn603_platform.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\components\drivers\source\zsn603\zsn603_platform.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -3511,11 +3806,6 @@
               <FilePath>..\..\..\..\..\examples\board\aml19x_core\opa\demo_hc32l19x_core_opa_one.c</FilePath>
             </File>
             <File>
-              <FileName>demo_hc32l19x_core_drv_rtc.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\aml19x_core\rtc\demo_hc32l19x_core_drv_rtc.c</FilePath>
-            </File>
-            <File>
               <FileName>demo_hc32l19x_core_hw_spi_master.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\examples\board\aml19x_core\spi\demo_hc32l19x_core_hw_spi_master.c</FilePath>
@@ -3760,15 +4050,155 @@
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\examples\board\aml19x_core\bootloader\demo_hc32l19x_core_double_uart_application.c</FilePath>
             </File>
+            <File>
+              <FileName>demo_hc32l19x_core_hw_rtc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\board\aml19x_core\rtc\demo_hc32l19x_core_hw_rtc.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_hc32l19x_core_std_rtc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\board\aml19x_core\rtc\demo_hc32l19x_core_std_rtc.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
           <GroupName>examples_components</GroupName>
           <Files>
             <File>
-              <FileName>demo_std_double_application.c</FileName>
+              <FileName>demo_ep24cxx.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\components\bootloader\demo_std_double_application.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\components\drivers\demo_ep24cxx.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_fm25clxx.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\components\drivers\demo_fm25clxx.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_fm175xx_cpu_card.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\components\drivers\demo_fm175xx_cpu_card.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_fm175xx_fm11rf005m_opra.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\components\drivers\demo_fm175xx_fm11rf005m_opra.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_fm175xx_picca_halt.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\components\drivers\demo_fm175xx_picca_halt.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_fm175xx_picca_lpcd_read_id.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\components\drivers\demo_fm175xx_picca_lpcd_read_id.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_fm175xx_picca_read_block.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\components\drivers\demo_fm175xx_picca_read_block.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_fm175xx_picca_read_id.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\components\drivers\demo_fm175xx_picca_read_id.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_fm175xx_picca_val_operate.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\components\drivers\demo_fm175xx_picca_val_operate.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_fm175xx_picca_write_block.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\components\drivers\demo_fm175xx_picca_write_block.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_fm175xx_piccb_read_id.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\components\drivers\demo_fm175xx_piccb_read_id.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_gs200_baudrate.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\components\drivers\demo_gs200_baudrate.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_mk100.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\components\drivers\demo_mk100.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_mx25xx.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\components\drivers\demo_mx25xx.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_rs200.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\components\drivers\demo_rs200.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zlg9021_baudrate.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\components\drivers\demo_zlg9021_baudrate.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zlg9021_led.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\components\drivers\demo_zlg9021_led.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zlg52810_baudrate.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\components\drivers\demo_zlg52810_baudrate.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zm516x.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\components\drivers\demo_zm516x.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zm516x_baudrate.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\components\drivers\demo_zm516x_baudrate.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zm516x_gpio.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\components\drivers\demo_zm516x_gpio.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zm516x_key_led.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\components\drivers\demo_zm516x_key_led.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zm516x_search.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\components\drivers\demo_zm516x_search.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zsn603_auto_detect_test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\components\drivers\demo_zsn603_auto_detect_test.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zsn603_led_test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\components\drivers\demo_zsn603_led_test.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zsn603_picca_active_test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\components\drivers\demo_zsn603_picca_active_test.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zsn603_piccb_active_test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\components\drivers\demo_zsn603_piccb_active_test.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -3886,11 +4316,6 @@
               <FilePath>..\..\..\..\..\examples\soc\hdsc\opa\demo_hc32_hw_opa_dac.c</FilePath>
             </File>
             <File>
-              <FileName>demo_hc32_hw_opa_one.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\soc\hdsc\opa\demo_hc32_hw_opa_one.c</FilePath>
-            </File>
-            <File>
               <FileName>demo_hc32_hw_spi_master.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\examples\soc\hdsc\spi\demo_hc32_hw_spi_master.c</FilePath>
@@ -3969,6 +4394,16 @@
               <FileName>demo_hc32_hw_wdt.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\examples\soc\hdsc\wdg\demo_hc32_hw_wdt.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_hc32_hw_opa.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\soc\hdsc\opa\demo_hc32_hw_opa.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_hc32_hw_rtc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\soc\hdsc\rtc\demo_hc32_hw_rtc.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -4154,6 +4589,11 @@
               <FileName>demo_std_multichan_adc.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\examples\std\adc\demo_std_multichan_adc.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_std_double_application.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\components\bootloader\demo_std_double_application.c</FilePath>
             </File>
           </Files>
         </Group>

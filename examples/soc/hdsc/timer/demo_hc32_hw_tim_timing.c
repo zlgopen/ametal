@@ -39,8 +39,7 @@
 #include "am_vdebug.h"
 #include "hw/amhw_hc32_tim.h"
 #include "am_led.h"
-
-#define LED0   0
+#include "am_board.h"
 
 /**
  * \brief PWM 中断服务函数
@@ -130,12 +129,12 @@ void tim_timing_init (amhw_hc32_tim_t *p_hw_tim, amhw_hc32_tim_type_t type)
 }
 
 /**
- * \brief 例程入口
+ * \brief 定时器定时例程，通过 HW 层接口实现
  */
 void demo_hc32_hw_tim_timing_entry (void    *p_hw_tim,
-                                      uint8_t  type,
-                                      uint32_t clk_rate,
-                                      int32_t  int_num)
+                                    uint8_t  type,
+                                    uint32_t clk_rate,
+                                    int32_t  int_num)
 {
     amhw_hc32_tim_t *p_tim = (amhw_hc32_tim_t *)p_hw_tim;
 

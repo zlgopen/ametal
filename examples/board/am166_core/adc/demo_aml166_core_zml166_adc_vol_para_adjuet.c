@@ -76,7 +76,7 @@ void demo_aml166_core_zml166_adc_vol_para_adjuet (void)
                    (uint32_t *)para,
                                16);
 
-    dome_zml166_adc_vol_measure_entry((void *)handle,
+    demo_zml166_adc_vol_measure_entry((void *)handle,
                                               para,
                                               AM_ZML166_ADC_PGA_1);
 }

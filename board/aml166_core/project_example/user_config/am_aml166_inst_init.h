@@ -760,9 +760,6 @@ void am_zlg116_spi1_poll_inst_deinit (am_spi_handle_t handle);
  * @}
  */
 
-#ifdef __cplusplus
-}
-#endif
 
 #endif  /* __AM_ZLG116_INST_INIT_H */
 

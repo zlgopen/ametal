@@ -73,7 +73,8 @@ static int __uart_poll_putchar (void *p_drv, char outchar);
 static int __uart_connect (void *p_drv);
 #endif
 
-static void __uart_irq_handler (void *p_arg);
+static void __uart0_2_irq_handler (void *p_arg);
+static void __uart1_3_irq_handler (void *p_arg);
 
 /** \brief 标准层接口函数实现 */
 static const struct am_uart_drv_funcs __g_uart_drv_funcs = {
@@ -324,9 +325,15 @@ int __uart_mode_set (am_zlg118_uart_dev_t *p_dev, uint32_t new_mode)
 
     if (new_mode == AM_UART_MODE_INT) {
 
-        am_int_connect(p_dev->p_devinfo->inum,
-                       __uart_irq_handler,
-                       (void *)p_dev);
+        if (p_dev->p_devinfo->inum == 6){
+            am_int_connect(p_dev->p_devinfo->inum,
+                           __uart0_2_irq_handler,
+                           (void *)p_dev);
+        }else{
+            am_int_connect(p_dev->p_devinfo->inum,
+                           __uart1_3_irq_handler,
+                           (void *)p_dev);
+        }
 
         am_int_enable(p_dev->p_devinfo->inum);
 
@@ -594,28 +601,185 @@ void __uart_irq_tx_handler (am_zlg118_uart_dev_t *p_dev)
 }
 
 /**
- * \brief 串口中断服务函数
+ * \brief 串口0-2中断服务函数
  */
-void __uart_irq_handler (void *p_arg)
+
+/**< \brief 处理中断源复用需要全局调用一次设备信息 */
+extern am_zlg118_uart_dev_t  *__gp_uart0;
+extern am_zlg118_uart_dev_t  *__gp_uart2;
+void __uart0_2_irq_handler (void *p_arg)
 {
-    am_zlg118_uart_dev_t  *p_dev     = (am_zlg118_uart_dev_t *)p_arg;
-    amhw_zlg118_uart_t    *p_hw_uart = (amhw_zlg118_uart_t *)
-                                       p_dev->p_devinfo->uart_reg_base;
+    /* 同一个中断源的中断是否同时产生标志 */
+    uint8_t  flag_event    = 0;
+    uint32_t uart_int_stat = 0;
 
-    uint32_t uart_int_stat = amhw_zlg118_uart_flag_get(p_hw_uart);
+    amhw_zlg118_uart_t    *p_hw_uart  = NULL;
+    am_zlg118_uart_dev_t  *p_dev      = NULL;
 
-    if (amhw_zlg118_uart_flag_check(
+    amhw_zlg118_uart_t    *p_hw_uart0 = NULL;
+    amhw_zlg118_uart_t    *p_hw_uart2 = NULL;
+
+    am_zlg118_uart_dev_t  *p_dev0     = __gp_uart0;
+    if (p_dev0 != NULL){
+        p_hw_uart0 = (amhw_zlg118_uart_t *) p_dev0->p_devinfo->uart_reg_base;
+    }
+
+    am_zlg118_uart_dev_t  *p_dev2     = __gp_uart2;
+    if (p_dev2 != NULL){
+        p_hw_uart2 = (amhw_zlg118_uart_t *) p_dev2->p_devinfo->uart_reg_base;
+    }
+
+    /* 判断哪个串口使用中断（或者同时使用） */
+    if ( amhw_zlg118_uart_int_check (p_hw_uart0) &&
+        !amhw_zlg118_uart_int_check (p_hw_uart2)){
+        p_hw_uart = p_hw_uart0;
+        p_dev = p_dev0;
+        flag_event = 0;
+    }else if (!amhw_zlg118_uart_int_check (p_hw_uart0) &&
+               amhw_zlg118_uart_int_check (p_hw_uart2)){
+        p_hw_uart = p_hw_uart2;
+        p_dev = p_dev2;
+        flag_event = 0;
+    }else if (amhw_zlg118_uart_int_check (p_hw_uart0) &&
+              amhw_zlg118_uart_int_check (p_hw_uart2)){
+        flag_event = 1;
+    }
+
+    /* 判断中断类型 */
+    if (!flag_event){
+        uart_int_stat = amhw_zlg118_uart_flag_get(p_hw_uart);
+
+        if (amhw_zlg118_uart_flag_check(
             p_hw_uart, AMHW_ZLG118_UART_FLAG_RX_COMPLETE) == AM_TRUE) {
 
-         __uart_irq_rx_handler(p_dev);
+                 __uart_irq_rx_handler(p_dev);
 
-    } else if (amhw_zlg118_uart_flag_check(
-                    p_hw_uart, AMHW_ZLG118_UART_FLAG_TX_COMPLETE) == AM_TRUE) {
+        } else if (amhw_zlg118_uart_flag_check(
+            p_hw_uart, AMHW_ZLG118_UART_FLAG_TX_COMPLETE) == AM_TRUE) {
 
-        __uart_irq_tx_handler(p_dev);
+                __uart_irq_tx_handler(p_dev);
 
-    } else {
+        } else {
 
+        }
+    }else{
+        if (amhw_zlg118_uart_flag_check(
+                  p_hw_uart0, AMHW_ZLG118_UART_FLAG_RX_COMPLETE) == AM_TRUE){
+            uart_int_stat = amhw_zlg118_uart_flag_get(p_hw_uart0);
+            __uart_irq_rx_handler(p_dev0);
+        }else if (amhw_zlg118_uart_flag_check(
+                p_hw_uart0, AMHW_ZLG118_UART_FLAG_TX_COMPLETE) == AM_TRUE){
+            uart_int_stat = amhw_zlg118_uart_flag_get(p_hw_uart0);
+            __uart_irq_tx_handler(p_dev0);
+        }else if (amhw_zlg118_uart_flag_check(
+                p_hw_uart2, AMHW_ZLG118_UART_FLAG_RX_COMPLETE) == AM_TRUE){
+            uart_int_stat = amhw_zlg118_uart_flag_get(p_hw_uart2);
+            __uart_irq_rx_handler(p_dev2);
+        }else if (amhw_zlg118_uart_flag_check(
+                  p_hw_uart2, AMHW_ZLG118_UART_FLAG_TX_COMPLETE) == AM_TRUE){
+            uart_int_stat = amhw_zlg118_uart_flag_get(p_hw_uart2);
+            __uart_irq_tx_handler(p_dev2);
+        }else{
+            ;
+        }
+    }
+
+    /* 其他中断 */
+    if ((p_dev->other_int_enable & uart_int_stat) != 0) {
+
+        uart_int_stat &= p_dev->other_int_enable;
+
+        if (p_dev->pfn_err != NULL) {
+            p_dev->pfn_err(p_dev->err_arg,
+                           AM_ZLG118_UART_ERRCODE_UART_OTHER_INT,
+                           (void *)p_hw_uart,
+                           1);
+        }
+    }
+
+}
+
+/**
+ * \brief 串口1-3中断服务函数
+ */
+/**< \brief 处理中断源复用需要全局调用一次设备信息 */
+extern am_zlg118_uart_dev_t  *__gp_uart1;
+extern am_zlg118_uart_dev_t  *__gp_uart3;
+void __uart1_3_irq_handler (void *p_arg)
+{
+    /* 同一个中断源的中断是否同时产生标志 */
+    uint8_t  flag_event    = 0;
+    uint32_t uart_int_stat = 0;
+
+    amhw_zlg118_uart_t    *p_hw_uart  = NULL;
+    am_zlg118_uart_dev_t  *p_dev      = NULL;
+
+    amhw_zlg118_uart_t    *p_hw_uart1 = NULL;
+    amhw_zlg118_uart_t    *p_hw_uart3 = NULL;
+
+    am_zlg118_uart_dev_t  *p_dev1     = __gp_uart1;
+    if (p_dev1 != NULL){
+        p_hw_uart1 = (amhw_zlg118_uart_t *) p_dev1->p_devinfo->uart_reg_base;
+    }
+
+    am_zlg118_uart_dev_t  *p_dev3     = __gp_uart3;
+    if (p_dev3 != NULL){
+        p_hw_uart3 = (amhw_zlg118_uart_t *) p_dev3->p_devinfo->uart_reg_base;
+    }
+
+    /* 判断哪个串口使用中断（或者同时使用） */
+    if ( amhw_zlg118_uart_int_check (p_hw_uart1) &&
+        !amhw_zlg118_uart_int_check (p_hw_uart3)){
+        p_hw_uart = p_hw_uart1;
+        p_dev     = p_dev1;
+        flag_event = 0;
+    }else if (!amhw_zlg118_uart_int_check (p_hw_uart1) &&
+              amhw_zlg118_uart_int_check (p_hw_uart3)){
+        p_hw_uart = p_hw_uart3;
+        p_dev     = p_dev3;
+        flag_event = 0;
+    }else if (amhw_zlg118_uart_int_check (p_hw_uart1) &&
+              amhw_zlg118_uart_int_check (p_hw_uart3)){
+        flag_event = 1;
+    }
+
+    /* 判断中断类型 */
+    if (!flag_event){
+        uart_int_stat = amhw_zlg118_uart_flag_get(p_hw_uart);
+
+        if (amhw_zlg118_uart_flag_check(
+            p_hw_uart, AMHW_ZLG118_UART_FLAG_RX_COMPLETE) == AM_TRUE) {
+
+                 __uart_irq_rx_handler(p_dev);
+
+        } else if (amhw_zlg118_uart_flag_check(
+            p_hw_uart, AMHW_ZLG118_UART_FLAG_TX_COMPLETE) == AM_TRUE) {
+
+                __uart_irq_tx_handler(p_dev);
+
+        } else {
+
+        }
+    }else{
+        if (amhw_zlg118_uart_flag_check(
+                  p_hw_uart1, AMHW_ZLG118_UART_FLAG_RX_COMPLETE) == AM_TRUE){
+            uart_int_stat = amhw_zlg118_uart_flag_get(p_hw_uart1);
+            __uart_irq_rx_handler(p_dev1);
+        }else if (amhw_zlg118_uart_flag_check(
+                  p_hw_uart3, AMHW_ZLG118_UART_FLAG_RX_COMPLETE) == AM_TRUE){
+            uart_int_stat = amhw_zlg118_uart_flag_get(p_hw_uart3);
+            __uart_irq_rx_handler(p_dev3);
+        }else if (amhw_zlg118_uart_flag_check(
+                  p_hw_uart1, AMHW_ZLG118_UART_FLAG_TX_COMPLETE) == AM_TRUE){
+            uart_int_stat = amhw_zlg118_uart_flag_get(p_hw_uart1);
+            __uart_irq_tx_handler(p_dev1);
+        }else if (amhw_zlg118_uart_flag_check(
+                p_hw_uart3, AMHW_ZLG118_UART_FLAG_TX_COMPLETE) == AM_TRUE){
+            uart_int_stat = amhw_zlg118_uart_flag_get(p_hw_uart3);
+            __uart_irq_tx_handler(p_dev3);
+        }else{
+            ;
+        }
     }
 
     /* 其他中断 */
@@ -723,7 +887,16 @@ am_uart_handle_t am_zlg118_uart_init (am_zlg118_uart_dev_t           *p_dev,
     }
 
     /* 工作模式设置 */
-    amhw_zlg118_uart_mode_sel(p_hw_uart, p_devinfo->work_mode);
+    if (p_devinfo->work_mode == AMHW_ZLG118_UART_WORK_MODE_4) {
+        amhw_zlg118_uart_single_line_half_enable(p_hw_uart);
+        if ((p_devinfo->cfg_flags & (12u)) == AMHW_ZLG118_UART_PARITY_NO){
+            amhw_zlg118_uart_mode_sel(p_hw_uart, AMHW_ZLG118_UART_WORK_MODE_1);
+        }else {
+            amhw_zlg118_uart_mode_sel(p_hw_uart, AMHW_ZLG118_UART_WORK_MODE_3);
+        }
+    } else {
+        amhw_zlg118_uart_mode_sel(p_hw_uart, p_devinfo->work_mode);
+    }
     p_dev->work_mode = p_devinfo->work_mode;
 
     if(p_devinfo->work_mode == AMHW_ZLG118_UART_WORK_MODE_0) {
@@ -739,9 +912,9 @@ am_uart_handle_t am_zlg118_uart_init (am_zlg118_uart_dev_t           *p_dev,
     }
 
     /* 获取串口检验方式配置选项 */
-    if (p_devinfo->cfg_flags & (AMHW_ZLG118_UART_HW_PARITY_ODD)) {
+    if ((p_devinfo->cfg_flags & (12u)) == (AMHW_ZLG118_UART_HW_PARITY_ODD)) {
         p_dev->options |= AM_UART_PARENB | AM_UART_PARODD;
-    } else if(p_devinfo->cfg_flags & (AMHW_ZLG118_UART_HW_PARITY_EVEN)){
+    } else if((p_devinfo->cfg_flags & (12u)) == (AMHW_ZLG118_UART_HW_PARITY_EVEN)){
         p_dev->options |= AM_UART_PARENB;
     } else {
 

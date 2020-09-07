@@ -12,12 +12,12 @@
 
 /**
  * \file
- * \brief ZLG217 用户配置文件
+ * \brief HC32F460 用户配置文件
  * \sa am_prj_config.c
  *
  * \internal
  * \par Modification history
- * - 1.00 19-09-23  zp, first implementation
+ * - 1.00 20-01-10  cds, first implementation
  * \endinternal
  */
 
@@ -36,24 +36,25 @@ int main (void)
     am_hc32f460_clk_inst_init();
 #endif /* (AM_CFG_CLK_ENABLE == 1) */
 
-//#if (AM_CFG_INT_ENABLE == 1)
-//    am_zlg118_nvic_inst_init();
-//#endif /* (AM_CFG_INT_ENABLE == 1) */
+#if (AM_CFG_INT_ENABLE == 1)
+    am_hc32f460_nvic_inst_init();
+#endif /* (AM_CFG_INT_ENABLE == 1) */
 
 #if (AM_CFG_GPIO_ENABLE == 1)
     am_hc32f460_gpio_inst_init();
 #endif /* (AM_CFG_GPIO_ENABLE == 1) */
 
-//#if (AM_CFG_DMA_ENABLE == 1)
-//    am_zlg118_dma_inst_init();
-//#endif /* (AM_CFG_DMA_ENABLE == 1) */
+#if (AM_CFG_DMA_ENABLE == 1)
+    am_hc32f460_dma1_inst_init();
+    am_hc32f460_dma2_inst_init();
+#endif /* (AM_CFG_DMA_ENABLE == 1) */
 //
 //#if (AM_CFG_NVRAM_ENABLE == 1)
 //    am_nvram_inst_init();
 //#endif /* (AM_CFG_NVRAM_ENABLE == 1) */
 //
 //    /* 板级初始化 */
-//    am_board_init();
+    am_board_init();
 
     return am_main();
 }

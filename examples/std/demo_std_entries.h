@@ -512,6 +512,167 @@ void demo_std_mag3110_entry (am_sensor_handle_t handle);
 void demo_std_mag3110_int_entry (am_sensor_handle_t handle);
 
 /**
+ * \brief 环境光/颜色、接近传感器 TMD3702VC例程，通过查询模式实现
+ *
+ * \return 无
+ */
+void demo_std_tmd3702vc_entry (am_sensor_handle_t handle);
+
+/**
+ * \brief 环境光/颜色、接近传感器 TMD3702VC例程，通过触发模式实现
+ *
+ * \return 无
+ */
+void demo_std_tmd3702vc_int_entry (am_sensor_handle_t handle);
+
+/**
+ * \brief 环境光传感器 TSL2540例程，通过查询模式实现
+ *
+ * \return 无
+ */
+void demo_std_tsl2540_entry (am_sensor_handle_t handle);
+
+/**
+ * \brief 环境光传感器 TSL2540例程，通过触发模式实现
+ *
+ * \return 无
+ */
+void demo_std_tsl2540_int_entry (am_sensor_handle_t handle);
+
+/**
+ * \brief 环境光/颜色传感器 TCS3430例程，通过查询模式实现
+ *
+ * \return 无
+ */
+void demo_std_tcs3430_entry (am_sensor_handle_t handle);
+
+/**
+ * \brief 环境光/颜色传感器 TCS3430例程，通过触发模式实现
+ *
+ * \return 无
+ */
+void demo_std_tcs3430_int_entry (am_sensor_handle_t handle);
+
+/**
+ * \brief 接近传感器 TMD2635例程，通过查询模式实现
+ *
+ * \return 无
+ */
+void demo_std_tmd2635_entry (am_sensor_handle_t handle);
+
+/**
+ * \brief 接近传感器 TMD2635例程，通过触发模式实现
+ *
+ * \return 无
+ */
+void demo_std_tmd2635_int_entry (am_sensor_handle_t handle);
+
+/**
+ * \brief 环境光、接近传感器 TMD2750例程，通过查询模式实现
+ *
+ * \return 无
+ */
+void demo_std_tmd2750_entry (am_sensor_handle_t handle);
+
+/**
+ * \brief 环境光、接近传感器 TMD2750例程，通过触发模式实现
+ *
+ * \return 无
+ */
+void demo_std_tmd2750_int_entry (am_sensor_handle_t handle);
+
+/**
+ * \brief 温度传感器 AS621x 例程，通过比较模式实现
+ *
+ * \return 无
+ */
+void demo_std_as621x_comparator_mode_entry (am_sensor_handle_t handle);
+
+/**
+ * \brief 温度传感器 AS621x 例程，通过中断模式实现
+ *
+ * \return 无
+ */
+void demo_std_as621x_interrupt_mode_entry (am_sensor_handle_t handle);
+
+/**
+ * \brief 环境光/颜色、接近/手势传感器 TMG49037例程，通过查询模式实现
+ *
+ * \return 无
+ */
+void demo_std_tmg49037_entry (am_sensor_handle_t handle);
+
+/**
+ * \brief 环境光/颜色、接近/手势传感器 TMG49037例程，通过触发模式实现
+ *
+ * \return 无
+ */
+void demo_std_tmg49037_int_entry (am_sensor_handle_t handle);
+
+/**
+ * \brief 光谱传感器 AS7341例程，通过查询模式实现
+ *
+ * \return 无
+ */
+void demo_std_as7341_entry (am_sensor_handle_t handle);
+
+/**
+ * \brief 光谱传感器 AS7341例程，通过触发模式实现
+ *
+ * \return 无
+ */
+void demo_std_as7341_int_entry (am_sensor_handle_t handle);
+
+/**
+ * \brief 高光谱传感器 AS7421例程，通过查询模式实现
+ *
+ * \return 无
+ */
+void demo_std_as7421_entry (am_sensor_handle_t handle);
+
+/**
+ * \brief 高光谱传感器 AS7421例程，通过触发模式实现
+ *
+ * \return 无
+ */
+void demo_std_as7421_int_entry (am_sensor_handle_t handle);
+
+/**
+ * \brief 光谱传感器 AS7262例程，通过查询模式实现
+ *
+ * \return 无
+ */
+void demo_std_as7262_entry (am_sensor_handle_t handle);
+
+/**
+ * \brief 光谱传感器 AS7262例程，通过触发模式实现
+ *
+ * \return 无
+ */
+void demo_std_as7262_int_entry (am_sensor_handle_t handle);
+
+/**
+ * \brief 角度传感器 AS5600例程，通过查询模式实现
+ *
+ * \return 无
+ */
+void demo_std_as5600_entry (am_sensor_handle_t handle);
+
+/**
+ * \brief TOF传感器 TMF8801例程，通过查询模式实现
+ *
+ * \return 无
+ */
+void demo_std_tmf8801_entry (am_sensor_handle_t handle);
+
+/**
+ * \brief TOF传感器 TMF8801例程，通过触发模式实现
+ *
+ * \return 无
+ */
+void demo_std_tmf8801_int_entry (am_sensor_handle_t handle);
+
+/**
  * \brief SD Card读写例程
  *
  * \return 无

@@ -322,6 +322,9 @@ static void __i2c_irq_handler (void *p_arg)
     if (i2c_int_status & AMHW_ZLG_INT_FLAG_TX_ABRT) {
         amhw_zlg_i2c_intr_mask_clear(p_hw_i2c,
                                      AMHW_ZLG_INT_FLAG_TX_ABRT);
+
+        amhw_zlg_i2c_clr_tx_abort(p_hw_i2c);
+        p_hw_i2c->ic_clr_tx_abrt = 0;
         if (!__I2C_TRANS_EMPTY(p_dev)) {
             __softimer_stop(p_dev);
             __i2c_re_init(p_dev);
@@ -760,11 +763,13 @@ static int __i2c_mst_sm_event (am_zlg_i2c_dev_t *p_dev, uint32_t event)
                 } else if (p_dev->data_ptr == (p_cur_trans->nbytes - 1)) {
 
                     amhw_zlg_i2c_dat_write(p_hw_i2c, 0x0300);
+                    amhw_zlg_i2c_trans_abort(p_hw_i2c);
                     amhw_zlg_i2c_intr_mask_set(p_hw_i2c,
                                                AMHW_ZLG_INT_FLAG_RX_FULL);
                 } else {
                     __I2C_NEXT_STATE(__I2C_ST_M_RECV_DATA,
                                         __I2C_EVT_MST_RX);
+                    p_hw_i2c->ic_enable |= 0x02;
                     amhw_zlg_i2c_intr_mask_clear(p_hw_i2c,
                                                  AMHW_ZLG_INT_FLAG_RX_FULL);
                 }

@@ -93,6 +93,8 @@ typedef struct am_cs1237_adc_dev{
     uint8_t                        out_speed;
     /** \brief 通道 */
     uint8_t                        ch;
+    /** \brief REF使能 */
+    uint8_t                        ref;
     /** \brief 是否开启中断模式 */
     am_bool_t                      is_int;
 
@@ -149,7 +151,7 @@ typedef am_cs1237_adc_dev_t * am_cs1237_adc_handle_t; /**< \brief 句柄定义 */
  */
 
 #define AM_CS1237_CHANNEL_A         0      /**< \brief 通道 A,默认 */
-#define AM_CS1237_CHANNEL_RESERVE   1      /**< \brief 芯片保留使用位 */
+#define AM_CS1237_CHANNEL_B         1      /**< \brief 芯片保留使用位 */
 #define AM_CS1237_CHANNEL_TEMP      2      /**< \brief 温度 */
 #define AM_CS1237_CHANNEL_SHORT     3      /**< \brief 内短 */
 
@@ -240,6 +242,17 @@ int am_cs1237_ch_set(am_cs1237_adc_dev_t  *p_dev, uint32_t ch);
  *          AM_ERROR  : 设置失败，ADC未准备好
  */
 int am_cs1237_out_speed_set(am_cs1237_adc_dev_t  *p_dev, uint32_t speed);
+
+/**
+ * \brief CS1237 配置寄存器ref
+ *
+ * \param[in] p_dev : CS1237操作句柄
+ * \param[in] speed : 0 使用内部基准源     1使用外部基准源
+ *
+ * \retval  AM_OK     : 设置成功
+ *          AM_ERROR  : 设置失败，ADC未准备好
+ */
+int am_cs1237_ref_set(am_cs1237_adc_dev_t  *p_dev, uint8_t flag);
 
 /**
  * \brief CS1237 pga放大倍数读

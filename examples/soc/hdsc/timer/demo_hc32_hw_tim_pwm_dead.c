@@ -109,10 +109,10 @@ static am_bool_t __hc32_hw_tim_init (amhw_hc32_tim_t *p_hw_tim,
     amhw_hc32_tim_cnt16_count_set(p_hw_tim, 0);
 
     /* 设置某一通道A的比较值 */
-    amhw_hc32_tim_mode23_ccrxy_set(p_hw_tim, chan_a, duty_c - 1);
+    amhw_hc32_tim_mode23_ccr_set(p_hw_tim, chan_a, duty_c - 1);
 
     /* 设置某一通道B的比较值 */
-    amhw_hc32_tim_mode23_ccrxy_set(p_hw_tim, chan_b, duty_c - 1);
+    amhw_hc32_tim_mode23_ccr_set(p_hw_tim, chan_b, duty_c - 1);
 
     /* 设置通道A的PWM输出模式为PWM2 */
     amhw_hc32_tim_mode23_compare_set(
@@ -154,15 +154,15 @@ static am_bool_t __hc32_hw_tim_init (amhw_hc32_tim_t *p_hw_tim,
 }
 
 /**
- * \brief 例程入口
+ * \brief 定时器通道带死区的互补PWM输出例程，通过 HW 层接口实现
  */
 void demo_hc32_hw_tim_pwm_dead_entry (void    *p_hw_tim,
-                                        uint8_t  type,
-                                        uint8_t  chan_a,
-                                        uint8_t  chan_b,
-                                        uint32_t duty_us,
-                                        uint32_t period_us,
-                                        uint16_t dead_us)
+                                      uint8_t  type,
+                                      uint8_t  chan_a,
+                                      uint8_t  chan_b,
+                                      uint32_t duty_us,
+                                      uint32_t period_us,
+                                      uint16_t dead_us)
 {
 
     amhw_hc32_tim_t *p_tim = (amhw_hc32_tim_t *)p_hw_tim;

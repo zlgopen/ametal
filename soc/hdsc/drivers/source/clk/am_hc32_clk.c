@@ -360,14 +360,14 @@ static void __xth_enable (uint32_t xth_clk, uint32_t *sysclk)
     amhw_hc32_rcc_xth_xtal_driver_set(AMHW_HC32_XTH_XTAL_DRIVER_DEFAULT);
 
     /* 外部晶振工作频率选择 */
-    if((xth_clk >= 4000000) && (xth_clk < 6000000)) {
-        amhw_hc32_rcc_xth_xtal_fre_set(AMHW_HC32_XTH_XTAL_FRE_4_6);
-    } else if((xth_clk >= 6000000) && (xth_clk < 12000000)) {
-        amhw_hc32_rcc_xth_xtal_fre_set(AMHW_HC32_XTH_XTAL_FRE_6_12);
-    } else if((xth_clk >= 12000000) && (xth_clk < 20000000)) {
-        amhw_hc32_rcc_xth_xtal_fre_set(AMHW_HC32_XTH_XTAL_FRE_12_20);
+    if((xth_clk >= 4000000) && (xth_clk < 8000000)) {
+        amhw_hc32_rcc_xth_xtal_fre_set(AMHW_HC32_XTH_XTAL_FRE_4_8);
+    } else if((xth_clk >= 8000000) && (xth_clk < 16000000)) {
+        amhw_hc32_rcc_xth_xtal_fre_set(AMHW_HC32_XTH_XTAL_FRE_8_16);
+    } else if((xth_clk >= 16000000) && (xth_clk < 24000000)) {
+        amhw_hc32_rcc_xth_xtal_fre_set(AMHW_HC32_XTH_XTAL_FRE_16_24);
     } else {
-        amhw_hc32_rcc_xth_xtal_fre_set(AMHW_HC32_XTH_XTAL_FRE_20_32);
+        amhw_hc32_rcc_xth_xtal_fre_set(AMHW_HC32_XTH_XTAL_FRE_24_32);
     }
 
     /* 外部高速时钟XTH稳定时间选择 */
@@ -487,13 +487,9 @@ int am_hc32_clk_init (am_hc32_clk_dev_t           *p_dev,
     p_dev->p_devinfo  = p_devinfo;
     __gp_clk_dev      = p_dev;
 
-
-    if (p_devinfo->pllin_src == AMHW_HC32_PLL_INPUT_FRE_SRC_XTH_PF00) {
-
-        /* CLK平台初始化，配置时钟引脚 */
-        if (p_devinfo->pfn_plfm_init) {
-            p_devinfo->pfn_plfm_init();
-        }
+    /* CLK平台初始化，配置时钟引脚 */
+    if (p_devinfo->pfn_plfm_init) {
+        p_devinfo->pfn_plfm_init();
     }
 
     switch(p_devinfo->sysclk_src) {
@@ -552,7 +548,7 @@ int am_hc32_clk_init (am_hc32_clk_dev_t           *p_dev,
 
     hclk_unit = p_dev->hclk / 4000000;
 
-	am_hc32_flash_init(HC32_FLASH, hclk_unit, AM_TRUE);
+    am_hc32_flash_init(HC32_FLASH, hclk_unit, AM_TRUE);
 
     return AM_OK;
 }
@@ -605,7 +601,7 @@ int am_hc32_lpmode_clk_change (am_hc32_lpmode_mode_t mode)
     case AM_HC32_LPMODE_MODE_DEEPSLEEP:
         __g_lpmode_dev.lpmode_mode = AM_HC32_LPMODE_MODE_DEEPSLEEP;
         amhw_hc32_lpmode_sevonpend(AM_FALSE);
-        amhw_hc32_lpmode_sleepdeep(AM_FALSE);
+        amhw_hc32_lpmode_sleepdeep(AM_TRUE);
         amhw_hc32_lpmode_sleeponexit(AM_FALSE);
 
         if((__gp_clk_dev->sys_type != AMHW_HC32_SYSCLK_RCL) ||

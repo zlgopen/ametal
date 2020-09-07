@@ -60,8 +60,9 @@ extern "C" {
 
 #include "am_hc32_pca.h"
 #include "am_hc32_pcnt.h"
+#include "am_hc32_lcd.h"
+#include "am_hc32x3x_opa.h"
 //#include "amhw_hc32_rtc.h"
-//#include "am_hc32_pwr.h"
 #include "am_hwconf_hc32f03x_led_gpio.h"
 //#include "am_hwconf_led_gpio.h"
 #include "am_hwconf_key_gpio.h"
@@ -84,151 +85,6 @@ extern "C" {
  * \copydoc am_hc32f03x_inst_init.h
  * @{
  */
-
-
-/**
- * \brief  timer_pwm 例程
- *
- * \param[in] pwm_handle : cap标准句柄
- *
- * \param[in] pwm_chan   : cap 通道
- */
-void demo_std_timer_pwm_entry (am_pwm_handle_t pwm_handle, int pwm_chan);
-
-/**
- * \brief  timer_cap 例程
- *
- * \param[in] cap_handle : cap标准句柄
- *
- * \param[in] cap_chan   : cap 通道
- */
-void demo_std_timer_cap_entry (am_cap_handle_t cap_handle, int cap_chan);
-
-/**
- * \brief  uart_polling 例程
- *
- * \param[in] handle : uart标准句柄
- */
-void demo_std_uart_polling_entry (am_uart_handle_t handle);
-
-/**
- * \brief  delay 例程
- *
- * \param[in] led_id : led id号
- */
-void demo_std_delay_entry (int led_id);
-
-/**
- * \brief  key_digitron 例程
- *
- * \param[in] rtc_handle : rtc 标准句柄
- */
-void demo_std_rtc_entry (am_rtc_handle_t rtc_handle);
-
-/**
- * \brief  key_digitron 例程
- *
- * \param[in] id : key id号
- */
-void demo_std_key_digitron_rngbuf_entry (int32_t id);
-
-/**
- * \brief  hc595_led 例程
- *
- * \param[in] led_id_start : 起始led id号
- *
- * \param[in] num          : led个数
- */
-void demo_std_led_water_light_entry (int led_id_start, int num);
-
-/**
- * \brief  hc595_led 例程
- *
- * \param[in] 无
- */
- void demo_std_4key_entry (void);
- 
-/**
- * \brief  hc595_led 例程
- *
- * \param[in] hc595_handle  : 标准hc595句柄
- */
- void demo_std_hc595_led_entry (am_hc595_handle_t hc595_handle);
-/**
- * \brief  digitron_temp 例程
- *
- * \param[in] temp_handle  : 标准temp_handle句柄
- *
- * \param[in] id        : id号
- */
-void demo_std_digitron_temp_entry (int32_t id, am_temp_handle_t temp_handle);
-/**
- * \brief  key_digitron 例程
- *
- * \param[in] id     : id号
- */
-void demo_std_key_digitron_entry (int32_t id);
-	
-/**
- * \brief  digitron 例程
- *
- * \param[in] id     : id号
- */
-void demo_std_digitron_60s_counting_entry (int32_t id);
-
-/**
- * \brief  mtd 例程
- *
- * \param[in] rtc_handle     : rtc 句柄
- */
-void demo_std_rtc_entry (am_rtc_handle_t rtc_handle);
-
-/**
- * \brief  mtd 例程
- *
- * \param[in] mtd_handle     : mtd 句柄
- *
- * \param[in] test_lenth     : 测试长度
- */
-void demo_mtd_entry (am_mtd_handle_t mtd_handle, int32_t test_lenth);
-
-/**
- * \brief  ftl 例程
- *
- * \param[in] ftl_handle     : ftl 句柄
- *
- * \param[in] test_lenth     : 测试长度
- */
-void demo_ftl_entry (am_ftl_handle_t ftl_handle, int32_t test_lenth);
-
-/**
- * \brief ep24cxx例程
- *
- * \param[in] mx25xx_handle    :    mx25xx句柄
- *
- * \param[in] test_lenth       :   测试长度
- */
-void demo_mx25xx_entry (am_mx25xx_handle_t mx25xx_handle,
-                        int32_t test_lenth);
-/**
- * \brief ep24cxx例程
- *
- * \param[in] ep24cxx_handle    :   ep24cxx句柄
- *
- * \param[in] test_lenth        :   测试长度
- */
-void demo_ep24cxx_entry (am_ep24cxx_handle_t ep24cxx_handle, 
-                         int32_t test_lenth);
-
-/**
- * \brief timer定时器
- *
- * \param[in] am_timer_handle_t  : timer句柄
- *
- * \param[in] timing_chan        : 通道
- */
-void demo_std_timer_timing_entry (am_timer_handle_t handle,
-                                  int               timing_chan);
 
 /**
  * \brief MiniPort-ZLG72128 实例初始化
@@ -1236,6 +1092,73 @@ am_hc32_pcnt_handle_t am_hc32_pcnt_inst_init (void);
  * \return 无
  */
 void am_hc32_pcnt_inst_deinit (am_hc32_pcnt_handle_t handle);
+
+/**
+ *  \brief HC32 LCD 实例初始化，获得LCD标准服务句柄
+ *
+ *  \param 无
+ *
+ *  \return LCD 服务句柄，若为 NULL，表明初始化失败
+ *
+ */
+am_lcd_handle_t am_hc32_lcd_inst_init (void);
+
+/**
+ *  \brief HC32 OPA 实例初始化，获得OPA1标准服务句柄
+ *
+ *  \param 无
+ *
+ *  \return OPA1 服务句柄，若为 NULL，表明初始化失败
+ *
+ */
+am_opa_handle_t am_hc32_opa1_inst_init (void);
+
+/**
+ *  \brief HC32 OPA 实例初始化，获得OPA2标准服务句柄
+ *
+ *  \param 无
+ *
+ *  \return OPA2 服务句柄，若为 NULL，表明初始化失败
+ *
+ */
+am_opa_handle_t am_hc32_opa2_inst_init (void);
+
+/**
+ *  \brief HC32 OPA 实例初始化，获得OPA3标准服务句柄
+ *
+ *  \param 无
+ *
+ *  \return OPA3 服务句柄，若为 NULL，表明初始化失败
+ *
+ */
+am_opa_handle_t am_hc32_opa3_inst_init (void);
+
+/**
+ * \brief OPA 实例解初始化
+ *
+ * \param[in] handle 通过 am_hc32_opa_inst_init() 函数获得的 OPA1 服务句柄
+ *
+ * \return 无
+ */
+void am_hc32_opa1_inst_deinit (am_opa_handle_t handle);
+
+/**
+ * \brief OPA 实例解初始化
+ *
+ * \param[in] handle 通过 am_hc32_opa_inst_init() 函数获得的 OPA2 服务句柄
+ *
+ * \return 无
+ */
+void am_hc32_opa2_inst_deinit (am_opa_handle_t handle);
+
+/**
+ * \brief OPA 实例解初始化
+ *
+ * \param[in] handle 通过 am_hc32_opa_inst_init() 函数获得的 OPA3 服务句柄
+ *
+ * \return 无
+ */
+void am_hc32_opa3_inst_deinit (am_opa_handle_t handle);
 
 /**
  * \brief MICROPORT RTC 实例初始化，获得RTC 服务句柄

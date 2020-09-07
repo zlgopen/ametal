@@ -591,17 +591,13 @@ void demo_hc32f03x_core_kft_bootloader_entry (void);
 void demo_hc32f03x_core_kft_application_entry (void);
 
 /**
-
  * \brief 双区bootloader的测试应用程序例程
  */
-
 void demo_hc32f03x_core_double_application_entry (void);
 
 /**
-
  * \brief 单区bootloader的测试应用程序例程
  */
-
 void demo_hc32f03x_core_single_application_entry (void);
 
 /**
@@ -635,9 +631,9 @@ void demo_hc32f03x_core_hw_lvd_int_entry (void);
 void demo_hc32f03x_core_hw_opa_one_entry (void);
 
 /**
- * \brief OPA DAC电压跟随例程，通过 HW 层接口实现
+ * \brief OPA例程，通过标准层接口实现
  */
-void demo_hc32f03x_core_hw_opa_dac_entry (void);
+void demo_hc32f03x_core_std_opa_entry (void);
 
 /**
  * \brief AES 加密解密例程，通过 HW 层接口实现

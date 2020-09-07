@@ -16,6 +16,7 @@
  *
  * \internal
  * \par Modification History
+ * - 1.01 20-05-13  licl, add byte and half word program
  * - 1.00 19-09-04  zp, first implementation
  * \endinternal
  */
@@ -48,44 +49,73 @@ extern "C" {
  * \param[in] p_hw_flash  指向FLASH寄存器块的指针
  * \param[in] waitcycle   周期
  *
- * \return 执行结果
+ * \return AM_OK: 成功
  */
 int32_t am_hc32_flash_waitcycle(amhw_hc32_flash_t              *p_hw_flash,
                                 amhw_hc32_flash_read_waittime   waitcycle);
 
 /**
- * \brief 擦除扇区
+ * \brief 擦除页
  *
  * \param[in] p_hw_flash  指向FLASH寄存器块的指针
- * \param[in] start_addr  扇区的起始地址
+ * \param[in] start_addr  页的起始地址
  *
- * \return >0: 执行结果, -AM_EINVAL: 输入地址过大
+ * \return AM_OK: 成功, -AM_EINVAL: 输入地址过大
  */
 int32_t am_hc32_flash_sector_erase (amhw_hc32_flash_t  *p_hw_flash,
                                     uint32_t            addr);
 
 /**
- * \brief 对扇区编程或部分扇区编程
+ * \brief 对页按字节编程
  *
  * \param[in] p_hw_flash 指向FLASH寄存器块的指针
  * \param[in] dst_addr   写入到flash的起始地址
  * \param[in] p_src      要写入到flash中的数据的起始地址
- * \param[in] size       写入字(32bit)的个数
+ * \param[in] size       写入字节(8bit)的个数（当size大于页大小(SECTOR_SIZE)时，不应只先擦除一页）
  *
- * \retval 0 实际成功写入的字数
+ * \return >0: 实际成功写入的字数， <0: 失败
+ */
+int32_t am_hc32_flash_sector_byte_program (amhw_hc32_flash_t    *p_hw_flash,
+                                           uint32_t              dst_addr,
+                                           const uint8_t        *p_src,
+                                           uint32_t              size);
+
+/**
+ * \brief 对页按半字编程
+ *
+ * \param[in] p_hw_flash 指向FLASH寄存器块的指针
+ * \param[in] dst_addr   写入到flash的起始地址
+ * \param[in] p_src      要写入到flash中的数据的起始地址
+ * \param[in] size       写入半字(16bit)的个数（当size * 2 大于页大小(SECTOR_SIZE)时，不应只先擦除一页）
+ *
+ * \return >0: 实际成功写入的字数， <0: 失败
+ */
+int32_t am_hc32_flash_sector_halfword_program (amhw_hc32_flash_t    *p_hw_flash,
+                                               uint32_t              dst_addr,
+                                               const uint16_t       *p_src,
+                                               uint32_t              size);
+
+/**
+ * \brief 对页按字编程
+ *
+ * \param[in] p_hw_flash 指向FLASH寄存器块的指针
+ * \param[in] dst_addr   写入到flash的起始地址
+ * \param[in] p_src      要写入到flash中的数据的起始地址
+ * \param[in] size       写入字(32bit)的个数（当size * 4 大于页大小(SECTOR_SIZE)时，不应只先擦除一页）
+ *
+ * \return >0: 实际成功写入的字数， <0: 失败
  */
 int32_t am_hc32_flash_sector_program (amhw_hc32_flash_t    *p_hw_flash,
                                       uint32_t              dst_addr,
-                                      uint32_t             *p_src,
+                                      const uint32_t       *p_src,
                                       uint32_t              size);
 
 /**
- * \brief 擦除所有扇区(仅程序运行在SRAM中有效)
+ * \brief 擦除所有页(仅程序运行在SRAM中有效)
  *
  * \param[in] p_hw_flash 指向FLASH寄存器块的指针
  *
- * \return 执行结果
- *
+ * \return AM_OK: 成功，其它: 失败
  */
 int32_t am_hc32_flash_all_sector_erase (amhw_hc32_flash_t *p_hw_flash);
 
@@ -96,7 +126,7 @@ int32_t am_hc32_flash_all_sector_erase (amhw_hc32_flash_t *p_hw_flash);
  * \param[in] freqcfg    flash时间参数
  * \param[in] dpstb_able dpstb使能控制
  *
- * \return 无
+ * \return AM_OK: 成功，其它: 失败
  */
 int32_t am_hc32_flash_init(amhw_hc32_flash_t   *p_hw_flash,
                            uint8_t              freqcfg,

@@ -602,8 +602,8 @@ static int __i2c_mst_sm_event (am_zlg_i2c_dev_t *p_dev, uint32_t event)
     __softimer_stop(p_dev);
 
     /* 回调消息完成函数 */
-    if (p_dev->p_cur_msg->pfn_complete != NULL) {
-        p_dev->p_cur_msg->pfn_complete(p_dev->p_cur_msg->p_arg);
+    if (p_cur_msg->pfn_complete != NULL) {
+        p_cur_msg->pfn_complete(p_dev->p_cur_msg->p_arg);
     }
 
     return AM_OK;

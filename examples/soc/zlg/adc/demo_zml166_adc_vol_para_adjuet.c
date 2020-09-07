@@ -38,6 +38,7 @@
 #include "am_vdebug.h"
 #include "am_zml166_adc.h"
 
+
 /*\brief  ∫Í∂®“Â*/
 #define AM_ADJUST_RANGE_ADJUST_1    (0.01)
 #define AM_ADJUST_RANGE_ADJUST_2    (0.09)

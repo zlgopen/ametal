@@ -216,6 +216,15 @@ int am_hc32_lcd_com_seg_init (am_lcd_handle_t         handle,
                                      AMHW_HC32_LCD_COMSEG_CTR,
                                      p_port->seg36com7_39com4);
 
+#ifdef HC32X3X
+
+    /* ÉèÖÃ¶Ë¿ÚCOM0-3 */
+    amhw_hc32_seg32_51_com0_8_ctr (p_hw_lcd,
+                                   AMHW_HC32_LCD_SEG40_51_CTR,
+                                   (p_port->mux << 4) | (p_port->com0_3));
+
+#endif
+
     return AM_OK;
 
 }

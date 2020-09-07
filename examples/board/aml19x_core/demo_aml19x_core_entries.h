@@ -154,12 +154,12 @@ void demo_hc32l19x_core_std_led_entry (void);
 /**
  * \brief RTC 例程，通过 HW 层接口实现
  */
-void demo_hc32l19x_core_hw_rtc_sec_int_entry (void);
+void demo_hc32l19x_core_hw_rtc_entry (void);
 
 /**
- * \brief RTC 例程，通过标准接口和中间驱动层函数实现
+ * \brief RTC 例程，通过标准接口实现
  */
-void demo_hc32l19x_core_drv_rtc_entry (void);
+void demo_hc32l19x_core_std_rtc_entry (void);
 
 /**
  * \brief SPI 主机例程，通过 HW 层接口实现
@@ -438,6 +438,11 @@ void demo_hc32l19x_core_std_lpuart_ringbuf_entry (void);
 void demo_hc32l19x_drv_lpmode_wake_up_entry (void);
 
 /**
+ * \brief 低功耗模式（深度睡眠）低功耗串口唤醒例程
+ */
+void demo_hc32l19x_lpuart_wake_up_entry (void);
+
+/**
  * \brief WWDG 例程，通过 HW 层接口实现
  */
 void demo_hc32l19x_core_hw_wdt_entry (void);
@@ -682,3 +687,11 @@ void demo_hc32l19x_core_drv_pcnt_double_entry (void);
  */
 void demo_hc32l19x_core_drv_pcnt_special_entry (void);
 
+/**
+ * \brief modbus 主机通信例程
+ */
+void demo_hc32l19x_core_mb_master_demo_entry (void);
+/**
+ * \brief modbus 从站通信例程
+ */
+void demo_hc32l19x_core_mb_slave_test_entry (void);

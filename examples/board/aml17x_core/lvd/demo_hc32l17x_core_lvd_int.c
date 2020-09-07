@@ -72,7 +72,12 @@ void demo_hc32l17x_core_hw_lvd_int_entry (void)
     /* PA04 LVD Êä³ö¶Ë*/
     am_gpio_pin_cfg(PIOA_4, PIOA_4_LVD_OUT | PIOA_4_OUT_PP);
 
-    demo_hc32_hw_lvd_int_entry((void *)HC32_LVD, __hc32l17x_lvd_callback);
+    demo_hc32_hw_lvd_int_entry(
+        (void *)HC32_LVD, 
+        AMHW_HC32_LVD_VIDS_1P9_V,
+        AMHW_HC32_LVD_SRC_PB07,
+        __hc32l17x_lvd_callback,
+        NULL);
 }
 
 /* end of file */

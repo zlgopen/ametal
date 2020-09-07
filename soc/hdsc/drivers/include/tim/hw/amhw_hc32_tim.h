@@ -16,6 +16,8 @@
  *
  * \internal
  * \par History
+ * - 1.01 20-04-23 zcb, Modify the CCR register declaration and
+ *                      read and write according to the channel number
  * - 1.00 19-09-10  zp, first implementation
  * \endinternal
  */
@@ -35,11 +37,6 @@ extern "C" {
  * \copydoc amhw_hc32_tim.h
  * @{
  */
-
-typedef struct ccrxx {
-    __IO uint32_t a;          /**< \brief A */
-    __IO uint32_t b;          /**< \brief B */
-}ccrxx_t;                     /**< \brief 比较捕获寄存器*/
 
 /**
   * \brief 定时器寄存器块结构体
@@ -64,8 +61,8 @@ typedef struct amhw_hc32_tim {
     __IO uint32_t dtr;            /**< \brief 死区寄存器 */
     __IO uint32_t rcr;            /**< \brief 重复计数寄存器 */
     __IO uint32_t arrdm;          /**< \brief Timer重载寄存器/周期映射地址 */
-    ccrxx_t       ccrxx[3];       /**< \brief 通道 0/1/2比较捕获寄存器*/
 
+    __IO uint32_t ccr[6];         /**< \brief 比较捕获寄存器 */
 } amhw_hc32_tim_t;
 
 /**
@@ -748,7 +745,7 @@ void amhw_hc32_tim_mode1_int_edge_flag_clr (amhw_hc32_tim_t *p_hw_tim)
 am_static_inline
 uint16_t amhw_hc32_tim_mode1_measure_data_get (amhw_hc32_tim_t *p_hw_tim)
 {
-    return (p_hw_tim->ccrxx[0].a & 0xfffful);
+    return p_hw_tim->ccr[0] & 0xfffful;
 }
 
 /**
@@ -3456,103 +3453,35 @@ void amhw_hc32_tim_mode23_rcr_set(amhw_hc32_tim_t *p_hw_tim,
 }
 
 /**
- * \brief CCRxy  比较捕获寄存器，比较具有缓存功能   获取
+ * \brief CCR比较捕获寄存器获取
  *
  * \param[in] p_hw_tim : 指向TIM定时器寄存器块的指针
- * \param[in] chan     : 通道号  HC32_TIM_CH0A               或
- *                            HC32_TIM_CH0B               或
- *                            HC32_TIM_CH1A(TIM3特有通道)    或
- *                            HC32_TIM_CH1B(TIM3特有通道)    或
- *                            HC32_TIM_CH2A(TIM3特有通道)    或
- *                            HC32_TIM_CH2B(TIM3特有通道)    或
+ * \param[in] chan     : 通道号  HC32_TIM_CHxx
  *
  * \return 设定数值
  */
 am_static_inline
-uint16_t amhw_hc32_tim_mode23_ccrxy_get (amhw_hc32_tim_t *p_hw_tim,
-                                           uint8_t            chan)
+uint16_t amhw_hc32_tim_mode23_ccr_get (amhw_hc32_tim_t   *p_hw_tim,
+                                       uint8_t            chan)
 {
-    uint16_t data = 0;
-
-    switch(chan / 2) {
-        case 0:
-            if(0 == (chan % 2)) {
-                data = p_hw_tim->ccrxx[0].a & 0xfffful;
-            } else {
-                data = p_hw_tim->ccrxx[0].b & 0xfffful;
-            }
-            break;
-
-        case 1:
-            if(0 == (chan % 2)) {
-                data = p_hw_tim->ccrxx[1].a & 0xfffful;
-            } else {
-                data = p_hw_tim->ccrxx[1].b & 0xfffful;
-            }
-            break;
-
-        case 2:
-            if(0 == (chan % 2)) {
-                data = p_hw_tim->ccrxx[2].a & 0xfffful;
-            } else {
-                data = p_hw_tim->ccrxx[2].b & 0xfffful;
-            }
-            break;
-
-        default:
-            break;
-    }
-
-    return data;
+    return p_hw_tim->ccr[chan] & 0xfffful;
 }
 
 /**
- * \brief CCRxy  比较捕获寄存器，比较具有缓存功能      设置
+ * \brief CCR比较捕获寄存器设置
  *
  * \param[in] p_hw_tim : 指向TIM定时器寄存器块的指针
- * \param[in] chan     : 通道号  HC32_TIM_CH0A               或
- *                            HC32_TIM_CH0B               或
- *                            HC32_TIM_CH1A(TIM3特有通道)    或
- *                            HC32_TIM_CH1B(TIM3特有通道)    或
- *                            HC32_TIM_CH2A(TIM3特有通道)    或
- *                            HC32_TIM_CH2B(TIM3特有通道)    或
+ * \param[in] chan     : 通道号  HC32_TIM_CHxx
  * \param[in] data     : 待设定数值
  *
  * \return 无
  */
 am_static_inline
-void amhw_hc32_tim_mode23_ccrxy_set(amhw_hc32_tim_t *p_hw_tim,
-                                      uint8_t            chan,
-                                      uint16_t           data)
+void amhw_hc32_tim_mode23_ccr_set(amhw_hc32_tim_t   *p_hw_tim,
+                                  uint8_t            chan,
+                                  uint16_t           data)
 {
-    switch(chan / 2) {
-        case 0:
-            if(0 == (chan % 2)) {
-                p_hw_tim->ccrxx[0].a = data;
-            } else {
-                p_hw_tim->ccrxx[0].b = data;
-            }
-            break;
-
-        case 1:
-            if(0 == (chan % 2)) {
-                p_hw_tim->ccrxx[1].a = data;
-            } else {
-                p_hw_tim->ccrxx[1].b = data;
-            }
-            break;
-
-        case 2:
-            if(0 == (chan % 2)) {
-                p_hw_tim->ccrxx[2].a = data;
-            } else {
-                p_hw_tim->ccrxx[2].b = data;
-            }
-            break;
-
-        default:
-            break;
-    }
+    p_hw_tim->ccr[chan] = data;
 }
 
 /**

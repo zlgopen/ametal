@@ -83,11 +83,11 @@ static void __zlg_sdt_feed (amhw_hc32_wdt_t *p_hw_wdt)
 }
 
 /**
- * \brief 例程入口
+ * \brief HC32 WDT 例程，通过 HW 层接口实现
  */
 void demo_hc32_hw_wdt_entry (void     *p_hw_wdt,
-                               uint32_t  time_out_ms,
-                               uint32_t  feed_time_ms)
+                             uint32_t  time_out_ms,
+                             uint32_t  feed_time_ms)
 {
     __hc32_wdt_enable((amhw_hc32_wdt_t *)p_hw_wdt, time_out_ms);
 

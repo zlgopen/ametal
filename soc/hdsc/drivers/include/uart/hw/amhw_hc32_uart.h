@@ -82,7 +82,7 @@ typedef struct amhw_hc32_uart {
  */
 am_static_inline
 void amhw_hc32_uart_data_8th_set (amhw_hc32_uart_t *p_hw_uart,
-                                    am_bool_t           stat)
+                                  am_bool_t         stat)
 {
     p_hw_uart->sbuf = (p_hw_uart->sbuf & (~(0x1ul << 8))) | (stat << 8);
 }
@@ -110,7 +110,7 @@ am_bool_t amhw_hc32_uart_data_8th_get (amhw_hc32_uart_t *p_hw_uart)
  */
 am_static_inline
 void amhw_hc32_uart_data_write (amhw_hc32_uart_t *p_hw_uart,
-                                  uint8_t             data_w)
+                                uint8_t           data_w)
 {
     p_hw_uart->sbuf = (p_hw_uart->sbuf & (~0xfful)) | (0xff & data_w);
 }
@@ -180,7 +180,7 @@ void amhw_hc32_uart_single_line_half_enable (amhw_hc32_uart_t *p_hw_uart)
 
 am_static_inline
 void amhw_hc32_uart_int_disable (amhw_hc32_uart_t *p_hw_uart,
-                                   uint32_t            type)
+                                 uint32_t          type)
 {
     if(type == 0xFF) {
         p_hw_uart->scon &= ~(1ul << 21);
@@ -209,7 +209,7 @@ void amhw_hc32_uart_int_disable (amhw_hc32_uart_t *p_hw_uart,
 
 am_static_inline
 void amhw_hc32_uart_int_enable (amhw_hc32_uart_t *p_hw_uart,
-                                  uint32_t            type)
+                                uint32_t          type)
 {
     if(type == 0xFF) {
         p_hw_uart->scon |= (1ul << 21);
@@ -221,6 +221,21 @@ void amhw_hc32_uart_int_enable (amhw_hc32_uart_t *p_hw_uart,
     } else {
         p_hw_uart->scon |= type;
     }
+}
+
+/**
+ * \brief UART 接受中断标志查看
+ *
+ * \param[in] p_hw_uart : 指向UART寄存器结构体的指针
+ *
+ * \return 1 中断使能
+ *         0 中断禁能
+ */
+
+am_static_inline
+uint8_t amhw_hc32_uart_int_check (amhw_hc32_uart_t *p_hw_uart)
+{
+    return (p_hw_uart->scon & 0x01);
 }
 
 #define AMHW_HC32_UART_CTS          (1ul << 19) /* 硬件流CTS使能位 */
@@ -247,7 +262,7 @@ void amhw_hc32_uart_int_enable (amhw_hc32_uart_t *p_hw_uart,
 
 am_static_inline
 void amhw_hc32_uart_disable (amhw_hc32_uart_t *p_hw_uart,
-                               uint32_t            type)
+                             uint32_t          type)
 {
     p_hw_uart->scon &= ~type;
 }
@@ -267,7 +282,7 @@ void amhw_hc32_uart_disable (amhw_hc32_uart_t *p_hw_uart,
 
 am_static_inline
 void amhw_hc32_uart_enable (amhw_hc32_uart_t *p_hw_uart,
-                              uint32_t            type)
+                            uint32_t          type)
 {
     p_hw_uart->scon |= type;
 }
@@ -288,7 +303,7 @@ void amhw_hc32_uart_enable (amhw_hc32_uart_t *p_hw_uart,
  */
 am_static_inline
 void amhw_hc32_uart_stop_bit_sel (amhw_hc32_uart_t *p_hw_uart,
-                                    uint32_t            stop_bit)
+                                  uint32_t          stop_bit)
 {
     p_hw_uart->scon = (p_hw_uart->scon & (~(0x3ul << 14))) | stop_bit;
 }
@@ -318,22 +333,22 @@ typedef enum {
     AMHW_HC32_UART_WORK_MODE_0 = 0,
     AMHW_HC32_UART_WORK_MODE_1,
     AMHW_HC32_UART_WORK_MODE_2,
-    AMHW_HC32_UART_WORK_MODE_3,
+    AMHW_HC32_UART_WORK_MODE_3
 }amhw_hc32_uart_work_mode_t;
 /**
  * \brief 工作模式设定
  *
  * \param[in] p_hw_uart : 指向UART寄存器结构体的指针
- * \param[in] stop_bit  : 模式宏定义       AMHW_HC32_UART_MODE_0 或
- *                                 AMHW_HC32_UART_MODE_1 或
- *                                 AMHW_HC32_UART_MODE_2 或
- *                                 AMHW_HC32_UART_MODE_3
+ * \param[in] stop_bit  : AMHW_HC32_UART_WORK_MODE_0 或
+ *                        AMHW_HC32_UART_WORK_MODE_1 或
+ *                        AMHW_HC32_UART_WORK_MODE_2 或
+ *                        AMHW_HC32_UART_WORK_MODE_3
  *
  * \return none
  */
 am_static_inline
 void amhw_hc32_uart_mode_sel (amhw_hc32_uart_t           *p_hw_uart,
-                                amhw_hc32_uart_work_mode_t  mode_type)
+                              amhw_hc32_uart_work_mode_t  mode_type)
 {
     p_hw_uart->scon = (p_hw_uart->scon & (~(0x3ul << 6))) |
                       ((mode_type & 0x3ul) << 6);
@@ -347,8 +362,8 @@ void amhw_hc32_uart_mode_sel (amhw_hc32_uart_t           *p_hw_uart,
  * \return 当前工作模式0/1/2/3
  */
 am_static_inline
-amhw_hc32_uart_work_mode_t amhw_hc32_uart_mode_get (amhw_hc32_uart_t
-                                                            *p_hw_uart)
+amhw_hc32_uart_work_mode_t amhw_hc32_uart_mode_get (
+        amhw_hc32_uart_t    *p_hw_uart)
 {
     return (amhw_hc32_uart_work_mode_t)((p_hw_uart->scon >> 6) & 0x3ul);
 }
@@ -365,11 +380,14 @@ amhw_hc32_uart_work_mode_t amhw_hc32_uart_mode_get (amhw_hc32_uart_t
  *                                    AMHW_HC32_UART_HW_PARITY_EVEN    或
  *                                    AMHW_HC32_UART_HW_PARITY_ODD     或
  *                                    AMHW_HC32_UART_PARITY_NO
+ *
+ * \note : 在Mode0/1下，不能使用数据校验；在Mode2/3下，必须使用数据校验；
+ *
  * \return none
  */
 am_static_inline
 void amhw_hc32_uart_parity_bit_sel (amhw_hc32_uart_t *p_hw_uart,
-                                      uint32_t            parity)
+                                    uint32_t          parity)
 {
     p_hw_uart->scon = (p_hw_uart->scon & (~(0x3ul << 2))) | parity;
 }
@@ -391,7 +409,7 @@ typedef enum {
  */
 am_static_inline
 void amhw_hc32_uart_clk_div_sel (amhw_hc32_uart_t         *p_hw_uart,
-                                   amhw_hc32_uart_clk_div_t  clk_div)
+                                 amhw_hc32_uart_clk_div_t  clk_div)
 {
     p_hw_uart->scon = (p_hw_uart->scon & (~(0x1ul << 9))) | (clk_div << 9);
 }
@@ -419,7 +437,7 @@ uint8_t amhw_hc32_uart_clk_div_get (amhw_hc32_uart_t *p_hw_uart)
  */
 am_static_inline
 void amhw_hc32_uart_slaver_addr_set (amhw_hc32_uart_t *p_hw_uart,
-                                       uint8_t             slaver_addr)
+                                     uint8_t           slaver_addr)
 {
     p_hw_uart->saddr = slaver_addr & 0xFF;
 }
@@ -447,7 +465,7 @@ uint8_t amhw_hc32_uart_slaver_addr_get (amhw_hc32_uart_t *p_hw_uart)
  */
 am_static_inline
 void amhw_hc32_uart_slaver_addr_mask_set (amhw_hc32_uart_t *p_hw_uart,
-                                            uint8_t             addr_mask)
+                                          uint8_t           addr_mask)
 {
     p_hw_uart->saden = addr_mask & 0xFF;
 }
@@ -490,7 +508,7 @@ uint8_t amhw_hc32_uart_slaver_addr_mask_get (amhw_hc32_uart_t *p_hw_uart)
  */
 am_static_inline
 am_bool_t amhw_hc32_uart_flag_check (amhw_hc32_uart_t *p_hw_uart,
-                                       uint8_t             flag)
+                                     uint8_t           flag)
 {
     return (p_hw_uart->isr & flag) ? AM_TRUE : AM_FALSE;
 }
@@ -509,7 +527,7 @@ am_bool_t amhw_hc32_uart_flag_check (amhw_hc32_uart_t *p_hw_uart,
  */
 am_static_inline
 void amhw_hc32_uart_flag_clr (amhw_hc32_uart_t *p_hw_uart,
-                                uint8_t             flag)
+                              uint8_t           flag)
 {
     p_hw_uart->icr &= ~ flag;
 }
@@ -538,8 +556,8 @@ uint32_t amhw_hc32_uart_flag_get(amhw_hc32_uart_t *p_hw_uart)
  * \return baud rate
  */
 int amhw_hc32_uart_baudrate_set (amhw_hc32_uart_t *p_hw_uart,
-                                   uint32_t            uart_clk,
-                                   uint32_t            baud);
+                                 uint32_t          uart_clk,
+                                 uint32_t          baud);
 
 /**
  * \brief UART receive data(polling mode)
@@ -549,9 +567,9 @@ int amhw_hc32_uart_baudrate_set (amhw_hc32_uart_t *p_hw_uart,
  *
  * \return bytes
  */
-uint32_t amhw_hc32_uart_poll_receive (amhw_hc32_uart_t    *p_hw_uart,
-                                        uint8_t            *p_rxbuf,
-                                        uint32_t            nbytes);
+uint32_t amhw_hc32_uart_poll_receive (amhw_hc32_uart_t *p_hw_uart,
+                                      uint8_t          *p_rxbuf,
+                                      uint32_t          nbytes);
 
 /**
  * \brief UART transfer data (polling mode)
@@ -561,9 +579,9 @@ uint32_t amhw_hc32_uart_poll_receive (amhw_hc32_uart_t    *p_hw_uart,
  *
  * \return bytes
  */
-uint32_t amhw_hc32_uart_poll_send (amhw_hc32_uart_t     *p_hw_uart,
-                                     const uint8_t       *p_txbuf,
-                                     uint32_t             nbytes);
+uint32_t amhw_hc32_uart_poll_send (amhw_hc32_uart_t    *p_hw_uart,
+                                   const uint8_t       *p_txbuf,
+                                   uint32_t             nbytes);
 /**
  * \brief 使用匿名联合体段结束
  * @{

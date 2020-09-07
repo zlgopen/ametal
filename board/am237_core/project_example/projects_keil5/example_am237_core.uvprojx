@@ -10,17 +10,17 @@
       <TargetName>debug</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
-      <pCCUsed>5060300::V5.06 update 3 (build 300)::ARMCC</pCCUsed>
+      <pCCUsed>5060061::V5.06 update 1 (build 61)::ARMCC</pCCUsed>
       <TargetOption>
         <TargetCommonOption>
-          <Device>ZLG217</Device>
+          <Device>ZLG237</Device>
           <Vendor>Generic</Vendor>
           <PackID>ZLG.ZLG200_DFP.2.0.0</PackID>
           <PackURL>http://www.zlg.cn/</PackURL>
           <Cpu>IROM(0x08000000,0x20000) IRAM(0x20000000,0x5000) CPUTYPE("Cortex-M3") CLOCK(12000000) ELITTLE</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
           <StartupFile></StartupFile>
-          <FlashDriverDll>UL2CM3(-S0 -C0 -P0 -FD20000000 -FC1000 -FN1 -FF0ZLG217 -FS08000000 -FL020000 -FP0($$Device:ZLG217$Flash\ZLG217.FLM))</FlashDriverDll>
+          <FlashDriverDll>UL2CM3(-S0 -C0 -P0 -FD20000000 -FC1000 -FN1 -FF0ZLG237 -FS08000000 -FL020000 -FP0($$Device:ZLG237$Flash\ZLG237.FLM))</FlashDriverDll>
           <DeviceId>0</DeviceId>
           <RegisterFile></RegisterFile>
           <MemoryEnv></MemoryEnv>
@@ -32,7 +32,7 @@
           <SLE66CMisc></SLE66CMisc>
           <SLE66AMisc></SLE66AMisc>
           <SLE66LinkerMisc></SLE66LinkerMisc>
-          <SFDFile>$$Device:ZLG217$SVD\ZLG217.svd</SFDFile>
+          <SFDFile>$$Device:ZLG237$SVD\ZLG237.svd</SFDFile>
           <bCustSvd>0</bCustSvd>
           <UseEnv>0</UseEnv>
           <BinPath></BinPath>
@@ -125,6 +125,47 @@
             <HexOffset>0</HexOffset>
             <Oh166RecLen>16</Oh166RecLen>
           </OPTHX>
+          <Simulator>
+            <UseSimulator>0</UseSimulator>
+            <LoadApplicationAtStartup>1</LoadApplicationAtStartup>
+            <RunToMain>1</RunToMain>
+            <RestoreBreakpoints>1</RestoreBreakpoints>
+            <RestoreWatchpoints>1</RestoreWatchpoints>
+            <RestoreMemoryDisplay>1</RestoreMemoryDisplay>
+            <RestoreFunctions>1</RestoreFunctions>
+            <RestoreToolbox>1</RestoreToolbox>
+            <LimitSpeedToRealTime>0</LimitSpeedToRealTime>
+            <RestoreSysVw>1</RestoreSysVw>
+          </Simulator>
+          <Target>
+            <UseTarget>1</UseTarget>
+            <LoadApplicationAtStartup>1</LoadApplicationAtStartup>
+            <RunToMain>1</RunToMain>
+            <RestoreBreakpoints>1</RestoreBreakpoints>
+            <RestoreWatchpoints>1</RestoreWatchpoints>
+            <RestoreMemoryDisplay>1</RestoreMemoryDisplay>
+            <RestoreFunctions>0</RestoreFunctions>
+            <RestoreToolbox>1</RestoreToolbox>
+            <RestoreTracepoints>1</RestoreTracepoints>
+            <RestoreSysVw>1</RestoreSysVw>
+          </Target>
+          <RunDebugAfterBuild>0</RunDebugAfterBuild>
+          <TargetSelection>6</TargetSelection>
+          <SimDlls>
+            <CpuDll></CpuDll>
+            <CpuDllArguments></CpuDllArguments>
+            <PeripheralDll></PeripheralDll>
+            <PeripheralDllArguments></PeripheralDllArguments>
+            <InitializationFile></InitializationFile>
+          </SimDlls>
+          <TargetDlls>
+            <CpuDll></CpuDll>
+            <CpuDllArguments></CpuDllArguments>
+            <PeripheralDll></PeripheralDll>
+            <PeripheralDllArguments></PeripheralDllArguments>
+            <InitializationFile></InitializationFile>
+            <Driver>Segger\JL2CM3.dll</Driver>
+          </TargetDlls>
         </DebugOption>
         <Utilities>
           <Flash1>
@@ -328,9 +369,6 @@
             <v6LangP>0</v6LangP>
             <vShortEn>0</vShortEn>
             <vShortWch>0</vShortWch>
-            <v6Lto>0</v6Lto>
-            <v6WtE>0</v6WtE>
-            <v6Rtti>0</v6Rtti>
             <VariousControls>
               <MiscControls></MiscControls>
               <Define>AM_VDEBUG AM_CORTEX_M3</Define>
@@ -348,7 +386,6 @@
             <NoWarn>0</NoWarn>
             <uSurpInc>0</uSurpInc>
             <useXO>0</useXO>
-            <uClangAs>0</uClangAs>
             <VariousControls>
               <MiscControls></MiscControls>
               <Define></Define>
@@ -693,6 +730,76 @@
               <FileName>zsn603_platform.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\components\drivers\source\zsn603\zsn603_platform.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_sensor_tmd3702vc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\sensor\am_sensor_tmd3702vc.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_sensor_tsl2540.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\sensor\am_sensor_tsl2540.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_sensor_tcs3430.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\sensor\am_sensor_tcs3430.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_sensor_tmd2635.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\sensor\am_sensor_tmd2635.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_sensor_tmd2750.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\sensor\am_sensor_tmd2750.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_sensor_as621x.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\sensor\am_sensor_as621x.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_sensor_tmg49037.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\sensor\am_sensor_tmg49037.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_sensor_as7341.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\sensor\am_sensor_as7341.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_sensor_as7421.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\sensor\am_sensor_as7421.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_sensor_as7262.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\sensor\am_sensor_as7262.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_sensor_as7262_i2c.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\sensor\am_sensor_as7262_i2c.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_sensor_as7262_uart.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\sensor\am_sensor_as7262_uart.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_sensor_as5600.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\sensor\am_sensor_as5600.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_sensor_tmf8801.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\sensor\am_sensor_tmf8801.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -1369,6 +1476,126 @@
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\board\am237_core\wakeup\demo_zmf237_drv_stopmode_wake_up.c</FilePath>
             </File>
+            <File>
+              <FileName>demo_zlg237_core_sensor_tmd3702vc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am237_core\sensor\demo_zlg237_core_sensor_tmd3702vc.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zlg237_core_sensor_tmd3702vc_int.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am237_core\sensor\demo_zlg237_core_sensor_tmd3702vc_int.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zlg237_core_sensor_tsl2540.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am237_core\sensor\demo_zlg237_core_sensor_tsl2540.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zlg237_core_sensor_tsl2540_int.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am237_core\sensor\demo_zlg237_core_sensor_tsl2540_int.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zlg237_core_sensor_tcs3430.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am237_core\sensor\demo_zlg237_core_sensor_tcs3430.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zlg237_core_sensor_tcs3430_int.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am237_core\sensor\demo_zlg237_core_sensor_tcs3430_int.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zlg237_core_sensor_tmd2635.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am237_core\sensor\demo_zlg237_core_sensor_tmd2635.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zlg237_core_sensor_tmd2635_int.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am237_core\sensor\demo_zlg237_core_sensor_tmd2635_int.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zlg237_core_sensor_tmd2750.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am237_core\sensor\demo_zlg237_core_sensor_tmd2750.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zlg237_core_sensor_tmd2750_int.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am237_core\sensor\demo_zlg237_core_sensor_tmd2750_int.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zlg237_core_sensor_as621x_comparator_mode.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am237_core\sensor\demo_zlg237_core_sensor_as621x_comparator_mode.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zlg237_core_sensor_as621x_interrupt_mode.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am237_core\sensor\demo_zlg237_core_sensor_as621x_interrupt_mode.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zlg237_core_sensor_tmg49037.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am237_core\sensor\demo_zlg237_core_sensor_tmg49037.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zlg237_core_sensor_tmg49037_int.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am237_core\sensor\demo_zlg237_core_sensor_tmg49037_int.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zlg237_core_sensor_as7341.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am237_core\sensor\demo_zlg237_core_sensor_as7341.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zlg237_core_sensor_as7341_int.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am237_core\sensor\demo_zlg237_core_sensor_as7341_int.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zlg237_core_sensor_as7421.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am237_core\sensor\demo_zlg237_core_sensor_as7421.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zlg237_core_sensor_as7421_int.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am237_core\sensor\demo_zlg237_core_sensor_as7421_int.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zlg237_core_sensor_as7262_i2c.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am237_core\sensor\demo_zlg237_core_sensor_as7262_i2c.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zlg237_core_sensor_as7262_i2c_int.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am237_core\sensor\demo_zlg237_core_sensor_as7262_i2c_int.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zlg237_core_sensor_as7262_uart.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am237_core\sensor\demo_zlg237_core_sensor_as7262_uart.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zlg237_core_sensor_as5600.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am237_core\sensor\demo_zlg237_core_sensor_as5600.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zlg237_core_sensor_tmf8801.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am237_core\sensor\demo_zlg237_core_sensor_tmf8801.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zlg237_core_sensor_tmf8801_int.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am237_core\sensor\demo_zlg237_core_sensor_tmf8801_int.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -1714,6 +1941,121 @@
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\std\adc\demo_std_multichan_adc.c</FilePath>
             </File>
+            <File>
+              <FileName>demo_std_tmd3702vc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\std\sensor\tmd3702vc\demo_std_tmd3702vc.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_std_tmd3702vc_int.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\std\sensor\tmd3702vc\demo_std_tmd3702vc_int.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_std_tsl2540.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\std\sensor\tsl2540\demo_std_tsl2540.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_std_tsl2540_int.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\std\sensor\tsl2540\demo_std_tsl2540_int.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_std_tcs3430.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\std\sensor\tcs3430\demo_std_tcs3430.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_std_tcs3430_int.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\std\sensor\tcs3430\demo_std_tcs3430_int.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_std_tmd2635.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\std\sensor\tmd2635\demo_std_tmd2635.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_std_tmd2635_int.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\std\sensor\tmd2635\demo_std_tmd2635_int.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_std_tmd2750.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\std\sensor\tmd2750\demo_std_tmd2750.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_std_tmd2750_int.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\std\sensor\tmd2750\demo_std_tmd2750_int.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_std_as621x_comparator_mode.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\std\sensor\as621x\demo_std_as621x_comparator_mode.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_std_as621x_interrupt_mode.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\std\sensor\as621x\demo_std_as621x_interrupt_mode.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_std_tmg49037.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\std\sensor\tmg49037\demo_std_tmg49037.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_std_tmg49037_int.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\std\sensor\tmg49037\demo_std_tmg49037_int.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_std_as7341.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\std\sensor\as7341\demo_std_as7341.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_std_as7341_int.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\std\sensor\as7341\demo_std_as7341_int.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_std_as7421.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\std\sensor\as7421\demo_std_as7421.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_std_as7421_int.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\std\sensor\as7421\demo_std_as7421_int.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_std_as7262.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\std\sensor\as7262\demo_std_as7262.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_std_as7262_int.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\std\sensor\as7262\demo_std_as7262_int.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_std_5600.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\std\sensor\as5600\demo_std_5600.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_std_tmf8801.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\std\sensor\tmf8801\demo_std_tmf8801.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_std_tmf8801_int.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\std\sensor\tmf8801\demo_std_tmf8801_int.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -1963,6 +2305,71 @@
               <FileName>am_hwconf_zlg237_spi_slv_dma.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg237_spi_slv_dma.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_sensor_tmd3702vc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_sensor_tmd3702vc.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_sensor_tsl2540.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_sensor_tsl2540.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_sensor_tcs3430.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_sensor_tcs3430.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_sensor_tmd2635.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_sensor_tmd2635.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_sensor_tmd2750.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_sensor_tmd2750.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_sensor_as621x.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_sensor_as621x.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_sensor_tmg49037.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_sensor_tmg49037.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_sensor_as7341.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_sensor_as7341.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_sensor_as7421.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_sensor_as7421.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_sensor_as7262_i2c.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_sensor_as7262_i2c.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_sensor_as7262_uart.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_sensor_as7262_uart.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_sensor_as5600.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_sensor_as5600.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_sensor_tmf8801.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_sensor_tmf8801.c</FilePath>
             </File>
           </Files>
         </Group>

@@ -20,8 +20,8 @@
  * \endinternal
  */
 
-#ifndef __AM_HC32_CLK_H
-#define __AM_HC32_CLK_H
+#ifndef __AM_HC32F460_CLK_H
+#define __AM_HC32F460_CLK_H
 
 #ifdef __cplusplus
 extern "C" {
@@ -32,15 +32,15 @@ extern "C" {
 #include "hw/amhw_hc32f460_rcc.h"
 
 /**
- * \addtogroup am_hc32_if_clk
- * \copydoc am_hc32_clk.h
+ * \addtogroup am_hc32f460_if_clk
+ * \copydoc am_hc32f460_clk.h
  * @{
  */
 
 /**
  * \brief CLK 设备信息参数结构体
  */
-typedef struct am_hc32_clk_devinfo {
+typedef struct am_hc32f460_clk_devinfo {
 
     /**
      * \brief XTHOSC外部晶振频率
@@ -53,7 +53,7 @@ typedef struct am_hc32_clk_devinfo {
     uint32_t xtl_osc;
 
     /**
-     * \brief RCH内部高速时钟晶振频率（Hz）
+     * \brief HRC内部高速时钟晶振频率（Hz）
      *
      * \note 频率选择    24M、 22.12M、16M、 8M或4M
      *       设置其他频率，将默认使用4M
@@ -94,13 +94,27 @@ typedef struct am_hc32_clk_devinfo {
 
     /** \brief
      *    系统时钟源选择
-     *    -# AMHW_HC32_SYSCLK_RCH : 内部高速时钟作为系统时钟
-     *    -# AMHW_HC32_SYSCLK_XTH : 外部高速时钟作为系统时钟
-     *    -# AMHW_HC32_SYSCLK_RCL : 内部低速时钟作为系统时钟
-     *    -# AMHW_HC32_SYSCLK_XTL ：  外部低速时钟作为系统时钟
-     *    -# AMHW_HC32_SYSCLK_PLL ： 内部PLL作为系统时钟
+     *    -# AMHW_HC32F460_SYSCLK_RCH : 内部高速时钟作为系统时钟
+     *    -# AMHW_HC32F460_SYSCLK_XTH : 外部高速时钟作为系统时钟
+     *    -# AMHW_HC32F460_SYSCLK_RCL : 内部低速时钟作为系统时钟
+     *    -# AMHW_HC32F460_SYSCLK_XTL ：  外部低速时钟作为系统时钟
+     *    -# AMHW_HC32F460_SYSCLK_PLL ： 内部PLL作为系统时钟
      */
     amhw_hc32f460_sys_clk_src sysclk_src;
+
+    /** \brief
+     *    USBCK时钟源选择
+     *    -# AMHW_HC32F460_CLK_USBCKS_SYSCLK_DIV_2 : 系统时钟2分频
+     *    -# AMHW_HC32F460_CLK_USBCKS_SYSCLK_DIV_3 : 系统时钟3分频
+     *    -# AMHW_HC32F460_CLK_USBCKS_SYSCLK_DIV_4 : 系统时钟4分频
+     *    -# AMHW_HC32F460_CLK_USBCKS_MPLL_P ： MPLL/P
+     *    -# AMHW_HC32F460_CLK_USBCKS_MPLL_Q ： MPLL/Q
+     *    -# AMHW_HC32F460_CLK_USBCKS_MPLL_R : MPLL/R
+     *    -# AMHW_HC32F460_CLK_USBCKS_UPLL_P : UPLL/P
+     *    -# AMHW_HC32F460_CLK_USBCKS_UPLL_Q : UPLL/Q
+     *    -# AMHW_HC32F460_CLK_USBCKS_UPLL_R ：  UPLL/R
+     */
+    amhw_hc32f460_clk_usbcks_t usbck_src;
 
     uint8_t hclk_div;
 
@@ -234,6 +248,7 @@ const am_hc32f460_clk_dev_t *am_hc32f460_clk_devinfo_get (void);
  */
 int am_hc32f460_div_get (am_clk_id_t clk_id);
 
+void SystemClk_Init(void);
 /**
  * @}
  */
@@ -242,6 +257,6 @@ int am_hc32f460_div_get (am_clk_id_t clk_id);
 }
 #endif
 
-#endif /* __AM_HC32_CLK_H */
+#endif /* __AM_HC32F460_CLK_H */
 
 /* end of file */

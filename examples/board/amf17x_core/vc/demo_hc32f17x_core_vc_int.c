@@ -88,6 +88,7 @@ void demo_hc32f17x_core_hw_vc_int_entry (void)
 
     demo_hc32_hw_vc_int_entry((void *)HC32_VC_BASE,
                                 vc_tri_callback,
+                                NULL,
                                 HC32_DAC,
                                 mv_val);
 }

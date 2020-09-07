@@ -60,7 +60,7 @@ void demo_am116_core_drv_sleepmode_timer_wake_up_entry (void)
     /* ≥ı ºªØ PWR */
     am_zlg116_pwr_inst_init();
 
-    demo_zlg116_drv_sleepmode_timer_wake_up_entry(am_zlg116_tim14_timing_inst_init(),
+    demo_zlg116_drv_sleepmode_timer_wake_up_entry(am_zlg116_tim2_timing_inst_init(),
                                                   __LSI_CLK);
 }
 /** [src_am116_core_drv_sleepmode_timer_wake_up] */

@@ -12,10 +12,11 @@
 
 /**
  * \file
- * \brief LVD驱动，服务LVD标准接口
+ * \brief LVD 驱动，服务 LVD 标准接口
  *
  * \internal
  * \par Modification History
+ * - 1.01 20-04-27 zcb, Add callback function parameters
  * - 1.00 19-10-08
  * \endinternal
  */
@@ -38,25 +39,32 @@ extern "C" {
  */
 typedef struct am_hc32_lvd_info {
 
-    uint32_t    reg_base;  /**< \brief lvd寄存器块基地址 */
+    /** \brief LVD 寄存器块基地址 */
+    uint32_t                     reg_base;
 
-    uint8_t     inum;      /**< \brief lvd中断编号 */
+    /** \brief LVD 中断编号 */
+    uint8_t                      inum;
 
-    uint32_t    tri_type;  /**< \brief lvd触发条件 */
+    /** \brief LVD 触发条件 */
+    uint32_t                     tri_type;
 
-    int         deb_time;  /**< \brief lvd数字滤波时间 */
+    /** \brief LVD 数字滤波时间 */
+    int                          deb_time;
 
-    int         vids;      /**< \brief lvd阈值电压 */
+    /** \brief LVD 阈值电压 */
+    int                          vids;
 
-    int         src_sel;   /**< \brief lvd监测来源 */
+    /** \brief LVD 监测来源 */
+    int                          src_sel;
 
-    int         tri_act;   /**< \brief lvd触发动作 */
+    /** \brief LVD 触发动作 */
+    int                          tri_act;
 
-    /** \brief 平台初始化函数，如打开时钟，配置引脚等工作 */
-    void     (*pfn_plfm_init)(void);
+    /** \brief LVD 平台初始化函数，如打开时钟，配置引脚等工作 */
+    void                       (*pfn_plfm_init)(void);
 
-    /** \brief 平台解初始化函数 */
-    void     (*pfn_plfm_deinit)(void);
+    /** \brief LVD 平台解初始化函数 */
+    void                       (*pfn_plfm_deinit)(void);
 
 }am_hc32_lvd_devinfo_t;
 
@@ -68,16 +76,19 @@ typedef struct am_hc32_lvd_dev {
     /** \brief 指向LVD设备信息的指针 */
     const am_hc32_lvd_devinfo_t *p_devinfo;
 
-    /** \brief 中断触发回调 函数*/
-    void (*pfn_trigger_cb)(void *);
+    /** \brief 中断触发回调函数参数*/
+    am_pfnvoid_t                 pfn_trigger_cb;
+
+    /** \brief 中断触发回调函数参数*/
+    void                        *p_arg;
 
 } am_hc32_lvd_dev_t;
 
-/** \brief lvd标准服务操作句柄类型定义 */
-typedef am_hc32_lvd_dev_t *am_lvd_handle_t;
+/** \brief LVD 标准服务操作句柄类型定义 */
+typedef am_hc32_lvd_dev_t       *am_hc32_lvd_handle_t;
 
 /**
- * \brief lvd 初始化
+ * \brief LVD 初始化
  *
  * \param[in] p_dev     : LVD 设备实例
  * \param[in] p_devinfo : LVD 设备信息实例
@@ -85,41 +96,42 @@ typedef am_hc32_lvd_dev_t *am_lvd_handle_t;
  * \retval : 标准LVD服务句柄
  *
  */
-am_lvd_handle_t  am_hc32_lvd_init (am_hc32_lvd_dev_t           *p_dev,
-                                     const am_hc32_lvd_devinfo_t *p_devinfo);
+am_hc32_lvd_handle_t am_hc32_lvd_init (am_hc32_lvd_dev_t           *p_dev,
+                                       const am_hc32_lvd_devinfo_t *p_devinfo);
 
 /**
- * \brief lvd 去初始化
+ * \brief LVD 去初始化
  *
  * \param[in] handle : 标准LVD服务句柄
  *
  * \retval : 无
  *
  */
-void am_hc32_lvd_deinit (am_lvd_handle_t handle);
+void am_hc32_lvd_deinit (am_hc32_lvd_handle_t     handle);
 
 /**
- * \brief lvd 使能
+ * \brief LVD 使能
  *
  * \param[in] handle : 标准LVD服务句柄
  *
- * \retval AM_OK    : 使能成功
- *         AM_ERROR : 使能失败
+ * \retval AM_OK     : 使能成功
+ *         AM_ERROR  : 使能失败
  *
  */
-int am_hc32_lvd_enable (am_lvd_handle_t handle);
+int am_hc32_lvd_enable (am_hc32_lvd_handle_t      handle);
 
 /**
- * \brief 中断触发函数连接
+ * \brief LVD 中断触发函数连接
  *
  * \param[in] handle     : 标准LVD服务句柄
  * \param[in] pfn_tri_cb : 用户定义的回调函数
  *
- * \retval AM_ERROR 连接失败
- * \retval AM_OK    连接成功
+ * \retval AM_OK         : 连接成功
+ * \retval AM_ERROR      : 连接失败
  */
-int am_hc32_lvd_tri_set (am_lvd_handle_t handle,
-                           void (*pfn_tri_cb) (void *));
+int am_hc32_lvd_tri_set (am_hc32_lvd_handle_t     handle,
+                         am_pfnvoid_t             pfn_tri_cb,
+                         void                    *p_arg);
 
 /**
  * @}

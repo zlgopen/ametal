@@ -58,80 +58,80 @@ extern "C" {
  * \brief sysc寄存器块结构体
  */
 typedef struct hc32f460_sysc_regs {
-         uint8_t  RESERVED0[12];
-    __IO uint16_t PWR_STPMCR;
-         uint8_t  RESERVED1[2];
-    __IO uint16_t CMU_PERICKSEL;  /**< \brief CMU AD/TRNG时钟配置寄存器 */
-    __IO uint16_t CMU_I2SCKSEL;   /**< \brief CMU I2S时钟配置寄存器 */
-    __IO uint32_t PWR_RAMPC0;
-    __IO uint32_t PWR_RAMOPM;
-    __IO uint32_t MPU_IPPR;
-    __IO uint32_t CMU_SCFGR;      /**< \brief CMU 时钟分频配置寄存器 */
-    __IO uint8_t  CMU_UFSCKCFGR;  /**< \brief CMU USBFS时钟分频配置寄存器 */
-         uint8_t  RESERVED8[1];
-    __IO uint8_t  CMU_CKSWR;      /**< \brief CMU 系统时钟源切换寄存器 */
-         uint8_t  RESERVED9[3];
-    __IO uint8_t  CMU_PLLCR;      /**< \brief CMU MPLL控制寄存器 */
-         uint8_t  RESERVED10[3];
-    __IO uint8_t  CMU_UPLLCR;     /**< \brief CMU UPLL控制寄存器 */
-         uint8_t  RESERVED11[3];
-    __IO uint8_t  CMU_XTALCR;     /**< \brief CMU XTAL控制寄存器 */
-         uint8_t  RESERVED12[3];
-    __IO uint8_t  CMU_HRCCR;      /**< \brief CMU HRC控制寄存器 */
-         uint8_t  RESERVED13[1];
-    __IO uint8_t  CMU_MRCCR;      /**< \brief CMU MRC控制寄存器 */
-         uint8_t  RESERVED14[3];
-    __IO uint8_t  CMU_OSCSTBSR;   /**< \brief CMU 时钟源稳定状态寄存器 */
-    __IO uint8_t  CMU_MCO1CFGR;   /**< \brief CMU MCO1配置寄存器 */
-    __IO uint8_t  CMU_MCO2CFGR;   /**< \brief CMU MCO2配置寄存器 */
-    __IO uint8_t  CMU_TPIUCKCFGR; /**< \brief CMU 调试时钟配置寄存器 */
-    __IO uint8_t  CMU_XTALSTDCR;  /**< \brief CMU XTAL振荡故障控制寄存器 */
-    __IO uint8_t  CMU_XTALSTDSR;  /**< \brief CMU XTAL振荡故障状态寄存器 */
-         uint8_t  RESERVED20[31];
-    __IO uint8_t  CMU_MRCTRM;     /**< \brief CMU MRC校准寄存器 */
-    __IO uint8_t  CMU_HRCTRM;     /**< \brief CMU HRC校准寄存器 */
-         uint8_t  RESERVED22[63];
-    __IO uint8_t  CMU_XTALSTBCR;  /**< \brief CMU XTAL稳定时间配置寄存器 */
-         uint8_t  RESERVED23[29];
-    __IO uint16_t RMU_RSTF0;
-         uint8_t  RESERVED24[30];
-    __IO uint8_t  PWR_PVDICR;
-    __IO uint8_t  PWR_PVDDSR;
-         uint8_t  RESERVED26[30];
+         uint8_t  RESERVED0[12];   /**< \brief 保留 */
+    __IO uint16_t PWR_STPMCR;      /**< \brief STOP模式唤醒控制寄存器 */
+         uint8_t  RESERVED1[2];    /**< \brief 保留 */
+    __IO uint16_t CMU_PERICKSEL;   /**< \brief CMU AD/TRNG时钟配置寄存器 */
+    __IO uint16_t CMU_I2SCKSEL;    /**< \brief CMU I2S时钟配置寄存器 */
+    __IO uint32_t PWR_RAMPC0;      /**< \brief RAM功耗控制寄存器0 */
+    __IO uint32_t PWR_RAMOPM;      /**< \brief RAM运行条件寄存器 */
+    __IO uint32_t MPU_IPPR;        /**< \brief IP访问保护寄存器 */
+    __IO uint32_t CMU_SCFGR;       /**< \brief CMU 时钟分频配置寄存器 */
+    __IO uint8_t  CMU_UFSCKCFGR;   /**< \brief CMU USBFS时钟分频配置寄存器 */
+         uint8_t  RESERVED8[1];    /**< \brief 保留 */
+    __IO uint8_t  CMU_CKSWR;       /**< \brief CMU 系统时钟源切换寄存器 */
+         uint8_t  RESERVED9[3];    /**< \brief 保留 */
+    __IO uint8_t  CMU_PLLCR;       /**< \brief CMU MPLL控制寄存器 */
+         uint8_t  RESERVED10[3];   /**< \brief 保留 */
+    __IO uint8_t  CMU_UPLLCR;      /**< \brief CMU UPLL控制寄存器 */
+         uint8_t  RESERVED11[3];   /**< \brief 保留 */
+    __IO uint8_t  CMU_XTALCR;      /**< \brief CMU XTAL控制寄存器 */
+         uint8_t  RESERVED12[3];   /**< \brief 保留 */
+    __IO uint8_t  CMU_HRCCR;       /**< \brief CMU HRC控制寄存器 */
+         uint8_t  RESERVED13[1];   /**< \brief 保留 */
+    __IO uint8_t  CMU_MRCCR;       /**< \brief CMU MRC控制寄存器 */
+         uint8_t  RESERVED14[3];   /**< \brief 保留 */
+    __IO uint8_t  CMU_OSCSTBSR;    /**< \brief CMU 时钟源稳定状态寄存器 */
+    __IO uint8_t  CMU_MCO1CFGR;    /**< \brief CMU MCO1配置寄存器 */
+    __IO uint8_t  CMU_MCO2CFGR;    /**< \brief CMU MCO2配置寄存器 */
+    __IO uint8_t  CMU_TPIUCKCFGR;  /**< \brief CMU 调试时钟配置寄存器 */
+    __IO uint8_t  CMU_XTALSTDCR;   /**< \brief CMU XTAL振荡故障控制寄存器 */
+    __IO uint8_t  CMU_XTALSTDSR;   /**< \brief CMU XTAL振荡故障状态寄存器 */
+         uint8_t  RESERVED20[31];  /**< \brief 保留 */
+    __IO uint8_t  CMU_MRCTRM;      /**< \brief CMU MRC校准寄存器 */
+    __IO uint8_t  CMU_HRCTRM;      /**< \brief CMU HRC校准寄存器 */
+         uint8_t  RESERVED22[63];  /**< \brief 保留 */
+    __IO uint8_t  CMU_XTALSTBCR;   /**< \brief CMU XTAL稳定时间配置寄存器 */
+         uint8_t  RESERVED23[29];  /**< \brief 保留 */
+    __IO uint16_t RMU_RSTF0;       /**< \brief 复位标志寄存器 */
+         uint8_t  RESERVED24[30];  /**< \brief 保留 */
+    __IO uint8_t  PWR_PVDICR;      /**< \brief PVD中断控制寄存器 */
+    __IO uint8_t  PWR_PVDDSR;      /**< \brief PVD检测状态寄存器 */
+         uint8_t  RESERVED26[30];  /**< \brief 保留 */
     __IO uint32_t CMU_PLLCFGR;     /**< \brief CMU MPLL配置寄存器 */
     __IO uint32_t CMU_UPLLCFGR;    /**< \brief CMU UPLL控制寄存器 */
-         uint8_t  RESERVED28[758];
-    __IO uint16_t PWR_FPRC;
-    __IO uint8_t  PWR_PWRC0;
-    __IO uint8_t  PWR_PWRC1;
-    __IO uint8_t  PWR_PWRC2;
-    __IO uint8_t  PWR_PWRC3;
-    __IO uint8_t  PWR_PDWKE0;
-    __IO uint8_t  PWR_PDWKE1;
-    __IO uint8_t  PWR_PDWKE2;
-    __IO uint8_t  PWR_PDWKES;
-    __IO uint8_t  PWR_PDWKF0;
-    __IO uint8_t  PWR_PDWKF1;
-    __IO uint8_t  PWR_PWCMR;
-         uint8_t  RESERVED40[4];
-    __IO uint8_t  PWR_MDSWCR;
-    __IO uint8_t  CMU_XTALCFGR;  /**< \brief CMU XTAL配置寄存器 */
-         uint8_t  RESERVED42[1];
-    __IO uint8_t  PWR_PVDCR0;
-    __IO uint8_t  PWR_PVDCR1;
-    __IO uint8_t  PWR_PVDFCR;
-    __IO uint8_t  PWR_PVDLCR;
-         uint8_t  RESERVED46[10];
-    __IO uint8_t  CMU_XTAL32CR;  /**< \brief CMU XTAL32控制寄存器 */
-    __IO uint8_t  CMU_XTAL32CFGR;/**< \brief CMU XTAL32配置寄存器 */
-         uint8_t  RESERVED48[3];
-    __IO uint8_t  CMU_XTAL32NFR; /**< \brief CMU XTAL32滤波寄存器 */
-         uint8_t  RESERVED49[1];
-    __IO uint8_t  CMU_LRCCR;     /**< \brief CMU LRC控制寄存器 */
-         uint8_t  RESERVED50[1];
-    __IO uint8_t  CMU_LRCTRM;    /**< \brief CMU LRC校准寄存器 */
-         uint8_t  RESERVED51[1];
-    __IO uint8_t  PWR_XTAL32CS;
+         uint8_t  RESERVED28[758]; /**< \brief 保留 */
+    __IO uint16_t PWR_FPRC;        /**< \brief 功能保护控制寄存器*/
+    __IO uint8_t  PWR_PWRC0;       /**< \brief 电源模式控制寄存器0*/
+    __IO uint8_t  PWR_PWRC1;       /**< \brief 功能保护控制寄存器1*/
+    __IO uint8_t  PWR_PWRC2;       /**< \brief 功能保护控制寄存器2*/
+    __IO uint8_t  PWR_PWRC3;       /**< \brief 功能保护控制寄存器3*/
+    __IO uint8_t  PWR_PDWKE0;      /**< \brief 掉电唤醒使能寄存器0*/
+    __IO uint8_t  PWR_PDWKE1;      /**< \brief 掉电唤醒使能寄存器1*/
+    __IO uint8_t  PWR_PDWKE2;      /**< \brief 掉电唤醒使能寄存器2*/
+    __IO uint8_t  PWR_PDWKES;      /**< \brief 掉电唤醒事件边沿选择寄存器*/
+    __IO uint8_t  PWR_PDWKF0;      /**< \brief 掉电唤醒标志寄存器0*/
+    __IO uint8_t  PWR_PDWKF1;      /**< \brief 掉电唤醒标志寄存器1*/
+    __IO uint8_t  PWR_PWCMR;       /**< \brief 电源监测寄存器*/
+         uint8_t  RESERVED40[4];   /**< \brief 保留 */
+    __IO uint8_t  PWR_MDSWCR;      /**< \brief 模式切换控制寄存器 */
+    __IO uint8_t  CMU_XTALCFGR;    /**< \brief CMU XTAL配置寄存器 */
+         uint8_t  RESERVED42[1];   /**< \brief 保留 */
+    __IO uint8_t  PWR_PVDCR0;      /**< \brief PVD控制寄存器0 */
+    __IO uint8_t  PWR_PVDCR1;      /**< \brief PVD控制寄存器1 */
+    __IO uint8_t  PWR_PVDFCR;      /**< \brief PVD滤波控制寄存器 */
+    __IO uint8_t  PWR_PVDLCR;      /**< \brief PVD电平控制寄存器 */
+         uint8_t  RESERVED46[10];  /**< \brief 保留 */
+    __IO uint8_t  CMU_XTAL32CR;    /**< \brief CMU XTAL32控制寄存器 */
+    __IO uint8_t  CMU_XTAL32CFGR;  /**< \brief CMU XTAL32配置寄存器 */
+         uint8_t  RESERVED48[3];   /**< \brief 保留 */
+    __IO uint8_t  CMU_XTAL32NFR;   /**< \brief CMU XTAL32滤波寄存器 */
+         uint8_t  RESERVED49[1];   /**< \brief 保留 */
+    __IO uint8_t  CMU_LRCCR;       /**< \brief CMU LRC控制寄存器 */
+         uint8_t  RESERVED50[1];   /**< \brief 保留 */
+    __IO uint8_t  CMU_LRCTRM;      /**< \brief CMU LRC校准寄存器 */
+         uint8_t  RESERVED51[1];   /**< \brief 保留 */
+    __IO uint8_t  PWR_XTAL32CS;    /**< \brief XTAL32电流控制寄存器 */
 } hc32f460_sysc_regs_t;
 
 #define HC32F460_SYSCREG            ((hc32f460_sysc_regs_t *)HC32F460_SYSC_BASE)
@@ -142,7 +142,7 @@ typedef struct hc32f460_mstp_regs {
     __IO uint32_t FCG1;
     __IO uint32_t FCG2;
     __IO uint32_t FCG3;
-
+    __IO uint32_t FCG0_PC;
 } hc32f460_mstp_regs_t;
 
 #define HC32F460_MSTP        ((hc32f460_mstp_regs_t *)HC32F460_MSTP_BASE)
@@ -172,13 +172,13 @@ typedef enum {
  * \brief 系统时钟分频系数(输出到各工作时钟)
  */
 typedef enum {
-    AMHW_HC32F460_SYSCLK_DIV_1 = 1,  /**< \brief 系统时钟的1分频 */
-    AMHW_HC32F460_SYSCLK_DIV_2 = 2,      /**< \brief 系统时钟的2分频 */
-    AMHW_HC32F460_SYSCLK_DIV_4 = 4,      /**< \brief 系统时钟的4分频 */
-    AMHW_HC32F460_SYSCLK_DIV_8 = 8,      /**< \brief 系统时钟的8分频 */
-    AMHW_HC32F460_SYSCLK_DIV_16 = 16,     /**< \brief 系统时钟的16分频 */
-    AMHW_HC32F460_SYSCLK_DIV_32 = 32,     /**< \brief 系统时钟的32分频 */
-    AMHW_HC32F460_SYSCLK_DIV_64 =64     /**< \brief 系统时钟的64分频 */
+    AMHW_HC32F460_SYSCLK_DIV_1 = 0,  /**< \brief 系统时钟的1分频 */
+    AMHW_HC32F460_SYSCLK_DIV_2 = 1,      /**< \brief 系统时钟的2分频 */
+    AMHW_HC32F460_SYSCLK_DIV_4 = 2,      /**< \brief 系统时钟的4分频 */
+    AMHW_HC32F460_SYSCLK_DIV_8 = 3,      /**< \brief 系统时钟的8分频 */
+    AMHW_HC32F460_SYSCLK_DIV_16 = 4,     /**< \brief 系统时钟的16分频 */
+    AMHW_HC32F460_SYSCLK_DIV_32 = 5,     /**< \brief 系统时钟的32分频 */
+    AMHW_HC32F460_SYSCLK_DIV_64 =6     /**< \brief 系统时钟的64分频 */
 }amhw_hc32f460_sys_clk_div;
 
 typedef enum {
@@ -210,18 +210,34 @@ typedef enum {
 }amhw_hc32f460_clk_pll_src;
 
 typedef struct amhw_hc32f460_clk_pll_cfg{
-    uint32_t         PllpDiv;       ///< Pllp clk, division factor of VCO out.
-    uint32_t         PllqDiv;       ///< Pllq clk, division factor of VCO out.
-    uint32_t         PllrDiv;       ///< Pllr clk, division factor of VCO out.
-    uint32_t         plln;          ///< Multiplication factor of vco out, ensure between 240M~480M
-    uint32_t         pllmDiv;       ///< Division factor of VCO in, ensure between 1M~12M.
+    uint32_t         PllpDiv;       /**< \brief Pllp clk, division factor of VCO out. */
+    uint32_t         PllqDiv;       /**< \brief Pllq clk, division factor of VCO out. */
+    uint32_t         PllrDiv;       /**< \brief Pllr clk, division factor of VCO out. */
+    uint32_t         plln;          /**< \brief Multiplication factor of vco out, ensure between 240M~480M */
+    uint32_t         pllmDiv;       /**< \brief Division factor of VCO in, ensure between 1M~12M. */
 }amhw_hc32f460_clk_pll_cfg_t;
+
+
+/**
+ * \brief USBCK时钟源
+ */
+typedef enum {
+    AMHW_HC32F460_CLK_USBCKS_SYSCLK_DIV_2 = 2,   /**< \brief 系统时钟2分频 */
+    AMHW_HC32F460_CLK_USBCKS_SYSCLK_DIV_3 = 3,   /**< \brief 系统时钟3分频 */
+    AMHW_HC32F460_CLK_USBCKS_SYSCLK_DIV_4 = 4,   /**< \brief 系统时钟4分频 */
+    AMHW_HC32F460_CLK_USBCKS_MPLL_P       = 8,   /**< \brief MPLL/P */
+    AMHW_HC32F460_CLK_USBCKS_MPLL_Q       = 9,   /**< \brief MPLL/Q */
+    AMHW_HC32F460_CLK_USBCKS_MPLL_R       = 10,  /**< \brief MPLL/R */
+    AMHW_HC32F460_CLK_USBCKS_UPLL_P       = 11,  /**< \brief UPLL/P */
+    AMHW_HC32F460_CLK_USBCKS_UPLL_Q       = 12,  /**< \brief UPLL/Q */
+    AMHW_HC32F460_CLK_USBCKS_UPLL_R       = 13,  /**< \brief UPLL/R */
+}amhw_hc32f460_clk_usbcks_t;
 
 /**
  * \brief 外设枚举
  */
 typedef enum {
-    /* PWR_CFG0寄存器控制的外设使能位  */
+    /** \brief PWR_CFG0寄存器控制的外设使能位  */
     AMHW_HC32F460_RCC_RAMHS = 0,
     AMHW_HC32F460_RCC_RAM0 = 4,
     AMHW_HC32F460_RCC_ECCRAM = 8,
@@ -240,7 +256,7 @@ typedef enum {
     AMHW_HC32F460_RCC_DCU4 = 27,
     AMHW_HC32F460_RCC_KEY = 31,
 
-    /* PWR_CFG1寄存器控制的外设使能位  */
+    /** \brief PWR_CFG1寄存器控制的外设使能位  */
     AMHW_HC32F460_RCC_CAN  = 0 + 32,
     AMHW_HC32F460_RCC_QSPI = 3 + 32,
     AMHW_HC32F460_RCC_IIC1 = 4 + 32,
@@ -262,7 +278,7 @@ typedef enum {
     AMHW_HC32F460_RCC_USART3 = 26 + 32,
     AMHW_HC32F460_RCC_USART4 = 27 + 32,
 
-    /* PWR_CFG2寄存器控制的外设时钟使能位  */
+    /** \brief PWR_CFG2寄存器控制的外设时钟使能位  */
     AMHW_HC32F460_RCC_TIMER0_1 = 0 + 64,
     AMHW_HC32F460_RCC_TIMER0_2 = 1 + 64,
     AMHW_HC32F460_RCC_TIMERA_1 = 2 + 64,
@@ -279,7 +295,7 @@ typedef enum {
     AMHW_HC32F460_RCC_TIMER6_2 = 17 + 64,
     AMHW_HC32F460_RCC_TIMER6_3 = 18 + 64,
 
-    /* PWR_CFG3寄存器控制的外设时钟使能位  */
+    /** \brief PWR_CFG3寄存器控制的外设时钟使能位  */
     AMHW_HC32F460_RCC_ADC1 = 0 + 96,
     AMHW_HC32F460_RCC_ADC2 = 1 + 96,
     AMHW_HC32F460_RCC_DAC  = 4 + 96,
@@ -290,103 +306,133 @@ typedef enum {
 
 
 
-/* 获取当前系统时钟源 */
+/**
+ * \brief 获取当前系统时钟源
+ *
+ * \return 系统时钟源标志
+ */
 am_static_inline
 amhw_hc32f460_sys_clk_src amhw_hc32f460_clk_get_sysclk_src(void) {
-    return (HC32F460_SYSCREG->CMU_CKSWR & 0x7);
+    return (amhw_hc32f460_sys_clk_src)(HC32F460_SYSCREG->CMU_CKSWR & 0x7);
 }
 
-/* 允许时钟寄存器写（关掉写保护） */
+/**
+ * \brief 允许时钟寄存器写（关掉写保护）
+ *
+ * \return 无
+ */
 am_static_inline
-void amhw_hc32f460_clk_reg_write_enable (void) {
+void amhw_hc32f460_clk_fprcb0_reg_write_enable (void) {
     HC32F460_SYSCREG->PWR_FPRC = 0xa501;
 }
 
-/* 禁止时钟寄存器写（开启写保护） */
+/**
+ * \brief 禁止时钟寄存器写（开启写保护）
+ *
+ * \return 无
+ */
 am_static_inline
-void amhw_hc32f460_clk_reg_write_disable (void) {
+void amhw_hc32f460_clk_fprcb0_reg_write_disable (void) {
     HC32F460_SYSCREG->PWR_FPRC = 0xa500;
 }
 
-/* 允许时钟寄存器写（关掉写保护） */
+/**
+ * \brief 允许时钟寄存器写（关掉写保护）
+ *
+ * \return 无
+ */
 am_static_inline
-void amhw_hc32f460_clk1_reg_write_enable (void) {
+void amhw_hc32f460_clk_fprcb1_reg_write_enable (void) {
     HC32F460_SYSCREG->PWR_FPRC = 0xa502;
 }
 
-/* 禁止时钟寄存器写（开启写保护） */
+/**
+ * \brief 禁止时钟寄存器写（开启写保护）
+ *
+ * \return 无
+ */
 am_static_inline
-void amhw_hc32f460_clk1_reg_write_disable (void) {
+void amhw_hc32f460_clk_fprcb1_reg_write_disable (void) {
     HC32F460_SYSCREG->PWR_FPRC = 0xa500;
 }
 
-/* 系统时钟分频配置 */
+/**
+ * \brief 允许时钟寄存器写（关掉写保护）
+ *
+ * \return 无
+ */
 am_static_inline
-void amhw_hc32f460_sysclk_cfg (uint32_t                         clk_id,
-                               uint32_t                         clk_div)
-{
-    uint8_t reg_val = 0;
-
-    switch (clk_div) {
-
-    case 1:
-        reg_val = 0;
-        break;
-    case 2:
-        reg_val = 1;
-        break;
-    case 4:
-        reg_val = 2;
-        break;
-    case 8:
-        reg_val = 3;
-        break;
-    case 16:
-        reg_val = 4;
-        break;
-    case 32:
-        reg_val = 5;
-        break;
-    case 64:
-        reg_val = 6;
-        break;
-    }
-
-    switch (clk_id) {
-
-    case CLK_HCLK :
-        HC32F460_SYSCREG->CMU_SCFGR |= (reg_val << 24);
-        break;
-    case CLK_PCLK0:
-        HC32F460_SYSCREG->CMU_SCFGR |= (reg_val << 0);
-        break;
-    case CLK_PCLK1:
-        HC32F460_SYSCREG->CMU_SCFGR |= (reg_val << 4);
-        break;
-    case CLK_PCLK2:
-        HC32F460_SYSCREG->CMU_SCFGR |= (reg_val << 8);
-        break;
-    case CLK_PCLK3:
-        HC32F460_SYSCREG->CMU_SCFGR |= (reg_val << 12);
-        break;
-    case CLK_PCLK4:
-        HC32F460_SYSCREG->CMU_SCFGR |= (reg_val << 16);
-        break;
-    case CLK_EXCLK:
-        HC32F460_SYSCREG->CMU_SCFGR |= (reg_val << 20);
-        break;
-    }
+void amhw_hc32f460_clk_fprcb3_reg_write_enable (void) {
+    HC32F460_SYSCREG->PWR_FPRC = 0xa508;
 }
 
-/* 复位功能时钟控制寄存器 */
+/**
+ * \brief 禁止时钟寄存器写（开启写保护）
+ *
+ * \return 无
+ */
+am_static_inline
+void amhw_hc32f460_clk_fprcb3_reg_write_disable (void) {
+    HC32F460_SYSCREG->PWR_FPRC = 0xa500;
+}
+
+/**
+ * \brief 允许功能时钟寄存器0（FCG0）写（关掉写保护）
+ *
+ * \return 无
+ */
+am_static_inline
+void amhw_hc32f460_clk_fcg0_reg_write_enable (void) {
+    HC32F460_MSTP->FCG0_PC = 0xa5a50001;
+}
+
+/**
+ * \brief 禁止功能时钟寄存器0（FCG0）寄存器写（开启写保护）
+ *
+ * \return 无
+ */
+am_static_inline
+void amhw_hc32f460_clk_fcg0_reg_write_disable (void) {
+    HC32F460_MSTP->FCG0_PC = 0xa5a50000;
+}
+
+/**
+ * \brief CMU时钟分频设置
+ *
+ * \param[in] clk_div CMU时钟分频设置掩码
+ *
+ * \return 无
+ */
+am_static_inline
+void amhw_hc32f460_sysclk_cfg (uint32_t             clk_div)
+{
+    amhw_hc32f460_clk_fprcb0_reg_write_enable();
+    HC32F460_SYSCREG->CMU_SCFGR = clk_div;
+    amhw_hc32f460_clk_fprcb0_reg_write_disable();
+}
+
+/**
+ * \brief 复位功能时钟控制寄存器
+ *
+ * \return 无
+ */
 am_static_inline
 void amhw_hc32f460_clk_reset_mstb_fcg (void) {
+    HC32F460_MSTP->FCG0_PC = 0XA5A50001;
     HC32F460_MSTP->FCG0 = 0XFFFFFAEE;
+    HC32F460_MSTP->FCG0_PC = 0XA5A50000;
     HC32F460_MSTP->FCG1 = 0XF7FFFFFF;
     HC32F460_MSTP->FCG2 = 0XFFFFFFFF;
     HC32F460_MSTP->FCG3 = 0XFFFFFFFF;
 }
-/* 读取当前FCG寄存器的值 */
+
+/**
+ * \brief 读取当前FCG寄存器的值
+ *
+ * \param[in] value_reg 用于存放读取值的buffer
+ *
+ * \return 无
+ */
 am_static_inline
 void amhw_hc32f460_clk_get_mstb_fcg (uint32_t* value_reg)
 {
@@ -396,138 +442,212 @@ void amhw_hc32f460_clk_get_mstb_fcg (uint32_t* value_reg)
     value_reg[3] = HC32F460_MSTP->FCG3;
 }
 
-/* 重新写入FCG寄存器的值 */
+/**
+ * \brief 重新写入FCG寄存器的值
+ *
+ * \param[in] value_reg 用于存放写入值的buffer
+ *
+ * \return 无
+ */
 am_static_inline
 void amhw_hc32f460_clk_set_mstb_fcg (uint32_t* value_reg)
 {
+    HC32F460_MSTP->FCG0_PC = 0XA5A50001;
     HC32F460_MSTP->FCG0 = value_reg[0];
+    HC32F460_MSTP->FCG0_PC = 0XA5A50000;
     HC32F460_MSTP->FCG1 = value_reg[1];
     HC32F460_MSTP->FCG2 = value_reg[2];
     HC32F460_MSTP->FCG3 = value_reg[3];
 }
 
-/* 系统时钟源设置 */
+/**
+ * \brief 系统时钟源设置
+ *
+ * \param[in] clk_src 系统时钟源
+ *
+ * \return 无
+ */
 am_static_inline
 void amhw_hc32f460_clk_set_sysclk_src(amhw_hc32f460_sys_clk_src  clk_src)
 {
-	amhw_hc32f460_clk_reg_write_enable();
+    amhw_hc32f460_clk_fprcb0_reg_write_enable();
     HC32F460_SYSCREG->CMU_CKSWR = clk_src;
-    amhw_hc32f460_clk_reg_write_disable();
+    amhw_hc32f460_clk_fprcb0_reg_write_disable();
 }
 
 
 
 
-/* XTAL配置 */
+/**
+ * \brief XTAL设置
+ *
+ * \param[in] xtal_cfg 配置参数结构体
+ *
+ * \return 无
+ */
 am_static_inline
 void amhw_hc32f460_clk_xtal_cfg (amhw_hc32f460_cmu_xtalcfg_t xtal_cfg)
 {
-	amhw_hc32f460_clk_reg_write_enable();
+    amhw_hc32f460_clk_fprcb0_reg_write_enable();
     HC32F460_SYSCREG->CMU_XTALCFGR = (xtal_cfg.drv    << 4) |
                                      (xtal_cfg.mode   << 6) |
                                      (xtal_cfg.supdrv << 7);
-    amhw_hc32f460_clk_reg_write_disable();
+    amhw_hc32f460_clk_fprcb0_reg_write_disable();
 
 }
 
-/* XTAL振荡器振荡 */
+/**
+ * \brief XTAL振荡器振荡
+ *
+ * \return 无
+ */
 am_static_inline
 void amhw_hc32f460_clk_xtal_cfg_enable(void)
 {
-	amhw_hc32f460_clk_reg_write_enable();
+    amhw_hc32f460_clk_fprcb0_reg_write_enable();
     HC32F460_SYSCREG->CMU_XTALCR &= ~(0x1ul);
-    amhw_hc32f460_clk_reg_write_disable();
+    amhw_hc32f460_clk_fprcb0_reg_write_disable();
 }
 
-/* XTAL振荡器停止 */
+/**
+ * \brief XTAL振荡器停止
+ *
+ * \return 无
+ */
 am_static_inline
 void amhw_hc32f460_clk_xtal_cfg_disable(void)
 {
+    amhw_hc32f460_clk_fprcb0_reg_write_enable();
     HC32F460_SYSCREG->CMU_XTALCR |=  (0x1ul);
+    amhw_hc32f460_clk_fprcb0_reg_write_disable();
 }
 
-/* HRC振荡器振荡 */
+/**
+ * \brief HRC振荡器振荡
+ *
+ * \return 无
+ */
 am_static_inline
 void amhw_hc32f460_clk_hrc_cfg_enable(void)
 {
+    amhw_hc32f460_clk_fprcb0_reg_write_enable();
     HC32F460_SYSCREG->CMU_HRCCR &= ~(0x1ul);
+    amhw_hc32f460_clk_fprcb0_reg_write_disable();
 }
 
-/* HRC振荡器停止 */
+/**
+ * \brief HRC停止振荡
+ *
+ * \return 无
+ */
 am_static_inline
 void amhw_hc32f460_clk_hrc_cfg_disable(void)
 {
+    amhw_hc32f460_clk_fprcb0_reg_write_enable();
     HC32F460_SYSCREG->CMU_HRCCR |=  (0x1ul);
+    amhw_hc32f460_clk_fprcb0_reg_write_disable();
 }
 
-/* PLL时钟源设置 */
+/**
+ * \brief PLL时钟源设置
+ *
+ * \param[in] pll_src 时钟源（amhw_hc32f460_clk_pll_src）
+ *
+ * \return 无
+ */
 am_static_inline
 void amhw_hc32f460_clk_pll_src_set(amhw_hc32f460_clk_pll_src pll_src)
 {
-	amhw_hc32f460_clk_reg_write_enable();
+    amhw_hc32f460_clk_fprcb0_reg_write_enable();
     if (pll_src == AMHW_HC32F460_CLK_PLLSRC_XTAL) {
         HC32F460_SYSCREG->CMU_PLLCFGR &=  ~(1 << 7);
     } else {
         HC32F460_SYSCREG->CMU_PLLCFGR |=  (1 << 7);
     }
-    amhw_hc32f460_clk_reg_write_disable();
+    amhw_hc32f460_clk_fprcb0_reg_write_disable();
 }
 
-/* MPLL时钟设置 */
+/**
+ * \brief MPLL时钟设置
+ *
+ * \param[in] mpll_cfg 配置参数结构体
+ *
+ * \return 无
+ */
 am_static_inline
 void amhw_hc32f460_clk_mpll_cfg(amhw_hc32f460_clk_pll_cfg_t mpll_cfg)
 {
-	amhw_hc32f460_clk_reg_write_enable();
+    amhw_hc32f460_clk_fprcb0_reg_write_enable();
 
     HC32F460_SYSCREG->CMU_PLLCFGR &= (1 << 7);
 
-    HC32F460_SYSCREG->CMU_PLLCFGR |= (mpll_cfg.pllmDiv - 1)         |
-                                     ((mpll_cfg.plln - 1)    << 8)  |
+    HC32F460_SYSCREG->CMU_PLLCFGR |= (mpll_cfg.pllmDiv  - 1)        |
+                                     ((mpll_cfg.plln    - 1) << 8)  |
                                      ((mpll_cfg.PllrDiv - 1) << 20) |
                                      ((mpll_cfg.PllqDiv - 1) << 24) |
                                      ((mpll_cfg.PllqDiv - 1) << 28);
 
-    amhw_hc32f460_clk_reg_write_disable();
+    amhw_hc32f460_clk_fprcb0_reg_write_disable();
 }
 
-/* MPLL时钟使能 */
+/**
+ * \brief UPLL时钟使能
+ *
+ * \return 无
+ */
 am_static_inline
 void amhw_hc32f460_clk_upll_enable(void)
 {
-	amhw_hc32f460_clk_reg_write_enable();
+    amhw_hc32f460_clk_fprcb0_reg_write_enable();
     HC32F460_SYSCREG->CMU_UPLLCR &= ~(1ul);
-    amhw_hc32f460_clk_reg_write_disable();
+    amhw_hc32f460_clk_fprcb0_reg_write_disable();
 }
 
-/* MPLL时钟设置 */
+/**
+ * \brief UPLL时钟设置
+ *
+ * \param[in] upll_cfg 配置参数结构体
+ *
+ * \return 无
+ */
 am_static_inline
 void amhw_hc32f460_clk_upll_cfg(amhw_hc32f460_clk_pll_cfg_t upll_cfg)
 {
-	amhw_hc32f460_clk_reg_write_enable();
+    amhw_hc32f460_clk_fprcb0_reg_write_enable();
 
     HC32F460_SYSCREG->CMU_UPLLCFGR &= (1 << 7);
 
-    HC32F460_SYSCREG->CMU_UPLLCFGR |= (upll_cfg.pllmDiv)       |
-                                      (upll_cfg.plln << 8)     |
-                                      (upll_cfg.PllrDiv << 20) |
-                                      (upll_cfg.PllqDiv << 24) |
-                                      (upll_cfg.PllqDiv << 28);
+    HC32F460_SYSCREG->CMU_UPLLCFGR |= (upll_cfg.pllmDiv  - 1)        |
+                                      ((upll_cfg.plln    - 1) << 8)  |
+                                      ((upll_cfg.PllrDiv - 1) << 20) |
+                                      ((upll_cfg.PllqDiv - 1) << 24) |
+                                      ((upll_cfg.PllpDiv - 1) << 28);
 
-    amhw_hc32f460_clk_reg_write_disable();
+    amhw_hc32f460_clk_fprcb0_reg_write_disable();
 }
 
-/* MPLL时钟使能 */
+/**
+ * \brief MPLL时钟使能
+ *
+ * \return 无
+ */
 am_static_inline
 void amhw_hc32f460_clk_mpll_enable(void)
 {
-	amhw_hc32f460_clk_reg_write_enable();
+    amhw_hc32f460_clk_fprcb0_reg_write_enable();
     HC32F460_SYSCREG->CMU_PLLCR &= ~(1ul);
-    amhw_hc32f460_clk_reg_write_disable();
+    amhw_hc32f460_clk_fprcb0_reg_write_disable();
 }
 
 
 
-/* 获取时钟源稳定状态 */
+/**
+ * \brief 获取时钟源稳定状态
+ *
+ * \param[in] clk_src 时钟源ID
+ *
+ * \return 无
+ */
 am_static_inline
 int amhw_hc32f460_clk_status_get(uint32_t clk_src_id)
 {
@@ -562,19 +682,31 @@ int amhw_hc32f460_clk_status_get(uint32_t clk_src_id)
     }
 }
 
-/* MPLL时钟停止 */
+/**
+ * \brief MPLL时钟停止
+ *
+ * \return 无
+ */
 am_static_inline
 void amhw_hc32f460_clk_mpll_disable(void)
 {
+    amhw_hc32f460_clk_fprcb0_reg_write_enable();
     HC32F460_SYSCREG->CMU_PLLCR |= (1ul);
+    amhw_hc32f460_clk_fprcb0_reg_write_disable();
 }
 
-/* 系统时钟分频获取 */
+/**
+ * \brief CMU时钟分频获取
+ *
+ * \param[in] clk_src 时钟源ID
+ *
+ * \return 时钟分频
+ */
 am_static_inline
-uint8_t amhw_hc32f460_clk_cmu_scfgr_div_get(am_clk_id_t clk_id)
+int amhw_hc32f460_clk_cmu_scfgr_div_get(am_clk_id_t clk_id)
 {
     uint8_t clk_div = 1;
-    uint8_t reg_val = 0;
+    uint32_t reg_val = 0;
 
     switch (clk_id) {
 
@@ -610,7 +742,26 @@ uint8_t amhw_hc32f460_clk_cmu_scfgr_div_get(am_clk_id_t clk_id)
     return clk_div;
 }
 
-/* usb时钟源获取 */
+/**
+ * \brief USB时钟源设置
+ *
+ * \param[in] clk_src 时钟源ID
+ *
+ * \return 无
+ */
+am_static_inline
+void amhw_hc32f460_clk_cmu_usbcks_set(amhw_hc32f460_clk_usbcks_t clk_src)
+{
+    amhw_hc32f460_clk_fprcb0_reg_write_enable();
+    HC32F460_SYSCREG->CMU_UFSCKCFGR = (clk_src << 4);
+    amhw_hc32f460_clk_fprcb0_reg_write_disable();
+}
+
+/**
+ * \brief USB时钟源获取
+ *
+ * \return 时钟源时钟ID
+ */
 am_static_inline
 am_clk_id_t amhw_hc32f460_clk_cmu_usbcks_get(void)
 {
@@ -652,7 +803,11 @@ am_clk_id_t amhw_hc32f460_clk_cmu_usbcks_get(void)
     return clk_id;
 }
 
-/* TPIU时钟源获取 */
+/**
+ * \brief TPIU时钟源获取
+ *
+ * \return 时钟源时钟ID
+ */
 am_static_inline
 am_clk_id_t amhw_hc32f460_clk_cmu_tpiu_src_get(void)
 {
@@ -677,7 +832,13 @@ am_clk_id_t amhw_hc32f460_clk_cmu_tpiu_src_get(void)
     }
 }
 
-/* I2S时钟源获取 */
+/**
+ * \brief I2S时钟源获取
+ *
+ * \param[in]  clk_id ：时钟ID
+ *
+ * \return 时钟源时钟ID
+ */
 am_static_inline
 am_clk_id_t amhw_hc32f460_clk_i2s_src_get(am_clk_id_t clk_id)
 {
@@ -764,6 +925,162 @@ int amhw_hc32f460_rcc_peripheral_enable_check (amhw_hc32f460_peripheral peri);
  */
 void amhw_hc32f460_rcc_peripheral_disable (amhw_hc32f460_peripheral peri);
 
+/**
+ * \brief MCO1输出使能
+ *
+ * \return 无
+ *
+ */
+am_static_inline
+void amhw_hc32f460_rcc_mco1_enable (void)
+{
+    amhw_hc32f460_clk_fprcb0_reg_write_enable();
+    HC32F460_SYSCREG->CMU_MCO1CFGR |= (1 << 7);
+    amhw_hc32f460_clk_fprcb0_reg_write_disable();
+}
+
+/**
+ * \brief MCO1输出禁止
+ *
+ * \return 无
+ *
+ */
+am_static_inline
+void amhw_hc32f460_rcc_mco1_disable (void)
+{
+    amhw_hc32f460_clk_fprcb0_reg_write_enable();
+    HC32F460_SYSCREG->CMU_MCO1CFGR &= ~(1 << 7);
+    amhw_hc32f460_clk_fprcb0_reg_write_disable();
+}
+
+/**
+ * \brief MCO2输出使能
+ *
+ * \return 无
+ *
+ */
+am_static_inline
+void amhw_hc32f460_rcc_mco2_enable (void)
+{
+    amhw_hc32f460_clk_fprcb0_reg_write_enable();
+    HC32F460_SYSCREG->CMU_MCO2CFGR |= (1 << 7);
+    amhw_hc32f460_clk_fprcb0_reg_write_disable();
+}
+
+/**
+ * \brief MCO2输出禁止
+ *
+ * \return 无
+ *
+ */
+am_static_inline
+void amhw_hc32f460_rcc_mco2_disable (void)
+{
+    amhw_hc32f460_clk_fprcb0_reg_write_enable();
+    HC32F460_SYSCREG->CMU_MCO2CFGR &= ~(1 << 7);
+    amhw_hc32f460_clk_fprcb0_reg_write_disable();
+}
+
+
+typedef enum {
+    AMHW_HC32F460_RCC_MCO_DIV_1 = 0,
+    AMHW_HC32F460_RCC_MCO_DIV_2,
+    AMHW_HC32F460_RCC_MCO_DIV_4,
+    AMHW_HC32F460_RCC_MCO_DIV_8,
+    AMHW_HC32F460_RCC_MCO_DIV_16,
+    AMHW_HC32F460_RCC_MCO_DIV_32,
+    AMHW_HC32F460_RCC_MCO_DIV_64,
+    AMHW_HC32F460_RCC_MCO_DIV_128,
+} amhw_hc32f460_rcc_mco_div_t;
+
+typedef enum {
+    AMHW_HC32F460_RCC_MCO_SRC_HRC    = 0,
+    AMHW_HC32F460_RCC_MCO_SRC_MRC    = 1,
+    AMHW_HC32F460_RCC_MCO_SRC_LRC    = 2,
+    AMHW_HC32F460_RCC_MCO_SRC_XTAL   = 3,
+    AMHW_HC32F460_RCC_MCO_SRC_XTAL32 = 4,
+    AMHW_HC32F460_RCC_MCO_SRC_MPLLP  = 6,
+    AMHW_HC32F460_RCC_MCO_SRC_UPLLP  = 7,
+    AMHW_HC32F460_RCC_MCO_SRC_MPLLQ  = 8,
+    AMHW_HC32F460_RCC_MCO_SRC_UPLLQ  = 9,
+    AMHW_HC32F460_RCC_MCO_SRC_SYSCLK = 11,
+} amhw_hc32f460_rcc_mco_src_t;
+
+/**
+ * \brief MCO1分频选择
+ *
+ * \param[in]  clk_div ：时钟分频
+ *
+ * \return 无
+ *
+ */
+am_static_inline
+void amhw_hc32f460_rcc_mco1_div_set (amhw_hc32f460_rcc_mco_div_t mco1_div)
+{
+    amhw_hc32f460_clk_fprcb0_reg_write_enable();
+    uint8_t reg_val = HC32F460_SYSCREG->CMU_MCO1CFGR;
+    reg_val &= ~(0x7 << 4);
+    reg_val |= (mco1_div << 4);
+    HC32F460_SYSCREG->CMU_MCO1CFGR = reg_val;
+    amhw_hc32f460_clk_fprcb0_reg_write_disable();
+}
+
+/**
+ * \brief MCO1时钟源选择
+ *
+ * \param[in]  clk_src ：时钟源
+ *
+ * \return 无
+ *
+ */
+am_static_inline
+void amhw_hc32f460_rcc_mco1_src_set (amhw_hc32f460_rcc_mco_src_t mco1_src)
+{
+    amhw_hc32f460_clk_fprcb0_reg_write_enable();
+    uint8_t reg_val = HC32F460_SYSCREG->CMU_MCO1CFGR;
+    reg_val &= ~0xF;
+    reg_val |= mco1_src;
+    HC32F460_SYSCREG->CMU_MCO1CFGR = reg_val;
+    amhw_hc32f460_clk_fprcb0_reg_write_disable();
+}
+
+/**
+ * \brief MCO2分频选择
+ *
+ * \param[in]  clk_div ：时钟分频
+ *
+ * \return 无
+ *
+ */
+am_static_inline
+void amhw_hc32f460_rcc_mco2_div_set (amhw_hc32f460_rcc_mco_div_t mco2_div)
+{
+    amhw_hc32f460_clk_fprcb0_reg_write_enable();
+    uint8_t reg_val = HC32F460_SYSCREG->CMU_MCO2CFGR;
+    reg_val &= ~(0x7 << 4);
+    reg_val |= (mco2_div << 4);
+    HC32F460_SYSCREG->CMU_MCO2CFGR = reg_val;
+    amhw_hc32f460_clk_fprcb0_reg_write_disable();
+}
+
+/**
+ * \brief MCO2时钟源选择
+ *
+ * \param[in]  clk_src ：时钟源
+ *
+ * \return 无
+ *
+ */
+am_static_inline
+void amhw_hc32f460_rcc_mco2_src_set (amhw_hc32f460_rcc_mco_src_t mco2_src)
+{
+    amhw_hc32f460_clk_fprcb0_reg_write_enable();
+    uint8_t reg_val = HC32F460_SYSCREG->CMU_MCO2CFGR;
+    reg_val &= ~0xF;
+    reg_val |= mco2_src;
+    HC32F460_SYSCREG->CMU_MCO2CFGR = reg_val;
+    amhw_hc32f460_clk_fprcb0_reg_write_disable();
+}
 
 /*
  * \brief 匿名结构体段的结束

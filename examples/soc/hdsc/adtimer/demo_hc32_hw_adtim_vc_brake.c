@@ -187,15 +187,15 @@ static am_bool_t __hc32_hw_adtim_init(void          *p_hw_adtim,
 }
 
 /**
- * \brief 例程入口
+ * \brief 高级定时器VC刹车例程，通过 HW 层接口实现
  */
 void demo_hc32_hw_adtim_vc_brake_entry (void         *p_hw_adtim,
-                                          uint8_t       chan,
-                                          unsigned long duty_ns,
-                                          unsigned long period_ns,
-                                          void         *p_hw_vc,
-                                          uint8_t       vc0_n,
-                                          uint8_t       vc0_p)
+                                        uint8_t       chan,
+                                        unsigned long duty_ns,
+                                        unsigned long period_ns,
+                                        void         *p_hw_vc,
+                                        uint8_t       vc0_n,
+                                        uint8_t       vc0_p)
 {
     amhw_hc32_adtim_t *p_adtim = (amhw_hc32_adtim_t *)p_hw_adtim;
     amhw_hc32_vc_t    *p_vc    = (amhw_hc32_vc_t *)p_hw_vc;

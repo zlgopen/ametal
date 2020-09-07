@@ -176,24 +176,24 @@ static void dac_hw_dma_init(amhw_hc32_dac_t *p_hw_dac)
 }
 
 /**
- * \brief 例程入口
+ * \brief DAC输出电压例程，hw接口层实现
  */
 void demo_hc32_hw_dac_dma_entry(void     *p_hw_dac,
-                                  int32_t  dma_src,
-                                  int32_t  dma_chan,
-                                  uint16_t *vol_val)
+                                int32_t   dma_src,
+                                int32_t   dma_chan,
+                                uint16_t *p_vol_val)
 {
 
     int i = 0;
 
-    vol_data = vol_val[0];
+    vol_data = p_vol_val[0];
 
     g_dma_chan = dma_chan;
 
     gp_hw_dac = (amhw_hc32_dac_t *)p_hw_dac;
 
     /* DAC 初始化 默认参考电压类型 外部参考电压源  PB01*/
-    dac_hw_init(gp_hw_dac, AMHW_HC32_DAC_CHAN_MASK_EXTER_REF);
+    dac_hw_init(gp_hw_dac, AMHW_HC32_DAC_CHAN_MASK_AVCC_VOLT);
 
     /* DAC DMA使能 */
     dac_hw_dma_init(gp_hw_dac);
@@ -223,18 +223,12 @@ void demo_hc32_hw_dac_dma_entry(void     *p_hw_dac,
 
         if (i == 128 )
         {
-            vol_data = vol_val[0];
+            vol_data = p_vol_val[0];
             i = 0;
         }else{
             i++;
-            vol_data = vol_val[i];
+            vol_data = p_vol_val[i];
         }
-
-        am_kprintf("DMA transfer done!\r\n");
-        am_kprintf("mv_out = %d mv\r\n", gp_hw_dac->dacdor0 * 3300 / 4096);
-
-        am_mdelay(1000);
     }
-
 }
 

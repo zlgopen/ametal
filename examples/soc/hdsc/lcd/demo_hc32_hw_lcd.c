@@ -159,10 +159,9 @@ static void lcd_init ()
 }
 
 /**
- * \brief 例程入口
+ * \brief LCD 显示例程，通过 HW 层接口实现
  */
-void demo_hc32_hw_lcd_entry (void                    *p_hw_lcd,
-                             uint32_t                *p_data)
+void demo_hc32_hw_lcd_entry (void *p_hw_lcd, uint32_t *p_data)
 {
     int i = 0;
 

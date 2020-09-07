@@ -80,10 +80,12 @@ am_local am_const struct am_spi_drv_funcs __g_spi_drv_funcs = {
 #define __SPI_FRQIIN_GET(p_hw_spi)    am_clk_rate_get(p_this->p_devinfo->clk_id)
 
 /* 获取SPI支持的最大速度 */
-#define __SPI_MAXSPEED_GET(p_hw_spi) (__SPI_FRQIIN_GET(p_hw_spi) / 2)
+#define __SPI_MAXSPEED_GET(p_hw_spi)  \
+    ((uint32_t)(__SPI_FRQIIN_GET(p_hw_spi) / 2))
 
 /* 获取SPI支持的最小速度 */
-#define __SPI_MINSPEED_GET(p_hw_spi) (__SPI_FRQIIN_GET(p_hw_spi) / 128)
+#define __SPI_MINSPEED_GET(p_hw_spi)  \
+    ((uint32_t)(__SPI_FRQIIN_GET(p_hw_spi) / 128))
 
 /**
  * \brief 位数转字节
@@ -251,7 +253,7 @@ int __spi_setup (void *p_arg, am_spi_device_t *p_dev)
 {
     am_hc32_spi_poll_dev_t *p_this = (am_hc32_spi_poll_dev_t *)p_arg;
 
-    int max_speed, min_speed;
+    uint32_t max_speed, min_speed;
 
     if (p_dev == NULL) {
         return -AM_EINVAL;
@@ -478,6 +480,8 @@ int __spi_mst_sm_event (am_hc32_spi_poll_dev_t *p_dev)
 
     /* 片选关闭 */
     __spi_cs_off(p_dev, p_dev->p_cur_spi_dev);
+
+    p_cur_msg->status = AM_OK;
 
     return AM_OK;
 }

@@ -43,7 +43,7 @@
 #include "am_arm_nvic.h"
 #include "am_hc32l19x_inst_init.h"
 #include "am_digitron_disp.h"
-#include "demo_aml19x_core_entries.h"
+#include "demo_std_entries.h"
 
 /**
  * \brief Àý³ÌÈë¿Ú

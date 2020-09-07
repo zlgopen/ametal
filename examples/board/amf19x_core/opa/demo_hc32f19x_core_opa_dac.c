@@ -92,7 +92,8 @@ void demo_hc32f19x_core_hw_opa_dac_entry (void)
     demo_hc32_hw_opa_dac_entry(HC32_OPA,
                                  HC32_DAC,
                                  OPA_MODE,
-                                 vol_val);
+                                 vol_val,
+                                 128);
 }
 
 /* end of file */

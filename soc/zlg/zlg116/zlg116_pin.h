@@ -102,7 +102,7 @@ extern "C" {
 /**
  * \brief 支持同时发生最大引脚中断数是16
  */
-#define PIN_INT_MAX     16
+#define PIN_INT_MAX     17
 
 /** @} */
 
@@ -285,6 +285,9 @@ extern "C" {
 
 #define PIOA_4_SPI1_NSS       AM_ZLG116_GPIO_FUNC_CODE(0x00)    /**< \brief SPI1_NSS */
 #define PIOA_4_TIM14_CH1      AM_ZLG116_GPIO_FUNC_CODE(0x04)    /**< \brief TIM14_CH1 */
+#ifdef  ZML165
+#define PIOA_4_I2C_SDA        AM_ZLG116_GPIO_FUNC_CODE(0x05)   /**< \brief I2C_SDA */
+#endif
 #define PIOA_4_ADC_IN4        AM_ZLG116_GPIO_FUNC_CODE(0x0F)    /**< \brief ADC_IN4 */
 #define PIOA_4_GPIO           AM_ZLG116_GPIO_FUNC_CODE(0x0F)    /**< \brief GPIO */
 
@@ -326,6 +329,10 @@ extern "C" {
 
 #define PIOA_5_SPI1_SCK       AM_ZLG116_GPIO_FUNC_CODE(0x00)   /**< \brief SPI1_SCK */
 #define PIOA_5_TIM2_CH1_ETR   AM_ZLG116_GPIO_FUNC_CODE(0x02)   /**< \brief TIM2_CH1_ETR */
+#ifdef  ZML165
+#define PIOA_5_TIM1_CH3N      AM_ZLG116_GPIO_FUNC_CODE(0x06)   /**< \brief TIM1_CH3N */
+#define PIOA_5_I2C_SCL        AM_ZLG116_GPIO_FUNC_CODE(0x05)   /**< \brief I2C1_SCL */
+#endif
 #define PIOA_5_ADC_IN5        AM_ZLG116_GPIO_FUNC_CODE(0x0F)   /**< \brief ADC_IN5 */
 #define PIOA_5_GPIO           AM_ZLG116_GPIO_FUNC_CODE(0x0F)   /**< \brief GPIO */
 
@@ -783,6 +790,9 @@ extern "C" {
  */
 
 #define PIOB_0_TIM3_CH3        AM_ZLG116_GPIO_FUNC_CODE(0x01)   /**< \brief TIM3_CH3 */
+#ifdef ZML165
+#define PIOB_0_TIM1_CH3        AM_ZLG116_GPIO_FUNC_CODE(0x04)   /**< \brief TIM3_CH3 */
+#endif
 #define PIOB_0_TIM1_CH2N       AM_ZLG116_GPIO_FUNC_CODE(0x02)   /**< \brief TIM1_CH2N */
 #define PIOB_0_ADC_IN8         AM_ZLG116_GPIO_FUNC_CODE(0x0F)   /**< \brief ADC_IN8 */
 #define PIOB_0_GPIO            AM_ZLG116_GPIO_FUNC_CODE(0x0F)   /**< \brief GPIO */
@@ -905,6 +915,12 @@ extern "C" {
 
 #define PIOB_3_SPI1_SCK       AM_ZLG116_GPIO_FUNC_CODE(0x00)   /**< \brief SPI1_SCK */
 #define PIOB_3_TIM2_CH2       AM_ZLG116_GPIO_FUNC_CODE(0x02)   /**< \brief TIM2_CH2 */
+#ifdef  ZML165
+#define PIOB_3_UART1_TX       AM_ZLG116_GPIO_FUNC_CODE(0x03)   /**< \brief TIM2_CH2 */
+#define PIOB_3_TIM1_CH1       AM_ZLG116_GPIO_FUNC_CODE(0x06)   /**< \brief TIM1_CH1 */
+
+#define PIOB_3_ADC_IN10       AM_ZLG116_GPIO_FUNC_CODE(0x0F)   /**< \brief ADC_IN10 */
+#endif
 #define PIOB_3_GPIO           AM_ZLG116_GPIO_FUNC_CODE(0x0F)   /**< \brief GPIO */
 
 /** @} */
@@ -944,6 +960,13 @@ extern "C" {
  */
 #define PIOB_4_SPI1_MISO      AM_ZLG116_GPIO_FUNC_CODE(0x00)   /**< \brief SPI1_MISO */
 #define PIOB_4_TIM3_CH1       AM_ZLG116_GPIO_FUNC_CODE(0x01)   /**< \brief TIM3_CH1 */
+#ifdef  ZML165
+#define PIOB_4_UART1_RX       AM_ZLG116_GPIO_FUNC_CODE(0x03)   /**< \brief TIM3_CH1 */
+#define PIOB_4_TIM1_CH2       AM_ZLG116_GPIO_FUNC_CODE(0x06)   /**< \brief TIM2_CH2 */
+#define PIOB_4_TIM2_CH2       AM_ZLG116_GPIO_FUNC_CODE(0x07)   /**< \brief TIM2_CH2 */
+
+#define PIOB_4_ADC_IN11       AM_ZLG116_GPIO_FUNC_CODE(0x0F)   /**< \brief ADC_IN11 */
+#endif
 #define PIOB_4_TIM17_BKIN     AM_ZLG116_GPIO_FUNC_CODE(0x05)   /**< \brief TIM17_BKIN */
 #define PIOB_4_GPIO           AM_ZLG116_GPIO_FUNC_CODE(0x0F)   /**< \brief GPIO */
 
@@ -985,7 +1008,11 @@ extern "C" {
 #define PIOB_5_SPI1_MOSI      AM_ZLG116_GPIO_FUNC_CODE(0x00)   /**< \brief SPI1_MOSI */
 #define PIOB_5_TIM3_CH2       AM_ZLG116_GPIO_FUNC_CODE(0x01)   /**< \brief TIM3_CH2 */
 #define PIOB_5_TIM16_BKIN     AM_ZLG116_GPIO_FUNC_CODE(0x02)   /**< \brief TIM16_BKIN */
-#define PIOB_5_GPIO            AM_ZLG116_GPIO_FUNC_CODE(0x0F)  /**< \brief GPIO */
+#ifdef  ZML165
+#define PIOB_5_TIM1_CH3       AM_ZLG116_GPIO_FUNC_CODE(0x06)   /**< \brief TIM1_CH3 */
+#define PIOB_5_TIM2_CH3       AM_ZLG116_GPIO_FUNC_CODE(0x07)   /**< \brief TIM2_CH3 */
+#endif
+#define PIOB_5_GPIO           AM_ZLG116_GPIO_FUNC_CODE(0x0F)  /**< \brief GPIO */
 
 /** @} */
 

@@ -16,6 +16,8 @@
  *
  * \internal
  * \par Modification history
+ * - 1.01 20-04-26 zcb, Fix the problem that only one pin can be
+ *                      configured as external interrupt
  * - 1.00 19-09-06  zp, first implementation
  * \endinternal
  */
@@ -44,10 +46,10 @@ extern "C" {
 struct am_hc32_gpio_trigger_info {
 
     /** \brief 触发回调函数 */
-    am_pfnvoid_t  pfn_callback;
+    am_pfnvoid_t                        pfn_callback;
 
     /** \brief 回调函数的参数 */
-    void         *p_arg;
+    void                               *p_arg;
 };
 
 /**
@@ -56,29 +58,25 @@ struct am_hc32_gpio_trigger_info {
 typedef struct am_hc32_gpio_devinfo {
 
     /** \brief GPIO寄存器块基址 */
-    uint32_t      gpio_regbase;
+    uint32_t                            gpio_regbase;
 
     /** \brief 引脚中断号列表 */
-    const int8_t  inum_pin[4];
+    const int8_t                        inum_pin[4];
 
-    /** \brief GPIO引脚数量 */
-    const uint8_t pin_count;
+    /** \brief 支持外部中断的 GPIO 最大引脚编号 */
+    const uint8_t                       exti_num_max;
 
-    /** \brief GPIO使用的最大外部中断线编号+1 */
-    const uint8_t exti_num_max;
-
-    /** \brief 触发信息映射 */
-    uint8_t      *p_infomap;
-
-    /** \brief 引脚重映像外设信息 */
-    amhw_hc32_gpio_afio_t              *p_afio;
+    /** \brief 触发方式 */
+    uint8_t                            *p_trigger;
 
     /** \brief 指向引脚触发信息的指针 */
     struct am_hc32_gpio_trigger_info   *p_triginfo;
 
-    void (*pfn_plfm_init)(void);   /**< \brief 平台初始化函数 */
+    /** \brief 平台初始化函数 */
+    void                              (*pfn_plfm_init) (void);
 
-    void (*pfn_plfm_deinit)(void); /**< \brief 平台去初始化函数 */
+    /** \brief 平台去初始化函数 */
+    void                              (*pfn_plfm_deinit) (void);
 
 } am_hc32_gpio_devinfo_t;
 
@@ -88,13 +86,10 @@ typedef struct am_hc32_gpio_devinfo {
 typedef struct am_hc32_gpio_dev {
 
     /** \brief 指向GPIO设备信息的指针 */
-    const am_hc32_gpio_devinfo_t *p_devinfo;
+    const am_hc32_gpio_devinfo_t       *p_devinfo;
 
     /** \brief 参数有效标志 */
-    am_bool_t                       valid_flg;
-
-    /** \brief 引脚触发中断类别 */
-    uint8_t                         int_type;
+    am_bool_t                           valid_flg;
 
 } am_hc32_gpio_dev_t;
 
@@ -107,7 +102,7 @@ typedef struct am_hc32_gpio_dev {
  * \retval AM_OK : 操作成功
  */
 int am_hc32_gpio_init (am_hc32_gpio_dev_t           *p_dev,
-                         const am_hc32_gpio_devinfo_t *p_devinfo);
+                       const am_hc32_gpio_devinfo_t *p_devinfo);
 
 /**
  * \brief GPIO解初始化

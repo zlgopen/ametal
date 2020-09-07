@@ -62,7 +62,10 @@ void demo_hc32f17x_core_hw_lvd_system_reset_entry (void)
     /* PA04 LVD Êä³ö¶Ë*/
     am_gpio_pin_cfg(PIOA_4, PIOA_4_LVD_OUT | PIOA_4_OUT_PP);
 
-    demo_hc32_hw_lvd_system_reset_entry((void *)HC32_LVD);
+    demo_hc32_hw_lvd_system_reset_entry(
+        (void *)HC32_LVD,
+        AMHW_HC32_LVD_VIDS_1P9_V,
+        AMHW_HC32_LVD_SRC_PB07);
 }
 
 /* end of file */

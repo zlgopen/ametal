@@ -41,11 +41,11 @@
 #include "hw/amhw_hc32_gpio.h"
 
 /**
- * \brief 例程入口
+ * \brief GPIO 例程，通过 HW 层接口实现
  */
 void demo_hc32_hw_gpio_entry (void    *p_hw_gpio,
-                                int32_t  input_pin,
-                                int32_t  output_pin)
+                              int32_t  input_pin,
+                              int32_t  output_pin)
 {
 	amhw_hc32_gpio_t *p_gpio = (amhw_hc32_gpio_t *)p_hw_gpio;
 

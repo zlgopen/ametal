@@ -93,13 +93,15 @@ static void __adc_isr (void *p_arg)
     }
 }
 
-/** \brief 例程入口  */
+/**
+ * \brief ADC 硬件层（使用了中断）例程入口
+ */
 void demo_hc32_hw_multichan_adc_entry (void    *p_hw_adc,
-                                         int      int_num,
-                                         uint32_t vref_mv,
-                                         int     *p_adc_chan,
-                                         uint8_t  sqr_num,
-                                         uint8_t  jqr_num)
+                                       int      int_num,
+                                       uint32_t vref_mv,
+                                       int     *p_adc_chan,
+                                       uint8_t  sqr_num,
+                                       uint8_t  jqr_num)
 {
     uint8_t            i      = 0;
     uint32_t           adc_mv = 0;    /* 采样电压 */

@@ -307,9 +307,15 @@ void amhw_hc32_dma_chan_trigger_src_set(amhw_hc32_dma_t *p_hw_dma,
                                           uint8_t            channel,
                                           uint8_t            src)
 {
+#ifdef HC32X3X
+    p_hw_dma->chcfg[channel].dma_confa =
+        (p_hw_dma->chcfg[channel].dma_confa & (~(0x3ful << 23))) |
+        ((src & 0x3ful) << 23) ;
+#else
     p_hw_dma->chcfg[channel].dma_confa =
         (p_hw_dma->chcfg[channel].dma_confa & (~(0x7ful << 22))) |
         ((src & 0x7ful) << 22) ;
+#endif  /* HC32X3X */
 }
 
 /**

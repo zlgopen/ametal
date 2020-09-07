@@ -16,6 +16,7 @@
  *
  * \internal
  * \par Modification history
+ * - 1.01 20-05-03 zcb, Delete bad global variable "__update_num"
  * - 1.00 19-09-12  zp, first implementation
  * \endinternal
  */
@@ -26,21 +27,12 @@
 #include "am_int.h"
 #include "am_clk.h"
 
-/*******************************************************************************
-* 私有定义
-*******************************************************************************/
-static uint16_t  __update_num = 0;
-
-/*******************************************************************************
-* 函数声明
-*******************************************************************************/
-
 /** \brief 捕获参数配置 */
 static int __hc32_tim_cap_config (void              *p_cookie,
-                                    int                chan,
-                                    unsigned int       flags,
-                                    am_cap_callback_t  pfn_callback,
-                                    void              *p_arg);
+                                  int                chan,
+                                  unsigned int       flags,
+                                  am_cap_callback_t  pfn_callback,
+                                  void              *p_arg);
 
 /** \brief 使能捕获通道 */
 static int __hc32_tim_cap_enable (void *p_drv, int chan);
@@ -52,10 +44,10 @@ static int __hc32_tim_cap_disable (void *p_drv, int chan);
 static int __hc32_tim_cap_reset (void *p_drv, int chan);
 
 static int __hc32_tim_cap_count_to_time (void         *p_drv,
-                                           int           chan,
-                                           unsigned int  count1,
-                                           unsigned int  count2,
-                                           unsigned int *p_time_ns);
+                                         int           chan,
+                                         unsigned int  count1,
+                                         unsigned int  count2,
+                                         unsigned int *p_time_ns);
 
 static void __hc32_tim_cap_irq_handler (void *p_arg);
 
@@ -72,10 +64,10 @@ static const struct am_cap_drv_funcs __g_tim_cap_drv_funcs = {
 
 /** \brief 配置一个输入捕获通道 */
 static int __hc32_tim_cap_config (void              *p_drv,
-                                    int                chan,
-                                    unsigned int       options,
-                                    am_cap_callback_t  pfn_callback,
-                                    void              *p_arg)
+                                  int                chan,
+                                  unsigned int       options,
+                                  am_cap_callback_t  pfn_callback,
+                                  void              *p_arg)
 {
     am_hc32_tim_cap_dev_t *p_dev    = (am_hc32_tim_cap_dev_t *)p_drv;
     amhw_hc32_tim_t       *p_hw_tim = (amhw_hc32_tim_t *)p_dev->p_devinfo->tim_regbase;
@@ -267,10 +259,10 @@ static int __hc32_tim_cap_reset (void *p_drv, int chan)
   * \brief 转换两次捕获值为时间值
   */
 static int __hc32_tim_cap_count_to_time (void         *p_drv,
-                                           int           chan,
-                                           unsigned int  count1,
-                                           unsigned int  count2,
-                                           unsigned int *p_time_ns)
+                                         int           chan,
+                                         unsigned int  count1,
+                                         unsigned int  count2,
+                                         unsigned int *p_time_ns)
 {
     am_hc32_tim_cap_dev_t *p_dev    = (am_hc32_tim_cap_dev_t *)p_drv;
     amhw_hc32_tim_t       *p_hw_tim = (amhw_hc32_tim_t *)p_dev->p_devinfo->tim_regbase;
@@ -311,13 +303,12 @@ static void __hc32_tim_cap_irq_handler (void *p_arg)
     am_cap_callback_t callback_func;
     uint32_t          value;
 
-    if ((amhw_hc32_tim_mode23_int_flag_check(p_hw_tim,
-             AMHW_HC32_TIM_INT_FLAG_UPDATE)) == AM_TRUE) {
-
-        __update_num++;
+    if ((amhw_hc32_tim_mode23_int_flag_check(
+        p_hw_tim,
+        AMHW_HC32_TIM_INT_FLAG_UPDATE)) == AM_TRUE) {
 
         amhw_hc32_tim_mode23_int_flag_clr(p_hw_tim,
-                                            AMHW_HC32_TIM_INT_FLAG_UPDATE);
+                                          AMHW_HC32_TIM_INT_FLAG_UPDATE);
     }
 
     /* 判断标志 （CH0A、CH1A、CH2A）*/
@@ -327,7 +318,7 @@ static void __hc32_tim_cap_irq_handler (void *p_arg)
             callback_func = p_dev->callback_info[i].callback_func;
 
             /* 得到对应通道的值 */
-            value = amhw_hc32_tim_mode23_ccrxy_get(p_hw_tim, i) + (__update_num << 16ul);
+            value = amhw_hc32_tim_mode23_ccr_get(p_hw_tim, i);
 
             if (callback_func != NULL) {
                 callback_func(p_dev->callback_info[i].p_arg, value);
@@ -345,7 +336,7 @@ static void __hc32_tim_cap_irq_handler (void *p_arg)
             callback_func = p_dev->callback_info[i].callback_func;
 
             /* 得到对应通道的值 */
-            value = amhw_hc32_tim_mode23_ccrxy_get(p_hw_tim, i) + (__update_num << 16ul);
+            value = amhw_hc32_tim_mode23_ccr_get(p_hw_tim, i);
 
             if (callback_func != NULL) {
                 callback_func(p_dev->callback_info[i].p_arg, value);
@@ -361,8 +352,8 @@ static void __hc32_tim_cap_irq_handler (void *p_arg)
   * \brief 捕获初始化
   */
 void __hc32_tim_cap_init (amhw_hc32_tim_t       *p_hw_tim,
-                            am_hc32_tim_cap_dev_t *p_dev,
-                            amhw_hc32_tim_type_t   type)
+                          am_hc32_tim_cap_dev_t *p_dev,
+                          amhw_hc32_tim_type_t   type)
 {
     uint8_t i = 0;
 
@@ -387,13 +378,10 @@ void __hc32_tim_cap_init (amhw_hc32_tim_t       *p_hw_tim,
 
     /* 清零计数器 */
     amhw_hc32_tim_cnt16_count_set(p_hw_tim, 0);
-
-    __update_num = 0;
-
 }
 
 am_cap_handle_t am_hc32_tim_cap_init (am_hc32_tim_cap_dev_t           *p_dev,
-                                        const am_hc32_tim_cap_devinfo_t *p_devinfo)
+                                      const am_hc32_tim_cap_devinfo_t *p_devinfo)
 {
     amhw_hc32_tim_t *p_hw_tim = NULL;
     uint8_t    i;
@@ -449,8 +437,6 @@ void am_hc32_tim_cap_deinit (am_cap_handle_t handle)
     /* 清零计数器 */
     amhw_hc32_tim_cnt16_count_set(p_hw_tim, 0);
 
-    __update_num = 0;
-
     /* 关闭TIM模块 */
     amhw_hc32_tim_disable(p_hw_tim);
 
@@ -460,7 +446,6 @@ void am_hc32_tim_cap_deinit (am_cap_handle_t handle)
 
     /* 还原GPIO配置 */
     for (i = 0; i <p_dev->p_devinfo->channels_num; i++) {
-
         am_gpio_pin_cfg(p_ioinfo[i].gpio, p_ioinfo[i].dfunc);
     }
 

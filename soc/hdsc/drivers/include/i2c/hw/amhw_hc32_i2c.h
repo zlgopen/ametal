@@ -236,7 +236,31 @@ void amhw_hc32_i2c_disable (amhw_hc32_i2c_t *p_hw_i2c)
 {
     p_hw_i2c->i2c_cr &= ~(0x1ul << 6);
 }
+/**
+ * \brief 配置为高级滤波，抗扰性强
+ *
+ * \param[in]  p_hw_i2c  : 指向I2C寄存器结构体的指针
+ *
+ * \return 无
+ */
+am_static_inline
+void amhw_hc32_i2c_hlm_disable (amhw_hc32_i2c_t *p_hw_i2c)
+{
+    p_hw_i2c->i2c_cr &= ~(0x1ul << 0);
+}
 
+/**
+ * \brief 简单滤波，通信速率更高
+ *
+ * \param[in]  p_hw_i2c  : 指向I2C寄存器结构体的指针
+ *
+ * \return 无
+ */
+am_static_inline
+void amhw_hc32_i2c_hlm_enable (amhw_hc32_i2c_t *p_hw_i2c)
+{
+    p_hw_i2c->i2c_cr |= (0x1ul << 0);
+}
 /**
  * \brief 写数据.
  *

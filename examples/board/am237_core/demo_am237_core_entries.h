@@ -550,3 +550,125 @@ void demo_zlg237_usbd_msc_entry (void);
  */
 void demo_zlg237_usbd_vcom_entry (void);
 /* end of file */
+
+/**
+ * \brief 环境光/颜色、接近传感器查询模式例程入口
+ */
+void demo_zlg237_core_sensor_tmd3702vc_entry (void);
+
+/**
+ * \brief 环境光/颜色、接近传感器触发模式例程入口
+ */
+void demo_zlg237_core_sensor_tmd3702vc_int_entry (void);
+
+/**
+ * \brief 环境光传感器查询模式例程入口
+ */
+void demo_zlg237_core_sensor_tsl2540_entry (void);
+
+/**
+ * \brief 环境光传感器触发模式例程入口
+ */
+void demo_zlg237_core_sensor_tsl2540_int_entry (void);
+
+/**
+ * \brief 环境光/颜色传感器查询模式例程入口
+ */
+void demo_zlg237_core_sensor_tcs3430_entry (void);
+
+/**
+ * \brief 环境光/颜色传感器触发模式例程入口
+ */
+void demo_zlg237_core_sensor_tcs3430_int_entry (void);
+
+/**
+ * \brief 接近传感器查询模式例程入口
+ */
+void demo_zlg237_core_sensor_tmd2635_entry (void);
+
+/**
+ * \brief 接近传感器触发模式例程入口
+ */
+void demo_zlg237_core_sensor_tmd2635_int_entry (void);
+
+/**
+ * \brief 环境光、接近传感器查询模式例程入口
+ */
+void demo_zlg237_core_sensor_tmd2750_entry (void);
+
+/**
+ * \brief 环境光、接近传感器触发模式例程入口
+ */
+void demo_zlg237_core_sensor_tmd2750_int_entry (void);
+
+/**
+ * \brief 温度传感器比较模式例程入口
+ */
+void demo_zlg237_core_sensor_as621x_comparator_mode_entry (void);
+
+/**
+ * \brief 温度传感器中断模式例程入口
+ */
+void demo_zlg237_core_sensor_as621x_interrupt_mode_entry (void);
+
+/**
+ * \brief 环境光/颜色、接近/手势传感器查询模式例程入口
+ */
+void demo_zlg237_core_sensor_tmg49037_entry (void);
+
+/**
+ * \brief 环境光/颜色、接近/手势传感器触发模式例程入口
+ */
+void demo_zlg237_core_sensor_tmg49037_int_entry (void);
+
+/**
+ * \brief 光谱传感器查询模式例程入口
+ */
+void demo_zlg237_core_sensor_as7341_entry (void);
+
+/**
+ * \brief 光谱传感器触发模式例程入口
+ */
+void demo_zlg237_core_sensor_as7341_int_entry (void);
+
+/**
+ * \brief 高光谱传感器查询模式例程入口
+ */
+void demo_zlg237_core_sensor_as7421_entry (void);
+
+/**
+ * \brief 高光谱传感器触发模式例程入口
+ */
+void demo_zlg237_core_sensor_as7421_int_entry (void);
+
+/**
+ * \brief 高光谱传感器查询模式例程入口
+ */
+void demo_zlg237_core_sensor_as7262_i2c_entry (void);
+
+/**
+ * \brief 高光谱传感器触发模式例程入口
+ */
+void demo_zlg237_core_sensor_as7262_i2c_int_entry (void);
+
+/**
+ * \brief 高光谱传感器查询模式例程入口
+ */
+void demo_zlg237_core_sensor_as7262_uart_entry (void);
+
+/**
+ * \brief 角度传感器查询模式例程入口
+ */
+void demo_zlg237_core_sensor_as5600_entry (void);
+
+/**
+ * \brief TOF传感器查询模式例程入口
+ */
+void demo_zlg237_core_sensor_tmf8801_entry (void);
+
+/**
+ * \brief TOF传感器触发模式例程入口
+ */
+void demo_zlg237_core_sensor_tmf8801_int_entry (void);
+
+

@@ -16,6 +16,8 @@
  *
  * \internal
  * \par Modification history
+ * - 1.01 20-04-26 zcb, Fix the problem that only one pin can be
+ *                      configured as external interrupt
  * - 1.00 19-09-06  zp, first implementation
  * \endinternal
  */
@@ -31,9 +33,6 @@
 * 私有定义
 *******************************************************************************/
 
-/** \brief 中断未连接标识 */
-#define AM_HC32_GPIO_INVALID_PIN_MAP    0xFF
-
 const am_hc32_gpio_devinfo_t *p_gpio_devinfo = NULL;
 
 /******************************************************************************
@@ -47,35 +46,8 @@ am_hc32_gpio_dev_t *__gp_gpio_dev;
   公共函数
 *******************************************************************************/
 
-static int __am_hc32_peripheral_afio_clear(int pin)
-{
-    amhw_hc32_gpio_t     *p_hw_gpio  = (amhw_hc32_gpio_t *)p_gpio_devinfo->gpio_regbase;
-
-    if (NULL == p_gpio_devinfo) {
-        return -AM_ENXIO;
-    }
-
-    if (p_gpio_devinfo->p_afio[pin] == AMHW_HC32_AFIO_NO) {
-        return -AM_ENXIO;
-    }
-
-    amhw_hc32_gpio_afio_set(p_hw_gpio, AMHW_HC32_AFIO_NO, pin);
-
-    if(amhw_hc32_gpio_afio_get(p_hw_gpio, pin) == AMHW_HC32_AFIO_NO)
-    {
-        p_gpio_devinfo->p_afio[pin] = AMHW_HC32_AFIO_NO;
-    }
-
-    return AM_OK;
-}
-
 /**
  * \brief 引脚功能配置
- *
- * \param[in] pin   : 引脚编号，值为 PIO* (#PIOA_0)
- * \param[in] flags : 引脚功能
- *
- * \return AM_OK ：配置成功
  */
 int am_gpio_pin_cfg (int pin, uint32_t flags)
 {
@@ -99,13 +71,10 @@ int am_gpio_pin_cfg (int pin, uint32_t flags)
     func = AM_GPIO_COM_FUNC_GET(flags);
     mode = AM_GPIO_COM_MODE_GET(flags);
 
-    __am_hc32_peripheral_afio_clear(pin);
+    amhw_hc32_gpio_afio_set(p_hw_gpio, AMHW_HC32_AFIO_NO, pin);
 
     /* 标准层相关 */
     if (0 != func) {
-
-        /* 使用标准层前先退回引脚为GPIO模式 */
-        __am_hc32_peripheral_afio_clear(pin);
 
         switch (func) {
 
@@ -263,24 +232,16 @@ int am_gpio_pin_cfg (int pin, uint32_t flags)
 
     /* 重映像设置 */
     if (0 != (flags & AM_HC32_GPIO_REMAP)) {
-
-        __am_hc32_peripheral_afio_clear(pin);
-
         amhw_hc32_gpio_afio_set(
             p_hw_gpio,
             (amhw_hc32_gpio_afio_t)AM_HC32_GPIO_REMAP_MODE_GET(flags),
             pin);
-        p_gpio_devinfo->p_afio[pin] =
-            (amhw_hc32_gpio_afio_t)AM_HC32_GPIO_REMAP_MODE_GET(flags);
     }
-
     return AM_OK;
 }
 
 /**
  * \brief 获取GPIO引脚状态
- * \param[in] pin : 引脚编号，值为 PIO* (#PIOA_0)
- * \return 引脚状态
  */
 int am_gpio_get (int pin)
 {
@@ -301,12 +262,6 @@ int am_gpio_get (int pin)
 
 /**
  * \brief 设置引脚输出状态
- *
- * \param[in] pin   : 引脚编号，值为 PIO* (#PIOA_0)
- * \param[in] value : 引脚状态，参见
- *                    \ref grp_am_gpio_pin_level
- *
- * \retval  AM_OK   : 操作成功
  */
 int am_gpio_set (int pin, int value)
 {
@@ -329,8 +284,6 @@ int am_gpio_set (int pin, int value)
 
 /**
  * \brief 翻转GPIO引脚输出状态
- * \param[in] pin : 引脚编号，值为 PIO* (#PIOA_0)
- * \retval  AM_OK : 操作成功
  */
 int am_gpio_toggle (int pin)
 {
@@ -368,6 +321,7 @@ static void __port_a_int_isr (void * p_arg)
 
     p_hw_gpio  = (amhw_hc32_gpio_t *)p_gpio_devinfo->gpio_regbase;
 
+    (void)p_arg;
 
     /* 有中断触发 */
     for(pin = 0; pin < 16; pin++) {
@@ -399,6 +353,7 @@ static void __port_b_int_isr (void * p_arg)
 
     p_hw_gpio  = (amhw_hc32_gpio_t *)p_gpio_devinfo->gpio_regbase;
 
+    (void)p_arg;
 
     /* 有中断触发 */
     for(pin = 16; pin < 32; pin++) {
@@ -430,6 +385,8 @@ static void __port_c_e_int_isr (void * p_arg)
 
     p_hw_gpio  = (amhw_hc32_gpio_t *)p_gpio_devinfo->gpio_regbase;
 
+    (void)p_arg;
+
     /* 有中断触发 */
     for(pin = 32; pin < 48; pin++) {
         if (1 == amhw_hc32_gpio_pin_int_flag_get(p_hw_gpio, pin)) {
@@ -446,6 +403,7 @@ static void __port_c_e_int_isr (void * p_arg)
         }
     }
 
+#ifndef HC32X3X
     /* 有中断触发 */
     for(pin = 64; pin < 80; pin++) {
         if (1 == amhw_hc32_gpio_pin_int_flag_get(p_hw_gpio, pin)) {
@@ -461,6 +419,7 @@ static void __port_c_e_int_isr (void * p_arg)
             amhw_hc32_gpio_pin_int_flag_clr(p_hw_gpio, pin);
         }
     }
+#endif
 }
 
 /**
@@ -475,6 +434,8 @@ static void __port_d_f_int_isr (void * p_arg)
     uint8_t      pin       = 0;
 
     p_hw_gpio  = (amhw_hc32_gpio_t *)p_gpio_devinfo->gpio_regbase;
+
+    (void)p_arg;
 
     /* 有中断触发 */
     for(pin = 48; pin < 64; pin++) {
@@ -492,6 +453,7 @@ static void __port_d_f_int_isr (void * p_arg)
         }
     }
 
+#ifndef HC32X3X
     /* 有中断触发 */
     for(pin = 80; pin < 91; pin++) {
         if (1 == amhw_hc32_gpio_pin_int_flag_get(p_hw_gpio, pin)) {
@@ -507,22 +469,25 @@ static void __port_d_f_int_isr (void * p_arg)
             amhw_hc32_gpio_pin_int_flag_clr(p_hw_gpio, pin);
         }
     }
+#endif
 }
 
 /**
  * \brief GPIO初始化
- *
- * \param[in] p_dev     : 指向GPIO设备的指针
- * \param[in] p_devinfo : 指向GPIO设备信息的指针
- *
- * \retval AM_OK : 操作成功
  */
 int am_hc32_gpio_init (am_hc32_gpio_dev_t           *p_dev,
-                         const am_hc32_gpio_devinfo_t *p_devinfo)
+                       const am_hc32_gpio_devinfo_t *p_devinfo)
 {
     uint8_t i = 0;
 
     if (NULL == p_dev || NULL == p_devinfo) {
+        return -AM_EINVAL;
+    }
+
+    if (NULL == p_devinfo->inum_pin ||
+        NULL == p_devinfo->p_trigger ||
+        NULL == p_devinfo->p_triginfo) {
+        p_dev->valid_flg = AM_FALSE;
         return -AM_EINVAL;
     }
 
@@ -533,24 +498,14 @@ int am_hc32_gpio_init (am_hc32_gpio_dev_t           *p_dev,
     p_dev->p_devinfo = p_devinfo;
     p_gpio_devinfo   = p_devinfo;
 
-    if ((p_devinfo->p_afio == NULL) || (p_devinfo->inum_pin == NULL) ||
-        (p_devinfo->p_infomap == NULL) || (p_devinfo->p_triginfo == NULL)) {
-        p_dev->valid_flg = AM_FALSE;
-        return -AM_EINVAL;
-    }
-
-    for (i = 0 ; i < p_devinfo->pin_count ; i++) {
-        __am_hc32_peripheral_afio_clear(i);
-    }
-
     for (i = 0 ; i < p_devinfo->exti_num_max ; i++) {
-        p_devinfo->p_infomap[i] = AM_HC32_GPIO_INVALID_PIN_MAP;
-        p_devinfo->p_triginfo[i].p_arg = NULL;
-        p_devinfo->p_triginfo[i].pfn_callback = NULL;
+        p_gpio_devinfo->p_trigger[i]               = AM_GPIO_TRIGGER_OFF;
+        p_gpio_devinfo->p_triginfo[i].p_arg        = NULL;
+        p_gpio_devinfo->p_triginfo[i].pfn_callback = NULL;
     }
 
-    am_int_connect(p_devinfo->inum_pin[0], __port_a_int_isr, NULL);
-    am_int_connect(p_devinfo->inum_pin[1], __port_b_int_isr, NULL);
+    am_int_connect(p_devinfo->inum_pin[0], __port_a_int_isr,   NULL);
+    am_int_connect(p_devinfo->inum_pin[1], __port_b_int_isr,   NULL);
     am_int_connect(p_devinfo->inum_pin[2], __port_c_e_int_isr, NULL);
     am_int_connect(p_devinfo->inum_pin[3], __port_d_f_int_isr, NULL);
 
@@ -585,13 +540,9 @@ void am_hc32_gpio_deinit (void)
         return;
     }
 
-    for (i = 0 ; i < p_gpio_devinfo->pin_count ; i++) {
-        __am_hc32_peripheral_afio_clear(i);
-    }
-
     for (i = 0 ; i < p_gpio_devinfo->exti_num_max ; i++) {
-        p_gpio_devinfo->p_infomap[i] = AM_HC32_GPIO_INVALID_PIN_MAP;
-        p_gpio_devinfo->p_triginfo[i].p_arg = NULL;
+        p_gpio_devinfo->p_trigger[i]               = AM_GPIO_TRIGGER_OFF;
+        p_gpio_devinfo->p_triginfo[i].p_arg        = NULL;
         p_gpio_devinfo->p_triginfo[i].pfn_callback = NULL;
     }
 
@@ -600,8 +551,8 @@ void am_hc32_gpio_deinit (void)
     am_int_disable(p_gpio_devinfo->inum_pin[2]);
     am_int_disable(p_gpio_devinfo->inum_pin[3]);
 
-    am_int_disconnect(p_gpio_devinfo->inum_pin[0], __port_a_int_isr, NULL);
-    am_int_disconnect(p_gpio_devinfo->inum_pin[1], __port_b_int_isr, NULL);
+    am_int_disconnect(p_gpio_devinfo->inum_pin[0], __port_a_int_isr,   NULL);
+    am_int_disconnect(p_gpio_devinfo->inum_pin[1], __port_b_int_isr,   NULL);
     am_int_disconnect(p_gpio_devinfo->inum_pin[2], __port_c_e_int_isr, NULL);
     am_int_disconnect(p_gpio_devinfo->inum_pin[3], __port_d_f_int_isr, NULL);
 
@@ -610,69 +561,26 @@ void am_hc32_gpio_deinit (void)
 
 /**
  * \brief 配置GPIO引脚触发功能
- *
- * \param[in] pin  : 引脚编号，值为 PIO* (#PIOA_0)
- * \param[in] flag : 配置参数，参见
- *                   \ref grp_am_gpio_pin_trigger_function
- *
- * \retval AM_OK   : 配置成功
  */
 int am_gpio_trigger_cfg (int pin, uint32_t flag)
 {
-    uint8_t                 slot       = pin;
+    uint8_t slot = pin;
 
     if (__gp_gpio_dev == NULL) {
         return -AM_ENXIO;
     }
 
-    if (slot > (p_gpio_devinfo->exti_num_max - 1)) {
+    if (slot >= p_gpio_devinfo->exti_num_max) {
         return -AM_ENOSPC;
     }
 
-    if (p_gpio_devinfo->p_infomap[slot] != pin) {
-        return -AM_EINVAL;
-    }
-
-    switch (flag) {
-
-    case AM_GPIO_TRIGGER_OFF:
-        break;
-
-    case AM_GPIO_TRIGGER_HIGH:
-        __gp_gpio_dev->int_type = AM_GPIO_TRIGGER_HIGH;
-        break;
-
-    case AM_GPIO_TRIGGER_LOW:
-        __gp_gpio_dev->int_type = AM_GPIO_TRIGGER_LOW;
-        break;
-
-    case AM_GPIO_TRIGGER_RISE:
-        __gp_gpio_dev->int_type = AM_GPIO_TRIGGER_RISE;
-        break;
-
-    case AM_GPIO_TRIGGER_FALL:
-        __gp_gpio_dev->int_type = AM_GPIO_TRIGGER_FALL;
-        break;
-
-    case AM_GPIO_TRIGGER_BOTH_EDGES:
-        __gp_gpio_dev->int_type = AM_GPIO_TRIGGER_BOTH_EDGES;
-        break;
-
-    default:
-        return -AM_ENOTSUP;
-    }
+    p_gpio_devinfo->p_trigger[slot] = flag;
 
     return AM_OK;
 }
 
 /**
  * \brief 连接回调函数到引脚
- *
- * \param[in] pin          : 引脚编号，值为 PIO* (#PIOA_0)
- * \param[in] pfn_callback : 回调函数指针
- * \param[in] p_arg        : 回调函数的入口参数
- *
- * \retval  AM_OK          : 操作成功
  */
 int am_gpio_trigger_connect(int           pin,
                             am_pfnvoid_t  pfn_callback,
@@ -689,23 +597,14 @@ int am_gpio_trigger_connect(int           pin,
         return -AM_ENODEV;
     }
 
-    if (slot > (p_gpio_devinfo->exti_num_max - 1)) {
+    if (slot >= p_gpio_devinfo->exti_num_max) {
         return -AM_ENOSPC;
     }
 
     key = am_int_cpu_lock();
 
-    if (p_gpio_devinfo->p_infomap[slot] == AM_HC32_GPIO_INVALID_PIN_MAP) {
-
-        p_gpio_devinfo->p_infomap[slot] = pin;
-        p_gpio_devinfo->p_triginfo[slot].p_arg = p_arg;
-        p_gpio_devinfo->p_triginfo[slot].pfn_callback = pfn_callback;
-
-    } else {
-
-        am_int_cpu_unlock(key);
-        return -AM_EINVAL;
-    }
+    p_gpio_devinfo->p_triginfo[slot].p_arg        = p_arg;
+    p_gpio_devinfo->p_triginfo[slot].pfn_callback = pfn_callback;
 
     am_int_cpu_unlock(key);
 
@@ -714,40 +613,29 @@ int am_gpio_trigger_connect(int           pin,
 
 /**
  * \brief 删除连接到引脚的回调函数
- *
- * \param[in] pin          : 引脚编号，值为 PIO* (#PIOA_0)
- * \param[in] pfn_callback : 回调函数指针
- * \param[in] p_arg        : 回调函数的入口参数
- *
- * \retval  AM_OK          : 操作成功
  */
 int am_gpio_trigger_disconnect(int           pin,
                                am_pfnvoid_t  pfn_callback,
                                void         *p_arg)
 {
-    uint8_t                  slot        = pin;
-    int key;
+    uint8_t slot = pin;
+    int     key;
 
     if (__gp_gpio_dev == NULL) {
         return -AM_ENXIO;
     }
 
-    if (slot > (p_gpio_devinfo->exti_num_max - 1)) {
+    if (slot >= p_gpio_devinfo->exti_num_max) {
         return -AM_ENOSPC;
     }
 
+    (void)pfn_callback;
+    (void)p_arg;
+
     key = am_int_cpu_lock();
 
-    if (p_gpio_devinfo->p_infomap[slot] == pin) {
-
-        p_gpio_devinfo->p_infomap[slot] = AM_HC32_GPIO_INVALID_PIN_MAP;
-        p_gpio_devinfo->p_triginfo[slot].p_arg = NULL;
-        p_gpio_devinfo->p_triginfo[slot].pfn_callback = NULL;
-
-    } else {
-        am_int_cpu_unlock(key);
-        return -AM_EINVAL;
-    }
+    p_gpio_devinfo->p_triginfo[slot].p_arg        = NULL;
+    p_gpio_devinfo->p_triginfo[slot].pfn_callback = NULL;
 
     am_int_cpu_unlock(key);
 
@@ -756,62 +644,63 @@ int am_gpio_trigger_disconnect(int           pin,
 
 /**
  * \brief 使能引脚触发中断
- * \param[in] pin : 引脚编号，值为 PIO* (#PIOA_0)
- * \retval  AM_OK : 操作成功
  */
 int am_gpio_trigger_on(int pin)
 {
-    uint8_t             slot       = pin;
-    amhw_hc32_gpio_t *p_hw_gpio  = (amhw_hc32_gpio_t *)p_gpio_devinfo->gpio_regbase;
+    uint8_t           slot      = pin;
+    amhw_hc32_gpio_t *p_hw_gpio = \
+        (amhw_hc32_gpio_t *)p_gpio_devinfo->gpio_regbase;
 
     if (__gp_gpio_dev == NULL) {
         return -AM_ENXIO;
     }
 
-    if (slot > (p_gpio_devinfo->exti_num_max - 1)) {
+    if (slot >= p_gpio_devinfo->exti_num_max) {
         return -AM_ENOSPC;
     }
 
-    if (p_gpio_devinfo->p_infomap[slot] == pin) {
+    switch (p_gpio_devinfo->p_trigger[slot]) {
 
-        switch (__gp_gpio_dev->int_type) {
+    case AM_GPIO_TRIGGER_OFF:
+        am_gpio_trigger_off(pin);
+        break;
 
-            case AM_GPIO_TRIGGER_HIGH:
-                amhw_hc32_gpio_pin_high_int_enable(p_hw_gpio,pin);
-                amhw_hc32_gpio_pin_low_int_disable(p_hw_gpio,pin);
-                amhw_hc32_gpio_pin_raising_int_disable(p_hw_gpio,pin);
-                amhw_hc32_gpio_pin_falling_int_disable(p_hw_gpio,pin);
-                break;
+    case AM_GPIO_TRIGGER_HIGH:
+        amhw_hc32_gpio_pin_high_int_enable(p_hw_gpio,pin);
+        amhw_hc32_gpio_pin_low_int_disable(p_hw_gpio,pin);
+        amhw_hc32_gpio_pin_raising_int_disable(p_hw_gpio,pin);
+        amhw_hc32_gpio_pin_falling_int_disable(p_hw_gpio,pin);
+        break;
 
-            case AM_GPIO_TRIGGER_LOW:
-                amhw_hc32_gpio_pin_high_int_disable(p_hw_gpio,pin);
-                amhw_hc32_gpio_pin_low_int_enable(p_hw_gpio,pin);
-                amhw_hc32_gpio_pin_raising_int_disable(p_hw_gpio,pin);
-                amhw_hc32_gpio_pin_falling_int_disable(p_hw_gpio,pin);
-                break;
+    case AM_GPIO_TRIGGER_LOW:
+        amhw_hc32_gpio_pin_high_int_disable(p_hw_gpio,pin);
+        amhw_hc32_gpio_pin_low_int_enable(p_hw_gpio,pin);
+        amhw_hc32_gpio_pin_raising_int_disable(p_hw_gpio,pin);
+        amhw_hc32_gpio_pin_falling_int_disable(p_hw_gpio,pin);
+        break;
 
-            case AM_GPIO_TRIGGER_RISE:
-                amhw_hc32_gpio_pin_high_int_disable(p_hw_gpio,pin);
-                amhw_hc32_gpio_pin_low_int_disable(p_hw_gpio,pin);
-                amhw_hc32_gpio_pin_raising_int_enable(p_hw_gpio,pin);
-                amhw_hc32_gpio_pin_falling_int_disable(p_hw_gpio,pin);
-                break;
+    case AM_GPIO_TRIGGER_RISE:
+        amhw_hc32_gpio_pin_high_int_disable(p_hw_gpio,pin);
+        amhw_hc32_gpio_pin_low_int_disable(p_hw_gpio,pin);
+        amhw_hc32_gpio_pin_raising_int_enable(p_hw_gpio,pin);
+        amhw_hc32_gpio_pin_falling_int_disable(p_hw_gpio,pin);
+        break;
 
-            case AM_GPIO_TRIGGER_FALL:
-                amhw_hc32_gpio_pin_high_int_disable(p_hw_gpio,pin);
-                amhw_hc32_gpio_pin_low_int_disable(p_hw_gpio,pin);
-                amhw_hc32_gpio_pin_raising_int_disable(p_hw_gpio,pin);
-                amhw_hc32_gpio_pin_falling_int_enable(p_hw_gpio,pin);
-                break;
+    case AM_GPIO_TRIGGER_FALL:
+        amhw_hc32_gpio_pin_high_int_disable(p_hw_gpio,pin);
+        amhw_hc32_gpio_pin_low_int_disable(p_hw_gpio,pin);
+        amhw_hc32_gpio_pin_raising_int_disable(p_hw_gpio,pin);
+        amhw_hc32_gpio_pin_falling_int_enable(p_hw_gpio,pin);
+        break;
 
-            case AM_GPIO_TRIGGER_BOTH_EDGES:
-                amhw_hc32_gpio_pin_high_int_disable(p_hw_gpio,pin);
-                amhw_hc32_gpio_pin_low_int_disable(p_hw_gpio,pin);
-                amhw_hc32_gpio_pin_raising_int_enable(p_hw_gpio,pin);
-                amhw_hc32_gpio_pin_falling_int_enable(p_hw_gpio,pin);
-                break;
-        }
-    } else {
+    case AM_GPIO_TRIGGER_BOTH_EDGES:
+        amhw_hc32_gpio_pin_high_int_disable(p_hw_gpio,pin);
+        amhw_hc32_gpio_pin_low_int_disable(p_hw_gpio,pin);
+        amhw_hc32_gpio_pin_raising_int_enable(p_hw_gpio,pin);
+        amhw_hc32_gpio_pin_falling_int_enable(p_hw_gpio,pin);
+        break;
+
+    default:
         return -AM_ENXIO;
     }
 
@@ -820,27 +709,21 @@ int am_gpio_trigger_on(int pin)
 
 /**
  * \brief 禁能引脚触发中断
- * \param[in] pin : 引脚编号，值为 PIO* (#PIOA_0)
- * \retval  AM_OK : 操作成功
  */
 int am_gpio_trigger_off(int pin)
 {
-    uint8_t             slot       = pin;
-    amhw_hc32_gpio_t *p_hw_gpio  = (amhw_hc32_gpio_t *)p_gpio_devinfo->gpio_regbase;
+    amhw_hc32_gpio_t *p_hw_gpio = \
+        (amhw_hc32_gpio_t *)p_gpio_devinfo->gpio_regbase;
 
     if (__gp_gpio_dev == NULL) {
         return -AM_ENXIO;
     }
 
     /* 关闭某一引脚的所有触发中断 */
-    if (p_gpio_devinfo->p_infomap[slot] == pin) {
-        amhw_hc32_gpio_pin_high_int_disable(p_hw_gpio,pin);
-        amhw_hc32_gpio_pin_low_int_disable(p_hw_gpio,pin);
-        amhw_hc32_gpio_pin_raising_int_disable(p_hw_gpio,pin);
-        amhw_hc32_gpio_pin_falling_int_disable(p_hw_gpio,pin);
-    } else {
-        return -AM_ENXIO;
-    }
+    amhw_hc32_gpio_pin_high_int_disable(p_hw_gpio,pin);
+    amhw_hc32_gpio_pin_low_int_disable(p_hw_gpio,pin);
+    amhw_hc32_gpio_pin_raising_int_disable(p_hw_gpio,pin);
+    amhw_hc32_gpio_pin_falling_int_disable(p_hw_gpio,pin);
 
     return AM_OK;
 }

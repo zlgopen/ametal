@@ -60,7 +60,8 @@ int am_main (void)
 //    demo_hc32f03x_core_std_i2c_master_async_entry();
 //    demo_hc32f03x_core_std_i2c_master_sync_entry();
 //    demo_hc32f03x_core_std_key_input_event_entry();
-//    demo_hc32f03x_core_drv_rtc_entry();
+//    demo_hc32f03x_core_hw_rtc_entry();
+//    demo_hc32f03x_core_std_rtc_entry();
 //    demo_hc32f03x_core_hw_spi_master_entry();
 //    demo_hc32f03x_core_std_spi_master_dma_entry();
 //    demo_hc32f03x_core_std_spi_master_int_entry();
@@ -116,7 +117,7 @@ int am_main (void)
 //    demo_hc32f03x_core_hw_lvd_system_reset_entry ();
 //    demo_hc32f03x_core_hw_lvd_int_entry ();
 //    demo_hc32f03x_core_hw_opa_one_entry ();
-//    demo_hc32f03x_core_hw_opa_dac_entry ();
+//    demo_hc32f03x_core_std_opa_entry ();
 //    demo_hc32f03x_core_hw_dac_dma_entry ();
 //    demo_hc32f03x_core_std_dac_entry ();
 //    demo_hc32f03x_core_hw_vc_int_entry();

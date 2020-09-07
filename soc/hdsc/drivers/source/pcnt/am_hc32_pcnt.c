@@ -309,12 +309,12 @@ void am_hc32_pcnt_stop (am_hc32_pcnt_handle_t handle)
  *
  * \param[in] handle : 与从设备关联的PCNT标准服务操作句柄
  *
- * \return 无
+ * \return 计数值
  */
 uint16_t am_hc32_pcnt_cnt_get (am_hc32_pcnt_handle_t handle)
 {
     if (handle == NULL) {
-        return NULL;
+        return 0;
     }
     return amhw_hc32_pcnt_cnt_get (handle->p_hw_pcnt);
 }
@@ -325,7 +325,7 @@ uint16_t am_hc32_pcnt_cnt_get (am_hc32_pcnt_handle_t handle)
 am_err_t am_hc32_pcnt_callback_set (am_hc32_pcnt_handle_t handle,
                                     am_pfnvoid_t          pfn_callback)
 {
-    if (NULL == handle | NULL == pfn_callback) {
+    if ((NULL == handle) | (NULL == pfn_callback)) {
         return -AM_EINVAL;
     }
 

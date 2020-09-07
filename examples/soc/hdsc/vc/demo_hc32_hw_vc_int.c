@@ -52,7 +52,7 @@
 /*******************************************************************************
   宏定义
 *******************************************************************************/
-#define VC_INUM      INUM_VC0                           /**< \brief VC中断编号 */
+#define VC_INUM      INUM_VC0                         /**< \brief VC中断编号 */
 #define VC_CHAN      AMHW_HC32_VC0                    /**< \brief VC通道 */
 #define VC_VREF      AMHW_HC32_VC_REF2P5_VCC          /**< \brief 参考电压  */
 #define VC_HYS_VOL   AMHW_HC32_VC0_HYS_10_MV          /**< \brief 迟滞电压*/
@@ -66,10 +66,11 @@
 /*******************************************************************************
   全局变量
 *******************************************************************************/
-static amhw_hc32_vc_t       *gp_hw_vc   = NULL;  /**< \brief vc 外设 */
-static amhw_hc32_dac_t       *gp_hw_dac  = NULL;  /**< \brief dac 外设 */
+static amhw_hc32_vc_t   *__gp_hw_vc   = NULL;         /**< \brief vc 外设 */
+static amhw_hc32_dac_t  *__gp_hw_dac  = NULL;         /**< \brief dac 外设 */
 
-static void (*gpfn_cb_t) (void *);               /**< \brief vc中断回调函数 */
+static void            (*__gpfn_cb_t) (void *);       /**< \brief vc中断回调函数 */
+static void             *__gp_arg;                    /**< \brief vc中断回调函数参数 */
 
 /*
  * \brief VC初始化
@@ -81,53 +82,53 @@ static void vc_init ()
     amhw_hc32_bgr_enable(AM_TRUE);
 
     /* 配置参考电压 */
-    amhw_hc32_vc_ref2p5_sel (gp_hw_vc, VC_VREF);
+    amhw_hc32_vc_ref2p5_sel (__gp_hw_vc, VC_VREF);
 
     /* 选择 迟滞电压、功耗、 滤波时间、  通道N、P端输入 、中断类型*/
     switch (VC_CHAN){
 
         case AMHW_HC32_VC0 :
-                amhw_hc32_vc0_hys_sel (gp_hw_vc, VC_HYS_VOL);
-                amhw_hc32_vc0_bias_sel (gp_hw_vc, VC_BIAS);
-                amhw_hc32_vc0_flt_time_sel (gp_hw_vc, VC_DEB_TIME);
+                amhw_hc32_vc0_hys_sel (__gp_hw_vc, VC_HYS_VOL);
+                amhw_hc32_vc0_bias_sel (__gp_hw_vc, VC_BIAS);
+                amhw_hc32_vc0_flt_time_sel (__gp_hw_vc, VC_DEB_TIME);
 
-                amhw_hc32_vc0_n_sel (gp_hw_vc, VC_N_IN);
-                amhw_hc32_vc0_p_sel (gp_hw_vc, VC_P_IN);
+                amhw_hc32_vc0_n_sel (__gp_hw_vc, VC_N_IN);
+                amhw_hc32_vc0_p_sel (__gp_hw_vc, VC_P_IN);
 
-                amhw_hc32_vc0_out_tri_int_sel (gp_hw_vc,VC_INT_TYPE);
+                amhw_hc32_vc0_out_tri_int_sel (__gp_hw_vc,VC_INT_TYPE);
             break;
 
         case AMHW_HC32_VC1 :
-                amhw_hc32_vc1_hys_sel (gp_hw_vc, VC_HYS_VOL);
-                amhw_hc32_vc1_bias_sel (gp_hw_vc, VC_BIAS);
-                amhw_hc32_vc1_flt_time_sel (gp_hw_vc, VC_DEB_TIME);
+                amhw_hc32_vc1_hys_sel (__gp_hw_vc, VC_HYS_VOL);
+                amhw_hc32_vc1_bias_sel (__gp_hw_vc, VC_BIAS);
+                amhw_hc32_vc1_flt_time_sel (__gp_hw_vc, VC_DEB_TIME);
 
-                amhw_hc32_vc1_n_sel (gp_hw_vc, VC_N_IN);
-                amhw_hc32_vc1_p_sel (gp_hw_vc, VC_P_IN);
+                amhw_hc32_vc1_n_sel (__gp_hw_vc, VC_N_IN);
+                amhw_hc32_vc1_p_sel (__gp_hw_vc, VC_P_IN);
 
-                amhw_hc32_vc1_out_tri_int_sel (gp_hw_vc, VC_INT_TYPE);
+                amhw_hc32_vc1_out_tri_int_sel (__gp_hw_vc, VC_INT_TYPE);
             break;
         case AMHW_HC32_VC2 :
-                amhw_hc32_vc2_hys_sel (gp_hw_vc, VC_HYS_VOL);
-                amhw_hc32_vc2_bias_sel (gp_hw_vc, VC_BIAS);
-                amhw_hc32_vc2_flt_time_sel (gp_hw_vc, VC_DEB_TIME);
+                amhw_hc32_vc2_hys_sel (__gp_hw_vc, VC_HYS_VOL);
+                amhw_hc32_vc2_bias_sel (__gp_hw_vc, VC_BIAS);
+                amhw_hc32_vc2_flt_time_sel (__gp_hw_vc, VC_DEB_TIME);
 
-                amhw_hc32_vc2_n_sel (gp_hw_vc, VC_N_IN);
-                amhw_hc32_vc2_p_sel (gp_hw_vc, VC_P_IN);
+                amhw_hc32_vc2_n_sel (__gp_hw_vc, VC_N_IN);
+                amhw_hc32_vc2_p_sel (__gp_hw_vc, VC_P_IN);
 
-                amhw_hc32_vc1_out_tri_int_sel (gp_hw_vc, VC_INT_TYPE);
+                amhw_hc32_vc1_out_tri_int_sel (__gp_hw_vc, VC_INT_TYPE);
             break;
     }
 
     /* 配置输出 */
-    amhw_hc32_vc_outcfg_enable (gp_hw_vc,
+    amhw_hc32_vc_outcfg_enable (__gp_hw_vc,
                                   VC_OUT_CFG,
                                   VC_CHAN);
 
     if (VC_DEB_TIME != AMHW_HC32_DEB_TIME_NO){
 
         /* 滤波使能 */
-        amhw_hc32_vc_flt_enable (gp_hw_vc, VC_CHAN);
+        amhw_hc32_vc_flt_enable (__gp_hw_vc, VC_CHAN);
     }
 
 }
@@ -138,23 +139,25 @@ static void vc_init ()
 static void __vc_irq_handler (void *p_cookie)
 {
 
-    if (amhw_hc32_vc_int_status_check (gp_hw_vc, AMHW_HC32_VC0_FLT_INT_FLAG)){
+    if (amhw_hc32_vc_int_status_check (__gp_hw_vc, AMHW_HC32_VC0_FLT_INT_FLAG)){
 
-        amhw_hc32_vc_int_status_clr(gp_hw_vc,AMHW_HC32_VC0_FLT_INT_FLAG_CLR);
-    }else if (amhw_hc32_vc_int_status_check (gp_hw_vc,
+        amhw_hc32_vc_int_status_clr(__gp_hw_vc,AMHW_HC32_VC0_FLT_INT_FLAG_CLR);
+    }else if (amhw_hc32_vc_int_status_check (__gp_hw_vc,
                                                AMHW_HC32_VC1_FLT_INT_FLAG)){
 
-        amhw_hc32_vc_int_status_clr(gp_hw_vc,AMHW_HC32_VC1_FLT_INT_FLAG_CLR);
-    }else if (amhw_hc32_vc_int_status_check (gp_hw_vc,
+        amhw_hc32_vc_int_status_clr(__gp_hw_vc,AMHW_HC32_VC1_FLT_INT_FLAG_CLR);
+    }else if (amhw_hc32_vc_int_status_check (__gp_hw_vc,
                                                AMHW_HC32_VC2_FLT_INT_FLAG)){
 
-        amhw_hc32_vc_int_status_clr(gp_hw_vc,AMHW_HC32_VC2_FLT_INT_FLAG_CLR);
+        amhw_hc32_vc_int_status_clr(__gp_hw_vc,AMHW_HC32_VC2_FLT_INT_FLAG_CLR);
     }else{
 
         return ;
     }
 
-    gpfn_cb_t(NULL);
+    if (__gpfn_cb_t) {
+        __gpfn_cb_t(__gp_arg);
+    }
 }
 
 /**
@@ -163,13 +166,13 @@ static void __vc_irq_handler (void *p_cookie)
  */
 static void vc_int_tri_cfg ()
 {
-    if (gp_hw_vc == NULL){
+    if (__gp_hw_vc == NULL){
 
         return ;
     }
 
     /* 输出触发中断使能 */
-    amhw_hc32_vc_int_enable (gp_hw_vc, VC_CHAN);
+    amhw_hc32_vc_int_enable (__gp_hw_vc, VC_CHAN);
 
     am_int_connect(VC_INUM,
                    __vc_irq_handler,
@@ -204,28 +207,30 @@ static void dac_hw_init(amhw_hc32_dac_t *p_hw_dac,
 }
 
 /**
- * \brief 例程入口
+ * \brief VC中断触发例程，hw接口层实现
  */
-void demo_hc32_hw_vc_int_entry (void    *p_hw_vc,
-                                  void   (*pfn_cb_t) (void *),
-                                  void    *p_hw_dac,
-                                  uint16_t mv_val)
+void demo_hc32_hw_vc_int_entry (void      *p_hw_vc,
+                                void     (*pfn_cb_t) (void *),
+                                void      *p_arg,
+                                void      *p_hw_dac,
+                                uint16_t   mv_val)
 {
     uint16_t vol_val = 0;
 
-    gp_hw_vc  = (amhw_hc32_vc_t *)p_hw_vc;
-    gp_hw_dac = (amhw_hc32_dac_t *)p_hw_dac;
+    __gp_hw_vc  = (amhw_hc32_vc_t *)p_hw_vc;
+    __gp_hw_dac = (amhw_hc32_dac_t *)p_hw_dac;
 
-    gpfn_cb_t = pfn_cb_t;
+    __gpfn_cb_t = pfn_cb_t;
+    __gp_arg    = p_arg;
 
     /* 电压值转换为数字量 */
     vol_val = mv_val * 4096 / 3300;
 
     /* DAC 初始化 默认参考电压类型 外部参考电压源  PB01*/
-    dac_hw_init(gp_hw_dac, AMHW_HC32_DAC_CHAN_MASK_EXTER_REF);
+    dac_hw_init(__gp_hw_dac, AMHW_HC32_DAC_CHAN_MASK_EXTER_REF);
 
     /* 设置DAC电压值 数据格式：12位右对齐 */
-    amhw_hc32_dac_chan_12bit_right_aligned_data(gp_hw_dac, vol_val);
+    amhw_hc32_dac_chan_12bit_right_aligned_data(__gp_hw_dac, vol_val);
 
     /* VC初始化 */
     vc_init ();

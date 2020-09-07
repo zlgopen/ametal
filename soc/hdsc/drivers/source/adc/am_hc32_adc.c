@@ -209,7 +209,11 @@ static void __adc_int_work_startup (am_hc32_adc_dev_t       *p_dev,
 
         /* 初始化引脚 */
         if(p_dev->p_devinfo->p_ioinfo[chan].chan_sel <
-           AMHW_HC32_CHAN_DAC_OUT) {
+#ifdef HC32X3X
+                AWHW_HC32_CHAN_OPA3_OUT) {
+#else
+                AMHW_HC32_CHAN_DAC_OUT) {
+#endif
 
             /* GPIO引脚模式设置 */
             am_gpio_pin_cfg(p_dev->p_devinfo->p_ioinfo[chan].gpio,
@@ -306,7 +310,11 @@ static int __fn_adc_stop (void *p_drv, int chan)
 
         /* 初始化引脚 */
         if(p_dev->p_devinfo->p_ioinfo[chan].chan_sel <
-           AMHW_HC32_CHAN_DAC_OUT) {
+#ifdef HC32X3X
+            AWHW_HC32_CHAN_OPA3_OUT) {
+#else
+            AMHW_HC32_CHAN_DAC_OUT) {
+#endif
 
             /* GPIO引脚模式设置 */
             am_gpio_pin_cfg(p_dev->p_devinfo->p_ioinfo[chan].gpio,

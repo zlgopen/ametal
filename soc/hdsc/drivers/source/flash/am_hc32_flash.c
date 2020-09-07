@@ -16,6 +16,7 @@
  *
  * \internal
  * \par Modification History
+ * - 1.01 20-05-13  licl, add byte and half word program
  * - 1.00 19-09-04  zp, first implementation
  * \endinternal
  */
@@ -48,14 +49,14 @@ am_local const uint32_t __g_hc32_flash_pcgtimer_4mhz[] = \
 /******************************************************************************/
 
 /**
- * \brief 设置所有扇区写保护
+ * \brief 设置所有页写保护
  */
 am_local void __hc32_flash_lockall(amhw_hc32_flash_t *p_hw_flash)
 {
     AM_HC32_FLASH_BYPASS(p_hw_flash);
     p_hw_flash->slock0 = AM_HC32_FLASH_LOCK_ALL;
     AM_HC32_FLASH_BYPASS(p_hw_flash);
-    p_hw_flash->slock0 = AM_HC32_FLASH_LOCK_ALL;
+    p_hw_flash->slock1 = AM_HC32_FLASH_LOCK_ALL;
     AM_HC32_FLASH_BYPASS(p_hw_flash);
     p_hw_flash->slock2 = AM_HC32_FLASH_LOCK_ALL;
     AM_HC32_FLASH_BYPASS(p_hw_flash);
@@ -63,7 +64,7 @@ am_local void __hc32_flash_lockall(amhw_hc32_flash_t *p_hw_flash)
 }
 
 /**
- * \brief 取消所有扇区写保护
+ * \brief 取消所有页写保护
  */
 am_local void __hc32_flash_unlockall(amhw_hc32_flash_t *p_hw_flash)
 {
@@ -78,7 +79,7 @@ am_local void __hc32_flash_unlockall(amhw_hc32_flash_t *p_hw_flash)
 }
 
 /**
- * \brief 设置指定扇区写保护
+ * \brief 设置指定页写保护
  */
 am_local void __hc32_flash_locksector(amhw_hc32_flash_t *p_hw_flash,
                                       uint32_t           addr)
@@ -94,18 +95,22 @@ am_local void __hc32_flash_locksector(amhw_hc32_flash_t *p_hw_flash,
     switch (slock) {
 
     case 0:
+        AM_HC32_FLASH_BYPASS(p_hw_flash);
         p_hw_flash->slock0 &= bit;
         break;
 
     case 1:
+        AM_HC32_FLASH_BYPASS(p_hw_flash);
         p_hw_flash->slock1 &= bit;
         break;
 
     case 2:
+        AM_HC32_FLASH_BYPASS(p_hw_flash);
         p_hw_flash->slock2 &= bit;
         break;
 
     case 3:
+        AM_HC32_FLASH_BYPASS(p_hw_flash);
         p_hw_flash->slock3 &= bit;
         break;
 
@@ -115,7 +120,7 @@ am_local void __hc32_flash_locksector(amhw_hc32_flash_t *p_hw_flash,
 }
 
 /**
- * \brief 取消指定扇区写保护
+ * \brief 取消指定页写保护
  */
 am_local void __hc32_flash_unlocksector(amhw_hc32_flash_t *p_hw_flash,
                                         uint32_t           addr)
@@ -131,18 +136,22 @@ am_local void __hc32_flash_unlocksector(amhw_hc32_flash_t *p_hw_flash,
     switch (slock) {
 
     case 0:
+        AM_HC32_FLASH_BYPASS(p_hw_flash);
         p_hw_flash->slock0 |= bit;
         break;
 
     case 1:
+        AM_HC32_FLASH_BYPASS(p_hw_flash);
         p_hw_flash->slock1 |= bit;
         break;
 
     case 2:
+        AM_HC32_FLASH_BYPASS(p_hw_flash);
         p_hw_flash->slock2 |= bit;
         break;
 
     case 3:
+        AM_HC32_FLASH_BYPASS(p_hw_flash);
         p_hw_flash->slock3 |= bit;
         break;
 
@@ -152,11 +161,12 @@ am_local void __hc32_flash_unlocksector(amhw_hc32_flash_t *p_hw_flash,
 }
 
 /**
- * \brief 写一个字的数据
+ * \brief 像flash写数据
  */
-am_local int32_t __hc32_flash_writeword(amhw_hc32_flash_t  *p_hw_flash,
-                                        uint32_t            addr,
-                                        uint32_t            data)
+am_local int32_t __hc32_flash_write(amhw_hc32_flash_t  *p_hw_flash,
+                                    uint32_t            addr,
+                                    const void         *data,
+                                    uint8_t             data_size)
 {
     volatile uint32_t timeout = AM_HC32_FLASH_TIMEOUT_PGM;
 
@@ -181,7 +191,22 @@ am_local int32_t __hc32_flash_writeword(amhw_hc32_flash_t  *p_hw_flash,
     }
 
     /* write data */
-    *((volatile uint32_t*)addr) = data;
+    switch (data_size) {
+    case 1:
+        *((volatile uint8_t*)addr) = *(uint8_t *)data;
+        break;
+
+    case 2:
+        *((volatile uint16_t*)addr) = *(uint16_t *)data;
+        break;
+
+    case 4:
+        *((volatile uint32_t*)addr) = *(uint32_t *)data;
+        break;
+
+    default:
+        return -AM_EINVAL;
+    }
 
     /* busy? */
     timeout = AM_HC32_FLASH_TIMEOUT_PGM;
@@ -211,7 +236,7 @@ int32_t am_hc32_flash_waitcycle(amhw_hc32_flash_t              *p_hw_flash,
 }
 
 /**
- * \brief 擦除扇区
+ * \brief 擦除页
  */
 int32_t am_hc32_flash_sector_erase (amhw_hc32_flash_t *p_hw_flash,
                                     uint32_t           addr)
@@ -236,6 +261,7 @@ int32_t am_hc32_flash_sector_erase (amhw_hc32_flash_t *p_hw_flash,
     timeout = AM_HC32_FLASH_TIMEOUT_ERASE;
     while(AMHW_HC32_FLASH_SECTOR_ERASE != amhw_hc32_flash_opt_get(p_hw_flash)) {
         if(timeout--) {
+            
             amhw_hc32_flash_opt_set(p_hw_flash, AMHW_HC32_FLASH_SECTOR_ERASE);
         } else {
             return -AM_EAGAIN;
@@ -259,12 +285,12 @@ int32_t am_hc32_flash_sector_erase (amhw_hc32_flash_t *p_hw_flash,
 }
 
 /**
- * \brief 对扇区编程或部分扇区编程
+ * \brief 对页按字节编程
  */
-int32_t am_hc32_flash_sector_program (amhw_hc32_flash_t *p_hw_flash,
-                                      uint32_t           dst_addr,
-                                      uint32_t          *p_src,
-                                      uint32_t           size)
+int32_t am_hc32_flash_sector_byte_program (amhw_hc32_flash_t    *p_hw_flash,
+                                           uint32_t              dst_addr,
+                                           const uint8_t        *p_src,
+                                           uint32_t              size)
 {
     uint32_t i = 0;
 
@@ -273,13 +299,66 @@ int32_t am_hc32_flash_sector_program (amhw_hc32_flash_t *p_hw_flash,
     }
 
     for(i = 0; i < size; i++) {
-        __hc32_flash_writeword(p_hw_flash, dst_addr + i * 4, p_src[i]);
+        __hc32_flash_write(p_hw_flash, dst_addr + i, &p_src[i], 1);
     }
 
     for (i = 0; i < size; i++) {
-      if (p_src[i] != *(uint32_t *)(dst_addr + i * 4)) {
-          break;
-      }
+        if (p_src[i] != *(uint8_t *)(dst_addr + i)) {
+            break;
+        }
+    }
+    return i;
+}
+
+/**
+ * \brief 对页按半字编程
+ */
+int32_t am_hc32_flash_sector_halfword_program (amhw_hc32_flash_t    *p_hw_flash,
+                                               uint32_t              dst_addr,
+                                               const uint16_t       *p_src,
+                                               uint32_t              size)
+
+{
+    uint32_t i = 0;
+
+    if (AM_HC32_FLASH_END_ADDR < (dst_addr + (size * 2))) {
+        return -AM_EINVAL;
+    }
+
+    for(i = 0; i < size; i++) {
+        __hc32_flash_write(p_hw_flash, dst_addr + (i * 2), &p_src[i], 2);
+    }
+
+    for (i = 0; i < size; i++) {
+        if (p_src[i] != *(uint16_t *)(dst_addr + (i * 2))) {
+            break;
+        }
+    }
+    return i;
+}
+
+/**
+ * \brief 对页按字编程
+ */
+int32_t am_hc32_flash_sector_program (amhw_hc32_flash_t *p_hw_flash,
+                                      uint32_t           dst_addr,
+                                      const uint32_t    *p_src,
+                                      uint32_t           size)
+{
+    uint32_t i = 0;
+
+    if (AM_HC32_FLASH_END_ADDR < (dst_addr + (size * 4))) {
+        return -AM_EINVAL;
+    }
+
+    for(i = 0; i < size; i++) {
+        __hc32_flash_write(p_hw_flash, dst_addr + (i * 4), &p_src[i], 4);
+    }
+
+    for (i = 0; i < size; i++) {
+        if (p_src[i] != *(uint32_t *)(dst_addr + (i * 4))) {
+            break;
+        }
     }
     return i;
 }
@@ -354,6 +433,19 @@ int32_t am_hc32_flash_init(amhw_hc32_flash_t   *p_hw_flash,
     /* flash时间参数配置值计算 */
     for (index = 0; index < 8; index++) {
         prgtimer[index] = freqcfg * __g_hc32_flash_pcgtimer_4mhz[index];
+    }
+
+    /* 开启读FLASH等待周期 */
+    if (8 == freqcfg) {
+        AM_HC32_FLASH_BYPASS(p_hw_flash);
+        AM_BITS_SET(p_hw_flash->cr, 2, 2, 0x01);
+    } else if (12 == freqcfg) {
+        prgtimer[1] = 0xFF;      
+        AM_HC32_FLASH_BYPASS(p_hw_flash);
+        AM_BITS_SET(p_hw_flash->cr, 2, 2, 0x01);
+    } else {
+        AM_HC32_FLASH_BYPASS(p_hw_flash); 
+        AM_BITS_SET(p_hw_flash->cr, 2, 2, 0x00);
     }
 
     /* flash时间参数寄存器配置 */

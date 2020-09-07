@@ -20,10 +20,10 @@
  * \endinternal
  */
 #include "ametal.h"
+#include "am_hc32f460.h"
 #include "am_hc32f460_clk.h"
 #include "am_hc32f460_flash.h"
 #include "hw/amhw_hc32f460_rcc.h"
-
 
 am_hc32f460_clk_dev_t    *__gp_clk_dev;
 
@@ -63,14 +63,13 @@ int am_hc32f460_clk_init (am_hc32f460_clk_dev_t           *p_dev,
                           const am_hc32f460_clk_devinfo_t *p_devinfo)
 
 {
-    uint8_t hclk_unit = 0;
 
     uint32_t value_fcg[4] = {0};
     __IO uint32_t timeout = 0ul;
     amhw_hc32f460_cmu_xtalcfg_t xtal_cfg;
     amhw_hc32f460_clk_pll_cfg_t mpll_cfg;
     amhw_hc32f460_clk_pll_cfg_t upll_cfg;
-    uint32_t efm_latency = 0;
+    amhw_hc32f460_flash_read_waittime efm_latency = AMHW_HC32F460_FLASH_READ_WAITTIME_0;
 
     if (p_dev == NULL || p_devinfo == NULL) {
         return -AM_EINVAL;
@@ -96,15 +95,14 @@ int am_hc32f460_clk_init (am_hc32f460_clk_dev_t           *p_dev,
 
     /* Set bus clk div. */
     if (IS_SYSCLK_CONFIG_VALID(p_devinfo)){
-        amhw_hc32f460_clk_reg_write_enable();
-        amhw_hc32f460_sysclk_cfg(CLK_HCLK, p_devinfo->hclk_div);   // Max 168MHz
-        amhw_hc32f460_sysclk_cfg(CLK_EXCLK, p_devinfo->exclk_div); // Max 84MHz
-        amhw_hc32f460_sysclk_cfg(CLK_PCLK0, p_devinfo->pclk0_div); // Max 168MHz
-        amhw_hc32f460_sysclk_cfg(CLK_PCLK1, p_devinfo->pclk1_div); // Max 84MHz
-        amhw_hc32f460_sysclk_cfg(CLK_PCLK2, p_devinfo->pclk2_div); // Max 60MHz
-        amhw_hc32f460_sysclk_cfg(CLK_PCLK3, p_devinfo->pclk3_div); // Max 42MHz
-        amhw_hc32f460_sysclk_cfg(CLK_PCLK4, p_devinfo->pclk4_div); // Max 84MHz
-        amhw_hc32f460_clk_reg_write_disable();
+        amhw_hc32f460_sysclk_cfg((p_devinfo->hclk_div  << 24) |
+                                 (p_devinfo->exclk_div << 20) |
+                                 (p_devinfo->pclk0_div << 0)  |
+                                 (p_devinfo->pclk1_div << 4)  |
+                                 (p_devinfo->pclk2_div << 8)  |
+                                 (p_devinfo->pclk3_div << 12) |
+                                 (p_devinfo->pclk4_div << 16));
+
     } else {
         return AM_ERROR;
     }
@@ -204,28 +202,30 @@ int am_hc32f460_clk_init (am_hc32f460_clk_dev_t           *p_dev,
     }
 
     if (p_dev->sys_clk > 132000000 && p_dev->sys_clk <= 168000000) {
-        efm_latency = 0x4ul;
+        efm_latency = AMHW_HC32F460_FLASH_READ_WAITTIME_4;
     } else if (p_dev->sys_clk > 99000000 && p_dev->sys_clk <= 132000000) {
-        efm_latency = 0x3ul;
+        efm_latency = AMHW_HC32F460_FLASH_READ_WAITTIME_3;
     } else if (p_dev->sys_clk > 66000000 && p_dev->sys_clk <= 99000000) {
-        efm_latency = 0x2ul;
+        efm_latency = AMHW_HC32F460_FLASH_READ_WAITTIME_2;
     } else if (p_dev->sys_clk > 33000000 && p_dev->sys_clk <= 66000000){
-        efm_latency = 0x1ul;
+        efm_latency = AMHW_HC32F460_FLASH_READ_WAITTIME_1;
     } else if (p_dev->sys_clk > 2000000 && p_dev->sys_clk <= 33000000){
-        efm_latency = 0x0ul;
+        efm_latency = AMHW_HC32F460_FLASH_READ_WAITTIME_0;
     } else if (p_dev->sys_clk <= 2000000) {
-        efm_latency = 0x0ul;
+        efm_latency = AMHW_HC32F460_FLASH_READ_WAITTIME_0;
     }
 
     /* flash read wait cycle setting */
-    am_hc32f460_flash_unlock(AM_HC32F460_FLASH);
-    am_hc32f460_flash_waitcycle(AM_HC32F460_FLASH, efm_latency);
-    am_hc32f460_flash_lock(AM_HC32F460_FLASH);
+    am_hc32f460_flash_unlock(HC32F460_EFM);
+    am_hc32f460_flash_waitcycle(HC32F460_EFM, efm_latency);
+    am_hc32f460_flash_lock(HC32F460_EFM);
 
     /* 设置系统时钟源 */
     amhw_hc32f460_clk_set_sysclk_src(p_devinfo->sysclk_src);
 
-    __gp_clk_dev->p_devinfo->xth_osc;
+    /* 设置USBCK时钟源 */
+    amhw_hc32f460_clk_cmu_usbcks_set(p_devinfo->usbck_src);
+
     __gp_clk_dev->sys_type = p_devinfo->sysclk_src;
     __gp_clk_dev->hclk = p_dev->sys_clk / p_devinfo->hclk_div;
     __gp_clk_dev->pclk0 = p_dev->sys_clk / p_devinfo->pclk0_div;
@@ -435,12 +435,6 @@ int am_clk_disable (am_clk_id_t clk_id)
 int am_clk_rate_get (am_clk_id_t clk_id)
 {
     int clk = 0;
-    int peri, num;
-
-    peri = clk_id & 0xff;
-    uint32_t clk_pll_in = 0;
-    uint32_t clk_mpllout = 0;
-    am_clk_id_t clk_src = 0;
 
     if ((clk_id & 0xFFFFFFF0) == 0) {
         /* 时钟源ID */
@@ -490,4 +484,5 @@ int am_clk_rate_get (am_clk_id_t clk_id)
 
     return clk;
 }
+
 /* end of file */
