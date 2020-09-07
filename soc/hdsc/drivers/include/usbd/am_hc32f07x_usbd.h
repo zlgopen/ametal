@@ -20,8 +20,8 @@
  * - 1.00 18-12-25  adw, first implementation.
  * \endinternal
  */
-#ifndef __AM_ZLG217_USBD_H
-#define __AM_ZLG217_USBD_H
+#ifndef __AM_HC32F07X_USBD_H
+#define __AM_HC32F07X_USBD_H
 
 #ifdef __cplusplus
 extern "C" {
@@ -58,7 +58,7 @@ struct am_hc32f07x_usbd_dev {
     am_usbd_dev_t       device;
 
     uint8_t             dma_enable;
-	 
+     
     /**< \brief 发生中断的端点，为1表示发生中断，为0表示没有发生中断
      *   D7:D5  保留
      *   D4~D0  对应发生中断的端点4~端点0。
@@ -66,16 +66,15 @@ struct am_hc32f07x_usbd_dev {
     union {
         uint16_t int_ep_flag;
         struct {
-            uint16_t in_ep0  : 1;
-            uint16_t in_ep1  : 1;
-            uint16_t in_ep2  : 1;
-            uint16_t in_ep3  : 1;
-            uint16_t in_ep4  : 1;
-            uint16_t out_ep0 : 1;
-            uint16_t out_ep1 : 1;
-            uint16_t out_ep2 : 1;
-            uint16_t out_ep3 : 1;
-            uint16_t out_ep4 : 1;
+            uint16_t in_out_ep0  : 1;
+            uint16_t in_ep1      : 1;
+            uint16_t out_ep2     : 1;
+            uint16_t in_ep3      : 1;
+            uint16_t out_ep4     : 1;
+            uint16_t in_ep5      : 1;
+            uint16_t out_ep6     : 1;
+            uint16_t in_ep7      : 1;
+            uint16_t out_ep8     : 1;
         }int_ep_flag_field;
     }int_ep_union;
 
@@ -111,9 +110,12 @@ struct am_hc32f07x_usbd_dev {
             uint16_t out_reserved2 : 1;
         }ep_int_type_field[AM_USBD_MAX_EP_CNT];
     }ep_int_type_union;
+        
+    am_data_info_t    data_info[AM_USBD_MAX_EP_CNT];
 
     /**< \brief 设备信息结构指针 */
     const am_hc32f07x_usbd_devinfo_t         *p_info;
+
 };
 
 
@@ -136,6 +138,6 @@ void am_hc32f07x_usbd_deinit (const am_hc32f07x_usbd_devinfo_t *p_info);
 }
 #endif
 
-#endif  /* __AM_ZLG217_USBD_H */
+#endif  /* __AM_HC32F07X_USBD_H */
 
 /* end of file */

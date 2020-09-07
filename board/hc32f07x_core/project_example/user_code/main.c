@@ -122,7 +122,12 @@ int am_main (void)
 //    demo_hc32f07x_core_std_wdt_entry();
 //    demo_hc32f07x_core_hw_lcd_entry ();
 //    demo_hc32f072_core_std_can_entry ();
+//    demo_hc32f07x_usbd_msc_entry ();
 //    demo_hc32f07x_usbd_mouse_entry ();
+//    demo_hc32f07x_usbd_keyboard_entry ();
+//    demo_hc32f07x_usbd_printer_counter_entry ();
+//    demo_hc32f07x_usbd_printer_entry ();
+//    demo_hc32f07x_usbd_vcom_entry ();
 //    demo_hc32f07x_hw_i2s_int_entry ();
 //    demo_hc32f07x_core_hw_hdiv_entry ();
 //    demo_hc32f07x_core_hw_ram_entry();

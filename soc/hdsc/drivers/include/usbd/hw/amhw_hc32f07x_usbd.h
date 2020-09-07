@@ -98,8 +98,8 @@ typedef struct amhw_hc32_usbfs {
     __IO uint32_t reserve11;       /**< \brief 保留 */
     __IO uint32_t diepsiz1;        /**< \brief 0x930 设备IN端点1传输大小寄存器 */
     __IO uint32_t diepdma1;        /**< \brief 0x934 设备IN端点1DMA地址寄存器 */
-    __IO uint32_t dtxfsts1;        /**< \brief 0x920 设备IN端点1控制寄存器 */
-    __IO uint32_t reserve12;   /**< \brief 保留 */
+    __IO uint32_t dtxfsts1;        /**< \brief 0x938 设备IN端点1控制寄存器 */
+    __IO uint32_t reserve12[9];    /**< \brief 0x93c保留 */
 
     __IO uint32_t diepctl2;        /**< \brief 0x960 设备IN端点2控制寄存器 */
     __IO uint32_t reserve13;       /**< \brief 保留 */		
@@ -108,7 +108,7 @@ typedef struct amhw_hc32_usbfs {
     __IO uint32_t diepsiz2;        /**< \brief 0x970 设备IN端点2传输大小寄存器 */
     __IO uint32_t diepdma2;        /**< \brief 0x974 设备IN端点2DMA地址寄存器 */
     __IO uint32_t dtxfsts2;        /**< \brief 0x920 设备IN端点2控制寄存器 */
-    __IO uint32_t reserve15;   /**< \brief 保留 */
+    __IO uint32_t reserve15[9];   /**< \brief 保留 */
 
     __IO uint32_t diepctl3;        /**< \brief 0x960 设备IN端点3控制寄存器 */
     __IO uint32_t reserve16;       /**< \brief 保留 */		
@@ -117,32 +117,32 @@ typedef struct amhw_hc32_usbfs {
     __IO uint32_t diepsiz3;        /**< \brief 0x970 设备IN端点3传输大小寄存器 */
     __IO uint32_t diepdma3;        /**< \brief 0x974 设备IN端点3DMA地址寄存器 */
     __IO uint32_t dtxfsts3;        /**< \brief 0x920 设备IN端点3控制寄存器 */
-    __IO uint32_t reserve18;   /**< \brief 保留 */
+    __IO uint32_t reserve18[9];   /**< \brief 保留 */
 
-    __IO uint32_t diepctl4;        /**< \brief 0x960 设备IN端点4控制寄存器 */
+    __IO uint32_t diepctl4;        /**< \brief 0x9e0 设备IN端点4控制寄存器 */
     __IO uint32_t reserve19;       /**< \brief 保留 */		
-    __IO uint32_t diepint4;        /**< \brief 0x968 设备IN端点4中断寄存器 */	
+    __IO uint32_t diepint4;        /**< \brief 0x9e8 设备IN端点4中断寄存器 */	
     __IO uint32_t reserve20;       /**< \brief 保留 */
-    __IO uint32_t diepsiz4;        /**< \brief 0x970 设备IN端点4传输大小寄存器 */
-    __IO uint32_t diepdma4;        /**< \brief 0x974 设备IN端点4DMA地址寄存器 */
-    __IO uint32_t dtxfsts4;        /**< \brief 0x920 设备IN端点4控制寄存器 */
-    __IO uint32_t reserve21[89];   /**< \brief 保留 */
+    __IO uint32_t diepsiz4;        /**< \brief 0x9f0 设备IN端点4传输大小寄存器 */
+    __IO uint32_t diepdma4;        /**< \brief 0x9f4 设备IN端点4DMA地址寄存器 */
+    __IO uint32_t dtxfsts4;        /**< \brief 0x9f8 设备IN端点4控制寄存器 */
+    __IO uint32_t reserve21[65];   /**< \brief 0x9fc保留 */
 
     __IO uint32_t doepctl0;        /**< \brief 0xb00 设备OUT端点0控制寄存器 */
     __IO uint32_t reserve22;       /**< \brief 保留 */		
     __IO uint32_t doepint0;        /**< \brief 0xb08 设备OUT端点0中断寄存器 */
     __IO uint32_t reserve23;       /**< \brief 保留 */
     __IO uint32_t doepsiz0;        /**< \brief 0xb10 设备OUT端点0传输大小寄存器 */
-    __IO uint32_t doepdma0;        /**< \brief 0x974 设备OUT端点0DMA地址寄存器 */
-    __IO uint32_t reserve24[2];   /**< \brief 保留 */
+    __IO uint32_t doepdma0;        /**< \brief 0xb14 设备OUT端点0DMA地址寄存器 */
+    __IO uint32_t reserve24[10];   /**< \brief 0xb18保留 */
 
-    __IO uint32_t doepctl1;        /**< \brief 0xb00 设备OUT端点1控制寄存器 */
+    __IO uint32_t doepctl1;        /**< \brief 0xb40 设备OUT端点1控制寄存器 */
     __IO uint32_t reserve25;       /**< \brief 保留 */		
     __IO uint32_t doepint1;        /**< \brief 0xb08 设备OUT端点1中断寄存器 */
     __IO uint32_t reserve26;       /**< \brief 保留 */
     __IO uint32_t doepsiz1;        /**< \brief 0xb10 设备OUT端点1传输大小寄存器 */
     __IO uint32_t doepdma1;        /**< \brief 0x974 设备OUT端点1DMA地址寄存器 */
-    __IO uint32_t reserve27[2];   /**< \brief 保留 */	
+    __IO uint32_t reserve27[10];   /**< \brief 保留 */	
 
     __IO uint32_t doepctl2;        /**< \brief 0xb40 设备OUT端点2控制寄存器 */
     __IO uint32_t reserve28;       /**< \brief 保留 */
@@ -150,7 +150,7 @@ typedef struct amhw_hc32_usbfs {
     __IO uint32_t reserve29;       /**< \brief 保留 */
     __IO uint32_t doepsiz2;        /**< \brief 0xb50 设备OUT端点2传输大小寄存器 */
     __IO uint32_t doepdma2;        /**< \brief 0xb54 设备OUT端点2DMA地址寄存器 */
-    __IO uint32_t reserve30[2];   /**< \brief 保留 */
+    __IO uint32_t reserve30[10];   /**< \brief 保留 */
 
     __IO uint32_t doepctl3;        /**< \brief 0xb80 设备OUT端点3控制寄存器 */
     __IO uint32_t reserve31;       /**< \brief 保留 */
@@ -158,15 +158,15 @@ typedef struct amhw_hc32_usbfs {
     __IO uint32_t reserve32;       /**< \brief 保留 */
     __IO uint32_t doepsiz3;        /**< \brief 0xb90 设备OUT端点3传输大小寄存器 */
     __IO uint32_t doepdma3;        /**< \brief 0xb94 设备OUT端点3DMA地址寄存器 */
-    __IO uint32_t reserve33[2];   /**< \brief 保留 */
+    __IO uint32_t reserve33[10];   /**< \brief 保留 */
 
-    __IO uint32_t doepctl4;        /**< \brief 0xb80 设备OUT端点4控制寄存器 */
+    __IO uint32_t doepctl4;        /**< \brief 0xC00 设备OUT端点4控制寄存器 */
     __IO uint32_t reserve34;       /**< \brief 保留 */
-    __IO uint32_t doepint4;        /**< \brief 0xb88 设备OUT端点4中断寄存器 */
+    __IO uint32_t doepint4;        /**< \brief 0xc08 设备OUT端点4中断寄存器 */
     __IO uint32_t reserve35;       /**< \brief 保留 */
-    __IO uint32_t doepsiz4;        /**< \brief 0xb90 设备OUT端点4传输大小寄存器 */
-    __IO uint32_t doepdma4;        /**< \brief 0xb94 设备OUT端点4DMA地址寄存器 */
-    __IO uint32_t reserve36[154];   /**< \brief 保留 */
+    __IO uint32_t doepsiz4;        /**< \brief 0xb10 设备OUT端点4传输大小寄存器 */
+    __IO uint32_t doepdma4;        /**< \brief 0xc14 设备OUT端点4DMA地址寄存器 */
+    __IO uint32_t reserve36[122];   /**< \brief 保留 */
 
     __IO uint32_t pcgcctl;         /**< \brief 0xe00 电源和门控时钟控制急促器 */		
 } amhw_hc32_usbfs_t;
@@ -677,19 +677,19 @@ void amhw_hc32_usbfs_ineptxfd_set(amhw_hc32_usbfs_t *p_hw_usbfs,
     switch(n)
     {
         case 1: 
-            p_hw_usbfs->dptxfsiz1 =(p_hw_usbfs->dptxfsiz1 &(~(0xffffu<<16))) |
-                                   (depth << 16);
-            break;
-        case 2:
-            p_hw_usbfs->dptxfsiz2 =(p_hw_usbfs->dptxfsiz2 &(~(0xffffu<<16))) |
+            p_hw_usbfs->dptxfsiz1 =(p_hw_usbfs->dptxfsiz1 &(~(0xffff<<16))) |
                                    (depth << 16);
             break;
         case 3:
-            p_hw_usbfs->dptxfsiz3 =(p_hw_usbfs->dptxfsiz3 &(~(0xffffu<<16))) |
+            p_hw_usbfs->dptxfsiz2 =(p_hw_usbfs->dptxfsiz2 &(~(0xffff<<16))) |
                                    (depth << 16);
             break;
-        case 4:
-            p_hw_usbfs->dptxfsiz4 =(p_hw_usbfs->dptxfsiz4 &(~(0xffffu<<16))) |
+        case 5:
+            p_hw_usbfs->dptxfsiz3 =(p_hw_usbfs->dptxfsiz3 &(~(0xffff<<16))) |
+                                   (depth << 16);
+            break;
+        case 7:
+            p_hw_usbfs->dptxfsiz4 =(p_hw_usbfs->dptxfsiz4 &(~(0xffff<<16))) |
                                    (depth << 16);
             break;
         default: break;
@@ -707,7 +707,7 @@ void amhw_hc32_usbfs_ineptxfd_set(amhw_hc32_usbfs_t *p_hw_usbfs,
  */
 am_static_inline
 void amhw_hc32_usbfs_ineptxsa_set(amhw_hc32_usbfs_t *p_hw_usbfs,
-                                  uint16_t           address,
+	                                uint16_t           address,
                                   uint8_t            n)
 {
     switch(n)
@@ -715,13 +715,13 @@ void amhw_hc32_usbfs_ineptxsa_set(amhw_hc32_usbfs_t *p_hw_usbfs,
         case 1: p_hw_usbfs->dptxfsiz1 =(p_hw_usbfs->dptxfsiz1 &(~0xffff)) | 
                                        address;
                 break;
-        case 2: p_hw_usbfs->dptxfsiz2 =(p_hw_usbfs->dptxfsiz2 &(~0xffff)) |
+        case 3: p_hw_usbfs->dptxfsiz2 =(p_hw_usbfs->dptxfsiz2 &(~0xffff)) |
                                        address;
                 break;
-        case 3: p_hw_usbfs->dptxfsiz3 =(p_hw_usbfs->dptxfsiz3 &(~0xffff)) |
+        case 5: p_hw_usbfs->dptxfsiz3 =(p_hw_usbfs->dptxfsiz3 &(~0xffff)) |
                                        address;
                 break;
-        case 4: p_hw_usbfs->dptxfsiz4 =(p_hw_usbfs->dptxfsiz4 &(~0xffff)) |
+        case 7: p_hw_usbfs->dptxfsiz4 =(p_hw_usbfs->dptxfsiz4 &(~0xffff)) |
                                        address;
                 break;
         default: break;
@@ -1095,13 +1095,13 @@ void amhw_hc32_usbfs_oepintm_enable(amhw_hc32_usbfs_t *p_hw_usbfs,
     {
         case 0: p_hw_usbfs->daintmsk |= (1u << 16); 
                 break;
-        case 1: p_hw_usbfs->daintmsk |= (1u << 17); 
-                break;
-        case 2: p_hw_usbfs->daintmsk |= (1u << 18);
-                break;
-        case 3: p_hw_usbfs->daintmsk |= (1u << 19);
+        case 2: p_hw_usbfs->daintmsk |= (1u << 18); 
                 break;
         case 4: p_hw_usbfs->daintmsk |= (1u << 20);
+                break;
+        case 6: p_hw_usbfs->daintmsk |= (1u << 22);
+                break;
+        case 8: p_hw_usbfs->daintmsk |= (1u << 24);
                 break;
         default: break;
     }
@@ -1123,13 +1123,13 @@ void amhw_hc32_usbfs_oepintm_disable(amhw_hc32_usbfs_t *p_hw_usbfs,
     {
         case 0: p_hw_usbfs->daintmsk &= ~(1u << 16); 
                 break;
-        case 1: p_hw_usbfs->daintmsk &= ~(1u << 17); 
+        case 2: p_hw_usbfs->daintmsk &= ~(1u << 17); 
                 break;
-        case 2: p_hw_usbfs->daintmsk &= ~(1u << 18);
+        case 4: p_hw_usbfs->daintmsk &= ~(1u << 18);
                 break;
-        case 3: p_hw_usbfs->daintmsk &= ~(1u << 19);
+        case 6: p_hw_usbfs->daintmsk &= ~(1u << 19);
                 break;
-        case 4: p_hw_usbfs->daintmsk &= ~(1u << 20);
+        case 8: p_hw_usbfs->daintmsk &= ~(1u << 20);
                 break;
         default: break;
     }
@@ -1153,11 +1153,11 @@ void amhw_hc32_usbfs_iepintm_enable(amhw_hc32_usbfs_t *p_hw_usbfs,
                 break;
         case 1: p_hw_usbfs->daintmsk |= (1u << 1); 
                 break;
-        case 2: p_hw_usbfs->daintmsk |= (1u << 2);
-                break;
         case 3: p_hw_usbfs->daintmsk |= (1u << 3);
                 break;
-        case 4: p_hw_usbfs->daintmsk |= (1u << 4);
+        case 5: p_hw_usbfs->daintmsk |= (1u << 5);
+                break;
+        case 7: p_hw_usbfs->daintmsk |= (1u << 7);
                 break;
         default: break;
     }
@@ -1181,11 +1181,11 @@ void amhw_hc32_usbfs_iepintm_disable(amhw_hc32_usbfs_t *p_hw_usbfs,
                 break;
         case 1: p_hw_usbfs->daintmsk &= ~(1u << 1); 
                 break;
-        case 2: p_hw_usbfs->daintmsk &= ~(1u << 2);
+        case 3: p_hw_usbfs->daintmsk &= ~(1u << 2);
                 break;
-        case 3: p_hw_usbfs->daintmsk &= ~(1u << 3);
+        case 5: p_hw_usbfs->daintmsk &= ~(1u << 3);
                 break;
-        case 4: p_hw_usbfs->daintmsk &= ~(1u << 4);
+        case 7: p_hw_usbfs->daintmsk &= ~(1u << 4);
                 break;
         default: break;
     }
@@ -1209,11 +1209,11 @@ void amhw_hc32_usbfs_neptxfem_enable(amhw_hc32_usbfs_t *p_hw_usbfs,
                 break;
         case 1: p_hw_usbfs->diepempmsk |= (1u << 1); 
                 break;
-        case 2: p_hw_usbfs->diepempmsk |= (1u << 2);
+        case 3: p_hw_usbfs->diepempmsk |= (1u << 2);
                 break;
-        case 3: p_hw_usbfs->diepempmsk |= (1u << 3);
+        case 5: p_hw_usbfs->diepempmsk |= (1u << 3);
                 break;
-        case 4: p_hw_usbfs->diepempmsk |= (1u << 4);
+        case 7: p_hw_usbfs->diepempmsk |= (1u << 4);
                 break;
         default: break;
     }
@@ -1237,11 +1237,11 @@ void amhw_hc32_usbfs_neptxfem_disable(amhw_hc32_usbfs_t *p_hw_usbfs,
                 break;
         case 1: p_hw_usbfs->diepempmsk &= ~(1u << 1); 
                 break;
-        case 2: p_hw_usbfs->diepempmsk &= ~(1u << 2);
+        case 3: p_hw_usbfs->diepempmsk &= ~(1u << 2);
                 break;
-        case 3: p_hw_usbfs->diepempmsk &= ~(1u << 3);
+        case 5: p_hw_usbfs->diepempmsk &= ~(1u << 3);
                 break;
-        case 4: p_hw_usbfs->diepempmsk &= ~(1u << 4);
+        case 7: p_hw_usbfs->diepempmsk &= ~(1u << 4);
                 break;
         default: break;
     }
@@ -1287,11 +1287,11 @@ void amhw_hc32_usbfs_diepctl_set(amhw_hc32_usbfs_t *p_hw_usbfs,
                 break;
         case 1: p_hw_usbfs->diepctl1 |= flag; 
                 break;
-        case 2: p_hw_usbfs->diepctl2 |= flag;
+        case 3: p_hw_usbfs->diepctl2 |= flag;
                 break;
-        case 3: p_hw_usbfs->diepctl3 |= flag;
+        case 5: p_hw_usbfs->diepctl3 |= flag;
                 break;
-        case 4: p_hw_usbfs->diepctl4 |= flag;
+        case 7: p_hw_usbfs->diepctl4 |= flag;
                 break;
         default: break;
     }
@@ -1317,11 +1317,45 @@ void amhw_hc32_usbfs_diepctl_clr(amhw_hc32_usbfs_t *p_hw_usbfs,
                 break;
         case 1: p_hw_usbfs->diepctl1 &= ~flag; 
                 break;
-        case 2: p_hw_usbfs->diepctl2 &= ~flag;
+        case 3: p_hw_usbfs->diepctl2 &= ~flag;
                 break;
-        case 3: p_hw_usbfs->diepctl3 &= ~flag;
+        case 5: p_hw_usbfs->diepctl3 &= ~flag;
                 break;
-        case 4: p_hw_usbfs->diepctl4 &= ~flag;
+        case 7: p_hw_usbfs->diepctl4 &= ~flag;
+                break;
+        default: break;
+    }
+}
+
+/**
+ * \brief  
+ *
+ * \param[in] p_hw_usbfs : 指向usbfs寄存器的指针
+ * \param[in] num        : 端点编号
+ *
+ * \return none
+ */
+am_static_inline
+void amhw_hc32_usbfs_nextep_set(amhw_hc32_usbfs_t *p_hw_usbfs,
+	                               uint8_t           ep_num,
+                                  uint8_t            num)
+{
+    switch(num)
+    {
+        case 0: p_hw_usbfs->diepctl0 = (p_hw_usbfs->diepctl0 & ~(0xf << 11)) | 
+					                              (ep_num <<11);
+                break;
+        case 1: p_hw_usbfs->diepctl1 = (p_hw_usbfs->diepctl1 & ~(0xf << 11)) | 
+					                              (ep_num <<11); 
+                break;
+        case 3: p_hw_usbfs->diepctl2 = (p_hw_usbfs->diepctl2 & ~(0xf << 11)) | 
+					                              (ep_num <<11);
+                break;
+        case 5: p_hw_usbfs->diepctl3 = (p_hw_usbfs->diepctl3 & ~(0xf << 11)) | 
+					                              (ep_num <<11);
+                break;
+        case 7: p_hw_usbfs->diepctl4 = (p_hw_usbfs->diepctl4 & ~(0xf << 11)) | 
+					                              (ep_num <<11);
                 break;
         default: break;
     }
@@ -1345,13 +1379,13 @@ void amhw_hc32_usbfs_doepctl_set(amhw_hc32_usbfs_t *p_hw_usbfs,
     {
         case 0: p_hw_usbfs->doepctl0 |= flag;
                 break;
-        case 1: p_hw_usbfs->doepctl1 |= flag; 
+        case 2: p_hw_usbfs->doepctl1 |= flag; 
                 break;
-        case 2: p_hw_usbfs->doepctl2 |= flag;
+        case 4: p_hw_usbfs->doepctl2 |= flag;
                 break;
-        case 3: p_hw_usbfs->doepctl3 |= flag;
+        case 6: p_hw_usbfs->doepctl3 |= flag;
                 break;
-        case 4: p_hw_usbfs->doepctl4 |= flag;
+        case 8: p_hw_usbfs->doepctl4 |= flag;
                 break;
         default: break;
     }
@@ -1375,13 +1409,13 @@ void amhw_hc32_usbfs_doepctl_clr(amhw_hc32_usbfs_t *p_hw_usbfs,
     {
         case 0: p_hw_usbfs->doepctl0 &= ~flag;		
                 break;
-        case 1: p_hw_usbfs->doepctl1 &= ~flag;	
+        case 2: p_hw_usbfs->doepctl1 &= ~flag;	
                 break;
-        case 2: p_hw_usbfs->doepctl2 &= ~flag;
+        case 4: p_hw_usbfs->doepctl2 &= ~flag;
                 break;
-        case 3: p_hw_usbfs->doepctl3 &= ~flag;
+        case 6: p_hw_usbfs->doepctl3 &= ~flag;
                 break;
-        case 4: p_hw_usbfs->doepctl4 &= ~flag;
+        case 8: p_hw_usbfs->doepctl4 &= ~flag;
                 break;
         default: break;
     }
@@ -1409,13 +1443,13 @@ void amhw_hc32_usbfs_in_txfnum_set(amhw_hc32_usbfs_t *p_hw_usbfs,
         case 1: p_hw_usbfs->diepctl1 = (p_hw_usbfs->diepctl1 & (~(0xf<<22))) | 
                                        ((tfifo_num & 0xf) << 22);
                 break;
-        case 2: p_hw_usbfs->diepctl2 = (p_hw_usbfs->diepctl2 & (~(0xf<<22))) |
+        case 3: p_hw_usbfs->diepctl2 = (p_hw_usbfs->diepctl2 & (~(0xf<<22))) |
                                        ((tfifo_num & 0xf) << 22);
                 break;
-        case 3: p_hw_usbfs->diepctl3 = (p_hw_usbfs->diepctl3 & (~(0xf<<22))) |
+        case 5: p_hw_usbfs->diepctl3 = (p_hw_usbfs->diepctl3 & (~(0xf<<22))) |
                                        ((tfifo_num & 0xf) << 22);
                 break;
-        case 4: p_hw_usbfs->diepctl4 = (p_hw_usbfs->diepctl4 & (~(0xf<<22))) |
+        case 7: p_hw_usbfs->diepctl4 = (p_hw_usbfs->diepctl4 & (~(0xf<<22))) |
                                         ((tfifo_num & 0xf) << 22);
                 break;
         default: break;
@@ -1427,8 +1461,8 @@ void amhw_hc32_usbfs_in_txfnum_set(amhw_hc32_usbfs_t *p_hw_usbfs,
  */
 typedef enum {
     AMHW_HC32F07X_USBFS_EPTYPE_CTRL  = 0, /* 控制 */
-    AMHW_HC32F07X_USBFS_EPTYPE_ISOC  = 2, /* 同步 */
-    AMHW_HC32F07X_USBFS_EPTYPE_BULK  = 1, /* 批量 */
+    AMHW_HC32F07X_USBFS_EPTYPE_ISOC  = 1, /* 同步 */
+    AMHW_HC32F07X_USBFS_EPTYPE_BULK  = 2, /* 批量 */
     AMHW_HC32F07X_USBFS_EPTYPE_INTR  = 3, /* 中断 */
 }amhw_hc32f07x_usbfs_eptype_t;
 
@@ -1455,15 +1489,15 @@ void amhw_hc32_usbfs_in_eptyp_set(amhw_hc32_usbfs_t *p_hw_usbfs,
                                ((p_hw_usbfs->diepctl1 & (~(0x03 << 18))) |
                                 type << 18);
                 break;
-        case 2: p_hw_usbfs->diepctl2 =
+        case 3: p_hw_usbfs->diepctl2 =
                                ((p_hw_usbfs->diepctl2 & (~(0x03 << 18))) |
                                type << 18);
                 break;
-        case 3: p_hw_usbfs->diepctl3 =
+        case 5: p_hw_usbfs->diepctl3 =
                                ((p_hw_usbfs->diepctl3 & (~(0x03 << 18))) |
                                type << 18);
                 break;
-        case 4: p_hw_usbfs->diepctl4 =
+        case 7: p_hw_usbfs->diepctl4 =
                                ((p_hw_usbfs->diepctl4 & (~(0x03 << 18))) |
                                type << 18);
                 break;
@@ -1489,19 +1523,19 @@ void amhw_hc32_usbfs_out_eptyp_set(amhw_hc32_usbfs_t *p_hw_usbfs,
                                 ((p_hw_usbfs->doepctl0 & (~(0x03 << 18))) |
                                 type << 18);
                 break;
-        case 1: p_hw_usbfs->doepctl1 = 
+        case 2: p_hw_usbfs->doepctl1 = 
                                 ((p_hw_usbfs->doepctl1 & (~(0x03 << 18))) |
                                 type << 18);
                 break;
-        case 2: p_hw_usbfs->doepctl2 =
+        case 4: p_hw_usbfs->doepctl2 =
                                 ((p_hw_usbfs->doepctl2 & (~(0x03 << 18))) |
                                 type << 18);
                 break;
-        case 3: p_hw_usbfs->doepctl3 =
+        case 6: p_hw_usbfs->doepctl3 =
                                 ((p_hw_usbfs->doepctl3 & (~(0x03 << 18))) |
                                 type << 18);
                 break;
-        case 4: p_hw_usbfs->doepctl4 =
+        case 8: p_hw_usbfs->doepctl4 =
                                 ((p_hw_usbfs->doepctl4 & (~(0x03 << 18))) |
                                 type << 18);
                 break;
@@ -1530,13 +1564,13 @@ am_bool_t amhw_hc32_usbfs_in_naksts_get(amhw_hc32_usbfs_t *p_hw_usbfs,
         case 1: naksts = (((p_hw_usbfs->diepctl1 >> 17) & 
                          0x01) ? AM_TRUE : AM_FALSE);
                 break;
-        case 2: naksts = (((p_hw_usbfs->diepctl2 >> 17) &
+        case 3: naksts = (((p_hw_usbfs->diepctl2 >> 17) &
                          0x01) ? AM_TRUE : AM_FALSE);
                 break;
-        case 3: naksts = (((p_hw_usbfs->diepctl3 >> 17) &
+        case 5: naksts = (((p_hw_usbfs->diepctl3 >> 17) &
                          0x01) ? AM_TRUE : AM_FALSE);
                 break;
-        case 4: naksts = (((p_hw_usbfs->diepctl4 >> 17) &
+        case 7: naksts = (((p_hw_usbfs->diepctl4 >> 17) &
                          0x01) ? AM_TRUE : AM_FALSE);
                 break;
         default: break;
@@ -1561,16 +1595,16 @@ am_bool_t amhw_hc32_usbfs_out_naksts_get(amhw_hc32_usbfs_t *p_hw_usbfs, uint8_t 
         case 0: naksts = (((p_hw_usbfs->doepctl0 >> 17) & 
                          0x01) ? AM_TRUE : AM_FALSE);
                 break;
-        case 1: naksts = (((p_hw_usbfs->doepctl1 >> 17) & 
+        case 2: naksts = (((p_hw_usbfs->doepctl1 >> 17) & 
                          0x01) ? AM_TRUE : AM_FALSE);
                 break;
-        case 2: naksts = (((p_hw_usbfs->doepctl2 >> 17) &
+        case 4: naksts = (((p_hw_usbfs->doepctl2 >> 17) &
                          0x01) ? AM_TRUE : AM_FALSE);
                 break;
-        case 3: naksts = (((p_hw_usbfs->doepctl3 >> 17) &
+        case 6: naksts = (((p_hw_usbfs->doepctl3 >> 17) &
                          0x01) ? AM_TRUE : AM_FALSE);
                 break;
-        case 4: naksts = (((p_hw_usbfs->doepctl4 >> 17) &
+        case 8: naksts = (((p_hw_usbfs->doepctl4 >> 17) &
                          0x01) ? AM_TRUE : AM_FALSE);
                 break;
         default: break;
@@ -1596,11 +1630,11 @@ void amhw_hc32_usbfs_in_usbaep_set(amhw_hc32_usbfs_t *p_hw_usbfs,
                 break;
         case 1: p_hw_usbfs->diepctl1 |= 1u << 15;
                 break;
-        case 2: p_hw_usbfs->diepctl2 |= 1u << 15;
+        case 3: p_hw_usbfs->diepctl2 |= 1u << 15;
                 break;
-        case 3: p_hw_usbfs->diepctl3 |= 1u << 15;
+        case 5: p_hw_usbfs->diepctl3 |= 1u << 15;
                 break;
-        case 4: p_hw_usbfs->diepctl4 |= 1u << 15;
+        case 7: p_hw_usbfs->diepctl4 |= 1u << 15;
                 break;
         default: break;
     }
@@ -1622,13 +1656,13 @@ void amhw_hc32_usbfs_out_usbaep_set(amhw_hc32_usbfs_t *p_hw_usbfs,
     {
         case 0: p_hw_usbfs->doepctl0 |= 1u << 15;
                 break;
-        case 1: p_hw_usbfs->doepctl1 |= 1u << 15;
+        case 2: p_hw_usbfs->doepctl1 |= 1u << 15;
                 break;
-        case 2: p_hw_usbfs->doepctl2 |= 1u << 15;
+        case 4: p_hw_usbfs->doepctl2 |= 1u << 15;
                 break;
-        case 3: p_hw_usbfs->doepctl3 |= 1u << 15;
+        case 6: p_hw_usbfs->doepctl3 |= 1u << 15;
                 break;
-        case 4: p_hw_usbfs->doepctl4 |= 1u << 15;
+        case 8: p_hw_usbfs->doepctl4 |= 1u << 15;
                 break;
         default: break;
     }
@@ -1669,13 +1703,13 @@ void amhw_hc32_usbfs_in_mpsiz_set(amhw_hc32_usbfs_t *p_hw_usbfs,
         case 1: p_hw_usbfs->diepctl1 = (p_hw_usbfs->diepctl1 & (~0x7ff)) |
                                        (size & 0x7ff);
                 break;
-        case 2: p_hw_usbfs->diepctl2 = (p_hw_usbfs->diepctl2 & (~0x7ff)) |
+        case 3: p_hw_usbfs->diepctl2 = (p_hw_usbfs->diepctl2 & (~0x7ff)) |
                                        (size & 0x7ff);
                 break;
-        case 3: p_hw_usbfs->diepctl3 = (p_hw_usbfs->diepctl3 & (~0x7ff)) |
+        case 5: p_hw_usbfs->diepctl3 = (p_hw_usbfs->diepctl3 & (~0x7ff)) |
                                        (size & 0x7ff);
                 break;
-        case 4: p_hw_usbfs->diepctl4 = (p_hw_usbfs->diepctl4 & (~0x7ff)) |
+        case 7: p_hw_usbfs->diepctl4 = (p_hw_usbfs->diepctl4 & (~0x7ff)) |
                                        (size & 0x7ff);
                 break;
         default: break;
@@ -1713,16 +1747,16 @@ void amhw_hc32_usbfs_out_mpsiz_set(amhw_hc32_usbfs_t *p_hw_usbfs,
         case 0: p_hw_usbfs->doepctl0 = (p_hw_usbfs->doepctl0 & (~0x03)) | 
                                        (size & 0x03);
                 break;
-        case 1: p_hw_usbfs->doepctl1 = (p_hw_usbfs->doepctl1 & (~0x7ff)) |
+        case 2: p_hw_usbfs->doepctl1 = (p_hw_usbfs->doepctl1 & (~0x7ff)) |
                                        (size & 0x7ff);
                 break;
-        case 2: p_hw_usbfs->doepctl2 = (p_hw_usbfs->doepctl2 & (~0x7ff)) |
+        case 4: p_hw_usbfs->doepctl2 = (p_hw_usbfs->doepctl2 & (~0x7ff)) |
                                        (size & 0x7ff);
                 break;
-        case 3: p_hw_usbfs->doepctl3 = (p_hw_usbfs->doepctl3 & (~0x7ff)) |
+        case 6: p_hw_usbfs->doepctl3 = (p_hw_usbfs->doepctl3 & (~0x7ff)) |
                                        (size & 0x7ff);
                 break;
-        case 4: p_hw_usbfs->doepctl4 = (p_hw_usbfs->doepctl4 & (~0x7ff)) |
+        case 8: p_hw_usbfs->doepctl4 = (p_hw_usbfs->doepctl4 & (~0x7ff)) |
                                        (size & 0x7ff);
                 break;
         default: break;
@@ -1746,11 +1780,11 @@ uint8_t amhw_hc32_usbfs_int_instat_get(amhw_hc32_usbfs_t *p_hw_usbfs, uint8_t nu
                 break;
         case 1: stat = (p_hw_usbfs->diepint1);
                 break;
-        case 2: stat = (p_hw_usbfs->diepint2);
+        case 3: stat = (p_hw_usbfs->diepint2);
                 break;
-        case 3: stat = (p_hw_usbfs->diepint3);
+        case 5: stat = (p_hw_usbfs->diepint3);
                 break;
-        case 4: stat = (p_hw_usbfs->diepint4);
+        case 7: stat = (p_hw_usbfs->diepint4);
                 break;
         default: break;
     }
@@ -1788,11 +1822,11 @@ void amhw_hc32_usbfs_diepint_clr(amhw_hc32_usbfs_t *p_hw_usbfs,
                 break;
         case 1: p_hw_usbfs->diepint1 |= flag;
                 break;
-        case 2: p_hw_usbfs->diepint2 |= flag;
+        case 3: p_hw_usbfs->diepint2 |= flag;
                 break;
-        case 3: p_hw_usbfs->diepint3 |= flag;
+        case 5: p_hw_usbfs->diepint3 |= flag;
                 break;
-        case 4: p_hw_usbfs->diepint4 |= flag;
+        case 7: p_hw_usbfs->diepint4 |= flag;
                 break;
         default: break;
     }
@@ -1820,13 +1854,13 @@ void amhw_hc32_usbfs_in_pktcnt_set(amhw_hc32_usbfs_t *p_hw_usbfs,
         case 1: p_hw_usbfs->diepsiz1 = (p_hw_usbfs->diepsiz1 & (~(0x3ff << 19))) |
                                        ((cnt & 0x3ff)<< 19);
                 break;
-        case 2: p_hw_usbfs->diepsiz2 = (p_hw_usbfs->diepsiz2 & (~(0x3ff << 19))) |
+        case 3: p_hw_usbfs->diepsiz2 = (p_hw_usbfs->diepsiz2 & (~(0x3ff << 19))) |
                                        ((cnt & 0x3ff)<< 19);
                 break;
-        case 3: p_hw_usbfs->diepsiz3 = (p_hw_usbfs->diepsiz3 & (~(0x3ff << 19))) |
+        case 5: p_hw_usbfs->diepsiz3 = (p_hw_usbfs->diepsiz3 & (~(0x3ff << 19))) |
                                        ((cnt & 0x3ff)<< 19);
                 break;
-        case 4: p_hw_usbfs->diepsiz4 = (p_hw_usbfs->diepsiz4 & (~(0x3ff << 19))) |
+        case 7: p_hw_usbfs->diepsiz4 = (p_hw_usbfs->diepsiz4 & (~(0x3ff << 19))) |
                                        ((cnt & 0x3ff)<< 19);
                 break;
         default: break;
@@ -1852,11 +1886,11 @@ uint16_t amhw_hc32_usbfs_in_pktcnt_get(amhw_hc32_usbfs_t *p_hw_usbfs,
                 break;
         case 1: cnt = ((p_hw_usbfs->diepsiz1 >> 19) & 0x3ff);
                 break;
-        case 2: cnt = ((p_hw_usbfs->diepsiz2 >> 19) & 0x3ff);
+        case 3: cnt = ((p_hw_usbfs->diepsiz2 >> 19) & 0x3ff);
                 break;
-        case 3: cnt = ((p_hw_usbfs->diepsiz3 >> 19) & 0x3ff);
+        case 5: cnt = ((p_hw_usbfs->diepsiz3 >> 19) & 0x3ff);
                 break;
-        case 4: cnt = ((p_hw_usbfs->diepsiz4 >> 19) & 0x3ff);
+        case 7: cnt = ((p_hw_usbfs->diepsiz4 >> 19) & 0x3ff);
                 break;
         default: break;
     }
@@ -1885,13 +1919,13 @@ void amhw_hc32_usbfs_in_xfrsiz_set(amhw_hc32_usbfs_t *p_hw_usbfs,
         case 1: p_hw_usbfs->diepsiz1 = (p_hw_usbfs->diepsiz1 & (~0x7ffff)) |
                                        ((size & 0x7ffff)<< 0);
                 break;
-        case 2: p_hw_usbfs->diepsiz2 = (p_hw_usbfs->diepsiz2 & (~0x7ffff)) |
+        case 3: p_hw_usbfs->diepsiz2 = (p_hw_usbfs->diepsiz2 & (~0x7ffff)) |
                                        ((size & 0x7ffff)<< 0);
                 break;
-        case 3: p_hw_usbfs->diepsiz3 = (p_hw_usbfs->diepsiz3 & (~0x7ffff)) |
+        case 5: p_hw_usbfs->diepsiz3 = (p_hw_usbfs->diepsiz3 & (~0x7ffff)) |
                                        ((size & 0x7ffff)<< 0);
                 break;
-        case 4: p_hw_usbfs->diepsiz4 = (p_hw_usbfs->diepsiz4 & (~0x7ffff)) |
+        case 7: p_hw_usbfs->diepsiz4 = (p_hw_usbfs->diepsiz4 & (~0x7ffff)) |
                                        ((size & 0x7ffff)<< 0);
                 break;
         default: break;
@@ -1917,11 +1951,11 @@ uint32_t amhw_hc32_usbfs_in_xfrsiz_get(amhw_hc32_usbfs_t *p_hw_usbfs,
                 break;
         case 1: size = (p_hw_usbfs->diepsiz1  & 0x7ffff);
                 break;
-        case 2: size = (p_hw_usbfs->diepsiz2  & 0x7ffff);
+        case 3: size = (p_hw_usbfs->diepsiz2  & 0x7ffff);
                 break;
-        case 3: size = (p_hw_usbfs->diepsiz3  & 0x7ffff);
+        case 5: size = (p_hw_usbfs->diepsiz3  & 0x7ffff);
                 break;
-        case 4: size = (p_hw_usbfs->diepsiz4  & 0x7ffff);
+        case 7: size = (p_hw_usbfs->diepsiz4  & 0x7ffff);
                 break;
         default: break;
     }
@@ -1948,11 +1982,11 @@ void amhw_hc32_usbfs_in_dmaaddr_set(amhw_hc32_usbfs_t *p_hw_usbfs,
                 break;
         case 1: p_hw_usbfs->diepdma1 = adderess;
                 break;
-        case 2: p_hw_usbfs->diepdma2 = adderess;
+        case 3: p_hw_usbfs->diepdma2 = adderess;
                 break;
-        case 3: p_hw_usbfs->diepdma3 = adderess;
+        case 5: p_hw_usbfs->diepdma3 = adderess;
                 break;
-        case 4: p_hw_usbfs->diepdma4 = adderess;
+        case 7: p_hw_usbfs->diepdma4 = adderess;
                 break;
         default: break;
     }
@@ -1977,11 +2011,11 @@ uint16_t amhw_hc32_usbfs_ineptfsize_set(amhw_hc32_usbfs_t *p_hw_usbfs,
                 break;
         case 1: size = p_hw_usbfs->dtxfsts1 & 0xffff;
                 break;
-        case 2: size = p_hw_usbfs->dtxfsts2 & 0xffff;
+        case 3: size = p_hw_usbfs->dtxfsts2 & 0xffff;
                 break;
-        case 3: size = p_hw_usbfs->dtxfsts3 & 0xffff;
+        case 5: size = p_hw_usbfs->dtxfsts3 & 0xffff;
                 break;
-        case 4: size = p_hw_usbfs->dtxfsts4 & 0xffff;
+        case 7: size = p_hw_usbfs->dtxfsts4 & 0xffff;
                 break;
         default: break;
     }
@@ -2016,13 +2050,13 @@ void amhw_hc32_usbfs_doepint_clr(amhw_hc32_usbfs_t *p_hw_usbfs,
     {
         case 0: p_hw_usbfs->doepint0 |= flag;
                 break;
-        case 1: p_hw_usbfs->doepint1 |= flag;
+        case 2: p_hw_usbfs->doepint1 |= flag;
                 break;
-        case 2: p_hw_usbfs->doepint2 |= flag;
+        case 4: p_hw_usbfs->doepint2 |= flag;
                 break;
-        case 3: p_hw_usbfs->doepint3 |= flag;
+        case 6: p_hw_usbfs->doepint3 |= flag;
                 break;
-        case 4: p_hw_usbfs->doepint4 |= flag;
+        case 8: p_hw_usbfs->doepint4 |= flag;
                 break;
         default: break;
     }
@@ -2044,13 +2078,13 @@ uint8_t amhw_hc32_usbfs_int_outstat_get(amhw_hc32_usbfs_t *p_hw_usbfs,
     {
         case 0: stat = (p_hw_usbfs->doepint0);
                 break;
-        case 1: stat = (p_hw_usbfs->doepint1);
+        case 2: stat = (p_hw_usbfs->doepint1);
                 break;
-        case 2: stat = (p_hw_usbfs->doepint2);
+        case 4: stat = (p_hw_usbfs->doepint2);
                 break;
-        case 3: stat = (p_hw_usbfs->doepint3);
+        case 6: stat = (p_hw_usbfs->doepint3);
                 break;
-        case 4: stat = (p_hw_usbfs->doepint4);
+        case 8: stat = (p_hw_usbfs->doepint4);
                 break;
         default: break;
     }
@@ -2077,19 +2111,19 @@ void amhw_hc32_usbfs_out_pktcnt_set(amhw_hc32_usbfs_t *p_hw_usbfs,
                                        (~(0x01 << 19))) |
                                        ((cnt & 0x01)<< 19);
                 break;
-        case 1: p_hw_usbfs->doepsiz1 = (p_hw_usbfs->doepsiz1 &
+        case 2: p_hw_usbfs->doepsiz1 = (p_hw_usbfs->doepsiz1 &
                                        (~(0x3ff << 19))) |
                                        ((cnt & 0x3ff)<< 19);
                 break;
-        case 2: p_hw_usbfs->doepsiz2 = (p_hw_usbfs->doepsiz2 &
+        case 4: p_hw_usbfs->doepsiz2 = (p_hw_usbfs->doepsiz2 &
                                        (~(0x3ff << 19))) |
                                        ((cnt & 0x3ff)<< 19);
                 break;
-        case 3: p_hw_usbfs->doepsiz3 = (p_hw_usbfs->doepsiz3 &
+        case 6: p_hw_usbfs->doepsiz3 = (p_hw_usbfs->doepsiz3 &
                                        (~(0x3ff << 19))) |
                                        ((cnt & 0x3ff)<< 19);
                 break;
-        case 4: p_hw_usbfs->doepsiz4 = (p_hw_usbfs->doepsiz4 &
+        case 8: p_hw_usbfs->doepsiz4 = (p_hw_usbfs->doepsiz4 &
                                        (~(0x3ff << 19))) |
                                        ((cnt & 0x3ff)<< 19);
                 break;
@@ -2114,17 +2148,48 @@ uint16_t amhw_hc32_usbfs_out_pktcnt_get(amhw_hc32_usbfs_t *p_hw_usbfs,
     {
         case 0: cnt = ((p_hw_usbfs->doepsiz0 >> 19) & 0x01);
                 break;
-        case 1: cnt = ((p_hw_usbfs->doepsiz1 >> 19) & 0x3ff);
+        case 2: cnt = ((p_hw_usbfs->doepsiz1 >> 19) & 0x3ff);
                 break;
-        case 2: cnt = ((p_hw_usbfs->doepsiz2 >> 19) & 0x3ff);
+        case 4: cnt = ((p_hw_usbfs->doepsiz2 >> 19) & 0x3ff);
                 break;
-        case 3: cnt = ((p_hw_usbfs->doepsiz3 >> 19) & 0x3ff);
+        case 6: cnt = ((p_hw_usbfs->doepsiz3 >> 19) & 0x3ff);
                 break;
-        case 4: cnt = ((p_hw_usbfs->doepsiz4 >> 19) & 0x3ff);
+        case 8: cnt = ((p_hw_usbfs->doepsiz4 >> 19) & 0x3ff);
                 break;
         default: break;
     }
     return cnt;
+}
+
+/**
+ * \brief  设备OUT端点传输大小设置
+ *
+ * \param[in] p_hw_usbfs : 指向usbfs寄存器的指针
+ * \param[in] size       : 传输大小
+ * \param[in] num        : 端点编号
+ *
+ * \return none
+ */
+am_static_inline
+uint32_t amhw_hc32_usbfs_out_xfrsiz_get(amhw_hc32_usbfs_t *p_hw_usbfs,
+                                    uint8_t           num)
+{
+	  uint32_t cnt = 0;
+    switch(num)
+    {
+        case 0: cnt = (p_hw_usbfs->doepsiz0 & (0x7f));
+                break;
+        case 2: cnt = (p_hw_usbfs->doepsiz1 & (0x7ffff));
+                break;
+        case 4: cnt = (p_hw_usbfs->doepsiz2 & (0x7ffff));
+                break;
+        case 6: cnt = (p_hw_usbfs->doepsiz3 & (0x7ffff));
+                break;
+        case 8: cnt = (p_hw_usbfs->doepsiz4 & (0x7ffff));
+                break;
+        default: break;
+    }
+		return cnt;
 }
 
 /**
@@ -2146,16 +2211,16 @@ void amhw_hc32_usbfs_out_xfrsiz_set(amhw_hc32_usbfs_t *p_hw_usbfs,
         case 0: p_hw_usbfs->doepsiz0 = (p_hw_usbfs->doepsiz0 & (~0x7f)) |
                                        ((size & 0x7f)<< 0);
                 break;
-        case 1: p_hw_usbfs->doepsiz1 = (p_hw_usbfs->doepsiz1 & (~0x7ffff)) |
+        case 2: p_hw_usbfs->doepsiz1 = (p_hw_usbfs->doepsiz1 & (~0x7ffff)) |
                                        ((size & 0x7ffff)<< 0);
                 break;
-        case 2: p_hw_usbfs->doepsiz2 = (p_hw_usbfs->doepsiz2 & (~0x7ffff)) |
+        case 4: p_hw_usbfs->doepsiz2 = (p_hw_usbfs->doepsiz2 & (~0x7ffff)) |
                                        ((size & 0x7ffff)<< 0);
                 break;
-        case 3: p_hw_usbfs->doepsiz3 = (p_hw_usbfs->doepsiz3 & (~0x7ffff)) |
+        case 6: p_hw_usbfs->doepsiz3 = (p_hw_usbfs->doepsiz3 & (~0x7ffff)) |
                                        ((size & 0x7ffff)<< 0);
                 break;
-        case 4: p_hw_usbfs->doepsiz4 = (p_hw_usbfs->doepsiz4 & (~0x7ffff)) |
+        case 8: p_hw_usbfs->doepsiz4 = (p_hw_usbfs->doepsiz4 & (~0x7ffff)) |
                                        ((size & 0x7ffff)<< 0);
                 break;
         default: break;
@@ -2181,11 +2246,11 @@ uint32_t amhw_hc32_usbfs_xfrsiz_get(amhw_hc32_usbfs_t *p_hw_usbfs,
                 break;
         case 1: size = (p_hw_usbfs->diepsiz1  & 0x7ffff);
                 break;
-        case 2: size = (p_hw_usbfs->diepsiz2  & 0x7ffff);
+        case 3: size = (p_hw_usbfs->diepsiz2  & 0x7ffff);
                 break;
-        case 3: size = (p_hw_usbfs->diepsiz3  & 0x7ffff);
+        case 5: size = (p_hw_usbfs->diepsiz3  & 0x7ffff);
                 break;
-        case 4: size = (p_hw_usbfs->diepsiz4  & 0x7ffff);
+        case 7: size = (p_hw_usbfs->diepsiz4  & 0x7ffff);
                 break;
         default: break;
     }
@@ -2235,13 +2300,13 @@ void amhw_hc32_usbfs_out_dmaaddr_set(amhw_hc32_usbfs_t *p_hw_usbfs,
     {
         case 0: p_hw_usbfs->doepdma0 = adderess;
                 break;
-        case 1: p_hw_usbfs->doepdma1 = adderess;
+        case 2: p_hw_usbfs->doepdma1 = adderess;
                 break;
-        case 2: p_hw_usbfs->doepdma2 = adderess;
+        case 4: p_hw_usbfs->doepdma2 = adderess;
                 break;
-        case 3: p_hw_usbfs->doepdma3 = adderess;
+        case 6: p_hw_usbfs->doepdma3 = adderess;
                 break;
-        case 4: p_hw_usbfs->doepdma4 = adderess;
+        case 8: p_hw_usbfs->doepdma4 = adderess;
                 break;
         default: break;
     }
