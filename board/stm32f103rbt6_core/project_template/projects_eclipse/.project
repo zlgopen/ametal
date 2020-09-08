@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>example_am237_core</name>
+	<name>template_stm32f103rbt6_core</name>
 	<comment></comment>
 	<projects>
 	</projects>
@@ -44,11 +44,6 @@
 			<name>components</name>
 			<type>2</type>
 			<locationURI>PARENT-4-PROJECT_LOC/components</locationURI>
-		</link>
-		<link>
-			<name>examples</name>
-			<type>2</type>
-			<locationURI>PARENT-4-PROJECT_LOC/examples</locationURI>
 		</link>
 		<link>
 			<name>interface</name>
@@ -115,7 +110,7 @@
 		</variable>
 		<variable>
 			<name>copy_PARENT123456789</name>
-			<value>$%7Bcopy_PARENT12345678%7D/am237_core/project_example</value>
+			<value>$%7Bcopy_PARENT12345678%7D/stm32f103rbt6_core/project_template</value>
 		</variable>
 	</variableList>
 </projectDescription>
