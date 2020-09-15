@@ -763,7 +763,9 @@ static int __i2c_mst_sm_event (am_zlg_i2c_dev_t *p_dev, uint32_t event)
                 } else if (p_dev->data_ptr == (p_cur_trans->nbytes - 1)) {
 
                     amhw_zlg_i2c_dat_write(p_hw_i2c, 0x0300);
+#ifdef ZML165
                     amhw_zlg_i2c_trans_abort(p_hw_i2c);
+#endif
                     amhw_zlg_i2c_intr_mask_set(p_hw_i2c,
                                                AMHW_ZLG_INT_FLAG_RX_FULL);
                 } else {
