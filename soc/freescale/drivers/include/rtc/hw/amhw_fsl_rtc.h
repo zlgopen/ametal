@@ -304,7 +304,38 @@ uint8_t amhw_fsl_rtc_current_compensate_value_get (amhw_fsl_rtc_t *p_hw_rtc)
     return (uint8_t)((p_hw_rtc->tcr & (0xff << AMHW_FSL_RTC_TCV_SHIFT))
                       >> AMHW_FSL_RTC_TCV_SHIFT);
 }
-
+/**
+ *  \brief 设置当前的校准量
+ *
+ *  \param p_hw_rtc 指向RTC寄存器块的指针
+ *  \param value 校准量，每次校准减少的时钟个数
+ *
+ *  \return 无
+ */
+am_static_inline
+void amhw_fsl_rtc_current_compensate_value_set (amhw_fsl_rtc_t *p_hw_rtc,
+                                                uint8_t         value)
+{
+    p_hw_rtc->tcr |= (((p_hw_rtc->tcr                   &
+                     (~(0xff << AMHW_FSL_RTC_TCV_SHIFT))))) |
+                     (value << AMHW_FSL_RTC_TCV_SHIFT);
+}
+/**
+ *  \brief 设置当前调整间歇计数器的值
+ *
+ *  \param p_hw_rtc 指向RTC寄存器块的指针
+ *  \param count 设置的当前计数器值
+ *
+ *  \return 无
+ */
+am_static_inline
+void amhw_fsl_rtc_current_compensate_counter_set (amhw_fsl_rtc_t *p_hw_rtc,
+                                                  uint8_t         count)
+{
+    p_hw_rtc->tcr |= ((p_hw_rtc->tcr                     &
+                     (~(0xfful << AMHW_FSL_RTC_CIC_SHIFT)))) |
+                     (count << AMHW_FSL_RTC_CIC_SHIFT);
+}
 /**
  *  \brief 设置调整间歇和调整量
  *
