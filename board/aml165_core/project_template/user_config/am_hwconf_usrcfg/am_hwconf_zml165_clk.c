@@ -45,7 +45,7 @@ static const am_zml165_clk_devinfo_t __g_clk_devinfo =
      *    若SYS时钟为 HSI  则此配置项作为内部晶振频率选择项，有两种频率可供选择：
      *                       AM_ZML165_HSI_72M、 AM_ZML165_HSI_48M
      */
-     AM_ZML165_HSI_48M,
+     16000000,
 
     /** \brief
      *    SYS 时钟源选择

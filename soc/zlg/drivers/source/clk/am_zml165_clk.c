@@ -428,9 +428,9 @@ int am_zml165_clk_init (am_zml165_clk_dev_t           *p_dev,
 
     amhw_zml165_rcc_apb1_div_set(p_devinfo->apb1_div + 3);
 
-    amhw_zml165_rcc_sys_clk_set ((amhw_zml165_sys_clk_src)AMHW_ZML165_SYSCLK_HSI);
+    amhw_zml165_rcc_sys_clk_set ((amhw_zml165_sys_clk_src)p_devinfo->sys_clk_src);
 
-    while (temp != 0x02) {
+    while (temp != p_devinfo->sys_clk_src) {
         temp = ZML165_RCC->cfgr >> 2;
         temp &= 0x03;
     }
