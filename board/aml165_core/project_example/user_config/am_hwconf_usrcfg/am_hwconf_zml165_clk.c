@@ -41,7 +41,7 @@ static const am_zml165_clk_devinfo_t __g_clk_devinfo =
 
     /**
      * \brief 时钟输入频率
-     *    若SYS时钟为 HSE  此项配置值为用户外部晶振的实际频率
+     *    若SYS时钟为 HSE  此项配置值为用户外部晶振的实际频率（2000000-24000000）
      *    若SYS时钟为 HSI  则此配置项作为内部晶振频率选择项，有两种频率可供选择：
      *                       AM_ZML165_HSI_72M、 AM_ZML165_HSI_48M
      */
@@ -54,7 +54,7 @@ static const am_zml165_clk_devinfo_t __g_clk_devinfo =
      *    -# AMHW_ZML165_SYSCLK_HSI      : HSI 作为系统时钟
      *    -# AMHW_ZML165_SYSCLK_LSI      : LSI 作为系统时钟
      */
-    AMHW_ZML165_SYSCLK_HSI,
+     AMHW_ZML165_SYSCLK_HSE,
 
     /**
      * \brief AHB分频系数，AHBCLK = PLLOUT / DIV,AHB最大频率为48Mhz
