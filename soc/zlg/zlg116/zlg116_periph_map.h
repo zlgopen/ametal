@@ -47,6 +47,7 @@ extern "C" {
 #include "hw/amhw_zlg_gpio.h"
 #include "hw/amhw_zlg_dma.h"
 
+#include "amhw_zlg116_device.h"
 #include "hw/amhw_zlg116_rcc.h"
 
 
@@ -148,6 +149,8 @@ extern "C" {
 /** \brief EXTI ¼Ä´æÆ÷¿éÖ¸Õë */
 #define ZLG116_EXTI    ((amhw_zlg_exti_t          *)ZLG116_EXTI_BASE)
 
+/** \brief EXTI ¼Ä´æÆ÷¿éÖ¸Õë */
+#define ZLG116_DEVICE    ((amhw_zlg116_device_t          *)ZLG116_DEVICE_BASE)
 /** @} */
 
 /**
