@@ -96,6 +96,41 @@ void demo_hc32f07x_hw_opa_dac_entry (void      *p_hw_opa,
                                  uint8_t    mode,
                                  uint16_t  *p_vol_val,
                                  uint32_t   number);
+																 
+/**
+ * \brief USB模拟U盘例程
+ * \param[in] handle      USB模拟键盘服务句柄
+ * \return 无
+ */
+void demo_usbd_msc_entry (void* p_handle);	
+
+/**
+ * \brief USB模拟按键例程
+ * \param[in] handle      USB模拟键盘服务句柄
+ * \return 无
+ */
+void demo_usbd_keyboard_entry (void* p_handle);
+
+/**
+ * \brief USB打印机例程   该例程仅打印相关信息
+ * \param[in] handle      USB打印机服务句柄
+ * \return 无
+ */
+void demo_usbd_printer_entry (void* p_handle);
+
+/**
+ * \brief USB打印机例程   该例程带打印时间以及打印数据量显示
+ * \param[in] handle      USB打印机服务句柄
+ * \return 无
+ */
+void demo_usbd_printer_counter_entry (void* p_handle);
+
+/**
+ * \brief USB模拟串口例程
+ * \param[in] handle      USB模拟串口服务句柄
+ * \return 无
+ */
+void demo_usbd_vcom_entry (void* p_handle);
 
 
 #ifdef __cplusplus
