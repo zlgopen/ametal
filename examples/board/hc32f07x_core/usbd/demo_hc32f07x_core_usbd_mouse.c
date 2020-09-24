@@ -120,12 +120,12 @@ void demo_hc32f07x_usbd_mouse_entry (void)
      am_usbd_dev_t handle = am_hc32f07x_usbd_mouse_inst_init();
 
      /* 等待初始化完成 */	
-     am_mdelay(1000);
+     am_mdelay(3000);
 
     while (1) {
         key_get ((void *)HC32_GPIO0);
         am_usbd_send(&handle, 1, Mouse_Buffer, 4);
-        am_udelay(10);
+        am_udelay(100);
     }
 }
 

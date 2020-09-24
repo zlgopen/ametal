@@ -35,8 +35,15 @@ LR_IROM1 ALL_START RESET_SIZE {
     ER_IROM1 ALL_START RESET_SIZE {
 	* (RESET,+FIRST)
     }
-    RW_IRAM1 0x20000000 0x00008000  {  ; RW data
+	
+		USB_IRAM1 0x20000000 0x00000280  {  ; RW data
+   * (.usb.buffer)
+  }
+  
+    RW_IRAM1 0x20000280 0x00008000  {  ; RW data
      .ANY (+RW +ZI)
     }
+	
+
 }
 

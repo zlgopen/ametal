@@ -660,11 +660,6 @@ void demo_hc32f07x_core_hw_lcd_entry (void);
 void demo_hc32f072_core_std_can_entry (void);
 
 /**
- * \brief USB模拟鼠标例程，通过 标准层接口实现
- */
-void demo_hc32f07x_usbd_mouse_entry (void);
-
-/**
  * \brief I2S例程，通过 hw接口实现
  */
 void demo_hc32f07x_hw_i2s_int_entry (void);
@@ -685,6 +680,36 @@ void demo_hc32f07x_core_hw_ram_entry(void);
 void demo_hc32f07x_core_clktrim_entry (void);
 
 /**
- * \brief CTS例程，通过 驱动层实现
+ * \brief CTS例程
  */
 void demo_hc32f07x_core_cts_entry (void);
+
+/**
+ * \brief USB模拟鼠标例程
+ */
+void demo_hc32f07x_usbd_mouse_entry (void);
+
+/**
+ * \brief usb模拟U盘例程
+ */
+void demo_hc32f07x_usbd_msc_entry (void);
+
+/**
+ * \brief usb模拟键盘例程
+ */
+void demo_hc32f07x_usbd_keyboard_entry (void);
+
+/**
+ * \brief usb打印机例程（带打印时间及数据量）
+ */
+void demo_hc32f07x_usbd_printer_counter_entry (void);
+
+/**
+ * \brief usb打印机例程（仅打印相关信息）
+ */
+void demo_hc32f07x_usbd_printer_entry (void);
+
+/**
+ * \brief usb虚拟串口例程
+ */
+void demo_hc32f07x_usbd_vcom_entry (void);

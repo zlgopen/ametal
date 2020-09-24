@@ -30,10 +30,18 @@
 #include "ametal.h"
 #include "am_board.h"
 #include "string.h"
+#include "am_mem.h"
 
 /* 需要调试USB的时候去除注释，将会在串口中打印出触发USB中断后程序的流程 */
 #define USB_DEBUG
 
+static uint8_t __old_endpoint = 0;
+__attribute__((section(".usb.buffer"))) uint8_t rec_data_buf[64];     /* 四字节对齐发送缓冲区 */
+uint8_t           *rec_buff = rec_data_buf;
+__attribute__((section(".usb.buffer"))) uint32_t send_data_buf[16];     /* 四字节对齐发送缓冲区 */
+uint32_t           *send_buff = send_data_buf;
+        
+uint8_t state = AM_USBD_CTRL_IDLE;        
 /**
  * \brief 通过wValue的值寻找指定的描述符
  *
@@ -98,13 +106,24 @@ static am_usb_status_t __usb_device_endpoint_init (am_hc32f07x_usbd_dev_t       
                                      epinit->max_packet_size,
                                      endpoint);
         amhw_hc32_usbfs_diepctl_set(p_usb,
+//                                    AMHW_HC32F07X_USBFS_CTL_EPENA |
                                     AMHW_HC32F07X_USBFS_CTL_SD0PID,
                                     endpoint);
-        amhw_hc32_usbfs_in_txfnum_set(p_usb,
+        if(endpoint == 0) {
+            amhw_hc32_usbfs_in_txfnum_set(p_usb,
                                       endpoint,
                                       endpoint);
+        }else {
+            amhw_hc32_usbfs_in_txfnum_set(p_usb,
+                                      1,
+                                      endpoint);
+        }    
+        if(epinit->transfer_type == AMHW_HC32F07X_USBFS_EPTYPE_BULK)
+            amhw_hc32_usbfs_in_txfnum_set(p_usb,
+                                      0,
+                                      endpoint);
         amhw_hc32_usbfs_in_eptyp_set(p_usb,
-                                     (amhw_hc32f07x_usbfs_eptype_t)(epinit->transfer_type),
+                                     epinit->transfer_type,
                                      endpoint);
         amhw_hc32_usbfs_in_usbaep_set(p_usb,
                                       endpoint);
@@ -114,16 +133,18 @@ static am_usb_status_t __usb_device_endpoint_init (am_hc32f07x_usbd_dev_t       
 
         amhw_hc32_usbfs_out_mpsiz_set(p_usb,
                                       epinit->max_packet_size,
-                                      endpoint);
+                                      endpoint);            
         amhw_hc32_usbfs_doepctl_set(p_usb,
+                                    AMHW_HC32F07X_USBFS_CTL_EPENA |
                                     AMHW_HC32F07X_USBFS_CTL_SD0PID,
                                     endpoint);
         amhw_hc32_usbfs_out_eptyp_set(p_usb,
-                                      (amhw_hc32f07x_usbfs_eptype_t)(epinit->transfer_type),
+                                      epinit->transfer_type,
                                       endpoint);
         amhw_hc32_usbfs_out_usbaep_set(p_usb,
                                        endpoint);
         amhw_hc32_usbfs_oepintm_enable(p_usb, endpoint);
+
     }
 
     p_dev->device.endpoint_info[endpoint].stalled = 0;
@@ -176,7 +197,6 @@ static am_usb_status_t __usb_device_endpoint_stall (am_hc32f07x_usbd_dev_t *p_de
                                 AMHW_HC32F07X_USBFS_CTL_STALL,
                                 endpoint);
 
-
     return AM_USB_STATUS_SUCCESS;
 }
 
@@ -210,11 +230,11 @@ static am_usb_status_t __usb_device_endpoint_unstall (am_hc32f07x_usbd_dev_t *p_
 static am_usb_status_t __usb_device_init (am_usbd_handle_t handle)
 {
     uint32_t i = 0;
-
+    am_usbd_endpoint_init_t endpoint;
     am_hc32f07x_usbd_dev_t *p_dev = (am_hc32f07x_usbd_dev_t *)handle;
     amhw_hc32_usbfs_t   *p_usb = (amhw_hc32_usbfs_t *)p_dev->p_info->usb_regbase;
 
-    p_dev->device.state =	AM_USBD_CTRL_IDLE;
+    p_dev->device.state =    AM_USBD_CTRL_IDLE;
     p_dev->device.device_address = 0;
 
     p_dev->dma_enable = 1;
@@ -227,7 +247,7 @@ static am_usb_status_t __usb_device_init (am_usbd_handle_t handle)
     while(amhw_hc32_usbfs_csrst_get(p_usb) == AM_TRUE){
         am_udelay(1);
         i++;
-        if(i>100000) break;	
+        if(i>100000) break;    
     };
 
     amhw_hc32_usbfs_physel_set (p_usb);
@@ -237,15 +257,15 @@ static am_usb_status_t __usb_device_init (am_usbd_handle_t handle)
     while(amhw_hc32_usbfs_csrst_get(p_usb) == AM_TRUE){
         am_udelay(1);
         i++;
-        if(i>100000)	break;
+        if(i>100000)    break;
     };
     am_mdelay(20);
-
-    if(p_dev->dma_enable == 1){		
+    p_usb->gusbcfg |=1<<6;
+    if(p_dev->dma_enable == 1){        
 
         /* DMA模式 */
         amhw_hc32_usbfs_hbstlen_set (p_usb, AMHW_HC32_USBFS_INCR8);
-        amhw_hc32_usbfs_dma_enable (p_usb);		
+        amhw_hc32_usbfs_dma_enable (p_usb);        
     }
 
     /* 帧间隔设置 */
@@ -260,24 +280,30 @@ static am_usb_status_t __usb_device_init (am_usbd_handle_t handle)
     amhw_hc32_usbfs_ineptxfd_set(p_usb, 256, 1);
     amhw_hc32_usbfs_ineptxsa_set(p_usb,(128+64),1);
 
-    amhw_hc32_usbfs_ineptxfd_set(p_usb, 256, 2);
-    amhw_hc32_usbfs_ineptxsa_set(p_usb,(256+128+64),2);
-
     amhw_hc32_usbfs_ineptxfd_set(p_usb, 256, 3);
-    amhw_hc32_usbfs_ineptxsa_set(p_usb,(256+256+128+64),3);
+    amhw_hc32_usbfs_ineptxsa_set(p_usb,(256+128+64),3);
+
+    amhw_hc32_usbfs_ineptxfd_set(p_usb, 256, 5);
+    amhw_hc32_usbfs_ineptxsa_set(p_usb,(256+256+128+64),5);
+        
+        amhw_hc32_usbfs_ineptxfd_set(p_usb, 256, 7);
+    amhw_hc32_usbfs_ineptxsa_set(p_usb,(256+256+256+128+64),7);
 
     amhw_hc32_usbfs_diepmsk_disable(p_usb, AMHW_HC32F07X_USBFS_EP_IN_ALL);
     amhw_hc32_usbfs_doepmsk_disable(p_usb, AMHW_HC32F07X_USBFS_EP_OUT_ALL);
-
-    for (i = 0; i < 5; i++) {
+    p_usb->daint = 0xFFFFFFFF;
+    p_usb->daintmsk = 0xFFFFFFFF;
+    for (i = 0; i < 9; i++) {
         amhw_hc32_usbfs_oepint_set(p_usb,i);
         amhw_hc32_usbfs_iepint_set(p_usb,i);
-        amhw_hc32_usbfs_oepintm_disable(p_usb, i);
-        amhw_hc32_usbfs_iepintm_disable(p_usb, i);
         amhw_hc32_usbfs_diepint_clr(p_usb,AMHW_HC32F07X_USBFS_IN_ALL,i);
         amhw_hc32_usbfs_doepint_clr(p_usb,AMHW_HC32F07X_USBFS_EP_OUT_ALL,i);
+        amhw_hc32_usbfs_oepintm_enable(p_usb, i);
+        amhw_hc32_usbfs_iepintm_enable(p_usb, i);
     }
 
+    p_usb->dcfg &= ~0x03<<12;
+        
     /* 软断开 */
     amhw_hc32_usbfs_dctl_disable(p_usb, AMHW_HC32F07X_USBFS_DCTL_SDIS);
 
@@ -304,7 +330,7 @@ static am_usb_status_t __usb_device_init (am_usbd_handle_t handle)
 
     for (i = 0; i < AM_USBD_MAX_EP_CNT - 1; i++) {
         p_dev->ep_int_type_union.ep_int_type[i + 1] = 0;
-    }		
+    }        
 
     /* 清除SETUP数据 */
     p_dev->device.setup_data.bm_request_type = 0;
@@ -312,6 +338,16 @@ static am_usb_status_t __usb_device_init (am_usbd_handle_t handle)
     p_dev->device.setup_data.w_value = 0;
     p_dev->device.setup_data.w_index = 0;
     p_dev->device.setup_data.w_length = 0;
+        
+            /**< \brief 初始化端点 */
+    for (i = 0; i < AM_USBD_MAX_EP_CNT; i++) {
+        if (p_dev->device.endpoint_info[i].inuse == AM_TRUE) {
+            endpoint.endpoint_address = p_dev->device.endpoint_info[i].ep_address;
+            endpoint.max_packet_size = p_dev->device.endpoint_info[i].max_packet_size;
+            endpoint.transfer_type = p_dev->device.endpoint_info[i].transfer_type;
+            __usb_device_endpoint_init(p_dev, &endpoint);
+        }
+    }
 
     return AM_USB_STATUS_SUCCESS;
 }
@@ -334,7 +370,7 @@ static am_usb_status_t __usb_device_deinit (am_usbd_handle_t handle)
     }
 
     amhw_hc32_usbfs_gintmsk_disable (p_usb);
-    for (i = 0; i < 5; i++) {
+    for (i = 0; i < 9; i++) {
         amhw_hc32_usbfs_oepintm_disable(p_usb, i);
         amhw_hc32_usbfs_iepintm_disable(p_usb, i);
         amhw_hc32_usbfs_diepctl_set(p_usb, AMHW_HC32F07X_USBFS_CTL_EPDIS, i);
@@ -370,68 +406,50 @@ static am_usb_status_t __usb_device_send (am_usbd_handle_t handle,
     uint8_t endpoint = endpoint_address & AM_USBD_ENDPOINT_NUMBER_MASK;
     amhw_hc32_usbfs_t *p_usb = (amhw_hc32_usbfs_t *)p_dev->p_info->usb_regbase;
 
-    __attribute__((aligned(4U))) uint32_t data_buf[16];     /* 四字节对齐发送缓冲区 */
-    uint32_t *send_buff = data_buf;
-
     int i=0;
 
     if (endpoint >= AM_USBD_MAX_EP_CNT)
         return AM_USB_STATUS_INVALID_PARAMETER;
+    p_dev->data_info[endpoint].length = length;
+        p_dev->data_info[endpoint].p_buf = buffer;
 
-    do{
-        if (length > AM_USBD_MAX_EP_DATA_CNT) {
-            send_once_size = AM_USBD_MAX_EP_DATA_CNT;
-        } else {
-            send_once_size = length;
-        }
-        length -= send_once_size;
-        memcpy(data_buf, buffer, send_once_size);
-        buffer += send_once_size;
+    if (p_dev->data_info[endpoint].length > AM_USBD_MAX_EP_DATA_CNT) {
+        send_once_size = AM_USBD_MAX_EP_DATA_CNT;
+    } else {
+        send_once_size = p_dev->data_info[endpoint].length;
+    }
+    memset(send_data_buf, 0, send_once_size);
+    length -= length;
 
-        if(endpoint == 0){
+    memcpy(send_data_buf, buffer, send_once_size);
+    amhw_hc32_usbfs_in_xfrsiz_set(p_usb, send_once_size, endpoint);
+    amhw_hc32_usbfs_in_pktcnt_set(p_usb, 1, endpoint);
 
-            amhw_hc32_usbfs_in_xfrsiz_set(p_usb, send_once_size, endpoint);
-            amhw_hc32_usbfs_in_pktcnt_set(p_usb, 1, endpoint);
-            amhw_hc32_usbfs_in_dmaaddr_set(p_usb,
-                                           ( uint32_t )send_buff,
-                                           endpoint);
-            amhw_hc32_usbfs_diepctl_set(p_usb,
-                                        AMHW_HC32F07X_USBFS_CTL_CNAK,
-                                        endpoint);
-            amhw_hc32_usbfs_diepctl_set(p_usb,
-                                        AMHW_HC32F07X_USBFS_CTL_EPENA,
-                                        endpoint);
-            while(amhw_hc32_usbfs_in_pktcnt_get(p_usb,endpoint) > 0){
-                i++;am_udelay(1);
-                if(i>200000) break;
-             };    /* 等待发送完成 */
-        }else {
-            amhw_hc32_usbfs_in_xfrsiz_set(p_usb, send_once_size, endpoint);
-            amhw_hc32_usbfs_in_pktcnt_set(p_usb, 1, endpoint);
-            if(p_dev->dma_enable == 1){
-                amhw_hc32_usbfs_in_dmaaddr_set(p_usb,
-                                               (uint32_t )send_buff,
-                                               endpoint);
-            }
-            amhw_hc32_usbfs_diepctl_set(p_usb,
-                                        AMHW_HC32F07X_USBFS_CTL_CNAK,
-                                        endpoint);
-            amhw_hc32_usbfs_diepctl_set(p_usb,
-                                        AMHW_HC32F07X_USBFS_CTL_EPENA,
-                                        endpoint);
-            if(p_dev->dma_enable == 0){
-                amhw_hc32_usbfs_ineptxsa_set(p_usb,
-                                             (uint16_t)send_buff,
-                                             endpoint);
-            }
-            while(amhw_hc32_usbfs_in_pktcnt_get(p_usb,endpoint) > 0){
-                i++;am_udelay(1);
-                if(i>200000) break;
-            };   /* 等待发送完成 */
+    if(p_dev->dma_enable == 1){
+    amhw_hc32_usbfs_in_dmaaddr_set(p_usb,
+                                   (uint32_t )send_buff,
+                                   endpoint);
+    }
+    if(endpoint!=0) {
+        amhw_hc32_usbfs_nextep_set(p_usb,
+                                   endpoint,
+                                   0);
+    }                               
+//        amhw_hc32_usbfs_nextep_set(p_usb,
+//                                   endpoint,
+//                                   __old_endpoint);
+    __old_endpoint = endpoint;
+    amhw_hc32_usbfs_diepctl_set(p_usb,
+                                AMHW_HC32F07X_USBFS_CTL_EPENA |
+                                AMHW_HC32F07X_USBFS_CTL_CNAK,
+                                endpoint);
 
-        }
-    }while(length != 0);
-
+    if(p_dev->dma_enable == 0){
+        amhw_hc32_usbfs_ineptxsa_set(p_usb,
+                                     (uint16_t)send_buff,
+                                     endpoint);
+    }
+        
     return AM_USB_STATUS_SUCCESS;
 }
 
@@ -481,7 +499,7 @@ static am_usb_status_t __usb_device_recv (am_usbd_handle_t handle,
 {
     am_hc32f07x_usbd_dev_t *p_dev = (am_hc32f07x_usbd_dev_t *)handle;
     amhw_hc32_usbfs_t   *p_usb = (amhw_hc32_usbfs_t *)p_dev->p_info->usb_regbase;
-
+    int i = 0;
     am_usb_status_t error = AM_USB_STATUS_ERROR;
     uint8_t endpoint = endpoint_address & AM_USBD_ENDPOINT_NUMBER_MASK;
     uint8_t avali_data_cnt = 0;     /* fifo中有效数据个数 */
@@ -497,36 +515,35 @@ static am_usb_status_t __usb_device_recv (am_usbd_handle_t handle,
     if(length > AM_USBD_MAX_EP_DATA_CNT){
         length = AM_USBD_MAX_EP_DATA_CNT;
     }
+    avali_data_cnt = length - amhw_hc32_usbfs_out_xfrsiz_get(p_usb, endpoint);            
 
-    amhw_hc32_usbfs_out_xfrsiz_set(p_usb, length, endpoint);
-    amhw_hc32_usbfs_out_pktcnt_set(p_usb, 1, endpoint);
-
-    if(p_dev->dma_enable == 1){
-         amhw_hc32_usbfs_out_dmaaddr_set(p_usb, 
-                                         (uint32_t )buffer++,
-                                         endpoint);
-        amhw_hc32_usbfs_doepctl_set(p_usb, 
-                                    AMHW_HC32F07X_USBFS_CTL_CNAK,
-                                    endpoint);
-        amhw_hc32_usbfs_doepctl_set(p_usb, 
-                                    AMHW_HC32F07X_USBFS_CTL_EPENA,
-                                    endpoint);
+    for(i=0;i<avali_data_cnt;i++){
+        buffer[i] = rec_data_buf[i];
     }
 
+    amhw_hc32_usbfs_rxfflsh_enable (p_usb);
+    while( ((p_usb->grstctl >>4)&0x01)==1){;}
+    amhw_hc32_usbfs_out_xfrsiz_set(p_usb, length, endpoint);
+    amhw_hc32_usbfs_out_pktcnt_set(p_usb, 1, endpoint);
+    
+    if(p_dev->dma_enable == 1){
+
+        amhw_hc32_usbfs_out_dmaaddr_set(p_usb, 
+                                        (uint32_t )rec_buff,
+                                        endpoint);
+    }
+
+    amhw_hc32_usbfs_doepctl_set(p_usb, 
+                                 AMHW_HC32F07X_USBFS_CTL_EPENA |
+                                 AMHW_HC32F07X_USBFS_CTL_CNAK,
+                                 endpoint);
+    
     p_dev->device.endpoint_info[endpoint].val_length = avali_data_cnt;
 
     if (avali_data_cnt == 0)
-        return AM_USB_STATUS_ERROR;
-    else if (avali_data_cnt < length)
-        error = AM_USB_STATUS_ALLOC_FAIL;
-    else if (avali_data_cnt == length)
-        error = AM_USB_STATUS_SUCCESS;
-    else if (avali_data_cnt > length) {
-        error = AM_USB_STATUS_SUCCESS;
-        avali_data_cnt = length;
-    }
+        return 0;
 
-    return error;
+    return avali_data_cnt;
 }
 
 /**
@@ -559,23 +576,23 @@ static void __usb_device_setdefault_state(am_hc32f07x_usbd_dev_t *p_dev)
     amhw_hc32_usbfs_dad_set(p_usb,0); 
 
     /* 使能端点 */
-    amhw_hc32_usbfs_diepctl_set(p_usb, AMHW_HC32F07X_USBFS_CTL_EPENA, 0);	
+    amhw_hc32_usbfs_diepctl_set(p_usb, AMHW_HC32F07X_USBFS_CTL_EPENA, 0);    
     amhw_hc32_usbfs_diepctl_set(p_usb, AMHW_HC32F07X_USBFS_CTL_EPENA, 1);
-    amhw_hc32_usbfs_diepctl_set(p_usb, AMHW_HC32F07X_USBFS_CTL_EPENA, 2);
     amhw_hc32_usbfs_diepctl_set(p_usb, AMHW_HC32F07X_USBFS_CTL_EPENA, 3);
-    amhw_hc32_usbfs_diepctl_set(p_usb, AMHW_HC32F07X_USBFS_CTL_EPENA, 4);
+    amhw_hc32_usbfs_diepctl_set(p_usb, AMHW_HC32F07X_USBFS_CTL_EPENA, 5);
+    amhw_hc32_usbfs_diepctl_set(p_usb, AMHW_HC32F07X_USBFS_CTL_EPENA, 7);
 
     /* 清中断状态 */
     amhw_hc32_usbfs_gintsts_clr(p_usb, AMHW_HC32F07X_USBFS_INT_ALL);
     amhw_hc32_usbfs_int_enable(p_usb, AMHW_HC32F07X_USBFS_INT_ALL);
 
-    for (i = 0; i < 5; i++) {
+    for (i = 0; i < 9; i++) {
         amhw_hc32_usbfs_diepint_clr(p_usb,AMHW_HC32F07X_USBFS_EP_IN_ALL,i);
         amhw_hc32_usbfs_doepint_clr(p_usb,AMHW_HC32F07X_USBFS_EP_OUT_ALL,i);
 
         /* 使能所有端点中断 */
-        amhw_hc32_usbfs_oepintm_enable(p_usb, i);	
-        amhw_hc32_usbfs_iepintm_enable(p_usb, i);	
+        amhw_hc32_usbfs_oepintm_enable(p_usb, i);    
+        amhw_hc32_usbfs_iepintm_enable(p_usb, i);    
 
         /* 使能端点的所有中断 */
         amhw_hc32_usbfs_doepmsk_enable(p_usb, AMHW_HC32F07X_USBFS_EP_OUT_ALL);
@@ -773,7 +790,7 @@ static void __ctrl_deal_handle (am_hc32f07x_usbd_dev_t *p_dev)
     __usb_device_send(p_usbd_dev, 0, p_ctrl->p_buf, p_ctrl->length);
 
     }else{
-        __ep0_send_empty_packet(p_dev);
+        __usb_device_send(p_usbd_dev, 0, NULL, 0);
     }
     p_usbd_dev->state = AM_USBD_CTRL_IDLE;
 }
@@ -803,26 +820,16 @@ static void __usb_setup_handle (am_hc32f07x_usbd_dev_t *p_dev)
     am_usbd_dev_t      *p_usb_dev = &(p_dev->device);
     am_data_info_t     *p_data_info = &(p_usb_dev->ctrl_info);
     int i=0;
-    am_usbd_endpoint_init_t    epinit;
+      am_usbd_endpoint_init_t    epinit;
     p_data_info->offset = 0;
     p_data_info->p_buf  = NULL;
 
-
     if(p_usb_dev->state == AM_USBD_CTRL_IDLE) {  // 如果状态为空闲态
-        amhw_hc32_usbfs_out_pktcnt_set(p_usb, 1, 0);
-        amhw_hc32_usbfs_out_xfrsiz_set(p_usb, 64, 0);
-        amhw_hc32_usbfs_out_dmaaddr_set(p_usb,
-                                        (uint32_t )&p_usb_dev->setup_data,
-                                        0);
-        amhw_hc32_usbfs_out_usbaep_set(p_usb, 0);
-        amhw_hc32_usbfs_doepctl_set(p_usb,
-        AMHW_HC32F07X_USBFS_CTL_EPENA,
-        0);
 
         p_usb_dev->state = AM_USBD_CTRL_SETUP;   // 更新状态
         type = p_usb_dev->setup_data.bm_request_type;
-        code = p_usb_dev->setup_data.b_request;
-			  
+        code = p_usb_dev->setup_data.b_request;    
+
 //        am_kprintf("bm_request_type = %02x\r\n", p_dev->device.setup_data.bm_request_type);
 //        am_kprintf("b_request = %02x\r\n", p_dev->device.setup_data.b_request);
 //        am_kprintf("w_value = %02x\r\n", p_dev->device.setup_data.w_value);
@@ -830,7 +837,9 @@ static void __usb_setup_handle (am_hc32f07x_usbd_dev_t *p_dev)
 //        am_kprintf("w_length = %02x\r\n", p_dev->device.setup_data.w_length);
     }
 
-
+    if((type & 0x80) && (p_data_info->length != 0)){
+        am_usbd_recv(p_usb_dev, 0, p_data_info->p_buf, p_data_info->length);
+    }
     /* 判断请求类型的类型 */
     switch (type & AM_USB_REQ_TYPE_MASK) {
     /* 标准请求类型 */
@@ -843,7 +852,7 @@ static void __usb_setup_handle (am_hc32f07x_usbd_dev_t *p_dev)
 
                 break;
             case AM_USB_REQ_STANDARD_CLEAR_FEATURE:
-                ret = p_usb_dev->p_funcs->pfn_feature_set(p_usb_dev);						
+                ret = p_usb_dev->p_funcs->pfn_feature_set(p_usb_dev);                        
 
                 break;
             case AM_USB_REQ_STANDARD_SET_FEATURE:
@@ -855,16 +864,6 @@ static void __usb_setup_handle (am_hc32f07x_usbd_dev_t *p_dev)
                 /* 设置地址 */
                 amhw_hc32_usbfs_dad_set(p_usb,p_usb_dev->setup_data.w_value);
                 __usb_device_send(p_usb_dev, 0, NULL,0);
-
-                amhw_hc32_usbfs_in_pktcnt_set(p_usb, 1, 0);
-                amhw_hc32_usbfs_in_xfrsiz_set(p_usb, 64, 0);
-                amhw_hc32_usbfs_in_dmaaddr_set(p_usb,
-                                               (uint32_t )&p_usb_dev->setup_data,
-                                               0);
-                amhw_hc32_usbfs_out_usbaep_set(p_usb, 0);	
-                amhw_hc32_usbfs_doepctl_set(p_usb,
-                                            AMHW_HC32F07X_USBFS_CTL_EPENA,
-                                            0);
 
                 ret = AM_USB_STATUS_SUCCESS;
                 break;
@@ -887,16 +886,21 @@ static void __usb_setup_handle (am_hc32f07x_usbd_dev_t *p_dev)
             case AM_USB_REQ_STANDARD_SET_CONFIGURATION:
                 ret = p_usb_dev->p_funcs->pfn_config_set(p_usb_dev);
 
-                for (i = 0; i < AM_USBD_MAX_EP_CNT; i++) {
+                for (i = 1; i < AM_USBD_MAX_EP_CNT; i++) {
                     if (p_dev->device.endpoint_info[i].inuse == AM_TRUE) {
-                        epinit.endpoint_address = p_dev->device.endpoint_info[i].ep_address;
-                        epinit.max_packet_size = p_dev->device.endpoint_info[i].max_packet_size;
-                        epinit.transfer_type = p_dev->device.endpoint_info[i].transfer_type;
-                        __usb_device_endpoint_init(p_dev, &epinit);
+                        if(p_dev->device.endpoint_info[i].ep_address & 0x80){
+                                                    
+                        }else{
+                            am_usbd_recv(p_usb_dev, 
+                                         p_dev->device.endpoint_info[i].ep_address, 
+                                         NULL, 
+                                         64);
+                        }
                     }
                 }
 
                 __usb_device_send(p_usb_dev, 0, NULL, 0);
+                p_usb_dev->state = AM_USBD_CTRL_IDLE;
                 break;
             case AM_USB_REQ_STANDARD_GET_INTERFACE:
                 ret = p_usb_dev->p_funcs->pfn_interface_get(
@@ -913,11 +917,11 @@ static void __usb_setup_handle (am_hc32f07x_usbd_dev_t *p_dev)
         }
         break;
     /* 类请求 */
-    case AM_USB_REQ_TYPE_CLASS:
+    case AM_USB_REQ_TYPE_CLASS:            
         if(p_usb_dev->class_req.pfn_class) {
-            ret = p_usb_dev->class_req.pfn_class(p_usb_dev->class_req.p_arg, code);
-        }
-		    __usb_device_send(p_usb_dev, 0, NULL,0);
+            ret = p_usb_dev->class_req.pfn_class(p_usb_dev->class_req.p_arg, code);                           
+        }     
+        __ctrl_deal_handle(p_dev);
         break;
     /* 厂商请求 */
     case AM_USB_REQ_TYPE_VENDOR:
@@ -927,11 +931,7 @@ static void __usb_setup_handle (am_hc32f07x_usbd_dev_t *p_dev)
         break;
     default:
         break;
-    }
-
-    if((type & 0x80) && (p_data_info->length != 0)){
-        am_usbd_recv(p_usb_dev, 0, p_data_info->p_buf, p_data_info->length);
-    }
+    }    
 
     if(ret == AM_USB_STATUS_SUCCESS){
         p_usb_dev->state = AM_USBD_CTRL_SETUP;
@@ -949,61 +949,62 @@ static void __usb_device_interrupt_endpoint (am_hc32f07x_usbd_dev_t *p_dev)
     uint32_t i = 0;
     amhw_hc32_usbfs_t   *p_usb = (amhw_hc32_usbfs_t *)p_dev->p_info->usb_regbase;
     am_usbd_dev_t   *p_usbd_dev = &p_dev->device;
+    uint8_t endpoint = 0;  
+    
+    out_ep_index = amhw_hc32_usbfs_oepint_get(p_usb)&0x155;
+    in_ep_index  = amhw_hc32_usbfs_iepint_get(p_usb)&0xab;
 
-    out_ep_index = amhw_hc32_usbfs_oepint_get(p_usb);
-    in_ep_index  = amhw_hc32_usbfs_iepint_get(p_usb);
-
-    p_dev->int_ep_union.int_ep_flag = out_ep_index << 5 | in_ep_index;
+    p_dev->int_ep_union.int_ep_flag = out_ep_index | in_ep_index;
 
     /* 端点0中断 */
-    if (p_dev->int_ep_union.int_ep_flag_field.out_ep0 ||
-        p_dev->int_ep_union.int_ep_flag_field.in_ep0) {
+    if (p_dev->int_ep_union.int_ep_flag_field.in_out_ep0) {
 
         /* 获得端点0发生的具体中断类型 */
-        ep_int_type = amhw_hc32_usbfs_int_instat_get(p_usb, 0);
-        ep_int_type |= (amhw_hc32_usbfs_int_outstat_get(p_usb, 0) <<8 );
-
-        amhw_hc32_usbfs_diepint_clr(p_usb,
-                                    ep_int_type & 0xff,
-                                    0);
-        amhw_hc32_usbfs_doepint_clr(p_usb,
-                                    ep_int_type >> 8,
-                                    0);
+        ep_int_type  = (amhw_hc32_usbfs_int_outstat_get(p_usb, 0) <<8 );
+        p_usb->doepint0 |= 0xff;
+        ep_int_type |= amhw_hc32_usbfs_int_instat_get(p_usb, 0)&0xff;
+        p_usb->diepint0 |= 0xff;    
 
         p_dev->ep_int_type_union.ep_int_type[0] = ep_int_type;
-
+                    
         /* 处理端点0中断 */
-        if (p_dev->ep_int_type_union.ep_int_type_field[0].out_stup ) {			
+        if (p_dev->ep_int_type_union.ep_int_type_field[0].out_stup ) {    
             __usb_setup_handle(p_dev);
         }
 
-        if (p_dev->ep_int_type_union.ep_int_type_field[0].out_xfrc ) {		
+        if (p_dev->ep_int_type_union.ep_int_type_field[0].out_xfrc ) {
 
         }
         if (p_dev->ep_int_type_union.ep_int_type_field[0].in_xfrc ) {
 
-            amhw_hc32_usbfs_out_xfrsiz_set(p_usb, 0, 0);
-            amhw_hc32_usbfs_out_pktcnt_set(p_usb, 1, 0);
-            p_usb->doepdma0 =NULL;
-            amhw_hc32_usbfs_doepctl_set(p_usb,
-                                        AMHW_HC32F07X_USBFS_CTL_CNAK,
-                                        0);
-            amhw_hc32_usbfs_doepctl_set(p_usb,
-                                        AMHW_HC32F07X_USBFS_CTL_EPENA,
-                                        0);
-            p_usbd_dev->state = AM_USBD_CTRL_IDLE;
+            if(p_dev->data_info[0].length > 64){
+                p_dev->data_info[0].length -= 64;
+                p_dev->data_info[0].p_buf += 64;
+                __usb_device_send (p_usbd_dev,
+                                    0,
+                                    p_dev->data_info[0].p_buf,
+                                    p_dev->data_info[0].length);
 
-            amhw_hc32_usbfs_out_pktcnt_set(p_usb, 1, 0);
-            amhw_hc32_usbfs_out_xfrsiz_set(p_usb, 64, 0);
-            amhw_hc32_usbfs_out_dmaaddr_set(p_usb,
+            }else{
+                p_dev->data_info[0].length = 0;
+                state=AM_USBD_CTRL_IN;
+            }
+            p_usbd_dev->state = AM_USBD_CTRL_IDLE;
+            if(state==AM_USBD_CTRL_IN){
+
+                amhw_hc32_usbfs_out_pktcnt_set(p_usb, 1, 0);
+                amhw_hc32_usbfs_out_xfrsiz_set(p_usb, 64, 0);
+                amhw_hc32_usbfs_out_dmaaddr_set(p_usb,
                                             (uint32_t )&p_usbd_dev->setup_data,
                                             0);
-            amhw_hc32_usbfs_out_usbaep_set(p_usb, 0);	
-            amhw_hc32_usbfs_doepctl_set(p_usb,
+                amhw_hc32_usbfs_doepctl_set(p_usb,
+                                        AMHW_HC32F07X_USBFS_CTL_CNAK |                     
                                         AMHW_HC32F07X_USBFS_CTL_EPENA,
                                         0);
+                state = AM_USBD_CTRL_IDLE;
+            }
         }
-
+                
         if (p_dev->ep_int_type_union.ep_int_type_field[0].in_timeout){
 
         }
@@ -1012,56 +1013,60 @@ static void __usb_device_interrupt_endpoint (am_hc32f07x_usbd_dev_t *p_dev)
         }
 
         p_dev->ep_int_type_union.ep_int_type[0] = 0;
+        ep_int_type = 0; 
     }
 
     /* 端点x */
-    for (i = 1; i < 5; i++) {
-        if (p_dev->device.endpoint_info[i].inuse == AM_TRUE) {
-            if ((p_dev->int_ep_union.int_ep_flag >> i) & 1) {
+    for (i = 1; i < 9; i++) {
+        if (p_dev->device.endpoint_info[i].inuse == AM_TRUE) {                        
+            if (((p_dev->int_ep_union.int_ep_flag >> i) & 1)) {
+				
                 ep_int_type = amhw_hc32_usbfs_int_instat_get(p_usb, i);
-                amhw_hc32_usbfs_diepint_clr(p_usb, ep_int_type & 0xff, i);
+                amhw_hc32_usbfs_diepint_clr(p_usb, ep_int_type & 0xff, i);       
                 ep_int_type |= (amhw_hc32_usbfs_int_outstat_get(p_usb, i) << 8);
-                amhw_hc32_usbfs_doepint_clr(p_usb, ep_int_type >> 8, i);
+                amhw_hc32_usbfs_doepint_clr(p_usb, 0xff, i);
 
                 p_dev->ep_int_type_union.ep_int_type[i] = ep_int_type;
 
                 if (p_dev->ep_int_type_union.ep_int_type_field[i].out_xfrc ) {
-
-                 }
+                    amhw_hc32_usbfs_rxfflsh_enable (p_usb);
+                    while( ((p_usb->grstctl >>4)&0x01)==1){;}
+                }
                 if (p_dev->ep_int_type_union.ep_int_type_field[i].in_xfrc ) {
 
-                    amhw_hc32_usbfs_out_xfrsiz_set(p_usb, 0, i);
-                    amhw_hc32_usbfs_out_pktcnt_set(p_usb, 1, i);
-                    p_usb->doepdma2 =NULL;
-                    amhw_hc32_usbfs_doepctl_set(p_usb,
-                                                AMHW_HC32F07X_USBFS_CTL_CNAK,
-                                                i);
-                    amhw_hc32_usbfs_doepctl_set(p_usb,
-                                                AMHW_HC32F07X_USBFS_CTL_EPENA,
-                                                i);
-                    p_usbd_dev->state = AM_USBD_CTRL_IDLE;
-
-                    amhw_hc32_usbfs_txfnum_write (p_usb, (amhw_hc32_usbfs_txfifonum_type_t)(i));
+                    if(p_dev->data_info[i].length > 64){
+                        p_dev->data_info[i].length -= 64;
+                        p_dev->data_info[i].p_buf += 64;
+                        __usb_device_send (p_usbd_dev,
+                                           i,
+                                           p_dev->data_info[i].p_buf,
+                                           p_dev->data_info[i].length);
+                                            
+                    } else{
+                        p_dev->data_info[i].length=0;
+                    }                                    
+                    amhw_hc32_usbfs_txfnum_write (p_usb, 1);
                     amhw_hc32_usbfs_txfflsh_enable (p_usb);
                     while( ((p_usb->grstctl >>5)&0x01)==1);
                 }
+
                 if (p_dev->device.endpoint_info[i].pfn_callback != NULL) {
                     (p_dev->device.endpoint_info[i].pfn_callback)(p_dev->device.endpoint_info[i].p_arg);
                 }
                 p_dev->ep_int_type_union.ep_int_type[i] = 0;
+                ep_int_type = 0;
             }
         }
     }
     p_dev->ep_int_type_union.ep_int_type[0] = 0;
     p_dev->int_ep_union.int_ep_flag = 0;
-
 }
 
 static void __usb_device_reset_isr (am_hc32f07x_usbd_dev_t *p_dev)
 {
     amhw_hc32_usbfs_t   *p_usb = (amhw_hc32_usbfs_t *)p_dev->p_info->usb_regbase;
     am_usbd_dev_t      *p_usb_dev = &(p_dev->device);
-
+    am_usbd_endpoint_init_t    epinit;
     uint32_t i = 0;
 
     amhw_hc32_usbfs_dctl_disable(p_usb,
@@ -1071,70 +1076,69 @@ static void __usb_device_reset_isr (am_hc32f07x_usbd_dev_t *p_dev)
     amhw_hc32_usbfs_txfnum_write (p_usb,
                                AMHW_HC32_USBFS_TXFIFO0);
     amhw_hc32_usbfs_txfflsh_enable (p_usb);
-    while((p_usb->grstctl >>5)&0x01){
+    while((p_usb->grstctl >> 5) & 0x01){
         i++;am_udelay(1);
-        if(i>200000)  break;
+        if(i > 200000)  break;
     };
     am_udelay(3);
 
-    amhw_hc32_usbfs_diepint_clr(p_usb,
+    for(i=0; i<9; i++){
+        amhw_hc32_usbfs_diepint_clr(p_usb,
                                 AMHW_HC32F07X_USBFS_IN_XFRC |
                                 AMHW_HC32F07X_USBFS_IN_EPDISD |
                                 AMHW_HC32F07X_USBFS_IN_TO |
                                 AMHW_HC32F07X_USBFS_IN_ITTXFE |
                                 AMHW_HC32F07X_USBFS_IN_INEPNE,
-                                0);
-    amhw_hc32_usbfs_doepint_clr(p_usb,
+                                i);
+        amhw_hc32_usbfs_doepint_clr(p_usb,
                                 AMHW_HC32F07X_USBFS_OUT_XFRC |
                                 AMHW_HC32F07X_USBFS_OUT_EPDISD |
                                 AMHW_HC32F07X_USBFS_OUT_STUP |
                                 AMHW_HC32F07X_USBFS_OUT_OTEPDIS |
                                 AMHW_HC32F07X_USBFS_OUT_RECSTUP,
-                                0);
+                                i);
+    }
 
     amhw_hc32_usbfs_oepint_set(p_usb,0);
     amhw_hc32_usbfs_iepint_set(p_usb,0);
     amhw_hc32_usbfs_oepintm_enable(p_usb, 0);
     amhw_hc32_usbfs_iepintm_enable(p_usb, 0);
-
+        
     amhw_hc32_usbfs_doepmsk_enable(p_usb, 
                                    AMHW_HC32F07X_USBFS_EP_OUT_ALL);
     amhw_hc32_usbfs_diepmsk_enable(p_usb, 
                                    AMHW_HC32F07X_USBFS_EP_IN_ALL );
 
-    amhw_hc32_usbfs_dad_set(p_usb,0);
-
-    amhw_hc32_usbfs_out_pktcnt_set(p_usb, 1, 0);
-    amhw_hc32_usbfs_out_xfrsiz_set(p_usb, 64, 0);
-    amhw_hc32_usbfs_out_dmaaddr_set(p_usb,
-                                    (uint32_t )&p_usb_dev->setup_data,
-                                    0);
-    amhw_hc32_usbfs_out_usbaep_set(p_usb, 0);	
-    amhw_hc32_usbfs_doepctl_set(p_usb,
-                                AMHW_HC32F07X_USBFS_CTL_EPENA,
-                                0);
-
+    amhw_hc32_usbfs_dad_set(p_usb,0);                                                                                        
+                                                                
     amhw_hc32_usbfs_gintsts_clr(p_usb,
                                 AMHW_HC32F07X_USBFS_INT_USBRST);
 
     amhw_hc32_usbfs_in_txfnum_set(p_usb, 0, 0);
 
-    amhw_hc32_usbfs_in_usbaep_set(p_usb, 0);
-
+    p_usb->doepsiz0 |= 3 << 29;
     amhw_hc32_usbfs_in_txfnum_set(p_usb,
                                   0,
                                   0);
-    amhw_hc32_usbfs_in_eptyp_set(p_usb,
-                                 AMHW_HC32F07X_USBFS_EPTYPE_CTRL,
-                                 0);
-    amhw_hc32_usbfs_in_usbaep_set(p_usb,
-                                  0);
-
-    amhw_hc32_usbfs_out_eptyp_set(p_usb,
-                                  AMHW_HC32F07X_USBFS_EPTYPE_CTRL,
-                                  0);
-    amhw_hc32_usbfs_out_usbaep_set(p_usb,
-                                   0);
+                                                                    
+    for (i = 0; i < AM_USBD_MAX_EP_CNT; i++) {
+        if (p_dev->device.endpoint_info[i].inuse == AM_TRUE) {
+            epinit.endpoint_address = p_dev->device.endpoint_info[i].ep_address;
+            epinit.max_packet_size = p_dev->device.endpoint_info[i].max_packet_size;
+            epinit.transfer_type = p_dev->device.endpoint_info[i].transfer_type;                                          
+            __usb_device_endpoint_init(p_dev, &epinit);
+        }
+    }
+    amhw_hc32_usbfs_out_pktcnt_set(p_usb, 1, 0);
+    amhw_hc32_usbfs_out_xfrsiz_set(p_usb, 64, 0);
+    amhw_hc32_usbfs_out_dmaaddr_set(p_usb,
+                                    (uint32_t )&p_usb_dev->setup_data,
+                                    0);
+    amhw_hc32_usbfs_out_usbaep_set(p_usb, 0);    
+    amhw_hc32_usbfs_doepctl_set(p_usb,
+                                AMHW_HC32F07X_USBFS_CTL_EPENA |
+                                AMHW_HC32F07X_USBFS_CTL_CNAK,
+                                0);        
 }
 
 
@@ -1162,7 +1166,7 @@ static void __usbd_isr_function(void *p_device)
 
     }
 
-    if (int_status & AMHW_HC32F07X_USBFS_INT_IEPINT) {			
+    if (int_status & AMHW_HC32F07X_USBFS_INT_IEPINT) {            
         __usb_device_interrupt_endpoint(p_dev);
     }
     /* 总线复位0中断 */
@@ -1173,7 +1177,7 @@ static void __usbd_isr_function(void *p_device)
     /* 总线挂起 */
     if (int_status & AMHW_HC32F07X_USBFS_INT_USBSUSP) {
 
-//		    amhw_hc32_usbfs_gatclk_set(p_usb, 1);
+//            amhw_hc32_usbfs_gatclk_set(p_usb, 1);
     }
 
     /* 总线唤醒 */

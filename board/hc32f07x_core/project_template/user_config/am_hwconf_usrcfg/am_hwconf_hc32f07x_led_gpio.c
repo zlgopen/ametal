@@ -41,7 +41,7 @@ static const am_led_gpio_info_t __g_hc32f07x_led_gpio_info = {
         AM_NELEMENTS(__g_hc32f07x_led_pins) - 1 /* 结束编号 */
     },
     __g_hc32f07x_led_pins,
-    AM_TRUE
+    AM_FALSE
 };
 
 /** \brief 设备实例 */

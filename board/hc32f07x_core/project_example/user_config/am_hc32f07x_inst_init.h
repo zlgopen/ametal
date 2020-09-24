@@ -59,6 +59,9 @@ extern "C" {
 #include "am_rngbuf.h"
 #include "am_input.h"
 #include "am_usbd_msc.h"
+#include "am_usbd_keyboard.h"
+#include "am_usbd_printer.h"
+#include "am_usbd_cdc_vcom.h"
 
 #include "am_hc32_pca.h"
 #include "am_hc32f07x_opa.h"
@@ -1203,7 +1206,7 @@ am_can_handle_t am_hc32f07x_can_inst_init (void);
 void am_hc32f07x_can_inst_deinit (am_can_handle_t handle);
 
 /**
- * \brief USB 实例初始化，获得USB 服务句柄
+ * \brief USB MOUSE实例初始化，获得USB 服务句柄
  *
  * \param 无
  *
@@ -1212,12 +1215,82 @@ void am_hc32f07x_can_inst_deinit (am_can_handle_t handle);
 am_usbd_dev_t am_hc32f07x_usbd_mouse_inst_init (void);
 
 /**
- * \brief USB 实例解初始化
+ * \brief USB MOUSE实例解初始化
  *
  *
  * \return 无
  */
 void am_hc32f07x_usbd_mouse_inst_deinit (void);
+
+/**
+ * \brief USB MSC实例初始化，获得USB 服务句柄
+ *
+ * \param 无
+ *
+ * \return USB 服务句柄
+ */
+am_usbd_msc_handle am_hc32f07x_usb_msc_inst_init (void);
+
+/**
+ * \brief USB MSC实例解初始化
+ *
+ *
+ * \return 无
+ */
+void am_hc32f07x_usb_msc_inst_deinit (void);
+
+/**
+ * \brief USB keyboard实例初始化，获得USB 服务句柄
+ *
+ * \param 无
+ *
+ * \return USB 服务句柄
+ */
+am_usbd_keyboard_handle am_hc32f07x_usbd_keyboard_inst_init (void);
+
+/**
+ * \brief USB keyboard实例解初始化
+ *
+ *
+ * \return 无
+ */
+void am_hc32f07x_usbd_keyboard_inst_deinit (void);
+
+/**
+ * \brief USB printer实例初始化，获得USB 服务句柄
+ *
+ * \param 无
+ *
+ * \return USB 服务句柄
+ */
+am_usbd_printer_handle am_hc32f07x_usbd_printer_inst_init (void);
+
+/**
+ * \brief USB printer实例解初始化
+ *
+ *
+ * \return 无
+ */
+void am_hc32f07x_usbd_printer_inst_deinit (void);
+
+/**
+ * \brief USB vcom实例初始化，获得USB 服务句柄
+ *
+ * \param 无
+ *
+ * \return USB 服务句柄
+ */
+am_usbd_cdc_vcom_handle am_hc32f07x_usbd_vcom_inst_init (void);
+
+/**
+ * \brief USB vcom实例解初始化
+ *
+ *
+ * \return 无
+ */
+void am_hc32f07x_usbd_vcom_inst_deinit (void);
+
+
 /**
  * @}
  */

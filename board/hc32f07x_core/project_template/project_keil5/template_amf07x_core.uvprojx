@@ -792,11 +792,6 @@
           <GroupName>soc</GroupName>
           <Files>
             <File>
-              <FileName>am_hc32_adc.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\hdsc\drivers\source\adc\am_hc32_adc.c</FilePath>
-            </File>
-            <File>
               <FileName>am_hc32_adtim_cap.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\soc\hdsc\drivers\source\adtim\am_hc32_adtim_cap.c</FilePath>
@@ -1005,6 +1000,11 @@
               <FileName>am_hc32f07x_cts.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\soc\hdsc\drivers\source\cts\am_hc32f07x_cts.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hc32f07x_adc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\soc\hdsc\drivers\source\adc\am_hc32f07x_adc.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -1220,6 +1220,31 @@
               <FileName>am_hwconf_hc32f07x_usb_mouse.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_hc32f07x_usb_mouse.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hc32f07x_usbd_cdc_vcom.lib</FileName>
+              <FileType>4</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hc32f07x_usbd_cdc_vcom.lib</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_hc32f07x_usb_keyboard.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_hc32f07x_usb_keyboard.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_hc32f07x_usb_msc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_hc32f07x_usb_msc.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_hc32f07x_usb_printer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_hc32f07x_usb_printer.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_hc32f07x_usbd_vcom.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_hc32f07x_usbd_vcom.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -2011,11 +2036,6 @@
           <GroupName>soc</GroupName>
           <Files>
             <File>
-              <FileName>am_hc32_adc.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\hdsc\drivers\source\adc\am_hc32_adc.c</FilePath>
-            </File>
-            <File>
               <FileName>am_hc32_adtim_cap.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\soc\hdsc\drivers\source\adtim\am_hc32_adtim_cap.c</FilePath>
@@ -2225,6 +2245,11 @@
               <FileType>1</FileType>
               <FilePath>..\..\..\..\soc\hdsc\drivers\source\cts\am_hc32f07x_cts.c</FilePath>
             </File>
+            <File>
+              <FileName>am_hc32f07x_adc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\soc\hdsc\drivers\source\adc\am_hc32f07x_adc.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -2254,6 +2279,53 @@
               <FileName>am_board.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\user_config\am_board.c</FilePath>
+              <FileOption>
+                <CommonProperty>
+                  <UseCPPCompiler>2</UseCPPCompiler>
+                  <RVCTCodeConst>0</RVCTCodeConst>
+                  <RVCTZI>0</RVCTZI>
+                  <RVCTOtherData>0</RVCTOtherData>
+                  <ModuleSelection>0</ModuleSelection>
+                  <IncludeInBuild>1</IncludeInBuild>
+                  <AlwaysBuild>2</AlwaysBuild>
+                  <GenerateAssemblyFile>2</GenerateAssemblyFile>
+                  <AssembleAssemblyFile>2</AssembleAssemblyFile>
+                  <PublicsOnly>2</PublicsOnly>
+                  <StopOnExitCode>11</StopOnExitCode>
+                  <CustomArgument></CustomArgument>
+                  <IncludeLibraryModules></IncludeLibraryModules>
+                  <ComprImg>1</ComprImg>
+                </CommonProperty>
+                <FileArmAds>
+                  <Cads>
+                    <interw>2</interw>
+                    <Optim>0</Optim>
+                    <oTime>2</oTime>
+                    <SplitLS>2</SplitLS>
+                    <OneElfS>2</OneElfS>
+                    <Strict>2</Strict>
+                    <EnumInt>2</EnumInt>
+                    <PlainCh>2</PlainCh>
+                    <Ropi>2</Ropi>
+                    <Rwpi>2</Rwpi>
+                    <wLevel>2</wLevel>
+                    <uThumb>2</uThumb>
+                    <uSurpInc>2</uSurpInc>
+                    <uC99>2</uC99>
+                    <useXO>2</useXO>
+                    <v6Lang>0</v6Lang>
+                    <v6LangP>0</v6LangP>
+                    <vShortEn>0</vShortEn>
+                    <vShortWch>0</vShortWch>
+                    <VariousControls>
+                      <MiscControls></MiscControls>
+                      <Define></Define>
+                      <Undefine></Undefine>
+                      <IncludePath></IncludePath>
+                    </VariousControls>
+                  </Cads>
+                </FileArmAds>
+              </FileOption>
             </File>
             <File>
               <FileName>am_prj_config.c</FileName>
@@ -2439,6 +2511,31 @@
               <FileName>am_hwconf_hc32f07x_usb_mouse.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_hc32f07x_usb_mouse.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hc32f07x_usbd_cdc_vcom.lib</FileName>
+              <FileType>4</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hc32f07x_usbd_cdc_vcom.lib</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_hc32f07x_usb_keyboard.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_hc32f07x_usb_keyboard.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_hc32f07x_usb_msc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_hc32f07x_usb_msc.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_hc32f07x_usb_printer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_hc32f07x_usb_printer.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_hc32f07x_usbd_vcom.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_hc32f07x_usbd_vcom.c</FilePath>
             </File>
           </Files>
         </Group>
