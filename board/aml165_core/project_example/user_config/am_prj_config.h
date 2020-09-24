@@ -95,7 +95,7 @@
  * ID: 0 --- PIOB.3 （需要短接跳线帽 J9）
  * ID: 1 --- PIOB.4 （需要短接跳线帽 J10）
  */
-#define AM_CFG_LED_ENABLE            0
+#define AM_CFG_LED_ENABLE            1
 
 /**
  * \brief 如果为1，则初始化板载按键
@@ -113,7 +113,7 @@
 /**
  * \brief 如果为1，则初始化系统滴答
  */
-#define AM_CFG_SYSTEM_TICK_ENABLE    0
+#define AM_CFG_SYSTEM_TICK_ENABLE    1
 
 /**
  * \brief 如果为1，则初始化软件定时器
