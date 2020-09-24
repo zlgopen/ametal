@@ -143,6 +143,8 @@ extern "C" {
 /** \brief SRAM基地址 */
 #define ZLG116_SRAM_BASE              (0x20000000UL)
 
+/** \brief DEVICE基地址 */
+#define ZLG116_DEVICE_BASE            (0x1FFFF7E0UL)
 /** @} */
 
 /**
