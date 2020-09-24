@@ -117,6 +117,8 @@ int am_main (void)
 //    demo_aml165_core_miniport_key_entry();
 //    demo_aml165_core_miniport_key_digitron_entry();
 //    demo_aml165_core_miniport_led_entry();
+//    demo_aml165_core_mb_master_demo_entry();
+//    demo_aml165_core_mb_slave_test_entry();
     while (1) {
     }
 }
