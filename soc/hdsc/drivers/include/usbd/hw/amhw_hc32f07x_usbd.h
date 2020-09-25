@@ -677,19 +677,19 @@ void amhw_hc32_usbfs_ineptxfd_set(amhw_hc32_usbfs_t *p_hw_usbfs,
     switch(n)
     {
         case 1: 
-            p_hw_usbfs->dptxfsiz1 =(p_hw_usbfs->dptxfsiz1 &(~(0xffff<<16))) |
+            p_hw_usbfs->dptxfsiz1 =(p_hw_usbfs->dptxfsiz1 &(~(0xfffful<<16))) |
                                    (depth << 16);
             break;
         case 3:
-            p_hw_usbfs->dptxfsiz2 =(p_hw_usbfs->dptxfsiz2 &(~(0xffff<<16))) |
+            p_hw_usbfs->dptxfsiz2 =(p_hw_usbfs->dptxfsiz2 &(~(0xfffful<<16))) |
                                    (depth << 16);
             break;
         case 5:
-            p_hw_usbfs->dptxfsiz3 =(p_hw_usbfs->dptxfsiz3 &(~(0xffff<<16))) |
+            p_hw_usbfs->dptxfsiz3 =(p_hw_usbfs->dptxfsiz3 &(~(0xfffful<<16))) |
                                    (depth << 16);
             break;
         case 7:
-            p_hw_usbfs->dptxfsiz4 =(p_hw_usbfs->dptxfsiz4 &(~(0xffff<<16))) |
+            p_hw_usbfs->dptxfsiz4 =(p_hw_usbfs->dptxfsiz4 &(~(0xfffful<<16))) |
                                    (depth << 16);
             break;
         default: break;

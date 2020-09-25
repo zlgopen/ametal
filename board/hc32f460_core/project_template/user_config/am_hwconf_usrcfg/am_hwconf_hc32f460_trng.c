@@ -38,7 +38,7 @@
  */
 void __hc32f460_plfm_trng_init (void)
 {
-    /* 开启TRNG时钟 */
+    /** \brief 开启TRNG时钟 */
     am_clk_enable (CLK_TRNG);
 }
 
@@ -47,14 +47,14 @@ void __hc32f460_plfm_trng_init (void)
  */
 void __hc32f460_plfm_trng_deinit (void)
 {
-	/** \brief 关闭TRNG时钟 */
+    /** \brief 关闭TRNG时钟 */
     am_clk_disable (CLK_TRNG);
 }
 
 /** \brief TRNG 设备信息 */
 static const am_hc32f460_trng_devinfo_t __g_trng_devinfo =
 {
-    /** \brief trng寄存器块基地址 */
+    /** \brief trng寄存器块基地址  */
     HC32F460_TRNG_BASE,
 
     /**

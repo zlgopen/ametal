@@ -42,13 +42,18 @@ static const int __g_key_codes[]    = {
     KEY_2, KEY_3
 };
 
-static am_zlg72128_std_dev_t           __g_miniport_zlg72128;
+
 static const am_zlg72128_std_devinfo_t __g_miniport_zlg72128_info = {
     {
-        -1,                         /* 复位引脚 todo */
-        AM_FALSE,                   /* 使用中断引脚 */
-        -1,                         /* 中断引脚 todo */
-        5                           /* 查询时间间隔，使用中断引脚时，该值无意义 */
+        {
+            0x30,
+            PIOB_5,                     /* 复位引脚 todo */
+            AM_FALSE,                   /* 使用中断引脚 */
+            PIOB_3,                     /* 中断引脚 todo */
+            5,                          /* 查询时间间隔，使用中断引脚时，该值无意义 */
+            am_mm32l073_i2c1_inst_init,   /* I2C句柄获取函数*/
+            am_mm32l073_i2c1_inst_deinit  /* I2C解初始化函数*/
+        }
     },
     {
         0                           /* 数码管显示器的编号 */
@@ -65,12 +70,15 @@ static const am_zlg72128_std_devinfo_t __g_miniport_zlg72128_info = {
     Public functions
 *******************************************************************************/
 
+/** \brief ZLG72128 设备实例 */
+static am_zlg72128_std_dev_t      __g_miniport_zlg72128;
+
+
 /* MiniPort-ZLG72128 实例初始化 */
 int am_miniport_zlg72128_inst_init (void)
 {
     return  am_zlg72128_std_init(&__g_miniport_zlg72128,
-                                 &__g_miniport_zlg72128_info,
-                                 am_mm32l073_i2c1_inst_init());
+                                 &__g_miniport_zlg72128_info);
 }
 
 /**

@@ -123,7 +123,7 @@ static am_usb_status_t __usb_device_endpoint_init (am_hc32f07x_usbd_dev_t       
                                       0,
                                       endpoint);
         amhw_hc32_usbfs_in_eptyp_set(p_usb,
-                                     epinit->transfer_type,
+                                     (amhw_hc32f07x_usbfs_eptype_t)epinit->transfer_type,
                                      endpoint);
         amhw_hc32_usbfs_in_usbaep_set(p_usb,
                                       endpoint);
@@ -139,7 +139,7 @@ static am_usb_status_t __usb_device_endpoint_init (am_hc32f07x_usbd_dev_t       
                                     AMHW_HC32F07X_USBFS_CTL_SD0PID,
                                     endpoint);
         amhw_hc32_usbfs_out_eptyp_set(p_usb,
-                                      epinit->transfer_type,
+                                      (amhw_hc32f07x_usbfs_eptype_t)epinit->transfer_type,
                                       endpoint);
         amhw_hc32_usbfs_out_usbaep_set(p_usb,
                                        endpoint);
@@ -302,7 +302,7 @@ static am_usb_status_t __usb_device_init (am_usbd_handle_t handle)
         amhw_hc32_usbfs_iepintm_enable(p_usb, i);
     }
 
-    p_usb->dcfg &= ~0x03<<12;
+    p_usb->dcfg &= ~0x03ul<<12;
         
     /* 软断开 */
     amhw_hc32_usbfs_dctl_disable(p_usb, AMHW_HC32F07X_USBFS_DCTL_SDIS);
@@ -406,8 +406,6 @@ static am_usb_status_t __usb_device_send (am_usbd_handle_t handle,
     uint8_t endpoint = endpoint_address & AM_USBD_ENDPOINT_NUMBER_MASK;
     amhw_hc32_usbfs_t *p_usb = (amhw_hc32_usbfs_t *)p_dev->p_info->usb_regbase;
 
-    int i=0;
-
     if (endpoint >= AM_USBD_MAX_EP_CNT)
         return AM_USB_STATUS_INVALID_PARAMETER;
     p_dev->data_info[endpoint].length = length;
@@ -500,7 +498,6 @@ static am_usb_status_t __usb_device_recv (am_usbd_handle_t handle,
     am_hc32f07x_usbd_dev_t *p_dev = (am_hc32f07x_usbd_dev_t *)handle;
     amhw_hc32_usbfs_t   *p_usb = (amhw_hc32_usbfs_t *)p_dev->p_info->usb_regbase;
     int i = 0;
-    am_usb_status_t error = AM_USB_STATUS_ERROR;
     uint8_t endpoint = endpoint_address & AM_USBD_ENDPOINT_NUMBER_MASK;
     uint8_t avali_data_cnt = 0;     /* fifo中有效数据个数 */
 
@@ -541,9 +538,9 @@ static am_usb_status_t __usb_device_recv (am_usbd_handle_t handle,
     p_dev->device.endpoint_info[endpoint].val_length = avali_data_cnt;
 
     if (avali_data_cnt == 0)
-        return 0;
+        return (am_usb_status_t)0;
 
-    return avali_data_cnt;
+    return (am_usb_status_t)avali_data_cnt;
 }
 
 /**
@@ -820,7 +817,7 @@ static void __usb_setup_handle (am_hc32f07x_usbd_dev_t *p_dev)
     am_usbd_dev_t      *p_usb_dev = &(p_dev->device);
     am_data_info_t     *p_data_info = &(p_usb_dev->ctrl_info);
     int i=0;
-      am_usbd_endpoint_init_t    epinit;
+
     p_data_info->offset = 0;
     p_data_info->p_buf  = NULL;
 
@@ -949,8 +946,7 @@ static void __usb_device_interrupt_endpoint (am_hc32f07x_usbd_dev_t *p_dev)
     uint32_t i = 0;
     amhw_hc32_usbfs_t   *p_usb = (amhw_hc32_usbfs_t *)p_dev->p_info->usb_regbase;
     am_usbd_dev_t   *p_usbd_dev = &p_dev->device;
-    uint8_t endpoint = 0;  
-    
+
     out_ep_index = amhw_hc32_usbfs_oepint_get(p_usb)&0x155;
     in_ep_index  = amhw_hc32_usbfs_iepint_get(p_usb)&0xab;
 
@@ -1045,7 +1041,7 @@ static void __usb_device_interrupt_endpoint (am_hc32f07x_usbd_dev_t *p_dev)
                     } else{
                         p_dev->data_info[i].length=0;
                     }                                    
-                    amhw_hc32_usbfs_txfnum_write (p_usb, 1);
+                    amhw_hc32_usbfs_txfnum_write (p_usb, (amhw_hc32_usbfs_txfifonum_type_t)1);
                     amhw_hc32_usbfs_txfflsh_enable (p_usb);
                     while( ((p_usb->grstctl >>5)&0x01)==1);
                 }
