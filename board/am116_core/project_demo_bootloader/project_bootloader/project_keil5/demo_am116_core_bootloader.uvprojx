@@ -48,7 +48,7 @@
             <InvalidFlash>1</InvalidFlash>
           </TargetStatus>
           <OutputDirectory>.\debug\</OutputDirectory>
-          <OutputName>example_aml166_core</OutputName>
+          <OutputName>demo_am116_core_bootloader</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
           <CreateHexFile>1</CreateHexFile>
@@ -351,7 +351,7 @@
           </ArmAdsMisc>
           <Cads>
             <interw>1</interw>
-            <Optim>1</Optim>
+            <Optim>4</Optim>
             <oTime>0</oTime>
             <SplitLS>0</SplitLS>
             <OneElfS>1</OneElfS>
@@ -373,7 +373,7 @@
               <MiscControls></MiscControls>
               <Define>AM_VDEBUG AM_CORTEX_M0</Define>
               <Undefine></Undefine>
-              <IncludePath>..\user_code;..\user_config;..\user_config/am_hwconf_usrcfg;..\user_config/am_servconf_usrcfg;..\..\..\..\..\3rdparty/CMSIS/Include;..\..\..\..\..\arch/arm/include;..\..\..\..\..\board/bsp_common/include;..\..\..\..\..\components/drivers/include;..\..\..\..\..\components/libc/armlib_adapter/include;..\..\..\..\..\components/libc/microlib_adapter/include;..\..\..\..\..\components/service/include;..\..\..\..\..\components/util/include;..\..\..\..\..\examples/board/am116_core;..\..\..\..\..\examples/components;..\..\..\..\..\examples/soc/zlg;..\..\..\..\..\examples/std;..\..\..\..\..\interface;..\..\..\..\..\soc/zlg/zlg116;..\..\..\..\..\soc/zlg/drivers/include/adc;..\..\..\..\..\soc/zlg/drivers/include/bkp;..\..\..\..\..\soc/zlg/drivers/include/clk;..\..\..\..\..\soc/zlg/drivers/include/cmp;..\..\..\..\..\soc/zlg/drivers/include/crc;..\..\..\..\..\soc/zlg/drivers/include/dac;..\..\..\..\..\soc/zlg/drivers/include/dma;..\..\..\..\..\soc/zlg/drivers/include/exti;..\..\..\..\..\soc/zlg/drivers/include/flash;..\..\..\..\..\soc/zlg/drivers/include/gpio;..\..\..\..\..\soc/zlg/drivers/include/i2c;..\..\..\..\..\soc/zlg/drivers/include/pwr;..\..\..\..\..\soc/zlg/drivers/include/rcc;..\..\..\..\..\soc/zlg/drivers/include/spi;..\..\..\..\..\soc/zlg/drivers/include/syscfg;..\..\..\..\..\soc/zlg/drivers/include/tim;..\..\..\..\..\soc/zlg/drivers/include/uart;..\..\..\..\..\soc/zlg/drivers/include/wdt;..\..\..\..\..\examples\board\am166_core;..\..\..\..\..\examples\components\bootloader;..\..\..\..\..\components\bootloader\include\arch\arm;..\..\..\..\..\components\bootloader\include\core;..\..\..\..\..\components\bootloader\include\drivers;..\user_config\am_bootconf_usrcfg;..\..\..\..\..\soc\zlg\drivers\include\bootloader;..\..\..\..\..\soc\zlg\drivers\include\device\hw</IncludePath>
+              <IncludePath>..\user_code;..\user_config;..\user_config/am_hwconf_usrcfg;..\user_config/am_servconf_usrcfg;..\..\..\..\..\3rdparty/CMSIS/Include;..\..\..\..\..\arch/arm/include;..\..\..\..\..\board/bsp_common/include;..\..\..\..\..\components/drivers/include;..\..\..\..\..\components/libc/armlib_adapter/include;..\..\..\..\..\components/libc/microlib_adapter/include;..\..\..\..\..\components/service/include;..\..\..\..\..\components/util/include;..\..\..\..\..\examples/board/am116_core;..\..\..\..\..\examples/components;..\..\..\..\..\examples/soc/zlg;..\..\..\..\..\examples/std;..\..\..\..\..\interface;..\..\..\..\..\soc/zlg/zlg116;..\..\..\..\..\soc/zlg/drivers/include/adc;..\..\..\..\..\soc/zlg/drivers/include/bkp;..\..\..\..\..\soc/zlg/drivers/include/clk;..\..\..\..\..\soc/zlg/drivers/include/cmp;..\..\..\..\..\soc/zlg/drivers/include/crc;..\..\..\..\..\soc/zlg/drivers/include/dac;..\..\..\..\..\soc/zlg/drivers/include/dma;..\..\..\..\..\soc/zlg/drivers/include/exti;..\..\..\..\..\soc/zlg/drivers/include/flash;..\..\..\..\..\soc/zlg/drivers/include/gpio;..\..\..\..\..\soc/zlg/drivers/include/i2c;..\..\..\..\..\soc/zlg/drivers/include/pwr;..\..\..\..\..\soc/zlg/drivers/include/rcc;..\..\..\..\..\soc/zlg/drivers/include/spi;..\..\..\..\..\soc/zlg/drivers/include/syscfg;..\..\..\..\..\soc/zlg/drivers/include/tim;..\..\..\..\..\soc/zlg/drivers/include/uart;..\..\..\..\..\soc/zlg/drivers/include/wdt;..\..\..\..\..\components\bootloader\include\core;..\..\..\..\..\components\usb\device\class\include;..\..\..\..\..\components\usb\include;..\..\..\..\..\components\usb\osa;..\..\..\..\..\components\usb\device;..\..\..\..\..\components\usb\device\common\include;..\..\..\..\..\soc\zlg\drivers\include\device\hw;..\..\..\..\..\examples\components\bootloader;..\..\..\..\..\components\bootloader\include\arch\arm;..\..\..\..\..\components\bootloader\include\core;..\..\..\..\..\components\bootloader\include\drivers;..\user_config\am_bootconf_usrcfg;..\..\..\..\..\soc\zlg\drivers\include\bootloader</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -403,7 +403,7 @@
             <TextAddressRange>0x00000000</TextAddressRange>
             <DataAddressRange>0x10000000</DataAddressRange>
             <pXoBase></pXoBase>
-            <ScatterFile>.\example_aml166_core.sct</ScatterFile>
+            <ScatterFile>.\template_am116_core.sct</ScatterFile>
             <IncludeLibs></IncludeLibs>
             <IncludeLibsPath></IncludeLibsPath>
             <Misc></Misc>
@@ -627,6 +627,11 @@
               <FilePath>..\..\..\..\..\components\drivers\source\uart\am_sc16is7xx.c</FilePath>
             </File>
             <File>
+              <FileName>am_zm516x.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\components\drivers\source\zigbee\am_zm516x.c</FilePath>
+            </File>
+            <File>
               <FileName>am_fm175xx_zlg116.lib</FileName>
               <FileType>4</FileType>
               <FilePath>..\..\..\..\..\components\drivers\source\fm175xx\am_fm175xx_zlg116.lib</FilePath>
@@ -637,6 +642,46 @@
               <FilePath>..\..\..\..\..\components\drivers\source\sensor\am_sensor_hts221.c</FilePath>
             </File>
             <File>
+              <FileName>am_sensor_bme280.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\components\drivers\source\sensor\am_sensor_bme280.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_sensor_bmp280.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\components\drivers\source\sensor\am_sensor_bmp280.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_sensor_lps22hb.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\components\drivers\source\sensor\am_sensor_lps22hb.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_sensor_bh1730fvc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\components\drivers\source\sensor\am_sensor_bh1730fvc.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_sensor_bma253.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\components\drivers\source\sensor\am_sensor_bma253.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_sensor_lis3mdl.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\components\drivers\source\sensor\am_sensor_lis3mdl.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_sensor_lsm6dsl.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\components\drivers\source\sensor\am_sensor_lsm6dsl.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_sensor_shtc1.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\components\drivers\source\sensor\am_sensor_shtc1.c</FilePath>
+            </File>
+            <File>
               <FileName>zlg72128.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\components\drivers\source\digitron_key\zlg72128.c</FilePath>
@@ -645,16 +690,6 @@
               <FileName>zlg72128_platform.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\components\drivers\source\digitron_key\zlg72128_platform.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_pt100_to_temperature.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\components\drivers\source\pt100\am_pt100_to_temperature.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_thermocouple.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\components\drivers\source\thermocouple\am_thermocouple.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -977,11 +1012,6 @@
               <FilePath>..\..\..\..\..\soc\zlg\drivers\source\spi\am_zlg_spi_poll.c</FilePath>
             </File>
             <File>
-              <FileName>am_zml166_adc.lib</FileName>
-              <FileType>4</FileType>
-              <FilePath>..\..\..\..\..\soc\zlg\zml166\adc\am_zml166_adc.lib</FilePath>
-            </File>
-            <File>
               <FileName>am_zlg_boot_flash.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\soc\zlg\drivers\source\bootloader\am_zlg_boot_flash.c</FilePath>
@@ -992,389 +1022,464 @@
           <GroupName>examples_board</GroupName>
           <Files>
             <File>
-              <FileName>demo_aml166_core_std_buzzer.c</FileName>
+              <FileName>demo_am116_core_hw_adc_int.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\buzzer\demo_aml166_core_std_buzzer.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\adc\demo_am116_core_hw_adc_int.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_std_delay.c</FileName>
+              <FileName>demo_am116_core_std_adc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\delay\demo_aml166_core_std_delay.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\adc\demo_am116_core_std_adc.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_drv_dma_m2m.c</FileName>
+              <FileName>demo_am116_core_std_adc_ntc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\dma\demo_aml166_core_drv_dma_m2m.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\adc\demo_am116_core_std_adc_ntc.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_drv_flash.c</FileName>
+              <FileName>demo_am116_core_std_buzzer.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\flash\demo_aml166_core_drv_flash.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\buzzer\demo_am116_core_std_buzzer.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_hw_gpio.c</FileName>
+              <FileName>demo_am116_core_hw_clk.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\gpio\demo_aml166_core_hw_gpio.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\clk\demo_am116_core_hw_clk.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_hw_gpio_trigger.c</FileName>
+              <FileName>demo_am116_core_drv_dma_m2m.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\gpio\demo_aml166_core_hw_gpio_trigger.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\dma\demo_am116_core_drv_dma_m2m.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_std_gpio.c</FileName>
+              <FileName>demo_am116_core_drv_flash.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\gpio\demo_aml166_core_std_gpio.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\flash\demo_am116_core_drv_flash.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_std_gpio_trigger.c</FileName>
+              <FileName>demo_am116_core_hw_gpio.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\gpio\demo_aml166_core_std_gpio_trigger.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\gpio\demo_am116_core_hw_gpio.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_hw_i2c_master_poll.c</FileName>
+              <FileName>demo_am116_core_hw_gpio_trigger.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\i2c\demo_aml166_core_hw_i2c_master_poll.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\gpio\demo_am116_core_hw_gpio_trigger.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_hw_i2c_slave_poll.c</FileName>
+              <FileName>demo_am116_core_std_gpio.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\i2c\demo_aml166_core_hw_i2c_slave_poll.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\gpio\demo_am116_core_std_gpio.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_std_i2c_lm75.c</FileName>
+              <FileName>demo_am116_core_std_gpio_trigger.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\i2c\demo_aml166_core_std_i2c_lm75.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\gpio\demo_am116_core_std_gpio_trigger.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_std_i2c_master_async.c</FileName>
+              <FileName>demo_am116_core_hw_i2c_master_poll.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\i2c\demo_aml166_core_std_i2c_master_async.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\i2c\demo_am116_core_hw_i2c_master_poll.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_std_i2c_master_sync.c</FileName>
+              <FileName>demo_am116_core_hw_i2c_slave_poll.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\i2c\demo_aml166_core_std_i2c_master_sync.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\i2c\demo_am116_core_hw_i2c_slave_poll.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_std_i2c_slave.c</FileName>
+              <FileName>demo_am116_core_std_i2c_lm75.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\i2c\demo_aml166_core_std_i2c_slave.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\i2c\demo_am116_core_std_i2c_lm75.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_std_i2c_slave_subaddr.c</FileName>
+              <FileName>demo_am116_core_std_i2c_master_async.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\i2c\demo_aml166_core_std_i2c_slave_subaddr.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\i2c\demo_am116_core_std_i2c_master_async.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_std_input_event.c</FileName>
+              <FileName>demo_am116_core_std_i2c_master_sync.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\input_event\demo_aml166_core_std_input_event.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\i2c\demo_am116_core_std_i2c_master_sync.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_std_led.c</FileName>
+              <FileName>demo_am116_core_std_i2c_slave.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\led\demo_aml166_core_std_led.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\i2c\demo_am116_core_std_i2c_slave.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_microport_ds1302.c</FileName>
+              <FileName>demo_am116_core_std_i2c_slave_subaddr.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\microport_board\demo_aml166_core_microport_ds1302.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\i2c\demo_am116_core_std_i2c_slave_subaddr.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_microport_eeprom.c</FileName>
+              <FileName>demo_am116_core_std_input_event.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\microport_board\demo_aml166_core_microport_eeprom.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\input_event\demo_am116_core_std_input_event.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_microport_eeprom_nvram.c</FileName>
+              <FileName>demo_am116_core_std_led.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\microport_board\demo_aml166_core_microport_eeprom_nvram.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\led\demo_am116_core_std_led.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_microport_flash.c</FileName>
+              <FileName>demo_am116_core_microport_ds1302.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\microport_board\demo_aml166_core_microport_flash.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\microport_board\demo_am116_core_microport_ds1302.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_microport_flash_ftl.c</FileName>
+              <FileName>demo_am116_core_microport_eeprom.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\microport_board\demo_aml166_core_microport_flash_ftl.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\microport_board\demo_am116_core_microport_eeprom.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_microport_flash_mtd.c</FileName>
+              <FileName>demo_am116_core_microport_eeprom_nvram.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\microport_board\demo_aml166_core_microport_flash_mtd.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\microport_board\demo_am116_core_microport_eeprom_nvram.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_microport_rs485.c</FileName>
+              <FileName>demo_am116_core_microport_flash.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\microport_board\demo_aml166_core_microport_rs485.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\microport_board\demo_am116_core_microport_flash.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_microport_rtc.c</FileName>
+              <FileName>demo_am116_core_microport_flash_ftl.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\microport_board\demo_aml166_core_microport_rtc.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\microport_board\demo_am116_core_microport_flash_ftl.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_microport_rx8025t.c</FileName>
+              <FileName>demo_am116_core_microport_flash_mtd.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\microport_board\demo_aml166_core_microport_rx8025t.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\microport_board\demo_am116_core_microport_flash_mtd.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_microport_usb.c</FileName>
+              <FileName>demo_am116_core_microport_rs485.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\microport_board\demo_aml166_core_microport_usb.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\microport_board\demo_am116_core_microport_rs485.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_miniport_digitron.c</FileName>
+              <FileName>demo_am116_core_microport_rtc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\miniport_board\demo_aml166_core_miniport_digitron.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\microport_board\demo_am116_core_microport_rtc.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_miniport_hc595_digitron.c</FileName>
+              <FileName>demo_am116_core_microport_rx8025t.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\miniport_board\demo_aml166_core_miniport_hc595_digitron.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\microport_board\demo_am116_core_microport_rx8025t.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_miniport_hc595_digitron_key.c</FileName>
+              <FileName>demo_am116_core_microport_usb.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\miniport_board\demo_aml166_core_miniport_hc595_digitron_key.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\microport_board\demo_am116_core_microport_usb.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_miniport_hc595_digitron_temp.c</FileName>
+              <FileName>demo_am116_core_miniport_digitron.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\miniport_board\demo_aml166_core_miniport_hc595_digitron_temp.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\miniport_board\demo_am116_core_miniport_digitron.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_miniport_hc595_led.c</FileName>
+              <FileName>demo_am116_core_miniport_hc595_digitron.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\miniport_board\demo_aml166_core_miniport_hc595_led.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\miniport_board\demo_am116_core_miniport_hc595_digitron.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_miniport_key.c</FileName>
+              <FileName>demo_am116_core_miniport_hc595_digitron_key.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\miniport_board\demo_aml166_core_miniport_key.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\miniport_board\demo_am116_core_miniport_hc595_digitron_key.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_miniport_key_digitron.c</FileName>
+              <FileName>demo_am116_core_miniport_hc595_digitron_temp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\miniport_board\demo_aml166_core_miniport_key_digitron.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\miniport_board\demo_am116_core_miniport_hc595_digitron_temp.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_miniport_led.c</FileName>
+              <FileName>demo_am116_core_miniport_hc595_led.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\miniport_board\demo_aml166_core_miniport_led.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\miniport_board\demo_am116_core_miniport_hc595_led.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_miniport_zlg72128.c</FileName>
+              <FileName>demo_am116_core_miniport_key.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\miniport_board\demo_aml166_core_miniport_zlg72128.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\miniport_board\demo_am116_core_miniport_key.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_std_softimer.c</FileName>
+              <FileName>demo_am116_core_miniport_key_digitron.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\softimer\demo_aml166_core_std_softimer.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\miniport_board\demo_am116_core_miniport_key_digitron.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_hw_spi_master.c</FileName>
+              <FileName>demo_am116_core_miniport_led.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\spi\demo_aml166_core_hw_spi_master.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\miniport_board\demo_am116_core_miniport_led.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_std_spi_flash_dma.c</FileName>
+              <FileName>demo_am116_core_miniport_zlg72128.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\spi\demo_aml166_core_std_spi_flash_dma.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\miniport_board\demo_am116_core_miniport_zlg72128.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_std_spi_flash_int.c</FileName>
+              <FileName>demo_am116_core_std_softimer.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\spi\demo_aml166_core_std_spi_flash_int.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\softimer\demo_am116_core_std_softimer.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_std_spi_master_dma.c</FileName>
+              <FileName>demo_am116_core_hw_spi_master.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\spi\demo_aml166_core_std_spi_master_dma.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\spi\demo_am116_core_hw_spi_master.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_std_spi_master_int.c</FileName>
+              <FileName>demo_am116_core_std_spi_flash_dma.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\spi\demo_aml166_core_std_spi_master_int.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\spi\demo_am116_core_std_spi_flash_dma.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_std_spi_slave_dma.c</FileName>
+              <FileName>demo_am116_core_std_spi_flash_int.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\spi\demo_aml166_core_std_spi_slave_dma.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\spi\demo_am116_core_std_spi_flash_int.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_hw_tim_cap.c</FileName>
+              <FileName>demo_am116_core_std_spi_master_dma.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\timer\demo_aml166_core_hw_tim_cap.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\spi\demo_am116_core_std_spi_master_dma.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_hw_tim_pwm.c</FileName>
+              <FileName>demo_am116_core_std_spi_master_int.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\timer\demo_aml166_core_hw_tim_pwm.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\spi\demo_am116_core_std_spi_master_int.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_hw_tim_timing.c</FileName>
+              <FileName>demo_am116_core_std_spi_slave_dma.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\timer\demo_aml166_core_hw_tim_timing.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\spi\demo_am116_core_std_spi_slave_dma.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_std_tim1_cap.c</FileName>
+              <FileName>demo_am116_core_hw_tim_cap.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\timer\demo_aml166_core_std_tim1_cap.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\timer\demo_am116_core_hw_tim_cap.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_std_tim1_pwm.c</FileName>
+              <FileName>demo_am116_core_hw_tim_cmp_toggle.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\timer\demo_aml166_core_std_tim1_pwm.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\timer\demo_am116_core_hw_tim_cmp_toggle.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_std_tim1_timing.c</FileName>
+              <FileName>demo_am116_core_hw_tim_pwm.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\timer\demo_aml166_core_std_tim1_timing.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\timer\demo_am116_core_hw_tim_pwm.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_std_tim2_cap.c</FileName>
+              <FileName>demo_am116_core_hw_tim_pwm_dead.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\timer\demo_aml166_core_std_tim2_cap.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\timer\demo_am116_core_hw_tim_pwm_dead.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_std_tim2_pwm.c</FileName>
+              <FileName>demo_am116_core_hw_tim_timing.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\timer\demo_aml166_core_std_tim2_pwm.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\timer\demo_am116_core_hw_tim_timing.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_std_tim2_timing.c</FileName>
+              <FileName>demo_am116_core_std_tim1_cap.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\timer\demo_aml166_core_std_tim2_timing.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\timer\demo_am116_core_std_tim1_cap.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_std_tim3_cap.c</FileName>
+              <FileName>demo_am116_core_std_tim1_pwm.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\timer\demo_aml166_core_std_tim3_cap.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\timer\demo_am116_core_std_tim1_pwm.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_std_tim3_pwm.c</FileName>
+              <FileName>demo_am116_core_std_tim1_timing.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\timer\demo_aml166_core_std_tim3_pwm.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\timer\demo_am116_core_std_tim1_timing.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_std_tim3_timing.c</FileName>
+              <FileName>demo_am116_core_std_tim2_cap.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\timer\demo_aml166_core_std_tim3_timing.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\timer\demo_am116_core_std_tim2_cap.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_std_tim16_timing.c</FileName>
+              <FileName>demo_am116_core_std_tim2_pwm.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\timer\demo_aml166_core_std_tim16_timing.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\timer\demo_am116_core_std_tim2_pwm.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_std_tim17_timing.c</FileName>
+              <FileName>demo_am116_core_std_tim2_timing.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\timer\demo_aml166_core_std_tim17_timing.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\timer\demo_am116_core_std_tim2_timing.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_hw_uart_int.c</FileName>
+              <FileName>demo_am116_core_std_tim3_cap.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\uart\demo_aml166_core_hw_uart_int.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\timer\demo_am116_core_std_tim3_cap.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_hw_uart_polling.c</FileName>
+              <FileName>demo_am116_core_std_tim3_pwm.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\uart\demo_aml166_core_hw_uart_polling.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\timer\demo_am116_core_std_tim3_pwm.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_hw_uart_rx_dma.c</FileName>
+              <FileName>demo_am116_core_std_tim3_timing.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\uart\demo_aml166_core_hw_uart_rx_dma.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\timer\demo_am116_core_std_tim3_timing.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_hw_uart_tx_dma.c</FileName>
+              <FileName>demo_am116_core_std_tim14_cap.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\uart\demo_aml166_core_hw_uart_tx_dma.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\timer\demo_am116_core_std_tim14_cap.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_std_uart_polling.c</FileName>
+              <FileName>demo_am116_core_std_tim14_pwm.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\uart\demo_aml166_core_std_uart_polling.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\timer\demo_am116_core_std_tim14_pwm.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_std_uart_ringbuf.c</FileName>
+              <FileName>demo_am116_core_std_tim14_timing.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\uart\demo_aml166_core_std_uart_ringbuf.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\timer\demo_am116_core_std_tim14_timing.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_drv_sleepmode_timer_wake_up.c</FileName>
+              <FileName>demo_am116_core_std_tim16_cap.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\wakeup\demo_aml166_core_drv_sleepmode_timer_wake_up.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\timer\demo_am116_core_std_tim16_cap.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_drv_sleepmode_wake_up.c</FileName>
+              <FileName>demo_am116_core_std_tim16_pwm.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\wakeup\demo_aml166_core_drv_sleepmode_wake_up.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\timer\demo_am116_core_std_tim16_pwm.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_drv_standbymode_wake_up.c</FileName>
+              <FileName>demo_am116_core_std_tim16_timing.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\wakeup\demo_aml166_core_drv_standbymode_wake_up.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\timer\demo_am116_core_std_tim16_timing.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_drv_stopmode_wake_up.c</FileName>
+              <FileName>demo_am116_core_std_tim17_cap.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\wakeup\demo_aml166_core_drv_stopmode_wake_up.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\timer\demo_am116_core_std_tim17_cap.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_hw_iwdg.c</FileName>
+              <FileName>demo_am116_core_std_tim17_pwm.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\wdg\demo_aml166_core_hw_iwdg.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\timer\demo_am116_core_std_tim17_pwm.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_hw_wwdg.c</FileName>
+              <FileName>demo_am116_core_std_tim17_timing.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\wdg\demo_aml166_core_hw_wwdg.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\timer\demo_am116_core_std_tim17_timing.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_std_iwdg.c</FileName>
+              <FileName>demo_am116_core_hw_uart_int.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\wdg\demo_aml166_core_std_iwdg.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\uart\demo_am116_core_hw_uart_int.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_std_wwdg.c</FileName>
+              <FileName>demo_am116_core_hw_uart_polling.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\wdg\demo_aml166_core_std_wwdg.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\uart\demo_am116_core_hw_uart_polling.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_entries.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\demo_aml166_core_entries.h</FilePath>
+              <FileName>demo_am116_core_hw_uart_rx_dma.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\uart\demo_am116_core_hw_uart_rx_dma.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_am116_core_hw_uart_tx_dma.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\uart\demo_am116_core_hw_uart_tx_dma.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_am116_core_std_uart_polling.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\uart\demo_am116_core_std_uart_polling.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_am116_core_std_uart_ringbuf.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\uart\demo_am116_core_std_uart_ringbuf.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_am116_core_drv_sleepmode_timer_wake_up.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\wakeup\demo_am116_core_drv_sleepmode_timer_wake_up.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_am116_core_drv_sleepmode_wake_up.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\wakeup\demo_am116_core_drv_sleepmode_wake_up.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_am116_core_drv_standbymode_wake_up.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\wakeup\demo_am116_core_drv_standbymode_wake_up.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_am116_core_drv_stopmode_wake_up.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\wakeup\demo_am116_core_drv_stopmode_wake_up.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_am116_core_hw_iwdg.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\wdg\demo_am116_core_hw_iwdg.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_am116_core_hw_wwdg.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\wdg\demo_am116_core_hw_wwdg.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_am116_core_std_iwdg.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\wdg\demo_am116_core_std_iwdg.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_am116_core_std_wwdg.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\wdg\demo_am116_core_std_wwdg.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_am116_core_std_delay.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\delay\demo_am116_core_std_delay.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_am116_core_dr_fm175xx_picca_halt.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\fm175xx\demo_am116_core_dr_fm175xx_picca_halt.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_am116_core_dr_fm175xx_picca_lpcd_read_id.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\fm175xx\demo_am116_core_dr_fm175xx_picca_lpcd_read_id.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_am116_core_dr_fm175xx_picca_read_block.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\fm175xx\demo_am116_core_dr_fm175xx_picca_read_block.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_zml166_adc_pt100_measure.c</FileName>
+              <FileName>demo_am116_core_dr_fm175xx_picca_read_id.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\adc\demo_aml166_core_zml166_adc_pt100_measure.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\fm175xx\demo_am116_core_dr_fm175xx_picca_read_id.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_zml166_adc_thermocouple_measure.c</FileName>
+              <FileName>demo_am116_core_dr_fm175xx_picca_val_operate.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\adc\demo_aml166_core_zml166_adc_thermocouple_measure.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\fm175xx\demo_am116_core_dr_fm175xx_picca_val_operate.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_zml166_adc_vol_measure.c</FileName>
+              <FileName>demo_am116_core_dr_fm175xx_picca_write_block.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\adc\demo_aml166_core_zml166_adc_vol_measure.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\fm175xx\demo_am116_core_dr_fm175xx_picca_write_block.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_zml166_adc_vol_para_adjuet.c</FileName>
+              <FileName>demo_am116_core_dr_fm175xx_piccb_read_id.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\adc\demo_aml166_core_zml166_adc_vol_para_adjuet.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\fm175xx\demo_am116_core_dr_fm175xx_piccb_read_id.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_single_uart_bootloader.c</FileName>
+              <FileName>demo_am116_core_bootloader.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\bootloader\demo_aml166_core_single_uart_bootloader.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\bootloader\demo_am116_core_bootloader.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -1435,11 +1540,6 @@
               <FileName>demo_fm175xx_piccb_read_id.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\examples\components\drivers\demo_fm175xx_piccb_read_id.c</FilePath>
-            </File>
-            <File>
-              <FileName>demo_fm175xx_cpu_card.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\components\drivers\demo_fm175xx_cpu_card.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -1565,26 +1665,6 @@
               <FileName>demo_zlg_hw_clk.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\examples\soc\zlg\clk\demo_zlg_hw_clk.c</FilePath>
-            </File>
-            <File>
-              <FileName>demo_zml166_adc_pt100_measure.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\soc\zlg\adc\demo_zml166_adc_pt100_measure.c</FilePath>
-            </File>
-            <File>
-              <FileName>demo_zml166_adc_thermocouple_measure.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\soc\zlg\adc\demo_zml166_adc_thermocouple_measure.c</FilePath>
-            </File>
-            <File>
-              <FileName>demo_zml166_adc_vol_measure.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\soc\zlg\adc\demo_zml166_adc_vol_measure.c</FilePath>
-            </File>
-            <File>
-              <FileName>demo_zml166_adc_vol_para_adjuet.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\soc\zlg\adc\demo_zml166_adc_vol_para_adjuet.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -1772,6 +1852,66 @@
               <FilePath>..\..\..\..\..\examples\std\sensor\hts221\demo_std_hts221_int.c</FilePath>
             </File>
             <File>
+              <FileName>demo_std_bmp280.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\std\sensor\bmp280\demo_std_bmp280.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_std_bme280.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\std\sensor\bme280\demo_std_bme280.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_std_lps22hb.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\std\sensor\lps22hb\demo_std_lps22hb.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_std_lps22hb_int.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\std\sensor\lps22hb\demo_std_lps22hb_int.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_std_bh1730fvc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\std\sensor\bh1730fvc\demo_std_bh1730fvc.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_std_bma253.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\std\sensor\bma253\demo_std_bma253.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_std_bma253_int.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\std\sensor\bma253\demo_std_bma253_int.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_std_lis3mdl.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\std\sensor\lis3mdl\demo_std_lis3mdl.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_std_lis3mdl_int.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\std\sensor\lis3mdl\demo_std_lis3mdl_int.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_std_lsm6dsl.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\std\sensor\lsm6dsl\demo_std_lsm6dsl.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_std_lsm6dsl_int.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\std\sensor\lsm6dsl\demo_std_lsm6dsl_int.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_std_shtc1.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\std\sensor\shtc1\demo_std_shtc1.c</FilePath>
+            </File>
+            <File>
               <FileName>demo_std_single_bootloader.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\examples\components\bootloader\demo_std_single_bootloader.c</FilePath>
@@ -1782,9 +1922,9 @@
           <GroupName>startup</GroupName>
           <Files>
             <File>
-              <FileName>am_aml166_armcc_startup.s</FileName>
+              <FileName>am_zlg116_armcc_startup.s</FileName>
               <FileType>2</FileType>
-              <FilePath>..\startup\am_aml166_armcc_startup.s</FilePath>
+              <FilePath>..\startup\am_zlg116_armcc_startup.s</FilePath>
             </File>
           </Files>
         </Group>
@@ -1802,6 +1942,31 @@
           <GroupName>user_config</GroupName>
           <Files>
             <File>
+              <FileName>am_prj_config.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\user_config\am_prj_config.h</FilePath>
+            </File>
+            <File>
+              <FileName>am_zlg116_inst_init.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\user_config\am_zlg116_inst_init.h</FilePath>
+            </File>
+            <File>
+              <FileName>am_board.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\user_config\am_board.h</FilePath>
+            </File>
+            <File>
+              <FileName>am_prj_config.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_prj_config.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_board.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_board.c</FilePath>
+            </File>
+            <File>
               <FileName>am_hwconf_arm_nvic.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_arm_nvic.c</FilePath>
@@ -1815,11 +1980,6 @@
               <FileName>am_hwconf_debug_uart.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_debug_uart.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_fm175xx.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_fm175xx.c</FilePath>
             </File>
             <File>
               <FileName>am_hwconf_key_gpio.c</FileName>
@@ -1897,24 +2057,104 @@
               <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_miniport_zlg72128.c</FilePath>
             </File>
             <File>
-              <FileName>am_hwconf_sensor_hts221.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_sensor_hts221.c</FilePath>
-            </File>
-            <File>
               <FileName>am_hwconf_system_tick_softimer.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_system_tick_softimer.c</FilePath>
             </File>
             <File>
-              <FileName>am_board.c</FileName>
+              <FileName>am_hwconf_zlg116_adc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\user_config\am_board.c</FilePath>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_adc.c</FilePath>
             </File>
             <File>
-              <FileName>am_prj_config.c</FileName>
+              <FileName>am_hwconf_zlg116_clk.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\user_config\am_prj_config.c</FilePath>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_clk.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_zlg116_dma.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_dma.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_zlg116_gpio.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_gpio.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_zlg116_i2c.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_i2c.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_zlg116_i2c_slv.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_i2c_slv.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_zlg116_iwdg.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_iwdg.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_zlg116_pwr.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_pwr.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_zlg116_spi_dma.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_spi_dma.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_zlg116_spi_int.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_spi_int.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_zlg116_spi_slv_dma.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_spi_slv_dma.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_zlg116_systick.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_systick.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_zlg116_tim_cap.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_tim_cap.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_zlg116_tim_pwm.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_tim_pwm.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_zlg116_tim_timing.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_tim_timing.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_zlg116_uart.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_uart.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_zlg116_wwdg.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_wwdg.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_zlg116_spi_poll.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_spi_poll.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_fm175xx.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_fm175xx.c</FilePath>
             </File>
             <File>
               <FileName>am_servconf_event_input.c</FileName>
@@ -1927,194 +2167,59 @@
               <FilePath>..\user_config\am_servconf_usrcfg\am_servconf_nvram.c</FilePath>
             </File>
             <File>
-              <FileName>am_hwconf_aml166_clk.c</FileName>
+              <FileName>am_hwconf_sensor_hts221.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_aml166_clk.c</FilePath>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_sensor_hts221.c</FilePath>
             </File>
             <File>
-              <FileName>am_hwconf_aml166_dma.c</FileName>
+              <FileName>am_hwconf_sensor_bmp280.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_aml166_dma.c</FilePath>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_sensor_bmp280.c</FilePath>
             </File>
             <File>
-              <FileName>am_hwconf_aml166_gpio.c</FileName>
+              <FileName>am_hwconf_sensor_bme280.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_aml166_gpio.c</FilePath>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_sensor_bme280.c</FilePath>
             </File>
             <File>
-              <FileName>am_hwconf_aml166_i2c.c</FileName>
+              <FileName>am_hwconf_sensor_lps22hb.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_aml166_i2c.c</FilePath>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_sensor_lps22hb.c</FilePath>
             </File>
             <File>
-              <FileName>am_hwconf_aml166_i2c_slv.c</FileName>
+              <FileName>am_hwconf_sensor_bh1730fvc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_aml166_i2c_slv.c</FilePath>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_sensor_bh1730fvc.c</FilePath>
             </File>
             <File>
-              <FileName>am_hwconf_aml166_iwdg.c</FileName>
+              <FileName>am_hwconf_sensor_bma253.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_aml166_iwdg.c</FilePath>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_sensor_bma253.c</FilePath>
             </File>
             <File>
-              <FileName>am_hwconf_aml166_pwr.c</FileName>
+              <FileName>am_hwconf_sensor_lis3mdl.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_aml166_pwr.c</FilePath>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_sensor_lis3mdl.c</FilePath>
             </File>
             <File>
-              <FileName>am_hwconf_aml166_spi_dma.c</FileName>
+              <FileName>am_hwconf_sensor_lsm6dsl.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_aml166_spi_dma.c</FilePath>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_sensor_lsm6dsl.c</FilePath>
             </File>
             <File>
-              <FileName>am_hwconf_aml166_spi_int.c</FileName>
+              <FileName>am_hwconf_sensor_shtc1.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_aml166_spi_int.c</FilePath>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_sensor_shtc1.c</FilePath>
             </File>
             <File>
-              <FileName>am_hwconf_aml166_spi_slv_dma.c</FileName>
+              <FileName>am_bootconf_zlg116_clk.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_aml166_spi_slv_dma.c</FilePath>
+              <FilePath>..\user_config\am_bootconf_usrcfg\am_bootconf_zlg116_clk.c</FilePath>
             </File>
             <File>
-              <FileName>am_hwconf_aml166_systick.c</FileName>
+              <FileName>am_bootconf_zlg116_single.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_aml166_systick.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_aml166_tim_cap.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_aml166_tim_cap.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_aml166_tim_pwm.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_aml166_tim_pwm.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_aml166_tim_timing.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_aml166_tim_timing.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_aml166_uart.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_aml166_uart.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_aml166_wwdg.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_aml166_wwdg.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_zml166_adc.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zml166_adc.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_buzzer_pwm.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_buzzer_pwm.h</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_debug_uart.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_debug_uart.h</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_fm175xx.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_fm175xx.h</FilePath>
-            </File>
-            <File>
-              <FileName>am_prj_config.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\user_config\am_prj_config.h</FilePath>
-            </File>
-            <File>
-              <FileName>am_service_inst_init.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\user_config\am_servconf_usrcfg\am_service_inst_init.h</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_key_gpio.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_key_gpio.h</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_led_gpio.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_led_gpio.h</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_lm75.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_lm75.h</FilePath>
-            </File>
-            <File>
-              <FileName>am_board.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\user_config\am_board.h</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_microport.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_microport.h</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_miniport_595.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_miniport_595.h</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_miniport_key.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_miniport_key.h</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_miniport_led.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_miniport_led.h</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_miniport_view.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_miniport_view.h</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_miniport_view_key.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_miniport_view_key.h</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_miniport_zlg72128.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_miniport_zlg72128.h</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_sensor_hts221.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_sensor_hts221.h</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_system_tick_softimer.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_system_tick_softimer.h</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_aml166_spi_poll.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_aml166_spi_poll.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_bootconf_aml166_clk.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_bootconf_usrcfg\am_bootconf_aml166_clk.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_bootconf_aml166_single.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_bootconf_usrcfg\am_bootconf_aml166_single.c</FilePath>
+              <FilePath>..\user_config\am_bootconf_usrcfg\am_bootconf_zlg116_single.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -2542,7 +2647,7 @@
               <MiscControls></MiscControls>
               <Define>AM_VDEBUG AM_CORTEX_M0</Define>
               <Undefine></Undefine>
-              <IncludePath>..\user_code;..\user_config;..\user_config/am_hwconf_usrcfg;..\user_config/am_servconf_usrcfg;..\..\..\..\..\3rdparty/CMSIS/Include;..\..\..\..\..\arch/arm/include;..\..\..\..\..\board/bsp_common/include;..\..\..\..\..\components/drivers/include;..\..\..\..\..\components/libc/armlib_adapter/include;..\..\..\..\..\components/libc/microlib_adapter/include;..\..\..\..\..\components/service/include;..\..\..\..\..\components/util/include;..\..\..\..\..\examples/board/am116_core;..\..\..\..\..\examples/components;..\..\..\..\..\examples/soc/zlg;..\..\..\..\..\examples/std;..\..\..\..\..\interface;..\..\..\..\..\soc/zlg/zlg116;..\..\..\..\..\soc/zlg/drivers/include/adc;..\..\..\..\..\soc/zlg/drivers/include/bkp;..\..\..\..\..\soc/zlg/drivers/include/clk;..\..\..\..\..\soc/zlg/drivers/include/cmp;..\..\..\..\..\soc/zlg/drivers/include/crc;..\..\..\..\..\soc/zlg/drivers/include/dac;..\..\..\..\..\soc/zlg/drivers/include/dma;..\..\..\..\..\soc/zlg/drivers/include/exti;..\..\..\..\..\soc/zlg/drivers/include/flash;..\..\..\..\..\soc/zlg/drivers/include/gpio;..\..\..\..\..\soc/zlg/drivers/include/i2c;..\..\..\..\..\soc/zlg/drivers/include/pwr;..\..\..\..\..\soc/zlg/drivers/include/rcc;..\..\..\..\..\soc/zlg/drivers/include/spi;..\..\..\..\..\soc/zlg/drivers/include/syscfg;..\..\..\..\..\soc/zlg/drivers/include/tim;..\..\..\..\..\soc/zlg/drivers/include/uart;..\..\..\..\..\soc/zlg/drivers/include/wdt</IncludePath>
+              <IncludePath>..\user_code;..\user_config;..\user_config/am_hwconf_usrcfg;..\user_config/am_servconf_usrcfg;..\..\..\..\3rdparty/CMSIS/Include;..\..\..\..\arch/arm/include;..\..\..\..\board/bsp_common/include;..\..\..\..\components/drivers/include;..\..\..\..\components/libc/armlib_adapter/include;..\..\..\..\components/libc/microlib_adapter/include;..\..\..\..\components/service/include;..\..\..\..\components/util/include;..\..\..\..\examples/board/am116_core;..\..\..\..\examples/components;..\..\..\..\examples/soc/zlg;..\..\..\..\examples/std;..\..\..\..\interface;..\..\..\..\soc/zlg/zlg116;..\..\..\..\soc/zlg/drivers/include/adc;..\..\..\..\soc/zlg/drivers/include/bkp;..\..\..\..\soc/zlg/drivers/include/clk;..\..\..\..\soc/zlg/drivers/include/cmp;..\..\..\..\soc/zlg/drivers/include/crc;..\..\..\..\soc/zlg/drivers/include/dac;..\..\..\..\soc/zlg/drivers/include/dma;..\..\..\..\soc/zlg/drivers/include/exti;..\..\..\..\soc/zlg/drivers/include/flash;..\..\..\..\soc/zlg/drivers/include/gpio;..\..\..\..\soc/zlg/drivers/include/i2c;..\..\..\..\soc/zlg/drivers/include/pwr;..\..\..\..\soc/zlg/drivers/include/rcc;..\..\..\..\soc/zlg/drivers/include/spi;..\..\..\..\soc/zlg/drivers/include/syscfg;..\..\..\..\soc/zlg/drivers/include/tim;..\..\..\..\soc/zlg/drivers/include/uart;..\..\..\..\soc/zlg/drivers/include/wdt</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -2796,6 +2901,11 @@
               <FilePath>..\..\..\..\..\components\drivers\source\uart\am_sc16is7xx.c</FilePath>
             </File>
             <File>
+              <FileName>am_zm516x.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\components\drivers\source\zigbee\am_zm516x.c</FilePath>
+            </File>
+            <File>
               <FileName>am_fm175xx_zlg116.lib</FileName>
               <FileType>4</FileType>
               <FilePath>..\..\..\..\..\components\drivers\source\fm175xx\am_fm175xx_zlg116.lib</FilePath>
@@ -2806,6 +2916,46 @@
               <FilePath>..\..\..\..\..\components\drivers\source\sensor\am_sensor_hts221.c</FilePath>
             </File>
             <File>
+              <FileName>am_sensor_bme280.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\components\drivers\source\sensor\am_sensor_bme280.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_sensor_bmp280.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\components\drivers\source\sensor\am_sensor_bmp280.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_sensor_lps22hb.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\components\drivers\source\sensor\am_sensor_lps22hb.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_sensor_bh1730fvc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\components\drivers\source\sensor\am_sensor_bh1730fvc.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_sensor_bma253.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\components\drivers\source\sensor\am_sensor_bma253.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_sensor_lis3mdl.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\components\drivers\source\sensor\am_sensor_lis3mdl.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_sensor_lsm6dsl.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\components\drivers\source\sensor\am_sensor_lsm6dsl.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_sensor_shtc1.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\components\drivers\source\sensor\am_sensor_shtc1.c</FilePath>
+            </File>
+            <File>
               <FileName>zlg72128.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\components\drivers\source\digitron_key\zlg72128.c</FilePath>
@@ -2814,16 +2964,6 @@
               <FileName>zlg72128_platform.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\components\drivers\source\digitron_key\zlg72128_platform.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_pt100_to_temperature.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\components\drivers\source\pt100\am_pt100_to_temperature.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_thermocouple.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\components\drivers\source\thermocouple\am_thermocouple.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -3146,11 +3286,6 @@
               <FilePath>..\..\..\..\..\soc\zlg\drivers\source\spi\am_zlg_spi_poll.c</FilePath>
             </File>
             <File>
-              <FileName>am_zml166_adc.lib</FileName>
-              <FileType>4</FileType>
-              <FilePath>..\..\..\..\..\soc\zlg\zml166\adc\am_zml166_adc.lib</FilePath>
-            </File>
-            <File>
               <FileName>am_zlg_boot_flash.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\soc\zlg\drivers\source\bootloader\am_zlg_boot_flash.c</FilePath>
@@ -3161,389 +3296,464 @@
           <GroupName>examples_board</GroupName>
           <Files>
             <File>
-              <FileName>demo_aml166_core_std_buzzer.c</FileName>
+              <FileName>demo_am116_core_hw_adc_int.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\buzzer\demo_aml166_core_std_buzzer.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\adc\demo_am116_core_hw_adc_int.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_std_delay.c</FileName>
+              <FileName>demo_am116_core_std_adc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\delay\demo_aml166_core_std_delay.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\adc\demo_am116_core_std_adc.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_drv_dma_m2m.c</FileName>
+              <FileName>demo_am116_core_std_adc_ntc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\dma\demo_aml166_core_drv_dma_m2m.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\adc\demo_am116_core_std_adc_ntc.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_drv_flash.c</FileName>
+              <FileName>demo_am116_core_std_buzzer.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\flash\demo_aml166_core_drv_flash.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\buzzer\demo_am116_core_std_buzzer.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_hw_gpio.c</FileName>
+              <FileName>demo_am116_core_hw_clk.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\gpio\demo_aml166_core_hw_gpio.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\clk\demo_am116_core_hw_clk.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_hw_gpio_trigger.c</FileName>
+              <FileName>demo_am116_core_drv_dma_m2m.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\gpio\demo_aml166_core_hw_gpio_trigger.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\dma\demo_am116_core_drv_dma_m2m.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_std_gpio.c</FileName>
+              <FileName>demo_am116_core_drv_flash.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\gpio\demo_aml166_core_std_gpio.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\flash\demo_am116_core_drv_flash.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_std_gpio_trigger.c</FileName>
+              <FileName>demo_am116_core_hw_gpio.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\gpio\demo_aml166_core_std_gpio_trigger.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\gpio\demo_am116_core_hw_gpio.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_hw_i2c_master_poll.c</FileName>
+              <FileName>demo_am116_core_hw_gpio_trigger.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\i2c\demo_aml166_core_hw_i2c_master_poll.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\gpio\demo_am116_core_hw_gpio_trigger.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_hw_i2c_slave_poll.c</FileName>
+              <FileName>demo_am116_core_std_gpio.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\i2c\demo_aml166_core_hw_i2c_slave_poll.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\gpio\demo_am116_core_std_gpio.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_std_i2c_lm75.c</FileName>
+              <FileName>demo_am116_core_std_gpio_trigger.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\i2c\demo_aml166_core_std_i2c_lm75.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\gpio\demo_am116_core_std_gpio_trigger.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_std_i2c_master_async.c</FileName>
+              <FileName>demo_am116_core_hw_i2c_master_poll.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\i2c\demo_aml166_core_std_i2c_master_async.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\i2c\demo_am116_core_hw_i2c_master_poll.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_std_i2c_master_sync.c</FileName>
+              <FileName>demo_am116_core_hw_i2c_slave_poll.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\i2c\demo_aml166_core_std_i2c_master_sync.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\i2c\demo_am116_core_hw_i2c_slave_poll.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_std_i2c_slave.c</FileName>
+              <FileName>demo_am116_core_std_i2c_lm75.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\i2c\demo_aml166_core_std_i2c_slave.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\i2c\demo_am116_core_std_i2c_lm75.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_std_i2c_slave_subaddr.c</FileName>
+              <FileName>demo_am116_core_std_i2c_master_async.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\i2c\demo_aml166_core_std_i2c_slave_subaddr.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\i2c\demo_am116_core_std_i2c_master_async.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_std_input_event.c</FileName>
+              <FileName>demo_am116_core_std_i2c_master_sync.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\input_event\demo_aml166_core_std_input_event.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\i2c\demo_am116_core_std_i2c_master_sync.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_std_led.c</FileName>
+              <FileName>demo_am116_core_std_i2c_slave.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\led\demo_aml166_core_std_led.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\i2c\demo_am116_core_std_i2c_slave.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_microport_ds1302.c</FileName>
+              <FileName>demo_am116_core_std_i2c_slave_subaddr.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\microport_board\demo_aml166_core_microport_ds1302.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\i2c\demo_am116_core_std_i2c_slave_subaddr.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_microport_eeprom.c</FileName>
+              <FileName>demo_am116_core_std_input_event.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\microport_board\demo_aml166_core_microport_eeprom.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\input_event\demo_am116_core_std_input_event.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_microport_eeprom_nvram.c</FileName>
+              <FileName>demo_am116_core_std_led.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\microport_board\demo_aml166_core_microport_eeprom_nvram.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\led\demo_am116_core_std_led.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_microport_flash.c</FileName>
+              <FileName>demo_am116_core_microport_ds1302.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\microport_board\demo_aml166_core_microport_flash.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\microport_board\demo_am116_core_microport_ds1302.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_microport_flash_ftl.c</FileName>
+              <FileName>demo_am116_core_microport_eeprom.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\microport_board\demo_aml166_core_microport_flash_ftl.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\microport_board\demo_am116_core_microport_eeprom.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_microport_flash_mtd.c</FileName>
+              <FileName>demo_am116_core_microport_eeprom_nvram.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\microport_board\demo_aml166_core_microport_flash_mtd.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\microport_board\demo_am116_core_microport_eeprom_nvram.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_microport_rs485.c</FileName>
+              <FileName>demo_am116_core_microport_flash.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\microport_board\demo_aml166_core_microport_rs485.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\microport_board\demo_am116_core_microport_flash.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_microport_rtc.c</FileName>
+              <FileName>demo_am116_core_microport_flash_ftl.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\microport_board\demo_aml166_core_microport_rtc.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\microport_board\demo_am116_core_microport_flash_ftl.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_microport_rx8025t.c</FileName>
+              <FileName>demo_am116_core_microport_flash_mtd.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\microport_board\demo_aml166_core_microport_rx8025t.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\microport_board\demo_am116_core_microport_flash_mtd.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_microport_usb.c</FileName>
+              <FileName>demo_am116_core_microport_rs485.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\microport_board\demo_aml166_core_microport_usb.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\microport_board\demo_am116_core_microport_rs485.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_miniport_digitron.c</FileName>
+              <FileName>demo_am116_core_microport_rtc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\miniport_board\demo_aml166_core_miniport_digitron.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\microport_board\demo_am116_core_microport_rtc.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_miniport_hc595_digitron.c</FileName>
+              <FileName>demo_am116_core_microport_rx8025t.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\miniport_board\demo_aml166_core_miniport_hc595_digitron.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\microport_board\demo_am116_core_microport_rx8025t.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_miniport_hc595_digitron_key.c</FileName>
+              <FileName>demo_am116_core_microport_usb.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\miniport_board\demo_aml166_core_miniport_hc595_digitron_key.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\microport_board\demo_am116_core_microport_usb.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_miniport_hc595_digitron_temp.c</FileName>
+              <FileName>demo_am116_core_miniport_digitron.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\miniport_board\demo_aml166_core_miniport_hc595_digitron_temp.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\miniport_board\demo_am116_core_miniport_digitron.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_miniport_hc595_led.c</FileName>
+              <FileName>demo_am116_core_miniport_hc595_digitron.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\miniport_board\demo_aml166_core_miniport_hc595_led.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\miniport_board\demo_am116_core_miniport_hc595_digitron.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_miniport_key.c</FileName>
+              <FileName>demo_am116_core_miniport_hc595_digitron_key.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\miniport_board\demo_aml166_core_miniport_key.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\miniport_board\demo_am116_core_miniport_hc595_digitron_key.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_miniport_key_digitron.c</FileName>
+              <FileName>demo_am116_core_miniport_hc595_digitron_temp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\miniport_board\demo_aml166_core_miniport_key_digitron.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\miniport_board\demo_am116_core_miniport_hc595_digitron_temp.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_miniport_led.c</FileName>
+              <FileName>demo_am116_core_miniport_hc595_led.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\miniport_board\demo_aml166_core_miniport_led.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\miniport_board\demo_am116_core_miniport_hc595_led.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_miniport_zlg72128.c</FileName>
+              <FileName>demo_am116_core_miniport_key.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\miniport_board\demo_aml166_core_miniport_zlg72128.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\miniport_board\demo_am116_core_miniport_key.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_std_softimer.c</FileName>
+              <FileName>demo_am116_core_miniport_key_digitron.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\softimer\demo_aml166_core_std_softimer.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\miniport_board\demo_am116_core_miniport_key_digitron.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_hw_spi_master.c</FileName>
+              <FileName>demo_am116_core_miniport_led.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\spi\demo_aml166_core_hw_spi_master.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\miniport_board\demo_am116_core_miniport_led.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_std_spi_flash_dma.c</FileName>
+              <FileName>demo_am116_core_miniport_zlg72128.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\spi\demo_aml166_core_std_spi_flash_dma.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\miniport_board\demo_am116_core_miniport_zlg72128.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_std_spi_flash_int.c</FileName>
+              <FileName>demo_am116_core_std_softimer.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\spi\demo_aml166_core_std_spi_flash_int.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\softimer\demo_am116_core_std_softimer.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_std_spi_master_dma.c</FileName>
+              <FileName>demo_am116_core_hw_spi_master.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\spi\demo_aml166_core_std_spi_master_dma.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\spi\demo_am116_core_hw_spi_master.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_std_spi_master_int.c</FileName>
+              <FileName>demo_am116_core_std_spi_flash_dma.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\spi\demo_aml166_core_std_spi_master_int.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\spi\demo_am116_core_std_spi_flash_dma.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_std_spi_slave_dma.c</FileName>
+              <FileName>demo_am116_core_std_spi_flash_int.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\spi\demo_aml166_core_std_spi_slave_dma.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\spi\demo_am116_core_std_spi_flash_int.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_hw_tim_cap.c</FileName>
+              <FileName>demo_am116_core_std_spi_master_dma.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\timer\demo_aml166_core_hw_tim_cap.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\spi\demo_am116_core_std_spi_master_dma.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_hw_tim_pwm.c</FileName>
+              <FileName>demo_am116_core_std_spi_master_int.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\timer\demo_aml166_core_hw_tim_pwm.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\spi\demo_am116_core_std_spi_master_int.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_hw_tim_timing.c</FileName>
+              <FileName>demo_am116_core_std_spi_slave_dma.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\timer\demo_aml166_core_hw_tim_timing.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\spi\demo_am116_core_std_spi_slave_dma.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_std_tim1_cap.c</FileName>
+              <FileName>demo_am116_core_hw_tim_cap.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\timer\demo_aml166_core_std_tim1_cap.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\timer\demo_am116_core_hw_tim_cap.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_std_tim1_pwm.c</FileName>
+              <FileName>demo_am116_core_hw_tim_cmp_toggle.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\timer\demo_aml166_core_std_tim1_pwm.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\timer\demo_am116_core_hw_tim_cmp_toggle.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_std_tim1_timing.c</FileName>
+              <FileName>demo_am116_core_hw_tim_pwm.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\timer\demo_aml166_core_std_tim1_timing.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\timer\demo_am116_core_hw_tim_pwm.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_std_tim2_cap.c</FileName>
+              <FileName>demo_am116_core_hw_tim_pwm_dead.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\timer\demo_aml166_core_std_tim2_cap.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\timer\demo_am116_core_hw_tim_pwm_dead.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_std_tim2_pwm.c</FileName>
+              <FileName>demo_am116_core_hw_tim_timing.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\timer\demo_aml166_core_std_tim2_pwm.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\timer\demo_am116_core_hw_tim_timing.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_std_tim2_timing.c</FileName>
+              <FileName>demo_am116_core_std_tim1_cap.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\timer\demo_aml166_core_std_tim2_timing.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\timer\demo_am116_core_std_tim1_cap.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_std_tim3_cap.c</FileName>
+              <FileName>demo_am116_core_std_tim1_pwm.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\timer\demo_aml166_core_std_tim3_cap.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\timer\demo_am116_core_std_tim1_pwm.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_std_tim3_pwm.c</FileName>
+              <FileName>demo_am116_core_std_tim1_timing.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\timer\demo_aml166_core_std_tim3_pwm.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\timer\demo_am116_core_std_tim1_timing.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_std_tim3_timing.c</FileName>
+              <FileName>demo_am116_core_std_tim2_cap.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\timer\demo_aml166_core_std_tim3_timing.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\timer\demo_am116_core_std_tim2_cap.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_std_tim16_timing.c</FileName>
+              <FileName>demo_am116_core_std_tim2_pwm.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\timer\demo_aml166_core_std_tim16_timing.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\timer\demo_am116_core_std_tim2_pwm.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_std_tim17_timing.c</FileName>
+              <FileName>demo_am116_core_std_tim2_timing.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\timer\demo_aml166_core_std_tim17_timing.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\timer\demo_am116_core_std_tim2_timing.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_hw_uart_int.c</FileName>
+              <FileName>demo_am116_core_std_tim3_cap.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\uart\demo_aml166_core_hw_uart_int.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\timer\demo_am116_core_std_tim3_cap.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_hw_uart_polling.c</FileName>
+              <FileName>demo_am116_core_std_tim3_pwm.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\uart\demo_aml166_core_hw_uart_polling.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\timer\demo_am116_core_std_tim3_pwm.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_hw_uart_rx_dma.c</FileName>
+              <FileName>demo_am116_core_std_tim3_timing.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\uart\demo_aml166_core_hw_uart_rx_dma.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\timer\demo_am116_core_std_tim3_timing.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_hw_uart_tx_dma.c</FileName>
+              <FileName>demo_am116_core_std_tim14_cap.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\uart\demo_aml166_core_hw_uart_tx_dma.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\timer\demo_am116_core_std_tim14_cap.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_std_uart_polling.c</FileName>
+              <FileName>demo_am116_core_std_tim14_pwm.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\uart\demo_aml166_core_std_uart_polling.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\timer\demo_am116_core_std_tim14_pwm.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_std_uart_ringbuf.c</FileName>
+              <FileName>demo_am116_core_std_tim14_timing.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\uart\demo_aml166_core_std_uart_ringbuf.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\timer\demo_am116_core_std_tim14_timing.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_drv_sleepmode_timer_wake_up.c</FileName>
+              <FileName>demo_am116_core_std_tim16_cap.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\wakeup\demo_aml166_core_drv_sleepmode_timer_wake_up.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\timer\demo_am116_core_std_tim16_cap.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_drv_sleepmode_wake_up.c</FileName>
+              <FileName>demo_am116_core_std_tim16_pwm.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\wakeup\demo_aml166_core_drv_sleepmode_wake_up.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\timer\demo_am116_core_std_tim16_pwm.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_drv_standbymode_wake_up.c</FileName>
+              <FileName>demo_am116_core_std_tim16_timing.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\wakeup\demo_aml166_core_drv_standbymode_wake_up.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\timer\demo_am116_core_std_tim16_timing.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_drv_stopmode_wake_up.c</FileName>
+              <FileName>demo_am116_core_std_tim17_cap.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\wakeup\demo_aml166_core_drv_stopmode_wake_up.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\timer\demo_am116_core_std_tim17_cap.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_hw_iwdg.c</FileName>
+              <FileName>demo_am116_core_std_tim17_pwm.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\wdg\demo_aml166_core_hw_iwdg.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\timer\demo_am116_core_std_tim17_pwm.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_hw_wwdg.c</FileName>
+              <FileName>demo_am116_core_std_tim17_timing.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\wdg\demo_aml166_core_hw_wwdg.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\timer\demo_am116_core_std_tim17_timing.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_std_iwdg.c</FileName>
+              <FileName>demo_am116_core_hw_uart_int.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\wdg\demo_aml166_core_std_iwdg.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\uart\demo_am116_core_hw_uart_int.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_std_wwdg.c</FileName>
+              <FileName>demo_am116_core_hw_uart_polling.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\wdg\demo_aml166_core_std_wwdg.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\uart\demo_am116_core_hw_uart_polling.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_entries.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\demo_aml166_core_entries.h</FilePath>
+              <FileName>demo_am116_core_hw_uart_rx_dma.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\uart\demo_am116_core_hw_uart_rx_dma.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_am116_core_hw_uart_tx_dma.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\uart\demo_am116_core_hw_uart_tx_dma.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_am116_core_std_uart_polling.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\uart\demo_am116_core_std_uart_polling.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_am116_core_std_uart_ringbuf.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\uart\demo_am116_core_std_uart_ringbuf.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_am116_core_drv_sleepmode_timer_wake_up.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\wakeup\demo_am116_core_drv_sleepmode_timer_wake_up.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_am116_core_drv_sleepmode_wake_up.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\wakeup\demo_am116_core_drv_sleepmode_wake_up.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_am116_core_drv_standbymode_wake_up.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\wakeup\demo_am116_core_drv_standbymode_wake_up.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_am116_core_drv_stopmode_wake_up.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\wakeup\demo_am116_core_drv_stopmode_wake_up.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_am116_core_hw_iwdg.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\wdg\demo_am116_core_hw_iwdg.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_am116_core_hw_wwdg.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\wdg\demo_am116_core_hw_wwdg.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_am116_core_std_iwdg.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\wdg\demo_am116_core_std_iwdg.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_am116_core_std_wwdg.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\wdg\demo_am116_core_std_wwdg.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_am116_core_std_delay.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\delay\demo_am116_core_std_delay.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_am116_core_dr_fm175xx_picca_halt.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\fm175xx\demo_am116_core_dr_fm175xx_picca_halt.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_am116_core_dr_fm175xx_picca_lpcd_read_id.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\fm175xx\demo_am116_core_dr_fm175xx_picca_lpcd_read_id.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_am116_core_dr_fm175xx_picca_read_block.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\fm175xx\demo_am116_core_dr_fm175xx_picca_read_block.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_zml166_adc_pt100_measure.c</FileName>
+              <FileName>demo_am116_core_dr_fm175xx_picca_read_id.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\adc\demo_aml166_core_zml166_adc_pt100_measure.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\fm175xx\demo_am116_core_dr_fm175xx_picca_read_id.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_zml166_adc_thermocouple_measure.c</FileName>
+              <FileName>demo_am116_core_dr_fm175xx_picca_val_operate.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\adc\demo_aml166_core_zml166_adc_thermocouple_measure.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\fm175xx\demo_am116_core_dr_fm175xx_picca_val_operate.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_zml166_adc_vol_measure.c</FileName>
+              <FileName>demo_am116_core_dr_fm175xx_picca_write_block.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\adc\demo_aml166_core_zml166_adc_vol_measure.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\fm175xx\demo_am116_core_dr_fm175xx_picca_write_block.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_zml166_adc_vol_para_adjuet.c</FileName>
+              <FileName>demo_am116_core_dr_fm175xx_piccb_read_id.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\adc\demo_aml166_core_zml166_adc_vol_para_adjuet.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\fm175xx\demo_am116_core_dr_fm175xx_piccb_read_id.c</FilePath>
             </File>
             <File>
-              <FileName>demo_aml166_core_single_uart_bootloader.c</FileName>
+              <FileName>demo_am116_core_bootloader.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am166_core\bootloader\demo_aml166_core_single_uart_bootloader.c</FilePath>
+              <FilePath>..\..\..\..\..\examples\board\am116_core\bootloader\demo_am116_core_bootloader.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -3604,11 +3814,6 @@
               <FileName>demo_fm175xx_piccb_read_id.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\examples\components\drivers\demo_fm175xx_piccb_read_id.c</FilePath>
-            </File>
-            <File>
-              <FileName>demo_fm175xx_cpu_card.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\components\drivers\demo_fm175xx_cpu_card.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -3734,26 +3939,6 @@
               <FileName>demo_zlg_hw_clk.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\examples\soc\zlg\clk\demo_zlg_hw_clk.c</FilePath>
-            </File>
-            <File>
-              <FileName>demo_zml166_adc_pt100_measure.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\soc\zlg\adc\demo_zml166_adc_pt100_measure.c</FilePath>
-            </File>
-            <File>
-              <FileName>demo_zml166_adc_thermocouple_measure.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\soc\zlg\adc\demo_zml166_adc_thermocouple_measure.c</FilePath>
-            </File>
-            <File>
-              <FileName>demo_zml166_adc_vol_measure.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\soc\zlg\adc\demo_zml166_adc_vol_measure.c</FilePath>
-            </File>
-            <File>
-              <FileName>demo_zml166_adc_vol_para_adjuet.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\soc\zlg\adc\demo_zml166_adc_vol_para_adjuet.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -3941,6 +4126,66 @@
               <FilePath>..\..\..\..\..\examples\std\sensor\hts221\demo_std_hts221_int.c</FilePath>
             </File>
             <File>
+              <FileName>demo_std_bmp280.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\std\sensor\bmp280\demo_std_bmp280.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_std_bme280.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\std\sensor\bme280\demo_std_bme280.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_std_lps22hb.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\std\sensor\lps22hb\demo_std_lps22hb.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_std_lps22hb_int.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\std\sensor\lps22hb\demo_std_lps22hb_int.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_std_bh1730fvc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\std\sensor\bh1730fvc\demo_std_bh1730fvc.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_std_bma253.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\std\sensor\bma253\demo_std_bma253.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_std_bma253_int.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\std\sensor\bma253\demo_std_bma253_int.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_std_lis3mdl.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\std\sensor\lis3mdl\demo_std_lis3mdl.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_std_lis3mdl_int.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\std\sensor\lis3mdl\demo_std_lis3mdl_int.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_std_lsm6dsl.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\std\sensor\lsm6dsl\demo_std_lsm6dsl.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_std_lsm6dsl_int.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\std\sensor\lsm6dsl\demo_std_lsm6dsl_int.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_std_shtc1.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\std\sensor\shtc1\demo_std_shtc1.c</FilePath>
+            </File>
+            <File>
               <FileName>demo_std_single_bootloader.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\examples\components\bootloader\demo_std_single_bootloader.c</FilePath>
@@ -3951,9 +4196,9 @@
           <GroupName>startup</GroupName>
           <Files>
             <File>
-              <FileName>am_aml166_armcc_startup.s</FileName>
+              <FileName>am_zlg116_armcc_startup.s</FileName>
               <FileType>2</FileType>
-              <FilePath>..\startup\am_aml166_armcc_startup.s</FilePath>
+              <FilePath>..\startup\am_zlg116_armcc_startup.s</FilePath>
             </File>
           </Files>
         </Group>
@@ -3971,6 +4216,31 @@
           <GroupName>user_config</GroupName>
           <Files>
             <File>
+              <FileName>am_prj_config.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\user_config\am_prj_config.h</FilePath>
+            </File>
+            <File>
+              <FileName>am_zlg116_inst_init.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\user_config\am_zlg116_inst_init.h</FilePath>
+            </File>
+            <File>
+              <FileName>am_board.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\user_config\am_board.h</FilePath>
+            </File>
+            <File>
+              <FileName>am_prj_config.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_prj_config.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_board.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_board.c</FilePath>
+            </File>
+            <File>
               <FileName>am_hwconf_arm_nvic.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_arm_nvic.c</FilePath>
@@ -3984,11 +4254,6 @@
               <FileName>am_hwconf_debug_uart.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_debug_uart.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_fm175xx.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_fm175xx.c</FilePath>
             </File>
             <File>
               <FileName>am_hwconf_key_gpio.c</FileName>
@@ -4066,24 +4331,104 @@
               <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_miniport_zlg72128.c</FilePath>
             </File>
             <File>
-              <FileName>am_hwconf_sensor_hts221.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_sensor_hts221.c</FilePath>
-            </File>
-            <File>
               <FileName>am_hwconf_system_tick_softimer.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_system_tick_softimer.c</FilePath>
             </File>
             <File>
-              <FileName>am_board.c</FileName>
+              <FileName>am_hwconf_zlg116_adc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\user_config\am_board.c</FilePath>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_adc.c</FilePath>
             </File>
             <File>
-              <FileName>am_prj_config.c</FileName>
+              <FileName>am_hwconf_zlg116_clk.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\user_config\am_prj_config.c</FilePath>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_clk.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_zlg116_dma.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_dma.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_zlg116_gpio.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_gpio.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_zlg116_i2c.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_i2c.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_zlg116_i2c_slv.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_i2c_slv.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_zlg116_iwdg.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_iwdg.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_zlg116_pwr.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_pwr.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_zlg116_spi_dma.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_spi_dma.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_zlg116_spi_int.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_spi_int.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_zlg116_spi_slv_dma.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_spi_slv_dma.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_zlg116_systick.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_systick.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_zlg116_tim_cap.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_tim_cap.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_zlg116_tim_pwm.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_tim_pwm.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_zlg116_tim_timing.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_tim_timing.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_zlg116_uart.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_uart.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_zlg116_wwdg.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_wwdg.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_zlg116_spi_poll.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zlg116_spi_poll.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_fm175xx.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_fm175xx.c</FilePath>
             </File>
             <File>
               <FileName>am_servconf_event_input.c</FileName>
@@ -4096,194 +4441,59 @@
               <FilePath>..\user_config\am_servconf_usrcfg\am_servconf_nvram.c</FilePath>
             </File>
             <File>
-              <FileName>am_hwconf_aml166_clk.c</FileName>
+              <FileName>am_hwconf_sensor_hts221.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_aml166_clk.c</FilePath>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_sensor_hts221.c</FilePath>
             </File>
             <File>
-              <FileName>am_hwconf_aml166_dma.c</FileName>
+              <FileName>am_hwconf_sensor_bmp280.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_aml166_dma.c</FilePath>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_sensor_bmp280.c</FilePath>
             </File>
             <File>
-              <FileName>am_hwconf_aml166_gpio.c</FileName>
+              <FileName>am_hwconf_sensor_bme280.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_aml166_gpio.c</FilePath>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_sensor_bme280.c</FilePath>
             </File>
             <File>
-              <FileName>am_hwconf_aml166_i2c.c</FileName>
+              <FileName>am_hwconf_sensor_lps22hb.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_aml166_i2c.c</FilePath>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_sensor_lps22hb.c</FilePath>
             </File>
             <File>
-              <FileName>am_hwconf_aml166_i2c_slv.c</FileName>
+              <FileName>am_hwconf_sensor_bh1730fvc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_aml166_i2c_slv.c</FilePath>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_sensor_bh1730fvc.c</FilePath>
             </File>
             <File>
-              <FileName>am_hwconf_aml166_iwdg.c</FileName>
+              <FileName>am_hwconf_sensor_bma253.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_aml166_iwdg.c</FilePath>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_sensor_bma253.c</FilePath>
             </File>
             <File>
-              <FileName>am_hwconf_aml166_pwr.c</FileName>
+              <FileName>am_hwconf_sensor_lis3mdl.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_aml166_pwr.c</FilePath>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_sensor_lis3mdl.c</FilePath>
             </File>
             <File>
-              <FileName>am_hwconf_aml166_spi_dma.c</FileName>
+              <FileName>am_hwconf_sensor_lsm6dsl.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_aml166_spi_dma.c</FilePath>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_sensor_lsm6dsl.c</FilePath>
             </File>
             <File>
-              <FileName>am_hwconf_aml166_spi_int.c</FileName>
+              <FileName>am_hwconf_sensor_shtc1.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_aml166_spi_int.c</FilePath>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_sensor_shtc1.c</FilePath>
             </File>
             <File>
-              <FileName>am_hwconf_aml166_spi_slv_dma.c</FileName>
+              <FileName>am_bootconf_zlg116_clk.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_aml166_spi_slv_dma.c</FilePath>
+              <FilePath>..\user_config\am_bootconf_usrcfg\am_bootconf_zlg116_clk.c</FilePath>
             </File>
             <File>
-              <FileName>am_hwconf_aml166_systick.c</FileName>
+              <FileName>am_bootconf_zlg116_single.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_aml166_systick.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_aml166_tim_cap.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_aml166_tim_cap.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_aml166_tim_pwm.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_aml166_tim_pwm.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_aml166_tim_timing.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_aml166_tim_timing.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_aml166_uart.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_aml166_uart.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_aml166_wwdg.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_aml166_wwdg.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_zml166_adc.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zml166_adc.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_buzzer_pwm.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_buzzer_pwm.h</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_debug_uart.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_debug_uart.h</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_fm175xx.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_fm175xx.h</FilePath>
-            </File>
-            <File>
-              <FileName>am_prj_config.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\user_config\am_prj_config.h</FilePath>
-            </File>
-            <File>
-              <FileName>am_service_inst_init.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\user_config\am_servconf_usrcfg\am_service_inst_init.h</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_key_gpio.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_key_gpio.h</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_led_gpio.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_led_gpio.h</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_lm75.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_lm75.h</FilePath>
-            </File>
-            <File>
-              <FileName>am_board.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\user_config\am_board.h</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_microport.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_microport.h</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_miniport_595.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_miniport_595.h</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_miniport_key.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_miniport_key.h</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_miniport_led.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_miniport_led.h</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_miniport_view.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_miniport_view.h</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_miniport_view_key.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_miniport_view_key.h</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_miniport_zlg72128.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_miniport_zlg72128.h</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_sensor_hts221.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_sensor_hts221.h</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_system_tick_softimer.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_system_tick_softimer.h</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_aml166_spi_poll.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_aml166_spi_poll.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_bootconf_aml166_clk.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_bootconf_usrcfg\am_bootconf_aml166_clk.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_bootconf_aml166_single.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_bootconf_usrcfg\am_bootconf_aml166_single.c</FilePath>
+              <FilePath>..\user_config\am_bootconf_usrcfg\am_bootconf_zlg116_single.c</FilePath>
             </File>
           </Files>
         </Group>
