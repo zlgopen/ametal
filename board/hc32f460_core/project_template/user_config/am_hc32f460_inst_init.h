@@ -1753,6 +1753,44 @@ am_usbd_msc_handle am_hc32f460_usb_msc_inst_init (void);
  * \return 无
  */
 void am_hc32f460_usb_msc_inst_deinit (void);
+
+/**
+ * \brief usb_mouse实例初始化，获得usb_mouse标准服务句柄
+ *
+ * \param 无
+ *
+ * \return usb_mouse 标准服务句柄，若为 NULL，表明初始化失败
+ */
+am_usbd_dev_t am_hc32f460_usb_mouse_inst_init (void);
+
+/**
+ * \brief usb_mouse解初始化
+ *
+ * \param[in] handle 通过 am_hc32f460_usb_mouse_inst_init() 函数获得的 usb_msc 标准服务句柄
+ *
+ * \return 无
+ */
+void am_hc32f460_usb_mouse_inst_deinit (void);
+
+
+/**
+ * \brief usb hid custom实例初始化，获得usb hid custom标准服务句柄
+ *
+ * \param 无
+ *
+ * \return usb hid custom 标准服务句柄，若为 NULL，表明初始化失败
+ */
+am_usbd_dev_t am_hc32f460_usb_hid_custom_inst_init (void);
+
+/**
+ * \brief usb hid custom解初始化
+ *
+ * \param[in] handle 通过 am_hc32f460_usb__hid_custom_inst_init() 函数获得的 usb_msc 标准服务句柄
+ *
+ * \return 无
+ */
+void am_hc32f460_usb_hid_custom_inst_deinit (void);
+
 /**
  * @}
  */

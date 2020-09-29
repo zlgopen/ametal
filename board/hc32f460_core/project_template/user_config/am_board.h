@@ -33,6 +33,8 @@
 /** \brief LED Ë÷Òý ID ºÅ */
 #define LED0          0
 #define LED1          1
+#define LED2          2
+#define LED3          3
 
 #if (AM_CFG_BUZZER_ENABLE == 1)
 

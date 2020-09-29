@@ -65,7 +65,7 @@ am_wdt_handle_t am_hc32f460_swdt_inst_init (void)
 }
 
 /**
- * \brief WDT 实例解初始化
+ * \brief SWDT 实例解初始化
  */
 void am_hc32f460_swdt_inst_deinit (am_wdt_handle_t handle)
 {

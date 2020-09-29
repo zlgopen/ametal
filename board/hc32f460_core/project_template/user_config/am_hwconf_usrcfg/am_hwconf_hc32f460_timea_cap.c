@@ -124,8 +124,8 @@ const am_hc32f460_timea_cap_devinfo_t  __g_timea1_cap_devinfo = {
                                              */
 
     &__g_timea1_cap_ioinfo_list[0],
-    __hc32f460_plfm_timea1_cap_init,        /**< \brief 平台初始化函数 */
-    __hc32f460_plfm_timea1_cap_deinit       /**< \brief 平台解初始化函数 */
+    __hc32f460_plfm_timea1_cap_init,         /**< \brief 平台初始化函数 */
+    __hc32f460_plfm_timea1_cap_deinit        /**< \brief 平台解初始化函数 */
 };
 
 /** \brief TIMEA1用于捕获功能的设备定义 */

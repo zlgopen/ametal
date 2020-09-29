@@ -10,8 +10,7 @@
       <TargetName>debug</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
-      <pCCUsed>5060750::V5.06 update 6 (build 750)::ARMCC</pCCUsed>
-      <uAC6>0</uAC6>
+      <pCCUsed>5060061::V5.06 update 1 (build 61)::ARMCC</pCCUsed>
       <TargetOption>
         <TargetCommonOption>
           <Device>HC32F460PETB</Device>
@@ -126,6 +125,47 @@
             <HexOffset>0</HexOffset>
             <Oh166RecLen>16</Oh166RecLen>
           </OPTHX>
+          <Simulator>
+            <UseSimulator>0</UseSimulator>
+            <LoadApplicationAtStartup>1</LoadApplicationAtStartup>
+            <RunToMain>1</RunToMain>
+            <RestoreBreakpoints>1</RestoreBreakpoints>
+            <RestoreWatchpoints>1</RestoreWatchpoints>
+            <RestoreMemoryDisplay>1</RestoreMemoryDisplay>
+            <RestoreFunctions>1</RestoreFunctions>
+            <RestoreToolbox>1</RestoreToolbox>
+            <LimitSpeedToRealTime>0</LimitSpeedToRealTime>
+            <RestoreSysVw>1</RestoreSysVw>
+          </Simulator>
+          <Target>
+            <UseTarget>1</UseTarget>
+            <LoadApplicationAtStartup>1</LoadApplicationAtStartup>
+            <RunToMain>1</RunToMain>
+            <RestoreBreakpoints>1</RestoreBreakpoints>
+            <RestoreWatchpoints>1</RestoreWatchpoints>
+            <RestoreMemoryDisplay>1</RestoreMemoryDisplay>
+            <RestoreFunctions>0</RestoreFunctions>
+            <RestoreToolbox>1</RestoreToolbox>
+            <RestoreTracepoints>1</RestoreTracepoints>
+            <RestoreSysVw>1</RestoreSysVw>
+          </Target>
+          <RunDebugAfterBuild>0</RunDebugAfterBuild>
+          <TargetSelection>6</TargetSelection>
+          <SimDlls>
+            <CpuDll></CpuDll>
+            <CpuDllArguments></CpuDllArguments>
+            <PeripheralDll></PeripheralDll>
+            <PeripheralDllArguments></PeripheralDllArguments>
+            <InitializationFile></InitializationFile>
+          </SimDlls>
+          <TargetDlls>
+            <CpuDll></CpuDll>
+            <CpuDllArguments></CpuDllArguments>
+            <PeripheralDll></PeripheralDll>
+            <PeripheralDllArguments></PeripheralDllArguments>
+            <InitializationFile></InitializationFile>
+            <Driver>Segger\JL2CM3.dll</Driver>
+          </TargetDlls>
         </DebugOption>
         <Utilities>
           <Flash1>
@@ -184,7 +224,6 @@
             <hadXRAM>0</hadXRAM>
             <uocXRam>0</uocXRam>
             <RvdsVP>1</RvdsVP>
-            <RvdsMve>0</RvdsMve>
             <hadIRAM2>1</hadIRAM2>
             <hadIROM2>1</hadIROM2>
             <StupSel>8</StupSel>
@@ -325,20 +364,16 @@
             <uThumb>0</uThumb>
             <uSurpInc>0</uSurpInc>
             <uC99>1</uC99>
-            <uGnu>0</uGnu>
             <useXO>0</useXO>
             <v6Lang>0</v6Lang>
             <v6LangP>0</v6LangP>
             <vShortEn>0</vShortEn>
             <vShortWch>0</vShortWch>
-            <v6Lto>0</v6Lto>
-            <v6WtE>0</v6WtE>
-            <v6Rtti>0</v6Rtti>
             <VariousControls>
               <MiscControls></MiscControls>
               <Define>AM_VDEBUG AM_CORTEX_M4,__DEBUG,HC32F46x,USE_DEVICE_DRIVER_LIB</Define>
               <Undefine></Undefine>
-              <IncludePath>..\user_code;..\user_config;..\user_config\am_hwconf_usrcfg;..\user_config\am_servconf_usrcfg;..\..\..\..\3rdparty\CMSIS\Include;..\..\..\..\arch\arm\include;..\..\..\bsp_common\include;..\..\..\..\components\drivers\include;..\..\..\..\components\service\include;..\..\..\..\components\util\include;..\..\..\..\interface;..\..\..\bsp_common\include;..\user_config;..\..\..\..\arch\arm\include\hw;..\..\..\..\examples\components;..\..\..\..\components\libc\newlib_adapter\include;..\..\..\..\components\libc\armlib_adapter\include;..\..\..\..\components\libc\microlib_adapter\include;..\..\..\..\components\libc\newlib_adapter\include;..\..\..\..\components\usb\device;..\..\..\..\components\usb\include;..\..\..\..\components\usb\osa;..\..\..\..\components\usb\host\config;..\..\..\..\components\usb\host\common\include;..\..\..\..\components\usb\host\class\include;..\..\..\..\components\usb\device\config\include;..\..\..\..\components\usb\host;..\..\..\..\components\drivers\source\lcd;..\..\..\..\components\usb;..\..\..\..\components\usb\osa;..\..\..\..\components\usb\include;..\..\..\..\components\usb\device;..\..\..\..\components\usb\device\common\include;..\..\..\..\components\usb\device\class\include;..\..\..\..\components\usb\osa;..\..\..\..\components\drivers\include;..\..\..\..\components\bootloader\include\arch\arm;..\..\..\..\components\bootloader\include\command_analyse\kboot_KinetisFlashTool;..\..\..\..\components\bootloader\include\command_analyse\kboot_KinetisFlashTool\drivers;..\..\..\..\components\bootloader\include\core;..\..\..\..\components\bootloader\include\drivers;..\startup\common;..\user_code\driver\inc;..\..\..\..\soc\hdsc\drivers\include\clk;..\..\..\..\soc\hdsc\drivers\include\flash;..\..\..\..\soc\hdsc\drivers\include\gpio;..\..\..\..\soc\hdsc\drivers\include\uart;..\..\..\..\soc\hdsc\drivers\include\rcc;..\..\..\..\soc\hdsc\drivers\include\tim;..\..\..\..\soc\hdsc\drivers\include\adc;..\..\..\..\soc\hdsc\drivers\include\adtim;..\..\..\..\soc\hdsc\drivers\include\aes;..\..\..\..\soc\hdsc\drivers\include\qspi;..\..\..\..\soc\hdsc\drivers\include\can;..\..\..\..\soc\hdsc\drivers\include\crc;..\..\..\..\soc\hdsc\drivers\include\dma;..\..\..\..\soc\hdsc\drivers\include\flash;..\..\..\..\soc\hdsc\drivers\include\i2c;..\..\..\..\soc\hdsc\drivers\include\rtc;..\..\..\..\soc\hdsc\drivers\include\sdio;..\..\..\..\soc\hdsc\drivers\include\spi;..\..\..\..\soc\hdsc\drivers\include\trng;..\..\..\..\soc\hdsc\drivers\include\usbd;..\..\..\..\soc\hdsc\drivers\include\wdt;..\..\..\..\soc\hdsc\drivers\include\qspi;..\..\..\..\soc\hdsc\drivers\include\mpu;..\..\..\..\soc\hdsc\drivers\include\hash;..\..\..\..\soc\hdsc\drivers\include\dcu;..\..\..\..\soc\hdsc\hc32f460;..\..\..\..\soc\hdsc\drivers\source\usbd\internal_usb_core\usbd_msc\source;..\..\..\..\soc\hdsc\drivers\source\usbd\internal_usb_core\usb_lib\ctl_drv;..\..\..\..\soc\hdsc\drivers\source\usbd\internal_usb_core\usb_lib\device_class\msc;..\..\..\..\soc\hdsc\drivers\source\usbd\internal_usb_core\usb_lib\device_core;..\..\..\..\soc\hdsc\drivers\include\cmp;..\..\..\..\soc\hdsc\drivers\include\usbd\hw</IncludePath>
+              <IncludePath>..\user_code;..\user_config;..\user_config\am_hwconf_usrcfg;..\user_config\am_servconf_usrcfg;..\..\..\..\3rdparty\CMSIS\Include;..\..\..\..\arch\arm\include;..\..\..\bsp_common\include;..\..\..\..\components\drivers\include;..\..\..\..\components\service\include;..\..\..\..\components\util\include;..\..\..\..\interface;..\..\..\bsp_common\include;..\user_config;..\..\..\..\arch\arm\include\hw;..\..\..\..\components\libc\newlib_adapter\include;..\..\..\..\components\libc\armlib_adapter\include;..\..\..\..\components\libc\microlib_adapter\include;..\..\..\..\components\libc\newlib_adapter\include;..\..\..\..\components\usb\device;..\..\..\..\components\usb\include;..\..\..\..\components\usb\osa;..\..\..\..\components\usb\host\config;..\..\..\..\components\usb\host\common\include;..\..\..\..\components\usb\host\class\include;..\..\..\..\components\usb\device\config\include;..\..\..\..\components\usb\host;..\..\..\..\soc\zlg\drivers\include\syscfg;..\..\..\..\components\drivers\source\lcd;..\..\..\..\components\usb;..\..\..\..\components\usb\osa;..\..\..\..\components\usb\include;..\..\..\..\components\usb\device;..\..\..\..\components\usb\device\common\include;..\..\..\..\components\usb\device\class\include;..\..\..\..\components\usb\osa;..\..\..\..\components\drivers\include;..\..\..\..\components\bootloader\include\arch\arm;..\..\..\..\components\bootloader\include\command_analyse\kboot_KinetisFlashTool;..\..\..\..\components\bootloader\include\command_analyse\kboot_KinetisFlashTool\drivers;..\..\..\..\components\bootloader\include\core;..\..\..\..\components\bootloader\include\drivers;..\startup\common;..\user_code\driver\inc;..\..\..\..\soc\hdsc\drivers\include\clk;..\..\..\..\soc\hdsc\drivers\include\flash;..\..\..\..\soc\hdsc\drivers\include\gpio;..\..\..\..\soc\hdsc\drivers\include\uart;..\..\..\..\soc\hdsc\drivers\include\rcc;..\..\..\..\soc\hdsc\drivers\include\tim;..\..\..\..\soc\hdsc\drivers\include\adc;..\..\..\..\soc\hdsc\drivers\include\adtim;..\..\..\..\soc\hdsc\drivers\include\aes;..\..\..\..\soc\hdsc\drivers\include\qspi;..\..\..\..\soc\hdsc\drivers\include\can;..\..\..\..\soc\hdsc\drivers\include\crc;..\..\..\..\soc\hdsc\drivers\include\dma;..\..\..\..\soc\hdsc\drivers\include\flash;..\..\..\..\soc\hdsc\drivers\include\i2c;..\..\..\..\soc\hdsc\drivers\include\rtc;..\..\..\..\soc\hdsc\drivers\include\sdio;..\..\..\..\soc\hdsc\drivers\include\spi;..\..\..\..\soc\hdsc\drivers\include\trng;..\..\..\..\soc\hdsc\drivers\include\usbd;..\..\..\..\soc\hdsc\drivers\include\wdt;..\..\..\..\soc\hdsc\drivers\include\qspi;..\..\..\..\soc\hdsc\drivers\include\mpu;..\..\..\..\soc\hdsc\drivers\include\hash;..\..\..\..\soc\hdsc\drivers\include\dcu;..\..\..\..\soc\hdsc\hc32f460;..\..\..\..\soc\hdsc\drivers\include\cmp;..\..\..\..\soc\hdsc\drivers\include\usbd\hw;..\..\..\..\soc\hdsc\drivers\source\usbd\internal_usb_core\usbd_dev\source;..\..\..\..\soc\hdsc\drivers\source\usbd\internal_usb_core\usb_lib\device_core;..\..\..\..\soc\hdsc\drivers\source\usbd\internal_usb_core\usb_lib\ctl_drv;..\..\..\..\soc\hdsc\drivers\source\usbd\internal_usb_core\usb_lib\device_class;..\..\..\..\soc\hdsc\drivers\source\usbd\internal_usb_core\usb_lib\device_class\msc;..\..\..\..\soc\hdsc\drivers\source\usbd\internal_usb_core\usb_lib\device_class\hid_mouse;..\..\..\..\soc\hdsc\drivers\source\usbd\internal_usb_core\usb_lib\device_class\hid_custom</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -351,7 +386,6 @@
             <NoWarn>0</NoWarn>
             <uSurpInc>0</uSurpInc>
             <useXO>0</useXO>
-            <uClangAs>0</uClangAs>
             <VariousControls>
               <MiscControls></MiscControls>
               <Define></Define>
@@ -613,9 +647,9 @@
               <FilePath>..\..\..\..\components\drivers\source\sdcard\am_sdcard.c</FilePath>
             </File>
             <File>
-              <FileName>am_usbd_lib_m3.lib</FileName>
+              <FileName>am_usbd_lib_m4.lib</FileName>
               <FileType>4</FileType>
-              <FilePath>..\..\..\..\components\usb\am_usbd_lib_m3.lib</FilePath>
+              <FilePath>..\..\..\..\components\usb\am_usbd_lib_m4.lib</FilePath>
             </File>
             <File>
               <FileName>zlg72128.c</FileName>
@@ -1013,6 +1047,11 @@
               <FilePath>..\..\..\..\soc\hdsc\drivers\source\crc\am_hc32f460_crc.c</FilePath>
             </File>
             <File>
+              <FileName>am_hc32f460_usbd.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\soc\hdsc\drivers\source\usbd\am_hc32f460_usbd.c</FilePath>
+            </File>
+            <File>
               <FileName>usb_core.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\soc\hdsc\drivers\source\usbd\internal_usb_core\usb_lib\ctl_drv\usb_core.c</FilePath>
@@ -1068,34 +1107,39 @@
               <FilePath>..\..\..\..\soc\hdsc\drivers\source\usbd\internal_usb_core\usb_lib\device_core\usbd_req.c</FilePath>
             </File>
             <File>
+              <FileName>am_hc32f460_i2c_slv.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\soc\hdsc\drivers\source\i2c\am_hc32f460_i2c_slv.c</FilePath>
+            </File>
+            <File>
+              <FileName>usbd_hid_mouse_core.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\soc\hdsc\drivers\source\usbd\internal_usb_core\usb_lib\device_class\hid_mouse\usbd_hid_mouse_core.c</FilePath>
+            </File>
+            <File>
               <FileName>usb_bsp_template.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\hdsc\drivers\source\usbd\internal_usb_core\usbd_msc\source\usb_bsp_template.c</FilePath>
+              <FilePath>..\..\..\..\soc\hdsc\drivers\source\usbd\internal_usb_core\usbd_dev\source\usb_bsp_template.c</FilePath>
             </File>
             <File>
               <FileName>usbd_desc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\hdsc\drivers\source\usbd\internal_usb_core\usbd_msc\source\usbd_desc.c</FilePath>
+              <FilePath>..\..\..\..\soc\hdsc\drivers\source\usbd\internal_usb_core\usbd_dev\source\usbd_desc.c</FilePath>
             </File>
             <File>
               <FileName>usbd_storage_msd.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\hdsc\drivers\source\usbd\internal_usb_core\usbd_msc\source\usbd_storage_msd.c</FilePath>
+              <FilePath>..\..\..\..\soc\hdsc\drivers\source\usbd\internal_usb_core\usbd_dev\source\usbd_storage_msd.c</FilePath>
             </File>
             <File>
               <FileName>usbd_usr.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\hdsc\drivers\source\usbd\internal_usb_core\usbd_msc\source\usbd_usr.c</FilePath>
+              <FilePath>..\..\..\..\soc\hdsc\drivers\source\usbd\internal_usb_core\usbd_dev\source\usbd_usr.c</FilePath>
             </File>
             <File>
-              <FileName>am_hc32f460_usbd.c</FileName>
+              <FileName>usbd_hid_custom_core.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\hdsc\drivers\source\usbd\am_hc32f460_usbd.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hc32f460_i2c_slv.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\hdsc\drivers\source\i2c\am_hc32f460_i2c_slv.c</FilePath>
+              <FilePath>..\..\..\..\soc\hdsc\drivers\source\usbd\internal_usb_core\usb_lib\device_class\hid_custom\usbd_hid_custom_core.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -1348,14 +1392,29 @@
               <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_hc32f460_usb_msc.c</FilePath>
             </File>
             <File>
+              <FileName>am_hwconf_hc32f460_i2c_slv.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_hc32f460_i2c_slv.c</FilePath>
+            </File>
+            <File>
               <FileName>am_hwconf_key_gpio.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_key_gpio.c</FilePath>
             </File>
             <File>
-              <FileName>am_hwconf_hc32f460_i2c_slv.c</FileName>
+              <FileName>am_hwconf_hc32f460_usb_mouse.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_hc32f460_i2c_slv.c</FilePath>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_hc32f460_usb_mouse.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_usb_common_config.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_usb_common_config.h</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_hc32f460_usb_custom.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_hc32f460_usb_custom.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -1365,8 +1424,7 @@
       <TargetName>release</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
-      <pCCUsed>5060750::V5.06 update 6 (build 750)::ARMCC</pCCUsed>
-      <uAC6>0</uAC6>
+      <pCCUsed>5060061::V5.06 update 1 (build 61)::ARMCC</pCCUsed>
       <TargetOption>
         <TargetCommonOption>
           <Device>HC32F460PETB</Device>
@@ -1481,6 +1539,47 @@
             <HexOffset>0</HexOffset>
             <Oh166RecLen>16</Oh166RecLen>
           </OPTHX>
+          <Simulator>
+            <UseSimulator>0</UseSimulator>
+            <LoadApplicationAtStartup>1</LoadApplicationAtStartup>
+            <RunToMain>1</RunToMain>
+            <RestoreBreakpoints>1</RestoreBreakpoints>
+            <RestoreWatchpoints>1</RestoreWatchpoints>
+            <RestoreMemoryDisplay>1</RestoreMemoryDisplay>
+            <RestoreFunctions>1</RestoreFunctions>
+            <RestoreToolbox>1</RestoreToolbox>
+            <LimitSpeedToRealTime>0</LimitSpeedToRealTime>
+            <RestoreSysVw>1</RestoreSysVw>
+          </Simulator>
+          <Target>
+            <UseTarget>1</UseTarget>
+            <LoadApplicationAtStartup>1</LoadApplicationAtStartup>
+            <RunToMain>1</RunToMain>
+            <RestoreBreakpoints>1</RestoreBreakpoints>
+            <RestoreWatchpoints>1</RestoreWatchpoints>
+            <RestoreMemoryDisplay>1</RestoreMemoryDisplay>
+            <RestoreFunctions>0</RestoreFunctions>
+            <RestoreToolbox>1</RestoreToolbox>
+            <RestoreTracepoints>1</RestoreTracepoints>
+            <RestoreSysVw>1</RestoreSysVw>
+          </Target>
+          <RunDebugAfterBuild>0</RunDebugAfterBuild>
+          <TargetSelection>6</TargetSelection>
+          <SimDlls>
+            <CpuDll></CpuDll>
+            <CpuDllArguments></CpuDllArguments>
+            <PeripheralDll></PeripheralDll>
+            <PeripheralDllArguments></PeripheralDllArguments>
+            <InitializationFile></InitializationFile>
+          </SimDlls>
+          <TargetDlls>
+            <CpuDll></CpuDll>
+            <CpuDllArguments></CpuDllArguments>
+            <PeripheralDll></PeripheralDll>
+            <PeripheralDllArguments></PeripheralDllArguments>
+            <InitializationFile></InitializationFile>
+            <Driver>Segger\JL2CM3.dll</Driver>
+          </TargetDlls>
         </DebugOption>
         <Utilities>
           <Flash1>
@@ -1539,7 +1638,6 @@
             <hadXRAM>0</hadXRAM>
             <uocXRam>0</uocXRam>
             <RvdsVP>2</RvdsVP>
-            <RvdsMve>0</RvdsMve>
             <hadIRAM2>1</hadIRAM2>
             <hadIROM2>1</hadIROM2>
             <StupSel>8</StupSel>
@@ -1680,20 +1778,16 @@
             <uThumb>0</uThumb>
             <uSurpInc>0</uSurpInc>
             <uC99>1</uC99>
-            <uGnu>0</uGnu>
             <useXO>0</useXO>
             <v6Lang>0</v6Lang>
             <v6LangP>0</v6LangP>
             <vShortEn>0</vShortEn>
             <vShortWch>0</vShortWch>
-            <v6Lto>0</v6Lto>
-            <v6WtE>0</v6WtE>
-            <v6Rtti>0</v6Rtti>
             <VariousControls>
               <MiscControls></MiscControls>
               <Define>AM_VDEBUG AM_CORTEX_M4,__DEBUG,HC32F46x,USE_DEVICE_DRIVER_LIB,__FPU_PRESENT</Define>
               <Undefine></Undefine>
-              <IncludePath>..\user_code;..\user_config;..\user_config\am_servconf_usrcfg;..\..\..\..\3rdparty\CMSIS\Include;..\..\..\..\arch\arm\include;..\..\..\bsp_common\include;..\..\..\..\components\drivers\include;..\..\..\..\components\service\include;..\..\..\..\components\util\include;..\..\..\..\examples\components;..\..\..\..\examples\soc\hdsc;..\..\..\..\examples\std;..\..\..\..\interface;..\user_config\am_hwconf_usrcfg;..\..\..\..\soc\hdsc\drivers\include\adc;..\..\..\..\soc\hdsc\drivers\include\clk;..\..\..\..\soc\hdsc\drivers\include\crc;..\..\..\..\soc\hdsc\drivers\include\dma;..\..\..\..\soc\hdsc\drivers\include\flash\hw;..\..\..\..\soc\hdsc\drivers\include\gpio;..\..\..\..\soc\hdsc\drivers\include\i2c;..\..\..\..\soc\hdsc\drivers\include\rcc;..\..\..\..\soc\hdsc\drivers\include\spi;..\..\..\..\soc\hdsc\drivers\include\tim;..\..\..\..\soc\hdsc\drivers\include\uart;..\..\..\..\soc\hdsc\drivers\include\wdt;..\..\..\bsp_common\include;..\user_config;..\..\..\..\soc\hdsc\drivers\include\gpio\hw;..\..\..\..\soc\hdsc\drivers\include\rtc\hw;..\..\..\..\soc\hdsc\drivers\include\rcc\hw;..\..\..\hc32f460_core;..\..\..\..\soc\hdsc\drivers\include\adc;..\..\..\..\soc\hdsc\drivers\include\adc\hw;..\..\..\..\soc\hdsc\drivers\include\uart\hw;..\..\..\..\soc\hdsc\drivers\include\flash;..\..\..\..\soc\hdsc\drivers\include\crc\hw;..\..\..\..\soc\hdsc\drivers\include\dac\hw;..\..\..\..\soc\hdsc\drivers\include\dma\hw;..\..\..\..\soc\hdsc\drivers\include\i2c\hw;..\..\..\..\soc\hdsc\drivers\include\wdt\hw;..\..\..\..\soc\hdsc\drivers\include\spi\hw;..\..\..\..\soc\hdsc\drivers\include\tim\hw;..\..\..\..\arch\arm\include\hw;..\..\..\..\soc\hdsc\drivers\include\rtc;..\..\..\..\examples\components;..\..\..\..\components\libc\newlib_adapter\include;..\..\..\..\components\libc\armlib_adapter\include;..\..\..\..\components\libc\microlib_adapter\include;..\..\..\..\components\libc\newlib_adapter\include;..\..\..\..\soc\hdsc\drivers\include\can;..\..\..\..\soc\hdsc\drivers\include\can\hw;..\..\..\..\soc\hdsc\drivers\include\usbd;..\..\..\..\soc\hdsc\drivers\include\usbd\hw;..\..\..\..\components\usb\device;..\..\..\..\components\usb\include;..\..\..\..\components\usb\osa;..\..\..\..\components\usb\host\config;..\..\..\..\components\usb\host\common\include;..\..\..\..\components\usb\host\class\include;..\..\..\..\components\usb\device\config\include;..\..\..\..\components\usb\host;..\..\..\..\components\drivers\source\lcd;..\..\..\..\soc\hdsc\hc32f460;..\..\..\..\soc\hdsc\drivers\include\qspi;..\..\..\..\soc\hdsc\drivers\include\aes;..\..\..\..\soc\hdsc\drivers\include\sdio;..\..\..\..\soc\hdsc\drivers\include\mpu;..\..\..\..\soc\hdsc\drivers\include\hash;..\..\..\..\soc\hdsc\drivers\include\trng;..\..\..\..\soc\hdsc\drivers\include\adtim;..\..\..\..\soc\hdsc\drivers\include\dcu;..\..\..\..\examples\board\amhc32f460_core;..\..\..\..\soc\hdsc\drivers\source\usbd\internal_usb_core\usbd_msc\source;..\..\..\..\soc\hdsc\drivers\source\usbd\internal_usb_core\usb_lib\ctl_drv;..\..\..\..\soc\hdsc\drivers\source\usbd\internal_usb_core\usb_lib\device_class\msc;..\..\..\..\soc\hdsc\drivers\source\usbd\internal_usb_core\usb_lib\device_core;..\..\..\..\components\usb;..\..\..\..\soc\hdsc\drivers\include\cmp;..\..\..\..\components\usb\device\common\include;..\..\..\..\components\usb\device\class\include</IncludePath>
+              <IncludePath>..\user_code;..\user_config;..\user_config\am_servconf_usrcfg;..\..\..\..\3rdparty\CMSIS\Include;..\..\..\..\arch\arm\include;..\..\..\bsp_common\include;..\..\..\..\components\drivers\include;..\..\..\..\components\service\include;..\..\..\..\components\util\include;..\..\..\..\examples\components;..\..\..\..\examples\soc\hdsc;..\..\..\..\examples\std;..\..\..\..\interface;..\user_config\am_hwconf_usrcfg;..\..\..\..\soc\hdsc\drivers\include\adc;..\..\..\..\soc\hdsc\drivers\include\clk;..\..\..\..\soc\hdsc\drivers\include\crc;..\..\..\..\soc\hdsc\drivers\include\dma;..\..\..\..\soc\hdsc\drivers\include\flash\hw;..\..\..\..\soc\hdsc\drivers\include\gpio;..\..\..\..\soc\hdsc\drivers\include\i2c;..\..\..\..\soc\hdsc\drivers\include\rcc;..\..\..\..\soc\hdsc\drivers\include\spi;..\..\..\..\soc\hdsc\drivers\include\tim;..\..\..\..\soc\hdsc\drivers\include\uart;..\..\..\..\soc\hdsc\drivers\include\wdt;..\..\..\bsp_common\include;..\user_config;..\..\..\..\soc\hdsc\drivers\include\gpio\hw;..\..\..\..\soc\hdsc\drivers\include\rtc\hw;..\..\..\..\soc\hdsc\drivers\include\rcc\hw;..\..\..\hc32f460_core;..\..\..\..\soc\hdsc\drivers\include\adc;..\..\..\..\soc\hdsc\drivers\include\adc\hw;..\..\..\..\soc\hdsc\drivers\include\uart\hw;..\..\..\..\soc\hdsc\drivers\include\flash;..\..\..\..\soc\hdsc\drivers\include\crc\hw;..\..\..\..\soc\hdsc\drivers\include\dac\hw;..\..\..\..\soc\hdsc\drivers\include\dma\hw;..\..\..\..\soc\hdsc\drivers\include\i2c\hw;..\..\..\..\soc\hdsc\drivers\include\wdt\hw;..\..\..\..\soc\hdsc\drivers\include\spi\hw;..\..\..\..\soc\hdsc\drivers\include\tim\hw;..\..\..\..\arch\arm\include\hw;..\..\..\..\soc\hdsc\drivers\include\rtc;..\..\..\..\examples\components;..\..\..\..\components\libc\newlib_adapter\include;..\..\..\..\components\libc\armlib_adapter\include;..\..\..\..\components\libc\microlib_adapter\include;..\..\..\..\components\libc\newlib_adapter\include;..\..\..\..\soc\hdsc\drivers\include\can;..\..\..\..\soc\hdsc\drivers\include\can\hw;..\..\..\..\soc\hdsc\drivers\include\usbd;..\..\..\..\soc\hdsc\drivers\include\usbd\hw;..\..\..\..\components\usb\device;..\..\..\..\components\usb\include;..\..\..\..\components\usb\osa;..\..\..\..\components\usb\host\config;..\..\..\..\components\usb\host\common\include;..\..\..\..\components\usb\host\class\include;..\..\..\..\components\usb\device\config\include;..\..\..\..\components\usb\host;..\..\..\..\components\drivers\source\lcd;..\..\..\..\soc\hdsc\hc32f460;..\..\..\..\soc\hdsc\drivers\include\qspi;..\..\..\..\soc\hdsc\drivers\include\aes;..\..\..\..\soc\hdsc\drivers\include\sdio;..\..\..\..\soc\hdsc\drivers\include\mpu;..\..\..\..\soc\hdsc\drivers\include\hash;..\..\..\..\soc\hdsc\drivers\include\trng;..\..\..\..\soc\hdsc\drivers\include\adtim;..\..\..\..\soc\hdsc\drivers\include\dcu;..\..\..\..\examples\board\amhc32f460_core;..\..\..\..\soc\hdsc\drivers\include\cmp;..\..\..\..\components\usb\device\common\include;..\..\..\..\components\usb\device\class\include;..\..\..\..\components\usb;..\..\..\..\soc\hdsc\drivers\source\usbd\internal_usb_core\usbd_dev\source;..\..\..\..\soc\hdsc\drivers\source\usbd\internal_usb_core\usb_lib\ctl_drv;..\..\..\..\soc\hdsc\drivers\source\usbd\internal_usb_core\usb_lib\device_class\msc;..\..\..\..\soc\hdsc\drivers\source\usbd\internal_usb_core\usb_lib\device_core;..\..\..\..\soc\hdsc\drivers\source\usbd\internal_usb_core\usb_lib\device_class\hid_mouse;..\..\..\..\soc\hdsc\drivers\source\usbd\internal_usb_core\usb_lib\device_class\hid_custom</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -1706,7 +1800,6 @@
             <NoWarn>0</NoWarn>
             <uSurpInc>0</uSurpInc>
             <useXO>0</useXO>
-            <uClangAs>0</uClangAs>
             <VariousControls>
               <MiscControls></MiscControls>
               <Define></Define>
@@ -1968,9 +2061,9 @@
               <FilePath>..\..\..\..\components\drivers\source\sdcard\am_sdcard.c</FilePath>
             </File>
             <File>
-              <FileName>am_usbd_lib_m3.lib</FileName>
+              <FileName>am_usbd_lib_m4.lib</FileName>
               <FileType>4</FileType>
-              <FilePath>..\..\..\..\components\usb\am_usbd_lib_m3.lib</FilePath>
+              <FilePath>..\..\..\..\components\usb\am_usbd_lib_m4.lib</FilePath>
             </File>
             <File>
               <FileName>zlg72128.c</FileName>
@@ -2368,6 +2461,11 @@
               <FilePath>..\..\..\..\soc\hdsc\drivers\source\crc\am_hc32f460_crc.c</FilePath>
             </File>
             <File>
+              <FileName>am_hc32f460_usbd.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\soc\hdsc\drivers\source\usbd\am_hc32f460_usbd.c</FilePath>
+            </File>
+            <File>
               <FileName>usb_core.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\soc\hdsc\drivers\source\usbd\internal_usb_core\usb_lib\ctl_drv\usb_core.c</FilePath>
@@ -2423,34 +2521,39 @@
               <FilePath>..\..\..\..\soc\hdsc\drivers\source\usbd\internal_usb_core\usb_lib\device_core\usbd_req.c</FilePath>
             </File>
             <File>
+              <FileName>am_hc32f460_i2c_slv.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\soc\hdsc\drivers\source\i2c\am_hc32f460_i2c_slv.c</FilePath>
+            </File>
+            <File>
+              <FileName>usbd_hid_mouse_core.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\soc\hdsc\drivers\source\usbd\internal_usb_core\usb_lib\device_class\hid_mouse\usbd_hid_mouse_core.c</FilePath>
+            </File>
+            <File>
               <FileName>usb_bsp_template.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\hdsc\drivers\source\usbd\internal_usb_core\usbd_msc\source\usb_bsp_template.c</FilePath>
+              <FilePath>..\..\..\..\soc\hdsc\drivers\source\usbd\internal_usb_core\usbd_dev\source\usb_bsp_template.c</FilePath>
             </File>
             <File>
               <FileName>usbd_desc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\hdsc\drivers\source\usbd\internal_usb_core\usbd_msc\source\usbd_desc.c</FilePath>
+              <FilePath>..\..\..\..\soc\hdsc\drivers\source\usbd\internal_usb_core\usbd_dev\source\usbd_desc.c</FilePath>
             </File>
             <File>
               <FileName>usbd_storage_msd.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\hdsc\drivers\source\usbd\internal_usb_core\usbd_msc\source\usbd_storage_msd.c</FilePath>
+              <FilePath>..\..\..\..\soc\hdsc\drivers\source\usbd\internal_usb_core\usbd_dev\source\usbd_storage_msd.c</FilePath>
             </File>
             <File>
               <FileName>usbd_usr.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\hdsc\drivers\source\usbd\internal_usb_core\usbd_msc\source\usbd_usr.c</FilePath>
+              <FilePath>..\..\..\..\soc\hdsc\drivers\source\usbd\internal_usb_core\usbd_dev\source\usbd_usr.c</FilePath>
             </File>
             <File>
-              <FileName>am_hc32f460_usbd.c</FileName>
+              <FileName>usbd_hid_custom_core.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\hdsc\drivers\source\usbd\am_hc32f460_usbd.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hc32f460_i2c_slv.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\hdsc\drivers\source\i2c\am_hc32f460_i2c_slv.c</FilePath>
+              <FilePath>..\..\..\..\soc\hdsc\drivers\source\usbd\internal_usb_core\usb_lib\device_class\hid_custom\usbd_hid_custom_core.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -2703,25 +2806,34 @@
               <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_hc32f460_usb_msc.c</FilePath>
             </File>
             <File>
+              <FileName>am_hwconf_hc32f460_i2c_slv.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_hc32f460_i2c_slv.c</FilePath>
+            </File>
+            <File>
               <FileName>am_hwconf_key_gpio.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_key_gpio.c</FilePath>
             </File>
             <File>
-              <FileName>am_hwconf_hc32f460_i2c_slv.c</FileName>
+              <FileName>am_hwconf_hc32f460_usb_mouse.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_hc32f460_i2c_slv.c</FilePath>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_hc32f460_usb_mouse.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_usb_common_config.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_usb_common_config.h</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_hc32f460_usb_custom.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_hc32f460_usb_custom.c</FilePath>
             </File>
           </Files>
         </Group>
       </Groups>
     </Target>
   </Targets>
-
-  <RTE>
-    <apis/>
-    <components/>
-    <files/>
-  </RTE>
 
 </Project>

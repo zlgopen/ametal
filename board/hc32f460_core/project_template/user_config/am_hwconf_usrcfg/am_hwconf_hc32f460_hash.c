@@ -36,7 +36,7 @@
 /**
  * \brief HASH 平台初始化
  */
-void __hc32f460_plfm_hash_init (void)
+static void __hc32f460_plfm_hash_init (void)
 {
     /* 开启HASH钟 */
     am_clk_enable(CLK_HASH);
@@ -45,7 +45,7 @@ void __hc32f460_plfm_hash_init (void)
 /**
  * \brief HASH 平台去初始化
  */
-void __hc32f460_plfm_hash_deinit (void)
+static void __hc32f460_plfm_hash_deinit (void)
 {
     /* 关闭HASH时钟 */
     am_clk_disable(CLK_HASH);
@@ -54,13 +54,13 @@ void __hc32f460_plfm_hash_deinit (void)
 /** \brief HASH 设备信息 */
 static const am_hc32f460_hash_devinfo_t __g_hash_devinfo =
 {
-    /**< \brief 指向hash寄存器块的指针 */
+    /** \brief 指向hash寄存器块的指针 */
     HC32F460_HASH_BASE,
 
-    /**< \brief hash平台初始化函数 */
+    /** \brief hash平台初始化函数 */
     __hc32f460_plfm_hash_init,
 
-    /**< \brief hash平台解初始化函数  */
+    /** \brief hash平台解初始化函数  */
     __hc32f460_plfm_hash_deinit,
 };
 
