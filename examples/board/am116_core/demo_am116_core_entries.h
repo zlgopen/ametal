@@ -606,6 +606,16 @@ void demo_zlg126_usbd_msc_entry (void);
  */
 void demo_zlg126_usbd_vcom_entry (void);
 
+/**
+ * \brief 单区bootloader的测试应用程序例程
+ */
+void demo_am116_core_single_application_entry (void);
+
+/**
+ * \brief 基于串口助手的单区bootloader例程
+ */
+void demo_am116_core_single_bootloader_uart_entry (void);
+
 #ifdef __cplusplus
 }
 #endif

@@ -44,8 +44,7 @@
 /** \brief 使用的定时器的中断号 */
 #define __TIMER_INUM            INUM_TIMER0_2
 
-/** \brief 使用定时器通道 0 */
-//#define __TIMER_CHAN            0
+/** \brief 使用定时器通道 1 */
 #define __TIMER_CHAN            1
 
 /** \brief 定时器回调函数，用于产生系统滴答 */
@@ -67,7 +66,7 @@ am_timer_handle_t am_system_tick_inst_init (void)
     am_timer_handle_t        handle;
    
     /* 获取定时器频率 */
-    uint32_t freq = 0;
+	  uint32_t freq = 0;
 
     handle = am_hc32f460_tim01_timing_inst_init();
 
@@ -99,7 +98,7 @@ am_timer_handle_t am_system_tick_softimer_inst_init (void)
     am_timer_handle_t        handle;
 
     /* 获取定时器频率 */
-      uint32_t freq = 0;
+	  uint32_t freq = 0;
 
     handle = am_hc32f460_tim01_timing_inst_init();
 

@@ -67,7 +67,7 @@ static const am_hc32f460_can_devinfo_t __g_can_devinfo = {
 
 };
 
-/**< \brief 设备实例 */
+/** \brief 设备实例 */
 am_hc32f460_can_dev_t  __g_can_dev;
 
 /** \brief CAN实例初始化，获得CAN标准服务句柄 */

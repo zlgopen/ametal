@@ -340,7 +340,7 @@ const am_hc32f460_timea_pwm_devinfo_t  __g_timea3_pwm_devinfo = {
                                                     *          1：使能
                                                     *          0：失能
                                                     */
-    &__g_timea3_pwm_chaninfo_list[0],              /**< \brief 通道配置信息列表        */
+    &__g_timea3_pwm_chaninfo_list[0],               /**< \brief 通道配置信息列表        */
     AMHW_HC32F460_TIMEA_TYPE_TIM0,                 /**< \brief 定时器类型 */
     __hc32f460_plfm_timea3_pwm_init,               /**< \brief 平台初始化函数 */
     __hc32f460_plfm_timea3_pwm_deinit              /**< \brief 平台解初始化函数 */

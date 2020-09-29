@@ -55,7 +55,7 @@ const struct am_hc32f460_rtc_devinfo __g_rtc_devinfo = {
     /** \brief RTC设备基地址 */
     HC32F460_RTC_BASE,
 
-    /** \brief RTC 中断号 */
+    /**< \brief RTC 中断号 */
     INUM_RTC,
 
     /** \brief 平台初始化函数 */

@@ -1132,11 +1132,6 @@
               <FilePath>..\..\..\..\..\examples\board\amf03x_core\crc\demo_hc32f03x_core_std_crc.c</FilePath>
             </File>
             <File>
-              <FileName>demo_hc32f03x_core_hw_dac_dma.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\amf03x_core\dac\demo_hc32f03x_core_hw_dac_dma.c</FilePath>
-            </File>
-            <File>
               <FileName>demo_hc32f03x_core_std_dac.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\examples\board\amf03x_core\dac\demo_hc32f03x_core_std_dac.c</FilePath>
@@ -3634,11 +3629,6 @@
               <FileName>demo_hc32f03x_core_std_crc.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\examples\board\amf03x_core\crc\demo_hc32f03x_core_std_crc.c</FilePath>
-            </File>
-            <File>
-              <FileName>demo_hc32f03x_core_hw_dac_dma.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\amf03x_core\dac\demo_hc32f03x_core_hw_dac_dma.c</FilePath>
             </File>
             <File>
               <FileName>demo_hc32f03x_core_std_dac.c</FileName>

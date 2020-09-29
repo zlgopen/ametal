@@ -149,7 +149,7 @@ am_hc32f460_tim4_timing_dev_t __g_tim43_timing_dev;
 am_timer_handle_t am_hc32f460_tim43_timing_inst_init (void)
 {
     return am_hc32f460_tim4_timing_init(&__g_tim43_timing_dev,
-                                        &__g_tim43_timing_devinfo);
+                                     &__g_tim43_timing_devinfo);
 }
 
 /** \brief TIM43 Timing实例解初始化 */

@@ -49,6 +49,7 @@
 #include "am_board.h"
 #include <string.h>
 #include "am_uart.h"
+#include "am_uart_rngbuf.h"
 #include "am_lpc82x_inst_init.h"
 
 

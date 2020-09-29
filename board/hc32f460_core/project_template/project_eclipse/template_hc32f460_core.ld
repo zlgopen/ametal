@@ -38,7 +38,7 @@
  * In this linker script there is no heap available.
  * The stack start at the end of the ram segment.
  */
-STACK_SIZE = 0x400;             /*  stack size config   1K       */
+STACK_SIZE = 0x800;             /*  stack size config   2K       */
 
 /*
  * Take a look in the "The GNU linker" manual, here you get
@@ -49,7 +49,9 @@ STACK_SIZE = 0x400;             /*  stack size config   1K       */
  */
 MEMORY
 {
-   FLASH (rx)           : ORIGIN = 0x00000000, LENGTH = 512K
+   FLASH1 (rx)           : ORIGIN = 0x00000000, LENGTH = 1K
+   FLASH2 (rx)           : ORIGIN = 0x400,      LENGTH = 32
+   FLASH3 (rx)           : ORIGIN = 0x420,      LENGTH = 400K
    SRAM_H_1_2_3   (rwx) : ORIGIN = 0x1FFF8000, LENGTH = 188K
    Ret_SRAM       (rwx) : ORIGIN = 0x200F0000, LENGTH = 4K
 }
@@ -65,12 +67,23 @@ ENTRY(ResetHandler)
 SECTIONS
 {
 
-     .text :
+     .vect :
     {
         _stext = .;          /* Provide the name for the start of this section */
         CREATE_OBJECT_SYMBOLS
         
         KEEP(*(.vectors))       /* 使用KEEP使.vector段不被移除 */
+
+    } > FLASH1
+    
+    .rodata_1 :
+    {
+        KEEP(*(.icg))       /* 使用KEEP使.vector段不被移除 */
+    } > FLASH2
+    
+       
+    .text :
+    {
         *(.text)
         *(.text.*)              /*  cpp namespace function      */
         *(.romrun)              /*  rom中必须的函数 */
@@ -80,7 +93,7 @@ SECTIONS
         *(.rodata*)
         *(.glue_7)
         *(.glue_7t)
-    } > FLASH
+    } > FLASH3
 
     /* section information for simple shell symbols */
     .text :
@@ -89,7 +102,7 @@ SECTIONS
         __shellsym_tab_start = .;
         KEEP(*(.shellsymbol))
         __shellsym_tab_end = .;
-    } >FLASH
+    } >FLASH3
 
     /* .ARM.exidx is sorted, so has to go in its own output section */
     . = ALIGN(4);
@@ -100,7 +113,7 @@ SECTIONS
         /* __exidx_start = .; */
         *(.ARM.exidx* .gnu.linkonce.armexidx.*)
         /* __exidx_end = .;   */
-    } > FLASH
+    } > FLASH3
     . = ALIGN(4);
      __exidx_end = .;
      PROVIDE(__exidx_end = __exidx_end);

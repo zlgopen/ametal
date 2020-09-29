@@ -33,14 +33,14 @@
  */
 
 /** \brief CRC平台初始化 */
-void __hc32f460_crc_plfm_init (void)
+static void __hc32f460_crc_plfm_init (void)
 {
     /* 使能CRC时钟 */
     am_clk_enable(CLK_CRC);
 }
 
 /** \brief 解除CRC平台初始化 */
-void __hc32f460_crc_plfm_deinit (void)
+static void __hc32f460_crc_plfm_deinit (void)
 {
     am_clk_disable(CLK_CRC);
 }

@@ -144,15 +144,15 @@ void am_board_init (void)
 #endif /* (AM_CFG_BUZZER_ENABLE == 1) */
 
 #if (AM_CFG_KEY_ENABLE == 1) || (AM_CFG_KEY_GPIO_ENABLE == 1)
-//    am_event_input_inst_init();                   /* 事件输入管理器服务初始化 */
+    am_event_input_inst_init();                   /* 事件输入管理器服务初始化 */
 #endif /* (AM_CFG_KEY_ENABLE == 1) || (AM_CFG_KEY_GPIO_ENABLE == 1) */
 
 #if (AM_CFG_KEY_GPIO_ENABLE == 1)
-//    am_key_gpio_inst_init();
+    am_key_gpio_inst_init();
 #endif /* (AM_CFG_KEY_GPIO_ENABLE == 1) */
 
 #if (AM_CFG_ISR_DEFER_ENABLE == 1)
-//    am_bsp_isr_defer_pendsv_init();
+    am_bsp_isr_defer_pendsv_init();
 #endif /* (AM_CFG_ISR_DEFER_ENABLE == 1) */
 
     /* 其它内容待添加 */

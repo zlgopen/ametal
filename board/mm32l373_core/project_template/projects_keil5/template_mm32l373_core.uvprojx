@@ -15,7 +15,7 @@
         <TargetCommonOption>
           <Device>ZLG217</Device>
           <Vendor>Generic</Vendor>
-          <PackID>ZLG.ZLG200_DFP.1.0.0</PackID>
+          <PackID>ZLG.ZLG200_DFP.2.0.0</PackID>
           <PackURL>http://www.zlg.cn/</PackURL>
           <Cpu>IROM(0x08000000,0x20000) IRAM(0x20000000,0x5000) CPUTYPE("Cortex-M3") CLOCK(12000000) ELITTLE</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
@@ -507,11 +507,6 @@
               <FilePath>..\..\..\..\components\drivers\source\digitron\am_digitron_scan_hc595_gpio.c</FilePath>
             </File>
             <File>
-              <FileName>am_zlg72128.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\components\drivers\source\digitron_key\am_zlg72128.c</FilePath>
-            </File>
-            <File>
               <FileName>am_zlg72128_std.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\components\drivers\source\digitron_key\am_zlg72128_std.c</FilePath>
@@ -650,6 +645,16 @@
               <FileName>am_fm175xx_zlg217.lib</FileName>
               <FileType>4</FileType>
               <FilePath>..\..\..\..\components\drivers\source\fm175xx\am_fm175xx_zlg217.lib</FilePath>
+            </File>
+            <File>
+              <FileName>zlg72128.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\digitron_key\zlg72128.c</FilePath>
+            </File>
+            <File>
+              <FileName>zlg72128_platform.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\digitron_key\zlg72128_platform.c</FilePath>
             </File>
           </Files>
         </Group>

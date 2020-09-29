@@ -47,9 +47,15 @@ static const am_hc32f460_wdt_devinfo_t  __g_wdt_devinfo = {
     HC32F460_WDT_BASE,          /**< \brief WDT寄存器基址 */
     CLK_PCLK3,                  /**< \brief 时钟ID */
     INUM_WDT,                   /**< \brief 中断ID */
-    AM_HC32F460_WDT_TRIGGER_EVENT_REQUEST_RESET,  /**< \brief 刷新错误/溢出后产生的事件类型（中断/复位） */
-    AM_HC32F460_WDT_SLEEPOFF,                     /**< \brief WDT在sleep模式下计数禁止/许可 */
-    AM_HC32F460_WDT_REFRESH_RANGE_100,            /**< \brief 刷新允许区域 */
+
+    /** \brief 刷新错误/溢出后产生的事件类型（中断/复位） */
+    AM_HC32F460_WDT_TRIGGER_EVENT_REQUEST_RESET,
+
+    /** \brief WDT在sleep模式下计数禁止/许可 */
+    AM_HC32F460_WDT_SLEEPOFF,
+
+    /** \brief 刷新允许区域 */
+    AM_HC32F460_WDT_REFRESH_RANGE_100,
     __hc32f460_wdt_plfm_init,   /**< \brief WDT 平台初始化 */
     __hc32f460_wdt_plfm_deinit, /**< \brief 解除WDT 平台初始化 */
 };

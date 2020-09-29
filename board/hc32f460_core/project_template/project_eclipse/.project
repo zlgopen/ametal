@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>template_hc32f460_core</name>
+	<name>example_hc32f460_core</name>
 	<comment></comment>
 	<projects>
 	</projects>
@@ -46,6 +46,11 @@
 			<locationURI>PARENT-4-PROJECT_LOC/components</locationURI>
 		</link>
 		<link>
+			<name>examples</name>
+			<type>2</type>
+			<locationURI>PARENT-4-PROJECT_LOC/examples</locationURI>
+		</link>
+		<link>
 			<name>interface</name>
 			<type>2</type>
 			<locationURI>PARENT-4-PROJECT_LOC/interface</locationURI>
@@ -74,7 +79,7 @@
 	<variableList>
 		<variable>
 			<name>copy_PARENT</name>
-			<value>$%7BPARENT-3-PROJECT_LOC%7D/AMetal</value>
+			<value>$%7BPARENT-2-PROJECT_LOC%7D/AMetal_3/AMetal</value>
 		</variable>
 		<variable>
 			<name>copy_PARENT1</name>
@@ -82,11 +87,7 @@
 		</variable>
 		<variable>
 			<name>copy_PARENT12</name>
-			<value>$%7Bcopy_PARENT1%7D/hc32f460_core/project_template</value>
-		</variable>
-		<variable>
-			<name>copy_PARENT123</name>
-			<value>$%7BPARENT-1-copy_PARENT%7D/am118_core/project_template</value>
+			<value>$%7Bcopy_PARENT1%7D/hc32f460_core/project_example</value>
 		</variable>
 	</variableList>
 </projectDescription>
