@@ -10,8 +10,7 @@
       <TargetName>debug</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
-      <pCCUsed>5060750::V5.06 update 6 (build 750)::ARMCC</pCCUsed>
-      <uAC6>0</uAC6>
+      <pCCUsed>5060061::V5.06 update 1 (build 61)::ARMCC</pCCUsed>
       <TargetOption>
         <TargetCommonOption>
           <Device>HC32L196PCTA</Device>
@@ -126,6 +125,47 @@
             <HexOffset>0</HexOffset>
             <Oh166RecLen>16</Oh166RecLen>
           </OPTHX>
+          <Simulator>
+            <UseSimulator>0</UseSimulator>
+            <LoadApplicationAtStartup>1</LoadApplicationAtStartup>
+            <RunToMain>1</RunToMain>
+            <RestoreBreakpoints>1</RestoreBreakpoints>
+            <RestoreWatchpoints>1</RestoreWatchpoints>
+            <RestoreMemoryDisplay>1</RestoreMemoryDisplay>
+            <RestoreFunctions>1</RestoreFunctions>
+            <RestoreToolbox>1</RestoreToolbox>
+            <LimitSpeedToRealTime>0</LimitSpeedToRealTime>
+            <RestoreSysVw>1</RestoreSysVw>
+          </Simulator>
+          <Target>
+            <UseTarget>1</UseTarget>
+            <LoadApplicationAtStartup>1</LoadApplicationAtStartup>
+            <RunToMain>1</RunToMain>
+            <RestoreBreakpoints>1</RestoreBreakpoints>
+            <RestoreWatchpoints>1</RestoreWatchpoints>
+            <RestoreMemoryDisplay>1</RestoreMemoryDisplay>
+            <RestoreFunctions>0</RestoreFunctions>
+            <RestoreToolbox>1</RestoreToolbox>
+            <RestoreTracepoints>1</RestoreTracepoints>
+            <RestoreSysVw>1</RestoreSysVw>
+          </Target>
+          <RunDebugAfterBuild>0</RunDebugAfterBuild>
+          <TargetSelection>1</TargetSelection>
+          <SimDlls>
+            <CpuDll></CpuDll>
+            <CpuDllArguments></CpuDllArguments>
+            <PeripheralDll></PeripheralDll>
+            <PeripheralDllArguments></PeripheralDllArguments>
+            <InitializationFile></InitializationFile>
+          </SimDlls>
+          <TargetDlls>
+            <CpuDll></CpuDll>
+            <CpuDllArguments></CpuDllArguments>
+            <PeripheralDll></PeripheralDll>
+            <PeripheralDllArguments></PeripheralDllArguments>
+            <InitializationFile></InitializationFile>
+            <Driver>BIN\UL2CM3.DLL</Driver>
+          </TargetDlls>
         </DebugOption>
         <Utilities>
           <Flash1>
@@ -184,8 +224,6 @@
             <hadXRAM>0</hadXRAM>
             <uocXRam>0</uocXRam>
             <RvdsVP>0</RvdsVP>
-            <RvdsMve>0</RvdsMve>
-            <RvdsCdeCp>0</RvdsCdeCp>
             <hadIRAM2>0</hadIRAM2>
             <hadIROM2>0</hadIROM2>
             <StupSel>8</StupSel>
@@ -326,20 +364,16 @@
             <uThumb>0</uThumb>
             <uSurpInc>0</uSurpInc>
             <uC99>1</uC99>
-            <uGnu>0</uGnu>
             <useXO>0</useXO>
             <v6Lang>0</v6Lang>
             <v6LangP>0</v6LangP>
             <vShortEn>0</vShortEn>
             <vShortWch>0</vShortWch>
-            <v6Lto>0</v6Lto>
-            <v6WtE>0</v6WtE>
-            <v6Rtti>0</v6Rtti>
             <VariousControls>
               <MiscControls></MiscControls>
               <Define>AM_VDEBUG AM_CORTEX_M0</Define>
               <Undefine></Undefine>
-              <IncludePath>..\..\..\..\..\3rdparty/CMSIS/Include;..\..\..\..\..\arch/arm/include;..\..\..\..\..\components/drivers/include;..\..\..\..\..\components/libc/armlib_adapter/include;..\..\..\..\..\components/libc/microlib_adapter/include;..\..\..\..\..\components/service/include;..\..\..\..\..\components/util/include;..\user_code;..\user_config;..\user_config/am_hwconf_usrcfg;..\user_config/am_servconf_usrcfg;..\..\..\..\..\board/bsp_common/include;..\..\..\..\..\examples/components;..\..\..\..\..\examples/soc/zlg;..\..\..\..\..\examples/std;..\..\..\..\..\examples\board\am42x_core;..\..\..\..\..\interface;..\..\..\..\..\soc\zlg\zsl42x;..\..\..\..\..\soc\zlg\drivers\include\adc;..\..\..\..\..\soc\zlg\drivers\include\adtim;..\..\..\..\..\soc\zlg\drivers\include\aes;..\..\..\..\..\soc\zlg\drivers\include\clk;..\..\..\..\..\soc\zlg\drivers\include\clktrim;..\..\..\..\..\soc\zlg\drivers\include\crc;..\..\..\..\..\soc\zlg\drivers\include\dac;..\..\..\..\..\soc\zlg\drivers\include\dma;..\..\..\..\..\soc\zlg\drivers\include\flash;..\..\..\..\..\soc\zlg\drivers\include\gpio;..\..\..\..\..\soc\zlg\drivers\include\i2c;..\..\..\..\..\soc\zlg\drivers\include\lcd;..\..\..\..\..\soc\zlg\drivers\include\lpmode;..\..\..\..\..\soc\zlg\drivers\include\lptim;..\..\..\..\..\soc\zlg\drivers\include\lpuart;..\..\..\..\..\soc\zlg\drivers\include\lvd;..\..\..\..\..\soc\zlg\drivers\include\opa;..\..\..\..\..\soc\zlg\drivers\include\pca;..\..\..\..\..\soc\zlg\drivers\include\pcnt;..\..\..\..\..\soc\zlg\drivers\include\ram;..\..\..\..\..\soc\zlg\drivers\include\rcc;..\..\..\..\..\soc\zlg\drivers\include\rtc;..\..\..\..\..\soc\zlg\drivers\include\spi;..\..\..\..\..\soc\zlg\drivers\include\tim;..\..\..\..\..\soc\zlg\drivers\include\trng;..\..\..\..\..\soc\zlg\drivers\include\uart;..\..\..\..\..\soc\zlg\drivers\include\vc;..\..\..\..\..\soc\zlg\drivers\include\wdt;..\..\..\..\..\soc\zlg\drivers\include\bootloader;..\user_config\am_bootconf_usrcfg;..\..\..\..\..\examples\components\bootloader;..\..\..\..\..\components\drivers\include;..\..\..\..\..\components\bootloader\include\arch\arm;..\..\..\..\..\components\bootloader\include\command_analyse\kboot_KinetisFlashTool;..\..\..\..\..\components\bootloader\include\command_analyse\kboot_KinetisFlashTool\drivers;..\..\..\..\..\components\bootloader\include\core;..\..\..\..\..\components\bootloader\include\drivers</IncludePath>
+              <IncludePath>..\..\..\..\..\3rdparty/CMSIS/Include;..\..\..\..\..\arch/arm/include;..\..\..\..\..\components/drivers/include;..\..\..\..\..\components/libc/armlib_adapter/include;..\..\..\..\..\components/libc/microlib_adapter/include;..\..\..\..\..\components/service/include;..\..\..\..\..\components/util/include;..\user_code;..\user_config;..\user_config/am_hwconf_usrcfg;..\user_config/am_servconf_usrcfg;..\..\..\..\..\board/bsp_common/include;..\..\..\..\..\examples/components;..\..\..\..\..\examples/soc/zlg;..\..\..\..\..\examples/std;..\..\..\..\..\examples\board\am42x_core;..\..\..\..\..\interface;..\..\..\..\..\soc\zlg\zsl42x;..\..\..\..\..\soc\zlg\drivers\include\adc;..\..\..\..\..\soc\zlg\drivers\include\adtim;..\..\..\..\..\soc\zlg\drivers\include\aes;..\..\..\..\..\soc\zlg\drivers\include\clk;..\..\..\..\..\soc\zlg\drivers\include\clktrim;..\..\..\..\..\soc\zlg\drivers\include\crc;..\..\..\..\..\soc\zlg\drivers\include\dac;..\..\..\..\..\soc\zlg\drivers\include\dma;..\..\..\..\..\soc\zlg\drivers\include\flash;..\..\..\..\..\soc\zlg\drivers\include\gpio;..\..\..\..\..\soc\zlg\drivers\include\i2c;..\..\..\..\..\soc\zlg\drivers\include\lcd;..\..\..\..\..\soc\zlg\drivers\include\lpmode;..\..\..\..\..\soc\zlg\drivers\include\lptim;..\..\..\..\..\soc\zlg\drivers\include\lpuart;..\..\..\..\..\soc\zlg\drivers\include\lvd;..\..\..\..\..\soc\zlg\drivers\include\opa;..\..\..\..\..\soc\zlg\drivers\include\pca;..\..\..\..\..\soc\zlg\drivers\include\pcnt;..\..\..\..\..\soc\zlg\drivers\include\ram;..\..\..\..\..\soc\zlg\drivers\include\rcc;..\..\..\..\..\soc\zlg\drivers\include\rtc;..\..\..\..\..\soc\zlg\drivers\include\spi;..\..\..\..\..\soc\zlg\drivers\include\tim;..\..\..\..\..\soc\zlg\drivers\include\trng;..\..\..\..\..\soc\zlg\drivers\include\uart;..\..\..\..\..\soc\zlg\drivers\include\vc;..\..\..\..\..\soc\zlg\drivers\include\wdt;..\..\..\..\..\soc\zlg\drivers\include\bootloader;..\user_config\am_bootconf_usrcfg;..\..\..\..\..\examples\components\bootloader;..\..\..\..\..\components\drivers\include;..\..\..\..\..\components\bootloader\include\arch\arm;..\..\..\..\..\components\bootloader\include\command_analyse\kboot_KinetisFlashTool;..\..\..\..\..\components\bootloader\include\command_analyse\kboot_KinetisFlashTool\drivers;..\..\..\..\..\components\bootloader\include\core;..\..\..\..\..\components\bootloader\include\drivers;..\..\..\..\..\soc\zlg\drivers\include\lora;..\..\..\..\..\soc\zlg\drivers\include\lpsoftimer</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -352,7 +386,6 @@
             <NoWarn>0</NoWarn>
             <uSurpInc>0</uSurpInc>
             <useXO>0</useXO>
-            <ClangAsOpt>1</ClangAsOpt>
             <VariousControls>
               <MiscControls></MiscControls>
               <Define></Define>
@@ -1073,6 +1106,31 @@
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\soc\zlg\drivers\source\wdt\am_zsl42x_wdt.c</FilePath>
             </File>
+            <File>
+              <FileName>am_zsl42x_lora.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\soc\zlg\drivers\source\lora\am_zsl42x_lora.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_zsl42x_lora_if_spi.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\soc\zlg\drivers\source\lora\am_zsl42x_lora_if_spi.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_zsl42x_lora_reg.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\soc\zlg\drivers\source\lora\am_zsl42x_lora_reg.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_zsl42x_lpsoftimer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\soc\zlg\drivers\source\lpsoftimer\am_zsl42x_lpsoftimer.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_zsl42x_lpsoftimer_if.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\soc\zlg\drivers\source\lpsoftimer\am_zsl42x_lpsoftimer_if.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -1702,6 +1760,31 @@
               <FileName>demo_zsn603_piccb_active_test.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\examples\components\drivers\demo_zsn603_piccb_active_test.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zsl42x_lora_cad_rx_tx.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\board\am42x_core\lora\demo_zsl42x_lora_cad_rx_tx.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zsl42x_lora_channel_activity_detect.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\board\am42x_core\lora\demo_zsl42x_lora_channel_activity_detect.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zsl42x_lora_rx_continuous.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\board\am42x_core\lora\demo_zsl42x_lora_rx_continuous.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zsl42x_lora_rx_timeout.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\board\am42x_core\lora\demo_zsl42x_lora_rx_timeout.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zsl42x_lora_tx.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\board\am42x_core\lora\demo_zsl42x_lora_tx.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -2388,6 +2471,16 @@
               <FileType>1</FileType>
               <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_system_tick_softimer.c</FilePath>
             </File>
+            <File>
+              <FileName>am_hwconf_zsl42x_lora_spi0.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zsl42x_lora_spi0.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_zsl42x_lpsoftimer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zsl42x_lpsoftimer.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -2452,7 +2545,6 @@
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
       <pCCUsed>5060061::V5.06 update 1 (build 61)::ARMCC</pCCUsed>
-      <uAC6>8</uAC6>
       <TargetOption>
         <TargetCommonOption>
           <Device>HC32L196PCTA</Device>
@@ -2567,6 +2659,47 @@
             <HexOffset>0</HexOffset>
             <Oh166RecLen>16</Oh166RecLen>
           </OPTHX>
+          <Simulator>
+            <UseSimulator>1</UseSimulator>
+            <LoadApplicationAtStartup>1</LoadApplicationAtStartup>
+            <RunToMain>1</RunToMain>
+            <RestoreBreakpoints>1</RestoreBreakpoints>
+            <RestoreWatchpoints>1</RestoreWatchpoints>
+            <RestoreMemoryDisplay>1</RestoreMemoryDisplay>
+            <RestoreFunctions>1</RestoreFunctions>
+            <RestoreToolbox>1</RestoreToolbox>
+            <LimitSpeedToRealTime>0</LimitSpeedToRealTime>
+            <RestoreSysVw>1</RestoreSysVw>
+          </Simulator>
+          <Target>
+            <UseTarget>0</UseTarget>
+            <LoadApplicationAtStartup>1</LoadApplicationAtStartup>
+            <RunToMain>0</RunToMain>
+            <RestoreBreakpoints>1</RestoreBreakpoints>
+            <RestoreWatchpoints>1</RestoreWatchpoints>
+            <RestoreMemoryDisplay>1</RestoreMemoryDisplay>
+            <RestoreFunctions>0</RestoreFunctions>
+            <RestoreToolbox>1</RestoreToolbox>
+            <RestoreTracepoints>1</RestoreTracepoints>
+            <RestoreSysVw>1</RestoreSysVw>
+          </Target>
+          <RunDebugAfterBuild>0</RunDebugAfterBuild>
+          <TargetSelection>-1</TargetSelection>
+          <SimDlls>
+            <CpuDll></CpuDll>
+            <CpuDllArguments></CpuDllArguments>
+            <PeripheralDll></PeripheralDll>
+            <PeripheralDllArguments></PeripheralDllArguments>
+            <InitializationFile></InitializationFile>
+          </SimDlls>
+          <TargetDlls>
+            <CpuDll></CpuDll>
+            <CpuDllArguments></CpuDllArguments>
+            <PeripheralDll></PeripheralDll>
+            <PeripheralDllArguments></PeripheralDllArguments>
+            <InitializationFile></InitializationFile>
+            <Driver></Driver>
+          </TargetDlls>
         </DebugOption>
         <Utilities>
           <Flash1>
@@ -2625,8 +2758,6 @@
             <hadXRAM>0</hadXRAM>
             <uocXRam>0</uocXRam>
             <RvdsVP>0</RvdsVP>
-            <RvdsMve>0</RvdsMve>
-            <RvdsCdeCp>0</RvdsCdeCp>
             <hadIRAM2>0</hadIRAM2>
             <hadIROM2>0</hadIROM2>
             <StupSel>8</StupSel>
@@ -2767,15 +2898,11 @@
             <uThumb>0</uThumb>
             <uSurpInc>0</uSurpInc>
             <uC99>1</uC99>
-            <uGnu>0</uGnu>
             <useXO>0</useXO>
             <v6Lang>0</v6Lang>
             <v6LangP>0</v6LangP>
             <vShortEn>0</vShortEn>
             <vShortWch>0</vShortWch>
-            <v6Lto>0</v6Lto>
-            <v6WtE>0</v6WtE>
-            <v6Rtti>0</v6Rtti>
             <VariousControls>
               <MiscControls></MiscControls>
               <Define>AM_VDEBUG AM_CORTEX_M0</Define>
@@ -2793,7 +2920,6 @@
             <NoWarn>0</NoWarn>
             <uSurpInc>0</uSurpInc>
             <useXO>0</useXO>
-            <ClangAsOpt>1</ClangAsOpt>
             <VariousControls>
               <MiscControls></MiscControls>
               <Define></Define>
@@ -3514,6 +3640,31 @@
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\soc\zlg\drivers\source\wdt\am_zsl42x_wdt.c</FilePath>
             </File>
+            <File>
+              <FileName>am_zsl42x_lora.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\soc\zlg\drivers\source\lora\am_zsl42x_lora.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_zsl42x_lora_if_spi.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\soc\zlg\drivers\source\lora\am_zsl42x_lora_if_spi.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_zsl42x_lora_reg.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\soc\zlg\drivers\source\lora\am_zsl42x_lora_reg.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_zsl42x_lpsoftimer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\soc\zlg\drivers\source\lpsoftimer\am_zsl42x_lpsoftimer.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_zsl42x_lpsoftimer_if.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\soc\zlg\drivers\source\lpsoftimer\am_zsl42x_lpsoftimer_if.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -4143,6 +4294,31 @@
               <FileName>demo_zsn603_piccb_active_test.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\examples\components\drivers\demo_zsn603_piccb_active_test.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zsl42x_lora_cad_rx_tx.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\board\am42x_core\lora\demo_zsl42x_lora_cad_rx_tx.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zsl42x_lora_channel_activity_detect.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\board\am42x_core\lora\demo_zsl42x_lora_channel_activity_detect.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zsl42x_lora_rx_continuous.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\board\am42x_core\lora\demo_zsl42x_lora_rx_continuous.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zsl42x_lora_rx_timeout.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\board\am42x_core\lora\demo_zsl42x_lora_rx_timeout.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zsl42x_lora_tx.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\board\am42x_core\lora\demo_zsl42x_lora_tx.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -4829,6 +5005,16 @@
               <FileType>1</FileType>
               <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_system_tick_softimer.c</FilePath>
             </File>
+            <File>
+              <FileName>am_hwconf_zsl42x_lora_spi0.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zsl42x_lora_spi0.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_zsl42x_lpsoftimer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zsl42x_lpsoftimer.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -4889,26 +5075,5 @@
       </Groups>
     </Target>
   </Targets>
-
-  <RTE>
-    <apis/>
-    <components/>
-    <files/>
-  </RTE>
-
-  <LayerInfo>
-    <Layers>
-      <Layer>
-        <LayName>&lt;Project Info&gt;</LayName>
-        <LayDesc></LayDesc>
-        <LayUrl></LayUrl>
-        <LayKeys></LayKeys>
-        <LayCat></LayCat>
-        <LayLic></LayLic>
-        <LayTarg>0</LayTarg>
-        <LayPrjMark>1</LayPrjMark>
-      </Layer>
-    </Layers>
-  </LayerInfo>
 
 </Project>
