@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>example_hk32f103rbt6_core</name>
+	<name>template_hk32f103rbt6_core</name>
 	<comment></comment>
 	<projects>
 	</projects>
@@ -44,11 +44,6 @@
 			<name>components</name>
 			<type>2</type>
 			<locationURI>copy_PARENT12345678910/components</locationURI>
-		</link>
-		<link>
-			<name>examples</name>
-			<type>2</type>
-			<locationURI>copy_PARENT12345678910/examples</locationURI>
 		</link>
 		<link>
 			<name>interface</name>
