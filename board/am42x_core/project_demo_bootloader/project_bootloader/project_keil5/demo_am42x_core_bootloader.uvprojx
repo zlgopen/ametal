@@ -1621,6 +1621,31 @@
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\examples\board\am42x_core\rtc\demo_zsl42x_core_std_rtc.c</FilePath>
             </File>
+            <File>
+              <FileName>demo_zsl42x_core_lora_cad_rx_tx.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\board\am42x_core\lora\demo_zsl42x_core_lora_cad_rx_tx.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zsl42x_core_lora_channel_activity_detect.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\board\am42x_core\lora\demo_zsl42x_core_lora_channel_activity_detect.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zsl42x_core_lora_rx_continuous.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\board\am42x_core\lora\demo_zsl42x_core_lora_rx_continuous.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zsl42x_core_lora_rx_timeout.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\board\am42x_core\lora\demo_zsl42x_core_lora_rx_timeout.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zsl42x_core_lora_tx.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\board\am42x_core\lora\demo_zsl42x_core_lora_tx.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -1760,31 +1785,6 @@
               <FileName>demo_zsn603_piccb_active_test.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\examples\components\drivers\demo_zsn603_piccb_active_test.c</FilePath>
-            </File>
-            <File>
-              <FileName>demo_zsl42x_lora_cad_rx_tx.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am42x_core\lora\demo_zsl42x_lora_cad_rx_tx.c</FilePath>
-            </File>
-            <File>
-              <FileName>demo_zsl42x_lora_channel_activity_detect.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am42x_core\lora\demo_zsl42x_lora_channel_activity_detect.c</FilePath>
-            </File>
-            <File>
-              <FileName>demo_zsl42x_lora_rx_continuous.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am42x_core\lora\demo_zsl42x_lora_rx_continuous.c</FilePath>
-            </File>
-            <File>
-              <FileName>demo_zsl42x_lora_rx_timeout.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am42x_core\lora\demo_zsl42x_lora_rx_timeout.c</FilePath>
-            </File>
-            <File>
-              <FileName>demo_zsl42x_lora_tx.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am42x_core\lora\demo_zsl42x_lora_tx.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -4155,6 +4155,31 @@
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\examples\board\am42x_core\rtc\demo_zsl42x_core_std_rtc.c</FilePath>
             </File>
+            <File>
+              <FileName>demo_zsl42x_core_lora_cad_rx_tx.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\board\am42x_core\lora\demo_zsl42x_core_lora_cad_rx_tx.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zsl42x_core_lora_channel_activity_detect.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\board\am42x_core\lora\demo_zsl42x_core_lora_channel_activity_detect.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zsl42x_core_lora_rx_continuous.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\board\am42x_core\lora\demo_zsl42x_core_lora_rx_continuous.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zsl42x_core_lora_rx_timeout.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\board\am42x_core\lora\demo_zsl42x_core_lora_rx_timeout.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zsl42x_core_lora_tx.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\board\am42x_core\lora\demo_zsl42x_core_lora_tx.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -4294,31 +4319,6 @@
               <FileName>demo_zsn603_piccb_active_test.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\examples\components\drivers\demo_zsn603_piccb_active_test.c</FilePath>
-            </File>
-            <File>
-              <FileName>demo_zsl42x_lora_cad_rx_tx.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am42x_core\lora\demo_zsl42x_lora_cad_rx_tx.c</FilePath>
-            </File>
-            <File>
-              <FileName>demo_zsl42x_lora_channel_activity_detect.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am42x_core\lora\demo_zsl42x_lora_channel_activity_detect.c</FilePath>
-            </File>
-            <File>
-              <FileName>demo_zsl42x_lora_rx_continuous.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am42x_core\lora\demo_zsl42x_lora_rx_continuous.c</FilePath>
-            </File>
-            <File>
-              <FileName>demo_zsl42x_lora_rx_timeout.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am42x_core\lora\demo_zsl42x_lora_rx_timeout.c</FilePath>
-            </File>
-            <File>
-              <FileName>demo_zsl42x_lora_tx.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\am42x_core\lora\demo_zsl42x_lora_tx.c</FilePath>
             </File>
           </Files>
         </Group>

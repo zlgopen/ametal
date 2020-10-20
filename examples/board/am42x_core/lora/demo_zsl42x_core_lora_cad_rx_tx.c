@@ -28,7 +28,6 @@
 
 #include "am_zsl42x_lora.h"
 #include "am_hwconf_zsl42x_lora_spi0.h"
-#include "am_hwconf_zsl42x_lpsoftimer.h"
 
 
 static am_zsl42x_lora_handle_t g_lora_handle;
@@ -141,12 +140,11 @@ static void __on_tx_timeout (void *p_arg)
 /**
  * \brief LoRa信道活跃测试程序入口
  */
-void demo_zsl42x_lora_cad_rx_tx_entry (void)
+void demo_zsl42x_core_lora_cad_rx_tx_entry (void)
 {
     static am_zsl42x_lora_radio_events_t events;
     uint8_t                              status;
 
-    am_zsl42x_lpsoftimer_init();
     g_lora_handle = am_zsl42x_lora_spi0_inst_init();
 
     am_zsl42x_lora_memset1((uint8_t *)&events,

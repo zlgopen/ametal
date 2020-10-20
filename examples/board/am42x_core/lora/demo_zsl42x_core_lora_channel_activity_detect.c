@@ -35,7 +35,6 @@
 
 #include "am_zsl42x_lora.h"
 #include "am_hwconf_zsl42x_lora_spi0.h"
-#include "am_hwconf_zsl42x_lpsoftimer.h"
 
 
 static am_zsl42x_lora_handle_t g_lora_handle;
@@ -65,11 +64,10 @@ static void __on_cad_done (void *p_arg, uint8_t channel_activity_detected)
 /**
  * \brief LoRa信道活跃测试程序入口
  */
-void demo_zsl42x_lora_channel_activity_detect_entry (void)
+void demo_zsl42x_core_lora_channel_activity_detect_entry (void)
 {
     static am_zsl42x_lora_radio_events_t events;
 
-    am_zsl42x_lpsoftimer_init();
     g_lora_handle = am_zsl42x_lora_spi0_inst_init();
 
     am_zsl42x_lora_memset1((uint8_t *)&events,

@@ -28,7 +28,6 @@
 
 #include "am_zsl42x_lora.h"
 #include "am_hwconf_zsl42x_lora_spi0.h"
-#include "am_hwconf_zsl42x_lpsoftimer.h"
 
 #define __LORA_ENABLE    1
 
@@ -85,11 +84,10 @@ static void __on_tx_timeout (void *p_arg)
 /**
  * \brief LoRa发送测试程序入口
  */
-void demo_zsl42x_lora_tx_entry (void)
+void demo_zsl42x_core_lora_tx_entry (void)
 {
     static am_zsl42x_lora_radio_events_t events;
 
-    am_zsl42x_lpsoftimer_init();
     g_lora_handle = am_zsl42x_lora_spi0_inst_init();
 
     am_zsl42x_lora_memset1((uint8_t *)&events,

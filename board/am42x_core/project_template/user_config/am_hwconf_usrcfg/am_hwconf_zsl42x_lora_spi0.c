@@ -30,6 +30,7 @@
 #include "am_zsl42x_lora_reg.h"
 #include "am_zsl42x_lora_if_spi.h"
 #include "am_hwconf_zsl42x_lora_spi0.h"
+#include "am_hwconf_zsl42x_lpsoftimer.h"
 
 #include "am_zsl42x.h"
 #include "hw/amhw_zsl42x_spi.h"
@@ -216,6 +217,7 @@ am_local am_zsl42x_lora_if_spi_dev_t __g_zsl42x_lora_spi0_dev;
  */
 am_zsl42x_lora_handle_t am_zsl42x_lora_spi0_inst_init (void)
 {
+    am_zsl42x_lpsoftimer_init();
     return am_zsl42x_lora_if_spi_init(&__g_zsl42x_lora_spi0_dev,
                                       &__g_zsl42x_lora_spi0_devinfo);
 }

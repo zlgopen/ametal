@@ -638,8 +638,8 @@ static int __zsl42x_lora_server_tx_repeat_set (void          *p_drv,
         (am_zsl42x_lora_iq_type_t)p_dev->setconfig.iq_inverted_enable);
 
     /* 设置DIO1关联中断  */
-    uint16_t irq_mask = AM_ZSL42X_LORA_IRQ_MASK_TX_DONE |
-                        AM_ZSL42X_LORA_IRQ_MASK_TIMEOUT;
+//    uint16_t irq_mask = AM_ZSL42X_LORA_IRQ_MASK_TX_DONE |
+//                        AM_ZSL42X_LORA_IRQ_MASK_TIMEOUT;
 
     __zsl42x_lora_inside_wait_on_busy(p_dev);
     //am_zsl42x_lora_setdioirqparams(p_dev, irq_mask, irq_mask, 0, 0);
@@ -1885,11 +1885,11 @@ static int __zsl42x_lora_server_send (void     *p_drv,
             (am_zsl42x_lora_iq_type_t)p_dev->setconfig.iq_inverted_enable);
     }
 
-    /* 设置DIO1关联中断  */
-    uint16_t irq_mask = AM_ZSL42X_LORA_IRQ_MASK_TX_DONE      |
-                        AM_ZSL42X_LORA_IRQ_MASK_HEADER_ERR   |
-                        AM_ZSL42X_LORA_IRQ_MASK_CRC_ERR      |
-                        AM_ZSL42X_LORA_IRQ_MASK_HEADER_VALID;
+//    /* 设置DIO1关联中断  */
+//    uint16_t irq_mask = AM_ZSL42X_LORA_IRQ_MASK_TX_DONE      |
+//                        AM_ZSL42X_LORA_IRQ_MASK_HEADER_ERR   |
+//                        AM_ZSL42X_LORA_IRQ_MASK_CRC_ERR      |
+//                        AM_ZSL42X_LORA_IRQ_MASK_HEADER_VALID;
 
 //    __zsl42x_lora_inside_wait_on_busy(p_dev);
 //    am_zsl42x_lora_setdioirqparams(p_dev,
@@ -1979,7 +1979,7 @@ static int __zsl42x_lora_server_cad_start (void *p_drv)
 {
     am_zsl42x_lora_dev_t  *p_dev  = (am_zsl42x_lora_dev_t *)p_drv;
 
-    uint8_t i = 0, find_flag = 0;
+    uint8_t i = 0;// find_flag = 0;
 
     am_lpsoftimer_stop(&p_dev->tx_timeout_timer);
     am_lpsoftimer_stop(&p_dev->rx_timeout_timer);
