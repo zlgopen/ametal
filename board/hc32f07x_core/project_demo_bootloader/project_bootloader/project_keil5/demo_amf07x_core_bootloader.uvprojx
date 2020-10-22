@@ -787,11 +787,6 @@
           <GroupName>soc</GroupName>
           <Files>
             <File>
-              <FileName>am_hc32_adc.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\soc\hdsc\drivers\source\adc\am_hc32_adc.c</FilePath>
-            </File>
-            <File>
               <FileName>am_hc32_adtim_cap.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\soc\hdsc\drivers\source\adtim\am_hc32_adtim_cap.c</FilePath>
@@ -1015,6 +1010,11 @@
               <FileName>am_hc32f07x_cts.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\soc\hdsc\drivers\source\cts\am_hc32f07x_cts.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hc32f07x_adc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\soc\hdsc\drivers\source\adc\am_hc32f07x_adc.c</FilePath>
             </File>
             <File>
               <FileName>am_hc32f07x_boot_flash.c</FileName>
@@ -3056,11 +3056,6 @@
           <GroupName>soc</GroupName>
           <Files>
             <File>
-              <FileName>am_hc32_adc.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\soc\hdsc\drivers\source\adc\am_hc32_adc.c</FilePath>
-            </File>
-            <File>
               <FileName>am_hc32_adtim_cap.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\soc\hdsc\drivers\source\adtim\am_hc32_adtim_cap.c</FilePath>
@@ -3284,6 +3279,11 @@
               <FileName>am_hc32f07x_cts.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\soc\hdsc\drivers\source\cts\am_hc32f07x_cts.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hc32f07x_adc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\soc\hdsc\drivers\source\adc\am_hc32f07x_adc.c</FilePath>
             </File>
             <File>
               <FileName>am_hc32f07x_boot_flash.c</FileName>

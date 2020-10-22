@@ -104,7 +104,7 @@ static const am_hc32f07x_adc_devinfo_t __g_adc_devinfo = {
                                            */
     0,
     12,                                   /**< \brief 转换精度，hc32精度只能为12位 */
-    &__g_adc_ioinfo_list[15],              /**< \brief 引脚信息列表 */
+    &__g_adc_ioinfo_list[0],              /**< \brief 引脚信息列表 */
     __hc32_plfm_adc_init,               /**< \brief ADC1的平台初始化 */
     __hc32_plfm_adc_deinit,             /**< \brief ADC1的平台去初始化 */
 
