@@ -373,7 +373,7 @@
               <MiscControls></MiscControls>
               <Define>AM_VDEBUG AM_CORTEX_M0</Define>
               <Undefine></Undefine>
-              <IncludePath>..\..\..\..\..\3rdparty/CMSIS/Include;..\..\..\..\..\arch/arm/include;..\..\..\..\..\components/drivers/include;..\..\..\..\..\components/libc/armlib_adapter/include;..\..\..\..\..\components/libc/microlib_adapter/include;..\..\..\..\..\components/service/include;..\..\..\..\..\components/util/include;..\user_code;..\user_config;..\user_config/am_hwconf_usrcfg;..\user_config/am_servconf_usrcfg;..\..\..\..\..\board/bsp_common/include;..\..\..\..\..\examples/components;..\..\..\..\..\examples/soc/zlg;..\..\..\..\..\examples/std;..\..\..\..\..\examples\board\am42x_core;..\..\..\..\..\interface;..\..\..\..\..\soc\zlg\zsl42x;..\..\..\..\..\soc\zlg\drivers\include\adc;..\..\..\..\..\soc\zlg\drivers\include\adtim;..\..\..\..\..\soc\zlg\drivers\include\aes;..\..\..\..\..\soc\zlg\drivers\include\clk;..\..\..\..\..\soc\zlg\drivers\include\clktrim;..\..\..\..\..\soc\zlg\drivers\include\crc;..\..\..\..\..\soc\zlg\drivers\include\dac;..\..\..\..\..\soc\zlg\drivers\include\dma;..\..\..\..\..\soc\zlg\drivers\include\flash;..\..\..\..\..\soc\zlg\drivers\include\gpio;..\..\..\..\..\soc\zlg\drivers\include\i2c;..\..\..\..\..\soc\zlg\drivers\include\lcd;..\..\..\..\..\soc\zlg\drivers\include\lpmode;..\..\..\..\..\soc\zlg\drivers\include\lptim;..\..\..\..\..\soc\zlg\drivers\include\lpuart;..\..\..\..\..\soc\zlg\drivers\include\lvd;..\..\..\..\..\soc\zlg\drivers\include\opa;..\..\..\..\..\soc\zlg\drivers\include\pca;..\..\..\..\..\soc\zlg\drivers\include\pcnt;..\..\..\..\..\soc\zlg\drivers\include\ram;..\..\..\..\..\soc\zlg\drivers\include\rcc;..\..\..\..\..\soc\zlg\drivers\include\rtc;..\..\..\..\..\soc\zlg\drivers\include\spi;..\..\..\..\..\soc\zlg\drivers\include\tim;..\..\..\..\..\soc\zlg\drivers\include\trng;..\..\..\..\..\soc\zlg\drivers\include\uart;..\..\..\..\..\soc\zlg\drivers\include\vc;..\..\..\..\..\soc\zlg\drivers\include\wdt;..\..\..\..\..\soc\zlg\drivers\include\bootloader;..\user_config\am_bootconf_usrcfg;..\..\..\..\..\examples\components\bootloader;..\..\..\..\..\components\drivers\include;..\..\..\..\..\components\bootloader\include\arch\arm;..\..\..\..\..\components\bootloader\include\command_analyse\kboot_KinetisFlashTool;..\..\..\..\..\components\bootloader\include\command_analyse\kboot_KinetisFlashTool\drivers;..\..\..\..\..\components\bootloader\include\core;..\..\..\..\..\components\bootloader\include\drivers;..\..\..\..\..\soc\zlg\drivers\include\lora;..\..\..\..\..\soc\zlg\drivers\include\lpsoftimer</IncludePath>
+              <IncludePath>..\..\..\..\..\3rdparty/CMSIS/Include;..\..\..\..\..\arch/arm/include;..\..\..\..\..\components/drivers/include;..\..\..\..\..\components/libc/armlib_adapter/include;..\..\..\..\..\components/libc/microlib_adapter/include;..\..\..\..\..\components/service/include;..\..\..\..\..\components/util/include;..\user_code;..\user_config;..\user_config/am_hwconf_usrcfg;..\user_config/am_servconf_usrcfg;..\..\..\..\..\board/bsp_common/include;..\..\..\..\..\examples/components;..\..\..\..\..\examples/soc/zlg;..\..\..\..\..\examples/std;..\..\..\..\..\examples\board\am42x_core;..\..\..\..\..\interface;..\..\..\..\..\soc\zlg\zsl42x;..\..\..\..\..\soc\zlg\drivers\include\adc;..\..\..\..\..\soc\zlg\drivers\include\adtim;..\..\..\..\..\soc\zlg\drivers\include\aes;..\..\..\..\..\soc\zlg\drivers\include\clk;..\..\..\..\..\soc\zlg\drivers\include\clktrim;..\..\..\..\..\soc\zlg\drivers\include\crc;..\..\..\..\..\soc\zlg\drivers\include\dac;..\..\..\..\..\soc\zlg\drivers\include\dma;..\..\..\..\..\soc\zlg\drivers\include\flash;..\..\..\..\..\soc\zlg\drivers\include\gpio;..\..\..\..\..\soc\zlg\drivers\include\i2c;..\..\..\..\..\soc\zlg\drivers\include\lcd;..\..\..\..\..\soc\zlg\drivers\include\lpmode;..\..\..\..\..\soc\zlg\drivers\include\lptim;..\..\..\..\..\soc\zlg\drivers\include\lpuart;..\..\..\..\..\soc\zlg\drivers\include\lvd;..\..\..\..\..\soc\zlg\drivers\include\opa;..\..\..\..\..\soc\zlg\drivers\include\pca;..\..\..\..\..\soc\zlg\drivers\include\pcnt;..\..\..\..\..\soc\zlg\drivers\include\ram;..\..\..\..\..\soc\zlg\drivers\include\rcc;..\..\..\..\..\soc\zlg\drivers\include\rtc;..\..\..\..\..\soc\zlg\drivers\include\spi;..\..\..\..\..\soc\zlg\drivers\include\tim;..\..\..\..\..\soc\zlg\drivers\include\trng;..\..\..\..\..\soc\zlg\drivers\include\uart;..\..\..\..\..\soc\zlg\drivers\include\vc;..\..\..\..\..\soc\zlg\drivers\include\wdt;..\..\..\..\..\soc\zlg\drivers\include\bootloader;..\user_config\am_bootconf_usrcfg;..\..\..\..\..\examples\components\bootloader;..\..\..\..\..\components\drivers\include;..\..\..\..\..\components\bootloader\include\arch\arm;..\..\..\..\..\components\bootloader\include\command_analyse\kboot_KinetisFlashTool;..\..\..\..\..\components\bootloader\include\command_analyse\kboot_KinetisFlashTool\drivers;..\..\..\..\..\components\bootloader\include\core;..\..\..\..\..\components\bootloader\include\drivers;..\..\..\..\..\soc\zlg\drivers\include\lora</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -1105,31 +1105,6 @@
               <FileName>am_zsl42x_wdt.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\soc\zlg\drivers\source\wdt\am_zsl42x_wdt.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_zsl42x_lora.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\soc\zlg\drivers\source\lora\am_zsl42x_lora.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_zsl42x_lora_if_spi.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\soc\zlg\drivers\source\lora\am_zsl42x_lora_if_spi.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_zsl42x_lora_reg.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\soc\zlg\drivers\source\lora\am_zsl42x_lora_reg.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_zsl42x_lpsoftimer.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\soc\zlg\drivers\source\lpsoftimer\am_zsl42x_lpsoftimer.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_zsl42x_lpsoftimer_if.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\soc\zlg\drivers\source\lpsoftimer\am_zsl42x_lpsoftimer_if.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -2472,14 +2447,14 @@
               <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_system_tick_softimer.c</FilePath>
             </File>
             <File>
-              <FileName>am_hwconf_zsl42x_lora_spi0.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zsl42x_lora_spi0.c</FilePath>
-            </File>
-            <File>
               <FileName>am_hwconf_zsl42x_lpsoftimer.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zsl42x_lpsoftimer.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_zsl42x_lora.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zsl42x_lora.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -2538,6 +2513,26 @@
             </File>
           </Files>
         </Group>
+        <Group>
+          <GroupName>lora</GroupName>
+          <Files>
+            <File>
+              <FileName>am_zsl42x_lora_if_spi.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\soc\zlg\drivers\source\lora\adapter\am_zsl42x_lora_if_spi.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_zsl42x_lpsoftimer_if.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\soc\zlg\drivers\source\lora\adapter\am_zsl42x_lpsoftimer_if.c</FilePath>
+            </File>
+            <File>
+              <FileName>lora.lib</FileName>
+              <FileType>4</FileType>
+              <FilePath>..\..\..\..\..\soc\zlg\drivers\source\lora\armcc\lora.lib</FilePath>
+            </File>
+          </Files>
+        </Group>
       </Groups>
     </Target>
     <Target>
@@ -2550,7 +2545,7 @@
           <Device>HC32L196PCTA</Device>
           <Vendor>HDSC</Vendor>
           <PackID>HDSC.HC32L19X.1.0.0</PackID>
-          <PackURL>https://raw.githubusercontent.com/zlgmcu/pack/master/</PackURL>
+          <PackURL>https://raw.githubusercontent.com/hdscmcu/pack/master/</PackURL>
           <Cpu>IROM(0x00000000,0x40000) IRAM(0x20000000,0x8000) CPUTYPE("Cortex-M0+") CLOCK(12000000) ELITTLE</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
           <StartupFile></StartupFile>
@@ -3640,31 +3635,6 @@
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\soc\zlg\drivers\source\wdt\am_zsl42x_wdt.c</FilePath>
             </File>
-            <File>
-              <FileName>am_zsl42x_lora.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\soc\zlg\drivers\source\lora\am_zsl42x_lora.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_zsl42x_lora_if_spi.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\soc\zlg\drivers\source\lora\am_zsl42x_lora_if_spi.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_zsl42x_lora_reg.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\soc\zlg\drivers\source\lora\am_zsl42x_lora_reg.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_zsl42x_lpsoftimer.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\soc\zlg\drivers\source\lpsoftimer\am_zsl42x_lpsoftimer.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_zsl42x_lpsoftimer_if.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\soc\zlg\drivers\source\lpsoftimer\am_zsl42x_lpsoftimer_if.c</FilePath>
-            </File>
           </Files>
         </Group>
         <Group>
@@ -5006,14 +4976,14 @@
               <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_system_tick_softimer.c</FilePath>
             </File>
             <File>
-              <FileName>am_hwconf_zsl42x_lora_spi0.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zsl42x_lora_spi0.c</FilePath>
-            </File>
-            <File>
               <FileName>am_hwconf_zsl42x_lpsoftimer.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zsl42x_lpsoftimer.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_zsl42x_lora.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zsl42x_lora.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -5069,6 +5039,26 @@
               <FileName>am_boot_serial_uart.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\components\bootloader\source\drivers\am_boot_serial_uart.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>lora</GroupName>
+          <Files>
+            <File>
+              <FileName>am_zsl42x_lora_if_spi.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\soc\zlg\drivers\source\lora\adapter\am_zsl42x_lora_if_spi.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_zsl42x_lpsoftimer_if.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\soc\zlg\drivers\source\lora\adapter\am_zsl42x_lpsoftimer_if.c</FilePath>
+            </File>
+            <File>
+              <FileName>lora.lib</FileName>
+              <FileType>4</FileType>
+              <FilePath>..\..\..\..\..\soc\zlg\drivers\source\lora\armcc\lora.lib</FilePath>
             </File>
           </Files>
         </Group>

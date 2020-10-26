@@ -29,7 +29,6 @@
 #include "am_delay.h"
 
 #include "am_zsl42x_lora_if_spi.h"
-
 #include "am_zsl42x.h"
 
 

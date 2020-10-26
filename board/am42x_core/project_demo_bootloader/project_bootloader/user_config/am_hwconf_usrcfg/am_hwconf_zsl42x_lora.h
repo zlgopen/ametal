@@ -12,8 +12,8 @@
 
 /**
  * \file
- * \brief ZSL42X LORA SPI0 用户配置文件
- * \sa am_hwconf_zsl42x_lora_spi0.h
+ * \brief ZSL42X LORA 用户配置文件
+ * \sa am_hwconf_zsl42x_lora.h
  *
  * \internal
  * \par Modification history
@@ -22,8 +22,8 @@
  * \endinternal
  */
 
-#ifndef __AM_HWCONF_ZSL42X_LORA_SPI0_H
-#define __AM_HWCONF_ZSL42X_LORA_SPI0_H
+#ifndef __AM_HWCONF_ZSL42X_LORA_H
+#define __AM_HWCONF_ZSL42X_LORA_H
 
 #ifdef __cplusplus
 extern "C" {
@@ -34,14 +34,14 @@ extern "C" {
 #include "am_zsl42x_lora_if_spi.h"
 
 /**
- * \brief ZSL42X LORA SPI0 实例初始化
+ * \brief ZSL42X LORA 实例初始化
  */
-am_zsl42x_lora_handle_t am_zsl42x_lora_spi0_inst_init (void);
+am_zsl42x_lora_handle_t am_zsl42x_lora_inst_init (void);
 
 /**
- * \brief ZSL42X LORA SPI0 实例解初始化
+ * \brief ZSL42X LORA 实例解初始化
  */
-void am_zsl42x_lora_spi0_inst_deinit (am_zsl42x_lora_handle_t handle);
+void am_zsl42x_lora_inst_deinit (am_zsl42x_lora_handle_t handle);
 
 /**
  * @}
@@ -51,6 +51,6 @@ void am_zsl42x_lora_spi0_inst_deinit (am_zsl42x_lora_handle_t handle);
 }
 #endif
 
-#endif /* __AM_HWCONF_ZSL42X_LORA_SPI0_H */
+#endif /* __AM_HWCONF_ZSL42X_LORA_H */
 
 /* end of file */

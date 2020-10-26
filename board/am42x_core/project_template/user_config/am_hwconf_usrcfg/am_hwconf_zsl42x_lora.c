@@ -12,8 +12,8 @@
 
 /**
  * \file
- * \brief ZSL42X LORA SPI0 用户配置文件
- * \sa am_hwconf_zsl42x_lora_spi0.c
+ * \brief ZSL42X LORA 用户配置文件
+ * \sa am_hwconf_zsl42x_lora.c
  *
  * \internal
  * \par Modification history
@@ -29,7 +29,7 @@
 #include "am_zsl42x_lora.h"
 #include "am_zsl42x_lora_reg.h"
 #include "am_zsl42x_lora_if_spi.h"
-#include "am_hwconf_zsl42x_lora_spi0.h"
+#include "am_hwconf_zsl42x_lora.h"
 #include "am_hwconf_zsl42x_lpsoftimer.h"
 
 #include "am_zsl42x.h"
@@ -54,15 +54,15 @@
 #define __ZSL42X_LORA_DIO3_MASK   (0)
 
 /**
- * \addtogroup am_if_src_hwconf_zsl42x_lora_spi0
- * \copydoc am_hwconf_zsl42x_lora_spi0.c
+ * \addtogroup am_if_src_hwconf_zsl42x_lora
+ * \copydoc am_hwconf_zsl42x_lora.c
  * @{
  */
 
 /**
- * \brief ZSL42X LORA SPI0 平台初始化
+ * \brief ZSL42X LORA 平台初始化
  */
-am_local void __zsl42x_lora_if_spi0_plfm_init (void)
+am_local void __zsl42x_lora_if_plfm_init (void)
 {
     am_clk_enable(CLK_SPI0);
 
@@ -73,9 +73,9 @@ am_local void __zsl42x_lora_if_spi0_plfm_init (void)
 }
 
 /**
- * \brief 解除 ZSL42X LORA SPI0 平台初始化
+ * \brief 解除 ZSL42X LORA 平台初始化
  */
-am_local void __zsl42x_lora_if_spi0_plfm_deinit (void)
+am_local void __zsl42x_lora_if_plfm_deinit (void)
 {
     am_gpio_pin_cfg(PIOA_15, AM_GPIO_INPUT);
     am_gpio_pin_cfg(PIOA_5,  AM_GPIO_INPUT);
@@ -160,9 +160,9 @@ am_local int __zsl42x_lora_dio_irq_disable (int pin)
 }
 
 /**
- * \brief LORA SPI0 设备信息
+ * \brief LORA 设备信息
  */
-am_const struct am_zsl42x_lora_if_spi_devinfo __g_zsl42x_lora_spi0_devinfo = {
+am_const struct am_zsl42x_lora_if_spi_devinfo __g_zsl42x_lora_devinfo = {
 
     {
         AM_ZSL42X_LORA_CORE_TYPE_SX1268, /**< \brief 芯片器件编号 */
@@ -203,29 +203,29 @@ am_const struct am_zsl42x_lora_if_spi_devinfo __g_zsl42x_lora_spi0_devinfo = {
 
     ZSL42x_SPI0_BASE,                      /**< \brief SPI0 寄存器指针   */
 
-    __zsl42x_lora_if_spi0_plfm_init,     /**< \brief ZSL42X LORA SPI0 平台初始化函数 */
-    __zsl42x_lora_if_spi0_plfm_deinit    /**< \brief ZSL42X LORA SPI0 平台解初始化函数 */
+    __zsl42x_lora_if_plfm_init,     /**< \brief ZSL42X LORA 平台初始化函数 */
+    __zsl42x_lora_if_plfm_deinit    /**< \brief ZSL42X LORA 平台解初始化函数 */
 };
 
 /**
- * \brief ZSL42X LORA SPI0 设备实例
+ * \brief ZSL42X LORA 设备实例
  */
-am_local am_zsl42x_lora_if_spi_dev_t __g_zsl42x_lora_spi0_dev;
+am_local am_zsl42x_lora_if_spi_dev_t __g_zsl42x_lora_dev;
 
 /**
- * \brief ZSL42X LORA SPI0 实例初始化
+ * \brief ZSL42X LORA 实例初始化
  */
-am_zsl42x_lora_handle_t am_zsl42x_lora_spi0_inst_init (void)
+am_zsl42x_lora_handle_t am_zsl42x_lora_inst_init (void)
 {
     am_zsl42x_lpsoftimer_init();
-    return am_zsl42x_lora_if_spi_init(&__g_zsl42x_lora_spi0_dev,
-                                      &__g_zsl42x_lora_spi0_devinfo);
+    return am_zsl42x_lora_if_spi_init(&__g_zsl42x_lora_dev,
+                                      &__g_zsl42x_lora_devinfo);
 }
 
 /**
- * \brief ZSL42X LORA SPI0 实例解初始化
+ * \brief ZSL42X LORA 实例解初始化
  */
-void am_zsl42x_lora_spi0_inst_deinit (am_zsl42x_lora_handle_t handle)
+void am_zsl42x_lora_inst_deinit (am_zsl42x_lora_handle_t handle)
 {
     am_zsl42x_lora_if_spi_deinit(handle);
 }

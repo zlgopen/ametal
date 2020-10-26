@@ -27,7 +27,7 @@
 #include "am_vdebug.h"
 
 #include "am_zsl42x_lora.h"
-#include "am_hwconf_zsl42x_lora_spi0.h"
+#include "am_hwconf_zsl42x_lora.h"
 
 #define __LORA_ENABLE    1
 
@@ -112,7 +112,7 @@ void demo_zsl42x_core_lora_rx_timeout_entry (void)
 {
     am_zsl42x_lora_radio_events_t events;
 
-    g_lora_handle = am_zsl42x_lora_spi0_inst_init();
+    g_lora_handle = am_zsl42x_lora_inst_init();
 
     am_zsl42x_lora_memset1((uint8_t *)&events,
                            0x00,
