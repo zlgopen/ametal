@@ -860,9 +860,9 @@ int __iso7816_warm_reset (void     *p_drv,
     }
 
     if (!(p_atr[td_x] & 0x80)) {    /* TD(1)²»´æÔÚ */
-        if (p_dev->auto_pps == AM_OK) {
+//        if (p_dev->auto_pps == AM_OK) {
             p_dev->fd = 0x11;
-        }
+//        }
     } else {
         ++i;
         td_x = i;
