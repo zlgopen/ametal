@@ -671,4 +671,13 @@ void demo_zlg237_core_sensor_tmf8801_entry (void);
  */
 void demo_zlg237_core_sensor_tmf8801_int_entry (void);
 
+/**
+ * \brief 环境光传感器查询模式例程入口
+ */
+void demo_zlg237_core_sensor_tsl2560_entry (void);
+
+/**
+ * \brief 环境光传感器触发模式例程入口
+ */
+void demo_zlg237_core_sensor_tsl2560_int_entry (void);
 

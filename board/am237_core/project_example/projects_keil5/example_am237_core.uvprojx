@@ -801,6 +801,11 @@
               <FileType>1</FileType>
               <FilePath>..\..\..\..\components\drivers\source\sensor\am_sensor_tmf8801.c</FilePath>
             </File>
+            <File>
+              <FileName>am_sensor_tsl2560.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\components\drivers\source\sensor\am_sensor_tsl2560.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -1596,6 +1601,16 @@
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\board\am237_core\sensor\demo_zlg237_core_sensor_tmf8801_int.c</FilePath>
             </File>
+            <File>
+              <FileName>demo_zlg237_core_sensor_tsl2560.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am237_core\sensor\demo_zlg237_core_sensor_tsl2560.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_zlg237_core_sensor_tsl2560_int.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\am237_core\sensor\demo_zlg237_core_sensor_tsl2560_int.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -2056,6 +2071,16 @@
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\std\sensor\tmf8801\demo_std_tmf8801_int.c</FilePath>
             </File>
+            <File>
+              <FileName>demo_std_tsl2560.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\std\sensor\tsl2560\demo_std_tsl2560.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_std_tsl2560_int.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\std\sensor\tsl2560\demo_std_tsl2560_int.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -2370,6 +2395,11 @@
               <FileName>am_hwconf_sensor_tmf8801.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_sensor_tmf8801.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hwconf_sensor_tsl2560.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_sensor_tsl2560.c</FilePath>
             </File>
           </Files>
         </Group>

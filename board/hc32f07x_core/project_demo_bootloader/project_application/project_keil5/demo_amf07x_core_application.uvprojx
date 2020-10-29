@@ -150,7 +150,7 @@
             <RestoreSysVw>1</RestoreSysVw>
           </Target>
           <RunDebugAfterBuild>0</RunDebugAfterBuild>
-          <TargetSelection>1</TargetSelection>
+          <TargetSelection>6</TargetSelection>
           <SimDlls>
             <CpuDll></CpuDll>
             <CpuDllArguments></CpuDllArguments>
@@ -164,7 +164,7 @@
             <PeripheralDll></PeripheralDll>
             <PeripheralDllArguments></PeripheralDllArguments>
             <InitializationFile></InitializationFile>
-            <Driver>BIN\UL2CM3.DLL</Driver>
+            <Driver>Segger\JL2CM3.dll</Driver>
           </TargetDlls>
         </DebugOption>
         <Utilities>
@@ -787,11 +787,6 @@
           <GroupName>soc</GroupName>
           <Files>
             <File>
-              <FileName>am_hc32_adc.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\soc\hdsc\drivers\source\adc\am_hc32_adc.c</FilePath>
-            </File>
-            <File>
               <FileName>am_hc32_adtim_cap.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\soc\hdsc\drivers\source\adtim\am_hc32_adtim_cap.c</FilePath>
@@ -1015,6 +1010,11 @@
               <FileName>am_hc32f07x_cts.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\soc\hdsc\drivers\source\cts\am_hc32f07x_cts.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hc32f07x_adc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\soc\hdsc\drivers\source\adc\am_hc32f07x_adc.c</FilePath>
             </File>
             <File>
               <FileName>am_hc32f07x_boot_flash.c</FileName>
@@ -3046,11 +3046,6 @@
           <GroupName>soc</GroupName>
           <Files>
             <File>
-              <FileName>am_hc32_adc.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\soc\hdsc\drivers\source\adc\am_hc32_adc.c</FilePath>
-            </File>
-            <File>
               <FileName>am_hc32_adtim_cap.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\soc\hdsc\drivers\source\adtim\am_hc32_adtim_cap.c</FilePath>
@@ -3274,6 +3269,11 @@
               <FileName>am_hc32f07x_cts.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\soc\hdsc\drivers\source\cts\am_hc32f07x_cts.c</FilePath>
+            </File>
+            <File>
+              <FileName>am_hc32f07x_adc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\soc\hdsc\drivers\source\adc\am_hc32f07x_adc.c</FilePath>
             </File>
             <File>
               <FileName>am_hc32f07x_boot_flash.c</FileName>

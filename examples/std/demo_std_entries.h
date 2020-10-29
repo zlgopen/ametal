@@ -673,6 +673,20 @@ void demo_std_tmf8801_entry (am_sensor_handle_t handle);
 void demo_std_tmf8801_int_entry (am_sensor_handle_t handle);
 
 /**
+ * \brief 环境光传感器 TSL2560例程，通过查询模式实现
+ *
+ * \return 无
+ */
+void demo_std_tsl2560_entry (am_sensor_handle_t handle);
+
+/**
+ * \brief 环境光传感器 TSL2560例程，通过触发模式实现
+ *
+ * \return 无
+ */
+void demo_std_tsl2560_int_entry (am_sensor_handle_t handle);
+
+/**
  * \brief SD Card读写例程
  *
  * \return 无
