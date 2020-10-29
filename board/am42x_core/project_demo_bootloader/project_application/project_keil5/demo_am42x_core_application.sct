@@ -1,0 +1,48 @@
+#! armcc -E
+;/*********************************************************************************************************
+;*                                 AMteal
+;*                       ---------------------------
+;*                       innovating embedded platform
+;*
+;* Copyright (c) 2001-2019 Guangzhou ZHIYUAN Electronics Stock Co., Ltd.
+;* All rights reserved.
+;*
+;* Contact information:
+;* web site:    http://www.zlg.cn/
+;* e-mail:      support@zlg.cn
+;**********************************************************************************************************/
+;/*********************************************************************************************************
+;*  ALL_START          application start address  (you can change)
+;*  ALL_SIZE           application size           (you can change)
+;*  RESET_SIZE         startup.o   size           (if it is not necessary , it is best to be not changed)
+;*  FLASH_DRV_SIZE     am_hc32_flash.o size       (if it is not necessary , it is best to be not changed)
+;**********************************************************************************************************/
+
+#define     ALL_START              0X00006800 
+#define     ALL_SIZE               0X0001CC00    
+
+#define     RESET_SIZE             0x000001CC    
+#define     FLASH_DRV_SIZE         0x00000800  
+
+LR_IROM2 (ALL_START+RESET_SIZE) FLASH_DRV_SIZE  {    ; load region size_region
+    ER_IROM2 (ALL_START+RESET_SIZE) FLASH_DRV_SIZE  {  ; load address = execution address
+    * (InRoot$$Sections)
+      am_zsl42x_flash.o
+    }
+}
+
+LR_IROM3 (ALL_START+RESET_SIZE+FLASH_DRV_SIZE) (ALL_SIZE-RESET_SIZE-FLASH_DRV_SIZE)  {    ; load region size_region
+    ER_IROM3 (ALL_START+RESET_SIZE+FLASH_DRV_SIZE) (ALL_SIZE-RESET_SIZE-FLASH_DRV_SIZE)  {  ; load address = execution address
+     .ANY (+RO)
+    }
+}
+
+LR_IROM1 ALL_START RESET_SIZE {
+    ER_IROM1 ALL_START RESET_SIZE {
+    * (RESET,+FIRST)
+    }
+    RW_IRAM1 0x20000000 0x00008000  {  ; RW data
+     .ANY (+RW +ZI)
+    }
+}
+
