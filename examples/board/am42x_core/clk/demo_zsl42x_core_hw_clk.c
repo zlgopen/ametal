@@ -20,8 +20,8 @@
  *      PIOA_2引脚输出PCLK的8分频的频率信号，即3MHz
  *
  * \note
- *    1. 如需观察串口打印的调试信息，需要将 PIOA_10 引脚连接 PC 串口的 TXD，
- *       PIOA_9 引脚连接 PC 串口的 RXD。
+ *    1. 如需观察串口打印的调试信息，需要将 PIOB_11 引脚连接 PC 串口的 TXD，
+ *       PIOB_12 引脚连接 PC 串口的 RXD。
  *
  * \par 源代码
  * \snippet demo_zsl42x_hw_clk.c src_zsl42x_hw_clk

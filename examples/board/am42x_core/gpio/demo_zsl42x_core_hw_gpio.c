@@ -19,8 +19,8 @@
  *   1. 按一次按键 LED0 灯熄灭，再按一次按键 LED0 灯亮，如此反复。
  *
  * \note
- *    如需观察串口打印的调试信息，需要将 PIOA_10 引脚连接 PC 串口的 TXD，
- *    PIOA_9 引脚连接 PC 串口的 RXD。
+ *    如需观察串口打印的调试信息，需要将 PIOB_11 引脚连接 PC 串口的 TXD，
+ *    PIOB_12 引脚连接 PC 串口的 RXD。
  *
  * \par 源代码
  * \snippet demo_zsl42x_hw_gpio.c src_zsl42x_hw_gpio
@@ -45,8 +45,8 @@
 #include "demo_zsl42x_entries.h"
 #include "demo_am42x_core_entries.h"
 
-#define INPUT_PIN  PIOA_7  /**< \brief 输入引脚 */
-#define OUTPUT_PIN PIOD_14 /**< \brief 输出引脚 */
+#define INPUT_PIN  PIOA_0  /**< \brief 输入引脚 */
+#define OUTPUT_PIN PIOA_10 /**< \brief 输出引脚 */
 
 /**
  * \brief 例程入口

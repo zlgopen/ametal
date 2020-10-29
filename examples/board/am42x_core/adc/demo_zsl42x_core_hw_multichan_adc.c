@@ -15,14 +15,14 @@
  * \brief ADC INT 例程，通过 HW 层接口实现
  *
  * - 操作步骤：
- *   1. 16个顺序通道  + 4个插入通道 扫描转换采集电压
+ *   1. 12个顺序通道  + 4个插入通道 扫描转换采集电压
  *
  * - 实验现象：
  *   1. 串口输出电压采样值。
  *
  * \note
- *    1. 如需观察串口打印的调试信息，需要将 PIOA_9引脚连接 PC串口的RXD，
- *       PIOA_10引脚连接 PC串口的TXD。
+ *    1. 如需观察串口打印的调试信息，需要将 PIOB_11引脚连接 PC串口的RXD，
+ *       PIOB_12引脚连接 PC串口的TXD。
  *
  * \par 源代码
  * \snippet demo_zsl42x_hw_multichan_adc.c src_zsl42x_hw_multichan_adc
@@ -52,9 +52,9 @@
  */
 void demo_zsl42x_core_hw_multichan_adc_entry (void)
 {
-    /* 16个顺序通道ADC采集 */ 
+    /* 12个顺序通道ADC采集 */ 
     /* 4个插入通道ADC采集 */
-    int adc_chan[20] = {AMHW_ZSL42x_CHAN_AIN0_PA0,
+    int adc_chan[16] = {AMHW_ZSL42x_CHAN_AIN0_PA0,
                         AMHW_ZSL42x_CHAN_AIN1_PA1,
                         AMHW_ZSL42x_CHAN_AIN2_PA2,
                         AMHW_ZSL42x_CHAN_AIN3_PA3,
@@ -69,11 +69,7 @@ void demo_zsl42x_core_hw_multichan_adc_entry (void)
                         AMHW_ZSL42x_CHAN_AIN12_PC2,
                         AMHW_ZSL42x_CHAN_AIN13_PC3,
                         AMHW_ZSL42x_CHAN_AIN14_PC4,
-                        AMHW_ZSL42x_CHAN_AIN15_PC5,
-                        AMHW_ZSL42x_CHAN_AIN16_PB2,
-                        AMHW_ZSL42x_CHAN_AIN17_PB10,
-                        AMHW_ZSL42x_CHAN_AIN18_PB11,
-                        AMHW_ZSL42x_CHAN_AIN19_PB12};
+                        AMHW_ZSL42x_CHAN_AIN15_PC5};
     
     AM_DBG_INFO("demo am42x_core hw multichan adc int!\r\n");
 
@@ -94,10 +90,6 @@ void demo_zsl42x_core_hw_multichan_adc_entry (void)
     am_gpio_pin_cfg(PIOC_3, PIOC_3_GPIO | PIOC_3_AIN);
     am_gpio_pin_cfg(PIOC_4, PIOC_4_GPIO | PIOC_4_AIN);
     am_gpio_pin_cfg(PIOC_5, PIOC_5_GPIO | PIOC_5_AIN);
-    am_gpio_pin_cfg(PIOB_2, PIOB_2_GPIO | PIOB_2_AIN);
-    am_gpio_pin_cfg(PIOB_10, PIOB_10_GPIO | PIOB_10_AIN);
-    am_gpio_pin_cfg(PIOB_11, PIOB_11_GPIO | PIOB_11_AIN);
-    am_gpio_pin_cfg(PIOB_12, PIOB_12_GPIO | PIOB_12_AIN);
 
     /* 时钟使能  */
     am_clk_enable(CLK_ADC_BGR);
@@ -106,7 +98,7 @@ void demo_zsl42x_core_hw_multichan_adc_entry (void)
                                      INUM_ADC_DAC,
                                      2500,
                                      adc_chan,
-                                     16,
+                                     12,
                                      4);
 }
 /** [src_zsl42x_hw_multichan_adc] */

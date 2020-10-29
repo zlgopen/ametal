@@ -59,7 +59,7 @@ void demo_zsl42x_core_std_adc_entry (void)
 {
     AM_DBG_INFO("demo am42x_core std adc int!\r\n");
 
-    demo_std_adc_entry(am_zsl42x_adc_inst_init(), 0);
+    demo_std_adc_entry(am_zsl42x_adc_inst_init(), 10);
 
 }
 /** [src_std_adc] */

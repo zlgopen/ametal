@@ -32,7 +32,7 @@
  */
 
 /** \brief 定义 LED 相关的 GPIO 管脚信息 */
-static const int __g_zsl42x_led_pins[] = {PIOD_14};
+static const int __g_zsl42x_led_pins[] = {PIOA_10, PIOA_11, PIOA_12};
 
 /** \brief 设备信息 */
 static const am_led_gpio_info_t __g_zsl42x_led_gpio_info = {

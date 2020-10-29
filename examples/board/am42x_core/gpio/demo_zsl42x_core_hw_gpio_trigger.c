@@ -55,7 +55,7 @@ void demo_zsl42x_core_hw_gpio_trigger_entry (void)
     /* ¿ªÆô GPIOC ¶Ë¿ÚÊ±ÖÓ */
     am_clk_enable(CLK_GPIO);
 
-    demo_zsl42x_hw_gpio_trigger_entry((void *)ZSL42x_GPIO0, PIOA_7);
+    demo_zsl42x_hw_gpio_trigger_entry((void *)ZSL42x_GPIO0, PIOA_0);
 }
 /** [src_zsl42x_hw_gpio_trigger] */
 

@@ -64,9 +64,9 @@ am_zsl42x_tim_pwm_chaninfo_t __g_tim0_pwm_chaninfo_list[] = {
     /** \brief 通道1引脚配置 */
     {
         AM_ZSL42x_TIM_PWM_CH0B,
-        PIOB_3,
-        PIOB_3_TIM0_CHB | PIOB_3_OUT_PP,
-        PIOB_3_GPIO  | PIOB_3_INPUT_PU
+        PIOA_1,
+        PIOA_1_TIM0_CHB | PIOA_1_OUT_PP,
+        PIOA_1_GPIO  | PIOA_1_INPUT_PU
     },
 };
 
@@ -92,7 +92,7 @@ am_zsl42x_tim_pwm_dev_t __g_tim0_pwm_dev;
 am_pwm_handle_t am_zsl42x_tim0_pwm_inst_init (void)
 {
     return am_zsl42x_tim_pwm_init(&__g_tim0_pwm_dev,
-                               &__g_tim0_pwm_devinfo);
+                                  &__g_tim0_pwm_devinfo);
 }
 
 /** \brief tim0 PWM 实例解初始化 */
@@ -273,9 +273,9 @@ am_zsl42x_tim_pwm_chaninfo_t __g_tim3_pwm_chaninfo_list[] = {
     /** \brief 通道2引脚配置 */
     {
         AM_ZSL42x_TIM_PWM_CH1A,
-        PIOA_3,
-        PIOA_3_TIM3_CH1A | PIOA_3_OUT_PP,
-        PIOA_3_GPIO | PIOA_3_INPUT_PU
+        PIOA_9,
+        PIOA_9_TIM3_CH1A | PIOA_9_OUT_PP,
+        PIOA_9_GPIO | PIOA_9_INPUT_PU
     },
 
     /** \brief 通道3引脚配置 */
@@ -326,7 +326,7 @@ am_zsl42x_tim_pwm_dev_t __g_tim3_pwm_dev;
 am_pwm_handle_t am_zsl42x_tim3_pwm_inst_init (void)
 {
     return am_zsl42x_tim_pwm_init(&__g_tim3_pwm_dev,
-                               &__g_tim3_pwm_devinfo);
+                                  &__g_tim3_pwm_devinfo);
 }
 
 /** \brief tim3 pwm 实例解初始化 */
@@ -355,9 +355,9 @@ am_zsl42x_adtim_pwm_chaninfo_t __g_adtim4_pwm_chaninfo_list[] = {
 
     {
         AM_ZSL42x_ADTIM_PWM_CHA,
-        PIOA_8,
-        PIOA_8_TIM4_CHA  | PIOA_8_OUT_PP ,
-        PIOA_8_GPIO  | PIOA_8_INPUT_PU
+        PIOB_2,
+        PIOB_2_TIM4_CHA  | PIOB_2_OUT_PP ,
+        PIOB_2_GPIO  | PIOB_2_INPUT_PU
     },
 
     {

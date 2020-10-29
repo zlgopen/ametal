@@ -26,8 +26,8 @@
  *
  * \note
  *    1. 使用 ADC 模块功能，必须保证 ADC 模块上电；
- *    2. 如需观察串口打印的调试信息，需要将 PIOA_10 引脚连接 PC 串口的 TXD，
- *       PIOA_9 引脚连接 PC 串口的 RXD。
+ *    2. 如需观察串口打印的调试信息，需要将 PIOB_11 引脚连接 PC 串口的 TXD，
+ *       PIOB_12 引脚连接 PC 串口的 RXD。
  *
  * \par 源代码
  * \snippet demo_zsl42x_std_adc_its.c src_std_adc_its

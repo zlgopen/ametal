@@ -18,8 +18,8 @@
  *   2. 在指定时间产生闹钟中断，打印一行"alarm clock int!"提示信息。
  *
  * \note
- *    如需观察串口打印的调试信息，需要将 PIOA_10 引脚连接 PC 串口的 TXD，
- *    PIOA_9 引脚连接 PC 串口的 RXD。
+ *    如需观察串口打印的调试信息，需要将 PIOB_11 引脚连接 PC 串口的 TXD，
+ *    PIOB_12 引脚连接 PC 串口的 RXD。
  *
  * \par 源代码
  * \snippet demo_zsl42x_hw_rtc.c src_zsl42x_hw_rtc

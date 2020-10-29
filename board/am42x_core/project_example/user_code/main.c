@@ -38,7 +38,7 @@ int am_main (void)
     AM_DBG_INFO("Start up successful!\r\n");
 
     /* demoÀý³ÌÈë¿Ú */
-    demo_zsl42x_core_std_led_entry();
+//    demo_zsl42x_core_std_led_entry();
 //    demo_zsl42x_core_std_delay_entry();
 //    demo_zsl42x_core_std_buzzer_entry();
 //    demo_zsl42x_core_hw_clk_entry();
@@ -140,6 +140,8 @@ int am_main (void)
 //    demo_zsl42x_core_miniport_hc595_led_entry();
 //    demo_zsl42x_core_mb_master_demo_entry ();
 //    demo_zsl42x_core_mb_slave_test_entry ();
+//    demo_zsl42x_core_std_sht20_entry();
+//    demo_zsl42x_core_rgb_led_entry();
     while (1) {
 
     }

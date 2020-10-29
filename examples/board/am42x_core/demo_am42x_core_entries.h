@@ -12,8 +12,8 @@
 
 /**
  * \file
- * \brief ZSL42xL19x 所有例程函数入口声明
- * \sa demo_am118ble_all_entries.h
+ * \brief ZSL42x 所有例程函数入口声明
+ * \sa demo_am42x_core_entries.h
  *
  * \internal
  * \par Modification history
@@ -715,3 +715,16 @@ void demo_zsl42x_core_lora_rx_timeout_entry (void);
  * \brief LoRa定时发送测试程序入口
  */
 void demo_zsl42x_core_lora_tx_entry (void);
+
+/**
+ * \brief SHT20温湿度程序入口
+ */
+void demo_zsl42x_core_std_sht20_entry (void);
+
+/**
+ * \brief RGB LED程序入口
+ */
+void demo_zsl42x_core_rgb_led_entry (void);
+
+/* end of file */
+    

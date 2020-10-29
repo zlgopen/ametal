@@ -43,6 +43,7 @@
 #include "am_sensor.h"
 #include "am_sdcard.h"
 #include "am_dac.h"
+#include "am_sht20.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -412,6 +413,14 @@ void demo_std_nvram_entry (char *p_nvram_name, int32_t nvram_unit, int32_t test_
  */
 void demo_std_can_entry (am_can_handle_t can_handle, am_can_bps_param_t  *can_btr_baud);
 
+/**
+ * \brief 温湿度传感器SHT20例程
+ *
+ * \param[in] handle   SHT20标准服务句柄
+ *
+ * \return 无
+ */
+void demo_std_sht20_entry (am_sht20_handle_t handle);
 
 /**
  * \brief 温湿度传感器HTS221例程，通过触发模式实现

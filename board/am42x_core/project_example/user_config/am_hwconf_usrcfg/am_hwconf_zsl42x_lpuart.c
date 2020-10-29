@@ -56,19 +56,19 @@ static void __zsl42x_plfm_lpuart0_deinit (void)
 static const am_zsl42x_lpuart_devinfo_t __g_lpuart0_devinfo = {
 
     ZSL42x_LPUART0_BASE,              /**< \brief LPUART0 */
-    INUM_LPUART0,                   /**< \brief LPUART0的中断编号 */
-    AMHW_ZSL42x_LPUART_SCLK_SRC_RCL,  /**< \brief 通信传输时钟  */
+    INUM_LPUART0,                     /**< \brief LPUART0的中断编号 */
+    AMHW_ZSL42x_LPUART_SCLK_SRC_PCLK, /**< \brief 通信传输时钟  */
 
     AMHW_ZSL42x_LPUART_PARITY_NO |    /**< \brief 无极性 */
     AMHW_ZSL42x_LPUART_STOP_1_0_BIT,  /**< \brief 1个停止位 */
 
     AM_FALSE,
 
-    9600,                           /**< \brief 设置的波特率 */
-
-    0,                              /**< \brief 无其他中断 */
-
-    NULL,                           /**< \brief 使用RS485 */
+    115200,                           /**< \brief 设置的波特率 */
+                                      
+    0,                                /**< \brief 无其他中断 */
+                                      
+    NULL,                             /**< \brief 使用RS485 */
     __zsl42x_plfm_lpuart0_init,       /**< \brief LPUART0的平台初始化 */
     __zsl42x_plfm_lpuart0_deinit,     /**< \brief LPUART0的平台去初始化 */
 };

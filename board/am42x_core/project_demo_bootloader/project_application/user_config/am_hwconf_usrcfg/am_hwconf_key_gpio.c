@@ -32,8 +32,8 @@
  * @{
  */
 
-static const int __g_key_pins[]  = {PIOD_4};
-static const int __g_key_codes[] = {KEY_KP0};
+static const int __g_key_pins[]  = {PIOA_0, PIOB_10};
+static const int __g_key_codes[] = {KEY_KP0, KEY_KP1};
 
 /** \brief 设备信息 */
 static const am_key_gpio_info_t __g_key_gpio_info = {

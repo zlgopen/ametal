@@ -61,7 +61,7 @@
 void demo_zsl42x_core_std_multichan_adc_entry (void)
 {
     /* ADCÍ¨µÀ0,1,2,3 */
-    int adc_chan[] = {0, 1, 2, 3};
+    int adc_chan[] = {10, 11, 12, 13};
 
     AM_DBG_INFO("demo am42x_core std adc int!\r\n");
 

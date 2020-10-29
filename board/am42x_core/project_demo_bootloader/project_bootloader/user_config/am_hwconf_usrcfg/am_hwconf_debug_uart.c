@@ -32,10 +32,10 @@
  */
 
 /**
- * \brief 使用的调试串口，默认 UART1
- * 1 - UART1; 2 - UART2; 3 - UART3
+ * \brief 使用的调试串口，默认 LPUART0
+ * 1 - UART1; 2 - UART2; 3 - UART3;  4 - LPUART0
  */
-#define __DEBUG_UART            0
+#define __DEBUG_UART            4
 
 /** \brief 配置调试串口输出的波特率 */
 #define __DEBUG_BAUDRATE        115200
@@ -75,6 +75,15 @@ am_uart_handle_t am_debug_uart_inst_init (void)
 #if (__DEBUG_UART == 3)
 
     handle = am_zsl42x_uart3_inst_init();
+
+    /* 调试初始化 */
+    am_debug_init(handle, __DEBUG_BAUDRATE);
+
+#endif /* (__DEBUG_UART == 3) */
+
+#if (__DEBUG_UART == 4)
+
+    handle = am_zsl42x_lpuart0_inst_init();
 
     /* 调试初始化 */
     am_debug_init(handle, __DEBUG_BAUDRATE);

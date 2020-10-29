@@ -21,8 +21,8 @@
  *   1. 调试串口打印按键事件。
  *
  * \note
- *    1. 如需观察串口打印的调试信息，需要将 PIOA_10 引脚连接 PC 串口的 TXD，
- *       PIOA_9 引脚连接 PC 串口的 RXD。
+ *    1. 如需观察串口打印的调试信息，需要将 PIOB_11 引脚连接 PC 串口的 TXD，
+ *       PIOB_12 引脚连接 PC 串口的 RXD。
  *    2. 测试本 Demo 必须在 am_prj_config.h 内将 AM_CFG_KEY_GPIO_ENABLE、
  *       AM_CFG_KEY_ENABLE 和 AM_CFG_SOFTIMER_ENABLE 定义为 1。但这些宏
  *       已经默认配置为 1， 用户不必再次配置；

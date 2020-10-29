@@ -42,8 +42,8 @@
 #include "demo_std_entries.h"
 #include "demo_am42x_core_entries.h"
 
-#define INPUT_PIN  PIOA_7  /**< \brief 输入引脚 */
-#define OUTPUT_PIN PIOD_14 /**< \brief 与LED相连 */
+#define INPUT_PIN  PIOA_0  /**< \brief 输入引脚 */
+#define OUTPUT_PIN PIOA_10 /**< \brief 与LED相连 */
 
 /**
  * \brief 例程入口

@@ -38,12 +38,12 @@
 #define __BUZZER_PWM_DUTY       50
 
 /** \brief 使用通道0 */
-#define __BUZZER_TIMER_CHAN     0
+#define __BUZZER_TIMER_CHAN     2
 
 /** \brief 蜂鸣器实例初始化 */
 am_pwm_handle_t am_buzzer_pwm_inst_init (void)
 {
-    am_pwm_handle_t handle = am_zsl42x_tim1_pwm_inst_init();
+    am_pwm_handle_t handle = am_zsl42x_tim3_pwm_inst_init();
 
     if (NULL != handle) {
         am_buzzer_pwm_init(handle,

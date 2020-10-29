@@ -56,14 +56,14 @@ void demo_zsl42x_core_hw_adc_int_entry (void)
     AM_DBG_INFO("demo am42x_core hw adc int!\r\n");
 
     /* 配置引脚 */
-    am_gpio_pin_cfg(PIOA_3, PIOA_3_GPIO | PIOA_3_AIN);
+    am_gpio_pin_cfg(PIOC_0, PIOC_0_GPIO | PIOC_0_AIN);
 
     /* 使能时钟 */
     am_clk_enable(CLK_ADC_BGR);
 
     demo_zsl42x_hw_adc_int_entry(ZSL42x_ADC,
                                  INUM_ADC_DAC,
-                                 AMHW_ZSL42x_CHAN_AIN3_PA3,
+                                 AMHW_ZSL42x_CHAN_AIN10_PC0,
                                  3300);
 }
 /** [src_zsl42x_hw_adc_int] */

@@ -15,14 +15,14 @@
  *
  * - 实现现象
  *   1.串口提示当前正在进行的模式测试，首先进入睡眠模式。
- *   2.按下 KEY/RES键（PIOA_7）唤醒 MCU,并进入深度睡眠模式测试。
- *   3.按下 KEY/RES键（PIOA_7）唤醒 MCU,LED闪烁，MCU处于正常工作模式。
+ *   2.按下 SW1键（PIOA_0）唤醒 MCU,并进入深度睡眠模式测试。
+ *   3.按下 SW1键（PIOA_0）唤醒 MCU,LED闪烁，MCU处于正常工作模式。
  *
  * \note
  *   1.测试本例程之前应将 am_prj_config.h 中的宏 AM_CFG_SYSTEM_TICK_ENABLE、
  *     AM_CFG_SOFTIMER_ENABLE 和   AM_CFG_KEY_GPIO_ENABLE 设置为 0。
- *   2.如需观察串口打印的调试信息，需要将 PIOA_10 引脚连接 PC 串口的 TXD，
-       PIOA_9 引脚连接 PC 串口的 RXD。
+ *   2.如需观察串口打印的调试信息，需要将 PIOB_11 引脚连接 PC 串口的 TXD，
+       PIOB_12 引脚连接 PC 串口的 RXD。
  *
  * \par 源代码
  * \snippet demo_zsl42x_drv_lpmode_wake_up.c src_zsl42x_drv_lpmode_wake_up
@@ -67,10 +67,10 @@ void demo_zsl42x_drv_lpmode_wake_up_entry (void)
     am_mdelay(100);
 
     /* 引脚中断配置 */
-    am_gpio_pin_cfg(PIOA_7, PIOA_7_INPUT_PU);
-    am_gpio_trigger_connect(PIOA_7, __gpio_isr, NULL);
-    am_gpio_trigger_cfg(PIOA_7, AM_GPIO_TRIGGER_FALL);
-    am_gpio_trigger_on(PIOA_7);
+    am_gpio_pin_cfg(PIOA_0, PIOA_0_INPUT_PU);
+    am_gpio_trigger_connect(PIOA_0, __gpio_isr, NULL);
+    am_gpio_trigger_cfg(PIOA_0, AM_GPIO_TRIGGER_FALL);
+    am_gpio_trigger_on(PIOA_0);
 
     /* 低功耗模式初始化 */
     am_zsl42x_lpmode_init();
