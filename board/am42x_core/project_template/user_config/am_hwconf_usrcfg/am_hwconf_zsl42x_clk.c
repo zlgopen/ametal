@@ -33,6 +33,26 @@
 /** \brief CLK 平台初始化 */
 static void __zsl42x_clk_plfm_init (void)
 {
+    /* 外部低速时钟 XTL 晶振驱动能力选择 */
+    amhw_zsl42x_rcc_xtl_xtal_driver_set(AMHW_ZSL42x_XTL_XTAL_DRIVER_DEFAULT);
+
+    /* 外部低速时钟 XTL 晶振振荡幅度的调整 */
+    amhw_zsl42x_rcc_xtl_xtal_amplitude_set(
+    AMHW_ZSL42x_XTL_XTAL_AMPLITUDE_BIG_DEFAULT);
+
+    /* 外部低速时钟 XTL 稳定时间选择 */
+    amhw_zsl42x_rcc_xtl_waittime_set(AMHW_ZSL42x_XTL_WAITTIME_16384);
+
+    /* 外部低速时钟 XTL 使能 */
+    amhw_zsl42x_rcc_set_start(0x5A5A);
+    amhw_zsl42x_rcc_set_start(0xA5A5);
+    amhw_zsl42x_rcc_xtl_enable();
+
+    /* 等待外部低速时钟 XTL 稳定*/
+    while(amhw_zsl42x_rcc_xtl_state_get() == AM_FALSE);
+
+    /* 不使用 XTH，驱动能力设置为最弱 */
+    amhw_zsl42x_rcc_xth_xtal_driver_set(AMHW_ZSL42x_XTH_XTAL_DRIVER_MIN);
 }
 
 /** \brief CLK 解平台初始化 */

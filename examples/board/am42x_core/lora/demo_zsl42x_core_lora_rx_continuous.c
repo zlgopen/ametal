@@ -39,7 +39,7 @@ static uint32_t __g_cnt = 0;
 
 #if (__LORA_ENABLE)
 #define LORA_BANDWIDTH              0          /**< \brief 带宽125Khz */
-#define LORA_TX_POWER               17
+#define LORA_TX_POWER               17         /**< \brief 功率17dB */
 #define LORA_SPREADING_FACTOR       AM_ZSL42X_LORA_SERVER_SF8    /**< \brief 信道速率 SFx */
 #define LORA_CODINGRATE             AM_ZSL42X_LORA_SERVER_CR_4_5 /**< \brief 编码率 4/5 */
 #define LORA_PREAMBLE_LENGTH        10         /**< \brief 前导码长度 */

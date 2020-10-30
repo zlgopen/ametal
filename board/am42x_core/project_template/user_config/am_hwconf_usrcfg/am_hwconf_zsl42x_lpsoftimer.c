@@ -72,9 +72,9 @@ am_local const am_zsl42x_lptmr_lpsoftimer_devinfo_t __g_lpsoftimer_devinfo = {
     ZSL42x_LPTIM0,                   /**< \brief 指向LPTMR寄存器块的指针 */
     ZSL42x_LPTIM1,                   /**< \brief 指向LPTMR寄存器块的指针 */
 
-    INUM_LPTIM0_1,                 /**< \brief LPTMR0中断编号 */
+    INUM_LPTIM0_1,                   /**< \brief LPTMR0中断编号 */
 
-    32768,                         /**< \brief 内部低速时钟 */
+    32768,                           /**< \brief 外部低速时钟 */
 
     -0.030,
     0.003,
