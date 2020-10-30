@@ -37,6 +37,9 @@
 #include "am_hwconf_zsl42x_lora.h"
 
 
+/**
+ * \brief lora服务句柄
+ */
 static am_zsl42x_lora_handle_t g_lora_handle;
 
 #define LORA_RF_FREQUENCY           504000000  /**< \brief 信道频率 */

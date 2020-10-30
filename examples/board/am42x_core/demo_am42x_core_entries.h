@@ -691,30 +691,41 @@ void demo_zsl42x_core_drv_pcnt_special_entry (void);
  * \brief modbus 主机通信例程
  */
 void demo_zsl42x_core_mb_master_demo_entry (void);
+
 /**
  * \brief modbus 从站通信例程
  */
 void demo_zsl42x_core_mb_slave_test_entry (void);
+
 /**
  * \brief LoRa信道活跃测试程序入口
  */
 void demo_zsl42x_core_lora_channel_activity_detect_entry (void);
+
 /**
  * \brief LoRa cad检测发送接收
  */
 void demo_zsl42x_core_lora_cad_rx_tx_entry (void);
+
 /**
  * \brief LoRa连续接收测试程序入口
  */
 void demo_zsl42x_core_lora_rx_continuous_entry (void);
+
 /**
  * \brief LoRa超时接收测试程序入口
  */
 void demo_zsl42x_core_lora_rx_timeout_entry (void);
+
 /**
  * \brief LoRa定时发送测试程序入口
  */
 void demo_zsl42x_core_lora_tx_entry (void);
+
+/**
+ * \brief LoRa串口透传程序入口
+ */
+void demo_zsl42x_core_lora_uart_entry (void);
 
 /**
  * \brief SHT20温湿度程序入口

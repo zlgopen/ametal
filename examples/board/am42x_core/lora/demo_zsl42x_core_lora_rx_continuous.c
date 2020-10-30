@@ -31,6 +31,9 @@
 
 #define __LORA_ENABLE    1
 
+/**
+ * \brief lora·þÎñ¾ä±ú
+ */
 static am_zsl42x_lora_handle_t g_lora_handle;
 
 static uint32_t __g_cnt = 0;
