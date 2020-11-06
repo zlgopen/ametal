@@ -10,19 +10,19 @@
       <TargetName>debug</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
-      <pCCUsed>5060750::V5.06 update 6 (build 750)::ARMCC</pCCUsed>
+      <pCCUsed>5060061::V5.06 update 1 (build 61)::ARMCC</pCCUsed>
       <TargetOption>
         <TargetCommonOption>
-          <Device>HC32L196PCTA</Device>
-          <Vendor>HDSC</Vendor>
-          <PackID>HDSC.HC32L19X.1.0.0</PackID>
-          <PackURL>https://raw.githubusercontent.com/hdscmcu/pack/master/</PackURL>
-          <Cpu>IROM(0x00000000,0x40000) IRAM(0x20000000,0x8000) CPUTYPE("Cortex-M0+") CLOCK(12000000) ELITTLE</Cpu>
+          <Device>ZSL42x</Device>
+          <Vendor>Generic</Vendor>
+          <PackID>ZLG.ZSL42x.1.0.0</PackID>
+          <PackURL>http://www.zlg.cn/</PackURL>
+          <Cpu>IROM(0x00000000,0x40000) IRAM(0x20000000,0x2000) CPUTYPE("Cortex-M0+") CLOCK(12000000) ELITTLE</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
           <StartupFile></StartupFile>
-          <FlashDriverDll>UL2CM3(-S0 -C0 -P0 -FD20000000 -FC1000 -FN1 -FF0FlashHC32L19X_256K -FS00 -FL040000 -FP0($$Device:HC32L196PCTA$Flash\FlashHC32L19X_256K.FLM))</FlashDriverDll>
+          <FlashDriverDll>UL2CM3(-S0 -C0 -P0 -FD20000000 -FC1000 -FN1 -FF0ZSL42x -FS08000000 -FL040000 -FP0($$Device:ZSL42x$Flash\ZSL42x.FLM))</FlashDriverDll>
           <DeviceId>0</DeviceId>
-          <RegisterFile>$$Device:HC32L196PCTA$Device\Include\HC32L196PCTA.h</RegisterFile>
+          <RegisterFile></RegisterFile>
           <MemoryEnv></MemoryEnv>
           <Cmp></Cmp>
           <Asm></Asm>
@@ -32,7 +32,7 @@
           <SLE66CMisc></SLE66CMisc>
           <SLE66AMisc></SLE66AMisc>
           <SLE66LinkerMisc></SLE66LinkerMisc>
-          <SFDFile>$$Device:HC32L196PCTA$SVD\HC32L196PCTA.sfr</SFDFile>
+          <SFDFile>$$Device:ZSL42x$SVD\ZSL42x.svd</SFDFile>
           <bCustSvd>0</bCustSvd>
           <UseEnv>0</UseEnv>
           <BinPath></BinPath>
@@ -109,7 +109,7 @@
         </CommonProperty>
         <DllOption>
           <SimDllName>SARMCM3.DLL</SimDllName>
-          <SimDllArguments>  </SimDllArguments>
+          <SimDllArguments> -REMAP </SimDllArguments>
           <SimDlgDll>DARMCM1.DLL</SimDlgDll>
           <SimDlgDllArguments>-pCM0+</SimDlgDllArguments>
           <TargetDllName>SARMCM3.DLL</TargetDllName>
@@ -178,7 +178,7 @@
           </Flash1>
           <bUseTDR>1</bUseTDR>
           <Flash2>BIN\UL2CM3.DLL</Flash2>
-          <Flash3>"" ()</Flash3>
+          <Flash3></Flash3>
           <Flash4></Flash4>
           <pFcarmOut></pFcarmOut>
           <pFcarmGrp></pFcarmGrp>
@@ -284,7 +284,7 @@
               <IRAM>
                 <Type>0</Type>
                 <StartAddress>0x20000000</StartAddress>
-                <Size>0x8000</Size>
+                <Size>0x2000</Size>
               </IRAM>
               <IROM>
                 <Type>1</Type>
@@ -339,7 +339,7 @@
               <OCR_RVCT9>
                 <Type>0</Type>
                 <StartAddress>0x20000000</StartAddress>
-                <Size>0x8000</Size>
+                <Size>0x2000</Size>
               </OCR_RVCT9>
               <OCR_RVCT10>
                 <Type>0</Type>
@@ -2607,16 +2607,6 @@
               <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_fmse_spi.c</FilePath>
             </File>
             <File>
-              <FileName>am_hwconf_zsl42x_lpsoftimer.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zsl42x_lpsoftimer.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_zsl42x_lora.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zsl42x_lora.c</FilePath>
-            </File>
-            <File>
               <FileName>am_hwconf_sht20.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_sht20.c</FilePath>
@@ -2637,16 +2627,6 @@
           <GroupName>lora</GroupName>
           <Files>
             <File>
-              <FileName>am_zsl42x_lora_if_spi.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\zlg\drivers\source\lora\adapter\am_zsl42x_lora_if_spi.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_zsl42x_lpsoftimer_if.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\zlg\drivers\source\lora\adapter\am_zsl42x_lpsoftimer_if.c</FilePath>
-            </File>
-            <File>
               <FileName>lora.lib</FileName>
               <FileType>4</FileType>
               <FilePath>..\..\..\..\soc\zlg\drivers\source\lora\armcc\lora.lib</FilePath>
@@ -2662,16 +2642,16 @@
       <pCCUsed>5060061::V5.06 update 1 (build 61)::ARMCC</pCCUsed>
       <TargetOption>
         <TargetCommonOption>
-          <Device>HC32L196PCTA</Device>
-          <Vendor>HDSC</Vendor>
-          <PackID>HDSC.HC32L19X.1.0.0</PackID>
-          <PackURL>https://raw.githubusercontent.com/hdscmcu/pack/master/</PackURL>
-          <Cpu>IROM(0x00000000,0x40000) IRAM(0x20000000,0x8000) CPUTYPE("Cortex-M0+") CLOCK(12000000) ELITTLE</Cpu>
+          <Device>ZSL42x</Device>
+          <Vendor>Generic</Vendor>
+          <PackID>ZLG.ZSL42x.1.0.0</PackID>
+          <PackURL>http://www.zlg.cn/</PackURL>
+          <Cpu>IROM(0x00000000,0x40000) IRAM(0x20000000,0x2000) CPUTYPE("Cortex-M0+") CLOCK(12000000) ELITTLE</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
           <StartupFile></StartupFile>
-          <FlashDriverDll>UL2CM3(-S0 -C0 -P0 -FD20000000 -FC1000 -FN1 -FF0FlashHC32L19X_256K -FS00 -FL040000 -FP0($$Device:HC32L196PCTA$Flash\FlashHC32L19X_256K.FLM))</FlashDriverDll>
+          <FlashDriverDll>UL2CM3(-S0 -C0 -P0 -FD20000000 -FC1000 -FN1 -FF0ZSL42x -FS08000000 -FL040000 -FP0($$Device:ZSL42x$Flash\ZSL42x.FLM))</FlashDriverDll>
           <DeviceId>0</DeviceId>
-          <RegisterFile>$$Device:HC32L196PCTA$Device\Include\HC32L196PCTA.h</RegisterFile>
+          <RegisterFile></RegisterFile>
           <MemoryEnv></MemoryEnv>
           <Cmp></Cmp>
           <Asm></Asm>
@@ -2681,7 +2661,7 @@
           <SLE66CMisc></SLE66CMisc>
           <SLE66AMisc></SLE66AMisc>
           <SLE66LinkerMisc></SLE66LinkerMisc>
-          <SFDFile>$$Device:HC32L196PCTA$SVD\HC32L196PCTA.sfr</SFDFile>
+          <SFDFile>$$Device:ZSL42x$SVD\ZSL42x.svd</SFDFile>
           <bCustSvd>0</bCustSvd>
           <UseEnv>0</UseEnv>
           <BinPath></BinPath>
@@ -2758,7 +2738,7 @@
         </CommonProperty>
         <DllOption>
           <SimDllName>SARMCM3.DLL</SimDllName>
-          <SimDllArguments>  </SimDllArguments>
+          <SimDllArguments> -REMAP </SimDllArguments>
           <SimDlgDll>DARMCM1.DLL</SimDlgDll>
           <SimDlgDllArguments>-pCM0+</SimDlgDllArguments>
           <TargetDllName>SARMCM3.DLL</TargetDllName>
@@ -2775,7 +2755,7 @@
             <Oh166RecLen>16</Oh166RecLen>
           </OPTHX>
           <Simulator>
-            <UseSimulator>1</UseSimulator>
+            <UseSimulator>0</UseSimulator>
             <LoadApplicationAtStartup>1</LoadApplicationAtStartup>
             <RunToMain>1</RunToMain>
             <RestoreBreakpoints>1</RestoreBreakpoints>
@@ -2787,9 +2767,9 @@
             <RestoreSysVw>1</RestoreSysVw>
           </Simulator>
           <Target>
-            <UseTarget>0</UseTarget>
+            <UseTarget>1</UseTarget>
             <LoadApplicationAtStartup>1</LoadApplicationAtStartup>
-            <RunToMain>0</RunToMain>
+            <RunToMain>1</RunToMain>
             <RestoreBreakpoints>1</RestoreBreakpoints>
             <RestoreWatchpoints>1</RestoreWatchpoints>
             <RestoreMemoryDisplay>1</RestoreMemoryDisplay>
@@ -2799,7 +2779,7 @@
             <RestoreSysVw>1</RestoreSysVw>
           </Target>
           <RunDebugAfterBuild>0</RunDebugAfterBuild>
-          <TargetSelection>-1</TargetSelection>
+          <TargetSelection>1</TargetSelection>
           <SimDlls>
             <CpuDll></CpuDll>
             <CpuDllArguments></CpuDllArguments>
@@ -2813,7 +2793,7 @@
             <PeripheralDll></PeripheralDll>
             <PeripheralDllArguments></PeripheralDllArguments>
             <InitializationFile></InitializationFile>
-            <Driver></Driver>
+            <Driver>BIN\UL2CM3.DLL</Driver>
           </TargetDlls>
         </DebugOption>
         <Utilities>
@@ -2933,7 +2913,7 @@
               <IRAM>
                 <Type>0</Type>
                 <StartAddress>0x20000000</StartAddress>
-                <Size>0x8000</Size>
+                <Size>0x2000</Size>
               </IRAM>
               <IROM>
                 <Type>1</Type>
@@ -2988,7 +2968,7 @@
               <OCR_RVCT9>
                 <Type>0</Type>
                 <StartAddress>0x20000000</StartAddress>
-                <Size>0x8000</Size>
+                <Size>0x2000</Size>
               </OCR_RVCT9>
               <OCR_RVCT10>
                 <Type>0</Type>
@@ -5256,16 +5236,6 @@
               <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_fmse_spi.c</FilePath>
             </File>
             <File>
-              <FileName>am_hwconf_zsl42x_lpsoftimer.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zsl42x_lpsoftimer.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_zsl42x_lora.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_zsl42x_lora.c</FilePath>
-            </File>
-            <File>
               <FileName>am_hwconf_sht20.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_sht20.c</FilePath>
@@ -5285,16 +5255,6 @@
         <Group>
           <GroupName>lora</GroupName>
           <Files>
-            <File>
-              <FileName>am_zsl42x_lora_if_spi.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\zlg\drivers\source\lora\adapter\am_zsl42x_lora_if_spi.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_zsl42x_lpsoftimer_if.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\soc\zlg\drivers\source\lora\adapter\am_zsl42x_lpsoftimer_if.c</FilePath>
-            </File>
             <File>
               <FileName>lora.lib</FileName>
               <FileType>4</FileType>
