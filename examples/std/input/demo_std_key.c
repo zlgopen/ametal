@@ -61,7 +61,7 @@ void demo_std_key_entry (void)
     am_input_key_handler_register(&key_handler, __input_key_proc, NULL);
 
     AM_FOREVER {
-    	am_mdelay(10);
+        am_mdelay(10);
         ; /* VOID */
     }
 }
