@@ -87,7 +87,7 @@ typedef enum amhw_clktrim_ifr {
  */
 am_static_inline
 void amhw_hc32_clktrim_calclk_sel (amhw_hc32_clktrim_t      *p_hw_clktrim,
-                                     amhw_clktrim_calclk_sel_t   calclk_sel)
+                                   amhw_clktrim_calclk_sel_t   calclk_sel)
 {
     p_hw_clktrim->cr &= 0x4f;
     p_hw_clktrim->cr |= calclk_sel << 4;
@@ -104,7 +104,7 @@ void amhw_hc32_clktrim_calclk_sel (amhw_hc32_clktrim_t      *p_hw_clktrim,
  */
 am_static_inline
 void amhw_hc32_clktrim_int_enable (amhw_hc32_clktrim_t *p_hw_clktrim,
-                                     uint8_t                enable)
+                                   uint8_t                enable)
 {
     if(enable != 0 && enable != 1) {
         return;
@@ -124,7 +124,7 @@ void amhw_hc32_clktrim_int_enable (amhw_hc32_clktrim_t *p_hw_clktrim,
  */
 am_static_inline
 void amhw_hc32_clktrim_mon_enable (amhw_hc32_clktrim_t *p_hw_clktrim,
-                                     uint8_t                enable)
+                                   uint8_t                enable)
 {
     if(enable != 0 && enable != 1) {
         return;
@@ -143,7 +143,7 @@ void amhw_hc32_clktrim_mon_enable (amhw_hc32_clktrim_t *p_hw_clktrim,
  */
 am_static_inline
 void amhw_hc32_clktrim_refclk_sel (amhw_hc32_clktrim_t      *p_hw_clktrim,
-                                     amhw_clktrim_refclk_sel_t   refclk_sel)
+                                   amhw_clktrim_refclk_sel_t   refclk_sel)
 {
     p_hw_clktrim->cr &= ~0x0e;
     p_hw_clktrim->cr |= (refclk_sel << 1);
@@ -160,7 +160,7 @@ void amhw_hc32_clktrim_refclk_sel (amhw_hc32_clktrim_t      *p_hw_clktrim,
  */
 am_static_inline
 void amhw_hc32_clktrim_trim_start (amhw_hc32_clktrim_t *p_hw_clktrim,
-                                     uint8_t                start)
+                                   uint8_t                start)
 {
     if(start != 0 && start != 1) {
         return;
@@ -179,7 +179,7 @@ void amhw_hc32_clktrim_trim_start (amhw_hc32_clktrim_t *p_hw_clktrim,
  */
 am_static_inline
 void amhw_hc32_clktrim_refcon_set (amhw_hc32_clktrim_t *p_hw_clktrim,
-                                     uint16_t               rcntval)
+                                   uint32_t             rcntval)
 {
     p_hw_clktrim->refcon = rcntval;
 }
@@ -192,7 +192,7 @@ void amhw_hc32_clktrim_refcon_set (amhw_hc32_clktrim_t *p_hw_clktrim,
  * retval : 计数器值
  */
 am_static_inline
-uint16_t amhw_hc32_clktrim_refcnt_get (amhw_hc32_clktrim_t *p_hw_clktrim)
+uint32_t amhw_hc32_clktrim_refcnt_get (amhw_hc32_clktrim_t *p_hw_clktrim)
 {
     return p_hw_clktrim->refcnt;
 }
@@ -205,7 +205,7 @@ uint16_t amhw_hc32_clktrim_refcnt_get (amhw_hc32_clktrim_t *p_hw_clktrim)
  * retval : 计数器值
  */
 am_static_inline
-uint16_t amhw_hc32_clktrim_calcnt_get (amhw_hc32_clktrim_t *p_hw_clktrim)
+uint32_t amhw_hc32_clktrim_calcnt_get (amhw_hc32_clktrim_t *p_hw_clktrim)
 {
     return p_hw_clktrim->calcnt;
 }
@@ -221,7 +221,7 @@ uint16_t amhw_hc32_clktrim_calcnt_get (amhw_hc32_clktrim_t *p_hw_clktrim)
  */
 am_static_inline
 uint8_t amhw_hc32_clktrim_ifr_get (amhw_hc32_clktrim_t *p_hw_clktrim,
-                                     amhw_clktrim_ifr_t     ifr)
+                                   amhw_clktrim_ifr_t     ifr)
 {
     return p_hw_clktrim->ifr & ifr;
 }
@@ -237,7 +237,7 @@ uint8_t amhw_hc32_clktrim_ifr_get (amhw_hc32_clktrim_t *p_hw_clktrim,
  */
 am_static_inline
 uint8_t amhw_hc32_clktrim_ifr_clear (amhw_hc32_clktrim_t *p_hw_clktrim,
-                                       amhw_clktrim_ifr_t     ifr)
+                                     amhw_clktrim_ifr_t     ifr)
 {
     if(ifr < 4) {
         return AM_EPERM;
@@ -256,7 +256,7 @@ uint8_t amhw_hc32_clktrim_ifr_clear (amhw_hc32_clktrim_t *p_hw_clktrim,
  */
 am_static_inline
 void amhw_hc32_clktrim_calcon_set (amhw_hc32_clktrim_t *p_hw_clktrim,
-                                     uint16_t               ccntval)
+                                   uint32_t               ccntval)
 {
     p_hw_clktrim->calcon = ccntval;
 }

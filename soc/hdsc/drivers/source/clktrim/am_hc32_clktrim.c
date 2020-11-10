@@ -40,9 +40,9 @@ am_local void __clktrim_irq_handler(void *parg)
     amhw_hc32_clktrim_trim_start(HC32_CLKTRIM, 0);
     *(int *)parg = 1;
     if(0 == amhw_hc32_clktrim_ifr_get(HC32_CLKTRIM,
-                                        AMHW_CLKTRIM_CALCNT_OF)) {
+                                      AMHW_CLKTRIM_CALCNT_OF)) {
         amhw_hc32_clktrim_ifr_clear(HC32_CLKTRIM, AMHW_CLKTRIM_XTH_FAULT);
-				amhw_hc32_clktrim_ifr_clear(HC32_CLKTRIM, AMHW_CLKTRIM_XTL_FAULT);
+        amhw_hc32_clktrim_ifr_clear(HC32_CLKTRIM, AMHW_CLKTRIM_XTL_FAULT);
     }
     amhw_hc32_clktrim_ifr_clear(HC32_CLKTRIM, AMHW_CLKTRIM_CALCNT_OF);
     amhw_hc32_clktrim_ifr_clear(HC32_CLKTRIM, AMHW_CLKTRIM_STOP);
@@ -51,10 +51,10 @@ am_local void __clktrim_irq_handler(void *parg)
 /**
  * \brief CLKTRIM监测模式配置
  */
-uint8_t am_hc32_clktrim_monitor (uint16_t                     rcntval,
-                                   uint16_t                     ccntval,
-                                   amhw_clktrim_refclk_sel_t    refclk_sel,
-                                   amhw_clktrim_calclk_sel_t    calclk_sel)
+uint8_t am_hc32_clktrim_monitor (uint32_t                     rcntval,
+                                 uint32_t                     ccntval,
+                                 amhw_clktrim_refclk_sel_t    refclk_sel,
+                                 amhw_clktrim_calclk_sel_t    calclk_sel)
 {
     int       break_flag = 0;
     uint8_t   ret        = AM_OK;
@@ -103,12 +103,12 @@ uint8_t am_hc32_clktrim_monitor (uint16_t                     rcntval,
 /**
  * \brief CLKTRIM校准模式配置
  */
-uint8_t am_hc32_clktrim_calibrate (uint16_t                     rcntval,
-                                     amhw_clktrim_refclk_sel_t    refclk_sel,
-                                     amhw_clktrim_calclk_sel_t    calclk_sel)
+uint32_t am_hc32_clktrim_calibrate (uint32_t                    rcntval,
+                                   amhw_clktrim_refclk_sel_t    refclk_sel,
+                                   amhw_clktrim_calclk_sel_t    calclk_sel)
 {
     int       break_flag = 0;
-    uint16_t  calcnt     = 0;
+    uint32_t  calcnt     = 0;
     am_bool_t ret        = AM_OK;
 
     am_clk_enable(CLK_CLOCKTRIM);
@@ -150,7 +150,7 @@ uint8_t am_hc32_clktrim_calibrate (uint16_t                     rcntval,
         return ret;
     }
 
-    return ((calcnt * 1000) / rcntval);
+    return calcnt;
 }
 
 /* end of file */
