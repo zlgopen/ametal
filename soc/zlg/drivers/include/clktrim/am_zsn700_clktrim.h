@@ -47,8 +47,8 @@ extern "C" {
  * \return <0，被监控时钟失效
  *        AM_OK，工作正常
  */
-uint8_t am_zsn700_clktrim_monitor (uint16_t                     rcntval,
-                                   uint16_t                     ccntval,
+uint8_t am_zsn700_clktrim_monitor (uint32_t                     rcntval,
+                                   uint32_t                     ccntval,
                                    amhw_clktrim_refclk_sel_t    refclk_sel,
                                    amhw_clktrim_calclk_sel_t    calclk_sel);
 
@@ -59,10 +59,9 @@ uint8_t am_zsn700_clktrim_monitor (uint16_t                     rcntval,
  * \param[in] refclk_sel : 参考时钟选择
  * \param[in] calclk_sel : 待校准时钟选择
  *
- * \return <0，需调整校准时间
- *         >0，校准时钟计数器的值 / 参考时钟计数器的值 * 1000
+ * \return 校准时钟计数器的值
  */
-uint8_t am_zsn700_clktrim_calibrate (uint16_t                     rcntval,
+uint32_t am_zsn700_clktrim_calibrate (uint32_t                    rcntval,
                                      amhw_clktrim_refclk_sel_t    refclk_sel,
                                      amhw_clktrim_calclk_sel_t    calclk_sel);
 
