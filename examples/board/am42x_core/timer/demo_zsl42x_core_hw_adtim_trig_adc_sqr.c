@@ -21,7 +21,7 @@
  * \note
  *   1.如需观察串口打印的调试信息，需要将 PIOA_10 引脚连接 PC 串口的 TXD，
  *     PIOA_9 引脚连接 PC 串口的 RXD。
- *   2.adc通道数量（sqr_num）的设定范围为1~16
+ *   2.adc通道数量（sqr_num）的设定范围为1~13
  *   3.在PCLK16MHz下，定时器周期时间（period_us）的设定范围为0~262140us（0~262ms之间），如果想设
  *     定其他时间值，则需要更改demo_zsl42x_hw_adtim_trig_adc_sqr.c中定时器分频系数的设定。
  *   4.不同情况下，ADC的转换速度有限，需要考虑定时器的周期时间是否大于ADC转换时间（多个通道则需要累加转换时间）
@@ -56,15 +56,12 @@
  */
 void demo_zsl42x_core_hw_adtim_trig_adc_sqr_entry (void)
 {
-    /* 16个顺序通道ADC采集 */
+    /* 13个顺序通道ADC采集 */
     int adc_chan[] = {AMHW_ZSL42x_CHAN_AIN0_PA0,
                       AMHW_ZSL42x_CHAN_AIN1_PA1,
                       AMHW_ZSL42x_CHAN_AIN2_PA2,
                       AMHW_ZSL42x_CHAN_AIN3_PA3,
                       AMHW_ZSL42x_CHAN_AIN4_PA4,
-                      AMHW_ZSL42x_CHAN_AIN5_PA5,
-                      AMHW_ZSL42x_CHAN_AIN6_PA6,
-                      AMHW_ZSL42x_CHAN_AIN7_PA7,
                       AMHW_ZSL42x_CHAN_AIN8_PB0,
                       AMHW_ZSL42x_CHAN_AIN9_PB1,
                       AMHW_ZSL42x_CHAN_AIN10_PC0,
@@ -82,9 +79,6 @@ void demo_zsl42x_core_hw_adtim_trig_adc_sqr_entry (void)
     am_gpio_pin_cfg(PIOA_2, PIOA_2_GPIO | PIOA_2_AIN);
     am_gpio_pin_cfg(PIOA_3, PIOA_3_GPIO | PIOA_3_AIN);
     am_gpio_pin_cfg(PIOA_4, PIOA_4_GPIO | PIOA_4_AIN);
-    am_gpio_pin_cfg(PIOA_5, PIOA_5_GPIO | PIOA_5_AIN);
-    am_gpio_pin_cfg(PIOA_6, PIOA_6_GPIO | PIOA_6_AIN);
-    am_gpio_pin_cfg(PIOA_7, PIOA_7_GPIO | PIOA_7_AIN);
     am_gpio_pin_cfg(PIOB_0, PIOB_0_GPIO | PIOB_0_AIN);
     am_gpio_pin_cfg(PIOB_1, PIOB_1_GPIO | PIOB_1_AIN);
     am_gpio_pin_cfg(PIOC_0, PIOC_0_GPIO | PIOC_0_AIN);

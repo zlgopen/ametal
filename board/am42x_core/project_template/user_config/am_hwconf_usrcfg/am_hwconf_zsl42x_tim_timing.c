@@ -209,10 +209,10 @@ void am_zsl42x_tim2_timing_inst_deinit (am_timer_handle_t handle)
 void __zsl42x_plfm_tim3_timing_init (void)
 {
     /* 配置GATE引脚，以实现门控功能 */
-    am_gpio_pin_cfg(PIOA_6, PIOA_6_INPUT_PD | PIOA_6_TIM3_GATE);
+    am_gpio_pin_cfg(PIOA_11, PIOA_11_INPUT_PD | PIOA_11_TIM3_GATE);
 
     /* 配置ETR引脚，以外部时钟作为计数时钟功能 */
-    am_gpio_pin_cfg(PIOA_11, PIOA_11_INPUT_PD | PIOA_11_TIM3_GATE);
+    am_gpio_pin_cfg(PIOA_12, PIOA_12_INPUT_PD | PIOA_12_TIM3_ETR);
 
     am_clk_enable(CLK_TIM3);
 }
@@ -220,9 +220,9 @@ void __zsl42x_plfm_tim3_timing_init (void)
 /** \brief 解除 TIM3 平台初始化 */
 void __zsl42x_plfm_tim3_timing_deinit (void)
 {
-    am_gpio_pin_cfg(PIOA_6, PIOA_6_INPUT_PU | PIOA_6_GPIO);
-
     am_gpio_pin_cfg(PIOA_11, PIOA_11_INPUT_PU | PIOA_11_GPIO);
+
+    am_gpio_pin_cfg(PIOA_12, PIOA_12_INPUT_PU | PIOA_12_GPIO);
 
     am_clk_disable(CLK_TIM3);
 }

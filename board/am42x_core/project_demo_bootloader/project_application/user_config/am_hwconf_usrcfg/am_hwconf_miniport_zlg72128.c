@@ -49,7 +49,7 @@ static const am_zlg72128_std_devinfo_t __g_miniport_zlg72128_info = {
                 ZLG72128_PIN_HIGH_SLV_ADDR,
                 PIOB_3,                     /* 复位引脚 */
                 AM_TRUE,                   /* 不使用中断引脚 */
-                PIOC_12,                    /* 中断引脚 */
+                PIOA_12,                    /* 中断引脚 */
                 5,                          /* 查询时间间隔，使用中断引脚时，该值无意义 */
                 am_zsl42x_i2c1_inst_init,
                 am_zsl42x_i2c1_inst_deinit

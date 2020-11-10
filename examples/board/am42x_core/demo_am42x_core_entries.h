@@ -348,21 +348,6 @@ void demo_zsl42x_core_std_tim5_timing_entry (void);
 void demo_zsl42x_core_std_tim6_timing_entry (void);
 
 /**
- * \brief LPTIM0定时器 TIMING 例程，通过标准接口实现
- */
-void demo_zsl42x_core_std_lptim0_timing_entry (void);
-
-/**
- * \brief LPTIM1定时器 TIMING 例程，通过标准接口实现
- */
-void demo_zsl42x_core_std_lptim1_timing_entry (void);
-
-/**
- * \brief LPTIM1定时器和LPTIM2定时器TIMING例程，通过标准接口实现
- */
-void demo_zsl42x_core_std_lptim_timing_gate_entry (void);
-
-/**
  * \brief ADTIM触发ADC采集例程，通过HW接口实现
  */
 void demo_zsl42x_core_hw_adtim_trig_adc_sqr_entry (void);

@@ -33,53 +33,6 @@
  * \copydoc am_hwconf_zsl42x_spi_poll.c
  * @{
  */
-/** \brief SPI0 平台初始化 */
-static void __zsl42x_plfm_spi0_poll_init (void)
-{
-    am_gpio_pin_cfg(PIOB_3,  PIOB_3_SPI0_SCK   | PIOB_3_OUT_PP);
-    am_gpio_pin_cfg(PIOA_12, PIOA_12_SPI0_MOSI | PIOA_12_OUT_PP);
-    am_gpio_pin_cfg(PIOA_11, PIOA_11_SPI0_MISO | PIOA_11_INPUT_PU);
-
-    am_clk_enable(CLK_SPI0);
-}
-
-/** \brief 解除SPI0 平台初始化 */
-static void __zsl42x_plfm_spi0_poll_deinit (void)
-{
-
-    /* 释放引脚为输入模式 */
-    am_gpio_pin_cfg(PIOB_3,  PIOB_3_INPUT_PU);
-    am_gpio_pin_cfg(PIOA_12, PIOA_12_INPUT_PU);
-    am_gpio_pin_cfg(PIOA_11, PIOA_11_INPUT_PU);
-
-    am_clk_disable(CLK_SPI0);
-}
-
-/**
- * \brief SPI0 设备信息
- */
-const  struct am_zsl42x_spi_poll_devinfo  __g_spi0_poll_devinfo = {
-    ZSL42x_SPI0_BASE,                       /**< \brief SPI0寄存器指针 */
-    CLK_SPI0,                               /**< \brief 时钟ID号 */
-    __zsl42x_plfm_spi0_poll_init,           /**< \brief SPI0平台初始化函数 */
-    __zsl42x_plfm_spi0_poll_deinit          /**< \brief SPI0平台解初始化函数 */
-};
-
-/** \brief SPI0 设备实例 */
-static am_zsl42x_spi_poll_dev_t __g_spi0_poll_dev;
-
-/** \brief SPI0 实例初始化，获得SPI标准服务句柄 */
-am_spi_handle_t am_zsl42x_spi0_poll_inst_init (void)
-{
-    return am_zsl42x_spi_poll_init(&__g_spi0_poll_dev, &__g_spi0_poll_devinfo);
-}
-
-/** \brief SPI0 实例解初始化 */
-void am_zsl42x_spi0_poll_inst_deinit (am_spi_handle_t handle)
-{
-    am_zsl42x_spi_poll_deinit(handle);
-}
-
 /** \brief SPI1 平台初始化 */
 static void __zsl42x_plfm_spi1_poll_init (void)
 {

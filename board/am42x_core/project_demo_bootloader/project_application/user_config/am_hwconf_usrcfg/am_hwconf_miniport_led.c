@@ -49,7 +49,7 @@
 static am_led_gpio_dev_t  __g_miniport_led;
 
 static const int __g_miniport_led_pins[] = {
-    PIOB_7, PIOB_6, PIOB_15, PIOB_13, PIOC_10, PIOB_14, PIOB_12, PIOC_14
+    PIOB_7, PIOB_6, PIOB_15, PIOB_13, PIOA_10, PIOB_14, PIOB_12, PIOA_14
 };
 
 /* 定义GPIO按键实例信息 */

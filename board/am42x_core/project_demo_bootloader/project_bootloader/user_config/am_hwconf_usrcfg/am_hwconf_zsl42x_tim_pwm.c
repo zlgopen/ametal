@@ -190,9 +190,9 @@ am_zsl42x_tim_pwm_chaninfo_t __g_tim2_pwm_chaninfo_list[] = {
     /** \brief 通道0引脚配置 */
     {
         AM_ZSL42x_TIM_PWM_CH0A,
-        PIOA_7,
-        PIOA_7_TIM2_CHA | PIOA_7_OUT_PP,
-        PIOA_7_GPIO | PIOA_7_INPUT_PU
+        PIOA_2,
+        PIOA_2_TIM2_CHA | PIOA_2_OUT_PP,
+        PIOA_2_GPIO | PIOA_2_INPUT_PU
     },
 
     /** \brief 通道1引脚配置 */
@@ -265,9 +265,9 @@ am_zsl42x_tim_pwm_chaninfo_t __g_tim3_pwm_chaninfo_list[] = {
     /** \brief 通道1引脚配置 */
     {
         AM_ZSL42x_TIM_PWM_CH0B,
-        PIOA_7,
-        PIOA_7_TIM3_CH0B | PIOA_7_OUT_PP,
-        PIOA_7_GPIO | PIOA_7_INPUT_PU
+        PIOB_4,
+        PIOB_4_TIM3_CH0B | PIOB_4_OUT_PP,
+        PIOB_4_GPIO | PIOB_4_INPUT_PU
     },
 
     /** \brief 通道2引脚配置 */
@@ -427,9 +427,9 @@ am_zsl42x_adtim_pwm_chaninfo_t __g_adtim5_pwm_chaninfo_list[] = {
 
     {
         AM_ZSL42x_ADTIM_PWM_CHB,
-        PIOA_5,
-        PIOA_5_TIM5_CHB | PIOA_5_OUT_PP ,
-        PIOA_5_GPIO | PIOA_5_INPUT_PU
+        PIOB_0,
+        PIOB_0_TIM5_CHB | PIOB_0_OUT_PP ,
+        PIOB_0_GPIO | PIOB_0_INPUT_PU
     },
 };
 

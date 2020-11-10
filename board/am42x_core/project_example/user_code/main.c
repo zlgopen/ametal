@@ -38,7 +38,7 @@ int am_main (void)
     AM_DBG_INFO("Start up successful!\r\n");
 
     /* demoÀý³ÌÈë¿Ú */
-//    demo_zsl42x_core_std_led_entry();
+    demo_zsl42x_core_std_led_entry();
 //    demo_zsl42x_core_std_delay_entry();
 //    demo_zsl42x_core_std_buzzer_entry();
 //    demo_zsl42x_core_hw_clk_entry();
@@ -100,9 +100,6 @@ int am_main (void)
 //    demo_zsl42x_core_std_tim4_timing_entry();
 //    demo_zsl42x_core_std_tim5_timing_entry();
 //    demo_zsl42x_core_std_tim6_timing_entry();
-//    demo_zsl42x_core_std_lptim0_timing_entry();
-//    demo_zsl42x_core_std_lptim1_timing_entry();
-//    demo_zsl42x_core_std_lptim_timing_gate_entry();
 //    demo_zsl42x_core_hw_uart_int_entry();
 //    demo_zsl42x_core_hw_uart_polling_entry();
 //    demo_zsl42x_core_hw_uart_rx_dma_entry();
@@ -140,6 +137,12 @@ int am_main (void)
 //    demo_zsl42x_core_miniport_hc595_led_entry();
 //    demo_zsl42x_core_mb_master_demo_entry ();
 //    demo_zsl42x_core_mb_slave_test_entry ();
+//    demo_zsl42x_core_lora_channel_activity_detect_entry();
+//    demo_zsl42x_core_lora_cad_rx_tx_entry();
+//    demo_zsl42x_core_lora_rx_continuous_entry();
+//    demo_zsl42x_core_lora_rx_timeout_entry();
+//    demo_zsl42x_core_lora_tx_entry();
+//    demo_zsl42x_core_lora_uart_entry();
 //    demo_zsl42x_core_std_sht20_entry();
 //    demo_zsl42x_core_rgb_led_entry();
     while (1) {

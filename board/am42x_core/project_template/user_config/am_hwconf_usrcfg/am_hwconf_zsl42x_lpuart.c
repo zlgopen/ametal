@@ -93,8 +93,8 @@ static void __zsl42x_plfm_lpuart1_init (void)
 {
     am_clk_enable(CLK_LPUART1);
 
-    am_gpio_pin_cfg(PIOC_11, PIOC_11_LPUART1_RXD | PIOC_11_INPUT_FLOAT );
-    am_gpio_pin_cfg(PIOC_12, PIOC_12_LPUART1_TXD | PIOC_12_OUT_PP);
+    am_gpio_pin_cfg(PIOA_1, PIOA_1_LPUART1_RXD | PIOA_1_INPUT_FLOAT );
+    am_gpio_pin_cfg(PIOA_0, PIOA_0_LPUART1_TXD | PIOA_0_OUT_PP);
 }
 
 /** \brief 解除LPUART1平台初始化 */
@@ -102,8 +102,8 @@ static void __zsl42x_plfm_lpuart1_deinit (void)
 {
     am_clk_disable(CLK_LPUART1);
 
-    am_gpio_pin_cfg(PIOC_11, PIOC_11_GPIO | PIOC_11_INPUT_PU);
-    am_gpio_pin_cfg(PIOC_12, PIOC_12_GPIO | PIOC_12_INPUT_PU);
+    am_gpio_pin_cfg(PIOA_0, PIOA_0_GPIO | PIOA_0_INPUT_PU);
+    am_gpio_pin_cfg(PIOA_1, PIOA_1_GPIO | PIOA_1_INPUT_PU);
 }
 
 /** \brief LPUART1设备信息 */

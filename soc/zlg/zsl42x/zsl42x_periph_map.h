@@ -46,7 +46,6 @@ extern "C" {
 #include "hw/amhw_zsl42x_gpio.h"
 #include "hw/amhw_zsl42x_i2c.h"
 #include "hw/amhw_zsl42x_lcd.h"
-#include "hw/amhw_zsl42x_lptim.h"
 #include "hw/amhw_zsl42x_lpuart.h"
 #include "hw/amhw_zsl42x_lvd.h"
 #include "hw/amhw_zsl42x_pca.h"

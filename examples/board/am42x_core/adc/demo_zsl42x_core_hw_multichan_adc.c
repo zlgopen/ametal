@@ -15,7 +15,7 @@
  * \brief ADC INT 例程，通过 HW 层接口实现
  *
  * - 操作步骤：
- *   1. 12个顺序通道  + 4个插入通道 扫描转换采集电压
+ *   1. 9个顺序通道  + 4个插入通道 扫描转换采集电压
  *
  * - 实验现象：
  *   1. 串口输出电压采样值。
@@ -52,16 +52,13 @@
  */
 void demo_zsl42x_core_hw_multichan_adc_entry (void)
 {
-    /* 12个顺序通道ADC采集 */ 
+    /* 9个顺序通道ADC采集 */ 
     /* 4个插入通道ADC采集 */
-    int adc_chan[16] = {AMHW_ZSL42x_CHAN_AIN0_PA0,
+    int adc_chan[13] = {AMHW_ZSL42x_CHAN_AIN0_PA0,
                         AMHW_ZSL42x_CHAN_AIN1_PA1,
                         AMHW_ZSL42x_CHAN_AIN2_PA2,
                         AMHW_ZSL42x_CHAN_AIN3_PA3,
                         AMHW_ZSL42x_CHAN_AIN4_PA4,
-                        AMHW_ZSL42x_CHAN_AIN5_PA5,
-                        AMHW_ZSL42x_CHAN_AIN6_PA6,
-                        AMHW_ZSL42x_CHAN_AIN7_PA7,
                         AMHW_ZSL42x_CHAN_AIN8_PB0,
                         AMHW_ZSL42x_CHAN_AIN9_PB1,
                         AMHW_ZSL42x_CHAN_AIN10_PC0,
@@ -79,9 +76,6 @@ void demo_zsl42x_core_hw_multichan_adc_entry (void)
     am_gpio_pin_cfg(PIOA_2, PIOA_2_GPIO | PIOA_2_AIN);
     am_gpio_pin_cfg(PIOA_3, PIOA_3_GPIO | PIOA_3_AIN);
     am_gpio_pin_cfg(PIOA_4, PIOA_4_GPIO | PIOA_4_AIN);
-    am_gpio_pin_cfg(PIOA_5, PIOA_5_GPIO | PIOA_5_AIN);
-    am_gpio_pin_cfg(PIOA_6, PIOA_6_GPIO | PIOA_6_AIN);
-    am_gpio_pin_cfg(PIOA_7, PIOA_7_GPIO | PIOA_7_AIN);
     am_gpio_pin_cfg(PIOB_0, PIOB_0_GPIO | PIOB_0_AIN);
     am_gpio_pin_cfg(PIOB_1, PIOB_1_GPIO | PIOB_1_AIN);
     am_gpio_pin_cfg(PIOC_0, PIOC_0_GPIO | PIOC_0_AIN);
@@ -98,7 +92,7 @@ void demo_zsl42x_core_hw_multichan_adc_entry (void)
                                      INUM_ADC_DAC,
                                      2500,
                                      adc_chan,
-                                     12,
+                                     9,
                                      4);
 }
 /** [src_zsl42x_hw_multichan_adc] */

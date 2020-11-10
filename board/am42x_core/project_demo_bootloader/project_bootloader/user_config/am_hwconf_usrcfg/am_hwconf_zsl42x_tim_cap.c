@@ -276,16 +276,16 @@ am_zsl42x_tim_cap_ioinfo_t __g_tim3_cap_ioinfo_list[] = {
     /**< \brief 通道4 */
     {
         AM_ZSL42x_TIM_CAP_CH2A,
-        PIOE_13,
-        PIOE_13_TIM3_CH2A | PIOE_13_INPUT_FLOAT,
-        PIOE_13_GPIO | PIOE_13_INPUT_PU
+        PIOA_10,
+        PIOA_10_TIM3_CH2A | PIOA_10_INPUT_FLOAT,
+        PIOA_10_GPIO | PIOA_10_INPUT_PU
     },
     /**< \brief 通道5 */
     {
         AM_ZSL42x_TIM_CAP_CH2B,
-        PIOE_12,
-        PIOE_12_TIM3_CH2B | PIOE_12_INPUT_FLOAT,
-        PIOE_12_GPIO | PIOE_12_INPUT_PU
+        PIOA_4,
+        PIOA_4_TIM3_CH2B | PIOA_4_INPUT_FLOAT,
+        PIOA_4_GPIO | PIOA_4_INPUT_PU
     },
 };
 
@@ -344,9 +344,9 @@ am_zsl42x_adtim_cap_ioinfo_t __g_adtim4_cap_ioinfo_list[] = {
 
     {
         AM_ZSL42x_ADTIM_CAP_CHB,
-        PIOA_7,
-        PIOA_7_TIM4_CHB  | PIOA_7_INPUT_FLOAT ,
-        PIOA_7_GPIO  | PIOA_7_INPUT_PU
+        PIOA_11,
+        PIOA_11_TIM4_CHB  | PIOA_11_INPUT_FLOAT ,
+        PIOA_11_GPIO  | PIOA_11_INPUT_PU
     },
 };
 
@@ -404,9 +404,9 @@ am_zsl42x_adtim_cap_ioinfo_t __g_adtim5_cap_ioinfo_list[] = {
 
     {
         AM_ZSL42x_ADTIM_CAP_CHB,
-        PIOA_5,
-        PIOA_5_TIM5_CHB  | PIOA_5_INPUT_FLOAT ,
-        PIOA_5_GPIO  | PIOA_5_INPUT_PU
+        PIOB_0,
+        PIOB_0_TIM5_CHB  | PIOB_0_INPUT_FLOAT ,
+        PIOB_0_GPIO  | PIOB_0_INPUT_PU
     },
 };
 
