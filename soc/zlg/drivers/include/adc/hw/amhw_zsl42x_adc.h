@@ -98,10 +98,7 @@ typedef enum {
     AMHW_ZSL42x_CHAN_AIN2_PA2,          /**< \brief 转换通道2 */
     AMHW_ZSL42x_CHAN_AIN3_PA3,          /**< \brief 转换通道3 */
     AMHW_ZSL42x_CHAN_AIN4_PA4,          /**< \brief 转换通道4 */
-    AMHW_ZSL42x_CHAN_AIN5_PA5,          /**< \brief 转换通道5 */
-    AMHW_ZSL42x_CHAN_AIN6_PA6,          /**< \brief 转换通道6 */
-    AMHW_ZSL42x_CHAN_AIN7_PA7,          /**< \brief 转换通道7 */
-    AMHW_ZSL42x_CHAN_AIN8_PB0,          /**< \brief 转换通道8 */
+    AMHW_ZSL42x_CHAN_AIN8_PB0 = 8,      /**< \brief 转换通道8 */
     AMHW_ZSL42x_CHAN_AIN9_PB1,          /**< \brief 转换通道9 */
     AMHW_ZSL42x_CHAN_AIN10_PC0,         /**< \brief 转换通道10 */
     AMHW_ZSL42x_CHAN_AIN11_PC1,         /**< \brief 转换通道11 */
@@ -116,20 +113,8 @@ typedef enum {
     AMHW_ZSL42x_CHAN_AIN20_PB13,        /**< \brief 转换通道20 */
     AMHW_ZSL42x_CHAN_AIN21_PB14,        /**< \brief 转换通道21 */
     AMHW_ZSL42x_CHAN_AIN22_PB15,        /**< \brief 转换通道22 */
-    AMHW_ZSL42x_CHAN_AIN23_PE15,        /**< \brief 转换通道23 */
-    /**< \brief 转换通道23,PC6适用于ZSL42xF030、ZSL42xL13X */
-    AMHW_ZSL42x_CHAN_AIN23_PC6 = AMHW_ZSL42x_CHAN_AIN23_PE15,
-
-#ifdef ZSL42xX3X
-    AWHW_ZSL42x_CHAN_OPA1_OUT,          /**< \brief OPA1输出 */
-    AWHW_ZSL42x_CHAN_OPA2_OUT,          /**< \brief OPA2输出 */
-    AWHW_ZSL42x_CHAN_OPA3_OUT,          /**< \brief OPA3输出 */
-#else
-    AMHW_ZSL42x_CHAN_AIN24_PE14,        /**< \brief 转换通道24 */
-    AMHW_ZSL42x_CHAN_AIN25_PE13,        /**< \brief 转换通道25 */
-    AMHW_ZSL42x_CHAN_DAC_OUT,           /**< \brief 与DAC输出连接，ADC_CR0.Buf必须为1 */
-#endif
-
+    AMHW_ZSL42x_CHAN_AIN23_PC6 = 23,
+    AMHW_ZSL42x_CHAN_DAC_OUT   = 26,    /**< \brief 与DAC输出连接，ADC_CR0.Buf必须为1 */
     AMHW_ZSL42x_CHAN_VCC_DIV3,          /**< \brief 与内部1/3VCC连接，ADC_CR0.Buf必须为1 */
     AMHW_ZSL42x_CHAN_INSIDE_TEMP_SENSOR,/**< \brief 与内置温度传感器输出电压连接，ADC_CR0.Buf必须为1 */
     AMHW_ZSL42x_CHAN_INSIDE_REFVCC_12,  /**< \brief 与内部基准1.2V输出电压连接，ADC_CR0.Buf必须为1 */
