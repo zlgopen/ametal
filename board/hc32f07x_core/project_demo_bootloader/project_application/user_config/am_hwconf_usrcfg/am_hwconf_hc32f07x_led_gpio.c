@@ -32,7 +32,7 @@
  */
 
 /** \brief 定义 LED 相关的 GPIO 管脚信息 */
-static const int __g_hc32f07x_led_pins[] = {PIOE_0};
+static const int __g_hc32f07x_led_pins[] = {PIOE_2, PIOE_3};
 
 /** \brief 设备信息 */
 static const am_led_gpio_info_t __g_hc32f07x_led_gpio_info = {

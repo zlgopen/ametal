@@ -59,7 +59,7 @@ void demo_hc32f07x_core_hw_uart_polling_entry (void)
 
     /* 初始化引脚 */
     am_gpio_pin_cfg(PIOA_2, PIOA_2_UART1_TXD | PIOA_2_OUT_PP );
-    am_gpio_pin_cfg(PIOA_3, PIOA_3_UART1_RXD | PIOA_10_INPUT_FLOAT);
+    am_gpio_pin_cfg(PIOA_3, PIOA_3_UART1_RXD | PIOA_3_INPUT_FLOAT);
 
     /* 使能时钟 */
     am_clk_enable(CLK_UART1);

@@ -46,7 +46,7 @@
 #include "am_gpio.h"
 #include "hc32_pin.h"
 #include "am_hc32_lvd.h"
-#include "demo_hc32_entries.h"
+#include "demo_hc32f07x_entries.h"
 
 /**
  * \brief 用户回调函数
@@ -61,7 +61,7 @@ static void __hc32f07x_lvd_callback (void *data)
  */
 void demo_hc32f07x_core_hw_lvd_int_entry (void)
 {
-    AM_DBG_INFO("Test start: demo-lvd-intterput !\r\n");
+    AM_DBG_INFO("Test start: demo-lvd-interrupt !\r\n");
 
     /* 开启LVD时钟 */
     am_clk_enable (CLK_VC_LVD);
@@ -72,7 +72,7 @@ void demo_hc32f07x_core_hw_lvd_int_entry (void)
     /* PA04 LVD 输出端*/
     am_gpio_pin_cfg(PIOA_4, PIOA_4_LVD_OUT | PIOA_4_OUT_PP);
 
-    demo_hc32_hw_lvd_int_entry(
+    demo_hc32f07x_hw_lvd_int_entry(
         (void *)HC32_LVD, 
         AMHW_HC32_LVD_VIDS_1P9_V,
         AMHW_HC32_LVD_SRC_PB07,

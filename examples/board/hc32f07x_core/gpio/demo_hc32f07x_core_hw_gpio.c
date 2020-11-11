@@ -45,7 +45,7 @@
 #include "demo_hc32_entries.h"
 #include "demo_amf07x_core_entries.h"
 
-#define INPUT_PIN  PIOD_3  /**< \brief 输入引脚 */
+#define INPUT_PIN  PIOE_4  /**< \brief 输入引脚 */
 #define OUTPUT_PIN PIOE_2 /**< \brief 输出引脚 */
 
 /**

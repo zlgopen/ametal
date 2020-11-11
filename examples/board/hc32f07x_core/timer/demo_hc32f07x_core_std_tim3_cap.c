@@ -56,9 +56,9 @@ void demo_hc32f07x_core_std_tim3_cap_entry (void)
     am_pwm_handle_t tim0_pwm_handle = am_hc32_tim0_pwm_inst_init();
     am_cap_handle_t tim3_cap_handle = am_hc32_tim3_cap_inst_init();
     
-	  AM_DBG_INFO("demo amf07x_core std tim1 cap!\r\n");
+	  AM_DBG_INFO("demo amf07x_core std tim3 cap!\r\n");
 
-    /* TIM0 输出频率为 2KHz 的 PWM */
+    /* TIM0 输出频率为 10KHz 的 PWM */
     am_pwm_config(tim0_pwm_handle, 0, 50000 / 2, 100000);
     am_pwm_enable(tim0_pwm_handle, 0);
 

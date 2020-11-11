@@ -95,20 +95,21 @@ extern "C" {
 /**
  * \brief 如果为1，则初始化led的相关功能，板上默认有1个LED
  *
- * ID: 0 --- PIOD_14
+ * ID: 0 --- PIOE_2
+ * ID: 1 --- PIOE_3
  */
 #define AM_CFG_LED_ENABLE            0
 
 /**
  * \brief 如果为1，则初始化板载按键
- * KEY_KP0 （默认按键编号） ：PIOA_7
+ * KEY_KP0 （默认按键编号） ：PIOE_4
  */
 #define AM_CFG_KEY_GPIO_ENABLE       0
 
 /**
  * \brief 如果为1，则初始化蜂鸣器的相关功能
  *
- * 默认使用 TIM3_OU1（PIOC_8）输出PWM （需要短接跳线帽 J7）
+ * 默认使用 TIM3_CH2B（PIOB_15）输出PWM （需要短接跳线帽 J7）
  */
 #define AM_CFG_BUZZER_ENABLE         0
 

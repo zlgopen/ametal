@@ -179,7 +179,7 @@ void amhw_hc32_clktrim_trim_start (amhw_hc32_clktrim_t *p_hw_clktrim,
  */
 am_static_inline
 void amhw_hc32_clktrim_refcon_set (amhw_hc32_clktrim_t *p_hw_clktrim,
-                                     uint16_t               rcntval)
+                                     uint32_t               rcntval)
 {
     p_hw_clktrim->refcon = rcntval;
 }
@@ -256,7 +256,7 @@ uint8_t amhw_hc32_clktrim_ifr_clear (amhw_hc32_clktrim_t *p_hw_clktrim,
  */
 am_static_inline
 void amhw_hc32_clktrim_calcon_set (amhw_hc32_clktrim_t *p_hw_clktrim,
-                                     uint16_t               ccntval)
+                                     uint32_t               ccntval)
 {
     p_hw_clktrim->calcon = ccntval;
 }

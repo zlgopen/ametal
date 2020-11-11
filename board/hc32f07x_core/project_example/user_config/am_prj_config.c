@@ -12,7 +12,7 @@
 
 /**
  * \file
- * \brief ZLG217 用户配置文件
+ * \brief HC32F07X 用户配置文件
  * \sa am_prj_config.c
  *
  * \internal

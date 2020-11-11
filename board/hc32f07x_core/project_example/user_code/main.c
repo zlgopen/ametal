@@ -40,6 +40,7 @@ int am_main (void)
     demo_hc32f07x_core_std_led_entry ();
 //    demo_hc32f07x_drv_lpmode_wake_up_entry ();
 //    demo_hc32f07x_core_hw_clk_entry();
+//    demo_hc32f07x_core_std_buzzer_entry();
 //    demo_hc32f07x_core_std_adc_entry();
 //    demo_hc32f07x_core_hw_adc_int_entry();
 //    demo_hc32f07x_core_std_multichan_adc_entry();
@@ -48,8 +49,8 @@ int am_main (void)
 //    demo_hc32f07x_core_std_crc_entry();
 //    demo_hc32f07x_core_drv_dma_m2m_entry();
 //    demo_hc32f07x_core_drv_flash_entry();
-//    demo_hc32l07x_core_drv_pca_8bit_pwm_entry ();
-//    demo_hc32l07x_core_drv_pca_16bit_pwm_entry ();
+//    demo_hc32f07x_core_drv_pca_8bit_pwm_entry ();
+//    demo_hc32f07x_core_drv_pca_16bit_pwm_entry ();
 //    demo_hc32f07x_core_hw_gpio_entry();
 //    demo_hc32f07x_core_hw_gpio_trigger_entry();
 //    demo_hc32f07x_core_std_gpio_entry();
@@ -58,7 +59,6 @@ int am_main (void)
 //    demo_hc32f07x_core_std_i2c_master_async_entry();
 //    demo_hc32f07x_core_std_i2c_master_sync_entry();
 //    demo_hc32f07x_core_std_key_input_event_entry();
-//    demo_hc32f07x_core_std_rtc_entry();
 //    demo_hc32f07x_core_hw_spi_master_entry();
 //    demo_hc32f07x_core_std_spi_master_dma_entry();
 //    demo_hc32f07x_core_std_spi_master_int_entry();
@@ -74,7 +74,6 @@ int am_main (void)
 //    demo_hc32f07x_core_hw_tim_pwm_entry();
 //    demo_hc32f07x_core_hw_tim_pwm_dead_entry();
 //    demo_hc32f07x_core_hw_tim_timing_entry();
-//    demo_hc32f07x_core_hw_tim_trig_adc_sqr_entry();
 //    demo_hc32f07x_core_std_tim0_cap_entry();
 //    demo_hc32f07x_core_std_tim1_cap_entry();
 //    demo_hc32f07x_core_std_tim2_cap_entry();
@@ -116,7 +115,6 @@ int am_main (void)
 //    demo_hc32f07x_core_std_dac_entry ();
 //    demo_hc32f07x_core_hw_vc_int_entry();
 //    demo_hc32f07x_core_hw_aes_ency_decy_entry ();
-//    demo_hc32f07x_core_std_dac_entry ();
 //    demo_hc32f07x_core_hw_trng_generate_entry ();
 //    demo_hc32f07x_core_hw_wdt_entry();
 //    demo_hc32f07x_core_std_wdt_entry();

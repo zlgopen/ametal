@@ -297,9 +297,9 @@ am_hc32_tim_pwm_chaninfo_t __g_tim3_pwm_chaninfo_list[] = {
     /** \brief Õ®µ¿5“˝Ω≈≈‰÷√ */
     {
         AM_HC32_TIM_PWM_CH2B,
-        PIOA_4,
-        PIOA_4_TIM3_CH2B | PIOA_4_OUT_PP,
-        PIOA_4_GPIO | PIOA_4_INPUT_PU
+        PIOB_15,
+        PIOB_15_TIM3_CH2B | PIOB_15_OUT_PP,
+        PIOB_15_GPIO | PIOB_15_INPUT_PU
     },
 
 };

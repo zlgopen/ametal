@@ -68,7 +68,7 @@ void demo_hc32f07x_core_std_i2c_master_sync_entry (void)
 {
     AM_DBG_INFO("demo amf07x_core std i2c master sync!\r\n");
 
-    demo_std_i2c_master_sync_entry(am_hc32_i2c1_inst_init(),
+    demo_std_i2c_master_sync_entry(am_hc32_i2c0_inst_init(),
                                    EEPROM_ADDR,
                                    TEST_LEN);
 	

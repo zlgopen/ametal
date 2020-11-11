@@ -47,11 +47,11 @@
 #include "demo_hc32_entries.h"
 #include "demo_amf07x_core_entries.h"
 
-static void __hc32f19x_uart_pins_intit (void)
+static void __hc32f07x_uart_pins_init (void)
 {
     /* ³õÊ¼»¯Òý½Å */
     am_gpio_pin_cfg(PIOA_2, PIOA_2_UART1_TXD | PIOA_2_OUT_PP );
-    am_gpio_pin_cfg(PIOA_3, PIOA_3_UART1_RXD | PIOA_10_INPUT_FLOAT);
+    am_gpio_pin_cfg(PIOA_3, PIOA_3_UART1_RXD | PIOA_3_INPUT_FLOAT);
 //    am_gpio_pin_cfg(PIOA_9, PIOA_9_UART0_TXD | PIOA_9_OUT_PP );
 //    am_gpio_pin_cfg(PIOA_10, PIOA_10_UART0_RXD | PIOA_10_INPUT_FLOAT);
 }
@@ -70,7 +70,7 @@ void demo_hc32f07x_core_hw_uart_int_entry (void)
     am_clk_enable(CLK_UART1);
 
     demo_hc32_hw_uart_int_entry(HC32_UART1,
-                                  __hc32f19x_uart_pins_intit,
+                                  __hc32f07x_uart_pins_init,
                                   am_clk_rate_get(CLK_UART1),
                                   HC32_UART1_BASE,
                                   INUM_UART1_3);
