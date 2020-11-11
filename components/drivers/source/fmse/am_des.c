@@ -285,7 +285,7 @@ uint8_t am_des (uint8_t  mode,
 {
     uint8_t i;
     uint8_t temp1,temp2, temp3,temp4;
-    uint8_t c0[4], d0[4];
+    uint8_t c0[4] = {0, 0, 0, 0}, d0[4] = {0, 0, 0, 0};
     uint8_t ki[8];
 
     for(i = 0; i < 8; i++) {
