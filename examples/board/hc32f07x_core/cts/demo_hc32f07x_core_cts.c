@@ -59,7 +59,7 @@ void demo_hc32f07x_core_cts_entry (void)
 
     am_clk_enable(CLK_CTS);
 
-    ret = am_hc32f07x_cts_calibrate( 8000000,
+    ret = am_hc32f07x_cts_calibrate( 12000000,
                                      32768,
                                      AMHW_HC32F07X_CTS_CLKSRC_XTH ,
                                      AMHW_HC32F07X_CTS_REFSRC_XTL);

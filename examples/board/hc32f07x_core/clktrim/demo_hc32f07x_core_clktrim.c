@@ -57,16 +57,16 @@ void demo_hc32f07x_core_clktrim_entry (void)
 
     /* 时钟校准 */
     ret = am_hc32f07x_clktrim_calibrate (1000,
-                                     AMHW_CLKTRIM_REFCLK_XTH,
-                                     AMHW_CLKTRIM_CALCLK_RCH);
+                                         AMHW_CLKTRIM_REFCLK_XTH,
+                                         AMHW_CLKTRIM_CALCLK_RCH);
 
-    AM_DBG_INFO("the (Fcal * 1000)/Fref is: %d\r\n",ret);
+    AM_DBG_INFO("the Fcal cnt is: %d\r\n",ret);
 
     /* 时钟监测 */
     ret = am_hc32f07x_clktrim_monitor (10000,
                                        100,
-                                  AMHW_CLKTRIM_REFCLK_IRC10K,
-                                  AMHW_CLKTRIM_CALCLK_XTL);
+                                       AMHW_CLKTRIM_REFCLK_IRC10K,
+                                       AMHW_CLKTRIM_CALCLK_XTL);
     if (ret == AM_OK){
         AM_DBG_INFO("the calclk is Ok!");
     } else {

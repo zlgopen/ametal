@@ -15,8 +15,8 @@
  *
  * - 实现现象
  *   1.串口提示当前正在进行的模式测试，首先进入睡眠模式。
- *   2.按下 KEY3键（PIOD_2）唤醒 MCU,并进入深度睡眠模式测试。
- *   3.按下 KEY3键（PIOD_2）唤醒 MCU,LED闪烁，MCU处于正常工作模式。
+ *   2.按下 KEY3键（PIOE_4）唤醒 MCU,并进入深度睡眠模式测试。
+ *   3.按下 KEY3键（PIOE_4）唤醒 MCU,LED闪烁，MCU处于正常工作模式。
  *
  * \note
  *   1.测试本例程之前应将 am_prj_config.h 中的宏 AM_CFG_SYSTEM_TICK_ENABLE、
@@ -64,13 +64,13 @@ static void __gpio_isr (void *p_arg)
 void demo_hc32f07x_drv_lpmode_wake_up_entry (void)
 {
     AM_DBG_INFO("sleep mode test!\r\n");
-    am_mdelay(100);
+    am_mdelay(2000);
 
     /* 引脚中断配置 */
-    am_gpio_pin_cfg(PIOD_2, PIOD_2_INPUT_PU);
-    am_gpio_trigger_connect(PIOD_2, __gpio_isr, NULL);
-    am_gpio_trigger_cfg(PIOD_2, AM_GPIO_TRIGGER_FALL);
-    am_gpio_trigger_on(PIOD_2);
+    am_gpio_pin_cfg(PIOE_4, PIOE_4_INPUT_PU);
+    am_gpio_trigger_connect(PIOE_4, __gpio_isr, NULL);
+    am_gpio_trigger_cfg(PIOE_4, AM_GPIO_TRIGGER_FALL);
+    am_gpio_trigger_on(PIOE_4);
 
     /* 低功耗模式初始化 */
     am_hc32_lpmode_init();

@@ -15,7 +15,7 @@
  * \brief 定时器端口刹车中断输出例程，通过 HW 层接口实现
  *
  * - 操作步骤：
- *   1. PIOB_5与低电平连接，TIM1_CHA（PIOA_0）输出占空比为25%的2Hz的PWM波。
+ *   1. PIOB_5与低电平连接，TIM1_CHA（PIOA_0）输出占空比为25%的2kHz的PWM波。
  *   2. PIOB_5与高电平连接，发生刹车中断，串口打印"brake int!"，TIM1_CHA（PIOA_0）的PWM
  *      输出停止，再次将PIOB_5与低电平连接，恢复正常输出。
  *

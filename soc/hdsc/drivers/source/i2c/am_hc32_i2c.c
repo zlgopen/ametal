@@ -589,7 +589,7 @@ static int __i2c_mst_sm_event (am_hc32_i2c_dev_t *p_dev, uint32_t event)
                 p_dev->data_ptr = 0;
             }
 
-            if(p_cur_msg->done_num > p_cur_msg->trans_num) {
+            if(p_cur_msg->done_num >= p_cur_msg->trans_num) {
                 /* …Ë÷√Õ£÷πÕ£÷π±Í÷æ */
                 amhw_hc32_i2c_cr_set(p_hw_i2c, AMHW_HC32_I2C_STOP_ENABLE);
 

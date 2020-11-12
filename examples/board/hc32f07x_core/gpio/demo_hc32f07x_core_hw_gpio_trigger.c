@@ -50,12 +50,12 @@
 void demo_hc32f07x_core_hw_gpio_trigger_entry (void)
 {
 
-    AM_DBG_INFO("demo am217_core hw gpio trigger!\r\n");
+    AM_DBG_INFO("demo amf07x_core hw gpio trigger!\r\n");
 
     /* ¿ªÆô GPIOC ¶Ë¿ÚÊ±ÖÓ */
     am_clk_enable(CLK_GPIO);
 
-    demo_hc32_hw_gpio_trigger_entry((void *)HC32_GPIO0, PIOB_9);
+    demo_hc32_hw_gpio_trigger_entry((void *)HC32_GPIO0, PIOE_4);
 }
 /** [src_hc32f07x_hw_gpio_trigger] */
 

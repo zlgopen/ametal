@@ -15,7 +15,7 @@
  * \brief ADTIM6 定时器 PWM 例程，通过标准接口实现
  *
  * - 实验现象：
- *   1. PIOB_12(TIM6_CHA)输出 2KHz 的 PWM，占空比为 50%；
+ *   1. PIOB_12(TIM6_CHA)输出 100Hz 的 PWM，占空比为 50%；
  *
  * \par 源代码
  * \snippet demo_hc32f07x_std_tim6_pwm.c src_hc32f07x_std_tim6_pwm

@@ -81,6 +81,23 @@ void demo_hc32f07x_hw_dac_dma_entry(void     *p_hw_dac,
 void demo_hc32f07x_hw_opa_one_entry (void *p_hw_opa, uint8_t mode);
 
 /**
+ * \brief LVD系统中断例程，hw接口层实现
+ *
+ * \param[in] p_hw_lvd   : 指向LVD寄存器指针
+ * \param[in] lvd_vids   : LVD 阈值电压，amhw_hc32_lvd_vids_t
+ * \param[in] lvd_src    : LVD 监测来源选择，宏定义 AMHW_HC32_LVD_SRC_
+ * \param[in] pfn_lvd_cb : 用户回调函数
+ * \param[in] p_arg      : 用户回调函数参数
+ *
+ * \retval 无
+ */
+void demo_hc32f07x_hw_lvd_int_entry (amhw_hc32_lvd_t        *p_hw_base,
+                                     amhw_hc32_lvd_vids_t    lvd_vids,
+                                     uint32_t                lvd_src,
+                                     am_pfnvoid_t            pfn_lvd_cb,
+                                     void                   *p_arg);
+
+/**
  * \brief OPA DAC电压跟随例程，通过 HW 层接口实现
  *
  * \param[in] p_hw_opa  : 指向OPA寄存器指针
@@ -96,7 +113,7 @@ void demo_hc32f07x_hw_opa_dac_entry (void      *p_hw_opa,
                                  uint8_t    mode,
                                  uint16_t  *p_vol_val,
                                  uint32_t   number);
-																 
+
 /**
  * \brief USB模拟U盘例程
  * \param[in] handle      USB模拟键盘服务句柄

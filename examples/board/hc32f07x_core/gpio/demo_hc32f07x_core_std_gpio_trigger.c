@@ -51,7 +51,7 @@ void demo_hc32f07x_core_std_gpio_trigger_entry (void)
 {
     AM_DBG_INFO("demo amf07x_core std gpio trigger!\r\n");
 
-    demo_std_gpio_trigger_entry(PIOA_7);
+    demo_std_gpio_trigger_entry(PIOE_4);
 }
 /** [src_hc32f07x_std_gpio_trigger] */
 

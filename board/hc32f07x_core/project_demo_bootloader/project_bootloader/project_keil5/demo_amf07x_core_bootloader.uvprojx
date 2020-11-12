@@ -887,11 +887,6 @@
               <FilePath>..\..\..\..\..\soc\hdsc\drivers\source\rcc\hw\amhw_hc32_rcc_reset.c</FilePath>
             </File>
             <File>
-              <FileName>am_hc32_rtc.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\soc\hdsc\drivers\source\rtc\am_hc32_rtc.c</FilePath>
-            </File>
-            <File>
               <FileName>am_hc32_spi_dma.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\soc\hdsc\drivers\source\spi\am_hc32_spi_dma.c</FilePath>
@@ -1065,6 +1060,11 @@
               <FileName>demo_hc32f07x_core_hw_clk.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\examples\board\hc32f07x_core\clk\demo_hc32f07x_core_hw_clk.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_hc32f07x_core_std_buzzer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\board\hc32f07x_core\buzzer\demo_hc32f07x_core_std_buzzer.c</FilePath>
             </File>
             <File>
               <FileName>demo_hc32f07x_core_std_crc.c</FileName>
@@ -1417,11 +1417,6 @@
               <FilePath>..\..\..\..\..\examples\board\hc32f07x_core\wdt\demo_hc32f07x_core_std_wdt.c</FilePath>
             </File>
             <File>
-              <FileName>demo_hc32f07x_core_std_rtc.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\hc32f07x_core\rtc\demo_hc32f07x_core_std_rtc.c</FilePath>
-            </File>
-            <File>
               <FileName>demo_hc32f07x_core_usbd_mouse.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\examples\board\hc32f07x_core\usbd\demo_hc32f07x_core_usbd_mouse.c</FilePath>
@@ -1577,11 +1572,6 @@
               <FilePath>..\..\..\..\..\examples\soc\hdsc\gpio\demo_hc32_hw_gpio_trigger.c</FilePath>
             </File>
             <File>
-              <FileName>demo_hc32_hw_lcd.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\soc\hdsc\lcd\demo_hc32_hw_lcd.c</FilePath>
-            </File>
-            <File>
               <FileName>demo_hc32_hw_lpuart_int.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\examples\soc\hdsc\lpuart\demo_hc32_hw_lpuart_int.c</FilePath>
@@ -1600,11 +1590,6 @@
               <FileName>demo_hc32_hw_lpuart_tx_dma.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\examples\soc\hdsc\lpuart\demo_hc32_hw_lpuart_tx_dma.c</FilePath>
-            </File>
-            <File>
-              <FileName>demo_hc32_hw_lvd_int.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\soc\hdsc\lvd\demo_hc32_hw_lvd_int.c</FilePath>
             </File>
             <File>
               <FileName>demo_hc32_hw_lvd_system_reset.c</FileName>
@@ -1682,11 +1667,6 @@
               <FilePath>..\..\..\..\..\examples\soc\hdsc\uart\demo_hc32_hw_uart_tx_dma.c</FilePath>
             </File>
             <File>
-              <FileName>demo_hc32_hw_vc_int.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\soc\hdsc\vc\demo_hc32_hw_vc_int.c</FilePath>
-            </File>
-            <File>
               <FileName>demo_hc32_hw_wdt.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\examples\soc\hdsc\wdg\demo_hc32_hw_wdt.c</FilePath>
@@ -1715,6 +1695,21 @@
               <FileName>demo_hc32f07x_hw_dac_dma.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\examples\soc\hdsc\dac\demo_hc32f07x_hw_dac_dma.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_hc32f07x_hw_lvd_int.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\soc\hdsc\lvd\demo_hc32f07x_hw_lvd_int.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_hc32_hw_vc_int.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\soc\hdsc\vc\demo_hc32_hw_vc_int.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_hc32f07x_hw_lcd.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\soc\hdsc\lcd\demo_hc32f07x_hw_lcd.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -1850,11 +1845,6 @@
               <FileName>demo_std_wdt.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\examples\std\wdt\demo_std_wdt.c</FilePath>
-            </File>
-            <File>
-              <FileName>demo_std_rtc.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\std\rtc\demo_std_rtc.c</FilePath>
             </File>
             <File>
               <FileName>demo_std_led_water_light.c</FileName>
@@ -2132,11 +2122,6 @@
               <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_hc32f07x_pca.c</FilePath>
             </File>
             <File>
-              <FileName>am_hwconf_hc32f07x_rtc.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_hc32f07x_rtc.c</FilePath>
-            </File>
-            <File>
               <FileName>am_hwconf_hc32f07x_spi_dma.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_hc32f07x_spi_dma.c</FilePath>
@@ -2284,7 +2269,7 @@
         <TargetCommonOption>
           <Device>HC32F072PATA</Device>
           <Vendor>HDSC</Vendor>
-          <PackID>HDSC.HC32F072.1.1.0</PackID>
+          <PackID>HDSC.HC32F072.1.0.0</PackID>
           <PackURL>https://raw.githubusercontent.com/hdscmcu/pack/master/</PackURL>
           <Cpu>IROM(0x00000000,0x20000) IRAM(0x20000000,0x4000) CPUTYPE("Cortex-M0+") CLOCK(12000000) ELITTLE</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
@@ -3156,11 +3141,6 @@
               <FilePath>..\..\..\..\..\soc\hdsc\drivers\source\rcc\hw\amhw_hc32_rcc_reset.c</FilePath>
             </File>
             <File>
-              <FileName>am_hc32_rtc.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\soc\hdsc\drivers\source\rtc\am_hc32_rtc.c</FilePath>
-            </File>
-            <File>
               <FileName>am_hc32_spi_dma.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\soc\hdsc\drivers\source\spi\am_hc32_spi_dma.c</FilePath>
@@ -3334,6 +3314,11 @@
               <FileName>demo_hc32f07x_core_hw_clk.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\examples\board\hc32f07x_core\clk\demo_hc32f07x_core_hw_clk.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_hc32f07x_core_std_buzzer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\board\hc32f07x_core\buzzer\demo_hc32f07x_core_std_buzzer.c</FilePath>
             </File>
             <File>
               <FileName>demo_hc32f07x_core_std_crc.c</FileName>
@@ -3686,11 +3671,6 @@
               <FilePath>..\..\..\..\..\examples\board\hc32f07x_core\wdt\demo_hc32f07x_core_std_wdt.c</FilePath>
             </File>
             <File>
-              <FileName>demo_hc32f07x_core_std_rtc.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\board\hc32f07x_core\rtc\demo_hc32f07x_core_std_rtc.c</FilePath>
-            </File>
-            <File>
               <FileName>demo_hc32f07x_core_usbd_mouse.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\examples\board\hc32f07x_core\usbd\demo_hc32f07x_core_usbd_mouse.c</FilePath>
@@ -3846,11 +3826,6 @@
               <FilePath>..\..\..\..\..\examples\soc\hdsc\gpio\demo_hc32_hw_gpio_trigger.c</FilePath>
             </File>
             <File>
-              <FileName>demo_hc32_hw_lcd.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\soc\hdsc\lcd\demo_hc32_hw_lcd.c</FilePath>
-            </File>
-            <File>
               <FileName>demo_hc32_hw_lpuart_int.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\examples\soc\hdsc\lpuart\demo_hc32_hw_lpuart_int.c</FilePath>
@@ -3869,11 +3844,6 @@
               <FileName>demo_hc32_hw_lpuart_tx_dma.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\examples\soc\hdsc\lpuart\demo_hc32_hw_lpuart_tx_dma.c</FilePath>
-            </File>
-            <File>
-              <FileName>demo_hc32_hw_lvd_int.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\soc\hdsc\lvd\demo_hc32_hw_lvd_int.c</FilePath>
             </File>
             <File>
               <FileName>demo_hc32_hw_lvd_system_reset.c</FileName>
@@ -3951,11 +3921,6 @@
               <FilePath>..\..\..\..\..\examples\soc\hdsc\uart\demo_hc32_hw_uart_tx_dma.c</FilePath>
             </File>
             <File>
-              <FileName>demo_hc32_hw_vc_int.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\soc\hdsc\vc\demo_hc32_hw_vc_int.c</FilePath>
-            </File>
-            <File>
               <FileName>demo_hc32_hw_wdt.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\examples\soc\hdsc\wdg\demo_hc32_hw_wdt.c</FilePath>
@@ -3984,6 +3949,21 @@
               <FileName>demo_hc32f07x_hw_dac_dma.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\examples\soc\hdsc\dac\demo_hc32f07x_hw_dac_dma.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_hc32f07x_hw_lvd_int.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\soc\hdsc\lvd\demo_hc32f07x_hw_lvd_int.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_hc32_hw_vc_int.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\soc\hdsc\vc\demo_hc32_hw_vc_int.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_hc32f07x_hw_lcd.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\examples\soc\hdsc\lcd\demo_hc32f07x_hw_lcd.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -4119,11 +4099,6 @@
               <FileName>demo_std_wdt.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\examples\std\wdt\demo_std_wdt.c</FilePath>
-            </File>
-            <File>
-              <FileName>demo_std_rtc.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\examples\std\rtc\demo_std_rtc.c</FilePath>
             </File>
             <File>
               <FileName>demo_std_led_water_light.c</FileName>
@@ -4399,11 +4374,6 @@
               <FileName>am_hwconf_hc32f07x_pca.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_hc32f07x_pca.c</FilePath>
-            </File>
-            <File>
-              <FileName>am_hwconf_hc32f07x_rtc.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user_config\am_hwconf_usrcfg\am_hwconf_hc32f07x_rtc.c</FilePath>
             </File>
             <File>
               <FileName>am_hwconf_hc32f07x_spi_dma.c</FileName>

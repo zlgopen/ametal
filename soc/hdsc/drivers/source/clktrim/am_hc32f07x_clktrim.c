@@ -30,16 +30,17 @@
 #include "hc32_clk.h"
 
 /* 中断服务函数 */
-am_local void __clktrim_irq_handler(void *parg)
+am_local void __clktrim_irq_handler(void *p_arg)
 {
     /* 禁能中断 */
     am_int_disable(INUM_CLKTRIM);
     amhw_hc32_clktrim_int_enable(HC32_CLKTRIM, 0);
-    *(int *)parg = 1;
+    *(int *)p_arg = 1;
+
     if(0 == amhw_hc32_clktrim_ifr_get(HC32_CLKTRIM,
                                         AMHW_CLKTRIM_CALCNT_OF)) {
         amhw_hc32_clktrim_ifr_clear(HC32_CLKTRIM, AMHW_CLKTRIM_XTH_FAULT);
-				amhw_hc32_clktrim_ifr_clear(HC32_CLKTRIM, AMHW_CLKTRIM_XTL_FAULT);
+        amhw_hc32_clktrim_ifr_clear(HC32_CLKTRIM, AMHW_CLKTRIM_XTL_FAULT);
     }
     amhw_hc32_clktrim_ifr_clear(HC32_CLKTRIM, AMHW_CLKTRIM_CALCNT_OF);
     amhw_hc32_clktrim_ifr_clear(HC32_CLKTRIM, AMHW_CLKTRIM_STOP);
@@ -49,9 +50,9 @@ am_local void __clktrim_irq_handler(void *parg)
  * \brief CLKTRIM监测模式配置
  */
 uint8_t am_hc32f07x_clktrim_monitor (uint16_t                     rcntval,
-                                   uint16_t                     ccntval,
-                                   amhw_clktrim_refclk_sel_t    refclk_sel,
-                                   amhw_clktrim_calclk_sel_t    calclk_sel)
+                                     uint16_t                     ccntval,
+                                     amhw_clktrim_refclk_sel_t    refclk_sel,
+                                     amhw_clktrim_calclk_sel_t    calclk_sel)
 {
     int       break_flag = 0;
     uint8_t   ret        = AM_OK;
@@ -91,7 +92,7 @@ uint8_t am_hc32f07x_clktrim_monitor (uint16_t                     rcntval,
         } else {
             if(HC32_CLKTRIM->calcnt > rcntval){
                 break;
-						}
+            }
         }
     }
 
@@ -99,9 +100,9 @@ uint8_t am_hc32f07x_clktrim_monitor (uint16_t                     rcntval,
         ret = -AM_ERROR;
     }
     amhw_hc32_clktrim_trim_start(HC32_CLKTRIM, 0);
-		
-		/* 断开中断 */
-	  am_int_disconnect(CLKTRIM_IRQn,
+
+    /* 断开中断 */
+    am_int_disconnect(CLKTRIM_IRQn,
                       __clktrim_irq_handler,
                       (void *)&break_flag);
     am_clk_disable(CLK_CLOCKTRIM);
@@ -113,8 +114,8 @@ uint8_t am_hc32f07x_clktrim_monitor (uint16_t                     rcntval,
  * \brief CLKTRIM校准模式配置
  */
 uint16_t am_hc32f07x_clktrim_calibrate (uint16_t                     rcntval,
-                                     amhw_clktrim_refclk_sel_t    refclk_sel,
-                                     amhw_clktrim_calclk_sel_t    calclk_sel)
+                                        amhw_clktrim_refclk_sel_t    refclk_sel,
+                                        amhw_clktrim_calclk_sel_t    calclk_sel)
 {
     int       break_flag = 0;
     uint16_t  calcnt     = 0;
@@ -125,7 +126,7 @@ uint16_t am_hc32f07x_clktrim_calibrate (uint16_t                     rcntval,
     /* 选择参考时钟 */
     amhw_hc32_clktrim_refclk_sel(HC32_CLKTRIM, refclk_sel);
 
-    /* 选择被被校准时钟 */
+    /* 选择被校准时钟 */
     amhw_hc32_clktrim_calclk_sel(HC32_CLKTRIM, calclk_sel);
 
     /* 设置校准时间 */
@@ -153,11 +154,11 @@ uint16_t am_hc32f07x_clktrim_calibrate (uint16_t                     rcntval,
 
     calcnt = amhw_hc32_clktrim_calcnt_get(HC32_CLKTRIM);
 
-	/* 结束校准 */
+    /* 结束校准 */
     amhw_hc32_clktrim_trim_start(HC32_CLKTRIM, 0);
-		
-		/* 断开中断 */
-	  am_int_disconnect(CLKTRIM_IRQn,
+
+    /* 断开中断 */
+    am_int_disconnect(CLKTRIM_IRQn,
                       __clktrim_irq_handler,
                       (void *)&break_flag);
     am_clk_disable(CLK_CLOCKTRIM);
@@ -166,7 +167,7 @@ uint16_t am_hc32f07x_clktrim_calibrate (uint16_t                     rcntval,
         return ret;
     }
 
-    return ((calcnt * 1000) / rcntval);
+    return calcnt;
 }
 
 /* end of file */

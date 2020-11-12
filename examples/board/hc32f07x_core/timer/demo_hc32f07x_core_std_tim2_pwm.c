@@ -15,7 +15,7 @@
  * \brief TIM1 定时器 PWM 例程，通过标准接口实现
  *
  * - 实验现象：
- *   1. PIOA_7(TIM2_CH0)输出 2KHz 的 PWM，占空比为 50%；
+ *   1. PIOA_7(TIM2_CH0)输出 100Hz 的 PWM，占空比为 50%；
  * \note
  *    1. 如需观察串口打印的调试信息，需要将 PIOA_10 引脚连接 PC 串口的 TXD，
  *       PIOA_9 引脚连接 PC 串口的 RXD。

@@ -64,7 +64,7 @@ static const am_hc32_clk_devinfo_t __g_clk_devinfo =
     /**
      * \brief XTH外部高速时钟晶振频率（Hz）
      */
-    8000000,
+    12000000,
 
     /**
      * \brief XTL外部低速时钟晶振频率（Hz）
@@ -99,7 +99,7 @@ static const am_hc32_clk_devinfo_t __g_clk_devinfo =
      * \brief PLL 倍频系数，允许范围 2 ~ 12
      *        PLLOUT = PLLIN * pll_mul
      */
-    6,
+    4,
 
     /** \brief
      *    系统 时钟源选择
@@ -119,7 +119,7 @@ static const am_hc32_clk_devinfo_t __g_clk_devinfo =
     /**
      * \brief PCLK分频系数，PCLK = HCLK / (2 ^ pclk_div)
      */
-    0,
+    1,
 
     /** \brief 平台初始化函数，配置引脚等工作 */
     __hc32_clk_plfm_init,

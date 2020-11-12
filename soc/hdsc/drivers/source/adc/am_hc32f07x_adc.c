@@ -546,7 +546,7 @@ am_adc_handle_t am_hc32f07x_adc_init (am_hc32f07x_adc_dev_t           *p_dev,
     p_dev->right_bit = 12 - bit;
 
     /* 设置采样率 */
-    __fn_adc_rate_set(p_dev, 0, 170000);
+    __fn_adc_rate_set(p_dev, 0, 500000);
 
     if( p_dev->p_devinfo->temp_enable == 0) {
         amhw_hc32_bgr_temp_sensor_enable(AM_FALSE);
