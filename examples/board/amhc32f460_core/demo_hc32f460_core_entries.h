@@ -493,3 +493,24 @@ void demo_hc32f460_core_hw_dcu_entry (void);
  * \brief KEY例程，通过标准接口实现
  */
 void demo_hc32f460_core_std_key_input_event_entry (void);
+
+/**
+ * \brief 单区bootloader例程入口
+ */
+void demo_hc32f460_core_single_bootloader_uart_entry(void);
+
+/**
+ * \brief 双区bootloader例程入口
+ */
+void demo_hc32f460_core_double_bootloader_uart_entry(void);
+
+/**
+ * \brief 单区APP例程入口
+ */
+void demo_hc32f460_core_single_application_entry (void);
+
+/**
+ * \brief 双区APP例程入口
+ */
+void demo_hc32f460_core_double_application_entry (void);
+

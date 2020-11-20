@@ -21,8 +21,9 @@
  */
 
 #include "ametal.h"
-
 #include "hc32f460_icg.h"
+
+#ifndef APP
 
 #if defined (__CC_ARM)
 const uint32_t ICG[8] __attribute__((at(0x400))) =
@@ -44,5 +45,5 @@ const uint32_t ICG[8] =
     HC32F460_ICG6_REGISTER_CONSTANT,
     HC32F460_ICG7_REGISTER_CONSTANT,
 };
-
+#endif
 /* end of file */
