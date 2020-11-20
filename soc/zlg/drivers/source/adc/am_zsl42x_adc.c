@@ -349,7 +349,7 @@ static int __fn_adc_rate_get (void          *p_drv,
     uint32_t adc_clkdiv = 1;
     uint32_t i;
 
-    uint8_t  sample_time[4] = {4, 6, 8, 12};
+    uint8_t  sample_time[4] = {20, 22, 24, 28};
 
     if (NULL == p_drv) {
         return -AM_EINVAL;
@@ -381,7 +381,7 @@ static int __fn_adc_rate_set (void          *p_drv,
     uint32_t   temp_rate = 0;
     uint8_t    i = 0, j  = 0;
 
-    uint8_t  sample_time[4] = {4, 6, 8, 12};
+    uint8_t  sample_time[4] = {20, 22, 24, 28};
 
     uint32_t   rate_high = 0;
     uint32_t   rate_low  = 0;
@@ -410,32 +410,28 @@ static int __fn_adc_rate_set (void          *p_drv,
 
     clk       = am_clk_rate_get(p_dev->p_devinfo->clk_num);
 
-    rate_high = clk / (1 * 4);
-    rate_low  = clk / (8 * 12);
+    rate_high = clk / (1 * 20);
+    rate_low  = clk / (8 * 28);
 
     if (rate < rate_low || rate > rate_high) {
         return -AM_EINVAL;
     }
 
-    for(i = 1; i < 5; i++) {
-        if (rate >= (clk / ((0x1ul << i) * 12)) &&
-            rate <= (clk / ((0x1ul << i) * 4))) {
+    for(i = 0; i < 4; i++) {
+        for(j = 0; j < 4; j++) {
 
-            for(j = 0; j < 4; j++) {
+            temp_rate = (clk / ((1 << i) * sample_time[j]));
+            rate_err = temp_rate >= rate ? temp_rate - rate :
+                                         rate - temp_rate;
+            if (rate_err < adc_rate_err.err) {
+                adc_rate_err.err         = rate_err;
+                adc_rate_err.adc_div     = i;
+                adc_rate_err.sample_time = j;
+            }
 
-                  temp_rate = (clk / ((1 << i) * sample_time[j]));
-                  rate_err = temp_rate >= rate ? temp_rate - rate :
-                                                 rate - temp_rate;
-                  if (rate_err < adc_rate_err.err) {
-                      adc_rate_err.err         = rate_err;
-                      adc_rate_err.adc_div     = i;
-                      adc_rate_err.sample_time = j;
-                  }
-
-                  if (adc_rate_err.err == 0) {
-                      break;
-                  }
-              }
+            if (adc_rate_err.err == 0) {
+                break;
+            }
         }
     }
 

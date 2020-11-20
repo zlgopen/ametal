@@ -35,28 +35,37 @@
 #include "am_mk100.h"
 #include "am_delay.h"
 
+#define  REPORT  0
+
 /**
  * \brief 例程入口
  */
 void demo_mk100_entry(am_mk100_handle_t handle)
 {
     uint8_t upper_limit = 0, lower_limit = 0;
-    uint8_t receive_cmd_buff[AM_MK100_FRAME_LEN] = {0};
     int ret = 0;
+
+#if REPORT
+    uint8_t receive_cmd_buff[AM_MK100_FRAME_LEN] = {0};    
     
-/*设置定时上报数据*/
-//    ret = am_mk100_set_report_change_mode(handle);
-//    if (ret < 0) {
-//        AM_DBG_INFO("am_mk100_set_report_change_mode error!\r\n");
-//        am_mk100_display_error_recevice(handle);
-//    } else {
-//        AM_DBG_INFO("am_mk100_set_report_change_mode: %d\r\n", ret);
-//    }
+    /*设置定时上报数据*/
+    ret = am_mk100_set_report_change_mode(handle);
+    if (ret < 0) {
+        AM_DBG_INFO("am_mk100_set_report_change_mode error!\r\n");
+        am_mk100_display_error_recevice(handle);
+    } else {
+        AM_DBG_INFO("am_mk100_set_report_change_mode: %d\r\n", ret);
+    }
+#endif
+    
     AM_FOREVER {
-/*获取定时上报的数据，不需要延时*/
-//        am_mk100_get_report(handle, receive_cmd_buff, AM_MK100_FRAME_LEN);
-//        AM_DBG_INFO("recevice report: 0x%02x 0x%02x 0x%02x 0x%02x 0x%02x\r\n",
-//                receive_cmd_buff[0], receive_cmd_buff[1], receive_cmd_buff[2], receive_cmd_buff[3], receive_cmd_buff[4]);
+
+#if REPORT
+        /*获取定时上报的数据，不需要延时*/
+        am_mk100_get_report(handle, receive_cmd_buff, AM_MK100_FRAME_LEN);
+        AM_DBG_INFO("recevice report: 0x%02x 0x%02x 0x%02x 0x%02x 0x%02x\r\n",
+                receive_cmd_buff[0], receive_cmd_buff[1], receive_cmd_buff[2], receive_cmd_buff[3], receive_cmd_buff[4]);
+#endif
         ret = am_mk100_get_angle(handle, 0xFF);
         if (ret < 0) {
             AM_DBG_INFO("am_mk100_get_angle error!\r\n");
