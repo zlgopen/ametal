@@ -345,17 +345,10 @@ void __dma_isr (void *p_arg, uint32_t stat)
             p_this->p_isr_msg->pfn_complete(p_this->p_isr_msg->p_arg);
         }
 
+        p_this->busy = AM_FALSE;
+
         /* 传输就绪 */
         __spi_mst_sm_event(p_this, __SPI_EVT_TRANS_LAUNCH);
-
-        /* 禁能 */
-        amhw_zsn700_spi_dma_tx_disable(p_hw_spi);
-        amhw_zsn700_spi_dma_rx_disable(p_hw_spi);
-
-        /* 片选关闭 */
-        __spi_cs_off(p_this, p_this->p_cur_spi_dev);
-
-        p_this->busy = AM_FALSE;
 
     } else {
         /* 中断源不匹配 */
@@ -689,6 +682,9 @@ int __spi_mst_sm_event (am_zsn700_spi_dma_dev_t *p_dev, uint32_t event)
                 if (p_cur_msg->status == -AM_EINPROGRESS) {
                     p_cur_msg->status = AM_OK;
                 }
+
+                /* CS关闭 */
+                __spi_cs_off(p_dev, p_dev->p_cur_spi_dev);
 
                 __SPI_NEXT_STATE(__SPI_ST_MSG_START, __SPI_EVT_TRANS_LAUNCH);
 
