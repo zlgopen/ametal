@@ -151,6 +151,15 @@ void am_zlg116_gpio_inst_deinit (void);
 am_i2c_handle_t am_zlg116_i2c1_inst_init (void);
 
 /**
+ * \brief GPIO_I2C 实例初始化，获得 I2C 标准服务句柄
+ *
+ * \param 无
+ *
+ * \return I2C 标准服务句柄，若为 NULL，表明初始化失败
+ */
+am_i2c_handle_t am_zlg116_gpio_i2c_inst_init (void);
+
+/**
  * \brief I2C1 实例解初始化
  *
  * \param[in] handle 通过 am_zlg116_i2c1_inst_init() 函数获得的 I2C 标准服务句柄
