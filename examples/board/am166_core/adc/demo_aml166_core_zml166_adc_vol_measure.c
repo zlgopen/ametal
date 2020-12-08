@@ -50,7 +50,6 @@
 #define AM_ZML166_ADC_PGA_SET_32        5     /**< \brief 32倍增益选择参数 */
 #define AM_ZML166_ADC_PGA_SET_64        6     /**< \brief 64倍增益选择参数 */
 #define AM_ZML166_ADC_PGA_SET_128       7    /**< \brief 128倍增益选择参数 */
-#define AM_ZML166_ADC_PGA_SET_256       8    /**< \brief 256倍增益选择参数 */
 
 
 /**
