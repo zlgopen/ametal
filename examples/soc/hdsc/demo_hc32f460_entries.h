@@ -509,6 +509,16 @@ void demo_usbd_mouse_entry (void* p_handle);
  * \brief CMP例程，通过 HW 层接口实现
  */
 void demo_hc32f460_hw_cmp_entry (amhw_hc32f460_cmp_t *p_hw_cmp);
+                                             
+/**
+ * \brief FLASH 写保护例程
+ *
+ * \param[in] p_hw_flash 指向 EFM 外设寄存器块的指针
+ * \param[in] sector   扇区编号
+ *
+ * \return 无
+ */
+void demo_hc32f460_drv_flash_write_protect_entry (void *p_hw_flash, uint16_t sector);
 
 #ifdef __cplusplus
 }

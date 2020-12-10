@@ -140,6 +140,7 @@ int am_main (void)
 //    demo_hc32l19x_core_miniport_hc595_led_entry();
 //    demo_hc32l19x_core_mb_master_demo_entry ();
 //    demo_hc32l19x_core_mb_slave_test_entry ();
+//    demo_hc32l19x_core_drv_flash_write_protect_entry();
     while (1) {
 
     }

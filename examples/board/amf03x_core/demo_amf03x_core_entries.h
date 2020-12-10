@@ -649,3 +649,8 @@ void demo_hc32f03x_core_hw_trng_generate_entry (void);
  * \brief LCD显示例程，通过 HW 层接口实现
  */
 void demo_hc32f03x_core_hw_lcd_entry (void);
+
+/**
+ * \brief FLASH 写保护例程
+ */
+void demo_hc32f03x_core_drv_flash_write_protect_entry (void);

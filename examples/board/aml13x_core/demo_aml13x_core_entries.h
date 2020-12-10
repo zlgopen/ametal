@@ -660,3 +660,8 @@ void demo_hc32l13x_core_mb_master_demo_entry (void);
  * \brief modbus 从站通信例程
  */
 void demo_hc32l13x_core_mb_slave_test_entry (void);
+
+/**
+ * \brief FLASH 写保护例程
+ */
+void demo_hc32l13x_core_drv_flash_write_protect_entry (void);
