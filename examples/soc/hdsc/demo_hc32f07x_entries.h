@@ -149,6 +149,10 @@ void demo_usbd_printer_counter_entry (void* p_handle);
  */
 void demo_usbd_vcom_entry (void* p_handle);
 
+/**
+ * \brief Àý³ÌÈë¿Ú
+ */
+void demo_hc32f07x_drv_flash_write_protect_entry(void *p_flash, uint16_t sector);
 
 #ifdef __cplusplus
 }

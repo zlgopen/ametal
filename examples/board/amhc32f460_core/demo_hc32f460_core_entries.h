@@ -514,3 +514,7 @@ void demo_hc32f460_core_single_application_entry (void);
  */
 void demo_hc32f460_core_double_application_entry (void);
 
+/**
+ * \brief flash–¥±£ª§
+ */
+void demo_hc32f460_core_drv_flash_write_protect_entry (void);

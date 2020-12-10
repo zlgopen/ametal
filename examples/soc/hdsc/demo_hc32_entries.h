@@ -709,6 +709,16 @@ void demo_hc32x3x_hw_opa_entry (void *p_hw_opa, uint8_t mode, uint8_t ch);
  */
 void demo_hc32_hw_rtc_entry (void *p_hw_rtc);
 
+/**
+ * \brief FLASH 写保护例程
+ *
+ * \param[in] p_hw_flash 指向flash寄存器块的指针
+ * \param[in] sector   扇区编号
+ *
+ * \return 无
+ */
+void demo_hc32_drv_flash_write_protect_entry (amhw_hc32_flash_t *p_hw_flash, uint16_t sector);
+
 #ifdef __cplusplus
 }
 #endif

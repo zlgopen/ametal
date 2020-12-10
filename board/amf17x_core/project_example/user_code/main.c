@@ -50,6 +50,7 @@ int am_main (void)
 //    demo_hc32f17x_core_std_crc_entry();
 //    demo_hc32f17x_core_drv_dma_m2m_entry();
 //    demo_hc32f17x_core_drv_flash_entry();
+//    demo_hc32f17x_core_drv_flash_write_protect_entry();
 //    demo_hc32f17x_core_hw_gpio_entry();
 //    demo_hc32f17x_core_hw_gpio_trigger_entry();
 //    demo_hc32f17x_core_std_gpio_entry();

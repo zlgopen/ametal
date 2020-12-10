@@ -662,3 +662,8 @@ void demo_hc32l17x_core_mb_master_demo_entry (void);
  */
 void demo_hc32l17x_core_mb_slave_test_entry (void);
 
+/**
+ * \brief FLASH Ð´±£»¤Àý³Ì
+ */
+void demo_hc32l17x_core_drv_flash_write_protect_entry (void);
+

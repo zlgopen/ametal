@@ -185,7 +185,6 @@
             <uocXRam>0</uocXRam>
             <RvdsVP>0</RvdsVP>
             <RvdsMve>0</RvdsMve>
-            <RvdsCdeCp>0</RvdsCdeCp>
             <hadIRAM2>0</hadIRAM2>
             <hadIROM2>0</hadIROM2>
             <StupSel>8</StupSel>
@@ -352,7 +351,7 @@
             <NoWarn>0</NoWarn>
             <uSurpInc>0</uSurpInc>
             <useXO>0</useXO>
-            <ClangAsOpt>1</ClangAsOpt>
+            <uClangAs>0</uClangAs>
             <VariousControls>
               <MiscControls></MiscControls>
               <Define></Define>
@@ -1598,6 +1597,11 @@
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\board\aml19x_core\modbus\demo_hc32l19x_core_mb_slave.c</FilePath>
             </File>
+            <File>
+              <FileName>demo_hc32l19x_core_drv_flash_write_protect.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\aml19x_core\flash\demo_hc32l19x_core_drv_flash_write_protect.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -1987,6 +1991,11 @@
               <FileName>demo_hc32_hw_rtc.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\soc\hdsc\rtc\demo_hc32_hw_rtc.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_hc32_drv_flash_write_protect.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\soc\hdsc\flash\demo_hc32_drv_flash_write_protect.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -2716,7 +2725,6 @@
             <uocXRam>0</uocXRam>
             <RvdsVP>0</RvdsVP>
             <RvdsMve>0</RvdsMve>
-            <RvdsCdeCp>0</RvdsCdeCp>
             <hadIRAM2>0</hadIRAM2>
             <hadIROM2>0</hadIROM2>
             <StupSel>8</StupSel>
@@ -2883,7 +2891,7 @@
             <NoWarn>0</NoWarn>
             <uSurpInc>0</uSurpInc>
             <useXO>0</useXO>
-            <ClangAsOpt>1</ClangAsOpt>
+            <uClangAs>0</uClangAs>
             <VariousControls>
               <MiscControls></MiscControls>
               <Define></Define>
@@ -4129,6 +4137,11 @@
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\board\aml19x_core\modbus\demo_hc32l19x_core_mb_slave.c</FilePath>
             </File>
+            <File>
+              <FileName>demo_hc32l19x_core_drv_flash_write_protect.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\board\aml19x_core\flash\demo_hc32l19x_core_drv_flash_write_protect.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -4518,6 +4531,11 @@
               <FileName>demo_hc32_hw_rtc.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\examples\soc\hdsc\rtc\demo_hc32_hw_rtc.c</FilePath>
+            </File>
+            <File>
+              <FileName>demo_hc32_drv_flash_write_protect.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\examples\soc\hdsc\flash\demo_hc32_drv_flash_write_protect.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -5075,20 +5093,5 @@
     <components/>
     <files/>
   </RTE>
-
-  <LayerInfo>
-    <Layers>
-      <Layer>
-        <LayName>&lt;Project Info&gt;</LayName>
-        <LayDesc></LayDesc>
-        <LayUrl></LayUrl>
-        <LayKeys></LayKeys>
-        <LayCat></LayCat>
-        <LayLic></LayLic>
-        <LayTarg>0</LayTarg>
-        <LayPrjMark>1</LayPrjMark>
-      </Layer>
-    </Layers>
-  </LayerInfo>
 
 </Project>

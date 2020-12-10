@@ -93,13 +93,13 @@ static const am_hc32_clk_devinfo_t __g_clk_devinfo =
      *    -# AMHW_HC32_PLL_INPUT_FRE_SRC_XTH_PF00 : XTH从管脚PF00输入的时钟
      *    -# AMHW_HC32_PLL_INPUT_FRE_SRC_RCH      : RCH时钟
      */
-   AMHW_HC32_PLL_INPUT_FRE_SRC_XTH_XTAL,
+   AMHW_HC32_PLL_INPUT_FRE_SRC_RCH,
 
     /**
      * \brief PLL 倍频系数，允许范围 2 ~ 12
      *        PLLOUT = PLLIN * pll_mul
      */
-    4,
+    12,
 
     /** \brief
      *    系统 时钟源选择

@@ -713,3 +713,9 @@ void demo_hc32f07x_usbd_printer_entry (void);
  * \brief usb虚拟串口例程
  */
 void demo_hc32f07x_usbd_vcom_entry (void);
+
+/**
+ * \brief FLASH 写保护例程
+ */
+void demo_hc32f07x_core_drv_flash_write_protect_entry (void);
+

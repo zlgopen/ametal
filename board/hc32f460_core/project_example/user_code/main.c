@@ -132,7 +132,8 @@ int am_main (void)
 //    demo_hc32f460_usbd_mouse_entry();
 //    demo_hc32f460_usbd_hid_custom_entry();
 //    demo_hc32f460_core_drv_flash_entry();
-//    demo_hc32f460_core_std_crc_entry();    
+//    demo_hc32f460_core_std_crc_entry(); 
+//    demo_hc32f460_core_drv_flash_write_protect_entry();
     while (1) {
 
     }
